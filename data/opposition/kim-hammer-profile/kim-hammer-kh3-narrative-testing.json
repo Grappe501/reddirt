@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-05-27T17:45:00.000Z",
+  "frames": [
+    {
+      "id": "frame-career-operator",
+      "label": "Career political operator",
+      "strongestEvidence": [
+        "Long legislative tenure and committee concentration",
+        "Institutional positioning in election-law debates"
+      ],
+      "weakPoints": [
+        "Tenure can be reframed by him as readiness",
+        "Must avoid anti-experience tone"
+      ],
+      "likelyRebuttal": "Experience is exactly why I can run the office effectively.",
+      "defensiveCounter": "Experience is valuable when paired with measurable service outcomes and voter trust."
+    },
+    {
+      "id": "frame-insider-control",
+      "label": "Insider control politics",
+      "strongestEvidence": [
+        "Pattern framing around centralized election-process control",
+        "Endorsement ecosystem narrative"
+      ],
+      "weakPoints": [
+        "Requires disciplined sourcing to avoid overreach"
+      ],
+      "likelyRebuttal": "I follow the law and protect election integrity.",
+      "defensiveCounter": "Integrity and broad participation are strongest together, with transparent implementation."
+    },
+    {
+      "id": "frame-power-over-participation",
+      "label": "Power over participation",
+      "strongestEvidence": [
+        "Cross-bill process-tension themes in KH-2 and KH-3 pattern lanes"
+      ],
+      "weakPoints": [
+        "Needs county-level examples for broad persuasion"
+      ],
+      "likelyRebuttal": "Rules keep elections secure and fair.",
+      "defensiveCounter": "Rules should protect security without sidelining lawful participation."
+    }
+  ]
+}
+

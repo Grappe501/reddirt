@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T04:37:50.426Z",
+  "metrics": [
+    {
+      "metric": "county_readiness",
+      "score": 51,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "metric": "operational_momentum",
+      "score": 59,
+      "label": "FORECAST",
+      "status": "PRESENT"
+    },
+    {
+      "metric": "volunteer_capacity",
+      "score": 51,
+      "label": "FORECAST",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "metric": "staffing_pressure",
+      "score": 58,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "metric": "event_coverage",
+      "score": 59,
+      "label": "SIGNAL",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "metric": "voter_metrics_readiness",
+      "score": 0,
+      "label": "SIGNAL",
+      "status": "MISSING"
+    },
+    {
+      "metric": "registration_momentum",
+      "score": 59,
+      "label": "FORECAST",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "metric": "simulation_confidence",
+      "score": 57,
+      "label": "MODEL",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "metric": "narrative_volatility",
+      "score": 50,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "metric": "organizational_fragility",
+      "score": 58,
+      "label": "FORECAST",
+      "status": "PRESENT"
+    },
+    {
+      "metric": "regional_dependencies",
+      "score": 56,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "metric": "intervention_urgency",
+      "score": 57,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "metric": "data_confidence",
+      "score": 57,
+      "label": "SIGNAL",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "metric": "statewide_bottlenecks",
+      "score": 58,
+      "label": "SIGNAL",
+      "status": "PRESENT"
+    },
+    {
+      "metric": "campaign_system_health",
+      "score": 53,
+      "label": "FORECAST",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "metric": "blocked_automation_state",
+      "score": 100,
+      "label": "SIGNAL",
+      "status": "PRESENT"
+    },
+    {
+      "metric": "strategy_readiness_progression",
+      "score": 0,
+      "label": "TREND",
+      "status": "MISSING"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "generatedAt": "2026-05-27T20:42:00.000Z",
+  "entities": [
+    {
+      "id": "entity-kim-hammer",
+      "type": "PERSON",
+      "name": "Kim Hammer"
+    },
+    {
+      "id": "entity-arkansas-sos-race",
+      "type": "RACE_CONTEXT",
+      "name": "Arkansas Secretary of State election context"
+    },
+    {
+      "id": "entity-election-integrity-frame",
+      "type": "NARRATIVE",
+      "name": "Election integrity framing"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-election-integrity-central",
+      "entityId": "entity-kim-hammer",
+      "text": "Election-integrity framing is a central public qualification message.",
+      "verificationTier": "TIER_1_PUBLIC_DEPLOYABLE",
+      "confidenceScore": 0.84,
+      "publicationReadiness": "READY_WITH_CITATION",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "reviewer": "Claim graph maintainer",
+      "reviewedAt": "2026-05-27T23:00:00.000Z",
+      "reviewNotes": "Graph claim aligned to debate-board export candidate; internal graph use only until full citation bundle attached.",
+      "lastExportedAt": null
+    },
+    {
+      "id": "claim-management-readiness-partial",
+      "entityId": "entity-kim-hammer",
+      "text": "Public evidence for large-agency management readiness is partial and requires corroboration.",
+      "verificationTier": "TIER_2_NEEDS_CORROBORATION",
+      "confidenceScore": 0.61,
+      "publicationReadiness": "USE_WITH_CAUTION",
+      "reviewStatus": "NEEDS_REVIEW",
+      "reviewer": "Qualification research",
+      "reviewedAt": "2026-05-27T22:45:00.000Z",
+      "reviewNotes": "Corroboration pass incomplete.",
+      "lastExportedAt": null
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence-campaign-article-2025",
+      "claimId": "claim-election-integrity-central",
+      "sourceUrl": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/",
+      "sourceClass": "CAMPAIGN_PUBLISHING",
+      "sourceDurability": "MEDIUM",
+      "archiveCaptured": false,
+      "crossVerified": true
+    },
+    {
+      "id": "evidence-senate-bio",
+      "claimId": "claim-management-readiness-partial",
+      "sourceUrl": "https://senate.arkansas.gov/senators/576/",
+      "sourceClass": "OFFICIAL_PROFILE",
+      "sourceDurability": "HIGH",
+      "archiveCaptured": false,
+      "crossVerified": false
+    }
+  ],
+  "contradictions": [
+    {
+      "id": "contradiction-management-scope-gap",
+      "claimId": "claim-management-readiness-partial",
+      "contradictionSeverity": "MEDIUM",
+      "timelineConflict": false,
+      "positionDrift": false,
+      "quoteMismatch": false,
+      "notes": "No direct contradiction recorded; this is an evidence-scope gap flag."
+    }
+  ],
+  "timelineEvents": [
+    {
+      "id": "event-senate-service-period",
+      "eventClass": "OFFICE_TENURE",
+      "eventDate": "2019-01-01",
+      "summary": "State Senate service period includes committee leadership roles.",
+      "sourceCount": 1,
+      "sequenceConfidence": 0.78
+    }
+  ],
+  "retrievalSuggestions": [
+    {
+      "id": "retrieve-wayback-legacy-campaign",
+      "targetGapId": "kh3b-wayback-campaign-page-capture",
+      "suggestion": "Run Wayback capture sweep on legacy campaign/about pages for earlier issue-position snapshots.",
+      "retrievalConfidence": 0.69,
+      "humanReviewRequired": true
+    },
+    {
+      "id": "retrieve-local-bulletins-civic-affiliations",
+      "targetGapId": "kh3b-biographical-validation-education-civic",
+      "suggestion": "Search local civic bulletin archives for verifiable affiliation records.",
+      "retrievalConfidence": 0.58,
+      "humanReviewRequired": true
+    }
+  ]
+}
+

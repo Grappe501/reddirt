@@ -23,7 +23,7 @@ export function OrchestrationCountyAgentRuntimePanel({
   if (!runtime) {
     return (
       <section className="rounded-2xl border border-amber-300 bg-amber-50 p-5">
-        <h2 className="text-sm font-bold text-kelly-navy">County AI Agent Runtime Payload (4L.1 / 4P)</h2>
+        <h2 className="text-sm font-bold text-kelly-navy">County AI Agent Runtime Payload (4L.1 / 4S)</h2>
         <p className="mt-2 text-sm text-amber-900">
           Runtime payload unavailable. Registry wiring exists, but runtime consumer could not load.
         </p>
@@ -35,9 +35,9 @@ export function OrchestrationCountyAgentRuntimePanel({
 
   return (
     <section className="rounded-2xl border border-indigo-900/15 bg-gradient-to-br from-indigo-50/30 to-white p-5">
-      <h2 className="text-sm font-bold text-kelly-navy">County AI Agent Runtime Payload (4L.1 / 4P)</h2>
+      <h2 className="text-sm font-bold text-kelly-navy">County AI Agent Runtime Payload (4L.1 / 4S)</h2>
       <p className="mt-1 text-xs text-kelly-muted">
-        Runtime-aware county payload with full operating-system context, institutional memory, resource operations, and public narrative signals (read-only; no automation).
+        Runtime-aware county payload with full operating-system context through executive command synthesis (read-only; no automation).
       </p>
 
       <dl className="mt-4 grid gap-3 text-xs sm:grid-cols-2 lg:grid-cols-4">
@@ -107,6 +107,10 @@ export function OrchestrationCountyAgentRuntimePanel({
               <th className="px-2 py-1 text-left">Top simulation</th>
               <th className="px-2 py-1 text-left">Coordination confidence</th>
               <th className="px-2 py-1 text-left">Executive urgency</th>
+              <th className="px-2 py-1 text-left">Executive readiness</th>
+              <th className="px-2 py-1 text-left">Intervention priority</th>
+              <th className="px-2 py-1 text-left">Bottleneck pressure</th>
+              <th className="px-2 py-1 text-left">Campaign health</th>
               <th className="px-2 py-1 text-left">Strategy gate</th>
               <th className="px-2 py-1 text-left">Automation gate</th>
             </tr>
@@ -131,6 +135,10 @@ export function OrchestrationCountyAgentRuntimePanel({
                   <td className="px-2 py-1">{county?.simulations.topScenarioCard ?? "-"}</td>
                   <td className="px-2 py-1">{county?.campaignBrainCoordination.coordinationConfidence ?? "-"}</td>
                   <td className="px-2 py-1">{county?.campaignBrainCoordination.executiveUrgency ?? "-"}</td>
+                  <td className="px-2 py-1">{county?.executiveCommand.readinessMatrixScore ?? "-"}</td>
+                  <td className="px-2 py-1">{county?.executiveCommand.interventionQueuePriority ?? "-"}</td>
+                  <td className="px-2 py-1">{county?.executiveCommand.bottleneckPressureScore ?? "-"}</td>
+                  <td className="px-2 py-1">{county?.executiveCommand.campaignHealthScore ?? "-"}</td>
                   <td className="px-2 py-1">{row.strategyGate}</td>
                   <td className="px-2 py-1">{row.automationGate}</td>
                 </tr>

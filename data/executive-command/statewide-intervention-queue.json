@@ -1,0 +1,831 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T04:37:50.426Z",
+  "rows": [
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 76,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 73,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 73,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 73,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 73,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 72,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 70,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 70,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 70,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 70,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 69,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 67,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 66,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 66,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 66,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 66,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 66,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 66,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 63,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 63,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 63,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 60,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 60,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 60,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 59,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 59,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 59,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 56,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 56,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 56,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 56,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 56,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 56,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 56,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 53,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 53,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 53,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 53,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 52,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 52,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 52,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 52,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 50,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 50,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 50,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 49,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 49,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 49,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 49,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 46,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 46,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 46,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 46,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 46,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 46,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 46,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 45,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 44,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 43,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 43,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 43,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 43,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 42,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 42,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 42,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 42,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 40,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 39,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 39,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 39,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 39,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 39,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 36,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 36,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "intervention": "Human-reviewed intervention only: resolve staffing pressure and readiness blockers.",
+      "priority": 35,
+      "requiredHumanApprovals": [
+        "Executive review required before intervention execution.",
+        "Compliance review required for any outreach-related operational changes."
+      ],
+      "status": "MISSING"
+    }
+  ]
+}

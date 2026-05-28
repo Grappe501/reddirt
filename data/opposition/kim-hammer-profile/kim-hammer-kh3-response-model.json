@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-05-27T17:30:00.000Z",
+  "scenarios": [
+    {
+      "theme": "Election integrity challenge",
+      "expectedHammerResponse": "Reinforce security-first legislative record and ranking claims.",
+      "likelyEvidenceAnchor": [
+        "Campaign election security pages",
+        "Act references in campaign statements"
+      ],
+      "kellyResponsePath": "Acknowledge integrity goals, then contrast implementation transparency, county support burden, and participation confidence.",
+      "bridgeLine": "Integrity and participation are strongest when the office is trusted, transparent, and county-supportive.",
+      "riskToAvoid": "Do not dispute security goals in blanket terms; focus on method and outcomes."
+    },
+    {
+      "theme": "Experience and readiness challenge",
+      "expectedHammerResponse": "Emphasize legislative tenure, committee leadership, and office familiarity.",
+      "likelyEvidenceAnchor": [
+        "Senate and campaign biography pages"
+      ],
+      "kellyResponsePath": "Respect tenure; compare leadership philosophy, county service model, and trust-building approach.",
+      "bridgeLine": "Experience matters, and so does how you use the office to serve every county.",
+      "riskToAvoid": "Avoid dismissing tenure outright."
+    },
+    {
+      "theme": "Operational management challenge",
+      "expectedHammerResponse": "Point to committee leadership, business ownership, and administrative coordination claims.",
+      "likelyEvidenceAnchor": [
+        "Legislative facilities and efficiency committee references",
+        "Small-business identity statements"
+      ],
+      "kellyResponsePath": "Press for concrete management outcomes and county-facing service benchmarks.",
+      "bridgeLine": "Arkansans deserve measurable service delivery, not just process rhetoric.",
+      "riskToAvoid": "Avoid personal attacks; keep to operational competency evidence."
+    }
+  ],
+  "evidenceStatus": "INTERPRETATION",
+  "sourceConfidence": "MEDIUM"
+}
+

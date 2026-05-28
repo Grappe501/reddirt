@@ -1,0 +1,1340 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T04:37:50.426Z",
+  "countyCount": 75,
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 84,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 80,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 76,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 72,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 68,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 64,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 60,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 56,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 52,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 48,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 44,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 40,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 36,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 32,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 28,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 84,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 80,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 76,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 72,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 68,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 64,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 60,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 56,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 52,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 48,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 44,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 40,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 36,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 32,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 28,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 84,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 80,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 76,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 72,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 68,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 64,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 60,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 56,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 52,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 48,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 44,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 40,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 36,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 32,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 28,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 84,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 80,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 76,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 72,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 68,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 64,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 60,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 56,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 52,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 48,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 44,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 40,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 36,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 32,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 28,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 84,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 80,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "commandStateReady": "PRESENT",
+      "readinessMatrixReady": "PRESENT",
+      "priorityRankingReady": "PRESENT",
+      "bottleneckMapReady": "PRESENT",
+      "interventionQueueReady": "PRESENT",
+      "regionalPressureReady": "PRESENT",
+      "healthScorecardReady": "PRESENT",
+      "alertStreamReady": "PRESENT",
+      "briefRegistryReady": "PRESENT",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 76,
+      "missingCoverage": []
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 72,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 68,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 64,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 60,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 56,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 52,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 48,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 44,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 40,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "commandStateReady": "LOW_CONFIDENCE",
+      "readinessMatrixReady": "LOW_CONFIDENCE",
+      "priorityRankingReady": "LOW_CONFIDENCE",
+      "bottleneckMapReady": "LOW_CONFIDENCE",
+      "interventionQueueReady": "LOW_CONFIDENCE",
+      "regionalPressureReady": "LOW_CONFIDENCE",
+      "healthScorecardReady": "LOW_CONFIDENCE",
+      "alertStreamReady": "LOW_CONFIDENCE",
+      "briefRegistryReady": "LOW_CONFIDENCE",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 36,
+      "missingCoverage": [
+        "confidence below target threshold"
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 32,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "commandStateReady": "MISSING",
+      "readinessMatrixReady": "MISSING",
+      "priorityRankingReady": "MISSING",
+      "bottleneckMapReady": "MISSING",
+      "interventionQueueReady": "MISSING",
+      "regionalPressureReady": "MISSING",
+      "healthScorecardReady": "MISSING",
+      "alertStreamReady": "MISSING",
+      "briefRegistryReady": "MISSING",
+      "blockedAutomationStatePresent": true,
+      "coordinationConfidence": 28,
+      "missingCoverage": [
+        "executive synthesis confidence",
+        "statewide readiness alignment"
+      ]
+    }
+  ]
+}

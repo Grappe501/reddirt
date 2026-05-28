@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "phase": "5A",
+  "mode": "READ_ONLY_STRATEGY_DOCTRINE_INTAKE",
+  "generatedAt": "2026-05-27T00:00:00.000Z",
+  "principles": [
+    {
+      "id": "county_differences_are_real",
+      "principle": "Counties are not interchangeable; strategy posture should be county-specific and source-cited.",
+      "category": "county_culture",
+      "sourceType": "STEVE_DOCTRINE",
+      "confidence": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "relationships_are_infrastructure",
+      "principle": "Trusted local relationships are campaign infrastructure, not optional extras.",
+      "category": "relational_organizing",
+      "sourceType": "STEVE_DOCTRINE",
+      "confidence": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "visibility_in_local_spaces",
+      "principle": "Fairs, festivals, civic clubs, courthouse spaces, and local radio/newspaper moments carry outsized trust value.",
+      "category": "event_visibility",
+      "sourceType": "STEVE_DOCTRINE",
+      "confidence": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "trust_and_process_legitimacy",
+      "principle": "Election trust improves when process clarity, transparency, and lawful administration are emphasized.",
+      "category": "election_trust",
+      "sourceType": "STEVE_DOCTRINE",
+      "confidence": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW"
+    }
+  ],
+  "needsReview": [
+    "County-specific political culture profiles for all 75 counties are incomplete.",
+    "Historical examples mapped to modern operational contexts require Steve validation.",
+    "Public source map for all Arkansas grassroots traditions is partial."
+  ]
+}
+

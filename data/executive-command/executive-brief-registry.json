@@ -1,0 +1,831 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T04:37:50.426Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 84,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 80,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 76,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 68,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 64,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 56,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 52,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 44,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 40,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 36,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 32,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 45,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 83,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 79,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 75,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 71,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 67,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 63,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 59,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 55,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 51,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 47,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 43,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 39,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 35,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 47,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 43,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 81,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 77,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 73,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 69,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 65,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 61,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 57,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 53,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 49,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 45,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 41,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 37,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 50,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 46,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 42,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 80,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 76,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 68,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 64,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 56,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 52,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 44,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 40,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 53,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 49,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 45,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 41,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 79,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 75,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 71,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 67,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 63,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 59,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 55,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 51,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 47,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 43,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 56,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 52,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 44,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "executiveBrief": "EXECUTIVE BRIEF: read-only synthesis of readiness, operational pressure, narrative/simulation confidence, and coordination state. Human approval required for execution.",
+      "requiredHumanApprovals": [
+        "Human leadership approval required for all intervention actions.",
+        "Compliance review required for any outreach-adjacent operational changes."
+      ],
+      "confidence": 40,
+      "status": "MISSING"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-05-27T20:42:00.000Z",
+  "rules": [
+    {
+      "id": "rule-tier-4-block",
+      "description": "Block external publication when verification tier is TIER_4_HIGH_CAUTION.",
+      "severity": "BLOCKER"
+    },
+    {
+      "id": "rule-uncited-block",
+      "description": "Block external publication when citationStatus is UNCITED.",
+      "severity": "BLOCKER"
+    },
+    {
+      "id": "rule-legal-medium-review",
+      "description": "Require human review when legalRisk is MEDIUM or HIGH.",
+      "severity": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "rule-counterevidence-disclosure",
+      "description": "If challenging evidence exists, include it in internal prep packet.",
+      "severity": "RECOMMENDED"
+    }
+  ]
+}
+

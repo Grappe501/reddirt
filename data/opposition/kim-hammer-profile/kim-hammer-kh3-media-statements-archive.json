@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-05-27T17:45:00.000Z",
+  "entries": [
+    {
+      "id": "media-2025-election-integrity-article",
+      "kind": "OP_ED_STYLE_ARTICLE",
+      "title": "Arkansas Leads the Way in Election Integrity",
+      "date": "2025-06-11",
+      "source": "hammerforarkansas.com",
+      "url": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/",
+      "notableStatement": "Campaign-authored statement of election-integrity and SOS-governance priorities.",
+      "consistencyRisk": "Track for alignment against debate and media statements over time.",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "media-kim-hammer-show-archive",
+      "kind": "RADIO_SHOW_ARCHIVE",
+      "title": "The Kim Hammer Show episode archives",
+      "date": "ONGOING",
+      "source": "Spotify/101.1 FM listing",
+      "url": "https://open.spotify.com/show/64RuJ8pEAfOHeZiNLNg18y",
+      "notableStatement": "Long-form historical public statements likely available in episode archive.",
+      "consistencyRisk": "Unindexed archive may contain position drift or framing shifts; needs timestamp extraction.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "id": "media-2024-paper-ballot-letter",
+      "kind": "LETTER_TO_EDITOR",
+      "title": "Paper ballots letter publication",
+      "date": "2024-02-27",
+      "source": "MySaline",
+      "url": "https://www.mysaline.com/letters-hammer-paper-ballots-patriots/",
+      "notableStatement": "Election-process argument in letter format.",
+      "consistencyRisk": "Compare to current campaign framing for continuity and contradictions.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM"
+    }
+  ],
+  "openGaps": [
+    "Timestamped quote extraction from full radio/podcast archive",
+    "YouTube appearance index with topic tags",
+    "Paywalled local media quote registry normalization"
+  ]
+}
+

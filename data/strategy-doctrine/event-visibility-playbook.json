@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "phase": "5A",
+  "mode": "READ_ONLY_STRATEGY_DOCTRINE_INTAKE",
+  "generatedAt": "2026-05-27T00:00:00.000Z",
+  "status": "NEEDS_REVIEW",
+  "eventTypes": [
+    "county fairs",
+    "festivals",
+    "school events",
+    "civic clubs",
+    "farmers markets",
+    "parades",
+    "courthouse days",
+    "local radio/newspaper moments"
+  ],
+  "visibilityFramework": [
+    {
+      "id": "presence_before_pitch",
+      "rule": "Prioritize consistent respectful presence before persuasive asks.",
+      "sourceType": "STEVE_DOCTRINE"
+    },
+    {
+      "id": "local_faces_first",
+      "rule": "Use county-local messengers and volunteers whenever possible.",
+      "sourceType": "STEVE_DOCTRINE"
+    },
+    {
+      "id": "event_to_followup_loop",
+      "rule": "Every event appearance maps to lawful follow-up assignments and learning notes.",
+      "sourceType": "PROPOSED_MODEL"
+    }
+  ],
+  "timingDependencies": [
+    "filing deadlines",
+    "registration deadlines",
+    "early vote windows",
+    "candidate travel windows",
+    "training deadlines",
+    "materials deadlines"
+  ],
+  "guardrails": {
+    "messaging": "No attack-copy generation in this layer; education-first framing only.",
+    "targeting": "No individualized targeting or contact list generation.",
+    "automation": "No autonomous outreach execution."
+  }
+}
+

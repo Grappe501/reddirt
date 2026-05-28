@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "phase": "5A",
+  "mode": "READ_ONLY_STRATEGY_DOCTRINE_INTAKE",
+  "generatedAt": "2026-05-27T00:00:00.000Z",
+  "sources": [
+    {
+      "id": "campaign_brain_model",
+      "type": "INTERNAL",
+      "path": "data/campaign-events/campaign-brain-operating-model.json",
+      "summary": "Current campaign brain layers through executive command center.",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "campaign_brain_map",
+      "type": "INTERNAL",
+      "path": "data/campaign-events/campaign-brain-operating-system-map.json",
+      "summary": "Flow map and canonical artifact inventory.",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "county_intelligence_orchestration",
+      "type": "INTERNAL",
+      "path": "data/campaign-events/county-intelligence-copilot-orchestration.json",
+      "summary": "Tool groups, can/cannot policy, and data sources.",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "rockefeller_research_packet",
+      "type": "INTERNAL",
+      "path": "docs/research/WINTHROP_ROCKEFELLER_REFORM_CAMPAIGN_RESEARCH.md",
+      "summary": "Prior sourced Rockefeller framing and usage guardrails.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "eoa_winthrop_entry",
+      "type": "PUBLIC",
+      "url": "https://encyclopediaofarkansas.net/entries/winthrop-rockefeller-122/",
+      "summary": "Historical biography and election-context source.",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "eoa_volunteer_badge",
+      "type": "PUBLIC",
+      "url": "https://encyclopediaofarkansas.net/media/rockefeller-winthrop-22638/",
+      "summary": "Volunteer artifact reference for campaign infrastructure context.",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "ualr_rockefeller_politics",
+      "type": "PUBLIC",
+      "url": "https://ualrexhibits.org/rockefeller/politics/",
+      "summary": "UALR collection reference to campaign newspapers and politics archive.",
+      "confidence": "MEDIUM",
+      "status": "NEEDS_RETRY"
+    }
+  ],
+  "gaps": [
+    "Full county-by-county Steve doctrine notes are not yet indexed.",
+    "UALR archive pages need full retrieval validation in this session.",
+    "Poll watcher location-level county datasets are missing in this packet."
+  ]
+}
+

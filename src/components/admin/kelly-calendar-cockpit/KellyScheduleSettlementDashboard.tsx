@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
 
 import type { CountyPrioritySnapshotRow } from "@/lib/calendar/campaign-calendar-item";
@@ -20,7 +21,7 @@ import type { CommunityOpportunity, WeekendRoutePlan } from "@/lib/opportunities
 import { approxCountyCenter } from "@/lib/opportunities/approx-county-center";
 
 import { appendScheduleSettlementDecision } from "@/app/admin/calendar-command-center/schedule-settlement-actions";
-import { KellySettlementMap, type SettlementMapPin } from "@/components/admin/kelly-calendar-cockpit/KellySettlementMap";
+import type { SettlementMapPin } from "@/components/admin/kelly-calendar-cockpit/KellySettlementMap";
 import type { KellyWinTargetScenarioFile } from "@/lib/election-targets/win-target-types";
 import type { VolunteerCapacityModelFile } from "@/lib/field-ops/volunteer-capacity-types";
 import type { CandidateDashboardPreflightFile } from "@/lib/kelly-agent/tools/candidate-dashboard-preflight-tool";
@@ -28,6 +29,10 @@ import { WinTargetHud } from "@/components/admin/kelly-calendar-cockpit/WinTarge
 import type { CampaignEventCoveragePlan } from "@/lib/calendar/event-coverage-types";
 
 const TZ = "America/Chicago";
+const KellySettlementMap = dynamic(
+  () => import("@/components/admin/kelly-calendar-cockpit/KellySettlementMap").then((m) => m.KellySettlementMap),
+  { ssr: false },
+);
 
 type RecommendedWeek = {
   title: string;

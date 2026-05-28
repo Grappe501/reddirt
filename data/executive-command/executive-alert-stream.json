@@ -1,0 +1,870 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T04:37:50.426Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "alert": "CRITICAL: executive urgency and fragility jointly elevated.",
+      "severity": "CRITICAL",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "alert": "INFO: monitor readiness trajectory and intervention queue position.",
+      "severity": "INFO",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "TREND",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "alert": "WARN: missing executive synthesis coverage.",
+      "severity": "WARN",
+      "label": "SIGNAL",
+      "sourceLayers": [
+        "data/executive-command/statewide-intervention-queue.json",
+        "data/executive-command/operational-bottleneck-map.json",
+        "data/audit/multi-agent-coordination-readiness-table.json"
+      ]
+    }
+  ]
+}

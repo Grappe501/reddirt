@@ -1,0 +1,189 @@
+{
+  "updatedAt": "2026-05-27T03:55:19.812Z",
+  "approvals": [
+    {
+      "id": "la_lesson_mph38mf3",
+      "lessonId": "lesson_mph38mf3",
+      "lessonTitle": "Arkansas County: County profile still shell depth in countyWorkbenc",
+      "lessonType": "county_learning",
+      "domains": [
+        "county"
+      ],
+      "counties": [
+        "arkansas"
+      ],
+      "confidence": "medium",
+      "sensitivity": "internal",
+      "approvalStatus": "suggested",
+      "expirationPolicy": "Review if stale or contradicted",
+      "promotedToCampaignMemory": false,
+      "sourceObservationIds": [],
+      "safetyNotes": [
+        "Lesson approval store write only",
+        "No sensitive memory auto-store",
+        "Lesson marked suggested"
+      ]
+    },
+    {
+      "id": "la_lesson_mph38mfs",
+      "lessonId": "lesson_mph38mfs",
+      "lessonTitle": "Ashley County: County profile still shell depth in countyWorkbenc",
+      "lessonType": "county_learning",
+      "domains": [
+        "county"
+      ],
+      "counties": [
+        "ashley"
+      ],
+      "confidence": "medium",
+      "sensitivity": "internal",
+      "approvalStatus": "suggested",
+      "expirationPolicy": "Review if stale or contradicted",
+      "promotedToCampaignMemory": false,
+      "sourceObservationIds": [],
+      "safetyNotes": [
+        "Lesson approval store write only",
+        "No sensitive memory auto-store",
+        "Lesson marked suggested"
+      ]
+    },
+    {
+      "id": "la_lesson_mph38mg1",
+      "lessonId": "lesson_mph38mg1",
+      "lessonTitle": "Baxter County: County profile still shell depth in countyWorkbenc",
+      "lessonType": "county_learning",
+      "domains": [
+        "county"
+      ],
+      "counties": [
+        "baxter"
+      ],
+      "confidence": "medium",
+      "sensitivity": "internal",
+      "approvalStatus": "suggested",
+      "expirationPolicy": "Review if stale or contradicted",
+      "promotedToCampaignMemory": false,
+      "sourceObservationIds": [],
+      "safetyNotes": [
+        "Lesson approval store write only",
+        "No sensitive memory auto-store",
+        "Lesson marked suggested"
+      ]
+    },
+    {
+      "id": "la_lesson_mph38mg8",
+      "lessonId": "lesson_mph38mg8",
+      "lessonTitle": "Benton County: County profile still shell depth in countyWorkbenc",
+      "lessonType": "county_learning",
+      "domains": [
+        "county"
+      ],
+      "counties": [
+        "benton"
+      ],
+      "confidence": "medium",
+      "sensitivity": "internal",
+      "approvalStatus": "suggested",
+      "expirationPolicy": "Review if stale or contradicted",
+      "promotedToCampaignMemory": false,
+      "sourceObservationIds": [],
+      "safetyNotes": [
+        "Lesson approval store write only",
+        "No sensitive memory auto-store",
+        "Lesson marked suggested"
+      ]
+    },
+    {
+      "id": "la_lesson_mph38mgh",
+      "lessonId": "lesson_mph38mgh",
+      "lessonTitle": "Boone County: County profile still shell depth in countyWorkbenc",
+      "lessonType": "county_learning",
+      "domains": [
+        "county"
+      ],
+      "counties": [
+        "boone"
+      ],
+      "confidence": "medium",
+      "sensitivity": "internal",
+      "approvalStatus": "suggested",
+      "expirationPolicy": "Review if stale or contradicted",
+      "promotedToCampaignMemory": false,
+      "sourceObservationIds": [],
+      "safetyNotes": [
+        "Lesson approval store write only",
+        "No sensitive memory auto-store",
+        "Lesson marked suggested"
+      ]
+    },
+    {
+      "id": "la_lesson_mph38mgq",
+      "lessonId": "lesson_mph38mgq",
+      "lessonTitle": "Bradley County: County profile still shell depth in countyWorkbenc",
+      "lessonType": "county_learning",
+      "domains": [
+        "county"
+      ],
+      "counties": [
+        "bradley"
+      ],
+      "confidence": "medium",
+      "sensitivity": "internal",
+      "approvalStatus": "suggested",
+      "expirationPolicy": "Review if stale or contradicted",
+      "promotedToCampaignMemory": false,
+      "sourceObservationIds": [],
+      "safetyNotes": [
+        "Lesson approval store write only",
+        "No sensitive memory auto-store",
+        "Lesson marked suggested"
+      ]
+    },
+    {
+      "id": "la_lesson_mph38mgy",
+      "lessonId": "lesson_mph38mgy",
+      "lessonTitle": "Calhoun County: County profile still shell depth in countyWorkbenc",
+      "lessonType": "county_learning",
+      "domains": [
+        "county"
+      ],
+      "counties": [
+        "calhoun"
+      ],
+      "confidence": "medium",
+      "sensitivity": "internal",
+      "approvalStatus": "suggested",
+      "expirationPolicy": "Review if stale or contradicted",
+      "promotedToCampaignMemory": false,
+      "sourceObservationIds": [],
+      "safetyNotes": [
+        "Lesson approval store write only",
+        "No sensitive memory auto-store",
+        "Lesson marked suggested"
+      ]
+    },
+    {
+      "id": "la_lesson_mph38mh5",
+      "lessonId": "lesson_mph38mh5",
+      "lessonTitle": "Carroll County: County profile still shell depth in countyWorkbenc",
+      "lessonType": "county_learning",
+      "domains": [
+        "county"
+      ],
+      "counties": [
+        "carroll"
+      ],
+      "confidence": "medium",
+      "sensitivity": "internal",
+      "approvalStatus": "suggested",
+      "expirationPolicy": "Review if stale or contradicted",
+      "promotedToCampaignMemory": false,
+      "sourceObservationIds": [],
+      "safetyNotes": [
+        "Lesson approval store write only",
+        "No sensitive memory auto-store",
+        "Lesson marked suggested"
+      ]
+    }
+  ]
+}

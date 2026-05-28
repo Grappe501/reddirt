@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-05-27T17:30:00.000Z",
+  "items": [
+    {
+      "id": "kh-writing-2025-election-integrity-oped",
+      "title": "Arkansas Leads the Way in Election Integrity: A Commitment to Fairness and Transparency",
+      "type": "OP_ED",
+      "date": "2025-06-11",
+      "publisher": "Hammer campaign website",
+      "url": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/",
+      "summary": "Long-form campaign-authored argument on election integrity, historical framing, and SOS policy goals.",
+      "themes": [
+        "election integrity",
+        "security",
+        "transparency",
+        "statewide election administration"
+      ],
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "kh-writing-2024-paper-ballot-letter",
+      "title": "Letter to the editor on paper ballots",
+      "type": "LETTER_TO_EDITOR",
+      "date": "2024-02-27",
+      "publisher": "MySaline",
+      "url": "https://www.mysaline.com/letters-hammer-paper-ballots-patriots/",
+      "summary": "Letter-format public argument on paper ballot and election process topics.",
+      "themes": [
+        "paper ballots",
+        "tabulation process",
+        "election administration framing"
+      ],
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "id": "kh-writing-2026-monument-letter",
+      "title": "Letter to Secretary of State regarding Monument to the Unborn",
+      "type": "PUBLIC_LETTER",
+      "date": "2026-01-13",
+      "publisher": "Arkansasonline documents index",
+      "url": "https://dev.arkansasonline.com/documents/2026/jan/13/sen-hammer-letter-monument-to-the-unborn/",
+      "summary": "Document-indexed public letter attributed to Senator Hammer.",
+      "themes": [
+        "public correspondence",
+        "social issue positioning"
+      ],
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM"
+    }
+  ],
+  "openGaps": [
+    "Comprehensive archive search for older op-eds before campaign launch period",
+    "Newspaper paywalled LTE records requiring authenticated retrieval",
+    "Committee testimony transcripts where authored written statements may exist"
+  ]
+}
+

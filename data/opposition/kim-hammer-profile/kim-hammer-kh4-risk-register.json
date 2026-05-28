@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-05-27T20:42:00.000Z",
+  "risks": [
+    {
+      "id": "risk-management-readiness",
+      "claimId": "claim-management-readiness-partial",
+      "narrativeRiskScore": 0.73,
+      "baseVulnerability": 0.7,
+      "mediaAmplificationPotential": 0.68,
+      "demographicSensitivity": 0.62,
+      "counterattackRisk": 0.59,
+      "overallThreatIndex": 0.66,
+      "notes": "High relevance; must maintain strict evidence language."
+    },
+    {
+      "id": "risk-civic-affiliation-overreach",
+      "claimId": "claim-civic-affiliation-unverified",
+      "narrativeRiskScore": 0.48,
+      "baseVulnerability": 0.55,
+      "mediaAmplificationPotential": 0.44,
+      "demographicSensitivity": 0.39,
+      "counterattackRisk": 0.82,
+      "overallThreatIndex": 0.54,
+      "notes": "Counterattack risk dominates due to verification gaps."
+    }
+  ],
+  "scale": "0.00 - 1.00"
+}
+

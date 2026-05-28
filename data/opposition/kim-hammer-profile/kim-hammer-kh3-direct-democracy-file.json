@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-05-27T17:45:00.000Z",
+  "summary": "Dedicated direct-democracy restriction and ballot-process change tracking module for KH-3.",
+  "lanes": [
+    {
+      "lane": "Initiative restriction timeline",
+      "status": "PARTIAL",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "lane": "Ballot access changes",
+      "status": "PARTIAL",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "lane": "Signature requirement evolution",
+      "status": "PARTIAL",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "lane": "Citizen-group impact mapping",
+      "status": "SCaffolded",
+      "evidenceStatus": "RESEARCH_QUESTION"
+    },
+    {
+      "lane": "Litigation linkage index",
+      "status": "SCaffolded",
+      "evidenceStatus": "RESEARCH_QUESTION"
+    }
+  ],
+  "nextPassRequirements": [
+    "Attach bill/act citations for each process change",
+    "Attach county-level implementation burden notes",
+    "Attach litigation document IDs where applicable"
+  ]
+}
+

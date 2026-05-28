@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "phase": "5A",
+  "mode": "READ_ONLY_STRATEGY_DOCTRINE_INTAKE",
+  "generatedAt": "2026-05-27T00:00:00.000Z",
+  "playbook": {
+    "name": "Arkansas Relational Organizing Playbook",
+    "status": "NEEDS_REVIEW",
+    "principles": [
+      "Neighbor-to-neighbor trust carries more weight than generic persuasion scripts.",
+      "Local messengers should lead outreach in their own networks.",
+      "Phone trees should map to county captain and precinct captain ladders."
+    ],
+    "operationalPatterns": [
+      {
+        "id": "county_captain_ladder",
+        "pattern": "County captain -> city/precinct captains -> volunteer cells.",
+        "inputs": [
+          "county leadership roster",
+          "event schedule",
+          "volunteer availability"
+        ],
+        "outputs": [
+          "captain assignments",
+          "weekly relational pushes"
+        ],
+        "status": "NEEDS_REVIEW"
+      },
+      {
+        "id": "phone_tree_activation",
+        "pattern": "Build phone-tree branches anchored in trusted community ties.",
+        "inputs": [
+          "captain roster",
+          "approved scripts",
+          "lawful outreach windows"
+        ],
+        "outputs": [
+          "call goals by county",
+          "response routing"
+        ],
+        "status": "NEEDS_REVIEW"
+      },
+      {
+        "id": "event_visibility_cycles",
+        "pattern": "Use fairs/festivals/civic events to refresh volunteer momentum and recruit trusted messengers.",
+        "inputs": [
+          "county event calendar",
+          "volunteer crews",
+          "material readiness"
+        ],
+        "outputs": [
+          "event staffing plans",
+          "follow-up loops"
+        ],
+        "status": "NEEDS_REVIEW"
+      }
+    ],
+    "guardrails": [
+      "No individual voter targeting profiles.",
+      "No contact list generation from this layer.",
+      "No automated outreach execution."
+    ]
+  }
+}
+

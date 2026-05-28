@@ -56,6 +56,9 @@ export default async function OppositionIntelligenceAdminPage() {
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
           <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Open Workbench</h2>
           <div className="mt-2 flex flex-col gap-2 text-xs">
+            <Link className="rounded border border-kelly-navy/30 bg-kelly-navy px-2 py-1 font-bold text-white" href="/admin/intelligence/debate-command">
+              Executive Debate Command Center
+            </Link>
             <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/kim-hammer">
               Kim Hammer command center
             </Link>

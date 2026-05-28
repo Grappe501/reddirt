@@ -1,6 +1,16 @@
 import { loadResourceAllocationModel } from "./resourceAllocationModel";
+import type { ForecastConfidence } from "./resourceAllocationTypes";
 
-export function volunteerCapacityForecast(countySlug: string) {
+type VolunteerCapacityForecastResult = {
+  countySlug: string;
+  volunteerCapacity: number | "MISSING";
+  burnoutRisk: "FORECAST";
+  confidence: ForecastConfidence;
+  score: number;
+  sourceLayers: string[];
+};
+
+export function volunteerCapacityForecast(countySlug: string): VolunteerCapacityForecastResult {
   const row = loadResourceAllocationModel().rows.find((x) => x.countySlug === countySlug);
   if (!row) {
     return {

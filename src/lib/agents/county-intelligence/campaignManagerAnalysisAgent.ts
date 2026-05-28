@@ -11,6 +11,7 @@ import { loadResourceAllocationModel } from "./resourceAllocationModel";
 import { publicNarrativeBriefBuilder } from "./publicNarrativeBriefBuilder";
 import { simulationBriefBuilder } from "./simulationBriefBuilder";
 import { statewideInterventionCoordinator } from "./statewideInterventionCoordinator";
+import { loadCampaignHealthScorecard, loadExecutiveAlertStream, loadExecutivePriorityRanking, loadOperationalBottleneckMap, loadRegionalPressureMap, loadStatewideInterventionQueue, loadStatewideReadinessMatrix } from "./executiveCommandStateBuilder";
 
 export const CAMPAIGN_MANAGER_ANALYSIS_TOOLS = [
   "systemEfficiencyAnalyzer",
@@ -89,6 +90,29 @@ export const MULTI_AGENT_COORDINATION_TOOLS = [
   "statewideResourceConflictAnalyzer",
   "statewideNarrativeAlignmentAnalyzer",
   "executiveCoordinationBriefBuilder",
+] as const;
+
+export const EXECUTIVE_COMMAND_CENTER_TOOLS = [
+  "executiveCommandStateBuilder",
+  "statewideReadinessSynthesizer",
+  "executivePriorityRanker",
+  "operationalBottleneckMapper",
+  "statewideInterventionCoordinator",
+  "regionalPressureAnalyzer",
+  "campaignHealthScorecard",
+  "executiveAlertStream",
+  "executiveBriefBuilder",
+  "executiveUrgencyAnalyzer",
+  "statewideOpportunityScanner",
+  "statewideRiskScanner",
+  "campaignHealthInspector",
+  "executiveReadinessExplainer",
+  "statewideTrendFusionAnalyzer",
+  "statewideDependencyExplorer",
+  "statewideConfidenceAnalyzer",
+  "executiveScenarioComparisonTool",
+  "executiveCoordinationSummary",
+  "blockedAutomationMatrixInspector",
 ] as const;
 
 export type ScenarioSimulation = {
@@ -178,6 +202,32 @@ export type CampaignManagerAnalysisResult = {
       countyName: string;
       executiveUrgency: number;
       coordinationConfidence: number;
+    }>;
+    blockedAutomationMatrix: string[];
+  };
+  executiveCommandCenter: {
+    tools: string[];
+    readinessMatrixRows: number;
+    interventionQueueRows: number;
+    bottleneckRows: number;
+    regionalPressureRows: number;
+    priorityTopTen: Array<{
+      countySlug: string;
+      countyName: string;
+      executivePriorityScore: number;
+      urgencyBand: "HIGH" | "MEDIUM" | "LOW";
+    }>;
+    campaignHealthSummary: Array<{
+      metric: string;
+      score: number;
+      label: "SIGNAL" | "TREND" | "FORECAST" | "MODEL";
+      status: "PRESENT" | "MISSING" | "LOW_CONFIDENCE";
+    }>;
+    executiveAlerts: Array<{
+      countySlug: string;
+      countyName: string;
+      severity: "INFO" | "WARN" | "CRITICAL";
+      label: "SIGNAL" | "TREND" | "FORECAST" | "MODEL";
     }>;
     blockedAutomationMatrix: string[];
   };
@@ -298,6 +348,13 @@ export function runCampaignManagerAnalysisAgent(
   if (resourceRows.length === 0) {
     statewideBottlenecks.push("MISSING: no resource allocation model rows found.");
   }
+  const executiveReadinessMatrix = loadStatewideReadinessMatrix();
+  const executiveInterventionQueue = loadStatewideInterventionQueue();
+  const executiveBottleneckMap = loadOperationalBottleneckMap();
+  const executiveRegionalPressure = loadRegionalPressureMap();
+  const executivePriority = loadExecutivePriorityRanking();
+  const executiveHealth = loadCampaignHealthScorecard();
+  const executiveAlerts = loadExecutiveAlertStream();
 
   return {
     tools: [
@@ -359,17 +416,20 @@ export function runCampaignManagerAnalysisAgent(
     },
     simulationScenarioEngine: {
       tools: [...SIMULATION_SCENARIO_ENGINE_TOOLS],
-      countyScenarioRankings: runtime.countyPayloads.map((county) => {
-        const brief = simulationBriefBuilder(county.countySlug);
-        return {
-          countySlug: county.countySlug,
-          countyName: county.countyName,
-          confidenceScore: brief.confidenceScore,
-          scenarioRisk:
-            brief.confidenceScore >= 70 ? "LOW" : brief.confidenceScore >= 45 ? "MEDIUM" : "HIGH",
-          label: "MODEL" as const,
-        };
-      }).sort((a, b) => b.confidenceScore - a.confidenceScore),
+      countyScenarioRankings: runtime.countyPayloads
+        .map((county) => {
+          const brief = simulationBriefBuilder(county.countySlug);
+          const scenarioRisk: "LOW" | "MEDIUM" | "HIGH" =
+            brief.confidenceScore >= 70 ? "LOW" : brief.confidenceScore >= 45 ? "MEDIUM" : "HIGH";
+          return {
+            countySlug: county.countySlug,
+            countyName: county.countyName,
+            confidenceScore: brief.confidenceScore,
+            scenarioRisk,
+            label: "MODEL" as const,
+          };
+        })
+        .sort((a, b) => b.confidenceScore - a.confidenceScore),
       statewideModeledBottlenecks: [
         "MODEL: readiness trajectories are constrained by low-confidence simulation assumptions in several counties.",
         "FORECAST: intervention timing sensitivity increases where turnout and registration projections diverge.",
@@ -400,6 +460,33 @@ export function runCampaignManagerAnalysisAgent(
         "No autonomous outreach.",
         "No autonomous resource allocation.",
         "No autonomous final strategy execution.",
+      ],
+    },
+    executiveCommandCenter: {
+      tools: [...EXECUTIVE_COMMAND_CENTER_TOOLS],
+      readinessMatrixRows: executiveReadinessMatrix.rows.length,
+      interventionQueueRows: executiveInterventionQueue.rows.length,
+      bottleneckRows: executiveBottleneckMap.rows.length,
+      regionalPressureRows: executiveRegionalPressure.rows.length,
+      priorityTopTen: executivePriority.rows.slice(0, 10).map((row) => ({
+        countySlug: row.countySlug,
+        countyName: row.countyName,
+        executivePriorityScore: row.executivePriorityScore,
+        urgencyBand: row.urgencyBand,
+      })),
+      campaignHealthSummary: executiveHealth.metrics,
+      executiveAlerts: executiveAlerts.rows.slice(0, 20).map((row) => ({
+        countySlug: row.countySlug,
+        countyName: row.countyName,
+        severity: row.severity,
+        label: row.label,
+      })),
+      blockedAutomationMatrix: [
+        "No autonomous campaign execution.",
+        "No autonomous outreach.",
+        "No autonomous resource allocation.",
+        "No autonomous final campaign strategy generation.",
+        "No targeting/contact-list actions.",
       ],
     },
     safety: {

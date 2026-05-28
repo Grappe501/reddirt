@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-05-27T17:45:00.000Z",
+  "contrastRows": [
+    {
+      "hammerLane": "Restriction-first election framing",
+      "kellyLane": "Access + integrity together",
+      "useCase": [
+        "debate",
+        "earned media",
+        "surrogate brief"
+      ]
+    },
+    {
+      "hammerLane": "Insider/institutional control emphasis",
+      "kellyLane": "Citizen service and transparency emphasis",
+      "useCase": [
+        "speech",
+        "digital ad",
+        "fundraising message"
+      ]
+    },
+    {
+      "hammerLane": "Procedural burden tolerance",
+      "kellyLane": "Modernized and county-supportive operations",
+      "useCase": [
+        "county outreach",
+        "operator brief"
+      ]
+    }
+  ],
+  "guardrails": [
+    "Do not use unsourced personal claims.",
+    "Anchor contrast in policy pattern and public statements.",
+    "Prefer service-outcome language over personal attacks."
+  ]
+}
+

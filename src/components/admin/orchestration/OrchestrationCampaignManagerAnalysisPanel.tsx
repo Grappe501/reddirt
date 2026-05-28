@@ -112,6 +112,62 @@ export function OrchestrationCampaignManagerAnalysisPanel({
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
         <div className="rounded-lg border bg-white p-3">
+          <h3 className="text-xs font-bold uppercase text-kelly-muted">Executive command center (4S)</h3>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            <li>Readiness matrix rows: {analysis.executiveCommandCenter.readinessMatrixRows}</li>
+            <li>Intervention queue rows: {analysis.executiveCommandCenter.interventionQueueRows}</li>
+            <li>Bottleneck rows: {analysis.executiveCommandCenter.bottleneckRows}</li>
+            <li>Regional pressure rows: {analysis.executiveCommandCenter.regionalPressureRows}</li>
+          </ul>
+        </div>
+        <div className="rounded-lg border bg-white p-3">
+          <h3 className="text-xs font-bold uppercase text-kelly-muted">Executive priority top counties</h3>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {analysis.executiveCommandCenter.priorityTopTen.slice(0, 5).map((x) => (
+              <li key={x.countySlug}>
+                {x.countyName} — score {x.executivePriorityScore} ({x.urgencyBand})
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-lg border bg-white p-3">
+          <h3 className="text-xs font-bold uppercase text-kelly-muted">Campaign health scorecard</h3>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {analysis.executiveCommandCenter.campaignHealthSummary.slice(0, 6).map((x) => (
+              <li key={x.metric}>
+                {x.metric} — {x.score} ({x.label}/{x.status})
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-lg border bg-white p-3">
+          <h3 className="text-xs font-bold uppercase text-kelly-muted">Executive alerts (sample)</h3>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {analysis.executiveCommandCenter.executiveAlerts.slice(0, 6).map((x, i) => (
+              <li key={`${x.countySlug}-${i}`}>
+                {x.countyName} — {x.severity} ({x.label})
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-lg border bg-white p-3">
+          <h3 className="text-xs font-bold uppercase text-kelly-muted">Blocked automation matrix</h3>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {analysis.executiveCommandCenter.blockedAutomationMatrix.map((x, i) => (
+              <li key={i}>{x}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-lg border bg-white p-3">
           <h3 className="text-xs font-bold uppercase text-kelly-muted">Operations & resources (4O)</h3>
           <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
             {analysis.resourceAllocationForecasting.statewideOperationalRanking.slice(0, 5).map((x) => (

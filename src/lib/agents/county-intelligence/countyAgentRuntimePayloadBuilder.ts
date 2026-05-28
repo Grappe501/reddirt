@@ -112,6 +112,16 @@ export type RuntimeCountyPayload = {
     blockedCapabilities: string[];
     requiredHumanApprovals: string[];
   };
+  executiveCommand: {
+    readinessMatrixScore: number;
+    interventionQueuePriority: number;
+    bottleneckPressureScore: number;
+    executivePriorityScore: number;
+    campaignHealthScore: number;
+    confidenceScore: number;
+    blockedAutomationStatePresent: boolean;
+    requiredHumanApprovals: string[];
+  };
 };
 
 export type CountyAgentRuntimePayload = {
@@ -264,6 +274,26 @@ function buildCountyPayload(
   nextBestDataActions.push(...simulationBrief.recommendedSafeOperatorActions.slice(0, 2));
   const coordinationBrief = executiveCoordinationBriefBuilder(county.slug);
   nextBestDataActions.push(...coordinationBrief.requiredHumanApprovals.slice(0, 2));
+  const executiveReadinessRow = ctx.executiveCommand.readinessTable.rows.find(
+    (row) => row.countySlug === county.slug,
+  );
+  const executiveMatrixRow = ctx.executiveCommand.readinessMatrix.rows.find(
+    (row) => row.countySlug === county.slug,
+  );
+  const executiveQueueRow = ctx.executiveCommand.interventionQueue.rows.find(
+    (row) => row.countySlug === county.slug,
+  );
+  const executiveBottleneckRow = ctx.executiveCommand.bottleneckMap.rows.find(
+    (row) => row.countySlug === county.slug,
+  );
+  const executivePriorityRow = ctx.executiveCommand.priorityRanking.rows.find(
+    (row) => row.countySlug === county.slug,
+  );
+  const campaignHealth = Array.isArray(ctx.executiveCommand.campaignHealthScorecard.metrics)
+    ? (ctx.executiveCommand.campaignHealthScorecard.metrics.find(
+        (metric) => metric.metric === "campaign_system_health",
+      )?.score ?? 0)
+    : 0;
 
   return {
     countySlug: county.slug,
@@ -352,6 +382,20 @@ function buildCountyPayload(
       operationalConflicts: coordinationBrief.operationalConflicts,
       blockedCapabilities: coordinationBrief.blockedCapabilities,
       requiredHumanApprovals: coordinationBrief.requiredHumanApprovals,
+    },
+    executiveCommand: {
+      readinessMatrixScore: executiveMatrixRow?.countyReadiness ?? 0,
+      interventionQueuePriority: executiveQueueRow?.priority ?? 0,
+      bottleneckPressureScore: executiveBottleneckRow?.pressureScore ?? 0,
+      executivePriorityScore: executivePriorityRow?.executivePriorityScore ?? 0,
+      campaignHealthScore: campaignHealth,
+      confidenceScore: executivePriorityRow?.status === "PRESENT" ? 90 : executivePriorityRow?.status === "LOW_CONFIDENCE" ? 60 : 30,
+      blockedAutomationStatePresent: executiveReadinessRow?.blockedAutomationStatePresent ?? true,
+      requiredHumanApprovals:
+        executiveQueueRow?.requiredHumanApprovals ?? [
+          "Human approval required before execution.",
+          "Compliance review required for outreach-adjacent actions.",
+        ],
     },
   };
 }

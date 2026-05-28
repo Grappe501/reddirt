@@ -1,0 +1,981 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T04:37:50.426Z",
+  "rows": [
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "executivePriorityScore": 76,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "executivePriorityScore": 76,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "executivePriorityScore": 75,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "executivePriorityScore": 74,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "executivePriorityScore": 73,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "executivePriorityScore": 72,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "executivePriorityScore": 72,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "executivePriorityScore": 71,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "executivePriorityScore": 71,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "executivePriorityScore": 70,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "executivePriorityScore": 70,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "executivePriorityScore": 69,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "executivePriorityScore": 69,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "executivePriorityScore": 69,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "executivePriorityScore": 69,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "executivePriorityScore": 69,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "executivePriorityScore": 68,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "executivePriorityScore": 67,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "executivePriorityScore": 66,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "executivePriorityScore": 65,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "executivePriorityScore": 65,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "executivePriorityScore": 65,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "executivePriorityScore": 64,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "executivePriorityScore": 64,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "executivePriorityScore": 63,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "executivePriorityScore": 63,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "executivePriorityScore": 62,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "executivePriorityScore": 62,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "executivePriorityScore": 62,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "executivePriorityScore": 62,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "executivePriorityScore": 60,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "executivePriorityScore": 60,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "executivePriorityScore": 59,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "executivePriorityScore": 58,
+      "urgencyBand": "HIGH",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "executivePriorityScore": 58,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "executivePriorityScore": 58,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "executivePriorityScore": 57,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "executivePriorityScore": 57,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "executivePriorityScore": 57,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "executivePriorityScore": 56,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "executivePriorityScore": 55,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "executivePriorityScore": 55,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "executivePriorityScore": 53,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "executivePriorityScore": 53,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "executivePriorityScore": 53,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "executivePriorityScore": 52,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "executivePriorityScore": 52,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "executivePriorityScore": 51,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "executivePriorityScore": 51,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "executivePriorityScore": 51,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "executivePriorityScore": 50,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "executivePriorityScore": 50,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "executivePriorityScore": 50,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "executivePriorityScore": 50,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "executivePriorityScore": 49,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "executivePriorityScore": 48,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "executivePriorityScore": 48,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "executivePriorityScore": 47,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "executivePriorityScore": 47,
+      "urgencyBand": "MEDIUM",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "executivePriorityScore": 46,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "executivePriorityScore": 46,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "executivePriorityScore": 45,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "executivePriorityScore": 43,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "executivePriorityScore": 43,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "executivePriorityScore": 43,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "executivePriorityScore": 41,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "executivePriorityScore": 41,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "executivePriorityScore": 41,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "executivePriorityScore": 40,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "executivePriorityScore": 40,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "executivePriorityScore": 40,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "executivePriorityScore": 39,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "executivePriorityScore": 39,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "executivePriorityScore": 36,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "executivePriorityScore": 34,
+      "urgencyBand": "LOW",
+      "sourceLayers": [
+        "data/audit/multi-agent-coordination-readiness-table.json",
+        "data/audit/resource-allocation-readiness-table.json",
+        "data/audit/public-narrative-readiness-table.json",
+        "data/audit/simulation-engine-readiness-table.json"
+      ],
+      "status": "MISSING"
+    }
+  ]
+}

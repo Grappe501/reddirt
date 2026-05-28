@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-05-27T17:30:00.000Z",
+  "targetRole": "Arkansas Secretary of State organizational leadership capacity",
+  "capacitySignals": [
+    {
+      "signal": "Legislative committee leadership and facilities oversight exposure",
+      "evidence": "Public Senate bio lists chair roles and committee portfolio including Legislative Facilities Committee.",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/"
+      ],
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "relevanceToSosOperations": "MEDIUM"
+    },
+    {
+      "signal": "Long tenure in state legislature",
+      "evidence": "Service timeline indicates House then Senate tenure.",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://www.hammerforarkansas.com/about/"
+      ],
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "relevanceToSosOperations": "MEDIUM"
+    },
+    {
+      "signal": "Organization-building background in hospice and ministry contexts",
+      "evidence": "Public biography references committee organization work and long-term chaplain/pastoral roles.",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/"
+      ],
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "HIGH",
+      "relevanceToSosOperations": "LOW"
+    },
+    {
+      "signal": "Direct large-agency executive management record",
+      "evidence": "No verified public source in this pass demonstrating prior management of an agency scale equivalent to full SOS staff/building operations.",
+      "sources": [],
+      "evidenceStatus": "RESEARCH_QUESTION",
+      "sourceConfidence": "LOW",
+      "relevanceToSosOperations": "HIGH"
+    }
+  ],
+  "questionsForFurtherValidation": [
+    "What direct personnel-management span has been publicly documented?",
+    "What budget or operations administration experience is publicly documented beyond legislative role?",
+    "What documented administrative performance outcomes can be cited from committee leadership roles?"
+  ]
+}
+

@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "phase": "5A",
+  "mode": "READ_ONLY_STRATEGY_DOCTRINE_INTAKE",
+  "generatedAt": "2026-05-27T00:00:00.000Z",
+  "status": "NEEDS_REVIEW",
+  "anchorDatePolicy": "Election Day is provided by operations calendar; this model builds backward windows.",
+  "timeline": [
+    {
+      "window": "T-90_to_T-60",
+      "focus": [
+        "county captain confirmation",
+        "city/precinct captain assignments",
+        "poll watcher training plan",
+        "event/festival visibility map"
+      ],
+      "complianceReviewRequired": true
+    },
+    {
+      "window": "T-59_to_T-30",
+      "focus": [
+        "volunteer shift commitments",
+        "phone tree readiness",
+        "relational organizing push cycles",
+        "registration deadline education"
+      ],
+      "complianceReviewRequired": true
+    },
+    {
+      "window": "T-29_to_T-14",
+      "focus": [
+        "early vote site coverage planning",
+        "materials and legal guidance finalization",
+        "candidate travel lock",
+        "county risk escalation"
+      ],
+      "complianceReviewRequired": true
+    },
+    {
+      "window": "T-13_to_T-1",
+      "focus": [
+        "Election Day operations dry-run",
+        "backup observer confirmation",
+        "volunteer shift backfill",
+        "message discipline and rumor response readiness"
+      ],
+      "complianceReviewRequired": true
+    },
+    {
+      "window": "T-0",
+      "focus": [
+        "Election Day site coverage",
+        "incident escalation and lawful response",
+        "captain check-ins",
+        "end-of-day reporting"
+      ],
+      "complianceReviewRequired": true
+    }
+  ],
+  "guardrails": {
+    "legal": "No legal advice generated; route to counsel/compliance review.",
+    "targeting": "No individualized voter targeting or contact list generation."
+  }
+}
+

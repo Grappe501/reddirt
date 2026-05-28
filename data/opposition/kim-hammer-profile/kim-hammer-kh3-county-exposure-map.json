@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-05-27T17:45:00.000Z",
+  "countyExposure": [
+    {
+      "segment": "Home-base and organizationally aligned counties",
+      "workingHypothesis": "Likely stronger baseline due to long local political/community familiarity.",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "LOW",
+      "priority": "MEDIUM"
+    },
+    {
+      "segment": "Suburban education-heavy persuasion zones",
+      "workingHypothesis": "Participation/transparency framing may be highly persuasive when tied to practical voter service.",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "LOW",
+      "priority": "HIGH"
+    },
+    {
+      "segment": "Initiative-friendly and anti-establishment areas",
+      "workingHypothesis": "Direct-democracy process constraints may carry higher narrative risk.",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "LOW",
+      "priority": "HIGH"
+    }
+  ],
+  "requiredDataToComplete": [
+    "County-level runoff and primary result normalization",
+    "County demographic and education-attainment overlays",
+    "Issue-salience overlays by county segment"
+  ],
+  "note": "This module is intentionally scaffolded for safe completion once county-level electoral datasets are integrated."
+}
+

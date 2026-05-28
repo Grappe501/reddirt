@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-22T15:54:34.909Z",
+  "generatedAt": "2026-05-27T05:12:47.423Z",
   "period": "2026-04",
   "nodes": [
     {
@@ -851,22 +851,112 @@
       "freshnessAt": "2026-05-22T15:54:16.452Z",
       "confidence": 72,
       "metadata": {}
+    },
+    {
+      "id": "risk:weak-memory",
+      "kind": "observation",
+      "label": "Weak memory",
+      "domainId": "memory",
+      "sourceSystem": "domain:memory",
+      "freshnessAt": "2026-05-27T03:55:19.810Z",
+      "confidence": 78,
+      "metadata": {}
+    },
+    {
+      "id": "lesson:lesson_mph38mf3",
+      "kind": "lesson",
+      "label": "Arkansas County: County profile still shell depth in countyWorkbenc",
+      "domainId": "county",
+      "sourceSystem": "la_lesson_mph38mf3",
+      "freshnessAt": "2026-05-27T04:44:05.855Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "lesson:lesson_mph38mfs",
+      "kind": "lesson",
+      "label": "Ashley County: County profile still shell depth in countyWorkbenc",
+      "domainId": "county",
+      "sourceSystem": "la_lesson_mph38mfs",
+      "freshnessAt": "2026-05-27T04:44:05.855Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "lesson:lesson_mph38mg1",
+      "kind": "lesson",
+      "label": "Baxter County: County profile still shell depth in countyWorkbenc",
+      "domainId": "county",
+      "sourceSystem": "la_lesson_mph38mg1",
+      "freshnessAt": "2026-05-27T04:44:05.855Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "lesson:lesson_mph38mg8",
+      "kind": "lesson",
+      "label": "Benton County: County profile still shell depth in countyWorkbenc",
+      "domainId": "county",
+      "sourceSystem": "la_lesson_mph38mg8",
+      "freshnessAt": "2026-05-27T04:44:05.855Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "lesson:lesson_mph38mgh",
+      "kind": "lesson",
+      "label": "Boone County: County profile still shell depth in countyWorkbenc",
+      "domainId": "county",
+      "sourceSystem": "la_lesson_mph38mgh",
+      "freshnessAt": "2026-05-27T04:44:05.855Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "lesson:lesson_mph38mgq",
+      "kind": "lesson",
+      "label": "Bradley County: County profile still shell depth in countyWorkbenc",
+      "domainId": "county",
+      "sourceSystem": "la_lesson_mph38mgq",
+      "freshnessAt": "2026-05-27T04:44:05.855Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "lesson:lesson_mph38mgy",
+      "kind": "lesson",
+      "label": "Calhoun County: County profile still shell depth in countyWorkbenc",
+      "domainId": "county",
+      "sourceSystem": "la_lesson_mph38mgy",
+      "freshnessAt": "2026-05-27T04:44:05.855Z",
+      "confidence": 70,
+      "metadata": {}
+    },
+    {
+      "id": "lesson:lesson_mph38mh5",
+      "kind": "lesson",
+      "label": "Carroll County: County profile still shell depth in countyWorkbenc",
+      "domainId": "county",
+      "sourceSystem": "la_lesson_mph38mh5",
+      "freshnessAt": "2026-05-27T04:44:05.855Z",
+      "confidence": 70,
+      "metadata": {}
     }
   ],
   "edges": [],
   "summary": {
-    "nodeCount": 85,
+    "nodeCount": 94,
     "edgeCount": 0,
     "byKind": {
-      "observation": 61,
+      "observation": 62,
       "county": 16,
-      "blocker": 8
+      "blocker": 8,
+      "lesson": 8
     },
     "underInformedKinds": [
       "person",
       "event",
-      "message",
-      "lesson"
+      "message"
     ]
   }
 }

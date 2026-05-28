@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "phase": "5A",
+  "mode": "READ_ONLY_STRATEGY_DOCTRINE_INTAKE",
+  "generatedAt": "2026-05-27T00:00:00.000Z",
+  "rows": [
+    {
+      "artifact": "data/strategy-doctrine/steve-strategy-doctrine.json",
+      "status": "PRESENT",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Initial doctrine pillars created; needs Steve validation."
+    },
+    {
+      "artifact": "data/strategy-doctrine/arkansas-grassroots-principles.json",
+      "status": "PRESENT",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Principles scaffolded; county-level specificity still pending."
+    },
+    {
+      "artifact": "data/strategy-doctrine/rockefeller-grassroots-case-study.json",
+      "status": "PRESENT",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Directly sourced vs interpretation separated."
+    },
+    {
+      "artifact": "data/strategy-doctrine/relational-organizing-playbook.json",
+      "status": "PRESENT",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Patterns included, no automated execution paths."
+    },
+    {
+      "artifact": "data/strategy-doctrine/gotv-backward-calendar-model.json",
+      "status": "PRESENT",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Backward windows model created; legal review required flags included."
+    },
+    {
+      "artifact": "data/strategy-doctrine/poll-watcher-coverage-model.json",
+      "status": "PRESENT",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Coverage template established with legal/compliance guardrails."
+    },
+    {
+      "artifact": "data/strategy-doctrine/event-visibility-playbook.json",
+      "status": "PRESENT",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Event types and visibility framework scaffolded."
+    },
+    {
+      "artifact": "data/strategy-doctrine/county-strategy-source-index.json",
+      "status": "PRESENT",
+      "reviewStatus": "NEEDS_REVIEW",
+      "notes": "Internal and public source anchors indexed."
+    }
+  ],
+  "summary": {
+    "presentCount": 8,
+    "missingCount": 0,
+    "needsReviewCount": 8
+  }
+}
+

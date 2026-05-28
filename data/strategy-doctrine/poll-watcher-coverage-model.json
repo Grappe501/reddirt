@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "phase": "5A",
+  "mode": "READ_ONLY_STRATEGY_DOCTRINE_INTAKE",
+  "generatedAt": "2026-05-27T00:00:00.000Z",
+  "status": "NEEDS_REVIEW",
+  "requiredFields": [
+    "county",
+    "pollingLocation",
+    "earlyVoteSite",
+    "electionDaySite",
+    "requiredObservers",
+    "backupObservers",
+    "trainingStatus",
+    "credentialingStatus",
+    "legalGuidanceStatus",
+    "countyCaptain",
+    "coverageStatus",
+    "gaps",
+    "confidenceScore"
+  ],
+  "countyCoverageTemplate": {
+    "county": "MISSING",
+    "pollingLocation": "MISSING",
+    "earlyVoteSite": "MISSING",
+    "electionDaySite": "MISSING",
+    "requiredObservers": "MISSING",
+    "backupObservers": "MISSING",
+    "trainingStatus": "NEEDS_REVIEW",
+    "credentialingStatus": "NEEDS_REVIEW",
+    "legalGuidanceStatus": "NEEDS_REVIEW",
+    "countyCaptain": "MISSING",
+    "coverageStatus": "MISSING",
+    "gaps": [
+      "MISSING_BASELINE_DATA"
+    ],
+    "confidenceScore": 0
+  },
+  "guardrails": {
+    "legal": "All poll watcher plans require legal/compliance review.",
+    "automation": "No automated deployment or assignment execution.",
+    "privacy": "No voter-row enrichment or private belief inference."
+  }
+}
+

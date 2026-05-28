@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-05-27T17:45:00.000Z",
+  "nodes": [
+    {
+      "id": "cluster-election-integrity",
+      "type": "THEME_CLUSTER",
+      "label": "Election Integrity Cluster"
+    },
+    {
+      "id": "cluster-direct-democracy",
+      "type": "THEME_CLUSTER",
+      "label": "Direct Democracy Process Cluster"
+    },
+    {
+      "id": "cluster-procedural-burdens",
+      "type": "THEME_CLUSTER",
+      "label": "Procedural Burden Cluster"
+    },
+    {
+      "id": "actor-kim-hammer",
+      "type": "LEGISLATOR",
+      "label": "Kim Hammer"
+    }
+  ],
+  "edges": [
+    {
+      "from": "actor-kim-hammer",
+      "to": "cluster-election-integrity",
+      "relationship": "SPONSORSHIP_PATTERN",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "from": "actor-kim-hammer",
+      "to": "cluster-direct-democracy",
+      "relationship": "SPONSORSHIP_PATTERN",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "from": "cluster-direct-democracy",
+      "to": "cluster-procedural-burdens",
+      "relationship": "PATTERN_OVERLAP",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    }
+  ],
+  "openGaps": [
+    "Load bill-level IDs and co-sponsor lists from structured legislative exports",
+    "Attach committee nodes and hearing dates"
+  ]
+}
+

@@ -1,0 +1,831 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T04:37:50.426Z",
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 67,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 55,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 43,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 59,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 60,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 63,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 54,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 56,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 72,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 59,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 48,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 50,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 52,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 68,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 58,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 61,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 63,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 37,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 53,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 54,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 57,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 48,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 63,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 66,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 67,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 42,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 58,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 59,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 62,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 52,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 68,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 71,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 58,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 47,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 62,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 64,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 67,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 57,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 60,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 75,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 36,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 52,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 53,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 56,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 71,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 62,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 65,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 66,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 41,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 56,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 58,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 61,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 51,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 67,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 69,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 57,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 46,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 61,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 63,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 65,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 56,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 59,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 74,
+      "label": "TREND",
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 48,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 50,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 52,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 55,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 70,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 61,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 63,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 65,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 40,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 55,
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 57,
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "bottlenecks": [
+        "SIGNAL: staffing pressure and volunteer capacity mismatch.",
+        "TREND: operational momentum divergence versus intervention urgency."
+      ],
+      "pressureScore": 59,
+      "label": "TREND",
+      "status": "MISSING"
+    }
+  ]
+}

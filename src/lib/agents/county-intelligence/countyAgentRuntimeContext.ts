@@ -46,6 +46,29 @@ import type {
   CrossAgentInsightStreamFile,
   MultiAgentCoordinationReadinessFile,
 } from "./multiAgentTypes";
+import type {
+  CampaignHealthScorecardFile,
+  ExecutiveAlertStreamFile,
+  ExecutiveBriefRegistryFile,
+  ExecutiveCommandReadinessFile,
+  ExecutiveCommandStateFile,
+  ExecutivePriorityRankingFile,
+  OperationalBottleneckMapFile,
+  RegionalPressureMapFile,
+  StatewideInterventionQueueFile,
+  StatewideReadinessMatrixFile,
+} from "./executiveCommandTypes";
+import type {
+  ArkansasGrassrootsPrinciplesFile,
+  CountyStrategySourceIndexFile,
+  EventVisibilityPlaybookFile,
+  GotvBackwardCalendarModelFile,
+  PollWatcherCoverageModelFile,
+  RelationalOrganizingPlaybookFile,
+  RockefellerCaseStudyFile,
+  SteveStrategyDoctrineFile,
+  StrategyDoctrineReadinessTableFile,
+} from "@/lib/strategy-brain/strategyDoctrineTypes";
 
 type JsonRecord = Record<string, unknown>;
 
@@ -150,6 +173,29 @@ export type CountyAgentRuntimeContext = {
     runtimeStateTable: AgentRuntimeStateTableFile;
     insightStream: CrossAgentInsightStreamFile;
     readinessTable: MultiAgentCoordinationReadinessFile;
+  };
+  executiveCommand: {
+    commandState: ExecutiveCommandStateFile;
+    readinessMatrix: StatewideReadinessMatrixFile;
+    priorityRanking: ExecutivePriorityRankingFile;
+    bottleneckMap: OperationalBottleneckMapFile;
+    interventionQueue: StatewideInterventionQueueFile;
+    regionalPressureMap: RegionalPressureMapFile;
+    campaignHealthScorecard: CampaignHealthScorecardFile;
+    alertStream: ExecutiveAlertStreamFile;
+    briefRegistry: ExecutiveBriefRegistryFile;
+    readinessTable: ExecutiveCommandReadinessFile;
+  };
+  strategyDoctrine: {
+    steveDoctrine: SteveStrategyDoctrineFile;
+    arkansasPrinciples: ArkansasGrassrootsPrinciplesFile;
+    rockefellerCaseStudy: RockefellerCaseStudyFile;
+    relationalPlaybook: RelationalOrganizingPlaybookFile;
+    gotvBackwardCalendarModel: GotvBackwardCalendarModelFile;
+    pollWatcherCoverageModel: PollWatcherCoverageModelFile;
+    eventVisibilityPlaybook: EventVisibilityPlaybookFile;
+    sourceIndex: CountyStrategySourceIndexFile;
+    readinessTable: StrategyDoctrineReadinessTableFile;
   };
 };
 
@@ -368,6 +414,63 @@ export async function loadCountyAgentRuntimeContext(): Promise<CountyAgentRuntim
   const multiAgentReadiness = readJsonFile<MultiAgentCoordinationReadinessFile>(
     "data/audit/multi-agent-coordination-readiness-table.json",
   );
+  const executiveCommandState = readJsonFile<ExecutiveCommandStateFile>(
+    "data/executive-command/executive-command-state.json",
+  );
+  const statewideReadinessMatrix = readJsonFile<StatewideReadinessMatrixFile>(
+    "data/executive-command/statewide-readiness-matrix.json",
+  );
+  const executivePriorityRanking = readJsonFile<ExecutivePriorityRankingFile>(
+    "data/executive-command/executive-priority-ranking.json",
+  );
+  const operationalBottleneckMap = readJsonFile<OperationalBottleneckMapFile>(
+    "data/executive-command/operational-bottleneck-map.json",
+  );
+  const statewideInterventionQueue = readJsonFile<StatewideInterventionQueueFile>(
+    "data/executive-command/statewide-intervention-queue.json",
+  );
+  const regionalPressureMap = readJsonFile<RegionalPressureMapFile>(
+    "data/executive-command/regional-pressure-map.json",
+  );
+  const campaignHealthScorecard = readJsonFile<CampaignHealthScorecardFile>(
+    "data/executive-command/campaign-health-scorecard.json",
+  );
+  const executiveAlertStream = readJsonFile<ExecutiveAlertStreamFile>(
+    "data/executive-command/executive-alert-stream.json",
+  );
+  const executiveBriefRegistry = readJsonFile<ExecutiveBriefRegistryFile>(
+    "data/executive-command/executive-brief-registry.json",
+  );
+  const executiveReadiness = readJsonFile<ExecutiveCommandReadinessFile>(
+    "data/audit/executive-command-readiness-table.json",
+  );
+  const steveDoctrine = readJsonFile<SteveStrategyDoctrineFile>(
+    "data/strategy-doctrine/steve-strategy-doctrine.json",
+  );
+  const arkansasPrinciples = readJsonFile<ArkansasGrassrootsPrinciplesFile>(
+    "data/strategy-doctrine/arkansas-grassroots-principles.json",
+  );
+  const rockefellerCaseStudy = readJsonFile<RockefellerCaseStudyFile>(
+    "data/strategy-doctrine/rockefeller-grassroots-case-study.json",
+  );
+  const relationalPlaybook = readJsonFile<RelationalOrganizingPlaybookFile>(
+    "data/strategy-doctrine/relational-organizing-playbook.json",
+  );
+  const gotvBackwardCalendarModel = readJsonFile<GotvBackwardCalendarModelFile>(
+    "data/strategy-doctrine/gotv-backward-calendar-model.json",
+  );
+  const pollWatcherCoverageModel = readJsonFile<PollWatcherCoverageModelFile>(
+    "data/strategy-doctrine/poll-watcher-coverage-model.json",
+  );
+  const eventVisibilityPlaybook = readJsonFile<EventVisibilityPlaybookFile>(
+    "data/strategy-doctrine/event-visibility-playbook.json",
+  );
+  const sourceIndex = readJsonFile<CountyStrategySourceIndexFile>(
+    "data/strategy-doctrine/county-strategy-source-index.json",
+  );
+  const strategyDoctrineReadiness = readJsonFile<StrategyDoctrineReadinessTableFile>(
+    "data/audit/strategy-doctrine-readiness-table.json",
+  );
 
   return {
     countyIntelligenceOrchestration,
@@ -434,6 +537,29 @@ export async function loadCountyAgentRuntimeContext(): Promise<CountyAgentRuntim
       runtimeStateTable: multiAgentRuntimeStateTable,
       insightStream: multiAgentInsightStream,
       readinessTable: multiAgentReadiness,
+    },
+    executiveCommand: {
+      commandState: executiveCommandState,
+      readinessMatrix: statewideReadinessMatrix,
+      priorityRanking: executivePriorityRanking,
+      bottleneckMap: operationalBottleneckMap,
+      interventionQueue: statewideInterventionQueue,
+      regionalPressureMap,
+      campaignHealthScorecard,
+      alertStream: executiveAlertStream,
+      briefRegistry: executiveBriefRegistry,
+      readinessTable: executiveReadiness,
+    },
+    strategyDoctrine: {
+      steveDoctrine,
+      arkansasPrinciples,
+      rockefellerCaseStudy,
+      relationalPlaybook,
+      gotvBackwardCalendarModel,
+      pollWatcherCoverageModel,
+      eventVisibilityPlaybook,
+      sourceIndex,
+      readinessTable: strategyDoctrineReadiness,
     },
   };
 }

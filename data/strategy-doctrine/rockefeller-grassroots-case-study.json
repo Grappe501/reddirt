@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "phase": "5A",
+  "mode": "READ_ONLY_STRATEGY_DOCTRINE_INTAKE",
+  "generatedAt": "2026-05-27T00:00:00.000Z",
+  "caseStudy": {
+    "subject": "Winthrop Rockefeller",
+    "campaignYears": [
+      {
+        "year": 1964,
+        "organizingModel": "Statewide reform challenge campaign against established machine politics.",
+        "volunteerInfrastructure": "NEEDS_REVIEW",
+        "coalitionLessons": "Built momentum despite loss; sustained statewide presence into 1966.",
+        "ruralCountyLessons": "County-by-county persistence mattered across election cycles.",
+        "publicReformMessage": "Competition, reform, and modernization themes.",
+        "unityReformThemes": [
+          "political modernization",
+          "statewide coalition building",
+          "trust in institutions"
+        ],
+        "historicalContext": "Campaign against entrenched one-party establishment.",
+        "directlySourced": [
+          "Mounted strong 1964 challenge to Faubus.",
+          "Announced another run in 1966."
+        ],
+        "interpretation": [
+          "Persistence between cycles indicates long-horizon organizing discipline."
+        ],
+        "needsMoreResearch": [
+          "County-level volunteer structure specifics."
+        ],
+        "sourceCitations": [
+          "https://encyclopediaofarkansas.net/entries/winthrop-rockefeller-122/"
+        ],
+        "sourceConfidence": "HIGH"
+      },
+      {
+        "year": 1966,
+        "organizingModel": "Broad coalition reform campaign resulting in gubernatorial win.",
+        "volunteerInfrastructure": "Volunteer identity artifacts documented; full field architecture needs more sourcing.",
+        "coalitionLessons": "Cross-group coalition participation decisive in watershed election.",
+        "ruralCountyLessons": "Statewide coalition required county-by-county legitimacy work.",
+        "publicReformMessage": "Era of excellence, reform governance, institutional modernization.",
+        "unityReformThemes": [
+          "reform coalition",
+          "institutional trust",
+          "statewide competence"
+        ],
+        "historicalContext": "First Republican governor since Reconstruction era benchmark.",
+        "directlySourced": [
+          "1966 election was watershed with first Republican governor since 1872.",
+          "Rockefeller won with 54% vote."
+        ],
+        "interpretation": [
+          "Campaign offers model for broad coalition building in transition periods."
+        ],
+        "needsMoreResearch": [
+          "Detailed volunteer command structure by county."
+        ],
+        "sourceCitations": [
+          "https://encyclopediaofarkansas.net/entries/winthrop-rockefeller-122/",
+          "https://encyclopediaofarkansas.net/media/rockefeller-winthrop-22638/"
+        ],
+        "sourceConfidence": "HIGH"
+      },
+      {
+        "year": 1968,
+        "organizingModel": "Incumbent reelection with strong organization and mixed partisan context.",
+        "volunteerInfrastructure": "NEEDS_REVIEW",
+        "coalitionLessons": "Cross-voter coalition maintenance under conflict-heavy environment.",
+        "ruralCountyLessons": "County trust maintenance requires consistency and local presence.",
+        "publicReformMessage": "Reform continuity plus governance results defense.",
+        "unityReformThemes": [
+          "continuity",
+          "institutional competence"
+        ],
+        "historicalContext": "Reelected amid unusual multi-party voting dynamics in Arkansas.",
+        "directlySourced": [
+          "Rockefeller was reelected governor in 1968."
+        ],
+        "interpretation": [
+          "Operational consistency can offset polarized election signals."
+        ],
+        "needsMoreResearch": [
+          "County-level organizing maps and volunteer mobilization records."
+        ],
+        "sourceCitations": [
+          "https://encyclopediaofarkansas.net/entries/winthrop-rockefeller-122/"
+        ],
+        "sourceConfidence": "HIGH"
+      },
+      {
+        "year": 1970,
+        "organizingModel": "Attempted continuation amid rising resistance and political fatigue.",
+        "volunteerInfrastructure": "NEEDS_REVIEW",
+        "coalitionLessons": "Reform messaging requires renewal when political environment shifts.",
+        "ruralCountyLessons": "Local trust can erode without fresh county-specific engagement loops.",
+        "publicReformMessage": "Tax reform and state modernization",
+        "unityReformThemes": [
+          "governance reform under pressure"
+        ],
+        "historicalContext": "Defeat by Dale Bumpers marked transition into new state leadership era.",
+        "directlySourced": [
+          "Lost 1970 gubernatorial race to Dale Bumpers."
+        ],
+        "interpretation": [
+          "Institutional reform arguments need practical county-level translation."
+        ],
+        "needsMoreResearch": [
+          "Campaign newspaper content and volunteer chain architecture from archive holdings."
+        ],
+        "sourceCitations": [
+          "https://encyclopediaofarkansas.net/entries/winthrop-rockefeller-122/",
+          "https://ualrexhibits.org/rockefeller/politics/"
+        ],
+        "sourceConfidence": "MEDIUM"
+      }
+    ]
+  },
+  "caseStudyGuardrails": {
+    "allowedUse": [
+      "historical inspiration",
+      "coalition and grassroots lessons",
+      "process trust framing"
+    ],
+    "disallowedUse": [
+      "unsourced historical claims",
+      "direct quote use without source confirmation",
+      "presenting interpretation as verified fact"
+    ]
+  }
+}
+

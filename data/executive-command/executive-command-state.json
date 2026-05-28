@@ -1,0 +1,612 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T04:37:50.426Z",
+  "statewideSummary": {
+    "campaignHealth": 53,
+    "readinessAverage": 50.57,
+    "executiveUrgencyAverage": 57,
+    "blockedAutomationCount": 75
+  },
+  "counties": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "readiness": 66,
+      "urgency": 88,
+      "confidence": 84,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "readiness": 59,
+      "urgency": 83,
+      "confidence": 80,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "readiness": 51,
+      "urgency": 78,
+      "confidence": 76,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "readiness": 60,
+      "urgency": 73,
+      "confidence": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "readiness": 53,
+      "urgency": 68,
+      "confidence": 68,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "readiness": 47,
+      "urgency": 63,
+      "confidence": 64,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "readiness": 63,
+      "urgency": 58,
+      "confidence": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "readiness": 55,
+      "urgency": 53,
+      "confidence": 56,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "readiness": 48,
+      "urgency": 48,
+      "confidence": 52,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "readiness": 41,
+      "urgency": 43,
+      "confidence": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "readiness": 49,
+      "urgency": 38,
+      "confidence": 44,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "readiness": 42,
+      "urgency": 33,
+      "confidence": 40,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "readiness": 36,
+      "urgency": 28,
+      "confidence": 36,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "readiness": 30,
+      "urgency": 23,
+      "confidence": 32,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "readiness": 56,
+      "urgency": 88,
+      "confidence": 45,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "readiness": 67,
+      "urgency": 83,
+      "confidence": 83,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "readiness": 60,
+      "urgency": 78,
+      "confidence": 79,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "readiness": 53,
+      "urgency": 73,
+      "confidence": 75,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "readiness": 61,
+      "urgency": 68,
+      "confidence": 71,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "readiness": 54,
+      "urgency": 63,
+      "confidence": 67,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "readiness": 48,
+      "urgency": 58,
+      "confidence": 63,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "readiness": 64,
+      "urgency": 53,
+      "confidence": 59,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "readiness": 57,
+      "urgency": 48,
+      "confidence": 55,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "readiness": 49,
+      "urgency": 43,
+      "confidence": 51,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "readiness": 42,
+      "urgency": 38,
+      "confidence": 47,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "readiness": 35,
+      "urgency": 33,
+      "confidence": 43,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "readiness": 43,
+      "urgency": 28,
+      "confidence": 39,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "readiness": 36,
+      "urgency": 23,
+      "confidence": 35,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "readiness": 42,
+      "urgency": 88,
+      "confidence": 47,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "readiness": 57,
+      "urgency": 83,
+      "confidence": 43,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "readiness": 68,
+      "urgency": 78,
+      "confidence": 81,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "readiness": 61,
+      "urgency": 73,
+      "confidence": 77,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "readiness": 54,
+      "urgency": 68,
+      "confidence": 73,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "readiness": 62,
+      "urgency": 63,
+      "confidence": 69,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "readiness": 55,
+      "urgency": 58,
+      "confidence": 65,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "readiness": 48,
+      "urgency": 53,
+      "confidence": 61,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "readiness": 43,
+      "urgency": 48,
+      "confidence": 57,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "readiness": 58,
+      "urgency": 43,
+      "confidence": 53,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "readiness": 51,
+      "urgency": 38,
+      "confidence": 49,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "readiness": 43,
+      "urgency": 33,
+      "confidence": 45,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "readiness": 36,
+      "urgency": 28,
+      "confidence": 41,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "readiness": 45,
+      "urgency": 23,
+      "confidence": 37,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "readiness": 49,
+      "urgency": 88,
+      "confidence": 50,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "readiness": 42,
+      "urgency": 83,
+      "confidence": 46,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "readiness": 37,
+      "urgency": 78,
+      "confidence": 42,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "readiness": 69,
+      "urgency": 73,
+      "confidence": 80,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "readiness": 62,
+      "urgency": 68,
+      "confidence": 76,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "readiness": 55,
+      "urgency": 63,
+      "confidence": 72,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "readiness": 48,
+      "urgency": 58,
+      "confidence": 68,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "readiness": 56,
+      "urgency": 53,
+      "confidence": 64,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "readiness": 49,
+      "urgency": 48,
+      "confidence": 60,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "readiness": 43,
+      "urgency": 43,
+      "confidence": 56,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "readiness": 59,
+      "urgency": 38,
+      "confidence": 52,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "readiness": 52,
+      "urgency": 33,
+      "confidence": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "readiness": 45,
+      "urgency": 28,
+      "confidence": 44,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "readiness": 37,
+      "urgency": 23,
+      "confidence": 40,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "readiness": 57,
+      "urgency": 88,
+      "confidence": 53,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "readiness": 50,
+      "urgency": 83,
+      "confidence": 49,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "readiness": 43,
+      "urgency": 78,
+      "confidence": 45,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "readiness": 38,
+      "urgency": 73,
+      "confidence": 41,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "readiness": 71,
+      "urgency": 68,
+      "confidence": 79,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "readiness": 63,
+      "urgency": 63,
+      "confidence": 75,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "readiness": 56,
+      "urgency": 58,
+      "confidence": 71,
+      "status": "PRESENT"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "readiness": 49,
+      "urgency": 53,
+      "confidence": 67,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "readiness": 57,
+      "urgency": 48,
+      "confidence": 63,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "readiness": 50,
+      "urgency": 43,
+      "confidence": 59,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "readiness": 44,
+      "urgency": 38,
+      "confidence": 55,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "readiness": 39,
+      "urgency": 33,
+      "confidence": 51,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "readiness": 53,
+      "urgency": 28,
+      "confidence": 47,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "readiness": 46,
+      "urgency": 23,
+      "confidence": 43,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "readiness": 50,
+      "urgency": 88,
+      "confidence": 56,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "readiness": 43,
+      "urgency": 83,
+      "confidence": 52,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "readiness": 51,
+      "urgency": 78,
+      "confidence": 48,
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "readiness": 44,
+      "urgency": 73,
+      "confidence": 44,
+      "status": "MISSING"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "readiness": 38,
+      "urgency": 68,
+      "confidence": 40,
+      "status": "MISSING"
+    }
+  ]
+}

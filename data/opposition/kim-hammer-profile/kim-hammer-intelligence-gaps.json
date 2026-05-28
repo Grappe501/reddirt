@@ -1,60 +1,166 @@
 {
-  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "generatedAt": "2026-05-27T22:00:00.000Z",
+  "queueVersion": "KH-3B-TASK-BOARD",
+  "objective": "Fill unresolved evidence gaps that materially change external-facing claim safety.",
   "gaps": [
     {
-      "id": "missing_roll_calls",
+      "id": "kh3b-pre-legislative-authored-writings",
       "priority": "HIGH",
-      "description": "Missing full roll-call records for major election-law votes.",
-      "evidenceStatus": "NEEDS_REVIEW"
+      "rank": 1,
+      "description": "Pre-legislative authored writings archive remains incomplete (op-eds, letters, civic/church newsletters, archived campaign pages).",
+      "attackValue": "HIGH",
+      "confidenceNeed": "HIGH",
+      "likelySourcePath": [
+        "local newspaper archives and letters sections",
+        "Wayback captures for legacy campaign domains",
+        "church/community newsletter archives",
+        "regional publication indexes"
+      ],
+      "externalMessageReadiness": "NOT_READY",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "notes": "Prioritize oldest available written record first to detect longitudinal consistency or drift.",
+      "taskStatus": "IN_PROGRESS",
+      "owner": "Opposition research desk",
+      "dueDate": "2026-06-15",
+      "lastUpdated": "2026-05-27T22:00:00.000Z",
+      "completionNotes": "Newspaper archive sweep started; awaiting two legacy newsletter confirmations.",
+      "reviewRequired": true
     },
     {
-      "id": "missing_committee_testimony",
+      "id": "kh3b-long-tail-video-forum-record",
       "priority": "HIGH",
-      "description": "Committee testimony and quote extraction are incomplete.",
-      "evidenceStatus": "NEEDS_REVIEW"
+      "rank": 2,
+      "description": "Long-tail video and forum statement archive is not fully indexed (county GOP events, town halls, community appearances, local TV/radio clips).",
+      "attackValue": "HIGH",
+      "confidenceNeed": "HIGH",
+      "likelySourcePath": [
+        "county GOP Facebook/YouTube pages",
+        "local TV station clip archives",
+        "community event livestream reposts",
+        "campaign-channel historical playlists"
+      ],
+      "externalMessageReadiness": "NOT_READY",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "notes": "Require timestamp + quote context capture before external use.",
+      "taskStatus": "ASSIGNED",
+      "owner": "Media archive operator",
+      "dueDate": "2026-06-20",
+      "lastUpdated": "2026-05-27T22:00:00.000Z",
+      "completionNotes": "",
+      "reviewRequired": true
     },
     {
-      "id": "missing_fiscal_notes",
+      "id": "kh3b-management-readiness-evidence",
       "priority": "HIGH",
-      "description": "Fiscal note review remains incomplete across top-priority bills.",
-      "evidenceStatus": "NEEDS_REVIEW"
+      "rank": 3,
+      "description": "Evidence for SOS operational readiness needs hard validation (management scope, administrative complexity, election-operations and vendor-oversight experience).",
+      "attackValue": "HIGH",
+      "confidenceNeed": "HIGH",
+      "likelySourcePath": [
+        "committee records and legislative facilities documentation",
+        "public interview statements on SOS operations",
+        "official biographies and archived candidate Q&A",
+        "state procurement/oversight records where relevant"
+      ],
+      "externalMessageReadiness": "NOT_READY",
+      "evidenceStatus": "RESEARCH_QUESTION",
+      "notes": "Frame as qualification scrutiny, not personal attack.",
+      "taskStatus": "IN_PROGRESS",
+      "owner": "Qualification research",
+      "dueDate": "2026-06-18",
+      "lastUpdated": "2026-05-27T22:00:00.000Z",
+      "completionNotes": "Committee record cross-check in progress against management-capacity assessment.",
+      "reviewRequired": true
     },
     {
-      "id": "county_clerk_reactions",
-      "priority": "MEDIUM",
-      "description": "Public county clerk implementation reactions are not fully indexed.",
-      "evidenceStatus": "NEEDS_REVIEW"
-    },
-    {
-      "id": "direct_democracy_advocate_reactions",
-      "priority": "MEDIUM",
-      "description": "Public direct-democracy advocate responses need more source depth.",
-      "evidenceStatus": "NEEDS_REVIEW"
-    },
-    {
-      "id": "social_video_archive",
-      "priority": "MEDIUM",
-      "description": "Public social/video archive ingestion is partial.",
-      "evidenceStatus": "NEEDS_REVIEW"
-    },
-    {
-      "id": "campaign_finance_summary",
-      "priority": "MEDIUM",
-      "description": "Campaign finance trend summary should be normalized to official disclosures.",
-      "evidenceStatus": "NEEDS_REVIEW"
-    },
-    {
-      "id": "county_electoral_geography",
+      "id": "kh3b-biographical-validation-education-civic",
       "priority": "HIGH",
-      "description": "County-by-county electoral strength/weakness map is incomplete.",
-      "evidenceStatus": "NEEDS_REVIEW"
+      "rank": 4,
+      "description": "Biographical validation is incomplete for high school confirmation and specific civic affiliations/awards (Rotary, Mason, civic honors).",
+      "attackValue": "MEDIUM",
+      "confidenceNeed": "HIGH",
+      "likelySourcePath": [
+        "official bio PDFs and historical snapshots",
+        "local civic organization records/newsletters",
+        "school alumni/public biography sources",
+        "archived community event programs"
+      ],
+      "externalMessageReadiness": "NOT_READY",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "notes": "Use only confirmed records; keep unverified affiliations out of external messaging.",
+      "taskStatus": "ASSIGNED",
+      "owner": "Biographical validation",
+      "dueDate": "2026-06-22",
+      "lastUpdated": "2026-05-27T22:00:00.000Z",
+      "completionNotes": "",
+      "reviewRequired": true
     },
     {
-      "id": "debate_clip_library",
+      "id": "kh3b-business-employment-chronology",
       "priority": "MEDIUM",
-      "description": "Debate clip archive and timestamped evidence locker needs expansion.",
-      "evidenceStatus": "NEEDS_REVIEW"
+      "rank": 5,
+      "description": "Business/employment chronology remains partial and needs source-backed timeline normalization.",
+      "attackValue": "MEDIUM",
+      "confidenceNeed": "HIGH",
+      "likelySourcePath": [
+        "official filings and business registry references",
+        "archived bios and campaign about pages",
+        "local reporting on business activity",
+        "public interviews with employment history references"
+      ],
+      "externalMessageReadiness": "NEEDS_CONTEXT",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "notes": "Tie chronology only to governance-capacity relevance.",
+      "taskStatus": "NOT_STARTED",
+      "owner": "Open queue",
+      "dueDate": "2026-07-01",
+      "lastUpdated": "2026-05-27T22:00:00.000Z",
+      "completionNotes": "",
+      "reviewRequired": false
+    },
+    {
+      "id": "kh3b-wayback-campaign-page-capture",
+      "priority": "MEDIUM",
+      "rank": 6,
+      "description": "Wayback and legacy campaign-page capture is incomplete for pre-2025 messaging baselines.",
+      "attackValue": "MEDIUM",
+      "confidenceNeed": "MEDIUM",
+      "likelySourcePath": [
+        "web.archive.org snapshots",
+        "retired campaign/social landing pages",
+        "historic issue pages and statement pages"
+      ],
+      "externalMessageReadiness": "NEEDS_CONTEXT",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "notes": "Cross-check archived text against current messaging for consistency matrix.",
+      "taskStatus": "IN_PROGRESS",
+      "owner": "Archive operations",
+      "dueDate": "2026-06-25",
+      "lastUpdated": "2026-05-27T22:00:00.000Z",
+      "completionNotes": "Initial Wayback sweep queued; linked to claim-graph retrieval suggestion.",
+      "reviewRequired": true
+    },
+    {
+      "id": "kh3b-local-radio-tv-quote-normalization",
+      "priority": "MEDIUM",
+      "rank": 7,
+      "description": "Local radio/TV clip transcripts and quotes are not normalized for reusable rapid-response sourcing.",
+      "attackValue": "MEDIUM",
+      "confidenceNeed": "MEDIUM",
+      "likelySourcePath": [
+        "station segment archives",
+        "podcast/radio uploads",
+        "closed-caption transcript exports"
+      ],
+      "externalMessageReadiness": "NEEDS_CONTEXT",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "notes": "Standardize quote cards: source URL, date, timestamp, and full context sentence.",
+      "taskStatus": "NOT_STARTED",
+      "owner": "Open queue",
+      "dueDate": "2026-07-08",
+      "lastUpdated": "2026-05-27T22:00:00.000Z",
+      "completionNotes": "",
+      "reviewRequired": false
     }
   ]
 }
-

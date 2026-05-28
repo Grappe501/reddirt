@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-05-27T17:45:00.000Z",
+  "clusters": [
+    {
+      "id": "statewide-gop-officeholders",
+      "label": "Statewide GOP officeholder/endorsement cluster",
+      "description": "Publicly reported endorsement and allied-officeholder ecosystem around SOS race context.",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM",
+      "nodes": [
+        "Kim Hammer campaign",
+        "State-level GOP endorsers",
+        "Legislative allies"
+      ],
+      "sources": [
+        "https://thehill.com/homenews/campaign/5807676-hammer-arkansas-secretary-of-state-runoff/",
+        "https://www.thv11.com/article/news/local/arkansas-secretary-of-state-cole-jester-endorses-kim-hammer/91-ed9cecca-f187-4e1b-9e93-8e9b253a8297"
+      ]
+    },
+    {
+      "id": "legislative-committee-power",
+      "label": "Legislative committee influence footprint",
+      "description": "Committee leadership and recurring state-government committee assignments with operational relevance.",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "nodes": [
+        "Senate Efficiency Committee",
+        "Legislative Facilities Committee",
+        "State Agencies and Governmental Affairs"
+      ],
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/"
+      ]
+    },
+    {
+      "id": "community-faith-network",
+      "label": "Faith/community network",
+      "description": "Pastoral and hospice leadership history that may shape local trust networks.",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "nodes": [
+        "Saline Missionary Baptist Church",
+        "Saline Memorial Hospice history",
+        "District-level church/community relationships"
+      ],
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/"
+      ]
+    }
+  ],
+  "openGaps": [
+    "Donor cluster normalization from official campaign-finance disclosures",
+    "Repeat co-sponsor graph extracted from session-level sponsor datasets",
+    "County-clerk relationship map requires direct county-source documentation"
+  ]
+}
+

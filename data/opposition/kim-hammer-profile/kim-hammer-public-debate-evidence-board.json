@@ -1,0 +1,139 @@
+{
+  "generatedAt": "2026-05-27T23:30:00.000Z",
+  "purpose": "Source-backed public-debate evidence structure for factual and defensible use.",
+  "items": [
+    {
+      "id": "pdeb-001-election-integrity-record",
+      "topic": "Election integrity legislative framing",
+      "claim": "Public statements emphasize election-security legislation as a central qualification for SOS role.",
+      "supportingEvidence": [
+        {
+          "summary": "Campaign-authored election-integrity article citing legislative acts.",
+          "url": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/"
+        },
+        {
+          "summary": "State Senate profile confirms legislative tenure and committee assignments.",
+          "url": "https://senate.arkansas.gov/senators/576/"
+        }
+      ],
+      "challengingEvidence": [
+        {
+          "summary": "Management readiness claims still require stronger operational proof beyond legislative tenure.",
+          "url": "internal:kim-hammer-management-capacity-assessment"
+        }
+      ],
+      "confidenceTier": "TIER_1_PUBLIC_DEPLOYABLE",
+      "confidenceScore": 0.84,
+      "citationStatus": "CITED",
+      "externalUseStatus": "READY_WITH_CITATION",
+      "legalRisk": "LOW",
+      "humanReviewRequired": false,
+      "reviewStatus": "APPROVED_FOR_EXTERNAL_USE",
+      "reviewer": "Evidence desk",
+      "reviewedAt": "2026-05-27T23:00:00.000Z",
+      "reviewNotes": "Dual-source citation verified for external debate prep.",
+      "lastExportedAt": null
+    },
+    {
+      "id": "pdeb-002-management-readiness",
+      "topic": "SOS management readiness",
+      "claim": "Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+      "supportingEvidence": [
+        {
+          "summary": "Committee leadership and facilities oversight references.",
+          "url": "https://senate.arkansas.gov/senators/576/"
+        }
+      ],
+      "challengingEvidence": [
+        {
+          "summary": "No fully verified prior record equivalent to leading full SOS agency operations identified in current archive pass.",
+          "url": "internal:kim-hammer-management-capacity-assessment"
+        }
+      ],
+      "confidenceTier": "TIER_2_NEEDS_CORROBORATION",
+      "confidenceScore": 0.61,
+      "citationStatus": "PARTIAL",
+      "externalUseStatus": "USE_WITH_CAUTION",
+      "legalRisk": "MEDIUM",
+      "humanReviewRequired": true,
+      "reviewStatus": "NEEDS_REVIEW",
+      "reviewer": "Qualification research",
+      "reviewedAt": "2026-05-27T22:45:00.000Z",
+      "reviewNotes": "Awaiting stronger operational corroboration before external approval.",
+      "lastExportedAt": null
+    },
+    {
+      "id": "pdeb-003-debate-question-patterns",
+      "topic": "Likely SOS debate question domains",
+      "claim": "Recent Arkansas SOS debates commonly include election confidence, voter access, and business-services operations questions.",
+      "supportingEvidence": [
+        {
+          "summary": "Arkansas PBS SOS debate recording and recap coverage.",
+          "url": "https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/"
+        },
+        {
+          "summary": "Local media recap listing debate topic categories.",
+          "url": "https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807"
+        }
+      ],
+      "challengingEvidence": [],
+      "confidenceTier": "TIER_1_PUBLIC_DEPLOYABLE",
+      "confidenceScore": 0.88,
+      "citationStatus": "CITED",
+      "externalUseStatus": "READY_WITH_CITATION",
+      "legalRisk": "LOW",
+      "humanReviewRequired": false,
+      "reviewStatus": "EXPORTED",
+      "reviewer": "Evidence desk",
+      "reviewedAt": "2026-05-27T23:10:00.000Z",
+      "reviewNotes": "Previously exported in internal debate packet dry run.",
+      "lastExportedAt": "2026-05-27T23:10:00.000Z"
+    },
+    {
+      "id": "pdeb-004-civic-affiliation-claims",
+      "topic": "Civic affiliation and awards specifics",
+      "claim": "Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+      "supportingEvidence": [],
+      "challengingEvidence": [
+        {
+          "summary": "Current pass does not include verified records for those affiliations.",
+          "url": "internal:kim-hammer-background-deep-profile"
+        }
+      ],
+      "confidenceTier": "TIER_4_HIGH_CAUTION",
+      "confidenceScore": 0.29,
+      "citationStatus": "UNCITED",
+      "externalUseStatus": "DO_NOT_USE_EXTERNALLY",
+      "legalRisk": "HIGH",
+      "humanReviewRequired": true,
+      "reviewStatus": "BLOCKED",
+      "reviewer": "Publication safety",
+      "reviewedAt": "2026-05-27T23:05:00.000Z",
+      "reviewNotes": "Uncited affiliation assertions blocked from all external use.",
+      "lastExportedAt": null
+    }
+  ],
+  "definitions": {
+    "confidenceTiers": [
+      "TIER_1_PUBLIC_DEPLOYABLE",
+      "TIER_2_NEEDS_CORROBORATION",
+      "TIER_3_INTERNAL_ONLY",
+      "TIER_4_HIGH_CAUTION"
+    ],
+    "externalUseStatus": [
+      "READY_WITH_CITATION",
+      "USE_WITH_CAUTION",
+      "INTERNAL_ONLY",
+      "DO_NOT_USE_EXTERNALLY"
+    ],
+    "reviewStatuses": [
+      "DRAFT",
+      "NEEDS_REVIEW",
+      "APPROVED_FOR_INTERNAL_USE",
+      "APPROVED_FOR_EXTERNAL_USE",
+      "EXPORTED",
+      "BLOCKED",
+      "ARCHIVED"
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-05-27T17:30:00.000Z",
+  "education": {
+    "college": [
+      {
+        "institution": "Trinity College of the Bible and Theological Seminary",
+        "credential": "BA",
+        "source": "https://en.wikipedia.org/wiki/Kim_Hammer",
+        "evidenceStatus": "REPORTED_CLAIM",
+        "sourceConfidence": "MEDIUM"
+      }
+    ],
+    "highSchool": [
+      {
+        "status": "MISSING",
+        "notes": "No reliable public official biography source located with high school details.",
+        "evidenceStatus": "NEEDS_REVIEW",
+        "sourceConfidence": "LOW"
+      }
+    ]
+  },
+  "communityAndCivicWork": [
+    {
+      "topic": "Saline Memorial Hospice organizing committee and chaplain service",
+      "detail": "Public biography indicates committee chair role in organizing hospice and service as volunteer/full-time chaplain through 2018.",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/",
+        "https://senate.arkansas.gov/wp-content/uploads/2025/08/Senator-Hammer-Senator-Bio.pdf"
+      ],
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "topic": "Pastoral ministry role",
+      "detail": "Public biography references ministry service since 1978 and pastor role in Tull.",
+      "sources": [
+        "https://senate.arkansas.gov/senators/576/"
+      ],
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "topic": "Rotary affiliation",
+      "detail": "No verified Rotary leadership/award record found in current pass.",
+      "sources": [],
+      "evidenceStatus": "NEEDS_REVIEW",
+      "sourceConfidence": "LOW"
+    },
+    {
+      "topic": "Masonic affiliation",
+      "detail": "No verified Masonic affiliation or awards found in current pass.",
+      "sources": [],
+      "evidenceStatus": "NEEDS_REVIEW",
+      "sourceConfidence": "LOW"
+    }
+  ],
+  "awardsAndRecognition": [
+    {
+      "title": "Family Council Action Committee 2023 Statesman Award",
+      "source": "https://www.mysaline.com/statesman-2023-hammer/",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM"
+    }
+  ],
+  "businessBackground": [
+    {
+      "item": "Hammer Advertising LLC ownership reference",
+      "detail": "Public reporting references advertising business and disclosed state contract item.",
+      "source": "https://www.bentoncourier.com/news/hammers-firm-awarded-contract-from-arkansas-department-of-insurance/article_5dfb3244-248b-11ed-aec8-abb113577632.html",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "item": "Campaign states small business owner",
+      "detail": "Campaign-authored biography and policy framing include pro-business claims and small-business identity.",
+      "source": "https://www.hammerforarkansas.com/2025/01/06/state-senator-kim-hammer-announces-campaign-for-arkansas-secretary-of-state/",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "HIGH"
+    }
+  ]
+}
+

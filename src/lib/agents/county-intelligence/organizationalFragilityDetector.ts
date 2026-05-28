@@ -1,6 +1,16 @@
 import { loadResourceAllocationModel } from "./resourceAllocationModel";
+import type { ForecastConfidence } from "./resourceAllocationTypes";
 
-export function organizationalFragilityDetector(countySlug: string) {
+type OrganizationalFragilityResult = {
+  countySlug: string;
+  fragility: "MISSING" | "LOW" | "MEDIUM" | "HIGH";
+  forecastType: "FORECAST";
+  confidence: ForecastConfidence;
+  fragilityScore: number;
+  sourceLayers: string[];
+};
+
+export function organizationalFragilityDetector(countySlug: string): OrganizationalFragilityResult {
   const row = loadResourceAllocationModel().rows.find((x) => x.countySlug === countySlug);
   if (!row) {
     return {

@@ -15,6 +15,8 @@
     "Public narrative intelligence layer",
     "Simulation scenario engine",
     "Multi-agent campaign brain",
+    "Executive command center",
+    "Strategy doctrine layer",
     "Voter warehouse schema readiness",
     "Registration snapshot template/import",
     "County win pathway formula",
@@ -35,8 +37,7 @@
     "countyEventOutcomes": "data/county-memory/county-event-outcomes.json",
     "countyRelationshipGraph": "data/county-memory/county-relationship-graph.json",
     "regionalInfluenceMap": "data/county-memory/regional-influence-map.json",
-    "countyMemoryReadiness": "data/audit/county-memory-readiness-table.json"
-    ,
+    "countyMemoryReadiness": "data/audit/county-memory-readiness-table.json",
     "resourceAllocationModel": "data/resource-allocation/resource-allocation-model.json",
     "candidateTimeAllocation": "data/resource-allocation/candidate-time-allocation.json",
     "fieldCoverageReadiness": "data/resource-allocation/field-coverage-readiness.json",
@@ -66,7 +67,26 @@
     "agentSafetyPolicyMap": "data/multi-agent/agent-safety-policy-map.json",
     "agentRuntimeStateTable": "data/multi-agent/agent-runtime-state-table.json",
     "crossAgentInsightStream": "data/multi-agent/cross-agent-insight-stream.json",
-    "multiAgentCoordinationReadiness": "data/audit/multi-agent-coordination-readiness-table.json"
+    "multiAgentCoordinationReadiness": "data/audit/multi-agent-coordination-readiness-table.json",
+    "executiveCommandState": "data/executive-command/executive-command-state.json",
+    "statewideReadinessMatrix": "data/executive-command/statewide-readiness-matrix.json",
+    "executivePriorityRanking": "data/executive-command/executive-priority-ranking.json",
+    "operationalBottleneckMap": "data/executive-command/operational-bottleneck-map.json",
+    "statewideInterventionQueue": "data/executive-command/statewide-intervention-queue.json",
+    "regionalPressureMap": "data/executive-command/regional-pressure-map.json",
+    "campaignHealthScorecard": "data/executive-command/campaign-health-scorecard.json",
+    "executiveAlertStream": "data/executive-command/executive-alert-stream.json",
+    "executiveBriefRegistry": "data/executive-command/executive-brief-registry.json",
+    "executiveCommandReadiness": "data/audit/executive-command-readiness-table.json",
+    "steveStrategyDoctrine": "data/strategy-doctrine/steve-strategy-doctrine.json",
+    "arkansasGrassrootsPrinciples": "data/strategy-doctrine/arkansas-grassroots-principles.json",
+    "rockefellerGrassrootsCaseStudy": "data/strategy-doctrine/rockefeller-grassroots-case-study.json",
+    "relationalOrganizingPlaybook": "data/strategy-doctrine/relational-organizing-playbook.json",
+    "gotvBackwardCalendarModel": "data/strategy-doctrine/gotv-backward-calendar-model.json",
+    "pollWatcherCoverageModel": "data/strategy-doctrine/poll-watcher-coverage-model.json",
+    "eventVisibilityPlaybook": "data/strategy-doctrine/event-visibility-playbook.json",
+    "countyStrategySourceIndex": "data/strategy-doctrine/county-strategy-source-index.json",
+    "strategyDoctrineReadiness": "data/audit/strategy-doctrine-readiness-table.json"
   },
   "gates": {
     "strategyGeneration": "strategySafeToGenerate === YES",
@@ -74,4 +94,3 @@
     "registrationSnapshotImport": "unknown FIPS rejected && all 75 counties present before write"
   }
 }
-

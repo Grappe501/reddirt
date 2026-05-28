@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-05-27T20:38:00.000Z",
+  "mode": "EVIDENCE_GOVERNANCE",
+  "agents": [
+    {
+      "id": "retrieval-agent",
+      "name": "Retrieval Agent",
+      "purpose": "Expand unresolved evidence gaps with source-first retrieval suggestions.",
+      "capabilities": [
+        "Wayback snapshot discovery",
+        "Local-news archive mining",
+        "Transcript extraction",
+        "Public-record cross-link suggestions",
+        "Duplicate-claim consolidation"
+      ],
+      "outputFields": [
+        "retrievalConfidence",
+        "sourceDurability",
+        "archiveCaptured",
+        "crossVerified",
+        "humanReviewRequired"
+      ]
+    },
+    {
+      "id": "narrative-risk-agent",
+      "name": "Narrative Risk Agent",
+      "purpose": "Score claim volatility and rebuttal exposure for debate safety.",
+      "capabilities": [
+        "One-sentence sensitivity scoring",
+        "Counter-evidence exposure scoring",
+        "Media amplification risk scoring",
+        "Counterattack risk estimation"
+      ],
+      "outputFields": [
+        "narrativeRiskScore",
+        "baseVulnerability",
+        "mediaAmplificationPotential",
+        "demographicSensitivity",
+        "counterattackRisk"
+      ]
+    },
+    {
+      "id": "contradiction-engine",
+      "name": "Contradiction Engine",
+      "purpose": "Detect source-backed inconsistencies across timelines, statements, and records.",
+      "capabilities": [
+        "Timeline conflict detection",
+        "Position-drift detection",
+        "Quote mismatch identification"
+      ],
+      "outputFields": [
+        "contradictionSeverity",
+        "timelineConflict",
+        "positionDrift",
+        "quoteMismatch"
+      ]
+    },
+    {
+      "id": "timeline-intelligence-agent",
+      "name": "Timeline Intelligence Agent",
+      "purpose": "Maintain evidence-linked chronology and gap alerts.",
+      "capabilities": [
+        "Chronology normalization",
+        "Unexplained-gap detection",
+        "Event-to-statement correlation"
+      ],
+      "outputFields": [
+        "eventDate",
+        "eventClass",
+        "sourceCount",
+        "sequenceConfidence"
+      ]
+    },
+    {
+      "id": "evidence-confidence-engine",
+      "name": "Evidence Confidence Engine",
+      "purpose": "Assign publication-readiness tiers to claims before external use.",
+      "capabilities": [
+        "Confidence scoring",
+        "Verification-tier assignment",
+        "Legal-risk classification",
+        "Publication-readiness flags"
+      ],
+      "outputFields": [
+        "confidenceScore",
+        "verificationTier",
+        "sourceClass",
+        "legalRisk",
+        "publicationReadiness"
+      ]
+    }
+  ],
+  "guardrails": [
+    "No unsourced allegations.",
+    "No personal/private data enrichment.",
+    "No external deployment of Tier 3/Tier 4 claims.",
+    "Human review required for medium/high legal-risk outputs."
+  ]
+}
+

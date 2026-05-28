@@ -121,14 +121,123 @@ if [ -n "${PRISMA_RESOLVE_ROLLED_BACK:-}" ]; then
   npx prisma migrate resolve --rolled-back "$PRISMA_RESOLVE_ROLLED_BACK"
 fi
 
-echo ">>> prisma migrate deploy"
-npx prisma migrate deploy
+MIGRATE_SKIPPED=0
+MIGRATE_RETRIES="${PRISMA_MIGRATE_RETRIES:-3}"
+MIGRATE_RETRY_DELAY_SECONDS="${PRISMA_MIGRATE_RETRY_DELAY_SECONDS:-8}"
 
-if [ "${SKIP_DB_SEED:-}" = "1" ] || [ "${SKIP_DB_SEED:-}" = "true" ] || [ "${SKIP_DB_SEED:-}" = "yes" ]; then
+# Optional bypass for transient hosted DB reachability failures (P1001).
+# Recommended use:
+#   - deploy previews where schema changes are not required for static/page validation
+#   - emergency frontend hotfix deploys while DB networking is being repaired
+# Keep this OFF for strict production migration guarantees.
+if [ -z "${ALLOW_PRISMA_P1001_BYPASS:-}" ]; then
+  if [ "${NETLIFY_CONTEXT:-}" = "deploy-preview" ] && [ "${PRISMA_MIGRATE_OPTIONAL_IN_DEPLOY_PREVIEW:-1}" = "1" ]; then
+    ALLOW_PRISMA_P1001_BYPASS="1"
+  else
+    ALLOW_PRISMA_P1001_BYPASS="0"
+  fi
+fi
+
+attempt=1
+while [ "$attempt" -le "$MIGRATE_RETRIES" ]; do
+  echo ">>> prisma migrate deploy (attempt ${attempt}/${MIGRATE_RETRIES})"
+
+  set +e
+  MIGRATE_OUTPUT="$(npx prisma migrate deploy 2>&1)"
+  MIGRATE_EXIT_CODE=$?
+  set -e
+
+  if [ "$MIGRATE_EXIT_CODE" -eq 0 ]; then
+    echo "$MIGRATE_OUTPUT"
+    break
+  fi
+
+  echo "$MIGRATE_OUTPUT"
+
+  if [[ "$MIGRATE_OUTPUT" != *"P1001"* ]]; then
+    echo ""
+    echo "========================================================================"
+    echo "  Build failed: prisma migrate deploy failed with a non-P1001 error."
+    echo "  Refusing to continue because migration state may be unsafe."
+    echo "========================================================================"
+    echo ""
+    exit "$MIGRATE_EXIT_CODE"
+  fi
+
+  if [ "$attempt" -lt "$MIGRATE_RETRIES" ]; then
+    echo ">>> prisma migrate deploy hit P1001; retrying in ${MIGRATE_RETRY_DELAY_SECONDS}s..."
+    sleep "$MIGRATE_RETRY_DELAY_SECONDS"
+  else
+    if [ "$ALLOW_PRISMA_P1001_BYPASS" = "1" ] || [ "$ALLOW_PRISMA_P1001_BYPASS" = "true" ] || [ "$ALLOW_PRISMA_P1001_BYPASS" = "yes" ]; then
+      echo ""
+      echo "========================================================================"
+      echo "  WARNING: prisma migrate deploy failed with P1001 after ${MIGRATE_RETRIES} attempts."
+      echo "  Continuing build because ALLOW_PRISMA_P1001_BYPASS is enabled."
+      echo "  Database migration + seed were skipped for this deploy."
+      echo "========================================================================"
+      echo ""
+      MIGRATE_SKIPPED=1
+    else
+      echo ""
+      echo "========================================================================"
+      echo "  Build failed: prisma migrate deploy failed with P1001 after ${MIGRATE_RETRIES} attempts."
+      echo "  Hosted DB may be unreachable from Netlify right now."
+      echo ""
+      echo "  If this is a deploy-preview-only unblock, set:"
+      echo "    ALLOW_PRISMA_P1001_BYPASS=1"
+      echo "  Then rerun deploy and fix DB connectivity separately."
+      echo "========================================================================"
+      echo ""
+      exit "$MIGRATE_EXIT_CODE"
+    fi
+  fi
+
+  attempt=$((attempt + 1))
+done
+
+if [ "$MIGRATE_SKIPPED" = "1" ]; then
+  echo ">>> prisma db seed skipped (migration was skipped due to P1001 bypass)"
+elif [ "${SKIP_DB_SEED:-}" = "1" ] || [ "${SKIP_DB_SEED:-}" = "true" ] || [ "${SKIP_DB_SEED:-}" = "yes" ]; then
   echo ">>> prisma db seed skipped (SKIP_DB_SEED is set)"
 else
   echo ">>> prisma db seed (baseline data; idempotent). Set SKIP_DB_SEED=1 to skip."
-  npx prisma db seed
+  set +e
+  SEED_OUTPUT="$(npx prisma db seed 2>&1)"
+  SEED_EXIT_CODE=$?
+  set -e
+
+  if [ "$SEED_EXIT_CODE" -eq 0 ]; then
+    echo "$SEED_OUTPUT"
+  else
+    echo "$SEED_OUTPUT"
+
+    if [[ "$SEED_OUTPUT" == *"P2022"* ]]; then
+      if [ "${ALLOW_PRISMA_SEED_P2022_BYPASS:-0}" = "1" ] || [ "${ALLOW_PRISMA_SEED_P2022_BYPASS:-0}" = "true" ] || [ "${ALLOW_PRISMA_SEED_P2022_BYPASS:-0}" = "yes" ]; then
+        echo ""
+        echo "========================================================================"
+        echo "  WARNING: prisma db seed failed with P2022 (schema drift: missing column)."
+        echo "  Continuing build because ALLOW_PRISMA_SEED_P2022_BYPASS is enabled."
+        echo "  Follow-up required: reconcile hosted database schema drift before re-enabling strict seed."
+        echo "========================================================================"
+        echo ""
+      else
+        echo ""
+        echo "========================================================================"
+        echo "  Build failed: prisma db seed hit P2022 (missing column in hosted schema)."
+        echo ""
+        echo "  Immediate unblock options:"
+        echo "    1) Set SKIP_DB_SEED=1"
+        echo "    2) Set ALLOW_PRISMA_SEED_P2022_BYPASS=1"
+        echo ""
+        echo "  Then repair DB schema drift and remove bypass settings."
+        echo "========================================================================"
+        echo ""
+        exit "$SEED_EXIT_CODE"
+      fi
+    else
+      exit "$SEED_EXIT_CODE"
+    fi
+  fi
 fi
 
 echo ">>> next build"

@@ -4,7 +4,7 @@ export type CampaignOsNavLink = {
   href: string;
   label: string;
   roles?: CampaignUserRole[];
-  badgeKey?: "approvals" | "travel" | "intake" | "sync" | "finance" | "hotwash";
+  badgeKey?: "approvals" | "travel" | "intake" | "sync" | "finance" | "hotwash" | "opposition";
 };
 
 export type CampaignOsNavGroup = {
@@ -127,7 +127,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
         { href: "/admin/orchestration", label: "Orchestration" },
         { href: "/admin/ai-command-center", label: "AI command center" },
         { href: "/admin/campaign-events/ai-tools", label: "AI tool catalog" },
-        { href: "/admin/intelligence", label: "Opposition intel" },
+        { href: "/admin/intelligence", label: "Opposition research", badgeKey: "opposition" },
       ],
     },
     {

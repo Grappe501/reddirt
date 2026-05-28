@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "phase": "5A",
+  "mode": "READ_ONLY_STRATEGY_DOCTRINE_INTAKE",
+  "generatedAt": "2026-05-27T00:00:00.000Z",
+  "doctrineOwner": "Steve",
+  "status": "NEEDS_REVIEW",
+  "pillars": [
+    {
+      "id": "unity_over_division",
+      "title": "Unity over division",
+      "principle": "Build trust across counties by reducing polarization language and centering shared election-process confidence.",
+      "sourceType": "STEVE_DOCTRINE",
+      "confidence": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "people_organize_communities",
+      "title": "People organize their own communities",
+      "principle": "Sustainable county operations are built by local captains, neighbors, and trusted institutions, not outside scripts.",
+      "sourceType": "STEVE_DOCTRINE",
+      "confidence": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "eye_to_eye_campaigning",
+      "title": "Eye-to-eye campaigning",
+      "principle": "Visible in-person presence and direct conversations are core credibility signals in Arkansas county politics.",
+      "sourceType": "STEVE_DOCTRINE",
+      "confidence": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "id": "balls_and_strikes_sos",
+      "title": "Secretary of State is a balls-and-strikes office",
+      "principle": "Election administration should be lawful, transparent, and non-cultural-war focused.",
+      "sourceType": "STEVE_DOCTRINE",
+      "confidence": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW"
+    }
+  ],
+  "operatingMaxims": [
+    "County-by-county, city-by-city, precinct-by-precinct organizing.",
+    "Old-school grassroots trust beats performative digital-only politics.",
+    "Volunteer ladders and phone trees scale small teams safely.",
+    "Use fairs, festivals, courthouse, and civic spaces for visibility.",
+    "No final strategy activation without human approval."
+  ],
+  "guardrails": {
+    "allow": [
+      "analyze county conditions",
+      "recommend broad campaign actions",
+      "suggest event priorities",
+      "prepare Steve review briefs"
+    ],
+    "block": [
+      "target individual voters",
+      "generate contact lists",
+      "automate outreach",
+      "publish final strategy without approval"
+    ]
+  },
+  "sources": [
+    {
+      "id": "internal_campaign_prompts",
+      "type": "INTERNAL",
+      "label": "Phase 5A instruction packet and prior campaign-brain phase directives",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "rockefeller_eoa_122",
+      "type": "PUBLIC_HISTORY",
+      "label": "Encyclopedia of Arkansas - Winthrop Rockefeller",
+      "url": "https://encyclopediaofarkansas.net/entries/winthrop-rockefeller-122/",
+      "confidence": "HIGH"
+    }
+  ]
+}
+

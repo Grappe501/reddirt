@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-05-27T17:45:00.000Z",
+  "patternLanes": [
+    {
+      "id": "authority-centralization",
+      "label": "Election authority centralization pattern",
+      "description": "Multi-session behavior suggests preference for centralized election-process control mechanisms.",
+      "supportingBillIds": [
+        "kh2-election-bills-cluster"
+      ],
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "id": "direct-democracy-restriction",
+      "label": "Direct-democracy process tightening pattern",
+      "description": "Cross-bill pattern indicates recurring constraints around petition and initiative process mechanics.",
+      "supportingBillIds": [
+        "kh2-initiative-related-cluster"
+      ],
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "id": "procedural-barrier-growth",
+      "label": "Procedural barrier growth pattern",
+      "description": "Repeated administrative-process shifts likely increase compliance burdens for local actors.",
+      "supportingBillIds": [
+        "kh2-procedural-bills-cluster"
+      ],
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    }
+  ],
+  "narrativeUseGuidance": [
+    "Frame as longitudinal policy pattern, not isolated anecdotes.",
+    "Lead with practical county/voter impact and implementation consequences.",
+    "Use source tags for each bill before external amplification."
+  ],
+  "openGaps": [
+    "Need full 10–15 year sponsor/co-sponsor extraction",
+    "Need committee testimony alignment by bill number",
+    "Need side-by-side statutory-text delta evidence for top claims"
+  ]
+}
+

@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-27T04:37:50.426Z",
+  "rows": [
+    {
+      "regionId": "northwest",
+      "regionLabel": "Northwest (NWA & Ozarks gateway)",
+      "pressureScore": 53,
+      "counties": [
+        "benton-county",
+        "carroll-county",
+        "madison-county",
+        "washington-county"
+      ],
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "regionId": "north_central",
+      "regionLabel": "North Central (River Valley & Boston Mountains)",
+      "pressureScore": 60,
+      "counties": [
+        "baxter-county",
+        "boone-county",
+        "cleburne-county",
+        "fulton-county",
+        "independence-county",
+        "izard-county",
+        "johnson-county",
+        "marion-county",
+        "newton-county",
+        "searcy-county",
+        "sharp-county",
+        "stone-county",
+        "van-buren-county",
+        "white-county"
+      ],
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "regionId": "northeast",
+      "regionLabel": "Northeast (Upper Delta & Crowley’s Ridge)",
+      "pressureScore": 55,
+      "counties": [
+        "clay-county",
+        "craighead-county",
+        "crittenden-county",
+        "cross-county",
+        "greene-county",
+        "jackson-county",
+        "lawrence-county",
+        "mississippi-county",
+        "poinsett-county",
+        "randolph-county",
+        "st-francis-county",
+        "woodruff-county"
+      ],
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "regionId": "central",
+      "regionLabel": "Central (incl. Little Rock & I-30 corridor)",
+      "pressureScore": 61,
+      "counties": [
+        "conway-county",
+        "faulkner-county",
+        "grant-county",
+        "lonoke-county",
+        "perry-county",
+        "pope-county",
+        "prairie-county",
+        "pulaski-county",
+        "saline-county"
+      ],
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "regionId": "west_central",
+      "regionLabel": "West Central (Ouachitas & Hot Springs–Fort Smith)",
+      "pressureScore": 52,
+      "counties": [
+        "crawford-county",
+        "franklin-county",
+        "garland-county",
+        "hot-spring-county",
+        "logan-county",
+        "montgomery-county",
+        "polk-county",
+        "scott-county",
+        "sebastian-county",
+        "yell-county"
+      ],
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "regionId": "southwest",
+      "regionLabel": "Southwest (Texarkana, timber, and hill country)",
+      "pressureScore": 60,
+      "counties": [
+        "hempstead-county",
+        "howard-county",
+        "lafayette-county",
+        "little-river-county",
+        "miller-county",
+        "pike-county",
+        "sevier-county"
+      ],
+      "label": "TREND",
+      "status": "MISSING"
+    },
+    {
+      "regionId": "southeast",
+      "regionLabel": "Southeast (Delta, Pine Bluff, and river counties)",
+      "pressureScore": 62,
+      "counties": [
+        "arkansas-county",
+        "chicot-county",
+        "desha-county",
+        "drew-county",
+        "jefferson-county",
+        "lee-county",
+        "monroe-county",
+        "phillips-county"
+      ],
+      "label": "TREND",
+      "status": "LOW_CONFIDENCE"
+    },
+    {
+      "regionId": "south",
+      "regionLabel": "South (southern timber & oil belt)",
+      "pressureScore": 60,
+      "counties": [
+        "ashley-county",
+        "bradley-county",
+        "calhoun-county",
+        "clark-county",
+        "cleveland-county",
+        "columbia-county",
+        "dallas-county",
+        "lincoln-county",
+        "nevada-county",
+        "ouachita-county",
+        "union-county"
+      ],
+      "label": "TREND",
+      "status": "MISSING"
+    }
+  ]
+}

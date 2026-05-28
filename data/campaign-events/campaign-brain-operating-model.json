@@ -53,15 +53,51 @@
       "id": "multiAgentCampaignBrain",
       "label": "Multi-agent campaign brain",
       "description": "Read-only coordinated synthesis layer aligning specialized copilots for statewide readiness fusion and executive coordination."
+    },
+    {
+      "id": "executiveCommandCenter",
+      "label": "Executive command center",
+      "description": "Read-only statewide executive synthesis layer for intervention prioritization, risk visibility, and campaign-system health monitoring."
+    },
+    {
+      "id": "strategyDoctrineLayer",
+      "label": "Strategy doctrine layer",
+      "description": "Read-only strategy doctrine intake for Steve philosophy, Arkansas grassroots principles, and historical case-study context."
     }
   ],
   "agents": {
-    "countyIntelligenceCopilot": { "phase": "4R", "mode": "READ_ONLY_ANALYSIS_UNTIL_READY" },
-    "countyInstitutionalMemory": { "phase": "4N", "mode": "READ_ONLY_CONTEXT_LAYER" },
-    "countyResourceOperationsLayer": { "phase": "4O", "mode": "READ_ONLY_OPERATIONAL_FORECASTING" },
-    "publicNarrativeIntelligenceLayer": { "phase": "4P", "mode": "READ_ONLY_PUBLIC_SIGNAL_ANALYSIS" },
-    "simulationScenarioEngine": { "phase": "4Q", "mode": "READ_ONLY_MODELING_AND_FORECASTING" },
-    "multiAgentCampaignBrain": { "phase": "4R", "mode": "READ_ONLY_COORDINATED_SYNTHESIS" }
+    "countyIntelligenceCopilot": {
+      "phase": "4S",
+      "mode": "READ_ONLY_ANALYSIS_UNTIL_READY"
+    },
+    "countyInstitutionalMemory": {
+      "phase": "4N",
+      "mode": "READ_ONLY_CONTEXT_LAYER"
+    },
+    "countyResourceOperationsLayer": {
+      "phase": "4O",
+      "mode": "READ_ONLY_OPERATIONAL_FORECASTING"
+    },
+    "publicNarrativeIntelligenceLayer": {
+      "phase": "4P",
+      "mode": "READ_ONLY_PUBLIC_SIGNAL_ANALYSIS"
+    },
+    "simulationScenarioEngine": {
+      "phase": "4Q",
+      "mode": "READ_ONLY_MODELING_AND_FORECASTING"
+    },
+    "multiAgentCampaignBrain": {
+      "phase": "4R",
+      "mode": "READ_ONLY_COORDINATED_SYNTHESIS"
+    },
+    "executiveCommandCenter": {
+      "phase": "4S",
+      "mode": "READ_ONLY_EXECUTIVE_SYNTHESIS"
+    },
+    "strategyDoctrineLayer": {
+      "phase": "5A",
+      "mode": "READ_ONLY_STRATEGY_DOCTRINE_INTAKE"
+    }
   },
   "foundationRequirements": [
     "data/civic/source-registry.json",
@@ -106,8 +142,29 @@
     "data/multi-agent/agent-runtime-state-table.json",
     "data/multi-agent/cross-agent-insight-stream.json",
     "data/audit/multi-agent-coordination-readiness-table.json",
+    "data/executive-command/executive-command-state.json",
+    "data/executive-command/statewide-readiness-matrix.json",
+    "data/executive-command/executive-priority-ranking.json",
+    "data/executive-command/operational-bottleneck-map.json",
+    "data/executive-command/statewide-intervention-queue.json",
+    "data/executive-command/regional-pressure-map.json",
+    "data/executive-command/campaign-health-scorecard.json",
+    "data/executive-command/executive-alert-stream.json",
+    "data/executive-command/executive-brief-registry.json",
+    "data/audit/executive-command-readiness-table.json",
+    "data/strategy-doctrine/steve-strategy-doctrine.json",
+    "data/strategy-doctrine/arkansas-grassroots-principles.json",
+    "data/strategy-doctrine/rockefeller-grassroots-case-study.json",
+    "data/strategy-doctrine/relational-organizing-playbook.json",
+    "data/strategy-doctrine/gotv-backward-calendar-model.json",
+    "data/strategy-doctrine/poll-watcher-coverage-model.json",
+    "data/strategy-doctrine/event-visibility-playbook.json",
+    "data/strategy-doctrine/county-strategy-source-index.json",
+    "data/audit/strategy-doctrine-readiness-table.json",
     "strategy gate enforced"
   ],
-  "didNotBuild": ["automations", "final_county_strategy_packets"]
+  "didNotBuild": [
+    "automations",
+    "final_county_strategy_packets"
+  ]
 }
-

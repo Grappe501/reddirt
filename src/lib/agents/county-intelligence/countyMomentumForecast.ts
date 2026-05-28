@@ -1,6 +1,16 @@
 import { loadResourceAllocationModel } from "./resourceAllocationModel";
+import type { ForecastConfidence } from "./resourceAllocationTypes";
 
-export function countyMomentumForecast(countySlug: string) {
+type CountyMomentumForecastResult = {
+  countySlug: string;
+  momentum: "MISSING" | "LOW" | "MEDIUM" | "HIGH";
+  forecastType: "FORECAST";
+  confidence: ForecastConfidence;
+  score: number;
+  sourceLayers: string[];
+};
+
+export function countyMomentumForecast(countySlug: string): CountyMomentumForecastResult {
   const row = loadResourceAllocationModel().rows.find((x) => x.countySlug === countySlug);
   if (!row) {
     return {

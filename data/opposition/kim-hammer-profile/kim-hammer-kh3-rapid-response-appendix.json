@@ -1,0 +1,44 @@
+{
+  "generatedAt": "2026-05-27T17:45:00.000Z",
+  "evidenceLocker": [
+    {
+      "id": "rr-001",
+      "category": "Legislative record",
+      "asset": "KH-2 election-law record corpus",
+      "verificationStatus": "READY",
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "rr-002",
+      "category": "Public statements",
+      "asset": "Campaign-authored election-integrity article",
+      "verificationStatus": "READY",
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "rr-003",
+      "category": "Debate archive",
+      "asset": "Arkansas PBS SOS 2022 debate baseline",
+      "verificationStatus": "READY",
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "rr-004",
+      "category": "Historical quotes",
+      "asset": "Kim Hammer Show episode timestamp extraction",
+      "verificationStatus": "PENDING",
+      "sourceConfidence": "MEDIUM"
+    }
+  ],
+  "quoteVerificationRules": [
+    "Record original URL and capture date.",
+    "Store quote plus full-sentence context.",
+    "Tag with VERIFIED_FACT, REPORTED_CLAIM, or NEEDS_REVIEW before use."
+  ],
+  "pushbackPreparedness": [
+    "Keep bill-text and act-number references in same record.",
+    "Maintain fallback framing if a claim is disputed.",
+    "Use contrast language focused on voter service outcomes."
+  ]
+}
+

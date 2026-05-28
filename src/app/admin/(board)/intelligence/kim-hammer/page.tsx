@@ -2,6 +2,8 @@ import Link from "next/link";
 import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
 import { loadKimHammerProfileWorkbench } from "@/lib/opposition/kimHammerProfileWorkbench";
 import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
+import { loadKimHammerKh3Workbench } from "@/lib/opposition/kimHammerKh3Workbench";
+import { loadKimHammerKh4Workbench } from "@/lib/opposition/kimHammerKh4Workbench";
 
 const card = "rounded-md border border-kelly-text/10 bg-kelly-page px-3 py-2 text-sm";
 
@@ -9,6 +11,8 @@ export default async function KimHammerCommandCenterPage() {
   const data = loadKimHammerWorkbench();
   const profile = loadKimHammerProfileWorkbench();
   const kh2 = loadKimHammerKh2Workbench();
+  const kh3 = loadKimHammerKh3Workbench();
+  const kh4 = loadKimHammerKh4Workbench();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -81,6 +85,29 @@ export default async function KimHammerCommandCenterPage() {
             <Link href="/admin/intelligence/kim-hammer/timeline" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Timeline</Link>
             <Link href="/admin/intelligence/kim-hammer/research-gaps" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Research gaps</Link>
             <Link href="/admin/intelligence/kim-hammer/intelligence-gaps" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Intelligence gaps</Link>
+            <Link href="/admin/intelligence/kim-hammer/writings" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 writings archive</Link>
+            <Link href="/admin/intelligence/kim-hammer/background-deep" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 background deep dive</Link>
+            <Link href="/admin/intelligence/kim-hammer/management-capacity" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 management capacity</Link>
+            <Link href="/admin/intelligence/kim-hammer/debate-archive" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 debate archive</Link>
+            <Link href="/admin/intelligence/kim-hammer/response-model" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 response model</Link>
+            <Link href="/admin/intelligence/kim-hammer/kh3-operational" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 operational layer</Link>
+            <Link href="/admin/intelligence/kim-hammer/network-influence" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 network + influence</Link>
+            <Link href="/admin/intelligence/kim-hammer/pattern-analysis" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 pattern analysis</Link>
+            <Link href="/admin/intelligence/kim-hammer/vulnerability-matrix-kh3" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 vulnerability matrix</Link>
+            <Link href="/admin/intelligence/kim-hammer/narrative-testing" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 narrative testing</Link>
+            <Link href="/admin/intelligence/kim-hammer/county-exposure" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 county exposure</Link>
+            <Link href="/admin/intelligence/kim-hammer/modern-sos-contrast" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 modern SOS contrast</Link>
+            <Link href="/admin/intelligence/kim-hammer/rapid-response" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 rapid response</Link>
+            <Link href="/admin/intelligence/kim-hammer/bill-relationship-graph" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 bill relationship graph</Link>
+            <Link href="/admin/intelligence/kim-hammer/timeline-heatmap" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 timeline heatmap</Link>
+            <Link href="/admin/intelligence/kim-hammer/direct-democracy" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-3 direct democracy file</Link>
+            <Link href="/admin/intelligence/kim-hammer/evidence-command" className="rounded border border-kelly-navy/20 bg-kelly-page px-2 py-1 font-semibold text-kelly-navy">Evidence command center</Link>
+            <Link href="/admin/intelligence/kim-hammer/public-debate-evidence" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Public debate evidence board</Link>
+            <Link href="/admin/intelligence/kim-hammer/debate-packet-export" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Debate packet export</Link>
+            <Link href="/admin/intelligence/kim-hammer/kh4-agent-tools" className="rounded border px-2 py-1 font-semibold text-kelly-navy">KH-4 agent tools</Link>
+            <Link href="/admin/intelligence/kim-hammer/attack-surface" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Attack surface</Link>
+            <Link href="/admin/intelligence/kim-hammer/intel-heat-map" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Intel heat map</Link>
+            <Link href="/admin/intelligence/kim-hammer/narrative-drift-monitor" className="rounded border px-2 py-1 font-semibold text-kelly-navy">Narrative drift monitor</Link>
           </div>
         </div>
       </section>
@@ -103,6 +130,56 @@ export default async function KimHammerCommandCenterPage() {
               <li key={phrase.phrase}>
                 "{phrase.phrase}" ({phrase.occurrences} hits)
               </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="mb-6 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">KH-3 Deep Intel Snapshot</h2>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            <li>Authored writing assets indexed: {kh3.summary.writingItems}</li>
+            <li>Civic/community profile entries: {kh3.summary.civicItems}</li>
+            <li>Management-capacity signals: {kh3.summary.managementSignals}</li>
+            <li>Debate/media archive assets: {kh3.summary.debateAssets}</li>
+            <li>Operational network clusters: {kh3.summary.networkClusters}</li>
+            <li>Legislation pattern lanes: {kh3.summary.legislationPatterns}</li>
+            <li>Vulnerability scoring rows: {kh3.summary.vulnerabilityRows}</li>
+          </ul>
+        </div>
+        <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">KH-3 Priority Research Gaps</h2>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {kh3.summary.topOpenGaps.map((gap) => (
+              <li key={gap}>{gap}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="mb-6 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">KH-3 Operating System Extensions</h2>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            <li>Narrative frames tested: {kh3.summary.narrativeFrames}</li>
+            <li>County exposure segments: {kh3.summary.countyExposureSegments}</li>
+            <li>Modern SOS contrast rows: {kh3.summary.contrastRows}</li>
+            <li>Rapid-response evidence assets: {kh3.summary.rapidResponseAssets}</li>
+            <li>Bill graph nodes: {kh3.summary.graphNodeCount}</li>
+            <li>Timeline heatmap periods: {kh3.summary.heatmapPeriods}</li>
+            <li>Public debate claims tracked: {kh3.summary.publicDebateItems}</li>
+            <li>Public-ready claims: {kh3.summary.publicReadyClaims}</li>
+            <li>KH-4 agents configured: {kh4.summary.agentCount}</li>
+            <li>KH-4 attack-surface rows: {kh4.summary.riskRows}</li>
+            <li>Debate export-ready claims: {kh4.summary.debateExportReady}</li>
+          </ul>
+        </div>
+        <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">KH-3 Strategy Constraints</h2>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {kh3.modernSosContrast.guardrails.map((item) => (
+              <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
