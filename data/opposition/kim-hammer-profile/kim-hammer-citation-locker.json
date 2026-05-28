@@ -1,0 +1,250 @@
+{
+  "generatedAt": "2026-05-28T12:00:00.000Z",
+  "lockerVersion": "1.0",
+  "purpose": "Durable citation cards linking sources, claims, retrieval tasks, and narrative intelligence.",
+  "sources": [
+    {
+      "id": "src-campaign-election-integrity-2025",
+      "url": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/",
+      "title": "Arkansas Leads the Way in Election Integrity",
+      "publisher": "Hammer for Arkansas",
+      "publishedAt": "2025-06-11",
+      "sourceClass": "CAMPAIGN_PUBLISHING",
+      "sourceDurability": "MEDIUM",
+      "archiveCaptured": false,
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "src-senate-profile",
+      "url": "https://senate.arkansas.gov/senators/576/",
+      "title": "Senator Kim Hammer — Arkansas Senate",
+      "publisher": "Arkansas State Senate",
+      "sourceClass": "OFFICIAL_PROFILE",
+      "sourceDurability": "HIGH",
+      "archiveCaptured": false,
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "src-pbs-debate-2022",
+      "url": "https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/",
+      "title": "Arkansas PBS Debates 2022 — Secretary of State",
+      "publisher": "Arkansas PBS",
+      "sourceClass": "VIDEO_AUDIO",
+      "sourceDurability": "HIGH",
+      "archiveCaptured": false,
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "src-4029-debate-recap",
+      "url": "https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807",
+      "title": "Arkansas SOS debate recap",
+      "publisher": "4029 News",
+      "sourceClass": "NEWS_MEDIA",
+      "sourceDurability": "MEDIUM",
+      "archiveCaptured": false,
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "src-sb486-2021",
+      "url": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "title": "SB486 — 2021 electioneering and voting penalties",
+      "publisher": "Arkansas Legislature",
+      "sourceClass": "LEGISLATIVE_RECORD",
+      "sourceDurability": "HIGH",
+      "archiveCaptured": false,
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "src-sb487-2021",
+      "url": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R",
+      "title": "SB487 — 2021 precinct and polling site boundaries",
+      "publisher": "Arkansas Legislature",
+      "sourceClass": "LEGISLATIVE_RECORD",
+      "sourceDurability": "HIGH",
+      "archiveCaptured": false,
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "id": "src-campaign-home",
+      "url": "https://www.hammerforarkansas.com/",
+      "title": "Hammer for Arkansas campaign home",
+      "publisher": "Hammer for Arkansas",
+      "sourceClass": "CAMPAIGN_PUBLISHING",
+      "sourceDurability": "MEDIUM",
+      "archiveCaptured": false,
+      "sourceConfidence": "HIGH"
+    }
+  ],
+  "citations": [
+    {
+      "id": "cite-campaign-election-integrity-2025",
+      "sourceId": "src-campaign-election-integrity-2025",
+      "sourceUrl": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/",
+      "summary": "Campaign-authored election-integrity article citing legislative acts.",
+      "context": "Seeded from pdeb-001 supporting evidence; dual-source export candidate.",
+      "sourceClass": "CAMPAIGN_PUBLISHING",
+      "sourceDurability": "MEDIUM",
+      "archiveCaptured": false,
+      "crossVerified": true,
+      "reviewStatus": "VERIFIED",
+      "sourceHealth": "ARCHIVE_MISSING",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "linkedClaimIds": ["pdeb-001-election-integrity-record", "claim-election-integrity-central"],
+      "linkedNarrativeIds": ["kh0b-2021-integrity-foundation"],
+      "capturedAt": "2026-05-27T23:00:00.000Z",
+      "lastValidatedAt": "2026-05-27T23:00:00.000Z",
+      "lastUpdated": "2026-05-28T12:00:00.000Z"
+    },
+    {
+      "id": "cite-senate-profile",
+      "sourceId": "src-senate-profile",
+      "sourceUrl": "https://senate.arkansas.gov/senators/576/",
+      "summary": "State Senate profile confirms legislative tenure and committee assignments.",
+      "context": "Official biography for qualification and management-readiness framing.",
+      "sourceClass": "OFFICIAL_PROFILE",
+      "sourceDurability": "HIGH",
+      "archiveCaptured": false,
+      "crossVerified": true,
+      "reviewStatus": "VERIFIED",
+      "sourceHealth": "HEALTHY",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "linkedClaimIds": ["pdeb-001-election-integrity-record", "pdeb-002-management-readiness", "claim-management-readiness-partial"],
+      "capturedAt": "2026-05-27T22:45:00.000Z",
+      "lastValidatedAt": "2026-05-27T23:00:00.000Z",
+      "lastUpdated": "2026-05-28T12:00:00.000Z"
+    },
+    {
+      "id": "cite-pbs-debate-2022",
+      "sourceId": "src-pbs-debate-2022",
+      "sourceUrl": "https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/",
+      "summary": "Arkansas PBS SOS debate recording and recap coverage.",
+      "sourceClass": "VIDEO_AUDIO",
+      "sourceDurability": "HIGH",
+      "archiveCaptured": false,
+      "crossVerified": true,
+      "reviewStatus": "VERIFIED",
+      "sourceHealth": "HEALTHY",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "linkedClaimIds": ["pdeb-003-debate-question-patterns"],
+      "capturedAt": "2026-05-27T23:10:00.000Z",
+      "lastValidatedAt": "2026-05-27T23:10:00.000Z",
+      "lastUpdated": "2026-05-28T12:00:00.000Z"
+    },
+    {
+      "id": "cite-4029-debate-recap",
+      "sourceId": "src-4029-debate-recap",
+      "sourceUrl": "https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807",
+      "summary": "Local media recap listing debate topic categories.",
+      "sourceClass": "NEWS_MEDIA",
+      "sourceDurability": "MEDIUM",
+      "archiveCaptured": false,
+      "crossVerified": true,
+      "reviewStatus": "VERIFIED",
+      "sourceHealth": "ARCHIVE_MISSING",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "linkedClaimIds": ["pdeb-003-debate-question-patterns"],
+      "capturedAt": "2026-05-27T23:10:00.000Z",
+      "lastValidatedAt": "2026-05-27T23:10:00.000Z",
+      "lastUpdated": "2026-05-28T12:00:00.000Z"
+    },
+    {
+      "id": "cite-sb486-2021",
+      "sourceId": "src-sb486-2021",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "summary": "SB486 (Act 728) — electioneering boundaries and voting-related misdemeanor penalties.",
+      "context": "KH-0B 2021 integrity foundation cluster; bill existence VERIFIED_FACT.",
+      "sourceClass": "LEGISLATIVE_RECORD",
+      "sourceDurability": "HIGH",
+      "archiveCaptured": false,
+      "crossVerified": true,
+      "reviewStatus": "VERIFIED",
+      "sourceHealth": "HEALTHY",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "linkedClaimIds": [],
+      "linkedNarrativeIds": ["kh0b-2021-integrity-foundation", "SB486"],
+      "capturedAt": "2026-05-28T04:45:00.000Z",
+      "lastValidatedAt": "2026-05-28T04:45:00.000Z",
+      "lastUpdated": "2026-05-28T12:00:00.000Z"
+    },
+    {
+      "id": "cite-sb487-2021",
+      "sourceId": "src-sb487-2021",
+      "sourceUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R",
+      "summary": "SB487 (Act 729) — precinct boundaries, polling sites, and vote centers.",
+      "context": "KH-0B county administration burden linkage; penalty details NEEDS_REVIEW until act-text pass.",
+      "sourceClass": "LEGISLATIVE_RECORD",
+      "sourceDurability": "HIGH",
+      "archiveCaptured": false,
+      "crossVerified": false,
+      "reviewStatus": "NEEDS_REVIEW",
+      "sourceHealth": "NEEDS_REVALIDATION",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "sourceConfidence": "HIGH",
+      "linkedClaimIds": [],
+      "linkedNarrativeIds": ["kh0b-2021-integrity-foundation", "SB487"],
+      "capturedAt": "2026-05-28T04:45:00.000Z",
+      "lastUpdated": "2026-05-28T12:00:00.000Z"
+    },
+    {
+      "id": "cite-campaign-home",
+      "sourceId": "src-campaign-home",
+      "sourceUrl": "https://www.hammerforarkansas.com/",
+      "summary": "Campaign home page for brand and messaging baseline.",
+      "sourceClass": "CAMPAIGN_PUBLISHING",
+      "sourceDurability": "MEDIUM",
+      "archiveCaptured": false,
+      "crossVerified": false,
+      "reviewStatus": "DRAFT",
+      "sourceHealth": "NEEDS_REVALIDATION",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceConfidence": "HIGH",
+      "originTaskId": "kh3b-wayback-campaign-page-capture",
+      "linkedClaimIds": [],
+      "capturedAt": "2026-05-28T12:00:00.000Z",
+      "lastUpdated": "2026-05-28T12:00:00.000Z",
+      "operatorNotes": "Linked to Wayback retrieval task; pending capture sweep."
+    }
+  ],
+  "claimLinks": [
+    {
+      "claimId": "pdeb-001-election-integrity-record",
+      "citationId": "cite-campaign-election-integrity-2025",
+      "polarity": "SUPPORTING"
+    },
+    {
+      "claimId": "pdeb-001-election-integrity-record",
+      "citationId": "cite-senate-profile",
+      "polarity": "SUPPORTING"
+    },
+    {
+      "claimId": "pdeb-002-management-readiness",
+      "citationId": "cite-senate-profile",
+      "polarity": "SUPPORTING"
+    },
+    {
+      "claimId": "pdeb-003-debate-question-patterns",
+      "citationId": "cite-pbs-debate-2022",
+      "polarity": "SUPPORTING"
+    },
+    {
+      "claimId": "pdeb-003-debate-question-patterns",
+      "citationId": "cite-4029-debate-recap",
+      "polarity": "SUPPORTING"
+    },
+    {
+      "claimId": "claim-election-integrity-central",
+      "citationId": "cite-campaign-election-integrity-2025",
+      "polarity": "SUPPORTING"
+    },
+    {
+      "claimId": "claim-management-readiness-partial",
+      "citationId": "cite-senate-profile",
+      "polarity": "SUPPORTING"
+    }
+  ]
+}

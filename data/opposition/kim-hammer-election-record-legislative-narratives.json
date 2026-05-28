@@ -1,0 +1,532 @@
+{
+  "narrativeVersion": "1.0",
+  "generatedAt": "2026-05-28T04:45:53.995Z",
+  "subject": "Kim Hammer",
+  "intelligencePass": "KH-0B",
+  "billCount": 11,
+  "governanceRule": "Strategic messaging fields are INTERPRETATION or NEEDS_REVIEW until enrolled-act text verification. Bill and sponsor existence on Arkleg are VERIFIED_FACT. ChatGPT blocks are never authoritative sources.",
+  "evidenceStatus": {
+    "packageNarratives": "INTERPRETATION",
+    "billExistence": "VERIFIED_FACT",
+    "actNumbersWhereListed": "VERIFIED_FACT"
+  },
+  "packages": [
+    {
+      "packageId": "kh0b-2021-integrity-foundation",
+      "sessionYear": "2021/2021R",
+      "billNumbers": [
+        "SB486",
+        "SB487",
+        "SB488",
+        "SB582",
+        "SB643",
+        "SB644"
+      ]
+    }
+  ],
+  "bills": [
+    {
+      "billNumber": "SB486",
+      "actNumber": "728",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "TO AMEND THE LAW CONCERNING ELECTIONEERING; AND TO AMEND THE LAW CONCERNING PENALTIES FOR MISDEMEANOR OFFENSES RELATED TO VOTING.",
+      "plainEnglishSummary": "Tightens electioneering boundaries and attaches misdemeanor penalties to certain voting-related conduct—expanding what poll officials and law enforcement must police near voting.",
+      "billNarrative": "Opens the 2021 integrity cluster with poll-site enforcement rather than equipment or petitions. Signals a theory of deterrence through criminal exposure at the point of voting.",
+      "countyImpactNarrative": "County clerks and poll workers become front-line interpreters of electioneering rules; sheriffs and prosecutors may see increased referrals.",
+      "operationalBurdenNarrative": "Training, signage, and incident documentation at every precinct; risk of uneven enforcement across 75 counties.",
+      "debateFrames": {
+        "kellyFrame": "Keep polling places calm and lawful without chilling lawful assistance (disability, language, family).",
+        "hammerFrame": "Strong penalties stop bad actors at the door.",
+        "countyFrame": "Give us uniform SOS guidance before expanding misdemeanors."
+      },
+      "counterArguments": [
+        "Over-broad electioneering rules snag innocent helpers.",
+        "County-by-county enforcement inconsistency undermines trust."
+      ],
+      "supporterArguments": [
+        "Poll workers need clear tools against intimidation.",
+        "Deterrence protects voters in line."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Poll-site rules should protect voters, not trap volunteers—Kelly backs clerks with training.",
+        "debateImpact": "Humanizes election workers; avoids fraud rhetoric.",
+        "whenToUse": "Debate on intimidation vs. over-criminalization.",
+        "whenNotToUse": "Before verifying exact electioneering distance/text changes.",
+        "oppositionSetup": "Hammer: penalties stop chaos.",
+        "kellyMessageHelp": "Pair with voter assistance and disability access commitments.",
+        "campaignAlignment": "Voting rights as workable access."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 728 enrollment VERIFIED_FACT via Arkleg; penalty details NEEDS_REVIEW until PDF pass."
+      ]
+    },
+    {
+      "billNumber": "SB487",
+      "actNumber": "729",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITES, AND VOTE CENTERS; AND TO AMEND ARKANSAS ELECTION LAW.",
+      "plainEnglishSummary": "Changes statutory process for drawing or changing precincts, polling places, and vote centers—county-driven operational decisions with less voter predictability if changed late.",
+      "billNarrative": "Anchors Hammer's county-administration doctrine: election geography is a policy lever years before 2025 petition fights.",
+      "countyImpactNarrative": "Clerks, election commissioners, and quorum courts coordinate mapping, notices, and ballot styles when boundaries shift.",
+      "operationalBurdenNarrative": "GIS work, voter notification, provisional ballot complexity, and potential vote-center consolidation fights.",
+      "debateFrames": {
+        "kellyFrame": "Stable sites + funded county support; SOS-led site planning workshops.",
+        "hammerFrame": "Local officials best know safe, efficient locations.",
+        "countyFrame": "Don't move my polling place without real notice and transit access."
+      },
+      "counterArguments": [
+        "Late site changes suppress turnout in rural and low-income precincts.",
+        "Vote-center models can confuse habitual polling-place voters."
+      ],
+      "supporterArguments": [
+        "Flexibility helps understaffed counties.",
+        "Consolidation can save money if done transparently."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Respect local knowledge—fund implementation and voter notice.",
+        "debateImpact": "Geography as voter-access issue.",
+        "whenToUse": "County forums, redistricting-adjacent conversations.",
+        "whenNotToUse": "Without map examples approved by clerks.",
+        "oppositionSetup": "Hammer: efficiency and security.",
+        "kellyMessageHelp": "Offer SOS county site toolkit.",
+        "campaignAlignment": "County partnership lane."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 729 VERIFIED_FACT; voter-impact claims INTERPRETATION."
+      ]
+    },
+    {
+      "billNumber": "SB488",
+      "actNumber": "727",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "TO AMEND THE FREEDOM OF INFORMATION ACT OF 1967; TO CREATE AN EXEMPTION TO THE EXAMINATION AND COPYING OF PUBLIC RECORDS; AND TO AMEND THE LAW CONCERNING THE FREEDOM OF INFORMATION ACT OF 1967 AND VOTED BALLOTS.",
+      "plainEnglishSummary": "Creates a FOIA exemption around certain voted-ballot records—reducing public inspection pathways while election disputes increasingly rely on 'show the ballots' rhetoric.",
+      "billNarrative": "Defines a transparency tradeoff early: less public record access in exchange for claims of chain-of-custody protection.",
+      "countyImpactNarrative": "Clerks field FOIA requests; legal counsel interprets new exemptions; risk of conflicting public narratives.",
+      "operationalBurdenNarrative": "Records retention, redaction workflows, and litigation discovery disputes.",
+      "debateFrames": {
+        "kellyFrame": "Trust through audited processes and published procedures—not secrecy.",
+        "hammerFrame": "Ballots must be shielded from fishing expeditions.",
+        "countyFrame": "Protect clerks from harassing bulk requests."
+      },
+      "counterArguments": [
+        "Exemptions can look like hiding problems when trust is low.",
+        "Media and watchdog access supports accountability."
+      ],
+      "supporterArguments": [
+        "Reduces frivolous requests that paralyze small offices.",
+        "Protects voter privacy on marked ballots."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Kelly favors accountable transparency: official canvass, risk-limiting audits, clear records policy.",
+        "debateImpact": "Separates Kelly from both 'hide ballots' and 'harass clerks' extremes.",
+        "whenToUse": "Press on transparency; FOIA literacy audiences.",
+        "whenNotToUse": "Until exemption scope is quoted from enrolled act.",
+        "oppositionSetup": "Hammer: stop activist harassment.",
+        "kellyMessageHelp": "Propose public reporting standards without exposing individual ballots improperly.",
+        "campaignAlignment": "Open government with clerk protection."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB488&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 727 VERIFIED_FACT; exemption scope INTERPRETATION pending text review.",
+        "Do not claim criminal behavior—stick to records policy."
+      ]
+    },
+    {
+      "billNumber": "SB582",
+      "actNumber": "1051",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING COUNTY BOARDS OF ELECTION COMMISSIONERS; TO AMEND HOW COUNTY BOARDS OF ELECTION COMMISSIONERS TAKE THE OATH; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "plainEnglishSummary": "Revises county election-board structure and oath requirements—direct governance layer on volunteers/appointees who oversee county election administration.",
+      "billNarrative": "Shows Hammer's recurring target: county election commissioners as compliance nodes, later revisited in SB292 (2023).",
+      "countyImpactNarrative": "Boards face new procedural steps; clerks coordinate with reconstituted or re-oathed commissioners.",
+      "operationalBurdenNarrative": "Recruitment, training, meeting cadence, and liability concerns for unpaid commissioners.",
+      "debateFrames": {
+        "kellyFrame": "Support commissioners with SOS training stipends and term clarity.",
+        "hammerFrame": "Higher standards prevent negligent oversight.",
+        "countyFrame": "Don't empty the bench with paperwork."
+      },
+      "counterArguments": [
+        "Harder recruitment in small counties.",
+        "Oath changes are symbolic without funding."
+      ],
+      "supporterArguments": [
+        "Accountability for high-stakes offices.",
+        "Aligns county boards with state expectations."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "LOW",
+      "strategicBriefing": {
+        "howToMessage": "Elevate commissioners as partners; fund the board model.",
+        "debateImpact": "County governance without culture-war tone.",
+        "whenToUse": "Quorum court, election commission audiences.",
+        "whenNotToUse": "If claiming specific removal powers without text cite.",
+        "oppositionSetup": "Hammer: professionalism.",
+        "kellyMessageHelp": "Commissioner academy hosted by SOS.",
+        "campaignAlignment": "County administration doctrine file cross-link."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB582&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 1051 VERIFIED_FACT."
+      ]
+    },
+    {
+      "billNumber": "SB643",
+      "actNumber": "973",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "plainEnglishSummary": "Amends absentee ballot procedures—tightening mail voting administration before the 2023 drop-box and method debates.",
+      "billNarrative": "Absentee tightening precedes Hammer's co-sponsorship of SB258; establishes mail-voting skepticism as legislative habit.",
+      "countyImpactNarrative": "Clerks adjust application verification, ballot assembly, and cure processes.",
+      "operationalBurdenNarrative": "More staff time per absentee ballot; voter helpline load; potential disenfranchisement if rules confuse seniors.",
+      "debateFrames": {
+        "kellyFrame": "Secure absentee with clear voter instructions and clerk staffing.",
+        "hammerFrame": "Close loopholes in mail voting.",
+        "countyFrame": "Rural mail timelines need realistic deadlines."
+      },
+      "counterArguments": [
+        "Administrative errors block lawful voters.",
+        "Military and elderly voters disproportionately harmed."
+      ],
+      "supporterArguments": [
+        "Uniform statewide absentee standards.",
+        "Reduces ambiguous clerk discretion."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Absentee is a service channel—staff it, don't strangle it.",
+        "debateImpact": "Voting rights via practical access.",
+        "whenToUse": "Senior groups, caregiver networks.",
+        "whenNotToUse": "Without citing specific ID/witness changes from act text.",
+        "oppositionSetup": "Hammer: mail-ballot fraud prevention.",
+        "kellyMessageHelp": "Publish absentee how-to guides; track rejection rates by county.",
+        "campaignAlignment": "Access + security balance."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB643&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 973 VERIFIED_FACT."
+      ]
+    },
+    {
+      "billNumber": "SB644",
+      "actNumber": "974",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "CONCERNING THE INVESTIGATION OF VIOLATIONS OF ELECTION LAW; AND TO ESTABLISH AN ELECTION LAW VIOLATION HOTLINE.",
+      "plainEnglishSummary": "Creates investigation tools including an election-law violation hotline—institutionalizes complaint volume upstream of 2023 integrity-review concepts.",
+      "billNarrative": "Moves 'see something say something' into statute; cultural shift toward policing elections via reports.",
+      "countyImpactNarrative": "Clerks and SBEC respond to complaint spikes; sheriffs/prosecutors may receive referrals.",
+      "operationalBurdenNarrative": "Triage staff, FOIA on complaints, reputational harm to counties from viral allegations.",
+      "debateFrames": {
+        "kellyFrame": "Fast, fair investigations; protect clerks from bad-faith floods.",
+        "hammerFrame": "Hotline empowers citizens to report fraud.",
+        "countyFrame": "Fund investigation capacity if you create intake."
+      },
+      "counterArguments": [
+        "Hotlines invite partisan weaponization.",
+        "Unfunded mandates to counties and SBEC."
+      ],
+      "supporterArguments": [
+        "Central intake beats social-media mobs.",
+        "Deters real misconduct."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Real violations deserve swift resolution; harassment hotlines waste county time.",
+        "debateImpact": "Administrative competence test for SOS candidate.",
+        "whenToUse": "Debates on enforcement culture.",
+        "whenNotToUse": "Do not allege hotline was used for specific cases without records.",
+        "oppositionSetup": "Hammer: empower whistleblowers.",
+        "kellyMessageHelp": "Publish complaint SLA metrics; shield clerks.",
+        "campaignAlignment": "Enforcement fairness."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB644&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 974 VERIFIED_FACT."
+      ]
+    },
+    {
+      "billNumber": "SB254",
+      "actNumber": null,
+      "sessionYear": "2023/2023R",
+      "hammerRole": "co-sponsor",
+      "legislativePackageId": null,
+      "title": "AN ACT TO ELIMINATE WRITE-IN CANDIDATES IN ELECTIONS; TO AMEND ELECTION PROCEDURES; AND TO AMEND THE LAW CONCERNING ELECTION.",
+      "plainEnglishSummary": "Eliminates write-in candidacies in covered elections—narrows ballot access for insurgent or protest candidates (Hammer co-sponsor).",
+      "billNarrative": "2023 access restriction complements 2021 enforcement cluster; shows ballot-access tightening beyond petitions.",
+      "countyImpactNarrative": "Clerks adjust ballot programming and candidate filing education.",
+      "operationalBurdenNarrative": "Fewer ballot styles but more voter confusion when write-ins disappear mid-cycle.",
+      "debateFrames": {
+        "kellyFrame": "Protect orderly ballots without shutting last-resort candidacies where law allows.",
+        "hammerFrame": "Write-ins enable spoiler chaos.",
+        "countyFrame": "Tell us early so ballots print correctly."
+      },
+      "counterArguments": [
+        "Blocks low-budget grassroots candidates.",
+        "Reduces voter choice in low-turnout races."
+      ],
+      "supporterArguments": [
+        "Cleaner ballots and faster canvasses.",
+        "Reduces frivolous filings."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "NEEDS_REVIEW",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Ballot access matters for accountability—Kelly backs clear filing rules, not arbitrary closures.",
+        "debateImpact": "Citizen participation without conspiracy tone.",
+        "whenToUse": "Reformers, minor-party advocates.",
+        "whenNotToUse": "Until final disposition and act number confirmed on Arkleg.",
+        "oppositionSetup": "Hammer: election integrity on the ballot itself.",
+        "kellyMessageHelp": "Explain who still gets on the ballot and how.",
+        "campaignAlignment": "Direct democracy adjacent—access paths."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB254&ddBienniumSession=2023%2F2023R"
+      ],
+      "governanceNotes": [
+        "Bill existence VERIFIED_FACT; enactment NEEDS_REVIEW on Arkleg before ads cite act number."
+      ]
+    },
+    {
+      "billNumber": "SB258",
+      "actNumber": null,
+      "sessionYear": "2023/2023R",
+      "hammerRole": "co-sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE METHOD OF VOTING ABSENTEE; AND TO PROHIBIT THE USE OF ABSENTEE BALLOT DROP BOXES.",
+      "plainEnglishSummary": "Changes absentee voting methods and prohibits absentee ballot drop boxes—shifts burden to clerks and voters who relied on drop-off options.",
+      "billNarrative": "Continues 2021 SB643 absentee trajectory; operational fight moves to drop boxes and return methods.",
+      "countyImpactNarrative": "Clerks redesign intake; voters face longer drives or mail delays.",
+      "operationalBurdenNarrative": "In-person return queues; secure storage; voter education campaigns needed.",
+      "debateFrames": {
+        "kellyFrame": "Secure chain-of-custody with options clerks can staff.",
+        "hammerFrame": "Drop boxes are unaccountable.",
+        "countyFrame": "Rural voters need realistic return paths."
+      },
+      "counterArguments": [
+        "Eliminating drop boxes harms working voters.",
+        "Mail delays in Arkansas rural routes."
+      ],
+      "supporterArguments": [
+        "Single controlled intake point.",
+        "Reduces after-hours chain-of-custody risk."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "NEEDS_REVIEW",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Don't make absentee harder than in-person—staff secure return.",
+        "debateImpact": "Classic voting-rights kitchen-table frame.",
+        "whenToUse": "Senior, disability, shift-worker audiences.",
+        "whenNotToUse": "Until enrolled text confirms drop-box ban scope.",
+        "oppositionSetup": "Hammer: close loopholes.",
+        "kellyMessageHelp": "County choice within state security floor.",
+        "campaignAlignment": "Absentee service model."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB258&ddBienniumSession=2023%2F2023R"
+      ],
+      "governanceNotes": [
+        "Enactment NEEDS_REVIEW."
+      ]
+    },
+    {
+      "billNumber": "SB272",
+      "actNumber": null,
+      "sessionYear": "2023/2023R",
+      "hammerRole": "co-sponsor",
+      "legislativePackageId": null,
+      "title": "TO CREATE AN ELECTION INTEGRITY REVIEW PROCESS; TO AMEND THE DUTIES OF THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE LAW CONCERNING ELECTION LAW VIOLATIONS.",
+      "plainEnglishSummary": "Creates an election integrity review process and expands SBEC duties on violations—state-level oversight pressure on counties.",
+      "billNarrative": "Institutionalizes 'integrity review' between 2021 hotline and 2025 audits—state supervision theme grows.",
+      "countyImpactNarrative": "Counties face reviews, document production, and corrective plans.",
+      "operationalBurdenNarrative": "Legal costs, staff time, morale hits when reviews politicized.",
+      "debateFrames": {
+        "kellyFrame": "Audit for learning, not punishment theater.",
+        "hammerFrame": "State must police rogue counties.",
+        "countyFrame": "Fund reviews if you mandate them."
+      },
+      "counterArguments": [
+        "Weaponized reviews chill election workers.",
+        "Duplicates existing SBEC authority."
+      ],
+      "supporterArguments": [
+        "Uniform statewide standards.",
+        "Find problems before certification fights."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "NEEDS_REVIEW",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Kelly supports evidence-based audits; opposes partisan review tourism.",
+        "debateImpact": "SOS competence vs. legislator oversight creep.",
+        "whenToUse": "SBEC authority debates.",
+        "whenNotToUse": "Without act text on trigger standards.",
+        "oppositionSetup": "Hammer: counties can't mark their own homework.",
+        "kellyMessageHelp": "Publish audit methodology; protect worker privacy.",
+        "campaignAlignment": "Trust through professional audits."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB272&ddBienniumSession=2023%2F2023R"
+      ],
+      "governanceNotes": [
+        "Enactment NEEDS_REVIEW."
+      ]
+    },
+    {
+      "billNumber": "SB273",
+      "actNumber": null,
+      "sessionYear": "2023/2023R",
+      "hammerRole": "co-sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND ELECTION LAW CONCERNING POLLING SITES; AND TO AMEND THE LOCATION OF VOTE CENTERS.",
+      "plainEnglishSummary": "Amends polling-site and vote-center location rules—extends 2021 SB487 geography control into 2023 session.",
+      "billNarrative": "Geographic control thread: repeated statutory edits to where voting happens.",
+      "countyImpactNarrative": "Another remapping cycle for clerks and commissioners.",
+      "operationalBurdenNarrative": "Notice, ADA compliance checks, and voter education repeats.",
+      "debateFrames": {
+        "kellyFrame": "Stability and accessibility first.",
+        "hammerFrame": "Fix mislocated sites.",
+        "countyFrame": "Stop moving targets before elections."
+      },
+      "counterArguments": [
+        "Voter confusion suppresses turnout."
+      ],
+      "supporterArguments": [
+        "Corrects unsafe or inefficient sites."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "NEEDS_REVIEW",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Same as SB487—partner with counties on sites.",
+        "debateImpact": "Links 2021–2023 continuity.",
+        "whenToUse": "With SB487 in stack.",
+        "whenNotToUse": "Alone without geographic examples.",
+        "oppositionSetup": "Hammer: fix errors.",
+        "kellyMessageHelp": "SOS site stability pledge.",
+        "campaignAlignment": "County burden theme."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB273&ddBienniumSession=2023%2F2023R"
+      ],
+      "governanceNotes": [
+        "Enactment NEEDS_REVIEW."
+      ]
+    },
+    {
+      "billNumber": "SB292",
+      "actNumber": null,
+      "sessionYear": "2023/2023R",
+      "hammerRole": "co-sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE COMPENSATION OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE DUTIES OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS.",
+      "plainEnglishSummary": "Changes pay and duties for county election commissioners—pairs with 2021 SB582 board governance edits.",
+      "billNarrative": "Shows sustained focus on county boards as compliance levers, not one-off 2021 changes.",
+      "countyImpactNarrative": "Quorum courts weigh compensation; boards balance volunteer burden vs. duties.",
+      "operationalBurdenNarrative": "Harder to fill commissioner seats if duties rise without pay.",
+      "debateFrames": {
+        "kellyFrame": "Pay fairly or lighten duties; train via SOS.",
+        "hammerFrame": "Commissioners must earn public trust.",
+        "countyFrame": "Unfunded mandates on volunteers."
+      },
+      "counterArguments": [
+        "Symbolic pay won't attract talent."
+      ],
+      "supporterArguments": [
+        "Aligns incentives with responsibility."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "NEEDS_REVIEW",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "LOW",
+      "strategicBriefing": {
+        "howToMessage": "Respect commissioners—fund or simplify.",
+        "debateImpact": "County modernization doctrine anchor.",
+        "whenToUse": "With SB582 in county stack.",
+        "whenNotToUse": "Before compensation figures verified in act.",
+        "oppositionSetup": "Hammer: accountability.",
+        "kellyMessageHelp": "Commissioner support fund proposal.",
+        "campaignAlignment": "County admin burden JSON cross-link."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB292&ddBienniumSession=2023%2F2023R"
+      ],
+      "governanceNotes": [
+        "Enactment NEEDS_REVIEW."
+      ]
+    }
+  ]
+}

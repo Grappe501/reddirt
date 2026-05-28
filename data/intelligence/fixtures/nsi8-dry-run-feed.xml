@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>NSI-8 Dry-Run Fixture Feed</title>
+    <link>https://example.com/nsi8-dry-run-fixture</link>
+    <description>Governed local fixture for public media intake tests — not a live external feed.</description>
+    <item>
+      <title>Arkansas Secretary of State election administration review discussed in Pulaski County</title>
+      <link>https://example.com/nsi8-fixture/sos-pulaski-review</link>
+      <description>Public meeting coverage mentions election integrity, county clerk coordination, and Secretary of State office oversight. Reference to SB487 implementation burden discussed.</description>
+      <pubDate>Mon, 26 May 2026 10:00:00 GMT</pubDate>
+      <author>Fixture Reporter</author>
+    </item>
+    <item>
+      <title>State legislature calendar includes election law bills for upcoming session</title>
+      <link>https://example.com/nsi8-fixture/legislative-calendar</link>
+      <description>Arkansas General Assembly public calendar lists election-related bill hearings. Kim Hammer-authored measures referenced in agenda summary.</description>
+      <pubDate>Sun, 25 May 2026 14:30:00 GMT</pubDate>
+      <author>Fixture Capitol Desk</author>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,183 @@
+{
+  "generatedAt": "2026-05-28T20:00:00.000Z",
+  "overlayVersion": "1.0",
+  "purpose": "County-aware narrative overlays seeded from KH-0B county burden, NSI-1 narrative registry, and governed export history. No synthetic claims.",
+  "overlays": [
+    {
+      "countyId": "statewide",
+      "countyName": "Statewide",
+      "narrativeIds": [
+        "kh0b-2021-integrity-foundation",
+        "kh0b-legislative-chronology",
+        "debate-frame-election-integrity",
+        "debate-frame-debate-questions"
+      ],
+      "localSensitivity": "HIGH",
+      "localOperationalImpact": "Statewide SOS race framing; export packets and debate prep default to statewide audience.",
+      "countyBurdenSignals": [
+        "2021 integrity package applies uniformly across 75 counties",
+        "Export dry-run referenced statewide scope"
+      ],
+      "exportUsageCount": 1,
+      "unresolvedDependencies": [
+        "cite-sb487-2021 NEEDS_REVIEW blocks integrity foundation promotion statewide"
+      ],
+      "narrativeStrengthModifier": 0,
+      "localMediaRisk": "MEDIUM",
+      "localDebateRelevance": "HIGH",
+      "recommendedResearchNeeds": [
+        "Verify SB487 act-text before statewide county-burden messaging",
+        "Confirm archive capture on campaign election-integrity citation before heavy debate reliance"
+      ],
+      "strategicNotes": "Statewide baseline — two export-ready debate claims; integrity foundation blocked by SB487 citation review.",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE"
+    },
+    {
+      "countyId": "pulaski",
+      "countyName": "Pulaski County",
+      "narrativeIds": [
+        "kh0b-county-administration-burden",
+        "debate-frame-election-integrity",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "localSensitivity": "HIGH",
+      "localOperationalImpact": "Largest county election administration footprint; precinct/site changes and clerk capacity are kitchen-table issues in Little Rock media market.",
+      "countyBurdenSignals": [
+        "precinct-site-control theme (SB487) directly affects urban polling logistics",
+        "enforcement-and-complaint-throughput increases clerk response burden"
+      ],
+      "exportUsageCount": 0,
+      "unresolvedDependencies": [
+        "SB487 citation NEEDS_REVIEW",
+        "pdeb-002 management readiness PARTIAL citation",
+        "kh3b-management-readiness-evidence task in progress"
+      ],
+      "narrativeStrengthModifier": -0.08,
+      "localMediaRisk": "HIGH",
+      "localDebateRelevance": "HIGH",
+      "recommendedResearchNeeds": [
+        "Pulaski clerk public statements on precinct changes",
+        "Local media coverage of election administration workload"
+      ],
+      "strategicNotes": "Strong operational relevance but over-dependent on unresolved SB487 county-burden citation.",
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "countyId": "washington",
+      "countyName": "Washington County",
+      "narrativeIds": [
+        "kh0b-county-administration-burden",
+        "debate-frame-debate-questions",
+        "debate-frame-election-integrity"
+      ],
+      "localSensitivity": "MEDIUM",
+      "localOperationalImpact": "Northwest Arkansas media market; university and growth-county election access framing.",
+      "countyBurdenSignals": [
+        "early-voting-placement and absentee operations affect growing suburban precincts",
+        "poll-watcher procedure changes increase training load for commissioners"
+      ],
+      "exportUsageCount": 0,
+      "unresolvedDependencies": [
+        "No county-specific export recorded yet",
+        "County burden frames remain INTERPRETATION tier until act-text verification"
+      ],
+      "narrativeStrengthModifier": 0.04,
+      "localMediaRisk": "MEDIUM",
+      "localDebateRelevance": "MEDIUM",
+      "recommendedResearchNeeds": [
+        "Washington County clerk early-voting site planning references",
+        "NW Arkansas debate media patterns from PBS/local recap sources"
+      ],
+      "strategicNotes": "Debate question patterns export-ready statewide but not yet localized for Washington County messaging.",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE"
+    },
+    {
+      "countyId": "benton",
+      "countyName": "Benton County",
+      "narrativeIds": [
+        "kh0b-county-administration-burden",
+        "debate-frame-election-integrity",
+        "SB487"
+      ],
+      "localSensitivity": "MEDIUM",
+      "localOperationalImpact": "Fast-growth county with commissioner and clerk scaling pressure; site changes and observer rules salient.",
+      "countyBurdenSignals": [
+        "precinct-site-control",
+        "poll-watcher-and-observer-load"
+      ],
+      "exportUsageCount": 0,
+      "unresolvedDependencies": [
+        "SB487 citation NEEDS_REVIEW",
+        "No Benton-specific clerk corroboration in corpus"
+      ],
+      "narrativeStrengthModifier": -0.05,
+      "localMediaRisk": "LOW",
+      "localDebateRelevance": "MEDIUM",
+      "recommendedResearchNeeds": [
+        "Benton County election commission meeting minutes on site changes",
+        "Regional GOP event video index for Hammer local appearances"
+      ],
+      "strategicNotes": "Election integrity frame usable internally; county burden narrative underdeveloped without local sourcing.",
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "countyId": "sebastian",
+      "countyName": "Sebastian County",
+      "narrativeIds": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "kh0b-legislative-chronology"
+      ],
+      "localSensitivity": "MEDIUM",
+      "localOperationalImpact": "Fort Smith region; rural access and clerk capacity narratives resonate with quorum court audiences.",
+      "countyBurdenSignals": [
+        "absentee-and-drop-box-operations",
+        "enforcement-and-complaint-throughput"
+      ],
+      "exportUsageCount": 0,
+      "unresolvedDependencies": [
+        "Management readiness partial — qualification frame not export-ready",
+        "kh3b-management-readiness-evidence incomplete"
+      ],
+      "narrativeStrengthModifier": -0.06,
+      "localMediaRisk": "LOW",
+      "localDebateRelevance": "MEDIUM",
+      "recommendedResearchNeeds": [
+        "Sebastian County clerk statements on absentee processing",
+        "River Valley media election administration coverage"
+      ],
+      "strategicNotes": "Chronology arc useful for pattern messaging; management readiness weak for external county surrogate use.",
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "countyId": "craighead",
+      "countyName": "Craighead County",
+      "narrativeIds": [
+        "kh0b-county-administration-burden",
+        "debate-frame-debate-questions",
+        "SB486"
+      ],
+      "localSensitivity": "LOW",
+      "localOperationalImpact": "Jonesboro/NE Arkansas; electioneering enforcement and poll-site rules less saturated in local media than central/NW counties.",
+      "countyBurdenSignals": [
+        "election-board-governance",
+        "poll-watcher-and-observer-load"
+      ],
+      "exportUsageCount": 0,
+      "unresolvedDependencies": [
+        "No Craighead-local export or clerk sourcing attached",
+        "County burden narrative lacks county-specific validation"
+      ],
+      "narrativeStrengthModifier": 0,
+      "localMediaRisk": "LOW",
+      "localDebateRelevance": "LOW",
+      "recommendedResearchNeeds": [
+        "Craighead County election board governance references",
+        "NE Arkansas civic bulletin search for Hammer affiliations (links kh3b-biographical-validation)"
+      ],
+      "strategicNotes": "Underdeveloped geographically — strong statewide debate patterns but minimal local operational corroboration.",
+      "reviewStatus": "DRAFT"
+    }
+  ]
+}

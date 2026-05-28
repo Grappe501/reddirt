@@ -1,0 +1,131 @@
+{
+  "layerVersion": "1.0",
+  "generatedAt": "2026-05-28T04:45:53.994Z",
+  "subject": "Kim Hammer",
+  "doctrineLabel": "county-modernization-through-compliance",
+  "actors": [
+    {
+      "role": "Secretary of State",
+      "statutoryRelationship": "Statewide election policy, training, and support; coordinates with State Board of Election Commissioners on rules and guidance.",
+      "evidenceStatus": "VERIFIED_FACT"
+    },
+    {
+      "role": "County clerk",
+      "statutoryRelationship": "Primary county election administrator; implements precincts, polling sites, early voting locations, absentee processes, and ballot logistics.",
+      "evidenceStatus": "VERIFIED_FACT"
+    },
+    {
+      "role": "County board of election commissioners",
+      "statutoryRelationship": "County-level governance body for election administration; subject to oath, duty, and compensation changes in Hammer-sponsored bills.",
+      "evidenceStatus": "VERIFIED_FACT"
+    },
+    {
+      "role": "Quorum court",
+      "statutoryRelationship": "County funding and appropriation authority; bears indirect cost when election duties expand without state appropriation.",
+      "evidenceStatus": "VERIFIED_FACT"
+    }
+  ],
+  "burdenThemes": [
+    {
+      "themeId": "precinct-site-control",
+      "linkedBills": [
+        "SB487"
+      ],
+      "sessions": [
+        "2021/2021R"
+      ],
+      "plainEnglish": "Shifts how precinct boundaries, polling sites, and vote centers are established or altered—more statutory process for county officials and commissioners.",
+      "kellyContrastFrame": "Kelly: modernize with county input and SOS playbooks—don't relocate voting by friction. Fund GIS/site review and public notice.",
+      "debateUse": "When Hammer claims 'local control,' ask who pays for remapping, notice, and voter confusion after site changes.",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "themeId": "election-board-governance",
+      "linkedBills": [
+        "SB582",
+        "SB292"
+      ],
+      "sessions": [
+        "2021/2021R",
+        "2023/2023R"
+      ],
+      "plainEnglish": "2021 oath and governance changes for county election boards; 2023 co-sponsored compensation and duty amendments.",
+      "kellyContrastFrame": "Respect commissioners but give them training dollars and clear SOS guidance—not more liability without resources.",
+      "debateUse": "Rural counties with part-time boards: unfunded duty creep is a kitchen-table issue.",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "themeId": "early-voting-placement",
+      "linkedBills": [
+        "SB296"
+      ],
+      "sessions": [
+        "2025/2025R"
+      ],
+      "plainEnglish": "2025 act amends county clerk designation of early voting locations (verify text for constraints vs. discretion).",
+      "kellyContrastFrame": "Expand convenient early voting where clerks and voters agree; SOS helps site planning.",
+      "debateUse": "Pair with voter-access frame, not fraud frame.",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "themeId": "poll-watcher-and-observer-load",
+      "linkedBills": [
+        "HB1457"
+      ],
+      "sessions": [
+        "2023/2023R"
+      ],
+      "plainEnglish": "Poll watcher bill of rights and procedure changes add training and dispute surface at county polling places.",
+      "kellyContrastFrame": "Transparent observation yes; intimidation and clerk disruption no—SOS trains uniform standards.",
+      "debateUse": "Clerks as protagonists: 'don't turn our poll workers into referees without a rulebook.'",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "themeId": "absentee-and-drop-box-operations",
+      "linkedBills": [
+        "SB643",
+        "SB258"
+      ],
+      "sessions": [
+        "2021/2021R",
+        "2023/2023R"
+      ],
+      "plainEnglish": "2021 absentee amendments plus 2023 co-sponsored method/drop-box restrictions increase clerk procedure burden.",
+      "kellyContrastFrame": "Protect ballot chain-of-custody with staffing and secure drop-off options clerks can administer.",
+      "debateUse": "Seniors, shift workers, rural voters—access vs. paperwork.",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "themeId": "enforcement-and-complaint-throughput",
+      "linkedBills": [
+        "SB644",
+        "SB272"
+      ],
+      "sessions": [
+        "2021/2021R",
+        "2023/2023R"
+      ],
+      "plainEnglish": "Hotline and integrity-review concepts route complaints into systems counties and SBEC must respond to.",
+      "kellyContrastFrame": "Investigate real violations quickly; don't flood clerks with bad-faith dockets.",
+      "debateUse": "Administrative capacity vs. performative enforcement.",
+      "evidenceStatus": "INTERPRETATION"
+    }
+  ],
+  "evidenceStatus": {
+    "burdenFrames": "INTERPRETATION",
+    "actorRolesFromPublicLaw": "VERIFIED_FACT"
+  },
+  "strategicBriefing": {
+    "howToMessage": "County modernization means clerks and election commissioners can execute consistent, voter-friendly processes—not absorb endless unfunded checklists from the Capitol.",
+    "debateImpact": "Flips 'integrity' bills into workforce and budget stories quorum courts understand.",
+    "whenToUse": "County elected officials, NASCE/clerks associations, regional papers, and debate segments on local government.",
+    "whenNotToUse": "When only bill titles are known—verify operational clauses before claiming specific dollar costs.",
+    "oppositionSetup": "Hammer: clerks wanted clarity; state must prevent chaos. Counter with partnership and resources.",
+    "kellyMessageHelp": "Kelly as SOS: training portals, help desk, model policies, and defending counties when rules are ambiguous.",
+    "campaignAlignment": "CountyWorkbench lane, rural access, election-administration competence."
+  },
+  "governanceNotes": [
+    "Burden dollar estimates are INTERPRETATION until fiscal impact statements or clerk surveys are attached.",
+    "Actor descriptions reflect Arkansas election law structure; confirm statutory citations in act-text pass."
+  ]
+}

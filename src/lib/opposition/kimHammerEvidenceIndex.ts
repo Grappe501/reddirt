@@ -38,8 +38,8 @@ export {
   type KimHammerPublicationSafetyRule,
 } from "@/lib/opposition/kimHammerPublicationSafety";
 
-function readJson<T>(relPath: string): T {
-  return JSON.parse(fs.readFileSync(path.join(process.cwd(), relPath), "utf8")) as T;
+function readJson<T>(relPath: string, repoRoot: string = process.cwd()): T {
+  return JSON.parse(fs.readFileSync(path.join(repoRoot, relPath), "utf8")) as T;
 }
 
 export type KimHammerRiskRegisterEntry = {
@@ -255,21 +255,26 @@ function indexClaim(
   };
 }
 
-export function loadKimHammerEvidenceIndex(): KimHammerEvidenceIndex {
+export function loadKimHammerEvidenceIndex(repoRoot: string = process.cwd()): KimHammerEvidenceIndex {
   const intelligenceGaps = readJson<KimHammerIntelligenceGapsFile>(
     "data/opposition/kim-hammer-profile/kim-hammer-intelligence-gaps.json",
+    repoRoot,
   );
   const publicDebateEvidenceBoard = readJson<KimHammerPublicDebateEvidenceBoardFile>(
     "data/opposition/kim-hammer-profile/kim-hammer-public-debate-evidence-board.json",
+    repoRoot,
   );
   const claimGraph = readJson<KimHammerClaimGraphFile>(
     "data/opposition/kim-hammer-profile/kim-hammer-kh4-claim-graph.json",
+    repoRoot,
   );
   const riskRegister = readJson<KimHammerRiskRegisterFile>(
     "data/opposition/kim-hammer-profile/kim-hammer-kh4-risk-register.json",
+    repoRoot,
   );
   const publicationSafety = readJson<KimHammerPublicationSafetyFile>(
     "data/opposition/kim-hammer-profile/kim-hammer-kh4-publication-safety.json",
+    repoRoot,
   );
 
   const riskByClaimId = new Map(riskRegister.risks.map((risk) => [risk.claimId, risk]));

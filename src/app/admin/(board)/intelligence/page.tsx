@@ -62,6 +62,27 @@ export default async function OppositionIntelligenceAdminPage() {
             <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/kim-hammer">
               Kim Hammer command center
             </Link>
+            <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/kim-hammer/county-briefings">
+              County briefings (NSI-5)
+            </Link>
+            <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/campaign-intelligence-graph">
+              Campaign intelligence graph (NSI-4)
+            </Link>
+            <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/strategy-alignment">
+              Strategy alignment (SDI-1)
+            </Link>
+            <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/morning-brief">
+              Morning brief (NSI-7)
+            </Link>
+            <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/strategic-target-pathway">
+              Target pathway (NSI-7)
+            </Link>
+            <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/writing-toolbox">
+              Writing toolbox (NSI-7)
+            </Link>
+            <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/media-intake">
+              Media intake (NSI-8)
+            </Link>
             <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/kim-hammer/debate-prep">
               Debate prep center
             </Link>

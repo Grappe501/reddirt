@@ -11,5 +11,41 @@
     },
     "id": "uxo_mpg2f7kw",
     "at": "2026-05-21T22:31:36.224Z"
+  },
+  {
+    "event": "page_viewed",
+    "actor": "admin",
+    "role": "operator",
+    "pathname": "/admin/intelligence/kim-hammer/evidence-command",
+    "recordId": null,
+    "meta": {
+      "month": "2026-03"
+    },
+    "id": "uxo_mpoxv2n6",
+    "at": "2026-05-28T03:33:53.826Z"
+  },
+  {
+    "event": "page_viewed",
+    "actor": "admin",
+    "role": "operator",
+    "pathname": "/admin/content",
+    "recordId": null,
+    "meta": {
+      "month": "2026-03"
+    },
+    "id": "uxo_mpoxvj0q",
+    "at": "2026-05-28T03:34:15.050Z"
+  },
+  {
+    "event": "page_viewed",
+    "actor": "admin",
+    "role": "operator",
+    "pathname": "/admin/intelligence",
+    "recordId": null,
+    "meta": {
+      "month": "2026-03"
+    },
+    "id": "uxo_mpoxwfkc",
+    "at": "2026-05-28T03:34:57.228Z"
   }
 ]

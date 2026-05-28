@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
 import {
   KH4_NON_PUBLISHABLE_LABEL,
   loadKimHammerKh4SuggestionAgents,
@@ -8,20 +9,10 @@ export default async function KimHammerKh4AgentToolsPage() {
   const data = loadKimHammerKh4SuggestionAgents();
 
   return (
-    <div className="mx-auto max-w-7xl text-kelly-text">
-      <header className="mb-6 border-b border-kelly-text/10 pb-4">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">
-          KH-4 Read-Only Suggestion Agents
-        </p>
-        <h1 className="font-heading text-2xl font-bold">Evidence Governance Copilot Registry</h1>
-        <p className="mt-2 max-w-4xl text-xs text-kelly-muted">
-          Read-only operator catalog sourced from `kim-hammer-kh4-agent-tools.json`. No live execution,
-          claim generation, or auto-publishing on this page.
-        </p>
-      </header>
-
+    <KimHammerBriefingPageShell moduleId="kh4-agent-tools">
       <section className="mb-6 rounded-xl border border-amber-300/40 bg-amber-50 p-4 text-xs text-amber-950">
         <p className="font-bold uppercase tracking-wider">{KH4_NON_PUBLISHABLE_LABEL}</p>
+        <p className="mt-1">Read-only suggestion agents — no autonomous publish, export, or review-status mutation.</p>
       </section>
 
       <section className="mb-6 grid gap-3 sm:grid-cols-4">
@@ -84,6 +75,12 @@ export default async function KimHammerKh4AgentToolsPage() {
 
       <section className="mt-6 flex flex-wrap gap-2 text-xs">
         <Link
+          href="/admin/intelligence/kim-hammer/ai-suggestion-sandbox"
+          className="rounded border border-violet-300 bg-violet-50 px-2 py-1 font-semibold text-violet-900"
+        >
+          AI suggestion sandbox (V3-D)
+        </Link>
+        <Link
           href="/admin/intelligence/kim-hammer/evidence-command"
           className="rounded border px-2 py-1 font-semibold text-kelly-navy"
         >
@@ -96,6 +93,6 @@ export default async function KimHammerKh4AgentToolsPage() {
           Debate packet export
         </Link>
       </section>
-    </div>
+    </KimHammerBriefingPageShell>
   );
 }

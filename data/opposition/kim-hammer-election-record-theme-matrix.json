@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-27T04:52:35.411Z",
+  "generatedAt": "2026-05-28T04:44:30.962Z",
   "themes": {
     "direct_democracy_ballot_initiatives": [
       "HB1222",
@@ -20,29 +20,41 @@
       "SB584"
     ],
     "county_election_administration": [
+      "HB1457",
+      "SB272",
+      "SB273",
+      "SB292",
       "SB294",
       "SB296",
-      "HB1457"
+      "SB487",
+      "SB582"
     ],
     "voter_registration": [],
     "absentee_voting": [
-      "SB299"
+      "SB258",
+      "SB299",
+      "SB643"
     ],
     "ballot_access": [
       "HB1222",
+      "HB1457",
       "HB1707",
       "SB210",
-      "HB1457"
+      "SB254",
+      "SB486"
     ],
     "election_enforcement": [
+      "HB1464",
       "HB1693",
+      "SB272",
       "SB291",
       "SB294",
-      "HB1464"
+      "SB644"
     ],
     "voting_equipment_paper_ballots": [
       "HB1487",
-      "SB250"
+      "SB250",
+      "SB488"
     ],
     "secretary_of_state_duties": [
       "HB1707"
@@ -51,10 +63,16 @@
       "HB1457"
     ],
     "write_ins_candidate_access": [
-      "HB1707"
-    ]
+      "HB1707",
+      "SB254"
+    ],
+    "transparency_public_records": [
+      "SB488"
+    ],
+    "election_integrity_general": []
   },
   "notes": [
-    "Theme assignments are title-informed and require bill-text confirmation for legal precision."
+    "Theme assignments are title-informed and require bill-text confirmation for legal precision.",
+    "KH-0B added 2021 integrity foundation + 2023 co-sponsored election bills."
   ]
 }

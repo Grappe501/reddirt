@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-28T26:00:00.000Z",
+  "purpose": "Scheduled public media intake run log — NSI-10. Default DRY_RUN; LIVE only for gate-approved feeds.",
+  "runs": []
+}

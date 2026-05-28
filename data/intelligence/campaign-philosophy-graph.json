@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2026-05-28T23:00:00.000Z",
+  "graphVersion": "1.0",
+  "purpose": "NSI-4 campaign philosophy graph — civic values linked to doctrines, narratives, bills, and messaging frames. Registry references only; no generated doctrine.",
+  "nodes": [
+    {
+      "philosophyId": "philosophy-civic-trust",
+      "title": "Civic Trust & Process Legitimacy",
+      "category": "CIVIC_VALUE",
+      "principle": "Election administration should build public confidence through lawful, transparent, non-polarizing process clarity.",
+      "linkedDoctrines": ["doctrine-steve-strategy", "doctrine-sos-keeper-records", "doctrine-grassroots-principles"],
+      "linkedNarratives": ["debate-frame-election-integrity", "kh0b-2021-integrity-foundation"],
+      "linkedBills": ["SB486", "SB487", "SB488"],
+      "linkedPhilosophyIds": ["philosophy-transparency", "philosophy-county-partnership"],
+      "messagingFrames": ["balls-and-strikes SOS", "keeper of the record", "process you can trust"],
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "philosophyId": "philosophy-transparency",
+      "title": "Transparency & Public Record Access",
+      "category": "ACCOUNTABILITY",
+      "principle": "Citizens deserve understandable public records, audit trails, and accountable election procedures—not opaque institutional shields.",
+      "linkedDoctrines": ["doctrine-sos-keeper-records", "doctrine-opponent-contrast-matrix"],
+      "linkedNarratives": ["kh0b-2021-integrity-foundation"],
+      "linkedBills": ["SB488", "SB643"],
+      "linkedPhilosophyIds": ["philosophy-civic-trust", "philosophy-anti-centralization"],
+      "messagingFrames": ["show your work", "published procedures", "audit-ready processes"],
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "philosophyId": "philosophy-participation",
+      "title": "Participation & Ballot Access",
+      "category": "PARTICIPATION",
+      "principle": "Integrity and participation reinforce each other—rules should make voting workable, not merely harder.",
+      "linkedDoctrines": ["doctrine-steve-strategy", "doctrine-grassroots-playbook"],
+      "linkedNarratives": ["debate-frame-election-integrity", "debate-frame-debate-questions"],
+      "linkedBills": ["SB486", "SB487", "SB254"],
+      "linkedPhilosophyIds": ["philosophy-civic-trust", "philosophy-citizen-empowerment"],
+      "messagingFrames": ["integrity + access together", "voter assistance", "stable polling places"],
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "philosophyId": "philosophy-county-partnership",
+      "title": "County Partnership & Implementation Support",
+      "category": "OPERATIONS",
+      "principle": "State election policy must fund and support county implementation—not offload complexity without resources.",
+      "linkedDoctrines": ["doctrine-grassroots-principles", "doctrine-county-kpi-model"],
+      "linkedNarratives": ["kh0b-county-administration-burden", "SB487"],
+      "linkedBills": ["SB487", "SB582", "SB643"],
+      "linkedPhilosophyIds": ["philosophy-modernization", "philosophy-civic-trust"],
+      "messagingFrames": ["support clerks", "SOS county toolkit", "implementation readiness"],
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "philosophyId": "philosophy-modernization",
+      "title": "Modernization-Forward Governance",
+      "category": "MODERNIZATION",
+      "principle": "Kelly SOS modernization should pair policy changes with training, transparency, and county capacity—not mandate alone.",
+      "linkedDoctrines": ["doctrine-kelly-theme-integration", "doctrine-segmented-targeting"],
+      "linkedNarratives": ["debate-frame-management-readiness", "kh0b-county-administration-burden"],
+      "linkedBills": ["SB487", "SB582"],
+      "linkedPhilosophyIds": ["philosophy-county-partnership"],
+      "messagingFrames": ["modernize with support", "implementation readiness", "transparent rollout"],
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "philosophyId": "philosophy-citizen-empowerment",
+      "title": "Citizen Empowerment",
+      "category": "EMPOWERMENT",
+      "principle": "Policy should expand citizen understanding and participation—not concentrate discretion in opaque institutional processes.",
+      "linkedDoctrines": ["doctrine-steve-strategy", "doctrine-relational-organizing"],
+      "linkedNarratives": ["debate-frame-election-integrity"],
+      "linkedBills": ["SB254", "SB258"],
+      "linkedPhilosophyIds": ["philosophy-participation", "philosophy-anti-centralization"],
+      "messagingFrames": ["your vote counts", "know your rights", "accessible process"],
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "philosophyId": "philosophy-anti-centralization",
+      "title": "Anti-Centralization & Local Accountability",
+      "category": "GOVERNANCE",
+      "principle": "Avoid concentrating election discretion in ways that reduce local accountability or public understanding.",
+      "linkedDoctrines": ["doctrine-steve-strategy", "doctrine-grassroots-principles"],
+      "linkedNarratives": ["kh0b-county-administration-burden", "SB487"],
+      "linkedBills": ["SB487", "SB643", "SB644"],
+      "linkedPhilosophyIds": ["philosophy-transparency", "philosophy-county-partnership"],
+      "messagingFrames": ["local accountability", "county visibility", "public notice"],
+      "reviewStatus": "NEEDS_REVIEW"
+    },
+    {
+      "philosophyId": "philosophy-direct-democracy",
+      "title": "Direct Democracy & Initiative Access",
+      "category": "PARTICIPATION",
+      "principle": "Ballot initiative and petition pathways should remain understandable and accessible within lawful guardrails.",
+      "linkedDoctrines": ["doctrine-opponent-contrast-matrix"],
+      "linkedNarratives": ["kh0b-legislative-chronology"],
+      "linkedBills": ["SB254", "SB258", "SB272", "SB273"],
+      "linkedPhilosophyIds": ["philosophy-participation", "philosophy-citizen-empowerment"],
+      "messagingFrames": ["citizen petition rights", "lawful access", "clear rules"],
+      "reviewStatus": "NEEDS_REVIEW"
+    }
+  ]
+}

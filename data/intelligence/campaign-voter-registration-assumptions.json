@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-28T22:00:00.000Z",
+  "purpose": "Governed anecdotal registration-to-vote assumptions for pathway modeling. Not validated model output.",
+  "registrationTurnoutAssumption": 0.3,
+  "supportCaptureAssumption": 0.75,
+  "notes": "Anecdotal field assumptions based on current activity, demographics, and registration focus areas. Not validated model output.",
+  "governance": {
+    "aggregateOnly": true,
+    "noIndividualVoterOutputs": true,
+    "requiresHumanValidation": true,
+    "label": "NEEDS_VALIDATION"
+  }
+}

@@ -1,18 +1,26 @@
 import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
+import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
 import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
+import { listFlaggedBillCivicSummaries } from "@/lib/intelligence/kimHammerBillCivicIntelligence";
+import { summarizeDebateCommandMessaging } from "@/lib/intelligence/campaignMessagingIntelligence";
+import { loadCountyBriefingIntelligenceIndex } from "@/lib/intelligence/countyBriefingIntelligence";
+import { summarizeRegionalDeploymentConditions } from "@/lib/intelligence/regionalStrategicModeling";
+import Link from "next/link";
 
 export default async function KimHammerDebatePrepPage() {
   const data = loadKimHammerWorkbench();
   const kh2 = loadKimHammerKh2Workbench();
+  const civicSummaries = listFlaggedBillCivicSummaries();
+  const debateMessaging = summarizeDebateCommandMessaging();
+  const regional = summarizeRegionalDeploymentConditions();
+  const countyBriefings = loadCountyBriefingIntelligenceIndex();
+  const debateCounties = countyBriefings.counties.filter((row) =>
+    row.briefingSignals.some((signal) => signal.signal === "COUNTY_DEBATE_RELEVANT"),
+  );
 
   return (
-    <div className="mx-auto max-w-7xl text-kelly-text">
-      <header className="mb-6 border-b border-kelly-text/10 pb-4">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Debate Prep Command Center</p>
-        <h1 className="font-heading text-2xl font-bold">Kim Hammer Debate Prep</h1>
-      </header>
-
-      <section className="mb-4 rounded-xl border border-kelly-text/10 bg-white p-4">
+    <KimHammerBriefingPageShell moduleId="debate-prep">
+<section className="mb-4 rounded-xl border border-kelly-text/10 bg-white p-4">
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">1) Debate Strategy Overview</h2>
         <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
           <li>Objective: educate voters on record, impact, and Secretary of State office philosophy.</li>
@@ -147,6 +155,95 @@ export default async function KimHammerDebatePrepPage() {
         </div>
       </section>
 
+      <section className="mb-4 rounded-xl border border-indigo-200/40 bg-indigo-50/30 p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-indigo-950">NSI-4 · Doctrine-aware debate civic intelligence</h2>
+        <p className="mt-1 text-xs text-indigo-900/80">
+          Philosophy-aware, county-aware civic signals for debate anchors — read-only governed synthesis.
+        </p>
+        <ul className="mt-3 space-y-2 text-xs text-indigo-950">
+          {civicSummaries.map((row) => (
+            <li key={row.billNumber} className="rounded border border-indigo-200/50 bg-white/70 p-2">
+              <Link href={`/admin/intelligence/kim-hammer/bills/${encodeURIComponent(row.billNumber)}`} className="font-semibold underline">
+                {row.billNumber}
+              </Link>
+              {" · "}
+              {row.civicSignal.replaceAll("_", " ")}
+              <p className="mt-1 text-indigo-900/90">{row.signal.slice(0, 180)}</p>
+            </li>
+          ))}
+        </ul>
+        <ul className="mt-3 list-inside list-disc text-xs text-indigo-900">
+          {debateMessaging.philosophyConsistency.map((row) => (
+            <li key={row}>{row}</li>
+          ))}
+        </ul>
+        {debateMessaging.strategicRiskWarnings.length > 0 ? (
+          <ul className="mt-2 list-inside list-disc text-xs text-amber-900">
+            {debateMessaging.strategicRiskWarnings.slice(0, 4).map((row) => (
+              <li key={row}>{row}</li>
+            ))}
+          </ul>
+        ) : null}
+      </section>
+
+      <section className="mb-4 rounded-xl border border-teal-200/40 bg-teal-50/30 p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-teal-950">NSI-5 · County-specific debate guidance</h2>
+        <p className="mt-1 text-xs text-teal-900/80">
+          Locally relevant opponent bills, bridge lines, and what-not-to-say guidance per county briefing.
+        </p>
+        <Link href="/admin/intelligence/kim-hammer/county-briefings" className="mt-2 inline-block text-xs font-semibold text-teal-950 underline">
+          Open county briefing index →
+        </Link>
+        <ul className="mt-3 space-y-2 text-xs text-teal-950">
+          {debateCounties.slice(0, 5).map((county) => (
+            <li key={county.countyId} className="rounded border border-teal-200/50 bg-white/70 p-2">
+              <Link href={`/admin/intelligence/kim-hammer/counties/${encodeURIComponent(county.countyId)}`} className="font-semibold underline">
+                {county.countyName}
+              </Link>
+              {county.topOpponentBills[0] ? (
+                <p className="mt-1">Top local bill: {county.topOpponentBills[0].billNumber} — {county.topOpponentBills[0].civicSignalText.slice(0, 120)}</p>
+              ) : null}
+              {county.debatePrepGuidance[0] ? <p className="mt-1">{county.debatePrepGuidance[0]}</p> : null}
+              {county.whatToAvoid[0] ? <p className="mt-1 text-amber-900">Avoid: {county.whatToAvoid[0]}</p> : null}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mb-4 rounded-xl border border-violet-200/40 bg-violet-50/30 p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-violet-950">NSI-6 · Regional strategic overlays</h2>
+        <p className="mt-1 text-xs text-violet-900/80">County clusters, turnout-sensitive framing, and media saturation warnings — aggregate-only.</p>
+        <ul className="mt-3 space-y-2 text-xs text-violet-950">
+          {regional.clusters.map((cluster) => (
+            <li key={cluster.clusterId} className="rounded border border-violet-200/50 bg-white/70 p-2">
+              <strong>{cluster.title}</strong> ({cluster.countyIds.join(", ")})
+              <p className="mt-1">{cluster.deploymentSummary}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mb-4 rounded-xl border border-indigo-200/40 bg-indigo-50/30 p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-indigo-950">NSI-7 · Deep brief & writing tools</h2>
+        <p className="mt-1 text-xs text-indigo-900/80">
+          Governed intelligence papers, target pathway warnings, and INTERNAL_DRAFT talking point helpers.
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2 text-xs">
+          <Link href="/admin/intelligence/morning-brief" className="rounded border border-indigo-900/20 bg-white px-2 py-1 font-semibold text-indigo-950">
+            Morning brief
+          </Link>
+          <Link href="/admin/intelligence/writing-toolbox" className="rounded border border-indigo-900/20 bg-white px-2 py-1 font-semibold text-indigo-950">
+            Writing toolbox
+          </Link>
+          <Link href="/admin/intelligence/strategic-target-pathway" className="rounded border border-indigo-900/20 bg-white px-2 py-1 font-semibold text-indigo-950">
+            Target pathway
+          </Link>
+        </div>
+        <p className="mt-2 text-[10px] text-indigo-900/70">
+          Media monitoring gaps remain until NSI-8 live intake. Registration assumptions are anecdotal — validate before field reliance.
+        </p>
+      </section>
+
       <section className="rounded-xl border border-kelly-text/10 bg-white p-4">
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">14) Debate Evidence Locker</h2>
         <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
@@ -155,7 +252,7 @@ export default async function KimHammerDebatePrepPage() {
           <li>Research gaps queue for fiscal notes, testimony, and county implementation evidence.</li>
         </ul>
       </section>
-    </div>
+    </KimHammerBriefingPageShell>
   );
 }
 

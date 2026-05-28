@@ -1,3 +1,4 @@
+import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
 import {
   loadKimHammerEvidenceIndex,
   resolveRetrievalTaskStatus,
@@ -12,6 +13,8 @@ import {
   KIM_HAMMER_EXPORT_FILTER,
 } from "@/lib/opposition/kimHammerPublicationSafety";
 import { loadKimHammerKh4SuggestionAgents } from "@/lib/opposition/kimHammerKh4SuggestionAgents";
+import { loadKimHammerNarrativeBriefings } from "@/lib/opposition/kimHammerNarrativeBriefings";
+import { EvidenceCommandNarrativeBrief } from "./EvidenceCommandNarrativeBrief";
 import {
   EvidenceCommandDashboard,
   type EvidenceCommandAnalytics,
@@ -21,6 +24,27 @@ import {
   type EvidenceCommandClaimRow,
   type EvidenceCommandTaskRow,
 } from "./EvidenceCommandFilters";
+import {
+  EvidenceCommandReviewPanel,
+  type KimHammerClaimReviewRow,
+} from "../EvidenceCommandReviewPanel";
+import {
+  EvidenceCommandTaskPanel,
+  type KimHammerRetrievalTaskRow,
+} from "../EvidenceCommandTaskPanel";
+import { getAllowedReviewTransitions } from "@/lib/opposition/kimHammerReviewWorkflow";
+import { getAllowedTaskTransitions } from "@/lib/opposition/kimHammerTaskWorkflow";
+import { summarizeGeographicNarrativeForCommand } from "@/lib/opposition/kimHammerGeographicNarrativeState";
+import { summarizeNarrativeUsageRisk } from "@/lib/opposition/kimHammerNarrativeUsageAnalytics";
+import { summarizeStrategicAlignmentRisk } from "@/lib/intelligence/campaignStrategicAlignment";
+import {
+  loadCountyBriefingIntelligenceIndex,
+  summarizeCountyBriefingForEvidenceCommand,
+} from "@/lib/intelligence/countyBriefingIntelligence";
+import { summarizeOperationalIntelligenceForEvidenceCommand } from "@/lib/intelligence/aggregateCampaignIntelligence";
+import { summarizeMediaMonitoringReadiness } from "@/lib/intelligence/publicMediaMonitor";
+import { summarizeCampaignIntelligenceState } from "@/lib/intelligence/intelligenceBrainCoordinator";
+import { computeStatewideRegistrationRollup } from "@/lib/intelligence/voterRegistrationTargetModel";
 
 function buildRecommendedActions(index: ReturnType<typeof loadKimHammerEvidenceIndex>): string[] {
   const actions: string[] = [];
@@ -63,6 +87,40 @@ function buildRecommendedActions(index: ReturnType<typeof loadKimHammerEvidenceI
   }
 
   return actions;
+}
+
+function buildExecutableTaskRows(
+  index: ReturnType<typeof loadKimHammerEvidenceIndex>,
+): KimHammerRetrievalTaskRow[] {
+  return [...index.retrievalTasks]
+    .sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999))
+    .map((task) => ({
+      id: task.id,
+      rank: task.rank ?? null,
+      title: task.description,
+      taskStatus: resolveRetrievalTaskStatus(task),
+      owner: task.owner ?? "",
+      priority: task.priority,
+      dueDate: task.dueDate ?? null,
+      completionNotes: task.completionNotes ?? "",
+      reviewRequired: task.reviewRequired ?? false,
+      externalReadiness: task.externalMessageReadiness ?? "—",
+      allowedTransitions: getAllowedTaskTransitions(resolveRetrievalTaskStatus(task)),
+    }));
+}
+
+function buildReviewRows(index: ReturnType<typeof loadKimHammerEvidenceIndex>): KimHammerClaimReviewRow[] {
+  return index.claims.map((claim) => ({
+    id: claim.id,
+    indexSource: claim.indexSource,
+    title: claim.topic ?? claim.id,
+    text: claim.text ?? claim.claim ?? "",
+    reviewStatus: getReviewStatusLabel(claim),
+    reviewer: claim.reviewer,
+    reviewNotes: claim.reviewNotes,
+    exportReady: canExportClaim(claim),
+    allowedTransitions: getAllowedReviewTransitions(claim.reviewStatus),
+  }));
 }
 
 function buildClaimRows(index: ReturnType<typeof loadKimHammerEvidenceIndex>): EvidenceCommandClaimRow[] {
@@ -131,9 +189,67 @@ export default async function KimHammerEvidenceCommandPage() {
   const { metrics } = index;
   const copilot = loadKimHammerKh4SuggestionAgents();
   const claimRows = buildClaimRows(index);
+  const reviewRows = buildReviewRows(index);
+  const executableTaskRows = buildExecutableTaskRows(index);
   const taskRows = buildTaskRows(index);
   const analytics = buildAnalytics(index, taskRows, copilot.agents.length);
   const recommendedActions = buildRecommendedActions(index);
+  const geographicSummary = summarizeGeographicNarrativeForCommand();
+  const usageSummary = summarizeNarrativeUsageRisk();
+  const strategicSummary = summarizeStrategicAlignmentRisk();
+  const countyBriefingSummary = summarizeCountyBriefingForEvidenceCommand();
+  const countyBriefings = loadCountyBriefingIntelligenceIndex();
+  const operationalSummary = summarizeOperationalIntelligenceForEvidenceCommand(countyBriefings.counties);
+  const registration = computeStatewideRegistrationRollup();
+  const media = summarizeMediaMonitoringReadiness();
+  const brain = summarizeCampaignIntelligenceState();
+  const nsi7Summary = {
+    mediaGaps: media.gaps,
+    targetPathwayGaps: brain.targetPathwayMissingData,
+    registrationNote: registration.assumptions.notes,
+    expectedSupportYield: registration.expectedSupportVotes,
+    morningBriefHref: "/admin/intelligence/morning-brief",
+    writingToolboxHref: "/admin/intelligence/writing-toolbox",
+    targetPathwayHref: "/admin/intelligence/strategic-target-pathway",
+  };
+  const nsi11Summary = {
+    aiToolCount: brain.aiToolCount,
+    aiCopilotRecommendedRuns: brain.aiCopilotRecommendedRuns,
+    oppositionResearchNextActions: brain.oppositionResearchNextActions,
+    debatePrepNextActions: brain.debatePrepNextActions,
+    citationImprovementPriorities: brain.citationImprovementPriorities,
+    mediaMonitoringPriorities: brain.mediaMonitoringPriorities,
+    publicMeetingWatchlistGaps: brain.publicMeetingWatchlistGaps,
+    briefingPaperGaps: brain.briefingPaperQueueExtended.slice(0, 4).map((row) => ({
+      title: row.title,
+      href: row.href,
+    })),
+    writingOpportunities: brain.writingOpportunitiesExtended.slice(0, 4),
+    aiToolsHref: "/admin/intelligence/ai-tools",
+    oppositionCopilotHref: "/admin/intelligence/kim-hammer/ai-opposition-copilot",
+    debateWorkbenchHref: "/admin/intelligence/kim-hammer/debate-ai-workbench",
+    briefingPapersHref: "/admin/intelligence/briefing-papers",
+  };
+  const nsi12Summary = {
+    pendingDraftCount: brain.llmDraftQueueSummary.pendingCount,
+    debateDraftBacklog: brain.llmDraftQueueSummary.debateDraftBacklog,
+    writingDraftBacklog: brain.llmDraftQueueSummary.writingDraftBacklog,
+    citationRiskDraftCount: brain.llmDraftQueueSummary.citationRiskDraftCount,
+    unsupportedClaimDraftCount: brain.llmDraftQueueSummary.unsupportedClaimDraftCount,
+    reviewPriorities: brain.llmDraftReviewPriorities.slice(0, 4),
+    unsafeWarnings: brain.llmUnsafeDraftWarnings.slice(0, 4),
+    llmReviewQueueHref: "/admin/intelligence/llm-review-queue",
+  };
+  const nsi13Summary = {
+    narrativeFatigueAlerts: brain.memoryOverusedArguments.slice(0, 3),
+    citationAgingAlerts: brain.memoryStaleCitations.slice(0, 3),
+    debateRecurrenceWarnings: brain.memoryDebateTraps.slice(0, 3),
+    countyDriftWarnings: brain.memoryCountyDriftWarnings.slice(0, 3),
+    doctrineInconsistencyWarnings: brain.memoryDoctrineDriftWarnings.slice(0, 3),
+    exportFatigueAlerts: brain.longitudinalIntelligence.exportFatigueWarnings.map((r) => r.reason).slice(0, 3),
+    recurringAttackSummaries: brain.memoryOpponentEscalation.slice(0, 3),
+    intelligenceMemoryHref: "/admin/intelligence/intelligence-memory",
+  };
 
   const blockerRules = index.publicationSafety.rules.filter((rule) =>
     metrics.safetyBlockers.includes(rule.id),
@@ -142,17 +258,8 @@ export default async function KimHammerEvidenceCommandPage() {
   const exportFilterLabel = `${KIM_HAMMER_EXPORT_FILTER.externalUseStatus} · ${KIM_HAMMER_EXPORT_FILTER.citationStatus} · ${KIM_HAMMER_EXPORT_FILTER.confidenceTier} · ${KIM_HAMMER_EXPORT_FILTER.legalRisk} legal risk · review APPROVED_FOR_EXTERNAL_USE or EXPORTED`;
 
   return (
-    <div className="mx-auto max-w-7xl text-kelly-text">
-      <header className="mb-6 border-b border-kelly-text/10 pb-4">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">
-          Evidence Command Center
-        </p>
-        <h1 className="font-heading text-2xl font-bold">Unified Evidence Governance Dashboard</h1>
-        <p className="mt-2 max-w-4xl text-xs text-kelly-muted">
-          Read-only operator command view for claim disposition, retrieval workload, publication safety, and
-          copilot readiness. Behavior is unchanged — filters and links only.
-        </p>
-      </header>
+    <KimHammerBriefingPageShell moduleId="evidence-command">
+<EvidenceCommandNarrativeBrief sections={loadKimHammerNarrativeBriefings().sections} />
 
       <EvidenceCommandDashboard
         analytics={analytics}
@@ -167,9 +274,22 @@ export default async function KimHammerEvidenceCommandPage() {
         exportFilterLabel={exportFilterLabel}
         copilotLabel={copilot.nonPublishableLabel}
         recommendedActions={recommendedActions}
+        geographicSummary={geographicSummary}
+        usageSummary={usageSummary}
+        strategicSummary={strategicSummary}
+        countyBriefingSummary={countyBriefingSummary}
+        operationalSummary={operationalSummary}
+        nsi7Summary={nsi7Summary}
+        nsi11Summary={nsi11Summary}
+        nsi12Summary={nsi12Summary}
+        nsi13Summary={nsi13Summary}
       />
 
+      <EvidenceCommandReviewPanel claims={reviewRows} />
+
+      <EvidenceCommandTaskPanel tasks={executableTaskRows} />
+
       <EvidenceCommandFilters claims={claimRows} tasks={taskRows} />
-    </div>
+    </KimHammerBriefingPageShell>
   );
 }

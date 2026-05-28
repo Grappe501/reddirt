@@ -10,8 +10,11 @@ import {
   passesReviewExportGate,
   passesTierOneSafetyCriteria,
 } from "@/lib/opposition/kimHammerPublicationSafety";
-import { KIM_HAMMER_REVIEW_STATUSES } from "@/lib/opposition/types/kimHammerEvidence";
-import type { KimHammerClaim } from "@/lib/opposition/types/kimHammerEvidence";
+import { KIM_HAMMER_REVIEW_STATUSES, type KimHammerClaim } from "@/lib/opposition/types/kimHammerEvidence";
+import {
+  loadKimHammerBriefingHub,
+  loadKimHammerModuleBriefing,
+} from "@/lib/opposition/kimHammerModuleBriefings";
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message);
@@ -65,6 +68,37 @@ function main() {
   assert(dashboardSource.includes("/admin/intelligence/kim-hammer/attack-surface"), "Dashboard must link to attack surface.");
   assert(dashboardSource.includes("/admin/intelligence/kim-hammer/narrative-drift-monitor"), "Dashboard must link to narrative drift monitor.");
   assert(pageSource.includes("EvidenceCommandDashboard"), "Evidence command page must render dashboard component.");
+
+  assert(
+    fs.existsSync(path.join(process.cwd(), "src/lib/opposition/kimHammerModuleBriefings.ts")),
+    "Nested briefing module loader must exist.",
+  );
+  assert(
+    fs.existsSync(path.join(process.cwd(), "src/app/admin/(board)/intelligence/kim-hammer/KimHammerBriefingPageShell.tsx")),
+    "Briefing page shell must exist.",
+  );
+
+  const hubPageSource = fs.readFileSync(
+    path.join(process.cwd(), "src/app/admin/(board)/intelligence/kim-hammer/page.tsx"),
+    "utf8",
+  );
+  assert(hubPageSource.includes("KimHammerBriefingHub"), "Command center must render nested briefing hub.");
+  assert(hubPageSource.includes("Nested Intelligence Briefing Hub"), "Command center must use briefing hub title.");
+
+  const patternPageSource = fs.readFileSync(
+    path.join(process.cwd(), "src/app/admin/(board)/intelligence/kim-hammer/pattern-analysis/page.tsx"),
+    "utf8",
+  );
+  assert(
+    patternPageSource.includes("KimHammerBriefingPageShell"),
+    "Leaf pages must use briefing page shell.",
+  );
+
+  const hub = loadKimHammerBriefingHub();
+  assert(hub.domains.length >= 6, "Briefing hub must define KH domains.");
+  assert(Object.keys(hub.moduleBriefings).length >= 38, "Briefing hub must cover module briefings.");
+  const evidenceBrief = loadKimHammerModuleBriefing("evidence-command");
+  assert(evidenceBrief.paragraphs.length >= 2, "Module briefings must include narrative paragraphs.");
 
   const index = loadKimHammerEvidenceIndex();
 

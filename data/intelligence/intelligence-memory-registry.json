@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-28T22:00:00.000Z",
+  "purpose": "NSI-13 longitudinal intelligence memory registry — read-only synthesis anchor; live signals computed by memory engine.",
+  "governanceDefaults": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "autonomousMutation": false
+  },
+  "narrativeMemory": [
+    {
+      "narrativeId": "kh0b-2021-integrity-foundation",
+      "firstSeenAt": "2026-01-15T00:00:00.000Z",
+      "lastSeenAt": "2026-05-28T00:00:00.000Z",
+      "evolutionSummary": "Core legislative integrity cluster — readiness tied to SB486/SB487 export-ready claims.",
+      "readinessHistory": [{"at": "2026-03-01", "band": "STRONG"}, {"at": "2026-05-28", "band": "STRONG"}],
+      "dependencyHistory": [{"at": "2026-05-01", "exportReadyClaims": 1, "partialClaims": 0}],
+      "exportHistory": [{"exportId": "seed-export-001", "at": "2026-04-10", "scope": "debate-packet"}],
+      "fatigueSignals": [],
+      "doctrineAlignmentHistory": [{"at": "2026-05-01", "alignment": "ALIGNED"}],
+      "countyShiftSignals": [],
+      "mediaCycleLinks": ["election-integrity-wave"]
+    },
+    {
+      "narrativeId": "kh0b-county-administration-burden",
+      "firstSeenAt": "2026-01-20T00:00:00.000Z",
+      "lastSeenAt": "2026-05-28T00:00:00.000Z",
+      "evolutionSummary": "County burden framing — partial citation dependency blocks full export readiness.",
+      "readinessHistory": [{"at": "2026-03-01", "band": "WEAK"}, {"at": "2026-05-28", "band": "WEAK"}],
+      "dependencyHistory": [{"at": "2026-05-01", "exportReadyClaims": 0, "partialClaims": 1}],
+      "exportHistory": [],
+      "fatigueSignals": ["Field teams repeating burden frame without fresh county examples."],
+      "doctrineAlignmentHistory": [{"at": "2026-05-01", "alignment": "TENSE"}],
+      "countyShiftSignals": ["pulaski", "benton"],
+      "mediaCycleLinks": ["county-administration"]
+    },
+    {
+      "narrativeId": "debate-frame-management-readiness",
+      "firstSeenAt": "2026-02-01T00:00:00.000Z",
+      "lastSeenAt": "2026-05-28T00:00:00.000Z",
+      "evolutionSummary": "Blocked debate frame — Tier 2 partial corroboration; high risk if deployed externally.",
+      "readinessHistory": [{"at": "2026-03-01", "band": "BLOCKED"}, {"at": "2026-05-28", "band": "BLOCKED"}],
+      "dependencyHistory": [{"at": "2026-05-01", "exportReadyClaims": 0, "partialClaims": 2}],
+      "exportHistory": [],
+      "fatigueSignals": [],
+      "doctrineAlignmentHistory": [{"at": "2026-05-01", "alignment": "CONFLICT"}],
+      "countyShiftSignals": [],
+      "mediaCycleLinks": []
+    }
+  ],
+  "opponentMessagingMemory": [
+    {
+      "messageId": "opp-election-integrity-record",
+      "firstSeenAt": "2026-01-10T00:00:00.000Z",
+      "lastSeenAt": "2026-05-28T00:00:00.000Z",
+      "recurrenceCount": 12,
+      "countiesObserved": ["statewide"],
+      "sourceOrigins": ["legislative-record", "debate-recap"],
+      "framingChanges": [{"at": "2026-04-01", "note": "Shift from fraud prevention to accessibility tradeoff framing."}],
+      "contradictionHistory": [],
+      "debateUsage": ["2021-package-defense", "SB487-accessibility-rebuttal"],
+      "mediaAmplification": ["state-capital-media"]
+    },
+    {
+      "messageId": "opp-county-burden-deflection",
+      "firstSeenAt": "2026-03-15T00:00:00.000Z",
+      "lastSeenAt": "2026-05-20T00:00:00.000Z",
+      "recurrenceCount": 5,
+      "countiesObserved": ["pulaski", "benton", "washington"],
+      "sourceOrigins": ["county-meeting", "local-paper"],
+      "framingChanges": [],
+      "contradictionHistory": ["Statutory burden vs public accessibility claims"],
+      "debateUsage": ["county-clerk-burden-question"],
+      "mediaAmplification": ["northwest-arkansas"]
+    }
+  ],
+  "debateMemory": [
+    {
+      "themeId": "election-integrity-record",
+      "recurringQuestions": ["What problem did SB487 solve?", "Who bears county implementation burden?"],
+      "recurringAttacks": ["Soft on election security", "County burden ignored"],
+      "rebuttalHistory": [{"at": "2026-04-01", "pattern": "statutory-record-bridge", "status": "INTERNAL_DRAFT"}],
+      "successfulBridgePatterns": ["Redirect to statutory text → county impact → Kelly values"],
+      "riskyResponses": ["Unsourced opponent intent claims", "Speculative felony hypotheticals"],
+      "fatigueSignals": ["Same SB487 answer structure reused in 3 prep sessions"]
+    },
+    {
+      "themeId": "management-readiness",
+      "recurringQuestions": ["Are you qualified to manage SOS office?"],
+      "recurringAttacks": ["Management experience gap"],
+      "rebuttalHistory": [],
+      "successfulBridgePatterns": [],
+      "riskyResponses": ["Deploy partial-corroboration claims externally"],
+      "fatigueSignals": []
+    }
+  ],
+  "citationMemory": [
+    {
+      "citationId": "cit-sb487-primary",
+      "firstUsedAt": "2026-02-01T00:00:00.000Z",
+      "lastUsedAt": "2026-05-28T00:00:00.000Z",
+      "citationHealthHistory": [{"at": "2026-05-01", "health": "HEALTHY"}],
+      "archiveFailures": 0,
+      "exportUsage": 2,
+      "countyUsage": ["pulaski", "benton"],
+      "staleSignals": []
+    },
+    {
+      "citationId": "cit-management-partial",
+      "firstUsedAt": "2026-03-01T00:00:00.000Z",
+      "lastUsedAt": "2026-05-15T00:00:00.000Z",
+      "citationHealthHistory": [{"at": "2026-05-01", "health": "NEEDS_REVALIDATION"}],
+      "archiveFailures": 0,
+      "exportUsage": 0,
+      "countyUsage": [],
+      "staleSignals": ["PARTIAL claim chain — not export-ready"]
+    }
+  ],
+  "countyNarrativeMemory": [
+    {
+      "countyId": "pulaski",
+      "narrativeHistory": [{"narrativeId": "kh0b-county-administration-burden", "at": "2026-05-01", "readiness": "WEAK"}],
+      "doctrineAlignmentShift": [{"at": "2026-05-01", "direction": "TENSE"}],
+      "mediaMarketShift": ["Central Arkansas saturation increasing"],
+      "turnoutAssumptionChanges": [],
+      "strategicPriorityChanges": ["High opportunity — verify local examples"],
+      "registrationProgressSignals": ["registration_goal missing in win-target model"]
+    },
+    {
+      "countyId": "benton",
+      "narrativeHistory": [{"narrativeId": "kh0b-2021-integrity-foundation", "at": "2026-05-01", "readiness": "STRONG"}],
+      "doctrineAlignmentShift": [],
+      "mediaMarketShift": ["Northwest border market manual review burden"],
+      "turnoutAssumptionChanges": [],
+      "strategicPriorityChanges": [],
+      "registrationProgressSignals": []
+    }
+  ]
+}

@@ -1,6 +1,67 @@
 {
-  "generatedAt": "2026-05-27T04:52:35.411Z",
+  "generatedAt": "2026-05-28T04:44:31.034Z",
   "rows": [
+    {
+      "year": "2021",
+      "billOrAct": "SB486 / Act 728",
+      "whatChanged": "TO AMEND THE LAW CONCERNING ELECTIONEERING; AND TO AMEND THE LAW CONCERNING PENALTIES FOR MISDEMEANOR OFFENSES RELATED TO VOTING.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "ballot_access"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2021",
+      "billOrAct": "SB487 / Act 729",
+      "whatChanged": "CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITES, AND VOTE CENTERS; AND TO AMEND ARKANSAS ELECTION LAW.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "county_election_administration"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2021",
+      "billOrAct": "SB488 / Act 727",
+      "whatChanged": "TO AMEND THE FREEDOM OF INFORMATION ACT OF 1967; TO CREATE AN EXEMPTION TO THE EXAMINATION AND COPYING OF PUBLIC RECORDS; AND TO AMEND THE LAW CONCERNING THE FREEDOM OF INFORMATION ACT OF 1967 AND VOTED BALLOTS.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "voting_equipment_paper_ballots",
+        "transparency_public_records"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2021",
+      "billOrAct": "SB582 / Act 1051",
+      "whatChanged": "TO AMEND ARKANSAS LAW CONCERNING COUNTY BOARDS OF ELECTION COMMISSIONERS; TO AMEND HOW COUNTY BOARDS OF ELECTION COMMISSIONERS TAKE THE OATH; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "county_election_administration"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2021",
+      "billOrAct": "SB643 / Act 973",
+      "whatChanged": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "absentee_voting"
+      ],
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2021",
+      "billOrAct": "SB644 / Act 974",
+      "whatChanged": "CONCERNING THE INVESTIGATION OF VIOLATIONS OF ELECTION LAW; AND TO ESTABLISH AN ELECTION LAW VIOLATION HOTLINE.",
+      "hammerRole": "sponsor",
+      "impactCategory": [
+        "election_enforcement"
+      ],
+      "sourceConfidence": "HIGH"
+    },
     {
       "year": "2023",
       "billOrAct": "HB1457 / Act 444",
@@ -42,6 +103,58 @@
         "voting_equipment_paper_ballots"
       ],
       "sourceConfidence": "HIGH"
+    },
+    {
+      "year": "2023",
+      "billOrAct": "SB254",
+      "whatChanged": "AN ACT TO ELIMINATE WRITE-IN CANDIDATES IN ELECTIONS; TO AMEND ELECTION PROCEDURES; AND TO AMEND THE LAW CONCERNING ELECTION.",
+      "hammerRole": "co-sponsor",
+      "impactCategory": [
+        "ballot_access",
+        "write_ins_candidate_access"
+      ],
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "year": "2023",
+      "billOrAct": "SB258",
+      "whatChanged": "TO AMEND THE METHOD OF VOTING ABSENTEE; AND TO PROHIBIT THE USE OF ABSENTEE BALLOT DROP BOXES.",
+      "hammerRole": "co-sponsor",
+      "impactCategory": [
+        "absentee_voting"
+      ],
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "year": "2023",
+      "billOrAct": "SB272",
+      "whatChanged": "TO CREATE AN ELECTION INTEGRITY REVIEW PROCESS; TO AMEND THE DUTIES OF THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE LAW CONCERNING ELECTION LAW VIOLATIONS.",
+      "hammerRole": "co-sponsor",
+      "impactCategory": [
+        "county_election_administration",
+        "election_enforcement"
+      ],
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "year": "2023",
+      "billOrAct": "SB273",
+      "whatChanged": "TO AMEND ELECTION LAW CONCERNING POLLING SITES; AND TO AMEND THE LOCATION OF VOTE CENTERS.",
+      "hammerRole": "co-sponsor",
+      "impactCategory": [
+        "county_election_administration"
+      ],
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "year": "2023",
+      "billOrAct": "SB292",
+      "whatChanged": "TO AMEND THE COMPENSATION OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE DUTIES OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS.",
+      "hammerRole": "co-sponsor",
+      "impactCategory": [
+        "county_election_administration"
+      ],
+      "sourceConfidence": "MEDIUM"
     },
     {
       "year": "2025",

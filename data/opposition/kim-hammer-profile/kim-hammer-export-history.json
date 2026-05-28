@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-05-28T16:00:00.000Z",
+  "historyVersion": "1.0",
+  "purpose": "Governed export history with claim, citation, and narrative lineage for publication traceability.",
+  "entries": [
+    {
+      "exportId": "export-dry-run-20260527",
+      "packetVersion": "1.0.0",
+      "format": "MARKDOWN",
+      "scope": "INTERNAL_DRY_RUN",
+      "claimIds": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "citationIds": [
+        "cite-campaign-election-integrity-2025",
+        "cite-senate-profile",
+        "cite-pbs-debate-2022",
+        "cite-4029-debate-recap"
+      ],
+      "narrativeIds": ["kh0b-2021-integrity-foundation"],
+      "operator": "Evidence desk",
+      "exportNotes": "Internal debate packet dry run — not external distribution.",
+      "exportedAt": "2026-05-27T23:10:00.000Z",
+      "claimCount": 2,
+      "citationCount": 4,
+      "contentChecksum": "dry-run-seed-v1"
+    }
+  ]
+}

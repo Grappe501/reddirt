@@ -22,6 +22,10 @@ export type HammerBillRow = {
   sourceLinks: string[];
   confidenceLevel: "LOW" | "MEDIUM" | "HIGH";
   notes: string[];
+  /** KH-0B plain-English bridge field (optional until curated). */
+  plainEnglishSummary?: string;
+  /** KH-0B package linkage (e.g. 2021 integrity foundation). */
+  legislativePackageId?: string;
 };
 
 type BillIndexFile = { generatedAt: string; rows: HammerBillRow[] };

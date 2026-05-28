@@ -1,5 +1,7 @@
-import Link from "next/link";
 import { buildDebateCommandCenterState } from "@/lib/opposition/debateCommandCenter";
+import { summarizeDebateCommandMessaging } from "@/lib/intelligence/campaignMessagingIntelligence";
+import { summarizeCampaignIntelligenceGraph } from "@/lib/intelligence/campaignIntelligenceGraph";
+import Link from "next/link";
 
 const card = "rounded-xl border border-kelly-text/10 bg-white p-4";
 
@@ -11,6 +13,8 @@ function scoreTone(score: number): string {
 
 export default async function DebateCommandCenterPage() {
   const state = buildDebateCommandCenterState();
+  const civicDebate = summarizeDebateCommandMessaging();
+  const graphSummary = summarizeCampaignIntelligenceGraph();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -109,6 +113,50 @@ export default async function DebateCommandCenterPage() {
               <li key={track}>{track}</li>
             ))}
           </ul>
+        </article>
+      </section>
+
+      <section className="mb-6 grid gap-4 lg:grid-cols-2">
+        <article className={card}>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">NSI-4 · Civic impact intelligence</h2>
+          <p className="mt-1 text-xs text-kelly-muted">Doctrine-aware bill civic signals for debate anchors.</p>
+          <ul className="mt-2 space-y-2 text-xs">
+            {civicDebate.flaggedBills.map((row) => (
+              <li key={row.billNumber} className="rounded border border-kelly-text/10 bg-kelly-page/40 p-2">
+                <Link href={`/admin/intelligence/kim-hammer/bills/${encodeURIComponent(row.billNumber)}`} className="font-semibold text-kelly-navy underline">
+                  {row.billNumber}
+                </Link>
+                {" · "}
+                {row.civicSignal.replaceAll("_", " ")}
+                <p className="mt-1 text-kelly-muted">{row.citizenSummary.slice(0, 160)}</p>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <article className={card}>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Philosophy & strategic risk</h2>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {civicDebate.philosophyConsistency.map((row) => (
+              <li key={row}>{row}</li>
+            ))}
+          </ul>
+          {civicDebate.strategicRiskWarnings.length > 0 ? (
+            <ul className="mt-3 list-inside list-disc text-xs text-amber-900">
+              {civicDebate.strategicRiskWarnings.map((row) => (
+                <li key={row}>{row}</li>
+              ))}
+            </ul>
+          ) : null}
+          <p className="mt-3 text-[10px] text-kelly-subtle">
+            Graph: {graphSummary.entityCount} entities · {graphSummary.philosophyCount} philosophy nodes
+          </p>
+          <Link href="/admin/intelligence/campaign-intelligence-graph" className="mt-2 inline-block text-xs font-semibold text-kelly-navy underline">
+            Open unified intelligence graph →
+          </Link>
+          <Link href="/admin/intelligence/strategy-alignment" className="mt-2 ml-3 inline-block text-xs font-semibold text-kelly-navy underline">
+            Strategy alignment (SDI-1) →
+          </Link>
         </article>
       </section>
 

@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-28T23:00:00.000Z",
+  "purpose": "Append-only audit log for public media intake review workflow mutations.",
+  "entries": []
+}

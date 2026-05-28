@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-05-28T04:45:53.994Z",
+  "packageId": "kh0b-2021-integrity-foundation",
+  "subject": "Kim Hammer",
+  "sessionYear": "2021/2021R",
+  "billNumbers": [
+    "SB486",
+    "SB487",
+    "SB488",
+    "SB582",
+    "SB643",
+    "SB644"
+  ],
+  "actNumbers": [
+    728,
+    729,
+    727,
+    1051,
+    973,
+    974
+  ],
+  "evidenceStatus": {
+    "narrativeArc": "INTERPRETATION",
+    "billAndActExistence": "VERIFIED_FACT"
+  },
+  "plainEnglishSummary": "In the 2021 regular session Kim Hammer primary-sponsored a six-bill cluster that together reset Arkansas election administration toward tighter poll-site enforcement, county-level control of precincts and vote centers, reduced public access to certain voted-ballot records, revised county election-board governance, stricter absentee handling, and a formal election-law complaint hotline. All six bills enrolled (Acts 727–729, 973–974, 1051). The package is the earliest documented 'integrity architecture' in the KH-0B set and foreshadows 2023 enforcement/equipment emphasis and 2025 petition-process restrictions.",
+  "narrativeArc": [
+    "2021 establishes enforcement-first posture (SB486 misdemeanors, SB644 hotline) before later-session petition fights.",
+    "County administration is centralized in statute early (SB487 precincts/sites; SB582 election boards)—not a 2025 discovery.",
+    "Transparency rhetoric splits: public inspection narrows for voted ballots (SB488) while compliance duties expand for counties.",
+    "Absentee process is tightened in-session (SB643) before 2023 drop-box and method debates Hammer co-sponsors.",
+    "Governance of county election commissioners is modified (SB582), creating a through-line to 2023 SB292 compensation/duties changes.",
+    "By 2025 the same sponsor moves friction to initiative/refendum canvassing—continuity is procedural control, not a single-year pivot.",
+    "Kelly contrast: Secretary of State as implementation partner for counties vs. legislator stacking unfunded mandates."
+  ],
+  "evolutionLink": {
+    "precedes": [],
+    "followedBy": [
+      "2023 enforcement/equipment",
+      "2025 petition package"
+    ]
+  },
+  "strategicBriefing": {
+    "howToMessage": "Frame the 2021 package as a deliberate architecture—not a one-year reaction: enforcement at the polls, county operational control, narrowed public inspection of ballots, absentee tightening, and a statewide complaint hotline. Lead with county clerks and election commissioners who must implement layered rules without added state support.",
+    "debateImpact": "Shifts debate from abstract 'integrity' to who bears compliance cost. Hammer can claim prevention; Kelly can rebut with operational burden and voter-service consequences without alleging fraud.",
+    "whenToUse": "County forums, editorial boards, and any setting where Hammer portrays 2025 petition bills as new. Pair with verified act numbers when citing enactment.",
+    "whenNotToUse": "Until enrolled-act text is reviewed for a specific claim. Do not imply criminal intent or stolen elections. Avoid quoting FOIA exemption scope beyond verified statutory language.",
+    "oppositionSetup": "Hammer likely argues: rules protect voters, clerks needed guardrails after 2020, transparency through official channels not ballot fishing expeditions.",
+    "kellyMessageHelp": "Kelly runs the office that trains and supports counties—modernization means clear rules, funded implementation, and respect for lawful participation (in-person, absentee, initiative). Contrast: legislator adds duties; Secretary of State delivers service.",
+    "campaignAlignment": "Supports SOS-as-service narrative, county partnership, voting-rights-as-practical-access, and direct-democracy respect in later sessions."
+  },
+  "sourceLinks": [
+    {
+      "billNumber": "SB486",
+      "url": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "label": "Arkleg bill detail"
+    },
+    {
+      "billNumber": "SB487",
+      "url": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R",
+      "label": "Arkleg bill detail"
+    },
+    {
+      "billNumber": "SB488",
+      "url": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB488&ddBienniumSession=2021%2F2021R",
+      "label": "Arkleg bill detail"
+    },
+    {
+      "billNumber": "SB582",
+      "url": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB582&ddBienniumSession=2021%2F2021R",
+      "label": "Arkleg bill detail"
+    },
+    {
+      "billNumber": "SB643",
+      "url": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB643&ddBienniumSession=2021%2F2021R",
+      "label": "Arkleg bill detail"
+    },
+    {
+      "billNumber": "SB644",
+      "url": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB644&ddBienniumSession=2021%2F2021R",
+      "label": "Arkleg bill detail"
+    }
+  ],
+  "governanceNotes": [
+    "ChatGPT or other model-generated narrative blocks are not sources; cite only Arkleg URLs and enrolled act PDFs after verification.",
+    "Narrative arc and strategic briefing fields are INTERPRETATION until act text review completes.",
+    "Bill numbers and act numbers are VERIFIED_FACT from Arkleg dryrun status lines (KH-0B ingest)."
+  ]
+}

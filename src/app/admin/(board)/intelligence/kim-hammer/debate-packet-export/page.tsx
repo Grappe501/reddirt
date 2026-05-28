@@ -1,4 +1,5 @@
 import { loadKimHammerEvidenceIndex } from "@/lib/opposition/kimHammerEvidenceIndex";
+import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
 import {
   canExportClaim,
   getExternalUseStatus,
@@ -14,16 +15,16 @@ export default async function KimHammerDebatePacketExportPage() {
   const exportReadyClaims = index.claims.filter(canExportClaim);
 
   return (
-    <div className="mx-auto max-w-7xl text-kelly-text">
-      <header className="mb-6 border-b border-kelly-text/10 pb-4">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Debate Packet Export</p>
-        <h1 className="font-heading text-2xl font-bold">Citation-ready, Low-risk Claims Only</h1>
-        <p className="mt-2 text-xs text-kelly-muted">
-          Runtime publication-safety gate: `{KIM_HAMMER_EXPORT_FILTER.externalUseStatus}` + `{KIM_HAMMER_EXPORT_FILTER.citationStatus}` + `{KIM_HAMMER_EXPORT_FILTER.confidenceTier}` + `{KIM_HAMMER_EXPORT_FILTER.legalRisk}` legal risk, plus review status `APPROVED_FOR_EXTERNAL_USE` or `EXPORTED`.
+    <KimHammerBriefingPageShell moduleId="debate-packet-export">
+      <section className="mb-6 rounded-xl border border-kelly-text/10 bg-white p-4 text-xs">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Download actions</h2>
+        <p className="mt-1 text-kelly-muted">
+          Record export events in the{" "}
+          <a href="/admin/intelligence/kim-hammer/export-control-center" className="font-semibold text-kelly-navy underline">
+            Export Control Center
+          </a>{" "}
+          after download for lineage traceability.
         </p>
-      </header>
-
-      <section className="mb-6">
         <DebatePacketExportActions exportCount={exportReadyClaims.length} />
       </section>
 
@@ -45,6 +46,6 @@ export default async function KimHammerDebatePacketExportPage() {
           </ul>
         )}
       </section>
-    </div>
+    </KimHammerBriefingPageShell>
   );
 }

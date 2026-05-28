@@ -1,8 +1,16 @@
+import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
+import { MediaDerivedRetrievalTaskDraftsPanel } from "../MediaDerivedRetrievalTaskDraftsPanel";
+import {
+  KimHammerRetrievalTaskControls,
+  type KimHammerRetrievalTaskRow,
+} from "../EvidenceCommandTaskPanel";
 import {
   loadKimHammerEvidenceIndex,
   resolveRetrievalTaskStatus,
 } from "@/lib/opposition/kimHammerEvidenceIndex";
+import { getAllowedTaskTransitions } from "@/lib/opposition/kimHammerTaskWorkflow";
 import type { KimHammerRetrievalTaskStatus } from "@/lib/opposition/types/kimHammerEvidence";
+import { loadMediaDerivedTaskDrafts } from "@/lib/intelligence/mediaFindingPromotionWorkflow";
 
 const taskStatusBadge: Record<KimHammerRetrievalTaskStatus, string> = {
   NOT_STARTED: "bg-slate-100 text-slate-800",
@@ -14,22 +22,31 @@ const taskStatusBadge: Record<KimHammerRetrievalTaskStatus, string> = {
   ARCHIVED: "bg-zinc-100 text-zinc-700",
 };
 
+function toTaskRow(task: ReturnType<typeof loadKimHammerEvidenceIndex>["retrievalTasks"][number]): KimHammerRetrievalTaskRow {
+  const taskStatus = resolveRetrievalTaskStatus(task);
+  return {
+    id: task.id,
+    rank: task.rank ?? null,
+    title: task.description,
+    taskStatus,
+    owner: task.owner ?? "",
+    priority: task.priority,
+    dueDate: task.dueDate ?? null,
+    completionNotes: task.completionNotes ?? "",
+    reviewRequired: task.reviewRequired ?? false,
+    externalReadiness: task.externalMessageReadiness ?? "—",
+    allowedTransitions: getAllowedTaskTransitions(taskStatus),
+  };
+}
+
 export default async function KimHammerIntelligenceGapsPage() {
   const index = loadKimHammerEvidenceIndex();
+  const mediaTaskDrafts = loadMediaDerivedTaskDrafts();
   const gaps = [...index.retrievalTasks].sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
 
   return (
-    <div className="mx-auto max-w-7xl text-kelly-text">
-      <header className="mb-6 border-b border-kelly-text/10 pb-4">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">
-          KH-3B Executable Task Board
-        </p>
-        <h1 className="font-heading text-2xl font-bold">Intelligence Gaps</h1>
-        <p className="mt-2 text-xs text-kelly-muted">
-          Read-only task board view. Task state is stored in JSON; live updates are not enabled on this page.
-        </p>
-      </header>
-
+    <KimHammerBriefingPageShell moduleId="intelligence-gaps">
+      <MediaDerivedRetrievalTaskDraftsPanel drafts={mediaTaskDrafts.drafts} />
       <section className="mb-4 grid gap-3 sm:grid-cols-4">
         {(
           Object.entries(index.metrics.taskStatusCounts) as [KimHammerRetrievalTaskStatus, number][]
@@ -43,61 +60,34 @@ export default async function KimHammerIntelligenceGapsPage() {
           ))}
       </section>
 
-      <section className="rounded-xl border border-kelly-text/10 bg-white p-4">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Priority Queue</h2>
-        <div className="mt-2 overflow-x-auto">
-          <table className="w-full border-collapse text-left text-xs">
-            <thead>
-              <tr className="border-b border-kelly-text/10 text-kelly-muted">
-                <th className="py-1.5 pr-3 font-semibold">Rank</th>
-                <th className="py-1.5 pr-3 font-semibold">Task</th>
-                <th className="py-1.5 pr-3 font-semibold">Status</th>
-                <th className="py-1.5 pr-3 font-semibold">Owner</th>
-                <th className="py-1.5 pr-3 font-semibold">Priority</th>
-                <th className="py-1.5 pr-3 font-semibold">Due date</th>
-                <th className="py-1.5 pr-3 font-semibold">Review</th>
-                <th className="py-1.5 pr-3 font-semibold">Attack value</th>
-                <th className="py-1.5 pr-3 font-semibold">Confidence need</th>
-                <th className="py-1.5 pr-3 font-semibold">External readiness</th>
-                <th className="py-1.5 font-semibold">Source path</th>
-              </tr>
-            </thead>
-            <tbody>
-              {gaps.map((gap) => {
-                const taskStatus = resolveRetrievalTaskStatus(gap);
-                return (
-                  <tr key={gap.id} className="border-b border-kelly-text/5 align-top">
-                    <td className="py-1.5 pr-3">{gap.rank ?? "-"}</td>
-                    <td className="py-1.5 pr-3">
-                      <p>{gap.description}</p>
-                      {gap.completionNotes ? (
-                        <p className="mt-1 text-[10px] text-kelly-muted">Notes: {gap.completionNotes}</p>
-                      ) : null}
-                    </td>
-                    <td className="py-1.5 pr-3">
-                      <span
-                        className={`inline-block rounded px-2 py-0.5 text-[10px] font-bold ${taskStatusBadge[taskStatus]}`}
-                      >
-                        {taskStatus.replaceAll("_", " ")}
-                      </span>
-                    </td>
-                    <td className="py-1.5 pr-3">{gap.owner ?? "—"}</td>
-                    <td className="py-1.5 pr-3">{gap.priority}</td>
-                    <td className="py-1.5 pr-3">{gap.dueDate ?? "—"}</td>
-                    <td className="py-1.5 pr-3">{gap.reviewRequired ? "Yes" : "No"}</td>
-                    <td className="py-1.5 pr-3">{gap.attackValue ?? "—"}</td>
-                    <td className="py-1.5 pr-3">{gap.confidenceNeed ?? "—"}</td>
-                    <td className="py-1.5 pr-3">{gap.externalMessageReadiness ?? "—"}</td>
-                    <td className="py-1.5">
-                      {Array.isArray(gap.likelySourcePath) ? gap.likelySourcePath.join(" | ") : "—"}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+      <section className="space-y-4">
+        {gaps.map((gap) => {
+          const taskStatus = resolveRetrievalTaskStatus(gap);
+          return (
+            <article key={gap.id} className="rounded-xl border border-kelly-text/10 bg-white p-4 text-xs">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-bold text-kelly-navy">#{gap.rank ?? "?"}</span>
+                <span
+                  className={`rounded px-2 py-0.5 text-[10px] font-bold ${taskStatusBadge[taskStatus]}`}
+                >
+                  {taskStatus.replaceAll("_", " ")}
+                </span>
+                <span className="text-kelly-muted">{gap.priority} priority</span>
+              </div>
+              <p className="mt-2 text-kelly-muted">{gap.description}</p>
+              <p className="mt-1 text-[10px] text-kelly-muted">
+                Owner: {gap.owner ?? "—"} · Due: {gap.dueDate ?? "—"} · External:{" "}
+                {gap.externalMessageReadiness ?? "—"}
+              </p>
+              <p className="mt-1 text-[10px] text-kelly-muted">
+                Source path:{" "}
+                {Array.isArray(gap.likelySourcePath) ? gap.likelySourcePath.join(" | ") : "—"}
+              </p>
+              <KimHammerRetrievalTaskControls task={toTaskRow(gap)} compact />
+            </article>
+          );
+        })}
       </section>
-    </div>
+    </KimHammerBriefingPageShell>
   );
 }

@@ -1,0 +1,1796 @@
+{
+  "generatedAt": "2026-05-28T15:15:51.072Z",
+  "graphVersion": "1.0",
+  "purpose": "NSI-4 unified campaign intelligence graph — governed entity relationships across bills, narratives, doctrines, counties, exports, and civic philosophy.",
+  "entityCount": 60,
+  "entities": [
+    {
+      "entityId": "bill-SB486",
+      "entityType": "BILL",
+      "title": "SB486 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB486",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy",
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "election_integrity",
+        "enforcement"
+      ],
+      "civicImpactThemes": [
+        "voter_process",
+        "enforcement"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "poll worker training"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "calm lawful polling places"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB486",
+      "entityType": "NARRATIVE",
+      "title": "SB486 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB486"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "bill-SB487",
+      "entityType": "BILL",
+      "title": "SB487 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB487",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-grassroots-principles",
+        "doctrine-segmented-targeting",
+        "doctrine-steve-strategy"
+      ],
+      "countyLinks": [
+        "county-pulaski",
+        "county-statewide"
+      ],
+      "citationLinks": [
+        "cite-sb487-2021"
+      ],
+      "exportLinks": [],
+      "strategicThemes": [
+        "county_burden",
+        "precinct_control",
+        "implementation_burden"
+      ],
+      "civicImpactThemes": [
+        "polling_access",
+        "county_operations",
+        "voter_notice"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "GIS mapping",
+        "clerk training",
+        "voter notification"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "support clerks",
+        "stable polling places",
+        "transparent site changes"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB487",
+      "entityType": "NARRATIVE",
+      "title": "SB487 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB487"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "bill-SB488",
+      "entityType": "BILL",
+      "title": "SB488 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB488",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-sos-keeper-records",
+        "doctrine-steve-strategy"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [
+        "cite-sb488-2021"
+      ],
+      "exportLinks": [],
+      "strategicThemes": [
+        "transparency_tradeoff",
+        "public_records"
+      ],
+      "civicImpactThemes": [
+        "transparency",
+        "public_records_access"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "poll worker training"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "calm lawful polling places"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB488",
+      "entityType": "NARRATIVE",
+      "title": "SB488 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB488"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "bill-SB582",
+      "entityType": "BILL",
+      "title": "SB582 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB582",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy",
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "election_integrity",
+        "enforcement"
+      ],
+      "civicImpactThemes": [
+        "voter_process",
+        "enforcement"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "poll worker training"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "calm lawful polling places"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB582",
+      "entityType": "NARRATIVE",
+      "title": "SB582 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB582"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "bill-SB643",
+      "entityType": "BILL",
+      "title": "SB643 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB643",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy",
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "election_integrity",
+        "enforcement"
+      ],
+      "civicImpactThemes": [
+        "voter_process",
+        "enforcement"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "poll worker training"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "calm lawful polling places"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB643",
+      "entityType": "NARRATIVE",
+      "title": "SB643 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB643"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "bill-SB644",
+      "entityType": "BILL",
+      "title": "SB644 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB644",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy",
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "election_integrity",
+        "enforcement"
+      ],
+      "civicImpactThemes": [
+        "voter_process",
+        "enforcement"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "poll worker training"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "calm lawful polling places"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB644",
+      "entityType": "NARRATIVE",
+      "title": "SB644 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB644"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "bill-SB254",
+      "entityType": "BILL",
+      "title": "SB254 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB254",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy",
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "election_integrity",
+        "enforcement"
+      ],
+      "civicImpactThemes": [
+        "voter_process",
+        "enforcement"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "poll worker training"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "calm lawful polling places"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB254",
+      "entityType": "NARRATIVE",
+      "title": "SB254 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB254"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "bill-SB258",
+      "entityType": "BILL",
+      "title": "SB258 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB258",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy",
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "election_integrity",
+        "enforcement"
+      ],
+      "civicImpactThemes": [
+        "voter_process",
+        "enforcement"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "poll worker training"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "calm lawful polling places"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB258",
+      "entityType": "NARRATIVE",
+      "title": "SB258 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB258"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "bill-SB272",
+      "entityType": "BILL",
+      "title": "SB272 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB272",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy",
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "election_integrity",
+        "enforcement"
+      ],
+      "civicImpactThemes": [
+        "voter_process",
+        "enforcement"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "poll worker training"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "calm lawful polling places"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB272",
+      "entityType": "NARRATIVE",
+      "title": "SB272 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB272"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "bill-SB273",
+      "entityType": "BILL",
+      "title": "SB273 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB273",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy",
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "election_integrity",
+        "enforcement"
+      ],
+      "civicImpactThemes": [
+        "voter_process",
+        "enforcement"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "poll worker training"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "calm lawful polling places"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB273",
+      "entityType": "NARRATIVE",
+      "title": "SB273 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB273"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "bill-SB292",
+      "entityType": "BILL",
+      "title": "SB292 — Kim Hammer election-law bill",
+      "linkedEntities": [
+        "narrative-SB292",
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy",
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "election_integrity",
+        "enforcement"
+      ],
+      "civicImpactThemes": [
+        "voter_process",
+        "enforcement"
+      ],
+      "governingPrinciples": [
+        "process_legitimacy",
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "poll worker training"
+      ],
+      "debateUsage": [
+        "county_forums",
+        "SOS_qualification_debate"
+      ],
+      "messagingFrames": [
+        "calm lawful polling places"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-election-record-legislative-narratives.json"
+    },
+    {
+      "entityId": "narrative-SB292",
+      "entityType": "NARRATIVE",
+      "title": "SB292 bill narrative cell",
+      "linkedEntities": [
+        "bill-SB292"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "INTERPRETATION",
+      "graphConfidence": "MEDIUM",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "narrative-kh0b-2021-integrity-foundation",
+      "entityType": "NARRATIVE",
+      "title": "2021 Integrity Foundation",
+      "linkedEntities": [
+        "bill-SB486",
+        "bill-SB487",
+        "bill-SB488",
+        "bill-SB582",
+        "bill-SB643",
+        "bill-SB644"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "governed_narrative"
+      ],
+      "civicImpactThemes": [
+        "civic_trust"
+      ],
+      "governingPrinciples": [
+        "balls_and_strikes_sos"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [
+        "debate_prep"
+      ],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-narrative-registry.json"
+    },
+    {
+      "entityId": "narrative-kh0b-county-administration-burden",
+      "entityType": "NARRATIVE",
+      "title": "County Administration Burden",
+      "linkedEntities": [
+        "bill-SB487",
+        "county-burden-precinct-sites",
+        "county-pulaski"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy"
+      ],
+      "countyLinks": [
+        "county-pulaski"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "governed_narrative"
+      ],
+      "civicImpactThemes": [
+        "civic_trust"
+      ],
+      "governingPrinciples": [
+        "balls_and_strikes_sos"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [
+        "debate_prep"
+      ],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-narrative-registry.json"
+    },
+    {
+      "entityId": "narrative-kh0b-legislative-chronology",
+      "entityType": "NARRATIVE",
+      "title": "Legislative Chronology Arc",
+      "linkedEntities": [
+        "narrative-kh0b-2021-integrity-foundation"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "governed_narrative"
+      ],
+      "civicImpactThemes": [
+        "civic_trust"
+      ],
+      "governingPrinciples": [
+        "balls_and_strikes_sos"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [
+        "debate_prep"
+      ],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-narrative-registry.json"
+    },
+    {
+      "entityId": "narrative-debate-frame-election-integrity",
+      "entityType": "NARRATIVE",
+      "title": "Debate Frame — Election Integrity",
+      "linkedEntities": [
+        "claim-pdeb-001",
+        "export-dry-run-20260527"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [
+        "export-dry-run-20260527"
+      ],
+      "strategicThemes": [
+        "governed_narrative"
+      ],
+      "civicImpactThemes": [
+        "civic_trust"
+      ],
+      "governingPrinciples": [
+        "balls_and_strikes_sos"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [
+        "debate_prep"
+      ],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-narrative-registry.json"
+    },
+    {
+      "entityId": "narrative-debate-frame-management-readiness",
+      "entityType": "NARRATIVE",
+      "title": "Debate Frame — Management Readiness",
+      "linkedEntities": [
+        "claim-pdeb-002"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "governed_narrative"
+      ],
+      "civicImpactThemes": [
+        "civic_trust"
+      ],
+      "governingPrinciples": [
+        "balls_and_strikes_sos"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [
+        "debate_prep"
+      ],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-narrative-registry.json"
+    },
+    {
+      "entityId": "narrative-debate-frame-debate-questions",
+      "entityType": "NARRATIVE",
+      "title": "Debate Frame — Question Patterns",
+      "linkedEntities": [
+        "claim-pdeb-003",
+        "export-dry-run-20260527"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [
+        "export-dry-run-20260527"
+      ],
+      "strategicThemes": [
+        "governed_narrative"
+      ],
+      "civicImpactThemes": [
+        "civic_trust"
+      ],
+      "governingPrinciples": [
+        "balls_and_strikes_sos"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [
+        "debate_prep"
+      ],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-narrative-registry.json"
+    },
+    {
+      "entityId": "county-statewide",
+      "entityType": "COUNTY",
+      "title": "Statewide",
+      "linkedEntities": [
+        "geo-overlay-statewide"
+      ],
+      "doctrineLinks": [
+        "doctrine-grassroots-principles"
+      ],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "geographic_readiness"
+      ],
+      "civicImpactThemes": [
+        "local_trust"
+      ],
+      "governingPrinciples": [
+        "county_differences_are_real"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-geographic-narrative-overlays.json"
+    },
+    {
+      "entityId": "geo-overlay-statewide",
+      "entityType": "GEOGRAPHIC_OVERLAY",
+      "title": "NSI-2 overlay — statewide",
+      "linkedEntities": [
+        "county-statewide"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "county-pulaski",
+      "entityType": "COUNTY",
+      "title": "Pulaski County",
+      "linkedEntities": [
+        "geo-overlay-pulaski"
+      ],
+      "doctrineLinks": [
+        "doctrine-grassroots-principles"
+      ],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "geographic_readiness"
+      ],
+      "civicImpactThemes": [
+        "local_trust"
+      ],
+      "governingPrinciples": [
+        "county_differences_are_real"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-geographic-narrative-overlays.json"
+    },
+    {
+      "entityId": "geo-overlay-pulaski",
+      "entityType": "GEOGRAPHIC_OVERLAY",
+      "title": "NSI-2 overlay — pulaski",
+      "linkedEntities": [
+        "county-pulaski"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [
+        "county-pulaski"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "county-washington",
+      "entityType": "COUNTY",
+      "title": "Washington County",
+      "linkedEntities": [
+        "geo-overlay-washington"
+      ],
+      "doctrineLinks": [
+        "doctrine-grassroots-principles"
+      ],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "geographic_readiness"
+      ],
+      "civicImpactThemes": [
+        "local_trust"
+      ],
+      "governingPrinciples": [
+        "county_differences_are_real"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-geographic-narrative-overlays.json"
+    },
+    {
+      "entityId": "geo-overlay-washington",
+      "entityType": "GEOGRAPHIC_OVERLAY",
+      "title": "NSI-2 overlay — washington",
+      "linkedEntities": [
+        "county-washington"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [
+        "county-washington"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "county-benton",
+      "entityType": "COUNTY",
+      "title": "Benton County",
+      "linkedEntities": [
+        "geo-overlay-benton"
+      ],
+      "doctrineLinks": [
+        "doctrine-grassroots-principles"
+      ],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "geographic_readiness"
+      ],
+      "civicImpactThemes": [
+        "local_trust"
+      ],
+      "governingPrinciples": [
+        "county_differences_are_real"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-geographic-narrative-overlays.json"
+    },
+    {
+      "entityId": "geo-overlay-benton",
+      "entityType": "GEOGRAPHIC_OVERLAY",
+      "title": "NSI-2 overlay — benton",
+      "linkedEntities": [
+        "county-benton"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [
+        "county-benton"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "county-sebastian",
+      "entityType": "COUNTY",
+      "title": "Sebastian County",
+      "linkedEntities": [
+        "geo-overlay-sebastian"
+      ],
+      "doctrineLinks": [
+        "doctrine-grassroots-principles"
+      ],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "geographic_readiness"
+      ],
+      "civicImpactThemes": [
+        "local_trust"
+      ],
+      "governingPrinciples": [
+        "county_differences_are_real"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-geographic-narrative-overlays.json"
+    },
+    {
+      "entityId": "geo-overlay-sebastian",
+      "entityType": "GEOGRAPHIC_OVERLAY",
+      "title": "NSI-2 overlay — sebastian",
+      "linkedEntities": [
+        "county-sebastian"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [
+        "county-sebastian"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "county-craighead",
+      "entityType": "COUNTY",
+      "title": "Craighead County",
+      "linkedEntities": [
+        "geo-overlay-craighead"
+      ],
+      "doctrineLinks": [
+        "doctrine-grassroots-principles"
+      ],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "geographic_readiness"
+      ],
+      "civicImpactThemes": [
+        "local_trust"
+      ],
+      "governingPrinciples": [
+        "county_differences_are_real"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-geographic-narrative-overlays.json"
+    },
+    {
+      "entityId": "geo-overlay-craighead",
+      "entityType": "GEOGRAPHIC_OVERLAY",
+      "title": "NSI-2 overlay — craighead",
+      "linkedEntities": [
+        "county-craighead"
+      ],
+      "doctrineLinks": [],
+      "countyLinks": [
+        "county-craighead"
+      ],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "doctrine-steve-strategy",
+      "entityType": "DOCTRINE",
+      "title": "doctrine-steve-strategy",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "campaign_doctrine"
+      ],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/strategy-doctrine/campaign-strategic-doctrine-registry.json"
+    },
+    {
+      "entityId": "doctrine-sos-keeper-records",
+      "entityType": "DOCTRINE",
+      "title": "doctrine-sos-keeper-records",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "campaign_doctrine"
+      ],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/strategy-doctrine/campaign-strategic-doctrine-registry.json"
+    },
+    {
+      "entityId": "doctrine-grassroots-principles",
+      "entityType": "DOCTRINE",
+      "title": "doctrine-grassroots-principles",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "campaign_doctrine"
+      ],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/strategy-doctrine/campaign-strategic-doctrine-registry.json"
+    },
+    {
+      "entityId": "doctrine-opponent-contrast-matrix",
+      "entityType": "DOCTRINE",
+      "title": "doctrine-opponent-contrast-matrix",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "campaign_doctrine"
+      ],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/strategy-doctrine/campaign-strategic-doctrine-registry.json"
+    },
+    {
+      "entityId": "doctrine-kim-contrast-debate",
+      "entityType": "DOCTRINE",
+      "title": "doctrine-kim-contrast-debate",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "campaign_doctrine"
+      ],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/strategy-doctrine/campaign-strategic-doctrine-registry.json"
+    },
+    {
+      "entityId": "doctrine-segmented-targeting",
+      "entityType": "DOCTRINE",
+      "title": "doctrine-segmented-targeting",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "campaign_doctrine"
+      ],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/strategy-doctrine/campaign-strategic-doctrine-registry.json"
+    },
+    {
+      "entityId": "export-dry-run-20260527",
+      "entityType": "EXPORT_PACKET",
+      "title": "Internal debate packet dry run",
+      "linkedEntities": [
+        "narrative-debate-frame-election-integrity",
+        "narrative-debate-frame-debate-questions",
+        "claim-pdeb-001",
+        "claim-pdeb-003"
+      ],
+      "doctrineLinks": [
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [
+        "county-statewide"
+      ],
+      "citationLinks": [
+        "cite-campaign-election-integrity-2025",
+        "cite-pbs-debate-2022"
+      ],
+      "exportLinks": [],
+      "strategicThemes": [
+        "export_lineage"
+      ],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [
+        "debate_prep"
+      ],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "APPROVED_FOR_INTERNAL_USE",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/opposition/kim-hammer-profile/kim-hammer-export-history.json"
+    },
+    {
+      "entityId": "claim-pdeb-001",
+      "entityType": "CLAIM",
+      "title": "pdeb-001",
+      "linkedEntities": [],
+      "doctrineLinks": [
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "claim-pdeb-002",
+      "entityType": "CLAIM",
+      "title": "pdeb-002",
+      "linkedEntities": [],
+      "doctrineLinks": [
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "claim-pdeb-003",
+      "entityType": "CLAIM",
+      "title": "pdeb-003",
+      "linkedEntities": [],
+      "doctrineLinks": [
+        "doctrine-opponent-contrast-matrix"
+      ],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "county-burden-precinct-sites",
+      "entityType": "COUNTY_BURDEN_THEME",
+      "title": "Precinct site control burden",
+      "linkedEntities": [
+        "bill-SB487",
+        "narrative-kh0b-county-administration-burden"
+      ],
+      "doctrineLinks": [
+        "doctrine-grassroots-principles"
+      ],
+      "countyLinks": [
+        "county-pulaski"
+      ],
+      "citationLinks": [
+        "cite-sb487-2021"
+      ],
+      "exportLinks": [],
+      "strategicThemes": [
+        "county_burden"
+      ],
+      "civicImpactThemes": [
+        "access",
+        "operations"
+      ],
+      "governingPrinciples": [
+        "county_partnership"
+      ],
+      "operationalImpacts": [
+        "clerk workload"
+      ],
+      "debateUsage": [
+        "county forums"
+      ],
+      "messagingFrames": [
+        "fund implementation"
+      ],
+      "publicRisk": "MEDIUM",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "governance-balls-and-strikes",
+      "entityType": "GOVERNANCE_CONCEPT",
+      "title": "Balls-and-strikes SOS administration",
+      "linkedEntities": [
+        "doctrine-steve-strategy",
+        "philosophy-civic-trust"
+      ],
+      "doctrineLinks": [
+        "doctrine-steve-strategy"
+      ],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [
+        "neutral_administration"
+      ],
+      "civicImpactThemes": [
+        "trust"
+      ],
+      "governingPrinciples": [
+        "unity_over_division"
+      ],
+      "operationalImpacts": [],
+      "debateUsage": [
+        "SOS philosophy questions"
+      ],
+      "messagingFrames": [
+        "process not culture war"
+      ],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE"
+    },
+    {
+      "entityId": "philosophy-civic-trust",
+      "entityType": "PHILOSOPHY",
+      "title": "philosophy-civic-trust",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/intelligence/campaign-philosophy-graph.json"
+    },
+    {
+      "entityId": "philosophy-transparency",
+      "entityType": "PHILOSOPHY",
+      "title": "philosophy-transparency",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/intelligence/campaign-philosophy-graph.json"
+    },
+    {
+      "entityId": "philosophy-participation",
+      "entityType": "PHILOSOPHY",
+      "title": "philosophy-participation",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/intelligence/campaign-philosophy-graph.json"
+    },
+    {
+      "entityId": "philosophy-county-partnership",
+      "entityType": "PHILOSOPHY",
+      "title": "philosophy-county-partnership",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/intelligence/campaign-philosophy-graph.json"
+    },
+    {
+      "entityId": "philosophy-modernization",
+      "entityType": "PHILOSOPHY",
+      "title": "philosophy-modernization",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/intelligence/campaign-philosophy-graph.json"
+    },
+    {
+      "entityId": "philosophy-citizen-empowerment",
+      "entityType": "PHILOSOPHY",
+      "title": "philosophy-citizen-empowerment",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/intelligence/campaign-philosophy-graph.json"
+    },
+    {
+      "entityId": "philosophy-anti-centralization",
+      "entityType": "PHILOSOPHY",
+      "title": "philosophy-anti-centralization",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/intelligence/campaign-philosophy-graph.json"
+    },
+    {
+      "entityId": "philosophy-direct-democracy",
+      "entityType": "PHILOSOPHY",
+      "title": "philosophy-direct-democracy",
+      "linkedEntities": [],
+      "doctrineLinks": [],
+      "countyLinks": [],
+      "citationLinks": [],
+      "exportLinks": [],
+      "strategicThemes": [],
+      "civicImpactThemes": [],
+      "governingPrinciples": [],
+      "operationalImpacts": [],
+      "debateUsage": [],
+      "messagingFrames": [],
+      "publicRisk": "LOW",
+      "reviewStatus": "NEEDS_REVIEW",
+      "graphConfidence": "HIGH",
+      "synchronizationPriority": "P1_LIVE",
+      "sourceArtifact": "data/intelligence/campaign-philosophy-graph.json"
+    }
+  ]
+}

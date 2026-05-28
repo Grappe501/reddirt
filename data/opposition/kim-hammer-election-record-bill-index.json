@@ -1,6 +1,629 @@
 {
-  "generatedAt": "2026-05-27T04:52:35.411Z",
+  "generatedAt": "2026-05-28T04:44:30.876Z",
   "rows": [
+    {
+      "billNumber": "SB486",
+      "actNumber": "728",
+      "sessionYear": "2021/2021R",
+      "title": "TO AMEND THE LAW CONCERNING ELECTIONEERING; AND TO AMEND THE LAW CONCERNING PENALTIES FOR MISDEMEANOR OFFENSES RELATED TO VOTING.",
+      "topicCategory": [
+        "ballot_access"
+      ],
+      "hammerRole": "sponsor",
+      "status": "Senate -- Notification that SB486 is now Act 728",
+      "finalDisposition": "Enacted as Act 728.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "Tightened electioneering rules and misdemeanor penalties tied to voting-related conduct — expands enforcement surface at polling places."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
+      "ballotAccessImpact": "Touches ballot access mechanics (candidate filings, polling-place rules, electioneering boundaries).",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "HIGH",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "Tightened electioneering rules and misdemeanor penalties tied to voting-related conduct — expands enforcement surface at polling places.",
+      "legislativePackageId": "kh0b-2021-integrity-foundation"
+    },
+    {
+      "billNumber": "SB487",
+      "actNumber": "729",
+      "sessionYear": "2021/2021R",
+      "title": "CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITES, AND VOTE CENTERS; AND TO AMEND ARKANSAS ELECTION LAW.",
+      "topicCategory": [
+        "county_election_administration"
+      ],
+      "hammerRole": "sponsor",
+      "status": "Senate -- Notification that SB487 is now Act 729",
+      "finalDisposition": "Enacted as Act 729.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "Changed how precinct boundaries, polling sites, and vote centers are established or altered — shifts operational decisions toward county election administration."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "Likely changes county clerk/election-board procedures; requires county-level implementation review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "HIGH",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "Changed how precinct boundaries, polling sites, and vote centers are established or altered — shifts operational decisions toward county election administration.",
+      "legislativePackageId": "kh0b-2021-integrity-foundation"
+    },
+    {
+      "billNumber": "SB488",
+      "actNumber": "727",
+      "sessionYear": "2021/2021R",
+      "title": "TO AMEND THE FREEDOM OF INFORMATION ACT OF 1967; TO CREATE AN EXEMPTION TO THE EXAMINATION AND COPYING OF PUBLIC RECORDS; AND TO AMEND THE LAW CONCERNING THE FREEDOM OF INFORMATION ACT OF 1967 AND VOTED BALLOTS.",
+      "topicCategory": [
+        "voting_equipment_paper_ballots",
+        "transparency_public_records"
+      ],
+      "hammerRole": "sponsor",
+      "status": "Senate -- Notification that SB488 is now Act 727",
+      "finalDisposition": "Enacted as Act 727.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "Created a public-records exemption around voted ballots under FOIA — reduces public inspectability of certain election materials."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB488&ddBienniumSession=2021%2F2021R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "HIGH",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "Created a public-records exemption around voted ballots under FOIA — reduces public inspectability of certain election materials.",
+      "legislativePackageId": "kh0b-2021-integrity-foundation"
+    },
+    {
+      "billNumber": "SB582",
+      "actNumber": "1051",
+      "sessionYear": "2021/2021R",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING COUNTY BOARDS OF ELECTION COMMISSIONERS; TO AMEND HOW COUNTY BOARDS OF ELECTION COMMISSIONERS TAKE THE OATH; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "topicCategory": [
+        "county_election_administration"
+      ],
+      "hammerRole": "sponsor",
+      "status": "Senate -- Notification that SB582 is now Act 1051",
+      "finalDisposition": "Enacted as Act 1051.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "Modified county boards of election commissioners (including oath procedures) — direct county governance and compliance layer."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "Likely changes county clerk/election-board procedures; requires county-level implementation review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB582&ddBienniumSession=2021%2F2021R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "HIGH",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "Modified county boards of election commissioners (including oath procedures) — direct county governance and compliance layer.",
+      "legislativePackageId": "kh0b-2021-integrity-foundation"
+    },
+    {
+      "billNumber": "SB643",
+      "actNumber": "973",
+      "sessionYear": "2021/2021R",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "topicCategory": [
+        "absentee_voting"
+      ],
+      "hammerRole": "sponsor",
+      "status": "Senate -- Notification that SB643 is now Act 973",
+      "finalDisposition": "Enacted as Act 973.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "Amended absentee ballot procedures — affects how mail/absentee voting is administered and verified."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "Affects absentee/mail voting procedures or drop-box availability.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB643&ddBienniumSession=2021%2F2021R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "HIGH",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "Amended absentee ballot procedures — affects how mail/absentee voting is administered and verified.",
+      "legislativePackageId": "kh0b-2021-integrity-foundation"
+    },
+    {
+      "billNumber": "SB644",
+      "actNumber": "974",
+      "sessionYear": "2021/2021R",
+      "title": "CONCERNING THE INVESTIGATION OF VIOLATIONS OF ELECTION LAW; AND TO ESTABLISH AN ELECTION LAW VIOLATION HOTLINE.",
+      "topicCategory": [
+        "election_enforcement"
+      ],
+      "hammerRole": "sponsor",
+      "status": "Senate -- Notification that SB644 is now Act 974",
+      "finalDisposition": "Enacted as Act 974.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "Established election-law violation investigation tools including a hotline — expands complaint and enforcement culture."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "Expands or modifies complaint, violation, or enforcement timelines/process.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB644&ddBienniumSession=2021%2F2021R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "HIGH",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "Established election-law violation investigation tools including a hotline — expands complaint and enforcement culture.",
+      "legislativePackageId": "kh0b-2021-integrity-foundation"
+    },
+    {
+      "billNumber": "HB1457",
+      "actNumber": "444",
+      "sessionYear": "2023/2023R",
+      "title": "TO ESTABLISH THE ARKANSAS POLL WATCHERS BILL OF RIGHTS ACT OF 2023; TO AMEND THE LAW CONCERNING POLL WATCHERS; AND TO AMEND THE LAW CONCERNING ELECTION PROCEDURES.",
+      "topicCategory": [
+        "county_election_administration",
+        "ballot_access",
+        "poll_watchers_election_observers"
+      ],
+      "hammerRole": "sponsor",
+      "status": "House -- Notification that HB1457 is now Act 444",
+      "finalDisposition": "Enacted as Act 444.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials",
+        "Petition sponsors and canvassers"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties",
+        "petitioners"
+      ],
+      "keyProvisions": [
+        "Title-level summary; confirm in enrolled act text and amendments before external use."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "Likely changes county clerk/election-board procedures; requires county-level implementation review.",
+      "ballotAccessImpact": "Touches ballot access mechanics (candidate filings, ballot-title framing, poll watcher interactions).",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "Potential voter-experience effect via absentee or poll-site process changes; needs legal-text confirmation.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1457&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/opponent-legislative-candidates.json",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json",
+        "https://sbec.arkansas.gov/wp-content/uploads/RFPO_FAQ.pdf",
+        "https://encyclopediaofarkansas.net/entries/voting-and-voting-rights-4916/"
+      ],
+      "confidenceLevel": "HIGH",
+      "notes": [
+        "Role classification is from arkleg bill-grid metadata (source JSON).",
+        "Where enacted, act number extracted from Arkleg bill detail status line."
+      ]
+    },
+    {
+      "billNumber": "HB1464",
+      "actNumber": "295",
+      "sessionYear": "2023/2023R",
+      "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS.",
+      "topicCategory": [
+        "election_enforcement"
+      ],
+      "hammerRole": "sponsor",
+      "status": "House -- Notification that HB1464 is now Act 295",
+      "finalDisposition": "Enacted as Act 295.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials",
+        "Petition sponsors and canvassers"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties",
+        "petitioners"
+      ],
+      "keyProvisions": [
+        "Title-level summary; confirm in enrolled act text and amendments before external use."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "Expands or modifies complaint, violation, or enforcement timelines/process.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1464&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/opponent-legislative-candidates.json",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "HIGH",
+      "notes": [
+        "Role classification is from arkleg bill-grid metadata (source JSON).",
+        "Where enacted, act number extracted from Arkleg bill detail status line."
+      ]
+    },
+    {
+      "billNumber": "HB1487",
+      "actNumber": "329",
+      "sessionYear": "2023/2023R",
+      "title": "TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING THE HANDLING OF ELECTION BALLOTS.",
+      "topicCategory": [
+        "voting_equipment_paper_ballots"
+      ],
+      "hammerRole": "sponsor",
+      "status": "House -- Notification that HB1487 is now Act 329",
+      "finalDisposition": "Enacted as Act 329.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials",
+        "Petition sponsors and canvassers"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties",
+        "petitioners"
+      ],
+      "keyProvisions": [
+        "Title-level summary; confirm in enrolled act text and amendments before external use."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1487&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/opponent-legislative-candidates.json",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "HIGH",
+      "notes": [
+        "Role classification is from arkleg bill-grid metadata (source JSON).",
+        "Where enacted, act number extracted from Arkleg bill detail status line."
+      ]
+    },
+    {
+      "billNumber": "SB250",
+      "actNumber": "350",
+      "sessionYear": "2023/2023R",
+      "title": "TO AMEND THE LAW CONCERNING PAPER BALLOTS; TO AMEND THE LAW CONCERNING MARKING AND COUNTING PAPER BALLOTS; TO AMEND THE LAW CONCERNING THE DECLARATION OF ELECTION RESULTS; AND TO DECLARE AN EMERGENCY.",
+      "topicCategory": [
+        "voting_equipment_paper_ballots"
+      ],
+      "hammerRole": "sponsor",
+      "status": "Senate -- Notification that SB250 is now Act 350",
+      "finalDisposition": "Enacted as Act 350.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials",
+        "Petition sponsors and canvassers"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties",
+        "petitioners"
+      ],
+      "keyProvisions": [
+        "Title-level summary; confirm in enrolled act text and amendments before external use."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB250&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/opponent-legislative-candidates.json",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json",
+        "https://arkleg.state.ar.us/Acts/FTPDocument?ddBienniumSession=2023%2F2023R&file=350.pdf&path=%2FACTS%2F2023R%2FPublic%2F",
+        "https://fayettevilleflyer.com/2023/03/01/arkansas-senate-committee-advances-bill-to-regulate-paper-ballots/"
+      ],
+      "confidenceLevel": "HIGH",
+      "notes": [
+        "Role classification is from arkleg bill-grid metadata (source JSON).",
+        "Where enacted, act number extracted from Arkleg bill detail status line."
+      ]
+    },
+    {
+      "billNumber": "SB254",
+      "actNumber": null,
+      "sessionYear": "2023/2023R",
+      "title": "AN ACT TO ELIMINATE WRITE-IN CANDIDATES IN ELECTIONS; TO AMEND ELECTION PROCEDURES; AND TO AMEND THE LAW CONCERNING ELECTION.",
+      "topicCategory": [
+        "ballot_access",
+        "write_ins_candidate_access"
+      ],
+      "hammerRole": "co-sponsor",
+      "status": "Filed; enactment from KH-0B title review.",
+      "finalDisposition": "Disposition requires Arkleg confirmation.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "2023 session: eliminated write-in candidacies in covered elections and amended related election procedures (Hammer co-sponsor)."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
+      "ballotAccessImpact": "Touches ballot access mechanics (candidate filings, polling-place rules, electioneering boundaries).",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "Affects candidate access pathways including write-in options.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB254&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "MEDIUM",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "2023 session: eliminated write-in candidacies in covered elections and amended related election procedures (Hammer co-sponsor)."
+    },
+    {
+      "billNumber": "SB258",
+      "actNumber": null,
+      "sessionYear": "2023/2023R",
+      "title": "TO AMEND THE METHOD OF VOTING ABSENTEE; AND TO PROHIBIT THE USE OF ABSENTEE BALLOT DROP BOXES.",
+      "topicCategory": [
+        "absentee_voting"
+      ],
+      "hammerRole": "co-sponsor",
+      "status": "Filed; enactment from KH-0B title review.",
+      "finalDisposition": "Disposition requires Arkleg confirmation.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "2023 session: changed absentee voting methods and prohibited absentee ballot drop boxes (Hammer co-sponsor)."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "Affects absentee/mail voting procedures or drop-box availability.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB258&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "MEDIUM",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "2023 session: changed absentee voting methods and prohibited absentee ballot drop boxes (Hammer co-sponsor)."
+    },
+    {
+      "billNumber": "SB272",
+      "actNumber": null,
+      "sessionYear": "2023/2023R",
+      "title": "TO CREATE AN ELECTION INTEGRITY REVIEW PROCESS; TO AMEND THE DUTIES OF THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE LAW CONCERNING ELECTION LAW VIOLATIONS.",
+      "topicCategory": [
+        "county_election_administration",
+        "election_enforcement"
+      ],
+      "hammerRole": "co-sponsor",
+      "status": "Filed; enactment from KH-0B title review.",
+      "finalDisposition": "Disposition requires Arkleg confirmation.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "2023 session: created an election integrity review process and expanded SBEC duties around election-law violations (Hammer co-sponsor)."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "Likely changes county clerk/election-board procedures; requires county-level implementation review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "Expands or modifies complaint, violation, or enforcement timelines/process.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB272&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "MEDIUM",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "2023 session: created an election integrity review process and expanded SBEC duties around election-law violations (Hammer co-sponsor)."
+    },
+    {
+      "billNumber": "SB273",
+      "actNumber": null,
+      "sessionYear": "2023/2023R",
+      "title": "TO AMEND ELECTION LAW CONCERNING POLLING SITES; AND TO AMEND THE LOCATION OF VOTE CENTERS.",
+      "topicCategory": [
+        "county_election_administration"
+      ],
+      "hammerRole": "co-sponsor",
+      "status": "Filed; enactment from KH-0B title review.",
+      "finalDisposition": "Disposition requires Arkleg confirmation.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "2023 session: amended polling-site and vote-center location rules (Hammer co-sponsor)."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "Likely changes county clerk/election-board procedures; requires county-level implementation review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB273&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "MEDIUM",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "2023 session: amended polling-site and vote-center location rules (Hammer co-sponsor)."
+    },
+    {
+      "billNumber": "SB292",
+      "actNumber": null,
+      "sessionYear": "2023/2023R",
+      "title": "TO AMEND THE COMPENSATION OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE DUTIES OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS.",
+      "topicCategory": [
+        "county_election_administration"
+      ],
+      "hammerRole": "co-sponsor",
+      "status": "Filed; enactment from KH-0B title review.",
+      "finalDisposition": "Disposition requires Arkleg confirmation.",
+      "affectedOfficeOrActor": [
+        "State Board of Election Commissioners",
+        "County clerks / county election officials"
+      ],
+      "affectedGroups": [
+        "voters",
+        "candidates",
+        "counties"
+      ],
+      "keyProvisions": [
+        "2023 session: amended compensation and duties for county boards of election commissioners (Hammer co-sponsor)."
+      ],
+      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
+      "countyAdministrationImpact": "Likely changes county clerk/election-board procedures; requires county-level implementation review.",
+      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
+      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
+      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
+      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB292&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
+      ],
+      "confidenceLevel": "MEDIUM",
+      "notes": [
+        "KH-0B ingest from Arkleg dryrun metadata.",
+        "Strategic narrative blocks marked INTERPRETATION until enrolled-act verification."
+      ],
+      "plainEnglishSummary": "2023 session: amended compensation and duties for county boards of election commissioners (Hammer co-sponsor)."
+    },
     {
       "billNumber": "HB1222",
       "actNumber": "154",
@@ -597,180 +1220,6 @@
         "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json",
         "https://arkleg.state.ar.us/Home/FTPDocument?path=%2FACTS%2F2025R%2FPublic%2FACT768.pdf",
         "https://ballotpedia.org/Changes_in_2025_to_laws_governing_ballot_measures"
-      ],
-      "confidenceLevel": "HIGH",
-      "notes": [
-        "Role classification is from arkleg bill-grid metadata (source JSON).",
-        "Where enacted, act number extracted from Arkleg bill detail status line."
-      ]
-    },
-    {
-      "billNumber": "HB1457",
-      "actNumber": "444",
-      "sessionYear": "2023/2023R",
-      "title": "TO ESTABLISH THE ARKANSAS POLL WATCHERS BILL OF RIGHTS ACT OF 2023; TO AMEND THE LAW CONCERNING POLL WATCHERS; AND TO AMEND THE LAW CONCERNING ELECTION PROCEDURES.",
-      "topicCategory": [
-        "county_election_administration",
-        "ballot_access",
-        "poll_watchers_election_observers"
-      ],
-      "hammerRole": "sponsor",
-      "status": "House -- Notification that HB1457 is now Act 444",
-      "finalDisposition": "Enacted as Act 444.",
-      "affectedOfficeOrActor": [
-        "State Board of Election Commissioners",
-        "County clerks / county election officials",
-        "Petition sponsors and canvassers"
-      ],
-      "affectedGroups": [
-        "voters",
-        "candidates",
-        "counties",
-        "petitioners"
-      ],
-      "keyProvisions": [
-        "Title-level summary; confirm in enrolled act text and amendments before external use."
-      ],
-      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
-      "countyAdministrationImpact": "Likely changes county clerk/election-board procedures; requires county-level implementation review.",
-      "ballotAccessImpact": "Touches ballot access mechanics (candidate filings, ballot-title framing, poll watcher interactions).",
-      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
-      "voterAccessImpact": "Potential voter-experience effect via absentee or poll-site process changes; needs legal-text confirmation.",
-      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
-      "sourceLinks": [
-        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1457&ddBienniumSession=2023%2F2023R",
-        "data/intelligence/opponent-legislative-candidates.json",
-        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json",
-        "https://sbec.arkansas.gov/wp-content/uploads/RFPO_FAQ.pdf",
-        "https://encyclopediaofarkansas.net/entries/voting-and-voting-rights-4916/"
-      ],
-      "confidenceLevel": "HIGH",
-      "notes": [
-        "Role classification is from arkleg bill-grid metadata (source JSON).",
-        "Where enacted, act number extracted from Arkleg bill detail status line."
-      ]
-    },
-    {
-      "billNumber": "HB1464",
-      "actNumber": "295",
-      "sessionYear": "2023/2023R",
-      "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS.",
-      "topicCategory": [
-        "election_enforcement"
-      ],
-      "hammerRole": "sponsor",
-      "status": "House -- Notification that HB1464 is now Act 295",
-      "finalDisposition": "Enacted as Act 295.",
-      "affectedOfficeOrActor": [
-        "State Board of Election Commissioners",
-        "County clerks / county election officials",
-        "Petition sponsors and canvassers"
-      ],
-      "affectedGroups": [
-        "voters",
-        "candidates",
-        "counties",
-        "petitioners"
-      ],
-      "keyProvisions": [
-        "Title-level summary; confirm in enrolled act text and amendments before external use."
-      ],
-      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
-      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
-      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
-      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
-      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
-      "enforcementImpact": "Expands or modifies complaint, violation, or enforcement timelines/process.",
-      "sourceLinks": [
-        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1464&ddBienniumSession=2023%2F2023R",
-        "data/intelligence/opponent-legislative-candidates.json",
-        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
-      ],
-      "confidenceLevel": "HIGH",
-      "notes": [
-        "Role classification is from arkleg bill-grid metadata (source JSON).",
-        "Where enacted, act number extracted from Arkleg bill detail status line."
-      ]
-    },
-    {
-      "billNumber": "HB1487",
-      "actNumber": "329",
-      "sessionYear": "2023/2023R",
-      "title": "TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING THE HANDLING OF ELECTION BALLOTS.",
-      "topicCategory": [
-        "voting_equipment_paper_ballots"
-      ],
-      "hammerRole": "sponsor",
-      "status": "House -- Notification that HB1487 is now Act 329",
-      "finalDisposition": "Enacted as Act 329.",
-      "affectedOfficeOrActor": [
-        "State Board of Election Commissioners",
-        "County clerks / county election officials",
-        "Petition sponsors and canvassers"
-      ],
-      "affectedGroups": [
-        "voters",
-        "candidates",
-        "counties",
-        "petitioners"
-      ],
-      "keyProvisions": [
-        "Title-level summary; confirm in enrolled act text and amendments before external use."
-      ],
-      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
-      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
-      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
-      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
-      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
-      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
-      "sourceLinks": [
-        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1487&ddBienniumSession=2023%2F2023R",
-        "data/intelligence/opponent-legislative-candidates.json",
-        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json"
-      ],
-      "confidenceLevel": "HIGH",
-      "notes": [
-        "Role classification is from arkleg bill-grid metadata (source JSON).",
-        "Where enacted, act number extracted from Arkleg bill detail status line."
-      ]
-    },
-    {
-      "billNumber": "SB250",
-      "actNumber": "350",
-      "sessionYear": "2023/2023R",
-      "title": "TO AMEND THE LAW CONCERNING PAPER BALLOTS; TO AMEND THE LAW CONCERNING MARKING AND COUNTING PAPER BALLOTS; TO AMEND THE LAW CONCERNING THE DECLARATION OF ELECTION RESULTS; AND TO DECLARE AN EMERGENCY.",
-      "topicCategory": [
-        "voting_equipment_paper_ballots"
-      ],
-      "hammerRole": "sponsor",
-      "status": "Senate -- Notification that SB250 is now Act 350",
-      "finalDisposition": "Enacted as Act 350.",
-      "affectedOfficeOrActor": [
-        "State Board of Election Commissioners",
-        "County clerks / county election officials",
-        "Petition sponsors and canvassers"
-      ],
-      "affectedGroups": [
-        "voters",
-        "candidates",
-        "counties",
-        "petitioners"
-      ],
-      "keyProvisions": [
-        "Title-level summary; confirm in enrolled act text and amendments before external use."
-      ],
-      "secretaryOfStateDutyImpact": "No direct Secretary of State duty language identified in title-level review.",
-      "countyAdministrationImpact": "No explicit county administration trigger identified in title-level review.",
-      "ballotAccessImpact": "No direct ballot-access change identified in title-level review.",
-      "directDemocracyImpact": "No direct initiative/referendum process language identified in title-level review.",
-      "voterAccessImpact": "No specific voter-access mechanism identified in title-level review.",
-      "enforcementImpact": "No explicit enforcement-process trigger identified in title-level review.",
-      "sourceLinks": [
-        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB250&ddBienniumSession=2023%2F2023R",
-        "data/intelligence/opponent-legislative-candidates.json",
-        "data/intelligence/generated/arkleg-hammer-all-bills.dryrun.json",
-        "https://arkleg.state.ar.us/Acts/FTPDocument?ddBienniumSession=2023%2F2023R&file=350.pdf&path=%2FACTS%2F2023R%2FPublic%2F",
-        "https://fayettevilleflyer.com/2023/03/01/arkansas-senate-committee-advances-bill-to-regulate-paper-ballots/"
       ],
       "confidenceLevel": "HIGH",
       "notes": [

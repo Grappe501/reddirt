@@ -1,5 +1,12 @@
 import { loadKimHammerEvidenceIndex } from "@/lib/opposition/kimHammerEvidenceIndex";
+import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
 import {
+  KimHammerClaimReviewControls,
+  type KimHammerClaimReviewRow,
+} from "../EvidenceCommandReviewPanel";
+import { getAllowedReviewTransitions } from "@/lib/opposition/kimHammerReviewWorkflow";
+import {
+  canExportClaim,
   getExternalUseStatus,
   getLegalRiskLabel,
   getPublicationTier,
@@ -32,15 +39,23 @@ export default async function KimHammerPublicDebateEvidencePage() {
     (claim) => getExternalUseStatus(claim) === "READY_WITH_CITATION",
   ).length;
 
-  return (
-    <div className="mx-auto max-w-7xl text-kelly-text">
-      <header className="mb-6 border-b border-kelly-text/10 pb-4">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Public Debate Evidence Board</p>
-        <h1 className="font-heading text-2xl font-bold">Source Safety + External Use Readiness</h1>
-        <p className="mt-2 text-xs text-kelly-muted">{board.purpose}</p>
-      </header>
+  function toReviewRow(claim: (typeof debateClaims)[number]): KimHammerClaimReviewRow {
+    return {
+      id: claim.id,
+      indexSource: claim.indexSource,
+      title: claim.topic ?? claim.id,
+      text: claim.text ?? claim.claim ?? "",
+      reviewStatus: getReviewStatusLabel(claim),
+      reviewer: claim.reviewer,
+      reviewNotes: claim.reviewNotes,
+      exportReady: canExportClaim(claim),
+      allowedTransitions: getAllowedReviewTransitions(claim.reviewStatus),
+    };
+  }
 
-      <section className="mb-4 grid gap-3 sm:grid-cols-3">
+  return (
+    <KimHammerBriefingPageShell moduleId="public-debate-evidence">
+<section className="mb-4 grid gap-3 sm:grid-cols-3">
         <div className="rounded-md border border-kelly-text/10 bg-white px-3 py-2 text-xs">
           <p className="font-semibold text-kelly-navy">Total claims</p>
           <p className="mt-1 text-xl font-bold">{board.items.length}</p>
@@ -107,10 +122,11 @@ export default async function KimHammerPublicDebateEvidencePage() {
                   </ul>
                 </div>
               </div>
+              <KimHammerClaimReviewControls claim={toReviewRow(claim)} compact />
             </article>
           );
         })}
       </section>
-    </div>
+    </KimHammerBriefingPageShell>
   );
 }

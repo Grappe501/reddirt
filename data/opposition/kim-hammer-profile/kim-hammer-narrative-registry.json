@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-05-28T18:00:00.000Z",
+  "registryVersion": "1.0",
+  "purpose": "Curated narrative entities for NSI-1 state composition — dependency links to claims and tasks; citations resolved dynamically from locker.",
+  "narratives": [
+    {
+      "narrativeId": "kh0b-2021-integrity-foundation",
+      "title": "2021 Integrity Foundation",
+      "narrativeClass": "LEGISLATIVE_PACKAGE",
+      "description": "2021 election-integrity cluster (SB486–SB644): poll-site enforcement, precinct control, and deterrence framing.",
+      "linkedClaimIds": [
+        "pdeb-001-election-integrity-record",
+        "claim-election-integrity-central"
+      ],
+      "linkedTaskIds": [],
+      "adminHref": "/admin/intelligence/kim-hammer/integrity-foundation-2021"
+    },
+    {
+      "narrativeId": "kh0b-county-administration-burden",
+      "title": "County Administration Burden",
+      "narrativeClass": "COUNTY_BURDEN",
+      "description": "County clerk, commissioner, and quorum court operational load from Hammer-sponsored election administration bills.",
+      "linkedClaimIds": ["pdeb-002-management-readiness", "claim-management-readiness-partial"],
+      "linkedTaskIds": ["kh3b-management-readiness-evidence"],
+      "adminHref": "/admin/intelligence/kim-hammer/county-administration-burden"
+    },
+    {
+      "narrativeId": "kh0b-legislative-chronology",
+      "title": "Legislative Chronology Arc",
+      "narrativeClass": "CHRONOLOGY",
+      "description": "2019 → 2021 foundation → 2023 enforcement/admin → 2025 petition architecture progression.",
+      "linkedClaimIds": ["pdeb-001-election-integrity-record"],
+      "linkedTaskIds": [],
+      "adminHref": "/admin/intelligence/kim-hammer/legislative-chronology"
+    },
+    {
+      "narrativeId": "debate-frame-election-integrity",
+      "title": "Debate Frame — Election Integrity Record",
+      "narrativeClass": "DEBATE_FRAME",
+      "description": "Export-ready election-integrity qualification framing for SOS debate prep.",
+      "linkedClaimIds": ["pdeb-001-election-integrity-record"],
+      "linkedTaskIds": [],
+      "adminHref": "/admin/intelligence/kim-hammer/public-debate-evidence"
+    },
+    {
+      "narrativeId": "debate-frame-management-readiness",
+      "title": "Debate Frame — Management Readiness",
+      "narrativeClass": "DEBATE_FRAME",
+      "description": "Partial-corroboration qualification fault line — Tier 2, not export-ready.",
+      "linkedClaimIds": ["pdeb-002-management-readiness", "claim-management-readiness-partial"],
+      "linkedTaskIds": ["kh3b-management-readiness-evidence"],
+      "adminHref": "/admin/intelligence/kim-hammer/public-debate-evidence"
+    },
+    {
+      "narrativeId": "debate-frame-debate-questions",
+      "title": "Debate Frame — Question Patterns",
+      "narrativeClass": "DEBATE_FRAME",
+      "description": "Arkansas SOS debate domain patterns from PBS and local recap sources.",
+      "linkedClaimIds": ["pdeb-003-debate-question-patterns"],
+      "linkedTaskIds": [],
+      "adminHref": "/admin/intelligence/kim-hammer/debate-packet-export"
+    },
+    {
+      "narrativeId": "SB486",
+      "title": "SB486 — Electioneering & Penalties",
+      "narrativeClass": "BILL_NARRATIVE",
+      "description": "Act 728 poll-site electioneering boundaries and voting-related misdemeanor penalties.",
+      "linkedClaimIds": [],
+      "linkedTaskIds": [],
+      "adminHref": "/admin/intelligence/kim-hammer/integrity-foundation-2021"
+    },
+    {
+      "narrativeId": "SB487",
+      "title": "SB487 — Precinct & Polling Sites",
+      "narrativeClass": "BILL_NARRATIVE",
+      "description": "Act 729 precinct boundaries and polling site control — county burden linkage.",
+      "linkedClaimIds": [],
+      "linkedTaskIds": [],
+      "adminHref": "/admin/intelligence/kim-hammer/county-administration-burden"
+    }
+  ]
+}
