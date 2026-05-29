@@ -173,6 +173,14 @@ Public smoke: `/`, `/privacy`, `/get-involved` — see `docs/NETLIFY_FIRST_DEPLO
 
 ---
 
+## Serverless function size (250 MB cap)
+
+If deploy fails with `The function exceeds the maximum size of 250 MB` on `___netlify-server-handler`:
+
+1. Confirm `next.config.ts` includes `outputFileTracingExcludes` (especially `.next/cache/**` and `data/owned-campaign-media/**`). Netlify builds on Linux; local Windows traces may still look oversized until excludes apply on CI.
+2. Do not commit binaries under `data/owned-campaign-media/` (gitignored). Production should serve approved assets via Supabase `publicUrl` when `storageBackend` is `SUPABASE`.
+3. After `netlify build`, run `node scripts/measure-netlify-handler-size.mjs` from the RedDirt root.
+
 ## Known limitations
 
 1. **File-backed stores** may not persist on Netlify serverless (see above).

@@ -160,8 +160,44 @@ const nextConfig: NextConfig = {
       "./campaign-system-manual/**/*",
     ],
   },
+  /**
+   * Netlify `___netlify-server-handler` must stay under AWS Lambda’s 250 MB (unzipped) cap.
+   * The tracer otherwise pulls compile-only binaries (SWC), pdf-parse test PDFs/maps, Prisma
+   * engines for other OS targets, and local upload trees that are gitignored but may exist on disk.
+   */
+  outputFileTracingExcludes: {
+    // Route glob "**/*" matches all App/Pages routes (bare "*" is unreliable in trace apply).
+    // Patterns are joined to the repo root by Next — use forward-slash forms that work on Netlify Linux.
+    "**/*": [
+      ".next/cache/**",
+      ".git/**",
+      "backups/**",
+      ".tmp-heic-preview/**",
+      "tsconfig.tsbuildinfo",
+      "data/owned-campaign-media/**",
+      "data/campaign-events/media/**",
+      "data/compliance/imports/**",
+      "node_modules/@next/swc-*/**",
+      "node_modules/@img/sharp-win32-*/**",
+      "node_modules/@img/sharp-darwin-*/**",
+      "node_modules/.prisma/client/query_engine-windows.dll.node",
+      "node_modules/.prisma/client/libquery_engine-darwin*.node",
+      "node_modules/@swc/core-*/**",
+      "node_modules/@esbuild/**",
+      "node_modules/webpack/**",
+      "node_modules/typescript/**",
+      "node_modules/.cache/**",
+      "node_modules/pdf-parse/test/**",
+      "node_modules/pdf-parse/lib/pdf.js/**/build/*.map",
+      "node_modules/@prisma/engines/**/windows/**",
+      "node_modules/@prisma/engines/**/darwin/**",
+      "node_modules/prisma/**/windows/**",
+      "node_modules/prisma/**/darwin/**",
+    ],
+    "/api/owned-campaign-media/**": ["data/owned-campaign-media/**"],
+  },
   // pdf-parse must stay external: its test harness references missing test/ PDFs and breaks the bundler.
-  // Scoped Google API clients + sharp: keep traced server artifacts smaller for Netlify’s 250 MB function cap.
+  // Heavy server deps: keep traced server artifacts smaller for Netlify’s 250 MB function cap.
   serverExternalPackages: [
     "@prisma/client",
     "pdf-parse",
@@ -169,6 +205,10 @@ const nextConfig: NextConfig = {
     "@googleapis/gmail",
     "@googleapis/calendar",
     "@googleapis/people",
+    "twilio",
+    "openai",
+    "mammoth",
+    "xlsx",
   ],
 };
 
