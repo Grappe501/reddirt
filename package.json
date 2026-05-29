@@ -132,6 +132,8 @@
     "agents:test-ai-intelligence-copilot-tools": "tsx scripts/test-ai-intelligence-copilot-tools.ts",
     "agents:test-llm-governed-drafting": "tsx scripts/test-llm-governed-drafting.ts",
     "agents:test-intelligence-memory-system": "tsx scripts/test-intelligence-memory-system.ts",
+    "agents:test-strategic-scenario-simulation": "tsx scripts/test-strategic-scenario-simulation.ts",
+    "agents:test-human-action-queue": "tsx scripts/test-human-action-queue.ts",
     "opposition:ingest-kim-hammer-kh0b": "tsx scripts/opposition/ingest-kim-hammer-kh0b.ts",
     "agents:test-campaign-knowledge": "tsx scripts/test-campaign-knowledge.ts",
     "agents:test-agent-tooling-brain": "tsx scripts/test-agent-tooling-brain.ts",

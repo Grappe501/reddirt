@@ -116,6 +116,27 @@ type EvidenceCommandDashboardProps = {
     recurringAttackSummaries: string[];
     intelligenceMemoryHref: string;
   };
+  nsi14Summary?: {
+    scenarioTopRisks: string[];
+    scenarioTopOpportunities: string[];
+    scenarioDebateTraps: string[];
+    scenarioMediaEscalationWarnings: string[];
+    scenarioCountyReactionWarnings: string[];
+    scenarioRegistrationPathwayRisks: string[];
+    scenarioEvidenceBlockers: string[];
+    scenarioHumanReviewActions: string[];
+    scenarioSimulationHref: string;
+  };
+  nsi15Summary?: {
+    topUrgent: Array<{ actionId: string; title: string; recommendedNextStep: string }>;
+    topBlocked: Array<{ actionId: string; title: string; blockedBy: string[] }>;
+    topOpportunity: Array<{ actionId: string; title: string }>;
+    debatePrep: Array<{ actionId: string; title: string }>;
+    citationReview: Array<{ actionId: string; title: string }>;
+    countyBriefing: Array<{ actionId: string; title: string }>;
+    targetPathway: Array<{ actionId: string; title: string }>;
+    queueHref: string;
+  };
 };
 
 const tierLabels: Record<KimHammerPublicationTier, string> = {
@@ -183,6 +204,8 @@ export function EvidenceCommandDashboard({
   nsi11Summary,
   nsi12Summary,
   nsi13Summary,
+  nsi14Summary,
+  nsi15Summary,
 }: EvidenceCommandDashboardProps) {
   return (
     <>
@@ -707,6 +730,112 @@ export function EvidenceCommandDashboard({
           <div className="mt-3">
             <Link href={nsi13Summary.intelligenceMemoryHref} className="rounded border border-teal-900/20 bg-white px-2 py-1 font-semibold">
               Intelligence memory dashboard
+            </Link>
+          </div>
+        </section>
+      ) : null}
+
+      {nsi15Summary ? (
+        <section className="mb-6 rounded-xl border border-teal-300/40 bg-teal-50 p-4 text-xs text-teal-950">
+          <h2 className="text-sm font-bold uppercase tracking-wider">NSI-15 · Human action queue</h2>
+          <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-teal-900/80">
+            RECOMMENDATION_ONLY · HUMAN_ACTION_REQUIRED — not executed by system
+          </p>
+          <div className="mt-3 grid gap-4 lg:grid-cols-2">
+            <div>
+              <h3 className="font-bold uppercase tracking-wider text-[10px]">Top urgent actions</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {nsi15Summary.topUrgent.map((row) => (
+                  <li key={row.actionId}>{row.title}</li>
+                ))}
+              </ul>
+              <h3 className="mt-3 font-bold uppercase tracking-wider text-[10px]">Blocked actions</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {nsi15Summary.topBlocked.map((row) => (
+                  <li key={row.actionId}>{row.title}</li>
+                ))}
+              </ul>
+              <h3 className="mt-3 font-bold uppercase tracking-wider text-[10px]">Citation review</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {nsi15Summary.citationReview.map((row) => (
+                  <li key={row.actionId}>{row.title}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold uppercase tracking-wider text-[10px]">High opportunity</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {nsi15Summary.topOpportunity.map((row) => (
+                  <li key={row.actionId}>{row.title}</li>
+                ))}
+              </ul>
+              <h3 className="font-bold uppercase tracking-wider text-[10px]">Debate prep · county · pathway</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {[...nsi15Summary.debatePrep, ...nsi15Summary.countyBriefing, ...nsi15Summary.targetPathway].map((row) => (
+                  <li key={row.actionId}>{row.title}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="mt-3">
+            <Link href={nsi15Summary.queueHref} className="rounded border border-teal-900/20 bg-white px-2 py-1 font-semibold">
+              Open human action queue
+            </Link>
+          </div>
+        </section>
+      ) : null}
+
+      {nsi14Summary ? (
+        <section className="mb-6 rounded-xl border border-violet-300/40 bg-violet-50 p-4 text-xs text-violet-950">
+          <h2 className="text-sm font-bold uppercase tracking-wider">NSI-14 · Scenario simulation alerts</h2>
+          <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-violet-900/80">
+            SCENARIO_MODEL · INTERNAL_ONLY — no autonomous decisions
+          </p>
+          <div className="mt-3 grid gap-4 lg:grid-cols-2">
+            <div>
+              <h3 className="font-bold uppercase tracking-wider text-[10px]">Top risk scenarios</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {nsi14Summary.scenarioTopRisks.map((line) => (
+                  <li key={line.slice(0, 48)}>{line}</li>
+                ))}
+              </ul>
+              <h3 className="mt-3 font-bold uppercase tracking-wider text-[10px]">Debate traps · media amplification</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {[...nsi14Summary.scenarioDebateTraps, ...nsi14Summary.scenarioMediaEscalationWarnings].map((line) => (
+                  <li key={line.slice(0, 48)}>{line}</li>
+                ))}
+              </ul>
+              <h3 className="mt-3 font-bold uppercase tracking-wider text-[10px]">Field capacity · registration pathway</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {nsi14Summary.scenarioRegistrationPathwayRisks.map((line) => (
+                  <li key={line.slice(0, 48)}>{line}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold uppercase tracking-wider text-[10px]">Opportunity scenarios</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {nsi14Summary.scenarioTopOpportunities.map((line) => (
+                  <li key={line.slice(0, 48)}>{line}</li>
+                ))}
+              </ul>
+              <h3 className="font-bold uppercase tracking-wider text-[10px]">Evidence blockers affecting scenarios</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {nsi14Summary.scenarioEvidenceBlockers.length > 0
+                  ? nsi14Summary.scenarioEvidenceBlockers.map((line) => <li key={line}>{line}</li>)
+                  : <li>None flagged.</li>}
+              </ul>
+              <h3 className="mt-3 font-bold uppercase tracking-wider text-[10px]">Recommended review actions</h3>
+              <ul className="mt-1 list-inside list-disc">
+                {nsi14Summary.scenarioHumanReviewActions.map((line) => (
+                  <li key={line.slice(0, 48)}>{line}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="mt-3">
+            <Link href={nsi14Summary.scenarioSimulationHref} className="rounded border border-violet-900/20 bg-white px-2 py-1 font-semibold">
+              Scenario simulation dashboard
             </Link>
           </div>
         </section>

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-28T20:16:24.039Z",
+  "generatedAt": "2026-05-28T23:36:59.479Z",
   "purpose": "NSI-12 governed LLM draft review queue — all entries INTERNAL_DRAFT until human review.",
   "governanceDefaults": {
     "publicationSafety": "NON_PUBLISHABLE",
@@ -8,6 +8,185 @@
     "defaultReviewStatus": "DRAFT_PENDING_REVIEW"
   },
   "drafts": [
+    {
+      "draftId": "llm-draft-candidate-talking-points-mpq4qk30",
+      "draftType": "writing",
+      "generatedAt": "2026-05-28T23:34:06.636Z",
+      "generatedByTool": "writing-toolbox:candidate-talking-points",
+      "generatedForRoute": "/admin/intelligence/writing-toolbox",
+      "generationMode": "DETERMINISTIC_SYNTHESIS",
+      "sourceContext": {},
+      "promptSummary": "candidate-talking-points: Structured candidate talking points with values, accountability, and county-specific frames.",
+      "draftTitle": "candidate-talking-points — governed draft",
+      "draftContent": "INTERNAL DRAFT ONLY\nNON-PUBLISHABLE\nHUMAN REVIEW REQUIRED\nGeneration mode: DETERMINISTIC_SYNTHESIS\nTemplate: candidate-talking-points (writing)\n## Purpose\nStructured candidate talking points with values, accountability, and county-specific frames.\n## Doctrine / strategy context\n- Campaign doctrine: transparency, accountability, county support for election administrators.\n- Framing: people vs government dysfunction — not generic partisan attack copy.\n- Civic environment: election administration access, ballot initiative philosophy, democracy impact.\n- Voter registration strategy (anecdotal assumptions only — no individual targeting).\n- Anecdotal field assumptions based on current activity, demographics, and registration focus areas. Not validated model output.\n- Registration anchor: 50000 goal · 11250 expected support yield.\n- Priority doctrine: Steve Strategy Doctrine (VALUES)\n- Priority doctrine: Steve Strategy Doctrine (structured intake) (VALUES)\n- Priority doctrine: Arkansas Grassroots Principles (FIELD)\n- Doctrine tension: 2021 Integrity Foundation — 2021 Integrity Foundation conflicts with campaign philosophy — CONTRADICTS SOS as Keeper of Records \n- Doctrine tension: Debate Frame — Management Readiness — Debate Frame — Management Readiness conflicts with campaign philosophy — CONTRADICTS Opponent Contra\n## Situation synthesis\n- 3 narratives STRONG; 2 BLOCKED; 2 WEAK.\n- Export-ready claims: 2 (governed gate).\n- Statewide working target with cushion: 764,876 votes.\n- Registration yield model (anecdotal): 11,250 expected support votes from 50,000 registrations.\n## Why this matters today\n- Morning intelligence composition for operator review — not autonomous publishing.\n- County overlays and doctrine alignment inform where messaging is safe vs blocked.\n- Registration pathway assumptions require field validation before strategic reliance.\n## What changed\n- 3 narrative fatigue warnings active.\n- 7 open retrieval tasks.\n## County / field impact\n- Statewide: BLOCKED confidence, MEDIUM local risk.\n- Pulaski County: BLOCKED confidence, HIGH local risk.\n- Washington County: WEAK confidence, MEDIUM local risk.\n## Debate / media relevance\n- Statewide: Statewide: high local debate relevance — prepare county-specific clerk/site examples.\n- Pulaski County: Pulaski County: high local debate relevance — prepare county-specific clerk/site examples.\n## What NOT to say\n- DO NOT: Any statement that implies motive without direct quotation or hearing evidence.\n- DO NOT: Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.\n- DO NOT: Any statement that conflates sponsoring with final floor vote behavior.\n## Open questions\n- Pre-legislative authored writings archive remains incomplete (op-eds, letters, civic/church newsletters, archived campai\n- Long-tail video and forum statement archive is not fully indexed (county GOP events, town halls, community appearances, \n## Operator next action\nHuman review required before any promotion to briefing, writing, citation candidate, or retrieval task workflow.\nThis draft is NOT deployable externally and does NOT create governed claims.",
+      "publicationSafety": "NON_PUBLISHABLE",
+      "reviewStatus": "DRAFT_PENDING_REVIEW",
+      "humanReviewRequired": true,
+      "recommendedReviewer": "comms_director",
+      "sourceDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "citationDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "narrativeDependencies": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "countyDependencies": [
+        "statewide",
+        "pulaski",
+        "washington"
+      ],
+      "operatorNotes": "",
+      "llmModel": "deterministic-synthesis",
+      "llmTemperature": 0.45,
+      "tokenEstimate": 800,
+      "confidenceWarnings": [],
+      "prohibitedUseWarnings": [
+        "Candidate comms review required"
+      ],
+      "approvedForPromotion": false,
+      "promotedTo": null,
+      "archived": false,
+      "contentChecksum": "6a97ff3441e892a2",
+      "governanceWarnings": [],
+      "unsupportedClaimWarnings": [],
+      "missingCitationWarnings": [
+        "2 citation(s) in locker need review — draft may depend on weak sources.",
+        "3 claim(s) have partial citations — do not treat draft as deployable."
+      ],
+      "hallucinationRiskWarnings": [],
+      "publicationRestrictions": [
+        "no_auto_publish",
+        "no_export"
+      ]
+    },
+    {
+      "draftId": "llm-draft-vulnerability-analysis-mpq4q327",
+      "draftType": "opposition_research",
+      "generatedAt": "2026-05-28T23:33:44.575Z",
+      "generatedByTool": "vulnerability-finder",
+      "generatedForRoute": "/admin/intelligence/kim-hammer/ai-opposition-copilot",
+      "generationMode": "DETERMINISTIC_SYNTHESIS",
+      "sourceContext": {},
+      "promptSummary": "vulnerability-analysis: Analyze opposition vulnerabilities using export-ready evidence, citation health, county relevance, and doctrine alignment — people-vs-government framing, not generic attack copy.",
+      "draftTitle": "vulnerability-analysis — governed draft",
+      "draftContent": "INTERNAL DRAFT ONLY\nNON-PUBLISHABLE\nHUMAN REVIEW REQUIRED\nGeneration mode: DETERMINISTIC_SYNTHESIS\nTemplate: vulnerability-analysis (opposition_research)\n## Purpose\nAnalyze opposition vulnerabilities using export-ready evidence, citation health, county relevance, and doctrine alignment — people-vs-government framing, not generic attack copy.\n## Doctrine / strategy context\n- Campaign doctrine: transparency, accountability, county support for election administrators.\n- Framing: people vs government dysfunction — not generic partisan attack copy.\n- Civic environment: election administration access, ballot initiative philosophy, democracy impact.\n- Voter registration strategy (anecdotal assumptions only — no individual targeting).\n- Anecdotal field assumptions based on current activity, demographics, and registration focus areas. Not validated model output.\n- Registration anchor: 50000 goal · 11250 expected support yield.\n- Priority doctrine: Steve Strategy Doctrine (VALUES)\n- Priority doctrine: Steve Strategy Doctrine (structured intake) (VALUES)\n- Priority doctrine: Arkansas Grassroots Principles (FIELD)\n- Doctrine tension: 2021 Integrity Foundation — 2021 Integrity Foundation conflicts with campaign philosophy — CONTRADICTS SOS as Keeper of Records \n- Doctrine tension: Debate Frame — Management Readiness — Debate Frame — Management Readiness conflicts with campaign philosophy — CONTRADICTS Opponent Contra\n## Situation synthesis\n- 3 narratives STRONG; 2 BLOCKED; 2 WEAK.\n- Export-ready claims: 2 (governed gate).\n- Statewide working target with cushion: 764,876 votes.\n- Registration yield model (anecdotal): 11,250 expected support votes from 50,000 registrations.\n## Why this matters today\n- Morning intelligence composition for operator review — not autonomous publishing.\n- County overlays and doctrine alignment inform where messaging is safe vs blocked.\n- Registration pathway assumptions require field validation before strategic reliance.\n## What changed\n- 3 narrative fatigue warnings active.\n- 7 open retrieval tasks.\n## County / field impact\n- Statewide: BLOCKED confidence, MEDIUM local risk.\n- Pulaski County: BLOCKED confidence, HIGH local risk.\n- Washington County: WEAK confidence, MEDIUM local risk.\n## Debate / media relevance\n- Statewide: Statewide: high local debate relevance — prepare county-specific clerk/site examples.\n- Pulaski County: Pulaski County: high local debate relevance — prepare county-specific clerk/site examples.\n## What NOT to say\n- DO NOT: Any statement that implies motive without direct quotation or hearing evidence.\n- DO NOT: Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.\n- DO NOT: Any statement that conflates sponsoring with final floor vote behavior.\n## Open questions\n- Pre-legislative authored writings archive remains incomplete (op-eds, letters, civic/church newsletters, archived campai\n- Long-tail video and forum statement archive is not fully indexed (county GOP events, town halls, community appearances, \n## Operator next action\nHuman review required before any promotion to briefing, writing, citation candidate, or retrieval task workflow.\nThis draft is NOT deployable externally and does NOT create governed claims.",
+      "publicationSafety": "NON_PUBLISHABLE",
+      "reviewStatus": "DRAFT_PENDING_REVIEW",
+      "humanReviewRequired": true,
+      "recommendedReviewer": "research_lead",
+      "sourceDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "citationDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "narrativeDependencies": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "countyDependencies": [
+        "statewide",
+        "pulaski",
+        "washington"
+      ],
+      "operatorNotes": "",
+      "llmModel": "deterministic-synthesis",
+      "llmTemperature": 0.3,
+      "tokenEstimate": 800,
+      "confidenceWarnings": [],
+      "prohibitedUseWarnings": [
+        "INTERNAL_DRAFT",
+        "NON_PUBLISHABLE",
+        "HUMAN_REVIEW_REQUIRED",
+        "No unsourced opponent intent claims"
+      ],
+      "approvedForPromotion": false,
+      "promotedTo": null,
+      "archived": false,
+      "contentChecksum": "712dadba7ce0a9df",
+      "governanceWarnings": [],
+      "unsupportedClaimWarnings": [],
+      "missingCitationWarnings": [
+        "2 citation(s) in locker need review — draft may depend on weak sources.",
+        "3 claim(s) have partial citations — do not treat draft as deployable."
+      ],
+      "hallucinationRiskWarnings": [],
+      "publicationRestrictions": [
+        "no_auto_publish",
+        "no_claim_creation",
+        "no_export"
+      ]
+    },
+    {
+      "draftId": "llm-draft-vulnerability-analysis-mpq4nzyr",
+      "draftType": "opposition_research",
+      "generatedAt": "2026-05-28T23:32:07.251Z",
+      "generatedByTool": "test-nsi12",
+      "generatedForRoute": "/admin/intelligence/llm-review-queue",
+      "generationMode": "DETERMINISTIC_SYNTHESIS",
+      "sourceContext": {},
+      "promptSummary": "vulnerability-analysis: Analyze opposition vulnerabilities using export-ready evidence, citation health, county relevance, and doctrine alignment — people-vs-government framing, not generic attack copy.",
+      "draftTitle": "vulnerability-analysis — governed draft",
+      "draftContent": "INTERNAL DRAFT ONLY\nNON-PUBLISHABLE\nHUMAN REVIEW REQUIRED\nGeneration mode: DETERMINISTIC_SYNTHESIS\nTemplate: vulnerability-analysis (opposition_research)\n## Purpose\nAnalyze opposition vulnerabilities using export-ready evidence, citation health, county relevance, and doctrine alignment — people-vs-government framing, not generic attack copy.\n## Doctrine / strategy context\n- Campaign doctrine: transparency, accountability, county support for election administrators.\n- Framing: people vs government dysfunction — not generic partisan attack copy.\n- Civic environment: election administration access, ballot initiative philosophy, democracy impact.\n- Voter registration strategy (anecdotal assumptions only — no individual targeting).\n- Anecdotal field assumptions based on current activity, demographics, and registration focus areas. Not validated model output.\n- Registration anchor: 50000 goal · 11250 expected support yield.\n- Priority doctrine: Steve Strategy Doctrine (VALUES)\n- Priority doctrine: Steve Strategy Doctrine (structured intake) (VALUES)\n- Priority doctrine: Arkansas Grassroots Principles (FIELD)\n- Doctrine tension: 2021 Integrity Foundation — 2021 Integrity Foundation conflicts with campaign philosophy — CONTRADICTS SOS as Keeper of Records \n- Doctrine tension: Debate Frame — Management Readiness — Debate Frame — Management Readiness conflicts with campaign philosophy — CONTRADICTS Opponent Contra\n## Situation synthesis\n- 3 narratives STRONG; 2 BLOCKED; 2 WEAK.\n- Export-ready claims: 2 (governed gate).\n- Statewide working target with cushion: 764,876 votes.\n- Registration yield model (anecdotal): 11,250 expected support votes from 50,000 registrations.\n## Why this matters today\n- Morning intelligence composition for operator review — not autonomous publishing.\n- County overlays and doctrine alignment inform where messaging is safe vs blocked.\n- Registration pathway assumptions require field validation before strategic reliance.\n## What changed\n- 3 narrative fatigue warnings active.\n- 7 open retrieval tasks.\n## County / field impact\n- Statewide: BLOCKED confidence, MEDIUM local risk.\n- Pulaski County: BLOCKED confidence, HIGH local risk.\n- Washington County: WEAK confidence, MEDIUM local risk.\n## Debate / media relevance\n- Statewide: Statewide: high local debate relevance — prepare county-specific clerk/site examples.\n- Pulaski County: Pulaski County: high local debate relevance — prepare county-specific clerk/site examples.\n## What NOT to say\n- DO NOT: Any statement that implies motive without direct quotation or hearing evidence.\n- DO NOT: Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.\n- DO NOT: Any statement that conflates sponsoring with final floor vote behavior.\n## Open questions\n- Pre-legislative authored writings archive remains incomplete (op-eds, letters, civic/church newsletters, archived campai\n- Long-tail video and forum statement archive is not fully indexed (county GOP events, town halls, community appearances, \n## Operator next action\nHuman review required before any promotion to briefing, writing, citation candidate, or retrieval task workflow.\nThis draft is NOT deployable externally and does NOT create governed claims.",
+      "publicationSafety": "NON_PUBLISHABLE",
+      "reviewStatus": "ARCHIVED",
+      "humanReviewRequired": true,
+      "recommendedReviewer": "research_lead",
+      "sourceDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "citationDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "narrativeDependencies": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "countyDependencies": [
+        "statewide",
+        "pulaski",
+        "washington"
+      ],
+      "operatorNotes": "Test approval",
+      "llmModel": "openai-configured-deferred-nsi12",
+      "llmTemperature": 0.3,
+      "tokenEstimate": 1200,
+      "confidenceWarnings": [],
+      "prohibitedUseWarnings": [
+        "INTERNAL_DRAFT",
+        "NON_PUBLISHABLE",
+        "HUMAN_REVIEW_REQUIRED",
+        "No unsourced opponent intent claims"
+      ],
+      "approvedForPromotion": false,
+      "promotedTo": "WRITING_DRAFT:llm-wf-writing_draft-mpq4u9j8",
+      "archived": true,
+      "contentChecksum": "712dadba7ce0a9df",
+      "governanceWarnings": [],
+      "unsupportedClaimWarnings": [],
+      "missingCitationWarnings": [
+        "2 citation(s) in locker need review — draft may depend on weak sources.",
+        "3 claim(s) have partial citations — do not treat draft as deployable."
+      ],
+      "hallucinationRiskWarnings": [],
+      "publicationRestrictions": [
+        "no_auto_publish",
+        "no_claim_creation",
+        "no_export"
+      ]
+    },
     {
       "draftId": "llm-draft-candidate-talking-points-mppxmbst",
       "draftType": "writing",

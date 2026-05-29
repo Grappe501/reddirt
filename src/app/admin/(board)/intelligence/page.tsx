@@ -83,6 +83,15 @@ export default async function OppositionIntelligenceAdminPage() {
             <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/media-intake">
               Media intake (NSI-8)
             </Link>
+            <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/intelligence-memory">
+              Intelligence memory (NSI-13)
+            </Link>
+            <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/scenario-simulation">
+              Scenario simulation (NSI-14)
+            </Link>
+            <Link className="rounded border border-teal-700/30 bg-teal-50 px-2 py-1 font-semibold text-teal-900" href="/admin/intelligence/action-queue">
+              Human action queue (NSI-15)
+            </Link>
             <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/kim-hammer/debate-prep">
               Debate prep center
             </Link>

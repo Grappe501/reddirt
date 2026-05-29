@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { CountyBriefingIntelligence } from "@/lib/intelligence/types/countyBriefingIntelligence";
 import type { BorderCountyMediaProfile } from "@/lib/intelligence/types/mediaMarketIntelligence";
+import type { CountyScenarioWatchSummary } from "@/lib/intelligence/types/strategicScenarioSimulation";
 
 function Section({
   title,
@@ -31,9 +32,11 @@ function BulletList({ items }: { items: string[] }) {
 export function KimHammerCountyBriefingPanel({
   briefing,
   mediaProfile,
+  scenarioWatch,
 }: {
   briefing: CountyBriefingIntelligence;
   mediaProfile?: BorderCountyMediaProfile | null;
+  scenarioWatch?: CountyScenarioWatchSummary;
 }) {
   return (
     <>
@@ -245,6 +248,36 @@ export function KimHammerCountyBriefingPanel({
             </p>
           </Section>
         </>
+      ) : null}
+
+      {scenarioWatch ? (
+        <section className="mb-4 rounded-xl border border-violet-200/50 bg-violet-50/40 p-4 text-xs">
+          <p className="font-bold uppercase tracking-wider text-violet-950">NSI-14 · Scenario watch</p>
+          <p className="mt-1 text-violet-900/80">Governed scenario modeling — aggregate only · HUMAN_REVIEW_REQUIRED</p>
+          <div className="mt-3 grid gap-4 lg:grid-cols-2 text-violet-950">
+            <div>
+              <p className="font-semibold text-kelly-navy">Likely opponent frames</p>
+              <BulletList items={scenarioWatch.likelyOpponentFrames} />
+              <p className="mt-2 font-semibold text-kelly-navy">Media escalation risks</p>
+              <BulletList items={scenarioWatch.mediaEscalationRisks} />
+              <p className="mt-2 font-semibold text-kelly-navy">Narrative collision risks</p>
+              <BulletList items={scenarioWatch.narrativeCollisionRisks} />
+            </div>
+            <div>
+              <p className="font-semibold text-kelly-navy">Turnout / registration scenario notes</p>
+              <BulletList items={scenarioWatch.turnoutRegistrationNotes} />
+              <p className="mt-2 font-semibold text-kelly-navy">Field capacity risk</p>
+              <BulletList items={scenarioWatch.fieldCapacityRisks} />
+              <p className="mt-2 font-semibold text-kelly-navy">Local evidence blockers</p>
+              <BulletList items={scenarioWatch.evidenceBlockers} />
+              <p className="mt-2 font-semibold text-kelly-navy">What to watch</p>
+              <BulletList items={scenarioWatch.whatToWatch} />
+            </div>
+          </div>
+          <Link href="/admin/intelligence/scenario-simulation" className="mt-2 inline-block font-semibold text-violet-950 underline">
+            Scenario simulation dashboard →
+          </Link>
+        </section>
       ) : null}
 
       <section className="mb-4 rounded-xl border border-violet-200/50 bg-violet-50/40 p-4 text-xs">

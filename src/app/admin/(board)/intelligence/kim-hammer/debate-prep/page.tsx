@@ -5,6 +5,7 @@ import { listFlaggedBillCivicSummaries } from "@/lib/intelligence/kimHammerBillC
 import { summarizeDebateCommandMessaging } from "@/lib/intelligence/campaignMessagingIntelligence";
 import { loadCountyBriefingIntelligenceIndex } from "@/lib/intelligence/countyBriefingIntelligence";
 import { summarizeRegionalDeploymentConditions } from "@/lib/intelligence/regionalStrategicModeling";
+import { summarizeDebateScenarioPrep } from "@/lib/intelligence/strategicScenarioSimulation";
 import Link from "next/link";
 
 export default async function KimHammerDebatePrepPage() {
@@ -17,6 +18,7 @@ export default async function KimHammerDebatePrepPage() {
   const debateCounties = countyBriefings.counties.filter((row) =>
     row.briefingSignals.some((signal) => signal.signal === "COUNTY_DEBATE_RELEVANT"),
   );
+  const scenarioPrep = summarizeDebateScenarioPrep();
 
   return (
     <KimHammerBriefingPageShell moduleId="debate-prep">
@@ -242,6 +244,64 @@ export default async function KimHammerDebatePrepPage() {
         <p className="mt-2 text-[10px] text-indigo-900/70">
           Media monitoring gaps remain until NSI-8 live intake. Registration assumptions are anecdotal — validate before field reliance.
         </p>
+      </section>
+
+      <section className="mb-4 rounded-xl border border-violet-200/50 bg-violet-50/40 p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-violet-950">NSI-14 · Scenario-based debate prep</h2>
+        <p className="mt-1 text-xs text-violet-900/80">
+          SCENARIO_MODEL · INTERNAL_ONLY · NON_PUBLISHABLE · HUMAN_REVIEW_REQUIRED — no auto-generated final answers.
+        </p>
+        <div className="mt-3 grid gap-4 lg:grid-cols-2">
+          <div className="text-xs text-violet-950">
+            <p className="font-bold uppercase tracking-wider text-[10px]">Likely opponent attacks</p>
+            <ul className="mt-1 list-inside list-disc">
+              {scenarioPrep.likelyOpponentAttacks.map((line) => (
+                <li key={line.slice(0, 48)}>{line}</li>
+              ))}
+            </ul>
+            <p className="mt-3 font-bold uppercase tracking-wider text-[10px]">Debate trap warnings</p>
+            <ul className="mt-1 list-inside list-disc text-rose-900">
+              {scenarioPrep.debateTrapWarnings.map((line) => (
+                <li key={line.slice(0, 48)}>{line}</li>
+              ))}
+            </ul>
+            <p className="mt-3 font-bold uppercase tracking-wider text-[10px]">Evidence dependencies</p>
+            <ul className="mt-1 list-inside list-disc">
+              {scenarioPrep.evidenceDependencies.map((line) => (
+                <li key={line.slice(0, 48)}>{line}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="text-xs text-violet-950">
+            <p className="font-bold uppercase tracking-wider text-[10px]">Weak citation warnings</p>
+            <ul className="mt-1 list-inside list-disc">
+              {scenarioPrep.weakCitationWarnings.length > 0
+                ? scenarioPrep.weakCitationWarnings.map((line) => <li key={line.slice(0, 48)}>{line}</li>)
+                : <li>None flagged.</li>}
+            </ul>
+            <p className="mt-3 font-bold uppercase tracking-wider text-[10px]">County-sensitive response notes</p>
+            <ul className="mt-1 list-inside list-disc">
+              {scenarioPrep.countySensitiveNotes.map((line) => (
+                <li key={line.slice(0, 48)}>{line}</li>
+              ))}
+            </ul>
+            <p className="mt-3 font-bold uppercase tracking-wider text-[10px]">Bridge line guidance</p>
+            <ul className="mt-1 list-inside list-disc">
+              {scenarioPrep.bridgeLineGuidance.map((line) => (
+                <li key={line.slice(0, 48)}>{line}</li>
+              ))}
+            </ul>
+            <p className="mt-3 font-bold uppercase tracking-wider text-[10px]">What not to say</p>
+            <ul className="mt-1 list-inside list-disc text-rose-900">
+              {scenarioPrep.whatNotToSay.map((line) => (
+                <li key={line.slice(0, 48)}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <Link href="/admin/intelligence/scenario-simulation" className="mt-3 inline-block text-xs font-semibold text-violet-950 underline">
+          Scenario simulation dashboard →
+        </Link>
       </section>
 
       <section className="rounded-xl border border-kelly-text/10 bg-white p-4">

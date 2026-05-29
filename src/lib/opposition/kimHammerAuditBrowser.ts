@@ -34,6 +34,10 @@ import {
   loadLlmDraftAuditLog,
   type LlmDraftAuditEntry,
 } from "@/lib/intelligence/llmDraftAuditLog";
+import {
+  loadHumanActionQueueAuditLog,
+  type HumanActionQueueAuditEntry,
+} from "@/lib/intelligence/humanActionQueueWorkflow";
 import type {
   KimHammerAuditEntryKind,
   KimHammerAuditTimeline,
@@ -164,6 +168,24 @@ function mapMediaIntakeRunEntry(entry: PublicMediaIntakeRunEntry): KimHammerUnif
   };
 }
 
+function mapHumanActionAuditEntry(entry: HumanActionQueueAuditEntry): KimHammerUnifiedAuditEntry {
+  return {
+    kind: entry.eventType,
+    auditId: entry.auditId,
+    subjectId: entry.actionId,
+    sourceFile: "data/intelligence/human-action-queue.json",
+    previousStatus: entry.previousStatus,
+    nextStatus: entry.nextStatus,
+    operator: entry.operator,
+    notes: entry.notes,
+    changedAt: entry.changedAt,
+    changedByRoute: entry.changedByRoute,
+    backupPath: entry.backupPath,
+    previousOwner: entry.owner,
+    nextOwner: entry.owner,
+  };
+}
+
 function mapLlmDraftAuditEntry(entry: LlmDraftAuditEntry): KimHammerUnifiedAuditEntry {
   return {
     kind: entry.eventType,
@@ -208,6 +230,7 @@ export function loadKimHammerUnifiedAuditTimeline(
   const mediaIntakeRunLog = loadPublicMediaIntakeRunLog(repoRoot);
   const mediaPromotionLog = loadMediaFindingPromotionLog(repoRoot);
   const llmDraftLog = loadLlmDraftAuditLog(repoRoot);
+  const humanActionLog = loadHumanActionQueueAuditLog(repoRoot);
 
   const claimEntries = claimLog.entries.map(mapClaimReviewEntry);
   const taskEntries = taskLog.entries.map(mapTaskEntry);
@@ -218,6 +241,7 @@ export function loadKimHammerUnifiedAuditTimeline(
   const mediaIntakeRunEntries = mediaIntakeRunLog.runs.map(mapMediaIntakeRunEntry);
   const mediaPromotionEntries = mediaPromotionLog.entries.map(mapMediaFindingPromotionEntry);
   const llmDraftEntries = llmDraftLog.entries.map(mapLlmDraftAuditEntry);
+  const humanActionEntries = humanActionLog.entries.map(mapHumanActionAuditEntry);
 
   const entries = [
     ...claimEntries,
@@ -229,6 +253,7 @@ export function loadKimHammerUnifiedAuditTimeline(
     ...mediaIntakeRunEntries,
     ...mediaPromotionEntries,
     ...llmDraftEntries,
+    ...humanActionEntries,
   ].sort((a, b) => b.changedAt.localeCompare(a.changedAt));
 
   return {
@@ -242,6 +267,7 @@ export function loadKimHammerUnifiedAuditTimeline(
     mediaIntakeRunCount: mediaIntakeRunEntries.length,
     mediaFindingPromotionCount: mediaPromotionEntries.length,
     llmDraftAuditCount: llmDraftEntries.length,
+    humanActionAuditCount: humanActionEntries.length,
     totalEntries: entries.length,
     entries,
   };

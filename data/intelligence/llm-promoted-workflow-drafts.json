@@ -1,11 +1,22 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-28T20:16:24.055Z",
+  "generatedAt": "2026-05-28T23:36:59.588Z",
   "purpose": "Human-promoted workflow candidates from LLM review queue — not governed claims/citations/tasks.",
   "citationCandidateDrafts": [],
   "retrievalTaskDrafts": [],
   "briefingDrafts": [],
   "writingDrafts": [
+    {
+      "draftId": "llm-wf-writing_draft-mpq4u9j8",
+      "sourceLlmDraftId": "llm-draft-vulnerability-analysis-mpq4nzyr",
+      "writingType": "opposition_research",
+      "title": "vulnerability-analysis — governed draft",
+      "reviewStatus": "DRAFT",
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanReviewRequired": true,
+      "promotedBy": "test-reviewer",
+      "promotedAt": "2026-05-28T23:36:59.588Z"
+    },
     {
       "draftId": "llm-wf-writing_draft-mppxoauv",
       "sourceLlmDraftId": "llm-draft-vulnerability-analysis-mppxkmk7",

@@ -462,6 +462,23 @@ export function filterMediaIntakeFindings(
   });
 }
 
+/** NSI-15 — media intake action recommendation labels (no auto task creation). */
+export function summarizeMediaIntakeActionRecommendations(repoRoot?: string): string[] {
+  const queue = loadPublicMediaIntakeQueue(repoRoot);
+  const lines: string[] = [];
+  for (const finding of [...queue.findings]
+    .filter((row) => row.reviewStatus === "NEEDS_REVIEW")
+    .sort((a, b) => b.relevanceScore - a.relevanceScore)
+    .slice(0, 6)) {
+    lines.push(`REVIEW_MEDIA_FINDING: ${finding.findingId}`);
+    if (finding.relevanceScore >= 75) {
+      lines.push(`MONITOR_MEDIA_SOURCE: ${finding.sourceId}`);
+    }
+    lines.push(`CREATE_RETRIEVAL_TASK (human only): ${finding.findingId}`);
+  }
+  return lines;
+}
+
 export { ARKANSAS_MEDIA_SOURCE_REGISTRY_REL };
 
 export {

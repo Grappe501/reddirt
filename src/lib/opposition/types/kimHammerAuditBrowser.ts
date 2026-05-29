@@ -12,7 +12,10 @@ export type KimHammerAuditEntryKind =
   | "LLM_DRAFT_CREATED"
   | "LLM_DRAFT_REVIEWED"
   | "LLM_DRAFT_PROMOTED"
-  | "LLM_DRAFT_ARCHIVED";
+  | "LLM_DRAFT_ARCHIVED"
+  | "HUMAN_ACTION_CREATED"
+  | "HUMAN_ACTION_UPDATED"
+  | "HUMAN_ACTION_ARCHIVED";
 
 export type KimHammerUnifiedAuditEntry = {
   kind: KimHammerAuditEntryKind;
@@ -45,6 +48,7 @@ export type KimHammerAuditTimeline = {
   mediaIntakeRunCount: number;
   mediaFindingPromotionCount: number;
   llmDraftAuditCount: number;
+  humanActionAuditCount: number;
   totalEntries: number;
   entries: KimHammerUnifiedAuditEntry[];
 };

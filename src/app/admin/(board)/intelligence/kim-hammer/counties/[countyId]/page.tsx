@@ -4,6 +4,7 @@ import { KimHammerBriefingPageShell } from "../../KimHammerBriefingPageShell";
 import { KimHammerCountyBriefingPanel } from "../../KimHammerCountyBriefingPanel";
 import { resolveCountyBriefingIntelligence } from "@/lib/intelligence/countyBriefingIntelligence";
 import { resolveCountyMediaMarketProfile } from "@/lib/intelligence/mediaMarketIntelligence";
+import { resolveCountyScenarioWatch } from "@/lib/intelligence/strategicScenarioSimulation";
 
 type Props = {
   params: Promise<{ countyId: string }>;
@@ -14,6 +15,7 @@ export default async function KimHammerCountyBriefingDetailPage({ params }: Prop
   const briefing = resolveCountyBriefingIntelligence(countyId);
   if (!briefing) notFound();
   const mediaProfile = resolveCountyMediaMarketProfile(countyId);
+  const scenarioWatch = resolveCountyScenarioWatch(countyId);
 
   return (
     <KimHammerBriefingPageShell moduleId="county-briefings">
@@ -31,7 +33,7 @@ export default async function KimHammerCountyBriefingDetailPage({ params }: Prop
         </Link>
       </header>
 
-      <KimHammerCountyBriefingPanel briefing={briefing} mediaProfile={mediaProfile} />
+      <KimHammerCountyBriefingPanel briefing={briefing} mediaProfile={mediaProfile} scenarioWatch={scenarioWatch} />
     </KimHammerBriefingPageShell>
   );
 }

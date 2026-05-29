@@ -1,6 +1,7 @@
 import { buildDebateCommandCenterState } from "@/lib/opposition/debateCommandCenter";
 import { summarizeDebateCommandMessaging } from "@/lib/intelligence/campaignMessagingIntelligence";
 import { summarizeCampaignIntelligenceGraph } from "@/lib/intelligence/campaignIntelligenceGraph";
+import { summarizeDebateScenarioPrep } from "@/lib/intelligence/strategicScenarioSimulation";
 import Link from "next/link";
 
 const card = "rounded-xl border border-kelly-text/10 bg-white p-4";
@@ -15,6 +16,7 @@ export default async function DebateCommandCenterPage() {
   const state = buildDebateCommandCenterState();
   const civicDebate = summarizeDebateCommandMessaging();
   const graphSummary = summarizeCampaignIntelligenceGraph();
+  const scenarioPrep = summarizeDebateScenarioPrep();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -157,6 +159,69 @@ export default async function DebateCommandCenterPage() {
           <Link href="/admin/intelligence/strategy-alignment" className="mt-2 ml-3 inline-block text-xs font-semibold text-kelly-navy underline">
             Strategy alignment (SDI-1) →
           </Link>
+        </article>
+      </section>
+
+      <section className="mb-6 grid gap-4 lg:grid-cols-2">
+        <article className={card}>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">NSI-14 · Scenario-based debate prep</h2>
+          <p className="mt-1 text-xs text-kelly-muted">
+            Governed scenario modeling — INTERNAL_DRAFT only. No auto-generated final answers.
+          </p>
+          <div className="mt-2 grid gap-3 sm:grid-cols-2">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Likely opponent attacks</p>
+              <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+                {scenarioPrep.likelyOpponentAttacks.map((line) => (
+                  <li key={line.slice(0, 48)}>{line}</li>
+                ))}
+              </ul>
+              <p className="mt-2 text-[10px] font-bold uppercase tracking-wider text-rose-800">Debate trap warnings</p>
+              <ul className="mt-1 list-inside list-disc text-xs text-rose-900">
+                {scenarioPrep.debateTrapWarnings.map((line) => (
+                  <li key={line.slice(0, 48)}>{line}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Evidence dependencies · weak citations</p>
+              <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+                {[...scenarioPrep.evidenceDependencies, ...scenarioPrep.weakCitationWarnings].map((line) => (
+                  <li key={line.slice(0, 48)}>{line}</li>
+                ))}
+              </ul>
+              <p className="mt-2 text-[10px] font-bold uppercase tracking-wider text-amber-900">What not to say</p>
+              <ul className="mt-1 list-inside list-disc text-xs text-amber-950">
+                {scenarioPrep.whatNotToSay.map((line) => (
+                  <li key={line.slice(0, 48)}>{line}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <Link href="/admin/intelligence/scenario-simulation" className="mt-3 inline-block text-xs font-semibold text-kelly-navy underline">
+            Open scenario simulation dashboard →
+          </Link>
+        </article>
+
+        <article className={card}>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Bridge lines · county-sensitive notes</h2>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {scenarioPrep.bridgeLineGuidance.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+          <p className="mt-3 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">County-sensitive response notes</p>
+          <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+            {scenarioPrep.countySensitiveNotes.map((line) => (
+              <li key={line.slice(0, 48)}>{line}</li>
+            ))}
+          </ul>
+          <p className="mt-3 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Doctrine-safe response notes</p>
+          <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+            {scenarioPrep.doctrineSafeResponseNotes.length > 0
+              ? scenarioPrep.doctrineSafeResponseNotes.map((line) => <li key={line.slice(0, 48)}>{line}</li>)
+              : <li>Review doctrine alignment before deployment.</li>}
+          </ul>
         </article>
       </section>
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
 import { CopilotToolOutputPanel } from "../../CopilotToolOutputPanel";
 import { runCopilotWithLlmDraftQueue } from "@/lib/intelligence/aiCopilotOrchestrator";
+import { summarizeDebateScenarioPrep } from "@/lib/intelligence/strategicScenarioSimulation";
 
 export const dynamic = "force-dynamic";
 
@@ -14,6 +15,7 @@ export default async function DebateAiWorkbenchPage() {
     runCopilotWithLlmDraftQueue("what-not-to-say-detector", { generatedForRoute: ROUTE }),
     runCopilotWithLlmDraftQueue("rebuttal-builder", { generatedForRoute: ROUTE }),
   ].filter((row): row is NonNullable<typeof row> => Boolean(row));
+  const scenarioPrep = summarizeDebateScenarioPrep();
 
   return (
     <KimHammerBriefingPageShell moduleId="debate-ai-workbench">
@@ -33,6 +35,26 @@ export default async function DebateAiWorkbenchPage() {
           </Link>
         </div>
       </header>
+
+      <section className="mb-6 rounded-xl border border-violet-200/50 bg-violet-50/40 p-4 text-xs text-violet-950">
+        <h2 className="text-sm font-bold uppercase tracking-wider">NSI-14 · Scenario-based debate prep</h2>
+        <p className="mt-1">INTERNAL_DRAFT only — copilot tools below include scenario context in output sections.</p>
+        <div className="mt-3 grid gap-4 lg:grid-cols-2">
+          <ul className="list-inside list-disc">
+            {scenarioPrep.likelyOpponentAttacks.slice(0, 3).map((line) => (
+              <li key={line.slice(0, 48)}>{line}</li>
+            ))}
+          </ul>
+          <ul className="list-inside list-disc text-rose-900">
+            {scenarioPrep.debateTrapWarnings.slice(0, 3).map((line) => (
+              <li key={line.slice(0, 48)}>{line}</li>
+            ))}
+          </ul>
+        </div>
+        <Link href="/admin/intelligence/scenario-simulation" className="mt-2 inline-block font-semibold underline">
+          Full scenario dashboard →
+        </Link>
+      </section>
 
       <section className="mb-6 rounded-xl border border-rose-200/50 bg-rose-50/40 p-4 text-xs text-rose-950">
         No export-ready debate script without human review. Trap questions and blocked narratives flagged automatically.

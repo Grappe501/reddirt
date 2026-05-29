@@ -356,6 +356,7 @@ export function summarizeDraftReviewQueue(repoRoot?: string): {
   writingDraftBacklog: number;
   citationRiskDraftCount: number;
   unsupportedClaimDraftCount: number;
+  actionRecommendationSummaries: string[];
 } {
   const queue = loadLlmDraftReviewQueue(repoRoot);
   const active = queue.drafts.filter((row) => !row.archived && row.reviewStatus !== "ARCHIVED");
@@ -411,7 +412,30 @@ export function summarizeDraftReviewQueue(repoRoot?: string): {
     writingDraftBacklog,
     citationRiskDraftCount,
     unsupportedClaimDraftCount,
+    actionRecommendationSummaries: buildLlmDraftActionRecommendations(repoRoot),
   };
+}
+
+/** NSI-15 — read-only action routing hints from pending drafts (no auto-review). */
+export function buildLlmDraftActionRecommendations(repoRoot?: string): string[] {
+  const queue = loadLlmDraftReviewQueue(repoRoot);
+  const lines: string[] = [];
+  for (const draft of queue.drafts.filter((row) => !row.archived && row.reviewStatus === "DRAFT_PENDING_REVIEW").slice(0, 8)) {
+    if (draft.unsupportedClaimWarnings.length > 0) {
+      lines.push(`REVISE_RISKY_LANGUAGE: ${draft.draftId}`);
+    } else if (draft.missingCitationWarnings.length > 0) {
+      lines.push(`ADD_CITATION_DEPENDENCY: ${draft.draftId}`);
+    } else {
+      lines.push(`REVIEW_LLM_DRAFT: ${draft.draftId}`);
+    }
+    if (draft.draftType.includes("briefing")) {
+      lines.push(`ROUTE_TO_BRIEFING_DRAFT: ${draft.draftId}`);
+    }
+    if (draft.reviewStatus === "DRAFT_PENDING_REVIEW" && draft.governanceWarnings.length === 0 && draft.unsupportedClaimWarnings.length === 0) {
+      lines.push(`DISMISS_LOW_VALUE_DRAFT (optional): ${draft.draftId}`);
+    }
+  }
+  return lines.slice(0, 12);
 }
 
 export function archiveDraft(

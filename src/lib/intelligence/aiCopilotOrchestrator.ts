@@ -17,6 +17,8 @@ import {
 } from "@/lib/intelligence/mediaIntelligenceCopilot";
 import { generateGovernedDraftForCopilotTool } from "@/lib/intelligence/llmDraftGateway";
 import { getCopilotMemoryHints } from "@/lib/intelligence/intelligenceMemoryEngine";
+import { getCopilotScenarioHints } from "@/lib/intelligence/strategicScenarioSimulation";
+import { getCopilotActionQueueRouting } from "@/lib/intelligence/strategicDecisionSupport";
 
 export const AI_COPILOT_TOOL_REGISTRY_REL = "data/intelligence/ai-copilot-tool-registry.json";
 
@@ -60,6 +62,10 @@ export type CopilotToolOutput = {
   routedSystems: string[];
   operatorNextAction: string;
   exportReady: false;
+  recommendedHumanActions: string[];
+  suggestedOwnerRole: string;
+  actionQueueRouting: string;
+  actionWarnings: string[];
 };
 
 export type CopilotToolContext = {
@@ -121,6 +127,14 @@ function baseOutput(
     repoRoot,
   );
   const memorySection = { heading: "Longitudinal memory (NSI-13 · internal)", bullets: memoryHints };
+  const scenarioHints = getCopilotScenarioHints(
+    ["opposition_research", "debate_prep", "writing_tools", "briefing_papers", "intelligence_gathering"].includes(category)
+      ? category
+      : "general",
+    repoRoot,
+  );
+  const scenarioSection = { heading: "Scenario context (NSI-14 · internal)", bullets: scenarioHints };
+  const actionRouting = getCopilotActionQueueRouting(tool.category, repoRoot);
 
   return {
     toolId: tool.toolId,
@@ -129,16 +143,32 @@ function baseOutput(
     publicationSafety: "NON_PUBLISHABLE",
     humanReviewRequired: true,
     title,
-    sections: [...sections, memorySection],
+    sections: [
+      ...sections,
+      memorySection,
+      scenarioSection,
+      {
+        heading: "Human action queue routing (NSI-15 · recommendation only)",
+        bullets: [
+          ...actionRouting.recommendedHumanActions,
+          `Suggested owner: ${actionRouting.suggestedOwnerRole}`,
+          `Queue: ${actionRouting.actionQueueRouting}`,
+        ],
+      },
+    ],
     evidenceDependencies: exportReady.map((row) => `${row.id}: ${row.text.slice(0, 100)}`),
     claimCitationStatus: evidence.claims.slice(0, 5).map((row) => `${row.id}: ${row.citationStatus ?? "unknown"} / exportReady=${row.exportReady}`),
     doctrineAlignment: summarizeStrategicAlignmentRisk(repoRoot).topStrategicTensions?.slice(0, 3).map((t) => t.signal) ?? [],
     countyRelevance: loadCountyBriefingIntelligenceIndex(repoRoot).counties.slice(0, 3).map((c) => c.countyName),
-    riskWarnings: [...SAFETY_WARNINGS, ...(extras?.riskWarnings ?? [])],
+    riskWarnings: [...SAFETY_WARNINGS, ...actionRouting.actionWarnings, ...(extras?.riskWarnings ?? [])],
     safeUseLabel: "Internal prep only — not export-ready without human review.",
     routedSystems: tool.routedSystems,
     operatorNextAction: tool.operatorNextAction,
     exportReady: false,
+    recommendedHumanActions: actionRouting.recommendedHumanActions,
+    suggestedOwnerRole: actionRouting.suggestedOwnerRole,
+    actionQueueRouting: actionRouting.actionQueueRouting,
+    actionWarnings: actionRouting.actionWarnings,
     ...extras,
   };
 }

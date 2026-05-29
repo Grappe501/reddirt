@@ -25,6 +25,9 @@ const kindBadge: Record<KimHammerAuditEntryKind, string> = {
   LLM_DRAFT_REVIEWED: "bg-purple-100 text-purple-900",
   LLM_DRAFT_PROMOTED: "bg-purple-100 text-purple-900",
   LLM_DRAFT_ARCHIVED: "bg-slate-100 text-slate-900",
+  HUMAN_ACTION_CREATED: "bg-amber-100 text-amber-900",
+  HUMAN_ACTION_UPDATED: "bg-amber-100 text-amber-950",
+  HUMAN_ACTION_ARCHIVED: "bg-slate-200 text-slate-800",
 };
 
 function AuditEntryCard({ entry }: { entry: KimHammerUnifiedAuditEntry }) {
@@ -54,7 +57,13 @@ function AuditEntryCard({ entry }: { entry: KimHammerUnifiedAuditEntry }) {
                               ? "LLM draft promoted"
                               : entry.kind === "LLM_DRAFT_ARCHIVED"
                                 ? "LLM draft archived"
-                                : "Export event"}
+                                : entry.kind === "HUMAN_ACTION_CREATED"
+                                  ? "Human action created"
+                                  : entry.kind === "HUMAN_ACTION_UPDATED"
+                                    ? "Human action updated"
+                                    : entry.kind === "HUMAN_ACTION_ARCHIVED"
+                                      ? "Human action archived"
+                                      : "Export event"}
         </span>
         <span className="font-semibold text-kelly-navy">{entry.subjectId}</span>
         <span className="text-[10px] text-kelly-subtle">{entry.changedAt}</span>

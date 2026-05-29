@@ -1,0 +1,2918 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-29T03:22:58.801Z",
+  "purpose": "NSI-15 governed human action queue — recommendations only; no autonomous execution.",
+  "governanceDefaults": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanActionRequired": true,
+    "labels": [
+      "HUMAN_ACTION_REQUIRED",
+      "RECOMMENDATION_ONLY",
+      "NON_PUBLISHABLE",
+      "INTERNAL_USE_ONLY"
+    ],
+    "autonomousExecution": false
+  },
+  "items": [
+    {
+      "actionId": "ha-prepare-debate-response-ce5d4ee7b7",
+      "actionType": "PREPARE_DEBATE_RESPONSE",
+      "title": "Scenario: Opponent doubles down on election integrity record",
+      "summary": "SCENARIO_FRAGILE — risk 100.",
+      "whyItMatters": "Review scenario opp-election-integrity-double-down before operational use — SCENARIO_FRAGILE.",
+      "recommendedOwnerRole": "Debate Prep",
+      "priority": "CRITICAL",
+      "urgency": "IMMEDIATE",
+      "status": "ARCHIVED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [
+        "kh0b-2021-integrity-foundation",
+        "debate-frame-management-readiness"
+      ],
+      "linkedCounties": [
+        "statewide"
+      ],
+      "linkedBills": [
+        "SB486",
+        "SB487"
+      ],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "opp-election-integrity-double-down"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "1 partial claim(s) may weaken bill-linked scenario responses.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: export-ready integrity claims",
+        "Required: SB487 county burden corroboration"
+      ],
+      "riskLevel": "CRITICAL",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Escalate to Evidence Command + strategy lead for same-day review."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Run debate prep center + what-not-to-say review before next public debate.",
+      "blockedBy": [
+        "1 partial claim(s) may weaken bill-linked scenario responses.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: export-ready integrity claims",
+        "Required: SB487 county burden corroboration"
+      ],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:22:58.787Z",
+      "operatorNotes": "Test archive"
+    },
+    {
+      "actionId": "ha-prepare-debate-response-dcfa4a8180",
+      "actionType": "PREPARE_DEBATE_RESPONSE",
+      "title": "Scenario: Opponent reframes county burden as security",
+      "summary": "SCENARIO_FRAGILE — risk 90.",
+      "whyItMatters": "Review scenario opp-county-burden-as-security before operational use — SCENARIO_FRAGILE.",
+      "recommendedOwnerRole": "Debate Prep",
+      "priority": "CRITICAL",
+      "urgency": "IMMEDIATE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "kh0b-2021-integrity-foundation"
+      ],
+      "linkedCounties": [
+        "pulaski",
+        "benton",
+        "washington"
+      ],
+      "linkedBills": [
+        "SB487"
+      ],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "opp-county-burden-as-security"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "1 partial claim(s) may weaken bill-linked scenario responses.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: County clerk burden examples",
+        "Required: Accessibility counter-evidence"
+      ],
+      "riskLevel": "CRITICAL",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Escalate to Evidence Command + strategy lead for same-day review."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Run debate prep center + what-not-to-say review before next public debate.",
+      "blockedBy": [
+        "1 partial claim(s) may weaken bill-linked scenario responses.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: County clerk burden examples",
+        "Required: Accessibility counter-evidence"
+      ],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-prepare-debate-response-9a3a52e4c2",
+      "actionType": "PREPARE_DEBATE_RESPONSE",
+      "title": "Scenario: County burden vs election integrity collision",
+      "summary": "SCENARIO_FRAGILE — risk 100.",
+      "whyItMatters": "Review scenario collision-county-burden-vs-integrity before operational use — SCENARIO_FRAGILE.",
+      "recommendedOwnerRole": "Debate Prep",
+      "priority": "CRITICAL",
+      "urgency": "IMMEDIATE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "kh0b-2021-integrity-foundation"
+      ],
+      "linkedCounties": [
+        "pulaski",
+        "benton"
+      ],
+      "linkedBills": [
+        "SB487"
+      ],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "collision-county-burden-vs-integrity"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "1 partial claim(s) may weaken bill-linked scenario responses.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Doctrine-safe sequencing guidance",
+        "Required: Export-ready claim separation"
+      ],
+      "riskLevel": "CRITICAL",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Escalate to Evidence Command + strategy lead for same-day review."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Run debate prep center + what-not-to-say review before next public debate.",
+      "blockedBy": [
+        "1 partial claim(s) may weaken bill-linked scenario responses.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Doctrine-safe sequencing guidance",
+        "Required: Export-ready claim separation"
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-prepare-debate-response-692ec0f310",
+      "actionType": "PREPARE_DEBATE_RESPONSE",
+      "title": "Debate trap review bundle",
+      "summary": "6 scenarios flagged SCENARIO_DEBATE_TRAP.",
+      "whyItMatters": "Debate memory and scenario simulation indicate stale or risky rebuttal paths.",
+      "recommendedOwnerRole": "Debate Prep",
+      "priority": "CRITICAL",
+      "urgency": "IMMEDIATE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "opp-election-integrity-double-down",
+        "opp-county-burden-as-security",
+        "collision-county-burden-vs-integrity",
+        "debate-election-security-question",
+        "debate-kelly-experience-challenge"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "CRITICAL",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Run debate prep center + what-not-to-say review before next public debate.",
+      "blockedBy": [
+        "Recurring attacks: Soft on election security; County burden ignored",
+        "Same SB487 answer structure reused in 3 prep sessions"
+      ],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-export-risk-9a841d0f73",
+      "actionType": "REVIEW_EXPORT_RISK",
+      "title": "Scenario: Modernization vs local control",
+      "summary": "SCENARIO_FRAGILE — risk 76.",
+      "whyItMatters": "Review scenario collision-modernization-vs-local-control before operational use — SCENARIO_FRAGILE.",
+      "recommendedOwnerRole": "Legal/Compliance",
+      "priority": "CRITICAL",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden"
+      ],
+      "linkedCounties": [
+        "miller",
+        "crittenden",
+        "craighead"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "collision-modernization-vs-local-control"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: County partnership examples"
+      ],
+      "riskLevel": "CRITICAL",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Escalate to Evidence Command + strategy lead for same-day review."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "No immediate debate prep action required.",
+      "blockedBy": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: County partnership examples"
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-claim-7de12e217a",
+      "actionType": "REVIEW_CLAIM",
+      "title": "Review claim pdeb-004-civic-affiliation-claims",
+      "summary": "Civic affiliation and awards specifics: review status BLOCKED.",
+      "whyItMatters": "Potentially useful opposition framing cannot deploy until human claim review completes.",
+      "recommendedOwnerRole": "Research",
+      "priority": "CRITICAL",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "V2-A",
+        "KH-0"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [
+        "pdeb-004-civic-affiliation-claims"
+      ],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "pdeb-004-civic-affiliation-claims",
+        "UNCITED"
+      ],
+      "riskLevel": "CRITICAL",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Complete claim review workflow in Evidence Command — do not use externally until approved.",
+      "blockedBy": [
+        "Publication safety blockers active."
+      ],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-create-retrieval-task-b3c1d049bf",
+      "actionType": "CREATE_RETRIEVAL_TASK",
+      "title": "Execute retrieval task #1",
+      "summary": "Pre-legislative authored writings archive remains incomplete (op-eds, letters, civic/church newsletters, archived campai",
+      "whyItMatters": "High-priority evidence gap blocks stronger narratives and debate prep.",
+      "recommendedOwnerRole": "Research",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "V3-A",
+        "KH-3B"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [
+        "kh3b-pre-legislative-authored-writings"
+      ],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Human-update task status in Evidence Command — recommendation does not execute task.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-create-retrieval-task-c754452d60",
+      "actionType": "CREATE_RETRIEVAL_TASK",
+      "title": "Execute retrieval task #2",
+      "summary": "Long-tail video and forum statement archive is not fully indexed (county GOP events, town halls, community appearances, ",
+      "whyItMatters": "High-priority evidence gap blocks stronger narratives and debate prep.",
+      "recommendedOwnerRole": "Research",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "V3-A",
+        "KH-3B"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [
+        "kh3b-long-tail-video-forum-record"
+      ],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Human-update task status in Evidence Command — recommendation does not execute task.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-create-retrieval-task-9a42944ecf",
+      "actionType": "CREATE_RETRIEVAL_TASK",
+      "title": "Execute retrieval task #3",
+      "summary": "Evidence for SOS operational readiness needs hard validation (management scope, administrative complexity, election-oper",
+      "whyItMatters": "High-priority evidence gap blocks stronger narratives and debate prep.",
+      "recommendedOwnerRole": "Research",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "V3-A",
+        "KH-3B"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [
+        "kh3b-management-readiness-evidence"
+      ],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Human-update task status in Evidence Command — recommendation does not execute task.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-export-risk-be1f581e89",
+      "actionType": "REVIEW_EXPORT_RISK",
+      "title": "Scenario: Opponent pivots to experience and competence",
+      "summary": "SCENARIO_FRAGILE — risk 65.",
+      "whyItMatters": "Review scenario opp-experience-competence-pivot before operational use — SCENARIO_FRAGILE.",
+      "recommendedOwnerRole": "Legal/Compliance",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [
+        "debate-frame-management-readiness"
+      ],
+      "linkedCounties": [
+        "statewide"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "opp-experience-competence-pivot"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Kelly management contrast packet",
+        "Required: Modern SOS readiness narrative"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Escalate to Evidence Command + strategy lead for same-day review."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "No immediate debate prep action required.",
+      "blockedBy": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Kelly management contrast packet",
+        "Required: Modern SOS readiness narrative"
+      ],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-export-risk-69652a3540",
+      "actionType": "REVIEW_EXPORT_RISK",
+      "title": "Scenario: Opponent attacks Kelly as unprepared",
+      "summary": "SCENARIO_FRAGILE — risk 68.",
+      "whyItMatters": "Review scenario opp-kelly-unprepared-attack before operational use — SCENARIO_FRAGILE.",
+      "recommendedOwnerRole": "Legal/Compliance",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [
+        "debate-frame-management-readiness"
+      ],
+      "linkedCounties": [
+        "pulaski",
+        "benton"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "opp-kelly-unprepared-attack"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Kelly credential brief",
+        "Required: County clerk partnership examples"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Escalate to Evidence Command + strategy lead for same-day review."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "No immediate debate prep action required.",
+      "blockedBy": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Kelly credential brief",
+        "Required: County clerk partnership examples"
+      ],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-export-risk-46aef00977",
+      "actionType": "REVIEW_EXPORT_RISK",
+      "title": "Scenario: Opponent claims direct democracy reforms are anti-fraud",
+      "summary": "SCENARIO_UNDERDEVELOPED — risk 54.",
+      "whyItMatters": "Monitor scenario opp-direct-democracy-anti-fraud — SCENARIO_UNDERDEVELOPED.",
+      "recommendedOwnerRole": "Legal/Compliance",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [
+        "statewide"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "opp-direct-democracy-anti-fraud"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Direct democracy doctrine alignment",
+        "Required: Legal/security expert citations"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Log in scenario watchlist; review in weekly intelligence sync."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "No immediate debate prep action required.",
+      "blockedBy": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Direct democracy doctrine alignment",
+        "Required: Legal/security expert citations"
+      ],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-export-risk-12d8bb6e6b",
+      "actionType": "REVIEW_EXPORT_RISK",
+      "title": "Scenario: Direct democracy vs security framing",
+      "summary": "SCENARIO_COLLISION — risk 62.",
+      "whyItMatters": "Monitor scenario collision-direct-democracy-vs-security — SCENARIO_COLLISION.",
+      "recommendedOwnerRole": "Legal/Compliance",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [
+        "statewide"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "collision-direct-democracy-vs-security"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Legal review of reform claims"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Log in scenario watchlist; review in weekly intelligence sync."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "No immediate debate prep action required.",
+      "blockedBy": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Legal review of reform claims"
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-export-risk-fb6e3f653e",
+      "actionType": "REVIEW_EXPORT_RISK",
+      "title": "Scenario: Transparency vs ballot secrecy",
+      "summary": "SCENARIO_COLLISION — risk 62.",
+      "whyItMatters": "Monitor scenario collision-transparency-vs-secrecy — SCENARIO_COLLISION.",
+      "recommendedOwnerRole": "Legal/Compliance",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [
+        "statewide"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "collision-transparency-vs-secrecy"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Legal-safe transparency language"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Log in scenario watchlist; review in weekly intelligence sync."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "No immediate debate prep action required.",
+      "blockedBy": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Legal-safe transparency language"
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-export-risk-ca7369317e",
+      "actionType": "REVIEW_EXPORT_RISK",
+      "title": "Scenario: People-powered democracy vs institutional control",
+      "summary": "SCENARIO_COLLISION — risk 62.",
+      "whyItMatters": "Monitor scenario collision-people-vs-institutional — SCENARIO_COLLISION.",
+      "recommendedOwnerRole": "Legal/Compliance",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [
+        "statewide"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "collision-people-vs-institutional"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Doctrine registry coherence"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Log in scenario watchlist; review in weekly intelligence sync."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "No immediate debate prep action required.",
+      "blockedBy": [
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Doctrine registry coherence"
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-investigate-opponent-message-11ee43c18e",
+      "actionType": "INVESTIGATE_OPPONENT_MESSAGE",
+      "title": "Investigate opponent messaging drift",
+      "summary": "Shift from fraud prevention to accessibility tradeoff framing.",
+      "whyItMatters": "Opponent messaging drift may require updated contrast and debate prep.",
+      "recommendedOwnerRole": "Research",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-13",
+        "KH-0"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Shift from fraud prevention to accessibility tradeoff framing.",
+        "Statutory burden vs public accessibility claims",
+        "County Administration Burden strategic alignment fragile — County burden narrative operationally strong, but partially t"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Review media intake and public statements; source new citations before field use.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-create-retrieval-task-ddca6003b0",
+      "actionType": "CREATE_RETRIEVAL_TASK",
+      "title": "Research gap — Pulaski County",
+      "summary": "Blocked narratives: 1; open research: 8.",
+      "whyItMatters": "High-opportunity county may be under-prepared for local deployment.",
+      "recommendedOwnerRole": "Research",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-5",
+        "NSI-2",
+        "V3-A"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [
+        "pulaski"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Pulaski County local intelligence incomplete — 8 open research item(s) including Pulaski clerk public statements on precinct changes."
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Human-create retrieval task in KH-3B — do not auto-mutate task board.",
+      "blockedBy": [
+        "Blocked narratives in county overlay."
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-strengthen-narrative-21c2ee6a51",
+      "actionType": "STRENGTHEN_NARRATIVE",
+      "title": "Strengthen narrative SB487 — Precinct & Polling Sites",
+      "summary": "BLOCKED — CITATION_BLOCKED: cite-sb487-2021 is NEEDS_REVIEW — verify before promoting SB487 — Precinct & Polli.",
+      "whyItMatters": "Strategically important narrative is not deployment-ready.",
+      "recommendedOwnerRole": "Strategy",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-1",
+        "SDI-1"
+      ],
+      "linkedNarratives": [
+        "SB487"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "CITATION_BLOCKED: cite-sb487-2021 is NEEDS_REVIEW — verify before promoting SB487 — Precinct & Polling Sites.",
+        "AI_PRESSURE: 2 pending suggestion(s) flagged for SB487."
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Close citation/claim gaps; re-run narrative state after evidence updates.",
+      "blockedBy": [
+        "CITATION_BLOCKED: cite-sb487-2021 is NEEDS_REVIEW — verify before promoting SB487 — Precinct & Polling Sites.",
+        "AI_PRESSURE: 2 pending suggestion(s) flagged for SB487."
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-strengthen-narrative-046f07d68a",
+      "actionType": "STRENGTHEN_NARRATIVE",
+      "title": "Strengthen narrative 2021 Integrity Foundation",
+      "summary": "BLOCKED — CITATION_STALE: cite-campaign-election-integrity-2025 source health ARCHIVE MISSING — capture archiv.",
+      "whyItMatters": "Strategically important narrative is not deployment-ready.",
+      "recommendedOwnerRole": "Strategy",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-1",
+        "SDI-1"
+      ],
+      "linkedNarratives": [
+        "kh0b-2021-integrity-foundation"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "CITATION_STALE: cite-campaign-election-integrity-2025 source health ARCHIVE MISSING — capture archive before heavy reliance.",
+        "CITATION_BLOCKED: cite-sb487-2021 is NEEDS_REVIEW — verify before promoting 2021 Integrity Foundation.",
+        "AI_PRESSURE: 2 pending suggestion(s) flagged for kh0b-2021-integrity-foundation."
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Close citation/claim gaps; re-run narrative state after evidence updates.",
+      "blockedBy": [
+        "CITATION_STALE: cite-campaign-election-integrity-2025 source health ARCHIVE MISSING — capture archive before heavy reliance.",
+        "CITATION_BLOCKED: cite-sb487-2021 is NEEDS_REVIEW — verify before promoting 2021 Integrity Foundation.",
+        "AI_PRESSURE: 2 pending suggestion(s) flagged for kh0b-2021-integrity-foundation."
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-cef40050c5",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-draft-candidate-talking-points-mpq4qk30",
+      "summary": "writing — DRAFT_PENDING_REVIEW; tool writing-toolbox:candidate-talking-points.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "linkedCounties": [
+        "statewide",
+        "pulaski",
+        "washington"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-draft-candidate-talking-points-mpq4qk30"
+      ],
+      "evidenceDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-228c920e07",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-draft-vulnerability-analysis-mpq4q327",
+      "summary": "opposition_research — DRAFT_PENDING_REVIEW; tool vulnerability-finder.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "linkedCounties": [
+        "statewide",
+        "pulaski",
+        "washington"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-draft-vulnerability-analysis-mpq4q327"
+      ],
+      "evidenceDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-500cd07c93",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-draft-candidate-talking-points-mppxmbst",
+      "summary": "writing — DRAFT_PENDING_REVIEW; tool writing-toolbox:candidate-talking-points.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "linkedCounties": [
+        "statewide",
+        "pulaski",
+        "washington"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-draft-candidate-talking-points-mppxmbst"
+      ],
+      "evidenceDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-58572fd742",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-draft-vulnerability-analysis-mppxlv4z",
+      "summary": "opposition_research — DRAFT_PENDING_REVIEW; tool vulnerability-finder.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "linkedCounties": [
+        "statewide",
+        "pulaski",
+        "washington"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-draft-vulnerability-analysis-mppxlv4z"
+      ],
+      "evidenceDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-940f0604b0",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-draft-candidate-talking-points-mppwj17v",
+      "summary": "writing — DRAFT_PENDING_REVIEW; tool writing-toolbox:candidate-talking-points.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "linkedCounties": [
+        "statewide",
+        "pulaski",
+        "washington"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-draft-candidate-talking-points-mppwj17v"
+      ],
+      "evidenceDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-83385b52da",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-draft-vulnerability-analysis-mppwiixu",
+      "summary": "opposition_research — DRAFT_PENDING_REVIEW; tool vulnerability-finder.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "linkedCounties": [
+        "statewide",
+        "pulaski",
+        "washington"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-draft-vulnerability-analysis-mppwiixu"
+      ],
+      "evidenceDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-strategic-tension-5bcb7ab76e",
+      "actionType": "REVIEW_STRATEGIC_TENSION",
+      "title": "Doctrine tension: 2021 Integrity Foundation",
+      "summary": "2021 Integrity Foundation conflicts with campaign philosophy — CONTRADICTS SOS as Keeper of Records Messaging: unresolve",
+      "whyItMatters": "Narrative may conflict with campaign doctrine or philosophy alignment.",
+      "recommendedOwnerRole": "Strategy",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "SDI-1",
+        "NSI-1"
+      ],
+      "linkedNarratives": [
+        "kh0b-2021-integrity-foundation"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Resolve tension in strategy alignment dashboard before field deployment.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-strategic-tension-617a034826",
+      "actionType": "REVIEW_STRATEGIC_TENSION",
+      "title": "Doctrine tension: Debate Frame — Management Readiness",
+      "summary": "Debate Frame — Management Readiness conflicts with campaign philosophy — CONTRADICTS Opponent Contrast Fact-Check Matrix",
+      "whyItMatters": "Narrative may conflict with campaign doctrine or philosophy alignment.",
+      "recommendedOwnerRole": "Strategy",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "SDI-1",
+        "NSI-1"
+      ],
+      "linkedNarratives": [
+        "debate-frame-management-readiness"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Resolve tension in strategy alignment dashboard before field deployment.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-strategic-tension-e403d7d66c",
+      "actionType": "REVIEW_STRATEGIC_TENSION",
+      "title": "Doctrine tension: SB487 — Precinct & Polling Sites",
+      "summary": "SB487 — Precinct & Polling Sites conflicts with campaign philosophy — Partial tension with Steve Strategy Doctrine: avoi",
+      "whyItMatters": "Narrative may conflict with campaign doctrine or philosophy alignment.",
+      "recommendedOwnerRole": "Strategy",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "SDI-1",
+        "NSI-1"
+      ],
+      "linkedNarratives": [
+        "SB487"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Resolve tension in strategy alignment dashboard before field deployment.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-check-registration-goal-c09ed0339b",
+      "actionType": "CHECK_REGISTRATION_GOAL",
+      "title": "Verify registration goal assumptions",
+      "summary": "75 counties missing registration goals in governed sources.",
+      "whyItMatters": "Pathway-to-win modeling depends on anecdotal registration assumptions — not voter targeting.",
+      "recommendedOwnerRole": "Strategy",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-7",
+        "NSI-6"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Anecdotal field assumptions based on current activity, demographics, and registration focus areas. Not validated model output.",
+        "Registration-yield model is illustrative only — does not replace win-target scenario math."
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Validate county registration targets in strategic target pathway audit.",
+      "blockedBy": [
+        "arkansas",
+        "ashley",
+        "baxter",
+        "benton",
+        "boone",
+        "bradley",
+        "calhoun",
+        "carroll",
+        "chicot",
+        "clark",
+        "clay",
+        "cleburne",
+        "cleveland",
+        "columbia",
+        "conway",
+        "craighead",
+        "crawford",
+        "crittenden",
+        "cross",
+        "dallas",
+        "desha",
+        "drew",
+        "faulkner",
+        "franklin",
+        "fulton",
+        "garland",
+        "grant",
+        "greene",
+        "hempstead",
+        "hot-spring",
+        "howard",
+        "independence",
+        "izard",
+        "jackson",
+        "jefferson",
+        "johnson",
+        "lafayette",
+        "lawrence",
+        "lee",
+        "lincoln",
+        "little-river",
+        "logan",
+        "lonoke",
+        "madison",
+        "marion",
+        "miller",
+        "mississippi",
+        "monroe",
+        "montgomery",
+        "nevada",
+        "newton",
+        "ouachita",
+        "perry",
+        "phillips",
+        "pike",
+        "poinsett",
+        "polk",
+        "pope",
+        "prairie",
+        "pulaski",
+        "randolph",
+        "st.-francis",
+        "saline",
+        "scott",
+        "searcy",
+        "sebastian",
+        "sevier",
+        "sharp",
+        "stone",
+        "union",
+        "van-buren",
+        "washington",
+        "white",
+        "woodruff",
+        "yell"
+      ],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-validate-target-pathway-5194a5534f",
+      "actionType": "VALIDATE_TARGET_PATHWAY",
+      "title": "Validate strategic target pathway",
+      "summary": "Registration-yield model is illustrative only — does not replace win-target scenario math.",
+      "whyItMatters": "Statewide win pathway requires verified county targets and turnout assumptions.",
+      "recommendedOwnerRole": "Strategy",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-7",
+        "NSI-6"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Anecdotal field assumptions based on current activity, demographics, and registration focus areas. Not validated model output."
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Open strategic target pathway audit; confirm county numbers with field and data stewards.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-export-risk-5fc0cb2f7c",
+      "actionType": "REVIEW_EXPORT_RISK",
+      "title": "Export fatigue — 2021 Integrity Foundation",
+      "summary": "2021 Integrity Foundation deployed 1 time(s) while readiness remains BLOCKED — CITATION_STALE: cite-",
+      "whyItMatters": "Frequently exported narrative may depend on stale citations.",
+      "recommendedOwnerRole": "Legal/Compliance",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-3",
+        "V3-E"
+      ],
+      "linkedNarratives": [
+        "kh0b-2021-integrity-foundation"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [
+        "export-dry-run-20260527"
+      ],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Verify citation freshness before next export."
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Pause external repetition; refresh citations or rotate county examples.",
+      "blockedBy": [
+        "Stale citation signals in intelligence memory."
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-export-risk-9687ead469",
+      "actionType": "REVIEW_EXPORT_RISK",
+      "title": "Export fatigue — Legislative Chronology Arc",
+      "summary": "Legislative Chronology Arc deployed 1 time(s) while readiness remains STRONG — CITATION_STALE: cite-",
+      "whyItMatters": "Frequently exported narrative may depend on stale citations.",
+      "recommendedOwnerRole": "Legal/Compliance",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-3",
+        "V3-E"
+      ],
+      "linkedNarratives": [
+        "kh0b-legislative-chronology"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Verify citation freshness before next export."
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Pause external repetition; refresh citations or rotate county examples.",
+      "blockedBy": [
+        "Stale citation signals in intelligence memory."
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-export-risk-03222d04ad",
+      "actionType": "REVIEW_EXPORT_RISK",
+      "title": "Export fatigue — Debate Frame — Election Integrity Record",
+      "summary": "Debate Frame — Election Integrity Record deployed 1 time(s) while readiness remains STRONG — CITATIO",
+      "whyItMatters": "Frequently exported narrative may depend on stale citations.",
+      "recommendedOwnerRole": "Legal/Compliance",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-3",
+        "V3-E"
+      ],
+      "linkedNarratives": [
+        "debate-frame-election-integrity"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Verify citation freshness before next export."
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Pause external repetition; refresh citations or rotate county examples.",
+      "blockedBy": [
+        "Stale citation signals in intelligence memory."
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-citation-442ea5fac6",
+      "actionType": "REVIEW_CITATION",
+      "title": "Review citation cite-campaign-election-integrity-2025",
+      "summary": "Campaign-authored election-integrity article citing legislative acts. — VERIFIED / ARCHIVE_MISSING.",
+      "whyItMatters": "Blocked or weak narratives may depend on this citation before external use.",
+      "recommendedOwnerRole": "Citation Desk",
+      "priority": "MEDIUM",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "V3-C",
+        "NSI-1"
+      ],
+      "linkedNarratives": [
+        "kh0b-2021-integrity-foundation",
+        "kh0b-legislative-chronology",
+        "debate-frame-election-integrity"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [
+        "cite-campaign-election-integrity-2025"
+      ],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Open citation locker; validate source, archive capture, and narrative linkage.",
+      "blockedBy": [
+        "3 narrative(s) blocked pending citation."
+      ],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-citation-25149b96bd",
+      "actionType": "REVIEW_CITATION",
+      "title": "Review citation cite-4029-debate-recap",
+      "summary": "Local media recap listing debate topic categories. — VERIFIED / ARCHIVE_MISSING.",
+      "whyItMatters": "Blocked or weak narratives may depend on this citation before external use.",
+      "recommendedOwnerRole": "Citation Desk",
+      "priority": "MEDIUM",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "V3-C",
+        "NSI-1"
+      ],
+      "linkedNarratives": [
+        "debate-frame-debate-questions"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [
+        "cite-4029-debate-recap"
+      ],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Open citation locker; validate source, archive capture, and narrative linkage.",
+      "blockedBy": [
+        "1 narrative(s) blocked pending citation."
+      ],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-citation-23781d063e",
+      "actionType": "REVIEW_CITATION",
+      "title": "Review citation cite-sb487-2021",
+      "summary": "SB487 (Act 729) — precinct boundaries, polling sites, and vote centers. — NEEDS_REVIEW / NEEDS_REVALIDATION.",
+      "whyItMatters": "Blocked or weak narratives may depend on this citation before external use.",
+      "recommendedOwnerRole": "Citation Desk",
+      "priority": "MEDIUM",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "V3-C",
+        "NSI-1"
+      ],
+      "linkedNarratives": [
+        "SB487",
+        "kh0b-2021-integrity-foundation"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [
+        "cite-sb487-2021"
+      ],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Open citation locker; validate source, archive capture, and narrative linkage.",
+      "blockedBy": [
+        "2 narrative(s) blocked pending citation."
+      ],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-claim-04fb6ac66a",
+      "actionType": "REVIEW_CLAIM",
+      "title": "Review claim pdeb-002-management-readiness",
+      "summary": "SOS management readiness: review status NEEDS_REVIEW.",
+      "whyItMatters": "Potentially useful opposition framing cannot deploy until human claim review completes.",
+      "recommendedOwnerRole": "Research",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "V2-A",
+        "KH-0"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [
+        "pdeb-002-management-readiness"
+      ],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "pdeb-002-management-readiness",
+        "PARTIAL"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Complete claim review workflow in Evidence Command — do not use externally until approved.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-claim-2d12dc5391",
+      "actionType": "REVIEW_CLAIM",
+      "title": "Review claim claim-management-readiness-partial",
+      "summary": "claim-management-readiness-partial: review status NEEDS_REVIEW.",
+      "whyItMatters": "Potentially useful opposition framing cannot deploy until human claim review completes.",
+      "recommendedOwnerRole": "Research",
+      "priority": "HIGH",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "V2-A",
+        "KH-0"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [
+        "claim-management-readiness-partial"
+      ],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "claim-management-readiness-partial",
+        "unknown citation"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Complete claim review workflow in Evidence Command — do not use externally until approved.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-create-retrieval-task-9f24ae61e0",
+      "actionType": "CREATE_RETRIEVAL_TASK",
+      "title": "Research gap — Statewide",
+      "summary": "Blocked narratives: 1; open research: 5.",
+      "whyItMatters": "High-opportunity county may be under-prepared for local deployment.",
+      "recommendedOwnerRole": "Research",
+      "priority": "MEDIUM",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-5",
+        "NSI-2",
+        "V3-A"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [
+        "statewide"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Statewide local intelligence incomplete — 5 open research item(s) including Verify SB487 act-text before statewide county-burden messaging."
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Human-create retrieval task in KH-3B — do not auto-mutate task board.",
+      "blockedBy": [
+        "Blocked narratives in county overlay."
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-create-retrieval-task-1bdd444e34",
+      "actionType": "CREATE_RETRIEVAL_TASK",
+      "title": "Research gap — Benton County",
+      "summary": "Blocked narratives: 1; open research: 6.",
+      "whyItMatters": "High-opportunity county may be under-prepared for local deployment.",
+      "recommendedOwnerRole": "Research",
+      "priority": "MEDIUM",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-5",
+        "NSI-2",
+        "V3-A"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [
+        "benton"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Benton County local intelligence incomplete — 6 open research item(s) including Benton County election commission meeting minutes on site changes."
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Human-create retrieval task in KH-3B — do not auto-mutate task board.",
+      "blockedBy": [
+        "Blocked narratives in county overlay."
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-citation-063385385d",
+      "actionType": "REVIEW_CITATION",
+      "title": "Review citation cite-campaign-home",
+      "summary": "Campaign home page for brand and messaging baseline. — DRAFT / ARCHIVE_MISSING.",
+      "whyItMatters": "Blocked or weak narratives may depend on this citation before external use.",
+      "recommendedOwnerRole": "Citation Desk",
+      "priority": "MEDIUM",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "V3-C",
+        "NSI-1"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [
+        "cite-campaign-home"
+      ],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "https://www.hammerforarkansas.com/"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Open citation locker; validate source, archive capture, and narrative linkage.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-strengthen-narrative-d08924825e",
+      "actionType": "STRENGTHEN_NARRATIVE",
+      "title": "Strengthen narrative County Administration Burden",
+      "summary": "WEAK — REVIEW: claim pdeb-002-management-readiness remains NEEDS_REVIEW..",
+      "whyItMatters": "Strategically important narrative is not deployment-ready.",
+      "recommendedOwnerRole": "Strategy",
+      "priority": "MEDIUM",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-1",
+        "SDI-1"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "REVIEW: claim pdeb-002-management-readiness remains NEEDS_REVIEW.",
+        "PARTIAL: claim pdeb-002-management-readiness has partial citation coverage.",
+        "REVIEW: claim claim-management-readiness-partial remains NEEDS_REVIEW."
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Close citation/claim gaps; re-run narrative state after evidence updates.",
+      "blockedBy": [
+        "REVIEW: claim pdeb-002-management-readiness remains NEEDS_REVIEW.",
+        "PARTIAL: claim pdeb-002-management-readiness has partial citation coverage.",
+        "REVIEW: claim claim-management-readiness-partial remains NEEDS_REVIEW."
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-strengthen-narrative-d252fe09da",
+      "actionType": "STRENGTHEN_NARRATIVE",
+      "title": "Strengthen narrative Debate Frame — Management Readiness",
+      "summary": "WEAK — REVIEW: claim pdeb-002-management-readiness remains NEEDS_REVIEW..",
+      "whyItMatters": "Strategically important narrative is not deployment-ready.",
+      "recommendedOwnerRole": "Strategy",
+      "priority": "MEDIUM",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-1",
+        "SDI-1"
+      ],
+      "linkedNarratives": [
+        "debate-frame-management-readiness"
+      ],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "REVIEW: claim pdeb-002-management-readiness remains NEEDS_REVIEW.",
+        "PARTIAL: claim pdeb-002-management-readiness has partial citation coverage.",
+        "REVIEW: claim claim-management-readiness-partial remains NEEDS_REVIEW."
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Close citation/claim gaps; re-run narrative state after evidence updates.",
+      "blockedBy": [
+        "REVIEW: claim pdeb-002-management-readiness remains NEEDS_REVIEW.",
+        "PARTIAL: claim pdeb-002-management-readiness has partial citation coverage.",
+        "REVIEW: claim claim-management-readiness-partial remains NEEDS_REVIEW."
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-create-retrieval-task-bdb6c870b7",
+      "actionType": "CREATE_RETRIEVAL_TASK",
+      "title": "Research gap — Washington County",
+      "summary": "Blocked narratives: 0; open research: 4.",
+      "whyItMatters": "High-opportunity county may be under-prepared for local deployment.",
+      "recommendedOwnerRole": "Research",
+      "priority": "MEDIUM",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-5",
+        "NSI-2",
+        "V3-A"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [
+        "washington"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Washington County local intelligence incomplete — 4 open research item(s) including Washington County clerk early-voting site planning references."
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Human-create retrieval task in KH-3B — do not auto-mutate task board.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-create-retrieval-task-f8ba69fa2f",
+      "actionType": "CREATE_RETRIEVAL_TASK",
+      "title": "Research gap — Sebastian County",
+      "summary": "Blocked narratives: 0; open research: 5.",
+      "whyItMatters": "High-opportunity county may be under-prepared for local deployment.",
+      "recommendedOwnerRole": "Research",
+      "priority": "MEDIUM",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-5",
+        "NSI-2",
+        "V3-A"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [
+        "sebastian"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Sebastian County local intelligence incomplete — 5 open research item(s) including Sebastian County clerk statements on absentee processing."
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Human-create retrieval task in KH-3B — do not auto-mutate task board.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-create-retrieval-task-8bd598fe67",
+      "actionType": "CREATE_RETRIEVAL_TASK",
+      "title": "Research gap — Craighead County",
+      "summary": "Blocked narratives: 0; open research: 4.",
+      "whyItMatters": "High-opportunity county may be under-prepared for local deployment.",
+      "recommendedOwnerRole": "Research",
+      "priority": "MEDIUM",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-5",
+        "NSI-2",
+        "V3-A"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [
+        "craighead"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "Craighead County local intelligence incomplete — 4 open research item(s) including Craighead County election board governance references."
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "HIGH",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Human-create retrieval task in KH-3B — do not auto-mutate task board.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-media-finding-097939be15",
+      "actionType": "REVIEW_MEDIA_FINDING",
+      "title": "Review media finding media-finding-nsi8-seed-001",
+      "summary": "Arkansas Secretary of State election administration review discussed in Pulaski  — relevance 28.",
+      "whyItMatters": "High-relevance public media signals may affect opposition research or rapid response prep.",
+      "recommendedOwnerRole": "Media Monitoring",
+      "priority": "MEDIUM",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-8",
+        "NSI-10"
+      ],
+      "linkedNarratives": [
+        "narrative-trust-transparency",
+        "narrative-county-burden"
+      ],
+      "linkedCounties": [
+        "pulaski"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [
+        "media-finding-nsi8-seed-001"
+      ],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "https://example.com/nsi8-fixture/sos-pulaski-review",
+        "NSI-8 dry-run fixture feed (local)"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Triage in media intake; human-promote to citation/task draft if validated — no auto-create.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-media-finding-ad01a0af0c",
+      "actionType": "REVIEW_MEDIA_FINDING",
+      "title": "Review media finding media-finding-nsi8-seed-002",
+      "summary": "State legislature calendar includes election law bills for upcoming session — relevance 22.",
+      "whyItMatters": "High-relevance public media signals may affect opposition research or rapid response prep.",
+      "recommendedOwnerRole": "Media Monitoring",
+      "priority": "MEDIUM",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-8",
+        "NSI-10"
+      ],
+      "linkedNarratives": [
+        "narrative-opponent-record"
+      ],
+      "linkedCounties": [
+        "statewide"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [
+        "media-finding-nsi8-seed-002"
+      ],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "https://example.com/nsi8-fixture/legislative-calendar",
+        "NSI-8 dry-run fixture feed (local)"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Triage in media intake; human-promote to citation/task draft if validated — no auto-create.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-verify-bill-source-4d2bbce83f",
+      "actionType": "VERIFY_BILL_SOURCE",
+      "title": "Verify source for claim pdeb-002-management-readiness",
+      "summary": "Claim pdeb-002-management-readiness has partial citation — SOS management readiness.",
+      "whyItMatters": "Debate and county briefings require primary statutory verification.",
+      "recommendedOwnerRole": "Research",
+      "priority": "MEDIUM",
+      "urgency": "SOON",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "KH-0",
+        "NSI-4"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [
+        "pdeb-002-management-readiness"
+      ],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "pdeb-002-management-readiness"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Confirm act text on Arkleg; update citation locker after review.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-public-meeting-source-275574845e",
+      "actionType": "REVIEW_PUBLIC_MEETING_SOURCE",
+      "title": "Public meeting watchlist gap",
+      "summary": "No watchlist targets for Washington County — add quorum court / election commission URLs.",
+      "whyItMatters": "County may lack governed public meeting monitoring coverage.",
+      "recommendedOwnerRole": "Media Monitoring",
+      "priority": "MEDIUM",
+      "urgency": "ROUTINE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-8",
+        "NSI-5"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add verified public meeting URLs to watchlist — manual review only.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-public-meeting-source-9521ae02d9",
+      "actionType": "REVIEW_PUBLIC_MEETING_SOURCE",
+      "title": "Public meeting watchlist gap",
+      "summary": "No watchlist targets for Craighead County — add quorum court / election commission URLs.",
+      "whyItMatters": "County may lack governed public meeting monitoring coverage.",
+      "recommendedOwnerRole": "Media Monitoring",
+      "priority": "MEDIUM",
+      "urgency": "ROUTINE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-8",
+        "NSI-5"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add verified public meeting URLs to watchlist — manual review only.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-public-meeting-source-6ac61e6cc7",
+      "actionType": "REVIEW_PUBLIC_MEETING_SOURCE",
+      "title": "Public meeting watchlist gap",
+      "summary": "No city council agenda targets registered.",
+      "whyItMatters": "County may lack governed public meeting monitoring coverage.",
+      "recommendedOwnerRole": "Media Monitoring",
+      "priority": "MEDIUM",
+      "urgency": "ROUTINE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-8",
+        "NSI-5"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add verified public meeting URLs to watchlist — manual review only.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-public-meeting-source-82a6dc6487",
+      "actionType": "REVIEW_PUBLIC_MEETING_SOURCE",
+      "title": "Public meeting watchlist gap",
+      "summary": "No school board agenda targets registered (if relevant).",
+      "whyItMatters": "County may lack governed public meeting monitoring coverage.",
+      "recommendedOwnerRole": "Media Monitoring",
+      "priority": "MEDIUM",
+      "urgency": "ROUTINE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-8",
+        "NSI-5"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add verified public meeting URLs to watchlist — manual review only.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-check-county-operational-risk-e810588017",
+      "actionType": "CHECK_COUNTY_OPERATIONAL_RISK",
+      "title": "Operational intelligence adapter gaps",
+      "summary": "7/13 read adapters LIVE.",
+      "whyItMatters": "Operational intelligence adapter missing data for deployment decisions.",
+      "recommendedOwnerRole": "Field",
+      "priority": "MEDIUM",
+      "urgency": "ROUTINE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-6"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Review aggregate campaign intelligence adapters; hydrate read-only data.",
+      "blockedBy": [],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "operatorNotes": ""
+    }
+  ]
+}

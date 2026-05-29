@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { buildMorningBriefingPaper } from "@/lib/intelligence/strategicBriefingPaperEngine";
 import { summarizeCampaignIntelligenceState, recommendIntelligenceGatheringPriorities } from "@/lib/intelligence/intelligenceBrainCoordinator";
+import {
+  getMorningBriefActionQueueSection,
+  syncHumanActionQueue,
+} from "@/lib/intelligence/strategicDecisionSupport";
 import { computeStatewideRegistrationRollup } from "@/lib/intelligence/voterRegistrationTargetModel";
 import { StrategicBriefingDrilldownPanel } from "../StrategicBriefingDrilldownPanel";
 
@@ -22,6 +26,8 @@ export default async function MorningBriefPage() {
   const brain = summarizeCampaignIntelligenceState();
   const priorities = recommendIntelligenceGatheringPriorities();
   const registration = computeStatewideRegistrationRollup();
+  syncHumanActionQueue();
+  const actionQueue = getMorningBriefActionQueueSection();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -52,6 +58,42 @@ export default async function MorningBriefPage() {
       <section className="mb-6 rounded-xl border border-kelly-navy/20 bg-kelly-navy/5 p-4">
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Top 5 — leadership needs to know</h2>
         <BulletList items={brain.topLeadershipItems} />
+      </section>
+
+      <section className="mb-6 rounded-xl border border-teal-200/50 bg-teal-50/40 p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-teal-950">NSI-15 · Today&apos;s human action queue</h2>
+        <p className="mt-1 text-xs text-teal-900/80">
+          Recommendation only. Human action required. Status updates do not execute underlying workflows.
+        </p>
+        <div className="mt-3">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-teal-950">Top 5 actions</h3>
+          <BulletList items={actionQueue.topFive.map((row) => `${row.title} — ${row.recommendedNextStep.slice(0, 100)}`)} />
+        </div>
+        <div className="mt-3 grid gap-4 lg:grid-cols-2">
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-teal-950">Candidate prep</h3>
+            <BulletList items={actionQueue.candidatePrep.map((row) => row.title)} />
+            <h3 className="mt-3 text-xs font-bold uppercase tracking-wider text-teal-950">Debate prep</h3>
+            <BulletList items={actionQueue.debatePrep.map((row) => row.title)} />
+            <h3 className="mt-3 text-xs font-bold uppercase tracking-wider text-teal-950">Research</h3>
+            <BulletList items={actionQueue.research.map((row) => row.title)} />
+          </div>
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-teal-950">Field / volunteer</h3>
+            <BulletList items={actionQueue.fieldVolunteer.map((row) => row.title)} />
+            <h3 className="mt-3 text-xs font-bold uppercase tracking-wider text-teal-950">Media monitoring</h3>
+            <BulletList items={actionQueue.mediaMonitoring.map((row) => row.title)} />
+            <h3 className="mt-3 text-xs font-bold uppercase tracking-wider text-teal-950">Blocked by citation weakness</h3>
+            <BulletList items={actionQueue.blockedByCitation.map((row) => row.title)} />
+            <h3 className="mt-3 text-xs font-bold uppercase tracking-wider text-teal-950">High-risk scenarios</h3>
+            <BulletList items={actionQueue.highRiskScenarios.map((row) => row.title)} />
+          </div>
+        </div>
+        <p className="mt-3 text-[10px] text-teal-900">
+          <Link href="/admin/intelligence/action-queue" className="font-semibold underline">
+            Open full action queue →
+          </Link>
+        </p>
       </section>
 
       <section className="mb-6 grid gap-4 lg:grid-cols-2">
@@ -362,6 +404,38 @@ export default async function MorningBriefPage() {
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
           <Link href="/admin/intelligence/intelligence-memory" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
             Intelligence memory dashboard
+          </Link>
+        </div>
+      </section>
+
+      <section className="mb-6 rounded-xl border border-violet-200/50 bg-violet-50/40 p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-violet-950">NSI-14 · Scenario watchlist</h2>
+        <p className="mt-1 text-xs text-violet-900/80">
+          Governed scenario modeling — SCENARIO_MODEL · INTERNAL_ONLY · NON_PUBLISHABLE · HUMAN_REVIEW_REQUIRED.
+        </p>
+        <div className="mt-3 grid gap-4 lg:grid-cols-2">
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-violet-950">Top 5 risk scenarios</h3>
+            <BulletList items={brain.scenarioTopRisks.length > 0 ? brain.scenarioTopRisks : ["None flagged."]} />
+            <h3 className="mt-3 text-xs font-bold uppercase tracking-wider text-violet-950">Debate traps</h3>
+            <BulletList items={brain.scenarioDebateTraps.length > 0 ? brain.scenarioDebateTraps.slice(0, 4) : ["None flagged."]} />
+            <h3 className="mt-3 text-xs font-bold uppercase tracking-wider text-violet-950">Registration pathway risks</h3>
+            <BulletList items={brain.scenarioRegistrationPathwayRisks.slice(0, 4)} />
+          </div>
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-violet-950">Top 5 opportunity scenarios</h3>
+            <BulletList items={brain.scenarioTopOpportunities.length > 0 ? brain.scenarioTopOpportunities : ["None flagged."]} />
+            <h3 className="mt-3 text-xs font-bold uppercase tracking-wider text-violet-950">County reaction warnings</h3>
+            <BulletList items={brain.scenarioCountyReactionWarnings.slice(0, 4)} />
+            <h3 className="mt-3 text-xs font-bold uppercase tracking-wider text-violet-950">Media escalation warnings</h3>
+            <BulletList items={brain.scenarioMediaEscalationWarnings.slice(0, 4)} />
+            <h3 className="mt-3 text-xs font-bold uppercase tracking-wider text-violet-950">Evidence blockers</h3>
+            <BulletList items={brain.scenarioEvidenceBlockers.length > 0 ? brain.scenarioEvidenceBlockers.slice(0, 4) : ["None flagged."]} />
+          </div>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-2 text-xs">
+          <Link href="/admin/intelligence/scenario-simulation" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
+            Scenario simulation dashboard
           </Link>
         </div>
       </section>

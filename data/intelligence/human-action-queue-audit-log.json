@@ -1,0 +1,84 @@
+{
+  "logVersion": "NSI-15",
+  "updatedAt": "2026-05-29T03:22:58.812Z",
+  "entries": [
+    {
+      "actionId": "ha-prepare-debate-response-ce5d4ee7b7",
+      "previousStatus": "ACCEPTED",
+      "nextStatus": "ARCHIVED",
+      "operator": "nsi15-test",
+      "owner": "Debate Prep",
+      "notes": "Test archive",
+      "changedByRoute": "scripts/test-human-action-queue",
+      "backupPath": "data/intelligence/backups/human-action-queue-2026-05-29T03-22-58-787Z.json",
+      "eventType": "HUMAN_ACTION_ARCHIVED",
+      "auditId": "ha-audit-1780024978812-6",
+      "changedAt": "2026-05-29T03:22:58.812Z"
+    },
+    {
+      "actionId": "ha-prepare-debate-response-ce5d4ee7b7",
+      "previousStatus": "ARCHIVED",
+      "nextStatus": "ACCEPTED",
+      "operator": "nsi15-test",
+      "owner": "Debate Prep",
+      "notes": "Test acceptance",
+      "changedByRoute": "scripts/test-human-action-queue",
+      "backupPath": "data/intelligence/backups/human-action-queue-2026-05-29T03-22-58-772Z.json",
+      "eventType": "HUMAN_ACTION_UPDATED",
+      "auditId": "ha-audit-1780024978775-5",
+      "changedAt": "2026-05-29T03:22:58.775Z"
+    },
+    {
+      "actionId": "ha-prepare-debate-response-ce5d4ee7b7",
+      "previousStatus": "ACCEPTED",
+      "nextStatus": "ARCHIVED",
+      "operator": "nsi15-test",
+      "owner": "Debate Prep",
+      "notes": "Test archive",
+      "changedByRoute": "scripts/test-human-action-queue",
+      "backupPath": "data/intelligence/backups/human-action-queue-2026-05-29T03-22-27-587Z.json",
+      "eventType": "HUMAN_ACTION_ARCHIVED",
+      "auditId": "ha-audit-1780024947616-4",
+      "changedAt": "2026-05-29T03:22:27.616Z"
+    },
+    {
+      "actionId": "ha-prepare-debate-response-ce5d4ee7b7",
+      "previousStatus": "RECOMMENDED",
+      "nextStatus": "ACCEPTED",
+      "operator": "nsi15-test",
+      "owner": "Debate Prep",
+      "notes": "Test acceptance",
+      "changedByRoute": "scripts/test-human-action-queue",
+      "backupPath": "data/intelligence/backups/human-action-queue-2026-05-29T03-22-27-572Z.json",
+      "eventType": "HUMAN_ACTION_UPDATED",
+      "auditId": "ha-audit-1780024947576-3",
+      "changedAt": "2026-05-29T03:22:27.576Z"
+    },
+    {
+      "actionId": "ha-prepare-debate-response-ce5d4ee7b7",
+      "previousStatus": "ACCEPTED",
+      "nextStatus": "ARCHIVED",
+      "operator": "nsi15-test",
+      "owner": "Debate Prep",
+      "notes": "Test archive",
+      "changedByRoute": "scripts/test-human-action-queue",
+      "backupPath": "data/intelligence/backups/human-action-queue-2026-05-29T03-16-47-767Z.json",
+      "eventType": "HUMAN_ACTION_ARCHIVED",
+      "auditId": "ha-audit-1780024607810-2",
+      "changedAt": "2026-05-29T03:16:47.810Z"
+    },
+    {
+      "actionId": "ha-prepare-debate-response-ce5d4ee7b7",
+      "previousStatus": "RECOMMENDED",
+      "nextStatus": "ACCEPTED",
+      "operator": "nsi15-test",
+      "owner": "Debate Prep",
+      "notes": "Test acceptance",
+      "changedByRoute": "scripts/test-human-action-queue",
+      "backupPath": "data/intelligence/backups/human-action-queue-2026-05-29T03-16-47-703Z.json",
+      "eventType": "HUMAN_ACTION_UPDATED",
+      "auditId": "ha-audit-1780024607752-1",
+      "changedAt": "2026-05-29T03:16:47.752Z"
+    }
+  ]
+}

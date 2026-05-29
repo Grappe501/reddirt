@@ -44,6 +44,10 @@ import {
 import { summarizeOperationalIntelligenceForEvidenceCommand } from "@/lib/intelligence/aggregateCampaignIntelligence";
 import { summarizeMediaMonitoringReadiness } from "@/lib/intelligence/publicMediaMonitor";
 import { summarizeCampaignIntelligenceState } from "@/lib/intelligence/intelligenceBrainCoordinator";
+import {
+  getEvidenceCommandActionQueueSection,
+  syncHumanActionQueue,
+} from "@/lib/intelligence/strategicDecisionSupport";
 import { computeStatewideRegistrationRollup } from "@/lib/intelligence/voterRegistrationTargetModel";
 
 function buildRecommendedActions(index: ReturnType<typeof loadKimHammerEvidenceIndex>): string[] {
@@ -250,6 +254,52 @@ export default async function KimHammerEvidenceCommandPage() {
     recurringAttackSummaries: brain.memoryOpponentEscalation.slice(0, 3),
     intelligenceMemoryHref: "/admin/intelligence/intelligence-memory",
   };
+  syncHumanActionQueue();
+  const actionQueueSection = getEvidenceCommandActionQueueSection();
+  const nsi15Summary = {
+    topUrgent: actionQueueSection.topUrgent.map((row) => ({
+      actionId: row.actionId,
+      title: row.title,
+      recommendedNextStep: row.recommendedNextStep,
+    })),
+    topBlocked: actionQueueSection.topBlocked.map((row) => ({
+      actionId: row.actionId,
+      title: row.title,
+      blockedBy: row.blockedBy,
+    })),
+    topOpportunity: actionQueueSection.topOpportunity.map((row) => ({
+      actionId: row.actionId,
+      title: row.title,
+    })),
+    debatePrep: actionQueueSection.debatePrep.map((row) => ({
+      actionId: row.actionId,
+      title: row.title,
+    })),
+    citationReview: actionQueueSection.citationReview.map((row) => ({
+      actionId: row.actionId,
+      title: row.title,
+    })),
+    countyBriefing: actionQueueSection.countyBriefing.map((row) => ({
+      actionId: row.actionId,
+      title: row.title,
+    })),
+    targetPathway: actionQueueSection.targetPathway.map((row) => ({
+      actionId: row.actionId,
+      title: row.title,
+    })),
+    queueHref: actionQueueSection.queueHref,
+  };
+  const nsi14Summary = {
+    scenarioTopRisks: brain.scenarioTopRisks,
+    scenarioTopOpportunities: brain.scenarioTopOpportunities,
+    scenarioDebateTraps: brain.scenarioDebateTraps.slice(0, 4),
+    scenarioMediaEscalationWarnings: brain.scenarioMediaEscalationWarnings.slice(0, 4),
+    scenarioCountyReactionWarnings: brain.scenarioCountyReactionWarnings.slice(0, 4),
+    scenarioRegistrationPathwayRisks: brain.scenarioRegistrationPathwayRisks.slice(0, 4),
+    scenarioEvidenceBlockers: brain.scenarioEvidenceBlockers.slice(0, 4),
+    scenarioHumanReviewActions: brain.scenarioHumanReviewActions.slice(0, 5),
+    scenarioSimulationHref: "/admin/intelligence/scenario-simulation",
+  };
 
   const blockerRules = index.publicationSafety.rules.filter((rule) =>
     metrics.safetyBlockers.includes(rule.id),
@@ -283,6 +333,8 @@ export default async function KimHammerEvidenceCommandPage() {
         nsi11Summary={nsi11Summary}
         nsi12Summary={nsi12Summary}
         nsi13Summary={nsi13Summary}
+        nsi14Summary={nsi14Summary}
+        nsi15Summary={nsi15Summary}
       />
 
       <EvidenceCommandReviewPanel claims={reviewRows} />

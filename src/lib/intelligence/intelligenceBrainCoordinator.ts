@@ -36,6 +36,7 @@ import {
 import { summarizeScheduledIntakeRun } from "@/lib/intelligence/scheduledPublicMediaIntake";
 import { summarizeDraftReviewQueue } from "@/lib/intelligence/llmDraftGateway";
 import { summarizeLongitudinalIntelligence } from "@/lib/intelligence/intelligenceMemoryEngine";
+import { summarizeStrategicScenarioSimulation } from "@/lib/intelligence/strategicScenarioSimulation";
 
 export type CampaignIntelligenceBrainState = {
   generatedAt: string;
@@ -105,6 +106,15 @@ export type CampaignIntelligenceBrainState = {
   memoryDebateTraps: string[];
   memoryOpponentEscalation: string[];
   memoryMediaCycleChanges: string[];
+  strategicScenarioSimulation: ReturnType<typeof summarizeStrategicScenarioSimulation>;
+  scenarioTopRisks: string[];
+  scenarioTopOpportunities: string[];
+  scenarioDebateTraps: string[];
+  scenarioMediaEscalationWarnings: string[];
+  scenarioCountyReactionWarnings: string[];
+  scenarioRegistrationPathwayRisks: string[];
+  scenarioEvidenceBlockers: string[];
+  scenarioHumanReviewActions: string[];
 };
 
 export function summarizeCampaignIntelligenceState(
@@ -333,6 +343,7 @@ export function summarizeCampaignIntelligenceState(
 
   const llmDraftQueueSummary = summarizeDraftReviewQueue(repoRoot);
   const longitudinalIntelligence = summarizeLongitudinalIntelligence(repoRoot);
+  const strategicScenarioSimulation = summarizeStrategicScenarioSimulation(repoRoot);
 
   return {
     generatedAt: new Date().toISOString(),
@@ -402,6 +413,15 @@ export function summarizeCampaignIntelligenceState(
     memoryDebateTraps: longitudinalIntelligence.recurringDebateTraps.map((r) => r.reason.slice(0, 100)),
     memoryOpponentEscalation: longitudinalIntelligence.opponentMessageEscalation.map((r) => r.reason.slice(0, 100)),
     memoryMediaCycleChanges: longitudinalIntelligence.mediaCycleChanges.map((r) => r.reason.slice(0, 100)),
+    strategicScenarioSimulation,
+    scenarioTopRisks: strategicScenarioSimulation.highestRisk.slice(0, 5).map((r) => `${r.title}: ${r.primarySignal}`),
+    scenarioTopOpportunities: strategicScenarioSimulation.strongestOpportunity.slice(0, 5).map((r) => `${r.title}: ${r.primarySignal}`),
+    scenarioDebateTraps: strategicScenarioSimulation.debateTraps.map((r) => `${r.title} — ${r.reasons[0]?.slice(0, 80) ?? ""}`),
+    scenarioMediaEscalationWarnings: strategicScenarioSimulation.mediaEscalationWarnings.map((r) => `${r.title}: ${r.primarySignal}`),
+    scenarioCountyReactionWarnings: strategicScenarioSimulation.countyReactionScenarios.map((r) => `${r.linkedCounties.join(", ")}: ${r.title}`),
+    scenarioRegistrationPathwayRisks: strategicScenarioSimulation.turnoutRegistrationScenarios.map((r) => r.reasons[0] ?? r.title),
+    scenarioEvidenceBlockers: strategicScenarioSimulation.evidenceDependencyBlockers,
+    scenarioHumanReviewActions: strategicScenarioSimulation.recommendedHumanReviewActions,
   };
 }
 
