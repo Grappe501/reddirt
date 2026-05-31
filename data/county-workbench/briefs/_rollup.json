@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-05-31T20:14:59.421Z",
+  "countyCount": 75,
+  "all75": true,
+  "avgReadiness": 16,
+  "shellBriefCount": 75,
+  "debateUsefulCount": 6,
+  "governance": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "internalOnly": true,
+    "labels": [
+      "INTERNAL_DRAFT",
+      "NON_PUBLISHABLE",
+      "HUMAN_REVIEW_REQUIRED",
+      "NOT_PUBLIC_CONTENT",
+      "SOURCE_PROVENANCE_REQUIRED",
+      "NO_GOAL_MUTATION"
+    ]
+  }
+}

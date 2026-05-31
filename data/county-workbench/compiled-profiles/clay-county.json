@@ -1,0 +1,65 @@
+{
+  "countySlug": "clay-county",
+  "countyName": "Clay County",
+  "fips": "05021",
+  "regionId": "northeast",
+  "regionLabel": "Northeast (Upper Delta & Crowley’s Ridge)",
+  "identity": {
+    "displayName": "Clay County",
+    "fips": "05021",
+    "slug": "clay-county",
+    "regionId": "northeast"
+  },
+  "demographicSnapshot": [],
+  "voterSnapshot": [],
+  "turnoutSnapshot": [],
+  "economicSnapshot": [],
+  "educationSnapshot": [],
+  "healthcareSnapshot": [],
+  "localValidators": [],
+  "civicInfrastructure": [],
+  "mediaLandscape": [],
+  "eventOpportunities": [],
+  "messageOpportunities": [],
+  "knownGaps": [
+    "Missing fact type: demographics",
+    "Missing fact type: voter_registration",
+    "Missing fact type: election_history",
+    "Missing fact type: turnout",
+    "Missing fact type: economic",
+    "Missing fact type: education",
+    "Missing fact type: healthcare",
+    "Missing fact type: civic_infrastructure",
+    "Missing fact type: event_opportunities",
+    "Missing fact type: media",
+    "Missing fact type: local_validators",
+    "Missing fact type: message_themes"
+  ],
+  "riskWarnings": [
+    "Planning vote target proxy present — NOT registration goal",
+    "SHELL county — not field-truth ready"
+  ],
+  "recommendedNextResearch": [
+    "Research demographics for Clay County",
+    "Research voter_registration for Clay County",
+    "Research election_history for Clay County",
+    "Research turnout for Clay County",
+    "Research economic for Clay County"
+  ],
+  "readinessScore": 15,
+  "profileStatus": "SHELL",
+  "governance": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "internalOnly": true,
+    "labels": [
+      "INTERNAL_DRAFT",
+      "NON_PUBLISHABLE",
+      "HUMAN_REVIEW_REQUIRED",
+      "NOT_PUBLIC_CONTENT",
+      "SOURCE_PROVENANCE_REQUIRED",
+      "NO_GOAL_MUTATION"
+    ]
+  },
+  "generatedAt": "2026-05-31T20:14:57.277Z"
+}

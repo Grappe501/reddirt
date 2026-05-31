@@ -1,0 +1,782 @@
+{
+  "tableType": "economic",
+  "generatedAt": "2026-05-31T20:14:56.868Z",
+  "countyCount": 75,
+  "rowCount": 75,
+  "columns": [
+    "countySlug",
+    "countyName",
+    "fips",
+    "regionId",
+    "factCount",
+    "verifiedCount",
+    "missing",
+    "shellLabel"
+  ],
+  "rows": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "fips": "05001",
+      "regionId": "southeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "fips": "05003",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "fips": "05005",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "fips": "05007",
+      "regionId": "northwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "fips": "05009",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "fips": "05011",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "fips": "05013",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "fips": "05015",
+      "regionId": "northwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "fips": "05017",
+      "regionId": "southeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "fips": "05019",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "fips": "05021",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "fips": "05023",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "fips": "05025",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "fips": "05027",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "fips": "05029",
+      "regionId": "central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "fips": "05031",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "fips": "05033",
+      "regionId": "west_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "fips": "05035",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "fips": "05037",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "fips": "05039",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "fips": "05041",
+      "regionId": "southeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "fips": "05043",
+      "regionId": "southeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "fips": "05045",
+      "regionId": "central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "fips": "05047",
+      "regionId": "west_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "fips": "05049",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "fips": "05051",
+      "regionId": "west_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "fips": "05053",
+      "regionId": "central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "fips": "05055",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "fips": "05057",
+      "regionId": "southwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "fips": "05059",
+      "regionId": "west_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "fips": "05061",
+      "regionId": "southwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "fips": "05063",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "fips": "05065",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "fips": "05067",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "fips": "05069",
+      "regionId": "southeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "fips": "05071",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "fips": "05073",
+      "regionId": "southwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "fips": "05075",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "fips": "05077",
+      "regionId": "southeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "fips": "05079",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "fips": "05081",
+      "regionId": "southwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "fips": "05083",
+      "regionId": "west_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "fips": "05085",
+      "regionId": "central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "fips": "05087",
+      "regionId": "northwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "fips": "05089",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "fips": "05091",
+      "regionId": "southwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "fips": "05093",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "fips": "05095",
+      "regionId": "southeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "fips": "05097",
+      "regionId": "west_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "fips": "05099",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "fips": "05101",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "fips": "05103",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "fips": "05105",
+      "regionId": "central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "fips": "05107",
+      "regionId": "southeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "fips": "05109",
+      "regionId": "southwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "fips": "05111",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "fips": "05113",
+      "regionId": "west_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "fips": "05115",
+      "regionId": "central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "fips": "05117",
+      "regionId": "central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "fips": "05119",
+      "regionId": "central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "fips": "05121",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "fips": "05123",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "fips": "05125",
+      "regionId": "central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "fips": "05127",
+      "regionId": "west_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "fips": "05129",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "fips": "05131",
+      "regionId": "west_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "fips": "05133",
+      "regionId": "southwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "fips": "05135",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "fips": "05137",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "fips": "05139",
+      "regionId": "south",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "fips": "05141",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "fips": "05143",
+      "regionId": "northwest",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "fips": "05145",
+      "regionId": "north_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "fips": "05147",
+      "regionId": "northeast",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "fips": "05149",
+      "regionId": "west_central",
+      "factCount": 0,
+      "verifiedCount": 0,
+      "missing": true,
+      "shellLabel": "SHELL — no facts for table"
+    }
+  ],
+  "completenessScore": 0,
+  "governance": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "internalOnly": true,
+    "labels": [
+      "INTERNAL_DRAFT",
+      "NON_PUBLISHABLE",
+      "HUMAN_REVIEW_REQUIRED",
+      "NOT_PUBLIC_CONTENT",
+      "SOURCE_PROVENANCE_REQUIRED",
+      "NO_GOAL_MUTATION"
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "countySlug": "independence-county",
+  "countyName": "Independence County",
+  "fips": "05063",
+  "regionId": "north_central",
+  "regionLabel": "North Central (River Valley & Boston Mountains)",
+  "identity": {
+    "displayName": "Independence County",
+    "fips": "05063",
+    "slug": "independence-county",
+    "regionId": "north_central"
+  },
+  "demographicSnapshot": [],
+  "voterSnapshot": [],
+  "turnoutSnapshot": [],
+  "economicSnapshot": [],
+  "educationSnapshot": [],
+  "healthcareSnapshot": [],
+  "localValidators": [],
+  "civicInfrastructure": [],
+  "mediaLandscape": [],
+  "eventOpportunities": [],
+  "messageOpportunities": [],
+  "knownGaps": [
+    "Missing fact type: demographics",
+    "Missing fact type: voter_registration",
+    "Missing fact type: election_history",
+    "Missing fact type: turnout",
+    "Missing fact type: economic",
+    "Missing fact type: education",
+    "Missing fact type: healthcare",
+    "Missing fact type: civic_infrastructure",
+    "Missing fact type: event_opportunities",
+    "Missing fact type: media",
+    "Missing fact type: local_validators",
+    "Missing fact type: message_themes"
+  ],
+  "riskWarnings": [
+    "Planning vote target proxy present — NOT registration goal",
+    "SHELL county — not field-truth ready"
+  ],
+  "recommendedNextResearch": [
+    "Research demographics for Independence County",
+    "Research voter_registration for Independence County",
+    "Research election_history for Independence County",
+    "Research turnout for Independence County",
+    "Research economic for Independence County"
+  ],
+  "readinessScore": 15,
+  "profileStatus": "SHELL",
+  "governance": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "internalOnly": true,
+    "labels": [
+      "INTERNAL_DRAFT",
+      "NON_PUBLISHABLE",
+      "HUMAN_REVIEW_REQUIRED",
+      "NOT_PUBLIC_CONTENT",
+      "SOURCE_PROVENANCE_REQUIRED",
+      "NO_GOAL_MUTATION"
+    ]
+  },
+  "generatedAt": "2026-05-31T20:14:57.933Z"
+}

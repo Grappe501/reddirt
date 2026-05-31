@@ -1,0 +1,2505 @@
+{
+  "version": 1,
+  "runs": [
+    {
+      "jobId": "ing-localAssets-mpu7y6hx",
+      "adapterName": "localAssets",
+      "countySlug": "garland-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.829Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6i8",
+      "adapterName": "localAssets",
+      "countySlug": "grant-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.840Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6il",
+      "adapterName": "localAssets",
+      "countySlug": "greene-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.853Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6iw",
+      "adapterName": "localAssets",
+      "countySlug": "hempstead-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.864Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6j6",
+      "adapterName": "localAssets",
+      "countySlug": "hot-spring-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.874Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6jg",
+      "adapterName": "localAssets",
+      "countySlug": "howard-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.884Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6jt",
+      "adapterName": "localAssets",
+      "countySlug": "independence-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.897Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6k3",
+      "adapterName": "localAssets",
+      "countySlug": "izard-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.907Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6kd",
+      "adapterName": "localAssets",
+      "countySlug": "jackson-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.917Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6kn",
+      "adapterName": "localAssets",
+      "countySlug": "jefferson-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.927Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6ky",
+      "adapterName": "localAssets",
+      "countySlug": "johnson-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.938Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6l9",
+      "adapterName": "localAssets",
+      "countySlug": "lafayette-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.949Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6li",
+      "adapterName": "localAssets",
+      "countySlug": "lawrence-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.958Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6lt",
+      "adapterName": "localAssets",
+      "countySlug": "lee-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.969Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6m4",
+      "adapterName": "localAssets",
+      "countySlug": "lincoln-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.980Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6me",
+      "adapterName": "localAssets",
+      "countySlug": "little-river-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:05.990Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6mo",
+      "adapterName": "localAssets",
+      "countySlug": "logan-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.000Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6my",
+      "adapterName": "localAssets",
+      "countySlug": "lonoke-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.010Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6na",
+      "adapterName": "localAssets",
+      "countySlug": "madison-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.022Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6nl",
+      "adapterName": "localAssets",
+      "countySlug": "marion-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.033Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6nu",
+      "adapterName": "localAssets",
+      "countySlug": "miller-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.042Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6o4",
+      "adapterName": "localAssets",
+      "countySlug": "mississippi-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.052Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6of",
+      "adapterName": "localAssets",
+      "countySlug": "monroe-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.063Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6oo",
+      "adapterName": "localAssets",
+      "countySlug": "montgomery-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.072Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6p0",
+      "adapterName": "localAssets",
+      "countySlug": "nevada-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.084Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6p9",
+      "adapterName": "localAssets",
+      "countySlug": "newton-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.093Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6pl",
+      "adapterName": "localAssets",
+      "countySlug": "ouachita-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.105Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6pw",
+      "adapterName": "localAssets",
+      "countySlug": "perry-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.116Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6q6",
+      "adapterName": "localAssets",
+      "countySlug": "phillips-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.126Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6qg",
+      "adapterName": "localAssets",
+      "countySlug": "pike-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.136Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6qs",
+      "adapterName": "localAssets",
+      "countySlug": "poinsett-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.148Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6r3",
+      "adapterName": "localAssets",
+      "countySlug": "polk-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.159Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6rf",
+      "adapterName": "localAssets",
+      "countySlug": "pope-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.171Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6rp",
+      "adapterName": "localAssets",
+      "countySlug": "prairie-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.181Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6ry",
+      "adapterName": "localAssets",
+      "countySlug": "pulaski-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.190Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6sa",
+      "adapterName": "localAssets",
+      "countySlug": "randolph-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.202Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6sk",
+      "adapterName": "localAssets",
+      "countySlug": "st-francis-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.212Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6u5",
+      "adapterName": "localAssets",
+      "countySlug": "saline-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.269Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6um",
+      "adapterName": "localAssets",
+      "countySlug": "scott-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.286Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6ux",
+      "adapterName": "localAssets",
+      "countySlug": "searcy-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.297Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6va",
+      "adapterName": "localAssets",
+      "countySlug": "sebastian-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.310Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6vk",
+      "adapterName": "localAssets",
+      "countySlug": "sevier-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.320Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6vv",
+      "adapterName": "localAssets",
+      "countySlug": "sharp-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.331Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6w6",
+      "adapterName": "localAssets",
+      "countySlug": "stone-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.342Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6wj",
+      "adapterName": "localAssets",
+      "countySlug": "union-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.355Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6wu",
+      "adapterName": "localAssets",
+      "countySlug": "van-buren-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.366Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6x7",
+      "adapterName": "localAssets",
+      "countySlug": "washington-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.379Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6xh",
+      "adapterName": "localAssets",
+      "countySlug": "white-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.389Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6xr",
+      "adapterName": "localAssets",
+      "countySlug": "woodruff-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.399Z"
+    },
+    {
+      "jobId": "ing-localAssets-mpu7y6y4",
+      "adapterName": "localAssets",
+      "countySlug": "yell-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": "COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "warnings": [],
+      "completedAt": "2026-05-31T20:15:06.412Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y6y6",
+      "adapterName": "campaignNotes",
+      "countySlug": "arkansas-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.414Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y6yf",
+      "adapterName": "campaignNotes",
+      "countySlug": "ashley-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.423Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y6ys",
+      "adapterName": "campaignNotes",
+      "countySlug": "baxter-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.436Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y6z2",
+      "adapterName": "campaignNotes",
+      "countySlug": "benton-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.446Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y6zb",
+      "adapterName": "campaignNotes",
+      "countySlug": "boone-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.455Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y6zj",
+      "adapterName": "campaignNotes",
+      "countySlug": "bradley-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.463Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y6zr",
+      "adapterName": "campaignNotes",
+      "countySlug": "calhoun-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.471Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y701",
+      "adapterName": "campaignNotes",
+      "countySlug": "carroll-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.481Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y709",
+      "adapterName": "campaignNotes",
+      "countySlug": "chicot-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.489Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y70j",
+      "adapterName": "campaignNotes",
+      "countySlug": "clark-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.499Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y70r",
+      "adapterName": "campaignNotes",
+      "countySlug": "clay-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.507Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y70z",
+      "adapterName": "campaignNotes",
+      "countySlug": "cleburne-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.515Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y717",
+      "adapterName": "campaignNotes",
+      "countySlug": "cleveland-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.523Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y71h",
+      "adapterName": "campaignNotes",
+      "countySlug": "columbia-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.533Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y71p",
+      "adapterName": "campaignNotes",
+      "countySlug": "conway-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.541Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y71y",
+      "adapterName": "campaignNotes",
+      "countySlug": "craighead-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.550Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y726",
+      "adapterName": "campaignNotes",
+      "countySlug": "crawford-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.558Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y72f",
+      "adapterName": "campaignNotes",
+      "countySlug": "crittenden-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.567Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y72m",
+      "adapterName": "campaignNotes",
+      "countySlug": "cross-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.574Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y72v",
+      "adapterName": "campaignNotes",
+      "countySlug": "dallas-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.583Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y733",
+      "adapterName": "campaignNotes",
+      "countySlug": "desha-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.591Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y73d",
+      "adapterName": "campaignNotes",
+      "countySlug": "drew-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.601Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y73m",
+      "adapterName": "campaignNotes",
+      "countySlug": "faulkner-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.610Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y73u",
+      "adapterName": "campaignNotes",
+      "countySlug": "franklin-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.618Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y743",
+      "adapterName": "campaignNotes",
+      "countySlug": "fulton-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.627Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y74b",
+      "adapterName": "campaignNotes",
+      "countySlug": "garland-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.635Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y74l",
+      "adapterName": "campaignNotes",
+      "countySlug": "grant-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.645Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y74t",
+      "adapterName": "campaignNotes",
+      "countySlug": "greene-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.653Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y752",
+      "adapterName": "campaignNotes",
+      "countySlug": "hempstead-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.662Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y75a",
+      "adapterName": "campaignNotes",
+      "countySlug": "hot-spring-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.670Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y75l",
+      "adapterName": "campaignNotes",
+      "countySlug": "howard-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.681Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y75t",
+      "adapterName": "campaignNotes",
+      "countySlug": "independence-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.689Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y763",
+      "adapterName": "campaignNotes",
+      "countySlug": "izard-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.699Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y76a",
+      "adapterName": "campaignNotes",
+      "countySlug": "jackson-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.706Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y76j",
+      "adapterName": "campaignNotes",
+      "countySlug": "jefferson-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.715Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y76t",
+      "adapterName": "campaignNotes",
+      "countySlug": "johnson-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.725Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y772",
+      "adapterName": "campaignNotes",
+      "countySlug": "lafayette-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.734Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y77b",
+      "adapterName": "campaignNotes",
+      "countySlug": "lawrence-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.743Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y77j",
+      "adapterName": "campaignNotes",
+      "countySlug": "lee-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.751Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y77s",
+      "adapterName": "campaignNotes",
+      "countySlug": "lincoln-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.760Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y781",
+      "adapterName": "campaignNotes",
+      "countySlug": "little-river-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.769Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y78b",
+      "adapterName": "campaignNotes",
+      "countySlug": "logan-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.779Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y78l",
+      "adapterName": "campaignNotes",
+      "countySlug": "lonoke-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.789Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y78v",
+      "adapterName": "campaignNotes",
+      "countySlug": "madison-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.799Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y796",
+      "adapterName": "campaignNotes",
+      "countySlug": "marion-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.810Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y79f",
+      "adapterName": "campaignNotes",
+      "countySlug": "miller-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.819Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y79o",
+      "adapterName": "campaignNotes",
+      "countySlug": "mississippi-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.828Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y79x",
+      "adapterName": "campaignNotes",
+      "countySlug": "monroe-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.837Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7a6",
+      "adapterName": "campaignNotes",
+      "countySlug": "montgomery-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.846Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7ae",
+      "adapterName": "campaignNotes",
+      "countySlug": "nevada-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.854Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7an",
+      "adapterName": "campaignNotes",
+      "countySlug": "newton-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.863Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7av",
+      "adapterName": "campaignNotes",
+      "countySlug": "ouachita-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.871Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7b4",
+      "adapterName": "campaignNotes",
+      "countySlug": "perry-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.880Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7bb",
+      "adapterName": "campaignNotes",
+      "countySlug": "phillips-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.887Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7bk",
+      "adapterName": "campaignNotes",
+      "countySlug": "pike-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.896Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7bu",
+      "adapterName": "campaignNotes",
+      "countySlug": "poinsett-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.906Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7c3",
+      "adapterName": "campaignNotes",
+      "countySlug": "polk-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.915Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7cb",
+      "adapterName": "campaignNotes",
+      "countySlug": "pope-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.923Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7ck",
+      "adapterName": "campaignNotes",
+      "countySlug": "prairie-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.932Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7cs",
+      "adapterName": "campaignNotes",
+      "countySlug": "pulaski-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.940Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7d1",
+      "adapterName": "campaignNotes",
+      "countySlug": "randolph-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.949Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7d9",
+      "adapterName": "campaignNotes",
+      "countySlug": "st-francis-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.957Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7di",
+      "adapterName": "campaignNotes",
+      "countySlug": "saline-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.966Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7dq",
+      "adapterName": "campaignNotes",
+      "countySlug": "scott-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.974Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7dz",
+      "adapterName": "campaignNotes",
+      "countySlug": "searcy-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.983Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7e7",
+      "adapterName": "campaignNotes",
+      "countySlug": "sebastian-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.991Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7ef",
+      "adapterName": "campaignNotes",
+      "countySlug": "sevier-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:06.999Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7eq",
+      "adapterName": "campaignNotes",
+      "countySlug": "sharp-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:07.010Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7ey",
+      "adapterName": "campaignNotes",
+      "countySlug": "stone-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:07.018Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7f6",
+      "adapterName": "campaignNotes",
+      "countySlug": "union-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:07.026Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7fe",
+      "adapterName": "campaignNotes",
+      "countySlug": "van-buren-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:07.034Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7fm",
+      "adapterName": "campaignNotes",
+      "countySlug": "washington-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:07.042Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7fv",
+      "adapterName": "campaignNotes",
+      "countySlug": "white-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:07.051Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7g2",
+      "adapterName": "campaignNotes",
+      "countySlug": "woodruff-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:07.058Z"
+    },
+    {
+      "jobId": "ing-campaignNotes-mpu7y7gb",
+      "adapterName": "campaignNotes",
+      "countySlug": "yell-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Campaign notes require manual entry"
+      ],
+      "completedAt": "2026-05-31T20:15:07.067Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7h5",
+      "adapterName": "workbenchBridge",
+      "countySlug": "arkansas-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for arkansas"
+      ],
+      "completedAt": "2026-05-31T20:15:07.097Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7h6",
+      "adapterName": "workbenchBridge",
+      "countySlug": "ashley-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for ashley"
+      ],
+      "completedAt": "2026-05-31T20:15:07.098Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7hf",
+      "adapterName": "workbenchBridge",
+      "countySlug": "baxter-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for baxter"
+      ],
+      "completedAt": "2026-05-31T20:15:07.107Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7hn",
+      "adapterName": "workbenchBridge",
+      "countySlug": "benton-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for benton"
+      ],
+      "completedAt": "2026-05-31T20:15:07.115Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7hv",
+      "adapterName": "workbenchBridge",
+      "countySlug": "boone-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for boone"
+      ],
+      "completedAt": "2026-05-31T20:15:07.123Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7i5",
+      "adapterName": "workbenchBridge",
+      "countySlug": "bradley-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for bradley"
+      ],
+      "completedAt": "2026-05-31T20:15:07.133Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7id",
+      "adapterName": "workbenchBridge",
+      "countySlug": "calhoun-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for calhoun"
+      ],
+      "completedAt": "2026-05-31T20:15:07.141Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7io",
+      "adapterName": "workbenchBridge",
+      "countySlug": "carroll-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for carroll"
+      ],
+      "completedAt": "2026-05-31T20:15:07.152Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7iw",
+      "adapterName": "workbenchBridge",
+      "countySlug": "chicot-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for chicot"
+      ],
+      "completedAt": "2026-05-31T20:15:07.160Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7j4",
+      "adapterName": "workbenchBridge",
+      "countySlug": "clark-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for clark"
+      ],
+      "completedAt": "2026-05-31T20:15:07.168Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7jd",
+      "adapterName": "workbenchBridge",
+      "countySlug": "clay-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for clay"
+      ],
+      "completedAt": "2026-05-31T20:15:07.177Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7jl",
+      "adapterName": "workbenchBridge",
+      "countySlug": "cleburne-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for cleburne"
+      ],
+      "completedAt": "2026-05-31T20:15:07.185Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7jt",
+      "adapterName": "workbenchBridge",
+      "countySlug": "cleveland-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for cleveland"
+      ],
+      "completedAt": "2026-05-31T20:15:07.193Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7k1",
+      "adapterName": "workbenchBridge",
+      "countySlug": "columbia-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for columbia"
+      ],
+      "completedAt": "2026-05-31T20:15:07.201Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7k9",
+      "adapterName": "workbenchBridge",
+      "countySlug": "conway-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for conway"
+      ],
+      "completedAt": "2026-05-31T20:15:07.209Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7ki",
+      "adapterName": "workbenchBridge",
+      "countySlug": "craighead-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for craighead"
+      ],
+      "completedAt": "2026-05-31T20:15:07.218Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7kq",
+      "adapterName": "workbenchBridge",
+      "countySlug": "crawford-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for crawford"
+      ],
+      "completedAt": "2026-05-31T20:15:07.226Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7ky",
+      "adapterName": "workbenchBridge",
+      "countySlug": "crittenden-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for crittenden"
+      ],
+      "completedAt": "2026-05-31T20:15:07.234Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7l7",
+      "adapterName": "workbenchBridge",
+      "countySlug": "cross-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for cross"
+      ],
+      "completedAt": "2026-05-31T20:15:07.243Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7lf",
+      "adapterName": "workbenchBridge",
+      "countySlug": "dallas-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for dallas"
+      ],
+      "completedAt": "2026-05-31T20:15:07.251Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7ln",
+      "adapterName": "workbenchBridge",
+      "countySlug": "desha-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for desha"
+      ],
+      "completedAt": "2026-05-31T20:15:07.259Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7lx",
+      "adapterName": "workbenchBridge",
+      "countySlug": "drew-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for drew"
+      ],
+      "completedAt": "2026-05-31T20:15:07.269Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7m6",
+      "adapterName": "workbenchBridge",
+      "countySlug": "faulkner-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for faulkner"
+      ],
+      "completedAt": "2026-05-31T20:15:07.278Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7me",
+      "adapterName": "workbenchBridge",
+      "countySlug": "franklin-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for franklin"
+      ],
+      "completedAt": "2026-05-31T20:15:07.286Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7mo",
+      "adapterName": "workbenchBridge",
+      "countySlug": "fulton-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for fulton"
+      ],
+      "completedAt": "2026-05-31T20:15:07.296Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7mw",
+      "adapterName": "workbenchBridge",
+      "countySlug": "garland-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for garland"
+      ],
+      "completedAt": "2026-05-31T20:15:07.304Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7n5",
+      "adapterName": "workbenchBridge",
+      "countySlug": "grant-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for grant"
+      ],
+      "completedAt": "2026-05-31T20:15:07.313Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7nd",
+      "adapterName": "workbenchBridge",
+      "countySlug": "greene-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for greene"
+      ],
+      "completedAt": "2026-05-31T20:15:07.321Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7nm",
+      "adapterName": "workbenchBridge",
+      "countySlug": "hempstead-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for hempstead"
+      ],
+      "completedAt": "2026-05-31T20:15:07.330Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7nu",
+      "adapterName": "workbenchBridge",
+      "countySlug": "hot-spring-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for hot-spring"
+      ],
+      "completedAt": "2026-05-31T20:15:07.338Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7o3",
+      "adapterName": "workbenchBridge",
+      "countySlug": "howard-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for howard"
+      ],
+      "completedAt": "2026-05-31T20:15:07.347Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7ob",
+      "adapterName": "workbenchBridge",
+      "countySlug": "independence-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for independence"
+      ],
+      "completedAt": "2026-05-31T20:15:07.355Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7ol",
+      "adapterName": "workbenchBridge",
+      "countySlug": "izard-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for izard"
+      ],
+      "completedAt": "2026-05-31T20:15:07.365Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7ow",
+      "adapterName": "workbenchBridge",
+      "countySlug": "jackson-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for jackson"
+      ],
+      "completedAt": "2026-05-31T20:15:07.376Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7p8",
+      "adapterName": "workbenchBridge",
+      "countySlug": "jefferson-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for jefferson"
+      ],
+      "completedAt": "2026-05-31T20:15:07.388Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7pi",
+      "adapterName": "workbenchBridge",
+      "countySlug": "johnson-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for johnson"
+      ],
+      "completedAt": "2026-05-31T20:15:07.398Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7pq",
+      "adapterName": "workbenchBridge",
+      "countySlug": "lafayette-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for lafayette"
+      ],
+      "completedAt": "2026-05-31T20:15:07.406Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7q1",
+      "adapterName": "workbenchBridge",
+      "countySlug": "lawrence-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for lawrence"
+      ],
+      "completedAt": "2026-05-31T20:15:07.417Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7qb",
+      "adapterName": "workbenchBridge",
+      "countySlug": "lee-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for lee"
+      ],
+      "completedAt": "2026-05-31T20:15:07.427Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7qj",
+      "adapterName": "workbenchBridge",
+      "countySlug": "lincoln-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for lincoln"
+      ],
+      "completedAt": "2026-05-31T20:15:07.435Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7qs",
+      "adapterName": "workbenchBridge",
+      "countySlug": "little-river-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for little-river"
+      ],
+      "completedAt": "2026-05-31T20:15:07.444Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7r0",
+      "adapterName": "workbenchBridge",
+      "countySlug": "logan-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for logan"
+      ],
+      "completedAt": "2026-05-31T20:15:07.452Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7r9",
+      "adapterName": "workbenchBridge",
+      "countySlug": "lonoke-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for lonoke"
+      ],
+      "completedAt": "2026-05-31T20:15:07.461Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7rh",
+      "adapterName": "workbenchBridge",
+      "countySlug": "madison-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for madison"
+      ],
+      "completedAt": "2026-05-31T20:15:07.469Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7rq",
+      "adapterName": "workbenchBridge",
+      "countySlug": "marion-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for marion"
+      ],
+      "completedAt": "2026-05-31T20:15:07.478Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7s1",
+      "adapterName": "workbenchBridge",
+      "countySlug": "miller-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for miller"
+      ],
+      "completedAt": "2026-05-31T20:15:07.489Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7s9",
+      "adapterName": "workbenchBridge",
+      "countySlug": "mississippi-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for mississippi"
+      ],
+      "completedAt": "2026-05-31T20:15:07.497Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7si",
+      "adapterName": "workbenchBridge",
+      "countySlug": "monroe-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for monroe"
+      ],
+      "completedAt": "2026-05-31T20:15:07.506Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7sr",
+      "adapterName": "workbenchBridge",
+      "countySlug": "montgomery-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for montgomery"
+      ],
+      "completedAt": "2026-05-31T20:15:07.515Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7sz",
+      "adapterName": "workbenchBridge",
+      "countySlug": "nevada-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for nevada"
+      ],
+      "completedAt": "2026-05-31T20:15:07.523Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7t8",
+      "adapterName": "workbenchBridge",
+      "countySlug": "newton-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for newton"
+      ],
+      "completedAt": "2026-05-31T20:15:07.532Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7tg",
+      "adapterName": "workbenchBridge",
+      "countySlug": "ouachita-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for ouachita"
+      ],
+      "completedAt": "2026-05-31T20:15:07.540Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7tp",
+      "adapterName": "workbenchBridge",
+      "countySlug": "perry-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for perry"
+      ],
+      "completedAt": "2026-05-31T20:15:07.549Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7ty",
+      "adapterName": "workbenchBridge",
+      "countySlug": "phillips-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for phillips"
+      ],
+      "completedAt": "2026-05-31T20:15:07.558Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7u7",
+      "adapterName": "workbenchBridge",
+      "countySlug": "pike-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for pike"
+      ],
+      "completedAt": "2026-05-31T20:15:07.567Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7uf",
+      "adapterName": "workbenchBridge",
+      "countySlug": "poinsett-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for poinsett"
+      ],
+      "completedAt": "2026-05-31T20:15:07.575Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7uo",
+      "adapterName": "workbenchBridge",
+      "countySlug": "polk-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for polk"
+      ],
+      "completedAt": "2026-05-31T20:15:07.584Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7uv",
+      "adapterName": "workbenchBridge",
+      "countySlug": "pope-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for pope"
+      ],
+      "completedAt": "2026-05-31T20:15:07.591Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7v4",
+      "adapterName": "workbenchBridge",
+      "countySlug": "prairie-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for prairie"
+      ],
+      "completedAt": "2026-05-31T20:15:07.600Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7vc",
+      "adapterName": "workbenchBridge",
+      "countySlug": "pulaski-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for pulaski"
+      ],
+      "completedAt": "2026-05-31T20:15:07.608Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7vk",
+      "adapterName": "workbenchBridge",
+      "countySlug": "randolph-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for randolph"
+      ],
+      "completedAt": "2026-05-31T20:15:07.616Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7vs",
+      "adapterName": "workbenchBridge",
+      "countySlug": "st-francis-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for st-francis"
+      ],
+      "completedAt": "2026-05-31T20:15:07.624Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7w2",
+      "adapterName": "workbenchBridge",
+      "countySlug": "saline-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for saline"
+      ],
+      "completedAt": "2026-05-31T20:15:07.634Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7wa",
+      "adapterName": "workbenchBridge",
+      "countySlug": "scott-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for scott"
+      ],
+      "completedAt": "2026-05-31T20:15:07.642Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7wi",
+      "adapterName": "workbenchBridge",
+      "countySlug": "searcy-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for searcy"
+      ],
+      "completedAt": "2026-05-31T20:15:07.650Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7wr",
+      "adapterName": "workbenchBridge",
+      "countySlug": "sebastian-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for sebastian"
+      ],
+      "completedAt": "2026-05-31T20:15:07.659Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7wz",
+      "adapterName": "workbenchBridge",
+      "countySlug": "sevier-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for sevier"
+      ],
+      "completedAt": "2026-05-31T20:15:07.667Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7x8",
+      "adapterName": "workbenchBridge",
+      "countySlug": "sharp-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for sharp"
+      ],
+      "completedAt": "2026-05-31T20:15:07.676Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7xi",
+      "adapterName": "workbenchBridge",
+      "countySlug": "stone-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for stone"
+      ],
+      "completedAt": "2026-05-31T20:15:07.686Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7xr",
+      "adapterName": "workbenchBridge",
+      "countySlug": "union-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for union"
+      ],
+      "completedAt": "2026-05-31T20:15:07.695Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7y0",
+      "adapterName": "workbenchBridge",
+      "countySlug": "van-buren-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for van-buren"
+      ],
+      "completedAt": "2026-05-31T20:15:07.704Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7y9",
+      "adapterName": "workbenchBridge",
+      "countySlug": "washington-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for washington"
+      ],
+      "completedAt": "2026-05-31T20:15:07.713Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7yh",
+      "adapterName": "workbenchBridge",
+      "countySlug": "white-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for white"
+      ],
+      "completedAt": "2026-05-31T20:15:07.721Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7ys",
+      "adapterName": "workbenchBridge",
+      "countySlug": "woodruff-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for woodruff"
+      ],
+      "completedAt": "2026-05-31T20:15:07.732Z"
+    },
+    {
+      "jobId": "ing-workbenchBridge-mpu7y7z0",
+      "adapterName": "workbenchBridge",
+      "countySlug": "yell-county",
+      "status": "DRY_RUN",
+      "factsAdded": 0,
+      "factsUpdated": 0,
+      "deferredReason": null,
+      "warnings": [
+        "Would ingest workbench KPIs for yell"
+      ],
+      "completedAt": "2026-05-31T20:15:07.740Z"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "countySlug": "jefferson-county",
+  "countyName": "Jefferson County",
+  "fips": "05069",
+  "regionId": "southeast",
+  "regionLabel": "Southeast (Delta, Pine Bluff, and river counties)",
+  "identity": {
+    "displayName": "Jefferson County",
+    "fips": "05069",
+    "slug": "jefferson-county",
+    "regionId": "southeast"
+  },
+  "demographicSnapshot": [],
+  "voterSnapshot": [],
+  "turnoutSnapshot": [],
+  "economicSnapshot": [],
+  "educationSnapshot": [],
+  "healthcareSnapshot": [],
+  "localValidators": [],
+  "civicInfrastructure": [],
+  "mediaLandscape": [],
+  "eventOpportunities": [],
+  "messageOpportunities": [],
+  "knownGaps": [
+    "Missing fact type: demographics",
+    "Missing fact type: voter_registration",
+    "Missing fact type: election_history",
+    "Missing fact type: turnout",
+    "Missing fact type: economic",
+    "Missing fact type: education",
+    "Missing fact type: healthcare",
+    "Missing fact type: civic_infrastructure",
+    "Missing fact type: event_opportunities",
+    "Missing fact type: media",
+    "Missing fact type: local_validators",
+    "Missing fact type: message_themes"
+  ],
+  "riskWarnings": [
+    "Planning vote target proxy present — NOT registration goal"
+  ],
+  "recommendedNextResearch": [
+    "Research demographics for Jefferson County",
+    "Research voter_registration for Jefferson County",
+    "Research election_history for Jefferson County",
+    "Research turnout for Jefferson County",
+    "Research economic for Jefferson County"
+  ],
+  "readinessScore": 26,
+  "profileStatus": "PARTIAL",
+  "governance": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "internalOnly": true,
+    "labels": [
+      "INTERNAL_DRAFT",
+      "NON_PUBLISHABLE",
+      "HUMAN_REVIEW_REQUIRED",
+      "NOT_PUBLIC_CONTENT",
+      "SOURCE_PROVENANCE_REQUIRED",
+      "NO_GOAL_MUTATION"
+    ]
+  },
+  "generatedAt": "2026-05-31T20:14:58.027Z"
+}

@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-31T20:14:32.776Z",
+  "sources": [
+    {
+      "id": "arkansas-county-registry",
+      "name": "Arkansas County Registry",
+      "dataTypes": [
+        "identity",
+        "region",
+        "fips"
+      ],
+      "urlOrPath": "src/lib/county/arkansas-county-registry.ts",
+      "refreshCadence": "manual",
+      "apiConfigured": true,
+      "notes": "Canonical 75-county SSOT in RedDirt"
+    },
+    {
+      "id": "us-census-acs",
+      "name": "U.S. Census / ACS",
+      "dataTypes": [
+        "demographics",
+        "economic"
+      ],
+      "urlOrPath": "https://data.census.gov/",
+      "refreshCadence": "annual",
+      "apiConfigured": false,
+      "notes": "Requires CENSUS_API_KEY — deferred until configured"
+    },
+    {
+      "id": "bls-qcew",
+      "name": "Bureau of Labor Statistics",
+      "dataTypes": [
+        "economic",
+        "employment"
+      ],
+      "urlOrPath": "https://www.bls.gov/",
+      "refreshCadence": "annual",
+      "apiConfigured": false,
+      "notes": "Requires BLS API registration — deferred"
+    },
+    {
+      "id": "arkansas-sos",
+      "name": "Arkansas Secretary of State",
+      "dataTypes": [
+        "voter_registration",
+        "election_history",
+        "turnout"
+      ],
+      "urlOrPath": "https://www.sos.arkansas.gov/",
+      "refreshCadence": "monthly",
+      "apiConfigured": false,
+      "notes": "Aggregate registration/election import — manual or batch"
+    },
+    {
+      "id": "arkansas-gis",
+      "name": "Arkansas GIS / County Boundaries",
+      "dataTypes": [
+        "boundaries",
+        "identity"
+      ],
+      "urlOrPath": "https://gis.arkansas.gov/",
+      "refreshCadence": "annual",
+      "apiConfigured": false,
+      "notes": "Boundary verification — deferred"
+    },
+    {
+      "id": "arkansas-ade",
+      "name": "Arkansas Department of Education",
+      "dataTypes": [
+        "education",
+        "schools"
+      ],
+      "urlOrPath": "https://adedata.arkansas.gov/",
+      "refreshCadence": "annual",
+      "apiConfigured": false,
+      "notes": "School district / school counts — deferred"
+    },
+    {
+      "id": "arkansas-adh",
+      "name": "Arkansas Department of Health",
+      "dataTypes": [
+        "healthcare",
+        "hospitals"
+      ],
+      "urlOrPath": "https://www.healthy.arkansas.gov/",
+      "refreshCadence": "annual",
+      "apiConfigured": false,
+      "notes": "Hospital / health facility data — deferred"
+    },
+    {
+      "id": "county-election-offices",
+      "name": "County Election Offices",
+      "dataTypes": [
+        "officials",
+        "voter_registration",
+        "local_validators"
+      ],
+      "urlOrPath": "manual-per-county",
+      "refreshCadence": "manual",
+      "apiConfigured": false,
+      "notes": "Clerk / election commission contacts — human research"
+    },
+    {
+      "id": "county-quorum-courts",
+      "name": "County Quorum Courts",
+      "dataTypes": [
+        "officials",
+        "civic_infrastructure"
+      ],
+      "urlOrPath": "manual-per-county",
+      "refreshCadence": "manual",
+      "apiConfigured": false,
+      "notes": "Justices of the peace / county officials"
+    },
+    {
+      "id": "chambers-of-commerce",
+      "name": "Chambers of Commerce",
+      "dataTypes": [
+        "civic_infrastructure",
+        "local_validators",
+        "employers"
+      ],
+      "urlOrPath": "manual-per-county",
+      "refreshCadence": "manual",
+      "apiConfigured": false,
+      "notes": "Chamber contacts — human research"
+    },
+    {
+      "id": "fairs-festivals",
+      "name": "Fairs / Festivals / Events",
+      "dataTypes": [
+        "event_opportunities"
+      ],
+      "urlOrPath": "manual-per-county",
+      "refreshCadence": "annual",
+      "apiConfigured": false,
+      "notes": "Event recruitment opportunities"
+    },
+    {
+      "id": "local-media",
+      "name": "Local Media Outlets",
+      "dataTypes": [
+        "media",
+        "message_risk"
+      ],
+      "urlOrPath": "manual-per-county",
+      "refreshCadence": "manual",
+      "apiConfigured": false,
+      "notes": "Newspapers, radio, TV — human research"
+    },
+    {
+      "id": "libraries-colleges",
+      "name": "Libraries & Colleges",
+      "dataTypes": [
+        "civic_infrastructure",
+        "education"
+      ],
+      "urlOrPath": "manual-per-county",
+      "refreshCadence": "manual",
+      "apiConfigured": false,
+      "notes": "Community anchor institutions"
+    },
+    {
+      "id": "churches-faith",
+      "name": "Churches / Faith Institutions",
+      "dataTypes": [
+        "local_validators",
+        "coalition"
+      ],
+      "urlOrPath": "manual-per-county",
+      "refreshCadence": "manual",
+      "apiConfigured": false,
+      "notes": "Validator research — human review required"
+    },
+    {
+      "id": "nonprofits",
+      "name": "Nonprofits / Civic Groups",
+      "dataTypes": [
+        "coalition",
+        "local_validators"
+      ],
+      "urlOrPath": "manual-per-county",
+      "refreshCadence": "manual",
+      "apiConfigured": false,
+      "notes": "Coalition mapping"
+    },
+    {
+      "id": "county-workbench-bridge",
+      "name": "County Workbench Bridge (sister lane)",
+      "dataTypes": [
+        "readiness",
+        "planning_proxy",
+        "profile_depth"
+      ],
+      "urlOrPath": "countyWorkbench/reports/",
+      "refreshCadence": "weekly",
+      "apiConfigured": false,
+      "notes": "Read-only FS bridge via COUNTY_WORKBENCH_ROOT"
+    },
+    {
+      "id": "campaign-internal-notes",
+      "name": "Campaign Internal Notes",
+      "dataTypes": [
+        "message_themes",
+        "field_assets",
+        "research_notes"
+      ],
+      "urlOrPath": "internal-review-only",
+      "refreshCadence": "manual",
+      "apiConfigured": true,
+      "notes": "Manually reviewed operator notes — never auto-publish"
+    },
+    {
+      "id": "prisma-county-campaign-stats",
+      "name": "Prisma CountyCampaignStats",
+      "dataTypes": [
+        "registration_goal_readonly"
+      ],
+      "urlOrPath": "CountyCampaignStats.registrationGoal",
+      "refreshCadence": "daily",
+      "apiConfigured": true,
+      "notes": "READ ONLY — never mutate via factory"
+    }
+  ]
+}

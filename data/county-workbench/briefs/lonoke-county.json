@@ -1,0 +1,91 @@
+{
+  "countySlug": "lonoke-county",
+  "countyName": "Lonoke County",
+  "briefId": "cbf-lonoke-county",
+  "publicationSafety": "NON_PUBLISHABLE",
+  "humanReviewRequired": true,
+  "countySnapshot": [
+    "Lonoke County (05085) — Central (incl. Little Rock & I-30 corridor)",
+    "Profile status: SHELL · Readiness 15/100"
+  ],
+  "whatWeKnow": [],
+  "whatWeDoNotKnow": [
+    "Missing fact type: demographics",
+    "Missing fact type: voter_registration",
+    "Missing fact type: election_history",
+    "Missing fact type: turnout",
+    "Missing fact type: economic",
+    "Missing fact type: education",
+    "Missing fact type: healthcare",
+    "Missing fact type: civic_infrastructure"
+  ],
+  "strongestFacts": [],
+  "weakFacts": [],
+  "sourceGaps": [
+    "Missing fact type: demographics",
+    "Missing fact type: voter_registration",
+    "Missing fact type: election_history",
+    "Missing fact type: turnout",
+    "Missing fact type: economic",
+    "Missing fact type: education",
+    "Missing fact type: healthcare",
+    "Missing fact type: civic_infrastructure",
+    "Missing fact type: event_opportunities",
+    "Missing fact type: media",
+    "Missing fact type: local_validators",
+    "Missing fact type: message_themes"
+  ],
+  "localMessageAngles": [
+    "No message angles indexed — Pass C9 required"
+  ],
+  "debateRelevance": [
+    "Lonoke County: shell — limited debate utility until validators indexed"
+  ],
+  "travelEventRelevance": [
+    "Research demographics for Lonoke County",
+    "Research voter_registration for Lonoke County",
+    "Research election_history for Lonoke County"
+  ],
+  "voterRegistrationRelevance": [
+    "Canonical registration goal: read from admin CountyCampaignStats — never mutate via factory",
+    "No voter registration facts — Pass C2"
+  ],
+  "coalitionRelevance": [
+    "Validators not indexed — Pass C8"
+  ],
+  "fieldPlanNextSteps": [
+    "Research demographics for Lonoke County",
+    "Research voter_registration for Lonoke County",
+    "Research election_history for Lonoke County",
+    "Research turnout for Lonoke County",
+    "Research economic for Lonoke County"
+  ],
+  "researchTasks": [
+    "Close gap: Missing fact type: demographics",
+    "Close gap: Missing fact type: voter_registration",
+    "Close gap: Missing fact type: election_history",
+    "Close gap: Missing fact type: turnout",
+    "Close gap: Missing fact type: economic",
+    "Close gap: Missing fact type: education"
+  ],
+  "claimCitationRequirements": [
+    "All county claims require citation anchor before public adaptation",
+    "Planning estimates labeled ESTIMATED — not verified facts",
+    "INTERNAL_DRAFT only until human review"
+  ],
+  "readinessScore": 15,
+  "generatedAt": "2026-05-31T20:14:59.379Z",
+  "governance": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "internalOnly": true,
+    "labels": [
+      "INTERNAL_DRAFT",
+      "NON_PUBLISHABLE",
+      "HUMAN_REVIEW_REQUIRED",
+      "NOT_PUBLIC_CONTENT",
+      "SOURCE_PROVENANCE_REQUIRED",
+      "NO_GOAL_MUTATION"
+    ]
+  }
+}

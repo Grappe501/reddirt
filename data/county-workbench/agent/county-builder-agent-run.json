@@ -1,0 +1,733 @@
+{
+  "runId": "cba-mpu7y1xz",
+  "generatedAt": "2026-05-31T20:14:59.927Z",
+  "governance": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "internalOnly": true,
+    "labels": [
+      "INTERNAL_DRAFT",
+      "NON_PUBLISHABLE",
+      "HUMAN_REVIEW_REQUIRED",
+      "NOT_PUBLIC_CONTENT",
+      "SOURCE_PROVENANCE_REQUIRED",
+      "NO_GOAL_MUTATION"
+    ]
+  },
+  "globalDataPullRecommendations": [
+    "Enable/configure source: us-census-acs",
+    "Enable/configure source: bls-qcew",
+    "Enable/configure source: arkansas-sos",
+    "Enable/configure source: arkansas-gis",
+    "Enable/configure source: arkansas-ade",
+    "Enable/configure source: arkansas-adh",
+    "Enable/configure source: county-election-offices",
+    "Enable/configure source: county-quorum-courts",
+    "Enable/configure source: chambers-of-commerce",
+    "Enable/configure source: fairs-festivals",
+    "Enable/configure source: local-media",
+    "Enable/configure source: libraries-colleges"
+  ],
+  "countySpecificPullRecommendations": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "recommendations": [
+        "Arkansas County: research demographics",
+        "Arkansas County: research voter_registration",
+        "Arkansas County: research election_history",
+        "Arkansas County: research turnout",
+        "Arkansas County: research economic",
+        "Arkansas County: research education",
+        "Arkansas County: research healthcare",
+        "Arkansas County: research civic_infrastructure"
+      ]
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "recommendations": [
+        "Ashley County: research demographics",
+        "Ashley County: research voter_registration",
+        "Ashley County: research election_history",
+        "Ashley County: research turnout",
+        "Ashley County: research economic",
+        "Ashley County: research education",
+        "Ashley County: research healthcare",
+        "Ashley County: research civic_infrastructure"
+      ]
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "recommendations": [
+        "Baxter County: research demographics",
+        "Baxter County: research voter_registration",
+        "Baxter County: research election_history",
+        "Baxter County: research turnout",
+        "Baxter County: research economic",
+        "Baxter County: research education",
+        "Baxter County: research healthcare",
+        "Baxter County: research civic_infrastructure"
+      ]
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "recommendations": [
+        "Benton County: research demographics",
+        "Benton County: research voter_registration",
+        "Benton County: research election_history",
+        "Benton County: research turnout",
+        "Benton County: research economic",
+        "Benton County: research education",
+        "Benton County: research healthcare",
+        "Benton County: research civic_infrastructure"
+      ]
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "recommendations": [
+        "Boone County: research demographics",
+        "Boone County: research voter_registration",
+        "Boone County: research election_history",
+        "Boone County: research turnout",
+        "Boone County: research economic",
+        "Boone County: research education",
+        "Boone County: research healthcare",
+        "Boone County: research civic_infrastructure"
+      ]
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "recommendations": [
+        "Bradley County: research demographics",
+        "Bradley County: research voter_registration",
+        "Bradley County: research election_history",
+        "Bradley County: research turnout",
+        "Bradley County: research economic",
+        "Bradley County: research education",
+        "Bradley County: research healthcare",
+        "Bradley County: research civic_infrastructure"
+      ]
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "recommendations": [
+        "Calhoun County: research demographics",
+        "Calhoun County: research voter_registration",
+        "Calhoun County: research election_history",
+        "Calhoun County: research turnout",
+        "Calhoun County: research economic",
+        "Calhoun County: research education",
+        "Calhoun County: research healthcare",
+        "Calhoun County: research civic_infrastructure"
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "recommendations": [
+        "Carroll County: research demographics",
+        "Carroll County: research voter_registration",
+        "Carroll County: research election_history",
+        "Carroll County: research turnout",
+        "Carroll County: research economic",
+        "Carroll County: research education",
+        "Carroll County: research healthcare",
+        "Carroll County: research civic_infrastructure"
+      ]
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "recommendations": [
+        "Chicot County: research demographics",
+        "Chicot County: research voter_registration",
+        "Chicot County: research election_history",
+        "Chicot County: research turnout",
+        "Chicot County: research economic",
+        "Chicot County: research education",
+        "Chicot County: research healthcare",
+        "Chicot County: research civic_infrastructure"
+      ]
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "recommendations": [
+        "Clark County: research demographics",
+        "Clark County: research voter_registration",
+        "Clark County: research election_history",
+        "Clark County: research turnout",
+        "Clark County: research economic",
+        "Clark County: research education",
+        "Clark County: research healthcare",
+        "Clark County: research civic_infrastructure"
+      ]
+    }
+  ],
+  "countyReadinessRankings": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "score": 20,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "score": 20,
+      "gapCount": 12
+    }
+  ],
+  "debateUsefulFacts": [
+    "County election administration validators (human-reviewed)",
+    "Local media landscape per county",
+    "Verified voter registration context (not planning proxy)",
+    "Opposition geographic overlays for debate counties"
+  ],
+  "messageUsefulFacts": [
+    "County message themes require Pass C9 + human review"
+  ],
+  "travelUsefulFacts": [
+    "Event opportunities / fairs / festivals",
+    "Chamber and civic anchor contacts",
+    "Travel corridor region clustering"
+  ],
+  "eventRecruitmentOpportunities": [
+    "Coalition contacts",
+    "Field assets",
+    "Local validators (churches, schools, hospitals)"
+  ],
+  "crossTableMissingness": [
+    "demographics: 0% complete",
+    "election_history: 0% complete",
+    "registration: 0% complete",
+    "turnout: 0% complete",
+    "economic: 0% complete",
+    "education: 0% complete",
+    "healthcare: 0% complete",
+    "civic_infrastructure: 0% complete",
+    "event_opportunity: 0% complete",
+    "local_media: 0% complete",
+    "message_risk: 0% complete"
+  ],
+  "buildQueue": [
+    {
+      "jobId": "cbq-c1",
+      "adapterName": "census",
+      "countySlug": "ALL",
+      "status": "DEFERRED",
+      "reason": "Pass C1 — CENSUS_API_KEY",
+      "createdAt": "2026-05-31T20:14:59.928Z"
+    },
+    {
+      "jobId": "cbq-c2",
+      "adapterName": "sosRegistration",
+      "countySlug": "ALL",
+      "status": "DEFERRED",
+      "reason": "Pass C2 — SOS import",
+      "createdAt": "2026-05-31T20:14:59.928Z"
+    },
+    {
+      "jobId": "cbq-c3",
+      "adapterName": "bls",
+      "countySlug": "ALL",
+      "status": "DEFERRED",
+      "reason": "Pass C3 — BLS",
+      "createdAt": "2026-05-31T20:14:59.928Z"
+    },
+    {
+      "jobId": "cbq-bridge",
+      "adapterName": "workbenchBridge",
+      "countySlug": "ALL",
+      "status": "PENDING",
+      "reason": "Run when COUNTY_WORKBENCH_ROOT set",
+      "createdAt": "2026-05-31T20:14:59.928Z"
+    }
+  ],
+  "topGapCounties": [
+    {
+      "countySlug": "arkansas-county",
+      "gapCount": 12
+    },
+    {
+      "countySlug": "ashley-county",
+      "gapCount": 12
+    },
+    {
+      "countySlug": "baxter-county",
+      "gapCount": 12
+    },
+    {
+      "countySlug": "benton-county",
+      "gapCount": 12
+    },
+    {
+      "countySlug": "boone-county",
+      "gapCount": 12
+    },
+    {
+      "countySlug": "bradley-county",
+      "gapCount": 12
+    },
+    {
+      "countySlug": "calhoun-county",
+      "gapCount": 12
+    },
+    {
+      "countySlug": "carroll-county",
+      "gapCount": 12
+    },
+    {
+      "countySlug": "chicot-county",
+      "gapCount": 12
+    },
+    {
+      "countySlug": "clark-county",
+      "gapCount": 12
+    }
+  ]
+}

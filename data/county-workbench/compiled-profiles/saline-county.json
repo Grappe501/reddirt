@@ -1,0 +1,64 @@
+{
+  "countySlug": "saline-county",
+  "countyName": "Saline County",
+  "fips": "05125",
+  "regionId": "central",
+  "regionLabel": "Central (incl. Little Rock & I-30 corridor)",
+  "identity": {
+    "displayName": "Saline County",
+    "fips": "05125",
+    "slug": "saline-county",
+    "regionId": "central"
+  },
+  "demographicSnapshot": [],
+  "voterSnapshot": [],
+  "turnoutSnapshot": [],
+  "economicSnapshot": [],
+  "educationSnapshot": [],
+  "healthcareSnapshot": [],
+  "localValidators": [],
+  "civicInfrastructure": [],
+  "mediaLandscape": [],
+  "eventOpportunities": [],
+  "messageOpportunities": [],
+  "knownGaps": [
+    "Missing fact type: demographics",
+    "Missing fact type: voter_registration",
+    "Missing fact type: election_history",
+    "Missing fact type: turnout",
+    "Missing fact type: economic",
+    "Missing fact type: education",
+    "Missing fact type: healthcare",
+    "Missing fact type: civic_infrastructure",
+    "Missing fact type: event_opportunities",
+    "Missing fact type: media",
+    "Missing fact type: local_validators",
+    "Missing fact type: message_themes"
+  ],
+  "riskWarnings": [
+    "Planning vote target proxy present — NOT registration goal"
+  ],
+  "recommendedNextResearch": [
+    "Research demographics for Saline County",
+    "Research voter_registration for Saline County",
+    "Research election_history for Saline County",
+    "Research turnout for Saline County",
+    "Research economic for Saline County"
+  ],
+  "readinessScore": 26,
+  "profileStatus": "PARTIAL",
+  "governance": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "internalOnly": true,
+    "labels": [
+      "INTERNAL_DRAFT",
+      "NON_PUBLISHABLE",
+      "HUMAN_REVIEW_REQUIRED",
+      "NOT_PUBLIC_CONTENT",
+      "SOURCE_PROVENANCE_REQUIRED",
+      "NO_GOAL_MUTATION"
+    ]
+  },
+  "generatedAt": "2026-05-31T20:14:58.932Z"
+}

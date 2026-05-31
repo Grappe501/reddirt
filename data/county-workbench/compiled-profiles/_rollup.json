@@ -1,0 +1,128 @@
+{
+  "generatedAt": "2026-05-31T20:14:59.343Z",
+  "countyCount": 75,
+  "all75": true,
+  "avgReadiness": 16,
+  "byStatus": {
+    "SHELL": 69,
+    "PARTIAL": 6,
+    "COMPILED": 0
+  },
+  "lowestReadiness": [
+    {
+      "countySlug": "arkansas-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "ashley-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "baxter-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "benton-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "boone-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "bradley-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "carroll-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "chicot-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "clark-county",
+      "score": 15,
+      "status": "SHELL"
+    }
+  ],
+  "highestReadiness": [
+    {
+      "countySlug": "faulkner-county",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "garland-county",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "pope-county",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "saline-county",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "arkansas-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "ashley-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "baxter-county",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "benton-county",
+      "score": 15,
+      "status": "SHELL"
+    }
+  ],
+  "governance": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "internalOnly": true,
+    "labels": [
+      "INTERNAL_DRAFT",
+      "NON_PUBLISHABLE",
+      "HUMAN_REVIEW_REQUIRED",
+      "NOT_PUBLIC_CONTENT",
+      "SOURCE_PROVENANCE_REQUIRED",
+      "NO_GOAL_MUTATION"
+    ]
+  }
+}
