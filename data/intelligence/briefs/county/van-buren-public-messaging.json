@@ -1,0 +1,121 @@
+{
+  "status": "DRAFT_INTERNAL",
+  "publishabilityStatus": "NOT_PUBLISHABLE",
+  "governanceLabels": [
+    "INTERNAL_DRAFT",
+    "NON_PUBLISHABLE",
+    "HUMAN_REVIEW_REQUIRED",
+    "SOURCE_GROUNDED",
+    "CLAIM_CHECK_REQUIRED",
+    "NOT_PUBLIC_CONTENT"
+  ],
+  "generatedAt": "2026-05-31T15:41:59.385Z",
+  "generatedBy": "countyPublicBriefGenerator.v1",
+  "briefId": "county-pub-van-buren",
+  "title": "Van Buren County — Public Messaging Brief (INTERNAL)",
+  "briefType": "county_public_messaging",
+  "tags": [
+    "van-buren-county",
+    "SHELL_ONLY",
+    "county",
+    "messaging"
+  ],
+  "audience": "Internal comms + field leads — NOT public",
+  "intendedUse": "Future public adaptation only after human claim approval",
+  "evidenceSummary": [
+    "Dashboard: command scaffold",
+    "Data quality: 5% workbench completion",
+    "Registration goal: unverified",
+    "Vote target: planning proxy only"
+  ],
+  "verifiedClaims": [
+    {
+      "claim": "Van Buren County workbench depth: SHELL_ONLY",
+      "tier": "verified",
+      "sourceAnchors": [
+        "dashboard-v2-county-coverage.csv"
+      ]
+    }
+  ],
+  "unverifiedClaims": [
+    {
+      "claim": "Planning vote target proxy: 1,909 (NOT registration goal)",
+      "tier": "unverified",
+      "sourceAnchors": [
+        "arkansasStateAlignedTargets2022.json"
+      ],
+      "notes": "Do not use as registration goal in public messaging"
+    },
+    {
+      "claim": "Canonical registration goal not verified in this context",
+      "tier": "unverified",
+      "sourceAnchors": [
+        "GOALS-VERIFY-1"
+      ]
+    }
+  ],
+  "inferredClaims": [
+    {
+      "claim": "County profile still shell depth in countyWorkbench",
+      "tier": "inferred",
+      "sourceAnchors": [
+        "county-workbench-adapter"
+      ]
+    },
+    {
+      "claim": "Low dashboard field completion — source intake needed",
+      "tier": "inferred",
+      "sourceAnchors": [
+        "county-workbench-adapter"
+      ]
+    },
+    {
+      "claim": "No connected full CountyProfile module",
+      "tier": "inferred",
+      "sourceAnchors": [
+        "county-workbench-adapter"
+      ]
+    },
+    {
+      "claim": "County is shell-only — public messaging from this brief would be misleading",
+      "tier": "inferred",
+      "sourceAnchors": [
+        "countyDeploymentReadiness audit"
+      ]
+    }
+  ],
+  "researchGaps": [
+    "churches: not normalized for Van Buren County",
+    "schools: not normalized for Van Buren County",
+    "hospitals: not normalized for Van Buren County",
+    "chambers: not normalized for Van Buren County",
+    "fairs/festivals: not normalized for Van Buren County",
+    "media: not normalized for Van Buren County",
+    "civic groups: not normalized for Van Buren County",
+    "local validators: not normalized for Van Buren County",
+    "Canonical registration goal unset — verify in admin",
+    "Full countyWorkbench profile not connected",
+    "No Kim Hammer geographic narrative overlay"
+  ],
+  "recommendedMessaging": [
+    "Do not produce county-specific public messaging — use statewide trust/county-support frames only"
+  ],
+  "riskWarnings": [
+    "NOT_PUBLISHABLE — all messaging INTERNAL until human review",
+    "HIGH RISK: shell county — public messaging dangerous",
+    "Proxy vote targets must never appear as registration goals in public copy"
+  ],
+  "humanReviewChecklist": [
+    "Verify every claim against source anchors",
+    "Confirm registration goal in CountyCampaignStats if cited",
+    "Legal/comms sign-off before any public adaptation",
+    "Mark unsupported claims as research gaps"
+  ],
+  "sourceAnchors": [
+    "dashboard-v2-county-coverage.csv",
+    "county-workbench-adapter.ts",
+    "GOALS-VERIFY-1"
+  ],
+  "confidenceScore": 15,
+  "confidenceBasis": "Readiness tier SHELL_ONLY; 5% data; 1 verified claims"
+}

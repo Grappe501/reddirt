@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-31T19:03:44.244Z",
+  "candidates": [
+    {
+      "id": "lvc-SB486-mpu428u0",
+      "billNumber": "SB486",
+      "session": "2021/2021R",
+      "committeeName": "Senate State Agencies and Govt'l Affairs Old Supreme Court",
+      "meetingDate": "3/30/2021 2:00 PM",
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210330/-1/21435?mediaStartTime=20210330151000&viewMode=1",
+      "sourcePageUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "sourceType": "UNKNOWN",
+      "duration": null,
+      "agendaPosition": null,
+      "sponsorExpected": true,
+      "expectedSpeaker": "Kim Hammer",
+      "discoveryConfidence": 85,
+      "processingStatus": "DISCOVERED",
+      "retrievalWarnings": [
+        "Arkansas Legislature pages are public; respect robots.txt, rate limits, and site terms.",
+        "Do not run uncontrolled scraping loops — max fetches enforced per run."
+      ],
+      "createdAt": "2026-05-31T18:26:17.016Z",
+      "updatedAt": "2026-05-31T18:26:17.016Z"
+    },
+    {
+      "id": "lvc-SB486-mpu428v2",
+      "billNumber": "SB486",
+      "session": "2021/2021R",
+      "committeeName": "Senate Floor Session Senate Chamber",
+      "meetingDate": "4/1/2021 1:00 PM",
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210401/-1/21464?mediaStartTime=20210401135233&viewMode=1",
+      "sourcePageUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "sourceType": "SLIQ_FLOOR",
+      "duration": null,
+      "agendaPosition": null,
+      "sponsorExpected": true,
+      "expectedSpeaker": "Kim Hammer",
+      "discoveryConfidence": 85,
+      "processingStatus": "DISCOVERED",
+      "retrievalWarnings": [
+        "Arkansas Legislature pages are public; respect robots.txt, rate limits, and site terms.",
+        "Do not run uncontrolled scraping loops — max fetches enforced per run."
+      ],
+      "createdAt": "2026-05-31T18:26:17.054Z",
+      "updatedAt": "2026-05-31T18:26:17.054Z"
+    },
+    {
+      "id": "lvc-SB486-mpu428vb",
+      "billNumber": "SB486",
+      "session": "2021/2021R",
+      "committeeName": "House State Agencies & Governmental Affairs Committee Committee Room 151",
+      "meetingDate": "4/12/2021 9:30 AM",
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210412/-1/21537?mediaStartTime=20210412094440&viewMode=1",
+      "sourcePageUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "sourceType": "SLIQ_COMMITTEE",
+      "duration": null,
+      "agendaPosition": null,
+      "sponsorExpected": true,
+      "expectedSpeaker": "Kim Hammer",
+      "discoveryConfidence": 85,
+      "processingStatus": "DISCOVERED",
+      "retrievalWarnings": [
+        "Arkansas Legislature pages are public; respect robots.txt, rate limits, and site terms.",
+        "Do not run uncontrolled scraping loops — max fetches enforced per run."
+      ],
+      "createdAt": "2026-05-31T18:26:17.063Z",
+      "updatedAt": "2026-05-31T18:26:17.063Z"
+    },
+    {
+      "id": "lvc-SB486-mpu428vm",
+      "billNumber": "SB486",
+      "session": "2021/2021R",
+      "committeeName": "House Meeting House",
+      "meetingDate": "4/13/2021 1:00 PM",
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210413/-1/21555?mediaStartTime=20210413144702&viewMode=1",
+      "sourcePageUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "sourceType": "UNKNOWN",
+      "duration": null,
+      "agendaPosition": null,
+      "sponsorExpected": true,
+      "expectedSpeaker": "Kim Hammer",
+      "discoveryConfidence": 85,
+      "processingStatus": "DISCOVERED",
+      "retrievalWarnings": [
+        "Arkansas Legislature pages are public; respect robots.txt, rate limits, and site terms.",
+        "Do not run uncontrolled scraping loops — max fetches enforced per run."
+      ],
+      "createdAt": "2026-05-31T18:26:17.074Z",
+      "updatedAt": "2026-05-31T18:26:17.074Z"
+    },
+    {
+      "id": "lvc-SB486-2021-2021R-0",
+      "billNumber": "SB486",
+      "session": "2021/2021R",
+      "committeeName": "House Meeting House",
+      "meetingDate": "4/13/2021 1:00 PM",
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210413/-1/21555?mediaStartTime=20210413144702&viewMode=1",
+      "sourcePageUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "sourceType": "UNKNOWN",
+      "duration": null,
+      "agendaPosition": null,
+      "sponsorExpected": true,
+      "expectedSpeaker": "Kim Hammer",
+      "discoveryConfidence": 85,
+      "processingStatus": "TRANSCRIPTION_DEFERRED",
+      "retrievalWarnings": [
+        "Arkansas Legislature pages are public; respect robots.txt, rate limits, and site terms.",
+        "Do not run uncontrolled scraping loops — max fetches enforced per run."
+      ],
+      "createdAt": "2026-05-31T19:03:44.232Z",
+      "updatedAt": "2026-05-31T19:03:44.232Z"
+    }
+  ]
+}

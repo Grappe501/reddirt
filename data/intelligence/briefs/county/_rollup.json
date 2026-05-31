@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-05-31T15:41:59.499Z",
+  "countyCount": 75,
+  "rollup": {
+    "PUBLIC_BRIEF_READY": 0,
+    "INTERNAL_MESSAGE_SOURCE_ONLY": 6,
+    "FIELD_PLANNING_ONLY": 0,
+    "SHELL_ONLY": 69,
+    "BLOCKED": 0
+  },
+  "governance": [
+    "INTERNAL_DRAFT",
+    "NON_PUBLISHABLE",
+    "HUMAN_REVIEW_REQUIRED"
+  ]
+}

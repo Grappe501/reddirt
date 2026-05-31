@@ -4,12 +4,14 @@ import {
   loadLlmPromptTemplateRegistry,
   summarizeDraftReviewQueue,
 } from "@/lib/intelligence/llmDraftGateway";
+import { summarizeClaimLedger } from "@/lib/intelligence/claims/claimLedgerSummary";
 import { LlmDraftReviewPanel } from "./LlmDraftReviewPanel";
 
 export const dynamic = "force-dynamic";
 
 export default async function LlmReviewQueuePage() {
   const summary = summarizeDraftReviewQueue();
+  const claimSummary = summarizeClaimLedger();
   const queue = loadLlmDraftReviewQueue();
   const templates = loadLlmPromptTemplateRegistry();
 
@@ -25,6 +27,9 @@ export default async function LlmReviewQueuePage() {
           HUMAN_REVIEW_REQUIRED. No export or publish controls — human promotion only.
         </p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
+          <Link href="/admin/intelligence/claims" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
+            Claim ledger
+          </Link>
           <Link href="/admin/intelligence/ai-tools" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
             AI tools dashboard
           </Link>
@@ -53,6 +58,25 @@ export default async function LlmReviewQueuePage() {
         <div className="rounded-xl border border-violet-200/50 bg-violet-50/40 p-4">
           <p className="text-[10px] font-bold uppercase tracking-wider text-violet-900">Hallucination warnings</p>
           <p className="mt-1 text-2xl font-bold text-violet-950">{summary.hallucinationWarningCount}</p>
+        </div>
+      </section>
+
+      <section className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="rounded-xl border border-emerald-200/50 bg-emerald-50/40 p-4">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-900">Claim ledger total</p>
+          <p className="mt-1 text-2xl font-bold text-emerald-950">{claimSummary.totalClaims}</p>
+        </div>
+        <div className="rounded-xl border border-amber-200/50 bg-amber-50/40 p-4">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-amber-900">Claims needing review</p>
+          <p className="mt-1 text-2xl font-bold text-amber-950">{claimSummary.needsReviewClaims}</p>
+        </div>
+        <div className="rounded-xl border border-rose-200/50 bg-rose-50/40 p-4">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-rose-900">Unsupported claims</p>
+          <p className="mt-1 text-2xl font-bold text-rose-950">{claimSummary.unsupportedClaims}</p>
+        </div>
+        <div className="rounded-xl border border-violet-200/50 bg-violet-50/40 p-4">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-violet-900">Approved internal / public adapt</p>
+          <p className="mt-1 text-lg font-bold text-violet-950">{claimSummary.approvedInternal} / {claimSummary.approvedPublicAdaptation}</p>
         </div>
       </section>
 

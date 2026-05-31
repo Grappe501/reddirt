@@ -2,6 +2,10 @@ import { buildDebateCommandCenterState } from "@/lib/opposition/debateCommandCen
 import { summarizeDebateCommandMessaging } from "@/lib/intelligence/campaignMessagingIntelligence";
 import { summarizeCampaignIntelligenceGraph } from "@/lib/intelligence/campaignIntelligenceGraph";
 import { summarizeDebateScenarioPrep } from "@/lib/intelligence/strategicScenarioSimulation";
+import { generateOppositionDebateBriefPack } from "@/lib/intelligence/briefs/oppositionDebateBriefGenerator";
+import { buildMessageIntelligenceEngine } from "@/lib/intelligence/messageIntelligence/messageIntelligenceEngine";
+import { buildLegislativeVideoIntelligenceRollup } from "@/lib/legislature/legislativeVideoIntelligenceRollup";
+import { PrepareLlmEvidencePacketButton } from "@/components/admin/intelligence/PrepareLlmEvidencePacketButton";
 import Link from "next/link";
 
 const card = "rounded-xl border border-kelly-text/10 bg-white p-4";
@@ -14,9 +18,12 @@ function scoreTone(score: number): string {
 
 export default async function DebateCommandCenterPage() {
   const state = buildDebateCommandCenterState();
+  const briefPack = generateOppositionDebateBriefPack();
   const civicDebate = summarizeDebateCommandMessaging();
   const graphSummary = summarizeCampaignIntelligenceGraph();
   const scenarioPrep = summarizeDebateScenarioPrep();
+  const messageIntel = buildMessageIntelligenceEngine();
+  const legislativeRollup = buildLegislativeVideoIntelligenceRollup();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -27,6 +34,86 @@ export default async function DebateCommandCenterPage() {
           Live candidate prep center: what matters today, where confidence is weak, what the opponent is signaling, and what to drill next.
         </p>
       </header>
+
+      <section className={`${card} mb-6 border-2 border-violet-800/25 bg-violet-50/30`}>
+        <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Public-Brief-Grade Debate Intelligence</h2>
+        <p className="mt-1 text-xs font-semibold text-amber-900">INTERNAL_DRAFT · NON_PUBLISHABLE · HUMAN_REVIEW_REQUIRED</p>
+        <div className="mt-3 grid gap-3 sm:grid-cols-3">
+          <div className="rounded-lg border border-kelly-text/10 bg-white p-3">
+            <p className="text-[10px] font-bold uppercase text-kelly-subtle">Debate prep brief</p>
+            <p className="font-heading text-2xl font-bold text-kelly-navy">{briefPack.debatePrep.confidenceScore}/100</p>
+            <p className="text-xs text-kelly-muted">{briefPack.debatePrep.status}</p>
+          </div>
+          <div className="rounded-lg border border-kelly-text/10 bg-white p-3">
+            <p className="text-[10px] font-bold uppercase text-kelly-subtle">Rapid response brief</p>
+            <p className="font-heading text-2xl font-bold text-kelly-navy">{briefPack.rapidResponse.confidenceScore}/100</p>
+            <p className="text-xs text-kelly-muted">{briefPack.rapidResponse.publishabilityStatus}</p>
+          </div>
+          <div className="rounded-lg border border-kelly-text/10 bg-white p-3">
+            <p className="text-[10px] font-bold uppercase text-kelly-subtle">Opposition brief</p>
+            <p className="font-heading text-2xl font-bold text-kelly-navy">{briefPack.opposition.confidenceScore}/100</p>
+            <p className="text-xs text-kelly-muted">{briefPack.opposition.researchGaps.length} research gaps</p>
+          </div>
+        </div>
+        <h3 className="mt-4 text-xs font-bold uppercase text-emerald-900">Recommended debate message lanes (internal)</h3>
+        <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+          {briefPack.debatePrep.recommendedMessaging.map((line) => (
+            <li key={line.slice(0, 60)}>{line}</li>
+          ))}
+        </ul>
+        <h3 className="mt-3 text-xs font-bold uppercase text-rose-800">Unsafe claims warning</h3>
+        <ul className="mt-1 list-inside list-disc text-xs text-rose-900">
+          {[...briefPack.opposition.riskWarnings, ...briefPack.debatePrep.riskWarnings].slice(0, 6).map((line) => (
+            <li key={line.slice(0, 60)}>{line}</li>
+          ))}
+        </ul>
+        <h3 className="mt-3 text-xs font-bold uppercase text-kelly-subtle">Film room gaps</h3>
+        <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+          {briefPack.debatePrep.researchGaps.map((gap) => (
+            <li key={gap}>{gap}</li>
+          ))}
+        </ul>
+        <Link href="/admin/intelligence/llm-review-queue" className="mt-3 inline-block text-xs font-semibold text-kelly-navy underline">
+          LLM review queue (no auto-publish) →
+        </Link>
+        <div className="mt-4">
+          <PrepareLlmEvidencePacketButton briefId={briefPack.debatePrep.briefId} />
+        </div>
+      </section>
+
+      <section className={`${card} mb-6 border-2 border-teal-800/20 bg-teal-50/20`}>
+        <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Transcript-backed debate lanes</h2>
+        <p className="mt-1 text-xs font-semibold text-amber-900">INTERNAL_DRAFT · speaker review required before quote use</p>
+        <h3 className="mt-3 text-xs font-bold uppercase text-emerald-900">Reviewed quote candidates</h3>
+        <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+          {messageIntel.debateMessageLanes.length
+            ? messageIntel.debateMessageLanes.slice(0, 5).map((lane) => <li key={lane.id}>{lane.text.slice(0, 140)}</li>)
+            : legislativeRollup.debateUsefulChunks.map((c) => <li key={c.slice(0, 40)}>{c}</li>)}
+          {!messageIntel.debateMessageLanes.length && !legislativeRollup.debateUsefulChunks.length ? (
+            <li>No transcript-backed lanes yet — run legislature:intelligence:critical</li>
+          ) : null}
+        </ul>
+        <h3 className="mt-3 text-xs font-bold uppercase text-rose-800">Unsafe quote warnings</h3>
+        <ul className="mt-1 list-inside list-disc text-xs text-rose-900">
+          {[
+            ...messageIntel.phrasesToAvoid.map((p) => p.text),
+            ...legislativeRollup.tooRiskyToUse.map((t) => `[RISKY] ${t}`),
+          ]
+            .slice(0, 6)
+            .map((line) => (
+              <li key={line.slice(0, 48)}>{line.slice(0, 160)}</li>
+            ))}
+        </ul>
+        <h3 className="mt-3 text-xs font-bold uppercase text-kelly-subtle">Strongest committee-video evidence</h3>
+        <ul className="mt-1 list-inside list-disc text-xs text-kelly-muted">
+          {legislativeRollup.strongestQuotes.length
+            ? legislativeRollup.strongestQuotes.map((q) => <li key={q.slice(0, 40)}>{q}</li>)
+            : <li>None verified — transcription deferred or pending human review</li>}
+        </ul>
+        <Link href="/admin/intelligence/legislative-video" className="mt-3 inline-block text-xs font-semibold text-kelly-navy underline">
+          Legislative video intelligence →
+        </Link>
+      </section>
 
       <section className="mb-6">
         <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-kelly-navy">A) Today&apos;s Priorities</h2>
@@ -48,8 +135,14 @@ export default async function DebateCommandCenterPage() {
             <article key={score.id} className={card}>
               <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">{score.label}</p>
               <p className={`mt-1 font-heading text-2xl font-bold ${scoreTone(score.score)}`}>{score.score}</p>
-              <p className="mt-1 text-xs text-kelly-muted">Trend: {score.trend}</p>
+              <p className="mt-1 text-xs text-kelly-muted">
+                Trend: {score.trend} · Confidence: {score.scoreConfidence}
+              </p>
+              <p className="mt-1 text-xs text-kelly-muted">{score.whyThisScore}</p>
               <p className="mt-1 text-xs text-kelly-muted">Weak area: {score.weakAreas[0] ?? "None flagged"}</p>
+              <p className="mt-1 text-xs font-semibold text-emerald-900">
+                Raise today: {score.raiseScoreToday[0] ?? "—"}
+              </p>
               <p className="mt-1 text-xs font-semibold text-kelly-navy">Next module: {score.nextModule}</p>
             </article>
           ))}
@@ -225,26 +318,52 @@ export default async function DebateCommandCenterPage() {
         </article>
       </section>
 
-      <section className={card}>
-        <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Film Room + Simulation Loop</h2>
-        <div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 text-xs text-kelly-muted">
-          <div>
-            <p className="font-semibold text-kelly-navy">Mock moderator</p>
-            <p>Question, follow-up, hostile follow-up, rapid-fire variant.</p>
-          </div>
-          <div>
-            <p className="font-semibold text-kelly-navy">Scorecards</p>
-            <p>Clarity, trust, calmness, warmth, discipline, voter connection, authenticity.</p>
-          </div>
-          <div>
-            <p className="font-semibold text-kelly-navy">Vulnerability scan</p>
-            <p>Unsupported claims, emotional drift, missed pivots, over-explaining.</p>
-          </div>
-          <div>
-            <p className="font-semibold text-kelly-navy">Daily coaching</p>
-            <p>What to study, what to drill, what to avoid, what to reinforce.</p>
-          </div>
+      <section className={`${card} mb-6`}>
+        <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Film Room MVP</h2>
+        <p className="mt-1 text-xs font-semibold text-amber-900">{state.filmRoom.archiveHonestyNote}</p>
+        <p className="mt-2 text-xs text-kelly-muted">
+          {state.filmRoom.directClipCount} direct opponent clip(s) · {state.filmRoom.referenceClipCount} reference SOS debate asset(s)
+        </p>
+
+        <h3 className="mt-4 text-xs font-bold uppercase text-rose-800">Film Room Coverage Gaps</h3>
+        <ul className="mt-1 list-inside list-disc text-xs text-rose-900">
+          {state.filmRoom.coverageGaps.map((gap) => (
+            <li key={gap}>{gap}</li>
+          ))}
+        </ul>
+
+        <div className="mt-4 space-y-3">
+          {state.filmRoom.items.slice(0, 6).map((item) => (
+            <article key={item.id} className="rounded-lg border border-kelly-text/10 bg-kelly-page/50 p-3 text-xs">
+              <p className="font-bold text-kelly-navy">{item.title}</p>
+              <p className="text-kelly-muted">Topic: {item.topic} · Confidence: {item.confidence}</p>
+              <p className="mt-1"><span className="font-semibold">Opponent angle:</span> {item.opponentClaimOrAngle}</p>
+              <p className="mt-1"><span className="font-semibold">Counter:</span> {item.recommendedCounter}</p>
+              <p className="mt-1"><span className="font-semibold">Drill:</span> {item.drillPrompt}</p>
+              {item.url ? (
+                <a href={item.url} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block font-semibold text-kelly-navy underline">
+                  Source (internal review)
+                </a>
+              ) : null}
+            </article>
+          ))}
         </div>
+        <Link href="/admin/intelligence/kim-hammer/debate-archive" className="mt-3 inline-block text-xs font-semibold text-kelly-navy underline">
+          Full debate archive →
+        </Link>
+        <Link href="/admin/intelligence/action-queue" className="mt-3 ml-4 inline-block text-xs font-semibold text-kelly-navy underline">
+          Clip-needed tasks in action queue →
+        </Link>
+      </section>
+
+      <section className={card}>
+        <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Training Academy (architecture)</h2>
+        <p className="mt-1 text-xs text-kelly-muted">Track list only — modules not yet built. Use debate prep + film room for daily drills.</p>
+        <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+          {state.academyTracks.map((track) => (
+            <li key={track}>{track}</li>
+          ))}
+        </ul>
       </section>
     </div>
   );

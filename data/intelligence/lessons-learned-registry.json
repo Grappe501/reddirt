@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-29T05:33:14.123Z",
+  "purpose": "Lessons, patterns, and campaign wisdom for future staff.",
+  "governanceDefaults": [
+    "INTERNAL_USE_ONLY",
+    "NON_PUBLISHABLE",
+    "HUMAN_REVIEW_REQUIRED",
+    "RECOMMENDATION_ONLY"
+  ],
+  "entries": [
+    {
+      "lessonId": "les-27afbe8b",
+      "kind": "pattern",
+      "title": "NSI-17 test pattern",
+      "body": "Validation pattern entry for institutional memory engine.",
+      "relatedDecisionIds": [],
+      "relatedRecommendationIds": [],
+      "tags": [
+        "test",
+        "nsi-17"
+      ],
+      "recordedAt": "2026-05-29T05:33:14.123Z",
+      "recordedBy": "test-script",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "HUMAN_REVIEW_REQUIRED"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2031 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-31T19:59:40.670Z",
+  "purpose": "Campaign intelligence claim ledger — INTERNAL ONLY",
+  "entries": [
+    {
+      "id": "claim-d59878e39f0ea19b-mpu768p1",
+      "claimText": "Public statements emphasize election-security legislation as a central qualification for SOS role.",
+      "normalizedClaimText": "public statements emphasize election-security legislation as a central qualification for sos role.",
+      "claimFingerprint": "d59878e39f0ea19b",
+      "claimType": "FACTUAL",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "HUMAN_APPROVED_INTERNAL",
+      "publishabilityStatus": "APPROVED_FOR_INTERNAL_USE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 45,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "SAFE_FOR_INTERNAL_STRATEGY",
+      "recommendedHumanAction": "Review claim against source anchors before any use",
+      "humanReview": {
+        "reviewedBy": "reviewer-test",
+        "reviewedAt": "2026-05-31T19:54:12.062Z",
+        "decision": "APPROVED_INTERNAL",
+        "notes": "approved for test",
+        "requiredEdits": [],
+        "approvalScope": "INTERNAL"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.309Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.401Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.195Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.959Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:12.062Z",
+          "eventType": "APPROVED_INTERNAL",
+          "actor": "reviewer-test",
+          "previousStatus": "DRAFT",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "approved for test"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.817Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "HUMAN_APPROVED_INTERNAL",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.309Z",
+      "updatedAt": "2026-05-31T19:58:25.818Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": "2026-05-31T19:54:12.062Z"
+    },
+    {
+      "id": "claim-9e7a8deda3d9c54c-mpu768p2",
+      "claimText": "Recent Arkansas SOS debates commonly include election confidence, voter access, and business-services operations questions.",
+      "normalizedClaimText": "recent arkansas sos debates commonly include election confidence voter access and business-services operations questions.",
+      "claimFingerprint": "9e7a8deda3d9c54c",
+      "claimType": "FACTUAL",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 45,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "SAFE_FOR_DRAFTING_WITH_CITATION",
+      "recommendedHumanAction": "Review claim against source anchors before any use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.310Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.401Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.195Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.959Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.818Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.310Z",
+      "updatedAt": "2026-05-31T19:58:25.818Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-4709361a0587ed32-mpu768p2",
+      "claimText": "29 bills indexed in election record packet",
+      "normalizedClaimText": "29 bills indexed in election record packet",
+      "claimFingerprint": "4709361a0587ed32",
+      "claimType": "FACTUAL",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 45,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "SAFE_FOR_DRAFTING_WITH_CITATION",
+      "recommendedHumanAction": "Review claim against source anchors before any use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.310Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.402Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.196Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.959Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.818Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.310Z",
+      "updatedAt": "2026-05-31T19:58:25.818Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-cd078a057fa06f6c-mpu768p2",
+      "claimText": "Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+      "normalizedClaimText": "publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+      "claimFingerprint": "cd078a057fa06f6c",
+      "claimType": "FACTUAL",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 45,
+      "publicUseRisk": "HIGH",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Assign research owner; verify citation locker before internal use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.310Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.402Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.196Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.959Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.818Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.310Z",
+      "updatedAt": "2026-05-31T19:58:25.819Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-51f90b3238a65e4f-mpu768p2",
+      "claimText": "Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+      "normalizedClaimText": "specific rotarymasonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+      "claimFingerprint": "51f90b3238a65e4f",
+      "claimType": "FACTUAL",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "UNSUPPORTED",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 0,
+      "evidenceStrength": "NONE",
+      "confidenceScore": 0,
+      "publicUseRisk": "CRITICAL",
+      "internalUseStatus": "DO_NOT_USE",
+      "recommendedHumanAction": "Remove from drafts or convert to research gap — do not use publicly",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.310Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.402Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.196Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.960Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.819Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.310Z",
+      "updatedAt": "2026-05-31T19:58:25.819Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-c2eee41ad1c989e5-mpu768p3",
+      "claimText": "Public evidence for large-agency management readiness is partial and requires corroboration.",
+      "normalizedClaimText": "public evidence for large-agency management readiness is partial and requires corroboration.",
+      "claimFingerprint": "c2eee41ad1c989e5",
+      "claimType": "FACTUAL",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 45,
+      "publicUseRisk": "HIGH",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Assign research owner; verify citation locker before internal use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.311Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.402Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.196Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.960Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.819Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.311Z",
+      "updatedAt": "2026-05-31T19:58:25.819Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-aad10e374b21e1c9-mpu768p3",
+      "claimText": "Comprehensive archive search for older op-eds before campaign launch period",
+      "normalizedClaimText": "comprehensive archive search for older op-eds before campaign launch period",
+      "claimFingerprint": "aad10e374b21e1c9",
+      "claimType": "INTERNAL_INTERPRETATION",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "INFERRED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 50,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Use as internal hypothesis only — not public copy",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.311Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.402Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.196Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.960Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.819Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.311Z",
+      "updatedAt": "2026-05-31T19:58:25.819Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-af59dfa3856617aa-mpu768p3",
+      "claimText": "Newspaper paywalled LTE records requiring authenticated retrieval",
+      "normalizedClaimText": "newspaper paywalled lte records requiring authenticated retrieval",
+      "claimFingerprint": "af59dfa3856617aa",
+      "claimType": "INTERNAL_INTERPRETATION",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "INFERRED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 50,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Use as internal hypothesis only — not public copy",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.311Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.402Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.196Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.960Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.819Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.311Z",
+      "updatedAt": "2026-05-31T19:58:25.819Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-cec7720adccccdcc-mpu768p3",
+      "claimText": "Donor cluster normalization from official campaign-finance disclosures",
+      "normalizedClaimText": "donor cluster normalization from official campaign-finance disclosures",
+      "claimFingerprint": "cec7720adccccdcc",
+      "claimType": "INTERNAL_INTERPRETATION",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "INFERRED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 50,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Use as internal hypothesis only — not public copy",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.311Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.403Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.197Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.960Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.820Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.311Z",
+      "updatedAt": "2026-05-31T19:58:25.820Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-9e36565478e31ba1-mpu768p3",
+      "claimText": "Repeat co-sponsor graph extracted from session-level sponsor datasets",
+      "normalizedClaimText": "repeat co-sponsor graph extracted from session-level sponsor datasets",
+      "claimFingerprint": "9e36565478e31ba1",
+      "claimType": "INTERNAL_INTERPRETATION",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "INFERRED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 50,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Use as internal hypothesis only — not public copy",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.311Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.403Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.197Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.960Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.820Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.311Z",
+      "updatedAt": "2026-05-31T19:58:25.820Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-fe65b90e3c16c62a-mpu768p4",
+      "claimText": "Need full 10–15 year sponsor/co-sponsor extraction",
+      "normalizedClaimText": "need full 1015 year sponsorco-sponsor extraction",
+      "claimFingerprint": "fe65b90e3c16c62a",
+      "claimType": "INTERNAL_INTERPRETATION",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "INFERRED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 50,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Use as internal hypothesis only — not public copy",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.312Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.403Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.197Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.961Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.820Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.312Z",
+      "updatedAt": "2026-05-31T19:58:25.820Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-d821b4db9a8123f9-mpu768p4",
+      "claimText": "Need committee testimony alignment by bill number",
+      "normalizedClaimText": "need committee testimony alignment by bill number",
+      "claimFingerprint": "d821b4db9a8123f9",
+      "claimType": "INTERNAL_INTERPRETATION",
+      "domain": "opposition",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "kim-hammer",
+        "opposition",
+        "KH-0",
+        "KH-4"
+      ],
+      "sourceBriefIds": [
+        "opposition-kim-hammer-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-opposition-kim-hammer-v1-mpu768nn",
+        "ep-opposition-kim-hammer-v1-mpu76rwa",
+        "ep-opposition-kim-hammer-v1-mpu77azw",
+        "ep-opposition-kim-hammer-v1-mpu7cquw"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "supportingSourceIds": [
+        "src-opposition-kim-hammer-v1-src-0",
+        "src-opposition-kim-hammer-v1-src-1",
+        "src-opposition-kim-hammer-v1-src-2",
+        "src-opposition-kim-hammer-v1-src-3",
+        "src-opposition-kim-hammer-v1-src-4"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "INFERRED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 50,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Use as internal hypothesis only — not public copy",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:53:22.312Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-opposition-kim-hammer-v1-mpu768nn"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:22.403Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:53:47.197Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:54:11.961Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-05-31T19:58:25.820Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "DRAFT",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-05-31T19:53:22.312Z",
+      "updatedAt": "2026-05-31T19:58:25.820Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-9653bafa492d7ad6-mpu7ecn0",
+      "claimText": "Overall debate readiness: 58/100 — Mean of 9 computed dimension scores; not a self-assessment.",
+      "normalizedClaimText": "overall debate readiness 58100  mean of 9 computed dimension scores not a self-assessment.",
+      "claimFingerprint": "9653bafa492d7ad6",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "VERIFIED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 100,
+      "evidenceStrength": "HIGH_CONFIDENCE",
+      "confidenceScore": 100,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "SAFE_FOR_DRAFTING_WITH_CITATION",
+      "recommendedHumanAction": "Review claim against source anchors before any use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.668Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.668Z",
+      "updatedAt": "2026-05-31T19:59:40.668Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-4a97f8dc88460211-mpu7ecn0",
+      "claimText": "Media readiness: 10/100 — 1 direct opponent clips; 2 reference SOS debate assets; 5 film room gaps.",
+      "normalizedClaimText": "media readiness 10100  1 direct opponent clips 2 reference sos debate assets 5 film room gaps.",
+      "claimFingerprint": "4a97f8dc88460211",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "VERIFIED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 100,
+      "evidenceStrength": "HIGH_CONFIDENCE",
+      "confidenceScore": 100,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "SAFE_FOR_DRAFTING_WITH_CITATION",
+      "recommendedHumanAction": "Review claim against source anchors before any use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.668Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.668Z",
+      "updatedAt": "2026-05-31T19:59:40.668Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-3e535f9518a14004-mpu7ecn0",
+      "claimText": "Emotional composure: 32/100 — 6 debate trap warnings from NSI-14.",
+      "normalizedClaimText": "emotional composure 32100  6 debate trap warnings from nsi-14.",
+      "claimFingerprint": "3e535f9518a14004",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "VERIFIED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 100,
+      "evidenceStrength": "HIGH_CONFIDENCE",
+      "confidenceScore": 100,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "SAFE_FOR_DRAFTING_WITH_CITATION",
+      "recommendedHumanAction": "Review claim against source anchors before any use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.668Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.668Z",
+      "updatedAt": "2026-05-31T19:59:40.668Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-2f5fc2e8e7f996d8-mpu7ecn0",
+      "claimText": "Office mastery: 45/100 — 2 export-ready claims; 7 open retrieval tasks.",
+      "normalizedClaimText": "office mastery 45100  2 export-ready claims 7 open retrieval tasks.",
+      "claimFingerprint": "2f5fc2e8e7f996d8",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "VERIFIED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 100,
+      "evidenceStrength": "HIGH_CONFIDENCE",
+      "confidenceScore": 100,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "SAFE_FOR_DRAFTING_WITH_CITATION",
+      "recommendedHumanAction": "Review claim against source anchors before any use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.668Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.668Z",
+      "updatedAt": "2026-05-31T19:59:40.669Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-dcb33445e5b2ba78-mpu7ecn1",
+      "claimText": "Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+      "normalizedClaimText": "locate full archive of older kim hammer debateforum recordings with timestamps",
+      "claimFingerprint": "dcb33445e5b2ba78",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 45,
+      "publicUseRisk": "HIGH",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Assign research owner; verify citation locker before internal use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.669Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.669Z",
+      "updatedAt": "2026-05-31T19:59:40.669Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-4eca7b97e4b6e603-mpu7ecn1",
+      "claimText": "Index local candidate forums not currently in statewide media databases",
+      "normalizedClaimText": "index local candidate forums not currently in statewide media databases",
+      "claimFingerprint": "4eca7b97e4b6e603",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 45,
+      "publicUseRisk": "HIGH",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Assign research owner; verify citation locker before internal use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.669Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.669Z",
+      "updatedAt": "2026-05-31T19:59:40.669Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-7438aaf28f08b5e7-mpu7ecn1",
+      "claimText": "Only one direct Kim Hammer media clip — formal debate archive missing",
+      "normalizedClaimText": "only one direct kim hammer media clip  formal debate archive missing",
+      "claimFingerprint": "7438aaf28f08b5e7",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 45,
+      "publicUseRisk": "HIGH",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Assign research owner; verify citation locker before internal use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.669Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.669Z",
+      "updatedAt": "2026-05-31T19:59:40.669Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-93c8f64caad746e5-mpu7ecn1",
+      "claimText": "No legislative committee transcript chunks — run legislature:intelligence:run with discovery enabled",
+      "normalizedClaimText": "no legislative committee transcript chunks  run legislatureintelligencerun with discovery enabled",
+      "claimFingerprint": "93c8f64caad746e5",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 45,
+      "publicUseRisk": "HIGH",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Assign research owner; verify citation locker before internal use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.669Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.669Z",
+      "updatedAt": "2026-05-31T19:59:40.669Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-fcdec968a0d75d88-mpu7ecn1",
+      "claimText": "Local forum recordings not indexed",
+      "normalizedClaimText": "local forum recordings not indexed",
+      "claimFingerprint": "fcdec968a0d75d88",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 45,
+      "publicUseRisk": "HIGH",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Assign research owner; verify citation locker before internal use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.669Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.669Z",
+      "updatedAt": "2026-05-31T19:59:40.669Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-4449e3682a3bb408-mpu7ecn1",
+      "claimText": "Election integrity and security reforms are necessary to maintain trust.",
+      "normalizedClaimText": "election integrity and security reforms are necessary to maintain trust.",
+      "claimFingerprint": "4449e3682a3bb408",
+      "claimType": "INTERNAL_INTERPRETATION",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "INFERRED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 50,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Use as internal hypothesis only — not public copy",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.669Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.669Z",
+      "updatedAt": "2026-05-31T19:59:40.669Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-aa3cbc7e3f0c2337-mpu7ecn1",
+      "claimText": "Long legislative tenure and committee leadership prepare him for SOS operations.",
+      "normalizedClaimText": "long legislative tenure and committee leadership prepare him for sos operations.",
+      "claimFingerprint": "aa3cbc7e3f0c2337",
+      "claimType": "INTERNAL_INTERPRETATION",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "INFERRED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 50,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Use as internal hypothesis only — not public copy",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.669Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.669Z",
+      "updatedAt": "2026-05-31T19:59:40.670Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-b101297e3a731ed7-mpu7ecn2",
+      "claimText": "Uniform statewide procedures and stricter controls improve election accountability.",
+      "normalizedClaimText": "uniform statewide procedures and stricter controls improve election accountability.",
+      "claimFingerprint": "b101297e3a731ed7",
+      "claimType": "INTERNAL_INTERPRETATION",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "debate",
+        "prep",
+        "Kelly"
+      ],
+      "sourceBriefIds": [
+        "debate-prep-v1"
+      ],
+      "sourceEvidencePacketIds": [
+        "ep-debate-prep-v1-mpu7ecm3"
+      ],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-prep-v1-src-0",
+        "src-debate-prep-v1-src-1",
+        "src-debate-prep-v1-src-2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "INFERRED",
+      "verificationStatus": "DRAFT",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 50,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Use as internal hypothesis only — not public copy",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-05-31T19:59:40.670Z",
+          "eventType": "INGESTED",
+          "actor": "claimLedgerIngest.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Ingested from evidence packet ep-debate-prep-v1-mpu7ecm3"
+        }
+      ],
+      "createdAt": "2026-05-31T19:59:40.670Z",
+      "updatedAt": "2026-05-31T19:59:40.670Z",
+      "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    }
+  ]
+}

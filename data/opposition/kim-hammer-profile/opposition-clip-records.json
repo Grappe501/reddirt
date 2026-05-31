@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-31T19:48:04.945Z",
+  "records": [
+    {
+      "id": "kh-runoff-media-clips-2026",
+      "opponentId": "kim-hammer",
+      "title": "Runoff race media coverage clips (not formal debate archive)",
+      "url": "https://katv.com/news/hammer-brings-the-hammer-kim-hammer-wins-arkansas-secretary-of-state-runoff",
+      "clipType": "DIRECT_OPPONENT",
+      "timestamp": null,
+      "citationSourceId": "cit-src-clip-kh-runoff-media-clips-2026",
+      "retrievalNeeded": false,
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "ar-sos-debate-2022-pbs",
+      "opponentId": "kim-hammer",
+      "title": "Arkansas PBS Secretary of State Debate (2022)",
+      "url": "https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/",
+      "clipType": "REFERENCE_SOS",
+      "timestamp": null,
+      "citationSourceId": "cit-src-clip-ar-sos-debate-2022-pbs",
+      "retrievalNeeded": false,
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "ar-sos-debate-2022-coverage",
+      "opponentId": "kim-hammer",
+      "title": "4029 debate recap and question coverage",
+      "url": "https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807",
+      "clipType": "REFERENCE_SOS",
+      "timestamp": null,
+      "citationSourceId": "cit-src-clip-ar-sos-debate-2022-coverage",
+      "retrievalNeeded": false,
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    }
+  ]
+}

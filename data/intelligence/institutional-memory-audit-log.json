@@ -1,0 +1,33 @@
+{
+  "logVersion": "1",
+  "updatedAt": "2026-05-29T05:33:14.247Z",
+  "entries": [
+    {
+      "entityType": "decision",
+      "entityId": "dec-7ebc15a0",
+      "eventType": "CREATED",
+      "operator": "test-script",
+      "changedByRoute": "scripts/test-institutional-memory",
+      "auditId": "im-audit-1780032794122",
+      "changedAt": "2026-05-29T05:33:14.122Z"
+    },
+    {
+      "entityType": "lesson",
+      "entityId": "les-27afbe8b",
+      "eventType": "CREATED",
+      "operator": "test-script",
+      "changedByRoute": "scripts/test-institutional-memory",
+      "auditId": "im-audit-1780032794133",
+      "changedAt": "2026-05-29T05:33:14.133Z"
+    },
+    {
+      "entityType": "reflection",
+      "entityId": "wref-9f50aecd",
+      "eventType": "CREATED",
+      "operator": "test-script",
+      "changedByRoute": "scripts/test-institutional-memory",
+      "auditId": "im-audit-1780032794247",
+      "changedAt": "2026-05-29T05:33:14.247Z"
+    }
+  ]
+}

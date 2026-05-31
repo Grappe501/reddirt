@@ -1,0 +1,19 @@
+{
+  "billNumber": "SB488",
+  "session": "2021/2021R",
+  "billUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB488&ddBienniumSession=2021%2F2021R",
+  "title": "",
+  "sponsor": "Kim Hammer",
+  "committeeMeetings": [],
+  "videoCandidates": [],
+  "documentLinks": [],
+  "confidence": 20,
+  "retrievalWarnings": [
+    "Arkansas Legislature pages are public; respect robots.txt, rate limits, and site terms.",
+    "Do not run uncontrolled scraping loops — max fetches enforced per run.",
+    "Live discovery disabled — enable LEGISLATURE_LIVE_DISCOVERY=1 for network fetch.",
+    "No bill page HTML — discovery incomplete (cache miss or live fetch disabled).",
+    "No Sliq Harmony video links found on bill Meetings section."
+  ],
+  "retrievedAt": "2026-05-31T18:24:12.202Z"
+}

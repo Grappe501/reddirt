@@ -1,0 +1,108 @@
+{
+  "status": "DRAFT_INTERNAL",
+  "publishabilityStatus": "NOT_PUBLISHABLE",
+  "governanceLabels": [
+    "INTERNAL_DRAFT",
+    "NON_PUBLISHABLE",
+    "HUMAN_REVIEW_REQUIRED",
+    "SOURCE_GROUNDED",
+    "CLAIM_CHECK_REQUIRED",
+    "NOT_PUBLIC_CONTENT"
+  ],
+  "generatedAt": "2026-05-31T15:41:59.382Z",
+  "generatedBy": "countyPublicBriefGenerator.v1",
+  "briefId": "county-pub-faulkner",
+  "title": "Faulkner County — Public Messaging Brief (INTERNAL)",
+  "briefType": "county_public_messaging",
+  "tags": [
+    "faulkner-county",
+    "INTERNAL_MESSAGE_SOURCE_ONLY",
+    "county",
+    "messaging"
+  ],
+  "audience": "Internal comms + field leads — NOT public",
+  "intendedUse": "Future public adaptation only after human claim approval",
+  "evidenceSummary": [
+    "Dashboard: v2 live",
+    "Data quality: 10% workbench completion",
+    "Registration goal: unverified",
+    "Vote target: planning proxy only"
+  ],
+  "verifiedClaims": [
+    {
+      "claim": "Faulkner County workbench depth: INTERNAL_PLANNING_ONLY",
+      "tier": "verified",
+      "sourceAnchors": [
+        "dashboard-v2-county-coverage.csv"
+      ]
+    }
+  ],
+  "unverifiedClaims": [
+    {
+      "claim": "Planning vote target proxy: 20,208 (NOT registration goal)",
+      "tier": "unverified",
+      "sourceAnchors": [
+        "arkansasStateAlignedTargets2022.json"
+      ],
+      "notes": "Do not use as registration goal in public messaging"
+    },
+    {
+      "claim": "Canonical registration goal not verified in this context",
+      "tier": "unverified",
+      "sourceAnchors": [
+        "GOALS-VERIFY-1"
+      ]
+    }
+  ],
+  "inferredClaims": [
+    {
+      "claim": "Low dashboard field completion — source intake needed",
+      "tier": "inferred",
+      "sourceAnchors": [
+        "county-workbench-adapter"
+      ]
+    },
+    {
+      "claim": "5 full-profile QA warnings",
+      "tier": "inferred",
+      "sourceAnchors": [
+        "county-workbench-adapter"
+      ]
+    }
+  ],
+  "researchGaps": [
+    "churches: not normalized for Faulkner County",
+    "schools: not normalized for Faulkner County",
+    "hospitals: not normalized for Faulkner County",
+    "chambers: not normalized for Faulkner County",
+    "fairs/festivals: not normalized for Faulkner County",
+    "media: not normalized for Faulkner County",
+    "civic groups: not normalized for Faulkner County",
+    "local validators: not normalized for Faulkner County",
+    "Canonical registration goal unset — verify in admin",
+    "No Kim Hammer geographic narrative overlay"
+  ],
+  "recommendedMessaging": [
+    "Emphasize supporting county election workers and transparent SOS service",
+    "Avoid opponent-specific attacks without citation locker approval",
+    "Use listening prompts before localized promises"
+  ],
+  "riskWarnings": [
+    "NOT_PUBLISHABLE — all messaging INTERNAL until human review",
+    "Verify canonical goals before field use",
+    "Proxy vote targets must never appear as registration goals in public copy"
+  ],
+  "humanReviewChecklist": [
+    "Verify every claim against source anchors",
+    "Confirm registration goal in CountyCampaignStats if cited",
+    "Legal/comms sign-off before any public adaptation",
+    "Mark unsupported claims as research gaps"
+  ],
+  "sourceAnchors": [
+    "dashboard-v2-county-coverage.csv",
+    "county-workbench-adapter.ts",
+    "GOALS-VERIFY-1"
+  ],
+  "confidenceScore": 48,
+  "confidenceBasis": "Readiness tier INTERNAL_MESSAGE_SOURCE_ONLY; 10% data; 1 verified claims"
+}

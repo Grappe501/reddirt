@@ -136,7 +136,12 @@ campaign-media/phone-import/
 # AUTO-BUILD-2: generated nightly handoff markdown (keep .nightly-self-build/.gitkeep)
 .nightly-self-build/nightly-self-build-*.md
 
-# Supabase / Prisma introspection scratch (local only; do not commit)
+# Legislative video processing artifacts (local cache — do not commit raw media)
+data/legislature/audio/
+data/legislature/audio/**
+*.mp3
+!public/**/*.mp3
+
 tmp-supabase-introspection.schema.prisma
 supabase-introspection.prisma
 supabase-introspection.stderr.txt

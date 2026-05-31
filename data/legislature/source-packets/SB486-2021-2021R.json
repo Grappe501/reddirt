@@ -1,0 +1,78 @@
+{
+  "billNumber": "SB486",
+  "session": "2021/2021R",
+  "billUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+  "title": "",
+  "sponsor": "Kim Hammer",
+  "committeeMeetings": [
+    {
+      "dateRaw": "3/30/2021 2:00 PM",
+      "meetingLabel": "Senate State Agencies and Govt'l Affairs Old Supreme Court",
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210330/-1/21435?mediaStartTime=20210330151000&viewMode=1",
+      "mediaStartTime": "20210330151000"
+    },
+    {
+      "dateRaw": "4/1/2021 1:00 PM",
+      "meetingLabel": "Senate Floor Session Senate Chamber",
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210401/-1/21464?mediaStartTime=20210401135233&viewMode=1",
+      "mediaStartTime": "20210401135233"
+    },
+    {
+      "dateRaw": "4/12/2021 9:30 AM",
+      "meetingLabel": "House State Agencies & Governmental Affairs Committee Committee Room 151",
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210412/-1/21537?mediaStartTime=20210412094440&viewMode=1",
+      "mediaStartTime": "20210412094440"
+    },
+    {
+      "dateRaw": "4/13/2021 1:00 PM",
+      "meetingLabel": "House Meeting House",
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210413/-1/21555?mediaStartTime=20210413144702&viewMode=1",
+      "mediaStartTime": "20210413144702"
+    }
+  ],
+  "videoCandidates": [
+    {
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210330/-1/21435?mediaStartTime=20210330151000&viewMode=1",
+      "sourcePageUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "committeeName": "Senate State Agencies and Govt'l Affairs Old Supreme Court",
+      "meetingDate": "3/30/2021 2:00 PM",
+      "mediaStartTime": "20210330151000",
+      "discoveryConfidence": 85,
+      "sourceType": "UNKNOWN"
+    },
+    {
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210401/-1/21464?mediaStartTime=20210401135233&viewMode=1",
+      "sourcePageUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "committeeName": "Senate Floor Session Senate Chamber",
+      "meetingDate": "4/1/2021 1:00 PM",
+      "mediaStartTime": "20210401135233",
+      "discoveryConfidence": 85,
+      "sourceType": "SLIQ_FLOOR"
+    },
+    {
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210412/-1/21537?mediaStartTime=20210412094440&viewMode=1",
+      "sourcePageUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "committeeName": "House State Agencies & Governmental Affairs Committee Committee Room 151",
+      "meetingDate": "4/12/2021 9:30 AM",
+      "mediaStartTime": "20210412094440",
+      "discoveryConfidence": 85,
+      "sourceType": "SLIQ_COMMITTEE"
+    },
+    {
+      "videoUrl": "https://sg001-harmony.sliq.net/00284/Harmony/en/PowerBrowser/PowerBrowserV2/20210413/-1/21555?mediaStartTime=20210413144702&viewMode=1",
+      "sourcePageUrl": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "committeeName": "House Meeting House",
+      "meetingDate": "4/13/2021 1:00 PM",
+      "mediaStartTime": "20210413144702",
+      "discoveryConfidence": 85,
+      "sourceType": "UNKNOWN"
+    }
+  ],
+  "documentLinks": [],
+  "confidence": 80,
+  "retrievalWarnings": [
+    "Arkansas Legislature pages are public; respect robots.txt, rate limits, and site terms.",
+    "Do not run uncontrolled scraping loops — max fetches enforced per run."
+  ],
+  "retrievedAt": "2026-05-31T18:26:17.015Z"
+}

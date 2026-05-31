@@ -1,0 +1,1020 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-29T05:33:14.274Z",
+  "purpose": "Recommendation history for calibration — capture only, no autonomous execution.",
+  "governanceDefaults": [
+    "INTERNAL_USE_ONLY",
+    "NON_PUBLISHABLE",
+    "HUMAN_REVIEW_REQUIRED",
+    "RECOMMENDATION_ONLY"
+  ],
+  "entries": [
+    {
+      "recommendationId": "rec-ha-prepare-debate-response-dcfa4a8180",
+      "recommendation": "Scenario: Opponent reframes county burden as security",
+      "sourceSystem": "NSI-14, NSI-13",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "CRITICAL",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-prepare-debate-response-dcfa4a8180",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-prepare-debate-response-9a3a52e4c2",
+      "recommendation": "Scenario: County burden vs election integrity collision",
+      "sourceSystem": "NSI-14, NSI-13",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "CRITICAL",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-prepare-debate-response-9a3a52e4c2",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-prepare-debate-response-692ec0f310",
+      "recommendation": "Debate trap review bundle",
+      "sourceSystem": "NSI-14, NSI-13",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "CRITICAL",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-prepare-debate-response-692ec0f310",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-export-risk-9a841d0f73",
+      "recommendation": "Scenario: Modernization vs local control",
+      "sourceSystem": "NSI-14, NSI-13",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "CRITICAL",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-export-risk-9a841d0f73",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-claim-7de12e217a",
+      "recommendation": "Review claim pdeb-004-civic-affiliation-claims",
+      "sourceSystem": "V2-A, KH-0",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "CRITICAL",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-claim-7de12e217a",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-create-retrieval-task-b3c1d049bf",
+      "recommendation": "Execute retrieval task #1",
+      "sourceSystem": "V3-A, KH-3B",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-create-retrieval-task-b3c1d049bf",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-create-retrieval-task-c754452d60",
+      "recommendation": "Execute retrieval task #2",
+      "sourceSystem": "V3-A, KH-3B",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-create-retrieval-task-c754452d60",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-create-retrieval-task-9a42944ecf",
+      "recommendation": "Execute retrieval task #3",
+      "sourceSystem": "V3-A, KH-3B",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-create-retrieval-task-9a42944ecf",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-export-risk-be1f581e89",
+      "recommendation": "Scenario: Opponent pivots to experience and competence",
+      "sourceSystem": "NSI-14, NSI-13",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-export-risk-be1f581e89",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-export-risk-69652a3540",
+      "recommendation": "Scenario: Opponent attacks Kelly as unprepared",
+      "sourceSystem": "NSI-14, NSI-13",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-export-risk-69652a3540",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-export-risk-46aef00977",
+      "recommendation": "Scenario: Opponent claims direct democracy reforms are anti-fraud",
+      "sourceSystem": "NSI-14, NSI-13",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-export-risk-46aef00977",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-export-risk-12d8bb6e6b",
+      "recommendation": "Scenario: Direct democracy vs security framing",
+      "sourceSystem": "NSI-14, NSI-13",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-export-risk-12d8bb6e6b",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-export-risk-fb6e3f653e",
+      "recommendation": "Scenario: Transparency vs ballot secrecy",
+      "sourceSystem": "NSI-14, NSI-13",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-export-risk-fb6e3f653e",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-export-risk-ca7369317e",
+      "recommendation": "Scenario: People-powered democracy vs institutional control",
+      "sourceSystem": "NSI-14, NSI-13",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-export-risk-ca7369317e",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-investigate-opponent-message-11ee43c18e",
+      "recommendation": "Investigate opponent messaging drift",
+      "sourceSystem": "NSI-13, KH-0",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-investigate-opponent-message-11ee43c18e",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-create-retrieval-task-ddca6003b0",
+      "recommendation": "Research gap — Pulaski County",
+      "sourceSystem": "NSI-5, NSI-2, V3-A",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-create-retrieval-task-ddca6003b0",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-strengthen-narrative-21c2ee6a51",
+      "recommendation": "Strengthen narrative SB487 — Precinct & Polling Sites",
+      "sourceSystem": "NSI-1, SDI-1",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-strengthen-narrative-21c2ee6a51",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-strengthen-narrative-046f07d68a",
+      "recommendation": "Strengthen narrative 2021 Integrity Foundation",
+      "sourceSystem": "NSI-1, SDI-1",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-strengthen-narrative-046f07d68a",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-llm-draft-cef40050c5",
+      "recommendation": "Review LLM draft llm-draft-candidate-talking-points-mpq4qk30",
+      "sourceSystem": "NSI-12, NSI-11",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-llm-draft-cef40050c5",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-llm-draft-228c920e07",
+      "recommendation": "Review LLM draft llm-draft-vulnerability-analysis-mpq4q327",
+      "sourceSystem": "NSI-12, NSI-11",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-llm-draft-228c920e07",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-llm-draft-500cd07c93",
+      "recommendation": "Review LLM draft llm-draft-candidate-talking-points-mppxmbst",
+      "sourceSystem": "NSI-12, NSI-11",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-llm-draft-500cd07c93",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-llm-draft-58572fd742",
+      "recommendation": "Review LLM draft llm-draft-vulnerability-analysis-mppxlv4z",
+      "sourceSystem": "NSI-12, NSI-11",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-llm-draft-58572fd742",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-llm-draft-940f0604b0",
+      "recommendation": "Review LLM draft llm-draft-candidate-talking-points-mppwj17v",
+      "sourceSystem": "NSI-12, NSI-11",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-llm-draft-940f0604b0",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-llm-draft-83385b52da",
+      "recommendation": "Review LLM draft llm-draft-vulnerability-analysis-mppwiixu",
+      "sourceSystem": "NSI-12, NSI-11",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-llm-draft-83385b52da",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-strategic-tension-5bcb7ab76e",
+      "recommendation": "Doctrine tension: 2021 Integrity Foundation",
+      "sourceSystem": "SDI-1, NSI-1",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-strategic-tension-5bcb7ab76e",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-strategic-tension-617a034826",
+      "recommendation": "Doctrine tension: Debate Frame — Management Readiness",
+      "sourceSystem": "SDI-1, NSI-1",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-strategic-tension-617a034826",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-strategic-tension-e403d7d66c",
+      "recommendation": "Doctrine tension: SB487 — Precinct & Polling Sites",
+      "sourceSystem": "SDI-1, NSI-1",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-strategic-tension-e403d7d66c",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-check-registration-goal-c09ed0339b",
+      "recommendation": "Verify registration goal assumptions",
+      "sourceSystem": "NSI-7, NSI-6",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-check-registration-goal-c09ed0339b",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-validate-target-pathway-5194a5534f",
+      "recommendation": "Validate strategic target pathway",
+      "sourceSystem": "NSI-7, NSI-6",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-validate-target-pathway-5194a5534f",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-export-risk-5fc0cb2f7c",
+      "recommendation": "Export fatigue — 2021 Integrity Foundation",
+      "sourceSystem": "NSI-3, V3-E",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-export-risk-5fc0cb2f7c",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-export-risk-9687ead469",
+      "recommendation": "Export fatigue — Legislative Chronology Arc",
+      "sourceSystem": "NSI-3, V3-E",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-export-risk-9687ead469",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-export-risk-03222d04ad",
+      "recommendation": "Export fatigue — Debate Frame — Election Integrity Record",
+      "sourceSystem": "NSI-3, V3-E",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-export-risk-03222d04ad",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-citation-442ea5fac6",
+      "recommendation": "Review citation cite-campaign-election-integrity-2025",
+      "sourceSystem": "V3-C, NSI-1",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-citation-442ea5fac6",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-citation-25149b96bd",
+      "recommendation": "Review citation cite-4029-debate-recap",
+      "sourceSystem": "V3-C, NSI-1",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-citation-25149b96bd",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-citation-23781d063e",
+      "recommendation": "Review citation cite-sb487-2021",
+      "sourceSystem": "V3-C, NSI-1",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-citation-23781d063e",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-claim-04fb6ac66a",
+      "recommendation": "Review claim pdeb-002-management-readiness",
+      "sourceSystem": "V2-A, KH-0",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-claim-04fb6ac66a",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-claim-2d12dc5391",
+      "recommendation": "Review claim claim-management-readiness-partial",
+      "sourceSystem": "V2-A, KH-0",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "HIGH",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-claim-2d12dc5391",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-create-retrieval-task-9f24ae61e0",
+      "recommendation": "Research gap — Statewide",
+      "sourceSystem": "NSI-5, NSI-2, V3-A",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-create-retrieval-task-9f24ae61e0",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-create-retrieval-task-1bdd444e34",
+      "recommendation": "Research gap — Benton County",
+      "sourceSystem": "NSI-5, NSI-2, V3-A",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-create-retrieval-task-1bdd444e34",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-citation-063385385d",
+      "recommendation": "Review citation cite-campaign-home",
+      "sourceSystem": "V3-C, NSI-1",
+      "recommendedAt": "2026-05-29T03:10:44.446Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-citation-063385385d",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-strengthen-narrative-d08924825e",
+      "recommendation": "Strengthen narrative County Administration Burden",
+      "sourceSystem": "NSI-1, SDI-1",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-strengthen-narrative-d08924825e",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-strengthen-narrative-d252fe09da",
+      "recommendation": "Strengthen narrative Debate Frame — Management Readiness",
+      "sourceSystem": "NSI-1, SDI-1",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-strengthen-narrative-d252fe09da",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-create-retrieval-task-bdb6c870b7",
+      "recommendation": "Research gap — Washington County",
+      "sourceSystem": "NSI-5, NSI-2, V3-A",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-create-retrieval-task-bdb6c870b7",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-create-retrieval-task-f8ba69fa2f",
+      "recommendation": "Research gap — Sebastian County",
+      "sourceSystem": "NSI-5, NSI-2, V3-A",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-create-retrieval-task-f8ba69fa2f",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-create-retrieval-task-8bd598fe67",
+      "recommendation": "Research gap — Craighead County",
+      "sourceSystem": "NSI-5, NSI-2, V3-A",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-create-retrieval-task-8bd598fe67",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-media-finding-097939be15",
+      "recommendation": "Review media finding media-finding-nsi8-seed-001",
+      "sourceSystem": "NSI-8, NSI-10",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-media-finding-097939be15",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-media-finding-ad01a0af0c",
+      "recommendation": "Review media finding media-finding-nsi8-seed-002",
+      "sourceSystem": "NSI-8, NSI-10",
+      "recommendedAt": "2026-05-29T03:10:44.447Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-media-finding-ad01a0af0c",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-verify-bill-source-4d2bbce83f",
+      "recommendation": "Verify source for claim pdeb-002-management-readiness",
+      "sourceSystem": "KH-0, NSI-4",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-verify-bill-source-4d2bbce83f",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-public-meeting-source-275574845e",
+      "recommendation": "Public meeting watchlist gap",
+      "sourceSystem": "NSI-8, NSI-5",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-public-meeting-source-275574845e",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-public-meeting-source-9521ae02d9",
+      "recommendation": "Public meeting watchlist gap",
+      "sourceSystem": "NSI-8, NSI-5",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-public-meeting-source-9521ae02d9",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-public-meeting-source-6ac61e6cc7",
+      "recommendation": "Public meeting watchlist gap",
+      "sourceSystem": "NSI-8, NSI-5",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-public-meeting-source-6ac61e6cc7",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-review-public-meeting-source-82a6dc6487",
+      "recommendation": "Public meeting watchlist gap",
+      "sourceSystem": "NSI-8, NSI-5",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-review-public-meeting-source-82a6dc6487",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    },
+    {
+      "recommendationId": "rec-ha-check-county-operational-risk-e810588017",
+      "recommendation": "Operational intelligence adapter gaps",
+      "sourceSystem": "NSI-6",
+      "recommendedAt": "2026-05-29T03:10:56.324Z",
+      "priority": "MEDIUM",
+      "disposition": "Unknown",
+      "result": "RECOMMENDED",
+      "confidenceAdjustment": "Unknown — outcome not yet assessed",
+      "operatorNotes": "",
+      "linkedActionId": "ha-check-county-operational-risk-e810588017",
+      "createdAt": "2026-05-29T05:33:14.274Z",
+      "updatedAt": "2026-05-29T05:33:14.274Z",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "CAPTURED_FROM_QUEUE"
+      ]
+    }
+  ]
+}

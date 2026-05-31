@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-31T19:48:04.945Z",
+  "tasks": [
+    {
+      "id": "kh3b-pre-legislative-authored-writings",
+      "opponentId": "kim-hammer",
+      "rank": 1,
+      "priority": "HIGH",
+      "description": "Pre-legislative authored writings archive remains incomplete (op-eds, letters, civic/church newsletters, archived campaign pages).",
+      "taskStatus": "IN_PROGRESS",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "owner": "Opposition research desk",
+      "blocker": "Archive has 3 indexed writings; pre-legislative sweep incomplete",
+      "currentAvailableEvidence": [
+        "3 writings in kim-hammer-authored-writings.json with URLs"
+      ],
+      "recommendedHumanAction": "Complete newspaper archive sweep and legacy newsletter confirmations",
+      "citationRequirement": "URL + date + publisher for each writing before external use",
+      "nextRetrievalStep": "Retrieve oldest op-eds and church/community newsletter archives",
+      "canCloseFromLocalEvidence": false,
+      "closureStatus": "PARTIAL",
+      "linkedArchiveItemIds": [],
+      "updatedAt": "2026-05-31T19:48:04.829Z"
+    },
+    {
+      "id": "kh3b-long-tail-video-forum-record",
+      "opponentId": "kim-hammer",
+      "rank": 2,
+      "priority": "HIGH",
+      "description": "Long-tail video and forum statement archive is not fully indexed (county GOP events, town halls, community appearances, local TV/radio clips).",
+      "taskStatus": "ASSIGNED",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "owner": "Media archive operator",
+      "blocker": "Only 1 direct Kim Hammer media clip indexed — no formal debate archive",
+      "currentAvailableEvidence": [
+        "1 media clip: kh-runoff-media-clips-2026 (not formal debate)"
+      ],
+      "recommendedHumanAction": "Index county GOP and local TV forum clips with timestamps",
+      "citationRequirement": "Timestamp + quote context for each clip",
+      "nextRetrievalStep": "Sweep county GOP YouTube/Facebook and local TV clip archives",
+      "canCloseFromLocalEvidence": false,
+      "closureStatus": "PARTIAL",
+      "linkedArchiveItemIds": [],
+      "updatedAt": "2026-05-31T19:48:04.829Z"
+    },
+    {
+      "id": "kh3b-management-readiness-evidence",
+      "opponentId": "kim-hammer",
+      "rank": 3,
+      "priority": "HIGH",
+      "description": "Evidence for SOS operational readiness needs hard validation (management scope, administrative complexity, election-operations and vendor-oversight experience).",
+      "taskStatus": "IN_PROGRESS",
+      "evidenceStatus": "RESEARCH_QUESTION",
+      "owner": "Qualification research",
+      "blocker": "Management assessment exists but hard validation incomplete",
+      "currentAvailableEvidence": [
+        "kim-hammer-management-capacity-assessment.json (NEEDS_REVIEW)"
+      ],
+      "recommendedHumanAction": "Cross-check committee records against management-capacity assessment",
+      "citationRequirement": "Primary source for each operational-readiness claim",
+      "nextRetrievalStep": "Pull committee records and procurement/oversight references",
+      "canCloseFromLocalEvidence": false,
+      "closureStatus": "PARTIAL",
+      "linkedArchiveItemIds": [],
+      "updatedAt": "2026-05-31T19:48:04.829Z"
+    },
+    {
+      "id": "kh3b-biographical-validation-education-civic",
+      "opponentId": "kim-hammer",
+      "rank": 4,
+      "priority": "HIGH",
+      "description": "Biographical validation is incomplete for high school confirmation and specific civic affiliations/awards (Rotary, Mason, civic honors).",
+      "taskStatus": "ASSIGNED",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "owner": "Biographical validation",
+      "blocker": "High school and civic affiliations unverified",
+      "currentAvailableEvidence": [
+        "kim-hammer-background-deep-profile.json with NEEDS_REVIEW fields"
+      ],
+      "recommendedHumanAction": "Confirm high school and Rotary/Mason/civic honors from official records only",
+      "citationRequirement": "Official bio or confirmed civic organization record",
+      "nextRetrievalStep": "Retrieve official bio PDFs and civic organization newsletters",
+      "canCloseFromLocalEvidence": false,
+      "closureStatus": "PARTIAL",
+      "linkedArchiveItemIds": [],
+      "updatedAt": "2026-05-31T19:48:04.829Z"
+    },
+    {
+      "id": "kh3b-business-employment-chronology",
+      "opponentId": "kim-hammer",
+      "rank": 5,
+      "priority": "MEDIUM",
+      "description": "Business/employment chronology remains partial and needs source-backed timeline normalization.",
+      "taskStatus": "NOT_STARTED",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "owner": "Open queue",
+      "blocker": "Business chronology partial — no normalized timeline",
+      "currentAvailableEvidence": [
+        "Partial entries in background-deep-profile businessBackground"
+      ],
+      "recommendedHumanAction": "Build source-backed employment timeline from filings and archived bios",
+      "citationRequirement": "Registry filing or archived bio for each chronology entry",
+      "nextRetrievalStep": "Search business registry and archived campaign about pages",
+      "canCloseFromLocalEvidence": false,
+      "closureStatus": "PARTIAL",
+      "linkedArchiveItemIds": [],
+      "updatedAt": "2026-05-31T19:48:04.829Z"
+    },
+    {
+      "id": "kh3b-wayback-campaign-page-capture",
+      "opponentId": "kim-hammer",
+      "rank": 6,
+      "priority": "MEDIUM",
+      "description": "Wayback and legacy campaign-page capture is incomplete for pre-2025 messaging baselines.",
+      "taskStatus": "IN_PROGRESS",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "owner": "Archive operations",
+      "blocker": "Wayback sweep queued but incomplete",
+      "currentAvailableEvidence": [
+        "IN_PROGRESS per intelligence-gaps completionNotes"
+      ],
+      "recommendedHumanAction": "Complete web.archive.org capture for pre-2025 campaign pages",
+      "citationRequirement": "Wayback snapshot URL + capture date",
+      "nextRetrievalStep": "Run Wayback sweep and link to claim-graph retrieval suggestion",
+      "canCloseFromLocalEvidence": false,
+      "closureStatus": "PARTIAL",
+      "linkedArchiveItemIds": [],
+      "updatedAt": "2026-05-31T19:48:04.829Z"
+    },
+    {
+      "id": "kh3b-local-radio-tv-quote-normalization",
+      "opponentId": "kim-hammer",
+      "rank": 7,
+      "priority": "MEDIUM",
+      "description": "Local radio/TV clip transcripts and quotes are not normalized for reusable rapid-response sourcing.",
+      "taskStatus": "NOT_STARTED",
+      "evidenceStatus": "NEEDS_REVIEW",
+      "owner": "Open queue",
+      "blocker": "No normalized local radio/TV quote cards",
+      "currentAvailableEvidence": [],
+      "recommendedHumanAction": "Standardize quote cards with source URL, date, timestamp, context",
+      "citationRequirement": "Full context sentence + station segment archive link",
+      "nextRetrievalStep": "Export closed-caption transcripts from station segment archives",
+      "canCloseFromLocalEvidence": false,
+      "closureStatus": "OPEN",
+      "linkedArchiveItemIds": [],
+      "updatedAt": "2026-05-31T19:48:04.829Z"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-31T19:48:04.945Z",
+  "records": [
+    {
+      "id": "source-writing-kh-writing-2025-election-integrity-oped",
+      "opponentId": "kim-hammer",
+      "title": "Arkansas Leads the Way in Election Integrity: A Commitment to Fairness and Transparency",
+      "sourceType": "OP_ED",
+      "urlOrPath": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/",
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 85,
+      "archiveItemIds": [
+        "archive-writing-kh-writing-2025-election-integrity-oped"
+      ],
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "source-writing-kh-writing-2024-paper-ballot-letter",
+      "opponentId": "kim-hammer",
+      "title": "Letter to the editor on paper ballots",
+      "sourceType": "LETTER_TO_EDITOR",
+      "urlOrPath": "https://www.mysaline.com/letters-hammer-paper-ballots-patriots/",
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 65,
+      "archiveItemIds": [
+        "archive-writing-kh-writing-2024-paper-ballot-letter"
+      ],
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "source-writing-kh-writing-2026-monument-letter",
+      "opponentId": "kim-hammer",
+      "title": "Letter to Secretary of State regarding Monument to the Unborn",
+      "sourceType": "PUBLIC_LETTER",
+      "urlOrPath": "https://dev.arkansasonline.com/documents/2026/jan/13/sen-hammer-letter-monument-to-the-unborn/",
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 65,
+      "archiveItemIds": [
+        "archive-writing-kh-writing-2026-monument-letter"
+      ],
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "source-clip-kh-runoff-media-clips-2026",
+      "opponentId": "kim-hammer",
+      "title": "Runoff race media coverage clips (not formal debate archive)",
+      "sourceType": "MEDIA_CLIP",
+      "urlOrPath": "https://katv.com/news/hammer-brings-the-hammer-kim-hammer-wins-arkansas-secretary-of-state-runoff",
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 70,
+      "archiveItemIds": [
+        "archive-clip-kh-runoff-media-clips-2026"
+      ],
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "source-background-deep-profile",
+      "opponentId": "kim-hammer",
+      "title": "Kim Hammer Background Deep Profile",
+      "sourceType": "INTERNAL_ANALYSIS",
+      "urlOrPath": "data/opposition/kim-hammer-profile/kim-hammer-background-deep-profile.json",
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 55,
+      "archiveItemIds": [
+        "archive-background-deep-profile"
+      ],
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "source-management-capacity",
+      "opponentId": "kim-hammer",
+      "title": "Management Capacity Assessment",
+      "sourceType": "INTERNAL_ANALYSIS",
+      "urlOrPath": "data/opposition/kim-hammer-profile/kim-hammer-management-capacity-assessment.json",
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 50,
+      "archiveItemIds": [
+        "archive-management-capacity-assessment"
+      ],
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    }
+  ]
+}

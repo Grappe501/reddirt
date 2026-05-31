@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-29T05:33:14.133Z",
+  "purpose": "Human-triggered weekly intelligence reflections — no auto-send or publish.",
+  "governanceDefaults": [
+    "INTERNAL_USE_ONLY",
+    "NON_PUBLISHABLE",
+    "HUMAN_REVIEW_REQUIRED",
+    "RECOMMENDATION_ONLY"
+  ],
+  "entries": [
+    {
+      "reflectionId": "wref-9f50aecd",
+      "weekLabel": "TEST-2026-05-29",
+      "recordedAt": "2026-05-29T05:33:14.133Z",
+      "recordedBy": "test-script",
+      "whatWorked": "Memory engine write paths.",
+      "whatFailed": "N/A",
+      "whatSurprised": "N/A",
+      "whatToStop": "N/A",
+      "whatToDoMore": "Record real campaign decisions weekly.",
+      "whatWeAreLearning": "Outcome memory complements information hubs.",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "HUMAN_REVIEW_REQUIRED",
+        "NO_AUTO_PUBLISH",
+        "NO_AUTO_SEND"
+      ]
+    }
+  ]
+}

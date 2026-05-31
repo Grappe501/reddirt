@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
+import { runDailyIntelligenceAgentPassAsync } from "@/lib/intelligence/intelligenceAgentOrchestrator";
+import { composeGovernedBriefRegistry } from "@/lib/intelligence/briefs/briefRegistry";
+import { AiIntelligenceBrainPanel } from "@/components/admin/intelligence/AiIntelligenceBrainPanel";
+import { PublicBriefGradeIntelligencePanel } from "@/components/admin/intelligence/PublicBriefGradeIntelligencePanel";
+import { AdminMessageIntelligencePanel } from "@/components/admin/intelligence/AdminMessageIntelligencePanel";
 
 export const dynamic = "force-dynamic";
 
@@ -8,9 +13,15 @@ const card = "rounded-md border border-kelly-text/10 bg-kelly-page px-3 py-2 tex
 export default async function OppositionIntelligenceAdminPage() {
   const data = loadKimHammerWorkbench();
   const topTheme = data.highConfidenceThemes[0];
+  const dailyPacket = await runDailyIntelligenceAgentPassAsync({ syncActionQueue: true });
+  const briefRegistry = composeGovernedBriefRegistry({ syncActionQueue: false });
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
+      <AiIntelligenceBrainPanel packet={dailyPacket} />
+      <PublicBriefGradeIntelligencePanel packet={dailyPacket} registry={briefRegistry} />
+      <AdminMessageIntelligencePanel />
+
       <header className="mb-6 border-b border-kelly-text/10 pb-4">
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Opposition Research Workbench</p>
         <h1 className="font-heading text-2xl font-bold">Candidate Command View</h1>
@@ -58,6 +69,18 @@ export default async function OppositionIntelligenceAdminPage() {
           <div className="mt-2 flex flex-col gap-2 text-xs">
             <Link className="rounded border border-kelly-navy/30 bg-kelly-navy px-2 py-1 font-bold text-white" href="/admin/intelligence/debate-command">
               Executive Debate Command Center
+            </Link>
+            <Link
+              className="rounded border-2 border-teal-800/50 bg-teal-700 px-2 py-1 font-bold text-white"
+              href="/admin/intelligence/command-center"
+            >
+              Operations command center (NSI-16)
+            </Link>
+            <Link
+              className="rounded border-2 border-violet-800/40 bg-violet-700 px-2 py-1 font-bold text-white"
+              href="/admin/intelligence/memory"
+            >
+              Campaign memory (NSI-17)
             </Link>
             <Link className="rounded border px-2 py-1 font-semibold text-kelly-navy" href="/admin/intelligence/kim-hammer">
               Kim Hammer command center

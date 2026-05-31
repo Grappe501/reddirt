@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-31T19:48:04.945Z",
+  "records": [
+    {
+      "id": "kh-writing-2025-election-integrity-oped",
+      "opponentId": "kim-hammer",
+      "title": "Arkansas Leads the Way in Election Integrity: A Commitment to Fairness and Transparency",
+      "writingType": "OP_ED",
+      "date": "2025-06-11",
+      "publisher": "Hammer campaign website",
+      "url": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/",
+      "summary": "Long-form campaign-authored argument on election integrity, historical framing, and SOS policy goals.",
+      "citationSourceId": "cit-src-writing-kh-writing-2025-election-integrity-oped",
+      "retrievalNeeded": false,
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "kh-writing-2024-paper-ballot-letter",
+      "opponentId": "kim-hammer",
+      "title": "Letter to the editor on paper ballots",
+      "writingType": "LETTER_TO_EDITOR",
+      "date": "2024-02-27",
+      "publisher": "MySaline",
+      "url": "https://www.mysaline.com/letters-hammer-paper-ballots-patriots/",
+      "summary": "Letter-format public argument on paper ballot and election process topics.",
+      "citationSourceId": "cit-src-writing-kh-writing-2024-paper-ballot-letter",
+      "retrievalNeeded": false,
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "kh-writing-2026-monument-letter",
+      "opponentId": "kim-hammer",
+      "title": "Letter to Secretary of State regarding Monument to the Unborn",
+      "writingType": "PUBLIC_LETTER",
+      "date": "2026-01-13",
+      "publisher": "Arkansasonline documents index",
+      "url": "https://dev.arkansasonline.com/documents/2026/jan/13/sen-hammer-letter-monument-to-the-unborn/",
+      "summary": "Document-indexed public letter attributed to Senator Hammer.",
+      "citationSourceId": "cit-src-writing-kh-writing-2026-monument-letter",
+      "retrievalNeeded": false,
+      "createdAt": "2026-05-31T19:48:04.826Z"
+    }
+  ]
+}

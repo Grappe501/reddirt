@@ -1,0 +1,1305 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-31T19:48:04.945Z",
+  "items": [
+    {
+      "id": "archive-writing-kh-writing-2025-election-integrity-oped",
+      "opponentId": "kim-hammer",
+      "itemType": "AUTHORED_WRITING",
+      "title": "Arkansas Leads the Way in Election Integrity: A Commitment to Fairness and Transparency",
+      "date": "2025-06-11",
+      "sourceTitle": "Hammer campaign website",
+      "sourceUrlOrPath": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/",
+      "sourceType": "OP_ED",
+      "topicTags": [
+        "election integrity",
+        "security",
+        "transparency",
+        "statewide election administration"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "secretary-of-state"
+      ],
+      "summary": "Long-form campaign-authored argument on election integrity, historical framing, and SOS policy goals.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [
+        "kh-writing-2025-election-integrity-oped"
+      ],
+      "claimIds": [],
+      "citationSourceIds": [
+        "cit-src-writing-kh-writing-2025-election-integrity-oped"
+      ],
+      "citationAnchorIds": [
+        "cit-anchor-writing-kh-writing-2025-election-integrity-oped"
+      ],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 85,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.826Z",
+      "updatedAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "archive-writing-kh-writing-2024-paper-ballot-letter",
+      "opponentId": "kim-hammer",
+      "itemType": "AUTHORED_WRITING",
+      "title": "Letter to the editor on paper ballots",
+      "date": "2024-02-27",
+      "sourceTitle": "MySaline",
+      "sourceUrlOrPath": "https://www.mysaline.com/letters-hammer-paper-ballots-patriots/",
+      "sourceType": "LETTER_TO_EDITOR",
+      "topicTags": [
+        "paper ballots",
+        "tabulation process",
+        "election administration framing"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "secretary-of-state"
+      ],
+      "summary": "Letter-format public argument on paper ballot and election process topics.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [
+        "kh-writing-2024-paper-ballot-letter"
+      ],
+      "claimIds": [],
+      "citationSourceIds": [
+        "cit-src-writing-kh-writing-2024-paper-ballot-letter"
+      ],
+      "citationAnchorIds": [
+        "cit-anchor-writing-kh-writing-2024-paper-ballot-letter"
+      ],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 65,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "PARTIAL_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.826Z",
+      "updatedAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "archive-writing-kh-writing-2026-monument-letter",
+      "opponentId": "kim-hammer",
+      "itemType": "AUTHORED_WRITING",
+      "title": "Letter to Secretary of State regarding Monument to the Unborn",
+      "date": "2026-01-13",
+      "sourceTitle": "Arkansasonline documents index",
+      "sourceUrlOrPath": "https://dev.arkansasonline.com/documents/2026/jan/13/sen-hammer-letter-monument-to-the-unborn/",
+      "sourceType": "PUBLIC_LETTER",
+      "topicTags": [
+        "public correspondence",
+        "social issue positioning"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "secretary-of-state"
+      ],
+      "summary": "Document-indexed public letter attributed to Senator Hammer.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [
+        "kh-writing-2026-monument-letter"
+      ],
+      "claimIds": [],
+      "citationSourceIds": [
+        "cit-src-writing-kh-writing-2026-monument-letter"
+      ],
+      "citationAnchorIds": [
+        "cit-anchor-writing-kh-writing-2026-monument-letter"
+      ],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 65,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "PARTIAL_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.826Z",
+      "updatedAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "archive-clip-kh-runoff-media-clips-2026",
+      "opponentId": "kim-hammer",
+      "itemType": "VIDEO_CLIP",
+      "title": "Runoff race media coverage clips (not formal debate archive)",
+      "date": null,
+      "sourceTitle": "Runoff race media coverage clips (not formal debate archive)",
+      "sourceUrlOrPath": "https://katv.com/news/hammer-brings-the-hammer-kim-hammer-wins-arkansas-secretary-of-state-runoff",
+      "sourceType": "MEDIA_CLIP",
+      "topicTags": [
+        "debate-prep",
+        "media"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "secretary-of-state"
+      ],
+      "summary": "Direct Kim Hammer media/debate asset — not formal debate archive",
+      "directQuotes": [],
+      "clipReferences": [
+        "kh-runoff-media-clips-2026"
+      ],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [
+        "cit-src-clip-kh-runoff-media-clips-2026"
+      ],
+      "citationAnchorIds": [
+        "cit-anchor-clip-kh-runoff-media-clips-2026"
+      ],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 70,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.826Z",
+      "updatedAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "archive-ref-clip-ar-sos-debate-2022-pbs",
+      "opponentId": "kim-hammer",
+      "itemType": "DEBATE_CLIP",
+      "title": "Arkansas PBS Secretary of State Debate (2022)",
+      "date": null,
+      "sourceTitle": "Arkansas PBS Secretary of State Debate (2022)",
+      "sourceUrlOrPath": "https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/",
+      "sourceType": "DEBATE_VIDEO",
+      "topicTags": [
+        "sos-debate-reference",
+        "debate-prep"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "secretary-of-state"
+      ],
+      "summary": "Reference SOS debate — not Kim Hammer footage",
+      "directQuotes": [],
+      "clipReferences": [
+        "ar-sos-debate-2022-pbs"
+      ],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [
+        "cit-src-clip-ar-sos-debate-2022-pbs"
+      ],
+      "citationAnchorIds": [
+        "cit-anchor-clip-ar-sos-debate-2022-pbs"
+      ],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 80,
+      "publicUseRisk": "LOW",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.826Z",
+      "updatedAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "archive-ref-clip-ar-sos-debate-2022-coverage",
+      "opponentId": "kim-hammer",
+      "itemType": "DEBATE_CLIP",
+      "title": "4029 debate recap and question coverage",
+      "date": null,
+      "sourceTitle": "4029 debate recap and question coverage",
+      "sourceUrlOrPath": "https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807",
+      "sourceType": "DEBATE_RECAP",
+      "topicTags": [
+        "sos-debate-reference",
+        "debate-prep"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "secretary-of-state"
+      ],
+      "summary": "Reference SOS debate — not Kim Hammer footage",
+      "directQuotes": [],
+      "clipReferences": [
+        "ar-sos-debate-2022-coverage"
+      ],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [
+        "cit-src-clip-ar-sos-debate-2022-coverage"
+      ],
+      "citationAnchorIds": [
+        "cit-anchor-clip-ar-sos-debate-2022-coverage"
+      ],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 80,
+      "publicUseRisk": "LOW",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.826Z",
+      "updatedAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "archive-background-deep-profile",
+      "opponentId": "kim-hammer",
+      "itemType": "BIOGRAPHICAL_RECORD",
+      "title": "Kim Hammer Background Deep Profile",
+      "date": null,
+      "sourceTitle": "Internal background profile",
+      "sourceUrlOrPath": "data/opposition/kim-hammer-profile/kim-hammer-background-deep-profile.json",
+      "sourceType": "INTERNAL_ANALYSIS",
+      "topicTags": [
+        "biography",
+        "education",
+        "civic"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "secretary-of-state"
+      ],
+      "summary": "Structured biographical profile with evidence-status flags per field",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 55,
+      "publicUseRisk": "HIGH",
+      "researchStatus": "NEEDS_REVIEW",
+      "createdAt": "2026-05-31T19:48:04.826Z",
+      "updatedAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "archive-management-capacity-assessment",
+      "opponentId": "kim-hammer",
+      "itemType": "MANAGEMENT_RECORD",
+      "title": "Kim Hammer SOS Management Capacity Assessment",
+      "date": null,
+      "sourceTitle": "Internal management capacity assessment",
+      "sourceUrlOrPath": "data/opposition/kim-hammer-profile/kim-hammer-management-capacity-assessment.json",
+      "sourceType": "INTERNAL_ANALYSIS",
+      "topicTags": [
+        "management",
+        "sos-operations",
+        "qualification"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "secretary-of-state"
+      ],
+      "summary": "Qualification scrutiny signals — requires hard validation per retrieval task kh3b-management-readiness-evidence",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 50,
+      "publicUseRisk": "HIGH",
+      "researchStatus": "NEEDS_REVIEW",
+      "createdAt": "2026-05-31T19:48:04.826Z",
+      "updatedAt": "2026-05-31T19:48:04.826Z"
+    },
+    {
+      "id": "archive-bill-SB486",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB486 / Act 728: TO AMEND THE LAW CONCERNING ELECTIONEERING; AND TO AMEND THE LAW CONCERNING PENA",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "ballot_access"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING ELECTIONEERING; AND TO AMEND THE LAW CONCERNING PENALTIES FOR MISDEMEANOR OFFENSES RELATED TO VOTING.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB487",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB487 / Act 729: CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITE",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "county_election_administration"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITES, AND VOTE CENTERS; AND TO AMEND ARKANSAS ELECTION LAW.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB488",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB488 / Act 727: TO AMEND THE FREEDOM OF INFORMATION ACT OF 1967; TO CREATE AN EXEMPTION TO THE E",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB488&ddBienniumSession=2021%2F2021R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "voting_equipment_paper_ballots",
+        "transparency_public_records"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE FREEDOM OF INFORMATION ACT OF 1967; TO CREATE AN EXEMPTION TO THE EXAMINATION AND COPYING OF PUBLIC RECORDS; AND TO AMEND THE LAW CONCERNING THE FREEDOM OF INFORMATION ACT OF 1967 AND VOTED BALLOTS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB582",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB582 / Act 1051: TO AMEND ARKANSAS LAW CONCERNING COUNTY BOARDS OF ELECTION COMMISSIONERS; TO AME",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB582&ddBienniumSession=2021%2F2021R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "county_election_administration"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND ARKANSAS LAW CONCERNING COUNTY BOARDS OF ELECTION COMMISSIONERS; TO AMEND HOW COUNTY BOARDS OF ELECTION COMMISSIONERS TAKE THE OATH; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB643",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB643 / Act 973: TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; AND TO AMEND ARKANSAS LAW CON",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB643&ddBienniumSession=2021%2F2021R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "absentee_voting"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB644",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB644 / Act 974: CONCERNING THE INVESTIGATION OF VIOLATIONS OF ELECTION LAW; AND TO ESTABLISH AN ",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB644&ddBienniumSession=2021%2F2021R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "election_enforcement"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "CONCERNING THE INVESTIGATION OF VIOLATIONS OF ELECTION LAW; AND TO ESTABLISH AN ELECTION LAW VIOLATION HOTLINE.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-HB1457",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "HB1457 / Act 444: TO ESTABLISH THE ARKANSAS POLL WATCHERS BILL OF RIGHTS ACT OF 2023; TO AMEND THE",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1457&ddBienniumSession=2023%2F2023R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "county_election_administration",
+        "ballot_access",
+        "poll_watchers_election_observers"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO ESTABLISH THE ARKANSAS POLL WATCHERS BILL OF RIGHTS ACT OF 2023; TO AMEND THE LAW CONCERNING POLL WATCHERS; AND TO AMEND THE LAW CONCERNING ELECTION PROCEDURES.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-HB1464",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "HB1464 / Act 295: TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND ",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1464&ddBienniumSession=2023%2F2023R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "election_enforcement"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-HB1487",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "HB1487 / Act 329: TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING ",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1487&ddBienniumSession=2023%2F2023R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "voting_equipment_paper_ballots"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING THE HANDLING OF ELECTION BALLOTS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB250",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB250 / Act 350: TO AMEND THE LAW CONCERNING PAPER BALLOTS; TO AMEND THE LAW CONCERNING MARKING A",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB250&ddBienniumSession=2023%2F2023R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "voting_equipment_paper_ballots"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING PAPER BALLOTS; TO AMEND THE LAW CONCERNING MARKING AND COUNTING PAPER BALLOTS; TO AMEND THE LAW CONCERNING THE DECLARATION OF ELECTION RESULTS; AND TO DECLARE AN EMERGENCY.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB254",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB254: AN ACT TO ELIMINATE WRITE-IN CANDIDATES IN ELECTIONS; TO AMEND ELECTION PROCEDUR",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB254&ddBienniumSession=2023%2F2023R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "ballot_access",
+        "write_ins_candidate_access"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "AN ACT TO ELIMINATE WRITE-IN CANDIDATES IN ELECTIONS; TO AMEND ELECTION PROCEDURES; AND TO AMEND THE LAW CONCERNING ELECTION.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 70,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB258",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB258: TO AMEND THE METHOD OF VOTING ABSENTEE; AND TO PROHIBIT THE USE OF ABSENTEE BALL",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB258&ddBienniumSession=2023%2F2023R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "absentee_voting"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE METHOD OF VOTING ABSENTEE; AND TO PROHIBIT THE USE OF ABSENTEE BALLOT DROP BOXES.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 70,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB272",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB272: TO CREATE AN ELECTION INTEGRITY REVIEW PROCESS; TO AMEND THE DUTIES OF THE STATE",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB272&ddBienniumSession=2023%2F2023R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "county_election_administration",
+        "election_enforcement"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO CREATE AN ELECTION INTEGRITY REVIEW PROCESS; TO AMEND THE DUTIES OF THE STATE BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE LAW CONCERNING ELECTION LAW VIOLATIONS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 70,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB273",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB273: TO AMEND ELECTION LAW CONCERNING POLLING SITES; AND TO AMEND THE LOCATION OF VOT",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB273&ddBienniumSession=2023%2F2023R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "county_election_administration"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND ELECTION LAW CONCERNING POLLING SITES; AND TO AMEND THE LOCATION OF VOTE CENTERS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 70,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB292",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB292: TO AMEND THE COMPENSATION OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONER",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB292&ddBienniumSession=2023%2F2023R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "county_election_administration"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE COMPENSATION OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS; AND TO AMEND THE DUTIES OF A MEMBER OF A COUNTY BOARD OF ELECTION COMMISSIONERS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 70,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-HB1222",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "HB1222 / Act 154: TO REQUIRE THE ATTORNEY GENERAL TO REVIEW BALLOT TITLES FOR CONFLICTS WITH THE U",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1222&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering",
+        "ballot_access"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO REQUIRE THE ATTORNEY GENERAL TO REVIEW BALLOT TITLES FOR CONFLICTS WITH THE UNITED STATES CONSTITUTION AND FEDERAL STATUTES; AND TO PROHIBIT THE SUBMISSION OF CONFLICTING INITIATIVE PETITIONS AND REFERENDUM PETITIONS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-HB1693",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "HB1693 / Act 458: TO AMEND THE LAW CONCERNING DAMAGED OR DEFECTIVE BALLOTS; AND TO ALLOW THE STATE",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1693&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "election_enforcement"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING DAMAGED OR DEFECTIVE BALLOTS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO PROMULGATE RULES REGARDING THE DUPLICATION OF DAMAGED OR DEFECTIVE BALLOTS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-HB1707",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "HB1707 / Act 524: TO REQUIRE CERTAIN CANDIDATES TO FILE REPORTS WITH THE SECRETARY OF STATE; TO AM",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "ballot_access",
+        "secretary_of_state_duties",
+        "write_ins_candidate_access"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO REQUIRE CERTAIN CANDIDATES TO FILE REPORTS WITH THE SECRETARY OF STATE; TO AMEND PORTIONS OF INITIATED ACT 1 OF 1996; AND TO DECLARE AN EMERGENCY.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-HB1837",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "HB1837 / Act 999: TO AMEND THE LAW CONCERNING DISCLOSURE FOR MATTERS REFERRED TO VOTERS; AND TO BA",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1837&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "unclassified_election_topic"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING DISCLOSURE FOR MATTERS REFERRED TO VOTERS; AND TO BAN FOREIGN FUNDING FOR BALLOT MEASURES; TO AMEND PORTIONS OF THE ARKANSAS CODE THAT RESULTED FROM INITIATED ACT 1 OF 1996.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB207",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB207 / Act 218: TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO REQUIRE A CA",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB207&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO DISCLOSE THAT PETITION FRAUD IS A CRIMINAL OFFENSE; AND TO DECLARE AN EMERGENCY.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB208",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB208 / Act 240: TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO VIEW A CANVA",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB208&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO VIEW A CANVASSER TO REQUEST PHOTO IDENTIFICATION BEFORE OBTAINING A SIGNATURE; AND TO DECLARE AN EMERGENCY.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB210",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB210 / Act 274: TO REQUIRE THE SIGNER TO READ THE BALLOT TITLE OF THE PETITION IN THE PRESENCE O",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB210&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering",
+        "ballot_access"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO REQUIRE THE SIGNER TO READ THE BALLOT TITLE OF THE PETITION IN THE PRESENCE OF A CANVASSER; AND TO DECLARE AN EMERGENCY.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB211",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB211 / Act 241: TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS AND REFERENDUM PETITIONS; TO RE",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB211&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO SUBMIT AN AFFIDAVIT BEFORE SIGNATURES CAN BE COUNTED; AND TO DECLARE AN EMERGENCY.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB291",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB291 / Act 279: TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND ",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB291&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "election_enforcement"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE DEADLINES FOR COMPLAINTS OF ELECTION LAW VIOLATIONS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB294",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB294 / Act 280: TO AMEND THE LAW CONCERNING ELECTION AUDITS; AND TO ALLOW THE STATE BOARD OF ELE",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB294&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "county_election_administration",
+        "election_enforcement"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING ELECTION AUDITS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO AUDIT A COUNTY IN THE PRECEDING ELECTION IN CERTAIN CIRCUMSTANCES.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB296",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB296 / Act 282: TO AMEND THE LAW CONCERNING THE DESIGNATION OF AN EARLY VOTING LOCATION BY THE C",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB296&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "county_election_administration"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING THE DESIGNATION OF AN EARLY VOTING LOCATION BY THE COUNTY CLERK.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB299",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB299 / Act 403: TO REQUIRE A STAFF MEMBER TO WITNESS AN ADMINISTRATOR ASSISTING A RESIDENT OF A ",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB299&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "absentee_voting"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO REQUIRE A STAFF MEMBER TO WITNESS AN ADMINISTRATOR ASSISTING A RESIDENT OF A LONG-TERM RESIDENTIAL CARE FACILITY WITH ABSENTEE VOTING.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB551",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB551 / Act 764: TO AMEND THE LAW CONCERNING CANVASSING FOR A PETITION FOR A LOCAL OPTION ELECTIO",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB551&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING CANVASSING FOR A PETITION FOR A LOCAL OPTION ELECTION.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-bill-SB584",
+      "opponentId": "kim-hammer",
+      "itemType": "BILL_RECORD",
+      "title": "SB584 / Act 768: TO AMEND THE LAW CONCERNING LOCAL INITIATIVE AND REFERENDUM PETITIONS.",
+      "date": null,
+      "sourceTitle": "Arkansas Legislature bill index",
+      "sourceUrlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB584&ddBienniumSession=2025%2F2025R",
+      "sourceType": "VOTING_RECORD",
+      "topicTags": [
+        "direct_democracy_ballot_initiatives",
+        "petition_gathering"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature",
+        "secretary-of-state"
+      ],
+      "summary": "TO AMEND THE LAW CONCERNING LOCAL INITIATIVE AND REFERENDUM PETITIONS.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-election-record-rollup",
+      "opponentId": "kim-hammer",
+      "itemType": "VOTING_RECORD",
+      "title": "Kim Hammer Election Record Rollup (29 bills)",
+      "date": null,
+      "sourceTitle": "Election record bill index",
+      "sourceUrlOrPath": "data/opposition/kim-hammer-election-record-bill-index.json",
+      "sourceType": "REGISTRY",
+      "topicTags": [
+        "legislative-record"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "legislature"
+      ],
+      "summary": "29 bills indexed with act numbers and topic categories",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 90,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.827Z",
+      "updatedAt": "2026-05-31T19:48:04.827Z"
+    },
+    {
+      "id": "archive-claim-pdeb-001-election-integrity-record",
+      "opponentId": "kim-hammer",
+      "itemType": "PUBLIC_STATEMENT",
+      "title": "Public statements emphasize election-security legislation as a central qualification for SOS role.",
+      "date": null,
+      "sourceTitle": "Kim Hammer evidence index — export-ready claim",
+      "sourceUrlOrPath": "data/opposition/kim-hammer-profile/kim-hammer-kh4-claim-graph.json",
+      "sourceType": "CLAIM_GRAPH",
+      "topicTags": [
+        "export-ready"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "secretary-of-state"
+      ],
+      "summary": "Public statements emphasize election-security legislation as a central qualification for SOS role.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [
+        "pdeb-001-election-integrity-record"
+      ],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 80,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.829Z",
+      "updatedAt": "2026-05-31T19:48:04.829Z"
+    },
+    {
+      "id": "archive-claim-pdeb-003-debate-question-patterns",
+      "opponentId": "kim-hammer",
+      "itemType": "PUBLIC_STATEMENT",
+      "title": "Recent Arkansas SOS debates commonly include election confidence, voter access, and business-services operations questio",
+      "date": null,
+      "sourceTitle": "Kim Hammer evidence index — export-ready claim",
+      "sourceUrlOrPath": "data/opposition/kim-hammer-profile/kim-hammer-kh4-claim-graph.json",
+      "sourceType": "CLAIM_GRAPH",
+      "topicTags": [
+        "export-ready"
+      ],
+      "countyTags": [],
+      "officeTags": [
+        "secretary-of-state"
+      ],
+      "summary": "Recent Arkansas SOS debates commonly include election confidence, voter access, and business-services operations questions.",
+      "directQuotes": [],
+      "clipReferences": [],
+      "writingReferences": [],
+      "claimIds": [
+        "pdeb-003-debate-question-patterns"
+      ],
+      "citationSourceIds": [],
+      "citationAnchorIds": [],
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 80,
+      "publicUseRisk": "MEDIUM",
+      "researchStatus": "VERIFIED_SOURCE",
+      "createdAt": "2026-05-31T19:48:04.829Z",
+      "updatedAt": "2026-05-31T19:48:04.829Z"
+    }
+  ]
+}

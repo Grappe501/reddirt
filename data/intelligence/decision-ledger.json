@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-29T05:33:14.121Z",
+  "purpose": "Governed campaign decision institutional memory.",
+  "governanceDefaults": [
+    "INTERNAL_USE_ONLY",
+    "NON_PUBLISHABLE",
+    "HUMAN_REVIEW_REQUIRED",
+    "RECOMMENDATION_ONLY"
+  ],
+  "entries": [
+    {
+      "decisionId": "dec-7ebc15a0",
+      "title": "NSI-17 validation decision (remove if undesired)",
+      "decisionDate": "2026-05-29",
+      "category": "Other",
+      "summary": "Automated test entry for institutional memory validation.",
+      "reasoning": "Verify write path.",
+      "expectedOutcome": "Ledger persists entry.",
+      "actualOutcome": "",
+      "resultStatus": "Unknown",
+      "lessonLearned": "Test harness wrote a decision — operators may archive or delete in a later pass.",
+      "confidenceImpact": "",
+      "notes": "",
+      "createdAt": "2026-05-29T05:33:14.121Z",
+      "updatedAt": "2026-05-29T05:33:14.121Z",
+      "createdBy": "test-script",
+      "governanceLabels": [
+        "INTERNAL_USE_ONLY",
+        "NON_PUBLISHABLE",
+        "HUMAN_REVIEW_REQUIRED"
+      ]
+    }
+  ]
+}

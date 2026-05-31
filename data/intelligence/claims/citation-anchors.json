@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-31T19:59:40.659Z",
+  "anchors": [
+    {
+      "id": "opposition-kim-hammer-v1-src-0",
+      "sourceId": "src-opposition-kim-hammer-v1-src-0",
+      "anchorType": "registry_key",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "opposition-archive-items.json"
+    },
+    {
+      "id": "opposition-kim-hammer-v1-src-1",
+      "sourceId": "src-opposition-kim-hammer-v1-src-1",
+      "anchorType": "registry_key",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "kim-hammer-evidence-index"
+    },
+    {
+      "id": "opposition-kim-hammer-v1-src-2",
+      "sourceId": "src-opposition-kim-hammer-v1-src-2",
+      "anchorType": "registry_key",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "kim-hammer-election-record-bill-index.json"
+    },
+    {
+      "id": "opposition-kim-hammer-v1-src-3",
+      "sourceId": "src-opposition-kim-hammer-v1-src-3",
+      "anchorType": "registry_key",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "kim-hammer-kh4-claim-graph.json"
+    },
+    {
+      "id": "opposition-kim-hammer-v1-src-4",
+      "sourceId": "src-opposition-kim-hammer-v1-src-4",
+      "anchorType": "registry_key",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "kim-hammer-intelligence-gaps.json"
+    },
+    {
+      "id": "debate-prep-v1-src-0",
+      "sourceId": "src-debate-prep-v1-src-0",
+      "anchorType": "registry_key",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "debateCommandCenter"
+    },
+    {
+      "id": "debate-prep-v1-src-1",
+      "sourceId": "src-debate-prep-v1-src-1",
+      "anchorType": "registry_key",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "debateReadinessSignals"
+    },
+    {
+      "id": "debate-prep-v1-src-2",
+      "sourceId": "src-debate-prep-v1-src-2",
+      "anchorType": "registry_key",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "kim-hammer-debate-profile.json"
+    }
+  ]
+}
