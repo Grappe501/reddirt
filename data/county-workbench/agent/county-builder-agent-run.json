@@ -1,6 +1,6 @@
 {
-  "runId": "cba-mpu7y1xz",
-  "generatedAt": "2026-05-31T20:14:59.927Z",
+  "runId": "cba-mpw92lys",
+  "generatedAt": "2026-06-02T06:22:04.470Z",
   "governance": {
     "publicationSafety": "NON_PUBLISHABLE",
     "humanReviewRequired": true,
@@ -234,391 +234,391 @@
     {
       "countySlug": "clay-county",
       "countyName": "Clay County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "cleburne-county",
       "countyName": "Cleburne County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "cleveland-county",
       "countyName": "Cleveland County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "columbia-county",
       "countyName": "Columbia County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "conway-county",
       "countyName": "Conway County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "craighead-county",
       "countyName": "Craighead County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "crawford-county",
       "countyName": "Crawford County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "crittenden-county",
       "countyName": "Crittenden County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "cross-county",
       "countyName": "Cross County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "dallas-county",
       "countyName": "Dallas County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "desha-county",
       "countyName": "Desha County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "drew-county",
       "countyName": "Drew County",
-      "score": 20,
-      "gapCount": 12
-    },
-    {
-      "countySlug": "faulkner-county",
-      "countyName": "Faulkner County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "franklin-county",
       "countyName": "Franklin County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "fulton-county",
       "countyName": "Fulton County",
-      "score": 20,
-      "gapCount": 12
-    },
-    {
-      "countySlug": "garland-county",
-      "countyName": "Garland County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "grant-county",
       "countyName": "Grant County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "greene-county",
       "countyName": "Greene County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "hempstead-county",
       "countyName": "Hempstead County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "hot-spring-county",
       "countyName": "Hot Spring County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "howard-county",
       "countyName": "Howard County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "independence-county",
       "countyName": "Independence County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "izard-county",
       "countyName": "Izard County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "jackson-county",
       "countyName": "Jackson County",
-      "score": 20,
-      "gapCount": 12
-    },
-    {
-      "countySlug": "jefferson-county",
-      "countyName": "Jefferson County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "johnson-county",
       "countyName": "Johnson County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "lafayette-county",
       "countyName": "Lafayette County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "lawrence-county",
       "countyName": "Lawrence County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "lee-county",
       "countyName": "Lee County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "lincoln-county",
       "countyName": "Lincoln County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "little-river-county",
       "countyName": "Little River County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "logan-county",
       "countyName": "Logan County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "lonoke-county",
       "countyName": "Lonoke County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "madison-county",
       "countyName": "Madison County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "marion-county",
       "countyName": "Marion County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "miller-county",
       "countyName": "Miller County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "mississippi-county",
       "countyName": "Mississippi County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "monroe-county",
       "countyName": "Monroe County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "montgomery-county",
       "countyName": "Montgomery County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "nevada-county",
       "countyName": "Nevada County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "newton-county",
       "countyName": "Newton County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "ouachita-county",
       "countyName": "Ouachita County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "perry-county",
       "countyName": "Perry County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "phillips-county",
       "countyName": "Phillips County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "pike-county",
       "countyName": "Pike County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "poinsett-county",
       "countyName": "Poinsett County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "polk-county",
       "countyName": "Polk County",
-      "score": 20,
-      "gapCount": 12
-    },
-    {
-      "countySlug": "pope-county",
-      "countyName": "Pope County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "prairie-county",
       "countyName": "Prairie County",
-      "score": 20,
-      "gapCount": 12
-    },
-    {
-      "countySlug": "pulaski-county",
-      "countyName": "Pulaski County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "randolph-county",
       "countyName": "Randolph County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "st-francis-county",
       "countyName": "St. Francis County",
-      "score": 20,
-      "gapCount": 12
-    },
-    {
-      "countySlug": "saline-county",
-      "countyName": "Saline County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "scott-county",
       "countyName": "Scott County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "searcy-county",
       "countyName": "Searcy County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "sebastian-county",
       "countyName": "Sebastian County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "sevier-county",
       "countyName": "Sevier County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "sharp-county",
       "countyName": "Sharp County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "stone-county",
       "countyName": "Stone County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "union-county",
       "countyName": "Union County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "van-buren-county",
       "countyName": "Van Buren County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "washington-county",
       "countyName": "Washington County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "white-county",
       "countyName": "White County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "woodruff-county",
       "countyName": "Woodruff County",
-      "score": 20,
+      "score": 15,
       "gapCount": 12
     },
     {
       "countySlug": "yell-county",
       "countyName": "Yell County",
-      "score": 20,
+      "score": 15,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "score": 26,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "score": 26,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "score": 26,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "score": 26,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "score": 26,
+      "gapCount": 12
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "score": 26,
       "gapCount": 12
     }
   ],
@@ -661,7 +661,7 @@
       "countySlug": "ALL",
       "status": "DEFERRED",
       "reason": "Pass C1 — CENSUS_API_KEY",
-      "createdAt": "2026-05-31T20:14:59.928Z"
+      "createdAt": "2026-06-02T06:22:04.475Z"
     },
     {
       "jobId": "cbq-c2",
@@ -669,7 +669,7 @@
       "countySlug": "ALL",
       "status": "DEFERRED",
       "reason": "Pass C2 — SOS import",
-      "createdAt": "2026-05-31T20:14:59.928Z"
+      "createdAt": "2026-06-02T06:22:04.475Z"
     },
     {
       "jobId": "cbq-c3",
@@ -677,7 +677,7 @@
       "countySlug": "ALL",
       "status": "DEFERRED",
       "reason": "Pass C3 — BLS",
-      "createdAt": "2026-05-31T20:14:59.928Z"
+      "createdAt": "2026-06-02T06:22:04.475Z"
     },
     {
       "jobId": "cbq-bridge",
@@ -685,7 +685,7 @@
       "countySlug": "ALL",
       "status": "PENDING",
       "reason": "Run when COUNTY_WORKBENCH_ROOT set",
-      "createdAt": "2026-05-31T20:14:59.928Z"
+      "createdAt": "2026-06-02T06:22:04.475Z"
     }
   ],
   "topGapCounties": [

@@ -1,4 +1,23 @@
-export type CountyKpiSource = "county-workbench-csv" | "county-workbench-json" | "planning-estimate" | "campaign-os" | "not-connected";
+export type CountyKpiSource =
+  | "county-workbench-csv"
+  | "county-workbench-json"
+  | "planning-estimate"
+  | "campaign-os"
+  | "canonical-db"
+  | "not-connected";
+
+export type CanonicalRegistrationGoalStatus =
+  | "live"
+  | "not_set"
+  | "not_connected"
+  | "db_unavailable"
+  | "unverified_sync_context";
+
+export type CountyDeploymentReadiness =
+  | "DEPLOYMENT_READY"
+  | "INTERNAL_PLANNING_ONLY"
+  | "SHELL_ONLY"
+  | "BLOCKED";
 
 export type CountyWorkbenchCountyRef = {
   countySlug: string;
@@ -15,7 +34,15 @@ export type CountyNormalizedKpi = {
   countySlug: string;
   countyName: string;
   regionSlug: string;
+  /** @deprecated Use canonicalRegistrationGoal — kept null unless canonical DB value present. */
   registrationGoal: number | null;
+  /** Canonical campaign registration target from CountyCampaignStats.registrationGoal (read-only). */
+  canonicalRegistrationGoal: number | null;
+  canonicalRegistrationGoalStatus: CanonicalRegistrationGoalStatus;
+  canonicalRegistrationGoalSource: "CountyCampaignStats" | null;
+  /** 2022 Gov vote-share planning proxy — NOT a registration goal. */
+  planningVoteTargetProxy: number | null;
+  planningVoteTargetSource: "arkansasStateAlignedTargets2022" | null;
   registrationCurrent: number | null;
   registrationProgress: number | null;
   voterContactGoal: number | null;
@@ -37,7 +64,23 @@ export type CountyNormalizedKpi = {
   recommendedActions: string[];
   sourceLinks: { label: string; href: string }[];
   goalSource: CountyKpiSource;
+  deploymentReadiness: CountyDeploymentReadiness;
   notes: string[];
+};
+
+export type CountyReadinessClassification = {
+  countySlug: string;
+  countyName: string;
+  deploymentReadiness: CountyDeploymentReadiness;
+  dashboardStatus: string;
+  briefStatus: string;
+  dataQuality: string;
+  goalSourceStatus: string;
+  eventCalendarReadiness: string;
+  fieldPlanReadiness: string;
+  aiRecommendationReadiness: string;
+  biggestBlocker: string;
+  humanVerifyBeforeDeploy: string[];
 };
 
 export type CountyIntelligenceSummary = {

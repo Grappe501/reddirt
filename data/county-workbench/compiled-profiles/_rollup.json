@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-31T20:14:59.343Z",
+  "generatedAt": "2026-06-02T06:22:02.816Z",
   "countyCount": 75,
   "all75": true,
   "avgReadiness": 16,
@@ -124,5 +124,457 @@
       "SOURCE_PROVENANCE_REQUIRED",
       "NO_GOAL_MUTATION"
     ]
-  }
+  },
+  "countyIndex": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "score": 26,
+      "status": "PARTIAL"
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "score": 15,
+      "status": "SHELL"
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "score": 15,
+      "status": "SHELL"
+    }
+  ]
 }

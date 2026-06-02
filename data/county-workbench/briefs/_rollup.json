@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-31T20:14:59.421Z",
+  "generatedAt": "2026-06-02T06:22:03.033Z",
   "countyCount": 75,
   "all75": true,
   "avgReadiness": 16,
@@ -17,5 +17,532 @@
       "SOURCE_PROVENANCE_REQUIRED",
       "NO_GOAL_MUTATION"
     ]
-  }
+  },
+  "countyIndex": [
+    {
+      "countySlug": "arkansas-county",
+      "countyName": "Arkansas County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "ashley-county",
+      "countyName": "Ashley County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "baxter-county",
+      "countyName": "Baxter County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "benton-county",
+      "countyName": "Benton County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "boone-county",
+      "countyName": "Boone County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "bradley-county",
+      "countyName": "Bradley County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "calhoun-county",
+      "countyName": "Calhoun County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyName": "Carroll County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "chicot-county",
+      "countyName": "Chicot County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "clark-county",
+      "countyName": "Clark County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "clay-county",
+      "countyName": "Clay County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "cleburne-county",
+      "countyName": "Cleburne County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "cleveland-county",
+      "countyName": "Cleveland County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "columbia-county",
+      "countyName": "Columbia County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "conway-county",
+      "countyName": "Conway County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyName": "Craighead County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "crawford-county",
+      "countyName": "Crawford County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "crittenden-county",
+      "countyName": "Crittenden County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "cross-county",
+      "countyName": "Cross County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "dallas-county",
+      "countyName": "Dallas County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "desha-county",
+      "countyName": "Desha County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "drew-county",
+      "countyName": "Drew County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyName": "Faulkner County",
+      "readinessScore": 26,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "franklin-county",
+      "countyName": "Franklin County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "fulton-county",
+      "countyName": "Fulton County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "garland-county",
+      "countyName": "Garland County",
+      "readinessScore": 26,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "grant-county",
+      "countyName": "Grant County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "greene-county",
+      "countyName": "Greene County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyName": "Hempstead County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "hot-spring-county",
+      "countyName": "Hot Spring County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "howard-county",
+      "countyName": "Howard County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "independence-county",
+      "countyName": "Independence County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "izard-county",
+      "countyName": "Izard County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "jackson-county",
+      "countyName": "Jackson County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "jefferson-county",
+      "countyName": "Jefferson County",
+      "readinessScore": 26,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyName": "Johnson County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "lafayette-county",
+      "countyName": "Lafayette County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "lawrence-county",
+      "countyName": "Lawrence County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "lee-county",
+      "countyName": "Lee County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "lincoln-county",
+      "countyName": "Lincoln County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "little-river-county",
+      "countyName": "Little River County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "logan-county",
+      "countyName": "Logan County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyName": "Lonoke County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "madison-county",
+      "countyName": "Madison County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "marion-county",
+      "countyName": "Marion County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "miller-county",
+      "countyName": "Miller County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyName": "Mississippi County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "monroe-county",
+      "countyName": "Monroe County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "montgomery-county",
+      "countyName": "Montgomery County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "nevada-county",
+      "countyName": "Nevada County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "newton-county",
+      "countyName": "Newton County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "ouachita-county",
+      "countyName": "Ouachita County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "perry-county",
+      "countyName": "Perry County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "phillips-county",
+      "countyName": "Phillips County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "pike-county",
+      "countyName": "Pike County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "poinsett-county",
+      "countyName": "Poinsett County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "polk-county",
+      "countyName": "Polk County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "pope-county",
+      "countyName": "Pope County",
+      "readinessScore": 26,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "prairie-county",
+      "countyName": "Prairie County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyName": "Pulaski County",
+      "readinessScore": 26,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyName": "Randolph County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "st-francis-county",
+      "countyName": "St. Francis County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "saline-county",
+      "countyName": "Saline County",
+      "readinessScore": 26,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "scott-county",
+      "countyName": "Scott County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "searcy-county",
+      "countyName": "Searcy County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "sebastian-county",
+      "countyName": "Sebastian County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "sevier-county",
+      "countyName": "Sevier County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyName": "Sharp County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "stone-county",
+      "countyName": "Stone County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "union-county",
+      "countyName": "Union County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyName": "Van Buren County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "washington-county",
+      "countyName": "Washington County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "white-county",
+      "countyName": "White County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "woodruff-county",
+      "countyName": "Woodruff County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    },
+    {
+      "countySlug": "yell-county",
+      "countyName": "Yell County",
+      "readinessScore": 15,
+      "briefGenerated": true,
+      "shellBrief": true
+    }
+  ]
 }

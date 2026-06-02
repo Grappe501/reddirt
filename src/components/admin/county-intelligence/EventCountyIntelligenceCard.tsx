@@ -65,8 +65,19 @@ export function EventCountyIntelligenceCard({
 
       <dl className="mt-4 grid gap-2 text-xs sm:grid-cols-2">
         <div>
-          <dt className="font-bold">Registration goal (planning)</dt>
-          <dd>{county.registrationGoal?.toLocaleString() ?? "—"}</dd>
+          <dt className="font-bold">Registration goal (canonical)</dt>
+          <dd>
+            {county.canonicalRegistrationGoal?.toLocaleString() ?? (
+              <span className="text-amber-800">Not set — verify in admin</span>
+            )}
+          </dd>
+        </div>
+        <div>
+          <dt className="font-bold">Vote target (planning proxy)</dt>
+          <dd>
+            {county.planningVoteTargetProxy?.toLocaleString() ?? "—"}
+            <span className="ml-1 text-[10px] text-amber-800">NOT a reg goal</span>
+          </dd>
         </div>
         <div>
           <dt className="font-bold">Power of 5 goal (planning)</dt>

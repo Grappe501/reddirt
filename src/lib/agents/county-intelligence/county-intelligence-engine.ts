@@ -24,7 +24,11 @@ export function buildCountyIntelligenceSummary(countySlug: string): CountyIntell
         : "Verify goals in countyWorkbench intelligence tab before paid media.",
     ],
     eventGoals: [
-      county.registrationGoal != null ? `Advance registration planning target (~${county.registrationGoal.toLocaleString()} contacts)` : "Clarify registration goal with county lead",
+      county.registrationGoal != null
+        ? `Advance canonical registration goal (${county.registrationGoal.toLocaleString()}) — verify in admin`
+        : county.planningVoteTargetProxy != null
+          ? `Planning vote target only (~${county.planningVoteTargetProxy.toLocaleString()}) — NOT a registration goal`
+          : "Clarify registration goal with county lead in admin",
       county.powerOfFiveGoal != null ? `Power of 5 relational goal ~${county.powerOfFiveGoal.toLocaleString()}` : "Set relational targets with field manager",
       "Capture leader names and volunteer signups in hot wash",
     ],

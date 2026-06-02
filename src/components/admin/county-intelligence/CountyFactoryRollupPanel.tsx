@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { buildCountyFactoryDashboardRollup } from "@/lib/county-workbench/factory/aiCountyBuilderAgent";
-import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry";
-import { loadCountyBrief } from "@/lib/county-workbench/factory/countyBriefFactory";
-import { loadCompiledProfile } from "@/lib/county-workbench/factory/countyProfileCompiler";
+import { loadProfileRollup, type CountyProfileRollupFile } from "@/lib/county-workbench/factory/countyProfileCompiler";
+import { loadBriefRollup, type CountyBriefRollupFile } from "@/lib/county-workbench/factory/countyBriefFactory";
 
 export function CountyFactoryRollupPanel() {
   const rollup = buildCountyFactoryDashboardRollup();
-  const sampleCounties = ARKANSAS_COUNTY_REGISTRY.slice(0, 8);
+  const profileRollup: CountyProfileRollupFile | null = loadProfileRollup();
+  const briefRollup: CountyBriefRollupFile | null = loadBriefRollup();
+  const sampleRows = profileRollup?.countyIndex?.slice(0, 8) ?? [];
 
   return (
     <section className="rounded-2xl border-2 border-teal-800/20 bg-teal-50/20 p-4">
@@ -59,19 +60,21 @@ export function CountyFactoryRollupPanel() {
             </tr>
           </thead>
           <tbody>
-            {sampleCounties.map((c) => {
-              const profile = loadCompiledProfile(c.slug);
-              const brief = loadCountyBrief(c.slug);
+            {sampleRows.map((row) => {
+              const briefRow = briefRollup?.countyIndex?.find((b) => b.countySlug === row.countySlug);
               return (
-                <tr key={c.slug} className="border-b border-kelly-text/5">
+                <tr key={row.countySlug} className="border-b border-kelly-text/5">
                   <td className="py-1 pr-2">
-                    <Link href={`/admin/counties/${c.slug.replace(/-county$/, "")}`} className="underline text-kelly-navy">
-                      {c.displayName}
+                    <Link
+                      href={`/admin/counties/${row.countySlug.replace(/-county$/, "")}`}
+                      className="underline text-kelly-navy"
+                    >
+                      {row.countyName}
                     </Link>
                   </td>
-                  <td className="py-1 pr-2">{profile?.profileStatus ?? "—"}</td>
-                  <td className="py-1 pr-2">{brief ? "generated" : "—"}</td>
-                  <td className="py-1">{profile?.readinessScore ?? "—"}</td>
+                  <td className="py-1 pr-2">{row.status}</td>
+                  <td className="py-1 pr-2">{briefRow?.briefGenerated ? "generated" : "—"}</td>
+                  <td className="py-1">{row.score}</td>
                 </tr>
               );
             })}
@@ -80,8 +83,8 @@ export function CountyFactoryRollupPanel() {
       </div>
 
       <p className="mt-3 text-xs text-kelly-muted">
-        Run <code>npm run county:factory:all</code> to refresh all counties together. Docs:{" "}
-        <span className="font-semibold">docs/county-workbench/</span>
+        Run <code>npm run county:factory:all</code> to refresh all counties together. Per-county JSON stays off the
+        serverless bundle; rollups only at runtime.
       </p>
     </section>
   );

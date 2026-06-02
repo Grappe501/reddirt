@@ -4,7 +4,7 @@ import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry"
 import { summarizeCountyFactCoverage, findMissingFactsByCounty } from "./countyFactStore";
 import { GLOBAL_REQUIRED_FACT_TYPES, identifyMissingSourceTypes, summarizeSourceCoverage } from "./countySourceCatalog";
 import { summarizeCrossTableCompleteness } from "./countyCrossTableBuilder";
-import { summarizeCompiledProfileReadiness } from "./countyProfileCompiler";
+import { summarizeCompiledProfileReadiness, loadProfileRollup } from "./countyProfileCompiler";
 import { summarizeCountyBriefFactory } from "./countyBriefFactory";
 import type { CountyIngestionJob } from "./countyFactoryTypes";
 import { COUNTY_FACTORY_GOVERNANCE } from "./countyFactoryTypes";
@@ -85,6 +85,7 @@ export function generateCountyBuildQueue(): CountyIngestionJob[] {
 export function runCountyBuilderAgent(repoRoot: string = process.cwd()): CountyBuilderAgentRun {
   const factCoverage = summarizeCountyFactCoverage(repoRoot);
   const profileRollup = summarizeCompiledProfileReadiness();
+  const profileIndex = loadProfileRollup(repoRoot)?.countyIndex ?? [];
   const briefRollup = summarizeCountyBriefFactory();
   const tableRollup = summarizeCrossTableCompleteness(repoRoot);
 
@@ -96,7 +97,10 @@ export function runCountyBuilderAgent(repoRoot: string = process.cwd()): CountyB
 
   const rankings = ARKANSAS_COUNTY_REGISTRY.map((c) => {
     const gaps = findMissingFactsByCounty(c.slug, [...GLOBAL_REQUIRED_FACT_TYPES]).length;
-    const profileScore = profileRollup.lowestReadiness.find((x) => x.countySlug === c.slug)?.score ?? 20;
+    const profileScore =
+      profileIndex.find((x) => x.countySlug === c.slug)?.score ??
+      profileRollup.lowestReadiness.find((x) => x.countySlug === c.slug)?.score ??
+      20;
     return {
       countySlug: c.slug,
       countyName: c.displayName,

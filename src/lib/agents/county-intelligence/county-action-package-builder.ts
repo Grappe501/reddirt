@@ -29,7 +29,11 @@ export function buildCountyActionPackage(
   const p5 = summarizePowerOfFiveForCounty(countySlug);
 
   const topGoals = [
-    county.registrationGoal != null ? `Registration planning target: ${county.registrationGoal.toLocaleString()}` : "Set registration target with county lead",
+    county.canonicalRegistrationGoal != null
+      ? `Canonical registration goal: ${county.canonicalRegistrationGoal.toLocaleString()}`
+      : county.planningVoteTargetProxy != null
+        ? `Vote target proxy only: ${county.planningVoteTargetProxy.toLocaleString()} (NOT registration goal)`
+        : "Set registration target in admin county editor",
     county.powerOfFiveGoal != null ? `Power of 5 target: ${county.powerOfFiveGoal.toLocaleString()}` : "Define Power of 5 county target",
     county.volunteerGoal != null ? `Volunteer target: ${county.volunteerGoal}` : "Staff volunteer pipeline",
   ];
@@ -47,9 +51,9 @@ export function buildCountyActionPackage(
         ? `Close gap toward ${p5.goal.toLocaleString()} (priority ${p5.priority})`
         : "Connect governance sheet for Power of 5 target",
     registrationTarget:
-      county.registrationGoal != null
-        ? `Advance toward ${county.registrationGoal.toLocaleString()} registration contacts`
-        : "Clarify registration goal",
+      county.canonicalRegistrationGoal != null
+        ? `Advance toward ${county.canonicalRegistrationGoal.toLocaleString()} canonical registration goal (admin-verified)`
+        : "Verify canonical registration goal in admin before field messaging",
     volunteerNeed: plan?.volunteerRecommendations[0] ?? "Recruit check-in and outreach volunteers for next event",
     eventRecommendation:
       type === "event_preparation"

@@ -6,11 +6,13 @@ import {
   readCountyWorkbenchText,
 } from "./county-workbench-path";
 import type {
+  CountyDeploymentReadiness,
   CountyKpiSource,
   CountyNormalizedKpi,
   CountyWorkbenchCountyRef,
   StatewideCountyIntelligence,
 } from "./county-kpi-types";
+import type { CanonicalRegistrationGoalRow } from "@/lib/campaign-engine/county-registration-goal-read";
 
 /** Pope profile planning constant — source: countyWorkbench `registrationPush.statewideGoal`. */
 export const STATEWIDE_REGISTRATION_GOAL = 50_000;
@@ -185,10 +187,69 @@ export function loadCountyWorkbenchCounty(slug: string): CountyWorkbenchCountyRe
   return listCountyWorkbenchCounties().find((c) => c.countySlug === norm) ?? null;
 }
 
+function registrySlugFromWorkbenchSlug(workbenchSlug: string): string {
+  return `${workbenchSlug}-county`;
+}
+
+function classifyDeploymentReadiness(
+  row: CoverageCsvRow,
+  canonical: CanonicalRegistrationGoalRow | null | undefined,
+): CountyDeploymentReadiness {
+  const v2 = new Set(["pope", "pulaski", "faulkner"]);
+  if (row.workbenchDepth === "shell" && row.completionPercent <= 5) return "SHELL_ONLY";
+  if (row.workbenchDepth === "full" && v2.has(row.countySlug)) return "INTERNAL_PLANNING_ONLY";
+  if (row.workbenchDepth === "full") return "INTERNAL_PLANNING_ONLY";
+  if (canonical?.canonicalRegistrationGoalStatus === "live" && row.hasCountyProfile) {
+    return "INTERNAL_PLANNING_ONLY";
+  }
+  return "SHELL_ONLY";
+}
+
+function applyCanonicalGoalToKpi(
+  kpi: CountyNormalizedKpi,
+  canonical: CanonicalRegistrationGoalRow | null | undefined,
+): CountyNormalizedKpi {
+  if (!canonical) {
+    return {
+      ...kpi,
+      canonicalRegistrationGoalStatus: "unverified_sync_context",
+    };
+  }
+  return {
+    ...kpi,
+    canonicalRegistrationGoal: canonical.canonicalRegistrationGoal,
+    canonicalRegistrationGoalStatus: canonical.canonicalRegistrationGoalStatus,
+    canonicalRegistrationGoalSource: canonical.canonicalRegistrationGoalSource,
+    registrationGoal: canonical.canonicalRegistrationGoal,
+    goalSource: canonical.canonicalRegistrationGoal != null ? "canonical-db" : kpi.goalSource,
+  };
+}
+
+/** Async enrichment — attaches canonical DB registration goals without mutating DB. */
+export async function enrichCountyKpisWithCanonicalGoals(
+  kpi: CountyNormalizedKpi,
+  canonicalMap: Map<string, CanonicalRegistrationGoalRow>,
+): Promise<CountyNormalizedKpi> {
+  const registrySlug = registrySlugFromWorkbenchSlug(kpi.countySlug);
+  return applyCanonicalGoalToKpi(kpi, canonicalMap.get(registrySlug));
+}
+
+export async function loadCountyKpisWithCanonicalGoals(slug: string): Promise<CountyNormalizedKpi | null> {
+  const base = loadCountyKpis(slug);
+  if (!base) return null;
+  const { loadCanonicalRegistrationGoalsBySlug } = await import(
+    "@/lib/campaign-engine/county-registration-goal-read"
+  );
+  const map = await loadCanonicalRegistrationGoalsBySlug();
+  return enrichCountyKpisWithCanonicalGoals(base, map);
+}
+
 export function loadCountyGoals(slug: string) {
   const kpi = loadCountyKpis(slug);
   if (!kpi) return null;
   return {
+    canonicalRegistrationGoal: kpi.canonicalRegistrationGoal,
+    planningVoteTargetProxy: kpi.planningVoteTargetProxy,
     registrationGoal: kpi.registrationGoal,
     voterContactGoal: kpi.voterContactGoal,
     powerOfFiveGoal: kpi.powerOfFiveGoal,
@@ -210,7 +271,7 @@ export function loadCountyKpis(slug: string): CountyNormalizedKpi | null {
   const totalTargets = [...loadStateAlignedMap().values()].reduce((s, c) => s + c.targetDemVotesStatewide50, 0);
   const share = aligned && totalTargets > 0 ? aligned.targetDemVotesStatewide50 / totalTargets : 1 / 75;
 
-  const registrationGoal =
+  const planningVoteTargetProxy =
     aligned != null ? aligned.targetDemVotesStatewide50 : Math.round(STATEWIDE_REGISTRATION_GOAL * share);
   const powerOfFiveGoal = Math.round(STATEWIDE_POWER_OF_FIVE_GOAL * share);
 
@@ -219,7 +280,7 @@ export function loadCountyKpis(slug: string): CountyNormalizedKpi | null {
   if (row.completionPercent < 15) weaknesses.push("Low dashboard field completion — source intake needed");
   if (!row.hasCountyProfile) weaknesses.push("No connected full CountyProfile module");
   if (qa && qa.warningCount > 3) weaknesses.push(`${qa.warningCount} full-profile QA warnings`);
-  if (!aligned) weaknesses.push("No state-aligned planning target row");
+  if (!aligned) weaknesses.push("No state-aligned planning vote target row");
 
   const opportunities: string[] = [];
   if (row.hasCountyProfile) opportunities.push("Full profile connected — prioritize events and hot wash");
@@ -238,15 +299,21 @@ export function loadCountyKpis(slug: string): CountyNormalizedKpi | null {
   const turnoutRisk = row.workbenchDepth === "shell" ? 70 : 35;
 
   const goalSource: CountyKpiSource = aligned ? "planning-estimate" : "not-connected";
+  const deploymentReadiness = classifyDeploymentReadiness(row, undefined);
 
   return {
     countySlug: row.countySlug,
     countyName: row.countyName,
     regionSlug: row.regionSlug,
-    registrationGoal,
+    registrationGoal: null,
+    canonicalRegistrationGoal: null,
+    canonicalRegistrationGoalStatus: "unverified_sync_context",
+    canonicalRegistrationGoalSource: null,
+    planningVoteTargetProxy,
+    planningVoteTargetSource: aligned ? "arkansasStateAlignedTargets2022" : null,
     registrationCurrent: null,
     registrationProgress: null,
-    voterContactGoal: registrationGoal ? Math.round(registrationGoal * 3) : null,
+    voterContactGoal: planningVoteTargetProxy ? Math.round(planningVoteTargetProxy * 3) : null,
     voterContactCurrent: null,
     powerOfFiveGoal,
     powerOfFiveCurrent: null,
@@ -265,10 +332,12 @@ export function loadCountyKpis(slug: string): CountyNormalizedKpi | null {
     recommendedActions: buildCountyRecommendedActions(row, aligned != null),
     sourceLinks: workbenchLinks(row.countySlug),
     goalSource,
+    deploymentReadiness,
     notes: [
-      goalSource === "planning-estimate"
-        ? "Registration/Power of 5 goals use state-aligned 2022 Gov vote-share proxy until governance sheet connected."
-        : "Governance registration goals not connected in countyWorkbench — using coverage metrics only.",
+      planningVoteTargetProxy != null
+        ? `Planning vote target (2022 Gov share proxy): ${planningVoteTargetProxy.toLocaleString()} — NOT a registration goal.`
+        : "No state-aligned vote target connected.",
+      "Canonical registration goal: read from CountyCampaignStats via async enrich or admin county editor.",
     ],
   };
 }
@@ -286,7 +355,9 @@ export function loadCountyVoterRegistration(slug: string) {
   const kpi = loadCountyKpis(slug);
   if (!kpi) return null;
   return {
-    goal: kpi.registrationGoal,
+    canonicalRegistrationGoal: kpi.canonicalRegistrationGoal,
+    planningVoteTargetProxy: kpi.planningVoteTargetProxy,
+    goal: kpi.canonicalRegistrationGoal,
     current: kpi.registrationCurrent,
     progress: kpi.registrationProgress,
     statewideGoal: STATEWIDE_REGISTRATION_GOAL,

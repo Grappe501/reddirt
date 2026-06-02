@@ -159,6 +159,15 @@ const nextConfig: NextConfig = {
       "./docs/kelly-grappe-sos-strategic-plan-manual/**/*",
       "./campaign-system-manual/**/*",
     ],
+    "/admin/county-intelligence/**/*": [
+      "./data/county-workbench/briefs/_rollup.json",
+      "./data/county-workbench/compiled-profiles/_rollup.json",
+      "./data/county-workbench/facts/county-facts.json",
+      "./data/county-workbench/facts/county-sources.json",
+      "./data/county-workbench/agent/county-builder-agent-run.json",
+      "./data/county-workbench/source-catalog/county-source-catalog.json",
+      "./data/county-workbench/tables/*.json",
+    ],
   },
   /**
    * Netlify `___netlify-server-handler` must stay under AWS Lambda’s 250 MB (unzipped) cap.
@@ -177,6 +186,11 @@ const nextConfig: NextConfig = {
       "data/owned-campaign-media/**",
       "data/campaign-events/media/**",
       "data/compliance/imports/**",
+      /** Per-county factory JSON — dynamic readFileSync paths otherwise trace all 150+ files into one Lambda. */
+      "data/county-workbench/briefs/**",
+      "data/county-workbench/compiled-profiles/**",
+      "data/county-workbench/tables/**",
+      "data/intelligence/briefs/county/**",
       "node_modules/@next/swc-*/**",
       "node_modules/@img/sharp-win32-*/**",
       "node_modules/@img/sharp-darwin-*/**",

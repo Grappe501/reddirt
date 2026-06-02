@@ -71,11 +71,46 @@ export function generateCountyBrief(countySlug: string, repoRoot: string = proce
 
 export function generateAllCountyBriefs(repoRoot: string = process.cwd()): CountyBriefCompiled[] {
   const briefs = ARKANSAS_COUNTY_REGISTRY.map((c) => generateCountyBrief(c.slug, repoRoot));
-  const rollup = summarizeCountyBriefFactory(briefs);
+  const rollup = {
+    ...summarizeCountyBriefFactory(briefs),
+    countyIndex: briefs.map((b) => ({
+      countySlug: b.countySlug,
+      countyName: b.countyName,
+      readinessScore: b.readinessScore,
+      briefGenerated: true,
+      shellBrief: b.whatWeKnow.length <= 3,
+    })),
+  };
   const abs = countyFactoryAbs(COUNTY_FACTORY_PATHS.briefsRollup, repoRoot);
   mkdirSync(path.dirname(abs), { recursive: true });
   writeFileSync(abs, `${JSON.stringify(rollup, null, 2)}\n`, "utf8");
   return briefs;
+}
+
+export type CountyBriefRollupSummary = {
+  generatedAt: string;
+  countyCount: number;
+  all75: boolean;
+  avgReadiness: number;
+  shellBriefCount: number;
+  debateUsefulCount: number;
+  governance: typeof COUNTY_FACTORY_GOVERNANCE;
+};
+
+export type CountyBriefRollupFile = CountyBriefRollupSummary & {
+  countyIndex?: Array<{
+    countySlug: string;
+    countyName: string;
+    readinessScore: number;
+    briefGenerated: boolean;
+    shellBrief: boolean;
+  }>;
+};
+
+export function loadBriefRollup(repoRoot: string = process.cwd()): CountyBriefRollupFile | null {
+  const abs = countyFactoryAbs(COUNTY_FACTORY_PATHS.briefsRollup, repoRoot);
+  if (!existsSync(abs)) return null;
+  return JSON.parse(readFileSync(abs, "utf8")) as CountyBriefRollupFile;
 }
 
 export function loadCountyBrief(countySlug: string, repoRoot: string = process.cwd()): CountyBriefCompiled | null {
@@ -84,18 +119,40 @@ export function loadCountyBrief(countySlug: string, repoRoot: string = process.c
   return JSON.parse(readFileSync(abs, "utf8")) as CountyBriefCompiled;
 }
 
-export function summarizeCountyBriefFactory(briefs?: CountyBriefCompiled[]) {
-  const list =
-    briefs ??
-    ARKANSAS_COUNTY_REGISTRY.map((c) => loadCountyBrief(c.slug)).filter(Boolean) as CountyBriefCompiled[];
-  const shellCount = list.filter((b) => b.whatWeKnow.length <= 3).length;
+export function summarizeCountyBriefFactory(briefs?: CountyBriefCompiled[]): CountyBriefRollupSummary {
+  if (briefs) {
+    const shellCount = briefs.filter((b) => b.whatWeKnow.length <= 3).length;
+    return {
+      generatedAt: new Date().toISOString(),
+      countyCount: briefs.length,
+      all75: briefs.length >= 75,
+      avgReadiness: Math.round(briefs.reduce((n, b) => n + b.readinessScore, 0) / Math.max(briefs.length, 1)),
+      shellBriefCount: shellCount,
+      debateUsefulCount: briefs.filter((b) => b.debateRelevance.some((d) => !d.includes("shell"))).length,
+      governance: COUNTY_FACTORY_GOVERNANCE,
+    };
+  }
+
+  const rollup = loadBriefRollup();
+  if (rollup) {
+    return {
+      generatedAt: rollup.generatedAt,
+      countyCount: rollup.countyCount,
+      all75: rollup.all75,
+      avgReadiness: rollup.avgReadiness,
+      shellBriefCount: rollup.shellBriefCount,
+      debateUsefulCount: rollup.debateUsefulCount,
+      governance: rollup.governance,
+    };
+  }
+
   return {
     generatedAt: new Date().toISOString(),
-    countyCount: list.length,
-    all75: list.length >= 75,
-    avgReadiness: Math.round(list.reduce((n, b) => n + b.readinessScore, 0) / Math.max(list.length, 1)),
-    shellBriefCount: shellCount,
-    debateUsefulCount: list.filter((b) => b.debateRelevance.some((d) => !d.includes("shell"))).length,
+    countyCount: 0,
+    all75: false,
+    avgReadiness: 0,
+    shellBriefCount: 0,
+    debateUsefulCount: 0,
     governance: COUNTY_FACTORY_GOVERNANCE,
   };
 }

@@ -2,2631 +2,6 @@
   "version": 1,
   "events": [
     {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "grant-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmmi",
-      "createdAt": "2026-05-31T20:14:40.074Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "greene-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmmu",
-      "createdAt": "2026-05-31T20:14:40.086Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "hempstead-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmn9",
-      "createdAt": "2026-05-31T20:14:40.101Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "hot-spring-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmnn",
-      "createdAt": "2026-05-31T20:14:40.115Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "howard-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmo0",
-      "createdAt": "2026-05-31T20:14:40.128Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "independence-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmoc",
-      "createdAt": "2026-05-31T20:14:40.140Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "izard-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmon",
-      "createdAt": "2026-05-31T20:14:40.151Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "jackson-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmoz",
-      "createdAt": "2026-05-31T20:14:40.163Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "jefferson-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmpd",
-      "createdAt": "2026-05-31T20:14:40.177Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "johnson-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmpr",
-      "createdAt": "2026-05-31T20:14:40.191Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "lafayette-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmq4",
-      "createdAt": "2026-05-31T20:14:40.204Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "lawrence-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmqj",
-      "createdAt": "2026-05-31T20:14:40.219Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "lee-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmqw",
-      "createdAt": "2026-05-31T20:14:40.232Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "lincoln-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmr7",
-      "createdAt": "2026-05-31T20:14:40.243Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "little-river-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmrl",
-      "createdAt": "2026-05-31T20:14:40.257Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "logan-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmrz",
-      "createdAt": "2026-05-31T20:14:40.271Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "lonoke-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmsa",
-      "createdAt": "2026-05-31T20:14:40.282Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "madison-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmsn",
-      "createdAt": "2026-05-31T20:14:40.295Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "marion-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmt2",
-      "createdAt": "2026-05-31T20:14:40.310Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "miller-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmti",
-      "createdAt": "2026-05-31T20:14:40.326Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "mississippi-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmtw",
-      "createdAt": "2026-05-31T20:14:40.340Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "monroe-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmu9",
-      "createdAt": "2026-05-31T20:14:40.354Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "montgomery-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmuq",
-      "createdAt": "2026-05-31T20:14:40.370Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "nevada-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmv5",
-      "createdAt": "2026-05-31T20:14:40.385Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "newton-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmvi",
-      "createdAt": "2026-05-31T20:14:40.398Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "ouachita-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmvu",
-      "createdAt": "2026-05-31T20:14:40.410Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "perry-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmw7",
-      "createdAt": "2026-05-31T20:14:40.423Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "phillips-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmwl",
-      "createdAt": "2026-05-31T20:14:40.437Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "pike-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmwx",
-      "createdAt": "2026-05-31T20:14:40.449Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "poinsett-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmxb",
-      "createdAt": "2026-05-31T20:14:40.463Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "polk-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmxq",
-      "createdAt": "2026-05-31T20:14:40.478Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "pope-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmy4",
-      "createdAt": "2026-05-31T20:14:40.492Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "prairie-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmyk",
-      "createdAt": "2026-05-31T20:14:40.508Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "pulaski-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmz0",
-      "createdAt": "2026-05-31T20:14:40.524Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "randolph-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmze",
-      "createdAt": "2026-05-31T20:14:40.538Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "st-francis-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xmzt",
-      "createdAt": "2026-05-31T20:14:40.553Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "saline-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn09",
-      "createdAt": "2026-05-31T20:14:40.569Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "scott-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn0l",
-      "createdAt": "2026-05-31T20:14:40.581Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "searcy-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn11",
-      "createdAt": "2026-05-31T20:14:40.597Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "sebastian-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn1g",
-      "createdAt": "2026-05-31T20:14:40.612Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "sevier-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn1t",
-      "createdAt": "2026-05-31T20:14:40.625Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "sharp-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn4d",
-      "createdAt": "2026-05-31T20:14:40.717Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "stone-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn4s",
-      "createdAt": "2026-05-31T20:14:40.732Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "union-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn56",
-      "createdAt": "2026-05-31T20:14:40.746Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "van-buren-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn5w",
-      "createdAt": "2026-05-31T20:14:40.772Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "washington-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn6a",
-      "createdAt": "2026-05-31T20:14:40.786Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "white-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn6r",
-      "createdAt": "2026-05-31T20:14:40.803Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "woodruff-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn75",
-      "createdAt": "2026-05-31T20:14:40.817Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "yell-county",
-      "detail": "workbenchBridge added 3 facts",
-      "eventId": "cfa-mpu7xn7h",
-      "createdAt": "2026-05-31T20:14:40.829Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "arkansas-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xn7v",
-      "createdAt": "2026-05-31T20:14:40.843Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "ashley-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xna1",
-      "createdAt": "2026-05-31T20:14:40.921Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "baxter-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnah",
-      "createdAt": "2026-05-31T20:14:40.937Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "benton-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnaw",
-      "createdAt": "2026-05-31T20:14:40.952Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "boone-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnbb",
-      "createdAt": "2026-05-31T20:14:40.967Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "bradley-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnbp",
-      "createdAt": "2026-05-31T20:14:40.981Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "calhoun-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnc3",
-      "createdAt": "2026-05-31T20:14:40.995Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "carroll-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnch",
-      "createdAt": "2026-05-31T20:14:41.009Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "chicot-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xncu",
-      "createdAt": "2026-05-31T20:14:41.022Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "clark-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnd9",
-      "createdAt": "2026-05-31T20:14:41.037Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "clay-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xndp",
-      "createdAt": "2026-05-31T20:14:41.053Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "cleburne-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xne4",
-      "createdAt": "2026-05-31T20:14:41.068Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "cleveland-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnfa",
-      "createdAt": "2026-05-31T20:14:41.110Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "columbia-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnfq",
-      "createdAt": "2026-05-31T20:14:41.126Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "conway-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xng5",
-      "createdAt": "2026-05-31T20:14:41.141Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "craighead-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xngj",
-      "createdAt": "2026-05-31T20:14:41.155Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "crawford-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xngw",
-      "createdAt": "2026-05-31T20:14:41.168Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "crittenden-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnhd",
-      "createdAt": "2026-05-31T20:14:41.185Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "cross-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnhr",
-      "createdAt": "2026-05-31T20:14:41.199Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "dallas-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xni4",
-      "createdAt": "2026-05-31T20:14:41.212Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "desha-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnii",
-      "createdAt": "2026-05-31T20:14:41.226Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "drew-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnix",
-      "createdAt": "2026-05-31T20:14:41.241Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "faulkner-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnj9",
-      "createdAt": "2026-05-31T20:14:41.253Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "franklin-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnjm",
-      "createdAt": "2026-05-31T20:14:41.266Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "fulton-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnk3",
-      "createdAt": "2026-05-31T20:14:41.283Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "garland-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnkh",
-      "createdAt": "2026-05-31T20:14:41.297Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "grant-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnku",
-      "createdAt": "2026-05-31T20:14:41.310Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "greene-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnla",
-      "createdAt": "2026-05-31T20:14:41.326Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "hempstead-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnlp",
-      "createdAt": "2026-05-31T20:14:41.341Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "hot-spring-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnm2",
-      "createdAt": "2026-05-31T20:14:41.354Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "howard-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnmh",
-      "createdAt": "2026-05-31T20:14:41.369Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "independence-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnmv",
-      "createdAt": "2026-05-31T20:14:41.383Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "izard-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnn8",
-      "createdAt": "2026-05-31T20:14:41.396Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "jackson-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnnn",
-      "createdAt": "2026-05-31T20:14:41.411Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "jefferson-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xno3",
-      "createdAt": "2026-05-31T20:14:41.427Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "johnson-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnoh",
-      "createdAt": "2026-05-31T20:14:41.441Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "lafayette-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnou",
-      "createdAt": "2026-05-31T20:14:41.454Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "lawrence-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnp9",
-      "createdAt": "2026-05-31T20:14:41.469Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "lee-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnpm",
-      "createdAt": "2026-05-31T20:14:41.482Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "lincoln-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnq0",
-      "createdAt": "2026-05-31T20:14:41.496Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "little-river-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnqe",
-      "createdAt": "2026-05-31T20:14:41.510Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "logan-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnqs",
-      "createdAt": "2026-05-31T20:14:41.524Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "lonoke-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnr7",
-      "createdAt": "2026-05-31T20:14:41.539Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "madison-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnrm",
-      "createdAt": "2026-05-31T20:14:41.554Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "marion-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xns2",
-      "createdAt": "2026-05-31T20:14:41.570Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "miller-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnsf",
-      "createdAt": "2026-05-31T20:14:41.583Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "mississippi-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnst",
-      "createdAt": "2026-05-31T20:14:41.597Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "monroe-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnt8",
-      "createdAt": "2026-05-31T20:14:41.612Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "montgomery-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xntn",
-      "createdAt": "2026-05-31T20:14:41.627Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "nevada-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xntz",
-      "createdAt": "2026-05-31T20:14:41.639Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "newton-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnue",
-      "createdAt": "2026-05-31T20:14:41.654Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "ouachita-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnur",
-      "createdAt": "2026-05-31T20:14:41.667Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "perry-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnv6",
-      "createdAt": "2026-05-31T20:14:41.682Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "phillips-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnvj",
-      "createdAt": "2026-05-31T20:14:41.695Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "pike-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnw0",
-      "createdAt": "2026-05-31T20:14:41.712Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "poinsett-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnxi",
-      "createdAt": "2026-05-31T20:14:41.766Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "polk-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnxx",
-      "createdAt": "2026-05-31T20:14:41.781Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "pope-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnyd",
-      "createdAt": "2026-05-31T20:14:41.797Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "prairie-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnyo",
-      "createdAt": "2026-05-31T20:14:41.808Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "pulaski-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnz1",
-      "createdAt": "2026-05-31T20:14:41.821Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "randolph-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnzg",
-      "createdAt": "2026-05-31T20:14:41.836Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "st-francis-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xnzu",
-      "createdAt": "2026-05-31T20:14:41.850Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "saline-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo0a",
-      "createdAt": "2026-05-31T20:14:41.866Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "scott-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo0n",
-      "createdAt": "2026-05-31T20:14:41.879Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "searcy-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo1b",
-      "createdAt": "2026-05-31T20:14:41.903Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "sebastian-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo1n",
-      "createdAt": "2026-05-31T20:14:41.915Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "sevier-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo21",
-      "createdAt": "2026-05-31T20:14:41.929Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "sharp-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo2e",
-      "createdAt": "2026-05-31T20:14:41.942Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "stone-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo2w",
-      "createdAt": "2026-05-31T20:14:41.960Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "union-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo4d",
-      "createdAt": "2026-05-31T20:14:42.013Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "van-buren-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo4p",
-      "createdAt": "2026-05-31T20:14:42.025Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "washington-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo55",
-      "createdAt": "2026-05-31T20:14:42.041Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "white-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo5l",
-      "createdAt": "2026-05-31T20:14:42.057Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "woodruff-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo62",
-      "createdAt": "2026-05-31T20:14:42.074Z"
-    },
-    {
-      "eventType": "INGEST_COMPLETE",
-      "countySlug": "yell-county",
-      "detail": "campaignNotes added 1 facts",
-      "eventId": "cfa-mpu7xo6h",
-      "createdAt": "2026-05-31T20:14:42.089Z"
-    },
-    {
-      "eventType": "FACTORY_RUN_COMPLETE",
-      "countySlug": null,
-      "detail": "{\"runId\":\"cfr-mpu7xgzc\",\"startedAt\":\"2026-05-31T20:14:32.761Z\",\"completedAt\":\"2026-05-31T20:14:45.395Z\",\"phases\":[\"seed_registry\",\"source_catalog\",\"dry_run\",\"ingestion\",\"cross_tables\",\"profiles\",\"briefs\",\"agent\"],\"countiesProcessed\":75,\"factsTotal\":525,\"profilesGenerated\":75,\"briefsGenerated\":75,\"warnings\":[\"Profiles: 69 shell / 6 partial / 0 compiled\",\"Cross-table avg completeness: 8%\"]}",
-      "eventId": "cfa-mpu7xqqd",
-      "createdAt": "2026-05-31T20:14:45.397Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "arkansas-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y345",
-      "createdAt": "2026-05-31T20:15:01.445Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "ashley-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y34i",
-      "createdAt": "2026-05-31T20:15:01.458Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "baxter-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y34w",
-      "createdAt": "2026-05-31T20:15:01.472Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "benton-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y360",
-      "createdAt": "2026-05-31T20:15:01.512Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "boone-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y36c",
-      "createdAt": "2026-05-31T20:15:01.524Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "bradley-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y36t",
-      "createdAt": "2026-05-31T20:15:01.541Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "calhoun-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y375",
-      "createdAt": "2026-05-31T20:15:01.553Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "carroll-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y37g",
-      "createdAt": "2026-05-31T20:15:01.564Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "chicot-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y37r",
-      "createdAt": "2026-05-31T20:15:01.575Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "clark-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y383",
-      "createdAt": "2026-05-31T20:15:01.587Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "clay-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y38f",
-      "createdAt": "2026-05-31T20:15:01.599Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cleburne-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y38r",
-      "createdAt": "2026-05-31T20:15:01.611Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cleveland-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y393",
-      "createdAt": "2026-05-31T20:15:01.623Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "columbia-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y39f",
-      "createdAt": "2026-05-31T20:15:01.635Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "conway-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y39s",
-      "createdAt": "2026-05-31T20:15:01.648Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "craighead-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3a2",
-      "createdAt": "2026-05-31T20:15:01.658Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "crawford-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3ae",
-      "createdAt": "2026-05-31T20:15:01.670Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "crittenden-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3au",
-      "createdAt": "2026-05-31T20:15:01.686Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cross-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3b7",
-      "createdAt": "2026-05-31T20:15:01.699Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "dallas-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3bj",
-      "createdAt": "2026-05-31T20:15:01.711Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "desha-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3bu",
-      "createdAt": "2026-05-31T20:15:01.722Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "drew-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3c7",
-      "createdAt": "2026-05-31T20:15:01.735Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "faulkner-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3cj",
-      "createdAt": "2026-05-31T20:15:01.747Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "franklin-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3cv",
-      "createdAt": "2026-05-31T20:15:01.759Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "fulton-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3d8",
-      "createdAt": "2026-05-31T20:15:01.772Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "garland-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3dl",
-      "createdAt": "2026-05-31T20:15:01.785Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "grant-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3dx",
-      "createdAt": "2026-05-31T20:15:01.797Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "greene-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3e7",
-      "createdAt": "2026-05-31T20:15:01.807Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "hempstead-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3ek",
-      "createdAt": "2026-05-31T20:15:01.820Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "hot-spring-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3ev",
-      "createdAt": "2026-05-31T20:15:01.831Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "howard-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3f6",
-      "createdAt": "2026-05-31T20:15:01.842Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "independence-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3fi",
-      "createdAt": "2026-05-31T20:15:01.854Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "izard-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3fw",
-      "createdAt": "2026-05-31T20:15:01.868Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "jackson-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3g8",
-      "createdAt": "2026-05-31T20:15:01.880Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "jefferson-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3gj",
-      "createdAt": "2026-05-31T20:15:01.891Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "johnson-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3gu",
-      "createdAt": "2026-05-31T20:15:01.902Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lafayette-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3h7",
-      "createdAt": "2026-05-31T20:15:01.915Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lawrence-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3hi",
-      "createdAt": "2026-05-31T20:15:01.926Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lee-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3hu",
-      "createdAt": "2026-05-31T20:15:01.938Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lincoln-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3i7",
-      "createdAt": "2026-05-31T20:15:01.951Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "little-river-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3ij",
-      "createdAt": "2026-05-31T20:15:01.963Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "logan-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3iu",
-      "createdAt": "2026-05-31T20:15:01.974Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lonoke-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3j8",
-      "createdAt": "2026-05-31T20:15:01.988Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "madison-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3jm",
-      "createdAt": "2026-05-31T20:15:02.002Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "marion-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3jy",
-      "createdAt": "2026-05-31T20:15:02.014Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "miller-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3k9",
-      "createdAt": "2026-05-31T20:15:02.025Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "mississippi-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3km",
-      "createdAt": "2026-05-31T20:15:02.038Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "monroe-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3ky",
-      "createdAt": "2026-05-31T20:15:02.050Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "montgomery-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3la",
-      "createdAt": "2026-05-31T20:15:02.062Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "nevada-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3lq",
-      "createdAt": "2026-05-31T20:15:02.078Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "newton-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3m2",
-      "createdAt": "2026-05-31T20:15:02.090Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "ouachita-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3me",
-      "createdAt": "2026-05-31T20:15:02.102Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "perry-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3mq",
-      "createdAt": "2026-05-31T20:15:02.114Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "phillips-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3qd",
-      "createdAt": "2026-05-31T20:15:02.245Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "pike-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3qv",
-      "createdAt": "2026-05-31T20:15:02.263Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "poinsett-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3r7",
-      "createdAt": "2026-05-31T20:15:02.275Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "polk-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3s2",
-      "createdAt": "2026-05-31T20:15:02.306Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "pope-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3sh",
-      "createdAt": "2026-05-31T20:15:02.321Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "prairie-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3sv",
-      "createdAt": "2026-05-31T20:15:02.335Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "pulaski-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3t8",
-      "createdAt": "2026-05-31T20:15:02.348Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "randolph-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3u4",
-      "createdAt": "2026-05-31T20:15:02.380Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "st-francis-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3ui",
-      "createdAt": "2026-05-31T20:15:02.394Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "saline-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3uu",
-      "createdAt": "2026-05-31T20:15:02.406Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "scott-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3v6",
-      "createdAt": "2026-05-31T20:15:02.418Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "searcy-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3vj",
-      "createdAt": "2026-05-31T20:15:02.431Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "sebastian-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3vu",
-      "createdAt": "2026-05-31T20:15:02.442Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "sevier-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3w6",
-      "createdAt": "2026-05-31T20:15:02.454Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "sharp-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3wj",
-      "createdAt": "2026-05-31T20:15:02.467Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "stone-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3ww",
-      "createdAt": "2026-05-31T20:15:02.480Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "union-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3x7",
-      "createdAt": "2026-05-31T20:15:02.491Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "van-buren-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3xj",
-      "createdAt": "2026-05-31T20:15:02.503Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "washington-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3xv",
-      "createdAt": "2026-05-31T20:15:02.515Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "white-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3y7",
-      "createdAt": "2026-05-31T20:15:02.527Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "woodruff-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3yj",
-      "createdAt": "2026-05-31T20:15:02.539Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "yell-county",
-      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
-      "eventId": "cfa-mpu7y3yv",
-      "createdAt": "2026-05-31T20:15:02.551Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "arkansas-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y3z9",
-      "createdAt": "2026-05-31T20:15:02.565Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "ashley-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y3zu",
-      "createdAt": "2026-05-31T20:15:02.586Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "baxter-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y40a",
-      "createdAt": "2026-05-31T20:15:02.602Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "benton-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y40m",
-      "createdAt": "2026-05-31T20:15:02.614Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "boone-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y40x",
-      "createdAt": "2026-05-31T20:15:02.625Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "bradley-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y419",
-      "createdAt": "2026-05-31T20:15:02.637Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "calhoun-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y42u",
-      "createdAt": "2026-05-31T20:15:02.694Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "carroll-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y437",
-      "createdAt": "2026-05-31T20:15:02.707Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "chicot-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y43k",
-      "createdAt": "2026-05-31T20:15:02.720Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "clark-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y43v",
-      "createdAt": "2026-05-31T20:15:02.731Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "clay-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y447",
-      "createdAt": "2026-05-31T20:15:02.743Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cleburne-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y44j",
-      "createdAt": "2026-05-31T20:15:02.755Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cleveland-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y44v",
-      "createdAt": "2026-05-31T20:15:02.767Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "columbia-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y45h",
-      "createdAt": "2026-05-31T20:15:02.789Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "conway-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y45t",
-      "createdAt": "2026-05-31T20:15:02.801Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "craighead-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y465",
-      "createdAt": "2026-05-31T20:15:02.813Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "crawford-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y46h",
-      "createdAt": "2026-05-31T20:15:02.825Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "crittenden-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y46s",
-      "createdAt": "2026-05-31T20:15:02.836Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cross-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y474",
-      "createdAt": "2026-05-31T20:15:02.848Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "dallas-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y47g",
-      "createdAt": "2026-05-31T20:15:02.860Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "desha-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y47r",
-      "createdAt": "2026-05-31T20:15:02.871Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "drew-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y485",
-      "createdAt": "2026-05-31T20:15:02.885Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "faulkner-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y48h",
-      "createdAt": "2026-05-31T20:15:02.897Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "franklin-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y48s",
-      "createdAt": "2026-05-31T20:15:02.908Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "fulton-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y495",
-      "createdAt": "2026-05-31T20:15:02.921Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "garland-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y49j",
-      "createdAt": "2026-05-31T20:15:02.935Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "grant-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4a0",
-      "createdAt": "2026-05-31T20:15:02.952Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "greene-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4ad",
-      "createdAt": "2026-05-31T20:15:02.965Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "hempstead-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4as",
-      "createdAt": "2026-05-31T20:15:02.980Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "hot-spring-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4b4",
-      "createdAt": "2026-05-31T20:15:02.992Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "howard-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4ct",
-      "createdAt": "2026-05-31T20:15:03.053Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "independence-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4d9",
-      "createdAt": "2026-05-31T20:15:03.069Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "izard-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4do",
-      "createdAt": "2026-05-31T20:15:03.084Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "jackson-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4e0",
-      "createdAt": "2026-05-31T20:15:03.096Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "jefferson-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4eb",
-      "createdAt": "2026-05-31T20:15:03.107Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "johnson-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4eo",
-      "createdAt": "2026-05-31T20:15:03.120Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lafayette-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4f4",
-      "createdAt": "2026-05-31T20:15:03.136Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lawrence-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4fk",
-      "createdAt": "2026-05-31T20:15:03.152Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lee-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4fw",
-      "createdAt": "2026-05-31T20:15:03.164Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lincoln-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4g8",
-      "createdAt": "2026-05-31T20:15:03.176Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "little-river-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4gk",
-      "createdAt": "2026-05-31T20:15:03.188Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "logan-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4gw",
-      "createdAt": "2026-05-31T20:15:03.200Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lonoke-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4h9",
-      "createdAt": "2026-05-31T20:15:03.213Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "madison-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4hl",
-      "createdAt": "2026-05-31T20:15:03.225Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "marion-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4hy",
-      "createdAt": "2026-05-31T20:15:03.238Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "miller-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4ic",
-      "createdAt": "2026-05-31T20:15:03.252Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "mississippi-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4ir",
-      "createdAt": "2026-05-31T20:15:03.267Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "monroe-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4j5",
-      "createdAt": "2026-05-31T20:15:03.281Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "montgomery-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4jh",
-      "createdAt": "2026-05-31T20:15:03.293Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "nevada-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4ju",
-      "createdAt": "2026-05-31T20:15:03.306Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "newton-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4k6",
-      "createdAt": "2026-05-31T20:15:03.318Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "ouachita-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4ki",
-      "createdAt": "2026-05-31T20:15:03.330Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "perry-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4kt",
-      "createdAt": "2026-05-31T20:15:03.341Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "phillips-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4l5",
-      "createdAt": "2026-05-31T20:15:03.353Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "pike-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4lj",
-      "createdAt": "2026-05-31T20:15:03.367Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "poinsett-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4ly",
-      "createdAt": "2026-05-31T20:15:03.382Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "polk-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4ma",
-      "createdAt": "2026-05-31T20:15:03.394Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "pope-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4mm",
-      "createdAt": "2026-05-31T20:15:03.406Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "prairie-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4mz",
-      "createdAt": "2026-05-31T20:15:03.419Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "pulaski-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4nb",
-      "createdAt": "2026-05-31T20:15:03.431Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "randolph-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4nm",
-      "createdAt": "2026-05-31T20:15:03.442Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "st-francis-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4nz",
-      "createdAt": "2026-05-31T20:15:03.455Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "saline-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4ob",
-      "createdAt": "2026-05-31T20:15:03.467Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "scott-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4op",
-      "createdAt": "2026-05-31T20:15:03.481Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "searcy-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4p2",
-      "createdAt": "2026-05-31T20:15:03.494Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "sebastian-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4pe",
-      "createdAt": "2026-05-31T20:15:03.506Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "sevier-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4pr",
-      "createdAt": "2026-05-31T20:15:03.519Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "sharp-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4q3",
-      "createdAt": "2026-05-31T20:15:03.531Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "stone-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4qf",
-      "createdAt": "2026-05-31T20:15:03.543Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "union-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4qr",
-      "createdAt": "2026-05-31T20:15:03.555Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "van-buren-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4r3",
-      "createdAt": "2026-05-31T20:15:03.567Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "washington-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4rf",
-      "createdAt": "2026-05-31T20:15:03.579Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "white-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4rt",
-      "createdAt": "2026-05-31T20:15:03.593Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "woodruff-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4s4",
-      "createdAt": "2026-05-31T20:15:03.604Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "yell-county",
-      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
-      "eventId": "cfa-mpu7y4sg",
-      "createdAt": "2026-05-31T20:15:03.616Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "arkansas-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4sq",
-      "createdAt": "2026-05-31T20:15:03.626Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "ashley-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4t3",
-      "createdAt": "2026-05-31T20:15:03.639Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "baxter-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4wc",
-      "createdAt": "2026-05-31T20:15:03.756Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "benton-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4wn",
-      "createdAt": "2026-05-31T20:15:03.767Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "boone-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4x0",
-      "createdAt": "2026-05-31T20:15:03.781Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "bradley-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4xc",
-      "createdAt": "2026-05-31T20:15:03.792Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "calhoun-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4xo",
-      "createdAt": "2026-05-31T20:15:03.804Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "carroll-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4y5",
-      "createdAt": "2026-05-31T20:15:03.821Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "chicot-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4yj",
-      "createdAt": "2026-05-31T20:15:03.835Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "clark-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4yt",
-      "createdAt": "2026-05-31T20:15:03.845Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "clay-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4z4",
-      "createdAt": "2026-05-31T20:15:03.856Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cleburne-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4zj",
-      "createdAt": "2026-05-31T20:15:03.871Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cleveland-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y4zv",
-      "createdAt": "2026-05-31T20:15:03.883Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "columbia-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y507",
-      "createdAt": "2026-05-31T20:15:03.895Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "conway-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y50j",
-      "createdAt": "2026-05-31T20:15:03.907Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "craighead-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y50w",
-      "createdAt": "2026-05-31T20:15:03.920Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "crawford-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y517",
-      "createdAt": "2026-05-31T20:15:03.931Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "crittenden-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y51h",
-      "createdAt": "2026-05-31T20:15:03.941Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cross-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y51u",
-      "createdAt": "2026-05-31T20:15:03.954Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "dallas-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y526",
-      "createdAt": "2026-05-31T20:15:03.966Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "desha-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y52j",
-      "createdAt": "2026-05-31T20:15:03.979Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "drew-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y52t",
-      "createdAt": "2026-05-31T20:15:03.989Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "faulkner-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y534",
-      "createdAt": "2026-05-31T20:15:04.000Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "franklin-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y53h",
-      "createdAt": "2026-05-31T20:15:04.013Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "fulton-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y53s",
-      "createdAt": "2026-05-31T20:15:04.024Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "garland-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y545",
-      "createdAt": "2026-05-31T20:15:04.037Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "grant-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y54k",
-      "createdAt": "2026-05-31T20:15:04.052Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "greene-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y54w",
-      "createdAt": "2026-05-31T20:15:04.064Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "hempstead-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y556",
-      "createdAt": "2026-05-31T20:15:04.074Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "hot-spring-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y55i",
-      "createdAt": "2026-05-31T20:15:04.086Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "howard-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y55u",
-      "createdAt": "2026-05-31T20:15:04.098Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "independence-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y565",
-      "createdAt": "2026-05-31T20:15:04.109Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "izard-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y56g",
-      "createdAt": "2026-05-31T20:15:04.120Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "jackson-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y56t",
-      "createdAt": "2026-05-31T20:15:04.133Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "jefferson-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y575",
-      "createdAt": "2026-05-31T20:15:04.145Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "johnson-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y57f",
-      "createdAt": "2026-05-31T20:15:04.155Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lafayette-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y57t",
-      "createdAt": "2026-05-31T20:15:04.169Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lawrence-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y584",
-      "createdAt": "2026-05-31T20:15:04.180Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lee-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y58e",
-      "createdAt": "2026-05-31T20:15:04.190Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lincoln-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y58s",
-      "createdAt": "2026-05-31T20:15:04.204Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "little-river-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y596",
-      "createdAt": "2026-05-31T20:15:04.218Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "logan-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y59h",
-      "createdAt": "2026-05-31T20:15:04.229Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "lonoke-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y59t",
-      "createdAt": "2026-05-31T20:15:04.241Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "madison-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5a3",
-      "createdAt": "2026-05-31T20:15:04.251Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "marion-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5af",
-      "createdAt": "2026-05-31T20:15:04.263Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "miller-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5as",
-      "createdAt": "2026-05-31T20:15:04.276Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "mississippi-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5b7",
-      "createdAt": "2026-05-31T20:15:04.291Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "monroe-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5bj",
-      "createdAt": "2026-05-31T20:15:04.303Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "montgomery-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5bx",
-      "createdAt": "2026-05-31T20:15:04.317Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "nevada-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5c8",
-      "createdAt": "2026-05-31T20:15:04.328Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "newton-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5cl",
-      "createdAt": "2026-05-31T20:15:04.341Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "ouachita-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5cy",
-      "createdAt": "2026-05-31T20:15:04.354Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "perry-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5db",
-      "createdAt": "2026-05-31T20:15:04.367Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "phillips-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5dm",
-      "createdAt": "2026-05-31T20:15:04.378Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "pike-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5dz",
-      "createdAt": "2026-05-31T20:15:04.391Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "poinsett-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5eb",
-      "createdAt": "2026-05-31T20:15:04.403Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "polk-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5em",
-      "createdAt": "2026-05-31T20:15:04.414Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "pope-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5ew",
-      "createdAt": "2026-05-31T20:15:04.424Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "prairie-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5f8",
-      "createdAt": "2026-05-31T20:15:04.436Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "pulaski-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5fl",
-      "createdAt": "2026-05-31T20:15:04.449Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "randolph-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5fw",
-      "createdAt": "2026-05-31T20:15:04.460Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "st-francis-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5g8",
-      "createdAt": "2026-05-31T20:15:04.472Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "saline-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5gk",
-      "createdAt": "2026-05-31T20:15:04.484Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "scott-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5gw",
-      "createdAt": "2026-05-31T20:15:04.496Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "searcy-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5h6",
-      "createdAt": "2026-05-31T20:15:04.506Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "sebastian-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5hi",
-      "createdAt": "2026-05-31T20:15:04.518Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "sevier-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5hw",
-      "createdAt": "2026-05-31T20:15:04.532Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "sharp-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5i6",
-      "createdAt": "2026-05-31T20:15:04.542Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "stone-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5ii",
-      "createdAt": "2026-05-31T20:15:04.554Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "union-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5iv",
-      "createdAt": "2026-05-31T20:15:04.567Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "van-buren-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5j7",
-      "createdAt": "2026-05-31T20:15:04.579Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "washington-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5jh",
-      "createdAt": "2026-05-31T20:15:04.589Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "white-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5jt",
-      "createdAt": "2026-05-31T20:15:04.601Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "woodruff-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5k5",
-      "createdAt": "2026-05-31T20:15:04.613Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "yell-county",
-      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
-      "eventId": "cfa-mpu7y5kk",
-      "createdAt": "2026-05-31T20:15:04.628Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "arkansas-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5kv",
-      "createdAt": "2026-05-31T20:15:04.639Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "ashley-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5l6",
-      "createdAt": "2026-05-31T20:15:04.650Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "baxter-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5lh",
-      "createdAt": "2026-05-31T20:15:04.661Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "benton-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5lt",
-      "createdAt": "2026-05-31T20:15:04.673Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "boone-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5m5",
-      "createdAt": "2026-05-31T20:15:04.685Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "bradley-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5mh",
-      "createdAt": "2026-05-31T20:15:04.697Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "calhoun-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5mr",
-      "createdAt": "2026-05-31T20:15:04.707Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "carroll-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5n2",
-      "createdAt": "2026-05-31T20:15:04.718Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "chicot-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5nd",
-      "createdAt": "2026-05-31T20:15:04.729Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "clark-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5nn",
-      "createdAt": "2026-05-31T20:15:04.739Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "clay-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5ny",
-      "createdAt": "2026-05-31T20:15:04.750Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cleburne-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5od",
-      "createdAt": "2026-05-31T20:15:04.765Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cleveland-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5or",
-      "createdAt": "2026-05-31T20:15:04.779Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "columbia-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5p2",
-      "createdAt": "2026-05-31T20:15:04.790Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "conway-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5pe",
-      "createdAt": "2026-05-31T20:15:04.802Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "craighead-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5pr",
-      "createdAt": "2026-05-31T20:15:04.815Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "crawford-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5q3",
-      "createdAt": "2026-05-31T20:15:04.827Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "crittenden-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5qf",
-      "createdAt": "2026-05-31T20:15:04.839Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "cross-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5qu",
-      "createdAt": "2026-05-31T20:15:04.854Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "dallas-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5r5",
-      "createdAt": "2026-05-31T20:15:04.865Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "desha-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5rf",
-      "createdAt": "2026-05-31T20:15:04.875Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "drew-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5rq",
-      "createdAt": "2026-05-31T20:15:04.886Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "faulkner-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5s4",
-      "createdAt": "2026-05-31T20:15:04.900Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "franklin-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5sf",
-      "createdAt": "2026-05-31T20:15:04.911Z"
-    },
-    {
-      "eventType": "INGEST_DEFERRED",
-      "countySlug": "fulton-county",
-      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
-      "eventId": "cfa-mpu7y5sr",
-      "createdAt": "2026-05-31T20:15:04.923Z"
-    },
-    {
       "eventType": "INGEST_DEFERRED",
       "countySlug": "garland-county",
       "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
@@ -3500,6 +875,2631 @@
       "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
       "eventId": "cfa-mpu7y6y3",
       "createdAt": "2026-05-31T20:15:06.411Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "arkansas-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92pxz",
+      "createdAt": "2026-06-02T06:22:09.623Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "ashley-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92q2a",
+      "createdAt": "2026-06-02T06:22:09.778Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "baxter-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92q3k",
+      "createdAt": "2026-06-02T06:22:09.824Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "benton-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92q4t",
+      "createdAt": "2026-06-02T06:22:09.869Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "boone-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92q6h",
+      "createdAt": "2026-06-02T06:22:09.929Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "bradley-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92q7o",
+      "createdAt": "2026-06-02T06:22:09.972Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "calhoun-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92q8z",
+      "createdAt": "2026-06-02T06:22:10.019Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "carroll-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qa2",
+      "createdAt": "2026-06-02T06:22:10.058Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "chicot-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qbo",
+      "createdAt": "2026-06-02T06:22:10.116Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "clark-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qd6",
+      "createdAt": "2026-06-02T06:22:10.170Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "clay-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qeq",
+      "createdAt": "2026-06-02T06:22:10.226Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cleburne-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qg0",
+      "createdAt": "2026-06-02T06:22:10.272Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cleveland-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qh4",
+      "createdAt": "2026-06-02T06:22:10.312Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "columbia-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qin",
+      "createdAt": "2026-06-02T06:22:10.367Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "conway-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qk8",
+      "createdAt": "2026-06-02T06:22:10.424Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "craighead-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92ql6",
+      "createdAt": "2026-06-02T06:22:10.458Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "crawford-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qmm",
+      "createdAt": "2026-06-02T06:22:10.511Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "crittenden-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qnt",
+      "createdAt": "2026-06-02T06:22:10.553Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cross-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qos",
+      "createdAt": "2026-06-02T06:22:10.588Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "dallas-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qq3",
+      "createdAt": "2026-06-02T06:22:10.635Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "desha-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qrh",
+      "createdAt": "2026-06-02T06:22:10.685Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "drew-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qt7",
+      "createdAt": "2026-06-02T06:22:10.748Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "faulkner-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92quo",
+      "createdAt": "2026-06-02T06:22:10.800Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "franklin-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qw4",
+      "createdAt": "2026-06-02T06:22:10.852Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "fulton-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qxh",
+      "createdAt": "2026-06-02T06:22:10.901Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "garland-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qyg",
+      "createdAt": "2026-06-02T06:22:10.936Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "grant-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92qzl",
+      "createdAt": "2026-06-02T06:22:10.977Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "greene-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92r0u",
+      "createdAt": "2026-06-02T06:22:11.022Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "hempstead-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92r2k",
+      "createdAt": "2026-06-02T06:22:11.084Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "hot-spring-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92r3v",
+      "createdAt": "2026-06-02T06:22:11.131Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "howard-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92r5a",
+      "createdAt": "2026-06-02T06:22:11.182Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "independence-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92r7m",
+      "createdAt": "2026-06-02T06:22:11.266Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "izard-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92r93",
+      "createdAt": "2026-06-02T06:22:11.319Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "jackson-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rak",
+      "createdAt": "2026-06-02T06:22:11.372Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "jefferson-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rby",
+      "createdAt": "2026-06-02T06:22:11.422Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "johnson-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92ren",
+      "createdAt": "2026-06-02T06:22:11.519Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lafayette-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rh5",
+      "createdAt": "2026-06-02T06:22:11.609Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lawrence-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rj0",
+      "createdAt": "2026-06-02T06:22:11.676Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lee-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rle",
+      "createdAt": "2026-06-02T06:22:11.762Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lincoln-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rmz",
+      "createdAt": "2026-06-02T06:22:11.819Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "little-river-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rps",
+      "createdAt": "2026-06-02T06:22:11.920Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "logan-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rry",
+      "createdAt": "2026-06-02T06:22:11.998Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lonoke-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rss",
+      "createdAt": "2026-06-02T06:22:12.028Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "madison-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rty",
+      "createdAt": "2026-06-02T06:22:12.070Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "marion-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rvg",
+      "createdAt": "2026-06-02T06:22:12.124Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "miller-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rwn",
+      "createdAt": "2026-06-02T06:22:12.167Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "mississippi-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92ry5",
+      "createdAt": "2026-06-02T06:22:12.221Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "monroe-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92rzy",
+      "createdAt": "2026-06-02T06:22:12.286Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "montgomery-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92s1j",
+      "createdAt": "2026-06-02T06:22:12.343Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "nevada-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92s39",
+      "createdAt": "2026-06-02T06:22:12.405Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "newton-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92s4t",
+      "createdAt": "2026-06-02T06:22:12.461Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "ouachita-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92s6g",
+      "createdAt": "2026-06-02T06:22:12.520Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "perry-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92s84",
+      "createdAt": "2026-06-02T06:22:12.580Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "phillips-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sa1",
+      "createdAt": "2026-06-02T06:22:12.649Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pike-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92se5",
+      "createdAt": "2026-06-02T06:22:12.797Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "poinsett-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sff",
+      "createdAt": "2026-06-02T06:22:12.843Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "polk-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sgi",
+      "createdAt": "2026-06-02T06:22:12.882Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pope-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sho",
+      "createdAt": "2026-06-02T06:22:12.924Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "prairie-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sit",
+      "createdAt": "2026-06-02T06:22:12.965Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pulaski-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sk4",
+      "createdAt": "2026-06-02T06:22:13.012Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "randolph-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sla",
+      "createdAt": "2026-06-02T06:22:13.054Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "st-francis-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sme",
+      "createdAt": "2026-06-02T06:22:13.094Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "saline-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92snr",
+      "createdAt": "2026-06-02T06:22:13.143Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "scott-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sox",
+      "createdAt": "2026-06-02T06:22:13.185Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "searcy-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92spz",
+      "createdAt": "2026-06-02T06:22:13.223Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sebastian-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sr6",
+      "createdAt": "2026-06-02T06:22:13.266Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sevier-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92ss5",
+      "createdAt": "2026-06-02T06:22:13.301Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sharp-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92stl",
+      "createdAt": "2026-06-02T06:22:13.353Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "stone-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92suw",
+      "createdAt": "2026-06-02T06:22:13.400Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "union-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sw2",
+      "createdAt": "2026-06-02T06:22:13.442Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "van-buren-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92sx6",
+      "createdAt": "2026-06-02T06:22:13.482Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "washington-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92syj",
+      "createdAt": "2026-06-02T06:22:13.531Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "white-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92szo",
+      "createdAt": "2026-06-02T06:22:13.572Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "woodruff-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92t0s",
+      "createdAt": "2026-06-02T06:22:13.612Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "yell-county",
+      "detail": "sosRegistration: COUNTY_SOS_IMPORT_ENABLED=1 not set — Pass C2 required",
+      "eventId": "cfa-mpw92t1v",
+      "createdAt": "2026-06-02T06:22:13.651Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "arkansas-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92t2t",
+      "createdAt": "2026-06-02T06:22:13.685Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "ashley-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92t45",
+      "createdAt": "2026-06-02T06:22:13.733Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "baxter-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92t5n",
+      "createdAt": "2026-06-02T06:22:13.787Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "benton-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92t6v",
+      "createdAt": "2026-06-02T06:22:13.831Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "boone-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92t80",
+      "createdAt": "2026-06-02T06:22:13.872Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "bradley-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92t9g",
+      "createdAt": "2026-06-02T06:22:13.924Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "calhoun-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tan",
+      "createdAt": "2026-06-02T06:22:13.967Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "carroll-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tbo",
+      "createdAt": "2026-06-02T06:22:14.004Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "chicot-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tct",
+      "createdAt": "2026-06-02T06:22:14.045Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "clark-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tdo",
+      "createdAt": "2026-06-02T06:22:14.076Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "clay-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tew",
+      "createdAt": "2026-06-02T06:22:14.120Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cleburne-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tg0",
+      "createdAt": "2026-06-02T06:22:14.160Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cleveland-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92thc",
+      "createdAt": "2026-06-02T06:22:14.208Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "columbia-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92til",
+      "createdAt": "2026-06-02T06:22:14.253Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "conway-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tk1",
+      "createdAt": "2026-06-02T06:22:14.305Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "craighead-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tl4",
+      "createdAt": "2026-06-02T06:22:14.344Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "crawford-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tmh",
+      "createdAt": "2026-06-02T06:22:14.393Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "crittenden-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tnh",
+      "createdAt": "2026-06-02T06:22:14.429Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cross-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tou",
+      "createdAt": "2026-06-02T06:22:14.478Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "dallas-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tq7",
+      "createdAt": "2026-06-02T06:22:14.527Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "desha-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92trg",
+      "createdAt": "2026-06-02T06:22:14.572Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "drew-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tsu",
+      "createdAt": "2026-06-02T06:22:14.622Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "faulkner-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tu1",
+      "createdAt": "2026-06-02T06:22:14.665Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "franklin-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tv8",
+      "createdAt": "2026-06-02T06:22:14.708Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "fulton-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92twr",
+      "createdAt": "2026-06-02T06:22:14.763Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "garland-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92ty3",
+      "createdAt": "2026-06-02T06:22:14.811Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "grant-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92tzo",
+      "createdAt": "2026-06-02T06:22:14.868Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "greene-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92u11",
+      "createdAt": "2026-06-02T06:22:14.917Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "hempstead-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92u2f",
+      "createdAt": "2026-06-02T06:22:14.967Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "hot-spring-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92u3n",
+      "createdAt": "2026-06-02T06:22:15.011Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "howard-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92u4o",
+      "createdAt": "2026-06-02T06:22:15.048Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "independence-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92u5q",
+      "createdAt": "2026-06-02T06:22:15.086Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "izard-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92u74",
+      "createdAt": "2026-06-02T06:22:15.136Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "jackson-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92u8r",
+      "createdAt": "2026-06-02T06:22:15.195Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "jefferson-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92u9y",
+      "createdAt": "2026-06-02T06:22:15.238Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "johnson-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92ubb",
+      "createdAt": "2026-06-02T06:22:15.287Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lafayette-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92ucs",
+      "createdAt": "2026-06-02T06:22:15.340Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lawrence-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92uee",
+      "createdAt": "2026-06-02T06:22:15.398Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lee-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92ufn",
+      "createdAt": "2026-06-02T06:22:15.443Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lincoln-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92uh2",
+      "createdAt": "2026-06-02T06:22:15.494Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "little-river-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92uin",
+      "createdAt": "2026-06-02T06:22:15.551Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "logan-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92uk4",
+      "createdAt": "2026-06-02T06:22:15.604Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lonoke-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92ult",
+      "createdAt": "2026-06-02T06:22:15.665Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "madison-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92ur3",
+      "createdAt": "2026-06-02T06:22:15.855Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "marion-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92usg",
+      "createdAt": "2026-06-02T06:22:15.904Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "miller-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92utv",
+      "createdAt": "2026-06-02T06:22:15.955Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "mississippi-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92uvt",
+      "createdAt": "2026-06-02T06:22:16.025Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "monroe-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92uxg",
+      "createdAt": "2026-06-02T06:22:16.084Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "montgomery-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92uyt",
+      "createdAt": "2026-06-02T06:22:16.133Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "nevada-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92v0f",
+      "createdAt": "2026-06-02T06:22:16.191Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "newton-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92v1c",
+      "createdAt": "2026-06-02T06:22:16.225Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "ouachita-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92v2r",
+      "createdAt": "2026-06-02T06:22:16.275Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "perry-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92v47",
+      "createdAt": "2026-06-02T06:22:16.327Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "phillips-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92v5n",
+      "createdAt": "2026-06-02T06:22:16.379Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pike-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92v6s",
+      "createdAt": "2026-06-02T06:22:16.420Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "poinsett-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92v8d",
+      "createdAt": "2026-06-02T06:22:16.483Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "polk-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92v9h",
+      "createdAt": "2026-06-02T06:22:16.517Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pope-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92van",
+      "createdAt": "2026-06-02T06:22:16.559Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "prairie-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vbq",
+      "createdAt": "2026-06-02T06:22:16.598Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pulaski-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vcz",
+      "createdAt": "2026-06-02T06:22:16.643Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "randolph-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vea",
+      "createdAt": "2026-06-02T06:22:16.690Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "st-francis-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vff",
+      "createdAt": "2026-06-02T06:22:16.731Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "saline-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vgk",
+      "createdAt": "2026-06-02T06:22:16.772Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "scott-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vhw",
+      "createdAt": "2026-06-02T06:22:16.820Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "searcy-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vja",
+      "createdAt": "2026-06-02T06:22:16.870Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sebastian-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vkn",
+      "createdAt": "2026-06-02T06:22:16.919Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sevier-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vls",
+      "createdAt": "2026-06-02T06:22:16.960Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sharp-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vms",
+      "createdAt": "2026-06-02T06:22:16.996Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "stone-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vo6",
+      "createdAt": "2026-06-02T06:22:17.046Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "union-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vpg",
+      "createdAt": "2026-06-02T06:22:17.092Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "van-buren-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vqf",
+      "createdAt": "2026-06-02T06:22:17.127Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "washington-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vro",
+      "createdAt": "2026-06-02T06:22:17.172Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "white-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vt0",
+      "createdAt": "2026-06-02T06:22:17.220Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "woodruff-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vue",
+      "createdAt": "2026-06-02T06:22:17.270Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "yell-county",
+      "detail": "electionHistory: COUNTY_ELECTION_IMPORT_ENABLED=1 not set",
+      "eventId": "cfa-mpw92vvq",
+      "createdAt": "2026-06-02T06:22:17.318Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "arkansas-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92vx5",
+      "createdAt": "2026-06-02T06:22:17.369Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "ashley-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92vyc",
+      "createdAt": "2026-06-02T06:22:17.412Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "baxter-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92vzy",
+      "createdAt": "2026-06-02T06:22:17.470Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "benton-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92w2j",
+      "createdAt": "2026-06-02T06:22:17.563Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "boone-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92w3t",
+      "createdAt": "2026-06-02T06:22:17.609Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "bradley-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92w5g",
+      "createdAt": "2026-06-02T06:22:17.668Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "calhoun-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92w74",
+      "createdAt": "2026-06-02T06:22:17.728Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "carroll-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92w8h",
+      "createdAt": "2026-06-02T06:22:17.777Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "chicot-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92w9s",
+      "createdAt": "2026-06-02T06:22:17.824Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "clark-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wbj",
+      "createdAt": "2026-06-02T06:22:17.887Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "clay-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wdj",
+      "createdAt": "2026-06-02T06:22:17.959Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cleburne-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wex",
+      "createdAt": "2026-06-02T06:22:18.009Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cleveland-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wgq",
+      "createdAt": "2026-06-02T06:22:18.074Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "columbia-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wig",
+      "createdAt": "2026-06-02T06:22:18.136Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "conway-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wjt",
+      "createdAt": "2026-06-02T06:22:18.185Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "craighead-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wl6",
+      "createdAt": "2026-06-02T06:22:18.234Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "crawford-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wmr",
+      "createdAt": "2026-06-02T06:22:18.291Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "crittenden-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wou",
+      "createdAt": "2026-06-02T06:22:18.366Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cross-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wqa",
+      "createdAt": "2026-06-02T06:22:18.418Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "dallas-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wry",
+      "createdAt": "2026-06-02T06:22:18.478Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "desha-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wte",
+      "createdAt": "2026-06-02T06:22:18.530Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "drew-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wuw",
+      "createdAt": "2026-06-02T06:22:18.584Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "faulkner-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wwj",
+      "createdAt": "2026-06-02T06:22:18.643Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "franklin-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92wyn",
+      "createdAt": "2026-06-02T06:22:18.719Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "fulton-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92x0w",
+      "createdAt": "2026-06-02T06:22:18.800Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "garland-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92x2u",
+      "createdAt": "2026-06-02T06:22:18.870Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "grant-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92x4p",
+      "createdAt": "2026-06-02T06:22:18.937Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "greene-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92x6t",
+      "createdAt": "2026-06-02T06:22:19.013Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "hempstead-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92x95",
+      "createdAt": "2026-06-02T06:22:19.098Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "hot-spring-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xbh",
+      "createdAt": "2026-06-02T06:22:19.181Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "howard-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xd7",
+      "createdAt": "2026-06-02T06:22:19.244Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "independence-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xek",
+      "createdAt": "2026-06-02T06:22:19.292Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "izard-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xfu",
+      "createdAt": "2026-06-02T06:22:19.338Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "jackson-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xhd",
+      "createdAt": "2026-06-02T06:22:19.393Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "jefferson-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xip",
+      "createdAt": "2026-06-02T06:22:19.441Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "johnson-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xkf",
+      "createdAt": "2026-06-02T06:22:19.503Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lafayette-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xlz",
+      "createdAt": "2026-06-02T06:22:19.559Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lawrence-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xnl",
+      "createdAt": "2026-06-02T06:22:19.617Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lee-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xp9",
+      "createdAt": "2026-06-02T06:22:19.677Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lincoln-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xra",
+      "createdAt": "2026-06-02T06:22:19.750Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "little-river-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xt5",
+      "createdAt": "2026-06-02T06:22:19.817Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "logan-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xvd",
+      "createdAt": "2026-06-02T06:22:19.897Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lonoke-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xx0",
+      "createdAt": "2026-06-02T06:22:19.956Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "madison-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92xyz",
+      "createdAt": "2026-06-02T06:22:20.027Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "marion-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92y0m",
+      "createdAt": "2026-06-02T06:22:20.086Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "miller-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92y2e",
+      "createdAt": "2026-06-02T06:22:20.150Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "mississippi-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92y3s",
+      "createdAt": "2026-06-02T06:22:20.200Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "monroe-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92y5d",
+      "createdAt": "2026-06-02T06:22:20.257Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "montgomery-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92y6n",
+      "createdAt": "2026-06-02T06:22:20.303Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "nevada-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92y8e",
+      "createdAt": "2026-06-02T06:22:20.366Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "newton-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92ya6",
+      "createdAt": "2026-06-02T06:22:20.430Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "ouachita-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92ybp",
+      "createdAt": "2026-06-02T06:22:20.485Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "perry-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92ydc",
+      "createdAt": "2026-06-02T06:22:20.544Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "phillips-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92yey",
+      "createdAt": "2026-06-02T06:22:20.602Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pike-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92ygl",
+      "createdAt": "2026-06-02T06:22:20.661Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "poinsett-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92yhx",
+      "createdAt": "2026-06-02T06:22:20.709Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "polk-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92yj3",
+      "createdAt": "2026-06-02T06:22:20.751Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pope-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92ykq",
+      "createdAt": "2026-06-02T06:22:20.810Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "prairie-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92ylt",
+      "createdAt": "2026-06-02T06:22:20.849Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pulaski-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92ynb",
+      "createdAt": "2026-06-02T06:22:20.903Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "randolph-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92yov",
+      "createdAt": "2026-06-02T06:22:20.959Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "st-francis-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92yqg",
+      "createdAt": "2026-06-02T06:22:21.016Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "saline-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92yru",
+      "createdAt": "2026-06-02T06:22:21.066Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "scott-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92yvl",
+      "createdAt": "2026-06-02T06:22:21.201Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "searcy-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92yx2",
+      "createdAt": "2026-06-02T06:22:21.254Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sebastian-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92yyk",
+      "createdAt": "2026-06-02T06:22:21.308Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sevier-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92yzu",
+      "createdAt": "2026-06-02T06:22:21.355Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sharp-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92z1f",
+      "createdAt": "2026-06-02T06:22:21.411Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "stone-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92z3d",
+      "createdAt": "2026-06-02T06:22:21.481Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "union-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92z55",
+      "createdAt": "2026-06-02T06:22:21.545Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "van-buren-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92z6r",
+      "createdAt": "2026-06-02T06:22:21.603Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "washington-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92z8d",
+      "createdAt": "2026-06-02T06:22:21.661Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "white-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw92zz7",
+      "createdAt": "2026-06-02T06:22:22.627Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "woodruff-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw93016",
+      "createdAt": "2026-06-02T06:22:22.698Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "yell-county",
+      "detail": "education: COUNTY_EDUCATION_IMPORT_ENABLED=1 not set — Pass C4",
+      "eventId": "cfa-mpw9303r",
+      "createdAt": "2026-06-02T06:22:22.792Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "arkansas-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9305l",
+      "createdAt": "2026-06-02T06:22:22.857Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "ashley-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw93078",
+      "createdAt": "2026-06-02T06:22:22.916Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "baxter-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9308u",
+      "createdAt": "2026-06-02T06:22:22.974Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "benton-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930ah",
+      "createdAt": "2026-06-02T06:22:23.033Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "boone-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930c9",
+      "createdAt": "2026-06-02T06:22:23.097Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "bradley-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930e1",
+      "createdAt": "2026-06-02T06:22:23.161Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "calhoun-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930gg",
+      "createdAt": "2026-06-02T06:22:23.248Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "carroll-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930it",
+      "createdAt": "2026-06-02T06:22:23.333Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "chicot-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930ko",
+      "createdAt": "2026-06-02T06:22:23.400Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "clark-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930m9",
+      "createdAt": "2026-06-02T06:22:23.457Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "clay-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930nx",
+      "createdAt": "2026-06-02T06:22:23.517Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cleburne-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930pi",
+      "createdAt": "2026-06-02T06:22:23.574Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cleveland-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930r6",
+      "createdAt": "2026-06-02T06:22:23.634Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "columbia-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930sn",
+      "createdAt": "2026-06-02T06:22:23.687Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "conway-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930xk",
+      "createdAt": "2026-06-02T06:22:23.864Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "craighead-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw930z8",
+      "createdAt": "2026-06-02T06:22:23.924Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "crawford-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9310p",
+      "createdAt": "2026-06-02T06:22:23.977Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "crittenden-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9311w",
+      "createdAt": "2026-06-02T06:22:24.020Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cross-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw93132",
+      "createdAt": "2026-06-02T06:22:24.062Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "dallas-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9314l",
+      "createdAt": "2026-06-02T06:22:24.117Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "desha-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9316c",
+      "createdAt": "2026-06-02T06:22:24.180Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "drew-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9317v",
+      "createdAt": "2026-06-02T06:22:24.235Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "faulkner-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9319d",
+      "createdAt": "2026-06-02T06:22:24.289Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "franklin-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931b2",
+      "createdAt": "2026-06-02T06:22:24.350Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "fulton-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931c8",
+      "createdAt": "2026-06-02T06:22:24.392Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "garland-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931dq",
+      "createdAt": "2026-06-02T06:22:24.446Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "grant-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931eq",
+      "createdAt": "2026-06-02T06:22:24.482Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "greene-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931ge",
+      "createdAt": "2026-06-02T06:22:24.542Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "hempstead-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931hs",
+      "createdAt": "2026-06-02T06:22:24.592Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "hot-spring-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931qk",
+      "createdAt": "2026-06-02T06:22:24.908Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "howard-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931t2",
+      "createdAt": "2026-06-02T06:22:24.998Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "independence-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931ut",
+      "createdAt": "2026-06-02T06:22:25.061Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "izard-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931wd",
+      "createdAt": "2026-06-02T06:22:25.117Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "jackson-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931xt",
+      "createdAt": "2026-06-02T06:22:25.169Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "jefferson-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw931zd",
+      "createdAt": "2026-06-02T06:22:25.225Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "johnson-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw93213",
+      "createdAt": "2026-06-02T06:22:25.287Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lafayette-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9322s",
+      "createdAt": "2026-06-02T06:22:25.348Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lawrence-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9323x",
+      "createdAt": "2026-06-02T06:22:25.389Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lee-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9325g",
+      "createdAt": "2026-06-02T06:22:25.444Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lincoln-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw93270",
+      "createdAt": "2026-06-02T06:22:25.500Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "little-river-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9329c",
+      "createdAt": "2026-06-02T06:22:25.584Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "logan-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932ay",
+      "createdAt": "2026-06-02T06:22:25.642Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lonoke-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932cg",
+      "createdAt": "2026-06-02T06:22:25.696Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "madison-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932dr",
+      "createdAt": "2026-06-02T06:22:25.743Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "marion-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932ex",
+      "createdAt": "2026-06-02T06:22:25.785Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "miller-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932ge",
+      "createdAt": "2026-06-02T06:22:25.838Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "mississippi-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932hy",
+      "createdAt": "2026-06-02T06:22:25.894Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "monroe-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932jc",
+      "createdAt": "2026-06-02T06:22:25.944Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "montgomery-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932lc",
+      "createdAt": "2026-06-02T06:22:26.016Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "nevada-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932nw",
+      "createdAt": "2026-06-02T06:22:26.108Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "newton-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932pl",
+      "createdAt": "2026-06-02T06:22:26.169Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "ouachita-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932qx",
+      "createdAt": "2026-06-02T06:22:26.217Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "perry-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932sj",
+      "createdAt": "2026-06-02T06:22:26.275Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "phillips-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932uh",
+      "createdAt": "2026-06-02T06:22:26.345Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pike-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932w9",
+      "createdAt": "2026-06-02T06:22:26.409Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "poinsett-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932y2",
+      "createdAt": "2026-06-02T06:22:26.474Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "polk-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw932zh",
+      "createdAt": "2026-06-02T06:22:26.525Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pope-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw93312",
+      "createdAt": "2026-06-02T06:22:26.582Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "prairie-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9332z",
+      "createdAt": "2026-06-02T06:22:26.651Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pulaski-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9334s",
+      "createdAt": "2026-06-02T06:22:26.716Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "randolph-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9336h",
+      "createdAt": "2026-06-02T06:22:26.777Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "st-francis-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9337t",
+      "createdAt": "2026-06-02T06:22:26.825Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "saline-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw9339a",
+      "createdAt": "2026-06-02T06:22:26.878Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "scott-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933an",
+      "createdAt": "2026-06-02T06:22:26.927Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "searcy-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933br",
+      "createdAt": "2026-06-02T06:22:26.967Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sebastian-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933cz",
+      "createdAt": "2026-06-02T06:22:27.011Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sevier-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933eh",
+      "createdAt": "2026-06-02T06:22:27.065Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sharp-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933gb",
+      "createdAt": "2026-06-02T06:22:27.131Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "stone-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933i9",
+      "createdAt": "2026-06-02T06:22:27.201Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "union-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933jn",
+      "createdAt": "2026-06-02T06:22:27.251Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "van-buren-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933l0",
+      "createdAt": "2026-06-02T06:22:27.300Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "washington-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933mn",
+      "createdAt": "2026-06-02T06:22:27.359Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "white-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933oo",
+      "createdAt": "2026-06-02T06:22:27.433Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "woodruff-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933qi",
+      "createdAt": "2026-06-02T06:22:27.498Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "yell-county",
+      "detail": "health: COUNTY_HEALTH_IMPORT_ENABLED=1 not set — Pass C5",
+      "eventId": "cfa-mpw933s1",
+      "createdAt": "2026-06-02T06:22:27.553Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "arkansas-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw933tt",
+      "createdAt": "2026-06-02T06:22:27.617Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "ashley-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw933vz",
+      "createdAt": "2026-06-02T06:22:27.695Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "baxter-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw933x6",
+      "createdAt": "2026-06-02T06:22:27.738Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "benton-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw933yg",
+      "createdAt": "2026-06-02T06:22:27.784Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "boone-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw933zj",
+      "createdAt": "2026-06-02T06:22:27.823Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "bradley-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9341e",
+      "createdAt": "2026-06-02T06:22:27.890Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "calhoun-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9342i",
+      "createdAt": "2026-06-02T06:22:27.930Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "carroll-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9343k",
+      "createdAt": "2026-06-02T06:22:27.968Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "chicot-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9345d",
+      "createdAt": "2026-06-02T06:22:28.033Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "clark-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9346r",
+      "createdAt": "2026-06-02T06:22:28.083Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "clay-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9347x",
+      "createdAt": "2026-06-02T06:22:28.125Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cleburne-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw93494",
+      "createdAt": "2026-06-02T06:22:28.168Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cleveland-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934af",
+      "createdAt": "2026-06-02T06:22:28.215Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "columbia-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934bh",
+      "createdAt": "2026-06-02T06:22:28.253Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "conway-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934ck",
+      "createdAt": "2026-06-02T06:22:28.292Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "craighead-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934es",
+      "createdAt": "2026-06-02T06:22:28.372Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "crawford-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934g2",
+      "createdAt": "2026-06-02T06:22:28.418Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "crittenden-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934ha",
+      "createdAt": "2026-06-02T06:22:28.462Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "cross-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934ij",
+      "createdAt": "2026-06-02T06:22:28.507Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "dallas-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934jm",
+      "createdAt": "2026-06-02T06:22:28.546Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "desha-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934kr",
+      "createdAt": "2026-06-02T06:22:28.587Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "drew-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934m7",
+      "createdAt": "2026-06-02T06:22:28.639Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "faulkner-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934q7",
+      "createdAt": "2026-06-02T06:22:28.783Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "franklin-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934rp",
+      "createdAt": "2026-06-02T06:22:28.837Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "fulton-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934st",
+      "createdAt": "2026-06-02T06:22:28.877Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "garland-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934u0",
+      "createdAt": "2026-06-02T06:22:28.920Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "grant-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934vk",
+      "createdAt": "2026-06-02T06:22:28.976Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "greene-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934x0",
+      "createdAt": "2026-06-02T06:22:29.028Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "hempstead-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934xz",
+      "createdAt": "2026-06-02T06:22:29.063Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "hot-spring-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw934zf",
+      "createdAt": "2026-06-02T06:22:29.115Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "howard-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9350u",
+      "createdAt": "2026-06-02T06:22:29.166Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "independence-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9352e",
+      "createdAt": "2026-06-02T06:22:29.222Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "izard-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9353l",
+      "createdAt": "2026-06-02T06:22:29.265Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "jackson-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw93552",
+      "createdAt": "2026-06-02T06:22:29.318Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "jefferson-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9356e",
+      "createdAt": "2026-06-02T06:22:29.366Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "johnson-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9357n",
+      "createdAt": "2026-06-02T06:22:29.411Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lafayette-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw93590",
+      "createdAt": "2026-06-02T06:22:29.460Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lawrence-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935ai",
+      "createdAt": "2026-06-02T06:22:29.514Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lee-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935bp",
+      "createdAt": "2026-06-02T06:22:29.557Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lincoln-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935dc",
+      "createdAt": "2026-06-02T06:22:29.616Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "little-river-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935f4",
+      "createdAt": "2026-06-02T06:22:29.680Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "logan-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935g9",
+      "createdAt": "2026-06-02T06:22:29.721Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "lonoke-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935hh",
+      "createdAt": "2026-06-02T06:22:29.765Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "madison-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935j2",
+      "createdAt": "2026-06-02T06:22:29.822Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "marion-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935k8",
+      "createdAt": "2026-06-02T06:22:29.864Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "miller-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935lx",
+      "createdAt": "2026-06-02T06:22:29.925Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "mississippi-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935n8",
+      "createdAt": "2026-06-02T06:22:29.972Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "monroe-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935p2",
+      "createdAt": "2026-06-02T06:22:30.038Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "montgomery-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935qg",
+      "createdAt": "2026-06-02T06:22:30.088Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "nevada-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935rk",
+      "createdAt": "2026-06-02T06:22:30.128Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "newton-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935sx",
+      "createdAt": "2026-06-02T06:22:30.177Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "ouachita-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935ug",
+      "createdAt": "2026-06-02T06:22:30.232Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "perry-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935vt",
+      "createdAt": "2026-06-02T06:22:30.281Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "phillips-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935x0",
+      "createdAt": "2026-06-02T06:22:30.324Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pike-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw935yo",
+      "createdAt": "2026-06-02T06:22:30.384Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "poinsett-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw93606",
+      "createdAt": "2026-06-02T06:22:30.438Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "polk-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9361z",
+      "createdAt": "2026-06-02T06:22:30.503Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pope-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw93636",
+      "createdAt": "2026-06-02T06:22:30.546Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "prairie-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9364f",
+      "createdAt": "2026-06-02T06:22:30.591Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "pulaski-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9365x",
+      "createdAt": "2026-06-02T06:22:30.645Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "randolph-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9367f",
+      "createdAt": "2026-06-02T06:22:30.699Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "st-francis-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw9369h",
+      "createdAt": "2026-06-02T06:22:30.773Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "saline-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936av",
+      "createdAt": "2026-06-02T06:22:30.823Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "scott-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936cl",
+      "createdAt": "2026-06-02T06:22:30.885Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "searcy-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936e3",
+      "createdAt": "2026-06-02T06:22:30.939Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sebastian-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936fo",
+      "createdAt": "2026-06-02T06:22:30.996Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sevier-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936h1",
+      "createdAt": "2026-06-02T06:22:31.046Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "sharp-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936i9",
+      "createdAt": "2026-06-02T06:22:31.089Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "stone-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936jp",
+      "createdAt": "2026-06-02T06:22:31.141Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "union-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936lk",
+      "createdAt": "2026-06-02T06:22:31.208Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "van-buren-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936nl",
+      "createdAt": "2026-06-02T06:22:31.281Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "washington-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936pe",
+      "createdAt": "2026-06-02T06:22:31.346Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "white-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936qr",
+      "createdAt": "2026-06-02T06:22:31.395Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "woodruff-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936si",
+      "createdAt": "2026-06-02T06:22:31.458Z"
+    },
+    {
+      "eventType": "INGEST_DEFERRED",
+      "countySlug": "yell-county",
+      "detail": "localAssets: COUNTY_LOCAL_ASSETS_IMPORT_ENABLED=1 not set — Pass C6/C7",
+      "eventId": "cfa-mpw936uc",
+      "createdAt": "2026-06-02T06:22:31.524Z"
     }
   ]
 }

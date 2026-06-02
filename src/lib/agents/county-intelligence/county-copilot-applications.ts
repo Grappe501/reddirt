@@ -79,7 +79,7 @@ export function applyCountyIntelToCopilot(role: RoleCopilotId, countySlug?: stri
       const kpi = loadCountyKpis(slug);
       base.headline = `County lead · ${kpi?.countyName ?? slug}`;
       base.operatorGuidance = [
-        `Local goals: registration ${kpi?.registrationGoal?.toLocaleString() ?? "—"}, PO5 ${kpi?.powerOfFiveGoal?.toLocaleString() ?? "—"}`,
+        `Local goals: reg ${kpi?.canonicalRegistrationGoal?.toLocaleString() ?? "unset"}, vote proxy ${kpi?.planningVoteTargetProxy?.toLocaleString() ?? "—"}, PO5 ${kpi?.powerOfFiveGoal?.toLocaleString() ?? "—"}`,
         `Weaknesses: ${kpi?.topWeaknesses.join(" · ") || "verify profile"}`,
         "Suggested outreach: house parties, party meetings, leader 1:1s",
         "Escalate to field manager before paid media",

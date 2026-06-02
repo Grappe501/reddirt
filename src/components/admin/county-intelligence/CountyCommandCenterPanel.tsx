@@ -1,11 +1,18 @@
 import Link from "next/link";
 import type { StatewideCountyIntelligence } from "@/lib/agents/county-intelligence/county-kpi-types";
+import type { CountyPublicBriefReadiness } from "@/lib/intelligence/briefs/governedBriefTypes";
 import { buildCountyActionPackage } from "@/lib/agents/county-intelligence/county-action-package-builder";
 import { buildFieldManagerDailyCountyPlan } from "@/lib/agents/county-intelligence/county-copilot-applications";
 import { buildPowerOfFiveBriefing } from "@/lib/agents/county-intelligence/power-of-five-engine";
 import { recommendCountyEventsForPeriod } from "@/lib/agents/county-intelligence/county-intelligence-engine";
 
-export function CountyCommandCenterPanel({ statewide }: { statewide: StatewideCountyIntelligence }) {
+export function CountyCommandCenterPanel({
+  statewide,
+  publicBriefRollup,
+}: {
+  statewide: StatewideCountyIntelligence;
+  publicBriefRollup?: Record<CountyPublicBriefReadiness, number>;
+}) {
   const p5 = buildPowerOfFiveBriefing();
   const fieldPlan = buildFieldManagerDailyCountyPlan();
   const events = recommendCountyEventsForPeriod("2026-03", 8);
@@ -24,7 +31,7 @@ export function CountyCommandCenterPanel({ statewide }: { statewide: StatewideCo
         ) : null}
       </header>
 
-      <section className="grid gap-3 sm:grid-cols-2">
+      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <div className="rounded-xl border bg-kelly-page p-4">
           <p className="text-xs font-bold text-kelly-muted">Statewide readiness</p>
           <p className="text-lg font-bold text-kelly-navy">{statewide.weakCounties.length} weak · {statewide.opportunityCounties.length} opportunity</p>
@@ -38,6 +45,20 @@ export function CountyCommandCenterPanel({ statewide }: { statewide: StatewideCo
             ))}
           </ul>
         </div>
+        {publicBriefRollup ? (
+          <div className="rounded-xl border border-amber-300/40 bg-amber-50/50 p-4">
+            <p className="text-xs font-bold text-amber-950">Public brief readiness (internal only)</p>
+            <p className="text-lg font-bold text-kelly-navy">
+              {publicBriefRollup.PUBLIC_BRIEF_READY} public-ready · {publicBriefRollup.INTERNAL_MESSAGE_SOURCE_ONLY} internal source
+            </p>
+            <p className="text-xs text-kelly-muted">
+              {publicBriefRollup.SHELL_ONLY} shell · {publicBriefRollup.FIELD_PLANNING_ONLY} field-only · NOT_PUBLISHABLE default
+            </p>
+            <Link href="/admin/intelligence" className="mt-1 inline-block text-xs font-semibold text-kelly-navy underline">
+              Intelligence brief panel →
+            </Link>
+          </div>
+        ) : null}
       </section>
 
       <section className="rounded-2xl border p-4">
