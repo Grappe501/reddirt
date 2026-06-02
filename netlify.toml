@@ -23,6 +23,8 @@
   NODE_VERSION = "20"
   # next build (tsc + eslint) can exceed default ~2GB heap on this app
   NODE_OPTIONS = "--max-old-space-size=6144"
+  # Emergency internal launch — opposition + debate prep workbench only (banner + skip county rollups)
+  NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE = "opposition_debate"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

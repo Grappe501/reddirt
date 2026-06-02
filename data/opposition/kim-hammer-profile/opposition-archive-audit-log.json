@@ -1,20 +1,20 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-31T19:48:05.055Z",
+  "generatedAt": "2026-06-02T16:46:26.677Z",
   "events": [
     {
       "eventType": "INGEST_COMPLETE",
       "actor": "oppositionArchiveIngest",
       "notes": "writings=3 debate=3 bills=30 claims=2 tasks=7",
-      "eventId": "oaa-mpu6zfs4",
-      "timestamp": "2026-05-31T19:48:04.900Z"
+      "eventId": "oaa-mpwvdjyl",
+      "timestamp": "2026-06-02T16:46:26.637Z"
     },
     {
       "eventType": "INGEST_COMPLETE",
       "actor": "oppositionArchiveIngest",
       "notes": "writings=0 debate=0 bills=0 claims=0 tasks=0",
-      "eventId": "oaa-mpu6zfwf",
-      "timestamp": "2026-05-31T19:48:05.055Z"
+      "eventId": "oaa-mpwvdjzp",
+      "timestamp": "2026-06-02T16:46:26.677Z"
     }
   ]
 }

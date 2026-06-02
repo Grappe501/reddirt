@@ -52,6 +52,8 @@ Thumbs.db
 # local / deploy artifacts
 .vercel
 .netlify/.cache
+# H: workspace toolchain cache/temp (parent folder — never commit)
+../.local/
 
 # logs
 *.log

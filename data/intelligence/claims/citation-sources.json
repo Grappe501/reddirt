@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-31T19:59:40.659Z",
+  "generatedAt": "2026-06-02T16:46:26.257Z",
   "sources": [
     {
       "id": "src-opposition-kim-hammer-v1-src-0",
@@ -8,7 +8,7 @@
       "sourceType": "file",
       "urlOrPath": null,
       "publicationDate": null,
-      "retrievedAt": "2026-05-31T19:53:22.259Z",
+      "retrievedAt": "2026-06-02T16:40:52.822Z",
       "author": null,
       "publisher": "evidencePacketGenerator.v1",
       "jurisdiction": null,
@@ -17,9 +17,9 @@
       "reliabilityRating": "MEDIUM",
       "sourceConfidence": 41,
       "quoteOrExcerpt": null,
-      "summary": "Source from evidence packet ep-opposition-kim-hammer-v1-mpu768nn",
+      "summary": "Source from evidence packet ep-opposition-kim-hammer-v1-mpwv6edy",
       "limitations": [],
-      "createdAt": "2026-05-31T19:53:22.260Z"
+      "createdAt": "2026-06-02T16:40:52.823Z"
     },
     {
       "id": "src-opposition-kim-hammer-v1-src-1",
@@ -27,7 +27,7 @@
       "sourceType": "registry",
       "urlOrPath": null,
       "publicationDate": null,
-      "retrievedAt": "2026-05-31T19:53:22.259Z",
+      "retrievedAt": "2026-06-02T16:40:52.822Z",
       "author": null,
       "publisher": "evidencePacketGenerator.v1",
       "jurisdiction": null,
@@ -36,9 +36,9 @@
       "reliabilityRating": "MEDIUM",
       "sourceConfidence": 41,
       "quoteOrExcerpt": null,
-      "summary": "Source from evidence packet ep-opposition-kim-hammer-v1-mpu768nn",
+      "summary": "Source from evidence packet ep-opposition-kim-hammer-v1-mpwv6edy",
       "limitations": [],
-      "createdAt": "2026-05-31T19:53:22.261Z"
+      "createdAt": "2026-06-02T16:40:52.824Z"
     },
     {
       "id": "src-opposition-kim-hammer-v1-src-2",
@@ -46,7 +46,7 @@
       "sourceType": "file",
       "urlOrPath": null,
       "publicationDate": null,
-      "retrievedAt": "2026-05-31T19:53:22.259Z",
+      "retrievedAt": "2026-06-02T16:40:52.822Z",
       "author": null,
       "publisher": "evidencePacketGenerator.v1",
       "jurisdiction": null,
@@ -55,9 +55,9 @@
       "reliabilityRating": "MEDIUM",
       "sourceConfidence": 41,
       "quoteOrExcerpt": null,
-      "summary": "Source from evidence packet ep-opposition-kim-hammer-v1-mpu768nn",
+      "summary": "Source from evidence packet ep-opposition-kim-hammer-v1-mpwv6edy",
       "limitations": [],
-      "createdAt": "2026-05-31T19:53:22.273Z"
+      "createdAt": "2026-06-02T16:40:53.057Z"
     },
     {
       "id": "src-opposition-kim-hammer-v1-src-3",
@@ -65,7 +65,7 @@
       "sourceType": "file",
       "urlOrPath": null,
       "publicationDate": null,
-      "retrievedAt": "2026-05-31T19:53:22.259Z",
+      "retrievedAt": "2026-06-02T16:40:52.822Z",
       "author": null,
       "publisher": "evidencePacketGenerator.v1",
       "jurisdiction": null,
@@ -74,9 +74,9 @@
       "reliabilityRating": "MEDIUM",
       "sourceConfidence": 41,
       "quoteOrExcerpt": null,
-      "summary": "Source from evidence packet ep-opposition-kim-hammer-v1-mpu768nn",
+      "summary": "Source from evidence packet ep-opposition-kim-hammer-v1-mpwv6edy",
       "limitations": [],
-      "createdAt": "2026-05-31T19:53:22.284Z"
+      "createdAt": "2026-06-02T16:40:53.144Z"
     },
     {
       "id": "src-opposition-kim-hammer-v1-src-4",
@@ -84,7 +84,7 @@
       "sourceType": "file",
       "urlOrPath": null,
       "publicationDate": null,
-      "retrievedAt": "2026-05-31T19:53:22.259Z",
+      "retrievedAt": "2026-06-02T16:40:52.822Z",
       "author": null,
       "publisher": "evidencePacketGenerator.v1",
       "jurisdiction": null,
@@ -93,66 +93,135 @@
       "reliabilityRating": "MEDIUM",
       "sourceConfidence": 41,
       "quoteOrExcerpt": null,
-      "summary": "Source from evidence packet ep-opposition-kim-hammer-v1-mpu768nn",
+      "summary": "Source from evidence packet ep-opposition-kim-hammer-v1-mpwv6edy",
       "limitations": [],
-      "createdAt": "2026-05-31T19:53:22.292Z"
+      "createdAt": "2026-06-02T16:40:53.209Z"
     },
     {
-      "id": "src-debate-prep-v1-src-0",
-      "title": "debateCommandCenter",
-      "sourceType": "registry",
-      "urlOrPath": null,
-      "publicationDate": null,
-      "retrievedAt": "2026-05-31T19:59:40.635Z",
-      "author": null,
-      "publisher": "evidencePacketGenerator.v1",
-      "jurisdiction": null,
+      "id": "cit-src-writing-kh-writing-2025-election-integrity-oped",
+      "title": "Arkansas Leads the Way in Election Integrity: A Commitment to Fairness and Transparency",
+      "sourceType": "url",
+      "urlOrPath": "https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/",
+      "publicationDate": "2025-06-11",
+      "retrievedAt": "2026-06-02T16:46:26.101Z",
+      "author": "Kim Hammer",
+      "publisher": "Hammer campaign website",
+      "jurisdiction": "Arkansas",
       "countySlug": null,
-      "opponentId": null,
+      "opponentId": "kim-hammer",
       "reliabilityRating": "MEDIUM",
-      "sourceConfidence": 40,
+      "sourceConfidence": 75,
       "quoteOrExcerpt": null,
-      "summary": "Source from evidence packet ep-debate-prep-v1-mpu7ecm3",
-      "limitations": [],
-      "createdAt": "2026-05-31T19:59:40.641Z"
+      "summary": "Long-form campaign-authored argument on election integrity, historical framing, and SOS policy goals.",
+      "limitations": [
+        "Summary only — retrieve full text for direct quotes"
+      ],
+      "createdAt": "2026-06-02T16:46:26.101Z"
     },
     {
-      "id": "src-debate-prep-v1-src-1",
-      "title": "debateReadinessSignals",
-      "sourceType": "registry",
-      "urlOrPath": null,
-      "publicationDate": null,
-      "retrievedAt": "2026-05-31T19:59:40.635Z",
-      "author": null,
-      "publisher": "evidencePacketGenerator.v1",
-      "jurisdiction": null,
+      "id": "cit-src-writing-kh-writing-2024-paper-ballot-letter",
+      "title": "Letter to the editor on paper ballots",
+      "sourceType": "url",
+      "urlOrPath": "https://www.mysaline.com/letters-hammer-paper-ballots-patriots/",
+      "publicationDate": "2024-02-27",
+      "retrievedAt": "2026-06-02T16:46:26.212Z",
+      "author": "Kim Hammer",
+      "publisher": "MySaline",
+      "jurisdiction": "Arkansas",
       "countySlug": null,
-      "opponentId": null,
+      "opponentId": "kim-hammer",
       "reliabilityRating": "MEDIUM",
-      "sourceConfidence": 40,
+      "sourceConfidence": 75,
       "quoteOrExcerpt": null,
-      "summary": "Source from evidence packet ep-debate-prep-v1-mpu7ecm3",
-      "limitations": [],
-      "createdAt": "2026-05-31T19:59:40.642Z"
+      "summary": "Letter-format public argument on paper ballot and election process topics.",
+      "limitations": [
+        "Summary only — retrieve full text for direct quotes"
+      ],
+      "createdAt": "2026-06-02T16:46:26.212Z"
     },
     {
-      "id": "src-debate-prep-v1-src-2",
-      "title": "kim-hammer-debate-profile.json",
-      "sourceType": "file",
-      "urlOrPath": null,
-      "publicationDate": null,
-      "retrievedAt": "2026-05-31T19:59:40.635Z",
-      "author": null,
-      "publisher": "evidencePacketGenerator.v1",
-      "jurisdiction": null,
+      "id": "cit-src-writing-kh-writing-2026-monument-letter",
+      "title": "Letter to Secretary of State regarding Monument to the Unborn",
+      "sourceType": "url",
+      "urlOrPath": "https://dev.arkansasonline.com/documents/2026/jan/13/sen-hammer-letter-monument-to-the-unborn/",
+      "publicationDate": "2026-01-13",
+      "retrievedAt": "2026-06-02T16:46:26.226Z",
+      "author": "Kim Hammer",
+      "publisher": "Arkansasonline documents index",
+      "jurisdiction": "Arkansas",
       "countySlug": null,
-      "opponentId": null,
+      "opponentId": "kim-hammer",
       "reliabilityRating": "MEDIUM",
-      "sourceConfidence": 40,
+      "sourceConfidence": 75,
       "quoteOrExcerpt": null,
-      "summary": "Source from evidence packet ep-debate-prep-v1-mpu7ecm3",
-      "limitations": [],
-      "createdAt": "2026-05-31T19:59:40.652Z"
+      "summary": "Document-indexed public letter attributed to Senator Hammer.",
+      "limitations": [
+        "Summary only — retrieve full text for direct quotes"
+      ],
+      "createdAt": "2026-06-02T16:46:26.226Z"
+    },
+    {
+      "id": "cit-src-clip-kh-runoff-media-clips-2026",
+      "title": "Runoff race media coverage clips (not formal debate archive)",
+      "sourceType": "media",
+      "urlOrPath": "https://katv.com/news/hammer-brings-the-hammer-kim-hammer-wins-arkansas-secretary-of-state-runoff",
+      "publicationDate": null,
+      "retrievedAt": "2026-06-02T16:46:26.235Z",
+      "author": null,
+      "publisher": null,
+      "jurisdiction": "Arkansas",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "reliabilityRating": "MEDIUM",
+      "sourceConfidence": 70,
+      "quoteOrExcerpt": null,
+      "summary": "DIRECT_OPPONENT clip archive reference",
+      "limitations": [
+        "Only direct opponent clip — archive thin"
+      ],
+      "createdAt": "2026-06-02T16:46:26.235Z"
+    },
+    {
+      "id": "cit-src-clip-ar-sos-debate-2022-pbs",
+      "title": "Arkansas PBS Secretary of State Debate (2022)",
+      "sourceType": "media",
+      "urlOrPath": "https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/",
+      "publicationDate": null,
+      "retrievedAt": "2026-06-02T16:46:26.247Z",
+      "author": null,
+      "publisher": null,
+      "jurisdiction": "Arkansas",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 85,
+      "quoteOrExcerpt": null,
+      "summary": "REFERENCE_SOS clip archive reference",
+      "limitations": [
+        "Reference SOS debate — not Kim Hammer"
+      ],
+      "createdAt": "2026-06-02T16:46:26.247Z"
+    },
+    {
+      "id": "cit-src-clip-ar-sos-debate-2022-coverage",
+      "title": "4029 debate recap and question coverage",
+      "sourceType": "media",
+      "urlOrPath": "https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807",
+      "publicationDate": null,
+      "retrievedAt": "2026-06-02T16:46:26.256Z",
+      "author": null,
+      "publisher": null,
+      "jurisdiction": "Arkansas",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 85,
+      "quoteOrExcerpt": null,
+      "summary": "REFERENCE_SOS clip archive reference",
+      "limitations": [
+        "Reference SOS debate — not Kim Hammer"
+      ],
+      "createdAt": "2026-06-02T16:46:26.256Z"
     }
   ]
 }

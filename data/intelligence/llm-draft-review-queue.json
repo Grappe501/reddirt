@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-31T19:59:40.639Z",
+  "generatedAt": "2026-06-02T16:41:41.528Z",
   "purpose": "NSI-12 governed LLM draft review queue — all entries INTERNAL_DRAFT until human review.",
   "governanceDefaults": {
     "publicationSafety": "NON_PUBLISHABLE",
@@ -8,6 +8,695 @@
     "defaultReviewStatus": "DRAFT_PENDING_REVIEW"
   },
   "drafts": [
+    {
+      "draftId": "llm-brief-opposition-kim-hammer-v1-mpwv7fys",
+      "draftType": "governed_brief_evidence",
+      "generatedAt": "2026-06-02T16:41:41.524Z",
+      "generatedByTool": "governed-llm-evidence-packet.v1",
+      "generatedForRoute": "/admin/intelligence/llm-review-queue",
+      "generationMode": "DETERMINISTIC_SYNTHESIS",
+      "sourceContext": {
+        "reviewItemId": "llm-brief-review-opposition-kim-hammer-v1-mpwv7fys",
+        "evidencePacketId": "ep-opposition-kim-hammer-v1-mpwv7fyr",
+        "briefId": "opposition-kim-hammer-v1",
+        "briefType": "opposition_research",
+        "reviewStatus": "LLM_DEFERRED",
+        "promptPacketId": "lpp-ep-opposition-kim-hammer-v1-mpwv7fyr",
+        "claimLedger": [
+          {
+            "claimText": "Public statements emphasize election-security legislation as a central qualification for SOS role.",
+            "classification": "VERIFIED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/-0",
+              "opposition-kim-hammer-v1-anchor-https://senate.arkansas.gov/senators/576/-1"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Explicit source anchor(s) in governed brief verified tier"
+          },
+          {
+            "claimText": "Recent Arkansas SOS debates commonly include election confidence, voter access, and business-services operations questions.",
+            "classification": "VERIFIED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/-0",
+              "opposition-kim-hammer-v1-anchor-https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807-1"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Explicit source anchor(s) in governed brief verified tier"
+          },
+          {
+            "claimText": "29 bills indexed in election record packet",
+            "classification": "VERIFIED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-election-record-bill-index.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Explicit source anchor(s) in governed brief verified tier"
+          },
+          {
+            "claimText": "Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+            "classification": "NEEDS_REVIEW",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-https://senate.arkansas.gov/senators/576/-0"
+            ],
+            "publicUseRisk": "HIGH",
+            "notes": "Unverified tier — ambiguous, stale, or weak evidence"
+          },
+          {
+            "claimText": "Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+            "classification": "UNSUPPORTED",
+            "sourceAnchorIds": [],
+            "publicUseRisk": "CRITICAL",
+            "notes": "No source anchor attached to claim"
+          },
+          {
+            "claimText": "Public evidence for large-agency management readiness is partial and requires corroboration.",
+            "classification": "NEEDS_REVIEW",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-claim-graph-0"
+            ],
+            "publicUseRisk": "HIGH",
+            "notes": "Unverified tier — ambiguous, stale, or weak evidence"
+          },
+          {
+            "claimText": "Comprehensive archive search for older op-eds before campaign launch period",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Newspaper paywalled LTE records requiring authenticated retrieval",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Donor cluster normalization from official campaign-finance disclosures",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Repeat co-sponsor graph extracted from session-level sponsor datasets",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Need full 10–15 year sponsor/co-sponsor extraction",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Need committee testimony alignment by bill number",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          }
+        ],
+        "citationMap": [
+          {
+            "anchorId": "opposition-kim-hammer-v1-src-0",
+            "label": "opposition-archive-items.json",
+            "usedByClaims": []
+          },
+          {
+            "anchorId": "opposition-kim-hammer-v1-src-1",
+            "label": "kim-hammer-evidence-index",
+            "usedByClaims": []
+          },
+          {
+            "anchorId": "opposition-kim-hammer-v1-src-2",
+            "label": "kim-hammer-election-record-bill-index.json",
+            "usedByClaims": [
+              "29 bills indexed in election record packet"
+            ]
+          },
+          {
+            "anchorId": "opposition-kim-hammer-v1-src-3",
+            "label": "kim-hammer-kh4-claim-graph.json",
+            "usedByClaims": []
+          },
+          {
+            "anchorId": "opposition-kim-hammer-v1-src-4",
+            "label": "kim-hammer-intelligence-gaps.json",
+            "usedByClaims": [
+              "Comprehensive archive search for older op-eds before campaign launch period",
+              "Newspaper paywalled LTE records requiring authenticated retrieval",
+              "Donor cluster normalization from official campaign-finance disclosures",
+              "Repeat co-sponsor graph extracted from session-level sponsor datasets",
+              "Need full 10–15 year sponsor/co-sponsor extraction",
+              "Need committee testimony alignment by bill number"
+            ]
+          }
+        ],
+        "unsupportedClaims": [
+          "NEEDS_REVIEW: Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+          "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+          "NEEDS_REVIEW: Public evidence for large-agency management readiness is partial and requires corroboration."
+        ]
+      },
+      "promptSummary": "Governed brief evidence packet → opposition-kim-hammer-v1 (LLM_DEFERRED)",
+      "draftTitle": "Kim Hammer Opposition Research Brief (INTERNAL) — LLM Review Draft",
+      "draftContent": "INTERNAL DRAFT ONLY | NON_PUBLISHABLE | HUMAN_REVIEW_REQUIRED | NOT PUBLIC CONTENT\n\n# Kim Hammer Opposition Research Brief (INTERNAL) — Internal Draft (Evidence Synthesis)\n\n## Situation summary\n- 2 export-ready claims of 6\n- 6 opposition archive sources; 0/0 usable quotes\n- 1 direct opponent clips; 3 authored writings\n- 0/7 retrieval tasks closed (6 partial)\n- 1 claims need research\n\n## Verified facts (human review still required)\n- Public statements emphasize election-security legislation as a central qualification for SOS role. [opposition-kim-hammer-v1-anchor-https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/-0, opposition-kim-hammer-v1-anchor-https://senate.arkansas.gov/senators/576/-1]\n- Recent Arkansas SOS debates commonly include election confidence, voter access, and business-services operations questions. [opposition-kim-hammer-v1-anchor-https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/-0, opposition-kim-hammer-v1-anchor-https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807-1]\n- 29 bills indexed in election record packet [opposition-kim-hammer-v1-anchor-kim-hammer-election-record-bill-index.json-0]\n\n## Inferences (internal only — not public copy)\n- Comprehensive archive search for older op-eds before campaign launch period\n- Newspaper paywalled LTE records requiring authenticated retrieval\n- Donor cluster normalization from official campaign-finance disclosures\n- Repeat co-sponsor graph extracted from session-level sponsor datasets\n- Need full 10–15 year sponsor/co-sponsor extraction\n- Need committee testimony alignment by bill number\n\n## Research gaps\n- Locate full archive of older Kim Hammer debate/forum recordings with timestamps\n- Index local candidate forums not currently in statewide media databases\n- Comprehensive archive search for older op-eds before campaign launch period\n- Newspaper paywalled LTE records requiring authenticated retrieval\n- 0/7 retrieval tasks COMPLETE — do not claim research closure\n- [HIGH] kh3b-pre-legislative-authored-writings: Retrieve oldest op-eds and church/community newsletter archives\n- [HIGH] kh3b-long-tail-video-forum-record: Sweep county GOP YouTube/Facebook and local TV clip archives\n\n## Risk warnings\n- Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin\n- NOT_PUBLISHABLE — opposition content requires KH-4 export workflow\n- Any statement that implies motive without direct quotation or hearing evidence.\n- Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.\n- Any statement that conflates sponsoring with final floor vote behavior.\n\n## Operator next action\nReview claim ledger in LLM review queue. No promotion without human approval.\n\nGeneration mode: EVIDENCE_SYNTHESIS_ONLY · Packet confidence 41/100",
+      "publicationSafety": "NON_PUBLISHABLE",
+      "reviewStatus": "DRAFT_PENDING_REVIEW",
+      "humanReviewRequired": true,
+      "recommendedReviewer": "Intelligence operator",
+      "sourceDependencies": [
+        "opposition-archive-items.json",
+        "kim-hammer-evidence-index",
+        "kim-hammer-election-record-bill-index.json",
+        "kim-hammer-kh4-claim-graph.json",
+        "kim-hammer-intelligence-gaps.json"
+      ],
+      "citationDependencies": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "narrativeDependencies": [],
+      "countyDependencies": [],
+      "operatorNotes": "",
+      "llmModel": "deferred",
+      "llmTemperature": 0.2,
+      "tokenEstimate": 729.75,
+      "confidenceWarnings": [
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin",
+        "NOT_PUBLISHABLE — opposition content requires KH-4 export workflow",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus."
+      ],
+      "prohibitedUseWarnings": [
+        "NO_PUBLISH",
+        "NO_SEND",
+        "NO_PUBLIC_EXPORT",
+        "OPERATOR_TRIGGER_REQUIRED"
+      ],
+      "approvedForPromotion": false,
+      "promotedTo": null,
+      "archived": false,
+      "contentChecksum": "6e7eabb2755ea007",
+      "governanceWarnings": [
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin",
+        "NOT_PUBLISHABLE — opposition content requires KH-4 export workflow",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus."
+      ],
+      "unsupportedClaimWarnings": [
+        "NEEDS_REVIEW: Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+        "NEEDS_REVIEW: Public evidence for large-agency management readiness is partial and requires corroboration."
+      ],
+      "missingCitationWarnings": [],
+      "hallucinationRiskWarnings": [],
+      "publicationRestrictions": [
+        "NON_PUBLISHABLE",
+        "HUMAN_REVIEW_REQUIRED"
+      ]
+    },
+    {
+      "draftId": "llm-brief-debate-prep-v1-mpwv3x6l",
+      "draftType": "governed_brief_evidence",
+      "generatedAt": "2026-06-02T16:38:57.213Z",
+      "generatedByTool": "governed-llm-evidence-packet.v1",
+      "generatedForRoute": "/admin/intelligence/llm-review-queue",
+      "generationMode": "DETERMINISTIC_SYNTHESIS",
+      "sourceContext": {
+        "reviewItemId": "llm-brief-review-debate-prep-v1-mpwv3x6l",
+        "evidencePacketId": "ep-debate-prep-v1-mpwv3x6l",
+        "briefId": "debate-prep-v1",
+        "briefType": "debate_prep",
+        "reviewStatus": "LLM_DEFERRED",
+        "promptPacketId": "lpp-ep-debate-prep-v1-mpwv3x6l",
+        "claimLedger": [
+          {
+            "claimText": "Overall debate readiness: 58/100 — Mean of 9 computed dimension scores; not a self-assessment.",
+            "classification": "VERIFIED",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-debateFilmRoom-0",
+              "debate-prep-v1-anchor-kim-hammer-debate-archive-index.json-1",
+              "debate-prep-v1-anchor-strategicScenarioSimulation-2",
+              "debate-prep-v1-anchor-kimHammerEvidenceIndex-3",
+              "debate-prep-v1-anchor-kimHammerWorkbench-4",
+              "debate-prep-v1-anchor-strategicScenarioSimulation-5"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Explicit source anchor(s) in governed brief verified tier"
+          },
+          {
+            "claimText": "Media readiness: 10/100 — 1 direct opponent clips; 2 reference SOS debate assets; 5 film room gaps.",
+            "classification": "VERIFIED",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-debateFilmRoom-0",
+              "debate-prep-v1-anchor-kim-hammer-debate-archive-index.json-1"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Explicit source anchor(s) in governed brief verified tier"
+          },
+          {
+            "claimText": "Emotional composure: 32/100 — 6 debate trap warnings from NSI-14.",
+            "classification": "VERIFIED",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-strategicScenarioSimulation-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Explicit source anchor(s) in governed brief verified tier"
+          },
+          {
+            "claimText": "Office mastery: 45/100 — 2 export-ready claims; 7 open retrieval tasks.",
+            "classification": "VERIFIED",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-kimHammerEvidenceIndex-0",
+              "debate-prep-v1-anchor-kimHammerWorkbench-1"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Explicit source anchor(s) in governed brief verified tier"
+          },
+          {
+            "claimText": "Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+            "classification": "NEEDS_REVIEW",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-debateFilmRoom-0"
+            ],
+            "publicUseRisk": "HIGH",
+            "notes": "Unverified tier — ambiguous, stale, or weak evidence"
+          },
+          {
+            "claimText": "Index local candidate forums not currently in statewide media databases",
+            "classification": "NEEDS_REVIEW",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-debateFilmRoom-0"
+            ],
+            "publicUseRisk": "HIGH",
+            "notes": "Unverified tier — ambiguous, stale, or weak evidence"
+          },
+          {
+            "claimText": "Only one direct Kim Hammer media clip — formal debate archive missing",
+            "classification": "NEEDS_REVIEW",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-debateFilmRoom-0"
+            ],
+            "publicUseRisk": "HIGH",
+            "notes": "Unverified tier — ambiguous, stale, or weak evidence"
+          },
+          {
+            "claimText": "No legislative committee transcript chunks — run legislature:intelligence:run with discovery enabled",
+            "classification": "NEEDS_REVIEW",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-debateFilmRoom-0"
+            ],
+            "publicUseRisk": "HIGH",
+            "notes": "Unverified tier — ambiguous, stale, or weak evidence"
+          },
+          {
+            "claimText": "Local forum recordings not indexed",
+            "classification": "NEEDS_REVIEW",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-debateFilmRoom-0"
+            ],
+            "publicUseRisk": "HIGH",
+            "notes": "Unverified tier — ambiguous, stale, or weak evidence"
+          },
+          {
+            "claimText": "Election integrity and security reforms are necessary to maintain trust.",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-https://www.hammerforarkansas.com/election-security/-0",
+              "debate-prep-v1-anchor-https://www.hammerforarkansas.com/2025/06/03/secretary-of-state-candidate-senator-kim-hammer-releases-statement-on-arkansas-rank-as-1-in-the-nation-for-election-integrity/-1"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Long legislative tenure and committee leadership prepare him for SOS operations.",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-https://senate.arkansas.gov/senators/576/-0",
+              "debate-prep-v1-anchor-https://www.hammerforarkansas.com/about/-1"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Uniform statewide procedures and stricter controls improve election accountability.",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "debate-prep-v1-anchor-data/opposition/kim-hammer-election-record-bill-index.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          }
+        ],
+        "citationMap": [
+          {
+            "anchorId": "debate-prep-v1-src-0",
+            "label": "debateCommandCenter",
+            "usedByClaims": []
+          },
+          {
+            "anchorId": "debate-prep-v1-src-1",
+            "label": "debateReadinessSignals",
+            "usedByClaims": []
+          },
+          {
+            "anchorId": "debate-prep-v1-src-2",
+            "label": "kim-hammer-debate-profile.json",
+            "usedByClaims": []
+          }
+        ],
+        "unsupportedClaims": [
+          "NEEDS_REVIEW: Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+          "NEEDS_REVIEW: Index local candidate forums not currently in statewide media databases",
+          "NEEDS_REVIEW: Only one direct Kim Hammer media clip — formal debate archive missing",
+          "NEEDS_REVIEW: No legislative committee transcript chunks — run legislature:intelligence:run with discovery enabled",
+          "NEEDS_REVIEW: Local forum recordings not indexed"
+        ]
+      },
+      "promptSummary": "Governed brief evidence packet → debate-prep-v1 (LLM_DEFERRED)",
+      "draftTitle": "Debate Prep Brief (INTERNAL) — LLM Review Draft",
+      "draftContent": "INTERNAL DRAFT ONLY | NON_PUBLISHABLE | HUMAN_REVIEW_REQUIRED | NOT PUBLIC CONTENT\n\n# Debate Prep Brief (INTERNAL) — Internal Draft (Evidence Synthesis)\n\n## Situation summary\n- Overall readiness: 58/100 (MEDIUM)\n- 1 direct opponent clips\n- 9 rebuttal scripts in corpus\n- 5 drill cards from bill anchors\n\n## Verified facts (human review still required)\n- Overall debate readiness: 58/100 — Mean of 9 computed dimension scores; not a self-assessment. [debate-prep-v1-anchor-debateFilmRoom-0, debate-prep-v1-anchor-kim-hammer-debate-archive-index.json-1, debate-prep-v1-anchor-strategicScenarioSimulation-2, debate-prep-v1-anchor-kimHammerEvidenceIndex-3, debate-prep-v1-anchor-kimHammerWorkbench-4, debate-prep-v1-anchor-strategicScenarioSimulation-5]\n- Media readiness: 10/100 — 1 direct opponent clips; 2 reference SOS debate assets; 5 film room gaps. [debate-prep-v1-anchor-debateFilmRoom-0, debate-prep-v1-anchor-kim-hammer-debate-archive-index.json-1]\n- Emotional composure: 32/100 — 6 debate trap warnings from NSI-14. [debate-prep-v1-anchor-strategicScenarioSimulation-0]\n- Office mastery: 45/100 — 2 export-ready claims; 7 open retrieval tasks. [debate-prep-v1-anchor-kimHammerEvidenceIndex-0, debate-prep-v1-anchor-kimHammerWorkbench-1]\n\n## Inferences (internal only — not public copy)\n- Election integrity and security reforms are necessary to maintain trust.\n- Long legislative tenure and committee leadership prepare him for SOS operations.\n- Uniform statewide procedures and stricter controls improve election accountability.\n\n## Research gaps\n- Locate full archive of older Kim Hammer debate/forum recordings with timestamps\n- Index local candidate forums not currently in statewide media databases\n- Only one direct Kim Hammer media clip — formal debate archive missing\n- No legislative committee transcript chunks — run legislature:intelligence:run with discovery enabled\n- Local forum recordings not indexed\n\n## Risk warnings\n- Any statement that implies motive without direct quotation or hearing evidence.\n- Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.\n- Any statement that conflates sponsoring with final floor vote behavior.\n- All debate answers INTERNAL until comms/candidate prep sign-off\n\n## Operator next action\nReview claim ledger in LLM review queue. No promotion without human approval.\n\nGeneration mode: EVIDENCE_SYNTHESIS_ONLY · Packet confidence 40/100",
+      "publicationSafety": "NON_PUBLISHABLE",
+      "reviewStatus": "DRAFT_PENDING_REVIEW",
+      "humanReviewRequired": true,
+      "recommendedReviewer": "Intelligence operator",
+      "sourceDependencies": [
+        "debateCommandCenter",
+        "debateReadinessSignals",
+        "kim-hammer-debate-profile.json"
+      ],
+      "citationDependencies": [
+        "debate-prep-v1-src-0",
+        "debate-prep-v1-src-1",
+        "debate-prep-v1-src-2"
+      ],
+      "narrativeDependencies": [],
+      "countyDependencies": [],
+      "operatorNotes": "",
+      "llmModel": "deferred",
+      "llmTemperature": 0.2,
+      "tokenEstimate": 612.25,
+      "confidenceWarnings": [
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "All debate answers INTERNAL until comms/candidate prep sign-off",
+        "NEEDS_REVIEW: Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+        "NEEDS_REVIEW: Index local candidate forums not currently in statewide media databases"
+      ],
+      "prohibitedUseWarnings": [
+        "NO_PUBLISH",
+        "NO_SEND",
+        "NO_PUBLIC_EXPORT",
+        "OPERATOR_TRIGGER_REQUIRED"
+      ],
+      "approvedForPromotion": false,
+      "promotedTo": null,
+      "archived": false,
+      "contentChecksum": "edf51f985bea2574",
+      "governanceWarnings": [
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "All debate answers INTERNAL until comms/candidate prep sign-off",
+        "NEEDS_REVIEW: Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+        "NEEDS_REVIEW: Index local candidate forums not currently in statewide media databases"
+      ],
+      "unsupportedClaimWarnings": [
+        "NEEDS_REVIEW: Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+        "NEEDS_REVIEW: Index local candidate forums not currently in statewide media databases",
+        "NEEDS_REVIEW: Only one direct Kim Hammer media clip — formal debate archive missing",
+        "NEEDS_REVIEW: No legislative committee transcript chunks — run legislature:intelligence:run with discovery enabled",
+        "NEEDS_REVIEW: Local forum recordings not indexed"
+      ],
+      "missingCitationWarnings": [],
+      "hallucinationRiskWarnings": [],
+      "publicationRestrictions": [
+        "NON_PUBLISHABLE",
+        "HUMAN_REVIEW_REQUIRED"
+      ]
+    },
+    {
+      "draftId": "llm-brief-opposition-kim-hammer-v1-mpwv2hfd",
+      "draftType": "governed_brief_evidence",
+      "generatedAt": "2026-06-02T16:37:50.028Z",
+      "generatedByTool": "governed-llm-evidence-packet.v1",
+      "generatedForRoute": "/admin/intelligence/llm-review-queue",
+      "generationMode": "DETERMINISTIC_SYNTHESIS",
+      "sourceContext": {
+        "reviewItemId": "llm-brief-review-opposition-kim-hammer-v1-mpwv2hcc",
+        "evidencePacketId": "ep-opposition-kim-hammer-v1-mpwv2hcb",
+        "briefId": "opposition-kim-hammer-v1",
+        "briefType": "opposition_research",
+        "reviewStatus": "LLM_DEFERRED",
+        "promptPacketId": "lpp-ep-opposition-kim-hammer-v1-mpwv2hcb",
+        "claimLedger": [
+          {
+            "claimText": "Public statements emphasize election-security legislation as a central qualification for SOS role.",
+            "classification": "VERIFIED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/-0",
+              "opposition-kim-hammer-v1-anchor-https://senate.arkansas.gov/senators/576/-1"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Explicit source anchor(s) in governed brief verified tier"
+          },
+          {
+            "claimText": "Recent Arkansas SOS debates commonly include election confidence, voter access, and business-services operations questions.",
+            "classification": "VERIFIED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/-0",
+              "opposition-kim-hammer-v1-anchor-https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807-1"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Explicit source anchor(s) in governed brief verified tier"
+          },
+          {
+            "claimText": "29 bills indexed in election record packet",
+            "classification": "VERIFIED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-election-record-bill-index.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Explicit source anchor(s) in governed brief verified tier"
+          },
+          {
+            "claimText": "Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+            "classification": "NEEDS_REVIEW",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-https://senate.arkansas.gov/senators/576/-0"
+            ],
+            "publicUseRisk": "HIGH",
+            "notes": "Unverified tier — ambiguous, stale, or weak evidence"
+          },
+          {
+            "claimText": "Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+            "classification": "UNSUPPORTED",
+            "sourceAnchorIds": [],
+            "publicUseRisk": "CRITICAL",
+            "notes": "No source anchor attached to claim"
+          },
+          {
+            "claimText": "Public evidence for large-agency management readiness is partial and requires corroboration.",
+            "classification": "NEEDS_REVIEW",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-claim-graph-0"
+            ],
+            "publicUseRisk": "HIGH",
+            "notes": "Unverified tier — ambiguous, stale, or weak evidence"
+          },
+          {
+            "claimText": "Comprehensive archive search for older op-eds before campaign launch period",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Newspaper paywalled LTE records requiring authenticated retrieval",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Donor cluster normalization from official campaign-finance disclosures",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Repeat co-sponsor graph extracted from session-level sponsor datasets",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Need full 10–15 year sponsor/co-sponsor extraction",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          },
+          {
+            "claimText": "Need committee testimony alignment by bill number",
+            "classification": "INFERRED",
+            "sourceAnchorIds": [
+              "opposition-kim-hammer-v1-anchor-kim-hammer-intelligence-gaps.json-0"
+            ],
+            "publicUseRisk": "MEDIUM",
+            "notes": "Evidence supports interpretation but not direct public claim"
+          }
+        ],
+        "citationMap": [
+          {
+            "anchorId": "opposition-kim-hammer-v1-src-0",
+            "label": "opposition-archive-items.json",
+            "usedByClaims": []
+          },
+          {
+            "anchorId": "opposition-kim-hammer-v1-src-1",
+            "label": "kim-hammer-evidence-index",
+            "usedByClaims": []
+          },
+          {
+            "anchorId": "opposition-kim-hammer-v1-src-2",
+            "label": "kim-hammer-election-record-bill-index.json",
+            "usedByClaims": [
+              "29 bills indexed in election record packet"
+            ]
+          },
+          {
+            "anchorId": "opposition-kim-hammer-v1-src-3",
+            "label": "kim-hammer-kh4-claim-graph.json",
+            "usedByClaims": []
+          },
+          {
+            "anchorId": "opposition-kim-hammer-v1-src-4",
+            "label": "kim-hammer-intelligence-gaps.json",
+            "usedByClaims": [
+              "Comprehensive archive search for older op-eds before campaign launch period",
+              "Newspaper paywalled LTE records requiring authenticated retrieval",
+              "Donor cluster normalization from official campaign-finance disclosures",
+              "Repeat co-sponsor graph extracted from session-level sponsor datasets",
+              "Need full 10–15 year sponsor/co-sponsor extraction",
+              "Need committee testimony alignment by bill number"
+            ]
+          }
+        ],
+        "unsupportedClaims": [
+          "NEEDS_REVIEW: Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+          "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+          "NEEDS_REVIEW: Public evidence for large-agency management readiness is partial and requires corroboration."
+        ]
+      },
+      "promptSummary": "Governed brief evidence packet → opposition-kim-hammer-v1 (LLM_DEFERRED)",
+      "draftTitle": "Kim Hammer Opposition Research Brief (INTERNAL) — LLM Review Draft",
+      "draftContent": "INTERNAL DRAFT ONLY | NON_PUBLISHABLE | HUMAN_REVIEW_REQUIRED | NOT PUBLIC CONTENT\n\n# Kim Hammer Opposition Research Brief (INTERNAL) — Internal Draft (Evidence Synthesis)\n\n## Situation summary\n- 2 export-ready claims of 6\n- 6 opposition archive sources; 0/0 usable quotes\n- 1 direct opponent clips; 3 authored writings\n- 0/7 retrieval tasks closed (6 partial)\n- 1 claims need research\n\n## Verified facts (human review still required)\n- Public statements emphasize election-security legislation as a central qualification for SOS role. [opposition-kim-hammer-v1-anchor-https://www.hammerforarkansas.com/2025/06/11/arkansas-leads-the-way-in-election-integrity-a-commitment-to-fairness-and-transparency/-0, opposition-kim-hammer-v1-anchor-https://senate.arkansas.gov/senators/576/-1]\n- Recent Arkansas SOS debates commonly include election confidence, voter access, and business-services operations questions. [opposition-kim-hammer-v1-anchor-https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/-0, opposition-kim-hammer-v1-anchor-https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807-1]\n- 29 bills indexed in election record packet [opposition-kim-hammer-v1-anchor-kim-hammer-election-record-bill-index.json-0]\n\n## Inferences (internal only — not public copy)\n- Comprehensive archive search for older op-eds before campaign launch period\n- Newspaper paywalled LTE records requiring authenticated retrieval\n- Donor cluster normalization from official campaign-finance disclosures\n- Repeat co-sponsor graph extracted from session-level sponsor datasets\n- Need full 10–15 year sponsor/co-sponsor extraction\n- Need committee testimony alignment by bill number\n\n## Research gaps\n- Locate full archive of older Kim Hammer debate/forum recordings with timestamps\n- Index local candidate forums not currently in statewide media databases\n- Comprehensive archive search for older op-eds before campaign launch period\n- Newspaper paywalled LTE records requiring authenticated retrieval\n- 0/7 retrieval tasks COMPLETE — do not claim research closure\n- [HIGH] kh3b-pre-legislative-authored-writings: Retrieve oldest op-eds and church/community newsletter archives\n- [HIGH] kh3b-long-tail-video-forum-record: Sweep county GOP YouTube/Facebook and local TV clip archives\n\n## Risk warnings\n- Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin\n- NOT_PUBLISHABLE — opposition content requires KH-4 export workflow\n- Any statement that implies motive without direct quotation or hearing evidence.\n- Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.\n- Any statement that conflates sponsoring with final floor vote behavior.\n\n## Operator next action\nReview claim ledger in LLM review queue. No promotion without human approval.\n\nGeneration mode: EVIDENCE_SYNTHESIS_ONLY · Packet confidence 42/100",
+      "publicationSafety": "NON_PUBLISHABLE",
+      "reviewStatus": "DRAFT_PENDING_REVIEW",
+      "humanReviewRequired": true,
+      "recommendedReviewer": "Intelligence operator",
+      "sourceDependencies": [
+        "opposition-archive-items.json",
+        "kim-hammer-evidence-index",
+        "kim-hammer-election-record-bill-index.json",
+        "kim-hammer-kh4-claim-graph.json",
+        "kim-hammer-intelligence-gaps.json"
+      ],
+      "citationDependencies": [
+        "opposition-kim-hammer-v1-src-0",
+        "opposition-kim-hammer-v1-src-1",
+        "opposition-kim-hammer-v1-src-2",
+        "opposition-kim-hammer-v1-src-3",
+        "opposition-kim-hammer-v1-src-4"
+      ],
+      "narrativeDependencies": [],
+      "countyDependencies": [],
+      "operatorNotes": "",
+      "llmModel": "deferred",
+      "llmTemperature": 0.2,
+      "tokenEstimate": 729.75,
+      "confidenceWarnings": [
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin",
+        "NOT_PUBLISHABLE — opposition content requires KH-4 export workflow",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus."
+      ],
+      "prohibitedUseWarnings": [
+        "NO_PUBLISH",
+        "NO_SEND",
+        "NO_PUBLIC_EXPORT",
+        "OPERATOR_TRIGGER_REQUIRED"
+      ],
+      "approvedForPromotion": false,
+      "promotedTo": null,
+      "archived": false,
+      "contentChecksum": "85366df1341a90d8",
+      "governanceWarnings": [
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin",
+        "NOT_PUBLISHABLE — opposition content requires KH-4 export workflow",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus."
+      ],
+      "unsupportedClaimWarnings": [
+        "NEEDS_REVIEW: Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+        "NEEDS_REVIEW: Public evidence for large-agency management readiness is partial and requires corroboration."
+      ],
+      "missingCitationWarnings": [],
+      "hallucinationRiskWarnings": [],
+      "publicationRestrictions": [
+        "NON_PUBLISHABLE",
+        "HUMAN_REVIEW_REQUIRED"
+      ]
+    },
     {
       "draftId": "llm-brief-debate-prep-v1-mpu7ecm4",
       "draftType": "governed_brief_evidence",

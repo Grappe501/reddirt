@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-31T19:59:40.659Z",
+  "generatedAt": "2026-06-02T16:46:26.257Z",
   "anchors": [
     {
       "id": "opposition-kim-hammer-v1-src-0",
@@ -58,37 +58,70 @@
       "notes": "kim-hammer-intelligence-gaps.json"
     },
     {
-      "id": "debate-prep-v1-src-0",
-      "sourceId": "src-debate-prep-v1-src-0",
-      "anchorType": "registry_key",
+      "id": "cit-anchor-writing-kh-writing-2025-election-integrity-oped",
+      "sourceId": "cit-src-writing-kh-writing-2025-election-integrity-oped",
+      "anchorType": "url",
       "lineRange": null,
       "pageNumber": null,
-      "section": null,
-      "claimSupportType": "DIRECT_SUPPORT",
-      "excerpt": null,
-      "notes": "debateCommandCenter"
+      "section": "OP_ED",
+      "claimSupportType": "INDIRECT_SUPPORT",
+      "excerpt": "Long-form campaign-authored argument on election integrity, historical framing, and SOS policy goals.",
+      "notes": "Authored writing archive: Arkansas Leads the Way in Election Integrity: A Commitment to Fairness and Transparency"
     },
     {
-      "id": "debate-prep-v1-src-1",
-      "sourceId": "src-debate-prep-v1-src-1",
-      "anchorType": "registry_key",
+      "id": "cit-anchor-writing-kh-writing-2024-paper-ballot-letter",
+      "sourceId": "cit-src-writing-kh-writing-2024-paper-ballot-letter",
+      "anchorType": "url",
       "lineRange": null,
       "pageNumber": null,
-      "section": null,
-      "claimSupportType": "DIRECT_SUPPORT",
-      "excerpt": null,
-      "notes": "debateReadinessSignals"
+      "section": "LETTER_TO_EDITOR",
+      "claimSupportType": "INDIRECT_SUPPORT",
+      "excerpt": "Letter-format public argument on paper ballot and election process topics.",
+      "notes": "Authored writing archive: Letter to the editor on paper ballots"
     },
     {
-      "id": "debate-prep-v1-src-2",
-      "sourceId": "src-debate-prep-v1-src-2",
-      "anchorType": "registry_key",
+      "id": "cit-anchor-writing-kh-writing-2026-monument-letter",
+      "sourceId": "cit-src-writing-kh-writing-2026-monument-letter",
+      "anchorType": "url",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": "PUBLIC_LETTER",
+      "claimSupportType": "INDIRECT_SUPPORT",
+      "excerpt": "Document-indexed public letter attributed to Senator Hammer.",
+      "notes": "Authored writing archive: Letter to Secretary of State regarding Monument to the Unborn"
+    },
+    {
+      "id": "cit-anchor-clip-kh-runoff-media-clips-2026",
+      "sourceId": "cit-src-clip-kh-runoff-media-clips-2026",
+      "anchorType": "url",
       "lineRange": null,
       "pageNumber": null,
       "section": null,
-      "claimSupportType": "DIRECT_SUPPORT",
+      "claimSupportType": "CONTEXT_ONLY",
       "excerpt": null,
-      "notes": "kim-hammer-debate-profile.json"
+      "notes": "Opposition archive clip: Runoff race media coverage clips (not formal debate archive)"
+    },
+    {
+      "id": "cit-anchor-clip-ar-sos-debate-2022-pbs",
+      "sourceId": "cit-src-clip-ar-sos-debate-2022-pbs",
+      "anchorType": "url",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "CONTEXT_ONLY",
+      "excerpt": null,
+      "notes": "Opposition archive clip: Arkansas PBS Secretary of State Debate (2022)"
+    },
+    {
+      "id": "cit-anchor-clip-ar-sos-debate-2022-coverage",
+      "sourceId": "cit-src-clip-ar-sos-debate-2022-coverage",
+      "anchorType": "url",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "CONTEXT_ONLY",
+      "excerpt": null,
+      "notes": "Opposition archive clip: 4029 debate recap and question coverage"
     }
   ]
 }

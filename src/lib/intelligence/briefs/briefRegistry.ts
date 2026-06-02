@@ -3,6 +3,7 @@ import { generateOppositionDebateBriefPack } from "./oppositionDebateBriefGenera
 import { buildWeeklyIntelligencePacket, generateCandidateMessageBrief, generateWeeklyIntelligenceGovernedBrief } from "./weeklyIntelligenceBrief";
 import { buildMessageIntelligenceFromBrief, buildBrainOrchestrationAnswers } from "./messageIntelligenceLayer";
 import { runDailyIntelligenceAgentPass } from "@/lib/intelligence/intelligenceAgentOrchestrator";
+import { shouldSkipCountyIntelligenceForLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 import { loadKimHammerEvidenceIndex } from "@/lib/opposition/kimHammerEvidenceIndex";
 import { buildDebateCommandCenterState } from "@/lib/opposition/debateCommandCenter";
 import { summarizeCampaignIntelligenceState } from "@/lib/intelligence/intelligenceBrainCoordinator";
@@ -27,12 +28,15 @@ export type GovernedBriefRegistry = {
 export function composeGovernedBriefRegistry(options?: {
   repoRoot?: string;
   syncActionQueue?: boolean;
+  skipCounty?: boolean;
 }): GovernedBriefRegistry {
+  const skipCounty = options?.skipCounty ?? shouldSkipCountyIntelligenceForLaunch();
   const dailyPacket = runDailyIntelligenceAgentPass({
     repoRoot: options?.repoRoot,
     syncActionQueue: options?.syncActionQueue ?? false,
+    skipCounty,
   });
-  const countyBundles = generateAllCountyBriefBundles();
+  const countyBundles = skipCounty ? [] : generateAllCountyBriefBundles();
   const oppositionDebate = generateOppositionDebateBriefPack();
   const weeklyPacket = buildWeeklyIntelligencePacket(dailyPacket, options?.repoRoot);
   const evidence = loadKimHammerEvidenceIndex(options?.repoRoot);
@@ -63,7 +67,9 @@ export function composeGovernedBriefRegistry(options?: {
   const topResearchGapsBlockingPublicMessaging = [
     ...weeklyPacket.oppositionResearchGaps,
     ...weeklyPacket.notVerifiedNeedsHumanReview,
-    `${countyBundles.filter((b) => b.publicBriefReadiness === "SHELL_ONLY").length} shell counties block public messaging`,
+    ...(skipCounty
+      ? ["County brief rollup deferred in emergency launch mode"]
+      : [`${countyBundles.filter((b) => b.publicBriefReadiness === "SHELL_ONLY").length} shell counties block public messaging`]),
   ].slice(0, 10);
 
   return {

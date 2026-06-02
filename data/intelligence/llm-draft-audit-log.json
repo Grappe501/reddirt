@@ -1,8 +1,77 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-31T19:59:40.641Z",
+  "generatedAt": "2026-06-02T16:41:41.629Z",
   "purpose": "NSI-12 append-only audit log for LLM draft lifecycle events.",
   "entries": [
+    {
+      "eventType": "LLM_DRAFT_CREATED",
+      "draftId": "llm-brief-opposition-kim-hammer-v1-mpwv7fys",
+      "draftType": "governed_brief_evidence",
+      "reviewer": "operator",
+      "route": "/admin/intelligence/llm-review-queue",
+      "model": "deferred",
+      "previousStatus": "NONE",
+      "nextStatus": "DRAFT_PENDING_REVIEW",
+      "warnings": [
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin",
+        "NOT_PUBLISHABLE — opposition content requires KH-4 export workflow",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus."
+      ],
+      "promotionTarget": null,
+      "notes": "governed-brief-evidence status=LLM_DEFERRED",
+      "auditId": "llm-audit-mpwv7g1p",
+      "timestamp": "2026-06-02T16:41:41.629Z"
+    },
+    {
+      "eventType": "LLM_DRAFT_CREATED",
+      "draftId": "llm-brief-debate-prep-v1-mpwv3x6l",
+      "draftType": "governed_brief_evidence",
+      "reviewer": "operator",
+      "route": "/admin/intelligence/llm-review-queue",
+      "model": "deferred",
+      "previousStatus": "NONE",
+      "nextStatus": "DRAFT_PENDING_REVIEW",
+      "warnings": [
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "All debate answers INTERNAL until comms/candidate prep sign-off",
+        "NEEDS_REVIEW: Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+        "NEEDS_REVIEW: Index local candidate forums not currently in statewide media databases"
+      ],
+      "promotionTarget": null,
+      "notes": "governed-brief-evidence status=LLM_DEFERRED",
+      "auditId": "llm-audit-mpwv3x6r",
+      "timestamp": "2026-06-02T16:38:57.219Z"
+    },
+    {
+      "eventType": "LLM_DRAFT_CREATED",
+      "draftId": "llm-brief-opposition-kim-hammer-v1-mpwv2hfd",
+      "draftType": "governed_brief_evidence",
+      "reviewer": "operator",
+      "route": "/admin/intelligence/llm-review-queue",
+      "model": "deferred",
+      "previousStatus": "NONE",
+      "nextStatus": "DRAFT_PENDING_REVIEW",
+      "warnings": [
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin",
+        "NOT_PUBLISHABLE — opposition content requires KH-4 export workflow",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus."
+      ],
+      "promotionTarget": null,
+      "notes": "governed-brief-evidence status=LLM_DEFERRED",
+      "auditId": "llm-audit-mpwv2hy0",
+      "timestamp": "2026-06-02T16:37:50.808Z"
+    },
     {
       "eventType": "LLM_DRAFT_CREATED",
       "draftId": "llm-brief-debate-prep-v1-mpu7ecm4",

@@ -32,6 +32,7 @@ import {
 } from "@/lib/intelligence/briefs/messageIntelligenceLayer";
 import { buildMessageIntelligenceEngine } from "@/lib/intelligence/messageIntelligence/messageIntelligenceEngine";
 import type { CountyPublicBriefReadiness } from "@/lib/intelligence/briefs/governedBriefTypes";
+import { shouldSkipCountyIntelligenceForLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 
 export const AGENT_RUN_AUDIT_LOG_REL = "data/intelligence/agent-run-audit-log.json";
 
@@ -149,8 +150,10 @@ export function runDailyIntelligenceAgentPass(options?: {
   repoRoot?: string;
   syncActionQueue?: boolean;
   canonicalGoalsMap?: Map<string, import("@/lib/campaign-engine/county-registration-goal-read").CanonicalRegistrationGoalRow>;
+  skipCounty?: boolean;
 }): DailyIntelligencePacket {
   const repoRoot = resolveRepoRoot(options?.repoRoot);
+  const skipCounty = options?.skipCounty ?? shouldSkipCountyIntelligenceForLaunch();
   const runId = `agent-${Date.now().toString(36)}`;
   const brain = summarizeCampaignIntelligenceState(repoRoot);
   const memory = summarizeInstitutionalMemory(repoRoot);
@@ -161,9 +164,11 @@ export function runDailyIntelligenceAgentPass(options?: {
   const debate = buildDebateCommandCenterState();
   const archiveRollup = loadOppositionArchiveRollup(repoRoot);
   const legislativeRollup = buildLegislativeVideoIntelligenceRollup(repoRoot);
-  const statewide = loadStatewideCountySummary();
-  const countyRows = buildCountyReadinessClassifications(options?.canonicalGoalsMap);
-  const countyRollup = summarizeCountyReadinessRollup(countyRows);
+  const statewide = skipCounty ? null : loadStatewideCountySummary();
+  const countyRows = skipCounty ? [] : buildCountyReadinessClassifications(options?.canonicalGoalsMap);
+  const countyRollup = skipCounty
+    ? { DEPLOYMENT_READY: 0, INTERNAL_PLANNING_ONLY: 0, SHELL_ONLY: 0, BLOCKED: 0 }
+    : summarizeCountyReadinessRollup(countyRows);
 
   const overallDebate = debate.readinessScores.find((s) => s.id === "overall");
 
@@ -235,35 +240,39 @@ export function runDailyIntelligenceAgentPass(options?: {
     );
   }
 
-  const shellCounties = countyRows.filter((c) => c.deploymentReadiness === "SHELL_ONLY").length;
-  candidates.push(
-    toPriorityItem(0, {
-      title: "County workbench shell coverage",
-      summary: `${shellCounties}/75 counties are SHELL_ONLY — not field-deployable.`,
-      subsystem: "County Workbench",
-      evidenceAnchors: ["dashboard-v2-county-coverage.csv"],
-      confidence: "HIGH",
-      researchGaps: ["Institutional memory empty for all 75 counties"],
-      humanNextAction: "Prioritize full-profile counties; do not treat shell counties as ready",
-      riskLevel: "HIGH",
-      tags: ["county", "field"],
-    }),
-  );
-
-  for (const weak of statewide.weakCounties.slice(0, 3)) {
+  const shellCounties = skipCounty ? 0 : countyRows.filter((c) => c.deploymentReadiness === "SHELL_ONLY").length;
+  if (!skipCounty) {
     candidates.push(
       toPriorityItem(0, {
-        title: `County attention: ${weak.countyName}`,
-        summary: weak.topWeaknesses[0] ?? "Low readiness",
-        subsystem: "County Intelligence Engine",
-        evidenceAnchors: [weak.countySlug],
-        confidence: "MEDIUM",
-        researchGaps: [],
-        humanNextAction: "Verify canonical registration goal in /admin/counties before field ops",
-        riskLevel: "MEDIUM",
-        tags: ["county"],
+        title: "County workbench shell coverage",
+        summary: `${shellCounties}/75 counties are SHELL_ONLY — not field-deployable.`,
+        subsystem: "County Workbench",
+        evidenceAnchors: ["dashboard-v2-county-coverage.csv"],
+        confidence: "HIGH",
+        researchGaps: ["Institutional memory empty for all 75 counties"],
+        humanNextAction: "Prioritize full-profile counties; do not treat shell counties as ready",
+        riskLevel: "HIGH",
+        tags: ["county", "field"],
       }),
     );
+  }
+
+  if (statewide) {
+    for (const weak of statewide.weakCounties.slice(0, 3)) {
+      candidates.push(
+        toPriorityItem(0, {
+          title: `County attention: ${weak.countyName}`,
+          summary: weak.topWeaknesses[0] ?? "Low readiness",
+          subsystem: "County Intelligence Engine",
+          evidenceAnchors: [weak.countySlug],
+          confidence: "MEDIUM",
+          researchGaps: [],
+          humanNextAction: "Verify canonical registration goal in /admin/counties before field ops",
+          riskLevel: "MEDIUM",
+          tags: ["county"],
+        }),
+      );
+    }
   }
 
   const ranked = candidates
@@ -304,22 +313,24 @@ export function runDailyIntelligenceAgentPass(options?: {
       ]
     : [];
 
-  const countyPriorities = countyRows
-    .filter((c) => c.deploymentReadiness === "INTERNAL_PLANNING_ONLY")
-    .slice(0, 5)
-    .map((c, i) =>
-      toPriorityItem(i + 1, {
-        title: c.countyName,
-        summary: c.biggestBlocker,
-        subsystem: "County Workbench",
-        evidenceAnchors: [c.countySlug, c.dashboardStatus],
-        confidence: "MEDIUM",
-        researchGaps: c.humanVerifyBeforeDeploy,
-        humanNextAction: c.humanVerifyBeforeDeploy[0] ?? "Verify before field deploy",
-        riskLevel: "MEDIUM",
-        tags: ["county"],
-      }),
-    );
+  const countyPriorities = skipCounty
+    ? []
+    : countyRows
+        .filter((c) => c.deploymentReadiness === "INTERNAL_PLANNING_ONLY")
+        .slice(0, 5)
+        .map((c, i) =>
+          toPriorityItem(i + 1, {
+            title: c.countyName,
+            summary: c.biggestBlocker,
+            subsystem: "County Workbench",
+            evidenceAnchors: [c.countySlug, c.dashboardStatus],
+            confidence: "MEDIUM",
+            researchGaps: c.humanVerifyBeforeDeploy,
+            humanNextAction: c.humanVerifyBeforeDeploy[0] ?? "Verify before field deploy",
+            riskLevel: "MEDIUM",
+            tags: ["county"],
+          }),
+        );
 
   const agentQueueItems: HumanActionQueueItem[] = [];
 
@@ -379,8 +390,10 @@ export function runDailyIntelligenceAgentPass(options?: {
     repoRoot,
   );
 
-  const countyBriefBundles = generateAllCountyBriefBundles();
-  const publicBriefRollup = summarizeCountyPublicBriefReadiness(countyBriefBundles);
+  const countyBriefBundles = skipCounty ? [] : generateAllCountyBriefBundles();
+  const publicBriefRollup = skipCounty
+    ? { PUBLIC_BRIEF_READY: 0, INTERNAL_MESSAGE_SOURCE_ONLY: 0, FIELD_PLANNING_ONLY: 0, SHELL_ONLY: 0, BLOCKED: 0 }
+    : summarizeCountyPublicBriefReadiness(countyBriefBundles);
   const oppositionDebate = generateOppositionDebateBriefPack();
   const messageIntelligenceRollup = buildMessageIntelligenceEngine(repoRoot);
   const brainAnswers = buildBrainOrchestrationAnswers({
@@ -430,9 +443,13 @@ export function runDailyIntelligenceAgentPass(options?: {
   const topResearchGapsBlockingPublicMessaging = [
     ...Object.keys(metrics.taskStatusCounts).filter((k) => k !== "COMPLETE").map((k) => `Opposition retrieval: ${k}`),
     ...debate.filmRoom.coverageGaps.slice(0, 3),
-    `${publicBriefRollup.SHELL_ONLY}/75 counties SHELL_ONLY for public briefs`,
-    `${publicBriefRollup.PUBLIC_BRIEF_READY} counties PUBLIC_BRIEF_READY`,
-    "All county registration goals require admin verification before public messaging",
+    ...(skipCounty
+      ? ["County brief rollup deferred in emergency launch mode"]
+      : [
+          `${publicBriefRollup.SHELL_ONLY}/75 counties SHELL_ONLY for public briefs`,
+          `${publicBriefRollup.PUBLIC_BRIEF_READY} counties PUBLIC_BRIEF_READY`,
+          "All county registration goals require admin verification before public messaging",
+        ]),
   ].slice(0, 10);
 
   const oppositionBriefScore = oppositionDebate.opposition.confidenceScore;

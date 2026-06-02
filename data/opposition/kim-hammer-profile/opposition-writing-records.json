@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-31T19:48:04.945Z",
+  "generatedAt": "2026-06-02T16:46:26.663Z",
   "records": [
     {
       "id": "kh-writing-2025-election-integrity-oped",
@@ -13,7 +13,7 @@
       "summary": "Long-form campaign-authored argument on election integrity, historical framing, and SOS policy goals.",
       "citationSourceId": "cit-src-writing-kh-writing-2025-election-integrity-oped",
       "retrievalNeeded": false,
-      "createdAt": "2026-05-31T19:48:04.826Z"
+      "createdAt": "2026-06-02T16:46:24.718Z"
     },
     {
       "id": "kh-writing-2024-paper-ballot-letter",
@@ -26,7 +26,7 @@
       "summary": "Letter-format public argument on paper ballot and election process topics.",
       "citationSourceId": "cit-src-writing-kh-writing-2024-paper-ballot-letter",
       "retrievalNeeded": false,
-      "createdAt": "2026-05-31T19:48:04.826Z"
+      "createdAt": "2026-06-02T16:46:24.718Z"
     },
     {
       "id": "kh-writing-2026-monument-letter",
@@ -39,7 +39,7 @@
       "summary": "Document-indexed public letter attributed to Senator Hammer.",
       "citationSourceId": "cit-src-writing-kh-writing-2026-monument-letter",
       "retrievalNeeded": false,
-      "createdAt": "2026-05-31T19:48:04.826Z"
+      "createdAt": "2026-06-02T16:46:24.718Z"
     }
   ]
 }

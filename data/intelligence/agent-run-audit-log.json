@@ -143,6 +143,12 @@
       "generatedAt": "2026-05-31T20:02:53.862Z",
       "priorityCount": 9,
       "actionsSynced": 0
+    },
+    {
+      "runId": "agent-mpwvexsq",
+      "generatedAt": "2026-06-02T16:49:51.778Z",
+      "priorityCount": 9,
+      "actionsSynced": 0
     }
   ]
 }

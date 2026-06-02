@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-31T19:48:04.945Z",
+  "generatedAt": "2026-06-02T16:46:26.663Z",
   "records": [
     {
       "id": "kh-runoff-media-clips-2026",
@@ -11,7 +11,7 @@
       "timestamp": null,
       "citationSourceId": "cit-src-clip-kh-runoff-media-clips-2026",
       "retrievalNeeded": false,
-      "createdAt": "2026-05-31T19:48:04.826Z"
+      "createdAt": "2026-06-02T16:46:24.729Z"
     },
     {
       "id": "ar-sos-debate-2022-pbs",
@@ -22,7 +22,7 @@
       "timestamp": null,
       "citationSourceId": "cit-src-clip-ar-sos-debate-2022-pbs",
       "retrievalNeeded": false,
-      "createdAt": "2026-05-31T19:48:04.826Z"
+      "createdAt": "2026-06-02T16:46:24.729Z"
     },
     {
       "id": "ar-sos-debate-2022-coverage",
@@ -33,7 +33,7 @@
       "timestamp": null,
       "citationSourceId": "cit-src-clip-ar-sos-debate-2022-coverage",
       "retrievalNeeded": false,
-      "createdAt": "2026-05-31T19:48:04.826Z"
+      "createdAt": "2026-06-02T16:46:24.729Z"
     }
   ]
 }
