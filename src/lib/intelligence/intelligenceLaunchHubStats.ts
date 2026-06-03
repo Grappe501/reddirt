@@ -32,8 +32,12 @@ export function loadIntelligenceLaunchHubStats(): IntelligenceLaunchHubStats {
     () => (fast ? summarizePersistedHumanActionQueue() : summarizeHumanActionQueue()),
     null,
   );
-  const llm = tryIntelligenceLoad("llm-queue", () => summarizeDraftReviewQueue(), null);
-  const legislative = tryIntelligenceLoad("legislative-video", () => buildLegislativeVideoIntelligenceRollup(), null);
+  const llm = fast
+    ? null
+    : tryIntelligenceLoad("llm-queue", () => summarizeDraftReviewQueue(), null);
+  const legislative = fast
+    ? null
+    : tryIntelligenceLoad("legislative-video", () => buildLegislativeVideoIntelligenceRollup(), null);
 
   return {
     archive,
