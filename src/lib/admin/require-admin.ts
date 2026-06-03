@@ -9,7 +9,12 @@ export async function requireAdminPage(): Promise<void> {
   }
   const token = (await cookies()).get(ADMIN_SESSION_COOKIE)?.value;
   if (!verifyAdminSessionToken(token, secret)) {
-    const pathname = (await headers()).get("x-pathname")?.split("?")[0] ?? "";
+    const h = await headers();
+    const pathname =
+      h.get("x-pathname")?.split("?")[0] ??
+      h.get("x-invoke-path")?.split("?")[0] ??
+      h.get("x-forwarded-uri")?.split("?")[0] ??
+      "";
     if (pathname.startsWith("/admin") && pathname !== "/admin/login" && !pathname.startsWith("/admin/login/")) {
       redirect(`/admin/login?next=${encodeURIComponent(pathname)}`);
     }

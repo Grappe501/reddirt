@@ -15,7 +15,12 @@ export const maxDuration = 26;
 
 export default async function AdminBoardLayout({ children }: { children: ReactNode }) {
   await requireAdminPage();
-  const path = (await headers()).get("x-pathname") ?? "";
+  const h = await headers();
+  const path =
+    h.get("x-pathname") ??
+    h.get("x-invoke-path")?.split("?")[0] ??
+    h.get("x-forwarded-uri")?.split("?")[0] ??
+    "";
   if (path.startsWith("/admin/calendar-command-center/kelly")) {
     return <KellyCalendarCockpitChrome>{children}</KellyCalendarCockpitChrome>;
   }
