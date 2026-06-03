@@ -29,7 +29,18 @@ async function requireAdminAction() {
   if (!verifyAdminSessionToken(token, secret)) redirect("/admin/login");
 }
 
-export { adminLoginAction, adminLogoutAction } from "@/lib/admin/admin-auth-actions";
+import {
+  adminLoginAction as adminLoginActionImpl,
+  adminLogoutAction as adminLogoutActionImpl,
+} from "@/lib/admin/admin-auth-actions";
+
+export async function adminLoginAction(formData: FormData) {
+  return adminLoginActionImpl(formData);
+}
+
+export async function adminLogoutAction() {
+  return adminLogoutActionImpl();
+}
 
 export async function triggerSubstackSyncAction() {
   await requireAdminAction();
