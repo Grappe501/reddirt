@@ -18,12 +18,23 @@ for (const dir of [localRoot, tempDir, npmCache]) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
+/** Netlify/Linux CI must not pin npm cache under SOSWebsite/.local — NFT traces then bundle cache tarballs. */
+const isCiBuild = Boolean(
+  process.env.NETLIFY ||
+    process.env.NETLIFY_BUILD_BASE ||
+    process.env.CI ||
+    process.env.CONTINUOUS_INTEGRATION,
+);
+
 const env = {
   ...process.env,
-  TEMP: tempDir,
-  TMP: tempDir,
-  npm_config_cache: npmCache,
+  TEMP: isCiBuild ? process.env.TEMP : tempDir,
+  TMP: isCiBuild ? process.env.TMP : tempDir,
 };
+
+if (!isCiBuild && process.platform === "win32") {
+  env.npm_config_cache = npmCache;
+}
 
 const args = process.argv.slice(2);
 if (args.length === 0) {

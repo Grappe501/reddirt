@@ -42,7 +42,11 @@ function isTraceNoise(rel, abs) {
     hay.includes("countyWorkbench") ||
     hay.includes("/.git/") ||
     hay.includes("calendar-command-center") ||
-    hay.includes("/public/images/")
+    hay.includes("/public/images/") ||
+    hay.includes("npm-cache") ||
+    hay.includes("_cacache") ||
+    hay.includes("/.local/") ||
+    /^[a-zA-Z]:\//.test(hay)
   );
 }
 

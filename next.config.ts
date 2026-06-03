@@ -17,6 +17,10 @@ const oppositionDebateTraceExcludes = oppositionDebateLaunch
       "data/election/**",
       "data/simulations/**",
       "data/intelligence/briefs/**",
+      ".local/**",
+      "**/.local/**",
+      "**/npm-cache/**",
+      "**/_cacache/**",
     ]
   : [];
 
@@ -26,6 +30,8 @@ const oppositionDebateTraceExcludes = oppositionDebateLaunch
 const nextConfig: NextConfig = {
   /** Keep file tracing inside RedDirt — never the SOSWebsite monorepo sibling lanes. */
   outputFileTracingRoot: tracingRoot,
+  /** Opposition launch: skip Sharp in Lambda (~16 MB); public images still work unoptimized. */
+  ...(oppositionDebateLaunch ? { images: { unoptimized: true } } : {}),
   /** Optional: legacy client env if you add Google Maps elsewhere; /events uses OpenStreetMap + Leaflet. */
   env: {
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY:
@@ -268,6 +274,10 @@ const nextConfig: NextConfig = {
       "node_modules/prisma/**/windows/**",
       "node_modules/prisma/**/darwin/**",
       ...oppositionDebateTraceExcludes,
+      ".local/**",
+      "**/.local/**",
+      "**/npm-cache/**",
+      "**/_cacache/**",
     ],
     "/api/owned-campaign-media/**": ["data/owned-campaign-media/**"],
   },

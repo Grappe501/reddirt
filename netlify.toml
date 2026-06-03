@@ -69,6 +69,10 @@
     "!.tmp-heic-preview/**",
     "!docs/**",
     "!campaign-system-manual/**",
+    "!.local/**",
+    "!**/.local/**",
+    "!**/npm-cache/**",
+    "!**/_cacache/**",
   ]
 
 # Optional: document dev port alignment

@@ -255,9 +255,14 @@ else
   fi
 fi
 
-echo ">>> next build (NODE_ENV=production for Next; devDependencies already installed)"
+echo ">>> next build (NODE_ENV=production; npx next build — no H: npm-cache wrapper on CI)"
 export NODE_ENV=production
-npm run build
+npx next build
+
+if [ -f "scripts/sanitize-next-trace-manifests.cjs" ]; then
+  echo ">>> sanitize Next NFT manifests (drop npm-cache / absolute paths)"
+  node scripts/sanitize-next-trace-manifests.cjs
+fi
 
 echo ">>> prune .next/cache (must not ship inside Netlify server handler)"
 rm -rf .next/cache

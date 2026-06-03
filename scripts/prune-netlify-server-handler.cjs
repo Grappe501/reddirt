@@ -123,7 +123,60 @@ function rmrf(target) {
 
 function cpDir(src, dest) {
   fs.mkdirSync(path.dirname(dest), { recursive: true });
-  fs.cpSync(src, dest, { recursive: true, dereference: true });
+  /** Do not dereference — npm cacache blobs must not be copied into the handler. */
+  fs.cpSync(src, dest, { recursive: true, dereference: false });
+}
+
+function isForbiddenBundlePath(absOrRel) {
+  const hay = String(absOrRel).replace(/\\/g, "/");
+  return (
+    /npm-cache/i.test(hay) ||
+    /_cacache/i.test(hay) ||
+    /\/\.local\//i.test(hay) ||
+    /^[a-zA-Z]:\//.test(hay)
+  );
+}
+
+/** Drop npm-cache / drive-letter paths that must never ship in the Lambda. */
+function removeForbiddenBundlePaths(treeRoot) {
+  const removed = [];
+  if (!exists(treeRoot)) return removed;
+
+  function walk(dir) {
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const ent of entries) {
+      const abs = path.join(dir, ent.name);
+      const rel = path.relative(treeRoot, abs);
+      if (isForbiddenBundlePath(rel) || isForbiddenBundlePath(abs) || /^[A-Za-z]:$/.test(ent.name)) {
+        if (rmrf(abs)) removed.push(rel || ent.name);
+        continue;
+      }
+      if (ent.isSymbolicLink()) {
+        let target = "";
+        try {
+          target = fs.readlinkSync(abs);
+        } catch {
+          fs.rmSync(abs, { force: true });
+          removed.push(rel);
+          continue;
+        }
+        if (isForbiddenBundlePath(target)) {
+          fs.rmSync(abs, { force: true });
+          removed.push(rel);
+          continue;
+        }
+      }
+      if (ent.isDirectory()) walk(abs);
+    }
+  }
+
+  walk(treeRoot);
+  return removed;
 }
 
 function shouldPruneDirName(name, relFromHandler) {
@@ -221,7 +274,11 @@ function materializeMinimalNodeModules(handlerRoot, repoRoot) {
   if (exists(destNm)) rmrf(destNm);
   fs.mkdirSync(destNm, { recursive: true });
 
-  for (const rel of MINIMAL_NODE_MODULES) {
+  const minimalList = isOppositionDebateLaunch()
+    ? MINIMAL_NODE_MODULES.filter((rel) => !rel.includes("sharp") && !rel.startsWith("@img/"))
+    : MINIMAL_NODE_MODULES;
+
+  for (const rel of minimalList) {
     const src = path.join(srcNm, ...rel.split("/"));
     const dest = path.join(destNm, ...rel.split("/"));
     if (!exists(src)) continue;
@@ -338,7 +395,9 @@ function dirSizeBytesFollowSymlinks(rootDir) {
 }
 
 function pruneHandler(handlerRoot, repoRoot) {
-  const removed = removeOutboundSymlinks(handlerRoot);
+  const removed = removeForbiddenBundlePaths(handlerRoot);
+  removed.push(...removeOutboundSymlinks(handlerRoot));
+  removed.push(...removeForbiddenBundlePaths(handlerRoot));
 
   for (const rel of TOP_LEVEL_DIR_PRUNE) {
     if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
@@ -501,7 +560,8 @@ function formatOversizeMessage(result) {
 }
 
 function shouldFailDeploy(result) {
-  return !result.skipped && result.deployMb > DEPLOY_FAIL_MB;
+  /** Staging tree size matches Netlify upload after forbidden paths and symlinks are removed. */
+  return !result.skipped && result.afterMb > DEPLOY_FAIL_MB;
 }
 
 if (require.main === module) {
