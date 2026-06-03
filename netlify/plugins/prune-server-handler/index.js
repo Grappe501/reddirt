@@ -18,7 +18,7 @@ exports.onPostBuild = async ({ utils }) => {
 
   utils.status.show({
     title: "Prune server handler (pre-deploy)",
-    summary: `${result.beforeMb.toFixed(1)} MB → ${result.afterMb.toFixed(1)} MB (${result.removed.length} paths; cap ${MAX_MB} MB)`,
+    summary: `${result.beforeMb.toFixed(1)} → ${result.afterMb.toFixed(1)} MB staging, ${result.deployMb.toFixed(1)} MB deploy (${result.removed.length} paths; cap ${MAX_MB} MB)`,
   });
 
   if (shouldFailDeploy(result)) {

@@ -8,12 +8,14 @@ import { articleMeta } from "@/lib/seo/metadata";
 import { getPublicBlogPostBySlug, toBlogCard } from "@/lib/content/blog-public";
 import { prisma } from "@/lib/db";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
+import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
+  if (skipPublicStaticGenerationForNetlifyLaunch()) return [];
   try {
     const slugs = await prisma.syncedPost.findMany({
       where: { hidden: false },

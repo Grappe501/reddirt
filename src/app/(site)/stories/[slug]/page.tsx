@@ -11,10 +11,14 @@ import { listStorySlugs } from "@/content/stories";
 import { relatedByTags } from "@/lib/content/related";
 import { getPublicStoryBySlug, listPublicStoriesMerged } from "@/lib/content/public-catalog";
 import { articleMeta } from "@/lib/seo/metadata";
+import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const dynamic = skipPublicStaticGenerationForNetlifyLaunch() ? "force-dynamic" : undefined;
+
 export function generateStaticParams() {
+  if (skipPublicStaticGenerationForNetlifyLaunch()) return [];
   return listStorySlugs().map((slug) => ({ slug }));
 }
 

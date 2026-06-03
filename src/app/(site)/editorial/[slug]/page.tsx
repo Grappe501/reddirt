@@ -9,10 +9,14 @@ import { articleMeta } from "@/lib/seo/metadata";
 import { listEditorialSlugs } from "@/content/editorial";
 import { relatedByTags } from "@/lib/content/related";
 import { getPublicEditorialBySlug, listPublicEditorialMerged } from "@/lib/content/public-catalog";
+import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const dynamic = skipPublicStaticGenerationForNetlifyLaunch() ? "force-dynamic" : undefined;
+
 export function generateStaticParams() {
+  if (skipPublicStaticGenerationForNetlifyLaunch()) return [];
   return listEditorialSlugs().map((slug) => ({ slug }));
 }
 

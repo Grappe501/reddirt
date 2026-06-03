@@ -13,12 +13,14 @@ import {
 } from "@/content/biography/biography-config";
 import { canAccessBiographyDeepDive } from "@/lib/biographyAccess";
 import { pageMeta } from "@/lib/seo/metadata";
+import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 
 type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
+  if (skipPublicStaticGenerationForNetlifyLaunch()) return [];
   return BIOGRAPHY_CHAPTERS.map((c) => ({ slug: c.slug }));
 }
 

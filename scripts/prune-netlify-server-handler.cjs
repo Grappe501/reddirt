@@ -1,6 +1,6 @@
 /**
- * Strip blobs from ___netlify-server-handler before Netlify deploy upload.
- * Must run in plugin onPostBuild AFTER @netlify/plugin-nextjs repackages the handler.
+ * Strip ___netlify-server-handler before Netlify deploy upload (250 MB unzipped cap).
+ * Runs in plugin onPostBuild after @netlify/plugin-nextjs repackages the handler.
  */
 const fs = require("node:fs");
 const path = require("node:path");
@@ -23,7 +23,6 @@ const TOP_LEVEL_DIR_PRUNE = [
   "docs",
 ];
 
-/** Dropped from server bundle during emergency opposition/debate launch deploys. */
 const LAUNCH_ADMIN_SERVER_DIRS = [
   ".next/server/app/admin/(board)/workbench",
   ".next/server/app/admin/(board)/compliance",
@@ -42,6 +41,19 @@ const LAUNCH_ADMIN_SERVER_DIRS = [
   ".next/server/app/admin/(board)/campaign-strategy",
 ];
 
+/** Pre-rendered public segments — drop from Lambda; pages render on demand. */
+const LAUNCH_PUBLIC_SERVER_DIRS = [
+  ".next/server/app/(site)/events",
+  ".next/server/app/(site)/stories",
+  ".next/server/app/(site)/resources",
+  ".next/server/app/(site)/editorial",
+  ".next/server/app/(site)/explainers",
+  ".next/server/app/(site)/local-organizing",
+  ".next/server/app/(site)/about",
+  ".next/server/app/(site)/office",
+  ".next/server/app/(site)/dashboard",
+];
+
 const LAUNCH_NODE_MODULES_DIRS = [
   "node_modules/@googleapis",
   "node_modules/google-auth-library",
@@ -50,6 +62,18 @@ const LAUNCH_NODE_MODULES_DIRS = [
   "node_modules/mammoth",
   "node_modules/xlsx",
   "node_modules/pdf-parse",
+  "node_modules/typescript",
+  "node_modules/webpack",
+];
+
+const MINIMAL_NODE_MODULES = [
+  ".prisma",
+  "@prisma/client",
+  "@img/sharp-libvips-linux-x64",
+  "@img/sharp-linux-x64",
+  "sharp",
+  "openai",
+  "@next/env",
 ];
 
 const FILE_PRUNE = [
@@ -72,10 +96,23 @@ function exists(target) {
   }
 }
 
+function isSymlink(target) {
+  try {
+    return fs.lstatSync(target).isSymbolicLink();
+  } catch {
+    return false;
+  }
+}
+
 function rmrf(target) {
   if (!exists(target)) return false;
   fs.rmSync(target, { recursive: true, force: true });
   return true;
+}
+
+function cpDir(src, dest) {
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.cpSync(src, dest, { recursive: true, dereference: true });
 }
 
 function shouldPruneDirName(name, relFromHandler) {
@@ -84,24 +121,142 @@ function shouldPruneDirName(name, relFromHandler) {
   if (name === "typescript" && relFromHandler.includes(`${path.sep}node_modules${path.sep}`)) return true;
   if (/linuxmusl/i.test(name) || /sharp-libvips-linuxmusl/i.test(name)) return true;
   if (name === "amphtml-validator" && relFromHandler.includes("next/dist/compiled")) return true;
-  if (name === "webpack" && relFromHandler.includes(`${path.sep}node_modules${path.sep}`)) return true;
   return false;
 }
 
-function pruneHandler(handlerRoot) {
+function removeOutboundSymlinks(handlerRoot) {
+  const root = fs.realpathSync(handlerRoot);
   const removed = [];
+  function walk(dir) {
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const ent of entries) {
+      const abs = path.join(dir, ent.name);
+      if (ent.isSymbolicLink()) {
+        let target;
+        try {
+          target = fs.realpathSync(abs);
+        } catch {
+          fs.rmSync(abs, { force: true });
+          removed.push(path.relative(handlerRoot, abs));
+          continue;
+        }
+        if (target !== root && !target.startsWith(`${root}${path.sep}`)) {
+          fs.rmSync(abs, { force: true });
+          removed.push(path.relative(handlerRoot, abs));
+        }
+      } else if (ent.isDirectory()) {
+        walk(abs);
+      }
+    }
+  }
+  walk(root);
+  return removed;
+}
+
+function materializeMinimalNodeModules(handlerRoot, repoRoot) {
+  const destNm = path.join(handlerRoot, "node_modules");
+  const srcNm = path.join(repoRoot, "node_modules");
+  if (!exists(srcNm)) return [];
+
+  const copied = [];
+  if (exists(destNm)) {
+    if (isSymlink(destNm) || dirSizeBytesFollowSymlinks(destNm) > 80 * 1024 * 1024) {
+      rmrf(destNm);
+    }
+  }
+  if (!exists(destNm)) fs.mkdirSync(destNm, { recursive: true });
+
+  for (const rel of MINIMAL_NODE_MODULES) {
+    const src = path.join(srcNm, ...rel.split("/"));
+    const dest = path.join(destNm, ...rel.split("/"));
+    if (!exists(src)) continue;
+    rmrf(dest);
+    cpDir(src, dest);
+    copied.push(`node_modules/${rel}`);
+  }
+  return copied;
+}
+
+function dirSizeBytes(rootDir, followSymlinks = false) {
+  const root = fs.realpathSync(rootDir);
+  let total = 0;
+  function walk(dir) {
+    let resolvedDir;
+    try {
+      resolvedDir = followSymlinks ? fs.realpathSync(dir) : dir;
+    } catch {
+      return;
+    }
+    if (!followSymlinks) {
+      if (resolvedDir !== root && !resolvedDir.startsWith(`${root}${path.sep}`)) return;
+    }
+
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const ent of entries) {
+      const abs = path.join(dir, ent.name);
+      if (ent.isSymbolicLink() && followSymlinks) {
+        try {
+          walk(fs.realpathSync(abs));
+        } catch {
+          /* skip */
+        }
+        continue;
+      }
+      if (ent.isDirectory()) {
+        if (!followSymlinks) {
+          let linkTarget;
+          try {
+            linkTarget = fs.realpathSync(abs);
+          } catch {
+            continue;
+          }
+          if (linkTarget !== abs && !linkTarget.startsWith(`${root}${path.sep}`) && linkTarget !== root) {
+            continue;
+          }
+        }
+        walk(abs);
+      } else if (ent.isFile()) {
+        try {
+          total += fs.statSync(abs).size;
+        } catch {
+          /* skip */
+        }
+      }
+    }
+  }
+  walk(root);
+  return total;
+}
+
+function dirSizeBytesFollowSymlinks(rootDir) {
+  return dirSizeBytes(rootDir, true);
+}
+
+function pruneHandler(handlerRoot, repoRoot) {
+  const removed = removeOutboundSymlinks(handlerRoot);
 
   for (const rel of TOP_LEVEL_DIR_PRUNE) {
     if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
   }
 
   if (isOppositionDebateLaunch()) {
-    for (const rel of LAUNCH_ADMIN_SERVER_DIRS) {
+    for (const rel of [...LAUNCH_ADMIN_SERVER_DIRS, ...LAUNCH_PUBLIC_SERVER_DIRS]) {
       if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
     }
     for (const rel of LAUNCH_NODE_MODULES_DIRS) {
       if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
     }
+    removed.push(...materializeMinimalNodeModules(handlerRoot, repoRoot));
   }
 
   for (const rel of FILE_PRUNE) {
@@ -155,9 +310,10 @@ function pruneHandler(handlerRoot) {
   return [...new Set(removed)];
 }
 
-function dirSizeBytes(rootDir) {
-  const root = fs.realpathSync(rootDir);
-  let total = 0;
+function largestFiles(handlerRoot, limit = 15, followSymlinks = true) {
+  const root = fs.realpathSync(handlerRoot);
+  const rows = [];
+  const seen = new Set();
   function walk(dir) {
     let resolvedDir;
     try {
@@ -165,6 +321,8 @@ function dirSizeBytes(rootDir) {
     } catch {
       return;
     }
+    if (seen.has(resolvedDir)) return;
+    seen.add(resolvedDir);
     if (resolvedDir !== root && !resolvedDir.startsWith(`${root}${path.sep}`)) return;
 
     let entries;
@@ -175,44 +333,14 @@ function dirSizeBytes(rootDir) {
     }
     for (const ent of entries) {
       const abs = path.join(dir, ent.name);
-      if (ent.isDirectory()) {
-        let linkTarget;
+      if (ent.isSymbolicLink() && followSymlinks) {
         try {
-          linkTarget = fs.realpathSync(abs);
-        } catch {
-          continue;
-        }
-        if (linkTarget !== abs && !linkTarget.startsWith(`${root}${path.sep}`) && linkTarget !== root) {
-          continue;
-        }
-        walk(abs);
-      } else if (ent.isFile()) {
-        try {
-          total += fs.statSync(abs).size;
+          walk(fs.realpathSync(abs));
         } catch {
           /* skip */
         }
+        continue;
       }
-    }
-  }
-  walk(root);
-  return total;
-}
-
-function largestFiles(handlerRoot, limit = 15) {
-  const root = fs.realpathSync(handlerRoot);
-  const rows = [];
-  function walk(dir) {
-    let resolvedDir;
-    try {
-      resolvedDir = fs.realpathSync(dir);
-    } catch {
-      return;
-    }
-    if (resolvedDir !== root && !resolvedDir.startsWith(`${root}${path.sep}`)) return;
-
-    for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
-      const abs = path.join(dir, ent.name);
       if (ent.isDirectory()) walk(abs);
       else if (ent.isFile()) {
         try {
@@ -230,16 +358,18 @@ function largestFiles(handlerRoot, limit = 15) {
 function pruneNetlifyServerHandler(cwd = process.cwd()) {
   const handlers = HANDLER_DIRS.map((d) => path.join(cwd, d)).filter(exists);
   if (handlers.length === 0) {
-    return { skipped: true, handler: null, beforeMb: 0, afterMb: 0, removed: [] };
+    return { skipped: true, handler: null, beforeMb: 0, afterMb: 0, deployMb: 0, removed: [] };
   }
 
   let beforeMb = 0;
   let afterMb = 0;
+  let deployMb = 0;
   const removed = [];
   for (const handler of handlers) {
     beforeMb += dirSizeBytes(handler) / (1024 * 1024);
-    removed.push(...pruneHandler(handler));
+    removed.push(...pruneHandler(handler, cwd));
     afterMb += dirSizeBytes(handler) / (1024 * 1024);
+    deployMb += dirSizeBytesFollowSymlinks(handler) / (1024 * 1024);
   }
 
   return {
@@ -247,6 +377,7 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
     handler: handlers[0],
     beforeMb,
     afterMb,
+    deployMb,
     removed: [...new Set(removed)],
   };
 }
@@ -255,12 +386,15 @@ function formatOversizeMessage(result) {
   const top = largestFiles(result.handler)
     .map((row) => `  ${(row.size / (1024 * 1024)).toFixed(2)} MB  ${row.rel}`)
     .join("\n");
-  const launchNote = isOppositionDebateLaunch() ? "\nLaunch mode: opposition_debate (admin server lanes trimmed)." : "";
-  return `___netlify-server-handler is ${result.afterMb.toFixed(1)} MB after prune (Netlify unzipped limit ${MAX_MB} MB).${launchNote}\nLargest files:\n${top}`;
+  const launchNote = isOppositionDebateLaunch() ? "\nLaunch mode: opposition_debate." : "";
+  return (
+    `___netlify-server-handler deploy size is ${result.deployMb.toFixed(1)} MB (Netlify unzipped limit ${MAX_MB} MB).` +
+    ` Staging tree: ${result.afterMb.toFixed(1)} MB.${launchNote}\nLargest files:\n${top}`
+  );
 }
 
 function shouldFailDeploy(result) {
-  return !result.skipped && result.afterMb > MAX_MB;
+  return !result.skipped && result.deployMb > MAX_MB;
 }
 
 if (require.main === module) {
@@ -270,7 +404,7 @@ if (require.main === module) {
     process.exit(0);
   }
   console.log(
-    `>>> prune server handler: ${result.beforeMb.toFixed(1)} MB → ${result.afterMb.toFixed(1)} MB (${result.removed.length} paths removed)`,
+    `>>> prune server handler: ${result.beforeMb.toFixed(1)} MB → ${result.afterMb.toFixed(1)} MB staging, ${result.deployMb.toFixed(1)} MB deploy (${result.removed.length} paths)`,
   );
   if (shouldFailDeploy(result)) {
     console.error(formatOversizeMessage(result));

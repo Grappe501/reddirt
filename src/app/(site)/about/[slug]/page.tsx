@@ -16,12 +16,14 @@ import {
   type KellyAboutSlug,
 } from "@/content/about/kelly-about-chapters";
 import { pageMeta } from "@/lib/seo/metadata";
+import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 
 type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
+  if (skipPublicStaticGenerationForNetlifyLaunch()) return [];
   return KELLY_ABOUT_CHAPTERS.map((c) => ({ slug: c.slug }));
 }
 

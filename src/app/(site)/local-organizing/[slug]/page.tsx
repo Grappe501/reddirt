@@ -13,10 +13,14 @@ import { EventCard } from "@/components/organizing/EventCard";
 import { RelatedLinksSection } from "@/components/organizing/RelatedLinksSection";
 import { getRegionBySlug, listRegionSlugs } from "@/content/local/regions";
 import { events as allEvents } from "@/content/events";
+import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const dynamic = skipPublicStaticGenerationForNetlifyLaunch() ? "force-dynamic" : undefined;
+
 export function generateStaticParams() {
+  if (skipPublicStaticGenerationForNetlifyLaunch()) return [];
   return listRegionSlugs().map((slug) => ({ slug }));
 }
 

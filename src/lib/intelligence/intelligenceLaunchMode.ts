@@ -58,5 +58,10 @@ export function shouldSkipCountyIntelligenceForLaunch(): boolean {
   return isIntelligenceOppositionDebateLaunchMode();
 }
 
+/** Skip hundreds of public SSG paths during Netlify deploy to keep ___netlify-server-handler under 250 MB. */
+export function skipPublicStaticGenerationForNetlifyLaunch(): boolean {
+  return isIntelligenceOppositionDebateLaunchMode();
+}
+
 export const INTELLIGENCE_LAUNCH_BANNER =
   "Emergency Debate Launch Mode: Internal workbench only. Evidence confidence varies. Do not publish claims without review.";

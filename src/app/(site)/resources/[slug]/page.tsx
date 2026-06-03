@@ -5,10 +5,14 @@ import { FriendInviteScriptsSection } from "@/components/resources/FriendInviteS
 import { ToolkitGuideView } from "@/components/resources/ToolkitGuideView";
 import { getToolkitGuide, getToolkitSlugs } from "@/content/resources/toolkit";
 import { pageMeta } from "@/lib/seo/metadata";
+import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const dynamic = skipPublicStaticGenerationForNetlifyLaunch() ? "force-dynamic" : undefined;
+
 export function generateStaticParams() {
+  if (skipPublicStaticGenerationForNetlifyLaunch()) return [];
   return getToolkitSlugs().map((slug) => ({ slug }));
 }
 

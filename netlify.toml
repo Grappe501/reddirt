@@ -37,7 +37,7 @@
 
 # Netlify upload cap is 250 MB unzipped per function.
 # Do not use external_node_modules here — it copies whole packages into the upload and blows the cap.
-[functions]
+[functions."___netlify-server-handler"]
   included_files = [
     "!.git/**",
     "!.git/objects/**",

@@ -8,10 +8,14 @@ import {
   officeLayerPath,
 } from "@/content/office/office-three-layer";
 import { pageMeta } from "@/lib/seo/metadata";
+import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
+export const dynamic = skipPublicStaticGenerationForNetlifyLaunch() ? "force-dynamic" : undefined;
+
 export function generateStaticParams() {
+  if (skipPublicStaticGenerationForNetlifyLaunch()) return [];
   return OFFICE_AREA_SLUGS.map((slug) => ({ slug }));
 }
 
