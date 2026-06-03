@@ -3,7 +3,10 @@ import type { Metadata } from "next";
 import { adminLoginAction } from "@/app/admin/actions";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { getAdminSecret } from "@/lib/admin/session";
-import { getAdminLoginDefaultPath } from "@/lib/intelligence/intelligenceLaunchMode";
+import {
+  getAdminLoginDefaultPath,
+  isIntelligenceOppositionDebateLaunchMode,
+} from "@/lib/intelligence/intelligenceLaunchMode";
 
 export const metadata: Metadata = {
   title: "Admin · Content board",
@@ -21,6 +24,7 @@ export default async function AdminLoginPage({ searchParams }: Props) {
     nextPath && nextPath.startsWith("/") && !nextPath.startsWith("//") && !nextPath.includes("\n")
       ? nextPath
       : defaultPath;
+  const debateLaunch = isIntelligenceOppositionDebateLaunchMode();
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-kelly-text px-4 py-16 text-kelly-page">
@@ -28,10 +32,13 @@ export default async function AdminLoginPage({ searchParams }: Props) {
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-inverse-muted">
           Kelly Grappe campaign
         </p>
-        <h1 className="mt-3 font-heading text-2xl font-bold">Content board</h1>
+        <h1 className="mt-3 font-heading text-2xl font-bold">
+          {debateLaunch ? "Debate intelligence workbench" : "Content board"}
+        </h1>
         <p className="mt-3 font-body text-sm leading-relaxed text-kelly-inverse-soft">
-          Sign in with the shared admin passphrase. This area manages public website content and Substack sync
-          only.
+          {debateLaunch
+            ? "Sign in to access opposition research, debate prep, claims review, and action queues. Internal use only."
+            : "Sign in with the shared admin passphrase. This area manages public website content and Substack sync only."}
         </p>
 
         {sp.error === "config" ? (
@@ -70,7 +77,7 @@ export default async function AdminLoginPage({ searchParams }: Props) {
               type="submit"
               className="w-full rounded-btn bg-kelly-gold px-4 py-3 font-body text-sm font-bold text-kelly-navy shadow-soft transition hover:-translate-y-0.5 hover:brightness-105"
             >
-              Enter content board
+              {debateLaunch ? "Enter intelligence workbench" : "Enter content board"}
             </button>
           </form>
         )}

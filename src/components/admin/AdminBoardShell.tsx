@@ -12,6 +12,7 @@ import { GlobalCampaignSwitcher } from "@/components/admin/campaign-tenancy/Glob
 import { CampaignBrandingStyles } from "@/components/admin/campaign-tenancy/CampaignBrandingStyles";
 import type { CampaignBranding, CampaignTenant } from "@/lib/campaign-tenancy/types";
 import { showDevTenancyUi, KELLY_CAMPAIGN_OS_TAGLINE } from "@/lib/campaign-tenancy/single-campaign-mode";
+import { IntelligenceEmergencyLaunchBanner } from "@/components/admin/intelligence/IntelligenceEmergencyLaunchBanner";
 
 const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/content", label: "Overview" },
@@ -68,9 +69,17 @@ export function AdminBoardShell({
       <div className="flex min-h-screen bg-transparent text-kelly-text">
         <aside className="flex w-[min(100%,300px)] flex-col border-r border-[var(--border-on-navy)] bg-kelly-text text-kelly-inverse">
           <div className="border-b border-[var(--border-on-navy)] px-5 py-6">
-            <p className="os-eyebrow-inverse tracking-[0.28em]">Kelly Campaign OS</p>
-            <p className="mt-2 font-heading text-lg font-bold leading-tight text-kelly-inverse">Operational command</p>
-            <p className="mt-2 font-body text-xs leading-relaxed text-kelly-inverse-soft">{KELLY_CAMPAIGN_OS_TAGLINE}</p>
+            <p className="os-eyebrow-inverse tracking-[0.28em]">
+              {oppositionDebateLaunchMode ? "Debate week" : "Kelly Campaign OS"}
+            </p>
+            <p className="mt-2 font-heading text-lg font-bold leading-tight text-kelly-inverse">
+              {oppositionDebateLaunchMode ? "Opposition & debate intelligence" : "Operational command"}
+            </p>
+            <p className="mt-2 font-body text-xs leading-relaxed text-kelly-inverse-soft">
+              {oppositionDebateLaunchMode
+                ? "Internal workbench — claims require human review before any public use."
+                : KELLY_CAMPAIGN_OS_TAGLINE}
+            </p>
           </div>
           <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-3 py-4" aria-label="Campaign OS">
             <KellySingleCampaignBadge />
@@ -133,7 +142,10 @@ export function AdminBoardShell({
           </div>
         </aside>
         <div className="flex min-h-screen flex-1 flex-col os-admin-canvas">
-          <main className="flex-1 px-6 py-8 lg:px-10 lg:py-10">{children}</main>
+          <main className="flex-1 px-6 py-8 lg:px-10 lg:py-10">
+            {oppositionDebateLaunchMode ? <IntelligenceEmergencyLaunchBanner /> : null}
+            {children}
+          </main>
           <div className="border-t border-kelly-border bg-kelly-wash px-6 py-3 lg:px-10">
             <CampaignPaidForBar variant="light" />
           </div>
