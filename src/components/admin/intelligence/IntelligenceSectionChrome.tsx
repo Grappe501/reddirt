@@ -6,7 +6,10 @@ import { IntelligenceCandidateOrientation } from "@/components/admin/intelligenc
 import { IntelligenceDebateSubnav } from "@/components/admin/intelligence/IntelligenceDebateSubnav";
 import { IntelligenceGovernanceStrip } from "@/components/admin/intelligence/IntelligenceGovernanceStrip";
 
-/** Shared chrome for all /admin/intelligence/* pages. */
+const DEBATE_LAUNCH =
+  process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate";
+
+/** Shared chrome for /admin/intelligence/* — launch mode: governance strip only (sidebar has nav). */
 export function IntelligenceSectionChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname() ?? "";
   const onHub = pathname === "/admin/intelligence";
@@ -14,8 +17,12 @@ export function IntelligenceSectionChrome({ children }: { children: ReactNode })
   return (
     <>
       <IntelligenceGovernanceStrip />
-      {onHub ? null : <IntelligenceCandidateOrientation />}
-      <IntelligenceDebateSubnav />
+      {DEBATE_LAUNCH ? null : (
+        <>
+          {onHub ? null : <IntelligenceCandidateOrientation />}
+          <IntelligenceDebateSubnav />
+        </>
+      )}
       {children}
     </>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { differenceInCalendarDays, parseISO } from "date-fns";
 import { ELECTION_DAY_2026 } from "@/lib/campaign-dates";
 
@@ -36,6 +37,8 @@ function saveStored(s: Stored) {
 type Pos = { x: number; y: number };
 
 export function AdminElectionCountdownWidget() {
+  const pathname = usePathname() ?? "";
+  const hideOnIntelligence = pathname.startsWith("/admin/intelligence");
   const [pos, setPos] = useState<Pos>({ x: DEFAULT.x, y: DEFAULT.y });
   const [minimized, setMinimized] = useState(false);
   const [dragging, setDragging] = useState(false);
@@ -88,6 +91,10 @@ export function AdminElectionCountdownWidget() {
       : daysToElection === 0
         ? "Today"
         : `${daysToElection} day${daysToElection === 1 ? "" : "s"}`;
+
+  if (hideOnIntelligence) {
+    return null;
+  }
 
   return (
     <div
