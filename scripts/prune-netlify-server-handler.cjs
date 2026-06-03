@@ -23,23 +23,20 @@ const TOP_LEVEL_DIR_PRUNE = [
   "docs",
 ];
 
-const LAUNCH_ADMIN_SERVER_DIRS = [
-  ".next/server/app/admin/(board)/workbench",
-  ".next/server/app/admin/(board)/compliance",
-  ".next/server/app/admin/(board)/campaign-events",
-  ".next/server/app/admin/(board)/calendar-command-center",
-  ".next/server/app/admin/(board)/campaign-calendar",
-  ".next/server/app/admin/(board)/communications",
-  ".next/server/app/admin/ai-command-center",
-  ".next/server/app/admin/ask-kelly",
-  ".next/server/app/admin/campaign-manager-dashboard",
-  ".next/server/app/admin/candidate-dashboard",
-  ".next/server/app/admin/travel-ledger",
-  ".next/server/app/admin/volunteers",
-  ".next/server/app/admin/owned-media",
-  ".next/server/app/admin/onboarding",
-  ".next/server/app/admin/(board)/campaign-strategy",
+/** Drop large non-launch data trees (opposition JSON stays). */
+const LAUNCH_DATA_DIR_PRUNE = [
+  "data/county-workbench",
+  "data/campaign-events",
+  "data/compliance",
+  "data/election",
+  "data/simulations",
+  "data/intelligence/briefs",
+  "data/intelligence/backups",
 ];
+
+const LAUNCH_ADMIN_TOP_KEEP = new Set(["login", "(board)", "opposition"]);
+const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
+const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence", "opposition"]);
 
 /** Pre-rendered public segments — drop from Lambda; pages render on demand. */
 const LAUNCH_PUBLIC_SERVER_DIRS = [
@@ -74,6 +71,11 @@ const MINIMAL_NODE_MODULES = [
   "sharp",
   "openai",
   "@next/env",
+  "next",
+  "react",
+  "react-dom",
+  "styled-jsx",
+  "@swc/helpers",
 ];
 
 const FILE_PRUNE = [
@@ -82,6 +84,8 @@ const FILE_PRUNE = [
 ];
 
 const MAX_MB = 250;
+/** Fail the build before Netlify upload if deploy-size estimate exceeds this (symlink drift margin). */
+const DEPLOY_FAIL_MB = 245;
 
 function isOppositionDebateLaunch() {
   return process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === OPPOSITION_DEBATE_LAUNCH;
@@ -158,18 +162,57 @@ function removeOutboundSymlinks(handlerRoot) {
   return removed;
 }
 
+function pruneLaunchAdminServer(treeRoot) {
+  const removed = [];
+  const adminRoot = path.join(treeRoot, ".next/server/app/admin");
+  if (exists(adminRoot)) {
+    for (const ent of fs.readdirSync(adminRoot, { withFileTypes: true })) {
+      if (!ent.isDirectory()) continue;
+      if (LAUNCH_ADMIN_TOP_KEEP.has(ent.name)) continue;
+      const rel = path.join(".next/server/app/admin", ent.name);
+      if (rmrf(path.join(treeRoot, rel))) removed.push(rel);
+    }
+  }
+
+  const boardRoot = path.join(treeRoot, ".next/server/app/admin/(board)");
+  if (exists(boardRoot)) {
+    for (const ent of fs.readdirSync(boardRoot, { withFileTypes: true })) {
+      if (!ent.isDirectory()) continue;
+      if (LAUNCH_BOARD_KEEP.has(ent.name)) continue;
+      const rel = path.join(".next/server/app/admin/(board)", ent.name);
+      if (rmrf(path.join(treeRoot, rel))) removed.push(rel);
+    }
+  }
+
+  const apiAdminRoot = path.join(treeRoot, ".next/server/app/api/admin");
+  if (exists(apiAdminRoot)) {
+    for (const ent of fs.readdirSync(apiAdminRoot, { withFileTypes: true })) {
+      if (!ent.isDirectory()) continue;
+      if (LAUNCH_API_ADMIN_KEEP.has(ent.name)) continue;
+      const rel = path.join(".next/server/app/api/admin", ent.name);
+      if (rmrf(path.join(treeRoot, rel))) removed.push(rel);
+    }
+  }
+
+  return removed;
+}
+
+function pruneLaunchData(treeRoot) {
+  const removed = [];
+  for (const rel of LAUNCH_DATA_DIR_PRUNE) {
+    if (rmrf(path.join(treeRoot, rel))) removed.push(rel);
+  }
+  return removed;
+}
+
 function materializeMinimalNodeModules(handlerRoot, repoRoot) {
   const destNm = path.join(handlerRoot, "node_modules");
   const srcNm = path.join(repoRoot, "node_modules");
   if (!exists(srcNm)) return [];
 
   const copied = [];
-  if (exists(destNm)) {
-    if (isSymlink(destNm) || dirSizeBytesFollowSymlinks(destNm) > 80 * 1024 * 1024) {
-      rmrf(destNm);
-    }
-  }
-  if (!exists(destNm)) fs.mkdirSync(destNm, { recursive: true });
+  if (exists(destNm)) rmrf(destNm);
+  fs.mkdirSync(destNm, { recursive: true });
 
   for (const rel of MINIMAL_NODE_MODULES) {
     const src = path.join(srcNm, ...rel.split("/"));
@@ -250,9 +293,11 @@ function pruneHandler(handlerRoot, repoRoot) {
   }
 
   if (isOppositionDebateLaunch()) {
-    for (const rel of [...LAUNCH_ADMIN_SERVER_DIRS, ...LAUNCH_PUBLIC_SERVER_DIRS]) {
+    for (const rel of LAUNCH_PUBLIC_SERVER_DIRS) {
       if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
     }
+    removed.push(...pruneLaunchAdminServer(handlerRoot));
+    removed.push(...pruneLaunchData(handlerRoot));
     for (const rel of LAUNCH_NODE_MODULES_DIRS) {
       if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
     }
@@ -356,15 +401,28 @@ function largestFiles(handlerRoot, limit = 15, followSymlinks = true) {
 }
 
 function pruneNetlifyServerHandler(cwd = process.cwd()) {
+  const removed = [];
+
+  if (isOppositionDebateLaunch()) {
+    removed.push(...pruneLaunchAdminServer(cwd));
+    removed.push(...pruneLaunchData(cwd));
+  }
+
   const handlers = HANDLER_DIRS.map((d) => path.join(cwd, d)).filter(exists);
   if (handlers.length === 0) {
-    return { skipped: true, handler: null, beforeMb: 0, afterMb: 0, deployMb: 0, removed: [] };
+    return {
+      skipped: true,
+      handler: null,
+      beforeMb: 0,
+      afterMb: 0,
+      deployMb: 0,
+      removed: [...new Set(removed)],
+    };
   }
 
   let beforeMb = 0;
   let afterMb = 0;
   let deployMb = 0;
-  const removed = [];
   for (const handler of handlers) {
     beforeMb += dirSizeBytes(handler) / (1024 * 1024);
     removed.push(...pruneHandler(handler, cwd));
@@ -394,7 +452,7 @@ function formatOversizeMessage(result) {
 }
 
 function shouldFailDeploy(result) {
-  return !result.skipped && result.deployMb > MAX_MB;
+  return !result.skipped && result.deployMb > DEPLOY_FAIL_MB;
 }
 
 if (require.main === module) {
@@ -417,4 +475,5 @@ module.exports = {
   formatOversizeMessage,
   shouldFailDeploy,
   MAX_MB,
+  DEPLOY_FAIL_MB,
 };

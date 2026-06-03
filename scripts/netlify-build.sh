@@ -263,7 +263,14 @@ rm -rf .next/cache
 
 if [ -f "scripts/prune-netlify-server-handler.cjs" ]; then
   echo ">>> prune Netlify server handler (post-next-build; plugin re-prunes before deploy)"
-  node scripts/prune-netlify-server-handler.cjs || echo ">>> handler not ready yet — prune plugin runs after Next repackage"
+  if ! node scripts/prune-netlify-server-handler.cjs; then
+    code=$?
+    if [ "$code" -eq 2 ]; then
+      echo ">>> handler over deploy cap — failing build"
+      exit 2
+    fi
+    echo ">>> handler not ready yet — prune plugin runs after Next repackage"
+  fi
 fi
 
 if [ -f "scripts/analyze-next-trace-union.mjs" ]; then
