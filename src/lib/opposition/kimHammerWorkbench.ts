@@ -77,7 +77,7 @@ function normalizeAssessment(input: string): ClaimRow["assessment"] {
   return "supported";
 }
 
-function parseClaimsReview(markdown: string): ClaimRow[] {
+export function parseClaimsReview(markdown: string): ClaimRow[] {
   const lines = markdown.split(/\r?\n/);
   const rows: ClaimRow[] = [];
   for (const line of lines) {
