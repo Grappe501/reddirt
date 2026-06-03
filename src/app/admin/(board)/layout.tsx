@@ -7,7 +7,6 @@ import { requireAdminPage } from "@/lib/admin/require-admin";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { resolveActiveCampaignTenant } from "@/lib/campaign-tenancy/resolve-active-tenant";
-import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -25,7 +24,7 @@ export default async function AdminBoardLayout({ children }: { children: ReactNo
     return <KellyCalendarCockpitChrome>{children}</KellyCalendarCockpitChrome>;
   }
 
-  const launchMode = isIntelligenceOppositionDebateLaunchMode();
+  const launchMode = process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate";
   /** Debate launch: always minimal shell — x-pathname is often missing on Netlify and would load the heavy Campaign OS shell. */
   if (launchMode) {
     const shellPath = path.startsWith("/admin") ? path : "/admin/intelligence";

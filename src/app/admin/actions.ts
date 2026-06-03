@@ -1,6 +1,5 @@
 "use server";
 
-import { createHash, timingSafeEqual } from "crypto";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -15,7 +14,6 @@ import {
 import { upsertInboundFromSyncedPost } from "@/lib/orchestrator/upsert-inbound-from-synced-post";
 import {
   ADMIN_SESSION_COOKIE,
-  createAdminSessionToken,
   getAdminSecret,
   verifyAdminSessionToken,
 } from "@/lib/admin/session";
@@ -24,8 +22,6 @@ import { HOMEPAGE_SECTION_IDS } from "@/lib/content/homepage-merge";
 import { invalidateContentOverridesCache } from "@/lib/content/public-overrides";
 import { parsePageKey, type HeroBlockPayload } from "@/lib/content/page-blocks";
 import { syncSubstackPosts } from "@/lib/integrations/substack/sync";
-import { getAdminLoginDefaultPath } from "@/lib/intelligence/intelligenceLaunchMode";
-
 async function requireAdminAction() {
   const secret = getAdminSecret();
   if (!secret) redirect("/admin/login?error=config");
@@ -33,38 +29,7 @@ async function requireAdminAction() {
   if (!verifyAdminSessionToken(token, secret)) redirect("/admin/login");
 }
 
-function hashEqual(a: string, b: string): boolean {
-  const ah = createHash("sha256").update(a, "utf8").digest();
-  const bh = createHash("sha256").update(b, "utf8").digest();
-  return ah.length === bh.length && timingSafeEqual(ah, bh);
-}
-
-export async function adminLoginAction(formData: FormData) {
-  const secret = getAdminSecret();
-  if (!secret) redirect("/admin/login?error=config");
-  const password = String(formData.get("password") ?? "");
-  if (!hashEqual(password, secret)) redirect("/admin/login?error=auth");
-
-  const token = createAdminSessionToken(secret);
-  (await cookies()).set(ADMIN_SESSION_COOKIE, token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 7,
-  });
-  const redirectTo = String(formData.get("redirectTo") ?? "").trim();
-  const safe =
-    redirectTo.startsWith("/") && !redirectTo.startsWith("//") && !redirectTo.includes("\n")
-      ? redirectTo
-      : getAdminLoginDefaultPath();
-  redirect(safe);
-}
-
-export async function adminLogoutAction() {
-  (await cookies()).delete(ADMIN_SESSION_COOKIE);
-  redirect("/admin/login");
-}
+export { adminLoginAction, adminLogoutAction } from "@/lib/admin/admin-auth-actions";
 
 export async function triggerSubstackSyncAction() {
   await requireAdminAction();

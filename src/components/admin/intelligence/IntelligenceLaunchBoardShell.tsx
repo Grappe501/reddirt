@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { adminLogoutAction } from "@/app/admin/actions";
+import { adminLogoutAction } from "@/lib/admin/admin-auth-actions";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { DEBATE_WEEK_NAV_ITEMS } from "@/lib/intelligence/debate-week-nav";
 
