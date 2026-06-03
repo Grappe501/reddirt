@@ -91,6 +91,17 @@ const nextConfig: NextConfig = {
         destination: "/from-the-road",
         permanent: false,
       },
+      /** Legacy debate prep bookmarks (missing `/intelligence` segment). */
+      {
+        source: "/admin/kim-hammer",
+        destination: "/admin/intelligence/kim-hammer",
+        permanent: false,
+      },
+      {
+        source: "/admin/kim-hammer/:path*",
+        destination: "/admin/intelligence/kim-hammer/:path*",
+        permanent: false,
+      },
       /** Canonical hub is `/messages` (Pass 06); alias for bookmarks and external links. */
       {
         source: "/conversations",

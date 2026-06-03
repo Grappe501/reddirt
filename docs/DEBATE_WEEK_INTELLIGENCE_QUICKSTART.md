@@ -22,7 +22,7 @@ That enables:
 | Login | `/admin/login` |
 | Start here | `/admin/intelligence` |
 | Debate command | `/admin/intelligence/debate-command` |
-| Debate prep | `/admin/intelligence/kim-hammer/debate-prep` |
+| Debate prep | `/admin/intelligence/kim-hammer/debate-prep` (not `/admin/kim-hammer/...`) |
 
 ## Netlify checklist
 
