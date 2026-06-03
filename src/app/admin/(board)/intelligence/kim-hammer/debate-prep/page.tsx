@@ -4,18 +4,20 @@ import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbenc
 import { listFlaggedBillCivicSummaries } from "@/lib/intelligence/kimHammerBillCivicIntelligence";
 import { summarizeDebateCommandMessaging } from "@/lib/intelligence/campaignMessagingIntelligence";
 import { loadCountyBriefingIntelligenceIndex } from "@/lib/intelligence/countyBriefingIntelligence";
+import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 import { summarizeRegionalDeploymentConditions } from "@/lib/intelligence/regionalStrategicModeling";
 import { summarizeDebateScenarioPrep } from "@/lib/intelligence/strategicScenarioSimulation";
 import Link from "next/link";
 
 export default async function KimHammerDebatePrepPage() {
+  const launchMode = isIntelligenceOppositionDebateLaunchMode();
   const data = loadKimHammerWorkbench();
   const kh2 = loadKimHammerKh2Workbench();
   const civicSummaries = listFlaggedBillCivicSummaries();
   const debateMessaging = summarizeDebateCommandMessaging();
-  const regional = summarizeRegionalDeploymentConditions();
-  const countyBriefings = loadCountyBriefingIntelligenceIndex();
-  const debateCounties = countyBriefings.counties.filter((row) =>
+  const regional = launchMode ? null : summarizeRegionalDeploymentConditions();
+  const countyBriefings = launchMode ? null : loadCountyBriefingIntelligenceIndex();
+  const debateCounties = (countyBriefings?.counties ?? []).filter((row) =>
     row.briefingSignals.some((signal) => signal.signal === "COUNTY_DEBATE_RELEVANT"),
   );
   const scenarioPrep = summarizeDebateScenarioPrep();
@@ -188,42 +190,46 @@ export default async function KimHammerDebatePrepPage() {
         ) : null}
       </section>
 
-      <section className="mb-4 rounded-xl border border-teal-200/40 bg-teal-50/30 p-4">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-teal-950">NSI-5 · County-specific debate guidance</h2>
-        <p className="mt-1 text-xs text-teal-900/80">
-          Locally relevant opponent bills, bridge lines, and what-not-to-say guidance per county briefing.
-        </p>
-        <Link href="/admin/intelligence/kim-hammer/county-briefings" className="mt-2 inline-block text-xs font-semibold text-teal-950 underline">
-          Open county briefing index →
-        </Link>
-        <ul className="mt-3 space-y-2 text-xs text-teal-950">
-          {debateCounties.slice(0, 5).map((county) => (
-            <li key={county.countyId} className="rounded border border-teal-200/50 bg-white/70 p-2">
-              <Link href={`/admin/intelligence/kim-hammer/counties/${encodeURIComponent(county.countyId)}`} className="font-semibold underline">
-                {county.countyName}
-              </Link>
-              {county.topOpponentBills[0] ? (
-                <p className="mt-1">Top local bill: {county.topOpponentBills[0].billNumber} — {county.topOpponentBills[0].civicSignalText.slice(0, 120)}</p>
-              ) : null}
-              {county.debatePrepGuidance[0] ? <p className="mt-1">{county.debatePrepGuidance[0]}</p> : null}
-              {county.whatToAvoid[0] ? <p className="mt-1 text-amber-900">Avoid: {county.whatToAvoid[0]}</p> : null}
-            </li>
-          ))}
-        </ul>
-      </section>
+      {!launchMode && countyBriefings && regional ? (
+        <>
+          <section className="mb-4 rounded-xl border border-teal-200/40 bg-teal-50/30 p-4">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-teal-950">NSI-5 · County-specific debate guidance</h2>
+            <p className="mt-1 text-xs text-teal-900/80">
+              Locally relevant opponent bills, bridge lines, and what-not-to-say guidance per county briefing.
+            </p>
+            <Link href="/admin/intelligence/kim-hammer/county-briefings" className="mt-2 inline-block text-xs font-semibold text-teal-950 underline">
+              Open county briefing index →
+            </Link>
+            <ul className="mt-3 space-y-2 text-xs text-teal-950">
+              {debateCounties.slice(0, 5).map((county) => (
+                <li key={county.countyId} className="rounded border border-teal-200/50 bg-white/70 p-2">
+                  <Link href={`/admin/intelligence/kim-hammer/counties/${encodeURIComponent(county.countyId)}`} className="font-semibold underline">
+                    {county.countyName}
+                  </Link>
+                  {county.topOpponentBills[0] ? (
+                    <p className="mt-1">Top local bill: {county.topOpponentBills[0].billNumber} — {county.topOpponentBills[0].civicSignalText.slice(0, 120)}</p>
+                  ) : null}
+                  {county.debatePrepGuidance[0] ? <p className="mt-1">{county.debatePrepGuidance[0]}</p> : null}
+                  {county.whatToAvoid[0] ? <p className="mt-1 text-amber-900">Avoid: {county.whatToAvoid[0]}</p> : null}
+                </li>
+              ))}
+            </ul>
+          </section>
 
-      <section className="mb-4 rounded-xl border border-violet-200/40 bg-violet-50/30 p-4">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-violet-950">NSI-6 · Regional strategic overlays</h2>
-        <p className="mt-1 text-xs text-violet-900/80">County clusters, turnout-sensitive framing, and media saturation warnings — aggregate-only.</p>
-        <ul className="mt-3 space-y-2 text-xs text-violet-950">
-          {regional.clusters.map((cluster) => (
-            <li key={cluster.clusterId} className="rounded border border-violet-200/50 bg-white/70 p-2">
-              <strong>{cluster.title}</strong> ({cluster.countyIds.join(", ")})
-              <p className="mt-1">{cluster.deploymentSummary}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+          <section className="mb-4 rounded-xl border border-violet-200/40 bg-violet-50/30 p-4">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-violet-950">NSI-6 · Regional strategic overlays</h2>
+            <p className="mt-1 text-xs text-violet-900/80">County clusters, turnout-sensitive framing, and media saturation warnings — aggregate-only.</p>
+            <ul className="mt-3 space-y-2 text-xs text-violet-950">
+              {regional.clusters.map((cluster) => (
+                <li key={cluster.clusterId} className="rounded border border-violet-200/50 bg-white/70 p-2">
+                  <strong>{cluster.title}</strong> ({cluster.countyIds.join(", ")})
+                  <p className="mt-1">{cluster.deploymentSummary}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
+      ) : null}
 
       <section className="mb-4 rounded-xl border border-indigo-200/40 bg-indigo-50/30 p-4">
         <h2 className="text-sm font-bold uppercase tracking-wider text-indigo-950">NSI-7 · Deep brief & writing tools</h2>
