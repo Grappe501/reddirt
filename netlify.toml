@@ -31,6 +31,38 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# After the Next plugin packages ___netlify-server-handler, strip .git / duplicates / static blobs.
+[[plugins]]
+  package = "./netlify/plugins/prune-server-handler"
+
+# Netlify upload cap is 250 MB unzipped per function (separate from Next NFT trace).
+[functions]
+  external_node_modules = [
+    "@prisma/client",
+    "sharp",
+    "pdf-parse",
+    "openai",
+    "twilio",
+    "mammoth",
+    "xlsx",
+    "google-auth-library",
+    "@googleapis/gmail",
+    "@googleapis/calendar",
+    "@googleapis/people",
+  ]
+  included_files = [
+    "!.git/**",
+    "!.git/objects/**",
+    "!node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node",
+    "!node_modules/@img/sharp-libvips-linuxmusl-x64/**",
+    "!node_modules/@img/sharp-linuxmusl-x64/**",
+    "!node_modules/pdf-parse/**",
+    "!data/calendar-command-center/**",
+    "!data/owned-campaign-media/**",
+    "!public/**",
+    "!.tmp-heic-preview/**",
+  ]
+
 # Optional: document dev port alignment
 # [dev]
 #   command = "npm run dev"
