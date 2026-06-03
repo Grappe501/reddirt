@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
-import { runDailyIntelligenceAgentPassAsync } from "@/lib/intelligence/intelligenceAgentOrchestrator";
+import {
+  runDailyIntelligenceAgentPass,
+  runDailyIntelligenceAgentPassAsync,
+} from "@/lib/intelligence/intelligenceAgentOrchestrator";
 import { composeGovernedBriefRegistry } from "@/lib/intelligence/briefs/briefRegistry";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 import { tryIntelligenceLoad, tryIntelligenceLoadAsync } from "@/lib/intelligence/safeIntelligenceLoad";
@@ -12,6 +15,8 @@ import type { DailyIntelligencePacket } from "@/lib/intelligence/intelligenceAge
 import type { GovernedBriefRegistry } from "@/lib/intelligence/briefs/briefRegistry";
 
 export const dynamic = "force-dynamic";
+/** Netlify serverless — opposition hub does heavy JSON reads; allow up to 26s on Pro. */
+export const maxDuration = 26;
 
 const card = "rounded-md border border-kelly-text/10 bg-kelly-page px-3 py-2 text-sm";
 
@@ -50,11 +55,17 @@ export default async function OppositionIntelligenceAdminPage() {
     topQuestions: [],
   } as unknown as ReturnType<typeof loadKimHammerWorkbench>);
 
-  const dailyPacket = await tryIntelligenceLoadAsync(
-    "daily-intelligence-pass",
-    () => runDailyIntelligenceAgentPassAsync({ syncActionQueue: !launchMode }),
-    EMPTY_DAILY_PACKET,
-  );
+  const dailyPacket = launchMode
+    ? tryIntelligenceLoad(
+        "daily-intelligence-pass",
+        () => runDailyIntelligenceAgentPass({ syncActionQueue: false }),
+        EMPTY_DAILY_PACKET,
+      )
+    : await tryIntelligenceLoadAsync(
+        "daily-intelligence-pass",
+        () => runDailyIntelligenceAgentPassAsync({ syncActionQueue: true }),
+        EMPTY_DAILY_PACKET,
+      );
 
   const briefRegistry = tryIntelligenceLoad(
     "brief-registry",

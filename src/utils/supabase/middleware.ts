@@ -6,11 +6,16 @@ import { type NextRequest, NextResponse } from "next/server";
  * If Supabase public env is unset, forwards the request unchanged (Prisma-only deploys keep working).
  */
 export async function updateSession(request: NextRequest): Promise<NextResponse> {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
-  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY?.trim();
-
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-pathname", request.nextUrl.pathname);
+
+  /** Admin uses ADMIN_SECRET cookies — skip Supabase edge auth (avoids Netlify edge timeouts). */
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    return NextResponse.next({ request: { headers: requestHeaders } });
+  }
+
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY?.trim();
 
   if (!url || !key) {
     return NextResponse.next({ request: { headers: requestHeaders } });

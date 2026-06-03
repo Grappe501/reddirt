@@ -16,13 +16,19 @@ export default async function AdminBoardLayout({ children }: { children: ReactNo
   if (path.startsWith("/admin/calendar-command-center/kelly")) {
     return <KellyCalendarCockpitChrome>{children}</KellyCalendarCockpitChrome>;
   }
+  const launchMode = isIntelligenceOppositionDebateLaunchMode();
   const [navBundle, tenantCtx] = await Promise.all([
     loadDashboardNavigationBundle("2026-03", {
       pathname: path || "/admin",
       surface: "command_center",
     }),
-    resolveActiveCampaignTenant(),
+    launchMode ? Promise.resolve(null) : resolveActiveCampaignTenant(),
   ]);
+  const tenant = tenantCtx ?? {
+    tenantId: "kelly-sos-2026",
+    available: [],
+    branding: null,
+  };
   return (
     <AgentObservationTracker role="operator" pathname={path || "/admin"} period={navBundle.period}>
       <AdminBoardShell
@@ -30,10 +36,10 @@ export default async function AdminBoardLayout({ children }: { children: ReactNo
         campaignOsNavBadges={navBundle.navBadges}
         activeMonth={navBundle.period}
         currentPathname={path || "/admin"}
-        tenants={tenantCtx.available}
-        activeTenantId={tenantCtx.tenantId}
-        tenantBranding={tenantCtx.branding}
-        oppositionDebateLaunchMode={isIntelligenceOppositionDebateLaunchMode()}
+        tenants={tenant.available}
+        activeTenantId={tenant.tenantId}
+        tenantBranding={tenant.branding}
+        oppositionDebateLaunchMode={launchMode}
       >
         {children}
       </AdminBoardShell>
