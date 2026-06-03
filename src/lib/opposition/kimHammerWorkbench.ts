@@ -113,6 +113,75 @@ function sectionBullets(markdown: string, heading: string): string[] {
     .map((l) => l.slice(2).trim());
 }
 
+/** Netlify launch hub — JSON only (no large markdown reads). */
+export function loadKimHammerWorkbenchHubSummary() {
+  const index = readJson<BillIndexFile>("data/opposition/kim-hammer-election-record-bill-index.json");
+  const themes = readJson<ThemeMatrixFile>("data/opposition/kim-hammer-election-record-theme-matrix.json");
+
+  const totalBills = index.rows.length;
+  const enactedActs = index.rows.filter((row) => Boolean(row.actNumber)).length;
+  const confidenceHigh = index.rows.filter((row) => row.confidenceLevel === "HIGH").length;
+  const researchConfidenceScore = Math.round((confidenceHigh / Math.max(totalBills, 1)) * 100);
+  const highConfidenceThemes = Object.entries(themes.themes)
+    .filter(([, bills]) => bills.length > 0)
+    .sort((a, b) => b[1].length - a[1].length)
+    .slice(0, 6)
+    .map(([theme, bills]) => ({ theme, billCount: bills.length }));
+
+  const strongestDebateAnchors = ["SB250", "HB1457", "SB291", "SB584", "HB1707"].map((billNumber) =>
+    index.rows.find((row) => row.billNumber === billNumber),
+  ).filter(Boolean) as HammerBillRow[];
+
+  const topQuestions = [
+    "How do you protect election integrity without creating barriers to participation?",
+    "Which election-law changes best represent your governing philosophy for Secretary of State?",
+    "How would you support county clerks if mandates increase staffing pressure?",
+  ];
+
+  const debateDrillQueue: DebateDrillCard[] = strongestDebateAnchors.map((bill, idx) => ({
+    billNumber: bill.billNumber,
+    prompt: topQuestions[idx] ?? "What should voters know about this bill?",
+    answer30: `Arkleg records show ${bill.billNumber} became Act ${bill.actNumber ?? "UNKNOWN"}.`,
+    answer60: `The record shows ${bill.billNumber} (${bill.sessionYear}) enacted as Act ${bill.actNumber ?? "UNKNOWN"}.`,
+    rebuttalPivot: "Agree on integrity goals, then distinguish methods and county burden evidence.",
+    bridgeLine: "This office should call balls and strikes: transparent rules, county support, and broad public trust.",
+    risk: bill.confidenceLevel === "HIGH" ? "LOW" : "MEDIUM",
+  }));
+
+  return {
+    generatedAt: index.generatedAt,
+    bills: index.rows,
+    totalBills,
+    enactedActs,
+    researchConfidenceScore,
+    highConfidenceThemes,
+    strongestDebateAnchors,
+    topContrastThemes: [
+      "direct_democracy_ballot_initiatives",
+      "county_election_administration",
+      "election_enforcement",
+    ],
+    topQuestions,
+    debateDrillQueue,
+    claimBuckets: {
+      supported: [] as ClaimRow[],
+      partial: [] as ClaimRow[],
+      needsResearch: [] as ClaimRow[],
+      unsupported: [] as ClaimRow[],
+    },
+    riskClaims: [
+      "Avoid motive claims without primary sources.",
+      "Avoid overstating county cost impacts without clerk documentation.",
+      "Use bill numbers and act numbers from the index before citing outcomes.",
+    ],
+    safeLanguage: [] as string[],
+    recommendedNextPass: [
+      "Open debate prep for the full 14-section briefing.",
+      "Review claims queue before using lines in public settings.",
+    ],
+  };
+}
+
 export function loadKimHammerWorkbench() {
   const index = readJson<BillIndexFile>("data/opposition/kim-hammer-election-record-bill-index.json");
   const themes = readJson<ThemeMatrixFile>("data/opposition/kim-hammer-election-record-theme-matrix.json");

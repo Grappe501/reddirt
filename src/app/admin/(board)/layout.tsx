@@ -9,6 +9,8 @@ import { resolveActiveCampaignTenant } from "@/lib/campaign-tenancy/resolve-acti
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const maxDuration = 26;
 
 export default async function AdminBoardLayout({ children }: { children: ReactNode }) {
   await requireAdminPage();

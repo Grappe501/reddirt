@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
+import { loadKimHammerWorkbench, loadKimHammerWorkbenchHubSummary } from "@/lib/opposition/kimHammerWorkbench";
 import { runDailyIntelligenceAgentPassAsync } from "@/lib/intelligence/intelligenceAgentOrchestrator";
 import { composeGovernedBriefRegistry } from "@/lib/intelligence/briefs/briefRegistry";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
@@ -14,7 +14,9 @@ import type { DailyIntelligencePacket } from "@/lib/intelligence/intelligenceAge
 import type { GovernedBriefRegistry } from "@/lib/intelligence/briefs/briefRegistry";
 
 export const dynamic = "force-dynamic";
-/** Netlify serverless — opposition hub does heavy JSON reads; allow up to 26s on Pro. */
+/** Netlify serverless — avoid edge runtime timeout on cold starts. */
+export const runtime = "nodejs";
+/** Opposition hub does heavy JSON reads; allow up to 26s on Pro. */
 export const maxDuration = 26;
 
 const card = "rounded-md border border-kelly-text/10 bg-kelly-page px-3 py-2 text-sm";
@@ -38,7 +40,10 @@ const EMPTY_DAILY_PACKET = {
 
 export default async function OppositionIntelligenceAdminPage() {
   const launchMode = isIntelligenceOppositionDebateLaunchMode();
-  const data = tryIntelligenceLoad("kim-hammer-workbench", () => loadKimHammerWorkbench(), {
+  const data = tryIntelligenceLoad(
+    "kim-hammer-workbench",
+    () => (launchMode ? loadKimHammerWorkbenchHubSummary() : loadKimHammerWorkbench()),
+    {
     totalBills: 0,
     enactedActs: 0,
     researchConfidenceScore: 0,

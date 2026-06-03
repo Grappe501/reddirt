@@ -1,9 +1,6 @@
 import { loadOppositionArchiveRollup } from "@/lib/opposition/oppositionBriefConfidence";
 import { summarizeClaimLedger } from "@/lib/intelligence/claims/claimLedgerSummary";
-import {
-  summarizeHumanActionQueue,
-  summarizePersistedHumanActionQueue,
-} from "@/lib/intelligence/strategicDecisionSupport";
+import { summarizeHumanActionQueue } from "@/lib/intelligence/strategicDecisionSupport";
 import { summarizeDraftReviewQueue } from "@/lib/intelligence/llmDraftGateway";
 import { buildLegislativeVideoIntelligenceRollup } from "@/lib/legislature/legislativeVideoIntelligenceRollup";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
@@ -23,21 +20,25 @@ export type IntelligenceLaunchHubStats = {
   } | null;
 };
 
+const EMPTY_LAUNCH_HUB_STATS: IntelligenceLaunchHubStats = {
+  archive: null,
+  claims: null,
+  actions: null,
+  llm: null,
+  legislative: null,
+};
+
 export function loadIntelligenceLaunchHubStats(): IntelligenceLaunchHubStats {
   const fast = isIntelligenceOppositionDebateLaunchMode();
+  if (fast) {
+    return EMPTY_LAUNCH_HUB_STATS;
+  }
+
   const archive = tryIntelligenceLoad("opposition-archive-rollup", () => loadOppositionArchiveRollup(), null);
   const claims = tryIntelligenceLoad("claim-ledger", () => summarizeClaimLedger(), null);
-  const actions = tryIntelligenceLoad(
-    "action-queue",
-    () => (fast ? summarizePersistedHumanActionQueue() : summarizeHumanActionQueue()),
-    null,
-  );
-  const llm = fast
-    ? null
-    : tryIntelligenceLoad("llm-queue", () => summarizeDraftReviewQueue(), null);
-  const legislative = fast
-    ? null
-    : tryIntelligenceLoad("legislative-video", () => buildLegislativeVideoIntelligenceRollup(), null);
+  const actions = tryIntelligenceLoad("action-queue", () => summarizeHumanActionQueue(), null);
+  const llm = tryIntelligenceLoad("llm-queue", () => summarizeDraftReviewQueue(), null);
+  const legislative = tryIntelligenceLoad("legislative-video", () => buildLegislativeVideoIntelligenceRollup(), null);
 
   return {
     archive,
