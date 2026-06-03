@@ -7,7 +7,27 @@ import {
 import { getKimHammerDomainForModule, KIM_HAMMER_COMMAND_CENTER_HREF } from "@/lib/opposition/kimHammerBriefingRegistry";
 import type { KimHammerModuleBriefing } from "@/lib/opposition/kimHammerBriefingTypes";
 import { findKimHammerBill } from "@/lib/opposition/kimHammerWorkbench";
+import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 import { KimHammerStrategicBriefingPanel } from "./KimHammerStrategicBriefingPanel";
+
+const LAUNCH_MODULE_BRIEFING: KimHammerModuleBriefing = {
+  id: "debate-prep",
+  domainId: "domain-kh2-debate",
+  layer: "Debate week",
+  title: "Debate prep",
+  eyebrow: "Internal draft · human review required",
+  href: "/admin/intelligence/kim-hammer/debate-prep",
+  paragraphs: [
+    "Sections below load from the election-law JSON packet only — full module briefings are deferred in debate launch mode.",
+    "Use verified bill numbers and act references before any public setting.",
+  ],
+  drillDownLinks: [
+    { href: "/admin/intelligence", label: "Start here" },
+    { href: "/admin/intelligence/debate-command", label: "Debate command" },
+  ],
+  evidenceNote: "NON_PUBLISHABLE",
+  governanceStatus: "INTERNAL_DRAFT",
+};
 
 type KimHammerBriefingPageShellProps = {
   moduleId: string;
@@ -44,12 +64,14 @@ export function KimHammerBriefingPageShell({
   children,
   detailTitle = "Detailed records & drill-down",
 }: KimHammerBriefingPageShellProps) {
-  const briefing =
-    billNumber && findKimHammerBill(billNumber)
+  const launchMode = isIntelligenceOppositionDebateLaunchMode();
+  const briefing = launchMode
+    ? LAUNCH_MODULE_BRIEFING
+    : billNumber && findKimHammerBill(billNumber)
       ? buildKimHammerBillBriefing(findKimHammerBill(billNumber)!)
       : loadKimHammerModuleBriefing(moduleId);
 
-  const siblings = billNumber ? [] : getKimHammerSiblingBriefings(moduleId, 5);
+  const siblings = launchMode || billNumber ? [] : getKimHammerSiblingBriefings(moduleId, 5);
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
