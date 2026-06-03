@@ -19,6 +19,8 @@ const nextConfig: NextConfig = {
   /** Hide the corner dev badge on a clean marketing hero; errors still surface in the overlay. */
   devIndicators: false,
   experimental: {
+    /** Supabase session pooler (pool_size 15) — avoid EMAXCONNSESSION during parallel SSG. */
+    staticGenerationMaxConcurrency: 2,
     serverActions: {
       /** Campaign-owned video/audio uploads — must be ≥ `ABSOLUTE_OWNED_MEDIA_MAX_BYTES` in `src/lib/owned-media/limits.ts`. */
       bodySizeLimit: OWNED_MEDIA_SERVER_ACTION_BODY_LIMIT,
