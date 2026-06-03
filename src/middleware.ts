@@ -15,9 +15,16 @@ import {
  */
 export async function middleware(request: NextRequest) {
   const response = await updateSession(request);
+  const path = request.nextUrl.pathname;
+
+  /** Legacy bookmarks: /admin/kim-hammer/* → intelligence workbench. */
+  if (path === "/admin/kim-hammer" || path.startsWith("/admin/kim-hammer/")) {
+    const url = request.nextUrl.clone();
+    url.pathname = path.replace(/^\/admin\/kim-hammer/, "/admin/intelligence/kim-hammer");
+    return NextResponse.redirect(url);
+  }
 
   if (isIntelligenceOppositionDebateLaunchMode()) {
-    const path = request.nextUrl.pathname;
     if (path.startsWith("/admin") && !isIntelligenceLaunchRoute(path)) {
       const url = request.nextUrl.clone();
       url.pathname = "/admin/intelligence";
