@@ -39,7 +39,10 @@ function isTraceNoise(rel, abs) {
     hay.includes("/.next/cache/") ||
     hay.includes("/cache/webpack/") ||
     hay.includes("owned-campaign-media") ||
-    hay.includes("countyWorkbench")
+    hay.includes("countyWorkbench") ||
+    hay.includes("/.git/") ||
+    hay.includes("calendar-command-center") ||
+    hay.includes("/public/images/")
   );
 }
 

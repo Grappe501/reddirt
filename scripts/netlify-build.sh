@@ -122,6 +122,8 @@ fi
 
 echo ">>> prisma generate"
 npx prisma generate
+# Drop stale query engines (Netlify trace was pulling openssl-1.0.x + 3.0.x ~34MB).
+rm -f node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node 2>/dev/null || true
 
 # Prisma P3009: if a migration failed once, `_prisma_migrations` keeps it as failed and
 # `migrate deploy` will not apply anything until it is cleared.
