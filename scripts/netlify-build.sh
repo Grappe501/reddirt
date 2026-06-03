@@ -262,8 +262,8 @@ echo ">>> prune .next/cache (must not ship inside Netlify server handler)"
 rm -rf .next/cache
 
 if [ -f "scripts/prune-netlify-server-handler.cjs" ]; then
-  echo ">>> prune Netlify server handler (before function zip)"
-  node scripts/prune-netlify-server-handler.cjs
+  echo ">>> prune Netlify server handler (post-next-build; plugin re-prunes before deploy)"
+  node scripts/prune-netlify-server-handler.cjs || echo ">>> handler not ready yet — prune plugin runs after Next repackage"
 fi
 
 if [ -f "scripts/analyze-next-trace-union.mjs" ]; then

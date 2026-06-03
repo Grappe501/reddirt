@@ -35,21 +35,9 @@
 [[plugins]]
   package = "./netlify/plugins/prune-server-handler"
 
-# Netlify upload cap is 250 MB unzipped per function (separate from Next NFT trace).
+# Netlify upload cap is 250 MB unzipped per function.
+# Do not use external_node_modules here — it copies whole packages into the upload and blows the cap.
 [functions]
-  external_node_modules = [
-    "@prisma/client",
-    "sharp",
-    "pdf-parse",
-    "openai",
-    "twilio",
-    "mammoth",
-    "xlsx",
-    "google-auth-library",
-    "@googleapis/gmail",
-    "@googleapis/calendar",
-    "@googleapis/people",
-  ]
   included_files = [
     "!.git/**",
     "!.git/objects/**",

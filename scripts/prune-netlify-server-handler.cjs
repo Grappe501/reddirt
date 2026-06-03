@@ -1,6 +1,6 @@
 /**
- * Strip blobs from .netlify/functions-internal/___netlify-server-handler before Netlify zips it.
- * Used from netlify-build.sh (after next build) and the prune-server-handler Netlify plugin.
+ * Strip blobs from ___netlify-server-handler before Netlify deploy upload.
+ * Must run in plugin onPostBuild AFTER @netlify/plugin-nextjs repackages the handler.
  */
 const fs = require("node:fs");
 const path = require("node:path");
@@ -10,10 +10,7 @@ const HANDLER_DIRS = [
   ".netlify/functions/___netlify-server-handler",
 ];
 
-const FUNCTION_ZIP_CANDIDATES = [
-  ".netlify/functions/___netlify-server-handler.zip",
-  ".netlify/functions-internal/___netlify-server-handler.zip",
-];
+const OPPOSITION_DEBATE_LAUNCH = "opposition_debate";
 
 const TOP_LEVEL_DIR_PRUNE = [
   ".git",
@@ -26,12 +23,45 @@ const TOP_LEVEL_DIR_PRUNE = [
   "docs",
 ];
 
+/** Dropped from server bundle during emergency opposition/debate launch deploys. */
+const LAUNCH_ADMIN_SERVER_DIRS = [
+  ".next/server/app/admin/(board)/workbench",
+  ".next/server/app/admin/(board)/compliance",
+  ".next/server/app/admin/(board)/campaign-events",
+  ".next/server/app/admin/(board)/calendar-command-center",
+  ".next/server/app/admin/(board)/campaign-calendar",
+  ".next/server/app/admin/(board)/communications",
+  ".next/server/app/admin/ai-command-center",
+  ".next/server/app/admin/ask-kelly",
+  ".next/server/app/admin/campaign-manager-dashboard",
+  ".next/server/app/admin/candidate-dashboard",
+  ".next/server/app/admin/travel-ledger",
+  ".next/server/app/admin/volunteers",
+  ".next/server/app/admin/owned-media",
+  ".next/server/app/admin/onboarding",
+  ".next/server/app/admin/(board)/campaign-strategy",
+];
+
+const LAUNCH_NODE_MODULES_DIRS = [
+  "node_modules/@googleapis",
+  "node_modules/google-auth-library",
+  "node_modules/googleapis",
+  "node_modules/twilio",
+  "node_modules/mammoth",
+  "node_modules/xlsx",
+  "node_modules/pdf-parse",
+];
+
 const FILE_PRUNE = [
   "node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node",
   "node_modules/next/dist/server/capsize-font-metrics.json",
 ];
 
 const MAX_MB = 250;
+
+function isOppositionDebateLaunch() {
+  return process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === OPPOSITION_DEBATE_LAUNCH;
+}
 
 function exists(target) {
   try {
@@ -54,6 +84,7 @@ function shouldPruneDirName(name, relFromHandler) {
   if (name === "typescript" && relFromHandler.includes(`${path.sep}node_modules${path.sep}`)) return true;
   if (/linuxmusl/i.test(name) || /sharp-libvips-linuxmusl/i.test(name)) return true;
   if (name === "amphtml-validator" && relFromHandler.includes("next/dist/compiled")) return true;
+  if (name === "webpack" && relFromHandler.includes(`${path.sep}node_modules${path.sep}`)) return true;
   return false;
 }
 
@@ -63,6 +94,16 @@ function pruneHandler(handlerRoot) {
   for (const rel of TOP_LEVEL_DIR_PRUNE) {
     if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
   }
+
+  if (isOppositionDebateLaunch()) {
+    for (const rel of LAUNCH_ADMIN_SERVER_DIRS) {
+      if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
+    }
+    for (const rel of LAUNCH_NODE_MODULES_DIRS) {
+      if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
+    }
+  }
+
   for (const rel of FILE_PRUNE) {
     const abs = path.join(handlerRoot, rel);
     if (exists(abs)) {
@@ -158,7 +199,7 @@ function dirSizeBytes(rootDir) {
   return total;
 }
 
-function largestFiles(handlerRoot, limit = 12) {
+function largestFiles(handlerRoot, limit = 15) {
   const root = fs.realpathSync(handlerRoot);
   const rows = [];
   function walk(dir) {
@@ -186,44 +227,40 @@ function largestFiles(handlerRoot, limit = 12) {
   return rows.sort((a, b) => b.size - a.size).slice(0, limit);
 }
 
-function measureFunctionZipMb(cwd) {
-  for (const rel of FUNCTION_ZIP_CANDIDATES) {
-    const abs = path.join(cwd, rel);
-    if (exists(abs)) return fs.statSync(abs).size / (1024 * 1024);
-  }
-  const fnDir = path.join(cwd, ".netlify/functions");
-  if (!exists(fnDir)) return null;
-  for (const ent of fs.readdirSync(fnDir)) {
-    if (!ent.endsWith(".zip") || !ent.includes("netlify-server-handler")) continue;
-    return fs.statSync(path.join(fnDir, ent)).size / (1024 * 1024);
-  }
-  return null;
-}
-
 function pruneNetlifyServerHandler(cwd = process.cwd()) {
-  const handler = HANDLER_DIRS.map((d) => path.join(cwd, d)).find(exists);
-  if (!handler) {
-    return { skipped: true, handler: null, beforeMb: 0, afterMb: 0, removed: [], zipMb: null };
+  const handlers = HANDLER_DIRS.map((d) => path.join(cwd, d)).filter(exists);
+  if (handlers.length === 0) {
+    return { skipped: true, handler: null, beforeMb: 0, afterMb: 0, removed: [] };
   }
-  const beforeMb = dirSizeBytes(handler) / (1024 * 1024);
-  const removed = pruneHandler(handler);
-  const afterMb = dirSizeBytes(handler) / (1024 * 1024);
-  const zipMb = measureFunctionZipMb(cwd);
-  return { skipped: false, handler, beforeMb, afterMb, removed, zipMb };
+
+  let beforeMb = 0;
+  let afterMb = 0;
+  const removed = [];
+  for (const handler of handlers) {
+    beforeMb += dirSizeBytes(handler) / (1024 * 1024);
+    removed.push(...pruneHandler(handler));
+    afterMb += dirSizeBytes(handler) / (1024 * 1024);
+  }
+
+  return {
+    skipped: false,
+    handler: handlers[0],
+    beforeMb,
+    afterMb,
+    removed: [...new Set(removed)],
+  };
 }
 
 function formatOversizeMessage(result) {
   const top = largestFiles(result.handler)
     .map((row) => `  ${(row.size / (1024 * 1024)).toFixed(2)} MB  ${row.rel}`)
     .join("\n");
-  const zipLine =
-    result.zipMb == null ? "" : `\nPackaged function zip: ${result.zipMb.toFixed(1)} MB.`;
-  return `___netlify-server-handler staging dir is ${result.afterMb.toFixed(1)} MB after prune (Netlify limit ${MAX_MB} MB).${zipLine}\nLargest files:\n${top}`;
+  const launchNote = isOppositionDebateLaunch() ? "\nLaunch mode: opposition_debate (admin server lanes trimmed)." : "";
+  return `___netlify-server-handler is ${result.afterMb.toFixed(1)} MB after prune (Netlify unzipped limit ${MAX_MB} MB).${launchNote}\nLargest files:\n${top}`;
 }
 
 function shouldFailDeploy(result) {
-  if (result.zipMb != null && result.zipMb <= MAX_MB) return false;
-  return result.afterMb > MAX_MB;
+  return !result.skipped && result.afterMb > MAX_MB;
 }
 
 if (require.main === module) {
@@ -232,9 +269,8 @@ if (require.main === module) {
     console.log(">>> prune server handler: directory not found yet (skip)");
     process.exit(0);
   }
-  const zipNote = result.zipMb == null ? "" : `; zip ${result.zipMb.toFixed(1)} MB`;
   console.log(
-    `>>> prune server handler: ${result.beforeMb.toFixed(1)} MB → ${result.afterMb.toFixed(1)} MB (${result.removed.length} paths removed${zipNote})`,
+    `>>> prune server handler: ${result.beforeMb.toFixed(1)} MB → ${result.afterMb.toFixed(1)} MB (${result.removed.length} paths removed)`,
   );
   if (shouldFailDeploy(result)) {
     console.error(formatOversizeMessage(result));
