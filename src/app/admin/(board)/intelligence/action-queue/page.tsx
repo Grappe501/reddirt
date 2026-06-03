@@ -4,17 +4,22 @@ import {
   groupActionsByCounty,
   groupActionsByNarrative,
   groupActionsByOwnerRole,
+  loadHumanActionQueue,
   rankHumanActions,
   summarizeHumanActionQueue,
+  summarizePersistedHumanActionQueue,
   syncHumanActionQueue,
 } from "@/lib/intelligence/strategicDecisionSupport";
+import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 import { HumanActionQueueDashboard } from "./HumanActionQueueDashboard";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 26;
 
 export default async function HumanActionQueuePage() {
-  const queue = syncHumanActionQueue();
-  const summary = summarizeHumanActionQueue();
+  const launchMode = isIntelligenceOppositionDebateLaunchMode();
+  const queue = launchMode ? loadHumanActionQueue() : syncHumanActionQueue();
+  const summary = launchMode ? summarizePersistedHumanActionQueue() : summarizeHumanActionQueue();
   const active = queue.items.filter((row) => row.status !== "ARCHIVED" && row.status !== "DISMISSED");
   const priorityQueue = rankHumanActions(active);
 

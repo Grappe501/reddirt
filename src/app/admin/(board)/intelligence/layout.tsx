@@ -1,11 +1,10 @@
 import type { ReactNode } from "react";
-import { IntelligenceDebateSubnav } from "@/components/admin/intelligence/IntelligenceDebateSubnav";
+import { IntelligenceSectionChrome } from "@/components/admin/intelligence/IntelligenceSectionChrome";
 
 export default function IntelligenceSectionLayout({ children }: { children: ReactNode }) {
   return (
     <div>
-      <IntelligenceDebateSubnav />
-      {children}
+      <IntelligenceSectionChrome>{children}</IntelligenceSectionChrome>
     </div>
   );
 }
