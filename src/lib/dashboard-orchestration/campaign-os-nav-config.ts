@@ -1,4 +1,5 @@
 import type { CampaignUserRole } from "@/lib/agents/user-intelligence/user-personas";
+import { buildDebateWeekIntelligenceSectionLinks } from "@/lib/intelligence/debate-week-nav";
 
 export type CampaignOsNavLink = {
   href: string;
@@ -12,6 +13,35 @@ export type CampaignOsNavGroup = {
   label: string;
   links: CampaignOsNavLink[];
 };
+
+/** Normalize admin path for nav matching (no query, no trailing slash). */
+export function normalizeCampaignOsPath(pathname: string): string {
+  const path = pathname.split("?")[0] ?? "";
+  return path.replace(/\/$/, "") || "/";
+}
+
+export function campaignOsNavHrefBase(href: string): string {
+  return normalizeCampaignOsPath(href.split("?")[0] ?? href);
+}
+
+/** True when `pathname` is exactly `href` or a child route under it. */
+export function isCampaignOsNavLinkActive(pathname: string, href: string): boolean {
+  const path = normalizeCampaignOsPath(pathname);
+  const base = campaignOsNavHrefBase(href);
+  if (base === "/") return path === "/";
+  return path === base || path.startsWith(`${base}/`);
+}
+
+/** Longest matching href in a group — avoids parent tabs staying active on child routes. */
+export function resolveActiveCampaignOsNavHref(pathname: string, links: { href: string }[]): string | null {
+  let best: string | null = null;
+  for (const link of links) {
+    const base = campaignOsNavHrefBase(link.href);
+    if (!isCampaignOsNavLinkActive(pathname, base)) continue;
+    if (!best || base.length > best.length) best = base;
+  }
+  return best;
+}
 
 const M = (month: string) => month;
 
@@ -123,14 +153,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
     {
       id: "intelligence",
       label: "Intelligence",
-      links: [
-        { href: "/admin/orchestration", label: "Orchestration" },
-        { href: "/admin/ai-command-center", label: "AI command center" },
-        { href: "/admin/campaign-events/ai-tools", label: "AI tool catalog" },
-        { href: "/admin/intelligence", label: "Opposition research", badgeKey: "opposition" },
-        { href: "/admin/intelligence/kim-hammer/debate-prep", label: "Debate prep" },
-        { href: "/admin/intelligence/debate-command", label: "Debate command center" },
-      ],
+      links: buildDebateWeekIntelligenceSectionLinks(),
     },
     {
       id: "ai_agent",

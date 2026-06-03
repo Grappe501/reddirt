@@ -98,8 +98,11 @@ export function IntelligenceLaunchHub() {
   return (
     <section className="mb-8">
       <header className="mb-4">
-        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Emergency launch hub</p>
-        <h2 className="font-heading text-2xl font-bold text-kelly-navy">Opposition &amp; debate prep — go here first</h2>
+        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Debate week</p>
+        <h2 className="font-heading text-2xl font-bold text-kelly-navy">Opposition &amp; debate prep — start here</h2>
+        <p className="mt-1 text-xs text-kelly-muted">
+          Use the tabs above for every surface. Review claims and LLM drafts before any public use.
+        </p>
       </header>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((item) => (

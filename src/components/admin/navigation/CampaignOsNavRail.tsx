@@ -2,7 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { CampaignOsNavGroup } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
+import {
+  campaignOsNavHrefBase,
+  resolveActiveCampaignOsNavHref,
+  type CampaignOsNavGroup,
+} from "@/lib/dashboard-orchestration/campaign-os-nav-config";
 import { useAgentObservation } from "@/components/agents/AgentObservationTracker";
 import { useOperatorContext } from "./OperatorContextProvider";
 
@@ -42,13 +46,15 @@ export function CampaignOsNavRail({
       <p className="px-3 pb-2 font-body text-[10px] text-kelly-inverse-muted">
         Month: <span className="font-semibold text-kelly-inverse">{session.activeMonth}</span>
       </p>
-      {groups.map((group) => (
+      {groups.map((group) => {
+        const activeHref = resolveActiveCampaignOsNavHref(pathname, group.links);
+        return (
         <div key={group.id} className="mb-2">
           <p className="os-nav-group-label pb-0.5 text-[9px] tracking-[0.18em]">{group.label}</p>
           <div className="flex flex-col gap-0.5">
             {group.links.map((link) => {
-              const base = link.href.split("?")[0];
-              const active = pathname === base || pathname.startsWith(base);
+              const base = campaignOsNavHrefBase(link.href);
+              const active = activeHref === base;
               const badge = link.badgeKey ? badges[link.badgeKey] : 0;
               return (
                 <Link
@@ -67,7 +73,8 @@ export function CampaignOsNavRail({
             })}
           </div>
         </div>
-      ))}
+        );
+      })}
       {session.recentPaths.length > 0 ? (
         <div className="mt-3 border-t border-[var(--border-on-navy)] pt-2">
           <p className="os-nav-group-label pb-1 text-[9px] tracking-[0.18em]">Recent</p>

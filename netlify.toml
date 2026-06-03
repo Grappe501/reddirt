@@ -67,7 +67,7 @@
     "!data/owned-campaign-media/**",
     "!public/**",
     "!.tmp-heic-preview/**",
-    "!docs/**",
+    "!docs/kelly-grappe-sos-strategic-plan-manual/**",
     "!campaign-system-manual/**",
     "!.local/**",
     "!**/.local/**",

@@ -182,16 +182,12 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: oppositionDebateLaunch
     ? {
         "/admin/intelligence/**": [
-          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_RESEARCH_DOSSIER.md",
-          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_CLAIMS_REVIEW.md",
-          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md",
-          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_BUILD_REPORT.md",
+          "./data/opposition/**",
+          "./docs/opposition/**",
         ],
         "/admin/opposition/**": [
-          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_RESEARCH_DOSSIER.md",
-          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_CLAIMS_REVIEW.md",
-          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md",
-          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_BUILD_REPORT.md",
+          "./data/opposition/**",
+          "./docs/opposition/**",
         ],
       }
     : {
@@ -246,10 +242,11 @@ const nextConfig: NextConfig = {
       "data/intelligence/backups/**",
       /** Large staged calendar JSON — dynamic readFileSync otherwise ships in every Lambda (~4.5MB). */
       "data/calendar-command-center/**",
-      "docs/**",
-      "campaign-system-manual/**",
       /** Static assets — served from CDN/static, not the server handler. */
       "public/**",
+      ...(oppositionDebateLaunch
+        ? ["docs/kelly-grappe-sos-strategic-plan-manual/**", "campaign-system-manual/**"]
+        : ["docs/**", "campaign-system-manual/**"]),
       /** Per-county factory JSON — dynamic readFileSync paths otherwise trace all 150+ files into one Lambda. */
       "data/county-workbench/briefs/**",
       "data/county-workbench/compiled-profiles/**",

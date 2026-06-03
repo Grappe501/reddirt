@@ -2,10 +2,21 @@ import { KimHammerBriefingHub } from "./KimHammerBriefingHub";
 import { loadKimHammerEvidenceIndex } from "@/lib/opposition/kimHammerEvidenceIndex";
 import { loadKimHammerNarrativeBriefings } from "@/lib/opposition/kimHammerNarrativeBriefings";
 import { KimHammerNarrativePanel } from "./KimHammerNarrativePanel";
+import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 
 export default async function KimHammerCommandCenterPage() {
-  const index = loadKimHammerEvidenceIndex();
-  const strategic = loadKimHammerNarrativeBriefings();
+  const index = tryIntelligenceLoad("kim-hammer-evidence-index", () => loadKimHammerEvidenceIndex(), {
+    metrics: { exportReadyClaims: 0, blockedClaims: 0, reviewNeededClaims: 0 },
+    claims: [],
+    retrievalTasks: [],
+  } as unknown as ReturnType<typeof loadKimHammerEvidenceIndex>);
+  const strategic = tryIntelligenceLoad(
+    "kim-hammer-narrative-briefings",
+    () => loadKimHammerNarrativeBriefings(),
+    { sections: [], generatedAt: new Date().toISOString() } as unknown as ReturnType<
+      typeof loadKimHammerNarrativeBriefings
+    >,
+  );
   const morningBrief = strategic.sections.find((s) => s.id === "morning-brief");
   const debateTheater = strategic.sections.find((s) => s.id === "debate-theater");
 

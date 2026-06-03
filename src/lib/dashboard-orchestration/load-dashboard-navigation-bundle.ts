@@ -5,6 +5,10 @@ import {
   buildOppositionDebateLaunchNavGroups,
   isIntelligenceOppositionDebateLaunchMode,
 } from "@/lib/intelligence/intelligenceLaunchMode";
+import {
+  buildCampaignEventsDashboardSnapshot,
+  type CampaignEventsDashboardSnapshot,
+} from "@/lib/campaign-events/load-campaign-events-dashboard";
 import { buildAdaptiveDashboardPlan } from "./adaptive-dashboard-orchestrator";
 import { buildWorkflowRouterV1 } from "./workflow-router-v1";
 import { generateWorkflowGuidanceCards } from "./workflow-guidance-generator";
@@ -23,11 +27,16 @@ export type DashboardNavigationBundle = {
   executiveSummary: ReturnType<typeof buildExecutiveSummary>;
 };
 
+const LAUNCH_NAV_SNAPSHOT: CampaignEventsDashboardSnapshot = buildCampaignEventsDashboardSnapshot([], "2026-03");
+
 export async function loadDashboardNavigationBundle(
   period: string,
   opts?: { role?: CampaignUserRole; pathname?: string; surface?: Parameters<typeof buildExecutiveSummary>[0]["surface"] },
 ): Promise<DashboardNavigationBundle> {
-  const { snapshot } = await loadCampaignEventsDashboard(period);
+  const launchMode = isIntelligenceOppositionDebateLaunchMode();
+  const { snapshot } = launchMode
+    ? { snapshot: LAUNCH_NAV_SNAPSHOT }
+    : await loadCampaignEventsDashboard(period);
   const observations = loadGlobalUserObservations();
   const pathname = opts?.pathname ?? "/admin/campaign-manager-dashboard";
   const role = opts?.role ?? "campaign_manager";

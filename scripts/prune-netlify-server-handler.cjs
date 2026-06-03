@@ -43,6 +43,7 @@ const LAUNCH_HANDLER_ROOT_KEEP = new Set([
   ".next",
   "node_modules",
   "data",
+  "docs",
   "package.json",
   ".env",
   ".env.production",
@@ -74,7 +75,7 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!data/intelligence/backups/**",
   "!data/owned-campaign-media/**",
   "!public/**",
-  "!docs/**",
+  "!docs/kelly-grappe-sos-strategic-plan-manual/**",
   "!campaign-system-manual/**",
   "!src/**",
   "!prisma/**",
@@ -310,6 +311,19 @@ function pruneLaunchData(treeRoot) {
   return removed;
 }
 
+/** Keep only opposition dossiers — Kim Hammer loaders read docs/opposition/*.md at runtime. */
+function pruneLaunchDocs(treeRoot) {
+  const removed = [];
+  const docsRoot = path.join(treeRoot, "docs");
+  if (!exists(docsRoot)) return removed;
+  for (const ent of fs.readdirSync(docsRoot, { withFileTypes: true })) {
+    if (ent.name === "opposition") continue;
+    const rel = path.join("docs", ent.name);
+    if (rmrf(path.join(treeRoot, rel))) removed.push(rel);
+  }
+  return removed;
+}
+
 function deleteAllSymlinks(treeRoot) {
   const removed = [];
   function walk(dir) {
@@ -345,6 +359,7 @@ function pruneLaunchHandlerRoot(handlerRoot) {
     if (!ent.isDirectory() && !ent.isFile()) continue;
     if (LAUNCH_HANDLER_ROOT_KEEP.has(ent.name)) {
       if (ent.name === "data") removed.push(...pruneLaunchData(handlerRoot));
+      if (ent.name === "docs") removed.push(...pruneLaunchDocs(handlerRoot));
       continue;
     }
     const rel = ent.name;

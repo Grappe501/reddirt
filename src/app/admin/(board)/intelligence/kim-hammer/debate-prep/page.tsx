@@ -5,14 +5,33 @@ import { listFlaggedBillCivicSummaries } from "@/lib/intelligence/kimHammerBillC
 import { summarizeDebateCommandMessaging } from "@/lib/intelligence/campaignMessagingIntelligence";
 import { loadCountyBriefingIntelligenceIndex } from "@/lib/intelligence/countyBriefingIntelligence";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
+import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { summarizeRegionalDeploymentConditions } from "@/lib/intelligence/regionalStrategicModeling";
 import { summarizeDebateScenarioPrep } from "@/lib/intelligence/strategicScenarioSimulation";
 import Link from "next/link";
 
 export default async function KimHammerDebatePrepPage() {
   const launchMode = isIntelligenceOppositionDebateLaunchMode();
-  const data = loadKimHammerWorkbench();
-  const kh2 = loadKimHammerKh2Workbench();
+  const data = tryIntelligenceLoad("kim-hammer-workbench", () => loadKimHammerWorkbench(), {
+    totalBills: 0,
+    enactedActs: 0,
+    researchConfidenceScore: 0,
+    highConfidenceThemes: [],
+    strongestDebateAnchors: [],
+    claimBuckets: { supported: [], partial: [], needsResearch: [] },
+    debateDrillQueue: [],
+    riskClaims: ["Opposition dossier unavailable — redeploy with docs/opposition bundled"],
+    safeLanguage: [],
+    topContrastThemes: [],
+    recommendedNextPass: ["Check Netlify function includes data/opposition and docs/opposition"],
+    bills: [],
+    topQuestions: [],
+  } as unknown as ReturnType<typeof loadKimHammerWorkbench>);
+  const kh2 = tryIntelligenceLoad(
+    "kim-hammer-kh2",
+    () => loadKimHammerKh2Workbench(),
+    { sections: [] } as unknown as ReturnType<typeof loadKimHammerKh2Workbench>,
+  );
   const civicSummaries = listFlaggedBillCivicSummaries();
   const debateMessaging = summarizeDebateCommandMessaging();
   const regional = launchMode ? null : summarizeRegionalDeploymentConditions();

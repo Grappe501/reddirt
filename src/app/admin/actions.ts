@@ -24,6 +24,7 @@ import { HOMEPAGE_SECTION_IDS } from "@/lib/content/homepage-merge";
 import { invalidateContentOverridesCache } from "@/lib/content/public-overrides";
 import { parsePageKey, type HeroBlockPayload } from "@/lib/content/page-blocks";
 import { syncSubstackPosts } from "@/lib/integrations/substack/sync";
+import { getAdminLoginDefaultPath } from "@/lib/intelligence/intelligenceLaunchMode";
 
 async function requireAdminAction() {
   const secret = getAdminSecret();
@@ -56,7 +57,7 @@ export async function adminLoginAction(formData: FormData) {
   const safe =
     redirectTo.startsWith("/") && !redirectTo.startsWith("//") && !redirectTo.includes("\n")
       ? redirectTo
-      : "/admin/content";
+      : getAdminLoginDefaultPath();
   redirect(safe);
 }
 

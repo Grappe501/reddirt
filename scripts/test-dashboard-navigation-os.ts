@@ -4,7 +4,10 @@
 import { loadRedDirtEnv } from "./load-red-dirt-env";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { buildCampaignOsNavGroups } from "../src/lib/dashboard-orchestration/campaign-os-nav-config";
+import {
+  buildCampaignOsNavGroups,
+  resolveActiveCampaignOsNavHref,
+} from "../src/lib/dashboard-orchestration/campaign-os-nav-config";
 import { buildWorkflowRouterV1 } from "../src/lib/dashboard-orchestration/workflow-router-v1";
 import { buildAdaptiveDashboardPlan } from "../src/lib/dashboard-orchestration/adaptive-dashboard-orchestrator";
 import { generateWorkflowGuidanceCards } from "../src/lib/dashboard-orchestration/workflow-guidance-generator";
@@ -21,6 +24,17 @@ async function main() {
   const period = "2026-03";
   const { snapshot } = await loadCampaignEventsDashboard(period);
   const groups = buildCampaignOsNavGroups(period);
+  const intel = groups.find((g) => g.id === "intelligence");
+  if (!intel) throw new Error("intelligence nav group missing");
+  if (resolveActiveCampaignOsNavHref("/admin/county-intelligence", intel.links) !== "/admin/county-intelligence") {
+    throw new Error("county-intelligence should activate County intelligence tab");
+  }
+  if (resolveActiveCampaignOsNavHref("/admin/intelligence/kim-hammer/debate-prep", intel.links) !== "/admin/intelligence/kim-hammer/debate-prep") {
+    throw new Error("debate-prep should not leave Opposition research active");
+  }
+  if (intel.links.length < 10) {
+    throw new Error("intelligence nav should list full debate-week surfaces");
+  }
   const routes = buildWorkflowRouterV1({
     pathname: "/admin/campaign-manager-dashboard",
     period,

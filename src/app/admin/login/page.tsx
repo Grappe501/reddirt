@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { adminLoginAction } from "@/app/admin/actions";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { getAdminSecret } from "@/lib/admin/session";
+import { getAdminLoginDefaultPath } from "@/lib/intelligence/intelligenceLaunchMode";
 
 export const metadata: Metadata = {
   title: "Admin · Content board",
@@ -15,10 +16,11 @@ export default async function AdminLoginPage({ searchParams }: Props) {
   const sp = await searchParams;
   const configured = Boolean(getAdminSecret());
   const nextPath = sp.next?.trim();
+  const defaultPath = getAdminLoginDefaultPath();
   const redirectTo =
     nextPath && nextPath.startsWith("/") && !nextPath.startsWith("//") && !nextPath.includes("\n")
       ? nextPath
-      : "/admin/content";
+      : defaultPath;
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-kelly-text px-4 py-16 text-kelly-page">
