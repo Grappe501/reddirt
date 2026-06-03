@@ -261,6 +261,11 @@ npm run build
 echo ">>> prune .next/cache (must not ship inside Netlify server handler)"
 rm -rf .next/cache
 
+if [ -f "scripts/prune-netlify-server-handler.cjs" ]; then
+  echo ">>> prune Netlify server handler (before function zip)"
+  node scripts/prune-netlify-server-handler.cjs
+fi
+
 if [ -f "scripts/analyze-next-trace-union.mjs" ]; then
   echo ">>> trace union size check (Next NFT — advisory; Netlify plugin prunes handler next)"
   node scripts/analyze-next-trace-union.mjs || echo ">>> trace union over 250 MB (continuing — prune-server-handler enforces real upload size)"

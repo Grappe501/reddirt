@@ -207,7 +207,7 @@ const nextConfig: NextConfig = {
       "docs/**",
       "campaign-system-manual/**",
       /** Static assets — served from CDN/static, not the server handler. */
-      "public/images/**",
+      "public/**",
       /** Per-county factory JSON — dynamic readFileSync paths otherwise trace all 150+ files into one Lambda. */
       "data/county-workbench/briefs/**",
       "data/county-workbench/compiled-profiles/**",
