@@ -1,15 +1,20 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ADMIN_SESSION_COOKIE, getAdminSecret, verifyAdminSessionToken } from "@/lib/admin/session";
-import { getAdminLoginDefaultPath } from "@/lib/intelligence/intelligenceLaunchMode";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
+function adminHomeAfterLogin(): string {
+  return process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate"
+    ? "/admin/intelligence"
+    : "/admin/content";
+}
+
 /** `/admin` — login first if needed, then intelligence hub (debate launch) or content board. */
 export default async function AdminRootPage() {
   const secret = getAdminSecret();
-  const destination = getAdminLoginDefaultPath();
+  const destination = adminHomeAfterLogin();
   if (!secret) {
     redirect("/admin/login?error=config");
   }

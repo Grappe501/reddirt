@@ -1,12 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { adminLoginAction } from "@/app/admin/actions";
+import { adminLoginAction } from "@/lib/admin/admin-auth-actions";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { getAdminSecret } from "@/lib/admin/session";
-import {
-  getAdminLoginDefaultPath,
-  isIntelligenceOppositionDebateLaunchMode,
-} from "@/lib/intelligence/intelligenceLaunchMode";
+import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
+
+function getAdminLoginDefaultPath(): string {
+  return process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate"
+    ? "/admin/intelligence"
+    : "/admin/content";
+}
 
 export const metadata: Metadata = {
   title: "Admin · Content board",

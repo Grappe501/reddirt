@@ -102,15 +102,6 @@ const nextConfig: NextConfig = {
         destination: "/admin/intelligence/kim-hammer/:path*",
         permanent: false,
       },
-      ...(oppositionDebateLaunch
-        ? [
-            {
-              source: "/admin/:path((?!intelligence|login|opposition).*)",
-              destination: "/admin/intelligence",
-              permanent: false,
-            },
-          ]
-        : []),
       /** Canonical hub is `/messages` (Pass 06); alias for bookmarks and external links. */
       {
         source: "/conversations",
