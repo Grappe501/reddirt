@@ -261,17 +261,7 @@ npm run build
 echo ">>> prune .next/cache (must not ship inside Netlify server handler)"
 rm -rf .next/cache
 
-if [ -f "scripts/prune-netlify-server-handler.cjs" ]; then
-  echo ">>> prune Netlify server handler (post-next-build; plugin re-prunes before deploy)"
-  if ! node scripts/prune-netlify-server-handler.cjs; then
-    code=$?
-    if [ "$code" -eq 2 ]; then
-      echo ">>> handler over deploy cap — failing build"
-      exit 2
-    fi
-    echo ">>> handler not ready yet — prune plugin runs after Next repackage"
-  fi
-fi
+echo ">>> Netlify server handler prune runs in netlify/plugins/prune-server-handler (onPostBuild, after Next packages the handler)"
 
 if [ -f "scripts/analyze-next-trace-union.mjs" ]; then
   echo ">>> trace union size check (Next NFT — advisory; Netlify plugin prunes handler next)"

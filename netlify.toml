@@ -23,6 +23,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  NODE_ENV = "production"
   # next build (tsc + eslint) can exceed default ~2GB heap on this app
   NODE_OPTIONS = "--max-old-space-size=6144"
   # Emergency internal launch — opposition + debate prep workbench only (banner + skip county rollups)

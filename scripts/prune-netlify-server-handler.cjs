@@ -63,6 +63,7 @@ const LAUNCH_NODE_MODULES_DIRS = [
   "node_modules/webpack",
 ];
 
+/** Physical copies only — do not copy `next` (adds dev maps/webpack; already in handler trace). */
 const MINIMAL_NODE_MODULES = [
   ".prisma",
   "@prisma/client",
@@ -71,16 +72,22 @@ const MINIMAL_NODE_MODULES = [
   "sharp",
   "openai",
   "@next/env",
-  "next",
   "react",
   "react-dom",
-  "styled-jsx",
-  "@swc/helpers",
 ];
 
 const FILE_PRUNE = [
   "node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node",
   "node_modules/next/dist/server/capsize-font-metrics.json",
+  "node_modules/.prisma/client/index.d.ts",
+  "node_modules/@prisma/client/index.d.ts",
+  "node_modules/.prisma/client/runtime/query_engine_bg.postgresql.wasm",
+  "node_modules/@prisma/client/runtime/query_engine_bg.postgresql.wasm",
+];
+
+const DIR_PRUNE_AFTER_MATERIALIZE = [
+  "node_modules/next/dist/compiled/webpack",
+  "node_modules/next/dist/compiled/next-devtools",
 ];
 
 const MAX_MB = 250;
@@ -225,6 +232,51 @@ function materializeMinimalNodeModules(handlerRoot, repoRoot) {
   return copied;
 }
 
+/** Drop dev/source-map bloat Netlify must not upload (saves ~50+ MB). */
+function stripDevArtifacts(handlerRoot) {
+  const removed = [];
+  for (const rel of DIR_PRUNE_AFTER_MATERIALIZE) {
+    if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
+  }
+
+  const root = fs.realpathSync(handlerRoot);
+  function walk(dir) {
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const ent of entries) {
+      const abs = path.join(dir, ent.name);
+      const rel = path.relative(handlerRoot, abs);
+      if (ent.isSymbolicLink()) continue;
+      if (ent.isDirectory()) {
+        walk(abs);
+        continue;
+      }
+      if (!ent.isFile()) continue;
+      const drop =
+        /\.map$/i.test(ent.name) ||
+        /\.d\.ts$/i.test(ent.name) ||
+        /development/i.test(ent.name) ||
+        /\.dev\./i.test(rel) ||
+        /devtools/i.test(rel) ||
+        /turbo-experimental/i.test(rel);
+      if (drop) {
+        try {
+          fs.rmSync(abs, { force: true });
+          removed.push(rel);
+        } catch {
+          /* skip */
+        }
+      }
+    }
+  }
+  walk(root);
+  return [...new Set(removed)];
+}
+
 function dirSizeBytes(rootDir, followSymlinks = false) {
   const root = fs.realpathSync(rootDir);
   let total = 0;
@@ -352,6 +404,8 @@ function pruneHandler(handlerRoot, repoRoot) {
     }
   }
 
+  removed.push(...stripDevArtifacts(handlerRoot));
+
   return [...new Set(removed)];
 }
 
@@ -401,14 +455,9 @@ function largestFiles(handlerRoot, limit = 15, followSymlinks = true) {
 }
 
 function pruneNetlifyServerHandler(cwd = process.cwd()) {
-  const removed = [];
-
-  if (isOppositionDebateLaunch()) {
-    removed.push(...pruneLaunchAdminServer(cwd));
-    removed.push(...pruneLaunchData(cwd));
-  }
-
+  /** Only mutate the packaged handler — never repo `.next` (breaks @netlify/plugin-nextjs onBuild). */
   const handlers = HANDLER_DIRS.map((d) => path.join(cwd, d)).filter(exists);
+  const removed = [];
   if (handlers.length === 0) {
     return {
       skipped: true,
