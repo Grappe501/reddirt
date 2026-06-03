@@ -5,6 +5,7 @@ import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { getCountyWorkbenchPortalUrl } from "@/lib/county/county-workbench-portal-url";
 import { CampaignOsNavRail } from "@/components/admin/navigation/CampaignOsNavRail";
 import { GlobalAiCommandPalette } from "@/components/admin/navigation/GlobalAiCommandPalette";
+import { isAskKellyUiEnabled } from "@/lib/feature-flags/ask-kelly-ui";
 import { OperatorContextProvider } from "@/components/admin/navigation/OperatorContextProvider";
 import type { CampaignOsNavGroup } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
 import { KellySingleCampaignBadge } from "@/components/admin/campaign-tenancy/KellySingleCampaignBadge";
@@ -60,6 +61,7 @@ export function AdminBoardShell({
   const countyPortal = getCountyWorkbenchPortalUrl();
   const showCampaignOs = Boolean(campaignOsNavGroups?.length);
   const hideLegacyNav = oppositionDebateLaunchMode;
+  const showAskKellyUi = isAskKellyUiEnabled();
 
   return (
     <OperatorContextProvider defaultMonth={activeMonth}>
@@ -136,9 +138,11 @@ export function AdminBoardShell({
                 Sign out
               </button>
             </form>
-            <p className="mt-3 text-center font-body text-[10px] text-kelly-inverse-muted">
-              Press <kbd className="rounded border border-[var(--border-on-navy)] px-1 text-kelly-inverse-soft">Ctrl+K</kbd> for command palette
-            </p>
+            {showAskKellyUi ? (
+              <p className="mt-3 text-center font-body text-[10px] text-kelly-inverse-muted">
+                Press <kbd className="rounded border border-[var(--border-on-navy)] px-1 text-kelly-inverse-soft">Ctrl+K</kbd> for command palette
+              </p>
+            ) : null}
           </div>
         </aside>
         <div className="flex min-h-screen flex-1 flex-col os-admin-canvas">
@@ -151,7 +155,9 @@ export function AdminBoardShell({
           </div>
         </div>
       </div>
-      <GlobalAiCommandPalette role="operator" pathname={currentPathname} period={activeMonth} />
+      {showAskKellyUi ? (
+        <GlobalAiCommandPalette role="operator" pathname={currentPathname} period={activeMonth} />
+      ) : null}
     </OperatorContextProvider>
   );
 }
