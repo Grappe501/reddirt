@@ -255,7 +255,8 @@ else
   fi
 fi
 
-echo ">>> next build"
+echo ">>> next build (NODE_ENV=production for Next; devDependencies already installed)"
+export NODE_ENV=production
 npm run build
 
 echo ">>> prune .next/cache (must not ship inside Netlify server handler)"

@@ -23,7 +23,9 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NODE_ENV = "production"
+  # Do not set NODE_ENV=production here — Netlify npm install would omit devDependencies
+  # (typescript required for next.config.ts). netlify-build.sh sets production for next build only.
+  NPM_CONFIG_PRODUCTION = "false"
   # next build (tsc + eslint) can exceed default ~2GB heap on this app
   NODE_OPTIONS = "--max-old-space-size=6144"
   # Emergency internal launch — opposition + debate prep workbench only (banner + skip county rollups)
