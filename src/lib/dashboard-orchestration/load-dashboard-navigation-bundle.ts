@@ -5,10 +5,7 @@ import {
   buildOppositionDebateLaunchNavGroups,
   isIntelligenceOppositionDebateLaunchMode,
 } from "@/lib/intelligence/intelligenceLaunchMode";
-import {
-  buildCampaignEventsDashboardSnapshot,
-  type CampaignEventsDashboardSnapshot,
-} from "@/lib/campaign-events/load-campaign-events-dashboard";
+import type { CampaignEventsDashboardSnapshot } from "@/lib/campaign-events/load-campaign-events-dashboard";
 import { buildAdaptiveDashboardPlan } from "./adaptive-dashboard-orchestrator";
 import { buildWorkflowRouterV1 } from "./workflow-router-v1";
 import { generateWorkflowGuidanceCards } from "./workflow-guidance-generator";
@@ -27,16 +24,58 @@ export type DashboardNavigationBundle = {
   executiveSummary: ReturnType<typeof buildExecutiveSummary>;
 };
 
-const LAUNCH_NAV_SNAPSHOT: CampaignEventsDashboardSnapshot = buildCampaignEventsDashboardSnapshot([], "2026-03");
+const DEBATE_PREP_HREF = "/admin/intelligence/kim-hammer/debate-prep";
+
+function buildLaunchNavigationBundle(
+  period: string,
+  opts?: { role?: CampaignUserRole; pathname?: string; surface?: Parameters<typeof buildExecutiveSummary>[0]["surface"] },
+): DashboardNavigationBundle {
+  const pathname = opts?.pathname ?? "/admin/intelligence";
+  const role = opts?.role ?? "campaign_manager";
+  return {
+    period,
+    navGroups: buildOppositionDebateLaunchNavGroups(),
+    navBadges: {},
+    workflowRoutes: [],
+    guidanceCards: [],
+    cognitiveLoad: { score: 0, signals: [], calmModeRecommended: false },
+    adaptivePlan: {
+      role,
+      period,
+      topActions: [{ label: "Debate prep", href: DEBATE_PREP_HREF }],
+      cardPriorities: [],
+      collapseLowPriority: true,
+      focusMode: true,
+      calmLayout: true,
+    },
+    executiveSummary: {
+      surface: opts?.surface ?? "command_center",
+      headline: "Debate week intelligence",
+      whatMatters: ["Start at Tonight's overview", "Open debate prep for rehearsal"],
+      blocked: [],
+      ready: [],
+      needsAction: [],
+      topNextMove: {
+        label: "Debate prep",
+        href: DEBATE_PREP_HREF,
+        why: "Primary candidate rehearsal surface",
+      },
+      aiExplanation: "",
+      calmNote: "Debate launch mode — use All tools for staff surfaces.",
+    },
+  };
+}
 
 export async function loadDashboardNavigationBundle(
   period: string,
   opts?: { role?: CampaignUserRole; pathname?: string; surface?: Parameters<typeof buildExecutiveSummary>[0]["surface"] },
 ): Promise<DashboardNavigationBundle> {
   const launchMode = isIntelligenceOppositionDebateLaunchMode();
-  const { snapshot } = launchMode
-    ? { snapshot: LAUNCH_NAV_SNAPSHOT }
-    : await loadCampaignEventsDashboard(period);
+  if (launchMode) {
+    return buildLaunchNavigationBundle(period, opts);
+  }
+
+  const { snapshot } = await loadCampaignEventsDashboard(period);
   const observations = loadGlobalUserObservations();
   const pathname = opts?.pathname ?? "/admin/campaign-manager-dashboard";
   const role = opts?.role ?? "campaign_manager";
@@ -52,9 +91,7 @@ export async function loadDashboardNavigationBundle(
     (snapshot.needsMileageReview ? 1 : 0) +
     (snapshot.calendarSync?.jsonStale ? 1 : 0);
 
-  const navGroups = isIntelligenceOppositionDebateLaunchMode()
-    ? buildOppositionDebateLaunchNavGroups()
-    : buildCampaignOsNavGroups(period);
+  const navGroups = buildCampaignOsNavGroups(period);
 
   return {
     period,
