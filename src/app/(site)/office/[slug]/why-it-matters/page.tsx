@@ -12,8 +12,6 @@ import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/i
 
 type PageProps = { params: Promise<{ slug: string }> };
 
-export const dynamic = skipPublicStaticGenerationForNetlifyLaunch() ? "force-dynamic" : undefined;
-
 export function generateStaticParams() {
   if (skipPublicStaticGenerationForNetlifyLaunch()) return [];
   return OFFICE_AREA_SLUGS.map((slug) => ({ slug }));
