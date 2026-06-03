@@ -11,9 +11,9 @@ import { isAskKellyUiEnabled } from "@/lib/feature-flags/ask-kelly-ui";
  * so the chip doesn’t show a beat from the previous page.
  */
 export function AskKellyLayout() {
+  const pathname = usePathname();
   if (!isAskKellyUiEnabled()) return null;
 
-  const pathname = usePathname();
   return (
     <JourneyProvider key={pathname} beats={JOURNEY_BEAT_DEFINITIONS}>
       <CampaignGuideDock />
