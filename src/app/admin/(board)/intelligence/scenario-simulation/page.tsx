@@ -3,9 +3,14 @@ import {
   loadStrategicScenarioRegistry,
   summarizeStrategicScenarioSimulation,
 } from "@/lib/intelligence/strategicScenarioSimulation";
+import { loadDebateIntelligenceV3Packet } from "@/lib/intelligence/v3/debateIntelligenceV3";
+import { V3ResearchIntro } from "@/components/admin/intelligence/v3/V3ResearchIntro";
+import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import type { StrategicScenarioSimulationResult } from "@/lib/intelligence/types/strategicScenarioSimulation";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const maxDuration = 26;
 
 function ScenarioCard({ row }: { row: StrategicScenarioSimulationResult }) {
   return (
@@ -50,8 +55,21 @@ function ScenarioList({ items }: { items: StrategicScenarioSimulationResult[] })
 }
 
 export default async function ScenarioSimulationPage() {
-  const registry = loadStrategicScenarioRegistry();
-  const summary = summarizeStrategicScenarioSimulation();
+  const v3 = loadDebateIntelligenceV3Packet();
+  const registry = tryIntelligenceLoad("scenario-registry", () => loadStrategicScenarioRegistry(), {
+    scenarios: [],
+    generatedAt: new Date().toISOString(),
+  } as ReturnType<typeof loadStrategicScenarioRegistry>);
+  const summary = tryIntelligenceLoad("scenario-summary", () => summarizeStrategicScenarioSimulation(), {
+    likelyOpponentAttacks: v3.researchLayers.likelyArguments.flatMap((s) => s.bullets).slice(0, 6),
+    debateTrapWarnings: [],
+    whatNotToSay: v3.hub.riskClaims,
+    bridgeLineGuidance: [],
+    countySensitiveNotes: [],
+    evidenceDependencies: [],
+    weakCitationWarnings: [],
+    doctrineSafeResponseNotes: [],
+  } as ReturnType<typeof summarizeStrategicScenarioSimulation>);
 
   const familyLabels: Record<string, string> = {
     OPPONENT_RESPONSE: "Opponent response",
@@ -74,6 +92,11 @@ export default async function ScenarioSimulationPage() {
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
+      <V3ResearchIntro
+        title="v3 — likely opponent arguments (markdown)"
+        description="Use with simulation outputs below. All scenario outputs remain INTERNAL_ONLY."
+        sections={v3.researchLayers.likelyArguments}
+      />
       <header className="mb-6 border-b border-kelly-text/10 pb-4">
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">NSI-14 · Strategic Forecasting</p>
         <h1 className="font-heading text-2xl font-bold">Scenario Simulation Layer</h1>

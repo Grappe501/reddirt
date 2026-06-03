@@ -38,7 +38,12 @@ That enables:
 cd RedDirt
 npx tsx scripts/test-opposition-workbench-debate-prep.ts
 npx tsx scripts/test-debate-week-readiness.ts
+npx tsx scripts/test-debate-intelligence-v3.ts
 ```
+
+## Intelligence v3 (current)
+
+Debate-week surfaces load `loadDebateIntelligenceV3Packet()` — election-law JSON plus opposition markdown (debate profile, likely arguments, message guidance, dossier excerpts). Hub and debate prep always use the v3 fast path on Netlify.
 
 ## Turn off after debate
 
