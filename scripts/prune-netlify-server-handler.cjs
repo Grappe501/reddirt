@@ -38,6 +38,51 @@ const LAUNCH_ADMIN_TOP_KEEP = new Set(["login", "(board)", "opposition"]);
 const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence", "opposition"]);
 
+/** Standalone copy lands the whole repo in the handler — keep only these top-level names. */
+const LAUNCH_HANDLER_ROOT_KEEP = new Set([
+  ".next",
+  "node_modules",
+  "data",
+  "package.json",
+  ".env",
+  ".env.production",
+  ".env.local",
+  ".env.production.local",
+]);
+
+/** @netlify/plugin-nextjs writes includedFiles: ["**"] — reinforce exclusions after prune. */
+const MANIFEST_INCLUDED_EXCLUSIONS = [
+  "!.git/**",
+  "!.next/cache/**",
+  "!node_modules/@googleapis/**",
+  "!node_modules/googleapis/**",
+  "!node_modules/google-auth-library/**",
+  "!node_modules/twilio/**",
+  "!node_modules/mammoth/**",
+  "!node_modules/xlsx/**",
+  "!node_modules/pdf-parse/**",
+  "!node_modules/typescript/**",
+  "!node_modules/webpack/**",
+  "!node_modules/next/**",
+  "!data/calendar-command-center/**",
+  "!data/campaign-events/**",
+  "!data/compliance/**",
+  "!data/county-workbench/**",
+  "!data/election/**",
+  "!data/simulations/**",
+  "!data/intelligence/briefs/**",
+  "!data/intelligence/backups/**",
+  "!data/owned-campaign-media/**",
+  "!public/**",
+  "!docs/**",
+  "!campaign-system-manual/**",
+  "!src/**",
+  "!prisma/**",
+  "!.local/**",
+  "!**/npm-cache/**",
+  "!**/_cacache/**",
+];
+
 /** Pre-rendered public segments — drop from Lambda; pages render on demand. */
 const LAUNCH_PUBLIC_SERVER_DIRS = [
   ".next/server/app/(site)/events",
@@ -265,6 +310,98 @@ function pruneLaunchData(treeRoot) {
   return removed;
 }
 
+function deleteAllSymlinks(treeRoot) {
+  const removed = [];
+  function walk(dir) {
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const ent of entries) {
+      const abs = path.join(dir, ent.name);
+      if (ent.isSymbolicLink()) {
+        fs.rmSync(abs, { force: true });
+        removed.push(path.relative(treeRoot, abs));
+        continue;
+      }
+      if (ent.isDirectory()) walk(abs);
+    }
+  }
+  walk(treeRoot);
+  return removed;
+}
+
+function pruneLaunchHandlerRoot(handlerRoot) {
+  const removed = [];
+  let entries;
+  try {
+    entries = fs.readdirSync(handlerRoot, { withFileTypes: true });
+  } catch {
+    return removed;
+  }
+  for (const ent of entries) {
+    if (!ent.isDirectory() && !ent.isFile()) continue;
+    if (LAUNCH_HANDLER_ROOT_KEEP.has(ent.name)) {
+      if (ent.name === "data") removed.push(...pruneLaunchData(handlerRoot));
+      continue;
+    }
+    const rel = ent.name;
+    if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
+  }
+  return removed;
+}
+
+function pruneLaunchAppAndApi(handlerRoot) {
+  const removed = [];
+  const appRoot = path.join(handlerRoot, ".next/server/app");
+  if (!exists(appRoot)) return removed;
+
+  for (const ent of fs.readdirSync(appRoot, { withFileTypes: true })) {
+    if (!ent.isDirectory()) continue;
+    if (ent.name === "admin") {
+      removed.push(...pruneLaunchAdminServer(handlerRoot));
+      continue;
+    }
+    const rel = path.join(".next/server/app", ent.name);
+    if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
+  }
+
+  const apiRoot = path.join(appRoot, "api");
+  if (exists(apiRoot)) {
+    for (const ent of fs.readdirSync(apiRoot, { withFileTypes: true })) {
+      if (!ent.isDirectory()) continue;
+      if (ent.name === "admin") {
+        const adminApi = path.join(apiRoot, "admin");
+        if (exists(adminApi)) {
+          for (const child of fs.readdirSync(adminApi, { withFileTypes: true })) {
+            if (!child.isDirectory()) continue;
+            if (LAUNCH_API_ADMIN_KEEP.has(child.name)) continue;
+            const rel = path.join(".next/server/app/api/admin", child.name);
+            if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
+          }
+        }
+        continue;
+      }
+      const rel = path.join(".next/server/app/api", ent.name);
+      if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
+    }
+  }
+
+  return removed;
+}
+
+function patchServerHandlerManifest(cwd) {
+  const manifestPath = path.join(cwd, ".netlify/functions-internal/___netlify-server-handler.json");
+  if (!exists(manifestPath)) return false;
+  const json = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  if (!json.config) return false;
+  json.config.includedFiles = ["**", ...MANIFEST_INCLUDED_EXCLUSIONS];
+  fs.writeFileSync(manifestPath, `${JSON.stringify(json)}\n`);
+  return true;
+}
+
 function materializeMinimalNodeModules(handlerRoot, repoRoot) {
   const destNm = path.join(handlerRoot, "node_modules");
   const srcNm = path.join(repoRoot, "node_modules");
@@ -404,15 +541,17 @@ function pruneHandler(handlerRoot, repoRoot) {
   }
 
   if (isOppositionDebateLaunch()) {
+    removed.push(...deleteAllSymlinks(handlerRoot));
+    removed.push(...pruneLaunchHandlerRoot(handlerRoot));
+    removed.push(...pruneLaunchAppAndApi(handlerRoot));
     for (const rel of LAUNCH_PUBLIC_SERVER_DIRS) {
       if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
     }
-    removed.push(...pruneLaunchAdminServer(handlerRoot));
-    removed.push(...pruneLaunchData(handlerRoot));
     for (const rel of LAUNCH_NODE_MODULES_DIRS) {
       if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
     }
     removed.push(...materializeMinimalNodeModules(handlerRoot, repoRoot));
+    removed.push(...deleteAllSymlinks(handlerRoot));
   }
 
   for (const rel of FILE_PRUNE) {
@@ -518,14 +657,16 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
   const handlers = HANDLER_DIRS.map((d) => path.join(cwd, d)).filter(exists);
   const removed = [];
   if (handlers.length === 0) {
-    return {
+    const skipped = {
       skipped: true,
       handler: null,
       beforeMb: 0,
       afterMb: 0,
       deployMb: 0,
+      manifestPatched: false,
       removed: [...new Set(removed)],
     };
+    return skipped;
   }
 
   let beforeMb = 0;
@@ -538,17 +679,23 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
     deployMb += dirSizeBytesFollowSymlinks(handler) / (1024 * 1024);
   }
 
+  const manifestPatched = isOppositionDebateLaunch() ? patchServerHandlerManifest(cwd) : false;
+
   return {
     skipped: false,
     handler: handlers[0],
     beforeMb,
     afterMb,
     deployMb,
+    manifestPatched,
     removed: [...new Set(removed)],
   };
 }
 
 function formatOversizeMessage(result) {
+  if (result.skipped || !result.handler) {
+    return "___netlify-server-handler directory missing after @netlify/plugin-nextjs onBuild.";
+  }
   const top = largestFiles(result.handler)
     .map((row) => `  ${(row.size / (1024 * 1024)).toFixed(2)} MB  ${row.rel}`)
     .join("\n");
@@ -560,8 +707,11 @@ function formatOversizeMessage(result) {
 }
 
 function shouldFailDeploy(result) {
-  /** Staging tree size matches Netlify upload after forbidden paths and symlinks are removed. */
-  return !result.skipped && result.afterMb > DEPLOY_FAIL_MB;
+  if (result.skipped) {
+    return isOppositionDebateLaunch();
+  }
+  const measuredMb = Math.max(result.afterMb, result.deployMb);
+  return measuredMb > DEPLOY_FAIL_MB;
 }
 
 if (require.main === module) {
