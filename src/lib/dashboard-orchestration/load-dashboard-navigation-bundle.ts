@@ -5,7 +5,6 @@ import {
   buildOppositionDebateLaunchNavGroups,
   isIntelligenceOppositionDebateLaunchMode,
 } from "@/lib/intelligence/intelligenceLaunchMode";
-import type { CampaignEventsDashboardSnapshot } from "@/lib/campaign-events/load-campaign-events-dashboard";
 import { buildAdaptiveDashboardPlan } from "./adaptive-dashboard-orchestrator";
 import { buildWorkflowRouterV1 } from "./workflow-router-v1";
 import { generateWorkflowGuidanceCards } from "./workflow-guidance-generator";
@@ -30,7 +29,6 @@ function buildLaunchNavigationBundle(
   period: string,
   opts?: { role?: CampaignUserRole; pathname?: string; surface?: Parameters<typeof buildExecutiveSummary>[0]["surface"] },
 ): DashboardNavigationBundle {
-  const pathname = opts?.pathname ?? "/admin/intelligence";
   const role = opts?.role ?? "campaign_manager";
   return {
     period,

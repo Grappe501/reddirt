@@ -7,59 +7,102 @@ import { buildMessageIntelligenceEngine } from "@/lib/intelligence/messageIntell
 import { buildLegislativeVideoIntelligenceRollup } from "@/lib/legislature/legislativeVideoIntelligenceRollup";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 
-const emptyFilmRoom = {
-  directClipCount: 0,
-  legislativeClipCount: 0,
-  referenceClipCount: 0,
-  coverageGaps: ["Film room data unavailable — check opposition JSON on deploy"],
-  archiveHonestyNote: "Archive not loaded",
-  items: [] as { id: string; title: string }[],
-};
+type DebateCommandState = ReturnType<typeof buildDebateCommandCenterState>;
+type OppositionDebateBriefPack = ReturnType<typeof generateOppositionDebateBriefPack>;
+type DebateCommandMessaging = ReturnType<typeof summarizeDebateCommandMessaging>;
+type CampaignGraphSummary = ReturnType<typeof summarizeCampaignIntelligenceGraph>;
+type DebateScenarioPrep = ReturnType<typeof summarizeDebateScenarioPrep>;
+type MessageIntelligenceRollup = ReturnType<typeof buildMessageIntelligenceEngine>;
+type LegislativeVideoRollup = ReturnType<typeof buildLegislativeVideoIntelligenceRollup>;
 
-const emptyState = {
-  todayPriorities: [] as { title: string; value: string; detail: string }[],
-  readinessScores: [] as { id: string; label: string; score: number; scoreConfidence: string }[],
+const EMPTY_DEBATE_COMMAND_STATE = {
+  todayPriorities: [],
+  readinessScores: [],
   opponentIntelligence: { repeatedPhrases: [], emergingAngles: [], newestResearch: [] },
-  academyTracks: [] as string[],
-  messagePillars: [] as string[],
-  filmRoom: emptyFilmRoom,
-  opposition: { totalBills: 0, riskClaims: ["Opposition data unavailable"] },
-  profile: { electoralHistory: { openGaps: [] }, mediaFootprint: { openGaps: [] } },
-  oppositionArchive: null,
-  legislativeVideo: { videoCandidatesTotal: 0, chunkCount: 0, automationNote: "", topHammerCommitteeQuotes: [] },
-};
+  academyTracks: [],
+  messagePillars: [],
+  filmRoom: {
+    generatedAt: new Date().toISOString(),
+    directClipCount: 0,
+    referenceClipCount: 0,
+    legislativeClipCount: 0,
+    coverageGaps: ["Film room data unavailable — check opposition JSON on deploy"],
+    archiveHonestyNote: "Archive not loaded",
+    items: [],
+    topHammerCommitteeQuotes: [],
+    billsWithTranscriptCoverage: [],
+    speakerVerificationWarnings: [],
+  },
+} as unknown as DebateCommandState;
+
+const EMPTY_BRIEF_PACK = {
+  debatePrep: {
+    confidenceScore: 0,
+    status: "BLOCKED",
+    recommendedMessaging: [],
+    researchGaps: ["Debate brief unavailable"],
+    riskWarnings: [],
+    briefId: "debate-prep-fallback",
+  },
+  opposition: { confidenceScore: 0, researchGaps: [], riskWarnings: [] },
+  rapidResponse: { confidenceScore: 0, publishabilityStatus: "NOT_PUBLISHABLE" },
+} as unknown as OppositionDebateBriefPack;
+
+const EMPTY_DEBATE_MESSAGING = {
+  flaggedBills: [],
+  philosophyConsistency: [],
+  strategicRiskWarnings: [],
+} as unknown as DebateCommandMessaging;
+
+const EMPTY_GRAPH_SUMMARY = {
+  entityCount: 0,
+  entityTypeCounts: {},
+  billCount: 0,
+  narrativeCount: 0,
+  doctrineCount: 0,
+  philosophyCount: 0,
+} as unknown as CampaignGraphSummary;
+
+const EMPTY_SCENARIO_PREP = {
+  likelyOpponentAttacks: [],
+  debateTrapWarnings: [],
+  evidenceDependencies: [],
+  weakCitationWarnings: [],
+  whatNotToSay: [],
+  bridgeLineGuidance: [],
+  countySensitiveNotes: [],
+  doctrineSafeResponseNotes: [],
+} as unknown as DebateScenarioPrep;
+
+const EMPTY_MESSAGE_INTEL = {
+  readinessScore: 0,
+  debateMessageLanes: [],
+  phrasesToAvoid: [],
+  claimsNeedingCitation: [],
+  strongestQuotes: [],
+} as unknown as MessageIntelligenceRollup;
+
+const EMPTY_LEGISLATIVE_ROLLUP = {
+  videoCandidatesTotal: 0,
+  chunkCount: 0,
+  debateUsefulChunks: [],
+  tooRiskyToUse: [],
+  strongestQuotes: [],
+  automationNote: "Legislative video rollup unavailable",
+} as unknown as LegislativeVideoRollup;
 
 export function loadSafeDebateCommandPageData() {
-  const state = tryIntelligenceLoad("debate-command-state", () => buildDebateCommandCenterState(), emptyState);
-  const briefPack = tryIntelligenceLoad("debate-brief-pack", () => generateOppositionDebateBriefPack(), {
-    debatePrep: { confidenceScore: 0, status: "UNAVAILABLE", recommendedMessaging: [], researchGaps: [], riskWarnings: [] },
-    opposition: { confidenceScore: 0, researchGaps: [], riskWarnings: [] },
-    rapidResponse: { confidenceScore: 0, publishabilityStatus: "NON_PUBLISHABLE" },
-  });
-  const civicDebate = tryIntelligenceLoad("debate-messaging", () => summarizeDebateCommandMessaging(), {
-    headline: "Messaging rollup unavailable",
-  });
-  const graphSummary = tryIntelligenceLoad("intel-graph", () => summarizeCampaignIntelligenceGraph(), {
-    nodeCount: 0,
-    edgeCount: 0,
-  });
-  const scenarioPrep = tryIntelligenceLoad("scenario-prep", () => summarizeDebateScenarioPrep(), {
-    scenarios: [],
-    headline: "Scenario prep unavailable",
-  });
-  const messageIntel = tryIntelligenceLoad("message-intel", () => buildMessageIntelligenceEngine(), {
-    readinessScore: 0,
-    debateMessageLanes: [],
-    phrasesToAvoid: [],
-    claimsNeedingCitation: [],
-  });
-  const legislativeRollup = tryIntelligenceLoad("legislative-video", () => buildLegislativeVideoIntelligenceRollup(), {
-    videoCandidatesTotal: 0,
-    chunkCount: 0,
-    debateUsefulChunks: [],
-    tooRiskyToUse: [],
-    automationNote: "Legislative video rollup unavailable",
-  });
+  const state = tryIntelligenceLoad("debate-command-state", () => buildDebateCommandCenterState(), EMPTY_DEBATE_COMMAND_STATE);
+  const briefPack = tryIntelligenceLoad("debate-brief-pack", () => generateOppositionDebateBriefPack(), EMPTY_BRIEF_PACK);
+  const civicDebate = tryIntelligenceLoad("debate-messaging", () => summarizeDebateCommandMessaging(), EMPTY_DEBATE_MESSAGING);
+  const graphSummary = tryIntelligenceLoad("intel-graph", () => summarizeCampaignIntelligenceGraph(), EMPTY_GRAPH_SUMMARY);
+  const scenarioPrep = tryIntelligenceLoad("scenario-prep", () => summarizeDebateScenarioPrep(), EMPTY_SCENARIO_PREP);
+  const messageIntel = tryIntelligenceLoad("message-intel", () => buildMessageIntelligenceEngine(), EMPTY_MESSAGE_INTEL);
+  const legislativeRollup = tryIntelligenceLoad(
+    "legislative-video",
+    () => buildLegislativeVideoIntelligenceRollup(),
+    EMPTY_LEGISLATIVE_ROLLUP,
+  );
 
   return { state, briefPack, civicDebate, graphSummary, scenarioPrep, messageIntel, legislativeRollup };
 }
