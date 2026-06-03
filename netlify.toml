@@ -8,6 +8,8 @@
 # There is no separate Netlify “field-only” bundle unless you split into another repository or site.
 # If the GitHub repo root is not this app (e.g. monorepo with RedDirt in a subfolder), set in Netlify UI:
 #   Site settings → Build & deploy → Base directory → RedDirt   (or the folder that contains this netlify.toml)
+#   If base is the monorepo root, publish becomes /opt/build/repo/.next and the server handler can exceed 250 MB.
+#   Base directory MUST be RedDirt; leave Publish directory empty (Next plugin uses .next under base).
 #
 # Publish directory (Netlify UI):
 #   `publish: .next` with the Next.js Runtime is normal (the runtime’s default is `.next`).

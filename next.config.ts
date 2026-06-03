@@ -1,10 +1,16 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import type { NextConfig } from "next";
 import { OWNED_MEDIA_SERVER_ACTION_BODY_LIMIT } from "./src/lib/owned-media/limits";
+
+const tracingRoot = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  * Default Next.js build so App Router API routes work on Netlify via @netlify/plugin-nextjs.
  */
 const nextConfig: NextConfig = {
+  /** Keep file tracing inside RedDirt — never the SOSWebsite monorepo sibling lanes. */
+  outputFileTracingRoot: tracingRoot,
   /** Optional: legacy client env if you add Google Maps elsewhere; /events uses OpenStreetMap + Leaflet. */
   env: {
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY:
@@ -160,46 +166,16 @@ const nextConfig: NextConfig = {
       "./campaign-system-manual/**/*",
     ],
     "/admin/intelligence/**": [
-      "./data/opposition/kim-hammer-election-record-bill-index.json",
-      "./data/opposition/kim-hammer-election-record-theme-matrix.json",
-      "./data/opposition/kim-hammer-election-record-timeline.json",
-      "./data/opposition/kim-hammer-election-record-legislative-narratives.json",
-      "./data/opposition/kim-hammer-profile/priority-bill-registry.json",
-      "./data/opposition/kim-hammer-profile/opposition-archive-items.json",
-      "./data/opposition/kim-hammer-profile/opposition-source-records.json",
-      "./data/opposition/kim-hammer-profile/opposition-quote-records.json",
-      "./data/opposition/kim-hammer-profile/opposition-clip-records.json",
-      "./data/opposition/kim-hammer-profile/opposition-retrieval-tasks.json",
-      "./data/opposition/kim-hammer-profile/kim-hammer-debate-profile.json",
-      "./data/opposition/kim-hammer-profile/kim-hammer-debate-archive-index.json",
-      "./data/opposition/kim-hammer-profile/kim-hammer-public-debate-evidence-board.json",
       "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_RESEARCH_DOSSIER.md",
       "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_CLAIMS_REVIEW.md",
       "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md",
       "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_BUILD_REPORT.md",
-      "./data/intelligence/claims/**/*.json",
-      "./data/intelligence/llm-draft-review-queue.json",
-      "./data/intelligence/llm-draft-audit-log.json",
-      "./data/intelligence/human-action-queue.json",
-      "./data/intelligence/agent-run-audit-log.json",
-      "./data/intelligence/decision-ledger.json",
-      "./data/intelligence/lessons-learned-registry.json",
-      "./data/intelligence/strategic-scenario-registry.json",
-      "./data/intelligence/campaign-intelligence-graph.json",
-      "./data/intelligence/intelligence-memory-registry.json",
-      "./data/intelligence/briefs/_rollup.json",
-      "./data/legislature/video-archives/*.json",
-      "./data/legislature/source-packets/*.json",
-      "./data/legislature/transcript-chunks/*.json",
     ],
-    "/admin/county-intelligence/**/*": [
-      "./data/county-workbench/briefs/_rollup.json",
-      "./data/county-workbench/compiled-profiles/_rollup.json",
-      "./data/county-workbench/facts/county-facts.json",
-      "./data/county-workbench/facts/county-sources.json",
-      "./data/county-workbench/agent/county-builder-agent-run.json",
-      "./data/county-workbench/source-catalog/county-source-catalog.json",
-      "./data/county-workbench/tables/*.json",
+    "/admin/opposition/**": [
+      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_RESEARCH_DOSSIER.md",
+      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_CLAIMS_REVIEW.md",
+      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md",
+      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_BUILD_REPORT.md",
     ],
   },
   /**

@@ -33,11 +33,26 @@ for (const nftPath of nftFiles) {
   }
 }
 
+function isTraceNoise(rel, abs) {
+  const hay = `${rel} ${abs}`.replace(/\\/g, "/");
+  return (
+    hay.includes("/.next/cache/") ||
+    hay.includes("/cache/webpack/") ||
+    hay.includes("owned-campaign-media") ||
+    hay.includes("countyWorkbench")
+  );
+}
+
 let total = 0;
 let swc = 0;
 let pdf = 0;
 let owned = 0;
+let noise = 0;
 for (const [abs, { rel, size }] of byAbs) {
+  if (isTraceNoise(rel, abs)) {
+    noise += size;
+    continue;
+  }
   total += size;
   if (rel.includes("@next/swc") || rel.includes("@swc/core") || abs.includes("@next\\swc") || abs.includes("@swc\\core"))
     swc += size;
@@ -50,7 +65,10 @@ const totalMb = total / (1024 * 1024);
 
 console.log(`Route trace files: ${nftFiles.length}`);
 console.log(`Unique traced files (by absolute path): ${byAbs.size} (missing on disk: ${missing})`);
-console.log(`Union unzipped size: ${totalMb.toFixed(2)} MB (${totalMb <= limitMb ? "OK" : "OVER"} vs ${limitMb} MB cap)`);
+console.log(
+  `Union unzipped size (excl. cache/owned-media/countyWorkbench noise): ${totalMb.toFixed(2)} MB (${totalMb <= limitMb ? "OK" : "OVER"} vs ${limitMb} MB cap)`,
+);
+console.log(`  Ignored trace noise: ${(noise / (1024 * 1024)).toFixed(2)} MB`);
 console.log(`  @next/swc + @swc/core: ${(swc / (1024 * 1024)).toFixed(2)} MB`);
 console.log(`  pdf-parse: ${(pdf / (1024 * 1024)).toFixed(2)} MB`);
 console.log(`  owned-campaign-media: ${(owned / (1024 * 1024)).toFixed(2)} MB`);

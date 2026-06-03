@@ -4,6 +4,19 @@
 
 set -euo pipefail
 
+if [ ! -f "package.json" ] || [ ! -f "netlify.toml" ]; then
+  echo ""
+  echo "========================================================================"
+  echo "  Build failed: run from the RedDirt app root (contains netlify.toml)."
+  echo "  Current directory: $(pwd)"
+  echo ""
+  echo "  In Netlify UI → Build & deploy → set Base directory to: RedDirt"
+  echo "  Leave Publish directory empty so @netlify/plugin-nextjs uses RedDirt/.next"
+  echo "========================================================================"
+  echo ""
+  exit 1
+fi
+
 if [ -z "${DATABASE_URL:-}" ] && [ -n "${NETLIFY_DATABASE_URL:-}" ]; then
   export DATABASE_URL="$NETLIFY_DATABASE_URL"
 fi
@@ -242,3 +255,19 @@ fi
 
 echo ">>> next build"
 npm run build
+
+echo ">>> prune .next/cache (must not ship inside Netlify server handler)"
+rm -rf .next/cache
+
+if [ -f "scripts/analyze-next-trace-union.mjs" ]; then
+  echo ">>> trace union size check (RedDirt only)"
+  node scripts/analyze-next-trace-union.mjs || {
+    echo ""
+    echo "========================================================================"
+    echo "  WARNING: traced server file union exceeds 250 MB — deploy may fail."
+    echo "  See largest files above; fix outputFileTracingExcludes before retry."
+    echo "========================================================================"
+    echo ""
+    exit 2
+  }
+fi
