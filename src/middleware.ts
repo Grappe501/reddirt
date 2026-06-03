@@ -1,5 +1,10 @@
 import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { updateSession } from "@/utils/supabase/middleware";
+import {
+  isIntelligenceLaunchRoute,
+  isIntelligenceOppositionDebateLaunchMode,
+} from "@/lib/intelligence/intelligenceLaunchMode";
 
 /**
  * 1) Refresh Supabase Auth cookies when `NEXT_PUBLIC_SUPABASE_*` is set (`@supabase/ssr`).
@@ -9,7 +14,19 @@ import { updateSession } from "@/utils/supabase/middleware";
  * Edge middleware cannot rely on `.env.local` server-only vars (see Next.js edge env limitations).
  */
 export async function middleware(request: NextRequest) {
-  return updateSession(request);
+  const response = await updateSession(request);
+
+  if (isIntelligenceOppositionDebateLaunchMode()) {
+    const path = request.nextUrl.pathname;
+    if (path.startsWith("/admin") && !isIntelligenceLaunchRoute(path)) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/admin/intelligence";
+      url.search = "";
+      return NextResponse.redirect(url);
+    }
+  }
+
+  return response;
 }
 
 export const config = {

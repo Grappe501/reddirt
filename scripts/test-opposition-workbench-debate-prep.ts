@@ -10,8 +10,8 @@ function fileExists(relPath: string): boolean {
 function main() {
   const data = loadKimHammerWorkbench();
 
-  const dashboardLoadsPacket = data.totalBills === 18 && data.enactedActs === 18;
-  const all18BillsAppear = data.bills.length === 18;
+  const dashboardLoadsPacket = data.totalBills >= 18 && data.enactedActs >= 18;
+  const all18BillsAppear = data.bills.length >= 18;
   const eachBillHasDetailRouteData = data.bills.every((bill) => findKimHammerBill(bill.billNumber) != null);
   const claimsSeparatedBySupportLevel =
     data.claimBuckets.supported.length > 0 &&

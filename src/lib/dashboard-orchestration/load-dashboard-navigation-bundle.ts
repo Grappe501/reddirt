@@ -1,6 +1,10 @@
 import { loadCampaignEventsDashboard } from "@/lib/campaign-events/load-campaign-events-dashboard";
 import { loadGlobalUserObservations } from "@/lib/agents/user-intelligence/user-observations";
 import { buildCampaignOsNavGroups } from "./campaign-os-nav-config";
+import {
+  buildOppositionDebateLaunchNavGroups,
+  isIntelligenceOppositionDebateLaunchMode,
+} from "@/lib/intelligence/intelligenceLaunchMode";
 import { buildAdaptiveDashboardPlan } from "./adaptive-dashboard-orchestrator";
 import { buildWorkflowRouterV1 } from "./workflow-router-v1";
 import { generateWorkflowGuidanceCards } from "./workflow-guidance-generator";
@@ -39,9 +43,13 @@ export async function loadDashboardNavigationBundle(
     (snapshot.needsMileageReview ? 1 : 0) +
     (snapshot.calendarSync?.jsonStale ? 1 : 0);
 
+  const navGroups = isIntelligenceOppositionDebateLaunchMode()
+    ? buildOppositionDebateLaunchNavGroups()
+    : buildCampaignOsNavGroups(period);
+
   return {
     period,
-    navGroups: buildCampaignOsNavGroups(period),
+    navGroups,
     navBadges,
     workflowRoutes: buildWorkflowRouterV1({ pathname, period, snapshot, observations }),
     guidanceCards: generateWorkflowGuidanceCards({ period, pathname, snapshot }),

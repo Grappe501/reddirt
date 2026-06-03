@@ -6,6 +6,7 @@ import { requireAdminPage } from "@/lib/admin/require-admin";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { resolveActiveCampaignTenant } from "@/lib/campaign-tenancy/resolve-active-tenant";
+import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +33,7 @@ export default async function AdminBoardLayout({ children }: { children: ReactNo
         tenants={tenantCtx.available}
         activeTenantId={tenantCtx.tenantId}
         tenantBranding={tenantCtx.branding}
+        oppositionDebateLaunchMode={isIntelligenceOppositionDebateLaunchMode()}
       >
         {children}
       </AdminBoardShell>

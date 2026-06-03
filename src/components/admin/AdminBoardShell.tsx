@@ -44,6 +44,7 @@ export function AdminBoardShell({
   tenants = [],
   activeTenantId = "kelly-sos-2026",
   tenantBranding,
+  oppositionDebateLaunchMode = false,
 }: {
   children: ReactNode;
   campaignOsNavGroups?: CampaignOsNavGroup[];
@@ -53,9 +54,11 @@ export function AdminBoardShell({
   tenants?: CampaignTenant[];
   activeTenantId?: string;
   tenantBranding?: CampaignBranding | null;
+  oppositionDebateLaunchMode?: boolean;
 }) {
   const countyPortal = getCountyWorkbenchPortalUrl();
   const showCampaignOs = Boolean(campaignOsNavGroups?.length);
+  const hideLegacyNav = oppositionDebateLaunchMode;
 
   return (
     <OperatorContextProvider defaultMonth={activeMonth}>
@@ -80,44 +83,40 @@ export function AdminBoardShell({
             {showCampaignOs ? (
               <CampaignOsNavRail groups={campaignOsNavGroups!} badges={campaignOsNavBadges} />
             ) : null}
-            <div>
-              <p className="os-nav-group-label">Legacy & site</p>
-              <div className="flex flex-col gap-0.5">
-                {legacyOpsLinks.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className="os-nav-link"
-                  >
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p className="os-nav-group-label">Site content</p>
-              <div className="flex flex-col gap-0.5">
-                {siteLinks.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className="os-nav-link py-2.5"
-                  >
-                    {l.label}
-                  </Link>
-                ))}
-              </div>
-              {countyPortal ? (
-                <a
-                  href={`${countyPortal}/counties`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-inverse transition hover:bg-kelly-page/10"
-                >
-                  County portal ↗
-                </a>
-              ) : null}
-            </div>
+            {!hideLegacyNav ? (
+              <>
+                <div>
+                  <p className="os-nav-group-label">Legacy & site</p>
+                  <div className="flex flex-col gap-0.5">
+                    {legacyOpsLinks.map((l) => (
+                      <Link key={l.href} href={l.href} className="os-nav-link">
+                        {l.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="os-nav-group-label">Site content</p>
+                  <div className="flex flex-col gap-0.5">
+                    {siteLinks.map((l) => (
+                      <Link key={l.href} href={l.href} className="os-nav-link py-2.5">
+                        {l.label}
+                      </Link>
+                    ))}
+                  </div>
+                  {countyPortal ? (
+                    <a
+                      href={`${countyPortal}/counties`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 block rounded-md px-3 py-2.5 font-body text-sm font-medium text-kelly-inverse transition hover:bg-kelly-page/10"
+                    >
+                      County portal ↗
+                    </a>
+                  ) : null}
+                </div>
+              </>
+            ) : null}
           </nav>
           <div className="border-t border-[var(--border-on-navy)] p-4">
             <form action={adminLogoutAction}>

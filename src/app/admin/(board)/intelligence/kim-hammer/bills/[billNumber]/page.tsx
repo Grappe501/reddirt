@@ -90,6 +90,15 @@ export default async function KimHammerBillDetailPage({ params }: Props) {
         </div>
       </section>
 
+      <section className="mb-4 rounded-xl border border-amber-200/60 bg-amber-50/40 p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-amber-950">Office-stacking narrative</h2>
+        <p className="mt-2 text-xs text-amber-950/90">
+          Whether this bill pattern supports an &quot;stacking the office&quot; line is not verified in this packet.
+          This raises a research question — do not assert motive or office-stacking as fact in debate without
+          direct quotation, hearing evidence, or a completed KH-3 research pass.
+        </p>
+      </section>
+
       <section className="mb-4 rounded-xl border border-kelly-text/10 bg-white p-4">
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">6) Legacy index impacts</h2>
         <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
