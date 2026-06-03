@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 type Props = { searchParams: Promise<{ error?: string; next?: string }> };
 
 export default async function AdminLoginPage({ searchParams }: Props) {

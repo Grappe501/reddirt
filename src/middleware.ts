@@ -25,6 +25,9 @@ export async function middleware(request: NextRequest) {
   }
 
   if (isIntelligenceOppositionDebateLaunchMode()) {
+    if (path === "/admin/login" || path.startsWith("/admin/login/")) {
+      return response;
+    }
     if (path.startsWith("/admin") && !isIntelligenceLaunchRoute(path)) {
       const url = request.nextUrl.clone();
       url.pathname = "/admin/intelligence";

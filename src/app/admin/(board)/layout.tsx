@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { headers } from "next/headers";
 import { AdminBoardShell } from "@/components/admin/AdminBoardShell";
 import { KellyCalendarCockpitChrome } from "@/components/admin/kelly-calendar-cockpit/KellyCalendarCockpitChrome";
+import { IntelligenceLaunchBoardShell } from "@/components/admin/intelligence/IntelligenceLaunchBoardShell";
 import { requireAdminPage } from "@/lib/admin/require-admin";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
@@ -18,7 +19,12 @@ export default async function AdminBoardLayout({ children }: { children: ReactNo
   if (path.startsWith("/admin/calendar-command-center/kelly")) {
     return <KellyCalendarCockpitChrome>{children}</KellyCalendarCockpitChrome>;
   }
+
   const launchMode = isIntelligenceOppositionDebateLaunchMode();
+  if (launchMode && path.startsWith("/admin/intelligence")) {
+    return <IntelligenceLaunchBoardShell currentPathname={path}>{children}</IntelligenceLaunchBoardShell>;
+  }
+
   const [navBundle, tenantCtx] = await Promise.all([
     loadDashboardNavigationBundle("2026-03", {
       pathname: path || "/admin",

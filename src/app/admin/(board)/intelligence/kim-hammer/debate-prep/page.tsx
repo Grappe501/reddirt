@@ -1,4 +1,10 @@
-import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
+import { loadKimHammerWorkbench, loadKimHammerWorkbenchHubSummary } from "@/lib/opposition/kimHammerWorkbench";
+import {
+  LAUNCH_CIVIC_SUMMARIES_STUB,
+  LAUNCH_DEBATE_MESSAGING_STUB,
+  LAUNCH_KH2_STUB,
+  LAUNCH_SCENARIO_PREP_STUB,
+} from "@/lib/intelligence/launchDebatePrepFastPath";
 import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
 import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
 import { listFlaggedBillCivicSummaries } from "@/lib/intelligence/kimHammerBillCivicIntelligence";
@@ -10,9 +16,16 @@ import { summarizeRegionalDeploymentConditions } from "@/lib/intelligence/region
 import { summarizeDebateScenarioPrep } from "@/lib/intelligence/strategicScenarioSimulation";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const maxDuration = 26;
+
 export default async function KimHammerDebatePrepPage() {
   const launchMode = isIntelligenceOppositionDebateLaunchMode();
-  const data = tryIntelligenceLoad("kim-hammer-workbench", () => loadKimHammerWorkbench(), {
+  const data = tryIntelligenceLoad(
+    "kim-hammer-workbench",
+    () => (launchMode ? loadKimHammerWorkbenchHubSummary() : loadKimHammerWorkbench()),
+    {
     totalBills: 0,
     enactedActs: 0,
     researchConfidenceScore: 0,
@@ -26,20 +39,27 @@ export default async function KimHammerDebatePrepPage() {
     recommendedNextPass: ["Check Netlify function includes data/opposition and docs/opposition"],
     bills: [],
     topQuestions: [],
-  } as unknown as ReturnType<typeof loadKimHammerWorkbench>);
-  const kh2 = tryIntelligenceLoad(
-    "kim-hammer-kh2",
-    () => loadKimHammerKh2Workbench(),
-    { sections: [] } as unknown as ReturnType<typeof loadKimHammerKh2Workbench>,
-  );
-  const civicSummaries = listFlaggedBillCivicSummaries();
-  const debateMessaging = summarizeDebateCommandMessaging();
+  } as unknown as ReturnType<typeof loadKimHammerWorkbenchHubSummary>);
+  const fullWorkbench = data as ReturnType<typeof loadKimHammerWorkbench>;
+  const reportQuestions: string[] =
+    fullWorkbench.reportQuestions?.length ? fullWorkbench.reportQuestions : data.topQuestions;
+  const countyOfficialConcerns: string[] = fullWorkbench.countyOfficialConcerns ?? [];
+  const directDemocracyConcerns: string[] = fullWorkbench.directDemocracyConcerns ?? [];
+  const kh2 = launchMode
+    ? LAUNCH_KH2_STUB
+    : tryIntelligenceLoad("kim-hammer-kh2", () => loadKimHammerKh2Workbench(), LAUNCH_KH2_STUB);
+  const civicSummaries = launchMode ? LAUNCH_CIVIC_SUMMARIES_STUB : listFlaggedBillCivicSummaries();
+  const debateMessaging = launchMode
+    ? LAUNCH_DEBATE_MESSAGING_STUB
+    : tryIntelligenceLoad("debate-messaging", () => summarizeDebateCommandMessaging(), LAUNCH_DEBATE_MESSAGING_STUB);
   const regional = launchMode ? null : summarizeRegionalDeploymentConditions();
   const countyBriefings = launchMode ? null : loadCountyBriefingIntelligenceIndex();
   const debateCounties = (countyBriefings?.counties ?? []).filter((row) =>
     row.briefingSignals.some((signal) => signal.signal === "COUNTY_DEBATE_RELEVANT"),
   );
-  const scenarioPrep = summarizeDebateScenarioPrep();
+  const scenarioPrep = launchMode
+    ? LAUNCH_SCENARIO_PREP_STUB
+    : tryIntelligenceLoad("scenario-prep", () => summarizeDebateScenarioPrep(), LAUNCH_SCENARIO_PREP_STUB);
 
   return (
     <KimHammerBriefingPageShell moduleId="debate-prep">
@@ -70,16 +90,20 @@ export default async function KimHammerDebatePrepPage() {
         </div>
       </section>
 
-      <section className="mb-4 rounded-xl border border-kelly-text/10 bg-white p-4">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Likely Hammer Arguments + Evidence He May Cite</h2>
-        <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
-          {kh2.likelyArguments.arguments.map((arg) => (
-            <li key={arg.id}>
-              {arg.argument} (anchors: {arg.sourceAnchors.slice(0, 2).join(" | ")})
-            </li>
-          ))}
-        </ul>
-      </section>
+      {!launchMode && kh2.likelyArguments.arguments.length > 0 ? (
+        <section className="mb-4 rounded-xl border border-kelly-text/10 bg-white p-4">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">
+            Likely Hammer Arguments + Evidence He May Cite
+          </h2>
+          <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
+            {kh2.likelyArguments.arguments.map((arg) => (
+              <li key={arg.id}>
+                {arg.argument} (anchors: {arg.sourceAnchors.slice(0, 2).join(" | ")})
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       <section className="mb-4 grid gap-4 lg:grid-cols-2">
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
@@ -152,7 +176,7 @@ export default async function KimHammerDebatePrepPage() {
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
           <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">11) Reporter Question Prep</h2>
           <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
-            {data.reportQuestions.map((q) => (
+            {reportQuestions.map((q) => (
               <li key={q}>{q}</li>
             ))}
           </ul>
@@ -163,21 +187,26 @@ export default async function KimHammerDebatePrepPage() {
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
           <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">12) County Clerk / Election Worker Angle</h2>
           <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
-            {data.countyOfficialConcerns.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
+            {countyOfficialConcerns.length > 0 ? (
+              countyOfficialConcerns.map((item) => <li key={item}>{item}</li>)
+            ) : (
+              <li>County clerk angles load from full message guidance after debate-week launch mode.</li>
+            )}
           </ul>
         </div>
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
           <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">13) Direct Democracy Angle</h2>
           <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
-            {data.directDemocracyConcerns.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
+            {directDemocracyConcerns.length > 0 ? (
+              directDemocracyConcerns.map((item) => <li key={item}>{item}</li>)
+            ) : (
+              <li>Direct-democracy critique lines load from full message guidance after debate-week launch mode.</li>
+            )}
           </ul>
         </div>
       </section>
 
+      {!launchMode && civicSummaries.length > 0 ? (
       <section className="mb-4 rounded-xl border border-indigo-200/40 bg-indigo-50/30 p-4">
         <h2 className="text-sm font-bold uppercase tracking-wider text-indigo-950">NSI-4 · Doctrine-aware debate civic intelligence</h2>
         <p className="mt-1 text-xs text-indigo-900/80">
@@ -208,6 +237,7 @@ export default async function KimHammerDebatePrepPage() {
           </ul>
         ) : null}
       </section>
+      ) : null}
 
       {!launchMode && countyBriefings && regional ? (
         <>
