@@ -1,11 +1,31 @@
 import Link from "next/link";
 import { composeIntelligenceCommandCenter } from "@/lib/intelligence/commandCenter/intelligenceCommandCenter";
+import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
+import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { CommandCenterDashboard } from "./CommandCenterDashboard";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 26;
 
 export default async function IntelligenceCommandCenterPage() {
-  const snapshot = composeIntelligenceCommandCenter(undefined, { syncActionQueue: true });
+  const snapshot = tryIntelligenceLoad(
+    "command-center",
+    () =>
+      composeIntelligenceCommandCenter(undefined, {
+        syncActionQueue: !isIntelligenceOppositionDebateLaunchMode(),
+      }),
+    null,
+  );
+  if (!snapshot) {
+    return (
+      <div className="mx-auto max-w-2xl text-kelly-text">
+        <p className="text-sm text-kelly-muted">Command center snapshot unavailable. Use the hub or debate prep.</p>
+        <Link href="/admin/intelligence" className="mt-2 inline-block text-sm font-bold text-kelly-navy underline">
+          Back to start here
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">

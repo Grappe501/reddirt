@@ -779,8 +779,12 @@ function composeHumanActionQueue(repoRoot?: string): HumanActionQueueFile {
   return mergeQueueWithRecommendations(persisted, recommendations);
 }
 
-export function summarizeHumanActionQueue(repoRoot?: string): HumanActionQueueSummary {
-  const queue = composeHumanActionQueue(repoRoot);
+/** Fast path for debate launch — persisted queue only, no scenario/aggregate regeneration. */
+export function summarizePersistedHumanActionQueue(repoRoot?: string): HumanActionQueueSummary {
+  return summarizeHumanActionQueueFromFile(loadHumanActionQueue(repoRoot));
+}
+
+function summarizeHumanActionQueueFromFile(queue: HumanActionQueueFile): HumanActionQueueSummary {
   const items = queue.items.filter((row) => row.status !== "ARCHIVED" && row.status !== "DISMISSED");
   const byStatus = {} as HumanActionQueueSummary["byStatus"];
   const byOwnerRole = {} as HumanActionQueueSummary["byOwnerRole"];
@@ -837,6 +841,10 @@ export function summarizeHumanActionQueue(repoRoot?: string): HumanActionQueueSu
     humanActionRequired: true,
     queueHref: "/admin/intelligence/action-queue",
   };
+}
+
+export function summarizeHumanActionQueue(repoRoot?: string): HumanActionQueueSummary {
+  return summarizeHumanActionQueueFromFile(composeHumanActionQueue(repoRoot));
 }
 
 export function buildHumanActionRecommendationBundle(repoRoot?: string): HumanActionRecommendationBundle {

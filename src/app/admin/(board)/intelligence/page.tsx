@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
-import {
-  runDailyIntelligenceAgentPass,
-  runDailyIntelligenceAgentPassAsync,
-} from "@/lib/intelligence/intelligenceAgentOrchestrator";
+import { runDailyIntelligenceAgentPassAsync } from "@/lib/intelligence/intelligenceAgentOrchestrator";
 import { composeGovernedBriefRegistry } from "@/lib/intelligence/briefs/briefRegistry";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 import { tryIntelligenceLoad, tryIntelligenceLoadAsync } from "@/lib/intelligence/safeIntelligenceLoad";
@@ -11,6 +8,8 @@ import { AiIntelligenceBrainPanel } from "@/components/admin/intelligence/AiInte
 import { PublicBriefGradeIntelligencePanel } from "@/components/admin/intelligence/PublicBriefGradeIntelligencePanel";
 import { AdminMessageIntelligencePanel } from "@/components/admin/intelligence/AdminMessageIntelligencePanel";
 import { IntelligenceLaunchHub } from "@/components/admin/intelligence/IntelligenceLaunchHub";
+import { IntelligenceCandidateOrientation } from "@/components/admin/intelligence/IntelligenceCandidateOrientation";
+import { loadIntelligenceLaunchHubStats } from "@/lib/intelligence/intelligenceLaunchHubStats";
 import type { DailyIntelligencePacket } from "@/lib/intelligence/intelligenceAgentOrchestrator";
 import type { GovernedBriefRegistry } from "@/lib/intelligence/briefs/briefRegistry";
 
@@ -56,71 +55,87 @@ export default async function OppositionIntelligenceAdminPage() {
   } as unknown as ReturnType<typeof loadKimHammerWorkbench>);
 
   const dailyPacket = launchMode
-    ? tryIntelligenceLoad(
-        "daily-intelligence-pass",
-        () => runDailyIntelligenceAgentPass({ syncActionQueue: false }),
-        EMPTY_DAILY_PACKET,
-      )
+    ? EMPTY_DAILY_PACKET
     : await tryIntelligenceLoadAsync(
         "daily-intelligence-pass",
         () => runDailyIntelligenceAgentPassAsync({ syncActionQueue: true }),
         EMPTY_DAILY_PACKET,
       );
 
-  const briefRegistry = tryIntelligenceLoad(
-    "brief-registry",
-    () => composeGovernedBriefRegistry({ syncActionQueue: false }),
-    {
-      generatedAt: new Date().toISOString(),
-      countyBundles: [],
-      countyPublicBriefRollup: {
-        PUBLIC_BRIEF_READY: 0,
-        INTERNAL_MESSAGE_SOURCE_ONLY: 0,
-        FIELD_PLANNING_ONLY: 0,
-        SHELL_ONLY: 0,
-        BLOCKED: 0,
-      },
-      oppositionDebate: {
-        opposition: { confidenceScore: 0, researchGaps: ["Retrieval task open"] },
-        debatePrep: { confidenceScore: 0, researchGaps: ["No clips indexed yet"] },
-        rapidResponse: { confidenceScore: 0 },
-      },
-      weeklyPacket: { oppositionResearchGaps: [] },
-      dailyPacket,
-      messageGuidance: [],
-      brainAnswers: { answers: [] },
-      llmContract: { liveLlmEnabled: false },
-      topResearchGapsBlockingPublicMessaging: ["Retrieval task open"],
-      candidateMessageBrief: { briefId: "fallback" },
-      weeklyIntelligenceBrief: { briefId: "fallback" },
-    } as unknown as GovernedBriefRegistry,
-  );
+  const briefRegistry = launchMode
+    ? null
+    : tryIntelligenceLoad(
+        "brief-registry",
+        () => composeGovernedBriefRegistry({ syncActionQueue: false }),
+        {
+          generatedAt: new Date().toISOString(),
+          countyBundles: [],
+          countyPublicBriefRollup: {
+            PUBLIC_BRIEF_READY: 0,
+            INTERNAL_MESSAGE_SOURCE_ONLY: 0,
+            FIELD_PLANNING_ONLY: 0,
+            SHELL_ONLY: 0,
+            BLOCKED: 0,
+          },
+          oppositionDebate: {
+            opposition: { confidenceScore: 0, researchGaps: ["Retrieval task open"] },
+            debatePrep: { confidenceScore: 0, researchGaps: ["No clips indexed yet"] },
+            rapidResponse: { confidenceScore: 0 },
+          },
+          weeklyPacket: { oppositionResearchGaps: [] },
+          dailyPacket,
+          messageGuidance: [],
+          brainAnswers: { answers: [] },
+          llmContract: { liveLlmEnabled: false },
+          topResearchGapsBlockingPublicMessaging: ["Retrieval task open"],
+          candidateMessageBrief: { briefId: "fallback" },
+          weeklyIntelligenceBrief: { briefId: "fallback" },
+        } as unknown as GovernedBriefRegistry,
+      );
 
   const topTheme = data.highConfidenceThemes[0];
+  const hubStats = loadIntelligenceLaunchHubStats();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
-      <IntelligenceLaunchHub />
-
-      {!launchMode ? (
-        <>
-          <AiIntelligenceBrainPanel packet={dailyPacket} />
-          <PublicBriefGradeIntelligencePanel packet={dailyPacket} registry={briefRegistry} />
-        </>
-      ) : null}
-      <AdminMessageIntelligencePanel />
-
+      {launchMode ? <IntelligenceCandidateOrientation /> : null}
       <header className="mb-6 border-b border-kelly-text/10 pb-4">
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Opposition Research Workbench</p>
-        <h1 className="font-heading text-2xl font-bold">Candidate Command View</h1>
+        <h1 className="font-heading text-2xl font-bold">Tonight&apos;s overview</h1>
         <p className="mt-2 max-w-4xl font-body text-sm leading-relaxed text-kelly-muted">
           First-screen briefing: what is verified, what pattern emerges, what to say, what to avoid, and what to drill today.
           Source-first and contrast-ready for debate preparation.
         </p>
         <p className="mt-2 text-xs font-semibold text-amber-900">
-          Evidence scores reflect archive depth — not Kelly&apos;s personal debate performance.
+          Evidence scores reflect archive depth — not your personal debate performance.
         </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Link
+            href="/admin/intelligence/kim-hammer/debate-prep"
+            className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white"
+          >
+            Go to debate prep →
+          </Link>
+          <Link
+            href="/admin/intelligence/debate-command"
+            className="rounded-full border border-kelly-navy/30 px-4 py-2 text-xs font-bold text-kelly-navy"
+          >
+            Debate command scores
+          </Link>
+        </div>
       </header>
+
+      <IntelligenceLaunchHub stats={hubStats} />
+
+      {!launchMode ? (
+        <>
+          <AiIntelligenceBrainPanel packet={dailyPacket} />
+          {briefRegistry ? (
+            <PublicBriefGradeIntelligencePanel packet={dailyPacket} registry={briefRegistry} />
+          ) : null}
+          <AdminMessageIntelligencePanel />
+        </>
+      ) : null}
 
       <section className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div className={card}>

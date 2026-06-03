@@ -13,7 +13,6 @@ import { GlobalCampaignSwitcher } from "@/components/admin/campaign-tenancy/Glob
 import { CampaignBrandingStyles } from "@/components/admin/campaign-tenancy/CampaignBrandingStyles";
 import type { CampaignBranding, CampaignTenant } from "@/lib/campaign-tenancy/types";
 import { showDevTenancyUi, KELLY_CAMPAIGN_OS_TAGLINE } from "@/lib/campaign-tenancy/single-campaign-mode";
-import { IntelligenceEmergencyLaunchBanner } from "@/components/admin/intelligence/IntelligenceEmergencyLaunchBanner";
 
 const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/content", label: "Overview" },
@@ -146,10 +145,7 @@ export function AdminBoardShell({
           </div>
         </aside>
         <div className="flex min-h-screen flex-1 flex-col os-admin-canvas">
-          <main className="flex-1 px-6 py-8 lg:px-10 lg:py-10">
-            {oppositionDebateLaunchMode ? <IntelligenceEmergencyLaunchBanner /> : null}
-            {children}
-          </main>
+          <main className="flex-1 px-6 py-8 lg:px-10 lg:py-10">{children}</main>
           <div className="border-t border-kelly-border bg-kelly-wash px-6 py-3 lg:px-10">
             <CampaignPaidForBar variant="light" />
           </div>

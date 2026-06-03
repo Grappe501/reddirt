@@ -26,14 +26,16 @@ async function main() {
   const groups = buildCampaignOsNavGroups(period);
   const intel = groups.find((g) => g.id === "intelligence");
   if (!intel) throw new Error("intelligence nav group missing");
-  if (resolveActiveCampaignOsNavHref("/admin/county-intelligence", intel.links) !== "/admin/county-intelligence") {
-    throw new Error("county-intelligence should activate County intelligence tab");
+  const counties = groups.find((g) => g.id === "counties");
+  if (!counties) throw new Error("counties nav group missing");
+  if (resolveActiveCampaignOsNavHref("/admin/county-intelligence", counties.links) !== "/admin/county-intelligence") {
+    throw new Error("county-intelligence should activate Counties tab");
   }
   if (resolveActiveCampaignOsNavHref("/admin/intelligence/kim-hammer/debate-prep", intel.links) !== "/admin/intelligence/kim-hammer/debate-prep") {
     throw new Error("debate-prep should not leave Opposition research active");
   }
-  if (intel.links.length < 10) {
-    throw new Error("intelligence nav should list full debate-week surfaces");
+  if (intel.links.length < 13) {
+    throw new Error("intelligence nav should list full debate-week surfaces (13)");
   }
   const routes = buildWorkflowRouterV1({
     pathname: "/admin/campaign-manager-dashboard",

@@ -6,6 +6,7 @@ import {
   loadHumanActionQueue,
   rankHumanActions,
   summarizeHumanActionQueue,
+  summarizePersistedHumanActionQueue,
   syncHumanActionQueue,
 } from "@/lib/intelligence/strategicDecisionSupport";
 import { summarizeInstitutionalMemory } from "@/lib/intelligence/institutionalMemory/institutionalMemoryEngine";
@@ -158,7 +159,9 @@ export function runDailyIntelligenceAgentPass(options?: {
   const brain = summarizeCampaignIntelligenceState(repoRoot);
   const memory = summarizeInstitutionalMemory(repoRoot);
   const llmQueue = summarizeDraftReviewQueue(repoRoot);
-  const actionSummary = summarizeHumanActionQueue(repoRoot);
+  const actionSummary = skipCounty
+    ? summarizePersistedHumanActionQueue(repoRoot)
+    : summarizeHumanActionQueue(repoRoot);
   const evidence = loadKimHammerEvidenceIndex();
   const metrics = evidence.metrics;
   const debate = buildDebateCommandCenterState();
