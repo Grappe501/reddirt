@@ -21,8 +21,12 @@ export default async function AdminBoardLayout({ children }: { children: ReactNo
   }
 
   const launchMode = isIntelligenceOppositionDebateLaunchMode();
-  if (launchMode && path.startsWith("/admin/intelligence")) {
-    return <IntelligenceLaunchBoardShell currentPathname={path}>{children}</IntelligenceLaunchBoardShell>;
+  /** Debate launch: always minimal shell — x-pathname is often missing on Netlify and would load the heavy Campaign OS shell. */
+  if (launchMode) {
+    const shellPath = path.startsWith("/admin") ? path : "/admin/intelligence";
+    return (
+      <IntelligenceLaunchBoardShell currentPathname={shellPath}>{children}</IntelligenceLaunchBoardShell>
+    );
   }
 
   const [navBundle, tenantCtx] = await Promise.all([
@@ -30,7 +34,7 @@ export default async function AdminBoardLayout({ children }: { children: ReactNo
       pathname: path || "/admin",
       surface: "command_center",
     }),
-    launchMode ? Promise.resolve(null) : resolveActiveCampaignTenant(),
+    resolveActiveCampaignTenant(),
   ]);
   const tenant = tenantCtx ?? {
     tenantId: "kelly-sos-2026",
