@@ -5,6 +5,21 @@ import { OWNED_MEDIA_SERVER_ACTION_BODY_LIMIT } from "./src/lib/owned-media/limi
 
 const tracingRoot = path.dirname(fileURLToPath(import.meta.url));
 
+/** Netlify opposition-debate launch — shrink traced server artifacts (see netlify.toml). */
+const oppositionDebateLaunch =
+  process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate";
+
+const oppositionDebateTraceExcludes = oppositionDebateLaunch
+  ? [
+      "data/campaign-events/**",
+      "data/compliance/**",
+      "data/county-workbench/**",
+      "data/election/**",
+      "data/simulations/**",
+      "data/intelligence/briefs/**",
+    ]
+  : [];
+
 /**
  * Default Next.js build so App Router API routes work on Netlify via @netlify/plugin-nextjs.
  */
@@ -158,30 +173,49 @@ const nextConfig: NextConfig = {
    * Keep globs tight: the campaign manuals are large. Including them for every `/admin/**` route
    * balloons the Netlify `___netlify-server-handler` bundle (250 MB deploy cap).
    */
-  outputFileTracingIncludes: {
-    "/admin/campaign-strategy/**/*": [
-      "./docs/kelly-grappe-sos-strategic-plan-manual/**/*",
-      "./campaign-system-manual/**/*",
-    ],
-    "/api/admin/campaign-strategy/**/*": [
-      "./docs/kelly-grappe-sos-strategic-plan-manual/**/*",
-      "./campaign-system-manual/**/*",
-    ],
-    "/admin/intelligence/**": [
-      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_RESEARCH_DOSSIER.md",
-      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_CLAIMS_REVIEW.md",
-      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md",
-      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_BUILD_REPORT.md",
-    ],
-    "/admin/opposition/**": [
-      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_RESEARCH_DOSSIER.md",
-      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_CLAIMS_REVIEW.md",
-      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md",
-      "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_BUILD_REPORT.md",
-    ],
-    "/admin/calendar-command-center/**": ["./data/calendar-command-center/event-volunteer-reminders.staged.json"],
-    "/admin/campaign-calendar/**": ["./data/calendar-command-center/event-volunteer-reminders.staged.json"],
-  },
+  outputFileTracingIncludes: oppositionDebateLaunch
+    ? {
+        "/admin/intelligence/**": [
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_RESEARCH_DOSSIER.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_CLAIMS_REVIEW.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_BUILD_REPORT.md",
+        ],
+        "/admin/opposition/**": [
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_RESEARCH_DOSSIER.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_CLAIMS_REVIEW.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_BUILD_REPORT.md",
+        ],
+      }
+    : {
+        "/admin/campaign-strategy/**/*": [
+          "./docs/kelly-grappe-sos-strategic-plan-manual/**/*",
+          "./campaign-system-manual/**/*",
+        ],
+        "/api/admin/campaign-strategy/**/*": [
+          "./docs/kelly-grappe-sos-strategic-plan-manual/**/*",
+          "./campaign-system-manual/**/*",
+        ],
+        "/admin/intelligence/**": [
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_RESEARCH_DOSSIER.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_CLAIMS_REVIEW.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_BUILD_REPORT.md",
+        ],
+        "/admin/opposition/**": [
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_RESEARCH_DOSSIER.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_CLAIMS_REVIEW.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_MESSAGE_GUIDANCE.md",
+          "./docs/opposition/KIM_HAMMER_ELECTION_RECORD_BUILD_REPORT.md",
+        ],
+        "/admin/calendar-command-center/**": [
+          "./data/calendar-command-center/event-volunteer-reminders.staged.json",
+        ],
+        "/admin/campaign-calendar/**": [
+          "./data/calendar-command-center/event-volunteer-reminders.staged.json",
+        ],
+      },
   /**
    * Netlify `___netlify-server-handler` must stay under AWS Lambda’s 250 MB (unzipped) cap.
    * The tracer otherwise pulls compile-only binaries (SWC), pdf-parse test PDFs/maps, Prisma
@@ -233,6 +267,7 @@ const nextConfig: NextConfig = {
       "node_modules/@prisma/engines/**/darwin/**",
       "node_modules/prisma/**/windows/**",
       "node_modules/prisma/**/darwin/**",
+      ...oppositionDebateTraceExcludes,
     ],
     "/api/owned-campaign-media/**": ["data/owned-campaign-media/**"],
   },
