@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { ADMIN_SESSION_COOKIE, getAdminSecret, verifyAdminSessionToken } from "./session";
 
@@ -9,6 +9,10 @@ export async function requireAdminPage(): Promise<void> {
   }
   const token = (await cookies()).get(ADMIN_SESSION_COOKIE)?.value;
   if (!verifyAdminSessionToken(token, secret)) {
+    const pathname = (await headers()).get("x-pathname")?.split("?")[0] ?? "";
+    if (pathname.startsWith("/admin") && pathname !== "/admin/login" && !pathname.startsWith("/admin/login/")) {
+      redirect(`/admin/login?next=${encodeURIComponent(pathname)}`);
+    }
     redirect("/admin/login");
   }
 }

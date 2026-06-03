@@ -55,7 +55,7 @@ export const DEBATE_WEEK_NAV_ITEMS: DebateWeekNavItem[] = [
 
 export function isDebateWeekRoute(pathname: string): boolean {
   const path = pathname.split("?")[0]?.replace(/\/$/, "") || "/admin/intelligence";
-  if (path === "/admin/login" || path.startsWith("/admin/login/")) return true;
+  if (path === "/admin" || path === "/admin/login" || path.startsWith("/admin/login/")) return true;
   if (path.startsWith("/admin/intelligence") || path.startsWith("/admin/opposition")) return true;
   return DEBATE_WEEK_ROUTES.some((route) => path === route || path.startsWith(`${route}/`));
 }
