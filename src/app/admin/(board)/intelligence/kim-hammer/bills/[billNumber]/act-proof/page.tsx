@@ -18,8 +18,11 @@ export default async function BillActProofPage({ params }: Props) {
   const { BillActProofDeepPage } = await import("../BillActProofDeepPage");
 
   const v4 = loadDebateIntelligenceV4Packet();
-  const narrative = findV4BillNarrative(v4, billNumber);
-  if (!narrative) notFound();
+  const narrativeOrNull = findV4BillNarrative(v4, billNumber);
+  if (!narrativeOrNull) {
+    return notFound();
+  }
+  const narrative = narrativeOrNull;
 
   const in2021 = isInIntegrity2021(v4, billNumber);
   const themeHits = v4.themeMatrix.filter((t) => t.bills.some((b) => b.toUpperCase() === billNumber.toUpperCase()));
