@@ -1,0 +1,31 @@
+import type { RebuttalScript, SampleScript, DebateZinger } from "@/lib/intelligence/v4/debatePrepDrillDownTypes";
+import type { PlaybookStep } from "@/lib/intelligence/v4/debateOperatorPlaybookTypes";
+
+export type TrapLaneDrillDown = {
+  laneId: string;
+  laneNumber: number;
+  title: string;
+  summary: string;
+  narrativeOverview: string;
+  whatToExpectHammerToSay: string[];
+  hammerTonalities: string[];
+  whatModeratorMayAsk: string[];
+  setupMoves: string[];
+  setupTiming: string;
+  baitPsychology: string;
+  whenHeBitesSignals: string[];
+  kellyPivotDeep: string;
+  rebuttalScripts: RebuttalScript[];
+  sampleScripts: SampleScript[];
+  zingers: DebateZinger[];
+  ifHeDoesNotBite: string[];
+  mistakesFirstTimersMake: string[];
+  bodyLanguageAndTone: string;
+  rehearsalSteps: string[];
+  relatedActs: string[];
+  relatedBills: string[];
+  packoNote?: string;
+  claimsGate: string;
+  estimatedPrepMinutes: number;
+  debateSteps: PlaybookStep[];
+};

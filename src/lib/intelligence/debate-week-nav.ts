@@ -18,6 +18,7 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/scenario-simulation",
   "/admin/intelligence/legislative-video",
   "/admin/intelligence/video-archive-room",
+  "/admin/intelligence/trap-lanes",
 ] as const;
 
 export type DebateWeekRoute = (typeof DEBATE_WEEK_ROUTES)[number];
@@ -57,6 +58,12 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
       "/admin/intelligence/kim-hammer/debate-prep",
       "Bill playbooks, Kelly frame, operator guides — rehearse after daily path readings.",
     ),
+  },
+  {
+    href: "/admin/intelligence/trap-lanes",
+    label: "Trap lanes",
+    description:
+      "Six trap lanes with full drill-down: what Hammer will say, set-ups, rebuttals, sample scripts — tap from hub summary cards.",
   },
   {
     href: "/admin/intelligence/debate-command",

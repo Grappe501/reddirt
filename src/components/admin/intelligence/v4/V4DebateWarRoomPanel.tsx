@@ -173,6 +173,9 @@ export function V4DebateWarRoomPanel({
 
           <article className={`${card} border-amber-200/50 bg-amber-50/40`}>
             <h3 className="text-sm font-bold uppercase text-amber-950">Trap lanes active tonight</h3>
+            <Link href="/admin/intelligence/trap-lanes" className="mt-2 inline-block text-xs font-bold text-kelly-navy underline">
+              Full trap lane drill-downs (6 lanes) →
+            </Link>
             <ul className="mt-2 list-inside list-disc text-xs text-amber-950">
               {packet.scenarioTraps.map((t) => (
                 <li key={t}>{t}</li>
