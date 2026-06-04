@@ -23,6 +23,11 @@ import {
   KELLY_RESEARCH_PREP_SEQUENCE,
 } from "@/lib/intelligence/v4/kellyCandidateResearchDepth";
 import {
+  KELLY_COURT_DILIGENCE_PUBLIC_NOTE,
+  KELLY_PUBLIC_RECORD_BRIEF,
+  KELLY_PUBLIC_RECORD_PREP_SEQUENCE,
+} from "@/lib/intelligence/v4/kellyCandidatePublicRecordBrief";
+import {
   KELLY_OFFENSIVE_MOVES,
   OFFENSIVE_APPROACH_NARRATIVE,
 } from "@/lib/intelligence/v4/kellyOffensiveApproachDepth";
@@ -194,8 +199,52 @@ export function KellyDebateCoachingPanel({
               </ul>
             </article>
           ))}
+          <section className="space-y-3">
+            <h3 className="text-sm font-bold uppercase text-violet-950">Public record brief — sourced facts</h3>
+            <p className="text-xs text-kelly-muted">{KELLY_COURT_DILIGENCE_PUBLIC_NOTE}</p>
+            {KELLY_PUBLIC_RECORD_BRIEF.map((fact) => (
+              <article key={fact.id} className="rounded-xl border border-violet-100 bg-white p-4 text-xs">
+                <div className="flex flex-wrap gap-2">
+                  <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase text-violet-950">
+                    {fact.category}
+                  </span>
+                  <span className="rounded-full border border-emerald-200 px-2 py-0.5 text-[10px] font-bold text-emerald-950">
+                    {fact.verificationStatus}
+                  </span>
+                </div>
+                <p className="mt-2 font-bold text-kelly-navy">{fact.headline}</p>
+                <p className="mt-2 text-kelly-muted">{fact.summary}</p>
+                <p className="mt-2 font-semibold text-rose-950">How opponents use it</p>
+                <ul className="mt-1 list-inside list-disc text-kelly-muted">
+                  {fact.howOpponentsUseIt.map((l) => (
+                    <li key={l.slice(0, 48)}>{l}</li>
+                  ))}
+                </ul>
+                <p className="mt-2 font-semibold text-emerald-950">Kelly response</p>
+                <ul className="mt-1 list-inside list-disc text-kelly-muted">
+                  {fact.kellyResponseFramework.map((l) => (
+                    <li key={l.slice(0, 48)}>{l}</li>
+                  ))}
+                </ul>
+                {fact.sources.length > 0 ? (
+                  <p className="mt-2 text-[10px] text-kelly-muted">
+                    Sources:{" "}
+                    {fact.sources.map((s) => s.label).join(" · ")}
+                  </p>
+                ) : null}
+              </article>
+            ))}
+          </section>
           <article className="rounded-lg border border-kelly-navy/15 bg-kelly-page/40 p-4">
             <p className="font-bold uppercase text-kelly-navy">Research prep sequence</p>
+            <ol className="mt-2 list-inside list-decimal text-kelly-muted">
+              {KELLY_PUBLIC_RECORD_PREP_SEQUENCE.map((s) => (
+                <li key={s.slice(0, 48)}>{s}</li>
+              ))}
+            </ol>
+          </article>
+          <article className="rounded-lg border border-kelly-navy/15 bg-kelly-page/40 p-4">
+            <p className="font-bold uppercase text-kelly-navy">Attack vector prep sequence</p>
             <ol className="mt-2 list-inside list-decimal text-kelly-muted">
               {KELLY_RESEARCH_PREP_SEQUENCE.map((s) => (
                 <li key={s.slice(0, 48)}>{s}</li>

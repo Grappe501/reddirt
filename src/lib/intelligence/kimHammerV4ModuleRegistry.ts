@@ -215,6 +215,7 @@ KIM_HAMMER_V4_MODULES["debate-prep"] = {
   eyebrow: "28-section rehearsal packet",
   profile: "hub",
   preferV4: false,
+  preserveCustomPageInLaunchMode: true,
   render: {
     type: "staff-stub",
     primaryHref: "/admin/intelligence/kim-hammer/debate-prep",
@@ -260,9 +261,11 @@ const STUB_MODULES: Array<[string, string, string]> = [
 
 for (const [moduleId, title, eyebrow] of STUB_MODULES) {
   if (!KIM_HAMMER_V4_MODULES[moduleId]) {
+    const preservePage = moduleId === "debate-archive";
     KIM_HAMMER_V4_MODULES[moduleId] = entry(moduleId, title, eyebrow, STAFF_STUB, {
       guideKey: "opponentRecord",
       profile: "hub",
+      ...(preservePage ? { preserveCustomPageInLaunchMode: true } : {}),
     });
   }
 }

@@ -15,6 +15,7 @@ import { buildTrapLaneStepCoverage } from "../src/lib/intelligence/v4/trapLaneSt
 import { loadCountyElectionFundingResearch } from "../src/lib/intelligence/v4/countyElectionFundingIntelligence";
 import { INTEGRITY_2021_PACKAGE_DEPTH, PETITION_2025_CLUSTER_DEPTH } from "../src/lib/intelligence/v4/integrityPackageDepth";
 import { listCuratedBillPlaybookNumbers } from "../src/lib/intelligence/v4/debateBillOperatorPlaybooks";
+import { KELLY_PUBLIC_RECORD_BRIEF } from "../src/lib/intelligence/v4/kellyCandidatePublicRecordBrief";
 import { KELLY_OFFENSIVE_MOVES } from "../src/lib/intelligence/v4/kellyOffensiveApproachDepth";
 import { listDebatePhilosophyBriefings } from "../src/lib/intelligence/v4/debatePhilosophyBriefings";
 import { buildSosQuestionBriefing } from "../src/lib/intelligence/v4/debateBriefingEnrichment";
@@ -104,7 +105,8 @@ assert.equal(INTEGRITY_2021_PACKAGE_DEPTH.billAnchors.length, 6, "2021 package b
 assert.equal(PETITION_2025_CLUSTER_DEPTH.billAnchors.length, 5, "2025 petition cluster");
 assert.equal(KELLY_OFFENSIVE_MOVES.length, 6, "offensive moves");
 assert.equal(getAllTrapLaneIds().length, 6, "trap lane ids");
-assert.ok(listCuratedBillPlaybookNumbers().length >= 11, "11+ curated bill playbooks");
+assert.ok(listCuratedBillPlaybookNumbers().length >= 29, "29 curated bill playbooks");
+assert.ok(KELLY_PUBLIC_RECORD_BRIEF.length >= 6, "Kelly public record brief");
 
 // --- v6.3 briefing depth ---
 assertRouteExists("/admin/intelligence/debate-briefings");

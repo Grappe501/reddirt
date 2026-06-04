@@ -111,16 +111,16 @@
     },
     {
       "fiscalYear": "FY2026-2027",
-      "session": "2026 (projected from research brief)",
-      "act": "NEEDS_RESEARCH — verify enrolled appropriation",
+      "session": "2026 Fiscal Session (pending — not yet enrolled at research date)",
+      "act": "DEFERRED — verify after 2026 fiscal session adjourns",
       "lineItem": "County Voting Systems Grant + HAVA",
-      "amount": 11000000,
-      "secondaryAmount": 4000000,
+      "amount": null,
+      "secondaryAmount": null,
       "fund": "CVSGF + Federal HAVA",
       "payableTo": "Secretary of State",
-      "evidenceTier": "NEEDS_RESEARCH",
+      "evidenceTier": "DEFERRED",
       "sources": [],
-      "note": "Research brief cites $11M + $4M HAVA again — staff must verify FY2026-27 enrolled act before stage cite"
+      "note": "FY2025-26 verified via Act 408 (HB1147). FY2026-27 appropriation cannot be cited on stage until enrolled act verified — use FY2025-26 figures only."
     }
   ],
   "oneTimeTransfers": [
@@ -166,7 +166,7 @@
   "countyAwardLedger": {
     "publicDashboardExists": false,
     "masterLedgerLocation": "SOS-administered — reimbursement spreadsheets / grant ledgers likely exist administratively",
-    "researchStatus": "NEEDS_RESEARCH — no consolidated statewide public table located",
+    "researchStatus": "SUBSTANTIAL — 10 county breadcrumbs + SOS Exhibit E; statewide ledger still NEEDS_RESEARCH",
     "countyBudgetBreadcrumbs": true,
     "knownCountyReferences": [
       { "county": "Garland", "amount": 14340, "year": 2015, "label": "Secretary of State Voting System Grant", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "Garland County budget archive" },

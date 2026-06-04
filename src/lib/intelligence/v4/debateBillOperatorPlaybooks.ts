@@ -1,5 +1,9 @@
 import type { V3BillNarrative } from "@/lib/intelligence/v3/debateIntelligenceV3Types";
 import type { BillOperatorPlaybook, PlaybookStep, TrapSetup } from "@/lib/intelligence/v4/debateOperatorPlaybookTypes";
+import {
+  buildIndexCuratedPlaybooks,
+  MANUAL_CURATED_BILL_NUMBERS,
+} from "@/lib/intelligence/v4/debateBillPlaybookIndexCurator";
 
 function mkIntegrity2021Curated(
   billNumber: string,
@@ -144,87 +148,82 @@ const CURATED: Record<string, Omit<BillOperatorPlaybook, "billNumber" | "isCurat
     kellyDifference: "Kelly centers clerk partnership as SOS core job; opponent record emphasizes rule changes — verify support bills.",
   },
   SB291: {
-    actNumber: null,
-    headline: "Direct democracy / petition process restriction",
-    recordItemLabel: "SB291",
+    actNumber: "279",
+    headline: "Election-law complaint deadlines / enforcement (Act 279)",
+    recordItemLabel: "SB291 → Act 279",
     steps: [
-      { step: 1, dimension: "WHAT", detail: "Bill in petition/ballot-access theme matrix — likely tightens initiative or signature rules (confirm act)." },
-      { step: 2, dimension: "WHEN", detail: "When Hammer or moderator mentions ‘ballot integrity’ and ‘petitions’ in same breath." },
-      { step: 3, dimension: "WHERE", detail: "Initiative supporter forums, young voter events, press questions on ballot measures." },
-      { step: 4, dimension: "WHY", detail: "Arkansas has a direct democracy tradition — voters hear access restrictions as ‘politicians blocking the people.’" },
-      { step: 5, dimension: "HOW", detail: "Agree on anti-fraud goals → contrast process burden → cite bill → bridge to lawful participation + integrity." },
-      { step: 6, dimension: "WHO", detail: "Volunteer circulators, rural signers, not ‘activist elites.’" },
+      { step: 1, dimension: "WHAT", detail: "2025 bill amending election-law complaint procedures and deadlines (Act 279) — verify enrolled text." },
+      { step: 2, dimension: "WHEN", detail: "When debate turns to ‘prosecuting fraud’ or complaint timelines." },
+      { step: 3, dimension: "WHERE", detail: "Statewide TV debate, law-and-order leaning audiences, county clerk forums." },
+      { step: 4, dimension: "WHY", detail: "Shorter complaint windows and expanded enforcement culture land on counties unevenly." },
+      { step: 5, dimension: "HOW", detail: "Act 279 anchor → proportional enforcement question → SOS education + county partnership." },
+      { step: 6, dimension: "WHO", detail: "Volunteers and clerks navigating complaint processes — not ‘criminals.’" },
     ],
     debateUse: {
-      bringUpWhen: "He groups petition reform with ‘securing elections.’",
-      openingLine: "Integrity and participation are not enemies — voters should not have to choose between security and having a voice.",
-      actAnchor: "SB291 is one of several petition-process bills in his record — name only after act verification.",
-      countyOrVoterImpact: "Shorter circulation windows and tighter rules land on volunteers and county verification staff.",
-      kellyBridge: "SOS should protect lawful signatures and transparent rules — not choke citizen initiatives without evidence of fraud.",
-      rebuttalIfHeCounters: "Ask for documented fraud rates justifying each restriction — not anecdotes.",
-      doNotSay: ["He hates democracy", "Republicans hate petitions (broad brush)"],
-    },
-    socialMediaUse: {
-      platforms: ["X", "TikTok explainer", "Facebook"],
-      postFormat: "Before/after: ‘How hard should it be for citizens to qualify a ballot measure?’",
-      threadOutline: [
-        "State the question in plain English.",
-        "List bill number with Arkleg link.",
-        "Theme: multiple petition bills = pattern.",
-        "Kelly: integrity + access.",
-      ],
-      graphicCaption: "Your signature is your voice — rules should be clear, not impossible.",
-      claimsGateReminder: "Pattern claims = INTERPRETATION until staff verifies count of restriction bills.",
-    },
-    peopleImpactFrame:
-      "This record item makes it harder for ordinary Arkansans to bring issues to the ballot — frame as reducing citizen power, not elite conspiracy.",
-    trapSetup: {
-      name: "Integrity vs participation false choice",
-      baitLineYouWantFromOpponent: "‘We had to tighten petitions to stop fraud.’",
-      moderatorOrKellySetupQuestion: "What specific fraud cases in Arkansas justified SB291’s restrictions?",
-      kellyPivotWhenHeBites: "If thin evidence: ‘Voters deserve both security and access — SOS can deliver both with transparent rules.’",
-      whyItWorks: "Shifts from emotion to evidence where restriction pattern is vulnerable.",
-    },
-    kellyDifference: "Kelly defends lawful initiative process; record shows repeated access tightening — contrast methods with verified bills.",
-  },
-  SB584: {
-    actNumber: null,
-    headline: "Election enforcement / compliance expansion",
-    recordItemLabel: "SB584",
-    steps: [
-      { step: 1, dimension: "WHAT", detail: "Enforcement-themed election bill — verify criminal/civil provisions in enrolled act." },
-      { step: 2, dimension: "WHEN", detail: "When debate turns to ‘prosecuting fraud’ or ‘tough on cheaters.’" },
-      { step: 3, dimension: "WHERE", detail: "Statewide TV debate, law-and-order leaning audiences." },
-      { step: 4, dimension: "WHY", detail: "Over-broad enforcement chills participation — voters fear innocent mistakes become crimes." },
-      { step: 5, dimension: "HOW", detail: "Agree on prosecuting real fraud → ask scope of bill → county implementation → transparent SOS guidance." },
-      { step: 6, dimension: "WHO", detail: "Volunteers, elderly voters, first-time signers — not ‘criminals.’" },
-    ],
-    debateUse: {
-      bringUpWhen: "He promises to ‘go after election fraud.’",
-      openingLine: "Prosecute real fraud — but don’t criminalize confusion or intimidate lawful participation.",
-      actAnchor: "SB584 fits his enforcement cluster — cite only with verified act language.",
-      countyOrVoterImpact: "Clerks and prosecutors interpret new standards — uneven enforcement across counties.",
-      kellyBridge: "SOS sets clear, public rules so enforcement targets real wrongdoing, not volunteers.",
-      rebuttalIfHeCounters: "Ask for Arkansas conviction data vs new penalties added.",
+      bringUpWhen: "He promises to ‘go after election fraud’ via complaint reforms.",
+      openingLine: "Prosecute real fraud — but don’t shorten windows so much that lawful challenges can’t be heard.",
+      actAnchor: "SB291 became Act 279 in the 2025 session — verify on Arkleg.",
+      countyOrVoterImpact: "Clerks and SBEC absorb new complaint volume — uneven enforcement across counties.",
+      kellyBridge: "SOS sets clear, public rules so enforcement targets real wrongdoing, not confusion.",
+      rebuttalIfHeCounters: "Ask for Arkansas conviction data vs new complaint deadlines added.",
       doNotSay: ["Elections are full of fraud (unsupported)", "He wants to jail voters"],
     },
     socialMediaUse: {
       platforms: ["Facebook", "X"],
-      postFormat: "Quote enrolled penalty section (after verification) + ‘chilling effect’ line.",
-      threadOutline: ["Real fraud should be prosecuted.", "Question: scope of SB584.", "County fairness.", "Kelly transparency frame."],
+      postFormat: "Act 279 + complaint deadline line + Arkleg link.",
+      threadOutline: ["Real fraud should be prosecuted.", "Question: scope of Act 279.", "County fairness.", "Kelly transparency frame."],
       graphicCaption: "Tough on real fraud — fair to lawful voters.",
-      claimsGateReminder: "Penalty claims require act text HIGH confidence.",
+      claimsGateReminder: "Deadline claims require act text HIGH confidence.",
     },
     peopleImpactFrame:
-      "Heavy enforcement without clarity scares everyday participants away from petitions and the ballot — that hurts the people’s ability to hold power accountable.",
+      "Complaint deadline changes affect whether ordinary participants can challenge real problems — frame as county burden, not motive.",
     trapSetup: {
       name: "Fraud prosecutor trap",
       baitLineYouWantFromOpponent: "‘We need harsh penalties or elections aren’t safe.’",
-      moderatorOrKellySetupQuestion: "How many Arkansas election-fraud convictions occurred the year before SB584?",
+      moderatorOrKellySetupQuestion: "How many Arkansas election-fraud convictions occurred the year before Act 279?",
       kellyPivotWhenHeBites: "Pivot to proportional enforcement + SOS education role.",
       whyItWorks: "Forces data; avoids Kelly sounding soft on crime while exposing overreach.",
     },
-    kellyDifference: "Kelly: transparent rules + targeted enforcement; opponent: expansion of enforcement toolkit — verify proportionality.",
+    kellyDifference: "Kelly: transparent rules + targeted enforcement; opponent: Act 279 complaint changes — verify proportionality.",
+  },
+  SB584: {
+    actNumber: "768",
+    headline: "Local initiative / referendum petitions (Act 768)",
+    recordItemLabel: "SB584 → Act 768",
+    steps: [
+      { step: 1, dimension: "WHAT", detail: "2025 bill amending local initiative and referendum petition procedures (Act 768) — verify enrolled text." },
+      { step: 2, dimension: "WHEN", detail: "When Hammer groups petition reform with ‘securing elections.’" },
+      { step: 3, dimension: "WHERE", detail: "Initiative supporter forums, county quorum courts, press on ballot measures." },
+      { step: 4, dimension: "WHY", detail: "Local petition changes land on volunteer circulators and county verification staff." },
+      { step: 5, dimension: "HOW", detail: "Agree on anti-fraud goals → contrast process burden → Act 768 → lawful participation + integrity." },
+      { step: 6, dimension: "WHO", detail: "Volunteer circulators and rural signers — not ‘activist elites.’" },
+    ],
+    debateUse: {
+      bringUpWhen: "He groups local petition reform with ‘securing elections.’",
+      openingLine: "Integrity and participation are not enemies — local petitions should have clear rules, not impossible ones.",
+      actAnchor: "SB584 became Act 768 in the 2025 session — verify on Arkleg.",
+      countyOrVoterImpact: "Tighter local petition rules land on volunteers and county verification staff.",
+      kellyBridge: "SOS should protect lawful signatures and transparent rules — not choke local initiatives without evidence.",
+      rebuttalIfHeCounters: "Ask for documented fraud rates justifying Act 768 restrictions — not anecdotes.",
+      doNotSay: ["He hates democracy", "Republicans hate petitions (broad brush)"],
+    },
+    socialMediaUse: {
+      platforms: ["X", "Facebook"],
+      postFormat: "Act 768 + local petition impact + Arkleg link.",
+      threadOutline: ["Local petitions = local voice.", "Act 768 link.", "County verification burden.", "Kelly: integrity + access."],
+      graphicCaption: "Your signature is your voice — rules should be clear, not impossible.",
+      claimsGateReminder: "Pattern claims = INTERPRETATION until staff verifies act text.",
+    },
+    peopleImpactFrame:
+      "Act 768 makes it harder for ordinary Arkansans to bring local issues to the ballot — frame as reducing citizen power, not elite conspiracy.",
+    trapSetup: {
+      name: "Integrity vs participation false choice",
+      baitLineYouWantFromOpponent: "‘We had to tighten local petitions to stop fraud.’",
+      moderatorOrKellySetupQuestion: "What specific fraud cases in Arkansas justified Act 768’s restrictions?",
+      kellyPivotWhenHeBites: "If thin evidence: ‘Voters deserve both security and access — SOS can deliver both with transparent rules.’",
+      whyItWorks: "Shifts from emotion to evidence where restriction pattern is vulnerable.",
+    },
+    kellyDifference: "Kelly defends lawful initiative process; Act 768 tightens local petitions — contrast methods with verified text.",
   },
   HB1707: {
     actNumber: null,
@@ -454,13 +453,15 @@ export function synthesizeBillPlaybook(
   };
 }
 
+const INDEX_CURATED = buildIndexCuratedPlaybooks();
+
 export function getBillOperatorPlaybook(
   billNumber: string,
   narrative: V3BillNarrative,
   opts?: { inIntegrity2021?: boolean; themeLabels?: string[] },
 ): BillOperatorPlaybook {
   const upper = billNumber.toUpperCase();
-  const curated = CURATED[upper];
+  const curated = CURATED[upper] ?? INDEX_CURATED[upper];
   if (curated) {
     return { billNumber: upper, ...curated, isCurated: true };
   }
@@ -468,5 +469,14 @@ export function getBillOperatorPlaybook(
 }
 
 export function listCuratedBillPlaybookNumbers(): string[] {
-  return Object.keys(CURATED);
+  const keys = new Set([...Object.keys(CURATED), ...Object.keys(INDEX_CURATED)]);
+  return [...keys].sort();
+}
+
+export function listManualCuratedBillPlaybookNumbers(): string[] {
+  return [...MANUAL_CURATED_BILL_NUMBERS].sort();
+}
+
+export function listIndexCuratedBillPlaybookNumbers(): string[] {
+  return Object.keys(INDEX_CURATED).sort();
 }

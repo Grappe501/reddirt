@@ -71,11 +71,11 @@ export const KELLY_ATTACK_VECTORS: KellyAttackVector[] = [
   },
   {
     id: "court-records-diligence",
-    title: "Court records / financial diligence searches",
+    title: "Court records / financial diligence — public brief vs staff search",
     howTheyComeAfterHer: [
       "Opposition research firms search CourtConnect, liens, UCC, business entity standing.",
-      "Farm economics stress post-COVID may be spun as instability.",
-      "No conviction in repo — absence is not proof; they will search anyway.",
+      "Farm economics stress post-COVID may be spun as instability in whisper campaigns.",
+      "Public brief covers verified media/campaign sources — staff CourtConnect log still pending.",
     ],
     whatToExpectOnStage: [
       "Unlikely direct criminal accusation without record — more common in mail/digital.",
@@ -83,17 +83,91 @@ export const KELLY_ATTACK_VECTORS: KellyAttackVector[] = [
       "GotV whisper campaigns on business filings.",
     ],
     kellyResponseFramework: [
-      "Never deny categorically without search completed this cycle.",
+      "Use public brief facts for verified civics/campaign lines — see kellyCandidatePublicRecordBrief.",
+      "Never claim 'clean search' until diligence log entries are completed and counsel-reviewed.",
       "If clean search logged: pivot to small-business survival and service frame.",
-      "If hit exists: counsel + single-sentence factual response only.",
       "Boundary: 'I am running to run the Secretary of State's office for every voter.'",
     ],
     whatNotToDo: [
-      "Fabricated denial of specific cases.",
+      "Fabricated denial of specific cases or CourtConnect results.",
       "60-second personal biography when asked SOS policy question.",
       "Attack Hammer personal finances without sourced record.",
     ],
+    verificationStatus: "PARTIAL",
+    prepPriority: "HIGH",
+  },
+  {
+    id: "court-records-staff-search",
+    title: "CourtConnect / UCC / property-tax staff search protocol",
+    howTheyComeAfterHer: [
+      "Staff must complete five diligence log searches before debate — outcomes not yet logged.",
+      "Whisper campaigns may precede logged search results.",
+    ],
+    whatToExpectOnStage: [
+      "Rare on stage unless a hit leaks to press first.",
+      "Counsel gate on any response referencing specific filings.",
+    ],
+    kellyResponseFramework: [
+      "Complete kelly-court-diligence-log.json entries with staff initials and counsel review.",
+      "If incomplete at debate: use counsel frame only — no categorical denial.",
+      "If clean and logged: one-sentence pivot to service frame.",
+    ],
+    whatNotToDo: [
+      "Mark NOT_SEARCHED entries as CLEAN in public materials.",
+      "Speculate about search outcomes in prep docs distributed beyond staff.",
+    ],
     verificationStatus: "NEEDS_RESEARCH",
+    prepPriority: "CRITICAL",
+  },
+  {
+    id: "stand-up-learns-family",
+    title: "Stand Up Arkansas + LEARNS/CAPES spouse connection",
+    howTheyComeAfterHer: [
+      "Hammer ties Kelly to Stand Up Arkansas, For AR Kids, and Steve Grappe's CAPES role opposing LEARNS referendum.",
+      "Frames Grappe household as professional petition fighters who cannot administer SOS fairly.",
+      "Arkansas Times and Dem-Gaz coverage provides clip inventory.",
+    ],
+    whatToExpectOnStage: [
+      "Moderator bundles 'integrity' and 'petitions' with family education fights.",
+      "Hammer lists 2025 act numbers without county implementation detail.",
+    ],
+    kellyResponseFramework: [
+      "Own civics leadership — separate from SOS administrator role.",
+      "Boundary on spouse: one sentence max — do not attack Steve on stage.",
+      "Public stance: decline circulating petitions during race; SOS serves all lawful drives.",
+      "Pivot: clerk training, published rules, hotline when new act lands Friday afternoon.",
+    ],
+    whatNotToDo: [
+      "Deny documented Stand Up Arkansas or petition leadership.",
+      "Attack LEARNS voters or Hammer personally.",
+      "Relitigate CAPES referendum for 60 seconds.",
+    ],
+    verificationStatus: "VERIFIED",
+    prepPriority: "CRITICAL",
+  },
+  {
+    id: "depoliticize-sos-frame",
+    title: "Depoliticizing SOS — campaign vs opponent 'activist' label",
+    howTheyComeAfterHer: [
+      "Hammer: 'Democratic activist pretending to be neutral Secretary of State.'",
+      "kellygrappe.com emphasizes county fairness and election security through service.",
+      "Packo may agree anti-establishment themes Kelly also used.",
+    ],
+    whatToExpectOnStage: [
+      "Opening or closing 'partisan SOS' framing.",
+      "Attempt to pin Kelly as activist in Republican-leaning state.",
+    ],
+    kellyResponseFramework: [
+      "Lead with office plan: transparent rules, clerk partnership, equal treatment.",
+      "Use 'call balls and strikes' — depoliticizing frame from verified campaign messaging.",
+      "Pivot within 10 seconds to acts and county burden.",
+    ],
+    whatNotToDo: [
+      "Apologize for running as a Democrat.",
+      "Attack Pakko voters explicitly in three-way debate.",
+      "Sound defensive on party label for 45+ seconds.",
+    ],
+    verificationStatus: "VERIFIED",
     prepPriority: "HIGH",
   },
   {
@@ -149,7 +223,8 @@ export const KELLY_ATTACK_VECTORS: KellyAttackVector[] = [
 ];
 
 export const KELLY_RESEARCH_PREP_SEQUENCE = [
-  "Run court/financial search log — document clean or counsel response before debate.",
+  "Review kellyCandidatePublicRecordBrief — rehearse Stand Up / LEARNS-CAPES / depoliticize frames.",
+  "Complete court diligence log searches — document clean or counsel response before debate.",
   "Rehearse petition question with speak-order drills — never end on agree alone.",
   "Staff plays Hammer 'check my record' — Kelly uses verified Arkleg counter once only.",
   "Review culture-war depth guide — 10-second pivot drill daily.",

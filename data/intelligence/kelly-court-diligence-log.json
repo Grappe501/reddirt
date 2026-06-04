@@ -1,10 +1,16 @@
 {
-  "version": 1,
-  "generatedAt": "2026-06-04T08:00:00.000Z",
+  "version": 2,
+  "generatedAt": "2026-06-04T20:00:00.000Z",
   "governance": {
     "classification": "INTERNAL_DRAFT",
     "counselReviewRequired": true,
-    "note": "Staff completes searches before debate — log outcomes only, no public speculation."
+    "note": "Staff completes searches before debate — log outcomes only, no public speculation. Public brief: src/lib/intelligence/v4/kellyCandidatePublicRecordBrief.ts"
+  },
+  "publicBriefModule": "kellyCandidatePublicRecordBrief",
+  "researchProtocol": {
+    "order": ["courtconnect-civil", "courtconnect-criminal", "ucc-liens", "business-entity", "property-tax"],
+    "counselGate": "No debate-stage line referencing specific filings until counselReviewed=true on relevant entry.",
+    "incompleteFrame": "I am running to run the Secretary of State's office for every voter."
   },
   "entries": [
     {
@@ -15,8 +21,9 @@
       "result": "NOT_SEARCHED",
       "staffInitials": null,
       "counselReviewed": false,
-      "notes": "Complete before debate. Log case numbers only — no public speculation.",
-      "debateStageLine": null
+      "notes": "Complete before debate. Log case numbers only — no public speculation. Public civics/campaign facts are in kellyCandidatePublicRecordBrief.",
+      "debateStageLine": null,
+      "linkedPublicBriefIds": ["stand-up-arkansas", "depoliticize-sos-campaign"]
     },
     {
       "id": "courtconnect-criminal",
@@ -27,7 +34,8 @@
       "staffInitials": null,
       "counselReviewed": false,
       "notes": "If clean: pivot to service frame. If hit: counsel-approved single sentence only.",
-      "debateStageLine": null
+      "debateStageLine": null,
+      "linkedPublicBriefIds": []
     },
     {
       "id": "ucc-liens",
@@ -37,8 +45,9 @@
       "result": "NOT_SEARCHED",
       "staffInitials": null,
       "counselReviewed": false,
-      "notes": "Farm economics stress may be spun — document filings factually if asked.",
-      "debateStageLine": null
+      "notes": "Farm economics stress may be spun — document filings factually if asked. See forevermost-business public brief.",
+      "debateStageLine": null,
+      "linkedPublicBriefIds": ["forevermost-business"]
     },
     {
       "id": "business-entity",
@@ -49,7 +58,8 @@
       "staffInitials": null,
       "counselReviewed": false,
       "notes": "Verify good standing before debate — whisper campaigns on business filings are common.",
-      "debateStageLine": null
+      "debateStageLine": null,
+      "linkedPublicBriefIds": ["forevermost-business"]
     },
     {
       "id": "property-tax",
@@ -60,7 +70,8 @@
       "staffInitials": null,
       "counselReviewed": false,
       "notes": "No PII in logs. Counsel review before any public response.",
-      "debateStageLine": null
+      "debateStageLine": null,
+      "linkedPublicBriefIds": []
     }
   ],
   "counselFrame": "If search is incomplete: 'I am running to run the Secretary of State's office for every voter.' If clean and logged: pivot to small-business survival and service frame in one sentence. Never fabricate denials."

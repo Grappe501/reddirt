@@ -12,8 +12,10 @@ import { listDebatePhilosophyBriefings } from "@/lib/intelligence/v4/debatePhilo
 import { buildSosQuestionBriefing } from "@/lib/intelligence/v4/debateBriefingEnrichment";
 import { buildDebatePrepFinderIndex } from "@/lib/intelligence/v4/debatePrepFinder";
 import { KELLY_ATTACK_VECTORS } from "@/lib/intelligence/v4/kellyCandidateResearchDepth";
+import { KELLY_PUBLIC_RECORD_BRIEF } from "@/lib/intelligence/v4/kellyCandidatePublicRecordBrief";
 import { KELLY_OFFENSIVE_MOVES } from "@/lib/intelligence/v4/kellyOffensiveApproachDepth";
 import { computeOppositionOffenseReadinessPct } from "@/lib/intelligence/v4/oppositionStrategyLayerMetrics";
+import { KIM_HAMMER_V4_MODULES } from "@/lib/intelligence/kimHammerV4ModuleRegistry";
 
 export type BuildProgressItem = {
   id: string;
@@ -200,6 +202,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
 
   // Kelly research
   const kellyNeedsResearch = KELLY_ATTACK_VECTORS.filter((v) => v.verificationStatus === "NEEDS_RESEARCH").length;
+  const kellyPublicBriefVerified = KELLY_PUBLIC_RECORD_BRIEF.filter((f) => f.verificationStatus === "VERIFIED").length;
   items.push({
     id: "kelly-research",
     label: "Kelly candidate research depth",
@@ -208,7 +211,22 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     status: kellyNeedsResearch === 0 ? "complete" : "partial",
     built: KELLY_ATTACK_VECTORS.length - kellyNeedsResearch,
     total: KELLY_ATTACK_VECTORS.length,
-    flags: kellyNeedsResearch ? [`${kellyNeedsResearch} vectors NEEDS_RESEARCH (court records)`] : [],
+    flags: [
+      ...(kellyNeedsResearch ? [`${kellyNeedsResearch} vector NEEDS_RESEARCH (CourtConnect staff search)`] : []),
+      ...(kellyPublicBriefVerified >= 4 ? [] : ["Expand public record brief verified sources"]),
+    ],
+    href: "/admin/intelligence/kelly-debate-coaching",
+  });
+
+  items.push({
+    id: "kelly-public-brief",
+    label: "Kelly public record brief (sourced)",
+    category: "Kelly defense",
+    completionPct: Math.round((kellyPublicBriefVerified / KELLY_PUBLIC_RECORD_BRIEF.length) * 100),
+    status: kellyPublicBriefVerified >= KELLY_PUBLIC_RECORD_BRIEF.length - 1 ? "complete" : "partial",
+    built: kellyPublicBriefVerified,
+    total: KELLY_PUBLIC_RECORD_BRIEF.length,
+    flags: ["Court diligence log entries remain NOT_SEARCHED until staff completes protocol"],
     href: "/admin/intelligence/kelly-debate-coaching",
   });
 
@@ -257,16 +275,20 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/claims",
   });
 
-  // NSI staff stubs
+  // NSI staff stubs — live pages promoted where route exists
+  const khModuleEntries = Object.values(KIM_HAMMER_V4_MODULES);
+  const khStaffStubs = khModuleEntries.filter((m) => m.render.type === "staff-stub").length;
+  const khLiveModules = khModuleEntries.length - khStaffStubs;
+  const khPct = Math.round((khLiveModules / khModuleEntries.length) * 100);
   items.push({
     id: "kh-staff-modules",
     label: "Kim Hammer staff modules (launch stubs)",
     category: "Staff NSI",
-    completionPct: 35,
-    status: "stub",
-    built: 12,
-    total: 35,
-    flags: ["~30 KH modules show staff-stub in launch mode"],
+    completionPct: khPct,
+    status: khPct >= 80 ? "complete" : khPct >= 50 ? "partial" : "stub",
+    built: khLiveModules,
+    total: khModuleEntries.length,
+    flags: khStaffStubs > 0 ? [`${khStaffStubs} KH modules still staff-stub in launch mode`] : [],
     href: "/admin/intelligence/kim-hammer",
   });
 
@@ -317,13 +339,13 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     id: "election-funding-cvsgf",
     label: "County Voting System Grant Fund research",
     category: "Election funding",
-    completionPct: 72,
+    completionPct: 85,
     status: "partial",
-    built: 7,
+    built: 9,
     total: 10,
     flags: [
       "Statewide county-by-county award ledger not public — records request drafted",
-      "FY2026-27 appropriation NEEDS_RESEARCH",
+      "FY2026-27 appropriation DEFERRED pending 2026 fiscal session",
       "Garland $14,340 — verify primary county budget document",
     ],
     href: "/admin/intelligence/election-funding",
@@ -448,7 +470,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     },
     {
       phase: 8,
-      name: "v6.3 — Debate briefing depth (COMPLETE THIS PASS)",
+      name: "v6.3 — Debate briefing depth (COMPLETE)",
       targetVersion: "0.16.0",
       goal: "Full quick-read briefings on every SOS question and trap lane — why, alternatives, Hammer hooks — plus philosophy library and prep finder.",
       items: [
@@ -465,11 +487,30 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
         "Netlify typecheck clean",
       ],
     },
+    {
+      phase: 9,
+      name: "v6.4 — Gap closure pass (THIS PASS)",
+      targetVersion: "0.16.1",
+      goal: "Curate all 29 bill playbooks, deepen Kelly public-record research, honest court diligence protocol, CVSGF FY2026-27 deferred.",
+      items: [
+        "Index-curated playbooks for remaining 18 bills",
+        "Kelly public record brief + expanded attack vectors",
+        "Court diligence log v2 with public brief links",
+        "CVSGF FY2026-27 marked DEFERRED — not fabricated",
+        "Promote debate-prep + debate-archive launch modules",
+      ],
+      exitCriteria: [
+        "0 auto-synthesized playbooks flagged",
+        "29/29 curated bill playbooks on audit",
+        "Kelly public brief live on coaching panel",
+        "Netlify deploy green",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v6.3-debate-briefing-depth",
+    version: "v6.4-gap-closure-pass",
     overallCompletionPct,
     items,
     phases,
