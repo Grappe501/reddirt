@@ -41,7 +41,7 @@ export function V4AnchorBillsPlaybookIndex({ showFullPanels = false }: { showFul
             pb ? (
               <Link
                 key={pb.billNumber}
-                href={`${KIM_HAMMER_COMMAND_CENTER_HREF}/bills/${encodeURIComponent(pb.billNumber)}`}
+                href={`${KIM_HAMMER_COMMAND_CENTER_HREF}/bills/${encodeURIComponent(pb.billNumber)}/act-proof`}
                 className="rounded-xl border border-kelly-navy/15 bg-white p-4 transition hover:border-kelly-navy/40"
               >
                 <p className="text-[10px] font-bold uppercase text-violet-800">{pb.recordItemLabel}</p>

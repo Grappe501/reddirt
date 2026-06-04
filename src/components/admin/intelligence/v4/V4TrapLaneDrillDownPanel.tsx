@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import type { TrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDownTypes";
 import { TRAP_LANE_FIRST_TIMER_NOTE } from "@/lib/intelligence/v4/trapLaneDrillDowns";
+import { buildTrapLaneStepCoverage } from "@/lib/intelligence/v4/trapLaneStepCoverage";
+import { V4TrapStepCoveragePanel } from "@/components/admin/intelligence/v4/V4DepthPanels";
 import { V4EncounterDepthPanel } from "@/components/admin/intelligence/v4/V4EncounterDepthPanel";
 
 function Block({ title, children }: { title: string; children: ReactNode }) {
@@ -75,6 +77,8 @@ export function V4TrapLaneDrillDownPanel({
       </article>
 
       {drill.encounterDepth ? <V4EncounterDepthPanel depth={drill.encounterDepth} /> : null}
+
+      <V4TrapStepCoveragePanel coverage={buildTrapLaneStepCoverage(drill)} />
 
       <Block title="What to expect Hammer to say">
         <ul className="list-inside list-disc space-y-2">
@@ -218,7 +222,7 @@ export function V4TrapLaneDrillDownPanel({
               {drill.relatedBills.map((b) => (
                 <Link
                   key={b}
-                  href={`/admin/intelligence/kim-hammer/bills/${b}`}
+                  href={`/admin/intelligence/kim-hammer/bills/${b}/act-proof`}
                   className="mr-2 font-bold text-kelly-navy underline"
                 >
                   {b}

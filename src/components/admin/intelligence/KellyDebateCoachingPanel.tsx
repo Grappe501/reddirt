@@ -19,6 +19,14 @@ import {
   ROAD_STORY_INTEGRATION,
 } from "@/lib/intelligence/v4/kellyOffensiveDebateStrategy";
 import {
+  KELLY_ATTACK_VECTORS,
+  KELLY_RESEARCH_PREP_SEQUENCE,
+} from "@/lib/intelligence/v4/kellyCandidateResearchDepth";
+import {
+  KELLY_OFFENSIVE_MOVES,
+  OFFENSIVE_APPROACH_NARRATIVE,
+} from "@/lib/intelligence/v4/kellyOffensiveApproachDepth";
+import {
   HAMMER_STATEMENT_FLIPS,
   HOW_WE_PLAY_OUR_HAND,
   OFFENSIVE_DEBATE_PRINCIPLES,
@@ -112,6 +120,89 @@ export function KellyDebateCoachingPanel({
         </article>
 
         <KellyOffensiveNarrativePanel />
+
+        <article className="rounded-xl border-2 border-indigo-200 bg-indigo-50/40 p-5 text-xs">
+          <h2 className="font-heading text-lg font-bold text-kelly-navy">{OFFENSIVE_APPROACH_NARRATIVE.headline}</h2>
+          <ul className="mt-3 list-inside list-disc text-kelly-muted">
+            {OFFENSIVE_APPROACH_NARRATIVE.philosophy.map((p) => (
+              <li key={p.slice(0, 48)}>{p}</li>
+            ))}
+          </ul>
+          <p className="mt-4 font-bold uppercase text-indigo-950">Minute-by-minute offense</p>
+          <ul className="mt-2 list-inside list-disc text-kelly-muted">
+            {OFFENSIVE_APPROACH_NARRATIVE.minuteByMinute.map((m) => (
+              <li key={m.slice(0, 48)}>{m}</li>
+            ))}
+          </ul>
+        </article>
+
+        <section className="space-y-3">
+          <h2 className="text-sm font-bold uppercase text-kelly-navy">Offensive moves — respond · rebut · lead</h2>
+          {KELLY_OFFENSIVE_MOVES.map((move) => (
+            <article key={move.id} className="rounded-xl border border-emerald-100 bg-white p-4 text-xs">
+              <p className="font-bold text-emerald-950">{move.name}</p>
+              <p className="mt-1 text-kelly-subtle">When: {move.whenToUse}</p>
+              <p className="mt-2">
+                <span className="font-semibold text-kelly-navy">Setup:</span> {move.setup}
+              </p>
+              <p className="mt-2">
+                <span className="font-semibold text-violet-900">Execute:</span> {move.execution}
+              </p>
+              <p className="mt-2 italic text-rose-950/90">He may say: &ldquo;{move.expectedOpponentResponse}&rdquo;</p>
+              <p className="mt-2">
+                <span className="font-semibold text-sky-900">Round 2:</span> {move.secondRoundKelly}
+              </p>
+              <p className="mt-1">
+                <span className="font-semibold text-sky-900">Round 3:</span> {move.thirdRoundKelly}
+              </p>
+              <p className="mt-2 text-[10px] text-amber-900">{move.educationNote}</p>
+            </article>
+          ))}
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-sm font-bold uppercase text-kelly-navy">Kelly candidate research — how they come after her</h2>
+          <p className="text-xs text-kelly-muted">Defensive depth: expect · respond · verify before stage.</p>
+          {KELLY_ATTACK_VECTORS.map((v) => (
+            <article key={v.id} className="rounded-xl border border-rose-100 bg-white p-4 text-xs">
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-bold uppercase text-rose-950">
+                  {v.prepPriority}
+                </span>
+                <span className="rounded-full border border-amber-200 px-2 py-0.5 text-[10px] font-bold text-amber-950">
+                  {v.verificationStatus}
+                </span>
+              </div>
+              <p className="mt-2 font-bold text-kelly-navy">{v.title}</p>
+              <p className="mt-2 font-semibold text-rose-950">How they come after her</p>
+              <ul className="mt-1 list-inside list-disc text-kelly-muted">
+                {v.howTheyComeAfterHer.map((l) => (
+                  <li key={l.slice(0, 48)}>{l}</li>
+                ))}
+              </ul>
+              <p className="mt-2 font-semibold text-violet-950">On stage</p>
+              <ul className="mt-1 list-inside list-disc text-kelly-muted">
+                {v.whatToExpectOnStage.map((l) => (
+                  <li key={l.slice(0, 48)}>{l}</li>
+                ))}
+              </ul>
+              <p className="mt-2 font-semibold text-emerald-950">Kelly response framework</p>
+              <ul className="mt-1 list-inside list-disc text-kelly-muted">
+                {v.kellyResponseFramework.map((l) => (
+                  <li key={l.slice(0, 48)}>{l}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+          <article className="rounded-lg border border-kelly-navy/15 bg-kelly-page/40 p-4">
+            <p className="font-bold uppercase text-kelly-navy">Research prep sequence</p>
+            <ol className="mt-2 list-inside list-decimal text-kelly-muted">
+              {KELLY_RESEARCH_PREP_SEQUENCE.map((s) => (
+                <li key={s.slice(0, 48)}>{s}</li>
+              ))}
+            </ol>
+          </article>
+        </section>
 
         <article className="rounded-xl border-2 border-sky-200 bg-sky-50/50 p-5 text-xs">
           <h2 className="font-heading text-lg font-bold text-kelly-navy">{HOW_WE_PLAY_OUR_HAND.headline}</h2>

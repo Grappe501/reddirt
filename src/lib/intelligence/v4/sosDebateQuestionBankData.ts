@@ -21,7 +21,7 @@ function links(bills: string[], trap?: string) {
     { href: "/admin/intelligence/film-room", label: "Film room" },
     { href: "/admin/intelligence/trap-lanes", label: "Trap lanes" },
     { href: "/admin/intelligence/claims", label: "Claims gate" },
-    ...bills.map((b) => ({ href: `/admin/intelligence/kim-hammer/bills/${b}`, label: b })),
+    ...bills.map((b) => ({ href: `/admin/intelligence/kim-hammer/bills/${b}/act-proof`, label: `${b} act proof` })),
   ];
   if (trap) out.unshift({ href: trap, label: "Trap lane drill-down" });
   return out;

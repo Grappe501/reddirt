@@ -23,6 +23,7 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/sos-debate-questions",
   "/admin/intelligence/agent-tooling",
   "/admin/intelligence/debate-depth",
+  "/admin/intelligence/build-progress",
 ] as const;
 
 export type DebateWeekRoute = (typeof DEBATE_WEEK_ROUTES)[number];
@@ -145,6 +146,12 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Plain-language depth",
     description:
       "What to expect, handle Hammer's attacks, adversity, getting stuck, and culture-war bait — plus auto depth on every drill-down.",
+  },
+  {
+    href: "/admin/intelligence/build-progress",
+    label: "Build progress",
+    description:
+      "Master completion chart: drill-down depth, act-proof coverage, flagged gaps, and phased upgrade plan for next intelligence version.",
   },
   {
     href: "/admin/intelligence/debate-command",

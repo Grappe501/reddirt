@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { SosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionTypes";
 import { SOS_DEBATE_SPEAK_ORDER_RULE } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { KELLY_UNITY_SPINE } from "@/lib/intelligence/v4/kellyTestedDebateThemes";
+import { buildSosQuestionResponseRounds } from "@/lib/intelligence/v4/debateResponseRoundEnrichment";
+import { V4ResponseRoundPanel } from "@/components/admin/intelligence/v4/V4DepthPanels";
 import { V4EncounterDepthPanel } from "@/components/admin/intelligence/v4/V4EncounterDepthPanel";
 
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
@@ -43,6 +45,8 @@ export function V4SosDebateQuestionPanel({
       </article>
 
       {drill.encounterDepth ? <V4EncounterDepthPanel depth={drill.encounterDepth} /> : null}
+
+      <V4ResponseRoundPanel plan={buildSosQuestionResponseRounds(drill)} />
 
       <div className="grid gap-4 lg:grid-cols-2">
         <Block title="Why moderators ask">
