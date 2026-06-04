@@ -232,6 +232,23 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/debate-command",
   });
 
+  // Election funding intelligence (CVSGF + HAVA)
+  items.push({
+    id: "election-funding-cvsgf",
+    label: "County Voting System Grant Fund research",
+    category: "Election funding",
+    completionPct: 72,
+    status: "partial",
+    built: 7,
+    total: 10,
+    flags: [
+      "Statewide county-by-county award ledger not public — records request drafted",
+      "FY2026-27 appropriation NEEDS_RESEARCH",
+      "Garland $14,340 — verify primary county budget document",
+    ],
+    href: "/admin/intelligence/election-funding",
+  });
+
   const overallCompletionPct = Math.round(items.reduce((s, i) => s + i.completionPct, 0) / items.length);
 
   const linkAuditRoutes = [
@@ -243,6 +260,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/kelly-debate-coaching",
     "/admin/intelligence/debate-command",
     "/admin/intelligence/claims",
+    "/admin/intelligence/election-funding",
     "/admin/intelligence/build-progress",
     ...trapIds.map((id) => `/admin/intelligence/trap-lanes/${id}`),
     ...qIds.map((id) => `/admin/intelligence/sos-debate-questions/${id}`),

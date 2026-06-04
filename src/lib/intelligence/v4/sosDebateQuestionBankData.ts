@@ -441,8 +441,8 @@ export const SOS_DEBATE_QUESTION_BANK: SosDebateQuestionDrillDown[] = [
     directAnswer30s:
       "I will run a Secretary of State's office clerks can call — training, funding advocacy, and plain rules when Little Rock passes another election bill.",
     directAnswer60s:
-      "County clerks implement everything the legislature writes. The Secretary of State should fund training, publish guidance, and answer the phone — not blame counties when mandates arrive without dollars. I will host a training calendar and a clerk hotline starting day one.",
-    agreeButNeverOnlyAgree: "Honor clerks + concrete SOS deliverables",
+      "County clerks implement everything the legislature writes. The Secretary of State should fund training, publish guidance, and answer the phone — not blame counties when mandates arrive without dollars. Arkansas already has a County Voting System Grant Fund — UCC fees and legislative appropriations flow through SOS grant guidelines. I will publish a county-by-county grant ledger, host a training calendar, and run a clerk hotline starting day one — election transparency includes funding transparency.",
+    agreeButNeverOnlyAgree: "Honor clerks + concrete SOS deliverables + CVSGF transparency pledge",
     rebuttalIfHammerAttacks: [r("You never ran a county", "I work with clerks", "Clerks need a champion", "I listen — he authors", "SOS service desk")],
     rebuttalIfYouArePileOnTarget: [],
     sampleScripts: [{ label: "30s", duration: "30s", text: "Clerks implement the law — I will fund training, publish rules, and answer their calls. That is the SOS job." }],
@@ -453,7 +453,10 @@ export const SOS_DEBATE_QUESTION_BANK: SosDebateQuestionDrillDown[] = [
     relatedBills: ["HB1457", "SB487"],
     relatedActs: ["444"],
     trapLaneHref: "/admin/intelligence/trap-lanes/county-champion",
-    relatedLinks: links(["HB1457"], "/admin/intelligence/trap-lanes/county-champion"),
+    relatedLinks: [
+      { href: "/admin/intelligence/election-funding", label: "CVSGF funding intelligence" },
+      ...links(["HB1457"], "/admin/intelligence/trap-lanes/county-champion"),
+    ],
     claimsGate: "Clerk endorsements — do not claim without proof",
     estimatedPrepMinutes: 25,
   },

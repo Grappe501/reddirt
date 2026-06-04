@@ -29,7 +29,7 @@ export const KELLY_OFFENSIVE_MOVES: OffensiveMove[] = [
       "Security fails when clerks are left holding the bag — seventy-five counties do not implement at the same speed.",
     thirdRoundKelly:
       "One act, one county impact, SOS service close — no new claims in spin room without claims gate.",
-    backupEvidence: "Anchor bills SB250/Act 350, HB1457 — Arkleg enrolled text",
+    backupEvidence: "Act 408 FY2025-26: $11M CVSGF + $4M HAVA — see /admin/intelligence/election-funding; county ledger NEEDS_RESEARCH",
     riskIfOverused: "Sounds like anti-security if tone is hot — stay calm, slow, factual.",
     educationNote:
       "Novice: memorize setup question only. Expert: pair with theme matrix row and one verified county example.",
@@ -91,6 +91,21 @@ export const KELLY_OFFENSIVE_MOVES: OffensiveMove[] = [
     backupEvidence: "County clerk week path + HB1457 act proof drill-down",
     riskIfOverused: "No clerk quotes without permission — no fabricated funding claims.",
     educationNote: "Works in every trap lane — universal offensive reset.",
+  },
+  {
+    id: "cvsgr-transparency-lead",
+    name: "CVSGF funding transparency lead",
+    whenToUse: "County funding, clerk support, or Hammer cites appropriations without county detail.",
+    setup: "Fair frame — researching how funding flows is harder than it should be for the public.",
+    execution:
+      "Arkansas has a County Voting System Grant Fund — UCC fees and legislative dollars. The Secretary of State sets the grant rules. Voters deserve a county-by-county ledger — election transparency includes funding transparency.",
+    expectedOpponentResponse: "Cites $11M appropriation, Act 808 $8.24M, or #1 election ranking.",
+    secondRoundKelly:
+      "Totals in Little Rock are not implementation in Saline, Phillips, or Scott counties — show the spreadsheet or I will publish one as SOS.",
+    thirdRoundKelly: "One verified appropriation cite + pledge to publish grant awards — no accusation of hiding without proof.",
+    backupEvidence: "A.C.A. § 19-5-1247; § 7-5-301(d)(2); Act 408 HB1147 Section 9 & 12",
+    riskIfOverused: "Do not say money is hidden — say ledger is not public-facing; do not cite FY2026-27 until verified.",
+    educationNote: "Pair with county-champion trap lane and election-funding intelligence page.",
   },
 ];
 

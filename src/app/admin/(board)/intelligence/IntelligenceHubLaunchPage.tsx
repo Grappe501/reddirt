@@ -87,6 +87,7 @@ export default function IntelligenceHubLaunchPage() {
             { href: "/admin/intelligence/film-room", label: "Film room", step: "2b" },
             { href: "/admin/intelligence/sos-debate-questions", label: "Expected questions", step: "2c" },
             { href: "/admin/intelligence/agent-tooling", label: "Agent tooling", step: "2d" },
+            { href: "/admin/intelligence/election-funding", label: "Election funding", step: "2f" },
             { href: "/admin/intelligence/debate-depth", label: "Plain-language depth", step: "2e" },
             { href: "/admin/intelligence/debate-command", label: "Debate command", step: "3" },
             { href: "/admin/intelligence/kim-hammer", label: "Opponent record", step: "4" },

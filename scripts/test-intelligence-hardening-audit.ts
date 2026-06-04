@@ -12,6 +12,7 @@ import { loadDebateIntelligenceV4Packet, findV4BillNarrative } from "../src/lib/
 import { buildBillActProofDeep, listAllBillNumbersFromIndex, resolveArklegBillUrl } from "../src/lib/intelligence/v4/billActProofDepth";
 import { buildSosQuestionResponseRounds } from "../src/lib/intelligence/v4/debateResponseRoundEnrichment";
 import { buildTrapLaneStepCoverage } from "../src/lib/intelligence/v4/trapLaneStepCoverage";
+import { loadCountyElectionFundingResearch } from "../src/lib/intelligence/v4/countyElectionFundingIntelligence";
 
 const APP_ROOT = path.join(process.cwd(), "src/app/admin/(board)/intelligence");
 
@@ -99,9 +100,17 @@ for (const route of [
   "/admin/intelligence/kelly-debate-coaching",
   "/admin/intelligence/debate-depth",
   "/admin/intelligence/debate-command",
+  "/admin/intelligence/election-funding",
 ]) {
   assertRouteExists(route);
 }
+
+// --- Election funding CVSGF ---
+const funding = loadCountyElectionFundingResearch();
+assert.ok(funding.statutoryAuthority.length >= 2, "CVSGF statutory authority");
+assert.ok(funding.appropriations.filter((a) => a.evidenceTier === "VERIFIED_FACT").length >= 3, "verified appropriations");
+assert.ok(funding.countyAwardLedger.knownCountyReferences.length >= 8, "county breadcrumbs");
+assert.ok(funding.debateStrategy.hammerTrapQuestion.length > 40, "funding trap question");
 
 console.log("test-intelligence-hardening-audit: OK");
 console.log(`  prep sections: ${prepIds.length}`);
