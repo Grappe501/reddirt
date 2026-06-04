@@ -11,6 +11,8 @@ import type {
   VideoArchiveManualSponsorLink,
 } from "@/lib/legislature/videoArchiveRoomManifestTypes";
 
+export type { VideoArchiveManualSponsorLink } from "@/lib/legislature/videoArchiveRoomManifestTypes";
+
 export type VideoArchiveCommitteeLink = {
   id: string;
   committeeName: string;

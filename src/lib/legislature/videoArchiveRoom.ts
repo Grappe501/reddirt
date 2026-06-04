@@ -11,6 +11,7 @@ import type {
   VideoArchiveManualSponsorLink,
   VideoArchiveRoomPacket,
 } from "@/lib/legislature/videoArchiveRoomTypes";
+import type { VideoArchiveManifestAsset } from "@/lib/legislature/videoArchiveRoomManifestTypes";
 import { loadOpponentMediaCatalog } from "@/lib/intelligence/opponents/loadOpponentMediaCatalog";
 import { getTranscriptForMedia, loadOpponentMediaTranscripts } from "@/lib/intelligence/opponents/loadOpponentMediaTranscripts";
 import { buildHammerDirectDemocracyPacket } from "@/lib/intelligence/v4/hammerDirectDemocracyOffensive";

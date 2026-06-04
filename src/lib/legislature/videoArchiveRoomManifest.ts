@@ -13,6 +13,7 @@ export type {
 } from "@/lib/legislature/videoArchiveRoomManifestTypes";
 import type {
   KellyCandidateSuggestion,
+  OpponentSnippetSlot,
   VideoArchiveManifestAsset,
   VideoArchiveManualSponsorLink,
   VideoArchiveRoomManifest,

@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 export const maxDuration = 26;
@@ -14,7 +16,6 @@ export default async function BillActProofPage({ params }: Props) {
   } = await import("@/lib/intelligence/v4/debateIntelligenceV4");
   const { buildBillActProofDeep } = await import("@/lib/intelligence/v4/billActProofDepth");
   const { BillActProofDeepPage } = await import("../BillActProofDeepPage");
-  const { notFound } = await import("next/navigation");
 
   const v4 = loadDebateIntelligenceV4Packet();
   const narrative = findV4BillNarrative(v4, billNumber);

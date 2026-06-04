@@ -19,7 +19,7 @@ export type ResponseRoundPlan = {
   expertCrossExam: string[];
 };
 
-function leadPhrase(category: string): string {
+function leadPhrase(category: string): OpponentResponseRound["leadOrRebut"] {
   if (category.includes("direct-democracy")) return "lead";
   if (category.includes("experience")) return "rebut";
   return "respond";

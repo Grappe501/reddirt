@@ -19,7 +19,11 @@ export type {
   CrossExamRow,
   DebateWarRoomP4Packet,
 } from "@/lib/intelligence/v4/debateWarRoomP4Types";
-import type { DebateWarRoomP4Packet } from "@/lib/intelligence/v4/debateWarRoomP4Types";
+import type {
+  ArgumentLibraryRow,
+  CrossExamRow,
+  DebateWarRoomP4Packet,
+} from "@/lib/intelligence/v4/debateWarRoomP4Types";
 
 function readJson<T>(rel: string): T {
   return JSON.parse(fs.readFileSync(path.join(ROOT, rel), "utf8")) as T;

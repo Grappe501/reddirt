@@ -7,7 +7,10 @@ export type {
   DirectDemocracyBillAnchor,
   HammerDirectDemocracyPacket,
 } from "@/lib/intelligence/v4/hammerDirectDemocracyTypes";
-import type { HammerDirectDemocracyPacket } from "@/lib/intelligence/v4/hammerDirectDemocracyTypes";
+import type {
+  DirectDemocracyBillAnchor,
+  HammerDirectDemocracyPacket,
+} from "@/lib/intelligence/v4/hammerDirectDemocracyTypes";
 
 const BILL_INDEX = "data/opposition/kim-hammer-election-record-bill-index.json";
 
