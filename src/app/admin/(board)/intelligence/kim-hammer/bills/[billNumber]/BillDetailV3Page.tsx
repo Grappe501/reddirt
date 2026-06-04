@@ -5,14 +5,14 @@ import {
   findV4TimelineForBill,
   isInIntegrity2021,
 } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { notFound } from "next/navigation";
 
 export default function BillDetailV3Page({ billNumber }: { billNumber: string }) {
   const v4 = loadDebateIntelligenceV4Packet();
   const narrative = findV4BillNarrative(v4, billNumber);
-  const row = v4.hub.bills.find((b) => b.billNumber.toUpperCase() === billNumber.toUpperCase());
-  if (!narrative && !row) notFound();
+  if (!narrative) notFound();
 
   const timelineHits = findV4TimelineForBill(v4, billNumber);
   const in2021 = isInIntegrity2021(v4, billNumber);
@@ -23,7 +23,8 @@ export default function BillDetailV3Page({ billNumber }: { billNumber: string })
       <V4PageHeader
         eyebrow="Bill drill-down · v4"
         title={billNumber}
-        description={narrative?.plainEnglishSummary ?? row?.title ?? "Bill record"}
+        description={narrative.plainEnglishSummary}
+        guide={getSurfaceGuide("billDrilldown")}
       >
         <V4BackLinks />
         <Link
@@ -49,6 +50,21 @@ export default function BillDetailV3Page({ billNumber }: { billNumber: string })
         </section>
       )}
 
+      <section className="mb-4 rounded-xl border border-amber-200/50 bg-amber-50/40 p-4">
+        <h2 className="text-sm font-bold uppercase text-amber-950">Office-stacking contrast (research discipline)</h2>
+        <p className="mt-2 text-xs text-amber-950">
+          This raises a research question about whether successive election-law changes compound county implementation
+          burden without added state support. Frame as operational impact and verified act text — not motive or fraud
+          claims without sources.
+        </p>
+        {in2021 ? (
+          <p className="mt-2 text-xs text-violet-950">
+            This bill is part of the 2021 integrity foundation package — use package briefing when Hammer portrays later
+            sessions as a new pivot.
+          </p>
+        ) : null}
+      </section>
+
       {timelineHits.length > 0 ? (
         <section className="mb-4 rounded-xl border border-sky-100 bg-sky-50/40 p-4">
           <h2 className="text-sm font-bold uppercase text-sky-900">Timeline</h2>
@@ -62,8 +78,7 @@ export default function BillDetailV3Page({ billNumber }: { billNumber: string })
         </section>
       ) : null}
 
-      {narrative ? (
-        <>
+      <>
           <section className="mb-4 rounded-xl border border-kelly-text/10 bg-white p-4">
             <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Legislative narrative</h2>
             <p className="mt-2 text-sm text-kelly-muted">{narrative.billNarrative}</p>
@@ -127,10 +142,7 @@ export default function BillDetailV3Page({ billNumber }: { billNumber: string })
               <li className="text-amber-900">When not to use: {narrative.strategicBriefing.whenNotToUse}</li>
             </ul>
           </section>
-        </>
-      ) : (
-        <p className="text-sm text-kelly-muted">Narrative card not found — showing index row only.</p>
-      )}
+      </>
     </div>
   );
 }

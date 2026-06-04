@@ -1,9 +1,9 @@
 {
   "narrativeVersion": "1.0",
-  "generatedAt": "2026-05-28T04:45:53.995Z",
+  "generatedAt": "2026-06-04T00:44:22.851Z",
   "subject": "Kim Hammer",
   "intelligencePass": "KH-0B",
-  "billCount": 11,
+  "billCount": 29,
   "governanceRule": "Strategic messaging fields are INTERPRETATION or NEEDS_REVIEW until enrolled-act text verification. Bill and sponsor existence on Arkleg are VERIFIED_FACT. ChatGPT blocks are never authoritative sources.",
   "evidenceStatus": {
     "packageNarratives": "INTERPRETATION",
@@ -26,120 +26,27 @@
   ],
   "bills": [
     {
-      "billNumber": "SB486",
-      "actNumber": "728",
-      "sessionYear": "2021/2021R",
+      "billNumber": "HB1222",
+      "actNumber": "154",
+      "sessionYear": "2025/2025R",
       "hammerRole": "primary sponsor",
-      "legislativePackageId": "kh0b-2021-integrity-foundation",
-      "title": "TO AMEND THE LAW CONCERNING ELECTIONEERING; AND TO AMEND THE LAW CONCERNING PENALTIES FOR MISDEMEANOR OFFENSES RELATED TO VOTING.",
-      "plainEnglishSummary": "Tightens electioneering boundaries and attaches misdemeanor penalties to certain voting-related conduct—expanding what poll officials and law enforcement must police near voting.",
-      "billNarrative": "Opens the 2021 integrity cluster with poll-site enforcement rather than equipment or petitions. Signals a theory of deterrence through criminal exposure at the point of voting.",
-      "countyImpactNarrative": "County clerks and poll workers become front-line interpreters of electioneering rules; sheriffs and prosecutors may see increased referrals.",
-      "operationalBurdenNarrative": "Training, signage, and incident documentation at every precinct; risk of uneven enforcement across 75 counties.",
+      "legislativePackageId": null,
+      "title": "TO REQUIRE THE ATTORNEY GENERAL TO REVIEW BALLOT TITLES FOR CONFLICTS WITH THE UNITED STATES CONSTITUTION AND FEDERAL STATUTES; AND TO PROHIBIT THE SUBMISSION OF CONFLICTING INITIATIVE PETITIONS AND REFERENDUM PETITIONS.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: HB1222 extends Hammer's election-law record in direct_democracy_ballot_initiatives, petition_gathering, ballot_access — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
       "debateFrames": {
-        "kellyFrame": "Keep polling places calm and lawful without chilling lawful assistance (disability, language, family).",
-        "hammerFrame": "Strong penalties stop bad actors at the door.",
-        "countyFrame": "Give us uniform SOS guidance before expanding misdemeanors."
+        "kellyFrame": "Protect process integrity and lawful citizen access to the ballot.",
+        "hammerFrame": "Tighter petition and ballot processes prevent fraud and chaos.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
       },
       "counterArguments": [
-        "Over-broad electioneering rules snag innocent helpers.",
-        "County-by-county enforcement inconsistency undermines trust."
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
       ],
       "supporterArguments": [
-        "Poll workers need clear tools against intimidation.",
-        "Deterrence protects voters in line."
-      ],
-      "evidenceTier": {
-        "billExistence": "VERIFIED_FACT",
-        "actEnrollment": "VERIFIED_FACT",
-        "strategicMessaging": "INTERPRETATION"
-      },
-      "publicationRisk": "MEDIUM",
-      "strategicBriefing": {
-        "howToMessage": "Poll-site rules should protect voters, not trap volunteers—Kelly backs clerks with training.",
-        "debateImpact": "Humanizes election workers; avoids fraud rhetoric.",
-        "whenToUse": "Debate on intimidation vs. over-criminalization.",
-        "whenNotToUse": "Before verifying exact electioneering distance/text changes.",
-        "oppositionSetup": "Hammer: penalties stop chaos.",
-        "kellyMessageHelp": "Pair with voter assistance and disability access commitments.",
-        "campaignAlignment": "Voting rights as workable access."
-      },
-      "sourceLinks": [
-        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R"
-      ],
-      "governanceNotes": [
-        "Act 728 enrollment VERIFIED_FACT via Arkleg; penalty details NEEDS_REVIEW until PDF pass."
-      ]
-    },
-    {
-      "billNumber": "SB487",
-      "actNumber": "729",
-      "sessionYear": "2021/2021R",
-      "hammerRole": "primary sponsor",
-      "legislativePackageId": "kh0b-2021-integrity-foundation",
-      "title": "CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITES, AND VOTE CENTERS; AND TO AMEND ARKANSAS ELECTION LAW.",
-      "plainEnglishSummary": "Changes statutory process for drawing or changing precincts, polling places, and vote centers—county-driven operational decisions with less voter predictability if changed late.",
-      "billNarrative": "Anchors Hammer's county-administration doctrine: election geography is a policy lever years before 2025 petition fights.",
-      "countyImpactNarrative": "Clerks, election commissioners, and quorum courts coordinate mapping, notices, and ballot styles when boundaries shift.",
-      "operationalBurdenNarrative": "GIS work, voter notification, provisional ballot complexity, and potential vote-center consolidation fights.",
-      "debateFrames": {
-        "kellyFrame": "Stable sites + funded county support; SOS-led site planning workshops.",
-        "hammerFrame": "Local officials best know safe, efficient locations.",
-        "countyFrame": "Don't move my polling place without real notice and transit access."
-      },
-      "counterArguments": [
-        "Late site changes suppress turnout in rural and low-income precincts.",
-        "Vote-center models can confuse habitual polling-place voters."
-      ],
-      "supporterArguments": [
-        "Flexibility helps understaffed counties.",
-        "Consolidation can save money if done transparently."
-      ],
-      "evidenceTier": {
-        "billExistence": "VERIFIED_FACT",
-        "actEnrollment": "VERIFIED_FACT",
-        "strategicMessaging": "INTERPRETATION"
-      },
-      "publicationRisk": "MEDIUM",
-      "strategicBriefing": {
-        "howToMessage": "Respect local knowledge—fund implementation and voter notice.",
-        "debateImpact": "Geography as voter-access issue.",
-        "whenToUse": "County forums, redistricting-adjacent conversations.",
-        "whenNotToUse": "Without map examples approved by clerks.",
-        "oppositionSetup": "Hammer: efficiency and security.",
-        "kellyMessageHelp": "Offer SOS county site toolkit.",
-        "campaignAlignment": "County partnership lane."
-      },
-      "sourceLinks": [
-        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R"
-      ],
-      "governanceNotes": [
-        "Act 729 VERIFIED_FACT; voter-impact claims INTERPRETATION."
-      ]
-    },
-    {
-      "billNumber": "SB488",
-      "actNumber": "727",
-      "sessionYear": "2021/2021R",
-      "hammerRole": "primary sponsor",
-      "legislativePackageId": "kh0b-2021-integrity-foundation",
-      "title": "TO AMEND THE FREEDOM OF INFORMATION ACT OF 1967; TO CREATE AN EXEMPTION TO THE EXAMINATION AND COPYING OF PUBLIC RECORDS; AND TO AMEND THE LAW CONCERNING THE FREEDOM OF INFORMATION ACT OF 1967 AND VOTED BALLOTS.",
-      "plainEnglishSummary": "Creates a FOIA exemption around certain voted-ballot records—reducing public inspection pathways while election disputes increasingly rely on 'show the ballots' rhetoric.",
-      "billNarrative": "Defines a transparency tradeoff early: less public record access in exchange for claims of chain-of-custody protection.",
-      "countyImpactNarrative": "Clerks field FOIA requests; legal counsel interprets new exemptions; risk of conflicting public narratives.",
-      "operationalBurdenNarrative": "Records retention, redaction workflows, and litigation discovery disputes.",
-      "debateFrames": {
-        "kellyFrame": "Trust through audited processes and published procedures—not secrecy.",
-        "hammerFrame": "Ballots must be shielded from fishing expeditions.",
-        "countyFrame": "Protect clerks from harassing bulk requests."
-      },
-      "counterArguments": [
-        "Exemptions can look like hiding problems when trust is low.",
-        "Media and watchdog access supports accountability."
-      ],
-      "supporterArguments": [
-        "Reduces frivolous requests that paralyze small offices.",
-        "Protects voter privacy on marked ballots."
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
       ],
       "evidenceTier": {
         "billExistence": "VERIFIED_FACT",
@@ -148,91 +55,46 @@
       },
       "publicationRisk": "HIGH",
       "strategicBriefing": {
-        "howToMessage": "Kelly favors accountable transparency: official canvass, risk-limiting audits, clear records policy.",
-        "debateImpact": "Separates Kelly from both 'hide ballots' and 'harass clerks' extremes.",
-        "whenToUse": "Press on transparency; FOIA literacy audiences.",
-        "whenNotToUse": "Until exemption scope is quoted from enrolled act.",
-        "oppositionSetup": "Hammer: stop activist harassment.",
-        "kellyMessageHelp": "Propose public reporting standards without exposing individual ballots improperly.",
-        "campaignAlignment": "Open government with clerk protection."
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When HB1222 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
       },
       "sourceLinks": [
-        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB488&ddBienniumSession=2021%2F2021R"
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1222&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1222&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
       ],
       "governanceNotes": [
-        "Act 727 VERIFIED_FACT; exemption scope INTERPRETATION pending text review.",
-        "Do not claim criminal behavior—stick to records policy."
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 154 listed in KH-0 index — verify enrollment on Arkleg before debate."
       ]
     },
     {
-      "billNumber": "SB582",
-      "actNumber": "1051",
-      "sessionYear": "2021/2021R",
+      "billNumber": "HB1457",
+      "actNumber": "444",
+      "sessionYear": "2023/2023R",
       "hammerRole": "primary sponsor",
-      "legislativePackageId": "kh0b-2021-integrity-foundation",
-      "title": "TO AMEND ARKANSAS LAW CONCERNING COUNTY BOARDS OF ELECTION COMMISSIONERS; TO AMEND HOW COUNTY BOARDS OF ELECTION COMMISSIONERS TAKE THE OATH; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
-      "plainEnglishSummary": "Revises county election-board structure and oath requirements—direct governance layer on volunteers/appointees who oversee county election administration.",
-      "billNarrative": "Shows Hammer's recurring target: county election commissioners as compliance nodes, later revisited in SB292 (2023).",
-      "countyImpactNarrative": "Boards face new procedural steps; clerks coordinate with reconstituted or re-oathed commissioners.",
-      "operationalBurdenNarrative": "Recruitment, training, meeting cadence, and liability concerns for unpaid commissioners.",
+      "legislativePackageId": null,
+      "title": "TO ESTABLISH THE ARKANSAS POLL WATCHERS BILL OF RIGHTS ACT OF 2023; TO AMEND THE LAW CONCERNING POLL WATCHERS; AND TO AMEND THE LAW CONCERNING ELECTION PROCEDURES.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: HB1457 extends Hammer's election-law record in county_election_administration, ballot_access, poll_watchers_election_observers — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "Likely changes county clerk/election-board procedures; requires county-level implementation review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
       "debateFrames": {
-        "kellyFrame": "Support commissioners with SOS training stipends and term clarity.",
-        "hammerFrame": "Higher standards prevent negligent oversight.",
-        "countyFrame": "Don't empty the bench with paperwork."
+        "kellyFrame": "SOS should train and support counties — not pile unfunded election-law duties on clerks.",
+        "hammerFrame": "Stronger statewide standards and accountability for election administration.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
       },
       "counterArguments": [
-        "Harder recruitment in small counties.",
-        "Oath changes are symbolic without funding."
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
       ],
       "supporterArguments": [
-        "Accountability for high-stakes offices.",
-        "Aligns county boards with state expectations."
-      ],
-      "evidenceTier": {
-        "billExistence": "VERIFIED_FACT",
-        "actEnrollment": "VERIFIED_FACT",
-        "strategicMessaging": "INTERPRETATION"
-      },
-      "publicationRisk": "LOW",
-      "strategicBriefing": {
-        "howToMessage": "Elevate commissioners as partners; fund the board model.",
-        "debateImpact": "County governance without culture-war tone.",
-        "whenToUse": "Quorum court, election commission audiences.",
-        "whenNotToUse": "If claiming specific removal powers without text cite.",
-        "oppositionSetup": "Hammer: professionalism.",
-        "kellyMessageHelp": "Commissioner academy hosted by SOS.",
-        "campaignAlignment": "County administration doctrine file cross-link."
-      },
-      "sourceLinks": [
-        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB582&ddBienniumSession=2021%2F2021R"
-      ],
-      "governanceNotes": [
-        "Act 1051 VERIFIED_FACT."
-      ]
-    },
-    {
-      "billNumber": "SB643",
-      "actNumber": "973",
-      "sessionYear": "2021/2021R",
-      "hammerRole": "primary sponsor",
-      "legislativePackageId": "kh0b-2021-integrity-foundation",
-      "title": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
-      "plainEnglishSummary": "Amends absentee ballot procedures—tightening mail voting administration before the 2023 drop-box and method debates.",
-      "billNarrative": "Absentee tightening precedes Hammer's co-sponsorship of SB258; establishes mail-voting skepticism as legislative habit.",
-      "countyImpactNarrative": "Clerks adjust application verification, ballot assembly, and cure processes.",
-      "operationalBurdenNarrative": "More staff time per absentee ballot; voter helpline load; potential disenfranchisement if rules confuse seniors.",
-      "debateFrames": {
-        "kellyFrame": "Secure absentee with clear voter instructions and clerk staffing.",
-        "hammerFrame": "Close loopholes in mail voting.",
-        "countyFrame": "Rural mail timelines need realistic deadlines."
-      },
-      "counterArguments": [
-        "Administrative errors block lawful voters.",
-        "Military and elderly voters disproportionately harmed."
-      ],
-      "supporterArguments": [
-        "Uniform statewide absentee standards.",
-        "Reduces ambiguous clerk discretion."
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
       ],
       "evidenceTier": {
         "billExistence": "VERIFIED_FACT",
@@ -241,44 +103,94 @@
       },
       "publicationRisk": "MEDIUM",
       "strategicBriefing": {
-        "howToMessage": "Absentee is a service channel—staff it, don't strangle it.",
-        "debateImpact": "Voting rights via practical access.",
-        "whenToUse": "Senior groups, caregiver networks.",
-        "whenNotToUse": "Without citing specific ID/witness changes from act text.",
-        "oppositionSetup": "Hammer: mail-ballot fraud prevention.",
-        "kellyMessageHelp": "Publish absentee how-to guides; track rejection rates by county.",
-        "campaignAlignment": "Access + security balance."
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When HB1457 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
       },
       "sourceLinks": [
-        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB643&ddBienniumSession=2021%2F2021R"
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1457&ddBienniumSession=2023%2F2023R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1457&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/opponent-legislative-candidates.json"
       ],
       "governanceNotes": [
-        "Act 973 VERIFIED_FACT."
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 444 listed in KH-0 index — verify enrollment on Arkleg before debate."
       ]
     },
     {
-      "billNumber": "SB644",
-      "actNumber": "974",
-      "sessionYear": "2021/2021R",
+      "billNumber": "HB1464",
+      "actNumber": "295",
+      "sessionYear": "2023/2023R",
       "hammerRole": "primary sponsor",
-      "legislativePackageId": "kh0b-2021-integrity-foundation",
-      "title": "CONCERNING THE INVESTIGATION OF VIOLATIONS OF ELECTION LAW; AND TO ESTABLISH AN ELECTION LAW VIOLATION HOTLINE.",
-      "plainEnglishSummary": "Creates investigation tools including an election-law violation hotline—institutionalizes complaint volume upstream of 2023 integrity-review concepts.",
-      "billNarrative": "Moves 'see something say something' into statute; cultural shift toward policing elections via reports.",
-      "countyImpactNarrative": "Clerks and SBEC respond to complaint spikes; sheriffs/prosecutors may receive referrals.",
-      "operationalBurdenNarrative": "Triage staff, FOIA on complaints, reputational harm to counties from viral allegations.",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE LAW CONCERNING THE STATE BOARD OF ELECTION COMMISSIONERS.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: HB1464 extends Hammer's election-law record in election_enforcement — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
       "debateFrames": {
-        "kellyFrame": "Fast, fair investigations; protect clerks from bad-faith floods.",
-        "hammerFrame": "Hotline empowers citizens to report fraud.",
-        "countyFrame": "Fund investigation capacity if you create intake."
+        "kellyFrame": "Election rules should be clear, fair, and workable for voters and counties.",
+        "hammerFrame": "Integrity reforms keep Arkansas elections secure and trusted.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
       },
       "counterArguments": [
-        "Hotlines invite partisan weaponization.",
-        "Unfunded mandates to counties and SBEC."
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
       ],
       "supporterArguments": [
-        "Central intake beats social-media mobs.",
-        "Deters real misconduct."
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When HB1464 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1464&ddBienniumSession=2023%2F2023R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1464&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 295 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "HB1487",
+      "actNumber": "329",
+      "sessionYear": "2023/2023R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO CREATE THE BALLOT SECURITY ACT OF 2023; AND TO AMEND ELECTION LAW CONCERNING THE HANDLING OF ELECTION BALLOTS.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: HB1487 extends Hammer's election-law record in voting_equipment_paper_ballots — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Election rules should be clear, fair, and workable for voters and counties.",
+        "hammerFrame": "Integrity reforms keep Arkansas elections secure and trusted.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
       ],
       "evidenceTier": {
         "billExistence": "VERIFIED_FACT",
@@ -287,19 +199,406 @@
       },
       "publicationRisk": "MEDIUM",
       "strategicBriefing": {
-        "howToMessage": "Real violations deserve swift resolution; harassment hotlines waste county time.",
-        "debateImpact": "Administrative competence test for SOS candidate.",
-        "whenToUse": "Debates on enforcement culture.",
-        "whenNotToUse": "Do not allege hotline was used for specific cases without records.",
-        "oppositionSetup": "Hammer: empower whistleblowers.",
-        "kellyMessageHelp": "Publish complaint SLA metrics; shield clerks.",
-        "campaignAlignment": "Enforcement fairness."
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When HB1487 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
       },
       "sourceLinks": [
-        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB644&ddBienniumSession=2021%2F2021R"
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1487&ddBienniumSession=2023%2F2023R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1487&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/opponent-legislative-candidates.json"
       ],
       "governanceNotes": [
-        "Act 974 VERIFIED_FACT."
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 329 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "HB1693",
+      "actNumber": "458",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING DAMAGED OR DEFECTIVE BALLOTS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO PROMULGATE RULES REGARDING THE DUPLICATION OF DAMAGED OR DEFECTIVE BALLOTS.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: HB1693 extends Hammer's election-law record in election_enforcement — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Election rules should be clear, fair, and workable for voters and counties.",
+        "hammerFrame": "Integrity reforms keep Arkansas elections secure and trusted.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When HB1693 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1693&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1693&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 458 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "HB1707",
+      "actNumber": "524",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO REQUIRE CERTAIN CANDIDATES TO FILE REPORTS WITH THE SECRETARY OF STATE; TO AMEND PORTIONS OF INITIATED ACT 1 OF 1996; AND TO DECLARE AN EMERGENCY.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: HB1707 extends Hammer's election-law record in ballot_access, secretary_of_state_duties, write_ins_candidate_access — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Election rules should be clear, fair, and workable for voters and counties.",
+        "hammerFrame": "Integrity reforms keep Arkansas elections secure and trusted.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When HB1707 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 524 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "HB1837",
+      "actNumber": "999",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING DISCLOSURE FOR MATTERS REFERRED TO VOTERS; AND TO BAN FOREIGN FUNDING FOR BALLOT MEASURES; TO AMEND PORTIONS OF THE ARKANSAS CODE THAT RESULTED FROM INITIATED ACT 1 OF 1996.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: HB1837 extends Hammer's election-law record in unclassified_election_topic — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Election rules should be clear, fair, and workable for voters and counties.",
+        "hammerFrame": "Integrity reforms keep Arkansas elections secure and trusted.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When HB1837 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1837&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1837&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 999 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "SB207",
+      "actNumber": "218",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO DISCLOSE THAT PETITION FRAUD IS A CRIMINAL OFFENSE; AND TO DECLARE AN EMERGENCY.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB207 extends Hammer's election-law record in direct_democracy_ballot_initiatives, petition_gathering — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Protect process integrity and lawful citizen access to the ballot.",
+        "hammerFrame": "Tighter petition and ballot processes prevent fraud and chaos.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB207 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB207&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB207&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 218 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "SB208",
+      "actNumber": "240",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE AND REFERENDUM PETITIONS; TO VIEW A CANVASSER TO REQUEST PHOTO IDENTIFICATION BEFORE OBTAINING A SIGNATURE; AND TO DECLARE AN EMERGENCY.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB208 extends Hammer's election-law record in direct_democracy_ballot_initiatives, petition_gathering — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Protect process integrity and lawful citizen access to the ballot.",
+        "hammerFrame": "Tighter petition and ballot processes prevent fraud and chaos.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB208 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB208&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB208&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 240 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "SB210",
+      "actNumber": "274",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO REQUIRE THE SIGNER TO READ THE BALLOT TITLE OF THE PETITION IN THE PRESENCE OF A CANVASSER; AND TO DECLARE AN EMERGENCY.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB210 extends Hammer's election-law record in direct_democracy_ballot_initiatives, petition_gathering, ballot_access — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Protect process integrity and lawful citizen access to the ballot.",
+        "hammerFrame": "Tighter petition and ballot processes prevent fraud and chaos.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB210 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB210&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB210&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 274 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "SB211",
+      "actNumber": "241",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING INITIATIVE PETITIONS AND REFERENDUM PETITIONS; TO REQUIRE A CANVASSER TO SUBMIT AN AFFIDAVIT BEFORE SIGNATURES CAN BE COUNTED; AND TO DECLARE AN EMERGENCY.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB211 extends Hammer's election-law record in direct_democracy_ballot_initiatives, petition_gathering — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Protect process integrity and lawful citizen access to the ballot.",
+        "hammerFrame": "Tighter petition and ballot processes prevent fraud and chaos.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB211 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB211&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB211&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 241 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "SB250",
+      "actNumber": "350",
+      "sessionYear": "2023/2023R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING PAPER BALLOTS; TO AMEND THE LAW CONCERNING MARKING AND COUNTING PAPER BALLOTS; TO AMEND THE LAW CONCERNING THE DECLARATION OF ELECTION RESULTS; AND TO DECLARE AN EMERGENCY.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB250 extends Hammer's election-law record in voting_equipment_paper_ballots — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Election rules should be clear, fair, and workable for voters and counties.",
+        "hammerFrame": "Integrity reforms keep Arkansas elections secure and trusted.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB250 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB250&ddBienniumSession=2023%2F2023R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB250&ddBienniumSession=2023%2F2023R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 350 listed in KH-0 index — verify enrollment on Arkleg before debate."
       ]
     },
     {
@@ -485,6 +784,54 @@
       ]
     },
     {
+      "billNumber": "SB291",
+      "actNumber": "279",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING COMPLAINTS OF ELECTION LAW VIOLATIONS; AND TO AMEND THE DEADLINES FOR COMPLAINTS OF ELECTION LAW VIOLATIONS.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB291 extends Hammer's election-law record in election_enforcement — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Election rules should be clear, fair, and workable for voters and counties.",
+        "hammerFrame": "Integrity reforms keep Arkansas elections secure and trusted.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB291 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB291&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB291&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 279 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
       "billNumber": "SB292",
       "actNumber": null,
       "sessionYear": "2023/2023R",
@@ -526,6 +873,523 @@
       ],
       "governanceNotes": [
         "Enactment NEEDS_REVIEW."
+      ]
+    },
+    {
+      "billNumber": "SB294",
+      "actNumber": "280",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING ELECTION AUDITS; AND TO ALLOW THE STATE BOARD OF ELECTION COMMISSIONERS TO AUDIT A COUNTY IN THE PRECEDING ELECTION IN CERTAIN CIRCUMSTANCES.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB294 extends Hammer's election-law record in county_election_administration, election_enforcement — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "Likely changes county clerk/election-board procedures; requires county-level implementation review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "SOS should train and support counties — not pile unfunded election-law duties on clerks.",
+        "hammerFrame": "Stronger statewide standards and accountability for election administration.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB294 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB294&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB294&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 280 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "SB296",
+      "actNumber": "282",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING THE DESIGNATION OF AN EARLY VOTING LOCATION BY THE COUNTY CLERK.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB296 extends Hammer's election-law record in county_election_administration — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "Likely changes county clerk/election-board procedures; requires county-level implementation review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "SOS should train and support counties — not pile unfunded election-law duties on clerks.",
+        "hammerFrame": "Stronger statewide standards and accountability for election administration.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB296 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB296&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB296&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 282 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "SB299",
+      "actNumber": "403",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO REQUIRE A STAFF MEMBER TO WITNESS AN ADMINISTRATOR ASSISTING A RESIDENT OF A LONG-TERM RESIDENTIAL CARE FACILITY WITH ABSENTEE VOTING.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB299 extends Hammer's election-law record in absentee_voting — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Election rules should be clear, fair, and workable for voters and counties.",
+        "hammerFrame": "Integrity reforms keep Arkansas elections secure and trusted.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB299 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB299&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB299&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 403 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "SB486",
+      "actNumber": "728",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "TO AMEND THE LAW CONCERNING ELECTIONEERING; AND TO AMEND THE LAW CONCERNING PENALTIES FOR MISDEMEANOR OFFENSES RELATED TO VOTING.",
+      "plainEnglishSummary": "Tightens electioneering boundaries and attaches misdemeanor penalties to certain voting-related conduct—expanding what poll officials and law enforcement must police near voting.",
+      "billNarrative": "Opens the 2021 integrity cluster with poll-site enforcement rather than equipment or petitions. Signals a theory of deterrence through criminal exposure at the point of voting.",
+      "countyImpactNarrative": "County clerks and poll workers become front-line interpreters of electioneering rules; sheriffs and prosecutors may see increased referrals.",
+      "operationalBurdenNarrative": "Training, signage, and incident documentation at every precinct; risk of uneven enforcement across 75 counties.",
+      "debateFrames": {
+        "kellyFrame": "Keep polling places calm and lawful without chilling lawful assistance (disability, language, family).",
+        "hammerFrame": "Strong penalties stop bad actors at the door.",
+        "countyFrame": "Give us uniform SOS guidance before expanding misdemeanors."
+      },
+      "counterArguments": [
+        "Over-broad electioneering rules snag innocent helpers.",
+        "County-by-county enforcement inconsistency undermines trust."
+      ],
+      "supporterArguments": [
+        "Poll workers need clear tools against intimidation.",
+        "Deterrence protects voters in line."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Poll-site rules should protect voters, not trap volunteers—Kelly backs clerks with training.",
+        "debateImpact": "Humanizes election workers; avoids fraud rhetoric.",
+        "whenToUse": "Debate on intimidation vs. over-criminalization.",
+        "whenNotToUse": "Before verifying exact electioneering distance/text changes.",
+        "oppositionSetup": "Hammer: penalties stop chaos.",
+        "kellyMessageHelp": "Pair with voter assistance and disability access commitments.",
+        "campaignAlignment": "Voting rights as workable access."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB486&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 728 enrollment VERIFIED_FACT via Arkleg; penalty details NEEDS_REVIEW until PDF pass."
+      ]
+    },
+    {
+      "billNumber": "SB487",
+      "actNumber": "729",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "CONCERNING THE ESTABLISHMENT AND ALTERATION OF PRECINCT BOUNDARIES, POLLING SITES, AND VOTE CENTERS; AND TO AMEND ARKANSAS ELECTION LAW.",
+      "plainEnglishSummary": "Changes statutory process for drawing or changing precincts, polling places, and vote centers—county-driven operational decisions with less voter predictability if changed late.",
+      "billNarrative": "Anchors Hammer's county-administration doctrine: election geography is a policy lever years before 2025 petition fights.",
+      "countyImpactNarrative": "Clerks, election commissioners, and quorum courts coordinate mapping, notices, and ballot styles when boundaries shift.",
+      "operationalBurdenNarrative": "GIS work, voter notification, provisional ballot complexity, and potential vote-center consolidation fights.",
+      "debateFrames": {
+        "kellyFrame": "Stable sites + funded county support; SOS-led site planning workshops.",
+        "hammerFrame": "Local officials best know safe, efficient locations.",
+        "countyFrame": "Don't move my polling place without real notice and transit access."
+      },
+      "counterArguments": [
+        "Late site changes suppress turnout in rural and low-income precincts.",
+        "Vote-center models can confuse habitual polling-place voters."
+      ],
+      "supporterArguments": [
+        "Flexibility helps understaffed counties.",
+        "Consolidation can save money if done transparently."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Respect local knowledge—fund implementation and voter notice.",
+        "debateImpact": "Geography as voter-access issue.",
+        "whenToUse": "County forums, redistricting-adjacent conversations.",
+        "whenNotToUse": "Without map examples approved by clerks.",
+        "oppositionSetup": "Hammer: efficiency and security.",
+        "kellyMessageHelp": "Offer SOS county site toolkit.",
+        "campaignAlignment": "County partnership lane."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB487&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 729 VERIFIED_FACT; voter-impact claims INTERPRETATION."
+      ]
+    },
+    {
+      "billNumber": "SB488",
+      "actNumber": "727",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "TO AMEND THE FREEDOM OF INFORMATION ACT OF 1967; TO CREATE AN EXEMPTION TO THE EXAMINATION AND COPYING OF PUBLIC RECORDS; AND TO AMEND THE LAW CONCERNING THE FREEDOM OF INFORMATION ACT OF 1967 AND VOTED BALLOTS.",
+      "plainEnglishSummary": "Creates a FOIA exemption around certain voted-ballot records—reducing public inspection pathways while election disputes increasingly rely on 'show the ballots' rhetoric.",
+      "billNarrative": "Defines a transparency tradeoff early: less public record access in exchange for claims of chain-of-custody protection.",
+      "countyImpactNarrative": "Clerks field FOIA requests; legal counsel interprets new exemptions; risk of conflicting public narratives.",
+      "operationalBurdenNarrative": "Records retention, redaction workflows, and litigation discovery disputes.",
+      "debateFrames": {
+        "kellyFrame": "Trust through audited processes and published procedures—not secrecy.",
+        "hammerFrame": "Ballots must be shielded from fishing expeditions.",
+        "countyFrame": "Protect clerks from harassing bulk requests."
+      },
+      "counterArguments": [
+        "Exemptions can look like hiding problems when trust is low.",
+        "Media and watchdog access supports accountability."
+      ],
+      "supporterArguments": [
+        "Reduces frivolous requests that paralyze small offices.",
+        "Protects voter privacy on marked ballots."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Kelly favors accountable transparency: official canvass, risk-limiting audits, clear records policy.",
+        "debateImpact": "Separates Kelly from both 'hide ballots' and 'harass clerks' extremes.",
+        "whenToUse": "Press on transparency; FOIA literacy audiences.",
+        "whenNotToUse": "Until exemption scope is quoted from enrolled act.",
+        "oppositionSetup": "Hammer: stop activist harassment.",
+        "kellyMessageHelp": "Propose public reporting standards without exposing individual ballots improperly.",
+        "campaignAlignment": "Open government with clerk protection."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB488&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 727 VERIFIED_FACT; exemption scope INTERPRETATION pending text review.",
+        "Do not claim criminal behavior—stick to records policy."
+      ]
+    },
+    {
+      "billNumber": "SB551",
+      "actNumber": "764",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING CANVASSING FOR A PETITION FOR A LOCAL OPTION ELECTION.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB551 extends Hammer's election-law record in direct_democracy_ballot_initiatives, petition_gathering — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Protect process integrity and lawful citizen access to the ballot.",
+        "hammerFrame": "Tighter petition and ballot processes prevent fraud and chaos.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB551 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB551&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB551&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 764 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "SB582",
+      "actNumber": "1051",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING COUNTY BOARDS OF ELECTION COMMISSIONERS; TO AMEND HOW COUNTY BOARDS OF ELECTION COMMISSIONERS TAKE THE OATH; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "plainEnglishSummary": "Revises county election-board structure and oath requirements—direct governance layer on volunteers/appointees who oversee county election administration.",
+      "billNarrative": "Shows Hammer's recurring target: county election commissioners as compliance nodes, later revisited in SB292 (2023).",
+      "countyImpactNarrative": "Boards face new procedural steps; clerks coordinate with reconstituted or re-oathed commissioners.",
+      "operationalBurdenNarrative": "Recruitment, training, meeting cadence, and liability concerns for unpaid commissioners.",
+      "debateFrames": {
+        "kellyFrame": "Support commissioners with SOS training stipends and term clarity.",
+        "hammerFrame": "Higher standards prevent negligent oversight.",
+        "countyFrame": "Don't empty the bench with paperwork."
+      },
+      "counterArguments": [
+        "Harder recruitment in small counties.",
+        "Oath changes are symbolic without funding."
+      ],
+      "supporterArguments": [
+        "Accountability for high-stakes offices.",
+        "Aligns county boards with state expectations."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "LOW",
+      "strategicBriefing": {
+        "howToMessage": "Elevate commissioners as partners; fund the board model.",
+        "debateImpact": "County governance without culture-war tone.",
+        "whenToUse": "Quorum court, election commission audiences.",
+        "whenNotToUse": "If claiming specific removal powers without text cite.",
+        "oppositionSetup": "Hammer: professionalism.",
+        "kellyMessageHelp": "Commissioner academy hosted by SOS.",
+        "campaignAlignment": "County administration doctrine file cross-link."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB582&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 1051 VERIFIED_FACT."
+      ]
+    },
+    {
+      "billNumber": "SB584",
+      "actNumber": "768",
+      "sessionYear": "2025/2025R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": null,
+      "title": "TO AMEND THE LAW CONCERNING LOCAL INITIATIVE AND REFERENDUM PETITIONS.",
+      "plainEnglishSummary": "Title-level summary; confirm in enrolled act text and amendments before external use.",
+      "billNarrative": "P1 scaffold: SB584 extends Hammer's election-law record in direct_democracy_ballot_initiatives, petition_gathering — interpretive until enrolled-act verification.",
+      "countyImpactNarrative": "No explicit county administration trigger identified in title-level review.",
+      "operationalBurdenNarrative": "Training, documentation, and uneven implementation risk across 75 counties without SOS support funding.",
+      "debateFrames": {
+        "kellyFrame": "Protect process integrity and lawful citizen access to the ballot.",
+        "hammerFrame": "Tighter petition and ballot processes prevent fraud and chaos.",
+        "countyFrame": "Give clerks implementation guidance, training dollars, and lead time before new mandates."
+      },
+      "counterArguments": [
+        "Unfunded mandates strain county election workers.",
+        "Title-level claims need enrolled-act confirmation before debate citations."
+      ],
+      "supporterArguments": [
+        "Supporters cite integrity, uniformity, or enforcement goals in bill title and record."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "HIGH",
+      "strategicBriefing": {
+        "howToMessage": "Name act if verified, then county impact, then SOS-as-service bridge — no motive claims.",
+        "debateImpact": "Use when moderator or opponent names this bill; pair with theme matrix row.",
+        "whenToUse": "When SB584 is cited on stage or in county/petition threads.",
+        "whenNotToUse": "Before enrolled-act text pass for specific penalty or procedure claims.",
+        "oppositionSetup": "Hammer cites bill number and integrity framing.",
+        "kellyMessageHelp": "Acknowledge security goal; contrast implementation burden and county partnership.",
+        "campaignAlignment": "Trust, counties, participation — per debate prep pillars."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB584&ddBienniumSession=2025%2F2025R",
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB584&ddBienniumSession=2025%2F2025R",
+        "data/intelligence/opponent-legislative-candidates.json"
+      ],
+      "governanceNotes": [
+        "P1 auto-scaffold from bill index 2026-06-03; strategic messaging INTERPRETATION until human act-text review.",
+        "Act 768 listed in KH-0 index — verify enrollment on Arkleg before debate."
+      ]
+    },
+    {
+      "billNumber": "SB643",
+      "actNumber": "973",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "TO AMEND ARKANSAS LAW CONCERNING ABSENTEE BALLOTS; AND TO AMEND ARKANSAS LAW CONCERNING ELECTIONS.",
+      "plainEnglishSummary": "Amends absentee ballot procedures—tightening mail voting administration before the 2023 drop-box and method debates.",
+      "billNarrative": "Absentee tightening precedes Hammer's co-sponsorship of SB258; establishes mail-voting skepticism as legislative habit.",
+      "countyImpactNarrative": "Clerks adjust application verification, ballot assembly, and cure processes.",
+      "operationalBurdenNarrative": "More staff time per absentee ballot; voter helpline load; potential disenfranchisement if rules confuse seniors.",
+      "debateFrames": {
+        "kellyFrame": "Secure absentee with clear voter instructions and clerk staffing.",
+        "hammerFrame": "Close loopholes in mail voting.",
+        "countyFrame": "Rural mail timelines need realistic deadlines."
+      },
+      "counterArguments": [
+        "Administrative errors block lawful voters.",
+        "Military and elderly voters disproportionately harmed."
+      ],
+      "supporterArguments": [
+        "Uniform statewide absentee standards.",
+        "Reduces ambiguous clerk discretion."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Absentee is a service channel—staff it, don't strangle it.",
+        "debateImpact": "Voting rights via practical access.",
+        "whenToUse": "Senior groups, caregiver networks.",
+        "whenNotToUse": "Without citing specific ID/witness changes from act text.",
+        "oppositionSetup": "Hammer: mail-ballot fraud prevention.",
+        "kellyMessageHelp": "Publish absentee how-to guides; track rejection rates by county.",
+        "campaignAlignment": "Access + security balance."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB643&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 973 VERIFIED_FACT."
+      ]
+    },
+    {
+      "billNumber": "SB644",
+      "actNumber": "974",
+      "sessionYear": "2021/2021R",
+      "hammerRole": "primary sponsor",
+      "legislativePackageId": "kh0b-2021-integrity-foundation",
+      "title": "CONCERNING THE INVESTIGATION OF VIOLATIONS OF ELECTION LAW; AND TO ESTABLISH AN ELECTION LAW VIOLATION HOTLINE.",
+      "plainEnglishSummary": "Creates investigation tools including an election-law violation hotline—institutionalizes complaint volume upstream of 2023 integrity-review concepts.",
+      "billNarrative": "Moves 'see something say something' into statute; cultural shift toward policing elections via reports.",
+      "countyImpactNarrative": "Clerks and SBEC respond to complaint spikes; sheriffs/prosecutors may receive referrals.",
+      "operationalBurdenNarrative": "Triage staff, FOIA on complaints, reputational harm to counties from viral allegations.",
+      "debateFrames": {
+        "kellyFrame": "Fast, fair investigations; protect clerks from bad-faith floods.",
+        "hammerFrame": "Hotline empowers citizens to report fraud.",
+        "countyFrame": "Fund investigation capacity if you create intake."
+      },
+      "counterArguments": [
+        "Hotlines invite partisan weaponization.",
+        "Unfunded mandates to counties and SBEC."
+      ],
+      "supporterArguments": [
+        "Central intake beats social-media mobs.",
+        "Deters real misconduct."
+      ],
+      "evidenceTier": {
+        "billExistence": "VERIFIED_FACT",
+        "actEnrollment": "VERIFIED_FACT",
+        "strategicMessaging": "INTERPRETATION"
+      },
+      "publicationRisk": "MEDIUM",
+      "strategicBriefing": {
+        "howToMessage": "Real violations deserve swift resolution; harassment hotlines waste county time.",
+        "debateImpact": "Administrative competence test for SOS candidate.",
+        "whenToUse": "Debates on enforcement culture.",
+        "whenNotToUse": "Do not allege hotline was used for specific cases without records.",
+        "oppositionSetup": "Hammer: empower whistleblowers.",
+        "kellyMessageHelp": "Publish complaint SLA metrics; shield clerks.",
+        "campaignAlignment": "Enforcement fairness."
+      },
+      "sourceLinks": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB644&ddBienniumSession=2021%2F2021R"
+      ],
+      "governanceNotes": [
+        "Act 974 VERIFIED_FACT."
       ]
     }
   ]

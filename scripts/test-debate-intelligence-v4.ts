@@ -29,9 +29,9 @@ function main() {
     v4.hub.totalBills >= 18 &&
     v4.debatePrepSections.length === 14 &&
     v4.debatePrepSectionsV4.length === 28 &&
-    v4.billNarratives.length >= 5 &&
+    v4.billNarratives.length >= 18 &&
     v4.themeMatrix.length >= 5 &&
-    v4.likelyArguments.length >= 3 &&
+    v4.likelyArguments.length >= 6 &&
     v4.rebuttalPlaybook.length >= 5;
 
   if (!ok) {

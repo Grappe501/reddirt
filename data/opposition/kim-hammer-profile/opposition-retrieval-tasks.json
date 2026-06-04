@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T16:46:26.663Z",
+  "generatedAt": "2026-06-03T12:00:00.000Z",
   "tasks": [
     {
       "id": "kh3b-pre-legislative-authored-writings",
@@ -134,18 +134,24 @@
       "rank": 7,
       "priority": "MEDIUM",
       "description": "Local radio/TV clip transcripts and quotes are not normalized for reusable rapid-response sourcing.",
-      "taskStatus": "NOT_STARTED",
+      "taskStatus": "IN_PROGRESS",
       "evidenceStatus": "NEEDS_REVIEW",
-      "owner": "Open queue",
-      "blocker": "No normalized local radio/TV quote cards",
-      "currentAvailableEvidence": [],
-      "recommendedHumanAction": "Standardize quote cards with source URL, date, timestamp, context",
+      "owner": "Media archive operator",
+      "blocker": "Campaign and coverage quote scaffolds added; verbatim local radio/TV still needed",
+      "currentAvailableEvidence": [
+        "4 quote cards in opposition-quote-records.json (P1 — NEEDS_REVIEW / INTERPRETATION)",
+        "Linked to likely-arguments lanes"
+      ],
+      "recommendedHumanAction": "Replace paraphrase cards with verbatim quotes + timestamps from station archives",
       "citationRequirement": "Full context sentence + station segment archive link",
       "nextRetrievalStep": "Export closed-caption transcripts from station segment archives",
       "canCloseFromLocalEvidence": false,
-      "closureStatus": "OPEN",
-      "linkedArchiveItemIds": [],
-      "updatedAt": "2026-06-02T16:46:25.595Z"
+      "closureStatus": "PARTIAL",
+      "linkedArchiveItemIds": [
+        "kh-quote-integrity-ranking-2025-06",
+        "kh-quote-runoff-coverage-paraphrase"
+      ],
+      "updatedAt": "2026-06-03T12:00:00.000Z"
     }
   ]
 }

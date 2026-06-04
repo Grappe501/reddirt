@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import type { V3DebatePrepSection } from "@/lib/intelligence/v3/debateIntelligenceV3Types";
+import { getPrepSectionGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
+
 export function V4DebatePrepWithNav({ sections }: { sections: V3DebatePrepSection[] }) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
 
@@ -50,6 +53,8 @@ export function V4DebatePrepWithNav({ sections }: { sections: V3DebatePrepSectio
           {sections.map((section) => (
             <section key={section.id} id={`v4-prep-${section.id}`} className="scroll-mt-24 rounded-xl border border-kelly-text/10 bg-white p-4">
               <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">{section.title}</h2>
+              {getPrepSectionGuide(section.id) ? <V4OperatorGuide guide={getPrepSectionGuide(section.id)!} /> : null}
+              <p className="mt-2 text-[10px] font-bold uppercase text-kelly-subtle">Research content below</p>
               {section.paragraphs.length > 0 ? (
                 <div className="mt-2 space-y-2 text-xs leading-relaxed text-kelly-muted">
                   {section.paragraphs.map((p) => (

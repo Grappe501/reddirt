@@ -2,7 +2,9 @@ import Link from "next/link";
 import { listClaimsForAdmin, summarizeClaimLedger } from "@/lib/intelligence/claims/claimLedgerSummary";
 import { loadCitationAnchors, loadCitationSources } from "@/lib/intelligence/claims/claimLedgerStore";
 import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
+import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 import { V3BackLinks, V3PageHeader } from "@/components/admin/intelligence/v3/V3PageHeader";
 
 export const dynamic = "force-dynamic";
@@ -45,13 +47,15 @@ export default async function ClaimsLedgerPage() {
       <V3PageHeader
         eyebrow="Claims · v4"
         title="Claim trace & citation depth"
-        description="INTERNAL ONLY · Ledger plus election-record claims review markdown. Human approval required before public use."
+        description="Step 5 of the debate path — legal and reputational firewall. Every line Kelly plans to say in debate prep sections 11 and 24 must appear here as supported or be cut. Same gate for TV, mail, and social."
       >
         <V3BackLinks />
         <Link href="/admin/intelligence/llm-review-queue" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
           LLM review
         </Link>
       </V3PageHeader>
+
+      {getSurfaceGuide("claims") ? <V4OperatorGuide guide={getSurfaceGuide("claims")!} /> : null}
 
       <section className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div className={card}>

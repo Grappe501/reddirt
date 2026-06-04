@@ -1,4 +1,6 @@
 import Link from "next/link";
+import type { OperatorGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 
 export function V4BackLinks() {
   return (
@@ -20,11 +22,13 @@ export function V4PageHeader({
   eyebrow,
   title,
   description,
+  guide,
   children,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  guide?: OperatorGuide;
   children?: React.ReactNode;
 }) {
   return (
@@ -32,6 +36,7 @@ export function V4PageHeader({
       <p className="font-body text-[10px] font-bold uppercase tracking-[0.24em] text-violet-900">{eyebrow}</p>
       <h1 className="font-heading text-3xl font-bold text-kelly-navy">{title}</h1>
       <p className="mt-2 max-w-4xl font-body text-sm text-kelly-muted">{description}</p>
+      {guide ? <V4OperatorGuide guide={guide} /> : null}
       {children ? <div className="mt-4 flex flex-wrap gap-2">{children}</div> : null}
     </header>
   );

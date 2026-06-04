@@ -1,40 +1,31 @@
 import Link from "next/link";
-import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
-import { loadKimHammerWorkbench } from "@/lib/opposition/kimHammerWorkbench";
-import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
+import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
+import { V4ThemeMatrix } from "@/components/admin/intelligence/v4/V4ThemeMatrix";
 
-export default async function KimHammerThemesPage() {
-  const data = loadKimHammerWorkbench();
-  const kh2 = loadKimHammerKh2Workbench();
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const maxDuration = 26;
+
+/** v4 theme matrix — no full workbench graph (Netlify-safe). */
+export default function KimHammerThemesPage() {
+  const v4 = loadDebateIntelligenceV4Packet();
 
   return (
-    <KimHammerBriefingPageShell moduleId="themes">
-<section className="grid gap-4">
-        {Object.entries(data.themes).map(([theme, billIds]) => (
-          <div key={theme} className="rounded-xl border border-kelly-text/10 bg-white p-4">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">{theme.replaceAll("_", " ")}</h2>
-            <p className="mt-1 text-xs text-kelly-muted">Bills in theme: {billIds.length}</p>
-            <p className="mt-1 text-xs text-kelly-muted">Risk level: {billIds.length >= 4 ? "HIGH" : billIds.length > 0 ? "MEDIUM" : "LOW"}</p>
-            <p className="mt-1 text-xs text-kelly-muted">Debate use: Build one sourced contrast question per top bill.</p>
-            <p className="mt-1 text-xs text-kelly-muted">Research gaps: Pull act text + implementation evidence for county impact.</p>
-            <p className="mt-1 text-xs text-kelly-muted">
-              Contrast implication: {kh2.websiteMessageIndex.contrastImplications[0]?.pattern ?? "NEEDS_REVIEW"}.
-            </p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {billIds.map((billId) => (
-                <Link
-                  key={billId}
-                  href={`/admin/intelligence/kim-hammer/bills/${encodeURIComponent(billId)}`}
-                  className="rounded border px-2 py-0.5 text-[11px] font-semibold text-kelly-navy"
-                >
-                  {billId}
-                </Link>
-              ))}
-            </div>
-          </div>
-        ))}
-      </section>
-    </KimHammerBriefingPageShell>
+    <div className="mx-auto max-w-7xl text-kelly-text">
+      <V4PageHeader
+        eyebrow="Election record · v4 themes"
+        title="Theme matrix"
+        description="Pattern view for debate: voters hear 'integrity package' not isolated bill numbers. Pick one theme to own tonight (usually county burden or direct democracy), cite theme first then bills. Links to drill-down for act proof."
+        guide={getSurfaceGuide("themeMatrix")}
+      >
+        <V4BackLinks />
+        <Link href="/admin/intelligence" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
+          Hub
+        </Link>
+      </V4PageHeader>
+      <V4ThemeMatrix rows={v4.themeMatrix} />
+    </div>
   );
 }
-

@@ -1,8 +1,14 @@
+import Link from "next/link";
 import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
 import {
   loadKimHammerEvidenceIndex,
   resolveRetrievalTaskStatus,
 } from "@/lib/opposition/kimHammerEvidenceIndex";
+import { loadSafeEvidenceCommandPageData } from "@/lib/intelligence/safeEvidenceCommandLoads";
+import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { V4ExecutiveBriefPanel } from "@/components/admin/intelligence/v4/V4ExecutiveBrief";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import {
   canExportClaim,
   getExternalUseStatus,
@@ -12,8 +18,6 @@ import {
   getSafetyBlockers,
   KIM_HAMMER_EXPORT_FILTER,
 } from "@/lib/opposition/kimHammerPublicationSafety";
-import { loadKimHammerKh4SuggestionAgents } from "@/lib/opposition/kimHammerKh4SuggestionAgents";
-import { loadKimHammerNarrativeBriefings } from "@/lib/opposition/kimHammerNarrativeBriefings";
 import { EvidenceCommandNarrativeBrief } from "./EvidenceCommandNarrativeBrief";
 import {
   EvidenceCommandDashboard,
@@ -34,21 +38,6 @@ import {
 } from "../EvidenceCommandTaskPanel";
 import { getAllowedReviewTransitions } from "@/lib/opposition/kimHammerReviewWorkflow";
 import { getAllowedTaskTransitions } from "@/lib/opposition/kimHammerTaskWorkflow";
-import { summarizeGeographicNarrativeForCommand } from "@/lib/opposition/kimHammerGeographicNarrativeState";
-import { summarizeNarrativeUsageRisk } from "@/lib/opposition/kimHammerNarrativeUsageAnalytics";
-import { summarizeStrategicAlignmentRisk } from "@/lib/intelligence/campaignStrategicAlignment";
-import {
-  loadCountyBriefingIntelligenceIndex,
-  summarizeCountyBriefingForEvidenceCommand,
-} from "@/lib/intelligence/countyBriefingIntelligence";
-import { summarizeOperationalIntelligenceForEvidenceCommand } from "@/lib/intelligence/aggregateCampaignIntelligence";
-import { summarizeMediaMonitoringReadiness } from "@/lib/intelligence/publicMediaMonitor";
-import { summarizeCampaignIntelligenceState } from "@/lib/intelligence/intelligenceBrainCoordinator";
-import {
-  getEvidenceCommandActionQueueSection,
-  syncHumanActionQueue,
-} from "@/lib/intelligence/strategicDecisionSupport";
-import { computeStatewideRegistrationRollup } from "@/lib/intelligence/voterRegistrationTargetModel";
 
 function buildRecommendedActions(index: ReturnType<typeof loadKimHammerEvidenceIndex>): string[] {
   const actions: string[] = [];
@@ -188,25 +177,20 @@ function buildAnalytics(
   };
 }
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const maxDuration = 26;
+
 export default async function KimHammerEvidenceCommandPage() {
-  const index = loadKimHammerEvidenceIndex();
+  const safe = loadSafeEvidenceCommandPageData();
+  const { index, copilot, narrativeBriefings, geographicSummary, usageSummary, strategicSummary, countyBriefingSummary, operationalSummary, registration, media, brain, actionQueueSection, indexUnavailable } = safe;
   const { metrics } = index;
-  const copilot = loadKimHammerKh4SuggestionAgents();
   const claimRows = buildClaimRows(index);
   const reviewRows = buildReviewRows(index);
   const executableTaskRows = buildExecutableTaskRows(index);
   const taskRows = buildTaskRows(index);
   const analytics = buildAnalytics(index, taskRows, copilot.agents.length);
   const recommendedActions = buildRecommendedActions(index);
-  const geographicSummary = summarizeGeographicNarrativeForCommand();
-  const usageSummary = summarizeNarrativeUsageRisk();
-  const strategicSummary = summarizeStrategicAlignmentRisk();
-  const countyBriefingSummary = summarizeCountyBriefingForEvidenceCommand();
-  const countyBriefings = loadCountyBriefingIntelligenceIndex();
-  const operationalSummary = summarizeOperationalIntelligenceForEvidenceCommand(countyBriefings.counties);
-  const registration = computeStatewideRegistrationRollup();
-  const media = summarizeMediaMonitoringReadiness();
-  const brain = summarizeCampaignIntelligenceState();
   const nsi7Summary = {
     mediaGaps: media.gaps,
     targetPathwayGaps: brain.targetPathwayMissingData,
@@ -254,8 +238,6 @@ export default async function KimHammerEvidenceCommandPage() {
     recurringAttackSummaries: brain.memoryOpponentEscalation.slice(0, 3),
     intelligenceMemoryHref: "/admin/intelligence/intelligence-memory",
   };
-  syncHumanActionQueue();
-  const actionQueueSection = getEvidenceCommandActionQueueSection();
   const nsi15Summary = {
     topUrgent: actionQueueSection.topUrgent.map((row) => ({
       actionId: row.actionId,
@@ -307,9 +289,36 @@ export default async function KimHammerEvidenceCommandPage() {
 
   const exportFilterLabel = `${KIM_HAMMER_EXPORT_FILTER.externalUseStatus} · ${KIM_HAMMER_EXPORT_FILTER.citationStatus} · ${KIM_HAMMER_EXPORT_FILTER.confidenceTier} · ${KIM_HAMMER_EXPORT_FILTER.legalRisk} legal risk · review APPROVED_FOR_EXTERNAL_USE or EXPORTED`;
 
+  if (indexUnavailable) {
+    const v4 = loadDebateIntelligenceV4Packet();
+    return (
+      <div className="mx-auto max-w-7xl text-kelly-text">
+        <V4PageHeader
+          eyebrow="Evidence command · v4 fallback"
+          title="Citation & retrieval overview"
+          description="Full evidence-command graph did not load. Use v4 retrieval queue and claims review until staff surfaces recover."
+          guide={getSurfaceGuide("evidenceCommand")}
+        >
+          <V4BackLinks />
+          <Link href="/admin/intelligence/claims" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
+            Claims
+          </Link>
+        </V4PageHeader>
+        <V4ExecutiveBriefPanel brief={v4.executiveBrief} scorecard={v4.readinessScorecard} />
+        <ul className="mt-4 list-inside list-disc text-xs text-kelly-muted">
+          {v4.retrievalQueue.map((task) => (
+            <li key={task.id}>
+              [{task.priority}] {task.description}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
   return (
     <KimHammerBriefingPageShell moduleId="evidence-command">
-<EvidenceCommandNarrativeBrief sections={loadKimHammerNarrativeBriefings().sections} />
+<EvidenceCommandNarrativeBrief sections={narrativeBriefings.sections} />
 
       <EvidenceCommandDashboard
         analytics={analytics}

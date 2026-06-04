@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { V4ThemeMatrix } from "@/components/admin/intelligence/v4/V4ThemeMatrix";
 import { V4ArgumentMap } from "@/components/admin/intelligence/v4/V4ArgumentMap";
@@ -13,7 +14,8 @@ export default function KimHammerCommandCenterV3() {
       <V4PageHeader
         eyebrow="Opponent record · v4"
         title="Kim Hammer intelligence map"
-        description="Structured opposition profile: theme matrix, timeline, strengths/vulnerabilities, retrieval queue, and KH-3 dossier excerpts — without the full module briefing graph."
+        description="Staff navigation map — Kelly should stay on hub → debate prep → bill drill-downs on debate night. Use modules for county op-eds, gap-driven retrieval, and 2021 package depth; pre-brief Kelly on at most 2–3 modules if moderator may go policy-heavy."
+        guide={getSurfaceGuide("opponentRecord")}
       >
         <V4BackLinks />
       </V4PageHeader>

@@ -1,12 +1,13 @@
 {
-  "generatedAt": "2026-05-27T01:20:00.000Z",
+  "generatedAt": "2026-06-03T12:00:00.000Z",
   "arguments": [
     {
       "id": "election_integrity",
       "argument": "Election integrity and security reforms are necessary to maintain trust.",
       "evidenceHeMayCite": [
         "Campaign election security page act list",
-        "Heritage ranking references in campaign messaging"
+        "Heritage ranking references in campaign messaging",
+        "2021 integrity package bills (Acts 727–731, 1003–1004)"
       ],
       "sourceAnchors": [
         "https://www.hammerforarkansas.com/election-security/",
@@ -18,7 +19,8 @@
       "argument": "Long legislative tenure and committee leadership prepare him for SOS operations.",
       "evidenceHeMayCite": [
         "House and Senate service years",
-        "Committee chair roles"
+        "Committee chair roles",
+        "Pastor and community leadership biography"
       ],
       "sourceAnchors": [
         "https://senate.arkansas.gov/senators/576/",
@@ -29,12 +31,81 @@
       "id": "uniformity_security_accountability",
       "argument": "Uniform statewide procedures and stricter controls improve election accountability.",
       "evidenceHeMayCite": [
-        "Act references on canvassing, absentee, poll-zone restrictions, and counting procedures"
+        "Act references on canvassing, absentee, poll-zone restrictions, and counting procedures",
+        "HB1457 poll watchers, SB272 integrity review"
       ],
       "sourceAnchors": [
         "data/opposition/kim-hammer-election-record-bill-index.json"
       ]
+    },
+    {
+      "id": "petition_rules",
+      "argument": "Tighter petition and ballot-initiative rules prevent fraud and protect the ballot.",
+      "evidenceHeMayCite": [
+        "2025 petition-cluster bills (SB207–SB211, SB291, SB294, SB296, SB299)",
+        "Campaign statements on ballot security"
+      ],
+      "sourceAnchors": [
+        "data/opposition/kim-hammer-election-record-theme-matrix.json",
+        "data/opposition/kim-hammer-election-record-bill-index.json"
+      ]
+    },
+    {
+      "id": "county_accountability",
+      "argument": "Counties need stronger state oversight and standardized election procedures.",
+      "evidenceHeMayCite": [
+        "SB272 election integrity review",
+        "SB487/SB273 polling-site control",
+        "County board duty bills (SB582, SB292)"
+      ],
+      "sourceAnchors": [
+        "data/opposition/kim-hammer-profile/kim-hammer-kh0b-county-administration-burden.json"
+      ]
+    },
+    {
+      "id": "paper_ballots_transparency",
+      "argument": "Paper ballots and limited public access to voted ballots protect chain of custody.",
+      "evidenceHeMayCite": [
+        "SB488 FOIA exemption for voted ballots (Act 727)",
+        "Campaign election-security equipment messaging"
+      ],
+      "sourceAnchors": [
+        "https://www.arkleg.state.ar.us/Bills/Detail?id=SB488&ddBienniumSession=2021%2F2021R"
+      ]
+    },
+    {
+      "id": "heritage_ranking",
+      "argument": "Arkansas ranks first nationally for election integrity under policies he supports.",
+      "evidenceHeMayCite": [
+        "Heritage Foundation election integrity scorecard press release",
+        "Campaign #1 ranking statement"
+      ],
+      "sourceAnchors": [
+        "https://www.hammerforarkansas.com/2025/06/03/secretary-of-state-candidate-senator-kim-hammer-releases-statement-on-arkansas-rank-as-1-in-the-nation-for-election-integrity/"
+      ]
+    },
+    {
+      "id": "anti_fraud_rhetoric",
+      "argument": "Opponents weaken elections by resisting fraud-prevention measures.",
+      "evidenceHeMayCite": [
+        "Campaign contrast rhetoric",
+        "Enforcement and complaint bills (HB1464, HB1487)"
+      ],
+      "sourceAnchors": [
+        "data/opposition/kim-hammer-profile/kim-hammer-debate-profile.json"
+      ]
+    },
+    {
+      "id": "knows_the_office",
+      "argument": "As a legislator who has written election law, he already knows what the SOS office must enforce.",
+      "evidenceHeMayCite": [
+        "29-bill election record index",
+        "Primary sponsor on 2021 package"
+      ],
+      "sourceAnchors": [
+        "data/opposition/kim-hammer-election-record-bill-index.json",
+        "data/opposition/kim-hammer-profile/kim-hammer-kh0b-2021-integrity-foundation.json"
+      ]
     }
   ]
 }
-
