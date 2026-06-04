@@ -3,9 +3,15 @@ import { loadVideoCandidates } from "@/lib/legislature/legislativeVideoArchiveSt
 import { loadPriorityBillRegistry, type PriorityBillEntry } from "@/lib/legislature/priorityBillRegistry";
 import {
   loadVideoArchiveRoomManifest,
+  type KellyCandidateSuggestion,
+  type OpponentSnippetSlot,
   type VideoArchiveManifestAsset,
   type VideoArchiveManualSponsorLink,
 } from "@/lib/legislature/videoArchiveRoomManifest";
+import {
+  loadOpponentMediaCatalog,
+  type OpponentMediaEntry,
+} from "@/lib/intelligence/opponents/loadOpponentMediaCatalog";
 
 /** Debate anchor bills — always surfaced in archive room even if priority is lower. */
 export const VIDEO_ARCHIVE_FOCUS_ANCHORS = ["SB250", "HB1457", "SB291", "SB584", "HB1707"] as const;
@@ -39,6 +45,13 @@ export type VideoArchiveBillRow = {
   manualLinks: VideoArchiveManualSponsorLink[];
 };
 
+export type OpponentMediaRow = OpponentMediaEntry & {
+  snippetSlots: OpponentSnippetSlot[];
+  snippets: VideoArchiveManifestAsset[];
+  watchUrl: string;
+  downloadUrl: string;
+};
+
 export type VideoArchiveRoomPacket = {
   generatedAt: string;
   focusBillCount: number;
@@ -48,6 +61,11 @@ export type VideoArchiveRoomPacket = {
   cutReadyFolderLabel: string;
   operatorNotes: string;
   bills: VideoArchiveBillRow[];
+  opponentMedia: {
+    hammer: OpponentMediaRow[];
+    packo: OpponentMediaRow[];
+    kellySuggestions: KellyCandidateSuggestion[];
+  };
 };
 
 function billKey(billNumber: string, session: string) {
@@ -158,15 +176,42 @@ export function buildVideoArchiveRoomPacket(repoRoot: string = process.cwd()): V
 
   bills.sort(sortBills);
 
+  const catalog = loadOpponentMediaCatalog(repoRoot);
+  const enrichOpponent = (opponentId: string): OpponentMediaRow[] =>
+    catalog.candidates
+      .filter((e) => e.opponentId === opponentId)
+      .map((entry) => {
+        const snippetSlots = manifest.opponentSnippetSlots.filter(
+          (s) => s.parentOpponentMediaId === entry.id,
+        );
+        const snippets = manifest.archivedAssets.filter(
+          (a) => a.parentOpponentMediaId === entry.id && a.kind === "OPPONENT_SNIPPET",
+        );
+        return {
+          ...entry,
+          snippetSlots,
+          snippets,
+          watchUrl: entry.url,
+          downloadUrl: `/api/admin/intelligence/video-archive/download?opponentMediaId=${encodeURIComponent(entry.id)}`,
+        };
+      });
+
   return {
     generatedAt: new Date().toISOString(),
     focusBillCount: bills.length,
     billsWithVideo: bills.filter((b) => b.committeeVideos.length > 0).length,
     totalCommitteeLinks: bills.reduce((n, b) => n + b.committeeVideos.length, 0),
-    cutReadyCount: manifest.archivedAssets.filter((a) => a.kind === "TEAM_CUT").length,
+    cutReadyCount: manifest.archivedAssets.filter(
+      (a) => a.kind === "TEAM_CUT" || a.kind === "OPPONENT_SNIPPET",
+    ).length,
     cutReadyFolderLabel: manifest.cutReadyFolderLabel,
     operatorNotes: manifest.operatorNotes ?? "",
     bills,
+    opponentMedia: {
+      hammer: enrichOpponent("kim-hammer"),
+      packo: enrichOpponent("michael-packo"),
+      kellySuggestions: manifest.kellyCandidateSuggestions,
+    },
   };
 }
 
@@ -189,4 +234,11 @@ export function findManifestAssetById(
   repoRoot: string = process.cwd(),
 ): VideoArchiveManifestAsset | undefined {
   return loadVideoArchiveRoomManifest(repoRoot).archivedAssets.find((a) => a.id === assetId);
+}
+
+export function findOpponentMediaUrl(
+  opponentMediaId: string,
+  repoRoot: string = process.cwd(),
+): string | undefined {
+  return loadOpponentMediaCatalog(repoRoot).candidates.find((c) => c.id === opponentMediaId)?.url;
 }

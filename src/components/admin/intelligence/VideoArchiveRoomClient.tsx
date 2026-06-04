@@ -1,11 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import type { VideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoom";
+import { VideoArchiveOpponentMedia } from "@/components/admin/intelligence/VideoArchiveOpponentMedia";
 
 type RegisterMode = "manual_sponsor_link" | "team_cut" | null;
 
 export function VideoArchiveRoomClient({ packet }: { packet: VideoArchiveRoomPacket }) {
+  const [mainTab, setMainTab] = useState<"bills" | "hammer" | "packo">("bills");
   const [filter, setFilter] = useState<"all" | "with_video" | "anchors" | "missing">("all");
   const [expanded, setExpanded] = useState<string | null>(null);
   const [registerMode, setRegisterMode] = useState<RegisterMode>(null);
@@ -89,6 +92,48 @@ export function VideoArchiveRoomClient({ packet }: { packet: VideoArchiveRoomPac
         ))}
       </section>
 
+      <div className="flex flex-wrap gap-2 text-xs">
+        {(
+          [
+            ["bills", `Committee bills (${packet.focusBillCount})`],
+            ["hammer", `Kim Hammer (${packet.opponentMedia.hammer.length} links)`],
+            ["packo", `Michael Packo (${packet.opponentMedia.packo.length} links)`],
+          ] as const
+        ).map(([key, label]) => (
+          <button
+            key={key}
+            type="button"
+            onClick={() => setMainTab(key)}
+            className={`rounded-full border px-3 py-1.5 font-bold ${
+              mainTab === key ? "border-kelly-navy bg-kelly-navy text-white" : "border-kelly-navy/30 text-kelly-navy"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+        <Link href="/admin/intelligence/kelly-debate-coaching" className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1.5 font-bold text-violet-950">
+          Debate coaching →
+        </Link>
+      </div>
+
+      {mainTab === "hammer" ? (
+        <VideoArchiveOpponentMedia
+          rows={packet.opponentMedia.hammer}
+          opponentLabel="Kim Hammer"
+          cutReadyFolderLabel={packet.cutReadyFolderLabel}
+        />
+      ) : null}
+
+      {mainTab === "packo" ? (
+        <VideoArchiveOpponentMedia
+          rows={packet.opponentMedia.packo}
+          opponentLabel="Michael Packo (Pakko)"
+          cutReadyFolderLabel={packet.cutReadyFolderLabel}
+        />
+      ) : null}
+
+      {mainTab === "bills" ? (
+        <>
       <article className="rounded-xl border border-sky-100 bg-sky-50/40 p-4 text-xs text-sky-950">
         <p className="font-bold uppercase">Team workflow</p>
         <p className="mt-2">{packet.operatorNotes}</p>
@@ -317,6 +362,8 @@ export function VideoArchiveRoomClient({ packet }: { packet: VideoArchiveRoomPac
           Until then, register hosted URLs for cuts or use Media Center for raw files.
         </p>
       </section>
+        </>
+      ) : null}
     </div>
   );
 }

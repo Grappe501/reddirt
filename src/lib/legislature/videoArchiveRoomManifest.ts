@@ -5,7 +5,26 @@ export type VideoArchiveAssetKind =
   | "SOURCE_REFERENCE"
   | "COMMITTEE_DISCOVERY"
   | "TEAM_CUT"
-  | "UPLOADED_RAW";
+  | "UPLOADED_RAW"
+  | "OPPONENT_SNIPPET";
+
+export type OpponentSnippetSlot = {
+  id: string;
+  parentOpponentMediaId: string;
+  label: string;
+  /** Filled when team uploads cut */
+  assetId?: string | null;
+  status: "EMPTY" | "READY";
+  notes?: string;
+};
+
+export type KellyCandidateSuggestion = {
+  id: string;
+  text: string;
+  category: "opening" | "closing" | "rebuttal" | "coaching" | "other";
+  createdAt: string;
+  createdBy?: string;
+};
 
 export type VideoArchiveManifestAsset = {
   id: string;
@@ -18,6 +37,7 @@ export type VideoArchiveManifestAsset = {
   externalUrl?: string;
   ownedMediaAssetId?: string | null;
   parentCandidateId?: string | null;
+  parentOpponentMediaId?: string | null;
   notes?: string;
   createdAt: string;
   createdBy?: string;
@@ -42,6 +62,8 @@ export type VideoArchiveRoomManifest = {
   operatorNotes?: string;
   manualSponsorLinks: VideoArchiveManualSponsorLink[];
   archivedAssets: VideoArchiveManifestAsset[];
+  opponentSnippetSlots: OpponentSnippetSlot[];
+  kellyCandidateSuggestions: KellyCandidateSuggestion[];
 };
 
 export const VIDEO_ARCHIVE_ROOM_MANIFEST_REL = "data/legislature/video-archives/video-archive-room-manifest.json";
@@ -59,9 +81,16 @@ export function loadVideoArchiveRoomManifest(repoRoot: string = process.cwd()): 
       cutReadyFolderLabel: "cut-and-ready",
       manualSponsorLinks: [],
       archivedAssets: [],
+      opponentSnippetSlots: [],
+      kellyCandidateSuggestions: [],
     };
   }
-  return JSON.parse(readFileSync(abs, "utf8")) as VideoArchiveRoomManifest;
+  const raw = JSON.parse(readFileSync(abs, "utf8")) as VideoArchiveRoomManifest;
+  return {
+    ...raw,
+    opponentSnippetSlots: raw.opponentSnippetSlots ?? [],
+    kellyCandidateSuggestions: raw.kellyCandidateSuggestions ?? [],
+  };
 }
 
 export function saveVideoArchiveRoomManifest(manifest: VideoArchiveRoomManifest, repoRoot: string = process.cwd()): void {
@@ -118,5 +147,77 @@ export function appendManualSponsorLink(
 }
 
 export function listCutReadyAssets(manifest: VideoArchiveRoomManifest): VideoArchiveManifestAsset[] {
-  return manifest.archivedAssets.filter((a) => a.kind === "TEAM_CUT");
+  return manifest.archivedAssets.filter((a) => a.kind === "TEAM_CUT" || a.kind === "OPPONENT_SNIPPET");
+}
+
+export function appendOpponentSnippetAsset(
+  asset: Omit<VideoArchiveManifestAsset, "id" | "createdAt" | "kind"> & {
+    id?: string;
+    createdAt?: string;
+  },
+  repoRoot: string = process.cwd(),
+): VideoArchiveManifestAsset {
+  return appendManifestAsset(
+    {
+      ...asset,
+      billNumber: asset.billNumber || "MEDIA",
+      session: asset.session || "opponent",
+      kind: "OPPONENT_SNIPPET",
+    },
+    repoRoot,
+  );
+}
+
+export function ensureSnippetSlot(
+  parentOpponentMediaId: string,
+  label: string,
+  repoRoot: string = process.cwd(),
+): OpponentSnippetSlot {
+  const manifest = loadVideoArchiveRoomManifest(repoRoot);
+  const existing = manifest.opponentSnippetSlots.find(
+    (s) => s.parentOpponentMediaId === parentOpponentMediaId && s.label === label,
+  );
+  if (existing) return existing;
+  const slot: OpponentSnippetSlot = {
+    id: `slot-${Date.now().toString(36)}`,
+    parentOpponentMediaId,
+    label,
+    status: "EMPTY",
+  };
+  manifest.opponentSnippetSlots.push(slot);
+  saveVideoArchiveRoomManifest(manifest, repoRoot);
+  return slot;
+}
+
+export function linkSnippetToAsset(
+  slotId: string,
+  assetId: string,
+  repoRoot: string = process.cwd(),
+): void {
+  const manifest = loadVideoArchiveRoomManifest(repoRoot);
+  const slot = manifest.opponentSnippetSlots.find((s) => s.id === slotId);
+  if (slot) {
+    slot.assetId = assetId;
+    slot.status = "READY";
+  }
+  saveVideoArchiveRoomManifest(manifest, repoRoot);
+}
+
+export function appendKellySuggestion(
+  text: string,
+  category: KellyCandidateSuggestion["category"],
+  createdBy?: string,
+  repoRoot: string = process.cwd(),
+): KellyCandidateSuggestion {
+  const manifest = loadVideoArchiveRoomManifest(repoRoot);
+  const row: KellyCandidateSuggestion = {
+    id: `kcs-${Date.now().toString(36)}`,
+    text,
+    category,
+    createdAt: new Date().toISOString(),
+    createdBy,
+  };
+  manifest.kellyCandidateSuggestions.push(row);
+  saveVideoArchiveRoomManifest(manifest, repoRoot);
+  return row;
 }

@@ -3,6 +3,9 @@ import { assertAdminApi } from "@/lib/admin/require-admin";
 import {
   appendManifestAsset,
   appendManualSponsorLink,
+  appendOpponentSnippetAsset,
+  ensureSnippetSlot,
+  linkSnippetToAsset,
 } from "@/lib/legislature/videoArchiveRoomManifest";
 
 export const dynamic = "force-dynamic";
@@ -40,7 +43,23 @@ const uploadRefSchema = z.object({
   createdBy: z.string().optional(),
 });
 
-const bodySchema = z.discriminatedUnion("type", [manualLinkSchema, cutReadySchema, uploadRefSchema]);
+const opponentSnippetSchema = z.object({
+  type: z.literal("opponent_snippet"),
+  parentOpponentMediaId: z.string().min(1),
+  title: z.string().min(1),
+  externalUrl: z.string().url().optional(),
+  ownedMediaAssetId: z.string().optional(),
+  slotLabel: z.string().optional(),
+  notes: z.string().optional(),
+  createdBy: z.string().optional(),
+});
+
+const bodySchema = z.discriminatedUnion("type", [
+  manualLinkSchema,
+  cutReadySchema,
+  uploadRefSchema,
+  opponentSnippetSchema,
+]);
 
 export async function POST(req: Request): Promise<Response> {
   const denied = await assertAdminApi();
@@ -85,6 +104,23 @@ export async function POST(req: Request): Promise<Response> {
       createdBy: data.createdBy,
     });
     return Response.json({ ok: true, row, folder: "cut-and-ready" });
+  }
+
+  if (data.type === "opponent_snippet") {
+    const row = appendOpponentSnippetAsset({
+      billNumber: "MEDIA",
+      session: "opponent",
+      title: data.title,
+      externalUrl: data.externalUrl,
+      ownedMediaAssetId: data.ownedMediaAssetId ?? null,
+      parentOpponentMediaId: data.parentOpponentMediaId,
+      notes: data.notes,
+      createdBy: data.createdBy,
+    });
+    const label = data.slotLabel ?? "Snippet";
+    const slot = ensureSnippetSlot(data.parentOpponentMediaId, label);
+    linkSnippetToAsset(slot.id, row.id);
+    return Response.json({ ok: true, row, slot, folder: "cut-and-ready" });
   }
 
   const row = appendManifestAsset({

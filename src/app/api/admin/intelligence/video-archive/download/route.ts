@@ -2,6 +2,7 @@ import { assertAdminApi } from "@/lib/admin/require-admin";
 import {
   findManifestAssetById,
   findManualSponsorLinkById,
+  findOpponentMediaUrl,
   findVideoCandidateById,
 } from "@/lib/legislature/videoArchiveRoom";
 
@@ -19,6 +20,7 @@ export async function GET(req: Request): Promise<Response> {
   const candidateId = url.searchParams.get("candidateId");
   const manualId = url.searchParams.get("manualId");
   const assetId = url.searchParams.get("assetId");
+  const opponentMediaId = url.searchParams.get("opponentMediaId");
 
   if (assetId) {
     const asset = findManifestAssetById(assetId);
@@ -40,6 +42,14 @@ export async function GET(req: Request): Promise<Response> {
       return Response.json({ ok: false, error: "manual_not_found" }, { status: 404 });
     }
     return Response.redirect(manual.videoUrl, 302);
+  }
+
+  if (opponentMediaId) {
+    const mediaUrl = findOpponentMediaUrl(opponentMediaId);
+    if (!mediaUrl) {
+      return Response.json({ ok: false, error: "opponent_media_not_found" }, { status: 404 });
+    }
+    return Response.redirect(mediaUrl, 302);
   }
 
   if (candidateId) {

@@ -22,12 +22,21 @@ export default function OpponentsHubPage() {
           <h2 className="mt-1 font-heading text-xl font-bold text-kelly-navy">Kim Hammer</h2>
           <p className="mt-2 text-sm text-kelly-muted">Full module map, bills, timeline, debate prep, film room.</p>
         </Link>
-        <div className="rounded-xl border-2 border-amber-200 bg-amber-50/30 p-5">
-          <p className="text-[10px] font-bold uppercase text-amber-900">Scaffold</p>
-          <h2 className="mt-1 font-heading text-xl font-bold text-kelly-navy">Michael Packo</h2>
-          <p className="mt-2 text-sm text-kelly-muted">Research priorities below — routes go live after ingest.</p>
-        </div>
+        <Link
+          href="/admin/intelligence/video-archive-room"
+          className="rounded-xl border-2 border-amber-200 bg-amber-50/30 p-5 transition hover:border-amber-400"
+        >
+          <p className="text-[10px] font-bold uppercase text-amber-900">Scaffold + media catalog</p>
+          <h2 className="mt-1 font-heading text-xl font-bold text-kelly-navy">Michael Packo (Pakko)</h2>
+          <p className="mt-2 text-sm text-kelly-muted">Video links on archive room — PBS, TBP, campaign site. Debate cross in coaching module.</p>
+        </Link>
       </section>
+
+      <p className="mb-4 text-xs">
+        <Link href="/admin/intelligence/kelly-debate-coaching" className="font-bold text-violet-900 underline">
+          Kelly debate coaching — three-way strategy, openings, closings →
+        </Link>
+      </p>
 
       <V7MichaelPackoScaffoldPanel />
     </div>

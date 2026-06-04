@@ -4,5 +4,7 @@
   "cutReadyFolderLabel": "cut-and-ready",
   "operatorNotes": "Team workflow: (1) open source committee link, (2) download locally for edit, (3) upload cut to cut-and-ready via admin register or file upload when DB ingest is live.",
   "manualSponsorLinks": [],
-  "archivedAssets": []
+  "archivedAssets": [],
+  "opponentSnippetSlots": [],
+  "kellyCandidateSuggestions": []
 }
