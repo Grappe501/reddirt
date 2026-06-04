@@ -14,7 +14,7 @@ export default function KellyDebateCoachingPage() {
       <V4PageHeader
         eyebrow="Kelly · first debate coaching"
         title="Stage presence, scripts & three-way strategy"
-        description="Offensive constitution (8 principles), how we play our hand, Hammer-line flips, direct democracy acts, ANYTHING BUT HAMMER phased, Packo-friendly lanes, and scripts. Submit suggestions below."
+        description="Narrative control on stage, full Check My Record walkthrough (six beats + 60s script), record-findings frames, Packo geometry, principles, acts, and scripts. Submit suggestions below."
       >
         <V4BackLinks />
         <Link href="/admin/intelligence/kim-hammer/debate-prep" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">

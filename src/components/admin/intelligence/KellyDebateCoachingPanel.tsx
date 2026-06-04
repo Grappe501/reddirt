@@ -26,6 +26,7 @@ import {
 import type { HammerDirectDemocracyPacket } from "@/lib/intelligence/v4/hammerDirectDemocracyOffensive";
 import type { KellyRoadStoriesFile } from "@/lib/intelligence/loadKellyRoadStories";
 import type { KellyCandidateSuggestion } from "@/lib/legislature/videoArchiveRoomManifest";
+import { KellyOffensiveNarrativePanel } from "@/components/admin/intelligence/KellyOffensiveNarrativePanel";
 
 function CoachingSection({ block }: { block: { title: string; bullets: string[]; doNot: string[] } }) {
   return (
@@ -107,6 +108,8 @@ export function KellyDebateCoachingPanel({
             ))}
           </div>
         </article>
+
+        <KellyOffensiveNarrativePanel />
 
         <article className="rounded-xl border-2 border-sky-200 bg-sky-50/50 p-5 text-xs">
           <h2 className="font-heading text-lg font-bold text-kelly-navy">{HOW_WE_PLAY_OUR_HAND.headline}</h2>

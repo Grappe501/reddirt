@@ -163,6 +163,15 @@ export const HAMMER_STATEMENT_FLIPS: HammerStatementFlip[] = [
     claimsNote: "GENERAL_FRAME — no unsourced business stats.",
   },
   {
+    id: "flip-check-my-record",
+    hammerSays: "Check my record / look at my years of service.",
+    whatItSoundsLike: "His record is unassailable; Kelly has no standing to critique.",
+    kellyTurn:
+      "I have checked your record, Senator — verified on Arkleg. You sponsored Acts 218, 240, 274, 241, and 768 in 2025 alone. That is legislative authorship — SOS must implement. Clerks need training and funding, not another promise.",
+    proofAnchor: "CHECK_MY_RECORD_PLAYBOOK · RECORD_FINDING_FRAMES · video archive legislative offense",
+    claimsNote: "Use full six-beat walkthrough in coaching — this flip is the index card version only.",
+  },
+  {
     id: "flip-packo-split",
     hammerSays: "(Attacks Packo or third party as spoiler.)",
     whatItSoundsLike: "Kelly should join pile-on.",
