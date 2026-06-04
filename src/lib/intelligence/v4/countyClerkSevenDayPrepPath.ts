@@ -74,6 +74,12 @@ export const HAMMER_VS_KELLY_CLERK_MATRIX: Array<{
     kellyPosition: "Clear procedures clerks can execute — state pays for rollout and help desk.",
     clerkQuestionToAsk: "What SOS staff ratio per county for Act 350 implementation?",
   },
+  {
+    topic: "County Voting System Grant Fund (CVSGF)",
+    hammerPosition: "We funded counties — look at Act 808 and appropriations.",
+    kellyPosition: "Appropriations in Little Rock are not the same as a public county ledger — SOS sets grant guidelines and must publish equitable accounting.",
+    clerkQuestionToAsk: "Where is the county-by-county CVSGF award spreadsheet for the last five years?",
+  },
 ];
 
 export const COUNTY_CLERK_SEVEN_DAY_PATH: PrepDayPlan[] = [

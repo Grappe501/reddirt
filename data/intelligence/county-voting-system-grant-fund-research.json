@@ -1,0 +1,283 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-04T18:00:00.000Z",
+  "governance": {
+    "classification": "INTERNAL_DRAFT",
+    "publicationSafety": "Verify dollar figures against enrolled appropriations before broadcast",
+    "researchStatus": "SUBSTANTIAL — statewide county-by-county award ledger still NEEDS_RESEARCH"
+  },
+  "executiveSummary": "Arkansas maintains a state-controlled County Voting System Grant Fund (CVSGF) fed largely by UCC filing fees remitted by the Secretary of State, plus periodic legislative appropriations and a one-time 2019 Property Tax Relief transfer. The SOS establishes grant guidelines under A.C.A. § 7-5-301. FY2025–26 appropriates $11M from CVSGF and $4M federal HAVA. No consolidated public county-by-county award dashboard has been located — but county budgets and SOS historical records confirm disbursements occurred. Kelly's frame: election transparency includes funding transparency; SOS must publish equitable, readable grant accounting.",
+  "statutoryAuthority": [
+    {
+      "id": "aca-19-5-1247",
+      "citation": "Arkansas Code § 19-5-1247",
+      "title": "County Voting System Grant Fund — UCC fee remittance",
+      "summary": "SOS periodically remits certain Uniform Commercial Code fees to the Treasurer of State for deposit into the County Voting System Grant Fund.",
+      "evidenceTier": "VERIFIED_FACT",
+      "sources": [
+        {
+          "label": "Responsive Gov / IRG white paper (cites A.C.A. § 19-5-1247)",
+          "url": "https://responsivegov.org/wp-content/uploads/2024/07/IRG-Prohibition-WhitePaper_P5.pdf",
+          "note": "Documents UCC fee linkage and SOS discretion"
+        },
+        {
+          "label": "Arkansas SOS UCC fee schedule",
+          "url": "https://sos.arkansas.gov/business-commercial-services-bcs/uniform-commercial-code-ucc",
+          "note": "Primary fee source for UCC filings ($16 UCC-1, $6 UCC-3, etc.)"
+        }
+      ]
+    },
+    {
+      "id": "aca-7-5-301-d2",
+      "citation": "Arkansas Code § 7-5-301(d)(2)",
+      "title": "SOS grant program guidelines and county deposit",
+      "summary": "Secretary of State shall establish guidelines and procedures for distributing CVSGF grants. Grants paid into county treasury to credit of local voting system grant fund; quorum court appropriates per SOS guidelines.",
+      "evidenceTier": "VERIFIED_FACT",
+      "sources": [
+        {
+          "label": "FindLaw — A.C.A. § 7-5-301",
+          "url": "https://codes.findlaw.com/ar/title-7-elections/ar-code-sect-7-5-301/",
+          "note": "Subsection (d)(2)(A)–(C) grant guidelines and county treasury deposit"
+        }
+      ]
+    }
+  ],
+  "sosControlDiscretion": {
+    "headline": "The SOS has real operational control over grant structure — not just ceremonial authority",
+    "controls": [
+      "What equipment counties can buy (vendor standards, certification)",
+      "What costs qualify for reimbursement vs direct purchase",
+      "Application and documentation requirements for counties",
+      "Prioritization across rural and urban counties",
+      "Transparency of the grant process — what is published vs clerk-only"
+    ],
+    "evidenceTier": "VERIFIED_FACT",
+    "sourceNote": "A.C.A. § 7-5-301(d)(2)(A) plus county election manual references cited in research"
+  },
+  "appropriations": [
+    {
+      "fiscalYear": "FY2024-2025",
+      "session": "2024 Fiscal Session",
+      "act": "Act 143 of 2024",
+      "lineItem": "County Voting Systems Grant",
+      "amount": 10000000,
+      "fund": "County Voting System Grant Fund",
+      "payableTo": "Secretary of State",
+      "evidenceTier": "VERIFIED_FACT",
+      "sources": [
+        {
+          "label": "Act 143 PDF — Section 11",
+          "url": "https://arkleg.state.ar.us/Acts/FTPDocument?ddBienniumSession=2023%2F2024F&file=143.pdf&path=%2FACTS%2F2024F%2FPublic%2F"
+        }
+      ]
+    },
+    {
+      "fiscalYear": "FY2025-2026",
+      "session": "2025 Regular Session",
+      "act": "Act 408 of 2025 (HB1147)",
+      "lineItem": "County Voting Systems Grant",
+      "amount": 11000000,
+      "fund": "County Voting System Grant Fund",
+      "payableTo": "Secretary of State",
+      "purpose": "Upgrading/purchasing county voting systems, programming, maintenance, poll-book devices, refunds/reimbursements",
+      "evidenceTier": "VERIFIED_FACT",
+      "sources": [
+        {
+          "label": "HB1147 / Act 408 — Section 9",
+          "url": "https://arkleg.state.ar.us/Bills/Detail?ddBienniumSession=2025%2F2025R&id=hb1147"
+        },
+        {
+          "label": "HB1147 enrolled PDF",
+          "url": "https://arkleg.state.ar.us/Home/FTPDocument?path=%2FBills%2F2025R%2FPublic%2FHB1147.pdf"
+        }
+      ]
+    },
+    {
+      "fiscalYear": "FY2025-2026",
+      "session": "2025 Regular Session",
+      "act": "Act 408 of 2025 (HB1147)",
+      "lineItem": "Help America Vote Act — Federal",
+      "amount": 4000000,
+      "fund": "Federal HAVA funds",
+      "payableTo": "Secretary of State",
+      "purpose": "HAVA maintenance, operating expenses, state matching costs",
+      "evidenceTier": "VERIFIED_FACT",
+      "sources": [
+        {
+          "label": "HB1147 — Section 12 HAVA appropriation",
+          "url": "https://arkleg.state.ar.us/Home/FTPDocument?path=%2FBills%2F2025R%2FPublic%2FHB1147.pdf"
+        }
+      ]
+    },
+    {
+      "fiscalYear": "FY2026-2027",
+      "session": "2026 (projected from research brief)",
+      "act": "NEEDS_RESEARCH — verify enrolled appropriation",
+      "lineItem": "County Voting Systems Grant + HAVA",
+      "amount": 11000000,
+      "secondaryAmount": 4000000,
+      "fund": "CVSGF + Federal HAVA",
+      "payableTo": "Secretary of State",
+      "evidenceTier": "NEEDS_RESEARCH",
+      "sources": [],
+      "note": "Research brief cites $11M + $4M HAVA again — staff must verify FY2026-27 enrolled act before stage cite"
+    }
+  ],
+  "oneTimeTransfers": [
+    {
+      "id": "act-808-2019",
+      "year": 2019,
+      "amount": 8240000,
+      "from": "Property Tax Relief Fund (surplus)",
+      "to": "County Voting System Grant Fund via SOS",
+      "act": "Act 808 of 2019",
+      "purpose": "County voting equipment, programming, maintenance statewide",
+      "evidenceTier": "VERIFIED_FACT",
+      "sources": [
+        {
+          "label": "KARK — Governor Hutchinson release",
+          "url": "https://digital-stage.kark.com/news/governor-hutchinson-authorizes-8-24-million-to-arkansas-counties-for-voting-equipment-maintenance/"
+        },
+        {
+          "label": "Arkansas Democrat-Gazette — Act 808 transfer",
+          "url": "https://www.arkansasonline.com/news/2019/sep/08/funds-pose-vote-gear-hurdle-20190908/"
+        },
+        {
+          "label": "Dem-Gaz — seven counties sign on",
+          "url": "https://www.arkansasonline.com/news/2019/nov/03/seven-counties-sign-on-for-new-voting-g/"
+        }
+      ],
+      "documentedUses": [
+        "About $2 million reimbursed Benton, White, and Ashley counties for half of prior equipment purchases",
+        "Remaining funds for statewide equipment upgrades through CVSGF process"
+      ]
+    }
+  ],
+  "expenditureHistory": {
+    "note": "Responsive Gov / Bureau of Legislative Research cited actual CVSGF grant expenditures FY2018–FY2022 ranging from $876,837 (FY2019) to $9,178,505 (FY2020)",
+    "evidenceTier": "PARTIAL",
+    "sources": [
+      {
+        "label": "IRG Prohibition White Paper — Arkansas CVSGF expenditure table",
+        "url": "https://responsivegov.org/wp-content/uploads/2024/07/IRG-Prohibition-WhitePaper_P5.pdf"
+      }
+    ]
+  },
+  "countyAwardLedger": {
+    "publicDashboardExists": false,
+    "masterLedgerLocation": "SOS-administered — reimbursement spreadsheets / grant ledgers likely exist administratively",
+    "researchStatus": "NEEDS_RESEARCH — no consolidated statewide public table located",
+    "countyBudgetBreadcrumbs": true,
+    "knownCountyReferences": [
+      { "county": "Garland", "amount": 14340, "year": 2015, "label": "Secretary of State Voting System Grant", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "Garland County budget archive" },
+      { "county": "Benton", "amount": null, "year": 2019, "label": "Act 808 reimbursement (~$666k share of $2M trio)", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "Dem-Gaz — half of prior equipment cost reimbursed" },
+      { "county": "White", "amount": null, "year": 2019, "label": "Act 808 reimbursement", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "Dem-Gaz" },
+      { "county": "Ashley", "amount": null, "year": 2019, "label": "Act 808 reimbursement", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "Dem-Gaz" },
+      { "county": "Lonoke", "amount": null, "year": null, "label": "Voting System Grant Fund line in county budget", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "County budget records — amount NEEDS_RESEARCH" },
+      { "county": "Sharp", "amount": null, "year": null, "label": "Voting System Grant Fund / SOS Grant", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "County budget records" },
+      { "county": "Scott", "amount": null, "year": null, "label": "Election Equipment Grant", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "County budget records" },
+      { "county": "Franklin", "amount": null, "year": null, "label": "Voting System Grant Fund", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "County budget records" },
+      { "county": "Faulkner", "amount": null, "year": 2017, "label": "SOS 50/50 equipment funding", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "SOS legislative presentation Exhibit E" },
+      { "county": "Jackson", "amount": null, "year": 2016, "label": "SOS fully funded county", "evidenceTier": "VERIFIED_PARTIAL", "sourceNote": "SOS legislative presentation Exhibit E" }
+    ],
+    "sosHistoricalCountyList": {
+      "source": "Arkleg Assembly attachment — SOS equipment funding presentation",
+      "url": "https://arkleg.state.ar.us/Home/FTPDocument?path=%2FAssembly%2FMeeting+Attachments%2F520%2FI15951%2FExhibit+E+SOS+PPt.pdf",
+      "fullyFunded2015_2016": ["Washington", "Sebastian", "and 9 others — 11 counties total per presentation"],
+      "additionalFunded2016": ["Arkansas", "Chicot", "Cleveland", "Jackson", "Randolph", "Yell"],
+      "fiftyFifty2017": ["Faulkner", "Miller", "Sevier", "Pike", "Polk", "Carroll", "Cross"],
+      "pendingAtPresentation": ["Pope", "Grant", "Union", "Monroe", "St. Francis", "Phillips"],
+      "documented50_50Pending": ["Benton", "Cleburne", "Craighead", "Crittenden", "Howard", "Saline"],
+      "sosExpendedThroughPresentation": 6115663.38,
+      "countiesExpendedThroughPresentation": 2803173.35,
+      "evidenceTier": "VERIFIED_PARTIAL"
+    },
+    "deliveryTypes": [
+      "Direct county cash grants into local voting system grant fund",
+      "State-purchased equipment delivered to counties",
+      "50/50 cost-share agreements",
+      "Reimbursement for prior county purchases",
+      "Licenses, maintenance contracts, and vendor procurement (ES&S statewide contract referenced in SOS presentation)"
+    ]
+  },
+  "recordsRequest": {
+    "title": "Targeted administrative records request — not a broad FOIA fishing expedition",
+    "exactAsk": "Please provide county-by-county distribution records for the County Voting System Grant Fund from FY2018 through FY2027, including: county name, award amount, award date, purpose, equipment/vendor where applicable, and fund source (state CVSGF vs federal HAVA vs other).",
+    "alsoRequest": [
+      "Reimbursement ledgers and equipment transfer records",
+      "Grant application approvals and denials by county",
+      "Any existing statewide summary report not published online"
+    ],
+    "framing": "Legitimate for a Secretary of State candidate studying election administration — normal policy research, not accusatory.",
+    "evidenceTier": "STRATEGY — not a claim"
+  },
+  "sosOutreach": {
+    "recommendedContact": "Arkansas Secretary of State Elections Division — verify current staff (research suggested Leslie Oguinn as operational contact)",
+    "approach": "Serious policy learner — not opponent trying to catch them",
+    "openingScript": "I'm trying to better understand how election administration funding flows through Arkansas — both federal HAVA funding and the County Voting System Grant Fund. I'm particularly interested in how county support decisions are made and whether there are county-by-county public reports available.",
+    "questionsToAsk": [
+      "Is there a statewide county distribution spreadsheet available to the public?",
+      "Are grants reimbursement-based, allocated, or direct equipment purchase?",
+      "How are priorities determined across rural and urban counties?",
+      "What responsibilities sit with SOS vs counties vs State Board of Election Commissioners?",
+      "What major unmet county needs still exist?",
+      "How do UCC fee collections track to CVSGF balances year over year?"
+    ],
+    "doNotOpenWith": ["Where's the money?", "Why are you hiding county grants?", "Hammer didn't fund clerks"],
+    "strategicGoal": "Become known as the candidate who understands election administration — not just election politics",
+    "evidenceTier": "STRATEGY"
+  },
+  "debateStrategy": {
+    "kellyFrame": "Arkansas has real state election equipment funding — UCC fees and legislative appropriations flow through a SOS-controlled grant fund. Integrity includes funding transparency: clerks and voters deserve a public county-by-county accounting, not just appropriations headlines.",
+    "hammerLikelyFrame": "I secured funding for voting equipment / Arkansas elections are #1 / I wrote the integrity laws.",
+    "hammerTrapQuestion": "Senator, you cite integrity packages — can you point to the county-by-county grant ledger showing which counties received CVSGF dollars after each mandate you sponsored?",
+    "hammerRebuttalIfHeCounters": "If he cites Act 808 or appropriations totals: 'Totals in Little Rock are not the same as implementation in every county — show the ledger.' If he cites #1 ranking: 'Ranking is not a substitute for clerk training dollars — SOS grant guidelines are your job to publish.'",
+    "packoAngle": "May agree funding is opaque — Kelly adds operational SOS plan without attacking Pakko.",
+    "doNotSay": [
+      "They are hiding money (accusatory without ledger proof)",
+      "Counties got nothing (contradicted by budget breadcrumbs and Act 808)",
+      "Hammer stole election funds",
+      "Precise FY2026-27 figures until enrolled act verified"
+    ],
+    "fairPublicLine": "I've been researching how election funding flows to Arkansas counties, and it is surprisingly difficult for the public to find a clear county-by-county accounting — election transparency should include election funding transparency.",
+    "trapLaneHref": "/admin/intelligence/trap-lanes/county-champion",
+    "relatedHref": "/admin/intelligence/election-funding"
+  },
+  "verifiedClaimsForLedger": [
+    {
+      "claimText": "Arkansas Code establishes a County Voting System Grant Fund fed in part by UCC fees remitted by the Secretary of State (A.C.A. § 19-5-1247).",
+      "classification": "VERIFIED",
+      "sourceHint": "A.C.A. § 19-5-1247; SOS UCC fee page; IRG white paper"
+    },
+    {
+      "claimText": "The Secretary of State establishes guidelines and procedures for distributing CVSGF grants to counties (A.C.A. § 7-5-301(d)(2)).",
+      "classification": "VERIFIED",
+      "sourceHint": "A.C.A. § 7-5-301"
+    },
+    {
+      "claimText": "Act 408 of 2025 (HB1147) appropriated $11,000,000 from the County Voting System Grant Fund to the SOS for FY2025-2026.",
+      "classification": "VERIFIED",
+      "sourceHint": "HB1147 Section 9; Act 408"
+    },
+    {
+      "claimText": "Act 408 of 2025 appropriated $4,000,000 in federal Help America Vote Act funds to the SOS for FY2025-2026.",
+      "classification": "VERIFIED",
+      "sourceHint": "HB1147 Section 12"
+    },
+    {
+      "claimText": "Act 808 of 2019 transferred $8.24 million from the Property Tax Relief Fund to the County Voting System Grant Fund for county voting equipment.",
+      "classification": "VERIFIED",
+      "sourceHint": "Governor release; Dem-Gaz; Act 808"
+    },
+    {
+      "claimText": "No consolidated public statewide county-by-county CVSGF award table has been located in open research.",
+      "classification": "VERIFIED",
+      "sourceHint": "Research pass 2026-06-04 — county budgets only"
+    },
+    {
+      "claimText": "Garland County budget records document a $14,340 Secretary of State Voting System Grant appropriation (2015).",
+      "classification": "NEEDS_REVIEW",
+      "sourceHint": "Garland County budget archive — staff verify primary document"
+    }
+  ]
+}

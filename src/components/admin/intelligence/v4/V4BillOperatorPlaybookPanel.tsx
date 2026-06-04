@@ -2,7 +2,16 @@ import Link from "next/link";
 import type { BillOperatorPlaybook } from "@/lib/intelligence/v4/debateOperatorPlaybookTypes";
 import { KIM_HAMMER_COMMAND_CENTER_HREF } from "@/lib/opposition/kimHammerBriefingRegistry";
 
-export function V4BillOperatorPlaybookPanel({ playbook }: { playbook: BillOperatorPlaybook }) {
+export function V4BillOperatorPlaybookPanel({
+  playbook,
+  showActProofLink = true,
+}: {
+  playbook: BillOperatorPlaybook;
+  /** When false, hides footer link (e.g. already on act-proof page). */
+  showActProofLink?: boolean;
+}) {
+  const actProofHref = `${KIM_HAMMER_COMMAND_CENTER_HREF}/bills/${encodeURIComponent(playbook.billNumber)}/act-proof`;
+
   return (
     <section className="mb-6 space-y-4 rounded-xl border-2 border-kelly-navy/15 bg-gradient-to-br from-kelly-page/80 to-white p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -99,7 +108,7 @@ export function V4BillOperatorPlaybookPanel({ playbook }: { playbook: BillOperat
           <p className="mt-1 font-semibold text-violet-950">{playbook.trapSetup.name}</p>
           <ul className="mt-2 space-y-2 text-kelly-muted">
             <li>
-              <span className="font-semibold text-kelly-navy">Bait you want:</span> “{playbook.trapSetup.baitLineYouWantFromOpponent}”
+              <span className="font-semibold text-kelly-navy">Bait you want:</span> &ldquo;{playbook.trapSetup.baitLineYouWantFromOpponent}&rdquo;
             </li>
             <li>
               <span className="font-semibold text-kelly-navy">You or moderator ask:</span> {playbook.trapSetup.moderatorOrKellySetupQuestion}
@@ -119,12 +128,11 @@ export function V4BillOperatorPlaybookPanel({ playbook }: { playbook: BillOperat
         <p className="mt-2 text-emerald-950">{playbook.kellyDifference}</p>
       </div>
 
-      <Link
-        href={`${KIM_HAMMER_COMMAND_CENTER_HREF}/bills/${encodeURIComponent(playbook.billNumber)}`}
-        className="inline-block text-xs font-bold text-kelly-navy underline"
-      >
-        Bill drill-down (act proof) →
-      </Link>
+      {showActProofLink ? (
+        <Link href={actProofHref} className="inline-block text-xs font-bold text-kelly-navy underline">
+          Act proof drill-down — read bill on Arkleg, education tiers, response rounds →
+        </Link>
+      ) : null}
     </section>
   );
 }

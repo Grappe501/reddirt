@@ -1,6 +1,8 @@
+import "server-only";
+
 import fs from "node:fs";
 import path from "node:path";
-import type { DebateFilmRoomState, FilmRoomItem } from "@/lib/opposition/debateFilmRoom";
+import type { DebateFilmRoomState, FilmRoomItem } from "@/lib/opposition/debateFilmRoomTypes";
 import type { ComputedReadinessScore } from "@/lib/opposition/debateReadinessSignals";
 import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import type { DebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4Types";
@@ -13,42 +15,12 @@ import { enrichFilmRoomWithMediaCatalog } from "@/lib/intelligence/v4/debateFilm
 
 const ROOT = process.cwd();
 
-export type CrossExamRow = {
-  id: string;
-  question: string;
-  billAnchor: string | null;
-  whenToAsk: string;
-  whatYouLearn: string;
-  kellyPivot: string;
-  socialPostAngle: string;
-  risk: "LOW" | "MEDIUM" | "HIGH";
-};
-
-export type ArgumentLibraryRow = {
-  id: string;
-  hammerLine: string;
-  evidenceHeMayCite: string[];
-  agreeWhereValid: string;
-  contrastPivot: string;
-  kellyBridge: string;
-  billDrillHref: string | null;
-  debateStep: string;
-  socialSnippet: string;
-};
-
-export type DebateWarRoomP4Packet = {
-  version: "4.0-p4";
-  generatedAt: string;
-  filmRoom: DebateFilmRoomState;
-  crossExamBank: CrossExamRow[];
-  argumentLibrary: ArgumentLibraryRow[];
-  readinessScores: ComputedReadinessScore[];
-  todayPriorities: Array<{ title: string; value: string; detail: string }>;
-  scenarioTraps: string[];
-  whatNotToSay: string[];
-  archiveHonesty: string;
-  legislativeNote: string;
-};
+export type {
+  ArgumentLibraryRow,
+  CrossExamRow,
+  DebateWarRoomP4Packet,
+} from "@/lib/intelligence/v4/debateWarRoomP4Types";
+import type { DebateWarRoomP4Packet } from "@/lib/intelligence/v4/debateWarRoomP4Types";
 
 function readJson<T>(rel: string): T {
   return JSON.parse(fs.readFileSync(path.join(ROOT, rel), "utf8")) as T;

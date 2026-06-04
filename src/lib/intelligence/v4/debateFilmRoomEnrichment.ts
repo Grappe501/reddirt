@@ -1,32 +1,13 @@
-import type { DebateFilmRoomState, FilmRoomItem } from "@/lib/opposition/debateFilmRoom";
+import "server-only";
+
+import type { DebateFilmRoomState, FilmRoomItem } from "@/lib/opposition/debateFilmRoomTypes";
 import { listOpponentMedia } from "@/lib/intelligence/opponents/loadOpponentMediaCatalog";
 import type { OpponentMediaEntry } from "@/lib/intelligence/opponents/opponentMediaCatalogTypes";
-import {
-  getTranscriptForMedia,
-  type MediaTranscriptSegment,
-  type OpponentMediaTranscriptEntry,
-} from "@/lib/intelligence/opponents/loadOpponentMediaTranscripts";
+import type { FilmRoomMediaDrill } from "@/lib/intelligence/v4/debateFilmRoomEnrichmentTypes";
+import { getTranscriptForMedia } from "@/lib/intelligence/opponents/loadOpponentMediaTranscripts";
+import type { OpponentMediaTranscriptEntry } from "@/lib/intelligence/opponents/opponentMediaTranscriptTypes";
 
-export type FilmRoomMediaDrill = {
-  mediaId: string;
-  title: string;
-  url: string;
-  publisher: string;
-  platform: string;
-  researchValue: string;
-  speakerVerification: string;
-  summary: string;
-  topicTags: string[];
-  transcript?: OpponentMediaTranscriptEntry;
-  keySegments: MediaTranscriptSegment[];
-  offensiveUse: string;
-  defensiveUse: string;
-  kellyPivot30s: string;
-  drillPrompt: string;
-  claimsGate: string;
-  trapLaneHref: string | null;
-  billDrillHrefs: string[];
-};
+export type { FilmRoomMediaDrill } from "@/lib/intelligence/v4/debateFilmRoomEnrichmentTypes";
 
 const TRAP_BY_TOPIC: Record<string, string> = {
   direct_democracy: "/admin/intelligence/trap-lanes/integrity-without-participation",
@@ -173,28 +154,6 @@ export function enrichFilmRoomWithMediaCatalog(state: DebateFilmRoomState): Deba
     ].filter(Boolean),
     archiveHonestyNote: `${Math.max(state.directClipCount, 1)}+ indexed media sources · ${mediaExcerptCount} transcript excerpts · ${state.legislativeClipCount} legislative — human review before stage; Kelly does not play clips live without staff ID.`,
   };
-}
-
-export function groupFilmRoomItems(items: FilmRoomItem[]): Record<string, FilmRoomItem[]> {
-  const groups: Record<string, FilmRoomItem[]> = {
-    direct: [],
-    reference: [],
-    legislative: [],
-    transcripts: [],
-    quotes: [],
-    drills: [],
-  };
-  for (const item of items) {
-    if (item.assetType === "LEGISLATIVE_COMMITTEE_VIDEO") groups.legislative.push(item);
-    else if (item.assetType === "MEDIA_TRANSCRIPT_EXCERPT") groups.transcripts.push(item);
-    else if (item.assetType === "QUOTE_RECORD") groups.quotes.push(item);
-    else if (item.assetType === "THEME_DRILL") groups.drills.push(item);
-    else if (item.isDirectOpponentClip || item.assetType === "DIRECT_OPPONENT") groups.direct.push(item);
-    else if (item.governanceLabel === "REFERENCE_ONLY" || item.assetType === "REFERENCE_SOS") groups.reference.push(item);
-    else if (item.assetType === "MEDIA_COVERAGE" || item.id.startsWith("media-")) groups.direct.push(item);
-    else groups.drills.push(item);
-  }
-  return groups;
 }
 
 export function listFilmRoomMediaDrills(): FilmRoomMediaDrill[] {

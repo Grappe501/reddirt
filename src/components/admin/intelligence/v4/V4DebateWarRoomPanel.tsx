@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { DebateWarRoomP4Packet } from "@/lib/intelligence/v4/debateWarRoomP4";
+import type { DebateWarRoomP4Packet } from "@/lib/intelligence/v4/debateWarRoomP4Types";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 

@@ -1,22 +1,10 @@
+import "server-only";
+
 import fs from "node:fs";
 import path from "node:path";
 
-export type KellyRoadStory = {
-  id: string;
-  title: string;
-  county: string;
-  story: string;
-  whenToUse: string;
-  claimsStatus: string;
-};
-
-export type KellyRoadStoriesFile = {
-  version: number;
-  generatedAt: string;
-  instructions: string;
-  storySlots: KellyRoadStory[];
-  candidateAddPrompt: string;
-};
+export type { KellyRoadStoriesFile, KellyRoadStory } from "@/lib/intelligence/kellyRoadStoriesTypes";
+import type { KellyRoadStoriesFile } from "@/lib/intelligence/kellyRoadStoriesTypes";
 
 const REL = "data/opposition/kelly-road-stories.json";
 

@@ -223,30 +223,53 @@ export const TRAP_LANE_DRILL_DOWNS: Record<string, TrapLaneDrillDown> = {
 
   "county-champion": baseFromTrap("county-champion", 3, 2, {
     narrativeOverview:
-      "Hammer claims rural county identity — ‘I am the clerks' guy.’ Test with verifiable clerk support and implementation dollars. Kelly wins with SOS deliverables: hotline, training calendar, quorum-court funding advocacy.",
+      "Hammer claims rural county identity — ‘I am the clerks' guy.’ Test with verifiable clerk support and implementation dollars — including the County Voting System Grant Fund (CVSGF) he did not administer as SOS. Kelly wins with SOS deliverables: published grant ledger, hotline, training calendar, equitable rural/urban prioritization.",
     whatToExpectHammerToSay: [
       "‘I work with county clerks every day.’",
       "‘Rural Arkansas needs strong election laws.’",
       "‘Kelly does not understand county government.’",
       "Name-drops meetings without funding outcomes.",
+      "Cites Act 808 $8.24M or appropriations totals without county-by-county ledger.",
     ],
     setupMoves: [
       "Ask which clerk associations endorsed his implementation plan for Act 350.",
       "Ask for training module funded when Act 444 passed.",
       "Use road story — Friday mandate, no training budget.",
+      "Ask for county-by-county CVSGF award spreadsheet FY2018–present — SOS establishes grant guidelines under A.C.A. § 7-5-301.",
+      "Fair frame: ‘Election transparency should include funding transparency — where is the public county grant ledger?’",
     ],
-    relatedActs: ["350", "444"],
+    relatedActs: ["350", "444", "408"],
     relatedBills: ["HB1457", "SB250"],
+    relatedLinks: [
+      { href: "/admin/intelligence/election-funding", label: "CVSGF funding intelligence" },
+      { href: "/admin/intelligence/kim-hammer/county-administration-burden", label: "County burden module" },
+    ],
     kellyPivotDeep:
-      "Clerks need a SOS who shows up — not another promise from Little Rock. Kelly lists hotline, training, funding asks with specifics.",
+      "Clerks need a SOS who shows up — not another promise from Little Rock. Arkansas appropriates millions for county voting systems through the CVSGF — Kelly will publish equitable grant accounting, run a clerk hotline, and fund training starting day one.",
     sampleScripts: [
       s(
         "County champion trap — 25s",
         "25s",
         "Senator, which county clerk associations endorsed your implementation plan for the last election act you sponsored — and what was the funding line?",
       ),
+      s(
+        "CVSGF ledger trap — 30s",
+        "30s",
+        "Arkansas has a County Voting System Grant Fund — UCC fees and legislative appropriations. The Secretary of State sets the grant rules. Can you show voters the county-by-county ledger for the last five years?",
+        "Calm — policy learner tone, not accusation",
+      ),
     ],
-    estimatedPrepMinutes: 28,
+    rebuttalScripts: [
+      r(
+        "He cites $11M appropriation or Act 808",
+        "We funded counties — look at the appropriations.",
+        "Appropriations in Little Rock are not the same as implementation in every county.",
+        "Totals without a county ledger hide uneven rural support — SOS job is transparent grant accounting.",
+        "I will publish county-by-county CVSGF awards — election transparency includes funding transparency.",
+        "VERIFIED — Act 408 $11M CVSGF + $4M HAVA FY2025-26; county ledger NEEDS_RESEARCH",
+      ),
+    ],
+    estimatedPrepMinutes: 35,
   }),
 
   "fraud-data-dare": baseFromTrap("fraud-data-dare", 4, 3, {

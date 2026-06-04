@@ -23,6 +23,8 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/sos-debate-questions",
   "/admin/intelligence/agent-tooling",
   "/admin/intelligence/debate-depth",
+  "/admin/intelligence/election-funding",
+  "/admin/intelligence/build-progress",
 ] as const;
 
 export type DebateWeekRoute = (typeof DEBATE_WEEK_ROUTES)[number];
@@ -48,6 +50,12 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     badgeKey: "opposition",
     description:
       "Primary audience: county clerks. Seven-day reading order with daily goals, trap setup, and live-event card — Kelly's home screen this week.",
+  },
+  {
+    href: "/admin/intelligence/election-funding",
+    label: "Election funding",
+    description:
+      "CVSGF + HAVA statutory evidence, appropriations table, county budget breadcrumbs, records request, SOS outreach script, debate traps.",
   },
   {
     href: "/admin/intelligence/kim-hammer/county-administration-burden",
@@ -145,6 +153,18 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Plain-language depth",
     description:
       "What to expect, handle Hammer's attacks, adversity, getting stuck, and culture-war bait — plus auto depth on every drill-down.",
+  },
+  {
+    href: "/admin/intelligence/election-funding",
+    label: "Election funding",
+    description:
+      "County Voting System Grant Fund + HAVA: statutory authority, appropriations, county budget breadcrumbs, missing statewide ledger, records request, and debate traps.",
+  },
+  {
+    href: "/admin/intelligence/build-progress",
+    label: "Build progress",
+    description:
+      "Master completion chart: drill-down depth, act-proof coverage, flagged gaps, and phased upgrade plan for next intelligence version.",
   },
   {
     href: "/admin/intelligence/debate-command",

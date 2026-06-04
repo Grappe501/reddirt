@@ -1,22 +1,13 @@
+import "server-only";
+
 import {
   enrichFilmRoomWithMediaCatalog,
   listFilmRoomMediaDrills,
-  type FilmRoomMediaDrill,
 } from "@/lib/intelligence/v4/debateFilmRoomEnrichment";
-import {
-  loadDebateWarRoomP4Packet,
-  type DebateWarRoomP4Packet,
-} from "@/lib/intelligence/v4/debateWarRoomP4";
+import type { DebateFilmRoomPagePacket } from "@/lib/intelligence/v4/debateFilmRoomPageTypes";
+import { loadDebateWarRoomP4Packet } from "@/lib/intelligence/v4/debateWarRoomP4";
 
-export type { FilmRoomMediaDrill };
-export { enrichFilmRoomWithMediaCatalog, groupFilmRoomItems } from "@/lib/intelligence/v4/debateFilmRoomEnrichment";
-
-export type DebateFilmRoomPagePacket = DebateWarRoomP4Packet & {
-  mediaDrills: FilmRoomMediaDrill[];
-  staffWorkflow: string[];
-  clipRegisterHref: string;
-  videoArchiveHref: string;
-};
+export type { DebateFilmRoomPagePacket, FilmRoomMediaDrill } from "@/lib/intelligence/v4/debateFilmRoomPageTypes";
 
 export function loadDebateFilmRoomPagePacket(): DebateFilmRoomPagePacket {
   const p4 = loadDebateWarRoomP4Packet();

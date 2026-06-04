@@ -1,28 +1,17 @@
+import "server-only";
+
 import fs from "node:fs";
 import path from "node:path";
 
-export type MediaTranscriptSegment = {
-  startTime: string;
-  endTime: string;
-  speakerLabel: string;
-  text: string;
-};
-
-export type OpponentMediaTranscriptEntry = {
-  mediaId: string;
-  status: string;
-  provider: string;
-  speakerVerification: string;
-  segments: MediaTranscriptSegment[];
-  debateUseNotes?: string;
-};
-
-export type OpponentMediaTranscriptsFile = {
-  version: number;
-  generatedAt: string;
-  notes?: string;
-  entries: OpponentMediaTranscriptEntry[];
-};
+export type {
+  MediaTranscriptSegment,
+  OpponentMediaTranscriptEntry,
+  OpponentMediaTranscriptsFile,
+} from "@/lib/intelligence/opponents/opponentMediaTranscriptTypes";
+import type {
+  OpponentMediaTranscriptEntry,
+  OpponentMediaTranscriptsFile,
+} from "@/lib/intelligence/opponents/opponentMediaTranscriptTypes";
 
 const REL = "data/legislature/video-archives/opponent-media-transcripts.json";
 

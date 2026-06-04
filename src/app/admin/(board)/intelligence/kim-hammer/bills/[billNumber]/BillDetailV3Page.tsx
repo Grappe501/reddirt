@@ -6,7 +6,9 @@ import {
   isInIntegrity2021,
 } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getBillOperatorPlaybook } from "@/lib/intelligence/v4/debateBillOperatorPlaybooks";
+import { resolveArklegBillUrl } from "@/lib/intelligence/v4/billActProofDepth";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { KIM_HAMMER_COMMAND_CENTER_HREF } from "@/lib/opposition/kimHammerBriefingRegistry";
 import { V4BillOperatorPlaybookPanel } from "@/components/admin/intelligence/v4/V4BillOperatorPlaybookPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { notFound } from "next/navigation";
@@ -39,6 +41,22 @@ export default function BillDetailV3Page({ billNumber }: { billNumber: string })
         >
           Debate prep
         </Link>
+        <Link
+          href={`${KIM_HAMMER_COMMAND_CENTER_HREF}/bills/${encodeURIComponent(billNumber)}/act-proof`}
+          className="rounded-full border-2 border-kelly-gold/60 bg-kelly-page px-3 py-1 text-xs font-bold text-kelly-navy"
+        >
+          Act proof drill-down →
+        </Link>
+        {resolveArklegBillUrl(billNumber) ? (
+          <a
+            href={resolveArklegBillUrl(billNumber)!}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full border border-emerald-300/60 px-3 py-1 text-xs font-bold text-emerald-950"
+          >
+            Read on Arkleg
+          </a>
+        ) : null}
       </V4PageHeader>
 
       <V4BillOperatorPlaybookPanel playbook={playbook} />
