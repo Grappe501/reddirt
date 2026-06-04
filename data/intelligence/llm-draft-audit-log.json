@@ -1,8 +1,23 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T16:41:41.629Z",
+  "generatedAt": "2026-06-04T02:20:28.768Z",
   "purpose": "NSI-12 append-only audit log for LLM draft lifecycle events.",
   "entries": [
+    {
+      "eventType": "LLM_DRAFT_CREATED",
+      "draftId": "llm-draft-trap-question-analysis-mpyvbm64",
+      "draftType": "debate_prep",
+      "reviewer": "system",
+      "route": "/test-candidate-ipad",
+      "model": "deterministic-synthesis",
+      "previousStatus": "NONE",
+      "nextStatus": "DRAFT_PENDING_REVIEW",
+      "warnings": [],
+      "promotionTarget": null,
+      "notes": "generationMode=DETERMINISTIC_SYNTHESIS",
+      "auditId": "llm-audit-mpyvbmcg",
+      "timestamp": "2026-06-04T02:20:28.768Z"
+    },
     {
       "eventType": "LLM_DRAFT_CREATED",
       "draftId": "llm-brief-opposition-kim-hammer-v1-mpwv7fys",

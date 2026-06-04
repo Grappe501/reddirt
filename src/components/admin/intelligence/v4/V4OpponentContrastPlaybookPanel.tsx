@@ -1,9 +1,20 @@
+import Link from "next/link";
 import {
   OPPONENT_CONTRAST_LANES,
   OPPONENT_TRAP_LANES,
   RECORD_ITEM_FRAMING_PRIMER,
   SOS_JOB_CONTRAST,
 } from "@/lib/intelligence/v4/kellyOpponentContrastPlaybook";
+import { listTrapLaneSummaries } from "@/lib/intelligence/v4/trapLaneDrillDowns";
+
+const TRAP_LANE_HREFS: Record<string, string> = {
+  "2021 vs 2025 pivot": "/admin/intelligence/trap-lanes/2021-vs-2025-pivot",
+  "Integrity without participation": "/admin/intelligence/trap-lanes/integrity-without-participation",
+  "County champion": "/admin/intelligence/trap-lanes/county-champion",
+  "Fraud data dare": "/admin/intelligence/trap-lanes/fraud-data-dare",
+  "Experience equals SOS-ready": "/admin/intelligence/trap-lanes/experience-equals-sos-ready",
+  "Culture-war escalation": "/admin/intelligence/trap-lanes/culture-war-escalation",
+};
 
 export function V4OpponentContrastPlaybookPanel() {
   return (
@@ -60,27 +71,45 @@ export function V4OpponentContrastPlaybookPanel() {
       </article>
 
       <article className="rounded-xl border border-kelly-gold/30 bg-kelly-page/50 p-5">
-        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-navy">Trap lanes — position him into your hand</p>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-navy">
+            Trap lanes — position him into your hand
+          </p>
+          <Link
+            href="/admin/intelligence/trap-lanes"
+            className="min-h-11 rounded-full border-2 border-kelly-navy bg-kelly-navy px-4 py-2 text-xs font-bold text-white"
+          >
+            Open all drill-downs →
+          </Link>
+        </div>
         <div className="mt-4 space-y-4">
-          {OPPONENT_TRAP_LANES.map((trap) => (
-            <div key={trap.name} className="rounded-lg border border-kelly-text/10 bg-white p-4 text-xs">
-              <p className="font-bold text-violet-950">{trap.name}</p>
-              <ul className="mt-2 space-y-1 text-kelly-muted">
-                <li>
-                  <span className="font-semibold text-kelly-navy">Want him to say:</span> “{trap.baitLineYouWantFromOpponent}”
-                </li>
-                <li>
-                  <span className="font-semibold text-kelly-navy">Ask:</span> {trap.moderatorOrKellySetupQuestion}
-                </li>
-                <li>
-                  <span className="font-semibold text-kelly-navy">Pivot:</span> {trap.kellyPivotWhenHeBites}
-                </li>
-                <li>
-                  <span className="font-semibold text-kelly-navy">Why:</span> {trap.whyItWorks}
-                </li>
-              </ul>
-            </div>
-          ))}
+          {OPPONENT_TRAP_LANES.map((trap) => {
+            const href = TRAP_LANE_HREFS[trap.name];
+            const summary = listTrapLaneSummaries().find((s) => s.title === trap.name);
+            return (
+              <Link
+                key={trap.name}
+                href={href ?? "/admin/intelligence/trap-lanes"}
+                className="block rounded-lg border-2 border-kelly-text/10 bg-white p-4 text-xs transition active:border-violet-400 min-h-[100px]"
+              >
+                <p className="font-bold text-violet-950">{trap.name}</p>
+                <ul className="mt-2 space-y-1 text-kelly-muted">
+                  <li>
+                    <span className="font-semibold text-kelly-navy">Want him to say:</span> “{trap.baitLineYouWantFromOpponent}”
+                  </li>
+                  <li>
+                    <span className="font-semibold text-kelly-navy">Ask:</span> {trap.moderatorOrKellySetupQuestion}
+                  </li>
+                  <li>
+                    <span className="font-semibold text-kelly-navy">Pivot:</span> {trap.kellyPivotWhenHeBites}
+                  </li>
+                </ul>
+                {summary ? (
+                  <p className="mt-3 font-bold text-kelly-gold">Tap for full narrative, rebuttals & scripts →</p>
+                ) : null}
+              </Link>
+            );
+          })}
         </div>
       </article>
 

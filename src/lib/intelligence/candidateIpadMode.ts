@@ -26,6 +26,7 @@ export const CANDIDATE_IPAD_PRIMARY_NAV = [
 ] as const;
 
 export const CANDIDATE_IPAD_MORE_LINKS = [
+  { href: "/admin/intelligence/trap-lanes", label: "Trap lanes (full drill-down)" },
   { href: "/admin/intelligence/debate-command", label: "Trap questions" },
   { href: "/admin/intelligence/county-clerk-week", label: "Clerk week path" },
   { href: "/admin/intelligence/kim-hammer/debate-ai-workbench", label: "AI workbench (staff)" },
