@@ -1,24 +1,33 @@
-import { loadPriorityBillRegistry, summarizePriorityBills } from "@/lib/legislature/priorityBillRegistry";
-import { buildLegislativeVideoIntelligenceRollup } from "@/lib/legislature/legislativeVideoIntelligenceRollup";
-import { summarizeVideoArchiveStore } from "@/lib/legislature/legislativeVideoArchiveStore";
-import { summarizeLegislativeClaimCoverage } from "@/lib/legislature/legislativeClaimIngest";
-import { getTranscriptionProviderStatus } from "@/lib/legislature/legislativeTranscriptionPipeline";
-import { summarizeAudioExtractionReadiness } from "@/lib/legislature/legislativeAudioExtraction";
-import { summarizeTranscriptionProviderReadiness } from "@/lib/legislature/legislativeTranscriptProvider";
-import { buildMessageIntelligenceEngine } from "@/lib/intelligence/messageIntelligence/messageIntelligenceEngine";
 import { LEGISLATIVE_GOVERNANCE } from "@/lib/legislature/legislativeGovernance";
+import { loadSafeLegislativeVideoPageData } from "@/lib/intelligence/safeLegislativeVideoPage";
+import { V4DebateWarRoomPanel } from "@/components/admin/intelligence/v4/V4DebateWarRoomPanel";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const maxDuration = 26;
+
 export default async function LegislativeVideoIntelligencePage() {
-  const registry = loadPriorityBillRegistry();
-  const priority = summarizePriorityBills(registry);
-  const rollup = buildLegislativeVideoIntelligenceRollup();
-  const video = summarizeVideoArchiveStore();
-  const claims = summarizeLegislativeClaimCoverage();
-  const transcription = getTranscriptionProviderStatus();
-  const audioReadiness = await summarizeAudioExtractionReadiness();
-  const transcriptionReadiness = summarizeTranscriptionProviderReadiness();
-  const messageIntel = buildMessageIntelligenceEngine();
+  const { launchMode, registry, priority, rollup, video, claims, transcription, audioReadiness, transcriptionReadiness, p4 } =
+    await loadSafeLegislativeVideoPageData();
+
+  if (launchMode && p4) {
+    return (
+      <div className="mx-auto max-w-7xl p-6 text-kelly-text">
+        <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-900">
+          <strong>Debate launch mode</strong> — P4 film room from opposition clips/quotes JSON. Full pipeline (discovery,
+          ASR, message intel) deferred to keep Netlify fast. {rollup.automationNote}
+        </div>
+        <h1 className="font-heading text-2xl font-bold text-kelly-navy">Legislative &amp; media command (P4)</h1>
+        <V4DebateWarRoomPanel packet={p4} variant="compact" />
+        <p className="mt-6 text-xs">
+          <Link href="/admin/intelligence/debate-command" className="font-bold text-kelly-navy underline">
+            Debate command
+          </Link>
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-6xl p-6">
@@ -52,7 +61,7 @@ export default async function LegislativeVideoIntelligencePage() {
         <h2 className="font-semibold text-kelly-navy">Audio / transcription readiness</h2>
         <ul className="mt-2 list-inside list-disc text-kelly-muted">
           <li>Audio extract enabled: {audioReadiness.enabled ? "yes" : "no (LEGISLATURE_AUDIO_EXTRACT=1)"}</li>
-          <li>ffmpeg on PATH: {audioReadiness.ffmpegAvailable ? "yes" : "no — deferred"}</li>
+          <li>ffmpeg on PATH: {"ffmpegAvailable" in audioReadiness && audioReadiness.ffmpegAvailable ? "yes" : "no — deferred"}</li>
           <li>Transcription enabled: {transcriptionReadiness.enabled ? "yes" : "no"}</li>
           <li>OpenAI configured: {transcriptionReadiness.openaiConfigured ? "yes" : "no"}</li>
           <li>Provider status: {transcription}</li>
@@ -62,21 +71,16 @@ export default async function LegislativeVideoIntelligencePage() {
       <section className="mt-4 rounded-xl border border-kelly-text/10 bg-white p-4 text-xs">
         <h2 className="font-semibold text-kelly-navy">Critical bill processing</h2>
         <p className="mt-1 text-kelly-muted">
-          {priority.byPriority.CRITICAL} CRITICAL bills · {rollup.billsMissingVideo.length} missing video · message intel readiness{" "}
-          {messageIntel.readinessScore}/100
+          {priority.byPriority.CRITICAL} CRITICAL bills · {rollup.billsMissingVideo.length} missing video
         </p>
         <Link href="/admin/intelligence" className="mt-2 inline-block underline text-kelly-navy">
-          Message Intelligence panel →
+          Intelligence hub →
         </Link>
       </section>
 
       <section className="mt-6 rounded-xl border border-kelly-text/10 bg-white p-4 text-xs">
         <h2 className="font-semibold text-kelly-navy">Automation status</h2>
         <p className="mt-2 text-kelly-muted">{rollup.automationNote}</p>
-        <p className="mt-2 text-kelly-muted">
-          Enable live discovery: <code>LEGISLATURE_LIVE_DISCOVERY=1</code>. Transcription:{" "}
-          <code>LEGISLATURE_TRANSCRIPTION_ENABLED=1</code> + <code>OPENAI_API_KEY</code>.
-        </p>
       </section>
 
       <section className="mt-4 rounded-xl border border-kelly-text/10 bg-white p-4 text-xs">
@@ -111,22 +115,9 @@ export default async function LegislativeVideoIntelligencePage() {
         </div>
       </section>
 
-      <section className="mt-4 rounded-xl border border-kelly-text/10 bg-white p-4 text-xs">
-        <h2 className="font-semibold text-kelly-navy">Bills missing video</h2>
-        <ul className="mt-2 list-inside list-disc text-kelly-muted">
-          {rollup.billsMissingVideo.slice(0, 8).map((b) => (
-            <li key={b}>{b}</li>
-          ))}
-        </ul>
-      </section>
-
       <p className="mt-6 text-xs text-kelly-muted">
         <Link href="/admin/intelligence/kim-hammer/debate-prep" className="underline text-kelly-navy">
           Debate prep
-        </Link>
-        {" · "}
-        <Link href="/admin/intelligence/kim-hammer/archive" className="underline text-kelly-navy">
-          Opposition archive
         </Link>
       </p>
     </div>

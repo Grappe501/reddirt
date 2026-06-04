@@ -403,6 +403,36 @@ export const SURFACE_GUIDES: Record<string, OperatorGuide> = {
     campaignTrailUse: "All outbound comms after claims gate.",
     tiesTogether: "Evidence command + claims.",
   },
+  debateWarRoomP4: {
+    whyItMatters:
+      "Film room + cross-exam + argument library turn record into performance prep — how to bait pivots and use clips without fake certainty.",
+    howItFitsDebatePrep:
+      "Run after debate prep skim, before stage. Pairs with bill playbooks (step-by-step) and trap lanes.",
+    whatToLookFor: [
+      "Direct clip count — do not imply video proof if zero",
+      "Speaker verification warnings on legislative chunks",
+      "Cross-exam questions tied to bill anchors",
+      "Social snippets marked claims-gate",
+    ],
+    howToSetUp:
+      "Staff: verify one clip quote; Kelly: rehearse 3 cross-exam pivots and 2 argument-library bridges aloud.",
+    howToUseInDebate:
+      "Kelly does not play clips live — staff tracks timestamp; Kelly uses pivots when opponent bites on setup questions.",
+    whenToUse: "Debate command step 3; film room night-before; post-debate social only after claims review.",
+    campaignTrailUse:
+      "County events: use cross-exam questions in town hall Q&A; social team uses thread outlines after gate.",
+    tiesTogether: "Legislative video + opposition clips + argument map + bill drill-downs.",
+  },
+  crossExamBank: {
+    whyItMatters: "Questions that force implementation detail — where sponsor record is weakest vs SOS service job.",
+    howItFitsDebatePrep: "Section 5 question bank + trap positioning playbook.",
+    whatToLookFor: ["Bill-anchored questions", "HIGH risk tags", "Kelly pivot line"],
+    howToSetUp: "Pick 5 questions; assign staff to track answers in spin room.",
+    howToUseInDebate: "Ask when opponent cites bill without county detail; stay calm — not prosecutorial tone.",
+    whenToUse: "Rebuttal and Q&A blocks.",
+    campaignTrailUse: "Press questions to opponent (not Kelly on stage) — adapt wording.",
+    tiesTogether: "Bill playbooks + 2021 package trap.",
+  },
   opponentRecord: {
     whyItMatters: "Map of staff research modules — keeps Kelly from drowning in 40+ pages.",
     howItFitsDebatePrep: "Staff navigation; Kelly uses hub/debate prep instead on debate day.",

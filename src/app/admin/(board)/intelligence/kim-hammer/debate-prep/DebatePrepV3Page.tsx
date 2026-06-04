@@ -8,11 +8,14 @@ import { V4ArgumentMap } from "@/components/admin/intelligence/v4/V4ArgumentMap"
 import { V4DebatePrepWithNav } from "@/components/admin/intelligence/v4/V4DebatePrepWithNav";
 import { V4AnchorBillsPlaybookIndex } from "@/components/admin/intelligence/v4/V4AnchorBillsPlaybookIndex";
 import { V4KellyNarrativeFrame } from "@/components/admin/intelligence/v4/V4KellyNarrativeFrame";
+import { V4DebateWarRoomPanel } from "@/components/admin/intelligence/v4/V4DebateWarRoomPanel";
+import { loadDebateWarRoomP4Packet } from "@/lib/intelligence/v4/debateWarRoomP4";
 import { V4OpponentContrastPlaybookPanel } from "@/components/admin/intelligence/v4/V4OpponentContrastPlaybookPanel";
 
 /** Intelligence v4 — 28-section debate prep (v3 base + structured JSON layers). */
 export default function DebatePrepV3Page() {
   const v4 = loadDebateIntelligenceV4Packet();
+  const warRoom = loadDebateWarRoomP4Packet();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -31,6 +34,7 @@ export default function DebatePrepV3Page() {
       <V4KellyNarrativeFrame />
 
       <V4OpponentContrastPlaybookPanel />
+      <V4DebateWarRoomPanel packet={warRoom} variant="compact" />
       <V4AnchorBillsPlaybookIndex showFullPanels />
 
       <p className="mb-4 rounded-lg border border-amber-200/50 bg-amber-50/50 px-3 py-2 text-xs text-amber-950">

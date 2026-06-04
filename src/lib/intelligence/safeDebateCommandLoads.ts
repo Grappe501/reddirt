@@ -6,6 +6,7 @@ import { summarizeDebateScenarioPrep } from "@/lib/intelligence/strategicScenari
 import { buildMessageIntelligenceEngine } from "@/lib/intelligence/messageIntelligence/messageIntelligenceEngine";
 import { buildLegislativeVideoIntelligenceRollup } from "@/lib/legislature/legislativeVideoIntelligenceRollup";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
+import { loadDebateWarRoomP4Packet } from "@/lib/intelligence/v4/debateWarRoomP4";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 
 type DebateCommandState = ReturnType<typeof buildDebateCommandCenterState>;
@@ -102,9 +103,63 @@ const LAUNCH_MODE_DEBATE_COMMAND_DATA = {
   legislativeRollup: EMPTY_LEGISLATIVE_ROLLUP,
 };
 
+function buildLaunchDebateCommandFromP4() {
+  const p4 = loadDebateWarRoomP4Packet();
+  const lowest = [...p4.readinessScores].sort((a, b) => a.score - b.score)[0];
+  return {
+    state: {
+      ...EMPTY_DEBATE_COMMAND_STATE,
+      filmRoom: p4.filmRoom,
+      readinessScores: p4.readinessScores,
+      todayPriorities: p4.todayPriorities,
+      opponentIntelligence: {
+        repeatedPhrases: ["#1 in the nation for election integrity", "most secure place to vote"],
+        emergingAngles: p4.crossExamBank.slice(0, 3).map((r) => r.question),
+        newestResearch: p4.argumentLibrary.slice(0, 3).map((a) => a.hammerLine.slice(0, 80)),
+      },
+      messagePillars: [],
+      academyTracks: ["Debate prep", "Film room drills", "Claims gate", "Scenario traps"],
+    } as DebateCommandState,
+    briefPack: {
+      debatePrep: {
+        confidenceScore: p4.readinessScores.find((r) => r.id === "debateResponseConfidence")?.score ?? 55,
+        status: "INTERNAL_DRAFT",
+        recommendedMessaging: p4.argumentLibrary.slice(0, 4).map((a) => a.kellyBridge),
+        researchGaps: p4.filmRoom.coverageGaps,
+        riskWarnings: p4.whatNotToSay,
+        briefId: "debate-p4-launch",
+      },
+      opposition: {
+        confidenceScore: p4.readinessScores.find((r) => r.id === "overall")?.score ?? 62,
+        researchGaps: p4.filmRoom.coverageGaps,
+        riskWarnings: [],
+      },
+      rapidResponse: { confidenceScore: 0, publishabilityStatus: "NOT_PUBLISHABLE" },
+    } as unknown as OppositionDebateBriefPack,
+    civicDebate: EMPTY_DEBATE_MESSAGING,
+    graphSummary: EMPTY_GRAPH_SUMMARY,
+    scenarioPrep: {
+      ...EMPTY_SCENARIO_PREP,
+      likelyOpponentAttacks: p4.argumentLibrary.map((a) => a.hammerLine).slice(0, 6),
+      debateTrapWarnings: p4.scenarioTraps,
+      whatNotToSay: p4.whatNotToSay,
+      bridgeLineGuidance: p4.argumentLibrary.map((a) => a.kellyBridge).slice(0, 5),
+    } as DebateScenarioPrep,
+    messageIntel: EMPTY_MESSAGE_INTEL,
+    legislativeRollup: {
+      ...EMPTY_LEGISLATIVE_ROLLUP,
+      chunkCount: p4.filmRoom.legislativeClipCount,
+      strongestQuotes: p4.filmRoom.topHammerCommitteeQuotes,
+      automationNote: p4.legislativeNote,
+    } as LegislativeVideoRollup,
+    p4,
+    lowestScoreHint: lowest?.raiseScoreToday[0],
+  };
+}
+
 export function loadSafeDebateCommandPageData() {
   if (isIntelligenceOppositionDebateLaunchMode()) {
-    return LAUNCH_MODE_DEBATE_COMMAND_DATA;
+    return buildLaunchDebateCommandFromP4();
   }
 
   const state = tryIntelligenceLoad("debate-command-state", () => buildDebateCommandCenterState(), EMPTY_DEBATE_COMMAND_STATE);
