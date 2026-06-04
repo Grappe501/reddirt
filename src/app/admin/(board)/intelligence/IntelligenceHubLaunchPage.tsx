@@ -1,50 +1,59 @@
 import Link from "next/link";
-import { loadDebateIntelligenceV3Packet } from "@/lib/intelligence/v3/debateIntelligenceV3";
-import { V3BackLinks, V3PageHeader } from "@/components/admin/intelligence/v3/V3PageHeader";
+import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
+import { V4ExecutiveBriefPanel } from "@/components/admin/intelligence/v4/V4ExecutiveBrief";
+import { V4ThemeMatrix } from "@/components/admin/intelligence/v4/V4ThemeMatrix";
+import { V4RehearsalDeck } from "@/components/admin/intelligence/v4/V4RehearsalDeck";
+import { V4ArgumentMap } from "@/components/admin/intelligence/v4/V4ArgumentMap";
 import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3SectionStack";
 
 const card =
   "flex flex-col rounded-xl border-2 border-kelly-navy/15 bg-white p-4 shadow-sm transition hover:border-kelly-navy/40";
 
 /**
- * Intelligence v3 hub — JSON index + opposition markdown research layers.
+ * Intelligence v4 hub — v3 markdown/JSON packet plus structured opposition profile JSON.
  */
 export default function IntelligenceHubLaunchPage() {
-  const v3 = loadDebateIntelligenceV3Packet();
-  const { hub } = v3;
-  const topTheme = hub.highConfidenceThemes[0];
+  const v4 = loadDebateIntelligenceV4Packet();
+  const { hub } = v4;
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
-      <V3PageHeader
-        eyebrow="Kelly · debate intelligence v3"
-        title="Tonight's overview"
-        description="Deep opposition packet: election-law index, legislative narratives, debate profile, and claims review. Internal draft only — verify before any public setting."
+      <V4PageHeader
+        eyebrow="Kelly · debate intelligence v4"
+        title="Tonight's command overview"
+        description="Twice the prep depth: executive brief, theme matrix, argument/rebuttal map, 2021 integrity package, timeline, and 28-section rehearsal packet. Internal draft only."
       >
-        <V3BackLinks />
-      </V3PageHeader>
+        <V4BackLinks />
+      </V4PageHeader>
 
       <p className="mb-4 text-[10px] font-semibold uppercase tracking-wider text-violet-900">
-        Packet v{v3.version} · generated {new Date(v3.generatedAt).toLocaleString()}
+        Packet v{v4.version} · {v4.debatePrepSectionsV4.length} prep sections · generated{" "}
+        {new Date(v4.generatedAt).toLocaleString()}
       </p>
 
-      <section className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <V4ExecutiveBriefPanel brief={v4.executiveBrief} scorecard={v4.readinessScorecard} />
+
+      <section className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
           <p className="text-[10px] font-bold uppercase text-kelly-subtle">Bills indexed</p>
           <p className="mt-1 font-heading text-3xl font-bold">{hub.totalBills}</p>
         </div>
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
-          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Enacted acts</p>
-          <p className="mt-1 font-heading text-3xl font-bold">{hub.enactedActs}</p>
+          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Prep sections</p>
+          <p className="mt-1 font-heading text-3xl font-bold">{v4.debatePrepSectionsV4.length}</p>
         </div>
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
-          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Claims needing research</p>
+          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Claims need research</p>
           <p className="mt-1 font-heading text-3xl font-bold text-amber-800">{hub.claims.needsResearch.length}</p>
         </div>
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
-          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Narrative depth</p>
-          <p className="mt-1 font-heading text-3xl font-bold">{v3.billNarratives.length}</p>
-          <p className="mt-1 text-xs text-kelly-muted">KH-0B legislative narrative cards</p>
+          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Rebuttal cards</p>
+          <p className="mt-1 font-heading text-3xl font-bold">{v4.rebuttalPlaybook.length}</p>
+        </div>
+        <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
+          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Timeline rows</p>
+          <p className="mt-1 font-heading text-3xl font-bold">{v4.timeline.length}</p>
         </div>
       </section>
 
@@ -52,12 +61,12 @@ export default function IntelligenceHubLaunchPage() {
         <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Your path</p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {[
-            { href: "/admin/intelligence", label: "Start here", step: "1", desc: "You are here" },
+            { href: "/admin/intelligence", label: "Start here", step: "1", desc: "Executive brief + scorecard" },
             {
               href: "/admin/intelligence/kim-hammer/debate-prep",
               label: "Debate prep",
               step: "2",
-              desc: "14-section v3 briefing",
+              desc: `${v4.debatePrepSectionsV4.length}-section v4 briefing`,
             },
             {
               href: "/admin/intelligence/debate-command",
@@ -69,7 +78,7 @@ export default function IntelligenceHubLaunchPage() {
               href: "/admin/intelligence/kim-hammer",
               label: "Opponent record",
               step: "4",
-              desc: "Module research map",
+              desc: "Modules + gaps",
             },
             {
               href: "/admin/intelligence/claims",
@@ -87,28 +96,17 @@ export default function IntelligenceHubLaunchPage() {
         </div>
       </section>
 
+      <section className="mb-6">
+        <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-kelly-navy">Mock debate rehearsal deck</h2>
+        <V4RehearsalDeck cards={v4.rehearsalDeck} />
+      </section>
+
       <section className="mb-6 grid gap-4 lg:grid-cols-2">
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Top theme driver</h2>
-          <p className="mt-2 text-sm text-kelly-muted">
-            {topTheme
-              ? `${topTheme.theme.replaceAll("_", " ")} (${topTheme.billCount} bills in theme matrix)`
-              : "Theme matrix unavailable"}
-          </p>
-          <h3 className="mt-4 text-xs font-bold uppercase text-kelly-navy">Mock debate drill</h3>
-          <ul className="mt-2 space-y-2 text-xs text-kelly-muted">
-            {hub.debateDrillQueue.map((cardItem) => (
-              <li key={cardItem.billNumber}>
-                <Link
-                  href={`/admin/intelligence/kim-hammer/bills/${encodeURIComponent(cardItem.billNumber)}`}
-                  className="font-bold text-kelly-navy underline"
-                >
-                  {cardItem.billNumber}
-                </Link>
-                : {cardItem.prompt}
-              </li>
-            ))}
-          </ul>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Theme matrix (top drivers)</h2>
+          <div className="mt-3">
+            <V4ThemeMatrix rows={v4.themeMatrix} />
+          </div>
         </div>
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
           <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Do not say</h2>
@@ -117,20 +115,29 @@ export default function IntelligenceHubLaunchPage() {
               <li key={line}>{line}</li>
             ))}
           </ul>
+          {v4.integrity2021 ? (
+            <p className="mt-4 text-xs text-violet-950">
+              <span className="font-bold">2021 package:</span> {v4.integrity2021.billNumbers.join(", ")} — architecture
+              debate anchor
+            </p>
+          ) : null}
         </div>
       </section>
 
       <section className="mb-6 rounded-xl border border-violet-200/40 bg-violet-50/30 p-4">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-violet-950">Research background (v3)</h2>
-        <p className="mt-1 text-xs text-violet-900/90">
-          Excerpts from opposition markdown — debate profile, likely arguments, and dossier. Expand any module from the
-          opponent record hub.
-        </p>
+        <h2 className="text-sm font-bold uppercase tracking-wider text-violet-950">Argument / rebuttal map</h2>
+        <div className="mt-4">
+          <V4ArgumentMap arguments={v4.likelyArguments} rebuttals={v4.rebuttalPlaybook} />
+        </div>
+      </section>
+
+      <section className="mb-6 rounded-xl border border-violet-200/40 bg-violet-50/30 p-4">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-violet-950">Research background</h2>
         <div className="mt-4">
           <V3MarkdownSectionList
             sections={[
-              ...v3.researchLayers.debateProfile.slice(0, 2),
-              ...v3.researchLayers.likelyArguments.slice(0, 2),
+              ...v4.researchLayers.debateProfile.slice(0, 2),
+              ...v4.researchLayers.likelyArguments.slice(0, 2),
             ]}
           />
         </div>
@@ -139,7 +146,7 @@ export default function IntelligenceHubLaunchPage() {
       <section className="rounded-xl border border-kelly-text/10 bg-kelly-page/40 p-4">
         <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Opponent record modules</p>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          {v3.opponentModules.map((mod) => (
+          {v4.opponentModules.map((mod) => (
             <Link key={mod.id} href={mod.href} className="rounded-lg border border-kelly-text/10 bg-white p-3 text-sm hover:border-kelly-navy/30">
               <p className="font-bold text-kelly-navy">{mod.title}</p>
               <p className="mt-1 text-xs text-kelly-muted">{mod.summary}</p>

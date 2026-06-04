@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { listClaimsForAdmin, summarizeClaimLedger } from "@/lib/intelligence/claims/claimLedgerSummary";
 import { loadCitationAnchors, loadCitationSources } from "@/lib/intelligence/claims/claimLedgerStore";
-import { loadDebateIntelligenceV3Packet } from "@/lib/intelligence/v3/debateIntelligenceV3";
+import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { V3BackLinks, V3PageHeader } from "@/components/admin/intelligence/v3/V3PageHeader";
 
@@ -18,13 +18,13 @@ function riskTone(risk: string): string {
 }
 
 export default async function ClaimsLedgerPage() {
-  const v3 = loadDebateIntelligenceV3Packet();
+  const v4 = loadDebateIntelligenceV4Packet();
   const summary = tryIntelligenceLoad("claim-ledger-summary", () => summarizeClaimLedger(), {
-    totalClaims: v3.hub.claims.supported.length + v3.hub.claims.partial.length + v3.hub.claims.needsResearch.length,
-    verifiedClaims: v3.hub.claims.supported.length,
-    inferredClaims: v3.hub.claims.partial.length,
+    totalClaims: v4.hub.claims.supported.length + v4.hub.claims.partial.length + v4.hub.claims.needsResearch.length,
+    verifiedClaims: v4.hub.claims.supported.length,
+    inferredClaims: v4.hub.claims.partial.length,
     unsupportedClaims: 0,
-    needsReviewClaims: v3.hub.claims.needsResearch.length,
+    needsReviewClaims: v4.hub.claims.needsResearch.length,
     approvedInternal: 0,
     approvedPublicAdaptation: 0,
     topMissingCitationGaps: [],
@@ -36,14 +36,14 @@ export default async function ClaimsLedgerPage() {
   const anchorCount = tryIntelligenceLoad("citation-anchors", () => loadCitationAnchors().anchors.length, 0);
 
   const markdownClaims = [
-    ...v3.hub.claims.needsResearch.slice(0, 15).map((c) => ({ ...c, source: "markdown-review" })),
-    ...v3.hub.claims.supported.slice(0, 5).map((c) => ({ ...c, source: "markdown-review" })),
+    ...v4.hub.claims.needsResearch.slice(0, 15).map((c) => ({ ...c, source: "markdown-review" })),
+    ...v4.hub.claims.supported.slice(0, 5).map((c) => ({ ...c, source: "markdown-review" })),
   ];
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
       <V3PageHeader
-        eyebrow="Claims · v3"
+        eyebrow="Claims · v4"
         title="Claim trace & citation depth"
         description="INTERNAL ONLY · Ledger plus election-record claims review markdown. Human approval required before public use."
       >
@@ -61,7 +61,7 @@ export default async function ClaimsLedgerPage() {
         <div className={card}>
           <p className="text-[10px] font-bold uppercase text-kelly-subtle">Supported / partial / needs research</p>
           <p className="text-lg font-bold">
-            {v3.hub.claims.supported.length} / {v3.hub.claims.partial.length} / {v3.hub.claims.needsResearch.length}
+            {v4.hub.claims.supported.length} / {v4.hub.claims.partial.length} / {v4.hub.claims.needsResearch.length}
           </p>
         </div>
         <div className={card}>
@@ -79,7 +79,7 @@ export default async function ClaimsLedgerPage() {
           <h2 className="text-sm font-bold uppercase text-kelly-navy">Ledger queue (top 100)</h2>
           <ul className="mt-3 space-y-2 text-xs">
             {claims.slice(0, 20).map((claim) => (
-              <li key={claim.id} className={`rounded border px-2 py-1.5 ${riskTone(claim.riskLevel ?? "LOW")}`}>
+              <li key={claim.id} className={`rounded border px-2 py-1.5 ${riskTone(claim.publicUseRisk)}`}>
                 <Link href={`/admin/intelligence/claims/${encodeURIComponent(claim.id)}`} className="font-semibold underline">
                   {claim.id}
                 </Link>
@@ -92,7 +92,7 @@ export default async function ClaimsLedgerPage() {
       ) : null}
 
       <section className={card}>
-        <h2 className="text-sm font-bold uppercase text-kelly-navy">Claims review markdown (v3)</h2>
+        <h2 className="text-sm font-bold uppercase text-kelly-navy">Claims review markdown (v4 packet)</h2>
         <ul className="mt-3 space-y-2 text-xs text-kelly-muted">
           {markdownClaims.map((row, idx) => (
             <li key={`${row.claim.slice(0, 40)}-${idx}`} className="rounded border border-kelly-text/10 p-2">
