@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T16:46:26.257Z",
+  "generatedAt": "2026-06-04T01:03:49.961Z",
   "anchors": [
     {
       "id": "opposition-kim-hammer-v1-src-0",
@@ -122,6 +122,78 @@
       "claimSupportType": "CONTEXT_ONLY",
       "excerpt": null,
       "notes": "Opposition archive clip: 4029 debate recap and question coverage"
+    },
+    {
+      "id": "anchor-debate-0b0b1a7e5b61aded",
+      "sourceId": "src-debate-0b0b1a7e5b61aded",
+      "anchorType": "url",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB250&ddBienniumSession=2023%2F2023R",
+      "createdAt": "2026-06-04T01:03:15.276Z"
+    },
+    {
+      "id": "anchor-debate-80a2e33fe7a744f7",
+      "sourceId": "src-debate-80a2e33fe7a744f7",
+      "anchorType": "url",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB207&ddBienniumSession=2025%2F2025R",
+      "createdAt": "2026-06-04T01:03:49.898Z"
+    },
+    {
+      "id": "anchor-debate-3176aa2717035a38",
+      "sourceId": "src-debate-3176aa2717035a38",
+      "anchorType": "url",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R",
+      "createdAt": "2026-06-04T01:03:49.898Z"
+    },
+    {
+      "id": "anchor-debate-c70d92e3e20a50b2",
+      "sourceId": "src-debate-c70d92e3e20a50b2",
+      "anchorType": "url",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1457&ddBienniumSession=2023%2F2023R",
+      "createdAt": "2026-06-04T01:03:49.898Z"
+    },
+    {
+      "id": "anchor-debate-d164cbf7e94bd607",
+      "sourceId": "src-debate-d164cbf7e94bd607",
+      "anchorType": "url",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB291&ddBienniumSession=2025%2F2025R",
+      "createdAt": "2026-06-04T01:03:49.898Z"
+    },
+    {
+      "id": "anchor-debate-879c1dfd1ed48e58",
+      "sourceId": "src-debate-879c1dfd1ed48e58",
+      "anchorType": "url",
+      "lineRange": null,
+      "pageNumber": null,
+      "section": null,
+      "claimSupportType": "DIRECT_SUPPORT",
+      "excerpt": null,
+      "notes": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R",
+      "createdAt": "2026-06-04T01:03:49.898Z"
     }
   ]
 }

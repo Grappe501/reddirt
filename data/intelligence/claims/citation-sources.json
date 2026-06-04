@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T16:46:26.257Z",
+  "generatedAt": "2026-06-04T01:03:49.960Z",
   "sources": [
     {
       "id": "src-opposition-kim-hammer-v1-src-0",
@@ -222,6 +222,132 @@
         "Reference SOS debate — not Kim Hammer"
       ],
       "createdAt": "2026-06-02T16:46:26.256Z"
+    },
+    {
+      "id": "src-debate-0b0b1a7e5b61aded",
+      "title": "Arkleg — SB250",
+      "sourceType": "url",
+      "urlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB250&ddBienniumSession=2023%2F2023R",
+      "publicationDate": null,
+      "retrievedAt": "2026-06-04T01:03:15.276Z",
+      "author": null,
+      "publisher": "Arkansas Legislature",
+      "jurisdiction": "Arkansas",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 85,
+      "quoteOrExcerpt": null,
+      "summary": "Arkleg SB250 + Act 350 text",
+      "limitations": [
+        "Title-level review — confirm enrolled act text before public adaptation"
+      ],
+      "createdAt": "2026-06-04T01:03:15.276Z"
+    },
+    {
+      "id": "src-debate-80a2e33fe7a744f7",
+      "title": "Arkleg — SB207",
+      "sourceType": "url",
+      "urlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB207&ddBienniumSession=2025%2F2025R",
+      "publicationDate": null,
+      "retrievedAt": "2026-06-04T01:03:49.898Z",
+      "author": null,
+      "publisher": "Arkansas Legislature",
+      "jurisdiction": "Arkansas",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 85,
+      "quoteOrExcerpt": null,
+      "summary": "Arkleg bill detail pages for SB207/208/209/210/211/551/584",
+      "limitations": [
+        "Title-level review — confirm enrolled act text before public adaptation"
+      ],
+      "createdAt": "2026-06-04T01:03:49.898Z"
+    },
+    {
+      "id": "src-debate-3176aa2717035a38",
+      "title": "Arkleg — HB1707",
+      "sourceType": "url",
+      "urlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R",
+      "publicationDate": null,
+      "retrievedAt": "2026-06-04T01:03:49.898Z",
+      "author": null,
+      "publisher": "Arkansas Legislature",
+      "jurisdiction": "Arkansas",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 85,
+      "quoteOrExcerpt": null,
+      "summary": "locate exact bill number/act citation",
+      "limitations": [
+        "Title-level review — confirm enrolled act text before public adaptation"
+      ],
+      "createdAt": "2026-06-04T01:03:49.898Z"
+    },
+    {
+      "id": "src-debate-c70d92e3e20a50b2",
+      "title": "Arkleg — HB1457",
+      "sourceType": "url",
+      "urlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1457&ddBienniumSession=2023%2F2023R",
+      "publicationDate": null,
+      "retrievedAt": "2026-06-04T01:03:49.898Z",
+      "author": null,
+      "publisher": "Arkansas Legislature",
+      "jurisdiction": "Arkansas",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 85,
+      "quoteOrExcerpt": null,
+      "summary": "Arkleg HB1457 detail and Act 444 status",
+      "limitations": [
+        "Title-level review — confirm enrolled act text before public adaptation"
+      ],
+      "createdAt": "2026-06-04T01:03:49.898Z"
+    },
+    {
+      "id": "src-debate-d164cbf7e94bd607",
+      "title": "Arkleg — SB291",
+      "sourceType": "url",
+      "urlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=SB291&ddBienniumSession=2025%2F2025R",
+      "publicationDate": null,
+      "retrievedAt": "2026-06-04T01:03:49.898Z",
+      "author": null,
+      "publisher": "Arkansas Legislature",
+      "jurisdiction": "Arkansas",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 85,
+      "quoteOrExcerpt": null,
+      "summary": "Arkleg SB291 (Act 279), HB1464 detail",
+      "limitations": [
+        "Title-level review — confirm enrolled act text before public adaptation"
+      ],
+      "createdAt": "2026-06-04T01:03:49.898Z"
+    },
+    {
+      "id": "src-debate-879c1dfd1ed48e58",
+      "title": "Arkleg — HB1707",
+      "sourceType": "url",
+      "urlOrPath": "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1707&ddBienniumSession=2025%2F2025R",
+      "publicationDate": null,
+      "retrievedAt": "2026-06-04T01:03:49.898Z",
+      "author": null,
+      "publisher": "Arkansas Legislature",
+      "jurisdiction": "Arkansas",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "reliabilityRating": "HIGH",
+      "sourceConfidence": 85,
+      "quoteOrExcerpt": null,
+      "summary": "bill-by-bill statutory text and amendments",
+      "limitations": [
+        "Title-level review — confirm enrolled act text before public adaptation"
+      ],
+      "createdAt": "2026-06-04T01:03:49.898Z"
     }
   ]
 }

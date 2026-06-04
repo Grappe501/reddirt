@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T16:41:41.731Z",
+  "generatedAt": "2026-06-04T01:03:49.964Z",
   "events": [
     {
       "eventType": "CLAIM_INGESTED",
@@ -393,6 +393,30 @@
       "details": "approved for test",
       "eventId": "cla-mpwv7g4j",
       "timestamp": "2026-06-02T16:41:41.731Z"
+    },
+    {
+      "eventType": "DEBATE_WEEK_SEED",
+      "claimId": null,
+      "actor": "debateClaimsSeed.v1",
+      "details": "Seeded 17 new and 0 updated debate-week claims",
+      "eventId": "cla-mpysjmkq",
+      "timestamp": "2026-06-04T01:02:43.468Z"
+    },
+    {
+      "eventType": "DEBATE_WEEK_SEED",
+      "claimId": null,
+      "actor": "debateClaimsSeed.v1",
+      "details": "Seeded 0 new and 17 updated debate-week claims",
+      "eventId": "cla-mpyskb69",
+      "timestamp": "2026-06-04T01:03:15.345Z"
+    },
+    {
+      "eventType": "DEBATE_WEEK_SEED",
+      "claimId": null,
+      "actor": "debateClaimsSeed.v1",
+      "details": "Seeded 0 new and 17 updated debate-week claims",
+      "eventId": "cla-mpysl1vw",
+      "timestamp": "2026-06-04T01:03:49.964Z"
     }
   ]
 }

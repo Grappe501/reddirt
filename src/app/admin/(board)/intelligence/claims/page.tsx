@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { listDebateWeekClaims } from "@/lib/intelligence/claims/debateClaimsSeed";
 import { listClaimsForAdmin, summarizeClaimLedger } from "@/lib/intelligence/claims/claimLedgerSummary";
+import { ClaimsDebateWeekPanel } from "@/components/admin/intelligence/claims/ClaimsDebateWeekPanel";
 import { loadCitationAnchors, loadCitationSources } from "@/lib/intelligence/claims/claimLedgerStore";
 import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
@@ -33,6 +35,7 @@ export default async function ClaimsLedgerPage() {
     byDomain: {},
     byVerificationStatus: {},
   });
+  const debateClaims = tryIntelligenceLoad("debate-week-claims", () => listDebateWeekClaims(), []);
   const claims = tryIntelligenceLoad("claim-ledger-list", () => listClaimsForAdmin().slice(0, 100), []);
   const sourceCount = tryIntelligenceLoad("citation-sources", () => loadCitationSources().sources.length, 0);
   const anchorCount = tryIntelligenceLoad("citation-anchors", () => loadCitationAnchors().anchors.length, 0);
@@ -57,7 +60,13 @@ export default async function ClaimsLedgerPage() {
 
       {getSurfaceGuide("claims") ? <V4OperatorGuide guide={getSurfaceGuide("claims")!} /> : null}
 
-      <section className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <ClaimsDebateWeekPanel claims={debateClaims} />
+
+      <section className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <div className={card}>
+          <p className="text-[10px] font-bold uppercase text-kelly-subtle">Debate-week queue</p>
+          <p className="font-heading text-2xl font-bold text-violet-900">{debateClaims.length}</p>
+        </div>
         <div className={card}>
           <p className="text-[10px] font-bold uppercase text-kelly-subtle">Total claims</p>
           <p className="font-heading text-2xl font-bold">{summary.totalClaims}</p>
