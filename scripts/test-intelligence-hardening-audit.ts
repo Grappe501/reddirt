@@ -13,6 +13,8 @@ import { buildBillActProofDeep, listAllBillNumbersFromIndex, resolveArklegBillUr
 import { buildSosQuestionResponseRounds } from "../src/lib/intelligence/v4/debateResponseRoundEnrichment";
 import { buildTrapLaneStepCoverage } from "../src/lib/intelligence/v4/trapLaneStepCoverage";
 import { loadCountyElectionFundingResearch } from "../src/lib/intelligence/v4/countyElectionFundingIntelligence";
+import { loadSupremeWorkbenchPacket } from "../src/lib/intelligence/v4/supremeWorkbench";
+import { KELLY_DILIGENCE_SEARCH_CHECKLIST } from "../src/lib/intelligence/v4/kellyCourtDiligenceLog";
 
 const APP_ROOT = path.join(process.cwd(), "src/app/admin/(board)/intelligence");
 
@@ -91,6 +93,16 @@ const report = computeIntelligenceBuildProgress();
 assert.ok(report.overallCompletionPct >= 60, "overall completion should be >= 60%");
 assert.ok(report.phases.length >= 5, "phase plan");
 assertRouteExists("/admin/intelligence/build-progress");
+assertRouteExists("/admin/intelligence/supreme-workbench");
+
+// --- Supreme workbench v6 ---
+const supreme = loadSupremeWorkbenchPacket();
+assert.ok(supreme.overallReadiness >= 50 && supreme.overallReadiness <= 100, "overall readiness range");
+assert.ok(supreme.dimensions.length >= 8, "live readiness dimensions");
+assert.ok(supreme.operatorSequences.length >= 4, "operator sequences");
+assert.ok(supreme.oppositionLanes.length === 6, "six trap lanes");
+assert.ok(supreme.priorityActions.length >= 3, "priority actions");
+assert.equal(KELLY_DILIGENCE_SEARCH_CHECKLIST.length, 5, "diligence checklist entries");
 
 // --- Core routes ---
 for (const route of [
@@ -118,4 +130,4 @@ console.log(`  trap lanes: ${trapIds.length}`);
 console.log(`  SOS questions: ${qIds.length}`);
 console.log(`  bills with Arkleg: ${actProofOk}/${billNumbers.length}`);
 console.log(`  overall completion: ${report.overallCompletionPct}%`);
-console.log(`  flagged items: ${report.flaggedForMasterBuild.length}`);
+console.log(`  supreme workbench readiness: ${supreme.overallReadiness}%`);

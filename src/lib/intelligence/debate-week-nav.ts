@@ -5,6 +5,7 @@ import { DEBATE_WORKFLOW_STEPS } from "@/lib/intelligence/v4/debateOperatorNarra
 /** Canonical debate-week operator paths (opposition + debate prep + review queues). */
 export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence",
+  "/admin/intelligence/supreme-workbench",
   "/admin/intelligence/command-center",
   "/admin/intelligence/debate-command",
   "/admin/intelligence/kim-hammer",
@@ -44,6 +45,13 @@ function stepDesc(href: string, fallback: string): string {
 
 /** County clerks week — Kelly reads this path daily (see countyClerkSevenDayPrepPath). */
 export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
+  {
+    href: "/admin/intelligence/supreme-workbench",
+    label: "Supreme workbench",
+    badgeKey: "opposition",
+    description:
+      "Live readiness + debate-day sequences — county clerk week starts here, then 7-day path.",
+  },
   {
     href: "/admin/intelligence/county-clerk-week",
     label: "7-day clerk path",
@@ -117,8 +125,15 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
   },
 ];
 
-/** Kelly-first path — three steps plus two reference surfaces. */
+/** Kelly-first path — supreme workbench + debate prep stack. */
 export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
+  {
+    href: "/admin/intelligence/supreme-workbench",
+    label: "Supreme workbench",
+    badgeKey: "opposition",
+    description:
+      "Unified command surface: live readiness from all modules, debate-day operator sequences (T-24h → spin room), trap lanes, priority actions, and build gaps — open first on debate day.",
+  },
   {
     href: "/admin/intelligence",
     label: "Start here",

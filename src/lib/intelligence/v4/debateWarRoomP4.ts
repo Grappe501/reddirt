@@ -3,14 +3,13 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 import type { DebateFilmRoomState, FilmRoomItem } from "@/lib/opposition/debateFilmRoomTypes";
-import type { ComputedReadinessScore } from "@/lib/opposition/debateReadinessSignals";
 import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import type { DebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4Types";
+import { computeLiveReadinessScores } from "@/lib/intelligence/v4/liveReadinessScores";
 import { OPPONENT_TRAP_LANES } from "@/lib/intelligence/v4/kellyOpponentContrastPlaybook";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { loadTranscriptChunks } from "@/lib/legislature/legislativeClaimIngest";
 import { buildLegislativeVideoIntelligenceRollup } from "@/lib/legislature/legislativeVideoIntelligenceRollup";
-import { loadOppositionArchiveRollup } from "@/lib/opposition/oppositionBriefConfidence";
 import { enrichFilmRoomWithMediaCatalog } from "@/lib/intelligence/v4/debateFilmRoomEnrichment";
 
 const ROOT = process.cwd();
@@ -24,10 +23,6 @@ import type { DebateWarRoomP4Packet } from "@/lib/intelligence/v4/debateWarRoomP
 
 function readJson<T>(rel: string): T {
   return JSON.parse(fs.readFileSync(path.join(ROOT, rel), "utf8")) as T;
-}
-
-function clamp(n: number): number {
-  return Math.max(0, Math.min(100, Math.round(n)));
 }
 
 /** Netlify-safe film room — opposition clip/quote JSON + optional legislative chunks (no KH-3 workbench). */
@@ -248,85 +243,6 @@ export function buildArgumentLibrary(v4: DebateIntelligenceV4Packet): ArgumentLi
   });
 }
 
-function computeP4ReadinessScores(v4: DebateIntelligenceV4Packet, filmRoom: DebateFilmRoomState): ComputedReadinessScore[] {
-  const archive = tryIntelligenceLoad("p4-archive-rollup", () => loadOppositionArchiveRollup(), null);
-  const claimsReady = v4.hub.claims.supported.length;
-  const needsResearch = v4.hub.claims.needsResearch.length;
-  const prepDepth = v4.debatePrepSectionsV4.length;
-  const clipScore = filmRoom.directClipCount * 15 + filmRoom.legislativeClipCount * 5;
-
-  const base: ComputedReadinessScore[] = [
-    {
-      id: "debateResponseConfidence",
-      label: "Debate prep depth",
-      score: clamp(prepDepth * 3 + claimsReady * 2),
-      trend: prepDepth >= 28 ? "up" : "flat",
-      weakAreas: needsResearch > 0 ? [`${needsResearch} claims need research`] : [],
-      nextModule: "Debate prep",
-      whyThisScore: `${prepDepth} prep sections · ${claimsReady} supported claims`,
-      scoreConfidence: prepDepth >= 20 ? "MEDIUM" : "LOW",
-      raiseScoreToday: ["Rehearse sections 4, 6–8, 19, 28", "Run anchor bill playbooks"],
-      computedFrom: ["debateIntelligenceV4"],
-    },
-    {
-      id: "mediaReadiness",
-      label: "Film room / media",
-      score: clamp(35 + clipScore),
-      trend: filmRoom.directClipCount >= 2 ? "up" : "flat",
-      weakAreas: filmRoom.coverageGaps,
-      nextModule: "Legislative video",
-      whyThisScore: filmRoom.archiveHonestyNote,
-      scoreConfidence: filmRoom.directClipCount >= 1 ? "MEDIUM" : "LOW",
-      raiseScoreToday: ["Close one retrieval task with clip ID", "Review quote cards before citing"],
-      computedFrom: ["opposition-clip-records", "legislative-chunks"],
-    },
-    {
-      id: "messageDiscipline",
-      label: "Claims publication safety",
-      score: clamp(
-        Math.round(
-          (claimsReady / Math.max(1, claimsReady + needsResearch)) * 100,
-        ),
-      ),
-      trend: needsResearch <= 3 ? "up" : "flat",
-      weakAreas: v4.hub.riskClaims.slice(0, 3),
-      nextModule: "Claims ledger",
-      whyThisScore: `${claimsReady} supported · ${needsResearch} need research`,
-      scoreConfidence: "MEDIUM",
-      raiseScoreToday: ["Claims gate before social", "Cut NEEDS_RESEARCH lines from debate script"],
-      computedFrom: ["claim-ledger", "v4 hub"],
-    },
-    {
-      id: "rapidRebuttalReadiness",
-      label: "Rebuttal library",
-      score: clamp(v4.rebuttalPlaybook.length * 5 + v4.likelyArguments.length * 3),
-      trend: "flat",
-      weakAreas: [],
-      nextModule: "Argument map",
-      whyThisScore: `${v4.rebuttalPlaybook.length} rebuttal cards · ${v4.likelyArguments.length} likely arguments`,
-      scoreConfidence: "MEDIUM",
-      raiseScoreToday: ["Rehearse agree/contrast/bridge triplets aloud"],
-      computedFrom: ["kim-hammer-rebuttal-prep.json"],
-    },
-  ];
-
-  if (archive) {
-    base.push({
-      id: "overall",
-      label: "Archive confidence (rollup)",
-      score: archive.oppositionBriefConfidenceEstimate,
-      trend: archive.oppositionBriefConfidenceEstimate >= 70 ? "up" : "flat",
-      weakAreas: archive.topUnusableClaims.slice(0, 3),
-      nextModule: "Opponent record",
-      whyThisScore: archive.confidenceBasis,
-      scoreConfidence: "MEDIUM",
-      raiseScoreToday: archive.nextHumanRetrievalActions.slice(0, 2),
-      computedFrom: ["oppositionBriefConfidence"],
-    });
-  }
-
-  return base;
-}
 
 export function loadDebateWarRoomP4Packet(): DebateWarRoomP4Packet {
   return tryIntelligenceLoad("debate-war-room-p4", () => {
@@ -334,7 +250,7 @@ export function loadDebateWarRoomP4Packet(): DebateWarRoomP4Packet {
     const filmRoom = enrichFilmRoomWithMediaCatalog(buildLaunchFilmRoomState());
     const crossExamBank = buildCrossExamBank(v4);
     const argumentLibrary = buildArgumentLibrary(v4);
-    const readinessScores = computeP4ReadinessScores(v4, filmRoom);
+    const readinessScores = computeLiveReadinessScores({ v4, filmRoom });
     const legislative = tryIntelligenceLoad(
       "p4-legislative-rollup",
       () => buildLegislativeVideoIntelligenceRollup(),
