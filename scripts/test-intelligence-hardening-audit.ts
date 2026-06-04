@@ -23,6 +23,11 @@ import {
   loadKimHammerCandidateDossier,
   loadMichaelPackoCandidateDossier,
 } from "../src/lib/intelligence/v4/loadOpponentCandidateDossier";
+import { loadKellyGrappeCandidateDossier } from "../src/lib/intelligence/v4/loadKellyCandidateDossier";
+import {
+  getAllKellyDossierSectionIds,
+  getKellyDossierSection,
+} from "../src/lib/intelligence/v4/kellyCandidateDossierDepth";
 import { loadVvsg20CandidateEducation } from "../src/lib/intelligence/v4/vvsg20CandidateEducation";
 import { INTEGRITY_2021_PACKAGE_DEPTH, PETITION_2025_CLUSTER_DEPTH } from "../src/lib/intelligence/v4/integrityPackageDepth";
 import { listCuratedBillPlaybookNumbers } from "../src/lib/intelligence/v4/debateBillOperatorPlaybooks";
@@ -108,6 +113,7 @@ assert.ok(actProofOk >= billNumbers.length * 0.9, "90%+ bills need Arkleg URLs")
 const report = computeIntelligenceBuildProgress();
 assert.ok(report.overallCompletionPct >= 60, "overall completion should be >= 60%");
 assert.ok(report.phases.length >= 5, "phase plan");
+assert.ok(report.version === "v6.5-candidate-dossiers-pass", "build progress version");
 assertRouteExists("/admin/intelligence/build-progress");
 assertRouteExists("/admin/intelligence/supreme-workbench");
 assertRouteExists("/admin/intelligence/opposition-strategy");
@@ -150,6 +156,21 @@ assert.ok(packoDossier.whatTheyClaim.length >= 3, "Pakko claims ledger");
 assert.ok(hammerDossier.leadStoriesToWatch.length >= 5, "Hammer lead stories");
 assert.ok(packoDossier.leadStoriesToWatch.length >= 4, "Pakko lead stories");
 
+// --- Kelly alignment dossier (v6.5) ---
+assert.ok(getAllKellyDossierSectionIds().length >= 12, "Kelly alignment sections");
+assertRouteExists("/admin/intelligence/candidate-dossiers");
+assertRouteExists("/admin/intelligence/candidate-dossiers/kelly-grappe");
+for (const sid of ["kelly-sos-office-overview", "kelly-debate-credential-intro", "kelly-30-second-bio"]) {
+  const sec = getKellyDossierSection(sid)!;
+  assert.ok(sec.narrativeOverview.length >= 3, `${sid} narrative depth`);
+  assert.ok(sec.debateFramingExample.length > 40, `${sid} debate framing`);
+  assertRouteExists(`/admin/intelligence/candidate-dossiers/kelly-grappe/${sid}`);
+}
+const kellyDossier = loadKellyGrappeCandidateDossier();
+assert.ok(kellyDossier.coreStrengths.length >= 5, "Kelly core strengths");
+assert.ok(kellyDossier.experienceToOfficeThemes.length >= 5, "Kelly crosswalk themes");
+assert.equal(kellyDossier.candidateId, "kelly-grappe");
+
 // --- v6.3 briefing depth ---
 assertRouteExists("/admin/intelligence/debate-briefings");
 assert.ok(listDebatePhilosophyBriefings().length >= 8, "8+ philosophy briefings");
@@ -169,6 +190,7 @@ for (const route of [
   "/admin/intelligence/trap-lanes",
   "/admin/intelligence/sos-debate-questions",
   "/admin/intelligence/debate-briefings",
+  "/admin/intelligence/candidate-dossiers/kelly-grappe",
   "/admin/intelligence/kelly-debate-coaching",
   "/admin/intelligence/debate-depth",
   "/admin/intelligence/debate-command",

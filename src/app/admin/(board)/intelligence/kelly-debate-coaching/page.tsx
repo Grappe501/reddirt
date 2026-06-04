@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { KellyDebateCoachingPanel } from "@/components/admin/intelligence/KellyDebateCoachingPanel";
+import { V4DebateDepthHub } from "@/components/admin/intelligence/v4/V4DebateDepthHub";
+import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { buildVideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoom";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
@@ -21,6 +23,9 @@ export default function KellyDebateCoachingPage() {
         guide={getSurfaceGuide("kellyDebateCoaching")}
       >
         <V4BackLinks />
+        <Link href="/admin/intelligence/candidate-dossiers/kelly-grappe" className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950">
+          Your alignment profile
+        </Link>
         <Link href="/admin/intelligence/debate-depth/culture-war" className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950">
           Culture-war guide
         </Link>

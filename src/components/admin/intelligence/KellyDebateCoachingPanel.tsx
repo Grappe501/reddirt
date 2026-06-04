@@ -116,6 +116,22 @@ export function KellyDebateCoachingPanel({
     <div className="space-y-6">
       {!compact ? (
         <>
+        <article className="rounded-xl border-2 border-emerald-300 bg-emerald-50/50 p-5 text-xs">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-950">Your dossier · read first</p>
+          <h2 className="mt-2 font-heading text-lg font-bold text-kelly-navy">Experience-to-Office Alignment Profile</h2>
+          <p className="mt-2 leading-relaxed text-kelly-text">
+            Single-page readout mapping your leadership, training, civic education, and rural roots to what the Secretary of
+            State actually does — with debate framing examples, a 30-second bio framework, and twelve drill-down sections.
+            Read this before offensive scripts so every answer follows Experience → Skill → Office.
+          </p>
+          <Link
+            href="/admin/intelligence/candidate-dossiers/kelly-grappe"
+            className="mt-3 inline-flex min-h-12 items-center rounded-full border-2 border-emerald-400 bg-white px-4 text-sm font-bold text-emerald-950"
+          >
+            Open your alignment profile →
+          </Link>
+        </article>
+
         <article className="rounded-xl border-4 border-kelly-navy bg-kelly-navy p-5 text-xs text-white">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-gold">Offensive constitution — read first</p>
           <h2 className="mt-2 font-heading text-xl font-bold">{OFFENSIVE_DEBATE_PRINCIPLES.headline}</h2>

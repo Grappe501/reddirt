@@ -62,11 +62,11 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
       "v6.2 offense layer: 2021 package continuity, CVSGF trap, six offensive moves — pair with election funding day.",
   },
   {
-    href: "/admin/intelligence/opponents/dossiers",
-    label: "Opponent dossiers",
+    href: "/admin/intelligence/candidate-dossiers",
+    label: "Candidate dossiers",
     badgeKey: "opposition",
     description:
-      "Complete Hammer & Pakko profiles — strengths, weaknesses, claims ledger, lead stories to watch, 16 narrative sections.",
+      "Kelly Experience-to-Office Alignment Profile (12 sections) plus Hammer & Pakko opponent dossiers — single-page readouts with drill-down.",
   },
   {
     href: "/admin/intelligence/county-clerk-week/acca-summer-conference",

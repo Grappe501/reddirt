@@ -1,11 +1,9 @@
 import type { OperatorGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4GuideDepthBlocks } from "@/components/admin/intelligence/v4/V4EncounterDepthPanel";
-import { isCandidateIpadMode } from "@/lib/intelligence/candidateIpadMode";
-import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 
-/** Candidate debate builds — guide meta is staff-only and reads as noise on iPad prep. */
+/** Operator guides hidden globally — candidate finds top-of-page meta distracting; data kept for staff re-enable. */
 function shouldHideOperatorGuide(): boolean {
-  return isCandidateIpadMode() || isIntelligenceOppositionDebateLaunchMode();
+  return true;
 }
 
 function parseFinding(item: string): { tag: "offensive" | "defensive" | "verify" | "general"; text: string } {

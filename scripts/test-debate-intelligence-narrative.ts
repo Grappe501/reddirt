@@ -25,9 +25,13 @@ for (const bill of anchors) {
 }
 
 const anyBill = v4.billNarratives[0];
-const synth = getBillOperatorPlaybook(anyBill.billNumber, anyBill);
-assert(!synth.isCurated, "synthesized playbook for non-anchor");
-assert(synth.steps.length >= 6, "synthesized steps");
+const pb = getBillOperatorPlaybook(anyBill.billNumber, anyBill);
+assert(pb.steps.length >= 6, "playbook steps");
+if (anchors.length >= v4.billNarratives.length) {
+  assert(pb.isCurated, "v6.4+ all index bills have curated playbooks");
+} else {
+  assert(!pb.isCurated, "synthesized playbook for non-anchor");
+}
 
 assert(OPPONENT_TRAP_LANES.length >= 6, "trap lanes");
 assert(SOS_JOB_CONTRAST.backgroundWeaknessesSafe.length >= 4, "background angles");

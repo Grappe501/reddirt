@@ -19,6 +19,7 @@ export function isCandidateIpadMode(): boolean {
 
 export const CANDIDATE_IPAD_PRIMARY_NAV = [
   { href: "/admin/intelligence", label: "Home", shortLabel: "Home" },
+  { href: "/admin/intelligence/candidate-dossiers/kelly-grappe", label: "Your profile", shortLabel: "Profile" },
   { href: "/admin/intelligence/kelly-debate-coaching", label: "Coaching", shortLabel: "Coach" },
   { href: "/admin/intelligence/kim-hammer/debate-prep", label: "Debate prep", shortLabel: "Prep" },
   { href: "/admin/intelligence/video-archive-room", label: "Record & video", shortLabel: "Record" },
@@ -30,7 +31,8 @@ export const CANDIDATE_IPAD_MORE_LINKS = [
   { href: "/admin/intelligence/trap-lanes", label: "Trap lanes (full drill-down)" },
   { href: "/admin/intelligence/sos-debate-questions", label: "Expected SOS questions" },
   { href: "/admin/intelligence/debate-command", label: "Debate command" },
-  { href: "/admin/intelligence/opponents/dossiers", label: "Opponent dossiers" },
+  { href: "/admin/intelligence/candidate-dossiers", label: "All candidate dossiers" },
+  { href: "/admin/intelligence/opponents/dossiers/kim-hammer", label: "Hammer dossier" },
   { href: "/admin/intelligence/county-clerk-week/acca-summer-conference", label: "ACCA panel prep" },
   { href: "/admin/intelligence/county-clerk-week", label: "Clerk week path" },
   { href: "/admin/intelligence/agent-tooling", label: "Agent tooling (prep runs)" },

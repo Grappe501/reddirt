@@ -36,7 +36,6 @@ export default function IntelligenceHubLaunchPage() {
   const opposition = loadOppositionStrategyLayerPacket();
   const { hub } = v4;
   const clerkWeek = isCountyClerkPrimaryAudience();
-
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
       <V4PageHeader

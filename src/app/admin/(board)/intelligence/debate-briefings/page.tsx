@@ -14,7 +14,6 @@ const card =
 export default function DebateBriefingsIndexPage() {
   const briefings = listDebatePhilosophyBriefings();
   const guide = getSurfaceGuide("debate-briefings-index");
-
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
       <V4PageHeader

@@ -97,7 +97,7 @@ export function CandidateIpadIntelligenceShell({ children }: { children: React.R
         style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
         aria-label="Candidate iPad navigation"
       >
-        <div className="grid grid-cols-7 gap-0">
+        <div className="grid grid-cols-8 gap-0">
           {CANDIDATE_IPAD_PRIMARY_NAV.map((item) => {
             const active = isActive(pathname, item.href);
             return (

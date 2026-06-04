@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { V7MichaelPackoScaffoldPanel } from "@/components/admin/intelligence/v4/V7MichaelPackoScaffoldPanel";
-import { V4OpponentDossiersHub } from "@/components/admin/intelligence/v4/V4OpponentDossierPanel";
+import { V4AllCandidateDossiersHub } from "@/components/admin/intelligence/v4/V4KellyCandidateDossierPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 
 export default function OpponentsHubPage() {
@@ -9,18 +9,24 @@ export default function OpponentsHubPage() {
       <V4PageHeader
         eyebrow="Kelly · multi-candidate opposition"
         title="Opponents hub"
-        description="Complete dossiers for Kim Hammer and Dr. Michael Pakko — strengths, weaknesses, claims, lead stories. Hammer command center for bills and timeline."
+        description="Kelly alignment profile plus complete dossiers for Kim Hammer and Dr. Michael Pakko — strengths, weaknesses, claims, lead stories. Hammer command center for bills and timeline."
       >
         <V4BackLinks />
         <Link
-          href="/admin/intelligence/opponents/dossiers"
+          href="/admin/intelligence/candidate-dossiers/kelly-grappe"
+          className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950"
+        >
+          Kelly alignment profile
+        </Link>
+        <Link
+          href="/admin/intelligence/candidate-dossiers"
           className="rounded-full border border-rose-300/60 bg-rose-50 px-3 py-1 text-xs font-bold text-rose-950"
         >
           Full dossiers
         </Link>
       </V4PageHeader>
 
-      <V4OpponentDossiersHub />
+      <V4AllCandidateDossiersHub />
 
       <section className="my-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Link
@@ -33,6 +39,14 @@ export default function OpponentsHubPage() {
             KATV/THV11 transcripts, media drills, cross-exam bank, argument library — rehearse before stage.
           </p>
           <p className="mt-3 text-xs font-bold text-violet-900">Open film room →</p>
+        </Link>
+        <Link
+          href="/admin/intelligence/candidate-dossiers/kelly-grappe"
+          className="flex flex-col rounded-xl border-2 border-emerald-300 bg-emerald-50/40 p-5 shadow-sm transition hover:border-emerald-500"
+        >
+          <p className="text-[10px] font-bold uppercase text-emerald-900">Your profile · Production</p>
+          <h2 className="mt-1 font-heading text-xl font-bold text-kelly-navy">Kelly Grappe</h2>
+          <p className="mt-2 flex-1 text-sm text-kelly-muted">12 alignment sections, crosswalk table, 30-second bio, debate framing examples.</p>
         </Link>
         <Link
           href="/admin/intelligence/opponents/dossiers/kim-hammer"

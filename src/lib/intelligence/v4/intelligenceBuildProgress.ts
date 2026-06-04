@@ -18,6 +18,7 @@ import { computeOppositionOffenseReadinessPct } from "@/lib/intelligence/v4/oppo
 import { KIM_HAMMER_V4_MODULES } from "@/lib/intelligence/kimHammerV4ModuleRegistry";
 import { getAllAccaConferenceDepthSectionIds } from "@/lib/intelligence/v4/accaClerksConference2026Depth";
 import { getAllOpponentDossierSectionIds } from "@/lib/intelligence/v4/opponentCandidateDossierDepth";
+import { getAllKellyDossierSectionIds } from "@/lib/intelligence/v4/kellyCandidateDossierDepth";
 
 export type BuildProgressItem = {
   id: string;
@@ -368,10 +369,22 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
   });
 
   items.push({
+    id: "kelly-alignment-dossier",
+    label: "Kelly Experience-to-Office Alignment dossier",
+    category: "Kelly profile",
+    completionPct: 100,
+    status: "complete",
+    built: getAllKellyDossierSectionIds().length,
+    total: getAllKellyDossierSectionIds().length,
+    flags: ["Court diligence log still NOT_SEARCHED — do not claim clean search on stage"],
+    href: "/admin/intelligence/candidate-dossiers/kelly-grappe",
+  });
+
+  items.push({
     id: "opponent-dossiers",
     label: "Opponent candidate dossiers (Hammer + Pakko)",
     category: "Opposition",
-    completionPct: 90,
+    completionPct: 92,
     status: "partial",
     built: getAllOpponentDossierSectionIds().length,
     total: getAllOpponentDossierSectionIds().length + 2,
@@ -395,6 +408,8 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/claims",
     "/admin/intelligence/election-funding",
     "/admin/intelligence/county-clerk-week/acca-summer-conference",
+    "/admin/intelligence/candidate-dossiers",
+    "/admin/intelligence/candidate-dossiers/kelly-grappe",
     "/admin/intelligence/opponents/dossiers",
     "/admin/intelligence/opponents/dossiers/kim-hammer",
     "/admin/intelligence/opponents/dossiers/michael-packo",
@@ -538,11 +553,29 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
         "Netlify deploy green",
       ],
     },
+    {
+      phase: 10,
+      name: "v6.5 — Candidate dossiers pass (THIS PASS)",
+      targetVersion: "0.18.0",
+      goal: "Kelly Experience-to-Office Alignment Profile as first-class dossier; unified candidate hub; narrative depth upgrade; Netlify hardening.",
+      items: [
+        "Kelly alignment dossier — 12 drill-down sections + crosswalk table",
+        "Unified /candidate-dossiers hub (Kelly + Hammer + Pakko)",
+        "iPad Profile tab + enriched opponent executive narratives",
+        "Hardening audit extended for Kelly routes",
+      ],
+      exitCriteria: [
+        "Kelly dossier single-page readout live on Netlify",
+        "All three candidates reachable from dossier hub",
+        "Hardening audit + typecheck green",
+        "No serverless hang on dossier load (JSON + static TS only)",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v6.4-gap-closure-pass",
+    version: "v6.5-candidate-dossiers-pass",
     overallCompletionPct,
     items,
     phases,

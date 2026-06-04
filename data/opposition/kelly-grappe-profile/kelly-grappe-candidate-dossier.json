@@ -1,0 +1,86 @@
+{
+  "generatedAt": "2026-06-04T22:00:00.000Z",
+  "candidateId": "kelly-grappe",
+  "displayName": "Kelly Grappe",
+  "party": "Democratic",
+  "office": "Arkansas Secretary of State 2026",
+  "dossierStatus": "PRODUCTION",
+  "classification": "CANDIDATE_EYES_ONLY",
+  "executiveSummary": "Kelly Grappe's Experience-to-Office Alignment Profile maps three decades of organizational leadership, training-systems work, rural civic education, and community stewardship to the actual duties of Arkansas Secretary of State — election administration across seventy-five counties, business and commercial filings, public records transparency, Capitol stewardship, civic education, and large-scale cross-division management. This dossier is written for Kelly to read before debate and clerk rooms: not a résumé recitation guide, but a narrative bridge from lived experience to SOS service philosophy. Every section includes plain-English walkthroughs, debate framing examples, and drill-down links to coaching, claims, and opponent contrast modules.",
+  "coreStrengths": [
+    {
+      "id": "organizational-leadership",
+      "strength": "Three decades directing large teams, budgets, and operational systems at Verizon and Rock Dental",
+      "evidenceStatus": "VERIFIED_CAMPAIGN_BIO",
+      "debateUse": "Experience → skill → office: systems people can trust"
+    },
+    {
+      "id": "training-systems",
+      "strength": "Built learning and leadership-development programs — transferable to clerk, poll worker, and notary training",
+      "evidenceStatus": "VERIFIED_CAMPAIGN_BIO",
+      "debateUse": "Help people understand complex systems and use them successfully"
+    },
+    {
+      "id": "civic-education",
+      "strength": "Stand Up Arkansas co-founder — rural civics education and lawful participation",
+      "evidenceStatus": "VERIFIED_MEDIA",
+      "debateUse": "Years helping Arkansans understand government and participate effectively"
+    },
+    {
+      "id": "rural-perspective",
+      "strength": "Rose Bud roots, small-farm ownership, rural community engagement",
+      "evidenceStatus": "VERIFIED_CAMPAIGN_BIO",
+      "debateUse": "Lived in the communities that rely on state government systems daily"
+    },
+    {
+      "id": "public-trust-frame",
+      "strength": "Campaign emphasizes transparent administration, county support, depoliticized SOS service",
+      "evidenceStatus": "VERIFIED_CAMPAIGN_SITE",
+      "debateUse": "Office belongs to the people — serve every county fairly"
+    }
+  ],
+  "experienceToOfficeThemes": [
+    {
+      "theme": "Organizational leadership",
+      "sosFunctions": ["Managing large staffs", "Organizational change", "Cross-functional coordination", "Operational systems"],
+      "debateLine": "Throughout my career I've worked in organizations where success depended on creating systems that worked reliably, training people well, and helping large groups work toward a common goal."
+    },
+    {
+      "theme": "Leadership development",
+      "sosFunctions": ["County clerk training", "Election official support", "Poll worker onboarding", "Public information audiences"],
+      "debateLine": "One of the things I've done throughout my career is help people understand complex systems and use them successfully."
+    },
+    {
+      "theme": "Civic education",
+      "sosFunctions": ["Elections education", "Voter participation", "Public records literacy", "Civic processes"],
+      "debateLine": "I've spent years helping people understand how government works and how they can participate effectively."
+    },
+    {
+      "theme": "Rural Arkansas",
+      "sosFunctions": ["Rural county service", "Small-town businesses", "Agricultural communities", "Equal urban/rural treatment"],
+      "debateLine": "I've lived and worked in the same communities that rely on state government systems every day."
+    },
+    {
+      "theme": "Community building",
+      "sosFunctions": ["Coalition building", "Public communication", "Trust-building", "Stakeholder engagement"],
+      "debateLine": "A large part of my work has involved bringing people together who don't always agree and helping them work toward common goals."
+    }
+  ],
+  "thirtySecondBioFramework": {
+    "past": ["Long-term leadership experience", "Organizational management", "Civic education work"],
+    "present": ["Community and rural engagement", "Public service focus"],
+    "future": ["Commitment to transparent administration and serving all counties"]
+  },
+  "relatedRoutes": {
+    "Debate coaching": "/admin/intelligence/kelly-debate-coaching",
+    "Public record brief": "/admin/intelligence/kelly-debate-coaching",
+    "Opponent contrast — Hammer": "/admin/intelligence/opponents/dossiers/kim-hammer",
+    "Opponent contrast — Pakko": "/admin/intelligence/opponents/dossiers/michael-packo",
+    "Expected questions": "/admin/intelligence/sos-debate-questions",
+    "Claims gate": "/admin/intelligence/claims"
+  },
+  "researchGaps": [
+    "CourtConnect / UCC diligence — staff protocol in kelly-court-diligence-log.json before claiming clean search",
+    "Some attack vectors remain PARTIAL — rehearse only verified public-record brief lines on stage"
+  ]
+}

@@ -1,4 +1,6 @@
+/** Server-only — never import from "use client" components (pulls in sosDebateQuestionBank chain). */
 import { getAllPrepSectionDrillDownIds, getPrepSectionDrillDown } from "@/lib/intelligence/v4/debatePrepSectionDrillDowns";
+import { searchDebatePrepFinderEntries } from "@/lib/intelligence/v4/debatePrepFinderSearch";
 import { getAllTrapLaneIds, getTrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 import { getAllSosDebateQuestionIds, getSosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { listDebatePhilosophyBriefings } from "@/lib/intelligence/v4/debatePhilosophyBriefings";
@@ -79,13 +81,5 @@ export function buildDebatePrepFinderIndex(): DebatePrepFinderEntry[] {
 }
 
 export function searchDebatePrepFinder(query: string, limit = 24): DebatePrepFinderEntry[] {
-  const q = query.trim().toLowerCase();
-  if (!q) return [];
-  const index = buildDebatePrepFinderIndex();
-  return index
-    .filter((e) => {
-      const hay = `${e.title} ${e.summary} ${e.tags.join(" ")}`.toLowerCase();
-      return hay.includes(q) || q.split(/\s+/).every((word) => hay.includes(word));
-    })
-    .slice(0, limit);
+  return searchDebatePrepFinderEntries(buildDebatePrepFinderIndex(), query, limit);
 }

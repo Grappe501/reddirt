@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import { SOS_DEBATE_QUESTION_BANK } from "@/lib/intelligence/v4/sosDebateQuestionBankData";
 import { SOS_DEBATE_QUESTION_BANK_ADDITIONS } from "@/lib/intelligence/v4/sosDebateQuestionBankAdditions";
 import { attachComprehensiveExpansion } from "@/lib/intelligence/v4/sosDebateQuestionComprehensive";
@@ -78,15 +76,6 @@ export function listSosDebateQuestionsByCategory(): Array<{
     map.set(q.category, entry);
   }
   return [...map.entries()].map(([category, v]) => ({ category, ...v }));
-}
-
-export function loadSosDebateQuestionResearch(): SosDebateQuestionResearchFile | null {
-  try {
-    const abs = path.join(process.cwd(), "data/intelligence/sos-debate-question-research.json");
-    return JSON.parse(fs.readFileSync(abs, "utf8")) as SosDebateQuestionResearchFile;
-  } catch {
-    return null;
-  }
 }
 
 export const SOS_DEBATE_SPEAK_ORDER_RULE =
