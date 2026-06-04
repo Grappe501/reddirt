@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T16:41:41.730Z",
+  "generatedAt": "2026-06-04T01:03:49.963Z",
   "purpose": "Campaign intelligence claim ledger — INTERNAL ONLY",
   "entries": [
     {
@@ -1149,6 +1149,1247 @@
       "createdAt": "2026-06-02T16:40:53.360Z",
       "updatedAt": "2026-06-02T16:41:41.636Z",
       "createdBy": "claimLedgerIngest.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-0b0b1a7e5b61aded",
+      "claimText": "SB250 was enacted as Act 350 and amended paper-ballot/tabulation procedures.",
+      "normalizedClaimText": "sb250 was enacted as act 350 and amended paper-ballottabulation procedures.",
+      "claimFingerprint": "0b0b1a7e5b61aded",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep",
+        "SB250"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "anchor-debate-0b0b1a7e5b61aded"
+      ],
+      "supportingSourceIds": [
+        "src-debate-0b0b1a7e5b61aded"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "VERIFIED",
+      "verificationStatus": "HUMAN_APPROVED_INTERNAL",
+      "publishabilityStatus": "APPROVED_FOR_INTERNAL_USE",
+      "publicUseRisk": "LOW",
+      "internalUseStatus": "SAFE_FOR_INTERNAL_STRATEGY",
+      "recommendedHumanAction": "Approved for internal debate rehearsal — verify act text before TV or paid media",
+      "humanReview": {
+        "reviewedBy": "debateClaimsSeed.v1",
+        "reviewedAt": "2026-06-04T01:02:43.450Z",
+        "decision": "APPROVED_INTERNAL",
+        "notes": "Synopsis: SB250 / 2023 paper-ballot or hand-count county regulation",
+        "requiredEdits": [],
+        "approvalScope": "INTERNAL"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "APPROVED_INTERNAL",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Auto-approved for internal debate rehearsal only"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.292Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "HUMAN_APPROVED_INTERNAL",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.913Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "HUMAN_APPROVED_INTERNAL",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.913Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": "2026-06-04T01:02:43.450Z"
+    },
+    {
+      "id": "claim-debate-80a2e33fe7a744f7",
+      "claimText": "Multiple 2025 petition-related bills list Hammer as primary sponsor in arkleg records.",
+      "normalizedClaimText": "multiple 2025 petition-related bills list hammer as primary sponsor in arkleg records.",
+      "claimFingerprint": "80a2e33fe7a744f7",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep",
+        "SB207"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "anchor-debate-80a2e33fe7a744f7"
+      ],
+      "supportingSourceIds": [
+        "src-debate-80a2e33fe7a744f7"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "VERIFIED",
+      "verificationStatus": "HUMAN_APPROVED_INTERNAL",
+      "publishabilityStatus": "APPROVED_FOR_INTERNAL_USE",
+      "publicUseRisk": "LOW",
+      "internalUseStatus": "SAFE_FOR_INTERNAL_STRATEGY",
+      "recommendedHumanAction": "Approved for internal debate rehearsal — verify act text before TV or paid media",
+      "humanReview": {
+        "reviewedBy": "debateClaimsSeed.v1",
+        "reviewedAt": "2026-06-04T01:02:43.450Z",
+        "decision": "APPROVED_INTERNAL",
+        "notes": "Synopsis: 2025 citizen initiative / petition-process bills sponsored by Hammer",
+        "requiredEdits": [],
+        "approvalScope": "INTERNAL"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "APPROVED_INTERNAL",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Auto-approved for internal debate rehearsal only"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.292Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "HUMAN_APPROVED_INTERNAL",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.915Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "HUMAN_APPROVED_INTERNAL",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.915Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": "2026-06-04T01:02:43.450Z"
+    },
+    {
+      "id": "claim-debate-3176aa2717035a38",
+      "claimText": "A similarly named claim needs exact bill/act verification before use.",
+      "normalizedClaimText": "a similarly named claim needs exact billact verification before use.",
+      "claimFingerprint": "3176aa2717035a38",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep",
+        "HB1707"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "anchor-debate-3176aa2717035a38"
+      ],
+      "supportingSourceIds": [
+        "src-debate-3176aa2717035a38"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "HIGH",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Complete sourcing before debate or public use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Synopsis: Voter Registration and Secure Voter Records Act of 2023",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — needs more research"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.292Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.927Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.927Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-c70d92e3e20a50b2",
+      "claimText": "HB1457 title references Poll Watchers Bill of Rights and arkleg shows enactment as Act 444.",
+      "normalizedClaimText": "hb1457 title references poll watchers bill of rights and arkleg shows enactment as act 444.",
+      "claimFingerprint": "c70d92e3e20a50b2",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep",
+        "HB1457"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "anchor-debate-c70d92e3e20a50b2"
+      ],
+      "supportingSourceIds": [
+        "src-debate-c70d92e3e20a50b2"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "VERIFIED",
+      "verificationStatus": "HUMAN_APPROVED_INTERNAL",
+      "publishabilityStatus": "APPROVED_FOR_INTERNAL_USE",
+      "publicUseRisk": "LOW",
+      "internalUseStatus": "SAFE_FOR_INTERNAL_STRATEGY",
+      "recommendedHumanAction": "Approved for internal debate rehearsal — verify act text before TV or paid media",
+      "humanReview": {
+        "reviewedBy": "debateClaimsSeed.v1",
+        "reviewedAt": "2026-06-04T01:02:43.450Z",
+        "decision": "APPROVED_INTERNAL",
+        "notes": "Synopsis: Arkansas Poll Watchers Bill of Rights Act of 2023",
+        "requiredEdits": [],
+        "approvalScope": "INTERNAL"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "APPROVED_INTERNAL",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Auto-approved for internal debate rehearsal only"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.292Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "HUMAN_APPROVED_INTERNAL",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.938Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "HUMAN_APPROVED_INTERNAL",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.938Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": "2026-06-04T01:02:43.450Z"
+    },
+    {
+      "id": "claim-debate-d164cbf7e94bd607",
+      "claimText": "SB291 enacted as Act 279 changed complaint deadlines; HB1464 title also references complaint/SBEC changes.",
+      "normalizedClaimText": "sb291 enacted as act 279 changed complaint deadlines hb1464 title also references complaintsbec changes.",
+      "claimFingerprint": "d164cbf7e94bd607",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep",
+        "SB291"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "anchor-debate-d164cbf7e94bd607"
+      ],
+      "supportingSourceIds": [
+        "src-debate-d164cbf7e94bd607"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "VERIFIED",
+      "verificationStatus": "HUMAN_APPROVED_INTERNAL",
+      "publishabilityStatus": "APPROVED_FOR_INTERNAL_USE",
+      "publicUseRisk": "LOW",
+      "internalUseStatus": "SAFE_FOR_INTERNAL_STRATEGY",
+      "recommendedHumanAction": "Approved for internal debate rehearsal — verify act text before TV or paid media",
+      "humanReview": {
+        "reviewedBy": "debateClaimsSeed.v1",
+        "reviewedAt": "2026-06-04T01:02:43.450Z",
+        "decision": "APPROVED_INTERNAL",
+        "notes": "Synopsis: election law complaint / State Board of Election Commissioners changes",
+        "requiredEdits": [],
+        "approvalScope": "INTERNAL"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "APPROVED_INTERNAL",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Auto-approved for internal debate rehearsal only"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.292Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "HUMAN_APPROVED_INTERNAL",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.951Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "HUMAN_APPROVED_INTERNAL",
+          "nextStatus": "HUMAN_APPROVED_INTERNAL",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.951Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": "2026-06-04T01:02:43.450Z"
+    },
+    {
+      "id": "claim-debate-879c1dfd1ed48e58",
+      "claimText": "At least one bill title (`HB1707`) references SOS filing duties; broader duty-shift claims need full text confirmation.",
+      "normalizedClaimText": "at least one bill title hb1707 references sos filing duties broader duty-shift claims need full text confirmation.",
+      "claimFingerprint": "879c1dfd1ed48e58",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep",
+        "HB1707"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [
+        "anchor-debate-879c1dfd1ed48e58"
+      ],
+      "supportingSourceIds": [
+        "src-debate-879c1dfd1ed48e58"
+      ],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Complete sourcing before debate or public use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Synopsis: Secretary of State duty changes in election bills",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — partially supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.961Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.961Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-6573c151160386bd",
+      "claimText": "No sourced claim in this pass that Hammer personally 'voted for' every listed item; current data is sponsor/co-sponsor-oriented.",
+      "normalizedClaimText": "no sourced claim in this pass that hammer personally voted for every listed item current data is sponsorco-sponsor-oriented.",
+      "claimFingerprint": "6573c151160386bd",
+      "claimType": "PROHIBITED",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "UNSUPPORTED",
+      "verificationStatus": "REJECTED",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "CRITICAL",
+      "internalUseStatus": "DO_NOT_USE",
+      "recommendedHumanAction": "Do not use on stage, in ads, or social",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": "REJECTED",
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — do-not-say"
+        },
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "REJECTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "REJECTED",
+          "notes": "Do-not-say gate"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "REJECTED",
+          "nextStatus": "REJECTED",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.961Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "REJECTED",
+          "nextStatus": "REJECTED",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.961Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-5cc4d0f63e3a2356",
+      "claimText": "No sourced claim in this pass about county-cost amounts or quantified voter impact effects.",
+      "normalizedClaimText": "no sourced claim in this pass about county-cost amounts or quantified voter impact effects.",
+      "claimFingerprint": "5cc4d0f63e3a2356",
+      "claimType": "PROHIBITED",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "UNSUPPORTED",
+      "verificationStatus": "REJECTED",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "CRITICAL",
+      "internalUseStatus": "DO_NOT_USE",
+      "recommendedHumanAction": "Do not use on stage, in ads, or social",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": "REJECTED",
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — do-not-say"
+        },
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "REJECTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "REJECTED",
+          "notes": "Do-not-say gate"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "REJECTED",
+          "nextStatus": "REJECTED",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.961Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "REJECTED",
+          "nextStatus": "REJECTED",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.961Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-b6b66eb026708ec3",
+      "claimText": "Avoid motive claims without primary sources.",
+      "normalizedClaimText": "avoid motive claims without primary sources.",
+      "claimFingerprint": "b6b66eb026708ec3",
+      "claimType": "PROHIBITED",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "UNSUPPORTED",
+      "verificationStatus": "REJECTED",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "CRITICAL",
+      "internalUseStatus": "DO_NOT_USE",
+      "recommendedHumanAction": "Do not use on stage, in ads, or social",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": "REJECTED",
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — do-not-say"
+        },
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "REJECTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "REJECTED",
+          "notes": "Do-not-say gate"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "REJECTED",
+          "nextStatus": "REJECTED",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.961Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "REJECTED",
+          "nextStatus": "REJECTED",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.961Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-3035b0afd75e906a",
+      "claimText": "Avoid overstating county cost impacts without clerk documentation.",
+      "normalizedClaimText": "avoid overstating county cost impacts without clerk documentation.",
+      "claimFingerprint": "3035b0afd75e906a",
+      "claimType": "PROHIBITED",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "UNSUPPORTED",
+      "verificationStatus": "REJECTED",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "CRITICAL",
+      "internalUseStatus": "DO_NOT_USE",
+      "recommendedHumanAction": "Do not use on stage, in ads, or social",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": "REJECTED",
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — do-not-say"
+        },
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "REJECTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "REJECTED",
+          "notes": "Do-not-say gate"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "REJECTED",
+          "nextStatus": "REJECTED",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.962Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "REJECTED",
+          "nextStatus": "REJECTED",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.962Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-a7d2a85c10488826",
+      "claimText": "Use bill numbers and act numbers from the index before citing outcomes.",
+      "normalizedClaimText": "use bill numbers and act numbers from the index before citing outcomes.",
+      "claimFingerprint": "a7d2a85c10488826",
+      "claimType": "PROHIBITED",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "UNSUPPORTED",
+      "verificationStatus": "REJECTED",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "CRITICAL",
+      "internalUseStatus": "DO_NOT_USE",
+      "recommendedHumanAction": "Do not use on stage, in ads, or social",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": "REJECTED",
+        "notes": "",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — do-not-say"
+        },
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "REJECTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": "DRAFT",
+          "nextStatus": "REJECTED",
+          "notes": "Do-not-say gate"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "REJECTED",
+          "nextStatus": "REJECTED",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.962Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "REJECTED",
+          "nextStatus": "REJECTED",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.962Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-c9e70975bd3b11e9",
+      "claimText": "Trust and transparency make integrity stronger, not weaker.",
+      "normalizedClaimText": "trust and transparency make integrity stronger not weaker.",
+      "claimFingerprint": "c9e70975bd3b11e9",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Complete sourcing before debate or public use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Synopsis: Rebuttal bridge (election integrity): Trust and transparency make integrity stronger, not weaker.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — partially supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.962Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.962Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-9df24860dc400be8",
+      "claimText": "The office should serve people and counties with calm competence.",
+      "normalizedClaimText": "the office should serve people and counties with calm competence.",
+      "claimFingerprint": "9df24860dc400be8",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Complete sourcing before debate or public use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Synopsis: Rebuttal bridge (experience): The office should serve people and counties with calm competence.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — partially supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.962Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.962Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-538af8dcd49152bb",
+      "claimText": "Integrity and participation work best together.",
+      "normalizedClaimText": "integrity and participation work best together.",
+      "claimFingerprint": "538af8dcd49152bb",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Complete sourcing before debate or public use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Synopsis: Rebuttal bridge (security): Integrity and participation work best together.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — partially supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.962Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.962Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-0060f6090a2761a5",
+      "claimText": "State standards and county support must move together.",
+      "normalizedClaimText": "state standards and county support must move together.",
+      "claimFingerprint": "0060f6090a2761a5",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Complete sourcing before debate or public use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Synopsis: Rebuttal bridge (uniformity): State standards and county support must move together.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — partially supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.962Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.962Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-73ef4d3214669cef",
+      "claimText": "Our office can enforce rules while building confidence, not fear.",
+      "normalizedClaimText": "our office can enforce rules while building confidence not fear.",
+      "claimFingerprint": "73ef4d3214669cef",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Complete sourcing before debate or public use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Synopsis: Rebuttal bridge (accountability): Our office can enforce rules while building confidence, not fear.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — partially supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.962Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.962Z",
+      "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-debate-16afc94e0fe50f28",
+      "claimText": "We protect elections by being both secure and accessible.",
+      "normalizedClaimText": "we protect elections by being both secure and accessible.",
+      "claimFingerprint": "16afc94e0fe50f28",
+      "claimType": "FACTUAL",
+      "domain": "debate",
+      "countySlug": null,
+      "opponentId": "kim-hammer",
+      "topicTags": [
+        "debate-week",
+        "kim-hammer",
+        "debate-prep"
+      ],
+      "sourceBriefIds": [
+        "debate-week-v4-kim-hammer"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Complete sourcing before debate or public use",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Synopsis: Rebuttal bridge (fraud prevention): We protect elections by being both secure and accessible.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-04T01:02:43.450Z",
+          "eventType": "INGESTED",
+          "actor": "debateClaimsSeed.v1",
+          "previousStatus": null,
+          "nextStatus": "DRAFT",
+          "notes": "Debate week seed — partially supported"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:15.293Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        },
+        {
+          "timestamp": "2026-06-04T01:03:49.962Z",
+          "eventType": "MERGED",
+          "actor": "claimNormalization.v1",
+          "previousStatus": "NEEDS_REVIEW",
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Merged duplicate claim evidence from ingest"
+        }
+      ],
+      "createdAt": "2026-06-04T01:02:43.450Z",
+      "updatedAt": "2026-06-04T01:03:49.962Z",
+      "createdBy": "debateClaimsSeed.v1",
       "lastReviewedAt": null
     }
   ]

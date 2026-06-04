@@ -150,14 +150,23 @@ export const DEBATE_WORKFLOW_STEPS: Array<{
 ];
 
 const CLAIMS_SURFACE_GUIDE: OperatorGuide = {
-  whyItMatters: "Legal and reputational firewall between internal research and public speech.",
-  howItFitsDebatePrep: "Gate for sections 11, 24, and all rehearsal lines.",
-  whatToLookFor: ["needs research", "DRAFT ledger", "no public adaptation"],
-  howToSetUp: "Staff tab: lines Kelly will say vs ledger status.",
-  howToUseInDebate: "If not supported or partial with source, soften or omit.",
-  whenToUse: "Before debate and before any clip goes to social.",
-  campaignTrailUse: "Same rules for ads, signs, and surrogate talking points.",
-  tiesTogether: "Step 5; evidence-command for export tier.",
+  whyItMatters:
+    "Legal and reputational firewall — one unsupported line can define the news cycle. P2 links synopsis markdown to the governed ledger with debate-week tags.",
+  howItFitsDebatePrep:
+    "Step 5 after debate prep skim: green queue = internal-rehearsal OK; red = do-not-say from hub risk list; amber = finish sourcing. Sections 11 (risk) and 24 (citation discipline) depend on this screen.",
+  whatToLookFor: [
+    "HUMAN_APPROVED_INTERNAL — safe for rehearsal, not auto-approved for TV",
+    "REJECTED / DO_NOT_USE — never on stage",
+    "citationAnchorIds empty — do not cite statistics",
+    "Safer wording column in claims-review table vs raw synopsis claim",
+  ],
+  howToSetUp:
+    "Run seed once per deploy refresh if ledger empty: npx tsx scripts/seed-debate-week-claims.ts. Staff maps each planned debate line to a ledger row before mock debate.",
+  howToUseInDebate:
+    "Kelly does not read the ledger on stage. Staff verifier on headset; if a line is not green, Kelly softens or uses research-question framing.",
+  whenToUse: "Before debate, before interviews, before any rapid-response post.",
+  campaignTrailUse: "Same gate for ads, mail, and surrogates — public adaptation requires separate approval on claim detail.",
+  tiesTogether: "claims-review table → ledger rows → evidence-command export tier → hub do-not-say list.",
 };
 
 export const SURFACE_GUIDES: Record<string, OperatorGuide> = {
