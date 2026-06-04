@@ -1,74 +1,22 @@
+import "server-only";
+
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
+import {
+  KELLY_ADVERSARIAL_MIRROR_REL,
+  KELLY_MIRROR_DEFAULT_TRIGGER_WORD,
+  type KellyAdversarialMirrorFile,
+} from "@/lib/intelligence/kellyAdversarialMirrorTypes";
 
-export const KELLY_ADVERSARIAL_MIRROR_REL = "data/intelligence/kelly-adversarial-mirror.json";
-
-export type KellyMirrorGovernance = {
-  classification: string;
-  publicationSafety: string;
-  humanReviewRequired: boolean;
-  purpose: string;
-  simulationDisclaimer: string;
-};
-
-export type KellyResearchFinding = {
-  id: string;
-  category: string;
-  title: string;
-  verificationStatus: string;
-  whatOpponentsWillSearch: string[];
-  knownInRepo: string;
-  attackPotential: string;
-  kellyRule: string;
-};
-
-export type KellyAttackVector = {
-  vectorId: string;
-  label: string;
-  likelyLines: string[];
-  trapSetup: string;
-  personalOrProfessional: string;
-};
-
-export type KellyOpponentSimulation = {
-  simulationId: string;
-  strategicObjective: string;
-  offensiveDebatePlan: string[];
-  defensiveDebatePlan: string[];
-  attackVectors: KellyAttackVector[];
-  rebuttalToKelly: string[];
-  hardCoreTakedownSequence: string[];
-};
-
-export type KellyCounterResponse = {
-  attackId: string;
-  kellyAcknowledge: string;
-  kellyContrast: string;
-  kellyBridge: string;
-  claimsGate: string;
-  doNotSay: string[];
-};
-
-export type KellyAdversarialMirrorFile = {
-  version: number;
-  generatedAt: string;
-  governance: KellyMirrorGovernance;
-  hiddenPathway: { triggerWord: string; triggerContextHint: string; gateHref: string };
-  researchDossier: {
-    summary: string;
-    verificationLegend: Record<string, string>;
-    findings: KellyResearchFinding[];
-  };
-  hammerRedTeam: KellyOpponentSimulation;
-  packoRedTeam: KellyOpponentSimulation;
-  counterPlaybook: { summary: string; responses: KellyCounterResponse[] };
-  buildPlan: {
-    title: string;
-    phases: Array<{ phase: number; label: string; tasks: string[]; owner: string }>;
-    passwordPolicy: string;
-    staffExclusion: string;
-  };
-};
+export type {
+  KellyAdversarialMirrorFile,
+  KellyAttackVector,
+  KellyCounterResponse,
+  KellyMirrorGovernance,
+  KellyOpponentSimulation,
+  KellyResearchFinding,
+} from "@/lib/intelligence/kellyAdversarialMirrorTypes";
+export { KELLY_ADVERSARIAL_MIRROR_REL } from "@/lib/intelligence/kellyAdversarialMirrorTypes";
 
 export function loadKellyAdversarialMirror(repoRoot?: string): KellyAdversarialMirrorFile | null {
   const root = repoRoot ?? process.cwd();
@@ -82,5 +30,5 @@ export function loadKellyAdversarialMirror(repoRoot?: string): KellyAdversarialM
 }
 
 export function getKellyMirrorTriggerWord(repoRoot?: string): string {
-  return loadKellyAdversarialMirror(repoRoot)?.hiddenPathway.triggerWord ?? "quorum";
+  return loadKellyAdversarialMirror(repoRoot)?.hiddenPathway.triggerWord ?? KELLY_MIRROR_DEFAULT_TRIGGER_WORD;
 }

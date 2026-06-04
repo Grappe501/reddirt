@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getKellyMirrorTriggerWord } from "@/lib/intelligence/kellyAdversarialMirror";
+import { KELLY_MIRROR_DEFAULT_TRIGGER_WORD } from "@/lib/intelligence/kellyAdversarialMirrorTypes";
 
 /**
  * Invisible-style link: same color as body text, no underline, not in nav.
@@ -12,7 +12,7 @@ export function KellyMirrorHiddenPathway({
   children: React.ReactNode;
   className?: string;
 }) {
-  const word = getKellyMirrorTriggerWord();
+  const word = KELLY_MIRROR_DEFAULT_TRIGGER_WORD;
   return (
     <Link
       href="/admin/intelligence/kelly-mirror"

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { KellyAdversarialMirrorFile } from "@/lib/intelligence/kellyAdversarialMirror";
+import type { KellyAdversarialMirrorFile } from "@/lib/intelligence/kellyAdversarialMirrorTypes";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
