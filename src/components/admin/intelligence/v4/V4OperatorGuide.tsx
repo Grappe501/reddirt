@@ -1,5 +1,12 @@
 import type { OperatorGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4GuideDepthBlocks } from "@/components/admin/intelligence/v4/V4EncounterDepthPanel";
+import { isCandidateIpadMode } from "@/lib/intelligence/candidateIpadMode";
+import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
+
+/** Candidate debate builds — guide meta is staff-only and reads as noise on iPad prep. */
+function shouldHideOperatorGuide(): boolean {
+  return isCandidateIpadMode() || isIntelligenceOppositionDebateLaunchMode();
+}
 
 function parseFinding(item: string): { tag: "offensive" | "defensive" | "verify" | "general"; text: string } {
   if (item.startsWith("[OFFENSE] ")) return { tag: "offensive", text: item.slice(10) };
@@ -23,6 +30,8 @@ const tagLabel = {
 };
 
 export function V4OperatorGuide({ guide, compact }: { guide: OperatorGuide; compact?: boolean }) {
+  if (shouldHideOperatorGuide()) return null;
+
   const parsed = guide.whatToLookFor.map(parseFinding);
   const hasTags = parsed.some((p) => p.tag !== "general");
 
