@@ -124,12 +124,12 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
       d.speakOrderDrills.length === 3 &&
       d.directAnswer30s.length > 30 &&
       rounds.rounds.length >= 5 &&
-      !!d.encounterDepth?.whatToExpectPlain;
+      (d.comprehensive?.speakFirstFullScript.length ?? 0) > 80;
     if (ok) qBuilt++;
   }
   items.push({
     id: "sos-questions",
-    label: "Probable SOS debate questions",
+    label: "Expected SOS questions (35 — full speak-order scripts)",
     category: "Questions",
     completionPct: Math.round((qBuilt / qIds.length) * 100),
     status: qBuilt === qIds.length ? "complete" : "partial",

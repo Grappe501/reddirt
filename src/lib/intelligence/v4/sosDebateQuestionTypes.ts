@@ -65,6 +65,29 @@ export type SosDebateQuestionDrillDown = {
   claimsGate: string;
   estimatedPrepMinutes: number;
   encounterDepth?: DebateEncounterDepth;
+  /** Rich answer-first expansion — full scripts, opponent narratives, exchange handling */
+  comprehensive?: SosQuestionComprehensiveExpansion;
+};
+
+export type OpponentExchange = {
+  opponentLine: string;
+  kellyResponse: string;
+  toneNote?: string;
+};
+
+export type SosQuestionComprehensiveExpansion = {
+  /** Clearest single phrasing of the question */
+  questionAsAsked: string;
+  /** Scene-setting for Kelly — not internal process */
+  scenarioContext: string[];
+  hammerExpectedNarrative: string;
+  packoExpectedNarrative: string;
+  hammerExchanges: OpponentExchange[];
+  packoExchanges: OpponentExchange[];
+  speakFirstFullScript: string;
+  speakSecondFullScript: string;
+  speakThirdFullScript: string;
+  additionalPhrasings: string[];
 };
 
 export type SosDebateQuestionSummary = {

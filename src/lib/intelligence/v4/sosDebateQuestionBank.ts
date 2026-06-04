@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { SOS_DEBATE_QUESTION_BANK } from "@/lib/intelligence/v4/sosDebateQuestionBankData";
+import { SOS_DEBATE_QUESTION_BANK_ADDITIONS } from "@/lib/intelligence/v4/sosDebateQuestionBankAdditions";
+import { attachComprehensiveExpansion } from "@/lib/intelligence/v4/sosDebateQuestionComprehensive";
 import type {
   SosDebateQuestionDrillDown,
   SosDebateQuestionSummary,
@@ -10,6 +12,11 @@ import {
   mergeEncounterDepth,
 } from "@/lib/intelligence/v4/debatePlainLanguageDepth";
 import { attachSosQuestionBriefing, type SosDebateQuestionWithBriefing } from "@/lib/intelligence/v4/debateBriefingEnrichment";
+
+const FULL_SOS_DEBATE_QUESTION_BANK: SosDebateQuestionDrillDown[] = [
+  ...SOS_DEBATE_QUESTION_BANK,
+  ...SOS_DEBATE_QUESTION_BANK_ADDITIONS,
+].map(attachComprehensiveExpansion);
 
 export type SosDebateQuestionResearchFile = {
   version: number;
@@ -22,11 +29,11 @@ export type SosDebateQuestionResearchFile = {
 };
 
 export function getAllSosDebateQuestionIds(): string[] {
-  return SOS_DEBATE_QUESTION_BANK.map((q) => q.questionId);
+  return FULL_SOS_DEBATE_QUESTION_BANK.map((q) => q.questionId);
 }
 
 export function getSosDebateQuestionDrillDown(questionId: string): SosDebateQuestionDrillDown | undefined {
-  const row = SOS_DEBATE_QUESTION_BANK.find((q) => q.questionId === questionId);
+  const row = FULL_SOS_DEBATE_QUESTION_BANK.find((q) => q.questionId === questionId);
   if (!row) return undefined;
   const encounterDepth = mergeEncounterDepth(
     row.encounterDepth,
@@ -42,7 +49,7 @@ export function getSosDebateQuestionWithBriefing(questionId: string): SosDebateQ
 }
 
 export function listSosDebateQuestionSummaries(): SosDebateQuestionSummary[] {
-  return SOS_DEBATE_QUESTION_BANK.map((q) => ({
+  return FULL_SOS_DEBATE_QUESTION_BANK.map((q) => ({
     questionId: q.questionId,
     questionNumber: q.questionNumber,
     title: q.title,
@@ -58,7 +65,7 @@ export function listSosDebateQuestionsByCategory(): Array<{
   questions: SosDebateQuestionSummary[];
 }> {
   const map = new Map<string, { categoryLabel: string; questions: SosDebateQuestionSummary[] }>();
-  for (const q of SOS_DEBATE_QUESTION_BANK) {
+  for (const q of FULL_SOS_DEBATE_QUESTION_BANK) {
     const entry = map.get(q.category) ?? { categoryLabel: q.categoryLabel, questions: [] };
     entry.questions.push({
       questionId: q.questionId,

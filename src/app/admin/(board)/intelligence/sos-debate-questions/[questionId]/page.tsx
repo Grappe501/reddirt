@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import {
   getAllSosDebateQuestionIds,
   getSosDebateQuestionDrillDown,
-  getSosDebateQuestionWithBriefing,
 } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { V4SosDebateQuestionPanel } from "@/components/admin/intelligence/sos-questions/V4SosDebateQuestionPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
@@ -19,7 +18,7 @@ type PageProps = { params: Promise<{ questionId: string }> };
 
 export default async function SosDebateQuestionDrillDownPage({ params }: PageProps) {
   const { questionId } = await params;
-  const drill = getSosDebateQuestionWithBriefing(questionId);
+  const drill = getSosDebateQuestionDrillDown(questionId);
   if (!drill) notFound();
 
   const ids = getAllSosDebateQuestionIds();
@@ -38,7 +37,7 @@ export default async function SosDebateQuestionDrillDownPage({ params }: PagePro
       <V4PageHeader
         eyebrow={`Expected question ${drill.questionNumber} of ${ids.length} · ${drill.categoryLabel}`}
         title={drill.title}
-        description="Full drill-down: 1st/2nd/3rd speak order, direct answers, rebuttals, Hammer/Packo angles — verify acts before stage."
+        description="Question · opponent expectations · Kelly full scripts for 1st, 2nd, and 3rd speak order."
       >
         <V4BackLinks />
         <Link
