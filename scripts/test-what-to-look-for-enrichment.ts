@@ -11,7 +11,9 @@ import {
 } from "../src/lib/intelligence/v4/debateOperatorNarratives";
 import { getTrapLaneDrillDown } from "../src/lib/intelligence/v4/trapLaneDrillDowns";
 
-assert.ok(getWhatToLookForEnrichment("hub")?.offensive.length >= 3);
+const hubEnrichment = getWhatToLookForEnrichment("hub");
+assert.ok(hubEnrichment);
+assert.ok(hubEnrichment.offensive.length >= 3);
 
 const hub = getSurfaceGuide("hub");
 assert.ok(hub);
@@ -28,7 +30,8 @@ const workflow = getWorkflowStepByHref("/admin/intelligence");
 assert.ok(workflow?.guide.whatToLookFor.some((l) => l.startsWith("[OFFENSE]")));
 
 const trapIndex = getSurfaceGuide("trap-lanes-index");
-assert.ok(trapIndex?.whatToLookFor.length >= 4);
+assert.ok(trapIndex);
+assert.ok(trapIndex.whatToLookFor.length >= 4);
 
 for (const laneId of [
   "2021-vs-2025-pivot",
@@ -39,9 +42,11 @@ for (const laneId of [
   "culture-war-escalation",
 ]) {
   const staff = getTrapLaneStaffFindings(laneId);
-  assert.ok(staff?.offensive.length >= 1, laneId);
+  assert.ok(staff, laneId);
+  assert.ok(staff.offensive.length >= 1, laneId);
   const drill = getTrapLaneDrillDown(laneId);
-  assert.ok(drill?.whatToLookForOffensive.length >= 1, laneId);
+  assert.ok(drill, laneId);
+  assert.ok(drill.whatToLookForOffensive.length >= 1, laneId);
   assert.ok(drill.debateOffensiveUse.length > 10, laneId);
 }
 

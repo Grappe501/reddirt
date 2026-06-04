@@ -22,6 +22,7 @@ for (const id of getAllTrapLaneIds()) {
 }
 
 const experience = getTrapLaneDrillDown("experience-equals-sos-ready");
-assert.ok(experience?.sampleScripts.length >= 1);
+assert.ok(experience);
+assert.ok(experience.sampleScripts.length >= 1);
 
 console.log("test-trap-lane-drilldowns: OK", { lanes: getAllTrapLaneIds() });
