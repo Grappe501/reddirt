@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { VideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoom";
+import type { VideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoomTypes";
 import { OFFENSIVE_DEBATE_PRINCIPLES } from "@/lib/intelligence/v4/kellyOffensivePrinciples";
 
 export function VideoArchiveLegislativeOffense({ packet }: { packet: VideoArchiveRoomPacket }) {

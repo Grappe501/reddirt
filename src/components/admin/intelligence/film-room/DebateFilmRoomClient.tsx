@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import type { DebateFilmRoomPagePacket } from "@/lib/intelligence/v4/debateFilmRoomPage";
-import { groupFilmRoomItems } from "@/lib/intelligence/v4/debateFilmRoomPage";
+import type { DebateFilmRoomPagePacket } from "@/lib/intelligence/v4/debateFilmRoomPageTypes";
+import { groupFilmRoomItems } from "@/lib/intelligence/v4/debateFilmRoomGrouping";
 import { isYoutubeUrl } from "@/lib/intelligence/opponents/opponentMediaCatalogTypes";
 
 type TabId = "overview" | "media" | "clips" | "legislative" | "cross" | "arguments";

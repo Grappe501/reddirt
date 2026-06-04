@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import type { VideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoom";
+import type { VideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoomTypes";
 import { VideoArchiveOpponentMedia } from "@/components/admin/intelligence/VideoArchiveOpponentMedia";
 import {
   VideoArchiveLegislativeOffense,

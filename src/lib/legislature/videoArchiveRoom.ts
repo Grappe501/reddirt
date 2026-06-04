@@ -1,95 +1,32 @@
+import "server-only";
+
 import type { LegislativeVideoCandidate } from "@/lib/legislature/legislativeVideoArchiveStore";
 import { loadVideoCandidates } from "@/lib/legislature/legislativeVideoArchiveStore";
 import { loadPriorityBillRegistry, type PriorityBillEntry } from "@/lib/legislature/priorityBillRegistry";
-import {
-  loadVideoArchiveRoomManifest,
-  type KellyCandidateSuggestion,
-  type OpponentSnippetSlot,
-  type VideoArchiveManifestAsset,
-  type VideoArchiveManualSponsorLink,
-} from "@/lib/legislature/videoArchiveRoomManifest";
-import {
-  loadOpponentMediaCatalog,
-  type OpponentMediaEntry,
-} from "@/lib/intelligence/opponents/loadOpponentMediaCatalog";
-import {
-  getTranscriptForMedia,
-  loadOpponentMediaTranscripts,
-  type OpponentMediaTranscriptEntry,
-} from "@/lib/intelligence/opponents/loadOpponentMediaTranscripts";
+import { loadVideoArchiveRoomManifest } from "@/lib/legislature/videoArchiveRoomManifest";
+import type {
+  OpponentMediaRow,
+  VideoArchiveBillRow,
+  VideoArchiveCommitteeLink,
+  VideoArchiveManualSponsorLink,
+  VideoArchiveRoomPacket,
+} from "@/lib/legislature/videoArchiveRoomTypes";
+import { loadOpponentMediaCatalog } from "@/lib/intelligence/opponents/loadOpponentMediaCatalog";
+import { getTranscriptForMedia, loadOpponentMediaTranscripts } from "@/lib/intelligence/opponents/loadOpponentMediaTranscripts";
 import { buildHammerDirectDemocracyPacket } from "@/lib/intelligence/v4/hammerDirectDemocracyOffensive";
 import { buildLegislativeVideoIntelligenceRollup } from "@/lib/legislature/legislativeVideoIntelligenceRollup";
 import { loadTranscriptSegments } from "@/lib/legislature/legislativeTranscriptionPipeline";
 import { loadKellyRoadStories } from "@/lib/intelligence/loadKellyRoadStories";
 
+export type {
+  OpponentMediaRow,
+  VideoArchiveBillRow,
+  VideoArchiveCommitteeLink,
+  VideoArchiveRoomPacket,
+} from "@/lib/legislature/videoArchiveRoomTypes";
+
 /** Debate anchor bills — always surfaced in archive room even if priority is lower. */
 export const VIDEO_ARCHIVE_FOCUS_ANCHORS = ["SB250", "HB1457", "SB291", "SB584", "HB1707"] as const;
-
-export type VideoArchiveCommitteeLink = {
-  id: string;
-  committeeName: string;
-  meetingDate: string;
-  videoUrl: string;
-  sourcePageUrl: string;
-  sourceType: string;
-  expectedSpeaker: string;
-  sponsorExpected: boolean;
-  processingStatus: string;
-  discoveryConfidence: number;
-  origin: "DISCOVERY" | "MANUAL";
-  downloadHref: string;
-};
-
-export type VideoArchiveBillRow = {
-  billNumber: string;
-  session: string;
-  title: string;
-  sponsor: string;
-  priorityLevel: PriorityBillEntry["priorityLevel"];
-  isDebateAnchor: boolean;
-  billUrl: string;
-  videoDiscoveryStatus: PriorityBillEntry["videoDiscoveryStatus"];
-  committeeVideos: VideoArchiveCommitteeLink[];
-  cutReadyAssets: VideoArchiveManifestAsset[];
-  manualLinks: VideoArchiveManualSponsorLink[];
-};
-
-export type OpponentMediaRow = OpponentMediaEntry & {
-  snippetSlots: OpponentSnippetSlot[];
-  snippets: VideoArchiveManifestAsset[];
-  watchUrl: string;
-  downloadUrl: string;
-  transcript?: OpponentMediaTranscriptEntry;
-};
-
-export type VideoArchiveRoomPacket = {
-  generatedAt: string;
-  focusBillCount: number;
-  billsWithVideo: number;
-  totalCommitteeLinks: number;
-  cutReadyCount: number;
-  cutReadyFolderLabel: string;
-  operatorNotes: string;
-  bills: VideoArchiveBillRow[];
-  opponentMedia: {
-    hammer: OpponentMediaRow[];
-    packo: OpponentMediaRow[];
-    kellySuggestions: KellyCandidateSuggestion[];
-  };
-  transcripts: {
-    catalogCount: number;
-    pipelineSegmentCount: number;
-    transcriptionStatus: string;
-  };
-  legislativeRecord: ReturnType<typeof buildHammerDirectDemocracyPacket>;
-  roadStories: ReturnType<typeof loadKellyRoadStories>;
-  committeeTranscriptExcerpts: Array<{
-    billNumber: string;
-    videoCandidateId: string;
-    text: string;
-    speakerLabel: string;
-  }>;
-};
 
 function billKey(billNumber: string, session: string) {
   return `${billNumber}::${session}`;
@@ -158,7 +95,7 @@ export function buildVideoArchiveRoomPacket(repoRoot: string = process.cwd()): V
   const focusBills = registry.bills.filter(shouldIncludeBill);
   const seen = new Set<string>();
 
-  const bills: VideoArchiveBillRow[] = [];
+  const bills: VideoArchiveRoomPacket["bills"] = [];
 
   for (const b of focusBills) {
     const key = billKey(b.billNumber, b.session);

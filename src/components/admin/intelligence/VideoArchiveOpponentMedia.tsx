@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { OpponentMediaRow } from "@/lib/legislature/videoArchiveRoom";
+import type { OpponentMediaRow } from "@/lib/legislature/videoArchiveRoomTypes";
 import { isYoutubeUrl } from "@/lib/intelligence/opponents/opponentMediaCatalogTypes";
 
 export function VideoArchiveOpponentMedia({

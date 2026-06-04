@@ -1,30 +1,13 @@
+import "server-only";
+
 import fs from "node:fs";
 import path from "node:path";
 
-export type DirectDemocracyBillAnchor = {
-  billNumber: string;
-  actNumber: string | null;
-  sessionYear: string;
-  title: string;
-  hammerRole: string;
-  arklegUrl: string;
-  actPdfUrl?: string;
-  plainEnglish: string;
-  kellyOffensiveFrame: string;
-  trapQuestion: string;
-  claimsNote: string;
-};
-
-export type HammerDirectDemocracyPacket = {
-  generatedAt: string;
-  clusterLabel: string;
-  thesis: string;
-  hammerCornerPaint: string;
-  kellySuperiorityLine: string;
-  bills: DirectDemocracyBillAnchor[];
-  debateSequence: string[];
-  packoAllianceNote: string;
-};
+export type {
+  DirectDemocracyBillAnchor,
+  HammerDirectDemocracyPacket,
+} from "@/lib/intelligence/v4/hammerDirectDemocracyTypes";
+import type { HammerDirectDemocracyPacket } from "@/lib/intelligence/v4/hammerDirectDemocracyTypes";
 
 const BILL_INDEX = "data/opposition/kim-hammer-election-record-bill-index.json";
 
