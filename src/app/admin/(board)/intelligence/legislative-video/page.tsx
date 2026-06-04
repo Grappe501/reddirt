@@ -115,7 +115,10 @@ export default async function LegislativeVideoIntelligencePage() {
         </div>
       </section>
 
-      <p className="mt-6 text-xs text-kelly-muted">
+      <p className="mt-6 flex flex-wrap gap-4 text-xs text-kelly-muted">
+        <Link href="/admin/intelligence/video-archive-room" className="font-bold underline text-kelly-navy">
+          Video archive room →
+        </Link>
         <Link href="/admin/intelligence/kim-hammer/debate-prep" className="underline text-kelly-navy">
           Debate prep
         </Link>

@@ -17,6 +17,7 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/memory",
   "/admin/intelligence/scenario-simulation",
   "/admin/intelligence/legislative-video",
+  "/admin/intelligence/video-archive-room",
 ] as const;
 
 export type DebateWeekRoute = (typeof DEBATE_WEEK_ROUTES)[number];
@@ -144,6 +145,12 @@ export const DEBATE_WEEK_EXTENDED_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "LLM review",
     description:
       "NON_PUBLISHABLE AI drafts. Never read aloud in debate; staff only. Pair with claims before any adaptation goes public.",
+  },
+  {
+    href: "/admin/intelligence/video-archive-room",
+    label: "Video archive room",
+    description:
+      "Focus bills with committee sponsor presentation links — watch, download source, register cut-and-ready clips for the film team.",
   },
   {
     href: "/admin/intelligence/legislative-video",

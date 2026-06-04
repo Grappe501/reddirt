@@ -132,6 +132,7 @@
     "agents:test-strategy-doctrine-intake-phase5a": "tsx scripts/test-strategy-doctrine-intake-phase5a.ts",
     "agents:test-kim-hammer-election-record-research": "tsx scripts/test-kim-hammer-election-record-research.ts",
     "agents:test-kim-hammer-profile-research": "tsx scripts/test-kim-hammer-profile-research.ts",
+    "agents:test-video-archive-room": "tsx scripts/test-video-archive-room.ts",
     "agents:test-debate-intelligence-prep-drilldown": "tsx scripts/test-debate-intelligence-prep-drilldown.ts",
     "agents:test-debate-intelligence-county-week": "tsx scripts/test-debate-intelligence-county-week.ts",
     "agents:test-debate-intelligence-p4": "tsx scripts/test-debate-intelligence-p4.ts",
