@@ -21,8 +21,8 @@ export default function DebatePrepV3Page() {
     <div className="mx-auto max-w-7xl text-kelly-text">
       <V4PageHeader
         eyebrow="Debate prep · v4"
-        title="Kim Hammer rehearsal briefing"
-        description="Primary rehearsal surface: each numbered section opens with an operator guide (why, setup, in-debate use, trail use, ties). Work top-to-bottom once, then day-of focus on sections 4, 6–8, 19, and 28. Stand-and-deliver the rehearsal deck before reading paragraphs aloud."
+        title="Full debate prep packet — 28 deep drill-downs"
+        description="Kelly's first debate vs a 25+ year legislator: every section has a full drill-down (setup traps, rebuttals, sample scripts, zingers, first-timer mistakes). Open each section's drill-down, rehearse standing out loud, then day-of focus sections 4, 6–8, 19, and 28. Claims gate before any public line."
         guide={getSurfaceGuide("debatePrepPage")}
       >
         <V4BackLinks />
@@ -30,6 +30,15 @@ export default function DebatePrepV3Page() {
           Debate command
         </Link>
       </V4PageHeader>
+
+      <article className="mb-6 rounded-xl border-2 border-amber-200 bg-amber-50/40 p-4 text-sm text-amber-950">
+        <p className="font-bold uppercase tracking-wide text-amber-900">First debate readiness</p>
+        <p className="mt-2">
+          You have not debated on stage before; Senator Hammer has 25+ years of public argument habit. Use each section&apos;s{" "}
+          <strong>full drill-down</strong> — rebuttal scripts, setup traps, sample lines, and zingers — then rehearse{" "}
+          <strong>standing, out loud</strong>. Short beats clever. Claims gate before any public line.
+        </p>
+      </article>
 
       <V4KellyNarrativeFrame />
 

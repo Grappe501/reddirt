@@ -1,0 +1,76 @@
+{
+  "candidateId": "michael-packo",
+  "displayName": "Michael Packo",
+  "party": "Libertarian",
+  "office": "Arkansas Secretary of State",
+  "electionYear": 2026,
+  "status": "SCAFFOLD",
+  "lastUpdated": "2026-06-03",
+  "summary": "Third-candidate opposition research scaffold. No verified dossier in repo yet — ingest before public contrast.",
+  "researchPriorities": [
+    {
+      "id": "PACKO-01",
+      "task": "Ballot filing & campaign finance disclosures",
+      "status": "OPEN",
+      "owner": "research",
+      "deliverable": "FEC/Arkansas ethics filings summary"
+    },
+    {
+      "id": "PACKO-02",
+      "task": "Public statements on elections, mandates, county authority",
+      "status": "OPEN",
+      "owner": "research",
+      "deliverable": "Quote ledger with source URLs"
+    },
+    {
+      "id": "PACKO-03",
+      "task": "Prior office / business / nonprofit roles",
+      "status": "OPEN",
+      "owner": "research",
+      "deliverable": "Bio timeline JSON"
+    },
+    {
+      "id": "PACKO-04",
+      "task": "Libertarian party platform alignment on SOS duties",
+      "status": "OPEN",
+      "owner": "research",
+      "deliverable": "Issue matrix vs Kelly pillars"
+    },
+    {
+      "id": "PACKO-05",
+      "task": "Overlap with Hammer on anti-mandate / petition access rhetoric",
+      "status": "OPEN",
+      "owner": "research",
+      "deliverable": "Contrast map: when Packo helps Kelly vs splits clerk vote"
+    },
+    {
+      "id": "PACKO-06",
+      "task": "Media & social footprint harvest",
+      "status": "OPEN",
+      "owner": "retrieval",
+      "deliverable": "Clip/quote candidates for film room"
+    },
+    {
+      "id": "PACKO-07",
+      "task": "County clerk audience risk assessment",
+      "status": "OPEN",
+      "owner": "strategy",
+      "deliverable": "When to mention third candidate (usually: don't in clerk rooms)"
+    }
+  ],
+  "provisionalThemes": [
+    "Skepticism of state mandates — may resonate with overburdened clerks if framed carelessly",
+    "Anti-establishment protest vote — low implementation detail risk for Kelly if Kelly stays clerk-service",
+    "Possible alignment with petition-access voters — watch for split with Kelly participation+integrity frame"
+  ],
+  "kellyPositioning": {
+    "inClerkRooms": "Do not elevate Packo unless asked; stay SOS-service and implementation.",
+    "inDebate": "Acknowledge ballot access; contrast administrative readiness and county partnership.",
+    "claimsGate": "No Packo attacks until PACKO-01 through PACKO-04 at least PARTIAL"
+  },
+  "routesWhenLive": {
+    "hub": "/admin/intelligence/opponents/michael-packo",
+    "quotes": "/admin/intelligence/opponents/michael-packo/quotes",
+    "contrast": "/admin/intelligence/opponents/michael-packo/contrast-vs-kelly"
+  }
+}

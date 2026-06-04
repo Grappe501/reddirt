@@ -1,4 +1,5 @@
 import type { CampaignOsNavGroup, CampaignOsNavLink } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
+import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
 import { DEBATE_WORKFLOW_STEPS } from "@/lib/intelligence/v4/debateOperatorNarratives";
 
 /** Canonical debate-week operator paths (opposition + debate prep + review queues). */
@@ -32,6 +33,52 @@ function stepDesc(href: string, fallback: string): string {
   if (!step) return fallback;
   return `${step.guide.whyItMatters} When: ${step.guide.whenToUse}`;
 }
+
+/** County clerks week — Kelly reads this path daily (see countyClerkSevenDayPrepPath). */
+export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
+  {
+    href: "/admin/intelligence/county-clerk-week",
+    label: "7-day clerk path",
+    badgeKey: "opposition",
+    description:
+      "Primary audience: county clerks. Seven-day reading order with daily goals, trap setup, and live-event card — Kelly's home screen this week.",
+  },
+  {
+    href: "/admin/intelligence/kim-hammer/county-administration-burden",
+    label: "County burden",
+    description:
+      "KH-0B layer: who pays, who implements, quorum court pressure — anchor vocabulary for clerk rooms.",
+  },
+  {
+    href: "/admin/intelligence/kim-hammer/debate-prep",
+    label: "Debate prep",
+    description: stepDesc(
+      "/admin/intelligence/kim-hammer/debate-prep",
+      "Bill playbooks, Kelly frame, operator guides — rehearse after daily path readings.",
+    ),
+  },
+  {
+    href: "/admin/intelligence/debate-command",
+    label: "Trap questions",
+    description: stepDesc(
+      "/admin/intelligence/debate-command",
+      "Cross-exam bank and film room — implementation traps for when Hammer is in the room.",
+    ),
+  },
+  {
+    href: "/admin/intelligence/claims",
+    label: "Verify claims",
+    description: stepDesc(
+      "/admin/intelligence/claims",
+      "Legal firewall before any clerk-room line or social post.",
+    ),
+  },
+  {
+    href: "/admin/intelligence/opponents",
+    label: "Opponents",
+    description: "Hammer (live) + Michael Packo scaffold — third-candidate research queue.",
+  },
+];
 
 /** Kelly-first path — three steps plus two reference surfaces. */
 export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
@@ -130,11 +177,22 @@ export const DEBATE_WEEK_EXTENDED_NAV_ITEMS: DebateWeekNavItem[] = [
   },
 ];
 
+export function getDebateWeekPrimaryNavItems(): DebateWeekNavItem[] {
+  return isCountyClerkPrimaryAudience() ? COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS : DEBATE_WEEK_PRIMARY_NAV_ITEMS;
+}
+
 /** Full ordered list (sidebar + route allowlist). */
 export const DEBATE_WEEK_NAV_ITEMS: DebateWeekNavItem[] = [
   ...DEBATE_WEEK_PRIMARY_NAV_ITEMS,
   ...DEBATE_WEEK_EXTENDED_NAV_ITEMS,
 ];
+
+export function getDebateWeekNavItems(): DebateWeekNavItem[] {
+  if (!isCountyClerkPrimaryAudience()) return DEBATE_WEEK_NAV_ITEMS;
+  const primaryHrefs = new Set(COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS.map((i) => i.href));
+  const extended = DEBATE_WEEK_EXTENDED_NAV_ITEMS.filter((i) => !primaryHrefs.has(i.href));
+  return [...COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS, ...extended];
+}
 
 export function isDebateWeekRoute(pathname: string): boolean {
   const path = pathname.split("?")[0]?.replace(/\/$/, "") || "/admin/intelligence";
@@ -144,11 +202,12 @@ export function isDebateWeekRoute(pathname: string): boolean {
 }
 
 export function buildDebateWeekNavGroups(): CampaignOsNavGroup[] {
+  const items = getDebateWeekNavItems();
   return [
     {
       id: "debate_week",
-      label: "Debate week",
-      links: DEBATE_WEEK_NAV_ITEMS.map((item) => ({
+      label: isCountyClerkPrimaryAudience() ? "County clerks week" : "Debate week",
+      links: items.map((item) => ({
         href: item.href,
         label: item.label,
         badgeKey: item.badgeKey,
@@ -159,7 +218,7 @@ export function buildDebateWeekNavGroups(): CampaignOsNavGroup[] {
 
 /** Intelligence section inside full Campaign OS sidebar during debate prep. */
 export function buildDebateWeekIntelligenceSectionLinks(): CampaignOsNavLink[] {
-  return DEBATE_WEEK_NAV_ITEMS.map((item) => ({
+  return getDebateWeekNavItems().map((item) => ({
     href: item.href,
     label: item.label,
     badgeKey: item.badgeKey,
@@ -169,6 +228,6 @@ export function buildDebateWeekIntelligenceSectionLinks(): CampaignOsNavLink[] {
 /** Active-route narrative blurb for subnav helper text. */
 export function describeDebateWeekRoute(pathname: string): string | undefined {
   const path = pathname.split("?")[0]?.replace(/\/$/, "") || "";
-  const item = DEBATE_WEEK_NAV_ITEMS.find((i) => path === i.href || path.startsWith(`${i.href}/`));
+  const item = getDebateWeekNavItems().find((i) => path === i.href || path.startsWith(`${i.href}/`));
   return item?.description;
 }

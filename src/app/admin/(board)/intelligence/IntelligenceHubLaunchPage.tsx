@@ -11,6 +11,8 @@ import { V4AnchorBillsPlaybookIndex } from "@/components/admin/intelligence/v4/V
 import { V4KellyNarrativeFrame } from "@/components/admin/intelligence/v4/V4KellyNarrativeFrame";
 import { V4OpponentContrastPlaybookPanel } from "@/components/admin/intelligence/v4/V4OpponentContrastPlaybookPanel";
 import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3SectionStack";
+import { V7CountyClerkPrepPath } from "@/components/admin/intelligence/v4/V7CountyClerkPrepPath";
+import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
 
 const card =
   "flex flex-col rounded-xl border-2 border-kelly-navy/15 bg-white p-4 shadow-sm transition hover:border-kelly-navy/40";
@@ -21,18 +23,24 @@ const card =
 export default function IntelligenceHubLaunchPage() {
   const v4 = loadDebateIntelligenceV4HubPacket();
   const { hub } = v4;
+  const clerkWeek = isCountyClerkPrimaryAudience();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
       <V4PageHeader
-        eyebrow="Kelly · debate intelligence v4"
-        title="Tonight's command overview"
-        description="Your pre-flight checklist: orient on Hammer's legislative pattern, rehearse top bill drills, and know what is still unsafe to say. Work the five-step path below, then open debate prep for depth. Internal draft only — verify act numbers before any public use."
+        eyebrow={clerkWeek ? "Kelly · county clerks week" : "Kelly · debate intelligence v4"}
+        title={clerkWeek ? "County clerks — start your day here" : "Tonight's command overview"}
+        description={
+          clerkWeek
+            ? "Primary audience: county clerks and election commissioners. Follow the 7-day reading path first — then contrast and bill drills. Internal draft only — verify act numbers before any public use."
+            : "Your pre-flight checklist: orient on Hammer's legislative pattern, rehearse top bill drills, and know what is still unsafe to say. Work the five-step path below, then open debate prep for depth. Internal draft only — verify act numbers before any public use."
+        }
         guide={getSurfaceGuide("hub")}
       >
         <V4BackLinks />
       </V4PageHeader>
 
+      <V7CountyClerkPrepPath compact={!clerkWeek} />
       <V4KellyNarrativeFrame />
       <V4OpponentContrastPlaybookPanel />
       <V4AnchorBillsPlaybookIndex />

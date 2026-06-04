@@ -30,6 +30,8 @@
   NODE_OPTIONS = "--max-old-space-size=6144"
   # Emergency internal launch — opposition + debate prep workbench only (banner + skip county rollups)
   NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE = "opposition_debate"
+  # County clerks tour — clerk-first nav + hub copy (see debateAudienceMode.ts)
+  NEXT_PUBLIC_DEBATE_PRIMARY_AUDIENCE = "county_clerks"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

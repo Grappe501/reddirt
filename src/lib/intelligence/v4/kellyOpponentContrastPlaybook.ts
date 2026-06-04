@@ -141,6 +141,23 @@ export const OPPONENT_CONTRAST_LANES: OpponentContrastLane[] = [
   },
 ];
 
+/** County clerks week — primary audience framing (not TV debate theater). */
+export const COUNTY_CLERK_EVENT_FRAME = {
+  headline: "Clerk rooms: partnership first, opponent second",
+  opening90Seconds:
+    "Thank clerks for the oath they keep. Name SOS as statewide back office — training calendar, hotline, funding advocacy. Do not open with Hammer.",
+  whenToContrast:
+    "Only when asked about opponents or when Hammer is present and claims authorship without implementation detail.",
+  trapQuestions: [
+    "What line items funded your 2021 package for our county?",
+    "What is your SOS staff ratio per county for the newest mandate?",
+    "Who trains poll watchers when disputes land on precinct judges?",
+  ],
+  packoRule: "Do not elevate Libertarian third candidate in clerk rooms unless asked — stay SOS-service.",
+  closePledge:
+    "Kelly SOS pledge: publish implementation guidance, answer your phone, advocate quorum-court funding with specifics.",
+};
+
 export const RECORD_ITEM_FRAMING_PRIMER = {
   title: "How to say a record item works against everyday Arkansans (safely)",
   steps: [
