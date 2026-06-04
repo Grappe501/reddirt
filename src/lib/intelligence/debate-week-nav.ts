@@ -79,6 +79,11 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Opponents",
     description: "Hammer (live) + Michael Packo scaffold — third-candidate research queue.",
   },
+  {
+    href: "/admin/intelligence/kelly-debate-coaching",
+    label: "Debate coaching",
+    description: "Openings/closings, stage presence, three-way strategy, Kelly suggestions.",
+  },
 ];
 
 /** Kelly-first path — three steps plus two reference surfaces. */

@@ -18,8 +18,12 @@ assert.ok(sb486 && sb486.committeeVideos.length >= 1);
 
 const manifest = loadVideoArchiveRoomManifest();
 assert.equal(manifest.cutReadyFolderLabel, "cut-and-ready");
+assert.ok(packet.opponentMedia.hammer.length >= 5);
+assert.ok(packet.opponentMedia.packo.length >= 5);
 
 console.log("test-video-archive-room: OK", {
   focusBillCount: packet.focusBillCount,
   totalCommitteeLinks: packet.totalCommitteeLinks,
+  hammerMedia: packet.opponentMedia.hammer.length,
+  packoMedia: packet.opponentMedia.packo.length,
 });

@@ -18,6 +18,7 @@ export default function VideoArchiveRoomPage() {
     cutReadyFolderLabel: "cut-and-ready",
     operatorNotes: "",
     bills: [],
+    opponentMedia: { hammer: [], packo: [], kellySuggestions: [] },
   });
 
   return (
@@ -31,8 +32,8 @@ export default function VideoArchiveRoomPage() {
         <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Intelligence · video</p>
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">Video archive room</h1>
         <p className="mt-2 max-w-3xl text-sm text-kelly-muted">
-          Focus bills with Arkleg links and committee sponsor presentation video. Download source for editing, then register
-          cuts in the <strong>{packet.cutReadyFolderLabel}</strong> folder.
+          Committee bill videos plus Kim Hammer and Michael Packo (Pakko) media — Talk Business, YouTube, PBS, campaign sites.
+          Download, cut snippets, register in <strong>{packet.cutReadyFolderLabel}</strong>.
         </p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
           <Link href="/admin/intelligence" className="rounded-full border border-kelly-navy/30 px-3 py-1 font-bold text-kelly-navy">
@@ -49,6 +50,12 @@ export default function VideoArchiveRoomPage() {
             className="rounded-full border border-kelly-navy/30 px-3 py-1 font-bold text-kelly-navy"
           >
             Debate prep
+          </Link>
+          <Link
+            href="/admin/intelligence/kelly-debate-coaching"
+            className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1 font-bold text-violet-950"
+          >
+            Debate coaching
           </Link>
         </div>
       </header>

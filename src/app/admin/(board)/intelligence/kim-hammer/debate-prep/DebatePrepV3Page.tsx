@@ -11,11 +11,14 @@ import { V4KellyNarrativeFrame } from "@/components/admin/intelligence/v4/V4Kell
 import { V4DebateWarRoomPanel } from "@/components/admin/intelligence/v4/V4DebateWarRoomPanel";
 import { loadDebateWarRoomP4Packet } from "@/lib/intelligence/v4/debateWarRoomP4";
 import { V4OpponentContrastPlaybookPanel } from "@/components/admin/intelligence/v4/V4OpponentContrastPlaybookPanel";
+import { KellyDebateCoachingPanel } from "@/components/admin/intelligence/KellyDebateCoachingPanel";
+import { buildVideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoom";
 
 /** Intelligence v4 — 28-section debate prep (v3 base + structured JSON layers). */
 export default function DebatePrepV3Page() {
   const v4 = loadDebateIntelligenceV4Packet();
   const warRoom = loadDebateWarRoomP4Packet();
+  const archive = buildVideoArchiveRoomPacket();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -29,6 +32,12 @@ export default function DebatePrepV3Page() {
         <Link href="/admin/intelligence/debate-command" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
           Debate command
         </Link>
+        <Link href="/admin/intelligence/kelly-debate-coaching" className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950">
+          Coaching &amp; scripts
+        </Link>
+        <Link href="/admin/intelligence/video-archive-room" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
+          Video archive
+        </Link>
       </V4PageHeader>
 
       <article className="mb-6 rounded-xl border-2 border-amber-200 bg-amber-50/40 p-4 text-sm text-amber-950">
@@ -41,6 +50,8 @@ export default function DebatePrepV3Page() {
       </article>
 
       <V4KellyNarrativeFrame />
+
+      <KellyDebateCoachingPanel suggestions={archive.opponentMedia.kellySuggestions} compact />
 
       <V4OpponentContrastPlaybookPanel />
       <V4DebateWarRoomPanel packet={warRoom} variant="compact" />
