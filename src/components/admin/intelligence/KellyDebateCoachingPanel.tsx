@@ -27,6 +27,8 @@ import type { HammerDirectDemocracyPacket } from "@/lib/intelligence/v4/hammerDi
 import type { KellyRoadStoriesFile } from "@/lib/intelligence/loadKellyRoadStories";
 import type { KellyCandidateSuggestion } from "@/lib/legislature/videoArchiveRoomManifest";
 import { KellyOffensiveNarrativePanel } from "@/components/admin/intelligence/KellyOffensiveNarrativePanel";
+import { IntelligenceAgentCopilotDock } from "@/components/admin/intelligence/IntelligenceAgentCopilotDock";
+import { isCandidateIpadMode } from "@/lib/intelligence/candidateIpadMode";
 
 function CoachingSection({ block }: { block: { title: string; bullets: string[]; doNot: string[] } }) {
   return (
@@ -340,6 +342,8 @@ export function KellyDebateCoachingPanel({
           ))}
         </div>
       </section>
+
+      {!compact && !isCandidateIpadMode() ? <IntelligenceAgentCopilotDock /> : null}
 
       <section className="rounded-xl border-2 border-kelly-navy/15 bg-white p-5">
         <h2 className="text-sm font-bold uppercase text-kelly-navy">Kelly&apos;s suggestions for staff</h2>
