@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "packageId": "debate-week-agent-tooling",
+  "generatedAt": "2026-06-03T12:00:00.000Z",
+  "purpose": "Debate-week operator sequences over NSI-11 governed copilot tools — deterministic runs, human review required.",
+  "governance": {
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "noAutonomousClaimCreation": true,
+    "noAutonomousExport": true
+  },
+  "linkedSurfaces": [
+    {
+      "href": "/admin/intelligence/sos-debate-questions",
+      "label": "Expected SOS questions",
+      "role": "moderator_bank"
+    },
+    {
+      "href": "/admin/intelligence/trap-lanes",
+      "label": "Trap lanes",
+      "role": "opponent_traps"
+    },
+    {
+      "href": "/admin/intelligence/film-room",
+      "label": "Film room",
+      "role": "clip_rehearsal"
+    },
+    {
+      "href": "/admin/intelligence/claims",
+      "label": "Claims gate",
+      "role": "legal_firewall"
+    },
+    {
+      "href": "/admin/intelligence/kim-hammer/evidence-command",
+      "label": "Evidence command",
+      "role": "staff_citations"
+    },
+    {
+      "href": "/admin/intelligence/llm-review-queue",
+      "label": "LLM review queue",
+      "role": "nsi12_drafts"
+    },
+    {
+      "href": "/admin/intelligence/kim-hammer/debate-ai-workbench",
+      "label": "Debate AI workbench",
+      "role": "staff_drafting"
+    },
+    {
+      "href": "/admin/intelligence/ai-tools",
+      "label": "Full copilot registry",
+      "role": "all_tools"
+    }
+  ],
+  "sequences": [
+    {
+      "sequenceId": "staff-t24-prep",
+      "label": "Staff · T-24h prep pass",
+      "phase": "T-24h",
+      "audience": "staff",
+      "estimatedMinutes": 25,
+      "steps": [
+        {
+          "toolId": "source-gap-finder",
+          "label": "Source gaps",
+          "why": "Close citation and retrieval holes before Kelly rehearses."
+        },
+        {
+          "toolId": "claim-strength-evaluator",
+          "label": "Claim strength",
+          "why": "Confirm export-ready count matches debate prep assumptions."
+        },
+        {
+          "toolId": "what-not-to-say-detector",
+          "label": "Do not say",
+          "why": "Refresh blocked narratives for tonight's lanes."
+        },
+        {
+          "toolId": "debate-question-generator",
+          "label": "Bill questions",
+          "why": "Bill-anchored prompts — pair with SOS question bank for moderator style."
+        }
+      ]
+    },
+    {
+      "sequenceId": "kelly-pre-stage",
+      "label": "Kelly · pre-stage (iPad)",
+      "phase": "T-2h",
+      "audience": "candidate",
+      "estimatedMinutes": 15,
+      "steps": [
+        {
+          "toolId": "what-not-to-say-detector",
+          "label": "Do not say",
+          "why": "Last look at blocked language before stage."
+        },
+        {
+          "toolId": "trap-question-detector",
+          "label": "Trap warnings",
+          "why": "Moderator trap paths and pivot reminders."
+        },
+        {
+          "toolId": "answer-builder-30-60-90",
+          "label": "30/60/90 skeleton",
+          "why": "Timed structure — verify every fact in Claims before broadcast."
+        },
+        {
+          "toolId": "rebuttal-builder",
+          "label": "Rebuttal blocks",
+          "why": "Internal rebuttal draft — agree-plus-fresh-add, never agree-only close."
+        }
+      ]
+    },
+    {
+      "sequenceId": "spin-room-staff",
+      "label": "Staff · spin room debrief",
+      "phase": "post-debate",
+      "audience": "staff",
+      "estimatedMinutes": 20,
+      "steps": [
+        {
+          "toolId": "contradiction-scout",
+          "label": "Contradictions",
+          "why": "Capture opponent drift for rapid response queue."
+        },
+        {
+          "toolId": "media-finding-triage",
+          "label": "Media triage",
+          "why": "Rank new clips and quotes for citation drafts."
+        },
+        {
+          "toolId": "morning-brief-synthesizer",
+          "label": "Morning brief seed",
+          "why": "Seed next-day internal brief — not for auto-publish."
+        }
+      ]
+    },
+    {
+      "sequenceId": "three-way-contrast",
+      "label": "Three-way · Hammer + Packo contrast",
+      "phase": "debate-week",
+      "audience": "staff",
+      "estimatedMinutes": 18,
+      "steps": [
+        {
+          "toolId": "counterargument-predictor",
+          "label": "Counterarguments",
+          "why": "Predict opponent counters from workbench + narratives."
+        },
+        {
+          "toolId": "bridge-line-builder",
+          "label": "Bridge lines",
+          "why": "Pivot from attack to unity spine (transparency, counties, non-partisan SOS)."
+        },
+        {
+          "toolId": "vulnerability-finder",
+          "label": "Vulnerabilities",
+          "why": "Rank weak opponent narratives — sourced contrast only."
+        }
+      ]
+    }
+  ],
+  "quickToolIds": [
+    "debate-question-generator",
+    "what-not-to-say-detector",
+    "trap-question-detector",
+    "answer-builder-30-60-90",
+    "rebuttal-builder",
+    "counterargument-predictor",
+    "bridge-line-builder",
+    "source-gap-finder"
+  ]
+}

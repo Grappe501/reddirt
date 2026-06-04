@@ -1,6 +1,6 @@
+import Link from "next/link";
+import { redirect } from "next/navigation";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
-import { loadDebateWarRoomP4Packet } from "@/lib/intelligence/v4/debateWarRoomP4";
-import { V4DebateWarRoomPanel } from "@/components/admin/intelligence/v4/V4DebateWarRoomPanel";
 import { loadKimHammerKh3Workbench } from "@/lib/opposition/kimHammerKh3Workbench";
 import { KimHammerBriefingPageShell } from "../KimHammerBriefingPageShell";
 
@@ -10,12 +10,7 @@ export const maxDuration = 26;
 
 export default async function KimHammerDebateArchivePage() {
   if (isIntelligenceOppositionDebateLaunchMode()) {
-    const p4 = loadDebateWarRoomP4Packet();
-    return (
-      <div className="mx-auto max-w-7xl text-kelly-text">
-        <V4DebateWarRoomPanel packet={p4} variant="archive" />
-      </div>
-    );
+    redirect("/admin/intelligence/film-room");
   }
 
   const data = loadKimHammerKh3Workbench();

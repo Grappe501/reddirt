@@ -24,6 +24,7 @@ import { loadKimHammerEvidenceIndex } from "@/lib/opposition/kimHammerEvidenceIn
 import { loadKimHammerNarrativeStateIndex } from "@/lib/opposition/kimHammerNarrativeState";
 import { generateKimHammerLiveSuggestionCandidates } from "@/lib/opposition/kimHammerSuggestionSandbox";
 import { summarizeNarrativeUsageRisk } from "@/lib/opposition/kimHammerNarrativeUsageAnalytics";
+import { shouldSkipHumanActionQueueSyncOnRequest } from "@/lib/intelligence/intelligenceLaunchMode";
 
 export { loadStrategicScenarioRegistry, STRATEGIC_SCENARIO_REGISTRY_REL } from "@/lib/intelligence/strategicScenarioRegistry";
 export type {
@@ -688,6 +689,12 @@ export function getCopilotScenarioHints(
   toolCategory: "opposition_research" | "debate_prep" | "writing_tools" | "briefing_papers" | "intelligence_gathering" | "general",
   repoRoot?: string,
 ): string[] {
+  if (shouldSkipHumanActionQueueSyncOnRequest()) {
+    return [
+      GOVERNANCE_LABEL,
+      "Scenario simulation deferred on serverless — open /admin/intelligence/scenario-simulation for trap and mock-debate context.",
+    ];
+  }
   const summary = summarizeStrategicScenarioSimulation(repoRoot);
   const hints: string[] = [GOVERNANCE_LABEL];
 

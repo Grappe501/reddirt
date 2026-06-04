@@ -56,7 +56,20 @@ export default async function DebateCommandCenterPage() {
 
       {getSurfaceGuide("debateCommand") ? <V4OperatorGuide guide={getSurfaceGuide("debateCommand")!} /> : null}
 
-      {launchMode && p4Packet ? <V4DebateWarRoomPanel packet={p4Packet} variant="full" /> : null}
+      {launchMode && p4Packet ? (
+        <>
+          <p className="mb-4 text-sm">
+            <Link href="/admin/intelligence/film-room" className="font-bold text-kelly-navy underline">
+              Open full film room (clips, transcripts, cross-exam, arguments) →
+            </Link>
+            {" · "}
+            <Link href="/admin/intelligence/sos-debate-questions" className="font-bold text-kelly-navy underline">
+              Expected SOS questions (22 drill-downs) →
+            </Link>
+          </p>
+          <V4DebateWarRoomPanel packet={p4Packet} variant="full" />
+        </>
+      ) : null}
 
       <section className={`${card} mb-6 border-2 border-violet-800/25 bg-violet-50/30`}>
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Public-Brief-Grade Debate Intelligence</h2>
@@ -372,8 +385,8 @@ export default async function DebateCommandCenterPage() {
             </article>
           ))}
         </div>
-        <Link href="/admin/intelligence/kim-hammer/debate-archive" className="mt-3 inline-block text-xs font-semibold text-kelly-navy underline">
-          Full debate archive →
+        <Link href="/admin/intelligence/film-room" className="mt-3 inline-block text-xs font-semibold text-kelly-navy underline">
+          Full film room →
         </Link>
         <Link href="/admin/intelligence/action-queue" className="mt-3 ml-4 inline-block text-xs font-semibold text-kelly-navy underline">
           Clip-needed tasks in action queue →

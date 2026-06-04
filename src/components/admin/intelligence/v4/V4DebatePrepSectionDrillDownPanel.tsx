@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { V3DebatePrepSection } from "@/lib/intelligence/v3/debateIntelligenceV3Types";
 import type { DebatePrepSectionDrillDown } from "@/lib/intelligence/v4/debatePrepDrillDownTypes";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
-import { getPrepSectionGuideFromDrillDown } from "@/lib/intelligence/v4/debatePrepSectionDrillDowns";
+import { getPrepSectionGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4EncounterDepthPanel } from "@/components/admin/intelligence/v4/V4EncounterDepthPanel";
 
 export function V4DebatePrepSectionDrillDownPanel({
   drill,
@@ -11,7 +12,7 @@ export function V4DebatePrepSectionDrillDownPanel({
   drill: DebatePrepSectionDrillDown;
   section?: V3DebatePrepSection;
 }) {
-  const guide = getPrepSectionGuideFromDrillDown(drill.sectionId);
+  const guide = getPrepSectionGuide(drill.sectionId);
 
   return (
     <div className="space-y-6">
@@ -24,6 +25,8 @@ export function V4DebatePrepSectionDrillDownPanel({
       </article>
 
       {guide ? <V4OperatorGuide guide={guide} /> : null}
+
+      {drill.encounterDepth ? <V4EncounterDepthPanel depth={drill.encounterDepth} /> : null}
 
       <DrillBlock title="What Hammer will likely do">
         <ul className="list-inside list-disc">

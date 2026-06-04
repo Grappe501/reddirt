@@ -41,6 +41,13 @@ function ActionCard({ action }: { action: HumanActionQueueItem }) {
   );
 }
 
+const DEBATE_WEEK_QUICK_LINKS = [
+  { href: "/admin/intelligence/claims", label: "Claims review" },
+  { href: "/admin/intelligence/kim-hammer/evidence-command", label: "Evidence command" },
+  { href: "/admin/intelligence/llm-review-queue", label: "LLM review queue" },
+  { href: "/admin/intelligence/debate-command", label: "Debate command" },
+] as const;
+
 type HumanActionQueueDashboardProps = {
   summary: HumanActionQueueSummary;
   priorityQueue: HumanActionQueueItem[];
@@ -48,6 +55,7 @@ type HumanActionQueueDashboardProps = {
   byCounty: Record<string, HumanActionQueueItem[]>;
   byNarrative: Record<string, HumanActionQueueItem[]>;
   byType: Record<string, HumanActionQueueItem[]>;
+  debateWeekMode?: boolean;
 };
 
 export function HumanActionQueueDashboard({
@@ -57,11 +65,28 @@ export function HumanActionQueueDashboard({
   byCounty,
   byNarrative,
   byType,
+  debateWeekMode = false,
 }: HumanActionQueueDashboardProps) {
   const card = "rounded-md border border-kelly-text/10 bg-kelly-page px-3 py-2 text-sm";
 
+  const navLinks = debateWeekMode ? DEBATE_WEEK_QUICK_LINKS : null;
+
   return (
     <div className="space-y-6">
+      {navLinks ? (
+        <section className="flex flex-wrap gap-2 text-xs">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="rounded border border-kelly-text/15 bg-white px-3 py-1.5 font-semibold text-kelly-navy hover:bg-kelly-page"
+            >
+              {link.label}
+            </a>
+          ))}
+        </section>
+      ) : null}
+
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         <div className={card}>
           <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Recommended</p>
@@ -85,14 +110,16 @@ export function HumanActionQueueDashboard({
         </div>
       </section>
 
-      <section className="rounded-xl border border-rose-200/60 bg-rose-50/40 p-4">
-        <p className="text-xs font-bold uppercase tracking-wider text-rose-950">
-          NSI-15 · INTERNAL_USE_ONLY · NON_PUBLISHABLE · RECOMMENDATION_ONLY
-        </p>
-        <p className="mt-1 text-xs text-rose-900">
-          The system recommends actions only. Operators decide, approve, publish, export, and act. No autonomous execution.
-        </p>
-      </section>
+      {debateWeekMode ? null : (
+        <section className="rounded-xl border border-rose-200/60 bg-rose-50/40 p-4">
+          <p className="text-xs font-bold uppercase tracking-wider text-rose-950">
+            NSI-15 · INTERNAL_USE_ONLY · NON_PUBLISHABLE · RECOMMENDATION_ONLY
+          </p>
+          <p className="mt-1 text-xs text-rose-900">
+            The system recommends actions only. Operators decide, approve, publish, export, and act. No autonomous execution.
+          </p>
+        </section>
+      )}
 
       <section>
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Priority queue</h2>

@@ -321,7 +321,7 @@ export const COUNTY_CLERK_SEVEN_DAY_PATH: PrepDayPlan[] = [
       },
       {
         id: "d6-film",
-        href: "/admin/intelligence/legislative-video",
+        href: "/admin/intelligence/film-room",
         label: "Film room / clips (staff only on stage)",
         minutes: 5,
         whatToExtract: "Do not play unverified clips in clerk rooms",

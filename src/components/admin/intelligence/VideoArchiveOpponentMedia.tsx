@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { OpponentMediaRow } from "@/lib/legislature/videoArchiveRoom";
-import { isYoutubeUrl } from "@/lib/intelligence/opponents/loadOpponentMediaCatalog";
+import { isYoutubeUrl } from "@/lib/intelligence/opponents/opponentMediaCatalogTypes";
 
 export function VideoArchiveOpponentMedia({
   rows,

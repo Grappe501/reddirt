@@ -9,6 +9,7 @@ import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { loadTranscriptChunks } from "@/lib/legislature/legislativeClaimIngest";
 import { buildLegislativeVideoIntelligenceRollup } from "@/lib/legislature/legislativeVideoIntelligenceRollup";
 import { loadOppositionArchiveRollup } from "@/lib/opposition/oppositionBriefConfidence";
+import { enrichFilmRoomWithMediaCatalog } from "@/lib/intelligence/v4/debateFilmRoomEnrichment";
 
 const ROOT = process.cwd();
 
@@ -358,7 +359,7 @@ function computeP4ReadinessScores(v4: DebateIntelligenceV4Packet, filmRoom: Deba
 export function loadDebateWarRoomP4Packet(): DebateWarRoomP4Packet {
   return tryIntelligenceLoad("debate-war-room-p4", () => {
     const v4 = loadDebateIntelligenceV4HubPacket();
-    const filmRoom = buildLaunchFilmRoomState();
+    const filmRoom = enrichFilmRoomWithMediaCatalog(buildLaunchFilmRoomState());
     const crossExamBank = buildCrossExamBank(v4);
     const argumentLibrary = buildArgumentLibrary(v4);
     const readinessScores = computeP4ReadinessScores(v4, filmRoom);

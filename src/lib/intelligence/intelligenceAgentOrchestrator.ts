@@ -371,7 +371,7 @@ export function runDailyIntelligenceAgentPass(options?: {
         sourceSystems: ["NSI-14"],
         evidenceDependencies: ["debateFilmRoom"],
         riskLevel: "LOW",
-        recommendedNextStep: "Review debate-command film room section",
+        recommendedNextStep: "Open /admin/intelligence/film-room — close gap before debate",
       }),
     );
   }

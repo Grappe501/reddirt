@@ -1,0 +1,358 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-04T12:00:00.000Z",
+  "governance": {
+    "classification": "CANDIDATE_EYES_ONLY",
+    "publicationSafety": "NON_PUBLISHABLE",
+    "humanReviewRequired": true,
+    "purpose": "Defensive red-team simulation — how opponents would attack Kelly Grappe. Not for staff distribution without candidate approval. No fabricated court records; verification queue explicit.",
+    "simulationDisclaimer": "HAMMER_SIM and PACKO_SIM blocks are opponent-posture planning exercises, not verified quotes or approved campaign messages."
+  },
+  "hiddenPathway": {
+    "triggerWord": "quorum",
+    "triggerContextHint": "Appears once in county-clerk copy on intelligence hub — same color as body text, not bolded.",
+    "gateHref": "/admin/intelligence/kelly-mirror"
+  },
+  "researchDossier": {
+    "summary": "Deeper Kelly-facing research queue than Packo scaffold or Hammer KH modules — prioritize court/ethics/paper/petition ties before debate.",
+    "verificationLegend": {
+      "VERIFIED": "Primary source in repo or named URL captured",
+      "PARTIAL": "Campaign narrative only — opponent will still search",
+      "NEEDS_RESEARCH": "Must be run before Kelly cites or denies on stage",
+      "NOT_FOUND": "No record in repo — do not imply guilt; prepare denial or pivot"
+    },
+    "findings": [
+      {
+        "id": "kg-criminal-civil-records",
+        "category": "court_records",
+        "title": "Criminal / civil court records (Arkansas + federal)",
+        "verificationStatus": "NEEDS_RESEARCH",
+        "whatOpponentsWillSearch": [
+          "Arkansas CourtConnect / county circuit search — Kelly Grappe, Steve Grappe",
+          "Federal PACER if business litigation",
+          "Small-claims, eviction, lien filings tied to farm or market"
+        ],
+        "knownInRepo": "No criminal conviction logged in campaign data — absence is not proof; run search.",
+        "attackPotential": "HIGH if any hit; LOW if clean search logged",
+        "kellyRule": "Never deny categorically without search completed this cycle; use 'happy to discuss verified public record' only if counsel clears."
+      },
+      {
+        "id": "kg-judgments-liens",
+        "category": "financial_judgments",
+        "title": "Judgments, tax liens, UCC filings",
+        "verificationStatus": "NEEDS_RESEARCH",
+        "whatOpponentsWillSearch": ["Secretary of State UCC", "county recorder", "business entity standing for Forevermost / market"],
+        "knownInRepo": "Farm economics stress post-COVID noted in biography — not a judgment.",
+        "attackPotential": "MEDIUM",
+        "kellyRule": "If clean: pivot to small-business survival story. If hit: counsel + single-sentence factual response only."
+      },
+      {
+        "id": "kg-newspaper-digital",
+        "category": "media_archive",
+        "title": "Newspaper, radio, TV, op-eds attributable to Kelly",
+        "verificationStatus": "PARTIAL",
+        "whatOpponentsWillSearch": [
+          "Arkansas Democrat-Gazette, Arkansas Times, KUAR, Talk Business",
+          "Stand Up Arkansas blog / Regnat Populus letters (Steve and Kelly Grappe)",
+          "Forevermost farm blog essays (transparency, politics metaphors)"
+        ],
+        "knownInRepo": "Biography cites KUAR Dec 2023, Arkansas Times, For AR Kids press; LEARNS referendum role; 'Waiting for the Pot to Boil' essay.",
+        "attackPotential": "HIGH — long paper trail on petitions and movement politics",
+        "kellyRule": "Own civics leadership; separate SOS-administrator role from activist chapter; decline circulating petitions during race (already public stance)."
+      },
+      {
+        "id": "kg-petition-ballot-ties",
+        "category": "ballot_initiatives",
+        "title": "Ballot petitions & initiative logistics Kelly can be tied to",
+        "verificationStatus": "PARTIAL",
+        "whatOpponentsWillSearch": [
+          "LEARNS referendum coordination (2023)",
+          "For AR Kids / Educational Rights Amendment — 68 counties organized, 55 county mins, statewide total missed (per Regnat Populus letter in repo)",
+          "Sherwood duplex logistics hub — central petition operations",
+          "Jacksonville at-large voting campaign framing",
+          "Any 2026 refiling plans mentioned in movement correspondence"
+        ],
+        "knownInRepo": "Documented in ask-kelly-public biography Parts IV–V; Hammer camp will contrast with petition-restriction bills.",
+        "attackPotential": "CRITICAL in SOS debate — Hammer's strongest alignment",
+        "kellyRule": "Agree integrity + lawful participation; contrast unfunded mandates; never attack petition rights; verify county counts before stage."
+      },
+      {
+        "id": "kg-stand-up-arkansas",
+        "category": "nonprofit_civic",
+        "title": "Stand Up Arkansas leadership & training ecosystem",
+        "verificationStatus": "PARTIAL",
+        "whatOpponentsWillSearch": ["501(c) filings", "board roles", "partisan coordination", "FOIA training modules", "partnership with For AR Kids"],
+        "knownInRepo": "Kelly helps lead; Recruit-Train-Activate; multiple external training URLs; Democrat ID with people-over-politics framing.",
+        "attackPotential": "HIGH — 'activist SOS' narrative",
+        "kellyRule": "Civic education is SOS duty; nonprofit work shows democracy skill; office will be non-partisan in administration."
+      },
+      {
+        "id": "kg-sos-experience-gap",
+        "category": "qualifications",
+        "title": "No statewide SOS administration tenure",
+        "verificationStatus": "VERIFIED",
+        "whatOpponentsWillSearch": ["LinkedIn roles", "whether telecom = government", "first debate performance"],
+        "knownInRepo": "scenario opp-kelly-unprepared-attack; coaching layer for first debate vs 25+ year opponent.",
+        "attackPotential": "CRITICAL",
+        "kellyRule": "Service desk frame; 75 counties; implementation vs sponsorship; rehearse 30s answers."
+      },
+      {
+        "id": "kg-democrat-label",
+        "category": "partisan",
+        "title": "Democratic nominee in non-partisan office rhetoric",
+        "verificationStatus": "VERIFIED",
+        "whatOpponentsWillSearch": ["Primary voters", "movement allies", "clerk rooms in red counties"],
+        "knownInRepo": "Biography states Democrat; campaign stresses non-partisan administration.",
+        "attackPotential": "HIGH in R-lean rooms",
+        "kellyRule": "Lean unity themes tested in independent/Republican rooms; equal rules for every county."
+      },
+      {
+        "id": "kg-steve-grappe-coattribution",
+        "category": "family_spouse",
+        "title": "Steve Grappe co-signer / co-organizer attribution",
+        "verificationStatus": "PARTIAL",
+        "whatOpponentsWillSearch": ["Regnat Populus letters signed Steve and Kelly", "farm co-ownership", "campaign staff overlap"],
+        "knownInRepo": "Joint signature on movement letters; Forevermost co-operators.",
+        "attackPotential": "MEDIUM — 'who is really running'",
+        "kellyRule": "Acknowledge partnership; Kelly is candidate; SOS accountability is hers alone."
+      },
+      {
+        "id": "kg-farm-commercial-pause",
+        "category": "business_viability",
+        "title": "Forevermost commercial pause post-COVID",
+        "verificationStatus": "PARTIAL",
+        "whatOpponentsWillSearch": ["Failed business", "USDA processing costs", "hobby farm vs serious executive"],
+        "knownInRepo": "Honest pivot after cost shocks; transparency narrative.",
+        "attackPotential": "MEDIUM",
+        "kellyRule": "Resilience story; same lesson as funding election infrastructure; not a shutdown — storytelling continues."
+      },
+      {
+        "id": "kg-learns-missed-threshold",
+        "category": "petition_failure",
+        "title": "LEARNS / For AR Kids signature shortfall narrative",
+        "verificationStatus": "PARTIAL",
+        "whatOpponentsWillSearch": ["Missed statewide threshold despite county mins", "litigation / AG delay themes in letters"],
+        "knownInRepo": "55 of 50 counties with mins but total missed — per biography ingest.",
+        "attackPotential": "HIGH — competence attack",
+        "kellyRule": "Scale of organizing proof; humility on shortfall; SOS office will professionalize logistics — not relitigate LEARNS vote on stage unless asked."
+      },
+      {
+        "id": "kg-debate-performance",
+        "category": "debate_comport",
+        "title": "First debate — composure, memory, citation discipline",
+        "verificationStatus": "VERIFIED",
+        "whatOpponentsWillSearch": ["Freeze moments", "wrong act numbers", "interrupting"],
+        "knownInRepo": "Explicit first-debate coaching; trap lanes; do-not-say.",
+        "attackPotential": "HIGH live",
+        "kellyRule": "Use if-stuck scripts; claims gate; never match Hammer volume."
+      }
+    ]
+  },
+  "hammerRedTeam": {
+    "simulationId": "HAMMER_SIM",
+    "strategicObjective": "Frame race as security vs chaos; make Kelly look like activist petition organizer unfit to administer laws she fought to circumvent; protect 2021–2025 legislative record as SOS-ready experience.",
+    "offensiveDebatePlan": [
+      "Open with check-my-record — rapid bill/act citations",
+      "Invite Kelly into petition-hypocrisy trap: SOS neutrality vs Sherwood hub history",
+      "Force experience contrast: Senate specialist vs first-time debater",
+      "Use Packo as implicit ally on reform without naming coordination",
+      "Close on integrity ranking / fraud prosecution themes — NEEDS_REVIEW before Hammer cites"
+    ],
+    "defensiveDebatePlan": [
+      "Agree on abstract integrity; refuse motive claims without sources",
+      "Pre-brief 2021 package continuity answer",
+      "County champion lane if Kelly attacks clerks — pivot to unfunded mandates with one bill",
+      "Decline biography bait — 15s pivot to acts",
+      "Never ask Packo to vote for Hammer on stage"
+    ],
+    "attackVectors": [
+      {
+        "vectorId": "h-experience",
+        "label": "No SOS experience",
+        "likelyLines": [
+          "She's never run a statewide election office.",
+          "Telecom manager isn't Secretary of State.",
+          "First debate — unprepared for 75 counties."
+        ],
+        "trapSetup": "Moderator: qualifications segment — let Kelly over-explain biography.",
+        "personalOrProfessional": "professional"
+      },
+      {
+        "vectorId": "h-petition-hypocrisy",
+        "label": "Petition organizer vs SOS gatekeeper",
+        "likelyLines": [
+          "She ran central petition warehouses — now wants to administer the rules?",
+          "For AR Kids couldn't finish the job — why trust her with statewide logistics?",
+          "Stand Up Arkansas trains activists — not clerks."
+        ],
+        "trapSetup": "Ask Kelly if she will make ballot access harder after LEARNS fight.",
+        "personalOrProfessional": "professional"
+      },
+      {
+        "vectorId": "h-partisan-activist",
+        "label": "Democrat activist SOS",
+        "likelyLines": [
+          "Democrat nominee with Stand Up Arkansas training hubs.",
+          "Jim Crow at-large rhetoric — radical organizer.",
+          "People over politics — but which people?"
+        ],
+        "trapSetup": "Culture-war lane if Kelly sounds partisan while claiming unity.",
+        "personalOrProfessional": "professional"
+      },
+      {
+        "vectorId": "h-personal-bait",
+        "label": "Personal / biography bait",
+        "likelyLines": [
+          "Farm failed — can she run government?",
+          "Husband co-wrote movement letters — who's in charge?",
+          "Outsider to Little Rock establishment."
+        ],
+        "trapSetup": "Provocative framing; hope Kelly interrupts.",
+        "personalOrProfessional": "personal"
+      }
+    ],
+    "rebuttalToKelly": [
+      "When Kelly cites county burden: agree clerks matter → contrast her lack of implementation plan → cite Hammer bill without funding follow-through question back to her.",
+      "When Kelly uses unity spine: agree transparency → ask for act number on Civic Index claim → NEEDS_REVIEW.",
+      "When Kelly agrees on fraud: narrow agreement → list enforcement bills → ask what she would defund."
+    ],
+    "hardCoreTakedownSequence": [
+      "Minute 0–3: Establish authority with three act numbers.",
+      "Minute 3–8: Pull Kelly into petition thread; let Packo echo access.",
+      "Minute 8–12: Experience trap + check my record.",
+      "Minute 12+: If Kelly strong on clerks, culture-war bait; if weak, press unprepared narrative."
+    ]
+  },
+  "packoRedTeam": {
+    "simulationId": "PACKO_SIM",
+    "strategicObjective": "Own reform/anti-establishment lane; position as neither Capitol insider nor Democratic activist; peel protest vote from Kelly in suburbs; occasionally align with Hammer on access skepticism without endorsing him.",
+    "offensiveDebatePlan": [
+      "Sound reasonable on election reform — ranked choice, competitiveness",
+      "Attack duopoly: R vs D same establishment",
+      "Question Kelly's petition-organizer credibility vs Libertarian consistency",
+      "Steal 'non-partisan administrator' language before Kelly",
+      "Let Hammer be the attack dog — Packo stays calm reformer"
+    ],
+    "defensiveDebatePlan": [
+      "Deflect SOS implementation questions — economist not clerk",
+      "No quote ledger yet — stay high-level",
+      "Avoid defending Hammer bills directly",
+      "If Kelly attacks Packo: welcome reform debate, cite pakko4ar.com"
+    ],
+    "attackVectors": [
+      {
+        "vectorId": "p-duopoly",
+        "label": "Duopoly / anything-but-D",
+        "likelyLines": [
+          "Kelly is the Democratic machine choice.",
+          "Why trust a petition professional to be impartial?",
+          "Hammer wrote rules; Kelly organized protests — Packo offers independence."
+        ],
+        "trapSetup": "Agree with Hammer on one narrow point; isolate Kelly in third position.",
+        "personalOrProfessional": "professional"
+      },
+      {
+        "vectorId": "p-reform-theft",
+        "label": "Reform lane theft",
+        "likelyLines": [
+          "Kelly talks transparency after missing signature thresholds.",
+          "Real reform isn't Stand Up training modules — it's competitive elections."
+        ],
+        "trapSetup": "When Kelly speaks third — agree with prior speakers then add reform zinger.",
+        "personalOrProfessional": "professional"
+      }
+    ],
+    "rebuttalToKelly": [
+      "When Kelly bridges to counties: agree → ask why Democrat activist trusts Libertarian-leaning clerks more than Packo.",
+      "When Kelly cites telecom: concede business exp → ask about public-sector exp."
+    ],
+    "hardCoreTakedownSequence": [
+      "Do not attack Kelly first — let Hammer soften her.",
+      "Enter on reform + independence when moderator asks open question.",
+      "Never endorse Hammer; never ask voters to vote Kelly."
+    ]
+  },
+  "counterPlaybook": {
+    "summary": "Combat every attack vector with agree-plus-fresh-add, claims gate, and trap-lane pivots.",
+    "responses": [
+      {
+        "attackId": "h-experience",
+        "kellyAcknowledge": "Senator Hammer has years in the legislature — I respect that.",
+        "kellyContrast": "Writing election law is not the same as running the Secretary of State's office for seventy-five counties every day.",
+        "kellyBridge": "I am running to be the statewide help desk for clerks — training, published rules, funding advocacy.",
+        "claimsGate": "No motive claims; no 'inexperienced' insult.",
+        "doNotSay": ["He's unqualified", "Career politician insults"]
+      },
+      {
+        "attackId": "h-petition-hypocrisy",
+        "kellyAcknowledge": "I believe Arkansans should be able to petition their government — I helped organize that work.",
+        "kellyContrast": "The SOS race is why I am not circulating petitions personally this year — fairness matters.",
+        "kellyBridge": "As Secretary of State I will publish clear rules, support clerks, and protect both integrity and lawful participation.",
+        "claimsGate": "Verify For AR Kids county numbers before citing; do not relitigate LEARNS unless moderator asks.",
+        "doNotSay": ["Hammer hates democracy", "Petition fraud"]
+      },
+      {
+        "attackId": "h-partisan-activist",
+        "kellyAcknowledge": "I am the Democratic nominee — I will not hide that.",
+        "kellyContrast": "This office must administer elections for every party equally — that is the job.",
+        "kellyBridge": "Transparency, accountability, and cross-aisle work for clerks — tested in independent and Republican rooms.",
+        "claimsGate": "Unity themes field-tested; Civic Index rank NEEDS_REVIEW before air.",
+        "doNotSay": ["Republicans are X", "Culture-war bait repetition"]
+      },
+      {
+        "attackId": "h-personal-bait",
+        "kellyAcknowledge": "I am proud of our farm and our community work.",
+        "kellyContrast": "I am running for Secretary of State — not a talk show.",
+        "kellyBridge": "Let's talk about acts, counties, and what clerks need — in ten seconds.",
+        "claimsGate": "15s decline script from culture-war trap lane.",
+        "doNotSay": ["60s biography defense", "Apologize for being a woman"]
+      },
+      {
+        "attackId": "p-duopoly",
+        "kellyAcknowledge": "Dr. Packo raises fair questions about competition in our politics.",
+        "kellyContrast": "Secretary of State is a service job — seventy-five counties need implementation, not theory alone.",
+        "kellyBridge": "I will show up for clerks with published guidance and funding advocacy.",
+        "claimsGate": "No Packo attack until PACKO-02 quote ledger partial.",
+        "doNotSay": ["Vote for me instead of Packo on stage"]
+      }
+    ]
+  },
+  "buildPlan": {
+    "title": "Kelly adversarial mirror — implementation & research plan",
+    "phases": [
+      {
+        "phase": 1,
+        "label": "Verification sprint (pre-debate)",
+        "tasks": [
+          "Run kg-criminal-civil-records and kg-judgments-liens searches; log results in claims ledger",
+          "Harvest newspaper quotes into citation locker with URLs",
+          "Confirm For AR Kids / LEARNS county stats with primary filings",
+          "Counsel review of counter-playbook lines"
+        ],
+        "owner": "Research + legal"
+      },
+      {
+        "phase": 2,
+        "label": "Simulation refresh",
+        "tasks": [
+          "Update HAMMER_SIM after each Hammer public appearance",
+          "Update PACKO_SIM when quote ledger reaches PARTIAL",
+          "Rehearse counter-playbook standing — one vector per 5 min"
+        ],
+        "owner": "Candidate + debate prep"
+      },
+      {
+        "phase": 3,
+        "label": "Post-debate debrief",
+        "tasks": [
+          "Log actual attack lines used vs predicted",
+          "Add new vectors to mirror JSON",
+          "Rotate KELLY_MIRROR_PASSPHRASE if passphrase shared"
+        ],
+        "owner": "Candidate only"
+      }
+    ],
+    "passwordPolicy": "Separate from admin login. Set KELLY_MIRROR_PASSPHRASE in Netlify env. Candidate may share with one trusted confidant — rotate after debate.",
+    "staffExclusion": "Do not link from debate-week nav, hub path cards, or iPad menus. Hidden word only."
+  }
+}

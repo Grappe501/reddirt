@@ -16,7 +16,20 @@ export const INTELLIGENCE_LAUNCH_ROUTES = DEBATE_WEEK_ROUTES;
 export type IntelligenceLaunchRoute = DebateWeekRoute;
 
 export function isIntelligenceOppositionDebateLaunchMode(): boolean {
-  return process.env[INTELLIGENCE_LAUNCH_MODE_ENV] === INTELLIGENCE_LAUNCH_MODE_OPPOSITION_DEBATE;
+  return (
+    process.env[INTELLIGENCE_LAUNCH_MODE_ENV] === INTELLIGENCE_LAUNCH_MODE_OPPOSITION_DEBATE ||
+    process.env.INTELLIGENCE_LAUNCH_MODE === INTELLIGENCE_LAUNCH_MODE_OPPOSITION_DEBATE
+  );
+}
+
+/** Netlify/serverless must never run 60s+ action-queue sync on page render. */
+export function shouldSkipHumanActionQueueSyncOnRequest(): boolean {
+  return (
+    isIntelligenceOppositionDebateLaunchMode() ||
+    Boolean(process.env.NETLIFY) ||
+    Boolean(process.env.AWS_LAMBDA_FUNCTION_NAME) ||
+    Boolean(process.env.VERCEL)
+  );
 }
 
 /** Default post-login destination when debate launch mode is active. */

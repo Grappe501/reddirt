@@ -1,6 +1,8 @@
 import { OPPONENT_TRAP_LANES } from "@/lib/intelligence/v4/kellyOpponentContrastPlaybook";
+import { getTrapLaneStaffFindings } from "@/lib/intelligence/v4/debateWhatToLookForEnrichment";
 import type { TrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDownTypes";
 import type { RebuttalScript, SampleScript, DebateZinger } from "@/lib/intelligence/v4/debatePrepDrillDownTypes";
+import { getTrapLaneEncounterDepth, mergeEncounterDepth } from "@/lib/intelligence/v4/debatePlainLanguageDepth";
 
 const FIRST_TIMER =
   "Trap lanes are not insults — they are chess. You set a fair question; he answers into a record voters can check. Stay calm when he bites. If he does not bite, take your pivot anyway in one sentence and move on.";
@@ -32,6 +34,7 @@ function baseFromTrap(
   extra: Partial<TrapLaneDrillDown>,
 ): TrapLaneDrillDown {
   const trap = OPPONENT_TRAP_LANES[trapIndex];
+  const staff = getTrapLaneStaffFindings(laneId);
   return {
     laneId,
     laneNumber: num,
@@ -65,6 +68,16 @@ function baseFromTrap(
     claimsGate: extra.claimsGate ?? "NEEDS_REVIEW — verify act numbers on Arkleg before stage",
     estimatedPrepMinutes: extra.estimatedPrepMinutes ?? 30,
     debateSteps: extra.debateSteps ?? [],
+    whatToLookForOffensive: staff?.offensive ?? [],
+    whatToLookForDefensive: staff?.defensive ?? [],
+    whatToLookForVerify: staff?.verify ?? [],
+    debateOffensiveUse:
+      staff?.debateUse?.split("DEFENSIVE:")[0]?.replace(/^OFFENSIVE:\s*/i, "").trim() ??
+      trap.kellyPivotWhenHeBites,
+    debateDefensiveUse:
+      staff?.debateUse?.split("DEFENSIVE:")[1]?.trim() ??
+      staff?.defensive.join(" ") ??
+      "Protect Kelly from overreach and unsupported claims.",
   };
 }
 
@@ -291,24 +304,75 @@ export const TRAP_LANE_DRILL_DOWNS: Record<string, TrapLaneDrillDown> = {
 
   "culture-war-escalation": baseFromTrap("culture-war-escalation", 6, 5, {
     narrativeOverview:
-      "When biography or partisan war bait appears — decline theater. Return to acts, counties, SOS service. Voters reward composure; clips favor Kelly discipline.",
+      "When biography or partisan war bait appears — decline theater. Return to acts, counties, SOS service. Voters reward composure; clips favor Kelly discipline. This lane is the most dangerous for a first-time debater because it feels personal. It is not personal — it is a tactic to steal your time.",
     whatToExpectHammerToSay: [
-      "Personal dig at Kelly background",
-      "Partisan war language",
-      "Provocative framing on opponents or church",
-      "Attempts to make Kelly interrupt",
+      "Personal dig at Kelly background or faith",
+      "Partisan war language ('radical,' 'elite,' 'they')",
+      "Provocative framing on opponents, church, or gender",
+      "Attempts to make Kelly interrupt or raise voice",
+      "Asking you to condemn a group of Arkansas voters",
+      "Implying you are 'not one of us' without saying it plainly",
+    ],
+    hammerTonalities: [
+      "Moral certainty tone — sounds like a sermon, not a policy answer",
+      "Speed increase after bait to pressure interruption",
+      "Looking at audience for reaction instead of moderator",
+    ],
+    whatModeratorMayAsk: [
+      "A 'gotcha' biography question packaged as qualifications",
+      "Whether you will disavow a supporter or opponent statement",
+      "Why voters should trust you on 'values'",
     ],
     setupMoves: [
-      "Do not take fresh bait — finish current answer first.",
-      "One sentence boundary: ‘I am running to run the office for every voter.’",
-      "Pivot to bill or county within 10 seconds.",
+      "Do not take fresh bait — finish your current answer in one sentence first.",
+      "Boundary: ‘I am running to run the Secretary of State's office for every voter.’",
+      "Pivot to bill, county clerks, or transparency within 10 seconds.",
+      "If moderator repeats bait: thank them, decline biography, answer SOS role only.",
     ],
-    kellyPivotDeep: "Decline bait calmly — act anchor + county impact + bridge. Never match volume.",
-    ifHeDoesNotBite: ["Stay on substance — do not pre-empt attacks that did not happen"],
+    baitPsychology:
+      "He wants a clip of you angry or defensive. Undecided voters forgive policy disagreement; they punish loss of control. Your win is boring composure on camera.",
+    whenHeBitesSignals: [
+      "He defends biography longer than a bill",
+      "He uses hot-button words you did not use",
+      "He turns toward you instead of moderator — invitation to interrupt",
+    ],
+    kellyPivotDeep:
+      "Decline bait calmly — never repeat his insult words. Anchor one verified act or county burden, then unity bridge: non-partisan SOS educates the public and supports all 75 counties. If Packo piles on, add one fresh line about clerks — do not ask for his vote.",
+    rebuttalScripts: [
+      r(
+        "Biography attack",
+        "You don't understand Arkansas values.",
+        "I love this state — that is why I am running for a service office, not a talk show.",
+        "Values show up in how we treat county clerks and voters — published rules, equal treatment.",
+        "Let's compare acts and implementation — who funds clerk training?",
+        "Service desk, not culture-war pulpit.",
+      ),
+      r(
+        "Partisan bait",
+        "This is about Democrats vs Republicans.",
+        "Election administration should be non-partisan — equal rules for every county.",
+        "My opponent wrote many election laws; I am asking who will implement them fairly for clerks.",
+        "I will work across the aisle so voters trust the process.",
+      ),
+    ],
+    ifHeDoesNotBite: [
+      "Stay on substance — do not pre-empt attacks that did not happen",
+      "If bait fails, he may return to bill numbers — switch to experience or 2021 trap lane",
+    ],
     mistakesFirstTimersMake: [
       "Defending biography for 60 seconds",
-      "Finger pointing",
+      "Finger pointing or stepping toward opponent",
       "Apologizing for being a woman or outsider — do not use gender as weapon",
+      "Repeating his hot-button words back to 'deny' them — amplifies the frame",
+      "Asking Hammer to apologize — moderators dislike candidate-on-candidate fights",
+    ],
+    bodyLanguageAndTone:
+      "Hands still at waist. Chin level. Look at moderator when declining bait. When pivoting to counties, slight turn to audience — invite them into service frame. Never smirk or laugh at bait.",
+    rehearsalSteps: [
+      "Read 15s decline script aloud 5 times — eyes on imaginary moderator",
+      "Staff throws bait lines; Kelly practices pivot under 10s",
+      "Watch one opponent clip — practice not mirroring his volume",
+      "Open /admin/intelligence/debate-depth/culture-war for full plain-language block",
     ],
     sampleScripts: [
       s(
@@ -317,13 +381,40 @@ export const TRAP_LANE_DRILL_DOWNS: Record<string, TrapLaneDrillDown> = {
         "I am running to make the Secretary of State's office work for every voter in every county. Let's talk about the acts and the clerks who implement them.",
         "Eyes to moderator — not Hammer",
       ),
+      s(
+        "Pivot after bait — 30s",
+        "30s",
+        "The Secretary of State should educate voters on the rules and support county clerks equally. I will publish guidance anyone can read and fund training — not unfunded mandates from the Capitol.",
+        "Calm pace — slower than his bait",
+      ),
+      s(
+        "Packo pile-on — 20s",
+        "20s",
+        "I agree we need secure elections. Here is what neither of you said: county clerks in all 75 counties need clear rules and resources before the next cycle.",
+      ),
     ],
-    estimatedPrepMinutes: 20,
+    zingers: [
+      z(
+        "Service desk, not pulpit.",
+        "After biography bait when you need a crisp close",
+        "When moderator already ruled the question out of order",
+        "Tone only — not a standalone policy answer",
+      ),
+    ],
+    relatedLinks: [
+      { href: "/admin/intelligence/debate-depth/culture-war", label: "Culture-war depth guide" },
+      { href: "/admin/intelligence/debate-depth/if-stuck", label: "If you get stuck" },
+      { href: "/admin/intelligence/sos-debate-questions", label: "SOS questions" },
+    ],
+    estimatedPrepMinutes: 25,
   }),
 };
 
 export function getTrapLaneDrillDown(laneId: string): TrapLaneDrillDown | undefined {
-  return TRAP_LANE_DRILL_DOWNS[laneId];
+  const row = TRAP_LANE_DRILL_DOWNS[laneId];
+  if (!row) return undefined;
+  const encounterDepth = mergeEncounterDepth(row.encounterDepth, getTrapLaneEncounterDepth(laneId));
+  return encounterDepth ? { ...row, encounterDepth } : row;
 }
 
 export function getAllTrapLaneIds(): string[] {

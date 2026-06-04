@@ -9,6 +9,7 @@ import {
   totalCountyClerkReadMinutes,
 } from "@/lib/intelligence/v4/countyClerkSevenDayPrepPath";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
+import { KellyMirrorHiddenPathway } from "@/components/admin/intelligence/kelly-mirror/KellyMirrorHiddenPathway";
 
 const dayTab =
   "rounded-lg border px-3 py-2 text-left text-xs font-semibold transition";
@@ -32,7 +33,9 @@ export function V7CountyClerkPrepPath({ compact }: { compact?: boolean }) {
           </h2>
           <p className="mt-2 max-w-3xl text-sm text-kelly-muted">
             {COUNTY_CLERK_AUDIENCE_PRIMER.headline}. ~{totalCountyClerkReadMinutes()} minutes total reading
-            time across the week — work one day at a time; staff handles retrieval and claims.
+            time across the week — work one day at a time; staff handles retrieval and claims. County budgets and{" "}
+            <KellyMirrorHiddenPathway>quorum</KellyMirrorHiddenPathway> court pressure still land on clerks when mandates
+            arrive unfunded.
           </p>
         </div>
         {!compact ? (

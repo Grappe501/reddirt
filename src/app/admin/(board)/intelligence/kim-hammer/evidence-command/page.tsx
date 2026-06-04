@@ -38,6 +38,8 @@ import {
 } from "../EvidenceCommandTaskPanel";
 import { getAllowedReviewTransitions } from "@/lib/opposition/kimHammerReviewWorkflow";
 import { getAllowedTaskTransitions } from "@/lib/opposition/kimHammerTaskWorkflow";
+import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
+import { EvidenceCommandDebateWeekLead } from "./EvidenceCommandDebateWeekLead";
 
 function buildRecommendedActions(index: ReturnType<typeof loadKimHammerEvidenceIndex>): string[] {
   const actions: string[] = [];
@@ -182,6 +184,7 @@ export const runtime = "nodejs";
 export const maxDuration = 26;
 
 export default async function KimHammerEvidenceCommandPage() {
+  const launchMode = isIntelligenceOppositionDebateLaunchMode();
   const safe = loadSafeEvidenceCommandPageData();
   const { index, copilot, narrativeBriefings, geographicSummary, usageSummary, strategicSummary, countyBriefingSummary, operationalSummary, registration, media, brain, actionQueueSection, indexUnavailable } = safe;
   const { metrics } = index;
@@ -296,14 +299,18 @@ export default async function KimHammerEvidenceCommandPage() {
         <V4PageHeader
           eyebrow="Evidence command · v4 fallback"
           title="Citation & retrieval overview"
-          description="Full evidence-command graph did not load. Use v4 retrieval queue and claims review until staff surfaces recover."
+          description="KH-4 evidence index did not load on this deploy. Staff: use claims review and v4 retrieval queue; re-run opposition JSON ingest if counts are zero."
           guide={getSurfaceGuide("evidenceCommand")}
         >
           <V4BackLinks />
           <Link href="/admin/intelligence/claims" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
             Claims
           </Link>
+          <Link href="/admin/intelligence/action-queue" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
+            Action queue
+          </Link>
         </V4PageHeader>
+        <EvidenceCommandDebateWeekLead exportReadyCount={0} reviewNeededCount={v4.hub.claims.needsResearch.length} blockedCount={0} />
         <V4ExecutiveBriefPanel brief={v4.executiveBrief} scorecard={v4.readinessScorecard} />
         <ul className="mt-4 list-inside list-disc text-xs text-kelly-muted">
           {v4.retrievalQueue.map((task) => (
@@ -318,9 +325,18 @@ export default async function KimHammerEvidenceCommandPage() {
 
   return (
     <KimHammerBriefingPageShell moduleId="evidence-command">
-<EvidenceCommandNarrativeBrief sections={narrativeBriefings.sections} />
+      {launchMode ? (
+        <EvidenceCommandDebateWeekLead
+          exportReadyCount={metrics.exportReadyClaims}
+          reviewNeededCount={metrics.reviewNeededClaims}
+          blockedCount={metrics.blockedClaims}
+        />
+      ) : (
+        <EvidenceCommandNarrativeBrief sections={narrativeBriefings.sections} />
+      )}
 
       <EvidenceCommandDashboard
+        debateWeekMode={launchMode}
         analytics={analytics}
         reviewStatusCounts={metrics.reviewStatusCounts}
         taskStatusCounts={metrics.taskStatusCounts}

@@ -1,5 +1,6 @@
 import type { RebuttalScript, SampleScript, DebateZinger } from "@/lib/intelligence/v4/debatePrepDrillDownTypes";
 import type { PlaybookStep } from "@/lib/intelligence/v4/debateOperatorPlaybookTypes";
+import type { DebateEncounterDepth } from "@/lib/intelligence/v4/debateEncounterDepthTypes";
 
 export type TrapLaneDrillDown = {
   laneId: string;
@@ -24,8 +25,15 @@ export type TrapLaneDrillDown = {
   rehearsalSteps: string[];
   relatedActs: string[];
   relatedBills: string[];
+  relatedLinks?: Array<{ href: string; label: string }>;
   packoNote?: string;
   claimsGate: string;
   estimatedPrepMinutes: number;
   debateSteps: PlaybookStep[];
+  whatToLookForOffensive: string[];
+  whatToLookForDefensive: string[];
+  whatToLookForVerify: string[];
+  debateOffensiveUse: string;
+  debateDefensiveUse: string;
+  encounterDepth?: DebateEncounterDepth;
 };

@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { V3DebatePrepSection } from "@/lib/intelligence/v3/debateIntelligenceV3Types";
-import { getPrepSectionGuideFromDrillDown } from "@/lib/intelligence/v4/debatePrepSectionDrillDowns";
+import { getPrepSectionGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { resolvePrepSectionHref } from "@/lib/intelligence/v4/debatePrepSectionDrillDowns";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 
 export function V4DebatePrepWithNav({ sections }: { sections: V3DebatePrepSection[] }) {
@@ -46,7 +47,7 @@ export function V4DebatePrepWithNav({ sections }: { sections: V3DebatePrepSectio
                 {section.title.replace(/^\d+\)\s*/, "")}
               </a>
               <Link
-                href={`/admin/intelligence/kim-hammer/debate-prep/${section.id}`}
+                href={resolvePrepSectionHref(section.id)}
                 className="mt-0.5 block px-2 text-[9px] font-bold uppercase text-kelly-navy hover:underline"
               >
                 Full drill-down →
@@ -62,14 +63,14 @@ export function V4DebatePrepWithNav({ sections }: { sections: V3DebatePrepSectio
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">{section.title}</h2>
                 <Link
-                  href={`/admin/intelligence/kim-hammer/debate-prep/${section.id}`}
+                  href={resolvePrepSectionHref(section.id)}
                   className="rounded-lg bg-kelly-navy px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-white hover:bg-kelly-navy/90"
                 >
                   Open full drill-down
                 </Link>
               </div>
-              {getPrepSectionGuideFromDrillDown(section.id) ? (
-                <V4OperatorGuide guide={getPrepSectionGuideFromDrillDown(section.id)!} compact />
+              {getPrepSectionGuide(section.id) ? (
+                <V4OperatorGuide guide={getPrepSectionGuide(section.id)!} compact />
               ) : null}
               <p className="mt-2 text-[10px] font-bold uppercase text-kelly-subtle">Research content below</p>
               {section.paragraphs.length > 0 ? (

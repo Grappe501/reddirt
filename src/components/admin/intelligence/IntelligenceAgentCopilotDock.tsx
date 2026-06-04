@@ -118,10 +118,10 @@ export function IntelligenceAgentCopilotDock({ embedded }: { embedded?: boolean 
       ) : null}
 
       <Link
-        href="/admin/intelligence/kim-hammer/debate-ai-workbench"
+        href="/admin/intelligence/agent-tooling"
         className="mt-4 inline-flex min-h-11 items-center font-bold text-kelly-navy underline"
       >
-        Full AI workbench (all tools) →
+        Agent tooling package (sequences + all debate tools) →
       </Link>
     </section>
   );

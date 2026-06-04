@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { KellyDebateCoachingPanel } from "@/components/admin/intelligence/KellyDebateCoachingPanel";
 import { buildVideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoom";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
+import { V4DebateDepthHub } from "@/components/admin/intelligence/v4/V4DebateDepthHub";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 
 export const dynamic = "force-dynamic";
@@ -14,13 +17,25 @@ export default function KellyDebateCoachingPage() {
       <V4PageHeader
         eyebrow="Kelly · first debate coaching"
         title="Stage presence, scripts & three-way strategy"
-        description="Narrative control on stage, full Check My Record walkthrough (six beats + 60s script), record-findings frames, Packo geometry, principles, acts, and scripts. Submit suggestions below."
+        description="Narrative control on stage, full Check My Record walkthrough (six beats + 60s script), record-findings frames, Packo geometry, principles, acts, and scripts. Plain-language depth blocks cover attacks, adversity, and culture-war recovery."
+        guide={getSurfaceGuide("kellyDebateCoaching")}
       >
         <V4BackLinks />
+        <Link href="/admin/intelligence/debate-depth/culture-war" className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950">
+          Culture-war guide
+        </Link>
         <Link href="/admin/intelligence/kim-hammer/debate-prep" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
           Debate prep packet
         </Link>
       </V4PageHeader>
+
+      {getSurfaceGuide("kellyDebateCoaching") ? (
+        <div className="mb-6">
+          <V4OperatorGuide guide={getSurfaceGuide("kellyDebateCoaching")!} />
+        </div>
+      ) : null}
+
+      <V4DebateDepthHub compact />
 
       <KellyDebateCoachingPanel
         suggestions={archive.opponentMedia.kellySuggestions}

@@ -96,9 +96,11 @@ export function KimHammerBriefingPageShell({
     );
   }
 
-  const briefing = launchMode
-    ? LAUNCH_MODULE_BRIEFING
-    : billNumber && findKimHammerBill(billNumber)
+  const preserveCustomPage = v4Entry?.preserveCustomPageInLaunchMode;
+  const briefing =
+    launchMode && !preserveCustomPage
+      ? LAUNCH_MODULE_BRIEFING
+      : billNumber && findKimHammerBill(billNumber)
       ? buildKimHammerBillBriefing(findKimHammerBill(billNumber)!)
       : loadKimHammerModuleBriefing(moduleId);
 

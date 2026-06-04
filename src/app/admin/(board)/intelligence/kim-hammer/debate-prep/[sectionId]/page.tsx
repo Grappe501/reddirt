@@ -1,7 +1,11 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
-import { getPrepSectionDrillDown, getAllPrepSectionDrillDownIds } from "@/lib/intelligence/v4/debatePrepSectionDrillDowns";
+import {
+  getPrepSectionDrillDown,
+  getAllPrepSectionDrillDownIds,
+  PREP_SECTION_MODULE_FALLBACK_HREF,
+} from "@/lib/intelligence/v4/debatePrepSectionDrillDowns";
 import { V4DebatePrepSectionDrillDownPanel } from "@/components/admin/intelligence/v4/V4DebatePrepSectionDrillDownPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 
@@ -17,7 +21,11 @@ type PageProps = { params: Promise<{ sectionId: string }> };
 export default async function DebatePrepSectionDrillDownPage({ params }: PageProps) {
   const { sectionId } = await params;
   const drill = getPrepSectionDrillDown(sectionId);
-  if (!drill) notFound();
+  if (!drill) {
+    const fallback = PREP_SECTION_MODULE_FALLBACK_HREF[sectionId];
+    if (fallback) redirect(fallback);
+    notFound();
+  }
 
   const v4 = loadDebateIntelligenceV4Packet();
   const section = v4.debatePrepSectionsV4.find((s) => s.id === sectionId);

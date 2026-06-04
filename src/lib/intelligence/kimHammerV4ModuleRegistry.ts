@@ -25,6 +25,8 @@ export type KimHammerV4ModuleEntry = {
   render: KimHammerV4RenderSpec;
   /** Use v4 body outside launch mode (KH-2 / KH-0 debate modules). */
   preferV4?: boolean;
+  /** Routes with a real page.tsx (evidence command, etc.) — never replace with launch stub. */
+  preserveCustomPageInLaunchMode?: boolean;
 };
 
 const STAFF_STUB: KimHammerV4RenderSpec = {
@@ -38,7 +40,7 @@ function entry(
   title: string,
   eyebrow: string,
   render: KimHammerV4RenderSpec,
-  opts?: Partial<Pick<KimHammerV4ModuleEntry, "guideKey" | "profile" | "preferV4">>,
+  opts?: Partial<Pick<KimHammerV4ModuleEntry, "guideKey" | "profile" | "preferV4" | "preserveCustomPageInLaunchMode">>,
 ): KimHammerV4ModuleEntry {
   return {
     moduleId,
@@ -48,6 +50,7 @@ function entry(
     render,
     guideKey: opts?.guideKey,
     preferV4: opts?.preferV4,
+    preserveCustomPageInLaunchMode: opts?.preserveCustomPageInLaunchMode,
   };
 }
 
@@ -197,11 +200,13 @@ export const KIM_HAMMER_V4_MODULES: Record<string, KimHammerV4ModuleEntry> = {
     { type: "markdown", layer: "kh3DeepResearch", sectionLimit: 4 },
     { guideKey: "backgroundDeep", preferV4: true, profile: "full" },
   ),
-  "evidence-command": entry("evidence-command", "Evidence command", "Citation locker", {
-    type: "staff-stub",
-    primaryHref: "/admin/intelligence/kim-hammer/evidence-command",
-    primaryLabel: "Evidence command",
-  }, { guideKey: "evidenceCommand", profile: "hub" }),
+  "evidence-command": entry(
+    "evidence-command",
+    "Evidence command",
+    "Citation locker · export gate",
+    STAFF_STUB,
+    { guideKey: "evidenceCommand", profile: "hub", preserveCustomPageInLaunchMode: true },
+  ),
 };
 
 KIM_HAMMER_V4_MODULES["debate-prep"] = {
@@ -269,6 +274,7 @@ export function getKimHammerV4ModuleEntry(moduleId: string): KimHammerV4ModuleEn
 export function shouldRenderKimHammerV4Module(moduleId: string, launchMode: boolean): boolean {
   const entry = getKimHammerV4ModuleEntry(moduleId);
   if (!entry) return launchMode;
+  if (launchMode && entry.preserveCustomPageInLaunchMode) return false;
   if (launchMode) return true;
   return Boolean(entry.preferV4);
 }

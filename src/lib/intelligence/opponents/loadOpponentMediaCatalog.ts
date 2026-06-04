@@ -1,27 +1,10 @@
-import fs from "node:fs";
-import path from "node:path";
+import "server-only";
+import fs from "fs";
+import path from "path";
+import type { OpponentMediaCatalog, OpponentMediaEntry } from "@/lib/intelligence/opponents/opponentMediaCatalogTypes";
 
-export type OpponentMediaEntry = {
-  id: string;
-  opponentId: "kim-hammer" | "michael-packo" | string;
-  platform: string;
-  title: string;
-  url: string;
-  publisher?: string;
-  publishedAt?: string;
-  topicTags: string[];
-  researchValue: "HIGH" | "MEDIUM" | "LOW";
-  speakerVerification: string;
-  summary: string;
-  sourceType: string;
-};
-
-export type OpponentMediaCatalog = {
-  version: number;
-  generatedAt: string;
-  notes?: string;
-  candidates: OpponentMediaEntry[];
-};
+export type { OpponentMediaCatalog, OpponentMediaEntry } from "@/lib/intelligence/opponents/opponentMediaCatalogTypes";
+export { isYoutubeUrl } from "@/lib/intelligence/opponents/opponentMediaCatalogTypes";
 
 const CATALOG_REL = "data/opposition/opponent-media-catalog.json";
 
@@ -44,8 +27,4 @@ export function listOpponentMedia(
 export function findOpponentMediaById(id: string, catalog?: OpponentMediaCatalog): OpponentMediaEntry | undefined {
   const c = catalog ?? loadOpponentMediaCatalog();
   return c.candidates.find((e) => e.id === id);
-}
-
-export function isYoutubeUrl(url: string): boolean {
-  return /youtube\.com|youtu\.be/i.test(url);
 }
