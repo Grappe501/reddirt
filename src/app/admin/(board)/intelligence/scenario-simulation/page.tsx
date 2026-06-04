@@ -3,7 +3,7 @@ import {
   loadStrategicScenarioRegistry,
   summarizeStrategicScenarioSimulation,
 } from "@/lib/intelligence/strategicScenarioSimulation";
-import { loadDebateIntelligenceV3Packet } from "@/lib/intelligence/v3/debateIntelligenceV3";
+import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { V3ResearchIntro } from "@/components/admin/intelligence/v3/V3ResearchIntro";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import type { StrategicScenarioSimulationResult } from "@/lib/intelligence/types/strategicScenarioSimulation";
@@ -55,15 +55,15 @@ function ScenarioList({ items }: { items: StrategicScenarioSimulationResult[] })
 }
 
 export default async function ScenarioSimulationPage() {
-  const v3 = loadDebateIntelligenceV3Packet();
+  const v4 = loadDebateIntelligenceV4Packet();
   const registry = tryIntelligenceLoad("scenario-registry", () => loadStrategicScenarioRegistry(), {
     scenarios: [],
     generatedAt: new Date().toISOString(),
   } as ReturnType<typeof loadStrategicScenarioRegistry>);
   const summary = tryIntelligenceLoad("scenario-summary", () => summarizeStrategicScenarioSimulation(), {
-    likelyOpponentAttacks: v3.researchLayers.likelyArguments.flatMap((s) => s.bullets).slice(0, 6),
-    debateTrapWarnings: [],
-    whatNotToSay: v3.hub.riskClaims,
+    likelyOpponentAttacks: v4.likelyArguments.map((a) => a.argument).slice(0, 6),
+    debateTrapWarnings: v4.weaknesses.map((w) => w.saferWording ?? w.label).slice(0, 4),
+    whatNotToSay: v4.hub.riskClaims,
     bridgeLineGuidance: [],
     countySensitiveNotes: [],
     evidenceDependencies: [],
@@ -93,9 +93,9 @@ export default async function ScenarioSimulationPage() {
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
       <V3ResearchIntro
-        title="v3 — likely opponent arguments (markdown)"
+        title="v4 — likely opponent arguments"
         description="Use with simulation outputs below. All scenario outputs remain INTERNAL_ONLY."
-        sections={v3.researchLayers.likelyArguments}
+        sections={v4.researchLayers.likelyArguments}
       />
       <header className="mb-6 border-b border-kelly-text/10 pb-4">
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">NSI-14 · Strategic Forecasting</p>

@@ -1,5 +1,5 @@
 import { loadSafeDebateCommandPageData } from "@/lib/intelligence/safeDebateCommandLoads";
-import { loadDebateIntelligenceV3Packet } from "@/lib/intelligence/v3/debateIntelligenceV3";
+import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { V3ResearchIntro } from "@/components/admin/intelligence/v3/V3ResearchIntro";
 import { PrepareLlmEvidencePacketButton } from "@/components/admin/intelligence/PrepareLlmEvidencePacketButton";
 import Link from "next/link";
@@ -17,16 +17,16 @@ function scoreTone(score: number): string {
 }
 
 export default async function DebateCommandCenterPage() {
-  const v3 = loadDebateIntelligenceV3Packet();
+  const v4 = loadDebateIntelligenceV4Packet();
   const { state, briefPack, civicDebate, graphSummary, scenarioPrep, messageIntel, legislativeRollup } =
     loadSafeDebateCommandPageData();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
       <V3ResearchIntro
-        title="v3 research — debate & contrast frames"
-        description="Background from debate profile and contrast-vs-Kelly markdown before readiness scores."
-        sections={[...v3.researchLayers.debateProfile.slice(0, 3), ...v3.researchLayers.contrastVsKelly.slice(0, 2)]}
+        title="v4 research — debate & contrast frames"
+        description="Background from debate profile, contrast-vs-Kelly markdown, and structured rebuttal playbook before readiness scores."
+        sections={[...v4.researchLayers.debateProfile.slice(0, 3), ...v4.researchLayers.contrastVsKelly.slice(0, 2)]}
       />
       <header className="mb-6 border-b border-kelly-text/10 pb-4">
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.24em] text-kelly-subtle">Executive Debate Command Center</p>
