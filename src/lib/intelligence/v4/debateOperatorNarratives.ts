@@ -789,7 +789,15 @@ export const PREP_SECTION_GUIDES: Record<string, OperatorGuide> = {
 };
 
 export function getPrepSectionGuide(sectionId: string): OperatorGuide | undefined {
-  return PREP_SECTION_GUIDES[sectionId];
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports -- lazy break circular import with drill-downs
+    const { getPrepSectionGuideFromDrillDown } = require("@/lib/intelligence/v4/debatePrepSectionDrillDowns") as {
+      getPrepSectionGuideFromDrillDown: (id: string) => OperatorGuide | undefined;
+    };
+    return getPrepSectionGuideFromDrillDown(sectionId) ?? PREP_SECTION_GUIDES[sectionId];
+  } catch {
+    return PREP_SECTION_GUIDES[sectionId];
+  }
 }
 
 export function getSurfaceGuide(key: string): OperatorGuide | undefined {

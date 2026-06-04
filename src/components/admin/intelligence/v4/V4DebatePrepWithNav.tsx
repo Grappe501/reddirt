@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { V3DebatePrepSection } from "@/lib/intelligence/v3/debateIntelligenceV3Types";
-import { getPrepSectionGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { getPrepSectionGuideFromDrillDown } from "@/lib/intelligence/v4/debatePrepSectionDrillDowns";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 
 export function V4DebatePrepWithNav({ sections }: { sections: V3DebatePrepSection[] }) {
@@ -31,7 +32,7 @@ export function V4DebatePrepWithNav({ sections }: { sections: V3DebatePrepSectio
     <div className="flex flex-col gap-6 lg:flex-row">
       <nav className="lg:sticky lg:top-4 lg:h-fit lg:w-56 shrink-0">
         <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">
-          {sections.length} sections
+          {sections.length} sections · full drill-down each
         </p>
         <ul className="max-h-[70vh] space-y-1 overflow-y-auto rounded-xl border border-kelly-text/10 bg-white p-2 text-[10px]">
           {sections.map((section) => (
@@ -44,6 +45,12 @@ export function V4DebatePrepWithNav({ sections }: { sections: V3DebatePrepSectio
               >
                 {section.title.replace(/^\d+\)\s*/, "")}
               </a>
+              <Link
+                href={`/admin/intelligence/kim-hammer/debate-prep/${section.id}`}
+                className="mt-0.5 block px-2 text-[9px] font-bold uppercase text-kelly-navy hover:underline"
+              >
+                Full drill-down →
+              </Link>
             </li>
           ))}
         </ul>
@@ -52,8 +59,18 @@ export function V4DebatePrepWithNav({ sections }: { sections: V3DebatePrepSectio
         <div className="space-y-4">
           {sections.map((section) => (
             <section key={section.id} id={`v4-prep-${section.id}`} className="scroll-mt-24 rounded-xl border border-kelly-text/10 bg-white p-4">
-              <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">{section.title}</h2>
-              {getPrepSectionGuide(section.id) ? <V4OperatorGuide guide={getPrepSectionGuide(section.id)!} /> : null}
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">{section.title}</h2>
+                <Link
+                  href={`/admin/intelligence/kim-hammer/debate-prep/${section.id}`}
+                  className="rounded-lg bg-kelly-navy px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-white hover:bg-kelly-navy/90"
+                >
+                  Open full drill-down
+                </Link>
+              </div>
+              {getPrepSectionGuideFromDrillDown(section.id) ? (
+                <V4OperatorGuide guide={getPrepSectionGuideFromDrillDown(section.id)!} compact />
+              ) : null}
               <p className="mt-2 text-[10px] font-bold uppercase text-kelly-subtle">Research content below</p>
               {section.paragraphs.length > 0 ? (
                 <div className="mt-2 space-y-2 text-xs leading-relaxed text-kelly-muted">
