@@ -16,7 +16,6 @@ import { loadCountyElectionFundingResearch } from "../src/lib/intelligence/v4/co
 import { INTEGRITY_2021_PACKAGE_DEPTH, PETITION_2025_CLUSTER_DEPTH } from "../src/lib/intelligence/v4/integrityPackageDepth";
 import { listCuratedBillPlaybookNumbers } from "../src/lib/intelligence/v4/debateBillOperatorPlaybooks";
 import { KELLY_OFFENSIVE_MOVES } from "../src/lib/intelligence/v4/kellyOffensiveApproachDepth";
-import { getAllTrapLaneIds } from "../src/lib/intelligence/v4/trapLaneDrillDowns";
 
 const APP_ROOT = path.join(process.cwd(), "src/app/admin/(board)/intelligence");
 
