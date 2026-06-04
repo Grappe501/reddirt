@@ -13,8 +13,10 @@ import { buildBillActProofDeep, listAllBillNumbersFromIndex, resolveArklegBillUr
 import { buildSosQuestionResponseRounds } from "../src/lib/intelligence/v4/debateResponseRoundEnrichment";
 import { buildTrapLaneStepCoverage } from "../src/lib/intelligence/v4/trapLaneStepCoverage";
 import { loadCountyElectionFundingResearch } from "../src/lib/intelligence/v4/countyElectionFundingIntelligence";
-import { loadSupremeWorkbenchPacket } from "../src/lib/intelligence/v4/supremeWorkbench";
-import { KELLY_DILIGENCE_SEARCH_CHECKLIST } from "../src/lib/intelligence/v4/kellyCourtDiligenceLog";
+import { INTEGRITY_2021_PACKAGE_DEPTH, PETITION_2025_CLUSTER_DEPTH } from "../src/lib/intelligence/v4/integrityPackageDepth";
+import { listCuratedBillPlaybookNumbers } from "../src/lib/intelligence/v4/debateBillOperatorPlaybooks";
+import { KELLY_OFFENSIVE_MOVES } from "../src/lib/intelligence/v4/kellyOffensiveApproachDepth";
+import { getAllTrapLaneIds } from "../src/lib/intelligence/v4/trapLaneDrillDowns";
 
 const APP_ROOT = path.join(process.cwd(), "src/app/admin/(board)/intelligence");
 
@@ -94,15 +96,14 @@ assert.ok(report.overallCompletionPct >= 60, "overall completion should be >= 60
 assert.ok(report.phases.length >= 5, "phase plan");
 assertRouteExists("/admin/intelligence/build-progress");
 assertRouteExists("/admin/intelligence/supreme-workbench");
+assertRouteExists("/admin/intelligence/opposition-strategy");
 
-// --- Supreme workbench v6 ---
-const supreme = loadSupremeWorkbenchPacket();
-assert.ok(supreme.overallReadiness >= 50 && supreme.overallReadiness <= 100, "overall readiness range");
-assert.ok(supreme.dimensions.length >= 8, "live readiness dimensions");
-assert.ok(supreme.operatorSequences.length >= 4, "operator sequences");
-assert.ok(supreme.oppositionLanes.length === 6, "six trap lanes");
-assert.ok(supreme.priorityActions.length >= 3, "priority actions");
-assert.equal(KELLY_DILIGENCE_SEARCH_CHECKLIST.length, 5, "diligence checklist entries");
+// --- v6.2 opposition strategy (static modules — no server-only loaders in audit) ---
+assert.equal(INTEGRITY_2021_PACKAGE_DEPTH.billAnchors.length, 6, "2021 package bills");
+assert.equal(PETITION_2025_CLUSTER_DEPTH.billAnchors.length, 5, "2025 petition cluster");
+assert.equal(KELLY_OFFENSIVE_MOVES.length, 6, "offensive moves");
+assert.equal(getAllTrapLaneIds().length, 6, "trap lane ids");
+assert.ok(listCuratedBillPlaybookNumbers().length >= 11, "11+ curated bill playbooks");
 
 // --- Core routes ---
 for (const route of [
@@ -130,4 +131,4 @@ console.log(`  trap lanes: ${trapIds.length}`);
 console.log(`  SOS questions: ${qIds.length}`);
 console.log(`  bills with Arkleg: ${actProofOk}/${billNumbers.length}`);
 console.log(`  overall completion: ${report.overallCompletionPct}%`);
-console.log(`  supreme workbench readiness: ${supreme.overallReadiness}%`);
+console.log(`  curated bill playbooks: ${listCuratedBillPlaybookNumbers().length}`);

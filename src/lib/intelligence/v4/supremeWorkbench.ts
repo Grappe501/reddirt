@@ -24,6 +24,11 @@ const OPERATOR_SEQUENCES: SupremeWorkbenchOperatorSequence[] = [
     estimatedMinutes: 90,
     steps: [
       {
+        label: "Opposition strategy layer (v6.2)",
+        href: "/admin/intelligence/opposition-strategy",
+        why: "2021 package + 2025 petition cluster + trap lane offense map before deep drills.",
+      },
+      {
         label: "Supreme workbench orientation",
         href: "/admin/intelligence/supreme-workbench",
         why: "Read overall readiness + fix lowest dimension before deep drills.",
@@ -197,7 +202,7 @@ export function loadSupremeWorkbenchPacket(): SupremeWorkbenchPacket {
   const offensiveSummary = KELLY_OFFENSIVE_MOVES.slice(0, 3).map((m) => m.name).join(" · ");
 
   return {
-    version: "6.0-supreme-workbench",
+    version: "6.2-supreme-workbench",
     generatedAt: new Date().toISOString(),
     overallReadiness: overall,
     buildProgressPct: build.overallCompletionPct,

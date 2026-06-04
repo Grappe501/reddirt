@@ -1,6 +1,56 @@
 import type { V3BillNarrative } from "@/lib/intelligence/v3/debateIntelligenceV3Types";
 import type { BillOperatorPlaybook, PlaybookStep, TrapSetup } from "@/lib/intelligence/v4/debateOperatorPlaybookTypes";
 
+function mkIntegrity2021Curated(
+  billNumber: string,
+  actNumber: string,
+  headline: string,
+  what: string,
+  countyImpact: string,
+  bait: string,
+  question: string,
+  pivot: string,
+): Omit<BillOperatorPlaybook, "billNumber" | "isCurated"> {
+  return {
+    actNumber,
+    headline,
+    recordItemLabel: `${billNumber} → Act ${actNumber}`,
+    steps: [
+      { step: 1, dimension: "WHAT", detail: what },
+      { step: 2, dimension: "WHEN", detail: `When Hammer cites 2021 six-bill package or Act ${actNumber}.` },
+      { step: 3, dimension: "WHERE", detail: "Debate, county forums, editorial boards — verify act text before cite." },
+      { step: 4, dimension: "WHY", detail: countyImpact },
+      { step: 5, dimension: "HOW", detail: `Act ${actNumber} anchor → county burden → SOS service bridge.` },
+      { step: 6, dimension: "WHO", detail: "County clerks and voters — not opponent motives." },
+    ],
+    debateUse: {
+      bringUpWhen: `Hammer bundles 2021 package without naming Act ${actNumber} implementation.`,
+      openingLine: `Act ${actNumber} from ${billNumber} changed rules for counties — did clerks get training and funding?`,
+      actAnchor: `${billNumber} became Act ${actNumber} in the 2021 session — verify on Arkleg.`,
+      countyOrVoterImpact: countyImpact,
+      kellyBridge: "SOS publishes rules and partners with clerks — security and accessibility together.",
+      rebuttalIfHeCounters: "Welcome security goal; ask for funding line tied to this act.",
+      doNotSay: ["Stolen election framing", "Fraud without sourced proof"],
+    },
+    socialMediaUse: {
+      platforms: ["Facebook", "X"],
+      postFormat: `${billNumber} / Act ${actNumber} + county impact + Arkleg link.`,
+      threadOutline: ["2021 package continuity", `${billNumber} link`, "County burden", "Kelly SOS frame"],
+      graphicCaption: `Act ${actNumber}: who implements?`,
+      claimsGateReminder: "Verify enrolled act before boost.",
+    },
+    peopleImpactFrame: countyImpact,
+    trapSetup: {
+      name: "2021 package virtue",
+      baitLineYouWantFromOpponent: bait,
+      moderatorOrKellySetupQuestion: question,
+      kellyPivotWhenHeBites: pivot,
+      whyItWorks: "Forces cumulative record defense — Kelly wins on service frame.",
+    },
+    kellyDifference: `Kelly offers implementation partnership; Hammer authored Act ${actNumber}.`,
+  };
+}
+
 /** Curated anchor bills — full step-by-step playbooks (verify acts before public use). */
 const CURATED: Record<string, Omit<BillOperatorPlaybook, "billNumber" | "isCurated">> = {
   SB250: {
@@ -291,6 +341,46 @@ const CURATED: Record<string, Omit<BillOperatorPlaybook, "billNumber" | "isCurat
     },
     kellyDifference: "Kelly coordinates statewide voter notice; Hammer authored Act 729 — contrast implementation support.",
   },
+  SB488: mkIntegrity2021Curated(
+    "SB488",
+    "727",
+    "Voted ballot records / FOIA (Act 727)",
+    "2021 bill creating FOIA exemption for voted ballots and amending ballot public-records access (Act 727).",
+    "Clerks navigate narrowed public inspection rules — transparency rhetoric splits from voter access.",
+    "‘We protected ballot integrity by limiting fishing expeditions.’",
+    "Under Act 727, what can a county voter still inspect without a formal complaint?",
+    "Transparency means rules voters can read — not opacity for clerks fielding confusion.",
+  ),
+  SB582: mkIntegrity2021Curated(
+    "SB582",
+    "1051",
+    "County election board governance (Act 1051)",
+    "2021 bill modifying county election board governance and related procedures (Act 1051).",
+    "Election board procedure changes — another training cycle for county officials.",
+    "‘We fixed how election boards work.’",
+    "Which county election commissioners got state training dollars when Act 1051 took effect?",
+    "Governance changes land on volunteers and clerks — SOS should publish one statewide playbook.",
+  ),
+  SB643: mkIntegrity2021Curated(
+    "SB643",
+    "973",
+    "Absentee ballot handling (Act 973)",
+    "2021 bill tightening absentee ballot handling procedures (Act 973).",
+    "Absentee workflow changes — clerks reprogram processes before the next election.",
+    "‘We secured absentee ballots.’",
+    "What did Act 973 change for your county clerk's absentee team in the first cycle?",
+    "Security and access together — clerks need lead time, not Friday-afternoon surprises.",
+  ),
+  SB644: mkIntegrity2021Curated(
+    "SB644",
+    "974",
+    "Election-law complaint hotline (Act 974)",
+    "2021 bill establishing election-law complaint hotline and related compliance duties (Act 974).",
+    "New hotline-driven complaints — counties absorb compliance volume.",
+    "‘We gave voters a hotline for election problems.’",
+    "Who staffs the hotline follow-through for county clerks under Act 974?",
+    "Hotlines without county support become unfunded mandates — SOS coordinates response.",
+  ),
 };
 
 function defaultTrap(narrative: V3BillNarrative): TrapSetup | null {

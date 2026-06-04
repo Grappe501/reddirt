@@ -17,7 +17,7 @@ export default function IntelligenceBuildProgressPage() {
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
       <V4PageHeader
-        eyebrow="Master build tracker · v6 supreme workbench"
+        eyebrow="Master build tracker · v6.2 opposition strategy"
         title="Intelligence stack progress"
         description={`Overall completion ${report.overallCompletionPct}% · ${report.version} · generated ${new Date(report.generatedAt).toLocaleString()}`}
       >

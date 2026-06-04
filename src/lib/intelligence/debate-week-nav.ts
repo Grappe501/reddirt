@@ -6,6 +6,7 @@ import { DEBATE_WORKFLOW_STEPS } from "@/lib/intelligence/v4/debateOperatorNarra
 export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence",
   "/admin/intelligence/supreme-workbench",
+  "/admin/intelligence/opposition-strategy",
   "/admin/intelligence/command-center",
   "/admin/intelligence/debate-command",
   "/admin/intelligence/kim-hammer",
@@ -51,6 +52,12 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     badgeKey: "opposition",
     description:
       "Live readiness + debate-day sequences — county clerk week starts here, then 7-day path.",
+  },
+  {
+    href: "/admin/intelligence/opposition-strategy",
+    label: "Opposition strategy",
+    description:
+      "v6.2 offense layer: 2021 package continuity, CVSGF trap, six offensive moves — pair with election funding day.",
   },
   {
     href: "/admin/intelligence/county-clerk-week",
@@ -133,6 +140,12 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     badgeKey: "opposition",
     description:
       "Unified command surface: live readiness from all modules, debate-day operator sequences (T-24h → spin room), trap lanes, priority actions, and build gaps — open first on debate day.",
+  },
+  {
+    href: "/admin/intelligence/opposition-strategy",
+    label: "Opposition strategy",
+    description:
+      "v6.2 offense layer: 2021 integrity package, 2025 petition cluster, six trap lanes, six offensive moves, cross-exam starters, and debate-day offense sequence.",
   },
   {
     href: "/admin/intelligence",

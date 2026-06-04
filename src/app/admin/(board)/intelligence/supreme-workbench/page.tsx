@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { loadSupremeWorkbenchPacket } from "@/lib/intelligence/v4/supremeWorkbench";
-import { KELLY_DILIGENCE_SEARCH_CHECKLIST, KELLY_DILIGENCE_COUNSEL_FRAME, diligenceCompletionPct } from "@/lib/intelligence/v4/kellyCourtDiligenceLog";
+import { KELLY_DILIGENCE_COUNSEL_FRAME, loadKellyCourtDiligenceLog, diligenceCompletionPct } from "@/lib/intelligence/v4/kellyCourtDiligenceLog";
 import { V4SupremeWorkbenchPanel } from "@/components/admin/intelligence/v4/V4SupremeWorkbenchPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
@@ -12,6 +12,7 @@ export default function SupremeWorkbenchPage() {
   const packet = loadSupremeWorkbenchPacket();
   const clerkWeek = isCountyClerkPrimaryAudience();
   const diligencePct = diligenceCompletionPct();
+  const diligenceLog = loadKellyCourtDiligenceLog();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -41,7 +42,7 @@ export default function SupremeWorkbenchPage() {
         <h2 className="text-sm font-bold uppercase text-amber-950">
           Kelly court/financial diligence log ({diligencePct}% searched)
         </h2>
-        <p className="mt-2 text-kelly-muted">{KELLY_DILIGENCE_COUNSEL_FRAME}</p>
+        <p className="mt-2 text-kelly-muted">{diligenceLog.counselFrame || KELLY_DILIGENCE_COUNSEL_FRAME}</p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
@@ -53,7 +54,7 @@ export default function SupremeWorkbenchPage() {
               </tr>
             </thead>
             <tbody>
-              {KELLY_DILIGENCE_SEARCH_CHECKLIST.map((entry) => (
+              {diligenceLog.entries.map((entry) => (
                 <tr key={entry.id} className="border-b border-kelly-text/5">
                   <td className="py-2 pr-3 font-semibold text-kelly-navy">{entry.source}</td>
                   <td className="py-2 pr-3 text-kelly-muted">{entry.searchQuery}</td>
