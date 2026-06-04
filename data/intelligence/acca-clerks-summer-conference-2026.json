@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-04T19:00:00.000Z",
+  "eventId": "acca-summer-conference-2026-mountain-view",
+  "title": "Arkansas County Clerks' Continuing Education Conference",
+  "theme": "Honoring the Past. Serving the Present. Shaping the Future. — RED, WHITE & BLUE",
+  "dates": {
+    "optionalArrival": "2026-06-09",
+    "start": "2026-06-10",
+    "end": "2026-06-12"
+  },
+  "venue": {
+    "name": "Ozark Mountain Folk Center",
+    "address": "1032 Park Ave, Mountain View, AR 72560",
+    "phone": "(870) 269-3851"
+  },
+  "coordinator": {
+    "name": "Michael Roys",
+    "title": "AAC Continuing Education Coordinator",
+    "organization": "Association of Arkansas Counties",
+    "officePhone": "501-372-7550",
+    "mobile": "479-567-1269",
+    "email": "mroys@arcounties.org",
+    "officeAddress": "1415 West 3rd Street, Little Rock, AR 72201"
+  },
+  "associationPresident": {
+    "name": "Margaret Darter",
+    "title": "Faulkner County Clerk & ACCA President"
+  },
+  "reimbursement": {
+    "approver": "Continuing Education Board",
+    "payer": "County Clerks Continuing Education Fund (Auditor of State)",
+    "contact": {
+      "name": "Julia Burrier",
+      "email": "julia.burrier@auditor.ar.gov",
+      "fax": "501-371-2143"
+    },
+    "mileageRatePerMile": 0.52,
+    "mileageNote": "One vehicle per county",
+    "roomRatePerNight": 110,
+    "roomTaxNote": "Plus taxes; one room per county Wed–Thu; Tue board members only TBP by ACCA funds",
+    "wednesdayDinnerReimburseMax": 25,
+    "wednesdayDinnerNote": "Detailed receipt required; dinner on your own",
+    "nonReimbursable": [
+      "Thursday association luncheon",
+      "Thursday association dinner & entertainment",
+      "Thursday breakfast (direct billed)",
+      "Friday breakfast (direct billed)"
+    ]
+  },
+  "sosCandidatesPanel": {
+    "sessionTitle": "Secretary of State Candidates Moderated Panel Q & A",
+    "date": "2026-06-11",
+    "dayOfWeek": "Thursday",
+    "startTime": "13:00",
+    "endTime": "15:00",
+    "durationMinutes": 120,
+    "timezone": "America/Chicago",
+    "format": "Moderated panel — three candidates; not a televised debate",
+    "candidates": [
+      { "name": "Kim Hammer", "party": "R", "email": "kimdavidhammer@gmail.com" },
+      { "name": "Kelly Grappe", "party": "D", "email": "kelly@kellygrappe.com", "website": "KellyGrappe.com" },
+      { "name": "Dr. Michael Pakko", "party": "L", "email": "info@pakko4ar.com" }
+    ],
+    "presenterArrivalNote": "Arrive 15–20 minutes before session for A/V test; email presentation to Michael Roys in advance or USB; avoid MacBook unless pre-arranged",
+    "followsSessions": [
+      "9:15–10:15 Hiring, Firing, Evaluations & Policy (Mallory McInvale, AAC Legal)",
+      "10:15–11:30 Sandra Cawyer EQ Board Update",
+      "11:30–1:00 Association Luncheon"
+    ],
+    "precedesBreak": "3:00–3:15pm — visit Exhibitors & Sponsors"
+  },
+  "agendaHighlights": [
+    {
+      "date": "2026-06-10",
+      "sessions": [
+        "1:15–2:45 Building Ballots — Shelby Johnson",
+        "3:00–3:30 ACRB Minimum Standards, MFA & Passwords — Mainstream Technologies",
+        "3:30–4:30 Breakout by county size"
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "sessions": [
+        "9:15–10:15 Hiring/Firing/Evaluations — Mallory McInvale",
+        "10:15–11:30 EQ Board Update — Sandra Cawyer",
+        "13:00–15:00 SOS Candidates Panel",
+        "18:00 Association Dinner & Life Musical Entertainment"
+      ]
+    },
+    {
+      "date": "2026-06-12",
+      "sessions": ["9:15–10:15 ACCA Legislative Package Discussion", "11:15–11:30 Association Business"]
+    }
+  ],
+  "sponsors": {
+    "platinum": ["Election Systems & Software (ES&S)"],
+    "gold": ["Kofile", "Absolute Solutions Election Systems & Software", "Center for Tech & Civic Life (CTCL)"],
+    "silver": ["JTS", "Apprentice Information Systems Financial Intelligence"],
+    "exhibitors": [
+      "EFS Technologies",
+      "Election Security Exchange",
+      "DivcoData",
+      "Arkansas Secretary of State",
+      "Cole Jester",
+      "Printelect",
+      "Mainstream Technologies",
+      "Commissioner of State Lands",
+      "DataScout, LLC",
+      "Jim Harris & Associates"
+    ]
+  },
+  "futureConferences": [
+    { "dates": "September 9-11, 2026", "location": "Benton Events Center, Benton, AR" },
+    { "dates": "February 10-12, 2027", "location": "Wyndham Riverfront, North Little Rock, AR" },
+    { "dates": "June 9-11, 2027", "location": "Hotel Hot Springs, Hot Springs, AR" },
+    { "dates": "September 8-10, 2027", "location": "Mt. Magazine State Park & Lodge, Paris, AR" }
+  ],
+  "kellyPrepPriorityHrefs": [
+    "/admin/intelligence/county-clerk-week/acca-summer-conference",
+    "/admin/intelligence/election-funding/county-ledger-gap",
+    "/admin/intelligence/election-funding/debate-funding",
+    "/admin/intelligence/trap-lanes/county-champion",
+    "/admin/intelligence/kelly-debate-coaching",
+    "/admin/intelligence/debate-depth/three-way"
+  ]
+}

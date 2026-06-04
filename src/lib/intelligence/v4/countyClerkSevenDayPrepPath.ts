@@ -301,12 +301,31 @@ export const COUNTY_CLERK_SEVEN_DAY_PATH: PrepDayPlan[] = [
   },
   {
     day: 6,
-    title: "County clerks week — live execution",
-    subtitle: "Primary audience events",
+    title: "ACCA Mountain View — SOS candidates panel",
+    subtitle: "Thu Jun 11 · 1:00–3:00pm · Ozark Folk Center",
     goalForKelly:
-      "Execute clerk-first meetings: listen 40%, offer SOS service plan 40%, contrast only when asked 20%.",
-    hammerTrapWeWant: "If Hammer present, use trap questions; if not, do not mention him unprompted.",
+      "Execute clerk-first panel with Hammer and Pakko: listen 40%, SOS service plan 40%, contrast only when asked 20%. Arrive 12:40pm for A/V.",
+    hammerTrapWeWant:
+      "Hammer says 'I stand with clerks' in front of ACCA — use county ledger / training-dollar questions calmly.",
     kellyReads: [
+      {
+        id: "d6-acca",
+        href: "/admin/intelligence/county-clerk-week/acca-summer-conference",
+        label: "ACCA Summer Conference — full panel prep",
+        minutes: 45,
+        whatToExtract: "13 sections: panel format, three-way geometry, CVSGF for clerks, ES&S room awareness, staff checklist",
+        positioningForClerks: "Partnership audition — not cable debate. Thank Margaret Darter; match ACCA professional tone.",
+        kellySuperiorityAngle: "Kelly sounds like future SOS administrator; Hammer sounds like senator.",
+      },
+      {
+        id: "d6-panel-format",
+        href: "/admin/intelligence/county-clerk-week/acca-summer-conference/panel-format",
+        label: "Two-hour moderated panel — rules of engagement",
+        minutes: 15,
+        whatToExtract: "120 min Q&A ratio, 60–90s answers, exhibitor break after",
+        positioningForClerks: "Leave air for clerk questions — do not filibuster.",
+        kellySuperiorityAngle: "Kelly disciplined time; opponents perform.",
+      },
       {
         id: "d6-pocket",
         href: "/admin/intelligence/county-clerk-week",
@@ -336,13 +355,18 @@ export const COUNTY_CLERK_SEVEN_DAY_PATH: PrepDayPlan[] = [
       },
     ],
     staffOnly: [
+      "Kelly at Ozark Folk Center by 12:40pm Thu Jun 11 — Michael Roys 479-567-1269",
       "Capture clerk quotes (permission) for institutional memory",
-      "Log follow-up tasks in action queue",
-      "Track Hammer/Packo presence per event",
+      "Log Hammer/Pakko panel claims for claims gate",
+      "Visit exhibitor break 3:00–3:15 if schedule allows",
     ],
-    rehearsalOutLoud: ["Opening 90s clerk-first; closing pledge with hotline mock"],
-    afterTheDay: "Thank-you notes to hosts within 24h; staff posts only verified lines",
-    successCheck: "At least three clerk follow-ups scheduled; zero NEEDS_RESEARCH lines spoken publicly",
+    rehearsalOutLoud: [
+      "Opening 90s clerk-first (no opponent names)",
+      "90s CVSGF fair public line + ledger trap question",
+      "Pakko respect line + administrator close",
+    ],
+    afterTheDay: "Thank Michael Roys & Margaret Darter within 24h; staff posts only verified lines",
+    successCheck: "At least three clerk follow-ups scheduled; zero NEEDS_RESEARCH lines spoken in panel",
   },
   {
     day: 7,

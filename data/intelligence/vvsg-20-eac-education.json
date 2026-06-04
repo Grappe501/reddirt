@@ -1,0 +1,200 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-04T22:00:00.000Z",
+  "governance": {
+    "classification": "INTERNAL_EDUCATION",
+    "publicationSafety": "National EAC/BPC facts are VERIFIED from source PDF. Arkansas procurement details cite SBEC manual — verify current vendor list before stage cite.",
+    "sourceDocument": {
+      "title": "The Road to Widespread Deployment of Next Generation VVSG 2.0-Certified Voting Systems",
+      "publisher": "U.S. Election Assistance Commission (EAC)",
+      "contributors": "William T. Adler and Theo Menon, Bipartisan Policy Center",
+      "published": "May 2026",
+      "url": "https://www.eac.gov/sites/default/files/2026-05/The_Road_to_Widespread_Deployment_of_VVSG_2.0-Certified_Voting_Systems_508_FINAL.pdf"
+    }
+  },
+  "executiveSummaryForKelly": "VVSG 2.0 is the toughest federal voting-system standard yet — adopted in 2021, but only two systems were federally certified by late 2025 because certification and deployment take years, not months. Nationwide, equipment is aging (average ~9.3 years by 2028 if unchanged), replacements will cost billions, and episodic HAVA money is the main barrier. As Arkansas SOS, Kelly's job is not to pick fights about machines on stage — it is to partner with counties on funding clarity, training lead time, and transparent modernization plans while Hammer cites 'integrity' without implementation detail.",
+  "whatIsVvsg20": {
+    "headline": "Voluntary Voting System Guidelines 2.0 — the federal benchmark",
+    "plainEnglish": "HAVA created the EAC and the Voluntary Voting System Guidelines (VVSG). VVSG 2.0 (adopted February 2021) raises the bar on cybersecurity, accessibility, auditability, ballot secrecy, and interoperability. States choose whether and how to require it — but manufacturers design to it and federal certification shapes what counties can buy.",
+    "votingSystemFunctions": [
+      "Define elections and ballot styles",
+      "Configure and validate equipment",
+      "Logic and accuracy testing",
+      "Activate ballots for voters",
+      "Record and count votes",
+      "Generate reports and audit records",
+      "Archive and export election data"
+    ],
+    "vvsg20ImprovementsOver10": [
+      "Enhanced cyber and physical security",
+      "Stronger accessibility for voters with disabilities",
+      "Better auditability and common data formats",
+      "Improved ballot secrecy and interoperability"
+    ],
+    "evidenceTier": "VERIFIED_FACT"
+  },
+  "certificationPipeline": {
+    "headline": "From federal standard to county polling place — years, not weeks",
+    "steps": [
+      {
+        "phase": "1. Manufacturer development",
+        "detail": "After VVSG 2.0 adoption, vendors adapt or rebuild platforms. Large vendors balance new certification with supporting existing customers — timelines vary by manufacturer.",
+        "timelineNote": "First VSTL accredited for 2.0 testing: December 2022. First application submitted: February 2023."
+      },
+      {
+        "phase": "2. VSTL testing & EAC federal certification",
+        "detail": "Voting System Test Laboratories run ~1,200 requirements (6,000–8,000 individual tests). Manufacturers typically pay labs ~$1M per new system campaign. EAC issues Certificate of Conformance after trusted-build review.",
+        "timelineNote": "First VVSG 2.0 certification: Hart Verity Vanguard 1.0 — July 2025 (~4 years after adoption). Second: Smartmatic VSR1 2.1 — November 2025."
+      },
+      {
+        "phase": "3. State certification",
+        "detail": "Nearly every state has its own process — may add in-state testing, public hearings, fees, bonds. Can add months to a year after federal certification.",
+        "arkansasNote": "Arkansas: SBEC examines systems and reports to SOS; SOS selects vendor/equipment; county quorum courts accept resolution. Requires HAVA-compliant systems tested by federally accredited labs. Verify A.C.A. §§ 7-5-504, 7-5-606 before stage cite."
+      },
+      {
+        "phase": "4. Procurement & funding",
+        "detail": "Who pays varies — some states pay all (Georgia), some split (Maryland 50/50), many counties bear much of the cost. Episodic federal HAVA bursts drive replacement waves; sustained funding enables lifecycle planning.",
+        "arkansasNote": "Arkansas: SOS serves as official purchaser and vendor liaison; CVSGF + HAVA appropriations flow through SOS; grant guidelines under A.C.A. § 7-5-301(d)(2)."
+      },
+      {
+        "phase": "5. Training & deployment",
+        "detail": "Poll workers, clerks, and voters all need lead time. EAC officials warn against deploying new systems without training and voter education — especially in smaller counties with scarce staff.",
+        "kellySosMove": "Publish statewide training calendar, clerk hotline, and phased rollout standards before mandating new procedures."
+      }
+    ],
+    "federallyCertifiedAsOfReport": [
+      { "vendor": "Hart InterCivic", "system": "Verity Vanguard 1.0", "certified": "July 2025" },
+      { "vendor": "Smartmatic", "system": "VSR1 2.1", "certified": "November 2025" }
+    ],
+    "inPipeline": ["VotingWorks", "Liberty Vote USA", "Hart InterCivic", "ES&S", "Unisyn Voting Solutions"],
+    "industryDeploymentEstimate": "ACET (manufacturer trade group): several systems certified by ~2027; 'full scale nationwide deployment' beginning ~2029",
+    "evidenceTier": "VERIFIED_FACT"
+  },
+  "nationalInventoryFacts": {
+    "headline": "America's voting equipment is aging — replacement is coming",
+    "facts": [
+      "By 2028 presidential election, average equipment age ~9.3 years if not replaced — near historical peak (10.3 years in 2018).",
+      "Historically, jurisdictions replace equipment after ~9.7 years on average.",
+      "Some DREs in use will average ~18 years old by 2028; some machines nearly 30 years old.",
+      "Post-HAVA 2002 ($3.65B) and 2018–2020 security grants spurred upgrades; acquisitions slowed since ~2022 as jurisdictions waited for VVSG 2.0 systems.",
+      "Forecast: ~16% of inventory replaced by 2028, ~37% by 2030, ~54% by 2032 — not all replacements will be VVSG 2.0-certified unless funding and supply align."
+    ],
+    "topReplacementMotivators": [
+      "Aging hardware — parts scarce, maintenance costly (officials cite battery backups, scanner jams)",
+      "Voter confidence — newer systems help credibility when explained honestly",
+      "Security, accessibility, auditability upgrades in VVSG 2.0",
+      "State certification laws requiring latest standards"
+    ],
+    "topBarriers": [
+      "Cost — VVSG 2.0 systems estimated 20–50% more than prior generation",
+      "Episodic, unpredictable federal HAVA funding",
+      "Lengthy state certification processes",
+      "State laws referencing outdated VVSG versions",
+      "Small manufacturer pool (only two certified at publication)",
+      "Complex public procurement and litigation risk"
+    ],
+    "evidenceTier": "VERIFIED_FACT"
+  },
+  "nationalCostEstimate": {
+    "headline": "Nationwide wholesale VVSG 2.0 replacement ≈ $2.71 billion (2028 scenario)",
+    "total": 2710000000,
+    "caveats": [
+      "Equipment only — not election management systems, e-pollbooks, licensing, training, or voter education.",
+      "Assumes simultaneous 2028 replacement — real world will be phased over years.",
+      "Per-unit projections: BMD ~$5,598; hand-fed scanner ~$7,517; batch-fed scanner ~$107,388 (2028 dollars, per EAC/ACET/CBO modeling).",
+      "Does not include ongoing manufacturer support fees that may match or exceed purchase price over system life."
+    ],
+    "eacFundingRecommendation": "Congress should consider sustained, predictable federal investment — not episodic bursts — so states and counties can plan replacements on equipment life cycles.",
+    "evidenceTier": "VERIFIED_FACT"
+  },
+  "arkansasConnection": {
+    "headline": "What this means for Arkansas — SOS as equipment partner, not spectator",
+    "processSummary": "SBEC examines and approves eligible systems; SOS selects vendor(s) and serves as official purchaser and county liaison; each county quorum court accepts equipment by resolution. ES&S is the documented state vendor in SBEC Election Coordinator Manual — verify current contract before citing.",
+    "statutoryHooks": [
+      "A.C.A. § 7-5-301 — SOS grant guidelines for county voting system fund",
+      "A.C.A. § 7-5-504 / § 7-5-606 — SBEC examination, SOS selection, county acceptance",
+      "A.C.A. § 19-5-1247 — UCC fees to County Voting System Grant Fund"
+    ],
+    "kellyOpportunity": [
+      "Publish a statewide equipment lifecycle dashboard — which counties are on oldest inventory, what replacement is planned, what CVSGF/HAVA dollars are committed.",
+      "Align CVSGF grant guidelines with certification lead times — no county should get new mandates without training dollars and SOS hotline support.",
+      "Coordinate SBEC + SOS + clerks on VVSG 2.0 transition planning before the next procurement cycle — Arkansas should not be last because funding was opaque.",
+      "Treat modernization as service: clerks implement; SOS funds clarity, training, and vendor liaison."
+    ],
+    "sources": [
+      {
+        "label": "SBEC 2026 Election Coordinator Manual",
+        "url": "https://sbec.arkansas.gov/wp-content/uploads/2026-Election-Coordinator-Manual.pdf"
+      },
+      {
+        "label": "EAC — Overview of Testing and Certification (Arkansas profile)",
+        "url": "https://www.eac.gov/sites/default/files/2025-07/Overview_of_Testing_and_Certification_In_The_United_States_508.pdf"
+      }
+    ],
+    "evidenceTier": "VERIFIED_PARTIAL"
+  },
+  "whatKellyShouldKnow": [
+    "VVSG 2.0 is real and rigorous — but 'certified' does not mean 'deployed tomorrow.' Federal cert took ~4 years for the first system; state cert and procurement add more.",
+    "Integrity slogans without a county equipment plan are empty — EAC confirms funding and training are the binding constraints nationwide.",
+    "Arkansas SOS already controls grant guidelines, vendor liaison, and purchaser role — Kelly can lead on transparency without attacking clerks or inventing fraud.",
+    "Hammer may cite '#1 in nation' — Kelly responds with lifecycle, funding ledger, and clerk partnership (see election-funding module), not partisan machine conspiracy.",
+    "Do not quote Arkansas-specific equipment ages unless staff verifies EAVS/state data — use national EAC facts + ask what Arkansas's county plan is.",
+    "ES&S is in the VVSG 2.0 pipeline — modernization may touch the current vendor; frame as phased upgrade with county input, not vendor witch hunt.",
+    "VVSG 2.0 systems cost more — county grants must reflect 20–50% premium and multi-year licensing, not just device sticker price."
+  ],
+  "debateAndTrailTalkingPoints": {
+    "kellyFrame": "Election integrity includes modern, accessible, auditable equipment — deployed with county training and funding clarity, not surprise mandates from Little Rock.",
+    "fairPublicLine": "The federal Election Assistance Commission says voting equipment nationwide is aging and replacing it with next-generation certified systems takes years, sustained funding, and real clerk training — Arkansas deserves a Secretary of State who publishes that plan county by county.",
+    "hammerLikelyFrame": "I secured election integrity / Arkansas is number one / I wrote the laws.",
+    "kellyResponseIfHammerCitesRanking": "Ranking is not a replacement plan. The EAC reports average equipment nearing end of life and that upgrades take years after certification — show me the county-by-county funding and training timeline, not a slogan.",
+    "kellyResponseIfModeratorAsksVvsg": "VVSG 2.0 is the strongest federal standard yet. My job as SOS is to make sure counties have lead time, grant dollars, and training before any upgrade — security and accessibility fail when clerks get new rules Friday afternoon.",
+    "trapQuestionForHammer": "Senator, the EAC says widespread VVSG 2.0 deployment depends on sustained funding and multi-year certification — which Arkansas counties have a published replacement schedule and training budget tied to your integrity bills?",
+    "doNotSay": [
+      "Arkansas machines are all obsolete (without state-sourced inventory data)",
+      "Hammer picked the wrong vendor (without sourced procurement record)",
+      "Federal government must pay for everything",
+      "VVSG 2.0 will be in every county next year",
+      "DRE conspiracy or stolen-election framing"
+    ]
+  },
+  "questionsForSosStaff": [
+    "What voting system models are deployed in each county today, and what year were they fielded?",
+    "When did Arkansas last certify new equipment through SBEC, and under which VVSG version?",
+    "Does Arkansas law reference VVSG 1.0 only — does legislation need updating for 2.0 systems?",
+    "What is the CVSGF plan if VVSG 2.0 systems cost 20–50% more per device?",
+    "What training budget and timeline does SOS require before counties deploy new tabulators or BMDs?",
+    "Is ES&S pursuing VVSG 2.0 federal certification — what is the state transition roadmap?"
+  ],
+  "verifiedClaimsForLedger": [
+    {
+      "claimText": "The EAC adopted VVSG 2.0 in February 2021 — the most rigorous federal voting system guidelines to date.",
+      "classification": "VERIFIED",
+      "sourceHint": "EAC May 2026 VVSG 2.0 deployment report"
+    },
+    {
+      "claimText": "As of the EAC report, two systems were federally certified to VVSG 2.0: Hart Verity Vanguard 1.0 (July 2025) and Smartmatic VSR1 2.1 (November 2025).",
+      "classification": "VERIFIED",
+      "sourceHint": "EAC May 2026 report"
+    },
+    {
+      "claimText": "Nationwide, average voting equipment age would reach about 9.3 years by the 2028 presidential election if not replaced.",
+      "classification": "VERIFIED",
+      "sourceHint": "EAC / Verified Voting analysis in May 2026 report"
+    },
+    {
+      "claimText": "Replacing all U.S. BMDs and scanners with VVSG 2.0-certified equipment in 2028 would cost approximately $2.71 billion (equipment only).",
+      "classification": "VERIFIED",
+      "sourceHint": "EAC May 2026 report, ACET pricing survey"
+    },
+    {
+      "claimText": "EAC concludes sustained, predictable federal funding — not episodic HAVA bursts — is the most important lever for timely modernization.",
+      "classification": "VERIFIED",
+      "sourceHint": "EAC May 2026 report executive summary"
+    },
+    {
+      "claimText": "Arkansas SOS selects voting equipment vendor(s) and serves as official purchaser and county liaison per SBEC coordinator manual.",
+      "classification": "NEEDS_REVIEW",
+      "sourceHint": "SBEC 2026 Election Coordinator Manual — staff verify current language"
+    }
+  ]
+}

@@ -11,6 +11,7 @@ const TIER_BADGE: Record<EvidenceTier, string> = {
   VERIFIED_PARTIAL: "bg-sky-100 text-sky-950",
   PARTIAL: "bg-amber-100 text-amber-950",
   NEEDS_RESEARCH: "bg-rose-100 text-rose-950",
+  DEFERRED: "bg-slate-100 text-slate-800",
   STRATEGY: "bg-violet-100 text-violet-950",
 };
 
@@ -102,7 +103,7 @@ export function V4ElectionFundingIntelligencePanel() {
                   <td className="px-3 py-2">{a.fiscalYear}</td>
                   <td className="px-3 py-2">{a.act}</td>
                   <td className="px-3 py-2">{a.lineItem}</td>
-                  <td className="px-3 py-2 font-bold text-kelly-navy">{formatFundingAmount(a.amount)}</td>
+                  <td className="px-3 py-2 font-bold text-kelly-navy">{a.amount != null ? formatFundingAmount(a.amount) : "—"}</td>
                   <td className="px-3 py-2">{a.fund}</td>
                   <td className="px-3 py-2">
                     <TierBadge tier={a.evidenceTier} />

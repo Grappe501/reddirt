@@ -30,6 +30,8 @@ export const CANDIDATE_IPAD_MORE_LINKS = [
   { href: "/admin/intelligence/trap-lanes", label: "Trap lanes (full drill-down)" },
   { href: "/admin/intelligence/sos-debate-questions", label: "Expected SOS questions" },
   { href: "/admin/intelligence/debate-command", label: "Debate command" },
+  { href: "/admin/intelligence/opponents/dossiers", label: "Opponent dossiers" },
+  { href: "/admin/intelligence/county-clerk-week/acca-summer-conference", label: "ACCA panel prep" },
   { href: "/admin/intelligence/county-clerk-week", label: "Clerk week path" },
   { href: "/admin/intelligence/agent-tooling", label: "Agent tooling (prep runs)" },
   { href: "/admin/intelligence/kim-hammer/debate-ai-workbench", label: "AI workbench (staff)" },

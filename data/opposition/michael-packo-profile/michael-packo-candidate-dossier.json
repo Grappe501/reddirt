@@ -1,0 +1,85 @@
+{
+  "generatedAt": "2026-06-04T20:00:00.000Z",
+  "candidateId": "michael-packo",
+  "displayName": "Dr. Michael Pakko (Pakko)",
+  "party": "Libertarian",
+  "office": "Arkansas Secretary of State 2026",
+  "dossierStatus": "PARTIAL_VERIFIED",
+  "executiveSummary": "Third-candidate dossier: economist/commentator and LPAR chair with anti-duopoly election reform message. Strengths: communicator credential, calm panel demeanor, mandate-skeptic appeal to burden-weary clerks. Weaknesses for Kelly contrast: no SOS administration experience, reform themes without county implementation detail. Kelly strategy: respect on stage, administrator differentiation, never attack L voters.",
+  "whatTheyClaim": [
+    {
+      "claim": "Will bring economist/data skills for fiscal transparency in SOS office",
+      "classification": "CAMPAIGN_CLAIM",
+      "evidenceStatus": "VERIFIED_QUOTE_TEXT",
+      "sourceHint": "Ballotpedia; 2024 treasurer race; pakko4ar.com"
+    },
+    {
+      "claim": "Arkansas elections lack competitiveness — reforms needed for diversity of ideas",
+      "classification": "CAMPAIGN_CLAIM",
+      "evidenceStatus": "VERIFIED_QUOTE_TEXT",
+      "sourceHint": "Ballotpedia; campaign site"
+    },
+    {
+      "claim": "Independent SOS administrator outside two-party duopoly",
+      "classification": "CAMPAIGN_CLAIM",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceHint": "pakko4ar.com; Arkansas Vox"
+    },
+    {
+      "claim": "Will enhance SOS public profile through communication and analysis",
+      "classification": "CAMPAIGN_CLAIM",
+      "evidenceStatus": "VERIFIED_QUOTE_TEXT",
+      "sourceHint": "Ballotpedia candidate statement"
+    }
+  ],
+  "leadStoriesToWatch": [
+    {
+      "id": "packo-lead-acca-panel",
+      "headline": "ACCA Mountain View panel — Pakko vs Hammer burden rhetoric",
+      "watchFor": "Pakko agrees mandates hurt clerks — Kelly must add implementation plan without piling on Hammer voters",
+      "priority": "CRITICAL",
+      "dateContext": "2026-06-11",
+      "href": "/admin/intelligence/county-clerk-week/acca-summer-conference/three-way-panel-geometry"
+    },
+    {
+      "id": "packo-lead-funding-opacity",
+      "headline": "CVSGF / grant transparency — Pakko may agree opacity",
+      "watchFor": "Kelly owns positive publish-the-ledger plan; do not let Pakko be only reform voice",
+      "priority": "HIGH",
+      "href": "/admin/intelligence/election-funding/debate-funding"
+    },
+    {
+      "id": "packo-lead-ranked-choice",
+      "headline": "Ranked choice / election reform specifics",
+      "watchFor": "Verify exact Pakko proposal before debating; ask implementation cost for clerks",
+      "priority": "MEDIUM",
+      "evidenceStatus": "NEEDS_RESEARCH"
+    },
+    {
+      "id": "packo-lead-pbs-demeanor",
+      "headline": "On-camera demeanor samples — PBS Arkansas Week",
+      "watchFor": "Calm tone may make Kelly look aggressive if she over-contrasts — stay warm",
+      "priority": "MEDIUM",
+      "href": "/admin/intelligence/video-archive-room"
+    },
+    {
+      "id": "packo-lead-ballot-access",
+      "headline": "LP 3% threshold / party ballot access math",
+      "watchFor": "Pakko may prioritize party viability — less SOS depth in answers",
+      "priority": "LOW",
+      "evidenceStatus": "INTERPRETATION"
+    }
+  ],
+  "researchGaps": [
+    "PACKO-01: Campaign finance / ethics filings summary",
+    "PACKO-02: Full quote ledger from interviews beyond campaign site",
+    "SOS-specific platform page vs treasurer framing",
+    "Pakko position on UCC/CVSGF statutory duties"
+  ],
+  "relatedRoutes": {
+    "dossierHub": "/admin/intelligence/opponents/dossiers/michael-packo",
+    "media": "/admin/intelligence/video-archive-room",
+    "coaching": "/admin/intelligence/kelly-debate-coaching",
+    "threeWay": "/admin/intelligence/debate-depth/three-way"
+  }
+}

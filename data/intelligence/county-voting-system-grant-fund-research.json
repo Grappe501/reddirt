@@ -1,12 +1,12 @@
 {
-  "version": 1,
-  "generatedAt": "2026-06-04T18:00:00.000Z",
+  "version": 2,
+  "generatedAt": "2026-06-04T23:00:00.000Z",
   "governance": {
     "classification": "INTERNAL_DRAFT",
-    "publicationSafety": "Verify dollar figures against enrolled appropriations before broadcast",
-    "researchStatus": "SUBSTANTIAL — statewide county-by-county award ledger still NEEDS_RESEARCH"
+    "publicationSafety": "Verify dollar figures against enrolled appropriations before broadcast. Narrative drill-down: src/lib/intelligence/v4/electionFundingDrillDownDepth.ts",
+    "researchStatus": "DEEP PASS — statutory + appropriations verified through FY2026-27 (HB1041); statewide county-by-county award ledger still not public"
   },
-  "executiveSummary": "Arkansas maintains a state-controlled County Voting System Grant Fund (CVSGF) fed largely by UCC filing fees remitted by the Secretary of State, plus periodic legislative appropriations and a one-time 2019 Property Tax Relief transfer. The SOS establishes grant guidelines under A.C.A. § 7-5-301. FY2025–26 appropriates $11M from CVSGF and $4M federal HAVA. No consolidated public county-by-county award dashboard has been located — but county budgets and SOS historical records confirm disbursements occurred. Kelly's frame: election transparency includes funding transparency; SOS must publish equitable, readable grant accounting.",
+  "executiveSummary": "Arkansas maintains a state-controlled County Voting System Grant Fund (CVSGF) fed largely by UCC filing fees remitted by the Secretary of State (A.C.A. § 19-5-1247), plus periodic legislative appropriations and a one-time 2019 Property Tax Relief transfer (Act 808, $8.24M). The SOS establishes grant guidelines under A.C.A. § 7-5-301(d)(2). Verified appropriations: FY2024-25 $10M (Act 143); FY2025-26 $11M CVSGF + $4M HAVA (Act 408/HB1147); FY2026-27 $11M CVSGF + $4M HAVA (HB1041). No consolidated public county-by-county award dashboard has been located — but county budgets, Act 808 reimbursements, and SOS Exhibit E confirm money flowed. Kelly's frame: election transparency includes funding transparency; SOS must publish equitable, readable grant accounting.",
   "statutoryAuthority": [
     {
       "id": "aca-19-5-1247",
@@ -111,16 +111,41 @@
     },
     {
       "fiscalYear": "FY2026-2027",
-      "session": "2026 Fiscal Session (pending — not yet enrolled at research date)",
-      "act": "DEFERRED — verify after 2026 fiscal session adjourns",
-      "lineItem": "County Voting Systems Grant + HAVA",
-      "amount": null,
-      "secondaryAmount": null,
-      "fund": "CVSGF + Federal HAVA",
+      "session": "2026 Fiscal Session",
+      "act": "HB1041 (SOS appropriation act)",
+      "lineItem": "County Voting Systems Grant",
+      "amount": 11000000,
+      "fund": "County Voting System Grant Fund",
       "payableTo": "Secretary of State",
-      "evidenceTier": "DEFERRED",
-      "sources": [],
-      "note": "FY2025-26 verified via Act 408 (HB1147). FY2026-27 appropriation cannot be cited on stage until enrolled act verified — use FY2025-26 figures only."
+      "purpose": "Sec. 9 — county voting systems grants (same structure as Act 408)",
+      "evidenceTier": "VERIFIED_FACT",
+      "sources": [
+        {
+          "label": "HB1041 House Captions — Sec. 9 $11M CVSGF",
+          "url": "https://arkleg.state.ar.us/Home/FTPDocument?path=%2FAssembly%2FMeeting+Attachments%2F005%2F27839%2FHOUSE+Captions.pdf"
+        },
+        {
+          "label": "THV11 — HB1041 $11M county voting machine grants",
+          "url": "https://www.thv11.com/article/news/local/arkansas-lawmakers-push-7b-state-budget-plans-ahead-of-fiscal-session/91-cd6fd16c-3c73-40c9-93ff-958c80c22133"
+        }
+      ]
+    },
+    {
+      "fiscalYear": "FY2026-2027",
+      "session": "2026 Fiscal Session",
+      "act": "HB1041 (SOS appropriation act)",
+      "lineItem": "Help America Vote Act — Federal",
+      "amount": 4000000,
+      "fund": "Federal HAVA funds",
+      "payableTo": "Secretary of State",
+      "purpose": "Sec. 12 — federal HAVA appropriation",
+      "evidenceTier": "VERIFIED_FACT",
+      "sources": [
+        {
+          "label": "HB1041 House Captions — Sec. 12 $4M HAVA federal",
+          "url": "https://arkleg.state.ar.us/Home/FTPDocument?path=%2FAssembly%2FMeeting+Attachments%2F005%2F27839%2FHOUSE+Captions.pdf"
+        }
+      ]
     }
   ],
   "oneTimeTransfers": [
@@ -237,7 +262,7 @@
       "They are hiding money (accusatory without ledger proof)",
       "Counties got nothing (contradicted by budget breadcrumbs and Act 808)",
       "Hammer stole election funds",
-      "Precise FY2026-27 figures until enrolled act verified"
+      "Garland $14,340 on stage until primary budget doc verified"
     ],
     "fairPublicLine": "I've been researching how election funding flows to Arkansas counties, and it is surprisingly difficult for the public to find a clear county-by-county accounting — election transparency should include election funding transparency.",
     "trapLaneHref": "/admin/intelligence/trap-lanes/county-champion",
@@ -273,6 +298,16 @@
       "claimText": "No consolidated public statewide county-by-county CVSGF award table has been located in open research.",
       "classification": "VERIFIED",
       "sourceHint": "Research pass 2026-06-04 — county budgets only"
+    },
+    {
+      "claimText": "HB1041 (2026 fiscal session) appropriated $11,000,000 from the County Voting System Grant Fund to the SOS for FY2026-2027 (Section 9).",
+      "classification": "VERIFIED",
+      "sourceHint": "HB1041 House Captions; THV11 fiscal session reporting"
+    },
+    {
+      "claimText": "HB1041 appropriated $4,000,000 in federal Help America Vote Act funds to the SOS for FY2026-2027 (Section 12).",
+      "classification": "VERIFIED",
+      "sourceHint": "HB1041 House Captions Sec. 12"
     },
     {
       "claimText": "Garland County budget records document a $14,340 Secretary of State Voting System Grant appropriation (2015).",

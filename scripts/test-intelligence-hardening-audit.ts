@@ -13,6 +13,17 @@ import { buildBillActProofDeep, listAllBillNumbersFromIndex, resolveArklegBillUr
 import { buildSosQuestionResponseRounds } from "../src/lib/intelligence/v4/debateResponseRoundEnrichment";
 import { buildTrapLaneStepCoverage } from "../src/lib/intelligence/v4/trapLaneStepCoverage";
 import { loadCountyElectionFundingResearch } from "../src/lib/intelligence/v4/countyElectionFundingIntelligence";
+import { getAllElectionFundingDepthSectionIds } from "../src/lib/intelligence/v4/electionFundingDrillDownDepth";
+import { getAllAccaConferenceDepthSectionIds, loadAccaClerksConference2026 } from "../src/lib/intelligence/v4/accaClerksConference2026Depth";
+import {
+  getAllOpponentDossierSectionIds,
+  getOpponentDossierSection,
+} from "../src/lib/intelligence/v4/opponentCandidateDossierDepth";
+import {
+  loadKimHammerCandidateDossier,
+  loadMichaelPackoCandidateDossier,
+} from "../src/lib/intelligence/v4/loadOpponentCandidateDossier";
+import { loadVvsg20CandidateEducation } from "../src/lib/intelligence/v4/vvsg20CandidateEducation";
 import { INTEGRITY_2021_PACKAGE_DEPTH, PETITION_2025_CLUSTER_DEPTH } from "../src/lib/intelligence/v4/integrityPackageDepth";
 import { listCuratedBillPlaybookNumbers } from "../src/lib/intelligence/v4/debateBillOperatorPlaybooks";
 import { KELLY_PUBLIC_RECORD_BRIEF } from "../src/lib/intelligence/v4/kellyCandidatePublicRecordBrief";
@@ -106,7 +117,37 @@ assert.equal(PETITION_2025_CLUSTER_DEPTH.billAnchors.length, 5, "2025 petition c
 assert.equal(KELLY_OFFENSIVE_MOVES.length, 6, "offensive moves");
 assert.equal(getAllTrapLaneIds().length, 6, "trap lane ids");
 assert.ok(listCuratedBillPlaybookNumbers().length >= 29, "29 curated bill playbooks");
-assert.ok(KELLY_PUBLIC_RECORD_BRIEF.length >= 6, "Kelly public record brief");
+assert.ok(getAllElectionFundingDepthSectionIds().length >= 14, "election funding depth sections");
+for (const sid of getAllElectionFundingDepthSectionIds().slice(0, 5)) {
+  assertRouteExists(`/admin/intelligence/election-funding/${sid}`);
+}
+assert.ok(KELLY_PUBLIC_RECORD_BRIEF.length >= 3, "Kelly public record brief");
+
+// --- ACCA Summer Conference 2026 ---
+assert.ok(getAllAccaConferenceDepthSectionIds().length >= 12, "ACCA conference depth sections");
+assertRouteExists("/admin/intelligence/county-clerk-week/acca-summer-conference");
+for (const sid of getAllAccaConferenceDepthSectionIds().slice(0, 4)) {
+  assertRouteExists(`/admin/intelligence/county-clerk-week/acca-summer-conference/${sid}`);
+}
+const acca = loadAccaClerksConference2026();
+assert.equal(acca.sosCandidatesPanel.durationMinutes, 120, "ACCA panel 2 hours");
+assert.equal(acca.sosCandidatesPanel.candidates.length, 3, "three SOS candidates");
+
+// --- Opponent candidate dossiers ---
+assert.ok(getAllOpponentDossierSectionIds().length >= 16, "opponent dossier sections");
+assertRouteExists("/admin/intelligence/opponents/dossiers");
+assertRouteExists("/admin/intelligence/opponents/dossiers/kim-hammer");
+assertRouteExists("/admin/intelligence/opponents/dossiers/michael-packo");
+for (const sid of ["hammer-acca-panel-tactics", "packo-three-way-geometry"]) {
+  const sec = getOpponentDossierSection(sid)!;
+  assertRouteExists(`/admin/intelligence/opponents/dossiers/${sec.candidateId}/${sid}`);
+}
+const hammerDossier = loadKimHammerCandidateDossier();
+const packoDossier = loadMichaelPackoCandidateDossier();
+assert.ok(hammerDossier.whatTheyClaim.length >= 5, "Hammer claims ledger");
+assert.ok(packoDossier.whatTheyClaim.length >= 3, "Pakko claims ledger");
+assert.ok(hammerDossier.leadStoriesToWatch.length >= 5, "Hammer lead stories");
+assert.ok(packoDossier.leadStoriesToWatch.length >= 4, "Pakko lead stories");
 
 // --- v6.3 briefing depth ---
 assertRouteExists("/admin/intelligence/debate-briefings");
@@ -134,6 +175,12 @@ for (const route of [
 ]) {
   assertRouteExists(route);
 }
+
+// --- VVSG 2.0 EAC education ---
+const vvsg = loadVvsg20CandidateEducation();
+assert.ok(vvsg.whatKellyShouldKnow.length >= 5, "VVSG Kelly should-know items");
+assert.ok(vvsg.certificationPipeline.federallyCertifiedAsOfReport.length >= 2, "VVSG certified systems");
+assertRouteExists("/admin/intelligence/election-equipment-vvsg");
 
 // --- Election funding CVSGF ---
 const funding = loadCountyElectionFundingResearch();

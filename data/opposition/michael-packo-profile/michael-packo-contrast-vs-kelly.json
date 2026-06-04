@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-06-04T20:00:00.000Z",
+  "candidateId": "michael-packo",
+  "contrastFrames": [
+    {
+      "frame": "analyst_vs_administrator",
+      "packoPositionSummary": "Economist-commentator offering reform ideas, fiscal transparency, and anti-duopoly competitiveness.",
+      "kellyContrast": "Daily SOS administrator — hotline, training calendar, county partnership, claims-gate discipline.",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "HIGH"
+    },
+    {
+      "frame": "mandate_skeptic_vs_implementation",
+      "packoPositionSummary": "Libertarian skepticism of mandates may align with clerk burden complaints.",
+      "kellyContrast": "Agree on burden — add funded implementation plan and published grant ledger; integrity + participation together.",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "frame": "reform_ideas_vs_clerk_service",
+      "packoPositionSummary": "Election process reform, ranked choice/competitiveness themes on campaign site.",
+      "kellyContrast": "Clerks execute what the legislature passes — SOS must fund clarity and answer the phone.",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM"
+    },
+    {
+      "frame": "respectful_third_party",
+      "packoPositionSummary": "Protest vote lane for anti-establishment voters.",
+      "kellyContrast": "Respect Dr. Pakko and Libertarian voters — never coordinate or attack; differentiate administrator job.",
+      "evidenceStatus": "STRATEGY",
+      "sourceConfidence": "HIGH"
+    }
+  ],
+  "kellyDoNot": [
+    "Attack Libertarian voters or tell them not to vote Pakko on stage",
+    "Coordinate 'vote L' or 'anything but Hammer' aloud in clerk rooms",
+    "Cite unverified LP platform planks as Pakko's personal SOS plan",
+    "Mock economist credential — acknowledge communicator strength"
+  ],
+  "kellyDo": [
+    "Acknowledge reform goals; pivot to 75-county administration",
+    "Use line: 'Dr. Pakko and I both want voters to trust the process — I am running to administer it.'",
+    "In clerk rooms: do not mention Pakko unless asked",
+    "When Pakko agrees funding is opaque — add Kelly's publish-the-ledger SOS plan"
+  ]
+}

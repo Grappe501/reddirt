@@ -4,9 +4,9 @@
   "party": "Libertarian",
   "office": "Arkansas Secretary of State",
   "electionYear": 2026,
-  "status": "PARTIAL_MEDIA",
+  "status": "PARTIAL_VERIFIED",
   "lastUpdated": "2026-06-04",
-  "summary": "Third-candidate opposition — media catalog seeded (TBP, PBS Arkansas Week, campaign site). Full quote ledger and contrast pages still in progress.",
+  "summary": "Expanded dossier: strengths/weaknesses matrices, bio timeline, quotes, contrast, 8 narrative sections, claims ledger, lead stories. Quote harvest PACKO-02 still OPEN.",
   "campaignSite": "https://pakko4ar.com/",
   "researchPriorities": [
     {
@@ -72,8 +72,9 @@
   },
   "routesWhenLive": {
     "hub": "/admin/intelligence/opponents",
+    "dossier": "/admin/intelligence/opponents/dossiers/michael-packo",
     "media": "/admin/intelligence/video-archive-room",
     "coaching": "/admin/intelligence/kelly-debate-coaching",
-    "contrast": "/admin/intelligence/kelly-debate-coaching"
+    "contrast": "/admin/intelligence/opponents/dossiers/michael-packo/packo-kelly-response-playbook"
   }
 }

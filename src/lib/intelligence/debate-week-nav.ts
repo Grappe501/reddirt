@@ -27,6 +27,7 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/agent-tooling",
   "/admin/intelligence/debate-depth",
   "/admin/intelligence/election-funding",
+  "/admin/intelligence/election-equipment-vvsg",
   "/admin/intelligence/build-progress",
 ] as const;
 
@@ -61,6 +62,20 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
       "v6.2 offense layer: 2021 package continuity, CVSGF trap, six offensive moves — pair with election funding day.",
   },
   {
+    href: "/admin/intelligence/opponents/dossiers",
+    label: "Opponent dossiers",
+    badgeKey: "opposition",
+    description:
+      "Complete Hammer & Pakko profiles — strengths, weaknesses, claims ledger, lead stories to watch, 16 narrative sections.",
+  },
+  {
+    href: "/admin/intelligence/county-clerk-week/acca-summer-conference",
+    label: "ACCA Mountain View panel",
+    badgeKey: "opposition",
+    description:
+      "Thu Jun 11 1–3pm SOS candidates panel at Ozark Folk Center — two-hour moderated Q&A with Hammer & Pakko; 13 narrative prep sections.",
+  },
+  {
     href: "/admin/intelligence/county-clerk-week",
     label: "7-day clerk path",
     badgeKey: "opposition",
@@ -72,6 +87,12 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Election funding",
     description:
       "CVSGF + HAVA statutory evidence, appropriations table, county budget breadcrumbs, records request, SOS outreach script, debate traps.",
+  },
+  {
+    href: "/admin/intelligence/election-equipment-vvsg",
+    label: "VVSG 2.0",
+    description:
+      "EAC report: federal certification timelines, equipment lifecycle, modernization costs, Arkansas SOS procurement role, candidate debate lines.",
   },
   {
     href: "/admin/intelligence/kim-hammer/county-administration-burden",
@@ -124,7 +145,7 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
   {
     href: "/admin/intelligence/opponents",
     label: "Opponents",
-    description: "Hammer (live) + Michael Packo scaffold — third-candidate research queue.",
+    description: "Opponent dossiers hub — Hammer production + Pakko partial verified; film room and command center links.",
   },
   {
     href: "/admin/intelligence/kelly-debate-coaching",
@@ -194,6 +215,12 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Election funding",
     description:
       "County Voting System Grant Fund + HAVA: statutory authority, appropriations, county budget breadcrumbs, missing statewide ledger, records request, and debate traps.",
+  },
+  {
+    href: "/admin/intelligence/election-equipment-vvsg",
+    label: "VVSG 2.0 education",
+    description:
+      "EAC May 2026 report ingested: certification pipeline, aging equipment, national costs, Arkansas SOS role, debate lines — pair with election funding.",
   },
   {
     href: "/admin/intelligence/build-progress",

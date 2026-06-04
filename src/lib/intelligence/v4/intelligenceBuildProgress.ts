@@ -16,6 +16,8 @@ import { KELLY_PUBLIC_RECORD_BRIEF } from "@/lib/intelligence/v4/kellyCandidateP
 import { KELLY_OFFENSIVE_MOVES } from "@/lib/intelligence/v4/kellyOffensiveApproachDepth";
 import { computeOppositionOffenseReadinessPct } from "@/lib/intelligence/v4/oppositionStrategyLayerMetrics";
 import { KIM_HAMMER_V4_MODULES } from "@/lib/intelligence/kimHammerV4ModuleRegistry";
+import { getAllAccaConferenceDepthSectionIds } from "@/lib/intelligence/v4/accaClerksConference2026Depth";
+import { getAllOpponentDossierSectionIds } from "@/lib/intelligence/v4/opponentCandidateDossierDepth";
 
 export type BuildProgressItem = {
   id: string;
@@ -339,16 +341,42 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     id: "election-funding-cvsgf",
     label: "County Voting System Grant Fund research",
     category: "Election funding",
-    completionPct: 85,
+    completionPct: 88,
     status: "partial",
-    built: 9,
-    total: 10,
+    built: 15,
+    total: 17,
     flags: [
       "Statewide county-by-county award ledger not public — records request drafted",
-      "FY2026-27 appropriation DEFERRED pending 2026 fiscal session",
       "Garland $14,340 — verify primary county budget document",
+      "75-county budget scrape not complete",
     ],
     href: "/admin/intelligence/election-funding",
+  });
+
+  // ACCA Summer Conference 2026 — Mountain View SOS panel
+  const accaSectionIds = getAllAccaConferenceDepthSectionIds();
+  items.push({
+    id: "acca-summer-conference-2026",
+    label: "ACCA Mountain View SOS candidates panel (Jun 11)",
+    category: "County clerks",
+    completionPct: 92,
+    status: "partial",
+    built: accaSectionIds.length,
+    total: accaSectionIds.length + 1,
+    flags: ["Moderator name and panel format details not yet confirmed with AAC"],
+    href: "/admin/intelligence/county-clerk-week/acca-summer-conference",
+  });
+
+  items.push({
+    id: "opponent-dossiers",
+    label: "Opponent candidate dossiers (Hammer + Pakko)",
+    category: "Opposition",
+    completionPct: 90,
+    status: "partial",
+    built: getAllOpponentDossierSectionIds().length,
+    total: getAllOpponentDossierSectionIds().length + 2,
+    flags: ["Pakko PACKO-01 finance filings", "Pakko full interview quote harvest PACKO-02"],
+    href: "/admin/intelligence/opponents/dossiers",
   });
 
   const overallCompletionPct = Math.round(items.reduce((s, i) => s + i.completionPct, 0) / items.length);
@@ -366,6 +394,10 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/debate-command",
     "/admin/intelligence/claims",
     "/admin/intelligence/election-funding",
+    "/admin/intelligence/county-clerk-week/acca-summer-conference",
+    "/admin/intelligence/opponents/dossiers",
+    "/admin/intelligence/opponents/dossiers/kim-hammer",
+    "/admin/intelligence/opponents/dossiers/michael-packo",
     "/admin/intelligence/build-progress",
     ...trapIds.map((id) => `/admin/intelligence/trap-lanes/${id}`),
     ...qIds.map((id) => `/admin/intelligence/sos-debate-questions/${id}`),

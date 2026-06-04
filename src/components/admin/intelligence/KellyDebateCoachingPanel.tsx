@@ -71,11 +71,18 @@ export function KellyDebateCoachingPanel({
   compact,
   directDemocracy,
   roadStories,
+  vvsgEducation,
 }: {
   suggestions: KellyCandidateSuggestion[];
   compact?: boolean;
   directDemocracy?: HammerDirectDemocracyPacket;
   roadStories?: KellyRoadStoriesFile;
+  vvsgEducation?: {
+    executiveSummary: string;
+    whatToKnow: string[];
+    fairPublicLine: string;
+    href: string;
+  };
 }) {
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -123,6 +130,25 @@ export function KellyDebateCoachingPanel({
             ))}
           </div>
         </article>
+
+        {vvsgEducation ? (
+          <article className="rounded-xl border-2 border-indigo-200 bg-indigo-50/40 p-5 text-xs">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-950">VVSG 2.0 · EAC May 2026</p>
+            <p className="mt-2 text-kelly-muted">{vvsgEducation.executiveSummary}</p>
+            <p className="mt-3 font-bold text-kelly-navy">Know before stage</p>
+            <ul className="mt-2 list-inside list-disc text-kelly-muted">
+              {vvsgEducation.whatToKnow.map((line) => (
+                <li key={line.slice(0, 48)}>{line}</li>
+              ))}
+            </ul>
+            <p className="mt-4 rounded-lg border border-indigo-100 bg-white p-3 text-sm italic text-indigo-950">
+              &ldquo;{vvsgEducation.fairPublicLine}&rdquo;
+            </p>
+            <Link href={vvsgEducation.href} className="mt-3 inline-block font-bold text-kelly-navy underline">
+              Full VVSG 2.0 education module →
+            </Link>
+          </article>
+        ) : null}
 
         <KellyOffensiveNarrativePanel />
 

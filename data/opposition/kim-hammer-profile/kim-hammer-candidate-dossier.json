@@ -1,0 +1,117 @@
+{
+  "generatedAt": "2026-06-04T20:00:00.000Z",
+  "candidateId": "kim-hammer",
+  "displayName": "Kim Hammer",
+  "party": "Republican",
+  "office": "Arkansas Secretary of State 2026 (State Senator, District 33)",
+  "dossierStatus": "PRODUCTION",
+  "executiveSummary": "Primary opponent dossier: long-tenure senator with deep election-law authorship (2021 six-bill package, 2023/2025 clusters), integrity/#1 ranking campaign frame, and GOP base alignment. Strengths: experience narrative, election-law specialization, pastoral identity. Weaknesses for Kelly contrast: county implementation gaps, direct-democracy restriction pattern, narrow 2026 runoff, rhetoric controversies. Kelly wins on SOS-as-service, CVSGF ledger transparency, and clerk partnership — not motive attacks.",
+  "whatTheyClaim": [
+    {
+      "claim": "Arkansas elections are secure / nationally ranked #1 (Heritage-style rankings cited on campaign)",
+      "classification": "NEEDS_REVIEW",
+      "evidenceStatus": "REPORTED_CLAIM",
+      "sourceHint": "hammerforarkansas.com/election-security — verify primary before stage",
+      "kellyRebuttalFrame": "Ranking is not a substitute for clerk training dollars — show county ledger."
+    },
+    {
+      "claim": "I wrote the election integrity laws that secured Arkansas after 2020",
+      "classification": "INTERPRETATION",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceHint": "kim-hammer-election-record-bill-index.json — authorship verified; effect claims NEEDS_REVIEW",
+      "kellyRebuttalFrame": "Security yes — six bills in one year shifted burden to counties without visible support package."
+    },
+    {
+      "claim": "Act 808 and appropriations funded county voting equipment",
+      "classification": "PARTIAL",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceHint": "Act 808 $8.24M; Act 408/HB1041 appropriations — county-by-county ledger still not public",
+      "kellyRebuttalFrame": "Totals in Little Rock ≠ implementation in every county — publish the ledger."
+    },
+    {
+      "claim": "I stand with county clerks",
+      "classification": "CAMPAIGN_CLAIM",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceHint": "Campaign trail; ACCA panel likely repeat",
+      "kellyRebuttalFrame": "Where is county-by-county CVSGF spreadsheet? SOS staff ratio for Act 350?"
+    },
+    {
+      "claim": "Poll watchers and transparency at the polls",
+      "classification": "CAMPAIGN_CLAIM",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceHint": "SB250 and related 2021 package",
+      "kellyRebuttalFrame": "Observation with standards — clerks need SOS rulebooks and training, not precinct referee duty."
+    },
+    {
+      "claim": "Stop fraud in petition drives / tighten signature rules",
+      "classification": "INTERPRETATION",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceHint": "2025 petition cluster bills",
+      "kellyRebuttalFrame": "Show fraud cases that justified each rule change; integrity + lawful participation together."
+    }
+  ],
+  "leadStoriesToWatch": [
+    {
+      "id": "hammer-lead-acca-panel",
+      "headline": "ACCA panel — Hammer 'I stand with clerks' vs CVSGF ledger question",
+      "watchFor": "Implementation trap on funding spreadsheet; avoid motive attack",
+      "priority": "CRITICAL",
+      "dateContext": "2026-06-11",
+      "href": "/admin/intelligence/county-clerk-week/acca-summer-conference/hammer-traps-clerk-room"
+    },
+    {
+      "id": "hammer-lead-2021-package",
+      "headline": "2021 six-bill integrity package — cumulative county burden",
+      "watchFor": "Hammer cites security; Kelly cites layered process changes without training memo",
+      "priority": "CRITICAL",
+      "href": "/admin/intelligence/kim-hammer/integrity-foundation-2021"
+    },
+    {
+      "id": "hammer-lead-ranking",
+      "headline": "#1 election ranking claims",
+      "watchFor": "Heritage paraphrase — claims gate before Kelly cites",
+      "priority": "HIGH",
+      "href": "/admin/intelligence/claims"
+    },
+    {
+      "id": "hammer-lead-runoff",
+      "headline": "Narrow 2026 GOP runoff vs Norris",
+      "watchFor": "Coalition fragility — use values contrast not insult",
+      "priority": "MEDIUM",
+      "sources": ["https://arkansasadvocate.com/2026/03/31/hammer-has-early-lead-over-norris-in-republican-runoff-for-arkansas-secretary-of-state/"]
+    },
+    {
+      "id": "hammer-lead-2021-rhetoric",
+      "headline": "2021 deleted Facebook 'political war' post coverage",
+      "watchFor": "Tone/temperament — values contrast only with sourced reporting",
+      "priority": "MEDIUM",
+      "href": "/admin/intelligence/kim-hammer/public-controversies"
+    },
+    {
+      "id": "hammer-lead-petition-2025",
+      "headline": "2025 petition restriction cluster",
+      "watchFor": "Direct democracy frame — fraud evidence question",
+      "priority": "HIGH",
+      "href": "/admin/intelligence/opposition-strategy"
+    },
+    {
+      "id": "hammer-lead-es&s-room",
+      "headline": "ES&S platinum sponsor at ACCA — Hammer equipment credit claims",
+      "watchFor": "Vendor literacy; CVSGF + VVSG 2.0 timeline",
+      "priority": "MEDIUM",
+      "href": "/admin/intelligence/election-equipment-vvsg"
+    }
+  ],
+  "strengthsMatrixPath": "data/opposition/kim-hammer-profile/kim-hammer-strengths-matrix.json",
+  "weaknessesMatrixPath": "data/opposition/kim-hammer-profile/kim-hammer-vulnerability-matrix.json",
+  "contrastPath": "data/opposition/kim-hammer-profile/kim-hammer-contrast-vs-kelly.json",
+  "controversiesPath": "data/opposition/kim-hammer-profile/kim-hammer-public-controversies.json",
+  "billIndexPath": "data/opposition/kim-hammer-election-record-bill-index.json",
+  "relatedRoutes": {
+    "commandCenter": "/admin/intelligence/kim-hammer",
+    "strengthsWeaknesses": "/admin/intelligence/kim-hammer/strengths-weaknesses",
+    "debatePrep": "/admin/intelligence/kim-hammer/debate-prep",
+    "dossierHub": "/admin/intelligence/opponents/dossiers/kim-hammer",
+    "trapLane": "/admin/intelligence/trap-lanes/county-champion"
+  }
+}

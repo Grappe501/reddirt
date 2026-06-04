@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-06-04T20:00:00.000Z",
+  "candidateId": "michael-packo",
+  "quotes": [
+    {
+      "id": "packo-q-competitiveness",
+      "topic": "election_competitiveness",
+      "quoteText": "Chronic lack of competitiveness in Arkansas' election process — election reforms to add diversity and competition of ideas.",
+      "paraphraseAllowed": true,
+      "evidenceStatus": "VERIFIED_QUOTE_TEXT",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        { "label": "Ballotpedia candidate summary", "url": "https://ballotpedia.org/Michael_Pakko" },
+        { "label": "Campaign site", "url": "https://pakko4ar.com/" }
+      ],
+      "kellyResponseFrame": "Competition of ideas yes — clerks need implementation support and published rules every Monday.",
+      "doNotMisquote": "Do not attribute ranked-choice specifics unless sourced on campaign site at time of use."
+    },
+    {
+      "id": "packo-q-fiscal-transparency",
+      "topic": "fiscal_transparency",
+      "quoteText": "Use skills as economist, data analyst, and communicator to provide greater fiscal transparency to the Secretary of State's office and state government finances.",
+      "paraphraseAllowed": true,
+      "evidenceStatus": "VERIFIED_QUOTE_TEXT",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        { "label": "Ballotpedia / 2024 treasurer framing", "url": "https://ballotpedia.org/Michael_Pakko" },
+        { "label": "TBP treasurer announcement", "url": "https://talkbusiness.net/2024/02/michael-pakko-announces-bid-for-state-treasurer-on-libertarian-ticket/" }
+      ],
+      "kellyResponseFrame": "Transparency yes — SOS must also publish county election funding ledgers and clerk training calendars, not only fiscal dashboards.",
+      "doNotMisquote": "Treasurer race framing — verify SOS-specific adaptation on pakko4ar.com before stage."
+    },
+    {
+      "id": "packo-q-duopoly",
+      "topic": "anti_duopoly",
+      "quoteText": "Established political class protect privileged positions — front-row seat observing lack of competitiveness.",
+      "paraphraseAllowed": true,
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM",
+      "sources": [
+        { "label": "Ballotpedia summary", "url": "https://ballotpedia.org/Michael_Pakko" },
+        { "label": "Arkansas Vox LP profile", "url": "https://arkansasvox.com/in-a-one-party-state-libertarians-try-to-build-a-real-alternative/" }
+      ],
+      "kellyResponseFrame": "Agree voters deserve choices — contrast daily SOS administration vs commentary.",
+      "doNotMisquote": "Do not say Pakko attacks Kelly personally — frame is systemic duopoly."
+    },
+    {
+      "id": "packo-q-ballot-access",
+      "topic": "ballot_access",
+      "quoteText": "Libertarian Party qualified as new political party for 2026 — candidates nominated by convention.",
+      "paraphraseAllowed": true,
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "sources": [
+        { "label": "Campaign convention post", "url": "https://pakko4ar.com/blog/2026/02/24/arkansas-libertarians-nominate-candidates-for-2026/" }
+      ],
+      "kellyResponseFrame": "Lawful ballot access matters — SOS must administer fairly for all qualified candidates.",
+      "doNotMisquote": null
+    }
+  ]
+}

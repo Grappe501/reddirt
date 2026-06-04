@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-export type EvidenceTier = "VERIFIED_FACT" | "VERIFIED_PARTIAL" | "PARTIAL" | "NEEDS_RESEARCH" | "STRATEGY";
+export type EvidenceTier = "VERIFIED_FACT" | "VERIFIED_PARTIAL" | "PARTIAL" | "NEEDS_RESEARCH" | "DEFERRED" | "STRATEGY";
 
 export type FundingSource = {
   label: string;
@@ -43,7 +43,7 @@ export type CountyElectionFundingResearch = {
     session?: string;
     act: string;
     lineItem: string;
-    amount: number;
+    amount: number | null;
     secondaryAmount?: number;
     fund: string;
     payableTo: string;

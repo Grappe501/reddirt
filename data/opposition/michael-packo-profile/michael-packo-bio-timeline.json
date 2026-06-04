@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2026-06-04T20:00:00.000Z",
+  "candidateId": "michael-packo",
+  "displayName": "Dr. Michael Pakko",
+  "spellingNote": "Campaign site pakko4ar.com uses Pakko; Ballotpedia Michael Pakko — verify ballot spelling before on-stage use.",
+  "party": "Libertarian",
+  "residence": "Roland, Arkansas",
+  "education": [
+    { "year": 1984, "credential": "B.A., Michigan State University" },
+    { "year": 1993, "credential": "Ph.D., University of Rochester (economics)" }
+  ],
+  "timeline": [
+    {
+      "year": "1993-2009",
+      "event": "Research economist, Federal Reserve Bank of St. Louis — macro, trade, public policy",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": ["https://arkansaseconomist.com/dr-michael-pakko/"]
+    },
+    {
+      "year": 2009,
+      "event": "Moves to Arkansas — Chief Economist / State Economic Forecaster, Arkansas Economic Development Institute (UALR)",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": ["https://arkansaseconomist.com/dr-michael-pakko/", "https://ualr.edu/news/expert/michael-pakko/"]
+    },
+    {
+      "year": 2015,
+      "event": "Becomes Chair, Libertarian Party of Arkansas (sixth term as of 2026 research)",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": ["https://lpar.org/leaders/michael-pakko/"]
+    },
+    {
+      "year": 2024,
+      "event": "Libertarian candidate for Arkansas State Treasurer — fiscal transparency platform",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": [
+        "https://talkbusiness.net/2024/02/michael-pakko-announces-bid-for-state-treasurer-on-libertarian-ticket/",
+        "https://ballotpedia.org/Michael_Pakko"
+      ]
+    },
+    {
+      "year": "2026-02-22",
+      "event": "Nominated at LPAR convention for Arkansas Secretary of State",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": [
+        "https://pakko4ar.com/blog/2026/02/24/arkansas-libertarians-nominate-candidates-for-2026/",
+        "https://ballotpedia.org/Michael_Pakko"
+      ]
+    },
+    {
+      "year": "2026-06-11",
+      "event": "Scheduled: ACCA Summer Conference SOS candidates panel, Mountain View (with Hammer and Grappe)",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": ["data/intelligence/acca-clerks-summer-conference-2026.json"]
+    },
+    {
+      "year": "2026-11-03",
+      "event": "General election — SOS ballot with Kim Hammer (R) and Kelly Grappe (D)",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sources": ["https://ballotpedia.org/Michael_Pakko"]
+    }
+  ]
+}

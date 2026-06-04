@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-06-04T20:00:00.000Z",
+  "candidateId": "michael-packo",
+  "strengths": [
+    {
+      "id": "economist_communicator",
+      "strength": "Established economist and public communicator — PBS panels, Arkansas Economist, UALR/AEDI role",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "debateImpact": "HIGH",
+      "sources": [
+        "https://arkansaseconomist.com/dr-michael-pakko/",
+        "https://ualr.edu/news/expert/michael-pakko/",
+        "https://www.pbs.org/video/arkansas-week-economic-uncertainty-cybersecurity-zzkcbk/"
+      ]
+    },
+    {
+      "id": "libertarian_party_chair",
+      "strength": "Long tenure as Libertarian Party of Arkansas chair (since 2015) — credible third-party institutional voice",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "debateImpact": "MEDIUM",
+      "sources": [
+        "https://lpar.org/leaders/michael-pakko/",
+        "https://ballotpedia.org/Michael_Pakko"
+      ]
+    },
+    {
+      "id": "anti_duopoly_framing",
+      "strength": "Anti-duopoly / election competitiveness message resonates with protest voters and some clerks skeptical of mandates",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM",
+      "debateImpact": "HIGH",
+      "sources": [
+        "https://pakko4ar.com/",
+        "https://arkansasvox.com/in-a-one-party-state-libertarians-try-to-build-a-real-alternative/"
+      ]
+    },
+    {
+      "id": "prior_statewide_run",
+      "strength": "2024 Libertarian State Treasurer candidacy — prior statewide ballot experience and fiscal transparency frame",
+      "evidenceStatus": "VERIFIED_FACT",
+      "sourceConfidence": "HIGH",
+      "debateImpact": "MEDIUM",
+      "sources": [
+        "https://talkbusiness.net/2024/02/michael-pakko-announces-bid-for-state-treasurer-on-libertarian-ticket/",
+        "https://ballotpedia.org/Michael_Pakko"
+      ]
+    },
+    {
+      "id": "calm_panel_demeanor",
+      "strength": "TV panel experience suggests measured tone — may contrast with Hammer combativeness in three-way settings",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM",
+      "debateImpact": "MEDIUM",
+      "sources": [
+        "https://www.pbs.org/video/arkansas-week-june-16-2023-pxiumm/",
+        "data/opposition/opponent-media-catalog.json"
+      ]
+    },
+    {
+      "id": "mandate_skeptic_clerk_appeal",
+      "strength": "Libertarian skepticism of mandates may sound clerk-friendly on burden — risk of outflanking Kelly on 'unfunded rules' without losing integrity",
+      "evidenceStatus": "INTERPRETATION",
+      "sourceConfidence": "MEDIUM",
+      "debateImpact": "HIGH",
+      "sources": [
+        "docs/intelligence/MICHAEL_PACKO_OPPOSITION_PLAN.md",
+        "https://pakko4ar.com/"
+      ]
+    }
+  ]
+}
