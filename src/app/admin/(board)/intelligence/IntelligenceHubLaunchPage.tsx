@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { getSurfaceGuide, getWorkflowStepByHref } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { V4ExecutiveBriefPanel } from "@/components/admin/intelligence/v4/V4ExecutiveBrief";
 import { V4ThemeMatrix } from "@/components/admin/intelligence/v4/V4ThemeMatrix";
 import { V4RehearsalDeck } from "@/components/admin/intelligence/v4/V4RehearsalDeck";
 import { V4ArgumentMap } from "@/components/admin/intelligence/v4/V4ArgumentMap";
+import { V4WorkflowPlaybook } from "@/components/admin/intelligence/v4/V4WorkflowPlaybook";
+import { V4KellyNarrativeFrame } from "@/components/admin/intelligence/v4/V4KellyNarrativeFrame";
 import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3SectionStack";
 
 const card =
@@ -22,10 +25,14 @@ export default function IntelligenceHubLaunchPage() {
       <V4PageHeader
         eyebrow="Kelly · debate intelligence v4"
         title="Tonight's command overview"
-        description="Twice the prep depth: executive brief, theme matrix, argument/rebuttal map, 2021 integrity package, timeline, and 28-section rehearsal packet. Internal draft only."
+        description="Your pre-flight checklist: orient on Hammer's legislative pattern, rehearse top bill drills, and know what is still unsafe to say. Work the five-step path below, then open debate prep for depth. Internal draft only — verify act numbers before any public use."
+        guide={getSurfaceGuide("hub")}
       >
         <V4BackLinks />
       </V4PageHeader>
+
+      <V4KellyNarrativeFrame />
+      <V4WorkflowPlaybook />
 
       <p className="mb-4 text-[10px] font-semibold uppercase tracking-wider text-violet-900">
         Packet v{v4.version} · {v4.debatePrepSectionsV4.length} prep sections · generated{" "}
@@ -61,38 +68,26 @@ export default function IntelligenceHubLaunchPage() {
         <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Your path</p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {[
-            { href: "/admin/intelligence", label: "Start here", step: "1", desc: "Executive brief + scorecard" },
-            {
-              href: "/admin/intelligence/kim-hammer/debate-prep",
-              label: "Debate prep",
-              step: "2",
-              desc: `${v4.debatePrepSectionsV4.length}-section v4 briefing`,
-            },
-            {
-              href: "/admin/intelligence/debate-command",
-              label: "Debate command",
-              step: "3",
-              desc: "Readiness + lanes",
-            },
-            {
-              href: "/admin/intelligence/kim-hammer",
-              label: "Opponent record",
-              step: "4",
-              desc: "Modules + gaps",
-            },
-            {
-              href: "/admin/intelligence/claims",
-              label: "Verify claims",
-              step: "5",
-              desc: `${hub.claims.needsResearch.length} need review`,
-            },
-          ].map((item) => (
-            <Link key={item.href} href={item.href} className={card}>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-violet-800">Step {item.step}</span>
-              <h2 className="mt-2 font-heading text-lg font-bold text-kelly-navy">{item.label}</h2>
-              <p className="mt-2 text-xs text-kelly-muted">{item.desc}</p>
-            </Link>
-          ))}
+            { href: "/admin/intelligence", label: "Start here", step: "1" },
+            { href: "/admin/intelligence/kim-hammer/debate-prep", label: "Debate prep", step: "2" },
+            { href: "/admin/intelligence/debate-command", label: "Debate command", step: "3" },
+            { href: "/admin/intelligence/kim-hammer", label: "Opponent record", step: "4" },
+            { href: "/admin/intelligence/claims", label: "Verify claims", step: "5" },
+          ].map((item) => {
+            const wf = getWorkflowStepByHref(item.href);
+            return (
+              <Link key={item.href} href={item.href} className={card}>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-violet-800">Step {item.step}</span>
+                <h2 className="mt-2 font-heading text-lg font-bold text-kelly-navy">{item.label}</h2>
+                <p className="mt-2 text-xs text-kelly-muted">
+                  {wf?.guide.whenToUse ?? item.label}
+                </p>
+                {wf ? (
+                  <p className="mt-2 line-clamp-4 text-[10px] leading-snug text-kelly-subtle">{wf.guide.howItFitsDebatePrep}</p>
+                ) : null}
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -110,6 +105,13 @@ export default function IntelligenceHubLaunchPage() {
         </div>
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
           <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Do not say</h2>
+          <p className="mt-2 text-xs text-kelly-muted">
+            Cross-check every line here against{" "}
+            <Link href="/admin/intelligence/claims" className="font-semibold text-kelly-navy underline">
+              claims
+            </Link>{" "}
+            before debate, interviews, or paid media. If a line appears in needs-research, cut it or use research-question framing.
+          </p>
           <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
             {hub.riskClaims.map((line) => (
               <li key={line}>{line}</li>

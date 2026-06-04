@@ -2,6 +2,9 @@ import Link from "next/link";
 import { composeIntelligenceCommandCenter } from "@/lib/intelligence/commandCenter/intelligenceCommandCenter";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
+import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { V4ExecutiveBriefPanel } from "@/components/admin/intelligence/v4/V4ExecutiveBrief";
+import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { CommandCenterDashboard } from "./CommandCenterDashboard";
 
 export const dynamic = "force-dynamic";
@@ -17,12 +20,23 @@ export default async function IntelligenceCommandCenterPage() {
     null,
   );
   if (!snapshot) {
+    const v4 = loadDebateIntelligenceV4Packet();
     return (
-      <div className="mx-auto max-w-2xl text-kelly-text">
-        <p className="text-sm text-kelly-muted">Command center snapshot unavailable. Use the hub or debate prep.</p>
-        <Link href="/admin/intelligence" className="mt-2 inline-block text-sm font-bold text-kelly-navy underline">
-          Back to start here
-        </Link>
+      <div className="mx-auto max-w-7xl text-kelly-text">
+        <V4PageHeader
+          eyebrow="Intel command center · v4 fallback"
+          title="Lightweight debate overview"
+          description="Full NSI-16 command center snapshot did not load within launch limits. Use v4 executive brief and primary debate routes below."
+        >
+          <V4BackLinks />
+          <Link href="/admin/intelligence/debate-command" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
+            Debate command
+          </Link>
+        </V4PageHeader>
+        <V4ExecutiveBriefPanel brief={v4.executiveBrief} scorecard={v4.readinessScorecard} />
+        <p className="mt-4 text-xs text-kelly-muted">
+          Staff: retry command center off-peak or disable launch mode after debate week for the full war-room dashboard.
+        </p>
       </div>
     );
   }

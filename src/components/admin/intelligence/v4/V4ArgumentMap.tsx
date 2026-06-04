@@ -1,4 +1,6 @@
 import type { V4LikelyArgument, V4RebuttalCard } from "@/lib/intelligence/v4/debateIntelligenceV4Types";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 
 export function V4ArgumentMap({
   arguments: args,
@@ -9,8 +11,11 @@ export function V4ArgumentMap({
 }) {
   const norm = (s: string) => s.toLowerCase().replaceAll("_", " ");
   const rebuttalByPrompt = new Map(rebuttals.map((r) => [norm(r.prompt), r]));
+  const guide = getSurfaceGuide("argumentMap");
   return (
-    <div className="space-y-3">
+    <div>
+      {guide ? <V4OperatorGuide guide={guide} /> : null}
+      <div className="mt-4 space-y-3">
       {args.map((arg) => {
         const rebuttal = rebuttalByPrompt.get(norm(arg.id));
         return (
@@ -35,6 +40,7 @@ export function V4ArgumentMap({
           </div>
         );
       })}
+      </div>
     </div>
   );
 }

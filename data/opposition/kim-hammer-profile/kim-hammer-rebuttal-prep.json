@@ -72,6 +72,46 @@
       "kellyBridge": "We can protect process integrity and preserve direct democracy access.",
       "sourceCategory": "bill_packet + direct_democracy_theme",
       "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "prompt": "petition_rules",
+      "agreeWhereValid": "Ballot integrity in petition drives matters.",
+      "contrastMethod": "Process rules should not bury lawful signature gatherers or counties in unfunded compliance.",
+      "kellyBridge": "Security and citizen access can both be protected with clear SOS guidance.",
+      "sourceCategory": "bill_packet + theme_matrix",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "prompt": "county_accountability",
+      "agreeWhereValid": "Counties should run elections competently and transparently.",
+      "contrastMethod": "Accountability requires state support — training, funding, and realistic timelines.",
+      "kellyBridge": "Kelly's SOS office would partner with clerks, not only audit them.",
+      "sourceCategory": "county_administration_burden",
+      "evidenceStatus": "INTERPRETATION"
+    },
+    {
+      "prompt": "paper_ballots_transparency",
+      "agreeWhereValid": "Voter confidence benefits from tangible ballots and clear procedures.",
+      "contrastMethod": "Transparency means voters can understand rules — not blanket records exemptions.",
+      "kellyBridge": "Trust grows when processes are open and counties are supported.",
+      "sourceCategory": "SB488 + transparency_theme",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "prompt": "heritage_ranking",
+      "agreeWhereValid": "Arkansas should be proud of secure elections.",
+      "contrastMethod": "Rankings are not substitutes for county implementation support or voter access.",
+      "kellyBridge": "Integrity is measured by what voters and clerks experience locally.",
+      "sourceCategory": "campaign_press + NEEDS_REVIEW methodology",
+      "evidenceStatus": "NEEDS_REVIEW"
+    },
+    {
+      "prompt": "knows_the_office",
+      "agreeWhereValid": "Writing law gives familiarity with statutes.",
+      "contrastMethod": "SOS is a service agency for counties and voters — not a legislator's extension office.",
+      "kellyBridge": "Kelly will administer calmly, train counties, and keep participation lawful and accessible.",
+      "sourceCategory": "bill_index + SOS_service_frame",
+      "evidenceStatus": "INTERPRETATION"
     }
   ]
 }

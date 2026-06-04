@@ -1,5 +1,7 @@
 import { loadSafeDebateCommandPageData } from "@/lib/intelligence/safeDebateCommandLoads";
 import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 import { V3ResearchIntro } from "@/components/admin/intelligence/v3/V3ResearchIntro";
 import { PrepareLlmEvidencePacketButton } from "@/components/admin/intelligence/PrepareLlmEvidencePacketButton";
 import Link from "next/link";
@@ -32,13 +34,20 @@ export default async function DebateCommandCenterPage() {
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.24em] text-kelly-subtle">Executive Debate Command Center</p>
         <h1 className="font-heading text-3xl font-bold">Debate command</h1>
         <p className="mt-2 max-w-4xl font-body text-sm text-kelly-muted">
-          Readiness scores, recommended lanes, and warnings — internal draft only. Pair with{" "}
+          Step 3 — sanity-check before lights go up. Scores show where research is thin; message lanes show what is safe to
+          say on stage. Open after debate prep skim; if a lane is BLOCKED, use county service frame instead. Pair with{" "}
           <Link href="/admin/intelligence/kim-hammer/debate-prep" className="font-semibold text-kelly-navy underline">
             debate prep
           </Link>{" "}
-          for rehearsal.
+          and{" "}
+          <Link href="/admin/intelligence/claims" className="font-semibold text-kelly-navy underline">
+            claims
+          </Link>
+          .
         </p>
       </header>
+
+      {getSurfaceGuide("debateCommand") ? <V4OperatorGuide guide={getSurfaceGuide("debateCommand")!} /> : null}
 
       <section className={`${card} mb-6 border-2 border-violet-800/25 bg-violet-50/30`}>
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Public-Brief-Grade Debate Intelligence</h2>

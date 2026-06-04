@@ -10,6 +10,7 @@ import {
   DEBATE_WEEK_EXTENDED_NAV_ITEMS,
   DEBATE_WEEK_NAV_ITEMS,
   DEBATE_WEEK_PRIMARY_NAV_ITEMS,
+  describeDebateWeekRoute,
 } from "@/lib/intelligence/debate-week-nav";
 
 const base =
@@ -45,8 +46,16 @@ export function IntelligenceDebateSubnav() {
     DEBATE_WEEK_NAV_ITEMS.map((item) => ({ href: item.href })),
   );
 
+  const routeGuide = describeDebateWeekRoute(pathname);
+
   return (
     <nav className="mb-6 space-y-2 border-b border-kelly-text/10 bg-kelly-page/90 pb-3" aria-label="Debate week intelligence">
+      {routeGuide ? (
+        <p className="rounded-lg border border-sky-100 bg-sky-50/50 px-3 py-2 text-xs leading-relaxed text-sky-950">
+          <span className="font-bold uppercase text-sky-900">This screen: </span>
+          {routeGuide}
+        </p>
+      ) : null}
       <div>
         <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-violet-900">Your path</p>
         <div className="flex flex-wrap items-center gap-1.5">

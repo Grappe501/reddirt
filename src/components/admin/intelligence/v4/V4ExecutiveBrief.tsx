@@ -1,4 +1,6 @@
 import type { V4ExecutiveBrief, V4ReadinessDimension } from "@/lib/intelligence/v4/debateIntelligenceV4Types";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 
 function scoreTone(score: number): string {
   if (score >= 80) return "text-emerald-800";
@@ -13,10 +15,12 @@ export function V4ExecutiveBriefPanel({
   brief: V4ExecutiveBrief;
   scorecard: V4ReadinessDimension[];
 }) {
+  const guide = getSurfaceGuide("executiveBrief");
   return (
     <section className="mb-6 rounded-xl border-2 border-violet-900/20 bg-gradient-to-br from-violet-50/80 to-white p-5 shadow-sm">
       <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-violet-900">Executive brief · v4</p>
       <h2 className="mt-2 font-heading text-xl font-bold text-kelly-navy">{brief.headline}</h2>
+      {guide ? <V4OperatorGuide guide={guide} /> : null}
       <p className="mt-2 text-xs font-semibold text-violet-950">{brief.confidenceLabel} · archive {brief.archiveConfidenceScore}/100</p>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2">

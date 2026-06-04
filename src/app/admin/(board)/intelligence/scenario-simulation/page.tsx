@@ -4,6 +4,8 @@ import {
   summarizeStrategicScenarioSimulation,
 } from "@/lib/intelligence/strategicScenarioSimulation";
 import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 import { V3ResearchIntro } from "@/components/admin/intelligence/v3/V3ResearchIntro";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import type { StrategicScenarioSimulationResult } from "@/lib/intelligence/types/strategicScenarioSimulation";
@@ -59,7 +61,10 @@ export default async function ScenarioSimulationPage() {
   const registry = tryIntelligenceLoad("scenario-registry", () => loadStrategicScenarioRegistry(), {
     scenarios: [],
     generatedAt: new Date().toISOString(),
-  } as ReturnType<typeof loadStrategicScenarioRegistry>);
+    version: 1,
+    purpose: "fallback",
+    governanceDefaults: [],
+  } as unknown as ReturnType<typeof loadStrategicScenarioRegistry>);
   const summary = tryIntelligenceLoad("scenario-summary", () => summarizeStrategicScenarioSimulation(), {
     likelyOpponentAttacks: v4.likelyArguments.map((a) => a.argument).slice(0, 6),
     debateTrapWarnings: v4.weaknesses.map((w) => w.saferWording ?? w.label).slice(0, 4),
@@ -69,7 +74,7 @@ export default async function ScenarioSimulationPage() {
     evidenceDependencies: [],
     weakCitationWarnings: [],
     doctrineSafeResponseNotes: [],
-  } as ReturnType<typeof summarizeStrategicScenarioSimulation>);
+  } as unknown as ReturnType<typeof summarizeStrategicScenarioSimulation>);
 
   const familyLabels: Record<string, string> = {
     OPPONENT_RESPONSE: "Opponent response",
@@ -101,9 +106,13 @@ export default async function ScenarioSimulationPage() {
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">NSI-14 · Strategic Forecasting</p>
         <h1 className="font-heading text-2xl font-bold">Scenario Simulation Layer</h1>
         <p className="mt-2 max-w-4xl text-sm text-kelly-muted">
-          Governed scenario modeling — evidence-aware, doctrine-aware, explainable. {summary.scenarioModelLabel} ·
-          INTERNAL_ONLY · NON_PUBLISHABLE · HUMAN_REVIEW_REQUIRED. No autonomous decisions or voter-level scoring.
+          Step 3b — trap warnings before mock debate. Governed scenario modeling — evidence-aware, doctrine-aware,
+          explainable. {summary.scenarioModelLabel} ·
+          INTERNAL_ONLY · NON_PUBLISHABLE · HUMAN_REVIEW_REQUIRED.
         </p>
+        {getSurfaceGuide("scenarioSimulation") ? (
+          <V4OperatorGuide guide={getSurfaceGuide("scenarioSimulation")!} />
+        ) : null}
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
           <Link href="/admin/intelligence/morning-brief" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
             Morning brief

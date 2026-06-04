@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T16:46:26.663Z",
+  "generatedAt": "2026-06-03T12:00:00.000Z",
   "records": [
     {
       "id": "kh-runoff-media-clips-2026",
@@ -34,6 +34,28 @@
       "citationSourceId": "cit-src-clip-ar-sos-debate-2022-coverage",
       "retrievalNeeded": false,
       "createdAt": "2026-06-02T16:46:24.729Z"
+    },
+    {
+      "id": "kh-campaign-election-security-page",
+      "opponentId": "kim-hammer",
+      "title": "Hammer campaign election security issue page (reference)",
+      "url": "https://www.hammerforarkansas.com/election-security/",
+      "clipType": "MEDIA_COVERAGE",
+      "timestamp": null,
+      "citationSourceId": "cit-src-clip-kh-election-security-page",
+      "retrievalNeeded": true,
+      "createdAt": "2026-06-03T12:00:00.000Z"
+    },
+    {
+      "id": "kh-senate-floor-archive-reference",
+      "opponentId": "kim-hammer",
+      "title": "Arkansas Senate member page — committee and session reference",
+      "url": "https://senate.arkansas.gov/senators/576/",
+      "clipType": "REFERENCE_SOS",
+      "timestamp": null,
+      "citationSourceId": "cit-src-clip-kh-senate-profile",
+      "retrievalNeeded": false,
+      "createdAt": "2026-06-03T12:00:00.000Z"
     }
   ]
 }

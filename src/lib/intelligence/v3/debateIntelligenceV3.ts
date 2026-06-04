@@ -70,7 +70,7 @@ function loadBillNarratives(): V3BillNarrative[] {
 }
 
 function buildDebatePrepSections(
-  hub: ReturnType<typeof loadKimHammerWorkbenchHubSummary>,
+  hub: DebateIntelligenceV3Packet["hub"],
   layers: DebateIntelligenceV3Packet["researchLayers"],
   narratives: V3BillNarrative[],
 ): V3DebatePrepSection[] {
@@ -229,8 +229,8 @@ function buildOpponentModules(layers: DebateIntelligenceV3Packet["researchLayers
     {
       id: "likely-args",
       title: "Likely arguments",
-      summary: `${layers.likelyArguments.flatMap((s) => s.bullets).length} likely opponent lines with rebuttal method.`,
-      href: "/admin/intelligence/kim-hammer/rebuttal-prep",
+      summary: `${layers.likelyArguments.flatMap((s) => s.bullets).length} likely opponent lines — rebuttal map on debate prep.`,
+      href: "/admin/intelligence/kim-hammer/debate-prep",
     },
     {
       id: "contrast",
@@ -241,7 +241,7 @@ function buildOpponentModules(layers: DebateIntelligenceV3Packet["researchLayers
     {
       id: "themes",
       title: "Election record themes",
-      summary: "Theme matrix across Hammer election-law bills.",
+      summary: "v4 theme matrix — bill-linked clusters (Netlify-safe JSON load).",
       href: "/admin/intelligence/kim-hammer/themes",
     },
     {
@@ -323,7 +323,7 @@ export function findV3BillNarrative(
 export function findV3BillRow(packet: DebateIntelligenceV3Packet, billNumber: string): HammerBillRow | undefined {
   return packet.hub.strongestDebateAnchors.find(
     (row) => row.billNumber.toUpperCase() === billNumber.toUpperCase(),
-  ) ?? packet.hub.bills?.find?.((row: HammerBillRow) => row.billNumber.toUpperCase() === billNumber.toUpperCase());
+  );
 }
 
 function emptyV3Packet(): DebateIntelligenceV3Packet {
@@ -331,8 +331,6 @@ function emptyV3Packet(): DebateIntelligenceV3Packet {
     version: "3.0",
     generatedAt: new Date().toISOString(),
     hub: {
-      generatedAt: new Date().toISOString(),
-      bills: [],
       totalBills: 0,
       enactedActs: 0,
       researchConfidenceScore: 0,

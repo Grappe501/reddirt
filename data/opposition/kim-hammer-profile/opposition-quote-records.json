@@ -1,5 +1,62 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-02T16:46:26.663Z",
-  "records": []
+  "generatedAt": "2026-06-03T12:00:00.000Z",
+  "records": [
+    {
+      "id": "kh-quote-integrity-ranking-2025-06",
+      "opponentId": "kim-hammer",
+      "quoteText": "Campaign statement on Arkansas ranked #1 for election integrity (Heritage scorecard release) — verify exact wording on source page before debate citation.",
+      "context": "Press statement paraphrase; NEEDS_REVIEW for verbatim quote and methodology.",
+      "sourceUrlOrPath": "https://www.hammerforarkansas.com/2025/06/03/secretary-of-state-candidate-senator-kim-hammer-releases-statement-on-arkansas-rank-as-1-in-the-nation-for-election-integrity/",
+      "date": "2025-06-03",
+      "citationSourceId": "cit-src-quote-kh-integrity-ranking-2025",
+      "citationAnchorId": null,
+      "usable": false,
+      "unusableReason": "Paraphrase only — needs verbatim pull and ranking methodology review",
+      "publicUseRisk": "HIGH",
+      "createdAt": "2026-06-03T12:00:00.000Z"
+    },
+    {
+      "id": "kh-quote-election-security-page",
+      "opponentId": "kim-hammer",
+      "quoteText": "Campaign election-security issue page emphasizes lawful votes, fraud deterrence, and act list — paraphrase for internal rehearsal.",
+      "context": "Issue-page themes; not a direct quote card for public use.",
+      "sourceUrlOrPath": "https://www.hammerforarkansas.com/election-security/",
+      "date": null,
+      "citationSourceId": "cit-src-quote-kh-election-security-page",
+      "citationAnchorId": null,
+      "usable": false,
+      "unusableReason": "Paraphrase of issue page — extract verbatim quotes in next retrieval pass",
+      "publicUseRisk": "MEDIUM",
+      "createdAt": "2026-06-03T12:00:00.000Z"
+    },
+    {
+      "id": "kh-quote-about-tenure",
+      "opponentId": "kim-hammer",
+      "quoteText": "About page highlights Senate service and community leadership — usable for experience-lane acknowledgment only with official bio citation.",
+      "context": "Experience / knows-the-office rebuttal setup; verify verbatim before TV.",
+      "sourceUrlOrPath": "https://www.hammerforarkansas.com/about/",
+      "date": null,
+      "citationSourceId": "cit-src-quote-kh-about-tenure",
+      "citationAnchorId": null,
+      "usable": true,
+      "unusableReason": null,
+      "publicUseRisk": "LOW",
+      "createdAt": "2026-06-03T12:00:00.000Z"
+    },
+    {
+      "id": "kh-quote-runoff-coverage-paraphrase",
+      "opponentId": "kim-hammer",
+      "quoteText": "Local runoff coverage references Hammer emphasizing election integrity — extract exact quote from article before use.",
+      "context": "KATV runoff coverage; NEEDS_REVIEW.",
+      "sourceUrlOrPath": "https://katv.com/news/hammer-brings-the-hammer-kim-hammer-wins-arkansas-secretary-of-state-runoff",
+      "date": null,
+      "citationSourceId": "cit-src-quote-kh-runoff-coverage",
+      "citationAnchorId": null,
+      "usable": false,
+      "unusableReason": "News paraphrase — needs journalist quote verification",
+      "publicUseRisk": "MEDIUM",
+      "createdAt": "2026-06-03T12:00:00.000Z"
+    }
+  ]
 }

@@ -97,11 +97,23 @@ function loadArchiveConfidence(hub: DebateIntelligenceV4Packet["hub"]): { score:
   } catch {
     /* optional */
   }
+  let quotes = 0;
+  let usableQuotes = 0;
   try {
     const clipFile = readJson<{ records?: unknown[] }>(
       "data/opposition/kim-hammer-profile/opposition-clip-records.json",
     );
     clips = clipFile.records?.length ?? 0;
+  } catch {
+    /* optional */
+  }
+  try {
+    const quoteFile = readJson<{
+      records?: Array<{ usableForDebate?: boolean; usableForRapidResponse?: boolean }>;
+    }>("data/opposition/kim-hammer-profile/opposition-quote-records.json");
+    quotes = quoteFile.records?.length ?? 0;
+    usableQuotes =
+      quoteFile.records?.filter((r) => r.usableForDebate || r.usableForRapidResponse).length ?? 0;
   } catch {
     /* optional */
   }
@@ -126,8 +138,8 @@ function loadArchiveConfidence(hub: DebateIntelligenceV4Packet["hub"]): { score:
 
   return computeOppositionBriefConfidence({
     sourceCount: sources,
-    directQuoteCount: 0,
-    usableQuoteCount: 0,
+    directQuoteCount: quotes,
+    usableQuoteCount: usableQuotes,
     directClipCount: clips,
     authoredWritingCount: writings,
     billRecordCount: hub.totalBills,
@@ -178,7 +190,10 @@ function buildReadinessScorecard(
   v3Base: ReturnType<typeof loadDebateIntelligenceV3Packet>,
   archiveScore: number,
 ): V4ReadinessDimension[] {
-  const narrativeCoverage = Math.min(100, Math.round((v3Base.billNarratives.length / 11) * 100));
+  const narrativeCoverage = Math.min(
+    100,
+    Math.round((v3Base.billNarratives.length / Math.max(v3Base.hub.totalBills, 1)) * 100),
+  );
   const claimsReady = Math.max(
     0,
     Math.round(
