@@ -3,7 +3,7 @@ import { listDebateWeekClaims } from "@/lib/intelligence/claims/debateClaimsSeed
 import { listClaimsForAdmin, summarizeClaimLedger } from "@/lib/intelligence/claims/claimLedgerSummary";
 import { ClaimsDebateWeekPanel } from "@/components/admin/intelligence/claims/ClaimsDebateWeekPanel";
 import { loadCitationAnchors, loadCitationSources } from "@/lib/intelligence/claims/claimLedgerStore";
-import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
@@ -22,7 +22,7 @@ function riskTone(risk: string): string {
 }
 
 export default async function ClaimsLedgerPage() {
-  const v4 = loadDebateIntelligenceV4Packet();
+  const v4 = loadDebateIntelligenceV4HubPacket();
   const summary = tryIntelligenceLoad("claim-ledger-summary", () => summarizeClaimLedger(), {
     totalClaims: v4.hub.claims.supported.length + v4.hub.claims.partial.length + v4.hub.claims.needsResearch.length,
     verifiedClaims: v4.hub.claims.supported.length,

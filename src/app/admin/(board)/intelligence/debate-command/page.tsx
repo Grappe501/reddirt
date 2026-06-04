@@ -1,5 +1,9 @@
+import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 import { loadSafeDebateCommandPageData } from "@/lib/intelligence/safeDebateCommandLoads";
-import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import {
+  loadDebateIntelligenceV4HubPacket,
+  loadDebateIntelligenceV4Packet,
+} from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 import { V3ResearchIntro } from "@/components/admin/intelligence/v3/V3ResearchIntro";
@@ -19,7 +23,8 @@ function scoreTone(score: number): string {
 }
 
 export default async function DebateCommandCenterPage() {
-  const v4 = loadDebateIntelligenceV4Packet();
+  const launchMode = isIntelligenceOppositionDebateLaunchMode();
+  const v4 = launchMode ? loadDebateIntelligenceV4HubPacket() : loadDebateIntelligenceV4Packet();
   const { state, briefPack, civicDebate, graphSummary, scenarioPrep, messageIntel, legislativeRollup } =
     loadSafeDebateCommandPageData();
 

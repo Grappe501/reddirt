@@ -5,6 +5,7 @@ import { summarizeCampaignIntelligenceGraph } from "@/lib/intelligence/campaignI
 import { summarizeDebateScenarioPrep } from "@/lib/intelligence/strategicScenarioSimulation";
 import { buildMessageIntelligenceEngine } from "@/lib/intelligence/messageIntelligence/messageIntelligenceEngine";
 import { buildLegislativeVideoIntelligenceRollup } from "@/lib/legislature/legislativeVideoIntelligenceRollup";
+import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 
 type DebateCommandState = ReturnType<typeof buildDebateCommandCenterState>;
@@ -91,7 +92,21 @@ const EMPTY_LEGISLATIVE_ROLLUP = {
   automationNote: "Legislative video rollup unavailable",
 } as unknown as LegislativeVideoRollup;
 
+const LAUNCH_MODE_DEBATE_COMMAND_DATA = {
+  state: EMPTY_DEBATE_COMMAND_STATE,
+  briefPack: EMPTY_BRIEF_PACK,
+  civicDebate: EMPTY_DEBATE_MESSAGING,
+  graphSummary: EMPTY_GRAPH_SUMMARY,
+  scenarioPrep: EMPTY_SCENARIO_PREP,
+  messageIntel: EMPTY_MESSAGE_INTEL,
+  legislativeRollup: EMPTY_LEGISLATIVE_ROLLUP,
+};
+
 export function loadSafeDebateCommandPageData() {
+  if (isIntelligenceOppositionDebateLaunchMode()) {
+    return LAUNCH_MODE_DEBATE_COMMAND_DATA;
+  }
+
   const state = tryIntelligenceLoad("debate-command-state", () => buildDebateCommandCenterState(), EMPTY_DEBATE_COMMAND_STATE);
   const briefPack = tryIntelligenceLoad("debate-brief-pack", () => generateOppositionDebateBriefPack(), EMPTY_BRIEF_PACK);
   const civicDebate = tryIntelligenceLoad("debate-messaging", () => summarizeDebateCommandMessaging(), EMPTY_DEBATE_MESSAGING);

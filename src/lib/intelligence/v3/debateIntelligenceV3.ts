@@ -5,9 +5,13 @@ import {
   parseClaimsReview,
   type HammerBillRow,
 } from "@/lib/opposition/kimHammerWorkbench";
+import { getCachedDebatePacket } from "@/lib/intelligence/debateIntelligencePacketCache";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { readMarkdownSections, sectionBulletsFromMarkdown } from "@/lib/intelligence/v3/markdownSections";
 import type { DebateIntelligenceV3Packet, V3BillNarrative, V3DebatePrepSection } from "@/lib/intelligence/v3/debateIntelligenceV3Types";
+
+/** full = all markdown; hub = debate-week core (5 docs); surface = JSON hub only. */
+export type DebateIntelligenceV3Profile = "full" | "hub" | "surface";
 
 const ROOT = process.cwd();
 
@@ -259,56 +263,94 @@ function buildOpponentModules(layers: DebateIntelligenceV3Packet["researchLayers
   ];
 }
 
-export function loadDebateIntelligenceV3Packet(): DebateIntelligenceV3Packet {
-  return tryIntelligenceLoad("debate-intelligence-v3", () => {
-    const hubSummary = loadKimHammerWorkbenchHubSummary();
-    const claimsMd = readText(DOCS.claimsReview);
-    const claims = parseClaimsReview(claimsMd);
-    const reportQuestions = sectionBulletsFromMarkdown(DOCS.messageGuidance, "Questions Voters/Reporters May Ask");
-    const countyOfficialConcerns = sectionBulletsFromMarkdown(DOCS.messageGuidance, "County Official Concerns To Verify");
-    const directDemocracyConcerns = sectionBulletsFromMarkdown(
-      DOCS.messageGuidance,
-      "Direct Democracy Advocate Critiques To Verify",
-    );
+function emptyResearchLayers(): DebateIntelligenceV3Packet["researchLayers"] {
+  return {
+    debateProfile: [],
+    likelyArguments: [],
+    contrastVsKelly: [],
+    strengthsWeaknesses: [],
+    messageGuidance: [],
+    intelligenceGaps: [],
+    publicDossier: [],
+    kh3DeepResearch: [],
+    websiteAnalysis: [],
+  };
+}
 
-    const hub = {
-      ...hubSummary,
-      reportQuestions: reportQuestions.length ? reportQuestions : hubSummary.topQuestions,
-      countyOfficialConcerns,
-      directDemocracyConcerns,
-      claims: {
-        supported: claims.filter((c) => c.assessment === "supported"),
-        partial: claims.filter((c) => c.assessment === "partially supported"),
-        needsResearch: claims.filter((c) => c.assessment === "needs more research"),
-      },
-    };
+function loadV3HubFields(): DebateIntelligenceV3Packet["hub"] {
+  const hubSummary = loadKimHammerWorkbenchHubSummary();
+  const claimsMd = readText(DOCS.claimsReview);
+  const claims = parseClaimsReview(claimsMd);
+  const reportQuestions = sectionBulletsFromMarkdown(DOCS.messageGuidance, "Questions Voters/Reporters May Ask");
+  const countyOfficialConcerns = sectionBulletsFromMarkdown(DOCS.messageGuidance, "County Official Concerns To Verify");
+  const directDemocracyConcerns = sectionBulletsFromMarkdown(
+    DOCS.messageGuidance,
+    "Direct Democracy Advocate Critiques To Verify",
+  );
 
-    const researchLayers = {
-      debateProfile: readMarkdownSections(DOCS.debateProfile),
-      likelyArguments: readMarkdownSections(DOCS.likelyArguments),
-      contrastVsKelly: readMarkdownSections(DOCS.contrast),
-      strengthsWeaknesses: readMarkdownSections(DOCS.strengths),
-      messageGuidance: readMarkdownSections(DOCS.messageGuidance),
-      intelligenceGaps: readMarkdownSections(DOCS.intelligenceGaps),
-      publicDossier: readMarkdownSections(DOCS.dossier).slice(0, 12),
-      kh3DeepResearch: readMarkdownSections(DOCS.kh3).slice(0, 10),
-      websiteAnalysis: readMarkdownSections(DOCS.website).slice(0, 8),
-    };
+  return {
+    ...hubSummary,
+    reportQuestions: reportQuestions.length ? reportQuestions : hubSummary.topQuestions,
+    countyOfficialConcerns,
+    directDemocracyConcerns,
+    claims: {
+      supported: claims.filter((c) => c.assessment === "supported"),
+      partial: claims.filter((c) => c.assessment === "partially supported"),
+      needsResearch: claims.filter((c) => c.assessment === "needs more research"),
+    },
+  };
+}
 
-    const billNarratives = loadBillNarratives();
-    const debatePrepSections = buildDebatePrepSections(hub, researchLayers, billNarratives);
-    const opponentModules = buildOpponentModules(researchLayers);
+function loadV3ResearchLayers(profile: DebateIntelligenceV3Profile): DebateIntelligenceV3Packet["researchLayers"] {
+  if (profile === "surface") return emptyResearchLayers();
 
-    return {
-      version: "3.0",
-      generatedAt: hubSummary.generatedAt,
-      hub,
-      researchLayers,
-      billNarratives,
-      debatePrepSections,
-      opponentModules,
-    };
-  }, emptyV3Packet());
+  const core = {
+    debateProfile: readMarkdownSections(DOCS.debateProfile),
+    likelyArguments: readMarkdownSections(DOCS.likelyArguments),
+    contrastVsKelly: readMarkdownSections(DOCS.contrast),
+    messageGuidance: readMarkdownSections(DOCS.messageGuidance),
+    intelligenceGaps: readMarkdownSections(DOCS.intelligenceGaps),
+  };
+
+  if (profile === "hub") {
+    return { ...core, strengthsWeaknesses: [], publicDossier: [], kh3DeepResearch: [], websiteAnalysis: [] };
+  }
+
+  return {
+    ...core,
+    strengthsWeaknesses: readMarkdownSections(DOCS.strengths),
+    publicDossier: readMarkdownSections(DOCS.dossier).slice(0, 12),
+    kh3DeepResearch: readMarkdownSections(DOCS.kh3).slice(0, 10),
+    websiteAnalysis: readMarkdownSections(DOCS.website).slice(0, 8),
+  };
+}
+
+function buildV3Packet(profile: DebateIntelligenceV3Profile): DebateIntelligenceV3Packet {
+  const hubSummary = loadKimHammerWorkbenchHubSummary();
+  const hub = loadV3HubFields();
+  const researchLayers = loadV3ResearchLayers(profile);
+  const billNarratives = profile === "surface" ? [] : loadBillNarratives();
+  const debatePrepSections =
+    profile === "surface" ? [] : buildDebatePrepSections(hub, researchLayers, billNarratives);
+  const opponentModules = profile === "surface" ? [] : buildOpponentModules(researchLayers);
+
+  return {
+    version: "3.0",
+    generatedAt: hubSummary.generatedAt,
+    hub,
+    researchLayers,
+    billNarratives,
+    debatePrepSections,
+    opponentModules,
+  };
+}
+
+export function loadDebateIntelligenceV3Packet(
+  profile: DebateIntelligenceV3Profile = "full",
+): DebateIntelligenceV3Packet {
+  return getCachedDebatePacket(`v3:${profile}`, () =>
+    tryIntelligenceLoad(`debate-intelligence-v3:${profile}`, () => buildV3Packet(profile), emptyV3Packet()),
+  );
 }
 
 export function findV3BillNarrative(

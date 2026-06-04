@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { V4ThemeMatrix } from "@/components/admin/intelligence/v4/V4ThemeMatrix";
@@ -7,7 +7,7 @@ import { V4ArgumentMap } from "@/components/admin/intelligence/v4/V4ArgumentMap"
 import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3SectionStack";
 
 export default function KimHammerCommandCenterV3() {
-  const v4 = loadDebateIntelligenceV4Packet();
+  const v4 = loadDebateIntelligenceV4HubPacket();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">

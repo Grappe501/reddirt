@@ -2,7 +2,7 @@ import Link from "next/link";
 import fs from "node:fs";
 import path from "node:path";
 import { parseClaimsReview } from "@/lib/opposition/kimHammerWorkbench";
-import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { listDebateWeekClaims } from "@/lib/intelligence/claims/debateClaimsSeed";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
@@ -15,7 +15,7 @@ export const maxDuration = 26;
 
 /** Netlify-safe claims review — markdown table + ledger queue (no full workbench graph). */
 export default function KimHammerClaimsReviewPage() {
-  const v4 = loadDebateIntelligenceV4Packet();
+  const v4 = loadDebateIntelligenceV4HubPacket();
   const debateClaims = tryIntelligenceLoad("debate-week-claims", () => listDebateWeekClaims(), []);
 
   const claimsMd = fs.readFileSync(

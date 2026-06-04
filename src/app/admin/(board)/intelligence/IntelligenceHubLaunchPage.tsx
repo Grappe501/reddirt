@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getSurfaceGuide, getWorkflowStepByHref } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { V4ExecutiveBriefPanel } from "@/components/admin/intelligence/v4/V4ExecutiveBrief";
@@ -17,7 +17,7 @@ const card =
  * Intelligence v4 hub — v3 markdown/JSON packet plus structured opposition profile JSON.
  */
 export default function IntelligenceHubLaunchPage() {
-  const v4 = loadDebateIntelligenceV4Packet();
+  const v4 = loadDebateIntelligenceV4HubPacket();
   const { hub } = v4;
 
   return (

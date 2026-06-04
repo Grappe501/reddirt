@@ -1,9 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import { computeOppositionBriefConfidence } from "@/lib/opposition/oppositionBriefConfidence";
-import { loadDebateIntelligenceV3Packet } from "@/lib/intelligence/v3/debateIntelligenceV3";
+import { getCachedDebatePacket } from "@/lib/intelligence/debateIntelligencePacketCache";
+import {
+  loadDebateIntelligenceV3Packet,
+  type DebateIntelligenceV3Profile,
+} from "@/lib/intelligence/v3/debateIntelligenceV3";
 import type { V3DebatePrepSection } from "@/lib/intelligence/v3/debateIntelligenceV3Types";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
+import type { DebateIntelligenceV3Packet } from "@/lib/intelligence/v3/debateIntelligenceV3Types";
 import type {
   DebateIntelligenceV4Packet,
   V4ExecutiveBrief,
@@ -336,7 +341,148 @@ function buildV4DebatePrepSections(
   return [...base, ...extension];
 }
 
-function emptyV4Extension(v3: ReturnType<typeof loadDebateIntelligenceV3Packet>): DebateIntelligenceV4Packet {
+/** full = all markdown + v4 JSON; hub = core markdown + v4 JSON; surface = JSON hub + theme/timeline only. */
+export type DebateIntelligenceV4Profile = DebateIntelligenceV3Profile;
+
+function loadV4JsonExtensions(): Pick<
+  DebateIntelligenceV4Packet,
+  | "likelyArguments"
+  | "rebuttalPlaybook"
+  | "strengths"
+  | "weaknesses"
+  | "retrievalQueue"
+  | "intelligenceGaps"
+  | "rapidResponseAssets"
+> {
+  const likelyArguments = readJson<{ arguments: DebateIntelligenceV4Packet["likelyArguments"] }>(
+    "data/opposition/kim-hammer-profile/kim-hammer-likely-arguments.json",
+  ).arguments;
+
+  const rebuttalPlaybook = readJson<{ rebuttals: DebateIntelligenceV4Packet["rebuttalPlaybook"] }>(
+    "data/opposition/kim-hammer-profile/kim-hammer-rebuttal-prep.json",
+  ).rebuttals;
+
+  const strengths = readJson<{ strengths: Array<{ id: string; strength: string; evidenceStatus: string; sourceConfidence: string; sources: string[] }> }>(
+    "data/opposition/kim-hammer-profile/kim-hammer-strengths-matrix.json",
+  ).strengths.map((s) => ({
+    id: s.id,
+    label: s.strength,
+    evidenceStatus: s.evidenceStatus,
+    sourceConfidence: s.sourceConfidence,
+    sources: s.sources,
+  }));
+
+  const weaknesses = readJson<{
+    weaknesses: Array<{
+      id: string;
+      weakness: string;
+      evidenceStatus: string;
+      sourceConfidence: string;
+      debateUsefulness?: string;
+      saferWording?: string;
+      sources: string[];
+    }>;
+  }>("data/opposition/kim-hammer-profile/kim-hammer-vulnerability-matrix.json").weaknesses.map((w) => ({
+    id: w.id,
+    label: w.weakness,
+    evidenceStatus: w.evidenceStatus,
+    sourceConfidence: w.sourceConfidence,
+    debateUsefulness: w.debateUsefulness,
+    saferWording: w.saferWording,
+    sources: w.sources,
+  }));
+
+  const retrievalQueue = readJson<{
+    tasks: Array<{
+      id: string;
+      priority: string;
+      description: string;
+      taskStatus: string;
+      closureStatus: string;
+      recommendedHumanAction: string;
+    }>;
+  }>("data/opposition/kim-hammer-profile/opposition-retrieval-tasks.json")
+    .tasks.slice(0, 8)
+    .map((t) => ({
+      id: t.id,
+      priority: t.priority,
+      description: t.description,
+      taskStatus: t.taskStatus,
+      closureStatus: t.closureStatus,
+      recommendedHumanAction: t.recommendedHumanAction,
+    }));
+
+  const intelligenceGaps = readJson<{
+    gaps: Array<{ id: string; priority: string; description: string; externalMessageReadiness: string }>;
+  }>("data/opposition/kim-hammer-profile/kim-hammer-intelligence-gaps.json").gaps.slice(0, 10);
+
+  const rapidResponseAssets = readJson<{
+    evidenceLocker: Array<{ id: string; category: string; asset: string; verificationStatus: string }>;
+  }>("data/opposition/kim-hammer-profile/kim-hammer-kh3-rapid-response-appendix.json").evidenceLocker;
+
+  return {
+    likelyArguments,
+    rebuttalPlaybook,
+    strengths,
+    weaknesses,
+    retrievalQueue,
+    intelligenceGaps,
+    rapidResponseAssets,
+  };
+}
+
+function emptyV4JsonExtensions(): ReturnType<typeof loadV4JsonExtensions> {
+  return {
+    likelyArguments: [],
+    rebuttalPlaybook: [],
+    strengths: [],
+    weaknesses: [],
+    retrievalQueue: [],
+    intelligenceGaps: [],
+    rapidResponseAssets: [],
+  };
+}
+
+function buildV4Packet(profile: DebateIntelligenceV4Profile): DebateIntelligenceV4Packet {
+  const v3Profile: DebateIntelligenceV3Profile = profile;
+  const v3 = loadDebateIntelligenceV3Packet(v3Profile);
+  const themeMatrix = loadThemeMatrix();
+  const timeline = loadTimeline();
+  const integrity2021 = profile === "surface" ? null : loadIntegrity2021();
+  const archive = loadArchiveConfidence(v3.hub);
+  const json =
+    profile === "surface" ? emptyV4JsonExtensions() : loadV4JsonExtensions();
+
+  const executiveBrief = buildExecutiveBrief(v3, themeMatrix, archive);
+  const readinessScorecard = buildReadinessScorecard(v3, archive.score);
+  const rehearsalDeck = profile === "surface" ? [] : buildRehearsalDeck(v3);
+
+  const core: Omit<DebateIntelligenceV4Packet, "debatePrepSectionsV4"> = {
+    ...v3,
+    version: "4.0",
+    executiveBrief,
+    readinessScorecard,
+    themeMatrix,
+    timeline,
+    integrity2021,
+    retrievalQueue: json.retrievalQueue,
+    intelligenceGaps: json.intelligenceGaps,
+    rapidResponseAssets: json.rapidResponseAssets,
+    likelyArguments: json.likelyArguments,
+    rebuttalPlaybook: json.rebuttalPlaybook,
+    strengths: json.strengths,
+    weaknesses: json.weaknesses,
+    rehearsalDeck,
+  };
+
+  return {
+    ...core,
+    debatePrepSectionsV4:
+      profile === "surface" ? [] : buildV4DebatePrepSections(v3, core),
+  };
+}
+
+function emptyV4Extension(v3: DebateIntelligenceV3Packet): DebateIntelligenceV4Packet {
   const archive = { score: 0, basis: "not loaded" };
   const partial = {
     ...v3,
@@ -366,107 +512,63 @@ function emptyV4Extension(v3: ReturnType<typeof loadDebateIntelligenceV3Packet>)
   return partial;
 }
 
-export function loadDebateIntelligenceV4Packet(): DebateIntelligenceV4Packet {
-  return tryIntelligenceLoad("debate-intelligence-v4", () => {
-    const v3 = loadDebateIntelligenceV3Packet();
-    const themeMatrix = loadThemeMatrix();
-    const timeline = loadTimeline();
-    const integrity2021 = loadIntegrity2021();
-    const archive = loadArchiveConfidence(v3.hub);
+export function loadDebateIntelligenceV4Packet(
+  profile: DebateIntelligenceV4Profile = "full",
+): DebateIntelligenceV4Packet {
+  return getCachedDebatePacket(`v4:${profile}`, () =>
+    tryIntelligenceLoad(
+      `debate-intelligence-v4:${profile}`,
+      () => buildV4Packet(profile),
+      emptyV4Extension(emptyV3PacketForV4Fallback()),
+    ),
+  );
+}
 
-    const likelyArguments = readJson<{ arguments: DebateIntelligenceV4Packet["likelyArguments"] }>(
-      "data/opposition/kim-hammer-profile/kim-hammer-likely-arguments.json",
-    ).arguments;
+/** Hub, debate prep index, claims — skips dossier/KH-3/website markdown. */
+export function loadDebateIntelligenceV4HubPacket(): DebateIntelligenceV4Packet {
+  return loadDebateIntelligenceV4Packet("hub");
+}
 
-    const rebuttalPlaybook = readJson<{ rebuttals: DebateIntelligenceV4Packet["rebuttalPlaybook"] }>(
-      "data/opposition/kim-hammer-profile/kim-hammer-rebuttal-prep.json",
-    ).rebuttals;
+/** Themes/timeline — JSON only, no markdown parse. */
+export function loadDebateIntelligenceV4SurfacePacket(): DebateIntelligenceV4Packet {
+  return loadDebateIntelligenceV4Packet("surface");
+}
 
-    const strengths = readJson<{ strengths: Array<{ id: string; strength: string; evidenceStatus: string; sourceConfidence: string; sources: string[] }> }>(
-      "data/opposition/kim-hammer-profile/kim-hammer-strengths-matrix.json",
-    ).strengths.map((s) => ({
-      id: s.id,
-      label: s.strength,
-      evidenceStatus: s.evidenceStatus,
-      sourceConfidence: s.sourceConfidence,
-      sources: s.sources,
-    }));
-
-    const weaknesses = readJson<{
-      weaknesses: Array<{
-        id: string;
-        weakness: string;
-        evidenceStatus: string;
-        sourceConfidence: string;
-        debateUsefulness?: string;
-        saferWording?: string;
-        sources: string[];
-      }>;
-    }>("data/opposition/kim-hammer-profile/kim-hammer-vulnerability-matrix.json").weaknesses.map((w) => ({
-      id: w.id,
-      label: w.weakness,
-      evidenceStatus: w.evidenceStatus,
-      sourceConfidence: w.sourceConfidence,
-      debateUsefulness: w.debateUsefulness,
-      saferWording: w.saferWording,
-      sources: w.sources,
-    }));
-
-    const retrievalQueue = readJson<{
-      tasks: Array<{
-        id: string;
-        priority: string;
-        description: string;
-        taskStatus: string;
-        closureStatus: string;
-        recommendedHumanAction: string;
-      }>;
-    }>("data/opposition/kim-hammer-profile/opposition-retrieval-tasks.json")
-      .tasks.slice(0, 8)
-      .map((t) => ({
-        id: t.id,
-        priority: t.priority,
-        description: t.description,
-        taskStatus: t.taskStatus,
-        closureStatus: t.closureStatus,
-        recommendedHumanAction: t.recommendedHumanAction,
-      }));
-
-    const intelligenceGaps = readJson<{
-      gaps: Array<{ id: string; priority: string; description: string; externalMessageReadiness: string }>;
-    }>("data/opposition/kim-hammer-profile/kim-hammer-intelligence-gaps.json").gaps.slice(0, 10);
-
-    const rapidResponseAssets = readJson<{
-      evidenceLocker: Array<{ id: string; category: string; asset: string; verificationStatus: string }>;
-    }>("data/opposition/kim-hammer-profile/kim-hammer-kh3-rapid-response-appendix.json").evidenceLocker;
-
-    const executiveBrief = buildExecutiveBrief(v3, themeMatrix, archive);
-    const readinessScorecard = buildReadinessScorecard(v3, archive.score);
-    const rehearsalDeck = buildRehearsalDeck(v3);
-
-    const core: Omit<DebateIntelligenceV4Packet, "debatePrepSectionsV4"> = {
-      ...v3,
-      version: "4.0",
-      executiveBrief,
-      readinessScorecard,
-      themeMatrix,
-      timeline,
-      likelyArguments,
-      rebuttalPlaybook,
-      strengths,
-      weaknesses,
-      integrity2021,
-      retrievalQueue,
-      intelligenceGaps,
-      rapidResponseAssets,
-      rehearsalDeck,
-    };
-
-    return {
-      ...core,
-      debatePrepSectionsV4: buildV4DebatePrepSections(v3, core),
-    };
-  }, emptyV4Extension(loadDebateIntelligenceV3Packet()));
+function emptyV3PacketForV4Fallback(): DebateIntelligenceV3Packet {
+  return {
+    version: "3.0",
+    generatedAt: new Date().toISOString(),
+    hub: {
+      totalBills: 0,
+      enactedActs: 0,
+      researchConfidenceScore: 0,
+      topQuestions: [],
+      debateDrillQueue: [],
+      riskClaims: ["Opposition JSON not loaded — check Netlify included_files"],
+      strongestDebateAnchors: [],
+      highConfidenceThemes: [],
+      topContrastThemes: [],
+      recommendedNextPass: ["Redeploy with data/opposition bundled"],
+      reportQuestions: [],
+      countyOfficialConcerns: [],
+      directDemocracyConcerns: [],
+      claims: { supported: [], partial: [], needsResearch: [] },
+    },
+    researchLayers: {
+      debateProfile: [],
+      likelyArguments: [],
+      contrastVsKelly: [],
+      strengthsWeaknesses: [],
+      messageGuidance: [],
+      intelligenceGaps: [],
+      publicDossier: [],
+      kh3DeepResearch: [],
+      websiteAnalysis: [],
+    },
+    billNarratives: [],
+    debatePrepSections: [],
+    opponentModules: [],
+  };
 }
 
 export function findV4BillNarrative(packet: DebateIntelligenceV4Packet, billNumber: string) {

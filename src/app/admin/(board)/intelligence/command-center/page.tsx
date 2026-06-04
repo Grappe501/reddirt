@@ -2,7 +2,7 @@ import Link from "next/link";
 import { composeIntelligenceCommandCenter } from "@/lib/intelligence/commandCenter/intelligenceCommandCenter";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
-import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { V4ExecutiveBriefPanel } from "@/components/admin/intelligence/v4/V4ExecutiveBrief";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { CommandCenterDashboard } from "./CommandCenterDashboard";
@@ -11,16 +11,19 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 26;
 
 export default async function IntelligenceCommandCenterPage() {
-  const snapshot = tryIntelligenceLoad(
-    "command-center",
-    () =>
-      composeIntelligenceCommandCenter(undefined, {
-        syncActionQueue: !isIntelligenceOppositionDebateLaunchMode(),
-      }),
-    null,
-  );
+  const launchMode = isIntelligenceOppositionDebateLaunchMode();
+  const snapshot = launchMode
+    ? null
+    : tryIntelligenceLoad(
+        "command-center",
+        () =>
+          composeIntelligenceCommandCenter(undefined, {
+            syncActionQueue: true,
+          }),
+        null,
+      );
   if (!snapshot) {
-    const v4 = loadDebateIntelligenceV4Packet();
+    const v4 = loadDebateIntelligenceV4HubPacket();
     return (
       <div className="mx-auto max-w-7xl text-kelly-text">
         <V4PageHeader
