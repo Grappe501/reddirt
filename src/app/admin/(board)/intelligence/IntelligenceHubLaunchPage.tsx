@@ -14,7 +14,13 @@ import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3Sect
 import { V7CountyClerkPrepPath } from "@/components/admin/intelligence/v4/V7CountyClerkPrepPath";
 import { V4DebateDepthHub } from "@/components/admin/intelligence/v4/V4DebateDepthHub";
 import { V4SupremeWorkbenchPanel } from "@/components/admin/intelligence/v4/V4SupremeWorkbenchPanel";
+import { V4OppositionStrategyLayerPanel } from "@/components/admin/intelligence/v4/V4OppositionStrategyLayerPanel";
 import { loadSupremeWorkbenchPacket } from "@/lib/intelligence/v4/supremeWorkbench";
+import {
+  loadOppositionStrategyLayerPacket,
+  INTEGRITY_2021_PACKAGE_DEPTH,
+  PETITION_2025_CLUSTER_DEPTH,
+} from "@/lib/intelligence/v4/oppositionStrategyLayer";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
 
 const card =
@@ -26,6 +32,7 @@ const card =
 export default function IntelligenceHubLaunchPage() {
   const v4 = loadDebateIntelligenceV4HubPacket();
   const supreme = loadSupremeWorkbenchPacket();
+  const opposition = loadOppositionStrategyLayerPacket();
   const { hub } = v4;
   const clerkWeek = isCountyClerkPrimaryAudience();
 
@@ -46,6 +53,15 @@ export default function IntelligenceHubLaunchPage() {
 
       <div className="mb-6">
         <V4SupremeWorkbenchPanel packet={supreme} variant="compact" />
+      </div>
+
+      <div className="mb-6">
+        <V4OppositionStrategyLayerPanel
+          packet={opposition}
+          integrity2021={INTEGRITY_2021_PACKAGE_DEPTH}
+          petition2025={PETITION_2025_CLUSTER_DEPTH}
+          variant="compact"
+        />
       </div>
 
       <V7CountyClerkPrepPath compact={!clerkWeek} />
@@ -89,6 +105,7 @@ export default function IntelligenceHubLaunchPage() {
         <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Your path</p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {[
+            { href: "/admin/intelligence/opposition-strategy", label: "Opposition strategy", step: "0b" },
             { href: "/admin/intelligence/supreme-workbench", label: "Supreme workbench", step: "0" },
             { href: "/admin/intelligence", label: "Start here", step: "1" },
             { href: "/admin/intelligence/kim-hammer/debate-prep", label: "Debate prep", step: "2" },

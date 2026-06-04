@@ -10,9 +10,7 @@ import { buildSosQuestionResponseRounds } from "@/lib/intelligence/v4/debateResp
 import { buildTrapLaneStepCoverage } from "@/lib/intelligence/v4/trapLaneStepCoverage";
 import { KELLY_ATTACK_VECTORS } from "@/lib/intelligence/v4/kellyCandidateResearchDepth";
 import { KELLY_OFFENSIVE_MOVES } from "@/lib/intelligence/v4/kellyOffensiveApproachDepth";
-import { computeLiveReadinessFromHub } from "@/lib/intelligence/v4/liveReadinessScores";
-import { buildLaunchFilmRoomState } from "@/lib/intelligence/v4/debateWarRoomP4";
-import { enrichFilmRoomWithMediaCatalog } from "@/lib/intelligence/v4/debateFilmRoomEnrichment";
+import { computeOppositionOffenseReadinessPct } from "@/lib/intelligence/v4/oppositionStrategyLayerMetrics";
 
 export type BuildProgressItem = {
   id: string;
@@ -187,25 +185,35 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/kelly-debate-coaching",
   });
 
-  // Claims ledger
+  // Claims ledger — live ratio from ledger file
   let claimsSupported = 0;
+  let claimsTotal = 0;
+  let claimsNeedsResearch = 0;
   try {
     const ledger = JSON.parse(
       fs.readFileSync(path.join(process.cwd(), "data/intelligence/claims/claim-ledger.json"), "utf8"),
     ) as { entries?: Array<{ classification?: string }> };
-    claimsSupported = ledger.entries?.filter((e) => e.classification === "VERIFIED").length ?? 0;
+    const entries = ledger.entries ?? [];
+    claimsTotal = entries.length;
+    claimsSupported = entries.filter((e) => e.classification === "VERIFIED").length;
+    claimsNeedsResearch = entries.filter((e) => e.classification === "NEEDS_RESEARCH").length;
   } catch {
     /* optional */
   }
+  const claimsPct =
+    claimsTotal > 0 ? Math.round((claimsSupported / claimsTotal) * 100) : claimsSupported > 50 ? 85 : 60;
   items.push({
     id: "claims-ledger",
     label: "Claims ledger verification",
     category: "Governance",
-    completionPct: claimsSupported > 50 ? 85 : 60,
-    status: "partial",
+    completionPct: claimsPct,
+    status: claimsPct >= 90 ? "complete" : claimsPct >= 75 ? "partial" : "flagged",
     built: claimsSupported,
-    total: claimsSupported + 20,
-    flags: ["Retrieval queue tasks may remain open — verify before broadcast"],
+    total: claimsTotal || claimsSupported + 20,
+    flags:
+      claimsNeedsResearch > 0
+        ? [`${claimsNeedsResearch} claims NEEDS_RESEARCH — verify before broadcast`]
+        : ["Retrieval queue tasks may remain open — verify before broadcast"],
     href: "/admin/intelligence/claims",
   });
 
@@ -222,25 +230,33 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/kim-hammer",
   });
 
-  // Debate command — live from supreme workbench
-  let debateCommandPct = 45;
-  try {
-    const filmRoom = enrichFilmRoomWithMediaCatalog(buildLaunchFilmRoomState());
-    const scores = computeLiveReadinessFromHub(filmRoom);
-    debateCommandPct = scores.find((s) => s.id === "overall")?.score ?? scores[0]?.score ?? 45;
-  } catch {
-    /* fallback */
-  }
+  const offenseReadinessPct = computeOppositionOffenseReadinessPct();
   items.push({
     id: "debate-command-scores",
     label: "Debate command live readiness scores",
     category: "Readiness",
-    completionPct: debateCommandPct,
-    status: debateCommandPct >= 85 ? "complete" : debateCommandPct >= 70 ? "partial" : "flagged",
-    built: debateCommandPct,
+    completionPct: offenseReadinessPct,
+    status: offenseReadinessPct >= 85 ? "complete" : offenseReadinessPct >= 70 ? "partial" : "flagged",
+    built: offenseReadinessPct,
     total: 100,
-    flags: debateCommandPct < 85 ? ["Raise lowest dimension on supreme workbench before stage"] : [],
+    flags: offenseReadinessPct < 85 ? ["Raise lowest dimension on supreme workbench before stage"] : [],
     href: "/admin/intelligence/supreme-workbench",
+  });
+
+  // Opposition strategy layer v6.2
+  items.push({
+    id: "opposition-strategy-layer",
+    label: "Opposition strategy layer (v6.2)",
+    category: "Offense",
+    completionPct: offenseReadinessPct,
+    status: offenseReadinessPct >= 85 ? "complete" : "partial",
+    built: listCuratedBillPlaybookNumbers().length,
+    total: billNumbers.length,
+    flags:
+      listCuratedBillPlaybookNumbers().length < billNumbers.length
+        ? [`${billNumbers.length - listCuratedBillPlaybookNumbers().length} bills still auto-synthesized`]
+        : [],
+    href: "/admin/intelligence/opposition-strategy",
   });
 
   // Supreme workbench v6
@@ -278,6 +294,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
   const linkAuditRoutes = [
     "/admin/intelligence",
     "/admin/intelligence/supreme-workbench",
+    "/admin/intelligence/opposition-strategy",
     "/admin/intelligence/kim-hammer/debate-prep",
     "/admin/intelligence/trap-lanes",
     "/admin/intelligence/sos-debate-questions",
@@ -368,11 +385,30 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
       ],
       exitCriteria: ["0 auto-synthesized playbooks flagged", "Kelly research 100%", "CVSGF ledger verified or deferred with owner"],
     },
+    {
+      phase: 7,
+      name: "v6.2 — Opposition strategy layer (COMPLETE THIS PASS)",
+      targetVersion: "0.15.2",
+      goal: "Unified offense command: 2021/2025 package depth, trap lane map, offensive moves, cross-exam wiring.",
+      items: [
+        "Opposition strategy layer page + panel",
+        "2021 integrity package six-bill anchors curated",
+        "2025 petition cluster depth module",
+        "Live claims ledger ratio on build progress",
+        "Kelly diligence log JSON + supreme workbench integration",
+      ],
+      exitCriteria: [
+        "Opposition strategy route live on Netlify",
+        "11+ curated bill playbooks (2021 package complete)",
+        "Hub compact panels for supreme workbench + opposition strategy",
+        "Link audit includes /opposition-strategy",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v6.0-supreme-workbench",
+    version: "v6.2-opposition-strategy-layer",
     overallCompletionPct,
     items,
     phases,
