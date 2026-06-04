@@ -5,6 +5,7 @@ import {
   loadDebateIntelligenceV4Packet,
 } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4DebateWarRoomPanel } from "@/components/admin/intelligence/v4/V4DebateWarRoomPanel";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 import { V3ResearchIntro } from "@/components/admin/intelligence/v3/V3ResearchIntro";
 import { PrepareLlmEvidencePacketButton } from "@/components/admin/intelligence/PrepareLlmEvidencePacketButton";
@@ -25,8 +26,9 @@ function scoreTone(score: number): string {
 export default async function DebateCommandCenterPage() {
   const launchMode = isIntelligenceOppositionDebateLaunchMode();
   const v4 = launchMode ? loadDebateIntelligenceV4HubPacket() : loadDebateIntelligenceV4Packet();
-  const { state, briefPack, civicDebate, graphSummary, scenarioPrep, messageIntel, legislativeRollup } =
-    loadSafeDebateCommandPageData();
+  const commandData = loadSafeDebateCommandPageData();
+  const { state, briefPack, civicDebate, graphSummary, scenarioPrep, messageIntel, legislativeRollup } = commandData;
+  const p4Packet = "p4" in commandData ? commandData.p4 : null;
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -53,6 +55,8 @@ export default async function DebateCommandCenterPage() {
       </header>
 
       {getSurfaceGuide("debateCommand") ? <V4OperatorGuide guide={getSurfaceGuide("debateCommand")!} /> : null}
+
+      {launchMode && p4Packet ? <V4DebateWarRoomPanel packet={p4Packet} variant="full" /> : null}
 
       <section className={`${card} mb-6 border-2 border-violet-800/25 bg-violet-50/30`}>
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Public-Brief-Grade Debate Intelligence</h2>
@@ -337,6 +341,7 @@ export default async function DebateCommandCenterPage() {
         </article>
       </section>
 
+      {!launchMode ? (
       <section className={`${card} mb-6`}>
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Film Room MVP</h2>
         <p className="mt-1 text-xs font-semibold text-amber-900">{state.filmRoom.archiveHonestyNote}</p>
@@ -374,6 +379,7 @@ export default async function DebateCommandCenterPage() {
           Clip-needed tasks in action queue →
         </Link>
       </section>
+      ) : null}
 
       <section className={card}>
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Training Academy (architecture)</h2>
