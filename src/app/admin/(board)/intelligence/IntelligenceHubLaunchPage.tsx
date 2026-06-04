@@ -13,6 +13,8 @@ import { V4OpponentContrastPlaybookPanel } from "@/components/admin/intelligence
 import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3SectionStack";
 import { V7CountyClerkPrepPath } from "@/components/admin/intelligence/v4/V7CountyClerkPrepPath";
 import { V4DebateDepthHub } from "@/components/admin/intelligence/v4/V4DebateDepthHub";
+import { V4SupremeWorkbenchPanel } from "@/components/admin/intelligence/v4/V4SupremeWorkbenchPanel";
+import { loadSupremeWorkbenchPacket } from "@/lib/intelligence/v4/supremeWorkbench";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
 
 const card =
@@ -23,6 +25,7 @@ const card =
  */
 export default function IntelligenceHubLaunchPage() {
   const v4 = loadDebateIntelligenceV4HubPacket();
+  const supreme = loadSupremeWorkbenchPacket();
   const { hub } = v4;
   const clerkWeek = isCountyClerkPrimaryAudience();
 
@@ -40,6 +43,10 @@ export default function IntelligenceHubLaunchPage() {
       >
         <V4BackLinks />
       </V4PageHeader>
+
+      <div className="mb-6">
+        <V4SupremeWorkbenchPanel packet={supreme} variant="compact" />
+      </div>
 
       <V7CountyClerkPrepPath compact={!clerkWeek} />
       <V4KellyNarrativeFrame />
@@ -82,6 +89,7 @@ export default function IntelligenceHubLaunchPage() {
         <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Your path</p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {[
+            { href: "/admin/intelligence/supreme-workbench", label: "Supreme workbench", step: "0" },
             { href: "/admin/intelligence", label: "Start here", step: "1" },
             { href: "/admin/intelligence/kim-hammer/debate-prep", label: "Debate prep", step: "2" },
             { href: "/admin/intelligence/film-room", label: "Film room", step: "2b" },
