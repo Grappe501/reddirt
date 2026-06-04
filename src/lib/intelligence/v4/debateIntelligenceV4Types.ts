@@ -89,7 +89,7 @@ export type V4ReadinessDimension = {
   note: string;
 };
 
-export type DebateIntelligenceV4Packet = DebateIntelligenceV3Packet & {
+export type DebateIntelligenceV4Packet = Omit<DebateIntelligenceV3Packet, "version"> & {
   version: "4.0";
   executiveBrief: V4ExecutiveBrief;
   readinessScorecard: V4ReadinessDimension[];
