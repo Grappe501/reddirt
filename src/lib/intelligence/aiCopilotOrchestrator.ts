@@ -19,6 +19,9 @@ import { generateGovernedDraftForCopilotTool } from "@/lib/intelligence/llmDraft
 import { getCopilotMemoryHints } from "@/lib/intelligence/intelligenceMemoryEngine";
 import { getCopilotScenarioHints } from "@/lib/intelligence/strategicScenarioSimulation";
 import { getCopilotActionQueueRouting } from "@/lib/intelligence/strategicDecisionSupport";
+import { listSosDebateQuestionSummaries } from "@/lib/intelligence/v4/sosDebateQuestionBank";
+import { OPPONENT_TRAP_LANES } from "@/lib/intelligence/v4/kellyOpponentContrastPlaybook";
+import { listTrapLaneSummaries } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 
 export const AI_COPILOT_TOOL_REGISTRY_REL = "data/intelligence/ai-copilot-tool-registry.json";
 
@@ -238,15 +241,83 @@ function runBillImpactAnalyzer(tool: AiCopilotToolEntry, billNumber: string, rep
 
 function runDebateQuestionGenerator(tool: AiCopilotToolEntry, repoRoot?: string): CopilotToolOutput {
   const workbench = loadKimHammerWorkbench();
-  const questions = workbench.strongestDebateAnchors.flatMap((bill) => [
+  const billQuestions = workbench.strongestDebateAnchors.flatMap((bill) => [
     `On ${bill.billNumber}: What problem did this solve for Arkansas voters?`,
     `On ${bill.billNumber}: Who bears the county implementation burden?`,
     `On ${bill.billNumber}: What transparency safeguards exist?`,
   ]);
+  const sosHigh = listSosDebateQuestionSummaries()
+    .filter((q) => q.probability === "HIGH")
+    .slice(0, 6)
+    .map((q) => `[${q.probability}] ${q.title} — /admin/intelligence/sos-debate-questions/${q.questionId}`);
 
   return baseOutput(tool, "Debate question bank (internal)", [
-    { heading: "Suggested questions", bullets: questions.slice(0, 9) },
-    { heading: "Evidence dependencies", bullets: ["Anchor answers to export-ready claims only.", "Mark speculative follow-ups as NEEDS_RESEARCH."] },
+    { heading: "Bill-anchored questions", bullets: billQuestions.slice(0, 9) },
+    { heading: "SOS moderator bank (HIGH)", bullets: sosHigh.length ? sosHigh : ["Open SOS question bank for speak-order drills."] },
+    { heading: "Evidence dependencies", bullets: ["Anchor answers to export-ready claims only.", "Mark speculative follow-ups as NEEDS_RESEARCH.", "Never close on agree-only — add fresh county or unity line."] },
+  ], repoRoot);
+}
+
+function runTrapQuestionDetector(tool: AiCopilotToolEntry, repoRoot?: string): CopilotToolOutput {
+  const traps = OPPONENT_TRAP_LANES.map((t) => `${t.name}: ${t.moderatorOrKellySetupQuestion.slice(0, 100)}`);
+  const lanes = listTrapLaneSummaries().map((l) => `${l.title} — /admin/intelligence/trap-lanes/${l.laneId}`);
+  const paper = buildStrategicBriefingPaper("what-not-to-say", repoRoot);
+
+  return baseOutput(tool, "Trap question warnings", [
+    { heading: "Opponent trap setups", bullets: traps },
+    { heading: "Trap lane drill-downs", bullets: lanes },
+    { heading: "Risky answer paths", bullets: [...paper.whatNotToSay.slice(0, 4), "Hypothetical felony/motive — redirect to statutory record.", "Unsourced opponent intent — prohibited on stage."] },
+  ], repoRoot, { riskWarnings: ["INTERNAL ONLY — verify pivots in Claims before any public adaptation."] });
+}
+
+function runRebuttalBuilder(tool: AiCopilotToolEntry, topic: string, repoRoot?: string): CopilotToolOutput {
+  const paper = buildStrategicBriefingPaper("debate-prep", repoRoot);
+  const workbench = loadKimHammerWorkbench();
+  const blocks = workbench.strongestDebateAnchors.slice(0, 3).map(
+    (bill) =>
+      `If attacked on ${bill.billNumber}: Agree on voter access frame → contrast implementation → county clerk burden — cite export-ready claim only.`,
+  );
+
+  return baseOutput(tool, `Rebuttal blocks — ${topic}`, [
+    { heading: "Agree + fresh add (required)", bullets: ["Never end on I agree alone.", "Add one sourced fact or county example after any agreement.", ...paper.debateRelevance.slice(0, 2)] },
+    { heading: "Bill-anchored rebuttal skeletons", bullets: blocks },
+    { heading: "Three-way note", bullets: ["When Packo agrees first, take position-2 or -3 close from SOS bank.", "Pivot to unity spine: transparency, accountability, non-partisan SOS service."] },
+  ], repoRoot);
+}
+
+function runCounterargumentPredictor(tool: AiCopilotToolEntry, repoRoot?: string): CopilotToolOutput {
+  const workbench = loadKimHammerWorkbench();
+  const narratives = loadKimHammerNarrativeStateIndex(repoRoot);
+  const likely = [
+    ...workbench.topQuestions.slice(0, 3),
+    ...(workbench.reportQuestions ?? []).slice(0, 3),
+    ...(workbench.supporterRationale ?? []).slice(0, 2),
+  ];
+  const weakNarratives = narratives.narratives
+    .filter((n) => n.readinessBand === "STRONG")
+    .slice(0, 4)
+    .map((n) => `Hammer may push: ${n.title.slice(0, 80)}`);
+
+  return baseOutput(tool, "Counterargument predictor", [
+    { heading: "Likely opponent lines (internal)", bullets: likely.length ? likely.map((l) => l.slice(0, 120)) : ["Check workbench likely-args and film room transcripts."] },
+    { heading: "Narrative pressure", bullets: weakNarratives.length ? weakNarratives : ["No strong narrative flags — monitor live drift in spin room."] },
+    { heading: "Kelly response discipline", bullets: ["Sourced contrast only — no motive claims.", "Bridge to counties and transparency after rebuttal point."] },
+  ], repoRoot);
+}
+
+function runBridgeLineBuilder(tool: AiCopilotToolEntry, repoRoot?: string): CopilotToolOutput {
+  const paper = buildStrategicBriefingPaper("debate-prep", repoRoot);
+  const bridges = [
+    "Record fight → 'What matters is whether Arkansas voters can trust the process county clerks run every day.'",
+    "Partisan attack → 'Secretary of State is a service job — I work with clerks of both parties.'",
+    "Fraud dare → 'Show me the statute and the implementation cost to counties — then we can talk solutions.'",
+    "Experience trap → 'Experience running elections is different from experience serving all 75 counties.'",
+  ];
+
+  return baseOutput(tool, "Bridge lines (doctrine-safe)", [
+    { heading: "Pivot bridges", bullets: bridges },
+    { heading: "Doctrine alignment", bullets: paper.strategicDoctrineAlignment.slice(0, 3) },
+    { heading: "Operator check", bullets: ["Validate each bridge in Claims before stage.", "Pair with SOS question speak-order drills when moderator changes topic."] },
   ], repoRoot);
 }
 
@@ -341,6 +412,14 @@ export function runDeterministicCopilotTool(
       return runBillImpactAnalyzer(tool, options.billNumber ?? "SB487", repoRoot);
     case "debate-question-generator":
       return runDebateQuestionGenerator(tool, repoRoot);
+    case "trap-question-detector":
+      return runTrapQuestionDetector(tool, repoRoot);
+    case "rebuttal-builder":
+      return runRebuttalBuilder(tool, options.topic ?? "check my record / direct democracy", repoRoot);
+    case "counterargument-predictor":
+      return runCounterargumentPredictor(tool, repoRoot);
+    case "bridge-line-builder":
+      return runBridgeLineBuilder(tool, repoRoot);
     case "answer-builder-30-60-90":
       return runAnswerBuilder(tool, options.topic ?? "election integrity", repoRoot);
     case "what-not-to-say-detector":

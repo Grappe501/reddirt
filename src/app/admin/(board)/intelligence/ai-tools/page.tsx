@@ -38,6 +38,9 @@ export default async function AiToolsDashboardPage() {
           <Link href="/admin/intelligence/kim-hammer/ai-opposition-copilot" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
             Opposition copilot
           </Link>
+          <Link href="/admin/intelligence/agent-tooling" className="rounded border border-violet-300 bg-violet-50 px-2 py-1 font-semibold text-violet-950">
+            Agent tooling package
+          </Link>
           <Link href="/admin/intelligence/kim-hammer/debate-ai-workbench" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
             Debate workbench
           </Link>

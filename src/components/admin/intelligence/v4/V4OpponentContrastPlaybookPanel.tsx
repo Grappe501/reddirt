@@ -75,12 +75,20 @@ export function V4OpponentContrastPlaybookPanel() {
           <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-navy">
             Trap lanes — position him into your hand
           </p>
-          <Link
-            href="/admin/intelligence/trap-lanes"
-            className="min-h-11 rounded-full border-2 border-kelly-navy bg-kelly-navy px-4 py-2 text-xs font-bold text-white"
-          >
-            Open all drill-downs →
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link
+              href="/admin/intelligence/sos-debate-questions"
+              className="min-h-11 rounded-full border-2 border-violet-700 bg-violet-700 px-4 py-2 text-xs font-bold text-white"
+            >
+              Expected questions (22) →
+            </Link>
+            <Link
+              href="/admin/intelligence/trap-lanes"
+              className="min-h-11 rounded-full border-2 border-kelly-navy bg-kelly-navy px-4 py-2 text-xs font-bold text-white"
+            >
+              Trap lanes →
+            </Link>
+          </div>
         </div>
         <div className="mt-4 space-y-4">
           {OPPONENT_TRAP_LANES.map((trap) => {

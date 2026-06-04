@@ -17,7 +17,20 @@ export type EvidenceCommandAnalytics = {
   exportReadyClaimIds: string[];
 };
 
+const DEBATE_WEEK_QUICK_LINKS = [
+  { href: "/admin/intelligence/claims", label: "Claims review" },
+  { href: "/admin/intelligence/action-queue", label: "Action queue" },
+  { href: "/admin/intelligence/llm-review-queue", label: "LLM review queue" },
+  { href: "/admin/intelligence/kim-hammer/citation-locker", label: "Citation locker" },
+  { href: "/admin/intelligence/kim-hammer/public-debate-evidence", label: "Debate evidence board" },
+  { href: "/admin/intelligence/kim-hammer/debate-packet-export", label: "Debate packet export" },
+  { href: "/admin/intelligence/sos-debate-questions", label: "Expected SOS questions" },
+  { href: "/admin/intelligence/trap-lanes", label: "Trap lanes" },
+] as const;
+
 type EvidenceCommandDashboardProps = {
+  /** Hide NSI-3–15 panels; show debate-week quick links only. */
+  debateWeekMode?: boolean;
   analytics: EvidenceCommandAnalytics;
   reviewStatusCounts: Record<KimHammerReviewStatusCountKey, number>;
   taskStatusCounts: Record<KimHammerRetrievalTaskStatus, number>;
@@ -186,6 +199,7 @@ const quickLinks = [
 ];
 
 export function EvidenceCommandDashboard({
+  debateWeekMode = false,
   analytics,
   reviewStatusCounts,
   taskStatusCounts,
@@ -207,10 +221,12 @@ export function EvidenceCommandDashboard({
   nsi14Summary,
   nsi15Summary,
 }: EvidenceCommandDashboardProps) {
+  const navLinks = debateWeekMode ? DEBATE_WEEK_QUICK_LINKS : quickLinks;
+
   return (
     <>
       <section className="mb-6 flex flex-wrap gap-2 text-xs">
-        {quickLinks.map((link) => (
+        {navLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
@@ -405,7 +421,14 @@ export function EvidenceCommandDashboard({
         </ul>
       </section>
 
-      {geographicSummary ? (
+      {debateWeekMode ? (
+        <p className="mb-6 text-xs text-kelly-muted">
+          Debate-week view: core export metrics and claim/task panels below. Full NSI overlays are hidden — open individual
+          modules from Campaign OS when not on debate night.
+        </p>
+      ) : null}
+
+      {!debateWeekMode && geographicSummary ? (
         <section className="mb-6 rounded-xl border border-sky-300/40 bg-sky-50 p-4 text-xs text-sky-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">Geographic narrative intelligence</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-sky-900/80">
@@ -446,7 +469,7 @@ export function EvidenceCommandDashboard({
         </section>
       ) : null}
 
-      {usageSummary ? (
+      {!debateWeekMode && usageSummary ? (
         <section className="mb-6 rounded-xl border border-indigo-300/40 bg-indigo-50 p-4 text-xs text-indigo-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">Narrative usage & export fatigue</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-indigo-900/80">
@@ -508,7 +531,7 @@ export function EvidenceCommandDashboard({
         </section>
       ) : null}
 
-      {strategicSummary ? (
+      {!debateWeekMode && strategicSummary ? (
         <section className="mb-6 rounded-xl border border-purple-300/40 bg-purple-50 p-4 text-xs text-purple-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">Strategic doctrine alignment</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-purple-900/80">
@@ -570,7 +593,7 @@ export function EvidenceCommandDashboard({
         </section>
       ) : null}
 
-      {countyBriefingSummary ? (
+      {!debateWeekMode && countyBriefingSummary ? (
         <section className="mb-6 rounded-xl border border-emerald-300/40 bg-emerald-50 p-4 text-xs text-emerald-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">County briefing intelligence</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-emerald-900/80">
@@ -643,7 +666,7 @@ export function EvidenceCommandDashboard({
         </section>
       ) : null}
 
-      {operationalSummary ? (
+      {!debateWeekMode && operationalSummary ? (
         <section className="mb-6 rounded-xl border border-violet-300/40 bg-violet-50 p-4 text-xs text-violet-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">Operational environment intelligence</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-violet-900/80">
@@ -693,7 +716,7 @@ export function EvidenceCommandDashboard({
         </section>
       ) : null}
 
-      {nsi13Summary ? (
+      {!debateWeekMode && nsi13Summary ? (
         <section className="mb-6 rounded-xl border border-teal-300/40 bg-teal-50 p-4 text-xs text-teal-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">NSI-13 · Longitudinal memory alerts</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-teal-900/80">
@@ -735,7 +758,7 @@ export function EvidenceCommandDashboard({
         </section>
       ) : null}
 
-      {nsi15Summary ? (
+      {!debateWeekMode && nsi15Summary ? (
         <section className="mb-6 rounded-xl border border-teal-300/40 bg-teal-50 p-4 text-xs text-teal-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">NSI-15 · Human action queue</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-teal-900/80">
@@ -785,7 +808,7 @@ export function EvidenceCommandDashboard({
         </section>
       ) : null}
 
-      {nsi14Summary ? (
+      {!debateWeekMode && nsi14Summary ? (
         <section className="mb-6 rounded-xl border border-violet-300/40 bg-violet-50 p-4 text-xs text-violet-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">NSI-14 · Scenario simulation alerts</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-violet-900/80">
@@ -841,7 +864,7 @@ export function EvidenceCommandDashboard({
         </section>
       ) : null}
 
-      {nsi12Summary ? (
+      {!debateWeekMode && nsi12Summary ? (
         <section className="mb-6 rounded-xl border border-purple-300/40 bg-purple-50 p-4 text-xs text-purple-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">NSI-12 · LLM draft review queue</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-purple-900/80">
@@ -878,7 +901,7 @@ export function EvidenceCommandDashboard({
         </section>
       ) : null}
 
-      {nsi11Summary ? (
+      {!debateWeekMode && nsi11Summary ? (
         <section className="mb-6 rounded-xl border border-violet-300/40 bg-violet-50 p-4 text-xs text-violet-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">NSI-11 · AI copilot suite (governed)</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-violet-900/80">
@@ -965,7 +988,7 @@ export function EvidenceCommandDashboard({
         </section>
       ) : null}
 
-      {nsi7Summary ? (
+      {!debateWeekMode && nsi7Summary ? (
         <section className="mb-6 rounded-xl border border-indigo-300/40 bg-indigo-50 p-4 text-xs text-indigo-950">
           <h2 className="text-sm font-bold uppercase tracking-wider">NSI-7 · Strategic intelligence & media readiness</h2>
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-indigo-900/80">

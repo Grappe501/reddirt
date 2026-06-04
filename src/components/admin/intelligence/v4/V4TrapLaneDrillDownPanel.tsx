@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import type { TrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDownTypes";
 import { TRAP_LANE_FIRST_TIMER_NOTE } from "@/lib/intelligence/v4/trapLaneDrillDowns";
+import { V4EncounterDepthPanel } from "@/components/admin/intelligence/v4/V4EncounterDepthPanel";
 
 function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -31,9 +32,49 @@ export function V4TrapLaneDrillDownPanel({
         <p className="mt-3 text-[10px] font-bold text-amber-900">{drill.claimsGate}</p>
       </article>
 
+      {(drill.whatToLookForOffensive.length > 0 || drill.whatToLookForDefensive.length > 0) && (
+        <article className="rounded-xl border border-sky-200 bg-sky-50/40 p-5 text-xs">
+          <p className="font-bold uppercase text-sky-950">What to look for — debate use</p>
+          {drill.whatToLookForOffensive.length > 0 ? (
+            <>
+              <p className="mt-3 font-bold text-rose-950">Offensive (Kelly)</p>
+              <p className="mt-1 text-kelly-muted">{drill.debateOffensiveUse}</p>
+              <ul className="mt-2 list-inside list-disc text-rose-950/90">
+                {drill.whatToLookForOffensive.map((t) => (
+                  <li key={t.slice(0, 48)}>{t}</li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+          {drill.whatToLookForDefensive.length > 0 ? (
+            <>
+              <p className="mt-3 font-bold text-emerald-950">Defensive (protect Kelly)</p>
+              <p className="mt-1 text-kelly-muted">{drill.debateDefensiveUse}</p>
+              <ul className="mt-2 list-inside list-disc text-emerald-950/90">
+                {drill.whatToLookForDefensive.map((t) => (
+                  <li key={t.slice(0, 48)}>{t}</li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+          {drill.whatToLookForVerify.length > 0 ? (
+            <>
+              <p className="mt-3 font-bold text-amber-950">Verify before stage</p>
+              <ul className="mt-2 list-inside list-disc text-amber-950/90">
+                {drill.whatToLookForVerify.map((t) => (
+                  <li key={t.slice(0, 48)}>{t}</li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+        </article>
+      )}
+
       <article className="rounded-xl border border-amber-200 bg-amber-50/50 p-4 text-xs text-amber-950">
         {TRAP_LANE_FIRST_TIMER_NOTE}
       </article>
+
+      {drill.encounterDepth ? <V4EncounterDepthPanel depth={drill.encounterDepth} /> : null}
 
       <Block title="What to expect Hammer to say">
         <ul className="list-inside list-disc space-y-2">

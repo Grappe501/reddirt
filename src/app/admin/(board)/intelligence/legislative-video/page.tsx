@@ -20,7 +20,10 @@ export default async function LegislativeVideoIntelligencePage() {
         </div>
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">Legislative &amp; media command (P4)</h1>
         <V4DebateWarRoomPanel packet={p4} variant="compact" />
-        <p className="mt-6 text-xs">
+        <p className="mt-6 flex flex-wrap gap-4 text-xs">
+          <Link href="/admin/intelligence/film-room" className="font-bold text-kelly-navy underline">
+            Full film room →
+          </Link>
           <Link href="/admin/intelligence/debate-command" className="font-bold text-kelly-navy underline">
             Debate command
           </Link>

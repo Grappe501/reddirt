@@ -3,6 +3,12 @@
  * Plain-language guidance: why, when, how, campaign trail tie-in, and how pieces connect.
  */
 
+import {
+  enrichGuideByHref,
+  enrichOperatorGuide,
+} from "@/lib/intelligence/v4/debateWhatToLookForEnrichment";
+import { applyOperatorGuideDepth } from "@/lib/intelligence/v4/debatePlainLanguageDepth";
+
 export type OperatorGuide = {
   whyItMatters: string;
   howItFitsDebatePrep: string;
@@ -12,19 +18,29 @@ export type OperatorGuide = {
   whenToUse: string;
   campaignTrailUse: string;
   tiesTogether: string;
+  /** Plain-language depth — merged from debatePlainLanguageDepth at read time. */
+  whatToExpectPlain?: string;
+  howHeWillAttack?: string[];
+  howToHandleIt?: string[];
+  ifYouGetHungUp?: string[];
+  handlingAdversity?: string[];
+  cultureWarDefense?: string[];
 };
 
 export const KELLY_MASTER_FRAME = {
-  headline: "Secretary of State as service — not culture war",
+  headline: "Bring Arkansas together — transparent, accountable, non-partisan SOS",
   pillars: [
-    "Trust and transparency: rules voters can see, verify, and understand.",
-    "County partnership: election workers need training, clarity, and support — not unfunded mandates.",
-    "Participation + integrity: secure elections and lawful access (in-person, absentee, initiative) together.",
+    "Transparency and accountability: field-tested in independent and Republican rooms — lean in on every answer.",
+    "Work across the aisle to unite voters, not widen the division we see in politics today.",
+    "Keep this office non-partisan in ballot administration — equal rules, published guidance, no thumb on the scale.",
+    "Educate the public: the SOS must teach citizens the rules — Arkansas Civic Index ranks us last; that is accountability on this administration.",
+    "County partnership: election workers need training, clarity, and support — not unfunded mandates from legislators.",
+    "Participation + integrity: secure elections and lawful access together — not a false choice.",
   ],
   contrastMethod:
-    "Acknowledge Hammer’s stated goal (integrity, experience) where fair, then contrast means and implementation burden — never motive without a source.",
+    "Acknowledge Hammer’s stated goal (integrity, experience) where fair, then contrast means and implementation burden — never motive without a source. Pivot to unity frame: service desk that educates and unites, not culture-war pulpit.",
   answerArchitecture:
-    "Direct answer → verified bill/act anchor → county or voter impact → Kelly values bridge → optional forward-looking SOS solution.",
+    "Direct answer → transparency/accountability or non-partisan pledge → verified anchor (if citing bills) → county impact → unity bridge (cross-aisle, educate public) → SOS solution.",
 };
 
 export const DEBATE_WORKFLOW_STEPS: Array<{
@@ -294,14 +310,21 @@ export const SURFACE_GUIDES: Record<string, OperatorGuide> = {
     tiesTogether: "Debate command warnings + argument map.",
   },
   evidenceCommand: {
-    whyItMatters: "Staff export and citation discipline — keeps debate lines tied to anchors.",
-    howItFitsDebatePrep: "After claims verification; before rapid response or press quotes.",
-    whatToLookFor: ["Export tier BLOCKED claims", "Missing citation anchors", "NON_PUBLISHABLE drafts"],
-    howToSetUp: "Assign verifier to headset with citation locker open.",
-    howToUseInDebate: "Kelly does not use live — staff confirms act numbers cited on stage match locker.",
-    whenToUse: "Spin room and post-debate media.",
-    campaignTrailUse: "All paid comms and mail must pass same export gate.",
-    tiesTogether: "Claims step 5 + citation discipline section 24.",
+    whyItMatters:
+      "Staff export and citation discipline — which Hammer claims are export-ready vs blocked. Keeps debate and press lines tied to verified anchors.",
+    howItFitsDebatePrep:
+      "Open after Claims (step 5). Headset staff filter export-ready claims and close HIGH retrieval tasks before Kelly cites bills on stage.",
+    whatToLookFor: [
+      "Export-ready count — only these IDs in debate packet / rapid response",
+      "NEEDS_REVIEW and BLOCKED — never read aloud",
+      "Claim review panel — transition to APPROVED_FOR_EXTERNAL_USE",
+      "Retrieval task panel — HIGH rank open tasks",
+    ],
+    howToSetUp: "Debate week: use condensed view + links to claims, action queue, LLM review.",
+    howToUseInDebate: "Kelly does not use live — staff whispers only export-ready act numbers.",
+    whenToUse: "Pre-debate staff huddle; spin room; post-debate quote check.",
+    campaignTrailUse: "Same export filter for mail, digital, and county handouts.",
+    tiesTogether: "Claims → evidence command → citation locker → debate packet export.",
   },
   debateProfile: {
     whyItMatters: "Argument lanes Hammer will use — integrity, experience, uniformity — with Kelly response frames.",
@@ -432,6 +455,100 @@ export const SURFACE_GUIDES: Record<string, OperatorGuide> = {
     whenToUse: "Rebuttal and Q&A blocks.",
     campaignTrailUse: "Press questions to opponent (not Kelly on stage) — adapt wording.",
     tiesTogether: "Bill playbooks + 2021 package trap.",
+  },
+  "debate-depth-index": {
+    whyItMatters:
+      "Plain-language layer on top of every intelligence surface — what to expect, how Hammer attacks, how to handle adversity, recovery if stuck, and culture-war defense.",
+    howItFitsDebatePrep:
+      "Read culture-war and if-stuck before mock debate; read hammer-attacks before trap lanes; use three-way before SOS bank rehearsal.",
+    whatToLookFor: [
+      "Five topic guides with full depth blocks",
+      "Auto depth on hub, prep sections, SOS questions, trap lanes",
+      "Links from culture-war guide to trap lane 6",
+    ],
+    howToSetUp: "Kelly: 45 min on culture-war + if-stuck + one trap lane; staff: hammer-attacks + adversity.",
+    howToUseInDebate: "Memorize recovery lines — not full paragraphs.",
+    whenToUse: "Night before debate; green room if bait expected.",
+    campaignTrailUse: "Town halls: adversity and stuck recovery apply without three-way complexity.",
+    tiesTogether: "Hub depth hub → trap lanes → SOS bank → coaching.",
+  },
+  kellyDebateCoaching: {
+    whyItMatters:
+      "Stage presence, openings/closings, Check My Record, and three-way dynamics — the human performance layer on top of policy prep.",
+    howItFitsDebatePrep:
+      "After debate prep sections 9 and 28; before walk-on. Pairs with film room pivots, not clip playback on stage.",
+    whatToLookFor: [
+      "Opening and closing memorized",
+      "Road stories with claims gate",
+      "Packo agreement traps",
+      "Copilot dock — internal only",
+    ],
+    howToSetUp: "Rehearse opening standing; staff times closing under broadcast limit.",
+    howToUseInDebate: "Middle answers from SOS bank; bookends from coaching.",
+    whenToUse: "Debate morning and green room.",
+    campaignTrailUse: "Town hall openings shortened; same composure rules.",
+    tiesTogether: "Hub → coaching → SOS questions → trap lanes.",
+  },
+  opponents: {
+    whyItMatters:
+      "Routes to Hammer record and Packo scaffold — staff research depth; Kelly uses distilled prep surfaces on debate night.",
+    howItFitsDebatePrep:
+      "Staff assigns modules by gap; Kelly stays on hub, prep, SOS bank, trap lanes, coaching.",
+    whatToLookFor: ["Packo scaffold status", "KH module gaps", "Evidence command link"],
+    howToSetUp: "Staff briefing 30 min before stage on Packo one-liners only.",
+    howToUseInDebate: "Kelly does not browse modules on stage.",
+    whenToUse: "Weekly research; debate day staff only.",
+    campaignTrailUse: "Opposition research for rapid response.",
+    tiesTogether: "Kim-hammer command center → bills → claims.",
+  },
+  "agent-tooling-index": {
+    whyItMatters:
+      "Single debate-week hub for governed AI copilot runs — sequences for staff T-24h, Kelly pre-stage, and spin room without hunting 30 tools across modules.",
+    howItFitsDebatePrep:
+      "Run after debate prep skim: execute Kelly pre-stage sequence, then open SOS question bank for speak-order rehearsal. Staff runs source-gap + claim-strength before export-ready lines go to headset.",
+    whatToLookFor: [
+      "Readiness signals — export-ready claims and open retrieval tasks",
+      "Sequence steps — run in order; each output is INTERNAL_DRAFT",
+      "Trap + rebuttal tools — pair with trap lanes and Claims gate",
+      "LLM review queue link when NSI-12 draft is queued",
+    ],
+    howToSetUp: "Open hub → run staff T-24h OR Kelly pre-stage sequence → verify output in Claims.",
+    howToUseInDebate: "Kelly does not run tools on stage — staff may re-run trap detector in spin room only.",
+    whenToUse: "Night-before prep, green-room (iPad quick tools), post-debate staff debrief.",
+    campaignTrailUse: "Shorten to what-not-to-say + 30/60/90 on town hall days — same governance.",
+    tiesTogether: "AI tools registry + debate AI workbench + SOS bank + evidence command + LLM queue.",
+  },
+  "sos-debate-questions-index": {
+    whyItMatters:
+      "Moderators ask SOS-office questions, not bill trivia. Researched prompts with 1st/2nd/3rd speak-order drills — lean into field-tested unity themes (transparency, accountability, cross-aisle, non-partisan, public education, Civic Index accountability).",
+    howItFitsDebatePrep:
+      "Run after debate prep skim and before mock debate. Open hub narrative spine, then rehearse HIGH topics with unity lines — especially turnout/civic index, non-partisan role, and opening/closing.",
+    whatToLookFor: [
+      "Speak order block — fresh addition mandatory; weave unity theme when agreeing",
+      "Field-tested themes panel on hub — GREAT reaction in independent and Republican rooms",
+      "Arkansas Civic Index 'last in country' — verify in claims before citing rank on stage",
+      "Hammer likely lines + Packo three-way add-ons",
+    ],
+    howToSetUp: "Index → open 5 questions → read 30s answer → practice position 2 and 3 closes.",
+    howToUseInDebate: "When moderator asks broad SOS question, use direct 30s then add county clerk line; if others agreed first, use position-2 or -3 script.",
+    whenToUse: "Opening/closing blocks and integrity/access segments.",
+    campaignTrailUse: "Town halls: shorten 60s answer; keep agree-plus-fresh-add discipline.",
+    tiesTogether: "Trap lanes for record fights + film room for clip proof + claims gate.",
+  },
+  "trap-lanes-index": {
+    whyItMatters:
+      "Six trap lanes position Hammer into Kelly's hand — bait, setup question, pivot. Summary cards on hub link here for full narrative, rebuttals, and scripts.",
+    howItFitsDebatePrep:
+      "Run after argument map and before mock debate. Pick 1–2 lanes for tonight's lead theme (usually petition pattern or Check My Record).",
+    whatToLookFor: [
+      "Each lane drill-down: what Hammer will say, setup moves, sample scripts",
+      "Offensive vs defensive tags on expanded findings below",
+    ],
+    howToSetUp: "Read index → open 2 lanes → rehearse 45s script standing.",
+    howToUseInDebate: "Deploy setup question when moderator allows; pivot when he bites or deflects.",
+    whenToUse: "Mid-debate record fights; after he says check my record.",
+    campaignTrailUse: "Town hall hostile Q: use county-champion or fraud-dare lanes without debate tone.",
+    tiesTogether: "Opponent contrast panel + Check My Record coaching + bill acts.",
   },
   opponentRecord: {
     whyItMatters: "Map of staff research modules — keeps Kelly from drowning in 40+ pages.",
@@ -676,6 +793,22 @@ export const PREP_SECTION_GUIDES: Record<string, OperatorGuide> = {
     campaignTrailUse: "Prioritize research budget.",
     tiesTogether: "Intelligence gaps module.",
   },
+  actionQueue: {
+    whyItMatters:
+      "NSI-15 staff assignment queue — who should review citations, close retrieval gaps, or prep debate responses before export.",
+    howItFitsDebatePrep:
+      "After claims review; before Kelly cites new acts. Headset staff mark ACCEPTED/IN_PROGRESS — Kelly uses Claims only on stage.",
+    whatToLookFor: [
+      "URGENT + CRITICAL priority rows",
+      "PREPARE_DEBATE_RESPONSE and REVIEW_CITATION types",
+      "Blocked-by lines — do not export until cleared",
+    ],
+    howToSetUp: "Debate week loads persisted JSON only (fast). Assign owners from owner-role view.",
+    howToUseInDebate: "Kelly does not open this page live — staff whispers export-ready act numbers only.",
+    whenToUse: "Daily staff huddle; post-debate debrief.",
+    campaignTrailUse: "Same queue discipline for mail and rapid response.",
+    tiesTogether: "Evidence command + action queue + intelligence gaps.",
+  },
   "citation-discipline": {
     whyItMatters: "Campaign survival — one bad citation becomes ‘Kelly lied.’",
     howItFitsDebatePrep: "Final gate before stage.",
@@ -789,21 +922,31 @@ export const PREP_SECTION_GUIDES: Record<string, OperatorGuide> = {
 };
 
 export function getPrepSectionGuide(sectionId: string): OperatorGuide | undefined {
+  let guide: OperatorGuide | undefined;
   try {
     // eslint-disable-next-line @typescript-eslint/no-require-imports -- lazy break circular import with drill-downs
     const { getPrepSectionGuideFromDrillDown } = require("@/lib/intelligence/v4/debatePrepSectionDrillDowns") as {
       getPrepSectionGuideFromDrillDown: (id: string) => OperatorGuide | undefined;
     };
-    return getPrepSectionGuideFromDrillDown(sectionId) ?? PREP_SECTION_GUIDES[sectionId];
+    guide = getPrepSectionGuideFromDrillDown(sectionId) ?? PREP_SECTION_GUIDES[sectionId];
   } catch {
-    return PREP_SECTION_GUIDES[sectionId];
+    guide = PREP_SECTION_GUIDES[sectionId];
   }
+  if (!guide) return undefined;
+  return applyOperatorGuideDepth(enrichOperatorGuide(guide, sectionId), sectionId);
 }
 
 export function getSurfaceGuide(key: string): OperatorGuide | undefined {
-  return SURFACE_GUIDES[key];
+  const guide = SURFACE_GUIDES[key];
+  if (!guide) return undefined;
+  return applyOperatorGuideDepth(enrichOperatorGuide(guide, key), key);
 }
 
 export function getWorkflowStepByHref(href: string) {
-  return DEBATE_WORKFLOW_STEPS.find((s) => s.href === href);
+  const step = DEBATE_WORKFLOW_STEPS.find((s) => s.href === href);
+  if (!step) return undefined;
+  return {
+    ...step,
+    guide: enrichGuideByHref(step.guide, href),
+  };
 }

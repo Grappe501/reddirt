@@ -19,6 +19,10 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/legislative-video",
   "/admin/intelligence/video-archive-room",
   "/admin/intelligence/trap-lanes",
+  "/admin/intelligence/film-room",
+  "/admin/intelligence/sos-debate-questions",
+  "/admin/intelligence/agent-tooling",
+  "/admin/intelligence/debate-depth",
 ] as const;
 
 export type DebateWeekRoute = (typeof DEBATE_WEEK_ROUTES)[number];
@@ -66,11 +70,23 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
       "Six trap lanes with full drill-down: what Hammer will say, set-ups, rebuttals, sample scripts — tap from hub summary cards.",
   },
   {
+    href: "/admin/intelligence/film-room",
+    label: "Film room",
+    description:
+      "Clips, KATV/THV11 transcripts, cross-exam bank, and argument library — rehearse pivots before stage. Staff only for live clip use.",
+  },
+  {
+    href: "/admin/intelligence/sos-debate-questions",
+    label: "Expected questions",
+    description:
+      "Research-backed SOS debate bank: speak order 1·2·3, agree-plus-fresh-add, Hammer/Packo angles — open drill-down per topic.",
+  },
+  {
     href: "/admin/intelligence/debate-command",
     label: "Trap questions",
     description: stepDesc(
       "/admin/intelligence/debate-command",
-      "Cross-exam bank and film room — implementation traps for when Hammer is in the room.",
+      "Readiness scores and trap warnings — validate prep before stage.",
     ),
   },
   {
@@ -113,6 +129,24 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     ),
   },
   {
+    href: "/admin/intelligence/film-room",
+    label: "Film room",
+    description:
+      "Opponent clips, transcript drills (KATV/THV11/TBP), cross-exam bank, argument library — rehearse before stage.",
+  },
+  {
+    href: "/admin/intelligence/sos-debate-questions",
+    label: "Expected questions",
+    description:
+      "23 moderator-style SOS questions with 1st/2nd/3rd speak-order drills, rebuttals, and claims gates — never end on 'I agree' alone.",
+  },
+  {
+    href: "/admin/intelligence/debate-depth",
+    label: "Plain-language depth",
+    description:
+      "What to expect, handle Hammer's attacks, adversity, getting stuck, and culture-war bait — plus auto depth on every drill-down.",
+  },
+  {
     href: "/admin/intelligence/debate-command",
     label: "Debate command",
     description: stepDesc(
@@ -144,19 +178,25 @@ export const DEBATE_WEEK_EXTENDED_NAV_ITEMS: DebateWeekNavItem[] = [
     href: "/admin/intelligence/kim-hammer/evidence-command",
     label: "Evidence command",
     description:
-      "Staff citation locker and export control. Use after claims review to pull export-ready anchors for rapid response — not for Kelly on stage.",
+      "Staff citation locker: export-ready claims, review workflow, retrieval tasks. Confirms act numbers before stage — Kelly uses Claims; headset staff use this.",
   },
   {
     href: "/admin/intelligence/action-queue",
     label: "Action queue",
     description:
-      "Human retrieval assignments from intelligence gaps. Prioritize HIGH items before debate; Kelly should not cite OPEN gap topics publicly.",
+      "Staff assignment queue (citations, debate prep, retrieval) — persisted fast load on Netlify. Prioritize URGENT/HIGH before stage; Kelly uses Claims, not this live.",
   },
   {
     href: "/admin/intelligence/llm-review-queue",
     label: "LLM review",
     description:
       "NON_PUBLISHABLE AI drafts. Never read aloud in debate; staff only. Pair with claims before any adaptation goes public.",
+  },
+  {
+    href: "/admin/intelligence/film-room",
+    label: "Film room",
+    description:
+      "Opponent media drills, transcript excerpts, cross-exam bank, argument library — pair with video archive for cuts.",
   },
   {
     href: "/admin/intelligence/video-archive-room",
@@ -168,7 +208,7 @@ export const DEBATE_WEEK_EXTENDED_NAV_ITEMS: DebateWeekNavItem[] = [
     href: "/admin/intelligence/legislative-video",
     label: "Legislative video",
     description:
-      "Clip candidates and transcript chunks. Use only when debate-command film room lane is READY — do not imply video proof without a clip ID.",
+      "Clip candidates and transcript chunks. Use with film room — do not imply video proof without a clip ID and claims gate.",
   },
   {
     href: "/admin/intelligence/scenario-simulation",
@@ -181,6 +221,12 @@ export const DEBATE_WEEK_EXTENDED_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Intel command center",
     description:
       "Cross-lane dashboard when snapshot loads; v4 executive fallback when not. Staff orientation — Kelly uses hub instead on debate day.",
+  },
+  {
+    href: "/admin/intelligence/agent-tooling",
+    label: "Agent tooling package",
+    description:
+      "Debate-week copilot hub: readiness signals, operator sequences (T-24h, pre-stage, spin room), one-click tool runs — INTERNAL_DRAFT only.",
   },
   {
     href: "/admin/intelligence/kim-hammer/debate-ai-workbench",

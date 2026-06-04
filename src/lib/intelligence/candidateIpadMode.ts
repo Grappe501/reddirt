@@ -26,9 +26,12 @@ export const CANDIDATE_IPAD_PRIMARY_NAV = [
 ] as const;
 
 export const CANDIDATE_IPAD_MORE_LINKS = [
+  { href: "/admin/intelligence/film-room", label: "Film room" },
   { href: "/admin/intelligence/trap-lanes", label: "Trap lanes (full drill-down)" },
-  { href: "/admin/intelligence/debate-command", label: "Trap questions" },
+  { href: "/admin/intelligence/sos-debate-questions", label: "Expected SOS questions" },
+  { href: "/admin/intelligence/debate-command", label: "Debate command" },
   { href: "/admin/intelligence/county-clerk-week", label: "Clerk week path" },
+  { href: "/admin/intelligence/agent-tooling", label: "Agent tooling (prep runs)" },
   { href: "/admin/intelligence/kim-hammer/debate-ai-workbench", label: "AI workbench (staff)" },
   { href: "/admin/intelligence/scenario-simulation", label: "Scenarios" },
   { href: "/admin/intelligence/opponents", label: "Opponents" },

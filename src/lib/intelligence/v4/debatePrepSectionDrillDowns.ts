@@ -1,4 +1,5 @@
 import { PREP_SECTION_GUIDES } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { getPrepSectionEncounterDepth, mergeEncounterDepth } from "@/lib/intelligence/v4/debatePlainLanguageDepth";
 import type {
   DebatePrepSectionDrillDown,
   DebateZinger,
@@ -403,7 +404,10 @@ export const DEBATE_PREP_SECTION_DRILL_DOWNS: Record<string, DebatePrepSectionDr
     ],
     staffRole: "Staff is Hammer + timer + tone coach. Stop and reset if Kelly rambles.",
     bodyLanguageAndTone: "Feet shoulder-width; don't sway; microphone distance practice if venue allows.",
-    relatedLinks: [{ href: "/admin/intelligence/debate-command", label: "War room / film room" }],
+    relatedLinks: [
+      { href: "/admin/intelligence/film-room", label: "Film room (full)" },
+      { href: "/admin/intelligence/debate-command", label: "Debate command" },
+    ],
   }),
 
   opening: mk("opening", 9, "Opening statement builder", {
@@ -816,11 +820,31 @@ function hubQuestions(): string[] {
 }
 
 export function getPrepSectionDrillDown(sectionId: string): DebatePrepSectionDrillDown | undefined {
-  return DEBATE_PREP_SECTION_DRILL_DOWNS[sectionId];
+  const row = DEBATE_PREP_SECTION_DRILL_DOWNS[sectionId];
+  if (!row) return undefined;
+  const encounterDepth = mergeEncounterDepth(row.encounterDepth, getPrepSectionEncounterDepth(sectionId));
+  return encounterDepth ? { ...row, encounterDepth } : row;
 }
 
 export function getAllPrepSectionDrillDownIds(): string[] {
   return Object.keys(DEBATE_PREP_SECTION_DRILL_DOWNS);
+}
+
+/** v3-only section ids in prep packet — route to KH modules instead of 404. */
+export const PREP_SECTION_MODULE_FALLBACK_HREF: Record<string, string> = {
+  "debate-profile": "/admin/intelligence/kim-hammer/debate-profile",
+  "likely-args": "/admin/intelligence/kim-hammer/debate-profile",
+  contrast: "/admin/intelligence/kim-hammer/contrast-vs-kelly",
+  themes: "/admin/intelligence/kim-hammer/themes",
+  gaps: "/admin/intelligence/kim-hammer/intelligence-gaps",
+  kh3: "/admin/intelligence/kim-hammer/background-deep",
+};
+
+export function resolvePrepSectionHref(sectionId: string): string {
+  if (DEBATE_PREP_SECTION_DRILL_DOWNS[sectionId]) {
+    return `/admin/intelligence/kim-hammer/debate-prep/${sectionId}`;
+  }
+  return PREP_SECTION_MODULE_FALLBACK_HREF[sectionId] ?? `/admin/intelligence/kim-hammer/debate-prep`;
 }
 
 /** Merge drill-down operator fields back into lightweight guide accessor. */

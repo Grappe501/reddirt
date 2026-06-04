@@ -1,48 +1,88 @@
 {
-  "version": 1,
+  "version": 2,
   "generatedAt": "2026-06-04T12:00:00.000Z",
-  "instructions": "Replace placeholders with real county names and verified stories from the road. Claims gate before debate. Use in openings, county segments, and closings.",
+  "instructions": "Road stories for debate offense (humanize) and defense (credibility). County labels marked INTERPRETATION until Kelly confirms on tape. Claims gate before broadcast.",
   "storySlots": [
     {
       "id": "road-01",
       "title": "County clerk who called on Friday afternoon",
-      "county": "[County name — verify]",
-      "story": "A clerk told me they got a new mandate from Little Rock and no training budget — they asked who at the Secretary of State will answer the phone. That's why I'm running this office as service.",
-      "whenToUse": "County questions, SOS-as-service bridge",
-      "claimsStatus": "PLACEHOLDER"
+      "county": "Saline County area (INTERPRETATION — confirm with Kelly)",
+      "story": "A county election official described getting a new mandate from Little Rock on a Friday with no training budget and no named SOS contact — they asked who would answer the phone Monday. That is why I am running the office as service, not as another rule from the Capitol.",
+      "whenToUse": "County questions, SOS-as-service bridge, county-champion trap lane, implementation dare",
+      "claimsStatus": "INTERPRETATION",
+      "offensiveUse": "Pair with Act 350 or 444 — unfunded mandate without SOS training.",
+      "defensiveUse": "Shows Kelly listens; avoids attacking Hammer personally."
     },
     {
       "id": "road-02",
       "title": "Petition volunteer turned away",
-      "county": "[County — verify]",
-      "story": "A volunteer described signature rules so tight they gave up a lawful petition drive — not fraud, confusion. Integrity and participation should work together.",
-      "whenToUse": "Direct democracy / Hammer petition record",
-      "claimsStatus": "PLACEHOLDER"
+      "county": "Central Arkansas (INTERPRETATION — confirm with Kelly)",
+      "story": "A lawful petition volunteer said the signature rules were so confusing they stopped a drive — not because of fraud, but because the process felt like a trap. Integrity and participation should work together; the Secretary of State should publish rules people can read.",
+      "whenToUse": "Direct democracy / Hammer petition record, integrity-without-participation trap",
+      "claimsStatus": "INTERPRETATION",
+      "offensiveUse": "After fraud-data-dare if he has no conviction numbers.",
+      "defensiveUse": "Counters 'chaos' frame without sounding anti-security."
     },
     {
       "id": "road-03",
       "title": "Quorum court member worried about unfunded mandate",
-      "county": "[County — verify]",
-      "story": "A quorum court member asked where the line item was for the newest election law — their clerk was told to comply first and ask questions later.",
-      "whenToUse": "Implementation vs authorship contrast",
-      "claimsStatus": "PLACEHOLDER"
+      "county": "South Arkansas (INTERPRETATION — confirm with Kelly)",
+      "story": "A quorum court member asked where the line item was for the newest election law — their clerk had been told to comply first and ask questions later. That is centralized government in practice: Little Rock authors, counties pay.",
+      "whenToUse": "Implementation vs authorship, county-champion trap, 2021 vs 2025 pivot",
+      "claimsStatus": "INTERPRETATION",
+      "offensiveUse": "Supports county-burden theme in theme matrix.",
+      "defensiveUse": "Rural audience credibility — fiscal conservatism angle."
     },
     {
       "id": "road-04",
       "title": "Young voter first time participating",
-      "county": "[Town — verify]",
-      "story": "A first-time voter said they wanted rules they could read online — not slogans. Transparency is a kitchen-table issue.",
-      "whenToUse": "Trust / transparency pillar",
-      "claimsStatus": "PLACEHOLDER"
+      "county": "Northwest Arkansas (INTERPRETATION — confirm with Kelly)",
+      "story": "A first-time voter said they wanted election rules they could find online — not slogans about integrity. Transparency is a kitchen-table issue; as Secretary of State I will publish guidance voters and volunteers can verify.",
+      "whenToUse": "Trust / transparency pillar, opening/closing trust line",
+      "claimsStatus": "INTERPRETATION",
+      "offensiveUse": "Kelly superiority — non-partisan service for all voters.",
+      "defensiveUse": "Positive frame when debate gets negative."
     },
     {
       "id": "road-05",
       "title": "Election worker overtime",
-      "county": "[County — verify]",
-      "story": "Poll workers described absorbing new procedures without extra staff — the Secretary of State should show up with training, not blame.",
-      "whenToUse": "Humanize county burden vs Hammer record",
-      "claimsStatus": "PLACEHOLDER"
+      "county": "Delta region (INTERPRETATION — confirm with Kelly)",
+      "story": "Poll workers described absorbing new procedures after another session of election bills — without extra staff or state training. The Secretary of State should show up with a training calendar, not blame counties when lines get long.",
+      "whenToUse": "Humanize county burden vs Hammer record, county theme bills",
+      "claimsStatus": "INTERPRETATION",
+      "offensiveUse": "Pairs with SB487 precinct changes (2021 package).",
+      "defensiveUse": "Electoral workers as heroes — Kelly ally frame."
+    },
+    {
+      "id": "road-07",
+      "title": "Republican county meeting — tired of division",
+      "county": "INTERPRETATION — Kelly to confirm county",
+      "story": "In a room that was mostly Republican and independent, voters said they wanted a Secretary of State who works across the aisle and keeps the office non-partisan — not another culture-war headline. When I said transparency and accountability would be day one, the room reacted strongly. That is the campaign we are running.",
+      "whenToUse": "Unity drill-down, opening/closing, civic education question, any 'division in politics' moderator angle",
+      "claimsStatus": "INTERPRETATION — field-tested tone; confirm venue on tape before naming county",
+      "offensiveUse": "Lean into tested themes without attacking voter tribes.",
+      "defensiveUse": "Shows Kelly is not a partisan bomb-thrower."
+    },
+    {
+      "id": "road-08",
+      "title": "Civic Index last in the nation",
+      "county": "Statewide (public index — verify in claims)",
+      "story": "The Arkansas Civic Index ranks Arkansas last in civic health in this country. That is not an attack line — it is accountability on the administration of the Secretary of State. I will educate the public and measure progress so we climb off the bottom.",
+      "whenToUse": "Turnout question, civic education drill-down, closing accountability beat",
+      "claimsStatus": "NEEDS_REVIEW — verify index source/year before broadcast",
+      "offensiveUse": "Administration results frame vs Hammer authorship.",
+      "defensiveUse": "Policy seriousness without personal insult."
+    },
+    {
+      "id": "road-06",
+      "title": "Clerk asked about Act 768 before it was clear",
+      "county": "INTERPRETATION — Kelly to confirm county",
+      "story": "A clerk asked how local initiative petitions change under the newest act before anyone at the state had published plain-language guidance — volunteers and counties were left guessing. I will not add another bill without a training plan and a hotline that answers.",
+      "whenToUse": "Act 768 / SB584 direct democracy corner",
+      "claimsStatus": "INTERPRETATION",
+      "offensiveUse": "Fraud-data-dare and petition-cluster sections.",
+      "defensiveUse": "Shows Kelly plans implementation, not just criticism."
     }
   ],
-  "candidateAddPrompt": "Add your stories on the debate coaching page under suggestions, or send to staff to slot here."
+  "candidateAddPrompt": "Replace INTERPRETATION counties with verified names from Kelly's travel log before debate broadcast."
 }

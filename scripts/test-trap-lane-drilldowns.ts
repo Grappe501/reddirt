@@ -17,6 +17,8 @@ for (const id of getAllTrapLaneIds()) {
   assert.ok(drill.setupMoves.length >= 1);
   assert.ok(drill.kellyPivotDeep.length > 20);
   assert.ok(drill.rehearsalSteps.length >= 2);
+  assert.ok(drill.whatToLookForOffensive.length >= 1, `${id} offensive findings`);
+  assert.ok(drill.debateOffensiveUse.length > 15, `${id} offensive use`);
 }
 
 const experience = getTrapLaneDrillDown("experience-equals-sos-ready");

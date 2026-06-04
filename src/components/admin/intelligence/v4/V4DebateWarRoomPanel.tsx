@@ -89,9 +89,17 @@ export function V4DebateWarRoomPanel({
             </div>
           ))}
         </div>
-        <Link href="/admin/intelligence/legislative-video" className="mt-3 inline-block text-xs font-bold text-kelly-navy underline">
-          Legislative video pipeline →
-        </Link>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link href="/admin/intelligence/film-room" className="text-xs font-bold text-kelly-navy underline">
+            Open full film room →
+          </Link>
+          <Link href="/admin/intelligence/video-archive-room" className="text-xs font-bold text-kelly-navy underline">
+            Video archive (cuts) →
+          </Link>
+          <Link href="/admin/intelligence/legislative-video" className="text-xs font-bold text-kelly-navy underline">
+            Legislative pipeline →
+          </Link>
+        </div>
       </article>
 
       {variant !== "compact" ? (

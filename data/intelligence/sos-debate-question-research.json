@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-04T12:00:00.000Z",
+  "governance": "INTERNAL · NON_PUBLISHABLE · Research synthesis for debate prep — verify before public use",
+  "sosOfficeDutiesArkansas": [
+    "Chief election officer — certify results, support county clerks, voter registration systems",
+    "Business & commercial services — LLC/corp filings, UCC, trademarks",
+    "State Capitol operations — grounds, Capitol Police, building management",
+    "State records and authentications",
+    "Ballot initiative / petition process administration (with county role)"
+  ],
+  "researchRefs": [
+    {
+      "id": "ar-pbs-sos-2022",
+      "source": "Arkansas PBS Secretary of State Debate (2022)",
+      "url": "https://www.pbs.org/video/arkansas-pbs-debates-2022-sectretary-of-state-cx0foi/",
+      "topics": ["2020 fairness", "voter turnout", "online registration", "capitol security", "business services", "office consolidation"]
+    },
+    {
+      "id": "ar-4029-sos-2022",
+      "source": "4029 / UCA recap of 2022 SOS debate",
+      "url": "https://www.4029tv.com/article/arkansas-debate-anna-beth-gorman-jotn-thurston/41691807",
+      "topics": ["mail voting", "election integrity laws", "federalizing elections"]
+    },
+    {
+      "id": "ar-dem-gaz-sos-2022",
+      "source": "Arkansas Democrat-Gazette — Thurston vs Gorman",
+      "url": "https://www.arkansasonline.com/news/2022/oct/19/thurston-gorman-spar-over-role-of-secretary-of/",
+      "topics": ["bully pulpit vs bookkeeping", "capitol security priority", "voter ID", "business delays"]
+    },
+    {
+      "id": "ky-wlky-sos-2024",
+      "source": "WLKY Kentucky SOS debate question list (national pattern)",
+      "url": "https://www.wlky.com/article/kentucky-secretary-of-state-debate-wlky/45583803",
+      "topics": ["turnout", "early vote", "poll workers", "misinformation", "non-election duties"]
+    },
+    {
+      "id": "ga-sos-2026",
+      "source": "Georgia SOS debates (2026 cycle — integrity/access national frame)",
+      "url": "https://www.ajc.com/politics/2026/04/secretary-of-state-candidates-debate-amid-looming-vote-counting-problem/",
+      "topics": ["voter confidence", "equipment", "2020 aftermath", "paper trails"]
+    },
+    {
+      "id": "wa-sos-2024",
+      "source": "Washington SOS debate — disinformation, residency, ballot security",
+      "url": "https://www.heraldnet.com/news/wa-secretary-of-state-candidates-debate-in-edmonds/",
+      "topics": ["misinformation", "voter rolls", "business costs", "transparency"]
+    },
+    {
+      "id": "ar-debate-archive-index",
+      "source": "kim-hammer-debate-archive-index.json (internal)",
+      "url": "/admin/intelligence/film-room",
+      "topics": ["likely themes for 2026 AR SOS three-way"]
+    }
+  ],
+  "nationalQuestionPatterns": [
+    "Election integrity vs voter access balance",
+    "2020 election fairness (state accurate vs national doubt)",
+    "County clerk support and poll worker recruitment",
+    "Online registration and turnout ranking",
+    "Mail/absentee voting and fraud claims",
+    "Business services backlog and constituent experience",
+    "Capitol security vs election administration priority",
+    "Nonpartisan ballot access arbiter role",
+    "Misinformation / public confidence campaigns",
+    "Experience administering vs legislating"
+  ],
+  "fieldTestedThemes2026": [
+    "Transparency and accountability — strong reaction in independent and Republican rooms statewide",
+    "Work across the aisle to bring people together instead of division in politics",
+    "Keep the Secretary of State office non-partisan in ballot administration",
+    "SOS responsible for educating the public — not just enforcing paperwork",
+    "Arkansas Civic Index: Arkansas ranks last in civic health nationally — frame as accountability on current SOS administration (verify metric before broadcast)"
+  ],
+  "arkansas2026ThreeWayNotes": [
+    "Kelly may speak 1st, 2nd, or 3rd depending on draw — prep all orders",
+    "Packo (Libertarian) may emphasize access, less government, anti-establishment",
+    "Hammer emphasizes integrity package, Senate experience, smooth transition",
+    "Never empty agreement — always add county implementation or SOS service detail",
+    "Do not coordinate explicit vote for third candidate on stage"
+  ]
+}

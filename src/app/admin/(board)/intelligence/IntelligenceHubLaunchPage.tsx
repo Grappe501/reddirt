@@ -12,6 +12,7 @@ import { V4KellyNarrativeFrame } from "@/components/admin/intelligence/v4/V4Kell
 import { V4OpponentContrastPlaybookPanel } from "@/components/admin/intelligence/v4/V4OpponentContrastPlaybookPanel";
 import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3SectionStack";
 import { V7CountyClerkPrepPath } from "@/components/admin/intelligence/v4/V7CountyClerkPrepPath";
+import { V4DebateDepthHub } from "@/components/admin/intelligence/v4/V4DebateDepthHub";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
 
 const card =
@@ -45,6 +46,7 @@ export default function IntelligenceHubLaunchPage() {
       <V4OpponentContrastPlaybookPanel />
       <V4AnchorBillsPlaybookIndex />
       <V4WorkflowPlaybook />
+      <V4DebateDepthHub />
 
       <p className="mb-4 text-[10px] font-semibold uppercase tracking-wider text-violet-900">
         Packet v{v4.version} · {v4.debatePrepSectionsV4.length} prep sections · generated{" "}
@@ -82,6 +84,10 @@ export default function IntelligenceHubLaunchPage() {
           {[
             { href: "/admin/intelligence", label: "Start here", step: "1" },
             { href: "/admin/intelligence/kim-hammer/debate-prep", label: "Debate prep", step: "2" },
+            { href: "/admin/intelligence/film-room", label: "Film room", step: "2b" },
+            { href: "/admin/intelligence/sos-debate-questions", label: "Expected questions", step: "2c" },
+            { href: "/admin/intelligence/agent-tooling", label: "Agent tooling", step: "2d" },
+            { href: "/admin/intelligence/debate-depth", label: "Plain-language depth", step: "2e" },
             { href: "/admin/intelligence/debate-command", label: "Debate command", step: "3" },
             { href: "/admin/intelligence/kim-hammer", label: "Opponent record", step: "4" },
             { href: "/admin/intelligence/claims", label: "Verify claims", step: "5" },

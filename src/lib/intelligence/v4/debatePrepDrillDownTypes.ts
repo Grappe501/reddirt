@@ -1,4 +1,5 @@
 import type { OperatorGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import type { DebateEncounterDepth } from "@/lib/intelligence/v4/debateEncounterDepthTypes";
 
 export type RebuttalScript = {
   trigger: string;
@@ -42,4 +43,5 @@ export type DebatePrepSectionDrillDown = OperatorGuide & {
   staffRole: string;
   relatedLinks: Array<{ href: string; label: string }>;
   estimatedPrepMinutes: number;
+  encounterDepth?: DebateEncounterDepth;
 };

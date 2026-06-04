@@ -38,6 +38,7 @@ import { loadKimHammerNarrativeStateIndex } from "@/lib/opposition/kimHammerNarr
 import { summarizeNarrativeUsageRisk } from "@/lib/opposition/kimHammerNarrativeUsageAnalytics";
 
 import { HUMAN_ACTION_QUEUE_REL } from "@/lib/intelligence/types/humanActionQueue";
+import { shouldSkipHumanActionQueueSyncOnRequest } from "@/lib/intelligence/intelligenceLaunchMode";
 
 export { HUMAN_ACTION_QUEUE_REL };
 
@@ -179,16 +180,31 @@ function emptyQueueFile(): HumanActionQueueFile {
   };
 }
 
+function isServerlessReadOnlyFs(): boolean {
+  return Boolean(process.env.NETLIFY || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.VERCEL);
+}
+
 export function loadHumanActionQueue(repoRoot?: string): HumanActionQueueFile {
   const root = resolveRepoRoot(repoRoot);
   const abs = absPath(root, HUMAN_ACTION_QUEUE_REL);
   if (!existsSync(abs)) {
     const file = emptyQueueFile();
-    mkdirSync(path.dirname(abs), { recursive: true });
-    writeFileSync(abs, `${JSON.stringify(file, null, 2)}\n`, "utf8");
+    if (!isServerlessReadOnlyFs()) {
+      try {
+        mkdirSync(path.dirname(abs), { recursive: true });
+        writeFileSync(abs, `${JSON.stringify(file, null, 2)}\n`, "utf8");
+      } catch (error) {
+        console.error("[human-action-queue] could not create queue file", error);
+      }
+    }
     return file;
   }
-  return JSON.parse(readFileSync(abs, "utf8")) as HumanActionQueueFile;
+  try {
+    return JSON.parse(readFileSync(abs, "utf8")) as HumanActionQueueFile;
+  } catch (error) {
+    console.error("[human-action-queue] parse failed", error);
+    return emptyQueueFile();
+  }
 }
 
 function priorityScore(item: HumanActionQueueItem): number {
@@ -844,6 +860,9 @@ function summarizeHumanActionQueueFromFile(queue: HumanActionQueueFile): HumanAc
 }
 
 export function summarizeHumanActionQueue(repoRoot?: string): HumanActionQueueSummary {
+  if (shouldSkipHumanActionQueueSyncOnRequest()) {
+    return summarizePersistedHumanActionQueue(repoRoot);
+  }
   return summarizeHumanActionQueueFromFile(composeHumanActionQueue(repoRoot));
 }
 
@@ -930,10 +949,11 @@ export function getCopilotActionQueueRouting(
     intelligence_gathering: "Media Monitoring",
   };
   const owner = categoryMap[toolCategory] ?? "Strategy";
+  const queueItems = shouldSkipHumanActionQueueSyncOnRequest()
+    ? loadHumanActionQueue(repoRoot).items
+    : composeHumanActionQueue(repoRoot).items;
   const related = rankHumanActions(
-    composeHumanActionQueue(repoRoot).items.filter(
-      (row) => row.recommendedOwnerRole === owner && row.status === "RECOMMENDED",
-    ),
+    queueItems.filter((row) => row.recommendedOwnerRole === owner && row.status === "RECOMMENDED"),
   ).slice(0, 3);
 
   return {

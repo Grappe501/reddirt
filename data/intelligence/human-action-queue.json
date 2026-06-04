@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-29T03:22:58.801Z",
+  "generatedAt": "2026-06-04T03:00:08.202Z",
   "purpose": "NSI-15 governed human action queue — recommendations only; no autonomous execution.",
   "governanceDefaults": {
     "publicationSafety": "NON_PUBLISHABLE",
@@ -14,6 +14,194 @@
     "autonomousExecution": false
   },
   "items": [
+    {
+      "actionId": "ha-prepare-debate-response-dcfa4a8180",
+      "actionType": "PREPARE_DEBATE_RESPONSE",
+      "title": "Scenario: Opponent reframes county burden as security",
+      "summary": "SCENARIO_FRAGILE — risk 90.",
+      "whyItMatters": "Review scenario opp-county-burden-as-security before operational use — SCENARIO_FRAGILE.",
+      "recommendedOwnerRole": "Debate Prep",
+      "priority": "CRITICAL",
+      "urgency": "IMMEDIATE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "kh0b-2021-integrity-foundation"
+      ],
+      "linkedCounties": [
+        "pulaski",
+        "benton",
+        "washington"
+      ],
+      "linkedBills": [
+        "SB487"
+      ],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "opp-county-burden-as-security"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "1 partial claim(s) may weaken bill-linked scenario responses.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: County clerk burden examples",
+        "Required: Accessibility counter-evidence"
+      ],
+      "riskLevel": "CRITICAL",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Escalate to Evidence Command + strategy lead for same-day review."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Run debate prep center + what-not-to-say review before next public debate.",
+      "blockedBy": [
+        "1 partial claim(s) may weaken bill-linked scenario responses.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: County clerk burden examples",
+        "Required: Accessibility counter-evidence"
+      ],
+      "createdAt": "2026-05-29T03:10:44.446Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-prepare-debate-response-9a3a52e4c2",
+      "actionType": "PREPARE_DEBATE_RESPONSE",
+      "title": "Scenario: County burden vs election integrity collision",
+      "summary": "SCENARIO_FRAGILE — risk 100.",
+      "whyItMatters": "Review scenario collision-county-burden-vs-integrity before operational use — SCENARIO_FRAGILE.",
+      "recommendedOwnerRole": "Debate Prep",
+      "priority": "CRITICAL",
+      "urgency": "IMMEDIATE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "kh0b-2021-integrity-foundation"
+      ],
+      "linkedCounties": [
+        "pulaski",
+        "benton"
+      ],
+      "linkedBills": [
+        "SB487"
+      ],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "collision-county-burden-vs-integrity"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [
+        "1 partial claim(s) may weaken bill-linked scenario responses.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Doctrine-safe sequencing guidance",
+        "Required: Export-ready claim separation"
+      ],
+      "riskLevel": "CRITICAL",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "Escalate to Evidence Command + strategy lead for same-day review."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Run debate prep center + what-not-to-say review before next public debate.",
+      "blockedBy": [
+        "1 partial claim(s) may weaken bill-linked scenario responses.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
+        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
+        "Required: Doctrine-safe sequencing guidance",
+        "Required: Export-ready claim separation"
+      ],
+      "createdAt": "2026-05-29T03:10:44.447Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-prepare-debate-response-692ec0f310",
+      "actionType": "PREPARE_DEBATE_RESPONSE",
+      "title": "Debate trap review bundle",
+      "summary": "6 scenarios flagged SCENARIO_DEBATE_TRAP.",
+      "whyItMatters": "Debate memory and scenario simulation indicate stale or risky rebuttal paths.",
+      "recommendedOwnerRole": "Debate Prep",
+      "priority": "CRITICAL",
+      "urgency": "IMMEDIATE",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-14",
+        "NSI-13"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [
+        "opp-election-integrity-double-down",
+        "opp-county-burden-as-security",
+        "collision-county-burden-vs-integrity",
+        "debate-election-security-question",
+        "debate-kelly-experience-challenge"
+      ],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [],
+      "evidenceDependencies": [],
+      "riskLevel": "CRITICAL",
+      "opportunityLevel": "MEDIUM",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Run debate prep center + what-not-to-say review before next public debate.",
+      "blockedBy": [
+        "Recurring attacks: Soft on election security; County burden ignored",
+        "Same SB487 answer structure reused in 3 prep sessions"
+      ],
+      "createdAt": "2026-05-29T03:10:56.324Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
+      "operatorNotes": ""
+    },
     {
       "actionId": "ha-prepare-debate-response-ce5d4ee7b7",
       "actionType": "PREPARE_DEBATE_RESPONSE",
@@ -82,194 +270,6 @@
       "operatorNotes": "Test archive"
     },
     {
-      "actionId": "ha-prepare-debate-response-dcfa4a8180",
-      "actionType": "PREPARE_DEBATE_RESPONSE",
-      "title": "Scenario: Opponent reframes county burden as security",
-      "summary": "SCENARIO_FRAGILE — risk 90.",
-      "whyItMatters": "Review scenario opp-county-burden-as-security before operational use — SCENARIO_FRAGILE.",
-      "recommendedOwnerRole": "Debate Prep",
-      "priority": "CRITICAL",
-      "urgency": "IMMEDIATE",
-      "status": "RECOMMENDED",
-      "sourceSystems": [
-        "NSI-14",
-        "NSI-13"
-      ],
-      "linkedNarratives": [
-        "kh0b-county-administration-burden",
-        "kh0b-2021-integrity-foundation"
-      ],
-      "linkedCounties": [
-        "pulaski",
-        "benton",
-        "washington"
-      ],
-      "linkedBills": [
-        "SB487"
-      ],
-      "linkedClaims": [],
-      "linkedCitations": [],
-      "linkedTasks": [],
-      "linkedMediaFindings": [],
-      "linkedScenarios": [
-        "opp-county-burden-as-security"
-      ],
-      "linkedDoctrines": [],
-      "linkedExports": [],
-      "linkedDrafts": [],
-      "evidenceDependencies": [
-        "1 partial claim(s) may weaken bill-linked scenario responses.",
-        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
-        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
-        "Required: County clerk burden examples",
-        "Required: Accessibility counter-evidence"
-      ],
-      "riskLevel": "CRITICAL",
-      "opportunityLevel": "MEDIUM",
-      "governanceWarnings": [
-        "HUMAN_ACTION_REQUIRED",
-        "RECOMMENDATION_ONLY",
-        "NON_PUBLISHABLE",
-        "INTERNAL_USE_ONLY",
-        "Recommendation only — human action required.",
-        "No autonomous publish, export, claim, citation, or task mutation.",
-        "Escalate to Evidence Command + strategy lead for same-day review."
-      ],
-      "publicationSafety": "NON_PUBLISHABLE",
-      "humanActionRequired": true,
-      "recommendedNextStep": "Run debate prep center + what-not-to-say review before next public debate.",
-      "blockedBy": [
-        "1 partial claim(s) may weaken bill-linked scenario responses.",
-        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
-        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
-        "Required: County clerk burden examples",
-        "Required: Accessibility counter-evidence"
-      ],
-      "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
-      "operatorNotes": ""
-    },
-    {
-      "actionId": "ha-prepare-debate-response-9a3a52e4c2",
-      "actionType": "PREPARE_DEBATE_RESPONSE",
-      "title": "Scenario: County burden vs election integrity collision",
-      "summary": "SCENARIO_FRAGILE — risk 100.",
-      "whyItMatters": "Review scenario collision-county-burden-vs-integrity before operational use — SCENARIO_FRAGILE.",
-      "recommendedOwnerRole": "Debate Prep",
-      "priority": "CRITICAL",
-      "urgency": "IMMEDIATE",
-      "status": "RECOMMENDED",
-      "sourceSystems": [
-        "NSI-14",
-        "NSI-13"
-      ],
-      "linkedNarratives": [
-        "kh0b-county-administration-burden",
-        "kh0b-2021-integrity-foundation"
-      ],
-      "linkedCounties": [
-        "pulaski",
-        "benton"
-      ],
-      "linkedBills": [
-        "SB487"
-      ],
-      "linkedClaims": [],
-      "linkedCitations": [],
-      "linkedTasks": [],
-      "linkedMediaFindings": [],
-      "linkedScenarios": [
-        "collision-county-burden-vs-integrity"
-      ],
-      "linkedDoctrines": [],
-      "linkedExports": [],
-      "linkedDrafts": [],
-      "evidenceDependencies": [
-        "1 partial claim(s) may weaken bill-linked scenario responses.",
-        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
-        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
-        "Required: Doctrine-safe sequencing guidance",
-        "Required: Export-ready claim separation"
-      ],
-      "riskLevel": "CRITICAL",
-      "opportunityLevel": "MEDIUM",
-      "governanceWarnings": [
-        "HUMAN_ACTION_REQUIRED",
-        "RECOMMENDATION_ONLY",
-        "NON_PUBLISHABLE",
-        "INTERNAL_USE_ONLY",
-        "Recommendation only — human action required.",
-        "No autonomous publish, export, claim, citation, or task mutation.",
-        "Escalate to Evidence Command + strategy lead for same-day review."
-      ],
-      "publicationSafety": "NON_PUBLISHABLE",
-      "humanActionRequired": true,
-      "recommendedNextStep": "Run debate prep center + what-not-to-say review before next public debate.",
-      "blockedBy": [
-        "1 partial claim(s) may weaken bill-linked scenario responses.",
-        "Stale citation risk: cite-campaign-election-integrity-2025 — Source health: ARCHIVE_MISSING.",
-        "Stale citation risk: cite-campaign-election-integrity-2025 — Archive not captured — durability risk.",
-        "Required: Doctrine-safe sequencing guidance",
-        "Required: Export-ready claim separation"
-      ],
-      "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
-      "operatorNotes": ""
-    },
-    {
-      "actionId": "ha-prepare-debate-response-692ec0f310",
-      "actionType": "PREPARE_DEBATE_RESPONSE",
-      "title": "Debate trap review bundle",
-      "summary": "6 scenarios flagged SCENARIO_DEBATE_TRAP.",
-      "whyItMatters": "Debate memory and scenario simulation indicate stale or risky rebuttal paths.",
-      "recommendedOwnerRole": "Debate Prep",
-      "priority": "CRITICAL",
-      "urgency": "IMMEDIATE",
-      "status": "RECOMMENDED",
-      "sourceSystems": [
-        "NSI-14",
-        "NSI-13"
-      ],
-      "linkedNarratives": [],
-      "linkedCounties": [],
-      "linkedBills": [],
-      "linkedClaims": [],
-      "linkedCitations": [],
-      "linkedTasks": [],
-      "linkedMediaFindings": [],
-      "linkedScenarios": [
-        "opp-election-integrity-double-down",
-        "opp-county-burden-as-security",
-        "collision-county-burden-vs-integrity",
-        "debate-election-security-question",
-        "debate-kelly-experience-challenge"
-      ],
-      "linkedDoctrines": [],
-      "linkedExports": [],
-      "linkedDrafts": [],
-      "evidenceDependencies": [],
-      "riskLevel": "CRITICAL",
-      "opportunityLevel": "MEDIUM",
-      "governanceWarnings": [
-        "HUMAN_ACTION_REQUIRED",
-        "RECOMMENDATION_ONLY",
-        "NON_PUBLISHABLE",
-        "INTERNAL_USE_ONLY",
-        "Recommendation only — human action required.",
-        "No autonomous publish, export, claim, citation, or task mutation."
-      ],
-      "publicationSafety": "NON_PUBLISHABLE",
-      "humanActionRequired": true,
-      "recommendedNextStep": "Run debate prep center + what-not-to-say review before next public debate.",
-      "blockedBy": [
-        "Recurring attacks: Soft on election security; County burden ignored",
-        "Same SB487 answer structure reused in 3 prep sessions"
-      ],
-      "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
-      "operatorNotes": ""
-    },
-    {
       "actionId": "ha-review-export-risk-9a841d0f73",
       "actionType": "REVIEW_EXPORT_RISK",
       "title": "Scenario: Modernization vs local control",
@@ -327,7 +327,322 @@
         "Required: County partnership examples"
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-6b6a481165",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-brief-opposition-kim-hammer-v1-mpwv7fys",
+      "summary": "governed_brief_evidence — DRAFT_PENDING_REVIEW; tool governed-llm-evidence-packet.v1.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "CRITICAL",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-brief-opposition-kim-hammer-v1-mpwv7fys"
+      ],
+      "evidenceDependencies": [
+        "opposition-archive-items.json",
+        "kim-hammer-evidence-index",
+        "kim-hammer-election-record-bill-index.json",
+        "kim-hammer-kh4-claim-graph.json",
+        "kim-hammer-intelligence-gaps.json"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin",
+        "NOT_PUBLISHABLE — opposition content requires KH-4 export workflow",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Review in LLM queue; approve internal-only or request revision.",
+      "blockedBy": [
+        "NEEDS_REVIEW: Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+        "NEEDS_REVIEW: Public evidence for large-agency management readiness is partial and requires corroboration."
+      ],
+      "createdAt": "2026-06-04T02:59:58.555Z",
+      "updatedAt": "2026-06-04T02:59:58.555Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-3bb51f36ff",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-brief-debate-prep-v1-mpwv3x6l",
+      "summary": "governed_brief_evidence — DRAFT_PENDING_REVIEW; tool governed-llm-evidence-packet.v1.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "CRITICAL",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-brief-debate-prep-v1-mpwv3x6l"
+      ],
+      "evidenceDependencies": [
+        "debateCommandCenter",
+        "debateReadinessSignals",
+        "kim-hammer-debate-profile.json"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "All debate answers INTERNAL until comms/candidate prep sign-off",
+        "NEEDS_REVIEW: Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+        "NEEDS_REVIEW: Index local candidate forums not currently in statewide media databases"
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Review in LLM queue; approve internal-only or request revision.",
+      "blockedBy": [
+        "NEEDS_REVIEW: Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+        "NEEDS_REVIEW: Index local candidate forums not currently in statewide media databases",
+        "NEEDS_REVIEW: Only one direct Kim Hammer media clip — formal debate archive missing",
+        "NEEDS_REVIEW: No legislative committee transcript chunks — run legislature:intelligence:run with discovery enabled",
+        "NEEDS_REVIEW: Local forum recordings not indexed"
+      ],
+      "createdAt": "2026-06-04T02:59:58.555Z",
+      "updatedAt": "2026-06-04T02:59:58.555Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-c706ebd2da",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-brief-opposition-kim-hammer-v1-mpwv2hfd",
+      "summary": "governed_brief_evidence — DRAFT_PENDING_REVIEW; tool governed-llm-evidence-packet.v1.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "CRITICAL",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-brief-opposition-kim-hammer-v1-mpwv2hfd"
+      ],
+      "evidenceDependencies": [
+        "opposition-archive-items.json",
+        "kim-hammer-evidence-index",
+        "kim-hammer-election-record-bill-index.json",
+        "kim-hammer-kh4-claim-graph.json",
+        "kim-hammer-intelligence-gaps.json"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin",
+        "NOT_PUBLISHABLE — opposition content requires KH-4 export workflow",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Review in LLM queue; approve internal-only or request revision.",
+      "blockedBy": [
+        "NEEDS_REVIEW: Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+        "NEEDS_REVIEW: Public evidence for large-agency management readiness is partial and requires corroboration."
+      ],
+      "createdAt": "2026-06-04T02:59:58.555Z",
+      "updatedAt": "2026-06-04T02:59:58.555Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-e186a9d468",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-brief-debate-prep-v1-mpu7ecm4",
+      "summary": "governed_brief_evidence — DRAFT_PENDING_REVIEW; tool governed-llm-evidence-packet.v1.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "CRITICAL",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-brief-debate-prep-v1-mpu7ecm4"
+      ],
+      "evidenceDependencies": [
+        "debateCommandCenter",
+        "debateReadinessSignals",
+        "kim-hammer-debate-profile.json"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "All debate answers INTERNAL until comms/candidate prep sign-off",
+        "NEEDS_REVIEW: Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+        "NEEDS_REVIEW: Index local candidate forums not currently in statewide media databases"
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Review in LLM queue; approve internal-only or request revision.",
+      "blockedBy": [
+        "NEEDS_REVIEW: Locate full archive of older Kim Hammer debate/forum recordings with timestamps",
+        "NEEDS_REVIEW: Index local candidate forums not currently in statewide media databases",
+        "NEEDS_REVIEW: Only one direct Kim Hammer media clip — formal debate archive missing",
+        "NEEDS_REVIEW: No legislative committee transcript chunks — run legislature:intelligence:run with discovery enabled",
+        "NEEDS_REVIEW: Local forum recordings not indexed"
+      ],
+      "createdAt": "2026-06-04T02:59:58.555Z",
+      "updatedAt": "2026-06-04T02:59:58.555Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-ef9fa42693",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-brief-opposition-kim-hammer-v1-mpu7cqux",
+      "summary": "governed_brief_evidence — DRAFT_PENDING_REVIEW; tool governed-llm-evidence-packet.v1.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "CRITICAL",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [],
+      "linkedCounties": [],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-brief-opposition-kim-hammer-v1-mpu7cqux"
+      ],
+      "evidenceDependencies": [
+        "opposition-archive-items.json",
+        "kim-hammer-evidence-index",
+        "kim-hammer-election-record-bill-index.json",
+        "kim-hammer-kh4-claim-graph.json",
+        "kim-hammer-intelligence-gaps.json"
+      ],
+      "riskLevel": "HIGH",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation.",
+        "INTERNAL_DRAFT — NON_PUBLISHABLE — HUMAN_REVIEW_REQUIRED",
+        "Only 1 direct Kim Hammer clip indexed — film room remains evidence-thin",
+        "NOT_PUBLISHABLE — opposition content requires KH-4 export workflow",
+        "Any statement that implies motive without direct quotation or hearing evidence.",
+        "Any claim that all listed bills reduced or increased voter access without bill-text and implementation evidence.",
+        "Any statement that conflates sponsoring with final floor vote behavior.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Review in LLM queue; approve internal-only or request revision.",
+      "blockedBy": [
+        "NEEDS_REVIEW: Publicly available sources show partial but not complete evidence for large-scale agency management readiness.",
+        "UNSUPPORTED: Specific Rotary/Masonic affiliation assertions are not yet source-verified in the current intelligence corpus.",
+        "NEEDS_REVIEW: Public evidence for large-agency management readiness is partial and requires corroboration."
+      ],
+      "createdAt": "2026-06-04T02:59:58.555Z",
+      "updatedAt": "2026-06-04T02:59:58.555Z",
       "operatorNotes": ""
     },
     {
@@ -378,7 +693,7 @@
         "Publication safety blockers active."
       ],
       "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -424,7 +739,7 @@
       "recommendedNextStep": "Human-update task status in Evidence Command — recommendation does not execute task.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -470,7 +785,7 @@
       "recommendedNextStep": "Human-update task status in Evidence Command — recommendation does not execute task.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -516,7 +831,7 @@
       "recommendedNextStep": "Human-update task status in Evidence Command — recommendation does not execute task.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -577,7 +892,7 @@
         "Required: Modern SOS readiness narrative"
       ],
       "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -639,7 +954,7 @@
         "Required: County clerk partnership examples"
       ],
       "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -698,7 +1013,7 @@
         "Required: Legal/security expert citations"
       ],
       "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -755,7 +1070,7 @@
         "Required: Legal review of reform claims"
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -812,7 +1127,7 @@
         "Required: Legal-safe transparency language"
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -869,7 +1184,7 @@
         "Required: Doctrine registry coherence"
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -917,7 +1232,7 @@
       "recommendedNextStep": "Review media intake and public statements; source new citations before field use.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -968,7 +1283,7 @@
         "Blocked narratives in county overlay."
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -1020,7 +1335,7 @@
         "AI_PRESSURE: 2 pending suggestion(s) flagged for SB487."
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -1074,349 +1389,7 @@
         "AI_PRESSURE: 2 pending suggestion(s) flagged for kh0b-2021-integrity-foundation."
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
-      "operatorNotes": ""
-    },
-    {
-      "actionId": "ha-review-llm-draft-cef40050c5",
-      "actionType": "REVIEW_LLM_DRAFT",
-      "title": "Review LLM draft llm-draft-candidate-talking-points-mpq4qk30",
-      "summary": "writing — DRAFT_PENDING_REVIEW; tool writing-toolbox:candidate-talking-points.",
-      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
-      "recommendedOwnerRole": "Comms",
-      "priority": "HIGH",
-      "urgency": "URGENT",
-      "status": "RECOMMENDED",
-      "sourceSystems": [
-        "NSI-12",
-        "NSI-11"
-      ],
-      "linkedNarratives": [
-        "kh0b-county-administration-burden",
-        "debate-frame-management-readiness",
-        "SB487"
-      ],
-      "linkedCounties": [
-        "statewide",
-        "pulaski",
-        "washington"
-      ],
-      "linkedBills": [],
-      "linkedClaims": [],
-      "linkedCitations": [],
-      "linkedTasks": [],
-      "linkedMediaFindings": [],
-      "linkedScenarios": [],
-      "linkedDoctrines": [],
-      "linkedExports": [],
-      "linkedDrafts": [
-        "llm-draft-candidate-talking-points-mpq4qk30"
-      ],
-      "evidenceDependencies": [
-        "pdeb-001-election-integrity-record",
-        "pdeb-003-debate-question-patterns"
-      ],
-      "riskLevel": "MEDIUM",
-      "opportunityLevel": "LOW",
-      "governanceWarnings": [
-        "HUMAN_ACTION_REQUIRED",
-        "RECOMMENDATION_ONLY",
-        "NON_PUBLISHABLE",
-        "INTERNAL_USE_ONLY",
-        "Recommendation only — human action required.",
-        "No autonomous publish, export, claim, citation, or task mutation."
-      ],
-      "publicationSafety": "NON_PUBLISHABLE",
-      "humanActionRequired": true,
-      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
-      "blockedBy": [],
-      "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
-      "operatorNotes": ""
-    },
-    {
-      "actionId": "ha-review-llm-draft-228c920e07",
-      "actionType": "REVIEW_LLM_DRAFT",
-      "title": "Review LLM draft llm-draft-vulnerability-analysis-mpq4q327",
-      "summary": "opposition_research — DRAFT_PENDING_REVIEW; tool vulnerability-finder.",
-      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
-      "recommendedOwnerRole": "Comms",
-      "priority": "HIGH",
-      "urgency": "URGENT",
-      "status": "RECOMMENDED",
-      "sourceSystems": [
-        "NSI-12",
-        "NSI-11"
-      ],
-      "linkedNarratives": [
-        "kh0b-county-administration-burden",
-        "debate-frame-management-readiness",
-        "SB487"
-      ],
-      "linkedCounties": [
-        "statewide",
-        "pulaski",
-        "washington"
-      ],
-      "linkedBills": [],
-      "linkedClaims": [],
-      "linkedCitations": [],
-      "linkedTasks": [],
-      "linkedMediaFindings": [],
-      "linkedScenarios": [],
-      "linkedDoctrines": [],
-      "linkedExports": [],
-      "linkedDrafts": [
-        "llm-draft-vulnerability-analysis-mpq4q327"
-      ],
-      "evidenceDependencies": [
-        "pdeb-001-election-integrity-record",
-        "pdeb-003-debate-question-patterns"
-      ],
-      "riskLevel": "MEDIUM",
-      "opportunityLevel": "LOW",
-      "governanceWarnings": [
-        "HUMAN_ACTION_REQUIRED",
-        "RECOMMENDATION_ONLY",
-        "NON_PUBLISHABLE",
-        "INTERNAL_USE_ONLY",
-        "Recommendation only — human action required.",
-        "No autonomous publish, export, claim, citation, or task mutation."
-      ],
-      "publicationSafety": "NON_PUBLISHABLE",
-      "humanActionRequired": true,
-      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
-      "blockedBy": [],
-      "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
-      "operatorNotes": ""
-    },
-    {
-      "actionId": "ha-review-llm-draft-500cd07c93",
-      "actionType": "REVIEW_LLM_DRAFT",
-      "title": "Review LLM draft llm-draft-candidate-talking-points-mppxmbst",
-      "summary": "writing — DRAFT_PENDING_REVIEW; tool writing-toolbox:candidate-talking-points.",
-      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
-      "recommendedOwnerRole": "Comms",
-      "priority": "HIGH",
-      "urgency": "URGENT",
-      "status": "RECOMMENDED",
-      "sourceSystems": [
-        "NSI-12",
-        "NSI-11"
-      ],
-      "linkedNarratives": [
-        "kh0b-county-administration-burden",
-        "debate-frame-management-readiness",
-        "SB487"
-      ],
-      "linkedCounties": [
-        "statewide",
-        "pulaski",
-        "washington"
-      ],
-      "linkedBills": [],
-      "linkedClaims": [],
-      "linkedCitations": [],
-      "linkedTasks": [],
-      "linkedMediaFindings": [],
-      "linkedScenarios": [],
-      "linkedDoctrines": [],
-      "linkedExports": [],
-      "linkedDrafts": [
-        "llm-draft-candidate-talking-points-mppxmbst"
-      ],
-      "evidenceDependencies": [
-        "pdeb-001-election-integrity-record",
-        "pdeb-003-debate-question-patterns"
-      ],
-      "riskLevel": "MEDIUM",
-      "opportunityLevel": "LOW",
-      "governanceWarnings": [
-        "HUMAN_ACTION_REQUIRED",
-        "RECOMMENDATION_ONLY",
-        "NON_PUBLISHABLE",
-        "INTERNAL_USE_ONLY",
-        "Recommendation only — human action required.",
-        "No autonomous publish, export, claim, citation, or task mutation."
-      ],
-      "publicationSafety": "NON_PUBLISHABLE",
-      "humanActionRequired": true,
-      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
-      "blockedBy": [],
-      "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
-      "operatorNotes": ""
-    },
-    {
-      "actionId": "ha-review-llm-draft-58572fd742",
-      "actionType": "REVIEW_LLM_DRAFT",
-      "title": "Review LLM draft llm-draft-vulnerability-analysis-mppxlv4z",
-      "summary": "opposition_research — DRAFT_PENDING_REVIEW; tool vulnerability-finder.",
-      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
-      "recommendedOwnerRole": "Comms",
-      "priority": "HIGH",
-      "urgency": "URGENT",
-      "status": "RECOMMENDED",
-      "sourceSystems": [
-        "NSI-12",
-        "NSI-11"
-      ],
-      "linkedNarratives": [
-        "kh0b-county-administration-burden",
-        "debate-frame-management-readiness",
-        "SB487"
-      ],
-      "linkedCounties": [
-        "statewide",
-        "pulaski",
-        "washington"
-      ],
-      "linkedBills": [],
-      "linkedClaims": [],
-      "linkedCitations": [],
-      "linkedTasks": [],
-      "linkedMediaFindings": [],
-      "linkedScenarios": [],
-      "linkedDoctrines": [],
-      "linkedExports": [],
-      "linkedDrafts": [
-        "llm-draft-vulnerability-analysis-mppxlv4z"
-      ],
-      "evidenceDependencies": [
-        "pdeb-001-election-integrity-record",
-        "pdeb-003-debate-question-patterns"
-      ],
-      "riskLevel": "MEDIUM",
-      "opportunityLevel": "LOW",
-      "governanceWarnings": [
-        "HUMAN_ACTION_REQUIRED",
-        "RECOMMENDATION_ONLY",
-        "NON_PUBLISHABLE",
-        "INTERNAL_USE_ONLY",
-        "Recommendation only — human action required.",
-        "No autonomous publish, export, claim, citation, or task mutation."
-      ],
-      "publicationSafety": "NON_PUBLISHABLE",
-      "humanActionRequired": true,
-      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
-      "blockedBy": [],
-      "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
-      "operatorNotes": ""
-    },
-    {
-      "actionId": "ha-review-llm-draft-940f0604b0",
-      "actionType": "REVIEW_LLM_DRAFT",
-      "title": "Review LLM draft llm-draft-candidate-talking-points-mppwj17v",
-      "summary": "writing — DRAFT_PENDING_REVIEW; tool writing-toolbox:candidate-talking-points.",
-      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
-      "recommendedOwnerRole": "Comms",
-      "priority": "HIGH",
-      "urgency": "URGENT",
-      "status": "RECOMMENDED",
-      "sourceSystems": [
-        "NSI-12",
-        "NSI-11"
-      ],
-      "linkedNarratives": [
-        "kh0b-county-administration-burden",
-        "debate-frame-management-readiness",
-        "SB487"
-      ],
-      "linkedCounties": [
-        "statewide",
-        "pulaski",
-        "washington"
-      ],
-      "linkedBills": [],
-      "linkedClaims": [],
-      "linkedCitations": [],
-      "linkedTasks": [],
-      "linkedMediaFindings": [],
-      "linkedScenarios": [],
-      "linkedDoctrines": [],
-      "linkedExports": [],
-      "linkedDrafts": [
-        "llm-draft-candidate-talking-points-mppwj17v"
-      ],
-      "evidenceDependencies": [
-        "pdeb-001-election-integrity-record",
-        "pdeb-003-debate-question-patterns"
-      ],
-      "riskLevel": "MEDIUM",
-      "opportunityLevel": "LOW",
-      "governanceWarnings": [
-        "HUMAN_ACTION_REQUIRED",
-        "RECOMMENDATION_ONLY",
-        "NON_PUBLISHABLE",
-        "INTERNAL_USE_ONLY",
-        "Recommendation only — human action required.",
-        "No autonomous publish, export, claim, citation, or task mutation."
-      ],
-      "publicationSafety": "NON_PUBLISHABLE",
-      "humanActionRequired": true,
-      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
-      "blockedBy": [],
-      "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
-      "operatorNotes": ""
-    },
-    {
-      "actionId": "ha-review-llm-draft-83385b52da",
-      "actionType": "REVIEW_LLM_DRAFT",
-      "title": "Review LLM draft llm-draft-vulnerability-analysis-mppwiixu",
-      "summary": "opposition_research — DRAFT_PENDING_REVIEW; tool vulnerability-finder.",
-      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
-      "recommendedOwnerRole": "Comms",
-      "priority": "HIGH",
-      "urgency": "URGENT",
-      "status": "RECOMMENDED",
-      "sourceSystems": [
-        "NSI-12",
-        "NSI-11"
-      ],
-      "linkedNarratives": [
-        "kh0b-county-administration-burden",
-        "debate-frame-management-readiness",
-        "SB487"
-      ],
-      "linkedCounties": [
-        "statewide",
-        "pulaski",
-        "washington"
-      ],
-      "linkedBills": [],
-      "linkedClaims": [],
-      "linkedCitations": [],
-      "linkedTasks": [],
-      "linkedMediaFindings": [],
-      "linkedScenarios": [],
-      "linkedDoctrines": [],
-      "linkedExports": [],
-      "linkedDrafts": [
-        "llm-draft-vulnerability-analysis-mppwiixu"
-      ],
-      "evidenceDependencies": [
-        "pdeb-001-election-integrity-record",
-        "pdeb-003-debate-question-patterns"
-      ],
-      "riskLevel": "MEDIUM",
-      "opportunityLevel": "LOW",
-      "governanceWarnings": [
-        "HUMAN_ACTION_REQUIRED",
-        "RECOMMENDATION_ONLY",
-        "NON_PUBLISHABLE",
-        "INTERNAL_USE_ONLY",
-        "Recommendation only — human action required.",
-        "No autonomous publish, export, claim, citation, or task mutation."
-      ],
-      "publicationSafety": "NON_PUBLISHABLE",
-      "humanActionRequired": true,
-      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
-      "blockedBy": [],
-      "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -1462,7 +1435,7 @@
       "recommendedNextStep": "Resolve tension in strategy alignment dashboard before field deployment.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -1508,7 +1481,7 @@
       "recommendedNextStep": "Resolve tension in strategy alignment dashboard before field deployment.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -1554,7 +1527,64 @@
       "recommendedNextStep": "Resolve tension in strategy alignment dashboard before field deployment.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
+      "operatorNotes": ""
+    },
+    {
+      "actionId": "ha-review-llm-draft-4042e227d9",
+      "actionType": "REVIEW_LLM_DRAFT",
+      "title": "Review LLM draft llm-draft-trap-question-analysis-mpyvbm64",
+      "summary": "debate_prep — DRAFT_PENDING_REVIEW; tool what-not-to-say-detector.",
+      "whyItMatters": "Pending internal drafts must not leak to public messaging without human review.",
+      "recommendedOwnerRole": "Comms",
+      "priority": "HIGH",
+      "urgency": "URGENT",
+      "status": "RECOMMENDED",
+      "sourceSystems": [
+        "NSI-12",
+        "NSI-11"
+      ],
+      "linkedNarratives": [
+        "kh0b-county-administration-burden",
+        "debate-frame-management-readiness",
+        "SB487"
+      ],
+      "linkedCounties": [
+        "statewide",
+        "pulaski",
+        "washington"
+      ],
+      "linkedBills": [],
+      "linkedClaims": [],
+      "linkedCitations": [],
+      "linkedTasks": [],
+      "linkedMediaFindings": [],
+      "linkedScenarios": [],
+      "linkedDoctrines": [],
+      "linkedExports": [],
+      "linkedDrafts": [
+        "llm-draft-trap-question-analysis-mpyvbm64"
+      ],
+      "evidenceDependencies": [
+        "pdeb-001-election-integrity-record",
+        "pdeb-003-debate-question-patterns"
+      ],
+      "riskLevel": "MEDIUM",
+      "opportunityLevel": "LOW",
+      "governanceWarnings": [
+        "HUMAN_ACTION_REQUIRED",
+        "RECOMMENDATION_ONLY",
+        "NON_PUBLISHABLE",
+        "INTERNAL_USE_ONLY",
+        "Recommendation only — human action required.",
+        "No autonomous publish, export, claim, citation, or task mutation."
+      ],
+      "publicationSafety": "NON_PUBLISHABLE",
+      "humanActionRequired": true,
+      "recommendedNextStep": "Add citation dependencies or reject draft; route strong drafts to briefing after review.",
+      "blockedBy": [],
+      "createdAt": "2026-06-04T02:59:58.555Z",
+      "updatedAt": "2026-06-04T02:59:58.555Z",
       "operatorNotes": ""
     },
     {
@@ -1677,7 +1707,7 @@
         "yell"
       ],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.201Z",
       "operatorNotes": ""
     },
     {
@@ -1723,7 +1753,7 @@
       "recommendedNextStep": "Open strategic target pathway audit; confirm county numbers with field and data stewards.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -1775,7 +1805,7 @@
         "Stale citation signals in intelligence memory."
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -1825,7 +1855,7 @@
         "Stale citation signals in intelligence memory."
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -1875,7 +1905,7 @@
         "Stale citation signals in intelligence memory."
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -1929,7 +1959,7 @@
         "3 narrative(s) blocked pending citation."
       ],
       "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -1981,7 +2011,7 @@
         "1 narrative(s) blocked pending citation."
       ],
       "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2034,7 +2064,7 @@
         "2 narrative(s) blocked pending citation."
       ],
       "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2083,7 +2113,7 @@
       "recommendedNextStep": "Complete claim review workflow in Evidence Command — do not use externally until approved.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2132,7 +2162,7 @@
       "recommendedNextStep": "Complete claim review workflow in Evidence Command — do not use externally until approved.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2183,7 +2213,7 @@
         "Blocked narratives in county overlay."
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2234,7 +2264,7 @@
         "Blocked narratives in county overlay."
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2282,7 +2312,7 @@
       "recommendedNextStep": "Open citation locker; validate source, archive capture, and narrative linkage.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.446Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2336,7 +2366,7 @@
         "REVIEW: claim claim-management-readiness-partial remains NEEDS_REVIEW."
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2390,7 +2420,7 @@
         "REVIEW: claim claim-management-readiness-partial remains NEEDS_REVIEW."
       ],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2439,7 +2469,7 @@
       "recommendedNextStep": "Human-create retrieval task in KH-3B — do not auto-mutate task board.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2488,7 +2518,7 @@
       "recommendedNextStep": "Human-create retrieval task in KH-3B — do not auto-mutate task board.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2537,7 +2567,7 @@
       "recommendedNextStep": "Human-create retrieval task in KH-3B — do not auto-mutate task board.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2591,7 +2621,7 @@
       "recommendedNextStep": "Triage in media intake; human-promote to citation/task draft if validated — no auto-create.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2644,7 +2674,7 @@
       "recommendedNextStep": "Triage in media intake; human-promote to citation/task draft if validated — no auto-create.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:44.447Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2692,7 +2722,7 @@
       "recommendedNextStep": "Confirm act text on Arkleg; update citation locker after review.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2736,7 +2766,7 @@
       "recommendedNextStep": "Add verified public meeting URLs to watchlist — manual review only.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2780,7 +2810,7 @@
       "recommendedNextStep": "Add verified public meeting URLs to watchlist — manual review only.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2824,7 +2854,7 @@
       "recommendedNextStep": "Add verified public meeting URLs to watchlist — manual review only.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2868,7 +2898,7 @@
       "recommendedNextStep": "Add verified public meeting URLs to watchlist — manual review only.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     },
     {
@@ -2911,7 +2941,7 @@
       "recommendedNextStep": "Review aggregate campaign intelligence adapters; hydrate read-only data.",
       "blockedBy": [],
       "createdAt": "2026-05-29T03:10:56.324Z",
-      "updatedAt": "2026-05-29T03:21:50.304Z",
+      "updatedAt": "2026-06-04T03:00:08.202Z",
       "operatorNotes": ""
     }
   ]
