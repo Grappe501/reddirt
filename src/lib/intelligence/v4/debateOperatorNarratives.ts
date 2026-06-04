@@ -520,20 +520,37 @@ export const SURFACE_GUIDES: Record<string, OperatorGuide> = {
   },
   "sos-debate-questions-index": {
     whyItMatters:
-      "Moderators ask SOS-office questions, not bill trivia. Researched prompts with 1st/2nd/3rd speak-order drills — lean into field-tested unity themes (transparency, accountability, cross-aisle, non-partisan, public education, Civic Index accountability).",
+      "Moderators ask SOS-office questions, not bill trivia. Each drill-down now opens with a full quick-read briefing — why this answer, alternative lines, Hammer research hooks — not only a 30s one-liner.",
     howItFitsDebatePrep:
-      "Run after debate prep skim and before mock debate. Open hub narrative spine, then rehearse HIGH topics with unity lines — especially turnout/civic index, non-partisan role, and opening/closing.",
+      "Run after philosophy briefings and before mock debate. Use prep finder to jump topics; rehearse HIGH questions with rotated openers/closers so answers do not sound identical.",
     whatToLookFor: [
-      "Speak order block — fresh addition mandatory; weave unity theme when agreeing",
-      "Field-tested themes panel on hub — GREAT reaction in independent and Republican rooms",
-      "Arkansas Civic Index 'last in country' — verify in claims before citing rank on stage",
-      "Hammer likely lines + Packo three-way add-ons",
+      "Quick-read briefing block at top of each question — start there, not the 30s card alone",
+      "Alternative openers/closers — rotate so Kelly does not echo prior answers",
+      "Hammer research hooks — open opposition strategy before citing bills",
+      "Speak order block — fresh addition mandatory",
     ],
-    howToSetUp: "Index → open 5 questions → read 30s answer → practice position 2 and 3 closes.",
-    howToUseInDebate: "When moderator asks broad SOS question, use direct 30s then add county clerk line; if others agreed first, use position-2 or -3 script.",
+    howToSetUp: "Debate briefings hub → one philosophy page → prep finder → 5 HIGH questions with briefing checklists.",
+    howToUseInDebate: "When moderator asks broad SOS question, pick an alternative opener you have not used yet, then 30s spine + fresh add.",
     whenToUse: "Opening/closing blocks and integrity/access segments.",
-    campaignTrailUse: "Town halls: shorten 60s answer; keep agree-plus-fresh-add discipline.",
-    tiesTogether: "Trap lanes for record fights + film room for clip proof + claims gate.",
+    campaignTrailUse: "Town halls: use briefing summary + one alternative closer.",
+    tiesTogether: "Philosophy briefings + trap lanes + film room + claims gate.",
+  },
+  "debate-briefings-index": {
+    whyItMatters:
+      "Single-line answers make Kelly sound repetitive next to Hammer. Philosophy briefings explain why each method works; question briefings add alternative lines and Hammer intel.",
+    howItFitsDebatePrep:
+      "Walk left-to-right: supreme workbench → opposition strategy → philosophy briefings → SOS questions → trap lanes → claims.",
+    whatToLookFor: [
+      "Eight philosophy pages — agree-but-never-only-agree, author vs administrator, pile-on, etc.",
+      "Prep finder — search county, petition, SB584, integrity",
+      "Linked questions on each philosophy page",
+      "Hammer research hooks on every SOS question briefing",
+    ],
+    howToSetUp: "Read one philosophy briefing matching tonight's risk → open linked SOS questions.",
+    howToUseInDebate: "Kelly internalizes method, not verbatim scripts — rotate alternatives.",
+    whenToUse: "Night-before and green-room — 6–9 min per philosophy page.",
+    campaignTrailUse: "Staff prints quick-read briefing summaries for HIGH questions.",
+    tiesTogether: "SOS bank + opposition strategy + supreme workbench readiness.",
   },
   "trap-lanes-index": {
     whyItMatters:

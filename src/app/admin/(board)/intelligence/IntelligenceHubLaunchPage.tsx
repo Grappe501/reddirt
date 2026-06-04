@@ -13,6 +13,7 @@ import { V4OpponentContrastPlaybookPanel } from "@/components/admin/intelligence
 import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3SectionStack";
 import { V7CountyClerkPrepPath } from "@/components/admin/intelligence/v4/V7CountyClerkPrepPath";
 import { V4DebateDepthHub } from "@/components/admin/intelligence/v4/V4DebateDepthHub";
+import { V4DebatePrepFinder } from "@/components/admin/intelligence/v4/V4DebatePrepFinder";
 import { V4SupremeWorkbenchPanel } from "@/components/admin/intelligence/v4/V4SupremeWorkbenchPanel";
 import { V4OppositionStrategyLayerPanel } from "@/components/admin/intelligence/v4/V4OppositionStrategyLayerPanel";
 import { loadSupremeWorkbenchPacket } from "@/lib/intelligence/v4/supremeWorkbench";
@@ -65,6 +66,23 @@ export default function IntelligenceHubLaunchPage() {
       </div>
 
       <V7CountyClerkPrepPath compact={!clerkWeek} />
+      <div className="mb-6">
+        <V4DebatePrepFinder compact />
+      </div>
+      <div className="mb-6 flex flex-wrap gap-2">
+        <Link
+          href="/admin/intelligence/debate-briefings"
+          className="rounded-full border-2 border-violet-300 bg-violet-50 px-4 py-2 text-xs font-bold text-violet-950 hover:bg-violet-100"
+        >
+          Philosophy & handling briefings →
+        </Link>
+        <Link
+          href="/admin/intelligence/sos-debate-questions"
+          className="rounded-full border border-sky-300 bg-sky-50 px-4 py-2 text-xs font-bold text-sky-950"
+        >
+          SOS question bank (full briefings)
+        </Link>
+      </div>
       <V4KellyNarrativeFrame />
       <V4OpponentContrastPlaybookPanel />
       <V4AnchorBillsPlaybookIndex />

@@ -8,6 +8,9 @@ import { listCuratedBillPlaybookNumbers } from "@/lib/intelligence/v4/debateBill
 import { listAllBillNumbersFromIndex, resolveArklegBillUrl } from "@/lib/intelligence/v4/billActProofDepth";
 import { buildSosQuestionResponseRounds } from "@/lib/intelligence/v4/debateResponseRoundEnrichment";
 import { buildTrapLaneStepCoverage } from "@/lib/intelligence/v4/trapLaneStepCoverage";
+import { listDebatePhilosophyBriefings } from "@/lib/intelligence/v4/debatePhilosophyBriefings";
+import { buildSosQuestionBriefing } from "@/lib/intelligence/v4/debateBriefingEnrichment";
+import { buildDebatePrepFinderIndex } from "@/lib/intelligence/v4/debatePrepFinder";
 import { KELLY_ATTACK_VECTORS } from "@/lib/intelligence/v4/kellyCandidateResearchDepth";
 import { KELLY_OFFENSIVE_MOVES } from "@/lib/intelligence/v4/kellyOffensiveApproachDepth";
 import { computeOppositionOffenseReadinessPct } from "@/lib/intelligence/v4/oppositionStrategyLayerMetrics";
@@ -130,6 +133,43 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     total: qIds.length,
     flags: [],
     href: "/admin/intelligence/sos-debate-questions",
+  });
+
+  // v6.3 briefing depth — why, alternatives, Hammer hooks on every question
+  const philosophyCount = listDebatePhilosophyBriefings().length;
+  let briefingBuilt = 0;
+  for (const id of qIds) {
+    const d = getSosDebateQuestionDrillDown(id)!;
+    const b = buildSosQuestionBriefing(d);
+    const ok =
+      b.whyThisAnswerWorks.length > 80 &&
+      b.alternativeOpeners.length >= 3 &&
+      b.alternativeClosers.length >= 3 &&
+      b.hammerResearchHooks.length >= 3;
+    if (ok) briefingBuilt++;
+  }
+  items.push({
+    id: "debate-briefing-depth",
+    label: "Debate briefing depth (questions + philosophy)",
+    category: "Briefings",
+    completionPct: Math.round((briefingBuilt / qIds.length) * 100),
+    status: briefingBuilt === qIds.length && philosophyCount >= 8 ? "complete" : "partial",
+    built: briefingBuilt,
+    total: qIds.length,
+    flags: briefingBuilt < qIds.length ? ["Some questions missing full briefing enrichment"] : [],
+    href: "/admin/intelligence/debate-briefings",
+  });
+
+  items.push({
+    id: "debate-prep-finder",
+    label: "Prep finder search index",
+    category: "Navigation",
+    completionPct: 100,
+    status: "complete",
+    built: buildDebatePrepFinderIndex().length,
+    total: buildDebatePrepFinderIndex().length,
+    flags: [],
+    href: "/admin/intelligence/debate-briefings",
   });
 
   // Bills + act proof
@@ -298,6 +338,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/kim-hammer/debate-prep",
     "/admin/intelligence/trap-lanes",
     "/admin/intelligence/sos-debate-questions",
+    "/admin/intelligence/debate-briefings",
     "/admin/intelligence/debate-depth",
     "/admin/intelligence/kelly-debate-coaching",
     "/admin/intelligence/debate-command",
@@ -306,6 +347,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/build-progress",
     ...trapIds.map((id) => `/admin/intelligence/trap-lanes/${id}`),
     ...qIds.map((id) => `/admin/intelligence/sos-debate-questions/${id}`),
+    ...listDebatePhilosophyBriefings().map((p) => `/admin/intelligence/debate-briefings/${p.briefingId}`),
     ...prepIds.map((id) => `/admin/intelligence/kim-hammer/debate-prep/${id}`),
     ...billNumbers.slice(0, 29).map((b) => `/admin/intelligence/kim-hammer/bills/${b}`),
     ...billNumbers.slice(0, 29).map((b) => `/admin/intelligence/kim-hammer/bills/${b}/act-proof`),
@@ -387,7 +429,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     },
     {
       phase: 7,
-      name: "v6.2 — Opposition strategy layer (COMPLETE THIS PASS)",
+      name: "v6.2 — Opposition strategy layer (COMPLETE)",
       targetVersion: "0.15.2",
       goal: "Unified offense command: 2021/2025 package depth, trap lane map, offensive moves, cross-exam wiring.",
       items: [
@@ -404,11 +446,30 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
         "Link audit includes /opposition-strategy",
       ],
     },
+    {
+      phase: 8,
+      name: "v6.3 — Debate briefing depth (COMPLETE THIS PASS)",
+      targetVersion: "0.16.0",
+      goal: "Full quick-read briefings on every SOS question and trap lane — why, alternatives, Hammer hooks — plus philosophy library and prep finder.",
+      items: [
+        "Debate briefing enrichment on 23 SOS questions",
+        "Eight philosophy/handling briefing pages",
+        "Prep finder search across questions, traps, prep sections",
+        "Hub + SOS index wired to briefing library",
+        "Build progress tracks briefing completion",
+      ],
+      exitCriteria: [
+        "Every SOS question drill-down opens with briefing panel",
+        "Philosophy briefings route live",
+        "Prep finder returns results for county, petition, integrity",
+        "Netlify typecheck clean",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v6.2-opposition-strategy-layer",
+    version: "v6.3-debate-briefing-depth",
     overallCompletionPct,
     items,
     phases,

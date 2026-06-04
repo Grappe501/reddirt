@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllTrapLaneIds, getTrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDowns";
+import { getAllTrapLaneIds, getTrapLaneDrillDown, getTrapLaneWithBriefing } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 import { V4TrapLaneDrillDownPanel } from "@/components/admin/intelligence/v4/V4TrapLaneDrillDownPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 
@@ -15,7 +15,7 @@ type PageProps = { params: Promise<{ laneId: string }> };
 
 export default async function TrapLaneDrillDownPage({ params }: PageProps) {
   const { laneId } = await params;
-  const drill = getTrapLaneDrillDown(laneId);
+  const drill = getTrapLaneWithBriefing(laneId);
   if (!drill) notFound();
 
   const ids = getAllTrapLaneIds();

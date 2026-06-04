@@ -1,10 +1,11 @@
 import Link from "next/link";
-import type { SosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionTypes";
+import type { SosDebateQuestionWithBriefing } from "@/lib/intelligence/v4/debateBriefingEnrichment";
 import { SOS_DEBATE_SPEAK_ORDER_RULE } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { KELLY_UNITY_SPINE } from "@/lib/intelligence/v4/kellyTestedDebateThemes";
 import { buildSosQuestionResponseRounds } from "@/lib/intelligence/v4/debateResponseRoundEnrichment";
 import { V4ResponseRoundPanel } from "@/components/admin/intelligence/v4/V4DepthPanels";
 import { V4EncounterDepthPanel } from "@/components/admin/intelligence/v4/V4EncounterDepthPanel";
+import { V4DebateBriefingPanel } from "@/components/admin/intelligence/v4/V4DebateBriefingPanel";
 
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -20,12 +21,14 @@ export function V4SosDebateQuestionPanel({
   prev,
   next,
 }: {
-  drill: SosDebateQuestionDrillDown;
+  drill: SosDebateQuestionWithBriefing;
   prev: { questionId: string; title: string } | null;
   next: { questionId: string; title: string } | null;
 }) {
   return (
     <div className="space-y-6">
+      <V4DebateBriefingPanel briefing={drill.briefing} title="Quick-read question briefing — start here" />
+
       <article className="rounded-xl border-2 border-amber-200 bg-amber-50/50 p-5">
         <p className="text-[10px] font-bold uppercase text-amber-950">
           Question {drill.questionNumber} · {drill.probability} probability · ~{drill.estimatedPrepMinutes} min prep

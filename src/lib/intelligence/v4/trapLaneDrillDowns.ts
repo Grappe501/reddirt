@@ -3,6 +3,7 @@ import { getTrapLaneStaffFindings } from "@/lib/intelligence/v4/debateWhatToLook
 import type { TrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDownTypes";
 import type { RebuttalScript, SampleScript, DebateZinger } from "@/lib/intelligence/v4/debatePrepDrillDownTypes";
 import { getTrapLaneEncounterDepth, mergeEncounterDepth } from "@/lib/intelligence/v4/debatePlainLanguageDepth";
+import { attachTrapLaneBriefing, type TrapLaneWithBriefing } from "@/lib/intelligence/v4/debateBriefingEnrichment";
 
 const FIRST_TIMER =
   "Trap lanes are not insults — they are chess. You set a fair question; he answers into a record voters can check. Stay calm when he bites. If he does not bite, take your pivot anyway in one sentence and move on.";
@@ -438,6 +439,11 @@ export function getTrapLaneDrillDown(laneId: string): TrapLaneDrillDown | undefi
   if (!row) return undefined;
   const encounterDepth = mergeEncounterDepth(row.encounterDepth, getTrapLaneEncounterDepth(laneId));
   return encounterDepth ? { ...row, encounterDepth } : row;
+}
+
+export function getTrapLaneWithBriefing(laneId: string): TrapLaneWithBriefing | undefined {
+  const drill = getTrapLaneDrillDown(laneId);
+  return drill ? attachTrapLaneBriefing(drill) : undefined;
 }
 
 export function getAllTrapLaneIds(): string[] {

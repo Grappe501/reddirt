@@ -23,6 +23,7 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/trap-lanes",
   "/admin/intelligence/film-room",
   "/admin/intelligence/sos-debate-questions",
+  "/admin/intelligence/debate-briefings",
   "/admin/intelligence/agent-tooling",
   "/admin/intelligence/debate-depth",
   "/admin/intelligence/election-funding",
@@ -174,7 +175,13 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     href: "/admin/intelligence/sos-debate-questions",
     label: "Expected questions",
     description:
-      "23 moderator-style SOS questions with 1st/2nd/3rd speak-order drills, rebuttals, and claims gates — never end on 'I agree' alone.",
+      "23 moderator-style SOS questions — each opens with full briefing (why, alternatives, Hammer hooks) plus speak-order drills and claims gates.",
+  },
+  {
+    href: "/admin/intelligence/debate-briefings",
+    label: "Philosophy briefings",
+    description:
+      "Eight handling/philosophy pages — agree-but-never-only-agree, author vs administrator, pile-on, rebuttal architecture — plus prep finder.",
   },
   {
     href: "/admin/intelligence/debate-depth",

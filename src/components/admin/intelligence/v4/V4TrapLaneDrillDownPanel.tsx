@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import type { TrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDownTypes";
+import type { TrapLaneWithBriefing } from "@/lib/intelligence/v4/debateBriefingEnrichment";
 import { TRAP_LANE_FIRST_TIMER_NOTE } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 import { buildTrapLaneStepCoverage } from "@/lib/intelligence/v4/trapLaneStepCoverage";
 import { V4TrapStepCoveragePanel } from "@/components/admin/intelligence/v4/V4DepthPanels";
 import { V4EncounterDepthPanel } from "@/components/admin/intelligence/v4/V4EncounterDepthPanel";
+import { V4DebateBriefingPanel } from "@/components/admin/intelligence/v4/V4DebateBriefingPanel";
 
 function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -20,12 +21,14 @@ export function V4TrapLaneDrillDownPanel({
   prev,
   next,
 }: {
-  drill: TrapLaneDrillDown;
+  drill: TrapLaneWithBriefing;
   prev: { laneId: string; title: string } | null;
   next: { laneId: string; title: string } | null;
 }) {
   return (
     <div className="space-y-6">
+      <V4DebateBriefingPanel briefing={drill.briefing} title="Trap lane quick-read briefing" />
+
       <article className="rounded-xl border-2 border-kelly-gold/40 bg-kelly-page/40 p-5">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy">
           Trap lane {drill.laneNumber} of 6 · ~{drill.estimatedPrepMinutes} min prep

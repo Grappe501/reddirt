@@ -9,6 +9,7 @@ import {
   getSosCategoryEncounterDepth,
   mergeEncounterDepth,
 } from "@/lib/intelligence/v4/debatePlainLanguageDepth";
+import { attachSosQuestionBriefing, type SosDebateQuestionWithBriefing } from "@/lib/intelligence/v4/debateBriefingEnrichment";
 
 export type SosDebateQuestionResearchFile = {
   version: number;
@@ -32,6 +33,12 @@ export function getSosDebateQuestionDrillDown(questionId: string): SosDebateQues
     getSosCategoryEncounterDepth(row.category),
   );
   return encounterDepth ? { ...row, encounterDepth } : row;
+}
+
+/** Full drill-down with briefing depth — why, alternatives, Hammer hooks. */
+export function getSosDebateQuestionWithBriefing(questionId: string): SosDebateQuestionWithBriefing | undefined {
+  const drill = getSosDebateQuestionDrillDown(questionId);
+  return drill ? attachSosQuestionBriefing(drill) : undefined;
 }
 
 export function listSosDebateQuestionSummaries(): SosDebateQuestionSummary[] {

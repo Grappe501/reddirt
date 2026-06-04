@@ -9,6 +9,7 @@ import {
 } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
+import { V4DebatePrepFinder } from "@/components/admin/intelligence/v4/V4DebatePrepFinder";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 
 export const dynamic = "force-dynamic";
@@ -34,10 +35,13 @@ export default function SosDebateQuestionsIndexPage() {
       <V4PageHeader
         eyebrow="Debate prep · expected questions"
         title="SOS debate question bank"
-        description="23 researched questions — lean into field-tested unity themes (transparency, accountability, cross-aisle, non-partisan, public education, Civic Index). Each drill-down covers speak order 1st/2nd/3rd, agree-plus-fresh-add, rebuttal, and claims gate."
+        description="23 researched questions — each drill-down opens with a full briefing (why this answer, alternative lines, Hammer hooks). Use prep finder to jump topics; rotate openers so answers don't echo."
         guide={getSurfaceGuide("sos-debate-questions-index")}
       >
         <V4BackLinks />
+        <Link href="/admin/intelligence/debate-briefings" className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950">
+          Philosophy briefings
+        </Link>
         <Link href="/admin/intelligence/film-room" className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950">
           Film room
         </Link>
@@ -54,6 +58,10 @@ export default function SosDebateQuestionsIndexPage() {
           <V4OperatorGuide guide={getSurfaceGuide("sos-debate-questions-index")!} />
         </div>
       ) : null}
+
+      <div className="mb-6">
+        <V4DebatePrepFinder compact />
+      </div>
 
       <article className="mb-6 rounded-xl border-2 border-sky-200 bg-sky-50/50 p-5 text-sm">
         <p className="font-bold uppercase text-sky-950">Field-tested themes — lean in tonight</p>

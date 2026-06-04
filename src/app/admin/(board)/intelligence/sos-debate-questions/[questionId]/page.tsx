@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import {
   getAllSosDebateQuestionIds,
   getSosDebateQuestionDrillDown,
+  getSosDebateQuestionWithBriefing,
 } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { V4SosDebateQuestionPanel } from "@/components/admin/intelligence/sos-questions/V4SosDebateQuestionPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
@@ -18,7 +19,7 @@ type PageProps = { params: Promise<{ questionId: string }> };
 
 export default async function SosDebateQuestionDrillDownPage({ params }: PageProps) {
   const { questionId } = await params;
-  const drill = getSosDebateQuestionDrillDown(questionId);
+  const drill = getSosDebateQuestionWithBriefing(questionId);
   if (!drill) notFound();
 
   const ids = getAllSosDebateQuestionIds();

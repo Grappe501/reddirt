@@ -16,6 +16,8 @@ import { loadCountyElectionFundingResearch } from "../src/lib/intelligence/v4/co
 import { INTEGRITY_2021_PACKAGE_DEPTH, PETITION_2025_CLUSTER_DEPTH } from "../src/lib/intelligence/v4/integrityPackageDepth";
 import { listCuratedBillPlaybookNumbers } from "../src/lib/intelligence/v4/debateBillOperatorPlaybooks";
 import { KELLY_OFFENSIVE_MOVES } from "../src/lib/intelligence/v4/kellyOffensiveApproachDepth";
+import { listDebatePhilosophyBriefings } from "../src/lib/intelligence/v4/debatePhilosophyBriefings";
+import { buildSosQuestionBriefing } from "../src/lib/intelligence/v4/debateBriefingEnrichment";
 
 const APP_ROOT = path.join(process.cwd(), "src/app/admin/(board)/intelligence");
 
@@ -104,11 +106,25 @@ assert.equal(KELLY_OFFENSIVE_MOVES.length, 6, "offensive moves");
 assert.equal(getAllTrapLaneIds().length, 6, "trap lane ids");
 assert.ok(listCuratedBillPlaybookNumbers().length >= 11, "11+ curated bill playbooks");
 
+// --- v6.3 briefing depth ---
+assertRouteExists("/admin/intelligence/debate-briefings");
+assert.ok(listDebatePhilosophyBriefings().length >= 8, "8+ philosophy briefings");
+for (const id of getAllSosDebateQuestionIds()) {
+  const q = getSosDebateQuestionDrillDown(id)!;
+  const b = buildSosQuestionBriefing(q);
+  assert.ok(b.alternativeOpeners.length >= 3, `${id} alternative openers`);
+  assert.ok(b.hammerResearchHooks.length >= 3, `${id} hammer hooks`);
+}
+for (const pid of listDebatePhilosophyBriefings().map((p) => p.briefingId)) {
+  assertRouteExists(`/admin/intelligence/debate-briefings/${pid}`);
+}
+
 // --- Core routes ---
 for (const route of [
   "/admin/intelligence",
   "/admin/intelligence/trap-lanes",
   "/admin/intelligence/sos-debate-questions",
+  "/admin/intelligence/debate-briefings",
   "/admin/intelligence/kelly-debate-coaching",
   "/admin/intelligence/debate-depth",
   "/admin/intelligence/debate-command",
