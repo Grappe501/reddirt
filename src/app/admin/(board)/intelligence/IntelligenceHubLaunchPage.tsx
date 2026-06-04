@@ -7,7 +7,9 @@ import { V4ThemeMatrix } from "@/components/admin/intelligence/v4/V4ThemeMatrix"
 import { V4RehearsalDeck } from "@/components/admin/intelligence/v4/V4RehearsalDeck";
 import { V4ArgumentMap } from "@/components/admin/intelligence/v4/V4ArgumentMap";
 import { V4WorkflowPlaybook } from "@/components/admin/intelligence/v4/V4WorkflowPlaybook";
+import { V4AnchorBillsPlaybookIndex } from "@/components/admin/intelligence/v4/V4AnchorBillsPlaybookIndex";
 import { V4KellyNarrativeFrame } from "@/components/admin/intelligence/v4/V4KellyNarrativeFrame";
+import { V4OpponentContrastPlaybookPanel } from "@/components/admin/intelligence/v4/V4OpponentContrastPlaybookPanel";
 import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3SectionStack";
 
 const card =
@@ -32,6 +34,8 @@ export default function IntelligenceHubLaunchPage() {
       </V4PageHeader>
 
       <V4KellyNarrativeFrame />
+      <V4OpponentContrastPlaybookPanel />
+      <V4AnchorBillsPlaybookIndex />
       <V4WorkflowPlaybook />
 
       <p className="mb-4 text-[10px] font-semibold uppercase tracking-wider text-violet-900">

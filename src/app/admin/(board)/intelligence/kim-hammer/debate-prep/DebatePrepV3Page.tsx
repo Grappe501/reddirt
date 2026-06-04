@@ -6,7 +6,9 @@ import { V4ExecutiveBriefPanel } from "@/components/admin/intelligence/v4/V4Exec
 import { V4RehearsalDeck } from "@/components/admin/intelligence/v4/V4RehearsalDeck";
 import { V4ArgumentMap } from "@/components/admin/intelligence/v4/V4ArgumentMap";
 import { V4DebatePrepWithNav } from "@/components/admin/intelligence/v4/V4DebatePrepWithNav";
+import { V4AnchorBillsPlaybookIndex } from "@/components/admin/intelligence/v4/V4AnchorBillsPlaybookIndex";
 import { V4KellyNarrativeFrame } from "@/components/admin/intelligence/v4/V4KellyNarrativeFrame";
+import { V4OpponentContrastPlaybookPanel } from "@/components/admin/intelligence/v4/V4OpponentContrastPlaybookPanel";
 
 /** Intelligence v4 — 28-section debate prep (v3 base + structured JSON layers). */
 export default function DebatePrepV3Page() {
@@ -27,6 +29,9 @@ export default function DebatePrepV3Page() {
       </V4PageHeader>
 
       <V4KellyNarrativeFrame />
+
+      <V4OpponentContrastPlaybookPanel />
+      <V4AnchorBillsPlaybookIndex showFullPanels />
 
       <p className="mb-4 rounded-lg border border-amber-200/50 bg-amber-50/50 px-3 py-2 text-xs text-amber-950">
         {v4.hub.claims.supported.length} supported · {v4.hub.claims.partial.length} partial ·{" "}

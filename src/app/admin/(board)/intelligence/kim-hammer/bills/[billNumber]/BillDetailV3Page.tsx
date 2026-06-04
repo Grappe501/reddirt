@@ -5,7 +5,9 @@ import {
   findV4TimelineForBill,
   isInIntegrity2021,
 } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { getBillOperatorPlaybook } from "@/lib/intelligence/v4/debateBillOperatorPlaybooks";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { V4BillOperatorPlaybookPanel } from "@/components/admin/intelligence/v4/V4BillOperatorPlaybookPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { notFound } from "next/navigation";
 
@@ -17,6 +19,10 @@ export default function BillDetailV3Page({ billNumber }: { billNumber: string })
   const timelineHits = findV4TimelineForBill(v4, billNumber);
   const in2021 = isInIntegrity2021(v4, billNumber);
   const themeHits = v4.themeMatrix.filter((t) => t.bills.some((b) => b.toUpperCase() === billNumber.toUpperCase()));
+  const playbook = getBillOperatorPlaybook(billNumber, narrative, {
+    inIntegrity2021: in2021,
+    themeLabels: themeHits.map((t) => t.label),
+  });
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -34,6 +40,8 @@ export default function BillDetailV3Page({ billNumber }: { billNumber: string })
           Debate prep
         </Link>
       </V4PageHeader>
+
+      <V4BillOperatorPlaybookPanel playbook={playbook} />
 
       {(in2021 || themeHits.length > 0) && (
         <section className="mb-4 flex flex-wrap gap-2">
