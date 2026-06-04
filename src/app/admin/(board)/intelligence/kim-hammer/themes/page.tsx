@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { loadDebateIntelligenceV4SurfacePacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { V4ThemeMatrix } from "@/components/admin/intelligence/v4/V4ThemeMatrix";
@@ -10,7 +10,7 @@ export const maxDuration = 26;
 
 /** v4 theme matrix — no full workbench graph (Netlify-safe). */
 export default function KimHammerThemesPage() {
-  const v4 = loadDebateIntelligenceV4Packet();
+  const v4 = loadDebateIntelligenceV4SurfacePacket();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">

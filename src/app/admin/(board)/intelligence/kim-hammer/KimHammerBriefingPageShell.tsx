@@ -1,4 +1,12 @@
 import Link from "next/link";
+import { KimHammerV4ModuleBody } from "@/components/admin/intelligence/kim-hammer/KimHammerV4ModuleBody";
+import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
+import { V4BackLinks } from "@/components/admin/intelligence/v4/V4PageHeader";
+import {
+  getKimHammerV4ModuleEntry,
+  shouldRenderKimHammerV4Module,
+} from "@/lib/intelligence/kimHammerV4ModuleRegistry";
+import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import {
   buildKimHammerBillBriefing,
   getKimHammerSiblingBriefings,
@@ -65,6 +73,29 @@ export function KimHammerBriefingPageShell({
   detailTitle = "Detailed records & drill-down",
 }: KimHammerBriefingPageShellProps) {
   const launchMode = isIntelligenceOppositionDebateLaunchMode();
+  const v4Entry = getKimHammerV4ModuleEntry(moduleId);
+  const useV4Module = !billNumber && v4Entry && shouldRenderKimHammerV4Module(moduleId, launchMode);
+
+  if (useV4Module && v4Entry) {
+    const guide = v4Entry.guideKey ? getSurfaceGuide(v4Entry.guideKey) : undefined;
+    return (
+      <div className="mx-auto max-w-7xl text-kelly-text">
+        <V4BackLinks />
+        <header className="mb-6 border-b border-kelly-text/10 pb-4">
+          <p className="font-body text-[10px] font-bold uppercase tracking-[0.24em] text-kelly-subtle">
+            {v4Entry.eyebrow}
+          </p>
+          <h1 className="font-heading text-3xl font-bold text-kelly-navy">{v4Entry.title}</h1>
+          <p className="mt-2 max-w-4xl text-sm text-kelly-muted">
+            P3 v4 module — JSON and markdown packet only. Internal draft; verify act numbers before public use.
+          </p>
+        </header>
+        {guide ? <V4OperatorGuide guide={guide} /> : null}
+        <KimHammerV4ModuleBody entry={v4Entry} />
+      </div>
+    );
+  }
+
   const briefing = launchMode
     ? LAUNCH_MODULE_BRIEFING
     : billNumber && findKimHammerBill(billNumber)
