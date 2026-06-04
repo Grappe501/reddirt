@@ -113,7 +113,9 @@ export function KellyOffensiveNarrativePanel() {
           <h2 className="font-heading text-lg font-bold text-kelly-navy">{CHECK_MY_RECORD_REHEARSAL_SCRIPT.label}</h2>
           <span className="text-[10px] font-bold uppercase text-amber-900">{CHECK_MY_RECORD_REHEARSAL_SCRIPT.claimsGate}</span>
         </div>
-        <p className="mt-4 whitespace-pre-line leading-relaxed text-kelly-text">{CHECK_MY_RECORD_REHEARSAL_SCRIPT.text}</p>
+        <p className="mt-4 whitespace-pre-line text-base leading-relaxed text-kelly-text md:text-sm">
+          {CHECK_MY_RECORD_REHEARSAL_SCRIPT.text}
+        </p>
         <p className="mt-4 font-bold text-violet-950">Delivery checklist</p>
         <ul className="mt-2 list-inside list-disc text-xs text-kelly-muted">
           {CHECK_MY_RECORD_REHEARSAL_SCRIPT.deliveryChecklist.map((c) => (

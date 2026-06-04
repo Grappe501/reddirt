@@ -134,6 +134,7 @@
     "agents:test-kim-hammer-profile-research": "tsx scripts/test-kim-hammer-profile-research.ts",
     "agents:test-video-archive-room": "tsx scripts/test-video-archive-room.ts",
     "agents:test-kelly-offensive-principles": "tsx scripts/test-kelly-offensive-principles.ts",
+    "agents:test-candidate-ipad-intelligence": "tsx scripts/test-candidate-ipad-intelligence.ts",
     "agents:test-debate-intelligence-prep-drilldown": "tsx scripts/test-debate-intelligence-prep-drilldown.ts",
     "agents:test-debate-intelligence-county-week": "tsx scripts/test-debate-intelligence-county-week.ts",
     "agents:test-debate-intelligence-p4": "tsx scripts/test-debate-intelligence-p4.ts",
