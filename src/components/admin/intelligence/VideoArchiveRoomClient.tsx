@@ -4,11 +4,15 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { VideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoom";
 import { VideoArchiveOpponentMedia } from "@/components/admin/intelligence/VideoArchiveOpponentMedia";
+import {
+  VideoArchiveLegislativeOffense,
+  VideoArchiveRoadStories,
+} from "@/components/admin/intelligence/VideoArchiveLegislativeOffense";
 
 type RegisterMode = "manual_sponsor_link" | "team_cut" | null;
 
 export function VideoArchiveRoomClient({ packet }: { packet: VideoArchiveRoomPacket }) {
-  const [mainTab, setMainTab] = useState<"bills" | "hammer" | "packo">("bills");
+  const [mainTab, setMainTab] = useState<"bills" | "hammer" | "packo" | "offense" | "road">("bills");
   const [filter, setFilter] = useState<"all" | "with_video" | "anchors" | "missing">("all");
   const [expanded, setExpanded] = useState<string | null>(null);
   const [registerMode, setRegisterMode] = useState<RegisterMode>(null);
@@ -96,6 +100,8 @@ export function VideoArchiveRoomClient({ packet }: { packet: VideoArchiveRoomPac
         {(
           [
             ["bills", `Committee bills (${packet.focusBillCount})`],
+            ["offense", `Legislative offense (${packet.legislativeRecord?.bills?.length ?? 0} acts)`],
+            ["road", `Road stories (${packet.roadStories?.storySlots?.length ?? 0})`],
             ["hammer", `Kim Hammer (${packet.opponentMedia.hammer.length} links)`],
             ["packo", `Michael Packo (${packet.opponentMedia.packo.length} links)`],
           ] as const
@@ -115,6 +121,14 @@ export function VideoArchiveRoomClient({ packet }: { packet: VideoArchiveRoomPac
           Debate coaching →
         </Link>
       </div>
+
+      {mainTab === "offense" && packet.legislativeRecord ? (
+        <VideoArchiveLegislativeOffense packet={packet} />
+      ) : null}
+
+      {mainTab === "road" && packet.roadStories ? (
+        <VideoArchiveRoadStories packet={packet} />
+      ) : null}
 
       {mainTab === "hammer" ? (
         <VideoArchiveOpponentMedia

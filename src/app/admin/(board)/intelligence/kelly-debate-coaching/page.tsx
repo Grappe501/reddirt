@@ -14,7 +14,7 @@ export default function KellyDebateCoachingPage() {
       <V4PageHeader
         eyebrow="Kelly · first debate coaching"
         title="Stage presence, scripts & three-way strategy"
-        description="Opening and closing statements (30s / 60s / 90s), psychological prep, only-woman-on-stage positioning, and Hammer vs Packo vs Kelly cross-lanes. Submit your own suggestions below."
+        description="Offensive constitution (8 principles), how we play our hand, Hammer-line flips, direct democracy acts, ANYTHING BUT HAMMER phased, Packo-friendly lanes, and scripts. Submit suggestions below."
       >
         <V4BackLinks />
         <Link href="/admin/intelligence/kim-hammer/debate-prep" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
@@ -22,7 +22,11 @@ export default function KellyDebateCoachingPage() {
         </Link>
       </V4PageHeader>
 
-      <KellyDebateCoachingPanel suggestions={archive.opponentMedia.kellySuggestions} />
+      <KellyDebateCoachingPanel
+        suggestions={archive.opponentMedia.kellySuggestions}
+        directDemocracy={archive.legislativeRecord}
+        roadStories={archive.roadStories}
+      />
     </div>
   );
 }

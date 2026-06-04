@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { VideoArchiveRoomClient } from "@/components/admin/intelligence/VideoArchiveRoomClient";
 import { buildVideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoom";
+import { buildHammerDirectDemocracyPacket } from "@/lib/intelligence/v4/hammerDirectDemocracyOffensive";
+import { loadKellyRoadStories } from "@/lib/intelligence/loadKellyRoadStories";
 import { LEGISLATIVE_GOVERNANCE } from "@/lib/legislature/legislativeGovernance";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 
@@ -19,6 +21,10 @@ export default function VideoArchiveRoomPage() {
     operatorNotes: "",
     bills: [],
     opponentMedia: { hammer: [], packo: [], kellySuggestions: [] },
+    transcripts: { catalogCount: 0, pipelineSegmentCount: 0, transcriptionStatus: "UNKNOWN" },
+    legislativeRecord: buildHammerDirectDemocracyPacket(),
+    roadStories: loadKellyRoadStories(),
+    committeeTranscriptExcerpts: [],
   });
 
   return (
@@ -32,8 +38,9 @@ export default function VideoArchiveRoomPage() {
         <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Intelligence · video</p>
         <h1 className="font-heading text-2xl font-bold text-kelly-navy">Video archive room</h1>
         <p className="mt-2 max-w-3xl text-sm text-kelly-muted">
-          Committee bill videos plus Kim Hammer and Michael Packo (Pakko) media — Talk Business, YouTube, PBS, campaign sites.
-          Download, cut snippets, register in <strong>{packet.cutReadyFolderLabel}</strong>.
+          Committee bill videos, legislative offense (direct democracy acts), road stories, transcripts, and opponent media —
+          Talk Business, YouTube, PBS, campaign sites. Download, cut snippets, register in{" "}
+          <strong>{packet.cutReadyFolderLabel}</strong>.
         </p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
           <Link href="/admin/intelligence" className="rounded-full border border-kelly-navy/30 px-3 py-1 font-bold text-kelly-navy">

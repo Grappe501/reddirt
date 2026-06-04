@@ -61,6 +61,32 @@ export function VideoArchiveOpponentMedia({
                 {entry.publisher} · {entry.platform} · {entry.researchValue} · {entry.speakerVerification}
               </p>
               <p className="mt-2 text-kelly-text">{entry.summary}</p>
+
+              {entry.transcript && entry.transcript.segments.length > 0 ? (
+                <div className="mt-3 rounded-lg border border-violet-200 bg-violet-50/30 p-3">
+                  <p className="font-bold uppercase text-violet-950">
+                    Transcript · {entry.transcript.status} · {entry.transcript.speakerVerification}
+                  </p>
+                  {entry.transcript.debateUseNotes ? (
+                    <p className="mt-1 text-[10px] text-amber-900">{entry.transcript.debateUseNotes}</p>
+                  ) : null}
+                  <ul className="mt-2 max-h-48 space-y-2 overflow-y-auto">
+                    {entry.transcript.segments.map((seg, i) => (
+                      <li key={`${seg.startTime}-${i}`} className="text-kelly-text">
+                        <span className="font-mono text-[10px] text-kelly-subtle">
+                          {seg.startTime}–{seg.endTime}
+                        </span>{" "}
+                        <span className="font-semibold text-violet-900">{seg.speakerLabel}:</span> {seg.text}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <p className="mt-2 text-[10px] text-kelly-muted">
+                  No transcript excerpt — add to opponent-media-transcripts.json or run Whisper.
+                </p>
+              )}
+
               <p className="mt-2 flex flex-wrap gap-1">
                 {entry.topicTags.map((t) => (
                   <span key={t} className="rounded bg-kelly-page px-1.5 py-0.5 text-[10px]">
