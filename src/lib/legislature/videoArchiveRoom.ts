@@ -12,6 +12,15 @@ import {
   loadOpponentMediaCatalog,
   type OpponentMediaEntry,
 } from "@/lib/intelligence/opponents/loadOpponentMediaCatalog";
+import {
+  getTranscriptForMedia,
+  loadOpponentMediaTranscripts,
+  type OpponentMediaTranscriptEntry,
+} from "@/lib/intelligence/opponents/loadOpponentMediaTranscripts";
+import { buildHammerDirectDemocracyPacket } from "@/lib/intelligence/v4/hammerDirectDemocracyOffensive";
+import { buildLegislativeVideoIntelligenceRollup } from "@/lib/legislature/legislativeVideoIntelligenceRollup";
+import { loadTranscriptSegments } from "@/lib/legislature/legislativeTranscriptionPipeline";
+import { loadKellyRoadStories } from "@/lib/intelligence/loadKellyRoadStories";
 
 /** Debate anchor bills — always surfaced in archive room even if priority is lower. */
 export const VIDEO_ARCHIVE_FOCUS_ANCHORS = ["SB250", "HB1457", "SB291", "SB584", "HB1707"] as const;
@@ -50,6 +59,7 @@ export type OpponentMediaRow = OpponentMediaEntry & {
   snippets: VideoArchiveManifestAsset[];
   watchUrl: string;
   downloadUrl: string;
+  transcript?: OpponentMediaTranscriptEntry;
 };
 
 export type VideoArchiveRoomPacket = {
@@ -66,6 +76,19 @@ export type VideoArchiveRoomPacket = {
     packo: OpponentMediaRow[];
     kellySuggestions: KellyCandidateSuggestion[];
   };
+  transcripts: {
+    catalogCount: number;
+    pipelineSegmentCount: number;
+    transcriptionStatus: string;
+  };
+  legislativeRecord: ReturnType<typeof buildHammerDirectDemocracyPacket>;
+  roadStories: ReturnType<typeof loadKellyRoadStories>;
+  committeeTranscriptExcerpts: Array<{
+    billNumber: string;
+    videoCandidateId: string;
+    text: string;
+    speakerLabel: string;
+  }>;
 };
 
 function billKey(billNumber: string, session: string) {
@@ -193,8 +216,19 @@ export function buildVideoArchiveRoomPacket(repoRoot: string = process.cwd()): V
           snippets,
           watchUrl: entry.url,
           downloadUrl: `/api/admin/intelligence/video-archive/download?opponentMediaId=${encodeURIComponent(entry.id)}`,
+          transcript: getTranscriptForMedia(entry.id, repoRoot),
         };
       });
+
+  const transcriptFile = loadOpponentMediaTranscripts(repoRoot);
+  const pipelineSegments = loadTranscriptSegments(repoRoot);
+  const rollup = buildLegislativeVideoIntelligenceRollup(repoRoot);
+  const committeeExcerpts = pipelineSegments.segments.slice(0, 12).map((s) => ({
+    billNumber: s.billNumber,
+    videoCandidateId: s.videoCandidateId,
+    text: s.text,
+    speakerLabel: s.speakerLabel,
+  }));
 
   return {
     generatedAt: new Date().toISOString(),
@@ -212,6 +246,14 @@ export function buildVideoArchiveRoomPacket(repoRoot: string = process.cwd()): V
       packo: enrichOpponent("michael-packo"),
       kellySuggestions: manifest.kellyCandidateSuggestions,
     },
+    transcripts: {
+      catalogCount: transcriptFile.entries.length,
+      pipelineSegmentCount: pipelineSegments.segments.length,
+      transcriptionStatus: rollup.transcriptionProviderStatus,
+    },
+    legislativeRecord: buildHammerDirectDemocracyPacket(),
+    roadStories: loadKellyRoadStories(repoRoot),
+    committeeTranscriptExcerpts: committeeExcerpts,
   };
 }
 

@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-04T12:00:00.000Z",
+  "notes": "Manual and news-excerpt transcripts until Whisper pipeline runs. Mark NEEDS_REVIEW before debate quotes. Link via mediaId to opponent-media-catalog.json.",
+  "entries": [
+    {
+      "mediaId": "hammer-yt-katv-runoff-2026",
+      "status": "PARTIAL_EXCERPT",
+      "provider": "KATV_segment_excerpt",
+      "speakerVerification": "NEEDS_REVIEW",
+      "segments": [
+        {
+          "startTime": "00:00",
+          "endTime": "00:30",
+          "speakerLabel": "Reporter",
+          "text": "Arkansas voters are heading toward a Republican runoff in the race for Secretary of State — the statewide office responsible for overseeing elections, maintaining voter records, and managing business filings."
+        },
+        {
+          "startTime": "00:30",
+          "endTime": "01:15",
+          "speakerLabel": "Reporter",
+          "text": "State Senator Kim Hammer of Benton brings more than a decade and a half of public service to the race — eight years in the House and eight years in the Senate. He says his experience will allow him to step into the office and lead."
+        },
+        {
+          "startTime": "01:15",
+          "endTime": "02:00",
+          "speakerLabel": "Reporter",
+          "text": "Hammer says his priority will be election integrity. During the 2025 legislative session, Hammer made news with a package of bills that changed Arkansas's citizen-led ballot initiative process, making it more difficult for voters to propose constitutional amendments. He says the changes were designed to protect the state's constitution."
+        },
+        {
+          "startTime": "02:00",
+          "endTime": "02:30",
+          "speakerLabel": "Kim Hammer (reported)",
+          "text": "My job is not to come in and blow the place up. My job is to come in and to govern and make a smooth transition, because that's what the people of Arkansas expect."
+        }
+      ],
+      "debateUseNotes": "Use petition-package line with Acts 218, 240, 274, 241, 768 on stage after verification — not 'dismantled' without counsel."
+    },
+    {
+      "mediaId": "hammer-yt-thv11-runoff-primer",
+      "status": "PARTIAL_EXCERPT",
+      "provider": "THV11_auto_caption_excerpt",
+      "speakerVerification": "NEEDS_REVIEW",
+      "segments": [
+        {
+          "startTime": "00:00",
+          "endTime": "00:40",
+          "speakerLabel": "Rolly Hoyt",
+          "text": "The GOP runoff for state Secretary of State is about to get interesting. You've got Brian Norris on one side, the leading vote getter in the primary, taking on state Senator Kim Hammer."
+        },
+        {
+          "startTime": "00:40",
+          "endTime": "01:18",
+          "speakerLabel": "Rolly Hoyt",
+          "text": "Kim Hammer has led the charge in the legislature to put more requirements and restrictions on what's called direct democracy, the signature gathering process to put laws directly before voters."
+        }
+      ],
+      "debateUseNotes": "Kelly offensive lane: 'led the charge' against direct democracy — pair with 2025 petition acts."
+    },
+    {
+      "mediaId": "hammer-tbp-sos-announce-2025",
+      "status": "ARTICLE_EXCERPT",
+      "provider": "Talk_Business_2025-01-06",
+      "speakerVerification": "VERIFIED_QUOTE_TEXT",
+      "segments": [
+        {
+          "startTime": "00:00",
+          "endTime": "00:00",
+          "speakerLabel": "Kim Hammer",
+          "text": "It has been one of my great joys in life to serve the people of Arkansas as a legislator. I would like to continue to serve Arkansans as their Secretary of State. If elected, I will use my experience and work with both the legislative and administrative branches of government for the overall good and benefit of Arkansans."
+        },
+        {
+          "startTime": "00:00",
+          "endTime": "00:00",
+          "speakerLabel": "Kim Hammer",
+          "text": "As Secretary of State I will continue to work with county clerks and election commissioners across the state to keep Arkansas elections running smoothly so voters can continue to have confidence in the process."
+        }
+      ],
+      "debateUseNotes": "Contrast announcement clerk partnership pledge vs 2025 petition package (Acts 218–768) — implementation dare."
+    }
+  ]
+}

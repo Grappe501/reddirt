@@ -21,9 +21,19 @@ assert.equal(manifest.cutReadyFolderLabel, "cut-and-ready");
 assert.ok(packet.opponentMedia.hammer.length >= 5);
 assert.ok(packet.opponentMedia.packo.length >= 5);
 
+assert.ok(packet.legislativeRecord.bills.length >= 5, "direct democracy offense bills");
+assert.ok(packet.roadStories.storySlots.length >= 3, "road story slots");
+assert.ok(packet.transcripts.catalogCount >= 2, "opponent media transcripts");
+
+const hammerWithTranscript = packet.opponentMedia.hammer.filter((r) => r.transcript?.segments?.length);
+assert.ok(hammerWithTranscript.length >= 2, "hammer media with transcript excerpts");
+
 console.log("test-video-archive-room: OK", {
   focusBillCount: packet.focusBillCount,
   totalCommitteeLinks: packet.totalCommitteeLinks,
   hammerMedia: packet.opponentMedia.hammer.length,
   packoMedia: packet.opponentMedia.packo.length,
+  offenseBills: packet.legislativeRecord.bills.length,
+  transcripts: packet.transcripts.catalogCount,
+  hammerTranscribed: hammerWithTranscript.length,
 });

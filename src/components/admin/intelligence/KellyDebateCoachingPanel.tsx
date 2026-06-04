@@ -11,6 +11,20 @@ import {
   PACKO_IN_DEBATE_PREP,
   THREE_WAY_DEBATE_STRATEGY,
 } from "@/lib/intelligence/v4/kellyDebateCoaching";
+import {
+  ANYTHING_BUT_HAMMER_STRATEGY,
+  KELLY_SUPERIORITY_PILLARS,
+  OFFENSIVE_OPENING_HEELS,
+  RECORD_OFFENSE_PLAYBOOK,
+  ROAD_STORY_INTEGRATION,
+} from "@/lib/intelligence/v4/kellyOffensiveDebateStrategy";
+import {
+  HAMMER_STATEMENT_FLIPS,
+  HOW_WE_PLAY_OUR_HAND,
+  OFFENSIVE_DEBATE_PRINCIPLES,
+} from "@/lib/intelligence/v4/kellyOffensivePrinciples";
+import type { HammerDirectDemocracyPacket } from "@/lib/intelligence/v4/hammerDirectDemocracyOffensive";
+import type { KellyRoadStoriesFile } from "@/lib/intelligence/loadKellyRoadStories";
 import type { KellyCandidateSuggestion } from "@/lib/legislature/videoArchiveRoomManifest";
 
 function CoachingSection({ block }: { block: { title: string; bullets: string[]; doNot: string[] } }) {
@@ -39,9 +53,13 @@ function CoachingSection({ block }: { block: { title: string; bullets: string[];
 export function KellyDebateCoachingPanel({
   suggestions,
   compact,
+  directDemocracy,
+  roadStories,
 }: {
   suggestions: KellyCandidateSuggestion[];
   compact?: boolean;
+  directDemocracy?: HammerDirectDemocracyPacket;
+  roadStories?: KellyRoadStoriesFile;
 }) {
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -73,6 +91,183 @@ export function KellyDebateCoachingPanel({
 
   return (
     <div className="space-y-6">
+      {!compact ? (
+        <>
+        <article className="rounded-xl border-4 border-kelly-navy bg-kelly-navy p-5 text-xs text-white">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-gold">Offensive constitution — read first</p>
+          <h2 className="mt-2 font-heading text-xl font-bold">{OFFENSIVE_DEBATE_PRINCIPLES.headline}</h2>
+          <div className="mt-4 space-y-3">
+            {OFFENSIVE_DEBATE_PRINCIPLES.principles.map((p) => (
+              <div key={p.id} className="rounded-lg border border-white/20 bg-white/5 p-3">
+                <p className="font-bold text-kelly-gold">
+                  {p.id}. {p.title}
+                </p>
+                <p className="mt-1 leading-relaxed text-white/90">{p.rule}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="rounded-xl border-2 border-sky-200 bg-sky-50/50 p-5 text-xs">
+          <h2 className="font-heading text-lg font-bold text-kelly-navy">{HOW_WE_PLAY_OUR_HAND.headline}</h2>
+          <p className="mt-2 font-semibold text-sky-950">Table stakes</p>
+          <ul className="mt-2 list-inside list-disc text-kelly-muted">
+            {HOW_WE_PLAY_OUR_HAND.tableStakes.map((t) => (
+              <li key={t.slice(0, 40)}>{t}</li>
+            ))}
+          </ul>
+          <p className="mt-4 font-semibold text-sky-950">Rhythm (absorb → pivot → act → exit)</p>
+          <ul className="mt-2 list-inside list-disc text-kelly-muted">
+            {HOW_WE_PLAY_OUR_HAND.rhythm.map((t) => (
+              <li key={t.slice(0, 40)}>{t}</li>
+            ))}
+          </ul>
+          <div className="mt-4 grid gap-3 lg:grid-cols-2">
+            <div className="rounded-lg border border-emerald-200 bg-white p-3">
+              <p className="font-bold text-emerald-950">Press when</p>
+              <ul className="mt-2 list-inside list-disc text-kelly-muted">
+                {HOW_WE_PLAY_OUR_HAND.whenToPress.map((t) => (
+                  <li key={t.slice(0, 40)}>{t}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-lg border border-amber-200 bg-white p-3">
+              <p className="font-bold text-amber-950">De-escalate when</p>
+              <ul className="mt-2 list-inside list-disc text-kelly-muted">
+                {HOW_WE_PLAY_OUR_HAND.whenToDeEscalate.map((t) => (
+                  <li key={t.slice(0, 40)}>{t}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="mt-4 rounded-lg border border-kelly-navy/20 bg-kelly-page/50 p-3 font-semibold text-kelly-navy">
+            Win condition: {HOW_WE_PLAY_OUR_HAND.winCondition}
+          </p>
+        </article>
+
+        <section className="space-y-3">
+          <h2 className="text-sm font-bold uppercase text-kelly-navy">Turn Hammer&apos;s lines into our strengths</h2>
+          <p className="text-xs text-kelly-muted">
+            When he says X, do not fight the frame — flip it. Proof anchors link to acts, transcripts, and road stories.
+          </p>
+          {HAMMER_STATEMENT_FLIPS.map((flip) => (
+            <article key={flip.id} className="rounded-xl border border-rose-100 bg-white p-4 text-xs">
+              <p className="text-[10px] font-mono uppercase text-rose-900">{flip.id}</p>
+              <p className="mt-2 font-bold text-rose-950">He says: &ldquo;{flip.hammerSays}&rdquo;</p>
+              <p className="mt-1 text-kelly-subtle">Sounds like: {flip.whatItSoundsLike}</p>
+              <p className="mt-3 font-bold text-emerald-950">Kelly turn:</p>
+              <p className="mt-1 leading-relaxed text-kelly-text">{flip.kellyTurn}</p>
+              <p className="mt-3 text-[10px] text-violet-950">
+                <strong>Proof:</strong> {flip.proofAnchor}
+              </p>
+              <p className="mt-1 text-[10px] text-amber-900">{flip.claimsNote}</p>
+            </article>
+          ))}
+        </section>
+
+        <article className="rounded-xl border-2 border-rose-200 bg-rose-50/40 p-5 text-xs">
+          <h2 className="font-heading text-lg font-bold text-kelly-navy">{OFFENSIVE_OPENING_HEELS.headline}</h2>
+          <p className="mt-2 text-kelly-muted">{OFFENSIVE_OPENING_HEELS.tone}</p>
+          <p className="mt-3 font-bold uppercase text-rose-950">Minute one</p>
+          <ul className="mt-2 list-inside list-disc text-kelly-muted">
+            {OFFENSIVE_OPENING_HEELS.minuteOneMoves.map((m) => (
+              <li key={m.slice(0, 40)}>{m}</li>
+            ))}
+          </ul>
+          <p className="mt-3 font-semibold text-violet-950">First trap (90s): {OFFENSIVE_OPENING_HEELS.firstTrapWithin90s}</p>
+          <Link href="/admin/intelligence/video-archive-room" className="mt-3 inline-block font-bold text-kelly-navy underline">
+            Video archive · legislative offense tab →
+          </Link>
+        </article>
+
+        <article className="rounded-xl border border-emerald-200 bg-emerald-50/30 p-5 text-xs">
+          <h2 className="font-bold uppercase text-emerald-950">{KELLY_SUPERIORITY_PILLARS.headline}</h2>
+          <ul className="mt-3 list-inside list-disc text-kelly-muted">
+            {KELLY_SUPERIORITY_PILLARS.forThePeople.map((b) => (
+              <li key={b.slice(0, 40)}>{b}</li>
+            ))}
+          </ul>
+          <p className="mt-3 text-kelly-text"><strong>vs Hammer:</strong> {KELLY_SUPERIORITY_PILLARS.vsHammer}</p>
+          <p className="mt-1 text-kelly-text"><strong>vs Packo:</strong> {KELLY_SUPERIORITY_PILLARS.vsPacko}</p>
+        </article>
+
+        <article className="rounded-xl border border-amber-200 bg-amber-50/30 p-5 text-xs">
+          <h2 className="font-bold uppercase text-amber-950">{ANYTHING_BUT_HAMMER_STRATEGY.phase}</h2>
+          <p className="mt-2 text-kelly-muted">{ANYTHING_BUT_HAMMER_STRATEGY.electoralMath}</p>
+          <div className="mt-4 space-y-3">
+            {ANYTHING_BUT_HAMMER_STRATEGY.publicMessagingPhases.map((p) => (
+              <div key={p.phase} className="rounded border border-amber-100 bg-white p-3">
+                <p className="font-bold text-amber-950">{p.phase}</p>
+                <p className="mt-1 text-kelly-muted">{p.message}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 font-bold text-violet-950">Packo-friendly (on stage now)</p>
+          <ul className="mt-2 list-inside list-disc">
+            {ANYTHING_BUT_HAMMER_STRATEGY.packoFriendlyLines.map((l) => (
+              <li key={l.slice(0, 40)}>{l}</li>
+            ))}
+          </ul>
+          <p className="mt-4 font-bold text-rose-950">Do not say yet</p>
+          <ul className="mt-2 list-inside list-disc text-rose-950">
+            {ANYTHING_BUT_HAMMER_STRATEGY.doNotSayYet.map((l) => (
+              <li key={l.slice(0, 40)}>{l}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="rounded-xl border border-kelly-navy/15 bg-white p-5 text-xs">
+          <h2 className="font-bold uppercase text-kelly-navy">{RECORD_OFFENSE_PLAYBOOK.headline}</h2>
+          <p className="mt-2 text-kelly-muted">{RECORD_OFFENSE_PLAYBOOK.closingSuperiority}</p>
+          <div className="mt-4 grid gap-3 lg:grid-cols-2">
+            {RECORD_OFFENSE_PLAYBOOK.lanes.map((lane) => (
+              <div key={lane.lane} className="rounded-lg border border-kelly-text/10 p-3">
+                <p className="font-bold text-kelly-navy">{lane.lane}</p>
+                <p className="mt-1 text-[10px] font-mono text-amber-900">Acts: {lane.acts.join(", ")}</p>
+                <p className="mt-2 text-kelly-muted"><strong>Record:</strong> {lane.hammerPaint}</p>
+                <p className="mt-1 text-emerald-950"><strong>Kelly:</strong> {lane.kellyExit}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {directDemocracy ? (
+          <article className="rounded-xl border border-rose-100 bg-rose-50/20 p-5 text-xs">
+            <h2 className="font-bold uppercase text-rose-950">{directDemocracy.clusterLabel}</h2>
+            <p className="mt-2 text-kelly-muted">{directDemocracy.thesis}</p>
+            <p className="mt-3 text-[10px] text-amber-900">
+              Top acts to cite:{" "}
+              {directDemocracy.bills
+                .slice(0, 6)
+                .map((b) => (b.actNumber ? `Act ${b.actNumber}` : b.billNumber))
+                .join(" · ")}
+            </p>
+            <Link href="/admin/intelligence/video-archive-room" className="mt-3 inline-block font-bold underline">
+              Full bill traps in video archive →
+            </Link>
+          </article>
+        ) : null}
+
+        <article className="rounded-xl border border-emerald-100 p-5 text-xs">
+          <h2 className="font-bold uppercase text-emerald-950">{ROAD_STORY_INTEGRATION.headline}</h2>
+          <ul className="mt-3 list-inside list-disc text-kelly-muted">
+            {ROAD_STORY_INTEGRATION.rules.map((r) => (
+              <li key={r.slice(0, 40)}>{r}</li>
+            ))}
+          </ul>
+          {roadStories && roadStories.storySlots.length > 0 ? (
+            <div className="mt-4 space-y-2">
+              {roadStories.storySlots.slice(0, 3).map((s) => (
+                <p key={s.id} className="rounded border border-kelly-text/10 p-2 text-kelly-muted">
+                  <strong>{s.title}</strong> ({s.claimsStatus}): {s.story.slice(0, 120)}…
+                </p>
+              ))}
+            </div>
+          ) : null}
+        </article>
+        </>
+      ) : null}
+
       {!compact ? (
         <article className="rounded-xl border-2 border-violet-200 bg-violet-50/40 p-5 text-sm">
           <h2 className="font-heading text-xl font-bold text-kelly-navy">{THREE_WAY_DEBATE_STRATEGY.headline}</h2>

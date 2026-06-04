@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-04T12:00:00.000Z",
+  "instructions": "Replace placeholders with real county names and verified stories from the road. Claims gate before debate. Use in openings, county segments, and closings.",
+  "storySlots": [
+    {
+      "id": "road-01",
+      "title": "County clerk who called on Friday afternoon",
+      "county": "[County name — verify]",
+      "story": "A clerk told me they got a new mandate from Little Rock and no training budget — they asked who at the Secretary of State will answer the phone. That's why I'm running this office as service.",
+      "whenToUse": "County questions, SOS-as-service bridge",
+      "claimsStatus": "PLACEHOLDER"
+    },
+    {
+      "id": "road-02",
+      "title": "Petition volunteer turned away",
+      "county": "[County — verify]",
+      "story": "A volunteer described signature rules so tight they gave up a lawful petition drive — not fraud, confusion. Integrity and participation should work together.",
+      "whenToUse": "Direct democracy / Hammer petition record",
+      "claimsStatus": "PLACEHOLDER"
+    },
+    {
+      "id": "road-03",
+      "title": "Quorum court member worried about unfunded mandate",
+      "county": "[County — verify]",
+      "story": "A quorum court member asked where the line item was for the newest election law — their clerk was told to comply first and ask questions later.",
+      "whenToUse": "Implementation vs authorship contrast",
+      "claimsStatus": "PLACEHOLDER"
+    },
+    {
+      "id": "road-04",
+      "title": "Young voter first time participating",
+      "county": "[Town — verify]",
+      "story": "A first-time voter said they wanted rules they could read online — not slogans. Transparency is a kitchen-table issue.",
+      "whenToUse": "Trust / transparency pillar",
+      "claimsStatus": "PLACEHOLDER"
+    },
+    {
+      "id": "road-05",
+      "title": "Election worker overtime",
+      "county": "[County — verify]",
+      "story": "Poll workers described absorbing new procedures without extra staff — the Secretary of State should show up with training, not blame.",
+      "whenToUse": "Humanize county burden vs Hammer record",
+      "claimsStatus": "PLACEHOLDER"
+    }
+  ],
+  "candidateAddPrompt": "Add your stories on the debate coaching page under suggestions, or send to staff to slot here."
+}

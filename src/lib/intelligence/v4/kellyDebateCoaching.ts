@@ -103,8 +103,20 @@ export const THREE_WAY_DEBATE_STRATEGY = {
 
 export const KELLY_OPENING_SCRIPTS: DebateScript[] = [
   {
+    id: "open-30-offensive",
+    label: "Opening — 30s OFFENSIVE (heels from start)",
+    durationSeconds: 30,
+    claimsGate: "NEEDS_REVIEW — record contrast; verify act cites before broadcast",
+    text: "I'm Kelly Grappe. I'm running for Secretary of State because clerks across Arkansas told me they need a statewide partner — not another rule from the Capitol without training or a phone number that answers. Senator Hammer wrote a lot of election law. I am asking to help people live under it fairly — in every county, every party. Ask me about the acts — I'll answer directly.",
+    deliveryNotes: [
+      "Slower than feels natural — Hammer name once only",
+      "'Acts' signals readiness for direct democracy questions",
+      "No personal attack — attack the job he did legislating",
+    ],
+  },
+  {
     id: "open-30",
-    label: "Opening — 30 seconds",
+    label: "Opening — 30 seconds (warm)",
     durationSeconds: 30,
     claimsGate: "GENERAL_FRAME — customize after counsel review",
     text: "I'm Kelly Grappe. I'm running for Secretary of State because Arkansas deserves an office that serves county clerks and voters every day — transparent rules, real training support, and elections that are secure and lawful. I will answer your questions directly tonight.",
