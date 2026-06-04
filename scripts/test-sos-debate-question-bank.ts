@@ -3,8 +3,8 @@ import {
   getAllSosDebateQuestionIds,
   getSosDebateQuestionDrillDown,
   listSosDebateQuestionSummaries,
-  loadSosDebateQuestionResearch,
 } from "../src/lib/intelligence/v4/sosDebateQuestionBank";
+import { loadSosDebateQuestionResearch } from "../src/lib/intelligence/v4/sosDebateQuestionResearch";
 import { SOS_DEBATE_QUESTION_BANK } from "../src/lib/intelligence/v4/sosDebateQuestionBankData";
 
 assert.equal(getAllSosDebateQuestionIds().length, SOS_DEBATE_QUESTION_BANK.length);

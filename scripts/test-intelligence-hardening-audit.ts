@@ -85,7 +85,7 @@ for (const id of qIds) {
   const d = getSosDebateQuestionDrillDown(id)!;
   const rounds = buildSosQuestionResponseRounds(d);
   assert.ok(rounds.rounds.length >= 5, `${id} response rounds`);
-  assert.ok(d.comprehensive?.speakFirstFullScript.length > 80, `${id} comprehensive first script`);
+  assert.ok((d.comprehensive?.speakFirstFullScript.length ?? 0) > 80, `${id} comprehensive first script`);
   assertRouteExists(`/admin/intelligence/sos-debate-questions/${id}`);
 }
 
@@ -177,8 +177,8 @@ assert.ok(listDebatePhilosophyBriefings().length >= 8, "8+ philosophy briefings"
 assert.ok(getAllSosDebateQuestionIds().length >= 35, "35+ SOS debate questions");
 for (const id of ["county-clerks-unfunded-mandates", "cvsgf-county-funding-ledger", "acca-clerk-panel-partnership"]) {
   const q = getSosDebateQuestionDrillDown(id)!;
-  assert.ok(q.comprehensive?.speakFirstFullScript.length > 100, `${id} full script`);
-  assert.ok(q.comprehensive?.hammerExchanges.length >= 1, `${id} hammer exchanges`);
+  assert.ok((q.comprehensive?.speakFirstFullScript.length ?? 0) > 100, `${id} full script`);
+  assert.ok((q.comprehensive?.hammerExchanges.length ?? 0) >= 1, `${id} hammer exchanges`);
 }
 for (const pid of listDebatePhilosophyBriefings().map((p) => p.briefingId)) {
   assertRouteExists(`/admin/intelligence/debate-briefings/${pid}`);

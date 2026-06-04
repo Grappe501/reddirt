@@ -128,7 +128,8 @@ export function loadCountyElectionFundingResearch(): CountyElectionFundingResear
   return cache;
 }
 
-export function formatFundingAmount(n: number): string {
+export function formatFundingAmount(n: number | null): string {
+  if (n == null) return "—";
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(2)} million`;
   return `$${n.toLocaleString("en-US")}`;
 }
