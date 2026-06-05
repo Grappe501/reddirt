@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DEBATE_WEEK_EXTENDED_NAV_ITEMS, DEBATE_WEEK_PRIMARY_NAV_ITEMS } from "@/lib/intelligence/debate-week-nav";
+import { DEBATE_WEEK_EXTENDED_NAV_ITEMS, getDebateWeekPrimaryNavItems } from "@/lib/intelligence/debate-week-nav";
 
 const card =
   "flex flex-col rounded-xl border-2 border-kelly-navy/15 bg-white p-4 shadow-sm transition hover:border-kelly-navy/40";
@@ -38,7 +38,7 @@ export function IntelligenceLaunchModePage() {
       <section className="mb-8">
         <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-subtle">Your path</p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {DEBATE_WEEK_PRIMARY_NAV_ITEMS.map((item, index) => (
+          {getDebateWeekPrimaryNavItems().map((item, index) => (
             <Link key={item.href} href={item.href} className={card}>
               <span className="text-[10px] font-bold uppercase tracking-wider text-violet-800">Step {index + 1}</span>
               <h2 className="mt-2 font-heading text-lg font-bold text-kelly-navy">{item.label}</h2>

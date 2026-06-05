@@ -4,6 +4,7 @@ import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives"
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 import { V4DebatePrepFinder } from "@/components/admin/intelligence/v4/V4DebatePrepFinder";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
+import { DebatePrepDepthNavPanel } from "@/components/admin/intelligence/DebatePrepDepthNavPanel";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -30,6 +31,24 @@ export default function DebateBriefingsIndexPage() {
           SOS questions
         </Link>
         <Link
+          href="/admin/intelligence/debate-prep/psychology-manual"
+          className="rounded-full border border-fuchsia-300 bg-fuchsia-50 px-3 py-1 text-xs font-bold text-fuchsia-950"
+        >
+          Psychology manual
+        </Link>
+        <Link
+          href="/admin/intelligence/debate-depth"
+          className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950"
+        >
+          Plain-language depth
+        </Link>
+        <Link
+          href="/admin/intelligence/build-progress"
+          className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy"
+        >
+          Build progress
+        </Link>
+        <Link
           href="/admin/intelligence/opposition-strategy"
           className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950"
         >
@@ -42,6 +61,8 @@ export default function DebateBriefingsIndexPage() {
           <V4OperatorGuide guide={guide} />
         </div>
       ) : null}
+
+      <DebatePrepDepthNavPanel compact />
 
       <div className="mb-8">
         <V4DebatePrepFinder />

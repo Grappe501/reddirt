@@ -172,7 +172,7 @@ export function V4DebatePsychologyManualHub() {
             Philosophy briefings
           </Link>
           <Link
-            href="/admin/intelligence/opponents/dossiers"
+            href="/admin/intelligence/candidate-dossiers"
             className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-950"
           >
             Opponent dossiers

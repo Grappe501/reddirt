@@ -33,7 +33,7 @@ export default function SosDebateQuestionsIndexPage() {
         <Link href="/admin/intelligence/county-clerk-week/acca-summer-conference" className="rounded-full border border-rose-300 bg-rose-50 px-3 py-1 text-xs font-bold text-rose-950">
           ACCA panel prep
         </Link>
-        <Link href="/admin/intelligence/opponents/dossiers" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
+        <Link href="/admin/intelligence/candidate-dossiers" className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy">
           Opponent dossiers
         </Link>
       </V4PageHeader>

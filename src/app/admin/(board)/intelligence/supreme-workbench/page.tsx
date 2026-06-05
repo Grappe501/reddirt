@@ -2,6 +2,10 @@ import Link from "next/link";
 import { loadSupremeWorkbenchPacket } from "@/lib/intelligence/v4/supremeWorkbench";
 import { KELLY_DILIGENCE_COUNSEL_FRAME, loadKellyCourtDiligenceLog, diligenceCompletionPct } from "@/lib/intelligence/v4/kellyCourtDiligenceLog";
 import { V4SupremeWorkbenchPanel } from "@/components/admin/intelligence/v4/V4SupremeWorkbenchPanel";
+import { NsiStaffResearchNavPanel } from "@/components/admin/intelligence/NsiStaffResearchNavPanel";
+import { DebatePrepDepthNavPanel } from "@/components/admin/intelligence/DebatePrepDepthNavPanel";
+import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
+import { Tier4CoreSpineNavPanel } from "@/components/admin/intelligence/Tier4CoreSpineNavPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
 
@@ -27,6 +31,12 @@ export default function SupremeWorkbenchPage() {
           className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy"
         >
           Debate command
+        </Link>
+        <Link
+          href="/admin/intelligence/debate-prep/psychology-manual"
+          className="rounded-full border border-fuchsia-300 bg-fuchsia-50 px-3 py-1 text-xs font-bold text-fuchsia-950"
+        >
+          Psychology manual
         </Link>
         <Link
           href="/admin/intelligence/build-progress"
@@ -81,6 +91,11 @@ export default function SupremeWorkbenchPage() {
           Kelly debate coaching — attack vector drills →
         </Link>
       </section>
+
+      <NsiStaffResearchNavPanel compact />
+      <DebatePrepDepthNavPanel compact />
+      <KimHammerModuleNavPanel compact />
+      <Tier4CoreSpineNavPanel compact />
     </div>
   );
 }

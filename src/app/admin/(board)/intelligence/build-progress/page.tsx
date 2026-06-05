@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { computeIntelligenceBuildProgress } from "@/lib/intelligence/v4/intelligenceBuildProgress";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
+import { DebatePrepDepthNavPanel } from "@/components/admin/intelligence/DebatePrepDepthNavPanel";
+import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
 
 export const dynamic = "force-dynamic";
 
@@ -23,12 +25,27 @@ export default function IntelligenceBuildProgressPage() {
       >
         <V4BackLinks />
         <Link
+          href="/admin/intelligence/debate-briefings"
+          className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950"
+        >
+          Philosophy briefings
+        </Link>
+        <Link
+          href="/admin/intelligence/debate-depth"
+          className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950"
+        >
+          Depth library
+        </Link>
+        <Link
           href="/admin/intelligence/kim-hammer/debate-prep"
           className="rounded-full border border-violet-800/30 px-3 py-1 text-xs font-bold text-violet-950"
         >
           Debate prep
         </Link>
       </V4PageHeader>
+
+      <DebatePrepDepthNavPanel compact />
+      <KimHammerModuleNavPanel compact />
 
       <section className="mb-8 rounded-xl border-2 border-kelly-navy/20 bg-kelly-page/50 p-6">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy">Overall progress</p>

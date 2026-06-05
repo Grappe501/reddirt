@@ -25,6 +25,18 @@ export default function DebatePsychologyManualPage() {
           Philosophy briefings
         </Link>
         <Link
+          href="/admin/intelligence/kelly-debate-coaching"
+          className="rounded-full border border-kelly-gold/60 px-3 py-1 text-xs font-bold text-kelly-navy"
+        >
+          Debate coaching
+        </Link>
+        <Link
+          href="/admin/intelligence/candidate-dossiers"
+          className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950"
+        >
+          Candidate dossiers
+        </Link>
+        <Link
           href="/admin/intelligence/kim-hammer/debate-prep"
           className="rounded-full border border-kelly-gold/60 px-3 py-1 text-xs font-bold text-kelly-navy"
         >

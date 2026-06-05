@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { IntelligenceNavLink } from "@/components/admin/intelligence/IntelligenceNavLink";
 import {
   CANDIDATE_IPAD_MORE_LINKS,
   CANDIDATE_IPAD_PRIMARY_NAV,
@@ -52,13 +52,14 @@ export function CandidateIpadIntelligenceShell({ children }: { children: React.R
             <ul className="mt-3 space-y-2">
               {CANDIDATE_IPAD_MORE_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <IntelligenceNavLink
                     href={link.href}
+                    variant="ipad"
                     onClick={() => setMoreOpen(false)}
                     className="flex min-h-12 items-center rounded-xl border border-kelly-text/10 px-4 text-sm font-bold text-kelly-navy active:bg-kelly-page"
                   >
                     {link.label}
-                  </Link>
+                  </IntelligenceNavLink>
                 </li>
               ))}
             </ul>
@@ -101,16 +102,17 @@ export function CandidateIpadIntelligenceShell({ children }: { children: React.R
           {CANDIDATE_IPAD_PRIMARY_NAV.map((item) => {
             const active = isActive(pathname, item.href);
             return (
-              <Link
+              <IntelligenceNavLink
                 key={item.href}
                 href={item.href}
+                variant="ipad"
                 className={`flex min-h-[52px] flex-col items-center justify-center gap-0.5 px-1 text-[10px] font-bold leading-tight active:bg-violet-50 ${
                   active ? "text-violet-950" : "text-kelly-subtle"
                 }`}
               >
                 <span className={`h-1 w-8 rounded-full ${active ? "bg-violet-700" : "bg-transparent"}`} />
                 {item.shortLabel}
-              </Link>
+              </IntelligenceNavLink>
             );
           })}
           <button

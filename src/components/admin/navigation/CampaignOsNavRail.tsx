@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { IntelligenceNavLink } from "@/components/admin/intelligence/IntelligenceNavLink";
 import {
   campaignOsNavHrefBase,
   resolveActiveCampaignOsNavHref,
@@ -56,18 +57,37 @@ export function CampaignOsNavRail({
               const base = campaignOsNavHrefBase(link.href);
               const active = activeHref === base;
               const badge = link.badgeKey ? badges[link.badgeKey] : 0;
+              const linkClass = `flex items-center justify-between transition ${active ? "os-nav-link-active" : "os-nav-link"}`;
+              const badgeEl =
+                badge && badge > 0 ? (
+                  <span className="rounded-full bg-kelly-gold px-1.5 py-0.5 text-[10px] font-bold text-kelly-navy">
+                    {badge > 99 ? "99+" : badge}
+                  </span>
+                ) : null;
+
+              if (link.href.startsWith("/admin/intelligence")) {
+                return (
+                  <IntelligenceNavLink
+                    key={`${group.id}-${link.href}`}
+                    href={link.href}
+                    variant="sidebar"
+                    showNewBadge={false}
+                    className={linkClass}
+                  >
+                    <span>{link.label}</span>
+                    {badgeEl}
+                  </IntelligenceNavLink>
+                );
+              }
+
               return (
                 <Link
                   key={`${group.id}-${link.href}`}
                   href={link.href}
-                  className={`flex items-center justify-between transition ${active ? "os-nav-link-active" : "os-nav-link"}`}
+                  className={linkClass}
                 >
                   <span>{link.label}</span>
-                  {badge && badge > 0 ? (
-                    <span className="rounded-full bg-kelly-gold px-1.5 py-0.5 text-[10px] font-bold text-kelly-navy">
-                      {badge > 99 ? "99+" : badge}
-                    </span>
-                  ) : null}
+                  {badgeEl}
                 </Link>
               );
             })}

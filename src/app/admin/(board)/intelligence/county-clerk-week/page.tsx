@@ -3,6 +3,7 @@ import { V7MichaelPackoScaffoldPanel } from "@/components/admin/intelligence/v4/
 import { V4AccaConferenceEventBanner } from "@/components/admin/intelligence/v4/V4AccaConferencePrepPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { V4OpponentContrastPlaybookPanel } from "@/components/admin/intelligence/v4/V4OpponentContrastPlaybookPanel";
+import { DebatePrepDepthNavPanel } from "@/components/admin/intelligence/DebatePrepDepthNavPanel";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
 
 export default function CountyClerkWeekPage() {
@@ -25,6 +26,7 @@ export default function CountyClerkWeekPage() {
       <V4AccaConferenceEventBanner />
 
       <V7CountyClerkPrepPath />
+      <DebatePrepDepthNavPanel compact />
       <V4OpponentContrastPlaybookPanel />
       <V7MichaelPackoScaffoldPanel />
     </div>

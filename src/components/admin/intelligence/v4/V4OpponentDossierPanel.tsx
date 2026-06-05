@@ -214,7 +214,7 @@ export function V4OpponentCandidateDossierPanel({ candidateId }: { candidateId: 
 
   return (
     <div className="space-y-6">
-      <Link href="/admin/intelligence/opponents/dossiers" className="text-xs font-bold text-kelly-navy underline">
+      <Link href="/admin/intelligence/candidate-dossiers" className="text-xs font-bold text-kelly-navy underline">
         ← All opponent dossiers
       </Link>
 

@@ -10,6 +10,7 @@ import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGu
 import { V3ResearchIntro } from "@/components/admin/intelligence/v3/V3ResearchIntro";
 import { PrepareLlmEvidencePacketButton } from "@/components/admin/intelligence/PrepareLlmEvidencePacketButton";
 import Link from "next/link";
+import { Tier4CoreSpineNavPanel } from "@/components/admin/intelligence/Tier4CoreSpineNavPanel";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -403,6 +404,8 @@ export default async function DebateCommandCenterPage() {
           ))}
         </ul>
       </section>
+
+      <Tier4CoreSpineNavPanel compact />
     </div>
   );
 }

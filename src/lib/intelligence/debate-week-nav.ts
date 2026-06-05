@@ -1,6 +1,23 @@
 import type { CampaignOsNavGroup, CampaignOsNavLink } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
+import { TIER_2_DEBATE_PREP_NAV_ITEMS } from "@/lib/intelligence/v4/debatePrepDepthNav";
+import { buildKimHammerTier3SidebarNavItems } from "@/lib/intelligence/v4/kimHammerOpponentModuleNav";
 import { DEBATE_WORKFLOW_STEPS } from "@/lib/intelligence/v4/debateOperatorNarratives";
+
+function dedupeNavItems(items: DebateWeekNavItem[]): DebateWeekNavItem[] {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    if (seen.has(item.href)) return false;
+    seen.add(item.href);
+    return true;
+  });
+}
+
+const KIM_HAMMER_TIER_3_NAV_ITEMS: DebateWeekNavItem[] = buildKimHammerTier3SidebarNavItems().map((item) => ({
+  href: item.href,
+  label: item.label,
+  description: item.description,
+}));
 
 /** Canonical debate-week operator paths (opposition + debate prep + review queues). */
 export const DEBATE_WEEK_ROUTES = [
@@ -24,11 +41,21 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/film-room",
   "/admin/intelligence/sos-debate-questions",
   "/admin/intelligence/debate-briefings",
+  "/admin/intelligence/debate-prep/psychology-manual",
   "/admin/intelligence/agent-tooling",
   "/admin/intelligence/debate-depth",
   "/admin/intelligence/election-funding",
   "/admin/intelligence/election-equipment-vvsg",
   "/admin/intelligence/build-progress",
+  "/admin/intelligence/morning-brief",
+  "/admin/intelligence/ai-tools",
+  "/admin/intelligence/briefing-papers",
+  "/admin/intelligence/writing-toolbox",
+  "/admin/intelligence/strategy-alignment",
+  "/admin/intelligence/strategic-target-pathway",
+  "/admin/intelligence/campaign-intelligence-graph",
+  "/admin/intelligence/media-intake",
+  "/admin/intelligence/intelligence-memory",
 ] as const;
 
 export type DebateWeekRoute = (typeof DEBATE_WEEK_ROUTES)[number];
@@ -54,6 +81,12 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     badgeKey: "opposition",
     description:
       "Live readiness + debate-day sequences — county clerk week starts here, then 7-day path.",
+  },
+  {
+    href: TIER_2_DEBATE_PREP_NAV_ITEMS[0].href,
+    label: TIER_2_DEBATE_PREP_NAV_ITEMS[0].label,
+    badgeKey: "opposition",
+    description: TIER_2_DEBATE_PREP_NAV_ITEMS[0].description,
   },
   {
     href: "/admin/intelligence/opposition-strategy",
@@ -127,6 +160,22 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
       "Research-backed SOS debate bank: speak order 1·2·3, agree-plus-fresh-add, Hammer/Packo angles — open drill-down per topic.",
   },
   {
+    href: "/admin/intelligence/debate-prep/psychology-manual",
+    label: "Psychology manual",
+    description:
+      "22-section training manual: stage psychology, three-way dynamics, ACCA panel atmosphere, rehearsal scripts — pair with coaching and philosophy briefings.",
+  },
+  {
+    href: TIER_2_DEBATE_PREP_NAV_ITEMS[1].href,
+    label: TIER_2_DEBATE_PREP_NAV_ITEMS[1].label,
+    description: TIER_2_DEBATE_PREP_NAV_ITEMS[1].description,
+  },
+  {
+    href: TIER_2_DEBATE_PREP_NAV_ITEMS[2].href,
+    label: TIER_2_DEBATE_PREP_NAV_ITEMS[2].label,
+    description: TIER_2_DEBATE_PREP_NAV_ITEMS[2].description,
+  },
+  {
     href: "/admin/intelligence/debate-command",
     label: "Trap questions",
     description: stepDesc(
@@ -152,6 +201,17 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Debate coaching",
     description: "Openings/closings, stage presence, three-way strategy, Kelly suggestions.",
   },
+  {
+    href: TIER_2_DEBATE_PREP_NAV_ITEMS[3].href,
+    label: TIER_2_DEBATE_PREP_NAV_ITEMS[3].label,
+    description: TIER_2_DEBATE_PREP_NAV_ITEMS[3].description,
+  },
+  {
+    href: "/admin/intelligence/kim-hammer",
+    label: "Hammer record map",
+    description:
+      "Kim Hammer module index — debate profile, themes, timeline, gaps, dossier links. Staff deep dives; Kelly stays on debate prep on stage night.",
+  },
 ];
 
 /** Kelly-first path — supreme workbench + debate prep stack. */
@@ -168,6 +228,13 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Opposition strategy",
     description:
       "v6.2 offense layer: 2021 integrity package, 2025 petition cluster, six trap lanes, six offensive moves, cross-exam starters, and debate-day offense sequence.",
+  },
+  {
+    href: "/admin/intelligence/candidate-dossiers",
+    label: "Candidate dossiers",
+    badgeKey: "opposition",
+    description:
+      "Kelly alignment profile (12 sections) plus Hammer & Pakko opponent dossiers — single-page readouts with drill-down.",
   },
   {
     href: "/admin/intelligence",
@@ -203,6 +270,12 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Philosophy briefings",
     description:
       "Eight handling/philosophy pages — agree-but-never-only-agree, author vs administrator, pile-on, rebuttal architecture — plus prep finder.",
+  },
+  {
+    href: "/admin/intelligence/debate-prep/psychology-manual",
+    label: "Psychology manual",
+    description:
+      "22-section advanced manual: debate atmosphere, body language, three-way geometry, ACCA panel psychology — read before stage.",
   },
   {
     href: "/admin/intelligence/debate-depth",
@@ -254,13 +327,77 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
   },
 ];
 
+/** Tier-1 staff research surfaces (NSI suite) — wired in extended nav; not Kelly debate-night screens. */
+export const NSI_STAFF_RESEARCH_NAV_ITEMS: DebateWeekNavItem[] = [
+  {
+    href: "/admin/intelligence/morning-brief",
+    label: "Morning brief",
+    description:
+      "Daily staff digest: intelligence priorities, registration rollups, action queue sync, briefing paper index — staff start here on research days.",
+  },
+  {
+    href: "/admin/intelligence/strategy-alignment",
+    label: "Strategy alignment",
+    description:
+      "SDI-1 strategic doctrine alignment — Kelly SOS pillars vs opponent frames; pair with debate command and target pathway.",
+  },
+  {
+    href: "/admin/intelligence/strategic-target-pathway",
+    label: "Target pathway",
+    description:
+      "County and audience target pathways — where to invest field time and contrast messaging; links to county briefings.",
+  },
+  {
+    href: "/admin/intelligence/briefing-papers",
+    label: "Briefing papers",
+    description:
+      "Generated strategic briefing papers library — morning intel, doctrine, media monitoring; INTERNAL_DRAFT only.",
+  },
+  {
+    href: "/admin/intelligence/writing-toolbox",
+    label: "Writing toolbox",
+    description:
+      "Governed AI writing templates for op-eds, statements, and rapid response — all outputs to LLM review queue.",
+  },
+  {
+    href: "/admin/intelligence/ai-tools",
+    label: "AI tools registry",
+    description:
+      "Full NSI-11/12 copilot registry: opposition research, debate prep, briefing, and gathering tools — HUMAN_REVIEW_REQUIRED.",
+  },
+  {
+    href: "/admin/intelligence/media-intake",
+    label: "Media intake",
+    description:
+      "Public media monitoring queue — clip candidates, citation drafts, retrieval tasks from news and social sources.",
+  },
+  {
+    href: "/admin/intelligence/campaign-intelligence-graph",
+    label: "Intel graph",
+    description:
+      "NSI-4 unified campaign intelligence graph — bills, narratives, doctrines, counties, exports (read-only entity map).",
+  },
+  {
+    href: "/admin/intelligence/intelligence-memory",
+    label: "Intelligence memory",
+    description:
+      "NSI decision memory registry — why claims were held, released, or adapted; distinct from debate-week memory ledger.",
+  },
+];
+
 /** Staff / deep tools — still in full tab bar below primary row. */
-export const DEBATE_WEEK_EXTENDED_NAV_ITEMS: DebateWeekNavItem[] = [
+export const DEBATE_WEEK_EXTENDED_NAV_ITEMS: DebateWeekNavItem[] = dedupeNavItems([
   {
     href: "/admin/intelligence/kim-hammer/evidence-command",
     label: "Evidence command",
     description:
       "Staff citation locker: export-ready claims, review workflow, retrieval tasks. Confirms act numbers before stage — Kelly uses Claims; headset staff use this.",
+  },
+  {
+    href: "/admin/intelligence/kim-hammer",
+    label: "Hammer record map",
+    description:
+      "Kim Hammer module index — debate profile, themes, timeline, gaps, dossier links. Staff deep dives; Kelly stays on debate prep on stage night.",
   },
   {
     href: "/admin/intelligence/action-queue",
@@ -316,13 +453,15 @@ export const DEBATE_WEEK_EXTENDED_NAV_ITEMS: DebateWeekNavItem[] = [
     description:
       "Governed AI prep surface for staff drafting. Outputs require human review and claims gate before any public use.",
   },
+  ...KIM_HAMMER_TIER_3_NAV_ITEMS,
   {
     href: "/admin/intelligence/memory",
     label: "Memory ledger",
     description:
       "NSI decision memory for staff continuity. Documents why claims were held or released — not a debate-night screen for Kelly.",
   },
-];
+  ...NSI_STAFF_RESEARCH_NAV_ITEMS,
+]);
 
 export function getDebateWeekPrimaryNavItems(): DebateWeekNavItem[] {
   return isCountyClerkPrimaryAudience() ? COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS : DEBATE_WEEK_PRIMARY_NAV_ITEMS;

@@ -3,6 +3,7 @@ import { DEBATE_DEPTH_TOPICS } from "@/lib/intelligence/v4/debateDepthTopics";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
+import { DebatePrepDepthNavPanel } from "@/components/admin/intelligence/DebatePrepDepthNavPanel";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -22,13 +23,21 @@ export default function DebateDepthIndexPage() {
         guide={guide}
       >
         <V4BackLinks />
+        <Link href="/admin/intelligence/debate-briefings" className="rounded-full border px-3 py-1 text-xs font-bold text-violet-950">
+          Philosophy briefings
+        </Link>
         <Link href="/admin/intelligence/trap-lanes" className="rounded-full border px-3 py-1 text-xs font-bold text-kelly-navy">
           Trap lanes
         </Link>
         <Link href="/admin/intelligence/sos-debate-questions" className="rounded-full border px-3 py-1 text-xs font-bold text-kelly-navy">
           SOS questions
         </Link>
+        <Link href="/admin/intelligence/build-progress" className="rounded-full border px-3 py-1 text-xs font-bold text-kelly-navy">
+          Build progress
+        </Link>
       </V4PageHeader>
+
+      <DebatePrepDepthNavPanel compact />
 
       {guide ? (
         <div className="mb-6">

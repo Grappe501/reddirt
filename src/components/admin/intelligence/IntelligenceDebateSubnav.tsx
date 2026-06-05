@@ -1,16 +1,16 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { IntelligenceNavLink } from "@/components/admin/intelligence/IntelligenceNavLink";
 import {
   campaignOsNavHrefBase,
   resolveActiveCampaignOsNavHref,
 } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
 import {
   DEBATE_WEEK_EXTENDED_NAV_ITEMS,
-  DEBATE_WEEK_NAV_ITEMS,
-  DEBATE_WEEK_PRIMARY_NAV_ITEMS,
   describeDebateWeekRoute,
+  getDebateWeekNavItems,
+  getDebateWeekPrimaryNavItems,
 } from "@/lib/intelligence/debate-week-nav";
 
 const base =
@@ -29,21 +29,24 @@ function NavChip({
   primary?: boolean;
 }) {
   return (
-    <Link
+    <IntelligenceNavLink
       href={item.href}
       title={item.description}
+      variant="chip"
       className={`${base} ${active ? (primary ? activePrimaryCls : activeCls) : idleCls}`}
     >
       {item.label}
-    </Link>
+    </IntelligenceNavLink>
   );
 }
 
 export function IntelligenceDebateSubnav() {
   const pathname = usePathname() ?? "";
+  const primaryItems = getDebateWeekPrimaryNavItems();
+  const allNavItems = getDebateWeekNavItems();
   const activeHref = resolveActiveCampaignOsNavHref(
     pathname,
-    DEBATE_WEEK_NAV_ITEMS.map((item) => ({ href: item.href })),
+    allNavItems.map((item) => ({ href: item.href })),
   );
 
   const routeGuide = describeDebateWeekRoute(pathname);
@@ -59,11 +62,9 @@ export function IntelligenceDebateSubnav() {
       <div>
         <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-violet-900">Your path</p>
         <div className="flex flex-wrap items-center gap-1.5">
-          {DEBATE_WEEK_PRIMARY_NAV_ITEMS.map((item) => {
+          {primaryItems.map((item) => {
             const basePath = campaignOsNavHrefBase(item.href);
-            return (
-              <NavChip key={item.href} item={item} active={activeHref === basePath} primary />
-            );
+            return <NavChip key={item.href} item={item} active={activeHref === basePath} primary />;
           })}
         </div>
       </div>

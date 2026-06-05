@@ -26,6 +26,9 @@ export default function KellyDebateCoachingPage() {
         <Link href="/admin/intelligence/candidate-dossiers/kelly-grappe" className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950">
           Your alignment profile
         </Link>
+        <Link href="/admin/intelligence/debate-prep/psychology-manual" className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950">
+          Psychology manual
+        </Link>
         <Link href="/admin/intelligence/debate-depth/culture-war" className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950">
           Culture-war guide
         </Link>

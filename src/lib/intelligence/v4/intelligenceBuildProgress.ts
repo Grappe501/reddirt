@@ -19,6 +19,17 @@ import { KIM_HAMMER_V4_MODULES } from "@/lib/intelligence/kimHammerV4ModuleRegis
 import { getAllAccaConferenceDepthSectionIds } from "@/lib/intelligence/v4/accaClerksConference2026Depth";
 import { getAllOpponentDossierSectionIds } from "@/lib/intelligence/v4/opponentCandidateDossierDepth";
 import { getAllKellyDossierSectionIds } from "@/lib/intelligence/v4/kellyCandidateDossierDepth";
+import { getAllDebatePsychologyManualSectionIds } from "@/lib/intelligence/v4/debatePsychologyTrainingManual";
+import { NSI_STAFF_RESEARCH_NAV_ITEMS } from "@/lib/intelligence/debate-week-nav";
+import { getTier2DebatePrepLinkAuditRoutes } from "@/lib/intelligence/v4/debatePrepDepthNav";
+import {
+  buildKimHammerTier3NavGroups,
+  getKimHammerTier3LinkAuditRoutes,
+} from "@/lib/intelligence/v4/kimHammerOpponentModuleNav";
+import { getTier4CoreSpineLinkAuditRoutes } from "@/lib/intelligence/v4/tier4CoreSpineLinkAudit";
+import { buildTier4CoreSpineNavGroups } from "@/lib/intelligence/v4/tier4CoreSpineNav";
+import { getTier1NavLinkAuditRoutes } from "@/lib/intelligence/navLinkReleaseManifest";
+import { DEBATE_DEPTH_TOPICS } from "@/lib/intelligence/v4/debateDepthTopics";
 
 export type BuildProgressItem = {
   id: string;
@@ -389,11 +400,88 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     built: getAllOpponentDossierSectionIds().length,
     total: getAllOpponentDossierSectionIds().length + 2,
     flags: ["Pakko PACKO-01 finance filings", "Pakko full interview quote harvest PACKO-02"],
-    href: "/admin/intelligence/opponents/dossiers",
+    href: "/admin/intelligence/candidate-dossiers",
+  });
+
+  items.push({
+    id: "debate-psychology-manual",
+    label: "Debate psychology training manual",
+    category: "Debate prep",
+    completionPct: 100,
+    status: "complete",
+    built: getAllDebatePsychologyManualSectionIds().length,
+    total: getAllDebatePsychologyManualSectionIds().length,
+    flags: [],
+    href: "/admin/intelligence/debate-prep/psychology-manual",
+  });
+
+  items.push({
+    id: "nsi-staff-research-suite",
+    label: "NSI staff research suite (Tier 1)",
+    category: "Staff",
+    completionPct: 100,
+    status: "complete",
+    built: NSI_STAFF_RESEARCH_NAV_ITEMS.length,
+    total: NSI_STAFF_RESEARCH_NAV_ITEMS.length,
+    flags: [],
+    href: "/admin/intelligence/morning-brief",
+  });
+
+  items.push({
+    id: "debate-philosophy-briefings",
+    label: "Philosophy briefing library (Tier 2)",
+    category: "Debate prep",
+    completionPct: 100,
+    status: "complete",
+    built: listDebatePhilosophyBriefings().length,
+    total: listDebatePhilosophyBriefings().length,
+    flags: [],
+    href: "/admin/intelligence/debate-briefings",
+  });
+
+  items.push({
+    id: "debate-depth-library",
+    label: "Plain-language depth library (Tier 2)",
+    category: "Debate prep",
+    completionPct: 100,
+    status: "complete",
+    built: DEBATE_DEPTH_TOPICS.length,
+    total: DEBATE_DEPTH_TOPICS.length,
+    flags: [],
+    href: "/admin/intelligence/debate-depth",
+  });
+
+  const khTier3Groups = buildKimHammerTier3NavGroups();
+  const khTier3ModuleCount = khTier3Groups.reduce((n, g) => n + g.modules.length, 0);
+  items.push({
+    id: "kim-hammer-tier3-nav",
+    label: "Kim Hammer research stack (Tier 3)",
+    category: "Opposition",
+    completionPct: 100,
+    status: "complete",
+    built: khTier3ModuleCount,
+    total: khTier3ModuleCount,
+    flags: [],
+    href: "/admin/intelligence/kim-hammer",
+  });
+
+  const tier4Groups = buildTier4CoreSpineNavGroups();
+  const tier4SurfaceCount = tier4Groups.reduce((n, g) => n + g.items.length, 0);
+  items.push({
+    id: "tier4-core-spine-nav",
+    label: "Core debate-week spine (Tier 4)",
+    category: "Command",
+    completionPct: 100,
+    status: "complete",
+    built: tier4SurfaceCount,
+    total: tier4SurfaceCount,
+    flags: [],
+    href: "/admin/intelligence/supreme-workbench",
   });
 
   const overallCompletionPct = Math.round(items.reduce((s, i) => s + i.completionPct, 0) / items.length);
 
+  const psychologyIds = getAllDebatePsychologyManualSectionIds();
   const linkAuditRoutes = [
     "/admin/intelligence",
     "/admin/intelligence/supreme-workbench",
@@ -410,10 +498,17 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/county-clerk-week/acca-summer-conference",
     "/admin/intelligence/candidate-dossiers",
     "/admin/intelligence/candidate-dossiers/kelly-grappe",
-    "/admin/intelligence/opponents/dossiers",
+    "/admin/intelligence/candidate-dossiers",
     "/admin/intelligence/opponents/dossiers/kim-hammer",
     "/admin/intelligence/opponents/dossiers/michael-packo",
     "/admin/intelligence/build-progress",
+    "/admin/intelligence/debate-prep/psychology-manual",
+    ...psychologyIds.map((id) => `/admin/intelligence/debate-prep/psychology-manual/${id}`),
+    ...NSI_STAFF_RESEARCH_NAV_ITEMS.map((item) => item.href),
+    ...getTier1NavLinkAuditRoutes(),
+    ...getTier2DebatePrepLinkAuditRoutes(),
+    ...getKimHammerTier3LinkAuditRoutes(),
+    ...getTier4CoreSpineLinkAuditRoutes(),
     ...trapIds.map((id) => `/admin/intelligence/trap-lanes/${id}`),
     ...qIds.map((id) => `/admin/intelligence/sos-debate-questions/${id}`),
     ...listDebatePhilosophyBriefings().map((p) => `/admin/intelligence/debate-briefings/${p.briefingId}`),

@@ -26,6 +26,9 @@ export default async function DebateDepthTopicPage({ params }: PageProps) {
     <div className="mx-auto max-w-4xl text-kelly-text">
       <V4PageHeader eyebrow="Debate depth" title={topic.title} description={topic.summary}>
         <V4BackLinks />
+        <Link href="/admin/intelligence/debate-briefings" className="rounded-full border px-3 py-1 text-xs font-bold text-violet-950">
+          Philosophy briefings
+        </Link>
         <Link href="/admin/intelligence/debate-depth" className="rounded-full border px-3 py-1 text-xs font-bold text-kelly-navy">
           All topics
         </Link>

@@ -23,6 +23,12 @@ export function V4DebateDepthHub({ compact }: { compact?: boolean }) {
           ) : null}
         </div>
         <Link
+          href="/admin/intelligence/debate-briefings"
+          className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950"
+        >
+          Philosophy briefings
+        </Link>
+        <Link
           href="/admin/intelligence/debate-depth"
           className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950"
         >

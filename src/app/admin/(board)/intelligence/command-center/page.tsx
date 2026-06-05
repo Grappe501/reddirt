@@ -6,6 +6,8 @@ import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateI
 import { V4ExecutiveBriefPanel } from "@/components/admin/intelligence/v4/V4ExecutiveBrief";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { CommandCenterDashboard } from "./CommandCenterDashboard";
+import { NsiStaffResearchNavPanel } from "@/components/admin/intelligence/NsiStaffResearchNavPanel";
+import { Tier4CoreSpineNavPanel } from "@/components/admin/intelligence/Tier4CoreSpineNavPanel";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 26;
@@ -37,6 +39,8 @@ export default async function IntelligenceCommandCenterPage() {
           </Link>
         </V4PageHeader>
         <V4ExecutiveBriefPanel brief={v4.executiveBrief} scorecard={v4.readinessScorecard} />
+        <NsiStaffResearchNavPanel />
+        <Tier4CoreSpineNavPanel compact />
         <p className="mt-4 text-xs text-kelly-muted">
           Staff: retry command center off-peak or disable launch mode after debate week for the full war-room dashboard.
         </p>

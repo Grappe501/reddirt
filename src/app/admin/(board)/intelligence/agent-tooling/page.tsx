@@ -4,6 +4,7 @@ import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives"
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { DebateAgentToolingClient } from "@/components/admin/intelligence/agent-tooling/DebateAgentToolingClient";
+import { NsiStaffResearchNavPanel } from "@/components/admin/intelligence/NsiStaffResearchNavPanel";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -61,6 +62,7 @@ export default function DebateAgentToolingPage() {
       </section>
 
       <DebateAgentToolingClient data={data} />
+      <NsiStaffResearchNavPanel compact />
     </div>
   );
 }

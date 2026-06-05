@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { V7MichaelPackoScaffoldPanel } from "@/components/admin/intelligence/v4/V7MichaelPackoScaffoldPanel";
 import { V4AllCandidateDossiersHub } from "@/components/admin/intelligence/v4/V4KellyCandidateDossierPanel";
+import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 
 export default function OpponentsHubPage() {
@@ -27,6 +28,8 @@ export default function OpponentsHubPage() {
       </V4PageHeader>
 
       <V4AllCandidateDossiersHub />
+
+      <KimHammerModuleNavPanel compact />
 
       <section className="my-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <Link

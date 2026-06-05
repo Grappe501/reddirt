@@ -16,6 +16,7 @@ import { getKimHammerDomainForModule, KIM_HAMMER_COMMAND_CENTER_HREF } from "@/l
 import type { KimHammerModuleBriefing } from "@/lib/opposition/kimHammerBriefingTypes";
 import { findKimHammerBill } from "@/lib/opposition/kimHammerWorkbench";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
+import { KimHammerModuleNavStrip } from "@/components/admin/intelligence/KimHammerModuleNavStrip";
 import { KimHammerStrategicBriefingPanel } from "./KimHammerStrategicBriefingPanel";
 
 const LAUNCH_MODULE_BRIEFING: KimHammerModuleBriefing = {
@@ -80,6 +81,7 @@ export function KimHammerBriefingPageShell({
     const guide = v4Entry.guideKey ? getSurfaceGuide(v4Entry.guideKey) : undefined;
     return (
       <div className="mx-auto max-w-7xl text-kelly-text">
+        <KimHammerModuleNavStrip />
         <V4BackLinks />
         <header className="mb-6 border-b border-kelly-text/10 pb-4">
           <p className="font-body text-[10px] font-bold uppercase tracking-[0.24em] text-kelly-subtle">
@@ -108,6 +110,7 @@ export function KimHammerBriefingPageShell({
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
+      <KimHammerModuleNavStrip />
       <Breadcrumb briefing={briefing} />
 
       <article className="mb-8 rounded-2xl border border-kelly-navy/15 bg-gradient-to-br from-kelly-page via-white to-kelly-page p-6 shadow-sm lg:p-8">

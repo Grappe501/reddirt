@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DEBATE_WEEK_EXTENDED_NAV_ITEMS, DEBATE_WEEK_PRIMARY_NAV_ITEMS } from "@/lib/intelligence/debate-week-nav";
+import { DEBATE_WEEK_EXTENDED_NAV_ITEMS, getDebateWeekPrimaryNavItems } from "@/lib/intelligence/debate-week-nav";
 import type { IntelligenceLaunchHubStats } from "@/lib/intelligence/intelligenceLaunchHubStats";
 
 const card =
@@ -33,7 +33,7 @@ export function IntelligenceLaunchHub({ stats }: { stats: IntelligenceLaunchHubS
   const chunkCount = legislative?.chunkCount ?? 0;
   const automationNote = legislative?.automationNote ?? "No production transcripts available";
 
-  const primaryCards: HubCard[] = DEBATE_WEEK_PRIMARY_NAV_ITEMS.map((item, index) => {
+  const primaryCards: HubCard[] = getDebateWeekPrimaryNavItems().map((item, index) => {
     const base: HubCard = {
       title: `Step ${index + 1}: ${item.label}`,
       href: item.href,

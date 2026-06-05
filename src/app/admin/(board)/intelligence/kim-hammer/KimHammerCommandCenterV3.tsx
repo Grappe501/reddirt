@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
 import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { buildKimHammerCommandCenterNavModules } from "@/lib/intelligence/v4/kimHammerOpponentModuleNav";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { V4ThemeMatrix } from "@/components/admin/intelligence/v4/V4ThemeMatrix";
@@ -8,6 +10,7 @@ import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3Sect
 
 export default function KimHammerCommandCenterV3() {
   const v4 = loadDebateIntelligenceV4HubPacket();
+  const navModules = buildKimHammerCommandCenterNavModules(v4);
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -18,6 +21,18 @@ export default function KimHammerCommandCenterV3() {
         guide={getSurfaceGuide("opponentRecord")}
       >
         <V4BackLinks />
+        <Link
+          href="/admin/intelligence/candidate-dossiers"
+          className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950"
+        >
+          Candidate dossiers
+        </Link>
+        <Link
+          href="/admin/intelligence/opponents/dossiers/kim-hammer"
+          className="rounded-full border border-rose-300/60 bg-rose-50 px-3 py-1 text-xs font-bold text-rose-950"
+        >
+          Hammer dossier
+        </Link>
       </V4PageHeader>
 
       <section className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -48,9 +63,9 @@ export default function KimHammerCommandCenterV3() {
       ) : null}
 
       <section className="mb-6">
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Research modules</p>
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Debate-night highlights</p>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {v4.opponentModules.map((mod) => (
+          {navModules.map((mod) => (
             <Link
               key={mod.id}
               href={mod.href}
@@ -62,6 +77,8 @@ export default function KimHammerCommandCenterV3() {
           ))}
         </div>
       </section>
+
+      <KimHammerModuleNavPanel />
 
       <section className="mb-6 grid gap-4 lg:grid-cols-2">
         <div className="rounded-xl border border-kelly-text/10 bg-white p-4">

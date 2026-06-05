@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DEBATE_WEEK_PRIMARY_NAV_ITEMS } from "@/lib/intelligence/debate-week-nav";
+import { getDebateWeekPrimaryNavItems } from "@/lib/intelligence/debate-week-nav";
 
 const stepCard =
   "flex flex-col rounded-lg border border-violet-900/15 bg-white p-4 shadow-sm transition hover:border-violet-800/30";
@@ -8,7 +8,7 @@ const stepCard =
  * First-visit orientation for Kelly — matches primary nav order.
  */
 export function IntelligenceCandidateOrientation() {
-  const steps = DEBATE_WEEK_PRIMARY_NAV_ITEMS;
+  const steps = getDebateWeekPrimaryNavItems();
 
   return (
     <section className="mb-6 rounded-2xl border-2 border-violet-900/20 bg-gradient-to-br from-violet-50/80 via-white to-kelly-page p-5 lg:p-6">

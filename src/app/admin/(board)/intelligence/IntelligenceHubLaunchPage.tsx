@@ -13,10 +13,14 @@ import { V4OpponentContrastPlaybookPanel } from "@/components/admin/intelligence
 import { V3MarkdownSectionList } from "@/components/admin/intelligence/v3/V3SectionStack";
 import { V7CountyClerkPrepPath } from "@/components/admin/intelligence/v4/V7CountyClerkPrepPath";
 import { V4DebateDepthHub } from "@/components/admin/intelligence/v4/V4DebateDepthHub";
+import { DebatePrepDepthNavPanel } from "@/components/admin/intelligence/DebatePrepDepthNavPanel";
+import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
+import { Tier4CoreSpineNavPanel } from "@/components/admin/intelligence/Tier4CoreSpineNavPanel";
 import { V4DebatePrepFinder } from "@/components/admin/intelligence/v4/V4DebatePrepFinder";
 import { V4SupremeWorkbenchPanel } from "@/components/admin/intelligence/v4/V4SupremeWorkbenchPanel";
 import { V4OppositionStrategyLayerPanel } from "@/components/admin/intelligence/v4/V4OppositionStrategyLayerPanel";
 import { loadSupremeWorkbenchPacket } from "@/lib/intelligence/v4/supremeWorkbench";
+import { buildKimHammerCommandCenterNavModules } from "@/lib/intelligence/v4/kimHammerOpponentModuleNav";
 import {
   loadOppositionStrategyLayerPacket,
   INTEGRITY_2021_PACKAGE_DEPTH,
@@ -34,6 +38,7 @@ export default function IntelligenceHubLaunchPage() {
   const v4 = loadDebateIntelligenceV4HubPacket();
   const supreme = loadSupremeWorkbenchPacket();
   const opposition = loadOppositionStrategyLayerPacket();
+  const hammerNavModules = buildKimHammerCommandCenterNavModules(v4);
   const { hub } = v4;
   const clerkWeek = isCountyClerkPrimaryAudience();
   return (
@@ -65,6 +70,9 @@ export default function IntelligenceHubLaunchPage() {
       </div>
 
       <V7CountyClerkPrepPath compact={!clerkWeek} />
+      <DebatePrepDepthNavPanel compact={clerkWeek} />
+      <KimHammerModuleNavPanel compact />
+      <Tier4CoreSpineNavPanel compact />
       <div className="mb-6">
         <V4DebatePrepFinder compact />
       </div>
@@ -207,9 +215,14 @@ export default function IntelligenceHubLaunchPage() {
       </section>
 
       <section className="rounded-xl border border-kelly-text/10 bg-kelly-page/40 p-4">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Opponent record modules</p>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Opponent record modules</p>
+          <Link href="/admin/intelligence/kim-hammer" className="text-xs font-bold text-kelly-navy underline">
+            Full Hammer record map →
+          </Link>
+        </div>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          {v4.opponentModules.map((mod) => (
+          {hammerNavModules.slice(0, 6).map((mod) => (
             <Link key={mod.id} href={mod.href} className="rounded-lg border border-kelly-text/10 bg-white p-3 text-sm hover:border-kelly-navy/30">
               <p className="font-bold text-kelly-navy">{mod.title}</p>
               <p className="mt-1 text-xs text-kelly-muted">{mod.summary}</p>
