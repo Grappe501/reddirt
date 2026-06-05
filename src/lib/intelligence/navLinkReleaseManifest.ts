@@ -3,6 +3,8 @@ import { getAllDebatePsychologyManualSectionIds } from "@/lib/intelligence/v4/de
 import { getTier2DebatePrepLinkAuditRoutes } from "@/lib/intelligence/v4/debatePrepDepthNav";
 import { getKimHammerTier3LinkAuditRoutes } from "@/lib/intelligence/v4/kimHammerOpponentModuleNav";
 import { getFieldBookLinkAuditRoutes } from "@/lib/intelligence/fieldBookRegistry";
+import { getFieldBookCanonLinkAuditRoutes } from "@/lib/intelligence/fieldBookCanonRegistry";
+import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 import { OPPONENT_DILIGENCE_HUB_HREF, OPPONENT_DILIGENCE_SUBJECTS } from "@/lib/intelligence/v4/opponentDiligenceRegistry";
 import {
   TIER_4_CORE_EXTENDED_NAV_ITEMS,
@@ -77,6 +79,16 @@ export const NAV_LINK_RELEASE_BATCHES: NavLinkReleaseBatch[] = [
       OPPONENT_DILIGENCE_HUB_HREF,
       ...OPPONENT_DILIGENCE_SUBJECTS.map((s) => s.href),
       ...getFieldBookLinkAuditRoutes(),
+    ]),
+  },
+  {
+    id: "2026-06-05-phase-d-organization-canon",
+    label: "Phase D three-lane nav + Field Book canon loop",
+    hrefs: dedupeHrefs([
+      ...getThreeLaneNavLinkAuditRoutes(),
+      ...getFieldBookCanonLinkAuditRoutes(),
+      "/admin/intelligence/field-book/canon",
+      "/admin/intelligence/field-book/phase/phase-d",
     ]),
   },
 ];

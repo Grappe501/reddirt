@@ -32,6 +32,12 @@ export default function FieldBookHubPage() {
         >
           Build progress
         </Link>
+        <Link
+          href="/admin/intelligence/field-book/canon"
+          className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950"
+        >
+          Canon loop hub
+        </Link>
       </V4PageHeader>
 
       <article className="mb-8 rounded-xl border-2 border-kelly-gold/40 bg-gradient-to-br from-amber-50/60 to-white p-5 text-sm">
@@ -44,6 +50,23 @@ export default function FieldBookHubPage() {
       </article>
 
       <FieldBookPhaseCardGrid />
+
+      <section className="mt-10">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-emerald-900">Phase D — organization (live)</h2>
+        <ul className="mt-4 grid gap-3 md:grid-cols-2">
+          {getFieldBookArticlesForPhase("phase-d").map((a) => (
+            <li key={a.slug}>
+              <Link
+                href={`/admin/intelligence/field-book/${a.slug}`}
+                className="block rounded-lg border border-emerald-300/60 bg-emerald-50/30 p-4 hover:border-emerald-600/40"
+              >
+                <p className="font-bold text-emerald-950">{a.title}</p>
+                <p className="mt-1 text-xs text-kelly-muted">{a.summary}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <section className="mt-10">
         <h2 className="text-sm font-bold uppercase tracking-wider text-kelly-navy">Phase A — live now</h2>

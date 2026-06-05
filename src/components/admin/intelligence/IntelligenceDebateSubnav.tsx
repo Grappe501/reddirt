@@ -6,35 +6,31 @@ import {
   campaignOsNavHrefBase,
   resolveActiveCampaignOsNavHref,
 } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
-import {
-  DEBATE_WEEK_EXTENDED_NAV_ITEMS,
-  describeDebateWeekRoute,
-  getDebateWeekNavItems,
-  getDebateWeekPrimaryNavItems,
-  PHASE_A_COMMAND_NAV_ITEMS,
-} from "@/lib/intelligence/debate-week-nav";
+import { describeDebateWeekRoute, getDebateWeekNavItems } from "@/lib/intelligence/debate-week-nav";
+import { buildThreeLaneNavGroups, THREE_LANE_NAV, type ThreeLaneId } from "@/lib/intelligence/v4/threeLaneNav";
 
 const base =
   "rounded border px-2 py-1 text-xs font-semibold transition sm:px-2.5 sm:py-1.5 whitespace-nowrap";
-const activeCls = "border-violet-800/40 bg-violet-50 text-violet-950";
 const idleCls = "border-kelly-text/15 bg-white text-kelly-slate hover:border-kelly-text/25";
-const activePrimaryCls = "border-violet-900/50 bg-violet-100 text-violet-950";
 
 function NavChip({
   item,
   active,
-  primary,
+  laneId,
 }: {
   item: { href: string; label: string; description?: string };
   active: boolean;
-  primary?: boolean;
+  laneId: ThreeLaneId;
 }) {
+  const lane = THREE_LANE_NAV[laneId];
+  const activeCls = `${lane.chipClass} ring-1 ring-inset ring-black/5 font-bold`;
+
   return (
     <IntelligenceNavLink
       href={item.href}
       title={item.description}
       variant="chip"
-      className={`${base} ${active ? (primary ? activePrimaryCls : activeCls) : idleCls}`}
+      className={`${base} ${active ? activeCls : idleCls}`}
     >
       {item.label}
     </IntelligenceNavLink>
@@ -43,15 +39,12 @@ function NavChip({
 
 export function IntelligenceDebateSubnav() {
   const pathname = usePathname() ?? "";
-  const primaryItems = getDebateWeekPrimaryNavItems().filter(
-    (item) => !PHASE_A_COMMAND_NAV_ITEMS.some((p) => p.href === item.href),
-  );
+  const groups = buildThreeLaneNavGroups();
   const allNavItems = getDebateWeekNavItems();
   const activeHref = resolveActiveCampaignOsNavHref(
     pathname,
     allNavItems.map((item) => ({ href: item.href })),
   );
-
   const routeGuide = describeDebateWeekRoute(pathname);
 
   return (
@@ -62,35 +55,31 @@ export function IntelligenceDebateSubnav() {
           {routeGuide}
         </p>
       ) : null}
-      <div>
-        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-rose-900">
-          Phase A · command & dossiers
-        </p>
-        <div className="flex flex-wrap items-center gap-1.5">
-          {PHASE_A_COMMAND_NAV_ITEMS.map((item) => {
-            const basePath = campaignOsNavHrefBase(item.href);
-            return <NavChip key={item.href} item={item} active={activeHref === basePath} primary />;
-          })}
-        </div>
-      </div>
-      <div>
-        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-violet-900">Your path</p>
-        <div className="flex flex-wrap items-center gap-1.5">
-          {primaryItems.map((item) => {
-            const basePath = campaignOsNavHrefBase(item.href);
-            return <NavChip key={item.href} item={item} active={activeHref === basePath} primary />;
-          })}
-        </div>
-      </div>
-      <div>
-        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-kelly-subtle">All tools</p>
-        <div className="flex flex-wrap items-center gap-1.5">
-          {DEBATE_WEEK_EXTENDED_NAV_ITEMS.map((item) => {
-            const basePath = campaignOsNavHrefBase(item.href);
-            return <NavChip key={item.href} item={item} active={activeHref === basePath} />;
-          })}
-        </div>
-      </div>
+      {groups.map((group) => {
+        const laneId = group.id as ThreeLaneId;
+        const lane = THREE_LANE_NAV[laneId];
+        if (!lane || !group.links.length) return null;
+        return (
+          <div key={group.id}>
+            <p className={`mb-1.5 text-[10px] font-bold uppercase tracking-[0.18em] ${lane.chipClass} inline-block rounded px-1.5 py-0.5`}>
+              {lane.label}
+            </p>
+            <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+              {group.links.map((link) => {
+                const basePath = campaignOsNavHrefBase(link.href);
+                return (
+                  <NavChip
+                    key={link.href}
+                    item={{ href: link.href, label: link.label }}
+                    active={activeHref === basePath}
+                    laneId={laneId}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
     </nav>
   );
 }

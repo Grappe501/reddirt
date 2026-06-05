@@ -33,6 +33,8 @@ import { DEBATE_DEPTH_TOPICS } from "@/lib/intelligence/v4/debateDepthTopics";
 import { allDiligenceCompletionSummary } from "@/lib/intelligence/v4/opponentDiligenceLogStore";
 import { getPackoContrastGateStatus } from "@/lib/intelligence/v4/packoContrastGate";
 import { FIELD_BOOK_ARTICLES, getFieldBookLinkAuditRoutes } from "@/lib/intelligence/fieldBookRegistry";
+import { computeCanonLoopStats } from "@/lib/intelligence/fieldBookCanonRegistry";
+import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
   id: string;
@@ -427,6 +429,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
   });
 
   const fieldBookPhaseA = FIELD_BOOK_ARTICLES.filter((a) => a.phaseId === "phase-a").length;
+  const fieldBookPhaseD = FIELD_BOOK_ARTICLES.filter((a) => a.phaseId === "phase-d").length;
   items.push({
     id: "field-book",
     label: "The Field Book — campaign encyclopedia",
@@ -440,6 +443,24 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
       "Strategy manual migration after ~98% intelligence",
     ],
     href: "/admin/intelligence/field-book",
+  });
+
+  const canonStats = computeCanonLoopStats();
+  items.push({
+    id: "field-book-canon-loop",
+    label: "Phase D — Field Book canon loop + three-lane nav",
+    category: "Organization",
+    completionPct: Math.round(
+      ((canonStats.bindingCount / 12) * 50 + (fieldBookPhaseD / 3) * 50),
+    ),
+    status: canonStats.bindingCount >= 12 && fieldBookPhaseD >= 3 ? "complete" : "partial",
+    built: canonStats.bindingCount,
+    total: 12,
+    flags:
+      fieldBookPhaseD < 3
+        ? ["Expand Phase D Field Book articles (three-lane-nav, role profiles, strategy migration)"]
+        : [],
+    href: "/admin/intelligence/field-book/canon",
   });
 
   items.push({
@@ -549,6 +570,8 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     ...getKimHammerTier3LinkAuditRoutes(),
     ...getTier4CoreSpineLinkAuditRoutes(),
     ...getFieldBookLinkAuditRoutes(),
+    ...getThreeLaneNavLinkAuditRoutes(),
+    "/admin/intelligence/field-book/canon",
     "/admin/intelligence/diligence",
     "/admin/intelligence/diligence/kelly-grappe",
     "/admin/intelligence/diligence/kim-hammer",

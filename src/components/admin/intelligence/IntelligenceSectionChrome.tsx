@@ -7,6 +7,8 @@ import { IntelligenceDebateSubnav } from "@/components/admin/intelligence/Intell
 import { IntelligenceKimHammerSubnav } from "@/components/admin/intelligence/IntelligenceKimHammerSubnav";
 import { NavVisitRecorder } from "@/components/admin/intelligence/NavVisitRecorder";
 import { NavNewLinksBanner } from "@/components/admin/intelligence/NavNewLinksBanner";
+import { FieldBookCanonPanel } from "@/components/admin/intelligence/FieldBookCanonPanel";
+import { ThreeLaneNavLegend } from "@/components/admin/intelligence/ThreeLaneNavLegend";
 import { IntelligenceGovernanceStrip } from "@/components/admin/intelligence/IntelligenceGovernanceStrip";
 import { CandidateIpadIntelligenceShell } from "@/components/admin/intelligence/CandidateIpadIntelligenceShell";
 import { isCandidateIpadMode } from "@/lib/intelligence/candidateIpadMode";
@@ -27,6 +29,7 @@ export function IntelligenceSectionChrome({ children }: { children: ReactNode })
       <NavVisitRecorder />
       {CANDIDATE_IPAD ? null : <IntelligenceGovernanceStrip />}
       <NavNewLinksBanner />
+      <ThreeLaneNavLegend compact />
       {onKimHammer ? <IntelligenceKimHammerSubnav /> : null}
       {CANDIDATE_IPAD ? null : (
         <>
@@ -34,6 +37,7 @@ export function IntelligenceSectionChrome({ children }: { children: ReactNode })
           <IntelligenceDebateSubnav />
         </>
       )}
+      <FieldBookCanonPanel compact />
       {children}
     </>
   );

@@ -3,6 +3,7 @@ import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudien
 import { TIER_2_DEBATE_PREP_NAV_ITEMS } from "@/lib/intelligence/v4/debatePrepDepthNav";
 import { buildKimHammerTier3SidebarNavItems } from "@/lib/intelligence/v4/kimHammerOpponentModuleNav";
 import { DEBATE_WORKFLOW_STEPS } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { buildThreeLaneNavGroups } from "@/lib/intelligence/v4/threeLaneNav";
 
 function dedupeNavItems(items: DebateWeekNavItem[]): DebateWeekNavItem[] {
   const seen = new Set<string>();
@@ -510,40 +511,11 @@ export function isDebateWeekRoute(pathname: string): boolean {
 }
 
 export function buildDebateWeekNavGroups(): CampaignOsNavGroup[] {
-  return buildLaunchSidebarNavGroups();
+  return buildThreeLaneNavGroups();
 }
 
-/** Grouped sidebar for Netlify debate launch shell — visible tier tracks. */
-export function buildLaunchSidebarNavGroups(): CampaignOsNavGroup[] {
-  const primary = withoutPhaseA(getDebateWeekPrimaryNavItems());
-  const extended = DEBATE_WEEK_EXTENDED_NAV_ITEMS.filter((i) => !PHASE_A_HREFS.has(i.href));
-  const clerkLabel = isCountyClerkPrimaryAudience() ? "County clerks week" : "Debate prep";
-
-  const toLinks = (items: DebateWeekNavItem[]): CampaignOsNavLink[] =>
-    items.map((item) => ({
-      href: item.href,
-      label: item.label,
-      badgeKey: item.badgeKey,
-    }));
-
-  return [
-    {
-      id: "phase_a_command",
-      label: "Phase A · command & dossiers",
-      links: toLinks(PHASE_A_COMMAND_NAV_ITEMS),
-    },
-    {
-      id: "debate_week_primary",
-      label: clerkLabel,
-      links: toLinks(primary),
-    },
-    {
-      id: "debate_week_extended",
-      label: "Staff · Hammer modules · queues",
-      links: toLinks(extended),
-    },
-  ];
-}
+/** Grouped sidebar — re-export from three-lane nav (Phase D). */
+export { buildLaunchSidebarNavGroups, buildThreeLaneNavGroups } from "@/lib/intelligence/v4/threeLaneNav";
 
 /** Intelligence section inside full Campaign OS sidebar during debate prep. */
 export function buildDebateWeekIntelligenceSectionLinks(): CampaignOsNavLink[] {

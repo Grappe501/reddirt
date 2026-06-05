@@ -4,14 +4,15 @@ import type { ReactNode } from "react";
 import { adminLogoutAction } from "@/lib/admin/admin-auth-actions";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { IntelligenceNavLink } from "@/components/admin/intelligence/IntelligenceNavLink";
+import { NavNewLinksBanner } from "@/components/admin/intelligence/NavNewLinksBanner";
 import {
   campaignOsNavHrefBase,
   resolveActiveCampaignOsNavHref,
 } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
-import { buildLaunchSidebarNavGroups } from "@/lib/intelligence/debate-week-nav";
+import { buildThreeLaneNavGroups, THREE_LANE_NAV, type ThreeLaneId } from "@/lib/intelligence/v4/threeLaneNav";
 
 /**
- * Minimal admin chrome for debate launch — grouped sidebar with Phase A command track visible.
+ * Minimal admin chrome for debate launch — three-lane sidebar with teal new-link tracking.
  */
 export function IntelligenceLaunchBoardShell({
   children,
@@ -21,7 +22,7 @@ export function IntelligenceLaunchBoardShell({
   currentPathname?: string;
 }) {
   const path = currentPathname.split("?")[0] ?? "/admin/intelligence";
-  const groups = buildLaunchSidebarNavGroups();
+  const groups = buildThreeLaneNavGroups();
 
   return (
     <div className="flex min-h-screen bg-[var(--color-bg)] text-kelly-text">
@@ -30,18 +31,24 @@ export function IntelligenceLaunchBoardShell({
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-inverse-muted">Debate week</p>
           <p className="mt-2 font-heading text-base font-bold leading-tight">Intelligence workbench</p>
           <p className="mt-2 text-[10px] leading-relaxed text-kelly-inverse-muted">
-            Phase A command track pinned at top — diligence, Field Book, dossiers, build progress.
+            Phase D · three lanes — teal = new this deploy until visited.
           </p>
+        </div>
+        <div className="border-b border-[var(--border-on-navy)] px-2 py-2">
+          <NavNewLinksBanner compact />
         </div>
         <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-2 py-3" aria-label="Debate week">
           {groups.map((group) => {
+            const laneMeta = THREE_LANE_NAV[group.id as ThreeLaneId];
             const activeHref = resolveActiveCampaignOsNavHref(
               path,
               group.links.map((link) => ({ href: link.href })),
             );
             return (
               <div key={group.id}>
-                <p className="px-2 pb-1 text-[9px] font-bold uppercase tracking-[0.18em] text-kelly-inverse-muted">
+                <p
+                  className={`px-2 pb-1 text-[9px] font-bold uppercase tracking-[0.18em] ${laneMeta?.sidebarLabelClass ?? "text-kelly-inverse-muted"}`}
+                >
                   {group.label}
                 </p>
                 <div className="flex flex-col gap-0.5">

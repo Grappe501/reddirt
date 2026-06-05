@@ -4,7 +4,7 @@ import { useNavVisitHighlight } from "@/lib/intelligence/useNavVisitHighlight";
 import { CURRENT_NAV_RELEASE_ID } from "@/lib/intelligence/navLinkReleaseManifest";
 
 /** Brief legend when unvisited new nav links remain from the current release batch. */
-export function NavNewLinksBanner() {
+export function NavNewLinksBanner({ compact }: { compact?: boolean }) {
   const { newUnvisitedCount } = useNavVisitHighlight();
 
   if (newUnvisitedCount <= 0) return null;
@@ -12,7 +12,7 @@ export function NavNewLinksBanner() {
   return (
     <div
       role="status"
-      className="mb-4 rounded-lg border border-teal-300/80 bg-teal-50/80 px-3 py-2 text-xs text-teal-950"
+      className={`rounded-lg border border-teal-300/80 bg-teal-50/80 text-teal-950 ${compact ? "text-[10px] px-2 py-1.5" : "mb-4 px-3 py-2 text-xs"}`}
     >
       <span className="font-bold uppercase tracking-wide text-teal-900">New this release ({CURRENT_NAV_RELEASE_ID}): </span>
       <span className="inline-flex items-center gap-1.5">
