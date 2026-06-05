@@ -152,6 +152,82 @@ export const FIELD_BOOK_CANON_BINDINGS: FieldBookCanonBinding[] = [
     promoteNote: "Phase 4 exit gate — bindings, strategy bridge, and Phase D article bar tracked here.",
     laneHint: "staff",
   },
+  {
+    routePrefix: "/admin/intelligence/kelly-debate-coaching",
+    fieldBookSlugs: ["debate-glossary", "three-way-speak-order", "kelly-five-search-checklist"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Kelly defense coaching — offensive moves and speak-order cards; diligence incomplete frame governs court claims.",
+    laneHint: "kelly",
+  },
+  {
+    routePrefix: "/admin/intelligence/opposition-strategy",
+    fieldBookSlugs: ["kim-hammer-legislative-record", "claims-firewall", "debate-glossary"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Offense layer — trap lane map and 2021/2025 package depth; legislative record before personal contrast.",
+    laneHint: "staff",
+  },
+  {
+    routePrefix: "/admin/intelligence/debate-depth",
+    fieldBookSlugs: ["five-block-drill-template", "plain-language-prep-sections", "debate-glossary"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Depth library topics — promote verified prose into Field Book after glossary links resolve jargon.",
+    laneHint: "kelly",
+  },
+  {
+    routePrefix: "/admin/intelligence/action-queue",
+    fieldBookSlugs: ["claims-firewall", "strategy-migration", "debate-glossary"],
+    promoteNote: "Human action queue — staff tasks inherit claims gate before debate-week execution.",
+    laneHint: "staff",
+  },
+  {
+    routePrefix: "/admin/intelligence/agent-tooling",
+    fieldBookSlugs: ["strategy-migration", "claims-firewall", "debate-glossary"],
+    promoteNote: "Agent tooling registry — no autonomous claim promotion; ledger workflow required.",
+    laneHint: "staff",
+  },
+  {
+    routePrefix: "/admin/intelligence/ai-tools",
+    fieldBookSlugs: ["claims-firewall", "counsel-review-frame", "debate-glossary"],
+    promoteNote: "AI tools hub — model outputs NEEDS_REVIEW until staff verifies in claims ledger.",
+    laneHint: "staff",
+  },
+  {
+    routePrefix: "/admin/intelligence/command-center",
+    fieldBookSlugs: ["three-lane-nav", "strategy-migration", "debate-glossary"],
+    promoteNote: "Intelligence hub launch — lane colors and glossary index for new operators.",
+    laneHint: "phase_a",
+  },
+  {
+    routePrefix: "/admin/intelligence/kelly-mirror",
+    fieldBookSlugs: ["kelly-five-search-checklist", "claims-firewall", "debate-glossary"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Kelly mirror staff research — hidden from CANDIDATE nav profile; diligence log governs mirror claims.",
+    laneHint: "staff",
+  },
+  {
+    routePrefix: "/admin/intelligence/election-equipment-vvsg",
+    fieldBookSlugs: ["cvsgf-ledger-gap", "claims-firewall", "debate-glossary"],
+    promoteNote: "VVSG equipment standards — clerk vocabulary; pair with election funding depth routes.",
+    laneHint: "clerks",
+  },
+  {
+    routePrefix: "/admin/intelligence/debate-prep/psychology-manual",
+    fieldBookSlugs: ["debate-glossary", "plain-language-prep-sections", "debate-night-cheat-sheet"],
+    promoteNote: "Psychology training manual — stress drills and pivot frames link to glossary on first jargon use.",
+    laneHint: "kelly",
+  },
+  {
+    routePrefix: "/admin/intelligence/phase-5-upgrade",
+    fieldBookSlugs: ["debate-glossary", "plain-language-prep-sections", "strategy-migration"],
+    promoteNote: "Phase 5 exit gate — glossary registry, hub bindings, and Field Book B/C depth tracked here.",
+    laneHint: "staff",
+  },
+  {
+    routePrefix: "/admin/intelligence/field-book/glossary",
+    fieldBookSlugs: ["debate-glossary", "plain-language-prep-sections", "strategy-migration"],
+    promoteNote: "Glossary index — alphabetical debate terms with Field Book and route cross-links.",
+    laneHint: "phase_a",
+  },
 ];
 
 export const FIELD_BOOK_CANON_HUB_HREF = "/admin/intelligence/field-book/canon";

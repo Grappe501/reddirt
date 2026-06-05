@@ -12,6 +12,7 @@ const steps = [
   { label: "test-phase2-diligence-field-book", cmd: "npx", args: ["tsx", "scripts/test-phase2-diligence-field-book.ts"] },
   { label: "test-phase3-debate-spine-depth", cmd: "npx", args: ["tsx", "scripts/test-phase3-debate-spine-depth.ts"] },
   { label: "test-phase4-canon-loop", cmd: "npx", args: ["tsx", "scripts/test-phase4-canon-loop.ts"] },
+  { label: "test-phase5-glossary-connectivity", cmd: "npx", args: ["tsx", "scripts/test-phase5-glossary-connectivity.ts"] },
   { label: "test-intelligence-hardening", cmd: "npm", args: ["run", "agents:test-intelligence-hardening"] },
   { label: "lint:all", cmd: "npm", args: ["run", "lint:all"] },
   { label: "typecheck", cmd: "npm", args: ["run", "typecheck"] },

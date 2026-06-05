@@ -7,8 +7,10 @@ import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHamm
 import { PhaseAUpgradePassPanel } from "@/components/admin/intelligence/PhaseAUpgradePassPanel";
 import { Phase3UpgradePassPanel } from "@/components/admin/intelligence/Phase3UpgradePassPanel";
 import { Phase4UpgradePassPanel } from "@/components/admin/intelligence/Phase4UpgradePassPanel";
+import { Phase5UpgradePassPanel } from "@/components/admin/intelligence/Phase5UpgradePassPanel";
 import { computePhase3UpgradePass } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
+import { computePhase5UpgradePass } from "@/lib/intelligence/v4/phase5GlossaryConnectivity";
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +26,7 @@ export default function IntelligenceBuildProgressPage() {
   const phaseA = computePhaseAUpgradePass();
   const phase3 = computePhase3UpgradePass();
   const phase4 = computePhase4UpgradePass();
+  const phase5 = computePhase5UpgradePass();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -70,13 +73,14 @@ export default function IntelligenceBuildProgressPage() {
           Phase 3 waves
         </Link>
         <Link
-          href="/admin/intelligence/phase-4-upgrade"
-          className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950"
+          href="/admin/intelligence/phase-5-upgrade"
+          className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950"
         >
-          Phase 4 canon loop
+          Phase 5 glossary
         </Link>
       </V4PageHeader>
 
+      <Phase5UpgradePassPanel report={phase5} compact />
       <Phase4UpgradePassPanel report={phase4} compact />
 
       <Phase3UpgradePassPanel report={phase3} compact />

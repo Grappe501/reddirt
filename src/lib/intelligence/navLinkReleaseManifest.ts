@@ -143,6 +143,19 @@ export const NAV_LINK_RELEASE_BATCHES: NavLinkReleaseBatch[] = [
       ...getFieldBookCanonLinkAuditRoutes(),
     ]),
   },
+  {
+    id: "2026-06-05-phase-5-glossary-connectivity",
+    label: "Phase 5 debate glossary + hub connectivity",
+    hrefs: dedupeHrefs([
+      "/admin/intelligence/phase-5-upgrade",
+      "/admin/intelligence/field-book/glossary",
+      "/admin/intelligence/field-book/debate-glossary",
+      "/admin/intelligence/kelly-debate-coaching",
+      "/admin/intelligence/opposition-strategy",
+      "/admin/intelligence/command-center",
+      "/admin/intelligence/debate-prep/psychology-manual",
+    ]),
+  },
 ];
 
 export const CURRENT_NAV_RELEASE_ID =

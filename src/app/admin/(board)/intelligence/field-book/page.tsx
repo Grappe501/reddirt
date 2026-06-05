@@ -38,6 +38,12 @@ export default function FieldBookHubPage() {
         >
           Canon loop hub
         </Link>
+        <Link
+          href="/admin/intelligence/field-book/glossary"
+          className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950"
+        >
+          Debate glossary
+        </Link>
       </V4PageHeader>
 
       <article className="mb-8 rounded-xl border-2 border-kelly-gold/40 bg-gradient-to-br from-amber-50/60 to-white p-5 text-sm">

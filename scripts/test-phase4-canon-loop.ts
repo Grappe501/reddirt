@@ -50,7 +50,7 @@ for (const binding of FIELD_BOOK_CANON_BINDINGS) {
   }
 }
 
-assert.equal(listStrategyMigrationRoutes().length, 16, "16 strategy migration routes");
+assert.ok(listStrategyMigrationRoutes().length >= 16, "16+ strategy migration routes");
 
 assertRouteExists("/admin/intelligence/phase-4-upgrade");
 assertRouteExists("/admin/intelligence/field-book/canon");

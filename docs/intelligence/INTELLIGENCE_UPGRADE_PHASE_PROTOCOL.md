@@ -11,6 +11,7 @@ Run **one phase at a time**. At the end of each phase, execute the full sandbox 
 | **2** | New surfaces depth (diligence, Field Book) | Phase A pages have operator prose, not empty forms |
 | **3** | Page-by-page depth waves (6 waves) | 5-layer standard on debate spine |
 | **4** | Field Book canon loop | Route bindings + strategy migration |
+| **5** | Debate glossary + hub connectivity | Glossary index + Phase B/C depth + all hub bindings |
 
 ## End-of-phase sandbox (required)
 
@@ -28,10 +29,11 @@ This runs, in order:
 4. `test-phase2-diligence-field-book` (Phase 2 operator prose)
 5. `test-phase3-debate-spine-depth` (Phase 3 five-layer waves)
 6. `test-phase4-canon-loop` (Phase 4 canon loop + strategy migration)
-7. `agents:test-intelligence-hardening`
-8. `lint:all`
-9. `typecheck`
-10. `build` (production Next.js build — Netlify parity)
+7. `test-phase5-glossary-connectivity` (Phase 5 glossary + hub connectivity)
+8. `agents:test-intelligence-hardening`
+9. `lint:all`
+10. `typecheck`
+11. `build` (production Next.js build — Netlify parity)
 
 **Do not push** if any step fails. Fix in the active lane slice only.
 

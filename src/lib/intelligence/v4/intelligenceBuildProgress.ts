@@ -39,6 +39,7 @@ import { computeDossierBriefingBookProgress } from "@/lib/intelligence/v4/candid
 import { computePhase2SurfacesDepthProgress } from "@/lib/intelligence/v4/phase2SurfacesDepth";
 import { computePhase3UpgradePass } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
+import { computePhase5UpgradePass } from "@/lib/intelligence/v4/phase5GlossaryConnectivity";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -541,6 +542,21 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/phase-4-upgrade",
   });
 
+  const phase5Pass = computePhase5UpgradePass();
+  items.push({
+    id: "phase-5-glossary-connectivity",
+    label: "Phase 5 — Debate glossary + hub connectivity",
+    category: "Canon",
+    completionPct: Math.min(100, phase5Pass.completionPct),
+    status: phase5Pass.completionPct >= 95 ? "complete" : phase5Pass.completionPct >= 80 ? "partial" : "flagged",
+    built: phase5Pass.progress.glossaryTermsAtBar,
+    total: phase5Pass.progress.glossaryTermCount,
+    flags: [
+      `${phase5Pass.progress.glossaryTermsAtBar} glossary terms · ${phase5Pass.progress.hubRoutesBound}/${phase5Pass.progress.hubRoutesTotal} hubs · B/C ${phase5Pass.progress.phaseBcArticlesAtBar}/${phase5Pass.progress.phaseBcArticleTotal}`,
+    ],
+    href: "/admin/intelligence/phase-5-upgrade",
+  });
+
   const canonStats = computeCanonLoopStats();
   items.push({
     id: "field-book-canon-loop",
@@ -661,7 +677,8 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/build-progress",
     "/admin/intelligence/phase-3-upgrade",
     "/admin/intelligence/phase-4-upgrade",
-    "/admin/intelligence/debate-prep/psychology-manual",
+    "/admin/intelligence/phase-5-upgrade",
+    "/admin/intelligence/field-book/glossary",
     ...psychologyIds.map((id) => `/admin/intelligence/debate-prep/psychology-manual/${id}`),
     ...NSI_STAFF_RESEARCH_NAV_ITEMS.map((item) => item.href),
     ...getTier1NavLinkAuditRoutes(),
@@ -864,11 +881,27 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
         "Nav release batch 2026-06-05-phase-4-canon-strategy-migration",
       ],
     },
+    {
+      phase: 13,
+      name: "v8.0 — Phase 5 debate glossary + hub connectivity (COMPLETE)",
+      targetVersion: "0.20.0",
+      goal: "Debate term registry, Field Book Phase B/C depth, canon bindings on all remaining intelligence hubs.",
+      items: [
+        "42-term debateGlossaryRegistry + glossary index route",
+        "12 Phase B/C Field Book articles at 6-paragraph bar",
+        "11 hub canon bindings + strategy bridge extended to 28 routes",
+      ],
+      exitCriteria: [
+        "test-phase5-glossary-connectivity green",
+        "All PHASE5_HUB_ROUTES bound",
+        "Nav release batch 2026-06-05-phase-5-glossary-connectivity",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v7.0-phase-0-4-upgrade-pass",
+    version: "v8.0-phase-5-glossary-connectivity",
     overallCompletionPct,
     items,
     phases,
