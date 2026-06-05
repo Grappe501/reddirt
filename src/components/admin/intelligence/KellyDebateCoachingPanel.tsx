@@ -501,8 +501,8 @@ export function KellyDebateCoachingPanel({
               <li key={b.slice(0, 40)}>{b}</li>
             ))}
           </ul>
-          <Link href="/admin/intelligence/opponents" className="mt-3 inline-block font-bold text-kelly-navy underline">
-            Packo opposition hub →
+          <Link href="/admin/intelligence/opponents/michael-packo" className="mt-3 inline-block font-bold text-kelly-navy underline">
+            Pakko command center →
           </Link>
         </article>
       ) : null}

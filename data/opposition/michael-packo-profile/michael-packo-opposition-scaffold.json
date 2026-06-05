@@ -6,20 +6,20 @@
   "electionYear": 2026,
   "status": "PARTIAL_VERIFIED",
   "lastUpdated": "2026-06-04",
-  "summary": "Expanded dossier: strengths/weaknesses matrices, bio timeline, quotes, contrast, 8 narrative sections, claims ledger, lead stories. Quote harvest PACKO-02 still OPEN.",
+  "summary": "Expanded dossier: strengths/weaknesses matrices, bio timeline, quotes, contrast, 8 narrative sections, claims ledger, lead stories. PACKO-01/02 PARTIAL — contrast gate open for rehearsal.",
   "campaignSite": "https://pakko4ar.com/",
   "researchPriorities": [
     {
       "id": "PACKO-01",
       "task": "Ballot filing & campaign finance disclosures",
-      "status": "OPEN",
+      "status": "PARTIAL",
       "owner": "research",
       "deliverable": "FEC/Arkansas ethics filings summary"
     },
     {
       "id": "PACKO-02",
       "task": "Public statements on elections, mandates, county authority",
-      "status": "OPEN",
+      "status": "PARTIAL",
       "owner": "research",
       "deliverable": "Quote ledger with source URLs"
     },
@@ -72,9 +72,10 @@
   },
   "routesWhenLive": {
     "hub": "/admin/intelligence/opponents",
+    "commandCenter": "/admin/intelligence/opponents/michael-packo",
     "dossier": "/admin/intelligence/opponents/dossiers/michael-packo",
     "media": "/admin/intelligence/video-archive-room",
     "coaching": "/admin/intelligence/kelly-debate-coaching",
-    "contrast": "/admin/intelligence/opponents/dossiers/michael-packo/packo-kelly-response-playbook"
+    "contrast": "/admin/intelligence/opponents/michael-packo/contrast-vs-kelly"
   }
 }

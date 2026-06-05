@@ -91,9 +91,13 @@ export function loadMichaelPackoWeaknesses(): { weaknesses: WeaknessEntry[] } {
 }
 
 export function loadMichaelPackoBioTimeline() {
-  return readJson<{ timeline: Array<{ year: string; event: string; evidenceStatus: string; sources: string[] }> }>(
-    "michael-packo-profile/michael-packo-bio-timeline.json",
-  );
+  return readJson<{
+    displayName: string;
+    residence?: string;
+    spellingNote?: string;
+    education?: Array<{ year: number; credential: string }>;
+    timeline: Array<{ year: string; event: string; evidenceStatus: string; sources: string[] }>;
+  }>("michael-packo-profile/michael-packo-bio-timeline.json");
 }
 
 export function loadMichaelPackoContrast() {

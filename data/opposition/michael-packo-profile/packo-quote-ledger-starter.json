@@ -1,9 +1,34 @@
 {
   "taskId": "PACKO-02",
-  "status": "OPEN",
+  "status": "PARTIAL",
   "lastUpdated": "2026-06-05",
   "governance": "INTERNAL_DRAFT — source URL required on every quote before debate contrast",
-  "quotes": [],
+  "quotes": [
+    {
+      "id": "packo-q-competitiveness",
+      "topic": "election_competitiveness",
+      "quoteText": "Chronic lack of competitiveness in Arkansas' election process — election reforms to add diversity and competition of ideas.",
+      "sourceUrl": "https://ballotpedia.org/Michael_Pakko"
+    },
+    {
+      "id": "packo-q-fiscal-transparency",
+      "topic": "fiscal_transparency",
+      "quoteText": "Use skills as economist, data analyst, and communicator to provide greater fiscal transparency to the Secretary of State's office and state government finances.",
+      "sourceUrl": "https://ballotpedia.org/Michael_Pakko"
+    },
+    {
+      "id": "packo-q-duopoly",
+      "topic": "anti_duopoly",
+      "quoteText": "Established political class protect privileged positions — front-row seat observing lack of competitiveness.",
+      "sourceUrl": "https://ballotpedia.org/Michael_Pakko"
+    },
+    {
+      "id": "packo-q-ballot-access",
+      "topic": "ballot_access",
+      "quoteText": "Libertarian Party qualified as new political party for 2026 — candidates nominated by convention.",
+      "sourceUrl": "https://pakko4ar.com/blog/2026/02/24/arkansas-libertarians-nominate-candidates-for-2026/"
+    }
+  ],
   "harvestChecklist": [
     "Campaign site policy pages (pakko4ar.com)",
     "UALR / economist public commentary on elections",
@@ -11,6 +36,6 @@
     "Ranked-choice / mandate rhetoric — verify exact wording",
     "County authority statements — clerk-room risk assessment"
   ],
-  "notes": "When >=3 quotes with URLs ingested, set PACKO-02 to PARTIAL in michael-packo-opposition-scaffold.json to open contrast gate.",
-  "claimsGate": "No Pakko attack lines until quote ledger PARTIAL minimum"
+  "notes": "Four sourced quotes ingested from michael-packo-quotes.json — PACKO-02 PARTIAL opens contrast gate for rehearsal (not personal attack).",
+  "claimsGate": "No Pakko attack lines — contrast frames and Kelly do/don't only until counsel review on any hit"
 }

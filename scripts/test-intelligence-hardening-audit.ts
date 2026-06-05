@@ -28,6 +28,10 @@ import {
   getAllKellyDossierSectionIds,
   getKellyDossierSection,
 } from "../src/lib/intelligence/v4/kellyCandidateDossierDepth";
+import {
+  buildKellyBioNarrativeChapter,
+  computeDossierBriefingBookProgress,
+} from "../src/lib/intelligence/v4/candidateDossierBriefingBook";
 import { loadVvsg20CandidateEducation } from "../src/lib/intelligence/v4/vvsg20CandidateEducation";
 import { INTEGRITY_2021_PACKAGE_DEPTH, PETITION_2025_CLUSTER_DEPTH } from "../src/lib/intelligence/v4/integrityPackageDepth";
 import { listCuratedBillPlaybookNumbers } from "../src/lib/intelligence/v4/debateBillOperatorPlaybooks";
@@ -145,6 +149,16 @@ assert.ok(getAllOpponentDossierSectionIds().length >= 16, "opponent dossier sect
 assertRouteExists("/admin/intelligence/opponents/dossiers");
 assertRouteExists("/admin/intelligence/opponents/dossiers/kim-hammer");
 assertRouteExists("/admin/intelligence/opponents/dossiers/michael-packo");
+assertRouteExists("/admin/intelligence/opponents/michael-packo");
+assertRouteExists("/admin/intelligence/opponents/michael-packo/quotes");
+assertRouteExists("/admin/intelligence/opponents/michael-packo/contrast-vs-kelly");
+assertRouteExists("/admin/intelligence/opponents/michael-packo/finance");
+
+// --- Phase 1 briefing book ---
+const briefing = computeDossierBriefingBookProgress();
+assert.ok(briefing.overallPct >= 75, "Phase 1 briefing book overall");
+assert.ok(buildKellyBioNarrativeChapter().paragraphs.length >= 3, "Kelly bio chapter");
+
 for (const sid of ["hammer-acca-panel-tactics", "packo-three-way-geometry"]) {
   const sec = getOpponentDossierSection(sid)!;
   assertRouteExists(`/admin/intelligence/opponents/dossiers/${sec.candidateId}/${sid}`);

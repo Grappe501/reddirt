@@ -2,9 +2,9 @@ import type { CampaignOsNavGroup, CampaignOsNavLink } from "@/lib/dashboard-orch
 import {
   DEBATE_WEEK_EXTENDED_NAV_ITEMS,
   getDebateWeekPrimaryNavItems,
-  PHASE_A_COMMAND_NAV_ITEMS,
   type DebateWeekNavItem,
 } from "@/lib/intelligence/debate-week-nav";
+import { PHASE_A_COMMAND_HREFS, PHASE_A_COMMAND_NAV_ITEMS } from "@/lib/intelligence/phaseACommandNav";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
 import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
 
@@ -91,7 +91,7 @@ const STAFF_HREF_PREFIXES = [
   "/admin/intelligence/field-book/canon",
 ];
 
-const PHASE_A_HREFS = new Set(PHASE_A_COMMAND_NAV_ITEMS.map((i) => i.href));
+const PHASE_A_HREFS = PHASE_A_COMMAND_HREFS;
 
 function assignLane(href: string): ThreeLaneId {
   if (PHASE_A_HREFS.has(href)) return "phase_a";

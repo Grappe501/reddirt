@@ -4,6 +4,7 @@ import { allDiligenceCompletionSummary } from "@/lib/intelligence/v4/opponentDil
 import { getPackoContrastGateStatus } from "@/lib/intelligence/v4/packoContrastGate";
 import { KELLY_ATTACK_VECTORS } from "@/lib/intelligence/v4/kellyCandidateResearchDepth";
 import { FIELD_BOOK_HUB_HREF } from "@/lib/intelligence/fieldBookRegistry";
+import { computePhase2SurfacesDepthProgress } from "@/lib/intelligence/v4/phase2SurfacesDepth";
 import { OPPONENT_DILIGENCE_HUB_HREF } from "@/lib/intelligence/v4/opponentDiligenceRegistry";
 import fs from "node:fs";
 import path from "node:path";
@@ -33,6 +34,7 @@ export function computePhaseAUpgradePass(): PhaseAUpgradePassReport {
   const hammer = diligence.find((d) => d.subjectId === "kim-hammer");
   const pakko = diligence.find((d) => d.subjectId === "michael-packo");
   const packoGate = getPackoContrastGateStatus();
+  const phase2Depth = computePhase2SurfacesDepthProgress();
   const kellyNeedsResearch = KELLY_ATTACK_VECTORS.filter((v) => v.verificationStatus === "NEEDS_RESEARCH").length;
 
   let claimsNeedsReview = 0;
@@ -114,10 +116,13 @@ export function computePhaseAUpgradePass(): PhaseAUpgradePassReport {
     {
       id: "field-book-phase-a",
       label: "The Field Book — Phase A canon",
-      description: "Eight live encyclopedia articles with cross-links; B–D expand on future passes.",
+      description: "Eight encyclopedia articles with operator prose depth — diligence protocol, counsel frame, claims firewall.",
       href: FIELD_BOOK_HUB_HREF,
-      status: "complete",
-      statusLabel: "Phase A articles live",
+      status: phase2Depth.fieldBookPhaseAPct >= 100 ? "complete" : "in_progress",
+      statusLabel:
+        phase2Depth.fieldBookPhaseAPct >= 100
+          ? `${phase2Depth.fieldBookArticlesAtBar}/${phase2Depth.fieldBookPhaseATotal} articles at briefing bar`
+          : `${phase2Depth.fieldBookArticlesAtBar}/${phase2Depth.fieldBookPhaseATotal} at bar — expand prose`,
     },
   ];
 

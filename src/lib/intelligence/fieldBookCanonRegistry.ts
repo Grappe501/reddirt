@@ -29,6 +29,13 @@ export const FIELD_BOOK_CANON_BINDINGS: FieldBookCanonBinding[] = [
     laneHint: "phase_a",
   },
   {
+    routePrefix: "/admin/intelligence/opponents/michael-packo",
+    fieldBookSlugs: ["pakko-diligence-checklist", "pakko-contrast-gate", "pakko-command-center"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Pakko command center — Phase 0 front door. Contrast gate governs rehearsal modules.",
+    laneHint: "phase_a",
+  },
+  {
     routePrefix: "/admin/intelligence/opponents/dossiers/michael-packo",
     fieldBookSlugs: ["pakko-diligence-checklist", "pakko-contrast-gate", "pakko-command-center"],
     claimsLedgerHref: "/admin/intelligence/claims",

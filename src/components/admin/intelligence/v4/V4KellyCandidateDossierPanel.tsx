@@ -13,6 +13,16 @@ import {
   getOpponentDossierSectionsForCandidate,
 } from "@/lib/intelligence/v4/opponentCandidateDossierDepth";
 import { OPPONENT_DOSSIER_CANDIDATES } from "@/lib/intelligence/v4/loadOpponentCandidateDossier";
+import {
+  buildKellyBioNarrativeChapter,
+  buildKellySectionReadAloud,
+} from "@/lib/intelligence/v4/candidateDossierBriefingBook";
+import {
+  BioNarrativeChapterPanel,
+  BriefingBookOrientationBanner,
+  DossierStickySectionNav,
+  SectionReadAloudPanel,
+} from "@/components/admin/intelligence/v4/CandidateDossierBriefingBookChrome";
 
 const STATUS_STYLE: Record<string, string> = {
   PRODUCTION: "bg-emerald-100 text-emerald-900",
@@ -71,6 +81,10 @@ function KellyDossierSectionCard({
       <blockquote className="mt-4 rounded-lg border border-emerald-100 bg-emerald-50/50 p-3 italic text-emerald-950">
         <span className="not-italic font-bold">Debate framing example:</span> {section.debateFramingExample}
       </blockquote>
+
+      <SectionReadAloudPanel
+        {...buildKellySectionReadAloud(section.debateFramingExample, section.howToUseInDebate)}
+      />
 
       {expanded ? (
         <>
@@ -243,12 +257,20 @@ export function V4AllCandidateDossiersHub() {
 export function V4KellyCandidateDossierPanel() {
   const dossier = loadKellyGrappeCandidateDossier();
   const sections = getKellyDossierSections();
+  const bioChapter = buildKellyBioNarrativeChapter();
+  const sectionNav = sections.map((s) => ({
+    sectionId: s.sectionId,
+    title: s.title,
+    href: `/admin/intelligence/candidate-dossiers/kelly-grappe/${s.sectionId}`,
+  }));
 
   return (
     <div className="space-y-6">
       <Link href="/admin/intelligence/candidate-dossiers" className="text-xs font-bold text-kelly-navy underline">
         ← All candidate dossiers
       </Link>
+
+      <BriefingBookOrientationBanner />
 
       <header className="rounded-xl border-2 border-emerald-300 bg-gradient-to-br from-emerald-50/80 to-white p-5">
         <div className="flex flex-wrap items-center gap-2">
@@ -277,6 +299,10 @@ export function V4KellyCandidateDossierPanel() {
         </div>
       </header>
 
+      <BioNarrativeChapterPanel chapter={bioChapter} />
+
+      <DossierStickySectionNav sections={sectionNav} />
+
       <ThirtySecondBioBlock dossier={dossier} />
       <CoreStrengthsBlock dossier={dossier} />
       <ExperienceCrosswalkTable dossier={dossier} />
@@ -297,7 +323,7 @@ export function V4KellyCandidateDossierPanel() {
           {sections.length} alignment sections — read overview here, drill down for full narrative
         </p>
         {sections.map((section) => (
-          <KellyDossierSectionCard key={section.sectionId} section={section} />
+          <KellyDossierSectionCard key={section.sectionId} section={section} expanded />
         ))}
       </div>
 

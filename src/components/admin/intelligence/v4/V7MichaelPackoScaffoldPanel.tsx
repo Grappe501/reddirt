@@ -63,10 +63,10 @@ export function V7MichaelPackoScaffoldPanel() {
       </p>
 
       <Link
-        href="/admin/intelligence/opponents"
-        className="mt-4 inline-block text-xs font-bold text-kelly-navy underline"
+        href="/admin/intelligence/opponents/michael-packo"
+        className="mt-4 inline-block text-xs font-bold text-amber-900 underline"
       >
-        Opponents hub →
+        Pakko command center →
       </Link>
     </section>
   );

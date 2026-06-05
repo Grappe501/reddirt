@@ -12,6 +12,17 @@ import {
 } from "@/lib/intelligence/v4/loadOpponentCandidateDossier";
 import { PackoContrastGateBanner } from "@/components/admin/intelligence/PackoContrastGateBanner";
 import { isPackoContrastBlocked } from "@/lib/intelligence/v4/packoContrastGate";
+import {
+  buildHammerBioNarrativeChapter,
+  buildOpponentSectionReadAloud,
+  buildPakkoBioNarrativeChapter,
+} from "@/lib/intelligence/v4/candidateDossierBriefingBook";
+import {
+  BioNarrativeChapterPanel,
+  BriefingBookOrientationBanner,
+  DossierStickySectionNav,
+  SectionReadAloudPanel,
+} from "@/components/admin/intelligence/v4/CandidateDossierBriefingBookChrome";
 
 const TIER_STYLE: Record<string, string> = {
   VERIFIED: "bg-emerald-100 text-emerald-900",
@@ -77,6 +88,8 @@ function DossierSectionCard({
       <p className="mt-4 rounded-lg border border-sky-100 bg-sky-50/50 p-3 text-sky-950">
         <span className="font-bold">Why Kelly should care:</span> {section.whyItMattersForKelly}
       </p>
+
+      <SectionReadAloudPanel {...buildOpponentSectionReadAloud(section)} />
 
       {expanded ? (
         <>
@@ -214,12 +227,21 @@ export function V4OpponentCandidateDossierPanel({ candidateId }: { candidateId: 
   const dossier = loadCandidateDossier(candidateId);
   const sections = getOpponentDossierSectionsForCandidate(candidateId);
   const packoBlocked = candidateId === "michael-packo" && isPackoContrastBlocked();
+  const bioChapter =
+    candidateId === "kim-hammer" ? buildHammerBioNarrativeChapter() : buildPakkoBioNarrativeChapter();
+  const sectionNav = sections.map((s) => ({
+    sectionId: s.sectionId,
+    title: s.title,
+    href: `/admin/intelligence/opponents/dossiers/${candidateId}/${s.sectionId}`,
+  }));
 
   return (
     <div className="space-y-6">
       <Link href="/admin/intelligence/candidate-dossiers" className="text-xs font-bold text-kelly-navy underline">
-        ← All opponent dossiers
+        ← All candidate dossiers
       </Link>
+
+      <BriefingBookOrientationBanner />
 
       {packoBlocked ? <PackoContrastGateBanner /> : null}
 
@@ -245,6 +267,10 @@ export function V4OpponentCandidateDossierPanel({ candidateId }: { candidateId: 
           ))}
         </div>
       </header>
+
+      <BioNarrativeChapterPanel chapter={bioChapter} />
+
+      <DossierStickySectionNav sections={sectionNav} />
 
       <ClaimsTable dossier={dossier} />
       <LeadStoriesBlock dossier={dossier} />
@@ -272,7 +298,7 @@ export function V4OpponentCandidateDossierPanel({ candidateId }: { candidateId: 
           {sections.length} narrative sections
         </p>
         {sections.map((section) => (
-          <DossierSectionCard key={section.sectionId} section={section} />
+          <DossierSectionCard key={section.sectionId} section={section} expanded />
         ))}
       </div>
     </div>

@@ -38,6 +38,7 @@ export const CANDIDATE_IPAD_MORE_LINKS = [
   { href: "/admin/intelligence/debate-command", label: "Debate command" },
   { href: "/admin/intelligence/candidate-dossiers", label: "All candidate dossiers" },
   { href: "/admin/intelligence/opponents/dossiers/kim-hammer", label: "Hammer dossier" },
+  { href: "/admin/intelligence/opponents/michael-packo", label: "Pakko command center" },
   { href: "/admin/intelligence/opponents/dossiers/michael-packo", label: "Pakko dossier" },
   { href: "/admin/intelligence/county-clerk-week/acca-summer-conference", label: "ACCA panel prep" },
   { href: "/admin/intelligence/county-clerk-week", label: "Clerk week path" },

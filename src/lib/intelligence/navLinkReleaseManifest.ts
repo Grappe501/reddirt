@@ -5,6 +5,7 @@ import { getKimHammerTier3LinkAuditRoutes } from "@/lib/intelligence/v4/kimHamme
 import { getFieldBookLinkAuditRoutes } from "@/lib/intelligence/fieldBookRegistry";
 import { getFieldBookCanonLinkAuditRoutes } from "@/lib/intelligence/fieldBookCanonRegistry";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
+import { getPackoCommandCenterLinkAuditRoutes } from "@/lib/intelligence/opponents/packoCommandCenterRoutes";
 import { OPPONENT_DILIGENCE_HUB_HREF, OPPONENT_DILIGENCE_SUBJECTS } from "@/lib/intelligence/v4/opponentDiligenceRegistry";
 import {
   TIER_4_CORE_EXTENDED_NAV_ITEMS,
@@ -89,6 +90,35 @@ export const NAV_LINK_RELEASE_BATCHES: NavLinkReleaseBatch[] = [
       ...getFieldBookCanonLinkAuditRoutes(),
       "/admin/intelligence/field-book/canon",
       "/admin/intelligence/field-book/phase/phase-d",
+    ]),
+  },
+  {
+    id: "2026-06-05-phase-0-pakko-command-center",
+    label: "Phase 0 Pakko command center",
+    hrefs: dedupeHrefs([...getPackoCommandCenterLinkAuditRoutes()]),
+  },
+  {
+    id: "2026-06-05-phase-1-dossier-briefing-book",
+    label: "Phase 1 dossier briefing book pass",
+    hrefs: dedupeHrefs([
+      "/admin/intelligence/candidate-dossiers",
+      "/admin/intelligence/candidate-dossiers/kelly-grappe",
+      "/admin/intelligence/opponents/dossiers/kim-hammer",
+      "/admin/intelligence/opponents/dossiers/michael-packo",
+      ...getPackoCommandCenterLinkAuditRoutes(),
+    ]),
+  },
+  {
+    id: "2026-06-05-phase-2-diligence-field-book-depth",
+    label: "Phase 2 diligence operator prose + Field Book depth",
+    hrefs: dedupeHrefs([
+      OPPONENT_DILIGENCE_HUB_HREF,
+      ...OPPONENT_DILIGENCE_SUBJECTS.map((s) => s.href),
+      "/admin/intelligence/field-book/phase/phase-a",
+      "/admin/intelligence/field-book/court-diligence-protocol",
+      "/admin/intelligence/field-book/kelly-five-search-checklist",
+      "/admin/intelligence/field-book/hammer-diligence-checklist",
+      "/admin/intelligence/field-book/pakko-diligence-checklist",
     ]),
   },
 ];

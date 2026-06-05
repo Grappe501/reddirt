@@ -31,9 +31,12 @@ import { buildTier4CoreSpineNavGroups } from "@/lib/intelligence/v4/tier4CoreSpi
 import { getTier1NavLinkAuditRoutes } from "@/lib/intelligence/navLinkReleaseManifest";
 import { DEBATE_DEPTH_TOPICS } from "@/lib/intelligence/v4/debateDepthTopics";
 import { allDiligenceCompletionSummary } from "@/lib/intelligence/v4/opponentDiligenceLogStore";
+import { getPackoCommandCenterLinkAuditRoutes } from "@/lib/intelligence/opponents/packoCommandCenterRoutes";
 import { getPackoContrastGateStatus } from "@/lib/intelligence/v4/packoContrastGate";
 import { FIELD_BOOK_ARTICLES, getFieldBookLinkAuditRoutes } from "@/lib/intelligence/fieldBookRegistry";
 import { computeCanonLoopStats } from "@/lib/intelligence/fieldBookCanonRegistry";
+import { computeDossierBriefingBookProgress } from "@/lib/intelligence/v4/candidateDossierBriefingBook";
+import { computePhase2SurfacesDepthProgress } from "@/lib/intelligence/v4/phase2SurfacesDepth";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -397,6 +400,42 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
   });
 
   items.push({
+    id: "candidate-dossier-briefing-book",
+    label: "Phase 1 — Dossier briefing book (Kelly + Hammer + Pakko)",
+    category: "Candidate dossiers",
+    completionPct: computeDossierBriefingBookProgress().overallPct,
+    status:
+      computeDossierBriefingBookProgress().overallPct >= 90
+        ? "complete"
+        : computeDossierBriefingBookProgress().overallPct >= 75
+          ? "partial"
+          : "flagged",
+    built: computeDossierBriefingBookProgress().overallPct,
+    total: 100,
+    flags:
+      computeDossierBriefingBookProgress().overallPct < 90
+        ? [
+            `Kelly ${computeDossierBriefingBookProgress().kellyPct}% · Hammer ${computeDossierBriefingBookProgress().hammerPct}% · Pakko ${computeDossierBriefingBookProgress().pakkoPct}% at briefing-book bar`,
+          ]
+        : ["Briefing book mode live — bio chapters + read-aloud blocks on all dossier hubs"],
+    href: "/admin/intelligence/candidate-dossiers",
+  });
+
+  items.push({
+    id: "pakko-command-center",
+    label: "Phase 0 — Pakko command center",
+    category: "Opposition",
+    completionPct: getPackoContrastGateStatus().blocked ? 85 : 100,
+    status: getPackoContrastGateStatus().blocked ? "partial" : "complete",
+    built: 4,
+    total: 4,
+    flags: getPackoContrastGateStatus().blocked
+      ? [getPackoContrastGateStatus().message]
+      : ["Contrast gate open — rehearsal modules live; no personal attack without counsel"],
+    href: "/admin/intelligence/opponents/michael-packo",
+  });
+
+  items.push({
     id: "opponent-dossiers",
     label: "Opponent candidate dossiers (Hammer + Pakko)",
     category: "Opposition",
@@ -408,6 +447,23 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
       ? ["Pakko contrast LOCKED — PACKO-01/02 OPEN", "Hammer + Kelly diligence logs NOT_SEARCHED"]
       : ["Hammer + Kelly diligence logs NOT_SEARCHED"],
     href: "/admin/intelligence/candidate-dossiers",
+  });
+
+  const phase2Surfaces = computePhase2SurfacesDepthProgress();
+  items.push({
+    id: "phase-2-diligence-field-book",
+    label: "Phase 2 — Diligence operator prose + Field Book depth",
+    category: "Governance",
+    completionPct: phase2Surfaces.overallPct,
+    status:
+      phase2Surfaces.overallPct >= 100 ? "complete" : phase2Surfaces.overallPct >= 75 ? "partial" : "flagged",
+    built: phase2Surfaces.overallPct,
+    total: 100,
+    flags:
+      phase2Surfaces.overallPct < 100
+        ? [`Operator guides ${phase2Surfaces.diligenceGuidePct}% · Field Book Phase A ${phase2Surfaces.fieldBookPhaseAPct}%`]
+        : ["15 search operator guides + 8 Phase A Field Book articles at briefing bar"],
+    href: "/admin/intelligence/diligence",
   });
 
   const diligenceRows = allDiligenceCompletionSummary();
@@ -561,6 +617,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/candidate-dossiers",
     "/admin/intelligence/opponents/dossiers/kim-hammer",
     "/admin/intelligence/opponents/dossiers/michael-packo",
+    ...getPackoCommandCenterLinkAuditRoutes(),
     "/admin/intelligence/build-progress",
     "/admin/intelligence/debate-prep/psychology-manual",
     ...psychologyIds.map((id) => `/admin/intelligence/debate-prep/psychology-manual/${id}`),

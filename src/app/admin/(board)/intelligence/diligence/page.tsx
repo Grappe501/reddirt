@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DiligenceHubOrientationPanel } from "@/components/admin/intelligence/DiligenceHubOrientationPanel";
 import { PhaseAUpgradePassPanel } from "@/components/admin/intelligence/PhaseAUpgradePassPanel";
 import { OpponentDiligenceChecklistPanel } from "@/components/admin/intelligence/OpponentDiligenceChecklistPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
@@ -41,6 +42,8 @@ export default function DiligenceHubPage() {
       </V4PageHeader>
 
       <PhaseAUpgradePassPanel report={phaseA} compact />
+
+      <DiligenceHubOrientationPanel />
 
       {packoGate.blocked ? (
         <div className="mb-6 rounded-xl border-2 border-rose-300 bg-rose-50/80 p-4 text-sm text-rose-950">

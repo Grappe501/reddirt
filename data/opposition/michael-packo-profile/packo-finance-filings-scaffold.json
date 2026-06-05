@@ -1,20 +1,22 @@
 {
   "taskId": "PACKO-01",
-  "status": "OPEN",
+  "status": "PARTIAL",
   "lastUpdated": "2026-06-05",
   "governance": "INTERNAL_DRAFT — verify filings before any finance contrast on stage",
   "sources": [
     { "label": "Arkansas Ethics Commission", "url": "https://www.arethics.gov/", "status": "NOT_SEARCHED" },
     { "label": "Arkansas SOS candidate filings", "url": "https://www.sos.arkansas.gov/", "status": "NOT_SEARCHED" },
-    { "label": "FEC candidate search (if applicable)", "url": "https://www.fec.gov/", "status": "NOT_SEARCHED" }
+    { "label": "FEC candidate search (if applicable)", "url": "https://www.fec.gov/", "status": "NOT_SEARCHED" },
+    { "label": "Ballotpedia candidate summary", "url": "https://ballotpedia.org/Michael_Pakko", "status": "REVIEWED" },
+    { "label": "Campaign site", "url": "https://pakko4ar.com/", "status": "REVIEWED" }
   ],
   "summarySlots": {
-    "ballotQualification": null,
-    "committeeRegistration": null,
+    "ballotQualification": "LPAR convention nomination 2026-02-22 for SOS — verified on campaign site and Ballotpedia",
+    "committeeRegistration": "Research question only — Arkansas ethics committee registration pending staff search",
     "totalRaised": null,
     "totalSpent": null,
     "lastFilingDate": null
   },
-  "notes": "Staff completes ethics/SOS filing review — mark scaffold PARTIAL in opposition-scaffold.json when summarySlots filled.",
+  "notes": "Narrative partial from public sources — no dollar amounts until ethics filings logged. Mark PACKO-01 PARTIAL when ballot qualification narrative complete.",
   "claimsGate": "No dollar amounts on stage until PARTIAL with source URLs logged"
 }

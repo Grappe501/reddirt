@@ -3,7 +3,8 @@ import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudien
 import { TIER_2_DEBATE_PREP_NAV_ITEMS } from "@/lib/intelligence/v4/debatePrepDepthNav";
 import { buildKimHammerTier3SidebarNavItems } from "@/lib/intelligence/v4/kimHammerOpponentModuleNav";
 import { DEBATE_WORKFLOW_STEPS } from "@/lib/intelligence/v4/debateOperatorNarratives";
-import { buildThreeLaneNavGroups } from "@/lib/intelligence/v4/threeLaneNav";
+import { PHASE_A_COMMAND_HREFS, PHASE_A_COMMAND_NAV_ITEMS } from "@/lib/intelligence/phaseACommandNav";
+export { PHASE_A_COMMAND_NAV_ITEMS } from "@/lib/intelligence/phaseACommandNav";
 
 function dedupeNavItems(items: DebateWeekNavItem[]): DebateWeekNavItem[] {
   const seen = new Set<string>();
@@ -76,44 +77,8 @@ function stepDesc(href: string, fallback: string): string {
   return `${step.guide.whyItMatters} When: ${step.guide.whenToUse}`;
 }
 
-/** Phase A + upgrade tracks — pinned to top of sidebar and horizontal subnav. */
-export const PHASE_A_COMMAND_NAV_ITEMS: DebateWeekNavItem[] = [
-  {
-    href: "/admin/intelligence/supreme-workbench",
-    label: "Supreme workbench",
-    badgeKey: "opposition",
-    description: "Unified command — readiness, trap lanes, Phase A upgrade pass, build gaps.",
-  },
-  {
-    href: "/admin/intelligence/diligence",
-    label: "Diligence hub",
-    badgeKey: "opposition",
-    description: "Phase A — five-search court/financial checklists for Kelly, Hammer, and Pakko.",
-  },
-  {
-    href: "/admin/intelligence/field-book",
-    label: "The Field Book",
-    badgeKey: "opposition",
-    description: "Campaign encyclopedia — four upgrade phases with cross-linked articles.",
-  },
-  {
-    href: "/admin/intelligence/build-progress",
-    label: "Build progress",
-    description: "Master intelligence stack tracker — tiers, link audit, Phase A completion.",
-  },
-  {
-    href: "/admin/intelligence/candidate-dossiers",
-    label: "Candidate dossiers",
-    badgeKey: "opposition",
-    description:
-      "Kelly alignment profile plus Hammer and Pakko opponent dossiers — claims, strengths, lead stories.",
-  },
-];
-
-const PHASE_A_HREFS = new Set(PHASE_A_COMMAND_NAV_ITEMS.map((i) => i.href));
-
 function withoutPhaseA(items: DebateWeekNavItem[]): DebateWeekNavItem[] {
-  return items.filter((i) => !PHASE_A_HREFS.has(i.href));
+  return items.filter((i) => !PHASE_A_COMMAND_HREFS.has(i.href));
 }
 
 /** County clerks week — Kelly reads this path daily (see countyClerkSevenDayPrepPath). */
@@ -511,6 +476,8 @@ export function isDebateWeekRoute(pathname: string): boolean {
 }
 
 export function buildDebateWeekNavGroups(): CampaignOsNavGroup[] {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports -- lazy load breaks threeLaneNav ↔ debate-week-nav cycle
+  const { buildThreeLaneNavGroups } = require("@/lib/intelligence/v4/threeLaneNav") as typeof import("@/lib/intelligence/v4/threeLaneNav");
   return buildThreeLaneNavGroups();
 }
 

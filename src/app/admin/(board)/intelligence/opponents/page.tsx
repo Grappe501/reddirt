@@ -68,6 +68,17 @@ export default function OpponentsHubPage() {
           <p className="mt-2 text-sm text-kelly-muted">8 sections, bio timeline, three-way geometry, quote ledger starter.</p>
         </Link>
         <Link
+          href="/admin/intelligence/opponents/michael-packo"
+          className="flex flex-col rounded-xl border-2 border-amber-300 bg-amber-50/50 p-5 shadow-sm transition hover:border-amber-500"
+        >
+          <p className="text-[10px] font-bold uppercase text-amber-900">Command center · Phase 0</p>
+          <h2 className="mt-1 font-heading text-xl font-bold text-kelly-navy">Pakko command center</h2>
+          <p className="mt-2 flex-1 text-sm text-kelly-muted">
+            One front door — quotes, contrast, finance, diligence, coaching. Start here for third-candidate prep.
+          </p>
+          <p className="mt-3 text-xs font-bold text-amber-900">Open command center →</p>
+        </Link>
+        <Link
           href="/admin/intelligence/kim-hammer"
           className="flex flex-col rounded-xl border border-kelly-text/10 bg-white p-5 shadow-sm transition hover:border-kelly-navy/40"
         >

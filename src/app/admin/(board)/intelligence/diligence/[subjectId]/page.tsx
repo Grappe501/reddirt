@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DiligenceSubjectOrientationPanel } from "@/components/admin/intelligence/DiligenceSubjectOrientationPanel";
 import { OpponentDiligenceChecklistPanel } from "@/components/admin/intelligence/OpponentDiligenceChecklistPanel";
 import { PackoContrastGateBanner } from "@/components/admin/intelligence/PackoContrastGateBanner";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
@@ -53,6 +54,8 @@ export default async function DiligenceSubjectPage({
       </V4PageHeader>
 
       {subject.subjectId === "michael-packo" ? <PackoContrastGateBanner /> : null}
+
+      <DiligenceSubjectOrientationPanel subject={subject} log={log} />
 
       <OpponentDiligenceChecklistPanel log={log} />
     </div>

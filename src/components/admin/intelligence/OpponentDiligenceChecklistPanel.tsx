@@ -2,11 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { DiligenceSearchOperatorBlock } from "@/components/admin/intelligence/DiligenceSearchOperatorBlock";
 import type {
   DiligenceSearchEntry,
   DiligenceSearchResult,
   OpponentDiligenceLogFile,
 } from "@/lib/intelligence/v4/kellyCourtDiligenceLogTypes";
+import { getDiligenceSearchOperatorGuide } from "@/lib/intelligence/v4/diligenceSearchOperatorDepth";
 
 const RESULT_STYLE: Record<DiligenceSearchResult, string> = {
   CLEAN: "text-emerald-700",
@@ -20,8 +22,10 @@ type Props = {
 };
 
 function EntryRow({ log, entry }: { log: OpponentDiligenceLogFile; entry: DiligenceSearchEntry }) {
+  const operatorGuide = getDiligenceSearchOperatorGuide(log.subjectId, entry.id);
   const router = useRouter();
   const [busy, setBusy] = useState(false);
+  const [showGuide, setShowGuide] = useState(entry.result === "NOT_SEARCHED" || entry.result === "IN_PROGRESS");
   const [result, setResult] = useState(entry.result);
   const [initials, setInitials] = useState(entry.staffInitials ?? "");
   const [counselReviewed, setCounselReviewed] = useState(entry.counselReviewed);
@@ -60,8 +64,20 @@ function EntryRow({ log, entry }: { log: OpponentDiligenceLogFile; entry: Dilige
   }
 
   return (
+    <>
     <tr className="border-b border-kelly-text/5 align-top">
-      <td className="py-3 pr-3 font-semibold text-kelly-navy">{entry.source}</td>
+      <td className="py-3 pr-3 font-semibold text-kelly-navy">
+        {entry.source}
+        {operatorGuide ? (
+          <button
+            type="button"
+            onClick={() => setShowGuide((v) => !v)}
+            className="mt-1 block text-[10px] font-bold text-sky-800 underline"
+          >
+            {showGuide ? "Hide operator guide" : "Show operator guide"}
+          </button>
+        ) : null}
+      </td>
       <td className="py-3 pr-3 text-kelly-muted">{entry.searchQuery}</td>
       <td className="py-3 pr-3">
         <select
@@ -123,6 +139,14 @@ function EntryRow({ log, entry }: { log: OpponentDiligenceLogFile; entry: Dilige
         {error ? <p className="mt-1 text-[10px] text-rose-700">{error}</p> : null}
       </td>
     </tr>
+    {showGuide && operatorGuide ? (
+      <tr className="border-b border-kelly-text/5">
+        <td colSpan={6} className="pb-4">
+          <DiligenceSearchOperatorBlock guide={operatorGuide} />
+        </td>
+      </tr>
+    ) : null}
+    </>
   );
 }
 
