@@ -75,15 +75,49 @@ function stepDesc(href: string, fallback: string): string {
   return `${step.guide.whyItMatters} When: ${step.guide.whenToUse}`;
 }
 
-/** County clerks week — Kelly reads this path daily (see countyClerkSevenDayPrepPath). */
-export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
+/** Phase A + upgrade tracks — pinned to top of sidebar and horizontal subnav. */
+export const PHASE_A_COMMAND_NAV_ITEMS: DebateWeekNavItem[] = [
   {
     href: "/admin/intelligence/supreme-workbench",
     label: "Supreme workbench",
     badgeKey: "opposition",
-    description:
-      "Live readiness + debate-day sequences — county clerk week starts here, then 7-day path.",
+    description: "Unified command — readiness, trap lanes, Phase A upgrade pass, build gaps.",
   },
+  {
+    href: "/admin/intelligence/diligence",
+    label: "Diligence hub",
+    badgeKey: "opposition",
+    description: "Phase A — five-search court/financial checklists for Kelly, Hammer, and Pakko.",
+  },
+  {
+    href: "/admin/intelligence/field-book",
+    label: "The Field Book",
+    badgeKey: "opposition",
+    description: "Campaign encyclopedia — four upgrade phases with cross-linked articles.",
+  },
+  {
+    href: "/admin/intelligence/build-progress",
+    label: "Build progress",
+    description: "Master intelligence stack tracker — tiers, link audit, Phase A completion.",
+  },
+  {
+    href: "/admin/intelligence/candidate-dossiers",
+    label: "Candidate dossiers",
+    badgeKey: "opposition",
+    description:
+      "Kelly alignment profile plus Hammer and Pakko opponent dossiers — claims, strengths, lead stories.",
+  },
+];
+
+const PHASE_A_HREFS = new Set(PHASE_A_COMMAND_NAV_ITEMS.map((i) => i.href));
+
+function withoutPhaseA(items: DebateWeekNavItem[]): DebateWeekNavItem[] {
+  return items.filter((i) => !PHASE_A_HREFS.has(i.href));
+}
+
+/** County clerks week — Kelly reads this path daily (see countyClerkSevenDayPrepPath). */
+export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
+  ...PHASE_A_COMMAND_NAV_ITEMS,
   {
     href: TIER_2_DEBATE_PREP_NAV_ITEMS[0].href,
     label: TIER_2_DEBATE_PREP_NAV_ITEMS[0].label,
@@ -95,13 +129,6 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Opposition strategy",
     description:
       "v6.2 offense layer: 2021 package continuity, CVSGF trap, six offensive moves — pair with election funding day.",
-  },
-  {
-    href: "/admin/intelligence/candidate-dossiers",
-    label: "Candidate dossiers",
-    badgeKey: "opposition",
-    description:
-      "Kelly Experience-to-Office Alignment Profile (12 sections) plus Hammer & Pakko opponent dossiers — single-page readouts with drill-down.",
   },
   {
     href: "/admin/intelligence/county-clerk-week/acca-summer-conference",
@@ -218,25 +245,12 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
 
 /** Kelly-first path — supreme workbench + debate prep stack. */
 export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
-  {
-    href: "/admin/intelligence/supreme-workbench",
-    label: "Supreme workbench",
-    badgeKey: "opposition",
-    description:
-      "Unified command surface: live readiness from all modules, debate-day operator sequences (T-24h → spin room), trap lanes, priority actions, and build gaps — open first on debate day.",
-  },
+  ...PHASE_A_COMMAND_NAV_ITEMS,
   {
     href: "/admin/intelligence/opposition-strategy",
     label: "Opposition strategy",
     description:
       "v6.2 offense layer: 2021 integrity package, 2025 petition cluster, six trap lanes, six offensive moves, cross-exam starters, and debate-day offense sequence.",
-  },
-  {
-    href: "/admin/intelligence/candidate-dossiers",
-    label: "Candidate dossiers",
-    badgeKey: "opposition",
-    description:
-      "Kelly alignment profile (12 sections) plus Hammer & Pakko opponent dossiers — single-page readouts with drill-down.",
   },
   {
     href: "/admin/intelligence",
@@ -331,18 +345,6 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
 
 /** Tier-1 staff research surfaces (NSI suite) — wired in extended nav; not Kelly debate-night screens. */
 export const NSI_STAFF_RESEARCH_NAV_ITEMS: DebateWeekNavItem[] = [
-  {
-    href: "/admin/intelligence/diligence",
-    label: "Diligence hub",
-    description:
-      "Phase A — five-search court/financial checklists for Kelly, Hammer, and Pakko with counsel review flags.",
-  },
-  {
-    href: "/admin/intelligence/field-book",
-    label: "The Field Book",
-    description:
-      "Campaign encyclopedia — four upgrade phases (A–D), Wikipedia-style cross-links, strategy canon seed.",
-  },
   {
     href: "/admin/intelligence/morning-brief",
     label: "Morning brief",
@@ -481,11 +483,17 @@ export function getDebateWeekPrimaryNavItems(): DebateWeekNavItem[] {
   return isCountyClerkPrimaryAudience() ? COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS : DEBATE_WEEK_PRIMARY_NAV_ITEMS;
 }
 
+/** Flat list for route allowlists and legacy imports. */
+export function getFlatDebateWeekNavItems(): DebateWeekNavItem[] {
+  return dedupeNavItems([
+    ...PHASE_A_COMMAND_NAV_ITEMS,
+    ...withoutPhaseA(getDebateWeekPrimaryNavItems()),
+    ...DEBATE_WEEK_EXTENDED_NAV_ITEMS,
+  ]);
+}
+
 /** Full ordered list (sidebar + route allowlist). */
-export const DEBATE_WEEK_NAV_ITEMS: DebateWeekNavItem[] = [
-  ...DEBATE_WEEK_PRIMARY_NAV_ITEMS,
-  ...DEBATE_WEEK_EXTENDED_NAV_ITEMS,
-];
+export const DEBATE_WEEK_NAV_ITEMS: DebateWeekNavItem[] = getFlatDebateWeekNavItems();
 
 export function getDebateWeekNavItems(): DebateWeekNavItem[] {
   if (!isCountyClerkPrimaryAudience()) return DEBATE_WEEK_NAV_ITEMS;
@@ -502,16 +510,37 @@ export function isDebateWeekRoute(pathname: string): boolean {
 }
 
 export function buildDebateWeekNavGroups(): CampaignOsNavGroup[] {
-  const items = getDebateWeekNavItems();
+  return buildLaunchSidebarNavGroups();
+}
+
+/** Grouped sidebar for Netlify debate launch shell — visible tier tracks. */
+export function buildLaunchSidebarNavGroups(): CampaignOsNavGroup[] {
+  const primary = withoutPhaseA(getDebateWeekPrimaryNavItems());
+  const extended = DEBATE_WEEK_EXTENDED_NAV_ITEMS.filter((i) => !PHASE_A_HREFS.has(i.href));
+  const clerkLabel = isCountyClerkPrimaryAudience() ? "County clerks week" : "Debate prep";
+
+  const toLinks = (items: DebateWeekNavItem[]): CampaignOsNavLink[] =>
+    items.map((item) => ({
+      href: item.href,
+      label: item.label,
+      badgeKey: item.badgeKey,
+    }));
+
   return [
     {
-      id: "debate_week",
-      label: isCountyClerkPrimaryAudience() ? "County clerks week" : "Debate week",
-      links: items.map((item) => ({
-        href: item.href,
-        label: item.label,
-        badgeKey: item.badgeKey,
-      })),
+      id: "phase_a_command",
+      label: "Phase A · command & dossiers",
+      links: toLinks(PHASE_A_COMMAND_NAV_ITEMS),
+    },
+    {
+      id: "debate_week_primary",
+      label: clerkLabel,
+      links: toLinks(primary),
+    },
+    {
+      id: "debate_week_extended",
+      label: "Staff · Hammer modules · queues",
+      links: toLinks(extended),
     },
   ];
 }

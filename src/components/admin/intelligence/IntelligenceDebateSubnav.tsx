@@ -11,6 +11,7 @@ import {
   describeDebateWeekRoute,
   getDebateWeekNavItems,
   getDebateWeekPrimaryNavItems,
+  PHASE_A_COMMAND_NAV_ITEMS,
 } from "@/lib/intelligence/debate-week-nav";
 
 const base =
@@ -42,7 +43,9 @@ function NavChip({
 
 export function IntelligenceDebateSubnav() {
   const pathname = usePathname() ?? "";
-  const primaryItems = getDebateWeekPrimaryNavItems();
+  const primaryItems = getDebateWeekPrimaryNavItems().filter(
+    (item) => !PHASE_A_COMMAND_NAV_ITEMS.some((p) => p.href === item.href),
+  );
   const allNavItems = getDebateWeekNavItems();
   const activeHref = resolveActiveCampaignOsNavHref(
     pathname,
@@ -59,6 +62,17 @@ export function IntelligenceDebateSubnav() {
           {routeGuide}
         </p>
       ) : null}
+      <div>
+        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-rose-900">
+          Phase A · command & dossiers
+        </p>
+        <div className="flex flex-wrap items-center gap-1.5">
+          {PHASE_A_COMMAND_NAV_ITEMS.map((item) => {
+            const basePath = campaignOsNavHrefBase(item.href);
+            return <NavChip key={item.href} item={item} active={activeHref === basePath} primary />;
+          })}
+        </div>
+      </div>
       <div>
         <p className="mb-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-violet-900">Your path</p>
         <div className="flex flex-wrap items-center gap-1.5">

@@ -28,9 +28,9 @@ export function IntelligenceSectionChrome({ children }: { children: ReactNode })
       {CANDIDATE_IPAD ? null : <IntelligenceGovernanceStrip />}
       <NavNewLinksBanner />
       {onKimHammer ? <IntelligenceKimHammerSubnav /> : null}
-      {CANDIDATE_IPAD || DEBATE_LAUNCH ? null : (
+      {CANDIDATE_IPAD ? null : (
         <>
-          {onHub ? null : <IntelligenceCandidateOrientation />}
+          {!DEBATE_LAUNCH && !onHub ? <IntelligenceCandidateOrientation /> : null}
           <IntelligenceDebateSubnav />
         </>
       )}

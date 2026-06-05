@@ -1,11 +1,17 @@
-import Link from "next/link";
+"use client";
+
 import type { ReactNode } from "react";
 import { adminLogoutAction } from "@/lib/admin/admin-auth-actions";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
-import { DEBATE_WEEK_NAV_ITEMS } from "@/lib/intelligence/debate-week-nav";
+import { IntelligenceNavLink } from "@/components/admin/intelligence/IntelligenceNavLink";
+import {
+  campaignOsNavHrefBase,
+  resolveActiveCampaignOsNavHref,
+} from "@/lib/dashboard-orchestration/campaign-os-nav-config";
+import { buildLaunchSidebarNavGroups } from "@/lib/intelligence/debate-week-nav";
 
 /**
- * Minimal admin chrome for debate launch — no nav bundle, AI palette, or tenant resolution.
+ * Minimal admin chrome for debate launch — grouped sidebar with Phase A command track visible.
  */
 export function IntelligenceLaunchBoardShell({
   children,
@@ -15,27 +21,50 @@ export function IntelligenceLaunchBoardShell({
   currentPathname?: string;
 }) {
   const path = currentPathname.split("?")[0] ?? "/admin/intelligence";
+  const groups = buildLaunchSidebarNavGroups();
 
   return (
     <div className="flex min-h-screen bg-[var(--color-bg)] text-kelly-text">
-      <aside className="flex w-[min(100%,260px)] flex-col border-r border-[var(--border-on-navy)] bg-kelly-text text-kelly-inverse">
+      <aside className="flex w-[min(100%,280px)] flex-col border-r border-[var(--border-on-navy)] bg-kelly-text text-kelly-inverse">
         <div className="border-b border-[var(--border-on-navy)] px-4 py-5">
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-inverse-muted">Debate week</p>
           <p className="mt-2 font-heading text-base font-bold leading-tight">Intelligence workbench</p>
+          <p className="mt-2 text-[10px] leading-relaxed text-kelly-inverse-muted">
+            Phase A command track pinned at top — diligence, Field Book, dossiers, build progress.
+          </p>
         </div>
-        <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-2 py-3" aria-label="Debate week">
-          {DEBATE_WEEK_NAV_ITEMS.map((item) => {
-            const active = path === item.href || path.startsWith(`${item.href}/`);
+        <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-2 py-3" aria-label="Debate week">
+          {groups.map((group) => {
+            const activeHref = resolveActiveCampaignOsNavHref(
+              path,
+              group.links.map((link) => ({ href: link.href })),
+            );
             return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`rounded-md px-3 py-2 font-body text-sm font-medium transition ${
-                  active ? "bg-kelly-page/15 text-kelly-page" : "text-kelly-inverse-soft hover:bg-kelly-page/10 hover:text-kelly-page"
-                }`}
-              >
-                {item.label}
-              </Link>
+              <div key={group.id}>
+                <p className="px-2 pb-1 text-[9px] font-bold uppercase tracking-[0.18em] text-kelly-inverse-muted">
+                  {group.label}
+                </p>
+                <div className="flex flex-col gap-0.5">
+                  {group.links.map((link) => {
+                    const base = campaignOsNavHrefBase(link.href);
+                    const active = activeHref === base;
+                    return (
+                      <IntelligenceNavLink
+                        key={link.href}
+                        href={link.href}
+                        variant="sidebar"
+                        className={`rounded-md px-3 py-2 font-body text-sm font-medium transition ${
+                          active
+                            ? "bg-kelly-page/15 text-kelly-page"
+                            : "text-kelly-inverse-soft hover:bg-kelly-page/10 hover:text-kelly-page"
+                        }`}
+                      >
+                        {link.label}
+                      </IntelligenceNavLink>
+                    );
+                  })}
+                </div>
+              </div>
             );
           })}
         </nav>
