@@ -292,6 +292,12 @@ export function KellyDebateCoachingPanel({
                 <li key={s.slice(0, 48)}>{s}</li>
               ))}
             </ol>
+            <Link
+              href="/admin/intelligence/diligence/kelly-grappe"
+              className="mt-3 inline-block text-[10px] font-bold text-rose-900 underline"
+            >
+              Phase A — log five-search diligence checklist →
+            </Link>
           </article>
         </section>
 

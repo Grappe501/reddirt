@@ -267,10 +267,12 @@ export const TRAP_LANE_DRILL_DOWNS: Record<string, TrapLaneDrillDown> = {
         "Appropriations in Little Rock are not the same as implementation in every county.",
         "Totals without a county ledger hide uneven rural support — SOS job is transparent grant accounting.",
         "I will publish county-by-county CVSGF awards — election transparency includes funding transparency.",
-        "VERIFIED — Act 408 $11M CVSGF + $4M HAVA FY2025-26; county ledger NEEDS_RESEARCH",
+        "VERIFIED — Act 408 $11M CVSGF + $4M HAVA FY2025-26; county ledger RESEARCH_QUESTION_ONLY",
       ),
     ],
     estimatedPrepMinutes: 35,
+    claimsGate:
+      "Appropriations VERIFIED; county-by-county CVSGF ledger RESEARCH_QUESTION_ONLY — no numeric county totals on stage until ingested",
   }),
 
   "fraud-data-dare": baseFromTrap("fraud-data-dare", 4, 3, {

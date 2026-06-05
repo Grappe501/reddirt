@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { ClaimsGateBanner } from "@/components/admin/intelligence/ClaimsGateBanner";
 import type { TrapLaneWithBriefing } from "@/lib/intelligence/v4/debateBriefingEnrichment";
 import { TRAP_LANE_FIRST_TIMER_NOTE } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 import { buildTrapLaneStepCoverage } from "@/lib/intelligence/v4/trapLaneStepCoverage";
@@ -34,7 +35,9 @@ export function V4TrapLaneDrillDownPanel({
           Trap lane {drill.laneNumber} of 6 · ~{drill.estimatedPrepMinutes} min prep
         </p>
         <p className="mt-3 text-sm leading-relaxed text-kelly-text">{drill.narrativeOverview}</p>
-        <p className="mt-3 text-[10px] font-bold text-amber-900">{drill.claimsGate}</p>
+        <div className="mt-3">
+          <ClaimsGateBanner claimsGate={drill.claimsGate} />
+        </div>
       </article>
 
       {(drill.whatToLookForOffensive.length > 0 || drill.whatToLookForDefensive.length > 0) && (

@@ -47,6 +47,8 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/election-funding",
   "/admin/intelligence/election-equipment-vvsg",
   "/admin/intelligence/build-progress",
+  "/admin/intelligence/diligence",
+  "/admin/intelligence/field-book",
   "/admin/intelligence/morning-brief",
   "/admin/intelligence/ai-tools",
   "/admin/intelligence/briefing-papers",
@@ -329,6 +331,18 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
 
 /** Tier-1 staff research surfaces (NSI suite) — wired in extended nav; not Kelly debate-night screens. */
 export const NSI_STAFF_RESEARCH_NAV_ITEMS: DebateWeekNavItem[] = [
+  {
+    href: "/admin/intelligence/diligence",
+    label: "Diligence hub",
+    description:
+      "Phase A — five-search court/financial checklists for Kelly, Hammer, and Pakko with counsel review flags.",
+  },
+  {
+    href: "/admin/intelligence/field-book",
+    label: "The Field Book",
+    description:
+      "Campaign encyclopedia — four upgrade phases (A–D), Wikipedia-style cross-links, strategy canon seed.",
+  },
   {
     href: "/admin/intelligence/morning-brief",
     label: "Morning brief",

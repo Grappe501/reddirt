@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PackoContrastGateBanner } from "@/components/admin/intelligence/PackoContrastGateBanner";
 import {
   loadMichaelPackoScaffold,
   packoOpenTaskCount,
@@ -19,7 +20,8 @@ export function V7MichaelPackoScaffoldPanel() {
 
   return (
     <section className="mb-8 rounded-xl border-2 border-amber-200/80 bg-white p-5">
-      <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-amber-900">Third candidate · opposition research</p>
+      <PackoContrastGateBanner compact />
+      <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.22em] text-amber-900">Third candidate · opposition research</p>
       <h2 className="mt-2 font-heading text-xl font-bold text-kelly-navy">
         {scaffold.displayName} ({scaffold.party}) — {scaffold.status}
       </h2>

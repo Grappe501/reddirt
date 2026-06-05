@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-05T06:00:00.000Z",
+  "subjectId": "kim-hammer",
+  "displayName": "Kim Hammer",
+  "governance": {
+    "classification": "INTERNAL_DRAFT",
+    "counselReviewRequired": true,
+    "note": "Offensive diligence on incumbent — log factual findings only. No broadcast line until counsel on any hit."
+  },
+  "researchProtocol": {
+    "order": ["courtconnect-civil", "courtconnect-criminal", "ucc-liens", "business-entity", "property-tax"],
+    "counselGate": "No stage attack citing specific filings until counselReviewed=true on relevant entry.",
+    "incompleteFrame": "Use verified legislative record and public statements — not court speculation.",
+    "pacerOptional": true,
+    "pacerNote": "Optional federal PACER search if civil hits suggest interstate litigation — staff + counsel only."
+  },
+  "entries": [
+    {
+      "id": "courtconnect-civil",
+      "source": "Arkansas CourtConnect (AOC)",
+      "searchQuery": "Kim Hammer — civil, probate, domestic relations (all counties)",
+      "dateSearched": null,
+      "result": "NOT_SEARCHED",
+      "staffInitials": null,
+      "counselReviewed": false,
+      "notes": "Pair with KH legislative record — civil hits may explain financial pressure narratives.",
+      "debateStageLine": null
+    },
+    {
+      "id": "courtconnect-criminal",
+      "source": "Arkansas CourtConnect (AOC)",
+      "searchQuery": "Kim Hammer — criminal docket search (all counties)",
+      "dateSearched": null,
+      "result": "NOT_SEARCHED",
+      "staffInitials": null,
+      "counselReviewed": false,
+      "notes": "If clean: focus on legislative votes. If hit: counsel-approved contrast only.",
+      "debateStageLine": null
+    },
+    {
+      "id": "ucc-liens",
+      "source": "Arkansas Secretary of State UCC filings",
+      "searchQuery": "Kim Hammer / related entity names — UCC filings",
+      "dateSearched": null,
+      "result": "NOT_SEARCHED",
+      "staffInitials": null,
+      "counselReviewed": false,
+      "notes": "Cross-check with campaign finance and property records.",
+      "debateStageLine": null
+    },
+    {
+      "id": "business-entity",
+      "source": "Arkansas SOS business entity search",
+      "searchQuery": "Entities linked to Hammer — LLC/corp standing",
+      "dateSearched": null,
+      "result": "NOT_SEARCHED",
+      "staffInitials": null,
+      "counselReviewed": false,
+      "notes": "Verify good standing and officer history before any business-failure contrast.",
+      "debateStageLine": null
+    },
+    {
+      "id": "property-tax",
+      "source": "County assessor (Benton + relevant counties)",
+      "searchQuery": "Property tax delinquency / lien status — campaign-relevant parcels only",
+      "dateSearched": null,
+      "result": "NOT_SEARCHED",
+      "staffInitials": null,
+      "counselReviewed": false,
+      "notes": "No PII in logs. Counsel review before any public response.",
+      "debateStageLine": null
+    }
+  ],
+  "counselFrame": "Incomplete searches: stay on verified legislative record and clerk-service contrast. Complete + clean: optional pivot to pattern-of-implementation failures. Never speculate about sealed or unsearched dockets."
+}

@@ -2,6 +2,8 @@ import { NSI_STAFF_RESEARCH_NAV_ITEMS } from "@/lib/intelligence/debate-week-nav
 import { getAllDebatePsychologyManualSectionIds } from "@/lib/intelligence/v4/debatePsychologyTrainingManual";
 import { getTier2DebatePrepLinkAuditRoutes } from "@/lib/intelligence/v4/debatePrepDepthNav";
 import { getKimHammerTier3LinkAuditRoutes } from "@/lib/intelligence/v4/kimHammerOpponentModuleNav";
+import { getFieldBookLinkAuditRoutes } from "@/lib/intelligence/fieldBookRegistry";
+import { OPPONENT_DILIGENCE_HUB_HREF, OPPONENT_DILIGENCE_SUBJECTS } from "@/lib/intelligence/v4/opponentDiligenceRegistry";
 import {
   TIER_4_CORE_EXTENDED_NAV_ITEMS,
   TIER_4_CORE_PRIMARY_NAV_ITEMS,
@@ -67,6 +69,15 @@ export const NAV_LINK_RELEASE_BATCHES: NavLinkReleaseBatch[] = [
     id: process.env.NEXT_PUBLIC_NAV_RELEASE_ID ?? "2026-06-05-tier-wiring-v1",
     label: "Tier 1–4 navigation wiring",
     hrefs: buildTierWiringReleaseHrefs(),
+  },
+  {
+    id: "2026-06-05-phase-a-diligence-field-book",
+    label: "Phase A diligence + Field Book",
+    hrefs: dedupeHrefs([
+      OPPONENT_DILIGENCE_HUB_HREF,
+      ...OPPONENT_DILIGENCE_SUBJECTS.map((s) => s.href),
+      ...getFieldBookLinkAuditRoutes(),
+    ]),
   },
 ];
 

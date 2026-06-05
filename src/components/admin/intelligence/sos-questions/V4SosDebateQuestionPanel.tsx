@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ClaimsGateBanner } from "@/components/admin/intelligence/ClaimsGateBanner";
 import type { SosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionTypes";
 
 function ScriptBlock({ title, text, accent }: { title: string; text: string; accent: string }) {
@@ -160,9 +161,7 @@ export function V4SosDebateQuestionPanel({
         </section>
       ) : null}
 
-      <p className="rounded-lg border border-amber-200 bg-amber-50/50 p-3 text-[10px] font-bold text-amber-950">
-        Claims gate: {drill.claimsGate}
-      </p>
+      <ClaimsGateBanner claimsGate={drill.claimsGate} />
 
       {drill.relatedLinks.length > 0 ? (
         <section className="rounded-xl border border-kelly-text/10 bg-white p-4">

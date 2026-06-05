@@ -30,6 +30,9 @@ import { getTier4CoreSpineLinkAuditRoutes } from "@/lib/intelligence/v4/tier4Cor
 import { buildTier4CoreSpineNavGroups } from "@/lib/intelligence/v4/tier4CoreSpineNav";
 import { getTier1NavLinkAuditRoutes } from "@/lib/intelligence/navLinkReleaseManifest";
 import { DEBATE_DEPTH_TOPICS } from "@/lib/intelligence/v4/debateDepthTopics";
+import { allDiligenceCompletionSummary } from "@/lib/intelligence/v4/opponentDiligenceLogStore";
+import { getPackoContrastGateStatus } from "@/lib/intelligence/v4/packoContrastGate";
+import { FIELD_BOOK_ARTICLES, getFieldBookLinkAuditRoutes } from "@/lib/intelligence/fieldBookRegistry";
 
 export type BuildProgressItem = {
   id: string;
@@ -240,8 +243,8 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     status: kellyPublicBriefVerified >= KELLY_PUBLIC_RECORD_BRIEF.length - 1 ? "complete" : "partial",
     built: kellyPublicBriefVerified,
     total: KELLY_PUBLIC_RECORD_BRIEF.length,
-    flags: ["Court diligence log entries remain NOT_SEARCHED until staff completes protocol"],
-    href: "/admin/intelligence/kelly-debate-coaching",
+    flags: ["Complete five-search logs at /admin/intelligence/diligence before stage claims"],
+    href: "/admin/intelligence/diligence/kelly-grappe",
   });
 
   // Offensive approach
@@ -260,7 +263,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
   // Claims ledger — live ratio from ledger file
   let claimsSupported = 0;
   let claimsTotal = 0;
-  let claimsNeedsResearch = 0;
+  let claimsNeedsReview = 0;
   try {
     const ledger = JSON.parse(
       fs.readFileSync(path.join(process.cwd(), "data/intelligence/claims/claim-ledger.json"), "utf8"),
@@ -268,7 +271,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     const entries = ledger.entries ?? [];
     claimsTotal = entries.length;
     claimsSupported = entries.filter((e) => e.classification === "VERIFIED").length;
-    claimsNeedsResearch = entries.filter((e) => e.classification === "NEEDS_RESEARCH").length;
+    claimsNeedsReview = entries.filter((e) => e.classification === "NEEDS_REVIEW").length;
   } catch {
     /* optional */
   }
@@ -283,8 +286,8 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     built: claimsSupported,
     total: claimsTotal || claimsSupported + 20,
     flags:
-      claimsNeedsResearch > 0
-        ? [`${claimsNeedsResearch} claims NEEDS_RESEARCH — verify before broadcast`]
+      claimsNeedsReview > 0
+        ? [`${claimsNeedsReview} claims NEEDS_REVIEW — verify before broadcast`]
         : ["Retrieval queue tasks may remain open — verify before broadcast"],
     href: "/admin/intelligence/claims",
   });
@@ -399,8 +402,44 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     status: "partial",
     built: getAllOpponentDossierSectionIds().length,
     total: getAllOpponentDossierSectionIds().length + 2,
-    flags: ["Pakko PACKO-01 finance filings", "Pakko full interview quote harvest PACKO-02"],
+    flags: getPackoContrastGateStatus().blocked
+      ? ["Pakko contrast LOCKED — PACKO-01/02 OPEN", "Hammer + Kelly diligence logs NOT_SEARCHED"]
+      : ["Hammer + Kelly diligence logs NOT_SEARCHED"],
     href: "/admin/intelligence/candidate-dossiers",
+  });
+
+  const diligenceRows = allDiligenceCompletionSummary();
+  const diligenceAvg = Math.round(
+    diligenceRows.reduce((sum, r) => sum + r.pct, 0) / Math.max(1, diligenceRows.length),
+  );
+  items.push({
+    id: "opponent-diligence-hub",
+    label: "Phase A — court/financial diligence (Kelly + Hammer + Pakko)",
+    category: "Governance",
+    completionPct: diligenceAvg,
+    status: diligenceAvg >= 100 ? "complete" : diligenceAvg > 0 ? "partial" : "flagged",
+    built: diligenceRows.filter((r) => r.pct >= 100).length,
+    total: diligenceRows.length,
+    flags: diligenceRows.flatMap((r) =>
+      r.incomplete > 0 ? [`${r.displayName}: ${r.incomplete} searches NOT_SEARCHED`] : [],
+    ),
+    href: "/admin/intelligence/diligence",
+  });
+
+  const fieldBookPhaseA = FIELD_BOOK_ARTICLES.filter((a) => a.phaseId === "phase-a").length;
+  items.push({
+    id: "field-book",
+    label: "The Field Book — campaign encyclopedia",
+    category: "Canon",
+    completionPct: Math.round((fieldBookPhaseA / FIELD_BOOK_ARTICLES.length) * 100),
+    status: "partial",
+    built: FIELD_BOOK_ARTICLES.length,
+    total: FIELD_BOOK_ARTICLES.length + 40,
+    flags: [
+      "Phase A articles live — Phases B–D expand as upgrades ship",
+      "Strategy manual migration after ~98% intelligence",
+    ],
+    href: "/admin/intelligence/field-book",
   });
 
   items.push({
@@ -509,6 +548,11 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     ...getTier2DebatePrepLinkAuditRoutes(),
     ...getKimHammerTier3LinkAuditRoutes(),
     ...getTier4CoreSpineLinkAuditRoutes(),
+    ...getFieldBookLinkAuditRoutes(),
+    "/admin/intelligence/diligence",
+    "/admin/intelligence/diligence/kelly-grappe",
+    "/admin/intelligence/diligence/kim-hammer",
+    "/admin/intelligence/diligence/michael-packo",
     ...trapIds.map((id) => `/admin/intelligence/trap-lanes/${id}`),
     ...qIds.map((id) => `/admin/intelligence/sos-debate-questions/${id}`),
     ...listDebatePhilosophyBriefings().map((p) => `/admin/intelligence/debate-briefings/${p.briefingId}`),

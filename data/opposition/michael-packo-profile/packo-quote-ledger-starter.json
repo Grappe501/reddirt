@@ -1,0 +1,16 @@
+{
+  "taskId": "PACKO-02",
+  "status": "OPEN",
+  "lastUpdated": "2026-06-05",
+  "governance": "INTERNAL_DRAFT — source URL required on every quote before debate contrast",
+  "quotes": [],
+  "harvestChecklist": [
+    "Campaign site policy pages (pakko4ar.com)",
+    "UALR / economist public commentary on elections",
+    "Libertarian party statements on SOS duties",
+    "Ranked-choice / mandate rhetoric — verify exact wording",
+    "County authority statements — clerk-room risk assessment"
+  ],
+  "notes": "When >=3 quotes with URLs ingested, set PACKO-02 to PARTIAL in michael-packo-opposition-scaffold.json to open contrast gate.",
+  "claimsGate": "No Pakko attack lines until quote ledger PARTIAL minimum"
+}

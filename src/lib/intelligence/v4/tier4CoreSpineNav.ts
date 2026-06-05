@@ -89,6 +89,16 @@ export const TIER_4_CORE_PRIMARY_NAV_ITEMS: Tier4CoreSpineNavItem[] = [
     description: "Legal firewall — supported vs needs research before any public line.",
   },
   {
+    href: "/admin/intelligence/diligence",
+    label: "Diligence hub",
+    description: "Phase A — five-search court/financial checklists for Kelly, Hammer, and Pakko.",
+  },
+  {
+    href: "/admin/intelligence/field-book",
+    label: "The Field Book",
+    description: "Campaign encyclopedia — four upgrade phases, cross-linked articles, strategy canon.",
+  },
+  {
     href: "/admin/intelligence/opponents",
     label: "Opponents",
     description: "Opponent dossiers hub — Hammer production + Pakko partial verified.",

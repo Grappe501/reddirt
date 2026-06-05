@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-05T06:00:00.000Z",
+  "subjectId": "michael-packo",
+  "displayName": "Michael Pakko (Packo)",
+  "governance": {
+    "classification": "INTERNAL_DRAFT",
+    "counselReviewRequired": true,
+    "note": "Third-candidate diligence — pair with PACKO-01 finance and PACKO-02 quote ledger before any contrast on stage."
+  },
+  "researchProtocol": {
+    "order": ["courtconnect-civil", "courtconnect-criminal", "ucc-liens", "business-entity", "property-tax"],
+    "counselGate": "No Pakko attack lines until PACKO-01 and PACKO-02 at PARTIAL minimum AND counsel on any hit.",
+    "incompleteFrame": "Acknowledge reform goals; contrast daily SOS administration — do not elevate third candidate in clerk rooms.",
+    "pacerOptional": true,
+    "pacerNote": "Optional PACER if UALR/academic litigation appears in civil search."
+  },
+  "entries": [
+    {
+      "id": "courtconnect-civil",
+      "source": "Arkansas CourtConnect (AOC)",
+      "searchQuery": "Michael Pakko / Michael Packo — civil docket (all counties)",
+      "dateSearched": null,
+      "result": "NOT_SEARCHED",
+      "staffInitials": null,
+      "counselReviewed": false,
+      "notes": "Note spelling variants Pakko/Packo on filings.",
+      "debateStageLine": null
+    },
+    {
+      "id": "courtconnect-criminal",
+      "source": "Arkansas CourtConnect (AOC)",
+      "searchQuery": "Michael Pakko / Michael Packo — criminal docket",
+      "dateSearched": null,
+      "result": "NOT_SEARCHED",
+      "staffInitials": null,
+      "counselReviewed": false,
+      "notes": "Low priority unless moderator elevates third candidate.",
+      "debateStageLine": null
+    },
+    {
+      "id": "ucc-liens",
+      "source": "Arkansas Secretary of State UCC filings",
+      "searchQuery": "Pakko / Packo entity names — UCC",
+      "dateSearched": null,
+      "result": "NOT_SEARCHED",
+      "staffInitials": null,
+      "counselReviewed": false,
+      "notes": "Cross-check with PACKO-01 ethics filings.",
+      "debateStageLine": null
+    },
+    {
+      "id": "business-entity",
+      "source": "Arkansas SOS business entity search",
+      "searchQuery": "Entities linked to Pakko — economist/consulting ventures",
+      "dateSearched": null,
+      "result": "NOT_SEARCHED",
+      "staffInitials": null,
+      "counselReviewed": false,
+      "notes": "Verify any consulting LLC standing before credential contrast.",
+      "debateStageLine": null
+    },
+    {
+      "id": "property-tax",
+      "source": "County assessor (Pulaski + relevant counties)",
+      "searchQuery": "Property tax status — campaign-relevant parcels only",
+      "dateSearched": null,
+      "result": "NOT_SEARCHED",
+      "staffInitials": null,
+      "counselReviewed": false,
+      "notes": "No PII in logs.",
+      "debateStageLine": null
+    }
+  ],
+  "counselFrame": "Until PACKO-01/02 partial: no attack, only service-frame contrast if asked. After ledger partial: acknowledge economist credential, pivot to clerk partnership and implementation."
+}

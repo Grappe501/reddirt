@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { loadSupremeWorkbenchPacket } from "@/lib/intelligence/v4/supremeWorkbench";
-import { KELLY_DILIGENCE_COUNSEL_FRAME, loadKellyCourtDiligenceLog, diligenceCompletionPct } from "@/lib/intelligence/v4/kellyCourtDiligenceLog";
+import { diligenceHubSummary } from "@/lib/intelligence/v4/kellyCourtDiligenceLog";
+import { computePhaseAUpgradePass } from "@/lib/intelligence/v4/phaseAUpgradePass";
 import { V4SupremeWorkbenchPanel } from "@/components/admin/intelligence/v4/V4SupremeWorkbenchPanel";
+import { PhaseAUpgradePassPanel } from "@/components/admin/intelligence/PhaseAUpgradePassPanel";
 import { NsiStaffResearchNavPanel } from "@/components/admin/intelligence/NsiStaffResearchNavPanel";
 import { DebatePrepDepthNavPanel } from "@/components/admin/intelligence/DebatePrepDepthNavPanel";
 import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
@@ -15,8 +17,9 @@ export const runtime = "nodejs";
 export default function SupremeWorkbenchPage() {
   const packet = loadSupremeWorkbenchPacket();
   const clerkWeek = isCountyClerkPrimaryAudience();
-  const diligencePct = diligenceCompletionPct();
-  const diligenceLog = loadKellyCourtDiligenceLog();
+  const diligenceSummary = diligenceHubSummary();
+  const kellyRow = diligenceSummary.find((r) => r.subjectId === "kelly-grappe");
+  const phaseA = computePhaseAUpgradePass();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -39,56 +42,45 @@ export default function SupremeWorkbenchPage() {
           Psychology manual
         </Link>
         <Link
-          href="/admin/intelligence/build-progress"
-          className="rounded-full border border-violet-800/30 px-3 py-1 text-xs font-bold text-violet-950"
+          href="/admin/intelligence/diligence"
+          className="rounded-full border border-rose-300 bg-rose-50 px-3 py-1 text-xs font-bold text-rose-950"
         >
-          Build progress
+          Diligence hub
+        </Link>
+        <Link
+          href="/admin/intelligence/field-book"
+          className="rounded-full border border-kelly-gold/60 px-3 py-1 text-xs font-bold text-kelly-navy"
+        >
+          The Field Book
         </Link>
       </V4PageHeader>
 
       <V4SupremeWorkbenchPanel packet={packet} variant="full" />
 
+      <PhaseAUpgradePassPanel report={phaseA} compact />
+
       <section className="mt-8 rounded-xl border border-amber-200 bg-amber-50/40 p-5 text-xs">
         <h2 className="text-sm font-bold uppercase text-amber-950">
-          Kelly court/financial diligence log ({diligencePct}% searched)
+          Phase A diligence ({kellyRow?.pct ?? 0}% Kelly searches complete)
         </h2>
-        <p className="mt-2 text-kelly-muted">{diligenceLog.counselFrame || KELLY_DILIGENCE_COUNSEL_FRAME}</p>
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full min-w-[640px] border-collapse text-left">
-            <thead>
-              <tr className="border-b border-kelly-text/10 text-[10px] uppercase text-kelly-subtle">
-                <th className="py-2 pr-3">Source</th>
-                <th className="py-2 pr-3">Search</th>
-                <th className="py-2 pr-3">Status</th>
-                <th className="py-2">Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {diligenceLog.entries.map((entry) => (
-                <tr key={entry.id} className="border-b border-kelly-text/5">
-                  <td className="py-2 pr-3 font-semibold text-kelly-navy">{entry.source}</td>
-                  <td className="py-2 pr-3 text-kelly-muted">{entry.searchQuery}</td>
-                  <td className="py-2 pr-3">
-                    <span
-                      className={
-                        entry.result === "CLEAN"
-                          ? "text-emerald-700"
-                          : entry.result === "NOT_SEARCHED"
-                            ? "text-rose-700"
-                            : "text-amber-700"
-                      }
-                    >
-                      {entry.result.replace(/_/g, " ")}
-                    </span>
-                  </td>
-                  <td className="py-2 text-kelly-muted">{entry.notes}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <p className="mt-2 text-kelly-muted">
+          Court/financial five-search checklists for Kelly, Hammer, and Pakko — log with counsel review flags.
+        </p>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {diligenceSummary.map((row) => (
+            <Link
+              key={row.subjectId}
+              href={`/admin/intelligence/diligence/${row.subjectId}`}
+              className="rounded-lg border border-kelly-text/10 bg-white p-3 hover:border-kelly-navy/30"
+            >
+              <p className="font-bold text-kelly-navy">{row.displayName}</p>
+              <p className="mt-1 text-lg font-bold text-amber-900">{row.pct}%</p>
+              <p className="text-[10px] text-kelly-muted">{row.incomplete} remaining</p>
+            </Link>
+          ))}
         </div>
-        <Link href="/admin/intelligence/kelly-debate-coaching" className="mt-4 inline-block font-bold text-kelly-navy underline">
-          Kelly debate coaching — attack vector drills →
+        <Link href="/admin/intelligence/diligence" className="mt-4 inline-block font-bold text-kelly-navy underline">
+          Open diligence hub — log searches →
         </Link>
       </section>
 

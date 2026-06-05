@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { computeIntelligenceBuildProgress } from "@/lib/intelligence/v4/intelligenceBuildProgress";
+import { computePhaseAUpgradePass } from "@/lib/intelligence/v4/phaseAUpgradePass";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { DebatePrepDepthNavPanel } from "@/components/admin/intelligence/DebatePrepDepthNavPanel";
 import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
+import { PhaseAUpgradePassPanel } from "@/components/admin/intelligence/PhaseAUpgradePassPanel";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +17,7 @@ const STATUS_COLORS = {
 
 export default function IntelligenceBuildProgressPage() {
   const report = computeIntelligenceBuildProgress();
+  const phaseA = computePhaseAUpgradePass();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -37,12 +40,26 @@ export default function IntelligenceBuildProgressPage() {
           Depth library
         </Link>
         <Link
+          href="/admin/intelligence/diligence"
+          className="rounded-full border border-rose-300 bg-rose-50 px-3 py-1 text-xs font-bold text-rose-950"
+        >
+          Phase A diligence
+        </Link>
+        <Link
+          href="/admin/intelligence/field-book"
+          className="rounded-full border border-kelly-gold/60 px-3 py-1 text-xs font-bold text-kelly-navy"
+        >
+          The Field Book
+        </Link>
+        <Link
           href="/admin/intelligence/kim-hammer/debate-prep"
           className="rounded-full border border-violet-800/30 px-3 py-1 text-xs font-bold text-violet-950"
         >
           Debate prep
         </Link>
       </V4PageHeader>
+
+      <PhaseAUpgradePassPanel report={phaseA} />
 
       <DebatePrepDepthNavPanel compact />
       <KimHammerModuleNavPanel compact />

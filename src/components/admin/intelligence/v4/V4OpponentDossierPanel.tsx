@@ -10,6 +10,8 @@ import {
   OPPONENT_DOSSIER_CANDIDATES,
   type CandidateDossierFile,
 } from "@/lib/intelligence/v4/loadOpponentCandidateDossier";
+import { PackoContrastGateBanner } from "@/components/admin/intelligence/PackoContrastGateBanner";
+import { isPackoContrastBlocked } from "@/lib/intelligence/v4/packoContrastGate";
 
 const TIER_STYLE: Record<string, string> = {
   VERIFIED: "bg-emerald-100 text-emerald-900",
@@ -211,12 +213,15 @@ export function V4OpponentDossiersHub() {
 export function V4OpponentCandidateDossierPanel({ candidateId }: { candidateId: "kim-hammer" | "michael-packo" }) {
   const dossier = loadCandidateDossier(candidateId);
   const sections = getOpponentDossierSectionsForCandidate(candidateId);
+  const packoBlocked = candidateId === "michael-packo" && isPackoContrastBlocked();
 
   return (
     <div className="space-y-6">
       <Link href="/admin/intelligence/candidate-dossiers" className="text-xs font-bold text-kelly-navy underline">
         ← All opponent dossiers
       </Link>
+
+      {packoBlocked ? <PackoContrastGateBanner /> : null}
 
       <header className="rounded-xl border-2 border-kelly-navy/20 bg-gradient-to-br from-kelly-page/50 to-white p-5">
         <div className="flex flex-wrap items-center gap-2">
@@ -243,6 +248,13 @@ export function V4OpponentCandidateDossierPanel({ candidateId }: { candidateId: 
 
       <ClaimsTable dossier={dossier} />
       <LeadStoriesBlock dossier={dossier} />
+
+      {packoBlocked ? (
+        <p className="rounded-lg border border-rose-200 bg-rose-50/50 p-4 text-xs text-rose-950">
+          Narrative sections below are for staff research only — contrast and attack framing locked until PACKO-01/02
+          complete.
+        </p>
+      ) : null}
 
       {dossier.researchGaps?.length ? (
         <div className="rounded-lg border border-rose-100 bg-rose-50/30 p-4 text-xs">

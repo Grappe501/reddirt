@@ -1,0 +1,20 @@
+{
+  "taskId": "PACKO-01",
+  "status": "OPEN",
+  "lastUpdated": "2026-06-05",
+  "governance": "INTERNAL_DRAFT — verify filings before any finance contrast on stage",
+  "sources": [
+    { "label": "Arkansas Ethics Commission", "url": "https://www.arethics.gov/", "status": "NOT_SEARCHED" },
+    { "label": "Arkansas SOS candidate filings", "url": "https://www.sos.arkansas.gov/", "status": "NOT_SEARCHED" },
+    { "label": "FEC candidate search (if applicable)", "url": "https://www.fec.gov/", "status": "NOT_SEARCHED" }
+  ],
+  "summarySlots": {
+    "ballotQualification": null,
+    "committeeRegistration": null,
+    "totalRaised": null,
+    "totalSpent": null,
+    "lastFilingDate": null
+  },
+  "notes": "Staff completes ethics/SOS filing review — mark scaffold PARTIAL in opposition-scaffold.json when summarySlots filled.",
+  "claimsGate": "No dollar amounts on stage until PARTIAL with source URLs logged"
+}

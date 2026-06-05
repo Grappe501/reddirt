@@ -373,7 +373,7 @@ export const SOS_DEBATE_QUESTION_BANK_ADDITIONS: SosDebateQuestionDrillDown[] = 
     relatedActs: [],
     trapLaneHref: null,
     relatedLinks: [{ href: "/admin/intelligence/election-funding/who-funds-cvsgf", label: "UCC statutory depth" }],
-    claimsGate: "Statute VERIFIED; remittance totals NEEDS_RESEARCH",
+    claimsGate: "Statute VERIFIED; remittance totals RESEARCH_QUESTION_ONLY — no numeric cite on stage",
     estimatedPrepMinutes: 12,
   },
   {

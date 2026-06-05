@@ -1,6 +1,8 @@
 {
   "version": 2,
   "generatedAt": "2026-06-04T20:00:00.000Z",
+  "subjectId": "kelly-grappe",
+  "displayName": "Kelly Grappe",
   "governance": {
     "classification": "INTERNAL_DRAFT",
     "counselReviewRequired": true,
