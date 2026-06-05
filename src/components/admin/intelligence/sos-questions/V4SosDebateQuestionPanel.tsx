@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ClaimsGateBanner } from "@/components/admin/intelligence/ClaimsGateBanner";
+import { DebateSpineFiveLayerChrome } from "@/components/admin/intelligence/DebateSpineFiveLayerChrome";
 import type { SosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionTypes";
+import { getSosQuestionFiveLayer } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 
 function ScriptBlock({ title, text, accent }: { title: string; text: string; accent: string }) {
   return (
@@ -53,8 +55,12 @@ export function V4SosDebateQuestionPanel({
     return <p className="text-sm text-rose-900">Comprehensive expansion missing — contact staff.</p>;
   }
 
+  const fiveLayer = getSosQuestionFiveLayer(drill.questionId);
+
   return (
     <div className="space-y-6">
+      {fiveLayer ? <DebateSpineFiveLayerChrome depth={fiveLayer} /> : null}
+
       <article className="rounded-xl border-2 border-kelly-navy/30 bg-kelly-page/40 p-6">
         <p className="text-[10px] font-bold uppercase text-kelly-navy">
           Q{drill.questionNumber} · {drill.probability} · {drill.categoryLabel}

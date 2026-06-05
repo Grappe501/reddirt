@@ -467,6 +467,7 @@ export const FIELD_BOOK_ARTICLES: FieldBookArticle[] = [
       "Clerks (sky): county clerk week, ACCA panel, election funding, VVSG equipment — clerk-room vocabulary only. Staff (violet): Hammer modules, action queues, evidence command, NSI research — hidden from candidate profile unless explicitly promoted.",
       "Teal highlight on nav links marks routes introduced in the current deploy batch until the user visits them once — see navLinkReleaseManifest batches. Phase D batch id: 2026-06-05-phase-d-organization-canon.",
       "Implementation lives in threeLaneNav.ts — buildThreeLaneNavGroups() feeds IntelligenceLaunchBoardShell sidebar and IntelligenceDebateSubnav horizontal chips. Pair with [[role-based-nav-profiles]] for Netlify deploy variants.",
+      "Phase 4 canon loop binds each intelligence route to Field Book slugs — the gold canon strip on every page shows which encyclopedia entries govern that surface. See [[strategy-migration]] for manual promotion workflow.",
     ],
     sidebarFacts: [
       { label: "Kelly lane", value: "Emerald · candidate-safe" },
@@ -494,6 +495,7 @@ export const FIELD_BOOK_ARTICLES: FieldBookArticle[] = [
       "STAFF profile: full four-lane access with Phase A first, then Kelly, Clerks, Staff — used for link audit route expansion and master build sessions.",
       "CLERK_WEEK profile: reorders lanes to Phase A → Clerks → Kelly → Staff — county clerk week path surfaces before debate prep chips. Pair with ACCA panel and election funding routes.",
       "Profiles do not change claims gates or diligence requirements — they only reshape navigation. See [[three-lane-nav]] for lane colors and [[ipad-candidate-ux]] for touch-target mode.",
+      "Phase 4 canon strip shows lane badge on every bound route — role profile only changes which lanes appear in sidebar, not which Field Book articles govern a page.",
     ],
     sidebarFacts: [
       { label: "Env flag", value: "NEXT_PUBLIC_INTELLIGENCE_NAV_PROFILE" },
@@ -516,11 +518,13 @@ export const FIELD_BOOK_ARTICLES: FieldBookArticle[] = [
       "Admin strategy reader becomes editor; Field Book becomes connected canon with [[claims-firewall]] on every public-adaptation path. Staff promotes page summaries into articles; cross-links use [[slug]] or [[slug|label]] syntax.",
       "Build progress tracks canon completion: binding count, article slugs linked, routes with claims gates. Phase D exit criteria: three-lane nav live on Netlify, canon hub reachable, teal new-link batch for organization routes.",
       "Do not migrate unverified claims — close NEEDS_REVIEW rows in the ledger before promoting stage lines into Field Book body text. See [[counsel-review-frame]] for counsel hits.",
+      "strategyMigrationBridge.ts maps each intelligence route to strategy manual pathKeys (framework, build-audit, comms-media, etc.) — staff uses strategy-alignment dashboard to preview chunks before canon promotion.",
+      "Phase 4 upgrade pass tracks binding count (18+ routes), Phase D article depth, and strategy bridge coverage. Exit signal: route bindings + strategy migration live on Netlify.",
     ],
     sidebarFacts: [
       { label: "Manual chunks", value: "2,795" },
       { label: "Target readiness", value: "~98% intelligence" },
-      { label: "Canon bindings", value: "12 route prefixes" },
+      { label: "Canon bindings", value: "18+ route prefixes" },
       { label: "Hub route", value: "/admin/intelligence/field-book/canon" },
     ],
     seeAlso: ["claims-firewall", "three-lane-nav", "court-diligence-protocol"],
@@ -539,7 +543,11 @@ export const FIELD_BOOK_ARTICLES: FieldBookArticle[] = [
     summary: "Verified bill votes and sponsorship — primary offensive surface when court diligence incomplete.",
     body: [
       "When [[hammer-diligence-checklist]] is incomplete, stay on enrolled acts and committee record — not personal speculation.",
-      "Pairs with trap lanes and film room clips.",
+      "Pairs with trap lanes and film room clips — legislative record is the primary offensive surface when court searches are NOT_SEARCHED.",
+      "Bill act-proof drill-downs at /admin/intelligence/kim-hammer/bills/*/act-proof provide VERIFIED anchors for contrast framing.",
+      "Kim Hammer module map (~54 modules) organizes research by theme — promote module summaries into this Field Book article as each reaches briefing depth.",
+      "Offensive diligence follows counsel gate on any court hit — legislative votes alone do not require counsel but must match claims ledger classification.",
+      "Canon loop binding on /admin/intelligence/kim-hammer and opponent dossier routes surfaces this article in the gold strip on staff research pages.",
     ],
     sidebarFacts: [{ label: "Module layer", value: "KH-1 through KH-4" }],
     seeAlso: ["hammer-diligence-checklist", "film-room-mvp"],

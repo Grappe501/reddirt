@@ -37,6 +37,8 @@ import { FIELD_BOOK_ARTICLES, getFieldBookLinkAuditRoutes } from "@/lib/intellig
 import { computeCanonLoopStats } from "@/lib/intelligence/fieldBookCanonRegistry";
 import { computeDossierBriefingBookProgress } from "@/lib/intelligence/v4/candidateDossierBriefingBook";
 import { computePhase2SurfacesDepthProgress } from "@/lib/intelligence/v4/phase2SurfacesDepth";
+import { computePhase3UpgradePass } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
+import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -466,6 +468,27 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/diligence",
   });
 
+  const phase3Pass = computePhase3UpgradePass();
+  items.push({
+    id: "phase-3-debate-spine-depth",
+    label: "Phase 3 — Five-layer debate spine waves (W1–W6)",
+    category: "Debate spine",
+    completionPct: phase3Pass.completionPct,
+    status:
+      phase3Pass.w3DebateSpinePct >= 95
+        ? "complete"
+        : phase3Pass.w3DebateSpinePct >= 75
+          ? "partial"
+          : "flagged",
+    built: phase3Pass.w3DebateSpinePct,
+    total: 100,
+    flags:
+      phase3Pass.w3DebateSpinePct < 100
+        ? [`W3 debate spine ${phase3Pass.w3DebateSpinePct}% · Waves W4–W6 expand incrementally`]
+        : ["Trap lanes + SOS bank + command surfaces at five-layer bar"],
+    href: "/admin/intelligence/phase-3-upgrade",
+  });
+
   const diligenceRows = allDiligenceCompletionSummary();
   const diligenceAvg = Math.round(
     diligenceRows.reduce((sum, r) => sum + r.pct, 0) / Math.max(1, diligenceRows.length),
@@ -485,7 +508,6 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
   });
 
   const fieldBookPhaseA = FIELD_BOOK_ARTICLES.filter((a) => a.phaseId === "phase-a").length;
-  const fieldBookPhaseD = FIELD_BOOK_ARTICLES.filter((a) => a.phaseId === "phase-d").length;
   items.push({
     id: "field-book",
     label: "The Field Book — campaign encyclopedia",
@@ -501,20 +523,38 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/field-book",
   });
 
+  const phase4Pass = computePhase4UpgradePass();
+  items.push({
+    id: "phase-4-canon-loop",
+    label: "Phase 4 — Field Book canon loop + strategy migration",
+    category: "Canon",
+    completionPct: phase4Pass.completionPct,
+    status: phase4Pass.completionPct >= 90 ? "complete" : phase4Pass.completionPct >= 75 ? "partial" : "flagged",
+    built: phase4Pass.progress.bindingsAtBar,
+    total: phase4Pass.progress.bindingCount,
+    flags:
+      phase4Pass.completionPct < 100
+        ? [
+            `${phase4Pass.progress.bindingCount} bindings · ${phase4Pass.progress.strategyRoutes} strategy routes · Phase D ${phase4Pass.progress.phaseDArticlesAtBar}/${phase4Pass.progress.phaseDArticleTotal}`,
+          ]
+        : ["Canon loop + strategy migration bridge at bar"],
+    href: "/admin/intelligence/phase-4-upgrade",
+  });
+
   const canonStats = computeCanonLoopStats();
   items.push({
     id: "field-book-canon-loop",
     label: "Phase D — Field Book canon loop + three-lane nav",
     category: "Organization",
     completionPct: Math.round(
-      ((canonStats.bindingCount / 12) * 50 + (fieldBookPhaseD / 3) * 50),
+      ((canonStats.bindingCount / 18) * 50 + (phase4Pass.progress.phaseDArticlesAtBar / 3) * 50),
     ),
-    status: canonStats.bindingCount >= 12 && fieldBookPhaseD >= 3 ? "complete" : "partial",
+    status: canonStats.bindingCount >= 18 && phase4Pass.progress.phaseDArticlesAtBar >= 3 ? "complete" : "partial",
     built: canonStats.bindingCount,
-    total: 12,
+    total: 18,
     flags:
-      fieldBookPhaseD < 3
-        ? ["Expand Phase D Field Book articles (three-lane-nav, role profiles, strategy migration)"]
+      canonStats.bindingCount < 18
+        ? ["Expand canon bindings to 18+ intelligence routes"]
         : [],
     href: "/admin/intelligence/field-book/canon",
   });
@@ -619,6 +659,8 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/opponents/dossiers/michael-packo",
     ...getPackoCommandCenterLinkAuditRoutes(),
     "/admin/intelligence/build-progress",
+    "/admin/intelligence/phase-3-upgrade",
+    "/admin/intelligence/phase-4-upgrade",
     "/admin/intelligence/debate-prep/psychology-manual",
     ...psychologyIds.map((id) => `/admin/intelligence/debate-prep/psychology-manual/${id}`),
     ...NSI_STAFF_RESEARCH_NAV_ITEMS.map((item) => item.href),
@@ -774,7 +816,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     },
     {
       phase: 10,
-      name: "v6.5 — Candidate dossiers pass (THIS PASS)",
+      name: "v6.5 — Candidate dossiers pass (COMPLETE)",
       targetVersion: "0.18.0",
       goal: "Kelly Experience-to-Office Alignment Profile as first-class dossier; unified candidate hub; narrative depth upgrade; Netlify hardening.",
       items: [
@@ -790,11 +832,43 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
         "No serverless hang on dossier load (JSON + static TS only)",
       ],
     },
+    {
+      phase: 11,
+      name: "v7.0 — Phase 3 five-layer debate spine (COMPLETE)",
+      targetVersion: "0.19.0",
+      goal: "Six depth waves with five-layer standard on command surfaces, trap lanes, SOS bank, and film room.",
+      items: [
+        "phase3DebateSpineDepth wave registry + FiveLayerChrome",
+        "Phase 3 upgrade hub + wired trap/SOS/command/film-room panels",
+        "W3 debate spine at 100% bar",
+      ],
+      exitCriteria: [
+        "test-phase3-debate-spine-depth green",
+        "Command surfaces at five-layer bar",
+        "Nav release batch 2026-06-05-phase-3-debate-spine-depth",
+      ],
+    },
+    {
+      phase: 12,
+      name: "v7.0 — Phase 4 Field Book canon loop (COMPLETE)",
+      targetVersion: "0.19.0",
+      goal: "Route bindings + strategy migration bridge connecting intelligence ↔ Field Book ↔ Kelly SOS manual.",
+      items: [
+        "20 canon bindings + strategyMigrationBridge (16 routes)",
+        "Phase D articles at 6+ paragraph bar",
+        "Canon hub + strategy alignment + global FieldBookCanonPanel strip",
+      ],
+      exitCriteria: [
+        "test-phase4-canon-loop green (20 bindings, Phase D 3/3)",
+        "Strategy migration coverage 100%",
+        "Nav release batch 2026-06-05-phase-4-canon-strategy-migration",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v6.5-candidate-dossiers-pass",
+    version: "v7.0-phase-0-4-upgrade-pass",
     overallCompletionPct,
     items,
     phases,

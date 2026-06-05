@@ -11,6 +11,8 @@ import { V3ResearchIntro } from "@/components/admin/intelligence/v3/V3ResearchIn
 import { PrepareLlmEvidencePacketButton } from "@/components/admin/intelligence/PrepareLlmEvidencePacketButton";
 import Link from "next/link";
 import { Tier4CoreSpineNavPanel } from "@/components/admin/intelligence/Tier4CoreSpineNavPanel";
+import { DebateSpineFiveLayerChrome } from "@/components/admin/intelligence/DebateSpineFiveLayerChrome";
+import { getCommandSurfaceFiveLayer } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -30,6 +32,7 @@ export default async function DebateCommandCenterPage() {
   const commandData = loadSafeDebateCommandPageData();
   const { state, briefPack, civicDebate, graphSummary, scenarioPrep, messageIntel, legislativeRollup } = commandData;
   const p4Packet = "p4" in commandData ? commandData.p4 : null;
+  const fiveLayer = getCommandSurfaceFiveLayer("debate-command");
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -54,6 +57,12 @@ export default async function DebateCommandCenterPage() {
           .
         </p>
       </header>
+
+      {fiveLayer ? (
+        <div className="mb-6">
+          <DebateSpineFiveLayerChrome depth={fiveLayer} />
+        </div>
+      ) : null}
 
       {getSurfaceGuide("debateCommand") ? <V4OperatorGuide guide={getSurfaceGuide("debateCommand")!} /> : null}
 

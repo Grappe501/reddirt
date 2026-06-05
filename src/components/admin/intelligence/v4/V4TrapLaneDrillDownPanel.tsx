@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { ClaimsGateBanner } from "@/components/admin/intelligence/ClaimsGateBanner";
+import { DebateSpineFiveLayerChrome } from "@/components/admin/intelligence/DebateSpineFiveLayerChrome";
 import type { TrapLaneWithBriefing } from "@/lib/intelligence/v4/debateBriefingEnrichment";
+import { getTrapLaneFiveLayer } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 import { TRAP_LANE_FIRST_TIMER_NOTE } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 import { buildTrapLaneStepCoverage } from "@/lib/intelligence/v4/trapLaneStepCoverage";
 import { V4TrapStepCoveragePanel } from "@/components/admin/intelligence/v4/V4DepthPanels";
@@ -26,8 +28,12 @@ export function V4TrapLaneDrillDownPanel({
   prev: { laneId: string; title: string } | null;
   next: { laneId: string; title: string } | null;
 }) {
+  const fiveLayer = getTrapLaneFiveLayer(drill.laneId);
+
   return (
     <div className="space-y-6">
+      {fiveLayer ? <DebateSpineFiveLayerChrome depth={fiveLayer} /> : null}
+
       <V4DebateBriefingPanel briefing={drill.briefing} title="Trap lane quick-read briefing" />
 
       <article className="rounded-xl border-2 border-kelly-gold/40 bg-kelly-page/40 p-5">

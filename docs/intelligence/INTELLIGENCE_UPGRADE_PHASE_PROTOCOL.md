@@ -24,10 +24,14 @@ This runs, in order:
 
 1. `strategy-manual:verify`
 2. `test-pakko-command-center` (Phase 0+ routes and contrast gate)
-3. `agents:test-intelligence-hardening`
-4. `lint:all`
-5. `typecheck`
-6. `build` (production Next.js build — Netlify parity)
+3. `test-dossier-briefing-book` (Phase 1 dossier depth)
+4. `test-phase2-diligence-field-book` (Phase 2 operator prose)
+5. `test-phase3-debate-spine-depth` (Phase 3 five-layer waves)
+6. `test-phase4-canon-loop` (Phase 4 canon loop + strategy migration)
+7. `agents:test-intelligence-hardening`
+8. `lint:all`
+9. `typecheck`
+10. `build` (production Next.js build — Netlify parity)
 
 **Do not push** if any step fails. Fix in the active lane slice only.
 

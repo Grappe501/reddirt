@@ -5,6 +5,10 @@ import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4
 import { DebatePrepDepthNavPanel } from "@/components/admin/intelligence/DebatePrepDepthNavPanel";
 import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
 import { PhaseAUpgradePassPanel } from "@/components/admin/intelligence/PhaseAUpgradePassPanel";
+import { Phase3UpgradePassPanel } from "@/components/admin/intelligence/Phase3UpgradePassPanel";
+import { Phase4UpgradePassPanel } from "@/components/admin/intelligence/Phase4UpgradePassPanel";
+import { computePhase3UpgradePass } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
+import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +22,8 @@ const STATUS_COLORS = {
 export default function IntelligenceBuildProgressPage() {
   const report = computeIntelligenceBuildProgress();
   const phaseA = computePhaseAUpgradePass();
+  const phase3 = computePhase3UpgradePass();
+  const phase4 = computePhase4UpgradePass();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -57,7 +63,23 @@ export default function IntelligenceBuildProgressPage() {
         >
           Debate prep
         </Link>
+        <Link
+          href="/admin/intelligence/phase-3-upgrade"
+          className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950"
+        >
+          Phase 3 waves
+        </Link>
+        <Link
+          href="/admin/intelligence/phase-4-upgrade"
+          className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950"
+        >
+          Phase 4 canon loop
+        </Link>
       </V4PageHeader>
+
+      <Phase4UpgradePassPanel report={phase4} compact />
+
+      <Phase3UpgradePassPanel report={phase3} compact />
 
       <PhaseAUpgradePassPanel report={phaseA} />
 

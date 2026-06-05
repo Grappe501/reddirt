@@ -100,6 +100,58 @@ export const FIELD_BOOK_CANON_BINDINGS: FieldBookCanonBinding[] = [
     promoteNote: "Supreme workbench unifies readiness — start Phase A checklist before narrative depth.",
     laneHint: "phase_a",
   },
+  {
+    routePrefix: "/admin/intelligence/debate-command",
+    fieldBookSlugs: ["claims-firewall", "three-way-speak-order", "strategy-migration"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Debate command scores gate stage prep — verify claims before Kelly rehearses blocked trap lanes.",
+    laneHint: "kelly",
+  },
+  {
+    routePrefix: "/admin/intelligence/film-room",
+    fieldBookSlugs: ["film-room-mvp", "claims-firewall", "kim-hammer-legislative-record"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Clip inventory NON_PUBLISHABLE until VERIFIED — promote transcript summaries into Field Book after ledger row.",
+    laneHint: "kelly",
+  },
+  {
+    routePrefix: "/admin/intelligence/claims",
+    fieldBookSlugs: ["claims-firewall", "counsel-review-frame", "strategy-migration"],
+    promoteNote: "Claims ledger is the promotion firewall — Field Book body text inherits classification from here.",
+    laneHint: "phase_a",
+  },
+  {
+    routePrefix: "/admin/intelligence/phase-3-upgrade",
+    fieldBookSlugs: ["five-block-drill-template", "claims-firewall", "strategy-migration"],
+    promoteNote: "Five-layer wave tracker — complete W3 debate spine before promoting content into Field Book canon.",
+    laneHint: "kelly",
+  },
+  {
+    routePrefix: "/admin/intelligence/strategy-alignment",
+    fieldBookSlugs: ["strategy-migration", "three-lane-nav", "role-based-nav-profiles"],
+    promoteNote: "Strategy alignment dashboard previews manual chunks before Field Book promotion — claims gate on every adaptation.",
+    laneHint: "staff",
+  },
+  {
+    routePrefix: "/admin/intelligence/opponents/dossiers/kim-hammer",
+    fieldBookSlugs: ["hammer-diligence-checklist", "kim-hammer-legislative-record"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Hammer dossier offensive surface — pair legislative record with diligence log before personal contrast.",
+    laneHint: "staff",
+  },
+  {
+    routePrefix: "/admin/intelligence/debate-briefings",
+    fieldBookSlugs: ["five-block-drill-template", "claims-firewall", "three-way-speak-order"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Philosophy and SOS briefings — promote verified briefing prose into Field Book after claims review.",
+    laneHint: "kelly",
+  },
+  {
+    routePrefix: "/admin/intelligence/phase-4-upgrade",
+    fieldBookSlugs: ["strategy-migration", "three-lane-nav", "role-based-nav-profiles"],
+    promoteNote: "Phase 4 exit gate — bindings, strategy bridge, and Phase D article bar tracked here.",
+    laneHint: "staff",
+  },
 ];
 
 export const FIELD_BOOK_CANON_HUB_HREF = "/admin/intelligence/field-book/canon";

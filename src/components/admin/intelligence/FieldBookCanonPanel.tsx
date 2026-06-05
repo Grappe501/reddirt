@@ -8,14 +8,21 @@ import {
   resolveCanonArticles,
   resolveCanonBinding,
 } from "@/lib/intelligence/fieldBookCanonRegistry";
+import {
+  getStrategyMigrationForHref,
+  resolveStrategyManualLabels,
+} from "@/lib/intelligence/v4/strategyMigrationBridge";
 import { THREE_LANE_NAV, type ThreeLaneId } from "@/lib/intelligence/v4/threeLaneNav";
 
 export function FieldBookCanonPanel({ compact }: { compact?: boolean }) {
   const pathname = usePathname() ?? "";
   const binding = resolveCanonBinding(pathname);
   const articles = resolveCanonArticles(pathname);
+  const strategy = getStrategyMigrationForHref(pathname);
 
   if (!binding || !articles.length) return null;
+
+  const manualLabels = strategy ? resolveStrategyManualLabels(strategy.strategyPathKeys) : [];
 
   const lane = binding.laneHint ? THREE_LANE_NAV[binding.laneHint as ThreeLaneId] : null;
 
@@ -36,6 +43,16 @@ export function FieldBookCanonPanel({ compact }: { compact?: boolean }) {
       </div>
 
       <p className="mt-2 text-kelly-muted">{binding.promoteNote}</p>
+
+      {manualLabels.length ? (
+        <p className="mt-2 rounded-lg border border-violet-100 bg-violet-50/50 px-3 py-2 text-[11px] text-violet-950">
+          <span className="font-bold">Strategy migration:</span> {manualLabels.join(" · ")}
+          {" — "}
+          <IntelligenceNavLink href="/admin/intelligence/strategy-alignment" variant="chip" className="font-bold underline">
+            Preview manual →
+          </IntelligenceNavLink>
+        </p>
+      ) : null}
 
       <ul className="mt-3 space-y-2">
         {articles.map((article) => (

@@ -1,6 +1,6 @@
 {
   "name": "reddirt-site",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "private": true,
   "scripts": {
     "dev": "node scripts/run-with-h-drive-env.cjs next dev",
@@ -147,6 +147,8 @@
     "agents:test-pakko-command-center": "tsx scripts/test-pakko-command-center.ts",
     "agents:test-dossier-briefing-book": "tsx scripts/test-dossier-briefing-book.ts",
     "agents:test-phase2-diligence-field-book": "tsx scripts/test-phase2-diligence-field-book.ts",
+    "agents:test-phase3-debate-spine-depth": "tsx scripts/test-phase3-debate-spine-depth.ts",
+    "agents:test-phase4-canon-loop": "tsx scripts/test-phase4-canon-loop.ts",
     "intelligence:phase-sandbox": "node scripts/intelligence-phase-sandbox-run.mjs",
     "agents:test-debate-intelligence-county-week": "tsx scripts/test-debate-intelligence-county-week.ts",
     "agents:test-debate-intelligence-p4": "tsx scripts/test-debate-intelligence-p4.ts",

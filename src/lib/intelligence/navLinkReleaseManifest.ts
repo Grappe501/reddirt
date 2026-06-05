@@ -121,6 +121,28 @@ export const NAV_LINK_RELEASE_BATCHES: NavLinkReleaseBatch[] = [
       "/admin/intelligence/field-book/pakko-diligence-checklist",
     ]),
   },
+  {
+    id: "2026-06-05-phase-3-debate-spine-depth",
+    label: "Phase 3 five-layer debate spine waves",
+    hrefs: dedupeHrefs([
+      "/admin/intelligence/phase-3-upgrade",
+      "/admin/intelligence/supreme-workbench",
+      "/admin/intelligence/debate-command",
+      "/admin/intelligence/film-room",
+      "/admin/intelligence/trap-lanes",
+      "/admin/intelligence/sos-debate-questions",
+    ]),
+  },
+  {
+    id: "2026-06-05-phase-4-canon-strategy-migration",
+    label: "Phase 4 Field Book canon loop + strategy migration",
+    hrefs: dedupeHrefs([
+      "/admin/intelligence/phase-4-upgrade",
+      "/admin/intelligence/field-book/canon",
+      "/admin/intelligence/strategy-alignment",
+      ...getFieldBookCanonLinkAuditRoutes(),
+    ]),
+  },
 ];
 
 export const CURRENT_NAV_RELEASE_ID =

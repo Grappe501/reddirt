@@ -4,6 +4,8 @@ import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives"
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 import { DebateFilmRoomClient } from "@/components/admin/intelligence/film-room/DebateFilmRoomClient";
+import { DebateSpineFiveLayerChrome } from "@/components/admin/intelligence/DebateSpineFiveLayerChrome";
+import { getCommandSurfaceFiveLayer } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -12,6 +14,7 @@ export const maxDuration = 26;
 export default async function DebateFilmRoomPage() {
   const packet = loadDebateFilmRoomPagePacket();
   const guide = getSurfaceGuide("debateWarRoomP4");
+  const fiveLayer = getCommandSurfaceFiveLayer("film-room");
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -47,6 +50,12 @@ export default async function DebateFilmRoomPage() {
           Trap lanes
         </Link>
       </V4PageHeader>
+
+      {fiveLayer ? (
+        <div className="mb-6">
+          <DebateSpineFiveLayerChrome depth={fiveLayer} />
+        </div>
+      ) : null}
 
       <article className="mb-6 rounded-xl border-2 border-amber-200 bg-amber-50/50 p-4 text-xs text-amber-950">
         <p className="font-bold uppercase tracking-wider">Governance</p>

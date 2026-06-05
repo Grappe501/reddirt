@@ -2,8 +2,11 @@ import Link from "next/link";
 import { loadSupremeWorkbenchPacket } from "@/lib/intelligence/v4/supremeWorkbench";
 import { diligenceHubSummary } from "@/lib/intelligence/v4/kellyCourtDiligenceLog";
 import { computePhaseAUpgradePass } from "@/lib/intelligence/v4/phaseAUpgradePass";
+import { computePhase3UpgradePass, getCommandSurfaceFiveLayer } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 import { V4SupremeWorkbenchPanel } from "@/components/admin/intelligence/v4/V4SupremeWorkbenchPanel";
 import { PhaseAUpgradePassPanel } from "@/components/admin/intelligence/PhaseAUpgradePassPanel";
+import { Phase3UpgradePassPanel } from "@/components/admin/intelligence/Phase3UpgradePassPanel";
+import { DebateSpineFiveLayerChrome } from "@/components/admin/intelligence/DebateSpineFiveLayerChrome";
 import { NsiStaffResearchNavPanel } from "@/components/admin/intelligence/NsiStaffResearchNavPanel";
 import { DebatePrepDepthNavPanel } from "@/components/admin/intelligence/DebatePrepDepthNavPanel";
 import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
@@ -20,6 +23,8 @@ export default function SupremeWorkbenchPage() {
   const diligenceSummary = diligenceHubSummary();
   const kellyRow = diligenceSummary.find((r) => r.subjectId === "kelly-grappe");
   const phaseA = computePhaseAUpgradePass();
+  const phase3 = computePhase3UpgradePass();
+  const fiveLayer = getCommandSurfaceFiveLayer("supreme-workbench");
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -53,9 +58,23 @@ export default function SupremeWorkbenchPage() {
         >
           The Field Book
         </Link>
+        <Link
+          href="/admin/intelligence/phase-3-upgrade"
+          className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950"
+        >
+          Phase 3 waves
+        </Link>
       </V4PageHeader>
 
+      {fiveLayer ? (
+        <div className="mb-6">
+          <DebateSpineFiveLayerChrome depth={fiveLayer} />
+        </div>
+      ) : null}
+
       <V4SupremeWorkbenchPanel packet={packet} variant="full" />
+
+      <Phase3UpgradePassPanel report={phase3} compact />
 
       <PhaseAUpgradePassPanel report={phaseA} compact />
 

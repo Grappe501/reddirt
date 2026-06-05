@@ -1,17 +1,20 @@
 import Link from "next/link";
+import { Phase4UpgradePassPanel } from "@/components/admin/intelligence/Phase4UpgradePassPanel";
+import { StrategyMigrationTable } from "@/components/admin/intelligence/StrategyMigrationTable";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import {
   computeCanonLoopStats,
   FIELD_BOOK_CANON_BINDINGS,
-  FIELD_BOOK_CANON_HUB_HREF,
 } from "@/lib/intelligence/fieldBookCanonRegistry";
 import { getFieldBookArticle, FIELD_BOOK_HUB_HREF } from "@/lib/intelligence/fieldBookRegistry";
+import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
 import { IntelligenceNavLink } from "@/components/admin/intelligence/IntelligenceNavLink";
 
 export const dynamic = "force-dynamic";
 
 export default function FieldBookCanonHubPage() {
   const stats = computeCanonLoopStats();
+  const phase4 = computePhase4UpgradePass();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -33,7 +36,15 @@ export default function FieldBookCanonHubPage() {
         >
           Phase D organization
         </Link>
+        <Link
+          href="/admin/intelligence/phase-4-upgrade"
+          className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950"
+        >
+          Phase 4 upgrade
+        </Link>
       </V4PageHeader>
+
+      <Phase4UpgradePassPanel report={phase4} compact />
 
       <article className="mb-8 rounded-xl border-2 border-violet-200 bg-violet-50/40 p-5 text-sm">
         <p className="font-bold uppercase text-violet-950">How the canon loop works</p>
@@ -91,6 +102,10 @@ export default function FieldBookCanonHubPage() {
             </ul>
           </section>
         ))}
+      </div>
+
+      <div className="mt-8">
+        <StrategyMigrationTable compact />
       </div>
     </div>
   );
