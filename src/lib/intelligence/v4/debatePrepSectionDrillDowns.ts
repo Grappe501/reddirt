@@ -1,6 +1,7 @@
 import { PREP_SECTION_GUIDES } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { getPrepSectionEncounterDepth, mergeEncounterDepth } from "@/lib/intelligence/v4/debatePlainLanguageDepth";
 import { applyPhase6PrepSectionCompletion } from "@/lib/intelligence/v4/phase6PrepSectionCompletion";
+import { applyPhase9PrepInstruction } from "@/lib/intelligence/v4/applyPhase9DebateInstruction";
 import type {
   DebatePrepSectionDrillDown,
   DebateZinger,
@@ -825,7 +826,8 @@ export function getPrepSectionDrillDown(sectionId: string): DebatePrepSectionDri
   if (!row) return undefined;
   const encounterDepth = mergeEncounterDepth(row.encounterDepth, getPrepSectionEncounterDepth(sectionId));
   const merged = encounterDepth ? { ...row, encounterDepth } : row;
-  return applyPhase6PrepSectionCompletion(merged);
+  const phase6 = applyPhase6PrepSectionCompletion(merged);
+  return applyPhase9PrepInstruction(phase6);
 }
 
 export function getAllPrepSectionDrillDownIds(): string[] {

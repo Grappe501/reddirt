@@ -249,6 +249,13 @@ export const FIELD_BOOK_CANON_BINDINGS: FieldBookCanonBinding[] = [
     promoteNote: "Phase 8 exit gate — dossier research corpus, ACCA panel runbook, KH wave 3.",
     laneHint: "clerks",
   },
+  {
+    routePrefix: "/admin/intelligence/phase-9-upgrade",
+    fieldBookSlugs: ["debate-instruction-bridge", "dossier-research-acca-closure", "debate-ready-governance"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Phase 9 exit gate — dossier depth + debate instruction bridge, coaching runbook, KH wave 4.",
+    laneHint: "kelly",
+  },
 ];
 
 export const FIELD_BOOK_CANON_HUB_HREF = "/admin/intelligence/field-book/canon";

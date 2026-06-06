@@ -434,6 +434,52 @@ export const DEBATE_GLOSSARY_TERMS: DebateGlossaryTerm[] = [
     fieldBookSlug: "pacer-search",
     seeAlso: ["five-search-order", "counsel-frame"],
   },
+  {
+    id: "debate-instruction-bridge",
+    label: "Debate instruction bridge",
+    definition:
+      "Phase 9 read-time layer that wires dossier research corpus into prep sections, trap lanes, and SOS questions — dossier cross-links, clerk-room scripts, and rehearsal steps merged at getter time.",
+    category: "debate-craft",
+    fieldBookSlug: "debate-instruction-bridge",
+    intelligenceHref: "/admin/intelligence/phase-9-upgrade",
+    seeAlso: ["dossier-crosswalk", "clerk-room-bridge"],
+  },
+  {
+    id: "dossier-crosswalk",
+    label: "Dossier crosswalk",
+    definition:
+      "Per prep-section map from debate drill-down to Kelly/Hammer/Pakko dossier section IDs — staff pre-reads researchDepth.sourcedFacts before Kelly rehearses the line.",
+    category: "debate-craft",
+    fieldBookSlug: "debate-instruction-bridge",
+    seeAlso: ["research-corpus", "claims-gate"],
+  },
+  {
+    id: "clerk-room-bridge",
+    label: "Clerk-room bridge",
+    definition:
+      "ACCA-safe pivot language when moderators or clerks ask implementation questions — published rules, training calendar, hotline, grant ledger — not prosecutorial trap tone.",
+    category: "debate-craft",
+    fieldBookSlug: "acca-summer-conference-2026",
+    seeAlso: ["acca-panel", "debate-instruction-bridge"],
+  },
+  {
+    id: "research-corpus",
+    label: "Research corpus",
+    definition:
+      "Sourced facts, field research notes, and narrative overlays merged at dossier read time — Phase 8 research depth plus Phase 9 2× expansion wave.",
+    category: "governance",
+    fieldBookSlug: "dossier-research-acca-closure",
+    seeAlso: ["dossier-crosswalk", "claims-gate"],
+  },
+  {
+    id: "coaching-runbook",
+    label: "Coaching runbook",
+    definition:
+      "Eight-step operator timeline from T-14 through post-event Field Book promotion — dossier audit, trap rehearsal, SOS timed answers, ACCA pre-read, claims gate close.",
+    category: "debate-craft",
+    fieldBookSlug: "debate-instruction-bridge",
+    intelligenceHref: "/admin/intelligence/phase-9-upgrade",
+  },
 ];
 
 export const FIELD_BOOK_GLOSSARY_HREF = "/admin/intelligence/field-book/glossary";

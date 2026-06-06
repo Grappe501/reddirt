@@ -43,6 +43,7 @@ import { computePhase5UpgradePass } from "@/lib/intelligence/v4/phase5GlossaryCo
 import { computePhase6UpgradePass } from "@/lib/intelligence/v4/phase6DebateReadyGovernance";
 import { computePhase7UpgradePass } from "@/lib/intelligence/v4/phase7DossierDiligenceClosure";
 import { computePhase8UpgradePass } from "@/lib/intelligence/v4/phase8DossierResearchAccaClosure";
+import { computePhase9UpgradePass } from "@/lib/intelligence/v4/phase9DebateInstructionClosure";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -605,6 +606,21 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/phase-8-upgrade",
   });
 
+  const phase9Pass = computePhase9UpgradePass();
+  items.push({
+    id: "phase-9-debate-instruction-bridge",
+    label: "Phase 9 — Dossier depth + debate instruction bridge",
+    category: "Governance",
+    completionPct: phase9Pass.completionPct,
+    status: phase9Pass.completionPct >= 90 ? "complete" : phase9Pass.completionPct >= 75 ? "partial" : "flagged",
+    built: phase9Pass.progress.prepSectionsAtBridge,
+    total: phase9Pass.progress.prepSectionTotal,
+    flags: [
+      `Depth ${phase9Pass.progress.dossierDepthPct}% · prep ${phase9Pass.progress.prepSectionsAtBridge}/${phase9Pass.progress.prepSectionTotal} · traps ${phase9Pass.progress.trapLanesAtBridge}/${phase9Pass.progress.trapLaneTotal} · SOS ${phase9Pass.progress.sosQuestionsAtBridge}/${phase9Pass.progress.sosQuestionTotal} · KH wave4 ${phase9Pass.progress.khWave4Promoted}/2`,
+    ],
+    href: "/admin/intelligence/phase-9-upgrade",
+  });
+
   const canonStats = computeCanonLoopStats();
   items.push({
     id: "field-book-canon-loop",
@@ -729,6 +745,8 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/phase-6-upgrade",
     "/admin/intelligence/phase-7-upgrade",
     "/admin/intelligence/phase-8-upgrade",
+    "/admin/intelligence/phase-9-upgrade",
+    "/admin/intelligence/field-book/debate-instruction-bridge",
     "/admin/intelligence/field-book/dossier-research-acca-closure",
     "/admin/intelligence/field-book/dossier-diligence-closure",
     "/admin/intelligence/field-book/acca-summer-conference-2026",
@@ -1004,26 +1022,26 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     },
     {
       phase: 17,
-      name: "v12.0 — Phase 9 dossier depth expansion (COMPLETE)",
-      targetVersion: "0.24.0",
-      goal: "Second-wave narrative expansion — 2× dossier and ACCA corpus depth at read time.",
+      name: "v12.0 — Phase 9 debate instruction bridge (COMPLETE)",
+      targetVersion: "0.25.0",
+      goal: "2× dossier depth + debate spine integration — prep, traps, SOS questions wired to research corpus.",
       items: [
-        "kellyDossierDepthExpansion + opponentDossierDepthExpansion overlays",
-        "accaConferenceDepthExpansion — 13 ACCA sections doubled",
-        "applyDossierDepthExpansion wired into dossier + ACCA getters",
-        "Bio narrative chapters expanded (Kelly + Hammer + Pakko)",
+        "kelly/opponent/acca depth expansion wave 2",
+        "phase9DebateInstructionDepth + applyPhase9DebateInstruction bridge",
+        "Eight-step debate coaching operator runbook",
+        "PHASE9_PROMOTED_KH_MODULE_IDS (2 final staff modules)",
       ],
       exitCriteria: [
-        "test-phase8-dossier-research-acca-closure green at 2× bar",
-        "Dossier sections ≥14 narrative paragraphs + ≥8 sourced facts",
-        "Nav release batch 2026-06-05-phase-9-dossier-depth-expansion",
+        "test-phase9-debate-instruction-bridge green",
+        "28 prep + 6 trap + 35 SOS at dossier bridge bar",
+        "Nav release batch 2026-06-05-phase-9-debate-instruction-bridge",
       ],
     },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v12.0-phase-9-dossier-depth-expansion",
+    version: "v12.0-phase-9-debate-instruction-bridge",
     overallCompletionPct,
     items,
     phases,

@@ -688,6 +688,35 @@ export const FIELD_BOOK_ARTICLES: FieldBookArticle[] = [
     ],
   },
   {
+    slug: "debate-instruction-bridge",
+    title: "Debate instruction bridge — dossier corpus to stage drills",
+    phaseId: "phase-c",
+    category: "Debate prep",
+    summary:
+      "Phase 9 pass — wires 2× dossier depth expansion into all 28 prep sections, six trap lanes, and 35 SOS questions with dossier cross-links, clerk-room scripts, and eight-step coaching runbook.",
+    body: [
+      "Phase 8 enriched dossier and ACCA silos without integrating the debate spine. Phase 9 closes that gap: phase9DebateInstructionDepth defines per-section dossier crosswalks; applyPhase9DebateInstruction merges at read time into getPrepSectionDrillDown, getTrapLaneDrillDown, and getSosDebateQuestionDrillDown.",
+      "Every prep section gains ≥2 dossier section links, additional rehearsal steps, clerk-room bridge language, and ACCA panel notes. Trap lanes gain clerk-room scripts safe for Mountain View continuing-education tone — max three traps, curious not prosecutorial.",
+      "SOS questions inherit category-level dossier briefing hooks — elections-integrity pulls hammer-2021-six-bill-deep; county-administration pulls kelly-road-stories-fieldbook; three-way-race pulls packo-economist-platform-deep.",
+      "phase9DebateCoachingRunbook documents eight operator steps from T-14 through post-event Field Book promotion. Hub at /admin/intelligence/phase-9-upgrade surfaces orchestration gap tracker — closed vs partial vs open items including Phase 10 debate-command integration.",
+      "2× dossier depth from Phase 9 wave 1 (kellyDossierDepthExpansion, opponentDossierDepthExpansion, accaConferenceDepthExpansion) remains the content foundation — debate bridge is the orchestration layer that makes research corpus reachable from debate prep surfaces.",
+      "Final KH wave 4 promotes ai-suggestion-sandbox and ai-opposition-copilot — last staff-stub modules. Claims gate and diligence logs remain operator-driven; Phase 9 adds instruction, not auto-verified claims.",
+      "Canon binding on phase-9-upgrade surfaces this article plus [[dossier-research-acca-closure]] and [[debate-ready-governance]] — pair with kelly-debate-coaching before any stage event.",
+    ],
+    sidebarFacts: [
+      { label: "Prep sections", value: "28 with dossier bridge" },
+      { label: "Trap lanes", value: "6 clerk-room scripts" },
+      { label: "SOS questions", value: "35 category hooks" },
+      { label: "Hub", value: "/admin/intelligence/phase-9-upgrade" },
+    ],
+    seeAlso: ["dossier-research-acca-closure", "debate-ready-governance", "debate-glossary"],
+    relatedRoutes: [
+      { href: "/admin/intelligence/phase-9-upgrade", label: "Phase 9 upgrade" },
+      { href: "/admin/intelligence/kelly-debate-coaching", label: "Debate coaching" },
+      { href: "/admin/intelligence/kim-hammer/debate-prep", label: "Prep drill-downs" },
+    ],
+  },
+  {
     slug: "three-lane-nav",
     title: "Three-lane navigation",
     phaseId: "phase-d",

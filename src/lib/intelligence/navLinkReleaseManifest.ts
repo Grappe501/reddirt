@@ -189,6 +189,17 @@ export const NAV_LINK_RELEASE_BATCHES: NavLinkReleaseBatch[] = [
       "/admin/intelligence/kim-hammer/geographic-narrative-intelligence",
     ]),
   },
+  {
+    id: "2026-06-05-phase-9-debate-instruction-bridge",
+    label: "Phase 9 dossier depth + debate instruction bridge",
+    hrefs: dedupeHrefs([
+      "/admin/intelligence/phase-9-upgrade",
+      "/admin/intelligence/field-book/debate-instruction-bridge",
+      "/admin/intelligence/kelly-debate-coaching",
+      "/admin/intelligence/kim-hammer/debate-prep/county-deep",
+      "/admin/intelligence/kim-hammer/ai-opposition-copilot",
+    ]),
+  },
 ];
 
 export const CURRENT_NAV_RELEASE_ID =

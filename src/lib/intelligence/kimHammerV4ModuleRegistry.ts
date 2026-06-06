@@ -525,6 +525,24 @@ KIM_HAMMER_V4_MODULES["kh4-agent-tools"] = entry(
   { guideKey: "evidenceCommand", preferV4: true, profile: "hub" },
 );
 
+/** Phase 9 — final staff-stub promotions (debate instruction bridge). */
+export const PHASE9_PROMOTED_KH_MODULE_IDS = ["ai-suggestion-sandbox", "ai-opposition-copilot"] as const;
+
+KIM_HAMMER_V4_MODULES["ai-suggestion-sandbox"] = entry(
+  "ai-suggestion-sandbox",
+  "AI suggestion sandbox",
+  "NON_PUBLISHABLE drafts",
+  { type: "rapid-response" },
+  { guideKey: "evidenceCommand", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["ai-opposition-copilot"] = entry(
+  "ai-opposition-copilot",
+  "AI opposition copilot",
+  "Staff only",
+  { type: "theme-matrix" },
+  { guideKey: "themeMatrix", preferV4: true, profile: "hub" },
+);
+
 export function getKimHammerV4ModuleEntry(moduleId: string): KimHammerV4ModuleEntry | undefined {
   return KIM_HAMMER_V4_MODULES[moduleId];
 }
