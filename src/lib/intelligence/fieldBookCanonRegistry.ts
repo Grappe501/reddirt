@@ -235,6 +235,13 @@ export const FIELD_BOOK_CANON_BINDINGS: FieldBookCanonBinding[] = [
     promoteNote: "Phase 6 exit gate — prep encounter depth, trap rebuttals, claims review wave, KH promotions.",
     laneHint: "staff",
   },
+  {
+    routePrefix: "/admin/intelligence/phase-7-upgrade",
+    fieldBookSlugs: ["dossier-diligence-closure", "debate-ready-governance", "cvsgf-ledger-gap"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Phase 7 exit gate — dossier briefing closure, diligence runbook, election funding transparency, KH wave 2.",
+    laneHint: "phase_a",
+  },
 ];
 
 export const FIELD_BOOK_CANON_HUB_HREF = "/admin/intelligence/field-book/canon";

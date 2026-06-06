@@ -218,6 +218,13 @@ const INTELLIGENCE_STRATEGY_ROUTES: StrategyMigrationRoute[] = [
     fieldBookSlugs: ["debate-ready-governance", "claims-firewall", "debate-glossary"],
     promoteNote: "Phase 6 exit — prep depth, trap rebuttals, claims wave, KH module promotion.",
   },
+  {
+    intelligenceHref: "/admin/intelligence/phase-7-upgrade",
+    label: "Phase 7 dossier diligence closure",
+    strategyPathKeys: ["build-audit", "framework"],
+    fieldBookSlugs: ["dossier-diligence-closure", "debate-ready-governance", "cvsgf-ledger-gap"],
+    promoteNote: "Phase 7 exit — dossier briefing bar, diligence runbook, funding transparency, KH wave 2.",
+  },
 ];
 
 export function listStrategyMigrationRoutes(): StrategyMigrationRoute[] {

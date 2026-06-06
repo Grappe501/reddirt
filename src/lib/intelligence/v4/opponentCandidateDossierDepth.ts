@@ -405,10 +405,12 @@ export const OPPONENT_DOSSIER_SECTIONS: OpponentDossierDepthSection[] = [
   },
 ];
 
+import { enrichOpponentDossierSection } from "@/lib/intelligence/v4/phase7DossierBriefingEnrichment";
+
 export function getOpponentDossierSectionsForCandidate(
   candidateId: "kim-hammer" | "michael-packo",
 ): OpponentDossierDepthSection[] {
-  return OPPONENT_DOSSIER_SECTIONS.filter((s) => s.candidateId === candidateId);
+  return OPPONENT_DOSSIER_SECTIONS.filter((s) => s.candidateId === candidateId).map(enrichOpponentDossierSection);
 }
 
 export function getAllOpponentDossierSectionIds(): string[] {

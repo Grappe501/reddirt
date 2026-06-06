@@ -13,6 +13,7 @@ Run **one phase at a time**. At the end of each phase, execute the full sandbox 
 | **4** | Field Book canon loop | Route bindings + strategy migration |
 | **5** | Debate glossary + hub connectivity | Glossary index + Phase B/C depth + all hub bindings |
 | **6** | Debate-ready governance | Prep encounter depth + trap rebuttals + claims review wave |
+| **7** | Dossier briefing closure + diligence runbook | Briefing-book bar + five-search runbook + KH wave 2 |
 
 ## End-of-phase sandbox (required)
 
@@ -32,10 +33,11 @@ This runs, in order:
 6. `test-phase4-canon-loop` (Phase 4 canon loop + strategy migration)
 7. `test-phase5-glossary-connectivity` (Phase 5 glossary + hub connectivity)
 8. `test-phase6-debate-ready-governance` (Phase 6 debate-ready governance)
-9. `agents:test-intelligence-hardening`
-10. `lint:all`
-11. `typecheck`
-12. `build` (production Next.js build — Netlify parity)
+9. `test-phase7-dossier-diligence-closure` (Phase 7 dossier briefing closure)
+10. `agents:test-intelligence-hardening`
+11. `lint:all`
+12. `typecheck`
+13. `build` (production Next.js build — Netlify parity)
 
 **Do not push** if any step fails. Fix in the active lane slice only.
 

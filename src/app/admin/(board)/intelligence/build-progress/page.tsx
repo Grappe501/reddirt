@@ -9,10 +9,12 @@ import { Phase3UpgradePassPanel } from "@/components/admin/intelligence/Phase3Up
 import { Phase4UpgradePassPanel } from "@/components/admin/intelligence/Phase4UpgradePassPanel";
 import { Phase5UpgradePassPanel } from "@/components/admin/intelligence/Phase5UpgradePassPanel";
 import { Phase6UpgradePassPanel } from "@/components/admin/intelligence/Phase6UpgradePassPanel";
+import { Phase7UpgradePassPanel } from "@/components/admin/intelligence/Phase7UpgradePassPanel";
 import { computePhase3UpgradePass } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
 import { computePhase5UpgradePass } from "@/lib/intelligence/v4/phase5GlossaryConnectivity";
 import { computePhase6UpgradePass } from "@/lib/intelligence/v4/phase6DebateReadyGovernance";
+import { computePhase7UpgradePass } from "@/lib/intelligence/v4/phase7DossierDiligenceClosure";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +32,7 @@ export default function IntelligenceBuildProgressPage() {
   const phase4 = computePhase4UpgradePass();
   const phase5 = computePhase5UpgradePass();
   const phase6 = computePhase6UpgradePass();
+  const phase7 = computePhase7UpgradePass();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -76,13 +79,14 @@ export default function IntelligenceBuildProgressPage() {
           Phase 3 waves
         </Link>
         <Link
-          href="/admin/intelligence/phase-6-upgrade"
-          className="rounded-full border border-rose-300 bg-rose-50 px-3 py-1 text-xs font-bold text-rose-950"
+          href="/admin/intelligence/phase-7-upgrade"
+          className="rounded-full border border-sky-300 bg-sky-50 px-3 py-1 text-xs font-bold text-sky-950"
         >
-          Phase 6 governance
+          Phase 7 closure
         </Link>
       </V4PageHeader>
 
+      <Phase7UpgradePassPanel report={phase7} compact />
       <Phase6UpgradePassPanel report={phase6} compact />
       <Phase5UpgradePassPanel report={phase5} compact />
       <Phase4UpgradePassPanel report={phase4} compact />

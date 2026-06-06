@@ -512,8 +512,10 @@ export const KELLY_DOSSIER_SECTIONS: KellyDossierDepthSection[] = [
   },
 ];
 
+import { enrichKellyDossierSection } from "@/lib/intelligence/v4/phase7DossierBriefingEnrichment";
+
 export function getKellyDossierSections(): KellyDossierDepthSection[] {
-  return KELLY_DOSSIER_SECTIONS;
+  return KELLY_DOSSIER_SECTIONS.map(enrichKellyDossierSection);
 }
 
 export function getKellyDossierSection(sectionId: string): KellyDossierDepthSection | undefined {

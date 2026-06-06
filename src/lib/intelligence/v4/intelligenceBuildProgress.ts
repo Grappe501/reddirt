@@ -41,6 +41,7 @@ import { computePhase3UpgradePass } from "@/lib/intelligence/v4/phase3DebateSpin
 import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
 import { computePhase5UpgradePass } from "@/lib/intelligence/v4/phase5GlossaryConnectivity";
 import { computePhase6UpgradePass } from "@/lib/intelligence/v4/phase6DebateReadyGovernance";
+import { computePhase7UpgradePass } from "@/lib/intelligence/v4/phase7DossierDiligenceClosure";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -573,6 +574,21 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/phase-6-upgrade",
   });
 
+  const phase7Pass = computePhase7UpgradePass();
+  items.push({
+    id: "phase-7-dossier-diligence-closure",
+    label: "Phase 7 — Dossier briefing closure + diligence runbook",
+    category: "Governance",
+    completionPct: phase7Pass.completionPct,
+    status: phase7Pass.completionPct >= 90 ? "complete" : phase7Pass.completionPct >= 75 ? "partial" : "flagged",
+    built: phase7Pass.progress.dossierOverallPct,
+    total: 100,
+    flags: [
+      `Dossier K ${phase7Pass.progress.kellyPct}% · H ${phase7Pass.progress.hammerPct}% · P ${phase7Pass.progress.pakkoPct}% · runbook ${phase7Pass.progress.diligenceRunbookPct}% · KH wave2 ${phase7Pass.progress.khWave2Promoted}/10`,
+    ],
+    href: "/admin/intelligence/phase-7-upgrade",
+  });
+
   const canonStats = computeCanonLoopStats();
   items.push({
     id: "field-book-canon-loop",
@@ -695,6 +711,8 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/phase-4-upgrade",
     "/admin/intelligence/phase-5-upgrade",
     "/admin/intelligence/phase-6-upgrade",
+    "/admin/intelligence/phase-7-upgrade",
+    "/admin/intelligence/field-book/dossier-diligence-closure",
     "/admin/intelligence/field-book/glossary",
     ...psychologyIds.map((id) => `/admin/intelligence/debate-prep/psychology-manual/${id}`),
     ...NSI_STAFF_RESEARCH_NAV_ITEMS.map((item) => item.href),
@@ -931,11 +949,28 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
         "Nav release batch 2026-06-05-phase-6-debate-ready-governance",
       ],
     },
+    {
+      phase: 15,
+      name: "v10.0 — Phase 7 dossier diligence closure (COMPLETE)",
+      targetVersion: "0.22.0",
+      goal: "Briefing-book bar on all dossier sections, diligence operator runbook, CVSGF transparency frame, KH wave 2.",
+      items: [
+        "Read-time dossier enrichment (Kelly + Hammer + Pakko)",
+        "Five-search diligence operator runbook (15 guides)",
+        "Election funding transparency enrichment",
+        "PHASE7_PROMOTED_KH_MODULE_IDS (10 modules)",
+      ],
+      exitCriteria: [
+        "test-phase7-dossier-diligence-closure green",
+        "Dossier briefing book 95%+ on build progress",
+        "Nav release batch 2026-06-05-phase-7-dossier-diligence-closure",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v9.0-phase-6-debate-ready-governance",
+    version: "v10.0-phase-7-dossier-diligence-closure",
     overallCompletionPct,
     items,
     phases,

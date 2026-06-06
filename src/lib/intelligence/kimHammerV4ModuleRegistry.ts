@@ -355,6 +355,91 @@ KIM_HAMMER_V4_MODULES["intel-heat-map"] = entry(
   { guideKey: "themeMatrix", preferV4: true, profile: "hub" },
 );
 
+/** Phase 7 — second-wave KH module promotions (dossier/diligence closure). */
+export const PHASE7_PROMOTED_KH_MODULE_IDS = [
+  "audit-log",
+  "export-control-center",
+  "narrative-state",
+  "kh3-operational",
+  "modern-sos-contrast",
+  "bill-relationship-graph",
+  "timeline-heatmap",
+  "profile",
+  "electoral-history",
+  "media-footprint",
+] as const;
+
+KIM_HAMMER_V4_MODULES["audit-log"] = entry(
+  "audit-log",
+  "Audit log",
+  "KH-4 governance",
+  { type: "retrieval-gaps" },
+  { guideKey: "intelligenceGaps", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["export-control-center"] = entry(
+  "export-control-center",
+  "Export control",
+  "KH-4 governed export",
+  { type: "rapid-response" },
+  { guideKey: "evidenceCommand", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["narrative-state"] = entry(
+  "narrative-state",
+  "Narrative state",
+  "KH-4 message consistency",
+  { type: "theme-matrix" },
+  { guideKey: "themeMatrix", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["kh3-operational"] = entry(
+  "kh3-operational",
+  "KH-3 operational",
+  "Deep research operational layer",
+  { type: "markdown", layer: "kh3DeepResearch", sectionLimit: 8 },
+  { guideKey: "backgroundDeep", preferV4: true, profile: "full" },
+);
+KIM_HAMMER_V4_MODULES["modern-sos-contrast"] = entry(
+  "modern-sos-contrast",
+  "Modern SOS contrast",
+  "Administrator vs author frame",
+  { type: "markdown", layer: "contrastVsKelly", sectionLimit: 8 },
+  { guideKey: "contrastVsKelly", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["bill-relationship-graph"] = entry(
+  "bill-relationship-graph",
+  "Bill relationship graph",
+  "Legislative cluster map",
+  { type: "argument-map" },
+  { guideKey: "opponentRecord", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["timeline-heatmap"] = entry(
+  "timeline-heatmap",
+  "Timeline heatmap",
+  "Election-law activity density",
+  { type: "timeline" },
+  { guideKey: "timeline", preferV4: true, profile: "surface" },
+);
+KIM_HAMMER_V4_MODULES["profile"] = entry(
+  "profile",
+  "Public profile",
+  "KH-1 biography surface",
+  { type: "markdown", layer: "debateProfile", sectionLimit: 6 },
+  { guideKey: "debateProfile", preferV4: true, profile: "surface" },
+);
+KIM_HAMMER_V4_MODULES["electoral-history"] = entry(
+  "electoral-history",
+  "Electoral history",
+  "KH-1 run results",
+  { type: "markdown", layer: "kh3DeepResearch", sectionLimit: 6 },
+  { guideKey: "backgroundDeep", preferV4: true, profile: "surface" },
+);
+KIM_HAMMER_V4_MODULES["media-footprint"] = entry(
+  "media-footprint",
+  "Media footprint",
+  "KH-1 press and appearances",
+  { type: "markdown", layer: "messageGuidance", sectionLimit: 6 },
+  { guideKey: "themeMatrix", preferV4: true, profile: "surface" },
+);
+
 export function getKimHammerV4ModuleEntry(moduleId: string): KimHammerV4ModuleEntry | undefined {
   return KIM_HAMMER_V4_MODULES[moduleId];
 }

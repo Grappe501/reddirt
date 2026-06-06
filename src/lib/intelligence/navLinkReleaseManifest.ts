@@ -167,6 +167,17 @@ export const NAV_LINK_RELEASE_BATCHES: NavLinkReleaseBatch[] = [
       "/admin/intelligence/kim-hammer/citation-locker",
     ]),
   },
+  {
+    id: "2026-06-05-phase-7-dossier-diligence-closure",
+    label: "Phase 7 dossier briefing closure + diligence runbook",
+    hrefs: dedupeHrefs([
+      "/admin/intelligence/phase-7-upgrade",
+      "/admin/intelligence/field-book/dossier-diligence-closure",
+      "/admin/intelligence/kim-hammer/audit-log",
+      "/admin/intelligence/kim-hammer/modern-sos-contrast",
+      "/admin/intelligence/kim-hammer/kh3-operational",
+    ]),
+  },
 ];
 
 export const CURRENT_NAV_RELEASE_ID =

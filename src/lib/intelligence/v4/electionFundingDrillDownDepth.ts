@@ -451,6 +451,9 @@ export function getAllElectionFundingDepthSectionIds(): string[] {
   return ELECTION_FUNDING_DEPTH_SECTIONS.map((s) => s.sectionId);
 }
 
+import { enrichElectionFundingSection } from "@/lib/intelligence/v4/phase7ElectionFundingEnrichment";
+
 export function getElectionFundingDepthSection(sectionId: string): ElectionFundingDepthSection | undefined {
-  return ELECTION_FUNDING_DEPTH_SECTIONS.find((s) => s.sectionId === sectionId);
+  const section = ELECTION_FUNDING_DEPTH_SECTIONS.find((s) => s.sectionId === sectionId);
+  return section ? enrichElectionFundingSection(section) : undefined;
 }
