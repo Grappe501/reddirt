@@ -508,10 +508,13 @@ export const OPPONENT_DOSSIER_SECTIONS: OpponentDossierDepthSection[] = [
 ];
 
 import { applyOpponentDossierResearchDepth } from "@/lib/intelligence/v4/applyCandidateDossierResearchDepth";
+import { applyOpponentDossierDepthExpansion } from "@/lib/intelligence/v4/applyDossierDepthExpansion";
 import { enrichOpponentDossierSection } from "@/lib/intelligence/v4/phase7DossierBriefingEnrichment";
 
 function finalizeOpponentSection(section: OpponentDossierDepthSection): OpponentDossierDepthSection {
-  return enrichOpponentDossierSection(applyOpponentDossierResearchDepth(section));
+  return enrichOpponentDossierSection(
+    applyOpponentDossierDepthExpansion(applyOpponentDossierResearchDepth(section)),
+  );
 }
 
 export function getOpponentDossierSectionsForCandidate(

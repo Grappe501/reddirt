@@ -647,10 +647,11 @@ export const KELLY_DOSSIER_SECTIONS: KellyDossierDepthSection[] = [
 ];
 
 import { applyKellyDossierResearchDepth } from "@/lib/intelligence/v4/applyCandidateDossierResearchDepth";
+import { applyKellyDossierDepthExpansion } from "@/lib/intelligence/v4/applyDossierDepthExpansion";
 import { enrichKellyDossierSection } from "@/lib/intelligence/v4/phase7DossierBriefingEnrichment";
 
 function finalizeKellySection(section: KellyDossierDepthSection): KellyDossierDepthSection {
-  return enrichKellyDossierSection(applyKellyDossierResearchDepth(section));
+  return enrichKellyDossierSection(applyKellyDossierDepthExpansion(applyKellyDossierResearchDepth(section)));
 }
 
 export function getKellyDossierSections(): KellyDossierDepthSection[] {

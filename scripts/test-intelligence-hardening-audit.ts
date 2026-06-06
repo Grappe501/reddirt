@@ -117,7 +117,7 @@ assert.ok(actProofOk >= billNumbers.length * 0.9, "90%+ bills need Arkleg URLs")
 const report = computeIntelligenceBuildProgress();
 assert.ok(report.overallCompletionPct >= 60, "overall completion should be >= 60%");
 assert.ok(report.phases.length >= 5, "phase plan");
-assert.ok(report.version === "v11.0-phase-8-dossier-research-acca-closure", "build progress version");
+assert.ok(report.version === "v12.0-phase-9-dossier-depth-expansion", "build progress version");
 assertRouteExists("/admin/intelligence/build-progress");
 assertRouteExists("/admin/intelligence/supreme-workbench");
 assertRouteExists("/admin/intelligence/opposition-strategy");

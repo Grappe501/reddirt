@@ -46,7 +46,7 @@ for (const id of PHASE8_PROMOTED_KH_MODULE_IDS) {
 
 const kelly = getKellyDossierSections();
 assert.ok(kelly.length >= 15, `Kelly sections ${kelly.length}`);
-const withResearch = kelly.filter((s) => (s.researchDepth?.sourcedFacts.length ?? 0) >= 4);
+const withResearch = kelly.filter((s) => (s.researchDepth?.sourcedFacts.length ?? 0) >= 8);
 assert.ok(withResearch.length >= 15, `Kelly research bar ${withResearch.length}/15`);
 
 assert.ok(buildAccaPanelOperatorSummary().steps.length >= 8, "ACCA runbook steps");
@@ -61,6 +61,16 @@ const researchFiles = [
   "src/lib/intelligence/v4/applyCandidateDossierResearchDepth.ts",
 ];
 for (const f of researchFiles) {
+  assert.ok(fs.existsSync(path.join(process.cwd(), f)), `Missing ${f}`);
+}
+
+const expansionFiles = [
+  "src/lib/intelligence/v4/kellyDossierDepthExpansion.ts",
+  "src/lib/intelligence/v4/opponentDossierDepthExpansion.ts",
+  "src/lib/intelligence/v4/accaConferenceDepthExpansion.ts",
+  "src/lib/intelligence/v4/applyDossierDepthExpansion.ts",
+];
+for (const f of expansionFiles) {
   assert.ok(fs.existsSync(path.join(process.cwd(), f)), `Missing ${f}`);
 }
 

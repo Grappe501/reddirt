@@ -644,7 +644,8 @@ export const FIELD_BOOK_ARTICLES: FieldBookArticle[] = [
       "Headline event: Thu Jun 11, 1:00–3:00pm — two-hour Secretary of State Candidates Moderated Panel Q&A with Kim Hammer (R), Kelly Grappe (D), and Dr. Michael Pakko (L). ES&S is platinum sponsor — pair integrity talk with CVSGF grant transparency, not vendor bashing.",
       "Phase 8 adds phase8AccaPanelEnrichment on all thirteen conference depth sections and an eight-step operator runbook from T-7 through post-panel debrief. Max three trap questions in curious tone; respect Pakko; never attack Hammer faith.",
       "Staff day-of checklist, hammer-traps-clerk-room, three-way-panel-geometry, and cvsgf-for-clerks sections are mandatory pre-read before panel. Moderator name remains NEEDS_RESEARCH until AAC confirms.",
-      "Next ACCA conference: Sep 9–11, 2026 Benton Events Center — add to campaign calendar at panel close.",
+      "Phase 9 doubles dossier and ACCA narrative corpus at read time — kellyDossierDepthExpansion, opponentDossierDepthExpansion, and accaConferenceDepthExpansion merge via applyDossierDepthExpansion so every section carries fourteen or more narrative paragraphs and eight or more sourced facts before panel day.",
+      "Next ACCA conference: Sep 9–11, 2026 Benton Events Center — add to campaign calendar at panel close and capture clerk feedback from Mountain View for Field Book promotion after debrief.",
     ],
     sidebarFacts: [
       { label: "Panel", value: "Thu Jun 11 · 1–3pm" },

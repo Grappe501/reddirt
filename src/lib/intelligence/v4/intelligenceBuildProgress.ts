@@ -1002,11 +1002,28 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
         "Nav release batch 2026-06-05-phase-8-dossier-research-acca-closure",
       ],
     },
+    {
+      phase: 17,
+      name: "v12.0 — Phase 9 dossier depth expansion (COMPLETE)",
+      targetVersion: "0.24.0",
+      goal: "Second-wave narrative expansion — 2× dossier and ACCA corpus depth at read time.",
+      items: [
+        "kellyDossierDepthExpansion + opponentDossierDepthExpansion overlays",
+        "accaConferenceDepthExpansion — 13 ACCA sections doubled",
+        "applyDossierDepthExpansion wired into dossier + ACCA getters",
+        "Bio narrative chapters expanded (Kelly + Hammer + Pakko)",
+      ],
+      exitCriteria: [
+        "test-phase8-dossier-research-acca-closure green at 2× bar",
+        "Dossier sections ≥14 narrative paragraphs + ≥8 sourced facts",
+        "Nav release batch 2026-06-05-phase-9-dossier-depth-expansion",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v11.0-phase-8-dossier-research-acca-closure",
+    version: "v12.0-phase-9-dossier-depth-expansion",
     overallCompletionPct,
     items,
     phases,

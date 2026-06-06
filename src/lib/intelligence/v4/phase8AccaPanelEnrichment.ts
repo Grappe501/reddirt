@@ -34,7 +34,7 @@ export function enrichAccaConferenceSection(section: AccaConferenceDepthSection)
     ];
   }
 
-  let staffActions = [...section.staffActions];
+  const staffActions = [...section.staffActions];
   if (staffActions.length < 2) {
     staffActions.push("Capture verbatim clerk questions for post-panel quote ledger within 24 hours.");
   }
