@@ -418,6 +418,8 @@ export const ACCA_CONFERENCE_DEPTH_SECTIONS: AccaConferenceDepthSection[] = [
   },
 ];
 
+import { enrichAccaConferenceSection } from "@/lib/intelligence/v4/phase8AccaPanelEnrichment";
+
 export function loadAccaClerksConference2026(): AccaConferenceFile {
   const raw = fs.readFileSync(
     path.join(process.cwd(), "data/intelligence/acca-clerks-summer-conference-2026.json"),
@@ -431,7 +433,12 @@ export function getAllAccaConferenceDepthSectionIds(): string[] {
 }
 
 export function getAccaConferenceDepthSection(sectionId: string): AccaConferenceDepthSection | undefined {
-  return ACCA_CONFERENCE_DEPTH_SECTIONS.find((s) => s.sectionId === sectionId);
+  const section = ACCA_CONFERENCE_DEPTH_SECTIONS.find((s) => s.sectionId === sectionId);
+  return section ? enrichAccaConferenceSection(section) : undefined;
+}
+
+export function getAllAccaConferenceDepthSections(): AccaConferenceDepthSection[] {
+  return ACCA_CONFERENCE_DEPTH_SECTIONS.map(enrichAccaConferenceSection);
 }
 
 export function getAccaPanelCountdownDays(fromDate: Date = new Date()): number {

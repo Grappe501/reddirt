@@ -42,6 +42,7 @@ import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop"
 import { computePhase5UpgradePass } from "@/lib/intelligence/v4/phase5GlossaryConnectivity";
 import { computePhase6UpgradePass } from "@/lib/intelligence/v4/phase6DebateReadyGovernance";
 import { computePhase7UpgradePass } from "@/lib/intelligence/v4/phase7DossierDiligenceClosure";
+import { computePhase8UpgradePass } from "@/lib/intelligence/v4/phase8DossierResearchAccaClosure";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -589,6 +590,21 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/phase-7-upgrade",
   });
 
+  const phase8Pass = computePhase8UpgradePass();
+  items.push({
+    id: "phase-8-dossier-research-acca-closure",
+    label: "Phase 8 — Dossier research depth + ACCA panel closure",
+    category: "Governance",
+    completionPct: phase8Pass.completionPct,
+    status: phase8Pass.completionPct >= 90 ? "complete" : phase8Pass.completionPct >= 75 ? "partial" : "flagged",
+    built: phase8Pass.progress.dossierResearchPct,
+    total: 100,
+    flags: [
+      `Research ${phase8Pass.progress.dossierResearchPct}% · ACCA ${phase8Pass.progress.accaSectionsAtBar}/${phase8Pass.progress.accaSectionTotal} · KH wave3 ${phase8Pass.progress.khWave3Promoted}/10 · K ${phase8Pass.progress.kellySectionsAtResearchBar}/${phase8Pass.progress.kellySectionTotal} sections`,
+    ],
+    href: "/admin/intelligence/phase-8-upgrade",
+  });
+
   const canonStats = computeCanonLoopStats();
   items.push({
     id: "field-book-canon-loop",
@@ -712,7 +728,10 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/phase-5-upgrade",
     "/admin/intelligence/phase-6-upgrade",
     "/admin/intelligence/phase-7-upgrade",
+    "/admin/intelligence/phase-8-upgrade",
+    "/admin/intelligence/field-book/dossier-research-acca-closure",
     "/admin/intelligence/field-book/dossier-diligence-closure",
+    "/admin/intelligence/field-book/acca-summer-conference-2026",
     "/admin/intelligence/field-book/glossary",
     ...psychologyIds.map((id) => `/admin/intelligence/debate-prep/psychology-manual/${id}`),
     ...NSI_STAFF_RESEARCH_NAV_ITEMS.map((item) => item.href),
@@ -966,11 +985,28 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
         "Nav release batch 2026-06-05-phase-7-dossier-diligence-closure",
       ],
     },
+    {
+      phase: 16,
+      name: "v11.0 — Phase 8 dossier research + ACCA closure (COMPLETE)",
+      targetVersion: "0.23.0",
+      goal: "Sourced research corpus on all dossier sections, ACCA panel operator runbook, KH wave 3.",
+      items: [
+        "kellyDossierResearchDepth + opponentDossierResearchDepth overlays",
+        "6 new deep-dive dossier sections (Kelly + Hammer + Pakko)",
+        "ACCA panel enrichment + eight-step operator runbook",
+        "PHASE8_PROMOTED_KH_MODULE_IDS (10 modules)",
+      ],
+      exitCriteria: [
+        "test-phase8-dossier-research-acca-closure green",
+        "34 dossier sections with research depth at bar",
+        "Nav release batch 2026-06-05-phase-8-dossier-research-acca-closure",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v10.0-phase-7-dossier-diligence-closure",
+    version: "v11.0-phase-8-dossier-research-acca-closure",
     overallCompletionPct,
     items,
     phases,

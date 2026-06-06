@@ -18,6 +18,11 @@ export type KellyDossierDepthSection = {
   whatNotToDo: string[];
   relatedSectionIds: string[];
   href?: string;
+  /** Sourced research corpus — facts and staff field notes beyond narrative overview */
+  researchDepth?: {
+    sourcedFacts: string[];
+    fieldResearchNotes: string[];
+  };
 };
 
 export const KELLY_DOSSIER_SECTIONS: KellyDossierDepthSection[] = [
@@ -486,6 +491,135 @@ export const KELLY_DOSSIER_SECTIONS: KellyDossierDepthSection[] = [
     href: "/admin/intelligence/sos-debate-questions",
   },
   {
+    sectionId: "kelly-career-timeline-deep",
+    title: "Career timeline — Verizon, Rock Dental, and the path to SOS",
+    eyebrow: "Chronology · decade markers · source-locked",
+    narrativeOverview: [
+      "Kelly's public biography describes roughly three decades of leadership before this race — not a sudden pivot into politics, but a long arc from corporate operations to healthcare-adjacent training systems to rural civic education and now a statewide administration campaign. Staff should treat this section as the canonical chronology every other dossier section pulls from.",
+      "The Verizon chapter establishes large-team leadership under performance pressure: budgets, organizational transitions, cross-functional coordination, and systems that had to work for thousands of employees who did not all share the same priorities. That is the closest private-sector analog to running a multi-division state office where elections, business filings, Capitol operations, and county support cannot fail silently.",
+      "Rock Dental adds the training-systems credential Hammer cannot match on stage. Kelly helped build learning and leadership-development programs — the same operational muscle clerks need when a new act lands and poll workers, notaries, and election officials must absorb new procedures on short notice. This is not 'HR experience' in abstract; it is the job description of a modern Secretary of State.",
+      "The civic chapter — Stand Up Arkansas co-founder, rural ballot-measure education, Rose Bud roots and small-farm ownership — explains why Kelly entered this race with county equity already in her vocabulary. The October 8, 2025 candidacy announcement (Arkansas Times) marks the public pivot from organizer-educator to administrator-candidate. Every timeline answer should end forward: transparent rules, clerk partnership, seventy-five counties.",
+    ],
+    relevantSosFunctions: [
+      "Multi-division organizational management",
+      "Staff training and change management",
+      "County clerk and election official support",
+      "Civic education and public information",
+    ],
+    experienceHighlights: [
+      "Verizon — large-team leadership, budgets, operational systems.",
+      "Rock Dental — leadership-development and training program design.",
+      "Stand Up Arkansas — rural civic education co-founder.",
+      "2025-10-08 — Arkansas Times documents SOS candidacy announcement.",
+    ],
+    debateFramingExample:
+      "For three decades I've built teams and training systems in organizations that had to work for real people every day — and I've spent years helping Arkansans understand how government works. I'm running to bring that operational leadership to the Secretary of State's office in all seventy-five counties.",
+    plainEnglishWalkthrough: [
+      "Use decade markers when exact title dates are not yet in the verified packet.",
+      "Never list employers without immediate skill translation to SOS function.",
+      "Anchor with 2025 candidacy date; close on forward-looking administration pledge.",
+    ],
+    howToUseInDebate: [
+      "Qualifications questions: three-phase arc in under 45 seconds.",
+      "Experience attack: agree Hammer has tenure → contrast administrator readiness.",
+    ],
+    howToUseOnTrail: [
+      "Rotary and chamber events: emphasize Rock Dental training + county clerk parallel.",
+    ],
+    whatNotToDo: [
+      "Do not invent exact Verizon title dates without resume packet verification.",
+      "Do not read chronology longer than 45 seconds on TV.",
+    ],
+    relatedSectionIds: ["kelly-organizational-leadership", "kelly-debate-credential-intro", "kelly-30-second-bio"],
+    href: "/admin/intelligence/kelly-debate-coaching",
+  },
+  {
+    sectionId: "kelly-public-record-defensive",
+    title: "Public record defensive brief — verified, partial, and NOT_SEARCHED lanes",
+    eyebrow: "Claims gate · counsel frame · stage-safe boundaries",
+    narrativeOverview: [
+      "This section consolidates every high-risk public-record lane opponents may bundle into one moderator question: Stand Up Arkansas organizing, LEARNS/CAPES spouse connection, For AR Kids petition leadership, media clip potential, and court/financial diligence status. Kelly wins these exchanges with disciplined boundaries — not denial theater.",
+      "Stand Up Arkansas is VERIFIED and should be owned, not apologized for. Kelly co-founded rural civic education work; opponents will frame it as partisan activism. The pivot: lawful participation is Arkansas tradition; as SOS she administers rules for every lawful drive and every county equally during this race.",
+      "LEARNS/CAPES is the most sensitive verified lane. Husband Steve Grappe led CAPES opposing the LEARNS referendum. Hammer may bundle spouse, petitions, and 2025 restriction bills. Kelly's rule: one sentence boundary if asked, never attack Steve on stage, pivot to SOS neutrality plan and published rules for all lawful petitioners.",
+      "CourtConnect, UCC, business entity, and property tax diligence remain NOT_SEARCHED in staff logs until the five-search protocol completes. Kelly must never claim a clean search on stage. The incomplete pivot: 'I am running to run the Secretary of State's office for every voter — and we follow counsel on any personal-record question.'",
+    ],
+    relevantSosFunctions: [
+      "Lawful petition administration",
+      "Public trust and transparency",
+      "Non-partisan election administration",
+      "Records and diligence governance",
+    ],
+    experienceHighlights: [
+      "Public record brief: five verified/partial fact lanes with response frameworks.",
+      "Attack vectors: petition-organizer and experience-readiness marked CRITICAL/HIGH.",
+      "Diligence log: kelly-court-diligence-log.json — staff protocol before clean claims.",
+    ],
+    debateFramingExample:
+      "I've spent years helping people participate lawfully in democracy. As Secretary of State I will administer the rules fairly for every county and every lawful petition — that is the job, and that is what I am running to do.",
+    plainEnglishWalkthrough: [
+      "Tag each lane VERIFIED, PARTIAL, or NOT_SEARCHED before rehearsal.",
+      "Practice bundled attacks: Stand Up + LEARNS + petitions in one question.",
+      "Mandatory sequence: acknowledge → boundary → SOS implementation pledge → stop.",
+    ],
+    howToUseInDebate: [
+      "When Hammer cites 2025 act numbers, agree integrity → contrast unfunded rules → training plan.",
+      "Never end on agree alone — always bridge to implementation.",
+    ],
+    howToUseOnTrail: [
+      "House parties: deeper civics story OK; still pivot within 20 seconds.",
+    ],
+    whatNotToDo: [
+      "Do not claim clean CourtConnect/UCC search before log shows CLEAN.",
+      "Do not attack spouse, CAPES, or Hammer voters personally.",
+      "Do not circulate petitions during this race — state once if asked.",
+    ],
+    relatedSectionIds: ["kelly-civic-education", "kelly-public-trust-stewardship"],
+    href: "/admin/intelligence/kelly-debate-coaching",
+  },
+  {
+    sectionId: "kelly-road-stories-fieldbook",
+    title: "Road stories fieldbook — eight county narratives for debate and trail",
+    eyebrow: "Humanize · verify · one sentence + pivot",
+    narrativeOverview: [
+      "Road stories translate policy into kitchen-table reality — but they are governed by claims status. The kelly-road-stories.json corpus contains eight slots (road-01 through road-08). Most county labels are INTERPRETATION until Kelly confirms on tape; road-08 (Arkansas Civic Index) is NEEDS_REVIEW until source year is verified.",
+      "Road-01 (Saline area): clerk gets Friday mandate, no training budget, no SOS contact — the implementation-dare story. Road-02 (Central Arkansas): lawful petition volunteer stopped by confusing rules, not fraud. Road-03 (South Arkansas): quorum court asks where the line item is for the newest election law.",
+      "Road-04 (Northwest): first-time voter wants rules online, not slogans. Road-05 (Delta): poll workers absorb new procedures without extra staff or state training. Road-06: clerk asks about Act 768 before plain-language guidance existed. Road-07: Republican-leaning room wants non-partisan SOS — transparency reaction was strong.",
+      "Deployment rule: one sentence of story, immediate SOS function mapping, stop. Never stack three stories in one answer. Never name a county publicly until travel log confirms the interpretation label. Road-08 stays off-air until claims gate clears the civic index source.",
+    ],
+    relevantSosFunctions: [
+      "County clerk partnership",
+      "Training and implementation support",
+      "Voter and volunteer education",
+      "Transparent rule publication",
+    ],
+    experienceHighlights: [
+      "Eight road stories with offensive/defensive use tags in data/opposition/kelly-road-stories.json.",
+      "Pairs with county-champion trap lane and Act 350/444 unfunded-mandate themes.",
+      "Generated 2026-06-04 — replace INTERPRETATION counties from Kelly travel log.",
+    ],
+    debateFramingExample:
+      "A clerk told me they got a new mandate on a Friday with no training budget and no one to call Monday morning. That is why I am running this office as service — published rules, a training calendar, and a hotline that answers.",
+    plainEnglishWalkthrough: [
+      "Print story cards with claims-status color coding for green room.",
+      "Rehearse one-sentence delivery + function pivot for each approved story.",
+      "Staff interrupts if Kelly stacks anecdotes — one story max per answer.",
+    ],
+    howToUseInDebate: [
+      "County champion trap: road-01 or road-05 after Hammer cites security bills.",
+      "Integrity-without-participation: road-02 after fraud-data-dare if no case numbers.",
+    ],
+    howToUseOnTrail: [
+      "County-specific events: confirm county label with Kelly before naming it on stage.",
+    ],
+    whatNotToDo: [
+      "Do not broadcast road-08 until civic index source verified.",
+      "Do not invent county names for INTERPRETATION slots.",
+      "Do not use stories as substitute for sourced policy claims.",
+    ],
+    relatedSectionIds: ["kelly-rural-arkansas", "kelly-leadership-development"],
+    href: "/admin/intelligence/trap-lanes/county-champion",
+  },
+  {
     sectionId: "kelly-next-prep-modules",
     title: "What to open next — linked prep modules",
     eyebrow: "Drill-down · staff + candidate",
@@ -512,14 +646,20 @@ export const KELLY_DOSSIER_SECTIONS: KellyDossierDepthSection[] = [
   },
 ];
 
+import { applyKellyDossierResearchDepth } from "@/lib/intelligence/v4/applyCandidateDossierResearchDepth";
 import { enrichKellyDossierSection } from "@/lib/intelligence/v4/phase7DossierBriefingEnrichment";
 
+function finalizeKellySection(section: KellyDossierDepthSection): KellyDossierDepthSection {
+  return enrichKellyDossierSection(applyKellyDossierResearchDepth(section));
+}
+
 export function getKellyDossierSections(): KellyDossierDepthSection[] {
-  return KELLY_DOSSIER_SECTIONS.map(enrichKellyDossierSection);
+  return KELLY_DOSSIER_SECTIONS.map(finalizeKellySection);
 }
 
 export function getKellyDossierSection(sectionId: string): KellyDossierDepthSection | undefined {
-  return KELLY_DOSSIER_SECTIONS.find((s) => s.sectionId === sectionId);
+  const section = KELLY_DOSSIER_SECTIONS.find((s) => s.sectionId === sectionId);
+  return section ? finalizeKellySection(section) : undefined;
 }
 
 export function getAllKellyDossierSectionIds(): string[] {

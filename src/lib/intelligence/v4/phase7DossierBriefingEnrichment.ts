@@ -21,7 +21,8 @@ function briefingPadding(title: string, candidateLabel: string): string {
 
 export function enrichKellyDossierSection(section: KellyDossierDepthSection): KellyDossierDepthSection {
   const narrative = [...section.narrativeOverview];
-  while (richParagraphs(narrative).length < MIN_RICH_PARAGRAPHS) {
+  // Only pad if research merge still left section thin — avoid generic filler on deep sections
+  while (richParagraphs(narrative).length < MIN_RICH_PARAGRAPHS && narrative.length < 12) {
     narrative.push(briefingPadding(section.title, "Kelly"));
   }
 
@@ -40,7 +41,7 @@ export function enrichKellyDossierSection(section: KellyDossierDepthSection): Ke
 
 export function enrichOpponentDossierSection(section: OpponentDossierDepthSection): OpponentDossierDepthSection {
   const narrative = [...section.narrativeOverview];
-  while (richParagraphs(narrative).length < MIN_RICH_PARAGRAPHS) {
+  while (richParagraphs(narrative).length < MIN_RICH_PARAGRAPHS && narrative.length < 12) {
     narrative.push(
       briefingPadding(
         section.title,

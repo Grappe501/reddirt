@@ -1,0 +1,586 @@
+/**
+ * Opponent dossier research overlays.
+ * Adds additional narrative and verification scaffolding per section.
+ */
+import type { DossierResearchOverlay } from "@/lib/intelligence/v4/applyCandidateDossierResearchDepth";
+
+export const OPPONENT_DOSSIER_RESEARCH_OVERLAY: Record<string, DossierResearchOverlay> = {
+  "hammer-executive-profile": {
+    additionalNarrative: [
+      "Hammer's executive profile is strongest when treated as a two-lane reality: long legislative tenure and election-law authorship are real, but the Secretary of State job is an administrative service role that requires statewide implementation discipline. Kelly's contrast works best when she concedes the first point and wins the second.",
+      "The 2021 six-bill integrity foundation appears in opposition data as a coherent package rather than isolated acts, which lets Hammer present continuity from 2021 through 2025. Kelly should be prepared to acknowledge this continuity while pressing for county execution evidence and public grant accounting.",
+      "Pastoral and community identity are persistent trust assets in central Arkansas. That identity should never be targeted; the usable contrast is operational: who can publish rules, training calendars, and funding ledgers clerks can use when new requirements land.",
+      "The March 2026 Arkansas Advocate runoff coverage captured a competitive Republican runoff environment, and later reporting showed Hammer closing and winning. That arc supports a 'credible, tested nominee' frame rather than a weak-opponent assumption.",
+      "In mixed audiences like ACCA Mountain View, Hammer's executive profile should be answered with administrator language: respect legislative service, then ask what county-level implementation support followed each mandate cluster.",
+      "The most persuasive executive-profile contrast is not ideological. It is managerial: senator as rule author versus SOS as statewide operating partner for county clerks and election boards.",
+    ],
+    additionalHardEvidence: [
+      { claim: "2026 GOP SOS runoff context and trajectory documented in Arkansas Advocate and runoff result reporting", tier: "PARTIAL" },
+      { claim: "Kim Hammer listed as State Senator District 33 and GOP SOS nominee in dossier sources", tier: "VERIFIED" },
+      { claim: "2021 six-bill package in KH-0B file enrolled as Acts 727-729, 973-974, 1051", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "kim-hammer-candidate-dossier.json identifies Hammer as Republican nominee and election-law message candidate.",
+      "kim-hammer-kh0b-2021-integrity-foundation.json lists SB486, SB487, SB488, SB582, SB643, SB644 with enrolled acts.",
+      "kim-hammer-strengths-matrix.json includes long tenure, election-law specialization, and pastoral identity as strengths.",
+      "Arkansas Advocate March 31, 2026 runoff coverage is logged in dossier lead stories as coalition and competitiveness context.",
+    ],
+    fieldResearchNotes: [
+      "At ACCA, ask for one concrete county implementation example after citing respect for legislative tenure.",
+      "Avoid biography-overload responses; keep executive-profile contrast to one strength acknowledgment and one operations pivot.",
+      "If moderator invites personal background comparison, close with SOS service metrics, not personality contrast.",
+    ],
+    additionalWalkthrough: [
+      "Open with respect: acknowledge tenure and election-law focus.",
+      "Verify package continuity with one 2021 anchor (Acts 727-729/973-974/1051 cluster).",
+      "Pivot to county administration: ask for implementation support details and published ledger.",
+      "Close on SOS role as statewide service office for all 75 counties.",
+    ],
+  },
+  "hammer-strengths-deep": {
+    additionalNarrative: [
+      "Hammer's strengths should be modeled as 'acknowledge then out-administer.' His election-law fluency is a stage asset, especially in technical forums where bill numbers can be recited quickly and confidently.",
+      "The strengths matrix supports a stable four-part profile: tenure, election-law specialization, GOP base alignment, and pastoral/community identity. None of these are best answered with negation; they are best answered with implementation proof demands.",
+      "A practical risk for Kelly is appearing dismissive of the lawmaking record. The corrective is to concede policy authorship while testing whether county clerks received staffing, training, and procedural support aligned with each legislative layer.",
+      "Strength framing should anticipate audience segmentation. In Republican-leaning counties, pastoral credibility and movement consistency can carry weight before policy detail lands, so tone discipline matters as much as argument content.",
+      "Strengths analysis is not an attack deck. It is a calibration deck for when to apply trap questions and when to stay in cooperative language that preserves moderator and clerk trust.",
+      "If Hammer invokes ranking claims, Kelly can treat ranking as a background claim and move directly to operational support outputs that county officials can verify in their own workflows.",
+    ],
+    sourcedFacts: [
+      "kim-hammer-strengths-matrix.json records four core strengths and source confidence levels.",
+      "kim-hammer-candidate-dossier.json ties strengths to campaign messaging around security and clerk alignment claims.",
+      "Election-law specialization links to bill-index sources and campaign election-security page references.",
+      "Pastoral/community identity is listed as verified fact in matrix and background profile sources.",
+    ],
+    fieldResearchNotes: [
+      "Use one respectful acknowledgment line before any trap question in clerk audiences.",
+      "Do not spend answer time debating whether a listed strength is 'real'; treat it as audience reality and contrast on execution.",
+      "Track which strengths moderators surface first to prioritize response sequencing.",
+    ],
+    additionalWalkthrough: [
+      "Identify which Hammer strength is active in the exchange.",
+      "Acknowledge it in one sentence without sarcasm.",
+      "Transition to county implementation question tied to that strength claim.",
+      "Offer Kelly's administrative alternative: ledger, training calendar, hotline.",
+    ],
+  },
+  "hammer-weaknesses-deep": {
+    additionalNarrative: [
+      "Hammer weakness framing is safest when centered on governance burden rather than motive attribution. The vulnerability matrix itself flags county burden and direct-democracy restriction patterns as useful lanes with controlled wording.",
+      "The matrix also warns about risk tiering: rhetoric controversy can be used only with source discipline, while office-stacking remains a research question and should not be promoted as settled fact.",
+      "Weakness deployment should be environment-specific. In clerk rooms, implementation deficits are high-yield; in broader public debates, fairness language and sourced moderation prevent backlash against perceived overreach.",
+      "Runoff-margin framing is tactically useful only as coalition-competitiveness context, not as an insult line. The safer wording from the matrix should be treated as pre-approved language boundaries.",
+      "Direct-democracy restriction critique must remain process-focused: petition access tradeoffs, compliance friction, and evidentiary basis for fraud-prevention claims. This avoids unsourced intent claims while preserving policy contrast.",
+      "The weakness discipline objective is credibility retention. If Kelly stays inside verified and interpreted lanes with clear labels, moderators and clerks are more likely to trust the next contrast claim.",
+    ],
+    additionalHardEvidence: [
+      { claim: "Vulnerability matrix lists direct-democracy pattern and county burden as debate-usable weaknesses", tier: "VERIFIED" },
+      { claim: "Office-stacking narrative explicitly marked RESEARCH_QUESTION in matrix", tier: "VERIFIED" },
+      { claim: "Runoff competitiveness coverage appears in Arkansas Advocate and related runoff reporting", tier: "PARTIAL" },
+    ],
+    sourcedFacts: [
+      "kim-hammer-vulnerability-matrix.json includes saferWording and debateUsefulness fields for each weakness.",
+      "The matrix tags rhetoric controversy as reported-claim with medium confidence and elevated risk.",
+      "The direct-democracy restriction pattern references bill index and theme matrix evidence paths.",
+      "County burden framing appears as a fair-question formulation in weakness metadata.",
+    ],
+    fieldResearchNotes: [
+      "Rehearse saferWording phrasing verbatim to prevent drift into unsourced language.",
+      "Skip low-utility high-risk weakness lines in time-limited exchanges.",
+      "Use vulnerability items as question prompts, not declarative accusations.",
+    ],
+    additionalWalkthrough: [
+      "Select only high-usefulness, low-to-medium-risk weakness lanes.",
+      "State the weakness as a process question using matrix-safe wording.",
+      "Request operational proof or county-impact evidence.",
+      "Return to Kelly's service plan and stop.",
+    ],
+  },
+  "hammer-claims-ledger": {
+    additionalNarrative: [
+      "Hammer claims should be handled as a ledger workflow, not a rebuttal reflex. Each claim has a classification and evidence status, and Kelly gains credibility by signaling that distinction instead of collapsing all claims into one attack block.",
+      "The '#1 ranking' line remains especially sensitive. The dossier marks this as a reported claim requiring primary verification, making it a poor target for overconfident rebuttal unless staff has the source in hand.",
+      "Authorship claims are easier to process: bill sponsorship and enactment are verifiable in Arkleg-linked data. The unresolved question is impact magnitude and county burden distribution, which is where Kelly's implementation frame should land.",
+      "Funding claims are similarly dual-layered: appropriations can be true while county-level transparency remains incomplete. This allows a fair contrast that does not require alleging missing money or misconduct.",
+      "The strongest moderator-friendly move is 'agree, verify, contrast': agree with shared goals, verify claim tier, then contrast with county implementation evidence standards.",
+      "Claims ledger discipline also protects against introducing unvetted lines from social clips, campaign mailers, or forum paraphrases that have not been linked to primary or vetted secondary records.",
+    ],
+    additionalHardEvidence: [
+      { claim: "kim-hammer-candidate-dossier.json tracks six recurring claims with classification and rebuttal framing", tier: "VERIFIED" },
+      { claim: "2021 package sponsorship and enactment status are verifiable in KH-0B and bill index files", tier: "VERIFIED" },
+      { claim: "Act-level appropriations and county-ledger transparency remain distinct evidentiary questions", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "Claim table includes evidenceStatus fields (VERIFIED_FACT, INTERPRETATION, REPORTED_CLAIM).",
+      "Funding claim entries reference Act 808 and appropriation totals while noting absent county-by-county public ledger.",
+      "Poll watcher and petition fraud lines are linked to bill clusters, not automatically to measured outcome proof.",
+      "The dossier stores Kelly rebuttal frames to keep debate language within claims-gated boundaries.",
+    ],
+    fieldResearchNotes: [
+      "Before each event, re-check claim tier labels and recent source updates.",
+      "Do not rebut ranking claims with alternative rankings unless equally sourced.",
+      "When uncertain, shift from declarative rebuttal to transparency question format.",
+    ],
+    additionalWalkthrough: [
+      "Capture the exact Hammer claim wording.",
+      "Map it to ledger status and evidence tier.",
+      "Respond with agree-verify-contrast structure.",
+      "End with one SOS operational commitment.",
+    ],
+  },
+  "hammer-lead-stories": {
+    additionalNarrative: [
+      "Lead stories should be treated as a watchlist with trigger conditions, not a script dump. Priority tags in dossier data are useful because they force staff to allocate rehearsal time to likely high-impact exchanges.",
+      "The ACCA June 11 Mountain View panel is the highest-density lead-story environment because claims, funding, and clerk implementation all converge in one room with operationally literate listeners.",
+      "The 2021 package story remains a recurrent anchor and can appear in both favorable and critical form depending on moderator framing. Kelly should be prepared for both: continuity acknowledgment and burden question.",
+      "Runoff-competitiveness stories from Arkansas Advocate and runoff-result coverage are contextual, not core policy evidence. Use them sparingly and only when a coalition dynamics question is explicitly asked.",
+      "Petition-cluster stories are best handled with fraud-evidence and access-tradeoff questions, avoiding motive speculation and culture-war escalation.",
+      "A disciplined lead-story process ends with immediate post-event logging so claims surfaced in public can be verified and folded back into the next response cycle.",
+    ],
+    sourcedFacts: [
+      "kim-hammer-candidate-dossier.json contains seven lead stories with CRITICAL/HIGH/MEDIUM priorities.",
+      "The ACCA panel lead story is date-bound to June 11, 2026 Mountain View forum context.",
+      "Runoff lead-story references include Arkansas Advocate March 2026 coverage URL in dossier.",
+      "Petition restriction and ranking stories are pre-linked to claims and opposition-strategy routes.",
+    ],
+    fieldResearchNotes: [
+      "Rehearse only top-priority lead stories for live forums; keep medium items as contingency.",
+      "Log exact quotes when a lead story surfaces; avoid relying on memory paraphrases.",
+      "If a lead story appears unexpectedly, fall back to verified service frame rather than ad-lib specifics.",
+    ],
+    additionalWalkthrough: [
+      "Sort lead stories by priority before event prep.",
+      "Attach one response frame and one evidence anchor to each top story.",
+      "Deploy only when story trigger appears in moderator/opponent language.",
+      "Record and update ledger immediately after event.",
+    ],
+  },
+  "hammer-acca-panel-tactics": {
+    additionalNarrative: [
+      "The ACCA panel should be treated as a clerk-operations hearing in debate clothing. Two hours and an informed audience create space for implementation questions that are harder to evade with broad integrity rhetoric.",
+      "Mountain View dynamics reward candidate discipline: short answers, county-specific empathy, and operational follow-through language. Over-rotation into attack framing can backfire with clerks who already manage statutory and budget pressure.",
+      "CVSGF transparency is a high-utility panel lane because it sits at the intersection of Hammer claims, county burden, and SOS statutory responsibilities. It enables contrast without personalizing conflict.",
+      "Given vendor presence and equipment themes, Kelly's edge is process literacy: VVSG timelines, funding pathways, grant guidelines, and county deployment realities. Vendor conspiracy framing should be avoided.",
+      "Pakko's likely reform language can indirectly validate burden critiques. Kelly should absorb that validation and then differentiate on administrative execution, not by fighting Pakko for anti-establishment bandwidth.",
+      "Post-panel evidence capture is part of tactic execution: verbatim claim logging and same-day tiering keep future contrasts accurate and defensible.",
+    ],
+    additionalHardEvidence: [
+      { claim: "ACCA SOS candidate panel scheduled June 11, 2026 in Mountain View with Hammer, Kelly, and Pakko", tier: "VERIFIED" },
+      { claim: "Conference materials include election-funding and vendor context relevant to CVSGF and equipment discussions", tier: "VERIFIED" },
+      { claim: "Candidate dossier flags ACCA panel as CRITICAL lead story for Hammer claim testing", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "accaClerksConference2026Depth.ts documents panel timing and operational context.",
+      "kim-hammer-candidate-dossier.json tags ACCA panel framing as critical and implementation-focused.",
+      "Election funding drill-down frames county-ledger transparency as a public-information gap, not misconduct claim.",
+      "Packo dossier also flags ACCA as primary three-way geometry surface.",
+    ],
+    fieldResearchNotes: [
+      "Pre-brief Kelly with 2-3 trap questions maximum for panel pacing.",
+      "Ensure one staff member captures claims and one captures clerk question themes.",
+      "No unverified social clips should be published before claims-gate review.",
+    ],
+    additionalWalkthrough: [
+      "Start with clerk-service framing and shared integrity goal.",
+      "Insert one funding-transparency question after Hammer claim cluster.",
+      "Use one follow-up if needed, then pivot to SOS deliverables.",
+      "Close with county partnership and post-panel follow-up commitment.",
+    ],
+  },
+  "hammer-bill-record-arc": {
+    additionalNarrative: [
+      "Hammer's bill-record arc is most persuasive when presented as sequence rather than list: 2021 integrity foundation, 2023 continuity and enforcement/equipment layers, then 2025 petition-process tightening. Sequence communicates strategy and prevents isolated-bill cherry-picking.",
+      "The KH-0B package is especially useful because it contains both bill and act anchors with plain-English summaries, allowing a grounded narrative without legal overstatement beyond title-level certainty.",
+      "County impact narratives should stay in evidence-bounded language. Where title-level review confirms probable process burden, frame as implementation pressure and request county support evidence rather than alleging intent.",
+      "Act numbering fluency matters with clerks, but operational translation matters more. Kelly should move quickly from act reference to county question: staffing, timelines, training, and funding alignment.",
+      "Petition-era bills in 2025 should be framed as continuity of procedural control themes from earlier years, while avoiding absolute claims about fraud-prevention outcomes unless empirical evidence is provided.",
+      "A durable bill-arc response is one that survives fact-checking: cite verified enactment, clearly label interpretation, and keep unsourced causal claims out of final debate language.",
+    ],
+    additionalHardEvidence: [
+      { claim: "KH-0B file verifies 2021 six-bill package and enrolled acts 727-729, 973-974, 1051", tier: "VERIFIED" },
+      { claim: "Bill index contains 2023 and 2025 election-related entries with act references where available", tier: "VERIFIED" },
+      { claim: "2025 petition cluster entries include Acts 218, 240, 274, 241, and 768 in bill index", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "kim-hammer-election-record-bill-index.json includes cross-session rows and topic categories.",
+      "KH-0B narrative arc explicitly links 2021 package to later procedural-control themes.",
+      "Bill index differentiates sponsor and co-sponsor roles, useful for attribution discipline.",
+      "Source links include Arkleg bill detail URLs for anchor citations.",
+    ],
+    fieldResearchNotes: [
+      "Use no more than three bill anchors per answer to avoid bill-soup delivery.",
+      "When uncertain about exact legal text effects, quote title-level summary and label as needs legal text confirmation.",
+      "Prepare county-specific examples only from verified local records to avoid overgeneralization.",
+    ],
+    additionalWalkthrough: [
+      "Anchor exchange in 2021 six-bill foundation.",
+      "Add one 2023 and one 2025 continuity point.",
+      "Translate each to county implementation burden question.",
+      "Offer Kelly SOS implementation-and-transparency remedy.",
+    ],
+  },
+  "hammer-kelly-response-playbook": {
+    additionalNarrative: [
+      "The Hammer response playbook should be practiced as cadence discipline: agree on objective, test implementation, then close on SOS service. This reduces perceived hostility while preserving accountability pressure.",
+      "Playbook value comes from repeatability under stress. If Kelly can deliver the same calm sequence across different Hammer claims, moderators and clerks perceive administrative steadiness rather than tactical opportunism.",
+      "Funding transparency lines are strongest when phrased as public-service standards, not opponent suspicion. The phrase 'show the county ledger' works because it asks for a governance artifact, not a moral verdict.",
+      "Claims-gate integration is critical. Any line sourced from REPORTED_CLAIM or NEEDS_REVIEW tiers should be softened into question form unless primary citation is available pre-event.",
+      "In three-way settings, playbook discipline also means avoiding crossfire with Pakko while still differentiating administrator readiness from both opponents' messaging styles.",
+      "A mature playbook ends exchanges quickly. Over-extension after a successful contrast can erase gains and invite fact-risk from unscripted elaboration.",
+    ],
+    sourcedFacts: [
+      "hammer section scripts in opponent dossier emphasize agree-contrast-offer sequence.",
+      "Candidate dossier and funding depth files both support county-ledger transparency framing.",
+      "Claims ledger entries include tiering metadata used for safe response calibration.",
+      "ACCA and three-way modules reinforce short, administrator-style answer structure.",
+    ],
+    fieldResearchNotes: [
+      "Rehearse one 45-second and one 90-second version of each major response lane.",
+      "If interrupted, return to sequence point three (SOS offer) rather than re-litigating point two.",
+      "Track which response lines generate clerk nods/questions to refine future scripts.",
+    ],
+    additionalWalkthrough: [
+      "Agree with shared election integrity goal.",
+      "Ask one implementation-proof question linked to claim.",
+      "State one SOS service commitment.",
+      "Stop and yield floor.",
+    ],
+  },
+  "hammer-2021-six-bill-deep": {
+    additionalNarrative: [
+      "The 2021 six-bill package should be taught bill-by-bill so staff can answer granular follow-ups without improvisation. It is the cleanest single-year block of Hammer election-law authorship and sets the baseline for later cycles.",
+      "SB486 (Act 728) tightened electioneering and misdemeanor penalty language; SB487 (Act 729) altered precinct, polling-site, and vote-center administration; SB488 (Act 727) created a FOIA-related voted-ballot records exemption structure.",
+      "SB582 (Act 1051) modified county election board governance and oath procedures; SB643 (Act 973) amended absentee-ballot procedures; SB644 (Act 974) established election-law violation hotline and investigation mechanisms.",
+      "County impact should be framed as cumulative administrative load: multiple procedural changes in one session that local officials had to absorb through training, staffing, and public communication workflows.",
+      "The package can be acknowledged as coherent integrity architecture while still questioning implementation support depth and county-by-county resource alignment.",
+      "Kelly's use case is constructive oversight: cite act numbers accurately, ask county implementation questions concretely, and offer SOS modernization and support practices rather than motive critique.",
+    ],
+    additionalHardEvidence: [
+      { claim: "SB486, SB487, SB488, SB582, SB643, SB644 listed as 2021 package in KH-0B file", tier: "VERIFIED" },
+      { claim: "Acts 728, 729, 727, 1051, 973, 974 verified in KH-0B and bill index metadata", tier: "VERIFIED" },
+      { claim: "Bill index assigns county election officials and counties as affected actors/groups across package rows", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "kim-hammer-kh0b-2021-integrity-foundation.json contains package-level narrative and act mapping.",
+      "kim-hammer-election-record-bill-index.json provides plainEnglishSummary and affectedOfficeOrActor fields.",
+      "KH-0B governance notes explicitly separate verified bill existence from interpretation layers.",
+      "Package narrative links 2021 architecture to later 2023 and 2025 legislative themes.",
+    ],
+    fieldResearchNotes: [
+      "Prepare one sentence per bill; do not merge six bills into one generalized claim.",
+      "If challenged on legal specifics, defer to enrolled text review and stick to verified metadata claims.",
+      "Use county examples only where county-level records are verified, not inferred.",
+    ],
+    additionalWalkthrough: [
+      "Name all six bills with act numbers in correct pairings.",
+      "Provide one plain-English impact line per bill.",
+      "Synthesize cumulative county implementation burden.",
+      "Close with Kelly SOS support and transparency commitments.",
+    ],
+  },
+  "hammer-background-business-pastoral": {
+    additionalNarrative: [
+      "Hammer's background profile requires high discipline because biography can quickly become either irrelevant or unfairly personalized. The usable campaign frame is 'acknowledge biography, contrast on office function.'",
+      "Verified and reported sources indicate pastoral ministry service dating to 1978, community work tied to Saline Memorial Hospice organizing and chaplain service, and a small-business profile including Hammer Advertising LLC references in public reporting.",
+      "Awards context includes reported recognition such as the Family Council Action Committee 2023 Statesman Award. These details can explain audience affinity but should not dominate policy exchanges.",
+      "Business background references should remain strictly sourced. Public reporting about contracts or business activity can inform diligence, but unsourced insinuations or ethics claims should be avoided unless corroborated in approved records.",
+      "In live forums, this section functions as a tone guardrail: Kelly should not be baited into attacking faith, ministry, or personal background. The winning move is quick respect plus operations pivot.",
+      "The strategic value of this section is inoculation against profile-based surprise questions and ensuring contrast remains centered on SOS administration, funding transparency, and county support.",
+    ],
+    additionalHardEvidence: [
+      { claim: "Background profile lists ministry service since 1978 and pastor role references", tier: "VERIFIED" },
+      { claim: "Saline Memorial Hospice organizing/chaplain service appears in Senate biography-linked sources", tier: "VERIFIED" },
+      { claim: "Hammer Advertising LLC and Statesman Award entries are recorded as reported claims with medium confidence", tier: "PARTIAL" },
+    ],
+    sourcedFacts: [
+      "kim-hammer-background-deep-profile.json provides education/community/awards/business background breakdown with confidence tags.",
+      "Pastoral ministry and hospice details are linked to Arkansas Senate profile materials in the data file.",
+      "Awards section records 2023 Statesman Award as reported claim with medium confidence.",
+      "Business background includes Bentoncourier and campaign self-description references.",
+    ],
+    fieldResearchNotes: [
+      "If biography is raised, use one respect line and return immediately to SOS policy.",
+      "Do not introduce business or award items unless moderator question makes them relevant.",
+      "Keep all biography references tagged mentally as VERIFIED vs REPORTED before speaking.",
+    ],
+    additionalWalkthrough: [
+      "Acknowledge pastoral/community identity respectfully.",
+      "Reference only sourced background items when relevant.",
+      "Decline personal attacks and redirect to SOS administrative responsibilities.",
+      "Close on county support and transparency standards.",
+    ],
+  },
+  "packo-executive-profile": {
+    additionalNarrative: [
+      "Pakko's executive profile is best framed as serious third-candidate credibility plus administrative contrast. His economist and communications background gives him policy fluency that can influence moderation and audience expectations in three-way forums.",
+      "The timeline file supports a clear arc: Fed economist (1993-2009), Arkansas AEDI role from 2009, Libertarian Party leadership since 2015, 2024 statewide treasurer run, and 2026 SOS nomination.",
+      "Kelly should avoid treating Pakko as novelty or spoiler in public language. Doing so risks alienating voters who are receptive to reform themes and can still be persuaded by operational competence framing.",
+      "Pakko can function as an indirect validator of burden and transparency critiques, especially around grant opacity and mandate skepticism. Kelly's task is to absorb agreement and extend it into concrete SOS execution plans.",
+      "Name spelling should remain source-consistent and verified for stage use. Campaign materials use Pakko; data references include mixed spelling in identifiers, which should be cleaned internally but handled carefully in live remarks.",
+      "Executive-profile contrasts should remain office-specific: policy analysis is valuable, but SOS performance is measured in county implementation consistency and public-facing rule clarity.",
+    ],
+    additionalHardEvidence: [
+      { claim: "michael-packo-bio-timeline.json records Fed St. Louis service from 1993-2009 and AEDI role from 2009", tier: "VERIFIED" },
+      { claim: "Timeline and dossier confirm 2024 treasurer candidacy and 2026 Libertarian SOS nomination", tier: "VERIFIED" },
+      { claim: "ACCA June 11 panel listing includes Pakko with Hammer and Kelly", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "michael-packo-candidate-dossier.json classifies Pakko as Libertarian third-candidate dossier with reform/transparency themes.",
+      "michael-packo-bio-timeline.json includes nomination date and election-cycle milestones.",
+      "Candidate dossier notes spelling verification caution for on-stage usage.",
+      "ACCA depth module positions panel as primary three-way geometry event.",
+    ],
+    fieldResearchNotes: [
+      "Always use respectful title and tone when differentiating Pakko.",
+      "Do not spend answer time on electability arguments in clerk forums.",
+      "Use administrator-readiness contrast only after one credential acknowledgment.",
+    ],
+    additionalWalkthrough: [
+      "Acknowledge Pakko's economist/public communicator profile.",
+      "Confirm shared transparency values where accurate.",
+      "Differentiate on day-to-day SOS administration requirements.",
+      "Return to clerk-centered service commitments.",
+    ],
+  },
+  "packo-strengths-deep": {
+    additionalNarrative: [
+      "Pakko strengths should be operationally respected to preserve Kelly's credibility in three-way forums. The strengths matrix shows why: strong communicator profile, party leadership tenure, reform framing, statewide run experience, and calm panel demeanor.",
+      "His economist-communicator identity can make him persuasive in compressed answers, especially when moderators seek analytical framing rather than campaign rhetoric.",
+      "The anti-duopoly lane has strategic reach even among voters not fully aligned with Libertarian policy. If Kelly dismisses this lane, she can lose trust from process-focused listeners who primarily want institutional fairness.",
+      "Mandate skepticism is a particular cross-pressure point. Pakko can criticize burden without carrying Hammer's legislative ownership, so Kelly must move faster to concrete implementation remedies.",
+      "Calm demeanor matters in contrast optics. If Kelly appears combative toward Pakko, moderators may perceive asymmetry and reduce receptiveness to her substantive distinctions.",
+      "Strength-aware strategy means acknowledging Pakko's analytical strengths while making clear that SOS success depends on county service infrastructure and administrative follow-through.",
+    ],
+    additionalHardEvidence: [
+      { claim: "michael-packo-strengths-matrix.json lists six strengths with debateImpact ratings", tier: "VERIFIED" },
+      { claim: "Economist communicator strength supported by AEDI and PBS-linked sources in matrix", tier: "VERIFIED" },
+      { claim: "Mandate-skeptic clerk-appeal strength is marked interpretation with high debate impact", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "Strength matrix includes evidenceStatus/sourceConfidence for each strength.",
+      "LP chair tenure appears as verified fact in strengths file.",
+      "Prior statewide run and fiscal transparency framing are linked to 2024 candidacy sources.",
+      "Panel-demeanor interpretation is tied to PBS appearance references.",
+    ],
+    fieldResearchNotes: [
+      "Use one Pakko-strength acknowledgment, then pivot to administrator role contrast.",
+      "Avoid labels like spoiler or protest-only candidate in any public-facing prep.",
+      "When Pakko agrees on burden, move directly to implementation plan specifics.",
+    ],
+    additionalWalkthrough: [
+      "Identify which Pakko strength surfaced in question.",
+      "Acknowledge it succinctly and respectfully.",
+      "Bridge to SOS operational requirements.",
+      "Offer Kelly-specific delivery commitments for counties.",
+    ],
+  },
+  "packo-weaknesses-deep": {
+    additionalNarrative: [
+      "Pakko weakness framing is fundamentally a job-description contrast. The safest public line is not ideological disagreement but administrative readiness: who will run daily SOS operations across all counties.",
+      "The dossier and vulnerability framing emphasize that reform language can be compelling while still lacking county implementation pathways. Kelly should interrogate operational specifics rather than the legitimacy of reform goals.",
+      "A key risk is accidental voter disrespect. Attacking Libertarian participation or electability creates backlash and distracts from Kelly's strength case as administrator.",
+      "Pakko's critiques of mandates can align with clerk concerns, so Kelly should avoid reflexive opposition. Instead, she should acknowledge burden and differentiate by offering funded, procedural solutions.",
+      "Weakness messaging should remain forward-looking: how a future SOS would publish rules, coordinate training, and maintain transparent grant records under statutory timelines.",
+      "In three-way exchanges, discipline means never turning Pakko contrast into vote-coordination language; keep it as competency differentiation tied to office duties.",
+    ],
+    sourcedFacts: [
+      "michael-packo-candidate-dossier.json describes no current SOS administration track record and identifies research gaps.",
+      "packo sections in opponent dossier frame reform-vs-administration distinction as primary contrast lane.",
+      "Strengths matrix marks mandate-skeptic appeal as high-impact interpretation, requiring careful response.",
+      "Three-way geometry guidance warns against anti-Libertarian voter language.",
+    ],
+    fieldResearchNotes: [
+      "Phrase weakness lines as requirements of office, not critiques of voter ideology.",
+      "Avoid introducing ranked-choice specifics unless verified in quote ledger.",
+      "Keep contrasts short to preserve warm tone in three-way settings.",
+    ],
+    additionalWalkthrough: [
+      "Agree on the reform concern if valid.",
+      "Ask how proposal maps to county implementation reality.",
+      "Differentiate Kelly on operational execution and statutory duties.",
+      "Close respectfully without vote-direction language.",
+    ],
+  },
+  "packo-claims-ledger": {
+    additionalNarrative: [
+      "Pakko claims should be processed through the same tiered discipline used for Hammer, but with a different rhetorical objective: preserve respect while clarifying administrator deliverables.",
+      "His core claims cluster around transparency, competitiveness, and independent governance framing. Many are value-compatible with Kelly, making direct contradiction less effective than extension into operational detail.",
+      "The strongest Kelly move is to convert claim agreement into implementation specificity: if transparency is the claim, what ledger, what timeline, what county-facing guidance, and what accountability cadence.",
+      "Independent-outside-duopoly claims should be handled carefully as interpretation, not objective administrative guarantee. Kelly can acknowledge voter appetite for independence while framing nonpartisan administration as a practice, not a ballot label.",
+      "Because some policy specifics remain research gaps, hypothetical debate traps should be avoided unless sourced quotes are in hand. This prevents accidental strawman responses.",
+      "Claims ledger discipline with Pakko also helps Kelly avoid appearing defensive when Pakko raises structural critiques that resonate with process-focused audiences.",
+    ],
+    additionalHardEvidence: [
+      { claim: "michael-packo-candidate-dossier.json tracks four recurring claims with evidence-status tags", tier: "VERIFIED" },
+      { claim: "Candidate statement set includes transparency and competitiveness themes as verified quote text", tier: "VERIFIED" },
+      { claim: "Ranked-choice/reform-specific details remain marked as needs research in lead-story metadata", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "Pakko dossier classifications include CAMPAIGN_CLAIM with evidence-status metadata.",
+      "Lead stories file flags ranked-choice specifics as NEEDS_RESEARCH.",
+      "Bio timeline and strengths files support communicator and policy-analysis framing.",
+      "Three-way strategy materials call for respectful agree-and-extend handling with Pakko.",
+    ],
+    fieldResearchNotes: [
+      "Use extension framing ('and here's how I'd execute it') more than rebuttal framing.",
+      "Do not quote policy specifics from memory without logged source.",
+      "Keep independence-frame responses focused on office behavior standards.",
+    ],
+    additionalWalkthrough: [
+      "Map Pakko claim to ledger status.",
+      "Agree where claim is verified and values-aligned.",
+      "Add county implementation details Kelly would provide.",
+      "Exit response without personal or partisan escalation.",
+    ],
+  },
+  "packo-lead-stories": {
+    additionalNarrative: [
+      "Pakko lead stories are less about scandal cycles and more about strategic geometry: when his framing intersects with Hammer criticism and Kelly's service narrative in real time.",
+      "The ACCA panel is critical because Pakko can validate burden critiques that Kelly also uses. If Kelly fails to extend into implementation specifics, Pakko may own the reform moment despite lacking administrative emphasis.",
+      "Funding-opacity stories are particularly important because they allow a values coalition across candidates while still distinguishing Kelly on statutory execution and publication commitments.",
+      "Media-demeanor and panel-style stories matter more than traditional opposition hits in Pakko's case; presentation contrast can shape perceived command even when policy differences are subtle.",
+      "Ranked-choice and reform-detail stories should remain in research mode unless quote harvesting has been completed. Avoid building public argument on assumptions about unstated platform specifics.",
+      "Lead-story processing for Pakko should culminate in concise post-event updates that preserve respectful tone and sharpen future administrator-vs-analyst contrast delivery.",
+    ],
+    sourcedFacts: [
+      "michael-packo-candidate-dossier.json lists five lead stories with priority levels.",
+      "ACCA lead story is marked CRITICAL in Pakko dossier with June 11 context.",
+      "Funding-opacity lead story explicitly points to CVSGF transparency framing.",
+      "Ranked-choice lead story is marked NEEDS_RESEARCH pending quote verification.",
+    ],
+    fieldResearchNotes: [
+      "Treat Pakko lead stories as response-planning inputs, not attack messaging.",
+      "Capture exact Pakko phrasing at forums for quote-ledger completion.",
+      "If unsure on detail, pivot to shared-value plus Kelly implementation frame.",
+    ],
+    additionalWalkthrough: [
+      "Review top-priority Pakko lead stories before event.",
+      "Pair each with a respectful extension response line.",
+      "Use only when trigger appears in live exchange.",
+      "Log quotes and update evidence tiers after event.",
+    ],
+  },
+  "packo-three-way-geometry": {
+    additionalNarrative: [
+      "Three-way geometry with Pakko demands disciplined asymmetry: respect Pakko's legitimacy, contrast Hammer's record when relevant, and keep Kelly centered on execution competence.",
+      "When Hammer and Pakko converge on burden critiques, Kelly should avoid choosing sides and instead become the implementation closer: funding ledgers, training schedules, and county support mechanisms.",
+      "The geometry risk is visible triangulation language. Any suggestion of vote management, spoiler framing, or explicit strategic coordination can undermine trust and distract from policy substance.",
+      "Pakko's role can shift by audience: reform validator in process-oriented rooms, anti-duopoly messenger in broader debates. Kelly's constant should be administrative readiness and service delivery consistency.",
+      "Moderator questions comparing Kelly and Pakko should be answered with role clarity, not value dismissal. Reform ideas and analysis are acknowledged; operational office performance is differentiated.",
+      "A successful geometry response sounds collaborative in tone and decisive in office-function distinction, allowing Kelly to gain credibility without unnecessary third-candidate conflict.",
+    ],
+    additionalHardEvidence: [
+      { claim: "Three-way sections across opponent dossier and ACCA depth file position June 11 panel as key geometry test", tier: "VERIFIED" },
+      { claim: "Pakko and Hammer profiles both include burden/transparency overlaps that require Kelly extension strategy", tier: "VERIFIED" },
+      { claim: "Packo/Pakko spelling caution is explicitly recorded in Pakko profile files", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "packo-three-way-geometry section guidance emphasizes no vote-direction language.",
+      "ACCA file identifies all three candidates in moderated two-hour panel setting.",
+      "Pakko dossier and strengths matrix support reform-message relevance in shared exchanges.",
+      "Hammer dossier shows overlapping funding and mandate narratives likely to intersect with Pakko messaging.",
+    ],
+    fieldResearchNotes: [
+      "Use neutral body language when responding after Pakko speaks to avoid adversarial optics.",
+      "Keep contrast phrase stable: reform ideas vs daily administration.",
+      "Do not improvise electoral math language under any moderator prompt.",
+    ],
+    additionalWalkthrough: [
+      "Acknowledge shared concern raised in three-way exchange.",
+      "Differentiate Kelly by operational responsibility and execution plan.",
+      "Decline strategic-vote framing and return to county service.",
+      "Close with all-voter, all-county administrative commitment.",
+    ],
+  },
+  "packo-bio-career": {
+    additionalNarrative: [
+      "Pakko bio and career content should be used for respectful grounding, not contrast theater. Accurate biography helps prevent dismissive framing and supports credible role differentiation.",
+      "The timeline shows a long technical and communications career: Fed economist years, then Arkansas-focused economic forecasting and commentary roles. This background explains his policy fluency in public forums.",
+      "Libertarian leadership tenure since 2015 and prior statewide candidacy indicate organizational persistence, not a last-minute candidacy profile. That matters for moderator treatment and audience expectations.",
+      "Bio usage in debate should remain concise: acknowledge professional credentials once, then pivot to how SOS duties differ from economist commentary functions.",
+      "Campaign and data files note spelling consistency issues, so preparation should lock in pronunciation/spelling checks before live events to avoid avoidable credibility noise.",
+      "In clerk-facing settings, biography should be subordinated to implementation language, with just enough context to show respect and avoid caricature framing.",
+    ],
+    additionalHardEvidence: [
+      { claim: "michael-packo-bio-timeline.json documents education milestones and career timeline events", tier: "VERIFIED" },
+      { claim: "Timeline includes Fed St. Louis period, AEDI role, 2024 treasurer run, and 2026 SOS nomination", tier: "VERIFIED" },
+      { claim: "Pakko profile files include explicit spelling-note caution for on-stage use", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "Bio timeline contains dated milestones from 1984 through 2026 election cycle.",
+      "LP chair tenure and convention nomination are tied to source links in timeline.",
+      "Candidate dossier references prior statewide race and communication-forward profile.",
+      "ACCA panel date appears in timeline as scheduled campaign milestone.",
+    ],
+    fieldResearchNotes: [
+      "Use bio facts to establish respect quickly before office-role contrast.",
+      "Do not over-extend into unpublished CV claims without source backing.",
+      "Verify pronunciation and spelling in moderator briefing notes.",
+    ],
+    additionalWalkthrough: [
+      "Acknowledge one verified credential and career anchor.",
+      "Connect bio strength to shared transparency goals where relevant.",
+      "Differentiate SOS administration requirements clearly.",
+      "Return to county operations and service deliverables.",
+    ],
+  },
+  "packo-kelly-response-playbook": {
+    additionalNarrative: [
+      "Kelly's Pakko playbook is best understood as respect-first differentiation. The goal is to maintain coalition openness while still presenting Kelly as the most administration-ready candidate.",
+      "Because Pakko often operates in analysis and reform lanes, direct confrontation can appear unnecessary. Better strategy is additive: agree on principle, then specify how SOS would implement and publish.",
+      "The playbook should include a hard stop against anti-Libertarian voter language, electability taunts, or spoiler rhetoric. Those lines generate avoidable backlash and weaken moderator trust.",
+      "When Pakko critiques opacity or mandates, Kelly should embrace the concern and then advance a concrete county-support roadmap. This keeps her in command of practical governance framing.",
+      "In shared attacks on duopoly structures, Kelly can differentiate by emphasizing nonpartisan administrative conduct in office rather than debating party identity.",
+      "Playbook success is measured by tone control and closure discipline: clear role distinction delivered without hostility, then immediate return to service commitments.",
+    ],
+    sourcedFacts: [
+      "Pakko dossier sections and related coaching guidance call for respectful contrast language.",
+      "Lead stories identify funding-opacity and reform themes as likely Pakko talking points.",
+      "Three-way geometry section explicitly warns against vote-direction and spoiler framing.",
+      "Packo/Pakko contrast materials in v4 stack reinforce kellyDo/kellyDoNot behavior patterns.",
+    ],
+    fieldResearchNotes: [
+      "Practice transitions from shared-value agreement to implementation differentiation.",
+      "Keep one default response line ready for unexpected Pakko-focused moderator prompts.",
+      "Audit post-event clips for tone to ensure respect-first discipline is maintained.",
+    ],
+    additionalWalkthrough: [
+      "Agree on valid transparency/reform principle.",
+      "Differentiate with concrete SOS administration plan.",
+      "Avoid any disparagement of Libertarian voters or candidacy legitimacy.",
+      "Close with county-centered execution commitment.",
+    ],
+  },
+  "packo-economist-platform-deep": {
+    additionalNarrative: [
+      "Pakko's economist-platform depth combines institutional economics credentials with a reform-oriented campaign voice. The most defensible core is the long Fed-to-Arkansas arc and sustained public policy communication record.",
+      "From 1993 to 2009 at the Federal Reserve Bank of St. Louis, then from 2009 onward in Arkansas at AEDI, his professional identity is built on forecasting, analysis, and public-facing explanation of economic conditions.",
+      "That profile carried into electoral politics in the 2024 treasurer race, where fiscal transparency themes were central. In 2026 SOS messaging, similar transparency language appears alongside competitiveness and governance reform framing.",
+      "LP chair continuity since 2015 strengthens platform stability and helps explain why his candidacy can influence debate framing even without major-party infrastructure.",
+      "PBS and commentary appearances provide examples of calm, explanatory style that can read as competence in debates. Kelly should treat this as communication strength while differentiating on execution responsibility in election administration.",
+      "This section should remain evidence-bounded: platform specifics not clearly sourced in the quote ledger should be tagged as pending, while verified biography and messaging pillars can be used confidently.",
+    ],
+    additionalHardEvidence: [
+      { claim: "Bio timeline verifies Fed St. Louis tenure (1993-2009) and Arkansas AEDI role beginning 2009", tier: "VERIFIED" },
+      { claim: "Pakko dossier and timeline verify 2024 treasurer candidacy and 2026 SOS nomination", tier: "VERIFIED" },
+      { claim: "Strengths matrix links communicator profile to PBS sample appearances and public economist channels", tier: "VERIFIED" },
+    ],
+    sourcedFacts: [
+      "michael-packo-bio-timeline.json provides chronological platform foundations.",
+      "michael-packo-candidate-dossier.json records transparency and competitiveness claim clusters.",
+      "michael-packo-strengths-matrix.json includes economist communicator and panel demeanor dimensions.",
+      "Timeline records LPAR leadership continuity, supporting platform consistency interpretation.",
+    ],
+    fieldResearchNotes: [
+      "Use this section when moderator asks for qualifications or governing philosophy detail.",
+      "Keep platform comparisons tied to office duties rather than ideological labeling.",
+      "Tag any unverified policy specifics for PACKO-02 quote-ledger follow-up.",
+    ],
+    additionalWalkthrough: [
+      "Anchor response in verified career timeline milestones.",
+      "Connect platform language to transparency and competitiveness themes.",
+      "Differentiate analysis strengths from SOS implementation obligations.",
+      "Close on Kelly's county-service execution plan.",
+    ],
+  },
+};

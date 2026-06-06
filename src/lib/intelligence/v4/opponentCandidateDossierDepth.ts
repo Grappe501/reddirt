@@ -19,6 +19,10 @@ export type OpponentDossierDepthSection = {
   doNotSay: string[];
   relatedSectionIds: string[];
   href?: string;
+  researchDepth?: {
+    sourcedFacts: string[];
+    fieldResearchNotes: string[];
+  };
 };
 
 export const OPPONENT_DOSSIER_SECTIONS: OpponentDossierDepthSection[] = [
@@ -203,6 +207,71 @@ export const OPPONENT_DOSSIER_SECTIONS: OpponentDossierDepthSection[] = [
     doNotSay: ["Kelly's NEEDS_RESEARCH lines from claims gate"],
     relatedSectionIds: ["hammer-acca-panel-tactics"],
     href: "/admin/intelligence/kelly-debate-coaching",
+  },
+  {
+    sectionId: "hammer-2021-six-bill-deep",
+    candidateId: "kim-hammer",
+    title: "2021 six-bill integrity package — bill-by-bill county impact",
+    eyebrow: "Acts 727–729 · 973–974 · 1051 · KH-0B verified",
+    narrativeOverview: [
+      "Kim Hammer primary-sponsored six election bills in the 2021 regular session — all enrolled. This is the foundational 'integrity architecture' Kelly must know cold before ACCA Mountain View or any three-way forum. Hammer will cite the package as proof of competence; Kelly answers with county desk impact bill by bill.",
+      "SB486 (Act 728) tightened electioneering rules and misdemeanor penalties at polling places — expanded enforcement surface clerks must administer. SB487 (Act 729) changed precinct boundaries, polling sites, and vote-center establishment — operational decisions pushed to county election administration.",
+      "SB488 (Act 727) created FOIA-related voted-ballot records exemption structure — transparency rhetoric splits: narrower public inspection while compliance duties expand for counties. SB582 (Act 1051) modified county election board governance and oath procedures.",
+      "SB643 (Act 973) amended absentee-ballot procedures; SB644 (Act 974) established election-law violation hotline and investigation mechanisms. Cumulative effect: six procedural layers in one session without a documented statewide county implementation memo or training-dollar line item Kelly can cite.",
+    ],
+    whyItMattersForKelly: "Act-level homework builds clerk credibility — Kelly asks implementation questions Hammer must answer.",
+    plainEnglishWalkthrough: [
+      "Memorize bill→act pairs: SB486→728, SB487→729, SB488→727, SB582→1051, SB643→973, SB644→974.",
+      "One plain-English county impact line per bill before citing package totals.",
+      "Close: security yes — where was the training budget for clerks implementing all six?",
+    ],
+    hardEvidence: [
+      { claim: "Six bills enrolled 2021 — KH-0B integrity foundation package", tier: "VERIFIED" },
+      { claim: "Bill index assigns county clerks as affected actors on SB487, SB582", tier: "VERIFIED" },
+    ],
+    whatWeStillNeed: ["County training budget line items tied to 2021 package implementation"],
+    howToUseInDebate: [
+      "When Hammer says 'six bills secured elections,' ask which county spreadsheet tracked implementation.",
+    ],
+    howToUseInClerkRoom: [
+      "Maximum three bill references — curious tone, not prosecution.",
+    ],
+    doNotSay: ["Stolen election", "Fraud without case evidence"],
+    relatedSectionIds: ["hammer-bill-record-arc", "hammer-claims-ledger"],
+    href: "/admin/intelligence/kim-hammer/integrity-foundation-2021",
+  },
+  {
+    sectionId: "hammer-background-business-pastoral",
+    candidateId: "kim-hammer",
+    title: "Background — pastoral ministry, hospice, and business profile",
+    eyebrow: "Biography · tone guardrails · never attack faith",
+    narrativeOverview: [
+      "Kim Hammer's biography is not just legislative — it is pastoral and community-rooted. Senate profile materials reference ministry service since 1978 and pastor role in Tull. Saline Memorial Hospice organizing committee chair and volunteer/full-time chaplain service through 2018 appear in verified Senate biography sources.",
+      "Hammer Advertising LLC and small-business owner framing appear in campaign materials and public reporting, including Benton Courier coverage of state contract items. Family Council Action Committee 2023 Statesman Award is logged as reported claim — explains base affinity, not SOS qualification.",
+      "Kelly's staff rule is absolute: never attack personal faith, pastoral identity, or hospice service. These are audience trust assets in central Arkansas Republican rooms. Contrast stays on job fit — senator writes rules; secretary administers service.",
+      "If moderators invite biography comparison, Kelly uses one respect line and returns to SOS operations: published rules, clerk hotline, CVSGF ledger, training calendar. Biography surprises should be pre-read here so Kelly is never caught flat-footed.",
+    ],
+    whyItMattersForKelly: "Tone guardrails — respect biography, win on administrator contrast.",
+    plainEnglishWalkthrough: [
+      "Acknowledge pastoral/community service once if raised.",
+      "Decline personal attacks — redirect to county implementation.",
+      "Business references only with sourced reporting — no insinuation.",
+    ],
+    hardEvidence: [
+      { claim: "Ministry since 1978 — Senate profile", tier: "VERIFIED" },
+      { claim: "Saline Memorial Hospice — Senate biography PDF", tier: "VERIFIED" },
+      { claim: "Hammer Advertising LLC — Benton Courier reported claim", tier: "PARTIAL" },
+    ],
+    whatWeStillNeed: ["Contract details verification before any stage reference"],
+    howToUseInDebate: [
+      "If Facebook 2021 post raised: sourced temperament contrast only — values, not destruction.",
+    ],
+    howToUseInClerkRoom: [
+      "Never mention pastor role unprompted.",
+    ],
+    doNotSay: ["Attack faith", "Career politician smear", "Unverified contract accusations"],
+    relatedSectionIds: ["hammer-executive-profile", "hammer-strengths-deep"],
+    href: "/admin/intelligence/kim-hammer/background-deep",
   },
   // ─── MICHAEL PAKKO ───
   {
@@ -403,14 +472,52 @@ export const OPPONENT_DOSSIER_SECTIONS: OpponentDossierDepthSection[] = [
     relatedSectionIds: ["packo-three-way-geometry"],
     href: "/admin/intelligence/kelly-debate-coaching",
   },
+  {
+    sectionId: "packo-economist-platform-deep",
+    candidateId: "michael-packo",
+    title: "Economist platform — Fed to AEDI to fiscal transparency SOS frame",
+    eyebrow: "Ph.D. Rochester · PBS · 2024 treasurer → 2026 SOS",
+    narrativeOverview: [
+      "Dr. Michael Pakko's credential stack is unusually deep for a third-party statewide candidate: B.A. Michigan State 1984, Ph.D. University of Rochester 1993 in economics, thirteen years as research economist at the Federal Reserve Bank of St. Louis (macro, trade, public policy), then Arkansas since 2009 as Chief Economist and State Economic Forecaster at UALR's Arkansas Economic Development Institute.",
+      "He runs the Arkansas Economic Forecast Conference, adjunct-teaches, maintains the Arkansas Economist commentary series, and appears regularly on PBS Arkansas Week — calm panel demeanor that may contrast with Hammer combativeness in three-way settings. LPAR chair since 2015 (sixth term per LP site) gives institutional third-party voice, not placeholder status.",
+      "2024 Libertarian State Treasurer run established fiscal-transparency vocabulary he carries into 2026 SOS: economist/data skills for public finance visibility, anti-duopoly election competitiveness themes, and independence from two-party dynamics. Campaign claims on pakko4ar.com emphasize communication and analysis — Kelly extends with operational detail: published CVSGF ledger, clerk training calendar, SOS hotline.",
+      "Kelly's contrast is respectful and precise: analysis is valuable; administration is Monday morning in seventy-five counties with different equipment, staffing, and quorum-court politics. Ranked-choice and mandate-skeptic specifics remain NEEDS_RESEARCH until PACKO-02 quote ledger harvest completes — do not debate hypotheticals on stage.",
+    ],
+    whyItMattersForKelly: "Respect economist credential once; win on administrator readiness and county partnership.",
+    plainEnglishWalkthrough: [
+      "Fed 1993-2009 → AEDI 2009 → LP chair 2015 → treasurer 2024 → SOS 2026.",
+      "Acknowledge PBS/forecasting credential if moderator asks backgrounds.",
+      "Differentiate: reform ideas vs daily clerk administration immediately after.",
+    ],
+    hardEvidence: [
+      { claim: "Ph.D. Rochester 1993; Fed St. Louis 1993-2009 — bio timeline VERIFIED", tier: "VERIFIED" },
+      { claim: "LPAR convention nomination 2026-02-22 — bio timeline VERIFIED", tier: "VERIFIED" },
+      { claim: "2024 treasurer run — Talk Business, Ballotpedia VERIFIED", tier: "VERIFIED" },
+    ],
+    whatWeStillNeed: ["SOS-specific platform vs treasurer framing on pakko4ar.com", "PACKO-02 full quote ledger"],
+    howToUseInDebate: [
+      "'Dr. Pakko brings decades of economic analysis — I bring daily administration for seventy-five counties.'",
+    ],
+    howToUseInClerkRoom: [
+      "Silent unless third-candidate question — one respectful sentence, then SOS plan.",
+    ],
+    doNotSay: ["Mock Ph.D.", "Spoiler framing", "Unverified LP platform quotes"],
+    relatedSectionIds: ["packo-executive-profile", "packo-bio-career", "packo-strengths-deep"],
+    href: "/admin/intelligence/opponents/michael-packo",
+  },
 ];
 
+import { applyOpponentDossierResearchDepth } from "@/lib/intelligence/v4/applyCandidateDossierResearchDepth";
 import { enrichOpponentDossierSection } from "@/lib/intelligence/v4/phase7DossierBriefingEnrichment";
+
+function finalizeOpponentSection(section: OpponentDossierDepthSection): OpponentDossierDepthSection {
+  return enrichOpponentDossierSection(applyOpponentDossierResearchDepth(section));
+}
 
 export function getOpponentDossierSectionsForCandidate(
   candidateId: "kim-hammer" | "michael-packo",
 ): OpponentDossierDepthSection[] {
-  return OPPONENT_DOSSIER_SECTIONS.filter((s) => s.candidateId === candidateId).map(enrichOpponentDossierSection);
+  return OPPONENT_DOSSIER_SECTIONS.filter((s) => s.candidateId === candidateId).map(finalizeOpponentSection);
 }
 
 export function getAllOpponentDossierSectionIds(): string[] {
@@ -418,7 +525,8 @@ export function getAllOpponentDossierSectionIds(): string[] {
 }
 
 export function getOpponentDossierSection(sectionId: string): OpponentDossierDepthSection | undefined {
-  return OPPONENT_DOSSIER_SECTIONS.find((s) => s.sectionId === sectionId);
+  const section = OPPONENT_DOSSIER_SECTIONS.find((s) => s.sectionId === sectionId);
+  return section ? finalizeOpponentSection(section) : undefined;
 }
 
 export function getOpponentDossierHubPath(candidateId: "kim-hammer" | "michael-packo"): string {

@@ -225,6 +225,13 @@ const INTELLIGENCE_STRATEGY_ROUTES: StrategyMigrationRoute[] = [
     fieldBookSlugs: ["dossier-diligence-closure", "debate-ready-governance", "cvsgf-ledger-gap"],
     promoteNote: "Phase 7 exit — dossier briefing bar, diligence runbook, funding transparency, KH wave 2.",
   },
+  {
+    intelligenceHref: "/admin/intelligence/phase-8-upgrade",
+    label: "Phase 8 dossier research ACCA closure",
+    strategyPathKeys: ["build-audit", "meta"],
+    fieldBookSlugs: ["dossier-research-acca-closure", "dossier-diligence-closure", "acca-summer-conference-2026"],
+    promoteNote: "Phase 8 exit — research corpus, ACCA panel runbook, KH wave 3.",
+  },
 ];
 
 export function listStrategyMigrationRoutes(): StrategyMigrationRoute[] {

@@ -14,6 +14,7 @@ Run **one phase at a time**. At the end of each phase, execute the full sandbox 
 | **5** | Debate glossary + hub connectivity | Glossary index + Phase B/C depth + all hub bindings |
 | **6** | Debate-ready governance | Prep encounter depth + trap rebuttals + claims review wave |
 | **7** | Dossier briefing closure + diligence runbook | Briefing-book bar + five-search runbook + KH wave 2 |
+| **8** | Dossier research depth + ACCA panel closure | Research corpus + ACCA runbook + KH wave 3 |
 
 ## End-of-phase sandbox (required)
 
@@ -34,10 +35,11 @@ This runs, in order:
 7. `test-phase5-glossary-connectivity` (Phase 5 glossary + hub connectivity)
 8. `test-phase6-debate-ready-governance` (Phase 6 debate-ready governance)
 9. `test-phase7-dossier-diligence-closure` (Phase 7 dossier briefing closure)
-10. `agents:test-intelligence-hardening`
-11. `lint:all`
-12. `typecheck`
-13. `build` (production Next.js build — Netlify parity)
+10. `test-phase8-dossier-research-acca-closure` (Phase 8 dossier research + ACCA closure)
+11. `agents:test-intelligence-hardening`
+12. `lint:all`
+13. `typecheck`
+14. `build` (production Next.js build — Netlify parity)
 
 **Do not push** if any step fails. Fix in the active lane slice only.
 

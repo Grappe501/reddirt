@@ -43,6 +43,21 @@ function SectionBlock({ title, items }: { title: string; items: string[] }) {
   );
 }
 
+function ResearchDepthPanel({ researchDepth }: { researchDepth?: { sourcedFacts: string[]; fieldResearchNotes: string[] } }) {
+  if (!researchDepth?.sourcedFacts.length && !researchDepth?.fieldResearchNotes.length) return null;
+  return (
+    <div className="mt-4 rounded-lg border border-indigo-200 bg-indigo-50/40 p-4">
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-950">Research depth</p>
+      {researchDepth.sourcedFacts.length ? (
+        <SectionBlock title="Sourced facts" items={researchDepth.sourcedFacts} />
+      ) : null}
+      {researchDepth.fieldResearchNotes.length ? (
+        <SectionBlock title="Field research notes" items={researchDepth.fieldResearchNotes} />
+      ) : null}
+    </div>
+  );
+}
+
 function KellyDossierSectionCard({
   section,
   expanded,
@@ -88,6 +103,7 @@ function KellyDossierSectionCard({
 
       {expanded ? (
         <>
+          <ResearchDepthPanel researchDepth={section.researchDepth} />
           <SectionBlock title="Relevant SOS functions" items={section.relevantSosFunctions} />
           <SectionBlock title="Experience highlights" items={section.experienceHighlights} />
           <SectionBlock title="Plain English walkthrough" items={section.plainEnglishWalkthrough} />

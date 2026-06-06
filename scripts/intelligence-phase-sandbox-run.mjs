@@ -15,6 +15,7 @@ const steps = [
   { label: "test-phase5-glossary-connectivity", cmd: "npx", args: ["tsx", "scripts/test-phase5-glossary-connectivity.ts"] },
   { label: "test-phase6-debate-ready-governance", cmd: "npx", args: ["tsx", "scripts/test-phase6-debate-ready-governance.ts"] },
   { label: "test-phase7-dossier-diligence-closure", cmd: "npx", args: ["tsx", "scripts/test-phase7-dossier-diligence-closure.ts"] },
+  { label: "test-phase8-dossier-research-acca-closure", cmd: "npx", args: ["tsx", "scripts/test-phase8-dossier-research-acca-closure.ts"] },
   { label: "test-intelligence-hardening", cmd: "npm", args: ["run", "agents:test-intelligence-hardening"] },
   { label: "lint:all", cmd: "npm", args: ["run", "lint:all"] },
   { label: "typecheck", cmd: "npm", args: ["run", "typecheck"] },

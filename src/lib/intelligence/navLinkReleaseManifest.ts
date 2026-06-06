@@ -178,6 +178,17 @@ export const NAV_LINK_RELEASE_BATCHES: NavLinkReleaseBatch[] = [
       "/admin/intelligence/kim-hammer/kh3-operational",
     ]),
   },
+  {
+    id: "2026-06-05-phase-8-dossier-research-acca-closure",
+    label: "Phase 8 dossier research depth + ACCA panel closure",
+    hrefs: dedupeHrefs([
+      "/admin/intelligence/phase-8-upgrade",
+      "/admin/intelligence/field-book/dossier-research-acca-closure",
+      "/admin/intelligence/candidate-dossiers/kelly-grappe/kelly-career-timeline-deep",
+      "/admin/intelligence/county-clerk-week/acca-summer-conference/panel-format",
+      "/admin/intelligence/kim-hammer/geographic-narrative-intelligence",
+    ]),
+  },
 ];
 
 export const CURRENT_NAV_RELEASE_ID =

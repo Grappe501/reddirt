@@ -440,6 +440,91 @@ KIM_HAMMER_V4_MODULES["media-footprint"] = entry(
   { guideKey: "themeMatrix", preferV4: true, profile: "surface" },
 );
 
+/** Phase 8 — third-wave KH module promotions (ACCA prep + research depth). */
+export const PHASE8_PROMOTED_KH_MODULE_IDS = [
+  "geographic-narrative-intelligence",
+  "narrative-usage-analytics",
+  "management-capacity",
+  "network-influence",
+  "vulnerability-matrix-kh3",
+  "narrative-testing",
+  "county-exposure",
+  "public-timeline",
+  "public-controversies",
+  "kh4-agent-tools",
+] as const;
+
+KIM_HAMMER_V4_MODULES["geographic-narrative-intelligence"] = entry(
+  "geographic-narrative-intelligence",
+  "Geographic narrative intel",
+  "KH-4 county overlays",
+  { type: "theme-matrix" },
+  { guideKey: "themeMatrix", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["narrative-usage-analytics"] = entry(
+  "narrative-usage-analytics",
+  "Narrative usage analytics",
+  "KH-4 message tracking",
+  { type: "retrieval-gaps" },
+  { guideKey: "intelligenceGaps", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["management-capacity"] = entry(
+  "management-capacity",
+  "Management capacity",
+  "KH-3 SOS fit assessment",
+  { type: "markdown", layer: "kh3DeepResearch", sectionLimit: 6 },
+  { guideKey: "backgroundDeep", preferV4: true, profile: "full" },
+);
+KIM_HAMMER_V4_MODULES["network-influence"] = entry(
+  "network-influence",
+  "Network influence",
+  "KH-3 relationship map",
+  { type: "argument-map" },
+  { guideKey: "opponentRecord", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["vulnerability-matrix-kh3"] = entry(
+  "vulnerability-matrix-kh3",
+  "Vulnerability matrix",
+  "KH-3 defensive map",
+  { type: "strengths-weaknesses" },
+  { guideKey: "strengthsWeaknesses", preferV4: true, profile: "full" },
+);
+KIM_HAMMER_V4_MODULES["narrative-testing"] = entry(
+  "narrative-testing",
+  "Narrative testing",
+  "KH-3 message rehearsal",
+  { type: "theme-matrix" },
+  { guideKey: "themeMatrix", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["county-exposure"] = entry(
+  "county-exposure",
+  "County exposure",
+  "KH-3 clerk-facing map",
+  { type: "markdown", layer: "messageGuidance", sectionLimit: 6 },
+  { guideKey: "themeMatrix", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["public-timeline"] = entry(
+  "public-timeline",
+  "Public timeline",
+  "KH-1 chronology",
+  { type: "timeline" },
+  { guideKey: "timeline", preferV4: true, profile: "surface" },
+);
+KIM_HAMMER_V4_MODULES["public-controversies"] = entry(
+  "public-controversies",
+  "Public controversies",
+  "KH-1 sourced reporting",
+  { type: "markdown", layer: "kh3DeepResearch", sectionLimit: 8 },
+  { guideKey: "backgroundDeep", preferV4: true, profile: "surface", preserveCustomPageInLaunchMode: true },
+);
+KIM_HAMMER_V4_MODULES["kh4-agent-tools"] = entry(
+  "kh4-agent-tools",
+  "KH-4 agent tools",
+  "Governed staff automation",
+  { type: "rapid-response" },
+  { guideKey: "evidenceCommand", preferV4: true, profile: "hub" },
+);
+
 export function getKimHammerV4ModuleEntry(moduleId: string): KimHammerV4ModuleEntry | undefined {
   return KIM_HAMMER_V4_MODULES[moduleId];
 }
