@@ -283,6 +283,18 @@ export const TRAP_LANE_DRILL_DOWNS: Record<string, TrapLaneDrillDown> = {
       "‘You have seen the news — people gaming the system.’",
       "‘We had to tighten signatures.’",
       "Cites national cases, not Arkansas convictions.",
+      "Dares you to prove negatives on live TV — do not invent statistics.",
+    ],
+    rebuttalScripts: [
+      r(
+        "Fraud dare",
+        "Show me the fraud numbers",
+        "We should prosecute real fraud wherever it exists.",
+        "Lawful petition access and clerk capacity are not optional — burying drives in paperwork is not security.",
+        "Secretary of State publishes rules clerks can implement — that is the desk I am running for.",
+        undefined,
+        "RESEARCH_QUESTION on statewide conviction counts until ledger ingested",
+      ),
     ],
     setupMoves: [
       "‘How many Arkansas election-fraud convictions in five years justify Act 241?’",
@@ -323,6 +335,17 @@ export const TRAP_LANE_DRILL_DOWNS: Record<string, TrapLaneDrillDown> = {
         "50s",
         "I have checked your record, Senator — verified on Arkleg. In 2025 you sponsored Acts 218, 240, 274, 241, and 768. That is legislative experience — Secretary of State is implementation in every county. I am running to answer the phone for clerks.",
         "Full script on coaching page",
+      ),
+    ],
+    rebuttalScripts: [
+      r(
+        "Experience equals SOS",
+        "Nobody knows election law like I do",
+        "Your legislative tenure on election bills is on the record — I have checked Arkleg.",
+        "Secretary of State is running implementation in 75 counties — training, grants, published rules.",
+        "I am running to answer the phone for clerks, not to write another package from the Senate floor.",
+        undefined,
+        "Act numbers VERIFIED in Claims before stage",
       ),
     ],
     estimatedPrepMinutes: 40,

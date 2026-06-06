@@ -211,6 +211,13 @@ const INTELLIGENCE_STRATEGY_ROUTES: StrategyMigrationRoute[] = [
     fieldBookSlugs: ["debate-glossary", "plain-language-prep-sections"],
     promoteNote: "Alphabetical term registry — Wikipedia-style intelligence workbench glossary.",
   },
+  {
+    intelligenceHref: "/admin/intelligence/phase-6-upgrade",
+    label: "Phase 6 debate-ready governance",
+    strategyPathKeys: ["build-audit", "meta"],
+    fieldBookSlugs: ["debate-ready-governance", "claims-firewall", "debate-glossary"],
+    promoteNote: "Phase 6 exit — prep depth, trap rebuttals, claims wave, KH module promotion.",
+  },
 ];
 
 export function listStrategyMigrationRoutes(): StrategyMigrationRoute[] {

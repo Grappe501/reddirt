@@ -377,8 +377,183 @@ const DEFAULT_PREP_DEPTH: Partial<DebateEncounterDepth> = {
   handlingAdversity: UNIVERSAL_ADVERSITY,
 };
 
-export function getPrepSectionEncounterDepth(_sectionId: string): Partial<DebateEncounterDepth> {
-  return DEFAULT_PREP_DEPTH;
+const PREP_SECTION_ENCOUNTER_DEPTH: Record<string, Partial<DebateEncounterDepth>> = {
+  strategy: {
+    whatToExpectPlain:
+      "Hammer opens with confidence on election security and bill authorship. This section orients your whole night — service desk for 75 counties, not a partisan war. Expect interruptions on your opening theme.",
+    howHeWillAttack: ["Experience equals SOS", "2025 fresh start framing"],
+    howToHandleIt: ["Memorize unity spine", "Pick two anchor bills from question bank", "Link to trap lane if record fight starts"],
+  },
+  "core-frame": {
+    whatToExpectPlain:
+      "Your core frame is non-partisan SOS administration — Hammer will test whether you sound like a candidate or a clerk's ally. Stay concrete: phones answered, rules published, counties funded.",
+    howHeWillAttack: ["Culture-war bait into biography", "Partisan labels"],
+    howToHandleIt: ["Repeat service job frame", "Decline theater within 10 seconds", "Bridge to county example"],
+    cultureWarDefense: UNIVERSAL_CULTURE_WAR,
+  },
+  pillars: {
+    whatToExpectPlain:
+      "Three pillars hold every answer: accountability, access, education. Hammer may agree on one pillar then attack another — add a fresh implementation line Packo did not use.",
+    howHeWillAttack: ["False choice integrity vs participation"],
+    howToHandleIt: ["Hold both prosecution and access", "One county detail per pillar"],
+  },
+  "likely-hammer": {
+    whatToExpectPlain:
+      "Hammer's likely lines are bill-number fastballs — he sounds authoritative because he cites acts. You answer with one verified anchor plus county impact, not a stack of numbers from memory.",
+    howHeWillAttack: UNIVERSAL_ATTACK_PATTERNS,
+    howToHandleIt: ["Pre-mark top five acts in Claims", "Agree on narrow fact then contrast implementation"],
+  },
+  "question-bank": {
+    whatToExpectPlain:
+      "Moderators pull from SOS job questions — access, cybersecurity, clerks, non-partisan role. Hammer pivots every question toward his sponsorship record; you pivot back to running the office.",
+    howHeWillAttack: ["Security bill citations on non-security questions"],
+    howToHandleIt: ["Answer the question asked first", "Use speak-order drills from SOS bank"],
+  },
+  "answer-builder": {
+    whatToExpectPlain:
+      "Answer builder trains 30-second direct answers — Hammer will talk over your first sentence. Finish the direct answer anyway; moderators usually restore time.",
+    howHeWillAttack: ["Interruption during direct answer"],
+    howToHandleIt: ["First sentence under 15 words", "Contrast in sentence two", "Bridge in sentence three"],
+  },
+  rebuttal: {
+    whatToExpectPlain:
+      "Rebuttal segments feel personal — they are not. Use agree → contrast → bridge; never end on agree alone when Hammer or Packo spoke before you.",
+    howHeWillAttack: ["Motive attacks", "Rapid bill list in rebuttal time"],
+    howToHandleIt: ["Timer 30s answers", "Staff plays Hammer once per block"],
+  },
+  drill: {
+    whatToExpectPlain:
+      "Mock drill is where first-timer nerves peak — better here than on stage. Expect to forget a bill number; practice the safe pivot without inventing stats.",
+    howHeWillAttack: ["Surprise lines not in packet"],
+    howToHandleIt: ["Run drill with timer and claims gate", "Log surprise lines for retrieval queue"],
+  },
+  opening: {
+    whatToExpectPlain:
+      "Opening is memorized — Hammer may interrupt line two. Do not speed up; finish the unity spine. Crowd noise is not a scoreboard.",
+    howHeWillAttack: ["Talking over opening", "Personal dig before you finish"],
+    howToHandleIt: ["Memorize first and last 20 seconds", "Eye contact with moderator not opponent"],
+    handlingAdversity: UNIVERSAL_ADVERSITY,
+  },
+  closing: {
+    whatToExpectPlain:
+      "Closing is unity spine only — no new unsourced facts. Hammer may throw a last-second personal attack; do not take the bait in the final 15 seconds.",
+    howHeWillAttack: ["Personal closing bait", "Culture-war word in final segment"],
+    howToHandleIt: ["Pre-write closing without bill numbers unless verified", "Thank moderator and voters"],
+    cultureWarDefense: UNIVERSAL_CULTURE_WAR,
+  },
+  risk: {
+    whatToExpectPlain:
+      "Risk meter flags HIGH sections — culture war, fraud dare, experience fight. If risk is HIGH tonight, open that trap lane drill-down even if you hope it does not come up.",
+    howHeWillAttack: ["Highest-risk topics clustered late debate"],
+    howToHandleIt: ["Review BLOCKED lanes on debate command", "Staff confirms claims tier before HIGH sections"],
+  },
+  reporter: {
+    whatToExpectPlain:
+      "Reporter questions are shorter and sharper than moderator questions — answer in one sentence, offer one county detail, stop. Hammer may not get rebuttal time; you still add fresh line if third.",
+    howHeWillAttack: ["Gotcha framing on petition or funding gaps"],
+    howToHandleIt: ["Research-question framing for CVSGF totals", "No invented statistics"],
+  },
+  county: {
+    whatToExpectPlain:
+      "County clerk angle wins clerks in the room — Hammer may claim partnership without funding detail. Ask who pays for training, hotlines, and grant transparency.",
+    howHeWillAttack: ["Clerk champion rhetoric without ledger"],
+    howToHandleIt: ["Name a county implementation burden", "Clerk-first vocabulary not debate slang"],
+  },
+  "direct-democracy": {
+    whatToExpectPlain:
+      "Direct democracy questions invite fraud narratives — move to documented process and lawful access. Do not defend every petition on stage; defend fair rules.",
+    howHeWillAttack: ["National fraud anecdotes", "2025 petition cluster citations"],
+    howToHandleIt: ["Pair with fraud-data-dare trap lane", "Arkansas convictions context only if verified"],
+  },
+  "executive-tonight": {
+    whatToExpectPlain:
+      "Tonight focus narrows prep to three moves — ignore the other 25 sections until after stage. Hammer will broaden every answer; you narrow back to tonight's theme.",
+    howHeWillAttack: ["Scope creep into biography or national news"],
+    howToHandleIt: ["Three moves on index card", "Staff redirects if Kelly drifts in mock"],
+  },
+  "argument-map": {
+    whatToExpectPlain:
+      "Argument map is chess notation for agree-contrast-bridge — Hammer argues from authority; you argue from service outcomes. Map each Hammer theme to one trap lane or SOS question.",
+    howHeWillAttack: ["Theme stacking in one answer"],
+    howToHandleIt: ["One theme per 30s block", "Cross-link to rebuttal prep scripts"],
+  },
+  "strengths-ack": {
+    whatToExpectPlain:
+      "Acknowledging Hammer strengths disarms voters expecting pure attack — keep acknowledgment to one sentence, then contrast on SOS implementation.",
+    howHeWillAttack: ["He may demand you list his failures"],
+    howToHandleIt: ["Fair strength then county burden contrast", "Never sound sarcastic acknowledging tenure"],
+  },
+  vulnerabilities: {
+    whatToExpectPlain:
+      "Vulnerability framing is defensive prep — know what NOT to say aloud. Hammer hunts for contradiction between early interviews and tonight's lines.",
+    howHeWillAttack: ["Quote mining from old media"],
+    howToHandleIt: ["Run do-not-say list from debate command", "Counsel frame if diligence incomplete"],
+  },
+  "integrity-2021": {
+    whatToExpectPlain:
+      "2021 package is Hammer's anchor — he will cite six bills as proof of integrity. You welcome the record then contrast 2025 petition cluster burden on clerks.",
+    howHeWillAttack: ["2021 vs 2025 continuity trap"],
+    howToHandleIt: ["Open 2021-vs-2025-pivot trap lane", "Verified act numbers only"],
+  },
+  timeline: {
+    whatToExpectPlain:
+      "Timeline section stops bill-number duels — show pattern across years instead of one-upping citations. Hammer lists; you narrate county impact over time.",
+    howHeWillAttack: ["Chronology speed as dominance"],
+    howToHandleIt: ["Two-year pattern max on stage", "Film room for deep chronology staff-side"],
+  },
+  "theme-matrix": {
+    whatToExpectPlain:
+      "Theme matrix maps Hammer messages to Kelly responses — if he shifts theme mid-debate, pick the row and deliver the rehearsed pivot.",
+    howHeWillAttack: ["Rapid theme switching"],
+    howToHandleIt: ["Staff holds matrix print", "Kelly uses one row per answer"],
+  },
+  "rapid-response": {
+    whatToExpectPlain:
+      "Rapid response is staff export lane — Kelly does not read locker lines on stage unless VERIFIED in Claims. Expect Hammer surprises not yet in locker.",
+    howHeWillAttack: ["Novel statistics in spin room"],
+    howToHandleIt: ["Log post-debate for retrieval", "Default to safe service line on stage"],
+  },
+  "retrieval-queue": {
+    whatToExpectPlain:
+      "Retrieval queue is staff-only — never read queue items into a mic. Hammer may cite something you cannot verify live; say you will verify rather than guess.",
+    howHeWillAttack: ["Dares for immediate numeric answers"],
+    howToHandleIt: ["Research-question framing", "Post-debate retrieval within 24h"],
+  },
+  "citation-discipline": {
+    whatToExpectPlain:
+      "Citation discipline prevents stage errors — one act, one source, one county example. Hammer stacks acts; you hold one verified anchor per answer.",
+    howHeWillAttack: ["Citation volume as intimidation"],
+    howToHandleIt: ["Claims gate before every act number", "Plain language if citation forgotten"],
+  },
+  "media-followup": {
+    whatToExpectPlain:
+      "Post-debate media is where unsourced lines become headlines — stay on approved internal claims only. Hammer may spin faster; you verify before any clip goes social.",
+    howHeWillAttack: ["Spin room pile-on with Packo"],
+    howToHandleIt: ["Staff filters media questions", "No new facts in spin room"],
+  },
+  "county-deep": {
+    whatToExpectPlain:
+      "County deep dive wins implementation credibility — name clerks' real costs: training, grants, hotlines. Hammer stays abstract on security; you stay specific on service.",
+    howHeWillAttack: ["Generic security without county math"],
+    howToHandleIt: ["One county example prepared", "CVSGF research-question if totals unknown"],
+  },
+  "petition-cluster": {
+    whatToExpectPlain:
+      "2025 petition cluster is Hammer offensive ground — connect questions to Acts 241/768 with verified framing. Do not minimize clerk burden; propose transparent process.",
+    howHeWillAttack: ["Fraud justification for every petition bill"],
+    howToHandleIt: ["fraud-data-dare trap lane", "Lawful access + prosecute real fraud"],
+  },
+  "closing-checklist": {
+    whatToExpectPlain:
+      "Five minutes before stage: checklist only — no new cramming. Hammer's team will be calm; your job is steady breath and first sentence under fifteen words.",
+    howHeWillAttack: ["Last-second provocation in green room area"],
+    howToHandleIt: ["Verbal checklist with staff", "Water and bathroom before mic"],
+    ifYouGetHungUp: ["Default line: service SOS, 75 counties, published rules."],
+  },
+};
+
+export function getPrepSectionEncounterDepth(sectionId: string): Partial<DebateEncounterDepth> {
+  return PREP_SECTION_ENCOUNTER_DEPTH[sectionId] ?? DEFAULT_PREP_DEPTH;
 }
 
 /** Merge plain-language depth into operator guides at read time. */

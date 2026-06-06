@@ -270,6 +270,91 @@ for (const [moduleId, title, eyebrow] of STUB_MODULES) {
   }
 }
 
+/** Phase 6 — promote debate-week priority modules from staff-stub to live render specs. */
+export const PHASE6_PROMOTED_KH_MODULE_IDS = [
+  "debate-archive",
+  "county-briefings",
+  "citation-locker",
+  "debate-packet-export",
+  "narrative-drift-monitor",
+  "attack-surface",
+  "response-model",
+  "pattern-analysis",
+  "debate-ai-workbench",
+  "intel-heat-map",
+] as const;
+
+KIM_HAMMER_V4_MODULES["debate-archive"] = entry(
+  "debate-archive",
+  "Debate archive",
+  "KH-3 prior debate material",
+  { type: "markdown", layer: "debateProfile", sectionLimit: 8 },
+  { guideKey: "debateProfile", preferV4: true, preserveCustomPageInLaunchMode: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["county-briefings"] = entry(
+  "county-briefings",
+  "County briefings",
+  "KH-4 clerk-facing summaries",
+  { type: "markdown", layer: "messageGuidance", sectionLimit: 6 },
+  { guideKey: "themeMatrix", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["citation-locker"] = entry(
+  "citation-locker",
+  "Citation locker",
+  "KH-4 export-ready anchors",
+  { type: "hub-claims-summary" },
+  { guideKey: "evidenceCommand", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["debate-packet-export"] = entry(
+  "debate-packet-export",
+  "Debate packet export",
+  "KH-4 governed export",
+  { type: "rapid-response" },
+  { guideKey: "evidenceCommand", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["narrative-drift-monitor"] = entry(
+  "narrative-drift-monitor",
+  "Narrative drift monitor",
+  "KH-4 message consistency",
+  { type: "retrieval-gaps" },
+  { guideKey: "intelligenceGaps", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["attack-surface"] = entry(
+  "attack-surface",
+  "Attack surface",
+  "KH-4 defensive map",
+  { type: "strengths-weaknesses" },
+  { guideKey: "strengthsWeaknesses", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["response-model"] = entry(
+  "response-model",
+  "Response model",
+  "KH-3 opposition modeling",
+  { type: "likely-arguments" },
+  { guideKey: "rebuttalPrep", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["pattern-analysis"] = entry(
+  "pattern-analysis",
+  "Pattern analysis",
+  "KH-3 legislative patterns",
+  { type: "markdown", layer: "kh3DeepResearch", sectionLimit: 6 },
+  { guideKey: "backgroundDeep", preferV4: true, profile: "full" },
+);
+KIM_HAMMER_V4_MODULES["debate-ai-workbench"] = entry(
+  "debate-ai-workbench",
+  "Debate AI workbench",
+  "Governed AI prep",
+  { type: "rapid-response" },
+  { guideKey: "evidenceCommand", preferV4: true, profile: "hub" },
+);
+KIM_HAMMER_V4_MODULES["intel-heat-map"] = entry(
+  "intel-heat-map",
+  "Intel heat map",
+  "KH-4 research priority",
+  { type: "theme-matrix" },
+  { guideKey: "themeMatrix", preferV4: true, profile: "hub" },
+);
+
 export function getKimHammerV4ModuleEntry(moduleId: string): KimHammerV4ModuleEntry | undefined {
   return KIM_HAMMER_V4_MODULES[moduleId];
 }

@@ -228,6 +228,13 @@ export const FIELD_BOOK_CANON_BINDINGS: FieldBookCanonBinding[] = [
     promoteNote: "Glossary index — alphabetical debate terms with Field Book and route cross-links.",
     laneHint: "phase_a",
   },
+  {
+    routePrefix: "/admin/intelligence/phase-6-upgrade",
+    fieldBookSlugs: ["debate-ready-governance", "claims-firewall", "debate-glossary"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Phase 6 exit gate — prep encounter depth, trap rebuttals, claims review wave, KH promotions.",
+    laneHint: "staff",
+  },
 ];
 
 export const FIELD_BOOK_CANON_HUB_HREF = "/admin/intelligence/field-book/canon";

@@ -40,6 +40,7 @@ import { computePhase2SurfacesDepthProgress } from "@/lib/intelligence/v4/phase2
 import { computePhase3UpgradePass } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
 import { computePhase5UpgradePass } from "@/lib/intelligence/v4/phase5GlossaryConnectivity";
+import { computePhase6UpgradePass } from "@/lib/intelligence/v4/phase6DebateReadyGovernance";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -557,6 +558,21 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/phase-5-upgrade",
   });
 
+  const phase6Pass = computePhase6UpgradePass();
+  items.push({
+    id: "phase-6-debate-ready-governance",
+    label: "Phase 6 — Debate-ready governance",
+    category: "Governance",
+    completionPct: phase6Pass.completionPct,
+    status: phase6Pass.completionPct >= 85 ? "complete" : phase6Pass.completionPct >= 70 ? "partial" : "flagged",
+    built: phase6Pass.progress.prepSectionsAtBar,
+    total: phase6Pass.progress.prepSectionTotal,
+    flags: [
+      `Prep ${phase6Pass.progress.prepSectionsAtBar}/${phase6Pass.progress.prepSectionTotal} · traps ${phase6Pass.progress.trapLanesAtBar}/${phase6Pass.progress.trapLaneTotal} · KH ${phase6Pass.progress.khModulesPromoted}/${phase6Pass.progress.khModulesPromotedTarget} · ${phase6Pass.progress.claimsNeedsReview} claims NEEDS_REVIEW`,
+    ],
+    href: "/admin/intelligence/phase-6-upgrade",
+  });
+
   const canonStats = computeCanonLoopStats();
   items.push({
     id: "field-book-canon-loop",
@@ -678,6 +694,7 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/phase-3-upgrade",
     "/admin/intelligence/phase-4-upgrade",
     "/admin/intelligence/phase-5-upgrade",
+    "/admin/intelligence/phase-6-upgrade",
     "/admin/intelligence/field-book/glossary",
     ...psychologyIds.map((id) => `/admin/intelligence/debate-prep/psychology-manual/${id}`),
     ...NSI_STAFF_RESEARCH_NAV_ITEMS.map((item) => item.href),
@@ -897,11 +914,28 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
         "Nav release batch 2026-06-05-phase-5-glossary-connectivity",
       ],
     },
+    {
+      phase: 14,
+      name: "v9.0 — Phase 6 debate-ready governance (COMPLETE)",
+      targetVersion: "0.21.0",
+      goal: "Prep encounter depth, trap rebuttals, claims review wave, and ten priority KH module promotions.",
+      items: [
+        "28/28 prep sections with section-specific encounter depth",
+        "6/6 trap lanes at rebuttal bar",
+        "ClaimsReviewWavePanel + claim-review API wiring",
+        "PHASE6_PROMOTED_KH_MODULE_IDS (10 modules)",
+      ],
+      exitCriteria: [
+        "test-phase6-debate-ready-governance green",
+        "Debate prep sections 100% on build progress",
+        "Nav release batch 2026-06-05-phase-6-debate-ready-governance",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v8.0-phase-5-glossary-connectivity",
+    version: "v9.0-phase-6-debate-ready-governance",
     overallCompletionPct,
     items,
     phases,

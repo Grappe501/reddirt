@@ -156,6 +156,17 @@ export const NAV_LINK_RELEASE_BATCHES: NavLinkReleaseBatch[] = [
       "/admin/intelligence/debate-prep/psychology-manual",
     ]),
   },
+  {
+    id: "2026-06-05-phase-6-debate-ready-governance",
+    label: "Phase 6 debate-ready governance",
+    hrefs: dedupeHrefs([
+      "/admin/intelligence/phase-6-upgrade",
+      "/admin/intelligence/field-book/debate-ready-governance",
+      "/admin/intelligence/kim-hammer/debate-archive",
+      "/admin/intelligence/kim-hammer/county-briefings",
+      "/admin/intelligence/kim-hammer/citation-locker",
+    ]),
+  },
 ];
 
 export const CURRENT_NAV_RELEASE_ID =

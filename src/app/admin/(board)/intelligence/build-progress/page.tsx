@@ -8,9 +8,11 @@ import { PhaseAUpgradePassPanel } from "@/components/admin/intelligence/PhaseAUp
 import { Phase3UpgradePassPanel } from "@/components/admin/intelligence/Phase3UpgradePassPanel";
 import { Phase4UpgradePassPanel } from "@/components/admin/intelligence/Phase4UpgradePassPanel";
 import { Phase5UpgradePassPanel } from "@/components/admin/intelligence/Phase5UpgradePassPanel";
+import { Phase6UpgradePassPanel } from "@/components/admin/intelligence/Phase6UpgradePassPanel";
 import { computePhase3UpgradePass } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
 import { computePhase5UpgradePass } from "@/lib/intelligence/v4/phase5GlossaryConnectivity";
+import { computePhase6UpgradePass } from "@/lib/intelligence/v4/phase6DebateReadyGovernance";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +29,7 @@ export default function IntelligenceBuildProgressPage() {
   const phase3 = computePhase3UpgradePass();
   const phase4 = computePhase4UpgradePass();
   const phase5 = computePhase5UpgradePass();
+  const phase6 = computePhase6UpgradePass();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -73,13 +76,14 @@ export default function IntelligenceBuildProgressPage() {
           Phase 3 waves
         </Link>
         <Link
-          href="/admin/intelligence/phase-5-upgrade"
-          className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950"
+          href="/admin/intelligence/phase-6-upgrade"
+          className="rounded-full border border-rose-300 bg-rose-50 px-3 py-1 text-xs font-bold text-rose-950"
         >
-          Phase 5 glossary
+          Phase 6 governance
         </Link>
       </V4PageHeader>
 
+      <Phase6UpgradePassPanel report={phase6} compact />
       <Phase5UpgradePassPanel report={phase5} compact />
       <Phase4UpgradePassPanel report={phase4} compact />
 
