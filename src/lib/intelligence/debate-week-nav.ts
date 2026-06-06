@@ -43,6 +43,7 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/film-room",
   "/admin/intelligence/sos-debate-questions",
   "/admin/intelligence/debate-briefings",
+  "/admin/intelligence/strategy-philosophy-hub",
   "/admin/intelligence/debate-prep/psychology-manual",
   "/admin/intelligence/agent-tooling",
   "/admin/intelligence/debate-depth",
@@ -246,6 +247,12 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     label: "Expected questions",
     description:
       "23 moderator-style SOS questions — each opens with full briefing (why, alternatives, Hammer hooks) plus speak-order drills and claims gates.",
+  },
+  {
+    href: "/admin/intelligence/strategy-philosophy-hub",
+    label: "Strategy & philosophy",
+    description:
+      "Phase 10 command hub — full inventory of debate philosophy briefings, psychology manual, civic philosophy graph, Kelly manual, and intelligence strategy surfaces.",
   },
   {
     href: "/admin/intelligence/debate-briefings",

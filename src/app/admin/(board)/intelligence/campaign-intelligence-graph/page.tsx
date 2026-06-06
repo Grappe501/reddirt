@@ -3,13 +3,13 @@ import {
   auditCampaignIntelligenceGraphLinks,
   getGraphDomainsUnified,
   loadCampaignIntelligenceGraph,
-  loadCampaignPhilosophyGraph,
+  loadEnrichedCampaignPhilosophyGraph,
   summarizeCampaignIntelligenceGraph,
 } from "@/lib/intelligence/campaignIntelligenceGraph";
 
 export default async function CampaignIntelligenceGraphPage() {
   const graph = loadCampaignIntelligenceGraph();
-  const philosophy = loadCampaignPhilosophyGraph();
+  const philosophy = loadEnrichedCampaignPhilosophyGraph();
   const summary = summarizeCampaignIntelligenceGraph();
   const audit = auditCampaignIntelligenceGraphLinks();
   const domains = getGraphDomainsUnified();
@@ -25,6 +25,9 @@ export default async function CampaignIntelligenceGraphPage() {
           Read-only entity resolution across bills, narratives, doctrines, counties, exports, and civic philosophy.
         </p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
+          <Link href="/admin/intelligence/strategy-philosophy-hub" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
+            Strategy & philosophy hub
+          </Link>
           <Link href="/admin/intelligence/strategy-alignment" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
             SDI-1 alignment
           </Link>
@@ -75,6 +78,10 @@ export default async function CampaignIntelligenceGraphPage() {
           {philosophy.nodes.map((node) => (
             <li key={node.philosophyId} className="rounded border border-kelly-text/10 p-2">
               <strong>{node.title}</strong> — {node.principle.slice(0, 120)}
+              <p className="mt-1 text-[10px] text-kelly-muted">{node.debateApplication[0]}</p>
+              <Link href={`/admin/intelligence/strategy-philosophy-hub#${node.philosophyId}`} className="text-[10px] font-bold text-indigo-900 underline">
+                Full depth →
+              </Link>
             </li>
           ))}
         </ul>

@@ -44,6 +44,7 @@ import { computePhase6UpgradePass } from "@/lib/intelligence/v4/phase6DebateRead
 import { computePhase7UpgradePass } from "@/lib/intelligence/v4/phase7DossierDiligenceClosure";
 import { computePhase8UpgradePass } from "@/lib/intelligence/v4/phase8DossierResearchAccaClosure";
 import { computePhase9UpgradePass } from "@/lib/intelligence/v4/phase9DebateInstructionClosure";
+import { computePhase10UpgradePass } from "@/lib/intelligence/v4/phase10StrategyPhilosophyClosure";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -621,6 +622,21 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     href: "/admin/intelligence/phase-9-upgrade",
   });
 
+  const phase10Pass = computePhase10UpgradePass();
+  items.push({
+    id: "phase-10-strategy-philosophy-command",
+    label: "Phase 10 — Strategy & political philosophy command",
+    category: "Governance",
+    completionPct: phase10Pass.completionPct,
+    status: phase10Pass.completionPct >= 90 ? "complete" : phase10Pass.completionPct >= 75 ? "partial" : "flagged",
+    built: phase10Pass.progress.philosophyBriefingsAtBar,
+    total: phase10Pass.progress.philosophyBriefingTotal,
+    flags: [
+      `Briefings ${phase10Pass.progress.philosophyBriefingsAtBar}/8 · psych ${phase10Pass.progress.psychologySectionsAtBar}/19 · graph ${phase10Pass.progress.philosophyGraphNodesAtBar}/8 · inventory ${phase10Pass.progress.inventorySurfaceCount} surfaces`,
+    ],
+    href: "/admin/intelligence/strategy-philosophy-hub",
+  });
+
   const canonStats = computeCanonLoopStats();
   items.push({
     id: "field-book-canon-loop",
@@ -746,6 +762,8 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
     "/admin/intelligence/phase-7-upgrade",
     "/admin/intelligence/phase-8-upgrade",
     "/admin/intelligence/phase-9-upgrade",
+    "/admin/intelligence/strategy-philosophy-hub",
+    "/admin/intelligence/field-book/strategy-philosophy-command",
     "/admin/intelligence/field-book/debate-instruction-bridge",
     "/admin/intelligence/field-book/dossier-research-acca-closure",
     "/admin/intelligence/field-book/dossier-diligence-closure",
@@ -1037,11 +1055,28 @@ export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressRep
         "Nav release batch 2026-06-05-phase-9-debate-instruction-bridge",
       ],
     },
+    {
+      phase: 18,
+      name: "v13.0 — Phase 10 strategy & philosophy command (COMPLETE)",
+      targetVersion: "0.26.0",
+      goal: "Unified strategy/philosophy inventory integrated into intelligence dashboard at full depth.",
+      items: [
+        "phase10StrategyPhilosophyDepth overlays on briefings, psych, graph",
+        "strategy-philosophy-hub with full surface inventory",
+        "Strategy migration bridge extended (debate-briefings, graph, pathway)",
+        "Field Book strategy-philosophy-command article",
+      ],
+      exitCriteria: [
+        "test-phase10-strategy-philosophy-command green",
+        "8 briefings + 19 psych + 8 graph nodes at Phase 10 bar",
+        "Nav release batch 2026-06-05-phase-10-strategy-philosophy-command",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v12.0-phase-9-debate-instruction-bridge",
+    version: "v13.0-phase-10-strategy-philosophy-command",
     overallCompletionPct,
     items,
     phases,

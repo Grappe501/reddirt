@@ -688,6 +688,35 @@ export const FIELD_BOOK_ARTICLES: FieldBookArticle[] = [
     ],
   },
   {
+    slug: "strategy-philosophy-command",
+    title: "Strategy & political philosophy command",
+    phaseId: "phase-c",
+    category: "Governance",
+    summary:
+      "Phase 10 pass — unified inventory of debate philosophy briefings, psychology manual, civic philosophy graph, Kelly strategic plan manual, and intelligence strategy surfaces at Phase 9 depth standard.",
+    body: [
+      "Phase 9 closed the dossier-to-debate spine gap. Phase 10 closes the strategy-to-intelligence gap: every debate political philosophy briefing, psychology manual section, and civic philosophy graph node receives Phase 10 depth overlays at read time via applyPhase10StrategyPhilosophy.",
+      "Eight debate philosophy briefings (agree-but-never-only-agree through direct-democracy-offense) gain extended core philosophy, framework chapter crosswalks, psychology section links, and intelligence surface links. Hub at /admin/intelligence/strategy-philosophy-hub surfaces full inventory.",
+      "Nineteen psychology manual sections crosswalk to philosophy briefings and Kelly manual chapters (framework, executive-summary, build-audit). kellyApplication arrays append strategy notes at getter time.",
+      "Eight NSI-4 civic philosophy graph nodes (civic trust through direct democracy) enrich with debateApplication, kellySosFraming, strategyCrosswalk, and intelligenceLinks — visible on strategy-philosophy-hub and campaign-intelligence-graph.",
+      "Kelly SOS strategic plan manual (22 chapters) links from inventory — framework theory-of-change is the strategic philosophy spine. Campaign system manual (~252 files) remains agent-chunked via Strategy Partner RAG.",
+      "Strategy migration bridge extended with debate-briefings, strategic-target-pathway, campaign-intelligence-graph, scenario-simulation, and strategy-philosophy-hub routes — 37 total intelligence bindings.",
+      "Canon binding on strategy-philosophy-hub surfaces this article plus [[debate-glossary]] and [[strategy-migration]] — pair with opposition-strategy and strategy-alignment before major strategy decisions.",
+    ],
+    sidebarFacts: [
+      { label: "Philosophy briefings", value: "8 enriched" },
+      { label: "Psychology sections", value: "19 crosswalked" },
+      { label: "Graph nodes", value: "8 enriched" },
+      { label: "Hub", value: "/admin/intelligence/strategy-philosophy-hub" },
+    ],
+    seeAlso: ["strategy-migration", "debate-glossary", "debate-instruction-bridge"],
+    relatedRoutes: [
+      { href: "/admin/intelligence/strategy-philosophy-hub", label: "Strategy & philosophy hub" },
+      { href: "/admin/intelligence/debate-briefings", label: "Philosophy briefings" },
+      { href: "/admin/campaign-strategy/framework", label: "Theory of change" },
+    ],
+  },
+  {
     slug: "debate-instruction-bridge",
     title: "Debate instruction bridge — dossier corpus to stage drills",
     phaseId: "phase-c",

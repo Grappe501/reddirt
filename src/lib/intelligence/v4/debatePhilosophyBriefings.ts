@@ -1,4 +1,5 @@
 import type { DebatePhilosophyBriefing } from "@/lib/intelligence/v4/debateBriefingDepthTypes";
+import { applyPhase10PhilosophyBriefing } from "@/lib/intelligence/v4/applyPhase10StrategyPhilosophy";
 
 const HAMMER_BILLS = "/admin/intelligence/kim-hammer/bills";
 const OPPOSITION = "/admin/intelligence/opposition-strategy";
@@ -382,9 +383,10 @@ export const DEBATE_PHILOSOPHY_BRIEFINGS: DebatePhilosophyBriefing[] = [
 ];
 
 export function getDebatePhilosophyBriefing(briefingId: string): DebatePhilosophyBriefing | undefined {
-  return DEBATE_PHILOSOPHY_BRIEFINGS.find((b) => b.briefingId === briefingId);
+  const raw = DEBATE_PHILOSOPHY_BRIEFINGS.find((b) => b.briefingId === briefingId);
+  return raw ? applyPhase10PhilosophyBriefing(raw) : undefined;
 }
 
 export function listDebatePhilosophyBriefings(): DebatePhilosophyBriefing[] {
-  return DEBATE_PHILOSOPHY_BRIEFINGS;
+  return DEBATE_PHILOSOPHY_BRIEFINGS.map(applyPhase10PhilosophyBriefing);
 }

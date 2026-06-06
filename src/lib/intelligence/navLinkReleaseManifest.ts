@@ -200,6 +200,17 @@ export const NAV_LINK_RELEASE_BATCHES: NavLinkReleaseBatch[] = [
       "/admin/intelligence/kim-hammer/ai-opposition-copilot",
     ]),
   },
+  {
+    id: "2026-06-05-phase-10-strategy-philosophy-command",
+    label: "Phase 10 strategy & political philosophy command",
+    hrefs: dedupeHrefs([
+      "/admin/intelligence/strategy-philosophy-hub",
+      "/admin/intelligence/field-book/strategy-philosophy-command",
+      "/admin/intelligence/debate-briefings/author-vs-administrator",
+      "/admin/campaign-strategy/framework",
+      "/admin/intelligence/campaign-intelligence-graph",
+    ]),
+  },
 ];
 
 export const CURRENT_NAV_RELEASE_ID =

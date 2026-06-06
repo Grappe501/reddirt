@@ -41,6 +41,12 @@ export default function SupremeWorkbenchPage() {
           Debate command
         </Link>
         <Link
+          href="/admin/intelligence/strategy-philosophy-hub"
+          className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950"
+        >
+          Strategy & philosophy
+        </Link>
+        <Link
           href="/admin/intelligence/debate-prep/psychology-manual"
           className="rounded-full border border-fuchsia-300 bg-fuchsia-50 px-3 py-1 text-xs font-bold text-fuchsia-950"
         >

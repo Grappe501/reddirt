@@ -239,6 +239,41 @@ const INTELLIGENCE_STRATEGY_ROUTES: StrategyMigrationRoute[] = [
     fieldBookSlugs: ["debate-instruction-bridge", "dossier-research-acca-closure", "debate-ready-governance"],
     promoteNote: "Phase 9 exit — dossier depth + debate spine integration, coaching runbook, KH wave 4.",
   },
+  {
+    intelligenceHref: "/admin/intelligence/strategy-philosophy-hub",
+    label: "Phase 10 strategy & philosophy command",
+    strategyPathKeys: ["framework", "executive-summary", "build-audit"],
+    fieldBookSlugs: ["strategy-philosophy-command", "debate-glossary", "strategy-migration"],
+    promoteNote: "Phase 10 exit — unified strategy/philosophy inventory, enriched graph, manual crosswalk.",
+  },
+  {
+    intelligenceHref: "/admin/intelligence/debate-briefings",
+    label: "Debate political philosophy briefings",
+    strategyPathKeys: ["framework", "executive-summary"],
+    fieldBookSlugs: ["debate-glossary", "strategy-philosophy-command"],
+    promoteNote: "Eight handling briefings — agree-then-contrast, author/administrator, clerk partnership, etc.",
+  },
+  {
+    intelligenceHref: "/admin/intelligence/strategic-target-pathway",
+    label: "Strategic target pathway (NSI-7)",
+    strategyPathKeys: ["lane", "executive-summary"],
+    fieldBookSlugs: ["strategy-migration"],
+    promoteNote: "Victory math, registration goals, county briefings rollup.",
+  },
+  {
+    intelligenceHref: "/admin/intelligence/campaign-intelligence-graph",
+    label: "Campaign intelligence graph (NSI-4)",
+    strategyPathKeys: ["build-audit", "framework"],
+    fieldBookSlugs: ["strategy-philosophy-command"],
+    promoteNote: "Unified entity graph — bills, narratives, doctrines, philosophy nodes.",
+  },
+  {
+    intelligenceHref: "/admin/intelligence/scenario-simulation",
+    label: "Scenario simulation",
+    strategyPathKeys: ["framework", "programs/kpis"],
+    fieldBookSlugs: ["strategy-migration"],
+    promoteNote: "Strategic scenario modeling for debate and field decisions.",
+  },
 ];
 
 export function listStrategyMigrationRoutes(): StrategyMigrationRoute[] {

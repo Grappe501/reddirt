@@ -2,6 +2,7 @@
  * Debate Philosophy, Psychology, and Atmosphere — Advanced Candidate Preparation Manual.
  * Arkansas SOS three-way context (Kelly · Hammer · Pakko). Citations where research-backed.
  */
+import { applyPhase10PsychologySection } from "@/lib/intelligence/v4/applyPhase10StrategyPhilosophy";
 
 export type DebatePsychologyCitation = {
   label: string;
@@ -1111,9 +1112,12 @@ export function getAllDebatePsychologyManualSectionIds(): string[] {
 export function getDebatePsychologyManualSection(
   sectionId: string,
 ): DebatePsychologyManualSection | undefined {
-  return DEBATE_PSYCHOLOGY_MANUAL_SECTIONS.find((s) => s.sectionId === sectionId);
+  const section = DEBATE_PSYCHOLOGY_MANUAL_SECTIONS.find((s) => s.sectionId === sectionId);
+  return section ? applyPhase10PsychologySection(section) : undefined;
 }
 
 export function listDebatePsychologyManualSections(): DebatePsychologyManualSection[] {
-  return [...DEBATE_PSYCHOLOGY_MANUAL_SECTIONS].sort((a, b) => a.partNumber - b.partNumber);
+  return [...DEBATE_PSYCHOLOGY_MANUAL_SECTIONS]
+    .sort((a, b) => a.partNumber - b.partNumber)
+    .map(applyPhase10PsychologySection);
 }

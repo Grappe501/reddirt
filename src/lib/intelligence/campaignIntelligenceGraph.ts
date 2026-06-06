@@ -5,6 +5,7 @@ import { loadKimHammerExportHistory } from "@/lib/opposition/kimHammerExportCont
 import { loadKimHammerGeographicNarrativeOverlays } from "@/lib/opposition/kimHammerGeographicNarrativeState";
 import { loadKimHammerNarrativeRegistry } from "@/lib/opposition/kimHammerNarrativeState";
 import { findKimHammerBillNarrative } from "@/lib/opposition/kimHammerLegislativeNarratives";
+import { enrichPhilosophyGraphNode } from "@/lib/intelligence/v4/applyPhase10StrategyPhilosophy";
 import type {
   CampaignGraphEntity,
   CampaignIntelligenceGraphFile,
@@ -64,6 +65,14 @@ export function resolveLinkedGraphEntities(
   const graph = loadCampaignIntelligenceGraph(repoRoot);
   const byId = new Map(graph.entities.map((row) => [row.entityId, row]));
   return root.linkedEntities.map((id) => byId.get(id)).filter((row): row is CampaignGraphEntity => Boolean(row));
+}
+
+export function loadEnrichedCampaignPhilosophyGraph(repoRoot: string = process.cwd()) {
+  const graph = loadCampaignPhilosophyGraph(repoRoot);
+  return {
+    ...graph,
+    nodes: graph.nodes.map(enrichPhilosophyGraphNode),
+  };
 }
 
 export function resolvePhilosophyNode(

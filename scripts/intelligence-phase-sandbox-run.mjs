@@ -17,6 +17,7 @@ const steps = [
   { label: "test-phase7-dossier-diligence-closure", cmd: "npx", args: ["tsx", "scripts/test-phase7-dossier-diligence-closure.ts"] },
   { label: "test-phase8-dossier-research-acca-closure", cmd: "npx", args: ["tsx", "scripts/test-phase8-dossier-research-acca-closure.ts"] },
   { label: "test-phase9-debate-instruction-bridge", cmd: "npx", args: ["tsx", "scripts/test-phase9-debate-instruction-bridge.ts"] },
+  { label: "test-phase10-strategy-philosophy-command", cmd: "npx", args: ["tsx", "scripts/test-phase10-strategy-philosophy-command.ts"] },
   { label: "test-intelligence-hardening", cmd: "npm", args: ["run", "agents:test-intelligence-hardening"] },
   { label: "lint:all", cmd: "npm", args: ["run", "lint:all"] },
   { label: "typecheck", cmd: "npm", args: ["run", "typecheck"] },

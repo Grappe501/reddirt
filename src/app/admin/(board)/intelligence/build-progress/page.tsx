@@ -12,6 +12,7 @@ import { Phase6UpgradePassPanel } from "@/components/admin/intelligence/Phase6Up
 import { Phase7UpgradePassPanel } from "@/components/admin/intelligence/Phase7UpgradePassPanel";
 import { Phase8UpgradePassPanel } from "@/components/admin/intelligence/Phase8UpgradePassPanel";
 import { Phase9UpgradePassPanel } from "@/components/admin/intelligence/Phase9UpgradePassPanel";
+import { Phase10UpgradePassPanel } from "@/components/admin/intelligence/Phase10UpgradePassPanel";
 import { computePhase3UpgradePass } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
 import { computePhase5UpgradePass } from "@/lib/intelligence/v4/phase5GlossaryConnectivity";
@@ -19,6 +20,7 @@ import { computePhase6UpgradePass } from "@/lib/intelligence/v4/phase6DebateRead
 import { computePhase7UpgradePass } from "@/lib/intelligence/v4/phase7DossierDiligenceClosure";
 import { computePhase8UpgradePass } from "@/lib/intelligence/v4/phase8DossierResearchAccaClosure";
 import { computePhase9UpgradePass } from "@/lib/intelligence/v4/phase9DebateInstructionClosure";
+import { computePhase10UpgradePass } from "@/lib/intelligence/v4/phase10StrategyPhilosophyClosure";
 
 export const dynamic = "force-dynamic";
 
@@ -39,6 +41,7 @@ export default function IntelligenceBuildProgressPage() {
   const phase7 = computePhase7UpgradePass();
   const phase8 = computePhase8UpgradePass();
   const phase9 = computePhase9UpgradePass();
+  const phase10 = computePhase10UpgradePass();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -85,6 +88,12 @@ export default function IntelligenceBuildProgressPage() {
           Phase 3 waves
         </Link>
         <Link
+          href="/admin/intelligence/strategy-philosophy-hub"
+          className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950"
+        >
+          Strategy & philosophy
+        </Link>
+        <Link
           href="/admin/intelligence/phase-9-upgrade"
           className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-950"
         >
@@ -98,6 +107,7 @@ export default function IntelligenceBuildProgressPage() {
         </Link>
       </V4PageHeader>
 
+      <Phase10UpgradePassPanel report={phase10} compact />
       <Phase9UpgradePassPanel report={phase9} compact />
       <Phase8UpgradePassPanel report={phase8} compact />
       <Phase7UpgradePassPanel report={phase7} compact />

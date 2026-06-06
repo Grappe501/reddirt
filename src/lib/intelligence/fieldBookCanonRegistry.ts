@@ -256,6 +256,20 @@ export const FIELD_BOOK_CANON_BINDINGS: FieldBookCanonBinding[] = [
     promoteNote: "Phase 9 exit gate — dossier depth + debate instruction bridge, coaching runbook, KH wave 4.",
     laneHint: "kelly",
   },
+  {
+    routePrefix: "/admin/intelligence/strategy-philosophy-hub",
+    fieldBookSlugs: ["strategy-philosophy-command", "debate-glossary", "strategy-migration"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Phase 10 exit gate — strategy & political philosophy command hub.",
+    laneHint: "kelly",
+  },
+  {
+    routePrefix: "/admin/intelligence/debate-briefings",
+    fieldBookSlugs: ["strategy-philosophy-command", "debate-glossary"],
+    claimsLedgerHref: "/admin/intelligence/claims",
+    promoteNote: "Eight debate political philosophy handling briefings.",
+    laneHint: "kelly",
+  },
 ];
 
 export const FIELD_BOOK_CANON_HUB_HREF = "/admin/intelligence/field-book/canon";
