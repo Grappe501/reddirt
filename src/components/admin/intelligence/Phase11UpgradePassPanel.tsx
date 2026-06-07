@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Phase11UpgradePassReport } from "@/lib/intelligence/v4/phase11CampaignSystemClosure";
 import type { CampaignSystemCategoryGuide } from "@/lib/intelligence/v4/campaignSystemManualInventory";
-import { campaignSystemDocHref } from "@/lib/campaign-strategy/campaign-system-nav";
+import { campaignSystemDocHref } from "@/lib/campaign-strategy/campaign-system-nav-shared";
 
 export function Phase11UpgradePassPanel({
   report,

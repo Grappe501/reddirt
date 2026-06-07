@@ -24,9 +24,24 @@ const MIN_CATEGORY_GUIDES = 8;
 const MIN_PRIORITY_PATHS = 12;
 const MIN_MIGRATION_ROUTES = 38;
 
+function campaignSystemManualRoot(): string {
+  return path.join(process.cwd(), CAMPAIGN_SYSTEM_MANUAL_DIR);
+}
+
+/** Netlify prunes `campaign-system-manual/` from the server handler — treat as zero files, not a crash. */
+function isCampaignSystemManualPresent(): boolean {
+  try {
+    return fs.existsSync(campaignSystemManualRoot());
+  } catch {
+    return false;
+  }
+}
+
 function countCampaignSystemMarkdownSync(): number {
+  if (!isCampaignSystemManualPresent()) return 0;
+
   let count = 0;
-  const root = path.join(process.cwd(), CAMPAIGN_SYSTEM_MANUAL_DIR);
+  const root = campaignSystemManualRoot();
 
   function walk(dir: string): void {
     for (const ent of fs.readdirSync(path.join(root, dir), { withFileTypes: true })) {
@@ -43,7 +58,9 @@ function countCampaignSystemMarkdownSync(): number {
 
 function countCategoriesSync(): Record<CampaignSystemCategoryId, number> {
   const counts = {} as Record<CampaignSystemCategoryId, number>;
-  const root = path.join(process.cwd(), CAMPAIGN_SYSTEM_MANUAL_DIR);
+  if (!isCampaignSystemManualPresent()) return counts;
+
+  const root = campaignSystemManualRoot();
 
   function walk(dir: string): void {
     for (const ent of fs.readdirSync(path.join(root, dir), { withFileTypes: true })) {

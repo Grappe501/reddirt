@@ -2,7 +2,10 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
-import { CAMPAIGN_SYSTEM_MANUAL_HUB_HREF, campaignSystemDocHref } from "@/lib/campaign-strategy/campaign-system-nav";
+import {
+  CAMPAIGN_SYSTEM_MANUAL_HUB_HREF,
+  campaignSystemDocHref,
+} from "@/lib/campaign-strategy/campaign-system-nav-shared";
 
 type CampaignSystemMarkdownArticleProps = {
   pathKey: string;

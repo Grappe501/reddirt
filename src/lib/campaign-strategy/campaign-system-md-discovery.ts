@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { readdir, readFile } from "fs/promises";
 import path from "node:path";
 import type { StrategyMdEntry } from "./md-manifest";
@@ -9,6 +10,7 @@ import { CAMPAIGN_SYSTEM_MANUAL_DIR } from "./md-manifest";
 export async function listCampaignSystemMarkdownRelativePaths(): Promise<string[]> {
   const out: string[] = [];
   const root = path.join(process.cwd(), CAMPAIGN_SYSTEM_MANUAL_DIR);
+  if (!existsSync(root)) return out;
 
   async function walk(dir: string): Promise<void> {
     const entries = await readdir(dir, { withFileTypes: true });
