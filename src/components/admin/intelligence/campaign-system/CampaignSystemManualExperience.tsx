@@ -7,7 +7,7 @@ import {
   CAMPAIGN_SYSTEM_MANUAL_HUB_HREF,
   campaignSystemDocHref,
   type CampaignSystemNavSection,
-} from "@/lib/campaign-strategy/campaign-system-nav";
+} from "@/lib/campaign-strategy/campaign-system-nav-shared";
 
 function normalizeActiveKey(pathname: string): string {
   const prefix = CAMPAIGN_SYSTEM_MANUAL_HUB_HREF;
