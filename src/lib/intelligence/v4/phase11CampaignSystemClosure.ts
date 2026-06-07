@@ -43,16 +43,20 @@ function countCampaignSystemMarkdownSync(): number {
   let count = 0;
   const root = campaignSystemManualRoot();
 
-  function walk(dir: string): void {
-    for (const ent of fs.readdirSync(path.join(root, dir), { withFileTypes: true })) {
-      if (ent.name === "node_modules" || ent.name === ".git") continue;
-      const rel = dir ? `${dir}/${ent.name}` : ent.name;
-      if (ent.isDirectory()) walk(rel);
-      else if (ent.name.toLowerCase().endsWith(".md")) count++;
+  try {
+    function walk(dir: string): void {
+      for (const ent of fs.readdirSync(path.join(root, dir), { withFileTypes: true })) {
+        if (ent.name === "node_modules" || ent.name === ".git") continue;
+        const rel = dir ? `${dir}/${ent.name}` : ent.name;
+        if (ent.isDirectory()) walk(rel);
+        else if (ent.name.toLowerCase().endsWith(".md")) count++;
+      }
     }
-  }
 
-  walk("");
+    walk("");
+  } catch {
+    return 0;
+  }
   return count;
 }
 
@@ -62,19 +66,23 @@ function countCategoriesSync(): Record<CampaignSystemCategoryId, number> {
 
   const root = campaignSystemManualRoot();
 
-  function walk(dir: string): void {
-    for (const ent of fs.readdirSync(path.join(root, dir), { withFileTypes: true })) {
-      if (ent.name === "node_modules" || ent.name === ".git") continue;
-      const rel = dir ? `${dir}/${ent.name}` : ent.name;
-      if (ent.isDirectory()) walk(rel);
-      else if (ent.name.toLowerCase().endsWith(".md")) {
-        const cat = categoryIdFromRelativePath(rel);
-        counts[cat] = (counts[cat] ?? 0) + 1;
+  try {
+    function walk(dir: string): void {
+      for (const ent of fs.readdirSync(path.join(root, dir), { withFileTypes: true })) {
+        if (ent.name === "node_modules" || ent.name === ".git") continue;
+        const rel = dir ? `${dir}/${ent.name}` : ent.name;
+        if (ent.isDirectory()) walk(rel);
+        else if (ent.name.toLowerCase().endsWith(".md")) {
+          const cat = categoryIdFromRelativePath(rel);
+          counts[cat] = (counts[cat] ?? 0) + 1;
+        }
       }
     }
-  }
 
-  walk("");
+    walk("");
+  } catch {
+    return counts;
+  }
   return counts;
 }
 

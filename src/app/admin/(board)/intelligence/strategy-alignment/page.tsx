@@ -1,14 +1,55 @@
 import Link from "next/link";
+import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import {
   computeStrategicAlignment,
   loadCampaignStrategicDoctrineRegistry,
 } from "@/lib/intelligence/campaignStrategicAlignment";
+import type { CampaignStrategicAlignmentIndex } from "@/lib/intelligence/types/campaignStrategicAlignment";
 import { StrategyAlignmentChunkPreviewStrip } from "@/components/admin/intelligence/strategy-alignment/StrategyAlignmentChunkPreviewStrip";
 import { StrategyAlignmentDashboard } from "./StrategyAlignmentDashboard";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const maxDuration = 26;
+
+function emptyStrategicAlignmentIndex(): CampaignStrategicAlignmentIndex {
+  return {
+    generatedAt: new Date().toISOString(),
+    doctrineCount: 0,
+    narrativeCount: 0,
+    signalCounts: {
+      STRATEGICALLY_ALIGNED: 0,
+      STRATEGICALLY_TENSE: 0,
+      STRATEGICALLY_FRAGILE: 0,
+      STRATEGICALLY_CONTRADICTORY: 0,
+      STRATEGICALLY_UNDERDEFINED: 0,
+      STRATEGICALLY_PRIORITY: 0,
+    },
+    alignments: [],
+    consistencySignals: [],
+    topStrategicTensions: [],
+    priorityDoctrineAreas: [],
+    aiSuggestionAlignmentWarnings: [],
+  };
+}
+
 export default async function StrategyAlignmentPage() {
-  const index = computeStrategicAlignment();
-  const doctrineRegistry = loadCampaignStrategicDoctrineRegistry();
+  const index = tryIntelligenceLoad(
+    "strategy-alignment",
+    () => computeStrategicAlignment(),
+    emptyStrategicAlignmentIndex(),
+  );
+  const doctrineRegistry = tryIntelligenceLoad(
+    "strategy-doctrine-registry",
+    () => loadCampaignStrategicDoctrineRegistry(),
+    {
+      generatedAt: new Date().toISOString(),
+      registryVersion: "1.0",
+      purpose: "Registry unavailable on this deploy.",
+      discoveryPhase: "SDI-1",
+      doctrines: [],
+    },
+  );
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">

@@ -23,6 +23,7 @@ import { computePhase9UpgradePass } from "@/lib/intelligence/v4/phase9DebateInst
 import { computePhase10UpgradePass } from "@/lib/intelligence/v4/phase10StrategyPhilosophyClosure";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 26;
 
 const STATUS_COLORS = {
   complete: "bg-emerald-500",

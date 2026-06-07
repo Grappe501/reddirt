@@ -79,9 +79,19 @@ export function loadCampaignStrategicDoctrineRegistry(
       doctrines: [],
     };
   }
-  return JSON.parse(
-    readFileSync(absPath(repoRoot, CAMPAIGN_STRATEGIC_DOCTRINE_REGISTRY_REL), "utf8"),
-  ) as CampaignStrategicDoctrineRegistryFile;
+  try {
+    return JSON.parse(
+      readFileSync(absPath(repoRoot, CAMPAIGN_STRATEGIC_DOCTRINE_REGISTRY_REL), "utf8"),
+    ) as CampaignStrategicDoctrineRegistryFile;
+  } catch {
+    return {
+      generatedAt: new Date().toISOString(),
+      registryVersion: "1.0",
+      purpose: "Strategic doctrine registry unreadable on this deploy.",
+      discoveryPhase: "SDI-1",
+      doctrines: [],
+    };
+  }
 }
 
 function resolveDoctrineLinks(

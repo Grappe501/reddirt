@@ -50,8 +50,12 @@ let billIndexCache: BillIndexRow[] | null = null;
 function loadBillIndex(): BillIndexRow[] {
   if (billIndexCache) return billIndexCache;
   const abs = path.join(process.cwd(), "data/opposition/kim-hammer-election-record-bill-index.json");
-  const raw = JSON.parse(fs.readFileSync(abs, "utf8")) as { rows: BillIndexRow[] };
-  billIndexCache = raw.rows;
+  try {
+    const raw = JSON.parse(fs.readFileSync(abs, "utf8")) as { rows: BillIndexRow[] };
+    billIndexCache = raw.rows;
+  } catch {
+    billIndexCache = [];
+  }
   return billIndexCache;
 }
 

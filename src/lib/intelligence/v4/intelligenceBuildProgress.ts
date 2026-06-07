@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { loadDebateIntelligenceV4Packet } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getAllPrepSectionDrillDownIds, getPrepSectionDrillDown } from "@/lib/intelligence/v4/debatePrepSectionDrillDowns";
 import { getAllTrapLaneIds, getTrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDowns";
@@ -118,7 +119,39 @@ function scoreDrillDown(minFields: boolean[], flags: string[] = []): { pct: numb
   return { pct, status };
 }
 
+function buildProgressDegradedFallback(): IntelligenceBuildProgressReport {
+  return {
+    generatedAt: new Date().toISOString(),
+    version: "degraded-netlify-pruned-corpus",
+    overallCompletionPct: 0,
+    items: [
+      {
+        id: "build-progress-degraded",
+        label: "Build progress unavailable on this deploy",
+        category: "Governance",
+        completionPct: 0,
+        status: "flagged",
+        built: 0,
+        total: 1,
+        flags: ["Large manual corpora pruned from Netlify handler — debate prep routes still load from JSON"],
+        href: "/admin/intelligence/kim-hammer/debate-prep",
+      },
+    ],
+    phases: [],
+    linkAuditRoutes: [],
+    flaggedForMasterBuild: ["build-progress-metrics-unavailable"],
+  };
+}
+
 export function computeIntelligenceBuildProgress(): IntelligenceBuildProgressReport {
+  return tryIntelligenceLoad(
+    "intelligence-build-progress",
+    computeIntelligenceBuildProgressCore,
+    buildProgressDegradedFallback(),
+  );
+}
+
+function computeIntelligenceBuildProgressCore(): IntelligenceBuildProgressReport {
   const v4 = loadDebateIntelligenceV4Packet();
   const items: BuildProgressItem[] = [];
 

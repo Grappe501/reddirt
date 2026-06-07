@@ -166,10 +166,17 @@ export function chunkStrategyMarkdown(markdown: string, meta: StrategyChunkSourc
 export async function loadAllStrategyManualChunks(): Promise<StrategyManualChunk[]> {
   const base = process.cwd();
   const all: StrategyManualChunk[] = [];
-  for (const entry of STRATEGY_MD_ENTRIES) {
-    const full = path.join(base, STRATEGY_MANUAL_DIR, entry.file);
-    const markdown = await readFile(full, "utf8");
-    all.push(...chunkStrategyMarkdown(markdown, { ...entry, manualDomain: "strategic-plan" }));
+  const strategyPlanRoot = path.join(base, STRATEGY_MANUAL_DIR);
+  if (existsSync(strategyPlanRoot)) {
+    for (const entry of STRATEGY_MD_ENTRIES) {
+      const full = path.join(strategyPlanRoot, entry.file);
+      try {
+        const markdown = await readFile(full, "utf8");
+        all.push(...chunkStrategyMarkdown(markdown, { ...entry, manualDomain: "strategic-plan" }));
+      } catch {
+        /* pruned or missing on Netlify — skip entry */
+      }
+    }
   }
 
   const csRoot = path.join(base, CAMPAIGN_SYSTEM_MANUAL_DIR);

@@ -1,9 +1,31 @@
 import Link from "next/link";
 import { computePhase11P6UpgradePass } from "@/lib/intelligence/v4/phase11P6Closure";
+import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { STRATEGY_ALIGNMENT_CHUNK_PREVIEW_HUB_HREF } from "@/lib/intelligence/v4/phase11P6StrategyAlignmentChunkPreviewDepth";
 
 export function StrategyAlignmentChunkPreviewStrip() {
-  const pass = computePhase11P6UpgradePass();
+  const pass = tryIntelligenceLoad(
+    "strategy-alignment-chunk-preview-strip",
+    () => computePhase11P6UpgradePass(),
+    {
+      passId: "phase-11-p6-strategy-alignment-chunk-preview",
+      title: "Step 11 P6 — Strategy alignment chunk preview",
+      summary: "Chunk preview metrics unavailable on this deploy.",
+      completionPct: 0,
+      hubHref: STRATEGY_ALIGNMENT_CHUNK_PREVIEW_HUB_HREF,
+      progress: {
+        laneTotal: 8,
+        lanesAtBar: 0,
+        totalMatchingChunks: 0,
+        p5PromotionGateOpen: false,
+        fieldBookReady: false,
+        canonReady: false,
+        alignmentRouteBound: false,
+        strategyMigrationRoutes: 0,
+        overallPct: 0,
+      },
+    },
+  );
   const p = pass.progress;
 
   return (
