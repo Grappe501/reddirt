@@ -34,6 +34,9 @@ export default async function CampaignIntelligenceGraphPage() {
           <Link href="/admin/intelligence/debate-command" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
             Debate command
           </Link>
+          <Link href="/admin/intelligence/philosophy-graph-claims-review" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
+            Philosophy claims review
+          </Link>
         </div>
       </header>
 

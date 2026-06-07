@@ -5,6 +5,11 @@ import Link from "next/link";
 import type { DebateFilmRoomPagePacket } from "@/lib/intelligence/v4/debateFilmRoomPageTypes";
 import { groupFilmRoomItems } from "@/lib/intelligence/v4/debateFilmRoomGrouping";
 import { isYoutubeUrl } from "@/lib/intelligence/opponents/opponentMediaCatalogTypes";
+import { EvidenceHonestyBadge, EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
+import {
+  resolveEvidenceHonestyFromConfidence,
+  resolveEvidenceHonestyFromSpeakerVerification,
+} from "@/lib/intelligence/v4/evidenceHonestyBadge";
 
 type TabId = "overview" | "media" | "clips" | "legislative" | "cross" | "arguments";
 
@@ -70,8 +75,11 @@ function OverviewTab({
       </div>
 
       <article className="rounded-xl border border-amber-200 bg-amber-50/50 p-4 text-sm text-amber-950">
-        <p className="font-bold uppercase text-[10px]">Archive honesty</p>
-        <p className="mt-2">{packet.filmRoom.archiveHonestyNote}</p>
+        <EvidenceHonestyBadgeFromText
+          text="INTERNAL_DRAFT · NON_PUBLISHABLE · HUMAN_REVIEW_REQUIRED · archive honesty"
+          showMessage
+        />
+        <p className="mt-3">{packet.filmRoom.archiveHonestyNote}</p>
         <p className="mt-2 text-xs">{packet.legislativeNote}</p>
       </article>
 
@@ -153,6 +161,7 @@ function MediaDrillsTab({
                 {d.publisher} · {d.platform} · {d.researchValue} · {d.speakerVerification}
               </p>
             </div>
+            <EvidenceHonestyBadge badge={resolveEvidenceHonestyFromSpeakerVerification(d.speakerVerification)} compact />
             <div className="flex flex-wrap gap-2">
               <a
                 href={d.url}
@@ -189,9 +198,9 @@ function MediaDrillsTab({
           <p className="mt-2">
             <span className="font-bold text-kelly-navy">Drill:</span> {d.drillPrompt}
           </p>
-          <p className="mt-2 text-amber-900">
-            <span className="font-bold">Claims:</span> {d.claimsGate}
-          </p>
+          <div className="mt-2">
+            <EvidenceHonestyBadgeFromText text={d.claimsGate} compact showMessage />
+          </div>
 
           {d.keySegments.length > 0 ? (
             <div className="mt-4 rounded-lg border border-violet-200 bg-violet-50/20 p-3">
@@ -257,9 +266,13 @@ function ClipsTab({ groups }: { groups: ReturnType<typeof groupFilmRoomItems> })
 }
 
 function FilmRoomItemCard({ item }: { item: DebateFilmRoomPagePacket["filmRoom"]["items"][0] }) {
+  const badge = resolveEvidenceHonestyFromConfidence(item.confidence);
   return (
     <article className="rounded-lg border border-kelly-text/10 bg-kelly-page/30 p-4 text-xs">
-      <p className="font-bold text-kelly-navy">{item.title}</p>
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <p className="font-bold text-kelly-navy">{item.title}</p>
+        <EvidenceHonestyBadge badge={badge} compact />
+      </div>
       <p className="text-kelly-muted">
         {item.topic} · {item.confidence} · {item.governanceLabel} · {item.assetType}
       </p>

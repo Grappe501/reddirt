@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
 import {
   listSosDebateQuestionsByCategory,
   listSosDebateQuestionSummaries,
@@ -37,6 +38,10 @@ export default function SosDebateQuestionsIndexPage() {
           Opponent dossiers
         </Link>
       </V4PageHeader>
+
+      <div className="mb-6 max-w-xl">
+        <EvidenceHonestyBadgeFromText text="Mixed — per-question claimsGate · NEEDS_REVIEW gates speak-order scripts" showMessage />
+      </div>
 
       <article className="mb-6 rounded-xl border-2 border-violet-200 bg-violet-50/40 p-5 text-sm">
         <p className="font-bold uppercase text-violet-950">How to use this bank</p>

@@ -444,12 +444,18 @@ function buildAllModuleBriefings(): Record<string, KimHammerModuleBriefing> {
       id: "narrative-testing",
       eyebrow: "KH-3 · Frames",
       title: "Narrative Testing",
-      paragraphs: kh3.narrativeTesting.frames.map(
-        (f) =>
-          `"${f.label}": rebuttal "${f.likelyRebuttal}" → counter "${f.defensiveCounter}"`,
-      ),
-      drillDownLinks: [link("#detail", "Frames")],
-      evidenceNote: "Internal testing only",
+      paragraphs: [
+        `${kh3.narrativeTesting.frames.length} cross-cutting frames plus bill-category attack playbooks with sample messages and debate setup questions.`,
+        ...kh3.narrativeTesting.frames.slice(0, 2).map(
+          (f) =>
+            `"${f.label}": rebuttal "${f.likelyRebuttal}" → counter "${f.defensiveCounter}"`,
+        ),
+      ],
+      drillDownLinks: [
+        link("/admin/intelligence/kim-hammer/narrative-testing", "Category attack lab"),
+        link("#detail", "Frames"),
+      ],
+      evidenceNote: "Internal testing only · INTERPRETATION until act-text verified",
     },
     {
       id: "county-exposure",

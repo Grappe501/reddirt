@@ -41,7 +41,10 @@ import type { KellyRoadStoriesFile } from "@/lib/intelligence/loadKellyRoadStori
 import type { KellyCandidateSuggestion } from "@/lib/legislature/videoArchiveRoomManifest";
 import { KellyOffensiveNarrativePanel } from "@/components/admin/intelligence/KellyOffensiveNarrativePanel";
 import { IntelligenceAgentCopilotDock } from "@/components/admin/intelligence/IntelligenceAgentCopilotDock";
+import { StageSafeBlockedPanel } from "@/components/admin/intelligence/StageSafeBlockedPanel";
+import { EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
 import { isCandidateIpadMode } from "@/lib/intelligence/candidateIpadMode";
+import { evaluateStageSafeContent } from "@/lib/intelligence/v4/phase15StageSafeFilter";
 
 function CoachingSection({ block }: { block: { title: string; bullets: string[]; doNot: string[] } }) {
   return (
@@ -72,6 +75,7 @@ export function KellyDebateCoachingPanel({
   directDemocracy,
   roadStories,
   vvsgEducation,
+  candidateProfile,
 }: {
   suggestions: KellyCandidateSuggestion[];
   compact?: boolean;
@@ -83,6 +87,7 @@ export function KellyDebateCoachingPanel({
     fairPublicLine: string;
     href: string;
   };
+  candidateProfile?: boolean;
 }) {
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -517,7 +522,7 @@ export function KellyDebateCoachingPanel({
         <h2 className="mb-3 text-sm font-bold uppercase text-kelly-navy">Opening statements — rehearse standing</h2>
         <div className="space-y-3">
           {KELLY_OPENING_SCRIPTS.map((script) => (
-            <ScriptCard key={script.id} script={script} />
+            <ScriptCard key={script.id} script={script} candidateProfile={candidateProfile} />
           ))}
         </div>
       </section>
@@ -526,7 +531,7 @@ export function KellyDebateCoachingPanel({
         <h2 className="mb-3 text-sm font-bold uppercase text-kelly-navy">Closing statements</h2>
         <div className="space-y-3">
           {KELLY_CLOSING_SCRIPTS.map((script) => (
-            <ScriptCard key={script.id} script={script} />
+            <ScriptCard key={script.id} script={script} candidateProfile={candidateProfile} />
           ))}
         </div>
       </section>
@@ -571,6 +576,7 @@ export function KellyDebateCoachingPanel({
 
 function ScriptCard({
   script,
+  candidateProfile,
 }: {
   script: {
     label: string;
@@ -579,20 +585,33 @@ function ScriptCard({
     deliveryNotes: string[];
     claimsGate: string;
   };
+  candidateProfile?: boolean;
 }) {
+  const decision = evaluateStageSafeContent(script.claimsGate, candidateProfile ? "candidate" : "staff");
+
   return (
     <article className="rounded-xl border border-kelly-navy/15 bg-kelly-page/20 p-4 text-xs">
       <div className="flex justify-between gap-2">
         <span className="font-bold text-kelly-navy">{script.label}</span>
         <span className="font-mono text-[10px] text-kelly-subtle">~{script.durationSeconds}s</span>
       </div>
-      <p className="mt-3 leading-relaxed text-kelly-text">{script.text}</p>
-      <p className="mt-2 text-[10px] text-amber-900">Claims: {script.claimsGate}</p>
-      <ul className="mt-2 list-inside list-disc text-violet-900">
-        {script.deliveryNotes.map((n) => (
-          <li key={n.slice(0, 40)}>{n}</li>
-        ))}
-      </ul>
+      {decision.blocked ? (
+        <div className="mt-3">
+          <StageSafeBlockedPanel decision={decision} compact />
+        </div>
+      ) : (
+        <>
+          <p className="mt-3 leading-relaxed text-kelly-text">{script.text}</p>
+          <ul className="mt-2 list-inside list-disc text-violet-900">
+            {script.deliveryNotes.map((n) => (
+              <li key={n.slice(0, 40)}>{n}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      <div className="mt-2">
+        <EvidenceHonestyBadgeFromText text={script.claimsGate} compact showMessage />
+      </div>
     </article>
   );
 }

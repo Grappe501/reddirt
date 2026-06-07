@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-06-07T06:02:42.650Z",
+  "totalAttachableChunks": 6543,
+  "lanes": [
+    {
+      "laneId": "morning-intelligence",
+      "attachableChunkCount": 1779
+    },
+    {
+      "laneId": "debate-prep",
+      "attachableChunkCount": 297
+    },
+    {
+      "laneId": "county-brief",
+      "attachableChunkCount": 181
+    },
+    {
+      "laneId": "opposition-research",
+      "attachableChunkCount": 229
+    },
+    {
+      "laneId": "media-monitoring",
+      "attachableChunkCount": 290
+    },
+    {
+      "laneId": "strategic-doctrine",
+      "attachableChunkCount": 229
+    },
+    {
+      "laneId": "candidate-talking-points",
+      "attachableChunkCount": 1743
+    },
+    {
+      "laneId": "claims-gated-brief-merge",
+      "attachableChunkCount": 1795
+    }
+  ]
+}

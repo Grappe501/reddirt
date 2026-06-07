@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-04T01:03:49.964Z",
+  "generatedAt": "2026-06-07T06:02:33.581Z",
   "events": [
     {
       "eventType": "CLAIM_INGESTED",
@@ -417,6 +417,62 @@
       "details": "Seeded 0 new and 17 updated debate-week claims",
       "eventId": "cla-mpysl1vw",
       "timestamp": "2026-06-04T01:03:49.964Z"
+    },
+    {
+      "eventType": "INGESTED",
+      "claimId": "batch-philosophy-graph",
+      "actor": "phase-11-p4-philosophy-graph-seed",
+      "details": "Philosophy graph claims seed — 8 nodes",
+      "eventId": "cla-mq343b3g",
+      "timestamp": "2026-06-07T01:37:02.188Z"
+    },
+    {
+      "eventType": "INGESTED",
+      "claimId": "batch-philosophy-graph",
+      "actor": "phase-11-p4-philosophy-graph-seed",
+      "details": "Philosophy graph claims seed — 8 nodes",
+      "eventId": "cla-mq343w52",
+      "timestamp": "2026-06-07T01:37:29.462Z"
+    },
+    {
+      "eventType": "INGESTED",
+      "claimId": "batch-philosophy-graph",
+      "actor": "phase-11-p4-philosophy-graph-seed",
+      "details": "Philosophy graph claims seed — 8 nodes",
+      "eventId": "cla-mq36vzgh",
+      "timestamp": "2026-06-07T02:55:19.361Z"
+    },
+    {
+      "eventType": "INGESTED",
+      "claimId": "batch-philosophy-graph",
+      "actor": "phase-11-p4-philosophy-graph-seed",
+      "details": "Philosophy graph claims seed — 8 nodes",
+      "eventId": "cla-mq3db7l8",
+      "timestamp": "2026-06-07T05:55:07.436Z"
+    },
+    {
+      "eventType": "INGESTED",
+      "claimId": "batch-philosophy-graph",
+      "actor": "phase-11-p4-philosophy-graph-seed",
+      "details": "Philosophy graph claims seed — 8 nodes",
+      "eventId": "cla-mq3de9qr",
+      "timestamp": "2026-06-07T05:57:30.195Z"
+    },
+    {
+      "eventType": "INGESTED",
+      "claimId": "batch-philosophy-graph",
+      "actor": "phase-11-p4-philosophy-graph-seed",
+      "details": "Philosophy graph claims seed — 8 nodes",
+      "eventId": "cla-mq3divt2",
+      "timestamp": "2026-06-07T06:01:05.414Z"
+    },
+    {
+      "eventType": "INGESTED",
+      "claimId": "batch-philosophy-graph",
+      "actor": "phase-11-p4-philosophy-graph-seed",
+      "details": "Philosophy graph claims seed — 8 nodes",
+      "eventId": "cla-mq3dkru5",
+      "timestamp": "2026-06-07T06:02:33.581Z"
     }
   ]
 }

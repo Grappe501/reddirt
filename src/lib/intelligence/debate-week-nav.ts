@@ -5,6 +5,11 @@ import { buildKimHammerTier3SidebarNavItems } from "@/lib/intelligence/v4/kimHam
 import { DEBATE_WORKFLOW_STEPS } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { PHASE_A_COMMAND_HREFS, PHASE_A_COMMAND_NAV_ITEMS } from "@/lib/intelligence/phaseACommandNav";
 export { PHASE_A_COMMAND_NAV_ITEMS } from "@/lib/intelligence/phaseACommandNav";
+import {
+  buildCandidateCommandNavSections,
+  flattenCandidateCommandNavLinks,
+} from "@/lib/intelligence/v4/candidateCommandNav";
+import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
 
 function dedupeNavItems(items: DebateWeekNavItem[]): DebateWeekNavItem[] {
   const seen = new Set<string>();
@@ -44,6 +49,10 @@ export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence/sos-debate-questions",
   "/admin/intelligence/debate-briefings",
   "/admin/intelligence/strategy-philosophy-hub",
+  "/admin/intelligence/campaign-system-manual",
+  "/admin/intelligence/phase-11-upgrade",
+  "/admin/intelligence/kelly-strategic-plan",
+  "/admin/intelligence/phase-11-p1-upgrade",
   "/admin/intelligence/debate-prep/psychology-manual",
   "/admin/intelligence/agent-tooling",
   "/admin/intelligence/debate-depth",
@@ -319,6 +328,18 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
 /** Tier-1 staff research surfaces (NSI suite) — wired in extended nav; not Kelly debate-night screens. */
 export const NSI_STAFF_RESEARCH_NAV_ITEMS: DebateWeekNavItem[] = [
   {
+    href: "/admin/intelligence/kelly-strategic-plan",
+    label: "Kelly strategic plan",
+    description:
+      "Phase 11 P1 — 22-chapter Kelly SOS manual in intelligence with debate overlays on framework, programs, and operations chapters.",
+  },
+  {
+    href: "/admin/intelligence/campaign-system-manual",
+    label: "Campaign system manual",
+    description:
+      "Phase 11 P0 — 252 operational docs browsable in intelligence with 8 category guides; lifecycle manual, playbooks, roles, workflows.",
+  },
+  {
     href: "/admin/intelligence/morning-brief",
     label: "Morning brief",
     description:
@@ -469,10 +490,20 @@ export function getFlatDebateWeekNavItems(): DebateWeekNavItem[] {
 export const DEBATE_WEEK_NAV_ITEMS: DebateWeekNavItem[] = getFlatDebateWeekNavItems();
 
 export function getDebateWeekNavItems(): DebateWeekNavItem[] {
-  if (!isCountyClerkPrimaryAudience()) return DEBATE_WEEK_NAV_ITEMS;
-  const primaryHrefs = new Set(COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS.map((i) => i.href));
-  const extended = DEBATE_WEEK_EXTENDED_NAV_ITEMS.filter((i) => !primaryHrefs.has(i.href));
-  return [...COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS, ...extended];
+  let items: DebateWeekNavItem[];
+  if (!isCountyClerkPrimaryAudience()) {
+    items = DEBATE_WEEK_NAV_ITEMS;
+  } else {
+    const primaryHrefs = new Set(COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS.map((i) => i.href));
+    const extended = DEBATE_WEEK_EXTENDED_NAV_ITEMS.filter((i) => !primaryHrefs.has(i.href));
+    items = [...COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS, ...extended];
+  }
+
+  const profile = resolveIntelligenceNavProfileClient(isCountyClerkPrimaryAudience());
+  if (profile === "STAFF") return items;
+
+  const allowed = new Set(flattenCandidateCommandNavLinks(buildCandidateCommandNavSections(profile)).map((l) => l.href));
+  return items.filter((i) => allowed.has(i.href));
 }
 
 export function isDebateWeekRoute(pathname: string): boolean {

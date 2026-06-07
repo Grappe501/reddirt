@@ -9,6 +9,7 @@ import {
 import { getFieldBookArticle, FIELD_BOOK_HUB_HREF } from "@/lib/intelligence/fieldBookRegistry";
 import { computePhase4UpgradePass } from "@/lib/intelligence/v4/phase4CanonLoop";
 import { IntelligenceNavLink } from "@/components/admin/intelligence/IntelligenceNavLink";
+import { FieldBookPromotionExecutionStrip } from "@/components/admin/intelligence/field-book/FieldBookPromotionExecutionStrip";
 
 export const dynamic = "force-dynamic";
 
@@ -31,10 +32,10 @@ export default function FieldBookCanonHubPage() {
           Field Book home
         </Link>
         <Link
-          href="/admin/intelligence/field-book/phase/phase-d"
-          className="rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950"
+          href="/admin/intelligence/field-book-promotion-execution"
+          className="rounded-full border border-amber-400 bg-amber-50 px-3 py-1 text-xs font-bold text-amber-950"
         >
-          Phase D organization
+          Promotion execution (P8)
         </Link>
         <Link
           href="/admin/intelligence/phase-4-upgrade"
@@ -45,6 +46,8 @@ export default function FieldBookCanonHubPage() {
       </V4PageHeader>
 
       <Phase4UpgradePassPanel report={phase4} compact />
+
+      <FieldBookPromotionExecutionStrip />
 
       <article className="mb-8 rounded-xl border-2 border-violet-200 bg-violet-50/40 p-5 text-sm">
         <p className="font-bold uppercase text-violet-950">How the canon loop works</p>

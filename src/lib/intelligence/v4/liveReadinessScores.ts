@@ -11,6 +11,7 @@ import { buildSosQuestionResponseRounds } from "@/lib/intelligence/v4/debateResp
 import { buildTrapLaneStepCoverage } from "@/lib/intelligence/v4/trapLaneStepCoverage";
 import { listCuratedBillPlaybookNumbers } from "@/lib/intelligence/v4/debateBillOperatorPlaybooks";
 import { listAllBillNumbersFromIndex } from "@/lib/intelligence/v4/billActProofDepth";
+import { computeDebateCommandPhilosophyReadiness } from "@/lib/intelligence/v4/debateCommandPhilosophyReadiness";
 import { tryIntelligenceLoad } from "@/lib/intelligence/safeIntelligenceLoad";
 import { loadOppositionArchiveRollup } from "@/lib/opposition/oppositionBriefConfidence";
 
@@ -87,6 +88,7 @@ export function computeLiveReadinessScores(ctx: LiveReadinessContext): ComputedR
   const billPct = billPlaybookCompletionPct();
   const clipScore = filmRoom.directClipCount * 12 + filmRoom.legislativeClipCount * 4;
   const archive = tryIntelligenceLoad("live-readiness-archive", () => loadOppositionArchiveRollup(), null);
+  const philosophyFeed = computeDebateCommandPhilosophyReadiness();
 
   const base: ComputedReadinessScore[] = [
     {
@@ -214,6 +216,18 @@ export function computeLiveReadinessScores(ctx: LiveReadinessContext): ComputedR
       scoreConfidence: "MEDIUM",
       raiseScoreToday: ["Rehearse agree/contrast/bridge triplets aloud", "Open argument map on hub"],
       computedFrom: ["kim-hammer-rebuttal-prep.json", "likelyArguments"],
+    },
+    {
+      id: "philosophyStrategyWiring",
+      label: "Philosophy & staff strategy wiring",
+      score: clamp(philosophyFeed.overallScore),
+      trend: philosophyFeed.overallScore >= 90 ? "up" : philosophyFeed.overallScore >= 70 ? "flat" : "down",
+      weakAreas: philosophyFeed.gaps,
+      nextModule: philosophyFeed.nextModules[0]?.href ?? "/admin/intelligence/movement-philosophy",
+      whyThisScore: philosophyFeed.rows.map((r) => `${r.label}: ${r.score}%`).join(" · "),
+      scoreConfidence: philosophyFeed.overallScore >= 85 ? "MEDIUM" : "LOW",
+      raiseScoreToday: philosophyFeed.nextModules.slice(0, 2).map((m) => `Open ${m.label}`),
+      computedFrom: ["phase11P2Closure", "debateCommandPhilosophyReadiness"],
     },
   ];
 

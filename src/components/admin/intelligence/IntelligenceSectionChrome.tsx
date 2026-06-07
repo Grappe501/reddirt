@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 import { IntelligenceCandidateOrientation } from "@/components/admin/intelligence/IntelligenceCandidateOrientation";
 import { IntelligenceDebateSubnav } from "@/components/admin/intelligence/IntelligenceDebateSubnav";
 import { IntelligenceKimHammerSubnav } from "@/components/admin/intelligence/IntelligenceKimHammerSubnav";
@@ -10,6 +10,8 @@ import { NavNewLinksBanner } from "@/components/admin/intelligence/NavNewLinksBa
 import { FieldBookCanonPanel } from "@/components/admin/intelligence/FieldBookCanonPanel";
 import { ThreeLaneNavLegend } from "@/components/admin/intelligence/ThreeLaneNavLegend";
 import { IntelligenceGovernanceStrip } from "@/components/admin/intelligence/IntelligenceGovernanceStrip";
+import { IntelligenceDemoModeBanner } from "@/components/admin/intelligence/IntelligenceDemoModeBanner";
+import { StaffBackstageBlockedBanner } from "@/components/admin/intelligence/StaffBackstageBlockedBanner";
 import { CandidateIpadIntelligenceShell } from "@/components/admin/intelligence/CandidateIpadIntelligenceShell";
 import { isCandidateIpadMode } from "@/lib/intelligence/candidateIpadMode";
 
@@ -27,6 +29,10 @@ export function IntelligenceSectionChrome({ children }: { children: ReactNode })
   const inner = (
     <>
       <NavVisitRecorder />
+      <IntelligenceDemoModeBanner />
+      <Suspense fallback={null}>
+        <StaffBackstageBlockedBanner />
+      </Suspense>
       {CANDIDATE_IPAD ? null : <IntelligenceGovernanceStrip />}
       <NavNewLinksBanner />
       <ThreeLaneNavLegend compact />

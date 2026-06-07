@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { loadSupremeWorkbenchPacket } from "@/lib/intelligence/v4/supremeWorkbench";
 import { diligenceHubSummary } from "@/lib/intelligence/v4/kellyCourtDiligenceLog";
 import { computePhaseAUpgradePass } from "@/lib/intelligence/v4/phaseAUpgradePass";
@@ -13,11 +14,18 @@ import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHamm
 import { Tier4CoreSpineNavPanel } from "@/components/admin/intelligence/Tier4CoreSpineNavPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
+import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
+import { CANDIDATE_COMMAND_HOME_HREF } from "@/lib/intelligence/v4/phase15CandidateCommandDepth";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export default function SupremeWorkbenchPage() {
+  const profile = resolveIntelligenceNavProfileClient(isCountyClerkPrimaryAudience());
+  if (profile !== "STAFF") {
+    redirect(CANDIDATE_COMMAND_HOME_HREF);
+  }
+
   const packet = loadSupremeWorkbenchPacket();
   const clerkWeek = isCountyClerkPrimaryAudience();
   const diligenceSummary = diligenceHubSummary();

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
 import { listTrapLaneSummaries, TRAP_LANE_FIRST_TIMER_NOTE } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
@@ -34,6 +35,10 @@ export default function TrapLanesIndexPage() {
           Debate coaching
         </Link>
       </V4PageHeader>
+
+      <div className="mb-6 max-w-xl">
+        <EvidenceHonestyBadgeFromText text="NEEDS_REVIEW — verify acts before stage · per-lane claimsGate" showMessage />
+      </div>
 
       <article className="mb-6 rounded-xl border border-amber-200 bg-amber-50/50 p-4 text-sm text-amber-950">
         {TRAP_LANE_FIRST_TIMER_NOTE}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
 import { KellyDebateCoachingPanel } from "@/components/admin/intelligence/KellyDebateCoachingPanel";
 import { V4DebateDepthHub } from "@/components/admin/intelligence/v4/V4DebateDepthHub";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
@@ -6,6 +7,7 @@ import { buildVideoArchiveRoomPacket } from "@/lib/legislature/videoArchiveRoom"
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { V4OperatorGuide } from "@/components/admin/intelligence/v4/V4OperatorGuide";
 import { loadVvsg20CandidateEducation } from "@/lib/intelligence/v4/vvsg20CandidateEducation";
+import { profileUsesStageSafeFilter, resolveIntelligenceNavProfileServer } from "@/lib/intelligence/v4/roleBasedNavProfile";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -13,6 +15,7 @@ export const runtime = "nodejs";
 export default function KellyDebateCoachingPage() {
   const archive = buildVideoArchiveRoomPacket();
   const vvsg = loadVvsg20CandidateEducation();
+  const candidateProfile = profileUsesStageSafeFilter(resolveIntelligenceNavProfileServer());
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -40,6 +43,10 @@ export default function KellyDebateCoachingPage() {
         </Link>
       </V4PageHeader>
 
+      <div className="mb-6 max-w-xl">
+        <EvidenceHonestyBadgeFromText text="GENERAL_FRAME · NEEDS_REVIEW on offensive open · script claimsGate" showMessage />
+      </div>
+
       {getSurfaceGuide("kellyDebateCoaching") ? (
         <div className="mb-6">
           <V4OperatorGuide guide={getSurfaceGuide("kellyDebateCoaching")!} />
@@ -52,6 +59,7 @@ export default function KellyDebateCoachingPage() {
         suggestions={archive.opponentMedia.kellySuggestions}
         directDemocracy={archive.legislativeRecord}
         roadStories={archive.roadStories}
+        candidateProfile={candidateProfile}
         vvsgEducation={{
           executiveSummary: vvsg.executiveSummaryForKelly,
           whatToKnow: vvsg.whatKellyShouldKnow.slice(0, 4),

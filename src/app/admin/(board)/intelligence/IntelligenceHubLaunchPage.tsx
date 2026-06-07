@@ -27,6 +27,12 @@ import {
   PETITION_2025_CLUSTER_DEPTH,
 } from "@/lib/intelligence/v4/oppositionStrategyLayer";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
+import { buildCandidateCommandHomeFeed } from "@/lib/intelligence/v4/candidateCommandHome";
+import { buildCceClosureSummary } from "@/lib/intelligence/v4/phase15P9Closure";
+import { buildSreClosureSummary } from "@/lib/intelligence/v4/phase16P9Closure";
+import { CandidateCommandHomePanel } from "@/components/admin/intelligence/CandidateCommandHomePanel";
+import { KellyPrepWeekPathPanel } from "@/components/admin/intelligence/KellyPrepWeekPathPanel";
+import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
 
 const card =
   "flex flex-col rounded-xl border-2 border-kelly-navy/15 bg-white p-4 shadow-sm transition hover:border-kelly-navy/40";
@@ -38,23 +44,32 @@ export default function IntelligenceHubLaunchPage() {
   const v4 = loadDebateIntelligenceV4HubPacket();
   const supreme = loadSupremeWorkbenchPacket();
   const opposition = loadOppositionStrategyLayerPacket();
+  const homeFeed = buildCandidateCommandHomeFeed();
+  const cceClosure = buildCceClosureSummary();
+  const sreClosure = buildSreClosureSummary();
   const hammerNavModules = buildKimHammerCommandCenterNavModules(v4);
   const { hub } = v4;
   const clerkWeek = isCountyClerkPrimaryAudience();
+  const profile = resolveIntelligenceNavProfileClient(clerkWeek);
+  const staffView = profile === "STAFF";
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
       <V4PageHeader
-        eyebrow={clerkWeek ? "Kelly · county clerks week" : "Kelly · debate intelligence v4"}
-        title={clerkWeek ? "County clerks — start your day here" : "Tonight's command overview"}
+        eyebrow={clerkWeek ? "Kelly · county clerks week" : "Kelly · command home"}
+        title={clerkWeek ? "County clerks — command home" : "Command home"}
         description={
           clerkWeek
-            ? "Primary audience: county clerks and election commissioners. Follow the 7-day reading path first — then contrast and bill drills. Internal draft only — verify act numbers before any public use."
-            : "Your pre-flight checklist: orient on Hammer's legislative pattern, rehearse top bill drills, and know what is still unsafe to say. Work the five-step path below, then open debate prep for depth. Internal draft only — verify act numbers before any public use."
+            ? "Seven-day clerk path, readiness, and claims-gated lines on one screen — then drill into contrast and bill prep."
+            : "One landing screen: readiness score, safe and blocked lines, and today's rehearsal focus — then open trap lanes or debate prep for depth."
         }
         guide={getSurfaceGuide("hub")}
       >
         <V4BackLinks />
       </V4PageHeader>
+
+      <CandidateCommandHomePanel feed={homeFeed} cceClosure={cceClosure} sreClosure={sreClosure} />
+
+      {!staffView ? <KellyPrepWeekPathPanel compact initialDay={new Date().getDay() === 0 ? 7 : Math.min(7, new Date().getDay())} /> : null}
 
       <div className="mb-6">
         <V4SupremeWorkbenchPanel packet={supreme} variant="compact" />
@@ -70,9 +85,15 @@ export default function IntelligenceHubLaunchPage() {
       </div>
 
       <V7CountyClerkPrepPath compact={!clerkWeek} />
-      <DebatePrepDepthNavPanel compact={clerkWeek} />
-      <KimHammerModuleNavPanel compact />
-      <Tier4CoreSpineNavPanel compact />
+      {staffView ? (
+        <>
+          <DebatePrepDepthNavPanel compact={clerkWeek} />
+          <KimHammerModuleNavPanel compact />
+          <Tier4CoreSpineNavPanel compact />
+        </>
+      ) : (
+        <DebatePrepDepthNavPanel compact />
+      )}
       <div className="mb-6">
         <V4DebatePrepFinder compact />
       </div>

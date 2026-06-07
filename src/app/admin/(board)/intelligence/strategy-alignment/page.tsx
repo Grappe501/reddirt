@@ -3,6 +3,7 @@ import {
   computeStrategicAlignment,
   loadCampaignStrategicDoctrineRegistry,
 } from "@/lib/intelligence/campaignStrategicAlignment";
+import { StrategyAlignmentChunkPreviewStrip } from "@/components/admin/intelligence/strategy-alignment/StrategyAlignmentChunkPreviewStrip";
 import { StrategyAlignmentDashboard } from "./StrategyAlignmentDashboard";
 
 export default async function StrategyAlignmentPage() {
@@ -36,8 +37,16 @@ export default async function StrategyAlignmentPage() {
           >
             Narrative state (NSI-1)
           </Link>
+          <Link
+            href="/admin/intelligence/strategy-alignment-chunk-preview"
+            className="rounded border px-2 py-1 font-semibold text-kelly-navy"
+          >
+            Chunk preview (P6)
+          </Link>
         </div>
       </header>
+
+      <StrategyAlignmentChunkPreviewStrip />
 
       <StrategyAlignmentDashboard index={index} doctrineRegistry={doctrineRegistry} />
     </div>

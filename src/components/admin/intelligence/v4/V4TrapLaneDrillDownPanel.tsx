@@ -1,11 +1,13 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { ClaimsGateBanner } from "@/components/admin/intelligence/ClaimsGateBanner";
+import { StageSafeBlockedPanel } from "@/components/admin/intelligence/StageSafeBlockedPanel";
 import { DebateSpineFiveLayerChrome } from "@/components/admin/intelligence/DebateSpineFiveLayerChrome";
 import type { TrapLaneWithBriefing } from "@/lib/intelligence/v4/debateBriefingEnrichment";
 import { getTrapLaneFiveLayer } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
 import { TRAP_LANE_FIRST_TIMER_NOTE } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 import { buildTrapLaneStepCoverage } from "@/lib/intelligence/v4/trapLaneStepCoverage";
+import type { StageSafeContentDecision } from "@/lib/intelligence/v4/phase15StageSafeFilter";
 import { V4TrapStepCoveragePanel } from "@/components/admin/intelligence/v4/V4DepthPanels";
 import { V4EncounterDepthPanel } from "@/components/admin/intelligence/v4/V4EncounterDepthPanel";
 import { V4DebateBriefingPanel } from "@/components/admin/intelligence/v4/V4DebateBriefingPanel";
@@ -23,16 +25,22 @@ export function V4TrapLaneDrillDownPanel({
   drill,
   prev,
   next,
+  stageSafeDecision,
 }: {
   drill: TrapLaneWithBriefing;
   prev: { laneId: string; title: string } | null;
   next: { laneId: string; title: string } | null;
+  stageSafeDecision?: StageSafeContentDecision;
 }) {
   const fiveLayer = getTrapLaneFiveLayer(drill.laneId);
+  const candidateProfile = stageSafeDecision?.audience === "candidate";
+  const operatorBlocked = stageSafeDecision?.blocked ?? false;
 
   return (
     <div className="space-y-6">
-      {fiveLayer ? <DebateSpineFiveLayerChrome depth={fiveLayer} /> : null}
+      {fiveLayer ? (
+        <DebateSpineFiveLayerChrome depth={fiveLayer} stageSafeDecision={stageSafeDecision} />
+      ) : null}
 
       <V4DebateBriefingPanel briefing={drill.briefing} title="Trap lane quick-read briefing" />
 
@@ -42,8 +50,9 @@ export function V4TrapLaneDrillDownPanel({
         </p>
         <p className="mt-3 text-sm leading-relaxed text-kelly-text">{drill.narrativeOverview}</p>
         <div className="mt-3">
-          <ClaimsGateBanner claimsGate={drill.claimsGate} />
+          <ClaimsGateBanner claimsGate={drill.claimsGate} candidateProfile={candidateProfile} />
         </div>
+        {stageSafeDecision ? <StageSafeBlockedPanel decision={stageSafeDecision} compact /> : null}
       </article>
 
       {(drill.whatToLookForOffensive.length > 0 || drill.whatToLookForDefensive.length > 0) && (
@@ -142,10 +151,17 @@ export function V4TrapLaneDrillDownPanel({
 
       <article className="rounded-xl border-2 border-violet-200 bg-violet-50/30 p-5 text-xs">
         <h3 className="text-sm font-bold uppercase text-violet-950">Kelly pivot — deep narrative</h3>
-        <p className="mt-3 text-base leading-relaxed text-kelly-text md:text-sm">{drill.kellyPivotDeep}</p>
+        {operatorBlocked ? (
+          <p className="mt-3 text-sm italic text-kelly-muted">
+            Staff is verifying pivot language tied to this lane&apos;s claims gate — review setup and opponent signals
+            above until the ledger row clears.
+          </p>
+        ) : (
+          <p className="mt-3 text-base leading-relaxed text-kelly-text md:text-sm">{drill.kellyPivotDeep}</p>
+        )}
       </article>
 
-      {drill.rebuttalScripts.length > 0 ? (
+      {drill.rebuttalScripts.length > 0 && !operatorBlocked ? (
         <section className="rounded-xl border border-violet-200 bg-white p-5">
           <h3 className="text-sm font-bold uppercase text-violet-950">Rebuttals — agree · contrast · bridge</h3>
           <div className="mt-4 space-y-4">
@@ -174,7 +190,7 @@ export function V4TrapLaneDrillDownPanel({
         </section>
       ) : null}
 
-      {drill.sampleScripts.length > 0 ? (
+      {drill.sampleScripts.length > 0 && !operatorBlocked ? (
         <section className="rounded-xl border border-kelly-navy/15 bg-kelly-page/20 p-5">
           <h3 className="text-sm font-bold uppercase text-kelly-navy">Sample scripts — rehearse standing</h3>
           <div className="mt-4 space-y-4">
@@ -192,7 +208,7 @@ export function V4TrapLaneDrillDownPanel({
         </section>
       ) : null}
 
-      {drill.zingers.length > 0 ? (
+      {drill.zingers.length > 0 && !operatorBlocked ? (
         <Block title="Zingers (optional)">
           <ul className="space-y-3">
             {drill.zingers.map((z) => (

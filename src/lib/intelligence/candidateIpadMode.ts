@@ -1,7 +1,10 @@
 /**
  * Candidate iPad 11" (A16) — intelligence UI profile.
  * Portrait ~820 CSS px; optimize touch, bottom nav, safe areas, readable type.
+ * Phase 15 P7 — bottom nav uses five CCE sections via phase15P7IpadPolish.
  */
+
+import { listIpadBottomNavTabs } from "@/lib/intelligence/v4/phase15P7IpadPolish";
 
 export const CANDIDATE_IPAD_PROFILE = {
   label: 'iPad 11" (candidate)',
@@ -17,15 +20,18 @@ export function isCandidateIpadMode(): boolean {
   return process.env.NEXT_PUBLIC_CANDIDATE_IPAD_MODE === "true";
 }
 
-export const CANDIDATE_IPAD_PRIMARY_NAV = [
-  { href: "/admin/intelligence", label: "Home", shortLabel: "Home" },
-  { href: "/admin/intelligence/candidate-dossiers/kelly-grappe", label: "Your profile", shortLabel: "Profile" },
-  { href: "/admin/intelligence/kelly-debate-coaching", label: "Coaching", shortLabel: "Coach" },
-  { href: "/admin/intelligence/kim-hammer/debate-prep", label: "Debate prep", shortLabel: "Prep" },
-  { href: "/admin/intelligence/video-archive-room", label: "Record & video", shortLabel: "Record" },
-  { href: "/admin/intelligence/claims", label: "Claims", shortLabel: "Claims" },
-] as const;
+export const CANDIDATE_IPAD_DEPLOY_HINT =
+  "Set NEXT_PUBLIC_CANDIDATE_IPAD_MODE=true with NEXT_PUBLIC_INTELLIGENCE_NAV_PROFILE=CANDIDATE for Kelly stage-side deploy.";
 
+/** Phase 15 P7 — five CCE section tabs (Home · Rehearse · Philosophy · Opposition · Safety). */
+export const CANDIDATE_IPAD_PRIMARY_NAV = listIpadBottomNavTabs("CANDIDATE").map((tab) => ({
+  href: tab.primaryHref,
+  label: tab.label,
+  shortLabel: tab.shortLabel,
+  sectionId: tab.sectionId,
+}));
+
+/** Legacy overflow links — section sheets are primary; keep for deep staff-adjacent routes. */
 export const CANDIDATE_IPAD_MORE_LINKS = [
   { href: "/admin/intelligence/supreme-workbench", label: "Supreme workbench" },
   { href: "/admin/intelligence/opposition-strategy", label: "Opposition strategy" },

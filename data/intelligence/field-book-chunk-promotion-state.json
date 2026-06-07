@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-06-07T06:02:42.381Z",
+  "totalChunks": 2795,
+  "strategicPlanChunks": 265,
+  "campaignSystemChunks": 2530,
+  "batches": [
+    {
+      "batchId": "kelly-foundation",
+      "chunkCount": 84,
+      "status": "catalogued"
+    },
+    {
+      "batchId": "kelly-programs",
+      "chunkCount": 145,
+      "status": "catalogued"
+    },
+    {
+      "batchId": "kelly-operations",
+      "chunkCount": 36,
+      "status": "catalogued"
+    },
+    {
+      "batchId": "csm-root-tomes",
+      "chunkCount": 1514,
+      "status": "catalogued"
+    },
+    {
+      "batchId": "csm-chapters",
+      "chunkCount": 111,
+      "status": "catalogued"
+    },
+    {
+      "batchId": "csm-playbooks",
+      "chunkCount": 68,
+      "status": "catalogued"
+    },
+    {
+      "batchId": "csm-roles",
+      "chunkCount": 626,
+      "status": "catalogued"
+    },
+    {
+      "batchId": "csm-workflows",
+      "chunkCount": 145,
+      "status": "catalogued"
+    },
+    {
+      "batchId": "csm-inventories",
+      "chunkCount": 31,
+      "status": "catalogued"
+    },
+    {
+      "batchId": "csm-maps",
+      "chunkCount": 19,
+      "status": "catalogued"
+    },
+    {
+      "batchId": "csm-web-presentation",
+      "chunkCount": 16,
+      "status": "catalogued"
+    }
+  ]
+}

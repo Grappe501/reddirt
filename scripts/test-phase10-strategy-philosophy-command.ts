@@ -64,7 +64,7 @@ for (const node of graph.nodes) {
 
 assert.ok(getFieldBookArticle("strategy-philosophy-command"), "field book article");
 assert.ok(resolveCanonBinding("/admin/intelligence/strategy-philosophy-hub"), "canon binding");
-assert.ok(listStrategyMigrationRoutes().length >= 37, "strategy routes");
+assert.ok(listStrategyMigrationRoutes().length >= 39, "strategy routes");
 
 assertRouteExists("/admin/intelligence/strategy-philosophy-hub");
 
@@ -78,7 +78,7 @@ for (const f of libs) {
   assert.ok(fs.existsSync(path.join(process.cwd(), f)), f);
 }
 
-assert.ok(listAllStrategyPhilosophySurfaces().some((s) => s.href.includes("campaign-strategy/framework")), "framework link");
+assert.ok(listAllStrategyPhilosophySurfaces().some((s) => s.href.includes("kelly-strategic-plan/framework")), "framework link");
 
 console.log("test-phase10-strategy-philosophy-command: OK");
 console.log(

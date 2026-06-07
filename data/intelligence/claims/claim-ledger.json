@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-04T01:03:49.963Z",
+  "generatedAt": "2026-06-07T06:02:33.579Z",
   "purpose": "Campaign intelligence claim ledger — INTERNAL ONLY",
   "entries": [
     {
@@ -2390,6 +2390,446 @@
       "createdAt": "2026-06-04T01:02:43.450Z",
       "updatedAt": "2026-06-04T01:03:49.962Z",
       "createdBy": "debateClaimsSeed.v1",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-philosophy-philosophy-civic-trust",
+      "claimText": "Civic Trust & Process Legitimacy: Election administration should build public confidence through lawful, transparent, non-polarizing process clarity.",
+      "normalizedClaimText": "civic trust  process legitimacy election administration should build public confidence through lawful transparent non-polarizing process clarity.",
+      "claimFingerprint": "3a92c0507cece63d",
+      "claimType": "philosophy_principle",
+      "domain": "general",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "philosophy-graph",
+        "philosophy-civic-trust",
+        "nsi-4",
+        "phase-11-p4"
+      ],
+      "sourceBriefIds": [
+        "philosophy-graph-philosophy-civic-trust"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Review NSI-4 philosophy node philosophy-civic-trust — approve internal after doctrine/briefing crosswalk. Frames: balls-and-strikes SOS; keeper of the record",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Phase 11 P4 seed — graph node NEEDS_REVIEW until staff clears claims workflow.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-07T01:37:02.172Z",
+          "eventType": "INGESTED",
+          "actor": "phase-11-p4-philosophy-graph-seed",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Seeded from campaign-philosophy-graph.json node philosophy-civic-trust"
+        }
+      ],
+      "createdAt": "2026-06-07T06:02:33.569Z",
+      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdBy": "phase-11-p4-philosophy-graph-seed",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-philosophy-philosophy-transparency",
+      "claimText": "Transparency & Public Record Access: Citizens deserve understandable public records, audit trails, and accountable election procedures—not opaque institutional shields.",
+      "normalizedClaimText": "transparency  public record access citizens deserve understandable public records audit trails and accountable election proceduresnot opaque institutional shields.",
+      "claimFingerprint": "5517e7f079a1a9bc",
+      "claimType": "philosophy_principle",
+      "domain": "general",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "philosophy-graph",
+        "philosophy-transparency",
+        "nsi-4",
+        "phase-11-p4"
+      ],
+      "sourceBriefIds": [
+        "philosophy-graph-philosophy-transparency"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Review NSI-4 philosophy node philosophy-transparency — approve internal after doctrine/briefing crosswalk. Frames: show your work; published procedures",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Phase 11 P4 seed — graph node NEEDS_REVIEW until staff clears claims workflow.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-07T01:37:02.172Z",
+          "eventType": "INGESTED",
+          "actor": "phase-11-p4-philosophy-graph-seed",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Seeded from campaign-philosophy-graph.json node philosophy-transparency"
+        }
+      ],
+      "createdAt": "2026-06-07T06:02:33.569Z",
+      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdBy": "phase-11-p4-philosophy-graph-seed",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-philosophy-philosophy-participation",
+      "claimText": "Participation & Ballot Access: Integrity and participation reinforce each other—rules should make voting workable, not merely harder.",
+      "normalizedClaimText": "participation  ballot access integrity and participation reinforce each otherrules should make voting workable not merely harder.",
+      "claimFingerprint": "69a8a07d857b61cc",
+      "claimType": "philosophy_principle",
+      "domain": "general",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "philosophy-graph",
+        "philosophy-participation",
+        "nsi-4",
+        "phase-11-p4"
+      ],
+      "sourceBriefIds": [
+        "philosophy-graph-philosophy-participation"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Review NSI-4 philosophy node philosophy-participation — approve internal after doctrine/briefing crosswalk. Frames: integrity + access together; voter assistance",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Phase 11 P4 seed — graph node NEEDS_REVIEW until staff clears claims workflow.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-07T01:37:02.172Z",
+          "eventType": "INGESTED",
+          "actor": "phase-11-p4-philosophy-graph-seed",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Seeded from campaign-philosophy-graph.json node philosophy-participation"
+        }
+      ],
+      "createdAt": "2026-06-07T06:02:33.569Z",
+      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdBy": "phase-11-p4-philosophy-graph-seed",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-philosophy-philosophy-county-partnership",
+      "claimText": "County Partnership & Implementation Support: State election policy must fund and support county implementation—not offload complexity without resources.",
+      "normalizedClaimText": "county partnership  implementation support state election policy must fund and support county implementationnot offload complexity without resources.",
+      "claimFingerprint": "49663b2026efa034",
+      "claimType": "philosophy_principle",
+      "domain": "general",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "philosophy-graph",
+        "philosophy-county-partnership",
+        "nsi-4",
+        "phase-11-p4"
+      ],
+      "sourceBriefIds": [
+        "philosophy-graph-philosophy-county-partnership"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Review NSI-4 philosophy node philosophy-county-partnership — approve internal after doctrine/briefing crosswalk. Frames: support clerks; SOS county toolkit",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Phase 11 P4 seed — graph node NEEDS_REVIEW until staff clears claims workflow.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-07T01:37:02.172Z",
+          "eventType": "INGESTED",
+          "actor": "phase-11-p4-philosophy-graph-seed",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Seeded from campaign-philosophy-graph.json node philosophy-county-partnership"
+        }
+      ],
+      "createdAt": "2026-06-07T06:02:33.569Z",
+      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdBy": "phase-11-p4-philosophy-graph-seed",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-philosophy-philosophy-modernization",
+      "claimText": "Modernization-Forward Governance: Kelly SOS modernization should pair policy changes with training, transparency, and county capacity—not mandate alone.",
+      "normalizedClaimText": "modernization-forward governance kelly sos modernization should pair policy changes with training transparency and county capacitynot mandate alone.",
+      "claimFingerprint": "4e9d8b70e613f32d",
+      "claimType": "philosophy_principle",
+      "domain": "general",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "philosophy-graph",
+        "philosophy-modernization",
+        "nsi-4",
+        "phase-11-p4"
+      ],
+      "sourceBriefIds": [
+        "philosophy-graph-philosophy-modernization"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Review NSI-4 philosophy node philosophy-modernization — approve internal after doctrine/briefing crosswalk. Frames: modernize with support; implementation readiness",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Phase 11 P4 seed — graph node NEEDS_REVIEW until staff clears claims workflow.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-07T01:37:02.172Z",
+          "eventType": "INGESTED",
+          "actor": "phase-11-p4-philosophy-graph-seed",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Seeded from campaign-philosophy-graph.json node philosophy-modernization"
+        }
+      ],
+      "createdAt": "2026-06-07T06:02:33.569Z",
+      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdBy": "phase-11-p4-philosophy-graph-seed",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-philosophy-philosophy-citizen-empowerment",
+      "claimText": "Citizen Empowerment: Policy should expand citizen understanding and participation—not concentrate discretion in opaque institutional processes.",
+      "normalizedClaimText": "citizen empowerment policy should expand citizen understanding and participationnot concentrate discretion in opaque institutional processes.",
+      "claimFingerprint": "7f43f3eddfd54523",
+      "claimType": "philosophy_principle",
+      "domain": "general",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "philosophy-graph",
+        "philosophy-citizen-empowerment",
+        "nsi-4",
+        "phase-11-p4"
+      ],
+      "sourceBriefIds": [
+        "philosophy-graph-philosophy-citizen-empowerment"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Review NSI-4 philosophy node philosophy-citizen-empowerment — approve internal after doctrine/briefing crosswalk. Frames: your vote counts; know your rights",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Phase 11 P4 seed — graph node NEEDS_REVIEW until staff clears claims workflow.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-07T01:37:02.172Z",
+          "eventType": "INGESTED",
+          "actor": "phase-11-p4-philosophy-graph-seed",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Seeded from campaign-philosophy-graph.json node philosophy-citizen-empowerment"
+        }
+      ],
+      "createdAt": "2026-06-07T06:02:33.569Z",
+      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdBy": "phase-11-p4-philosophy-graph-seed",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-philosophy-philosophy-anti-centralization",
+      "claimText": "Anti-Centralization & Local Accountability: Avoid concentrating election discretion in ways that reduce local accountability or public understanding.",
+      "normalizedClaimText": "anti-centralization  local accountability avoid concentrating election discretion in ways that reduce local accountability or public understanding.",
+      "claimFingerprint": "f723f2f34e0811ae",
+      "claimType": "philosophy_principle",
+      "domain": "general",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "philosophy-graph",
+        "philosophy-anti-centralization",
+        "nsi-4",
+        "phase-11-p4"
+      ],
+      "sourceBriefIds": [
+        "philosophy-graph-philosophy-anti-centralization"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Review NSI-4 philosophy node philosophy-anti-centralization — approve internal after doctrine/briefing crosswalk. Frames: local accountability; county visibility",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Phase 11 P4 seed — graph node NEEDS_REVIEW until staff clears claims workflow.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-07T01:37:02.172Z",
+          "eventType": "INGESTED",
+          "actor": "phase-11-p4-philosophy-graph-seed",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Seeded from campaign-philosophy-graph.json node philosophy-anti-centralization"
+        }
+      ],
+      "createdAt": "2026-06-07T06:02:33.569Z",
+      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdBy": "phase-11-p4-philosophy-graph-seed",
+      "lastReviewedAt": null
+    },
+    {
+      "id": "claim-philosophy-philosophy-direct-democracy",
+      "claimText": "Direct Democracy & Initiative Access: Ballot initiative and petition pathways should remain understandable and accessible within lawful guardrails.",
+      "normalizedClaimText": "direct democracy  initiative access ballot initiative and petition pathways should remain understandable and accessible within lawful guardrails.",
+      "claimFingerprint": "7eb3d4d32f653c79",
+      "claimType": "philosophy_principle",
+      "domain": "general",
+      "countySlug": null,
+      "opponentId": null,
+      "topicTags": [
+        "philosophy-graph",
+        "philosophy-direct-democracy",
+        "nsi-4",
+        "phase-11-p4"
+      ],
+      "sourceBriefIds": [
+        "philosophy-graph-philosophy-direct-democracy"
+      ],
+      "sourceEvidencePacketIds": [],
+      "sourceReviewItemIds": [],
+      "citationAnchorIds": [],
+      "supportingSourceIds": [],
+      "contradictingSourceIds": [],
+      "classification": "NEEDS_REVIEW",
+      "verificationStatus": "NEEDS_REVIEW",
+      "publishabilityStatus": "NOT_PUBLISHABLE",
+      "evidenceDepthScore": 45,
+      "evidenceStrength": "MODERATE",
+      "confidenceScore": 50,
+      "publicUseRisk": "MEDIUM",
+      "internalUseStatus": "RESEARCH_ONLY",
+      "recommendedHumanAction": "Review NSI-4 philosophy node philosophy-direct-democracy — approve internal after doctrine/briefing crosswalk. Frames: citizen petition rights; lawful access",
+      "humanReview": {
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "decision": null,
+        "notes": "Phase 11 P4 seed — graph node NEEDS_REVIEW until staff clears claims workflow.",
+        "requiredEdits": [],
+        "approvalScope": "NONE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-06-07T01:37:02.172Z",
+          "eventType": "INGESTED",
+          "actor": "phase-11-p4-philosophy-graph-seed",
+          "previousStatus": null,
+          "nextStatus": "NEEDS_REVIEW",
+          "notes": "Seeded from campaign-philosophy-graph.json node philosophy-direct-democracy"
+        }
+      ],
+      "createdAt": "2026-06-07T06:02:33.569Z",
+      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdBy": "phase-11-p4-philosophy-graph-seed",
       "lastReviewedAt": null
     }
   ]

@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-06-07T06:02:55.276Z",
+  "stackCompletionPct": 100,
+  "passesAtBar": 8,
+  "passTotal": 8,
+  "staffBackstageEnforced": true,
+  "candidateNavLinkCount": 23,
+  "checkpoints": [
+    {
+      "checkpointId": "p0-p1-candidate-command",
+      "passLabel": "P0+P1 — Candidate command",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p2-kelly-prep-week",
+      "passLabel": "P2 — Kelly prep week",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p3-stage-safe-filter",
+      "passLabel": "P3 — Stage-safe filter",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p4-top-tier-surfacing",
+      "passLabel": "P4 — Top-tier surfacing",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p5-evidence-honesty",
+      "passLabel": "P5 — Evidence honesty",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p6-demo-mode",
+      "passLabel": "P6 — Demo mode",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p7-ipad-polish",
+      "passLabel": "P7 — iPad polish",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p8-staff-backstage",
+      "passLabel": "P8 — Staff backstage",
+      "completionPct": 100,
+      "atBar": true
+    }
+  ]
+}

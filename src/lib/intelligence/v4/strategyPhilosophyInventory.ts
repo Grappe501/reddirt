@@ -6,6 +6,14 @@ import { DEBATE_PHILOSOPHY_BRIEFINGS } from "@/lib/intelligence/v4/debatePhiloso
 import { getAllDebatePsychologyManualSectionIds } from "@/lib/intelligence/v4/debatePsychologyTrainingManual";
 import { loadCampaignPhilosophyGraph } from "@/lib/intelligence/campaignIntelligenceGraph";
 import { listStrategyMigrationRoutes } from "@/lib/intelligence/v4/strategyMigrationBridge";
+import { MOVEMENT_PHILOSOPHY_ENTRIES, MOVEMENT_PHILOSOPHY_HUB_HREF, movementPhilosophyDocHref } from "@/lib/philosophy/movement-philosophy-nav";
+import { listStaffStrategySurfaces, STAFF_STRATEGY_COMMAND_HUB_HREF } from "@/lib/intelligence/v4/staffStrategyCommandInventory";
+import {
+  STRATEGY_DOCTRINE_HUB_HREF,
+  STRATEGY_DOCTRINE_JSON_ENTRIES,
+  strategyDoctrineDocHref,
+} from "@/lib/strategy-doctrine/strategy-doctrine-nav";
+import { PHILOSOPHY_GRAPH_CLAIMS_HUB_HREF } from "@/lib/intelligence/v4/phase11P4PhilosophyGraphClaimsDepth";
 
 export type StrategyPhilosophySurfaceKind =
   | "philosophy-briefing"
@@ -14,7 +22,10 @@ export type StrategyPhilosophySurfaceKind =
   | "kelly-manual"
   | "intelligence-strategy"
   | "opposition-strategy"
-  | "campaign-system";
+  | "campaign-system"
+  | "movement-philosophy"
+  | "staff-strategy"
+  | "strategy-doctrine";
 
 export type StrategyPhilosophySurface = {
   id: string;
@@ -52,8 +63,8 @@ const GRAPH_SURFACES: StrategyPhilosophySurface[] = loadCampaignPhilosophyGraph(
   kind: "philosophy-graph",
   title: n.title,
   summary: n.principle.slice(0, 160),
-  href: `${STRATEGY_PHILOSOPHY_HUB_HREF}#${n.philosophyId}`,
-  intelligenceHref: "/admin/intelligence/campaign-intelligence-graph",
+  href: `/admin/intelligence/philosophy-graph-claims-review/${n.philosophyId}`,
+  intelligenceHref: "/admin/intelligence/philosophy-graph-claims-review",
   phase10Enriched: true,
 }));
 
@@ -62,10 +73,10 @@ const KELLY_MANUAL_SURFACES: StrategyPhilosophySurface[] = STRATEGY_MD_ENTRIES.m
   kind: "kelly-manual",
   title: e.label,
   summary: `Kelly SOS strategic plan manual — ${e.file}`,
-  href: `/admin/campaign-strategy${e.path ? `/${e.path}` : ""}`,
+  href: `/admin/intelligence/kelly-strategic-plan${e.path ? `/${e.path}` : ""}`,
   manualPathKey: e.path || "overview",
-  intelligenceHref: STRATEGY_PHILOSOPHY_HUB_HREF,
-  phase10Enriched: e.path === "framework" || e.path === "executive-summary" || e.path === "build-audit",
+  intelligenceHref: "/admin/intelligence/kelly-strategic-plan",
+  phase10Enriched: true,
 }));
 
 const INTELLIGENCE_STRATEGY_SURFACES: StrategyPhilosophySurface[] = [
@@ -112,20 +123,52 @@ const INTELLIGENCE_STRATEGY_SURFACES: StrategyPhilosophySurface[] = [
   {
     id: "campaign-strategy-reader",
     kind: "kelly-manual",
-    title: "Campaign strategy reader",
-    summary: "Full Kelly SOS manual + Strategy Partner RAG.",
+    title: "Campaign strategy reader (legacy)",
+    summary: "Legacy admin reader + Strategy Partner RAG — intelligence reader at kelly-strategic-plan.",
     href: "/admin/campaign-strategy",
+    intelligenceHref: "/admin/intelligence/kelly-strategic-plan",
     phase10Enriched: true,
   },
   {
     id: "campaign-system-manual",
     kind: "campaign-system",
-    title: "Campaign system manual (chunked)",
-    summary: "252 markdown files — agent chunking via /api/admin/campaign-strategy/chunks?manualDomain=campaign-system",
-    href: "/admin/campaign-strategy",
+    title: "Campaign system manual (252 files)",
+    summary: "Operational corpus — intelligence reader, category inventory, priority tome guides at Phase 11 P0 bar.",
+    href: "/admin/intelligence/campaign-system-manual",
+    intelligenceHref: "/admin/intelligence/phase-11-upgrade",
     phase10Enriched: true,
   },
 ];
+
+const MOVEMENT_PHILOSOPHY_SURFACES: StrategyPhilosophySurface[] = MOVEMENT_PHILOSOPHY_ENTRIES.map((e) => ({
+  id: `movement-philosophy-${e.pathKey}`,
+  kind: "movement-philosophy",
+  title: e.label,
+  summary: e.summary,
+  href: movementPhilosophyDocHref(e.pathKey),
+  intelligenceHref: MOVEMENT_PHILOSOPHY_HUB_HREF,
+  phase10Enriched: true,
+}));
+
+const STAFF_STRATEGY_SURFACES: StrategyPhilosophySurface[] = listStaffStrategySurfaces().map((s) => ({
+  id: `staff-strategy-${s.id}`,
+  kind: "staff-strategy",
+  title: s.title,
+  summary: s.summary,
+  href: s.href,
+  intelligenceHref: STAFF_STRATEGY_COMMAND_HUB_HREF,
+  phase10Enriched: true,
+}));
+
+const STRATEGY_DOCTRINE_SURFACES: StrategyPhilosophySurface[] = STRATEGY_DOCTRINE_JSON_ENTRIES.map((e) => ({
+  id: `strategy-doctrine-${e.pathKey}`,
+  kind: "strategy-doctrine",
+  title: e.label,
+  summary: e.summary,
+  href: strategyDoctrineDocHref(e.pathKey),
+  intelligenceHref: STRATEGY_DOCTRINE_HUB_HREF,
+  phase10Enriched: true,
+}));
 
 export function listAllStrategyPhilosophySurfaces(): StrategyPhilosophySurface[] {
   return [
@@ -134,6 +177,9 @@ export function listAllStrategyPhilosophySurfaces(): StrategyPhilosophySurface[]
     ...GRAPH_SURFACES,
     ...KELLY_MANUAL_SURFACES,
     ...INTELLIGENCE_STRATEGY_SURFACES,
+    ...MOVEMENT_PHILOSOPHY_SURFACES,
+    ...STAFF_STRATEGY_SURFACES,
+    ...STRATEGY_DOCTRINE_SURFACES,
   ];
 }
 
@@ -156,6 +202,13 @@ export function listStrategyMigrationCoverage(): {
     "/admin/intelligence/strategic-target-pathway",
     "/admin/intelligence/campaign-intelligence-graph",
     "/admin/intelligence/scenario-simulation",
+    "/admin/intelligence/morning-brief",
+    "/admin/intelligence/briefing-papers",
+    "/admin/intelligence/writing-toolbox",
+    MOVEMENT_PHILOSOPHY_HUB_HREF,
+    STAFF_STRATEGY_COMMAND_HUB_HREF,
+    STRATEGY_DOCTRINE_HUB_HREF,
+    PHILOSOPHY_GRAPH_CLAIMS_HUB_HREF,
     STRATEGY_PHILOSOPHY_HUB_HREF,
   ];
   const boundSet = new Set(listStrategyMigrationRoutes().map((r) => r.intelligenceHref));

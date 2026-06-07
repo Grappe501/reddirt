@@ -2,12 +2,16 @@
 
 import { usePathname } from "next/navigation";
 import { IntelligenceNavLink } from "@/components/admin/intelligence/IntelligenceNavLink";
+import { CandidateCommandSectionNav } from "@/components/admin/intelligence/CandidateCommandSectionNav";
 import {
   campaignOsNavHrefBase,
   resolveActiveCampaignOsNavHref,
 } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
 import { describeDebateWeekRoute, getDebateWeekNavItems } from "@/lib/intelligence/debate-week-nav";
 import { buildThreeLaneNavGroups, THREE_LANE_NAV, type ThreeLaneId } from "@/lib/intelligence/v4/threeLaneNav";
+import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
+import { shouldUseCandidateCommandSectionNav } from "@/lib/intelligence/v4/candidateCommandNav";
+import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
 
 const base =
   "rounded border px-2 py-1 text-xs font-semibold transition sm:px-2.5 sm:py-1.5 whitespace-nowrap";
@@ -39,6 +43,12 @@ function NavChip({
 
 export function IntelligenceDebateSubnav() {
   const pathname = usePathname() ?? "";
+  const profile = resolveIntelligenceNavProfileClient(isCountyClerkPrimaryAudience());
+
+  if (shouldUseCandidateCommandSectionNav(profile)) {
+    return <CandidateCommandSectionNav />;
+  }
+
   const groups = buildThreeLaneNavGroups();
   const allNavItems = getDebateWeekNavItems();
   const activeHref = resolveActiveCampaignOsNavHref(

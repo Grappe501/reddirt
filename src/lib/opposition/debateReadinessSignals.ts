@@ -17,7 +17,8 @@ export type ComputedReadinessScore = {
     | "debateResponseConfidence"
     | "rapidRebuttalReadiness"
     | "arkansasPoliticalFluency"
-    | "mediaReadiness";
+    | "mediaReadiness"
+    | "philosophyStrategyWiring";
   label: string;
   score: number;
   trend: "up" | "flat" | "down";

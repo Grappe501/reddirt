@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-06-07T06:03:10.499Z",
+  "stackCompletionPct": 100,
+  "passesAtBar": 9,
+  "passTotal": 9,
+  "staffCoachStaffOnly": true,
+  "ipadDrillPlayerWired": true,
+  "drillQueueStageSafe": true,
+  "candidateNavLinkCount": 23,
+  "checkpoints": [
+    {
+      "checkpointId": "p0-session-launcher",
+      "passLabel": "P0 — Session launcher",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p1-run-of-show",
+      "passLabel": "P1 — Run-of-show",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p2-encounters",
+      "passLabel": "P2 — Encounter scenarios",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p3-drill-queue",
+      "passLabel": "P3 — Drill queue",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p4-session-debrief",
+      "passLabel": "P4 — Session debrief",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p5-ipad-drill-player",
+      "passLabel": "P5 — iPad drill player",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p6-session-memory",
+      "passLabel": "P6 — Session memory",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p7-staff-coach",
+      "passLabel": "P7 — Staff coach overlay",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p8-live-event",
+      "passLabel": "P8 — Live event mode",
+      "completionPct": 100,
+      "atBar": true
+    }
+  ]
+}

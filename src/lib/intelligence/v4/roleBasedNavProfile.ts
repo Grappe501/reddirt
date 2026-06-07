@@ -21,6 +21,19 @@ export function resolveIntelligenceNavProfileClient(
   return "CANDIDATE";
 }
 
+/** Server components — defaults AUTO to CANDIDATE (stage-safe deploy). */
+export function resolveIntelligenceNavProfileServer(): Exclude<IntelligenceNavProfile, "AUTO"> {
+  const configured = getIntelligenceNavProfile();
+  if (configured !== "AUTO") return configured;
+  return "CANDIDATE";
+}
+
+export function profileUsesStageSafeFilter(
+  profile: Exclude<IntelligenceNavProfile, "AUTO">,
+): boolean {
+  return profile === "CANDIDATE" || profile === "CLERK_WEEK";
+}
+
 export const NAV_PROFILE_LABELS: Record<Exclude<IntelligenceNavProfile, "AUTO">, string> = {
   CANDIDATE: "Candidate — Kelly-safe surfaces only",
   STAFF: "Staff — full three-lane access",

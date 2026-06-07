@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-06-07T06:02:37.022Z",
+  "totalMatchingChunks": 3803,
+  "lanes": [
+    {
+      "laneId": "foundation-civic-trust",
+      "matchingChunkCount": 84
+    },
+    {
+      "laneId": "programs-comms-gotv",
+      "matchingChunkCount": 145
+    },
+    {
+      "laneId": "operations-kpi-dashboard",
+      "matchingChunkCount": 36
+    },
+    {
+      "laneId": "lifecycle-tome-root",
+      "matchingChunkCount": 1514
+    },
+    {
+      "laneId": "debate-week-workflows",
+      "matchingChunkCount": 0
+    },
+    {
+      "laneId": "playbook-escalation",
+      "matchingChunkCount": 0
+    },
+    {
+      "laneId": "doctrine-sdi-crosswalk",
+      "matchingChunkCount": 229
+    },
+    {
+      "laneId": "claims-gated-promotion",
+      "matchingChunkCount": 1795
+    }
+  ]
+}

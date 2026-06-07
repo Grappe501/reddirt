@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
 import { buildStrategicBriefingPaper } from "@/lib/intelligence/strategicBriefingPaperEngine";
 import { summarizeBriefingPaperQueue } from "@/lib/intelligence/intelligenceBrainCoordinator";
+import { BriefingPapersChunkAttachStrip } from "@/components/admin/intelligence/briefing-papers/BriefingPapersChunkAttachStrip";
 
 export const dynamic = "force-dynamic";
 
@@ -37,6 +39,12 @@ export default async function BriefingPapersPage() {
         <p className="mt-2 max-w-4xl text-sm text-kelly-muted">
           Governed composition — NON_PUBLISHABLE until human review. Browse deep brief sections for operator use.
         </p>
+        <div className="mt-3 max-w-xl">
+          <EvidenceHonestyBadgeFromText
+            text="NON_PUBLISHABLE · HUMAN_REVIEW_REQUIRED · governed brief"
+            showMessage
+          />
+        </div>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
           <Link href="/admin/intelligence/morning-brief" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
             Morning brief
@@ -44,8 +52,16 @@ export default async function BriefingPapersPage() {
           <Link href="/admin/intelligence/ai-tools" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
             AI tools
           </Link>
+          <Link
+            href="/admin/intelligence/briefing-papers-chunk-attach"
+            className="rounded border px-2 py-1 font-semibold text-kelly-navy"
+          >
+            Chunk attach (P7)
+          </Link>
         </div>
       </header>
+
+      <BriefingPapersChunkAttachStrip />
 
       <section className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {BRIEF_TYPES.map((brief) => (

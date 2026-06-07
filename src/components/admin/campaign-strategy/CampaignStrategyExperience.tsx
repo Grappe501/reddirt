@@ -77,7 +77,11 @@ export function CampaignStrategyExperience({ children }: { children: ReactNode }
               <code className="rounded bg-white/10 px-1 py-0.5 text-[10px] text-white/70">
                 campaign-system-manual/
               </code>{" "}
-              (agent chunks only)
+              (agent chunks +{" "}
+              <Link href="/admin/intelligence/campaign-system-manual" className="underline">
+                intelligence reader
+              </Link>
+              )
             </p>
             <details className="mt-4 border-t border-white/10 px-2 pt-4 text-white/55">
               <summary className="cursor-pointer select-none font-body text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">

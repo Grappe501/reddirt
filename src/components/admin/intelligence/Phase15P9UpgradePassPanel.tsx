@@ -1,0 +1,69 @@
+import Link from "next/link";
+import type { Phase15P9UpgradePassReport } from "@/lib/intelligence/v4/phase15P9Closure";
+
+export function Phase15P9UpgradePassPanel({
+  report,
+  compact,
+}: {
+  report: Phase15P9UpgradePassReport;
+  compact?: boolean;
+}) {
+  const p = report.progress;
+
+  return (
+    <section
+      className={`rounded-xl border-2 border-indigo-400/80 bg-gradient-to-br from-indigo-50/50 to-white ${compact ? "mb-6 p-4" : "mb-8 p-6"}`}
+    >
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-indigo-950">Upgrade pass 15 · P9</p>
+          <h2 className="mt-1 font-heading text-xl font-bold text-kelly-navy">{report.title}</h2>
+          {!compact ? <p className="mt-2 text-sm text-kelly-muted">{report.summary}</p> : null}
+        </div>
+        <div className="text-right">
+          <p className="font-heading text-3xl font-bold text-indigo-950">{report.completionPct}%</p>
+          <p className="text-[10px] font-bold uppercase text-kelly-subtle">
+            {p.passesAtBar}/{p.passTotal} passes · stack {p.stackCompletionPct}%
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-4 h-2 overflow-hidden rounded-full bg-white">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-kelly-gold"
+          style={{ width: `${report.completionPct}%` }}
+        />
+      </div>
+
+      <dl className={`mt-4 grid gap-2 ${compact ? "grid-cols-2 text-xs" : "grid-cols-2 md:grid-cols-4 text-sm"}`}>
+        <div className="rounded-lg border border-kelly-text/10 bg-white px-3 py-2">
+          <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Sub-passes</dt>
+          <dd className="font-bold text-kelly-navy">
+            {p.passesAtBar}/{p.passTotal}
+          </dd>
+        </div>
+        <div className="rounded-lg border border-kelly-text/10 bg-white px-3 py-2">
+          <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Stack avg</dt>
+          <dd className="font-bold text-kelly-navy">{p.stackCompletionPct}%</dd>
+        </div>
+        <div className="rounded-lg border border-kelly-text/10 bg-white px-3 py-2">
+          <dt className="text-[10px] font-bold uppercase text-kelly-subtle">Readiness</dt>
+          <dd className="font-bold text-kelly-navy">{p.candidateReadinessPct}%</dd>
+        </div>
+        <div className="rounded-lg border border-kelly-text/10 bg-white px-3 py-2">
+          <dt className="text-[10px] font-bold uppercase text-kelly-subtle">CCE exit</dt>
+          <dd className={`font-bold ${p.cceExitReady ? "text-emerald-700" : "text-indigo-800"}`}>
+            {p.cceExitReady ? "Ready" : "Open"}
+          </dd>
+        </div>
+      </dl>
+
+      <Link
+        href={report.hubHref}
+        className="mt-4 inline-block rounded-full border border-indigo-400 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950"
+      >
+        CCE closure hub
+      </Link>
+    </section>
+  );
+}

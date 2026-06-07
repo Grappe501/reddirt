@@ -7,7 +7,7 @@ import {
 } from "../src/lib/intelligence/candidateIpadMode";
 import { loadAiCopilotToolRegistry } from "../src/lib/intelligence/aiCopilotOrchestrator";
 assert.equal(CANDIDATE_IPAD_PROFILE.maxContentWidthPx, 820);
-assert.ok(CANDIDATE_IPAD_PRIMARY_NAV.length >= 5);
+assert.ok(CANDIDATE_IPAD_PRIMARY_NAV.length === 5, "five CCE bottom tabs");
 assert.ok(CANDIDATE_IPAD_COPILOT_QUICK_TOOLS.length >= 5);
 
 const registry = loadAiCopilotToolRegistry();

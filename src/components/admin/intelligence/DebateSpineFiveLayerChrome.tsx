@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { FiveLayerPageDepth } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
+import type { StageSafeContentDecision } from "@/lib/intelligence/v4/phase15StageSafeFilter";
+import { StageSafeBlockedPanel } from "@/components/admin/intelligence/StageSafeBlockedPanel";
 
 const LAYER_LABELS = [
   { id: "orientation", label: "1 · Orientation" },
@@ -18,10 +20,14 @@ const TIER_STYLE: Record<string, string> = {
 export function DebateSpineFiveLayerChrome({
   depth,
   showStickyNav = true,
+  stageSafeDecision,
 }: {
   depth: FiveLayerPageDepth;
   showStickyNav?: boolean;
+  stageSafeDecision?: StageSafeContentDecision;
 }) {
+  const operatorBlocked = stageSafeDecision?.blocked ?? false;
+
   return (
     <div className="space-y-4">
       {showStickyNav ? (
@@ -109,6 +115,11 @@ export function DebateSpineFiveLayerChrome({
 
       <section id={`five-layer-${depth.pageId}-operator`} className="rounded-xl border border-violet-200 bg-violet-50/30 p-5">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-violet-950">Layer 4 — Operator scripts</p>
+        {operatorBlocked && stageSafeDecision ? (
+          <div className="mt-3">
+            <StageSafeBlockedPanel decision={stageSafeDecision} compact />
+          </div>
+        ) : (
         <div className="mt-3 space-y-3">
           {depth.operatorScripts.map((script) => (
             <blockquote
@@ -123,6 +134,7 @@ export function DebateSpineFiveLayerChrome({
             </blockquote>
           ))}
         </div>
+        )}
       </section>
 
       <section id={`five-layer-${depth.pageId}-gates`} className="rounded-xl border-2 border-rose-200 bg-rose-50/40 p-5 text-xs">

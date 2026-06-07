@@ -1,4 +1,5 @@
-import { claimsGateStageLabel, classifyClaimsGate, isClaimsGateStageBlocked } from "@/lib/intelligence/v4/claimsGatePolicy";
+import { EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
+import { claimsGateStageLabel, classifyClaimsGate, isClaimsGateCandidateBlocked, isClaimsGateStageBlocked } from "@/lib/intelligence/v4/claimsGatePolicy";
 
 const STYLE: Record<string, string> = {
   clear: "border-emerald-200 bg-emerald-50/50 text-emerald-950",
@@ -7,14 +8,23 @@ const STYLE: Record<string, string> = {
   blocked: "border-rose-400 bg-rose-100/80 text-rose-950",
 };
 
-export function ClaimsGateBanner({ claimsGate }: { claimsGate: string }) {
+export function ClaimsGateBanner({
+  claimsGate,
+  candidateProfile,
+}: {
+  claimsGate: string;
+  candidateProfile?: boolean;
+}) {
   const severity = classifyClaimsGate(claimsGate);
-  const blocked = isClaimsGateStageBlocked(claimsGate);
+  const blocked = candidateProfile ? isClaimsGateCandidateBlocked(claimsGate) : isClaimsGateStageBlocked(claimsGate);
 
   return (
-    <p className={`rounded-lg border p-3 text-[10px] font-bold ${STYLE[severity] ?? STYLE.review}`}>
-      {blocked ? "Stage lock — " : ""}
-      {claimsGateStageLabel(claimsGate)}: {claimsGate}
-    </p>
+    <div className="space-y-2">
+      <EvidenceHonestyBadgeFromText text={claimsGate} compact showMessage />
+      <p className={`rounded-lg border p-3 text-[10px] font-bold ${STYLE[severity] ?? STYLE.review}`}>
+        {blocked ? (candidateProfile ? "Candidate lock — " : "Stage lock — ") : ""}
+        {claimsGateStageLabel(claimsGate)}: {claimsGate}
+      </p>
+    </div>
   );
 }

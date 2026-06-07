@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
 import { listDebateWeekClaims } from "@/lib/intelligence/claims/debateClaimsSeed";
 import { listClaimsForAdmin, summarizeClaimLedger } from "@/lib/intelligence/claims/claimLedgerSummary";
 import { ClaimsDebateWeekPanel } from "@/components/admin/intelligence/claims/ClaimsDebateWeekPanel";
@@ -57,6 +58,10 @@ export default async function ClaimsLedgerPage() {
           LLM review
         </Link>
       </V3PageHeader>
+
+      <div className="mb-6 max-w-xl">
+        <EvidenceHonestyBadgeFromText text="VERIFIED vs NEEDS_REVIEW firewall · claims ledger tiers" showMessage />
+      </div>
 
       {getSurfaceGuide("claims") ? <V4OperatorGuide guide={getSurfaceGuide("claims")!} /> : null}
 

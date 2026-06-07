@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { ClaimsGateBanner } from "@/components/admin/intelligence/ClaimsGateBanner";
+import { StageSafeBlockedPanel } from "@/components/admin/intelligence/StageSafeBlockedPanel";
 import { DebateSpineFiveLayerChrome } from "@/components/admin/intelligence/DebateSpineFiveLayerChrome";
 import type { SosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionTypes";
 import { getSosQuestionFiveLayer } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
+import type { StageSafeContentDecision } from "@/lib/intelligence/v4/phase15StageSafeFilter";
 
 function ScriptBlock({ title, text, accent }: { title: string; text: string; accent: string }) {
   return (
@@ -45,10 +47,12 @@ export function V4SosDebateQuestionPanel({
   drill,
   prev,
   next,
+  stageSafeDecision,
 }: {
   drill: SosDebateQuestionDrillDown;
   prev: { questionId: string; title: string } | null;
   next: { questionId: string; title: string } | null;
+  stageSafeDecision?: StageSafeContentDecision;
 }) {
   const c = drill.comprehensive;
   if (!c) {
@@ -56,10 +60,14 @@ export function V4SosDebateQuestionPanel({
   }
 
   const fiveLayer = getSosQuestionFiveLayer(drill.questionId);
+  const candidateProfile = stageSafeDecision?.audience === "candidate";
+  const operatorBlocked = stageSafeDecision?.blocked ?? false;
 
   return (
     <div className="space-y-6">
-      {fiveLayer ? <DebateSpineFiveLayerChrome depth={fiveLayer} /> : null}
+      {fiveLayer ? (
+        <DebateSpineFiveLayerChrome depth={fiveLayer} stageSafeDecision={stageSafeDecision} />
+      ) : null}
 
       <article className="rounded-xl border-2 border-kelly-navy/30 bg-kelly-page/40 p-6">
         <p className="text-[10px] font-bold uppercase text-kelly-navy">
@@ -112,6 +120,10 @@ export function V4SosDebateQuestionPanel({
       <ExchangeList title="If Hammer says this → Kelly says this" exchanges={c.hammerExchanges} accent="border-rose-100 bg-white" />
       <ExchangeList title="If Pakko says this → Kelly says this" exchanges={c.packoExchanges} accent="border-violet-100 bg-white" />
 
+      {operatorBlocked ? (
+        <StageSafeBlockedPanel decision={stageSafeDecision!} />
+      ) : (
+        <>
       <section className="space-y-4">
         <h2 className="font-heading text-xl font-bold text-kelly-navy">Kelly&apos;s full answer — by speak order</h2>
         <p className="text-sm text-kelly-muted">
@@ -155,8 +167,10 @@ export function V4SosDebateQuestionPanel({
           </div>
         </section>
       ) : null}
+        </>
+      )}
 
-      {drill.rebuttalIfYouArePileOnTarget.length > 0 ? (
+      {drill.rebuttalIfYouArePileOnTarget.length > 0 && !operatorBlocked ? (
         <section className="rounded-xl border border-amber-200 bg-amber-50/30 p-5 text-xs">
           <h3 className="font-bold uppercase text-amber-950">If both opponents pile on Kelly</h3>
           <ul className="mt-2 list-inside list-disc text-kelly-text">
@@ -167,7 +181,7 @@ export function V4SosDebateQuestionPanel({
         </section>
       ) : null}
 
-      <ClaimsGateBanner claimsGate={drill.claimsGate} />
+      <ClaimsGateBanner claimsGate={drill.claimsGate} candidateProfile={candidateProfile} />
 
       {drill.relatedLinks.length > 0 ? (
         <section className="rounded-xl border border-kelly-text/10 bg-white p-4">

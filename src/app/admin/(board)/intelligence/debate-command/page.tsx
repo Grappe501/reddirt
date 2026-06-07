@@ -13,6 +13,8 @@ import Link from "next/link";
 import { Tier4CoreSpineNavPanel } from "@/components/admin/intelligence/Tier4CoreSpineNavPanel";
 import { DebateSpineFiveLayerChrome } from "@/components/admin/intelligence/DebateSpineFiveLayerChrome";
 import { getCommandSurfaceFiveLayer } from "@/lib/intelligence/v4/phase3DebateSpineDepth";
+import { computeDebateCommandPhilosophyReadiness } from "@/lib/intelligence/v4/debateCommandPhilosophyReadiness";
+import { DebatePhilosophyReadinessPanel } from "@/components/admin/intelligence/DebatePhilosophyReadinessPanel";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -33,6 +35,7 @@ export default async function DebateCommandCenterPage() {
   const { state, briefPack, civicDebate, graphSummary, scenarioPrep, messageIntel, legislativeRollup } = commandData;
   const p4Packet = "p4" in commandData ? commandData.p4 : null;
   const fiveLayer = getCommandSurfaceFiveLayer("debate-command");
+  const philosophyFeed = computeDebateCommandPhilosophyReadiness();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -173,6 +176,8 @@ export default async function DebateCommandCenterPage() {
           ))}
         </div>
       </section>
+
+      <DebatePhilosophyReadinessPanel feed={philosophyFeed} />
 
       <section className="mb-6">
         <h2 className="mb-3 text-sm font-bold uppercase tracking-wider text-kelly-navy">B) Candidate Readiness Scoreboard</h2>

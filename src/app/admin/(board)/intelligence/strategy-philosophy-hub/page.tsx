@@ -3,6 +3,7 @@ import {
   Phase10UpgradePassPanel,
   StrategyPhilosophyInventoryPanel,
 } from "@/components/admin/intelligence/Phase10UpgradePassPanel";
+import { Phase11StackClosureStrip } from "@/components/admin/intelligence/Phase11StackClosureStrip";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { loadEnrichedCampaignPhilosophyGraph } from "@/lib/intelligence/campaignIntelligenceGraph";
 import { computePhase10UpgradePass } from "@/lib/intelligence/v4/phase10StrategyPhilosophyClosure";
@@ -31,7 +32,7 @@ export default function StrategyPhilosophyHubPage() {
           Philosophy briefings
         </Link>
         <Link
-          href="/admin/campaign-strategy/framework"
+          href="/admin/intelligence/kelly-strategic-plan/framework"
           className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-950"
         >
           Theory of change
@@ -51,6 +52,8 @@ export default function StrategyPhilosophyHubPage() {
       </V4PageHeader>
 
       <Phase10UpgradePassPanel report={report} />
+
+      <Phase11StackClosureStrip />
 
       <section className="mb-8 rounded-xl border border-indigo-200 bg-indigo-50/30 p-6">
         <h2 className="font-heading text-xl font-bold text-indigo-950">Enriched civic philosophy graph</h2>
@@ -111,12 +114,18 @@ export default function StrategyPhilosophyHubPage() {
             read time.
           </li>
           <li>
-            <strong>Kelly SOS strategic plan manual (22 chapters)</strong> — theory of change in framework chapter is the
-            strategic philosophy spine; reader at /admin/campaign-strategy with Strategy Partner RAG.
+            <strong>Kelly SOS strategic plan (22 chapters)</strong> — intelligence reader at{" "}
+            <Link href="/admin/intelligence/kelly-strategic-plan" className="font-semibold text-kelly-navy underline">
+              /admin/intelligence/kelly-strategic-plan
+            </Link>{" "}
+            with Phase 11 P1 overlays on every chapter.
           </li>
           <li>
-            <strong>Campaign system manual (~252 files)</strong> — operational corpus chunked for agents; accessible via Strategy
-            Partner and chunks API.
+            <strong>Campaign system manual (252 files)</strong> — surfaced at{" "}
+            <Link href="/admin/intelligence/campaign-system-manual" className="font-semibold text-kelly-navy underline">
+              /admin/intelligence/campaign-system-manual
+            </Link>{" "}
+            with Phase 11 category guides and intelligence-native reader.
           </li>
           <li>
             <strong>Intelligence strategy surfaces</strong> — opposition strategy v6.2, SDI-1 alignment, target pathway, scenario

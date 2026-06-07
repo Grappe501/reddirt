@@ -6,6 +6,8 @@ import {
 } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { V4SosDebateQuestionPanel } from "@/components/admin/intelligence/sos-questions/V4SosDebateQuestionPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
+import { evaluateStageSafeContent, resolveStageSafeAudience } from "@/lib/intelligence/v4/phase15StageSafeFilter";
+import { resolveIntelligenceNavProfileServer } from "@/lib/intelligence/v4/roleBasedNavProfile";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -32,6 +34,9 @@ export default async function SosDebateQuestionDrillDownPage({ params }: PagePro
       ? { questionId: ids[idx + 1], title: getSosDebateQuestionDrillDown(ids[idx + 1])!.title }
       : null;
 
+  const audience = resolveStageSafeAudience(resolveIntelligenceNavProfileServer());
+  const stageSafeDecision = evaluateStageSafeContent(drill.claimsGate, audience);
+
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
       <V4PageHeader
@@ -48,7 +53,7 @@ export default async function SosDebateQuestionDrillDownPage({ params }: PagePro
         </Link>
       </V4PageHeader>
 
-      <V4SosDebateQuestionPanel drill={drill} prev={prev} next={next} />
+      <V4SosDebateQuestionPanel drill={drill} prev={prev} next={next} stageSafeDecision={stageSafeDecision} />
     </div>
   );
 }

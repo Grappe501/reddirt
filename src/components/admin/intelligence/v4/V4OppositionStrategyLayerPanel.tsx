@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
 import type { OppositionStrategyLayerPacket } from "@/lib/intelligence/v4/oppositionStrategyLayerTypes";
 import type {
   Integrity2021PackageDepth,
@@ -54,7 +55,8 @@ export function V4OppositionStrategyLayerPanel({
   return (
     <div className="space-y-8">
       <section className="rounded-xl border-2 border-rose-900/25 bg-gradient-to-br from-rose-50/80 via-white to-kelly-page/30 p-6">
-        <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-rose-950">{packet.governanceLabel}</p>
+        <EvidenceHonestyBadgeFromText text={packet.governanceLabel} showMessage />
+        <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.28em] text-rose-950">{packet.governanceLabel}</p>
         <div className="mt-4 flex flex-wrap items-end gap-6">
           <div>
             <p className="text-xs font-bold uppercase text-kelly-subtle">Offense readiness</p>

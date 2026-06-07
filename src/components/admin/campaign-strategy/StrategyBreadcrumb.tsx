@@ -8,19 +8,25 @@ function humanizeSegment(seg: string): string {
     .join(" ");
 }
 
-export function StrategyBreadcrumb({ pathKey }: { pathKey: string }) {
+export function StrategyBreadcrumb({
+  pathKey,
+  readerBaseHref = "/admin/campaign-strategy",
+}: {
+  pathKey: string;
+  readerBaseHref?: string;
+}) {
   if (pathKey === "") return null;
   const segments = pathKey.split("/");
   const crumbs = segments.map((_, i) => {
     const partial = segments.slice(0, i + 1).join("/");
     return {
       label: findNavLabel(partial) ?? humanizeSegment(segments[i]),
-      href: `/admin/campaign-strategy/${partial}`,
+      href: partial ? `${readerBaseHref}/${partial}` : readerBaseHref,
     };
   });
   return (
     <nav aria-label="Breadcrumb" className="mb-8 flex flex-wrap items-center gap-2 font-body text-xs text-kelly-slate">
-      <Link href="/admin/campaign-strategy" className="font-semibold text-kelly-blue hover:underline">
+      <Link href={readerBaseHref} className="font-semibold text-kelly-blue hover:underline">
         Strategy home
       </Link>
       {crumbs.map((c, i) => (

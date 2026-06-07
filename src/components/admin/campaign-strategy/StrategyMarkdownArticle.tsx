@@ -13,6 +13,7 @@ import { StrategyReaderToolbar } from "./StrategyReaderToolbar";
 function resolveMdHref(
   href: string | undefined,
   fileToPath: Map<string, string>,
+  readerBaseHref: string,
 ): { internal: string } | { external: string } | { raw: string } | null {
   if (!href) return null;
   if (href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:")) {
@@ -25,13 +26,13 @@ function resolveMdHref(
   const base = pathPart.replace(/^\.\//, "").split("/").pop() ?? pathPart;
   const pathKey = fileToPath.get(base);
   if (pathKey === undefined) return { raw: href };
-  const url = pathKey === "" ? "/admin/campaign-strategy" : `/admin/campaign-strategy/${pathKey}`;
+  const url = pathKey === "" ? readerBaseHref : `${readerBaseHref}/${pathKey}`;
   return { internal: hash ? `${url}#${hash}` : url };
 }
 
 const linkClass = "font-medium text-kelly-blue underline decoration-kelly-blue/30 hover:decoration-kelly-blue";
 
-function buildComponents(fileToPath: Map<string, string>): Components {
+function buildComponents(fileToPath: Map<string, string>, readerBaseHref: string): Components {
   return {
     h1: ({ id, children }) => (
       <h2
@@ -111,7 +112,7 @@ function buildComponents(fileToPath: Map<string, string>): Components {
     td: ({ children }) => <td className="border-b border-kelly-text/10 px-3 py-2.5 align-top">{children}</td>,
     tr: ({ children }) => <tr>{children}</tr>,
     a: ({ href, children }) => {
-      const resolved = resolveMdHref(href, fileToPath);
+      const resolved = resolveMdHref(href, fileToPath, readerBaseHref);
       if (resolved && "internal" in resolved) {
         return (
           <Link href={resolved.internal} className={linkClass}>
@@ -140,11 +141,13 @@ export function StrategyMarkdownArticle({
   markdown,
   sourceFile,
   externalShare = false,
+  readerBaseHref = "/admin/campaign-strategy",
 }: {
   pathKey: string;
   markdown: string;
   sourceFile: string;
   externalShare?: boolean;
+  readerBaseHref?: string;
 }) {
   if (externalShare && pathKey === "lane") {
     return <StrategyExternalLaneStub />;
@@ -164,7 +167,7 @@ export function StrategyMarkdownArticle({
       <div className="flex flex-col-reverse gap-6 lg:flex-row lg:items-start lg:gap-10 lg:justify-between">
         <div id="strategy-main" className="min-w-0 flex-1 print:max-w-none">
           <article className="max-w-[40rem] pb-16 md:pb-24 print:max-w-none">
-            <StrategyBreadcrumb pathKey={pathKey} />
+            <StrategyBreadcrumb pathKey={pathKey} readerBaseHref={readerBaseHref} />
             <div className="rounded-lg border border-kelly-gold/25 bg-kelly-gold/10 px-3 py-2 font-body text-[11px] leading-snug text-kelly-deep print:border-kelly-text/20 print:bg-transparent">
               <strong className="font-semibold">Internal —</strong> campaign planning. Redact LANE budget detail and
               other sensitive tables before external distribution.
@@ -177,7 +180,7 @@ export function StrategyMarkdownArticle({
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeSlug]}
-                components={buildComponents(fileToPath)}
+                components={buildComponents(fileToPath, readerBaseHref)}
               >
                 {markdown}
               </ReactMarkdown>

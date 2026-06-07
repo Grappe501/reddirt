@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-06-07T06:02:42.726Z",
+  "stackCompletionPct": 100,
+  "passesAtBar": 9,
+  "passTotal": 9,
+  "promotionPipelineReady": true,
+  "checkpoints": [
+    {
+      "checkpointId": "p0-campaign-system",
+      "passLabel": "P0 — Campaign system manual",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p1-kelly-strategic-plan",
+      "passLabel": "P1 — Kelly strategic plan",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p2-movement-staff-strategy",
+      "passLabel": "P2 — Movement philosophy + staff strategy",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p3-strategy-doctrine",
+      "passLabel": "P3 — Strategy doctrine JSON",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p4-philosophy-claims",
+      "passLabel": "P4 — Philosophy graph claims",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p5-chunk-promotion",
+      "passLabel": "P5 — Field Book chunk promotion",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p6-alignment-preview",
+      "passLabel": "P6 — Alignment chunk preview",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p7-briefing-attach",
+      "passLabel": "P7 — Briefing papers chunk attach",
+      "completionPct": 100,
+      "atBar": true
+    },
+    {
+      "checkpointId": "p8-promotion-execution",
+      "passLabel": "P8 — Field Book promotion execution",
+      "completionPct": 100,
+      "atBar": true
+    }
+  ]
+}

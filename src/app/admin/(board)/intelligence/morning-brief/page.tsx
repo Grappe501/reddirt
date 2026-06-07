@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
 import { buildMorningBriefingPaper } from "@/lib/intelligence/strategicBriefingPaperEngine";
 import { summarizeCampaignIntelligenceState, recommendIntelligenceGatheringPriorities } from "@/lib/intelligence/intelligenceBrainCoordinator";
 import {
@@ -39,6 +40,9 @@ export default async function MorningBriefPage() {
         <p className="mt-2 max-w-4xl font-body text-sm leading-relaxed text-kelly-muted">
           Governed composition for leadership review. Not autonomous publishing. All outputs NON_PUBLISHABLE until human review.
         </p>
+        <div className="mt-3 max-w-xl">
+          <EvidenceHonestyBadgeFromText text="NON_PUBLISHABLE · HUMAN_REVIEW_REQUIRED" showMessage />
+        </div>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
           <Link href="/admin/intelligence" className="rounded border px-2 py-1 font-semibold text-kelly-navy">
             Intelligence hub

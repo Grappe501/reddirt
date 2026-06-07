@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-06-07T06:02:42.652Z",
+  "totalLinkedChunks": 2795,
+  "waves": [
+    {
+      "waveId": "kelly-foundation-wave",
+      "linkedChunkCount": 84,
+      "status": "preview_ready"
+    },
+    {
+      "waveId": "kelly-programs-wave",
+      "linkedChunkCount": 145,
+      "status": "preview_ready"
+    },
+    {
+      "waveId": "kelly-operations-wave",
+      "linkedChunkCount": 36,
+      "status": "preview_ready"
+    },
+    {
+      "waveId": "csm-lifecycle-wave",
+      "linkedChunkCount": 1514,
+      "status": "preview_ready"
+    },
+    {
+      "waveId": "csm-operator-wave",
+      "linkedChunkCount": 839,
+      "status": "preview_ready"
+    },
+    {
+      "waveId": "csm-structure-wave",
+      "linkedChunkCount": 161,
+      "status": "preview_ready"
+    },
+    {
+      "waveId": "csm-web-wave",
+      "linkedChunkCount": 16,
+      "status": "preview_ready"
+    },
+    {
+      "waveId": "canon-closure-wave",
+      "linkedChunkCount": 2795,
+      "status": "pending"
+    }
+  ]
+}
