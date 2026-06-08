@@ -6,6 +6,7 @@ import { IntelligenceNavLink } from "@/components/admin/intelligence/Intelligenc
 import { CandidateIpadSectionSheet } from "@/components/admin/intelligence/CandidateIpadSectionSheet";
 import { CandidateIpadDrillPlayerBottomNavBridge } from "@/components/admin/intelligence/CandidateIpadDrillPlayerBottomNavBridge";
 import { IntelligenceAgentCopilotDock } from "@/components/admin/intelligence/IntelligenceAgentCopilotDock";
+import { IntelligencePrepSearchBar } from "@/components/admin/intelligence/IntelligencePrepSearchBar";
 import {
   CANDIDATE_IPAD_PROFILE,
 } from "@/lib/intelligence/candidateIpadMode";
@@ -45,7 +46,7 @@ export function CandidateIpadIntelligenceShell({ children }: { children: React.R
       className={`candidate-ipad-intel mx-auto min-h-[100dvh] max-w-[820px] bg-kelly-page ${
         drillPlayerActive
           ? "pb-[calc(5.5rem+env(safe-area-inset-bottom))]"
-          : "pb-[calc(4.5rem+env(safe-area-inset-bottom))]"
+          : "pb-[calc(7.5rem+env(safe-area-inset-bottom))]"
       }`}
       data-candidate-ipad="true"
       data-phase15-p7="true"
@@ -111,6 +112,7 @@ export function CandidateIpadIntelligenceShell({ children }: { children: React.R
           style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
           aria-label="Candidate iPad CCE navigation"
         >
+          <IntelligencePrepSearchBar variant="bottom-nav" />
           <div className="grid grid-cols-5 gap-0">
             {tabs.map((tab) => {
               const active = activeSection === tab.sectionId || sheetSection === tab.sectionId;

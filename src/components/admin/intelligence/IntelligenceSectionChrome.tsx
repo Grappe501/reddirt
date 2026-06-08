@@ -13,6 +13,7 @@ import { IntelligenceGovernanceStrip } from "@/components/admin/intelligence/Int
 import { IntelligenceDemoModeBanner } from "@/components/admin/intelligence/IntelligenceDemoModeBanner";
 import { StaffBackstageBlockedBanner } from "@/components/admin/intelligence/StaffBackstageBlockedBanner";
 import { CandidateIpadIntelligenceShell } from "@/components/admin/intelligence/CandidateIpadIntelligenceShell";
+import { IntelligencePrepSearchBar } from "@/components/admin/intelligence/IntelligencePrepSearchBar";
 import { isCandidateIpadMode } from "@/lib/intelligence/candidateIpadMode";
 
 const DEBATE_LAUNCH =
@@ -34,6 +35,7 @@ export function IntelligenceSectionChrome({ children }: { children: ReactNode })
         <StaffBackstageBlockedBanner />
       </Suspense>
       {CANDIDATE_IPAD ? null : <IntelligenceGovernanceStrip />}
+      {CANDIDATE_IPAD || DEBATE_LAUNCH ? null : <IntelligencePrepSearchBar variant="sticky" />}
       <NavNewLinksBanner />
       <ThreeLaneNavLegend compact />
       {onKimHammer ? <IntelligenceKimHammerSubnav /> : null}
