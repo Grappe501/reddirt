@@ -33,7 +33,9 @@ export type CandidateIntelSearchKind =
   | "diligence"
   | "citation"
   | "debate_depth"
-  | "offensive_move";
+  | "offensive_move"
+  | "rehearsal"
+  | "copilot_tool";
 
 export type IntelStageSafe = "clear" | "verify" | "blocked" | "research";
 
@@ -383,6 +385,8 @@ const KIND_LABEL: Record<CandidateIntelSearchKind, string> = {
   citation: "Citation",
   debate_depth: "Debate depth guide",
   offensive_move: "Offensive move",
+  rehearsal: "SRE rehearsal",
+  copilot_tool: "AI prep tool",
 };
 
 export function buildCandidateIntelContextBlock(

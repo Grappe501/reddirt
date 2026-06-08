@@ -5,8 +5,12 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import type { CandidateIntelSearchKind, CandidateIntelSearchResult, IntelStageSafe } from "@/lib/intelligence/candidateIntelligenceSearch";
 import type { IntelSearchSmartBrief } from "@/lib/intelligence/intelligenceSmartSearch";
+import type { AiPrepToolRecommendation } from "@/lib/intelligence/intelligenceAiPrepV4";
+import type { SreShortcut } from "@/lib/intelligence/intelligenceSearchV4";
 import { highlightIntelMatches, tokenizeIntelQuery } from "@/lib/intelligence/intelligenceSearchCore";
 import { openIntelPrepSearch, subscribeIntelPrepSearchOpen } from "@/lib/intelligence/intelligencePrepSearchOpen";
+import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
+import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
 
 const KIND_LABELS: Record<CandidateIntelSearchKind, string> = {
   nav: "Prep page",
@@ -21,6 +25,8 @@ const KIND_LABELS: Record<CandidateIntelSearchKind, string> = {
   citation: "Citation",
   debate_depth: "Debate depth",
   offensive_move: "Offensive move",
+  rehearsal: "SRE rehearsal",
+  copilot_tool: "AI prep tool",
 };
 
 type TonightStackItem = {
@@ -43,6 +49,8 @@ const KIND_COLORS: Record<CandidateIntelSearchKind, string> = {
   citation: "bg-yellow-100 text-yellow-950",
   debate_depth: "bg-fuchsia-100 text-fuchsia-950",
   offensive_move: "bg-red-100 text-red-950",
+  rehearsal: "bg-cyan-100 text-cyan-950",
+  copilot_tool: "bg-violet-100 text-violet-950",
 };
 
 const STAGE_SAFE_STYLES: Record<IntelStageSafe, string> = {
@@ -53,7 +61,8 @@ const STAGE_SAFE_STYLES: Record<IntelStageSafe, string> = {
 };
 
 const GROUP_ORDER: { key: string; label: string; kinds: CandidateIntelSearchKind[] }[] = [
-  { key: "stage", label: "Stage prep", kinds: ["trap_lane", "sos_question", "offensive_move", "debate_depth"] },
+  { key: "stage", label: "Stage prep", kinds: ["trap_lane", "sos_question", "offensive_move", "debate_depth", "rehearsal"] },
+  { key: "ai", label: "AI prep tools", kinds: ["copilot_tool"] },
   { key: "depth", label: "Depth guides", kinds: ["debate_depth", "field_book", "glossary"] },
   { key: "pages", label: "Pages", kinds: ["nav", "hammer_module"] },
   { key: "evidence", label: "Evidence", kinds: ["claim", "citation", "diligence"] },
@@ -141,6 +150,9 @@ export function IntelligencePrepSearchBar({
   const [recent, setRecent] = useState<string[]>([]);
   const [tonightStack, setTonightStack] = useState<TonightStackItem[]>([]);
   const [didYouMean, setDidYouMean] = useState<string[]>([]);
+  const [copilotRecs, setCopilotRecs] = useState<AiPrepToolRecommendation[]>([]);
+  const [sreShortcuts, setSreShortcuts] = useState<SreShortcut[]>([]);
+  const navProfile = resolveIntelligenceNavProfileClient(isCountyClerkPrimaryAudience());
 
   const grouped = useMemo(() => groupResults(results), [results]);
   const displayOrder = useMemo(() => grouped.flatMap((g) => g.items), [grouped]);
@@ -230,7 +242,7 @@ export function IntelligencePrepSearchBar({
             query: trimmed,
             includeBrief: withGuide,
             mode: "smart",
-            profile: "CANDIDATE",
+            profile: navProfile,
           }),
         });
         const json = (await res.json()) as {
@@ -238,6 +250,8 @@ export function IntelligencePrepSearchBar({
           results?: CandidateIntelSearchResult[];
           smart?: IntelSearchSmartBrief | null;
           didYouMean?: string[];
+          copilotRecommendations?: AiPrepToolRecommendation[];
+          sreShortcuts?: SreShortcut[];
           message?: string;
           error?: string;
         };
@@ -247,6 +261,8 @@ export function IntelligencePrepSearchBar({
           return;
         }
         setResults(json.results ?? []);
+        setCopilotRecs(json.copilotRecommendations ?? []);
+        setSreShortcuts(json.sreShortcuts ?? []);
         if (withGuide) {
           setSmart(json.smart ?? null);
           setDidYouMean(json.didYouMean ?? []);
@@ -259,7 +275,7 @@ export function IntelligencePrepSearchBar({
         setLoadingGuide(false);
       }
     },
-    [saveRecent],
+    [saveRecent, navProfile],
   );
 
   useEffect(() => {
@@ -349,7 +365,7 @@ export function IntelligencePrepSearchBar({
     ) : variant === "ipad-header" ? (
       <div
         className="border-b border-indigo-200 bg-gradient-to-b from-indigo-50 to-white px-4 py-3"
-        data-intel-search="3.2"
+        data-intel-search="v4"
       >
         <form onSubmit={handleSubmit} className="flex flex-col gap-2">
           <label htmlFor={inputId} className="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-900">
@@ -500,7 +516,7 @@ export function IntelligencePrepSearchBar({
       >
         <div className="flex items-center justify-between border-b border-kelly-text/10 px-4 py-3">
           <div>
-            <p className="text-sm font-bold text-kelly-navy">Smart prep search</p>
+            <p className="text-sm font-bold text-kelly-navy">Smart prep search v4</p>
             <p className="text-[10px] text-kelly-subtle">
               {indexStatus
                 ? `${indexStatus.corpusTotal.toLocaleString()} docs · AI multi-query · stage-safe briefs`
@@ -646,6 +662,47 @@ export function IntelligencePrepSearchBar({
               <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-indigo-950">{smart.brief}</p>
             </div>
           ) : null}
+
+          {copilotRecs.length > 0 ? (
+            <div>
+              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wider text-violet-800">AI prep tools for this search</p>
+              <ul className="space-y-1.5">
+                {copilotRecs.map((rec) => (
+                  <li key={rec.toolId}>
+                    <Link
+                      href={`/admin/intelligence/agent-tooling?tool=${encodeURIComponent(rec.toolId)}&topic=${encodeURIComponent(query)}`}
+                      onClick={() => setExpanded(false)}
+                      className="block rounded-lg border border-violet-200 bg-violet-50/60 p-2.5 hover:bg-violet-50"
+                    >
+                      <p className="text-sm font-bold text-violet-950">{rec.name}</p>
+                      <p className="text-[10px] text-violet-800">{rec.reason}</p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          {sreShortcuts.length > 0 ? (
+            <div>
+              <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wider text-cyan-800">SRE rehearsal shortcuts</p>
+              <ul className="space-y-1.5">
+                {sreShortcuts.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setExpanded(false)}
+                      className="block rounded-lg border border-cyan-200 bg-cyan-50/50 p-2.5 hover:bg-cyan-50"
+                    >
+                      <p className="text-sm font-bold text-cyan-950">{item.title}</p>
+                      <p className="text-[10px] text-cyan-800">{item.why}</p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
           {smart?.safeLine ? (
             <div className="rounded-xl border border-emerald-300 bg-emerald-50 p-3">
               <p className="text-[10px] font-bold uppercase text-emerald-800">Safe line (if verified)</p>

@@ -13,6 +13,18 @@ export const INTEL_SEARCH_SUGGESTIONS = [
   "psychology under attack",
 ] as const;
 
+/** v4 expanded suggestions — SRE + copilot + profile-aware defaults */
+export const INTEL_SEARCH_SUGGESTIONS_V4 = [
+  ...INTEL_SEARCH_SUGGESTIONS,
+  "drill queue stage-safe cards",
+  "run of show tonight",
+  "rehearsal session launcher",
+  "what not to say detector",
+  "bridge line from trap to values",
+  "session debrief notes",
+  "live event ACCA countdown",
+] as const;
+
 /** Expand query with campaign-specific aliases so "Hammer" finds Kim Hammer modules, etc. */
 const TERM_ALIASES: Record<string, string[]> = {
   hammer: ["kim hammer", "incumbent", "opponent", "kh-2", "kh-0"],

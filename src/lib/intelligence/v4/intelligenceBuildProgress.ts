@@ -75,6 +75,7 @@ import { computePhase16P6UpgradePass } from "@/lib/intelligence/v4/phase16P6Clos
 import { computePhase16P7UpgradePass } from "@/lib/intelligence/v4/phase16P7Closure";
 import { computePhase16P8UpgradePass } from "@/lib/intelligence/v4/phase16P8Closure";
 import { computePhase16P9UpgradePass } from "@/lib/intelligence/v4/phase16P9Closure";
+import { computePhase17UpgradePass } from "@/lib/intelligence/v4/phase17SearchAiPrepClosure";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -1119,6 +1120,21 @@ function computeIntelligenceBuildProgressCore(): IntelligenceBuildProgressReport
     href: "/admin/intelligence/phase-16-p8-upgrade",
   });
 
+  const phase17Pass = computePhase17UpgradePass();
+  items.push({
+    id: "phase-17-search-ai-prep-v4",
+    label: "Phase 17 — Search v4 + AI prep v4",
+    category: "Candidate UX",
+    completionPct: phase17Pass.completionPct,
+    status: phase17Pass.completionPct >= 90 ? "complete" : phase17Pass.completionPct >= 75 ? "partial" : "flagged",
+    built: phase17Pass.progress.checkpointsAtBar,
+    total: phase17Pass.progress.checkpointTotal,
+    flags: [
+      `${phase17Pass.progress.checkpointsAtBar}/${phase17Pass.progress.checkpointTotal} checkpoints · corpus ${phase17Pass.progress.corpusTotal} · SRE ${phase17Pass.progress.rehearsalDocs} · copilot ${phase17Pass.progress.copilotDocs}`,
+    ],
+    href: "/admin/intelligence/phase-17-upgrade",
+  });
+
   const phase16P9Pass = computePhase16P9UpgradePass();
   items.push({
     id: "phase-16-p9-sre-closure",
@@ -1336,6 +1352,8 @@ function computeIntelligenceBuildProgressCore(): IntelligenceBuildProgressReport
     "/admin/intelligence/field-book/live-event-command",
     "/admin/intelligence/sre-closure",
     "/admin/intelligence/phase-16-p9-upgrade",
+    "/admin/intelligence/search-ai-prep-hub",
+    "/admin/intelligence/phase-17-upgrade",
     "/admin/intelligence/field-book/sre-closure-command",
     "/admin/intelligence/field-book/campaign-system-manual-command",
     "/admin/intelligence/field-book/kelly-strategic-plan-command",
@@ -2123,11 +2141,28 @@ function computeIntelligenceBuildProgressCore(): IntelligenceBuildProgressReport
         "Nav release batch 2026-06-05-phase-16-p9-sre-closure",
       ],
     },
+    {
+      phase: 48,
+      name: "v17.0 — Phase 17 Search v4 + AI prep v4",
+      targetVersion: "0.56.0",
+      goal: "Massive upgrade — unified search corpus (SRE + copilot + prep), search-integrated AI prep dock, profile-aware suggestions.",
+      items: [
+        "search-ai-prep-hub + phase-17-upgrade pass",
+        "smart-v4 search API with copilot recommendations + SRE shortcuts",
+        "AI prep v4 dock — 12 quick tools, inline search, governed brief tab",
+        "iPad header Search button + prominent search bar",
+      ],
+      exitCriteria: [
+        "test-phase17-search-ai-prep green",
+        "8/8 checkpoints at bar · corpus includes SRE + copilot tools",
+        "Nav release batch 2026-06-07-phase-17-search-ai-prep-v4",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v16.9-phase-16-p9-sre-closure",
+    version: "v17.0-phase-17-search-ai-prep-v4",
     overallCompletionPct,
     items,
     phases,

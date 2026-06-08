@@ -25,6 +25,17 @@ import { OPPONENT_TRAP_LANES } from "@/lib/intelligence/v4/kellyOpponentContrast
 import { buildDebatePrepFinderIndex } from "@/lib/intelligence/v4/debatePrepFinder";
 import { listDebatePhilosophyBriefings } from "@/lib/intelligence/v4/debatePhilosophyBriefings";
 import { getAllPrepSectionDrillDownIds, getPrepSectionDrillDown } from "@/lib/intelligence/v4/debatePrepSectionDrillDowns";
+import { loadAiCopilotToolRegistry } from "@/lib/intelligence/aiCopilotOrchestrator";
+import { REHEARSAL_HUB_HREF } from "@/lib/intelligence/v4/phase16P0SessionLauncher";
+import { RUN_OF_SHOW_HUB_HREF } from "@/lib/intelligence/v4/phase16P1RunOfShow";
+import { ENCOUNTERS_HUB_HREF } from "@/lib/intelligence/v4/phase16P2EncounterScenarios";
+import { DRILL_QUEUE_HUB_HREF } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+import { SESSION_DEBRIEF_HUB_HREF } from "@/lib/intelligence/v4/phase16P4SessionDebrief";
+import { REHEARSAL_HISTORY_HUB_HREF } from "@/lib/intelligence/v4/phase16P6SessionMemory";
+import { REHEARSAL_COACH_HUB_HREF } from "@/lib/intelligence/v4/phase16P7StaffCoach";
+import { LIVE_EVENT_HUB_HREF } from "@/lib/intelligence/v4/phase16P8LiveEventMode";
+import { SRE_CLOSURE_HUB_HREF } from "@/lib/intelligence/v4/phase16P9SreClosureDepth";
+import { SEARCH_AI_PREP_HUB_HREF } from "@/lib/intelligence/intelligenceAiPrepV4";
 import type { CandidateIntelSearchKind } from "@/lib/intelligence/candidateIntelligenceSearch";
 
 export type IntelSearchDocument = {
@@ -424,6 +435,111 @@ export function buildIntelSearchCorpus(profile: "CANDIDATE" | "STAFF" | "CLERK_W
       section: "Trap lane overview",
       badge: "Quick trap ref",
       priority: 0.09,
+    });
+  }
+
+  const sreRoutes: { href: string; title: string; body: string; badge: string }[] = [
+    {
+      href: SEARCH_AI_PREP_HUB_HREF,
+      title: "Search & AI prep command hub",
+      body: "Unified smart search v4 and governed AI prep tools — debate prep, opposition research, SRE rehearsal stack.",
+      badge: "v4 hub",
+    },
+    {
+      href: REHEARSAL_HUB_HREF,
+      title: "Session launcher",
+      body: "Start rehearsal session — encounters, run-of-show, drill queue, debrief, session memory.",
+      badge: "SRE P0",
+    },
+    {
+      href: RUN_OF_SHOW_HUB_HREF,
+      title: "Run of show",
+      body: "Timed stage sequence — speak order, transitions, trap lane cues, three-way panel flow.",
+      badge: "SRE P1",
+    },
+    {
+      href: ENCOUNTERS_HUB_HREF,
+      title: "Encounter scenarios",
+      body: "Three-way debate encounters — Hammer bait, Pakko contrast, moderator traps, ACCA panel.",
+      badge: "SRE P2",
+    },
+    {
+      href: DRILL_QUEUE_HUB_HREF,
+      title: "Drill queue",
+      body: "Stage-safe drill cards — trap lanes, SOS questions, offensive moves, claims-gated lines.",
+      badge: "SRE P3",
+    },
+    {
+      href: SESSION_DEBRIEF_HUB_HREF,
+      title: "Session debrief",
+      body: "Capture rehearsal outcomes — what worked, verify lines, staff notes for next session.",
+      badge: "SRE P4",
+    },
+    {
+      href: REHEARSAL_HISTORY_HUB_HREF,
+      title: "Session memory",
+      body: "Prior rehearsal history — recurring traps, verified pivots, stage-safe patterns.",
+      badge: "SRE P6",
+    },
+    {
+      href: REHEARSAL_COACH_HUB_HREF,
+      title: "Rehearsal coach",
+      body: "Staff rehearsal coach — drill pins, queue cards, governed feedback (staff only).",
+      badge: "SRE P7",
+    },
+    {
+      href: LIVE_EVENT_HUB_HREF,
+      title: "Live event mode",
+      body: "ACCA Jun 11 countdown — day-of shortest stage-safe run-of-show for clerk week.",
+      badge: "SRE P8",
+    },
+    {
+      href: SRE_CLOSURE_HUB_HREF,
+      title: "SRE stack closure",
+      body: "Nine checkpoint SRE closure — session launcher through live event readiness.",
+      badge: "SRE P9",
+    },
+    {
+      href: "/admin/intelligence/debate-prep-finder",
+      title: "Debate prep finder",
+      body: "Keyword finder across SOS questions, trap lanes, philosophy briefings, prep sections.",
+      badge: "Prep finder",
+    },
+    {
+      href: "/admin/intelligence/agent-tooling",
+      title: "Agent tooling package",
+      body: "Full governed copilot tool sequences — 37 registered tools for debate and opposition research.",
+      badge: "AI prep",
+    },
+  ];
+
+  for (const route of sreRoutes) {
+    if (profile === "CANDIDATE" && route.href === REHEARSAL_COACH_HUB_HREF) continue;
+    push({
+      id: `rehearsal:${route.href}`,
+      kind: "rehearsal",
+      href: route.href,
+      title: route.title,
+      body: route.body,
+      section: "SRE rehearsal stack",
+      badge: route.badge,
+      priority: 0.14,
+    });
+  }
+
+  for (const tool of loadAiCopilotToolRegistry().tools) {
+    if (profile !== "STAFF" && !["debate_prep", "briefing_papers", "writing_tools"].includes(tool.category)) {
+      continue;
+    }
+    push({
+      id: `copilot:${tool.toolId}`,
+      kind: "copilot_tool",
+      href: `/admin/intelligence/agent-tooling?tool=${encodeURIComponent(tool.toolId)}`,
+      title: tool.name,
+      body: [tool.name, tool.category, tool.purpose, ...tool.routedSystems].join("\n"),
+      section: "AI prep tool",
+      badge: tool.category.replace(/_/g, " "),
+      priority: tool.category === "debate_prep" ? 0.13 : 0.06,
     });
   }
 

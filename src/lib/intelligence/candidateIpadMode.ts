@@ -4,6 +4,7 @@
  * Phase 15 P7 — bottom nav uses five CCE sections via phase15P7IpadPolish.
  */
 
+import { CANDIDATE_AI_PREP_V4_QUICK_TOOLS } from "@/lib/intelligence/intelligenceAiPrepV4";
 import { listIpadBottomNavTabs } from "@/lib/intelligence/v4/phase15P7IpadPolish";
 
 export const CANDIDATE_IPAD_PROFILE = {
@@ -66,31 +67,9 @@ export const CANDIDATE_IPAD_MORE_LINKS = [
   { href: "/admin/intelligence/action-queue", label: "Action queue" },
 ] as const;
 
-/** iPad-friendly copilot tools — deterministic, governed */
-export const CANDIDATE_IPAD_COPILOT_QUICK_TOOLS = [
-  {
-    toolId: "debate-question-generator",
-    label: "Debate questions",
-    description: "Internal questions from bills + evidence status",
-  },
-  {
-    toolId: "what-not-to-say-detector",
-    label: "Do not say",
-    description: "Blocked narratives for tonight",
-  },
-  {
-    toolId: "trap-question-detector",
-    label: "Trap warnings",
-    description: "Risky moderator paths",
-  },
-  {
-    toolId: "answer-builder-30-60-90",
-    label: "30/60/90 answers",
-    description: "Timed answer skeleton (verify claims)",
-  },
-  {
-    toolId: "rebuttal-builder",
-    label: "Rebuttal draft",
-    description: "Internal rebuttal blocks — review required",
-  },
-] as const;
+/** iPad-friendly copilot tools — v4 expanded set (12 governed tools) */
+export const CANDIDATE_IPAD_COPILOT_QUICK_TOOLS = CANDIDATE_AI_PREP_V4_QUICK_TOOLS.map((t) => ({
+  toolId: t.toolId,
+  label: t.label,
+  description: t.description,
+}));

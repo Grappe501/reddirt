@@ -9,6 +9,7 @@ import {
   PHASE15_P0_MAX_SECTIONS,
 } from "@/lib/intelligence/v4/phase15CandidateCommandDepth";
 import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
+import { SEARCH_AI_PREP_HUB_HREF } from "@/lib/intelligence/intelligenceAiPrepV4";
 
 export type CandidateCommandNavLink = {
   href: string;
@@ -39,6 +40,11 @@ function buildKellySections(): CandidateCommandNavSection[] {
         href: CANDIDATE_COMMAND_HOME_HREF,
         label: "Command home",
         description: "Readiness score, safe lines, blocked lines, and today's focus.",
+      },
+      {
+        href: SEARCH_AI_PREP_HUB_HREF,
+        label: "Search & AI prep",
+        description: "Smart search v4 + 12 governed AI prep tools — Ctrl+K anywhere.",
       },
       {
         href: "/admin/intelligence/rehearsal-history",

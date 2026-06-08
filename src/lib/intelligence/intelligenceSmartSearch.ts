@@ -285,6 +285,7 @@ export async function runSmartIntelligenceSearch(
   smart: IntelSearchSmartBrief | null;
   corpusCounts: CandidateIntelCorpusCounts;
   analysis: z.infer<typeof analysisSchema> | null;
+  didYouMean: string[];
 }> {
   const q = options.query.trim();
   const profile = options.profile ?? "CANDIDATE";
@@ -293,7 +294,7 @@ export async function runSmartIntelligenceSearch(
 
   if (!q) {
     const empty = await searchCandidateIntelligenceMulti([""], { profile, limit: 0 });
-    return { results: [], smart: null, corpusCounts: empty.corpusCounts, analysis: null };
+    return { results: [], smart: null, corpusCounts: empty.corpusCounts, analysis: null, didYouMean: [] };
   }
 
   let analysis: z.infer<typeof analysisSchema> | null = null;
