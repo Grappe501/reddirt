@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { IntelligenceAgentCopilotDock } from "@/components/admin/intelligence/IntelligenceAgentCopilotDock";
+import { DebatePrepTutorClient } from "@/components/admin/intelligence/DebatePrepTutorClient";
 import { IntelligencePrepSearchBar } from "@/components/admin/intelligence/IntelligencePrepSearchBar";
 import { Phase17UpgradePassPanel } from "@/components/admin/intelligence/Phase17UpgradePassPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
@@ -33,6 +34,10 @@ export default function SearchAiPrepHubPage() {
 
       <div className="mt-6">
         <IntelligenceAgentCopilotDock />
+      </div>
+
+      <div className="mt-8">
+        <DebatePrepTutorClient embedded />
       </div>
 
       <section className="mt-8 rounded-xl border border-kelly-text/10 bg-white p-5 text-sm">

@@ -36,6 +36,7 @@ import { REHEARSAL_COACH_HUB_HREF } from "@/lib/intelligence/v4/phase16P7StaffCo
 import { LIVE_EVENT_HUB_HREF } from "@/lib/intelligence/v4/phase16P8LiveEventMode";
 import { SRE_CLOSURE_HUB_HREF } from "@/lib/intelligence/v4/phase16P9SreClosureDepth";
 import { SEARCH_AI_PREP_HUB_HREF } from "@/lib/intelligence/intelligenceAiPrepV4";
+import { DEBATE_PREP_TUTOR_HUB_HREF } from "@/lib/intelligence/v4/debatePrepTutorPackage";
 import type { CandidateIntelSearchKind } from "@/lib/intelligence/candidateIntelligenceSearch";
 
 export type IntelSearchDocument = {
@@ -444,6 +445,12 @@ export function buildIntelSearchCorpus(profile: "CANDIDATE" | "STAFF" | "CLERK_W
       title: "Search & AI prep command hub",
       body: "Unified smart search v4 and governed AI prep tools — debate prep, opposition research, SRE rehearsal stack.",
       badge: "v4 hub",
+    },
+    {
+      href: DEBATE_PREP_TUTOR_HUB_HREF,
+      title: "AI debate prep tutor",
+      body: "Time-boxed political debate coach — 5 min panic, 15 min pre-stage, 30 min rehearsal with practice critique. Trap pivots, SOS speak-order, Check My Record six-beat, Packo three-way dynamics.",
+      badge: "Tutor v1",
     },
     {
       href: REHEARSAL_HUB_HREF,

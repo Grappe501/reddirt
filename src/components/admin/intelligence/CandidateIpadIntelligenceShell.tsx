@@ -8,6 +8,7 @@ import { CandidateIpadDrillPlayerBottomNavBridge } from "@/components/admin/inte
 import { IntelligenceAgentCopilotDock } from "@/components/admin/intelligence/IntelligenceAgentCopilotDock";
 import { IntelligencePrepSearchBar } from "@/components/admin/intelligence/IntelligencePrepSearchBar";
 import { IntelligencePrepSearchHeaderButton } from "@/components/admin/intelligence/IntelligencePrepSearchHeaderButton";
+import Link from "next/link";
 import {
   CANDIDATE_IPAD_PROFILE,
 } from "@/lib/intelligence/candidateIpadMode";
@@ -63,6 +64,12 @@ export function CandidateIpadIntelligenceShell({ children }: { children: React.R
           </p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
+          <Link
+            href="/admin/intelligence/debate-prep-tutor"
+            className="min-h-11 rounded-lg border border-emerald-400 bg-emerald-600 px-2.5 text-[10px] font-bold text-white shadow-sm active:bg-emerald-800"
+          >
+            Tutor
+          </Link>
           <IntelligencePrepSearchHeaderButton />
           <button
             type="button"

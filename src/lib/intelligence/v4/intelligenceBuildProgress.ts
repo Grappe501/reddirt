@@ -1354,6 +1354,7 @@ function computeIntelligenceBuildProgressCore(): IntelligenceBuildProgressReport
     "/admin/intelligence/phase-16-p9-upgrade",
     "/admin/intelligence/search-ai-prep-hub",
     "/admin/intelligence/phase-17-upgrade",
+    "/admin/intelligence/debate-prep-tutor",
     "/admin/intelligence/field-book/sre-closure-command",
     "/admin/intelligence/field-book/campaign-system-manual-command",
     "/admin/intelligence/field-book/kelly-strategic-plan-command",

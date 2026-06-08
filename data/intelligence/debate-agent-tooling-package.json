@@ -135,6 +135,29 @@
       ]
     },
     {
+      "sequenceId": "tutor-panic-5",
+      "label": "Tutor · 5 min panic reset",
+      "phase": "T-30m",
+      "audience": "candidate",
+      "estimatedMinutes": 5,
+      "steps": [
+        {"toolId": "what-not-to-say-detector", "label": "Do not say", "why": "One last blocked-line scan before stage."},
+        {"toolId": "trap-question-detector", "label": "Trap warning", "why": "Highest-probability moderator trap for tonight."}
+      ]
+    },
+    {
+      "sequenceId": "tutor-check-my-record",
+      "label": "Tutor · Check My Record drill",
+      "phase": "debate-week",
+      "audience": "candidate",
+      "estimatedMinutes": 12,
+      "steps": [
+        {"toolId": "check-my-record-responder", "label": "CMR six-beat", "why": "When Hammer invites record comparison — welcome, acts, wrong job, clerk harm, trap, exit."},
+        {"toolId": "direct-democracy-explainer", "label": "Petition cluster", "why": "Acts 218/240/274/241/768 plain English + one trap question."},
+        {"toolId": "rebuttal-builder", "label": "Rebuttal block", "why": "Agree + fresh add — never agree-only close."}
+      ]
+    },
+    {
       "sequenceId": "three-way-contrast",
       "label": "Three-way · Hammer + Packo contrast",
       "phase": "debate-week",

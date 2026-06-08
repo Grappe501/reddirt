@@ -22,6 +22,9 @@ import { getCopilotActionQueueRouting } from "@/lib/intelligence/strategicDecisi
 import { listSosDebateQuestionSummaries } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { OPPONENT_TRAP_LANES } from "@/lib/intelligence/v4/kellyOpponentContrastPlaybook";
 import { listTrapLaneSummaries } from "@/lib/intelligence/v4/trapLaneDrillDowns";
+import { CHECK_MY_RECORD_PLAYBOOK } from "@/lib/intelligence/v4/kellyOffensiveNarrativeControl";
+import { PACKO_IN_DEBATE_PREP } from "@/lib/intelligence/v4/kellyDebateCoaching";
+import { buildHammerDirectDemocracyPacket } from "@/lib/intelligence/v4/hammerDirectDemocracyOffensive";
 
 export const AI_COPILOT_TOOL_REGISTRY_REL = "data/intelligence/ai-copilot-tool-registry.json";
 
@@ -305,6 +308,48 @@ function runCounterargumentPredictor(tool: AiCopilotToolEntry, repoRoot?: string
   ], repoRoot);
 }
 
+function runCheckMyRecordResponder(tool: AiCopilotToolEntry, repoRoot?: string): CopilotToolOutput {
+  const beats = CHECK_MY_RECORD_PLAYBOOK.deliveryWalkthrough.map(
+    (b) => `Step ${b.step} — ${b.label}: ${b.sayThis.slice(0, 160)}`,
+  );
+  return baseOutput(tool, "Check My Record — six-beat tutor", [
+    { heading: "When it comes", bullets: CHECK_MY_RECORD_PLAYBOOK.whenItComes },
+    { heading: "Mental model", bullets: [CHECK_MY_RECORD_PLAYBOOK.mentalModel] },
+    { heading: "Six-beat walkthrough", bullets: beats },
+    { heading: "Index card", bullets: [CHECK_MY_RECORD_PLAYBOOK.indexCardVersion] },
+    {
+      heading: "If he says check yours",
+      bullets: [CHECK_MY_RECORD_PLAYBOOK.ifHeSaysCheckYours.sayThis],
+    },
+  ], repoRoot, {
+    riskWarnings: ["Verify act list with staff night-before — NEEDS_REVIEW on full script."],
+  });
+}
+
+function runPackoLaneAdvisor(tool: AiCopilotToolEntry, repoRoot?: string): CopilotToolOutput {
+  return baseOutput(tool, "Packo lane advisor — three-way panel", [
+    { heading: "Kelly bridges", bullets: PACKO_IN_DEBATE_PREP.kellyBridges },
+    { heading: "Do not on stage", bullets: PACKO_IN_DEBATE_PREP.doNotSay },
+    { heading: "Hammer/Packo overlap", bullets: [PACKO_IN_DEBATE_PREP.hammerPackoOverlap] },
+    { heading: "Speak-order note", bullets: ["When Packo agrees first, Kelly takes position 2 or 3 with fresh county add.", "Never join a smear — 'I am running to administer, not score points.'"] },
+  ], repoRoot);
+}
+
+function runDirectDemocracyExplainer(tool: AiCopilotToolEntry, topic: string, repoRoot?: string): CopilotToolOutput {
+  const packet = buildHammerDirectDemocracyPacket();
+  const anchors = packet.bills.slice(0, 5).map(
+    (a) => `${a.billNumber} Act ${a.actNumber}: ${a.plainEnglish.slice(0, 100)}`,
+  );
+  const traps = packet.bills.slice(0, 3).map((a) => a.trapQuestion);
+
+  return baseOutput(tool, `Direct democracy explainer — ${topic}`, [
+    { heading: "2025 petition cluster", bullets: [packet.thesis] },
+    { heading: "Bill anchors (verify on Arkleg)", bullets: anchors },
+    { heading: "Debate trap questions (one at a time)", bullets: traps },
+    { heading: "Kelly frame", bullets: [packet.kellySuperiorityLine, ...packet.debateSequence.slice(0, 3)] },
+  ], repoRoot);
+}
+
 function runBridgeLineBuilder(tool: AiCopilotToolEntry, repoRoot?: string): CopilotToolOutput {
   const paper = buildStrategicBriefingPaper("debate-prep", repoRoot);
   const bridges = [
@@ -420,6 +465,12 @@ export function runDeterministicCopilotTool(
       return runCounterargumentPredictor(tool, repoRoot);
     case "bridge-line-builder":
       return runBridgeLineBuilder(tool, repoRoot);
+    case "check-my-record-responder":
+      return runCheckMyRecordResponder(tool, repoRoot);
+    case "packo-lane-advisor":
+      return runPackoLaneAdvisor(tool, repoRoot);
+    case "direct-democracy-explainer":
+      return runDirectDemocracyExplainer(tool, options.topic ?? "petition acts 2025", repoRoot);
     case "answer-builder-30-60-90":
       return runAnswerBuilder(tool, options.topic ?? "election integrity", repoRoot);
     case "what-not-to-say-detector":

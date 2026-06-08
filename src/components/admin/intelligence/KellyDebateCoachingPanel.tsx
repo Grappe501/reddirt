@@ -41,6 +41,7 @@ import type { KellyRoadStoriesFile } from "@/lib/intelligence/loadKellyRoadStori
 import type { KellyCandidateSuggestion } from "@/lib/legislature/videoArchiveRoomManifest";
 import { KellyOffensiveNarrativePanel } from "@/components/admin/intelligence/KellyOffensiveNarrativePanel";
 import { IntelligenceAgentCopilotDock } from "@/components/admin/intelligence/IntelligenceAgentCopilotDock";
+import { DebatePrepTutorClient } from "@/components/admin/intelligence/DebatePrepTutorClient";
 import { StageSafeBlockedPanel } from "@/components/admin/intelligence/StageSafeBlockedPanel";
 import { EvidenceHonestyBadgeFromText } from "@/components/admin/intelligence/EvidenceHonestyBadge";
 import { isCandidateIpadMode } from "@/lib/intelligence/candidateIpadMode";
@@ -119,6 +120,7 @@ export function KellyDebateCoachingPanel({
 
   return (
     <div className="space-y-6">
+      {!compact && !isCandidateIpadMode() ? <DebatePrepTutorClient /> : null}
       {!compact ? (
         <>
         <article className="rounded-xl border-2 border-emerald-300 bg-emerald-50/50 p-5 text-xs">

@@ -40,6 +40,8 @@ const INTENT_TOOL_MAP: Record<IntelSearchIntent, string[]> = {
     "debate-question-generator",
     "what-not-to-say-detector",
     "bridge-line-builder",
+    "check-my-record-responder",
+    "packo-lane-advisor",
   ],
   claims: [
     "claim-strength-evaluator",

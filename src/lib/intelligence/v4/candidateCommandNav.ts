@@ -10,6 +10,7 @@ import {
 } from "@/lib/intelligence/v4/phase15CandidateCommandDepth";
 import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
 import { SEARCH_AI_PREP_HUB_HREF } from "@/lib/intelligence/intelligenceAiPrepV4";
+import { DEBATE_PREP_TUTOR_HUB_HREF } from "@/lib/intelligence/v4/debatePrepTutorPackage";
 
 export type CandidateCommandNavLink = {
   href: string;
@@ -68,6 +69,11 @@ function buildKellySections(): CandidateCommandNavSection[] {
       },
     ]),
     section("rehearse", "Rehearse", "Stage prep — scripts, drills, and coaching.", [
+      {
+        href: DEBATE_PREP_TUTOR_HUB_HREF,
+        label: "AI debate prep tutor",
+        description: "5–30 min coached sessions — trap pivots, SOS speak-order, practice critique. Start here when time is short.",
+      },
       {
         href: "/admin/intelligence/rehearsal",
         label: "Session launcher",
