@@ -9,6 +9,14 @@ import type {
   ProfessorCritiqueResult,
   ProfessorTutorSession,
 } from "@/lib/intelligence/v4/debatePrepProfessorOrchestrator";
+import {
+  COACH_MODE_GUIDES,
+  PROFESSOR_MODE_GUIDES,
+  TUTOR_ELEMENT_GUIDES,
+  TUTOR_HUB_WELCOME,
+  TUTOR_TOOL_GUIDES,
+  type TutorModeGuide,
+} from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
 
 type CopilotOutput = {
   title: string;
@@ -33,6 +41,85 @@ const PROFESSOR_STYLES: Record<DebatePrepProfessorMode, string> = {
 
 function isProfessorSession(s: TutorSession | ProfessorTutorSession): s is ProfessorTutorSession {
   return "professorMode" in s && "lecture" in s;
+}
+
+function ModeGuideCard({
+  guide,
+  styleClass,
+  loading,
+  onPick,
+}: {
+  guide: TutorModeGuide;
+  styleClass: string;
+  loading: boolean;
+  onPick: () => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <div className={`rounded-xl border-2 ${styleClass}`}>
+      <button
+        type="button"
+        disabled={loading}
+        onClick={onPick}
+        className="w-full p-4 text-left transition active:scale-[0.99] disabled:opacity-50"
+      >
+        <span className="block text-sm font-bold text-kelly-navy">{guide.label}</span>
+        <span className="mt-1 block text-xs font-medium text-kelly-text">{guide.tagline}</span>
+        <span className="mt-2 block rounded-full bg-white/70 px-2 py-0.5 text-[10px] font-bold text-kelly-navy">
+          Pick if: {guide.pickIf}
+        </span>
+      </button>
+      <button
+        type="button"
+        onClick={() => setExpanded((e) => !e)}
+        className="w-full border-t border-black/5 px-4 py-2 text-left text-[10px] font-bold uppercase tracking-wide text-kelly-subtle"
+      >
+        {expanded ? "Hide why & how" : "Why this mode · how to use it"}
+      </button>
+      {expanded ? (
+        <div className="space-y-3 border-t border-black/5 px-4 pb-4 text-xs text-kelly-muted">
+          <div>
+            <p className="font-bold text-kelly-navy">Why</p>
+            <p className="mt-1 leading-relaxed">{guide.whyThisMode}</p>
+          </div>
+          <div>
+            <p className="font-bold text-kelly-navy">When</p>
+            <p className="mt-1 leading-relaxed">{guide.whenToUse}</p>
+          </div>
+          <div>
+            <p className="font-bold text-kelly-navy">How it works</p>
+            <ol className="mt-1 list-inside list-decimal space-y-1">
+              {guide.howItWorks.map((step) => (
+                <li key={step.slice(0, 40)}>{step}</li>
+              ))}
+            </ol>
+          </div>
+          <div>
+            <p className="font-bold text-kelly-navy">You&apos;ll get</p>
+            <ul className="mt-1 list-inside list-disc">
+              {guide.whatYouWillGet.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function ElementGuideCallout({ elementId }: { elementId: keyof typeof TUTOR_ELEMENT_GUIDES }) {
+  const g = TUTOR_ELEMENT_GUIDES[elementId];
+  if (!g) return null;
+  return (
+    <div className="mt-2 rounded-lg border border-kelly-text/10 bg-kelly-page/50 p-3 text-xs">
+      <p className="font-bold text-kelly-navy">{g.title} — why it matters</p>
+      <p className="mt-1 text-kelly-muted">{g.whyItMatters}</p>
+      <p className="mt-2 font-bold text-kelly-navy">How to use</p>
+      <p className="mt-0.5 text-kelly-muted">{g.howToUse}</p>
+      <p className="mt-2 italic text-emerald-900">Coach tip: {g.coachTip}</p>
+    </div>
+  );
 }
 
 export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
@@ -196,60 +283,37 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
   if (!session) {
     return (
       <section className={embedded ? "text-sm" : "rounded-xl border-2 border-emerald-300 bg-emerald-50/20 p-5"}>
-        {!embedded ? (
-          <header className="mb-4">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-900">AI debate prep · v2 professor</p>
-            <h2 className="font-heading text-xl font-bold text-kelly-navy">Coach or professor — pick your depth</h2>
-            <p className="mt-1 text-sm text-kelly-muted">
-              Fast coach modes for panic prep, or collegiate professor sessions with seminar lectures, moot court, and forensic rubric grading.
-            </p>
-          </header>
-        ) : null}
+        <div className="mb-5 rounded-xl border border-emerald-200 bg-white p-4">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-900">AI debate prep · v5 conversational</p>
+          <h2 className="mt-1 font-heading text-lg font-bold text-kelly-navy">{TUTOR_HUB_WELCOME.headline}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-kelly-muted">{TUTOR_HUB_WELCOME.intro}</p>
+          <p className="mt-2 text-sm leading-relaxed text-kelly-text">{TUTOR_HUB_WELCOME.howToStart}</p>
+          <p className="mt-2 text-xs italic text-emerald-900">{TUTOR_HUB_WELCOME.reassurance}</p>
+        </div>
 
-        <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-violet-900">Professor modes · collegiate depth</p>
+        <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-violet-900">Professor modes — want the why, not just lines?</p>
         <div className="mb-4 grid gap-3 sm:grid-cols-2">
-          {(
-            [
-              ["office-hours-10", "10 min office hours", "One concept · thesis drill"],
-              ["seminar-25", "25 min seminar", "Lecture + Socratic cards"],
-              ["moot-court-45", "45 min moot court", "Cross-exam + rubric"],
-              ["forensic-audit", "12 min forensic audit", "Rubric grade your answer"],
-            ] as const
-          ).map(([id, label, sub]) => (
-            <button
+          {(Object.keys(PROFESSOR_MODE_GUIDES) as DebatePrepProfessorMode[]).map((id) => (
+            <ModeGuideCard
               key={id}
-              type="button"
-              disabled={loading}
-              onClick={() => void startProfessorSession(id)}
-              className={`min-h-[72px] rounded-xl border-2 p-4 text-left transition active:scale-[0.99] disabled:opacity-50 ${PROFESSOR_STYLES[id]}`}
-            >
-              <span className="block text-sm font-bold text-kelly-navy">{label}</span>
-              <span className="mt-1 block text-[10px] text-kelly-subtle">{sub}</span>
-            </button>
+              guide={PROFESSOR_MODE_GUIDES[id]}
+              styleClass={PROFESSOR_STYLES[id]}
+              loading={loading}
+              onPick={() => void startProfessorSession(id)}
+            />
           ))}
         </div>
 
-        <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-emerald-900">Coach modes · fast prep</p>
+        <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-emerald-900">Coach modes — match your clock</p>
         <div className="grid gap-3 sm:grid-cols-2">
-          {(
-            [
-              ["panic-5", "5 min panic reset", "One card · one line · go"],
-              ["tonight-15", "15 min pre-stage", "Recommended before stage"],
-              ["deep-30", "30 min rehearsal", "Full queue + critique"],
-              ["check-my-record", "Check My Record", "Six-beat walkthrough"],
-              ["three-way-panel", "Three-way panel", "Hammer + Packo dynamics"],
-            ] as const
-          ).map(([id, label, sub]) => (
-            <button
+          {(Object.keys(COACH_MODE_GUIDES) as DebatePrepTutorMode[]).map((id) => (
+            <ModeGuideCard
               key={id}
-              type="button"
-              disabled={loading}
-              onClick={() => void startSession(id)}
-              className={`min-h-[72px] rounded-xl border-2 p-4 text-left transition active:scale-[0.99] disabled:opacity-50 ${MODE_STYLES[id]}`}
-            >
-              <span className="block text-sm font-bold text-kelly-navy">{label}</span>
-              <span className="mt-1 block text-[10px] text-kelly-subtle">{sub}</span>
-            </button>
+              guide={COACH_MODE_GUIDES[id]}
+              styleClass={MODE_STYLES[id]}
+              loading={loading}
+              onPick={() => void startSession(id)}
+            />
           ))}
         </div>
         {error ? <p className="mt-3 font-bold text-rose-900">{error}</p> : null}
@@ -258,7 +322,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
   }
 
   return (
-    <section className="space-y-4 text-sm" data-debate-prep-tutor={isProfessorSession(session) ? "v2-professor" : "v1"}>
+    <section className="space-y-4 text-sm" data-debate-prep-tutor="v5-conversational">
       <div
         className={`rounded-xl border-2 p-4 ${
           isProfessorSession(session) && professorMode
@@ -269,8 +333,12 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div>
             <p className="text-[10px] font-bold uppercase text-kelly-subtle">{session.config.label}</p>
-            <h2 className="font-heading text-lg font-bold text-kelly-navy">{session.config.headline}</h2>
-            <p className="mt-2 text-kelly-muted">{session.openingCoachMessage}</p>
+            <h2 className="font-heading text-lg font-bold text-kelly-navy">{session.modeGuide.tagline}</h2>
+            <p className="mt-2 leading-relaxed text-kelly-text">{session.openingCoachMessage}</p>
+            <p className="mt-2 text-xs text-kelly-muted">
+              <span className="font-bold text-kelly-navy">Why this mode: </span>
+              {session.modeGuide.whyThisMode}
+            </p>
           </div>
           <button
             type="button"
@@ -291,9 +359,25 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
         ) : null}
       </div>
 
+      <div className="rounded-xl border border-emerald-200 bg-emerald-50/30 p-4">
+        <p className="text-[10px] font-bold uppercase text-emerald-900">Your path tonight — follow in order</p>
+        <ol className="mt-2 space-y-3">
+          {session.sessionFlow.map((step) => (
+            <li key={step.step} className="rounded-lg border border-emerald-100 bg-white p-3">
+              <p className="text-xs font-bold text-kelly-navy">
+                {step.step}. {step.label}
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-kelly-text">{step.instruction}</p>
+              <p className="mt-1 text-[10px] italic text-kelly-subtle">Why: {step.why}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+
       {isProfessorSession(session) ? (
         <div className="rounded-xl border border-violet-200 bg-violet-50/40 p-4">
           <p className="text-[10px] font-bold uppercase text-violet-900">Professor lecture · {session.lecture.title}</p>
+          <ElementGuideCallout elementId="professor-lecture" />
           <p className="mt-2 text-sm font-bold text-violet-950">{session.lecture.thesis}</p>
           {session.lecture.sections.map((sec) => (
             <div key={sec.heading} className="mt-3">
@@ -321,6 +405,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
       {session.sequenceSteps.length > 0 ? (
         <div className="rounded-xl border border-violet-200 bg-violet-50/40 p-4">
           <p className="text-[10px] font-bold uppercase text-violet-900">Pre-stage tool sequence</p>
+          <ElementGuideCallout elementId="tool-sequence" />
           <ol className="mt-2 space-y-2">
             {session.sequenceSteps.map((step) => (
               <li key={step.toolId} className="flex flex-wrap items-center gap-2">
@@ -406,6 +491,8 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
           <h3 className="mt-2 font-heading text-lg font-bold text-kelly-navy">{currentCard.card.title}</h3>
           <p className="mt-1 text-xs text-kelly-muted">{currentCard.card.prompt}</p>
 
+          <ElementGuideCallout elementId="coach-turn" />
+
           {currentTurn ? (
             <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/60 p-4">
               <p className="text-[10px] font-bold uppercase text-emerald-900">Coach · turn {turnIndex + 1}</p>
@@ -439,9 +526,11 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
             <div className="mt-3 rounded-lg border border-indigo-200 bg-indigo-50 p-3">
               <p className="text-[10px] font-bold uppercase text-indigo-900">Stage-safe line</p>
               <p className="mt-1 text-sm font-medium text-indigo-950">{currentCard.safeLine}</p>
+              <p className="mt-2 text-[10px] italic text-indigo-800">Coach tip: {TUTOR_ELEMENT_GUIDES["safe-line"].coachTip}</p>
             </div>
           ) : null}
 
+          <ElementGuideCallout elementId="do-not-say" />
           <ul className="mt-3 space-y-1 text-[10px] text-rose-800">
             {currentCard.doNotSay.map((d) => (
               <li key={d.slice(0, 32)}>Do not: {d}</li>
@@ -456,6 +545,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
             session.mode === "tonight-15" ||
             isProfessorSession(session)) && (
             <div className="mt-4 border-t border-kelly-text/10 pt-4">
+              <ElementGuideCallout elementId="practice-box" />
               <label className="block">
                 <span className="font-bold text-kelly-navy">Practice your answer</span>
                 <textarea
@@ -487,6 +577,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
 
       {professorCritique ? (
         <article className="rounded-xl border-2 border-violet-400 bg-violet-50 p-4">
+          <ElementGuideCallout elementId="rubric" />
           <p className="text-[10px] font-bold uppercase text-violet-900">
             Professor rubric · {professorCritique.rubric.overall}/100
           </p>
@@ -571,26 +662,40 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
         </ul>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        <button
-          type="button"
-          disabled={loading}
-          onClick={() => void runTool("packo-lane-advisor")}
-          className="min-h-10 rounded-lg border border-cyan-300 bg-cyan-50 px-3 text-[10px] font-bold"
-        >
-          Packo advisor
-        </button>
-        <button
-          type="button"
-          disabled={loading}
-          onClick={() => void runTool("direct-democracy-explainer")}
-          className="min-h-10 rounded-lg border border-amber-300 bg-amber-50 px-3 text-[10px] font-bold"
-        >
-          Direct democracy
-        </button>
+      <div className="rounded-xl border border-kelly-text/10 bg-white p-4">
+        <p className="text-[10px] font-bold uppercase text-kelly-subtle">Quick tools — when and why</p>
+        <ul className="mt-3 space-y-3">
+          {TUTOR_TOOL_GUIDES.map((tool) => (
+            <li key={tool.toolId} className="rounded-lg border border-kelly-text/10 p-3 text-xs">
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <p className="font-bold text-kelly-navy">{tool.label}</p>
+                <button
+                  type="button"
+                  disabled={loading}
+                  onClick={() => void runTool(tool.toolId)}
+                  className="min-h-9 shrink-0 rounded-lg bg-kelly-navy px-3 text-[10px] font-bold text-white disabled:opacity-50"
+                >
+                  Run
+                </button>
+              </div>
+              <p className="mt-2 text-kelly-muted">
+                <span className="font-bold text-kelly-text">Why: </span>
+                {tool.whyRunIt}
+              </p>
+              <p className="mt-1 text-kelly-muted">
+                <span className="font-bold text-kelly-text">When: </span>
+                {tool.whenToRun}
+              </p>
+              <p className="mt-1 text-kelly-muted">
+                <span className="font-bold text-kelly-text">After: </span>
+                {tool.afterYouRun}
+              </p>
+            </li>
+          ))}
+        </ul>
         <Link
           href="/admin/intelligence/drill-queue"
-          className="inline-flex min-h-10 items-center rounded-lg border px-3 text-[10px] font-bold text-kelly-navy"
+          className="mt-3 inline-flex min-h-10 items-center rounded-lg border px-3 text-[10px] font-bold text-kelly-navy"
         >
           Full drill queue →
         </Link>

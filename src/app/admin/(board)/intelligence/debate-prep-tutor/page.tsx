@@ -2,6 +2,7 @@ import Link from "next/link";
 import { DebatePrepTutorClient } from "@/components/admin/intelligence/DebatePrepTutorClient";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { DEBATE_PREP_TUTOR_HUB_HREF } from "@/lib/intelligence/v4/debatePrepTutorPackage";
+import { DEBATE_PREP_TUTOR_V5_VERSION, TUTOR_HUB_WELCOME } from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
 
 export const dynamic = "force-dynamic";
 
@@ -9,9 +10,9 @@ export default function DebatePrepTutorPage() {
   return (
     <div className="mx-auto max-w-3xl text-kelly-text">
       <V4PageHeader
-        eyebrow="Intelligence · AI debate prep tutor"
+        eyebrow={`Intelligence · ${DEBATE_PREP_TUTOR_V5_VERSION}`}
         title="Debate prep coach"
-        description="Time-boxed political debate tutoring — trap pivots, SOS speak-order, Check My Record six-beat, practice critique. Built for when the clock is running out."
+        description={TUTOR_HUB_WELCOME.intro}
       >
         <V4BackLinks />
         <Link
@@ -31,23 +32,32 @@ export default function DebatePrepTutorPage() {
       <DebatePrepTutorClient />
 
       <section className="mt-8 rounded-xl border border-kelly-text/10 bg-white p-5 text-sm">
-        <h2 className="font-heading text-lg font-bold text-kelly-navy">How the tutor works</h2>
-        <ol className="mt-3 list-inside list-decimal space-y-2 text-kelly-muted">
+        <h2 className="font-heading text-lg font-bold text-kelly-navy">How to talk with the tutor (v5)</h2>
+        <p className="mt-2 leading-relaxed text-kelly-muted">{TUTOR_HUB_WELCOME.howToStart}</p>
+        <ol className="mt-4 list-inside list-decimal space-y-3 text-kelly-muted">
           <li>
-            <strong>Pick your time</strong> — 5 min panic picks one trap card; 15 min runs pre-stage tools; 30 min adds practice critique.
+            <strong>Pick by clock, not ego.</strong> Panic mode exists because browsing raises adrenaline. Professor
+            modes exist because some nights you need the why before the line.
           </li>
           <li>
-            <strong>One card at a time</strong> — coach walks trap chess, speak-order, agree+fresh-add. No browsing the full bank.
+            <strong>Follow the path in order.</strong> Each session shows numbered steps — opening, cards, optional
+            tools, practice feedback, close. Skipping trap warnings is how agree-only closes sneak on stage.
           </li>
           <li>
-            <strong>Practice + feedback</strong> — type your answer; coach flags agree-only closes, unsourced stats, blocked lines.
+            <strong>Read coach turns out loud.</strong> The italic Socratic question is what you&apos;d ask yourself
+            backstage. Answer it before tapping Next tip.
           </li>
           <li>
-            <strong>Special drills</strong> — Check My Record six-beat and Packo three-way dynamics built in.
+            <strong>Practice box = muscle memory.</strong> Type what you&apos;d actually say. Coach or professor
+            feedback flags blocked language, unsourced stats, and structure gaps.
           </li>
-          <li>All outputs are internal drafts — staff verifies before stage.</li>
+          <li>
+            <strong>Tools are drafts, not scripts.</strong> Packo advisor, direct democracy, CMR — run when the card
+            calls for it; staff verifies before anything goes on stage.
+          </li>
         </ol>
-        <p className="mt-4 text-[10px] text-kelly-subtle">Hub: {DEBATE_PREP_TUTOR_HUB_HREF}</p>
+        <p className="mt-4 text-[10px] font-bold uppercase text-amber-900">{TUTOR_HUB_WELCOME.governance}</p>
+        <p className="mt-2 text-[10px] text-kelly-subtle">Hub: {DEBATE_PREP_TUTOR_HUB_HREF}</p>
       </section>
     </div>
   );

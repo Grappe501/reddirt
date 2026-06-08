@@ -14,6 +14,7 @@ import {
 } from "@/lib/intelligence/v4/debatePrepProfessorOrchestrator";
 import { listTutorModes } from "@/lib/intelligence/v4/debatePrepTutorPackage";
 import { listProfessorModes } from "@/lib/intelligence/v4/debatePrepProfessorV5";
+import { DEBATE_PREP_TUTOR_V5_VERSION, getTutorHubGuides } from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
 import { getDrillQueueCards, resolveDrillQueueId } from "@/lib/intelligence/v4/phase16P3DrillQueue";
 import { runCopilotWithLlmDraftQueue } from "@/lib/intelligence/aiCopilotOrchestrator";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
@@ -87,10 +88,11 @@ export async function GET() {
   return NextResponse.json({
     ok: true,
     route: "debate-prep-tutor",
-    version: DEBATE_PREP_TUTOR_V2_VERSION,
+    version: DEBATE_PREP_TUTOR_V5_VERSION,
     legacyVersion: "tutor-v1.0",
     modes: listTutorModes(),
     professorModes: listProfessorModes(),
+    guides: getTutorHubGuides(),
     governance: "NON_PUBLISHABLE · HUMAN_REVIEW · stage-safe gates enforced",
   });
 }

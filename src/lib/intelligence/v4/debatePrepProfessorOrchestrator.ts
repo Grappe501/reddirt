@@ -20,11 +20,15 @@ import {
   type ProfessorLecture,
   type ProfessorRubricGrade,
 } from "@/lib/intelligence/v4/debatePrepProfessorV5";
+import {
+  buildProfessorSessionFlow,
+  DEBATE_PREP_TUTOR_V5_VERSION,
+  getProfessorModeGuide,
+} from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
 
-export const DEBATE_PREP_TUTOR_V2_VERSION = "tutor-v2.0-professor";
+export const DEBATE_PREP_TUTOR_V2_VERSION = DEBATE_PREP_TUTOR_V5_VERSION;
 
 export type ProfessorTutorSession = TutorSession & {
-  version: typeof DEBATE_PREP_TUTOR_V2_VERSION;
   professorMode: DebatePrepProfessorMode;
   professorConfig: ReturnType<typeof getProfessorModeConfig>;
   lecture: ProfessorLecture;
@@ -54,22 +58,25 @@ export function buildProfessorTutorSession(mode: DebatePrepProfessorMode, topic 
   );
   lecture.assignedReading = cardMeta.slice(0, 4).map((c) => ({ href: c.href, title: c.title }));
 
+  const modeGuide = getProfessorModeGuide(mode);
   return {
     ...base,
-    version: DEBATE_PREP_TUTOR_V2_VERSION,
+    version: DEBATE_PREP_TUTOR_V5_VERSION,
+    modeGuide,
+    sessionFlow: buildProfessorSessionFlow(mode),
     professorMode: mode,
     professorConfig,
     lecture,
     pedagogyPillars: PROFESSOR_PEDAGOGY_FRAMEWORK.pillars.filter((p) =>
       professorConfig.pedagogicalFocus.includes(p.id),
     ),
-    openingCoachMessage: professorConfig.professorOpening,
+    openingCoachMessage: modeGuide.coachVoice,
     config: {
       ...base.config,
       label: professorConfig.label,
       headline: professorConfig.headline,
       minutes: professorConfig.minutes,
-      coachOpening: professorConfig.professorOpening,
+      coachOpening: modeGuide.coachVoice,
     },
   };
 }

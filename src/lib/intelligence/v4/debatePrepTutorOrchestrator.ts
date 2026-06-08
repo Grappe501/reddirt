@@ -24,6 +24,13 @@ import {
   type DebatePrepTutorMode,
   type TutorModeConfig,
 } from "@/lib/intelligence/v4/debatePrepTutorPackage";
+import {
+  buildCoachSessionFlow,
+  DEBATE_PREP_TUTOR_V5_VERSION,
+  getCoachModeGuide,
+  type SessionFlowStep,
+  type TutorModeGuide,
+} from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
 
 export type TutorCoachTurn = {
   turnIndex: number;
@@ -44,8 +51,11 @@ export type TutorCardSession = {
 };
 
 export type TutorSession = {
+  version: typeof DEBATE_PREP_TUTOR_V5_VERSION;
   mode: DebatePrepTutorMode;
   config: TutorModeConfig;
+  modeGuide: TutorModeGuide;
+  sessionFlow: SessionFlowStep[];
   openingCoachMessage: string;
   panicReminder: string | null;
   cards: TutorCardSession[];
@@ -158,10 +168,14 @@ export function buildDebatePrepTutorSession(mode: DebatePrepTutorMode): TutorSes
 
   const sequenceSteps = getTutorSequenceSteps(config.sequenceId);
 
+  const modeGuide = getCoachModeGuide(mode);
   return {
+    version: DEBATE_PREP_TUTOR_V5_VERSION,
     mode,
     config,
-    openingCoachMessage: config.coachOpening,
+    modeGuide,
+    sessionFlow: buildCoachSessionFlow(mode),
+    openingCoachMessage: modeGuide.coachVoice,
     panicReminder: mode === "panic-5" ? POLITICAL_DEBATE_COACH_FRAMEWORK.panicScript : null,
     cards,
     sequenceSteps,

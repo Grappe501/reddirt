@@ -13,6 +13,7 @@ const REQUIRED_FILES = [
   "src/lib/intelligence/intelligenceProfessorBrief.ts",
   "src/lib/intelligence/v4/debatePrepProfessorV5.ts",
   "src/lib/intelligence/v4/debatePrepProfessorOrchestrator.ts",
+  "src/lib/intelligence/v4/debatePrepTutorGuideV5.ts",
   "src/app/api/admin/intelligence/search/route.ts",
   "src/app/api/admin/intelligence/debate-prep-tutor/route.ts",
   "src/components/admin/intelligence/IntelligencePrepSearchBar.tsx",
@@ -25,10 +26,10 @@ const CHECKPOINTS = [
   { id: "search-v5-professor-lens", check: () => exists("src/lib/intelligence/intelligenceProfessorBrief.ts") },
   { id: "search-api-v5", check: () => fileHas("src/app/api/admin/intelligence/search/route.ts", "INTEL_SEARCH_V5_VERSION") },
   { id: "professor-brief-engine", check: () => fileHas("src/lib/intelligence/intelligenceProfessorBrief.ts", "generateIntelProfessorBrief") },
-  { id: "debate-prep-professor-v2", check: () => fileHas("src/lib/intelligence/v4/debatePrepProfessorOrchestrator.ts", "tutor-v2.0-professor") },
+  { id: "debate-prep-professor-v2", check: () => fileHas("src/lib/intelligence/v4/debatePrepTutorGuideV5.ts", "tutor-v5.0-conversational") },
   { id: "professor-moot-rubric", check: () => fileHas("src/lib/intelligence/v4/debatePrepProfessorV5.ts", "deliversMoot") },
   { id: "search-ui-professor-panel", check: () => fileHas("src/components/admin/intelligence/IntelligencePrepSearchBar.tsx", "professorBrief") },
-  { id: "tutor-ui-professor-modes", check: () => fileHas("src/components/admin/intelligence/DebatePrepTutorClient.tsx", "start-professor-session") },
+  { id: "tutor-ui-professor-modes", check: () => fileHas("src/components/admin/intelligence/DebatePrepTutorClient.tsx", "TUTOR_HUB_WELCOME") },
 ] as const;
 
 function exists(rel: string): boolean {
