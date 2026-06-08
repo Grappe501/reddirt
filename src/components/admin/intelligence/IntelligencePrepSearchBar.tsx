@@ -6,6 +6,7 @@ import Link from "next/link";
 import type { CandidateIntelSearchKind, CandidateIntelSearchResult, IntelStageSafe } from "@/lib/intelligence/candidateIntelligenceSearch";
 import type { IntelSearchSmartBrief } from "@/lib/intelligence/intelligenceSmartSearch";
 import { highlightIntelMatches, tokenizeIntelQuery } from "@/lib/intelligence/intelligenceSearchCore";
+import { openIntelPrepSearch, subscribeIntelPrepSearchOpen } from "@/lib/intelligence/intelligencePrepSearchOpen";
 
 const KIND_LABELS: Record<CandidateIntelSearchKind, string> = {
   nav: "Prep page",
@@ -114,10 +115,15 @@ function groupResults(results: CandidateIntelSearchResult[]) {
 }
 
 type IntelligencePrepSearchBarProps = {
-  variant?: "sticky" | "bottom-nav" | "sidebar";
+  variant?: "sticky" | "bottom-nav" | "sidebar" | "ipad-header" | "trigger-only";
+  /** When true, responds to header buttons and Ctrl+K open requests. */
+  listenOnOpen?: boolean;
 };
 
-export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePrepSearchBarProps) {
+export function IntelligencePrepSearchBar({
+  variant = "sticky",
+  listenOnOpen = variant === "sidebar" || variant === "ipad-header" || variant === "sticky",
+}: IntelligencePrepSearchBarProps) {
   const inputId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -267,12 +273,21 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
     };
   }, [query, expanded, runSearch]);
 
+  const focusSearch = useCallback(() => {
+    setExpanded(true);
+    window.setTimeout(() => inputRef.current?.focus(), 50);
+  }, []);
+
+  useEffect(() => {
+    if (!listenOnOpen) return;
+    return subscribeIntelPrepSearchOpen(focusSearch);
+  }, [listenOnOpen, focusSearch]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setExpanded(true);
-        window.setTimeout(() => inputRef.current?.focus(), 50);
+        focusSearch();
       }
       if (!expanded) return;
       if (e.key === "Escape") {
@@ -294,7 +309,7 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [expanded, displayOrder, activeIdx]);
+  }, [expanded, displayOrder, activeIdx, focusSearch]);
 
   useEffect(() => {
     if (!expanded) return;
@@ -320,10 +335,57 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
       : "Trap lanes · Hammer · SOS questions · claims · philosophy…";
 
   const formShell =
-    variant === "sidebar" ? (
+    variant === "trigger-only" ? (
+      <button
+        type="button"
+        onClick={() => openIntelPrepSearch()}
+        className="flex w-full min-h-11 items-center justify-center gap-2 px-3 py-2 text-xs font-bold text-indigo-900 active:bg-indigo-50"
+        aria-label="Open debate prep search"
+      >
+        <span aria-hidden>🔍</span>
+        Search debate prep
+        <span className="font-normal text-kelly-subtle">· Ctrl+K</span>
+      </button>
+    ) : variant === "ipad-header" ? (
+      <div
+        className="border-b border-indigo-200 bg-gradient-to-b from-indigo-50 to-white px-4 py-3"
+        data-intel-search="3.2"
+      >
+        <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+          <label htmlFor={inputId} className="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-900">
+            Debate prep search
+          </label>
+          <div className="flex gap-2">
+            <input
+              id={inputId}
+              ref={inputRef}
+              type="search"
+              enterKeyHint="search"
+              autoComplete="off"
+              placeholder="Trap lanes · Hammer · SOS questions · claims · philosophy…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onFocus={() => setExpanded(true)}
+              className="min-h-12 flex-1 rounded-xl border-2 border-indigo-300 bg-white px-3 text-base text-kelly-text shadow-sm placeholder:text-kelly-subtle focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            />
+            <button
+              type="submit"
+              disabled={loadingGuide || !query.trim()}
+              className="min-h-12 shrink-0 rounded-xl bg-indigo-700 px-4 text-sm font-bold text-white disabled:opacity-40"
+            >
+              {loadingGuide ? "…" : "Go"}
+            </button>
+          </div>
+          <p className="text-[10px] text-indigo-800/80">
+            Ctrl+K anywhere · live hits as you type · Enter for AI reading order
+            {indexStatus?.openai ? " · semantic on" : ""}
+          </p>
+        </form>
+      </div>
+    ) : variant === "sidebar" ? (
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-        <label htmlFor={inputId} className="text-[9px] font-bold uppercase tracking-[0.16em] text-kelly-inverse-muted">
-          Debate prep search
+        <label htmlFor={inputId} className="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-300">
+          🔍 Debate prep search
         </label>
         <div className="flex gap-1.5">
           <input
@@ -336,17 +398,17 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onFocus={() => setExpanded(true)}
-            className="min-h-9 flex-1 rounded-md border border-[var(--border-on-navy)] bg-kelly-page/10 px-2.5 text-xs text-kelly-page placeholder:text-kelly-inverse-muted focus:border-emerald-300 focus:outline-none focus:ring-1 focus:ring-emerald-300/50"
+            className="min-h-10 flex-1 rounded-md border-2 border-emerald-400/70 bg-kelly-page/15 px-2.5 text-sm text-kelly-page placeholder:text-kelly-inverse-muted focus:border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-300/40"
           />
           <button
             type="submit"
             disabled={loadingGuide || !query.trim()}
-            className="min-h-9 shrink-0 rounded-md bg-emerald-600 px-2.5 text-[10px] font-bold text-white disabled:opacity-40"
+            className="min-h-10 shrink-0 rounded-md bg-emerald-500 px-3 text-[10px] font-bold text-white disabled:opacity-40"
           >
             {loadingGuide ? "…" : "Go"}
           </button>
         </div>
-        <p className="text-[9px] text-kelly-inverse-muted">Ctrl+K · live results · Enter for prep guide</p>
+        <p className="text-[9px] font-semibold text-emerald-200/90">Ctrl+K · live results · Enter for prep guide</p>
       </form>
     ) : variant === "bottom-nav" ? (
       <form onSubmit={handleSubmit} className="flex items-center gap-2 px-2 py-2">
@@ -727,10 +789,18 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
     </div>
   ) : null;
 
+  const showResultsPortal = listenOnOpen && expanded;
+
   return (
     <>
-      {variant === "bottom-nav" ? <div className="border-b border-kelly-text/10 bg-white/98">{formShell}</div> : formShell}
-      {typeof document !== "undefined" && resultsPanel ? createPortal(resultsPanel, document.body) : null}
+      {variant === "bottom-nav" || variant === "trigger-only" ? (
+        <div className="border-b border-kelly-text/10 bg-white/98">{formShell}</div>
+      ) : (
+        formShell
+      )}
+      {typeof document !== "undefined" && showResultsPortal && resultsPanel
+        ? createPortal(resultsPanel, document.body)
+        : null}
     </>
   );
 }

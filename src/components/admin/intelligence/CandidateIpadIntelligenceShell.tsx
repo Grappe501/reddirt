@@ -7,6 +7,7 @@ import { CandidateIpadSectionSheet } from "@/components/admin/intelligence/Candi
 import { CandidateIpadDrillPlayerBottomNavBridge } from "@/components/admin/intelligence/CandidateIpadDrillPlayerBottomNavBridge";
 import { IntelligenceAgentCopilotDock } from "@/components/admin/intelligence/IntelligenceAgentCopilotDock";
 import { IntelligencePrepSearchBar } from "@/components/admin/intelligence/IntelligencePrepSearchBar";
+import { IntelligencePrepSearchHeaderButton } from "@/components/admin/intelligence/IntelligencePrepSearchHeaderButton";
 import {
   CANDIDATE_IPAD_PROFILE,
 } from "@/lib/intelligence/candidateIpadMode";
@@ -46,7 +47,7 @@ export function CandidateIpadIntelligenceShell({ children }: { children: React.R
       className={`candidate-ipad-intel mx-auto min-h-[100dvh] max-w-[820px] bg-kelly-page ${
         drillPlayerActive
           ? "pb-[calc(5.5rem+env(safe-area-inset-bottom))]"
-          : "pb-[calc(7.5rem+env(safe-area-inset-bottom))]"
+          : "pb-[calc(6.5rem+env(safe-area-inset-bottom))]"
       }`}
       data-candidate-ipad="true"
       data-phase15-p7="true"
@@ -61,14 +62,19 @@ export function CandidateIpadIntelligenceShell({ children }: { children: React.R
             {drillPlayerActive ? "Drill player · Exit · Prev · Next · Timer" : "Five sections · verify before stage"}
           </p>
         </div>
-        <button
-          type="button"
-          onClick={() => setAgentOpen(true)}
-          className="min-h-11 rounded-lg border border-violet-300 bg-violet-50 px-3 text-[10px] font-bold text-violet-950"
-        >
-          AI prep
-        </button>
+        <div className="flex shrink-0 items-center gap-2">
+          <IntelligencePrepSearchHeaderButton />
+          <button
+            type="button"
+            onClick={() => setAgentOpen(true)}
+            className="min-h-11 rounded-lg border border-violet-300 bg-violet-50 px-3 text-[10px] font-bold text-violet-950"
+          >
+            AI prep
+          </button>
+        </div>
       </header>
+
+      <IntelligencePrepSearchBar variant="ipad-header" />
 
       <main className="candidate-ipad-main px-4 py-4 touch-manipulation [&_button]:min-h-12 [&_a.rounded-full]:inline-flex [&_a.rounded-full]:min-h-11 [&_a.rounded-full]:items-center">
         {children}
@@ -112,7 +118,7 @@ export function CandidateIpadIntelligenceShell({ children }: { children: React.R
           style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
           aria-label="Candidate iPad CCE navigation"
         >
-          <IntelligencePrepSearchBar variant="bottom-nav" />
+          <IntelligencePrepSearchBar variant="trigger-only" listenOnOpen={false} />
           <div className="grid grid-cols-5 gap-0">
             {tabs.map((tab) => {
               const active = activeSection === tab.sectionId || sheetSection === tab.sectionId;

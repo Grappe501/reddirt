@@ -6,6 +6,7 @@ import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { IntelligenceNavLink } from "@/components/admin/intelligence/IntelligenceNavLink";
 import { NavNewLinksBanner } from "@/components/admin/intelligence/NavNewLinksBanner";
 import { IntelligencePrepSearchBar } from "@/components/admin/intelligence/IntelligencePrepSearchBar";
+import { isCandidateIpadMode } from "@/lib/intelligence/candidateIpadMode";
 import {
   campaignOsNavHrefBase,
   resolveActiveCampaignOsNavHref,
@@ -24,6 +25,7 @@ export function IntelligenceLaunchBoardShell({
 }) {
   const path = currentPathname.split("?")[0] ?? "/admin/intelligence";
   const groups = buildThreeLaneNavGroups();
+  const candidateIpad = isCandidateIpadMode();
 
   return (
     <div className="flex min-h-screen bg-[var(--color-bg)] text-kelly-text">
@@ -36,7 +38,13 @@ export function IntelligenceLaunchBoardShell({
           </p>
         </div>
         <div className="border-b border-[var(--border-on-navy)] px-3 py-3">
-          <IntelligencePrepSearchBar variant="sidebar" />
+          {candidateIpad ? (
+            <p className="rounded-md border border-emerald-400/40 bg-emerald-500/10 px-2.5 py-2 text-[10px] font-semibold leading-relaxed text-emerald-100">
+              Search is in the main panel — indigo bar under the header, or tap Search · Ctrl+K
+            </p>
+          ) : (
+            <IntelligencePrepSearchBar variant="sidebar" />
+          )}
         </div>
         <div className="border-b border-[var(--border-on-navy)] px-2 py-2">
           <NavNewLinksBanner compact />
