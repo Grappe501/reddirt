@@ -2,33 +2,36 @@ import Link from "next/link";
 import { IntelligenceAgentCopilotDock } from "@/components/admin/intelligence/IntelligenceAgentCopilotDock";
 import { DebatePrepTutorClient } from "@/components/admin/intelligence/DebatePrepTutorClient";
 import { IntelligencePrepSearchBar } from "@/components/admin/intelligence/IntelligencePrepSearchBar";
-import { Phase18UpgradePassPanel } from "@/components/admin/intelligence/Phase18UpgradePassPanel";
+import { Phase19UpgradePassPanel } from "@/components/admin/intelligence/Phase19UpgradePassPanel";
+import { ShowcaseHeroBanner } from "@/components/admin/intelligence/v4/ProfessorSeminarShowcase";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
-import { computePhase18UpgradePass } from "@/lib/intelligence/v4/phase18SearchAiProfessorClosure";
+import { computePhase19UpgradePass } from "@/lib/intelligence/v4/phase19ProfessorShowcaseClosure";
+import { PROFESSOR_SHOWCASE_V6_VERSION } from "@/lib/intelligence/v4/debatePrepProfessorShowcaseV6";
 import { INTEL_SEARCH_V5_VERSION } from "@/lib/intelligence/intelligenceSearchV5";
 
 export const dynamic = "force-dynamic";
 
 export default function SearchAiPrepHubPage() {
-  const report = computePhase18UpgradePass();
+  const report = computePhase19UpgradePass();
 
   return (
     <div className="mx-auto max-w-4xl text-kelly-text">
       <V4PageHeader
-        eyebrow={`Intelligence · ${INTEL_SEARCH_V5_VERSION}`}
+        eyebrow={`Intelligence · ${INTEL_SEARCH_V5_VERSION} · ${PROFESSOR_SHOWCASE_V6_VERSION}`}
         title="Search & AI prep command hub"
-        description="Professor-level search briefs, collegiate debate tutor, SRE shortcuts, and governed AI tools — Kelly-safe, stage-aware, human review required."
+        description="The seminar room is open — professor showcase v6, cinematic search briefs, debate tutor, SRE shortcuts, and governed AI tools. Our last chance to impress before stage."
       >
         <V4BackLinks />
         <Link
-          href="/admin/intelligence/phase-18-upgrade"
-          className="rounded-full border border-violet-400 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950"
+          href="/admin/intelligence/phase-19-upgrade"
+          className="rounded-full border border-kelly-gold bg-kelly-navy px-3 py-1 text-xs font-bold text-white"
         >
-          Phase 18 upgrade pass
+          Phase 19 showcase pass
         </Link>
       </V4PageHeader>
 
-      <Phase18UpgradePassPanel report={report} compact />
+      <ShowcaseHeroBanner compact />
+      <Phase19UpgradePassPanel report={report} compact />
 
       <IntelligencePrepSearchBar variant="sticky" />
 

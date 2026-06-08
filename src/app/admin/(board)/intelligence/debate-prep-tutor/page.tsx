@@ -3,6 +3,8 @@ import { DebatePrepTutorClient } from "@/components/admin/intelligence/DebatePre
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { DEBATE_PREP_TUTOR_HUB_HREF } from "@/lib/intelligence/v4/debatePrepTutorPackage";
 import { DEBATE_PREP_TUTOR_V5_VERSION, TUTOR_HUB_WELCOME } from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
+import { ShowcaseHeroBanner } from "@/components/admin/intelligence/v4/ProfessorSeminarShowcase";
+import { PROFESSOR_SHOWCASE_V6_VERSION } from "@/lib/intelligence/v4/debatePrepProfessorShowcaseV6";
 
 export const dynamic = "force-dynamic";
 
@@ -10,8 +12,8 @@ export default function DebatePrepTutorPage() {
   return (
     <div className="mx-auto max-w-3xl text-kelly-text">
       <V4PageHeader
-        eyebrow={`Intelligence · ${DEBATE_PREP_TUTOR_V5_VERSION}`}
-        title="Debate prep coach"
+        eyebrow={`Intelligence · ${DEBATE_PREP_TUTOR_V5_VERSION} · ${PROFESSOR_SHOWCASE_V6_VERSION}`}
+        title="Debate prep seminar"
         description={TUTOR_HUB_WELCOME.intro}
       >
         <V4BackLinks />
@@ -29,6 +31,7 @@ export default function DebatePrepTutorPage() {
         </Link>
       </V4PageHeader>
 
+      <ShowcaseHeroBanner />
       <DebatePrepTutorClient />
 
       <section className="mt-8 rounded-xl border border-kelly-text/10 bg-white p-5 text-sm">

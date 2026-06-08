@@ -77,6 +77,7 @@ import { computePhase16P8UpgradePass } from "@/lib/intelligence/v4/phase16P8Clos
 import { computePhase16P9UpgradePass } from "@/lib/intelligence/v4/phase16P9Closure";
 import { computePhase17UpgradePass } from "@/lib/intelligence/v4/phase17SearchAiPrepClosure";
 import { computePhase18UpgradePass } from "@/lib/intelligence/v4/phase18SearchAiProfessorClosure";
+import { computePhase19UpgradePass } from "@/lib/intelligence/v4/phase19ProfessorShowcaseClosure";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -1151,6 +1152,21 @@ function computeIntelligenceBuildProgressCore(): IntelligenceBuildProgressReport
     href: "/admin/intelligence/phase-18-upgrade",
   });
 
+  const phase19Pass = computePhase19UpgradePass();
+  items.push({
+    id: "phase-19-professor-showcase-v6",
+    label: "Phase 19 — Professor showcase v6 cinematic",
+    category: "Candidate UX",
+    completionPct: phase19Pass.completionPct,
+    status: phase19Pass.completionPct >= 90 ? "complete" : phase19Pass.completionPct >= 75 ? "partial" : "flagged",
+    built: phase19Pass.progress.checkpointsAtBar,
+    total: phase19Pass.progress.checkpointTotal,
+    flags: [
+      `${phase19Pass.progress.checkpointsAtBar}/${phase19Pass.progress.checkpointTotal} checkpoints · ${phase19Pass.progress.version} · sandbox suite wired`,
+    ],
+    href: "/admin/intelligence/phase-19-upgrade",
+  });
+
   const phase16P9Pass = computePhase16P9UpgradePass();
   items.push({
     id: "phase-16-p9-sre-closure",
@@ -2192,11 +2208,28 @@ function computeIntelligenceBuildProgressCore(): IntelligenceBuildProgressReport
         "Nav release batch 2026-06-07-phase-18-search-ai-professor-v5",
       ],
     },
+    {
+      phase: 50,
+      name: "v19.0 — Phase 19 Professor showcase v6 cinematic",
+      targetVersion: "0.58.0",
+      goal: "Most memorable upgrade — navy-gold seminar hall, per-mode skins, cinematic lecture/rubric panels, search brief hero, full sandbox suite.",
+      items: [
+        "ProfessorSeminarShowcase chrome + ProfessorSearchBriefPanel",
+        "debatePrepProfessorShowcaseV6 mode skins + tailwind seminar animations",
+        "DebatePrepTutorClient v6-showcase integration",
+        "test-sandbox-intelligence-suite full debate/opps pass",
+      ],
+      exitCriteria: [
+        "test-phase19-professor-showcase green",
+        "test-sandbox-intelligence-suite green",
+        "Nav release batch 2026-06-08-phase-19-professor-showcase-v6",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v18.0-phase-18-search-ai-professor-v5",
+    version: "v19.0-phase-19-professor-showcase-v6",
     overallCompletionPct,
     items,
     phases,

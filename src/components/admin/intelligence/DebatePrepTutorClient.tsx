@@ -15,8 +15,20 @@ import {
   TUTOR_ELEMENT_GUIDES,
   TUTOR_HUB_WELCOME,
   TUTOR_TOOL_GUIDES,
-  type TutorModeGuide,
 } from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
+import {
+  COACH_SHOWCASE_SKIN,
+  getProfessorSkin,
+  PROFESSOR_SHOWCASE_SKINS,
+} from "@/lib/intelligence/v4/debatePrepProfessorShowcaseV6";
+import {
+  ShowcaseHeroBanner,
+  ShowcaseLecturePanel,
+  ShowcaseModeHero,
+  ShowcaseModePickerCard,
+  ShowcaseRubricPanel,
+  ShowcaseSessionTimeline,
+} from "@/components/admin/intelligence/v4/ProfessorSeminarShowcase";
 
 type CopilotOutput = {
   title: string;
@@ -41,71 +53,6 @@ const PROFESSOR_STYLES: Record<DebatePrepProfessorMode, string> = {
 
 function isProfessorSession(s: TutorSession | ProfessorTutorSession): s is ProfessorTutorSession {
   return "professorMode" in s && "lecture" in s;
-}
-
-function ModeGuideCard({
-  guide,
-  styleClass,
-  loading,
-  onPick,
-}: {
-  guide: TutorModeGuide;
-  styleClass: string;
-  loading: boolean;
-  onPick: () => void;
-}) {
-  const [expanded, setExpanded] = useState(false);
-  return (
-    <div className={`rounded-xl border-2 ${styleClass}`}>
-      <button
-        type="button"
-        disabled={loading}
-        onClick={onPick}
-        className="w-full p-4 text-left transition active:scale-[0.99] disabled:opacity-50"
-      >
-        <span className="block text-sm font-bold text-kelly-navy">{guide.label}</span>
-        <span className="mt-1 block text-xs font-medium text-kelly-text">{guide.tagline}</span>
-        <span className="mt-2 block rounded-full bg-white/70 px-2 py-0.5 text-[10px] font-bold text-kelly-navy">
-          Pick if: {guide.pickIf}
-        </span>
-      </button>
-      <button
-        type="button"
-        onClick={() => setExpanded((e) => !e)}
-        className="w-full border-t border-black/5 px-4 py-2 text-left text-[10px] font-bold uppercase tracking-wide text-kelly-subtle"
-      >
-        {expanded ? "Hide why & how" : "Why this mode · how to use it"}
-      </button>
-      {expanded ? (
-        <div className="space-y-3 border-t border-black/5 px-4 pb-4 text-xs text-kelly-muted">
-          <div>
-            <p className="font-bold text-kelly-navy">Why</p>
-            <p className="mt-1 leading-relaxed">{guide.whyThisMode}</p>
-          </div>
-          <div>
-            <p className="font-bold text-kelly-navy">When</p>
-            <p className="mt-1 leading-relaxed">{guide.whenToUse}</p>
-          </div>
-          <div>
-            <p className="font-bold text-kelly-navy">How it works</p>
-            <ol className="mt-1 list-inside list-decimal space-y-1">
-              {guide.howItWorks.map((step) => (
-                <li key={step.slice(0, 40)}>{step}</li>
-              ))}
-            </ol>
-          </div>
-          <div>
-            <p className="font-bold text-kelly-navy">You&apos;ll get</p>
-            <ul className="mt-1 list-inside list-disc">
-              {guide.whatYouWillGet.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      ) : null}
-    </div>
-  );
 }
 
 function ElementGuideCallout({ elementId }: { elementId: keyof typeof TUTOR_ELEMENT_GUIDES }) {
@@ -137,6 +84,9 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
   const [cmrBeats, setCmrBeats] = useState<
     { step: number; label: string; sayThis: string; doNot: string[] }[] | null
   >(null);
+  const [expandedMode, setExpandedMode] = useState<string | null>(null);
+  const isExpanded = (id: string) => expandedMode === id;
+  const toggleExpanded = (id: string) => setExpandedMode((prev) => (prev === id ? null : id));
 
   const startSession = useCallback(async (selected: DebatePrepTutorMode) => {
     setLoading(true);
@@ -282,124 +232,116 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
 
   if (!session) {
     return (
-      <section className={embedded ? "text-sm" : "rounded-xl border-2 border-emerald-300 bg-emerald-50/20 p-5"}>
-        <div className="mb-5 rounded-xl border border-emerald-200 bg-white p-4">
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-900">AI debate prep · v5 conversational</p>
-          <h2 className="mt-1 font-heading text-lg font-bold text-kelly-navy">{TUTOR_HUB_WELCOME.headline}</h2>
-          <p className="mt-2 text-sm leading-relaxed text-kelly-muted">{TUTOR_HUB_WELCOME.intro}</p>
-          <p className="mt-2 text-sm leading-relaxed text-kelly-text">{TUTOR_HUB_WELCOME.howToStart}</p>
-          <p className="mt-2 text-xs italic text-emerald-900">{TUTOR_HUB_WELCOME.reassurance}</p>
+      <section className={embedded ? "space-y-5 text-sm" : "space-y-6 rounded-2xl border-2 border-kelly-gold/30 bg-gradient-to-b from-violet-50/30 to-white p-5 sm:p-6"}>
+        <ShowcaseHeroBanner compact={embedded} />
+
+        <div className="rounded-xl border border-violet-200 bg-white/80 p-4">
+          <p className="text-sm leading-relaxed text-kelly-text">{TUTOR_HUB_WELCOME.intro}</p>
+          <p className="mt-2 text-sm font-medium text-kelly-navy">{TUTOR_HUB_WELCOME.howToStart}</p>
         </div>
 
-        <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-violet-900">Professor modes — want the why, not just lines?</p>
-        <div className="mb-4 grid gap-3 sm:grid-cols-2">
-          {(Object.keys(PROFESSOR_MODE_GUIDES) as DebatePrepProfessorMode[]).map((id) => (
-            <ModeGuideCard
-              key={id}
-              guide={PROFESSOR_MODE_GUIDES[id]}
-              styleClass={PROFESSOR_STYLES[id]}
-              loading={loading}
-              onPick={() => void startProfessorSession(id)}
-            />
-          ))}
+        <div>
+          <p className="mb-3 font-heading text-sm font-bold uppercase tracking-wider text-kelly-navy">Professor seminar modes</p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {(Object.keys(PROFESSOR_MODE_GUIDES) as DebatePrepProfessorMode[]).map((id) => {
+              const guide = PROFESSOR_MODE_GUIDES[id];
+              const skin = PROFESSOR_SHOWCASE_SKINS[id];
+              return (
+                <ShowcaseModePickerCard
+                  key={id}
+                  skin={skin}
+                  label={guide.label}
+                  tagline={guide.tagline}
+                  pickIf={guide.pickIf}
+                  expanded={isExpanded(id)}
+                  onToggle={() => toggleExpanded(id)}
+                  onPick={() => void startProfessorSession(id)}
+                  loading={loading}
+                  why={guide.whyThisMode}
+                  when={guide.whenToUse}
+                  how={guide.howItWorks}
+                  deliverables={guide.whatYouWillGet}
+                />
+              );
+            })}
+          </div>
         </div>
 
-        <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-emerald-900">Coach modes — match your clock</p>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {(Object.keys(COACH_MODE_GUIDES) as DebatePrepTutorMode[]).map((id) => (
-            <ModeGuideCard
-              key={id}
-              guide={COACH_MODE_GUIDES[id]}
-              styleClass={MODE_STYLES[id]}
-              loading={loading}
-              onPick={() => void startSession(id)}
-            />
-          ))}
+        <div>
+          <p className="mb-3 font-heading text-sm font-bold uppercase tracking-wider text-emerald-900">Green room coach modes</p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {(Object.keys(COACH_MODE_GUIDES) as DebatePrepTutorMode[]).map((id) => {
+              const guide = COACH_MODE_GUIDES[id];
+              return (
+                <ShowcaseModePickerCard
+                  key={id}
+                  skin={{ ...COACH_SHOWCASE_SKIN, cardBorder: MODE_STYLES[id].split(" ")[0] ?? COACH_SHOWCASE_SKIN.cardBorder }}
+                  label={guide.label}
+                  tagline={guide.tagline}
+                  pickIf={guide.pickIf}
+                  expanded={isExpanded(`coach-${id}`)}
+                  onToggle={() => toggleExpanded(`coach-${id}`)}
+                  onPick={() => void startSession(id)}
+                  loading={loading}
+                  why={guide.whyThisMode}
+                  when={guide.whenToUse}
+                  how={guide.howItWorks}
+                  deliverables={guide.whatYouWillGet}
+                />
+              );
+            })}
+          </div>
         </div>
-        {error ? <p className="mt-3 font-bold text-rose-900">{error}</p> : null}
+        {error ? <p className="font-bold text-rose-900">{error}</p> : null}
       </section>
     );
   }
 
   return (
-    <section className="space-y-4 text-sm" data-debate-prep-tutor="v5-conversational">
-      <div
-        className={`rounded-xl border-2 p-4 ${
+    <section className="space-y-5 text-sm" data-debate-prep-tutor="v6-showcase">
+      {(() => {
+        const skin =
           isProfessorSession(session) && professorMode
-            ? PROFESSOR_STYLES[professorMode]
-            : MODE_STYLES[session.mode]
-        }`}
-      >
-        <div className="flex flex-wrap items-start justify-between gap-2">
-          <div>
-            <p className="text-[10px] font-bold uppercase text-kelly-subtle">{session.config.label}</p>
-            <h2 className="font-heading text-lg font-bold text-kelly-navy">{session.modeGuide.tagline}</h2>
-            <p className="mt-2 leading-relaxed text-kelly-text">{session.openingCoachMessage}</p>
-            <p className="mt-2 text-xs text-kelly-muted">
-              <span className="font-bold text-kelly-navy">Why this mode: </span>
-              {session.modeGuide.whyThisMode}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => {
-              setSession(null);
-              setMode(null);
-              setProfessorMode(null);
-            }}
-            className="min-h-10 rounded-lg border px-3 text-xs font-bold"
-          >
-            Change mode
-          </button>
-        </div>
-        {session.panicReminder ? (
-          <p className="mt-3 rounded-lg border border-rose-300 bg-white p-3 text-xs font-semibold text-rose-950">
-            {session.panicReminder}
-          </p>
-        ) : null}
-      </div>
-
-      <div className="rounded-xl border border-emerald-200 bg-emerald-50/30 p-4">
-        <p className="text-[10px] font-bold uppercase text-emerald-900">Your path tonight — follow in order</p>
-        <ol className="mt-2 space-y-3">
-          {session.sessionFlow.map((step) => (
-            <li key={step.step} className="rounded-lg border border-emerald-100 bg-white p-3">
-              <p className="text-xs font-bold text-kelly-navy">
-                {step.step}. {step.label}
+            ? getProfessorSkin(professorMode)
+            : COACH_SHOWCASE_SKIN;
+        return (
+          <>
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="min-w-0 flex-1">
+                <ShowcaseModeHero skin={skin} tagline={session.modeGuide.tagline} pickIf={session.modeGuide.pickIf}>
+                  <p className="mt-4 text-sm leading-relaxed text-inherit opacity-90">{session.openingCoachMessage}</p>
+                </ShowcaseModeHero>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setSession(null);
+                  setMode(null);
+                  setProfessorMode(null);
+                }}
+                className="shrink-0 min-h-11 rounded-xl border-2 border-kelly-navy/20 bg-white px-4 text-xs font-bold text-kelly-navy shadow-sm hover:bg-kelly-page"
+              >
+                ← Change mode
+              </button>
+            </div>
+            {session.panicReminder ? (
+              <p className="animate-moot-pulse rounded-xl border-2 border-rose-400 bg-rose-50 p-4 text-sm font-semibold text-rose-950">
+                {session.panicReminder}
               </p>
-              <p className="mt-1 text-sm leading-relaxed text-kelly-text">{step.instruction}</p>
-              <p className="mt-1 text-[10px] italic text-kelly-subtle">Why: {step.why}</p>
-            </li>
-          ))}
-        </ol>
-      </div>
+            ) : null}
+            <ShowcaseSessionTimeline steps={session.sessionFlow} skin={skin} />
+          </>
+        );
+      })()}
 
       {isProfessorSession(session) ? (
-        <div className="rounded-xl border border-violet-200 bg-violet-50/40 p-4">
-          <p className="text-[10px] font-bold uppercase text-violet-900">Professor lecture · {session.lecture.title}</p>
-          <ElementGuideCallout elementId="professor-lecture" />
-          <p className="mt-2 text-sm font-bold text-violet-950">{session.lecture.thesis}</p>
-          {session.lecture.sections.map((sec) => (
-            <div key={sec.heading} className="mt-3">
-              <p className="text-xs font-bold text-violet-900">{sec.heading}</p>
-              <ul className="mt-1 list-inside list-disc text-xs text-violet-950">
-                {sec.bullets.map((b) => (
-                  <li key={b.slice(0, 48)}>{b}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-          {session.lecture.socraticWarmup.length > 0 ? (
-            <div className="mt-3">
-              <p className="text-[10px] font-bold uppercase text-violet-800">Socratic warmup</p>
-              <ul className="mt-1 space-y-1 text-xs italic text-violet-900">
-                {session.lecture.socraticWarmup.map((q) => (
-                  <li key={q.slice(0, 48)}>? {q}</li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-        </div>
+        <ShowcaseLecturePanel
+          title={session.lecture.title}
+          thesis={session.lecture.thesis}
+          sections={session.lecture.sections}
+          socratic={session.lecture.socraticWarmup}
+          skin={getProfessorSkin(session.professorMode)}
+        />
       ) : null}
 
       {session.sequenceSteps.length > 0 ? (
@@ -576,29 +518,13 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
       ) : null}
 
       {professorCritique ? (
-        <article className="rounded-xl border-2 border-violet-400 bg-violet-50 p-4">
-          <ElementGuideCallout elementId="rubric" />
-          <p className="text-[10px] font-bold uppercase text-violet-900">
-            Professor rubric · {professorCritique.rubric.overall}/100
-          </p>
-          <p className="mt-1 font-bold text-kelly-navy">{professorCritique.rubric.professorVerdict}</p>
-          <ul className="mt-3 space-y-2">
-            {professorCritique.rubric.grades.map((g) => (
-              <li key={g.dimension} className="rounded-lg border border-violet-200 bg-white p-2 text-xs">
-                <span className="font-bold text-violet-950">{g.label}</span>
-                <span className="ml-2 font-bold text-violet-700">{g.score}</span>
-                <p className="mt-0.5 text-kelly-muted">{g.note}</p>
-              </li>
-            ))}
-          </ul>
-          {professorCritique.mootChallenge ? (
-            <div className="mt-3 rounded-lg border border-fuchsia-300 bg-fuchsia-50 p-3 text-xs text-fuchsia-950">
-              <p className="font-bold uppercase">Moot cross-examination</p>
-              <p className="mt-1">{professorCritique.mootChallenge}</p>
-            </div>
-          ) : null}
-          <p className="mt-2 text-xs font-bold text-kelly-navy">{professorCritique.tutorCritique.headline}</p>
-        </article>
+        <ShowcaseRubricPanel
+          overall={professorCritique.rubric.overall}
+          verdict={professorCritique.rubric.professorVerdict}
+          grades={professorCritique.rubric.grades.map((g) => ({ label: g.label, score: g.score, note: g.note }))}
+          mootChallenge={professorCritique.mootChallenge}
+          headline={professorCritique.tutorCritique.headline}
+        />
       ) : null}
 
       {critique ? (

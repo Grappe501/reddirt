@@ -8,6 +8,7 @@ import type { IntelSearchSmartBrief } from "@/lib/intelligence/intelligenceSmart
 import type { AiPrepToolRecommendation } from "@/lib/intelligence/intelligenceAiPrepV4";
 import type { SreShortcut } from "@/lib/intelligence/intelligenceSearchV4";
 import type { IntelProfessorBrief } from "@/lib/intelligence/intelligenceProfessorBrief";
+import { ProfessorSearchBriefPanel } from "@/components/admin/intelligence/v4/ProfessorSearchBriefPanel";
 import { highlightIntelMatches, tokenizeIntelQuery } from "@/lib/intelligence/intelligenceSearchCore";
 import { openIntelPrepSearch, subscribeIntelPrepSearchOpen } from "@/lib/intelligence/intelligencePrepSearchOpen";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
@@ -533,7 +534,7 @@ export function IntelligencePrepSearchBar({
       >
         <div className="flex items-center justify-between border-b border-kelly-text/10 px-4 py-3">
           <div>
-            <p className="text-sm font-bold text-kelly-navy">Smart prep search v5 · professor</p>
+            <p className="text-sm font-bold text-kelly-navy">Smart prep search · professor showcase v6</p>
             <p className="text-[10px] text-kelly-subtle">
               {indexStatus
                 ? `${indexStatus.corpusTotal.toLocaleString()} docs · seminar briefs · Socratic drill`
@@ -651,68 +652,13 @@ export function IntelligencePrepSearchBar({
               Professor lens · evidence tiers · Socratic questions · seminar reading list…
             </p>
           ) : null}
-          {professorLens && !loadingGuide ? (
-            <div className="rounded-xl border border-violet-200 bg-violet-50/60 p-3 text-xs text-violet-950">
-              <p className="text-[10px] font-bold uppercase text-violet-800">Professor lens</p>
-              <p className="mt-1">{professorLens.academicFrame}</p>
-              <p className="mt-1 text-violet-800">{professorLens.debateDiscipline}</p>
-              <p className="mt-1 font-semibold">Depth: {professorLens.recommendedDepth}</p>
-            </div>
-          ) : null}
           {professorBrief && !loadingGuide ? (
-            <div className="rounded-xl border-2 border-violet-300 bg-gradient-to-br from-violet-50 to-white p-4">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-violet-800">Professor brief</p>
-              <p className="mt-2 text-sm font-bold text-violet-950">{professorBrief.thesis}</p>
-              {professorBrief.lectureOutline.map((sec) => (
-                <div key={sec.section} className="mt-3">
-                  <p className="text-xs font-bold text-violet-900">{sec.section}</p>
-                  <ul className="mt-1 list-inside list-disc text-xs text-violet-950">
-                    {sec.points.map((pt) => (
-                      <li key={pt.slice(0, 40)}>{pt}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-              {professorBrief.socraticQuestions.length > 0 ? (
-                <div className="mt-3">
-                  <p className="text-[10px] font-bold uppercase text-violet-800">Socratic warmup</p>
-                  <ul className="mt-1 space-y-1 text-xs italic text-violet-900">
-                    {professorBrief.socraticQuestions.map((q) => (
-                      <li key={q.slice(0, 48)}>? {q}</li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-              {professorBrief.seminarReadingList.length > 0 ? (
-                <div className="mt-3">
-                  <p className="text-[10px] font-bold uppercase text-violet-800">Assigned reading</p>
-                  <ol className="mt-1 space-y-1.5">
-                    {professorBrief.seminarReadingList.map((item, i) => (
-                      <li key={`${item.href}-${i}`}>
-                        <Link
-                          href={item.href}
-                          onClick={() => setExpanded(false)}
-                          className="block rounded-lg border border-violet-200 bg-white p-2 hover:bg-violet-50"
-                        >
-                          <p className="text-sm font-bold text-violet-950">{item.title}</p>
-                          <p className="text-[10px] text-violet-800">{item.professorNote}</p>
-                        </Link>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              ) : null}
-              <p className="mt-3 text-xs text-violet-900">{professorBrief.stageApplication}</p>
-              {tutorHref ? (
-                <Link
-                  href={tutorHref}
-                  onClick={() => setExpanded(false)}
-                  className="mt-3 inline-flex rounded-lg bg-violet-700 px-3 py-2 text-xs font-bold text-white"
-                >
-                  Open debate prep professor →
-                </Link>
-              ) : null}
-            </div>
+            <ProfessorSearchBriefPanel
+              brief={professorBrief}
+              lens={professorLens}
+              tutorHref={tutorHref}
+              onNavigate={() => setExpanded(false)}
+            />
           ) : null}
           {smart?.openFirstHref && smart.openFirstTitle && !loadingGuide ? (
             <Link
