@@ -5,17 +5,18 @@ import { isDatabaseConfigured } from "@/lib/env";
 import { prisma } from "@/lib/db";
 import { isOpenAIConfigured } from "@/lib/openai/client";
 import { countIntelSearchCorpus } from "@/lib/intelligence/intelligenceSearchCorpus";
-import { INTEL_SEARCH_SUGGESTIONS_V4 } from "@/lib/intelligence/intelligenceSearchCore";
+import { INTEL_SEARCH_SUGGESTIONS_V5 } from "@/lib/intelligence/intelligenceSearchCore";
 import {
-  INTEL_SEARCH_V4_VERSION,
-  runIntelligenceSearchV4,
+  INTEL_SEARCH_V5_VERSION,
+  runIntelligenceSearchV5,
   getProfileSearchSuggestions,
-} from "@/lib/intelligence/intelligenceSearchV4";
+} from "@/lib/intelligence/intelligenceSearchV5";
 import { buildTonightPrepStack } from "@/lib/intelligence/intelligenceTonightStack";
 import { recordIntelSearchEvent, summarizeIntelSearchGaps } from "@/lib/intelligence/intelligenceSearchAnalytics";
 import { loadIntelligencePrepSearchChunks } from "@/lib/intelligence/intelligenceSearchIngestChunks";
 import { resolveIntelligenceNavProfileServer } from "@/lib/intelligence/v4/roleBasedNavProfile";
 import { countRegisteredCopilotTools } from "@/lib/intelligence/intelligenceAiPrepV4";
+import { DEBATE_PREP_PROFESSOR_HUB_HREF } from "@/lib/intelligence/v4/debatePrepProfessorV5";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
@@ -24,7 +25,8 @@ const bodySchema = z.object({
   query: z.string().min(1).max(500),
   includeAnswer: z.boolean().optional(),
   includeBrief: z.boolean().optional(),
-  mode: z.enum(["smart", "quick"]).optional(),
+  includeProfessorBrief: z.boolean().optional(),
+  mode: z.enum(["smart", "quick", "professor"]).optional(),
   profile: z.enum(["CANDIDATE", "STAFF", "CLERK_WEEK"]).optional(),
 });
 
@@ -48,7 +50,7 @@ export async function GET() {
   return NextResponse.json({
     ok: true,
     route: "admin-intelligence-search",
-    version: INTEL_SEARCH_V4_VERSION,
+    version: INTEL_SEARCH_V5_VERSION,
     database: isDatabaseConfigured(),
     chunkCount,
     openai: isOpenAIConfigured(),
@@ -71,11 +73,17 @@ export async function GET() {
       byKind: meta.byKind,
     },
     suggestions: getProfileSearchSuggestions(profile),
-    defaultSuggestions: [...INTEL_SEARCH_SUGGESTIONS_V4],
+    professorSuggestions: [...INTEL_SEARCH_SUGGESTIONS_V5],
     tonightStack: buildTonightPrepStack(),
     ingestPending: loadIntelligencePrepSearchChunks().length,
     gaps: summarizeIntelSearchGaps(),
+    tutorHref: DEBATE_PREP_PROFESSOR_HUB_HREF,
     features: [
+      "smart_v5_professor_brief",
+      "collegiate_seminar_reading_list",
+      "socratic_search_questions",
+      "evidence_tier_lecture",
+      "professor_lens_analysis",
       "smart_v4_unified_corpus",
       "sre_rehearsal_stack_indexed",
       "copilot_tool_registry_indexed",
@@ -83,18 +91,12 @@ export async function GET() {
       "reciprocal_rank_fusion",
       "semantic_rerank",
       "stage_safe_brief",
-      "reading_order",
-      "follow_up_queries",
-      "tonight_stack",
       "copilot_recommendations",
       "sre_shortcuts",
       "profile_aware_suggestions",
-      "intelligence_prep_ingest",
+      "debate_prep_professor_v2",
       "search_analytics",
       "claims_gate_policy",
-      "full_body_ai_context",
-      "did_you_mean",
-      "search_ai_prep_bridge",
     ],
   });
 }
@@ -121,16 +123,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "validation", message: "`query` required" }, { status: 400 });
   }
 
-  const { query, includeAnswer, includeBrief, mode, profile } = parsed.data;
-  const wantBrief = includeBrief ?? includeAnswer ?? false;
+  const { query, includeAnswer, includeBrief, includeProfessorBrief, mode, profile } = parsed.data;
+  const searchMode = mode ?? "smart";
+  const wantProfessor = includeProfessorBrief ?? searchMode === "professor";
+  const wantBrief = includeBrief ?? includeAnswer ?? wantProfessor;
   const resolvedProfile = profile ?? resolveIntelligenceNavProfileServer();
 
   try {
-    const payload = await runIntelligenceSearchV4({
+    const payload = await runIntelligenceSearchV5({
       query,
       profile: resolvedProfile,
-      mode: mode ?? "smart",
+      searchMode,
+      mode: searchMode === "professor" ? "smart" : searchMode,
       includeBrief: wantBrief,
+      includeProfessorBrief: wantProfessor,
       limit: 24,
     });
 
@@ -139,7 +145,7 @@ export async function POST(req: Request) {
       resultCount: payload.results.length,
       intent: payload.analysis?.intent,
       urgency: payload.analysis?.urgency,
-      mode: mode ?? "smart",
+      mode: searchMode,
       rewrittenQueries: payload.analysis?.rewrittenQueries,
     });
 
@@ -148,11 +154,14 @@ export async function POST(req: Request) {
       version: payload.version,
       results: payload.results,
       smart: payload.smart,
-      answer: payload.smart?.brief ?? null,
+      professorBrief: payload.professorBrief,
+      professorLens: payload.professorLens,
+      answer: payload.professorBrief?.thesis ?? payload.smart?.brief ?? null,
       didYouMean: payload.didYouMean,
       copilotRecommendations: payload.copilotRecommendations,
       sreShortcuts: payload.sreShortcuts,
       profileSuggestions: payload.profileSuggestions,
+      tutorHref: payload.tutorHref,
       tonightStack: payload.results.length === 0 ? buildTonightPrepStack() : undefined,
       analysis: payload.analysis,
       corpus: payload.corpusCounts,

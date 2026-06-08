@@ -7,7 +7,13 @@ import {
   critiqueTutorPracticeAnswer,
   generateSocraticCoachMessage,
 } from "@/lib/intelligence/v4/debatePrepTutorOrchestrator";
+import {
+  buildProfessorTutorSession,
+  critiqueProfessorPracticeAnswer,
+  DEBATE_PREP_TUTOR_V2_VERSION,
+} from "@/lib/intelligence/v4/debatePrepProfessorOrchestrator";
 import { listTutorModes } from "@/lib/intelligence/v4/debatePrepTutorPackage";
+import { listProfessorModes } from "@/lib/intelligence/v4/debatePrepProfessorV5";
 import { getDrillQueueCards, resolveDrillQueueId } from "@/lib/intelligence/v4/phase16P3DrillQueue";
 import { runCopilotWithLlmDraftQueue } from "@/lib/intelligence/aiCopilotOrchestrator";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
@@ -20,12 +26,27 @@ const startSchema = z.object({
   mode: z.enum(["panic-5", "tonight-15", "deep-30", "check-my-record", "three-way-panel"]),
 });
 
+const professorStartSchema = z.object({
+  action: z.literal("start-professor-session"),
+  mode: z.enum(["office-hours-10", "seminar-25", "moot-court-45", "forensic-audit"]),
+  topic: z.string().optional(),
+});
+
 const critiqueSchema = z.object({
   action: z.literal("critique-answer"),
   cardId: z.string().min(1),
   queueId: z.string().optional(),
   practiceAnswer: z.string().min(5).max(3000),
   topic: z.string().optional(),
+});
+
+const professorCritiqueSchema = z.object({
+  action: z.literal("critique-professor-answer"),
+  cardId: z.string().min(1),
+  queueId: z.string().optional(),
+  practiceAnswer: z.string().min(5).max(3000),
+  topic: z.string().optional(),
+  moot: z.boolean().optional(),
 });
 
 const coachSchema = z.object({
@@ -44,10 +65,13 @@ const toolSchema = z.object({
 
 const bodySchema = z.discriminatedUnion("action", [
   startSchema,
+  professorStartSchema,
   critiqueSchema,
+  professorCritiqueSchema,
   coachSchema,
   toolSchema,
   z.object({ action: z.literal("list-modes") }),
+  z.object({ action: z.literal("list-professor-modes") }),
   z.object({ action: z.literal("check-my-record-content") }),
 ]);
 
@@ -63,8 +87,10 @@ export async function GET() {
   return NextResponse.json({
     ok: true,
     route: "debate-prep-tutor",
-    version: "tutor-v1.0",
+    version: DEBATE_PREP_TUTOR_V2_VERSION,
+    legacyVersion: "tutor-v1.0",
     modes: listTutorModes(),
+    professorModes: listProfessorModes(),
     governance: "NON_PUBLISHABLE · HUMAN_REVIEW · stage-safe gates enforced",
   });
 }
@@ -98,12 +124,21 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: true, modes: listTutorModes() });
     }
 
+    if (body.action === "list-professor-modes") {
+      return NextResponse.json({ ok: true, professorModes: listProfessorModes() });
+    }
+
     if (body.action === "check-my-record-content") {
       return NextResponse.json({ ok: true, content: buildCheckMyRecordTutorContent() });
     }
 
     if (body.action === "start-session") {
       const session = buildDebatePrepTutorSession(body.mode);
+      return NextResponse.json({ ok: true, session });
+    }
+
+    if (body.action === "start-professor-session") {
+      const session = buildProfessorTutorSession(body.mode, body.topic ?? "debate prep");
       return NextResponse.json({ ok: true, session });
     }
 
@@ -122,6 +157,18 @@ export async function POST(req: Request) {
         return NextResponse.json({ ok: false, error: "card_not_found" }, { status: 404 });
       }
       const critique = await critiqueTutorPracticeAnswer(card, body.practiceAnswer, body.topic);
+      return NextResponse.json({ ok: true, critique, cardId: body.cardId });
+    }
+
+    if (body.action === "critique-professor-answer") {
+      const card = findCard(body.cardId, body.queueId);
+      if (!card) {
+        return NextResponse.json({ ok: false, error: "card_not_found" }, { status: 404 });
+      }
+      const critique = await critiqueProfessorPracticeAnswer(card, body.practiceAnswer, {
+        moot: body.moot,
+        topic: body.topic,
+      });
       return NextResponse.json({ ok: true, critique, cardId: body.cardId });
     }
 

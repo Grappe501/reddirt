@@ -7,6 +7,7 @@ import type { CandidateIntelSearchKind, CandidateIntelSearchResult, IntelStageSa
 import type { IntelSearchSmartBrief } from "@/lib/intelligence/intelligenceSmartSearch";
 import type { AiPrepToolRecommendation } from "@/lib/intelligence/intelligenceAiPrepV4";
 import type { SreShortcut } from "@/lib/intelligence/intelligenceSearchV4";
+import type { IntelProfessorBrief } from "@/lib/intelligence/intelligenceProfessorBrief";
 import { highlightIntelMatches, tokenizeIntelQuery } from "@/lib/intelligence/intelligenceSearchCore";
 import { openIntelPrepSearch, subscribeIntelPrepSearchOpen } from "@/lib/intelligence/intelligencePrepSearchOpen";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
@@ -152,6 +153,13 @@ export function IntelligencePrepSearchBar({
   const [didYouMean, setDidYouMean] = useState<string[]>([]);
   const [copilotRecs, setCopilotRecs] = useState<AiPrepToolRecommendation[]>([]);
   const [sreShortcuts, setSreShortcuts] = useState<SreShortcut[]>([]);
+  const [professorBrief, setProfessorBrief] = useState<IntelProfessorBrief | null>(null);
+  const [professorLens, setProfessorLens] = useState<{
+    academicFrame: string;
+    debateDiscipline: string;
+    recommendedDepth: "survey" | "seminar" | "moot";
+  } | null>(null);
+  const [tutorHref, setTutorHref] = useState<string | null>(null);
   const navProfile = resolveIntelligenceNavProfileClient(isCountyClerkPrimaryAudience());
 
   const grouped = useMemo(() => groupResults(results), [results]);
@@ -230,6 +238,8 @@ export function IntelligencePrepSearchBar({
       setError(null);
       if (withGuide) {
         setSmart(null);
+        setProfessorBrief(null);
+        setProfessorLens(null);
         setDidYouMean([]);
       }
       setSearched(true);
@@ -241,7 +251,8 @@ export function IntelligencePrepSearchBar({
           body: JSON.stringify({
             query: trimmed,
             includeBrief: withGuide,
-            mode: "smart",
+            includeProfessorBrief: withGuide,
+            mode: withGuide ? "professor" : "smart",
             profile: navProfile,
           }),
         });
@@ -249,6 +260,9 @@ export function IntelligencePrepSearchBar({
           ok?: boolean;
           results?: CandidateIntelSearchResult[];
           smart?: IntelSearchSmartBrief | null;
+          professorBrief?: IntelProfessorBrief | null;
+          professorLens?: typeof professorLens;
+          tutorHref?: string;
           didYouMean?: string[];
           copilotRecommendations?: AiPrepToolRecommendation[];
           sreShortcuts?: SreShortcut[];
@@ -265,6 +279,9 @@ export function IntelligencePrepSearchBar({
         setSreShortcuts(json.sreShortcuts ?? []);
         if (withGuide) {
           setSmart(json.smart ?? null);
+          setProfessorBrief(json.professorBrief ?? null);
+          setProfessorLens(json.professorLens ?? null);
+          setTutorHref(json.tutorHref ?? null);
           setDidYouMean(json.didYouMean ?? []);
         }
       } catch {
@@ -516,10 +533,10 @@ export function IntelligencePrepSearchBar({
       >
         <div className="flex items-center justify-between border-b border-kelly-text/10 px-4 py-3">
           <div>
-            <p className="text-sm font-bold text-kelly-navy">Smart prep search v4</p>
+            <p className="text-sm font-bold text-kelly-navy">Smart prep search v5 · professor</p>
             <p className="text-[10px] text-kelly-subtle">
               {indexStatus
-                ? `${indexStatus.corpusTotal.toLocaleString()} docs · AI multi-query · stage-safe briefs`
+                ? `${indexStatus.corpusTotal.toLocaleString()} docs · seminar briefs · Socratic drill`
                 : "Admin intelligence only"}
               {indexStatus?.openai ? " · GPT on" : " · keyword only"}
             </p>
@@ -631,8 +648,71 @@ export function IntelligencePrepSearchBar({
           ) : null}
           {loadingGuide ? (
             <p className="text-xs text-indigo-700" role="status">
-              AI rewriting query · fusing trap lanes + SOS + claims · drafting reading order…
+              Professor lens · evidence tiers · Socratic questions · seminar reading list…
             </p>
+          ) : null}
+          {professorLens && !loadingGuide ? (
+            <div className="rounded-xl border border-violet-200 bg-violet-50/60 p-3 text-xs text-violet-950">
+              <p className="text-[10px] font-bold uppercase text-violet-800">Professor lens</p>
+              <p className="mt-1">{professorLens.academicFrame}</p>
+              <p className="mt-1 text-violet-800">{professorLens.debateDiscipline}</p>
+              <p className="mt-1 font-semibold">Depth: {professorLens.recommendedDepth}</p>
+            </div>
+          ) : null}
+          {professorBrief && !loadingGuide ? (
+            <div className="rounded-xl border-2 border-violet-300 bg-gradient-to-br from-violet-50 to-white p-4">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-violet-800">Professor brief</p>
+              <p className="mt-2 text-sm font-bold text-violet-950">{professorBrief.thesis}</p>
+              {professorBrief.lectureOutline.map((sec) => (
+                <div key={sec.section} className="mt-3">
+                  <p className="text-xs font-bold text-violet-900">{sec.section}</p>
+                  <ul className="mt-1 list-inside list-disc text-xs text-violet-950">
+                    {sec.points.map((pt) => (
+                      <li key={pt.slice(0, 40)}>{pt}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+              {professorBrief.socraticQuestions.length > 0 ? (
+                <div className="mt-3">
+                  <p className="text-[10px] font-bold uppercase text-violet-800">Socratic warmup</p>
+                  <ul className="mt-1 space-y-1 text-xs italic text-violet-900">
+                    {professorBrief.socraticQuestions.map((q) => (
+                      <li key={q.slice(0, 48)}>? {q}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              {professorBrief.seminarReadingList.length > 0 ? (
+                <div className="mt-3">
+                  <p className="text-[10px] font-bold uppercase text-violet-800">Assigned reading</p>
+                  <ol className="mt-1 space-y-1.5">
+                    {professorBrief.seminarReadingList.map((item, i) => (
+                      <li key={`${item.href}-${i}`}>
+                        <Link
+                          href={item.href}
+                          onClick={() => setExpanded(false)}
+                          className="block rounded-lg border border-violet-200 bg-white p-2 hover:bg-violet-50"
+                        >
+                          <p className="text-sm font-bold text-violet-950">{item.title}</p>
+                          <p className="text-[10px] text-violet-800">{item.professorNote}</p>
+                        </Link>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              ) : null}
+              <p className="mt-3 text-xs text-violet-900">{professorBrief.stageApplication}</p>
+              {tutorHref ? (
+                <Link
+                  href={tutorHref}
+                  onClick={() => setExpanded(false)}
+                  className="mt-3 inline-flex rounded-lg bg-violet-700 px-3 py-2 text-xs font-bold text-white"
+                >
+                  Open debate prep professor →
+                </Link>
+              ) : null}
+            </div>
           ) : null}
           {smart?.openFirstHref && smart.openFirstTitle && !loadingGuide ? (
             <Link

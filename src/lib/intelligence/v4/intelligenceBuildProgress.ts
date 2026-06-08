@@ -76,6 +76,7 @@ import { computePhase16P7UpgradePass } from "@/lib/intelligence/v4/phase16P7Clos
 import { computePhase16P8UpgradePass } from "@/lib/intelligence/v4/phase16P8Closure";
 import { computePhase16P9UpgradePass } from "@/lib/intelligence/v4/phase16P9Closure";
 import { computePhase17UpgradePass } from "@/lib/intelligence/v4/phase17SearchAiPrepClosure";
+import { computePhase18UpgradePass } from "@/lib/intelligence/v4/phase18SearchAiProfessorClosure";
 import { getThreeLaneNavLinkAuditRoutes } from "@/lib/intelligence/v4/threeLaneNav";
 
 export type BuildProgressItem = {
@@ -1135,6 +1136,21 @@ function computeIntelligenceBuildProgressCore(): IntelligenceBuildProgressReport
     href: "/admin/intelligence/phase-17-upgrade",
   });
 
+  const phase18Pass = computePhase18UpgradePass();
+  items.push({
+    id: "phase-18-search-ai-professor-v5",
+    label: "Phase 18 — Search v5 + professor tutor v2",
+    category: "Candidate UX",
+    completionPct: phase18Pass.completionPct,
+    status: phase18Pass.completionPct >= 90 ? "complete" : phase18Pass.completionPct >= 75 ? "partial" : "flagged",
+    built: phase18Pass.progress.checkpointsAtBar,
+    total: phase18Pass.progress.checkpointTotal,
+    flags: [
+      `${phase18Pass.progress.checkpointsAtBar}/${phase18Pass.progress.checkpointTotal} checkpoints · professor modes ${phase18Pass.progress.professorModes} · search v5 ${phase18Pass.progress.searchV5Ready ? "ready" : "open"}`,
+    ],
+    href: "/admin/intelligence/phase-18-upgrade",
+  });
+
   const phase16P9Pass = computePhase16P9UpgradePass();
   items.push({
     id: "phase-16-p9-sre-closure",
@@ -2159,11 +2175,28 @@ function computeIntelligenceBuildProgressCore(): IntelligenceBuildProgressReport
         "Nav release batch 2026-06-07-phase-17-search-ai-prep-v4",
       ],
     },
+    {
+      phase: 49,
+      name: "v18.0 — Phase 18 Search v5 + professor tutor v2",
+      targetVersion: "0.57.0",
+      goal: "Collegiate professor depth — seminar briefs, evidence tiers, Socratic search; debate prep tutor v2 with moot court and forensic rubric.",
+      items: [
+        "smart-v5 search API with professor brief + professor lens",
+        "intelligenceProfessorBrief engine + debatePrepProfessorV5 modes",
+        "debate-prep-tutor v2 — office hours, seminar, moot court, forensic audit",
+        "phase-18-upgrade pass + search bar professor panel",
+      ],
+      exitCriteria: [
+        "test-phase18-search-ai-professor green",
+        "7/8 checkpoints at bar · professor modes wired in tutor UI",
+        "Nav release batch 2026-06-07-phase-18-search-ai-professor-v5",
+      ],
+    },
   ];
 
   return {
     generatedAt: new Date().toISOString(),
-    version: "v17.0-phase-17-search-ai-prep-v4",
+    version: "v18.0-phase-18-search-ai-professor-v5",
     overallCompletionPct,
     items,
     phases,

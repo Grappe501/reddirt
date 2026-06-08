@@ -25,6 +25,15 @@ export const INTEL_SEARCH_SUGGESTIONS_V4 = [
   "live event ACCA countdown",
 ] as const;
 
+/** v5 professor-mode search suggestions */
+export const INTEL_SEARCH_SUGGESTIONS_V5 = [
+  ...INTEL_SEARCH_SUGGESTIONS_V4,
+  "professor seminar: legislative author vs SOS administrator",
+  "moot court: integrity without participation trap",
+  "forensic audit: agree-only close on funding",
+  "Socratic drill: why moderators ask about CVSGF",
+] as const;
+
 /** Expand query with campaign-specific aliases so "Hammer" finds Kim Hammer modules, etc. */
 const TERM_ALIASES: Record<string, string[]> = {
   hammer: ["kim hammer", "incumbent", "opponent", "kh-2", "kh-0"],
