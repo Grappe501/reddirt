@@ -6,6 +6,7 @@ import { getOpenAIClient, getOpenAIConfigFromEnv, isOpenAIConfigured } from "@/l
 import { INTEL_SMART_SEARCH_ANALYSIS_PROMPT, INTEL_SMART_SEARCH_BRIEF_PROMPT } from "@/lib/openai/prompts";
 import {
   searchCandidateIntelligenceMulti,
+  suggestDidYouMean,
   type CandidateIntelSearchResult,
   type CandidateIntelCorpusCounts,
   buildCandidateIntelContextBlock,
@@ -320,5 +321,11 @@ export async function runSmartIntelligenceSearch(
     smart = await generateSmartBrief(q, a, results);
   }
 
-  return { results, smart, corpusCounts, analysis };
+  return {
+    results,
+    smart,
+    corpusCounts,
+    analysis,
+    didYouMean: results.length === 0 ? suggestDidYouMean(q) : [],
+  };
 }

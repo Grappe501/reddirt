@@ -21,6 +21,15 @@
 [build]
   command = "bash scripts/netlify-build.sh"
 
+# Option A — branch deploys: enable in Netlify UI → Build & deploy → Branches → "All branches"
+# or deploy only feature/kelly-schedule-settlement-dashboard for Kelly search testing.
+# Branch URL pattern: https://<branch-slug>--<site-name>.netlify.app
+[context.branch-deploy]
+  command = "bash scripts/netlify-build.sh"
+
+[context.deploy-preview]
+  command = "bash scripts/netlify-build.sh"
+
 [build.environment]
   NODE_VERSION = "20"
   # Do not set NODE_ENV=production here — Netlify npm install would omit devDependencies

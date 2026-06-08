@@ -5,7 +5,13 @@ import { embedQuery, embedTexts, cosineSimilarity } from "@/lib/openai/embedding
 import { isOpenAIConfigured } from "@/lib/openai/client";
 import { searchChunks, type SearchHit } from "@/lib/openai/search";
 import { pathToHref } from "@/lib/search/paths";
-import { buildIntelSearchCorpus, countIntelSearchCorpus } from "@/lib/intelligence/intelligenceSearchCorpus";
+import {
+  buildIntelSearchCorpus,
+  countIntelSearchCorpus,
+  getIntelSearchDocumentByHref,
+} from "@/lib/intelligence/intelligenceSearchCorpus";
+import { classifyClaimsGate, claimsGateStageLabel } from "@/lib/intelligence/v4/claimsGatePolicy";
+import { DEBATE_GLOSSARY_TERMS } from "@/lib/intelligence/v4/debateGlossaryRegistry";
 import {
   detectIntelSearchIntent,
   expandIntelQueryTerms,
@@ -45,14 +51,53 @@ export type CandidateIntelSearchResult = {
   matchReason?: string;
 };
 
+export function claimsGateToStageSafe(gate: string): IntelStageSafe {
+  const s = classifyClaimsGate(gate);
+  if (s === "clear") return "clear";
+  if (s === "blocked") return "blocked";
+  if (s === "research_only") return "research";
+  return "verify";
+}
+
 export function inferStageSafeFromResult(r: CandidateIntelSearchResult): IntelStageSafe {
+  const doc = getIntelSearchDocumentByHref(r.href);
+  if (doc?.claimsGate) return claimsGateToStageSafe(doc.claimsGate);
+
   const text = `${r.badge ?? ""} ${r.snippet} ${r.title}`.toLowerCase();
   if (/rejected|do.?not.?use|blocked|not.?publishable/.test(text)) return "blocked";
-  if (/verified|human_verified|human_approved|clear/.test(text)) return "clear";
-  if (/needs.?review|research.?question|staff.?verify|claims.?gate|gate/.test(text)) return "verify";
-  if (r.kind === "claim" || r.kind === "trap_lane" || r.kind === "sos_question") return "verify";
+  if (/verified|human_verified|human_approved|clear for rehearsal/.test(text)) return "clear";
+  if (/needs.?review|research.?question|staff.?verify|claims.?gate/.test(text)) return "verify";
+  if (r.kind === "claim") {
+    if (/verified|human_verified|approved/.test(text)) return "clear";
+    return "verify";
+  }
+  if (r.kind === "trap_lane" || r.kind === "sos_question" || r.kind === "offensive_move") return "verify";
   if (r.kind === "citation") return "research";
   return "research";
+}
+
+export function suggestDidYouMean(query: string): string[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  const terms = tokenizeIntelQuery(q);
+  const out: string[] = [];
+  for (const g of DEBATE_GLOSSARY_TERMS) {
+    const blob = `${g.label} ${g.definition}`.toLowerCase();
+    if (blob.includes(q) || terms.some((t) => g.label.toLowerCase().includes(t))) {
+      out.push(g.label);
+    }
+  }
+  for (const g of DEBATE_GLOSSARY_TERMS) {
+    if (out.length >= 4) break;
+    if (terms.some((t) => t.length > 3 && blobIncludes(g.label.toLowerCase(), t))) {
+      out.push(g.label);
+    }
+  }
+  return [...new Set(out)].slice(0, 4);
+}
+
+function blobIncludes(blob: string, term: string): boolean {
+  return blob.includes(term);
 }
 
 export type CandidateIntelCorpusCounts = {
@@ -71,6 +116,23 @@ export function intelligenceChunkPathToHref(path: string): string {
   if (path.startsWith("route:")) {
     const rest = path.slice("route:".length);
     return rest.length ? rest : "/";
+  }
+  if (path.startsWith("intel:prep:trap_lane:")) {
+    const id = path.split(":").slice(3).join(":");
+    return `/admin/intelligence/trap-lanes/${id.replace(/^trap:/, "")}`;
+  }
+  if (path.startsWith("intel:prep:sos_question:")) {
+    const id = path.split(":").slice(3).join(":");
+    return `/admin/intelligence/sos-debate-questions/${id.replace(/^sos:/, "")}`;
+  }
+  if (path.startsWith("intel:prep:")) {
+    const parts = path.split(":");
+    const kind = parts[2];
+    const id = parts.slice(3).join(":");
+    if (kind === "field_book" || kind === "glossary") return `/admin/intelligence/field-book/${id.replace(/^fb:/, "").replace(/^glossary:/, "")}`;
+    if (kind === "hammer_module") return "/admin/intelligence/kim-hammer/debate-prep";
+    if (kind === "nav" || kind === "offensive_move") return "/admin/intelligence/opposition-strategy";
+    return "/admin/intelligence";
   }
   if (path.startsWith("intel:opposition")) return "/admin/intelligence/opponents";
   if (path.startsWith("intel:")) return "/admin/intelligence/field-book";
@@ -97,6 +159,7 @@ function searchCorpusDocuments(
       const boost = doc.priority + intentBoostForKind(intent, doc.kind);
       const score = base + boost;
       if (score <= 0.08) return null;
+      const stageSafe = doc.claimsGate ? claimsGateToStageSafe(doc.claimsGate) : undefined;
       return {
         kind: doc.kind,
         href: doc.href,
@@ -104,7 +167,8 @@ function searchCorpusDocuments(
         snippet: extractIntelSnippet(doc.body, terms, phrase),
         score,
         section: doc.section,
-        badge: doc.badge,
+        badge: doc.claimsGate ? claimsGateStageLabel(doc.claimsGate) : doc.badge,
+        stageSafe,
       } satisfies CandidateIntelSearchResult;
     })
     .filter((r): r is CandidateIntelSearchResult => r !== null)
@@ -138,15 +202,18 @@ async function semanticRerankCorpusHits(
 }
 
 function hitsToChunkResults(hits: SearchHit[]): CandidateIntelSearchResult[] {
-  return hits.map((h) => ({
-    kind: "chunk" as const,
-    href: intelligenceChunkPathToHref(h.path),
-    title: h.title ?? h.path,
-    snippet: h.content.slice(0, 280) + (h.content.length > 280 ? "…" : ""),
-    score: h.score,
-    badge: h.path.startsWith("intel:") ? "Opposition intel" : "Indexed",
-    semanticScore: h.score,
-  }));
+  return hits.map((h) => {
+    const isPrep = h.path.startsWith("intel:prep:");
+    return {
+      kind: "chunk" as const,
+      href: intelligenceChunkPathToHref(h.path),
+      title: h.title ?? h.path,
+      snippet: h.content.slice(0, 280) + (h.content.length > 280 ? "…" : ""),
+      score: h.score + (isPrep ? 0.08 : 0),
+      badge: isPrep ? "Ingested prep" : h.path.startsWith("intel:") ? "Opposition intel" : "Indexed",
+      semanticScore: h.score,
+    };
+  });
 }
 
 function mergeResults(groups: CandidateIntelSearchResult[][], limit: number): CandidateIntelSearchResult[] {
@@ -193,7 +260,7 @@ export type SearchCandidateIntelligenceOptions = {
 
 export async function searchCandidateIntelligence(
   options: SearchCandidateIntelligenceOptions,
-): Promise<{ results: CandidateIntelSearchResult[]; corpusCounts: CandidateIntelCorpusCounts }> {
+): Promise<SearchCandidateIntelligenceResult> {
   const q = options.query.trim();
   const profile = options.profile ?? "CANDIDATE";
   const limit = options.limit ?? 20;
@@ -211,7 +278,7 @@ export async function searchCandidateIntelligence(
   };
 
   if (!q) {
-    return { results: [], corpusCounts };
+    return { results: [], corpusCounts, didYouMean: [] };
   }
 
   let corpusHits = searchCorpusDocuments(q, profile);
@@ -239,10 +306,10 @@ export async function searchCandidateIntelligence(
 
   if (results.length < limit && !chunkStrong && chunkResults.length) {
     const merged = mergeResults([results, chunkResults], limit);
-    return { results: merged, corpusCounts };
+    return { results: merged, corpusCounts, didYouMean: suggestDidYouMean(q) };
   }
 
-  return { results, corpusCounts };
+  return { results, corpusCounts, didYouMean: results.length ? [] : suggestDidYouMean(q) };
 }
 
 /** Reciprocal rank fusion across multiple query result lists. */
@@ -277,11 +344,11 @@ export function fuseSearchResults(
 export async function searchCandidateIntelligenceMulti(
   queries: string[],
   options: Omit<SearchCandidateIntelligenceOptions, "query"> & { query?: never },
-): Promise<{ results: CandidateIntelSearchResult[]; corpusCounts: CandidateIntelCorpusCounts }> {
+): Promise<SearchCandidateIntelligenceResult> {
   const active = queries.map((q) => q.trim()).filter(Boolean);
   if (!active.length) {
     const empty = await searchCandidateIntelligence({ query: " ", ...options, limit: 0 });
-    return { results: [], corpusCounts: empty.corpusCounts };
+    return { results: [], corpusCounts: empty.corpusCounts, didYouMean: [] };
   }
   const lists = await Promise.all(
     active.map((q) => searchCandidateIntelligence({ ...options, query: q })),
@@ -291,6 +358,7 @@ export async function searchCandidateIntelligenceMulti(
     lists.map((l) => l.results),
     limit,
   );
+  const didYouMean = fused.length ? [] : suggestDidYouMean(active[0] ?? "");
   return {
     results: fused.map((r) => ({
       ...r,
@@ -298,6 +366,7 @@ export async function searchCandidateIntelligenceMulti(
       matchReason: r.matchReason ?? r.section ?? KIND_LABEL[r.kind],
     })),
     corpusCounts: lists[0]!.corpusCounts,
+    didYouMean,
   };
 }
 
@@ -318,13 +387,23 @@ const KIND_LABEL: Record<CandidateIntelSearchKind, string> = {
 
 export function buildCandidateIntelContextBlock(
   results: CandidateIntelSearchResult[],
-  maxChars = 14000,
+  maxChars = 18000,
 ): string {
   let out = "";
   for (const r of results) {
-    const piece = `\n---\nKIND: ${r.kind}\nHREF: ${r.href}\nTITLE: ${r.title}\nSECTION: ${r.section ?? ""}\nBADGE: ${r.badge ?? ""}\nCONTENT:\n${r.snippet}\n`;
+    const doc = getIntelSearchDocumentByHref(r.href);
+    const content = doc?.body?.slice(0, 2400) ?? r.snippet;
+    const gate = doc?.claimsGate ? `CLAIMS_GATE: ${doc.claimsGate}\n` : "";
+    const safe = r.stageSafe ?? inferStageSafeFromResult(r);
+    const piece = `\n---\nKIND: ${r.kind}\nHREF: ${r.href}\nTITLE: ${r.title}\nSTAGE_SAFE: ${safe}\nSECTION: ${r.section ?? ""}\nBADGE: ${r.badge ?? ""}\n${gate}CONTENT:\n${content}\n`;
     if (out.length + piece.length > maxChars) break;
     out += piece;
   }
   return out.trim();
 }
+
+export type SearchCandidateIntelligenceResult = {
+  results: CandidateIntelSearchResult[];
+  corpusCounts: CandidateIntelCorpusCounts;
+  didYouMean: string[];
+};

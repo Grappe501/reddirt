@@ -7,6 +7,9 @@ import { isOpenAIConfigured } from "@/lib/openai/client";
 import { countIntelSearchCorpus } from "@/lib/intelligence/intelligenceSearchCorpus";
 import { INTEL_SEARCH_SUGGESTIONS } from "@/lib/intelligence/intelligenceSearchCore";
 import { runSmartIntelligenceSearch } from "@/lib/intelligence/intelligenceSmartSearch";
+import { buildTonightPrepStack } from "@/lib/intelligence/intelligenceTonightStack";
+import { recordIntelSearchEvent, summarizeIntelSearchGaps } from "@/lib/intelligence/intelligenceSearchAnalytics";
+import { loadIntelligencePrepSearchChunks } from "@/lib/intelligence/intelligenceSearchIngestChunks";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
@@ -56,6 +59,9 @@ export async function GET() {
       byKind: meta.byKind,
     },
     suggestions: [...INTEL_SEARCH_SUGGESTIONS],
+    tonightStack: buildTonightPrepStack(),
+    ingestPending: loadIntelligencePrepSearchChunks().length,
+    gaps: summarizeIntelSearchGaps(),
     features: [
       "multi_query_ai_rewrite",
       "reciprocal_rank_fusion",
@@ -63,6 +69,12 @@ export async function GET() {
       "stage_safe_brief",
       "reading_order",
       "follow_up_queries",
+      "tonight_stack",
+      "intelligence_prep_ingest",
+      "search_analytics",
+      "claims_gate_policy",
+      "full_body_ai_context",
+      "did_you_mean",
     ],
   });
 }
@@ -93,7 +105,7 @@ export async function POST(req: Request) {
   const wantBrief = includeBrief ?? includeAnswer ?? false;
 
   try {
-    const { results, smart, corpusCounts, analysis } = await runSmartIntelligenceSearch({
+    const { results, smart, corpusCounts, analysis, didYouMean } = await runSmartIntelligenceSearch({
       query,
       profile: profile ?? "CANDIDATE",
       mode: mode ?? "smart",
@@ -101,12 +113,23 @@ export async function POST(req: Request) {
       limit: 24,
     });
 
+    recordIntelSearchEvent({
+      query,
+      resultCount: results.length,
+      intent: analysis?.intent,
+      urgency: analysis?.urgency,
+      mode: mode ?? "smart",
+      rewrittenQueries: analysis?.searchQueries,
+    });
+
     return NextResponse.json({
       ok: true,
-      version: "smart-v3",
+      version: "smart-v3.1",
       results,
       smart,
       answer: smart?.brief ?? null,
+      didYouMean,
+      tonightStack: results.length === 0 ? buildTonightPrepStack() : undefined,
       analysis: analysis
         ? {
             intent: analysis.intent,

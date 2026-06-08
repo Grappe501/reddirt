@@ -22,6 +22,13 @@ const KIND_LABELS: Record<CandidateIntelSearchKind, string> = {
   offensive_move: "Offensive move",
 };
 
+type TonightStackItem = {
+  href: string;
+  title: string;
+  why: string;
+  stageSafe: IntelStageSafe;
+};
+
 const KIND_COLORS: Record<CandidateIntelSearchKind, string> = {
   nav: "bg-indigo-100 text-indigo-950",
   field_book: "bg-sky-100 text-sky-950",
@@ -45,7 +52,7 @@ const STAGE_SAFE_STYLES: Record<IntelStageSafe, string> = {
 };
 
 const GROUP_ORDER: { key: string; label: string; kinds: CandidateIntelSearchKind[] }[] = [
-  { key: "stage", label: "Stage prep", kinds: ["trap_lane", "sos_question", "offensive_move"] },
+  { key: "stage", label: "Stage prep", kinds: ["trap_lane", "sos_question", "offensive_move", "debate_depth"] },
   { key: "depth", label: "Depth guides", kinds: ["debate_depth", "field_book", "glossary"] },
   { key: "pages", label: "Pages", kinds: ["nav", "hammer_module"] },
   { key: "evidence", label: "Evidence", kinds: ["claim", "citation", "diligence"] },
@@ -126,6 +133,8 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
   const [indexStatus, setIndexStatus] = useState<IndexStatus | null>(null);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [recent, setRecent] = useState<string[]>([]);
+  const [tonightStack, setTonightStack] = useState<TonightStackItem[]>([]);
+  const [didYouMean, setDidYouMean] = useState<string[]>([]);
 
   const grouped = useMemo(() => groupResults(results), [results]);
   const displayOrder = useMemo(() => grouped.flatMap((g) => g.items), [grouped]);
@@ -156,8 +165,10 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
           chunkCount?: number;
           openai?: boolean;
           suggestions?: string[];
+          tonightStack?: TonightStackItem[];
         };
         if (cancelled) return;
+        setTonightStack(json.tonightStack ?? []);
         setIndexStatus({
           corpusTotal: json.corpus?.corpusTotal ?? 0,
           trapLanes: json.corpus?.trapLanes ?? 0,
@@ -199,7 +210,10 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
         setLoading(true);
       }
       setError(null);
-      if (withGuide) setSmart(null);
+      if (withGuide) {
+        setSmart(null);
+        setDidYouMean([]);
+      }
       setSearched(true);
       setActiveIdx(0);
       try {
@@ -217,6 +231,7 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
           ok?: boolean;
           results?: CandidateIntelSearchResult[];
           smart?: IntelSearchSmartBrief | null;
+          didYouMean?: string[];
           message?: string;
           error?: string;
         };
@@ -226,7 +241,10 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
           return;
         }
         setResults(json.results ?? []);
-        if (withGuide) setSmart(json.smart ?? null);
+        if (withGuide) {
+          setSmart(json.smart ?? null);
+          setDidYouMean(json.didYouMean ?? []);
+        }
       } catch {
         setError("Network error — check connection and try again.");
         if (!withGuide) setResults([]);
@@ -468,6 +486,31 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
         <div className="flex-1 space-y-3 overflow-y-auto px-4 py-3 pb-[calc(1rem+env(safe-area-inset-bottom))]">
           {!query.trim() && !searched ? (
             <div className="space-y-3">
+              {tonightStack.length > 0 ? (
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-rose-800">Tonight&apos;s stack</p>
+                  <p className="mt-0.5 text-[10px] text-kelly-subtle">No search needed — open these first.</p>
+                  <ul className="mt-1.5 space-y-1.5">
+                    {tonightStack.map((item) => (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={() => setExpanded(false)}
+                          className="flex items-start gap-2 rounded-lg border border-rose-200 bg-rose-50/50 p-2.5 hover:bg-rose-50"
+                        >
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-wrap items-center gap-1.5">
+                              <p className="text-sm font-bold text-rose-950">{item.title}</p>
+                              <StageSafeBadge level={item.stageSafe} />
+                            </div>
+                            <p className="text-xs text-rose-900/80">{item.why}</p>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
               {recent.length > 0 ? (
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Recent</p>
@@ -598,11 +641,30 @@ export function IntelligencePrepSearchBar({ variant = "sticky" }: IntelligencePr
             </div>
           ) : null}
           {searched && !loading && results.length === 0 && !error ? (
-            <div className="rounded-xl border border-dashed border-kelly-text/20 px-4 py-6 text-center">
-              <p className="text-sm font-medium text-kelly-text">No matches.</p>
-              <p className="mt-2 text-xs text-kelly-subtle">
-                Try a trap lane name, &quot;Hammer 2021&quot;, an SOS topic, or a claim domain.
-              </p>
+            <div className="space-y-3">
+              <div className="rounded-xl border border-dashed border-kelly-text/20 px-4 py-6 text-center">
+                <p className="text-sm font-medium text-kelly-text">No matches.</p>
+                <p className="mt-2 text-xs text-kelly-subtle">
+                  Try a trap lane name, &quot;Hammer 2021&quot;, an SOS topic, or a claim domain.
+                </p>
+              </div>
+              {didYouMean.length > 0 ? (
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">Did you mean</p>
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                    {didYouMean.map((s) => (
+                      <button
+                        key={s}
+                        type="button"
+                        onClick={() => pickSuggestion(s)}
+                        className="rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-xs font-semibold text-violet-950"
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
             </div>
           ) : null}
 

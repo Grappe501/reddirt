@@ -22,6 +22,9 @@ import {
   PETITION_2025_CLUSTER_DEPTH,
 } from "@/lib/intelligence/v4/integrityPackageDepth";
 import { OPPONENT_TRAP_LANES } from "@/lib/intelligence/v4/kellyOpponentContrastPlaybook";
+import { buildDebatePrepFinderIndex } from "@/lib/intelligence/v4/debatePrepFinder";
+import { listDebatePhilosophyBriefings } from "@/lib/intelligence/v4/debatePhilosophyBriefings";
+import { getAllPrepSectionDrillDownIds, getPrepSectionDrillDown } from "@/lib/intelligence/v4/debatePrepSectionDrillDowns";
 import type { CandidateIntelSearchKind } from "@/lib/intelligence/candidateIntelligenceSearch";
 
 export type IntelSearchDocument = {
@@ -33,7 +36,25 @@ export type IntelSearchDocument = {
   section?: string;
   badge?: string;
   priority: number;
+  claimsGate?: string;
 };
+
+const corpusCache = new Map<string, IntelSearchDocument[]>();
+
+export function getIntelSearchDocumentByHref(
+  href: string,
+  profile: "CANDIDATE" | "STAFF" | "CLERK_WEEK" = "CANDIDATE",
+): IntelSearchDocument | undefined {
+  const cacheKey = profile;
+  if (!corpusCache.has(cacheKey)) {
+    corpusCache.set(cacheKey, buildIntelSearchCorpus(profile));
+  }
+  const norm = href.split("?")[0]?.replace(/\/$/, "") ?? href;
+  return corpusCache.get(cacheKey)!.find((d) => {
+    const dh = d.href.split("?")[0]?.replace(/\/$/, "") ?? d.href;
+    return dh === norm || norm.startsWith(`${dh}/`);
+  });
+}
 
 function isCandidateSafeClaim(entry: ClaimLedgerEntry): boolean {
   if (entry.internalUseStatus === "DO_NOT_USE") return false;
@@ -182,6 +203,7 @@ export function buildIntelSearchCorpus(profile: "CANDIDATE" | "STAFF" | "CLERK_W
       ].join("\n"),
       section: `Trap lane ${lane.laneNumber}`,
       badge: lane.claimsGate?.includes("VERIFIED") ? "Verified gate" : "Review gate",
+      claimsGate: lane.claimsGate,
       priority: 0.12,
     });
   }
@@ -208,7 +230,62 @@ export function buildIntelSearchCorpus(profile: "CANDIDATE" | "STAFF" | "CLERK_W
       ].join("\n"),
       section: q.categoryLabel,
       badge: `SOS Q${q.questionNumber}`,
+      claimsGate: q.claimsGate,
       priority: 0.11,
+    });
+  }
+
+  for (const entry of buildDebatePrepFinderIndex()) {
+    const kindMap: Record<string, CandidateIntelSearchKind> = {
+      question: "sos_question",
+      "trap-lane": "trap_lane",
+      philosophy: "field_book",
+      "prep-section": "hammer_module",
+      opposition: "nav",
+    };
+    push({
+      id: `finder:${entry.id}`,
+      kind: kindMap[entry.kind] ?? "nav",
+      href: entry.href,
+      title: entry.title,
+      body: [entry.title, entry.summary, ...entry.tags].join("\n"),
+      section: "Prep finder",
+      badge: entry.kind,
+      priority: 0.09,
+    });
+  }
+
+  for (const p of listDebatePhilosophyBriefings()) {
+    push({
+      id: `philosophy:${p.briefingId}`,
+      kind: "field_book",
+      href: `/admin/intelligence/debate-briefings/${p.briefingId}`,
+      title: p.title,
+      body: [p.title, p.summary, p.eyebrow, ...p.linkedQuestionIds].join("\n"),
+      section: "Philosophy briefing",
+      badge: p.eyebrow,
+      priority: 0.1,
+    });
+  }
+
+  for (const secId of getAllPrepSectionDrillDownIds()) {
+    const s = getPrepSectionDrillDown(secId);
+    if (!s) continue;
+    push({
+      id: `prepsec:${secId}`,
+      kind: "hammer_module",
+      href: `/admin/intelligence/kim-hammer/debate-prep/${secId}`,
+      title: `Prep §${s.sectionNumber}: ${s.sectionTitle}`,
+      body: [
+        s.sectionTitle,
+        s.whyItMatters,
+        ...s.rebuttalScripts.map((r) => `${r.trigger} ${r.contrast}`),
+        ...s.rehearsalSteps,
+      ].join("\n"),
+      section: "Debate prep section",
+      badge: s.claimsGate ?? "Review gate",
+      claimsGate: s.claimsGate,
+      priority: 0.1,
     });
   }
 
