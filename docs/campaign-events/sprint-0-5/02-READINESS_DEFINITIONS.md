@@ -80,6 +80,15 @@ Check all that apply for a county to be labeled **Strong**:
 
 **Leadership decision:** Add `unknown` as fourth readiness state for Sprint 1? ☐ Yes ☐ No
 
+**If Yes — lock these action distinctions:**
+
+| State | Meaning | Field action |
+|-------|---------|--------------|
+| **Weak** | Verified problem | Intervention — chair, captain, pipeline |
+| **Unknown** | Insufficient data | Information gathering — do not score as Weak |
+
+The engine must not multiply Unknown down deployment priority until field validates.
+
 ---
 
 ## Counties to re-audit first (Sprint 0 Strong/Moderate only)

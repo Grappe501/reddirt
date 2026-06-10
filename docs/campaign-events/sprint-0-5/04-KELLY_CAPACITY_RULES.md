@@ -1,9 +1,32 @@
-# Lock Sheet 4 — Kelly Capacity Rules
+# Lock Sheet 4 — Kelly Capacity & Candidate Deployment
 
 **Sprint 0.5 · Status:** Draft — pending leadership lock  
 **Why this matters:** The Deployment Priority Engine cannot allocate Kelly without a **supply constraint**.
 
+**This sheet is candidate deployment** — how often Kelly physically appears. It is **not** the same as electoral Critical or Opportunity. See [`00-STRATEGIC_FRAME.md`](./00-STRATEGIC_FRAME.md).
+
 Reference seasons: [`data/strategy-doctrine/victory-os-seasons-v1.json`](../../data/strategy-doctrine/victory-os-seasons-v1.json)
+
+---
+
+## Visit cadence tiers (draft — lock numerically)
+
+Separate from Critical/Important electoral tiers. Example combinations:
+
+| County | Electoral (draft) | Deployment (draft visits) |
+|--------|-------------------|---------------------------|
+| Pulaski | Critical | Fewer Kelly visits if field/surrogate covers |
+| Searcy | Important | **3 visits** — immersion + GOTV kickoff |
+| White | Important | **1 visit** — high opportunity, deployment constrained |
+
+| Tier | Minimum Kelly visits | Notes |
+|------|---------------------:|-------|
+| Urban critical (6) | Continuous presence + events | Run score up; volunteer density |
+| Rural Tier 1 | **3** | Initial → immersion → GOTV kickoff |
+| Rural Tier 2 | **2** | At least one county meeting |
+| All others | **1** | Baseline; move counties after review |
+
+Source list: [`LEADERSHIP_DRAFT_INPUT_KELLY.md`](../LEADERSHIP_DRAFT_INPUT_KELLY.md)
 
 ---
 

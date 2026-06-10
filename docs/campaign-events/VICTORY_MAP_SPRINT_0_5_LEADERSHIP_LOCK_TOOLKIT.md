@@ -74,6 +74,7 @@ The engine needs supply constraints by season.
 
 | # | Artifact | File | Lock status |
 |---|----------|------|-------------|
+| 0 | Strategic frame (facilitator) | `sprint-0-5/00-STRATEGIC_FRAME.md` | Ready |
 | 1 | Critical county list | `sprint-0-5/01-CRITICAL_COUNTY_LIST.md` | Draft |
 | 2 | Readiness definitions | `sprint-0-5/02-READINESS_DEFINITIONS.md` | Draft |
 | 3 | Opportunity definitions | `sprint-0-5/03-OPPORTUNITY_DEFINITIONS.md` | Draft |

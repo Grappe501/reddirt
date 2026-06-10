@@ -58,6 +58,20 @@ ___________________________________________________________________________
 
 ---
 
+## 15-word test (after draft agreement)
+
+Ask:
+
+> If we had to cut this theory to **15 words**, what remains?
+
+Forces the strategic core. Example:
+
+```text
+Maximize urban turnout while building lasting rural organizing infrastructure through listening and local leadership.
+```
+
+---
+
 ## Facilitator test
 
 For any debate that stalls on engine mechanics, ask:

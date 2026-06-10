@@ -37,7 +37,7 @@ Facilitator collects before county debate. Compare answers — alignment test. S
 
 | Time | Item | Output |
 |------|------|--------|
-| 0:00 | Collect one-sentence winning theories + frame | Alignment check; six locks today |
+| 0:00 | Collect one-sentence winning theories + **three-dimension frame** | Alignment check; see [`00-STRATEGIC_FRAME.md`](./sprint-0-5/00-STRATEGIC_FRAME.md) |
 | 0:10 | **Decision 1** — Critical counties | Final Critical list |
 | 0:35 | **Decision 2** — Readiness definitions | Strong / Moderate / Weak / Unknown |
 | 0:50 | **Decision 3** — Opportunity definitions | High / Medium / Low |

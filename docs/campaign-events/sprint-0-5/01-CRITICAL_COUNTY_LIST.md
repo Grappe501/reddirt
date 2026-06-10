@@ -15,7 +15,9 @@
 
 **Kelly draft (urban centers — run the score up):** Pulaski · Washington · Faulkner · Craighead · Benton · **Sebastian** (replaces Saline in doctrine-six draft). Full context: [`LEADERSHIP_DRAFT_INPUT_KELLY.md`](../LEADERSHIP_DRAFT_INPUT_KELLY.md)
 
-**Separate from electoral Critical:** Rural **visit tiers** (3 / 2 / 1 visits) are Kelly capacity strategy — lock in Decision 4, not necessarily identical to Critical list.
+**Facilitator frame:** [`00-STRATEGIC_FRAME.md`](./00-STRATEGIC_FRAME.md) — electoral importance ≠ opportunity ≠ Kelly deployment.
+
+**Separate from electoral Critical:** Rural **visit tiers** (3 / 2 / 1 visits) are **candidate deployment** — lock in Decision 4, not necessarily identical to Critical list.
 
 ---
 

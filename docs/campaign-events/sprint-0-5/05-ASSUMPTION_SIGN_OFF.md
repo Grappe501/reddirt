@@ -56,7 +56,24 @@ We understand:
 4. **Opportunity** drives marginal vote gain; Critical alone does not dictate Kelly time.  
 5. **Kelly capacity** is capped by season before any allocation math runs.  
 6. Vote math in win-target files is **planning scenario**, not forecast.  
-7. **Winning theory** is one sentence — the strategic lens for every recommendation, not an engine input.
+7. **Winning theory** is one sentence — the strategic lens for every recommendation, not an engine input.  
+8. **Electoral importance**, **opportunity**, and **Kelly deployment** are three separate dimensions — see [`00-STRATEGIC_FRAME.md`](./00-STRATEGIC_FRAME.md).
+
+---
+
+## County chair standard
+
+Victory OS output will reach county chairs, volunteer captains, and field organizers — not only developers.
+
+Before signing, leadership must answer **Yes** to:
+
+```text
+Can a county chair understand this?
+```
+
+**Passing example:** *"Benton is ranked above White because it is Critical, has high opportunity, moderate readiness, and higher urgency this week."*
+
+If assumptions are too complex for a county chair to follow, revise wording before unlock — do not ship opaque math.
 
 ---
 
@@ -83,6 +100,20 @@ We understand:
 | What does readiness mean? (Definitions locked; unknown ≠ weak) | ☐ | ☐ |
 | How much Kelly time exists? (Capacity rules locked) | ☐ | ☐ |
 | What is our winning theory? (One sentence locked) | ☐ | ☐ |
+| Can a county chair understand the locked assumptions? | ☐ | ☐ |
+
+---
+
+## Clarity test (success = explainability, not comfort)
+
+Multiple leaders in the room should be able to state plainly:
+
+- Why these counties are Critical — and why others are not  
+- Why a county is High Opportunity — and why another is not  
+- Why Kelly visits one county three times and another once  
+- How the campaign believes it wins (one sentence + optional 15-word core)
+
+If explanations diverge after the session, assumptions are not locked yet.
 
 ---
 

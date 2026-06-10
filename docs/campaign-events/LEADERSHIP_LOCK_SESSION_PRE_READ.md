@@ -52,6 +52,8 @@ Each leadership participant arrives with **one sentence**:
 
 Write it **before** the meeting. Facilitator collects and compares answers at the start. Five different theories = alignment problem discovered early. Convergent answers = strategic cohesion.
 
+**Facilitator frame (read first in room):** [`sprint-0-5/00-STRATEGIC_FRAME.md`](./sprint-0-5/00-STRATEGIC_FRAME.md)
+
 Kelly draft input (visit tiers, urban six, values): [`LEADERSHIP_DRAFT_INPUT_KELLY.md`](./LEADERSHIP_DRAFT_INPUT_KELLY.md)
 
 ---
