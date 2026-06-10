@@ -70,6 +70,19 @@ Leadership must choose **one** locked sentence in the session.
 
 ---
 
+## Conflicts to resolve (governance working as designed)
+
+These tensions are **features, not bugs** — they prove leadership is scrutinizing assumptions before code hardcodes them. Facilitator frame: [`00-STRATEGIC_FRAME.md`](./sprint-0-5/00-STRATEGIC_FRAME.md).
+
+| Conflict | Why surface it |
+|----------|----------------|
+| Sebastian vs Saline (urban six) | Different electoral weight vs deployment history |
+| Saline rural Tier 1 vs urban Critical draft | Same county, two dimensions — separate locks |
+| Independence in two tiers | Duplicate — pick one deployment tier |
+| Visit tiers vs Critical list | **Deployment ≠ electoral importance** |
+
+---
+
 ## Kelly deployment model (draft — feeds Decision 4 capacity)
 
 Kelly is **employed full-time** during the campaign. Default weekday rhythm:

@@ -59,6 +59,12 @@ Source: Victory Map v1 (locked) · Leadership Lock v1 · Week of [date]
 
 If a campaign manager cannot explain a score in **30 seconds**, the engine is too complicated.
 
+**County chair bar:** If a county chair cannot understand the same explanation, Phase 2 is not ready.
+
+Passing line:
+
+> Benton is ranked above White because it is Critical, has high opportunity, moderate readiness, and higher urgency this week.
+
 ---
 
 ## Success test — Monday morning
