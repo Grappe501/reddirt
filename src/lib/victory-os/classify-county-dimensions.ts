@@ -1,7 +1,8 @@
 import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry";
-import { getCampaignRegionSlugForCounty } from "@/lib/campaign-engine/regions/arkansas-campaign-regions";
+import { getCampaignRegionSlugForCounty, getCampaignRegionDisplayNameForCounty } from "@/lib/campaign-engine/regions/arkansas-campaign-regions";
 import { loadCountyKpis } from "@/lib/agents/county-intelligence/county-workbench-adapter";
 import type { CountyWinTargetRow } from "@/lib/election-targets/win-target-types";
+import { electoralImportanceScore } from "./score-maps";
 import {
   CRITICAL_ELECTORAL_COUNTIES,
   GROWTH_ELECTORAL_COUNTIES,
@@ -98,6 +99,61 @@ function shortNameFromSlug(slug: string): string {
   return reg ? shortName(reg.displayName) : slug.replace(/-county$/, "").replace(/-/g, " ");
 }
 
+function buildSourceBasis(input: {
+  electoral: { provenance: DimensionProvenance };
+  opportunity: { provenance: DimensionProvenance };
+  readiness: { provenance: DimensionProvenance };
+  winRow: CountyWinTargetRow | null;
+}): string[] {
+  const sources = new Set<string>([
+    "data/election/kelly-win-target-scenario-v1.json",
+    "src/lib/county/arkansas-county-registry.ts",
+    "docs/campaign-events/VICTORY_OS_DOCTRINE.md",
+  ]);
+  if (
+    input.electoral.provenance === "leadership_override" ||
+    input.opportunity.provenance === "leadership_override" ||
+    input.readiness.provenance === "leadership_override"
+  ) {
+    sources.add("src/lib/victory-os/leadership-county-overrides.ts");
+  }
+  if (input.readiness.provenance === "heuristic_kpi") {
+    sources.add("county-workbench-kpi");
+  }
+  if (input.winRow?.missingData?.length) {
+    sources.add(`win-target-missing:${input.winRow.missingData.join(",")}`);
+  }
+  return [...sources];
+}
+
+function composeDraftReason(input: {
+  countyShort: string;
+  electoral: ElectoralImportance;
+  opportunity: OpportunityLevel;
+  readiness: OrganizationalReadiness;
+  winRow: CountyWinTargetRow | null;
+  winContributionPct?: number;
+  overrideNotes?: string;
+}): string {
+  const lines = [
+    "Draft classification pending campaign leadership review.",
+    `Electoral ${input.electoral}; opportunity ${input.opportunity}; readiness ${input.readiness}.`,
+  ];
+  if (input.winRow?.countyWinContribution != null) {
+    lines.push(`Planning countyWinContribution ${input.winRow.countyWinContribution.toLocaleString()} (scenario, not forecast).`);
+  }
+  if (input.winContributionPct != null) {
+    lines.push(`Win-contribution percentile ~${Math.round(input.winContributionPct * 100)}% statewide.`);
+  }
+  if (input.winRow?.missingData?.length) {
+    lines.push(`Win-target gaps: ${input.winRow.missingData.join(", ")}.`);
+  }
+  if (input.overrideNotes) {
+    lines.push(`Leadership note: ${input.overrideNotes}`);
+  }
+  return lines.join(" ");
+}
+
 export function buildVictoryMapCountyProfile(input: ClassifyCountyInput): VictoryMapCountyProfile {
   const electoral = classifyElectoralImportance(input);
   const opportunity = classifyOpportunity(input);
@@ -119,10 +175,23 @@ export function buildVictoryMapCountyProfile(input: ClassifyCountyInput): Victor
     county: input.countyShort,
     displayName: input.displayName,
     regionSlug: input.regionSlug,
+    regionLabel: getCampaignRegionDisplayNameForCounty(input.fips, regRegionId(input.countySlug)),
     electoralImportance: electoral.value,
     opportunityLevel: opportunity.value,
     organizationalReadiness: readiness.value,
-    classificationStatus: override ? "needs_review" : "draft",
+    classificationStatus: "draft",
+    leadershipStatus: "draft",
+    victoryImportance: electoralImportanceScore(electoral.value),
+    draftReason: composeDraftReason({
+      countyShort: input.countyShort,
+      electoral: electoral.value,
+      opportunity: opportunity.value,
+      readiness: readiness.value,
+      winRow: row,
+      winContributionPct: input.winContributionPct,
+      overrideNotes: override?.notes,
+    }),
+    sourceBasis: buildSourceBasis({ electoral, opportunity, readiness, winRow: row }),
     targetVotes: row?.targetVotes ?? null,
     baselineDemVotes: row?.baselineDemVotes ?? null,
     targetVoteGain: row?.targetVoteGain ?? null,
@@ -132,6 +201,11 @@ export function buildVictoryMapCountyProfile(input: ClassifyCountyInput): Victor
     lockedBy: null,
     lockedAt: null,
   };
+}
+
+function regRegionId(countySlug: string): import("@/lib/county/arkansas-county-registry").ArCommandRegionId {
+  const reg = ARKANSAS_COUNTY_REGISTRY.find((c) => c.slug === countySlug);
+  return reg?.regionId ?? "central";
 }
 
 export function buildAllVictoryMapCountyProfiles(

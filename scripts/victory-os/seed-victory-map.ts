@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 /**
- * Seed all 75 Arkansas counties into victory-map-v1.json from win-target heuristics + leadership overrides.
+ * Sprint 0 — regenerate victory-map-v1.json from win-target heuristics + leadership overrides.
  * Run: npm run victory:map:seed
  */
 import { writeFileSync } from "node:fs";
@@ -33,6 +33,8 @@ function main() {
     updatedAt: new Date().toISOString(),
     classificationStatus: "needs_review",
     meta: {
+      sprint: 0,
+      disclaimer: "Draft classification pending campaign leadership review. Not final.",
       note: "Sprint 0 seed — all 75 counties from win-target heuristics + leadership overrides. CM lock required before Decision Engine.",
       exemplarCountiesComplete: dims.leadershipOverrides,
       totalCountiesRequired: 75,
@@ -67,9 +69,13 @@ function main() {
     `Electoral — critical ${dims.electoral.critical}, important ${dims.electoral.important}, helpful ${dims.electoral.helpful}, maintenance ${dims.electoral.maintenance}`,
   );
   console.log(
+    `Opportunity — high ${dims.opportunity.high}, medium ${dims.opportunity.medium}, low ${dims.opportunity.low}`,
+  );
+  console.log(
     `Readiness — strong ${dims.readiness.strong}, moderate ${dims.readiness.moderate}, weak ${dims.readiness.weak}`,
   );
   console.log(`Leadership overrides: ${dims.leadershipOverrides}`);
+  console.log(`All counties leadershipStatus: draft`);
 }
 
 main();

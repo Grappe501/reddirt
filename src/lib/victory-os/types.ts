@@ -14,6 +14,9 @@ export type OrganizationalReadiness = "strong" | "moderate" | "weak";
 
 export type VictoryMapClassificationStatus = "draft" | "leadership_locked" | "needs_review";
 
+/** Sprint 0 leadership gate — all counties start `draft` until CM sign-off. */
+export type VictoryMapLeadershipStatus = "draft" | "under_review" | "locked";
+
 /** Ops-facing county traffic light (Layer 3). */
 export type CountyOpsStatus = "green" | "yellow" | "red";
 
@@ -66,6 +69,19 @@ export type VictoryMapCountyProfile = {
   baselineDemVotes?: number | null;
   targetVoteGain?: number | null;
   countyWinContribution?: number | null;
+  /** Human-facing campaign region label (stakeholder taxonomy). */
+  regionLabel?: string;
+  /**
+   * Layer 0 victory weight 0.25–1.0 from electoral importance only (Sprint 0).
+   * Not deployment priority — no readiness/urgency multiplier yet.
+   */
+  victoryImportance?: number;
+  /** Plain-language rationale for leadership review. */
+  draftReason?: string;
+  /** Data sources used for this draft row. */
+  sourceBasis?: readonly string[];
+  /** Sprint 0 leadership gate — always `draft` until CM locks map. */
+  leadershipStatus?: VictoryMapLeadershipStatus;
   seedProvenance?: VictoryMapSeedProvenance;
   notes?: string;
   lockedBy?: string | null;
@@ -86,7 +102,10 @@ export type VictoryMapFile = {
   updatedAt: string;
   doctrinePath: "docs/campaign-events/VICTORY_OS_DOCTRINE.md";
   classificationStatus: VictoryMapClassificationStatus;
-  meta?: VictoryMapMeta;
+  meta?: VictoryMapMeta & {
+    sprint?: number;
+    disclaimer?: string;
+  };
   statewide: {
     workingTargetWithCushion: number;
     statewideVoteGap: number;

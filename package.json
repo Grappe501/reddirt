@@ -338,6 +338,7 @@
     "election:targets:build": "tsx scripts/election-targets/build-kelly-win-targets.ts",
     "victory:map:seed": "tsx scripts/victory-os/seed-victory-map.ts",
     "victory:map:verify": "tsx scripts/victory-os/test-victory-map.ts",
+    "victory:map:review": "tsx scripts/victory-os/generate-victory-map-sprint0-review.ts",
     "victory:decisions": "tsx scripts/victory-os/generate-weekly-decisions.ts",
     "victory:decisions:verify": "tsx scripts/victory-os/test-weekly-decisions.ts",
     "victory:missions:sync": "tsx scripts/victory-os/sync-county-missions.ts",
