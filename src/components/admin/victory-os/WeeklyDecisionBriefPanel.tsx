@@ -88,6 +88,19 @@ function DecisionCard({
           <dt className="font-bold uppercase tracking-wider text-kelly-muted">Priority score</dt>
           <dd className="mt-0.5 font-mono text-kelly-text">{decision.deploymentPriority}</dd>
         </div>
+        {decision.linkedMissionId ? (
+          <div className="sm:col-span-2">
+            <dt className="font-bold uppercase tracking-wider text-kelly-muted">Linked mission</dt>
+            <dd className="mt-0.5">
+              <Link
+                href={`/admin/mission-brief?view=missions&week=${decision.weekKey}`}
+                className="font-mono text-xs text-kelly-navy underline"
+              >
+                {decision.linkedMissionId}
+              </Link>
+            </dd>
+          </div>
+        ) : null}
       </dl>
 
       {decision.status === "pending" ? (

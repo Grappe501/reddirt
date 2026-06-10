@@ -340,6 +340,8 @@
     "victory:map:verify": "tsx scripts/victory-os/test-victory-map.ts",
     "victory:decisions": "tsx scripts/victory-os/generate-weekly-decisions.ts",
     "victory:decisions:verify": "tsx scripts/victory-os/test-weekly-decisions.ts",
+    "victory:missions:sync": "tsx scripts/victory-os/sync-county-missions.ts",
+    "victory:missions:verify": "tsx scripts/victory-os/test-county-missions.ts",
     "fieldops:volunteer-capacity:build": "tsx scripts/field-ops/build-volunteer-capacity-model.ts",
     "fieldops:gotv-allocation:build": "tsx scripts/field-ops/build-gotv-commitment-allocation.ts",
     "ingest:kellymedia": "tsx scripts/ingest-kellymedia.ts",

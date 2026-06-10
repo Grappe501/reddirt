@@ -32,7 +32,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 100,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-baxter-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-crittenden-county",
@@ -53,7 +53,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 100,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-crittenden-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-poinsett-county",
@@ -74,7 +74,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 100,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-poinsett-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-sevier-county",
@@ -95,7 +95,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 100,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-sevier-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-sharp-county",
@@ -116,7 +116,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 100,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-sharp-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-columbia-county",
@@ -137,7 +137,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 84,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-columbia-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-chicot-county",
@@ -158,7 +158,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 75,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-chicot-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-dallas-county",
@@ -179,7 +179,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 75,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-dallas-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-little-river-county",
@@ -200,7 +200,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 75,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-little-river-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-logan-county",
@@ -221,7 +221,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 75,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-logan-county-2026-06-08"
     }
   ],
   "kellyDeployment": [
@@ -244,7 +244,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 100,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-baxter-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-crittenden-county",
@@ -265,7 +265,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 100,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-crittenden-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-poinsett-county",
@@ -286,7 +286,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 100,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-poinsett-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-sevier-county",
@@ -307,7 +307,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 100,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-sevier-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-sharp-county",
@@ -328,7 +328,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 100,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-sharp-county-2026-06-08"
     }
   ],
   "volunteerDeployment": [
@@ -351,7 +351,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 84,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-columbia-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-chicot-county",
@@ -372,7 +372,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 75,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-chicot-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-dallas-county",
@@ -393,7 +393,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 75,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-dallas-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-little-river-county",
@@ -414,7 +414,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 75,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-little-river-county-2026-06-08"
     },
     {
       "id": "dec-2026-06-08-logan-county",
@@ -435,7 +435,7 @@
       "organizationalReadiness": "weak",
       "deploymentPriority": 75,
       "status": "pending",
-      "linkedMissionId": null
+      "linkedMissionId": "mission-weekly-logan-county-2026-06-08"
     }
   ],
   "fundraisingDeployment": [

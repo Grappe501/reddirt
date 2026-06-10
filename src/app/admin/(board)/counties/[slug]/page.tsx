@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { saveCountyCommandPageAction } from "@/app/admin/county-admin-actions";
+import { CountyVictoryMissionWidget } from "@/components/admin/victory-os/CountyVictoryMissionWidget";
 import { prisma } from "@/lib/db";
+import { loadCountyMissionStack } from "@/lib/victory-os/mission-framework/load-county-missions";
 import { CountyContentReviewStatus, PublicDemographicsSource } from "@prisma/client";
 
 type Props = { params: Promise<{ slug: string }>; searchParams: Promise<{ saved?: string }> };
@@ -27,6 +29,8 @@ export default async function AdminCountyEditPage({ params, searchParams }: Prop
     },
   });
   if (!c) notFound();
+
+  const missionStack = loadCountyMissionStack(slug);
 
   const s = c.campaignStats;
   const d = c.demographics;
@@ -320,6 +324,8 @@ export default async function AdminCountyEditPage({ params, searchParams }: Prop
           </button>
         </div>
       </form>
+
+      <CountyVictoryMissionWidget stack={missionStack} />
     </div>
   );
 }

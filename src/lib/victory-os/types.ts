@@ -211,7 +211,7 @@ export type CountyMission = {
   id: string;
   countySlug: string;
   horizon: CountyMissionHorizon;
-  /** YYYY-MM for monthly; YYYY-Www for weekly; YYYY-MM-DD for daily parent */
+  /** YYYY-MM for monthly; Monday YMD for weekly; `2026-general` for long-term */
   periodKey: string;
   seasonId?: CampaignVictorySeasonId;
   title: string;
@@ -220,4 +220,54 @@ export type CountyMission = {
   status: CountyMissionStatus;
   linkedDecisionIds?: string[];
   tacticIds?: string[];
+  resourceType?: VictoryResourceType;
+  kellyTier?: KellyDeploymentTier;
+  updatedAt?: string;
+};
+
+/** Daily execution task under a weekly mission (Sprint 2). */
+export type CountyDailyTask = {
+  id: string;
+  countySlug: string;
+  parentMissionId: string;
+  /** YYYY-MM-DD */
+  periodKey: string;
+  title: string;
+  assigneeRole: "chair" | "captain" | "field" | "cm" | "candidate" | "volunteer";
+  status: CountyMissionStatus;
+  sortOrder: number;
+};
+
+/** Four-level mission stack for one county (Sprint 2). */
+export type CountyMissionStack = {
+  countySlug: string;
+  county: string;
+  displayName: string;
+  regionSlug: string;
+  updatedAt: string;
+  longTerm: CountyMission | null;
+  monthly: CountyMission | null;
+  weekly: CountyMission | null;
+  dailyTasks: CountyDailyTask[];
+};
+
+export type CountyMissionsRegistryFile = {
+  version: 1;
+  doctrinePath: "docs/campaign-events/VICTORY_OS_DOCTRINE.md";
+  updatedAt: string;
+  /** Week key missions were last synced from */
+  syncedWeekKey: string;
+  syncedFromBriefId: string | null;
+  countyCount: number;
+  stacks: CountyMissionStack[];
+};
+
+export type CountyMissionSyncResult = {
+  weekKey: string;
+  briefId: string;
+  stacksUpdated: number;
+  weeklyMissionsCreated: number;
+  dailyTasksCreated: number;
+  decisionsLinked: number;
+  registryPath: string;
 };
