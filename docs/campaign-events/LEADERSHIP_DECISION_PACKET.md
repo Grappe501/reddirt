@@ -4,17 +4,23 @@
 **Duration:** 90–120 minutes  
 **Objective:** Leave the room with **five locked decisions** — not draft, not heuristic  
 **Facilitator prep:** Print or share lock sheets in [`sprint-0-5/`](./sprint-0-5/)  
+**One-page summary (print for the room):** [`VICTORY_MAP_LEADERSHIP_SUMMARY.md`](./VICTORY_MAP_LEADERSHIP_SUMMARY.md)  
 **Full toolkit:** [`VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md`](./VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md)
 
 > **Not a software meeting.** No dashboards. No engine demos. Governance only.
 
 ---
 
-## Pre-read (send 48 hours ahead)
+## Pre-read (send 24 hours ahead)
 
-1. [`VICTORY_MAP_SPRINT_0_REVIEW.md`](./VICTORY_MAP_SPRINT_0_REVIEW.md) — 5 min: dimension counts and the 16 Critical problem  
-2. Lock sheet 01 — Critical county reclassification table  
-3. Lock sheet 02 — Readiness: unknown vs weak  
+**Full packet:** [`LEADERSHIP_LOCK_SESSION_PRE_READ.md`](./LEADERSHIP_LOCK_SESSION_PRE_READ.md) (~25 min)
+
+1. [`VICTORY_MAP_SPRINT_0_REVIEW.md`](./VICTORY_MAP_SPRINT_0_REVIEW.md) — dimension counts and the 16 Critical problem  
+2. [`VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md`](./VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md)  
+3. This decision packet  
+4. Critical county list — [`sprint-0-5/01-CRITICAL_COUNTY_LIST.md`](./sprint-0-5/01-CRITICAL_COUNTY_LIST.md)  
+5. Opportunity classifications — [`sprint-0-5/03-OPPORTUNITY_DEFINITIONS.md`](./sprint-0-5/03-OPPORTUNITY_DEFINITIONS.md)  
+6. Readiness definitions — [`sprint-0-5/02-READINESS_DEFINITIONS.md`](./sprint-0-5/02-READINESS_DEFINITIONS.md)  
 
 ---
 
