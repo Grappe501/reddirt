@@ -7,7 +7,7 @@ import type {
   CountyVictoryContext,
   ElectoralImportance,
   WeeklyCampaignDecision,
-} from "./types";
+} from "../types";
 
 export type VictoryBoardMapLayer =
   | "deployment_priority"

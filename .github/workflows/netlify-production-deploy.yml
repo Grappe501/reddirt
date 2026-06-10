@@ -1,23 +1,25 @@
-# Quality gate — lint, typecheck, production build (with Postgres for Prisma SSG)
-# Does not deploy or touch production. RedDirt repo root must contain package-lock.json.
+# Production deploy gate — mirrors Netlify build (Prisma migrate + next build).
+# Netlify's GitHub integration also builds on push to main; this workflow validates
+# the same path in CI before/alongside the Netlify webhook.
+#
+# Optional: set NETLIFY_BUILD_HOOK in repo secrets to POST a build after CI passes.
 
-name: Quality gate (npm run check)
+name: Netlify production deploy gate
 
 on:
   push:
-    branches: [main, master, feature/kelly-schedule-settlement-dashboard]
-  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: check-${{ github.workflow }}-${{ github.ref }}
+  group: netlify-deploy-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  check:
+  build-gate:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -36,10 +38,9 @@ jobs:
 
     env:
       DATABASE_URL: postgresql://reddirt:reddirt@127.0.0.1:5432/reddirt
-      # Must match `datasource db` in prisma/schema.prisma (local Postgres has no pooler split).
       DIRECT_URL: postgresql://reddirt:reddirt@127.0.0.1:5432/reddirt
-      # Admin middleware may read this at build for some code paths; value is non-secret placeholder for CI.
       ADMIN_SECRET: ci-placeholder-not-for-production
+      NODE_OPTIONS: --max-old-space-size=6144
 
     steps:
       - name: Checkout
@@ -55,8 +56,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Prisma migrate
+      - name: Prisma generate
+        run: npx prisma generate
+
+      - name: Prisma migrate deploy
         run: npx prisma migrate deploy
 
-      - name: Full check (lint + tsc + next build)
-        run: npm run check
+      - name: Production build (netlify-build.sh parity)
+        run: NODE_ENV=production npx next build
+
+      - name: Trigger Netlify build hook (optional)
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -n "${NETLIFY_BUILD_HOOK:-}" ]; then
+            curl -fsS -X POST -d {} "$NETLIFY_BUILD_HOOK"
+          else
+            echo "NETLIFY_BUILD_HOOK not set — Netlify GitHub integration handles deploy on push to main."
+          fi

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { TacticLinkageViewModel } from "@/lib/victory-os/tactic-linkage/types";
-import { vos } from "../victory-os-ui/victory-os-tokens";
+import { vos } from "./victory-os-ui/victory-os-tokens";
 
 const STATUS_STYLE: Record<string, string> = {
   linked: "bg-emerald-100 text-emerald-800",

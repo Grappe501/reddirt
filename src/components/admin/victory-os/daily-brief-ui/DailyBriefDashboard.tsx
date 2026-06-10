@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import type { DailyBriefViewModel } from "@/lib/victory-os/daily-decisions/types";
-import { VictoryOsHero, VictoryOsMetric } from "./victory-os-ui/VictoryOsShell";
-import { vos } from "./victory-os-ui/victory-os-tokens";
+import { VictoryOsHero, VictoryOsMetric } from "../victory-os-ui/VictoryOsShell";
+import { vos } from "../victory-os-ui/victory-os-tokens";
 
 const OPS_BADGE: Record<string, string> = {
   red: "bg-red-100 text-red-800 border-red-200",

@@ -699,7 +699,7 @@ const TOOLS: CampaignAiToolContract[] = [
     riskLevel: "medium",
     guardrails: "Recommend only — no auto-execute",
     deterministicHelperPath: `${VO}sprint5-intelligence.ts#composeVictoryOsFullAgentContext`,
-    routesUsingTool: ROUTES,
+    routesUsingTool: [...ROUTES],
     observationEvents: ["victory_os_full_context_loaded"],
     futureAutomationPath: "",
     testChecklist: ["victory:os:verify"],
