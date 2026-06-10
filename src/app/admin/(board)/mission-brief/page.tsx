@@ -1,73 +1,34 @@
-import { MondayBriefCommandCenter } from "@/components/admin/victory-os/mission-brief-ui/MondayBriefCommandCenter";
-import { StatewideMissionsPanel } from "@/components/admin/victory-os/StatewideMissionsPanel";
-import { TacticLinkagePanel } from "@/components/admin/victory-os/TacticLinkagePanel";
-import { VictoryMapReviewPanel } from "@/components/admin/victory-os/VictoryMapReviewPanel";
-import { VictoryOsShellSuspense } from "@/components/admin/victory-os/victory-os-ui/VictoryOsShellSuspense";
-import { weekKeyFromParam } from "@/lib/calendar/weekly-time";
-import { isSeason5 } from "@/lib/victory-os/daily-decisions/generate-daily-decisions";
-import { composeMondayBriefViewModel } from "@/lib/victory-os/mission-brief/compose-monday-brief-view-model";
-import { composeTacticLinkageViewModel } from "@/lib/victory-os/tactic-linkage/load-tactic-linkage";
-import { loadVictoryMapStatewideSummary } from "@/lib/victory-os/load-victory-map";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
-type View = "brief" | "missions" | "map" | "tactics";
-
-type Props = {
-  searchParams: Promise<{ week?: string; view?: string }>;
-};
-
-function resolveView(raw: string | undefined): View {
-  if (raw === "missions") return "missions";
-  if (raw === "map") return "map";
-  if (raw === "tactics") return "tactics";
-  return "brief";
-}
-
-export default async function PathToVictoryPage({ searchParams }: Props) {
-  const sp = await searchParams;
-  const weekKey = weekKeyFromParam(sp.week);
-  const view = resolveView(sp.view);
-  const vm = composeMondayBriefViewModel(weekKey);
-  const mapSummary = view === "map" ? loadVictoryMapStatewideSummary() : null;
-  const tacticsVm = view === "tactics" ? composeTacticLinkageViewModel(weekKey) : null;
-  const season5 = isSeason5(new Date());
-
+/**
+ * Doctrine-locked placeholder — Sprint 0 begins with the 75-county Victory Map.
+ * Decision Engine and Mission Brief UI ship after leadership map review.
+ */
+export default function PathToVictoryPlaceholderPage() {
   return (
-    <div className="mx-auto max-w-7xl pb-20">
-      <VictoryOsShellSuspense
-        weekKey={weekKey}
-        showSeason5Daily={season5}
-        headline={view === "brief" ? "Monday brief · Path to Victory" : undefined}
-        subline={
-          view === "brief"
-            ? "The ten most important decisions this week to reach 50% + 1 — not what's on the calendar."
-            : undefined
-        }
-      >
-        {view === "brief" ? (
-          <MondayBriefCommandCenter initialVm={vm} />
-        ) : view === "tactics" && tacticsVm ? (
-          <TacticLinkagePanel vm={tacticsVm} />
-        ) : (
-          <div className="mt-2">
-            {view === "missions" ? (
-              <StatewideMissionsPanel registry={vm.missionRegistry} priorityStacks={vm.priorityStacks} weekKey={weekKey} />
-            ) : mapSummary ? (
-              <VictoryMapReviewPanel
-                counties={mapSummary.counties}
-                dimensionCounts={mapSummary.dimensionCounts}
-                mapClassificationStatus={mapSummary.mapClassificationStatus}
-                updatedAt={mapSummary.updatedAt}
-                statewideVoteGap={mapSummary.statewideVoteGap}
-                workingTargetWithCushion={mapSummary.workingTargetWithCushion}
-                currentSeasonLabel={mapSummary.currentSeason?.label ?? null}
-                currentSeasonQuestion={mapSummary.currentSeason?.headlineQuestion ?? null}
-              />
-            ) : null}
-          </div>
-        )}
-      </VictoryOsShellSuspense>
+    <div className="mx-auto max-w-3xl pb-16">
+      <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-copper">Victory OS · Doctrine locked</p>
+      <h1 className="mt-3 font-heading text-3xl font-bold text-kelly-navy">Path to Victory</h1>
+      <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-kelly-text/85">
+        Victory OS doctrine is locked. Sprint 0 begins with the full 75-county Victory Map. The Decision Engine and Mission
+        Brief UI will be built after the map is leadership-reviewed.
+      </p>
+      <p className="mt-6 font-body text-sm text-kelly-muted">
+        Canonical doctrine:{" "}
+        <code className="rounded bg-kelly-text/5 px-1.5 py-0.5 text-xs">
+          RedDirt/docs/campaign-events/VICTORY_OS_DOCTRINE.md
+        </code>
+      </p>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Link
+          href="/admin/ai-command-center"
+          className="rounded-full border border-kelly-navy/25 px-4 py-2 font-body text-sm font-bold text-kelly-navy transition hover:border-kelly-navy/40"
+        >
+          ← Campaign OS command center
+        </Link>
+      </div>
     </div>
   );
 }

@@ -43,7 +43,7 @@ import { CommunicationsCommandCenterPanel } from "@/components/admin/campaign-ev
 import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
 import { VolunteerIntelligencePanel } from "@/components/admin/volunteers/VolunteerIntelligencePanel";
 import { KellyOsIntelligencePanels } from "@/components/admin/campaign-events/KellyOsIntelligencePanels";
-import { MondayBriefPreviewStrip } from "@/components/admin/victory-os/MondayBriefPreviewStrip";
+import { PathToVictoryDashboardCard } from "@/components/admin/victory-os/PathToVictoryDashboardCard";
 
 const AGENT_READINESS_PCT = 86;
 
@@ -126,7 +126,7 @@ export async function AiCommandCenterHub() {
           </p>
         </header>
 
-      <MondayBriefPreviewStrip />
+      <PathToVictoryDashboardCard />
 
       <KellyOsCompletionPlanPanel presentationScore={presentation.score} presentationLabel={presentation.label} />
 
