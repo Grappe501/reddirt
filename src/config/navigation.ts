@@ -42,10 +42,10 @@ export const primaryNavGroups: NavGroup[] = [
     groupLandingHref: "/about",
     items: [
       { label: "Meet Kelly", href: "/about" },
-      { label: "Why Kelly", href: "/about/why-kelly" },
-      { label: "Her Story", href: "/about/story" },
+      { label: "Her Journey", href: "/about/journey" },
+      { label: "Community & Civic Work", href: "/about/community" },
+      { label: "Why I'm Running", href: "/about/why-im-running" },
       { label: "Experience & Leadership", href: "/about/business" },
-      { label: "Family & Community", href: "/about/forevermost" },
     ],
   },
   {

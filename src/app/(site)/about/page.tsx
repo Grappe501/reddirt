@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
-import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
@@ -10,19 +8,22 @@ import { QuoteBand } from "@/components/blocks/QuoteBand";
 import { pageMeta } from "@/lib/seo/metadata";
 import { getFeaturedYoutubeForHub } from "@/lib/content/content-hub-queries";
 import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
-import { KellyFullStory } from "@/components/about/KellyFullStory";
 import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySection";
-import { AboutBiographyDrilldown } from "@/components/about/AboutBiographyDrilldown";
+import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
+import { MeetKellySixQuestions } from "@/components/about/MeetKellySixQuestions";
+import { MeetKellyTrustIndicators } from "@/components/about/MeetKellyTrustIndicators";
+import { MeetKellyChapterIndex } from "@/components/about/MeetKellyChapterIndex";
 import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
+import { meetKellyExecutiveSummary } from "@/content/about/meet-kelly-hub";
+import { AboutBiographyDrilldown } from "@/components/about/AboutBiographyDrilldown";
 import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
-import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
+
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMeta({
-  title: "Meet Kelly — full story",
-  description: showPublicBiographyManuscript()
-    ? "Kelly’s Meet Kelly hub — biography arcs with manuscript chapters, business and Verizon leadership, Forevermost Farms, Stand Up Arkansas, ballot petitions, and why Secretary of State. Links into /biography for the literary narrative."
-    : "Kelly’s Meet Kelly hub — business and Verizon leadership, Forevermost Farms, Stand Up Arkansas, ballot petitions, and why Secretary of State. Campaign-facing chapters on this site; long-form manuscript paused during edit.",
+  title: "Meet Kelly",
+  description:
+    "Kelly Grappe for Arkansas Secretary of State — who she is, what she has done, why she is running, and trust indicators you can verify. Six questions, not a chronological résumé.",
   path: "/about",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
@@ -30,119 +31,73 @@ export const metadata: Metadata = pageMeta({
 export default async function AboutPage() {
   const homepage = await getMergedHomepageConfig();
   const featuredYoutube = await getFeaturedYoutubeForHub(homepage.featuredHomepageVideoInboundId);
-  const storyTrailPhotos = trailPhotosForSlot("aboutStory");
+  const summary = meetKellyExecutiveSummary;
 
   return (
     <>
-      <PageHero
-        eyebrow="Meet Kelly"
-        title="A Secretary of State who serves the people"
-        subtitle="Before we talk about systems and statutes, you deserve the whole picture—her business background, the land and civic work, and why she is asking for more than a vote. The Secretary of State is where Arkansas’s public records meet real life: business filings, election lists, and the paper trail of our democracy. Kelly is asking to hold that work with a careful, citizen-first hand."
-      >
-        <Button href="/get-involved" variant="primary">
+      <PageHero eyebrow={summary.eyebrow} title={summary.title} subtitle={summary.subtitle}>
+        <Button href="/about/why-im-running" variant="primary">
+          Why I&apos;m running
+        </Button>
+        <Button href="/get-involved" variant="outline">
           Get involved
         </Button>
-        <Button href="/priorities" variant="outline">
-          Office priorities
+        <Button href="/understand" variant="outline">
+          Understand the office
         </Button>
         <Button href="#talk-business-kelly" variant="outline">
           Talk Business &amp; Politics
         </Button>
-        {showPublicBiographyManuscript() ? (
-          <>
-            <Button href="/biography" variant="outline">
-              Kelly&apos;s story — chapters
-            </Button>
-            <Button href="#kelly-biography-arcs" variant="outline">
-              Biography arcs (summaries + chapters)
-            </Button>
-          </>
-        ) : null}
-        <Button href="#why-running" variant="outline">
-          Why I&apos;m running (short)
-        </Button>
       </PageHero>
 
-      {!showPublicBiographyManuscript() ? (
-        <FullBleedSection variant="subtle" className="!py-6">
-          <ContentContainer className="max-w-3xl">
-            <ContentPendingBadge variant="draft" />
-            <p className="mt-3 font-body text-sm text-kelly-muted">
-              Long-form biography manuscript chapters are draft — not public-ready. Meet Kelly below uses campaign-facing
-              essays only; verify résumé and timeline claims with campaign leadership before republishing elsewhere.
-            </p>
-          </ContentContainer>
-        </FullBleedSection>
-      ) : null}
+      <FullBleedSection variant="subtle" className="!py-6">
+        <ContentContainer className="max-w-3xl">
+          <MeetKellySubnav current="/about" />
+          <p className="mt-6 font-body text-base leading-relaxed text-kelly-text/85">{summary.lead}</p>
+          {!showPublicBiographyManuscript() ? (
+            <div className="mt-4">
+              <ContentPendingBadge variant="draft" />
+              <p className="mt-2 font-body text-sm text-kelly-muted">
+                Long-form biography manuscript chapters are draft — not public-ready.
+              </p>
+            </div>
+          ) : null}
+        </ContentContainer>
+      </FullBleedSection>
 
-      <FullBleedSection
-        variant="subtle"
-        padY
-        className="!pt-0 md:!pt-1 lg:!pt-2"
-      >
+      <FullBleedSection padY>
+        <ContentContainer wide>
+          <div className="mx-auto max-w-4xl">
+            <MeetKellySixQuestions />
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY>
         <ContentContainer wide>
           <div className="mx-auto max-w-3xl">
             <TalkBusinessKellySection fallbackYoutubeVideoId={featuredYoutube?.videoId ?? null} />
           </div>
-
           {showPublicBiographyManuscript() ? (
             <div className="mx-auto mt-10 max-w-3xl md:mt-14">
               <AboutBiographyDrilldown />
             </div>
           ) : null}
+        </ContentContainer>
+      </FullBleedSection>
 
-          <div className="mx-auto mt-12 max-w-3xl md:mt-16">
-            <KellyFullStory trailPeoplePhotos={storyTrailPhotos} />
+      <FullBleedSection padY>
+        <ContentContainer wide>
+          <div className="mx-auto max-w-4xl">
+            <MeetKellyTrustIndicators />
           </div>
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection padY aria-labelledby="why-running">
-        <ContentContainer className="max-w-3xl">
-          <SectionHeading
-            id="why-running"
-            align="left"
-            eyebrow="Why I’m running"
-            title="People over politics. Always."
-            subtitle="The Secretary of State’s office touches every voter, business, and community in Arkansas. It should feel steady, accessible, and accountable—no matter your party."
-            className="max-w-2xl scroll-mt-24"
-          />
-          <div className="mt-10 space-y-6 font-body text-lg leading-relaxed text-kelly-text/85">
-            <p>
-              Leadership in this role isn’t about headlines or ideology. It’s about doing the detailed work of
-              administration: supporting county officials, making business services clearer and more efficient, communicating
-              in plain language, and upholding the law as written.
-            </p>
-            <p>
-              I’m a Democrat who believes we earn statewide office by showing up for the whole state—including voters
-              who will never agree with me on everything. If you lead a Republican club, a Democratic committee, or a
-              civic league and want a substantive conversation about this office, I want to be there.
-            </p>
-            <p>
-              For the long version of the case for this office, read{" "}
-              <Link
-                href="/about/why-secretary-of-state"
-                className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
-              >
-                Why this office
-              </Link>{" "}
-              or jump to <Link href="#sos-why" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">that section</Link>{" "}
-              above.
-            </p>
-            <p className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 text-base text-kelly-text/80 shadow-[var(--shadow-soft)]">
-              Questions? Email{" "}
-              <a
-                href="mailto:kelly@kellygrappe.com"
-                className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
-              >
-                kelly@kellygrappe.com
-              </a>{" "}
-              or reach out through{" "}
-              <Link href="/get-involved" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-                Get involved
-              </Link>
-              . Press and compliance details will expand here as the committee filing is finalized.
-            </p>
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer wide>
+          <div className="mx-auto max-w-4xl">
+            <MeetKellyChapterIndex />
           </div>
         </ContentContainer>
       </FullBleedSection>
@@ -156,7 +111,7 @@ export default async function AboutPage() {
       <CTASection
         eyebrow="Next step"
         title="You know the person. Now bring someone into the work."
-        description="When you’re ready, we’ll connect you with concrete ways to help—starting in your county, on your timeline."
+        description="When you're ready, we'll connect you with concrete ways to help—starting in your county, on your timeline."
         variant="ink-band"
       >
         <Button href="/get-involved" variant="primary" className="bg-kelly-page text-kelly-text hover:bg-kelly-page/90">
