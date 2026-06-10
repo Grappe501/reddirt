@@ -342,6 +342,8 @@
     "victory:decisions:verify": "tsx scripts/victory-os/test-weekly-decisions.ts",
     "victory:missions:sync": "tsx scripts/victory-os/sync-county-missions.ts",
     "victory:missions:verify": "tsx scripts/victory-os/test-county-missions.ts",
+    "victory:brief:verify": "tsx scripts/victory-os/test-monday-brief.ts",
+    "victory:monday": "tsx scripts/victory-os/run-monday-pipeline.ts",
     "fieldops:volunteer-capacity:build": "tsx scripts/field-ops/build-volunteer-capacity-model.ts",
     "fieldops:gotv-allocation:build": "tsx scripts/field-ops/build-gotv-commitment-allocation.ts",
     "ingest:kellymedia": "tsx scripts/ingest-kellymedia.ts",
