@@ -82,9 +82,11 @@ The engine needs supply constraints by season.
 | 6 | Assumption change policy | `ASSUMPTION_CHANGE_LOG.md` | Draft |
 | 7 | Pre-read packet | `LEADERSHIP_LOCK_SESSION_PRE_READ.md` | Ready |
 | 8 | Leadership summary one-pager | `VICTORY_MAP_LEADERSHIP_SUMMARY.md` | Ready |
+| 9 | Winning theory lock sheet | `sprint-0-5/06-WINNING_THEORY.md` | Draft |
 
 **Meeting packet:** [`LEADERSHIP_DECISION_PACKET.md`](./LEADERSHIP_DECISION_PACKET.md)  
-**Print for the room:** [`VICTORY_MAP_LEADERSHIP_SUMMARY.md`](./VICTORY_MAP_LEADERSHIP_SUMMARY.md)
+**Print for the room:** [`VICTORY_MAP_LEADERSHIP_SUMMARY.md`](./VICTORY_MAP_LEADERSHIP_SUMMARY.md)  
+**Phase 1 declaration:** [`VICTORY_OS_PHASE_1_COMPLETE.md`](./VICTORY_OS_PHASE_1_COMPLETE.md)
 
 After locks: re-run `npm run victory:map:seed` only when leadership approves updated overrides in `leadership-county-overrides.ts` — **not before sign-off**.
 
@@ -98,6 +100,7 @@ Leadership can answer:
 2. **What counties can grow most?** → Locked opportunity definitions + growth county set  
 3. **What does readiness mean?** → Locked definitions; unknown ≠ weak  
 4. **How much Kelly time exists?** → Locked capacity rules by season  
+5. **How do we win?** → Locked winning theory (one sentence)
 
 Only then: **Priority 2 — Deployment Priority Engine** (deterministic math, no UI).
 
@@ -118,4 +121,5 @@ Only then: **Priority 2 — Deployment Priority Engine** (deterministic math, no
 - [`VICTORY_OS_DOCTRINE.md`](./VICTORY_OS_DOCTRINE.md)  
 - [`VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md`](./VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md)  
 - [`VICTORY_MAP_SPRINT_0_REVIEW.md`](./VICTORY_MAP_SPRINT_0_REVIEW.md)  
+- [`VICTORY_OS_PHASE_1_COMPLETE.md`](./VICTORY_OS_PHASE_1_COMPLETE.md)  
 - [`PUBLIC_SITE_ARCHITECTURE.md`](../website/PUBLIC_SITE_ARCHITECTURE.md)

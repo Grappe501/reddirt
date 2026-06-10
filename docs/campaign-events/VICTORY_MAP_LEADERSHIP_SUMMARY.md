@@ -38,8 +38,9 @@
 | ☐ | **Opportunity Definitions** — High · Medium · Low |
 | ☐ | **Kelly Capacity** — Season 2 / 3 / 4 numerical caps |
 | ☐ | **Victory Assumptions** — turnout, targets, resources, volunteers |
+| ☐ | **Winning Theory** — one sentence: how we win |
 
-**Facilitator rule:** *Will changing this assumption change how the engine allocates resources?* If no → move on.
+**Facilitator rules:** Engine → *Will this change how resources are allocated?* Strategy → *Does this support the winning theory?*
 
 ---
 
@@ -49,7 +50,7 @@
 |:--|:--|
 | **Deployment Priority Engine** | **BLOCKED** |
 | **Reason** | Leadership assumptions not locked |
-| **Unlock condition** | All five decisions approved and signed |
+| **Unlock condition** | All six decisions approved and signed |
 
 ```text
 Leadership Sign-Off  →  Victory Map Locked  →  Priority 2 Begins

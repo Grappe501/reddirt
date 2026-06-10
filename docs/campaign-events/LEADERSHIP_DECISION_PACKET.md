@@ -2,7 +2,7 @@
 
 **For:** Kelly, Steve, Campaign Manager, field leadership  
 **Duration:** 90–120 minutes  
-**Objective:** Leave the room with **five locked decisions** — not draft, not heuristic  
+**Objective:** Leave the room with **six locked decisions** — not draft, not heuristic  
 **Facilitator prep:** Print or share lock sheets in [`sprint-0-5/`](./sprint-0-5/)  
 **One-page summary (print for the room):** [`VICTORY_MAP_LEADERSHIP_SUMMARY.md`](./VICTORY_MAP_LEADERSHIP_SUMMARY.md)  
 **Full toolkit:** [`VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md`](./VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md)
@@ -28,13 +28,14 @@
 
 | Time | Item | Output |
 |------|------|--------|
-| 0:00 | Frame + success criteria | Five locks today |
+| 0:00 | Frame + success criteria | Six locks today |
 | 0:10 | **Decision 1** — Critical counties | Final Critical list |
 | 0:35 | **Decision 2** — Readiness definitions | Strong / Moderate / Weak / Unknown |
 | 0:50 | **Decision 3** — Opportunity definitions | High / Medium / Low |
 | 1:05 | **Decision 4** — Kelly capacity by season | Season 2 / 3 / 4 caps |
 | 1:20 | **Decision 5** — Victory assumptions | Win path, turnout, deployment mix |
-| 1:30 | Assumption Change Policy + sign-off | Signatures; unlock Priority 2 |
+| 1:30 | **Decision 6** — Winning theory | One-sentence campaign strategy |
+| 1:40 | Assumption Change Policy + sign-off | Signatures; unlock Priority 2 |
 
 ---
 
@@ -123,11 +124,33 @@ Lock in [`VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md`](./VICTORY_OS_LEADERSHIP_ASSUMPT
 
 ---
 
+## Decision 6 — Winning Theory
+
+**Question:** In one sentence, how does this campaign win?
+
+Not county classifications. Not deployment formulas. Campaign strategy — **not an engine input**.
+
+**Discuss:** Which theory explains where Kelly time, field, and persuasion should concentrate?
+
+**Record in:** [`sprint-0-5/06-WINNING_THEORY.md`](./sprint-0-5/06-WINNING_THEORY.md) and [`VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md`](./VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md) § Winning Theory
+
+**Locked output (fill in session):**
+
+```text
+We win by _________________________________________________________________
+```
+
+**After lock — use this test for every recommendation:**
+
+> Does this recommendation support the winning theory?
+
+---
+
 ## Close — Sign-off + Assumption Change Policy
 
 1. Acknowledge [`Assumption Change Policy`](./sprint-0-5/05-ASSUMPTION_SIGN_OFF.md#assumption-change-policy-institutional-memory--required-before-priority-2)  
 2. Sign [`sprint-0-5/05-ASSUMPTION_SIGN_OFF.md`](./sprint-0-5/05-ASSUMPTION_SIGN_OFF.md)  
-3. Update [`leadership-lock-v1.json`](../data/strategy-doctrine/leadership-lock-v1.json) → `locked`  
+3. Update [`leadership-lock-v1.json`](../data/strategy-doctrine/leadership-lock-v1.json) → `leadership_locked`  
 4. **Schedule engineering:** overrides + map re-seed → **then** Priority 2
 
 ---

@@ -18,6 +18,7 @@ Once the Deployment Priority Engine exists, **assumption drift becomes silent co
 | Readiness definitions | Strong/Moderate/Weak/Unknown criteria |
 | Kelly capacity assumptions | Season caps, travel days, Tier 1 events |
 | Victory assumptions | Win target, turnout, deployment mix |
+| Winning theory | One-sentence campaign strategy |
 
 ### Amendment process (minimum)
 
@@ -44,7 +45,7 @@ Once the Deployment Priority Engine exists, **assumption drift becomes silent co
 We have reviewed:
 
 - [`VICTORY_MAP_SPRINT_0_REVIEW.md`](../VICTORY_MAP_SPRINT_0_REVIEW.md) (75-county draft)
-- Lock sheets 01–04 in [`sprint-0-5/`](./)
+- Lock sheets 01–06 in [`sprint-0-5/`](./)
 - [`VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md`](../VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md)
 
 We understand:
@@ -54,7 +55,8 @@ We understand:
 3. **Readiness "weak"** will not mean "unknown data" in the engine.  
 4. **Opportunity** drives marginal vote gain; Critical alone does not dictate Kelly time.  
 5. **Kelly capacity** is capped by season before any allocation math runs.  
-6. Vote math in win-target files is **planning scenario**, not forecast.
+6. Vote math in win-target files is **planning scenario**, not forecast.  
+7. **Winning theory** is one sentence — the strategic lens for every recommendation, not an engine input.
 
 ---
 
@@ -67,7 +69,8 @@ We understand:
 | 3 | Opportunity definitions | ☐ Draft ☐ Locked | | |
 | 4 | Kelly capacity rules | ☐ Draft ☐ Locked | | |
 | 5 | Win target / turnout assumptions (leadership assumptions doc §1–4) | ☐ Draft ☐ Locked | | |
-| 6 | Assumption Change Policy acknowledged | ☐ Draft ☐ Locked | | |
+| 6 | Winning theory (one sentence) | ☐ Draft ☐ Locked | | |
+| 7 | Assumption Change Policy acknowledged | ☐ Draft ☐ Locked | | |
 
 ---
 
@@ -79,6 +82,7 @@ We understand:
 | What counties can grow most? (Opportunity locked) | ☐ | ☐ |
 | What does readiness mean? (Definitions locked; unknown ≠ weak) | ☐ | ☐ |
 | How much Kelly time exists? (Capacity rules locked) | ☐ | ☐ |
+| What is our winning theory? (One sentence locked) | ☐ | ☐ |
 
 ---
 

@@ -17,6 +17,26 @@ This is the record of **leadership decisions before they become algorithms**.
 
 **Rule:** No dimension value in `victory-map-v1.json` should contradict an assumption marked **Locked** below without an explicit amendment dated and signed here.
 
+When the campaign is tired and the engine is producing recommendations, open this document and read **Winning Theory** first. Ask: *Does this recommendation support the winning theory?* If not, the recommendation is wrong.
+
+---
+
+## Winning Theory (lock in Leadership Lock Session)
+
+**Status:** Draft — **Decision 6** in Sprint 0.5  
+**Lock sheet:** [`sprint-0-5/06-WINNING_THEORY.md`](./sprint-0-5/06-WINNING_THEORY.md)  
+**Not an engine input.** Campaign strategy — every future decision should support this sentence.
+
+```text
+We win by _________________________________________________________________
+```
+
+**Examples (discussion only — write leadership's own sentence):**
+
+- We win by maximizing turnout in Democratic strongholds while outperforming expectations in fast-growing suburban counties.  
+- We win by showing up everywhere, increasing rural performance, and closing the gap in medium-sized counties.  
+- We win by becoming the most visible statewide candidate in Arkansas.
+
 ---
 
 ## How to use this doc

@@ -2,7 +2,7 @@
 
 **Send:** 24 hours before the session  
 **Required reading time:** ~25 minutes  
-**Meeting:** 90–120 minutes · **Goal:** Five locked decisions — not discussion, not brainstorming  
+**Meeting:** 90–120 minutes · **Goal:** Six locked decisions — not discussion, not brainstorming  
 **Facilitator packet:** [`LEADERSHIP_DECISION_PACKET.md`](./LEADERSHIP_DECISION_PACKET.md)  
 **Lock sheets (print or share):** [`sprint-0-5/`](./sprint-0-5/)
 
@@ -12,7 +12,7 @@
 
 ## What you are deciding
 
-At the end of the session, these five items must read **LOCKED**:
+At the end of the session, these six items must read **LOCKED**:
 
 ```text
 Critical Counties       LOCKED
@@ -20,6 +20,7 @@ Readiness Definitions   LOCKED
 Opportunity Definitions LOCKED
 Kelly Capacity          LOCKED
 Victory Assumptions     LOCKED
+Winning Theory          LOCKED
 ```
 
 Until then, Priority 2 (Deployment Priority Engine) stays blocked.
@@ -32,7 +33,7 @@ Until then, Priority 2 (Deployment Priority Engine) stays blocked.
 |---|----------|-----:|-----|
 | 1 | [`VICTORY_MAP_SPRINT_0_REVIEW.md`](./VICTORY_MAP_SPRINT_0_REVIEW.md) — Dimension summary + Critical counties sections only | 5 min | The 16 Critical problem; statewide counts |
 | 2 | [`VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md`](./VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md) — Purpose + lock sequence | 5 min | Why we pause before the engine |
-| 3 | [`LEADERSHIP_DECISION_PACKET.md`](./LEADERSHIP_DECISION_PACKET.md) — Full agenda | 5 min | Five decisions, timing, outputs |
+| 3 | [`LEADERSHIP_DECISION_PACKET.md`](./LEADERSHIP_DECISION_PACKET.md) — Full agenda | 5 min | Six decisions, timing, outputs |
 | 4 | Critical county list — below + [`sprint-0-5/01-CRITICAL_COUNTY_LIST.md`](./sprint-0-5/01-CRITICAL_COUNTY_LIST.md) | 5 min | Doctrine six vs heuristic ten |
 | 5 | Opportunity snapshot — below + [`sprint-0-5/03-OPPORTUNITY_DEFINITIONS.md`](./sprint-0-5/03-OPPORTUNITY_DEFINITIONS.md) | 5 min | Critical ≠ high Kelly ROI |
 | 6 | Readiness draft — below + [`sprint-0-5/02-READINESS_DEFINITIONS.md`](./sprint-0-5/02-READINESS_DEFINITIONS.md) | 5 min | Unknown ≠ Weak |
@@ -94,7 +95,7 @@ Lock sheet: [`sprint-0-5/02-READINESS_DEFINITIONS.md`](./sprint-0-5/02-READINESS
 
 ---
 
-## The five decisions (come prepared to lock)
+## The six decisions (come prepared to lock)
 
 ### Decision 1 — Critical Counties
 
@@ -124,15 +125,27 @@ Lock turnout assumptions, vote targets, resource assumptions, volunteer assumpti
 
 Source: [`VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md`](./VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md)
 
+### Decision 6 — Winning Theory
+
+One sentence: how does this campaign win? Not an engine input — the strategic lens for every future recommendation.
+
+Lock sheet: [`sprint-0-5/06-WINNING_THEORY.md`](./sprint-0-5/06-WINNING_THEORY.md)
+
 ---
 
-## Facilitator rule
+## Facilitator rules
 
-Whenever debate stalls, ask:
+**Engine decisions (1–5):** Whenever debate stalls, ask:
 
 > **"Will changing this assumption change how the engine allocates resources?"**
 
 If the answer is **no**, do not spend 20 minutes on it.
+
+**Winning theory (6) and all future recommendations:**
+
+> **"Does this recommendation support the winning theory?"**
+
+If not, the recommendation is wrong.
 
 ---
 

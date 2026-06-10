@@ -15,7 +15,7 @@ Copy the template below for each change. Do not edit locked assumptions without 
 
 - **Requested by:**
 - **Approved by:**
-- **Category:** Critical counties | Readiness | Opportunity | Kelly capacity | Victory assumptions
+- **Category:** Critical counties | Readiness | Opportunity | Kelly capacity | Victory assumptions | Winning theory
 - **Before:**
 - **After:**
 - **Rationale:**
