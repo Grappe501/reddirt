@@ -32,6 +32,7 @@ import { SPRINT_EMAIL_OS_AGENT_CATALOG_ENTRIES } from "./ai-tools/sprint-email-o
 import { SPRINT_VOLUNTEER_CATALOG_ENTRIES } from "./ai-tools/sprint-volunteer-tools";
 import { ORCHESTRATION_INTELLIGENCE_CATALOG_ENTRIES } from "./ai-tools/sprint-orchestration-intelligence-tools";
 import { CAMPAIGN_KNOWLEDGE_CATALOG_ENTRIES } from "./ai-tools/sprint-campaign-knowledge-tools";
+import { SPRINT_VICTORY_OS_CATALOG_ENTRIES } from "./ai-tools/sprint-victory-os-tools";
 
 const S = (s: AiToolEntry["status"]) => s;
 
@@ -167,6 +168,7 @@ export const SUPPLEMENT_TOOLS_BY_LIFECYCLE: Record<string, AiToolEntry[]> = {
   volunteer_system: SPRINT_VOLUNTEER_CATALOG_ENTRIES,
   campaign_orchestration_intelligence: ORCHESTRATION_INTELLIGENCE_CATALOG_ENTRIES,
   campaign_knowledge_graph: CAMPAIGN_KNOWLEDGE_CATALOG_ENTRIES,
+  victory_os: SPRINT_VICTORY_OS_CATALOG_ENTRIES,
 };
 
 const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
@@ -325,6 +327,12 @@ const SUPPLEMENT_ONLY_LIFECYCLES: AiToolLifecycle[] = [
     order: 48,
     title: "Campaign Knowledge Graph + Lessons Engine — living campaign memory",
     tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.campaign_knowledge_graph ?? [],
+  },
+  {
+    id: "victory_os",
+    order: 49,
+    title: "Victory OS — Layer 0 Victory Map (Sprint 0)",
+    tools: SUPPLEMENT_TOOLS_BY_LIFECYCLE.victory_os ?? [],
   },
 ];
 

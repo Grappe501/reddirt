@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "doctrinePath": "docs/campaign-events/VICTORY_OS_DOCTRINE.md",
+  "updatedAt": "2026-06-09T00:00:00.000Z",
+  "decisionCadence": {
+    "seasons1Through4": "weekly_monday",
+    "season5": "daily",
+    "electionDay": "operations_center_only"
+  },
+  "seasons": [
+    {
+      "id": "season_1_build_organization",
+      "label": "Build Organization",
+      "startYmd": "2026-06-10",
+      "endYmd": "2026-07-04",
+      "headlineQuestion": "Is the machine built?",
+      "primaryMeasures": ["county_chairs_contacted", "volunteer_captains_recruited", "fair_festival_inventory_complete"],
+      "kellyFocusMix": { "visibility": 0.5, "infrastructure": 0.35, "fundraising": 0.1, "media": 0.05 }
+    },
+    {
+      "id": "season_2_build_familiarity",
+      "label": "Build Familiarity — Arkansas Summer Tour",
+      "startYmd": "2026-07-05",
+      "endYmd": "2026-08-31",
+      "headlineQuestion": "Have they seen her?",
+      "primaryMeasures": ["counties_visited", "voter_contacts", "volunteers_recruited"],
+      "targets": { "countiesVisitedMin": 30, "countiesVisitedMax": 40 },
+      "regionalSwingRule": "Each week include Northwest, Central, and East or South swing where possible",
+      "kellyFocusMix": { "visibility": 0.75, "infrastructure": 0.1, "voter_contact": 0.1, "fundraising": 0.05 }
+    },
+    {
+      "id": "season_3_build_confidence",
+      "label": "Build Confidence — Persuasion Season",
+      "startYmd": "2026-09-01",
+      "endYmd": "2026-09-30",
+      "headlineQuestion": "Do they know why to vote for Kelly?",
+      "primaryMeasures": ["debate_reach", "media_reach", "persuasion_contacts", "message_consistency"],
+      "kellyFocusMix": { "visibility": 0.4, "media": 0.25, "voter_contact": 0.2, "infrastructure": 0.15 }
+    },
+    {
+      "id": "season_4_build_turnout",
+      "label": "Build Turnout — GOTV Season",
+      "startYmd": "2026-10-01",
+      "endYmd": "2026-10-20",
+      "headlineQuestion": "Will they vote?",
+      "primaryMeasures": ["vote_commitments", "early_votes", "volunteer_shifts_completed"],
+      "lowPriorityThreshold": 40,
+      "kellyFocusMix": { "voter_contact": 0.55, "visibility": 0.15, "infrastructure": 0.15, "fundraising": 0.15 }
+    },
+    {
+      "id": "season_5_build_urgency",
+      "label": "Build Urgency — Final 14 Days",
+      "startYmd": "2026-10-21",
+      "endYmd": "2026-11-02",
+      "headlineQuestion": "Where do we deploy Kelly today?",
+      "primaryMeasures": ["daily_turnout_progress", "county_gaps", "resource_deployment"],
+      "lowPriorityThreshold": 60,
+      "dynamicScheduling": true
+    },
+    {
+      "id": "election_day",
+      "label": "Execute — Election Day",
+      "startYmd": "2026-11-03",
+      "endYmd": "2026-11-03",
+      "headlineQuestion": "Did every supporter vote?",
+      "primaryMeasures": ["votes"],
+      "surface": "/admin/election-day"
+    }
+  ]
+}

@@ -6,6 +6,8 @@
 **Status:** Sprint 0 complete (May 2026) — master build control  
 **Supersedes:** ad-hoc feature docs for *ordering* only; feature truth remains in sibling `docs/campaign-events/*` and code.
 
+**Victory OS (June 2026+):** Calendar/field execution remains on ledger rails below; **strategic operating doctrine** for statewide SOS — Victory Map → Decision Generator → county missions — is canonical in [`VICTORY_OS_DOCTRINE.md`](./VICTORY_OS_DOCTRINE.md).
+
 ---
 
 ## North star

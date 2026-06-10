@@ -64,6 +64,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       id: "calendar",
       label: "Calendar",
       links: [
+        { href: "/admin/mission-brief", label: "Path to Victory" },
         { href: "/admin/campaign-calendar/timeline", label: "Campaign timeline" },
         { href: `/admin/campaign-calendar/month?month=${month}`, label: "Month grid" },
         { href: `/admin/campaign-events/calendar-sync?month=${month}`, label: "Sync dashboard", badgeKey: "sync" },
