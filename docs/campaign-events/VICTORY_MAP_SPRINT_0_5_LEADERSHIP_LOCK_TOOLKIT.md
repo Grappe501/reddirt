@@ -80,8 +80,11 @@ The engine needs supply constraints by season.
 | 4 | Kelly capacity rules | `sprint-0-5/04-KELLY_CAPACITY_RULES.md` | Draft |
 | 5 | Assumption sign-off | `sprint-0-5/05-ASSUMPTION_SIGN_OFF.md` | Draft |
 | 6 | Assumption change policy | `ASSUMPTION_CHANGE_LOG.md` | Draft |
+| 7 | Pre-read packet | `LEADERSHIP_LOCK_SESSION_PRE_READ.md` | Ready |
+| 8 | Leadership summary one-pager | `VICTORY_MAP_LEADERSHIP_SUMMARY.md` | Ready |
 
-**Meeting packet:** [`LEADERSHIP_DECISION_PACKET.md`](./LEADERSHIP_DECISION_PACKET.md)
+**Meeting packet:** [`LEADERSHIP_DECISION_PACKET.md`](./LEADERSHIP_DECISION_PACKET.md)  
+**Print for the room:** [`VICTORY_MAP_LEADERSHIP_SUMMARY.md`](./VICTORY_MAP_LEADERSHIP_SUMMARY.md)
 
 After locks: re-run `npm run victory:map:seed` only when leadership approves updated overrides in `leadership-county-overrides.ts` — **not before sign-off**.
 
