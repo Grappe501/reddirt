@@ -21,6 +21,15 @@
 4. Critical county list — [`sprint-0-5/01-CRITICAL_COUNTY_LIST.md`](./sprint-0-5/01-CRITICAL_COUNTY_LIST.md)  
 5. Opportunity classifications — [`sprint-0-5/03-OPPORTUNITY_DEFINITIONS.md`](./sprint-0-5/03-OPPORTUNITY_DEFINITIONS.md)  
 6. Readiness definitions — [`sprint-0-5/02-READINESS_DEFINITIONS.md`](./sprint-0-5/02-READINESS_DEFINITIONS.md)  
+7. Kelly draft strategic input — [`LEADERSHIP_DRAFT_INPUT_KELLY.md`](./LEADERSHIP_DRAFT_INPUT_KELLY.md) (urban six, visit tiers, values)
+
+---
+
+## Pre-session homework (collect at 0:00)
+
+Each participant arrives with **one sentence**: *What is our winning theory?*
+
+Facilitator collects before county debate. Compare answers — alignment test. See [`LEADERSHIP_DRAFT_INPUT_KELLY.md`](./LEADERSHIP_DRAFT_INPUT_KELLY.md).
 
 ---
 
@@ -28,7 +37,7 @@
 
 | Time | Item | Output |
 |------|------|--------|
-| 0:00 | Frame + success criteria | Six locks today |
+| 0:00 | Collect one-sentence winning theories + frame | Alignment check; six locks today |
 | 0:10 | **Decision 1** — Critical counties | Final Critical list |
 | 0:35 | **Decision 2** — Readiness definitions | Strong / Moderate / Weak / Unknown |
 | 0:50 | **Decision 3** — Opportunity definitions | High / Medium / Low |

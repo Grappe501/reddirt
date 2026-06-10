@@ -86,7 +86,9 @@ The engine needs supply constraints by season.
 
 **Meeting packet:** [`LEADERSHIP_DECISION_PACKET.md`](./LEADERSHIP_DECISION_PACKET.md)  
 **Print for the room:** [`VICTORY_MAP_LEADERSHIP_SUMMARY.md`](./VICTORY_MAP_LEADERSHIP_SUMMARY.md)  
-**Phase 1 declaration:** [`VICTORY_OS_PHASE_1_COMPLETE.md`](./VICTORY_OS_PHASE_1_COMPLETE.md)
+**Phase 1 declaration:** [`VICTORY_OS_PHASE_1_COMPLETE.md`](./VICTORY_OS_PHASE_1_COMPLETE.md)  
+**Phase 2 spec (blocked):** [`VICTORY_OS_PHASE_2_DECISION_INFRASTRUCTURE.md`](./VICTORY_OS_PHASE_2_DECISION_INFRASTRUCTURE.md)  
+**Kelly draft input:** [`LEADERSHIP_DRAFT_INPUT_KELLY.md`](./LEADERSHIP_DRAFT_INPUT_KELLY.md)
 
 After locks: re-run `npm run victory:map:seed` only when leadership approves updated overrides in `leadership-county-overrides.ts` — **not before sign-off**.
 

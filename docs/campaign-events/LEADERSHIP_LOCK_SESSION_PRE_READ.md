@@ -44,6 +44,18 @@ Until then, Priority 2 (Deployment Priority Engine) stays blocked.
 
 ---
 
+## Pre-session homework (required)
+
+Each leadership participant arrives with **one sentence**:
+
+> What is our winning theory?
+
+Write it **before** the meeting. Facilitator collects and compares answers at the start. Five different theories = alignment problem discovered early. Convergent answers = strategic cohesion.
+
+Kelly draft input (visit tiers, urban six, values): [`LEADERSHIP_DRAFT_INPUT_KELLY.md`](./LEADERSHIP_DRAFT_INPUT_KELLY.md)
+
+---
+
 ## Snapshot 1 — Current Critical counties (draft, 16)
 
 **Doctrine six (proposed locked):** Benton, Washington, Pulaski, Faulkner, Saline, Craighead

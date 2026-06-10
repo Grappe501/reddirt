@@ -13,6 +13,10 @@
 
 **Target size guidance:** Most statewide campaigns operate with **~6–10 Critical counties**, not 16.
 
+**Kelly draft (urban centers — run the score up):** Pulaski · Washington · Faulkner · Craighead · Benton · **Sebastian** (replaces Saline in doctrine-six draft). Full context: [`LEADERSHIP_DRAFT_INPUT_KELLY.md`](../LEADERSHIP_DRAFT_INPUT_KELLY.md)
+
+**Separate from electoral Critical:** Rural **visit tiers** (3 / 2 / 1 visits) are Kelly capacity strategy — lock in Decision 4, not necessarily identical to Critical list.
+
 ---
 
 ## Doctrine six (proposed locked Critical)

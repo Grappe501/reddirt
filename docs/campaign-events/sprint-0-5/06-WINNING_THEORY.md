@@ -35,6 +35,18 @@ Not county classifications. Not deployment formulas. One sentence leadership bel
 
 ---
 
+## Values foundation (Kelly campaign — discuss before locking one sentence)
+
+People over politics · community organizing over campaign alone · leave structure and leadership behind · reconciliation across Arkansas · SOS office non-partisan (balls and strikes) · direct democracy and ballot initiatives · civic engagement and voter participation · guide communities to self-organize.
+
+**Kelly draft (session starting point — edit to one locked sentence):**
+
+> We win by running up the score in urban Democratic strongholds while earning rural Arkansas through listening, immersion, and community organizing — leaving lasting civic structure behind, not just a campaign footprint.
+
+Full draft input: [`LEADERSHIP_DRAFT_INPUT_KELLY.md`](../LEADERSHIP_DRAFT_INPUT_KELLY.md)
+
+---
+
 ## Locked winning theory (fill in session)
 
 ```text

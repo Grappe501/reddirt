@@ -152,3 +152,48 @@ to
 > "Let's decide how we win."
 
 Governance quality now matters more than engineering quality. That is the correct order.
+
+---
+
+## Healthy separation (Phase 1 outcome)
+
+| Layer | Role |
+|-------|------|
+| **Campaign website** | Public trust, competence, visibility, action |
+| **Victory OS** | Internal strategy, governance, resource allocation, execution |
+| **Leadership** | Source of assumptions and winning theory |
+
+---
+
+## Phase 2 definition
+
+**Victory OS Phase 2 — Decision Infrastructure**
+
+Full spec: [`VICTORY_OS_PHASE_2_DECISION_INFRASTRUCTURE.md`](./VICTORY_OS_PHASE_2_DECISION_INFRASTRUCTURE.md)
+
+Deliverables: locked map, locked assumptions, `resolveDeploymentPriority()`, deterministic scoring, traceability, auditability.
+
+**Not:** AI, predictions, automation, fancy dashboards.
+
+---
+
+## What to measure next
+
+Not code progress. Not routes. **Decision quality.**
+
+Can leadership answer with confidence:
+
+1. Which counties are truly critical?
+2. Which counties are truly movable?
+3. What does readiness actually mean?
+4. How much Kelly capacity exists?
+5. What assumptions power the model?
+6. What is the campaign's winning theory?
+
+---
+
+## Kelly draft input (pre-session)
+
+Strategic direction captured for the lock session: [`LEADERSHIP_DRAFT_INPUT_KELLY.md`](./LEADERSHIP_DRAFT_INPUT_KELLY.md)
+
+Includes urban critical six, rural visit tiers, immersion model, values foundation, and draft winning theory — **not locked until signed.**
