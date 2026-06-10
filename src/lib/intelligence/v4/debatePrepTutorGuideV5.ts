@@ -2,7 +2,7 @@
  * Debate prep tutor v5 — conversational guides: why, when, how for every mode and UI element.
  */
 import type { DebatePrepProfessorMode } from "@/lib/intelligence/v4/debatePrepProfessorV5";
-import type { DebatePrepTutorMode } from "@/lib/intelligence/v4/debatePrepTutorPackage";
+import type { DebatePrepTutorMode } from "@/lib/intelligence/v4/debatePrepTutorPackageClient";
 
 export const DEBATE_PREP_TUTOR_V5_VERSION = "tutor-v5.0-conversational";
 

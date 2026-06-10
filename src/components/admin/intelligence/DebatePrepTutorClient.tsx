@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import Link from "next/link";
-import type { DebatePrepTutorMode } from "@/lib/intelligence/v4/debatePrepTutorPackage";
+import type { DebatePrepTutorMode } from "@/lib/intelligence/v4/debatePrepTutorPackageClient";
 import type { TutorCritiqueResult, TutorSession } from "@/lib/intelligence/v4/debatePrepTutorOrchestrator";
 import type { DebatePrepProfessorMode } from "@/lib/intelligence/v4/debatePrepProfessorV5";
 import type {

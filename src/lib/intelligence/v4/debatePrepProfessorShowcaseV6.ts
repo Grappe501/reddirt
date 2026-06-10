@@ -2,7 +2,7 @@
  * Professor showcase v6 — cinematic seminar skins per mode.
  */
 import type { DebatePrepProfessorMode } from "@/lib/intelligence/v4/debatePrepProfessorV5";
-import type { DebatePrepTutorMode } from "@/lib/intelligence/v4/debatePrepTutorPackage";
+import type { DebatePrepTutorMode } from "@/lib/intelligence/v4/debatePrepTutorPackageClient";
 
 export const PROFESSOR_SHOWCASE_V6_VERSION = "showcase-v6.0";
 
