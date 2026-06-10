@@ -74,8 +74,8 @@ Cross-reference: [`KELLY_BIOGRAPHY_VERIFICATION_MATRIX.md`](./KELLY_BIOGRAPHY_VE
 | Asset | Route / path | Status | Owner | Notes |
 |-------|----------------|--------|-------|-------|
 | Schedule / Invite Kelly | `/schedule` | Needs Review | Campaign | |
-| Counties visited counter | — | Missing Source | Operations | No public metric until verified list exists |
-| County presence map | — | Missing Source | Operations | Pass 3 — not started |
+| Counties visited counter | `/arkansas` | Approved (derived) | Operations | Counts from published public events only; empty until events publish |
+| County presence map | `/arkansas`, `/arkansas/counties` | Needs Review | Campaign | Pass 3 — no Victory OS metrics |
 | Upcoming stops | `/events` or schedule | Needs Review | Campaign | Published events only |
 
 ---
@@ -105,4 +105,6 @@ Cross-reference: [`KELLY_BIOGRAPHY_VERIFICATION_MATRIX.md`](./KELLY_BIOGRAPHY_VE
 
 | Date | Change |
 |------|--------|
+| 2026-06-10 | Pass 3: `/arkansas` county presence routes |
+| 2026-06-10 | Pass 2: office three-level explainer committed |
 | 2026-06-10 | Initial queue — Pass 1 foundation + Pass 2 prep |

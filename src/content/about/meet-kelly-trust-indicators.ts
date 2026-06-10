@@ -50,7 +50,7 @@ export const MEET_KELLY_TRUST_INDICATORS: readonly TrustIndicator[] = [
 export const MEET_KELLY_TRUST_PENDING = [
   {
     label: "Counties visited",
-    reason: "Source needed before publication — no internal Victory OS metrics on public site.",
+    reason: "Published on /arkansas — derived from verified public campaign events only; no internal metrics.",
   },
   {
     label: "Public speaking appearances",
