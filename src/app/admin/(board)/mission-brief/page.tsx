@@ -1,16 +1,17 @@
-import Link from "next/link";
 import { MondayBriefCommandCenter } from "@/components/admin/victory-os/mission-brief-ui/MondayBriefCommandCenter";
 import { StatewideMissionsPanel } from "@/components/admin/victory-os/StatewideMissionsPanel";
+import { TacticLinkagePanel } from "@/components/admin/victory-os/TacticLinkagePanel";
 import { VictoryMapReviewPanel } from "@/components/admin/victory-os/VictoryMapReviewPanel";
+import { VictoryOsShellSuspense } from "@/components/admin/victory-os/victory-os-ui/VictoryOsShellSuspense";
 import { weekKeyFromParam } from "@/lib/calendar/weekly-time";
+import { isSeason5 } from "@/lib/victory-os/daily-decisions/generate-daily-decisions";
 import { composeMondayBriefViewModel } from "@/lib/victory-os/mission-brief/compose-monday-brief-view-model";
+import { composeTacticLinkageViewModel } from "@/lib/victory-os/tactic-linkage/load-tactic-linkage";
 import { loadVictoryMapStatewideSummary } from "@/lib/victory-os/load-victory-map";
 
 export const dynamic = "force-dynamic";
 
-const DOCTRINE_DOC = "docs/campaign-events/VICTORY_OS_DOCTRINE.md";
-
-type View = "brief" | "missions" | "map";
+type View = "brief" | "missions" | "map" | "tactics";
 
 type Props = {
   searchParams: Promise<{ week?: string; view?: string }>;
@@ -19,6 +20,7 @@ type Props = {
 function resolveView(raw: string | undefined): View {
   if (raw === "missions") return "missions";
   if (raw === "map") return "map";
+  if (raw === "tactics") return "tactics";
   return "brief";
 }
 
@@ -28,38 +30,27 @@ export default async function PathToVictoryPage({ searchParams }: Props) {
   const view = resolveView(sp.view);
   const vm = composeMondayBriefViewModel(weekKey);
   const mapSummary = view === "map" ? loadVictoryMapStatewideSummary() : null;
-
-  const tabClass = (v: View) =>
-    view === v
-      ? "border border-b-0 border-kelly-text/15 bg-white text-kelly-navy"
-      : "text-kelly-muted hover:text-kelly-navy";
+  const tacticsVm = view === "tactics" ? composeTacticLinkageViewModel(weekKey) : null;
+  const season5 = isSeason5(new Date());
 
   return (
     <div className="mx-auto max-w-7xl pb-20">
-      {view === "brief" ? (
-        <MondayBriefCommandCenter initialVm={vm} />
-      ) : (
-        <>
-          <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-slate">Victory OS</p>
-          <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-navy">Path to Victory</h1>
-          <p className="mt-2 font-body text-sm text-kelly-muted">
-            Doctrine:{" "}
-            <code className="rounded border border-kelly-text/15 bg-kelly-page/80 px-1.5 py-0.5 text-xs">{DOCTRINE_DOC}</code>
-          </p>
-
-          <nav className="mt-8 flex flex-wrap gap-2 border-b border-kelly-text/10 pb-2" aria-label="Victory OS views">
-            <Link href={`/admin/mission-brief?week=${weekKey}`} className={`rounded-t-lg px-4 py-2 font-body text-sm font-semibold ${tabClass("brief")}`}>
-              Monday brief
-            </Link>
-            <Link href={`/admin/mission-brief?week=${weekKey}&view=missions`} className={`rounded-t-lg px-4 py-2 font-body text-sm font-semibold ${tabClass("missions")}`}>
-              County missions
-            </Link>
-            <Link href={`/admin/mission-brief?week=${weekKey}&view=map`} className={`rounded-t-lg px-4 py-2 font-body text-sm font-semibold ${tabClass("map")}`}>
-              Victory Map
-            </Link>
-          </nav>
-
-          <div className="mt-8">
+      <VictoryOsShellSuspense
+        weekKey={weekKey}
+        showSeason5Daily={season5}
+        headline={view === "brief" ? "Monday brief · Path to Victory" : undefined}
+        subline={
+          view === "brief"
+            ? "The ten most important decisions this week to reach 50% + 1 — not what's on the calendar."
+            : undefined
+        }
+      >
+        {view === "brief" ? (
+          <MondayBriefCommandCenter initialVm={vm} />
+        ) : view === "tactics" && tacticsVm ? (
+          <TacticLinkagePanel vm={tacticsVm} />
+        ) : (
+          <div className="mt-2">
             {view === "missions" ? (
               <StatewideMissionsPanel registry={vm.missionRegistry} priorityStacks={vm.priorityStacks} weekKey={weekKey} />
             ) : mapSummary ? (
@@ -75,14 +66,8 @@ export default async function PathToVictoryPage({ searchParams }: Props) {
               />
             ) : null}
           </div>
-
-          <p className="mt-10">
-            <Link href={`/admin/mission-brief?week=${weekKey}`} className="font-body text-sm font-semibold text-kelly-navy underline">
-              ← Back to Monday brief
-            </Link>
-          </p>
-        </>
-      )}
+        )}
+      </VictoryOsShellSuspense>
     </div>
   );
 }

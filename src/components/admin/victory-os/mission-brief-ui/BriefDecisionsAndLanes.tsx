@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { CountyMissionStack, WeeklyCampaignDecision } from "@/lib/victory-os/types";
+import { vos } from "../victory-os-ui/victory-os-tokens";
 
 const OPS_BADGE: Record<string, string> = {
   red: "bg-red-100 text-red-800",
@@ -34,13 +35,13 @@ function ApproveBar({
   }
   return (
     <div className="flex flex-wrap gap-1.5">
-      <button type="button" disabled={busy} onClick={() => onStatus(decision.id, "approved")} className="rounded-full bg-kelly-navy px-3 py-1 text-xs font-bold text-white disabled:opacity-50">
+      <button type="button" disabled={busy} onClick={() => onStatus(decision.id, "approved")} className={vos.btnPrimary}>
         Approve
       </button>
-      <button type="button" disabled={busy} onClick={() => onStatus(decision.id, "declined")} className="rounded-full border border-red-300 px-3 py-1 text-xs font-bold text-red-800 disabled:opacity-50">
+      <button type="button" disabled={busy} onClick={() => onStatus(decision.id, "declined")} className="rounded-full border border-red-300 bg-red-50 px-3 py-1 text-xs font-bold text-red-800 disabled:opacity-50">
         Decline
       </button>
-      <button type="button" disabled={busy} onClick={() => onStatus(decision.id, "modified")} className="rounded-full border border-amber-300 px-3 py-1 text-xs font-bold text-amber-900 disabled:opacity-50">
+      <button type="button" disabled={busy} onClick={() => onStatus(decision.id, "modified")} className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-bold text-amber-900 disabled:opacity-50">
         Modify
       </button>
     </div>
@@ -72,7 +73,7 @@ export function BriefTopDecisionsSection({
       </div>
 
       {hero ? (
-        <article className="rounded-3xl border-2 border-amber-400/40 bg-gradient-to-br from-amber-50 via-white to-kelly-navy/[0.04] p-6 shadow-md">
+        <article className={`${vos.card} border-2 border-kelly-copper/30 bg-gradient-to-br from-amber-50/80 via-white to-kelly-navy/[0.03]`}>
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-amber-800">Decision #1 · Highest priority</p>

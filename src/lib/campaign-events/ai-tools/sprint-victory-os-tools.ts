@@ -7,6 +7,8 @@ const VO = "src/lib/victory-os/";
 const ROUTES = [
   "/admin/mission-brief",
   "/admin/victory-board",
+  "/admin/daily-brief",
+  "/admin/election-day",
   "/admin/ai-command-center",
   "/admin/campaign-manager-dashboard",
   "/admin/calendar-command-center/kelly",
@@ -30,6 +32,10 @@ function c3(partial: Omit<CampaignAiToolContract, "sprint" | "lifecycle" | "vers
 
 function c4(partial: Omit<CampaignAiToolContract, "sprint" | "lifecycle" | "version">): CampaignAiToolContract {
   return { sprint: 4, lifecycle: L, version: "v1", priority: "P0", ...partial };
+}
+
+function c5(partial: Omit<CampaignAiToolContract, "sprint" | "lifecycle" | "version">): CampaignAiToolContract {
+  return { sprint: 5, lifecycle: L, version: "v1", priority: "P0", ...partial };
 }
 
 const TOOLS: CampaignAiToolContract[] = [
@@ -621,6 +627,82 @@ const TOOLS: CampaignAiToolContract[] = [
     observationEvents: ["victory_board_agent_context_loaded"],
     futureAutomationPath: "",
     testChecklist: ["victory:board:verify"],
+  }),
+  c5({
+    id: "tactic-linkage-sync",
+    name: "Tactic linkage sync",
+    purpose: "Link calendar rows to county weekly missions and Top 10 decisions.",
+    currentStatus: "functional",
+    trigger: "Monday pipeline / npm run victory:tactics:sync",
+    inputs: "weekKey",
+    outputs: "data/tactic-linkage/registry-v1.json",
+    readsFrom: `${VO}tactic-linkage/sync-tactic-linkage.ts`,
+    writesTo: "data/tactic-linkage/registry-v1.json",
+    humanApprovalRequired: false,
+    riskLevel: "low",
+    guardrails: "Calendar downstream of missions — read-only on calendar",
+    deterministicHelperPath: `${VO}tactic-linkage/load-tactic-linkage.ts`,
+    routesUsingTool: ["/admin/mission-brief?view=tactics", "/api/admin/victory-os/tactics"],
+    observationEvents: ["tactic_linkage_synced"],
+    futureAutomationPath: "Auto-link on calendar ingest",
+    testChecklist: ["victory:tactics:verify"],
+  }),
+  c5({
+    id: "season5-daily-brief-generator",
+    name: "Season 5 daily brief generator",
+    purpose: "Daily Kelly deployment brief for final 14 days cadence.",
+    currentStatus: "functional",
+    trigger: "/admin/daily-brief · npm run victory:daily",
+    inputs: "dayKey?",
+    outputs: "DailyDecisionBrief",
+    readsFrom: `${VO}daily-decisions/generate-daily-decisions.ts`,
+    writesTo: "data/daily-briefs/",
+    humanApprovalRequired: true,
+    riskLevel: "medium",
+    guardrails: "Season 5 daily cadence; weekly brief remains source",
+    deterministicHelperPath: `${VO}daily-decisions/load-daily-brief.ts`,
+    routesUsingTool: ["/admin/daily-brief", "/api/admin/victory-os/daily-brief"],
+    observationEvents: ["daily_brief_generated"],
+    futureAutomationPath: "Cron at 6am CT in Season 5",
+    testChecklist: ["victory:daily:verify"],
+  }),
+  c5({
+    id: "election-day-ops-composer",
+    name: "Election Day ops center composer",
+    purpose: "County goal/actual/gap cards and side panels for Nov 3 execution surface.",
+    currentStatus: "functional",
+    trigger: "/admin/election-day load",
+    inputs: "—",
+    outputs: "ElectionDayViewModel",
+    readsFrom: `${VO}election-day/compose-election-day-view-model.ts`,
+    writesTo: "—",
+    humanApprovalRequired: true,
+    riskLevel: "medium",
+    guardrails: "Advisory turnout until live feed; not a calendar",
+    deterministicHelperPath: `${VO}election-day/compose-election-day-view-model.ts`,
+    routesUsingTool: ["/admin/election-day", "/api/admin/victory-os/election-day"],
+    observationEvents: ["election_day_ops_viewed"],
+    futureAutomationPath: "Live SOS turnout API integration",
+    testChecklist: ["victory:election-day:verify"],
+  }),
+  c5({
+    id: "victory-os-full-agent-context",
+    name: "Victory OS full agent context",
+    purpose: "Complete Sprint 0–5 bundle for CM copilot — brief, board, daily, tactics, election day.",
+    currentStatus: "functional",
+    trigger: "Orchestration / Command Center",
+    inputs: "weekKey?",
+    outputs: "agent context JSON",
+    readsFrom: `${VO}sprint5-intelligence.ts`,
+    writesTo: "—",
+    humanApprovalRequired: true,
+    riskLevel: "medium",
+    guardrails: "Recommend only — no auto-execute",
+    deterministicHelperPath: `${VO}sprint5-intelligence.ts#composeVictoryOsFullAgentContext`,
+    routesUsingTool: ROUTES,
+    observationEvents: ["victory_os_full_context_loaded"],
+    futureAutomationPath: "",
+    testChecklist: ["victory:os:verify"],
   }),
 ];
 

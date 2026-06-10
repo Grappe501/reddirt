@@ -1,0 +1,169 @@
+{
+  "briefId": "daily-2026-06-09",
+  "dayKey": "2026-06-09",
+  "weekKey": "2026-06-08",
+  "generatedAt": "2026-06-10T03:58:12.968Z",
+  "seasonId": "season_5_build_urgency",
+  "seasonLabel": "Build Urgency — Final 14 Days",
+  "publicationSafety": "INTERNAL_DRAFT",
+  "headline": "Where do we deploy Kelly today?",
+  "summary": "Daily preview (outside Season 5 window) · derived from week 2026-06-08 decisions.",
+  "kellyToday": [
+    {
+      "id": "dec-2026-06-08-baxter-county",
+      "rank": 1,
+      "weekKey": "2026-06-08",
+      "seasonId": "season_1_build_organization",
+      "countySlug": "baxter-county",
+      "county": "Baxter",
+      "displayName": "Baxter County",
+      "opsStatus": "red",
+      "recommendation": "[Today] Deploy Kelly to county fair or chair summit — close infrastructure gap",
+      "resourceType": "kelly",
+      "kellyTier": 2,
+      "expectedOutcome": "Chair + captain pipeline · +200 voter contacts at flagship event",
+      "reason": "Critical county, high opportunity, weak readiness — readiness gap requires intervention",
+      "electoralImportance": "critical",
+      "opportunityLevel": "high",
+      "organizationalReadiness": "weak",
+      "deploymentPriority": 100,
+      "status": "pending",
+      "linkedMissionId": "mission-weekly-baxter-county-2026-06-08"
+    },
+    {
+      "id": "dec-2026-06-08-crittenden-county",
+      "rank": 2,
+      "weekKey": "2026-06-08",
+      "seasonId": "season_1_build_organization",
+      "countySlug": "crittenden-county",
+      "county": "Crittenden",
+      "displayName": "Crittenden County",
+      "opsStatus": "red",
+      "recommendation": "[Today] Deploy Kelly to county fair or chair summit — close infrastructure gap",
+      "resourceType": "kelly",
+      "kellyTier": 2,
+      "expectedOutcome": "Chair + captain pipeline · +200 voter contacts at flagship event",
+      "reason": "Critical county, high opportunity, weak readiness — readiness gap requires intervention",
+      "electoralImportance": "critical",
+      "opportunityLevel": "high",
+      "organizationalReadiness": "weak",
+      "deploymentPriority": 100,
+      "status": "pending",
+      "linkedMissionId": "mission-weekly-crittenden-county-2026-06-08"
+    },
+    {
+      "id": "dec-2026-06-08-poinsett-county",
+      "rank": 3,
+      "weekKey": "2026-06-08",
+      "seasonId": "season_1_build_organization",
+      "countySlug": "poinsett-county",
+      "county": "Poinsett",
+      "displayName": "Poinsett County",
+      "opsStatus": "red",
+      "recommendation": "[Today] Deploy Kelly to county fair or chair summit — close infrastructure gap",
+      "resourceType": "kelly",
+      "kellyTier": 2,
+      "expectedOutcome": "Chair + captain pipeline · +200 voter contacts at flagship event",
+      "reason": "Critical county, high opportunity, weak readiness — readiness gap requires intervention",
+      "electoralImportance": "critical",
+      "opportunityLevel": "high",
+      "organizationalReadiness": "weak",
+      "deploymentPriority": 100,
+      "status": "pending",
+      "linkedMissionId": "mission-weekly-poinsett-county-2026-06-08"
+    },
+    {
+      "id": "dec-2026-06-08-sevier-county",
+      "rank": 4,
+      "weekKey": "2026-06-08",
+      "seasonId": "season_1_build_organization",
+      "countySlug": "sevier-county",
+      "county": "Sevier",
+      "displayName": "Sevier County",
+      "opsStatus": "red",
+      "recommendation": "[Today] Deploy Kelly to county fair or chair summit — close infrastructure gap",
+      "resourceType": "kelly",
+      "kellyTier": 2,
+      "expectedOutcome": "Chair + captain pipeline · +200 voter contacts at flagship event",
+      "reason": "Critical county, high opportunity, weak readiness — readiness gap requires intervention",
+      "electoralImportance": "critical",
+      "opportunityLevel": "high",
+      "organizationalReadiness": "weak",
+      "deploymentPriority": 100,
+      "status": "pending",
+      "linkedMissionId": "mission-weekly-sevier-county-2026-06-08"
+    },
+    {
+      "id": "dec-2026-06-08-sharp-county",
+      "rank": 5,
+      "weekKey": "2026-06-08",
+      "seasonId": "season_1_build_organization",
+      "countySlug": "sharp-county",
+      "county": "Sharp",
+      "displayName": "Sharp County",
+      "opsStatus": "red",
+      "recommendation": "[Today] Deploy Kelly to county fair or chair summit — close infrastructure gap",
+      "resourceType": "kelly",
+      "kellyTier": 2,
+      "expectedOutcome": "Chair + captain pipeline · +200 voter contacts at flagship event",
+      "reason": "Critical county, high opportunity, weak readiness — readiness gap requires intervention",
+      "electoralImportance": "critical",
+      "opportunityLevel": "high",
+      "organizationalReadiness": "weak",
+      "deploymentPriority": 100,
+      "status": "pending",
+      "linkedMissionId": "mission-weekly-sharp-county-2026-06-08"
+    }
+  ],
+  "countyGaps": [
+    {
+      "countySlug": "baxter-county",
+      "county": "Baxter",
+      "gapScore": 100,
+      "opsStatus": "red"
+    },
+    {
+      "countySlug": "crittenden-county",
+      "county": "Crittenden",
+      "gapScore": 100,
+      "opsStatus": "red"
+    },
+    {
+      "countySlug": "poinsett-county",
+      "county": "Poinsett",
+      "gapScore": 100,
+      "opsStatus": "red"
+    },
+    {
+      "countySlug": "sevier-county",
+      "county": "Sevier",
+      "gapScore": 100,
+      "opsStatus": "red"
+    },
+    {
+      "countySlug": "sharp-county",
+      "county": "Sharp",
+      "gapScore": 100,
+      "opsStatus": "red"
+    },
+    {
+      "countySlug": "columbia-county",
+      "county": "Columbia",
+      "gapScore": 84,
+      "opsStatus": "yellow"
+    },
+    {
+      "countySlug": "chicot-county",
+      "county": "Chicot",
+      "gapScore": 75,
+      "opsStatus": "red"
+    },
+    {
+      "countySlug": "dallas-county",
+      "county": "Dallas",
+      "gapScore": 75,
+      "opsStatus": "red"
+    }
+  ],
+  "cadence": "daily"
+}

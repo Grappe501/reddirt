@@ -55,6 +55,8 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       links: [
         { href: "/admin/mission-brief", label: "Monday brief · Path to Victory" },
         { href: "/admin/victory-board", label: "Victory Board" },
+        { href: "/admin/daily-brief", label: "Daily brief" },
+        { href: "/admin/election-day", label: "Election Day ops" },
         { href: "/admin/onboarding", label: "New here? Start" },
         { href: "/admin/ai-command-center", label: "Command center" },
         { href: `/admin/campaign-manager-dashboard?month=${month}`, label: "CM dashboard", roles: ["campaign_manager", "operator"] },

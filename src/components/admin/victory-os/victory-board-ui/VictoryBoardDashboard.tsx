@@ -8,6 +8,8 @@ import { layerLegend } from "@/lib/victory-os/victory-board/board-color-maps";
 import { rebuildVictoryBoardPinsForLayer } from "@/lib/victory-os/victory-board/compose-victory-board-view-model";
 import type { VictoryBoardMapLayer, VictoryBoardViewModel } from "@/lib/victory-os/victory-board/types";
 import type { CountyVictoryContext } from "@/lib/victory-os/types";
+import { VictoryOsHero, VictoryOsMetric } from "../victory-os-ui/VictoryOsShell";
+import { vos } from "../victory-os-ui/victory-os-tokens";
 import { VictoryBoardCharts } from "./VictoryBoardCharts";
 
 const VictoryBoardCountyMap = dynamic(
@@ -71,42 +73,27 @@ export function VictoryBoardDashboard({ initialVm, counties }: Props) {
 
   return (
     <div className="space-y-6">
-      <header className="rounded-2xl border border-kelly-text/10 bg-gradient-to-br from-kelly-navy to-[#1e3a5f] p-6 text-white">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-white/70">Victory OS · Sprint 4</p>
-        <h1 className="mt-2 font-heading text-3xl font-bold">Victory Board</h1>
-        <p className="mt-2 max-w-3xl font-body text-sm text-white/85">{vm.intelligenceNarrative}</p>
-        <div className="mt-4 flex flex-wrap gap-4 font-body text-xs text-white/90">
-          <span>Pace: <strong>{vm.statewide.pace}</strong></span>
-          <span>Gap: <strong>{vm.statewide.statewideVoteGap.toLocaleString()}</strong> votes</span>
-          <span>CM approval: <strong>{vm.statewide.approvalPct}%</strong></span>
-          <span>Election: <strong>{vm.electionDaysRemaining}d</strong></span>
-          <span className="rounded-full bg-white/15 px-2 py-0.5">{vm.publicationSafety}</span>
-        </div>
-      </header>
+      <VictoryOsHero
+        eyebrow="Victory OS · Sprint 4"
+        title="Decision intelligence at a glance"
+        summary={vm.intelligenceNarrative}
+        footer={
+          <>
+            <VictoryOsMetric label="Pace" value={vm.statewide.pace} />
+            <VictoryOsMetric label="Gap" value={vm.statewide.statewideVoteGap.toLocaleString()} />
+            <VictoryOsMetric label="CM approval" value={`${vm.statewide.approvalPct}%`} highlight={vm.statewide.pendingDecisions > 0} />
+            <VictoryOsMetric label="Election" value={`${vm.electionDaysRemaining}d`} />
+          </>
+        }
+      />
 
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-2">
-          <Link
-            href={`/admin/mission-brief?week=${vm.weekKey}`}
-            className="rounded-full border border-kelly-text/20 bg-white px-4 py-2 font-body text-xs font-bold text-kelly-navy"
-          >
-            ← Monday brief
-          </Link>
-          <Link
-            href={`/admin/mission-brief?view=map&week=${vm.weekKey}`}
-            className="rounded-full border border-kelly-text/20 bg-white px-4 py-2 font-body text-xs font-bold text-kelly-navy"
-          >
-            Victory Map
-          </Link>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <button type="button" disabled={pending} onClick={refetch} className="rounded-full border border-kelly-text/20 bg-white px-4 py-2 font-body text-xs font-bold text-kelly-navy disabled:opacity-50">
-            Refresh board
-          </button>
-          <button type="button" disabled={pending} onClick={persistSnapshot} className="rounded-full bg-kelly-navy px-4 py-2 font-body text-xs font-bold text-white disabled:opacity-50">
-            Save snapshot
-          </button>
-        </div>
+      <div className="flex flex-wrap items-center justify-end gap-2">
+        <button type="button" disabled={pending} onClick={refetch} className={vos.btnSecondary}>
+          Refresh board
+        </button>
+        <button type="button" disabled={pending} onClick={persistSnapshot} className={vos.btnPrimary}>
+          Save snapshot
+        </button>
       </div>
 
       {message ? <p className="font-body text-sm text-kelly-slate">{message}</p> : null}
@@ -120,7 +107,7 @@ export function VictoryBoardDashboard({ initialVm, counties }: Props) {
                 type="button"
                 onClick={() => setLayer(l.id)}
                 className={`rounded-full px-3 py-1.5 font-body text-xs font-semibold ${
-                  layer === l.id ? "bg-kelly-navy text-white" : "border border-kelly-text/15 bg-white text-kelly-navy"
+                  layer === l.id ? vos.navPillActive : vos.navPill
                 }`}
               >
                 {l.label}
@@ -140,7 +127,7 @@ export function VictoryBoardDashboard({ initialVm, counties }: Props) {
 
         <aside className="space-y-4">
           {selectedPin ? (
-            <div className="rounded-2xl border border-kelly-text/10 bg-white p-4">
+            <div className={vos.glass}>
               <h3 className="font-heading text-lg font-bold text-kelly-navy">{selectedPin.displayName}</h3>
               <dl className="mt-3 space-y-2 font-body text-xs">
                 <Row label="Priority" value={String(selectedPin.deploymentPriority)} />

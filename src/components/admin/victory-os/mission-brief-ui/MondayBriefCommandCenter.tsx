@@ -11,6 +11,7 @@ import {
   BriefWeekDeltaBanner,
   BriefWeekNav,
 } from "./BriefHeroAndNav";
+import { vos } from "../victory-os-ui/victory-os-tokens";
 import {
   BriefCountyIntelSection,
   BriefDeploymentLanes,
@@ -107,14 +108,14 @@ export function MondayBriefCommandCenter({ initialVm }: Props) {
         <BriefWeekNav weekKey={vm.weekKey} />
         <div className="flex flex-wrap gap-2">
           {vm.readiness.pending > 0 ? (
-            <button type="button" disabled={pending} onClick={approveAllPending} className="rounded-full border border-emerald-400 bg-emerald-50 px-4 py-2 text-xs font-bold text-emerald-900 disabled:opacity-50">
-              Approve all pending
-            </button>
+          <button type="button" disabled={pending} onClick={approveAllPending} className={vos.btnCopper}>
+            Approve all pending
+          </button>
           ) : null}
-          <button type="button" disabled={pending} onClick={syncMissionsOnly} className="rounded-full border border-kelly-text/20 bg-white px-4 py-2 text-xs font-bold text-kelly-navy disabled:opacity-50">
+          <button type="button" disabled={pending} onClick={syncMissionsOnly} className={vos.btnSecondary}>
             Sync missions
           </button>
-          <button type="button" disabled={pending} onClick={runMondayPipeline} className="rounded-full bg-kelly-navy px-5 py-2 text-xs font-bold text-white disabled:opacity-50">
+          <button type="button" disabled={pending} onClick={runMondayPipeline} className={vos.btnPrimary}>
             Run Monday pipeline
           </button>
         </div>
@@ -142,7 +143,7 @@ export function MondayBriefCommandCenter({ initialVm }: Props) {
 
       <BriefCountyIntelSection atRisk={brief.countiesAtRisk} opportunities={brief.strategicOpportunities} />
 
-      <section id="section-missions" className="scroll-mt-24 rounded-2xl border border-kelly-text/10 bg-kelly-page/40 p-5">
+      <section id="section-missions" className={`scroll-mt-24 ${vos.glass}`}>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="font-heading text-lg font-bold text-kelly-navy">County mission execution</h3>
@@ -150,7 +151,7 @@ export function MondayBriefCommandCenter({ initialVm }: Props) {
               Weekly missions and daily tasks for Top 10 counties — full stack in County missions tab.
             </p>
           </div>
-          <Link href={`/admin/mission-brief?view=missions&week=${vm.weekKey}`} className="rounded-full bg-kelly-navy px-4 py-2 text-xs font-bold text-white">
+          <Link href={`/admin/mission-brief?view=missions&week=${vm.weekKey}`} className={vos.btnPrimary}>
             Open mission stacks →
           </Link>
         </div>
