@@ -2,7 +2,7 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { OfficeAreaCards } from "./OfficeAreaCards";
 
 /**
- * Introduces the four responsibility areas and links to Layer 1 only.
+ * Pass 2 hub — five responsibility areas, Layer 1 entry only.
  */
 export function OfficeUnderstandGateway() {
   return (
@@ -10,13 +10,11 @@ export function OfficeUnderstandGateway() {
       <div className="mx-auto max-w-3xl text-center">
         <p className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-kelly-gold">The Office</p>
         <h2 id="office-three-layer-gateway" className="mt-3 text-pretty font-heading text-3xl font-bold text-kelly-navy md:text-[2.1rem]">
-          Four areas, one path: clarity, then stakes, then the full picture
+          What the Secretary of State does—in plain language
         </h2>
         <p className="mt-5 font-body text-lg leading-relaxed text-kelly-text/85">
-          Elections, business &amp; filings, transparency &amp; records, and Capitol stewardship—each starts with a
-          calm overview (Layer 1). From there you choose how far to go: why it matters in real life, then how Kelly’s
-          leadership fits the work. Same tone everywhere: plain language, non-partisan administration, People over
-          Politics.
+          Elections, business filings, notaries, public records, and Capitol stewardship. Each area starts with civic
+          education, then why it matters to real Arkansans, then what Kelly brings—with verified credentials only.
         </p>
       </div>
       <div className="mt-12 md:mt-14">

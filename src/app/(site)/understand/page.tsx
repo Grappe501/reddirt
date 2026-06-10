@@ -1,68 +1,69 @@
 import type { Metadata } from "next";
-import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
+import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
-import { EducateBeatSections } from "@/components/home/EducateBeatSections";
-import { JourneyBeat } from "@/components/journey/JourneyBeat";
+import { Button } from "@/components/ui/Button";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
+import { OfficeThreeLevelExplainer } from "@/components/office/OfficeThreeLevelExplainer";
 import { OfficeUnderstandGateway } from "@/components/office/OfficeUnderstandGateway";
-import { UNDERSTAND_MOVEMENT_BRIDGE_PHOTO_ID } from "@/content/media/campaign-trail-photo-use";
-import { campaignTrailPhotos } from "@/content/media/campaign-trail-photos";
-import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
 import { pageMeta } from "@/lib/seo/metadata";
-import { getFeaturedYoutubeForHub } from "@/lib/content/content-hub-queries";
 
 export const metadata: Metadata = pageMeta({
   title: "Understand the office",
   description:
-    "What Arkansans expect from the Secretary of State, who Kelly is, and why this campaign exists—without overwhelming the homepage.",
+    "What the Arkansas Secretary of State does—elections, business filings, notaries, records, and Capitol stewardship. Civic education in three levels: what the office does, why it matters, what Kelly brings.",
   path: "/understand",
 });
 
-export default async function UnderstandTheOfficePage() {
-  const homepage = await getMergedHomepageConfig();
-  const featuredYoutube = await getFeaturedYoutubeForHub(homepage.featuredHomepageVideoInboundId);
-  const movementBridgePhoto = campaignTrailPhotos.find((p) => p.id === UNDERSTAND_MOVEMENT_BRIDGE_PHOTO_ID);
-
+export default function UnderstandTheOfficePage() {
   return (
     <>
       <PageHero
-        eyebrow="Educate"
-        title="Understand the office—and why this campaign exists"
-        subtitle="Fair elections, clear business services, and a Secretary of State’s office that works for every county—explore what that means in plain language."
-      />
+        eyebrow="The Office"
+        title="Understand the Secretary of State"
+        subtitle="Trust and competence come before persuasion. Learn what this office actually does, why it matters to Arkansans, and—if you choose to go deeper—what Kelly brings with verified credentials."
+      >
+        <Button href="/office/elections" variant="primary">
+          Start with elections
+        </Button>
+        <Button href="/about" variant="outline">
+          Meet Kelly
+        </Button>
+      </PageHero>
+
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer wide>
+          <OfficeThreeLevelExplainer />
+        </ContentContainer>
+      </FullBleedSection>
 
       <FullBleedSection variant="band-fog" padY aria-labelledby="office-three-layer-gateway">
         <OfficeUnderstandGateway />
       </FullBleedSection>
 
-      <JourneyBeat
-        id="understand-spine"
-        variant="mist"
-        className="scroll-mt-24 border-t-0 !py-6 lg:!py-10"
-      >
-        <EducateBeatSections
-          homepage={homepage}
-          featuredYoutube={featuredYoutube}
-          bridgeBeforeMovement={
-            movementBridgePhoto ? (
-              <section
-                className="border-t border-kelly-ink/[0.06] bg-white py-10 md:py-14"
-                aria-label="Campaign trail moment"
-              >
-                <ContentContainer wide>
-                  <EditorialCampaignPhoto
-                    photo={movementBridgePhoto}
-                    variant="fluid"
-                    kicker="On the trail"
-                    caption="County rooms and honest handshakes—the work starts with showing up."
-                  />
-                </ContentContainer>
-              </section>
-            ) : null
-          }
-        />
-      </JourneyBeat>
+      <FullBleedSection padY>
+        <ContentContainer className="max-w-3xl text-center">
+          <p className="font-body text-base leading-relaxed text-kelly-text/85">
+            When you leave this section, you should know what the Secretary of State does, why it matters, and—at Level
+            3—why Kelly believes she is prepared. Persuasion can wait.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button href="/about/why-im-running" variant="outline">
+              Why I&apos;m running
+            </Button>
+            <Button href="/priorities" variant="outline">
+              Office priorities
+            </Button>
+          </div>
+          <p className="mt-6 font-body text-sm text-kelly-muted">
+            Platform details on{" "}
+            <Link href="/priorities" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+              Office priorities
+            </Link>{" "}
+            await campaign approval.
+          </p>
+        </ContentContainer>
+      </FullBleedSection>
     </>
   );
 }

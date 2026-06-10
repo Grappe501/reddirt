@@ -9,6 +9,7 @@ import {
   officeLayerPath,
 } from "@/content/office/office-three-layer";
 import type { OfficeAreaSlug } from "@/content/office/office-types";
+import { OFFICE_LAYER_CTA } from "@/content/office/office-layer-labels";
 import { OfficeBreadcrumbs } from "./OfficeBreadcrumbs";
 import { OfficeLayerCta } from "./OfficeLayerCta";
 import { OfficeLayerTrailProof } from "./OfficeLayerTrailProof";
@@ -148,7 +149,7 @@ export function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
               <p className="font-body text-xs font-semibold uppercase tracking-wide text-kelly-text/50">Next step</p>
               <OfficeLayerCta
                 href={officeLayerPath(area.slug, 2)}
-                label={area.layerOneNextLabel ?? "See why this matters"}
+                label={area.layerOneNextLabel ?? OFFICE_LAYER_CTA.layer1To2}
               />
             </div>
           ) : null}
@@ -157,7 +158,7 @@ export function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
               <p className="font-body text-xs font-semibold uppercase tracking-wide text-kelly-text/50">Go deeper</p>
               <OfficeLayerCta
                 href={officeLayerPath(area.slug, 3)}
-                label={area.layerTwoNextLabel ?? "See the full picture"}
+                label={area.layerTwoNextLabel ?? OFFICE_LAYER_CTA.layer2To3}
               />
             </div>
           ) : null}

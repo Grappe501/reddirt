@@ -55,6 +55,7 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Understand the Office", href: "/understand" },
       { label: "Elections", href: "/office/elections" },
       { label: "Business & Filings", href: "/office/business" },
+      { label: "Notaries", href: "/office/notaries" },
       { label: "Transparency & Records", href: "/office/records" },
       { label: "Capitol & Public Safety", href: "/office/capitol" },
       { label: "Why This Race Matters", href: "/office/why-this-race-matters" },

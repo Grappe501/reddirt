@@ -1,4 +1,4 @@
-export const OFFICE_AREA_SLUGS = ["elections", "business", "records", "capitol"] as const;
+export const OFFICE_AREA_SLUGS = ["elections", "business", "notaries", "records", "capitol"] as const;
 export type OfficeAreaSlug = (typeof OFFICE_AREA_SLUGS)[number];
 
 export type OfficeSectionBlock = {

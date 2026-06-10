@@ -9,6 +9,7 @@
 import { businessAreaConfig } from "@/content/office/business-area";
 import { capitolAreaConfig } from "@/content/office/capitol-area";
 import { electionsAreaConfig } from "@/content/office/elections-area";
+import { notariesAreaConfig } from "@/content/office/notaries-area";
 import { recordsAreaConfig } from "@/content/office/records-area";
 import {
   OFFICE_AREA_SLUGS,
@@ -50,6 +51,12 @@ export const officeUnderstandTeasers: Record<
       "Registrations, filings, and searchable records that keep commerce legible—economic infrastructure that should feel clear, not like a second job.",
     href: "/office/business",
   },
+  notaries: {
+    headline: "Notaries",
+    blurb:
+      "Commission standards, training, and public trust in everyday legal acknowledgments—the Secretary of State’s role in Arkansas’s notary infrastructure.",
+    href: "/office/notaries",
+  },
   records: {
     headline: "Transparency & Records",
     blurb:
@@ -67,6 +74,7 @@ export const officeUnderstandTeasers: Record<
 export const OFFICE_AREAS: readonly OfficeAreaConfig[] = [
   electionsAreaConfig,
   businessAreaConfig,
+  notariesAreaConfig,
   recordsAreaConfig,
   capitolAreaConfig,
 ];

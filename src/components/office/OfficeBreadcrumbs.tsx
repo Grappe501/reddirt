@@ -4,6 +4,7 @@ import {
   type OfficeAreaSlug,
   officeLayerPath,
 } from "@/content/office/office-three-layer";
+import { OFFICE_LAYER_BREADCRUMB } from "@/content/office/office-layer-labels";
 
 type OfficeBreadcrumbsProps = {
   areaSlug: OfficeAreaSlug;
@@ -12,10 +13,7 @@ type OfficeBreadcrumbsProps = {
   className?: string;
 };
 
-const layerLabels: Record<2 | 3, string> = {
-  2: "Why it matters",
-  3: "Full picture",
-};
+const layerLabels = OFFICE_LAYER_BREADCRUMB;
 
 export function OfficeBreadcrumbs({ areaSlug, areaShortTitle, layer, className }: OfficeBreadcrumbsProps) {
   const layer1Href = officeLayerPath(areaSlug, 1);
@@ -27,7 +25,7 @@ export function OfficeBreadcrumbs({ areaSlug, areaShortTitle, layer, className }
           ? `${areaShortTitle}, overview.`
           : layer === 2
             ? `${areaShortTitle}, why it matters.`
-            : `${areaShortTitle}, full picture.`}
+            : `${areaShortTitle}, what Kelly brings.`}
       </p>
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <li>

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const area = getOfficeArea(raw);
   if (!area) return {};
   return pageMeta({
-    title: `${area.title}: Full picture — The Office`,
+    title: `${area.title}: What Kelly brings — The Office`,
     description: `${area.layerThree.intro} ${area.metaDescription}`,
     path: officeLayerPath(raw, 3),
     imageSrc: "/media/placeholders/texture-porch-glow.svg",
