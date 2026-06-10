@@ -9,7 +9,7 @@ import {
   PHASE15_P0_MAX_SECTIONS,
 } from "@/lib/intelligence/v4/phase15CandidateCommandDepth";
 import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
-import { SEARCH_AI_PREP_HUB_HREF } from "@/lib/intelligence/intelligenceAiPrepV4";
+import { SEARCH_AI_PREP_HUB_HREF } from "@/lib/intelligence/intelligenceAiPrepV4Client";
 import { DEBATE_PREP_TUTOR_HUB_HREF } from "@/lib/intelligence/v4/debatePrepTutorPackage";
 
 export type CandidateCommandNavLink = {

@@ -6,7 +6,7 @@ import {
   CANDIDATE_AI_PREP_V4_QUICK_TOOLS,
   listAiPrepQuickToolsForProfile,
   SEARCH_AI_PREP_HUB_HREF,
-} from "@/lib/intelligence/intelligenceAiPrepV4";
+} from "@/lib/intelligence/intelligenceAiPrepV4Client";
 import { openIntelPrepSearch } from "@/lib/intelligence/intelligencePrepSearchOpen";
 import { isCountyClerkPrimaryAudience } from "@/lib/intelligence/v4/debateAudienceMode";
 import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";

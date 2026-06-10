@@ -4,7 +4,7 @@
  * Phase 15 P7 — bottom nav uses five CCE sections via phase15P7IpadPolish.
  */
 
-import { CANDIDATE_AI_PREP_V4_QUICK_TOOLS } from "@/lib/intelligence/intelligenceAiPrepV4";
+import { CANDIDATE_AI_PREP_V4_QUICK_TOOLS } from "@/lib/intelligence/intelligenceAiPrepV4Client";
 import { listIpadBottomNavTabs } from "@/lib/intelligence/v4/phase15P7IpadPolish";
 
 export const CANDIDATE_IPAD_PROFILE = {

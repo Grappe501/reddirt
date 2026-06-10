@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import type { CandidateIntelSearchKind, CandidateIntelSearchResult, IntelStageSafe } from "@/lib/intelligence/candidateIntelligenceSearch";
 import type { IntelSearchSmartBrief } from "@/lib/intelligence/intelligenceSmartSearch";
-import type { AiPrepToolRecommendation } from "@/lib/intelligence/intelligenceAiPrepV4";
+import type { AiPrepToolRecommendation } from "@/lib/intelligence/intelligenceAiPrepV4Client";
 import type { SreShortcut } from "@/lib/intelligence/intelligenceSearchV4";
 import type { IntelProfessorBrief } from "@/lib/intelligence/intelligenceProfessorBrief";
 import { ProfessorSearchBriefPanel } from "@/components/admin/intelligence/v4/ProfessorSearchBriefPanel";
