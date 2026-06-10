@@ -7,7 +7,6 @@ import { ContentImage } from "@/components/media/ContentImage";
 import { media } from "@/content/media/registry";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { siteConfig } from "@/config/site";
-import { voterRegistrationHref } from "@/config/navigation";
 import { cn } from "@/lib/utils";
 
 const copy = trustFunnelHomeCopy.hero;
@@ -103,14 +102,14 @@ export function TrustFunnelHero() {
               transition={{ duration: dur, delay: reduceMotion ? 0 : 0.3, ease }}
             >
               <Link
-                href="/understand"
+                href="/about"
                 className={cn(
                   ctaClass,
                   "w-full sm:w-auto",
                   "bg-kelly-gold text-kelly-navy shadow-md hover:bg-kelly-gold-soft focus-visible:outline-kelly-gold",
                 )}
               >
-                {copy.ctas.learnOffice}
+                {copy.ctas.meetKelly}
               </Link>
             </motion.div>
             <motion.div
@@ -120,14 +119,14 @@ export function TrustFunnelHero() {
               className="sm:inline-flex"
             >
               <Link
-                href="/about"
+                href="/understand"
                 className={cn(
                   ctaClass,
                   "w-full sm:w-auto",
                   "border-2 border-white/50 bg-kelly-navy/30 text-white backdrop-blur-sm hover:border-kelly-gold/65 hover:bg-kelly-navy/45 focus-visible:outline-white",
                 )}
               >
-                {copy.ctas.meetKelly}
+                {copy.ctas.learnOffice}
               </Link>
             </motion.div>
             <motion.div
@@ -137,14 +136,31 @@ export function TrustFunnelHero() {
               className="sm:inline-flex"
             >
               <Link
-                href={voterRegistrationHref}
+                href="/events/request"
                 className={cn(
                   ctaClass,
                   "w-full sm:w-auto",
                   "border-2 border-kelly-gold/50 bg-transparent text-kelly-gold hover:bg-kelly-gold/12 focus-visible:outline-kelly-gold",
                 )}
               >
-                {copy.ctas.voteRegister}
+                {copy.ctas.inviteKelly}
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.48, ease }}
+              className="sm:inline-flex"
+            >
+              <Link
+                href="/get-involved"
+                className={cn(
+                  ctaClass,
+                  "w-full sm:w-auto",
+                  "border-2 border-white/35 bg-white/10 text-white backdrop-blur-sm hover:bg-white/15 focus-visible:outline-white",
+                )}
+              >
+                {copy.ctas.getInvolved}
               </Link>
             </motion.div>
           </div>

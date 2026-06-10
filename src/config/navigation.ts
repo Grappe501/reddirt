@@ -78,6 +78,7 @@ export const primaryNavGroups: NavGroup[] = [
     items: [
       { label: "Campaign Calendar", href: "/events" },
       { label: "Invite Kelly", href: "/events/request" },
+      { label: "Share an event", href: "/schedule" },
       { label: "Election Integrity Tour", href: "/events/community-election-integrity-tour" },
       { label: "County Fairs", href: "/events/county-fairs" },
       { label: "County Party Meetings", href: "/events/county-party-meetings" },
@@ -93,6 +94,7 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
       { label: "Start a Local Team", href: "/start-a-local-team" },
       { label: "Invite Kelly", href: "/events/request" },
+      { label: "Share an event", href: "/schedule" },
       { label: "Donate", href: "/donate" },
     ],
   },

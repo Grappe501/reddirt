@@ -45,8 +45,8 @@ export const inviteKellyContent = {
     title: "Invite Kelly",
     subtitle: "Bring Kelly into your community, your table, or your backyard.",
     leadParagraphs: [
-      "This campaign is built on real conversations, not staged politics. Kelly wants to listen where Arkansans already gather — homes, restaurants, coffee shops, churches, synagogues, mosques, county meetings, civic rooms, and backyards.",
-      "If you can gather 10–15 friends, neighbors, coworkers, or community members, that is enough to start. Mixed political crowds are welcome. The only ask is that everyone agrees to stay civil and let real questions be asked. The campaign especially values rooms where people do not all agree.",
+      "Invite Kelly to your county. Share local events. Help us find fairs, festivals, civic clubs, churches, chambers, and community gatherings.",
+      "Every request goes through staff review—nothing is confirmed from a form alone. Mixed political crowds are welcome when the conversation stays civil.",
     ] as const,
     sections: [
       {

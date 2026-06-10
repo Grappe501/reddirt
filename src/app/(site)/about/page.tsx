@@ -13,6 +13,7 @@ import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
 import { KellyFullStory } from "@/components/about/KellyFullStory";
 import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySection";
 import { AboutBiographyDrilldown } from "@/components/about/AboutBiographyDrilldown";
+import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
 import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 export const dynamic = "force-dynamic";
@@ -61,6 +62,18 @@ export default async function AboutPage() {
           Why I&apos;m running (short)
         </Button>
       </PageHero>
+
+      {!showPublicBiographyManuscript() ? (
+        <FullBleedSection variant="subtle" className="!py-6">
+          <ContentContainer className="max-w-3xl">
+            <ContentPendingBadge variant="draft" />
+            <p className="mt-3 font-body text-sm text-kelly-muted">
+              Long-form biography manuscript chapters are draft — not public-ready. Meet Kelly below uses campaign-facing
+              essays only; verify résumé and timeline claims with campaign leadership before republishing elsewhere.
+            </p>
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
 
       <FullBleedSection
         variant="subtle"

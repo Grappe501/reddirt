@@ -5,6 +5,8 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { StorySubmissionForm } from "@/components/forms/StorySubmissionForm";
 import { StoriesHub } from "@/components/content/StoriesHub";
+import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
+import { PUBLIC_ILLUSTRATIVE_STORIES_ENABLED } from "@/content/website/content-integrity";
 import { pageMeta } from "@/lib/seo/metadata";
 import { featuredPublicStories, listPublicStoriesMerged } from "@/lib/content/public-catalog";
 import { listPublicSubstackPosts } from "@/lib/integrations/substack/list-public-posts";
@@ -31,9 +33,21 @@ export default async function StoriesPage() {
     <>
       <PageHero
         eyebrow="Voices"
-        title="Stories from the ground"
-        subtitle="These aren’t messaging tests—they’re neighbors naming what happened, what hurt, and what they’re building anyway. Read slowly. Then pass the link to someone who thinks they’re alone in it."
+        title="Stories"
+        subtitle="Kelly’s Substack posts when the feed is connected. Neighbor stories on this site publish only after campaign review—no invented testimonials."
       />
+
+      {!PUBLIC_ILLUSTRATIVE_STORIES_ENABLED ? (
+        <FullBleedSection variant="subtle" className="!py-6">
+          <ContentContainer className="max-w-3xl">
+            <ContentPendingBadge variant="source" />
+            <p className="mt-3 font-body text-sm text-kelly-muted">
+              Illustrative story archive is hidden until sources are verified. Use the form below to submit a real story for
+              review.
+            </p>
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
 
       <FullBleedSection variant="subtle" padY aria-labelledby="stories-archive-heading">
         <ContentContainer wide>

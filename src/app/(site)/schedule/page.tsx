@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -6,23 +7,46 @@ import { Button } from "@/components/ui/Button";
 import { ScheduleCampaignEventForm } from "@/components/forms/ScheduleCampaignEventForm";
 
 export const metadata: Metadata = {
-  title: "Schedule with the campaign",
+  title: "Invite Kelly · Share an event",
   description:
-    "Request a tentative campaign visit, forum, fundraiser, or community event. Submissions are reviewed by staff — nothing is confirmed from this page alone.",
+    "Invite Kelly to your county or share a local fair, festival, civic club, church, chamber, or community gathering. Staff review every request—nothing is confirmed from this form alone.",
 };
 
 export default function ScheduleCampaignEventPage() {
   return (
     <>
       <PageHero
-        eyebrow="Tentative scheduling"
-        title="Schedule something with the campaign"
-        subtitle="Tell us what you are hoping to host or convene. We route every request through staff review — tentative only, never a public confirmation of Kelly’s private calendar."
+        eyebrow="Schedule / invite"
+        title="Invite Kelly · Share local events"
+        subtitle="Help us find fairs, festivals, civic clubs, churches, chambers, and community gatherings. Tell us what you are hoping to host or convene—we route every request through staff review. Tentative only; never a public confirmation of Kelly’s private calendar."
       >
         <Button href="#schedule-form" variant="primary">
-          Jump to form
+          Share an opportunity
+        </Button>
+        <Button href="/events/request" variant="outline">
+          Invite Kelly pathway
         </Button>
       </PageHero>
+
+      <FullBleedSection padY aria-labelledby="schedule-copy-heading">
+        <ContentContainer wide className="max-w-3xl">
+          <h2 id="schedule-copy-heading" className="font-heading text-xl font-bold text-kelly-text">
+            What to include
+          </h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
+            <li>Your county and the kind of gathering (fair, festival, club, faith community, chamber, backyard, etc.)</li>
+            <li>Approximate date or window, expected audience size, and who is hosting</li>
+            <li>Whether the event is public, invitation-only, or still being planned</li>
+          </ul>
+          <p className="mt-6 font-body text-sm text-kelly-muted">
+            Prefer the step-by-step invite flow? Use{" "}
+            <Link href="/events/request" className="font-semibold text-kelly-navy underline">
+              Invite Kelly
+            </Link>
+            .
+          </p>
+        </ContentContainer>
+      </FullBleedSection>
 
       <FullBleedSection padY aria-labelledby="schedule-form-heading">
         <ContentContainer wide>

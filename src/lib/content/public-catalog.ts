@@ -12,6 +12,7 @@ import {
   getAllContentOverrides,
   getOverride,
 } from "./public-overrides";
+import { PUBLIC_ILLUSTRATIVE_STORIES_ENABLED } from "@/content/website/content-integrity";
 
 export async function getPublicStoryBySlug(slug: string): Promise<StoryEntry | undefined> {
   const base = getStoryBySlug(slug);
@@ -38,6 +39,7 @@ export async function getPublicExplainerBySlug(slug: string): Promise<ExplainerE
 }
 
 export async function listPublicStoriesMerged(): Promise<StoryEntry[]> {
+  if (!PUBLIC_ILLUSTRATIVE_STORIES_ENABLED) return [];
   const map = await getAllContentOverrides();
   return allStories
     .filter((s) => !map.get(`${ContentCollection.STORY}:${s.slug}`)?.hidden)
