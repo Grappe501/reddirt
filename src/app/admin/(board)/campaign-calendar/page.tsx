@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function CampaignCalendarIndexPage() {
-  redirect("/admin/campaign-calendar/timeline");
+  redirect("/admin/campaign-calendar/month");
 }

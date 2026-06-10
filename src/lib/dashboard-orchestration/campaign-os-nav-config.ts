@@ -50,9 +50,23 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
   const month = activeMonth;
   return [
     {
-      id: "today",
-      label: "Today",
+      id: "calendar",
+      label: "Campaign Calendar",
       links: [
+        { href: `/admin/campaign-calendar/month?month=${month}`, label: "Calendar home" },
+        { href: "/admin/campaign-calendar/timeline", label: "Path to Election Day" },
+        { href: "/admin/campaign-calendar/week", label: "Week view" },
+        { href: "/admin/campaign-calendar/agenda", label: "Agenda ledger" },
+        { href: "/admin/calendar-command-center/kelly", label: "Kelly cockpit" },
+        { href: `/admin/campaign-events/calendar-sync?month=${month}`, label: "Sync dashboard", badgeKey: "sync" },
+        { href: "/admin/workbench/calendar", label: "Calendar HQ" },
+      ],
+    },
+    {
+      id: "today",
+      label: "Victory OS",
+      links: [
+        { href: `/admin/campaign-calendar/month?month=${month}`, label: "Campaign Calendar" },
         { href: "/admin/mission-brief", label: "Monday brief · Path to Victory" },
         { href: "/admin/victory-board", label: "Victory Board" },
         { href: "/admin/daily-brief", label: "Daily brief" },
@@ -65,15 +79,12 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       ],
     },
     {
-      id: "calendar",
-      label: "Calendar",
+      id: "calendar_ops",
+      label: "Calendar ops",
       links: [
         { href: "/admin/mission-brief", label: "Monday brief" },
-        { href: "/admin/campaign-calendar/timeline", label: "Campaign timeline" },
-        { href: `/admin/campaign-calendar/month?month=${month}`, label: "Month grid" },
-        { href: `/admin/campaign-events/calendar-sync?month=${month}`, label: "Sync dashboard", badgeKey: "sync" },
         { href: "/admin/campaign-events/calendar-promotion", label: "Calendar promotion" },
-        { href: "/admin/calendar-command-center/kelly", label: "Kelly cockpit" },
+        { href: `/admin/campaign-events/review?month=${month}&mode=chronological`, label: "Month review", badgeKey: "approvals" },
       ],
     },
     {

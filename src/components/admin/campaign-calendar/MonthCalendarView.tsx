@@ -1,12 +1,16 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { addMonths, eachDayOfInterval, endOfMonth, format, parseISO, startOfMonth, startOfWeek, endOfWeek } from "date-fns";
+import { addMonths, eachDayOfInterval, endOfMonth, format, isSameDay, parseISO, startOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { useCampaignCalendar } from "./campaign-calendar-context";
 import { CalendarEventChip } from "./CalendarEventChip";
+import { CalendarMonthNavigator } from "./calendar-ui/CalendarMonthNavigator";
+import { cal } from "./calendar-ui/calendar-design-tokens";
 
 export function MonthCalendarView() {
-  const { rows, setReviewRecordId } = useCampaignCalendar();
+  const { rows, setReviewRecordId, electionDayYmd, nowMs } = useCampaignCalendar();
+  const today = new Date(nowMs);
+  const electionDay = parseISO(electionDayYmd);
   const [cursor, setCursor] = useState(() => parseISO(rows[0]?.dateYmd ?? "2026-03-01"));
 
   const monthStart = startOfMonth(cursor);
@@ -24,38 +28,64 @@ export function MonthCalendarView() {
     return m;
   }, [rows]);
 
+  const monthEventCount = useMemo(() => {
+    const prefix = format(cursor, "yyyy-MM");
+    return rows.filter((r) => r.dateYmd.startsWith(prefix)).length;
+  }, [rows, cursor]);
+
   return (
-    <div className="space-y-3">
-      <div className="flex items-center gap-2">
-        <button type="button" className="rounded-full border px-3 py-1 text-sm font-bold" onClick={() => setCursor(addMonths(cursor, -1))}>
-          ←
-        </button>
-        <h2 className="font-heading text-xl font-bold">{format(cursor, "MMMM yyyy")}</h2>
-        <button type="button" className="rounded-full border px-3 py-1 text-sm font-bold" onClick={() => setCursor(addMonths(cursor, 1))}>
-          →
-        </button>
-      </div>
-      <div className="grid grid-cols-7 gap-1 text-center font-body text-[10px] font-bold uppercase text-kelly-slate">
+    <div className="space-y-4">
+      <CalendarMonthNavigator
+        label={format(cursor, "MMMM yyyy")}
+        subtitle={`${monthEventCount} events this month`}
+        onPrev={() => setCursor(addMonths(cursor, -1))}
+        onNext={() => setCursor(addMonths(cursor, 1))}
+      />
+
+      <div className="grid grid-cols-7 gap-1.5 text-center font-body text-[10px] font-bold uppercase tracking-wider text-kelly-copper md:gap-2">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-          <div key={d}>{d}</div>
+          <div key={d} className="py-1">
+            {d}
+          </div>
         ))}
       </div>
-      <div className="grid grid-cols-7 gap-1">
+
+      <div className="grid grid-cols-7 gap-1.5 md:gap-2">
         {days.map((day) => {
           const ymd = format(day, "yyyy-MM-dd");
           const dayRows = byDay.get(ymd) ?? [];
           const inMonth = day.getMonth() === cursor.getMonth();
+          const isToday = isSameDay(day, today);
+          const isElection = isSameDay(day, electionDay);
+
+          let cellClass = inMonth ? cal.monthCellIn : cal.monthCellOut;
+          if (isToday && inMonth) cellClass += ` ${cal.monthCellToday}`;
+          if (isElection && inMonth) cellClass += ` ${cal.monthCellElection}`;
+
           return (
-            <div
-              key={ymd}
-              className={`min-h-[88px] rounded-lg border p-1 ${inMonth ? "border-kelly-text/10 bg-kelly-page" : "border-transparent bg-kelly-wash/50 opacity-50"}`}
-            >
-              <p className="text-right font-body text-[10px] font-bold text-kelly-subtle">{format(day, "d")}</p>
-              <div className="mt-1 space-y-1">
-                {dayRows.slice(0, 2).map((r) => (
+            <div key={ymd} className={`${cal.monthCell} ${cellClass}`}>
+              <div className="flex items-center justify-between">
+                <p
+                  className={`font-body text-[11px] font-bold tabular-nums ${isToday ? "text-kelly-gold" : isElection ? "text-kelly-navy" : "text-kelly-subtle"}`}
+                >
+                  {format(day, "d")}
+                </p>
+                {dayRows.length > 0 ? (
+                  <span className="rounded-full bg-kelly-navy/10 px-1.5 py-0.5 font-body text-[9px] font-bold text-kelly-navy">
+                    {dayRows.length}
+                  </span>
+                ) : null}
+              </div>
+              {isElection && inMonth ? (
+                <p className="mt-0.5 font-body text-[8px] font-bold uppercase tracking-wide text-kelly-gold">Election</p>
+              ) : null}
+              <div className="mt-1.5 space-y-1">
+                {dayRows.slice(0, 3).map((r) => (
                   <CalendarEventChip key={r.recordId} row={r} compact onSelect={setReviewRecordId} />
                 ))}
-                {dayRows.length > 2 ? <p className="text-[9px] text-kelly-subtle">+{dayRows.length - 2} more</p> : null}
+                {dayRows.length > 3 ? (
+                  <p className="font-body text-[9px] font-semibold text-kelly-copper">+{dayRows.length - 3} more</p>
+                ) : null}
               </div>
             </div>
           );

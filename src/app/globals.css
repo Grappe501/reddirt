@@ -335,6 +335,14 @@ html.dark {
     @apply min-h-full text-kelly-text;
     background: linear-gradient(180deg, var(--color-bg) 0%, var(--kelly-band-wash) 100%);
   }
+
+  /* Campaign Calendar — premium command-center surfaces */
+  .cal-surface-panel {
+    @apply rounded-[1.5rem] border border-kelly-border bg-[var(--color-surface-elevated)] shadow-[var(--shadow-soft)] backdrop-blur-md;
+  }
+  .cal-event-row-hover {
+    @apply transition hover:bg-kelly-page/80;
+  }
 }
 
 /* Leaflet custom divIcon pins */
