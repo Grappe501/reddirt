@@ -60,7 +60,7 @@ export type TutorSession = {
   panicReminder: string | null;
   cards: TutorCardSession[];
   sequenceSteps: { toolId: string; label: string; why: string }[];
-  frameworkPrinciples: typeof POLITICAL_DEBATE_COACH_FRAMEWORK.principles;
+  frameworkPrinciples: (typeof POLITICAL_DEBATE_COACH_FRAMEWORK.principles)[number][];
   estimatedMinutes: number;
   checkMyRecordBeats?: typeof CHECK_MY_RECORD_PLAYBOOK.deliveryWalkthrough;
 };

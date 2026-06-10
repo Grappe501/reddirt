@@ -171,7 +171,7 @@ function searchCorpusDocuments(
         section: doc.section,
         badge: doc.claimsGate ? claimsGateStageLabel(doc.claimsGate) : doc.badge,
         stageSafe,
-      } satisfies CandidateIntelSearchResult;
+      } as CandidateIntelSearchResult;
     })
     .filter((r): r is CandidateIntelSearchResult => r !== null)
     .sort((a, b) => b.score - a.score);

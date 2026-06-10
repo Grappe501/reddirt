@@ -32,7 +32,7 @@ export type ProfessorTutorSession = TutorSession & {
   professorMode: DebatePrepProfessorMode;
   professorConfig: ReturnType<typeof getProfessorModeConfig>;
   lecture: ProfessorLecture;
-  pedagogyPillars: typeof PROFESSOR_PEDAGOGY_FRAMEWORK.pillars;
+  pedagogyPillars: (typeof PROFESSOR_PEDAGOGY_FRAMEWORK.pillars)[number][];
 };
 
 const PROFESSOR_TO_TUTOR_MODE: Record<

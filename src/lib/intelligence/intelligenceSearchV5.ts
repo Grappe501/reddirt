@@ -18,7 +18,7 @@ import { DEBATE_PREP_PROFESSOR_HUB_HREF } from "@/lib/intelligence/v4/debatePrep
 
 export const INTEL_SEARCH_V5_VERSION = "smart-v5.0";
 
-export type IntelligenceSearchV5Result = IntelligenceSearchV4Result & {
+export type IntelligenceSearchV5Result = Omit<IntelligenceSearchV4Result, "version"> & {
   version: typeof INTEL_SEARCH_V5_VERSION;
   professorBrief: IntelProfessorBrief | null;
   professorLens: {

@@ -109,7 +109,7 @@ function fallbackProfessorBrief(
           .slice(0, 2)
           .map((r) => r.title),
       },
-    ].filter((t) => t.items.length > 0),
+    ].filter((t) => t.items.length > 0) as IntelProfessorBrief["evidenceTiers"],
     socraticQuestions: [
       `What is the ONE sentence thesis if a moderator asked: "${query}"?`,
       "Where is your fresh add after any agreement with Hammer or Packo?",

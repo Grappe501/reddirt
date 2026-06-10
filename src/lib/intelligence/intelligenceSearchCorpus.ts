@@ -283,6 +283,7 @@ export function buildIntelSearchCorpus(profile: "CANDIDATE" | "STAFF" | "CLERK_W
   for (const secId of getAllPrepSectionDrillDownIds()) {
     const s = getPrepSectionDrillDown(secId);
     if (!s) continue;
+    const sectionClaimsGate = s.zingers.find((z) => z.claimsGate)?.claimsGate;
     push({
       id: `prepsec:${secId}`,
       kind: "hammer_module",
@@ -295,8 +296,8 @@ export function buildIntelSearchCorpus(profile: "CANDIDATE" | "STAFF" | "CLERK_W
         ...s.rehearsalSteps,
       ].join("\n"),
       section: "Debate prep section",
-      badge: s.claimsGate ?? "Review gate",
-      claimsGate: s.claimsGate,
+      badge: sectionClaimsGate ?? "Review gate",
+      claimsGate: sectionClaimsGate,
       priority: 0.1,
     });
   }
