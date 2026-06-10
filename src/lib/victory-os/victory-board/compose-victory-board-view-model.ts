@@ -5,6 +5,11 @@
 import "server-only";
 
 import { ARKANSAS_CAMPAIGN_REGIONS } from "@/lib/campaign-engine/regions/arkansas-campaign-regions";
+import { weekKeyFromDate } from "@/lib/calendar/weekly-time";
+import { loadVictoryMapStatewideSummary } from "../load-victory-map";
+import { composeMondayBriefViewModel } from "../mission-brief/compose-monday-brief-view-model";
+import { computeBriefReadiness } from "../mission-brief/compute-brief-readiness";
+import { electionCountdown } from "../mission-brief/election-countdown";
 import type { CountyVictoryContext, WeeklyCampaignDecision } from "../types";
 import { ELECTORAL_COLOR, OPS_COLOR, priorityToColor } from "./board-color-maps";
 import { buildDecisionIndex, buildPins } from "./victory-board-pin-layer";
@@ -17,56 +22,6 @@ import type {
 
 function regionLabel(slug: string): string {
   return ARKANSAS_CAMPAIGN_REGIONS.find((r) => r.slug === slug)?.displayName ?? slug.replace(/-/g, " ");
-}
-
-function buildDecisionIndex(decisions: WeeklyCampaignDecision[]): Map<string, WeeklyCampaignDecision> {
-  return new Map(decisions.map((d) => [d.countySlug, d]));
-}
-
-function buildPins_REMOVED(
-  counties: CountyVictoryContext[],
-  decisionByCounty: Map<string, WeeklyCampaignDecision>,
-  layer: VictoryBoardMapLayer,
-): VictoryBoardCountyPin[] {
-  return counties.map((c) => {
-    const decision = decisionByCounty.get(c.countySlug);
-    const inTop10 = decision != null;
-    const decisionRank = decision?.rank ?? null;
-    const center = approxCountyCenter(c.county);
-    const style = pinStyleForLayer(layer, {
-      deploymentPriority: c.deploymentPriority.deploymentPriority,
-      opsStatus: c.opsStatus,
-      electoralImportance: c.electoralImportance,
-      decisionRank,
-      inTop10,
-    });
-    const tooltipParts = [
-      c.displayName,
-      `Priority ${c.deploymentPriority.deploymentPriority}`,
-      c.opsStatus.toUpperCase(),
-      inTop10 ? `#${decisionRank} decision` : "Not in Top 10",
-    ];
-    return {
-      countySlug: c.countySlug,
-      county: c.county,
-      displayName: c.displayName,
-      regionSlug: c.regionSlug,
-      lat: center.lat,
-      lng: center.lng,
-      deploymentPriority: c.deploymentPriority.deploymentPriority,
-      opsStatus: c.opsStatus,
-      electoralImportance: c.electoralImportance,
-      opportunityLevel: c.opportunityLevel,
-      organizationalReadiness: c.organizationalReadiness,
-      decisionRank,
-      inTop10,
-      decisionStatus: decision?.status ?? null,
-      fillColor: style.fillColor,
-      strokeColor: style.strokeColor,
-      pinSize: style.pinSize,
-      tooltipLine: tooltipParts.join(" · "),
-    };
-  });
 }
 
 function countBy<T extends string>(items: T[]): Record<T, number> {
