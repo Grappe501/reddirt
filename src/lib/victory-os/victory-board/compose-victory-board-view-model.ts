@@ -2,18 +2,14 @@
  * Victory OS Sprint 4 — compose Victory Board from decisions + map intelligence.
  */
 
+import "server-only";
+
 import { ARKANSAS_CAMPAIGN_REGIONS } from "@/lib/campaign-engine/regions/arkansas-campaign-regions";
-import { approxCountyCenter } from "@/lib/opportunities/approx-county-center";
-import { weekKeyFromDate } from "@/lib/calendar/weekly-time";
-import { loadVictoryMapStatewideSummary } from "../load-victory-map";
-import { composeMondayBriefViewModel } from "../mission-brief/compose-monday-brief-view-model";
-import { computeBriefReadiness } from "../mission-brief/compute-brief-readiness";
-import { electionCountdown } from "../mission-brief/election-countdown";
 import type { CountyVictoryContext, WeeklyCampaignDecision } from "../types";
-import { ELECTORAL_COLOR, OPS_COLOR, pinStyleForLayer, priorityToColor } from "./board-color-maps";
+import { ELECTORAL_COLOR, OPS_COLOR, priorityToColor } from "./board-color-maps";
+import { buildDecisionIndex, buildPins } from "./victory-board-pin-layer";
 import type {
   VictoryBoardChartSeries,
-  VictoryBoardCountyPin,
   VictoryBoardMapLayer,
   VictoryBoardRegionRollup,
   VictoryBoardViewModel,
@@ -27,7 +23,7 @@ function buildDecisionIndex(decisions: WeeklyCampaignDecision[]): Map<string, We
   return new Map(decisions.map((d) => [d.countySlug, d]));
 }
 
-function buildPins(
+function buildPins_REMOVED(
   counties: CountyVictoryContext[],
   decisionByCounty: Map<string, WeeklyCampaignDecision>,
   layer: VictoryBoardMapLayer,
@@ -254,16 +250,6 @@ export function composeVictoryBoardViewModel(weekKey?: string, asOf = new Date()
     },
     electionDaysRemaining: countdown.daysRemaining,
   };
-}
-
-/** Rebuild pins when client switches map layer without refetching full VM. */
-export function rebuildVictoryBoardPinsForLayer(
-  vm: VictoryBoardViewModel,
-  layer: VictoryBoardMapLayer,
-  counties: CountyVictoryContext[],
-): VictoryBoardCountyPin[] {
-  const decisionByCounty = buildDecisionIndex(vm.topDecisions);
-  return buildPins(counties, decisionByCounty, layer);
 }
 
 export { regionLabel };

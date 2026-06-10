@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCallback, useMemo, useState, useTransition } from "react";
 
 import { layerLegend } from "@/lib/victory-os/victory-board/board-color-maps";
-import { rebuildVictoryBoardPinsForLayer } from "@/lib/victory-os/victory-board/compose-victory-board-view-model";
+import { rebuildVictoryBoardPinsForLayer } from "@/lib/victory-os/victory-board/victory-board-pin-layer";
 import type { VictoryBoardMapLayer, VictoryBoardViewModel } from "@/lib/victory-os/victory-board/types";
 import type { CountyVictoryContext } from "@/lib/victory-os/types";
 import { VictoryOsHero, VictoryOsMetric } from "../victory-os-ui/VictoryOsShell";
