@@ -163,6 +163,10 @@ export function MondayBriefCommandCenter({ initialVm }: Props) {
 
       <p className="font-body text-xs text-kelly-muted">
         Deep dive:{" "}
+        <Link href={`/admin/victory-board?week=${vm.weekKey}`} className="underline">
+          Victory Board
+        </Link>
+        {" · "}
         <Link href={`/admin/mission-brief?view=map&week=${vm.weekKey}`} className="underline">
           Victory Map
         </Link>

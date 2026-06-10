@@ -18,12 +18,20 @@ export function MondayBriefPreviewStrip() {
               : `${vm.readiness.approvalPct}% approved · ${vm.electionCountdown.label}`}
           </p>
         </div>
-        <Link
-          href="/admin/mission-brief"
-          className="shrink-0 rounded-full bg-kelly-navy px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-kelly-slate"
-        >
-          Open Monday Brief
-        </Link>
+        <div className="flex shrink-0 flex-wrap gap-2">
+          <Link
+            href="/admin/victory-board"
+            className="rounded-full border border-kelly-navy/30 bg-white px-5 py-3 text-sm font-bold text-kelly-navy shadow-sm hover:bg-kelly-page/80"
+          >
+            Victory Board
+          </Link>
+          <Link
+            href="/admin/mission-brief"
+            className="rounded-full bg-kelly-navy px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-kelly-slate"
+          >
+            Open Monday Brief
+          </Link>
+        </div>
       </div>
       <ol className="mt-4 grid gap-2 md:grid-cols-3">
         {top3.map((d) => (

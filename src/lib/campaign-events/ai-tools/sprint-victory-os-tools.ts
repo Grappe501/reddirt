@@ -6,6 +6,7 @@ const L = "victory_os" as const;
 const VO = "src/lib/victory-os/";
 const ROUTES = [
   "/admin/mission-brief",
+  "/admin/victory-board",
   "/admin/ai-command-center",
   "/admin/campaign-manager-dashboard",
   "/admin/calendar-command-center/kelly",
@@ -25,6 +26,10 @@ function c2(partial: Omit<CampaignAiToolContract, "sprint" | "lifecycle" | "vers
 
 function c3(partial: Omit<CampaignAiToolContract, "sprint" | "lifecycle" | "version">): CampaignAiToolContract {
   return { sprint: 3, lifecycle: L, version: "v1", priority: "P0", ...partial };
+}
+
+function c4(partial: Omit<CampaignAiToolContract, "sprint" | "lifecycle" | "version">): CampaignAiToolContract {
+  return { sprint: 4, lifecycle: L, version: "v1", priority: "P0", ...partial };
 }
 
 const TOOLS: CampaignAiToolContract[] = [
@@ -540,6 +545,82 @@ const TOOLS: CampaignAiToolContract[] = [
     observationEvents: ["monday_brief_agent_context_loaded"],
     futureAutomationPath: "",
     testChecklist: ["victory:brief:verify"],
+  }),
+  c4({
+    id: "victory-board-view-model-composer",
+    name: "Victory Board view model composer",
+    purpose: "Compose Sprint 4 board — map pins, charts, regional rollups from Top 10 decisions.",
+    currentStatus: "functional",
+    trigger: "/admin/victory-board load",
+    inputs: "weekKey?",
+    outputs: "VictoryBoardViewModel",
+    readsFrom: `${VO}victory-board/compose-victory-board-view-model.ts`,
+    writesTo: "—",
+    humanApprovalRequired: false,
+    riskLevel: "low",
+    guardrails: "Intelligence from decisions only — not raw CRM/calendar",
+    deterministicHelperPath: `${VO}victory-board/compose-victory-board-view-model.ts`,
+    routesUsingTool: ["/admin/victory-board", "/api/admin/victory-os/victory-board"],
+    observationEvents: ["victory_board_viewed"],
+    futureAutomationPath: "",
+    testChecklist: ["victory:board:verify"],
+  }),
+  c4({
+    id: "victory-board-map-layer-renderer",
+    name: "Victory Board map layer renderer",
+    purpose: "Color county pins by deployment priority, ops, electoral, or Top 10 rank.",
+    currentStatus: "functional",
+    trigger: "Map layer toggle on Victory Board",
+    inputs: "VictoryBoardMapLayer + counties",
+    outputs: "VictoryBoardCountyPin[]",
+    readsFrom: `${VO}victory-board/board-color-maps.ts`,
+    writesTo: "—",
+    humanApprovalRequired: false,
+    riskLevel: "low",
+    guardrails: "Advisory visualization until CM approves decisions",
+    deterministicHelperPath: `${VO}victory-board/compose-victory-board-view-model.ts#rebuildVictoryBoardPinsForLayer`,
+    routesUsingTool: ["/admin/victory-board"],
+    observationEvents: ["victory_board_layer_changed"],
+    futureAutomationPath: "",
+    testChecklist: [],
+  }),
+  c4({
+    id: "victory-board-snapshot-persister",
+    name: "Victory Board snapshot persister",
+    purpose: "Persist board JSON snapshot for week-over-week reference.",
+    currentStatus: "functional",
+    trigger: "Save snapshot / npm run victory:board:compose",
+    inputs: "weekKey",
+    outputs: "data/victory-board/board-v1.json",
+    readsFrom: "/api/admin/victory-os/victory-board",
+    writesTo: "data/victory-board/board-v1.json",
+    humanApprovalRequired: true,
+    riskLevel: "low",
+    guardrails: "INTERNAL_DRAFT snapshot only",
+    deterministicHelperPath: `${VO}victory-board/load-victory-board-snapshot.ts`,
+    routesUsingTool: ["/admin/victory-board"],
+    observationEvents: ["victory_board_snapshot_saved"],
+    futureAutomationPath: "Auto-compose after Monday pipeline",
+    testChecklist: ["victory:board:compose"],
+  }),
+  c4({
+    id: "victory-board-agent-context-bundle",
+    name: "Victory Board agent context bundle",
+    purpose: "Full Sprint 4 copilot context — board + Monday brief + regional rollups.",
+    currentStatus: "functional",
+    trigger: "Orchestration / CM copilot",
+    inputs: "weekKey?",
+    outputs: "agent context JSON",
+    readsFrom: `${VO}victory-board-intelligence.ts`,
+    writesTo: "—",
+    humanApprovalRequired: true,
+    riskLevel: "medium",
+    guardrails: "Display intelligence from decisions; no auto-deploy",
+    deterministicHelperPath: `${VO}victory-board-intelligence.ts#composeVictoryBoardAgentContext`,
+    routesUsingTool: ["/admin/victory-board", "/admin/ai-command-center"],
+    observationEvents: ["victory_board_agent_context_loaded"],
+    futureAutomationPath: "",
+    testChecklist: ["victory:board:verify"],
   }),
 ];
 
