@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "sprint": "0.5",
+  "purpose": "Governance tracker for leadership locks — no scoring, no deployment recommendations",
+  "doctrinePath": "docs/campaign-events/VICTORY_OS_DOCTRINE.md",
+  "toolkitPath": "docs/campaign-events/VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md",
+  "updatedAt": "2026-06-10T00:00:00.000Z",
+  "overallStatus": "pending_leadership_review",
+  "blocksPriority2Until": "all_artifacts_locked",
+  "artifacts": {
+    "criticalCountyList": {
+      "status": "draft",
+      "docPath": "docs/campaign-events/sprint-0-5/01-CRITICAL_COUNTY_LIST.md",
+      "lockedBy": null,
+      "lockedAt": null,
+      "notes": "Target 6-10 Critical counties; reclassify 10 heuristic Critical to Important where appropriate"
+    },
+    "readinessDefinitions": {
+      "status": "draft",
+      "docPath": "docs/campaign-events/sprint-0-5/02-READINESS_DEFINITIONS.md",
+      "lockedBy": null,
+      "lockedAt": null,
+      "notes": "Unknown must not equal weak in engine"
+    },
+    "opportunityDefinitions": {
+      "status": "draft",
+      "docPath": "docs/campaign-events/sprint-0-5/03-OPPORTUNITY_DEFINITIONS.md",
+      "lockedBy": null,
+      "lockedAt": null,
+      "notes": "Marginal gain vs electoral weight"
+    },
+    "kellyCapacityRules": {
+      "status": "draft",
+      "docPath": "docs/campaign-events/sprint-0-5/04-KELLY_CAPACITY_RULES.md",
+      "lockedBy": null,
+      "lockedAt": null,
+      "notes": "Season 2 travel, Season 3 debate/media, Season 4 GOTV caps"
+    },
+    "assumptionSignOff": {
+      "status": "draft",
+      "docPath": "docs/campaign-events/sprint-0-5/05-ASSUMPTION_SIGN_OFF.md",
+      "lockedBy": null,
+      "lockedAt": null,
+      "notes": "Kelly + CM + field signatures required"
+    },
+    "assumptionChangePolicy": {
+      "status": "draft",
+      "docPath": "docs/campaign-events/ASSUMPTION_CHANGE_LOG.md",
+      "lockedBy": null,
+      "lockedAt": null,
+      "notes": "Amendment log required for any post-lock assumption change"
+    }
+  },
+  "successCriteria": [
+    "What counties matter most?",
+    "What counties can grow most?",
+    "What does readiness mean?",
+    "How much Kelly time exists?"
+  ]
+}

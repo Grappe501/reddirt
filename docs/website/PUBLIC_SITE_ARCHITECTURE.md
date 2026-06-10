@@ -69,8 +69,9 @@ Public site is **not the bottleneck**. Campaign operating system is.
 
 | Priority | System | Notes |
 |----------|--------|-------|
-| **1** | Victory Map (Sprint 0) | All 75 counties classified — **blocks everything else** |
-| **2** | Deployment Priority Engine | Deterministic math only — no UI |
+| **0.5** | Leadership Lock Toolkit | **Current gate** — governance only; blocks Priority 2 |
+| **1** | Victory Map (Sprint 0) | 75 counties classified — **draft**; see Sprint 0 review |
+| **2** | Deployment Priority Engine | **Blocked** until Sprint 0.5 locks |
 | **3** | Decision Engine | Top 10 **decisions** — not events, not missions |
 | **4** | County Mission Framework | Long-term → monthly → weekly → daily |
 | **5** | Mission Brief UI | Visualize engine output — **never build dashboard first** |

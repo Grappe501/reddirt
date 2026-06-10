@@ -28,6 +28,15 @@ This is the record of **leadership decisions before they become algorithms**.
 
 ---
 
+## Sprint 0.5 gate (before Priority 2)
+
+**Do not build Deployment Priority Engine until Sprint 0.5 locks are signed.**
+
+Toolkit: [`VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md`](./VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md)  
+Tracker: [`data/strategy-doctrine/leadership-lock-v1.json`](../data/strategy-doctrine/leadership-lock-v1.json)
+
+---
+
 ## 1. Win target assumptions
 
 | Assumption | Value | Status | Owner | Notes |

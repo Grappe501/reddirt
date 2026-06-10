@@ -318,12 +318,12 @@ Common win-target gaps: `registration_goal`, `registered_voters_turnout_headroom
 
 ## Sprint 0 exit checklist (leadership)
 
-- [ ] Review critical county list — confirm doctrine must-win + heuristic additions
-- [ ] Review high-opportunity counties — align with growth strategy
-- [ ] Validate readiness labels with field directors (most default weak)
-- [ ] Sign [`VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md`](./VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md)
-- [ ] Set `leadershipStatus` → `locked` per county after sign-off
-- [ ] **Do not** start Decision Engine until map is locked
+- [ ] Run **Sprint 0.5** leadership lock session — [`VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md`](./VICTORY_MAP_SPRINT_0_5_LEADERSHIP_LOCK_TOOLKIT.md)
+- [ ] Review critical county list — confirm doctrine must-win + reclassify heuristic ten
+- [ ] Validate readiness labels with field directors (most default weak = **unknown**, not weak)
+- [ ] Sign [`sprint-0-5/05-ASSUMPTION_SIGN_OFF.md`](./sprint-0-5/05-ASSUMPTION_SIGN_OFF.md)
+- [ ] Set `leadership-lock-v1.json` artifact statuses to `locked`
+- [ ] **Do not** start Deployment Priority Engine until Sprint 0.5 locks complete
 
 ---
 
