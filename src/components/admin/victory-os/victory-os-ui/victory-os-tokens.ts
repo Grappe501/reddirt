@@ -36,7 +36,7 @@ export const vos = {
 export type VictoryOsNavId = "brief" | "board" | "daily" | "tactics" | "map" | "election-day";
 
 export const VICTORY_OS_NAV: { id: VictoryOsNavId; href: string; label: string; seasonOnly?: boolean }[] = [
-  { id: "brief", href: "/admin/mission-brief", label: "Monday brief" },
+  { id: "brief", href: "/admin/mission-brief", label: "Path to Victory" },
   { id: "board", href: "/admin/victory-board", label: "Victory Board" },
   { id: "daily", href: "/admin/daily-brief", label: "Daily brief", seasonOnly: true },
   { id: "tactics", href: "/admin/mission-brief?view=tactics", label: "Tactics" },

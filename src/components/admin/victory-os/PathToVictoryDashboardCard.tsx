@@ -13,7 +13,8 @@ export function PathToVictoryDashboardCard() {
           Path to Victory
         </h2>
         <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-white/85">
-          Open the Victory OS command surface for county strategy, deployment decisions, and the path to 50% + 1.
+          Governance command surface — six leadership locks, Victory Map review, and the path to 50% + 1. Priority 2
+          unlocks after sign-off.
         </p>
         <div className="mt-6">
           <Link href="/admin/mission-brief" className={vos.btnCopper}>
