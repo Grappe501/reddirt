@@ -4,6 +4,7 @@ import { adminLogoutAction } from "@/app/admin/actions";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { getCountyWorkbenchPortalUrl } from "@/lib/county/county-workbench-portal-url";
 import { CampaignOsNavRail } from "@/components/admin/navigation/CampaignOsNavRail";
+import { AdminPrimaryNav } from "@/components/admin/navigation/AdminPrimaryNav";
 import { GlobalAiCommandPalette } from "@/components/admin/navigation/GlobalAiCommandPalette";
 import { isAskKellyUiEnabled } from "@/lib/feature-flags/ask-kelly-ui";
 import { OperatorContextProvider } from "@/components/admin/navigation/OperatorContextProvider";
@@ -91,7 +92,10 @@ export function AdminBoardShell({
               </details>
             ) : null}
             {showCampaignOs ? (
-              <CampaignOsNavRail groups={campaignOsNavGroups!} badges={campaignOsNavBadges} />
+              <>
+                <AdminPrimaryNav pathname={currentPathname} />
+                <CampaignOsNavRail groups={campaignOsNavGroups!} badges={campaignOsNavBadges} />
+              </>
             ) : null}
             {!hideLegacyNav ? (
               <>

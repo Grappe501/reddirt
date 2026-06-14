@@ -67,7 +67,6 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       label: "Victory OS",
       links: [
         { href: `/admin/campaign-calendar/month?month=${month}`, label: "Campaign Calendar" },
-        { href: "/admin/mission-brief", label: "Monday brief · Path to Victory" },
         { href: "/admin/victory-board", label: "Victory Board" },
         { href: "/admin/daily-brief", label: "Daily brief" },
         { href: "/admin/election-day", label: "Election Day ops" },
@@ -82,7 +81,6 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       id: "calendar_ops",
       label: "Calendar ops",
       links: [
-        { href: "/admin/mission-brief", label: "Monday brief" },
         { href: "/admin/campaign-events/calendar-promotion", label: "Calendar promotion" },
         { href: `/admin/campaign-events/review?month=${month}&mode=chronological`, label: "Month review", badgeKey: "approvals" },
       ],

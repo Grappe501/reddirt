@@ -11,6 +11,7 @@ import {
   campaignOsNavHrefBase,
   resolveActiveCampaignOsNavHref,
 } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
+import { AdminPrimaryNav } from "@/components/admin/navigation/AdminPrimaryNav";
 import { buildThreeLaneNavGroups, THREE_LANE_NAV, type ThreeLaneId } from "@/lib/intelligence/v4/threeLaneNav";
 
 /**
@@ -50,6 +51,7 @@ export function IntelligenceLaunchBoardShell({
           <NavNewLinksBanner compact />
         </div>
         <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-2 py-3" aria-label="Debate week">
+          <AdminPrimaryNav pathname={path} />
           {groups.map((group) => {
             const laneMeta = THREE_LANE_NAV[group.id as ThreeLaneId];
             const activeHref = resolveActiveCampaignOsNavHref(
