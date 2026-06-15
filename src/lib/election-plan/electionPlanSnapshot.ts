@@ -344,6 +344,7 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       sherwoodVipGoal: 20,
       sherwoodTicketsSold: 0,
       sherwoodVolunteers: 0,
+      sherwoodVolunteersRoster: [],
       topPrioritiesThisWeek: ["Run npm run election-plan:build"],
     },
     campaignTimeline: [],

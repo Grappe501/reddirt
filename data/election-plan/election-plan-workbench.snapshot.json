@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T14:23:45.145Z",
+  "generatedAt": "2026-06-15T14:26:06.580Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -5503,7 +5503,58 @@
     "sherwoodVipSold": 0,
     "sherwoodVipGoal": 20,
     "sherwoodTicketsSold": 0,
-    "sherwoodVolunteers": 0,
+    "sherwoodVolunteers": 7,
+    "sherwoodVolunteersRoster": [
+      {
+        "id": "sherwood-vol-duke",
+        "name": "John Duke",
+        "locationHint": null,
+        "inviteStatus": "sherwood",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "sherwood-vol-powell",
+        "name": "Jay Powell",
+        "locationHint": null,
+        "inviteStatus": "sherwood",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "sherwood-vol-low",
+        "name": "Christy Low",
+        "locationHint": null,
+        "inviteStatus": "sherwood",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "sherwood-vol-rampone",
+        "name": "Sarah Rampone",
+        "locationHint": null,
+        "inviteStatus": "sherwood",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "sherwood-vol-dare",
+        "name": "Judy Dare",
+        "locationHint": null,
+        "inviteStatus": "sherwood",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "sherwood-vol-hurst",
+        "name": "Ben Hurst",
+        "locationHint": null,
+        "inviteStatus": "sherwood",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "sherwood-vol-solice",
+        "name": "Leann Solice",
+        "locationHint": null,
+        "inviteStatus": "sherwood",
+        "confirmedFoundingTeam": false
+      }
+    ],
     "topPrioritiesThisWeek": [
       "Volunteer Leadership Launch — June 28 · 6 PM · Zoom",
       "Sherwood Event Sponsorship & VIP Table Sales",

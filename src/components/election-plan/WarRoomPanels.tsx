@@ -89,10 +89,14 @@ function VolunteerLeaderRoster({
             className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5 border-b border-[var(--ep-border)] pb-2 last:border-0"
           >
             <span className="font-medium text-[var(--ep-navy)]">{v.name}</span>
-            <span className="text-xs text-[var(--ep-navy-muted)]">
-              {v.locationHint ?? "Location TBD at June 28 call"}
-              {v.confirmedFoundingTeam ? " · founding team" : ""}
-            </span>
+            {v.locationHint ? (
+              <span className="text-xs text-[var(--ep-navy-muted)]">
+                {v.locationHint}
+                {v.confirmedFoundingTeam ? " · founding team" : ""}
+              </span>
+            ) : v.confirmedFoundingTeam ? (
+              <span className="text-xs text-[var(--ep-navy-muted)]">founding team</span>
+            ) : null}
           </li>
         ))}
       </ul>
@@ -104,6 +108,7 @@ function VolunteerLeaderRoster({
 export function WarRoomPanel({ data }: Props) {
   const w = data.warRoom;
   const [volunteerRosterOpen, setVolunteerRosterOpen] = useState(false);
+  const [sherwoodVolunteersOpen, setSherwoodVolunteersOpen] = useState(false);
   return (
     <section>
       <SectionTitle
@@ -179,9 +184,29 @@ export function WarRoomPanel({ data }: Props) {
         <div className="ep-card">
           <h3 className="font-heading font-bold">Sherwood 60%+</h3>
           <p className="mt-2 text-sm">
-            VIP {w.sherwoodVipSold}/{w.sherwoodVipGoal} · Tickets {w.sherwoodTicketsSold} · Volunteers{" "}
-            {w.sherwoodVolunteers}
+            VIP {w.sherwoodVipSold}/{w.sherwoodVipGoal} · Tickets {w.sherwoodTicketsSold}
           </p>
+          <button
+            type="button"
+            className="mt-3 w-full rounded-md border border-[var(--ep-border)] bg-[var(--ep-cream)] px-3 py-2 text-left text-sm transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]"
+            onClick={() => setSherwoodVolunteersOpen((open) => !open)}
+            aria-expanded={sherwoodVolunteersOpen}
+          >
+            <span className="font-semibold text-[var(--ep-navy)]">
+              Sherwood volunteers: {w.sherwoodVolunteers}
+            </span>
+            <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+              {sherwoodVolunteersOpen ? "Hide roster ▲" : "View roster ▼"}
+            </span>
+          </button>
+          {sherwoodVolunteersOpen ? (
+            <div className="mt-4 border-t border-[var(--ep-border)] pt-4">
+              <VolunteerLeaderRoster
+                leaders={w.sherwoodVolunteersRoster}
+                subtitle={`${w.sherwoodVolunteers} confirmed for Sherwood event ops · contact details coming later`}
+              />
+            </div>
+          ) : null}
         </div>
       </div>
 
@@ -838,6 +863,7 @@ export function CoalitionCommandPanel({ data }: Props) {
 export function SherwoodVictoryPanel({ data }: Props) {
   const s = data.coalitionPowerMap.sherwood;
   const w = data.warRoom;
+  const [sherwoodVolunteersOpen, setSherwoodVolunteersOpen] = useState(false);
   return (
     <section>
       <SectionTitle title="Sherwood Victory Center" subtitle="Flagship home-base event · 60%+ win goal" />
@@ -848,7 +874,18 @@ export function SherwoodVictoryPanel({ data }: Props) {
       <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <ProgressStat label="VIP tables sold" value={w.sherwoodVipSold} goal={w.sherwoodVipGoal} />
         <ProgressStat label="Tickets sold" value={w.sherwoodTicketsSold} goal={700} />
-        <ProgressStat label="Volunteer signups" value={w.sherwoodVolunteers} goal={50} />
+        <ProgressStat
+          label="Sherwood volunteers"
+          value={w.sherwoodVolunteers}
+          goal={50}
+          onClick={() => setSherwoodVolunteersOpen((open) => !open)}
+          expanded={sherwoodVolunteersOpen}
+        >
+          <VolunteerLeaderRoster
+            leaders={w.sherwoodVolunteersRoster}
+            subtitle={`${w.sherwoodVolunteers} confirmed · contact details coming later`}
+          />
+        </ProgressStat>
       </div>
       <div className="ep-card">
         <h3 className="font-heading font-bold">Activation checklist</h3>

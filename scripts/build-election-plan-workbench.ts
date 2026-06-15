@@ -1220,10 +1220,13 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
     };
   }>(path.join(BRAIN_DATA, "people-power-network.json"));
   const sherwood = readJson<{
-    vipTablesSold?: number;
-    vipTablesGoal?: number;
-    ticketsSold?: number;
-    volunteerSignups?: number;
+    tracking?: {
+      vipTablesSold?: number;
+      vipTablesGoal?: number;
+      ticketsSold?: number;
+      volunteerSignups?: number;
+    };
+    volunteers?: Array<{ id: string; displayName: string }>;
   }>(path.join(BRAIN_DATA, "win-sherwood-operation.json"));
   const endorse = readJson<{ requested?: number; endorsed?: number }>(
     path.join(BRAIN_DATA, "endorsement-scorecard.json"),
@@ -1239,6 +1242,18 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
     "Teacher Network Meetings — April Reisma pathway",
     "Labor Outreach Preparation — briefing packet + first calls",
   ];
+
+  const sherwoodVolunteersRoster = (sherwood?.volunteers ?? []).map((v) => ({
+    id: v.id,
+    name: v.displayName,
+    locationHint: null as string | null,
+    inviteStatus: "sherwood",
+    confirmedFoundingTeam: false,
+  }));
+  const sherwoodVolunteerCount =
+    sherwoodVolunteersRoster.length > 0
+      ? sherwoodVolunteersRoster.length
+      : sherwood?.tracking?.volunteerSignups ?? 0;
 
   return {
     weeksRemaining: 20,
@@ -1270,10 +1285,11 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
     calendarTruthPct: Math.round((122 / 300) * 1000) / 10,
     phase9Ready: false,
     sherwoodGoal: "60%+",
-    sherwoodVipSold: sherwood?.vipTablesSold ?? 0,
-    sherwoodVipGoal: sherwood?.vipTablesGoal ?? 20,
-    sherwoodTicketsSold: sherwood?.ticketsSold ?? 0,
-    sherwoodVolunteers: sherwood?.volunteerSignups ?? 0,
+    sherwoodVipSold: sherwood?.tracking?.vipTablesSold ?? 0,
+    sherwoodVipGoal: sherwood?.tracking?.vipTablesGoal ?? 20,
+    sherwoodTicketsSold: sherwood?.tracking?.ticketsSold ?? 0,
+    sherwoodVolunteers: sherwoodVolunteerCount,
+    sherwoodVolunteersRoster,
     topPrioritiesThisWeek: topPriorities,
   };
 }

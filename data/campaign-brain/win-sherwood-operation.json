@@ -25,7 +25,7 @@
     "vipTablesGoal": 20,
     "ticketsSold": 0,
     "foodTicketsSold": 0,
-    "volunteerSignups": 0,
+    "volunteerSignups": 7,
     "donorConversions": 0,
     "sponsorLeads": 0,
     "legalComplianceReview": "pending",
@@ -33,5 +33,14 @@
     "security": "pending",
     "permits": "pending",
     "alcoholCompliance": "pending"
-  }
+  },
+  "volunteers": [
+    { "id": "sherwood-vol-duke", "displayName": "John Duke" },
+    { "id": "sherwood-vol-powell", "displayName": "Jay Powell" },
+    { "id": "sherwood-vol-low", "displayName": "Christy Low" },
+    { "id": "sherwood-vol-rampone", "displayName": "Sarah Rampone" },
+    { "id": "sherwood-vol-dare", "displayName": "Judy Dare" },
+    { "id": "sherwood-vol-hurst", "displayName": "Ben Hurst" },
+    { "id": "sherwood-vol-solice", "displayName": "Leann Solice" }
+  ]
 }

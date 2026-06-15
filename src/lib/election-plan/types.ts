@@ -462,6 +462,13 @@ export type ElectionPlanWorkbenchSnapshot = {
     sherwoodVipGoal: number;
     sherwoodTicketsSold: number;
     sherwoodVolunteers: number;
+    sherwoodVolunteersRoster: Array<{
+      id: string;
+      name: string;
+      locationHint: string | null;
+      inviteStatus: string;
+      confirmedFoundingTeam: boolean;
+    }>;
     topPrioritiesThisWeek: string[];
   };
   campaignTimeline: Array<{
