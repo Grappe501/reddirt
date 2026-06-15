@@ -315,7 +315,18 @@
       "votes": {
         "target": 5589,
         "gainNeeded": 219
-      }
+      },
+      "secondaryGoals": [
+        {
+          "id": "sos-2022-plus-25",
+          "label": "25% SOS lift vs 2022",
+          "description": "Secondary campaign goal: increase Secretary of State votes in Jacksonville by 25% over the 2022 midterm performance in this city.",
+          "baseline2022SosVotes": 4869,
+          "targetIncreasePct": 25,
+          "targetSosVotes": 6086,
+          "baselineSource": "Estimated from Pulaski County 2022 SOS Democratic votes (69,557) × Jacksonville population share (7.0%). Official SOS JSON city aggregation pending."
+        }
+      ]
     },
     "hot-springs": {
       "locked": true,

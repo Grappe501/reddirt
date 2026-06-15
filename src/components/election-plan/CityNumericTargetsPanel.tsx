@@ -77,6 +77,33 @@ export function CityNumericTargetsPanel({ targets, countyName }: Props) {
       </div>
 
       <p className="mt-3 text-[10px] text-[var(--ep-navy-muted)]">Source: {targets.source}</p>
+
+      {targets.secondaryGoals && targets.secondaryGoals.length > 0 ? (
+        <div className="mt-6 space-y-4 border-t border-[var(--ep-border)] pt-4">
+          <h3 className="font-heading text-base font-bold text-[var(--ep-navy)]">Secondary goals</h3>
+          {targets.secondaryGoals.map((goal) => (
+            <div key={goal.id} className="rounded-lg border border-[var(--ep-gold)]/40 bg-[var(--ep-cream)]/30 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-gold)]">{goal.label}</p>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--ep-navy-muted)]">{goal.description}</p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-3 text-sm">
+                <div>
+                  <p className="text-xs uppercase text-[var(--ep-navy-muted)]">2022 SOS baseline</p>
+                  <p className="font-semibold">{goal.baseline2022SosVotes.toLocaleString()} votes</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase text-[var(--ep-navy-muted)]">Target lift</p>
+                  <p className="font-semibold">+{goal.targetIncreasePct}%</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase text-[var(--ep-navy-muted)]">2026 SOS target</p>
+                  <p className="font-semibold">{goal.targetSosVotes.toLocaleString()} votes</p>
+                </div>
+              </div>
+              <p className="mt-2 text-[10px] text-[var(--ep-navy-muted)]">{goal.baselineSource}</p>
+            </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

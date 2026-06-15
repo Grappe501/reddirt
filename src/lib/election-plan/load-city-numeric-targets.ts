@@ -24,6 +24,16 @@ export type CityVolunteerTargets = {
   currentSignups?: number;
 };
 
+export type CitySecondaryGoal = {
+  id: string;
+  label: string;
+  description: string;
+  baseline2022SosVotes: number;
+  targetIncreasePct: number;
+  targetSosVotes: number;
+  baselineSource: string;
+};
+
 export type CityNumericTargets = {
   locked: boolean;
   source: string;
@@ -31,6 +41,7 @@ export type CityNumericTargets = {
   houseParties: CityHousePartyTargets;
   volunteers: CityVolunteerTargets;
   votes: { target: number; gainNeeded: number };
+  secondaryGoals?: CitySecondaryGoal[];
 };
 
 type SourceFile = {
