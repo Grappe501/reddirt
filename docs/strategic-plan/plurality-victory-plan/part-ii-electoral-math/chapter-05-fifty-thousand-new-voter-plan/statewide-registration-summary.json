@@ -1,0 +1,618 @@
+{
+  "generatedAt": "2026-06-14T14:11:58.501Z",
+  "statewideGoal": 50000,
+  "statewideGap": 50000,
+  "weeksRemaining": 20,
+  "statewideWeeklyTarget": 2500,
+  "statewideDailyTarget": 358,
+  "dbWarning": "CountyCampaignStats unavailable; using staged JSON fallback (\nInvalid `prisma.countyCampaignStats.findMany()` invocation in\nH:\\SOSWebsite\\RedDirt\\src\\lib\\field-ops\\county-campaign-stats-source.ts:18:51\n\n  15   prisma: PrismaClient,\n  16 ): Promise<{ rows: CountyCampaignStatsSourceRow[]; warning?: string }> {\n  17   try {\n→ 18     const rows = await prisma.countyCampaignStats.findMany(\nError occurred during query execution:\nConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(PostgresError { code: \"42883\", message: \"operator does not exist: uuid = text\", severity: \"ERROR\", detail: None, column: None, hint: Some(\"No operator matches the given name and argument types. You might need to add explicit type casts.\") }), transient: false })). No CountyCampaignStats.registrationGoal rows — using Lane 2-weighted allocation of 50,000 statewide.",
+  "top10ByGoal": [
+    {
+      "county": "Pulaski",
+      "slug": "pulaski-county",
+      "goal": 10584,
+      "source": "allocated_from_lane2_weight",
+      "registrationsSoFar": null,
+      "gapRemaining": 10584
+    },
+    {
+      "county": "Benton",
+      "slug": "benton-county",
+      "goal": 7183,
+      "source": "allocated_from_lane2_weight",
+      "registrationsSoFar": null,
+      "gapRemaining": 7183
+    },
+    {
+      "county": "Washington",
+      "slug": "washington-county",
+      "goal": 5462,
+      "source": "allocated_from_lane2_weight",
+      "registrationsSoFar": null,
+      "gapRemaining": 5462
+    },
+    {
+      "county": "Saline",
+      "slug": "saline-county",
+      "goal": 2659,
+      "source": "allocated_from_lane2_weight",
+      "registrationsSoFar": null,
+      "gapRemaining": 2659
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner-county",
+      "goal": 2361,
+      "source": "allocated_from_lane2_weight",
+      "registrationsSoFar": null,
+      "gapRemaining": 2361
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian-county",
+      "goal": 1859,
+      "source": "allocated_from_lane2_weight",
+      "registrationsSoFar": null,
+      "gapRemaining": 1859
+    },
+    {
+      "county": "Garland",
+      "slug": "garland-county",
+      "goal": 1477,
+      "source": "allocated_from_lane2_weight",
+      "registrationsSoFar": null,
+      "gapRemaining": 1477
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson-county",
+      "goal": 1464,
+      "source": "allocated_from_lane2_weight",
+      "registrationsSoFar": null,
+      "gapRemaining": 1464
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead-county",
+      "goal": 1418,
+      "source": "allocated_from_lane2_weight",
+      "registrationsSoFar": null,
+      "gapRemaining": 1418
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden-county",
+      "goal": 1049,
+      "source": "allocated_from_lane2_weight",
+      "registrationsSoFar": null,
+      "gapRemaining": 1049
+    }
+  ],
+  "goals": [
+    {
+      "county": "Arkansas",
+      "slug": "arkansas-county",
+      "goal": 209,
+      "gap": 209,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Ashley",
+      "slug": "ashley-county",
+      "goal": 226,
+      "gap": 226,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Baxter",
+      "slug": "baxter-county",
+      "goal": 576,
+      "gap": 576,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Benton",
+      "slug": "benton-county",
+      "goal": 7183,
+      "gap": 7183,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Boone",
+      "slug": "boone-county",
+      "goal": 328,
+      "gap": 328,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Bradley",
+      "slug": "bradley-county",
+      "goal": 117,
+      "gap": 117,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Calhoun",
+      "slug": "calhoun-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Carroll",
+      "slug": "carroll-county",
+      "goal": 406,
+      "gap": 406,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Chicot",
+      "slug": "chicot-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Clark",
+      "slug": "clark-county",
+      "goal": 291,
+      "gap": 291,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Clay",
+      "slug": "clay-county",
+      "goal": 99,
+      "gap": 99,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Cleburne",
+      "slug": "cleburne-county",
+      "goal": 257,
+      "gap": 257,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Cleveland",
+      "slug": "cleveland-county",
+      "goal": 79,
+      "gap": 79,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Columbia",
+      "slug": "columbia-county",
+      "goal": 316,
+      "gap": 316,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Conway",
+      "slug": "conway-county",
+      "goal": 261,
+      "gap": 261,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead-county",
+      "goal": 1418,
+      "gap": 1418,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Crawford",
+      "slug": "crawford-county",
+      "goal": 605,
+      "gap": 605,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden-county",
+      "goal": 1049,
+      "gap": 1049,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Cross",
+      "slug": "cross-county",
+      "goal": 273,
+      "gap": 273,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Dallas",
+      "slug": "dallas-county",
+      "goal": 89,
+      "gap": 89,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Desha",
+      "slug": "desha-county",
+      "goal": 194,
+      "gap": 194,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Drew",
+      "slug": "drew-county",
+      "goal": 186,
+      "gap": 186,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner-county",
+      "goal": 2361,
+      "gap": 2361,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Franklin",
+      "slug": "franklin-county",
+      "goal": 109,
+      "gap": 109,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Fulton",
+      "slug": "fulton-county",
+      "goal": 95,
+      "gap": 95,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Garland",
+      "slug": "garland-county",
+      "goal": 1477,
+      "gap": 1477,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Grant",
+      "slug": "grant-county",
+      "goal": 162,
+      "gap": 162,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Greene",
+      "slug": "greene-county",
+      "goal": 362,
+      "gap": 362,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Hempstead",
+      "slug": "hempstead-county",
+      "goal": 284,
+      "gap": 284,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Hot Spring",
+      "slug": "hot-spring-county",
+      "goal": 272,
+      "gap": 272,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Howard",
+      "slug": "howard-county",
+      "goal": 127,
+      "gap": 127,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Independence",
+      "slug": "independence-county",
+      "goal": 341,
+      "gap": 341,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Izard",
+      "slug": "izard-county",
+      "goal": 99,
+      "gap": 99,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Jackson",
+      "slug": "jackson-county",
+      "goal": 86,
+      "gap": 86,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson-county",
+      "goal": 1464,
+      "gap": 1464,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Johnson",
+      "slug": "johnson-county",
+      "goal": 236,
+      "gap": 236,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Lafayette",
+      "slug": "lafayette-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Lawrence",
+      "slug": "lawrence-county",
+      "goal": 109,
+      "gap": 109,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Lee",
+      "slug": "lee-county",
+      "goal": 162,
+      "gap": 162,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Lincoln",
+      "slug": "lincoln-county",
+      "goal": 85,
+      "gap": 85,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Little River",
+      "slug": "little-river-county",
+      "goal": 133,
+      "gap": 133,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Logan",
+      "slug": "logan-county",
+      "goal": 140,
+      "gap": 140,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Lonoke",
+      "slug": "lonoke-county",
+      "goal": 941,
+      "gap": 941,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Madison",
+      "slug": "madison-county",
+      "goal": 156,
+      "gap": 156,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Marion",
+      "slug": "marion-county",
+      "goal": 234,
+      "gap": 234,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Miller",
+      "slug": "miller-county",
+      "goal": 582,
+      "gap": 582,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Mississippi",
+      "slug": "mississippi-county",
+      "goal": 274,
+      "gap": 274,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Monroe",
+      "slug": "monroe-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Montgomery",
+      "slug": "montgomery-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Nevada",
+      "slug": "nevada-county",
+      "goal": 74,
+      "gap": 74,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Newton",
+      "slug": "newton-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Ouachita",
+      "slug": "ouachita-county",
+      "goal": 337,
+      "gap": 337,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Perry",
+      "slug": "perry-county",
+      "goal": 88,
+      "gap": 88,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Phillips",
+      "slug": "phillips-county",
+      "goal": 249,
+      "gap": 249,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Pike",
+      "slug": "pike-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Poinsett",
+      "slug": "poinsett-county",
+      "goal": 108,
+      "gap": 108,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Polk",
+      "slug": "polk-county",
+      "goal": 81,
+      "gap": 81,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Pope",
+      "slug": "pope-county",
+      "goal": 744,
+      "gap": 744,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Prairie",
+      "slug": "prairie-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Pulaski",
+      "slug": "pulaski-county",
+      "goal": 10584,
+      "gap": 10584,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Randolph",
+      "slug": "randolph-county",
+      "goal": 121,
+      "gap": 121,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "St. Francis",
+      "slug": "st-francis-county",
+      "goal": 248,
+      "gap": 248,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Saline",
+      "slug": "saline-county",
+      "goal": 2659,
+      "gap": 2659,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Scott",
+      "slug": "scott-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Searcy",
+      "slug": "searcy-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian-county",
+      "goal": 1859,
+      "gap": 1859,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Sevier",
+      "slug": "sevier-county",
+      "goal": 99,
+      "gap": 99,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Sharp",
+      "slug": "sharp-county",
+      "goal": 154,
+      "gap": 154,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Stone",
+      "slug": "stone-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Union",
+      "slug": "union-county",
+      "goal": 712,
+      "gap": 712,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Van Buren",
+      "slug": "van-buren-county",
+      "goal": 136,
+      "gap": 136,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Washington",
+      "slug": "washington-county",
+      "goal": 5462,
+      "gap": 5462,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "White",
+      "slug": "white-county",
+      "goal": 807,
+      "gap": 807,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Woodruff",
+      "slug": "woodruff-county",
+      "goal": 72,
+      "gap": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Yell",
+      "slug": "yell-county",
+      "goal": 161,
+      "gap": 161,
+      "source": "allocated_from_lane2_weight"
+    }
+  ]
+}

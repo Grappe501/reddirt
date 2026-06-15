@@ -59,13 +59,18 @@ Tracker: [`data/strategy-doctrine/leadership-lock-v1.json`](../data/strategy-doc
 
 ## 1. Win target assumptions
 
+**Methodology (lock before operational use):** [`WIN_TARGET_METHODOLOGY.md`](./WIN_TARGET_METHODOLOGY.md) · Lock sheet: [`sprint-0-5/07-WIN_TARGET_METHODOLOGY_LOCK.md`](./sprint-0-5/07-WIN_TARGET_METHODOLOGY_LOCK.md)
+
+Five-layer model: (1) statewide 50%+1 + cushion, (2) projected turnout from history, (3) baseline D vote blend, (4) gap allocation by capacity, (5) plausible-share guardrails. **Not a forecast.**
+
 | Assumption | Value | Status | Owner | Notes |
 |------------|-------|--------|-------|-------|
 | North star | 50% + 1 statewide | Locked (doctrine) | — | From `VICTORY_OS_DOCTRINE.md` |
-| Target vote share (working) | _TBD_ | Draft | Campaign Manager | Not for public site |
-| Expected turnout vs 2022 / 2024 baseline | _TBD_ | Draft | Campaign Manager | Source: _cite primary data_ |
-| Margin-of-error counties (must-win band) | _TBD_ | Draft | Kelly + CM | List FIPS or names |
-| Acceptable underperformance in Maintenance counties | _TBD_ | Draft | Field director | Define “maintain presence” operationally |
+| Working target (with cushion) | _764,876 (V1 scenario)_ | Draft | Campaign Manager | From `kelly-win-target-scenario-v1.json` — lock methodology first |
+| Statewide vote gap (planning) | _203,049 (V1 scenario)_ | Draft | Campaign Manager | `workingTarget − Σ baselineDemVotes` |
+| Cushion % (`cushionPct`) | 0.75% | Draft | Campaign Manager | Lock sheet 07 |
+| Midterm dropoff factor | 0.72 | Draft | Campaign Manager | Presidential leg discount |
+| Synthetic history policy | Allowed for pipeline | Draft | Data lead | Must not drive field targets until official ingest |
 
 ---
 

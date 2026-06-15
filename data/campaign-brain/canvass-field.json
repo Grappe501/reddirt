@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "note": "Canvass execution — doors and conversations by lane. Re-run campaign-brain:voter-contact:build.",
+  "programs": {
+    "lane2DropOff": {
+      "label": "Lane 2 — Democratic reactivation turf",
+      "doorsKnocked": 0,
+      "conversations": 0,
+      "commitments": 0,
+      "goal": 30000
+    },
+    "lane4Persuasion": {
+      "label": "Lane 4 — Persuasion turf",
+      "doorsKnocked": 0,
+      "conversations": 0,
+      "commitments": 0,
+      "goal": 20000
+    },
+    "registrationTurf": {
+      "label": "Lane 3 — Registration turf",
+      "doorsKnocked": 0,
+      "registrationsGenerated": 0,
+      "goal": 10000
+    }
+  },
+  "sessions": []
+}

@@ -45,7 +45,6 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Her Journey", href: "/about/journey" },
       { label: "Community & Civic Work", href: "/about/community" },
       { label: "Why I'm Running", href: "/about/why-im-running" },
-      { label: "Experience & Leadership", href: "/about/business" },
     ],
   },
   {

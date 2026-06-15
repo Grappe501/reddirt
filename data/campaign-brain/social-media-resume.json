@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-15T02:20:28.687Z",
+  "goal": "1000 Arkansas Stories",
+  "metrics": {
+    "version": 1,
+    "generatedAt": "2026-06-15T02:20:28.687Z",
+    "countiesVisited": 0,
+    "countiesTotal": 75,
+    "citiesVisited": 0,
+    "stopsCompleted": 0,
+    "milesTraveled": 0,
+    "eventsAttended": 0,
+    "storiesPublished": 0,
+    "storiesPending": 0,
+    "storiesShared": 0,
+    "countiesWithStories": 0,
+    "citiesWithStories": 0,
+    "substackPublished": 0,
+    "videosPublished": 0,
+    "socialPostsPublished": 0,
+    "localBusinessesHighlighted": 0,
+    "churchesHighlighted": 0,
+    "schoolsHighlighted": 0,
+    "faithOrganizationsVisited": 0,
+    "clerkOfficesVisited": 0,
+    "festivalsAttended": 0,
+    "sportsEventsAttended": 0,
+    "mediaMentions": 0,
+    "peopleSpotlighted": 0,
+    "contentPyramidCompletionPct": 0,
+    "arkansasPresenceScore": 0,
+    "septemberPersuasionReadiness": 0
+  },
+  "storyCategories": [
+    {
+      "id": "local_business",
+      "label": "Local Business Spotlight",
+      "count": 0,
+      "goal": 200
+    },
+    {
+      "id": "teacher",
+      "label": "Teacher Spotlight",
+      "count": 0,
+      "goal": 75
+    },
+    {
+      "id": "student",
+      "label": "Student Spotlight",
+      "count": 0,
+      "goal": 50
+    },
+    {
+      "id": "veteran",
+      "label": "Veteran Spotlight",
+      "count": 0,
+      "goal": 75
+    },
+    {
+      "id": "volunteer",
+      "label": "Volunteer Spotlight",
+      "count": 0,
+      "goal": 100
+    },
+    {
+      "id": "faith_leader",
+      "label": "Faith Leader Spotlight",
+      "count": 0,
+      "goal": 75
+    },
+    {
+      "id": "community_organization",
+      "label": "Community Organization Spotlight",
+      "count": 0,
+      "goal": 150
+    },
+    {
+      "id": "arkansas_success",
+      "label": "Arkansas Success Story",
+      "count": 0,
+      "goal": 150
+    },
+    {
+      "id": "arkansas_challenge",
+      "label": "Arkansas Challenge Story",
+      "count": 0,
+      "goal": 100
+    }
+  ]
+}

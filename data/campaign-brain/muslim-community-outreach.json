@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "note": "Muslim community outreach — Dr. Ali Khan and Ebrahim network. Respectful, relationship-first.",
+  "partners": ["Dr. Ali Khan", "Ebrahim"],
+  "communities": [],
+  "_example": {
+    "community": "",
+    "contact": "",
+    "meetingRequest": "not_started",
+    "culturalNotes": "",
+    "eventOpportunity": "",
+    "volunteerLeaders": 0,
+    "followUpNeeded": false
+  }
+}

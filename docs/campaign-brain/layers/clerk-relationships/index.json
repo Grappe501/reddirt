@@ -1,0 +1,682 @@
+{
+  "generatedAt": "2026-06-15T02:08:30.411Z",
+  "counties": [
+    {
+      "county": "Arkansas",
+      "slug": "arkansas-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Ashley",
+      "slug": "ashley-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Baxter",
+      "slug": "baxter-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Benton",
+      "slug": "benton-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "Boone",
+      "slug": "boone-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Bradley",
+      "slug": "bradley-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Calhoun",
+      "slug": "calhoun-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Carroll",
+      "slug": "carroll-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Chicot",
+      "slug": "chicot-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Clark",
+      "slug": "clark-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Clay",
+      "slug": "clay-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Cleburne",
+      "slug": "cleburne-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Cleveland",
+      "slug": "cleveland-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Columbia",
+      "slug": "columbia-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Conway",
+      "slug": "conway-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "Crawford",
+      "slug": "crawford-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Cross",
+      "slug": "cross-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Dallas",
+      "slug": "dallas-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Desha",
+      "slug": "desha-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Drew",
+      "slug": "drew-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner-county",
+      "status": "Developing",
+      "meetings": 1,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A",
+      "source": "ACCA 2026 conference"
+    },
+    {
+      "county": "Franklin",
+      "slug": "franklin-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Fulton",
+      "slug": "fulton-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Garland",
+      "slug": "garland-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "Grant",
+      "slug": "grant-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Greene",
+      "slug": "greene-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Hempstead",
+      "slug": "hempstead-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Hot Spring",
+      "slug": "hot-spring-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Howard",
+      "slug": "howard-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Independence",
+      "slug": "independence-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Izard",
+      "slug": "izard-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Jackson",
+      "slug": "jackson-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "Johnson",
+      "slug": "johnson-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Lafayette",
+      "slug": "lafayette-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Lawrence",
+      "slug": "lawrence-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Lee",
+      "slug": "lee-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Lincoln",
+      "slug": "lincoln-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Little River",
+      "slug": "little-river-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Logan",
+      "slug": "logan-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Lonoke",
+      "slug": "lonoke-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "Madison",
+      "slug": "madison-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Marion",
+      "slug": "marion-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Miller",
+      "slug": "miller-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Mississippi",
+      "slug": "mississippi-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Monroe",
+      "slug": "monroe-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Montgomery",
+      "slug": "montgomery-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Nevada",
+      "slug": "nevada-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Newton",
+      "slug": "newton-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Ouachita",
+      "slug": "ouachita-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Perry",
+      "slug": "perry-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Phillips",
+      "slug": "phillips-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Pike",
+      "slug": "pike-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Poinsett",
+      "slug": "poinsett-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Polk",
+      "slug": "polk-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Pope",
+      "slug": "pope-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "Prairie",
+      "slug": "prairie-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Pulaski",
+      "slug": "pulaski-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "Randolph",
+      "slug": "randolph-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "St. Francis",
+      "slug": "st-francis-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Saline",
+      "slug": "saline-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "Scott",
+      "slug": "scott-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Searcy",
+      "slug": "searcy-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "Sevier",
+      "slug": "sevier-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Sharp",
+      "slug": "sharp-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Stone",
+      "slug": "stone-county",
+      "status": "Developing",
+      "meetings": 1,
+      "followUps": 0,
+      "priority": "Medium",
+      "tier": "C",
+      "source": "ACCA 2026 Mountain View venue county"
+    },
+    {
+      "county": "Union",
+      "slug": "union-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "B"
+    },
+    {
+      "county": "Van Buren",
+      "slug": "van-buren-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    },
+    {
+      "county": "Washington",
+      "slug": "washington-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "White",
+      "slug": "white-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "High",
+      "tier": "A"
+    },
+    {
+      "county": "Woodruff",
+      "slug": "woodruff-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "D"
+    },
+    {
+      "county": "Yell",
+      "slug": "yell-county",
+      "status": "Unknown",
+      "meetings": 0,
+      "followUps": 0,
+      "priority": "Low",
+      "tier": "C"
+    }
+  ]
+}

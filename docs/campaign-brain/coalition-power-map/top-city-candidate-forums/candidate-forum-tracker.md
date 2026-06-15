@@ -1,0 +1,22 @@
+# Candidate Forum Tracker
+
+- **Little Rock** (Pulaski) — not_started
+- **Fayetteville** (Washington) — not_started
+- **Springdale** (Washington) — not_started
+- **North Little Rock** (Pulaski) — not_started
+- **Fort Smith** (Sebastian) — booked
+- **Rogers** (Benton) — not_started
+- **Conway** (Faulkner) — not_started
+- **Pine Bluff** (Jefferson) — not_started
+- **Jonesboro** (Craighead) — not_started
+- **Bentonville** (Benton) — not_started
+- **Sherwood** (Pulaski) — not_started
+- **Jacksonville** (Pulaski) — not_started
+- **Hot Springs** (Garland) — not_started
+- **Benton** (Saline) — not_started
+- **Bella Vista** (Benton) — not_started
+- **Maumelle** (Pulaski) — not_started
+- **West Memphis** (Crittenden) — not_started
+- **Texarkana** (Miller) — not_started
+- **Russellville** (Pope) — not_started
+- **El Dorado** (Union) — not_started

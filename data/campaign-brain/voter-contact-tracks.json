@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "note": "Lane track rollups — update weekly after field reports. Auto-build merges channel data where available.",
+  "humanContactIndexGoal": 250000,
+  "lane2Reactivation": {
+    "contacted": 0,
+    "engaged": 0,
+    "committed": 0,
+    "turnoutTarget": 51051
+  },
+  "lane3Registration": {
+    "registrationsStarted": 0,
+    "registrationsCompleted": 0,
+    "registrationEvents": 0,
+    "volunteerRegistrars": 0,
+    "goal": 50000
+  },
+  "lane4Persuasion": {
+    "conversations": 0,
+    "followUps": 0,
+    "eventAttendance": 0,
+    "endorsementsGenerated": 0
+  },
+  "funnel": {
+    "volunteersActive": 0,
+    "commitments": 0,
+    "turnoutTargets": 0
+  }
+}

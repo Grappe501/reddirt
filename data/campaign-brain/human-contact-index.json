@@ -1,0 +1,14 @@
+{
+  "total": 0,
+  "components": {
+    "phoneCalls": 0,
+    "postcards": 0,
+    "doorsKnocked": 0,
+    "housePartyAttendees": 0,
+    "powerOf5Conversations": 0,
+    "volunteerRecruits": 0,
+    "eventAttendees": 0
+  },
+  "goal": 250000,
+  "completionPct": 0
+}

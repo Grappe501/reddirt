@@ -72,7 +72,7 @@ export const inviteKellyContent = {
       },
     ] as const,
     nextCta: {
-      label: "See how it works",
+      label: "See how it works & what you can host",
       href: "/events/request/how-it-works",
     },
   },
@@ -108,8 +108,8 @@ export const inviteKellyContent = {
       },
     ] as const,
     nextCta: {
-      label: "See what you can host",
-      href: "/events/request/what-you-can-host",
+      label: "Start a request",
+      href: "/events/request/how-it-works#start-request",
     },
   },
 

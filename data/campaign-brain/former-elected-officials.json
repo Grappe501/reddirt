@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "note": "Former elected officials — institutional memory network. npm run campaign-brain:relationship-network:build",
+  "officials": [],
+  "_example": {
+    "id": "former-faulkner-example",
+    "name": "Example Former Official",
+    "formerOffice": "State Representative",
+    "county": "Faulkner",
+    "district": "District 45",
+    "relationships": "County Dems · civic clubs",
+    "asks": {
+      "contacted": false,
+      "meetingRequested": false,
+      "meetingCompleted": false,
+      "supportRequested": false,
+      "networkRequested": false,
+      "financialSupportRequested": false,
+      "introducedOthers": false,
+      "volunteerLeadsProvided": false
+    },
+    "endorsement": {
+      "endorsementRequested": false,
+      "endorsementStatus": "not_requested",
+      "endorsementActivationLevel": "none"
+    },
+    "outcomes": {
+      "adviceReceived": false,
+      "introductionsMade": 0,
+      "volunteerLeadersIdentified": 0,
+      "eventOpportunities": 0,
+      "financialSupportDiscussed": false,
+      "networkAccessProvided": false,
+      "followUpScheduled": false
+    },
+    "notes": "Remove _example before production"
+  }
+}

@@ -1,0 +1,1063 @@
+{
+  "generatedAt": "2026-06-14T14:17:10.017Z",
+  "formula": "VCI = Lane 2 @ 50% + Registration Goal + GOP Conversion @ 12% + City Influence (Top 40 vote targets in county)",
+  "useCases": [
+    "Candidate travel priority",
+    "Staff deployment",
+    "Volunteer deployment",
+    "Direct mail priority",
+    "Digital advertising priority"
+  ],
+  "counties": [
+    {
+      "county": "Pulaski",
+      "slug": "pulaski-county",
+      "vci": 97376,
+      "rank": 1,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 69186,
+      "mission": {
+        "role": "Statewide Vote Maximization County",
+        "primaryMission": "Lane 2 Recovery",
+        "secondaryMission": "Volunteer Production",
+        "tertiaryMission": "Fundraising"
+      }
+    },
+    {
+      "county": "Benton",
+      "slug": "benton-county",
+      "vci": 44415,
+      "rank": 2,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 22416,
+      "mission": {
+        "role": "Republican Conversion County",
+        "primaryMission": "Moderate Republican Outreach",
+        "secondaryMission": "New Voter Registration",
+        "tertiaryMission": "Business Community Engagement"
+      }
+    },
+    {
+      "county": "Washington",
+      "slug": "washington-county",
+      "vci": 43741,
+      "rank": 3,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 27971,
+      "mission": {
+        "role": "Statewide Vote Maximization County",
+        "primaryMission": "Lane 2 Recovery",
+        "secondaryMission": "Volunteer Production",
+        "tertiaryMission": "Fundraising"
+      }
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner-county",
+      "vci": 16572,
+      "rank": 4,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 8468,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Saline",
+      "slug": "saline-county",
+      "vci": 16215,
+      "rank": 5,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 6932,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian-county",
+      "vci": 16145,
+      "rank": 6,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 9433,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead-county",
+      "vci": 13397,
+      "rank": 7,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 8196,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson-county",
+      "vci": 12205,
+      "rank": 8,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 8339,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Garland",
+      "slug": "garland-county",
+      "vci": 10843,
+      "rank": 9,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 5101,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden-county",
+      "vci": 8578,
+      "rank": 10,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 5786,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "White",
+      "slug": "white-county",
+      "vci": 6898,
+      "rank": 11,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 2895,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Lonoke",
+      "slug": "lonoke-county",
+      "vci": 6783,
+      "rank": 12,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 2780,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Pope",
+      "slug": "pope-county",
+      "vci": 6122,
+      "rank": 13,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 2994,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Miller",
+      "slug": "miller-county",
+      "vci": 5406,
+      "rank": 14,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 3195,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Union",
+      "slug": "union-county",
+      "vci": 5363,
+      "rank": 15,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 2961,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Crawford",
+      "slug": "crawford-county",
+      "vci": 5277,
+      "rank": 16,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 2362,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Baxter",
+      "slug": "baxter-county",
+      "vci": 4405,
+      "rank": 17,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 1776,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Greene",
+      "slug": "greene-county",
+      "vci": 4322,
+      "rank": 18,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 2492,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Boone",
+      "slug": "boone-county",
+      "vci": 3320,
+      "rank": 19,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 1418,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Mississippi",
+      "slug": "mississippi-county",
+      "vci": 3318,
+      "rank": 20,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 2134,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "St. Francis",
+      "slug": "st-francis-county",
+      "vci": 2658,
+      "rank": 21,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 1869,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Hot Spring",
+      "slug": "hot-spring-county",
+      "vci": 2629,
+      "rank": 22,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 1196,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Independence",
+      "slug": "independence-county",
+      "vci": 2622,
+      "rank": 23,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 935,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Clark",
+      "slug": "clark-county",
+      "vci": 2543,
+      "rank": 24,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 1534,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Columbia",
+      "slug": "columbia-county",
+      "vci": 2508,
+      "rank": 25,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 1380,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Ouachita",
+      "slug": "ouachita-county",
+      "vci": 2333,
+      "rank": 26,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 1160,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Cross",
+      "slug": "cross-county",
+      "vci": 1901,
+      "rank": 27,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 909,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Hempstead",
+      "slug": "hempstead-county",
+      "vci": 1794,
+      "rank": 28,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 827,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Arkansas",
+      "slug": "arkansas-county",
+      "vci": 1666,
+      "rank": 29,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 862,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Carroll",
+      "slug": "carroll-county",
+      "vci": 1529,
+      "rank": 30,
+      "priority": "Priority 2",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Cleburne",
+      "slug": "cleburne-county",
+      "vci": 1526,
+      "rank": 31,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Johnson",
+      "slug": "johnson-county",
+      "vci": 1097,
+      "rank": 32,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Conway",
+      "slug": "conway-county",
+      "vci": 1077,
+      "rank": 33,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Marion",
+      "slug": "marion-county",
+      "vci": 1043,
+      "rank": 34,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Grant",
+      "slug": "grant-county",
+      "vci": 950,
+      "rank": 35,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Ashley",
+      "slug": "ashley-county",
+      "vci": 929,
+      "rank": 36,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Sharp",
+      "slug": "sharp-county",
+      "vci": 886,
+      "rank": 37,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Logan",
+      "slug": "logan-county",
+      "vci": 864,
+      "rank": 38,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Van Buren",
+      "slug": "van-buren-county",
+      "vci": 851,
+      "rank": 39,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Polk",
+      "slug": "polk-county",
+      "vci": 840,
+      "rank": 40,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Madison",
+      "slug": "madison-county",
+      "vci": 839,
+      "rank": 41,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Yell",
+      "slug": "yell-county",
+      "vci": 822,
+      "rank": 42,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Drew",
+      "slug": "drew-county",
+      "vci": 780,
+      "rank": 43,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Randolph",
+      "slug": "randolph-county",
+      "vci": 737,
+      "rank": 44,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Poinsett",
+      "slug": "poinsett-county",
+      "vci": 732,
+      "rank": 45,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Phillips",
+      "slug": "phillips-county",
+      "vci": 720,
+      "rank": 46,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Franklin",
+      "slug": "franklin-county",
+      "vci": 702,
+      "rank": 47,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Lawrence",
+      "slug": "lawrence-county",
+      "vci": 649,
+      "rank": 48,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Izard",
+      "slug": "izard-county",
+      "vci": 627,
+      "rank": 49,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Little River",
+      "slug": "little-river-county",
+      "vci": 600,
+      "rank": 50,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Stone",
+      "slug": "stone-county",
+      "vci": 592,
+      "rank": 51,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Desha",
+      "slug": "desha-county",
+      "vci": 564,
+      "rank": 52,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Howard",
+      "slug": "howard-county",
+      "vci": 557,
+      "rank": 53,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Clay",
+      "slug": "clay-county",
+      "vci": 556,
+      "rank": 54,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Fulton",
+      "slug": "fulton-county",
+      "vci": 551,
+      "rank": 55,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Sevier",
+      "slug": "sevier-county",
+      "vci": 526,
+      "rank": 56,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Perry",
+      "slug": "perry-county",
+      "vci": 511,
+      "rank": 57,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Jackson",
+      "slug": "jackson-county",
+      "vci": 505,
+      "rank": 58,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Pike",
+      "slug": "pike-county",
+      "vci": 482,
+      "rank": 59,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Bradley",
+      "slug": "bradley-county",
+      "vci": 434,
+      "rank": 60,
+      "priority": "Priority 3",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    },
+    {
+      "county": "Lee",
+      "slug": "lee-county",
+      "vci": 426,
+      "rank": 61,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Montgomery",
+      "slug": "montgomery-county",
+      "vci": 420,
+      "rank": 62,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Cleveland",
+      "slug": "cleveland-county",
+      "vci": 418,
+      "rank": 63,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Newton",
+      "slug": "newton-county",
+      "vci": 418,
+      "rank": 64,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Searcy",
+      "slug": "searcy-county",
+      "vci": 418,
+      "rank": 65,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Lincoln",
+      "slug": "lincoln-county",
+      "vci": 394,
+      "rank": 66,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Scott",
+      "slug": "scott-county",
+      "vci": 393,
+      "rank": 67,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Prairie",
+      "slug": "prairie-county",
+      "vci": 385,
+      "rank": 68,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Nevada",
+      "slug": "nevada-county",
+      "vci": 329,
+      "rank": 69,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Dallas",
+      "slug": "dallas-county",
+      "vci": 322,
+      "rank": 70,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Chicot",
+      "slug": "chicot-county",
+      "vci": 313,
+      "rank": 71,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Woodruff",
+      "slug": "woodruff-county",
+      "vci": 267,
+      "rank": 72,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Lafayette",
+      "slug": "lafayette-county",
+      "vci": 263,
+      "rank": 73,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Calhoun",
+      "slug": "calhoun-county",
+      "vci": 260,
+      "rank": 74,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    },
+    {
+      "county": "Monroe",
+      "slug": "monroe-county",
+      "vci": 243,
+      "rank": 75,
+      "priority": "Priority 4",
+      "cityInfluenceVotes": 0,
+      "mission": {
+        "role": "Coalition Maintenance County",
+        "primaryMission": "Democratic Retention (Lane 1)",
+        "secondaryMission": "Power of 5 Organizing",
+        "tertiaryMission": "County Fair & Community Presence"
+      }
+    }
+  ]
+}

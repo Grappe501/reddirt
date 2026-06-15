@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-06-15T02:08:58.514Z",
+  "principle": "If these numbers improve, the Brain improves. If they stagnate, recommendation quality declines.",
+  "health": [
+    {
+      "key": "verifiedEvents",
+      "label": "Verified Events",
+      "current": 122,
+      "goal": 300,
+      "direction": "up",
+      "health": "critical"
+    },
+    {
+      "key": "countiesCovered",
+      "label": "Counties Covered",
+      "current": 31,
+      "goal": 75,
+      "direction": "up",
+      "health": "critical"
+    },
+    {
+      "key": "guardrailViolations",
+      "label": "Guardrail Violations",
+      "current": 59,
+      "goal": 0,
+      "direction": "down",
+      "health": "critical"
+    },
+    {
+      "key": "outcomeReportPct",
+      "label": "Outcome Reports Submitted",
+      "current": 0,
+      "goal": 100,
+      "unit": "percent",
+      "direction": "up",
+      "health": "critical"
+    },
+    {
+      "key": "daysSinceLastBrainUpdate",
+      "label": "Days Since Last Brain Update",
+      "current": -1,
+      "goal": 7,
+      "unit": "days_max",
+      "direction": "down",
+      "health": "healthy"
+    }
+  ],
+  "current": {
+    "verifiedEvents": 122,
+    "countiesCovered": 31,
+    "guardrailViolations": 59,
+    "outcomeReportPct": 0,
+    "outcomeReportsSubmitted": 0,
+    "outcomeReportsEligible": 34,
+    "daysSinceLastBrainUpdate": -1,
+    "lastBrainBuild": "2026-06-15T00:55:28.081Z",
+    "countiesWithContactOwner": 0,
+    "countyOwnerCoveragePct": 0,
+    "verifiedThisWeek": 122,
+    "verifiedLastWeek": 3,
+    "verificationWeeklyDelta": 119,
+    "projectedCompletionDate300": "2026-06-29"
+  },
+  "calendarTruthExit": {
+    "verifiedEvents300Plus": {
+      "met": false,
+      "current": 122,
+      "required": 300
+    },
+    "allCountyFairsVerified": {
+      "met": false,
+      "current": "17/75 verified",
+      "required": "75/75"
+    },
+    "tierACountyEventsVerified": {
+      "met": false,
+      "current": "4/62 Tier A events verified",
+      "required": "100% Tier A"
+    },
+    "guardrailViolationsBelow10": {
+      "met": false,
+      "current": 59,
+      "required": "<10"
+    },
+    "everyCountyContactOwner": {
+      "met": false,
+      "current": "0/75",
+      "required": "75/75"
+    },
+    "weeklyUpdateCadence": {
+      "met": true,
+      "current": "-1 days",
+      "required": "≤7 days"
+    },
+    "outcomeReportingAbove90": {
+      "met": false,
+      "current": "0%",
+      "required": "≥90%"
+    },
+    "readyToLockWeeks1to20": false
+  }
+}

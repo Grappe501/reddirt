@@ -1,0 +1,74 @@
+{
+  "generatedAt": "2026-06-15T02:08:38.888Z",
+  "current": {
+    "verifiedEvents": 122,
+    "tentativeEvents": 250,
+    "missingDates": 99,
+    "countiesCovered": 31,
+    "guardrailViolations": 59
+  },
+  "goals": {
+    "verifiedEvents": {
+      "goal": 300,
+      "direction": "up"
+    },
+    "tentativeEvents": {
+      "goal": 50,
+      "direction": "down"
+    },
+    "missingDates": {
+      "goal": 0,
+      "direction": "down"
+    },
+    "countiesCovered": {
+      "goal": 75,
+      "direction": "up"
+    },
+    "guardrailViolations": {
+      "goal": 0,
+      "direction": "down"
+    }
+  },
+  "metrics": [
+    {
+      "metric": "verifiedEvents",
+      "current": 122,
+      "goal": 300,
+      "direction": "up",
+      "progressPct": 41,
+      "onTrack": false
+    },
+    {
+      "metric": "tentativeEvents",
+      "current": 250,
+      "goal": 50,
+      "direction": "down",
+      "progressPct": 20,
+      "onTrack": false
+    },
+    {
+      "metric": "missingDates",
+      "current": 99,
+      "goal": 0,
+      "direction": "down",
+      "progressPct": 0,
+      "onTrack": false
+    },
+    {
+      "metric": "countiesCovered",
+      "current": 31,
+      "goal": 75,
+      "direction": "up",
+      "progressPct": 41,
+      "onTrack": false
+    },
+    {
+      "metric": "guardrailViolations",
+      "current": 59,
+      "goal": 0,
+      "direction": "down",
+      "progressPct": 0,
+      "onTrack": false
+    }
+  ]
+}

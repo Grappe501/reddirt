@@ -1,0 +1,761 @@
+{
+  "generatedAt": "2026-06-15T02:08:43.032Z",
+  "note": "Planned contacts by opportunity tier (A=5, B=3, C=2, D=1). Completed from visit log + county-touch-summary.",
+  "statewide": {
+    "planned": 189,
+    "completed": 34,
+    "remaining": 155
+  },
+  "counties": [
+    {
+      "county": "Benton",
+      "tier": "A",
+      "planned": 5,
+      "completed": 0,
+      "remaining": 5,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Jefferson",
+      "tier": "A",
+      "planned": 5,
+      "completed": 0,
+      "remaining": 5,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Lonoke",
+      "tier": "A",
+      "planned": 5,
+      "completed": 0,
+      "remaining": 5,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Craighead",
+      "tier": "A",
+      "planned": 5,
+      "completed": 1,
+      "remaining": 4,
+      "completionPct": 20,
+      "daysSinceContact": 181,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "White",
+      "tier": "A",
+      "planned": 5,
+      "completed": 1,
+      "remaining": 4,
+      "completionPct": 20,
+      "daysSinceContact": 131,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Sebastian",
+      "tier": "A",
+      "planned": 5,
+      "completed": 1,
+      "remaining": 4,
+      "completionPct": 20,
+      "daysSinceContact": 125,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Washington",
+      "tier": "A",
+      "planned": 5,
+      "completed": 1,
+      "remaining": 4,
+      "completionPct": 20,
+      "daysSinceContact": 92,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Pope",
+      "tier": "A",
+      "planned": 5,
+      "completed": 1,
+      "remaining": 4,
+      "completionPct": 20,
+      "daysSinceContact": 51,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Saline",
+      "tier": "A",
+      "planned": 5,
+      "completed": 1,
+      "remaining": 4,
+      "completionPct": 20,
+      "daysSinceContact": 36,
+      "guardrailStatus": "warning"
+    },
+    {
+      "county": "Garland",
+      "tier": "A",
+      "planned": 5,
+      "completed": 1,
+      "remaining": 4,
+      "completionPct": 20,
+      "daysSinceContact": 19,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Baxter",
+      "tier": "B",
+      "planned": 3,
+      "completed": 0,
+      "remaining": 3,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Boone",
+      "tier": "B",
+      "planned": 3,
+      "completed": 0,
+      "remaining": 3,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Crittenden",
+      "tier": "B",
+      "planned": 3,
+      "completed": 0,
+      "remaining": 3,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Greene",
+      "tier": "B",
+      "planned": 3,
+      "completed": 0,
+      "remaining": 3,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Hot Spring",
+      "tier": "B",
+      "planned": 3,
+      "completed": 0,
+      "remaining": 3,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Independence",
+      "tier": "B",
+      "planned": 3,
+      "completed": 0,
+      "remaining": 3,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Johnson",
+      "tier": "B",
+      "planned": 3,
+      "completed": 0,
+      "remaining": 3,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Miller",
+      "tier": "B",
+      "planned": 3,
+      "completed": 0,
+      "remaining": 3,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Mississippi",
+      "tier": "B",
+      "planned": 3,
+      "completed": 0,
+      "remaining": 3,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Union",
+      "tier": "B",
+      "planned": 3,
+      "completed": 0,
+      "remaining": 3,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Pulaski",
+      "tier": "A",
+      "planned": 5,
+      "completed": 2,
+      "remaining": 3,
+      "completionPct": 40,
+      "daysSinceContact": 27,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Faulkner",
+      "tier": "A",
+      "planned": 5,
+      "completed": 2,
+      "remaining": 3,
+      "completionPct": 40,
+      "daysSinceContact": 10,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Ashley",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Clay",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Grant",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Hempstead",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Howard",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Izard",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Jackson",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Lawrence",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Little River",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Logan",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Madison",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Perry",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Phillips",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Poinsett",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Randolph",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "St. Francis",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Sevier",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Sharp",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Van Buren",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Yell",
+      "tier": "C",
+      "planned": 2,
+      "completed": 0,
+      "remaining": 2,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Ouachita",
+      "tier": "B",
+      "planned": 3,
+      "completed": 1,
+      "remaining": 2,
+      "completionPct": 33.3,
+      "daysSinceContact": 84,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Crawford",
+      "tier": "B",
+      "planned": 3,
+      "completed": 1,
+      "remaining": 2,
+      "completionPct": 33.3,
+      "daysSinceContact": 67,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Marion",
+      "tier": "B",
+      "planned": 3,
+      "completed": 1,
+      "remaining": 2,
+      "completionPct": 33.3,
+      "daysSinceContact": 55,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Clark",
+      "tier": "B",
+      "planned": 3,
+      "completed": 1,
+      "remaining": 2,
+      "completionPct": 33.3,
+      "daysSinceContact": 8,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Cleburne",
+      "tier": "B",
+      "planned": 3,
+      "completed": 1,
+      "remaining": 2,
+      "completionPct": 33.3,
+      "daysSinceContact": -2,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Conway",
+      "tier": "B",
+      "planned": 3,
+      "completed": 1,
+      "remaining": 2,
+      "completionPct": 33.3,
+      "daysSinceContact": -6,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Carroll",
+      "tier": "B",
+      "planned": 3,
+      "completed": 1,
+      "remaining": 2,
+      "completionPct": 33.3,
+      "daysSinceContact": -12,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Calhoun",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Chicot",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Dallas",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Lafayette",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Lincoln",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Monroe",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Nevada",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Newton",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Prairie",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Scott",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Woodruff",
+      "tier": "D",
+      "planned": 1,
+      "completed": 0,
+      "remaining": 1,
+      "completionPct": 0,
+      "daysSinceContact": null,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Arkansas",
+      "tier": "C",
+      "planned": 2,
+      "completed": 1,
+      "remaining": 1,
+      "completionPct": 50,
+      "daysSinceContact": 155,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Fulton",
+      "tier": "C",
+      "planned": 2,
+      "completed": 1,
+      "remaining": 1,
+      "completionPct": 50,
+      "daysSinceContact": 134,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Polk",
+      "tier": "C",
+      "planned": 2,
+      "completed": 1,
+      "remaining": 1,
+      "completionPct": 50,
+      "daysSinceContact": 63,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Franklin",
+      "tier": "C",
+      "planned": 2,
+      "completed": 1,
+      "remaining": 1,
+      "completionPct": 50,
+      "daysSinceContact": 55,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Pike",
+      "tier": "C",
+      "planned": 2,
+      "completed": 1,
+      "remaining": 1,
+      "completionPct": 50,
+      "daysSinceContact": 36,
+      "guardrailStatus": "warning"
+    },
+    {
+      "county": "Columbia",
+      "tier": "B",
+      "planned": 3,
+      "completed": 2,
+      "remaining": 1,
+      "completionPct": 66.7,
+      "daysSinceContact": 28,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Desha",
+      "tier": "C",
+      "planned": 2,
+      "completed": 1,
+      "remaining": 1,
+      "completionPct": 50,
+      "daysSinceContact": 22,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Cross",
+      "tier": "C",
+      "planned": 2,
+      "completed": 1,
+      "remaining": 1,
+      "completionPct": 50,
+      "daysSinceContact": 17,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Bradley",
+      "tier": "C",
+      "planned": 2,
+      "completed": 1,
+      "remaining": 1,
+      "completionPct": 50,
+      "daysSinceContact": 3,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Stone",
+      "tier": "C",
+      "planned": 2,
+      "completed": 1,
+      "remaining": 1,
+      "completionPct": 50,
+      "daysSinceContact": 3,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Drew",
+      "tier": "C",
+      "planned": 2,
+      "completed": 1,
+      "remaining": 1,
+      "completionPct": 50,
+      "daysSinceContact": 0,
+      "guardrailStatus": "ok"
+    },
+    {
+      "county": "Searcy",
+      "tier": "D",
+      "planned": 1,
+      "completed": 1,
+      "remaining": 0,
+      "completionPct": 100,
+      "daysSinceContact": 149,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Lee",
+      "tier": "D",
+      "planned": 1,
+      "completed": 1,
+      "remaining": 0,
+      "completionPct": 100,
+      "daysSinceContact": 146,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Cleveland",
+      "tier": "D",
+      "planned": 1,
+      "completed": 1,
+      "remaining": 0,
+      "completionPct": 100,
+      "daysSinceContact": 65,
+      "guardrailStatus": "violation"
+    },
+    {
+      "county": "Montgomery",
+      "tier": "D",
+      "planned": 1,
+      "completed": 1,
+      "remaining": 0,
+      "completionPct": 100,
+      "daysSinceContact": -3,
+      "guardrailStatus": "ok"
+    }
+  ]
+}

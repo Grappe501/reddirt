@@ -4,7 +4,7 @@
  */
 
 import type { OfficeAreaConfig } from "@/content/office/office-types";
-import { OFFICE_LAYER_EYEBROWS } from "@/content/office/office-layer-labels";
+import { OFFICE_LAYER_EYEBROWS, OFFICE_LAYER_KELLY_EYEBROW } from "@/content/office/office-layer-labels";
 import {
   kellyBringsCivicSection,
   kellyBringsSmallBusinessSection,
@@ -84,7 +84,7 @@ export const notariesAreaConfig: OfficeAreaConfig = {
     ],
   },
   layerThree: {
-    eyebrow: OFFICE_LAYER_EYEBROWS[3],
+    eyebrow: OFFICE_LAYER_KELLY_EYEBROW,
     title: "What Kelly Brings: Notaries",
     intro:
       "Notary administration is a detail-heavy public service—exactly the kind of work that rewards clear process, patient training, and respect for the person across the counter.",

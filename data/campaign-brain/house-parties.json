@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "note": "House party log — update after each event. Templates in docs/campaign-brain/field-operating-system/house-parties/. Re-run campaign-brain:build.",
+  "events": [],
+  "_example": {
+    "id": "hp-example",
+    "host": "Host name",
+    "county": "Pulaski",
+    "date": "2026-07-15",
+    "templateSize": 25,
+    "attendees": 0,
+    "newVolunteers": 0,
+    "registrations": 0,
+    "followUpStatus": "pending",
+    "notes": "Remove _example before production"
+  }
+}

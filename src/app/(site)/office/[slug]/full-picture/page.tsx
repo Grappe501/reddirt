@@ -1,39 +1,18 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { OfficeLayerPage } from "@/components/office/OfficeLayerPage";
+import { redirect } from "next/navigation";
 import {
   OFFICE_AREA_SLUGS,
   getOfficeArea,
   isOfficeAreaSlug,
   officeLayerPath,
 } from "@/content/office/office-three-layer";
-import { pageMeta } from "@/lib/seo/metadata";
-import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  if (skipPublicStaticGenerationForNetlifyLaunch()) return [];
-  return OFFICE_AREA_SLUGS.map((slug) => ({ slug }));
-}
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+/** Former layer 3 — merged into why-it-matters (two-level office architecture). */
+export default async function OfficeAreaLayerThreeRedirectPage({ params }: PageProps) {
   const { slug: raw } = await params;
-  if (!isOfficeAreaSlug(raw)) return {};
+  if (!isOfficeAreaSlug(raw)) redirect("/understand");
   const area = getOfficeArea(raw);
-  if (!area) return {};
-  return pageMeta({
-    title: `${area.title}: What Kelly brings — The Office`,
-    description: `${area.layerThree.intro} ${area.metaDescription}`,
-    path: officeLayerPath(raw, 3),
-    imageSrc: "/media/placeholders/texture-porch-glow.svg",
-  });
-}
-
-export default async function OfficeAreaLayerThreePage({ params }: PageProps) {
-  const { slug: raw } = await params;
-  if (!isOfficeAreaSlug(raw)) notFound();
-  const area = getOfficeArea(raw);
-  if (!area) notFound();
-  return <OfficeLayerPage area={area} layer={3} />;
+  if (!area) redirect("/understand");
+  redirect(officeLayerPath(area.slug, 2));
 }

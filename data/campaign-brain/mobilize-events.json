@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "note": "Mobilize event links per approved event. Re-run campaign-brain:build.",
+  "events": [],
+  "_example": {
+    "eventId": "brain-event-id",
+    "title": "Pulaski County Fair",
+    "category": "county_fair",
+    "county": "Pulaski",
+    "date": "2026-09-12",
+    "mobilizeUrl": "",
+    "rsvpCount": 0,
+    "volunteerSignups": 0,
+    "attendance": 0,
+    "followUpStatus": "pending",
+    "substackStoryId": ""
+  }
+}

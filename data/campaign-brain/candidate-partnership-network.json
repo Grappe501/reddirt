@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-15T02:43:01.495Z",
+  "note": "Aggregated from candidate-partnerships.json — shared execution tracking",
+  "partners": [],
+  "totals": {
+    "active": 0,
+    "sharedEvents": 0,
+    "sharedMobilizeEvents": 0
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "note": "Power of 5 — trusted-network scaling. Update after conversations and recruits. Re-run campaign-brain:build.",
+  "assumption": "Relationships scale through trusted networks.",
+  "statewide": {
+    "supporters": 0,
+    "powerOf5Commitments": 0,
+    "conversations": 0,
+    "volunteerRecruits": 0,
+    "eventRecruits": 0,
+    "registrationRecruits": 0,
+    "gotvRecruits": 0
+  },
+  "byCounty": {},
+  "commitments": []
+}

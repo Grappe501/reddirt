@@ -1,0 +1,90 @@
+{
+  "generatedAt": "2026-06-15T02:08:50.473Z",
+  "weekOf": "2026-06-15",
+  "nextWeek": {
+    "generatedAt": "2026-06-15T02:08:30.787Z",
+    "question": "What should Kelly do next week?",
+    "primaryCluster": {
+      "name": "Central Arkansas Metro Cluster",
+      "remainingOpportunity": 114546,
+      "priority": "HIGH"
+    },
+    "focusCities": [
+      {
+        "name": "Little Rock",
+        "county": "Pulaski",
+        "targetVotes": 40315
+      },
+      {
+        "name": "North Little Rock",
+        "county": "Pulaski",
+        "targetVotes": 12834
+      }
+    ],
+    "recommendedEvents": [
+      {
+        "title": "Lonoke County Fair",
+        "county": "Lonoke",
+        "score": 79,
+        "assignment": "Kelly",
+        "assignmentReason": "clerk opportunity · media market · high VCI impact"
+      },
+      {
+        "title": "Pulaski County — AEA local / area meeting (verify schedule)",
+        "county": "Pulaski",
+        "score": 91,
+        "assignment": "Kelly",
+        "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact"
+      },
+      {
+        "title": "Pulaski County — historic rivalry night (verify date + stadium policy)",
+        "county": "Pulaski",
+        "score": 91,
+        "assignment": "Kelly",
+        "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact"
+      }
+    ],
+    "laneFocus": [
+      "Lane 2 Recovery",
+      "Lane 3 Registration",
+      "Clerk relationship outreach"
+    ],
+    "kellyPersonalAppearances": 3,
+    "surrogateDeployments": 0,
+    "narrative": "Prioritize Central Arkansas Metro Cluster — 114,546 VCI remaining. Lead with drop-off recovery conversations and registration drives in Little Rock and North Little Rock."
+  },
+  "capturedOpp": {
+    "potential": 380702,
+    "captured": 22400,
+    "remaining": 358302,
+    "completionPct": 5.9,
+    "byLane": [
+      {
+        "lane": "lane1",
+        "goal": 325814,
+        "potential": 325814,
+        "captured": 0,
+        "remaining": 325814,
+        "completionPct": 0
+      },
+      {
+        "lane": "lane2",
+        "captured": 8200,
+        "remaining": null,
+        "completionPct": null
+      },
+      {
+        "lane": "lane3",
+        "captured": 3400,
+        "remaining": null,
+        "completionPct": null
+      },
+      {
+        "lane": "lane4",
+        "captured": 1800,
+        "remaining": null,
+        "completionPct": null
+      }
+    ]
+  }
+}

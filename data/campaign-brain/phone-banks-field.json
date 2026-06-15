@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "note": "Phone bank execution — separate programs. Re-run campaign-brain:build.",
+  "programs": {
+    "relationshipCalls": { "label": "Relationship Calls", "attempted": 0, "completed": 0, "contactsMade": 0, "volunteersRecruited": 0, "registrationsGenerated": 0, "goal": 5000 },
+    "visitInvitations": { "label": "Visit Invitations", "attempted": 0, "completed": 0, "contactsMade": 0, "volunteersRecruited": 0, "registrationsGenerated": 0, "goal": 3000 },
+    "volunteerRecruitment": { "label": "Volunteer Recruitment", "attempted": 0, "completed": 0, "contactsMade": 0, "volunteersRecruited": 0, "registrationsGenerated": 0, "goal": 2000 },
+    "gotv": { "label": "GOTV", "attempted": 0, "completed": 0, "contactsMade": 0, "volunteersRecruited": 0, "registrationsGenerated": 0, "goal": 15000 },
+    "followUp": { "label": "Follow-Up", "attempted": 0, "completed": 0, "contactsMade": 0, "volunteersRecruited": 0, "registrationsGenerated": 0, "goal": 4000 }
+  },
+  "sessions": []
+}

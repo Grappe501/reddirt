@@ -1,0 +1,75 @@
+# Pope County — Registration Opportunity Dashboard
+
+> **Status:** Generated
+> **Document:** Arkansas Plurality Victory Plan
+> **Classification:** CONFIDENTIAL CAMPAIGN DOCUMENT
+> **Part:** II — The Electoral Math
+> **Chapter:** 5 — Lane 3: New Voter Expansion
+> **County:** Pope
+
+---
+
+## Core message
+
+> 744 registrations to go. That is **38/week** or **6/day** over 20 weeks.
+
+---
+
+## Registration dashboard
+
+| Field | Value |
+| ----- | ----: |
+| County registration goal | **744** |
+| Current registrations (baseline) | — |
+| Gap remaining | **744** |
+| Goal source | allocated_from_lane2_weight |
+
+---
+
+## Pace targets (20 weeks remaining)
+
+| Period | Target |
+| ------ | -----: |
+| Weekly | **38** / week |
+| Daily | **6** / day |
+| Monthly (~4.5 mo) | **166** / month |
+
+---
+
+## Youth opportunity
+
+| Field | Estimate |
+| ----- | -------: |
+| Est. graduating seniors (county share) | ~715 |
+| Suggested senior registration target | ~250 (35% capture) |
+| Community college / trade school | TBD — field inventory |
+
+*Senior estimate: county share of ~35,000 statewide public HS graduates, weighted by 2024 presidential turnout.*
+
+---
+
+## Lane context
+
+| Lane | County anchor |
+| ---- | ------------: |
+| Lane 2 recovery @ 50% | 766 votes |
+| Lane 3 registration goal | 744 new registrants |
+
+---
+
+## Priority populations
+
+- High school seniors
+- Community colleges, universities, trade schools
+- Community registration events
+- Faith community outreach
+- Military families
+- Young professionals
+- Naturalized citizens
+
+---
+
+## Data source
+
+- Goal: `allocated_from_lane2_weight`
+- Regenerate: `npm run strategic-plan:chapter-05:build`

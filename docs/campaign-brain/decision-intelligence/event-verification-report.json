@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-06-15T02:08:30.291Z",
+  "communityEvents": 317,
+  "verificationByStatus": {
+    "date_not_posted": 87,
+    "needs_confirmation": 230
+  },
+  "dateNotPosted": 87,
+  "festivalsIndexed": 154,
+  "festivalsWithDates": 125,
+  "festivalsVerified": 122,
+  "actionRequired": "Verify fair dates county-by-county before 20-week schedule. Priority: Tier A counties + cluster leaders.",
+  "priorityCounties": [
+    "Pulaski",
+    "Benton",
+    "Washington",
+    "Saline",
+    "Faulkner",
+    "Sebastian",
+    "Garland",
+    "Craighead",
+    "Lonoke",
+    "White",
+    "Jefferson",
+    "Pope"
+  ]
+}

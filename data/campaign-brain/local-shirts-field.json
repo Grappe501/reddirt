@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "note": "Local shirt editions — vendor, quantity, distribution. Re-run campaign-brain:build.",
+  "editions": [
+    { "edition": "Conway Edition", "city": "Conway", "county": "Faulkner", "vendor": "", "quantity": 0, "distributed": 0, "remaining": 0, "goal": 200 },
+    { "edition": "Jonesboro Edition", "city": "Jonesboro", "county": "Craighead", "vendor": "", "quantity": 0, "distributed": 0, "remaining": 0, "goal": 200 },
+    { "edition": "Pine Bluff Edition", "city": "Pine Bluff", "county": "Jefferson", "vendor": "", "quantity": 0, "distributed": 0, "remaining": 0, "goal": 150 },
+    { "edition": "Helena Edition", "city": "Helena-West Helena", "county": "Phillips", "vendor": "", "quantity": 0, "distributed": 0, "remaining": 0, "goal": 100 },
+    { "edition": "Mountain Home Edition", "city": "Mountain Home", "county": "Baxter", "vendor": "", "quantity": 0, "distributed": 0, "remaining": 0, "goal": 150 },
+    { "edition": "Texarkana Edition", "city": "Texarkana", "county": "Miller", "vendor": "", "quantity": 0, "distributed": 0, "remaining": 0, "goal": 150 },
+    { "edition": "Searcy Edition", "city": "Searcy", "county": "White", "vendor": "", "quantity": 0, "distributed": 0, "remaining": 0, "goal": 150 },
+    { "edition": "Russellville Edition", "city": "Russellville", "county": "Pope", "vendor": "", "quantity": 0, "distributed": 0, "remaining": 0, "goal": 150 },
+    { "edition": "El Dorado Edition", "city": "El Dorado", "county": "Union", "vendor": "", "quantity": 0, "distributed": 0, "remaining": 0, "goal": 150 }
+  ]
+}

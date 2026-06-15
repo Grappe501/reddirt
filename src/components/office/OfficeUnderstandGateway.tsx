@@ -14,7 +14,7 @@ export function OfficeUnderstandGateway() {
         </h2>
         <p className="mt-5 font-body text-lg leading-relaxed text-kelly-text/85">
           Elections, business filings, notaries, public records, and Capitol stewardship. Each area starts with civic
-          education, then why it matters to real Arkansans, then what Kelly brings—with verified credentials only.
+          education, then why it matters to real Arkansans and what Kelly brings—with verified credentials only.
         </p>
       </div>
       <div className="mt-12 md:mt-14">

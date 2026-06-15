@@ -3,6 +3,7 @@ import type { PathToVictorySnapshot } from "@/lib/victory-os/path-to-victory-sna
 import { VictoryOsShellSuspense } from "./victory-os-ui/VictoryOsShellSuspense";
 import { vos } from "./victory-os-ui/victory-os-tokens";
 import { PathToVictoryCopyPathButton } from "./PathToVictoryCopyPathButton";
+import { PathToVictoryCountyTargetsTable } from "./PathToVictoryCountyTargetsTable";
 
 const GOVERNANCE_REFERENCES = [
   {
@@ -106,6 +107,10 @@ export function PathToVictoryModuleView({ snapshot }: { snapshot: PathToVictoryS
             <span className={vos.metricOnDark}>
               <span className="text-white/60">Counties</span>{" "}
               <span className="font-bold">{snapshot.map.totalCounties}</span>
+            </span>
+            <span className={vos.metricOnDark}>
+              <span className="text-white/60">Working target</span>{" "}
+              <span className="font-bold">{formatVotes(snapshot.map.workingTargetWithCushion)}</span>
             </span>
             <span className={vos.metricOnDark}>
               <span className="text-white/60">Planning gap</span>{" "}
@@ -302,6 +307,22 @@ export function PathToVictoryModuleView({ snapshot }: { snapshot: PathToVictoryS
           ))}
         </ol>
       </section>
+
+      {snapshot.winTargets ? (
+        <div className="mb-8">
+          <PathToVictoryCountyTargetsTable
+            counties={snapshot.winTargets.counties}
+            generatedAt={snapshot.winTargets.generatedAt}
+          />
+        </div>
+      ) : (
+        <section className={`${vos.glass} mb-8 border-amber-200 bg-amber-50/80`}>
+          <p className="font-body text-sm text-amber-950">
+            County win targets not built yet. Run{" "}
+            <code className="rounded bg-white px-1">npm run election:targets:build</code> from the RedDirt lane.
+          </p>
+        </section>
+      )}
 
       <section className={vos.glass} aria-labelledby="path-to-victory-governance-heading">
         <h2 id="path-to-victory-governance-heading" className="font-heading text-lg font-bold text-kelly-navy">

@@ -1,5 +1,382 @@
 {
   "version": 1,
-  "sourceNote": "Optional registration goals by county short name. DB ingest can hydrate this file.",
-  "rows": []
+  "generatedAt": "2026-06-14T14:11:58.497Z",
+  "sourceNote": "Allocated from Lane 2 recovery weights pending CountyCampaignStats backfill.",
+  "rows": [
+    {
+      "county": "Arkansas",
+      "goal": 209,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Ashley",
+      "goal": 226,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Baxter",
+      "goal": 576,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Benton",
+      "goal": 7183,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Boone",
+      "goal": 328,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Bradley",
+      "goal": 117,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Calhoun",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Carroll",
+      "goal": 406,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Chicot",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Clark",
+      "goal": 291,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Clay",
+      "goal": 99,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Cleburne",
+      "goal": 257,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Cleveland",
+      "goal": 79,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Columbia",
+      "goal": 316,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Conway",
+      "goal": 261,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Craighead",
+      "goal": 1418,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Crawford",
+      "goal": 605,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Crittenden",
+      "goal": 1049,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Cross",
+      "goal": 273,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Dallas",
+      "goal": 89,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Desha",
+      "goal": 194,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Drew",
+      "goal": 186,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Faulkner",
+      "goal": 2361,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Franklin",
+      "goal": 109,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Fulton",
+      "goal": 95,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Garland",
+      "goal": 1477,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Grant",
+      "goal": 162,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Greene",
+      "goal": 362,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Hempstead",
+      "goal": 284,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Hot Spring",
+      "goal": 272,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Howard",
+      "goal": 127,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Independence",
+      "goal": 341,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Izard",
+      "goal": 99,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Jackson",
+      "goal": 86,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Jefferson",
+      "goal": 1464,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Johnson",
+      "goal": 236,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Lafayette",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Lawrence",
+      "goal": 109,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Lee",
+      "goal": 162,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Lincoln",
+      "goal": 85,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Little River",
+      "goal": 133,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Logan",
+      "goal": 140,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Lonoke",
+      "goal": 941,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Madison",
+      "goal": 156,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Marion",
+      "goal": 234,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Miller",
+      "goal": 582,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Mississippi",
+      "goal": 274,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Monroe",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Montgomery",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Nevada",
+      "goal": 74,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Newton",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Ouachita",
+      "goal": 337,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Perry",
+      "goal": 88,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Phillips",
+      "goal": 249,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Pike",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Poinsett",
+      "goal": 108,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Polk",
+      "goal": 81,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Pope",
+      "goal": 744,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Prairie",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Pulaski",
+      "goal": 10584,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Randolph",
+      "goal": 121,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "St. Francis",
+      "goal": 248,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Saline",
+      "goal": 2659,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Scott",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Searcy",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Sebastian",
+      "goal": 1859,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Sevier",
+      "goal": 99,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Sharp",
+      "goal": 154,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Stone",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Union",
+      "goal": 712,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Van Buren",
+      "goal": 136,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Washington",
+      "goal": 5462,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "White",
+      "goal": 807,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Woodruff",
+      "goal": 72,
+      "source": "allocated_from_lane2_weight"
+    },
+    {
+      "county": "Yell",
+      "goal": 161,
+      "source": "allocated_from_lane2_weight"
+    }
+  ]
 }

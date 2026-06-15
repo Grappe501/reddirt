@@ -12,30 +12,24 @@ const levels = [
     level: 2,
     title: OFFICE_LAYER_EYEBROWS[2],
     body:
-      "How each responsibility affects voters, small businesses, nonprofits, notaries, and local communities—stakes before slogans.",
-  },
-  {
-    level: 3,
-    title: OFFICE_LAYER_EYEBROWS[3],
-    body:
-      "Only verified credentials: career record, civic leadership, and small-business experience you can check—no inflated claims.",
+      "How each responsibility affects voters, small businesses, and local communities—and only verified credentials on what Kelly brings: career record, civic leadership, and experience you can check.",
   },
 ] as const;
 
 export function OfficeThreeLevelExplainer() {
   return (
-    <section aria-labelledby="office-three-levels" className="scroll-mt-24">
+    <section aria-labelledby="office-two-levels" className="scroll-mt-24">
       <div className="mx-auto max-w-3xl text-center">
         <p className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-kelly-gold">How to read this section</p>
-        <h2 id="office-three-levels" className="mt-3 font-heading text-2xl font-bold text-kelly-navy md:text-3xl">
-          Three levels: competence before persuasion
+        <h2 id="office-two-levels" className="mt-3 font-heading text-2xl font-bold text-kelly-navy md:text-3xl">
+          Two levels: competence before persuasion
         </h2>
         <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/85">
           Most candidates ask for your vote. Few explain what this office actually does. Start with civic education; go
           deeper only if you want to.
         </p>
       </div>
-      <ol className="mx-auto mt-10 grid max-w-4xl gap-5 md:grid-cols-3">
+      <ol className="mx-auto mt-10 grid max-w-3xl gap-5 md:grid-cols-2">
         {levels.map((item) => (
           <li
             key={item.level}
@@ -48,12 +42,11 @@ export function OfficeThreeLevelExplainer() {
         ))}
       </ol>
       <p className="mx-auto mt-8 max-w-2xl text-center font-body text-sm text-kelly-muted">
-        Content status tracked in{" "}
-        <Link href="/about" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-          Meet Kelly
+        Platform details on{" "}
+        <Link href="/priorities" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+          Office priorities
         </Link>{" "}
-        and{" "}
-        <code className="text-xs">docs/website/PUBLIC_CONTENT_APPROVAL_QUEUE.md</code>.
+        await campaign approval.
       </p>
     </section>
   );

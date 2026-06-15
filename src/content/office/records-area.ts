@@ -3,7 +3,7 @@
  */
 
 import type { OfficeAreaConfig } from "@/content/office/office-types";
-import { OFFICE_LAYER_EYEBROWS } from "@/content/office/office-layer-labels";
+import { OFFICE_LAYER_EYEBROWS, OFFICE_LAYER_KELLY_EYEBROW } from "@/content/office/office-layer-labels";
 import {
   kellyBringsCivicSection,
   kellyBringsStewardshipCloser,
@@ -81,7 +81,7 @@ export const recordsAreaConfig: OfficeAreaConfig = {
     ],
   },
   layerThree: {
-    eyebrow: OFFICE_LAYER_EYEBROWS[3],
+    eyebrow: OFFICE_LAYER_KELLY_EYEBROW,
     title: "What Kelly Brings: Transparency & Records",
     intro:
       "Transparency is how you operate when nobody is clapping. Public records only build credibility when people can reach them, understand them, and depend on the systems behind them.",

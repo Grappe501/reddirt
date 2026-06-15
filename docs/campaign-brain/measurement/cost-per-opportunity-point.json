@@ -1,0 +1,707 @@
+{
+  "generatedAt": "2026-06-15T02:08:41.331Z",
+  "topEfficient": [
+    {
+      "eventId": "fair-f547de299001609800b30d85",
+      "title": "Benton County Fair",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-06-14-bella-vista-bella-vista-sunday-farmers-and-makers-market",
+      "title": "Bella Vista Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
+      "title": "Bella Vista Summer Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
+      "title": "Bella Vista Summer Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
+      "title": "Bella Vista Outdoor Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
+      "title": "Bella Vista Summer Outdoor Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-19-bella-vista-bella-vista-sunday-outdoor-farmers-and-makers-ma",
+      "title": "Bella Vista Sunday Outdoor Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-26-bella-vista-bella-vista-midsummer-farmers-and-makers-market",
+      "title": "Bella Vista Midsummer Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-02-bella-vista-bella-vista-first-sunday-farmers-and-makers-mark",
+      "title": "Bella Vista First Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-09-bella-vista-bella-vista-second-sunday-farmers-and-makers-mar",
+      "title": "Bella Vista Second Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-16-bella-vista-bella-vista-third-sunday-farmers-and-makers-mark",
+      "title": "Bella Vista Third Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-23-bella-vista-bella-vista-fourth-sunday-farmers-and-makers-mar",
+      "title": "Bella Vista Fourth Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-30-bella-vista-bella-vista-fifth-sunday-farmers-and-makers-mark",
+      "title": "Bella Vista Fifth Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-06-bella-vista-bella-vista-end-of-summer-farmers-and-makers-mar",
+      "title": "Bella Vista End of Summer Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-13-bella-vista-bella-vista-farmers-and-makers-market",
+      "title": "Bella Vista Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-20-bella-vista-bella-vista-sunday-farmers-and-makers-market",
+      "title": "Bella Vista Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-26-rogers-arkansas-home-show",
+      "title": "Arkansas Home Show",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-27-bella-vista-bella-vista-fall-farmers-and-makers-market",
+      "title": "Bella Vista Fall Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-03-bentonville-bentonville-art-fair",
+      "title": "Bentonville Art Fair",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-03-rogers-bikes-blues-and-bbq",
+      "title": "Bikes, Blues, and BBQ",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    }
+  ],
+  "all": [
+    {
+      "eventId": "fair-f547de299001609800b30d85",
+      "title": "Benton County Fair",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-06-14-bella-vista-bella-vista-sunday-farmers-and-makers-market",
+      "title": "Bella Vista Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
+      "title": "Bella Vista Summer Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
+      "title": "Bella Vista Summer Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
+      "title": "Bella Vista Outdoor Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
+      "title": "Bella Vista Summer Outdoor Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-19-bella-vista-bella-vista-sunday-outdoor-farmers-and-makers-ma",
+      "title": "Bella Vista Sunday Outdoor Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-26-bella-vista-bella-vista-midsummer-farmers-and-makers-market",
+      "title": "Bella Vista Midsummer Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-02-bella-vista-bella-vista-first-sunday-farmers-and-makers-mark",
+      "title": "Bella Vista First Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-09-bella-vista-bella-vista-second-sunday-farmers-and-makers-mar",
+      "title": "Bella Vista Second Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-16-bella-vista-bella-vista-third-sunday-farmers-and-makers-mark",
+      "title": "Bella Vista Third Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-23-bella-vista-bella-vista-fourth-sunday-farmers-and-makers-mar",
+      "title": "Bella Vista Fourth Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-30-bella-vista-bella-vista-fifth-sunday-farmers-and-makers-mark",
+      "title": "Bella Vista Fifth Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-06-bella-vista-bella-vista-end-of-summer-farmers-and-makers-mar",
+      "title": "Bella Vista End of Summer Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-13-bella-vista-bella-vista-farmers-and-makers-market",
+      "title": "Bella Vista Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-20-bella-vista-bella-vista-sunday-farmers-and-makers-market",
+      "title": "Bella Vista Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-26-rogers-arkansas-home-show",
+      "title": "Arkansas Home Show",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-27-bella-vista-bella-vista-fall-farmers-and-makers-market",
+      "title": "Bella Vista Fall Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-03-bentonville-bentonville-art-fair",
+      "title": "Bentonville Art Fair",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-03-rogers-bikes-blues-and-bbq",
+      "title": "Bikes, Blues, and BBQ",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-04-bella-vista-bella-vista-fall-sunday-farmers-and-makers-marke",
+      "title": "Bella Vista Fall Sunday Farmers and Makers Market",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-15-bentonville-bentonville-fall-y'all-craft-fair",
+      "title": "Bentonville Fall Y'all Craft Fair",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-15-bentonville-wishing-spring's-arts-&-crafts-festival",
+      "title": "Wishing Spring's Arts & Crafts Festival",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-15-bella-vista-pumpkin-patch-arts-and-crafts-festival",
+      "title": "Pumpkin Patch Arts and Crafts Festival",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-24-lowell-rentopia-renaissance-faire-of-northwest-arkansas",
+      "title": "Rentopia Renaissance Faire of Northwest Arkansas",
+      "county": "Benton",
+      "effectiveScore": 100,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 8.2,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-03-01-little-rock-little-rock-marathonlittle-rock-marathon",
+      "title": "Little Rock Marathon",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-03-01-little-rock-little-rock-marathon",
+      "title": "Little Rock Marathon",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-06-26-north-little-rock-arkansas-folklife-festival",
+      "title": "Arkansas Folklife Festival",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
+      "title": "Little Rock Bridal and Wedding Expo",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
+      "title": "Fireworks & Food Trucks - Family Independence Day",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-04-little-rock-pops-on-the-river",
+      "title": "Pops on the River",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-07-23-little-rock-3492-music-festival-a-celebration-of-community-a",
+      "title": "3492 Music Festival: A Celebration of Community and Sound",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-08-15-little-rock-central-arkansas-women's-expo",
+      "title": "Central Arkansas Women's Expo",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-11-little-rock-little-rock-fine-arts-art-market",
+      "title": "Little Rock Fine Arts Art Market",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-09-11-little-rock-vintage-market-days-of-little-rock",
+      "title": "Vintage Market Days of Little Rock",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-03-little-rock-little-rock-home-show",
+      "title": "Little Rock Home Show",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-2026-10-16-little-rock-arkansas-state-fair",
+      "title": "Arkansas State Fair",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-nodate-little-rock-juneteenth-in-little-rock",
+      "title": "Juneteenth in Little Rock",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-nodate-little-rock-arkansas-comic-con",
+      "title": "Arkansas Comic Con",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-nodate-little-rock-big-dam-bridge-100",
+      "title": "Big Dam Bridge 100",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-nodate-little-rock-six-bridges-book-festival",
+      "title": "Six Bridges Book Festival",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fest-nodate-little-rock-arkansas-cornbread-festival",
+      "title": "Arkansas Cornbread Festival",
+      "county": "Pulaski",
+      "effectiveScore": 93,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.62,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fair-a9c2bbe56f939da4c7898261",
+      "title": "Ashley County Fair",
+      "county": "Ashley",
+      "effectiveScore": 90,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.38,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fair-7da0f84811b62d6378c8eab1",
+      "title": "Clay County Fair",
+      "county": "Clay",
+      "effectiveScore": 90,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.38,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fair-ef8a3bf07796f5d116269e4e",
+      "title": "Lawrence County Fair",
+      "county": "Lawrence",
+      "effectiveScore": 90,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.38,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fair-7b9fd5feee3eb99deeb9317a",
+      "title": "Little River County Fair",
+      "county": "Little River",
+      "effectiveScore": 90,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.38,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fair-dd3cef345b5f6d95088be298",
+      "title": "Newton County Fair",
+      "county": "Newton",
+      "effectiveScore": 90,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.38,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fair-571afd59db5f2040264c4ac1",
+      "title": "Randolph County Fair",
+      "county": "Randolph",
+      "effectiveScore": 90,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.38,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fair-7d4b1643af8887c9137f0856",
+      "title": "Yell County Fair",
+      "county": "Yell",
+      "effectiveScore": 90,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.38,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    },
+    {
+      "eventId": "fair-9e03993e30d8f62d3e8067dc",
+      "title": "Lafayette County Fair",
+      "county": "Lafayette",
+      "effectiveScore": 88,
+      "effortUnits": 12.2,
+      "costPerOpportunityPoint": 7.21,
+      "assignment": "Kelly",
+      "hasActualCosts": false
+    }
+  ]
+}

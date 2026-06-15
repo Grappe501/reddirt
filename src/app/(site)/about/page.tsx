@@ -12,11 +12,7 @@ import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySe
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { MeetKellySixQuestions } from "@/components/about/MeetKellySixQuestions";
 import { MeetKellyTrustIndicators } from "@/components/about/MeetKellyTrustIndicators";
-import { MeetKellyChapterIndex } from "@/components/about/MeetKellyChapterIndex";
-import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
 import { meetKellyExecutiveSummary } from "@/content/about/meet-kelly-hub";
-import { AboutBiographyDrilldown } from "@/components/about/AboutBiographyDrilldown";
-import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
 
 export const dynamic = "force-dynamic";
 
@@ -39,14 +35,14 @@ export default async function AboutPage() {
         <Button href="/about/why-im-running" variant="primary">
           Why I&apos;m running
         </Button>
+        <Button href="/about/journey" variant="outline">
+          Her journey
+        </Button>
         <Button href="/get-involved" variant="outline">
           Get involved
         </Button>
         <Button href="/understand" variant="outline">
           Understand the office
-        </Button>
-        <Button href="#talk-business-kelly" variant="outline">
-          Talk Business &amp; Politics
         </Button>
       </PageHero>
 
@@ -54,14 +50,6 @@ export default async function AboutPage() {
         <ContentContainer className="max-w-3xl">
           <MeetKellySubnav current="/about" />
           <p className="mt-6 font-body text-base leading-relaxed text-kelly-text/85">{summary.lead}</p>
-          {!showPublicBiographyManuscript() ? (
-            <div className="mt-4">
-              <ContentPendingBadge variant="draft" />
-              <p className="mt-2 font-body text-sm text-kelly-muted">
-                Long-form biography manuscript chapters are draft — not public-ready.
-              </p>
-            </div>
-          ) : null}
         </ContentContainer>
       </FullBleedSection>
 
@@ -78,11 +66,6 @@ export default async function AboutPage() {
           <div className="mx-auto max-w-3xl">
             <TalkBusinessKellySection fallbackYoutubeVideoId={featuredYoutube?.videoId ?? null} />
           </div>
-          {showPublicBiographyManuscript() ? (
-            <div className="mx-auto mt-10 max-w-3xl md:mt-14">
-              <AboutBiographyDrilldown />
-            </div>
-          ) : null}
         </ContentContainer>
       </FullBleedSection>
 
@@ -90,14 +73,6 @@ export default async function AboutPage() {
         <ContentContainer wide>
           <div className="mx-auto max-w-4xl">
             <MeetKellyTrustIndicators />
-          </div>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY>
-        <ContentContainer wide>
-          <div className="mx-auto max-w-4xl">
-            <MeetKellyChapterIndex />
           </div>
         </ContentContainer>
       </FullBleedSection>

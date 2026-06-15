@@ -1,0 +1,456 @@
+{
+  "generatedAt": "2026-06-15T02:08:30.660Z",
+  "note": "Proxy FEI until church-count ingest",
+  "counties": [
+    {
+      "county": "Pulaski",
+      "slug": "pulaski-county",
+      "faithEngagementIndex": 100,
+      "tier": "A"
+    },
+    {
+      "county": "Benton",
+      "slug": "benton-county",
+      "faithEngagementIndex": 72,
+      "tier": "A"
+    },
+    {
+      "county": "Washington",
+      "slug": "washington-county",
+      "faithEngagementIndex": 62,
+      "tier": "A"
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner-county",
+      "faithEngagementIndex": 41,
+      "tier": "A"
+    },
+    {
+      "county": "Saline",
+      "slug": "saline-county",
+      "faithEngagementIndex": 41,
+      "tier": "A"
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian-county",
+      "faithEngagementIndex": 39,
+      "tier": "A"
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson-county",
+      "faithEngagementIndex": 38,
+      "tier": "A"
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead-county",
+      "faithEngagementIndex": 36,
+      "tier": "A"
+    },
+    {
+      "county": "Garland",
+      "slug": "garland-county",
+      "faithEngagementIndex": 35,
+      "tier": "A"
+    },
+    {
+      "county": "Lonoke",
+      "slug": "lonoke-county",
+      "faithEngagementIndex": 31,
+      "tier": "A"
+    },
+    {
+      "county": "White",
+      "slug": "white-county",
+      "faithEngagementIndex": 31,
+      "tier": "A"
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden-county",
+      "faithEngagementIndex": 30,
+      "tier": "B"
+    },
+    {
+      "county": "Pope",
+      "slug": "pope-county",
+      "faithEngagementIndex": 29,
+      "tier": "A"
+    },
+    {
+      "county": "Mississippi",
+      "slug": "mississippi-county",
+      "faithEngagementIndex": 26,
+      "tier": "B"
+    },
+    {
+      "county": "Crawford",
+      "slug": "crawford-county",
+      "faithEngagementIndex": 23,
+      "tier": "B"
+    },
+    {
+      "county": "Baxter",
+      "slug": "baxter-county",
+      "faithEngagementIndex": 22,
+      "tier": "B"
+    },
+    {
+      "county": "Miller",
+      "slug": "miller-county",
+      "faithEngagementIndex": 22,
+      "tier": "B"
+    },
+    {
+      "county": "Union",
+      "slug": "union-county",
+      "faithEngagementIndex": 22,
+      "tier": "B"
+    },
+    {
+      "county": "Greene",
+      "slug": "greene-county",
+      "faithEngagementIndex": 21,
+      "tier": "B"
+    },
+    {
+      "county": "Independence",
+      "slug": "independence-county",
+      "faithEngagementIndex": 21,
+      "tier": "B"
+    },
+    {
+      "county": "St. Francis",
+      "slug": "st-francis-county",
+      "faithEngagementIndex": 21,
+      "tier": "C"
+    },
+    {
+      "county": "Arkansas",
+      "slug": "arkansas-county",
+      "faithEngagementIndex": 20,
+      "tier": "C"
+    },
+    {
+      "county": "Boone",
+      "slug": "boone-county",
+      "faithEngagementIndex": 20,
+      "tier": "B"
+    },
+    {
+      "county": "Carroll",
+      "slug": "carroll-county",
+      "faithEngagementIndex": 20,
+      "tier": "B"
+    },
+    {
+      "county": "Desha",
+      "slug": "desha-county",
+      "faithEngagementIndex": 20,
+      "tier": "C"
+    },
+    {
+      "county": "Hot Spring",
+      "slug": "hot-spring-county",
+      "faithEngagementIndex": 20,
+      "tier": "B"
+    },
+    {
+      "county": "Phillips",
+      "slug": "phillips-county",
+      "faithEngagementIndex": 20,
+      "tier": "C"
+    },
+    {
+      "county": "Clark",
+      "slug": "clark-county",
+      "faithEngagementIndex": 19,
+      "tier": "B"
+    },
+    {
+      "county": "Cleburne",
+      "slug": "cleburne-county",
+      "faithEngagementIndex": 19,
+      "tier": "B"
+    },
+    {
+      "county": "Columbia",
+      "slug": "columbia-county",
+      "faithEngagementIndex": 19,
+      "tier": "B"
+    },
+    {
+      "county": "Conway",
+      "slug": "conway-county",
+      "faithEngagementIndex": 19,
+      "tier": "B"
+    },
+    {
+      "county": "Johnson",
+      "slug": "johnson-county",
+      "faithEngagementIndex": 19,
+      "tier": "B"
+    },
+    {
+      "county": "Ouachita",
+      "slug": "ouachita-county",
+      "faithEngagementIndex": 19,
+      "tier": "B"
+    },
+    {
+      "county": "Marion",
+      "slug": "marion-county",
+      "faithEngagementIndex": 18,
+      "tier": "B"
+    },
+    {
+      "county": "Chicot",
+      "slug": "chicot-county",
+      "faithEngagementIndex": 16,
+      "tier": "D"
+    },
+    {
+      "county": "Dallas",
+      "slug": "dallas-county",
+      "faithEngagementIndex": 16,
+      "tier": "D"
+    },
+    {
+      "county": "Lee",
+      "slug": "lee-county",
+      "faithEngagementIndex": 16,
+      "tier": "D"
+    },
+    {
+      "county": "Hempstead",
+      "slug": "hempstead-county",
+      "faithEngagementIndex": 15,
+      "tier": "C"
+    },
+    {
+      "county": "Ashley",
+      "slug": "ashley-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Clay",
+      "slug": "clay-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Cross",
+      "slug": "cross-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Drew",
+      "slug": "drew-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Franklin",
+      "slug": "franklin-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Grant",
+      "slug": "grant-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Howard",
+      "slug": "howard-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Izard",
+      "slug": "izard-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Jackson",
+      "slug": "jackson-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Lawrence",
+      "slug": "lawrence-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Logan",
+      "slug": "logan-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Madison",
+      "slug": "madison-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Poinsett",
+      "slug": "poinsett-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Polk",
+      "slug": "polk-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Randolph",
+      "slug": "randolph-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Sevier",
+      "slug": "sevier-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Sharp",
+      "slug": "sharp-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Van Buren",
+      "slug": "van-buren-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Yell",
+      "slug": "yell-county",
+      "faithEngagementIndex": 14,
+      "tier": "C"
+    },
+    {
+      "county": "Bradley",
+      "slug": "bradley-county",
+      "faithEngagementIndex": 13,
+      "tier": "C"
+    },
+    {
+      "county": "Fulton",
+      "slug": "fulton-county",
+      "faithEngagementIndex": 13,
+      "tier": "C"
+    },
+    {
+      "county": "Little River",
+      "slug": "little-river-county",
+      "faithEngagementIndex": 13,
+      "tier": "C"
+    },
+    {
+      "county": "Perry",
+      "slug": "perry-county",
+      "faithEngagementIndex": 13,
+      "tier": "C"
+    },
+    {
+      "county": "Pike",
+      "slug": "pike-county",
+      "faithEngagementIndex": 13,
+      "tier": "C"
+    },
+    {
+      "county": "Stone",
+      "slug": "stone-county",
+      "faithEngagementIndex": 13,
+      "tier": "C"
+    },
+    {
+      "county": "Calhoun",
+      "slug": "calhoun-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Cleveland",
+      "slug": "cleveland-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Lafayette",
+      "slug": "lafayette-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Lincoln",
+      "slug": "lincoln-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Monroe",
+      "slug": "monroe-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Montgomery",
+      "slug": "montgomery-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Nevada",
+      "slug": "nevada-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Newton",
+      "slug": "newton-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Prairie",
+      "slug": "prairie-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Scott",
+      "slug": "scott-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Searcy",
+      "slug": "searcy-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    },
+    {
+      "county": "Woodruff",
+      "slug": "woodruff-county",
+      "faithEngagementIndex": 10,
+      "tier": "D"
+    }
+  ]
+}

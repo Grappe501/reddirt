@@ -49,14 +49,28 @@ export const DEFAULT_WIN_TARGET_CONFIG: WinTargetModelConfig = {
 /** County short label (matches `county-priority-snapshot.json` `county`, e.g. "Pulaski"). */
 export type CountyElectionHistoryRow = {
   county: string;
+  /** 2016 General — U.S. President */
+  presidential2016TotalVotes?: number;
+  presidential2016DemVotes?: number;
+  presidential2016RepVotes?: number;
+  /** 2018 General — Secretary of State (midterm proxy) */
+  sos2018TotalVotes?: number;
+  sos2018DemVotes?: number;
+  sos2018RepVotes?: number;
+  /** 2020 General — U.S. President */
+  presidential2020TotalVotes?: number;
+  presidential2020DemVotes?: number;
+  presidential2020RepVotes?: number;
   sos2022TotalVotes?: number;
   sos2022DemVotes?: number;
+  sos2022RepVotes?: number;
   treasurer2022TotalVotes?: number;
   treasurer2022DemVotes?: number;
   treasurer2024TotalVotes?: number;
   treasurer2024DemVotes?: number;
   presidential2024TotalVotes?: number;
   presidential2024DemVotes?: number;
+  presidential2024RepVotes?: number;
 };
 
 export type VoterRegistrationGoalRow = {

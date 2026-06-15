@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "note": "Top 10 rural election Q&A town halls — no legal claims without source review",
+  "townhalls": [
+    {
+      "county": "Ashley",
+      "topCity": "Crossett",
+      "host": "",
+      "venue": "",
+      "date": null,
+      "clerkInvited": false,
+      "localCandidatesInvited": false,
+      "pressInvited": false,
+      "status": "not_started",
+      "topics": [
+        "election process",
+        "registration",
+        "polling locations",
+        "absentee/mail rules",
+        "county clerk responsibilities",
+        "voter participation",
+        "transparency and trust"
+      ]
+    },
+    {
+      "county": "Bradley",
+      "topCity": "Warren",
+      "host": "",
+      "venue": "",
+      "date": null,
+      "clerkInvited": false,
+      "localCandidatesInvited": false,
+      "pressInvited": false,
+      "status": "not_started",
+      "topics": [
+        "election process",
+        "registration",
+        "polling locations",
+        "absentee/mail rules",
+        "county clerk responsibilities",
+        "voter participation",
+        "transparency and trust"
+      ]
+    },
+    {
+      "county": "Chicot",
+      "topCity": "Lake Village",
+      "host": "",
+      "venue": "",
+      "date": null,
+      "clerkInvited": false,
+      "localCandidatesInvited": false,
+      "pressInvited": false,
+      "status": "not_started",
+      "topics": [
+        "election process",
+        "registration",
+        "polling locations",
+        "absentee/mail rules",
+        "county clerk responsibilities",
+        "voter participation",
+        "transparency and trust"
+      ]
+    },
+    {
+      "county": "Desha",
+      "topCity": "McGehee",
+      "host": "",
+      "venue": "",
+      "date": null,
+      "clerkInvited": false,
+      "localCandidatesInvited": false,
+      "pressInvited": false,
+      "status": "not_started",
+      "topics": [
+        "election process",
+        "registration",
+        "polling locations",
+        "absentee/mail rules",
+        "county clerk responsibilities",
+        "voter participation",
+        "transparency and trust"
+      ]
+    },
+    {
+      "county": "Drew",
+      "topCity": "Monticello",
+      "host": "",
+      "venue": "",
+      "date": null,
+      "clerkInvited": false,
+      "localCandidatesInvited": false,
+      "pressInvited": false,
+      "status": "not_started",
+      "topics": [
+        "election process",
+        "registration",
+        "polling locations",
+        "absentee/mail rules",
+        "county clerk responsibilities",
+        "voter participation",
+        "transparency and trust"
+      ]
+    },
+    {
+      "county": "Mississippi",
+      "topCity": "Blytheville",
+      "host": "",
+      "venue": "",
+      "date": null,
+      "clerkInvited": false,
+      "localCandidatesInvited": false,
+      "pressInvited": false,
+      "status": "not_started",
+      "topics": [
+        "election process",
+        "registration",
+        "polling locations",
+        "absentee/mail rules",
+        "county clerk responsibilities",
+        "voter participation",
+        "transparency and trust"
+      ]
+    },
+    {
+      "county": "Monroe",
+      "topCity": "Clarendon",
+      "host": "",
+      "venue": "",
+      "date": null,
+      "clerkInvited": false,
+      "localCandidatesInvited": false,
+      "pressInvited": false,
+      "status": "not_started",
+      "topics": [
+        "election process",
+        "registration",
+        "polling locations",
+        "absentee/mail rules",
+        "county clerk responsibilities",
+        "voter participation",
+        "transparency and trust"
+      ]
+    },
+    {
+      "county": "Phillips",
+      "topCity": "Helena-West Helena",
+      "host": "",
+      "venue": "",
+      "date": null,
+      "clerkInvited": false,
+      "localCandidatesInvited": false,
+      "pressInvited": false,
+      "status": "not_started",
+      "topics": [
+        "election process",
+        "registration",
+        "polling locations",
+        "absentee/mail rules",
+        "county clerk responsibilities",
+        "voter participation",
+        "transparency and trust"
+      ]
+    },
+    {
+      "county": "St. Francis",
+      "topCity": "Forrest City",
+      "host": "",
+      "venue": "",
+      "date": null,
+      "clerkInvited": false,
+      "localCandidatesInvited": false,
+      "pressInvited": false,
+      "status": "not_started",
+      "topics": [
+        "election process",
+        "registration",
+        "polling locations",
+        "absentee/mail rules",
+        "county clerk responsibilities",
+        "voter participation",
+        "transparency and trust"
+      ]
+    },
+    {
+      "county": "Lee",
+      "topCity": "Marianna",
+      "host": "",
+      "venue": "",
+      "date": null,
+      "clerkInvited": false,
+      "localCandidatesInvited": false,
+      "pressInvited": false,
+      "status": "not_started",
+      "topics": [
+        "election process",
+        "registration",
+        "polling locations",
+        "absentee/mail rules",
+        "county clerk responsibilities",
+        "voter participation",
+        "transparency and trust"
+      ]
+    }
+  ]
+}

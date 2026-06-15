@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "note": "Current elected officials + Democratic county leadership — field updates this file. npm run campaign-brain:relationship-network:build",
+  "officials": [],
+  "_example": {
+    "id": "official-pulaski-example",
+    "name": "Example Official",
+    "office": "County Justice of the Peace",
+    "county": "Pulaski",
+    "district": "District 5",
+    "category": "current_elected",
+    "contactStatus": "not_contacted",
+    "supportStatus": "unknown",
+    "introductionStatus": "none",
+    "followUpNeeded": false,
+    "asks": {
+      "contacted": false,
+      "meetingRequested": false,
+      "meetingCompleted": false,
+      "supportRequested": false,
+      "networkRequested": false,
+      "financialSupportRequested": false,
+      "introducedOthers": false,
+      "volunteerLeadsProvided": false
+    },
+    "endorsement": {
+      "endorsementRequested": false,
+      "endorsementStatus": "not_requested",
+      "endorsementActivationLevel": "none"
+    },
+    "notes": "Remove _example before production"
+  }
+}

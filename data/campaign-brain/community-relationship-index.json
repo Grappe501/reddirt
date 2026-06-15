@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "note": "Community Relationship Index — Relationship Capital + Community Presence. Re-run campaign-brain:build.",
+  "metrics": {
+    "signs": 0,
+    "shirts": 0,
+    "buttons": 0,
+    "flags": 0,
+    "houseParties": 0,
+    "storiesPublished": 0,
+    "businessesHighlighted": 0,
+    "churchesVisited": 0,
+    "librariesVisited": 0,
+    "countyClerksVisited": 0,
+    "extensionHomemakers": 0,
+    "sportsEvents": 0,
+    "volunteerGrowth": 0,
+    "powerOf5Growth": 0
+  },
+  "goals": {
+    "signs": 5000,
+    "shirts": 3000,
+    "buttons": 10000,
+    "flags": 500,
+    "houseParties": 150,
+    "storiesPublished": 75,
+    "volunteerGrowth": 500,
+    "powerOf5Growth": 200
+  }
+}

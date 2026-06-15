@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-15T02:51:49.695Z",
+  "heroLine": "Move from opportunity to organized relationships — coalition, labor, and power map activation.",
+  "naacp": {
+    "branchesTotal": 0,
+    "called": 0,
+    "meetingsRequested": 0,
+    "speakingScheduled": 0
+  },
+  "aea": {
+    "countiesActive": 0,
+    "teacherSupporters": 0,
+    "meetingsCompleted": 0
+  },
+  "muslim": {
+    "contactsTotal": 0,
+    "meetingsOpen": 0,
+    "meetingsRequested": 0
+  },
+  "hispanic": {
+    "frameworkStatus": "pending_jasmine_review",
+    "lead": "Jasmine Serano",
+    "pendingJasmineReview": true
+  },
+  "labor": {
+    "unionsTotal": 0,
+    "contacted": 0,
+    "meetingsCompleted": 0,
+    "endorsementsInProgress": 0
+  },
+  "electedOfficials": {
+    "contacted": 0,
+    "total": 0,
+    "meetingsCompleted": 0,
+    "introductionsRequested": 0
+  },
+  "candidates": {
+    "activePartnerships": 0,
+    "sharedEvents": 0,
+    "jointMobilize": 0
+  },
+  "pastOfficials": {
+    "engaged": 0,
+    "total": 0
+  },
+  "sherwood": {
+    "goal": "Win Sherwood outright with 60%+",
+    "vipTablesSold": 0,
+    "vipTablesGoal": 20,
+    "ticketsSold": 0,
+    "status": "planning",
+    "onTrack": false
+  },
+  "cityForums": {
+    "planned": 1,
+    "booked": 1,
+    "total": 20,
+    "fortSmithBooked": true
+  },
+  "ruralTownhalls": {
+    "planned": 0,
+    "total": 10
+  }
+}

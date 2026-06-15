@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "note": "Labor & union engagement — Mr. Fouche, Danny Brown, Democratic Union Caucus (Zack Bledsoe). npm run campaign-brain:coalition",
+  "keyPartners": ["Mr. Fouche", "Danny Brown", "Democratic Union Caucus", "Zack Bledsoe"],
+  "coreQuestion": "How can the Secretary of State's office better support working people, union members, fair business filings, transparency, and accountability?",
+  "unions": [],
+  "_example": {
+    "union": "",
+    "hallLocation": "",
+    "leader": "",
+    "contactStatus": "not_contacted",
+    "meetingRequested": false,
+    "meetingCompleted": false,
+    "endorsementRequested": false,
+    "endorsementStatus": "not_requested",
+    "endorsementActivationLevel": "none",
+    "volunteerSupport": false,
+    "financialSupport": false,
+    "memberCommunicationSupport": false,
+    "followUpNeeded": false
+  }
+}

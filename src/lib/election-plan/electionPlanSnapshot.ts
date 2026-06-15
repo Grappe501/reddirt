@@ -1,0 +1,303 @@
+import "server-only";
+
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
+
+import type { ElectionPlanWorkbenchSnapshot } from "./types";
+
+export const ELECTION_PLAN_SNAPSHOT_PATH = path.join(
+  process.cwd(),
+  "data/election-plan/election-plan-workbench.snapshot.json",
+);
+
+let cached: ElectionPlanWorkbenchSnapshot | null = null;
+
+/** Minimal fallback when snapshot has not been built yet. */
+export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
+  return {
+    version: 1,
+    generatedAt: new Date().toISOString(),
+    classification: "Internal campaign strategy presentation — not for public distribution.",
+    hero: {
+      title: "Arkansas Plurality Victory Plan",
+      subtitle: "Kelly Grappe for Secretary of State",
+      tagline:
+        "The 20-week campaign operating plan to win a three-candidate race by building the largest coalition in Arkansas.",
+      metrics: [
+        { label: "Expected projection", value: "410,197" },
+        { label: "Plurality win range", value: "390K–420K" },
+        { label: "Democratic drop-off pool", value: "102,070" },
+        { label: "Lane 2 @ 50% recovery", value: "51,051" },
+        { label: "Registration goal", value: "50,000" },
+        { label: "Top 40 city target", value: "207,507" },
+        { label: "Verified events", value: "— / 300+", detail: "Run npm run election-plan:build" },
+      ],
+    },
+    executive: {
+      summary: "Run npm run election-plan:build to load live campaign data.",
+      constraints: ["Snapshot not found — build pipeline has not run."],
+      cards: [],
+      brainStatus: "Pending snapshot build",
+      calendarTruthRequirement: "Do not lock the 20-week calendar until Calendar Truth exit criteria are met.",
+    },
+    theoryOfVictory: { lanes: [], doctrine: { title: "Big Table Democrat Doctrine", pillars: [], tableBeliefs: [] } },
+    electoralMath: {
+      baselineD: 325_814,
+      traditionalMajorityTarget: 498_963,
+      pluralityRange: { low: 390_000, high: 420_000 },
+      scenarios: [],
+      dropOff: {
+        presidential2024Dem: 397_420,
+        midterm2022Dem: 295_350,
+        rawDropOff: 102_070,
+        recovery50: 51_051,
+        recovery75: 76_563,
+      },
+      explanation:
+        "The campaign does not need to convince Arkansas to become something it is not. The campaign needs to recover missing Democrats, register new voters, build trust in rural communities, and win a plurality in a three-candidate race.",
+    },
+    counties: [],
+    cities: [],
+    top10TargetVotes: 131_694,
+    top40TargetVotes: 207_507,
+    campaignBrain: { flow: "Strategic Plan → Campaign Brain → Weekly Execution", modules: [] },
+    calendarTruth: {
+      verifiedEvents: 0,
+      verifiedGoal: 300,
+      tentativeEvents: 0,
+      missingDates: 0,
+      countyFairsVerified: "0 / 75",
+      tierAEventsVerified: "0 / 62",
+      countyContactOwners: "0 / 75",
+      outcomeReportPct: 0,
+      phase9Ready: false,
+      warning:
+        "The Campaign Brain is ready. The data supply chain is not. Do not lock the 20-week calendar until Calendar Truth exit criteria are met.",
+      exitCriteria: [],
+    },
+    relationshipCapital: {
+      doctrine: "Relationships create trust. Trust creates turnout. Turnout creates victory.",
+      index: 0,
+      assets: [],
+      programs: [],
+      channels: [],
+    },
+    execution: {
+      lockNotice:
+        "Week plans remain candidate schedules until event dates are verified and leadership approves lock.",
+      clusters: [],
+      weekCandidates: [],
+    },
+    architecture: [],
+    peoplePower: {
+      foundingVolunteersGoal: 20,
+      foundingVolunteersCurrent: 0,
+      launchLabel: "June 28 · 6 PM · Zoom",
+      retreatLocation: "Forevermost Farms",
+      monthlyCalls: "Last Sunday · 6 PM",
+      mobilizeEventsLinked: 0,
+      mobilizeRsvpTotal: 0,
+      substackStoriesPublished: 0,
+      strikeTeamCoveragePct: 0,
+      powerOf5Commitments: 0,
+      storyWorkflow: [
+        "Campaign Brain",
+        "Mobilize Event",
+        "Volunteer Recruitment",
+        "Event",
+        "Substack Story",
+        "Email",
+        "Social Media",
+        "Local Sharing",
+        "Relationship Growth",
+      ],
+      communityRelationshipIndex: [],
+      sections: [],
+    },
+    motionPresence: {
+      doctrine:
+        "The Arkansas Presence Strategy — visible statewide motion. When voters ask 'Has Kelly been to my area?' the answer should almost always be yes.",
+      goal: "1000 Arkansas Stories",
+      arkansasPresenceScore: 0,
+      septemberPersuasionReadiness: 0,
+      countiesVisited: 0,
+      countiesTotal: 75,
+      citiesVisited: 0,
+      stopsCompleted: 0,
+      milesTraveled: 0,
+      eventsAttended: 0,
+      storiesPublished: 0,
+      storiesPending: 0,
+      storiesShared: 0,
+      substackPublished: 0,
+      videosPublished: 0,
+      socialPostsPublished: 0,
+      localBusinessesHighlighted: 0,
+      churchesHighlighted: 0,
+      schoolsHighlighted: 0,
+      mediaMentions: 0,
+      peopleSpotlighted: 0,
+      contentPyramidCompletionPct: 0,
+      storyCategories: [],
+      countyMap: [],
+      recentStops: [],
+      cadence: [],
+      storyWorkflow: [
+        "Campaign Brain",
+        "Mobilize",
+        "Event",
+        "Content Capture",
+        "Story Publication",
+        "Email",
+        "Social",
+        "Community Sharing",
+        "Volunteer Recruitment",
+      ],
+      components: [],
+    },
+    forwardMotion: {
+      heroLine:
+        "Showing where Kelly is going next is as important as proving where she has already been.",
+      upcomingCount: 0,
+      nextWeekCount: 0,
+      priorityWindowCount: 0,
+      avgActivationReadiness: 0,
+      stops: [],
+      missingPieces: [],
+      components: [],
+    },
+    coalitionPowerMap: {
+      heroLine: "Move from opportunity to organized relationships.",
+      naacp: { branchesTotal: 0, called: 0, meetingsRequested: 0, speakingScheduled: 0 },
+      aea: { countiesActive: 0, teacherSupporters: 0, meetingsCompleted: 0 },
+      muslim: { contactsTotal: 0, meetingsOpen: 0, meetingsRequested: 0 },
+      hispanic: { frameworkStatus: "pending_jasmine_review", lead: "Jasmine Serano", pendingJasmineReview: true },
+      labor: { unionsTotal: 0, contacted: 0, meetingsCompleted: 0, endorsementsInProgress: 0 },
+      electedOfficials: { contacted: 0, total: 0, meetingsCompleted: 0, introductionsRequested: 0 },
+      candidates: { activePartnerships: 0, sharedEvents: 0, jointMobilize: 0 },
+      pastOfficials: { engaged: 0, total: 0 },
+      sherwood: { goal: "Win Sherwood 60%+", vipTablesSold: 0, vipTablesGoal: 20, ticketsSold: 0, status: "planning", onTrack: false },
+      cityForums: { planned: 0, booked: 0, total: 20, fortSmithBooked: false },
+      ruralTownhalls: { planned: 0, total: 10 },
+      standardAskPackage: [],
+      components: [],
+    },
+    endorsementAcquisition: {
+      heroLine: "Endorsements are validators — measure activation, not vanity.",
+      requested: 0,
+      meetingsScheduled: 0,
+      presentationsGiven: 0,
+      endorsed: 0,
+      pending: 0,
+      declined: 0,
+      activated: 0,
+      volunteerLeadsGenerated: 0,
+      donorLeadsGenerated: 0,
+      institutional: { labor: 0, teacher: 0, civilRights: 0, total: 0 },
+      currentOfficialsEndorsed: 0,
+      formerOfficialsEndorsed: 0,
+      communityLeadersEndorsed: 0,
+      candidatePartnerships: 0,
+      byTier: { tier1: 0, tier2: 0, tier3: 0, tier4: 0, tier5: 0 },
+      valueCriteria: [],
+      activationChecklist: [],
+      pendingTargets: [],
+      components: [],
+    },
+    voterContact: {
+      heroLine: "Human Contact Index — direct Arkansans reached by the campaign.",
+      doctrine: "Volunteer → Voter Contact → Commitment → Turnout.",
+      humanContactIndex: {
+        total: 0,
+        goal: 250_000,
+        completionPct: 0,
+        components: {
+          phoneCalls: 0,
+          postcards: 0,
+          doorsKnocked: 0,
+          housePartyAttendees: 0,
+          powerOf5Conversations: 0,
+          volunteerRecruits: 0,
+          eventAttendees: 0,
+        },
+      },
+      tracks: {
+        lane2Reactivation: { contacted: 0, engaged: 0, committed: 0, turnoutTarget: 51_051, completionPct: 0 },
+        lane3Registration: {
+          registrationsStarted: 0,
+          registrationsCompleted: 0,
+          registrationEvents: 0,
+          volunteerRegistrars: 0,
+          goal: 50_000,
+          completionPct: 0,
+        },
+        lane4Persuasion: { conversations: 0, followUps: 0, eventAttendance: 0, endorsementsGenerated: 0 },
+      },
+      funnel: { volunteersActive: 0, voterContacts: 0, commitments: 0, turnoutTargets: 51_051 },
+      channels: [],
+      components: [],
+    },
+    candidateDashboard: {
+      weeksRemaining: 20,
+      projectedVotes: 410_197,
+      lane2Potential: 51_051,
+      registrationGoal: 50_000,
+      countiesCovered: 0,
+      countiesTotal: 75,
+      upcomingStops: 14,
+      volunteerLeadersGoal: 20,
+      volunteerLeadersCurrent: 0,
+      sherwoodGoal: "60%+",
+      sherwoodVipSold: 0,
+      sherwoodVipGoal: 20,
+      topPrioritiesThisWeek: ["Run npm run election-plan:build"],
+      currentWeek: 1,
+      weekRange: "2026-06-15 → 2026-06-21",
+    },
+    weekPlans: [],
+    warRoom: {
+      weeksRemaining: 20,
+      currentWeek: 1,
+      weekRange: "2026-06-15 → 2026-06-21",
+      projectedVotes: 410_197,
+      lane2Potential: 51_051,
+      registrationGoal: 50_000,
+      registrationProgress: 0,
+      endorsementsRequested: 0,
+      endorsementsEndorsed: 0,
+      volunteerLeadersGoal: 20,
+      volunteerLeadersCurrent: 0,
+      upcomingEvents: 14,
+      countiesCovered: 0,
+      countiesTotal: 75,
+      hciTotal: 0,
+      hciGoal: 250_000,
+      hciCompletionPct: 0,
+      calendarTruthVerified: 122,
+      calendarTruthGoal: 300,
+      calendarTruthPct: 40.7,
+      phase9Ready: false,
+      sherwoodGoal: "60%+",
+      sherwoodVipSold: 0,
+      sherwoodVipGoal: 20,
+      sherwoodTicketsSold: 0,
+      sherwoodVolunteers: 0,
+      topPrioritiesThisWeek: ["Run npm run election-plan:build"],
+    },
+    campaignTimeline: [],
+  };
+}
+
+export function loadElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
+  if (cached) return cached;
+  if (!existsSync(ELECTION_PLAN_SNAPSHOT_PATH)) {
+    cached = fallbackElectionPlanSnapshot();
+    return cached;
+  }
+  const raw = readFileSync(ELECTION_PLAN_SNAPSHOT_PATH, "utf8");
+  cached = JSON.parse(raw) as ElectionPlanWorkbenchSnapshot;
+  return cached;
+}
+
+/** @deprecated Use loadElectionPlanSnapshot */
+export const loadElectionPlanWorkbench = loadElectionPlanSnapshot;

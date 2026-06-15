@@ -1,0 +1,4517 @@
+{
+  "version": 1,
+  "note": "County Strike Teams — assign captains per county. status: assigned | vacant | recruiting. Re-run campaign-brain:build after edits.",
+  "roleLabels": {
+    "countyCaptain": "County Captain",
+    "volunteerCaptain": "Volunteer Captain",
+    "faithCaptain": "Faith Captain",
+    "postcardCaptain": "Postcard Captain",
+    "phoneBankCaptain": "Phone Bank Captain",
+    "canvassCaptain": "Canvass Captain",
+    "eventsCaptain": "Events Captain",
+    "mediaCaptain": "Media Captain",
+    "candidateLiaison": "Candidate Liaison"
+  },
+  "counties": [
+    {
+      "county": "Arkansas",
+      "slug": "arkansas",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Ashley",
+      "slug": "ashley",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Baxter",
+      "slug": "baxter",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Benton",
+      "slug": "benton",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Boone",
+      "slug": "boone",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Bradley",
+      "slug": "bradley",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Calhoun",
+      "slug": "calhoun",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Carroll",
+      "slug": "carroll",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Chicot",
+      "slug": "chicot",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Clark",
+      "slug": "clark",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Clay",
+      "slug": "clay",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Cleburne",
+      "slug": "cleburne",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Cleveland",
+      "slug": "cleveland",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Columbia",
+      "slug": "columbia",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Conway",
+      "slug": "conway",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Crawford",
+      "slug": "crawford",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Cross",
+      "slug": "cross",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Dallas",
+      "slug": "dallas",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Desha",
+      "slug": "desha",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Drew",
+      "slug": "drew",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Franklin",
+      "slug": "franklin",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Fulton",
+      "slug": "fulton",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Garland",
+      "slug": "garland",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Grant",
+      "slug": "grant",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Greene",
+      "slug": "greene",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Hempstead",
+      "slug": "hempstead",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Hot Spring",
+      "slug": "hot-spring",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Howard",
+      "slug": "howard",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Independence",
+      "slug": "independence",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Izard",
+      "slug": "izard",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Jackson",
+      "slug": "jackson",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Johnson",
+      "slug": "johnson",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Lafayette",
+      "slug": "lafayette",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Lawrence",
+      "slug": "lawrence",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Lee",
+      "slug": "lee",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Lincoln",
+      "slug": "lincoln",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Little River",
+      "slug": "little-river",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Logan",
+      "slug": "logan",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Lonoke",
+      "slug": "lonoke",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Madison",
+      "slug": "madison",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Marion",
+      "slug": "marion",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Miller",
+      "slug": "miller",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Mississippi",
+      "slug": "mississippi",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Monroe",
+      "slug": "monroe",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Montgomery",
+      "slug": "montgomery",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Nevada",
+      "slug": "nevada",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Newton",
+      "slug": "newton",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Ouachita",
+      "slug": "ouachita",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Perry",
+      "slug": "perry",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Phillips",
+      "slug": "phillips",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Pike",
+      "slug": "pike",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Poinsett",
+      "slug": "poinsett",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Polk",
+      "slug": "polk",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Pope",
+      "slug": "pope",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Prairie",
+      "slug": "prairie",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Pulaski",
+      "slug": "pulaski",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Randolph",
+      "slug": "randolph",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "St. Francis",
+      "slug": "st.-francis",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Saline",
+      "slug": "saline",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Scott",
+      "slug": "scott",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Searcy",
+      "slug": "searcy",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Sevier",
+      "slug": "sevier",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Sharp",
+      "slug": "sharp",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Stone",
+      "slug": "stone",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Union",
+      "slug": "union",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Van Buren",
+      "slug": "van-buren",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Washington",
+      "slug": "washington",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "White",
+      "slug": "white",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Woodruff",
+      "slug": "woodruff",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    },
+    {
+      "county": "Yell",
+      "slug": "yell",
+      "roles": {
+        "countyCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "volunteerCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "faithCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "postcardCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "phoneBankCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "canvassCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "eventsCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "mediaCaptain": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        },
+        "candidateLiaison": {
+          "name": "",
+          "email": "",
+          "phone": "",
+          "status": "vacant"
+        }
+      }
+    }
+  ]
+}

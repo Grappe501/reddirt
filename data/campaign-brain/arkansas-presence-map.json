@@ -1,0 +1,758 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-15T02:20:28.687Z",
+  "arkansasPresenceScore": 0,
+  "countiesTotal": 75,
+  "counties": [
+    {
+      "county": "Arkansas County",
+      "slug": "arkansas-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Ashley County",
+      "slug": "ashley-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Baxter County",
+      "slug": "baxter-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Benton County",
+      "slug": "benton-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Boone County",
+      "slug": "boone-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Bradley County",
+      "slug": "bradley-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Calhoun County",
+      "slug": "calhoun-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Carroll County",
+      "slug": "carroll-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Chicot County",
+      "slug": "chicot-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Clark County",
+      "slug": "clark-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Clay County",
+      "slug": "clay-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Cleburne County",
+      "slug": "cleburne-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Cleveland County",
+      "slug": "cleveland-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Columbia County",
+      "slug": "columbia-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Conway County",
+      "slug": "conway-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Craighead County",
+      "slug": "craighead-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Crawford County",
+      "slug": "crawford-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Crittenden County",
+      "slug": "crittenden-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Cross County",
+      "slug": "cross-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Dallas County",
+      "slug": "dallas-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Desha County",
+      "slug": "desha-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Drew County",
+      "slug": "drew-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Faulkner County",
+      "slug": "faulkner-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Franklin County",
+      "slug": "franklin-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Fulton County",
+      "slug": "fulton-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Garland County",
+      "slug": "garland-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Grant County",
+      "slug": "grant-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Greene County",
+      "slug": "greene-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Hempstead County",
+      "slug": "hempstead-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Hot Spring County",
+      "slug": "hot-spring-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Howard County",
+      "slug": "howard-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Independence County",
+      "slug": "independence-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Izard County",
+      "slug": "izard-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Jackson County",
+      "slug": "jackson-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Jefferson County",
+      "slug": "jefferson-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Johnson County",
+      "slug": "johnson-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Lafayette County",
+      "slug": "lafayette-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Lawrence County",
+      "slug": "lawrence-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Lee County",
+      "slug": "lee-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Lincoln County",
+      "slug": "lincoln-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Little River County",
+      "slug": "little-river-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Logan County",
+      "slug": "logan-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Lonoke County",
+      "slug": "lonoke-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Madison County",
+      "slug": "madison-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Marion County",
+      "slug": "marion-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Miller County",
+      "slug": "miller-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Mississippi County",
+      "slug": "mississippi-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Monroe County",
+      "slug": "monroe-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Montgomery County",
+      "slug": "montgomery-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Nevada County",
+      "slug": "nevada-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Newton County",
+      "slug": "newton-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Ouachita County",
+      "slug": "ouachita-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Perry County",
+      "slug": "perry-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Phillips County",
+      "slug": "phillips-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Pike County",
+      "slug": "pike-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Poinsett County",
+      "slug": "poinsett-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Polk County",
+      "slug": "polk-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Pope County",
+      "slug": "pope-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Prairie County",
+      "slug": "prairie-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Pulaski County",
+      "slug": "pulaski-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Randolph County",
+      "slug": "randolph-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "St. Francis County",
+      "slug": "st-francis-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Saline County",
+      "slug": "saline-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Scott County",
+      "slug": "scott-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Searcy County",
+      "slug": "searcy-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Sebastian County",
+      "slug": "sebastian-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Sevier County",
+      "slug": "sevier-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Sharp County",
+      "slug": "sharp-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Stone County",
+      "slug": "stone-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Union County",
+      "slug": "union-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Van Buren County",
+      "slug": "van-buren-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Washington County",
+      "slug": "washington-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "White County",
+      "slug": "white-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Woodruff County",
+      "slug": "woodruff-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    },
+    {
+      "county": "Yell County",
+      "slug": "yell-county",
+      "visitCount": 0,
+      "lastVisitDate": null,
+      "daysSinceLastVisit": null,
+      "coverageStatus": "not_visited",
+      "relationshipStatus": "none",
+      "storiesPublished": 0
+    }
+  ]
+}

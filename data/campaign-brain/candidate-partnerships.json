@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "note": "Candidate and local-office partnerships — shared execution. Re-run campaign-brain:build.",
+  "partners": [],
+  "_example": {
+    "name": "Example Candidate",
+    "office": "State House",
+    "district": "District 35",
+    "county": "Pulaski",
+    "status": "active",
+    "sharedEvents": 0,
+    "sharedCanvasses": 0,
+    "sharedPhoneBanks": 0,
+    "sharedVolunteerPool": false,
+    "contactName": "",
+    "notes": "Remove _example before production"
+  },
+  "byCategory": {
+    "congressional": [],
+    "stateSenate": [],
+    "stateHouse": [],
+    "mayors": [],
+    "schoolBoard": [],
+    "countyOfficials": []
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "generatedAt": "2026-06-15T02:08:30.358Z",
+  "clusters": [
+    {
+      "id": "central-metro",
+      "name": "Central Arkansas Metro Cluster",
+      "potential": 136946,
+      "captured": 22400,
+      "remaining": 114546,
+      "priority": "HIGH",
+      "recommendedVisits": 10,
+      "lane2": 17507,
+      "registrationGoal": 16545,
+      "lane4": 15528
+    },
+    {
+      "id": "nwa",
+      "name": "Northwest Arkansas Cluster",
+      "potential": 93844,
+      "captured": 0,
+      "remaining": 93844,
+      "priority": "HIGH",
+      "recommendedVisits": 8,
+      "lane2": 14277,
+      "registrationGoal": 13535,
+      "lane4": 14227
+    },
+    {
+      "id": "river-valley",
+      "name": "River Valley Cluster",
+      "potential": 31540,
+      "captured": 0,
+      "remaining": 31540,
+      "priority": "HIGH",
+      "recommendedVisits": 5,
+      "lane2": 3984,
+      "registrationGoal": 3942,
+      "lane4": 8825
+    },
+    {
+      "id": "northeast-ridge",
+      "name": "Northeast Arkansas Cluster",
+      "potential": 23685,
+      "captured": 0,
+      "remaining": 23685,
+      "priority": "HIGH",
+      "recommendedVisits": 5,
+      "lane2": 2666,
+      "registrationGoal": 2730,
+      "lane4": 6692
+    },
+    {
+      "id": "north-central-ozarks",
+      "name": "North Central Ozarks Cluster",
+      "potential": 19951,
+      "captured": 0,
+      "remaining": 19951,
+      "priority": "MEDIUM",
+      "recommendedVisits": 4,
+      "lane2": 2614,
+      "registrationGoal": 2761,
+      "lane4": 8970
+    },
+    {
+      "id": "hot-springs-ouachita",
+      "name": "Hot Springs & Ouachita Cluster",
+      "potential": 19640,
+      "captured": 0,
+      "remaining": 19640,
+      "priority": "MEDIUM",
+      "recommendedVisits": 4,
+      "lane2": 2603,
+      "registrationGoal": 2675,
+      "lane4": 5704
+    },
+    {
+      "id": "delta-southeast",
+      "name": "Southeast Delta Cluster",
+      "potential": 18285,
+      "captured": 0,
+      "remaining": 18285,
+      "priority": "MEDIUM",
+      "recommendedVisits": 6,
+      "lane2": 2657,
+      "registrationGoal": 2793,
+      "lane4": 3634
+    },
+    {
+      "id": "southwest",
+      "name": "Southwest Arkansas Cluster",
+      "potential": 17996,
+      "captured": 0,
+      "remaining": 17996,
+      "priority": "MEDIUM",
+      "recommendedVisits": 3,
+      "lane2": 2328,
+      "registrationGoal": 2377,
+      "lane4": 3768
+    },
+    {
+      "id": "crittenden-memphis",
+      "name": "Crittenden / Memphis-Adjacent Cluster",
+      "potential": 13285,
+      "captured": 0,
+      "remaining": 13285,
+      "priority": "MEDIUM",
+      "recommendedVisits": 4,
+      "lane2": 1763,
+      "registrationGoal": 1806,
+      "lane4": 1796
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "generatedAt": "2026-06-14T14:16:28.999Z",
+  "clusters": [
+    {
+      "id": "central-metro",
+      "name": "Central Arkansas Metro Cluster",
+      "counties": [
+        "Pulaski",
+        "Saline",
+        "Lonoke",
+        "Faulkner"
+      ],
+      "cities": [
+        "Little Rock",
+        "North Little Rock",
+        "Sherwood",
+        "Jacksonville",
+        "Maumelle",
+        "Conway",
+        "Cabot",
+        "Bryant",
+        "Benton"
+      ],
+      "description": "Statewide hub — media, fundraising, volunteer production, Lane 2 recovery at scale.",
+      "recommendedVisits": 10,
+      "combined": {
+        "lane2Recovery50": 17507,
+        "registrationGoal": 16545,
+        "lane4ConversionPotential": 15528,
+        "victoryContributionIndex": 136946
+      },
+      "countyCount": 4
+    },
+    {
+      "id": "nwa",
+      "name": "Northwest Arkansas Cluster",
+      "counties": [
+        "Washington",
+        "Benton",
+        "Madison",
+        "Carroll",
+        "Boone"
+      ],
+      "cities": [
+        "Fayetteville",
+        "Springdale",
+        "Rogers",
+        "Bentonville",
+        "Siloam Springs",
+        "Bella Vista"
+      ],
+      "description": "NWA growth corridor — university pipeline, chamber networks, moderate Republican conversion.",
+      "recommendedVisits": 8,
+      "combined": {
+        "lane2Recovery50": 14277,
+        "registrationGoal": 13535,
+        "lane4ConversionPotential": 14227,
+        "victoryContributionIndex": 93844
+      },
+      "countyCount": 5
+    },
+    {
+      "id": "river-valley",
+      "name": "River Valley Cluster",
+      "counties": [
+        "Sebastian",
+        "Crawford",
+        "Franklin",
+        "Logan",
+        "Johnson",
+        "Pope",
+        "Yell",
+        "Perry"
+      ],
+      "cities": [
+        "Fort Smith",
+        "Van Buren",
+        "Russellville"
+      ],
+      "description": "Western persuasion corridor — regional media, clerk relationships, moderate GOP outreach.",
+      "recommendedVisits": 5,
+      "combined": {
+        "lane2Recovery50": 3984,
+        "registrationGoal": 3942,
+        "lane4ConversionPotential": 8825,
+        "victoryContributionIndex": 31540
+      },
+      "countyCount": 8
+    },
+    {
+      "id": "northeast-ridge",
+      "name": "Northeast Arkansas Cluster",
+      "counties": [
+        "Craighead",
+        "Greene",
+        "Poinsett",
+        "Cross",
+        "Jackson",
+        "Lawrence",
+        "Randolph",
+        "Sharp",
+        "Clay"
+      ],
+      "cities": [
+        "Jonesboro",
+        "Paragould",
+        "Wynne",
+        "Batesville"
+      ],
+      "description": "Crowley's Ridge and northeast media — persuasion, regional chambers, volunteer hubs.",
+      "recommendedVisits": 5,
+      "combined": {
+        "lane2Recovery50": 2666,
+        "registrationGoal": 2730,
+        "lane4ConversionPotential": 6692,
+        "victoryContributionIndex": 23685
+      },
+      "countyCount": 9
+    },
+    {
+      "id": "north-central-ozarks",
+      "name": "North Central Ozarks Cluster",
+      "counties": [
+        "Baxter",
+        "Marion",
+        "Searcy",
+        "Stone",
+        "Newton",
+        "Izard",
+        "Fulton",
+        "Van Buren",
+        "Cleburne",
+        "Independence",
+        "White"
+      ],
+      "cities": [
+        "Mountain Home",
+        "Harrison",
+        "Searcy",
+        "Beebe"
+      ],
+      "description": "Ozarks and Boston Mountains — event-driven presence, retiree persuasion, fair circuit.",
+      "recommendedVisits": 4,
+      "combined": {
+        "lane2Recovery50": 2614,
+        "registrationGoal": 2761,
+        "lane4ConversionPotential": 8970,
+        "victoryContributionIndex": 19951
+      },
+      "countyCount": 11
+    },
+    {
+      "id": "hot-springs-ouachita",
+      "name": "Hot Springs & Ouachita Cluster",
+      "counties": [
+        "Garland",
+        "Hot Spring",
+        "Montgomery",
+        "Pike",
+        "Clark",
+        "Nevada",
+        "Hempstead",
+        "Little River"
+      ],
+      "cities": [
+        "Hot Springs",
+        "Malvern",
+        "Arkadelphia",
+        "Hope"
+      ],
+      "description": "Tourism, retiree persuasion, lake communities — relationship-based Lane 4.",
+      "recommendedVisits": 4,
+      "combined": {
+        "lane2Recovery50": 2603,
+        "registrationGoal": 2675,
+        "lane4ConversionPotential": 5704,
+        "victoryContributionIndex": 19640
+      },
+      "countyCount": 8
+    },
+    {
+      "id": "delta-southeast",
+      "name": "Southeast Delta Cluster",
+      "counties": [
+        "Jefferson",
+        "Arkansas",
+        "Ashley",
+        "Chicot",
+        "Desha",
+        "Drew",
+        "Lincoln",
+        "Cleveland",
+        "Bradley",
+        "Calhoun",
+        "Dallas"
+      ],
+      "cities": [
+        "Pine Bluff",
+        "Stuttgart",
+        "Camden",
+        "El Dorado",
+        "Hope"
+      ],
+      "description": "Delta Democratic recovery — Lane 2 reactivation, base turnout, faith and community organizing.",
+      "recommendedVisits": 6,
+      "combined": {
+        "lane2Recovery50": 2657,
+        "registrationGoal": 2793,
+        "lane4ConversionPotential": 3634,
+        "victoryContributionIndex": 18285
+      },
+      "countyCount": 11
+    },
+    {
+      "id": "southwest",
+      "name": "Southwest Arkansas Cluster",
+      "counties": [
+        "Miller",
+        "Union",
+        "Columbia",
+        "Lafayette",
+        "Ouachita",
+        "Nevada",
+        "Hempstead"
+      ],
+      "cities": [
+        "Texarkana",
+        "El Dorado",
+        "Magnolia"
+      ],
+      "description": "Timber and oil belt — chamber relationships, county seats, registration at schools.",
+      "recommendedVisits": 3,
+      "combined": {
+        "lane2Recovery50": 2328,
+        "registrationGoal": 2377,
+        "lane4ConversionPotential": 3768,
+        "victoryContributionIndex": 17996
+      },
+      "countyCount": 7
+    },
+    {
+      "id": "crittenden-memphis",
+      "name": "Crittenden / Memphis-Adjacent Cluster",
+      "counties": [
+        "Crittenden",
+        "Mississippi",
+        "Lee",
+        "Phillips",
+        "Monroe"
+      ],
+      "cities": [
+        "West Memphis",
+        "Marion",
+        "Blytheville",
+        "Forrest City"
+      ],
+      "description": "East Arkansas turnout growth — Democratic recovery, Delta base mobilization.",
+      "recommendedVisits": 4,
+      "combined": {
+        "lane2Recovery50": 1763,
+        "registrationGoal": 1806,
+        "lane4ConversionPotential": 1796,
+        "victoryContributionIndex": 13285
+      },
+      "countyCount": 5
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-15T03:08:15.466Z",
+  "heroLine": "Human Contact Index — how many Arkansans have had a direct interaction with the campaign?",
+  "doctrine": "Volunteer → Voter Contact → Commitment → Turnout. Lanes 2, 3, and 4 are won through conversations — not dashboards.",
+  "humanContactIndex": {
+    "total": 0,
+    "components": {
+      "phoneCalls": 0,
+      "postcards": 0,
+      "doorsKnocked": 0,
+      "housePartyAttendees": 0,
+      "powerOf5Conversations": 0,
+      "volunteerRecruits": 0,
+      "eventAttendees": 0
+    },
+    "goal": 250000,
+    "completionPct": 0
+  },
+  "tracks": {
+    "lane2Reactivation": {
+      "contacted": 0,
+      "engaged": 0,
+      "committed": 0,
+      "turnoutTarget": 51051,
+      "completionPct": 0
+    },
+    "lane3Registration": {
+      "registrationsStarted": 0,
+      "registrationsCompleted": 0,
+      "registrationEvents": 0,
+      "volunteerRegistrars": 0,
+      "goal": 50000,
+      "completionPct": 0
+    },
+    "lane4Persuasion": {
+      "conversations": 0,
+      "followUps": 0,
+      "eventAttendance": 0,
+      "endorsementsGenerated": 0
+    }
+  },
+  "funnel": {
+    "volunteersActive": 0,
+    "voterContacts": 0,
+    "commitments": 0,
+    "turnoutTargets": 0
+  },
+  "channels": [
+    {
+      "id": "phoneBank",
+      "label": "Phone Bank",
+      "primaryMetric": 0,
+      "goal": 29000,
+      "completionPct": 0,
+      "detail": "5 programs · relationship · visit invite · GOTV"
+    },
+    {
+      "id": "postcard",
+      "label": "Postcards",
+      "primaryMetric": 0,
+      "goal": 48000,
+      "completionPct": 0,
+      "detail": "Visit announcement · senior GOTV · youth · volunteer recruitment"
+    },
+    {
+      "id": "canvass",
+      "label": "Canvass",
+      "primaryMetric": 0,
+      "goal": 60000,
+      "completionPct": 0,
+      "detail": "Lane 2 drop-off · Lane 4 persuasion · registration turf"
+    },
+    {
+      "id": "powerOf5",
+      "label": "Power of 5",
+      "primaryMetric": 0,
+      "goal": 25000,
+      "completionPct": 0,
+      "detail": "0 commitments · trusted-network conversations"
+    },
+    {
+      "id": "houseParty",
+      "label": "House Parties",
+      "primaryMetric": 0,
+      "goal": 3000,
+      "completionPct": 0,
+      "detail": "0 events logged"
+    },
+    {
+      "id": "gotv",
+      "label": "GOTV",
+      "primaryMetric": 0,
+      "goal": 15000,
+      "completionPct": 0,
+      "detail": "Final-week turnout contacts — separate from relationship calls"
+    }
+  ]
+}

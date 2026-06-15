@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -8,7 +7,6 @@ import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
 import { meetKellyJourneyCopy } from "@/content/about/meet-kelly-pages";
 import { pageMeta } from "@/lib/seo/metadata";
-import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
 
 export const dynamic = "force-dynamic";
 
@@ -17,15 +15,13 @@ const c = meetKellyJourneyCopy;
 export const metadata: Metadata = pageMeta({
   title: "Kelly's journey",
   description:
-    "Kelly Grappe's life story—Arkansas roots, career, family, and the lessons that shape her run for Secretary of State. Campaign-facing chapters; manuscript draft until review.",
+    "Kelly Grappe's life story—Arkansas roots, career, family, and the lessons that shape her run for Secretary of State.",
   path: "/about/journey",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
 function statusBadge(status: (typeof c.arcs)[number]["status"]) {
   switch (status) {
-    case "DRAFT":
-      return <ContentPendingBadge variant="draft" />;
     case "NEEDS SOURCE":
       return <ContentPendingBadge variant="source" />;
     default:
@@ -59,21 +55,6 @@ export default function AboutJourneyPage() {
                   {statusBadge(arc.status)}
                 </div>
                 <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/85">{arc.body}</p>
-                {arc.href && arc.hrefLabel ? (
-                  <Link
-                    href={arc.href}
-                    className="mt-4 inline-block font-body text-sm font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 hover:decoration-kelly-navy"
-                  >
-                    {arc.hrefLabel} →
-                  </Link>
-                ) : showPublicBiographyManuscript() ? (
-                  <Link
-                    href="/biography"
-                    className="mt-4 inline-block font-body text-sm font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 hover:decoration-kelly-navy"
-                  >
-                    Literary biography →
-                  </Link>
-                ) : null}
               </article>
             ))}
           </div>

@@ -1,0 +1,531 @@
+{
+  "version": 2,
+  "note": "Assign verification owner per county. status: unassigned | assigned | active. Re-run campaign-brain:build after edits.",
+  "counties": [
+    {
+      "county": "Arkansas",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Ashley",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Baxter",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Benton",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Boone",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Bradley",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Calhoun",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Carroll",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Chicot",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Clark",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Clay",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Cleburne",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Cleveland",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Columbia",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Conway",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Craighead",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Crawford",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Crittenden",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Cross",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Dallas",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Desha",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Drew",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Faulkner",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Franklin",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Fulton",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Garland",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Grant",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Greene",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Hempstead",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Hot Spring",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Howard",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Independence",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Izard",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Jackson",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Jefferson",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Johnson",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Lafayette",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Lawrence",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Lee",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Lincoln",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Little River",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Logan",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Lonoke",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Madison",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Marion",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Miller",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Mississippi",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Monroe",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Montgomery",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Nevada",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Newton",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Ouachita",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Perry",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Phillips",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Pike",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Poinsett",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Polk",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Pope",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Prairie",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Pulaski",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Randolph",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "St. Francis",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Saline",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Scott",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Searcy",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Sebastian",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Sevier",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Sharp",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Stone",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Union",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Van Buren",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Washington",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "White",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Woodruff",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    },
+    {
+      "county": "Yell",
+      "owner": "",
+      "email": "",
+      "phone": "",
+      "status": "unassigned"
+    }
+  ]
+}

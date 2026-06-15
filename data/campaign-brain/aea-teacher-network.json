@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "note": "AEA / teacher network — coordinate with April Reisma. npm run campaign-brain:coalition",
+  "coordinator": "April Reisma",
+  "counties": [],
+  "_example": {
+    "county": "Pulaski",
+    "aeaContact": "",
+    "teacherSupporters": [],
+    "meetingStatus": "not_started",
+    "eventOpportunity": "",
+    "volunteerLeaderPotential": false,
+    "followUpNeeded": false
+  }
+}

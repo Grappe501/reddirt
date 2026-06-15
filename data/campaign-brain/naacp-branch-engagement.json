@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "note": "NAACP branch outreach — call every branch; request Kelly speaking time. npm run campaign-brain:coalition",
+  "goal": "Call every NAACP branch in Arkansas",
+  "branches": [],
+  "_example": {
+    "id": "naacp-pulaski",
+    "branchName": "Pulaski County NAACP",
+    "county": "Pulaski",
+    "city": "Little Rock",
+    "presidentContact": "",
+    "phone": "",
+    "email": "",
+    "callStatus": "not_called",
+    "meetingRequested": false,
+    "branchSpeakingDate": null,
+    "volunteerLeadersIdentified": 0,
+    "introductionsRequested": false,
+    "followUpNeeded": false,
+    "endorsementRequested": false,
+    "endorsementStatus": "not_requested",
+    "endorsementActivationLevel": "none"
+  }
+}

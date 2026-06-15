@@ -4,7 +4,7 @@
  */
 
 import type { OfficeAreaConfig } from "@/content/office/office-types";
-import { OFFICE_LAYER_EYEBROWS } from "@/content/office/office-layer-labels";
+import { OFFICE_LAYER_EYEBROWS, OFFICE_LAYER_KELLY_EYEBROW } from "@/content/office/office-layer-labels";
 import {
   kellyBringsCivicSection,
   kellyBringsStewardshipCloser,
@@ -91,7 +91,7 @@ export const electionsAreaConfig: OfficeAreaConfig = {
     ],
   },
   layerThree: {
-    eyebrow: OFFICE_LAYER_EYEBROWS[3],
+    eyebrow: OFFICE_LAYER_KELLY_EYEBROW,
     title: "What Kelly Brings: Elections",
     intro:
       "Election administration is a system people must trust under pressure. Kelly’s career and civic work prepared her for systems, training, and follow-through when volume spikes—not improvisation.",

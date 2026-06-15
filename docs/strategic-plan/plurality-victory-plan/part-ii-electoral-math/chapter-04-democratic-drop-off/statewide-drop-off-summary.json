@@ -1,0 +1,825 @@
+{
+  "generatedAt": "2026-06-14T14:11:51.991Z",
+  "comparison": "2024 Presidential D vs 2022 SOS D",
+  "totals": {
+    "presidential2024Dem": 397420,
+    "midterm2022Dem": 295350,
+    "rawDropOff": 102070,
+    "recovery50Total": 51051,
+    "recovery75Total": 76563
+  },
+  "hopeIndexTop10": [
+    {
+      "rank": 1,
+      "county": "Pulaski",
+      "hopeIndex": 74,
+      "recovery50": 11241
+    },
+    {
+      "rank": 2,
+      "county": "Benton",
+      "hopeIndex": 56,
+      "recovery50": 7620
+    },
+    {
+      "rank": 3,
+      "county": "Washington",
+      "hopeIndex": 43,
+      "recovery50": 5788
+    },
+    {
+      "rank": 4,
+      "county": "Saline",
+      "hopeIndex": 28,
+      "recovery50": 2804
+    },
+    {
+      "rank": 5,
+      "county": "Faulkner",
+      "hopeIndex": 24,
+      "recovery50": 2487
+    },
+    {
+      "rank": 6,
+      "county": "Sebastian",
+      "hopeIndex": 21,
+      "recovery50": 1952
+    },
+    {
+      "rank": 7,
+      "county": "Garland",
+      "hopeIndex": 17,
+      "recovery50": 1546
+    },
+    {
+      "rank": 8,
+      "county": "Jefferson",
+      "hopeIndex": 17,
+      "recovery50": 1532
+    },
+    {
+      "rank": 9,
+      "county": "Craighead",
+      "hopeIndex": 18,
+      "recovery50": 1483
+    },
+    {
+      "rank": 10,
+      "county": "Crittenden",
+      "hopeIndex": 17,
+      "recovery50": 1090
+    }
+  ],
+  "counties": [
+    {
+      "county": "Pulaski",
+      "slug": "pulaski-county",
+      "rawLoss": 22481,
+      "recovery50": 11241,
+      "recovery75": 16861,
+      "hopeIndex": 74,
+      "hopeTier": "Moderate",
+      "rank": 1
+    },
+    {
+      "county": "Benton",
+      "slug": "benton-county",
+      "rawLoss": 15239,
+      "recovery50": 7620,
+      "recovery75": 11429,
+      "hopeIndex": 56,
+      "hopeTier": "Moderate",
+      "rank": 2
+    },
+    {
+      "county": "Washington",
+      "slug": "washington-county",
+      "rawLoss": 11576,
+      "recovery50": 5788,
+      "recovery75": 8682,
+      "hopeIndex": 43,
+      "hopeTier": "Building",
+      "rank": 3
+    },
+    {
+      "county": "Saline",
+      "slug": "saline-county",
+      "rawLoss": 5608,
+      "recovery50": 2804,
+      "recovery75": 4206,
+      "hopeIndex": 28,
+      "hopeTier": "Building",
+      "rank": 4
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner-county",
+      "rawLoss": 4974,
+      "recovery50": 2487,
+      "recovery75": 3731,
+      "hopeIndex": 24,
+      "hopeTier": "Limited",
+      "rank": 5
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian-county",
+      "rawLoss": 3904,
+      "recovery50": 1952,
+      "recovery75": 2928,
+      "hopeIndex": 21,
+      "hopeTier": "Limited",
+      "rank": 6
+    },
+    {
+      "county": "Garland",
+      "slug": "garland-county",
+      "rawLoss": 3092,
+      "recovery50": 1546,
+      "recovery75": 2319,
+      "hopeIndex": 17,
+      "hopeTier": "Limited",
+      "rank": 7
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson-county",
+      "rawLoss": 3064,
+      "recovery50": 1532,
+      "recovery75": 2298,
+      "hopeIndex": 17,
+      "hopeTier": "Limited",
+      "rank": 8
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead-county",
+      "rawLoss": 2966,
+      "recovery50": 1483,
+      "recovery75": 2225,
+      "hopeIndex": 18,
+      "hopeTier": "Limited",
+      "rank": 9
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden-county",
+      "rawLoss": 2180,
+      "recovery50": 1090,
+      "recovery75": 1635,
+      "hopeIndex": 17,
+      "hopeTier": "Limited",
+      "rank": 10
+    },
+    {
+      "county": "Lonoke",
+      "slug": "lonoke-county",
+      "rawLoss": 1950,
+      "recovery50": 975,
+      "recovery75": 1463,
+      "hopeIndex": 16,
+      "hopeTier": "Limited",
+      "rank": 11
+    },
+    {
+      "county": "White",
+      "slug": "white-county",
+      "rawLoss": 1666,
+      "recovery50": 833,
+      "recovery75": 1250,
+      "hopeIndex": 15,
+      "hopeTier": "Limited",
+      "rank": 12
+    },
+    {
+      "county": "Pope",
+      "slug": "pope-county",
+      "rawLoss": 1531,
+      "recovery50": 766,
+      "recovery75": 1148,
+      "hopeIndex": 14,
+      "hopeTier": "Limited",
+      "rank": 13
+    },
+    {
+      "county": "Union",
+      "slug": "union-county",
+      "rawLoss": 1461,
+      "recovery50": 731,
+      "recovery75": 1096,
+      "hopeIndex": 14,
+      "hopeTier": "Limited",
+      "rank": 14
+    },
+    {
+      "county": "Crawford",
+      "slug": "crawford-county",
+      "rawLoss": 1236,
+      "recovery50": 618,
+      "recovery75": 927,
+      "hopeIndex": 13,
+      "hopeTier": "Limited",
+      "rank": 15
+    },
+    {
+      "county": "Miller",
+      "slug": "miller-county",
+      "rawLoss": 1186,
+      "recovery50": 593,
+      "recovery75": 890,
+      "hopeIndex": 14,
+      "hopeTier": "Limited",
+      "rank": 16
+    },
+    {
+      "county": "Baxter",
+      "slug": "baxter-county",
+      "rawLoss": 1173,
+      "recovery50": 587,
+      "recovery75": 880,
+      "hopeIndex": 13,
+      "hopeTier": "Limited",
+      "rank": 17
+    },
+    {
+      "county": "Carroll",
+      "slug": "carroll-county",
+      "rawLoss": 811,
+      "recovery50": 406,
+      "recovery75": 608,
+      "hopeIndex": 10,
+      "hopeTier": "Limited",
+      "rank": 18
+    },
+    {
+      "county": "Greene",
+      "slug": "greene-county",
+      "rawLoss": 717,
+      "recovery50": 359,
+      "recovery75": 538,
+      "hopeIndex": 11,
+      "hopeTier": "Limited",
+      "rank": 19
+    },
+    {
+      "county": "Independence",
+      "slug": "independence-county",
+      "rawLoss": 671,
+      "recovery50": 336,
+      "recovery75": 503,
+      "hopeIndex": 11,
+      "hopeTier": "Limited",
+      "rank": 20
+    },
+    {
+      "county": "Ouachita",
+      "slug": "ouachita-county",
+      "rawLoss": 663,
+      "recovery50": 332,
+      "recovery75": 497,
+      "hopeIndex": 9,
+      "hopeTier": "Limited",
+      "rank": 21
+    },
+    {
+      "county": "Boone",
+      "slug": "boone-county",
+      "rawLoss": 645,
+      "recovery50": 323,
+      "recovery75": 484,
+      "hopeIndex": 10,
+      "hopeTier": "Limited",
+      "rank": 22
+    },
+    {
+      "county": "Columbia",
+      "slug": "columbia-county",
+      "rawLoss": 619,
+      "recovery50": 310,
+      "recovery75": 464,
+      "hopeIndex": 11,
+      "hopeTier": "Limited",
+      "rank": 23
+    },
+    {
+      "county": "Clark",
+      "slug": "clark-county",
+      "rawLoss": 565,
+      "recovery50": 283,
+      "recovery75": 424,
+      "hopeIndex": 8,
+      "hopeTier": "Limited",
+      "rank": 24
+    },
+    {
+      "county": "Hempstead",
+      "slug": "hempstead-county",
+      "rawLoss": 552,
+      "recovery50": 276,
+      "recovery75": 414,
+      "hopeIndex": 12,
+      "hopeTier": "Limited",
+      "rank": 25
+    },
+    {
+      "county": "Mississippi",
+      "slug": "mississippi-county",
+      "rawLoss": 530,
+      "recovery50": 265,
+      "recovery75": 398,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 26
+    },
+    {
+      "county": "Cross",
+      "slug": "cross-county",
+      "rawLoss": 528,
+      "recovery50": 264,
+      "recovery75": 396,
+      "hopeIndex": 13,
+      "hopeTier": "Limited",
+      "rank": 27
+    },
+    {
+      "county": "Hot Spring",
+      "slug": "hot-spring-county",
+      "rawLoss": 525,
+      "recovery50": 263,
+      "recovery75": 394,
+      "hopeIndex": 8,
+      "hopeTier": "Limited",
+      "rank": 28
+    },
+    {
+      "county": "Conway",
+      "slug": "conway-county",
+      "rawLoss": 501,
+      "recovery50": 251,
+      "recovery75": 376,
+      "hopeIndex": 8,
+      "hopeTier": "Limited",
+      "rank": 29
+    },
+    {
+      "county": "Cleburne",
+      "slug": "cleburne-county",
+      "rawLoss": 494,
+      "recovery50": 247,
+      "recovery75": 371,
+      "hopeIndex": 10,
+      "hopeTier": "Limited",
+      "rank": 30
+    },
+    {
+      "county": "Phillips",
+      "slug": "phillips-county",
+      "rawLoss": 475,
+      "recovery50": 238,
+      "recovery75": 356,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 31
+    },
+    {
+      "county": "St. Francis",
+      "slug": "st-francis-county",
+      "rawLoss": 473,
+      "recovery50": 237,
+      "recovery75": 355,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 32
+    },
+    {
+      "county": "Johnson",
+      "slug": "johnson-county",
+      "rawLoss": 450,
+      "recovery50": 225,
+      "recovery75": 338,
+      "hopeIndex": 9,
+      "hopeTier": "Limited",
+      "rank": 33
+    },
+    {
+      "county": "Marion",
+      "slug": "marion-county",
+      "rawLoss": 443,
+      "recovery50": 222,
+      "recovery75": 332,
+      "hopeIndex": 12,
+      "hopeTier": "Limited",
+      "rank": 34
+    },
+    {
+      "county": "Ashley",
+      "slug": "ashley-county",
+      "rawLoss": 428,
+      "recovery50": 214,
+      "recovery75": 321,
+      "hopeIndex": 10,
+      "hopeTier": "Limited",
+      "rank": 35
+    },
+    {
+      "county": "Arkansas",
+      "slug": "arkansas-county",
+      "rawLoss": 391,
+      "recovery50": 196,
+      "recovery75": 293,
+      "hopeIndex": 10,
+      "hopeTier": "Limited",
+      "rank": 36
+    },
+    {
+      "county": "Desha",
+      "slug": "desha-county",
+      "rawLoss": 360,
+      "recovery50": 180,
+      "recovery75": 270,
+      "hopeIndex": 9,
+      "hopeTier": "Limited",
+      "rank": 37
+    },
+    {
+      "county": "Drew",
+      "slug": "drew-county",
+      "rawLoss": 341,
+      "recovery50": 171,
+      "recovery75": 256,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 38
+    },
+    {
+      "county": "Grant",
+      "slug": "grant-county",
+      "rawLoss": 292,
+      "recovery50": 146,
+      "recovery75": 219,
+      "hopeIndex": 9,
+      "hopeTier": "Limited",
+      "rank": 39
+    },
+    {
+      "county": "Lee",
+      "slug": "lee-county",
+      "rawLoss": 292,
+      "recovery50": 146,
+      "recovery75": 219,
+      "hopeIndex": 9,
+      "hopeTier": "Limited",
+      "rank": 40
+    },
+    {
+      "county": "Yell",
+      "slug": "yell-county",
+      "rawLoss": 290,
+      "recovery50": 145,
+      "recovery75": 218,
+      "hopeIndex": 9,
+      "hopeTier": "Limited",
+      "rank": 41
+    },
+    {
+      "county": "Madison",
+      "slug": "madison-county",
+      "rawLoss": 280,
+      "recovery50": 140,
+      "recovery75": 210,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 42
+    },
+    {
+      "county": "Sharp",
+      "slug": "sharp-county",
+      "rawLoss": 274,
+      "recovery50": 137,
+      "recovery75": 206,
+      "hopeIndex": 8,
+      "hopeTier": "Limited",
+      "rank": 43
+    },
+    {
+      "county": "Logan",
+      "slug": "logan-county",
+      "rawLoss": 243,
+      "recovery50": 122,
+      "recovery75": 182,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 44
+    },
+    {
+      "county": "Van Buren",
+      "slug": "van-buren-county",
+      "rawLoss": 236,
+      "recovery50": 118,
+      "recovery75": 177,
+      "hopeIndex": 6,
+      "hopeTier": "Limited",
+      "rank": 45
+    },
+    {
+      "county": "Little River",
+      "slug": "little-river-county",
+      "rawLoss": 229,
+      "recovery50": 115,
+      "recovery75": 172,
+      "hopeIndex": 8,
+      "hopeTier": "Limited",
+      "rank": 46
+    },
+    {
+      "county": "Howard",
+      "slug": "howard-county",
+      "rawLoss": 217,
+      "recovery50": 109,
+      "recovery75": 163,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 47
+    },
+    {
+      "county": "Randolph",
+      "slug": "randolph-county",
+      "rawLoss": 204,
+      "recovery50": 102,
+      "recovery75": 153,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 48
+    },
+    {
+      "county": "Bradley",
+      "slug": "bradley-county",
+      "rawLoss": 196,
+      "recovery50": 98,
+      "recovery75": 147,
+      "hopeIndex": 8,
+      "hopeTier": "Limited",
+      "rank": 49
+    },
+    {
+      "county": "Franklin",
+      "slug": "franklin-county",
+      "rawLoss": 178,
+      "recovery50": 89,
+      "recovery75": 134,
+      "hopeIndex": 6,
+      "hopeTier": "Limited",
+      "rank": 50
+    },
+    {
+      "county": "Lawrence",
+      "slug": "lawrence-county",
+      "rawLoss": 178,
+      "recovery50": 89,
+      "recovery75": 134,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 51
+    },
+    {
+      "county": "Poinsett",
+      "slug": "poinsett-county",
+      "rawLoss": 175,
+      "recovery50": 88,
+      "recovery75": 131,
+      "hopeIndex": 5,
+      "hopeTier": "Limited",
+      "rank": 52
+    },
+    {
+      "county": "Clay",
+      "slug": "clay-county",
+      "rawLoss": 158,
+      "recovery50": 79,
+      "recovery75": 119,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 53
+    },
+    {
+      "county": "Izard",
+      "slug": "izard-county",
+      "rawLoss": 158,
+      "recovery50": 79,
+      "recovery75": 119,
+      "hopeIndex": 6,
+      "hopeTier": "Limited",
+      "rank": 54
+    },
+    {
+      "county": "Sevier",
+      "slug": "sevier-county",
+      "rawLoss": 158,
+      "recovery50": 79,
+      "recovery75": 119,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 55
+    },
+    {
+      "county": "Fulton",
+      "slug": "fulton-county",
+      "rawLoss": 150,
+      "recovery50": 75,
+      "recovery75": 113,
+      "hopeIndex": 6,
+      "hopeTier": "Limited",
+      "rank": 56
+    },
+    {
+      "county": "Dallas",
+      "slug": "dallas-county",
+      "rawLoss": 135,
+      "recovery50": 68,
+      "recovery75": 101,
+      "hopeIndex": 6,
+      "hopeTier": "Limited",
+      "rank": 57
+    },
+    {
+      "county": "Perry",
+      "slug": "perry-county",
+      "rawLoss": 133,
+      "recovery50": 67,
+      "recovery75": 100,
+      "hopeIndex": 5,
+      "hopeTier": "Limited",
+      "rank": 58
+    },
+    {
+      "county": "Jackson",
+      "slug": "jackson-county",
+      "rawLoss": 130,
+      "recovery50": 65,
+      "recovery75": 98,
+      "hopeIndex": 4,
+      "hopeTier": "Limited",
+      "rank": 59
+    },
+    {
+      "county": "Lincoln",
+      "slug": "lincoln-county",
+      "rawLoss": 127,
+      "recovery50": 64,
+      "recovery75": 95,
+      "hopeIndex": 6,
+      "hopeTier": "Limited",
+      "rank": 60
+    },
+    {
+      "county": "Polk",
+      "slug": "polk-county",
+      "rawLoss": 120,
+      "recovery50": 60,
+      "recovery75": 90,
+      "hopeIndex": 4,
+      "hopeTier": "Limited",
+      "rank": 61
+    },
+    {
+      "county": "Cleveland",
+      "slug": "cleveland-county",
+      "rawLoss": 116,
+      "recovery50": 58,
+      "recovery75": 87,
+      "hopeIndex": 8,
+      "hopeTier": "Limited",
+      "rank": 62
+    },
+    {
+      "county": "Nevada",
+      "slug": "nevada-county",
+      "rawLoss": 103,
+      "recovery50": 52,
+      "recovery75": 77,
+      "hopeIndex": 5,
+      "hopeTier": "Limited",
+      "rank": 63
+    },
+    {
+      "county": "Newton",
+      "slug": "newton-county",
+      "rawLoss": 98,
+      "recovery50": 49,
+      "recovery75": 74,
+      "hopeIndex": 6,
+      "hopeTier": "Limited",
+      "rank": 64
+    },
+    {
+      "county": "Prairie",
+      "slug": "prairie-county",
+      "rawLoss": 95,
+      "recovery50": 48,
+      "recovery75": 71,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 65
+    },
+    {
+      "county": "Chicot",
+      "slug": "chicot-county",
+      "rawLoss": 82,
+      "recovery50": 41,
+      "recovery75": 62,
+      "hopeIndex": 2,
+      "hopeTier": "Limited",
+      "rank": 66
+    },
+    {
+      "county": "Montgomery",
+      "slug": "montgomery-county",
+      "rawLoss": 78,
+      "recovery50": 39,
+      "recovery75": 59,
+      "hopeIndex": 4,
+      "hopeTier": "Limited",
+      "rank": 67
+    },
+    {
+      "county": "Stone",
+      "slug": "stone-county",
+      "rawLoss": 77,
+      "recovery50": 39,
+      "recovery75": 58,
+      "hopeIndex": 3,
+      "hopeTier": "Limited",
+      "rank": 68
+    },
+    {
+      "county": "Calhoun",
+      "slug": "calhoun-county",
+      "rawLoss": 70,
+      "recovery50": 35,
+      "recovery75": 53,
+      "hopeIndex": 7,
+      "hopeTier": "Limited",
+      "rank": 69
+    },
+    {
+      "county": "Lafayette",
+      "slug": "lafayette-county",
+      "rawLoss": 68,
+      "recovery50": 34,
+      "recovery75": 51,
+      "hopeIndex": 4,
+      "hopeTier": "Limited",
+      "rank": 70
+    },
+    {
+      "county": "Woodruff",
+      "slug": "woodruff-county",
+      "rawLoss": 63,
+      "recovery50": 32,
+      "recovery75": 47,
+      "hopeIndex": 3,
+      "hopeTier": "Limited",
+      "rank": 71
+    },
+    {
+      "county": "Pike",
+      "slug": "pike-county",
+      "rawLoss": 58,
+      "recovery50": 29,
+      "recovery75": 44,
+      "hopeIndex": 4,
+      "hopeTier": "Limited",
+      "rank": 72
+    },
+    {
+      "county": "Searcy",
+      "slug": "searcy-county",
+      "rawLoss": 57,
+      "recovery50": 29,
+      "recovery75": 43,
+      "hopeIndex": 4,
+      "hopeTier": "Limited",
+      "rank": 73
+    },
+    {
+      "county": "Monroe",
+      "slug": "monroe-county",
+      "rawLoss": 48,
+      "recovery50": 24,
+      "recovery75": 36,
+      "hopeIndex": 2,
+      "hopeTier": "Limited",
+      "rank": 74
+    },
+    {
+      "county": "Scott",
+      "slug": "scott-county",
+      "rawLoss": 35,
+      "recovery50": 18,
+      "recovery75": 26,
+      "hopeIndex": 3,
+      "hopeTier": "Limited",
+      "rank": 75
+    }
+  ]
+}

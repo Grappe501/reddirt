@@ -7,12 +7,12 @@ import { Button } from "@/components/ui/Button";
 import { EventsSubpageFooter } from "./EventsSubpageFooter";
 
 type EventPathwayPageProps = {
-  layer: 1 | 2 | 3;
+  layer: 1 | 2;
   eyebrow: string;
   title: string;
   subtitle: string;
   children: ReactNode;
-  /** Layer progression CTA (omit on final layer if handled in-page). */
+  /** Layer progression CTA (layer 1 only). */
   nextStep?: { label: string; href: string };
 };
 
@@ -44,31 +44,14 @@ export function EventPathwayPage({ layer, eyebrow, title, subtitle, children, ne
               <li>
                 {layer === 2 ? (
                   <span className="font-semibold text-kelly-text" aria-current="step">
-                    How
+                    How &amp; what to host
                   </span>
                 ) : (
                   <Link
                     href="/events/request/how-it-works"
                     className="font-semibold text-kelly-navy underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
                   >
-                    How
-                  </Link>
-                )}
-              </li>
-              <li aria-hidden className="text-kelly-text/40">
-                ·
-              </li>
-              <li>
-                {layer === 3 ? (
-                  <span className="font-semibold text-kelly-text" aria-current="step">
-                    What
-                  </span>
-                ) : (
-                  <Link
-                    href="/events/request/what-you-can-host"
-                    className="font-semibold text-kelly-navy underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
-                  >
-                    What
+                    How &amp; what to host
                   </Link>
                 )}
               </li>

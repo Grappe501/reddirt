@@ -255,6 +255,9 @@ else
   fi
 fi
 
+echo ">>> election plan workbench snapshot"
+npm run election-plan:build
+
 echo ">>> next build (NODE_ENV=production; npx next build — no H: npm-cache wrapper on CI)"
 export NODE_ENV=production
 npx next build

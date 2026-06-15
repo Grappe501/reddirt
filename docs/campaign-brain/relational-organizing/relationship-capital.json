@@ -1,0 +1,235 @@
+{
+  "generatedAt": "2026-06-15T02:08:51.850Z",
+  "engine": "Relational Organizing Engine",
+  "role": "Fifth execution engine — mechanism through which Four Lanes move",
+  "doctrine": "Relationships create trust. Trust creates turnout. Turnout creates victory.",
+  "relationshipCapitalIndex": 0,
+  "assets": [
+    {
+      "name": "Yard signs",
+      "current": 0,
+      "goal": 5000,
+      "completionPct": 0
+    },
+    {
+      "name": "Shirts",
+      "current": 0,
+      "goal": 3000,
+      "completionPct": 0
+    },
+    {
+      "name": "Buttons",
+      "current": 0,
+      "goal": 10000,
+      "completionPct": 0
+    },
+    {
+      "name": "Flags",
+      "current": 0,
+      "goal": 500,
+      "completionPct": 0
+    }
+  ],
+  "programs": [
+    {
+      "name": "House parties",
+      "completed": 0,
+      "scheduled": 0,
+      "goal": 150
+    },
+    {
+      "name": "Civic club meetings",
+      "completed": 0,
+      "scheduled": 0,
+      "goal": 200
+    },
+    {
+      "name": "Faith events",
+      "completed": 0,
+      "scheduled": 0,
+      "goal": 150
+    },
+    {
+      "name": "Postcard teams",
+      "completed": 0,
+      "scheduled": 0,
+      "goal": 40
+    }
+  ],
+  "relationshipCapital": [
+    {
+      "key": "signsDeployed",
+      "label": "Signs deployed",
+      "value": 0,
+      "goal": 5000,
+      "completionPct": 0
+    },
+    {
+      "key": "shirtsDistributed",
+      "label": "Shirts distributed",
+      "value": 0,
+      "goal": 3000,
+      "completionPct": 0
+    },
+    {
+      "key": "buttonsDistributed",
+      "label": "Buttons distributed",
+      "value": 0,
+      "goal": 10000,
+      "completionPct": 0
+    },
+    {
+      "key": "flagsDistributed",
+      "label": "Flags distributed",
+      "value": 0,
+      "goal": 500,
+      "completionPct": 0
+    },
+    {
+      "key": "housePartiesHeld",
+      "label": "House parties held",
+      "value": 0,
+      "goal": 150,
+      "completionPct": 0
+    },
+    {
+      "key": "civicClubsVisited",
+      "label": "Civic clubs visited",
+      "value": 0,
+      "goal": 200,
+      "completionPct": 0
+    },
+    {
+      "key": "churchesVisited",
+      "label": "Churches visited",
+      "value": 0,
+      "goal": 150,
+      "completionPct": 0
+    },
+    {
+      "key": "localBusinessesHighlighted",
+      "label": "Local businesses highlighted",
+      "value": 0,
+      "goal": 200,
+      "completionPct": 0
+    },
+    {
+      "key": "postcardsWritten",
+      "label": "Postcards written",
+      "value": 0,
+      "goal": 40000,
+      "completionPct": 0
+    },
+    {
+      "key": "phoneCallsCompleted",
+      "label": "Phone calls completed",
+      "value": 0,
+      "goal": 27000,
+      "completionPct": 0
+    },
+    {
+      "key": "canvassDoorsKnocked",
+      "label": "Canvass doors knocked",
+      "value": 0,
+      "goal": 50000,
+      "completionPct": 0
+    }
+  ],
+  "phoneBanks": [
+    {
+      "type": "relationshipCalls",
+      "completed": 0,
+      "goal": 5000,
+      "completionPct": 0
+    },
+    {
+      "type": "visitInvitationCalls",
+      "completed": 0,
+      "goal": 3000,
+      "completionPct": 0
+    },
+    {
+      "type": "gotvCalls",
+      "completed": 0,
+      "goal": 15000,
+      "completionPct": 0
+    },
+    {
+      "type": "followUpCalls",
+      "completed": 0,
+      "goal": 4000,
+      "completionPct": 0
+    }
+  ],
+  "postcardPrograms": [
+    {
+      "type": "visitAnnouncement",
+      "sent": 0,
+      "goal": 5000,
+      "completionPct": 0
+    },
+    {
+      "type": "seniorGotv",
+      "sent": 0,
+      "goal": 25000,
+      "completionPct": 0
+    },
+    {
+      "type": "youthGotv",
+      "sent": 0,
+      "goal": 10000,
+      "completionPct": 0
+    }
+  ],
+  "localShirtEditions": [
+    {
+      "edition": "Conway Edition",
+      "city": "Conway",
+      "county": "Faulkner",
+      "vendor": "",
+      "deployed": 0,
+      "goal": 200
+    },
+    {
+      "edition": "Jonesboro Edition",
+      "city": "Jonesboro",
+      "county": "Craighead",
+      "vendor": "",
+      "deployed": 0,
+      "goal": 200
+    },
+    {
+      "edition": "Pine Bluff Edition",
+      "city": "Pine Bluff",
+      "county": "Jefferson",
+      "vendor": "",
+      "deployed": 0,
+      "goal": 150
+    },
+    {
+      "edition": "Helena Edition",
+      "city": "Helena-West Helena",
+      "county": "Phillips",
+      "vendor": "",
+      "deployed": 0,
+      "goal": 100
+    },
+    {
+      "edition": "El Dorado Edition",
+      "city": "El Dorado",
+      "county": "Union",
+      "vendor": "",
+      "deployed": 0,
+      "goal": 150
+    },
+    {
+      "edition": "Mountain Home Edition",
+      "city": "Mountain Home",
+      "county": "Baxter",
+      "vendor": "",
+      "deployed": 0,
+      "goal": 150
+    }
+  ],
+  "countyDistribution": []
+}

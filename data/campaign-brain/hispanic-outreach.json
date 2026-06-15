@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "note": "FRAMEWORK ONLY — do not finalize without Jasmine Serano (Hispanic Outreach Lead). npm run campaign-brain:coalition",
+  "frameworkStatus": "pending_jasmine_review",
+  "lead": "Jasmine Serano",
+  "leadRole": "Hispanic Outreach Lead · youth leader",
+  "pillars": [
+    "listening_sessions",
+    "youth_outreach",
+    "spanish_language_assets",
+    "hispanic_business_engagement",
+    "faith_community_outreach",
+    "voter_registration",
+    "volunteer_recruitment",
+    "trusted_messenger_strategy"
+  ],
+  "contacts": [],
+  "planningNotes": ""
+}

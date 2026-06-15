@@ -1,0 +1,1290 @@
+{
+  "generatedAt": "2026-06-15T02:08:41.213Z",
+  "referenceDate": "2026-06-15",
+  "guardrailDays": 45,
+  "totalCounties": 75,
+  "visitedThisCycle": 31,
+  "neverVisited": 44,
+  "remaining": 56,
+  "averageDaysSinceVisit": 56,
+  "guardrailViolations": 59,
+  "guardrailWarnings": 2,
+  "counties": [
+    {
+      "county": "Ashley",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Baxter",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Benton",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Boone",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Calhoun",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Chicot",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Clay",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Crittenden",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Dallas",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Grant",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Greene",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Hempstead",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Hot Spring",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Howard",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Independence",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Izard",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Jackson",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Jefferson",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Johnson",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Lafayette",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Lawrence",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Lincoln",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Little River",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Logan",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Lonoke",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Madison",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Miller",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Mississippi",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Monroe",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Nevada",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Newton",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Perry",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Phillips",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Poinsett",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Prairie",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Randolph",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "St. Francis",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Scott",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Sevier",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Sharp",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Union",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Van Buren",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Woodruff",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Yell",
+      "lastVisitDate": null,
+      "daysSinceVisit": null,
+      "visitCount": 0,
+      "coverageNeedScore": 10,
+      "coverageBonus": 30,
+      "status": "never_visited",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Craighead",
+      "lastVisitDate": "2025-12-15",
+      "daysSinceVisit": 181,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Arkansas",
+      "lastVisitDate": "2026-01-10",
+      "daysSinceVisit": 155,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Searcy",
+      "lastVisitDate": "2026-01-16",
+      "daysSinceVisit": 149,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Lee",
+      "lastVisitDate": "2026-01-19",
+      "daysSinceVisit": 146,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Fulton",
+      "lastVisitDate": "2026-01-31",
+      "daysSinceVisit": 134,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "White",
+      "lastVisitDate": "2026-02-03",
+      "daysSinceVisit": 131,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Sebastian",
+      "lastVisitDate": "2026-02-09",
+      "daysSinceVisit": 125,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Washington",
+      "lastVisitDate": "2026-03-14",
+      "daysSinceVisit": 92,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Ouachita",
+      "lastVisitDate": "2026-03-22",
+      "daysSinceVisit": 84,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Crawford",
+      "lastVisitDate": "2026-04-08",
+      "daysSinceVisit": 67,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Cleveland",
+      "lastVisitDate": "2026-04-10",
+      "daysSinceVisit": 65,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Polk",
+      "lastVisitDate": "2026-04-12",
+      "daysSinceVisit": 63,
+      "visitCount": 1,
+      "coverageNeedScore": 10,
+      "coverageBonus": 20,
+      "status": "neglected",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Franklin",
+      "lastVisitDate": "2026-04-20",
+      "daysSinceVisit": 55,
+      "visitCount": 1,
+      "coverageNeedScore": 7,
+      "coverageBonus": 10,
+      "status": "due",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Marion",
+      "lastVisitDate": "2026-04-20",
+      "daysSinceVisit": 55,
+      "visitCount": 1,
+      "coverageNeedScore": 7,
+      "coverageBonus": 10,
+      "status": "due",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Pope",
+      "lastVisitDate": "2026-04-24",
+      "daysSinceVisit": 51,
+      "visitCount": 1,
+      "coverageNeedScore": 7,
+      "coverageBonus": 10,
+      "status": "due",
+      "guardrailStatus": "violation",
+      "daysUntilViolation": 0
+    },
+    {
+      "county": "Pike",
+      "lastVisitDate": "2026-05-09",
+      "daysSinceVisit": 36,
+      "visitCount": 1,
+      "coverageNeedScore": 7,
+      "coverageBonus": 10,
+      "status": "due",
+      "guardrailStatus": "warning",
+      "daysUntilViolation": 9
+    },
+    {
+      "county": "Saline",
+      "lastVisitDate": "2026-05-09",
+      "daysSinceVisit": 36,
+      "visitCount": 1,
+      "coverageNeedScore": 7,
+      "coverageBonus": 10,
+      "status": "due",
+      "guardrailStatus": "warning",
+      "daysUntilViolation": 9
+    },
+    {
+      "county": "Columbia",
+      "lastVisitDate": "2026-05-17",
+      "daysSinceVisit": 28,
+      "visitCount": 2,
+      "coverageNeedScore": 4,
+      "coverageBonus": 0,
+      "status": "recent",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 17
+    },
+    {
+      "county": "Pulaski",
+      "lastVisitDate": "2026-05-18",
+      "daysSinceVisit": 27,
+      "visitCount": 2,
+      "coverageNeedScore": 4,
+      "coverageBonus": 0,
+      "status": "recent",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 18
+    },
+    {
+      "county": "Desha",
+      "lastVisitDate": "2026-05-23",
+      "daysSinceVisit": 22,
+      "visitCount": 1,
+      "coverageNeedScore": 4,
+      "coverageBonus": 0,
+      "status": "recent",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 23
+    },
+    {
+      "county": "Garland",
+      "lastVisitDate": "2026-05-26",
+      "daysSinceVisit": 19,
+      "visitCount": 1,
+      "coverageNeedScore": 4,
+      "coverageBonus": 0,
+      "status": "recent",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 26
+    },
+    {
+      "county": "Cross",
+      "lastVisitDate": "2026-05-28",
+      "daysSinceVisit": 17,
+      "visitCount": 1,
+      "coverageNeedScore": 4,
+      "coverageBonus": 0,
+      "status": "recent",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 28
+    },
+    {
+      "county": "Faulkner",
+      "lastVisitDate": "2026-06-04",
+      "daysSinceVisit": 10,
+      "visitCount": 2,
+      "coverageNeedScore": 1,
+      "coverageBonus": -15,
+      "status": "saturated",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 35
+    },
+    {
+      "county": "Clark",
+      "lastVisitDate": "2026-06-06",
+      "daysSinceVisit": 8,
+      "visitCount": 1,
+      "coverageNeedScore": 1,
+      "coverageBonus": -15,
+      "status": "saturated",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 37
+    },
+    {
+      "county": "Bradley",
+      "lastVisitDate": "2026-06-11",
+      "daysSinceVisit": 3,
+      "visitCount": 1,
+      "coverageNeedScore": 1,
+      "coverageBonus": -15,
+      "status": "saturated",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 42
+    },
+    {
+      "county": "Stone",
+      "lastVisitDate": "2026-06-11",
+      "daysSinceVisit": 3,
+      "visitCount": 1,
+      "coverageNeedScore": 1,
+      "coverageBonus": -15,
+      "status": "saturated",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 42
+    },
+    {
+      "county": "Drew",
+      "lastVisitDate": "2026-06-14",
+      "daysSinceVisit": 0,
+      "visitCount": 1,
+      "coverageNeedScore": 1,
+      "coverageBonus": -15,
+      "status": "saturated",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 45
+    },
+    {
+      "county": "Cleburne",
+      "lastVisitDate": "2026-06-16",
+      "daysSinceVisit": -2,
+      "visitCount": 1,
+      "coverageNeedScore": 1,
+      "coverageBonus": -15,
+      "status": "saturated",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 47
+    },
+    {
+      "county": "Montgomery",
+      "lastVisitDate": "2026-06-17",
+      "daysSinceVisit": -3,
+      "visitCount": 1,
+      "coverageNeedScore": 1,
+      "coverageBonus": -15,
+      "status": "saturated",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 48
+    },
+    {
+      "county": "Conway",
+      "lastVisitDate": "2026-06-20",
+      "daysSinceVisit": -6,
+      "visitCount": 1,
+      "coverageNeedScore": 1,
+      "coverageBonus": -15,
+      "status": "saturated",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 51
+    },
+    {
+      "county": "Carroll",
+      "lastVisitDate": "2026-06-26",
+      "daysSinceVisit": -12,
+      "visitCount": 1,
+      "coverageNeedScore": 1,
+      "coverageBonus": -15,
+      "status": "saturated",
+      "guardrailStatus": "ok",
+      "daysUntilViolation": 57
+    }
+  ],
+  "uncoveredAlerts": [
+    "Ashley",
+    "Baxter",
+    "Benton",
+    "Boone",
+    "Calhoun",
+    "Chicot",
+    "Clay",
+    "Crittenden",
+    "Dallas",
+    "Grant",
+    "Greene",
+    "Hempstead",
+    "Hot Spring",
+    "Howard",
+    "Independence",
+    "Izard",
+    "Jackson",
+    "Jefferson",
+    "Johnson",
+    "Lafayette"
+  ],
+  "noCountyLeftBehindAlerts": [
+    {
+      "county": "Ashley",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Baxter",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Benton",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Boone",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Calhoun",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Chicot",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Clay",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Crittenden",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Dallas",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Grant",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Greene",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Hempstead",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Hot Spring",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Howard",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Independence",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Izard",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Jackson",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Jefferson",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Johnson",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Lafayette",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Lawrence",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Lincoln",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Little River",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Logan",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Lonoke",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Madison",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Miller",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Mississippi",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Monroe",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Nevada",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Newton",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Perry",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Phillips",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Poinsett",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Prairie",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Randolph",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "St. Francis",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Scott",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Sevier",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Sharp",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Union",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Van Buren",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Woodruff",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Yell",
+      "daysSinceContact": null,
+      "lastContactDate": null,
+      "severity": "critical",
+      "message": "No campaign contact recorded — 45-day guardrail violated"
+    },
+    {
+      "county": "Craighead",
+      "daysSinceContact": 181,
+      "lastContactDate": "2025-12-15",
+      "severity": "critical",
+      "message": "181 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Arkansas",
+      "daysSinceContact": 155,
+      "lastContactDate": "2026-01-10",
+      "severity": "critical",
+      "message": "155 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Searcy",
+      "daysSinceContact": 149,
+      "lastContactDate": "2026-01-16",
+      "severity": "critical",
+      "message": "149 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Lee",
+      "daysSinceContact": 146,
+      "lastContactDate": "2026-01-19",
+      "severity": "critical",
+      "message": "146 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Fulton",
+      "daysSinceContact": 134,
+      "lastContactDate": "2026-01-31",
+      "severity": "critical",
+      "message": "134 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "White",
+      "daysSinceContact": 131,
+      "lastContactDate": "2026-02-03",
+      "severity": "critical",
+      "message": "131 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Sebastian",
+      "daysSinceContact": 125,
+      "lastContactDate": "2026-02-09",
+      "severity": "critical",
+      "message": "125 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Washington",
+      "daysSinceContact": 92,
+      "lastContactDate": "2026-03-14",
+      "severity": "critical",
+      "message": "92 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Ouachita",
+      "daysSinceContact": 84,
+      "lastContactDate": "2026-03-22",
+      "severity": "critical",
+      "message": "84 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Crawford",
+      "daysSinceContact": 67,
+      "lastContactDate": "2026-04-08",
+      "severity": "critical",
+      "message": "67 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Cleveland",
+      "daysSinceContact": 65,
+      "lastContactDate": "2026-04-10",
+      "severity": "critical",
+      "message": "65 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Polk",
+      "daysSinceContact": 63,
+      "lastContactDate": "2026-04-12",
+      "severity": "critical",
+      "message": "63 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Franklin",
+      "daysSinceContact": 55,
+      "lastContactDate": "2026-04-20",
+      "severity": "critical",
+      "message": "55 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Marion",
+      "daysSinceContact": 55,
+      "lastContactDate": "2026-04-20",
+      "severity": "critical",
+      "message": "55 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Pope",
+      "daysSinceContact": 51,
+      "lastContactDate": "2026-04-24",
+      "severity": "critical",
+      "message": "51 days since contact — exceeds 45-day limit"
+    },
+    {
+      "county": "Pike",
+      "daysSinceContact": 36,
+      "lastContactDate": "2026-05-09",
+      "severity": "warning",
+      "message": "36 days since contact — 9 days until violation"
+    },
+    {
+      "county": "Saline",
+      "daysSinceContact": 36,
+      "lastContactDate": "2026-05-09",
+      "severity": "warning",
+      "message": "36 days since contact — 9 days until violation"
+    }
+  ]
+}

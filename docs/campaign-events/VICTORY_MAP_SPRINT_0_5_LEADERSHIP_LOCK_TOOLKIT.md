@@ -84,6 +84,8 @@ The engine needs supply constraints by season.
 | 7 | Pre-read packet | `LEADERSHIP_LOCK_SESSION_PRE_READ.md` | Ready |
 | 8 | Leadership summary one-pager | `VICTORY_MAP_LEADERSHIP_SUMMARY.md` | Ready |
 | 9 | Winning theory lock sheet | `sprint-0-5/06-WINNING_THEORY.md` | Draft |
+| 10 | Win target methodology lock sheet | `sprint-0-5/07-WIN_TARGET_METHODOLOGY_LOCK.md` | Draft |
+| 11 | Win target methodology spec | `WIN_TARGET_METHODOLOGY.md` | Ready |
 
 **Meeting packet:** [`LEADERSHIP_DECISION_PACKET.md`](./LEADERSHIP_DECISION_PACKET.md)  
 **Print for the room:** [`VICTORY_MAP_LEADERSHIP_SUMMARY.md`](./VICTORY_MAP_LEADERSHIP_SUMMARY.md)  

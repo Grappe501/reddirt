@@ -9,11 +9,9 @@ import { OFFICE_LAYER_BREADCRUMB } from "@/content/office/office-layer-labels";
 type OfficeBreadcrumbsProps = {
   areaSlug: OfficeAreaSlug;
   areaShortTitle: string;
-  layer: 1 | 2 | 3;
+  layer: 1 | 2;
   className?: string;
 };
-
-const layerLabels = OFFICE_LAYER_BREADCRUMB;
 
 export function OfficeBreadcrumbs({ areaSlug, areaShortTitle, layer, className }: OfficeBreadcrumbsProps) {
   const layer1Href = officeLayerPath(areaSlug, 1);
@@ -21,11 +19,7 @@ export function OfficeBreadcrumbs({ areaSlug, areaShortTitle, layer, className }
   return (
     <nav aria-label="Breadcrumb" className={cn("font-body text-sm text-kelly-text/75", className)}>
       <p className="sr-only" aria-live="polite">
-        {layer === 1
-          ? `${areaShortTitle}, overview.`
-          : layer === 2
-            ? `${areaShortTitle}, why it matters.`
-            : `${areaShortTitle}, what Kelly brings.`}
+        {layer === 1 ? `${areaShortTitle}, overview.` : `${areaShortTitle}, ${OFFICE_LAYER_BREADCRUMB[2]}.`}
       </p>
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <li>
@@ -53,34 +47,13 @@ export function OfficeBreadcrumbs({ areaSlug, areaShortTitle, layer, className }
             </Link>
           )}
         </li>
-        {layer >= 2 ? (
-          <>
-            <li aria-hidden className="text-kelly-text/40">
-              /
-            </li>
-            <li>
-              {layer === 2 ? (
-                <span className="font-semibold text-kelly-text" aria-current="page">
-                  {layerLabels[2]}
-                </span>
-              ) : (
-                <Link
-                  href={officeLayerPath(areaSlug, 2)}
-                  className="font-medium text-kelly-navy underline-offset-2 hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45 focus-visible:ring-offset-2"
-                >
-                  {layerLabels[2]}
-                </Link>
-              )}
-            </li>
-          </>
-        ) : null}
-        {layer === 3 ? (
+        {layer === 2 ? (
           <>
             <li aria-hidden className="text-kelly-text/40">
               /
             </li>
             <li className="font-semibold text-kelly-text" aria-current="page">
-              {layerLabels[3]}
+              {OFFICE_LAYER_BREADCRUMB[2]}
             </li>
           </>
         ) : null}

@@ -1,0 +1,4037 @@
+{
+  "generatedAt": "2026-06-15T02:08:49.073Z",
+  "weeks": [
+    {
+      "weekNumber": 1,
+      "weekOf": "2026-06-15",
+      "range": {
+        "label": "2026-06-15 → 2026-06-21",
+        "start": "2026-06-15",
+        "end": "2026-06-21"
+      },
+      "status": "candidate",
+      "primaryCluster": {
+        "name": "Central Arkansas Metro Cluster",
+        "priority": "HIGH",
+        "remaining": 114546
+      },
+      "focusCityPair": [
+        {
+          "name": "Little Rock",
+          "county": "Pulaski",
+          "targetVotes": 40315
+        },
+        {
+          "name": "North Little Rock",
+          "county": "Pulaski",
+          "targetVotes": 12834
+        }
+      ],
+      "topEvents": [
+        {
+          "eventId": "fair-343e8ec6713e5d2662424ade",
+          "title": "Lonoke County Fair",
+          "county": "Lonoke",
+          "type": "county_fair",
+          "date": "2026-09-23",
+          "dateStatus": "verified",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 1,
+          "effectiveScore": 79,
+          "baseScore": 28,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 2,
+            "registrationGoal": 1,
+            "gopConversion": 4,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "mixed",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "aea-pulaski-stub",
+          "title": "Pulaski County — AEA local / area meeting (verify schedule)",
+          "county": "Pulaski",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 91,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 68,
+          "baseScore": 91,
+          "components": {
+            "countyVci": 30,
+            "lane2Recovery": 20,
+            "registrationGoal": 15,
+            "gopConversion": 13,
+            "countyCoverageNeed": 4,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 0
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "fb-target-pulaski-central-catholic",
+          "title": "Pulaski County — historic rivalry night (verify date + stadium policy)",
+          "county": "Pulaski",
+          "type": "high_school_football",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 91,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 68,
+          "baseScore": 91,
+          "components": {
+            "countyVci": 30,
+            "lane2Recovery": 20,
+            "registrationGoal": 15,
+            "gopConversion": 13,
+            "countyCoverageNeed": 4,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 0
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "backupEvents": [
+        {
+          "eventId": "arta-pulaski-stub",
+          "title": "Pulaski County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Pulaski",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 89,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 67,
+          "baseScore": 89,
+          "components": {
+            "countyVci": 30,
+            "lane2Recovery": 20,
+            "registrationGoal": 15,
+            "gopConversion": 13,
+            "countyCoverageNeed": 4,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 0
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "ehc-pulaski-stub",
+          "title": "Pulaski County Extension Homemakers / EHC — verify council calendar",
+          "county": "Pulaski",
+          "type": "extension_homemakers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 88,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 66,
+          "baseScore": 88,
+          "components": {
+            "countyVci": 30,
+            "lane2Recovery": 20,
+            "registrationGoal": 15,
+            "gopConversion": 13,
+            "countyCoverageNeed": 4,
+            "eventAttendance": 6
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 0
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-lonoke-stub",
+          "title": "Lonoke County — AEA local / area meeting (verify schedule)",
+          "county": "Lonoke",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 70,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 53,
+          "baseScore": 28,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 2,
+            "registrationGoal": 1,
+            "gopConversion": 4,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 3,
+            "coverageBonus": 30
+          },
+          "ruralClass": "mixed",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "rainOutAlternatives": [
+        {
+          "eventId": "aea-pulaski-stub",
+          "title": "Pulaski County — AEA local / area meeting (verify schedule)",
+          "county": "Pulaski",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 91,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 68,
+          "baseScore": 91,
+          "components": {
+            "countyVci": 30,
+            "lane2Recovery": 20,
+            "registrationGoal": 15,
+            "gopConversion": 13,
+            "countyCoverageNeed": 4,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 0
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-lonoke-stub",
+          "title": "Lonoke County — AEA local / area meeting (verify schedule)",
+          "county": "Lonoke",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 70,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 53,
+          "baseScore": 28,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 2,
+            "registrationGoal": 1,
+            "gopConversion": 4,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 3,
+            "coverageBonus": 30
+          },
+          "ruralClass": "mixed",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-saline-stub",
+          "title": "Saline County — AEA local / area meeting (verify schedule)",
+          "county": "Saline",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 48,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 36,
+          "baseScore": 38,
+          "components": {
+            "countyVci": 5,
+            "lane2Recovery": 5,
+            "registrationGoal": 4,
+            "gopConversion": 8,
+            "countyCoverageNeed": 7,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 10
+          },
+          "ruralClass": "urban",
+          "assignment": "Congressional",
+          "assignmentReason": "dense urban county · registration focus · shared media market",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "surrogateOpportunities": [
+        {
+          "eventId": "aea-lonoke-stub",
+          "title": "Lonoke County — AEA local / area meeting (verify schedule)",
+          "county": "Lonoke",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 70,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 53,
+          "baseScore": 28,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 2,
+            "registrationGoal": 1,
+            "gopConversion": 4,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 3,
+            "coverageBonus": 30
+          },
+          "ruralClass": "mixed",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-lonoke-stub",
+          "title": "Lonoke County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Lonoke",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 68,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 51,
+          "baseScore": 26,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 2,
+            "registrationGoal": 1,
+            "gopConversion": 4,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 3,
+            "coverageBonus": 30
+          },
+          "ruralClass": "mixed",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "ehc-lonoke-stub",
+          "title": "Lonoke County Extension Homemakers / EHC — verify council calendar",
+          "county": "Lonoke",
+          "type": "extension_homemakers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 67,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 50,
+          "baseScore": 25,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 2,
+            "registrationGoal": 1,
+            "gopConversion": 4,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 6
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 3,
+            "coverageBonus": 30
+          },
+          "ruralClass": "mixed",
+          "assignment": "Senate",
+          "assignmentReason": "regional turnout event",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "approvalNote": "Candidate — requires leadership approval before locking schedule"
+    },
+    {
+      "weekNumber": 2,
+      "weekOf": "2026-06-22",
+      "range": {
+        "label": "2026-06-22 → 2026-06-28",
+        "start": "2026-06-22",
+        "end": "2026-06-28"
+      },
+      "status": "candidate",
+      "primaryCluster": {
+        "name": "Northwest Arkansas Cluster",
+        "priority": "HIGH",
+        "remaining": 93844
+      },
+      "focusCityPair": [
+        {
+          "name": "Fayetteville",
+          "county": "Washington",
+          "targetVotes": 14754
+        },
+        {
+          "name": "Springdale",
+          "county": "Washington",
+          "targetVotes": 13217
+        }
+      ],
+      "topEvents": [
+        {
+          "eventId": "fair-f547de299001609800b30d85",
+          "title": "Benton County Fair",
+          "county": "Benton",
+          "type": "county_fair",
+          "date": "2026-09-25",
+          "dateStatus": "verified",
+          "campaignImpactScore": 100,
+          "verificationConfidence": 1,
+          "effectiveScore": 100,
+          "baseScore": 70,
+          "components": {
+            "countyVci": 14,
+            "lane2Recovery": 14,
+            "registrationGoal": 10,
+            "gopConversion": 15,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 8,
+            "coverageBonus": 30
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "aea-benton-stub",
+          "title": "Benton County — AEA local / area meeting (verify schedule)",
+          "county": "Benton",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 100,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 75,
+          "baseScore": 72,
+          "components": {
+            "countyVci": 14,
+            "lane2Recovery": 14,
+            "registrationGoal": 10,
+            "gopConversion": 15,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 30
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-benton-stub",
+          "title": "Benton County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Benton",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 100,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 75,
+          "baseScore": 70,
+          "components": {
+            "countyVci": 14,
+            "lane2Recovery": 14,
+            "registrationGoal": 10,
+            "gopConversion": 15,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 30
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "backupEvents": [
+        {
+          "eventId": "ehc-benton-stub",
+          "title": "Benton County Extension Homemakers / EHC — verify council calendar",
+          "county": "Benton",
+          "type": "extension_homemakers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 99,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 74,
+          "baseScore": 69,
+          "components": {
+            "countyVci": 14,
+            "lane2Recovery": 14,
+            "registrationGoal": 10,
+            "gopConversion": 15,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 6
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 30
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-madison-stub",
+          "title": "Madison County — AEA local / area meeting (verify schedule)",
+          "county": "Madison",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-washington-stub",
+          "title": "Washington County — AEA local / area meeting (verify schedule)",
+          "county": "Washington",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 59,
+          "components": {
+            "countyVci": 13,
+            "lane2Recovery": 10,
+            "registrationGoal": 8,
+            "gopConversion": 9,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 20
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "rainOutAlternatives": [
+        {
+          "eventId": "aea-benton-stub",
+          "title": "Benton County — AEA local / area meeting (verify schedule)",
+          "county": "Benton",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 100,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 75,
+          "baseScore": 72,
+          "components": {
+            "countyVci": 14,
+            "lane2Recovery": 14,
+            "registrationGoal": 10,
+            "gopConversion": 15,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 30
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-madison-stub",
+          "title": "Madison County — AEA local / area meeting (verify schedule)",
+          "county": "Madison",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-washington-stub",
+          "title": "Washington County — AEA local / area meeting (verify schedule)",
+          "county": "Washington",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 59,
+          "components": {
+            "countyVci": 13,
+            "lane2Recovery": 10,
+            "registrationGoal": 8,
+            "gopConversion": 9,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1,
+            "ruralBonusPoints": 0,
+            "coverageBonus": 20
+          },
+          "ruralClass": "urban",
+          "assignment": "Kelly",
+          "assignmentReason": "media market · faith engagement · GOP conversion · high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": true,
+            "faithOpportunity": true,
+            "registrationFocus": true,
+            "gopConversionFocus": true,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "surrogateOpportunities": [
+        {
+          "eventId": "arta-madison-stub",
+          "title": "Madison County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Madison",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "ehc-madison-stub",
+          "title": "Madison County Extension Homemakers / EHC — verify council calendar",
+          "county": "Madison",
+          "type": "extension_homemakers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 75,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 56,
+          "baseScore": 17,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 6
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "regional turnout event",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-boone-stub",
+          "title": "Boone County — AEA local / area meeting (verify schedule)",
+          "county": "Boone",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 66,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 50,
+          "baseScore": 24,
+          "components": {
+            "countyVci": 1,
+            "lane2Recovery": 1,
+            "registrationGoal": 0,
+            "gopConversion": 3,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 3,
+            "coverageBonus": 30
+          },
+          "ruralClass": "mixed",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "approvalNote": "Candidate — requires leadership approval before locking schedule"
+    },
+    {
+      "weekNumber": 3,
+      "weekOf": "2026-06-29",
+      "range": {
+        "label": "2026-06-29 → 2026-07-05",
+        "start": "2026-06-29",
+        "end": "2026-07-05"
+      },
+      "status": "candidate",
+      "primaryCluster": {
+        "name": "River Valley Cluster",
+        "priority": "HIGH",
+        "remaining": 31540
+      },
+      "focusCityPair": [
+        {
+          "name": "Fort Smith",
+          "county": "Sebastian",
+          "targetVotes": 9433
+        },
+        {
+          "name": "Russellville",
+          "county": "Pope",
+          "targetVotes": 2994
+        }
+      ],
+      "topEvents": [
+        {
+          "eventId": "fair-7d4b1643af8887c9137f0856",
+          "title": "Yell County Fair",
+          "county": "Yell",
+          "type": "county_fair",
+          "date": "2026-09-07",
+          "dateStatus": "verified",
+          "campaignImpactScore": 90,
+          "verificationConfidence": 1,
+          "effectiveScore": 90,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "fair-85d27f33244a77c6ebeaf3c8",
+          "title": "Crawford County Fair",
+          "county": "Crawford",
+          "type": "county_fair",
+          "date": "2026-09-12",
+          "dateStatus": "verified",
+          "campaignImpactScore": 64,
+          "verificationConfidence": 1,
+          "effectiveScore": 64,
+          "baseScore": 25,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 1,
+            "registrationGoal": 1,
+            "gopConversion": 4,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 20
+          },
+          "ruralClass": "mixed",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "fair-7488da8016f2918085330536",
+          "title": "Pope County Fair",
+          "county": "Pope",
+          "type": "county_fair",
+          "date": "2026-09-15",
+          "dateStatus": "verified",
+          "campaignImpactScore": 45,
+          "verificationConfidence": 1,
+          "effectiveScore": 45,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 1,
+            "registrationGoal": 1,
+            "gopConversion": 3,
+            "countyCoverageNeed": 7,
+            "eventAttendance": 4
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 10
+          },
+          "ruralClass": "mixed",
+          "assignment": "Senate",
+          "assignmentReason": "regional turnout event",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        }
+      ],
+      "backupEvents": [
+        {
+          "eventId": "aea-johnson-stub",
+          "title": "Johnson County — AEA local / area meeting (verify schedule)",
+          "county": "Johnson",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-logan-stub",
+          "title": "Logan County — AEA local / area meeting (verify schedule)",
+          "county": "Logan",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-perry-stub",
+          "title": "Perry County — AEA local / area meeting (verify schedule)",
+          "county": "Perry",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "rainOutAlternatives": [
+        {
+          "eventId": "aea-johnson-stub",
+          "title": "Johnson County — AEA local / area meeting (verify schedule)",
+          "county": "Johnson",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-logan-stub",
+          "title": "Logan County — AEA local / area meeting (verify schedule)",
+          "county": "Logan",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-perry-stub",
+          "title": "Perry County — AEA local / area meeting (verify schedule)",
+          "county": "Perry",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "surrogateOpportunities": [
+        {
+          "eventId": "arta-johnson-stub",
+          "title": "Johnson County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Johnson",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-logan-stub",
+          "title": "Logan County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Logan",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-perry-stub",
+          "title": "Perry County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Perry",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "approvalNote": "Candidate — requires leadership approval before locking schedule"
+    },
+    {
+      "weekNumber": 4,
+      "weekOf": "2026-07-06",
+      "range": {
+        "label": "2026-07-06 → 2026-07-12",
+        "start": "2026-07-06",
+        "end": "2026-07-12"
+      },
+      "status": "candidate",
+      "primaryCluster": {
+        "name": "Northeast Arkansas Cluster",
+        "priority": "HIGH",
+        "remaining": 23685
+      },
+      "focusCityPair": [
+        {
+          "name": "Jonesboro",
+          "county": "Craighead",
+          "targetVotes": 8196
+        },
+        {
+          "name": "Paragould",
+          "county": "Greene",
+          "targetVotes": 2492
+        }
+      ],
+      "topEvents": [
+        {
+          "eventId": "fair-7da0f84811b62d6378c8eab1",
+          "title": "Clay County Fair",
+          "county": "Clay",
+          "type": "county_fair",
+          "date": "2026-09-12",
+          "dateStatus": "verified",
+          "campaignImpactScore": 90,
+          "verificationConfidence": 1,
+          "effectiveScore": 90,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "fair-ef8a3bf07796f5d116269e4e",
+          "title": "Lawrence County Fair",
+          "county": "Lawrence",
+          "type": "county_fair",
+          "date": "2026-08-10",
+          "dateStatus": "verified",
+          "campaignImpactScore": 90,
+          "verificationConfidence": 1,
+          "effectiveScore": 90,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "fair-571afd59db5f2040264c4ac1",
+          "title": "Randolph County Fair",
+          "county": "Randolph",
+          "type": "county_fair",
+          "date": "2026-08-24",
+          "dateStatus": "verified",
+          "campaignImpactScore": 90,
+          "verificationConfidence": 1,
+          "effectiveScore": 90,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        }
+      ],
+      "backupEvents": [
+        {
+          "eventId": "aea-clay-stub",
+          "title": "Clay County — AEA local / area meeting (verify schedule)",
+          "county": "Clay",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-jackson-stub",
+          "title": "Jackson County — AEA local / area meeting (verify schedule)",
+          "county": "Jackson",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-lawrence-stub",
+          "title": "Lawrence County — AEA local / area meeting (verify schedule)",
+          "county": "Lawrence",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "rainOutAlternatives": [
+        {
+          "eventId": "aea-clay-stub",
+          "title": "Clay County — AEA local / area meeting (verify schedule)",
+          "county": "Clay",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-jackson-stub",
+          "title": "Jackson County — AEA local / area meeting (verify schedule)",
+          "county": "Jackson",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-lawrence-stub",
+          "title": "Lawrence County — AEA local / area meeting (verify schedule)",
+          "county": "Lawrence",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "surrogateOpportunities": [
+        {
+          "eventId": "arta-clay-stub",
+          "title": "Clay County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Clay",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-jackson-stub",
+          "title": "Jackson County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Jackson",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-lawrence-stub",
+          "title": "Lawrence County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Lawrence",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "approvalNote": "Candidate — requires leadership approval before locking schedule"
+    },
+    {
+      "weekNumber": 5,
+      "weekOf": "2026-07-13",
+      "range": {
+        "label": "2026-07-13 → 2026-07-19",
+        "start": "2026-07-13",
+        "end": "2026-07-19"
+      },
+      "status": "candidate",
+      "primaryCluster": {
+        "name": "North Central Ozarks Cluster",
+        "priority": "MEDIUM",
+        "remaining": 19951
+      },
+      "focusCityPair": [
+        {
+          "name": "Searcy",
+          "county": "White",
+          "targetVotes": 2099
+        },
+        {
+          "name": "Mountain Home",
+          "county": "Baxter",
+          "targetVotes": 1776
+        }
+      ],
+      "topEvents": [
+        {
+          "eventId": "fair-dd3cef345b5f6d95088be298",
+          "title": "Newton County Fair",
+          "county": "Newton",
+          "type": "county_fair",
+          "date": "2026-08-14",
+          "dateStatus": "verified",
+          "campaignImpactScore": 90,
+          "verificationConfidence": 1,
+          "effectiveScore": 90,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "fair-418be1689fc0c6f0d6a144f5",
+          "title": "Fulton County Fair",
+          "county": "Fulton",
+          "type": "county_fair",
+          "date": "2026-07-10",
+          "dateStatus": "verified",
+          "campaignImpactScore": 70,
+          "verificationConfidence": 1,
+          "effectiveScore": 70,
+          "baseScore": 15,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 4
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 20
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "fair-c6d957f78268e5a414b4d80f",
+          "title": "White County Fair",
+          "county": "White",
+          "type": "county_fair",
+          "date": "2026-09-14",
+          "dateStatus": "verified",
+          "campaignImpactScore": 62,
+          "verificationConfidence": 1,
+          "effectiveScore": 62,
+          "baseScore": 23,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 1,
+            "registrationGoal": 1,
+            "gopConversion": 5,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 4
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 20
+          },
+          "ruralClass": "mixed",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        }
+      ],
+      "backupEvents": [
+        {
+          "eventId": "aea-izard-stub",
+          "title": "Izard County — AEA local / area meeting (verify schedule)",
+          "county": "Izard",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-newton-stub",
+          "title": "Newton County — AEA local / area meeting (verify schedule)",
+          "county": "Newton",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-van-buren-stub",
+          "title": "Van Buren County — AEA local / area meeting (verify schedule)",
+          "county": "Van Buren",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "rainOutAlternatives": [
+        {
+          "eventId": "aea-izard-stub",
+          "title": "Izard County — AEA local / area meeting (verify schedule)",
+          "county": "Izard",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-newton-stub",
+          "title": "Newton County — AEA local / area meeting (verify schedule)",
+          "county": "Newton",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-van-buren-stub",
+          "title": "Van Buren County — AEA local / area meeting (verify schedule)",
+          "county": "Van Buren",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "surrogateOpportunities": [
+        {
+          "eventId": "arta-izard-stub",
+          "title": "Izard County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Izard",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-newton-stub",
+          "title": "Newton County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Newton",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-van-buren-stub",
+          "title": "Van Buren County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Van Buren",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "approvalNote": "Candidate — requires leadership approval before locking schedule"
+    },
+    {
+      "weekNumber": 6,
+      "weekOf": "2026-07-20",
+      "range": {
+        "label": "2026-07-20 → 2026-07-26",
+        "start": "2026-07-20",
+        "end": "2026-07-26"
+      },
+      "status": "candidate",
+      "primaryCluster": {
+        "name": "Hot Springs & Ouachita Cluster",
+        "priority": "MEDIUM",
+        "remaining": 19640
+      },
+      "focusCityPair": [
+        {
+          "name": "Hot Springs",
+          "county": "Garland",
+          "targetVotes": 5101
+        },
+        {
+          "name": "Arkadelphia",
+          "county": "Clark",
+          "targetVotes": 1534
+        }
+      ],
+      "topEvents": [
+        {
+          "eventId": "fair-7b9fd5feee3eb99deeb9317a",
+          "title": "Little River County Fair",
+          "county": "Little River",
+          "type": "county_fair",
+          "date": "2026-08-17",
+          "dateStatus": "verified",
+          "campaignImpactScore": 90,
+          "verificationConfidence": 1,
+          "effectiveScore": 90,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "fair-67cc3c414b72663f68984577",
+          "title": "Nevada County Fair",
+          "county": "Nevada",
+          "type": "county_fair",
+          "date": "2026-09-10",
+          "dateStatus": "verified",
+          "campaignImpactScore": 88,
+          "verificationConfidence": 1,
+          "effectiveScore": 88,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "fair-fc9b80fc6ddcf7dd5cddf15a",
+          "title": "Pike County Fair",
+          "county": "Pike",
+          "type": "county_fair",
+          "date": "2026-09-07",
+          "dateStatus": "verified",
+          "campaignImpactScore": 60,
+          "verificationConfidence": 1,
+          "effectiveScore": 60,
+          "baseScore": 17,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 7,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 10
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        }
+      ],
+      "backupEvents": [
+        {
+          "eventId": "aea-little-river-stub",
+          "title": "Little River County — AEA local / area meeting (verify schedule)",
+          "county": "Little River",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-nevada-stub",
+          "title": "Nevada County — AEA local / area meeting (verify schedule)",
+          "county": "Nevada",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 78,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-little-river-stub",
+          "title": "Little River County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Little River",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "rainOutAlternatives": [
+        {
+          "eventId": "aea-little-river-stub",
+          "title": "Little River County — AEA local / area meeting (verify schedule)",
+          "county": "Little River",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-nevada-stub",
+          "title": "Nevada County — AEA local / area meeting (verify schedule)",
+          "county": "Nevada",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 78,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-hot-spring-stub",
+          "title": "Hot Spring County — AEA local / area meeting (verify schedule)",
+          "county": "Hot Spring",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 63,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 47,
+          "baseScore": 22,
+          "components": {
+            "countyVci": 1,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 2,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 3,
+            "coverageBonus": 30
+          },
+          "ruralClass": "mixed",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "surrogateOpportunities": [
+        {
+          "eventId": "arta-little-river-stub",
+          "title": "Little River County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Little River",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "ehc-little-river-stub",
+          "title": "Little River County Extension Homemakers / EHC — verify council calendar",
+          "county": "Little River",
+          "type": "extension_homemakers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 75,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 56,
+          "baseScore": 17,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 6
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "regional turnout event",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-nevada-stub",
+          "title": "Nevada County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Nevada",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 75,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 56,
+          "baseScore": 17,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "approvalNote": "Candidate — requires leadership approval before locking schedule"
+    },
+    {
+      "weekNumber": 7,
+      "weekOf": "2026-07-27",
+      "range": {
+        "label": "2026-07-27 → 2026-08-02",
+        "start": "2026-07-27",
+        "end": "2026-08-02"
+      },
+      "status": "candidate",
+      "primaryCluster": {
+        "name": "Southeast Delta Cluster",
+        "priority": "MEDIUM",
+        "remaining": 18285
+      },
+      "focusCityPair": [
+        {
+          "name": "Pine Bluff",
+          "county": "Jefferson",
+          "targetVotes": 8339
+        },
+        {
+          "name": "Stuttgart",
+          "county": "Arkansas",
+          "targetVotes": 862
+        }
+      ],
+      "topEvents": [
+        {
+          "eventId": "fair-a9c2bbe56f939da4c7898261",
+          "title": "Ashley County Fair",
+          "county": "Ashley",
+          "type": "county_fair",
+          "date": "2026-09-04",
+          "dateStatus": "verified",
+          "campaignImpactScore": 90,
+          "verificationConfidence": 1,
+          "effectiveScore": 90,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "aea-ashley-stub",
+          "title": "Ashley County — AEA local / area meeting (verify schedule)",
+          "county": "Ashley",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-lincoln-stub",
+          "title": "Lincoln County — AEA local / area meeting (verify schedule)",
+          "county": "Lincoln",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "backupEvents": [
+        {
+          "eventId": "aea-calhoun-stub",
+          "title": "Calhoun County — AEA local / area meeting (verify schedule)",
+          "county": "Calhoun",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 78,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-chicot-stub",
+          "title": "Chicot County — AEA local / area meeting (verify schedule)",
+          "county": "Chicot",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 78,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-dallas-stub",
+          "title": "Dallas County — AEA local / area meeting (verify schedule)",
+          "county": "Dallas",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 78,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "rainOutAlternatives": [
+        {
+          "eventId": "aea-ashley-stub",
+          "title": "Ashley County — AEA local / area meeting (verify schedule)",
+          "county": "Ashley",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-lincoln-stub",
+          "title": "Lincoln County — AEA local / area meeting (verify schedule)",
+          "county": "Lincoln",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 79,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 20,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-calhoun-stub",
+          "title": "Calhoun County — AEA local / area meeting (verify schedule)",
+          "county": "Calhoun",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 78,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "surrogateOpportunities": [
+        {
+          "eventId": "arta-ashley-stub",
+          "title": "Ashley County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Ashley",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-lincoln-stub",
+          "title": "Lincoln County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Lincoln",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 77,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 58,
+          "baseScore": 18,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "ehc-ashley-stub",
+          "title": "Ashley County Extension Homemakers / EHC — verify council calendar",
+          "county": "Ashley",
+          "type": "extension_homemakers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 75,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 56,
+          "baseScore": 17,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 1,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 6
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "regional turnout event",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "approvalNote": "Candidate — requires leadership approval before locking schedule"
+    },
+    {
+      "weekNumber": 8,
+      "weekOf": "2026-08-03",
+      "range": {
+        "label": "2026-08-03 → 2026-08-09",
+        "start": "2026-08-03",
+        "end": "2026-08-09"
+      },
+      "status": "candidate",
+      "primaryCluster": {
+        "name": "Southwest Arkansas Cluster",
+        "priority": "MEDIUM",
+        "remaining": 17996
+      },
+      "focusCityPair": [
+        {
+          "name": "Texarkana",
+          "county": "Miller",
+          "targetVotes": 3195
+        },
+        {
+          "name": "El Dorado",
+          "county": "Union",
+          "targetVotes": 2961
+        }
+      ],
+      "topEvents": [
+        {
+          "eventId": "fair-9e03993e30d8f62d3e8067dc",
+          "title": "Lafayette County Fair",
+          "county": "Lafayette",
+          "type": "county_fair",
+          "date": "2026-08-31",
+          "dateStatus": "verified",
+          "campaignImpactScore": 88,
+          "verificationConfidence": 1,
+          "effectiveScore": 88,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "fair-67cc3c414b72663f68984577",
+          "title": "Nevada County Fair",
+          "county": "Nevada",
+          "type": "county_fair",
+          "date": "2026-09-10",
+          "dateStatus": "verified",
+          "campaignImpactScore": 88,
+          "verificationConfidence": 1,
+          "effectiveScore": 88,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 19,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market · high VCI impact",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        },
+        {
+          "eventId": "fair-8e31ab602a94385aa9919463",
+          "title": "Union County Fair",
+          "county": "Union",
+          "type": "county_fair",
+          "date": "2026-07-23",
+          "dateStatus": "verified",
+          "campaignImpactScore": 76,
+          "verificationConfidence": 1,
+          "effectiveScore": 76,
+          "baseScore": 25,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 1,
+            "registrationGoal": 1,
+            "gopConversion": 2,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "mixed",
+          "assignment": "Kelly",
+          "assignmentReason": "clerk opportunity · media market",
+          "flags": {
+            "clerkOpportunity": true,
+            "mediaOpportunity": true,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "date_not_posted",
+          "verification": "verified"
+        }
+      ],
+      "backupEvents": [
+        {
+          "eventId": "aea-lafayette-stub",
+          "title": "Lafayette County — AEA local / area meeting (verify schedule)",
+          "county": "Lafayette",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 78,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-nevada-stub",
+          "title": "Nevada County — AEA local / area meeting (verify schedule)",
+          "county": "Nevada",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 78,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-lafayette-stub",
+          "title": "Lafayette County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Lafayette",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 75,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 56,
+          "baseScore": 17,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "rainOutAlternatives": [
+        {
+          "eventId": "aea-lafayette-stub",
+          "title": "Lafayette County — AEA local / area meeting (verify schedule)",
+          "county": "Lafayette",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 78,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-nevada-stub",
+          "title": "Nevada County — AEA local / area meeting (verify schedule)",
+          "county": "Nevada",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 78,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 59,
+          "baseScore": 19,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Kelly",
+          "assignmentReason": "high VCI impact",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "aea-miller-stub",
+          "title": "Miller County — AEA local / area meeting (verify schedule)",
+          "county": "Miller",
+          "type": "aea_meeting",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 67,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 50,
+          "baseScore": 25,
+          "components": {
+            "countyVci": 2,
+            "lane2Recovery": 1,
+            "registrationGoal": 1,
+            "gopConversion": 2,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 9
+          },
+          "multipliers": {
+            "ruralStrategy": 1.15,
+            "ruralBonusPoints": 3,
+            "coverageBonus": 30
+          },
+          "ruralClass": "mixed",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "surrogateOpportunities": [
+        {
+          "eventId": "arta-lafayette-stub",
+          "title": "Lafayette County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Lafayette",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 75,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 56,
+          "baseScore": 17,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "arta-nevada-stub",
+          "title": "Nevada County retired educators unit (ARTA / local) — verify cadence",
+          "county": "Nevada",
+          "type": "retired_teachers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 75,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 56,
+          "baseScore": 17,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 7
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "volunteer activation · regional turnout",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": true,
+            "regionalTurnout": false
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        },
+        {
+          "eventId": "ehc-lafayette-stub",
+          "title": "Lafayette County Extension Homemakers / EHC — verify council calendar",
+          "county": "Lafayette",
+          "type": "extension_homemakers",
+          "date": null,
+          "dateStatus": "tentative",
+          "campaignImpactScore": 74,
+          "verificationConfidence": 0.75,
+          "effectiveScore": 56,
+          "baseScore": 16,
+          "components": {
+            "countyVci": 0,
+            "lane2Recovery": 0,
+            "registrationGoal": 0,
+            "gopConversion": 0,
+            "countyCoverageNeed": 10,
+            "eventAttendance": 6
+          },
+          "multipliers": {
+            "ruralStrategy": 1.3,
+            "ruralBonusPoints": 11,
+            "coverageBonus": 30
+          },
+          "ruralClass": "rural",
+          "assignment": "Senate",
+          "assignmentReason": "regional turnout event",
+          "flags": {
+            "clerkOpportunity": false,
+            "mediaOpportunity": false,
+            "faithOpportunity": false,
+            "registrationFocus": false,
+            "gopConversionFocus": false,
+            "volunteerActivation": false,
+            "regionalTurnout": true
+          },
+          "verificationStatus": "needs_confirmation",
+          "verification": "tentative"
+        }
+      ],
+      "approvalNote": "Candidate — requires leadership approval before locking schedule"
+    }
+  ]
+}

@@ -1,0 +1,1790 @@
+{
+  "generatedAt": "2026-06-15T02:08:44.503Z",
+  "statewide": {
+    "potential": 380702,
+    "captured": 22400,
+    "remaining": 358302,
+    "completionPct": 5.9,
+    "byLane": [
+      {
+        "lane": "lane1",
+        "goal": 325814,
+        "potential": 325814,
+        "captured": 0,
+        "remaining": 325814,
+        "completionPct": 0
+      },
+      {
+        "lane": "lane2",
+        "captured": 8200,
+        "remaining": null,
+        "completionPct": null
+      },
+      {
+        "lane": "lane3",
+        "captured": 3400,
+        "remaining": null,
+        "completionPct": null
+      },
+      {
+        "lane": "lane4",
+        "captured": 1800,
+        "remaining": null,
+        "completionPct": null
+      }
+    ]
+  },
+  "clusters": [
+    {
+      "id": "central-metro",
+      "name": "Central Arkansas Metro Cluster",
+      "potential": 136946,
+      "captured": 22400,
+      "remaining": 114546,
+      "completionPct": 16.4,
+      "lane2Potential": 17507,
+      "registrationPotential": 16545,
+      "lane4Potential": 15528
+    },
+    {
+      "id": "nwa",
+      "name": "Northwest Arkansas Cluster",
+      "potential": 93844,
+      "captured": 0,
+      "remaining": 93844,
+      "completionPct": 0,
+      "lane2Potential": 14277,
+      "registrationPotential": 13535,
+      "lane4Potential": 14227
+    },
+    {
+      "id": "river-valley",
+      "name": "River Valley Cluster",
+      "potential": 31540,
+      "captured": 0,
+      "remaining": 31540,
+      "completionPct": 0,
+      "lane2Potential": 3984,
+      "registrationPotential": 3942,
+      "lane4Potential": 8825
+    },
+    {
+      "id": "northeast-ridge",
+      "name": "Northeast Arkansas Cluster",
+      "potential": 23685,
+      "captured": 0,
+      "remaining": 23685,
+      "completionPct": 0,
+      "lane2Potential": 2666,
+      "registrationPotential": 2730,
+      "lane4Potential": 6692
+    },
+    {
+      "id": "north-central-ozarks",
+      "name": "North Central Ozarks Cluster",
+      "potential": 19951,
+      "captured": 0,
+      "remaining": 19951,
+      "completionPct": 0,
+      "lane2Potential": 2614,
+      "registrationPotential": 2761,
+      "lane4Potential": 8970
+    },
+    {
+      "id": "hot-springs-ouachita",
+      "name": "Hot Springs & Ouachita Cluster",
+      "potential": 19640,
+      "captured": 0,
+      "remaining": 19640,
+      "completionPct": 0,
+      "lane2Potential": 2603,
+      "registrationPotential": 2675,
+      "lane4Potential": 5704
+    },
+    {
+      "id": "delta-southeast",
+      "name": "Southeast Delta Cluster",
+      "potential": 18285,
+      "captured": 0,
+      "remaining": 18285,
+      "completionPct": 0,
+      "lane2Potential": 2657,
+      "registrationPotential": 2793,
+      "lane4Potential": 3634
+    },
+    {
+      "id": "southwest",
+      "name": "Southwest Arkansas Cluster",
+      "potential": 17996,
+      "captured": 0,
+      "remaining": 17996,
+      "completionPct": 0,
+      "lane2Potential": 2328,
+      "registrationPotential": 2377,
+      "lane4Potential": 3768
+    },
+    {
+      "id": "crittenden-memphis",
+      "name": "Crittenden / Memphis-Adjacent Cluster",
+      "potential": 13285,
+      "captured": 0,
+      "remaining": 13285,
+      "completionPct": 0,
+      "lane2Potential": 1763,
+      "registrationPotential": 1806,
+      "lane4Potential": 1796
+    }
+  ],
+  "counties": [
+    {
+      "county": "Pulaski",
+      "slug": "pulaski-county",
+      "potential": 97376,
+      "captured": 14200,
+      "remaining": 83176,
+      "completionPct": 14.6,
+      "byLane": {
+        "lane2": {
+          "captured": 5200,
+          "potential": 11241
+        },
+        "lane3": {
+          "captured": 2100,
+          "potential": 10584
+        },
+        "lane4": {
+          "captured": 900,
+          "potential": 6365
+        }
+      }
+    },
+    {
+      "county": "Benton",
+      "slug": "benton-county",
+      "potential": 44415,
+      "captured": 0,
+      "remaining": 44415,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 7620
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 7183
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 7196
+        }
+      }
+    },
+    {
+      "county": "Washington",
+      "slug": "washington-county",
+      "potential": 43741,
+      "captured": 0,
+      "remaining": 43741,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 5788
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 5462
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 4520
+        }
+      }
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian-county",
+      "potential": 16145,
+      "captured": 0,
+      "remaining": 16145,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 1952
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 1859
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 2901
+        }
+      }
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner-county",
+      "potential": 16572,
+      "captured": 1900,
+      "remaining": 14672,
+      "completionPct": 11.5,
+      "byLane": {
+        "lane2": {
+          "captured": 400,
+          "potential": 2487
+        },
+        "lane3": {
+          "captured": 800,
+          "potential": 2361
+        },
+        "lane4": {
+          "captured": 200,
+          "potential": 3256
+        }
+      }
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead-county",
+      "potential": 13397,
+      "captured": 0,
+      "remaining": 13397,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 1483
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 1418
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 2300
+        }
+      }
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson-county",
+      "potential": 12205,
+      "captured": 0,
+      "remaining": 12205,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 1532
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 1464
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 870
+        }
+      }
+    },
+    {
+      "county": "Saline",
+      "slug": "saline-county",
+      "potential": 16215,
+      "captured": 4200,
+      "remaining": 12015,
+      "completionPct": 25.9,
+      "byLane": {
+        "lane2": {
+          "captured": 1800,
+          "potential": 2804
+        },
+        "lane3": {
+          "captured": 800,
+          "potential": 2659
+        },
+        "lane4": {
+          "captured": 400,
+          "potential": 3820
+        }
+      }
+    },
+    {
+      "county": "Garland",
+      "slug": "garland-county",
+      "potential": 10843,
+      "captured": 0,
+      "remaining": 10843,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 1546
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 1477
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 2719
+        }
+      }
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden-county",
+      "potential": 8578,
+      "captured": 0,
+      "remaining": 8578,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 1090
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 1049
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 653
+        }
+      }
+    },
+    {
+      "county": "White",
+      "slug": "white-county",
+      "potential": 6898,
+      "captured": 0,
+      "remaining": 6898,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 833
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 807
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 2363
+        }
+      }
+    },
+    {
+      "county": "Pope",
+      "slug": "pope-county",
+      "potential": 6122,
+      "captured": 0,
+      "remaining": 6122,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 766
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 744
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 1618
+        }
+      }
+    },
+    {
+      "county": "Miller",
+      "slug": "miller-county",
+      "potential": 5406,
+      "captured": 0,
+      "remaining": 5406,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 593
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 582
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 1036
+        }
+      }
+    },
+    {
+      "county": "Union",
+      "slug": "union-county",
+      "potential": 5363,
+      "captured": 0,
+      "remaining": 5363,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 731
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 712
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 959
+        }
+      }
+    },
+    {
+      "county": "Crawford",
+      "slug": "crawford-county",
+      "potential": 5277,
+      "captured": 0,
+      "remaining": 5277,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 618
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 605
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 1692
+        }
+      }
+    },
+    {
+      "county": "Lonoke",
+      "slug": "lonoke-county",
+      "potential": 6783,
+      "captured": 2100,
+      "remaining": 4683,
+      "completionPct": 31,
+      "byLane": {
+        "lane2": {
+          "captured": 800,
+          "potential": 975
+        },
+        "lane3": {
+          "captured": 700,
+          "potential": 941
+        },
+        "lane4": {
+          "captured": 300,
+          "potential": 2087
+        }
+      }
+    },
+    {
+      "county": "Baxter",
+      "slug": "baxter-county",
+      "potential": 4405,
+      "captured": 0,
+      "remaining": 4405,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 587
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 576
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 1466
+        }
+      }
+    },
+    {
+      "county": "Greene",
+      "slug": "greene-county",
+      "potential": 4322,
+      "captured": 0,
+      "remaining": 4322,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 359
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 362
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 1109
+        }
+      }
+    },
+    {
+      "county": "Boone",
+      "slug": "boone-county",
+      "potential": 3320,
+      "captured": 0,
+      "remaining": 3320,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 323
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 328
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 1251
+        }
+      }
+    },
+    {
+      "county": "Mississippi",
+      "slug": "mississippi-county",
+      "potential": 3318,
+      "captured": 0,
+      "remaining": 3318,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 265
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 274
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 645
+        }
+      }
+    },
+    {
+      "county": "St. Francis",
+      "slug": "st-francis-county",
+      "potential": 2658,
+      "captured": 0,
+      "remaining": 2658,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 237
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 248
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 304
+        }
+      }
+    },
+    {
+      "county": "Hot Spring",
+      "slug": "hot-spring-county",
+      "potential": 2629,
+      "captured": 0,
+      "remaining": 2629,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 263
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 272
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 898
+        }
+      }
+    },
+    {
+      "county": "Independence",
+      "slug": "independence-county",
+      "potential": 2622,
+      "captured": 0,
+      "remaining": 2622,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 336
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 341
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 1010
+        }
+      }
+    },
+    {
+      "county": "Clark",
+      "slug": "clark-county",
+      "potential": 2543,
+      "captured": 0,
+      "remaining": 2543,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 283
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 291
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 435
+        }
+      }
+    },
+    {
+      "county": "Columbia",
+      "slug": "columbia-county",
+      "potential": 2508,
+      "captured": 0,
+      "remaining": 2508,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 310
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 316
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 502
+        }
+      }
+    },
+    {
+      "county": "Ouachita",
+      "slug": "ouachita-county",
+      "potential": 2333,
+      "captured": 0,
+      "remaining": 2333,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 332
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 337
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 504
+        }
+      }
+    },
+    {
+      "county": "Cross",
+      "slug": "cross-county",
+      "potential": 1901,
+      "captured": 0,
+      "remaining": 1901,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 264
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 273
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 455
+        }
+      }
+    },
+    {
+      "county": "Hempstead",
+      "slug": "hempstead-county",
+      "potential": 1794,
+      "captured": 0,
+      "remaining": 1794,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 276
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 284
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 407
+        }
+      }
+    },
+    {
+      "county": "Arkansas",
+      "slug": "arkansas-county",
+      "potential": 1666,
+      "captured": 0,
+      "remaining": 1666,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 196
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 209
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 399
+        }
+      }
+    },
+    {
+      "county": "Carroll",
+      "slug": "carroll-county",
+      "potential": 1529,
+      "captured": 0,
+      "remaining": 1529,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 406
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 406
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 717
+        }
+      }
+    },
+    {
+      "county": "Cleburne",
+      "slug": "cleburne-county",
+      "potential": 1526,
+      "captured": 0,
+      "remaining": 1526,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 247
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 257
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 1022
+        }
+      }
+    },
+    {
+      "county": "Johnson",
+      "slug": "johnson-county",
+      "potential": 1097,
+      "captured": 0,
+      "remaining": 1097,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 225
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 236
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 636
+        }
+      }
+    },
+    {
+      "county": "Conway",
+      "slug": "conway-county",
+      "potential": 1077,
+      "captured": 0,
+      "remaining": 1077,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 251
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 261
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 565
+        }
+      }
+    },
+    {
+      "county": "Marion",
+      "slug": "marion-county",
+      "potential": 1043,
+      "captured": 0,
+      "remaining": 1043,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 222
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 234
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 587
+        }
+      }
+    },
+    {
+      "county": "Grant",
+      "slug": "grant-county",
+      "potential": 950,
+      "captured": 0,
+      "remaining": 950,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 146
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 162
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 642
+        }
+      }
+    },
+    {
+      "county": "Ashley",
+      "slug": "ashley-county",
+      "potential": 929,
+      "captured": 0,
+      "remaining": 929,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 214
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 226
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 489
+        }
+      }
+    },
+    {
+      "county": "Sharp",
+      "slug": "sharp-county",
+      "potential": 886,
+      "captured": 0,
+      "remaining": 886,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 137
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 154
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 595
+        }
+      }
+    },
+    {
+      "county": "Logan",
+      "slug": "logan-county",
+      "potential": 864,
+      "captured": 0,
+      "remaining": 864,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 122
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 140
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 602
+        }
+      }
+    },
+    {
+      "county": "Van Buren",
+      "slug": "van-buren-county",
+      "potential": 851,
+      "captured": 0,
+      "remaining": 851,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 118
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 136
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 597
+        }
+      }
+    },
+    {
+      "county": "Polk",
+      "slug": "polk-county",
+      "potential": 840,
+      "captured": 0,
+      "remaining": 840,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 60
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 81
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 699
+        }
+      }
+    },
+    {
+      "county": "Madison",
+      "slug": "madison-county",
+      "potential": 839,
+      "captured": 0,
+      "remaining": 839,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 140
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 156
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 543
+        }
+      }
+    },
+    {
+      "county": "Yell",
+      "slug": "yell-county",
+      "potential": 822,
+      "captured": 0,
+      "remaining": 822,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 145
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 161
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 516
+        }
+      }
+    },
+    {
+      "county": "Drew",
+      "slug": "drew-county",
+      "potential": 780,
+      "captured": 0,
+      "remaining": 780,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 171
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 186
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 423
+        }
+      }
+    },
+    {
+      "county": "Randolph",
+      "slug": "randolph-county",
+      "potential": 737,
+      "captured": 0,
+      "remaining": 737,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 102
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 121
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 514
+        }
+      }
+    },
+    {
+      "county": "Poinsett",
+      "slug": "poinsett-county",
+      "potential": 732,
+      "captured": 0,
+      "remaining": 732,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 88
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 108
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 536
+        }
+      }
+    },
+    {
+      "county": "Phillips",
+      "slug": "phillips-county",
+      "potential": 720,
+      "captured": 0,
+      "remaining": 720,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 238
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 249
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 233
+        }
+      }
+    },
+    {
+      "county": "Franklin",
+      "slug": "franklin-county",
+      "potential": 702,
+      "captured": 0,
+      "remaining": 702,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 89
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 109
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 504
+        }
+      }
+    },
+    {
+      "county": "Lawrence",
+      "slug": "lawrence-county",
+      "potential": 649,
+      "captured": 0,
+      "remaining": 649,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 89
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 109
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 451
+        }
+      }
+    },
+    {
+      "county": "Izard",
+      "slug": "izard-county",
+      "potential": 627,
+      "captured": 0,
+      "remaining": 627,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 79
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 99
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 449
+        }
+      }
+    },
+    {
+      "county": "Little River",
+      "slug": "little-river-county",
+      "potential": 600,
+      "captured": 0,
+      "remaining": 600,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 115
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 133
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 352
+        }
+      }
+    },
+    {
+      "county": "Stone",
+      "slug": "stone-county",
+      "potential": 592,
+      "captured": 0,
+      "remaining": 592,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 39
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 481
+        }
+      }
+    },
+    {
+      "county": "Desha",
+      "slug": "desha-county",
+      "potential": 564,
+      "captured": 0,
+      "remaining": 564,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 180
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 194
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 190
+        }
+      }
+    },
+    {
+      "county": "Howard",
+      "slug": "howard-county",
+      "potential": 557,
+      "captured": 0,
+      "remaining": 557,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 109
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 127
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 321
+        }
+      }
+    },
+    {
+      "county": "Clay",
+      "slug": "clay-county",
+      "potential": 556,
+      "captured": 0,
+      "remaining": 556,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 79
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 99
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 378
+        }
+      }
+    },
+    {
+      "county": "Fulton",
+      "slug": "fulton-county",
+      "potential": 551,
+      "captured": 0,
+      "remaining": 551,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 75
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 95
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 381
+        }
+      }
+    },
+    {
+      "county": "Sevier",
+      "slug": "sevier-county",
+      "potential": 526,
+      "captured": 0,
+      "remaining": 526,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 79
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 99
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 348
+        }
+      }
+    },
+    {
+      "county": "Perry",
+      "slug": "perry-county",
+      "potential": 511,
+      "captured": 0,
+      "remaining": 511,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 67
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 88
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 356
+        }
+      }
+    },
+    {
+      "county": "Jackson",
+      "slug": "jackson-county",
+      "potential": 505,
+      "captured": 0,
+      "remaining": 505,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 65
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 86
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 354
+        }
+      }
+    },
+    {
+      "county": "Pike",
+      "slug": "pike-county",
+      "potential": 482,
+      "captured": 0,
+      "remaining": 482,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 29
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 381
+        }
+      }
+    },
+    {
+      "county": "Bradley",
+      "slug": "bradley-county",
+      "potential": 434,
+      "captured": 0,
+      "remaining": 434,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 98
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 117
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 219
+        }
+      }
+    },
+    {
+      "county": "Lee",
+      "slug": "lee-county",
+      "potential": 426,
+      "captured": 0,
+      "remaining": 426,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 146
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 162
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 118
+        }
+      }
+    },
+    {
+      "county": "Montgomery",
+      "slug": "montgomery-county",
+      "potential": 420,
+      "captured": 0,
+      "remaining": 420,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 39
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 309
+        }
+      }
+    },
+    {
+      "county": "Cleveland",
+      "slug": "cleveland-county",
+      "potential": 418,
+      "captured": 0,
+      "remaining": 418,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 58
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 79
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 281
+        }
+      }
+    },
+    {
+      "county": "Newton",
+      "slug": "newton-county",
+      "potential": 418,
+      "captured": 0,
+      "remaining": 418,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 49
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 297
+        }
+      }
+    },
+    {
+      "county": "Searcy",
+      "slug": "searcy-county",
+      "potential": 418,
+      "captured": 0,
+      "remaining": 418,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 29
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 317
+        }
+      }
+    },
+    {
+      "county": "Lincoln",
+      "slug": "lincoln-county",
+      "potential": 394,
+      "captured": 0,
+      "remaining": 394,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 64
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 85
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 245
+        }
+      }
+    },
+    {
+      "county": "Scott",
+      "slug": "scott-county",
+      "potential": 393,
+      "captured": 0,
+      "remaining": 393,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 18
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 303
+        }
+      }
+    },
+    {
+      "county": "Prairie",
+      "slug": "prairie-county",
+      "potential": 385,
+      "captured": 0,
+      "remaining": 385,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 48
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 265
+        }
+      }
+    },
+    {
+      "county": "Nevada",
+      "slug": "nevada-county",
+      "potential": 329,
+      "captured": 0,
+      "remaining": 329,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 52
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 74
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 203
+        }
+      }
+    },
+    {
+      "county": "Dallas",
+      "slug": "dallas-county",
+      "potential": 322,
+      "captured": 0,
+      "remaining": 322,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 68
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 89
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 165
+        }
+      }
+    },
+    {
+      "county": "Chicot",
+      "slug": "chicot-county",
+      "potential": 313,
+      "captured": 0,
+      "remaining": 313,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 41
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 200
+        }
+      }
+    },
+    {
+      "county": "Woodruff",
+      "slug": "woodruff-county",
+      "potential": 267,
+      "captured": 0,
+      "remaining": 267,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 32
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 163
+        }
+      }
+    },
+    {
+      "county": "Lafayette",
+      "slug": "lafayette-county",
+      "potential": 263,
+      "captured": 0,
+      "remaining": 263,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 34
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 157
+        }
+      }
+    },
+    {
+      "county": "Calhoun",
+      "slug": "calhoun-county",
+      "potential": 260,
+      "captured": 0,
+      "remaining": 260,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 35
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 153
+        }
+      }
+    },
+    {
+      "county": "Monroe",
+      "slug": "monroe-county",
+      "potential": 243,
+      "captured": 0,
+      "remaining": 243,
+      "completionPct": 0,
+      "byLane": {
+        "lane2": {
+          "captured": 0,
+          "potential": 24
+        },
+        "lane3": {
+          "captured": 0,
+          "potential": 72
+        },
+        "lane4": {
+          "captured": 0,
+          "potential": 147
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-06-14T14:16:31.727Z",
+  "totalIndexed": 317,
+  "categories": [
+    {
+      "label": "County Fairs",
+      "count": 75,
+      "folder": "county-fairs",
+      "status": "populated"
+    },
+    {
+      "label": "Festivals",
+      "count": 0,
+      "folder": "festivals",
+      "status": "scaffold"
+    },
+    {
+      "label": "Chamber Events",
+      "count": 0,
+      "folder": "chambers",
+      "status": "scaffold"
+    },
+    {
+      "label": "Rotary Clubs",
+      "count": 0,
+      "folder": "rotary-clubs",
+      "status": "scaffold"
+    },
+    {
+      "label": "Lions Clubs",
+      "count": 0,
+      "folder": "lions-clubs",
+      "status": "scaffold"
+    },
+    {
+      "label": "Farm Bureau",
+      "count": 0,
+      "folder": "farm-bureau",
+      "status": "scaffold"
+    },
+    {
+      "label": "Volunteer Fire Departments",
+      "count": 0,
+      "folder": "volunteer-fire-departments",
+      "status": "scaffold"
+    },
+    {
+      "label": "Faith Events",
+      "count": 0,
+      "folder": "faith-events",
+      "status": "scaffold"
+    },
+    {
+      "label": "County Clerk Events",
+      "count": 0,
+      "folder": "county-clerk-events",
+      "status": "scaffold"
+    },
+    {
+      "label": "Campus & School Events",
+      "count": 92,
+      "folder": "campus-school",
+      "status": "populated"
+    },
+    {
+      "label": "Civic & Community",
+      "count": 150,
+      "folder": "civic-community",
+      "status": "populated"
+    }
+  ],
+  "note": "Build 20-week schedule only after event layer is verified. Do not populate week files yet."
+}

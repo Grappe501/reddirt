@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "note": "Operation Calendar Truth — campaign goals. Current values refresh on npm run campaign-brain:build.",
+  "metrics": {
+    "verifiedEvents": { "goal": 300, "direction": "up" },
+    "tentativeEvents": { "goal": 50, "direction": "down" },
+    "missingDates": { "goal": 0, "direction": "down" },
+    "countiesCovered": { "goal": 75, "direction": "up" },
+    "guardrailViolations": { "goal": 0, "direction": "down" }
+  }
+}

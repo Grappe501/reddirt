@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-06-14T14:16:26.168Z",
+  "narrative": "Over 102,000 Arkansas Democrats voted in 2024 but skipped the 2022 midterm. First job: bring them back.",
+  "lanes": {
+    "lane1": {
+      "name": "Democratic Retention",
+      "goal": 325814,
+      "currentProjection": null,
+      "gap": null,
+      "note": "Hold baseline — prevent drop-off from 325,814 floor"
+    },
+    "lane2": {
+      "name": "Democratic Reactivation",
+      "potential": 102070,
+      "goal": 51051,
+      "stretch": 76563,
+      "current": null,
+      "gap": 51051,
+      "note": "102,070 available · 51,051 @ 50% working goal"
+    },
+    "lane3": {
+      "name": "New Voter Registration",
+      "goal": 50000,
+      "current": null,
+      "gap": 50000,
+      "weeklyPace": 2500,
+      "note": "50,000 statewide · 2,500/week over 20 weeks"
+    },
+    "lane4": {
+      "name": "Republican / Independent Conversion",
+      "goal": 72144,
+      "current": null,
+      "gap": 72144,
+      "note": "Statewide 12% peel model on 2022 SOS Republican vote"
+    }
+  },
+  "victoryProjection": {
+    "pluralityWinRange": {
+      "low": 390000,
+      "high": 420000
+    },
+    "workingGoal": 400000,
+    "stretchGoal": 430000,
+    "traditionalMajorityTarget": 498963,
+    "scenarios": {
+      "expected": {
+        "label": "Expected case",
+        "formula": "Lane 1 baseline + 50% Lane 2 + 60% Lane 3 + 40% Lane 4",
+        "projectedVotes": 410197
+      },
+      "best": {
+        "label": "Best case",
+        "formula": "Lane 1 + 75% Lane 2 + 80% Lane 3 + 50% Lane 4",
+        "projectedVotes": 459308
+      },
+      "stretch": {
+        "label": "Stretch case",
+        "formula": "Lane 1 + 75% Lane 2 + 100% Lane 3 + 60% Lane 4",
+        "projectedVotes": 495663
+      }
+    },
+    "combinedOpportunityNote": "Lane 2 + Lane 3 + Lane 4 goals exceed traditional 173,149 gap model — plurality path is multi-lane."
+  }
+}

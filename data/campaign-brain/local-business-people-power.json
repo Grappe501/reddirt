@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "note": "Local business relationship program — every dollar spent becomes a relationship. Re-run campaign-brain:build.",
+  "airbnbStays": [],
+  "restaurantsVisited": [],
+  "businessesHighlighted": [],
+  "vendorsPartnered": [],
+  "shirtPrinters": [],
+  "communitySponsors": [],
+  "rollup": {
+    "airbnbStays": 0,
+    "restaurantsVisited": 0,
+    "businessesHighlighted": 0,
+    "vendorsPartnered": 0,
+    "shirtPrinters": 0,
+    "communitySponsors": 0
+  }
+}

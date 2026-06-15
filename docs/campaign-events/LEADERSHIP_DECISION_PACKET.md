@@ -126,7 +126,7 @@ CRITICAL COUNTIES (FINAL):
 
 Lock in [`VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md`](./VICTORY_OS_LEADERSHIP_ASSUMPTIONS.md):
 
-- Win target / vote gap (planning scenario — not forecast)
+- Win target **methodology** — [`WIN_TARGET_METHODOLOGY.md`](./WIN_TARGET_METHODOLOGY.md) + lock sheet 07
 - Turnout assumptions
 - Kelly deployment philosophy (when surrogate replaces candidate)
 - Growth county set

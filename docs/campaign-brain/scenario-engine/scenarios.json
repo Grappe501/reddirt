@@ -1,0 +1,226 @@
+{
+  "generatedAt": "2026-06-15T02:08:30.765Z",
+  "pluralityRange": {
+    "low": 390000,
+    "high": 420000
+  },
+  "scenarios": {
+    "conservative": {
+      "label": "Conservative",
+      "rates": {
+        "lane2": 0.35,
+        "lane3": 0.4,
+        "lane4": 0.25
+      },
+      "projectedVotes": 381718,
+      "lanes": {
+        "lane1_retention": 325814,
+        "lane2_reactivation": 17868,
+        "lane3_registration": 20000,
+        "lane4_conversion": 18036
+      },
+      "votes": 381718
+    },
+    "expected": {
+      "label": "Expected",
+      "rates": {
+        "lane2": 0.5,
+        "lane3": 0.6,
+        "lane4": 0.4
+      },
+      "projectedVotes": 410197,
+      "lanes": {
+        "lane1_retention": 325814,
+        "lane2_reactivation": 25526,
+        "lane3_registration": 30000,
+        "lane4_conversion": 28858
+      },
+      "votes": 410197
+    },
+    "aggressive": {
+      "label": "Aggressive",
+      "rates": {
+        "lane2": 0.75,
+        "lane3": 0.9,
+        "lane4": 0.55
+      },
+      "projectedVotes": 467908,
+      "lanes": {
+        "lane1_retention": 325814,
+        "lane2_reactivation": 38288,
+        "lane3_registration": 45000,
+        "lane4_conversion": 39679
+      },
+      "votes": 467908
+    }
+  },
+  "topCounties": [
+    {
+      "county": "Pulaski",
+      "vci": 97376,
+      "expectedContribution": 104920,
+      "lane2": 11241,
+      "lane3": 10584,
+      "lane4": 6365
+    },
+    {
+      "county": "Benton",
+      "vci": 44415,
+      "expectedContribution": 47856,
+      "lane2": 7620,
+      "lane3": 7183,
+      "lane4": 7196
+    },
+    {
+      "county": "Washington",
+      "vci": 43741,
+      "expectedContribution": 47130,
+      "lane2": 5788,
+      "lane3": 5462,
+      "lane4": 4520
+    },
+    {
+      "county": "Faulkner",
+      "vci": 16572,
+      "expectedContribution": 17856,
+      "lane2": 2487,
+      "lane3": 2361,
+      "lane4": 3256
+    },
+    {
+      "county": "Saline",
+      "vci": 16215,
+      "expectedContribution": 17471,
+      "lane2": 2804,
+      "lane3": 2659,
+      "lane4": 3820
+    },
+    {
+      "county": "Sebastian",
+      "vci": 16145,
+      "expectedContribution": 17396,
+      "lane2": 1952,
+      "lane3": 1859,
+      "lane4": 2901
+    },
+    {
+      "county": "Craighead",
+      "vci": 13397,
+      "expectedContribution": 14435,
+      "lane2": 1483,
+      "lane3": 1418,
+      "lane4": 2300
+    },
+    {
+      "county": "Jefferson",
+      "vci": 12205,
+      "expectedContribution": 13151,
+      "lane2": 1532,
+      "lane3": 1464,
+      "lane4": 870
+    },
+    {
+      "county": "Garland",
+      "vci": 10843,
+      "expectedContribution": 11683,
+      "lane2": 1546,
+      "lane3": 1477,
+      "lane4": 2719
+    },
+    {
+      "county": "Crittenden",
+      "vci": 8578,
+      "expectedContribution": 9243,
+      "lane2": 1090,
+      "lane3": 1049,
+      "lane4": 653
+    },
+    {
+      "county": "White",
+      "vci": 6898,
+      "expectedContribution": 7432,
+      "lane2": 833,
+      "lane3": 807,
+      "lane4": 2363
+    },
+    {
+      "county": "Lonoke",
+      "vci": 6783,
+      "expectedContribution": 7309,
+      "lane2": 975,
+      "lane3": 941,
+      "lane4": 2087
+    },
+    {
+      "county": "Pope",
+      "vci": 6122,
+      "expectedContribution": 6596,
+      "lane2": 766,
+      "lane3": 744,
+      "lane4": 1618
+    },
+    {
+      "county": "Miller",
+      "vci": 5406,
+      "expectedContribution": 5825,
+      "lane2": 593,
+      "lane3": 582,
+      "lane4": 1036
+    },
+    {
+      "county": "Union",
+      "vci": 5363,
+      "expectedContribution": 5779,
+      "lane2": 731,
+      "lane3": 712,
+      "lane4": 959
+    }
+  ],
+  "clusterContribution": [
+    {
+      "name": "Central Arkansas Metro Cluster",
+      "vci": 136946,
+      "shareOfExpected": 0.365
+    },
+    {
+      "name": "Northwest Arkansas Cluster",
+      "vci": 93844,
+      "shareOfExpected": 0.25
+    },
+    {
+      "name": "River Valley Cluster",
+      "vci": 31540,
+      "shareOfExpected": 0.084
+    },
+    {
+      "name": "Northeast Arkansas Cluster",
+      "vci": 23685,
+      "shareOfExpected": 0.063
+    },
+    {
+      "name": "North Central Ozarks Cluster",
+      "vci": 19951,
+      "shareOfExpected": 0.053
+    },
+    {
+      "name": "Hot Springs & Ouachita Cluster",
+      "vci": 19640,
+      "shareOfExpected": 0.052
+    },
+    {
+      "name": "Southeast Delta Cluster",
+      "vci": 18285,
+      "shareOfExpected": 0.049
+    },
+    {
+      "name": "Southwest Arkansas Cluster",
+      "vci": 17996,
+      "shareOfExpected": 0.048
+    },
+    {
+      "name": "Crittenden / Memphis-Adjacent Cluster",
+      "vci": 13285,
+      "shareOfExpected": 0.035
+    }
+  ]
+}

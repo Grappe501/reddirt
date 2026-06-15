@@ -1,0 +1,257 @@
+{
+  "generatedAt": "2026-06-15T02:08:30.328Z",
+  "total": 317,
+  "note": "Legacy alias — use campaign-impact-scores.json. Scored by strategy-first Campaign Impact Score.",
+  "top25": [
+    {
+      "eventId": "fair-f547de299001609800b30d85",
+      "title": "Benton County Fair",
+      "county": "Benton",
+      "type": "county_fair",
+      "overallScore": 100,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-a9c2bbe56f939da4c7898261",
+      "title": "Ashley County Fair",
+      "county": "Ashley",
+      "type": "county_fair",
+      "overallScore": 90,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-7da0f84811b62d6378c8eab1",
+      "title": "Clay County Fair",
+      "county": "Clay",
+      "type": "county_fair",
+      "overallScore": 90,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-ef8a3bf07796f5d116269e4e",
+      "title": "Lawrence County Fair",
+      "county": "Lawrence",
+      "type": "county_fair",
+      "overallScore": 90,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-7b9fd5feee3eb99deeb9317a",
+      "title": "Little River County Fair",
+      "county": "Little River",
+      "type": "county_fair",
+      "overallScore": 90,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-dd3cef345b5f6d95088be298",
+      "title": "Newton County Fair",
+      "county": "Newton",
+      "type": "county_fair",
+      "overallScore": 90,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-571afd59db5f2040264c4ac1",
+      "title": "Randolph County Fair",
+      "county": "Randolph",
+      "type": "county_fair",
+      "overallScore": 90,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-7d4b1643af8887c9137f0856",
+      "title": "Yell County Fair",
+      "county": "Yell",
+      "type": "county_fair",
+      "overallScore": 90,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-9e03993e30d8f62d3e8067dc",
+      "title": "Lafayette County Fair",
+      "county": "Lafayette",
+      "type": "county_fair",
+      "overallScore": 88,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-67cc3c414b72663f68984577",
+      "title": "Nevada County Fair",
+      "county": "Nevada",
+      "type": "county_fair",
+      "overallScore": 88,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-343e8ec6713e5d2662424ade",
+      "title": "Lonoke County Fair",
+      "county": "Lonoke",
+      "type": "county_fair",
+      "overallScore": 79,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-8e31ab602a94385aa9919463",
+      "title": "Union County Fair",
+      "county": "Union",
+      "type": "county_fair",
+      "overallScore": 76,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "aea-benton-stub",
+      "title": "Benton County — AEA local / area meeting (verify schedule)",
+      "county": "Benton",
+      "type": "aea_meeting",
+      "overallScore": 100,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "needs_confirmation"
+    },
+    {
+      "eventId": "arta-benton-stub",
+      "title": "Benton County retired educators unit (ARTA / local) — verify cadence",
+      "county": "Benton",
+      "type": "retired_teachers",
+      "overallScore": 100,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "needs_confirmation"
+    },
+    {
+      "eventId": "ehc-benton-stub",
+      "title": "Benton County Extension Homemakers / EHC — verify council calendar",
+      "county": "Benton",
+      "type": "extension_homemakers",
+      "overallScore": 99,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "needs_confirmation"
+    },
+    {
+      "eventId": "fair-418be1689fc0c6f0d6a144f5",
+      "title": "Fulton County Fair",
+      "county": "Fulton",
+      "type": "county_fair",
+      "overallScore": 70,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "aea-pulaski-stub",
+      "title": "Pulaski County — AEA local / area meeting (verify schedule)",
+      "county": "Pulaski",
+      "type": "aea_meeting",
+      "overallScore": 91,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "needs_confirmation"
+    },
+    {
+      "eventId": "fb-target-pulaski-central-catholic",
+      "title": "Pulaski County — historic rivalry night (verify date + stadium policy)",
+      "county": "Pulaski",
+      "type": "high_school_football",
+      "overallScore": 91,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "needs_confirmation"
+    },
+    {
+      "eventId": "arta-pulaski-stub",
+      "title": "Pulaski County retired educators unit (ARTA / local) — verify cadence",
+      "county": "Pulaski",
+      "type": "retired_teachers",
+      "overallScore": 89,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "needs_confirmation"
+    },
+    {
+      "eventId": "ehc-pulaski-stub",
+      "title": "Pulaski County Extension Homemakers / EHC — verify council calendar",
+      "county": "Pulaski",
+      "type": "extension_homemakers",
+      "overallScore": 88,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "needs_confirmation"
+    },
+    {
+      "eventId": "fair-85d27f33244a77c6ebeaf3c8",
+      "title": "Crawford County Fair",
+      "county": "Crawford",
+      "type": "county_fair",
+      "overallScore": 64,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-c6d957f78268e5a414b4d80f",
+      "title": "White County Fair",
+      "county": "White",
+      "type": "county_fair",
+      "overallScore": 62,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "fair-fc9b80fc6ddcf7dd5cddf15a",
+      "title": "Pike County Fair",
+      "county": "Pike",
+      "type": "county_fair",
+      "overallScore": 60,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "date_not_posted"
+    },
+    {
+      "eventId": "aea-ashley-stub",
+      "title": "Ashley County — AEA local / area meeting (verify schedule)",
+      "county": "Ashley",
+      "type": "aea_meeting",
+      "overallScore": 79,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "needs_confirmation"
+    },
+    {
+      "eventId": "aea-clay-stub",
+      "title": "Clay County — AEA local / area meeting (verify schedule)",
+      "county": "Clay",
+      "type": "aea_meeting",
+      "overallScore": 79,
+      "candidate": "Kelly",
+      "recommendedAttendance": "YES",
+      "verificationStatus": "needs_confirmation"
+    }
+  ]
+}

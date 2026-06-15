@@ -1,9 +1,8 @@
 /**
  * Public biography rollout depth.
  *
- * `3` — Meet Kelly hub (`/about` summaries + `KellyFullStory`) and campaign essays (`/about/[slug]`).
- * The literary manuscript (full `/biography` scroll, arc drilldown, `/about/deep-dive/*`) stays off until
- * copy is reviewed; set to `4` to re-enable those surfaces.
+ * `3` — Two-level Meet Kelly (overview summaries + journey / community / why-im-running).
+ * Full manuscript (`/biography`, `/about/deep-dive/*`, long chapter essays) stays off until depth `4`.
  */
 export const PUBLIC_BIOGRAPHY_DEPTH = 3 as const;
 

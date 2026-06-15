@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-06-15T02:08:45.977Z",
+  "totalOutcomes": 3,
+  "calibration": {
+    "meanAbsoluteError": 18,
+    "overPredictedCount": 1,
+    "underPredictedCount": 1
+  },
+  "comparisons": [
+    {
+      "eventId": "chamber-pulaski-example",
+      "title": "Little Rock Chamber Lunch",
+      "county": "Pulaski",
+      "eventDate": "2026-09-19",
+      "predictedScore": 74,
+      "actualScore": 41,
+      "delta": -33,
+      "accuracy": 67,
+      "attended": true,
+      "metrics": {
+        "newContacts": 8,
+        "volunteerSignups": 1,
+        "registrationFormsCompleted": 0,
+        "faithLeadersEngaged": 0,
+        "clerkRelationshipAdvanced": false,
+        "earnedMediaGenerated": false
+      }
+    },
+    {
+      "eventId": "rotary-pulaski-example",
+      "title": "Little Rock Rotary Club Meeting",
+      "county": "Pulaski",
+      "eventDate": "2026-09-05",
+      "predictedScore": 68,
+      "actualScore": 88,
+      "delta": 20,
+      "accuracy": 80,
+      "attended": true,
+      "metrics": {
+        "newContacts": 18,
+        "volunteerSignups": 4,
+        "registrationFormsCompleted": 2,
+        "faithLeadersEngaged": 0,
+        "clerkRelationshipAdvanced": false,
+        "earnedMediaGenerated": true
+      }
+    },
+    {
+      "eventId": "fair-pulaski-example",
+      "title": "Pulaski County Fair",
+      "county": "Pulaski",
+      "eventDate": "2026-09-12",
+      "predictedScore": 100,
+      "actualScore": 100,
+      "delta": 0,
+      "accuracy": 100,
+      "attended": true,
+      "metrics": {
+        "newContacts": 42,
+        "volunteerSignups": 8,
+        "registrationFormsCompleted": 23,
+        "faithLeadersEngaged": 2,
+        "clerkRelationshipAdvanced": true,
+        "earnedMediaGenerated": false
+      }
+    }
+  ],
+  "insights": [
+    "Under-predicted: Little Rock Rotary Club Meeting — consider boosting relationship/chamber event weights.",
+    "Over-predicted: Little Rock Chamber Lunch — verify attendance assumptions."
+  ]
+}

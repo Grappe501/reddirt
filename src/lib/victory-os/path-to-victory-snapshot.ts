@@ -3,6 +3,7 @@ import "server-only";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
+import { loadKellyWinTargetScenarioFile } from "@/lib/election-targets/load-win-target-scenario";
 import { loadVictoryMapStatewideSummary } from "./load-victory-map";
 
 export type PathToVictoryLockItem = {
@@ -11,6 +12,18 @@ export type PathToVictoryLockItem = {
   status: "draft" | "locked" | string;
   docPath: string;
   notes?: string;
+};
+
+export type PathToVictoryCountyTargetRow = {
+  county: string;
+  projectedTotalVotes: number;
+  baselineDemVotes: number;
+  baselineDemShare: number;
+  targetVotes: number;
+  targetVoteGain: number;
+  targetShare: number;
+  confidence: string;
+  dashboardLabel: string;
 };
 
 export type PathToVictorySnapshot = {
@@ -25,10 +38,18 @@ export type PathToVictorySnapshot = {
     classificationStatus: string;
     statewideVoteGap: number;
     workingTargetWithCushion: number;
+    projectedStatewideVotes: number;
+    legalTarget50Plus1: number;
     electoral: { critical: number; important: number; helpful: number; maintenance: number };
     opportunity: { high: number; medium: number; low: number };
     readiness: { strong: number; moderate: number; weak: number };
   };
+  winTargets: {
+    generatedAt: string;
+    modelNote: string;
+    countyCount: number;
+    counties: PathToVictoryCountyTargetRow[];
+  } | null;
 };
 
 const LOCK_LABELS: Record<string, string> = {
@@ -69,6 +90,7 @@ export function loadPathToVictorySnapshot(): PathToVictorySnapshot {
   }
 
   const mapSummary = loadVictoryMapStatewideSummary();
+  const winTarget = loadKellyWinTargetScenarioFile();
   const artifacts = lockJson?.artifacts ?? {};
 
   const locks: PathToVictoryLockItem[] = LOCK_ORDER.map((key) => {
@@ -84,6 +106,10 @@ export function loadPathToVictorySnapshot(): PathToVictorySnapshot {
 
   const locksComplete = locks.filter((l) => l.status === "locked").length;
 
+  const statewideVoteGap = winTarget?.statewide.statewideVoteGap ?? mapSummary.statewideVoteGap;
+  const workingTargetWithCushion =
+    winTarget?.statewide.workingTargetWithCushion ?? mapSummary.workingTargetWithCushion;
+
   return {
     phase: lockJson?.phase ?? "1_complete",
     overallStatus: lockJson?.overallStatus ?? "pending_leadership_review",
@@ -94,11 +120,31 @@ export function loadPathToVictorySnapshot(): PathToVictorySnapshot {
     map: {
       totalCounties: mapSummary.totalCounties,
       classificationStatus: mapSummary.mapClassificationStatus,
-      statewideVoteGap: mapSummary.statewideVoteGap,
-      workingTargetWithCushion: mapSummary.workingTargetWithCushion,
+      statewideVoteGap,
+      workingTargetWithCushion,
+      projectedStatewideVotes: winTarget?.statewide.projectedStatewideVotes ?? 0,
+      legalTarget50Plus1: winTarget?.statewide.legalTarget50Plus1 ?? 0,
       electoral: mapSummary.dimensionCounts.electoral,
       opportunity: mapSummary.dimensionCounts.opportunity,
       readiness: mapSummary.dimensionCounts.readiness,
     },
+    winTargets: winTarget
+      ? {
+          generatedAt: winTarget.generatedAt,
+          modelNote: winTarget.modelNote,
+          countyCount: winTarget.counties.length,
+          counties: winTarget.counties.map((c) => ({
+            county: c.county,
+            projectedTotalVotes: c.projectedTotalVotes,
+            baselineDemVotes: c.baselineDemVotes,
+            baselineDemShare: c.baselineDemShare,
+            targetVotes: c.targetVotes,
+            targetVoteGain: c.targetVoteGain,
+            targetShare: c.targetShare,
+            confidence: c.confidence,
+            dashboardLabel: c.dashboardLabel,
+          })),
+        }
+      : null,
   };
 }

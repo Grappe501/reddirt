@@ -1,0 +1,151 @@
+{
+  "generatedAt": "2026-06-14T14:17:10.019Z",
+  "top10VCI": [
+    {
+      "county": "Pulaski",
+      "slug": "pulaski-county",
+      "vci": 97376,
+      "rank": 1,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 69186,
+      "mission": {
+        "role": "Statewide Vote Maximization County",
+        "primaryMission": "Lane 2 Recovery",
+        "secondaryMission": "Volunteer Production",
+        "tertiaryMission": "Fundraising"
+      }
+    },
+    {
+      "county": "Benton",
+      "slug": "benton-county",
+      "vci": 44415,
+      "rank": 2,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 22416,
+      "mission": {
+        "role": "Republican Conversion County",
+        "primaryMission": "Moderate Republican Outreach",
+        "secondaryMission": "New Voter Registration",
+        "tertiaryMission": "Business Community Engagement"
+      }
+    },
+    {
+      "county": "Washington",
+      "slug": "washington-county",
+      "vci": 43741,
+      "rank": 3,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 27971,
+      "mission": {
+        "role": "Statewide Vote Maximization County",
+        "primaryMission": "Lane 2 Recovery",
+        "secondaryMission": "Volunteer Production",
+        "tertiaryMission": "Fundraising"
+      }
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner-county",
+      "vci": 16572,
+      "rank": 4,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 8468,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Saline",
+      "slug": "saline-county",
+      "vci": 16215,
+      "rank": 5,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 6932,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian-county",
+      "vci": 16145,
+      "rank": 6,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 9433,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead-county",
+      "vci": 13397,
+      "rank": 7,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 8196,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson-county",
+      "vci": 12205,
+      "rank": 8,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 8339,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Garland",
+      "slug": "garland-county",
+      "vci": 10843,
+      "rank": 9,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 5101,
+      "mission": {
+        "role": "Youth Registration County",
+        "primaryMission": "New Voter Registration",
+        "secondaryMission": "Lane 2 Recovery",
+        "tertiaryMission": "Campus & School Outreach"
+      }
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden-county",
+      "vci": 8578,
+      "rank": 10,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 5786,
+      "mission": {
+        "role": "Relationship-Building County",
+        "primaryMission": "Power of 5 Organizing",
+        "secondaryMission": "Registration Where Possible",
+        "tertiaryMission": "Lane 4 Persuasion"
+      }
+    }
+  ],
+  "tierCounts": {
+    "A": 12,
+    "B": 18,
+    "C": 30,
+    "D": 15
+  }
+}

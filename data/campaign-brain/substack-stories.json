@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "note": "County community stories — not press releases. Re-run campaign-brain:build.",
+  "stories": [],
+  "_templateSections": [
+    "The People We Met",
+    "The Places We Visited",
+    "What We Learned",
+    "How To Get Involved"
+  ],
+  "_example": {
+    "id": "story-example",
+    "county": "Pulaski",
+    "title": "Little Rock Rotary — The People We Met",
+    "publishedAt": "",
+    "substackUrl": "",
+    "shares": 0,
+    "localEngagement": 0,
+    "mediaPickup": false,
+    "mobilizeLink": ""
+  }
+}

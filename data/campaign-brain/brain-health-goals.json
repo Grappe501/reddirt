@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "note": "Campaign Brain Health — five accountability metrics. Refreshes on npm run campaign-brain:build.",
+  "metrics": {
+    "verifiedEvents": { "goal": 300, "direction": "up", "label": "Verified Events" },
+    "countiesCovered": { "goal": 75, "direction": "up", "label": "Counties Covered" },
+    "guardrailViolations": { "goal": 0, "direction": "down", "label": "Guardrail Violations" },
+    "outcomeReportPct": { "goal": 100, "direction": "up", "label": "Outcome Reports Submitted", "unit": "percent" },
+    "daysSinceLastBrainUpdate": { "goal": 7, "direction": "down", "label": "Days Since Last Brain Update", "unit": "days_max" }
+  }
+}

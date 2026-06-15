@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-15T02:55:34.540Z",
+  "note": "Aggregated from coalition + leader records. Update source files; re-run build.",
+  "evaluationValues": [
+    "credibility",
+    "volunteerActivation",
+    "donorActivation",
+    "networkAccess",
+    "voterPersuasion"
+  ],
+  "targets": []
+}

@@ -169,22 +169,32 @@ async function main() {
   }));
   writeFileSync(path.join(OUT_DIR, "kelly-county-targets-v1.csv"), toCsv(csvRows), "utf8");
 
-  // Persist merged synthetic history when file missing rows (keeps repo deterministic after first run).
-  const fullHistRows = registry.map((r) => electionByCounty.get(r.county)!).filter(Boolean);
-  writeFileSync(
-    histPath,
-    JSON.stringify(
-      {
-        version: 1,
-        sourceNote:
-          "Blend of official-style fields per county. Rows are augmented by the build script when absent so the scenario model can run; replace with SOS / vendor ingests for production.",
-        rows: fullHistRows,
-      },
-      null,
-      2,
-    ),
-    "utf8",
+  // Persist merged history only when rows were synthesized (do not overwrite official SOS ingest).
+  const histHadOfficialSource = Boolean(
+    histFile && typeof histFile === "object" && "sourceFiles" in (histFile as object),
   );
+  const synthUsed = registry.some((r) => {
+    const row = electionByCounty.get(r.county);
+    return row && !histFile?.rows?.find((h) => h.county === r.county);
+  });
+
+  if (synthUsed && !histHadOfficialSource) {
+    const fullHistRows = registry.map((r) => electionByCounty.get(r.county)!).filter(Boolean);
+    writeFileSync(
+      histPath,
+      JSON.stringify(
+        {
+          version: 1,
+          sourceNote:
+            "Blend of official-style fields per county. Rows are augmented by the build script when absent so the scenario model can run; replace with SOS / vendor ingests for production.",
+          rows: fullHistRows,
+        },
+        null,
+        2,
+      ),
+      "utf8",
+    );
+  }
 
   if (!goalsFile?.rows?.length) {
     writeFileSync(
@@ -204,7 +214,7 @@ async function main() {
 
   // eslint-disable-next-line no-console
   console.log(
-    `Wrote kelly-win-target-scenario-v1.json (${scenario.counties.length} counties), kelly-county-targets-v1.csv, refreshed election history (${fullHistRows.length} rows).`,
+    `Wrote kelly-win-target-scenario-v1.json (${scenario.counties.length} counties), kelly-county-targets-v1.csv${synthUsed && !histHadOfficialSource ? `, refreshed election history (${registry.length} rows)` : ""}.`,
   );
 }
 

@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "lastUpdated": "2026-06-10",
+  "note": "Update after field events. Lane captures roll up to capturedVci. Re-run campaign-brain:build.",
+  "statewide": {
+    "byLane": {
+      "lane2": { "captured": 8200 },
+      "lane3": { "captured": 3400 },
+      "lane4": { "captured": 1800 }
+    }
+  },
+  "byCounty": {
+    "Pulaski": {
+      "capturedVci": 14200,
+      "byLane": { "lane2": 5200, "lane3": 2100, "lane4": 900 },
+      "notes": "Metro hub — fairs, Rotary, registration drives"
+    },
+    "Saline": {
+      "capturedVci": 4200,
+      "byLane": { "lane2": 1800, "lane3": 800, "lane4": 400 }
+    },
+    "Lonoke": {
+      "capturedVci": 2100,
+      "byLane": { "lane2": 800, "lane3": 700, "lane4": 300 }
+    },
+    "Faulkner": {
+      "capturedVci": 1900,
+      "byLane": { "lane2": 400, "lane3": 800, "lane4": 200 }
+    }
+  },
+  "byCluster": {
+    "central-metro": {
+      "capturedVci": 22400,
+      "notes": "Demo seed — 16.4% of 136,946 VCI potential"
+    }
+  }
+}

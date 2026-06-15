@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "note": "Postcard programs — printed, written, mailed, response rate. Re-run campaign-brain:build.",
+  "programs": {
+    "visitAnnouncement": { "label": "Visit Announcement", "printed": 0, "written": 0, "mailed": 0, "responseRate": 0, "goal": 5000 },
+    "seniorGotv": { "label": "Senior GOTV", "printed": 0, "written": 0, "mailed": 0, "responseRate": 0, "goal": 25000 },
+    "youthGotv": { "label": "Youth GOTV", "printed": 0, "written": 0, "mailed": 0, "responseRate": 0, "goal": 10000 },
+    "volunteerRecruitment": { "label": "Volunteer Recruitment", "printed": 0, "written": 0, "mailed": 0, "responseRate": 0, "goal": 5000 },
+    "faithOutreach": { "label": "Faith Outreach", "printed": 0, "written": 0, "mailed": 0, "responseRate": 0, "goal": 3000 }
+  },
+  "teams": []
+}

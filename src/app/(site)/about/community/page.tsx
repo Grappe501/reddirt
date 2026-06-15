@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -28,8 +27,8 @@ export default function AboutCommunityPage() {
         <Button href="/about" variant="outline">
           Meet Kelly overview
         </Button>
-        <Button href="/about/stand-up-arkansas" variant="outline">
-          Stand Up Arkansas chapter
+        <Button href="/about/journey" variant="outline">
+          Her journey
         </Button>
       </PageHero>
 
@@ -44,12 +43,10 @@ export default function AboutCommunityPage() {
               >
                 <div className="flex flex-wrap items-center gap-3">
                   <h2 className="font-heading text-xl font-bold text-kelly-text">{section.title}</h2>
-                  {section.status === "VERIFIED" ? null : (
-                    <ContentPendingBadge variant="pending" />
-                  )}
+                  {section.status === "VERIFIED" ? null : <ContentPendingBadge variant="pending" />}
                 </div>
                 <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/85">{section.body}</p>
-                <div className="mt-4 flex flex-wrap gap-4">
+                <div className="mt-4">
                   <a
                     href={section.href}
                     target={section.href.startsWith("http") ? "_blank" : undefined}
@@ -58,14 +55,6 @@ export default function AboutCommunityPage() {
                   >
                     {section.hrefLabel} →
                   </a>
-                  {"chapterHref" in section && section.chapterHref ? (
-                    <Link
-                      href={section.chapterHref}
-                      className="font-body text-sm font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 hover:decoration-kelly-navy"
-                    >
-                      Campaign chapter →
-                    </Link>
-                  ) : null}
                 </div>
               </article>
             ))}

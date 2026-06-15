@@ -1,0 +1,362 @@
+/* Election Plan — executive strategy portal */
+
+.ep-portal {
+  --ep-navy: #0c1f3d;
+  --ep-navy-soft: #132a4f;
+  --ep-navy-muted: #1a3559;
+  --ep-white: #fafbfc;
+  --ep-cream: #f4f6f9;
+  --ep-accent: #b83232;
+  --ep-accent-soft: rgba(184, 50, 50, 0.12);
+  --ep-gold: #c9913d;
+  --ep-gold-soft: rgba(201, 145, 61, 0.15);
+  --ep-border: rgba(12, 31, 61, 0.1);
+  --ep-shadow: 0 4px 24px rgba(12, 31, 61, 0.08);
+  --ep-shadow-lg: 0 12px 48px rgba(12, 31, 61, 0.12);
+  background: linear-gradient(165deg, var(--ep-cream) 0%, #eef1f6 40%, var(--ep-white) 100%);
+  color: var(--ep-navy);
+}
+
+.ep-classification {
+  background: var(--ep-navy);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(201, 145, 61, 0.35);
+}
+
+.ep-hero {
+  background: linear-gradient(135deg, var(--ep-navy) 0%, var(--ep-navy-soft) 55%, var(--ep-navy-muted) 100%);
+  color: var(--ep-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.ep-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 90% 10%, rgba(201, 145, 61, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.ep-metric-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.ep-metric-card:hover {
+  border-color: rgba(201, 145, 61, 0.4);
+  transform: translateY(-1px);
+}
+
+.ep-metric-value {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.ep-metric-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 0.25rem;
+}
+
+.ep-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  min-height: calc(100vh - 2rem);
+}
+
+@media (max-width: 1023px) {
+  .ep-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ep-sidebar {
+  background: var(--ep-white);
+  border-right: 1px solid var(--ep-border);
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 1023px) {
+  .ep-sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--ep-border);
+    padding: 0.75rem 0;
+  }
+}
+
+.ep-nav-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ep-navy-muted);
+  border-left: 3px solid transparent;
+  transition: all 0.15s;
+}
+
+.ep-nav-item:hover {
+  background: var(--ep-cream);
+  color: var(--ep-navy);
+}
+
+.ep-nav-item[data-active="true"] {
+  background: var(--ep-gold-soft);
+  color: var(--ep-navy);
+  border-left-color: var(--ep-gold);
+  font-weight: 600;
+}
+
+.ep-content {
+  padding: 2rem 2.5rem 4rem;
+  max-width: 1200px;
+}
+
+@media (max-width: 767px) {
+  .ep-content {
+    padding: 1.25rem 1rem 3rem;
+  }
+}
+
+.ep-card {
+  background: var(--ep-white);
+  border: 1px solid var(--ep-border);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--ep-shadow);
+}
+
+.ep-card-glass {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(244, 246, 249, 0.9) 100%);
+  border: 1px solid var(--ep-border);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--ep-shadow);
+}
+
+.ep-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.ep-stat {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--ep-cream);
+  border: 1px solid var(--ep-border);
+}
+
+.ep-stat-value {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--ep-navy);
+}
+
+.ep-stat-label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ep-navy-muted);
+  margin-top: 0.25rem;
+}
+
+.ep-warning {
+  background: linear-gradient(135deg, rgba(184, 50, 50, 0.08) 0%, rgba(184, 50, 50, 0.04) 100%);
+  border: 1px solid rgba(184, 50, 50, 0.25);
+  border-left: 4px solid var(--ep-accent);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.ep-lane-card {
+  border-left: 4px solid var(--ep-gold);
+  padding-left: 1rem;
+}
+
+.ep-county-card {
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.ep-county-card:hover {
+  box-shadow: var(--ep-shadow-lg);
+  border-color: rgba(201, 145, 61, 0.35);
+}
+
+.ep-tier-a { color: #b83232; font-weight: 700; }
+.ep-tier-b { color: #c9913d; font-weight: 600; }
+.ep-tier-c { color: var(--ep-navy-muted); }
+.ep-tier-d { color: #6b7c93; }
+
+.ep-guardrail-violation { color: var(--ep-accent); }
+.ep-guardrail-warning { color: var(--ep-gold); }
+.ep-guardrail-ok { color: #2d6a4f; }
+
+.ep-progress {
+  height: 6px;
+  background: var(--ep-cream);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ep-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ep-gold) 0%, var(--ep-navy) 100%);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.ep-arch-link {
+  display: block;
+  padding: 0.875rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--ep-border);
+  transition: all 0.15s;
+}
+
+.ep-arch-link:hover {
+  border-color: var(--ep-gold);
+  background: var(--ep-gold-soft);
+}
+
+.ep-nav-group-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ep-navy-muted);
+}
+
+.ep-county-chip-visited {
+  background: rgba(45, 106, 79, 0.12);
+  border-color: rgba(45, 106, 79, 0.35);
+  color: #2d6a4f;
+}
+
+.ep-war-stat {
+  text-align: center;
+  border-top: 3px solid var(--ep-gold);
+}
+
+.ep-war-stat-value {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ep-navy);
+}
+
+.ep-war-stat-label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ep-navy-muted);
+  margin-top: 0.35rem;
+}
+
+.ep-priority-card {
+  border-left: 4px solid var(--ep-gold);
+  background: linear-gradient(135deg, var(--ep-white) 0%, var(--ep-gold-soft) 100%);
+}
+
+.ep-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ep-timeline-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--ep-border);
+}
+
+@media (max-width: 640px) {
+  .ep-timeline-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ep-timeline-week-num {
+  display: block;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ep-navy);
+}
+
+.ep-timeline-week-range {
+  display: block;
+  font-size: 0.6875rem;
+  color: var(--ep-navy-muted);
+}
+
+.ep-timeline-chip {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  background: var(--ep-cream);
+  border: 1px solid var(--ep-border);
+  color: var(--ep-navy-muted);
+}
+
+.ep-timeline-chip-major {
+  background: var(--ep-gold-soft);
+  border-color: rgba(201, 145, 61, 0.45);
+  color: var(--ep-navy);
+  font-weight: 600;
+}
+
+.ep-timeline-cat-sherwood {
+  border-color: var(--ep-accent);
+  background: var(--ep-accent-soft);
+}
+
+.ep-timeline-cat-election {
+  background: var(--ep-navy);
+  color: white;
+  border-color: var(--ep-navy);
+}
+
+.ep-county-chip {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  background: var(--ep-cream);
+  border: 1px solid var(--ep-border);
+}
+
+@media print {
+  .ep-sidebar { display: none; }
+  .ep-shell { grid-template-columns: 1fr; }
+  .ep-hero { break-after: avoid; }
+}

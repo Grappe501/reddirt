@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "note": "Phase 11 People Power Network — volunteer leadership, Mobilize, Substack. Re-run campaign-brain:build.",
+  "volunteerLeadership": {
+    "foundingTeamGoal": 20,
+    "foundingTeamCurrent": 0,
+    "launchCall": {
+      "date": "2026-06-28",
+      "time": "18:00",
+      "timezone": "America/Chicago",
+      "format": "Zoom",
+      "purpose": "Launch Volunteer Leadership Network"
+    },
+    "julyRetreat": {
+      "location": "Forevermost Farms",
+      "purpose": "Build ownership · relationships · leadership training · Power of 5 launch · county mission assignments"
+    },
+    "monthlyCalls": {
+      "schedule": "Last Sunday of each month · 6 PM",
+      "format": "Statewide Zoom",
+      "track": ["attendance", "countiesRepresented", "volunteerGrowth", "actionAssignments"]
+    },
+    "leaders": []
+  },
+  "mobilize": {
+    "platformUrl": "",
+    "eventsLinked": 0,
+    "rsvpTotal": 0,
+    "volunteerSignups": 0,
+    "attendanceTotal": 0
+  },
+  "substack": {
+    "url": "",
+    "storiesPublished": 0,
+    "shares": 0,
+    "localEngagement": 0,
+    "mediaPickup": 0
+  },
+  "storyWorkflow": {
+    "steps": [
+      "Campaign Brain event verified",
+      "Mobilize event created",
+      "Volunteer recruitment",
+      "Event executed",
+      "Substack story published",
+      "Email distribution",
+      "Social media",
+      "Local sharing",
+      "Relationship growth logged"
+    ]
+  }
+}

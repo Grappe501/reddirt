@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "note": "Log actual travel costs per event as field data lands. Keys are eventId. Defaults used until populated.",
+  "estimates": {}
+}

@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "note": "Execution tracking — Relationship Capital. Track signs, shirts, buttons, flags, house parties, civic clubs, church visits, local businesses, postcards, phone calls, doors knocked. Update after field activity. Re-run campaign-brain:build.",
+  "doctrine": "Relationships create trust. Trust creates turnout. Turnout creates victory.",
+  "statewide": {
+    "signs": { "deployed": 0, "goal": 5000 },
+    "shirts": { "deployed": 0, "goal": 3000 },
+    "buttons": { "deployed": 0, "goal": 10000 },
+    "flags": { "deployed": 0, "goal": 500 }
+  },
+  "programs": {
+    "houseParties": { "completed": 0, "scheduled": 0, "goal": 150 },
+    "civicClubMeetings": { "completed": 0, "scheduled": 0, "goal": 200 },
+    "faithEvents": { "completed": 0, "scheduled": 0, "goal": 150 },
+    "postcardTeams": { "active": 0, "planned": 0, "goal": 40 }
+  },
+  "relationshipCapital": {
+    "localBusinessesHighlighted": 0,
+    "postcardsWritten": 0,
+    "phoneCallsCompleted": 0,
+    "canvassDoorsKnocked": 0,
+    "churchesVisited": 0,
+    "civicClubsVisited": 0
+  },
+  "phoneBanks": {
+    "relationshipCalls": { "completed": 0, "goal": 5000 },
+    "visitInvitationCalls": { "completed": 0, "goal": 3000 },
+    "gotvCalls": { "completed": 0, "goal": 15000 },
+    "followUpCalls": { "completed": 0, "goal": 4000 }
+  },
+  "postcardPrograms": {
+    "visitAnnouncement": { "sent": 0, "goal": 5000 },
+    "seniorGotv": { "sent": 0, "goal": 25000 },
+    "youthGotv": { "sent": 0, "goal": 10000 }
+  },
+  "localShirtEditions": [
+    { "edition": "Conway Edition", "city": "Conway", "county": "Faulkner", "vendor": "", "deployed": 0, "goal": 200 },
+    { "edition": "Jonesboro Edition", "city": "Jonesboro", "county": "Craighead", "vendor": "", "deployed": 0, "goal": 200 },
+    { "edition": "Pine Bluff Edition", "city": "Pine Bluff", "county": "Jefferson", "vendor": "", "deployed": 0, "goal": 150 },
+    { "edition": "Helena Edition", "city": "Helena-West Helena", "county": "Phillips", "vendor": "", "deployed": 0, "goal": 100 },
+    { "edition": "El Dorado Edition", "city": "El Dorado", "county": "Union", "vendor": "", "deployed": 0, "goal": 150 },
+    { "edition": "Mountain Home Edition", "city": "Mountain Home", "county": "Baxter", "vendor": "", "deployed": 0, "goal": 150 }
+  ],
+  "byCounty": {}
+}

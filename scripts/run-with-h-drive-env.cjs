@@ -32,6 +32,10 @@ const env = {
   TMP: isCiBuild ? process.env.TMP : tempDir,
 };
 
+if (!env.NODE_OPTIONS?.includes("max-old-space-size")) {
+  env.NODE_OPTIONS = [env.NODE_OPTIONS, "--max-old-space-size=6144"].filter(Boolean).join(" ");
+}
+
 if (!isCiBuild && process.platform === "win32") {
   env.npm_config_cache = npmCache;
 }

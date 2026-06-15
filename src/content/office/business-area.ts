@@ -3,7 +3,7 @@
  */
 
 import type { OfficeAreaConfig } from "@/content/office/office-types";
-import { OFFICE_LAYER_EYEBROWS } from "@/content/office/office-layer-labels";
+import { OFFICE_LAYER_EYEBROWS, OFFICE_LAYER_KELLY_EYEBROW } from "@/content/office/office-layer-labels";
 import {
   kellyBringsCivicSection,
   kellyBringsSmallBusinessSection,
@@ -84,7 +84,7 @@ export const businessAreaConfig: OfficeAreaConfig = {
     ],
   },
   layerThree: {
-    eyebrow: OFFICE_LAYER_EYEBROWS[3],
+    eyebrow: OFFICE_LAYER_KELLY_EYEBROW,
     title: "What Kelly Brings: Business & Filings",
     intro:
       "Business services are public-facing systems that affect whether people can start, maintain, and understand their legal responsibilities in Arkansas.",
@@ -106,7 +106,7 @@ export const businessAreaConfig: OfficeAreaConfig = {
   layerTwoNextLabel: "What Kelly brings",
   relatedLinks: [
     { label: "Understand the Office", href: "/understand" },
-    { label: "Experience & Leadership", href: "/about/business" },
+    { label: "Experience & Leadership", href: "/about/journey" },
     { label: "Meet Kelly", href: "/about" },
   ],
 };

@@ -1,6 +1,5 @@
 /**
- * Journey page — expanded life story (non-chronological hub with arc links).
- * Manuscript-derived claims marked draft until campaign review.
+ * Journey & community drill-down copy (level 2 — no third-level chapter routes).
  */
 
 export const meetKellyJourneyCopy = {
@@ -8,40 +7,26 @@ export const meetKellyJourneyCopy = {
     eyebrow: "Meet Kelly",
     title: "Her journey",
     subtitle:
-      "From Tennessee roots to Arkansas home—from hearth speeches and band rows to corporate training rooms and Rose Bud soil. Not every detail is public-ready; manuscript chapters remain draft until Kelly approves.",
+      "From Tennessee roots to Arkansas home—from hearth speeches and band rows to corporate training rooms and Rose Bud soil. Campaign-facing summary; long-form manuscript stays offline until Kelly approves.",
   },
   arcs: [
     {
       title: "Roots & voice",
       body:
-        "Selmer, Tennessee; extended family; 4-H public speaking; father's work with Modern Woodmen; first Arkansas road trip before the move. Sylvan Hills High School—band, yearbook editor, prom committee.",
-      href: "/about/story",
-      hrefLabel: "Trust & story chapter",
+        "Selmer, Tennessee; extended family; 4-H public speaking; father's work with Modern Woodmen; first Arkansas road trip before the move. Sylvan Hills High School—band, yearbook editor, prom committee. Voters deserve to know the person behind the office—not a performance biography.",
       status: "NEEDS KELLY APPROVAL" as const,
     },
     {
       title: "Career & systems",
       body:
-        "Alltel and Verizon operations—training rooms, team leadership, process discipline. The career that maps to running a constitutional office serving businesses statewide.",
-      href: "/about/business",
-      hrefLabel: "Business & process chapter",
+        "Nearly 25 years with Alltel and Verizon in operations leadership—training rooms, team leadership, process discipline. The career that maps to running a constitutional office serving businesses statewide. Kelly also knows the other side of the counter: a small market and farm operations where permits, cash flow, and paperwork friction are daily reality.",
       status: "NEEDS SOURCE" as const,
     },
     {
       title: "Family & land",
       body:
-        "Kelly and Steve, Grace, Rose Bud and Forevermost Farms—the small market, hard seasons, and stewardship when the math changes.",
-      href: "/about/forevermost",
-      hrefLabel: "Forevermost Farms chapter",
+        "Kelly and Steve, Grace, Rose Bud and Forevermost Farms—the small market, hard seasons, and stewardship when the math changes. Integrity when costs shift and the work still has to be done.",
       status: "NEEDS KELLY APPROVAL" as const,
-    },
-    {
-      title: "Long-form manuscript",
-      body:
-        "Eight literary chapters plus epilogue—draft narrative for campaign review. Not linked publicly until depth gate opens.",
-      href: null,
-      hrefLabel: null,
-      status: "DRAFT" as const,
     },
   ],
   learnings: [
@@ -66,15 +51,14 @@ export const meetKellyCommunityCopy = {
         "Nonprofit civic organization focused on voter education and community engagement—recruiting, training, and activating leaders across the state.",
       href: "https://www.standuparkansas.com/",
       hrefLabel: "standuparkansas.com",
-      chapterHref: "/about/stand-up-arkansas",
       status: "VERIFIED" as const,
     },
     {
       title: "Ballot petitions & LEARNS",
       body:
-        "After the LEARNS Act, Kelly and neighbors organized referendum and initiative support—including a temporary Sherwood office for petition packets and notaries. Timeline and scope need campaign verification.",
-      href: "/about/initiatives-petitions",
-      hrefLabel: "Initiatives & petitions chapter",
+        "After the LEARNS Act, Kelly and neighbors organized referendum and initiative support—including a temporary Sherwood office for petition packets and notaries. Timeline and scope need campaign verification. Democracy starts local; citizen-led work stays volunteer-centered.",
+      href: "/about/why-im-running",
+      hrefLabel: "Why I'm running",
       status: "NEEDS KELLY APPROVAL" as const,
     },
     {
@@ -83,7 +67,6 @@ export const meetKellyCommunityCopy = {
         "Family farm and market in Rose Bud—ground truth for small-business filers and rural community texture.",
       href: "https://forevermostfarms.com/",
       hrefLabel: "forevermostfarms.com",
-      chapterHref: "/about/forevermost",
       status: "VERIFIED" as const,
     },
   ],

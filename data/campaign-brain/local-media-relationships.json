@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "note": "Local media and community visibility relationships. Re-run campaign-brain:build.",
+  "outlets": [],
+  "highlights": {
+    "localBusinesses": 0,
+    "restaurants": 0,
+    "airbnbHosts": 0,
+    "lettersToEditor": 0,
+    "guestColumns": 0,
+    "substackFeatures": 0
+  },
+  "byType": {
+    "newspapers": [],
+    "radio": [],
+    "podcasts": [],
+    "newsletters": [],
+    "substack": []
+  }
+}

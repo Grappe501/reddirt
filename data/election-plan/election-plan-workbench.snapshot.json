@@ -1,0 +1,5521 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-15T04:07:04.102Z",
+  "classification": "Internal campaign strategy presentation — not for public distribution.",
+  "hero": {
+    "title": "Arkansas Plurality Victory Plan",
+    "subtitle": "Kelly Grappe for Secretary of State",
+    "tagline": "The 20-week campaign operating plan to win a three-candidate race by building the largest coalition in Arkansas.",
+    "metrics": [
+      {
+        "label": "Expected projection",
+        "value": "410,197"
+      },
+      {
+        "label": "Plurality win range",
+        "value": "390,000–420,000"
+      },
+      {
+        "label": "Democratic drop-off pool",
+        "value": "102,070"
+      },
+      {
+        "label": "Lane 2 @ 50% recovery",
+        "value": "51,051"
+      },
+      {
+        "label": "Registration goal",
+        "value": "50,000"
+      },
+      {
+        "label": "Top 40 city target",
+        "value": "207,507"
+      },
+      {
+        "label": "Verified events",
+        "value": "122 / 300+",
+        "detail": "Calendar Truth sprint"
+      }
+    ]
+  },
+  "executive": {
+    "summary": "Kelly Grappe runs a plurality strategy: recover missing Democrats, register new voters, build trust in rural Arkansas, and win a three-candidate Secretary of State race without requiring a statewide majority.",
+    "constraints": [
+      "Campaign Brain architecture is frozen — no new strategy models.",
+      "Verified reality is the limiting factor: 3 verified events vs 300+ goal.",
+      "Phase 9 (Weeks 1–20 lock) remains blocked until Calendar Truth exit criteria are met.",
+      "Field teams must feed verification, owners, and outcome reports every week."
+    ],
+    "cards": [
+      {
+        "label": "Plurality win range",
+        "value": "390,000–420,000"
+      },
+      {
+        "label": "Expected projection",
+        "value": "410,197"
+      },
+      {
+        "label": "Democratic drop-off pool",
+        "value": "102,070"
+      },
+      {
+        "label": "Lane 2 @ 50% recovery",
+        "value": "51,051"
+      },
+      {
+        "label": "Registration goal",
+        "value": "50,000"
+      },
+      {
+        "label": "Top 40 city target",
+        "value": "207,507"
+      },
+      {
+        "label": "Top 10 city target",
+        "value": "131,694"
+      }
+    ],
+    "brainStatus": "Operational — decision intelligence, routing, and weekly brief active.",
+    "calendarTruthRequirement": "Do not lock the 20-week calendar until 300+ verified events, 75/75 county owners, and 90%+ outcome reporting."
+  },
+  "theoryOfVictory": {
+    "lanes": [
+      {
+        "id": "lane1",
+        "name": "Democratic Retention",
+        "goal": 325814,
+        "note": "Hold baseline — prevent drop-off from 325,814 floor"
+      },
+      {
+        "id": "lane2",
+        "name": "Democratic Reactivation",
+        "goal": 51051,
+        "potential": 102070,
+        "stretch": 76563,
+        "note": "102,070 available · 51,051 @ 50% working goal"
+      },
+      {
+        "id": "lane3",
+        "name": "New Voter Registration",
+        "goal": 50000,
+        "note": "50,000 statewide · 2,500/week over 20 weeks"
+      },
+      {
+        "id": "lane4",
+        "name": "Republican / Independent Conversion",
+        "goal": 72144,
+        "note": "Statewide 12% peel model on 2022 SOS Republican vote"
+      }
+    ],
+    "doctrine": {
+      "title": "Big Table Democrat Doctrine",
+      "pillars": [
+        "Working-class politics rooted in community rebuilding and fiscal responsibility",
+        "Public education as foundation of self-sufficiency and workforce development",
+        "Dignity for all people — freedom of conscience without taking rights from others",
+        "Nonpartisan local offices: clerks, sheriffs, judges, school boards serve people first",
+        "Only American citizens vote; corporate accountability for immigration exploitation"
+      ],
+      "tableBeliefs": [
+        "Room for conservative Democrats and pro-life Democrats",
+        "Room for rural, Christian, union, and small-business Democrats",
+        "Room for independents who want honest government",
+        "Relationships create trust · trust creates turnout · turnout creates victory"
+      ]
+    }
+  },
+  "electoralMath": {
+    "baselineD": 325814,
+    "traditionalMajorityTarget": 498963,
+    "pluralityRange": {
+      "low": 390000,
+      "high": 420000
+    },
+    "scenarios": [
+      {
+        "label": "Conservative",
+        "projectedVotes": 381718,
+        "inPluralityRange": false
+      },
+      {
+        "label": "Expected",
+        "projectedVotes": 410197,
+        "inPluralityRange": true
+      },
+      {
+        "label": "Aggressive",
+        "projectedVotes": 467908,
+        "inPluralityRange": false
+      }
+    ],
+    "dropOff": {
+      "presidential2024Dem": 397420,
+      "midterm2022Dem": 295350,
+      "rawDropOff": 102070,
+      "recovery50": 51051,
+      "recovery75": 76563
+    },
+    "explanation": "The campaign does not need to convince Arkansas to become something it is not. The campaign needs to recover missing Democrats, register new voters, build trust in rural communities, and win a plurality in a three-candidate race."
+  },
+  "counties": [
+    {
+      "county": "Pulaski",
+      "slug": "pulaski",
+      "tier": "A",
+      "vciRank": 1,
+      "vci": 97376,
+      "strategicRole": "Statewide Vote Maximization County",
+      "primaryMission": "Lane 2 Recovery",
+      "secondaryMission": "Volunteer Production",
+      "registrationGoal": 10584,
+      "lane2Recovery50": 11241,
+      "gopConversionPotential": 6365,
+      "coverageCompleted": 2,
+      "coveragePlanned": 5,
+      "coveragePct": 40,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Maintain Tier A cadence — Lane 2 Recovery",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/pulaski-county.md"
+    },
+    {
+      "county": "Benton",
+      "slug": "benton",
+      "tier": "A",
+      "vciRank": 2,
+      "vci": 44415,
+      "strategicRole": "Republican Conversion County",
+      "primaryMission": "Moderate Republican Outreach",
+      "secondaryMission": "New Voter Registration",
+      "registrationGoal": 7183,
+      "lane2Recovery50": 7620,
+      "gopConversionPotential": 7196,
+      "coverageCompleted": 0,
+      "coveragePlanned": 5,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Moderate Republican Outreach · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/benton-county.md"
+    },
+    {
+      "county": "Washington",
+      "slug": "washington",
+      "tier": "A",
+      "vciRank": 3,
+      "vci": 43741,
+      "strategicRole": "Statewide Vote Maximization County",
+      "primaryMission": "Lane 2 Recovery",
+      "secondaryMission": "Volunteer Production",
+      "registrationGoal": 5462,
+      "lane2Recovery50": 5788,
+      "gopConversionPotential": 4520,
+      "coverageCompleted": 1,
+      "coveragePlanned": 5,
+      "coveragePct": 20,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Lane 2 Recovery · coverage 20%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/washington-county.md"
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner",
+      "tier": "A",
+      "vciRank": 4,
+      "vci": 16572,
+      "strategicRole": "Youth Registration County",
+      "primaryMission": "New Voter Registration",
+      "secondaryMission": "Lane 2 Recovery",
+      "registrationGoal": 2361,
+      "lane2Recovery50": 2487,
+      "gopConversionPotential": 3256,
+      "coverageCompleted": 2,
+      "coveragePlanned": 5,
+      "coveragePct": 40,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Maintain Tier A cadence — New Voter Registration",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/faulkner-county.md"
+    },
+    {
+      "county": "Saline",
+      "slug": "saline",
+      "tier": "A",
+      "vciRank": 5,
+      "vci": 16215,
+      "strategicRole": "Youth Registration County",
+      "primaryMission": "New Voter Registration",
+      "secondaryMission": "Lane 2 Recovery",
+      "registrationGoal": 2659,
+      "lane2Recovery50": 2804,
+      "gopConversionPotential": 3820,
+      "coverageCompleted": 1,
+      "coveragePlanned": 5,
+      "coveragePct": 20,
+      "guardrailStatus": "warning",
+      "recommendedAction": "Schedule contact — New Voter Registration",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/saline-county.md"
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian",
+      "tier": "A",
+      "vciRank": 6,
+      "vci": 16145,
+      "strategicRole": "Youth Registration County",
+      "primaryMission": "New Voter Registration",
+      "secondaryMission": "Lane 2 Recovery",
+      "registrationGoal": 1859,
+      "lane2Recovery50": 1952,
+      "gopConversionPotential": 2901,
+      "coverageCompleted": 1,
+      "coveragePlanned": 5,
+      "coveragePct": 20,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — New Voter Registration · coverage 20%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/sebastian-county.md"
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead",
+      "tier": "A",
+      "vciRank": 7,
+      "vci": 13397,
+      "strategicRole": "Youth Registration County",
+      "primaryMission": "New Voter Registration",
+      "secondaryMission": "Lane 2 Recovery",
+      "registrationGoal": 1418,
+      "lane2Recovery50": 1483,
+      "gopConversionPotential": 2300,
+      "coverageCompleted": 1,
+      "coveragePlanned": 5,
+      "coveragePct": 20,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — New Voter Registration · coverage 20%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/craighead-county.md"
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson",
+      "tier": "A",
+      "vciRank": 8,
+      "vci": 12205,
+      "strategicRole": "Youth Registration County",
+      "primaryMission": "New Voter Registration",
+      "secondaryMission": "Lane 2 Recovery",
+      "registrationGoal": 1464,
+      "lane2Recovery50": 1532,
+      "gopConversionPotential": 870,
+      "coverageCompleted": 0,
+      "coveragePlanned": 5,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — New Voter Registration · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/jefferson-county.md"
+    },
+    {
+      "county": "Garland",
+      "slug": "garland",
+      "tier": "A",
+      "vciRank": 9,
+      "vci": 10843,
+      "strategicRole": "Youth Registration County",
+      "primaryMission": "New Voter Registration",
+      "secondaryMission": "Lane 2 Recovery",
+      "registrationGoal": 1477,
+      "lane2Recovery50": 1546,
+      "gopConversionPotential": 2719,
+      "coverageCompleted": 1,
+      "coveragePlanned": 5,
+      "coveragePct": 20,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Maintain Tier A cadence — New Voter Registration",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/garland-county.md"
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden",
+      "tier": "B",
+      "vciRank": 10,
+      "vci": 8578,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 1049,
+      "lane2Recovery50": 1090,
+      "gopConversionPotential": 653,
+      "coverageCompleted": 0,
+      "coveragePlanned": 3,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/crittenden-county.md"
+    },
+    {
+      "county": "White",
+      "slug": "white",
+      "tier": "A",
+      "vciRank": 11,
+      "vci": 6898,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 807,
+      "lane2Recovery50": 833,
+      "gopConversionPotential": 2363,
+      "coverageCompleted": 1,
+      "coveragePlanned": 5,
+      "coveragePct": 20,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 20%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/white-county.md"
+    },
+    {
+      "county": "Lonoke",
+      "slug": "lonoke",
+      "tier": "A",
+      "vciRank": 12,
+      "vci": 6783,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 941,
+      "lane2Recovery50": 975,
+      "gopConversionPotential": 2087,
+      "coverageCompleted": 0,
+      "coveragePlanned": 5,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/lonoke-county.md"
+    },
+    {
+      "county": "Pope",
+      "slug": "pope",
+      "tier": "A",
+      "vciRank": 13,
+      "vci": 6122,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 744,
+      "lane2Recovery50": 766,
+      "gopConversionPotential": 1618,
+      "coverageCompleted": 1,
+      "coveragePlanned": 5,
+      "coveragePct": 20,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 20%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/pope-county.md"
+    },
+    {
+      "county": "Miller",
+      "slug": "miller",
+      "tier": "B",
+      "vciRank": 14,
+      "vci": 5406,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 582,
+      "lane2Recovery50": 593,
+      "gopConversionPotential": 1036,
+      "coverageCompleted": 0,
+      "coveragePlanned": 3,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/miller-county.md"
+    },
+    {
+      "county": "Union",
+      "slug": "union",
+      "tier": "B",
+      "vciRank": 15,
+      "vci": 5363,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 712,
+      "lane2Recovery50": 731,
+      "gopConversionPotential": 959,
+      "coverageCompleted": 0,
+      "coveragePlanned": 3,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/union-county.md"
+    },
+    {
+      "county": "Crawford",
+      "slug": "crawford",
+      "tier": "B",
+      "vciRank": 16,
+      "vci": 5277,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 605,
+      "lane2Recovery50": 618,
+      "gopConversionPotential": 1692,
+      "coverageCompleted": 1,
+      "coveragePlanned": 3,
+      "coveragePct": 33.3,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 33.3%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/crawford-county.md"
+    },
+    {
+      "county": "Baxter",
+      "slug": "baxter",
+      "tier": "B",
+      "vciRank": 17,
+      "vci": 4405,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 576,
+      "lane2Recovery50": 587,
+      "gopConversionPotential": 1466,
+      "coverageCompleted": 0,
+      "coveragePlanned": 3,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/baxter-county.md"
+    },
+    {
+      "county": "Greene",
+      "slug": "greene",
+      "tier": "B",
+      "vciRank": 18,
+      "vci": 4322,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 362,
+      "lane2Recovery50": 359,
+      "gopConversionPotential": 1109,
+      "coverageCompleted": 0,
+      "coveragePlanned": 3,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/greene-county.md"
+    },
+    {
+      "county": "Boone",
+      "slug": "boone",
+      "tier": "B",
+      "vciRank": 19,
+      "vci": 3320,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 328,
+      "lane2Recovery50": 323,
+      "gopConversionPotential": 1251,
+      "coverageCompleted": 0,
+      "coveragePlanned": 3,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/boone-county.md"
+    },
+    {
+      "county": "Mississippi",
+      "slug": "mississippi",
+      "tier": "B",
+      "vciRank": 20,
+      "vci": 3318,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 274,
+      "lane2Recovery50": 265,
+      "gopConversionPotential": 645,
+      "coverageCompleted": 0,
+      "coveragePlanned": 3,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/mississippi-county.md"
+    },
+    {
+      "county": "St. Francis",
+      "slug": "st-francis",
+      "tier": "C",
+      "vciRank": 21,
+      "vci": 2658,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 248,
+      "lane2Recovery50": 237,
+      "gopConversionPotential": 304,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/st-francis-county.md"
+    },
+    {
+      "county": "Hot Spring",
+      "slug": "hot-spring",
+      "tier": "B",
+      "vciRank": 22,
+      "vci": 2629,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 272,
+      "lane2Recovery50": 263,
+      "gopConversionPotential": 898,
+      "coverageCompleted": 0,
+      "coveragePlanned": 3,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/hot-spring-county.md"
+    },
+    {
+      "county": "Independence",
+      "slug": "independence",
+      "tier": "B",
+      "vciRank": 23,
+      "vci": 2622,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 341,
+      "lane2Recovery50": 336,
+      "gopConversionPotential": 1010,
+      "coverageCompleted": 0,
+      "coveragePlanned": 3,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/independence-county.md"
+    },
+    {
+      "county": "Clark",
+      "slug": "clark",
+      "tier": "B",
+      "vciRank": 24,
+      "vci": 2543,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 291,
+      "lane2Recovery50": 283,
+      "gopConversionPotential": 435,
+      "coverageCompleted": 1,
+      "coveragePlanned": 3,
+      "coveragePct": 33.3,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Relationship build — Power of 5 Organizing",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/clark-county.md"
+    },
+    {
+      "county": "Columbia",
+      "slug": "columbia",
+      "tier": "B",
+      "vciRank": 25,
+      "vci": 2508,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 316,
+      "lane2Recovery50": 310,
+      "gopConversionPotential": 502,
+      "coverageCompleted": 2,
+      "coveragePlanned": 3,
+      "coveragePct": 66.7,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Relationship build — Power of 5 Organizing",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/columbia-county.md"
+    },
+    {
+      "county": "Ouachita",
+      "slug": "ouachita",
+      "tier": "B",
+      "vciRank": 26,
+      "vci": 2333,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 337,
+      "lane2Recovery50": 332,
+      "gopConversionPotential": 504,
+      "coverageCompleted": 1,
+      "coveragePlanned": 3,
+      "coveragePct": 33.3,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 33.3%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/ouachita-county.md"
+    },
+    {
+      "county": "Cross",
+      "slug": "cross",
+      "tier": "C",
+      "vciRank": 27,
+      "vci": 1901,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 273,
+      "lane2Recovery50": 264,
+      "gopConversionPotential": 455,
+      "coverageCompleted": 1,
+      "coveragePlanned": 2,
+      "coveragePct": 50,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Maintenance touch — verify local calendar",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/cross-county.md"
+    },
+    {
+      "county": "Hempstead",
+      "slug": "hempstead",
+      "tier": "C",
+      "vciRank": 28,
+      "vci": 1794,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 284,
+      "lane2Recovery50": 276,
+      "gopConversionPotential": 407,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/hempstead-county.md"
+    },
+    {
+      "county": "Arkansas",
+      "slug": "arkansas",
+      "tier": "C",
+      "vciRank": 29,
+      "vci": 1666,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 209,
+      "lane2Recovery50": 196,
+      "gopConversionPotential": 399,
+      "coverageCompleted": 1,
+      "coveragePlanned": 2,
+      "coveragePct": 50,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 50%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/arkansas-county.md"
+    },
+    {
+      "county": "Carroll",
+      "slug": "carroll",
+      "tier": "B",
+      "vciRank": 30,
+      "vci": 1529,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 406,
+      "lane2Recovery50": 406,
+      "gopConversionPotential": 717,
+      "coverageCompleted": 1,
+      "coveragePlanned": 3,
+      "coveragePct": 33.3,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Relationship build — Power of 5 Organizing",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/carroll-county.md"
+    },
+    {
+      "county": "Cleburne",
+      "slug": "cleburne",
+      "tier": "B",
+      "vciRank": 31,
+      "vci": 1526,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 257,
+      "lane2Recovery50": 247,
+      "gopConversionPotential": 1022,
+      "coverageCompleted": 1,
+      "coveragePlanned": 3,
+      "coveragePct": 33.3,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Relationship build — Power of 5 Organizing",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/cleburne-county.md"
+    },
+    {
+      "county": "Johnson",
+      "slug": "johnson",
+      "tier": "B",
+      "vciRank": 32,
+      "vci": 1097,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 236,
+      "lane2Recovery50": 225,
+      "gopConversionPotential": 636,
+      "coverageCompleted": 0,
+      "coveragePlanned": 3,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/johnson-county.md"
+    },
+    {
+      "county": "Conway",
+      "slug": "conway",
+      "tier": "B",
+      "vciRank": 33,
+      "vci": 1077,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 261,
+      "lane2Recovery50": 251,
+      "gopConversionPotential": 565,
+      "coverageCompleted": 1,
+      "coveragePlanned": 3,
+      "coveragePct": 33.3,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Relationship build — Power of 5 Organizing",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/conway-county.md"
+    },
+    {
+      "county": "Marion",
+      "slug": "marion",
+      "tier": "B",
+      "vciRank": 34,
+      "vci": 1043,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 234,
+      "lane2Recovery50": 222,
+      "gopConversionPotential": 587,
+      "coverageCompleted": 1,
+      "coveragePlanned": 3,
+      "coveragePct": 33.3,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 33.3%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/marion-county.md"
+    },
+    {
+      "county": "Grant",
+      "slug": "grant",
+      "tier": "C",
+      "vciRank": 35,
+      "vci": 950,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 162,
+      "lane2Recovery50": 146,
+      "gopConversionPotential": 642,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/grant-county.md"
+    },
+    {
+      "county": "Ashley",
+      "slug": "ashley",
+      "tier": "C",
+      "vciRank": 36,
+      "vci": 929,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 226,
+      "lane2Recovery50": 214,
+      "gopConversionPotential": 489,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/ashley-county.md"
+    },
+    {
+      "county": "Sharp",
+      "slug": "sharp",
+      "tier": "C",
+      "vciRank": 37,
+      "vci": 886,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 154,
+      "lane2Recovery50": 137,
+      "gopConversionPotential": 595,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/sharp-county.md"
+    },
+    {
+      "county": "Logan",
+      "slug": "logan",
+      "tier": "C",
+      "vciRank": 38,
+      "vci": 864,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 140,
+      "lane2Recovery50": 122,
+      "gopConversionPotential": 602,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/logan-county.md"
+    },
+    {
+      "county": "Van Buren",
+      "slug": "van-buren",
+      "tier": "C",
+      "vciRank": 39,
+      "vci": 851,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 136,
+      "lane2Recovery50": 118,
+      "gopConversionPotential": 597,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/van-buren-county.md"
+    },
+    {
+      "county": "Polk",
+      "slug": "polk",
+      "tier": "C",
+      "vciRank": 40,
+      "vci": 840,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 81,
+      "lane2Recovery50": 60,
+      "gopConversionPotential": 699,
+      "coverageCompleted": 1,
+      "coveragePlanned": 2,
+      "coveragePct": 50,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 50%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/polk-county.md"
+    },
+    {
+      "county": "Madison",
+      "slug": "madison",
+      "tier": "C",
+      "vciRank": 41,
+      "vci": 839,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 156,
+      "lane2Recovery50": 140,
+      "gopConversionPotential": 543,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/madison-county.md"
+    },
+    {
+      "county": "Yell",
+      "slug": "yell",
+      "tier": "C",
+      "vciRank": 42,
+      "vci": 822,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 161,
+      "lane2Recovery50": 145,
+      "gopConversionPotential": 516,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/yell-county.md"
+    },
+    {
+      "county": "Drew",
+      "slug": "drew",
+      "tier": "C",
+      "vciRank": 43,
+      "vci": 780,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 186,
+      "lane2Recovery50": 171,
+      "gopConversionPotential": 423,
+      "coverageCompleted": 1,
+      "coveragePlanned": 2,
+      "coveragePct": 50,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Maintenance touch — verify local calendar",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/drew-county.md"
+    },
+    {
+      "county": "Randolph",
+      "slug": "randolph",
+      "tier": "C",
+      "vciRank": 44,
+      "vci": 737,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 121,
+      "lane2Recovery50": 102,
+      "gopConversionPotential": 514,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/randolph-county.md"
+    },
+    {
+      "county": "Poinsett",
+      "slug": "poinsett",
+      "tier": "C",
+      "vciRank": 45,
+      "vci": 732,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 108,
+      "lane2Recovery50": 88,
+      "gopConversionPotential": 536,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/poinsett-county.md"
+    },
+    {
+      "county": "Phillips",
+      "slug": "phillips",
+      "tier": "C",
+      "vciRank": 46,
+      "vci": 720,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 249,
+      "lane2Recovery50": 238,
+      "gopConversionPotential": 233,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/phillips-county.md"
+    },
+    {
+      "county": "Franklin",
+      "slug": "franklin",
+      "tier": "C",
+      "vciRank": 47,
+      "vci": 702,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 109,
+      "lane2Recovery50": 89,
+      "gopConversionPotential": 504,
+      "coverageCompleted": 1,
+      "coveragePlanned": 2,
+      "coveragePct": 50,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 50%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/franklin-county.md"
+    },
+    {
+      "county": "Lawrence",
+      "slug": "lawrence",
+      "tier": "C",
+      "vciRank": 48,
+      "vci": 649,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 109,
+      "lane2Recovery50": 89,
+      "gopConversionPotential": 451,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/lawrence-county.md"
+    },
+    {
+      "county": "Izard",
+      "slug": "izard",
+      "tier": "C",
+      "vciRank": 49,
+      "vci": 627,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 99,
+      "lane2Recovery50": 79,
+      "gopConversionPotential": 449,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/izard-county.md"
+    },
+    {
+      "county": "Little River",
+      "slug": "little-river",
+      "tier": "C",
+      "vciRank": 50,
+      "vci": 600,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 133,
+      "lane2Recovery50": 115,
+      "gopConversionPotential": 352,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/little-river-county.md"
+    },
+    {
+      "county": "Stone",
+      "slug": "stone",
+      "tier": "C",
+      "vciRank": 51,
+      "vci": 592,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 72,
+      "lane2Recovery50": 39,
+      "gopConversionPotential": 481,
+      "coverageCompleted": 1,
+      "coveragePlanned": 2,
+      "coveragePct": 50,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Maintenance touch — verify local calendar",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/stone-county.md"
+    },
+    {
+      "county": "Desha",
+      "slug": "desha",
+      "tier": "C",
+      "vciRank": 52,
+      "vci": 564,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 194,
+      "lane2Recovery50": 180,
+      "gopConversionPotential": 190,
+      "coverageCompleted": 1,
+      "coveragePlanned": 2,
+      "coveragePct": 50,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Maintenance touch — verify local calendar",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/desha-county.md"
+    },
+    {
+      "county": "Howard",
+      "slug": "howard",
+      "tier": "C",
+      "vciRank": 53,
+      "vci": 557,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 127,
+      "lane2Recovery50": 109,
+      "gopConversionPotential": 321,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/howard-county.md"
+    },
+    {
+      "county": "Clay",
+      "slug": "clay",
+      "tier": "C",
+      "vciRank": 54,
+      "vci": 556,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 99,
+      "lane2Recovery50": 79,
+      "gopConversionPotential": 378,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/clay-county.md"
+    },
+    {
+      "county": "Fulton",
+      "slug": "fulton",
+      "tier": "C",
+      "vciRank": 55,
+      "vci": 551,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 95,
+      "lane2Recovery50": 75,
+      "gopConversionPotential": 381,
+      "coverageCompleted": 1,
+      "coveragePlanned": 2,
+      "coveragePct": 50,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 50%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/fulton-county.md"
+    },
+    {
+      "county": "Sevier",
+      "slug": "sevier",
+      "tier": "C",
+      "vciRank": 56,
+      "vci": 526,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 99,
+      "lane2Recovery50": 79,
+      "gopConversionPotential": 348,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/sevier-county.md"
+    },
+    {
+      "county": "Perry",
+      "slug": "perry",
+      "tier": "C",
+      "vciRank": 57,
+      "vci": 511,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 88,
+      "lane2Recovery50": 67,
+      "gopConversionPotential": 356,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/perry-county.md"
+    },
+    {
+      "county": "Jackson",
+      "slug": "jackson",
+      "tier": "C",
+      "vciRank": 58,
+      "vci": 505,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 86,
+      "lane2Recovery50": 65,
+      "gopConversionPotential": 354,
+      "coverageCompleted": 0,
+      "coveragePlanned": 2,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Power of 5 Organizing · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/jackson-county.md"
+    },
+    {
+      "county": "Pike",
+      "slug": "pike",
+      "tier": "C",
+      "vciRank": 59,
+      "vci": 482,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 72,
+      "lane2Recovery50": 29,
+      "gopConversionPotential": 381,
+      "coverageCompleted": 1,
+      "coveragePlanned": 2,
+      "coveragePct": 50,
+      "guardrailStatus": "warning",
+      "recommendedAction": "Schedule contact — Power of 5 Organizing",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/pike-county.md"
+    },
+    {
+      "county": "Bradley",
+      "slug": "bradley",
+      "tier": "C",
+      "vciRank": 60,
+      "vci": 434,
+      "strategicRole": "Relationship-Building County",
+      "primaryMission": "Power of 5 Organizing",
+      "secondaryMission": "Registration Where Possible",
+      "registrationGoal": 117,
+      "lane2Recovery50": 98,
+      "gopConversionPotential": 219,
+      "coverageCompleted": 1,
+      "coveragePlanned": 2,
+      "coveragePct": 50,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Maintenance touch — verify local calendar",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/bradley-county.md"
+    },
+    {
+      "county": "Lee",
+      "slug": "lee",
+      "tier": "D",
+      "vciRank": 61,
+      "vci": 426,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 162,
+      "lane2Recovery50": 146,
+      "gopConversionPotential": 118,
+      "coverageCompleted": 1,
+      "coveragePlanned": 1,
+      "coveragePct": 100,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 100%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/lee-county.md"
+    },
+    {
+      "county": "Montgomery",
+      "slug": "montgomery",
+      "tier": "D",
+      "vciRank": 62,
+      "vci": 420,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 72,
+      "lane2Recovery50": 39,
+      "gopConversionPotential": 309,
+      "coverageCompleted": 1,
+      "coveragePlanned": 1,
+      "coveragePct": 100,
+      "guardrailStatus": "ok",
+      "recommendedAction": "Maintenance touch — verify local calendar",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/montgomery-county.md"
+    },
+    {
+      "county": "Cleveland",
+      "slug": "cleveland",
+      "tier": "D",
+      "vciRank": 63,
+      "vci": 418,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 79,
+      "lane2Recovery50": 58,
+      "gopConversionPotential": 281,
+      "coverageCompleted": 1,
+      "coveragePlanned": 1,
+      "coveragePct": 100,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 100%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/cleveland-county.md"
+    },
+    {
+      "county": "Newton",
+      "slug": "newton",
+      "tier": "D",
+      "vciRank": 64,
+      "vci": 418,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 72,
+      "lane2Recovery50": 49,
+      "gopConversionPotential": 297,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/newton-county.md"
+    },
+    {
+      "county": "Searcy",
+      "slug": "searcy",
+      "tier": "D",
+      "vciRank": 65,
+      "vci": 418,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 72,
+      "lane2Recovery50": 29,
+      "gopConversionPotential": 317,
+      "coverageCompleted": 1,
+      "coveragePlanned": 1,
+      "coveragePct": 100,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 100%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/searcy-county.md"
+    },
+    {
+      "county": "Lincoln",
+      "slug": "lincoln",
+      "tier": "D",
+      "vciRank": 66,
+      "vci": 394,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 85,
+      "lane2Recovery50": 64,
+      "gopConversionPotential": 245,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/lincoln-county.md"
+    },
+    {
+      "county": "Scott",
+      "slug": "scott",
+      "tier": "D",
+      "vciRank": 67,
+      "vci": 393,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 72,
+      "lane2Recovery50": 18,
+      "gopConversionPotential": 303,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/scott-county.md"
+    },
+    {
+      "county": "Prairie",
+      "slug": "prairie",
+      "tier": "D",
+      "vciRank": 68,
+      "vci": 385,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 72,
+      "lane2Recovery50": 48,
+      "gopConversionPotential": 265,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/prairie-county.md"
+    },
+    {
+      "county": "Nevada",
+      "slug": "nevada",
+      "tier": "D",
+      "vciRank": 69,
+      "vci": 329,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 74,
+      "lane2Recovery50": 52,
+      "gopConversionPotential": 203,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/nevada-county.md"
+    },
+    {
+      "county": "Dallas",
+      "slug": "dallas",
+      "tier": "D",
+      "vciRank": 70,
+      "vci": 322,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 89,
+      "lane2Recovery50": 68,
+      "gopConversionPotential": 165,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/dallas-county.md"
+    },
+    {
+      "county": "Chicot",
+      "slug": "chicot",
+      "tier": "D",
+      "vciRank": 71,
+      "vci": 313,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 72,
+      "lane2Recovery50": 41,
+      "gopConversionPotential": 200,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/chicot-county.md"
+    },
+    {
+      "county": "Woodruff",
+      "slug": "woodruff",
+      "tier": "D",
+      "vciRank": 72,
+      "vci": 267,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 72,
+      "lane2Recovery50": 32,
+      "gopConversionPotential": 163,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/woodruff-county.md"
+    },
+    {
+      "county": "Lafayette",
+      "slug": "lafayette",
+      "tier": "D",
+      "vciRank": 73,
+      "vci": 263,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 72,
+      "lane2Recovery50": 34,
+      "gopConversionPotential": 157,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/lafayette-county.md"
+    },
+    {
+      "county": "Calhoun",
+      "slug": "calhoun",
+      "tier": "D",
+      "vciRank": 74,
+      "vci": 260,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 72,
+      "lane2Recovery50": 35,
+      "gopConversionPotential": 153,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/calhoun-county.md"
+    },
+    {
+      "county": "Monroe",
+      "slug": "monroe",
+      "tier": "D",
+      "vciRank": 75,
+      "vci": 243,
+      "strategicRole": "Coalition Maintenance County",
+      "primaryMission": "Democratic Retention (Lane 1)",
+      "secondaryMission": "Power of 5 Organizing",
+      "registrationGoal": 72,
+      "lane2Recovery50": 24,
+      "gopConversionPotential": 147,
+      "coverageCompleted": 0,
+      "coveragePlanned": 1,
+      "coveragePct": 0,
+      "guardrailStatus": "violation",
+      "recommendedAction": "Priority visit — Democratic Retention (Lane 1) · coverage 0%",
+      "playbookPath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/monroe-county.md"
+    }
+  ],
+  "cities": [
+    {
+      "rank": 1,
+      "slug": "little-rock",
+      "name": "Little Rock",
+      "county": "Pulaski",
+      "population2020": 202591,
+      "targetVotes": 40315,
+      "voteGain": 1580,
+      "baselineVote": 38735,
+      "influenceCategory": "Statewide influence hub",
+      "strategicRole": "Statewide hub — media, fundraising, volunteer production, political coalition center.",
+      "visitFrequency": "weekly",
+      "isTop10": true,
+      "influenceTags": [
+        "media",
+        "fundraising",
+        "volunteers",
+        "political_influence"
+      ]
+    },
+    {
+      "rank": 2,
+      "slug": "fayetteville",
+      "name": "Fayetteville",
+      "county": "Washington",
+      "population2020": 93949,
+      "targetVotes": 14754,
+      "voteGain": 1115,
+      "baselineVote": 13639,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "University town — student registration, volunteer production, digital amplification.",
+      "visitFrequency": "biweekly",
+      "isTop10": true,
+      "influenceTags": [
+        "students",
+        "volunteers",
+        "digital_reach"
+      ]
+    },
+    {
+      "rank": 3,
+      "slug": "springdale",
+      "name": "Springdale",
+      "county": "Washington",
+      "population2020": 84161,
+      "targetVotes": 13217,
+      "voteGain": 999,
+      "baselineVote": 12218,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "NWA growth corridor — diverse community organizing and workforce registration.",
+      "visitFrequency": "biweekly",
+      "isTop10": true,
+      "influenceTags": [
+        "volunteers",
+        "students",
+        "chambers"
+      ]
+    },
+    {
+      "rank": 4,
+      "slug": "north-little-rock",
+      "name": "North Little Rock",
+      "county": "Pulaski",
+      "population2020": 64491,
+      "targetVotes": 12834,
+      "voteGain": 503,
+      "baselineVote": 12331,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Central Arkansas working-class recovery — Lane 2 drop-off and turnout growth.",
+      "visitFrequency": "biweekly",
+      "isTop10": true,
+      "influenceTags": [
+        "democratic_recovery",
+        "volunteers",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 5,
+      "slug": "fort-smith",
+      "name": "Fort Smith",
+      "county": "Sebastian",
+      "population2020": 89942,
+      "targetVotes": 9433,
+      "voteGain": 1715,
+      "baselineVote": 7718,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Western Arkansas anchor — regional media and River Valley persuasion.",
+      "visitFrequency": "biweekly",
+      "isTop10": true,
+      "influenceTags": [
+        "regional_media",
+        "persuasion",
+        "chambers",
+        "moderate_republicans"
+      ]
+    },
+    {
+      "rank": 6,
+      "slug": "rogers",
+      "name": "Rogers",
+      "county": "Benton",
+      "population2020": 69908,
+      "targetVotes": 9097,
+      "voteGain": 651,
+      "baselineVote": 8446,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "NWA business corridor — chamber relationships and moderate Republican conversion.",
+      "visitFrequency": "biweekly",
+      "isTop10": true,
+      "influenceTags": [
+        "business_leaders",
+        "chambers",
+        "moderate_republicans"
+      ]
+    },
+    {
+      "rank": 7,
+      "slug": "conway",
+      "name": "Conway",
+      "county": "Faulkner",
+      "population2020": 64134,
+      "targetVotes": 8468,
+      "voteGain": 1238,
+      "baselineVote": 7230,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "College town + commuter growth — student and young-professional registration.",
+      "visitFrequency": "biweekly",
+      "isTop10": true,
+      "influenceTags": [
+        "students",
+        "volunteers",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 8,
+      "slug": "pine-bluff",
+      "name": "Pine Bluff",
+      "county": "Jefferson",
+      "population2020": 41353,
+      "targetVotes": 8339,
+      "voteGain": 1668,
+      "baselineVote": 6671,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Southeast Delta recovery — Democratic base turnout and Lane 2 reactivation.",
+      "visitFrequency": "biweekly",
+      "isTop10": true,
+      "influenceTags": [
+        "turnout_growth",
+        "democratic_recovery",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 9,
+      "slug": "jonesboro",
+      "name": "Jonesboro",
+      "county": "Craighead",
+      "population2020": 78576,
+      "targetVotes": 8196,
+      "voteGain": 1710,
+      "baselineVote": 6486,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Northeast hub — regional persuasion and media for Crowley's Ridge counties.",
+      "visitFrequency": "biweekly",
+      "isTop10": true,
+      "influenceTags": [
+        "persuasion",
+        "regional_media",
+        "chambers"
+      ]
+    },
+    {
+      "rank": 10,
+      "slug": "bentonville",
+      "name": "Bentonville",
+      "county": "Benton",
+      "population2020": 54108,
+      "targetVotes": 7041,
+      "voteGain": 504,
+      "baselineVote": 6537,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Corporate NWA — fundraising, business community, executive relationships.",
+      "visitFrequency": "monthly",
+      "isTop10": true,
+      "influenceTags": [
+        "business_leaders",
+        "fundraising",
+        "chambers"
+      ]
+    },
+    {
+      "rank": 11,
+      "slug": "sherwood",
+      "name": "Sherwood",
+      "county": "Pulaski",
+      "population2020": 32640,
+      "targetVotes": 6495,
+      "voteGain": 255,
+      "baselineVote": 6241,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Pulaski suburban recovery — Lane 2 neighborhood organizing.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 12,
+      "slug": "jacksonville",
+      "name": "Jacksonville",
+      "county": "Pulaski",
+      "population2020": 28087,
+      "targetVotes": 5589,
+      "voteGain": 219,
+      "baselineVote": 5370,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Military-adjacent community — registration and turnout drives.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "volunteers",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 13,
+      "slug": "hot-springs",
+      "name": "Hot Springs",
+      "county": "Garland",
+      "population2020": 38624,
+      "targetVotes": 5101,
+      "voteGain": 927,
+      "baselineVote": 4174,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Tourism and retiree corridor — persuasion and community event organizing.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "persuasion",
+        "volunteers",
+        "chambers"
+      ]
+    },
+    {
+      "rank": 14,
+      "slug": "benton",
+      "name": "Benton",
+      "county": "Saline",
+      "population2020": 35241,
+      "targetVotes": 4317,
+      "voteGain": 654,
+      "baselineVote": 3662,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Central Arkansas suburban persuasion — commuter moderates and Lane 4.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "moderate_republicans",
+        "turnout_growth",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 15,
+      "slug": "bella-vista",
+      "name": "Bella Vista",
+      "county": "Benton",
+      "population2020": 30957,
+      "targetVotes": 4028,
+      "voteGain": 288,
+      "baselineVote": 3740,
+      "influenceCategory": "Persuasion / conversion hub",
+      "strategicRole": "Retiree persuasion — relationship-based Lane 4.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "moderate_republicans",
+        "persuasion"
+      ]
+    },
+    {
+      "rank": 16,
+      "slug": "maumelle",
+      "name": "Maumelle",
+      "county": "Pulaski",
+      "population2020": 19864,
+      "targetVotes": 3953,
+      "voteGain": 155,
+      "baselineVote": 3798,
+      "influenceCategory": "Persuasion / conversion hub",
+      "strategicRole": "Affluent Pulaski suburb — moderate Republican relationship building.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "moderate_republicans",
+        "persuasion"
+      ]
+    },
+    {
+      "rank": 17,
+      "slug": "west-memphis",
+      "name": "West Memphis",
+      "county": "Crittenden",
+      "population2020": 24620,
+      "targetVotes": 3782,
+      "voteGain": 756,
+      "baselineVote": 3026,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Crittenden Democratic anchor — highest Delta recovery potential in county.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "turnout_growth",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 18,
+      "slug": "texarkana",
+      "name": "Texarkana",
+      "county": "Miller",
+      "population2020": 30259,
+      "targetVotes": 3195,
+      "voteGain": 1078,
+      "baselineVote": 2117,
+      "influenceCategory": "Persuasion / conversion hub",
+      "strategicRole": "Southwest border media market — regional persuasion.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "regional_media",
+        "persuasion"
+      ]
+    },
+    {
+      "rank": 19,
+      "slug": "russellville",
+      "name": "Russellville",
+      "county": "Pope",
+      "population2020": 28940,
+      "targetVotes": 2994,
+      "voteGain": 992,
+      "baselineVote": 2003,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "River Valley college town — student registration pipeline.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "students",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 20,
+      "slug": "el-dorado",
+      "name": "El Dorado",
+      "county": "Union",
+      "population2020": 20681,
+      "targetVotes": 2961,
+      "voteGain": 817,
+      "baselineVote": 2143,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "South Arkansas oil belt — chamber and civic club relationships.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "chambers",
+        "persuasion"
+      ]
+    },
+    {
+      "rank": 21,
+      "slug": "cabot",
+      "name": "Cabot",
+      "county": "Lonoke",
+      "population2020": 27118,
+      "targetVotes": 2780,
+      "voteGain": 811,
+      "baselineVote": 1968,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Lonoke County growth suburb — young-family registration.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "turnout_growth",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 22,
+      "slug": "bryant",
+      "name": "Bryant",
+      "county": "Saline",
+      "population2020": 21346,
+      "targetVotes": 2615,
+      "voteGain": 396,
+      "baselineVote": 2218,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Saline County growth — suburban registration drives.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "turnout_growth",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 23,
+      "slug": "paragould",
+      "name": "Paragould",
+      "county": "Greene",
+      "population2020": 29137,
+      "targetVotes": 2492,
+      "voteGain": 965,
+      "baselineVote": 1527,
+      "influenceCategory": "Regional organizing hub",
+      "strategicRole": "Northeast county seat — volunteer hub for Greene/Craighead orbit.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "volunteers",
+        "regional_media"
+      ]
+    },
+    {
+      "rank": 24,
+      "slug": "van-buren",
+      "name": "Van Buren",
+      "county": "Crawford",
+      "population2020": 23518,
+      "targetVotes": 2362,
+      "voteGain": 835,
+      "baselineVote": 1527,
+      "influenceCategory": "Persuasion / conversion hub",
+      "strategicRole": "Fort Smith metro partner — Crawford County field organizing.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "persuasion",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 25,
+      "slug": "siloam-springs",
+      "name": "Siloam Springs",
+      "county": "Benton",
+      "population2020": 17287,
+      "targetVotes": 2250,
+      "voteGain": 161,
+      "baselineVote": 2089,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "John Brown University corridor — student registration.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "students",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 26,
+      "slug": "blytheville",
+      "name": "Blytheville",
+      "county": "Mississippi",
+      "population2020": 20221,
+      "targetVotes": 2134,
+      "voteGain": 549,
+      "baselineVote": 1584,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Mississippi Delta recovery — base turnout and Lane 2.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 27,
+      "slug": "searcy",
+      "name": "Searcy",
+      "county": "White",
+      "population2020": 23529,
+      "targetVotes": 2099,
+      "voteGain": 616,
+      "baselineVote": 1483,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "Harding University corridor — faith-adjacent student outreach.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "students",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 28,
+      "slug": "marion",
+      "name": "Marion",
+      "county": "Crittenden",
+      "population2020": 13044,
+      "targetVotes": 2004,
+      "voteGain": 401,
+      "baselineVote": 1603,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Memphis-adjacent suburb — Democratic recovery in Crittenden.",
+      "visitFrequency": "monthly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 29,
+      "slug": "forrest-city",
+      "name": "Forrest City",
+      "county": "St. Francis",
+      "population2020": 13605,
+      "targetVotes": 1869,
+      "voteGain": 374,
+      "baselineVote": 1495,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Delta county seat — Democratic base mobilization.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 30,
+      "slug": "mountain-home",
+      "name": "Mountain Home",
+      "county": "Baxter",
+      "population2020": 13244,
+      "targetVotes": 1776,
+      "voteGain": 652,
+      "baselineVote": 1124,
+      "influenceCategory": "Persuasion / conversion hub",
+      "strategicRole": "Twin Lakes region — retiree and lake-community persuasion.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "persuasion",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 31,
+      "slug": "arkadelphia",
+      "name": "Arkadelphia",
+      "county": "Clark",
+      "population2020": 9783,
+      "targetVotes": 1534,
+      "voteGain": 360,
+      "baselineVote": 1174,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "Ouachita Baptist / Henderson — college registration.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "students",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 32,
+      "slug": "harrison",
+      "name": "Harrison",
+      "county": "Boone",
+      "population2020": 13147,
+      "targetVotes": 1418,
+      "voteGain": 586,
+      "baselineVote": 832,
+      "influenceCategory": "Persuasion / conversion hub",
+      "strategicRole": "Ozarks county seat — direct-democracy / paper-ballot Republican fracture outreach.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "persuasion",
+        "moderate_republicans"
+      ]
+    },
+    {
+      "rank": 33,
+      "slug": "magnolia",
+      "name": "Magnolia",
+      "county": "Columbia",
+      "population2020": 11113,
+      "targetVotes": 1380,
+      "voteGain": 386,
+      "baselineVote": 994,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "Southern Arkansas University — college town registration.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "students",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 34,
+      "slug": "malvern",
+      "name": "Malvern",
+      "county": "Hot Spring",
+      "population2020": 10869,
+      "targetVotes": 1196,
+      "voteGain": 408,
+      "baselineVote": 788,
+      "influenceCategory": "Persuasion / conversion hub",
+      "strategicRole": "Hot Spring County seat — local civic organizing.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "volunteers",
+        "persuasion"
+      ]
+    },
+    {
+      "rank": 35,
+      "slug": "camden",
+      "name": "Camden",
+      "county": "Ouachita",
+      "population2020": 6869,
+      "targetVotes": 1160,
+      "voteGain": 269,
+      "baselineVote": 891,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "South Arkansas county seat — base turnout recovery.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 36,
+      "slug": "batesville",
+      "name": "Batesville",
+      "county": "Independence",
+      "population2020": 9682,
+      "targetVotes": 935,
+      "voteGain": 353,
+      "baselineVote": 582,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "North-central county seat — chamber and civic club hub.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "chambers",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 37,
+      "slug": "wynne",
+      "name": "Wynne",
+      "county": "Cross",
+      "population2020": 7857,
+      "targetVotes": 909,
+      "voteGain": 302,
+      "baselineVote": 608,
+      "influenceCategory": "Persuasion / conversion hub",
+      "strategicRole": "Cross County seat — northeast Delta field organizing.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "volunteers",
+        "persuasion"
+      ]
+    },
+    {
+      "rank": 38,
+      "slug": "stuttgart",
+      "name": "Stuttgart",
+      "county": "Arkansas",
+      "population2020": 8451,
+      "targetVotes": 862,
+      "voteGain": 272,
+      "baselineVote": 590,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Delta agriculture hub — chamber and community event organizing.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "chambers",
+        "persuasion"
+      ]
+    },
+    {
+      "rank": 39,
+      "slug": "hope",
+      "name": "Hope",
+      "county": "Hempstead",
+      "population2020": 8787,
+      "targetVotes": 827,
+      "voteGain": 249,
+      "baselineVote": 578,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Southwest Democratic heritage — base recovery and pride organizing.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 40,
+      "slug": "beebe",
+      "name": "Beebe",
+      "county": "White",
+      "population2020": 8923,
+      "targetVotes": 796,
+      "voteGain": 234,
+      "baselineVote": 562,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "ASU-Beebe corridor — community college registration.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "students",
+        "volunteers"
+      ]
+    }
+  ],
+  "top10TargetVotes": 131694,
+  "top40TargetVotes": 207507,
+  "campaignBrain": {
+    "flow": "Strategic Plan → Campaign Brain → Weekly Execution",
+    "modules": [
+      {
+        "name": "Decision intelligence",
+        "description": "Event scoring · VCI · cluster priority",
+        "path": "docs/campaign-brain/decision-intelligence"
+      },
+      {
+        "name": "Recommendation engine",
+        "description": "Campaign Impact Score × verification confidence",
+        "path": "docs/campaign-brain/routing"
+      },
+      {
+        "name": "Kelly time model",
+        "description": "Assignment routing · surrogate deployment",
+        "path": "docs/campaign-brain/routing/local-surrogate-training.md"
+      },
+      {
+        "name": "Faith engagement index",
+        "description": "Pastor outreach · church calendar layer",
+        "path": "docs/campaign-brain/layers/faith-engagement"
+      },
+      {
+        "name": "Clerk relationship layer",
+        "description": "County clerk meetings · election integrity",
+        "path": "docs/campaign-brain/layers/clerk-relationships"
+      },
+      {
+        "name": "Scenario engine",
+        "description": "Conservative · Expected · Aggressive projections",
+        "path": "docs/campaign-brain/scenario-engine"
+      },
+      {
+        "name": "Captured opportunity",
+        "description": "Lane capture rollups by county and cluster",
+        "path": "docs/campaign-brain/measurement/captured-opportunity.json"
+      },
+      {
+        "name": "Event learning loop",
+        "description": "Predicted vs actual outcomes",
+        "path": "docs/campaign-brain/feedback-loops"
+      },
+      {
+        "name": "Weekly executive packet",
+        "description": "Monday leadership brief",
+        "path": "docs/campaign-brain/weekly-brief"
+      }
+    ]
+  },
+  "calendarTruth": {
+    "verifiedEvents": 122,
+    "verifiedGoal": 300,
+    "tentativeEvents": 250,
+    "missingDates": 99,
+    "countyFairsVerified": "17/75 verified",
+    "tierAEventsVerified": "4/62 Tier A events verified",
+    "countyContactOwners": "0/75",
+    "outcomeReportPct": 0,
+    "phase9Ready": false,
+    "warning": "The Campaign Brain is ready. The data supply chain is not. Do not lock the 20-week calendar until Calendar Truth exit criteria are met.",
+    "exitCriteria": [
+      {
+        "label": "Verified Events300 Plus",
+        "met": false,
+        "current": "122"
+      },
+      {
+        "label": "All County Fairs Verified",
+        "met": false,
+        "current": "17/75 verified"
+      },
+      {
+        "label": "Tier A County Events Verified",
+        "met": false,
+        "current": "4/62 Tier A events verified"
+      },
+      {
+        "label": "Guardrail Violations Below10",
+        "met": false,
+        "current": "59"
+      },
+      {
+        "label": "Every County Contact Owner",
+        "met": false,
+        "current": "0/75"
+      },
+      {
+        "label": "Weekly Update Cadence",
+        "met": true,
+        "current": "-1 days"
+      },
+      {
+        "label": "Outcome Reporting Above90",
+        "met": false,
+        "current": "0%"
+      }
+    ]
+  },
+  "relationshipCapital": {
+    "doctrine": "Relationships create trust. Trust creates turnout. Turnout creates victory.",
+    "index": 0,
+    "assets": [
+      {
+        "name": "Yard signs",
+        "current": 0,
+        "goal": 5000,
+        "completionPct": 0
+      },
+      {
+        "name": "Shirts",
+        "current": 0,
+        "goal": 3000,
+        "completionPct": 0
+      },
+      {
+        "name": "Buttons",
+        "current": 0,
+        "goal": 10000,
+        "completionPct": 0
+      },
+      {
+        "name": "Flags",
+        "current": 0,
+        "goal": 500,
+        "completionPct": 0
+      }
+    ],
+    "programs": [
+      {
+        "name": "House parties",
+        "completed": 0,
+        "scheduled": 0,
+        "goal": 150
+      },
+      {
+        "name": "Civic club meetings",
+        "completed": 0,
+        "scheduled": 0,
+        "goal": 200
+      },
+      {
+        "name": "Faith events",
+        "completed": 0,
+        "scheduled": 0,
+        "goal": 150
+      },
+      {
+        "name": "Postcard teams",
+        "completed": 0,
+        "scheduled": 0,
+        "goal": 40
+      }
+    ],
+    "channels": [
+      "Yard signs · shirts · buttons · flags",
+      "House parties · civic club meetings · faith events",
+      "Local businesses · Airbnbs · restaurants highlighted",
+      "Substack / local media writeups",
+      "Postcard teams · phone banks · canvassing",
+      "Extension Homemakers · libraries · clerk offices",
+      "Local sports · local vendor shirt editions"
+    ]
+  },
+  "execution": {
+    "lockNotice": "Week plans remain candidate schedules until event dates are verified and leadership approves lock.",
+    "clusters": [
+      {
+        "id": "central-metro",
+        "name": "Central Arkansas Metro Cluster",
+        "counties": [
+          "Pulaski",
+          "Saline",
+          "Lonoke",
+          "Faulkner"
+        ],
+        "vci": 136946,
+        "shareOfExpected": 0.365,
+        "recommendedVisits": 10
+      },
+      {
+        "id": "nwa",
+        "name": "Northwest Arkansas Cluster",
+        "counties": [
+          "Washington",
+          "Benton",
+          "Madison",
+          "Carroll",
+          "Boone"
+        ],
+        "vci": 93844,
+        "shareOfExpected": 0.25,
+        "recommendedVisits": 8
+      },
+      {
+        "id": "river-valley",
+        "name": "River Valley Cluster",
+        "counties": [
+          "Sebastian",
+          "Crawford",
+          "Franklin",
+          "Logan",
+          "Johnson",
+          "Pope",
+          "Yell",
+          "Perry"
+        ],
+        "vci": 31540,
+        "shareOfExpected": 0.084,
+        "recommendedVisits": 5
+      },
+      {
+        "id": "northeast-ridge",
+        "name": "Northeast Arkansas Cluster",
+        "counties": [
+          "Craighead",
+          "Greene",
+          "Poinsett",
+          "Cross",
+          "Jackson",
+          "Lawrence",
+          "Randolph",
+          "Sharp",
+          "Clay"
+        ],
+        "vci": 23685,
+        "shareOfExpected": 0.063,
+        "recommendedVisits": 5
+      },
+      {
+        "id": "north-central-ozarks",
+        "name": "North Central Ozarks Cluster",
+        "counties": [
+          "Baxter",
+          "Marion",
+          "Searcy",
+          "Stone",
+          "Newton",
+          "Izard",
+          "Fulton",
+          "Van Buren",
+          "Cleburne",
+          "Independence",
+          "White"
+        ],
+        "vci": 19951,
+        "shareOfExpected": 0.053,
+        "recommendedVisits": 4
+      },
+      {
+        "id": "hot-springs-ouachita",
+        "name": "Hot Springs & Ouachita Cluster",
+        "counties": [
+          "Garland",
+          "Hot Spring",
+          "Montgomery",
+          "Pike",
+          "Clark",
+          "Nevada",
+          "Hempstead",
+          "Little River"
+        ],
+        "vci": 19640,
+        "shareOfExpected": 0.052,
+        "recommendedVisits": 4
+      },
+      {
+        "id": "delta-southeast",
+        "name": "Southeast Delta Cluster",
+        "counties": [
+          "Jefferson",
+          "Arkansas",
+          "Ashley",
+          "Chicot",
+          "Desha",
+          "Drew",
+          "Lincoln",
+          "Cleveland",
+          "Bradley",
+          "Calhoun",
+          "Dallas"
+        ],
+        "vci": 18285,
+        "shareOfExpected": 0.049,
+        "recommendedVisits": 6
+      },
+      {
+        "id": "southwest",
+        "name": "Southwest Arkansas Cluster",
+        "counties": [
+          "Miller",
+          "Union",
+          "Columbia",
+          "Lafayette",
+          "Ouachita",
+          "Nevada",
+          "Hempstead"
+        ],
+        "vci": 17996,
+        "shareOfExpected": 0.048,
+        "recommendedVisits": 3
+      },
+      {
+        "id": "crittenden-memphis",
+        "name": "Crittenden / Memphis-Adjacent Cluster",
+        "counties": [
+          "Crittenden",
+          "Mississippi",
+          "Lee",
+          "Phillips",
+          "Monroe"
+        ],
+        "vci": 13285,
+        "shareOfExpected": 0.035,
+        "recommendedVisits": 4
+      }
+    ],
+    "weekCandidates": [
+      {
+        "weekNumber": 1,
+        "weekOf": "2026-06-15",
+        "rangeLabel": "2026-06-15 → 2026-06-21",
+        "status": "candidate",
+        "primaryCluster": "Central Arkansas Metro Cluster",
+        "clusterPriority": "HIGH",
+        "focusCities": [
+          "Little Rock",
+          "North Little Rock"
+        ],
+        "topEventCount": 3
+      },
+      {
+        "weekNumber": 2,
+        "weekOf": "2026-06-22",
+        "rangeLabel": "2026-06-22 → 2026-06-28",
+        "status": "candidate",
+        "primaryCluster": "Northwest Arkansas Cluster",
+        "clusterPriority": "HIGH",
+        "focusCities": [
+          "Fayetteville",
+          "Springdale"
+        ],
+        "topEventCount": 3
+      },
+      {
+        "weekNumber": 3,
+        "weekOf": "2026-06-29",
+        "rangeLabel": "2026-06-29 → 2026-07-05",
+        "status": "candidate",
+        "primaryCluster": "River Valley Cluster",
+        "clusterPriority": "HIGH",
+        "focusCities": [
+          "Fort Smith",
+          "Russellville"
+        ],
+        "topEventCount": 3
+      },
+      {
+        "weekNumber": 4,
+        "weekOf": "2026-07-06",
+        "rangeLabel": "2026-07-06 → 2026-07-12",
+        "status": "candidate",
+        "primaryCluster": "Northeast Arkansas Cluster",
+        "clusterPriority": "HIGH",
+        "focusCities": [
+          "Jonesboro",
+          "Paragould"
+        ],
+        "topEventCount": 3
+      },
+      {
+        "weekNumber": 5,
+        "weekOf": "2026-07-13",
+        "rangeLabel": "2026-07-13 → 2026-07-19",
+        "status": "candidate",
+        "primaryCluster": "North Central Ozarks Cluster",
+        "clusterPriority": "MEDIUM",
+        "focusCities": [
+          "Searcy",
+          "Mountain Home"
+        ],
+        "topEventCount": 3
+      },
+      {
+        "weekNumber": 6,
+        "weekOf": "2026-07-20",
+        "rangeLabel": "2026-07-20 → 2026-07-26",
+        "status": "candidate",
+        "primaryCluster": "Hot Springs & Ouachita Cluster",
+        "clusterPriority": "MEDIUM",
+        "focusCities": [
+          "Hot Springs",
+          "Arkadelphia"
+        ],
+        "topEventCount": 3
+      },
+      {
+        "weekNumber": 7,
+        "weekOf": "2026-07-27",
+        "rangeLabel": "2026-07-27 → 2026-08-02",
+        "status": "candidate",
+        "primaryCluster": "Southeast Delta Cluster",
+        "clusterPriority": "MEDIUM",
+        "focusCities": [
+          "Pine Bluff",
+          "Stuttgart"
+        ],
+        "topEventCount": 3
+      },
+      {
+        "weekNumber": 8,
+        "weekOf": "2026-08-03",
+        "rangeLabel": "2026-08-03 → 2026-08-09",
+        "status": "candidate",
+        "primaryCluster": "Southwest Arkansas Cluster",
+        "clusterPriority": "MEDIUM",
+        "focusCities": [
+          "Texarkana",
+          "El Dorado"
+        ],
+        "topEventCount": 3
+      }
+    ]
+  },
+  "architecture": [
+    {
+      "id": "executive-mission",
+      "title": "Executive Mission Briefing",
+      "description": "Why Kelly can win a plurality · campaign phase · Brain status",
+      "path": "docs/strategic-plan/plurality-victory-plan/executive-mission-briefing"
+    },
+    {
+      "id": "part-i",
+      "title": "Part I — Theory of Victory",
+      "description": "Four lanes · Big Table Democrat · coalition identity",
+      "path": "docs/strategic-plan/plurality-victory-plan/part-i-theory-of-victory",
+      "children": [
+        {
+          "id": "four-lanes",
+          "title": "Four-Lane Model",
+          "description": "Retention · Reactivation · Registration · Conversion",
+          "path": "docs/strategic-plan/plurality-victory-plan/part-i-theory-of-victory/chapter-01-four-lane-model"
+        },
+        {
+          "id": "big-table",
+          "title": "Big Table Democrat Doctrine",
+          "description": "Working-class coalition · dignity · nonpartisan local offices",
+          "path": "docs/campaign-brain/relational-organizing/BIG-TABLE-DEMOCRAT-DOCTRINE.md"
+        }
+      ]
+    },
+    {
+      "id": "part-ii",
+      "title": "Part II — Electoral Math",
+      "description": "Drop-off · registration · scenarios · opportunity scorecard",
+      "path": "docs/strategic-plan/plurality-victory-plan/part-ii-electoral-math",
+      "children": [
+        {
+          "id": "drop-off",
+          "title": "Democratic Drop-Off",
+          "description": "102,070 raw · 51,051 @ 50%",
+          "path": "docs/strategic-plan/plurality-victory-plan/part-ii-electoral-math/chapter-04-democratic-drop-off"
+        },
+        {
+          "id": "registration",
+          "title": "50,000 New Voter Plan",
+          "description": "County allocation · weekly pace",
+          "path": "docs/strategic-plan/plurality-victory-plan/part-ii-electoral-math/chapter-05-fifty-thousand-new-voter-plan"
+        },
+        {
+          "id": "scenarios",
+          "title": "Scenario Engine",
+          "description": "Conservative · Expected · Aggressive",
+          "path": "docs/campaign-brain/scenario-engine"
+        }
+      ]
+    },
+    {
+      "id": "part-iii",
+      "title": "Part III — Arkansas Battlefield",
+      "description": "Top 40 cities · Top 10 deep dives · 75 county playbooks",
+      "path": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield",
+      "children": [
+        {
+          "id": "top-40",
+          "title": "Top 40 City Strategy",
+          "description": "207,507 vote target",
+          "path": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy"
+        },
+        {
+          "id": "county-playbooks",
+          "title": "75 County Playbooks",
+          "description": "VCI-ranked missions",
+          "path": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook"
+        }
+      ]
+    },
+    {
+      "id": "part-iv",
+      "title": "Part IV — 20-Week Execution",
+      "description": "Cluster-week approach · candidates until Calendar Truth",
+      "path": "docs/strategic-plan/plurality-victory-plan/part-iv-twenty-week-execution"
+    },
+    {
+      "id": "part-v",
+      "title": "Part V — Secretary of State Strategy",
+      "description": "Office-specific lane · clerks · election integrity",
+      "path": "docs/strategic-plan/plurality-victory-plan/part-v-secretary-of-state-strategy"
+    },
+    {
+      "id": "part-vi",
+      "title": "Part VI — Campaign Dashboard",
+      "description": "Command center · four lanes · clusters",
+      "path": "docs/strategic-plan/plurality-victory-plan/command-center"
+    },
+    {
+      "id": "appendices",
+      "title": "Appendices A–N",
+      "description": "Reference tables · methodology · data sources",
+      "path": "docs/strategic-plan/plurality-victory-plan/appendices"
+    },
+    {
+      "id": "campaign-brain",
+      "title": "Campaign Brain",
+      "description": "Decision intelligence · weekly brief · learning loops",
+      "path": "docs/campaign-brain"
+    },
+    {
+      "id": "calendar-truth",
+      "title": "Operation Calendar Truth",
+      "description": "Verification sprint · field workbench · exit criteria",
+      "path": "docs/campaign-brain/operations/OPERATION-CALENDAR-TRUTH.md"
+    },
+    {
+      "id": "relational",
+      "title": "Relational Organizing Engine",
+      "description": "Relationship Capital · fifth execution engine",
+      "path": "docs/campaign-brain/relational-organizing"
+    },
+    {
+      "id": "governance",
+      "title": "Governance Checkpoint",
+      "description": "Brain health · Monday rhythm · leadership directive",
+      "path": "docs/campaign-brain/governance"
+    }
+  ],
+  "peoplePower": {
+    "foundingVolunteersGoal": 20,
+    "foundingVolunteersCurrent": 0,
+    "launchLabel": "June 28 · 6 PM · Zoom",
+    "retreatLocation": "Forevermost Farms",
+    "monthlyCalls": "Last Sunday of each month · 6 PM",
+    "mobilizeEventsLinked": 0,
+    "mobilizeRsvpTotal": 0,
+    "substackStoriesPublished": 0,
+    "strikeTeamCoveragePct": 0,
+    "powerOf5Commitments": 0,
+    "storyWorkflow": [
+      "Campaign Brain event verified",
+      "Mobilize event created",
+      "Volunteer recruitment",
+      "Event executed",
+      "Substack story published",
+      "Email distribution",
+      "Social media",
+      "Local sharing",
+      "Relationship growth logged"
+    ],
+    "communityRelationshipIndex": [
+      {
+        "label": "Signs",
+        "current": 0,
+        "goal": 5000
+      },
+      {
+        "label": "Shirts",
+        "current": 0,
+        "goal": 3000
+      },
+      {
+        "label": "Community stories",
+        "current": 0,
+        "goal": 75
+      },
+      {
+        "label": "Churches visited",
+        "current": 0
+      },
+      {
+        "label": "Volunteer growth",
+        "current": 0,
+        "goal": 500
+      },
+      {
+        "label": "Power of 5",
+        "current": 0,
+        "goal": 200
+      },
+      {
+        "label": "House parties",
+        "current": 0,
+        "goal": 150
+      },
+      {
+        "label": "Businesses highlighted",
+        "current": 0
+      }
+    ],
+    "sections": [
+      {
+        "id": "volunteer",
+        "title": "Volunteer Leadership",
+        "description": "Founding 20 · June 28 launch · Forevermost retreat"
+      },
+      {
+        "id": "mobilize",
+        "title": "Mobilize",
+        "description": "Events · RSVP · volunteer shifts · GOTV"
+      },
+      {
+        "id": "substack",
+        "title": "Substack",
+        "description": "County community stories"
+      },
+      {
+        "id": "postcards",
+        "title": "Postcards",
+        "description": "Visit · GOTV · faith · volunteer programs"
+      },
+      {
+        "id": "phones",
+        "title": "Phone Banks",
+        "description": "Missing D · visits · GOTV · follow-up"
+      },
+      {
+        "id": "house",
+        "title": "House Parties",
+        "description": "10 · 25 · 50 · 100 person templates"
+      },
+      {
+        "id": "po5",
+        "title": "Power of 5",
+        "description": "Trusted network scaling"
+      },
+      {
+        "id": "capital",
+        "title": "Relationship Capital",
+        "description": "Physical trust manifestations"
+      },
+      {
+        "id": "stories",
+        "title": "Community Stories",
+        "description": "Story-first event workflow"
+      },
+      {
+        "id": "strike",
+        "title": "County Strike Teams",
+        "description": "75 county deployment captains"
+      }
+    ]
+  },
+  "motionPresence": {
+    "doctrine": "The Arkansas Presence Strategy — visible statewide motion. When voters ask 'Has Kelly been to my area?' the answer should almost always be yes.",
+    "goal": "1000 Arkansas Stories",
+    "arkansasPresenceScore": 0,
+    "septemberPersuasionReadiness": 0,
+    "countiesVisited": 0,
+    "countiesTotal": 75,
+    "citiesVisited": 0,
+    "stopsCompleted": 0,
+    "milesTraveled": 0,
+    "eventsAttended": 0,
+    "storiesPublished": 0,
+    "storiesPending": 0,
+    "storiesShared": 0,
+    "substackPublished": 0,
+    "videosPublished": 0,
+    "socialPostsPublished": 0,
+    "localBusinessesHighlighted": 0,
+    "churchesHighlighted": 0,
+    "schoolsHighlighted": 0,
+    "mediaMentions": 0,
+    "peopleSpotlighted": 0,
+    "contentPyramidCompletionPct": 0,
+    "storyCategories": [
+      {
+        "id": "local_business",
+        "label": "Local Business Spotlight",
+        "count": 0,
+        "goal": 200
+      },
+      {
+        "id": "teacher",
+        "label": "Teacher Spotlight",
+        "count": 0,
+        "goal": 75
+      },
+      {
+        "id": "student",
+        "label": "Student Spotlight",
+        "count": 0,
+        "goal": 50
+      },
+      {
+        "id": "veteran",
+        "label": "Veteran Spotlight",
+        "count": 0,
+        "goal": 75
+      },
+      {
+        "id": "volunteer",
+        "label": "Volunteer Spotlight",
+        "count": 0,
+        "goal": 100
+      },
+      {
+        "id": "faith_leader",
+        "label": "Faith Leader Spotlight",
+        "count": 0,
+        "goal": 75
+      },
+      {
+        "id": "community_organization",
+        "label": "Community Organization Spotlight",
+        "count": 0,
+        "goal": 150
+      },
+      {
+        "id": "arkansas_success",
+        "label": "Arkansas Success Story",
+        "count": 0,
+        "goal": 150
+      },
+      {
+        "id": "arkansas_challenge",
+        "label": "Arkansas Challenge Story",
+        "count": 0,
+        "goal": 100
+      }
+    ],
+    "countyMap": [
+      {
+        "county": "Arkansas County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Ashley County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Baxter County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Benton County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Boone County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Bradley County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Calhoun County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Carroll County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Chicot County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Clark County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Clay County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Cleburne County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Cleveland County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Columbia County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Conway County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Craighead County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Crawford County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Crittenden County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Cross County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Dallas County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Desha County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Drew County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Faulkner County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Franklin County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Fulton County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Garland County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Grant County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Greene County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Hempstead County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Hot Spring County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Howard County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Independence County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Izard County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Jackson County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Jefferson County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Johnson County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Lafayette County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Lawrence County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Lee County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Lincoln County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Little River County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Logan County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Lonoke County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Madison County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Marion County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Miller County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Mississippi County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Monroe County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Montgomery County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Nevada County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Newton County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Ouachita County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Perry County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Phillips County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Pike County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Poinsett County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Polk County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Pope County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Prairie County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Pulaski County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Randolph County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "St. Francis County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Saline County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Scott County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Searcy County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Sebastian County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Sevier County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Sharp County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Stone County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Union County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Van Buren County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Washington County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "White County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Woodruff County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      },
+      {
+        "county": "Yell County",
+        "visited": false,
+        "stops": 0,
+        "lastDate": null,
+        "daysSinceLastVisit": null,
+        "coverageStatus": "not_visited",
+        "relationshipStatus": "none"
+      }
+    ],
+    "recentStops": [],
+    "cadence": [
+      {
+        "day": "Monday",
+        "activity": "Live stop — vertical video same day"
+      },
+      {
+        "day": "Tuesday",
+        "activity": "Story from Monday — local angle"
+      },
+      {
+        "day": "Wednesday",
+        "activity": "Another angle from Monday stop"
+      },
+      {
+        "day": "Thursday",
+        "activity": "Local business spotlight"
+      },
+      {
+        "day": "Friday",
+        "activity": "Weekend event teaser"
+      },
+      {
+        "day": "Saturday",
+        "activity": "Live event — carousel + clip"
+      },
+      {
+        "day": "Sunday",
+        "activity": "Weekly recap email + Substack if ready"
+      }
+    ],
+    "storyWorkflow": [
+      "Campaign Brain",
+      "Mobilize",
+      "Event",
+      "Content Capture",
+      "Story Publication",
+      "Email",
+      "Social",
+      "Community Sharing",
+      "Volunteer Recruitment"
+    ],
+    "components": [
+      {
+        "id": "presence",
+        "title": "Arkansas Presence Tracker",
+        "description": "Counties · cities · stops · miles · venue types"
+      },
+      {
+        "id": "map",
+        "title": "Arkansas Presence Map",
+        "description": "75 counties · visit count · relationship status"
+      },
+      {
+        "id": "archive",
+        "title": "County Visit Archive",
+        "description": "Permanent record — photos · videos · story links"
+      },
+      {
+        "id": "pipeline",
+        "title": "Story Pipeline",
+        "description": "Visit → video → carousel → story → Substack → email"
+      },
+      {
+        "id": "categories",
+        "title": "Community Story Categories",
+        "description": "Business · teacher · veteran · faith · success/challenge"
+      },
+      {
+        "id": "resume",
+        "title": "Social Media Resume",
+        "description": "Public proof the campaign is growing"
+      },
+      {
+        "id": "inventory",
+        "title": "Content Inventory",
+        "description": "Videos · photos · Substack · press — never run dry"
+      },
+      {
+        "id": "workflow",
+        "title": "Story-First Event Workflow",
+        "description": "Brain → Mobilize → capture → publish → recruit"
+      },
+      {
+        "id": "local",
+        "title": "Local Algorithm Playbook",
+        "description": "Community pride drives discoverability"
+      },
+      {
+        "id": "readiness",
+        "title": "September Readiness",
+        "description": "Will September voters see proof Kelly was everywhere?"
+      }
+    ]
+  },
+  "forwardMotion": {
+    "heroLine": "Showing where Kelly is going next is as important as proving where she has already been.",
+    "upcomingCount": 79,
+    "nextWeekCount": 14,
+    "priorityWindowCount": 25,
+    "avgActivationReadiness": 0,
+    "stops": [
+      {
+        "eventId": "fair-ef8a3bf07796f5d116269e4e",
+        "eventName": "Lawrence County Fair",
+        "county": "Lawrence County",
+        "city": "TBD",
+        "date": "2026-08-10",
+        "assignment": "Kelly",
+        "effectiveScore": 90,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fair-7b9fd5feee3eb99deeb9317a",
+        "eventName": "Little River County Fair",
+        "county": "Little River County",
+        "city": "TBD",
+        "date": "2026-08-17",
+        "assignment": "Kelly",
+        "effectiveScore": 90,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fair-571afd59db5f2040264c4ac1",
+        "eventName": "Randolph County Fair",
+        "county": "Randolph County",
+        "city": "TBD",
+        "date": "2026-08-24",
+        "assignment": "Kelly",
+        "effectiveScore": 90,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fair-a9c2bbe56f939da4c7898261",
+        "eventName": "Ashley County Fair",
+        "county": "Ashley County",
+        "city": "TBD",
+        "date": "2026-09-04",
+        "assignment": "Kelly",
+        "effectiveScore": 90,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fair-7d4b1643af8887c9137f0856",
+        "eventName": "Yell County Fair",
+        "county": "Yell County",
+        "city": "TBD",
+        "date": "2026-09-07",
+        "assignment": "Kelly",
+        "effectiveScore": 90,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fair-7da0f84811b62d6378c8eab1",
+        "eventName": "Clay County Fair",
+        "county": "Clay County",
+        "city": "TBD",
+        "date": "2026-09-12",
+        "assignment": "Kelly",
+        "effectiveScore": 90,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fair-dd3cef345b5f6d95088be298",
+        "eventName": "Newton County Fair",
+        "county": "Newton County",
+        "city": "TBD",
+        "date": "2026-08-14",
+        "assignment": "Kelly",
+        "effectiveScore": 90,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fair-9e03993e30d8f62d3e8067dc",
+        "eventName": "Lafayette County Fair",
+        "county": "Lafayette County",
+        "city": "TBD",
+        "date": "2026-08-31",
+        "assignment": "Kelly",
+        "effectiveScore": 88,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fair-67cc3c414b72663f68984577",
+        "eventName": "Nevada County Fair",
+        "county": "Nevada County",
+        "city": "TBD",
+        "date": "2026-09-10",
+        "assignment": "Kelly",
+        "effectiveScore": 88,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fair-8e31ab602a94385aa9919463",
+        "eventName": "Union County Fair",
+        "county": "Union County",
+        "city": "TBD",
+        "date": "2026-07-23",
+        "assignment": "Kelly",
+        "effectiveScore": 76,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fair-418be1689fc0c6f0d6a144f5",
+        "eventName": "Fulton County Fair",
+        "county": "Fulton County",
+        "city": "TBD",
+        "date": "2026-07-10",
+        "assignment": "Kelly",
+        "effectiveScore": 70,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-06-14-bella-vista-bella-vista-sunday-farmers-and-makers-market",
+        "eventName": "Bella Vista Sunday Farmers and Makers Market",
+        "county": "Benton County",
+        "city": "Bella Vista",
+        "date": "2026-06-14",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-06-18-greenwood-river-valley-crawfish-festival",
+        "eventName": "River Valley Crawfish Festival",
+        "county": "Sebastian County",
+        "city": "Greenwood",
+        "date": "2026-06-18",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-nodate-little-rock-juneteenth-in-little-rock",
+        "eventName": "Juneteenth in Little Rock",
+        "county": "Pulaski County",
+        "city": "Little Rock",
+        "date": "2026-06-19",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
+        "eventName": "Bella Vista Summer Farmers and Makers Market",
+        "county": "Benton County",
+        "city": "Bella Vista",
+        "date": "2026-06-21",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-06-24-springdale-rodeo-of-the-ozarks",
+        "eventName": "Rodeo of the Ozarks",
+        "county": "Washington County",
+        "city": "Springdale",
+        "date": "2026-06-24",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-06-26-north-little-rock-arkansas-folklife-festival",
+        "eventName": "Arkansas Folklife Festival",
+        "county": "Pulaski County",
+        "city": "North Little Rock",
+        "date": "2026-06-26",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
+        "eventName": "Little Rock Bridal and Wedding Expo",
+        "county": "Pulaski County",
+        "city": "Little Rock",
+        "date": "2026-06-28",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
+        "eventName": "Bella Vista Summer Sunday Farmers and Makers Market",
+        "county": "Benton County",
+        "city": "Bella Vista",
+        "date": "2026-06-28",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
+        "eventName": "Fireworks & Food Trucks - Family Independence Day",
+        "county": "Pulaski County",
+        "city": "Sherwood",
+        "date": "2026-07-03",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-07-04-little-rock-pops-on-the-river",
+        "eventName": "Pops on the River",
+        "county": "Pulaski County",
+        "city": "Little Rock",
+        "date": "2026-07-04",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
+        "eventName": "Bella Vista Outdoor Farmers and Makers Market",
+        "county": "Benton County",
+        "city": "Bella Vista",
+        "date": "2026-07-05",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-07-11-springdale-ozarks-250-block-party-in-springdale",
+        "eventName": "Ozarks 250 Block Party in Springdale",
+        "county": "Washington County",
+        "city": "Springdale",
+        "date": "2026-07-11",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      },
+      {
+        "eventId": "fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
+        "eventName": "Bella Vista Summer Outdoor Farmers and Makers Market",
+        "county": "Benton County",
+        "city": "Bella Vista",
+        "date": "2026-07-12",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "not_started",
+        "phoneBankStatus": "not_started",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish"
+      }
+    ],
+    "missingPieces": [
+      "Lawrence County Fair: Mobilize draft",
+      "Lawrence County Fair: Facebook draft",
+      "Lawrence County Fair: News release",
+      "Lawrence County Fair: Graphics request",
+      "Little River County Fair: Mobilize draft",
+      "Little River County Fair: Facebook draft",
+      "Little River County Fair: News release",
+      "Little River County Fair: Graphics request",
+      "Randolph County Fair: Mobilize draft",
+      "Randolph County Fair: Facebook draft",
+      "Randolph County Fair: News release",
+      "Randolph County Fair: Graphics request",
+      "Ashley County Fair: Mobilize draft",
+      "Ashley County Fair: Facebook draft",
+      "Ashley County Fair: News release"
+    ],
+    "components": [
+      {
+        "id": "queue",
+        "title": "Activation Queue",
+        "description": "Upcoming stops with full activation status"
+      },
+      {
+        "id": "weekly",
+        "title": "Weekly Packet",
+        "description": "Kelly · surrogate · county team stops next 7 days"
+      },
+      {
+        "id": "news",
+        "title": "News Releases",
+        "description": "Draft releases — approval before send"
+      },
+      {
+        "id": "graphics",
+        "title": "Social Graphics",
+        "description": "Designer briefs — no auto-generated images"
+      },
+      {
+        "id": "facebook",
+        "title": "Facebook Events",
+        "description": "Draft copy only — no API posting"
+      },
+      {
+        "id": "mobilize",
+        "title": "Mobilize Drafts",
+        "description": "RSVP goals · roles · reminders"
+      },
+      {
+        "id": "phone",
+        "title": "Phone Banks",
+        "description": "Scripts · assignments — no voter PII"
+      },
+      {
+        "id": "postcard",
+        "title": "Postcards",
+        "description": "Visit announcement · writing parties"
+      },
+      {
+        "id": "canvass",
+        "title": "Canvass / Door Hangers",
+        "description": "Future layer — defaults to future"
+      },
+      {
+        "id": "story",
+        "title": "Story Capture",
+        "description": "Pre-stop briefs → Phase 12 post-event proof"
+      }
+    ]
+  },
+  "coalitionPowerMap": {
+    "heroLine": "Move from opportunity to organized relationships — coalition, labor, and power map activation.",
+    "naacp": {
+      "branchesTotal": 0,
+      "called": 0,
+      "meetingsRequested": 0,
+      "speakingScheduled": 0
+    },
+    "aea": {
+      "countiesActive": 0,
+      "teacherSupporters": 0,
+      "meetingsCompleted": 0
+    },
+    "muslim": {
+      "contactsTotal": 0,
+      "meetingsOpen": 0,
+      "meetingsRequested": 0
+    },
+    "hispanic": {
+      "frameworkStatus": "pending_jasmine_review",
+      "lead": "Jasmine Serano",
+      "pendingJasmineReview": true
+    },
+    "labor": {
+      "unionsTotal": 0,
+      "contacted": 0,
+      "meetingsCompleted": 0,
+      "endorsementsInProgress": 0
+    },
+    "electedOfficials": {
+      "contacted": 0,
+      "total": 0,
+      "meetingsCompleted": 0,
+      "introductionsRequested": 0
+    },
+    "candidates": {
+      "activePartnerships": 0,
+      "sharedEvents": 0,
+      "jointMobilize": 0
+    },
+    "pastOfficials": {
+      "engaged": 0,
+      "total": 0
+    },
+    "sherwood": {
+      "goal": "Win Sherwood outright with 60%+",
+      "vipTablesSold": 0,
+      "vipTablesGoal": 20,
+      "ticketsSold": 0,
+      "status": "planning",
+      "onTrack": false
+    },
+    "cityForums": {
+      "planned": 1,
+      "booked": 1,
+      "total": 20,
+      "fortSmithBooked": true
+    },
+    "ruralTownhalls": {
+      "planned": 0,
+      "total": 10
+    },
+    "standardAskPackage": [
+      "What should Kelly know about your area?",
+      "Who are the 5–10 people she must meet?",
+      "Who are the volunteer leaders in your area?",
+      "What events should Kelly attend?",
+      "Can you introduce us to local networks?",
+      "Can you help us connect with email/text/social networks where appropriate?",
+      "Can you help us identify financial supporters?",
+      "Can you personally support the campaign financially?",
+      "Can we schedule a follow-up meeting?",
+      "Can we publicly or privately list you as a supporter if appropriate?"
+    ],
+    "components": [
+      {
+        "id": "naacp",
+        "title": "NAACP Branches",
+        "description": "Call every branch · Kelly speaking requests"
+      },
+      {
+        "id": "aea",
+        "title": "AEA / Teachers",
+        "description": "April Reisma · county teacher supporters"
+      },
+      {
+        "id": "muslim",
+        "title": "Muslim Outreach",
+        "description": "Dr. Ali Khan · Ebrahim network"
+      },
+      {
+        "id": "hispanic",
+        "title": "Hispanic Outreach",
+        "description": "Framework only — Jasmine Serano lead"
+      },
+      {
+        "id": "labor",
+        "title": "Labor & Unions",
+        "description": "Union halls · endorsements · Fouche · Bledsoe"
+      },
+      {
+        "id": "elected",
+        "title": "Democratic Officials",
+        "description": "Networks · money · volunteer leaders"
+      },
+      {
+        "id": "candidates",
+        "title": "Running Candidates",
+        "description": "Shared canvass · phone bank · Mobilize"
+      },
+      {
+        "id": "past",
+        "title": "Past Officials",
+        "description": "Institutional memory · introductions"
+      },
+      {
+        "id": "sherwood",
+        "title": "WIN SHERWOOD",
+        "description": "60%+ · GOTV kickoff · VIP tables"
+      },
+      {
+        "id": "forums",
+        "title": "Top 20 City Forums",
+        "description": "Sept/Oct joint candidate forums"
+      },
+      {
+        "id": "rural",
+        "title": "Rural Town Halls",
+        "description": "Election Q&A · clerk · transparency"
+      }
+    ]
+  },
+  "endorsementAcquisition": {
+    "heroLine": "Endorsements are validators — measure activation, not vanity.",
+    "requested": 0,
+    "meetingsScheduled": 0,
+    "presentationsGiven": 0,
+    "endorsed": 0,
+    "pending": 0,
+    "declined": 0,
+    "activated": 0,
+    "volunteerLeadsGenerated": 0,
+    "donorLeadsGenerated": 0,
+    "institutional": {
+      "labor": 0,
+      "teacher": 0,
+      "civilRights": 0,
+      "total": 0
+    },
+    "currentOfficialsEndorsed": 0,
+    "formerOfficialsEndorsed": 0,
+    "communityLeadersEndorsed": 0,
+    "candidatePartnerships": 0,
+    "byTier": {
+      "tier1": 0,
+      "tier2": 0,
+      "tier3": 0,
+      "tier4": 0,
+      "tier5": 0
+    },
+    "valueCriteria": [
+      "Credibility",
+      "Volunteer activation",
+      "Donor activation",
+      "Network access",
+      "Voter persuasion"
+    ],
+    "activationChecklist": [
+      "Announcement graphic",
+      "Social media post",
+      "Website placement",
+      "Election-plan dashboard update",
+      "Email inclusion",
+      "Press release consideration",
+      "Mobilize volunteer recruitment"
+    ],
+    "pendingTargets": [],
+    "components": [
+      {
+        "id": "tier1",
+        "title": "Tier 1 — Institutional",
+        "description": "Labor · teachers · civil rights · caucuses"
+      },
+      {
+        "id": "tier2",
+        "title": "Tier 2 — Current Elected",
+        "description": "Legislators · county · municipal · school board"
+      },
+      {
+        "id": "tier3",
+        "title": "Tier 3 — Former Elected",
+        "description": "Credibility · donors · community memory"
+      },
+      {
+        "id": "tier4",
+        "title": "Tier 4 — Community Influencers",
+        "description": "Pastors · civic · business · veterans"
+      },
+      {
+        "id": "tier5",
+        "title": "Tier 5 — Candidate Partnerships",
+        "description": "Shared execution · cross-endorsements"
+      },
+      {
+        "id": "union",
+        "title": "Union Strategy",
+        "description": "Fouche · Brown · Bledsoe · member comms"
+      },
+      {
+        "id": "naacp",
+        "title": "NAACP Strategy",
+        "description": "Speak at branches · endorsement pathway"
+      },
+      {
+        "id": "aea",
+        "title": "AEA Strategy",
+        "description": "April Reisma · teacher network"
+      },
+      {
+        "id": "announce",
+        "title": "Announcement System",
+        "description": "Graphic · social · email · Mobilize — activate"
+      },
+      {
+        "id": "scorecard",
+        "title": "Endorsement Scorecard",
+        "description": "Requested · received · leads · activation"
+      }
+    ]
+  },
+  "voterContact": {
+    "heroLine": "Human Contact Index — how many Arkansans have had a direct interaction with the campaign?",
+    "doctrine": "Volunteer → Voter Contact → Commitment → Turnout. Lanes 2, 3, and 4 are won through conversations — not dashboards.",
+    "humanContactIndex": {
+      "total": 0,
+      "goal": 250000,
+      "completionPct": 0,
+      "components": {
+        "phoneCalls": 0,
+        "postcards": 0,
+        "doorsKnocked": 0,
+        "housePartyAttendees": 0,
+        "powerOf5Conversations": 0,
+        "volunteerRecruits": 0,
+        "eventAttendees": 0
+      }
+    },
+    "tracks": {
+      "lane2Reactivation": {
+        "contacted": 0,
+        "engaged": 0,
+        "committed": 0,
+        "turnoutTarget": 51051,
+        "completionPct": 0
+      },
+      "lane3Registration": {
+        "registrationsStarted": 0,
+        "registrationsCompleted": 0,
+        "registrationEvents": 0,
+        "volunteerRegistrars": 0,
+        "goal": 50000,
+        "completionPct": 0
+      },
+      "lane4Persuasion": {
+        "conversations": 0,
+        "followUps": 0,
+        "eventAttendance": 0,
+        "endorsementsGenerated": 0
+      }
+    },
+    "funnel": {
+      "volunteersActive": 0,
+      "voterContacts": 0,
+      "commitments": 0,
+      "turnoutTargets": 0
+    },
+    "channels": [
+      {
+        "id": "phoneBank",
+        "label": "Phone Bank",
+        "primaryMetric": 0,
+        "goal": 29000,
+        "completionPct": 0,
+        "detail": "5 programs · relationship · visit invite · GOTV"
+      },
+      {
+        "id": "postcard",
+        "label": "Postcards",
+        "primaryMetric": 0,
+        "goal": 48000,
+        "completionPct": 0,
+        "detail": "Visit announcement · senior GOTV · youth · volunteer recruitment"
+      },
+      {
+        "id": "canvass",
+        "label": "Canvass",
+        "primaryMetric": 0,
+        "goal": 60000,
+        "completionPct": 0,
+        "detail": "Lane 2 drop-off · Lane 4 persuasion · registration turf"
+      },
+      {
+        "id": "powerOf5",
+        "label": "Power of 5",
+        "primaryMetric": 0,
+        "goal": 25000,
+        "completionPct": 0,
+        "detail": "0 commitments · trusted-network conversations"
+      },
+      {
+        "id": "houseParty",
+        "label": "House Parties",
+        "primaryMetric": 0,
+        "goal": 3000,
+        "completionPct": 0,
+        "detail": "0 events logged"
+      },
+      {
+        "id": "gotv",
+        "label": "GOTV",
+        "primaryMetric": 0,
+        "goal": 15000,
+        "completionPct": 0,
+        "detail": "Final-week turnout contacts — separate from relationship calls"
+      }
+    ],
+    "components": [
+      {
+        "id": "hci",
+        "title": "Human Contact Index",
+        "description": "Statewide heartbeat — phones + postcards + doors + events"
+      },
+      {
+        "id": "lane2",
+        "title": "Lane 2 Reactivation",
+        "description": "Missing Democrats · contacted · engaged · committed"
+      },
+      {
+        "id": "lane3",
+        "title": "Registration",
+        "description": "50K new voters · events · volunteer registrars"
+      },
+      {
+        "id": "lane4",
+        "title": "Persuasion",
+        "description": "Independents · moderate Republicans · validators"
+      },
+      {
+        "id": "phone",
+        "title": "Phone Banks",
+        "description": "Relationship · visit invite · GOTV · follow-up"
+      },
+      {
+        "id": "postcard",
+        "title": "Postcards",
+        "description": "Visit announcement · senior GOTV · youth"
+      },
+      {
+        "id": "canvass",
+        "title": "Canvass",
+        "description": "Candidate-led · shared turf · 50K door goal"
+      },
+      {
+        "id": "powerOf5",
+        "title": "Power of 5",
+        "description": "Trusted-network conversations → recruits"
+      },
+      {
+        "id": "houseParty",
+        "title": "House Parties",
+        "description": "10/25/50/100 templates · registration at host"
+      },
+      {
+        "id": "gotv",
+        "title": "GOTV",
+        "description": "Final-week turnout contacts"
+      }
+    ]
+  },
+  "candidateDashboard": {
+    "weeksRemaining": 20,
+    "projectedVotes": 410197,
+    "lane2Potential": 51051,
+    "registrationGoal": 50000,
+    "countiesCovered": 29,
+    "countiesTotal": 75,
+    "upcomingStops": 14,
+    "volunteerLeadersGoal": 20,
+    "volunteerLeadersCurrent": 0,
+    "sherwoodGoal": "60%+",
+    "sherwoodVipSold": 0,
+    "sherwoodVipGoal": 20,
+    "topPrioritiesThisWeek": [
+      "Volunteer Leadership Launch — June 28 · 6 PM · Zoom",
+      "Sherwood Event Sponsorship & VIP Table Sales",
+      "NAACP Branch Outreach — first 5 branches",
+      "Teacher Network Meetings — April Reisma pathway",
+      "Labor Outreach Preparation — briefing packet + first calls"
+    ],
+    "currentWeek": 1,
+    "weekRange": "2026-06-15 → 2026-06-21"
+  },
+  "warRoom": {
+    "weeksRemaining": 20,
+    "currentWeek": 1,
+    "weekRange": "2026-06-15 → 2026-06-21",
+    "projectedVotes": 410197,
+    "lane2Potential": 51051,
+    "registrationGoal": 50000,
+    "registrationProgress": 0,
+    "endorsementsRequested": 0,
+    "endorsementsEndorsed": 0,
+    "volunteerLeadersGoal": 20,
+    "volunteerLeadersCurrent": 0,
+    "upcomingEvents": 14,
+    "countiesCovered": 29,
+    "countiesTotal": 75,
+    "hciTotal": 0,
+    "hciGoal": 250000,
+    "hciCompletionPct": 0,
+    "calendarTruthVerified": 122,
+    "calendarTruthGoal": 300,
+    "calendarTruthPct": 40.7,
+    "phase9Ready": false,
+    "sherwoodGoal": "60%+",
+    "sherwoodVipSold": 0,
+    "sherwoodVipGoal": 20,
+    "sherwoodTicketsSold": 0,
+    "sherwoodVolunteers": 0,
+    "topPrioritiesThisWeek": [
+      "Volunteer Leadership Launch — June 28 · 6 PM · Zoom",
+      "Sherwood Event Sponsorship & VIP Table Sales",
+      "NAACP Branch Outreach — first 5 branches",
+      "Teacher Network Meetings — April Reisma pathway",
+      "Labor Outreach Preparation — briefing packet + first calls"
+    ]
+  },
+  "weekPlans": [
+    {
+      "weekNumber": 1,
+      "range": "2026-06-15 → 2026-06-21",
+      "status": "operational",
+      "cluster": "Central Arkansas Metro Cluster",
+      "clusterFocus": "Home-base launch · Sherwood/July 4 prep · founding volunteer team · first coalition outreach",
+      "cities": [
+        "Little Rock",
+        "North Little Rock",
+        "Sherwood",
+        "Conway"
+      ],
+      "counties": [
+        "Pulaski",
+        "Saline",
+        "Lonoke",
+        "Faulkner"
+      ],
+      "focus": "Central Metro launch · Sherwood prep · June 28 volunteer launch",
+      "events": [
+        "Jun 14–21 — Pulaski summer festivals & farmers markets",
+        "Jun 18–19 — Central Metro community stops",
+        "Jun 21 — Weekend visibility · Sherwood preview",
+        "Jun 28 — Volunteer leadership launch (Zoom · 6 PM)"
+      ],
+      "volunteerGoals": [
+        "Confirm 20 founding volunteer leaders for June 28",
+        "Assign county captains: Pulaski · Lonoke · Saline · Faulkner",
+        "First 50 Power of 5 conversations logged",
+        "Draft Mobilize events for July 3–4 (approval before publish)"
+      ],
+      "coalitionGoals": [
+        "Stand up endorsement volunteer team (3–5)",
+        "First union leadership outreach calls + briefing packet",
+        "NAACP: first 5 branch calls · speaking requests",
+        "AEA: schedule April Reisma county educator intro"
+      ],
+      "storytellingGoals": [
+        "2+ Substack stories from Central Metro",
+        "Social drafts for each Kelly stop (human approval)",
+        "Media advisory draft for July 3–4 Sherwood"
+      ],
+      "endorsementGoals": [
+        "10 endorsement asks initiated",
+        "Labor briefing packet sent to first 3 targets",
+        "NAACP speaking requests for 2 branches"
+      ],
+      "gotvGoals": [
+        "Po5 signup cards at every stop",
+        "Sherwood volunteer shift signup for July 3–4"
+      ],
+      "metrics": [
+        {
+          "label": "Founding volunteers confirmed",
+          "target": 20
+        },
+        {
+          "label": "VIP tables sold",
+          "target": 5
+        },
+        {
+          "label": "Po5 conversations",
+          "target": 50
+        },
+        {
+          "label": "County captains assigned",
+          "target": 4
+        },
+        {
+          "label": "Stories captured",
+          "target": 2
+        },
+        {
+          "label": "Registration forms",
+          "target": 100
+        }
+      ]
+    },
+    {
+      "weekNumber": 2,
+      "range": "2026-06-22 → 2026-06-28",
+      "status": "operational",
+      "cluster": "Northwest Arkansas Cluster",
+      "clusterFocus": "NWA presence · June 28 volunteer launch anchor · Benton County Fair relationship building",
+      "cities": [
+        "Fayetteville",
+        "Springdale",
+        "Rogers",
+        "Bentonville"
+      ],
+      "counties": [
+        "Washington",
+        "Benton",
+        "Madison",
+        "Carroll",
+        "Boone"
+      ],
+      "focus": "NWA · June 28 volunteer launch · Benton Fair prep",
+      "events": [
+        "Jun 28 — Volunteer leadership launch (Zoom · 6 PM) — statewide anchor",
+        "Benton County Fair prep (Sep 25 target)",
+        "NWA farmers markets & summer events",
+        "Benton AEA / ARTA meetings (verify schedule)"
+      ],
+      "volunteerGoals": [
+        "Execute June 28 launch — 20 founding leaders · Power of 5 training",
+        "Recruit NWA county captains (Benton · Washington)",
+        "Link first Mobilize events to launch attendees",
+        "100 Po5 conversations cumulative"
+      ],
+      "coalitionGoals": [
+        "Educator meetings in Benton + Washington (AEA pathway)",
+        "First business validator meetings in Rogers/Bentonville",
+        "NAACP Northwest contacts (verify branch activity)"
+      ],
+      "storytellingGoals": [
+        "Launch story: 20 leaders · 75 counties · one coalition",
+        "NWA local business spotlight (1)",
+        "Video clip from June 28 for social"
+      ],
+      "endorsementGoals": [
+        "Follow up 5 Week 1 asks",
+        "Schedule 2 educator endorsement conversations"
+      ],
+      "gotvGoals": [
+        "Po5 hosts commit in Benton + Washington",
+        "Volunteer shift templates for fair season"
+      ],
+      "metrics": [
+        {
+          "label": "Launch attendees (Zoom)",
+          "target": 40
+        },
+        {
+          "label": "Founding team confirmed",
+          "target": 20
+        },
+        {
+          "label": "NWA county captains",
+          "target": 2
+        },
+        {
+          "label": "VIP tables (cumulative)",
+          "target": 10
+        },
+        {
+          "label": "Stories published (cumulative)",
+          "target": 3
+        }
+      ]
+    },
+    {
+      "weekNumber": 3,
+      "range": "2026-06-29 → 2026-07-05",
+      "status": "operational",
+      "cluster": "River Valley Cluster",
+      "clusterFocus": "Fort Smith western anchor · July 4 corridor · clerk relationships (SOS race)",
+      "cities": [
+        "Fort Smith",
+        "Russellville",
+        "Clarksville"
+      ],
+      "counties": [
+        "Sebastian",
+        "Crawford",
+        "Pope",
+        "Yell",
+        "Johnson",
+        "Logan",
+        "Perry"
+      ],
+      "focus": "River Valley · July 4 corridor · clerk outreach",
+      "events": [
+        "Jul 3 — Sherwood Fireworks & Food Trucks (verified)",
+        "Jul 4 — Pops on the River · Little Rock (verified)",
+        "Fort Smith — candidate forum prep",
+        "Yell County Fair prep (Sep 7 verified)"
+      ],
+      "volunteerGoals": [
+        "Sherwood event execution — shifts · sign-in · Po5 signup",
+        "Fort Smith county captain assigned",
+        "Postcard team pilot (100 cards) for Pulaski drop-off blocks"
+      ],
+      "coalitionGoals": [
+        "Fort Smith city candidate partnership meeting",
+        "Clerk intro meetings: Sebastian · Crawford",
+        "Labor: River Valley union hall outreach (1 meeting)"
+      ],
+      "storytellingGoals": [
+        "July 4 story package — Sherwood + Pops on the River",
+        "Fort Smith listening tour Substack (1)",
+        "Local media advisory for River Valley (draft)"
+      ],
+      "endorsementGoals": [
+        "Clerk relationship → validator intro requests",
+        "1 labor meeting completed"
+      ],
+      "gotvGoals": [
+        "500+ contacts at Sherwood/July 4 events",
+        "Sign-in → Po5 pipeline operational"
+      ],
+      "metrics": [
+        {
+          "label": "Sherwood event attendance",
+          "target": 500
+        },
+        {
+          "label": "VIP tables (cumulative)",
+          "target": 15
+        },
+        {
+          "label": "Fort Smith contacts",
+          "target": 200
+        },
+        {
+          "label": "Clerk meetings",
+          "target": 2
+        },
+        {
+          "label": "Stories published (cumulative)",
+          "target": 5
+        }
+      ]
+    },
+    {
+      "weekNumber": 4,
+      "range": "2026-07-06 → 2026-07-12",
+      "status": "operational",
+      "cluster": "Northeast Arkansas Cluster",
+      "clusterFocus": "Jonesboro hub · Crowley's Ridge · fair circuit acceleration",
+      "cities": [
+        "Jonesboro",
+        "Paragould",
+        "Batesville"
+      ],
+      "counties": [
+        "Craighead",
+        "Greene",
+        "Lawrence",
+        "Randolph",
+        "Clay",
+        "Jackson"
+      ],
+      "focus": "NE fair circuit · Jonesboro hub",
+      "events": [
+        "Lawrence County Fair prep (Aug 10 verified)",
+        "Jonesboro — community · business · educator meetings",
+        "Jul 11 — Springdale Ozarks 250 Block Party (verified)"
+      ],
+      "volunteerGoals": [
+        "Jonesboro county captain + strike team roles filling",
+        "First phone bank session (relationship calls · 50 dials)",
+        "Greene + Lawrence Po5 hosts (1 each)"
+      ],
+      "coalitionGoals": [
+        "Jonesboro city candidate partnership",
+        "NAACP NE branch outreach",
+        "Educator network: Craighead + Greene"
+      ],
+      "storytellingGoals": [
+        "Crowley's Ridge story — Jonesboro business spotlight",
+        "Fair preview content for Lawrence + Randolph",
+        "2 Substack posts from NE week"
+      ],
+      "endorsementGoals": [
+        "2 official validator meetings scheduled",
+        "Educator intro from April Reisma pathway"
+      ],
+      "gotvGoals": [
+        "150 registration forms cumulative",
+        "Phone bank scripts tested in NE cluster"
+      ],
+      "metrics": [
+        {
+          "label": "Jonesboro contacts",
+          "target": 150
+        },
+        {
+          "label": "Phone bank dials",
+          "target": 50
+        },
+        {
+          "label": "VIP tables (final)",
+          "target": 20
+        },
+        {
+          "label": "County captains (NE)",
+          "target": 3
+        },
+        {
+          "label": "Registration forms (cumulative)",
+          "target": 150
+        }
+      ]
+    },
+    {
+      "weekNumber": 5,
+      "range": "2026-07-13 → 2026-07-19",
+      "status": "framework",
+      "cluster": "North Central Ozarks Cluster",
+      "cities": [
+        "Searcy (White)",
+        "Mountain Home (Baxter)"
+      ],
+      "focus": "Ozark fairs · Newton · Fulton · White County Fair prep",
+      "events": [
+        "Newton County Fair Aug 14",
+        "Fulton County Fair Jul 10",
+        "White County Fair Sep 14"
+      ]
+    },
+    {
+      "weekNumber": 6,
+      "range": "2026-07-20 → 2026-07-26",
+      "status": "framework",
+      "cluster": "Hot Springs & Ouachita Cluster",
+      "cities": [
+        "Hot Springs (Garland)",
+        "Arkadelphia (Clark)"
+      ],
+      "focus": "Spa City visibility · Ouachita clerk outreach",
+      "events": [
+        "Little River County Fair Aug 17",
+        "Nevada County Fair Sep 10",
+        "Pike County Fair Sep 7"
+      ]
+    },
+    {
+      "weekNumber": 7,
+      "range": "2026-07-27 → 2026-08-02",
+      "status": "framework",
+      "cluster": "Southeast Delta Cluster",
+      "cities": [
+        "Pine Bluff (Jefferson)",
+        "Stuttgart (Arkansas)"
+      ],
+      "focus": "Delta base recovery · Lane 2 focus",
+      "events": [
+        "Ashley County Fair Sep 4",
+        "Jefferson County outreach"
+      ]
+    },
+    {
+      "weekNumber": 8,
+      "range": "2026-08-03 → 2026-08-09",
+      "status": "framework",
+      "cluster": "Southwest Arkansas Cluster",
+      "cities": [
+        "Texarkana (Miller)",
+        "El Dorado (Union)"
+      ],
+      "focus": "Border media · Union County Fair Jul 23",
+      "events": [
+        "Lafayette County Fair Aug 31",
+        "Union County Fair Jul 23"
+      ]
+    },
+    {
+      "weekNumber": 9,
+      "range": "2026-08-10 → 2026-08-16",
+      "status": "skeleton",
+      "cluster": "Central Arkansas Metro Cluster",
+      "cities": [
+        "Little Rock",
+        "Conway"
+      ],
+      "focus": "Return to base · Lawrence County Fair Aug 10",
+      "events": [
+        "Lawrence County Fair",
+        "Pulaski registration drives"
+      ]
+    },
+    {
+      "weekNumber": 10,
+      "range": "2026-08-17 → 2026-08-23",
+      "status": "skeleton",
+      "cluster": "Northwest Arkansas Cluster",
+      "cities": [
+        "Fayetteville",
+        "Rogers"
+      ],
+      "focus": "NWA fair season peak · Benton County Fair Sep 25 prep",
+      "events": [
+        "Little River Fair Aug 17",
+        "Randolph County Fair Aug 24"
+      ]
+    },
+    {
+      "weekNumber": 11,
+      "range": "2026-08-24 → 2026-08-30",
+      "status": "skeleton",
+      "cluster": "River Valley Cluster",
+      "cities": [
+        "Fort Smith",
+        "Russellville"
+      ],
+      "focus": "Clerk conferences · Pope county model",
+      "events": [
+        "Randolph Fair Aug 24",
+        "Crawford Fair Sep 12 prep"
+      ]
+    },
+    {
+      "weekNumber": 12,
+      "range": "2026-08-31 → 2026-09-06",
+      "status": "skeleton",
+      "cluster": "Northeast Arkansas Cluster",
+      "cities": [
+        "Jonesboro",
+        "Paragould"
+      ],
+      "focus": "NE fair circuit · ASU registration",
+      "events": [
+        "Lafayette County Fair Aug 31",
+        "Yell County Fair Sep 7"
+      ]
+    },
+    {
+      "weekNumber": 13,
+      "range": "2026-09-07 → 2026-09-13",
+      "status": "skeleton",
+      "cluster": "North Central Ozarks Cluster",
+      "cities": [
+        "Mountain Home",
+        "Searcy"
+      ],
+      "focus": "Ozark fair peak",
+      "events": [
+        "Yell · Pike · Crawford fairs"
+      ]
+    },
+    {
+      "weekNumber": 14,
+      "range": "2026-09-14 → 2026-09-20",
+      "status": "skeleton",
+      "cluster": "Hot Springs & Ouachita Cluster",
+      "cities": [
+        "Hot Springs",
+        "Malvern"
+      ],
+      "focus": "Garland · Hot Spring counties",
+      "events": [
+        "White County Fair Sep 14",
+        "Nevada County Fair Sep 10"
+      ]
+    },
+    {
+      "weekNumber": 15,
+      "range": "2026-09-21 → 2026-09-27",
+      "status": "skeleton",
+      "cluster": "Southeast Delta Cluster",
+      "cities": [
+        "Pine Bluff",
+        "Helena-West Helena"
+      ],
+      "focus": "Delta GOTV foundation · forums wave",
+      "events": [
+        "Lonoke County Fair Sep 23",
+        "Clay County Fair Sep 12",
+        "Candidate forums (20 cities)"
+      ]
+    },
+    {
+      "weekNumber": 16,
+      "range": "2026-09-28 → 2026-10-04",
+      "status": "skeleton",
+      "cluster": "Southwest Arkansas Cluster",
+      "cities": [
+        "Texarkana",
+        "El Dorado"
+      ],
+      "focus": "SW persuasion · fair closeout · rural town halls",
+      "events": [
+        "Ashley · Lafayette fairs",
+        "Rural election town halls (10 counties)"
+      ]
+    },
+    {
+      "weekNumber": 17,
+      "range": "2026-10-05 → 2026-10-11",
+      "status": "skeleton",
+      "cluster": "Central Arkansas Metro Cluster",
+      "cities": [
+        "Little Rock",
+        "Sherwood"
+      ],
+      "focus": "Metro GOTV · early vote prep",
+      "events": [
+        "Benton County Fair Sep 25",
+        "Chamber · Rotary"
+      ]
+    },
+    {
+      "weekNumber": 18,
+      "range": "2026-10-12 → 2026-10-18",
+      "status": "skeleton",
+      "cluster": "Northwest Arkansas Cluster",
+      "cities": [
+        "Springdale",
+        "Bentonville"
+      ],
+      "focus": "NWA GOTV · student turnout",
+      "events": [
+        "Campus · early vote sites"
+      ]
+    },
+    {
+      "weekNumber": 19,
+      "range": "2026-10-19 → 2026-10-25",
+      "status": "skeleton",
+      "cluster": "Statewide GOTV Sprint",
+      "cities": [
+        "All clusters"
+      ],
+      "focus": "Phone banks · postcards · Po5 activation",
+      "events": [
+        "GOTV launch — no new fairs"
+      ]
+    },
+    {
+      "weekNumber": 20,
+      "range": "2026-10-26 → 2026-11-03",
+      "status": "skeleton",
+      "cluster": "Election Week",
+      "cities": [
+        "Statewide"
+      ],
+      "focus": "Election Day execution · clerk support · final push",
+      "events": [
+        "Election Day Nov 3 · poll monitoring · thank-you"
+      ]
+    }
+  ],
+  "campaignTimeline": [
+    {
+      "weekNumber": 1,
+      "date": "2026-06-15",
+      "label": "20-week execution begins · Central Metro",
+      "category": "other",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 2,
+      "date": "2026-06-28",
+      "label": "Volunteer Leadership Launch · Zoom 6 PM",
+      "category": "volunteer",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 2,
+      "date": "2026-06-28",
+      "label": "Forevermost Farms retreat (schedule TBD)",
+      "category": "volunteer",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 3,
+      "date": "2026-07-03",
+      "label": "Sherwood Fireworks & Food Trucks",
+      "category": "sherwood",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 3,
+      "date": "2026-07-04",
+      "label": "Pops on the River · Little Rock",
+      "category": "sherwood",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 4,
+      "date": "2026-07-06",
+      "label": "Northeast fair circuit · Jonesboro hub",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 5,
+      "date": "2026-07-10",
+      "label": "Fulton County Fair",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 8,
+      "date": "2026-07-23",
+      "label": "Union County Fair",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 9,
+      "date": "2026-08-10",
+      "label": "Lawrence County Fair",
+      "category": "fair",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 10,
+      "date": "2026-08-17",
+      "label": "Little River County Fair",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 11,
+      "date": "2026-08-24",
+      "label": "Randolph County Fair",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 12,
+      "date": "2026-08-31",
+      "label": "Lafayette County Fair",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 13,
+      "date": "2026-09-04",
+      "label": "Ashley County Fair",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 13,
+      "date": "2026-09-07",
+      "label": "Yell & Pike County Fairs",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 14,
+      "date": "2026-09-12",
+      "label": "Clay & Crawford County Fairs",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 14,
+      "date": "2026-09-14",
+      "label": "White County Fair",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 15,
+      "date": "2026-09-21",
+      "label": "Candidate forums wave (20 cities)",
+      "category": "forum",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 15,
+      "date": "2026-09-23",
+      "label": "Lonoke County Fair",
+      "category": "fair",
+      "importance": "standard"
+    },
+    {
+      "weekNumber": 15,
+      "date": "2026-09-25",
+      "label": "Benton County Fair",
+      "category": "fair",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 16,
+      "date": "2026-10-01",
+      "label": "Rural election town halls (10 counties)",
+      "category": "forum",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 17,
+      "date": "2026-10-05",
+      "label": "Metro GOTV · early vote prep",
+      "category": "gotv",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 18,
+      "date": "2026-10-12",
+      "label": "NWA GOTV · campus turnout",
+      "category": "gotv",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 19,
+      "date": "2026-10-19",
+      "label": "Statewide GOTV sprint launch",
+      "category": "gotv",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 20,
+      "date": "2026-10-26",
+      "label": "Election Week operations",
+      "category": "election",
+      "importance": "major"
+    },
+    {
+      "weekNumber": 20,
+      "date": "2026-11-03",
+      "label": "Election Day",
+      "category": "election",
+      "importance": "major"
+    }
+  ]
+}

@@ -3,7 +3,7 @@
  */
 
 import type { OfficeAreaConfig } from "@/content/office/office-types";
-import { OFFICE_LAYER_EYEBROWS } from "@/content/office/office-layer-labels";
+import { OFFICE_LAYER_EYEBROWS, OFFICE_LAYER_KELLY_EYEBROW } from "@/content/office/office-layer-labels";
 import {
   kellyBringsStewardshipCloser,
   kellyBringsTelecomSection,
@@ -81,7 +81,7 @@ export const capitolAreaConfig: OfficeAreaConfig = {
     ],
   },
   layerThree: {
-    eyebrow: OFFICE_LAYER_EYEBROWS[3],
+    eyebrow: OFFICE_LAYER_KELLY_EYEBROW,
     title: "What Kelly Brings: Capitol & Public Safety",
     intro:
       "Managing the Capitol is an operational responsibility—systems that hold, people who are supported, and leadership steady enough to keep public service functioning.",

@@ -1,0 +1,365 @@
+{
+  "version": 2,
+  "generatedAt": "2026-06-15",
+  "timeline": [
+    { "weekNumber": 1, "date": "2026-06-15", "label": "20-week execution begins · Central Metro", "category": "other", "importance": "major" },
+    { "weekNumber": 2, "date": "2026-06-28", "label": "Volunteer Leadership Launch · Zoom 6 PM", "category": "volunteer", "importance": "major" },
+    { "weekNumber": 2, "date": "2026-06-28", "label": "Forevermost Farms retreat (schedule TBD)", "category": "volunteer", "importance": "standard" },
+    { "weekNumber": 3, "date": "2026-07-03", "label": "Sherwood Fireworks & Food Trucks", "category": "sherwood", "importance": "major" },
+    { "weekNumber": 3, "date": "2026-07-04", "label": "Pops on the River · Little Rock", "category": "sherwood", "importance": "major" },
+    { "weekNumber": 4, "date": "2026-07-06", "label": "Northeast fair circuit · Jonesboro hub", "category": "fair", "importance": "standard" },
+    { "weekNumber": 5, "date": "2026-07-10", "label": "Fulton County Fair", "category": "fair", "importance": "standard" },
+    { "weekNumber": 8, "date": "2026-07-23", "label": "Union County Fair", "category": "fair", "importance": "standard" },
+    { "weekNumber": 9, "date": "2026-08-10", "label": "Lawrence County Fair", "category": "fair", "importance": "major" },
+    { "weekNumber": 10, "date": "2026-08-17", "label": "Little River County Fair", "category": "fair", "importance": "standard" },
+    { "weekNumber": 11, "date": "2026-08-24", "label": "Randolph County Fair", "category": "fair", "importance": "standard" },
+    { "weekNumber": 12, "date": "2026-08-31", "label": "Lafayette County Fair", "category": "fair", "importance": "standard" },
+    { "weekNumber": 13, "date": "2026-09-04", "label": "Ashley County Fair", "category": "fair", "importance": "standard" },
+    { "weekNumber": 13, "date": "2026-09-07", "label": "Yell & Pike County Fairs", "category": "fair", "importance": "standard" },
+    { "weekNumber": 14, "date": "2026-09-12", "label": "Clay & Crawford County Fairs", "category": "fair", "importance": "standard" },
+    { "weekNumber": 14, "date": "2026-09-14", "label": "White County Fair", "category": "fair", "importance": "standard" },
+    { "weekNumber": 15, "date": "2026-09-21", "label": "Candidate forums wave (20 cities)", "category": "forum", "importance": "major" },
+    { "weekNumber": 15, "date": "2026-09-23", "label": "Lonoke County Fair", "category": "fair", "importance": "standard" },
+    { "weekNumber": 15, "date": "2026-09-25", "label": "Benton County Fair", "category": "fair", "importance": "major" },
+    { "weekNumber": 16, "date": "2026-10-01", "label": "Rural election town halls (10 counties)", "category": "forum", "importance": "major" },
+    { "weekNumber": 17, "date": "2026-10-05", "label": "Metro GOTV · early vote prep", "category": "gotv", "importance": "major" },
+    { "weekNumber": 18, "date": "2026-10-12", "label": "NWA GOTV · campus turnout", "category": "gotv", "importance": "major" },
+    { "weekNumber": 19, "date": "2026-10-19", "label": "Statewide GOTV sprint launch", "category": "gotv", "importance": "major" },
+    { "weekNumber": 20, "date": "2026-10-26", "label": "Election Week operations", "category": "election", "importance": "major" },
+    { "weekNumber": 20, "date": "2026-11-03", "label": "Election Day", "category": "election", "importance": "major" }
+  ],
+  "weeks": [
+    {
+      "weekNumber": 1,
+      "range": "2026-06-15 → 2026-06-21",
+      "status": "operational",
+      "cluster": "Central Arkansas Metro Cluster",
+      "clusterFocus": "Home-base launch · Sherwood/July 4 prep · founding volunteer team · first coalition outreach",
+      "cities": ["Little Rock", "North Little Rock", "Sherwood", "Conway"],
+      "counties": ["Pulaski", "Saline", "Lonoke", "Faulkner"],
+      "focus": "Central Metro launch · Sherwood prep · June 28 volunteer launch",
+      "events": [
+        "Jun 14–21 — Pulaski summer festivals & farmers markets",
+        "Jun 18–19 — Central Metro community stops",
+        "Jun 21 — Weekend visibility · Sherwood preview",
+        "Jun 28 — Volunteer leadership launch (Zoom · 6 PM)"
+      ],
+      "volunteerGoals": [
+        "Confirm 20 founding volunteer leaders for June 28",
+        "Assign county captains: Pulaski · Lonoke · Saline · Faulkner",
+        "First 50 Power of 5 conversations logged",
+        "Draft Mobilize events for July 3–4 (approval before publish)"
+      ],
+      "coalitionGoals": [
+        "Stand up endorsement volunteer team (3–5)",
+        "First union leadership outreach calls + briefing packet",
+        "NAACP: first 5 branch calls · speaking requests",
+        "AEA: schedule April Reisma county educator intro"
+      ],
+      "storytellingGoals": [
+        "2+ Substack stories from Central Metro",
+        "Social drafts for each Kelly stop (human approval)",
+        "Media advisory draft for July 3–4 Sherwood"
+      ],
+      "endorsementGoals": [
+        "10 endorsement asks initiated",
+        "Labor briefing packet sent to first 3 targets",
+        "NAACP speaking requests for 2 branches"
+      ],
+      "gotvGoals": [
+        "Po5 signup cards at every stop",
+        "Sherwood volunteer shift signup for July 3–4"
+      ],
+      "metrics": [
+        { "label": "Founding volunteers confirmed", "target": 20 },
+        { "label": "VIP tables sold", "target": 5 },
+        { "label": "Po5 conversations", "target": 50 },
+        { "label": "County captains assigned", "target": 4 },
+        { "label": "Stories captured", "target": 2 },
+        { "label": "Registration forms", "target": 100 }
+      ]
+    },
+    {
+      "weekNumber": 2,
+      "range": "2026-06-22 → 2026-06-28",
+      "status": "operational",
+      "cluster": "Northwest Arkansas Cluster",
+      "clusterFocus": "NWA presence · June 28 volunteer launch anchor · Benton County Fair relationship building",
+      "cities": ["Fayetteville", "Springdale", "Rogers", "Bentonville"],
+      "counties": ["Washington", "Benton", "Madison", "Carroll", "Boone"],
+      "focus": "NWA · June 28 volunteer launch · Benton Fair prep",
+      "events": [
+        "Jun 28 — Volunteer leadership launch (Zoom · 6 PM) — statewide anchor",
+        "Benton County Fair prep (Sep 25 target)",
+        "NWA farmers markets & summer events",
+        "Benton AEA / ARTA meetings (verify schedule)"
+      ],
+      "volunteerGoals": [
+        "Execute June 28 launch — 20 founding leaders · Power of 5 training",
+        "Recruit NWA county captains (Benton · Washington)",
+        "Link first Mobilize events to launch attendees",
+        "100 Po5 conversations cumulative"
+      ],
+      "coalitionGoals": [
+        "Educator meetings in Benton + Washington (AEA pathway)",
+        "First business validator meetings in Rogers/Bentonville",
+        "NAACP Northwest contacts (verify branch activity)"
+      ],
+      "storytellingGoals": [
+        "Launch story: 20 leaders · 75 counties · one coalition",
+        "NWA local business spotlight (1)",
+        "Video clip from June 28 for social"
+      ],
+      "endorsementGoals": [
+        "Follow up 5 Week 1 asks",
+        "Schedule 2 educator endorsement conversations"
+      ],
+      "gotvGoals": [
+        "Po5 hosts commit in Benton + Washington",
+        "Volunteer shift templates for fair season"
+      ],
+      "metrics": [
+        { "label": "Launch attendees (Zoom)", "target": 40 },
+        { "label": "Founding team confirmed", "target": 20 },
+        { "label": "NWA county captains", "target": 2 },
+        { "label": "VIP tables (cumulative)", "target": 10 },
+        { "label": "Stories published (cumulative)", "target": 3 }
+      ]
+    },
+    {
+      "weekNumber": 3,
+      "range": "2026-06-29 → 2026-07-05",
+      "status": "operational",
+      "cluster": "River Valley Cluster",
+      "clusterFocus": "Fort Smith western anchor · July 4 corridor · clerk relationships (SOS race)",
+      "cities": ["Fort Smith", "Russellville", "Clarksville"],
+      "counties": ["Sebastian", "Crawford", "Pope", "Yell", "Johnson", "Logan", "Perry"],
+      "focus": "River Valley · July 4 corridor · clerk outreach",
+      "events": [
+        "Jul 3 — Sherwood Fireworks & Food Trucks (verified)",
+        "Jul 4 — Pops on the River · Little Rock (verified)",
+        "Fort Smith — candidate forum prep",
+        "Yell County Fair prep (Sep 7 verified)"
+      ],
+      "volunteerGoals": [
+        "Sherwood event execution — shifts · sign-in · Po5 signup",
+        "Fort Smith county captain assigned",
+        "Postcard team pilot (100 cards) for Pulaski drop-off blocks"
+      ],
+      "coalitionGoals": [
+        "Fort Smith city candidate partnership meeting",
+        "Clerk intro meetings: Sebastian · Crawford",
+        "Labor: River Valley union hall outreach (1 meeting)"
+      ],
+      "storytellingGoals": [
+        "July 4 story package — Sherwood + Pops on the River",
+        "Fort Smith listening tour Substack (1)",
+        "Local media advisory for River Valley (draft)"
+      ],
+      "endorsementGoals": [
+        "Clerk relationship → validator intro requests",
+        "1 labor meeting completed"
+      ],
+      "gotvGoals": [
+        "500+ contacts at Sherwood/July 4 events",
+        "Sign-in → Po5 pipeline operational"
+      ],
+      "metrics": [
+        { "label": "Sherwood event attendance", "target": 500 },
+        { "label": "VIP tables (cumulative)", "target": 15 },
+        { "label": "Fort Smith contacts", "target": 200 },
+        { "label": "Clerk meetings", "target": 2 },
+        { "label": "Stories published (cumulative)", "target": 5 }
+      ]
+    },
+    {
+      "weekNumber": 4,
+      "range": "2026-07-06 → 2026-07-12",
+      "status": "operational",
+      "cluster": "Northeast Arkansas Cluster",
+      "clusterFocus": "Jonesboro hub · Crowley's Ridge · fair circuit acceleration",
+      "cities": ["Jonesboro", "Paragould", "Batesville"],
+      "counties": ["Craighead", "Greene", "Lawrence", "Randolph", "Clay", "Jackson"],
+      "focus": "NE fair circuit · Jonesboro hub",
+      "events": [
+        "Lawrence County Fair prep (Aug 10 verified)",
+        "Jonesboro — community · business · educator meetings",
+        "Jul 11 — Springdale Ozarks 250 Block Party (verified)"
+      ],
+      "volunteerGoals": [
+        "Jonesboro county captain + strike team roles filling",
+        "First phone bank session (relationship calls · 50 dials)",
+        "Greene + Lawrence Po5 hosts (1 each)"
+      ],
+      "coalitionGoals": [
+        "Jonesboro city candidate partnership",
+        "NAACP NE branch outreach",
+        "Educator network: Craighead + Greene"
+      ],
+      "storytellingGoals": [
+        "Crowley's Ridge story — Jonesboro business spotlight",
+        "Fair preview content for Lawrence + Randolph",
+        "2 Substack posts from NE week"
+      ],
+      "endorsementGoals": [
+        "2 official validator meetings scheduled",
+        "Educator intro from April Reisma pathway"
+      ],
+      "gotvGoals": [
+        "150 registration forms cumulative",
+        "Phone bank scripts tested in NE cluster"
+      ],
+      "metrics": [
+        { "label": "Jonesboro contacts", "target": 150 },
+        { "label": "Phone bank dials", "target": 50 },
+        { "label": "VIP tables (final)", "target": 20 },
+        { "label": "County captains (NE)", "target": 3 },
+        { "label": "Registration forms (cumulative)", "target": 150 }
+      ]
+    },
+    {
+      "weekNumber": 5,
+      "range": "2026-07-13 → 2026-07-19",
+      "status": "framework",
+      "cluster": "North Central Ozarks Cluster",
+      "cities": ["Searcy (White)", "Mountain Home (Baxter)"],
+      "focus": "Ozark fairs · Newton · Fulton · White County Fair prep",
+      "events": ["Newton County Fair Aug 14", "Fulton County Fair Jul 10", "White County Fair Sep 14"]
+    },
+    {
+      "weekNumber": 6,
+      "range": "2026-07-20 → 2026-07-26",
+      "status": "framework",
+      "cluster": "Hot Springs & Ouachita Cluster",
+      "cities": ["Hot Springs (Garland)", "Arkadelphia (Clark)"],
+      "focus": "Spa City visibility · Ouachita clerk outreach",
+      "events": ["Little River County Fair Aug 17", "Nevada County Fair Sep 10", "Pike County Fair Sep 7"]
+    },
+    {
+      "weekNumber": 7,
+      "range": "2026-07-27 → 2026-08-02",
+      "status": "framework",
+      "cluster": "Southeast Delta Cluster",
+      "cities": ["Pine Bluff (Jefferson)", "Stuttgart (Arkansas)"],
+      "focus": "Delta base recovery · Lane 2 focus",
+      "events": ["Ashley County Fair Sep 4", "Jefferson County outreach"]
+    },
+    {
+      "weekNumber": 8,
+      "range": "2026-08-03 → 2026-08-09",
+      "status": "framework",
+      "cluster": "Southwest Arkansas Cluster",
+      "cities": ["Texarkana (Miller)", "El Dorado (Union)"],
+      "focus": "Border media · Union County Fair Jul 23",
+      "events": ["Lafayette County Fair Aug 31", "Union County Fair Jul 23"]
+    },
+    {
+      "weekNumber": 9,
+      "range": "2026-08-10 → 2026-08-16",
+      "status": "skeleton",
+      "cluster": "Central Arkansas Metro Cluster",
+      "cities": ["Little Rock", "Conway"],
+      "focus": "Return to base · Lawrence County Fair Aug 10",
+      "events": ["Lawrence County Fair", "Pulaski registration drives"]
+    },
+    {
+      "weekNumber": 10,
+      "range": "2026-08-17 → 2026-08-23",
+      "status": "skeleton",
+      "cluster": "Northwest Arkansas Cluster",
+      "cities": ["Fayetteville", "Rogers"],
+      "focus": "NWA fair season peak · Benton County Fair Sep 25 prep",
+      "events": ["Little River Fair Aug 17", "Randolph County Fair Aug 24"]
+    },
+    {
+      "weekNumber": 11,
+      "range": "2026-08-24 → 2026-08-30",
+      "status": "skeleton",
+      "cluster": "River Valley Cluster",
+      "cities": ["Fort Smith", "Russellville"],
+      "focus": "Clerk conferences · Pope county model",
+      "events": ["Randolph Fair Aug 24", "Crawford Fair Sep 12 prep"]
+    },
+    {
+      "weekNumber": 12,
+      "range": "2026-08-31 → 2026-09-06",
+      "status": "skeleton",
+      "cluster": "Northeast Arkansas Cluster",
+      "cities": ["Jonesboro", "Paragould"],
+      "focus": "NE fair circuit · ASU registration",
+      "events": ["Lafayette County Fair Aug 31", "Yell County Fair Sep 7"]
+    },
+    {
+      "weekNumber": 13,
+      "range": "2026-09-07 → 2026-09-13",
+      "status": "skeleton",
+      "cluster": "North Central Ozarks Cluster",
+      "cities": ["Mountain Home", "Searcy"],
+      "focus": "Ozark fair peak",
+      "events": ["Yell · Pike · Crawford fairs"]
+    },
+    {
+      "weekNumber": 14,
+      "range": "2026-09-14 → 2026-09-20",
+      "status": "skeleton",
+      "cluster": "Hot Springs & Ouachita Cluster",
+      "cities": ["Hot Springs", "Malvern"],
+      "focus": "Garland · Hot Spring counties",
+      "events": ["White County Fair Sep 14", "Nevada County Fair Sep 10"]
+    },
+    {
+      "weekNumber": 15,
+      "range": "2026-09-21 → 2026-09-27",
+      "status": "skeleton",
+      "cluster": "Southeast Delta Cluster",
+      "cities": ["Pine Bluff", "Helena-West Helena"],
+      "focus": "Delta GOTV foundation · forums wave",
+      "events": ["Lonoke County Fair Sep 23", "Clay County Fair Sep 12", "Candidate forums (20 cities)"]
+    },
+    {
+      "weekNumber": 16,
+      "range": "2026-09-28 → 2026-10-04",
+      "status": "skeleton",
+      "cluster": "Southwest Arkansas Cluster",
+      "cities": ["Texarkana", "El Dorado"],
+      "focus": "SW persuasion · fair closeout · rural town halls",
+      "events": ["Ashley · Lafayette fairs", "Rural election town halls (10 counties)"]
+    },
+    {
+      "weekNumber": 17,
+      "range": "2026-10-05 → 2026-10-11",
+      "status": "skeleton",
+      "cluster": "Central Arkansas Metro Cluster",
+      "cities": ["Little Rock", "Sherwood"],
+      "focus": "Metro GOTV · early vote prep",
+      "events": ["Benton County Fair Sep 25", "Chamber · Rotary"]
+    },
+    {
+      "weekNumber": 18,
+      "range": "2026-10-12 → 2026-10-18",
+      "status": "skeleton",
+      "cluster": "Northwest Arkansas Cluster",
+      "cities": ["Springdale", "Bentonville"],
+      "focus": "NWA GOTV · student turnout",
+      "events": ["Campus · early vote sites"]
+    },
+    {
+      "weekNumber": 19,
+      "range": "2026-10-19 → 2026-10-25",
+      "status": "skeleton",
+      "cluster": "Statewide GOTV Sprint",
+      "cities": ["All clusters"],
+      "focus": "Phone banks · postcards · Po5 activation",
+      "events": ["GOTV launch — no new fairs"]
+    },
+    {
+      "weekNumber": 20,
+      "range": "2026-10-26 → 2026-11-03",
+      "status": "skeleton",
+      "cluster": "Election Week",
+      "cities": ["Statewide"],
+      "focus": "Election Day execution · clerk support · final push",
+      "events": ["Election Day Nov 3 · poll monitoring · thank-you"]
+    }
+  ]
+}

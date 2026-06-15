@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "note": "Log Kelly/surrogate/county team visits. Auto-merged from event-outcomes on build. Add manual visits as field work lands.",
+  "visits": [
+    {
+      "county": "Faulkner",
+      "date": "2026-05-02",
+      "eventId": "fest-2026-05-02-toad-suck-daze",
+      "assignee": "Kelly",
+      "source": "manual"
+    },
+    {
+      "county": "Columbia",
+      "date": "2026-05-16",
+      "eventId": "fest-2026-05-16-magnolia-blossom-festival-world-championship-steak-cookoff",
+      "assignee": "Kelly",
+      "source": "manual"
+    },
+    {
+      "county": "Pulaski",
+      "date": "2026-05-18",
+      "eventId": "fest-2026-05-18-pulaski-county-dems",
+      "assignee": "Kelly",
+      "source": "manual"
+    }
+  ]
+}

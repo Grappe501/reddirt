@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "note": "Clerk relationship seed — update from field CRM / admin. ACCA president: Faulkner County Clerk Margaret Darter.",
+  "meetings": {
+    "Faulkner": { "status": "Developing", "meetings": 1, "followUps": 0, "priority": "High", "source": "ACCA 2026 conference" },
+    "Stone": { "status": "Developing", "meetings": 1, "followUps": 0, "priority": "Medium", "source": "ACCA 2026 Mountain View venue county" }
+  },
+  "defaultStatus": "Unknown",
+  "defaultPriorityByTier": { "A": "High", "B": "Medium", "C": "Low", "D": "Low" }
+}

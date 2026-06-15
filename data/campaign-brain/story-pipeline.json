@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-15T02:20:28.709Z",
+  "workflow": [
+    "Campaign Brain",
+    "Mobilize",
+    "Event",
+    "Content Capture",
+    "Story Publication",
+    "Email",
+    "Social",
+    "Community Sharing",
+    "Volunteer Recruitment"
+  ],
+  "pyramid": [
+    {
+      "level": 1,
+      "label": "15-second vertical video",
+      "timing": "Same day",
+      "key": "verticalVideo"
+    },
+    {
+      "level": 2,
+      "label": "Photo carousel",
+      "timing": "Same day",
+      "key": "photoCarousel"
+    },
+    {
+      "level": 3,
+      "label": "Local spotlight story",
+      "timing": "Next day",
+      "key": "localStory"
+    },
+    {
+      "level": 4,
+      "label": "Substack article",
+      "timing": "Within week",
+      "key": "substack"
+    },
+    {
+      "level": 5,
+      "label": "Email recap",
+      "timing": "Weekly",
+      "key": "emailRecap"
+    }
+  ],
+  "cadence": [
+    {
+      "day": "Monday",
+      "activity": "Live stop — vertical video same day"
+    },
+    {
+      "day": "Tuesday",
+      "activity": "Story from Monday — local angle"
+    },
+    {
+      "day": "Wednesday",
+      "activity": "Another angle from Monday stop"
+    },
+    {
+      "day": "Thursday",
+      "activity": "Local business spotlight"
+    },
+    {
+      "day": "Friday",
+      "activity": "Weekend event teaser"
+    },
+    {
+      "day": "Saturday",
+      "activity": "Live event — carousel + clip"
+    },
+    {
+      "day": "Sunday",
+      "activity": "Weekly recap email + Substack if ready"
+    }
+  ],
+  "categories": [
+    {
+      "id": "local_business",
+      "label": "Local Business Spotlight",
+      "goal": 200
+    },
+    {
+      "id": "teacher",
+      "label": "Teacher Spotlight",
+      "goal": 75
+    },
+    {
+      "id": "student",
+      "label": "Student Spotlight",
+      "goal": 50
+    },
+    {
+      "id": "veteran",
+      "label": "Veteran Spotlight",
+      "goal": 75
+    },
+    {
+      "id": "volunteer",
+      "label": "Volunteer Spotlight",
+      "goal": 100
+    },
+    {
+      "id": "faith_leader",
+      "label": "Faith Leader Spotlight",
+      "goal": 75
+    },
+    {
+      "id": "community_organization",
+      "label": "Community Organization Spotlight",
+      "goal": 150
+    },
+    {
+      "id": "arkansas_success",
+      "label": "Arkansas Success Story",
+      "goal": 150
+    },
+    {
+      "id": "arkansas_challenge",
+      "label": "Arkansas Challenge Story",
+      "goal": 100
+    }
+  ],
+  "stats": {
+    "pending": 0,
+    "published": 0,
+    "shared": 0,
+    "byCounty": []
+  }
+}

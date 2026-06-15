@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "note": "Faith outreach network — expand clerk/faith layers with field deployment. Re-run campaign-brain:build.",
+  "statewide": {
+    "churchesVisited": 0,
+    "pastorsEngaged": 0,
+    "faithEventsAttended": 0,
+    "muslimOutreachContacts": 0,
+    "jewishOutreachContacts": 0,
+    "communityFaithEvents": 0,
+    "volunteerRecruits": 0
+  },
+  "churches": [],
+  "events": []
+}

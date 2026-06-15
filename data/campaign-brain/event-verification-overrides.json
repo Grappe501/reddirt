@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "note": "War room field capture. Re-run campaign-brain:build after updates.",
+  "overrides": {},
+  "_example": {
+    "fair-f547de299001609800b30d85": {
+      "status": "verified",
+      "date": "2026-08-12",
+      "location": "Benton County Fairgrounds, Bentonville",
+      "contactPerson": "Fair Board President — name / phone",
+      "estimatedAttendance": 8500,
+      "vendorDeadline": "2026-07-15",
+      "sponsorshipOpportunities": "Livestock auction sponsor · opening night",
+      "verifiedBy": "Team A",
+      "verifiedAt": "2026-06-15"
+    }
+  }
+}

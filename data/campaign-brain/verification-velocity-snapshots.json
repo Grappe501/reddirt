@@ -1,0 +1,18 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-06-14",
+      "verifiedEvents": 3,
+      "tentativeEvents": 250,
+      "missingEvents": 87,
+      "countyOwnersAssigned": 0
+    },
+    {
+      "date": "2026-06-15",
+      "verifiedEvents": 122,
+      "tentativeEvents": 250,
+      "missingEvents": 99,
+      "countyOwnersAssigned": 0
+    }
+  ]
+}

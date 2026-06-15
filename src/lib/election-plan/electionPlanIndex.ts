@@ -1,0 +1,125 @@
+import type { ElectionPlanArchitectureSection } from "./types";
+
+/** Static table-of-contents for the 300-page plan architecture (Tab 10). */
+export const ELECTION_PLAN_ARCHITECTURE: ElectionPlanArchitectureSection[] = [
+  {
+    id: "executive-mission",
+    title: "Executive Mission Briefing",
+    description: "Why Kelly can win a plurality · campaign phase · Brain status",
+    path: "docs/strategic-plan/plurality-victory-plan/executive-mission-briefing",
+  },
+  {
+    id: "part-i",
+    title: "Part I — Theory of Victory",
+    description: "Four lanes · Big Table Democrat · coalition identity",
+    path: "docs/strategic-plan/plurality-victory-plan/part-i-theory-of-victory",
+    children: [
+      {
+        id: "four-lanes",
+        title: "Four-Lane Model",
+        description: "Retention · Reactivation · Registration · Conversion",
+        path: "docs/strategic-plan/plurality-victory-plan/part-i-theory-of-victory/chapter-01-four-lane-model",
+      },
+      {
+        id: "big-table",
+        title: "Big Table Democrat Doctrine",
+        description: "Working-class coalition · dignity · nonpartisan local offices",
+        path: "docs/campaign-brain/relational-organizing/BIG-TABLE-DEMOCRAT-DOCTRINE.md",
+      },
+    ],
+  },
+  {
+    id: "part-ii",
+    title: "Part II — Electoral Math",
+    description: "Drop-off · registration · scenarios · opportunity scorecard",
+    path: "docs/strategic-plan/plurality-victory-plan/part-ii-electoral-math",
+    children: [
+      {
+        id: "drop-off",
+        title: "Democratic Drop-Off",
+        description: "102,070 raw · 51,051 @ 50%",
+        path: "docs/strategic-plan/plurality-victory-plan/part-ii-electoral-math/chapter-04-democratic-drop-off",
+      },
+      {
+        id: "registration",
+        title: "50,000 New Voter Plan",
+        description: "County allocation · weekly pace",
+        path: "docs/strategic-plan/plurality-victory-plan/part-ii-electoral-math/chapter-05-fifty-thousand-new-voter-plan",
+      },
+      {
+        id: "scenarios",
+        title: "Scenario Engine",
+        description: "Conservative · Expected · Aggressive",
+        path: "docs/campaign-brain/scenario-engine",
+      },
+    ],
+  },
+  {
+    id: "part-iii",
+    title: "Part III — Arkansas Battlefield",
+    description: "Top 40 cities · Top 10 deep dives · 75 county playbooks",
+    path: "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield",
+    children: [
+      {
+        id: "top-40",
+        title: "Top 40 City Strategy",
+        description: "207,507 vote target",
+        path: "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy",
+      },
+      {
+        id: "county-playbooks",
+        title: "75 County Playbooks",
+        description: "VCI-ranked missions",
+        path: "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook",
+      },
+    ],
+  },
+  {
+    id: "part-iv",
+    title: "Part IV — 20-Week Execution",
+    description: "Cluster-week approach · candidates until Calendar Truth",
+    path: "docs/strategic-plan/plurality-victory-plan/part-iv-twenty-week-execution",
+  },
+  {
+    id: "part-v",
+    title: "Part V — Secretary of State Strategy",
+    description: "Office-specific lane · clerks · election integrity",
+    path: "docs/strategic-plan/plurality-victory-plan/part-v-secretary-of-state-strategy",
+  },
+  {
+    id: "part-vi",
+    title: "Part VI — Campaign Dashboard",
+    description: "Command center · four lanes · clusters",
+    path: "docs/strategic-plan/plurality-victory-plan/command-center",
+  },
+  {
+    id: "appendices",
+    title: "Appendices A–N",
+    description: "Reference tables · methodology · data sources",
+    path: "docs/strategic-plan/plurality-victory-plan/appendices",
+  },
+  {
+    id: "campaign-brain",
+    title: "Campaign Brain",
+    description: "Decision intelligence · weekly brief · learning loops",
+    path: "docs/campaign-brain",
+  },
+  {
+    id: "calendar-truth",
+    title: "Operation Calendar Truth",
+    description: "Verification sprint · field workbench · exit criteria",
+    path: "docs/campaign-brain/operations/OPERATION-CALENDAR-TRUTH.md",
+  },
+  {
+    id: "relational",
+    title: "Relational Organizing Engine",
+    description: "Relationship Capital · fifth execution engine",
+    path: "docs/campaign-brain/relational-organizing",
+  },
+  {
+    id: "governance",
+    title: "Governance Checkpoint",
+    description: "Brain health · Monday rhythm · leadership directive",
+    path: "docs/campaign-brain/governance",
+  },
+];

@@ -1,5 +1,8 @@
 # Kelly win target model V1 (scenario)
 
+> **Leadership methodology (how we decide target numbers):** [`docs/campaign-events/WIN_TARGET_METHODOLOGY.md`](../campaign-events/WIN_TARGET_METHODOLOGY.md)  
+> **Lock sheet:** [`docs/campaign-events/sprint-0-5/07-WIN_TARGET_METHODOLOGY_LOCK.md`](../campaign-events/sprint-0-5/07-WIN_TARGET_METHODOLOGY_LOCK.md)
+
 This document describes the **planning / scenario** math used in `data/election/kelly-win-target-scenario-v1.json`. It is **not** a public prediction of election outcomes. Staff and the Kelly agent use it to **recommend, explain, and prioritize** counties; **humans approve** field plans, spend, and outreach.
 
 ## Inputs

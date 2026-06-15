@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-15T02:55:34.540Z",
+  "heroLine": "Endorsements are validators — measure activation, not vanity.",
+  "requested": 0,
+  "meetingsScheduled": 0,
+  "presentationsGiven": 0,
+  "endorsed": 0,
+  "declined": 0,
+  "pending": 0,
+  "byTier": {
+    "tier1": 0,
+    "tier2": 0,
+    "tier3": 0,
+    "tier4": 0,
+    "tier5": 0
+  },
+  "institutional": {
+    "labor": 0,
+    "teacher": 0,
+    "civilRights": 0,
+    "total": 0
+  },
+  "currentOfficials": 0,
+  "formerOfficials": 0,
+  "communityLeaders": 0,
+  "candidatePartnerships": 0,
+  "volunteerLeadsGenerated": 0,
+  "donorLeadsGenerated": 0,
+  "activated": 0
+}

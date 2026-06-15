@@ -1,0 +1,106 @@
+# Faulkner County — Campaign Playbook
+
+> **Status:** Generated — operational county mission
+> **Document:** Arkansas Plurality Victory Plan
+> **Classification:** CONFIDENTIAL CAMPAIGN DOCUMENT
+> **Part:** III — The Arkansas Battlefield
+> **Chapter:** 9
+> **County:** Faulkner
+> **FIPS:** 05045
+> **Opportunity Tier:** A (rank #5)
+> **VCI Rank:** #4 of 75 · Priority 1
+
+---
+
+## County mission
+
+**Role:** Youth Registration County
+
+| Priority | Mission |
+| -------- | ------- |
+| **Primary** | New Voter Registration |
+| **Secondary** | Lane 2 Recovery |
+| **Tertiary** | Campus & School Outreach |
+
+**Deployment cluster:** Central Arkansas Metro Cluster
+
+---
+
+## Electoral section
+
+| Metric | Value |
+| ------ | ----: |
+| 2024 Presidential D | 17,752 |
+| 2022 Midterm SOS D | 12,778 |
+| Drop-off | **4,974** |
+| Recovery @ 25% | 1,244 |
+| Recovery @ 50% | **2,487** |
+| Recovery @ 75% | 3,731 |
+| Hope Index | 24/100 (Limited) |
+| Win-target votes (county) | 16,672 |
+| Vote gain needed | 2,437 |
+
+*Detail: [Chapter 4 drop-off](../../part-ii-electoral-math/chapter-04-democratic-drop-off/counties/faulkner-county.md)*
+
+---
+
+## Registration section
+
+| Metric | Value |
+| ------ | ----: |
+| Registration goal | **2,361** |
+| Gap remaining | 2,361 |
+| Weekly pace (20 wk) | **119** / week |
+| Daily pace | **17** / day |
+
+*Detail: [Chapter 5 registration dashboard](../../part-ii-electoral-math/chapter-05-fifty-thousand-new-voter-plan/counties/faulkner-county.md)*
+
+---
+
+## Opportunity section
+
+| Metric | Value |
+| ------ | ----: |
+| Opportunity tier | **A** |
+| Statewide opportunity rank | **#5** |
+| Opportunity score | 8,104 |
+| Victory Contribution Index (VCI) | **16,572** |
+| Lane 2 @ 50% | 2,487 |
+| Registration goal | 2,361 |
+| Lane 4 peel potential (12%) | 3,256 |
+
+---
+
+## Cities in county (Top 40)
+
+- **Conway** — 8,468 target votes · University / youth registration hub
+
+---
+
+## Field operations targets
+
+| Field | Target |
+| ----- | -----: |
+| Power of 5 conversations | **33** |
+| Volunteer target | **197** |
+| Campaign visits (planning) | TBD |
+| County fair | Faulkner County Fair |
+
+Fair notes: send_local · route cluster: Central / Pulaski-Saline-Faulkner-Lonoke-White
+
+---
+
+## Faith · business · clerk hooks
+
+| Channel | Status |
+| ------- | ------ |
+| Faith outreach | TBD — see [event intelligence](../../../event-intelligence/README.md) |
+| Chamber / Rotary / civic | TBD |
+| County clerk engagement | **Priority** (SOS race) |
+| Community organizations | TBD |
+
+---
+
+## Regenerate
+
+`npm run strategic-plan:chapter-09:build`

@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "note": "WIN SHERWOOD — 60%+ goal. Sherwood GOTV kickoff · Central Arkansas momentum event.",
+  "goal": "Win Sherwood outright with 60%+",
+  "event": {
+    "name": "Sherwood GOTV Kickoff",
+    "frames": [
+      "Sherwood GOTV kickoff",
+      "Central Arkansas GOTV kickoff",
+      "Kelly Grappe for SOS momentum event"
+    ],
+    "venueType": "outdoor",
+    "capacity": "700+",
+    "vipTablePrice": 1000,
+    "vipTableIncludes": "8 people, dinner, show, guaranteed seating, concert shirt, campaign shirt",
+    "showTicketPrice": 25,
+    "foodTicketPrice": 25,
+    "donationDrinkTicketPrice": 20,
+    "donationDrinkTicketNote": "Legally reviewed before use",
+    "planningTeamSize": 8,
+    "status": "planning"
+  },
+  "tracking": {
+    "vipTablesSold": 0,
+    "vipTablesGoal": 20,
+    "ticketsSold": 0,
+    "foodTicketsSold": 0,
+    "volunteerSignups": 0,
+    "donorConversions": 0,
+    "sponsorLeads": 0,
+    "legalComplianceReview": "pending",
+    "staffing": "in_progress",
+    "security": "pending",
+    "permits": "pending",
+    "alcoholCompliance": "pending"
+  }
+}

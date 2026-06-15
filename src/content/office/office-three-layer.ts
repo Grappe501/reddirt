@@ -1,5 +1,5 @@
 /**
- * Three-layer office trust system (Layer 1 clarity → Layer 2 relevance → Layer 3 competence).
+ * Two-layer office trust system (Layer 1 clarity → Layer 2 relevance + competence).
  * Scaffolding copy — not final legal/policy text.
  *
  * INTERNAL (elections / voter data): keep public copy general; no SSN or “first state” claims
@@ -28,10 +28,9 @@ export type {
 
 export { OFFICE_AREA_SLUGS };
 
-export function officeLayerPath(slug: OfficeAreaSlug, layer: 1 | 2 | 3): string {
+export function officeLayerPath(slug: OfficeAreaSlug, layer: 1 | 2): string {
   if (layer === 1) return `/office/${slug}`;
-  if (layer === 2) return `/office/${slug}/why-it-matters`;
-  return `/office/${slug}/full-picture`;
+  return `/office/${slug}/why-it-matters`;
 }
 
 /** Card copy for /understand hub — Layer 1 entry only */

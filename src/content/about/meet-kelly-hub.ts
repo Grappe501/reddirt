@@ -1,7 +1,6 @@
 /**
  * Meet Kelly hub — six voter questions (non-chronological).
- * Copy uses only VERIFIED or generic framing; specific claims link to deep pages with matrix labels.
- * @see docs/website/KELLY_BIOGRAPHY_VERIFICATION_MATRIX.md
+ * Two-level public architecture: overview summaries → journey / community / why-im-running drill-downs.
  */
 
 export type MeetKellyQuestionId =
@@ -27,7 +26,7 @@ export const MEET_KELLY_QUESTIONS: readonly MeetKellyQuestion[] = [
     id: "who",
     title: "Who is Kelly?",
     summary:
-      "Arkansas roots, family, faith as practice, and a life built in community—not performance. Personal background and values live on the journey page; long-form manuscript chapters remain draft until campaign review.",
+      "Arkansas roots, family, faith as practice, and a life built in community—not performance. Personal background and values on the journey page.",
     href: "/about/journey",
     hrefLabel: "Read her journey",
   },
@@ -36,8 +35,8 @@ export const MEET_KELLY_QUESTIONS: readonly MeetKellyQuestion[] = [
     title: "What has she done?",
     summary:
       "Telecom operations career, small-business and farm work, civic nonprofit leadership, and grassroots petition organizing. Detailed résumé claims link to external sources where available.",
-    href: "/about/business",
-    hrefLabel: "Career & operations",
+    href: "/about/journey",
+    hrefLabel: "Career & community",
   },
   {
     id: "why-running",
@@ -87,5 +86,5 @@ export const meetKellyExecutiveSummary = {
   subtitle:
     "Candidate for Arkansas Secretary of State. Before systems and statutes, you deserve to know the person asking for your trust—where she comes from, what she has built, and why she entered this race.",
   lead:
-    "This page answers six questions voters, reporters, and local leaders ask—not a chronological résumé. Every specific factual claim on this site is tracked in our biography verification matrix; nothing here is invented marketing.",
+    "This page answers six questions voters, reporters, and local leaders ask—not a chronological résumé. Go deeper on journey, community work, and why Kelly entered the race from the links below.",
 } as const;
