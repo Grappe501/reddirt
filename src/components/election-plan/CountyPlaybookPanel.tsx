@@ -3,9 +3,11 @@ import Link from "next/link";
 import { CountyNetworkingContactsPanel } from "@/components/election-plan/CountyNetworkingContactsPanel";
 import { CountyRegistrationAllocationPanel } from "@/components/election-plan/CountyRegistrationAllocationPanel";
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
+import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
 import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
 import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
 import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-team";
+import type { LocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/types";
 import { countyWorkbenchExternalHref } from "@/lib/election-plan/location-links";
 import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
@@ -24,6 +26,7 @@ type Props = {
     totalInCounty: number;
     cityScoped?: boolean;
   };
+  calendarBinding: LocationCalendarBinding;
   referenceDate: string;
   backHref?: string;
   backLabel?: string;
@@ -48,6 +51,7 @@ export function CountyPlaybookPanel({
   allCities,
   strikeTeam,
   fieldEvents,
+  calendarBinding,
   referenceDate,
   backHref,
   backLabel,
@@ -166,6 +170,16 @@ export function CountyPlaybookPanel({
       ) : null}
 
       <CountyRegistrationAllocationPanel county={county} cities={allCities} />
+
+      <LocationCalendarBindingPanel
+        binding={{
+          ...calendarBinding,
+          weekPlans: calendarBinding.weekPlans,
+          currentWeekPlan: calendarBinding.weekPlans.find((w) => w.isCurrentWeek) ?? null,
+        }}
+        locationLabel={`${county.county} County`}
+        countyName={county.county}
+      />
 
       <div className="mb-8">
         <LocationFieldEventsPanel

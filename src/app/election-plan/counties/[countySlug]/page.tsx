@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CountyPlaybookPanel } from "@/components/election-plan/CountyPlaybookPanel";
 import { getCitiesInCounty, getCountyBySlug } from "@/lib/election-plan/load-county";
 import { getCountyStrikeTeamBySlug } from "@/lib/election-plan/load-county-strike-team";
+import { buildCountyCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import { fieldEventsForLocation } from "@/lib/election-plan/location-calendar-integration";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 
@@ -38,6 +39,7 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
     referenceDate: data.executiveCalendar.referenceDate,
     limit: 8,
   });
+  const countyCalendar = buildCountyCalendarBinding(data, county.county);
 
   return (
     <>
@@ -50,6 +52,13 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
             allCities={data.cities}
             strikeTeam={strikeTeam}
             fieldEvents={fieldEvents}
+            calendarBinding={{
+              nextLockedVisit: countyCalendar.nextLockedVisit,
+              revisit: countyCalendar.revisit,
+              eventApprovals: countyCalendar.eventApprovals,
+              weekPlans: countyCalendar.weekPlans,
+              currentWeekPlan: countyCalendar.weekPlans.find((w) => w.isCurrentWeek) ?? null,
+            }}
             referenceDate={data.executiveCalendar.referenceDate}
           />
         </div>

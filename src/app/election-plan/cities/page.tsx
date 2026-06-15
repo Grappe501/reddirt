@@ -1,4 +1,6 @@
 import { CityStrategyList } from "@/components/election-plan/CityStrategyList";
+import { LocationBriefWeekRollupPanel } from "@/components/election-plan/LocationBriefWeekRollupPanel";
+import { computeBriefCompletionRollup } from "@/lib/election-plan/location-calendar-binding";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 
 export const metadata = {
@@ -9,11 +11,13 @@ export const metadata = {
 
 export default function PriorityCitiesPage() {
   const data = loadElectionPlanSnapshot();
+  const rollup = computeBriefCompletionRollup(data.cities, data);
   return (
     <>
       <div className="ep-classification">Internal · Priority cities · Location briefs</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-6xl">
+          <LocationBriefWeekRollupPanel rollup={rollup} cities={data.cities} data={data} />
           <CityStrategyList cities={data.cities} combinedTargetVotes={data.top40TargetVotes} standalone />
         </div>
       </div>

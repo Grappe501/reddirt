@@ -4,6 +4,7 @@ import { CityLocationBriefPanel } from "@/components/election-plan/CityLocationB
 import { getCityLocationBrief } from "@/lib/election-plan/load-city-location-brief";
 import { getCitiesInCounty, getCountyByName } from "@/lib/election-plan/load-county";
 import { getCountyStrikeTeamByName } from "@/lib/election-plan/load-county-strike-team";
+import { buildLocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import { fieldEventsForLocation } from "@/lib/election-plan/location-calendar-integration";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 
@@ -42,6 +43,11 @@ export default async function CityLocationBriefPage({ params }: Props) {
     referenceDate: data.executiveCalendar.referenceDate,
     limit: 6,
   });
+  const calendarBinding = buildLocationCalendarBinding(data, {
+    cityName: brief.name,
+    countyName: brief.county,
+    referenceDate: data.executiveCalendar.referenceDate,
+  });
 
   return (
     <>
@@ -56,6 +62,7 @@ export default async function CityLocationBriefPage({ params }: Props) {
             fieldEvents={fieldEvents}
             siblingCities={siblingCities}
             referenceDate={data.executiveCalendar.referenceDate}
+            calendarBinding={calendarBinding}
           />
         </div>
       </div>

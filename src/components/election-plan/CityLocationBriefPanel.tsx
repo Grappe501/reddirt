@@ -1,10 +1,12 @@
 import Link from "next/link";
 
+import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
 import { CityNumericTargetsPanel } from "@/components/election-plan/CityNumericTargetsPanel";
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
 import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
 import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
 import type { CityLocationBrief } from "@/lib/election-plan/load-city-location-brief";
+import type { LocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-team";
 import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/types";
 import {
@@ -28,6 +30,7 @@ type Props = {
   };
   siblingCities: ElectionPlanCity[];
   referenceDate: string;
+  calendarBinding: LocationCalendarBinding;
 };
 
 function statusClass(status: CityLocationBrief["status"]) {
@@ -54,6 +57,7 @@ export function CityLocationBriefPanel({
   fieldEvents,
   siblingCities,
   referenceDate,
+  calendarBinding,
 }: Props) {
   const countyHref = countyPlaybookHref(brief.county, countySlug);
 
@@ -125,6 +129,13 @@ export function CityLocationBriefPanel({
           <CountyStrikeTeamPanel team={strikeTeam} compact />
         </div>
       ) : null}
+
+      <LocationCalendarBindingPanel
+        binding={calendarBinding}
+        locationLabel={brief.name}
+        countyName={brief.county}
+        cityName={brief.name}
+      />
 
       <div className="ep-card ep-priority-card mb-8 border-l-4 border-[var(--ep-gold)]">
         <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Brief board</h2>

@@ -71,11 +71,11 @@ Each **county** in the election plan drills down to the **full county workbench*
 - House party / volunteer math from Power of 5; Sherwood overrides from `win-sherwood-operation.json`
 - **Locked numeric targets** panel on city briefs; registration allocation table on county playbooks
 
-### Phase 4 — Calendar & week plan binding
+### Phase 4 — Calendar & week plan binding ✅
 
-- Next locked visit and revisit flags on city pages
-- Event approvals portal linked per location
-- Week plan roll-up from brief completion status
+- **Calendar binding** panel on city briefs and county playbooks — next locked visit, Tier 1 revisit status, current week plan
+- **Event approvals** cross-linked per location → `/election-plan/event-approvals?city=&county=`
+- **Week plan brief roll-up** on `/election-plan/cities` — current week cities, brief status, locked numeric targets
 
 ## How to add a city brief
 
@@ -89,4 +89,4 @@ Each **county** in the election plan drills down to the **full county workbench*
 - All 40 cities at `draft` or `approved`
 - County cards open workbench for all 75 counties
 - Phase 3 numeric targets populated for all 40 priority cities
-- Week plan and calendar show location links (Phase 4)
+- Week plan and calendar show location links (Phase 4) ✅

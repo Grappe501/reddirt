@@ -51,11 +51,11 @@ export const LOCATION_BRIEF_MASTER_PLAN = {
     {
       id: "phase-4",
       title: "Phase 4 — Calendar & week plan binding",
-      status: "pending" as const,
+      status: "complete" as const,
       items: [
-        "Show next locked visit and revisit flags on city brief",
-        "Link event approvals and verified calendar to location pages",
-        "Week plan metrics roll up from city brief completion status",
+        "Next locked visit and Tier 1 revisit flags on city and county location pages",
+        "Event approvals portal linked per location with filtered queue preview",
+        "Week plan roll-up from brief completion status on priority cities hub",
       ],
     },
   ],
