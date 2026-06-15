@@ -1,0 +1,278 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-10",
+  "title": "Campaign Academy",
+  "subtitle": "Recruit people into roles — not into \"help us.\"",
+  "doctrine": "People join roles, not organizations. Every position answers: How does my small piece help win Arkansas?",
+  "onboardingFlow": [
+    "I'm interested in helping",
+    "Choose a role",
+    "Watch onboarding",
+    "Get assigned",
+    "Begin weekly tasks"
+  ],
+  "launchDate": "2026-06-28",
+  "positions": [
+    {
+      "slug": "county-volunteer-captain",
+      "title": "County Volunteer Captain",
+      "category": "Field",
+      "timeCommitment": "3–5 hours per week",
+      "purpose": "Build and support the volunteer team in your county.",
+      "responsibilities": [
+        "Attend monthly county call",
+        "Recruit and welcome new volunteers",
+        "Coordinate local events and house parties",
+        "Report activity to campaign ops weekly"
+      ],
+      "weeklyTasks": [
+        "Check in with 3 volunteers",
+        "Confirm next local event on Mobilize",
+        "Log activity in weekly report"
+      ],
+      "successMetrics": [
+        "10 active volunteers in county",
+        "2 local events per month",
+        "1 house party per month"
+      ],
+      "training": ["Power of 5 overview video", "Mobilize event setup checklist", "County captain monthly call"],
+      "resources": ["/election-plan/leadership/county-coverage", "/election-plan/power-of-5/command-center"],
+      "scripts": ["Volunteer recruitment conversation", "House party host ask"],
+      "reporting": "Weekly county activity report to Steve / volunteer lead",
+      "connectionToPlan": "County captains turn the 75-county playbook into a living volunteer network — the bridge between strategy and Election Day turnout.",
+      "relatedOwnerSlot": "county-volunteer-captain"
+    },
+    {
+      "slug": "lte-coordinator",
+      "title": "Letters to the Editor Coordinator",
+      "category": "Citizen Voices",
+      "timeCommitment": "2–3 hours per week",
+      "purpose": "Make sure local voices are visible in local newspapers — real citizens, not campaign press releases.",
+      "responsibilities": [
+        "Recruit 3–5 citizen writers in your county or region",
+        "Track letter submissions and publications",
+        "Encourage weekly participation",
+        "Follow Arkansas Citizen Voices workflow"
+      ],
+      "weeklyTasks": [
+        "Coach one writer on a personal letter",
+        "Log submissions in newspaper registry",
+        "Confirm publication and share for amplification"
+      ],
+      "successMetrics": [
+        "2 published letters per month in your market",
+        "5 active citizen writers",
+        "Weekly submission cadence"
+      ],
+      "training": ["LTE workflow (7 steps)", "Authentic voice guidelines", "Newspaper submission rules"],
+      "resources": ["/election-plan/movement-infrastructure/lte-program"],
+      "scripts": ["Writer recruitment ask", "Letter coaching prompts"],
+      "reporting": "Regional LTE lead · Citizen Voices registry",
+      "connectionToPlan": "Earned media credibility money can't buy — local validation in every county newspaper market.",
+      "relatedOwnerSlot": "lte-corps"
+    },
+    {
+      "slug": "campus-captain",
+      "title": "Campus Captain",
+      "category": "Campus",
+      "timeCommitment": "3–5 hours per week",
+      "purpose": "Build student participation on your campus — registration, volunteers, and Kelly appearances.",
+      "responsibilities": [
+        "Recruit student volunteers",
+        "Run voter registration tabling events",
+        "Coordinate Kelly campus appearances",
+        "Create Mobilize events for every tabling shift"
+      ],
+      "weeklyTasks": [
+        "Recruit 2 new student volunteers",
+        "Advance Freshman Week readiness checklist",
+        "Confirm tabling location and materials"
+      ],
+      "successMetrics": [
+        "25 active student volunteers",
+        "100 voter registrations on campus",
+        "Mobilize event for every public tabling shift"
+      ],
+      "training": ["Campus captain binder", "Freshman Week blitz overview", "Mobilize enforcement rules"],
+      "resources": ["/election-plan/campuses", "/election-plan/campuses/freshman-week"],
+      "scripts": ["Student recruitment at tabling", "Classroom announcement ask"],
+      "reporting": "Campus network lead · Students for Arkansas co-chairs",
+      "connectionToPlan": "Campus captains unlock the youngest persuadable voters and build a movement that survives past Election Day.",
+      "relatedOwnerSlot": "campus-network"
+    },
+    {
+      "slug": "story-corps-lead",
+      "title": "Story Corps Lead",
+      "category": "Media",
+      "timeCommitment": "2–4 hours per week",
+      "purpose": "Capture authentic vertical video — Kelly stops, volunteers, community voices, campus moments.",
+      "responsibilities": [
+        "Film and edit short-form video after events",
+        "Coordinate with Leann / comms on publishing",
+        "Train backup shooters in your region",
+        "Hit 5 assets per Kelly stop in your area"
+      ],
+      "weeklyTasks": [
+        "Deliver 2 edited reels or shorts",
+        "Log assets in social resume pipeline",
+        "Scout next event filming opportunity"
+      ],
+      "successMetrics": [
+        "5 content assets per Kelly stop",
+        "Weekly publishing cadence",
+        "1 trained backup creator"
+      ],
+      "training": ["Vertical video kit setup", "Story Corps team doctrine", "Caption and thumbnail basics"],
+      "resources": ["/election-plan/movement-infrastructure/story-corps"],
+      "scripts": ["Volunteer testimonial prompt", "Local business owner ask"],
+      "reporting": "Motion & storytelling lead",
+      "connectionToPlan": "Story Corps turns field presence into persuasion at scale — county algorithms before paid media.",
+      "relatedOwnerSlot": "story-corps"
+    },
+    {
+      "slug": "power-of-5-leader",
+      "title": "Power of 5 Leader",
+      "category": "Organizing",
+      "timeCommitment": "2–4 hours per week",
+      "purpose": "Multiply relationships — every supporter recruits five trusted contacts through meaningful conversations.",
+      "responsibilities": [
+        "Host or co-host small-room conversations",
+        "Recruit five Power of 5 commitments per month",
+        "Identify house party hosts in your network",
+        "Log conversations and follow-ups"
+      ],
+      "weeklyTasks": [
+        "Hold 2 meaningful conversations",
+        "Follow up with one new contact",
+        "Invite one person to host a gathering"
+      ],
+      "successMetrics": [
+        "5 Po5 commitments per month",
+        "1 house party hosted or co-hosted per quarter",
+        "25 voter conversations logged"
+      ],
+      "training": ["Eyeball-to-eyeball doctrine", "Three asks framework", "House party host kit"],
+      "resources": ["/election-plan/power-of-5/command-center", "/election-plan/executive-book/power-of-5"],
+      "scripts": ["Power of 5 invitation", "House party host ask", "Who else should we meet?"],
+      "reporting": "Volunteer leadership · Po5 command center metrics",
+      "connectionToPlan": "Most persuasion happens in small rooms. Po5 leaders are the vote-generation engine beside HCI.",
+      "relatedOwnerSlot": "power-of-5"
+    },
+    {
+      "slug": "faith-outreach-lead",
+      "title": "Faith Outreach Lead",
+      "category": "Coalition",
+      "timeCommitment": "2–3 hours per week",
+      "purpose": "Build respectful relationships with faith communities — civic engagement without partisan preaching.",
+      "responsibilities": [
+        "Identify faith community connectors in your county",
+        "Schedule listening conversations",
+        "Coordinate Kelly or surrogate appearances",
+        "Report validator and introduction pipeline"
+      ],
+      "weeklyTasks": [
+        "One faith community conversation",
+        "Follow up on prior introduction",
+        "Log contact in coalition tracker"
+      ],
+      "successMetrics": [
+        "5 faith community relationships",
+        "2 speaking or listening sessions per month",
+        "1 validator endorsement pathway"
+      ],
+      "training": ["Big Table welcome doctrine", "Faith community respectful framing", "Coalition command overview"],
+      "resources": ["/election-plan?tab=coalitionCommand"],
+      "scripts": ["Faith leader introduction", "Civic responsibility conversation"],
+      "reporting": "Coalition command · county captain coordination",
+      "connectionToPlan": "Faith communities are trusted local institutions — relationship before persuasion.",
+      "relatedOwnerSlot": null
+    },
+    {
+      "slug": "union-outreach-lead",
+      "title": "Union Outreach Lead",
+      "category": "Coalition",
+      "timeCommitment": "2–4 hours per week",
+      "purpose": "Support Danny Brown and labor validators — Democratic Union Caucus and local union relationships.",
+      "responsibilities": [
+        "Attend union meetings in your region",
+        "Distribute labor briefing materials",
+        "Introduce Kelly to local labor leaders",
+        "Report meetings to labor program owner"
+      ],
+      "weeklyTasks": [
+        "Confirm one union or labor meeting",
+        "Share labor briefing packet",
+        "Log introduction for follow-up"
+      ],
+      "successMetrics": [
+        "2 union meetings per month",
+        "5 labor leader introductions",
+        "1 validator pathway active"
+      ],
+      "training": ["Labor program briefing", "Working-class message doctrine"],
+      "resources": ["/election-plan?tab=coalitionCommand"],
+      "scripts": ["Union hall introduction", "Working-class kitchen table message"],
+      "reporting": "Danny Brown · Labor program",
+      "connectionToPlan": "Labor relationships validate Kelly's working-class credibility — not just a message, a network.",
+      "relatedOwnerSlot": "labor-outreach"
+    },
+    {
+      "slug": "mobilize-lead",
+      "title": "Mobilize Lead",
+      "category": "Operations",
+      "timeCommitment": "2–3 hours per week",
+      "purpose": "Ensure every event that needs volunteers has a live Mobilize page — no orphan field stops.",
+      "responsibilities": [
+        "Create Mobilize events for qualifying stops",
+        "Assign volunteer shifts and roles",
+        "Sync with field calendar and stop command centers",
+        "Flag missing Mobilize warnings to ops"
+      ],
+      "weeklyTasks": [
+        "Audit next 7 days of field calendar for Mobilize gaps",
+        "Publish or update 3 event pages",
+        "Confirm volunteer shift assignments"
+      ],
+      "successMetrics": [
+        "Zero Missing Mobilize Event warnings",
+        "100% of reg/volunteer events on Mobilize",
+        "48-hour lead time on new events"
+      ],
+      "training": ["Mobilize enforcement rules", "Event type triggers", "Stop command center workflow"],
+      "resources": ["/election-plan/movement-infrastructure/mobilize-rules", "/election-plan?tab=fieldCalendar"],
+      "scripts": ["Volunteer shift recruitment text"],
+      "reporting": "Steve Grappe · campaign ops",
+      "connectionToPlan": "If volunteers are needed, Mobilize is required — the operating system for field execution.",
+      "relatedOwnerSlot": null
+    },
+    {
+      "slug": "house-party-host",
+      "title": "House Party Host",
+      "category": "Organizing",
+      "timeCommitment": "One event + 2 hours prep",
+      "purpose": "Open your living room, backyard, or porch — small rooms where trust and ownership grow.",
+      "responsibilities": [
+        "Host 8–15 neighbors, friends, or coworkers",
+        "Welcome guests and introduce Kelly or a surrogate",
+        "Collect Po5 commitments and volunteer interest",
+        "Complete thank-you closeout checklist"
+      ],
+      "weeklyTasks": [
+        "Confirm date and guest list",
+        "Coordinate with county captain or Po5 leader",
+        "Send Mobilize invite to guests"
+      ],
+      "successMetrics": [
+        "1 house party hosted",
+        "5 Po5 commitments from guests",
+        "2 new volunteer sign-ups"
+      ],
+      "training": ["House party host kit", "Thank-you doctrine closeout", "Small rooms principle"],
+      "resources": ["/election-plan/power-of-5/command-center", "/election-plan/movement-infrastructure/thank-you-doctrine"],
+      "scripts": ["Guest invitation", "Opening welcome", "Three asks at close"],
+      "reporting": "County captain · Po5 leader",
+      "connectionToPlan": "Large events create visibility. Small events create ownership — and ownership creates turnout.",
+      "relatedOwnerSlot": null
+    }
+  ]
+}

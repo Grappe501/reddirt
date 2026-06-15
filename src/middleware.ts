@@ -6,6 +6,10 @@ import { NextResponse } from "next/server";
  * Admin auth + launch redirects live in Node layouts, next.config redirects, and /admin/page.tsx.
  */
 export async function middleware(request: NextRequest) {
+  const { handleElectionPlanAuth } = await import("@/lib/election-plan/auth/election-plan-middleware");
+  const electionPlanResponse = handleElectionPlanAuth(request);
+  if (electionPlanResponse) return electionPlanResponse;
+
   const { updateSession } = await import("@/utils/supabase/middleware");
   return updateSession(request);
 }

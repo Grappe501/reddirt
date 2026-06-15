@@ -9,8 +9,11 @@ export async function updateSession(request: NextRequest): Promise<NextResponse>
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-pathname", request.nextUrl.pathname);
 
-  /** Admin uses ADMIN_SECRET cookies — skip Supabase edge auth (avoids Netlify edge timeouts). */
-  if (request.nextUrl.pathname.startsWith("/admin")) {
+  /** Admin + Election Plan use password cookies — skip Supabase edge auth (avoids Netlify edge timeouts). */
+  if (
+    request.nextUrl.pathname.startsWith("/admin") ||
+    request.nextUrl.pathname.startsWith("/election-plan")
+  ) {
     return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
