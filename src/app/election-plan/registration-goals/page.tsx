@@ -1,0 +1,24 @@
+import { RegistrationGoalsPanel } from "@/components/election-plan/RegistrationGoalsPanel";
+import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
+
+export const metadata = {
+  title: "County Registration Goals | Kelly Grappe Victory Plan",
+  description: "Lane 3 registration goals by county — 50,000 statewide across 75 counties.",
+  robots: { index: false, follow: false },
+};
+
+export default function RegistrationGoalsPage() {
+  const data = loadElectionPlanSnapshot();
+  const statewideGoal = data.warRoom.registrationGoal;
+
+  return (
+    <>
+      <div className="ep-classification">Internal · Lane 3 Registration · 75 counties</div>
+      <div className="ep-chapter-body px-6 py-10 lg:px-10">
+        <div className="mx-auto max-w-6xl">
+          <RegistrationGoalsPanel counties={data.counties} statewideGoal={statewideGoal} standalone />
+        </div>
+      </div>
+    </>
+  );
+}

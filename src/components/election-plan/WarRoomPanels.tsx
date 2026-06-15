@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import Link from "next/link";
 
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
 import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
@@ -129,10 +130,16 @@ export function WarRoomPanel({ data }: Props) {
           <div className="ep-war-stat-value">{formatVotes(w.lane2Potential)}</div>
           <div className="ep-war-stat-label">Lane 2 potential</div>
         </div>
-        <div className="ep-card ep-war-stat">
+        <Link
+          href="/election-plan/registration-goals"
+          className="ep-card ep-war-stat block transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]"
+        >
           <div className="ep-war-stat-value">{formatVotes(w.registrationGoal)}</div>
           <div className="ep-war-stat-label">Registration goal</div>
-        </div>
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+            County breakdown →
+          </p>
+        </Link>
         <div className="ep-card ep-war-stat">
           <div className="ep-war-stat-value">
             {w.endorsementsEndorsed} / {w.endorsementsRequested}
