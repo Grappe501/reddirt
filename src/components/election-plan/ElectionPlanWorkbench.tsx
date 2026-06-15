@@ -16,6 +16,7 @@ import { CountyStrategyGrid } from "@/components/election-plan/CountyStrategyGri
 import { ExecutiveMetricCard } from "@/components/election-plan/ExecutiveMetricCard";
 import { cn } from "@/lib/utils";
 
+import { FieldCalendarPanel } from "@/components/election-plan/FieldCalendarPanel";
 import {
   CampaignTimelinePanel,
   CoalitionCommandPanel,
@@ -143,7 +144,7 @@ function TabWorkbench({ data, initialTab }: Props) {
         {active === "warRoom" && <WarRoomPanel data={data} />}
         {active === "executiveBook" && <ExecutiveBookHubPanel data={data} />}
         {active === "weeklyDashboard" && <KellyDashboardPanel data={data} />}
-        {active === "fieldCalendar" && <ExecutiveCalendarPanel data={data} />}
+        {active === "fieldCalendar" && <FieldCalendarPanel data={data} />}
         {active === "weekPlans" && <WeekOperationalPanel data={data} />}
         {active === "timeline" && <CampaignTimelinePanel data={data} />}
         {active === "presenceMap" && <PresenceMapPanel data={data} />}
@@ -1459,172 +1460,6 @@ function MotionPresencePanel({ data }: Props) {
           </div>
         ))}
       </div>
-    </section>
-  );
-}
-
-function ExecutiveCalendarPanel({ data }: Props) {
-  const cal = data.executiveCalendar;
-  const [filter, setFilter] = useState<"all" | "past_visit" | "locked" | "scheduled" | "proposed">("all");
-
-  const filtered = filter === "all" ? cal.entries : cal.entries.filter((e) => e.category === filter);
-
-  const byMonth = filtered.reduce<Record<string, typeof filtered>>((acc, e) => {
-    const month = e.startDate.slice(0, 7);
-    if (!acc[month]) acc[month] = [];
-    acc[month].push(e);
-    return acc;
-  }, {});
-
-  const categoryLabel: Record<string, string> = {
-    past_visit: "Past visit",
-    locked: "Locked",
-    scheduled: "Scheduled",
-    proposed: "Proposed",
-  };
-
-  const categoryClass: Record<string, string> = {
-    past_visit: "bg-slate-100 text-slate-700",
-    locked: "bg-[var(--ep-navy)] text-white",
-    scheduled: "bg-emerald-100 text-emerald-800",
-    proposed: "bg-amber-100 text-amber-900",
-  };
-
-  return (
-    <section>
-      <SectionTitle
-        title="Executive Field Calendar"
-        subtitle="Past locations visited · locked backbone · scheduled stops · Phase C proposals"
-      />
-
-      <div className="ep-warning mb-8">
-        <p className="text-sm font-medium">{cal.disclaimer}</p>
-        <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
-          Reference date {cal.referenceDate}. Rebuild:{" "}
-          <code className="text-xs">npm run campaign-brain:executive-calendar:build</code> then{" "}
-          <code className="text-xs">npm run election-plan:build</code>
-        </p>
-      </div>
-
-      <div className="mb-8 ep-stat-grid">
-        <div className="ep-stat">
-          <div className="ep-stat-value">{cal.summary.pastVisitCount}</div>
-          <div className="ep-stat-label">Past visits</div>
-        </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value">{cal.summary.lockedCount}</div>
-          <div className="ep-stat-label">Locked backbone</div>
-        </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value">{cal.summary.scheduledCount}</div>
-          <div className="ep-stat-label">Scheduled</div>
-        </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value">{cal.summary.proposedCount}</div>
-          <div className="ep-stat-label">Proposed (Phase C)</div>
-        </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value">{cal.summary.countiesVisited}</div>
-          <div className="ep-stat-label">Counties visited</div>
-        </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value">{cal.summary.countiesScheduled}</div>
-          <div className="ep-stat-label">Counties on calendar</div>
-        </div>
-      </div>
-
-      <div className="mb-6 flex flex-wrap gap-2">
-        {(
-          [
-            ["all", "All"],
-            ["past_visit", "Past"],
-            ["locked", "Locked"],
-            ["scheduled", "Scheduled"],
-            ["proposed", "Proposed"],
-          ] as const
-        ).map(([id, label]) => (
-          <button
-            key={id}
-            type="button"
-            className={cn(
-              "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
-              filter === id
-                ? "border-[var(--ep-navy)] bg-[var(--ep-navy)] text-white"
-                : "border-[var(--ep-border)] bg-white text-[var(--ep-navy-muted)] hover:border-[var(--ep-navy)]",
-            )}
-            onClick={() => setFilter(id)}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
-      {filtered.length === 0 ? (
-        <div className="ep-card-glass text-sm text-[var(--ep-navy-muted)]">
-          No calendar entries. Run{" "}
-          <code className="text-xs">npm run campaign-brain:executive-calendar:build</code>.
-        </div>
-      ) : (
-        <div className="space-y-8">
-          {Object.entries(byMonth)
-            .sort(([a], [b]) => a.localeCompare(b))
-            .map(([month, rows]) => (
-              <div key={month}>
-                <h3 className="mb-3 font-heading text-lg font-bold text-[var(--ep-navy)]">
-                  {new Date(`${month}-01T12:00:00`).toLocaleDateString("en-US", {
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full min-w-[640px] text-left text-sm">
-                    <thead>
-                      <tr className="border-b border-[var(--ep-border)] text-xs uppercase text-[var(--ep-navy-muted)]">
-                        <th className="py-2 pr-3">Date</th>
-                        <th className="py-2 pr-3">Event</th>
-                        <th className="py-2 pr-3">County</th>
-                        <th className="py-2 pr-3">Type</th>
-                        <th className="py-2 pr-3">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {rows.map((e) => (
-                        <tr key={e.id} className="border-b border-[var(--ep-border)]">
-                          <td className="py-2 pr-3 whitespace-nowrap">
-                            {e.endDate && e.endDate !== e.startDate
-                              ? `${e.startDate} → ${e.endDate}`
-                              : e.startDate}
-                          </td>
-                          <td className="py-2 pr-3">
-                            <div className="font-medium">{e.label}</div>
-                            {e.city ? (
-                              <div className="text-xs text-[var(--ep-navy-muted)]">{e.city}</div>
-                            ) : null}
-                            {e.notes ? (
-                              <div className="mt-0.5 text-xs text-[var(--ep-navy-muted)]">{e.notes}</div>
-                            ) : null}
-                          </td>
-                          <td className="py-2 pr-3">{e.county.replace(/ County$/i, "")}</td>
-                          <td className="py-2 pr-3">
-                            <span
-                              className={cn(
-                                "inline-block rounded px-2 py-0.5 text-xs font-medium",
-                                categoryClass[e.category],
-                              )}
-                            >
-                              {categoryLabel[e.category]}
-                            </span>
-                          </td>
-                          <td className="py-2 pr-3 text-xs text-[var(--ep-navy-muted)]">{e.status}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            ))}
-        </div>
-      )}
     </section>
   );
 }

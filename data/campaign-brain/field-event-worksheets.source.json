@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "note": "Seed worksheets for key field calendar events. Browser localStorage overrides until merged here.",
+  "worksheets": {
+    "locked-sherwood-july-4-2026": {
+      "accomplishment": "Home-base proof point — 60%+ Sherwood mandate, July GOTV kickoff, VIP and host committee momentum. Show suburban Arkansas that a working-class Democrat wins by showing up.",
+      "messaging": "Sherwood is home. Secretary of State is neighbor service — competent elections, not culture-war noise.",
+      "volunteers": "25+ confirmed event day · 10 block captains · Sherwood ops roster from win-sherwood operation.",
+      "localContact": "Duke & Powell (Sherwood co-chairs)",
+      "runOfDay": "July 4 corridor — outdoor capacity 700+. VIP tables · show tickets · food vendors · Kelly program · GOTV kickoff framing.",
+      "logisticsVenue": "Sherwood outdoor event corridor (confirm final site)",
+      "logisticsMaterials": "Signs, literature, VIP table materials, volunteer check-in"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+import { notFound } from "next/navigation";
+
+import { FieldEventWorksheetPanel } from "@/components/election-plan/FieldEventWorksheetPanel";
+import {
+  findForwardMotionMatch,
+  getExecutiveCalendarEntry,
+  getSourceWorksheetOverrides,
+} from "@/lib/election-plan/load-field-event";
+import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
+
+type Props = { params: Promise<{ eventId: string }> };
+
+export function generateStaticParams() {
+  const data = loadElectionPlanSnapshot();
+  return data.executiveCalendar.entries.map((e) => ({ eventId: e.id }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { eventId } = await params;
+  const decoded = decodeURIComponent(eventId);
+  const data = loadElectionPlanSnapshot();
+  const entry = getExecutiveCalendarEntry(data, decoded);
+  if (!entry) return { title: "Event not found" };
+  return {
+    title: `${entry.label} | Field worksheet`,
+    description: `Run of day, messaging, volunteers, and logistics for ${entry.label}`,
+    robots: { index: false, follow: false },
+  };
+}
+
+export default async function FieldEventWorksheetPage({ params }: Props) {
+  const { eventId } = await params;
+  const decoded = decodeURIComponent(eventId);
+  const data = loadElectionPlanSnapshot();
+  const entry = getExecutiveCalendarEntry(data, decoded);
+  if (!entry) notFound();
+
+  const sourceOverrides = getSourceWorksheetOverrides(decoded);
+  const forwardMotion = findForwardMotionMatch(data, entry);
+
+  return (
+    <>
+      <div className="ep-classification">Internal · Field calendar · Event worksheet</div>
+      <div className="ep-chapter-body px-6 py-10 lg:px-10">
+        <div className="mx-auto max-w-4xl">
+          <FieldEventWorksheetPanel
+            entry={entry}
+            sourceOverrides={sourceOverrides}
+            forwardMotion={forwardMotion}
+          />
+        </div>
+      </div>
+    </>
+  );
+}
