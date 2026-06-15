@@ -1,0 +1,313 @@
+{
+  "generatedAt": "2026-06-15T05:57:43.239Z",
+  "disclaimer": "Calendar Fill Phase A shows route choices and tradeoffs. It does not assign dates or create Kelly's final calendar.",
+  "remainingCountyCount": 25,
+  "corridorCount": 10,
+  "corridors": [
+    {
+      "id": "delta-gateway",
+      "name": "Delta Gateway",
+      "counties": [
+        "Crittenden",
+        "Mississippi"
+      ],
+      "anchorCity": "West Memphis",
+      "suggestedRoute": "Rose Bud → West Memphis (overnight) → Blytheville → return via Jonesboro stack optional",
+      "travelClass": "multi-day",
+      "overnightLikely": true,
+      "strategicValue": "Highest-priority Delta entry · Memphis media market spillover",
+      "coverageValue": "high",
+      "voteProductionValue": "high",
+      "coalitionValue": "NAACP Memphis gateway · Delta labor · West Memphis Dems",
+      "storytellingValue": "River crossing · gateway communities · clerk/election access stories",
+      "category": "completion",
+      "stackWithLocked": [],
+      "countiesRemaining": [
+        "Crittenden",
+        "Mississippi"
+      ],
+      "vciRanks": {
+        "Crittenden": 10,
+        "Mississippi": 20
+      }
+    },
+    {
+      "id": "delta-river",
+      "name": "Delta River Corridor",
+      "counties": [
+        "Phillips",
+        "Monroe",
+        "St. Francis"
+      ],
+      "anchorCity": "Helena",
+      "suggestedRoute": "LR Tue origin → Helena → Clarendon → Forrest City (2-day overnight)",
+      "travelClass": "multi-day",
+      "overnightLikely": true,
+      "strategicValue": "Deep Delta relationship capital · historic civil rights corridor",
+      "coverageValue": "high",
+      "voteProductionValue": "medium",
+      "coalitionValue": "Delta churches · NAACP branches · educator networks",
+      "storytellingValue": "Helena blues heritage · farm community · courthouse access",
+      "category": "completion",
+      "stackWithLocked": [],
+      "countiesRemaining": [
+        "Phillips",
+        "Monroe",
+        "St. Francis"
+      ],
+      "vciRanks": {
+        "Phillips": 46,
+        "Monroe": 75,
+        "St. Francis": 21
+      }
+    },
+    {
+      "id": "southeast-delta",
+      "name": "Southeast Delta",
+      "counties": [
+        "Ashley",
+        "Chicot",
+        "Lincoln"
+      ],
+      "anchorCity": "Crossett",
+      "suggestedRoute": "Stack with Union immersion (Jul 25–29) or Sep Ashley fair · Lake Village · Star City",
+      "travelClass": "multi-day",
+      "overnightLikely": true,
+      "strategicValue": "Complete south Delta arc · forestry and rural business stories",
+      "coverageValue": "high",
+      "voteProductionValue": "low",
+      "coalitionValue": "Paper mill communities · rural Dem clubs",
+      "storytellingValue": "South AR timber · small-town main streets",
+      "category": "completion",
+      "stackWithLocked": [],
+      "countiesRemaining": [
+        "Ashley",
+        "Chicot",
+        "Lincoln"
+      ],
+      "vciRanks": {
+        "Ashley": 36,
+        "Chicot": 71,
+        "Lincoln": 66
+      }
+    },
+    {
+      "id": "southwest-completion",
+      "name": "Southwest Completion",
+      "counties": [
+        "Calhoun",
+        "Dallas",
+        "Miller",
+        "Sevier",
+        "Grant"
+      ],
+      "anchorCity": "Camden",
+      "suggestedRoute": "El Dorado/Union immersion extension → Camden → Arkadelphia adjacency",
+      "travelClass": "multi-day",
+      "overnightLikely": true,
+      "strategicValue": "Southwest quadrant completion · Ouachita foothills",
+      "coverageValue": "high",
+      "voteProductionValue": "low",
+      "coalitionValue": "South AR elected officials · chamber networks",
+      "storytellingValue": "Rural southwest · small business filers",
+      "category": "completion",
+      "stackWithLocked": [],
+      "countiesRemaining": [
+        "Calhoun",
+        "Dallas",
+        "Miller",
+        "Sevier",
+        "Grant"
+      ],
+      "vciRanks": {
+        "Calhoun": 74,
+        "Dallas": 70,
+        "Miller": 14,
+        "Sevier": 56,
+        "Grant": 35
+      }
+    },
+    {
+      "id": "northeast-completion",
+      "name": "Northeast Completion",
+      "counties": [
+        "Lawrence",
+        "Randolph",
+        "Jackson",
+        "Poinsett",
+        "Woodruff"
+      ],
+      "anchorCity": "Walnut Ridge",
+      "suggestedRoute": "Jonesboro hub → Walnut Ridge → Newport → Augusta corridor",
+      "travelClass": "multi-day",
+      "overnightLikely": true,
+      "strategicValue": "Crowley's Ridge completion · stack with Greene immersion Jul 12–14",
+      "coverageValue": "high",
+      "voteProductionValue": "medium",
+      "coalitionValue": "NE educator networks · fair circuit partners",
+      "storytellingValue": "Railroad towns · NE Arkansas identity",
+      "category": "completion",
+      "stackWithLocked": [],
+      "countiesRemaining": [
+        "Lawrence",
+        "Randolph",
+        "Jackson",
+        "Poinsett",
+        "Woodruff"
+      ],
+      "vciRanks": {
+        "Lawrence": 48,
+        "Randolph": 44,
+        "Jackson": 58,
+        "Poinsett": 45,
+        "Woodruff": 72
+      }
+    },
+    {
+      "id": "ozark-completion",
+      "name": "Ozark / North Central Completion",
+      "counties": [
+        "Newton",
+        "Madison",
+        "Perry",
+        "Logan",
+        "Little River"
+      ],
+      "anchorCity": "Jasper",
+      "suggestedRoute": "Harrison Balloon Sep 28 stack → Jasper → Paris · Mena adjacency",
+      "travelClass": "multi-day",
+      "overnightLikely": true,
+      "strategicValue": "Northwest Ozarks gap fill · tourist-town visibility",
+      "coverageValue": "high",
+      "voteProductionValue": "low",
+      "coalitionValue": "Ozarks hospitality · small-town clerks",
+      "storytellingValue": "Buffalo River gateway · mountain communities",
+      "category": "completion",
+      "stackWithLocked": [],
+      "countiesRemaining": [
+        "Newton",
+        "Madison",
+        "Perry",
+        "Logan",
+        "Little River"
+      ],
+      "vciRanks": {
+        "Newton": 64,
+        "Madison": 41,
+        "Perry": 57,
+        "Logan": 38,
+        "Little River": 50
+      }
+    },
+    {
+      "id": "central-prairie",
+      "name": "Central Prairie Completion",
+      "counties": [
+        "Prairie",
+        "Scott"
+      ],
+      "anchorCity": "De Witt",
+      "suggestedRoute": "LR Fri origin → De Witt → Waldron same-day or overnight with Southwest stack",
+      "travelClass": "regional",
+      "overnightLikely": false,
+      "strategicValue": "Central AR prairie counties · quick completion pair",
+      "coverageValue": "medium",
+      "voteProductionValue": "low",
+      "coalitionValue": "Farm bureau adjacency · rural church networks",
+      "storytellingValue": "Ag communities · rice and prairie landscape",
+      "category": "completion",
+      "stackWithLocked": [],
+      "countiesRemaining": [
+        "Prairie",
+        "Scott"
+      ],
+      "vciRanks": {
+        "Prairie": 68,
+        "Scott": 67
+      }
+    },
+    {
+      "id": "tier1-revisit",
+      "name": "Tier 1 Revisit Corridor",
+      "counties": [
+        "Jefferson",
+        "Craighead"
+      ],
+      "anchorCity": "Pine Bluff",
+      "suggestedRoute": "LR Tue/Fri → Pine Bluff (Jefferson) · or Jonesboro (Craighead) NE stack",
+      "travelClass": "regional",
+      "overnightLikely": false,
+      "strategicValue": "Vote production · Tier 1 VCI counties already visited but revisit overdue",
+      "coverageValue": "none",
+      "voteProductionValue": "very_high",
+      "coalitionValue": "Pine Bluff NAACP · Jonesboro educators · city partnerships",
+      "storytellingValue": "Urban recovery · NE hub business spotlight",
+      "category": "reinforcement",
+      "stackWithLocked": [],
+      "countiesRemaining": [],
+      "vciRanks": {
+        "Jefferson": 8,
+        "Craighead": 7
+      }
+    },
+    {
+      "id": "nwa-reinforcement",
+      "name": "NWA Reinforcement Corridor",
+      "counties": [
+        "Benton",
+        "Washington"
+      ],
+      "anchorCity": "Bentonville",
+      "suggestedRoute": "Fayetteville · Springdale · Rogers · Bentonville multi-stop (2-day)",
+      "travelClass": "multi-day",
+      "overnightLikely": true,
+      "strategicValue": "Highest statewide VCI vote production · no new counties",
+      "coverageValue": "none",
+      "voteProductionValue": "very_high",
+      "coalitionValue": "AEA NWA · Senior Dems Aug 5 · chamber validators",
+      "storytellingValue": "NWA growth · business community · student registration",
+      "category": "reinforcement",
+      "stackWithLocked": [
+        "06-21 Benton County immersion",
+        "07-11 Heber 250 / Ozarks 250 Block Party",
+        "08-05 NWA Senior Dems"
+      ],
+      "countiesRemaining": [],
+      "vciRanks": {
+        "Benton": 2,
+        "Washington": 3
+      }
+    },
+    {
+      "id": "river-valley-reinforcement",
+      "name": "River Valley Reinforcement Corridor",
+      "counties": [
+        "Sebastian",
+        "Pope",
+        "Garland"
+      ],
+      "anchorCity": "Fort Smith",
+      "suggestedRoute": "Fort Smith → Russellville → Hot Springs (locked fairs/forums align Sep)",
+      "travelClass": "multi-day",
+      "overnightLikely": true,
+      "strategicValue": "Western vote anchor · clerk relationships · fair season alignment",
+      "coverageValue": "none",
+      "voteProductionValue": "high",
+      "coalitionValue": "Fort Smith labor · River Valley educators",
+      "storytellingValue": "Western AR identity · Hot Springs forum Sep 25",
+      "category": "reinforcement",
+      "stackWithLocked": [
+        "07-31 Sebastian County immersion",
+        "08-18 Hot Springs Village",
+        "09-15 Pope County Fair",
+        "09-25 Hot Springs Forum"
+      ],
+      "countiesRemaining": [],
+      "vciRanks": {
+        "Sebastian": 6,
+        "Pope": 13,
+        "Garland": 9
+      }
+    }
+  ]
+}

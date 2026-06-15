@@ -318,6 +318,31 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       tier1RevisitStatus: [],
       deltaGapCountiesOpen: [],
     },
+    calendarFillPhaseA: {
+      disclaimer:
+        "Calendar Fill Phase A shows route choices and tradeoffs. It does not assign dates or create Kelly's final calendar.",
+      datesAssigned: false,
+      corridorCount: 0,
+      remainingCountyCount: 25,
+      openWeekendCount: 0,
+      corridors: [],
+      topTradeoffConflicts: [],
+      septemberGaps: [],
+      topWeekendTradeoffs: [],
+      septemberGate: [],
+    },
+    calendarFillPhaseB: {
+      disclaimer: "Proposed — leadership approval required. Not Kelly's final calendar.",
+      status: "not_built",
+      strategyLabel: "Option C — Balanced Delta + Tier 1 reinforcement",
+      leadershipApprovalRequired: true,
+      proposedBlockCount: 0,
+      proposedTotalAfterFill: 50,
+      stillMissingAfterFill: 25,
+      deltaCountiesScheduled: 0,
+      proposedBlocks: [],
+      tier1RevisitsProposed: [],
+    },
   };
 }
 

@@ -1,0 +1,47 @@
+{
+  "laborDay": "2026-09-07",
+  "criteria": [
+    {
+      "id": "all-75-counties",
+      "criterion": "All 75 counties touched or scheduled for completion",
+      "status": "missing",
+      "detail": "50/75 projected after locked · 25 still missing · corridors defined for all 25"
+    },
+    {
+      "id": "top-10-revisited",
+      "criterion": "Top 10 cities revisited or scheduled",
+      "status": "missing",
+      "detail": "8/10 have locked visits · 7 need revisit before Labor Day"
+    },
+    {
+      "id": "volunteer-leaders",
+      "criterion": "Volunteer leaders active after June 28 launch",
+      "status": "missing",
+      "detail": "0/20 founding team · launch Jun 28"
+    },
+    {
+      "id": "sherwood",
+      "criterion": "Sherwood operation on track (Jul 3–4 + Sept 17)",
+      "status": "partial",
+      "detail": "Jul 3 Sherwood locked · Sept 17 Sherwood in plan — VIP/volunteer metrics TBD"
+    },
+    {
+      "id": "endorsements",
+      "criterion": "Endorsement pipeline active",
+      "status": "missing",
+      "detail": "0 endorsed · 0 requested"
+    },
+    {
+      "id": "delta-partial",
+      "criterion": "Delta corridor at least partially covered",
+      "status": "missing",
+      "detail": "8 Delta counties in audit · 0 locked in Delta gateway · Phase A recommends Delta Gateway weekend"
+    },
+    {
+      "id": "public-proof",
+      "criterion": "Public proof archive growing",
+      "status": "missing",
+      "detail": "Substack 0 · Mobilize 0 linked · story workflow not yet operational"
+    }
+  ]
+}

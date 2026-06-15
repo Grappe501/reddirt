@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-06-15T05:57:44.400Z",
+  "disclaimer": "Proposed leadership-review schedule only. Not Kelly's final calendar. Not published to /events or Google Calendar. Approval required before Phase B becomes operational.",
+  "strategy": "option_c_balanced_delta_tier1",
+  "proposedBlockCount": 10,
+  "proposedTotalAfterFill": 75,
+  "stillMissingAfterFill": 0,
+  "deltaCountiesScheduled": 8,
+  "tier1RevisitsProposed": [
+    "Jefferson",
+    "Benton",
+    "Washington",
+    "Craighead",
+    "Pulaski"
+  ],
+  "leadershipApprovalRequired": true
+}

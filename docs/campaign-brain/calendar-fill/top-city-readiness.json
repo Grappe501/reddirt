@@ -1,0 +1,800 @@
+{
+  "generatedAt": "2026-06-15T05:57:43.256Z",
+  "cities": [
+    {
+      "rank": 1,
+      "city": "Little Rock",
+      "county": "Pulaski",
+      "isTop10": true,
+      "lastKnownVisit": "2026-05-18",
+      "daysSinceLastVisit": 28,
+      "nextLockedVisit": {
+        "date": "2026-06-19",
+        "event": "Juneteenth"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "fundraising",
+        "volunteer production",
+        "media",
+        "story/momentum"
+      ],
+      "strategicRole": "Statewide hub — media, fundraising, volunteer production, political coalition center.",
+      "visitFrequency": "weekly"
+    },
+    {
+      "rank": 2,
+      "city": "Fort Smith",
+      "county": "Sebastian",
+      "isTop10": true,
+      "lastKnownVisit": "2026-02-09",
+      "daysSinceLastVisit": 126,
+      "nextLockedVisit": {
+        "date": "2026-07-31",
+        "event": "Sebastian County immersion"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": true,
+      "cityRoles": [
+        "media",
+        "persuasion",
+        "coalition",
+        "story/momentum"
+      ],
+      "strategicRole": "Western Arkansas anchor — regional media and River Valley persuasion.",
+      "visitFrequency": "biweekly"
+    },
+    {
+      "rank": 3,
+      "city": "Fayetteville",
+      "county": "Washington",
+      "isTop10": true,
+      "lastKnownVisit": "2026-03-14",
+      "daysSinceLastVisit": 93,
+      "nextLockedVisit": {
+        "date": "2026-07-11",
+        "event": "Heber 250 / Ozarks 250 Block Party"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": true,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "University town — student registration, volunteer production, digital amplification.",
+      "visitFrequency": "biweekly"
+    },
+    {
+      "rank": 4,
+      "city": "Springdale",
+      "county": "Washington",
+      "isTop10": true,
+      "lastKnownVisit": "2026-03-14",
+      "daysSinceLastVisit": 93,
+      "nextLockedVisit": {
+        "date": "2026-07-11",
+        "event": "Heber 250 / Ozarks 250 Block Party"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": true,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "coalition",
+        "story/momentum"
+      ],
+      "strategicRole": "NWA growth corridor — diverse community organizing and workforce registration.",
+      "visitFrequency": "biweekly"
+    },
+    {
+      "rank": 5,
+      "city": "Jonesboro",
+      "county": "Craighead",
+      "isTop10": true,
+      "lastKnownVisit": "2025-12-15",
+      "daysSinceLastVisit": 182,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "missing",
+      "needsRevisit": true,
+      "cityRoles": [
+        "media",
+        "persuasion",
+        "coalition",
+        "story/momentum"
+      ],
+      "strategicRole": "Northeast hub — regional persuasion and media for Crowley's Ridge counties.",
+      "visitFrequency": "biweekly"
+    },
+    {
+      "rank": 6,
+      "city": "North Little Rock",
+      "county": "Pulaski",
+      "isTop10": true,
+      "lastKnownVisit": "2026-05-18",
+      "daysSinceLastVisit": 28,
+      "nextLockedVisit": {
+        "date": "2026-06-19",
+        "event": "Juneteenth"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Central Arkansas working-class recovery — Lane 2 drop-off and turnout growth.",
+      "visitFrequency": "biweekly"
+    },
+    {
+      "rank": 7,
+      "city": "Conway",
+      "county": "Faulkner",
+      "isTop10": true,
+      "lastKnownVisit": "2026-06-04",
+      "daysSinceLastVisit": 11,
+      "nextLockedVisit": {
+        "date": "2026-07-20",
+        "event": "Faulkner County engagement"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "College town + commuter growth — student and young-professional registration.",
+      "visitFrequency": "biweekly"
+    },
+    {
+      "rank": 8,
+      "city": "Rogers",
+      "county": "Benton",
+      "isTop10": true,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": {
+        "date": "2026-06-21",
+        "event": "Benton County immersion"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": true,
+      "cityRoles": [
+        "persuasion",
+        "coalition",
+        "story/momentum"
+      ],
+      "strategicRole": "NWA business corridor — chamber relationships and moderate Republican conversion.",
+      "visitFrequency": "biweekly"
+    },
+    {
+      "rank": 9,
+      "city": "Bentonville",
+      "county": "Benton",
+      "isTop10": true,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": {
+        "date": "2026-06-21",
+        "event": "Benton County immersion"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": true,
+      "cityRoles": [
+        "fundraising",
+        "coalition",
+        "story/momentum"
+      ],
+      "strategicRole": "Corporate NWA — fundraising, business community, executive relationships.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 10,
+      "city": "Pine Bluff",
+      "county": "Jefferson",
+      "isTop10": true,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "missing",
+      "needsRevisit": true,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Southeast Delta recovery — Democratic base turnout and Lane 2 reactivation.",
+      "visitFrequency": "biweekly"
+    },
+    {
+      "rank": 11,
+      "city": "Hot Springs",
+      "county": "Garland",
+      "isTop10": false,
+      "lastKnownVisit": "2026-05-26",
+      "daysSinceLastVisit": 20,
+      "nextLockedVisit": {
+        "date": "2026-08-18",
+        "event": "Hot Springs Village"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "persuasion",
+        "coalition",
+        "story/momentum"
+      ],
+      "strategicRole": "Tourism and retiree corridor — persuasion and community event organizing.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 12,
+      "city": "Benton",
+      "county": "Saline",
+      "isTop10": false,
+      "lastKnownVisit": "2026-05-09",
+      "daysSinceLastVisit": 37,
+      "nextLockedVisit": {
+        "date": "2026-06-21",
+        "event": "Benton County immersion"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "persuasion",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Central Arkansas suburban persuasion — commuter moderates and Lane 4.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 13,
+      "city": "Texarkana",
+      "county": "Miller",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "media",
+        "persuasion",
+        "story/momentum"
+      ],
+      "strategicRole": "Southwest border media market — regional persuasion.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 14,
+      "city": "Sherwood",
+      "county": "Pulaski",
+      "isTop10": false,
+      "lastKnownVisit": "2026-05-18",
+      "daysSinceLastVisit": 28,
+      "nextLockedVisit": {
+        "date": "2026-06-19",
+        "event": "Juneteenth"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "story/momentum"
+      ],
+      "strategicRole": "Pulaski suburban recovery — Lane 2 neighborhood organizing.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 15,
+      "city": "Jacksonville",
+      "county": "Pulaski",
+      "isTop10": false,
+      "lastKnownVisit": "2026-05-18",
+      "daysSinceLastVisit": 28,
+      "nextLockedVisit": {
+        "date": "2026-06-19",
+        "event": "Juneteenth"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Military-adjacent community — registration and turnout drives.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 16,
+      "city": "Russellville",
+      "county": "Pope",
+      "isTop10": false,
+      "lastKnownVisit": "2026-04-24",
+      "daysSinceLastVisit": 52,
+      "nextLockedVisit": {
+        "date": "2026-09-15",
+        "event": "Pope County Fair"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "River Valley college town — student registration pipeline.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 17,
+      "city": "Bella Vista",
+      "county": "Benton",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": {
+        "date": "2026-06-21",
+        "event": "Benton County immersion"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "persuasion",
+        "story/momentum"
+      ],
+      "strategicRole": "Retiree persuasion — relationship-based Lane 4.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 18,
+      "city": "Paragould",
+      "county": "Greene",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": {
+        "date": "2026-07-12",
+        "event": "Greene County immersion"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "media",
+        "story/momentum"
+      ],
+      "strategicRole": "Northeast county seat — volunteer hub for Greene/Craighead orbit.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 19,
+      "city": "Cabot",
+      "county": "Lonoke",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": {
+        "date": "2026-07-14",
+        "event": "Nixon Flower Farm"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Lonoke County growth suburb — young-family registration.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 20,
+      "city": "Searcy",
+      "county": "White",
+      "isTop10": false,
+      "lastKnownVisit": "2026-02-03",
+      "daysSinceLastVisit": 132,
+      "nextLockedVisit": {
+        "date": "2026-06-18",
+        "event": "Rose Bud Summerfest"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Harding University corridor — faith-adjacent student outreach.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 21,
+      "city": "Van Buren",
+      "county": "Crawford",
+      "isTop10": false,
+      "lastKnownVisit": "2026-04-08",
+      "daysSinceLastVisit": 68,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "persuasion",
+        "story/momentum"
+      ],
+      "strategicRole": "Fort Smith metro partner — Crawford County field organizing.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 22,
+      "city": "El Dorado",
+      "county": "Union",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": {
+        "date": "2026-07-25",
+        "event": "Union County immersion"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "persuasion",
+        "coalition",
+        "story/momentum"
+      ],
+      "strategicRole": "South Arkansas oil belt — chamber and civic club relationships.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 23,
+      "city": "Blytheville",
+      "county": "Mississippi",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Mississippi Delta recovery — base turnout and Lane 2.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 24,
+      "city": "Harrison",
+      "county": "Boone",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": {
+        "date": "2026-09-28",
+        "event": "Harrison Balloon Fest"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "persuasion",
+        "story/momentum"
+      ],
+      "strategicRole": "Ozarks county seat — direct-democracy / paper-ballot Republican fracture outreach.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 25,
+      "city": "Mountain Home",
+      "county": "Baxter",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": {
+        "date": "2026-06-19",
+        "event": "Mountain Home Craft Fest (Baxter)"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "persuasion",
+        "story/momentum"
+      ],
+      "strategicRole": "Twin Lakes region — retiree and lake-community persuasion.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 26,
+      "city": "Marion",
+      "county": "Crittenden",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Memphis-adjacent suburb — Democratic recovery in Crittenden.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 27,
+      "city": "Bryant",
+      "county": "Saline",
+      "isTop10": false,
+      "lastKnownVisit": "2026-05-09",
+      "daysSinceLastVisit": 37,
+      "nextLockedVisit": {
+        "date": "2026-10-12",
+        "event": "Saline County GOTV push"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Saline County growth — suburban registration drives.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 28,
+      "city": "Siloam Springs",
+      "county": "Benton",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": {
+        "date": "2026-06-21",
+        "event": "Benton County immersion"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "John Brown University corridor — student registration.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 29,
+      "city": "Maumelle",
+      "county": "Pulaski",
+      "isTop10": false,
+      "lastKnownVisit": "2026-05-18",
+      "daysSinceLastVisit": 28,
+      "nextLockedVisit": {
+        "date": "2026-06-19",
+        "event": "Juneteenth"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "persuasion",
+        "story/momentum"
+      ],
+      "strategicRole": "Affluent Pulaski suburb — moderate Republican relationship building.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 30,
+      "city": "Malvern",
+      "county": "Hot Spring",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": {
+        "date": "2026-07-08",
+        "event": "Hot Spring County visit"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "persuasion",
+        "story/momentum"
+      ],
+      "strategicRole": "Hot Spring County seat — local civic organizing.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 31,
+      "city": "Arkadelphia",
+      "county": "Clark",
+      "isTop10": false,
+      "lastKnownVisit": "2026-06-06",
+      "daysSinceLastVisit": 9,
+      "nextLockedVisit": {
+        "date": "2026-08-12",
+        "event": "Arkadelphia visit"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Ouachita Baptist / Henderson — college registration.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 32,
+      "city": "Batesville",
+      "county": "Independence",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "coalition",
+        "story/momentum"
+      ],
+      "strategicRole": "North-central county seat — chamber and civic club hub.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 33,
+      "city": "Hope",
+      "county": "Hempstead",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Southwest Democratic heritage — base recovery and pride organizing.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 34,
+      "city": "Magnolia",
+      "county": "Columbia",
+      "isTop10": false,
+      "lastKnownVisit": "2026-05-17",
+      "daysSinceLastVisit": 29,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Southern Arkansas University — college town registration.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 35,
+      "city": "Stuttgart",
+      "county": "Arkansas",
+      "isTop10": false,
+      "lastKnownVisit": "2026-01-10",
+      "daysSinceLastVisit": 156,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "persuasion",
+        "coalition",
+        "story/momentum"
+      ],
+      "strategicRole": "Delta agriculture hub — chamber and community event organizing.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 36,
+      "city": "Camden",
+      "county": "Ouachita",
+      "isTop10": false,
+      "lastKnownVisit": "2026-03-22",
+      "daysSinceLastVisit": 85,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "South Arkansas county seat — base turnout recovery.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 37,
+      "city": "Forrest City",
+      "county": "St. Francis",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Delta county seat — Democratic base mobilization.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 38,
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "isTop10": false,
+      "lastKnownVisit": null,
+      "daysSinceLastVisit": null,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "Crittenden Democratic anchor — highest Delta recovery potential in county.",
+      "visitFrequency": "monthly"
+    },
+    {
+      "rank": 39,
+      "city": "Beebe",
+      "county": "White",
+      "isTop10": false,
+      "lastKnownVisit": "2026-02-03",
+      "daysSinceLastVisit": 132,
+      "nextLockedVisit": {
+        "date": "2026-06-18",
+        "event": "Rose Bud Summerfest"
+      },
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "vote production",
+        "story/momentum"
+      ],
+      "strategicRole": "ASU-Beebe corridor — community college registration.",
+      "visitFrequency": "quarterly"
+    },
+    {
+      "rank": 40,
+      "city": "Wynne",
+      "county": "Cross",
+      "isTop10": false,
+      "lastKnownVisit": "2026-05-28",
+      "daysSinceLastVisit": 18,
+      "nextLockedVisit": null,
+      "septemberReadinessStatus": "partial",
+      "needsRevisit": false,
+      "cityRoles": [
+        "volunteer production",
+        "persuasion",
+        "story/momentum"
+      ],
+      "strategicRole": "Cross County seat — northeast Delta field organizing.",
+      "visitFrequency": "quarterly"
+    }
+  ]
+}

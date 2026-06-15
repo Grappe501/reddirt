@@ -1,0 +1,35 @@
+{
+  "laborDay": "2026-09-07",
+  "criteria": [
+    {
+      "criterion": "All 75 counties touched or scheduled",
+      "status": "met_proposed",
+      "detail": "75/75 in proposal"
+    },
+    {
+      "criterion": "Top 10 cities revisited or scheduled",
+      "status": "partial",
+      "detail": "NWA Aug 15–16 · Jefferson Jul 19 · Craighead Aug 30 · LR locked events"
+    },
+    {
+      "criterion": "Delta partially covered before Labor Day",
+      "status": "met_proposed",
+      "detail": "8 Delta counties in proposal before Sep forums"
+    },
+    {
+      "criterion": "Volunteer leaders active",
+      "status": "missing",
+      "detail": "Depends on Jun 28 launch execution — not assigned in this proposal"
+    },
+    {
+      "criterion": "Sherwood on track",
+      "status": "partial",
+      "detail": "Jul 3 locked · Sep 17 in plan"
+    },
+    {
+      "criterion": "Endorsement pipeline active",
+      "status": "missing",
+      "detail": "Operational — not calendar-assigned"
+    }
+  ]
+}

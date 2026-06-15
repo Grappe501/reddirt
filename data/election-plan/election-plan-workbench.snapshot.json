@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T05:17:04.026Z",
+  "generatedAt": "2026-06-15T05:57:45.786Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -6018,6 +6018,345 @@
       "Lincoln",
       "Chicot",
       "Monroe"
+    ]
+  },
+  "calendarFillPhaseA": {
+    "disclaimer": "Calendar Fill Phase A shows route choices and tradeoffs. It does not assign dates or create Kelly's final calendar.",
+    "datesAssigned": false,
+    "corridorCount": 10,
+    "remainingCountyCount": 25,
+    "openWeekendCount": 11,
+    "corridors": [
+      {
+        "id": "delta-gateway",
+        "name": "Delta Gateway",
+        "counties": [
+          "Crittenden",
+          "Mississippi"
+        ],
+        "anchorCity": "West Memphis",
+        "category": "completion"
+      },
+      {
+        "id": "delta-river",
+        "name": "Delta River Corridor",
+        "counties": [
+          "Phillips",
+          "Monroe",
+          "St. Francis"
+        ],
+        "anchorCity": "Helena",
+        "category": "completion"
+      },
+      {
+        "id": "southeast-delta",
+        "name": "Southeast Delta",
+        "counties": [
+          "Ashley",
+          "Chicot",
+          "Lincoln"
+        ],
+        "anchorCity": "Crossett",
+        "category": "completion"
+      },
+      {
+        "id": "southwest-completion",
+        "name": "Southwest Completion",
+        "counties": [
+          "Calhoun",
+          "Dallas",
+          "Miller",
+          "Sevier",
+          "Grant"
+        ],
+        "anchorCity": "Camden",
+        "category": "completion"
+      },
+      {
+        "id": "northeast-completion",
+        "name": "Northeast Completion",
+        "counties": [
+          "Lawrence",
+          "Randolph",
+          "Jackson",
+          "Poinsett",
+          "Woodruff"
+        ],
+        "anchorCity": "Walnut Ridge",
+        "category": "completion"
+      },
+      {
+        "id": "ozark-completion",
+        "name": "Ozark / North Central Completion",
+        "counties": [
+          "Newton",
+          "Madison",
+          "Perry",
+          "Logan",
+          "Little River"
+        ],
+        "anchorCity": "Jasper",
+        "category": "completion"
+      },
+      {
+        "id": "central-prairie",
+        "name": "Central Prairie Completion",
+        "counties": [
+          "Prairie",
+          "Scott"
+        ],
+        "anchorCity": "De Witt",
+        "category": "completion"
+      },
+      {
+        "id": "tier1-revisit",
+        "name": "Tier 1 Revisit Corridor",
+        "counties": [
+          "Jefferson",
+          "Craighead"
+        ],
+        "anchorCity": "Pine Bluff",
+        "category": "reinforcement"
+      },
+      {
+        "id": "nwa-reinforcement",
+        "name": "NWA Reinforcement Corridor",
+        "counties": [
+          "Benton",
+          "Washington"
+        ],
+        "anchorCity": "Bentonville",
+        "category": "reinforcement"
+      },
+      {
+        "id": "river-valley-reinforcement",
+        "name": "River Valley Reinforcement Corridor",
+        "counties": [
+          "Sebastian",
+          "Pope",
+          "Garland"
+        ],
+        "anchorCity": "Fort Smith",
+        "category": "reinforcement"
+      }
+    ],
+    "topTradeoffConflicts": [
+      "Coverage vs vote production",
+      "Delta immersion vs candidate recovery",
+      "Tier 1 revisit vs county completion",
+      "Labor Day gate vs open weekend count"
+    ],
+    "septemberGaps": [
+      "all-75-counties",
+      "top-10-revisited",
+      "volunteer-leaders",
+      "endorsements",
+      "delta-partial",
+      "public-proof"
+    ],
+    "topWeekendTradeoffs": [
+      {
+        "weekend": "2026-07-19",
+        "optionA": "Delta Gateway — West Memphis / Blytheville",
+        "optionB": "NWA Reinforcement — Benton + Washington"
+      },
+      {
+        "weekend": "2026-08-08 → 2026-08-09",
+        "optionA": "Delta Gateway — West Memphis / Blytheville",
+        "optionB": "NWA Reinforcement — Benton + Washington"
+      },
+      {
+        "weekend": "2026-08-15 → 2026-08-16",
+        "optionA": "Delta Gateway — West Memphis / Blytheville",
+        "optionB": "NWA Reinforcement — Benton + Washington"
+      }
+    ],
+    "septemberGate": [
+      {
+        "criterion": "All 75 counties touched or scheduled for completion",
+        "status": "missing",
+        "detail": "50/75 projected after locked · 25 still missing · corridors defined for all 25"
+      },
+      {
+        "criterion": "Top 10 cities revisited or scheduled",
+        "status": "missing",
+        "detail": "8/10 have locked visits · 7 need revisit before Labor Day"
+      },
+      {
+        "criterion": "Volunteer leaders active after June 28 launch",
+        "status": "missing",
+        "detail": "0/20 founding team · launch Jun 28"
+      },
+      {
+        "criterion": "Sherwood operation on track (Jul 3–4 + Sept 17)",
+        "status": "partial",
+        "detail": "Jul 3 Sherwood locked · Sept 17 Sherwood in plan — VIP/volunteer metrics TBD"
+      },
+      {
+        "criterion": "Endorsement pipeline active",
+        "status": "missing",
+        "detail": "0 endorsed · 0 requested"
+      },
+      {
+        "criterion": "Delta corridor at least partially covered",
+        "status": "missing",
+        "detail": "8 Delta counties in audit · 0 locked in Delta gateway · Phase A recommends Delta Gateway weekend"
+      },
+      {
+        "criterion": "Public proof archive growing",
+        "status": "missing",
+        "detail": "Substack 0 · Mobilize 0 linked · story workflow not yet operational"
+      }
+    ]
+  },
+  "calendarFillPhaseB": {
+    "disclaimer": "Proposed leadership-review schedule only. Not Kelly's final calendar. Not published to /events or Google Calendar. Approval required before Phase B becomes operational.",
+    "status": "proposed_leadership_review",
+    "strategyLabel": "Option C — Balanced Delta + Tier 1 reinforcement",
+    "leadershipApprovalRequired": true,
+    "proposedBlockCount": 10,
+    "proposedTotalAfterFill": 75,
+    "stillMissingAfterFill": 0,
+    "deltaCountiesScheduled": 8,
+    "proposedBlocks": [
+      {
+        "label": "Tier 1 revisit — Pine Bluff / Jefferson",
+        "startDate": "2026-07-19",
+        "endDate": "2026-07-19",
+        "countiesNew": [],
+        "countiesRevisit": [
+          "Jefferson"
+        ],
+        "category": "tier1_reinforcement",
+        "travelClass": "regional"
+      },
+      {
+        "label": "Delta Gateway immersion — West Memphis + Blytheville",
+        "startDate": "2026-08-08",
+        "endDate": "2026-08-09",
+        "countiesNew": [
+          "Crittenden",
+          "Mississippi"
+        ],
+        "countiesRevisit": [],
+        "category": "coverage",
+        "travelClass": "multi-day"
+      },
+      {
+        "label": "NWA Tier 1 reinforcement — Benton + Washington stack",
+        "startDate": "2026-08-15",
+        "endDate": "2026-08-16",
+        "countiesNew": [],
+        "countiesRevisit": [
+          "Benton",
+          "Washington"
+        ],
+        "category": "tier1_reinforcement",
+        "travelClass": "multi-day"
+      },
+      {
+        "label": "Delta River corridor — Helena / Phillips + Monroe + St. Francis",
+        "startDate": "2026-08-23",
+        "endDate": "2026-08-24",
+        "countiesNew": [
+          "Phillips",
+          "Monroe",
+          "St. Francis"
+        ],
+        "countiesRevisit": [],
+        "category": "coverage",
+        "travelClass": "multi-day"
+      },
+      {
+        "label": "Tier 1 Jonesboro revisit + Lawrence county completion",
+        "startDate": "2026-08-30",
+        "endDate": "2026-08-30",
+        "countiesNew": [
+          "Lawrence"
+        ],
+        "countiesRevisit": [
+          "Craighead"
+        ],
+        "category": "tier1_reinforcement",
+        "travelClass": "immersion"
+      },
+      {
+        "label": "Northeast completion — Walnut Ridge / Newport / Augusta corridor",
+        "startDate": "2026-09-06",
+        "endDate": "2026-09-07",
+        "countiesNew": [
+          "Randolph",
+          "Jackson",
+          "Poinsett",
+          "Woodruff"
+        ],
+        "countiesRevisit": [],
+        "category": "coverage",
+        "travelClass": "multi-day"
+      },
+      {
+        "label": "Southeast Delta + Southwest completion immersion",
+        "startDate": "2026-09-26",
+        "endDate": "2026-09-27",
+        "countiesNew": [
+          "Ashley",
+          "Chicot",
+          "Lincoln",
+          "Calhoun",
+          "Dallas",
+          "Miller",
+          "Sevier",
+          "Grant"
+        ],
+        "countiesRevisit": [],
+        "category": "coverage",
+        "travelClass": "multi-day"
+      },
+      {
+        "label": "Ozark / North Central completion",
+        "startDate": "2026-10-03",
+        "endDate": "2026-10-04",
+        "countiesNew": [
+          "Newton",
+          "Madison",
+          "Perry",
+          "Logan",
+          "Little River"
+        ],
+        "countiesRevisit": [],
+        "category": "coverage",
+        "travelClass": "multi-day"
+      },
+      {
+        "label": "Central Prairie completion + recovery buffer",
+        "startDate": "2026-10-11",
+        "endDate": "2026-10-12",
+        "countiesNew": [
+          "Prairie",
+          "Scott"
+        ],
+        "countiesRevisit": [],
+        "category": "coverage",
+        "travelClass": "regional"
+      },
+      {
+        "label": "Recovery / story backlog / early vote prep",
+        "startDate": "2026-10-18",
+        "endDate": "2026-10-18",
+        "countiesNew": [],
+        "countiesRevisit": [
+          "Pulaski"
+        ],
+        "category": "rest_prep",
+        "travelClass": "local"
+      }
+    ],
+    "tier1RevisitsProposed": [
+      "Jefferson",
+      "Benton",
+      "Washington",
+      "Craighead",
+      "Pulaski"
     ]
   },
   "weekPlans": [

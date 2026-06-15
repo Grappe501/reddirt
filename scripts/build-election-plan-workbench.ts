@@ -827,6 +827,140 @@ function buildCalendarSettlementSection(coverage: ReturnType<typeof buildCoverag
   };
 }
 
+function buildCalendarFillPhaseASection() {
+  const summary = readJson<{
+    disclaimer?: string;
+    datesAssigned?: boolean;
+    corridorCount?: number;
+    remainingCountyCount?: number;
+    openWeekendCount?: number;
+    topTradeoffConflicts?: string[];
+    septemberGaps?: string[];
+    topWeekendTradeoffs?: Array<{ weekend: string; optionA?: string; optionB?: string }>;
+  }>(path.join(BRAIN, "calendar-fill/calendar-fill-phase-a.summary.json"));
+
+  const corridors = readJson<{
+    corridors?: Array<{ id: string; name: string; counties: string[]; anchorCity: string; category: string }>;
+  }>(path.join(BRAIN, "calendar-fill/coverage-completion-corridors.json"));
+
+  const gate = readJson<{ criteria?: Array<{ criterion: string; status: string; detail: string }> }>(
+    path.join(BRAIN, "calendar-fill/september-readiness-gate.json"),
+  );
+
+  const disclaimer =
+    summary?.disclaimer ??
+    "Calendar Fill Phase A shows route choices and tradeoffs. It does not assign dates or create Kelly's final calendar.";
+
+  if (!summary?.corridorCount) {
+    return {
+      disclaimer,
+      datesAssigned: false,
+      corridorCount: 0,
+      remainingCountyCount: 25,
+      openWeekendCount: 0,
+      corridors: [],
+      topTradeoffConflicts: [],
+      septemberGaps: [],
+      topWeekendTradeoffs: [],
+      septemberGate: [],
+    };
+  }
+
+  return {
+    disclaimer,
+    datesAssigned: false,
+    corridorCount: summary.corridorCount,
+    remainingCountyCount: summary.remainingCountyCount ?? 25,
+    openWeekendCount: summary.openWeekendCount ?? 0,
+    corridors: (corridors?.corridors ?? []).map((c) => ({
+      id: c.id,
+      name: c.name,
+      counties: c.counties,
+      anchorCity: c.anchorCity,
+      category: c.category,
+    })),
+    topTradeoffConflicts: summary.topTradeoffConflicts ?? [],
+    septemberGaps: summary.septemberGaps ?? [],
+    topWeekendTradeoffs: (summary.topWeekendTradeoffs ?? []).map((w) => ({
+      weekend: w.weekend,
+      optionA: w.optionA ?? "",
+      optionB: w.optionB ?? "",
+    })),
+    septemberGate: (gate?.criteria ?? []).map((g) => ({
+      criterion: g.criterion,
+      status: g.status,
+      detail: g.detail,
+    })),
+  };
+}
+
+function buildCalendarFillPhaseBSection() {
+  const summary = readJson<{
+    disclaimer?: string;
+    strategy?: string;
+    proposedBlockCount?: number;
+    proposedTotalAfterFill?: number;
+    stillMissingAfterFill?: number;
+    deltaCountiesScheduled?: number;
+    tier1RevisitsProposed?: string[];
+    leadershipApprovalRequired?: boolean;
+  }>(path.join(BRAIN, "calendar-fill/calendar-fill-phase-b.summary.json"));
+
+  const proposed = readJson<{
+    strategyLabel?: string;
+    status?: string;
+    proposedBlocks?: Array<{
+      label: string;
+      startDate: string;
+      endDate: string;
+      countiesNew: string[];
+      countiesRevisit: string[];
+      category: string;
+      travelClass: string;
+    }>;
+  }>(path.join(BRAIN, "calendar-fill/proposed-calendar-fill.json"));
+
+  const disclaimer =
+    summary?.disclaimer ??
+    "Proposed — leadership approval required. Not Kelly's final calendar.";
+
+  if (!summary?.proposedBlockCount) {
+    return {
+      disclaimer,
+      status: "not_built",
+      strategyLabel: "Option C — Balanced Delta + Tier 1 reinforcement",
+      leadershipApprovalRequired: true,
+      proposedBlockCount: 0,
+      proposedTotalAfterFill: 50,
+      stillMissingAfterFill: 25,
+      deltaCountiesScheduled: 0,
+      proposedBlocks: [],
+      tier1RevisitsProposed: [],
+    };
+  }
+
+  return {
+    disclaimer,
+    status: proposed?.status ?? "proposed_leadership_review",
+    strategyLabel: proposed?.strategyLabel ?? "Option C — Balanced Delta + Tier 1 reinforcement",
+    leadershipApprovalRequired: summary.leadershipApprovalRequired ?? true,
+    proposedBlockCount: summary.proposedBlockCount,
+    proposedTotalAfterFill: summary.proposedTotalAfterFill ?? 75,
+    stillMissingAfterFill: summary.stillMissingAfterFill ?? 0,
+    deltaCountiesScheduled: summary.deltaCountiesScheduled ?? 0,
+    proposedBlocks: (proposed?.proposedBlocks ?? []).map((b) => ({
+      label: b.label,
+      startDate: b.startDate,
+      endDate: b.endDate,
+      countiesNew: b.countiesNew,
+      countiesRevisit: b.countiesRevisit,
+      category: b.category,
+      travelClass: b.travelClass,
+    })),
+    tier1RevisitsProposed: summary.tier1RevisitsProposed ?? [],
+  };
+}
+
 function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySection>) {
   const fm = readJson<{ upcomingCount?: number; nextWeekCount?: number }>(
     path.join(BRAIN_DATA, "forward-motion-summary.json"),
@@ -1105,6 +1239,8 @@ function main() {
 
   const coverageReality = buildCoverageRealitySection();
   const calendarSettlement = buildCalendarSettlementSection(coverageReality);
+  const calendarFillPhaseA = buildCalendarFillPhaseASection();
+  const calendarFillPhaseB = buildCalendarFillPhaseBSection();
 
   const snapshot: ElectionPlanWorkbenchSnapshot = {
     version: 1,
@@ -1284,6 +1420,8 @@ function main() {
     warRoom: buildWarRoomSection(coverageReality),
     coverageReality,
     calendarSettlement,
+    calendarFillPhaseA,
+    calendarFillPhaseB,
     weekPlans: buildWeekPlansSection(),
     campaignTimeline: buildCampaignTimeline(),
   };

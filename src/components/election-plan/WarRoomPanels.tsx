@@ -508,6 +508,122 @@ export function PresenceMapPanel({ data }: Props) {
         </div>
       ) : null}
 
+      {data.calendarFillPhaseA.corridorCount > 0 ? (
+        <div className="ep-card mb-8 border-l-4 border-[var(--ep-gold)]">
+          <h3 className="font-heading font-bold">Calendar Fill Phase A</h3>
+          <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{data.calendarFillPhaseA.disclaimer}</p>
+          <div className="mt-4 ep-stat-grid">
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseA.corridorCount}</div>
+              <div className="ep-stat-label">Completion corridors</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseA.remainingCountyCount}</div>
+              <div className="ep-stat-label">Counties grouped</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseA.openWeekendCount}</div>
+              <div className="ep-stat-label">Open weekends</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseA.datesAssigned ? "Yes" : "No"}</div>
+              <div className="ep-stat-label">Dates assigned</div>
+            </div>
+          </div>
+          {data.calendarFillPhaseA.topWeekendTradeoffs.length > 0 ? (
+            <div className="mt-4">
+              <h4 className="text-sm font-bold">Top weekend tradeoffs</h4>
+              <ul className="mt-2 space-y-2 text-sm">
+                {data.calendarFillPhaseA.topWeekendTradeoffs.map((t) => (
+                  <li key={t.weekend}>
+                    <span className="font-medium">{t.weekend}</span>
+                    <span className="text-[var(--ep-navy-muted)]">
+                      {" "}
+                      · A: {t.optionA} vs B: {t.optionB}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+          {data.calendarFillPhaseA.septemberGate.length > 0 ? (
+            <div className="mt-4">
+              <h4 className="text-sm font-bold">September readiness gate</h4>
+              <ul className="mt-2 space-y-1 text-xs">
+                {data.calendarFillPhaseA.septemberGate.slice(0, 5).map((g) => (
+                  <li key={g.criterion}>
+                    <span className="font-medium uppercase">{g.status}</span> — {g.criterion}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      {data.calendarFillPhaseB.proposedBlockCount > 0 ? (
+        <div className="ep-card mb-8 border-l-4 border-amber-500">
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="font-heading font-bold">Calendar Fill Phase B</h3>
+            <span className="rounded bg-amber-100 px-2 py-0.5 text-xs font-semibold uppercase text-amber-900">
+              Proposed — leadership approval required
+            </span>
+          </div>
+          <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{data.calendarFillPhaseB.disclaimer}</p>
+          <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{data.calendarFillPhaseB.strategyLabel}</p>
+          <div className="mt-4 ep-stat-grid">
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseB.proposedTotalAfterFill}/75</div>
+              <div className="ep-stat-label">Proposed coverage</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseB.proposedBlockCount}</div>
+              <div className="ep-stat-label">Proposed blocks</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseB.deltaCountiesScheduled}</div>
+              <div className="ep-stat-label">Delta in proposal</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseB.stillMissingAfterFill}</div>
+              <div className="ep-stat-label">Still missing</div>
+            </div>
+          </div>
+          {data.calendarFillPhaseB.proposedBlocks.length > 0 ? (
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                    <th className="pb-2 pr-3">Dates</th>
+                    <th className="pb-2 pr-3">Block</th>
+                    <th className="pb-2 pr-3">New</th>
+                    <th className="pb-2">Category</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.calendarFillPhaseB.proposedBlocks.map((b) => (
+                    <tr key={b.startDate + b.label} className="border-b border-[var(--ep-border)] last:border-0">
+                      <td className="py-2 pr-3 whitespace-nowrap text-xs">
+                        {b.startDate}
+                        {b.endDate !== b.startDate ? `–${b.endDate.slice(5)}` : ""}
+                      </td>
+                      <td className="py-2 pr-3">{b.label}</td>
+                      <td className="py-2 pr-3 text-xs">{b.countiesNew.join(", ") || "—"}</td>
+                      <td className="py-2 text-xs">{b.category.replace(/_/g, " ")}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
+          {data.calendarFillPhaseB.tier1RevisitsProposed.length > 0 ? (
+            <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
+              Tier 1 revisits in proposal: {data.calendarFillPhaseB.tier1RevisitsProposed.join(" · ")}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+
       <p className="text-xs text-[var(--ep-navy-muted)]">{c.doctrine}</p>
     </section>
   );

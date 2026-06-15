@@ -481,4 +481,36 @@ export type ElectionPlanWorkbenchSnapshot = {
     }>;
     deltaGapCountiesOpen: string[];
   };
+  calendarFillPhaseA: {
+    disclaimer: string;
+    datesAssigned: boolean;
+    corridorCount: number;
+    remainingCountyCount: number;
+    openWeekendCount: number;
+    corridors: Array<{ id: string; name: string; counties: string[]; anchorCity: string; category: string }>;
+    topTradeoffConflicts: string[];
+    septemberGaps: string[];
+    topWeekendTradeoffs: Array<{ weekend: string; optionA: string; optionB: string }>;
+    septemberGate: Array<{ criterion: string; status: string; detail: string }>;
+  };
+  calendarFillPhaseB: {
+    disclaimer: string;
+    status: string;
+    strategyLabel: string;
+    leadershipApprovalRequired: boolean;
+    proposedBlockCount: number;
+    proposedTotalAfterFill: number;
+    stillMissingAfterFill: number;
+    deltaCountiesScheduled: number;
+    proposedBlocks: Array<{
+      label: string;
+      startDate: string;
+      endDate: string;
+      countiesNew: string[];
+      countiesRevisit: string[];
+      category: string;
+      travelClass: string;
+    }>;
+    tier1RevisitsProposed: string[];
+  };
 };
