@@ -4,6 +4,8 @@ import {
   EventWorkflowState,
   type Prisma,
 } from "@prisma/client";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { prisma } from "@/lib/db";
 import {
@@ -22,6 +24,27 @@ import {
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 
 const JOIN = () => getJoinCampaignHref();
+const PUBLIC_CALENDAR_SNAPSHOT_PATH = path.join(
+  process.cwd(),
+  "data/calendar-command-center/public-campaign-calendar.snapshot.json"
+);
+const ELECTION_DAY_YMD = "2026-11-03";
+
+type SnapshotFile = {
+  events?: Array<{
+    id: string;
+    slug: string;
+    title: string;
+    publicSummary: string | null;
+    startAt: string;
+    endAt: string;
+    timezone: string;
+    locationName: string | null;
+    address: string | null;
+    eventType: CampaignEventType;
+    county: { displayName: string; slug: string } | null;
+  }>;
+};
 
 /**
  * CampaignOS gating: published workflow, explicit public flag, not operationally canceled.
@@ -32,6 +55,65 @@ export function whereLivePublicOnWebsite(): Prisma.CampaignEventWhereInput {
     eventWorkflowState: EventWorkflowState.PUBLISHED,
     status: { not: CampaignEventStatus.CANCELLED },
   };
+}
+
+function snapshotToPublicDto(
+  row: NonNullable<SnapshotFile["events"]>[number],
+  joinHref: string
+): PublicCampaignEvent {
+  const detailHref = `/campaign-calendar/${row.slug}`;
+  const startAt = new Date(row.startAt);
+  const endAt = new Date(row.endAt);
+  const venueMode = inferPublicVenueMode({
+    eventType: row.eventType,
+    locationName: row.locationName,
+    address: row.address,
+  });
+  return {
+    id: row.id,
+    slug: row.slug,
+    title: row.title,
+    publicSummary: row.publicSummary,
+    startAt,
+    endAt,
+    timezone: row.timezone,
+    locationName: row.locationName,
+    address: row.address,
+    eventType: row.eventType,
+    eventTypeLabel: formatPublicEventType(row.eventType),
+    county: row.county,
+    venueMode,
+    publicTags: [],
+    detailHref,
+    joinCampaignHref: joinHref,
+    primaryAction: { label: "Details & RSVP", href: detailHref },
+    secondaryAction: { label: "Volunteer", href: joinHref },
+  };
+}
+
+function loadSnapshotPublicEvents(): PublicCampaignEvent[] {
+  try {
+    const raw = readFileSync(PUBLIC_CALENDAR_SNAPSHOT_PATH, "utf8");
+    const data = JSON.parse(raw) as SnapshotFile;
+    const joinHref = JOIN();
+    return (data.events ?? []).map((e) => snapshotToPublicDto(e, joinHref));
+  } catch {
+    return [];
+  }
+}
+
+function mergeDbAndSnapshot(db: PublicCampaignEvent[], snapshot: PublicCampaignEvent[]): PublicCampaignEvent[] {
+  const seen = new Set(
+    db.map((e) => `${ymdInTimeZone(e.startAt, e.timezone)}|${e.title.trim().toLowerCase()}`)
+  );
+  const merged = [...db];
+  for (const e of snapshot) {
+    const key = `${ymdInTimeZone(e.startAt, e.timezone)}|${e.title.trim().toLowerCase()}`;
+    if (seen.has(key) || merged.some((m) => m.slug === e.slug)) continue;
+    seen.add(key);
+    merged.push(e);
+  }
+  return merged.sort((a, b) => a.startAt.getTime() - b.startAt.getTime());
 }
 
 function toPublicDto(
@@ -203,10 +285,43 @@ export async function queryPublicCampaignEvents(
     const mapped = rows
       .filter((r) => rowPassesFilters(r, filters))
       .map((r) => toPublicDto(r, joinHref));
-    return mapped.slice(0, opts.take);
+
+    const snapshot = loadSnapshotPublicEvents().filter((e) => {
+      const startYmd = ymdInTimeZone(e.startAt, e.timezone);
+      if (startYmd > ELECTION_DAY_YMD) return false;
+      return rowPassesFilters(
+        {
+          startAt: e.startAt,
+          endAt: e.endAt,
+          timezone: e.timezone,
+          eventType: e.eventType,
+          locationName: e.locationName,
+          address: e.address,
+          county: e.county,
+        },
+        filters
+      );
+    });
+
+    return mergeDbAndSnapshot(mapped, snapshot).slice(0, opts.take);
   } catch (e) {
     if (isPrismaDatabaseUnavailable(e)) {
       logPrismaDatabaseUnavailable("queryPublicCampaignEvents", e);
+      const snapshot = loadSnapshotPublicEvents().filter((ev) =>
+        rowPassesFilters(
+          {
+            startAt: ev.startAt,
+            endAt: ev.endAt,
+            timezone: ev.timezone,
+            eventType: ev.eventType,
+            locationName: ev.locationName,
+            address: ev.address,
+            county: ev.county,
+          },
+          filters
+        )
+      );
+      return snapshot.slice(0, opts.take);
     } else {
       console.error("[queryPublicCampaignEvents]", e);
     }
@@ -240,8 +355,8 @@ export async function getPublicCampaignEventBySlug(slug: string): Promise<Public
     where: { ...whereLivePublicOnWebsite(), slug },
     select: publicCampaignEventSelect,
   });
-  if (!row) return null;
-  return toPublicDto(row, joinHref);
+  if (row) return toPublicDto(row, joinHref);
+  return loadSnapshotPublicEvents().find((e) => e.slug === slug) ?? null;
 }
 
 export async function getPublicCanceledTombstoneBySlug(slug: string): Promise<{ title: string; slug: string } | null> {

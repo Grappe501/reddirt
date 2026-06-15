@@ -474,7 +474,68 @@
   border-radius: 4px;
 }
 
+.ep-edition-badge {
+  display: inline-block;
+  padding: 0.2rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--ep-gold-soft);
+  color: var(--ep-navy);
+  border: 1px solid var(--ep-gold);
+}
+
+.ep-pillar-heading {
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ep-gold);
+}
+
+.ep-companion-pillar {
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.ep-chapter-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .ep-chapter-layout:has(.ep-chapter-toc) {
+    grid-template-columns: minmax(180px, 220px) 1fr;
+    align-items: start;
+  }
+
+  .ep-chapter-toc {
+    position: sticky;
+    top: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+}
+
+.ep-chapter-nav-link {
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ep-chapter-nav-link:hover {
+  border-color: var(--ep-gold);
+  box-shadow: 0 2px 8px rgba(15, 35, 71, 0.06);
+}
+
+.ep-executive-book-standalone .ep-pillar-heading:first-of-type {
+  margin-top: 0;
+}
+
 @media print {
+  .ep-chapter-toc,
+  .ep-chapter-nav,
+  .ep-classification { display: none; }
+  .ep-chapter-layout { grid-template-columns: 1fr; }
+  .ep-chapter-header { break-after: avoid; }
   .ep-sidebar { display: none; }
   .ep-shell { grid-template-columns: 1fr; }
   .ep-hero { break-after: avoid; }

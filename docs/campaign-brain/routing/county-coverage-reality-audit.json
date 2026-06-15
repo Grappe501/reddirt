@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T05:57:41.370Z",
+  "generatedAt": "2026-06-15T14:10:44.173Z",
   "referenceDate": "2026-06-15",
   "earlyVotingStart": "2026-10-20",
   "doctrine": "Complete county coverage while revisiting Tier 1 VCI counties. Fill open days with multi-purpose trips — not single-objective long drives.",
@@ -10,9 +10,9 @@
   },
   "reconciliation": {
     "brainReportedVisited": 31,
-    "systemVisitsInTouchSummary": 31,
-    "leadershipConfirmedCounties": 35,
-    "visitedAfterLeadershipMerge": 43,
+    "systemVisitsInTouchSummary": 33,
+    "leadershipConfirmedCounties": 37,
+    "visitedAfterLeadershipMerge": 45,
     "leadershipOnlyNotInTouchSummary": [
       "Van Buren",
       "Baxter",
@@ -27,12 +27,12 @@
       "Hempstead",
       "Nevada"
     ],
-    "delta": 12
+    "delta": 14
   },
   "summary": {
     "totalCounties": 75,
-    "visitedCounties": 43,
-    "neverVisitedCounties": 32,
+    "visitedCounties": 45,
+    "neverVisitedCounties": 30,
     "deltaCountiesNeverVisited": 8,
     "tier1RevisitDue": 7,
     "averageVisitsPerVisitedCounty": 2.3
@@ -597,6 +597,24 @@
       "recommendedBy": "2026-10-20"
     },
     {
+      "county": "Sharp",
+      "vciRank": 37,
+      "vci": 886,
+      "opportunityTier": "C",
+      "visitCount": 1,
+      "lastVisitDate": "2026-06-07",
+      "lastVisitDateKnown": true,
+      "daysSinceLastVisit": 8,
+      "leadershipConfirmed": true,
+      "coverageStatus": "recent",
+      "planningCategory": "revisit",
+      "isDeltaCounty": false,
+      "isTier1Revisit": false,
+      "priorityScore": 311,
+      "recommendedAction": "Revisit on multi-purpose trip — avoid single-objective long drives.",
+      "recommendedBy": "2026-10-20"
+    },
+    {
       "county": "Izard",
       "vciRank": 49,
       "vci": 627,
@@ -630,6 +648,24 @@
       "isTier1Revisit": false,
       "priorityScore": 279,
       "recommendedAction": "Single visit 56d ago — add second touch or stack objectives on return.",
+      "recommendedBy": "2026-10-20"
+    },
+    {
+      "county": "Yell",
+      "vciRank": 42,
+      "vci": 822,
+      "opportunityTier": "C",
+      "visitCount": 1,
+      "lastVisitDate": "2026-06-07",
+      "lastVisitDateKnown": true,
+      "daysSinceLastVisit": 8,
+      "leadershipConfirmed": true,
+      "coverageStatus": "recent",
+      "planningCategory": "revisit",
+      "isDeltaCounty": false,
+      "isTier1Revisit": false,
+      "priorityScore": 271,
+      "recommendedAction": "Revisit on multi-purpose trip — avoid single-objective long drives.",
       "recommendedBy": "2026-10-20"
     },
     {
@@ -977,24 +1013,6 @@
       "recommendedBy": "2026-10-20"
     },
     {
-      "county": "Sharp",
-      "vciRank": 37,
-      "vci": 886,
-      "opportunityTier": "C",
-      "visitCount": 0,
-      "lastVisitDate": null,
-      "lastVisitDateKnown": false,
-      "daysSinceLastVisit": null,
-      "leadershipConfirmed": false,
-      "coverageStatus": "never_visited",
-      "planningCategory": "never_visited",
-      "isDeltaCounty": false,
-      "isTier1Revisit": false,
-      "priorityScore": 412,
-      "recommendedAction": "No confirmed visit — find highest-scoring stackable trip before 2026-10-20.",
-      "recommendedBy": "2026-10-20"
-    },
-    {
       "county": "Logan",
       "vciRank": 38,
       "vci": 864,
@@ -1028,24 +1046,6 @@
       "isTier1Revisit": false,
       "priorityScore": 380,
       "recommendedAction": "County completion — one event, one story, one volunteer, one relationship; move on.",
-      "recommendedBy": "2026-10-20"
-    },
-    {
-      "county": "Yell",
-      "vciRank": 42,
-      "vci": 822,
-      "opportunityTier": "C",
-      "visitCount": 0,
-      "lastVisitDate": null,
-      "lastVisitDateKnown": false,
-      "daysSinceLastVisit": null,
-      "leadershipConfirmed": false,
-      "coverageStatus": "never_visited",
-      "planningCategory": "never_visited",
-      "isDeltaCounty": false,
-      "isTier1Revisit": false,
-      "priorityScore": 372,
-      "recommendedAction": "No confirmed visit — find highest-scoring stackable trip before 2026-10-20.",
       "recommendedBy": "2026-10-20"
     },
     {
@@ -2695,24 +2695,6 @@
       "recommendedBy": "2026-10-20"
     },
     {
-      "county": "Sharp",
-      "vciRank": 37,
-      "vci": 886,
-      "opportunityTier": "C",
-      "visitCount": 0,
-      "lastVisitDate": null,
-      "lastVisitDateKnown": false,
-      "daysSinceLastVisit": null,
-      "leadershipConfirmed": false,
-      "coverageStatus": "never_visited",
-      "planningCategory": "never_visited",
-      "isDeltaCounty": false,
-      "isTier1Revisit": false,
-      "priorityScore": 412,
-      "recommendedAction": "No confirmed visit — find highest-scoring stackable trip before 2026-10-20.",
-      "recommendedBy": "2026-10-20"
-    },
-    {
       "county": "Logan",
       "vciRank": 38,
       "vci": 864,
@@ -2782,24 +2764,6 @@
       "isTier1Revisit": false,
       "priorityScore": 372,
       "recommendedAction": "Revisit on multi-purpose trip — avoid single-objective long drives.",
-      "recommendedBy": "2026-10-20"
-    },
-    {
-      "county": "Yell",
-      "vciRank": 42,
-      "vci": 822,
-      "opportunityTier": "C",
-      "visitCount": 0,
-      "lastVisitDate": null,
-      "lastVisitDateKnown": false,
-      "daysSinceLastVisit": null,
-      "leadershipConfirmed": false,
-      "coverageStatus": "never_visited",
-      "planningCategory": "never_visited",
-      "isDeltaCounty": false,
-      "isTier1Revisit": false,
-      "priorityScore": 372,
-      "recommendedAction": "No confirmed visit — find highest-scoring stackable trip before 2026-10-20.",
       "recommendedBy": "2026-10-20"
     },
     {
@@ -2947,6 +2911,24 @@
       "recommendedBy": "2026-10-20"
     },
     {
+      "county": "Sharp",
+      "vciRank": 37,
+      "vci": 886,
+      "opportunityTier": "C",
+      "visitCount": 1,
+      "lastVisitDate": "2026-06-07",
+      "lastVisitDateKnown": true,
+      "daysSinceLastVisit": 8,
+      "leadershipConfirmed": true,
+      "coverageStatus": "recent",
+      "planningCategory": "revisit",
+      "isDeltaCounty": false,
+      "isTier1Revisit": false,
+      "priorityScore": 311,
+      "recommendedAction": "Revisit on multi-purpose trip — avoid single-objective long drives.",
+      "recommendedBy": "2026-10-20"
+    },
+    {
       "county": "Little River",
       "vciRank": 50,
       "vci": 600,
@@ -3034,6 +3016,24 @@
       "isTier1Revisit": false,
       "priorityScore": 276,
       "recommendedAction": "No confirmed visit — find highest-scoring stackable trip before 2026-10-20.",
+      "recommendedBy": "2026-10-20"
+    },
+    {
+      "county": "Yell",
+      "vciRank": 42,
+      "vci": 822,
+      "opportunityTier": "C",
+      "visitCount": 1,
+      "lastVisitDate": "2026-06-07",
+      "lastVisitDateKnown": true,
+      "daysSinceLastVisit": 8,
+      "leadershipConfirmed": true,
+      "coverageStatus": "recent",
+      "planningCategory": "revisit",
+      "isDeltaCounty": false,
+      "isTier1Revisit": false,
+      "priorityScore": 271,
+      "recommendedAction": "Revisit on multi-purpose trip — avoid single-objective long drives.",
       "recommendedBy": "2026-10-20"
     },
     {

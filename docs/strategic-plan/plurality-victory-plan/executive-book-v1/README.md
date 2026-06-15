@@ -1,4 +1,4 @@
-# Executive Book Version 1.0
+# Executive Book Version 1.1
 
 > **EXECUTIVE-BOOK-COMPLETION-1.0** · OPERATIONAL — leadership clarity in progress
 

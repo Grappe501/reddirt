@@ -1299,6 +1299,10 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
     metrics?: { coChairsConfirmed?: number; coChairsGoal?: number; studentVolunteers?: number; voterRegistrations?: number; campusesInInventory?: number };
   }>(path.join(BRAIN_DATA, "students-for-arkansas/students-for-arkansas.json"));
 
+  const cv = readJson<{
+    metrics?: { foundingWritersCurrent?: number; foundingWritersGoal?: number; outletsInInventory?: number };
+  }>(path.join(BRAIN_DATA, "citizen-voices/citizen-voices-network.json"));
+
   const fmtK = (n: number) =>
     n >= 1000 ? `$${Math.round(n / 1000)}K` : `$${n}`;
 
@@ -1316,12 +1320,7 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
     "Plurality frame",
   ];
 
-  return {
-    version: summary?.version ?? "1.0",
-    status: summary?.status ?? "operational",
-    laborDayDeadline: summary?.laborDayDeadline ?? "2026-09-07",
-    completenessEstimate: audit?.completenessEstimate ?? summary?.completenessEstimate ?? "95%",
-    chapters: [
+  const chapterCards = [
       {
         slug: "ownership",
         number: 1,
@@ -1451,15 +1450,54 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
         slug: "audit",
         number: 11,
         title: "Executive Book Audit",
-        subtitle: "V1.0 readiness assessment for leadership review",
+        subtitle: "V1.1 readiness assessment for leadership review",
         href: "/election-plan/executive-book/audit",
-        statusLines: [`Executive Book V${summary?.version ?? "1.0"}`, `Status: ${(audit?.status ?? summary?.status ?? "operational").replace(/_/g, " ")}`],
+        statusLines: [`Executive Book V${summary?.version ?? "1.1"}`, `Status: ${(audit?.status ?? summary?.status ?? "operational").replace(/_/g, " ")}`],
         metrics: [
           { label: "Completeness", value: audit?.completenessEstimate ?? summary?.completenessEstimate ?? "95%" },
           { label: "TBD owners", value: String(ownership?.unassignedCount ?? 8) },
         ],
       },
+  ];
+
+  const pillarDefs = [
+    { id: "governance", label: "Governance & Accountability", slugs: ["ownership", "scorecard"] },
+    { id: "strategy", label: "Strategy & Message", slugs: ["influence-map", "labor-day", "message"] },
+    { id: "resources", label: "Resources & Budget", slugs: ["budget"] },
+    { id: "field", label: "Field Operations & People Power", slugs: ["power-of-5", "students-for-arkansas", "gotv"] },
+    { id: "completion", label: "Readiness & Audit", slugs: ["audit"] },
+  ];
+
+  return {
+    version: summary?.version ?? "1.1",
+    edition: "1.1",
+    status: summary?.status ?? "operational",
+    laborDayDeadline: summary?.laborDayDeadline ?? "2026-09-07",
+    completenessEstimate: audit?.completenessEstimate ?? summary?.completenessEstimate ?? "95%",
+    readOrderNote:
+      "Read Chapters 1–5 for governance and strategy, then 7–10 for resources and field execution, finish with Chapter 11 audit.",
+    companionPillars: [
+      {
+        id: "citizen-voices",
+        title: "Citizen Voices Network",
+        description: `Earned media · ${cv?.metrics?.outletsInInventory ?? 35} outlets · ${cv?.metrics?.foundingWritersCurrent ?? 0}/${cv?.metrics?.foundingWritersGoal ?? 20} founding writers`,
+        href: "/election-plan?tab=peoplePower",
+      },
+      {
+        id: "volunteer-leadership",
+        title: "Volunteer Leadership Launch",
+        description: "June 28 founding call · county captains · Power of 5 multiplication",
+        href: "/election-plan?tab=peoplePower",
+      },
     ],
+    pillars: pillarDefs
+      .map((p) => ({
+        id: p.id,
+        label: p.label,
+        chapters: chapterCards.filter((c) => p.slugs.includes(c.slug)),
+      }))
+      .filter((p) => p.chapters.length > 0),
+    chapters: chapterCards,
   };
 }
 

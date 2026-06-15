@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-15T06:50:03.067Z",
+  "generatedAt": "2026-06-15T14:16:26.868Z",
   "disclaimer": "Internal leadership calendar. Past visits, locked backbone, and scheduled stops. Not Kelly's Google Calendar. Not public /events.",
-  "pastVisitCount": 29,
-  "lockedCount": 40,
-  "scheduledCount": 68,
+  "pastVisitCount": 31,
+  "lockedCount": 47,
+  "scheduledCount": 81,
   "proposedCount": 10,
-  "totalEntries": 147,
-  "countiesVisited": 27,
+  "totalEntries": 169,
+  "countiesVisited": 29,
   "countiesScheduled": 39
 }

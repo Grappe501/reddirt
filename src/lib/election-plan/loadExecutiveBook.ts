@@ -6,6 +6,15 @@ import {
   getExecutiveBookChapter,
   type ExecutiveBookChapterSlug,
 } from "./executiveBookChapters";
+import {
+  extractExecutiveBookToc,
+  getAdjacentExecutiveBookChapters,
+  getRelatedExecutiveBookChapters,
+  getExecutiveBookPillar,
+  EXECUTIVE_BOOK_EDITION,
+  type ExecutiveBookPillar,
+  type ExecutiveBookTocEntry,
+} from "./executiveBookNav";
 
 const EXEC_BOOK_DIR = path.join(
   process.cwd(),
@@ -15,6 +24,7 @@ const BUDGET_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/budget
 const GOTV_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/gotv/gotv-operations-plan.json");
 const PO5_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/relational-organizing/power-of-5-executive-chapter.json");
 const SFA_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/students-for-arkansas/students-for-arkansas.json");
+const CV_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/citizen-voices/citizen-voices-network.json");
 
 function readJsonFile<T>(fileName: string): T | null {
   const p = path.join(EXEC_BOOK_DIR, fileName);
@@ -36,6 +46,12 @@ function readBudgetSummary(): {
   aggressiveStatewideTotal?: number;
   monthlyBurnWorking?: number;
   generatedAt?: string;
+  workingCampaignRangeLow?: number;
+  workingCampaignRangeHigh?: number;
+  fieldStrategyTotal?: number;
+  digitalProgramTotal?: number;
+  mediaOutreachTotal?: number;
+  complianceTotal?: number;
 } | null {
   if (!existsSync(BUDGET_SUMMARY_PATH)) return null;
   return JSON.parse(readFileSync(BUDGET_SUMMARY_PATH, "utf8"));
@@ -63,6 +79,33 @@ function readStudentsSummary(): ExecutiveBookChapterPayload["studentsForArkansas
   return JSON.parse(readFileSync(SFA_SUMMARY_PATH, "utf8"));
 }
 
+function readCitizenVoicesSummary(): ExecutiveBookChapterPayload["citizenVoicesSummary"] | null {
+  if (!existsSync(CV_SUMMARY_PATH)) return null;
+  const cv = JSON.parse(readFileSync(CV_SUMMARY_PATH, "utf8")) as {
+    networkName?: string;
+    metrics?: {
+      foundingWritersCurrent?: number;
+      foundingWritersGoal?: number;
+      lettersSubmitted?: number;
+      lettersSubmittedGoal?: number;
+      outletsInInventory?: number;
+      countiesRepresented?: number;
+      countiesGoal?: number;
+    };
+  };
+  if (!cv.metrics) return null;
+  return {
+    networkName: cv.networkName ?? "Citizen Voices Network",
+    foundingWritersCurrent: cv.metrics.foundingWritersCurrent ?? 0,
+    foundingWritersGoal: cv.metrics.foundingWritersGoal ?? 20,
+    lettersSubmitted: cv.metrics.lettersSubmitted ?? 0,
+    lettersSubmittedGoal: cv.metrics.lettersSubmittedGoal ?? 200,
+    outletsInInventory: cv.metrics.outletsInInventory ?? 0,
+    countiesRepresented: cv.metrics.countiesRepresented ?? 0,
+    countiesGoal: cv.metrics.countiesGoal ?? 75,
+  };
+}
+
 function readMarkdown(fileName: string): string | null {
   const p = path.join(EXEC_BOOK_DIR, fileName);
   if (!existsSync(p)) return null;
@@ -86,6 +129,12 @@ export type ExecutiveBookBudgetSummary = {
   workingCampaignTotal: number;
   aggressiveStatewideTotal: number;
   monthlyBurnWorking: number;
+  workingCampaignRangeLow?: number;
+  workingCampaignRangeHigh?: number;
+  fieldStrategyTotal?: number;
+  digitalProgramTotal?: number;
+  mediaOutreachTotal?: number;
+  complianceTotal?: number;
 };
 
 export type ExecutiveBookChapterPayload = {
@@ -157,6 +206,24 @@ export type ExecutiveBookChapterPayload = {
       campusesInInventory: number;
     };
   };
+  citizenVoicesSummary?: {
+    networkName: string;
+    foundingWritersCurrent: number;
+    foundingWritersGoal: number;
+    lettersSubmitted: number;
+    lettersSubmittedGoal: number;
+    outletsInInventory: number;
+    countiesRepresented: number;
+    countiesGoal: number;
+  };
+  pillar: ExecutiveBookPillar;
+  edition: string;
+  tableOfContents: ExecutiveBookTocEntry[];
+  navigation: {
+    prev: { slug: ExecutiveBookChapterSlug; number: number; title: string; href: string } | null;
+    next: { slug: ExecutiveBookChapterSlug; number: number; title: string; href: string } | null;
+  };
+  relatedChapters: Array<{ slug: ExecutiveBookChapterSlug; number: number; title: string; href: string }>;
 };
 
 export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayload | null {
@@ -188,6 +255,10 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
   const gotv = readGotvSummary();
   const po5 = readPo5Summary();
   const sfa = readStudentsSummary();
+  const citizenVoices = readCitizenVoicesSummary();
+  const adjacent = getAdjacentExecutiveBookChapters(chapter.slug);
+  const related = getRelatedExecutiveBookChapters(chapter.slug);
+  const tableOfContents = extractExecutiveBookToc(markdown);
 
   const liveStrip: ExecutiveBookChapterPayload["liveStrip"] = [];
   let budgetSummary: ExecutiveBookBudgetSummary | undefined;
@@ -258,11 +329,17 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
       workingCampaignTotal: budget.workingCampaignTotal ?? 0,
       aggressiveStatewideTotal: budget.aggressiveStatewideTotal ?? 0,
       monthlyBurnWorking: budget.monthlyBurnWorking ?? 0,
+      workingCampaignRangeLow: budget.workingCampaignRangeLow,
+      workingCampaignRangeHigh: budget.workingCampaignRangeHigh,
+      fieldStrategyTotal: budget.fieldStrategyTotal,
+      digitalProgramTotal: budget.digitalProgramTotal,
+      mediaOutreachTotal: budget.mediaOutreachTotal,
+      complianceTotal: budget.complianceTotal,
     };
     liveStrip.push(
       { label: "Salary floor", value: fmt(budgetSummary.salaryFloor) },
       { label: "Working campaign", value: fmt(budgetSummary.workingCampaignTotal) },
-      { label: "Monthly burn", value: fmt(budgetSummary.monthlyBurnWorking) },
+      { label: "Planning range", value: `${fmt(budget.workingCampaignRangeLow ?? 225000)}–${fmt(budget.workingCampaignRangeHigh ?? 250000)}` },
     );
   }
 
@@ -310,6 +387,24 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     studentsForArkansasSummary: chapter.slug === "students-for-arkansas" ? sfa ?? undefined : undefined,
     gotvMetrics: chapter.slug === "gotv" ? gotv?.dailyMetrics : undefined,
     electionDayChecklist: chapter.slug === "gotv" ? gotv?.electionDayChecklist : undefined,
+    citizenVoicesSummary: chapter.slug === "power-of-5" ? citizenVoices ?? undefined : undefined,
+    pillar: getExecutiveBookPillar(chapter.slug),
+    edition: EXECUTIVE_BOOK_EDITION.version,
+    tableOfContents,
+    navigation: {
+      prev: adjacent.prev
+        ? { slug: adjacent.prev.slug, number: adjacent.prev.number, title: adjacent.prev.title, href: adjacent.prev.href }
+        : null,
+      next: adjacent.next
+        ? { slug: adjacent.next.slug, number: adjacent.next.number, title: adjacent.next.title, href: adjacent.next.href }
+        : null,
+    },
+    relatedChapters: related.map((c) => ({
+      slug: c.slug,
+      number: c.number,
+      title: c.title,
+      href: c.href,
+    })),
   };
 }
 

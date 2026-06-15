@@ -35,7 +35,7 @@ export default async function ExecutiveBookChapterPage({ params }: Props) {
 
   return (
     <>
-      <div className="ep-classification">Executive Book V1.0 · Leadership Briefing · Internal</div>
+      <div className="ep-classification">Executive Book V1.1 · Leadership Briefing · Internal</div>
       <ExecutiveBookChapterView chapter={chapter} />
     </>
   );

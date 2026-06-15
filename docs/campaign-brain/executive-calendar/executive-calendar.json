@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-06-15T06:50:03.067Z",
+  "generatedAt": "2026-06-15T14:16:26.868Z",
   "referenceDate": "2026-06-15",
   "disclaimer": "Internal leadership calendar. Past visits, locked backbone, and scheduled stops. Not Kelly's Google Calendar. Not public /events.",
   "summary": {
-    "pastVisitCount": 29,
-    "lockedCount": 40,
-    "scheduledCount": 68,
+    "pastVisitCount": 31,
+    "lockedCount": 47,
+    "scheduledCount": 81,
     "proposedCount": 10,
-    "totalEntries": 147,
-    "countiesVisited": 27,
+    "totalEntries": 169,
+    "countiesVisited": 29,
     "countiesScheduled": 39
   },
   "entries": [
     {
-      "id": "past-Craighead-2025-12-15-5",
+      "id": "past-Craighead-2025-12-15-7",
       "startDate": "2025-12-15",
       "endDate": null,
       "label": "Craighead County visit",
@@ -25,7 +25,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Arkansas-2026-01-10-9",
+      "id": "past-Arkansas-2026-01-10-11",
       "startDate": "2026-01-10",
       "endDate": null,
       "label": "Arkansas County visit",
@@ -37,7 +37,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Searcy-2026-01-16-11",
+      "id": "past-Searcy-2026-01-16-13",
       "startDate": "2026-01-16",
       "endDate": null,
       "label": "Searcy County visit",
@@ -49,7 +49,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Lee-2026-01-19-15",
+      "id": "past-Lee-2026-01-19-17",
       "startDate": "2026-01-19",
       "endDate": null,
       "label": "Lee County visit",
@@ -61,7 +61,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Fulton-2026-01-31-12",
+      "id": "past-Fulton-2026-01-31-14",
       "startDate": "2026-01-31",
       "endDate": null,
       "label": "Fulton County visit",
@@ -73,7 +73,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-White-2026-02-03-8",
+      "id": "past-White-2026-02-03-10",
       "startDate": "2026-02-03",
       "endDate": null,
       "label": "White County visit",
@@ -85,7 +85,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Sebastian-2026-02-09-18",
+      "id": "past-Sebastian-2026-02-09-20",
       "startDate": "2026-02-09",
       "endDate": null,
       "label": "Sebastian County visit",
@@ -97,7 +97,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Washington-2026-03-14-19",
+      "id": "past-Washington-2026-03-14-21",
       "startDate": "2026-03-14",
       "endDate": null,
       "label": "Washington County visit",
@@ -109,7 +109,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Ouachita-2026-03-22-16",
+      "id": "past-Ouachita-2026-03-22-18",
       "startDate": "2026-03-22",
       "endDate": null,
       "label": "Ouachita County visit",
@@ -121,7 +121,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Crawford-2026-04-08-20",
+      "id": "past-Crawford-2026-04-08-22",
       "startDate": "2026-04-08",
       "endDate": null,
       "label": "Crawford County visit",
@@ -133,7 +133,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Cleveland-2026-04-10-21",
+      "id": "past-Cleveland-2026-04-10-23",
       "startDate": "2026-04-10",
       "endDate": null,
       "label": "Cleveland County visit",
@@ -145,7 +145,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Polk-2026-04-12-10",
+      "id": "past-Polk-2026-04-12-12",
       "startDate": "2026-04-12",
       "endDate": null,
       "label": "Polk County visit",
@@ -157,7 +157,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Franklin-2026-04-20-22",
+      "id": "past-Franklin-2026-04-20-24",
       "startDate": "2026-04-20",
       "endDate": null,
       "label": "Franklin County visit",
@@ -169,7 +169,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Marion-2026-04-20-23",
+      "id": "past-Marion-2026-04-20-25",
       "startDate": "2026-04-20",
       "endDate": null,
       "label": "Marion County visit",
@@ -181,7 +181,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Pope-2026-04-24-3",
+      "id": "past-Pope-2026-04-24-5",
       "startDate": "2026-04-24",
       "endDate": null,
       "label": "Pope County visit",
@@ -206,7 +206,7 @@
       "notes": "Assignee: Kelly"
     },
     {
-      "id": "past-Pike-2026-05-09-24",
+      "id": "past-Pike-2026-05-09-26",
       "startDate": "2026-05-09",
       "endDate": null,
       "label": "Pike County visit",
@@ -218,7 +218,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Saline-2026-05-09-14",
+      "id": "past-Saline-2026-05-09-16",
       "startDate": "2026-05-09",
       "endDate": null,
       "label": "Saline County visit",
@@ -243,7 +243,7 @@
       "notes": "Assignee: Kelly"
     },
     {
-      "id": "past-Columbia-2026-05-17-25",
+      "id": "past-Columbia-2026-05-17-27",
       "startDate": "2026-05-17",
       "endDate": null,
       "label": "Columbia County visit",
@@ -268,7 +268,7 @@
       "notes": "Assignee: Kelly"
     },
     {
-      "id": "past-Desha-2026-05-23-26",
+      "id": "past-Desha-2026-05-23-28",
       "startDate": "2026-05-23",
       "endDate": null,
       "label": "Desha County visit",
@@ -280,7 +280,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Garland-2026-05-26-7",
+      "id": "past-Garland-2026-05-26-9",
       "startDate": "2026-05-26",
       "endDate": null,
       "label": "Garland County visit",
@@ -292,7 +292,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Cross-2026-05-28-6",
+      "id": "past-Cross-2026-05-28-8",
       "startDate": "2026-05-28",
       "endDate": null,
       "label": "Cross County visit",
@@ -304,7 +304,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Faulkner-2026-06-04-17",
+      "id": "past-Faulkner-2026-06-04-19",
       "startDate": "2026-06-04",
       "endDate": null,
       "label": "Faulkner County visit",
@@ -316,7 +316,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Clark-2026-06-06-27",
+      "id": "past-Clark-2026-06-06-29",
       "startDate": "2026-06-06",
       "endDate": null,
       "label": "Clark County visit",
@@ -328,7 +328,33 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Bradley-2026-06-11-28",
+      "id": "past-Sharp-2026-06-07-3",
+      "startDate": "2026-06-07",
+      "endDate": null,
+      "label": "Sharp County visit",
+      "city": null,
+      "county": "Sharp",
+      "category": "past_visit",
+      "status": "logged",
+      "source": "manual",
+      "eventType": "visit",
+      "notes": "Assignee: Kelly"
+    },
+    {
+      "id": "past-Yell-2026-06-07-4",
+      "startDate": "2026-06-07",
+      "endDate": null,
+      "label": "Yell County visit",
+      "city": null,
+      "county": "Yell",
+      "category": "past_visit",
+      "status": "logged",
+      "source": "manual",
+      "eventType": "visit",
+      "notes": "Assignee: Kelly"
+    },
+    {
+      "id": "past-Bradley-2026-06-11-30",
       "startDate": "2026-06-11",
       "endDate": null,
       "label": "Bradley County visit",
@@ -340,7 +366,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Stone-2026-06-11-13",
+      "id": "past-Stone-2026-06-11-15",
       "startDate": "2026-06-11",
       "endDate": null,
       "label": "Stone County visit",
@@ -352,7 +378,7 @@
       "eventType": "visit"
     },
     {
-      "id": "past-Drew-2026-06-14-29",
+      "id": "past-Drew-2026-06-14-31",
       "startDate": "2026-06-14",
       "endDate": null,
       "label": "Drew County visit",
@@ -362,6 +388,19 @@
       "status": "leadership_confirmed",
       "source": "touch_summary",
       "eventType": "visit"
+    },
+    {
+      "id": "plan-2026-06-15-20-week-execution-begins-central-metro",
+      "startDate": "2026-06-15",
+      "endDate": null,
+      "label": "20-week execution begins · Central Metro",
+      "city": null,
+      "county": "—",
+      "category": "scheduled",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "other",
+      "notes": "Week 1 · 20-week operating plan"
     },
     {
       "id": "fest-2026-06-16-fundraiser-in-quitman",
@@ -702,6 +741,19 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
+      "id": "plan-2026-06-28-forevermost-farms-retreat-schedule-tbd",
+      "startDate": "2026-06-28",
+      "endDate": null,
+      "label": "Forevermost Farms retreat (schedule TBD)",
+      "city": null,
+      "county": "—",
+      "category": "scheduled",
+      "status": "plan_standard",
+      "source": "twenty-week-plan",
+      "eventType": "volunteer",
+      "notes": "Week 2 · 20-week operating plan"
+    },
+    {
       "id": "fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
       "startDate": "2026-06-28",
       "endDate": null,
@@ -726,6 +778,19 @@
       "source": "locked-events-steve",
       "eventType": "coalition",
       "notes": "Coalition meeting · same week as volunteer leadership launch"
+    },
+    {
+      "id": "plan-2026-06-28-volunteer-leadership-launch-zoom-6-pm",
+      "startDate": "2026-06-28",
+      "endDate": null,
+      "label": "Volunteer Leadership Launch · Zoom 6 PM",
+      "city": null,
+      "county": "—",
+      "category": "scheduled",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "volunteer",
+      "notes": "Week 2 · 20-week operating plan"
     },
     {
       "id": "lock-volunteer-retreat",
@@ -780,6 +845,19 @@
       "notes": "Sherwood Victory anchor · VIP tables · volunteer shifts"
     },
     {
+      "id": "plan-2026-07-03-sherwood-fireworks-food-trucks",
+      "startDate": "2026-07-03",
+      "endDate": null,
+      "label": "Sherwood Fireworks & Food Trucks",
+      "city": null,
+      "county": "—",
+      "category": "scheduled",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "sherwood",
+      "notes": "Week 3 · 20-week operating plan"
+    },
+    {
       "id": "lock-clay-july4",
       "startDate": "2026-07-04",
       "endDate": null,
@@ -832,6 +910,19 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
+      "id": "plan-2026-07-04-pops-on-the-river-little-rock",
+      "startDate": "2026-07-04",
+      "endDate": null,
+      "label": "Pops on the River · Little Rock",
+      "city": null,
+      "county": "—",
+      "category": "scheduled",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "sherwood",
+      "notes": "Week 3 · 20-week operating plan"
+    },
+    {
       "id": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
       "startDate": "2026-07-05",
       "endDate": null,
@@ -843,6 +934,19 @@
       "source": "upcoming-stops-activation-queue",
       "eventType": "opportunity",
       "notes": "Draft Mobilize event — human approval required before publish"
+    },
+    {
+      "id": "plan-2026-07-06-northeast-fair-circuit-jonesboro-hub",
+      "startDate": "2026-07-06",
+      "endDate": null,
+      "label": "Northeast fair circuit · Jonesboro hub",
+      "city": null,
+      "county": "—",
+      "category": "scheduled",
+      "status": "plan_standard",
+      "source": "twenty-week-plan",
+      "eventType": "fair",
+      "notes": "Week 4 · 20-week operating plan"
     },
     {
       "id": "lock-hot-spring-county",
@@ -1586,6 +1690,19 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
+      "id": "plan-2026-09-07-yell-pike-county-fairs",
+      "startDate": "2026-09-07",
+      "endDate": null,
+      "label": "Yell & Pike County Fairs",
+      "city": null,
+      "county": "Pike",
+      "category": "scheduled",
+      "status": "plan_standard",
+      "source": "twenty-week-plan",
+      "eventType": "fair",
+      "notes": "Week 13 · 20-week operating plan"
+    },
+    {
       "id": "fair-7d4b1643af8887c9137f0856",
       "startDate": "2026-09-07",
       "endDate": null,
@@ -1664,6 +1781,19 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
+      "id": "plan-2026-09-12-clay-crawford-county-fairs",
+      "startDate": "2026-09-12",
+      "endDate": null,
+      "label": "Clay & Crawford County Fairs",
+      "city": null,
+      "county": "Clay",
+      "category": "scheduled",
+      "status": "plan_standard",
+      "source": "twenty-week-plan",
+      "eventType": "fair",
+      "notes": "Week 14 · 20-week operating plan"
+    },
+    {
       "id": "fair-7da0f84811b62d6378c8eab1",
       "startDate": "2026-09-12",
       "endDate": null,
@@ -1716,6 +1846,19 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
+      "id": "plan-2026-09-14-white-county-fair",
+      "startDate": "2026-09-14",
+      "endDate": null,
+      "label": "White County Fair",
+      "city": null,
+      "county": "White",
+      "category": "scheduled",
+      "status": "plan_standard",
+      "source": "twenty-week-plan",
+      "eventType": "fair",
+      "notes": "Week 14 · 20-week operating plan"
+    },
+    {
       "id": "lock-pope",
       "startDate": "2026-09-15",
       "endDate": "2026-09-19",
@@ -1755,6 +1898,19 @@
       "notes": "Pulaski County suburban anchor · NAACP relationship"
     },
     {
+      "id": "plan-2026-09-21-candidate-forums-wave-20-cities",
+      "startDate": "2026-09-21",
+      "endDate": null,
+      "label": "Candidate forums wave (20 cities)",
+      "city": null,
+      "county": "—",
+      "category": "scheduled",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "forum",
+      "notes": "Week 15 · 20-week operating plan"
+    },
+    {
       "id": "lock-howard",
       "startDate": "2026-09-22",
       "endDate": null,
@@ -1766,6 +1922,32 @@
       "source": "locked-events-steve",
       "eventType": "community",
       "notes": "Southwest AR completion county"
+    },
+    {
+      "id": "plan-2026-09-23-lonoke-county-fair",
+      "startDate": "2026-09-23",
+      "endDate": null,
+      "label": "Lonoke County Fair",
+      "city": null,
+      "county": "Lonoke",
+      "category": "scheduled",
+      "status": "plan_standard",
+      "source": "twenty-week-plan",
+      "eventType": "fair",
+      "notes": "Week 15 · 20-week operating plan"
+    },
+    {
+      "id": "plan-2026-09-25-benton-county-fair",
+      "startDate": "2026-09-25",
+      "endDate": null,
+      "label": "Benton County Fair",
+      "city": null,
+      "county": "Benton",
+      "category": "scheduled",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "fair",
+      "notes": "Week 15 · 20-week operating plan"
     },
     {
       "id": "lock-hot-springs-forum",
@@ -1807,6 +1989,19 @@
       "notes": "Northwest District Fair corridor · Boone County"
     },
     {
+      "id": "plan-2026-10-01-rural-election-town-halls-10-counties",
+      "startDate": "2026-10-01",
+      "endDate": null,
+      "label": "Rural election town halls (10 counties)",
+      "city": null,
+      "county": "—",
+      "category": "scheduled",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "forum",
+      "notes": "Week 16 · 20-week operating plan"
+    },
+    {
       "id": "prop-oct3-ozark",
       "startDate": "2026-10-03",
       "endDate": null,
@@ -1831,6 +2026,19 @@
       "source": "locked-events-steve",
       "eventType": "festival",
       "notes": "GOTV-season visibility · verify venue/date with host"
+    },
+    {
+      "id": "plan-2026-10-05-metro-gotv-early-vote-prep",
+      "startDate": "2026-10-05",
+      "endDate": null,
+      "label": "Metro GOTV · early vote prep",
+      "city": null,
+      "county": "Statewide",
+      "category": "locked",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "gotv",
+      "notes": "Week 17 · 20-week operating plan"
     },
     {
       "id": "lock-turkey-drop",
@@ -1859,6 +2067,19 @@
       "notes": "Phase C — leadership sign-off required"
     },
     {
+      "id": "plan-2026-10-12-nwa-gotv-campus-turnout",
+      "startDate": "2026-10-12",
+      "endDate": null,
+      "label": "NWA GOTV · campus turnout",
+      "city": null,
+      "county": "Statewide",
+      "category": "locked",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "gotv",
+      "notes": "Week 18 · 20-week operating plan"
+    },
+    {
       "id": "lock-saline",
       "startDate": "2026-10-12",
       "endDate": null,
@@ -1885,6 +2106,32 @@
       "notes": "Phase C — leadership sign-off required"
     },
     {
+      "id": "plan-2026-10-19-statewide-gotv-sprint-launch",
+      "startDate": "2026-10-19",
+      "endDate": null,
+      "label": "Statewide GOTV sprint launch",
+      "city": null,
+      "county": "Statewide",
+      "category": "locked",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "gotv",
+      "notes": "Week 19 · 20-week operating plan"
+    },
+    {
+      "id": "anchor-early-voting-2026",
+      "startDate": "2026-10-20",
+      "endDate": null,
+      "label": "Early voting begins · Arkansas",
+      "city": null,
+      "county": "Statewide",
+      "category": "locked",
+      "status": "election_calendar",
+      "source": "gotv-operations-plan",
+      "eventType": "gotv",
+      "notes": "In-person early voting · county clerks"
+    },
+    {
       "id": "lock-early-voting",
       "startDate": "2026-10-20",
       "endDate": "2026-11-03",
@@ -1896,6 +2143,45 @@
       "source": "locked-events-steve",
       "eventType": "gotv",
       "notes": "Statewide early vote operations · anchor Pulaski"
+    },
+    {
+      "id": "plan-2026-10-26-election-week-operations",
+      "startDate": "2026-10-26",
+      "endDate": null,
+      "label": "Election Week operations",
+      "city": null,
+      "county": "—",
+      "category": "locked",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "election",
+      "notes": "Week 20 · 20-week operating plan"
+    },
+    {
+      "id": "plan-2026-11-03-election-day",
+      "startDate": "2026-11-03",
+      "endDate": null,
+      "label": "Election Day",
+      "city": null,
+      "county": "Statewide",
+      "category": "locked",
+      "status": "plan_major",
+      "source": "twenty-week-plan",
+      "eventType": "election",
+      "notes": "Week 20 · 20-week operating plan"
+    },
+    {
+      "id": "anchor-election-day-2026",
+      "startDate": "2026-11-03",
+      "endDate": null,
+      "label": "Election Day · Secretary of State",
+      "city": null,
+      "county": "Statewide",
+      "category": "locked",
+      "status": "election_calendar",
+      "source": "gotv-operations-plan",
+      "eventType": "election",
+      "notes": "Win condition · ballots cast"
     }
   ]
 }

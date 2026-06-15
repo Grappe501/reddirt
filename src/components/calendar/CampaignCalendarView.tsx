@@ -38,7 +38,7 @@ export async function CampaignCalendarView({
   counties: CountyOpt[];
 }) {
   const { q, viewMonth } = toQueryFilters(state);
-  const events = await queryPublicCampaignEvents(q, { take: 120 });
+  const events = await queryPublicCampaignEvents(q, { take: 200 });
 
   const current = {
     view: state.view,

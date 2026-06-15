@@ -10,9 +10,13 @@ import path from "node:path";
 
 import { BRAIN_DATA, BRAIN_ROOT, readJson } from "./lib/inputs";
 import { loadAllCountyVisits } from "./lib/county-coverage";
+import { ARKANSAS_COUNTY_REGISTRY } from "../../src/lib/county/arkansas-county-registry";
+import { buildPublicCampaignCalendarSnapshot } from "./build-public-campaign-calendar-snapshot";
 
 const OUT = path.join(BRAIN_ROOT, "executive-calendar");
 const REFERENCE_DATE = "2026-06-15";
+const ELECTION_DAY = "2026-11-03";
+const CALENDAR_HORIZON = ELECTION_DAY;
 
 const DISCLAIMER =
   "Internal leadership calendar. Past visits, locked backbone, and scheduled stops. Not Kelly's Google Calendar. Not public /events.";
@@ -139,7 +143,7 @@ function buildScheduledStops(lockedIds: Set<string>): CalendarEntry[] {
   }>(path.join(BRAIN_DATA, "upcoming-stops-activation-queue.json"));
 
   return (queue?.stops ?? [])
-    .filter((s) => s.date >= REFERENCE_DATE && !lockedIds.has(s.eventId))
+    .filter((s) => s.date >= REFERENCE_DATE && s.date <= CALENDAR_HORIZON && !lockedIds.has(s.eventId))
     .map((s) => ({
       id: s.eventId,
       startDate: s.date,
@@ -153,6 +157,82 @@ function buildScheduledStops(lockedIds: Set<string>): CalendarEntry[] {
       eventType: "opportunity",
       notes: s.nextAction,
     }));
+}
+
+function slugifyLabel(label: string): string {
+  return label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 48);
+}
+
+function inferCountyFromLabel(label: string): string {
+  for (const c of ARKANSAS_COUNTY_REGISTRY) {
+    const short = c.displayName.replace(/\s+County$/i, "");
+    if (label.includes(short)) return short;
+  }
+  if (/statewide|election day|early voting|gotv/i.test(label)) return "Statewide";
+  return "—";
+}
+
+function buildPlanTimelineEntries(): CalendarEntry[] {
+  const plan = readJson<{
+    timeline?: Array<{
+      weekNumber: number;
+      date: string;
+      label: string;
+      category: string;
+      importance: string;
+    }>;
+  }>(path.join(process.cwd(), "data/election-plan/twenty-week-plan.json"));
+
+  return (plan?.timeline ?? [])
+    .filter((t) => t.date >= REFERENCE_DATE && t.date <= CALENDAR_HORIZON)
+    .map((t) => ({
+      id: `plan-${t.date}-${slugifyLabel(t.label)}`,
+      startDate: t.date,
+      endDate: null,
+      label: t.label,
+      city: null,
+      county: inferCountyFromLabel(t.label),
+      category: (t.category === "election" || t.category === "gotv" ? "locked" : "scheduled") as CalendarEntry["category"],
+      status: t.importance === "major" ? "plan_major" : "plan_standard",
+      source: "twenty-week-plan",
+      eventType: t.category,
+      notes: `Week ${t.weekNumber} · 20-week operating plan`,
+    }));
+}
+
+function buildElectionAnchors(): CalendarEntry[] {
+  return [
+    {
+      id: "anchor-early-voting-2026",
+      startDate: "2026-10-20",
+      endDate: null,
+      label: "Early voting begins · Arkansas",
+      city: null,
+      county: "Statewide",
+      category: "locked",
+      status: "election_calendar",
+      source: "gotv-operations-plan",
+      eventType: "gotv",
+      notes: "In-person early voting · county clerks",
+    },
+    {
+      id: "anchor-election-day-2026",
+      startDate: ELECTION_DAY,
+      endDate: null,
+      label: "Election Day · Secretary of State",
+      city: null,
+      county: "Statewide",
+      category: "locked",
+      status: "election_calendar",
+      source: "gotv-operations-plan",
+      eventType: "election",
+      notes: "Win condition · ballots cast",
+    },
+  ];
 }
 
 function buildProposedBlocks(): CalendarEntry[] {
@@ -169,7 +249,7 @@ function buildProposedBlocks(): CalendarEntry[] {
   }>(path.join(BRAIN_ROOT, "calendar-fill/proposed-calendar-fill-v2.json"));
 
   return (v2?.proposedBlocksV2 ?? [])
-    .filter((b) => b.startDate >= REFERENCE_DATE)
+    .filter((b) => b.startDate >= REFERENCE_DATE && b.startDate <= CALENDAR_HORIZON)
     .map((b) => ({
       id: b.id,
       startDate: b.startDate,
@@ -236,12 +316,14 @@ function main() {
 
   const titleMap = loadEventTitleMap();
   const past = buildPastVisits(titleMap);
-  const locked = buildLockedEvents();
+  const locked = buildLockedEvents().filter((e) => e.startDate <= CALENDAR_HORIZON);
   const lockedIds = new Set(locked.map((e) => e.id));
   const scheduled = buildScheduledStops(lockedIds);
   const proposed = buildProposedBlocks();
+  const planTimeline = buildPlanTimelineEntries();
+  const electionAnchors = buildElectionAnchors();
 
-  const entries = mergeEntries([...past, ...locked, ...scheduled, ...proposed]);
+  const entries = mergeEntries([...past, ...locked, ...scheduled, ...proposed, ...planTimeline, ...electionAnchors]);
   const generatedAt = new Date().toISOString();
 
   const payload = {
@@ -281,6 +363,9 @@ function main() {
   console.log(
     `Executive calendar: ${payload.summary.totalEntries} entries · ${payload.summary.pastVisitCount} past · ${payload.summary.lockedCount} locked · ${payload.summary.scheduledCount} scheduled · ${payload.summary.proposedCount} proposed`,
   );
+
+  const snap = buildPublicCampaignCalendarSnapshot();
+  console.log(`Public calendar snapshot: ${snap.count} events through ${ELECTION_DAY}`);
 }
 
 main();

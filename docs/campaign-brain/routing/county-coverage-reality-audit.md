@@ -11,8 +11,8 @@
 | Metric | Count |
 | ------ | ----: |
 | Brain previously reported visited | 31 |
-| **After leadership merge** | **43** |
-| Leadership-confirmed counties | 35 |
+| **After leadership merge** | **45** |
+| Leadership-confirmed counties | 37 |
 | Added from leadership (not in touch summary) | Van Buren, Baxter, Independence, Lonoke, Benton, Johnson, Lafayette, Jefferson, Izard, Greene, Hempstead, Nevada |
 
 ---
@@ -21,7 +21,7 @@
 
 | Visited counties | Never visited | Delta gaps (never visited) | Tier 1 revisit due |
 | ---------------: | ------------: | -------------------------: | -----------------: |
-| **43** | 32 | 8 | 7 |
+| **45** | 30 | 8 | 7 |
 
 **Doctrine:** Complete county coverage while revisiting Tier 1 VCI counties. Fill open days with multi-purpose trips — not single-objective long drives.
 
@@ -109,14 +109,14 @@
 | Johnson | 1 | — | — | 32 |
 | Marion | 1 | 2026-04-20 | 56 | 34 |
 | Conway | 1 | 2026-06-20 | -5 | 33 |
+| Sharp | 1 | 2026-06-07 | 8 | 37 |
 | Izard | 1 | — | — | 49 |
 | Franklin | 1 | 2026-04-20 | 56 | 47 |
+| Yell | 1 | 2026-06-07 | 8 | 42 |
 | Drew | 1 | 2026-06-14 | 1 | 43 |
 | Desha | 1 | 2026-05-23 | 23 | 52 |
 | Lee | 1 | 2026-01-19 | 147 | 61 |
 | Pike | 1 | 2026-05-09 | 37 | 59 |
 | Cleveland | 1 | 2026-04-10 | 66 | 63 |
-| Searcy | 1 | 2026-01-16 | 150 | 65 |
-| Nevada | 1 | — | — | 69 |
 
 *Full data:* [`county-coverage-reality-audit.json`](./county-coverage-reality-audit.json)

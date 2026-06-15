@@ -6,11 +6,11 @@
 
 | Category | Count |
 |----------|------:|
-| Past visits | 29 |
-| Locked backbone | 40 |
-| Scheduled opportunities | 68 |
+| Past visits | 31 |
+| Locked backbone | 47 |
+| Scheduled opportunities | 81 |
 | Proposed (Phase C) | 10 |
-| **Total entries** | **147** |
+| **Total entries** | **169** |
 
 ## Past locations visited
 
@@ -42,6 +42,8 @@
 | 2026-05-28 | Cross County visit | Cross | leadership_confirmed |
 | 2026-06-04 | Faulkner County visit | Faulkner | leadership_confirmed |
 | 2026-06-06 | Clark County visit | Clark | leadership_confirmed |
+| 2026-06-07 | Sharp County visit | Sharp | logged |
+| 2026-06-07 | Yell County visit | Yell | logged |
 | 2026-06-11 | Bradley County visit | Bradley | leadership_confirmed |
 | 2026-06-11 | Stone County visit | Stone | leadership_confirmed |
 | 2026-06-14 | Drew County visit | Drew | leadership_confirmed |
@@ -88,15 +90,23 @@
 | 2026-09-25 | Hot Springs Forum · Hot Springs | Garland | leadership_locked |
 | 2026-09-28 | Harrison Balloon Fest · Harrison | Boone | leadership_locked |
 | 2026-10-04 | Air Show · Little Rock | Pulaski | leadership_locked |
+| 2026-10-05 | Metro GOTV · early vote prep | Statewide | plan_major |
 | 2026-10-10 | Turkey Drop — Yellville · Yellville | Marion | leadership_locked |
+| 2026-10-12 | NWA GOTV · campus turnout | Statewide | plan_major |
 | 2026-10-12 | Saline County GOTV push · Benton | Saline | leadership_locked |
+| 2026-10-19 | Statewide GOTV sprint launch | Statewide | plan_major |
+| 2026-10-20 | Early voting begins · Arkansas | Statewide | election_calendar |
 | 2026-10-20 → 2026-11-03 | Early Voting launch · Little Rock | Pulaski | leadership_locked |
+| 2026-10-26 | Election Week operations | — | plan_major |
+| 2026-11-03 | Election Day | Statewide | plan_major |
+| 2026-11-03 | Election Day · Secretary of State | Statewide | election_calendar |
 
 
 ## Scheduled — upcoming opportunities
 
 | Date | Location | County | Status |
 |------|----------|--------|--------|
+| 2026-06-15 | 20-week execution begins · Central Metro | — | plan_major |
 | 2026-06-16 | Fundraiser in Quitman | Cleburne | tentative |
 | 2026-06-17 | Montgomery County — AEA local / area meeting (verify schedule) | Montgomery | verified |
 | 2026-06-17 | Montgomery county meeting | Montgomery | tentative |
@@ -114,12 +124,17 @@
 | 2026-06-26 | Buffalo River Elk Festival · Jasper | Newton | verified |
 | 2026-06-26 | SOS debate - Annual Press Convention - Eureka Springs | Carroll | tentative |
 | 2026-06-28 | Bella Vista Summer Sunday Farmers and Makers Market · Bella Vista | Benton | verified |
+| 2026-06-28 | Forevermost Farms retreat (schedule TBD) | — | plan_standard |
 | 2026-06-28 | Little Rock Bridal and Wedding Expo · Little Rock | Pulaski | verified |
+| 2026-06-28 | Volunteer Leadership Launch · Zoom 6 PM | — | plan_major |
 | 2026-07-02 | Fulton County Freedom Festival · Salem | Fulton | verified |
 | 2026-07-03 | Fireworks & Food Trucks - Family Independence Day · Sherwood | Pulaski | verified |
+| 2026-07-03 | Sherwood Fireworks & Food Trucks | — | plan_major |
 | 2026-07-04 | Freedom Fest on the Lake · Heber Springs | Cleburne | verified |
 | 2026-07-04 | Pops on the River · Little Rock | Pulaski | verified |
+| 2026-07-04 | Pops on the River · Little Rock | — | plan_major |
 | 2026-07-05 | Bella Vista Outdoor Farmers and Makers Market · Bella Vista | Benton | verified |
+| 2026-07-06 | Northeast fair circuit · Jonesboro hub | — | plan_standard |
 | 2026-07-10 | Fulton County Fair | Fulton | verified |
 | 2026-07-11 | Ozarks 250 Block Party in Springdale · Springdale | Washington | verified |
 | 2026-07-12 | Bella Vista Summer Outdoor Farmers and Makers Market · Bella Vista | Benton | verified |
@@ -156,15 +171,22 @@
 | 2026-09-06 | Bella Vista End of Summer Farmers and Makers Market · Bella Vista | Benton | verified |
 | 2026-09-07 | Pike County Fair | Pike | verified |
 | 2026-09-07 | Pike County Fair Rodeo · Glenwoood | Pike | verified |
+| 2026-09-07 | Yell & Pike County Fairs | Pike | plan_standard |
 | 2026-09-07 | Yell County Fair | Yell | verified |
 | 2026-09-09 | Quachita County Fair · Camden | Quachita | verified |
 | 2026-09-10 | Nevada County Fair | Nevada | verified |
 | 2026-09-11 | Little Rock Fine Arts Art Market · Little Rock | Pulaski | verified |
 | 2026-09-11 | Vintage Market Days of Little Rock · Little Rock | Pulaski | verified |
 | 2026-09-12 | Arkansas Summer Renaissance Festival · Mount Vernon | Faulkner | verified |
+| 2026-09-12 | Clay & Crawford County Fairs | Clay | plan_standard |
 | 2026-09-12 | Clay County Fair | Clay | verified |
 | 2026-09-12 | Crawford County Fair | Crawford | verified |
 | 2026-09-12 | Van Buren Junk Fest · Van Buren | Crawford | verified |
+| 2026-09-14 | White County Fair | White | plan_standard |
+| 2026-09-21 | Candidate forums wave (20 cities) | — | plan_major |
+| 2026-09-23 | Lonoke County Fair | Lonoke | plan_standard |
+| 2026-09-25 | Benton County Fair | Benton | plan_major |
+| 2026-10-01 | Rural election town halls (10 counties) | — | plan_major |
 
 
 ## Proposed — Phase C blocks (not final)

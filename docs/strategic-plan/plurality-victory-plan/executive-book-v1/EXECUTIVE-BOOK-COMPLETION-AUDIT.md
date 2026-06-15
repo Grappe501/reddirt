@@ -1,6 +1,6 @@
 # Executive Book Completion Audit
 
-> EXECUTIVE-BOOK-COMPLETION-1.0 · Version 1.0 leadership readiness assessment
+> EXECUTIVE-BOOK-COMPLETION-1.0 · Version 1.1 leadership readiness assessment
 
 **Generated:** 2026-06-15
 
@@ -8,7 +8,7 @@
 
 | | |
 |---|---|
-| **Executive Book V1.0** | **OPERATIONAL — assign remaining TBD owners** |
+| **Executive Book V1.1** | **OPERATIONAL — assign remaining TBD owners** |
 | **Overall completeness** | ~95% |
 | **Primary blocker** | 8 ownership slots still TBD |
 
@@ -41,7 +41,19 @@
 | 3 | Labor Day Readiness Chapter | ✅ |
 | 4 | Weekly Executive Scorecard | ✅ 9 metrics |
 | 5 | Kelly Grappe Messaging Doctrine | ✅ |
-| 6 | Executive Book Completion Audit | ✅ this document |
+| 7 | Campaign Budget & Fundraising Targets | ✅ v1.2 field-aligned model |
+| 8 | Eyeball-to-Eyeball Organizing & Power of 5 | ✅ relational doctrine chapter |
+| 9 | Kelly Grappe Students for Arkansas | ✅ campus pipeline · June 28 brief |
+| 10 | Arkansas GOTV Operations Plan | ✅ Election Day field manual |
+| 11 | Executive Book Completion Audit | ✅ this document |
+
+### People Power companion programs (website edition)
+
+| Program | Role | Location |
+|---------|------|----------|
+| Citizen Voices Network | Earned media · letters to the editor | People Power tab |
+| Students for Arkansas | Youth registration · campus chapters | Executive Book Ch · 9 |
+| Power of 5 | Relational multiplication engine | Executive Book Ch · 8 |
 
 ---
 

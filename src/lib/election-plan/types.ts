@@ -667,9 +667,30 @@ export type ElectionPlanWorkbenchSnapshot = {
   };
   executiveBookHub: {
     version: string;
+    edition: string;
     status: string;
     laborDayDeadline: string;
     completenessEstimate: string;
+    readOrderNote: string;
+    companionPillars: Array<{
+      id: string;
+      title: string;
+      description: string;
+      href: string;
+    }>;
+    pillars: Array<{
+      id: string;
+      label: string;
+      chapters: Array<{
+        slug: string;
+        number: number;
+        title: string;
+        subtitle: string;
+        href: string;
+        statusLines: string[];
+        metrics: Array<{ label: string; value: string }>;
+      }>;
+    }>;
     chapters: Array<{
       slug: string;
       number: number;

@@ -303,7 +303,7 @@ function buildCompletionAudit(
 
   return `# Executive Book Completion Audit
 
-> ${PASS} · Version 1.0 leadership readiness assessment
+> ${PASS} · Version 1.1 leadership readiness assessment
 
 **Generated:** ${new Date().toISOString().slice(0, 10)}
 
@@ -311,7 +311,7 @@ function buildCompletionAudit(
 
 | | |
 |---|---|
-| **Executive Book V1.0** | ${bookComplete ? "**COMPLETE — shift 100% to execution**" : "**OPERATIONAL — assign remaining TBD owners**"} |
+| **Executive Book V1.1** | ${bookComplete ? "**COMPLETE — shift 100% to execution**" : "**OPERATIONAL — assign remaining TBD owners**"} |
 | **Overall completeness** | ~95% |
 | **Primary blocker** | ${unassigned > 0 ? `${unassigned} ownership slots still TBD` : "Field execution — HCI, volunteers, endorsements"} |
 
@@ -334,7 +334,19 @@ ${areas.map((a) => `| ${a.area} | ${a.status} | ${a.pct} |`).join("\n")}
 | 3 | Labor Day Readiness Chapter | ✅ |
 | 4 | Weekly Executive Scorecard | ✅ ${scorecardRows.length} metrics |
 | 5 | Kelly Grappe Messaging Doctrine | ✅ |
-| 6 | Executive Book Completion Audit | ✅ this document |
+| 7 | Campaign Budget & Fundraising Targets | ✅ v1.2 field-aligned model |
+| 8 | Eyeball-to-Eyeball Organizing & Power of 5 | ✅ relational doctrine chapter |
+| 9 | Kelly Grappe Students for Arkansas | ✅ campus pipeline · June 28 brief |
+| 10 | Arkansas GOTV Operations Plan | ✅ Election Day field manual |
+| 11 | Executive Book Completion Audit | ✅ this document |
+
+### People Power companion programs (website edition)
+
+| Program | Role | Location |
+|---------|------|----------|
+| Citizen Voices Network | Earned media · letters to the editor | People Power tab |
+| Students for Arkansas | Youth registration · campus chapters | Executive Book Ch · 9 |
+| Power of 5 | Relational multiplication engine | Executive Book Ch · 8 |
 
 ---
 
@@ -364,7 +376,7 @@ Ready for: Kelly · Ernie · senior volunteers · county chairs · coalition par
 }
 
 function buildReadme(unassigned: number): string {
-  return `# Executive Book Version 1.0
+  return `# Executive Book Version 1.1
 
 > **${PASS}** · ${unassigned === 0 ? "COMPLETE" : "OPERATIONAL — leadership clarity in progress"}
 
@@ -489,7 +501,7 @@ function main() {
       {
         generatedAt,
         pass: PASS,
-        version: "1.0",
+        version: "1.1",
         status: unassigned <= 3 ? "complete_shift_to_execution" : "operational_assign_owners",
         unassignedOwners: unassigned,
         influenceCategories: groups.length,
@@ -507,10 +519,10 @@ function main() {
       {
         generatedAt,
         pass: PASS,
-        version: "1.0",
+        version: "1.1",
         status: unassigned <= 3 ? "complete" : "operational",
         completenessEstimate: "95%",
-        chapters: 10,
+        chapters: 11,
         unassignedOwners: unassigned,
         contactSeedTargets: targets.length,
         laborDayDeadline: LABOR_DAY,

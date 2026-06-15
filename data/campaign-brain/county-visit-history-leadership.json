@@ -38,6 +38,8 @@
     { "county": "Hempstead", "visitCount": 1, "intensity": "single" },
     { "county": "Nevada", "visitCount": 1, "intensity": "single" },
     { "county": "Bradley", "visitCount": 1, "intensity": "single" },
-    { "county": "Drew", "visitCount": 1, "intensity": "single" }
+    { "county": "Drew", "visitCount": 1, "intensity": "single" },
+    { "county": "Sharp", "visitCount": 1, "intensity": "single" },
+    { "county": "Yell", "visitCount": 1, "intensity": "single" }
   ]
 }

@@ -22,6 +22,22 @@
       "eventId": "fest-2026-05-18-pulaski-county-dems",
       "assignee": "Kelly",
       "source": "manual"
+    },
+    {
+      "county": "Sharp",
+      "date": "2026-06-07",
+      "eventId": "manual-sharp-cave-city-visit",
+      "assignee": "Kelly",
+      "contactType": "kelly_visit",
+      "source": "manual"
+    },
+    {
+      "county": "Yell",
+      "date": "2026-06-07",
+      "eventId": "manual-yell-dardanelle-visit",
+      "assignee": "Kelly",
+      "contactType": "kelly_visit",
+      "source": "manual"
     }
   ]
 }

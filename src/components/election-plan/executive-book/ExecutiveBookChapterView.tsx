@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { ExecutiveBookMarkdown } from "@/components/election-plan/executive-book/ExecutiveBookMarkdown";
 import { formatBudget } from "@/lib/election-plan/electionPlanData";
+import { EXECUTIVE_BOOK_EDITION, EXECUTIVE_BOOK_PILLAR_LABELS } from "@/lib/election-plan/executiveBookNav";
 import type { ExecutiveBookChapterPayload } from "@/lib/election-plan/loadExecutiveBook";
 
 type Props = {
@@ -18,19 +19,22 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
               Election Plan
             </Link>
             <span className="mx-2">/</span>
-            <Link href="/election-plan?tab=executiveBook" className="hover:text-white">
+            <Link href="/election-plan/executive-book" className="hover:text-white">
               Executive Book
             </Link>
             <span className="mx-2">/</span>
             <span className="text-white/90">{chapter.title}</span>
           </nav>
           <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ep-gold)]">
-            Executive Book · Chapter {chapter.number}
+            {EXECUTIVE_BOOK_EDITION.label} · Chapter {chapter.number}
           </p>
           <h1 className="mt-2 font-heading text-3xl font-bold tracking-tight text-white lg:text-4xl">
             {chapter.title}
           </h1>
           <p className="mt-3 text-base text-white/80">{chapter.subtitle}</p>
+          <p className="mt-2 text-xs uppercase tracking-wide text-white/50">
+            {EXECUTIVE_BOOK_PILLAR_LABELS[chapter.pillar]}
+          </p>
           {chapter.generatedAt ? (
             <p className="mt-4 text-xs text-white/50">
               Generated {new Date(chapter.generatedAt).toLocaleDateString("en-US", { dateStyle: "medium" })}
@@ -221,6 +225,44 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
             </div>
           ) : null}
 
+          {chapter.citizenVoicesSummary ? (
+            <div className="ep-card mb-8 border-l-4 border-[var(--ep-gold)]">
+              <h2 className="font-heading font-bold text-[var(--ep-navy)]">Companion: {chapter.citizenVoicesSummary.networkName}</h2>
+              <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+                Earned media surrogate layer — local voices multiply in local papers. Full program in People Power tab.
+              </p>
+              <div className="mt-4 ep-stat-grid">
+                <div className="ep-stat">
+                  <div className="ep-stat-value">
+                    {chapter.citizenVoicesSummary.foundingWritersCurrent}/
+                    {chapter.citizenVoicesSummary.foundingWritersGoal}
+                  </div>
+                  <div className="ep-stat-label">Founding writers</div>
+                </div>
+                <div className="ep-stat">
+                  <div className="ep-stat-value">
+                    {chapter.citizenVoicesSummary.lettersSubmitted}/
+                    {chapter.citizenVoicesSummary.lettersSubmittedGoal}
+                  </div>
+                  <div className="ep-stat-label">Letters submitted</div>
+                </div>
+                <div className="ep-stat">
+                  <div className="ep-stat-value">{chapter.citizenVoicesSummary.outletsInInventory}</div>
+                  <div className="ep-stat-label">Outlets in inventory</div>
+                </div>
+                <div className="ep-stat">
+                  <div className="ep-stat-value">
+                    {chapter.citizenVoicesSummary.countiesRepresented}/{chapter.citizenVoicesSummary.countiesGoal}
+                  </div>
+                  <div className="ep-stat-label">Counties with writers</div>
+                </div>
+              </div>
+              <Link href="/election-plan?tab=peoplePower" className="ep-chapter-link mt-4 inline-flex">
+                Open Citizen Voices in People Power →
+              </Link>
+            </div>
+          ) : null}
+
           {chapter.studentsForArkansasSummary ? (
             <div className="ep-card mb-8 space-y-6">
               <div>
@@ -300,6 +342,8 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                     ["Salary floor (Kelly leave-of-absence)", chapter.budgetSummary.salaryFloor],
                     ["Travel (conservative → aggressive)", null],
                     ["Materials mid tier", chapter.budgetSummary.materialsMid],
+                    ["Field strategy (media · swag · compliance · sponsorships)", chapter.budgetSummary.fieldStrategyTotal],
+                    ["Digital program (ads · production · tools)", chapter.budgetSummary.digitalProgramTotal],
                     ["Postcards/mail mid placeholder", chapter.budgetSummary.postcardMid],
                     ["Sherwood expected net (projected)", chapter.budgetSummary.sherwoodNetMid],
                     ["Bare minimum scenario", chapter.budgetSummary.bareMinimumTotal],
@@ -317,7 +361,9 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                     ) : (
                       <tr key={String(label)} className="border-b border-[var(--ep-border)] last:border-0">
                         <td className="py-2 pr-3 font-medium">{label}</td>
-                        <td className="py-2 font-semibold">{formatBudget(amount as number)}</td>
+                        <td className="py-2 font-semibold">
+                          {typeof amount === "number" ? formatBudget(amount) : "—"}
+                        </td>
                       </tr>
                     ),
                   )}
@@ -328,7 +374,41 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                 <strong className="text-[var(--ep-navy)]">
                   {formatBudget(chapter.budgetSummary.monthlyBurnWorking)}/month
                 </strong>
+                {chapter.budgetSummary.workingCampaignRangeLow && chapter.budgetSummary.workingCampaignRangeHigh ? (
+                  <>
+                    {" "}
+                    · Leadership planning range:{" "}
+                    <strong className="text-[var(--ep-navy)]">
+                      {formatBudget(chapter.budgetSummary.workingCampaignRangeLow)}–
+                      {formatBudget(chapter.budgetSummary.workingCampaignRangeHigh)}
+                    </strong>
+                  </>
+                ) : null}
               </p>
+            </div>
+          ) : null}
+
+          {chapter.influenceGroups && chapter.influenceGroups.length > 0 ? (
+            <div className="ep-card mb-8 overflow-x-auto">
+              <h2 className="font-heading font-bold text-[var(--ep-navy)]">Influence categories</h2>
+              <table className="mt-4 w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase text-[var(--ep-navy-muted)]">
+                    <th className="pb-2 pr-3">Category</th>
+                    <th className="pb-2 pr-3">Tier</th>
+                    <th className="pb-2">Weekly conversations</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {chapter.influenceGroups.map((g) => (
+                    <tr key={g.title} className="border-b border-[var(--ep-border)] last:border-0">
+                      <td className="py-2 pr-3 font-medium">{g.title}</td>
+                      <td className="py-2 pr-3">{g.tier}</td>
+                      <td className="py-2 font-semibold">{g.weeklyConversationTarget}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           ) : null}
 
@@ -422,16 +502,79 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
             </div>
           ) : null}
 
-          <article className="ep-card">
-            <ExecutiveBookMarkdown markdown={chapter.markdown} />
-          </article>
+          <div className="ep-chapter-layout mb-8">
+            {chapter.tableOfContents.length > 4 ? (
+              <aside className="ep-chapter-toc ep-card">
+                <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                  On this page
+                </h2>
+                <nav aria-label="Chapter table of contents">
+                  <ul className="mt-3 space-y-1 text-sm">
+                    {chapter.tableOfContents.map((entry) => (
+                      <li key={entry.id} className={entry.level === 3 ? "pl-3" : undefined}>
+                        <a href={`#${entry.id}`} className="text-[var(--ep-navy-muted)] hover:text-[var(--ep-gold)]">
+                          {entry.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </aside>
+            ) : null}
+
+            <article className="ep-card ep-chapter-article">
+              <ExecutiveBookMarkdown markdown={chapter.markdown} />
+            </article>
+          </div>
+
+          {chapter.relatedChapters.length > 0 ? (
+            <div className="ep-card mb-8">
+              <h2 className="font-heading font-bold text-[var(--ep-navy)]">Related chapters</h2>
+              <ul className="mt-3 space-y-2 text-sm">
+                {chapter.relatedChapters.map((related) => (
+                  <li key={related.slug}>
+                    <Link href={related.href} className="ep-chapter-link">
+                      Chapter {related.number}: {related.title} →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          <nav className="ep-chapter-nav mb-8 grid gap-3 sm:grid-cols-2" aria-label="Chapter navigation">
+            {chapter.navigation.prev ? (
+              <Link href={chapter.navigation.prev.href} className="ep-card ep-chapter-nav-link">
+                <span className="text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">Previous</span>
+                <span className="mt-1 block font-heading font-bold text-[var(--ep-navy)]">
+                  Ch. {chapter.navigation.prev.number} · {chapter.navigation.prev.title}
+                </span>
+              </Link>
+            ) : (
+              <div />
+            )}
+            {chapter.navigation.next ? (
+              <Link
+                href={chapter.navigation.next.href}
+                className="ep-card ep-chapter-nav-link text-right sm:col-start-2"
+              >
+                <span className="text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">Next</span>
+                <span className="mt-1 block font-heading font-bold text-[var(--ep-navy)]">
+                  Ch. {chapter.navigation.next.number} · {chapter.navigation.next.title}
+                </span>
+              </Link>
+            ) : null}
+          </nav>
 
           <div className="mt-8 flex flex-wrap gap-4 text-sm">
+            <Link href="/election-plan/executive-book" className="ep-chapter-link">
+              Executive Book hub
+            </Link>
             <Link href="/election-plan?tab=executiveBook" className="ep-chapter-link">
-              ← Back to Executive Book
+              ← Back to Command Center
             </Link>
             <Link href="/election-plan" className="font-medium text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]">
-              Command Center
+              Election Plan home
             </Link>
           </div>
         </div>

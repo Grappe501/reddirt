@@ -462,10 +462,14 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       entries: [],
     },
     executiveBookHub: {
-      version: "1.0",
+      version: "1.1",
+      edition: "1.1",
       status: "not_built",
       laborDayDeadline: "2026-09-07",
       completenessEstimate: "—",
+      readOrderNote: "",
+      companionPillars: [],
+      pillars: [],
       chapters: [],
     },
   };
