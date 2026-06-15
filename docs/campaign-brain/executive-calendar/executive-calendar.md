@@ -7,10 +7,10 @@
 | Category | Count |
 |----------|------:|
 | Past visits | 31 |
-| Locked backbone | 47 |
-| Scheduled opportunities | 81 |
+| Locked backbone | 46 |
+| Scheduled opportunities | 61 |
 | Proposed (Phase C) | 10 |
-| **Total entries** | **169** |
+| **Total entries** | **148** |
 
 ## Past locations visited
 
@@ -98,7 +98,6 @@
 | 2026-10-20 | Early voting begins · Arkansas | Statewide | election_calendar |
 | 2026-10-20 → 2026-11-03 | Early Voting launch · Little Rock | Pulaski | leadership_locked |
 | 2026-10-26 | Election Week operations | — | plan_major |
-| 2026-11-03 | Election Day | Statewide | plan_major |
 | 2026-11-03 | Election Day · Secretary of State | Statewide | election_calendar |
 
 
@@ -107,38 +106,25 @@
 | Date | Location | County | Status |
 |------|----------|--------|--------|
 | 2026-06-15 | 20-week execution begins · Central Metro | — | plan_major |
-| 2026-06-16 | Fundraiser in Quitman | Cleburne | tentative |
 | 2026-06-17 | Montgomery County — AEA local / area meeting (verify schedule) | Montgomery | verified |
-| 2026-06-17 | Montgomery county meeting | Montgomery | tentative |
 | 2026-06-17 | Sixty-Eight Petit Jean Swap Meet & Car Show · Morrilton | Conway | verified |
 | 2026-06-18 | River Valley Crawfish Festival · Greenwood | Sebastian | verified |
-| 2026-06-19 | June CraftFest · Mountain Home | Baxter | verified |
-| 2026-06-19 | Juneteenth in Little Rock · Little Rock | Pulaski | verified |
-| 2026-06-19 | Juneteenth Morrilton c5 | Conway | tentative |
-| 2026-06-19 | Mountain Home Craft Fest · Mountain Home | Baxter | verified |
 | 2026-06-20 | Menifee Juneteenth | Conway | tentative |
 | 2026-06-20 | Surf the Bay · Fairfield Bay | Van Buren | verified |
 | 2026-06-21 | Bella Vista Summer Farmers and Makers Market · Bella Vista | Benton | verified |
 | 2026-06-24 | Rodeo of the Ozarks · Springdale | Washington | verified |
 | 2026-06-26 | Arkansas Folklife Festival · North Little Rock | Pulaski | verified |
 | 2026-06-26 | Buffalo River Elk Festival · Jasper | Newton | verified |
-| 2026-06-26 | SOS debate - Annual Press Convention - Eureka Springs | Carroll | tentative |
 | 2026-06-28 | Bella Vista Summer Sunday Farmers and Makers Market · Bella Vista | Benton | verified |
 | 2026-06-28 | Forevermost Farms retreat (schedule TBD) | — | plan_standard |
 | 2026-06-28 | Little Rock Bridal and Wedding Expo · Little Rock | Pulaski | verified |
 | 2026-06-28 | Volunteer Leadership Launch · Zoom 6 PM | — | plan_major |
 | 2026-07-02 | Fulton County Freedom Festival · Salem | Fulton | verified |
-| 2026-07-03 | Fireworks & Food Trucks - Family Independence Day · Sherwood | Pulaski | verified |
-| 2026-07-03 | Sherwood Fireworks & Food Trucks | — | plan_major |
-| 2026-07-04 | Freedom Fest on the Lake · Heber Springs | Cleburne | verified |
 | 2026-07-04 | Pops on the River · Little Rock | Pulaski | verified |
-| 2026-07-04 | Pops on the River · Little Rock | — | plan_major |
 | 2026-07-05 | Bella Vista Outdoor Farmers and Makers Market · Bella Vista | Benton | verified |
 | 2026-07-06 | Northeast fair circuit · Jonesboro hub | — | plan_standard |
 | 2026-07-10 | Fulton County Fair | Fulton | verified |
-| 2026-07-11 | Ozarks 250 Block Party in Springdale · Springdale | Washington | verified |
 | 2026-07-12 | Bella Vista Summer Outdoor Farmers and Makers Market · Bella Vista | Benton | verified |
-| 2026-07-16 | Johnson CO Peach Festival · Clarksville | Johnson | verified |
 | 2026-07-16 | Johnson County Peach Festival · Clarksville | Johnson | verified |
 | 2026-07-19 | Bella Vista Sunday Outdoor Farmers and Makers Market · Bella Vista | Benton | verified |
 | 2026-07-23 | 3492 Music Festival: A Celebration of Community and Sound · Little Rock | Pulaski | verified |
@@ -154,31 +140,24 @@
 | 2026-08-15 | Central Arkansas Women's Expo · Little Rock | Pulaski | verified |
 | 2026-08-16 | Bella Vista Third Sunday Farmers and Makers Market · Bella Vista | Benton | verified |
 | 2026-08-17 | Little River County Fair | Little River | verified |
-| 2026-08-17 | Little River County Fair and Rodeo · Foreman | Little River | verified |
 | 2026-08-23 | Bella Vista Fourth Sunday Farmers and Makers Market · Bella Vista | Benton | verified |
 | 2026-08-24 | Randolph County Fair | Randolph | verified |
 | 2026-08-28 | Bella Rustina Modern Vintage Market · Conway | Faulkner | verified |
-| 2026-08-29 | 79th Annual Mt. Nebo Chicken Fry · Dardanelle | Yell | verified |
 | 2026-08-29 | Arkansas Renaissance Festival · Mount Vernon | Faulkner | verified |
 | 2026-08-30 | Bella Vista Fifth Sunday Farmers and Makers Market · Bella Vista | Benton | verified |
 | 2026-08-31 | Lafayette County Fair | Lafayette | verified |
-| 2026-08-31 | Lafayette County Fair and Livestock Show · Lewisville | Lafayette | verified |
 | 2026-09-02 | Van Buren Livestock Show and Fair · Clinton | Van Buren | verified |
 | 2026-09-04 | Ashley County Fair | Ashley | verified |
-| 2026-09-04 | Ashley County Fair and Livestock Show · Crossett | Ashley | verified |
 | 2026-09-05 | Arkansas Labor Day Renaissance Festival · Mount Vernon | Faulkner | verified |
 | 2026-09-05 | Daisy Days Vendor Market · Rose Bud | White | verified |
 | 2026-09-06 | Bella Vista End of Summer Farmers and Makers Market · Bella Vista | Benton | verified |
 | 2026-09-07 | Pike County Fair | Pike | verified |
-| 2026-09-07 | Pike County Fair Rodeo · Glenwoood | Pike | verified |
-| 2026-09-07 | Yell & Pike County Fairs | Pike | plan_standard |
 | 2026-09-07 | Yell County Fair | Yell | verified |
 | 2026-09-09 | Quachita County Fair · Camden | Quachita | verified |
 | 2026-09-10 | Nevada County Fair | Nevada | verified |
 | 2026-09-11 | Little Rock Fine Arts Art Market · Little Rock | Pulaski | verified |
 | 2026-09-11 | Vintage Market Days of Little Rock · Little Rock | Pulaski | verified |
 | 2026-09-12 | Arkansas Summer Renaissance Festival · Mount Vernon | Faulkner | verified |
-| 2026-09-12 | Clay & Crawford County Fairs | Clay | plan_standard |
 | 2026-09-12 | Clay County Fair | Clay | verified |
 | 2026-09-12 | Crawford County Fair | Crawford | verified |
 | 2026-09-12 | Van Buren Junk Fest · Van Buren | Crawford | verified |

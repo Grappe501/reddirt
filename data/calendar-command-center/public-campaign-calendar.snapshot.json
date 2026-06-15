@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T14:34:43.726Z",
+  "generatedAt": "2026-06-15T21:11:26.025Z",
   "horizonEnd": "2026-11-03",
   "source": "executive-calendar",
   "events": [
@@ -15,22 +15,6 @@
       "address": null,
       "eventType": "OTHER",
       "county": null
-    },
-    {
-      "id": "snap-fest-2026-06-16-fundraiser-in-quitman",
-      "slug": "fundraiser-in-quitman-2026-06-16",
-      "title": "Fundraiser in Quitman",
-      "publicSummary": null,
-      "startAt": "2026-06-16T15:00:00.000Z",
-      "endAt": "2026-06-16T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Cleburne",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Cleburne County",
-        "slug": "cleburne-county"
-      }
     },
     {
       "id": "snap-lock-quitman-fundraiser",
@@ -52,22 +36,6 @@
       "id": "snap-aea-montgomery-stub",
       "slug": "montgomery-county-aea-local-area-meeting-verify-schedule-2026-06",
       "title": "Montgomery County — AEA local / area meeting (verify schedule)",
-      "publicSummary": null,
-      "startAt": "2026-06-17T15:00:00.000Z",
-      "endAt": "2026-06-17T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Montgomery",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Montgomery County",
-        "slug": "montgomery-county"
-      }
-    },
-    {
-      "id": "snap-fest-2026-06-17-montgomery-county-meeting",
-      "slug": "montgomery-county-meeting-2026-06-17",
-      "title": "Montgomery county meeting",
       "publicSummary": null,
       "startAt": "2026-06-17T15:00:00.000Z",
       "endAt": "2026-06-17T23:00:00.000Z",
@@ -145,41 +113,9 @@
       }
     },
     {
-      "id": "snap-fest-2026-06-19-mountain-home-june-craftfest",
-      "slug": "june-craftfest-2026-06-19",
-      "title": "June CraftFest",
-      "publicSummary": null,
-      "startAt": "2026-06-19T15:00:00.000Z",
-      "endAt": "2026-06-19T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Mountain Home · Baxter",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Baxter County",
-        "slug": "baxter-county"
-      }
-    },
-    {
       "id": "snap-lock-juneteenth-lr",
       "slug": "juneteenth-2026-06-19",
       "title": "Juneteenth",
-      "publicSummary": null,
-      "startAt": "2026-06-19T15:00:00.000Z",
-      "endAt": "2026-06-19T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Little Rock · Pulaski",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Pulaski County",
-        "slug": "pulaski-county"
-      }
-    },
-    {
-      "id": "snap-fest-nodate-little-rock-juneteenth-in-little-rock",
-      "slug": "juneteenth-in-little-rock-2026-06-19",
-      "title": "Juneteenth in Little Rock",
       "publicSummary": null,
       "startAt": "2026-06-19T15:00:00.000Z",
       "endAt": "2026-06-19T23:00:00.000Z",
@@ -206,38 +142,6 @@
       "county": {
         "displayName": "Conway County",
         "slug": "conway-county"
-      }
-    },
-    {
-      "id": "snap-fest-2026-06-19-juneteenth-morrilton-c5",
-      "slug": "juneteenth-morrilton-c5-2026-06-19",
-      "title": "Juneteenth Morrilton c5",
-      "publicSummary": null,
-      "startAt": "2026-06-19T15:00:00.000Z",
-      "endAt": "2026-06-19T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Conway",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Conway County",
-        "slug": "conway-county"
-      }
-    },
-    {
-      "id": "snap-fest-2026-06-19-mountain-home-mountain-home-craft-fest",
-      "slug": "mountain-home-craft-fest-2026-06-19",
-      "title": "Mountain Home Craft Fest",
-      "publicSummary": null,
-      "startAt": "2026-06-19T15:00:00.000Z",
-      "endAt": "2026-06-19T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Mountain Home · Baxter",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Baxter County",
-        "slug": "baxter-county"
       }
     },
     {
@@ -366,22 +270,6 @@
       "county": {
         "displayName": "Newton County",
         "slug": "newton-county"
-      }
-    },
-    {
-      "id": "snap-fest-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
-      "slug": "sos-debate-annual-press-convention-eureka-springs-2026-06-26",
-      "title": "SOS debate - Annual Press Convention - Eureka Springs",
-      "publicSummary": null,
-      "startAt": "2026-06-26T15:00:00.000Z",
-      "endAt": "2026-06-26T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Carroll",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Carroll County",
-        "slug": "carroll-county"
       }
     },
     {
@@ -523,22 +411,6 @@
       }
     },
     {
-      "id": "snap-fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
-      "slug": "fireworks-food-trucks-family-independence-day-2026-07-03",
-      "title": "Fireworks & Food Trucks - Family Independence Day",
-      "publicSummary": null,
-      "startAt": "2026-07-03T15:00:00.000Z",
-      "endAt": "2026-07-03T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Sherwood · Pulaski",
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": {
-        "displayName": "Pulaski County",
-        "slug": "pulaski-county"
-      }
-    },
-    {
       "id": "snap-lock-sherwood",
       "slug": "sherwood-fireworks-food-trucks-2026-07-03",
       "title": "Sherwood Fireworks & Food Trucks",
@@ -555,19 +427,6 @@
       }
     },
     {
-      "id": "snap-plan-2026-07-03-sherwood-fireworks-food-trucks",
-      "slug": "sherwood-fireworks-food-trucks-2026-07-03",
-      "title": "Sherwood Fireworks & Food Trucks",
-      "publicSummary": "From the 20-week operating plan.",
-      "startAt": "2026-07-03T15:00:00.000Z",
-      "endAt": "2026-07-03T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": null,
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": null
-    },
-    {
       "id": "snap-lock-clay-july4",
       "slug": "clay-county-july-4-corridor-2026-07-04",
       "title": "Clay County July 4 corridor",
@@ -581,22 +440,6 @@
       "county": {
         "displayName": "Clay County",
         "slug": "clay-county"
-      }
-    },
-    {
-      "id": "snap-fest-2026-07-04-heber-springs-freedom-fest-on-the-lake",
-      "slug": "freedom-fest-on-the-lake-2026-07-04",
-      "title": "Freedom Fest on the Lake",
-      "publicSummary": null,
-      "startAt": "2026-07-04T15:00:00.000Z",
-      "endAt": "2026-07-04T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Heber Springs · Cleburne",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Cleburne County",
-        "slug": "cleburne-county"
       }
     },
     {
@@ -630,19 +473,6 @@
         "displayName": "Pulaski County",
         "slug": "pulaski-county"
       }
-    },
-    {
-      "id": "snap-plan-2026-07-04-pops-on-the-river-little-rock",
-      "slug": "pops-on-the-river-little-rock-2026-07-04",
-      "title": "Pops on the River · Little Rock",
-      "publicSummary": "From the 20-week operating plan.",
-      "startAt": "2026-07-04T15:00:00.000Z",
-      "endAt": "2026-07-04T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": null,
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": null
     },
     {
       "id": "snap-fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
@@ -722,22 +552,6 @@
       }
     },
     {
-      "id": "snap-fest-2026-07-11-springdale-ozarks-250-block-party-in-springdale",
-      "slug": "ozarks-250-block-party-in-springdale-2026-07-11",
-      "title": "Ozarks 250 Block Party in Springdale",
-      "publicSummary": null,
-      "startAt": "2026-07-11T15:00:00.000Z",
-      "endAt": "2026-07-11T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Springdale · Washington",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Washington County",
-        "slug": "washington-county"
-      }
-    },
-    {
       "id": "snap-fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
       "slug": "bella-vista-summer-outdoor-farmers-and-makers-market-2026-07-12",
       "title": "Bella Vista Summer Outdoor Farmers and Makers Market",
@@ -783,22 +597,6 @@
       "county": {
         "displayName": "Lonoke County",
         "slug": "lonoke-county"
-      }
-    },
-    {
-      "id": "snap-fest-2026-07-16-clarksville-johnson-co-peach-festival",
-      "slug": "johnson-co-peach-festival-2026-07-16",
-      "title": "Johnson CO Peach Festival",
-      "publicSummary": null,
-      "startAt": "2026-07-16T15:00:00.000Z",
-      "endAt": "2026-07-16T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Clarksville · Johnson",
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": {
-        "displayName": "Johnson County",
-        "slug": "johnson-county"
       }
     },
     {
@@ -1202,22 +1000,6 @@
       }
     },
     {
-      "id": "snap-fest-2026-08-17-foreman-little-river-county-fair-and-rodeo",
-      "slug": "little-river-county-fair-and-rodeo-2026-08-17",
-      "title": "Little River County Fair and Rodeo",
-      "publicSummary": null,
-      "startAt": "2026-08-17T15:00:00.000Z",
-      "endAt": "2026-08-17T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Foreman · Little River",
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": {
-        "displayName": "Little River County",
-        "slug": "little-river-county"
-      }
-    },
-    {
       "id": "snap-lock-hot-springs-village",
       "slug": "hot-springs-village-2026-08-18",
       "title": "Hot Springs Village",
@@ -1314,22 +1096,6 @@
       }
     },
     {
-      "id": "snap-fest-2026-08-29-dardanelle-79th-annual-mt-nebo-chicken-fry",
-      "slug": "79th-annual-mt-nebo-chicken-fry-2026-08-29",
-      "title": "79th Annual Mt. Nebo Chicken Fry",
-      "publicSummary": null,
-      "startAt": "2026-08-29T15:00:00.000Z",
-      "endAt": "2026-08-29T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Dardanelle · Yell",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Yell County",
-        "slug": "yell-county"
-      }
-    },
-    {
       "id": "snap-fest-2026-08-29-mount-vernon-arkansas-renaissance-festival",
       "slug": "arkansas-renaissance-festival-2026-08-29",
       "title": "Arkansas Renaissance Festival",
@@ -1410,22 +1176,6 @@
       }
     },
     {
-      "id": "snap-fest-2026-08-31-lewisville-lafayette-county-fair-and-livestock-show",
-      "slug": "lafayette-county-fair-and-livestock-show-2026-08-31",
-      "title": "Lafayette County Fair and Livestock Show",
-      "publicSummary": null,
-      "startAt": "2026-08-31T15:00:00.000Z",
-      "endAt": "2026-08-31T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Lewisville · Lafayette",
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": {
-        "displayName": "Lafayette County",
-        "slug": "lafayette-county"
-      }
-    },
-    {
       "id": "snap-fest-2026-09-02-clinton-van-buren-livestock-show-and-fair",
       "slug": "van-buren-livestock-show-and-fair-2026-09-02",
       "title": "Van Buren Livestock Show and Fair",
@@ -1450,22 +1200,6 @@
       "endAt": "2026-09-04T23:00:00.000Z",
       "timezone": "America/Chicago",
       "locationName": "Ashley",
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": {
-        "displayName": "Ashley County",
-        "slug": "ashley-county"
-      }
-    },
-    {
-      "id": "snap-fest-2026-09-04-crossett-ashley-county-fair-and-livestock-show",
-      "slug": "ashley-county-fair-and-livestock-show-2026-09-04",
-      "title": "Ashley County Fair and Livestock Show",
-      "publicSummary": null,
-      "startAt": "2026-09-04T15:00:00.000Z",
-      "endAt": "2026-09-04T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Crossett · Ashley",
       "address": null,
       "eventType": "FESTIVAL",
       "county": {
@@ -1570,38 +1304,6 @@
       }
     },
     {
-      "id": "snap-fest-2026-09-07-glenwoood-pike-county-fair-rodeo",
-      "slug": "pike-county-fair-rodeo-2026-09-07",
-      "title": "Pike County Fair Rodeo",
-      "publicSummary": null,
-      "startAt": "2026-09-07T15:00:00.000Z",
-      "endAt": "2026-09-07T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Glenwoood · Pike",
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": {
-        "displayName": "Pike County",
-        "slug": "pike-county"
-      }
-    },
-    {
-      "id": "snap-plan-2026-09-07-yell-pike-county-fairs",
-      "slug": "yell-pike-county-fairs-2026-09-07",
-      "title": "Yell & Pike County Fairs",
-      "publicSummary": "From the 20-week operating plan.",
-      "startAt": "2026-09-07T15:00:00.000Z",
-      "endAt": "2026-09-07T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Pike",
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": {
-        "displayName": "Pike County",
-        "slug": "pike-county"
-      }
-    },
-    {
       "id": "snap-fair-7d4b1643af8887c9137f0856",
       "slug": "yell-county-fair-2026-09-07",
       "title": "Yell County Fair",
@@ -1692,22 +1394,6 @@
       "county": {
         "displayName": "Faulkner County",
         "slug": "faulkner-county"
-      }
-    },
-    {
-      "id": "snap-plan-2026-09-12-clay-crawford-county-fairs",
-      "slug": "clay-crawford-county-fairs-2026-09-12",
-      "title": "Clay & Crawford County Fairs",
-      "publicSummary": "From the 20-week operating plan.",
-      "startAt": "2026-09-12T15:00:00.000Z",
-      "endAt": "2026-09-12T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Clay",
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": {
-        "displayName": "Clay County",
-        "slug": "clay-county"
       }
     },
     {
@@ -2133,19 +1819,6 @@
       "endAt": "2026-10-26T23:00:00.000Z",
       "timezone": "America/Chicago",
       "locationName": null,
-      "address": null,
-      "eventType": "DEADLINE",
-      "county": null
-    },
-    {
-      "id": "snap-plan-2026-11-03-election-day",
-      "slug": "election-day-2026-11-03",
-      "title": "Election Day",
-      "publicSummary": "From the 20-week operating plan.",
-      "startAt": "2026-11-03T16:00:00.000Z",
-      "endAt": "2026-11-04T00:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Arkansas",
       "address": null,
       "eventType": "DEADLINE",
       "county": null

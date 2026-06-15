@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-06-15T14:16:26.868Z",
+  "generatedAt": "2026-06-15T21:11:25.796Z",
   "referenceDate": "2026-06-15",
   "disclaimer": "Internal leadership calendar. Past visits, locked backbone, and scheduled stops. Not Kelly's Google Calendar. Not public /events.",
   "summary": {
     "pastVisitCount": 31,
-    "lockedCount": 47,
-    "scheduledCount": 81,
+    "lockedCount": 46,
+    "scheduledCount": 61,
     "proposedCount": 10,
-    "totalEntries": 169,
+    "totalEntries": 148,
     "countiesVisited": 29,
     "countiesScheduled": 39
   },
@@ -403,19 +403,6 @@
       "notes": "Week 1 · 20-week operating plan"
     },
     {
-      "id": "fest-2026-06-16-fundraiser-in-quitman",
-      "startDate": "2026-06-16",
-      "endDate": null,
-      "label": "Fundraiser in Quitman",
-      "city": null,
-      "county": "Cleburne",
-      "category": "scheduled",
-      "status": "tentative",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
       "id": "lock-quitman-fundraiser",
       "startDate": "2026-06-16",
       "endDate": null,
@@ -437,19 +424,6 @@
       "county": "Montgomery",
       "category": "scheduled",
       "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
-      "id": "fest-2026-06-17-montgomery-county-meeting",
-      "startDate": "2026-06-17",
-      "endDate": null,
-      "label": "Montgomery county meeting",
-      "city": null,
-      "county": "Montgomery",
-      "category": "scheduled",
-      "status": "tentative",
       "source": "upcoming-stops-activation-queue",
       "eventType": "opportunity",
       "notes": "Draft Mobilize event — human approval required before publish"
@@ -507,19 +481,6 @@
       "notes": "Home-base festival · Forevermost Farms proximity"
     },
     {
-      "id": "fest-2026-06-19-mountain-home-june-craftfest",
-      "startDate": "2026-06-19",
-      "endDate": null,
-      "label": "June CraftFest",
-      "city": "Mountain Home",
-      "county": "Baxter",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
       "id": "lock-juneteenth-lr",
       "startDate": "2026-06-19",
       "endDate": null,
@@ -533,19 +494,6 @@
       "notes": "Central Arkansas Juneteenth observance"
     },
     {
-      "id": "fest-nodate-little-rock-juneteenth-in-little-rock",
-      "startDate": "2026-06-19",
-      "endDate": null,
-      "label": "Juneteenth in Little Rock",
-      "city": "Little Rock",
-      "county": "Pulaski",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
       "id": "lock-juneteenth-conway",
       "startDate": "2026-06-19",
       "endDate": "2026-06-20",
@@ -557,32 +505,6 @@
       "source": "locked-events-steve",
       "eventType": "festival",
       "notes": "Conway County Juneteenth stack · Menifee Jun 20"
-    },
-    {
-      "id": "fest-2026-06-19-juneteenth-morrilton-c5",
-      "startDate": "2026-06-19",
-      "endDate": null,
-      "label": "Juneteenth Morrilton c5",
-      "city": null,
-      "county": "Conway",
-      "category": "scheduled",
-      "status": "tentative",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
-      "id": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
-      "startDate": "2026-06-19",
-      "endDate": null,
-      "label": "Mountain Home Craft Fest",
-      "city": "Mountain Home",
-      "county": "Baxter",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
       "id": "lock-baxter",
@@ -684,19 +606,6 @@
       "county": "Newton",
       "category": "scheduled",
       "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
-      "id": "fest-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
-      "startDate": "2026-06-26",
-      "endDate": null,
-      "label": "SOS debate - Annual Press Convention - Eureka Springs",
-      "city": null,
-      "county": "Carroll",
-      "category": "scheduled",
-      "status": "tentative",
       "source": "upcoming-stops-activation-queue",
       "eventType": "opportunity",
       "notes": "Draft Mobilize event — human approval required before publish"
@@ -819,19 +728,6 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
-      "id": "fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
-      "startDate": "2026-07-03",
-      "endDate": null,
-      "label": "Fireworks & Food Trucks - Family Independence Day",
-      "city": "Sherwood",
-      "county": "Pulaski",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
       "id": "lock-sherwood",
       "startDate": "2026-07-03",
       "endDate": null,
@@ -845,19 +741,6 @@
       "notes": "Sherwood Victory anchor · VIP tables · volunteer shifts"
     },
     {
-      "id": "plan-2026-07-03-sherwood-fireworks-food-trucks",
-      "startDate": "2026-07-03",
-      "endDate": null,
-      "label": "Sherwood Fireworks & Food Trucks",
-      "city": null,
-      "county": "—",
-      "category": "scheduled",
-      "status": "plan_major",
-      "source": "twenty-week-plan",
-      "eventType": "sherwood",
-      "notes": "Week 3 · 20-week operating plan"
-    },
-    {
       "id": "lock-clay-july4",
       "startDate": "2026-07-04",
       "endDate": null,
@@ -869,19 +752,6 @@
       "source": "locked-events-steve",
       "eventType": "festival",
       "notes": "NE Arkansas July 4 stack · verify local event time"
-    },
-    {
-      "id": "fest-2026-07-04-heber-springs-freedom-fest-on-the-lake",
-      "startDate": "2026-07-04",
-      "endDate": null,
-      "label": "Freedom Fest on the Lake",
-      "city": "Heber Springs",
-      "county": "Cleburne",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
       "id": "lock-heber-july4",
@@ -908,19 +778,6 @@
       "source": "upcoming-stops-activation-queue",
       "eventType": "opportunity",
       "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
-      "id": "plan-2026-07-04-pops-on-the-river-little-rock",
-      "startDate": "2026-07-04",
-      "endDate": null,
-      "label": "Pops on the River · Little Rock",
-      "city": null,
-      "county": "—",
-      "category": "scheduled",
-      "status": "plan_major",
-      "source": "twenty-week-plan",
-      "eventType": "sherwood",
-      "notes": "Week 3 · 20-week operating plan"
     },
     {
       "id": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
@@ -988,19 +845,6 @@
       "notes": "NWA visibility · Washington County"
     },
     {
-      "id": "fest-2026-07-11-springdale-ozarks-250-block-party-in-springdale",
-      "startDate": "2026-07-11",
-      "endDate": null,
-      "label": "Ozarks 250 Block Party in Springdale",
-      "city": "Springdale",
-      "county": "Washington",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
       "id": "fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
       "startDate": "2026-07-12",
       "endDate": null,
@@ -1038,19 +882,6 @@
       "source": "locked-events-steve",
       "eventType": "community",
       "notes": "Central AR agricultural story · verify host schedule"
-    },
-    {
-      "id": "fest-2026-07-16-clarksville-johnson-co-peach-festival",
-      "startDate": "2026-07-16",
-      "endDate": null,
-      "label": "Johnson CO Peach Festival",
-      "city": "Clarksville",
-      "county": "Johnson",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
       "id": "fest-nodate-clarksville-johnson-county-peach-festival",
@@ -1378,19 +1209,6 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
-      "id": "fest-2026-08-17-foreman-little-river-county-fair-and-rodeo",
-      "startDate": "2026-08-17",
-      "endDate": null,
-      "label": "Little River County Fair and Rodeo",
-      "city": "Foreman",
-      "county": "Little River",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
       "id": "lock-hot-springs-village",
       "startDate": "2026-08-18",
       "endDate": null,
@@ -1469,19 +1287,6 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
-      "id": "fest-2026-08-29-dardanelle-79th-annual-mt-nebo-chicken-fry",
-      "startDate": "2026-08-29",
-      "endDate": null,
-      "label": "79th Annual Mt. Nebo Chicken Fry",
-      "city": "Dardanelle",
-      "county": "Yell",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
       "id": "fest-2026-08-29-mount-vernon-arkansas-renaissance-festival",
       "startDate": "2026-08-29",
       "endDate": null,
@@ -1547,19 +1352,6 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
-      "id": "fest-2026-08-31-lewisville-lafayette-county-fair-and-livestock-show",
-      "startDate": "2026-08-31",
-      "endDate": null,
-      "label": "Lafayette County Fair and Livestock Show",
-      "city": "Lewisville",
-      "county": "Lafayette",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
       "id": "fest-2026-09-02-clinton-van-buren-livestock-show-and-fair",
       "startDate": "2026-09-02",
       "endDate": null,
@@ -1578,19 +1370,6 @@
       "endDate": null,
       "label": "Ashley County Fair",
       "city": null,
-      "county": "Ashley",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
-      "id": "fest-2026-09-04-crossett-ashley-county-fair-and-livestock-show",
-      "startDate": "2026-09-04",
-      "endDate": null,
-      "label": "Ashley County Fair and Livestock Show",
-      "city": "Crossett",
       "county": "Ashley",
       "category": "scheduled",
       "status": "verified",
@@ -1677,32 +1456,6 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
-      "id": "fest-2026-09-07-glenwoood-pike-county-fair-rodeo",
-      "startDate": "2026-09-07",
-      "endDate": null,
-      "label": "Pike County Fair Rodeo",
-      "city": "Glenwoood",
-      "county": "Pike",
-      "category": "scheduled",
-      "status": "verified",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
-      "id": "plan-2026-09-07-yell-pike-county-fairs",
-      "startDate": "2026-09-07",
-      "endDate": null,
-      "label": "Yell & Pike County Fairs",
-      "city": null,
-      "county": "Pike",
-      "category": "scheduled",
-      "status": "plan_standard",
-      "source": "twenty-week-plan",
-      "eventType": "fair",
-      "notes": "Week 13 · 20-week operating plan"
-    },
-    {
       "id": "fair-7d4b1643af8887c9137f0856",
       "startDate": "2026-09-07",
       "endDate": null,
@@ -1779,19 +1532,6 @@
       "source": "upcoming-stops-activation-queue",
       "eventType": "opportunity",
       "notes": "Draft Mobilize event — human approval required before publish"
-    },
-    {
-      "id": "plan-2026-09-12-clay-crawford-county-fairs",
-      "startDate": "2026-09-12",
-      "endDate": null,
-      "label": "Clay & Crawford County Fairs",
-      "city": null,
-      "county": "Clay",
-      "category": "scheduled",
-      "status": "plan_standard",
-      "source": "twenty-week-plan",
-      "eventType": "fair",
-      "notes": "Week 14 · 20-week operating plan"
     },
     {
       "id": "fair-7da0f84811b62d6378c8eab1",
@@ -2151,19 +1891,6 @@
       "label": "Election Week operations",
       "city": null,
       "county": "—",
-      "category": "locked",
-      "status": "plan_major",
-      "source": "twenty-week-plan",
-      "eventType": "election",
-      "notes": "Week 20 · 20-week operating plan"
-    },
-    {
-      "id": "plan-2026-11-03-election-day",
-      "startDate": "2026-11-03",
-      "endDate": null,
-      "label": "Election Day",
-      "city": null,
-      "county": "Statewide",
       "category": "locked",
       "status": "plan_major",
       "source": "twenty-week-plan",

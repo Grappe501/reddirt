@@ -39,8 +39,98 @@ function normalizeCounty(c: string): string {
   return c.replace(/\s+County$/i, "").trim();
 }
 
-function dedupeKey(e: CalendarEntry): string {
-  return `${e.startDate}|${normalizeCounty(e.county)}|${e.label.toLowerCase()}`;
+function primaryCounty(c: string): string {
+  const first = normalizeCounty(c.split(" · ")[0] ?? c);
+  return first === "—" ? "" : first.toLowerCase();
+}
+
+const LABEL_STOP_WORDS = new Set([
+  "county",
+  "in",
+  "the",
+  "and",
+  "or",
+  "at",
+  "on",
+  "for",
+  "with",
+  "a",
+  "an",
+  "day",
+  "annual",
+  "scheduled",
+  "tbd",
+  "verify",
+  "schedule",
+]);
+
+/** Collapse punctuation and festival naming variants for fuzzy duplicate detection. */
+function normalizeLabelForDedupe(label: string): string {
+  return label
+    .toLowerCase()
+    .replace(/craft\s*fest/g, "craftfest")
+    .replace(/freedom\s*fest/g, "freedomfest")
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function labelTokens(label: string): string[] {
+  return [
+    ...new Set(
+      normalizeLabelForDedupe(label)
+        .split(" ")
+        .filter((t) => t.length > 2 && !LABEL_STOP_WORDS.has(t)),
+    ),
+  ].sort();
+}
+
+const SHARED_EVENT_KEYWORDS = [
+  "juneteenth",
+  "craftfest",
+  "freedomfest",
+  "peach",
+  "debate",
+  "fireworks",
+  "food",
+  "trucks",
+  "chicken",
+  "fry",
+  "fair",
+  "rodeo",
+  "immersion",
+];
+
+function sharesEventKeyword(a: string, b: string): boolean {
+  const na = normalizeLabelForDedupe(a);
+  const nb = normalizeLabelForDedupe(b);
+  return SHARED_EVENT_KEYWORDS.some((kw) => na.includes(kw) && nb.includes(kw));
+}
+
+function countiesOverlap(a: string, b: string): boolean {
+  const ca = primaryCounty(a);
+  const cb = primaryCounty(b);
+  if (!ca || !cb) return true;
+  return ca === cb;
+}
+
+function labelsSimilar(a: string, b: string): boolean {
+  const na = normalizeLabelForDedupe(a);
+  const nb = normalizeLabelForDedupe(b);
+  if (na === nb) return true;
+  if (na.includes(nb) || nb.includes(na)) return true;
+  if (sharesEventKeyword(a, b)) return true;
+
+  const ta = labelTokens(a);
+  const tb = labelTokens(b);
+  if (!ta.length || !tb.length) return false;
+
+  const intersection = ta.filter((t) => tb.includes(t));
+  const union = new Set([...ta, ...tb]);
+  if (intersection.length / union.size >= 0.45) return true;
+
+  const [short, long] = ta.length <= tb.length ? [ta, tb] : [tb, ta];
+  return short.length >= 2 && short.every((t) => long.includes(t));
 }
 
 function categoryRank(c: CalendarEntry["category"]): number {
@@ -50,16 +140,33 @@ function categoryRank(c: CalendarEntry["category"]): number {
   return 1;
 }
 
+/** Prefer locked backbone ids and richer rows when collapsing near-duplicates. */
+function entryKeepScore(e: CalendarEntry): number {
+  let score = categoryRank(e.category) * 1000;
+  if (e.id.startsWith("anchor-")) score += 300;
+  if (e.id.startsWith("lock-")) score += 200;
+  if (e.id.startsWith("fair-")) score += 100;
+  if (e.city) score += 20;
+  score += Math.min(e.label.length, 80);
+  return score;
+}
+
+function isDuplicateEntry(a: CalendarEntry, b: CalendarEntry): boolean {
+  if (a.startDate !== b.startDate) return false;
+  if (!countiesOverlap(a.county, b.county)) return false;
+  return labelsSimilar(a.label, b.label);
+}
+
 function mergeEntries(entries: CalendarEntry[]): CalendarEntry[] {
-  const byKey = new Map<string, CalendarEntry>();
-  for (const e of entries) {
-    const key = dedupeKey(e);
-    const existing = byKey.get(key);
-    if (!existing || categoryRank(e.category) > categoryRank(existing.category)) {
-      byKey.set(key, e);
-    }
+  const sorted = [...entries].sort((a, b) => entryKeepScore(b) - entryKeepScore(a));
+  const kept: CalendarEntry[] = [];
+
+  for (const entry of sorted) {
+    const duplicate = kept.some((existing) => isDuplicateEntry(existing, entry));
+    if (!duplicate) kept.push(entry);
   }
-  return [...byKey.values()].sort((a, b) => {
+
+  return kept.sort((a, b) => {
     const d = a.startDate.localeCompare(b.startDate);
     if (d !== 0) return d;
     return a.label.localeCompare(b.label);
