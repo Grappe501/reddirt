@@ -17,6 +17,8 @@ import {
   type CountyLeadershipRole,
 } from "@/lib/election-plan/load-phase-18-7b-ownership";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
+import { OrganizationSummaryStrip } from "@/components/election-plan/CampaignOrganizationPanel";
+import { campaignOrganizationHref, getCampaignOrganizationRollup } from "@/lib/election-plan/load-campaign-organization";
 
 function coverageColor(level: CountyLeadershipRole["coverageLevel"]): string {
   if (level === "complete") return "bg-emerald-500";
@@ -29,16 +31,25 @@ export function LeadershipHubPanel() {
   const matrix = getCampaignResponsibilityMatrix();
   const packet = getWeeklyLeadershipPacket();
   const counties = getCountyLeadershipCoverage();
+  const orgRollup = getCampaignOrganizationRollup();
 
   return (
     <section>
-      <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--ep-gold)]">Phase 18.7B</p>
-      <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">Resource Deployment & Ownership Activation</h1>
+      <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--ep-gold)]">Leadership & Ownership</p>
+      <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">Campaign Operating Manual · Leadership</h1>
       <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-        Who is responsible for making each thing happen this week?
+        Who owns each piece — and what do they do every week?
       </p>
 
+      <div className="my-6">
+        <OrganizationSummaryStrip />
+      </div>
+
       <div className="my-6 ep-stat-grid">
+        <div className="ep-stat">
+          <div className="ep-stat-value text-red-700">{orgRollup.unassignedTeams}</div>
+          <div className="ep-stat-label">Teams without owner</div>
+        </div>
         <div className="ep-stat">
           <div className="ep-stat-value text-red-700">{matrix.unassignedCount}</div>
           <div className="ep-stat-label">Initiatives unassigned</div>
@@ -55,6 +66,7 @@ export function LeadershipHubPanel() {
 
       <div className="grid gap-3 lg:grid-cols-2">
         {[
+          { href: campaignOrganizationHref(), title: "Campaign Organizational Chart", detail: `${orgRollup.assignedTeams}/${orgRollup.teamCount} teams owned · Phase 18.7D` },
           { href: responsibilityMatrixHref(), title: "Campaign Responsibility Matrix", detail: `${matrix.unassignedCount} red warnings` },
           { href: weeklyPacketHref(), title: "Weekly Leadership Packet", detail: `Generated for ${packet.generatedFor}` },
           { href: countyCoverageHref(), title: "County Leadership Coverage", detail: `${counties.summary.none} counties with no roles filled` },
