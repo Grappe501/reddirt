@@ -1,10 +1,13 @@
 import { buildCountyEventLinkBundle } from "@/lib/county/county-workbench-event-links";
 
-/**
- * Canonical county playbook — leader workbench (events, calendar, leaders, tasks, goals).
- * Falls back to RedDirt briefing v2, public county command, then admin bridge.
- */
-export function countyPlaybookHref(countyName: string, electionPlanSlug?: string): string {
+/** In-app county playbook hub — KPIs, outreach contacts, link to full workbench. */
+export function countyPlaybookHref(_countyName: string, electionPlanSlug?: string): string {
+  const slug = electionPlanSlug ?? _countyName.toLowerCase().replace(/\s+/g, "-");
+  return `/election-plan/counties/${slug.replace(/-county$/, "")}`;
+}
+
+/** Sister workbench / public county command (external drill-down). */
+export function countyWorkbenchExternalHref(countyName: string, electionPlanSlug?: string): string {
   const bundle = buildCountyEventLinkBundle(`${countyName} County`);
   if (bundle?.workbenchLeaderHref) return bundle.workbenchLeaderHref;
   if (bundle?.redDirtBriefingV2Href) return bundle.redDirtBriefingV2Href;
@@ -19,8 +22,8 @@ export function countyWorkbenchHref(countyName: string, electionPlanSlug?: strin
   return countyPlaybookHref(countyName, electionPlanSlug);
 }
 
-export function countyPlaybookOpensInNewTab(countyName: string): boolean {
-  return Boolean(buildCountyEventLinkBundle(`${countyName} County`)?.workbenchLeaderHref);
+export function countyPlaybookOpensInNewTab(_countyName: string): boolean {
+  return false;
 }
 
 export function cityLocationBriefHref(citySlug: string): string {

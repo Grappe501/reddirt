@@ -7,7 +7,6 @@ import type { ElectionPlanCounty } from "@/lib/election-plan/types";
 import {
   COUNTY_COVERAGE_EXPLAINER,
   countyPlaybookHref,
-  countyPlaybookOpensInNewTab,
 } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { cn } from "@/lib/utils";
@@ -61,7 +60,6 @@ export function CountyStrategyGrid({ counties }: Props) {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((c) => {
           const href = countyPlaybookHref(c.county, c.slug);
-          const external = countyPlaybookOpensInNewTab(c.county);
           const open = expanded === c.county;
           return (
             <div key={c.county} className="ep-card ep-county-card flex flex-col">
@@ -102,27 +100,15 @@ export function CountyStrategyGrid({ counties }: Props) {
               ) : null}
 
               <div className="mt-auto border-t border-[var(--ep-border)] pt-3">
-                {external ? (
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ep-chapter-link block text-center text-sm font-semibold"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    Open county playbook ↗
-                  </a>
-                ) : (
-                  <Link
-                    href={href}
-                    className="ep-chapter-link block text-center text-sm font-semibold"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    Open county playbook →
-                  </Link>
-                )}
+                <Link
+                  href={href}
+                  className="ep-chapter-link block text-center text-sm font-semibold"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Open county playbook →
+                </Link>
                 <p className="mt-1 text-center text-[10px] text-[var(--ep-navy-muted)]">
-                  Events · calendar · leaders · tasks · goals
+                  KPIs · Kelly outreach contacts · workbench
                 </p>
               </div>
             </div>
