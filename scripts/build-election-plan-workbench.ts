@@ -1108,6 +1108,33 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
   };
 }
 
+function buildExecutiveBookV1Section() {
+  const summary = readJson<{
+    version?: string;
+    status?: string;
+    laborDayDeadline?: string;
+    unassignedOwners?: number;
+  }>(path.join(PLAN, "executive-book-v1/executive-book-v1.summary.json"));
+
+  const scorecard = readJson<{
+    weekOf?: string;
+    rows?: Array<{ metric: string; goal: string | number; actual?: string | number; current?: string | number; status?: string }>;
+  }>(path.join(PLAN, "executive-book-v1/weekly-scorecard.json"));
+
+  return {
+    version: summary?.version ?? "1.0",
+    status: summary?.status ?? "not_built",
+    laborDayDeadline: summary?.laborDayDeadline ?? "2026-09-07",
+    unassignedOwners: summary?.unassignedOwners ?? 11,
+    weeklyScorecard: (scorecard?.rows ?? []).map((r) => ({
+      metric: r.metric,
+      goal: r.goal,
+      actual: r.actual ?? r.current ?? 0,
+      status: r.status,
+    })),
+  };
+}
+
 function buildCandidateDashboard(coverage: ReturnType<typeof buildCoverageRealitySection>) {
   const war = buildWarRoomSection(coverage);
   return {
@@ -1512,6 +1539,7 @@ function main() {
     calendarFillPhaseA,
     calendarFillPhaseB,
     calendarFillPhaseC,
+    executiveBookV1: buildExecutiveBookV1Section(),
     weekPlans: buildWeekPlansSection(),
     campaignTimeline: buildCampaignTimeline(),
   };

@@ -30,6 +30,13 @@ This book is organized around a **four-lane plurality strategy**, not a traditio
 ### Front matter
 
 - [Executive Mission Briefing](./00-EXECUTIVE-MISSION-BRIEFING.md)
+- **[Executive Book V1.0 — Leadership Review](./executive-book-v1/README.md)** ✅
+  - [WHO OWNS WHAT](./executive-book-v1/01-WHO-OWNS-WHAT.md)
+  - [Executive Contact Plan](./executive-book-v1/02-EXECUTIVE-CONTACT-PLAN.md)
+  - [September Readiness — Labor Day](./executive-book-v1/03-SEPTEMBER-READINESS-LABOR-DAY.md)
+  - [Weekly Success Scorecard](./executive-book-v1/04-WEEKLY-SUCCESS-SCORECARD.md)
+  - [The Kelly Grappe Message](./executive-book-v1/05-THE-KELLY-GRAPPE-MESSAGE.md)
+  - [Executive Book Completion Audit](./executive-book-v1/EXECUTIVE-BOOK-COMPLETION-AUDIT.md)
 
 ### Part I — The Theory of Victory
 

@@ -158,6 +158,37 @@ function KellyDashboardPanel({ data }: Props) {
         title="Weekly Dashboard"
         subtitle={`Week ${d.currentWeek} · ${d.weekRange} — good morning, Kelly`}
       />
+      {data.executiveBookV1.weeklyScorecard.length > 0 ? (
+        <div className="ep-card mb-8 border-l-4 border-[var(--ep-navy)]">
+          <h3 className="font-heading font-bold">Campaign Health Scorecard</h3>
+          <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
+            Executive Book V1.0 · Monday review · Labor Day gate {data.executiveBookV1.laborDayDeadline}
+            {data.executiveBookV1.unassignedOwners > 0
+              ? ` · ${data.executiveBookV1.unassignedOwners} ownership slots TBD`
+              : ""}
+          </p>
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                  <th className="pb-2 pr-3">Metric</th>
+                  <th className="pb-2 pr-3">Goal</th>
+                  <th className="pb-2">Current</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.executiveBookV1.weeklyScorecard.map((row) => (
+                  <tr key={row.metric} className="border-b border-[var(--ep-border)] last:border-0">
+                    <td className="py-2 pr-3">{row.metric}</td>
+                    <td className="py-2 pr-3">{row.goal}</td>
+                    <td className="py-2 font-semibold">{row.actual}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
       <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div className="ep-stat">
           <div className="ep-stat-value">{d.weeksRemaining}</div>

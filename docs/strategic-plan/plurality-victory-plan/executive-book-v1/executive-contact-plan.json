@@ -1,0 +1,186 @@
+{
+  "generatedAt": "2026-06-15T06:26:56.998Z",
+  "pass": "EXECUTIVE-BOOK-COMPLETION-1.0",
+  "influenceGroups": [
+    {
+      "id": "current-elected",
+      "title": "Current Elected Officials",
+      "subcategories": [
+        "State legislators",
+        "County officials",
+        "Mayors",
+        "School board leaders"
+      ],
+      "tier": 1,
+      "weeklyConversationTarget": 3,
+      "askPackage": "Intro meeting · SOS race briefing · validator ask · event invitation"
+    },
+    {
+      "id": "former-elected",
+      "title": "Former Elected Officials",
+      "subcategories": [
+        "Former legislators",
+        "Former constitutional officers",
+        "Former county officials"
+      ],
+      "tier": 1,
+      "weeklyConversationTarget": 3,
+      "askPackage": "Listening session · institutional memory · introduction requests · endorsement pathway"
+    },
+    {
+      "id": "labor",
+      "title": "Labor",
+      "subcategories": [
+        "AFL-CIO",
+        "Democratic Union Caucus",
+        "Individual union halls",
+        "Trades"
+      ],
+      "tier": 1,
+      "weeklyConversationTarget": 2,
+      "askPackage": "Labor briefing packet · union hall meeting · member communication support"
+    },
+    {
+      "id": "civil-rights",
+      "title": "Civil Rights",
+      "subcategories": [
+        "NAACP branches",
+        "Urban League",
+        "Community organizations"
+      ],
+      "tier": 1,
+      "weeklyConversationTarget": 2,
+      "askPackage": "Branch speaking request · coalition meeting · volunteer leader identification"
+    },
+    {
+      "id": "education",
+      "title": "Education",
+      "subcategories": [
+        "AEA",
+        "Retired teachers",
+        "School administrators",
+        "Public education advocates"
+      ],
+      "tier": 1,
+      "weeklyConversationTarget": 2,
+      "askPackage": "Educator intro · public education message · validator endorsement pathway"
+    },
+    {
+      "id": "faith",
+      "title": "Faith",
+      "subcategories": [
+        "Pastors",
+        "Denominational leaders",
+        "Muslim community",
+        "Jewish community"
+      ],
+      "tier": 2,
+      "weeklyConversationTarget": 2,
+      "askPackage": "Community meeting · faith-and-freedom message · event invitation"
+    },
+    {
+      "id": "county-clerks",
+      "title": "County Clerks",
+      "subcategories": [
+        "75-county clerk sprint",
+        "ACCA relationships",
+        "Election administration validators"
+      ],
+      "tier": 1,
+      "weeklyConversationTarget": 2,
+      "askPackage": "Clerk intro · election integrity message · SOS office support discussion"
+    },
+    {
+      "id": "county-chairs",
+      "title": "County Democratic Leadership",
+      "subcategories": [
+        "County chairs",
+        "County committees",
+        "Local party infrastructure"
+      ],
+      "tier": 2,
+      "weeklyConversationTarget": 2,
+      "askPackage": "County captain recruitment · event coordination · volunteer pipeline"
+    }
+  ],
+  "targets": [
+    {
+      "id": "labor-aflcio",
+      "name": "Arkansas AFL-CIO",
+      "category": "labor",
+      "organization": "AFL-CIO",
+      "county": "Statewide",
+      "tier": 1,
+      "priorityScore": 96,
+      "owner": "Danny Brown / Team",
+      "status": "not_contacted",
+      "nextAction": "Labor briefing · statewide union coordination",
+      "askPackage": "Labor briefing packet"
+    },
+    {
+      "id": "labor-duc",
+      "name": "Zack Bledsoe / Democratic Union Caucus",
+      "category": "labor",
+      "organization": "Democratic Union Caucus",
+      "county": "Statewide",
+      "tier": 1,
+      "priorityScore": 94,
+      "owner": "Danny Brown / Team",
+      "status": "not_contacted",
+      "nextAction": "Week One endorsement strike target",
+      "askPackage": "Labor briefing packet"
+    },
+    {
+      "id": "labor-fouche",
+      "name": "Mr. Fouche",
+      "category": "labor",
+      "organization": "Labor leadership",
+      "county": "Pulaski",
+      "tier": 1,
+      "priorityScore": 92,
+      "owner": "Danny Brown / Team",
+      "status": "not_contacted",
+      "nextAction": "Send labor briefing packet · request meeting",
+      "askPackage": "Labor briefing packet"
+    },
+    {
+      "id": "aea-april",
+      "name": "April Reisma",
+      "category": "education",
+      "organization": "AEA educator pathway",
+      "county": "Statewide",
+      "tier": 1,
+      "priorityScore": 90,
+      "owner": "April Reisma liaison",
+      "status": "not_contacted",
+      "nextAction": "Schedule county educator intro meeting",
+      "askPackage": "Educator intro · public education message"
+    },
+    {
+      "id": "naacp-pulaski",
+      "name": "Pulaski County NAACP President",
+      "category": "civil-rights",
+      "organization": "Pulaski County NAACP",
+      "county": "Pulaski",
+      "tier": 1,
+      "priorityScore": 88,
+      "owner": "NAACP Program owner",
+      "status": "not_contacted",
+      "nextAction": "First branch call · request Kelly speaking time",
+      "askPackage": "Branch speaking request"
+    },
+    {
+      "id": "clerk-faulkner",
+      "name": "Margaret Darter",
+      "category": "county-clerks",
+      "organization": "Faulkner County Clerk · ACCA President",
+      "county": "Faulkner",
+      "tier": 1,
+      "priorityScore": 87,
+      "owner": "County Completion Routing",
+      "status": "developing",
+      "nextAction": "Follow up ACCA conference intro",
+      "askPackage": "Clerk intro · election integrity message"
+    }
+  ]
+}

@@ -1,9 +1,4 @@
-# Chapter 14 — Weekly Victory Scorecard
-
-> **Status:** Active — `EXECUTIVE-BOOK-COMPLETION-1.0` · `npm run campaign-brain:executive-book:completion`
-> **Document:** Arkansas Plurality Victory Plan · Executive Book V1.0
-
----
+# Campaign Health Scorecard
 
 > EXECUTIVE-BOOK-COMPLETION-1.0 · **Chapter 4 — One page · Monday morning · two minutes**
 
@@ -24,4 +19,3 @@
 ---
 
 Red metrics get an owner and due date before lunch. Kelly reads the same table on the Weekly Dashboard tab.
-

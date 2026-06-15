@@ -359,6 +359,13 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       refinedBlocks: [],
       timeAudits: [],
     },
+    executiveBookV1: {
+      version: "1.0",
+      status: "not_built",
+      laborDayDeadline: "2026-09-07",
+      unassignedOwners: 11,
+      weeklyScorecard: [],
+    },
   };
 }
 

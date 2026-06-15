@@ -117,6 +117,50 @@ export const ELECTION_PLAN_ARCHITECTURE: ElectionPlanArchitectureSection[] = [
     path: "docs/campaign-brain/relational-organizing",
   },
   {
+    id: "executive-book-v1",
+    title: "Executive Book V1.0",
+    description: "Ownership · contacts · Labor Day · scorecard · Kelly message",
+    path: "docs/strategic-plan/plurality-victory-plan/executive-book-v1",
+    children: [
+      {
+        id: "who-owns-what",
+        title: "WHO OWNS WHAT",
+        description: "Leadership ownership matrix — one name per function",
+        path: "docs/strategic-plan/plurality-victory-plan/executive-book-v1/01-WHO-OWNS-WHAT",
+      },
+      {
+        id: "executive-contacts",
+        title: "Executive Contact Plan",
+        description: "Prioritized statewide relationship targets",
+        path: "docs/strategic-plan/plurality-victory-plan/executive-book-v1/02-EXECUTIVE-CONTACT-PLAN",
+      },
+      {
+        id: "labor-day",
+        title: "September Readiness — Labor Day",
+        description: "Readiness gate before persuasion season",
+        path: "docs/strategic-plan/plurality-victory-plan/executive-book-v1/03-SEPTEMBER-READINESS-LABOR-DAY",
+      },
+      {
+        id: "weekly-scorecard",
+        title: "Weekly Success Scorecard",
+        description: "Monday leadership metrics",
+        path: "docs/strategic-plan/plurality-victory-plan/executive-book-v1/04-WEEKLY-SUCCESS-SCORECARD",
+      },
+      {
+        id: "kelly-message",
+        title: "The Kelly Grappe Message",
+        description: "North-star candidate messaging doctrine",
+        path: "docs/strategic-plan/plurality-victory-plan/executive-book-v1/05-THE-KELLY-GRAPPE-MESSAGE",
+      },
+      {
+        id: "completion-audit",
+        title: "Executive Book Completion Audit",
+        description: "V1.0 readiness assessment · shift to execution",
+        path: "docs/strategic-plan/plurality-victory-plan/executive-book-v1/EXECUTIVE-BOOK-COMPLETION-AUDIT",
+      },
+    ],
+  },
+  {
     id: "governance",
     title: "Governance Checkpoint",
     description: "Brain health · Monday rhythm · leadership directive",

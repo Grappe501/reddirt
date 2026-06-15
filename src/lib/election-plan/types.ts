@@ -545,4 +545,17 @@ export type ElectionPlanWorkbenchSnapshot = {
       relationshipDensity: string;
     }>;
   };
+  executiveBookV1: {
+    version: string;
+    status: string;
+    laborDayDeadline: string;
+    unassignedOwners: number;
+    weeklyScorecard: Array<{
+      metric: string;
+      goal: string | number;
+      actual: string | number;
+      status?: string;
+      current?: string | number;
+    }>;
+  };
 };

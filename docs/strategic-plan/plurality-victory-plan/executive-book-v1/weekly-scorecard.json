@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-06-15T06:26:56.998Z",
+  "pass": "EXECUTIVE-BOOK-COMPLETION-1.0",
+  "weekOf": "2026-06-15",
+  "rows": [
+    {
+      "metric": "Verified Events",
+      "goal": 300,
+      "current": 122
+    },
+    {
+      "metric": "Counties Covered",
+      "goal": 75,
+      "current": 43
+    },
+    {
+      "metric": "Founding Leaders",
+      "goal": 20,
+      "current": 0
+    },
+    {
+      "metric": "HCI",
+      "goal": 250000,
+      "current": 0
+    },
+    {
+      "metric": "Endorsements Requested",
+      "goal": "—",
+      "current": 0
+    },
+    {
+      "metric": "Endorsements Activated",
+      "goal": "—",
+      "current": 0
+    },
+    {
+      "metric": "Mobilize RSVPs",
+      "goal": "—",
+      "current": 0
+    },
+    {
+      "metric": "Volunteer Conversations",
+      "goal": "—",
+      "current": 0
+    },
+    {
+      "metric": "Story Assets Published",
+      "goal": "—",
+      "current": 0
+    }
+  ]
+}

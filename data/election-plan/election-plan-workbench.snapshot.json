@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T06:11:00.385Z",
+  "generatedAt": "2026-06-15T06:26:59.245Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -2862,6 +2862,50 @@
       "title": "Relational Organizing Engine",
       "description": "Relationship Capital · fifth execution engine",
       "path": "docs/campaign-brain/relational-organizing"
+    },
+    {
+      "id": "executive-book-v1",
+      "title": "Executive Book V1.0",
+      "description": "Ownership · contacts · Labor Day · scorecard · Kelly message",
+      "path": "docs/strategic-plan/plurality-victory-plan/executive-book-v1",
+      "children": [
+        {
+          "id": "who-owns-what",
+          "title": "WHO OWNS WHAT",
+          "description": "Leadership ownership matrix — one name per function",
+          "path": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/01-WHO-OWNS-WHAT"
+        },
+        {
+          "id": "executive-contacts",
+          "title": "Executive Contact Plan",
+          "description": "Prioritized statewide relationship targets",
+          "path": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/02-EXECUTIVE-CONTACT-PLAN"
+        },
+        {
+          "id": "labor-day",
+          "title": "September Readiness — Labor Day",
+          "description": "Readiness gate before persuasion season",
+          "path": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/03-SEPTEMBER-READINESS-LABOR-DAY"
+        },
+        {
+          "id": "weekly-scorecard",
+          "title": "Weekly Success Scorecard",
+          "description": "Monday leadership metrics",
+          "path": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/04-WEEKLY-SUCCESS-SCORECARD"
+        },
+        {
+          "id": "kelly-message",
+          "title": "The Kelly Grappe Message",
+          "description": "North-star candidate messaging doctrine",
+          "path": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/05-THE-KELLY-GRAPPE-MESSAGE"
+        },
+        {
+          "id": "completion-audit",
+          "title": "Executive Book Completion Audit",
+          "description": "V1.0 readiness assessment · shift to execution",
+          "path": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/EXECUTIVE-BOOK-COMPLETION-AUDIT"
+        }
+      ]
     },
     {
       "id": "governance",
@@ -6615,6 +6659,59 @@
         "relationshipHours": 4,
         "relationshipDensity": "medium",
         "notes": "Add one relationship anchor per county — avoid drive-by only"
+      }
+    ]
+  },
+  "executiveBookV1": {
+    "version": "1.0",
+    "status": "operational",
+    "laborDayDeadline": "2026-09-07",
+    "unassignedOwners": 8,
+    "weeklyScorecard": [
+      {
+        "metric": "Verified Events",
+        "goal": 300,
+        "actual": 122
+      },
+      {
+        "metric": "Counties Covered",
+        "goal": 75,
+        "actual": 43
+      },
+      {
+        "metric": "Founding Leaders",
+        "goal": 20,
+        "actual": 0
+      },
+      {
+        "metric": "HCI",
+        "goal": 250000,
+        "actual": 0
+      },
+      {
+        "metric": "Endorsements Requested",
+        "goal": "—",
+        "actual": 0
+      },
+      {
+        "metric": "Endorsements Activated",
+        "goal": "—",
+        "actual": 0
+      },
+      {
+        "metric": "Mobilize RSVPs",
+        "goal": "—",
+        "actual": 0
+      },
+      {
+        "metric": "Volunteer Conversations",
+        "goal": "—",
+        "actual": 0
+      },
+      {
+        "metric": "Story Assets Published",
+        "goal": "—",
+        "actual": 0
       }
     ]
   },

@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-06-15T06:26:56.998Z",
+  "pass": "EXECUTIVE-BOOK-COMPLETION-1.0",
+  "version": "1.0",
+  "status": "operational_assign_owners",
+  "unassignedOwners": 8,
+  "influenceCategories": 8,
+  "contactSeedTargets": 6,
+  "scorecardMetrics": 9,
+  "laborDayDeadline": "2026-09-07"
+}

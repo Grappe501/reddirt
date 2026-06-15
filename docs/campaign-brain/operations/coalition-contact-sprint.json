@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-06-15T06:26:58.173Z",
+  "campaignGoal": "100 meaningful coalition conversations by Labor Day",
+  "deadline": "2026-09-07",
+  "totalGoal": 100,
+  "currentTotal": 0,
+  "trackConversationsNotEndorsements": true,
+  "categories": [
+    {
+      "id": "naacp",
+      "label": "NAACP branches",
+      "goal": 20,
+      "owner": "NAACP Program",
+      "current": 0
+    },
+    {
+      "id": "labor",
+      "label": "Labor halls / union leadership",
+      "goal": 15,
+      "owner": "Labor Program",
+      "current": 0
+    },
+    {
+      "id": "educators",
+      "label": "Educators (AEA pathway)",
+      "goal": 15,
+      "owner": "AEA Program",
+      "current": 0
+    },
+    {
+      "id": "faith",
+      "label": "Faith leaders",
+      "goal": 15,
+      "owner": "Coalition & Endorsements",
+      "current": 0
+    },
+    {
+      "id": "clerks",
+      "label": "County clerks",
+      "goal": 10,
+      "owner": "County Completion Routing",
+      "current": 0
+    },
+    {
+      "id": "current-officials",
+      "label": "Current elected officials",
+      "goal": 10,
+      "owner": "Coalition & Endorsements",
+      "current": 0
+    },
+    {
+      "id": "former-officials",
+      "label": "Former elected officials",
+      "goal": 15,
+      "owner": "Coalition & Endorsements",
+      "current": 0
+    }
+  ]
+}

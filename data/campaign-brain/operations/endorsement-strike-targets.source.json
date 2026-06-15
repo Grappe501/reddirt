@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "note": "Week One endorsement strike targets. Update status weekly; re-run campaign-brain:operations-lock:build.",
+  "weekOneTargets": [
+    {
+      "id": "aea-statewide",
+      "organization": "Arkansas Education Association (AEA)",
+      "tier": 1,
+      "owner": "AEA Program owner",
+      "askDate": "2026-06-17",
+      "status": "not_started",
+      "nextAction": "Schedule educator leadership intro via April Reisma pathway"
+    },
+    {
+      "id": "naacp-leadership",
+      "organization": "NAACP — state + branch leadership",
+      "tier": 1,
+      "owner": "NAACP Program owner",
+      "askDate": "2026-06-18",
+      "status": "not_started",
+      "nextAction": "Call Pulaski + 4 priority branches · request speaking time"
+    },
+    {
+      "id": "democratic-union-caucus",
+      "organization": "Democratic Union Caucus",
+      "tier": 1,
+      "owner": "Labor Program owner",
+      "askDate": "2026-06-19",
+      "status": "not_started",
+      "nextAction": "Send labor briefing packet · request meeting"
+    },
+    {
+      "id": "former-elected-officials",
+      "organization": "Former elected officials network",
+      "tier": 2,
+      "owner": "Coalition & Endorsements owner",
+      "askDate": "2026-06-20",
+      "status": "not_started",
+      "nextAction": "Identify 10 validators · initiate 5 intro calls"
+    },
+    {
+      "id": "current-elected-officials",
+      "organization": "Current Democratic elected officials",
+      "tier": 2,
+      "owner": "Coalition & Endorsements owner",
+      "askDate": "2026-06-20",
+      "status": "not_started",
+      "nextAction": "Cross-reference power map · schedule 3 intro meetings"
+    }
+  ]
+}

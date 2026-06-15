@@ -1,0 +1,137 @@
+{
+  "generatedAt": "2026-06-15T06:26:56.998Z",
+  "pass": "EXECUTIVE-BOOK-COMPLETION-1.0",
+  "assignments": [
+    {
+      "id": "volunteer-leadership",
+      "function": "Volunteer Leadership",
+      "owner": "TBD",
+      "backup": "TBD",
+      "status": "critical",
+      "nextAction": "Confirm 20 founding leaders for June 28 Zoom launch",
+      "dueDate": "2026-06-28",
+      "weeklyDeliverable": "Founding 20 progress"
+    },
+    {
+      "id": "mobilize-ops",
+      "function": "Mobilize",
+      "owner": "TBD",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "Draft Mobilize events for July 3–4 · Kelly approval before publish",
+      "dueDate": "2026-06-25",
+      "weeklyDeliverable": "Event promotion"
+    },
+    {
+      "id": "sherwood-event",
+      "function": "Sherwood Event",
+      "owner": "Steve",
+      "backup": "TBD",
+      "status": "critical",
+      "nextAction": "VIP table sales push · 5 tables sold by end of Week 1",
+      "dueDate": "2026-07-03",
+      "weeklyDeliverable": "VIP tables"
+    },
+    {
+      "id": "labor-program",
+      "function": "Labor Program",
+      "owner": "Danny Brown / Team",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "Send labor briefing packet · Democratic Union Caucus meeting",
+      "dueDate": "2026-06-21",
+      "weeklyDeliverable": "Union meetings"
+    },
+    {
+      "id": "aea-program",
+      "function": "AEA Program",
+      "owner": "April Reisma liaison",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "Schedule county educator intro · Benton + Washington meetings",
+      "dueDate": "2026-06-28",
+      "weeklyDeliverable": "Teacher network"
+    },
+    {
+      "id": "naacp-program",
+      "function": "NAACP Program",
+      "owner": "TBD",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "First 5 branch calls · 2 speaking requests",
+      "dueDate": "2026-06-21",
+      "weeklyDeliverable": "Branch contacts"
+    },
+    {
+      "id": "muslim-outreach",
+      "function": "Muslim Outreach",
+      "owner": "Ali Khan / Ebrahim",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "Coordinate first community leader meetings",
+      "dueDate": "2026-06-28",
+      "weeklyDeliverable": "Community meetings"
+    },
+    {
+      "id": "hispanic-outreach",
+      "function": "Hispanic Outreach",
+      "owner": "Jasmine Serano",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "Finalize outreach framework · first community conversations",
+      "dueDate": "2026-06-28",
+      "weeklyDeliverable": "Hispanic engagement"
+    },
+    {
+      "id": "social-motion",
+      "function": "Motion & Storytelling",
+      "owner": "TBD",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "5 content assets per Kelly stop this week",
+      "dueDate": "2026-06-21",
+      "weeklyDeliverable": "Weekly content"
+    },
+    {
+      "id": "coalition-endorsements",
+      "function": "Endorsements",
+      "owner": "TBD",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "Week One strike targets · validator pipeline",
+      "dueDate": "2026-06-21",
+      "weeklyDeliverable": "Validator pipeline"
+    },
+    {
+      "id": "calendar-truth",
+      "function": "Calendar Truth",
+      "owner": "TBD",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "Verification War Room Teams A–D · 10 events verified this week",
+      "dueDate": "2026-06-21",
+      "weeklyDeliverable": "Verified events + guardrails closed"
+    },
+    {
+      "id": "candidate-partnerships",
+      "function": "Candidate Partnerships",
+      "owner": "TBD",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "Identify 5 running-candidate partnership targets",
+      "dueDate": "2026-06-28",
+      "weeklyDeliverable": "Shared event dates"
+    },
+    {
+      "id": "county-completion-routing",
+      "function": "County Completion Routing",
+      "owner": "TBD",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "Execute Phase C must-hit path",
+      "dueDate": "2026-09-07",
+      "weeklyDeliverable": "Counties touched + relationship notes"
+    }
+  ],
+  "unassignedCount": 8
+}

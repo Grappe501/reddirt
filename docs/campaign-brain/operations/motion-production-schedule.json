@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-06-15T06:26:58.174Z",
+  "rule": "Every stop · no exceptions",
+  "perStopDeliverables": [
+    {
+      "id": "reel",
+      "label": "1 Reel",
+      "due": "same_day",
+      "owner": "Social Media / Motion"
+    },
+    {
+      "id": "album",
+      "label": "1 Photo Album",
+      "due": "same_day",
+      "owner": "Social Media / Motion"
+    },
+    {
+      "id": "story",
+      "label": "1 Community Story",
+      "due": "within_48h",
+      "owner": "Social Media / Motion"
+    },
+    {
+      "id": "spotlight",
+      "label": "1 Local Spotlight",
+      "due": "within_48h",
+      "owner": "Social Media / Motion"
+    },
+    {
+      "id": "upcoming",
+      "label": "1 Upcoming Stop Post",
+      "due": "before_next_stop",
+      "owner": "Social Media / Motion"
+    }
+  ],
+  "septemberTarget": "Hundreds of pieces of Arkansas content by September forums",
+  "currentStopsCompleted": 0,
+  "currentContentPieces": 0
+}

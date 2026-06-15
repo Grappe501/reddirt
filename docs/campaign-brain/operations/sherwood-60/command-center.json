@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-06-15T06:26:58.171Z",
+  "goal": "Win Sherwood outright with 60%+",
+  "eventName": "Sherwood GOTV Kickoff",
+  "status": "planning",
+  "metrics": {
+    "vipTablesSold": 0,
+    "vipTablesGoal": 20,
+    "ticketsSold": 0,
+    "volunteerSignups": 0,
+    "sponsorLeads": 0,
+    "donorConversions": 0
+  },
+  "tracks": {
+    "vipTables": {
+      "sold": 0,
+      "goal": 20,
+      "owner": "Sherwood Event lead"
+    },
+    "sponsors": {
+      "leads": 0,
+      "goal": 10,
+      "owner": "Sherwood Event lead"
+    },
+    "candidatesInvited": {
+      "confirmed": 0,
+      "goal": 15,
+      "owner": "Candidate Partnerships lead"
+    },
+    "laborInvited": {
+      "confirmed": 0,
+      "goal": 5,
+      "owner": "Labor Program owner"
+    },
+    "naacpInvited": {
+      "confirmed": 0,
+      "goal": 3,
+      "owner": "NAACP Program owner"
+    },
+    "volunteerRecruitment": {
+      "signups": 0,
+      "goal": 50,
+      "owner": "Volunteer Leadership Launch"
+    },
+    "mediaOutreach": {
+      "advisoriesSent": 0,
+      "pickups": 0,
+      "owner": "Social Media / Motion"
+    },
+    "mobilizeRegistration": {
+      "rsvps": 0,
+      "goal": 300,
+      "owner": "Mobilize Operations"
+    }
+  },
+  "compliance": {
+    "legalComplianceReview": "pending",
+    "permits": "pending",
+    "security": "pending",
+    "alcoholCompliance": "pending"
+  },
+  "keyDates": [
+    {
+      "date": "2026-07-03",
+      "label": "Sherwood Fireworks & Food Trucks"
+    },
+    {
+      "date": "2026-07-04",
+      "label": "Pops on the River · Little Rock"
+    }
+  ],
+  "note": "GOTV kickoff — too important to bury. Daily metric update required."
+}
