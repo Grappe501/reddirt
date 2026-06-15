@@ -56,6 +56,17 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       explanation:
         "The campaign does not need to convince Arkansas to become something it is not. The campaign needs to recover missing Democrats, register new voters, build trust in rural communities, and win a plurality in a three-candidate race.",
     },
+    lanesOverview: {
+      expectedProjection: 410_197,
+      pluralityRange: { low: 390_000, high: 420_000 },
+      achievementRates: { lane2: 0.5, lane3: 0.6, lane4: 0.4 },
+      lanes: [],
+      scenarios: [],
+      topCounties: [],
+      clusterContribution: [],
+      explanation:
+        "The campaign does not need to convince Arkansas to become something it is not. The campaign needs to recover missing Democrats, register new voters, build trust in rural communities, and win a plurality in a three-candidate race.",
+    },
     counties: [],
     cities: [],
     top10TargetVotes: 131_694,

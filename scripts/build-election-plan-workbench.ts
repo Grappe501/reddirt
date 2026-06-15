@@ -1704,6 +1704,81 @@ function countyAction(
   return `Maintenance touch — verify local calendar`;
 }
 
+function buildLanesOverviewSection(
+  scenarioFile: {
+    pluralityRange?: { low: number; high: number };
+    scenarios?: Record<
+      string,
+      {
+        label: string;
+        projectedVotes: number;
+        rates: { lane2: number; lane3: number; lane4: number };
+        lanes: {
+          lane1_retention: number;
+          lane2_reactivation: number;
+          lane3_registration: number;
+          lane4_conversion: number;
+        };
+      }
+    >;
+    topCounties?: Array<{
+      county: string;
+      expectedContribution: number;
+      lane2: number;
+      lane3: number;
+      lane4: number;
+    }>;
+    clusterContribution?: Array<{ name: string; vci: number; shareOfExpected: number }>;
+  } | null,
+  lanes: ElectionPlanLane[],
+  explanation: string,
+  pluralityLow: number,
+  pluralityHigh: number,
+) {
+  const expected = scenarioFile?.scenarios?.expected;
+  const contrib = expected?.lanes;
+  const total = expected?.projectedVotes ?? 410_197;
+
+  const contributionForLane = (id: string): number => {
+    if (id === "lane1") return contrib?.lane1_retention ?? 325_814;
+    if (id === "lane2") return contrib?.lane2_reactivation ?? 0;
+    if (id === "lane3") return contrib?.lane3_registration ?? 0;
+    if (id === "lane4") return contrib?.lane4_conversion ?? 0;
+    return 0;
+  };
+
+  return {
+    expectedProjection: total,
+    pluralityRange: scenarioFile?.pluralityRange ?? { low: pluralityLow, high: pluralityHigh },
+    achievementRates: expected?.rates ?? { lane2: 0.5, lane3: 0.6, lane4: 0.4 },
+    lanes: lanes.map((lane) => ({
+      id: lane.id,
+      name: lane.name,
+      workingGoal: lane.goal,
+      pool: lane.potential,
+      stretch: lane.stretch,
+      expectedContribution: contributionForLane(lane.id),
+      shareOfProjection: total > 0 ? contributionForLane(lane.id) / total : 0,
+      note: lane.note,
+    })),
+    scenarios: Object.values(scenarioFile?.scenarios ?? {}).map((s) => ({
+      label: s.label,
+      projectedVotes: s.projectedVotes,
+      inPluralityRange: s.projectedVotes >= pluralityLow && s.projectedVotes <= pluralityHigh,
+      lanes: {
+        retention: s.lanes?.lane1_retention ?? 0,
+        reactivation: s.lanes?.lane2_reactivation ?? 0,
+        registration: s.lanes?.lane3_registration ?? 0,
+        conversion: s.lanes?.lane4_conversion ?? 0,
+      },
+      rates: s.rates ?? { lane2: 0, lane3: 0, lane4: 0 },
+    })),
+    topCounties: scenarioFile?.topCounties ?? [],
+    clusterContribution: scenarioFile?.clusterContribution ?? [],
+    explanation,
+  };
+}
+
 function main() {
   mkdirSync(OUT_DIR, { recursive: true });
 
@@ -1762,10 +1837,33 @@ function main() {
     }>;
   }>(path.join(BRAIN, "measurement/county-coverage-completion.json"));
 
-  const scenarios = readJson<{
+  const scenariosEngine = readJson<{
     pluralityRange: { low: number; high: number };
-    scenarios: Record<string, { label: string; projectedVotes: number }>;
+    scenarios: Record<
+      string,
+      {
+        label: string;
+        projectedVotes: number;
+        rates: { lane2: number; lane3: number; lane4: number };
+        lanes: {
+          lane1_retention: number;
+          lane2_reactivation: number;
+          lane3_registration: number;
+          lane4_conversion: number;
+        };
+      }
+    >;
+    topCounties?: Array<{
+      county: string;
+      expectedContribution: number;
+      lane2: number;
+      lane3: number;
+      lane4: number;
+    }>;
+    clusterContribution?: Array<{ name: string; vci: number; shareOfExpected: number }>;
   }>(path.join(BRAIN, "scenario-engine/scenarios.json"));
+
+  const scenarios = scenariosEngine;
 
   const brainHealth = readJson<{
     current: Record<string, number | string | null>;
@@ -1794,9 +1892,7 @@ function main() {
     }>;
   }>(path.join(PLAN, "command-center/opportunity-clusters/clusters.json"));
 
-  const clusterShare = readJson<{
-    clusterContribution: Array<{ name: string; vci: number; shareOfExpected: number }>;
-  }>(path.join(BRAIN, "scenario-engine/scenarios.json"));
+  const clusterShare = scenariosEngine;
 
   const weekCandidates = readJson<{
     weeks: Array<{
@@ -1971,6 +2067,13 @@ function main() {
       explanation:
         "The campaign does not need to convince Arkansas to become something it is not. The campaign needs to recover missing Democrats, register new voters, build trust in rural communities, and win a plurality in a three-candidate race.",
     },
+    lanesOverview: buildLanesOverviewSection(
+      scenariosEngine,
+      lanes,
+      "The campaign does not need to convince Arkansas to become something it is not. The campaign needs to recover missing Democrats, register new voters, build trust in rural communities, and win a plurality in a three-candidate race.",
+      pluralityLow,
+      pluralityHigh,
+    ),
     counties,
     cities: citiesData?.cities ?? [],
     top10TargetVotes: citiesData?.top10TargetVotes ?? 131_694,
@@ -2030,7 +2133,7 @@ function main() {
       lockNotice:
         "Week plans remain candidate schedules until event dates are verified and leadership approves lock.",
       clusters: (clusters?.clusters ?? []).map((c) => {
-        const share = clusterShare?.clusterContribution.find((s) => s.name === c.name);
+        const share = clusterShare?.clusterContribution?.find((s) => s.name === c.name);
         return {
           id: c.id,
           name: c.name,

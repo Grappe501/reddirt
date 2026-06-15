@@ -6,6 +6,47 @@ export type ElectionPlanScenario = {
   inPluralityRange: boolean;
 };
 
+export type LanesOverviewLane = {
+  id: string;
+  name: string;
+  workingGoal: number;
+  pool?: number;
+  stretch?: number;
+  expectedContribution: number;
+  shareOfProjection: number;
+  note: string;
+};
+
+export type LanesOverviewScenario = {
+  label: string;
+  projectedVotes: number;
+  inPluralityRange: boolean;
+  lanes: {
+    retention: number;
+    reactivation: number;
+    registration: number;
+    conversion: number;
+  };
+  rates: { lane2: number; lane3: number; lane4: number };
+};
+
+export type LanesOverview = {
+  expectedProjection: number;
+  pluralityRange: { low: number; high: number };
+  achievementRates: { lane2: number; lane3: number; lane4: number };
+  lanes: LanesOverviewLane[];
+  scenarios: LanesOverviewScenario[];
+  topCounties: Array<{
+    county: string;
+    expectedContribution: number;
+    lane2: number;
+    lane3: number;
+    lane4: number;
+  }>;
+  clusterContribution: Array<{ name: string; vci: number; shareOfExpected: number }>;
+  explanation: string;
+};
+
 export type ElectionPlanLane = {
   id: string;
   name: string;
@@ -116,6 +157,7 @@ export type ElectionPlanWorkbenchSnapshot = {
     };
     explanation: string;
   };
+  lanesOverview: LanesOverview;
   counties: ElectionPlanCounty[];
   cities: ElectionPlanCity[];
   top10TargetVotes: number;
