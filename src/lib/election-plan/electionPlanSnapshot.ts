@@ -234,7 +234,11 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       nextWeekCount: 0,
       priorityWindowCount: 0,
       avgActivationReadiness: 0,
+      explanation:
+        "Scored field opportunities from the Forward Motion activation queue. Run npm run election-plan:build to load live data.",
       stops: [],
+      stopsNext7Days: [],
+      stopsNext21Days: [],
       missingPieces: [],
       components: [],
     },

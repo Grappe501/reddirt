@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 
 import type { ElectionPlanCounty } from "@/lib/election-plan/types";
+import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { cn } from "@/lib/utils";
 
@@ -48,7 +49,7 @@ export function RegistrationGoalsPanel({ counties, statewideGoal, standalone }: 
         <div>
           <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">County registration goals</h1>
           <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-            Lane 3 · {formatVotes(statewideGoal)} statewide · allocated across all 75 counties
+            {FOUR_LANE_DEFINITIONS.lane3.fullLabel} · {formatVotes(statewideGoal)} statewide · allocated across all 75 counties
           </p>
         </div>
         {standalone ? (
@@ -167,7 +168,7 @@ export function RegistrationGoalsPanel({ counties, statewideGoal, standalone }: 
       </div>
 
       <p className="mt-4 text-xs text-[var(--ep-navy-muted)]">
-        County goals sum to the {formatVotes(statewideGoal)} Lane 3 registration target · ~2,500/week over 20 weeks
+        County goals sum to the {formatVotes(statewideGoal)} {FOUR_LANE_DEFINITIONS.lane3.shortName} target · ~2,500/week over 20 weeks
       </p>
     </section>
   );

@@ -410,6 +410,8 @@ function buildMotionPresenceSection() {
 
 function buildForwardMotionSection() {
   const queue = readJson<{
+    horizonDays?: number;
+    priorityWindowDays?: number;
     stops: Array<{
       eventId: string;
       eventName: string;
@@ -418,6 +420,7 @@ function buildForwardMotionSection() {
       date: string;
       assignment: string;
       effectiveScore: number;
+      campaignImpactScore: number;
       verificationStatus: string;
       activationReadinessPct: number;
       mobilizeStatus: string;
@@ -428,6 +431,10 @@ function buildForwardMotionSection() {
       postcardStatus: string;
       storyWorkflowStatus: string;
       nextAction: string;
+      cluster: string;
+      countyTier: string;
+      primaryLane: string;
+      source: string;
     }>;
   }>(path.join(BRAIN_DATA, "upcoming-stops-activation-queue.json"));
 
@@ -439,12 +446,16 @@ function buildForwardMotionSection() {
     avgActivationReadiness: number;
   }>(path.join(BRAIN_DATA, "forward-motion-summary.json"));
 
-  const stops = queue?.stops ?? [];
-  const now = new Date();
-  const weekOut = new Date(now);
-  weekOut.setDate(weekOut.getDate() + 7);
+  const stopsRaw = queue?.stops ?? [];
+  const todayYmd = new Date().toISOString().slice(0, 10);
 
-  const upcomingStops = stops.slice(0, 24).map((s) => ({
+  function daysUntil(dateYmd: string): number {
+    const t = new Date(`${todayYmd}T12:00:00`);
+    const d = new Date(`${dateYmd}T12:00:00`);
+    return Math.round((d.getTime() - t.getTime()) / (24 * 60 * 60 * 1000));
+  }
+
+  const mapStop = (s: (typeof stopsRaw)[number]) => ({
     eventId: s.eventId,
     eventName: s.eventName,
     county: s.county,
@@ -452,6 +463,7 @@ function buildForwardMotionSection() {
     date: s.date,
     assignment: s.assignment,
     effectiveScore: s.effectiveScore,
+    campaignImpactScore: s.campaignImpactScore,
     verificationStatus: s.verificationStatus,
     activationReadinessPct: s.activationReadinessPct,
     mobilizeStatus: s.mobilizeStatus,
@@ -462,10 +474,23 @@ function buildForwardMotionSection() {
     postcardStatus: s.postcardStatus,
     storyWorkflowStatus: s.storyWorkflowStatus,
     nextAction: s.nextAction,
-  }));
+    cluster: s.cluster,
+    countyTier: s.countyTier,
+    primaryLane: s.primaryLane,
+    source: s.source,
+    daysUntil: daysUntil(s.date),
+  });
+
+  const futureStops = stopsRaw
+    .filter((s) => s.date >= todayYmd)
+    .sort((a, b) => a.date.localeCompare(b.date) || b.effectiveScore - a.effectiveScore);
+
+  const stopsNext7Days = futureStops.filter((s) => daysUntil(s.date) <= 7).map(mapStop);
+  const stopsNext21Days = futureStops.filter((s) => daysUntil(s.date) <= 21).map(mapStop);
+  const upcomingStops = futureStops.slice(0, 90).map(mapStop);
 
   const missingPieces: string[] = [];
-  for (const s of stops.slice(0, 30)) {
+  for (const s of futureStops.slice(0, 30)) {
     if (s.mobilizeStatus === "not_started" || s.mobilizeStatus === "draft_needed")
       missingPieces.push(`${s.eventName}: Mobilize draft`);
     if (s.facebookStatus === "not_started" || s.facebookStatus === "draft_needed")
@@ -480,11 +505,15 @@ function buildForwardMotionSection() {
     heroLine:
       summary?.heroLine ??
       "Showing where Kelly is going next is as important as proving where she has already been.",
-    upcomingCount: summary?.upcomingCount ?? stops.length,
-    nextWeekCount: summary?.nextWeekCount ?? 0,
-    priorityWindowCount: summary?.priorityWindowCount ?? 0,
+    upcomingCount: summary?.upcomingCount ?? futureStops.length,
+    nextWeekCount: summary?.nextWeekCount ?? stopsNext7Days.length,
+    priorityWindowCount: summary?.priorityWindowCount ?? stopsNext21Days.length,
     avgActivationReadiness: summary?.avgActivationReadiness ?? 0,
+    explanation:
+      "Scored field opportunities from the Forward Motion activation queue — fairs, forums, and community stops ranked by campaign impact, verification confidence, and county strategy. Use this list to decide where Kelly or surrogates should go next and what promotion still needs drafting.",
     stops: upcomingStops,
+    stopsNext7Days,
+    stopsNext21Days,
     missingPieces: missingPieces.slice(0, 15),
     components: [
       { id: "queue", title: "Activation Queue", description: "Upcoming stops with full activation status" },

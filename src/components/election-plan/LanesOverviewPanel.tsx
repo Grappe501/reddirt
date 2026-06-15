@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import type { LanesOverview } from "@/lib/election-plan/types";
+import { FOUR_LANE_DEFINITIONS, laneDescriptiveLabel } from "@/lib/election-plan/four-lanes-labels";
 import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
 import { cn } from "@/lib/utils";
 
@@ -67,14 +68,17 @@ export function LanesOverviewPanel({ overview, standalone }: Props) {
             {(overview.achievementRates.lane2 * 100).toFixed(0)}% · {(overview.achievementRates.lane3 * 100).toFixed(0)}% ·{" "}
             {(overview.achievementRates.lane4 * 100).toFixed(0)}%
           </div>
-          <div className="ep-stat-label">Lane 2 · 3 · 4 achievement rates</div>
+          <div className="ep-stat-label">
+            {FOUR_LANE_DEFINITIONS.lane2.tableHeader} · {FOUR_LANE_DEFINITIONS.lane3.tableHeader} ·{" "}
+            {FOUR_LANE_DEFINITIONS.lane4.tableHeader} achievement rates
+          </div>
         </div>
       </div>
 
       <h2 className="mb-3 font-heading text-lg font-bold">Four lanes — expected contributions</h2>
       <p className="mb-4 text-xs text-[var(--ep-navy-muted)]">
-        Lane 1 is the baseline floor. Lanes 2–4 add reactivation, registration, and conversion at the rates shown in the
-        scenario engine.
+        {laneDescriptiveLabel("lane1")} is the baseline floor. Lanes 2–4 add reactivation, registration, and
+        conversion at the rates shown in the scenario engine.
       </p>
 
       <div className="mb-4 flex h-4 overflow-hidden rounded-full bg-[var(--ep-cream)]">
@@ -92,7 +96,9 @@ export function LanesOverviewPanel({ overview, standalone }: Props) {
         {overview.lanes.map((lane) => (
           <div key={lane.id} className="ep-card ep-lane-card">
             <div className="flex items-start justify-between gap-2">
-              <h3 className="font-heading text-lg font-bold">{lane.name}</h3>
+              <h3 className="font-heading text-lg font-bold">
+                {laneDescriptiveLabel(lane.id as "lane1" | "lane2" | "lane3" | "lane4")}
+              </h3>
               <span className={cn("inline-block h-3 w-3 rounded-full", LANE_COLORS[lane.id])} aria-hidden />
             </div>
             <div className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">
@@ -174,9 +180,9 @@ export function LanesOverviewPanel({ overview, standalone }: Props) {
                 <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">
                   <th className="pb-3 pr-4">County</th>
                   <th className="pb-3 pr-4 text-right">Expected total</th>
-                  <th className="pb-3 pr-4 text-right">Lane 2</th>
-                  <th className="pb-3 pr-4 text-right">Lane 3</th>
-                  <th className="pb-3 text-right">Lane 4</th>
+                  <th className="pb-3 pr-4 text-right">{FOUR_LANE_DEFINITIONS.lane2.tableHeader}</th>
+                  <th className="pb-3 pr-4 text-right">{FOUR_LANE_DEFINITIONS.lane3.tableHeader}</th>
+                  <th className="pb-3 text-right">{FOUR_LANE_DEFINITIONS.lane4.tableHeader}</th>
                 </tr>
               </thead>
               <tbody>
@@ -221,9 +227,10 @@ export function LanesOverviewPanel({ overview, standalone }: Props) {
 
       {expected ? (
         <p className="mt-8 text-xs text-[var(--ep-navy-muted)]">
-          Expected rates: Lane 2 {(expected.rates.lane2 * 100).toFixed(0)}% · Lane 3{" "}
-          {(expected.rates.lane3 * 100).toFixed(0)}% · Lane 4 {(expected.rates.lane4 * 100).toFixed(0)}% of working
-          goals
+          Expected rates: {FOUR_LANE_DEFINITIONS.lane2.shortName}{" "}
+          {(expected.rates.lane2 * 100).toFixed(0)}% · {FOUR_LANE_DEFINITIONS.lane3.shortName}{" "}
+          {(expected.rates.lane3 * 100).toFixed(0)}% · {FOUR_LANE_DEFINITIONS.lane4.shortName}{" "}
+          {(expected.rates.lane4 * 100).toFixed(0)}% of working goals
         </p>
       ) : null}
     </section>

@@ -6,6 +6,7 @@ import {
   type CampaignEventBriefingSnapshot,
   BRIEFING_PENDING,
 } from "@/lib/calendar/campaign-event-briefing-types";
+import { FOUR_LANE_STRATEGY_SUMMARY } from "@/lib/election-plan/four-lanes-labels";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 
 const BRIEFINGS_PATH = path.join(
@@ -67,7 +68,7 @@ export function buildFallbackBriefingFromPublicEvent(e: PublicCampaignEvent): Ca
     why: {
       campaignRationale: e.publicSummary,
       strategicGoal: null,
-      laneFocus: ["Four-lane plurality strategy"],
+      laneFocus: [FOUR_LANE_STRATEGY_SUMMARY],
     },
     campaignGoal: {
       primary: "Build visibility and voter contact at this published stop.",

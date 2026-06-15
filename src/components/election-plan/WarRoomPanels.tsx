@@ -4,6 +4,7 @@ import { useState, type ReactNode } from "react";
 import Link from "next/link";
 
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
+import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
 import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
 import { cn } from "@/lib/utils";
 
@@ -134,7 +135,7 @@ export function WarRoomPanel({ data }: Props) {
         </Link>
         <div className="ep-card ep-war-stat">
           <div className="ep-war-stat-value">{formatVotes(w.lane2Potential)}</div>
-          <div className="ep-war-stat-label">Lane 2 potential</div>
+          <div className="ep-war-stat-label">{FOUR_LANE_DEFINITIONS.lane2.fullLabel} potential</div>
         </div>
         <Link
           href="/election-plan/registration-goals"
@@ -155,9 +156,10 @@ export function WarRoomPanel({ data }: Props) {
       </div>
 
       <p className="mb-4 text-xs text-[var(--ep-navy-muted)]">
-        Intelligence opportunities come from Forward Motion — not Kelly&apos;s confirmed Google Calendar until OAuth sync
-        is live. Confirmed schedule: Google Calendar → <code className="text-[10px]">CampaignEvent</code> → public{" "}
-        <code className="text-[10px]">/events</code>.
+        Intelligence opportunities are scored Forward Motion stops — fairs, forums, and community events ranked for
+        Kelly&apos;s next moves. Not confirmed Google Calendar until OAuth sync. Confirmed schedule: Google Calendar →{" "}
+        <code className="text-[10px]">CampaignEvent</code> → public{" "}
+        <code className="text-[10px]">/campaign-calendar</code>.
       </p>
 
       <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -173,11 +175,16 @@ export function WarRoomPanel({ data }: Props) {
             subtitle={`${w.volunteerLeaders.length} on June 28 invite list · ${w.volunteerLeadersCurrent} total campaign signups`}
           />
         </ProgressStat>
-        <ProgressStat
-          label="Intelligence opportunities (7d)"
-          value={w.upcomingEvents}
-          goal={20}
-        />
+        <Link
+          href="/election-plan/intelligence-opportunities"
+          className="ep-card ep-war-stat block transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]"
+        >
+          <div className="ep-war-stat-value">{w.upcomingEvents}</div>
+          <div className="ep-war-stat-label">Intelligence opportunities (7d)</div>
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+            Forward Motion breakdown →
+          </p>
+        </Link>
         <ProgressStat label="Counties visited" value={w.countiesCovered} goal={w.countiesTotal} />
         <ProgressStat label="Human Contact Index" value={w.hciTotal} goal={w.hciGoal} />
       </div>

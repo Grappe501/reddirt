@@ -15,6 +15,10 @@ import {
   BRIEFING_PENDING,
 } from "../../src/lib/calendar/campaign-event-briefing-types";
 import { campaignEventSlug } from "../../src/lib/calendar/campaign-event-slug";
+import {
+  FOUR_LANE_STRATEGY_SUMMARY,
+  laneDescriptiveLabelByNumber,
+} from "../../src/lib/election-plan/four-lanes-labels";
 import { PUBLIC_CALENDAR_DEFAULT_TZ } from "../../src/lib/calendar/public-event-types";
 import { findInstantOnYmd } from "../../src/lib/calendar/public-event-format";
 import { ARKANSAS_COUNTY_REGISTRY } from "../../src/lib/county/arkansas-county-registry";
@@ -168,13 +172,20 @@ function campaignGoalFor(entry: ExecEntry): CampaignEventBriefing["campaignGoal"
 function whyFor(entry: ExecEntry): CampaignEventBriefing["why"] {
   const lanes: string[] = [];
   const et = (entry.eventType ?? "").toLowerCase();
-  if (/fair|forum|community|visit/i.test(et)) lanes.push("Lane 2 — Democratic reactivation", "Lane 4 — relationship conversion");
-  if (/gotv|election/i.test(et)) lanes.push("Lane 1 — retention", "Lane 3 — registration");
+  if (/fair|forum|community|visit/i.test(et)) {
+    lanes.push(laneDescriptiveLabelByNumber(2), laneDescriptiveLabelByNumber(4));
+  }
+  if (/gotv|election/i.test(et)) {
+    lanes.push(laneDescriptiveLabelByNumber(1), laneDescriptiveLabelByNumber(3));
+  }
+  if (/volunteer|registration/i.test(et + entry.label)) {
+    lanes.push(laneDescriptiveLabelByNumber(3));
+  }
   if (entry.source === "twenty-week-plan") lanes.push("20-week operating plan milestone");
   return {
     campaignRationale: entry.notes ?? null,
     strategicGoal: entry.category === "locked" ? "Leadership-locked backbone event." : null,
-    laneFocus: lanes.length ? lanes : ["Four-lane plurality strategy"],
+    laneFocus: lanes.length ? lanes : [FOUR_LANE_STRATEGY_SUMMARY],
   };
 }
 
