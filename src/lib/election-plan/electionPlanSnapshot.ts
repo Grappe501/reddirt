@@ -242,7 +242,7 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       projectedVotes: 410_197,
       lane2Potential: 51_051,
       registrationGoal: 50_000,
-      countiesCovered: 0,
+      countiesCovered: 43,
       countiesTotal: 75,
       upcomingStops: 14,
       volunteerLeadersGoal: 20,
@@ -268,7 +268,7 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       volunteerLeadersGoal: 20,
       volunteerLeadersCurrent: 0,
       upcomingEvents: 14,
-      countiesCovered: 0,
+      countiesCovered: 43,
       countiesTotal: 75,
       hciTotal: 0,
       hciGoal: 250_000,
@@ -285,6 +285,23 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       topPrioritiesThisWeek: ["Run npm run election-plan:build"],
     },
     campaignTimeline: [],
+    coverageReality: {
+      disclaimer:
+        "Leadership-confirmed coverage includes counties with uncertain exact visit dates. Use this as strategic coverage reality, not a verified calendar log.",
+      referenceDate: new Date().toISOString().slice(0, 10),
+      doctrine: "Run npm run campaign-brain:coverage-audit:build",
+      visitedCount: 43,
+      neverVisitedCount: 32,
+      deltaGapCount: 8,
+      tier1RevisitDue: 7,
+      brainPreviouslyReported: 31,
+      reconciliationDelta: 12,
+      visitedCounties: [],
+      neverVisitedCounties: [],
+      deltaGapCounties: [],
+      tier1RevisitQueue: [],
+      priorityQueue: [],
+    },
   };
 }
 

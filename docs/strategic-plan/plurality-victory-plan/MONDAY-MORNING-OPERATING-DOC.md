@@ -15,7 +15,7 @@
 | **Projected votes** | 410,197 |
 | **Lane 2 potential** | 51,051 |
 | **Registration goal** | 50,000 |
-| **Counties with upcoming stops** | 31+ (verified queue) |
+| **Counties visited (coverage reality)** | 43 / 75 (reconciled from leadership + touch summary) |
 | **Intelligence opportunities (next 7 days)** | 14 (Forward Motion queue — not confirmed Kelly schedule until Google sync) |
 | **Volunteer leaders goal** | 20 (June 28 launch) |
 | **Sherwood goal** | 60%+ win · VIP tables 0/20 |

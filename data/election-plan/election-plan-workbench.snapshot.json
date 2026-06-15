@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T04:07:04.102Z",
+  "generatedAt": "2026-06-15T05:09:19.838Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -4754,7 +4754,7 @@
     "projectedVotes": 410197,
     "lane2Potential": 51051,
     "registrationGoal": 50000,
-    "countiesCovered": 29,
+    "countiesCovered": 43,
     "countiesTotal": 75,
     "upcomingStops": 14,
     "volunteerLeadersGoal": 20,
@@ -4785,7 +4785,7 @@
     "volunteerLeadersGoal": 20,
     "volunteerLeadersCurrent": 0,
     "upcomingEvents": 14,
-    "countiesCovered": 29,
+    "countiesCovered": 43,
     "countiesTotal": 75,
     "hciTotal": 0,
     "hciGoal": 250000,
@@ -4805,6 +4805,759 @@
       "NAACP Branch Outreach — first 5 branches",
       "Teacher Network Meetings — April Reisma pathway",
       "Labor Outreach Preparation — briefing packet + first calls"
+    ]
+  },
+  "coverageReality": {
+    "disclaimer": "Leadership-confirmed coverage includes counties with uncertain exact visit dates. Use this as strategic coverage reality, not a verified calendar log.",
+    "referenceDate": "2026-06-15",
+    "doctrine": "Complete county coverage while revisiting Tier 1 VCI counties. Fill open days with multi-purpose trips — not single-objective long drives.",
+    "visitedCount": 43,
+    "neverVisitedCount": 32,
+    "deltaGapCount": 8,
+    "tier1RevisitDue": 7,
+    "brainPreviouslyReported": 31,
+    "reconciliationDelta": 12,
+    "visitedCounties": [
+      {
+        "county": "Pulaski",
+        "vciRank": 1,
+        "visitCount": 15,
+        "lastVisitDate": "2026-05-18",
+        "daysSinceLastVisit": 28
+      },
+      {
+        "county": "Saline",
+        "vciRank": 5,
+        "visitCount": 5,
+        "lastVisitDate": "2026-05-09",
+        "daysSinceLastVisit": 37
+      },
+      {
+        "county": "Garland",
+        "vciRank": 9,
+        "visitCount": 5,
+        "lastVisitDate": "2026-05-26",
+        "daysSinceLastVisit": 20
+      },
+      {
+        "county": "Faulkner",
+        "vciRank": 4,
+        "visitCount": 4,
+        "lastVisitDate": "2026-06-04",
+        "daysSinceLastVisit": 11
+      },
+      {
+        "county": "Cross",
+        "vciRank": 27,
+        "visitCount": 4,
+        "lastVisitDate": "2026-05-28",
+        "daysSinceLastVisit": 18
+      },
+      {
+        "county": "Cleburne",
+        "vciRank": 31,
+        "visitCount": 4,
+        "lastVisitDate": "2026-06-16",
+        "daysSinceLastVisit": -1
+      },
+      {
+        "county": "Benton",
+        "vciRank": 2,
+        "visitCount": 3,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "Washington",
+        "vciRank": 3,
+        "visitCount": 3,
+        "lastVisitDate": "2026-03-14",
+        "daysSinceLastVisit": 93
+      },
+      {
+        "county": "Sebastian",
+        "vciRank": 6,
+        "visitCount": 3,
+        "lastVisitDate": "2026-02-09",
+        "daysSinceLastVisit": 126
+      },
+      {
+        "county": "Craighead",
+        "vciRank": 7,
+        "visitCount": 3,
+        "lastVisitDate": "2025-12-15",
+        "daysSinceLastVisit": 182
+      },
+      {
+        "county": "Lonoke",
+        "vciRank": 12,
+        "visitCount": 3,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "Baxter",
+        "vciRank": 17,
+        "visitCount": 3,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "Greene",
+        "vciRank": 18,
+        "visitCount": 3,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "Clark",
+        "vciRank": 24,
+        "visitCount": 3,
+        "lastVisitDate": "2026-06-06",
+        "daysSinceLastVisit": 9
+      },
+      {
+        "county": "Van Buren",
+        "vciRank": 39,
+        "visitCount": 3,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "Fulton",
+        "vciRank": 55,
+        "visitCount": 3,
+        "lastVisitDate": "2026-01-31",
+        "daysSinceLastVisit": 135
+      },
+      {
+        "county": "Stone",
+        "vciRank": 51,
+        "visitCount": 3,
+        "lastVisitDate": "2026-06-11",
+        "daysSinceLastVisit": 4
+      },
+      {
+        "county": "Pope",
+        "vciRank": 13,
+        "visitCount": 2,
+        "lastVisitDate": "2026-04-24",
+        "daysSinceLastVisit": 52
+      },
+      {
+        "county": "Ouachita",
+        "vciRank": 26,
+        "visitCount": 2,
+        "lastVisitDate": "2026-03-22",
+        "daysSinceLastVisit": 85
+      },
+      {
+        "county": "Columbia",
+        "vciRank": 25,
+        "visitCount": 2,
+        "lastVisitDate": "2026-05-17",
+        "daysSinceLastVisit": 29
+      },
+      {
+        "county": "Carroll",
+        "vciRank": 30,
+        "visitCount": 2,
+        "lastVisitDate": "2026-06-26",
+        "daysSinceLastVisit": -11
+      },
+      {
+        "county": "Polk",
+        "vciRank": 40,
+        "visitCount": 2,
+        "lastVisitDate": "2026-04-12",
+        "daysSinceLastVisit": 64
+      },
+      {
+        "county": "Jefferson",
+        "vciRank": 8,
+        "visitCount": 1,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "White",
+        "vciRank": 11,
+        "visitCount": 1,
+        "lastVisitDate": "2026-02-03",
+        "daysSinceLastVisit": 132
+      },
+      {
+        "county": "Crawford",
+        "vciRank": 16,
+        "visitCount": 1,
+        "lastVisitDate": "2026-04-08",
+        "daysSinceLastVisit": 68
+      },
+      {
+        "county": "Independence",
+        "vciRank": 23,
+        "visitCount": 1,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "Hempstead",
+        "vciRank": 28,
+        "visitCount": 1,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "Arkansas",
+        "vciRank": 29,
+        "visitCount": 1,
+        "lastVisitDate": "2026-01-10",
+        "daysSinceLastVisit": 156
+      },
+      {
+        "county": "Johnson",
+        "vciRank": 32,
+        "visitCount": 1,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "Marion",
+        "vciRank": 34,
+        "visitCount": 1,
+        "lastVisitDate": "2026-04-20",
+        "daysSinceLastVisit": 56
+      },
+      {
+        "county": "Conway",
+        "vciRank": 33,
+        "visitCount": 1,
+        "lastVisitDate": "2026-06-20",
+        "daysSinceLastVisit": -5
+      },
+      {
+        "county": "Izard",
+        "vciRank": 49,
+        "visitCount": 1,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "Franklin",
+        "vciRank": 47,
+        "visitCount": 1,
+        "lastVisitDate": "2026-04-20",
+        "daysSinceLastVisit": 56
+      },
+      {
+        "county": "Drew",
+        "vciRank": 43,
+        "visitCount": 1,
+        "lastVisitDate": "2026-06-14",
+        "daysSinceLastVisit": 1
+      },
+      {
+        "county": "Desha",
+        "vciRank": 52,
+        "visitCount": 1,
+        "lastVisitDate": "2026-05-23",
+        "daysSinceLastVisit": 23
+      },
+      {
+        "county": "Lee",
+        "vciRank": 61,
+        "visitCount": 1,
+        "lastVisitDate": "2026-01-19",
+        "daysSinceLastVisit": 147
+      },
+      {
+        "county": "Pike",
+        "vciRank": 59,
+        "visitCount": 1,
+        "lastVisitDate": "2026-05-09",
+        "daysSinceLastVisit": 37
+      },
+      {
+        "county": "Cleveland",
+        "vciRank": 63,
+        "visitCount": 1,
+        "lastVisitDate": "2026-04-10",
+        "daysSinceLastVisit": 66
+      },
+      {
+        "county": "Searcy",
+        "vciRank": 65,
+        "visitCount": 1,
+        "lastVisitDate": "2026-01-16",
+        "daysSinceLastVisit": 150
+      },
+      {
+        "county": "Nevada",
+        "vciRank": 69,
+        "visitCount": 1,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      },
+      {
+        "county": "Bradley",
+        "vciRank": 60,
+        "visitCount": 1,
+        "lastVisitDate": "2026-06-11",
+        "daysSinceLastVisit": 4
+      },
+      {
+        "county": "Montgomery",
+        "vciRank": 62,
+        "visitCount": 1,
+        "lastVisitDate": "2026-06-17",
+        "daysSinceLastVisit": -2
+      },
+      {
+        "county": "Lafayette",
+        "vciRank": 73,
+        "visitCount": 1,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null
+      }
+    ],
+    "neverVisitedCounties": [
+      {
+        "county": "Crittenden",
+        "vciRank": 10,
+        "priorityScore": 663,
+        "planningCategory": "delta_gap"
+      },
+      {
+        "county": "Miller",
+        "vciRank": 14,
+        "priorityScore": 601,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Union",
+        "vciRank": 15,
+        "priorityScore": 593,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Mississippi",
+        "vciRank": 20,
+        "priorityScore": 583,
+        "planningCategory": "delta_gap"
+      },
+      {
+        "county": "St. Francis",
+        "vciRank": 21,
+        "priorityScore": 570,
+        "planningCategory": "delta_gap"
+      },
+      {
+        "county": "Boone",
+        "vciRank": 19,
+        "priorityScore": 561,
+        "planningCategory": "completion_tour"
+      },
+      {
+        "county": "Hot Spring",
+        "vciRank": 22,
+        "priorityScore": 537,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Ashley",
+        "vciRank": 36,
+        "priorityScore": 450,
+        "planningCategory": "delta_gap"
+      },
+      {
+        "county": "Grant",
+        "vciRank": 35,
+        "priorityScore": 428,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Sharp",
+        "vciRank": 37,
+        "priorityScore": 412,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Logan",
+        "vciRank": 38,
+        "priorityScore": 404,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Madison",
+        "vciRank": 41,
+        "priorityScore": 380,
+        "planningCategory": "completion_tour"
+      },
+      {
+        "county": "Yell",
+        "vciRank": 42,
+        "priorityScore": 372,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Phillips",
+        "vciRank": 46,
+        "priorityScore": 370,
+        "planningCategory": "delta_gap"
+      },
+      {
+        "county": "Randolph",
+        "vciRank": 44,
+        "priorityScore": 356,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Poinsett",
+        "vciRank": 45,
+        "priorityScore": 348,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Lawrence",
+        "vciRank": 48,
+        "priorityScore": 324,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Little River",
+        "vciRank": 50,
+        "priorityScore": 308,
+        "planningCategory": "completion_tour"
+      },
+      {
+        "county": "Howard",
+        "vciRank": 53,
+        "priorityScore": 284,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Clay",
+        "vciRank": 54,
+        "priorityScore": 276,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Sevier",
+        "vciRank": 56,
+        "priorityScore": 260,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Perry",
+        "vciRank": 57,
+        "priorityScore": 252,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Jackson",
+        "vciRank": 58,
+        "priorityScore": 244,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Lincoln",
+        "vciRank": 66,
+        "priorityScore": 210,
+        "planningCategory": "delta_gap"
+      },
+      {
+        "county": "Newton",
+        "vciRank": 64,
+        "priorityScore": 196,
+        "planningCategory": "completion_tour"
+      },
+      {
+        "county": "Scott",
+        "vciRank": 67,
+        "priorityScore": 172,
+        "planningCategory": "never_visited"
+      },
+      {
+        "county": "Chicot",
+        "vciRank": 71,
+        "priorityScore": 170,
+        "planningCategory": "delta_gap"
+      },
+      {
+        "county": "Prairie",
+        "vciRank": 68,
+        "priorityScore": 164,
+        "planningCategory": "completion_tour"
+      },
+      {
+        "county": "Dallas",
+        "vciRank": 70,
+        "priorityScore": 148,
+        "planningCategory": "completion_tour"
+      },
+      {
+        "county": "Monroe",
+        "vciRank": 75,
+        "priorityScore": 138,
+        "planningCategory": "delta_gap"
+      },
+      {
+        "county": "Woodruff",
+        "vciRank": 72,
+        "priorityScore": 132,
+        "planningCategory": "completion_tour"
+      },
+      {
+        "county": "Calhoun",
+        "vciRank": 74,
+        "priorityScore": 116,
+        "planningCategory": "completion_tour"
+      }
+    ],
+    "deltaGapCounties": [
+      {
+        "county": "Crittenden",
+        "vciRank": 10,
+        "priorityScore": 663,
+        "recommendedAction": "Delta priority — schedule immersion (West Memphis / Helena / Blytheville corridor targets)."
+      },
+      {
+        "county": "Mississippi",
+        "vciRank": 20,
+        "priorityScore": 583,
+        "recommendedAction": "Delta priority — schedule immersion (West Memphis / Helena / Blytheville corridor targets)."
+      },
+      {
+        "county": "St. Francis",
+        "vciRank": 21,
+        "priorityScore": 570,
+        "recommendedAction": "Delta priority — schedule immersion (West Memphis / Helena / Blytheville corridor targets)."
+      },
+      {
+        "county": "Ashley",
+        "vciRank": 36,
+        "priorityScore": 450,
+        "recommendedAction": "Delta priority — schedule immersion (West Memphis / Helena / Blytheville corridor targets)."
+      },
+      {
+        "county": "Phillips",
+        "vciRank": 46,
+        "priorityScore": 370,
+        "recommendedAction": "Delta priority — schedule immersion (West Memphis / Helena / Blytheville corridor targets)."
+      },
+      {
+        "county": "Lincoln",
+        "vciRank": 66,
+        "priorityScore": 210,
+        "recommendedAction": "Delta priority — schedule immersion (West Memphis / Helena / Blytheville corridor targets)."
+      },
+      {
+        "county": "Chicot",
+        "vciRank": 71,
+        "priorityScore": 170,
+        "recommendedAction": "Delta priority — schedule immersion (West Memphis / Helena / Blytheville corridor targets)."
+      },
+      {
+        "county": "Monroe",
+        "vciRank": 75,
+        "priorityScore": 138,
+        "recommendedAction": "Delta priority — schedule immersion (West Memphis / Helena / Blytheville corridor targets)."
+      }
+    ],
+    "tier1RevisitQueue": [
+      {
+        "county": "Benton",
+        "vciRank": 2,
+        "visitCount": 3,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Washington",
+        "vciRank": 3,
+        "visitCount": 3,
+        "lastVisitDate": "2026-03-14",
+        "daysSinceLastVisit": 93,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Sebastian",
+        "vciRank": 6,
+        "visitCount": 3,
+        "lastVisitDate": "2026-02-09",
+        "daysSinceLastVisit": 126,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Craighead",
+        "vciRank": 7,
+        "visitCount": 3,
+        "lastVisitDate": "2025-12-15",
+        "daysSinceLastVisit": 182,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Jefferson",
+        "vciRank": 8,
+        "visitCount": 1,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Saline",
+        "vciRank": 5,
+        "visitCount": 5,
+        "lastVisitDate": "2026-05-09",
+        "daysSinceLastVisit": 37,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Lonoke",
+        "vciRank": 12,
+        "visitCount": 3,
+        "lastVisitDate": null,
+        "daysSinceLastVisit": null,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      }
+    ],
+    "priorityQueue": [
+      {
+        "county": "Benton",
+        "vciRank": 2,
+        "visitCount": 3,
+        "daysSinceLastVisit": null,
+        "planningCategory": "tier1_revisit",
+        "priorityScore": 697,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Washington",
+        "vciRank": 3,
+        "visitCount": 3,
+        "daysSinceLastVisit": 93,
+        "planningCategory": "tier1_revisit",
+        "priorityScore": 684,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Crittenden",
+        "vciRank": 10,
+        "visitCount": 0,
+        "daysSinceLastVisit": null,
+        "planningCategory": "delta_gap",
+        "priorityScore": 663,
+        "recommendedAction": "Delta priority — schedule immersion (West Memphis / Helena / Blytheville corridor targets)."
+      },
+      {
+        "county": "Sebastian",
+        "vciRank": 6,
+        "visitCount": 3,
+        "daysSinceLastVisit": 126,
+        "planningCategory": "tier1_revisit",
+        "priorityScore": 660,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Craighead",
+        "vciRank": 7,
+        "visitCount": 3,
+        "daysSinceLastVisit": 182,
+        "planningCategory": "tier1_revisit",
+        "priorityScore": 652,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Jefferson",
+        "vciRank": 8,
+        "visitCount": 1,
+        "daysSinceLastVisit": null,
+        "planningCategory": "tier1_revisit",
+        "priorityScore": 649,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Saline",
+        "vciRank": 5,
+        "visitCount": 5,
+        "daysSinceLastVisit": 37,
+        "planningCategory": "tier1_revisit",
+        "priorityScore": 645,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Pulaski",
+        "vciRank": 1,
+        "visitCount": 15,
+        "daysSinceLastVisit": 28,
+        "planningCategory": "maintain_relationship",
+        "priorityScore": 634,
+        "recommendedAction": "Relationship capital invested — revisit when calendar stacks 3+ objectives."
+      },
+      {
+        "county": "Lonoke",
+        "vciRank": 12,
+        "visitCount": 3,
+        "daysSinceLastVisit": null,
+        "planningCategory": "tier1_revisit",
+        "priorityScore": 617,
+        "recommendedAction": "Tier 1 VCI — stack coalition + volunteer + story on next regional trip."
+      },
+      {
+        "county": "Miller",
+        "vciRank": 14,
+        "visitCount": 0,
+        "daysSinceLastVisit": null,
+        "planningCategory": "never_visited",
+        "priorityScore": 601,
+        "recommendedAction": "No confirmed visit — find highest-scoring stackable trip before 2026-10-20."
+      },
+      {
+        "county": "White",
+        "vciRank": 11,
+        "visitCount": 1,
+        "daysSinceLastVisit": 132,
+        "planningCategory": "completion_touch",
+        "priorityScore": 600,
+        "recommendedAction": "Single visit 132d ago — add second touch or stack objectives on return."
+      },
+      {
+        "county": "Union",
+        "vciRank": 15,
+        "visitCount": 0,
+        "daysSinceLastVisit": null,
+        "planningCategory": "never_visited",
+        "priorityScore": 593,
+        "recommendedAction": "No confirmed visit — find highest-scoring stackable trip before 2026-10-20."
+      },
+      {
+        "county": "Faulkner",
+        "vciRank": 4,
+        "visitCount": 4,
+        "daysSinceLastVisit": 11,
+        "planningCategory": "maintain_relationship",
+        "priorityScore": 585,
+        "recommendedAction": "Relationship capital invested — revisit when calendar stacks 3+ objectives."
+      },
+      {
+        "county": "Mississippi",
+        "vciRank": 20,
+        "visitCount": 0,
+        "daysSinceLastVisit": null,
+        "planningCategory": "delta_gap",
+        "priorityScore": 583,
+        "recommendedAction": "Delta priority — schedule immersion (West Memphis / Helena / Blytheville corridor targets)."
+      },
+      {
+        "county": "Garland",
+        "vciRank": 9,
+        "visitCount": 5,
+        "daysSinceLastVisit": 20,
+        "planningCategory": "maintain_relationship",
+        "priorityScore": 570,
+        "recommendedAction": "Relationship capital invested — revisit when calendar stacks 3+ objectives."
+      }
     ]
   },
   "weekPlans": [

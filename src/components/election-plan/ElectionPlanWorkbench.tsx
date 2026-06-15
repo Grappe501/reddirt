@@ -26,7 +26,7 @@ const TAB_GROUPS = [
       { id: "warRoom", label: "Executive War Room" },
       { id: "weekPlans", label: "Week Plans" },
       { id: "timeline", label: "20-Week Timeline" },
-      { id: "presenceMap", label: "Presence Map" },
+      { id: "presenceMap", label: "Coverage Reality" },
       { id: "coalitionCommand", label: "Coalition Command" },
       { id: "sherwoodVictory", label: "Sherwood Victory" },
       { id: "socialResume", label: "Social Resume" },

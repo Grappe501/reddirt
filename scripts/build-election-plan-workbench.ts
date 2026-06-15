@@ -632,12 +632,110 @@ function buildCampaignTimeline() {
   return plan?.timeline ?? [];
 }
 
-function buildWarRoomSection() {
+type CoverageAuditRow = {
+  county: string;
+  vciRank: number | null;
+  visitCount: number;
+  lastVisitDate: string | null;
+  daysSinceLastVisit: number | null;
+  planningCategory: string;
+  priorityScore: number;
+  recommendedAction: string;
+  isDeltaCounty?: boolean;
+};
+
+function buildCoverageRealitySection() {
+  const audit = readJson<{
+    referenceDate?: string;
+    doctrine?: string;
+    reconciliation?: { brainReportedVisited?: number; visitedAfterLeadershipMerge?: number; delta?: number };
+    summary?: {
+      visitedCounties?: number;
+      neverVisitedCounties?: number;
+      deltaCountiesNeverVisited?: number;
+      tier1RevisitDue?: number;
+    };
+    visitedCounties?: CoverageAuditRow[];
+    neverVisitedCounties?: CoverageAuditRow[];
+    deltaGapCounties?: CoverageAuditRow[];
+    tier1RevisitQueue?: CoverageAuditRow[];
+    priorityQueue?: CoverageAuditRow[];
+  }>(path.join(BRAIN, "routing/county-coverage-reality-audit.json"));
+
+  const disclaimer =
+    "Leadership-confirmed coverage includes counties with uncertain exact visit dates. Use this as strategic coverage reality, not a verified calendar log.";
+
+  if (!audit?.summary) {
+    return {
+      disclaimer,
+      referenceDate: new Date().toISOString().slice(0, 10),
+      doctrine: "Run npm run campaign-brain:coverage-audit:build",
+      visitedCount: 31,
+      neverVisitedCount: 44,
+      deltaGapCount: 0,
+      tier1RevisitDue: 0,
+      brainPreviouslyReported: 31,
+      reconciliationDelta: 0,
+      visitedCounties: [],
+      neverVisitedCounties: [],
+      deltaGapCounties: [],
+      tier1RevisitQueue: [],
+      priorityQueue: [],
+    };
+  }
+
+  return {
+    disclaimer,
+    referenceDate: audit.referenceDate ?? new Date().toISOString().slice(0, 10),
+    doctrine: audit.doctrine ?? "",
+    visitedCount: audit.summary.visitedCounties ?? 0,
+    neverVisitedCount: audit.summary.neverVisitedCounties ?? 0,
+    deltaGapCount: audit.summary.deltaCountiesNeverVisited ?? 0,
+    tier1RevisitDue: audit.summary.tier1RevisitDue ?? 0,
+    brainPreviouslyReported: audit.reconciliation?.brainReportedVisited ?? 31,
+    reconciliationDelta: audit.reconciliation?.delta ?? 0,
+    visitedCounties: (audit.visitedCounties ?? []).map((r) => ({
+      county: r.county,
+      vciRank: r.vciRank,
+      visitCount: r.visitCount,
+      lastVisitDate: r.lastVisitDate,
+      daysSinceLastVisit: r.daysSinceLastVisit,
+    })),
+    neverVisitedCounties: (audit.neverVisitedCounties ?? []).map((r) => ({
+      county: r.county,
+      vciRank: r.vciRank,
+      priorityScore: r.priorityScore,
+      planningCategory: r.planningCategory,
+    })),
+    deltaGapCounties: (audit.deltaGapCounties ?? []).map((r) => ({
+      county: r.county,
+      vciRank: r.vciRank,
+      priorityScore: r.priorityScore,
+      recommendedAction: r.recommendedAction,
+    })),
+    tier1RevisitQueue: (audit.tier1RevisitQueue ?? []).map((r) => ({
+      county: r.county,
+      vciRank: r.vciRank,
+      visitCount: r.visitCount,
+      lastVisitDate: r.lastVisitDate,
+      daysSinceLastVisit: r.daysSinceLastVisit,
+      recommendedAction: r.recommendedAction,
+    })),
+    priorityQueue: (audit.priorityQueue ?? []).slice(0, 15).map((r) => ({
+      county: r.county,
+      vciRank: r.vciRank,
+      visitCount: r.visitCount,
+      daysSinceLastVisit: r.daysSinceLastVisit,
+      planningCategory: r.planningCategory,
+      priorityScore: r.priorityScore,
+      recommendedAction: r.recommendedAction,
+    })),
+  };
+}
+
+function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySection>) {
   const fm = readJson<{ upcomingCount?: number; nextWeekCount?: number }>(
     path.join(BRAIN_DATA, "forward-motion-summary.json"),
-  );
-  const queue = readJson<{ stops?: Array<{ county: string }> }>(
-    path.join(BRAIN_DATA, "upcoming-stops-activation-queue.json"),
   );
   const pp = readJson<{ volunteerLeadership?: { foundingTeamGoal?: number; foundingTeamCurrent?: number } }>(
     path.join(BRAIN_DATA, "people-power-network.json"),
@@ -654,9 +752,6 @@ function buildWarRoomSection() {
   const hci = readJson<{ total?: number; goal?: number; completionPct?: number }>(
     path.join(BRAIN_DATA, "human-contact-index.json"),
   );
-
-  const stops = queue?.stops ?? [];
-  const countiesCovered = new Set(stops.map((s) => s.county.replace(/ County$/, ""))).size;
 
   const topPriorities = [
     "Volunteer Leadership Launch — June 28 · 6 PM · Zoom",
@@ -679,7 +774,7 @@ function buildWarRoomSection() {
     volunteerLeadersGoal: pp?.volunteerLeadership?.foundingTeamGoal ?? 20,
     volunteerLeadersCurrent: pp?.volunteerLeadership?.foundingTeamCurrent ?? 0,
     upcomingEvents: fm?.nextWeekCount ?? 14, // Forward Motion intelligence queue — not confirmed Kelly calendar
-    countiesCovered,
+    countiesCovered: coverage.visitedCount,
     countiesTotal: 75,
     hciTotal: hci?.total ?? 0,
     hciGoal: hci?.goal ?? 250_000,
@@ -697,8 +792,8 @@ function buildWarRoomSection() {
   };
 }
 
-function buildCandidateDashboard() {
-  const war = buildWarRoomSection();
+function buildCandidateDashboard(coverage: ReturnType<typeof buildCoverageRealitySection>) {
+  const war = buildWarRoomSection(coverage);
   return {
     weeksRemaining: war.weeksRemaining,
     projectedVotes: war.projectedVotes,
@@ -914,6 +1009,8 @@ function main() {
   const pluralityHigh = scenarios?.pluralityRange.high ?? 420_000;
   const expectedVotes = scenarios?.scenarios.expected.projectedVotes ?? 410_197;
 
+  const coverageReality = buildCoverageRealitySection();
+
   const snapshot: ElectionPlanWorkbenchSnapshot = {
     version: 1,
     generatedAt: new Date().toISOString(),
@@ -1088,8 +1185,9 @@ function main() {
     coalitionPowerMap: buildCoalitionPowerMapSection(),
     endorsementAcquisition: buildEndorsementAcquisitionSection(),
     voterContact: buildVoterContactSection(),
-    candidateDashboard: buildCandidateDashboard(),
-    warRoom: buildWarRoomSection(),
+    candidateDashboard: buildCandidateDashboard(coverageReality),
+    warRoom: buildWarRoomSection(coverageReality),
+    coverageReality,
     weekPlans: buildWeekPlansSection(),
     campaignTimeline: buildCampaignTimeline(),
   };

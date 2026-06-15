@@ -607,6 +607,7 @@ async function main() {
   execSync("npx tsx scripts/campaign-brain/build-event-verification-sprint.ts", { stdio: "inherit" });
   execSync("npx tsx scripts/campaign-brain/build-fairs-festivals-optimizer.ts", { stdio: "inherit" });
   execSync("npx tsx scripts/campaign-brain/build-county-coverage-completion.ts", { stdio: "inherit" });
+  execSync("npx tsx scripts/campaign-brain/build-county-coverage-reality-audit.ts", { stdio: "inherit" });
   execSync("npx tsx scripts/campaign-brain/build-captured-opportunity-layer.ts", { stdio: "inherit" });
   execSync("npx tsx scripts/campaign-brain/build-event-learning.ts", { stdio: "inherit" });
   execSync("npx tsx scripts/campaign-brain/build-executive-narratives.ts", { stdio: "inherit" });

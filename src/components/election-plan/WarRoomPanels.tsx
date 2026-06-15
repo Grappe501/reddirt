@@ -94,7 +94,7 @@ export function WarRoomPanel({ data }: Props) {
           value={w.upcomingEvents}
           goal={20}
         />
-        <ProgressStat label="Counties in queue" value={w.countiesCovered} goal={w.countiesTotal} />
+        <ProgressStat label="Counties visited" value={w.countiesCovered} goal={w.countiesTotal} />
         <ProgressStat label="Human Contact Index" value={w.hciTotal} goal={w.hciGoal} />
       </div>
 
@@ -276,76 +276,139 @@ function GoalBlock({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-/** PASS-17 Deliverable 4 — Presence Map */
+/** Coverage Reality — leadership-confirmed county visit audit (not Forward Motion queue) */
 export function PresenceMapPanel({ data }: Props) {
-  const m = data.motionPresence;
-  const upcoming = data.forwardMotion.stops.slice(0, 12);
-  const visited = m.countyMap.filter((c) => c.visited);
-  const remaining = m.countyMap.filter((c) => !c.visited);
+  const c = data.coverageReality;
 
   return (
     <section>
-      <SectionTitle title="Arkansas Presence Map" subtitle={m.doctrine} />
+      <SectionTitle
+        title="Coverage Reality"
+        subtitle="Strategic county presence — reconciled from leadership history + calendar touch summary"
+      />
+
+      <div className="ep-card ep-priority-card mb-6">
+        <p className="text-sm leading-relaxed text-[var(--ep-navy-muted)]">{c.disclaimer}</p>
+        <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
+          Reference {c.referenceDate} · Brain previously reported {c.brainPreviouslyReported}/75 · reconciled +{c.reconciliationDelta} →{" "}
+          <strong>{c.visitedCount}/75</strong>
+        </p>
+      </div>
+
       <div className="mb-8 ep-stat-grid">
         <div className="ep-stat">
           <div className="ep-stat-value">
-            {m.countiesVisited}/{m.countiesTotal}
+            {c.visitedCount}/{c.visitedCount + c.neverVisitedCount}
           </div>
           <div className="ep-stat-label">Counties visited</div>
         </div>
         <div className="ep-stat">
-          <div className="ep-stat-value">{m.storiesPublished}</div>
-          <div className="ep-stat-label">Stories published</div>
+          <div className="ep-stat-value">{c.neverVisitedCount}</div>
+          <div className="ep-stat-label">Never visited</div>
         </div>
         <div className="ep-stat">
-          <div className="ep-stat-value">{data.forwardMotion.upcomingCount}</div>
-          <div className="ep-stat-label">Upcoming stops</div>
+          <div className="ep-stat-value">{c.deltaGapCount}</div>
+          <div className="ep-stat-label">Delta gaps</div>
         </div>
         <div className="ep-stat">
-          <div className="ep-stat-value">{m.septemberPersuasionReadiness}%</div>
-          <div className="ep-stat-label">Sept. persuasion readiness</div>
+          <div className="ep-stat-value">{c.tier1RevisitDue}</div>
+          <div className="ep-stat-label">Tier 1 revisit due</div>
+        </div>
+      </div>
+
+      <div className="mb-8 ep-card">
+        <h3 className="font-heading font-bold">Top county priority queue</h3>
+        <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
+          Fill open calendar days from this queue + locked trips — not the Forward Motion intelligence feed.
+        </p>
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                <th className="pb-2 pr-3">#</th>
+                <th className="pb-2 pr-3">County</th>
+                <th className="pb-2 pr-3">VCI</th>
+                <th className="pb-2 pr-3">Visits</th>
+                <th className="pb-2 pr-3">Days since</th>
+                <th className="pb-2 pr-3">Category</th>
+                <th className="pb-2">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              {c.priorityQueue.map((r, i) => (
+                <tr key={r.county} className="border-b border-[var(--ep-border)] last:border-0">
+                  <td className="py-2 pr-3">{i + 1}</td>
+                  <td className="py-2 pr-3 font-medium">{r.county}</td>
+                  <td className="py-2 pr-3">{r.vciRank ?? "—"}</td>
+                  <td className="py-2 pr-3">{r.visitCount}</td>
+                  <td className="py-2 pr-3">{r.daysSinceLastVisit ?? "—"}</td>
+                  <td className="py-2 pr-3 text-xs">{r.planningCategory.replace(/_/g, " ")}</td>
+                  <td className="py-2">{r.priorityScore}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
 
       <div className="mb-8 grid gap-4 lg:grid-cols-2">
         <div className="ep-card">
-          <h3 className="font-heading font-bold">Upcoming stops</h3>
+          <h3 className="font-heading font-bold">Delta gaps (never visited)</h3>
           <ul className="mt-3 space-y-2 text-sm">
-            {upcoming.map((s) => (
-              <li key={s.eventId} className="flex justify-between gap-2 border-b border-[var(--ep-border)] pb-2">
-                <span>{s.eventName}</span>
-                <span className="shrink-0 text-[var(--ep-navy-muted)]">{s.date}</span>
+            {c.deltaGapCounties.map((r) => (
+              <li key={r.county}>
+                <span className="font-medium">{r.county}</span>
+                <span className="text-[var(--ep-navy-muted)]"> · VCI {r.vciRank ?? "—"}</span>
+                <p className="mt-0.5 text-xs text-[var(--ep-navy-muted)]">{r.recommendedAction}</p>
               </li>
             ))}
           </ul>
         </div>
         <div className="ep-card">
-          <h3 className="font-heading font-bold">Target counties (no visit logged yet)</h3>
-          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">Showing first 24 of {remaining.length}</p>
+          <h3 className="font-heading font-bold">Tier 1 revisit due</h3>
+          <ul className="mt-3 space-y-2 text-sm">
+            {c.tier1RevisitQueue.map((r) => (
+              <li key={r.county}>
+                <span className="font-medium">{r.county}</span>
+                <span className="text-[var(--ep-navy-muted)]">
+                  {" "}
+                  · {r.visitCount} visits · last {r.lastVisitDate ?? "date uncertain"}
+                </span>
+                <p className="mt-0.5 text-xs text-[var(--ep-navy-muted)]">{r.recommendedAction}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="mb-8 grid gap-4 lg:grid-cols-2">
+        <div className="ep-card">
+          <h3 className="font-heading font-bold">Visited counties ({c.visitedCount})</h3>
           <div className="mt-3 flex flex-wrap gap-1">
-            {remaining.slice(0, 24).map((c) => (
-              <span key={c.county} className="ep-county-chip">
-                {c.county.replace(/ County$/, "")}
+            {c.visitedCounties.map((row) => (
+              <span key={row.county} className="ep-county-chip ep-county-chip-visited" title={`VCI ${row.vciRank ?? "—"} · ${row.visitCount} visits`}>
+                {row.county} ({row.visitCount})
               </span>
             ))}
+          </div>
+        </div>
+        <div className="ep-card">
+          <h3 className="font-heading font-bold">Never visited ({c.neverVisitedCount})</h3>
+          <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">Showing highest-priority gaps first</p>
+          <div className="mt-3 flex flex-wrap gap-1">
+            {[...c.neverVisitedCounties]
+              .sort((a, b) => b.priorityScore - a.priorityScore)
+              .slice(0, 32)
+              .map((row) => (
+                <span key={row.county} className="ep-county-chip">
+                  {row.county}
+                </span>
+              ))}
           </div>
         </div>
       </div>
 
-      {visited.length > 0 ? (
-        <div className="ep-card">
-          <h3 className="font-heading font-bold">Counties visited</h3>
-          <div className="mt-3 flex flex-wrap gap-1">
-            {visited.map((c) => (
-              <span key={c.county} className="ep-county-chip ep-county-chip-visited">
-                {c.county.replace(/ County$/, "")} ({c.stops})
-              </span>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="ep-warning text-sm">No counties logged yet — feed presence-stops.json after each Kelly stop.</div>
-      )}
+      <p className="text-xs text-[var(--ep-navy-muted)]">{c.doctrine}</p>
     </section>
   );
 }

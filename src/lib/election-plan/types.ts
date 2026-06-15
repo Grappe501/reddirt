@@ -395,4 +395,51 @@ export type ElectionPlanWorkbenchSnapshot = {
     category: string;
     importance: string;
   }>;
+  coverageReality: {
+    disclaimer: string;
+    referenceDate: string;
+    doctrine: string;
+    visitedCount: number;
+    neverVisitedCount: number;
+    deltaGapCount: number;
+    tier1RevisitDue: number;
+    brainPreviouslyReported: number;
+    reconciliationDelta: number;
+    visitedCounties: Array<{
+      county: string;
+      vciRank: number | null;
+      visitCount: number;
+      lastVisitDate: string | null;
+      daysSinceLastVisit: number | null;
+    }>;
+    neverVisitedCounties: Array<{
+      county: string;
+      vciRank: number | null;
+      priorityScore: number;
+      planningCategory: string;
+    }>;
+    deltaGapCounties: Array<{
+      county: string;
+      vciRank: number | null;
+      priorityScore: number;
+      recommendedAction: string;
+    }>;
+    tier1RevisitQueue: Array<{
+      county: string;
+      vciRank: number | null;
+      visitCount: number;
+      lastVisitDate: string | null;
+      daysSinceLastVisit: number | null;
+      recommendedAction: string;
+    }>;
+    priorityQueue: Array<{
+      county: string;
+      vciRank: number | null;
+      visitCount: number;
+      daysSinceLastVisit: number | null;
+      planningCategory: string;
+      priorityScore: number;
+      recommendedAction: string;
+    }>;
+  };
 };
