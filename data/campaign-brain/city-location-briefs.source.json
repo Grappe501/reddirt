@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "note": "City location brief boards — narrative landing copy. Edit here; optional build merges into election plan. Status: draft until leadership review.",
+  "briefs": {
+    "little-rock": {
+      "status": "draft",
+      "briefBoard": "Little Rock is where Arkansas watches politics happen — media market, donor conversations, coalition tables, and volunteer production all converge here. Pulaski County carries half the state's Democratic infrastructure weight, but Lane 2 drop-off still lives in neighborhood pockets North Little Rock adjacency doesn't reach. Kelly's presence here must feel steady and competent, not celebrity: clerk relationships, faith and labor validators, university-adjacent registration, and the story of a Secretary of State who already shows up before asking for trust.",
+      "situation": "The capital city concentrates media, institutional Democrats, and the clerks who watch what the SOS office does statewide. Lane 2 drop-off is visible in working-class neighborhoods and renter-heavy blocks where 2024 turnout did not translate into 2022-style midterm discipline. National noise is loud here; local trust is earned through repetition and service framing.",
+      "penetration": "Penetrate through coalition validators (labor, NAACP branches, AEA locals), neighborhood house parties in recovery ZIPs, weekly visibility rhythm, and local media that treats SOS as a service office — not a culture-war prop. Partner with Get Loud trainers for registration without partisan labeling.",
+      "accomplishment": "Hold and grow the 40,315-vote city target while producing statewide volunteer leaders, fundraising proof, and content that other counties can reuse. Little Rock should model what 'Big Table' governing looks like in public.",
+      "messaging": "Competent elections administration starts at home — in the capital city where every county clerk watches what the SOS office does. Kelly is running to make the office work for Arkansans, starting where the cameras are but not stopping where the cameras leave.",
+      "kellyTalkingPoints": [
+        "I've spent my career in rooms where working people decide whether government is worth trusting — Little Rock is where we prove it.",
+        "Secretary of State isn't a partisan referee for cable news; it's support for county clerks and confidence for voters.",
+        "Registration and turnout are neighbor work — house parties, churches, and union halls beat blast emails."
+      ],
+      "housePartyGoals": "Launch 12 founding house parties across Pulaski recovery neighborhoods by Week 4; each host commits to 5 Power of 5 conversations and one registration check drive.",
+      "volunteerGoals": "Recruit 40 city captains and 200 active volunteers tied to weekly shifts (events, phone, registration support).",
+      "registrationGoals": "Contribute 2,800+ of Pulaski's county registration allocation through community events and campus partnerships."
+    },
+    "sherwood": {
+      "status": "draft",
+      "briefBoard": "Sherwood is the home-base proof point — Kelly's 60%+ neighborhood mandate and the July GOTV kickoff that must feel like Arkansas, not a imported rally. Suburban Lane 2 recovery here is personal: neighbors who voted in 2024 but skipped 2022, church families, and school-community networks that don't see themselves in national Democratic branding.",
+      "situation": "Sherwood is Kelly's home turf and the credibility test for the whole campaign: suburban voters who want competent government without culture-war performance. Neighbors know her as a working-class Democrat who shows up — the open question is whether that translates into host committees, block captains, and a July kickoff that feels like community, not staging.",
+      "penetration": "Penetrate through block captains, Sherwood co-chairs (Duke & Powell), VIP table and host fundraising, and visible repetition — people should see Kelly in Sherwood before they see her on a flyer for somewhere else.",
+      "accomplishment": "Win Sherwood outright at 60%+ while using the city as the template for suburban recovery organizing statewide.",
+      "messaging": "Sherwood is where we show suburban Arkansas that a working-class Democrat can win by showing up, listening, and running competent elections — not by shouting louder.",
+      "kellyTalkingPoints": [
+        "Sherwood is home — this race is about whether our neighbors believe the Secretary of State's office belongs to them.",
+        "We're building host committees and house parties because democracy is still neighbor-to-neighbor work.",
+        "Winning here proves the Big Table is real — room for conservative Democrats, church folks, and independents who want honest government."
+      ],
+      "housePartyGoals": "50 listed hosts at $250 (may upgrade to VIP table); 20 active house party hosts running Power of 5 circles before the July kickoff.",
+      "volunteerGoals": "Sherwood ops roster of 25+ confirmed volunteers for event day; 10 block captains with weekly check-ins.",
+      "registrationGoals": "500 registration checks and 150 completed new registrations through Sherwood-hosted drives."
+    },
+    "fayetteville": {
+      "status": "draft",
+      "briefBoard": "Fayetteville is the university and youth-registration engine for Northwest Arkansas — student turnover, rental neighborhoods, and a culture that rewards competence over culture-war performance. Washington County's GOP lean means Lane 3 registration and Lane 4 relationship work must happen through trusted campus and community hosts, not partisan lecturing.",
+      "situation": "Northwest Arkansas's university hub mixes student turnover, young professionals, and a county that still leans GOP at the top of the ticket. Fayetteville rewards plain competence and cross-partisan civics — registration velocity matters more than rally energy. Every fall cycle resets the campus map; relationships must be institutionalized through ambassadors and returning hosts.",
+      "penetration": "Campus ambassador pipeline, church and community hosts who already hold cross-partisan trust, farmer's market and festival visibility, and digital amplification that points to in-person registration — not rage engagement.",
+      "accomplishment": "Make Fayetteville the highest registration-velocity city in NWA while building volunteer depth that survives graduation cycles.",
+      "messaging": "Young Arkansans deserve a Secretary of State who treats voting as a skill worth learning — and an office that shows up on campuses without turning civics into a team sport.",
+      "kellyTalkingPoints": [
+        "Registration is how we turn frustration into power — especially for students and first-time voters.",
+        "Northwest Arkansas doesn't need imported national politics; it needs an SOS who supports clerks and explains the process plainly.",
+        "Competence is the message — fair elections, clear rules, and respect for conscience."
+      ],
+      "housePartyGoals": "8 campus-adjacent and young-professional house parties per month during fall activation.",
+      "volunteerGoals": "30 campus and community captains; 100 volunteers on registration event shifts.",
+      "registrationGoals": "Drive 1,200+ registration completions toward the city's 14,754-vote target framework."
+    }
+  }
+}

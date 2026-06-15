@@ -86,6 +86,7 @@ export type ElectionPlanCity = {
   baselineVote: number;
   strategicRole: string;
   visitFrequency: string;
+  influenceCategory: string;
   influenceTags: string[];
   isTop10: boolean;
 };

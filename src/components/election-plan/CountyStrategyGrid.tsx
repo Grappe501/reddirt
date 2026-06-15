@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import type { ElectionPlanCounty } from "@/lib/election-plan/types";
-import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import { countyWorkbenchHref } from "@/lib/election-plan/location-links";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -25,7 +26,6 @@ function guardrailClass(status: string) {
 
 export function CountyStrategyGrid({ counties }: Props) {
   const [tierFilter, setTierFilter] = useState<string>("all");
-  const [expanded, setExpanded] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     if (tierFilter === "all") return counties;
@@ -54,56 +54,35 @@ export function CountyStrategyGrid({ counties }: Props) {
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((c) => {
-          const open = expanded === c.county;
+          const href = countyWorkbenchHref(c.county, c.slug);
           return (
-            <div key={c.county} className="ep-card ep-county-card">
-              <button
-                type="button"
-                className="w-full text-left"
-                onClick={() => setExpanded(open ? null : c.county)}
-                aria-expanded={open}
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <div className="font-heading text-lg font-bold">{c.county}</div>
-                    <div className="text-xs text-[var(--ep-navy-muted)]">{c.strategicRole}</div>
-                  </div>
-                  <div className="text-right">
-                    <span className={tierClass(c.tier)}>Tier {c.tier}</span>
-                    <div className="text-xs text-[var(--ep-navy-muted)]">VCI #{c.vciRank}</div>
-                  </div>
+            <Link
+              key={c.county}
+              href={href}
+              className="ep-card ep-county-card block transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div>
+                  <div className="font-heading text-lg font-bold">{c.county}</div>
+                  <div className="text-xs text-[var(--ep-navy-muted)]">{c.strategicRole}</div>
                 </div>
-                <div className="mt-3 flex items-center justify-between text-xs">
-                  <span className={guardrailClass(c.guardrailStatus)}>{c.guardrailStatus}</span>
-                  <span>{c.coveragePct}% covered</span>
+                <div className="text-right">
+                  <span className={tierClass(c.tier)}>Tier {c.tier}</span>
+                  <div className="text-xs text-[var(--ep-navy-muted)]">VCI #{c.vciRank}</div>
                 </div>
-              </button>
-
-              {open ? (
-                <div className="mt-4 space-y-2 border-t border-[var(--ep-border)] pt-3 text-sm">
-                  <Row label="VCI" value={formatVotes(c.vci)} />
-                  <Row label="Primary mission" value={c.primaryMission} />
-                  <Row label="Secondary" value={c.secondaryMission} />
-                  <Row label="Lane 2 @ 50%" value={formatVotes(c.lane2Recovery50)} />
-                  <Row label="Registration goal" value={formatVotes(c.registrationGoal)} />
-                  <Row label="GOP conversion" value={formatVotes(c.gopConversionPotential)} />
-                  <Row label="Coverage" value={`${c.coverageCompleted}/${c.coveragePlanned}`} />
-                  <p className="mt-2 text-xs font-medium text-[var(--ep-navy)]">{c.recommendedAction}</p>
-                </div>
-              ) : null}
-            </div>
+              </div>
+              <div className="mt-3 flex items-center justify-between text-xs">
+                <span className={guardrailClass(c.guardrailStatus)}>{c.guardrailStatus}</span>
+                <span>{c.coveragePct}% covered</span>
+              </div>
+              <p className="mt-3 line-clamp-2 text-xs text-[var(--ep-navy-muted)]">{c.recommendedAction}</p>
+              <p className="mt-3 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                Open county workbench →
+              </p>
+            </Link>
           );
         })}
       </div>
-    </div>
-  );
-}
-
-function Row({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex justify-between gap-2">
-      <span className="text-[var(--ep-navy-muted)]">{label}</span>
-      <span className="text-right font-medium">{value}</span>
     </div>
   );
 }

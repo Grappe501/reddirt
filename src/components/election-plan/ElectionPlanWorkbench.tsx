@@ -8,7 +8,8 @@ import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
 import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
 import { formatPct, formatBudget, formatVotes } from "@/lib/election-plan/electionPlanData";
 import { BattlefieldOverviewPanel } from "@/components/election-plan/BattlefieldOverviewPanel";
-import { CityStrategyGrid } from "@/components/election-plan/CityStrategyGrid";
+import { CityStrategyList } from "@/components/election-plan/CityStrategyList";
+import { locationBriefMasterPlanHref } from "@/lib/election-plan/location-links";
 import { VciExplainerCard } from "@/components/election-plan/VciExplainerCard";
 import { CountyStrategyGrid } from "@/components/election-plan/CountyStrategyGrid";
 import { ExecutiveMetricCard } from "@/components/election-plan/ExecutiveMetricCard";
@@ -48,8 +49,7 @@ const TAB_GROUPS = [
       { id: "howWeWin", label: "How We Win" },
       { id: "fourLanes", label: "Four Lanes" },
       { id: "battlefield", label: "Arkansas Battlefield" },
-      { id: "top40", label: "Top 40 Cities" },
-      { id: "top10", label: "Top 10 Cities" },
+      { id: "cities", label: "Priority Cities" },
       { id: "countyPlaybooks", label: "County Playbooks" },
       { id: "volunteerLeadership", label: "Volunteer Leadership" },
       { id: "endorsements", label: "Endorsements" },
@@ -65,6 +65,7 @@ const TAB_IDS = new Set(
 );
 
 function parseTabId(value: string | undefined): TabId {
+  if (value === "top40" || value === "top10") return "cities";
   if (value && TAB_IDS.has(value as TabId)) return value as TabId;
   return "warRoom";
 }
@@ -152,8 +153,7 @@ function TabWorkbench({ data, initialTab }: Props) {
         {active === "howWeWin" && <HowWeWinPanel data={data} />}
         {active === "fourLanes" && <FourLanesPanel data={data} />}
         {active === "battlefield" && <BattlefieldPanel data={data} />}
-        {active === "top40" && <Top40Panel data={data} />}
-        {active === "top10" && <Top10Panel data={data} />}
+        {active === "cities" && <CitiesPanel data={data} />}
         {active === "countyPlaybooks" && <CountiesPanel data={data} />}
         {active === "volunteerLeadership" && <PeoplePowerPanel data={data} />}
         {active === "endorsements" && <EndorsementAcquisitionPanel data={data} />}
@@ -366,30 +366,6 @@ function BattlefieldPanel({ data }: Props) {
   return (
     <section>
       <BattlefieldOverviewPanel clusters={data.execution.clusters} />
-    </section>
-  );
-}
-
-function Top40Panel({ data }: Props) {
-  return (
-    <section>
-      <SectionTitle title="Top 40 Cities" subtitle={`${formatVotes(data.top40TargetVotes)} vote target`} />
-      <CityStrategyGrid
-        cities={data.cities}
-        top10TargetVotes={data.top10TargetVotes}
-        top40TargetVotes={data.top40TargetVotes}
-        initialTop10Only={false}
-      />
-    </section>
-  );
-}
-
-function Top10Panel({ data }: Props) {
-  const top10 = data.cities.filter((c) => c.isTop10);
-  return (
-    <section>
-      <SectionTitle title="Top 10 Cities" subtitle={`${formatVotes(data.top10TargetVotes)} deep-dive target`} />
-      <CityStrategyGrid cities={top10} top10TargetVotes={data.top10TargetVotes} top40TargetVotes={data.top40TargetVotes} />
     </section>
   );
 }
@@ -670,12 +646,16 @@ function CountiesPanel({ data }: Props) {
 function CitiesPanel({ data }: Props) {
   return (
     <section>
-      <SectionTitle title="City Strategy" subtitle="Top 40 Arkansas cities · Top 10 deep dives" />
-      <CityStrategyGrid
-        cities={data.cities}
-        top10TargetVotes={data.top10TargetVotes}
-        top40TargetVotes={data.top40TargetVotes}
+      <SectionTitle
+        title="Priority Cities"
+        subtitle={`${data.cities.length} cities · ${formatVotes(data.top40TargetVotes)} combined vote target · each opens a location brief`}
       />
+      <p className="mb-6 text-sm">
+        <Link href={locationBriefMasterPlanHref()} className="font-semibold text-[var(--ep-gold)] hover:underline">
+          Location brief master plan →
+        </Link>
+      </p>
+      <CityStrategyList cities={data.cities} combinedTargetVotes={data.top40TargetVotes} />
     </section>
   );
 }
