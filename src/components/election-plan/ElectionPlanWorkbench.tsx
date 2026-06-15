@@ -9,6 +9,7 @@ import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
 import { formatPct, formatBudget, formatVotes } from "@/lib/election-plan/electionPlanData";
 import { BattlefieldOverviewPanel } from "@/components/election-plan/BattlefieldOverviewPanel";
 import { CityStrategyGrid } from "@/components/election-plan/CityStrategyGrid";
+import { VciExplainerCard } from "@/components/election-plan/VciExplainerCard";
 import { CountyStrategyGrid } from "@/components/election-plan/CountyStrategyGrid";
 import { ExecutiveMetricCard } from "@/components/election-plan/ExecutiveMetricCard";
 import { cn } from "@/lib/utils";
@@ -324,6 +325,10 @@ function HowWeWinPanel({ data }: Props) {
           counties · win Sherwood at <strong>60%+</strong>.
         </p>
         <p className="mt-4">
+          <Link href="/election-plan/platform" className="font-semibold text-[var(--ep-gold)] hover:underline">
+            Kelly Grappe SOS Platform (from Big Table Doctrine) →
+          </Link>
+          {" · "}
           <Link href="/election-plan/how-we-win/candidate-version" className="font-semibold text-[var(--ep-gold)] hover:underline">
             Kelly&apos;s candidate version brief →
           </Link>
@@ -650,8 +655,14 @@ function DropRow({ label, value, highlight }: { label: string; value: number; hi
 function CountiesPanel({ data }: Props) {
   return (
     <section>
-      <SectionTitle title="County Strategy" subtitle="75 counties · VCI rank · coverage · guardrails" />
-      <CountyStrategyGrid counties={data.counties} />
+      <SectionTitle
+        title="County Strategy"
+        subtitle="75 counties · Victory Contribution Index rank · coverage · guardrails"
+      />
+      <VciExplainerCard compact />
+      <div className="mt-6">
+        <CountyStrategyGrid counties={data.counties} />
+      </div>
     </section>
   );
 }

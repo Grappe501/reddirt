@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { BIG_TABLE_DOCTRINE } from "@/lib/election-plan/big-table-doctrine-content";
+import { platformHubHref } from "@/lib/election-plan/kelly-sos-platform";
 
 type Props = {
   standalone?: boolean;
@@ -27,6 +28,21 @@ export function BigTableDoctrinePanel({ standalone }: Props) {
       </div>
 
       <p className="mb-8 text-base leading-relaxed text-[var(--ep-navy-muted)]">{d.intro}</p>
+
+      <div className="ep-card ep-priority-card mb-10 border-l-4 border-[var(--ep-gold)]">
+        <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">From doctrine to governing platform</h2>
+        <p className="mt-2 text-sm leading-relaxed text-[var(--ep-navy-muted)]">
+          The Big Table is not only how Kelly wins — it is how she will govern. The Secretary of State platform
+          translates these beliefs into office planks, first 100 days actions, and what Arkansans should look back on
+          after her tenure.
+        </p>
+        <Link
+          href={platformHubHref()}
+          className="mt-4 inline-block rounded-md bg-[var(--ep-navy)] px-4 py-2 text-sm font-semibold text-white hover:bg-[var(--ep-navy-muted)]"
+        >
+          Open Kelly Grappe SOS Platform →
+        </Link>
+      </div>
 
       <h2 className="mb-4 font-heading text-lg font-bold text-[var(--ep-navy)]">We believe</h2>
       <div className="mb-10 space-y-4">
@@ -65,6 +81,9 @@ export function BigTableDoctrinePanel({ standalone }: Props) {
       </div>
 
       <div className="flex flex-wrap gap-2">
+        <Link href={platformHubHref()} className="ep-chapter-link">
+          SOS Platform (8 planks) →
+        </Link>
         <Link href="/election-plan/lanes-overview" className="ep-chapter-link">
           Four lanes overview →
         </Link>

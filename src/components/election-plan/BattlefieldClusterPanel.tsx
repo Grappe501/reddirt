@@ -7,6 +7,7 @@ import {
   countyDashboardLabel,
 } from "@/lib/election-plan/battlefield-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import { VciExplainerCard } from "@/components/election-plan/VciExplainerCard";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -51,7 +52,7 @@ export function BattlefieldClusterPanel({ cluster, counties: allCounties }: Prop
       <div className="mb-8 ep-stat-grid">
         <div className="ep-stat">
           <div className="ep-stat-value">{formatVotes(cluster.vci)}</div>
-          <div className="ep-stat-label">Cluster VCI</div>
+          <div className="ep-stat-label">Cluster VCI (Victory Contribution Index)</div>
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{(cluster.shareOfExpected * 100).toFixed(1)}%</div>
@@ -66,6 +67,8 @@ export function BattlefieldClusterPanel({ cluster, counties: allCounties }: Prop
           <div className="ep-stat-label">Lane 2 @ 50% (sum)</div>
         </div>
       </div>
+
+      <VciExplainerCard compact />
 
       <h2 className="mb-3 font-heading text-lg font-bold">Counties in this cluster</h2>
       <p className="mb-4 text-xs text-[var(--ep-navy-muted)]">
@@ -88,7 +91,7 @@ export function BattlefieldClusterPanel({ cluster, counties: allCounties }: Prop
 
             <dl className="mt-4 space-y-1.5 text-xs">
               <div className="flex justify-between gap-2">
-                <dt className="text-[var(--ep-navy-muted)]">VCI</dt>
+                <dt className="text-[var(--ep-navy-muted)]">Victory Contribution Index</dt>
                 <dd className="font-semibold tabular-nums">{formatVotes(c.vci)}</dd>
               </div>
               <div className="flex justify-between gap-2">

@@ -13,6 +13,7 @@ function resolveHref(href: string): string | null {
   if (href.startsWith("/election-plan")) return href;
   const lower = href.toLowerCase();
   if (lower.includes("big-table-democrat-doctrine")) return "/election-plan/big-table-doctrine";
+  if (lower.includes("sos-platform") || lower.includes("kelly-grappe-sos-platform")) return "/election-plan/platform";
   if (lower.includes("candidate-version")) return "/election-plan/how-we-win/candidate-version";
   const budgetRoute = budgetDocPathToRoute(href);
   if (budgetRoute) return budgetRoute;

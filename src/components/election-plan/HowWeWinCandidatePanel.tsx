@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
 import { HOW_WE_WIN_CANDIDATE } from "@/lib/election-plan/how-we-win-candidate-content";
+import { platformHubHref } from "@/lib/election-plan/kelly-sos-platform";
 import { laneDescriptiveLabelByNumber } from "@/lib/election-plan/four-lanes-labels";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 
@@ -117,6 +118,10 @@ export function HowWeWinCandidatePanel({ data, standalone }: Props) {
           </Link>
           {" — "}
           {c.voiceNote}
+          {" "}
+          <Link href={platformHubHref()} className="font-semibold text-[var(--ep-navy)] underline">
+            Full SOS platform →
+          </Link>
         </p>
       </div>
 
@@ -128,6 +133,9 @@ export function HowWeWinCandidatePanel({ data, standalone }: Props) {
       <div className="flex flex-wrap gap-3 text-sm">
         <Link href="/election-plan/executive-book/message" className="ep-chapter-link">
           Kelly Grappe message chapter →
+        </Link>
+        <Link href={platformHubHref()} className="ep-chapter-link">
+          SOS Platform →
         </Link>
         <Link href="/election-plan/big-table-doctrine" className="ep-chapter-link">
           Big Table doctrine →

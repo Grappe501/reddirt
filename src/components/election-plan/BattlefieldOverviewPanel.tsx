@@ -1,8 +1,9 @@
 import Link from "next/link";
 
-import type { ElectionPlanCluster, ElectionPlanCounty } from "@/lib/election-plan/types";
+import type { ElectionPlanCluster } from "@/lib/election-plan/types";
 import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
 import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
+import { VciExplainerCard } from "@/components/election-plan/VciExplainerCard";
 
 type Props = {
   clusters: ElectionPlanCluster[];
@@ -18,7 +19,7 @@ export function BattlefieldOverviewPanel({ clusters, standalone }: Props) {
         <div>
           <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">Arkansas Battlefield</h1>
           <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-            Nine clusters · 75 counties · VCI-ranked missions
+            Nine clusters · 75 counties · ranked by Victory Contribution Index (VCI)
           </p>
         </div>
         {standalone ? (
@@ -42,9 +43,11 @@ export function BattlefieldOverviewPanel({ clusters, standalone }: Props) {
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{formatVotes(totalVci)}</div>
-          <div className="ep-stat-label">Combined cluster VCI</div>
+          <div className="ep-stat-label">Combined Victory Contribution Index</div>
         </div>
       </div>
+
+      <VciExplainerCard />
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {clusters.map((c) => (
