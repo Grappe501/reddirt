@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "pass": "CAMPAIGN-BUDGET-FRAMEWORK-1.0",
+  "note": "Planning assumptions only — not final accounting. Mark needs_quote where vendor pricing is unknown.",
+  "referenceDate": "2026-06-15",
+  "electionDay": "2026-11-03",
+  "campaignPeriod": {
+    "start": "2026-06-15",
+    "end": "2026-11-03"
+  },
+  "fixedAssumptions": {
+    "fuelAllowancePerMonth": 2500,
+    "foodPerTravelDay": 150,
+    "foodNote": "Steve + Kelly on travel days",
+    "lodgingPerNight": 175,
+    "tShirtUnit": 9,
+    "yardSignUnit": 9,
+    "kellyReplacementSalaryPerMonth": 12000,
+    "salaryNote": "Leave-of-absence replacement so Kelly can campaign full-time"
+  },
+  "salary": {
+    "monthlyAmount": 12000,
+    "monthsBudgeted": 6,
+    "monthsLabel": "June 2026 through November 2026 (Election Day)",
+    "total": 72000
+  },
+  "placeholders": {
+    "printing": { "status": "needs_quote", "note": "Visit cards, push cards, door hangers, literature" },
+    "postcards": { "status": "needs_quote", "note": "4x6 or 5x7 full-color postcard print per unit" },
+    "postage": { "status": "needs_quote", "note": "USPS Marketing Mail or first-class; use 2026 rate table" },
+    "mailers": { "status": "needs_quote", "note": "Direct mail production + postage" },
+    "doorHangers": { "status": "needs_quote", "note": "Per unit print" },
+    "pushCards": { "status": "needs_quote", "note": "Per unit print" },
+    "banners": { "status": "needs_quote", "note": "Vinyl / mesh banners" },
+    "tableFees": { "status": "needs_quote", "note": "Festival vendor tables from field calendar" },
+    "boothFees": { "status": "needs_quote", "note": "Fair booth fees — verify per event" },
+    "eventSponsorships": { "status": "needs_quote", "note": "Parade, festival sponsorship tiers" },
+    "digitalAds": { "status": "needs_quote", "note": "Meta / Google / local digital" },
+    "videoEditing": { "status": "needs_quote", "note": "Contractor or in-house time" },
+    "graphicDesign": { "status": "needs_quote", "note": "Forward Motion graphics queue" },
+    "websiteSoftware": { "status": "needs_quote", "note": "Hosting, Netlify, domain, tools" },
+    "mobilize": { "status": "needs_quote", "note": "Mobilize subscription tier" },
+    "substack": { "status": "needs_quote", "note": "Substack paid tier if used" },
+    "emailTools": { "status": "needs_quote", "note": "SendGrid / email platform" },
+    "textTools": { "status": "needs_quote", "note": "SMS / peer-to-peer texting platform" },
+    "compliance": { "status": "needs_quote", "note": "Campaign counsel, ethics filings support" },
+    "accounting": { "status": "needs_quote", "note": "Bookkeeper / treasurer services" },
+    "filingFees": { "status": "needs_quote", "note": "Arkansas SOS / ethics filing fees" },
+    "insurance": { "status": "needs_quote", "note": "Event liability, general campaign" },
+    "eventSecurity": { "status": "needs_quote", "note": "Sherwood and large events" },
+    "venueRentals": { "status": "needs_quote", "note": "Non-Sherwood venues" },
+    "alcoholCateringCompliance": { "status": "needs_quote", "note": "Sherwood drink-ticket legal review + compliance" },
+    "sherwoodEventCosts": { "status": "needs_quote", "note": "See SHERWOOD-60-BUDGET.md model" },
+    "volunteerRetreatCosts": { "status": "needs_quote", "note": "Forevermost Farms retreat — food, printing, materials" },
+    "buttons": { "status": "needs_quote", "unitPlaceholder": 0.75 },
+    "flags": { "status": "needs_quote" },
+    "fans": { "status": "needs_quote" },
+    "stickers": { "status": "needs_quote", "unitPlaceholder": 0.5 },
+    "tablecloths": { "status": "needs_quote" },
+    "clipboards": { "status": "needs_quote" },
+    "tents": { "status": "needs_quote" },
+    "literature": { "status": "needs_quote" },
+    "phoneBankTools": { "status": "needs_quote", "note": "Dialer / OpenVPB / similar" },
+    "localNewspaperAds": { "status": "needs_quote" },
+    "boostedPosts": { "status": "needs_quote" }
+  },
+  "fieldMaterialsScenarios": {
+    "yardSigns": [500, 1000, 2000, 3000],
+    "tShirts": [250, 500, 1000, 2000]
+  },
+  "postcardPrograms": {
+    "visitAnnouncement": { "goalQuantity": 5000, "printStatus": "needs_quote", "postageStatus": "needs_quote" },
+    "seniorGotv": { "goalQuantity": 25000, "printStatus": "needs_quote", "postageStatus": "needs_quote" },
+    "youthGotv": { "goalQuantity": 10000, "printStatus": "needs_quote", "postageStatus": "needs_quote" },
+    "volunteerRecruitment": { "goalQuantity": 5000, "printStatus": "needs_quote", "postageStatus": "needs_quote" },
+    "faithOutreach": { "goalQuantity": 3000, "printStatus": "needs_quote", "postageStatus": "needs_quote" }
+  },
+  "sherwoodRevenueAssumptions": {
+    "vipTablePrice": 1000,
+    "vipTableGoal": 20,
+    "showTicketPrice": 25,
+    "foodTicketPrice": 25,
+    "donationDrinkTicketPrice": 20,
+    "capacityNote": "700+ outdoor — from win-sherwood-operation.json"
+  },
+  "fundraisingScenarios": {
+    "bareMinimum": {
+      "label": "Bare minimum",
+      "description": "Salary + travel (conservative) + minimal materials + Sherwood break-even",
+      "materialsTier": "low"
+    },
+    "workingCampaign": {
+      "label": "Working campaign",
+      "description": "Salary + expected travel + mid-tier materials + communications + volunteer ops",
+      "materialsTier": "mid"
+    },
+    "aggressiveStatewide": {
+      "label": "Aggressive statewide push",
+      "description": "Salary + aggressive travel + high materials + full mail + digital + GOTV",
+      "materialsTier": "high"
+    }
+  }
+}

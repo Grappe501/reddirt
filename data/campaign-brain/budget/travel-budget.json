@@ -1,0 +1,78 @@
+{
+  "months": [
+    {
+      "month": "2026-06",
+      "label": "June 2026",
+      "fuel": 1333,
+      "foodDays": 30,
+      "foodCost": 4500,
+      "lodgingNights": 20,
+      "lodgingCost": 3500,
+      "total": 9333,
+      "eventCount": 11
+    },
+    {
+      "month": "2026-07",
+      "label": "July 2026",
+      "fuel": 2500,
+      "foodDays": 21,
+      "foodCost": 3150,
+      "lodgingNights": 9,
+      "lodgingCost": 1575,
+      "total": 7225,
+      "eventCount": 12
+    },
+    {
+      "month": "2026-08",
+      "label": "August 2026",
+      "fuel": 2500,
+      "foodDays": 13,
+      "foodCost": 1950,
+      "lodgingNights": 3,
+      "lodgingCost": 525,
+      "total": 4975,
+      "eventCount": 10
+    },
+    {
+      "month": "2026-09",
+      "label": "September 2026",
+      "fuel": 2500,
+      "foodDays": 20,
+      "foodCost": 3000,
+      "lodgingNights": 10,
+      "lodgingCost": 1750,
+      "total": 7250,
+      "eventCount": 10
+    },
+    {
+      "month": "2026-10",
+      "label": "October 2026",
+      "fuel": 2500,
+      "foodDays": 22,
+      "foodCost": 3300,
+      "lodgingNights": 16,
+      "lodgingCost": 2800,
+      "total": 8600,
+      "eventCount": 7
+    },
+    {
+      "month": "2026-11",
+      "label": "November 2026",
+      "fuel": 250,
+      "foodDays": 0,
+      "foodCost": 0,
+      "lodgingNights": 0,
+      "lodgingCost": 0,
+      "total": 250,
+      "eventCount": 0
+    }
+  ],
+  "totals": {
+    "fuel": 11583,
+    "food": 15900,
+    "lodging": 10150,
+    "total": 37633,
+    "foodDays": 106,
+    "lodgingNights": 58
+  }
+}

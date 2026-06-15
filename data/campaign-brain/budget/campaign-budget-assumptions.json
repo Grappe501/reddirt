@@ -1,0 +1,486 @@
+{
+  "version": 1,
+  "pass": "CAMPAIGN-BUDGET-FRAMEWORK-1.0",
+  "note": "Planning assumptions only — not final accounting. Mark needs_quote where vendor pricing is unknown.",
+  "referenceDate": "2026-06-15",
+  "electionDay": "2026-11-03",
+  "campaignPeriod": {
+    "start": "2026-06-15",
+    "end": "2026-11-03"
+  },
+  "fixedAssumptions": {
+    "fuelAllowancePerMonth": 2500,
+    "foodPerTravelDay": 150,
+    "foodNote": "Steve + Kelly on travel days",
+    "lodgingPerNight": 175,
+    "tShirtUnit": 9,
+    "yardSignUnit": 9,
+    "kellyReplacementSalaryPerMonth": 12000,
+    "salaryNote": "Leave-of-absence replacement so Kelly can campaign full-time"
+  },
+  "salary": {
+    "monthlyAmount": 12000,
+    "monthsBudgeted": 6,
+    "monthsLabel": "June 2026 through November 2026 (Election Day)",
+    "total": 72000
+  },
+  "placeholders": {
+    "printing": {
+      "status": "needs_quote",
+      "note": "Visit cards, push cards, door hangers, literature"
+    },
+    "postcards": {
+      "status": "needs_quote",
+      "note": "4x6 or 5x7 full-color postcard print per unit"
+    },
+    "postage": {
+      "status": "needs_quote",
+      "note": "USPS Marketing Mail or first-class; use 2026 rate table"
+    },
+    "mailers": {
+      "status": "needs_quote",
+      "note": "Direct mail production + postage"
+    },
+    "doorHangers": {
+      "status": "needs_quote",
+      "note": "Per unit print"
+    },
+    "pushCards": {
+      "status": "needs_quote",
+      "note": "Per unit print"
+    },
+    "banners": {
+      "status": "needs_quote",
+      "note": "Vinyl / mesh banners"
+    },
+    "tableFees": {
+      "status": "needs_quote",
+      "note": "Festival vendor tables from field calendar"
+    },
+    "boothFees": {
+      "status": "needs_quote",
+      "note": "Fair booth fees — verify per event"
+    },
+    "eventSponsorships": {
+      "status": "needs_quote",
+      "note": "Parade, festival sponsorship tiers"
+    },
+    "digitalAds": {
+      "status": "needs_quote",
+      "note": "Meta / Google / local digital"
+    },
+    "videoEditing": {
+      "status": "needs_quote",
+      "note": "Contractor or in-house time"
+    },
+    "graphicDesign": {
+      "status": "needs_quote",
+      "note": "Forward Motion graphics queue"
+    },
+    "websiteSoftware": {
+      "status": "needs_quote",
+      "note": "Hosting, Netlify, domain, tools"
+    },
+    "mobilize": {
+      "status": "needs_quote",
+      "note": "Mobilize subscription tier"
+    },
+    "substack": {
+      "status": "needs_quote",
+      "note": "Substack paid tier if used"
+    },
+    "emailTools": {
+      "status": "needs_quote",
+      "note": "SendGrid / email platform"
+    },
+    "textTools": {
+      "status": "needs_quote",
+      "note": "SMS / peer-to-peer texting platform"
+    },
+    "compliance": {
+      "status": "needs_quote",
+      "note": "Campaign counsel, ethics filings support"
+    },
+    "accounting": {
+      "status": "needs_quote",
+      "note": "Bookkeeper / treasurer services"
+    },
+    "filingFees": {
+      "status": "needs_quote",
+      "note": "Arkansas SOS / ethics filing fees"
+    },
+    "insurance": {
+      "status": "needs_quote",
+      "note": "Event liability, general campaign"
+    },
+    "eventSecurity": {
+      "status": "needs_quote",
+      "note": "Sherwood and large events"
+    },
+    "venueRentals": {
+      "status": "needs_quote",
+      "note": "Non-Sherwood venues"
+    },
+    "alcoholCateringCompliance": {
+      "status": "needs_quote",
+      "note": "Sherwood drink-ticket legal review + compliance"
+    },
+    "sherwoodEventCosts": {
+      "status": "needs_quote",
+      "note": "See SHERWOOD-60-BUDGET.md model"
+    },
+    "volunteerRetreatCosts": {
+      "status": "needs_quote",
+      "note": "Forevermost Farms retreat — food, printing, materials"
+    },
+    "buttons": {
+      "status": "needs_quote",
+      "unitPlaceholder": 0.75
+    },
+    "flags": {
+      "status": "needs_quote"
+    },
+    "fans": {
+      "status": "needs_quote"
+    },
+    "stickers": {
+      "status": "needs_quote",
+      "unitPlaceholder": 0.5
+    },
+    "tablecloths": {
+      "status": "needs_quote"
+    },
+    "clipboards": {
+      "status": "needs_quote"
+    },
+    "tents": {
+      "status": "needs_quote"
+    },
+    "literature": {
+      "status": "needs_quote"
+    },
+    "phoneBankTools": {
+      "status": "needs_quote",
+      "note": "Dialer / OpenVPB / similar"
+    },
+    "localNewspaperAds": {
+      "status": "needs_quote"
+    },
+    "boostedPosts": {
+      "status": "needs_quote"
+    }
+  },
+  "fieldMaterialsScenarios": {
+    "yardSigns": [
+      500,
+      1000,
+      2000,
+      3000
+    ],
+    "tShirts": [
+      250,
+      500,
+      1000,
+      2000
+    ]
+  },
+  "postcardPrograms": {
+    "visitAnnouncement": {
+      "goalQuantity": 5000,
+      "printStatus": "needs_quote",
+      "postageStatus": "needs_quote"
+    },
+    "seniorGotv": {
+      "goalQuantity": 25000,
+      "printStatus": "needs_quote",
+      "postageStatus": "needs_quote"
+    },
+    "youthGotv": {
+      "goalQuantity": 10000,
+      "printStatus": "needs_quote",
+      "postageStatus": "needs_quote"
+    },
+    "volunteerRecruitment": {
+      "goalQuantity": 5000,
+      "printStatus": "needs_quote",
+      "postageStatus": "needs_quote"
+    },
+    "faithOutreach": {
+      "goalQuantity": 3000,
+      "printStatus": "needs_quote",
+      "postageStatus": "needs_quote"
+    }
+  },
+  "sherwoodRevenueAssumptions": {
+    "vipTablePrice": 1000,
+    "vipTableGoal": 20,
+    "showTicketPrice": 25,
+    "foodTicketPrice": 25,
+    "donationDrinkTicketPrice": 20,
+    "capacityNote": "700+ outdoor — from win-sherwood-operation.json"
+  },
+  "fundraisingScenarios": {
+    "bareMinimum": {
+      "label": "Bare minimum",
+      "description": "Salary + travel (conservative) + minimal materials + Sherwood break-even",
+      "materialsTier": "low"
+    },
+    "workingCampaign": {
+      "label": "Working campaign",
+      "description": "Salary + expected travel + mid-tier materials + communications + volunteer ops",
+      "materialsTier": "mid"
+    },
+    "aggressiveStatewide": {
+      "label": "Aggressive statewide push",
+      "description": "Salary + aggressive travel + high materials + full mail + digital + GOTV",
+      "materialsTier": "high"
+    }
+  },
+  "generatedAt": "2026-06-15T07:10:35.156Z",
+  "computed": {
+    "travel": {
+      "conservative": {
+        "fuel": 11583,
+        "food": 12600,
+        "lodging": 7350,
+        "total": 31533,
+        "foodDays": 84,
+        "lodgingNights": 42
+      },
+      "expected": {
+        "fuel": 11583,
+        "food": 15900,
+        "lodging": 10150,
+        "total": 37633,
+        "foodDays": 106,
+        "lodgingNights": 58
+      },
+      "aggressive": {
+        "fuel": 11583,
+        "food": 24000,
+        "lodging": 11200,
+        "total": 46783,
+        "foodDays": 160,
+        "lodgingNights": 64
+      },
+      "monthlyBreakdown": {
+        "conservative": [
+          {
+            "month": "2026-06",
+            "label": "June 2026",
+            "fuel": 1333,
+            "foodDays": 28,
+            "foodCost": 4200,
+            "lodgingNights": 16,
+            "lodgingCost": 2800,
+            "total": 8333,
+            "eventCount": 11
+          },
+          {
+            "month": "2026-07",
+            "label": "July 2026",
+            "fuel": 2500,
+            "foodDays": 19,
+            "foodCost": 2850,
+            "lodgingNights": 8,
+            "lodgingCost": 1400,
+            "total": 6750,
+            "eventCount": 11
+          },
+          {
+            "month": "2026-08",
+            "label": "August 2026",
+            "fuel": 2500,
+            "foodDays": 6,
+            "foodCost": 900,
+            "lodgingNights": 0,
+            "lodgingCost": 0,
+            "total": 3400,
+            "eventCount": 6
+          },
+          {
+            "month": "2026-09",
+            "label": "September 2026",
+            "fuel": 2500,
+            "foodDays": 15,
+            "foodCost": 2250,
+            "lodgingNights": 7,
+            "lodgingCost": 1225,
+            "total": 5975,
+            "eventCount": 8
+          },
+          {
+            "month": "2026-10",
+            "label": "October 2026",
+            "fuel": 2500,
+            "foodDays": 16,
+            "foodCost": 2400,
+            "lodgingNights": 11,
+            "lodgingCost": 1925,
+            "total": 6825,
+            "eventCount": 4
+          },
+          {
+            "month": "2026-11",
+            "label": "November 2026",
+            "fuel": 250,
+            "foodDays": 0,
+            "foodCost": 0,
+            "lodgingNights": 0,
+            "lodgingCost": 0,
+            "total": 250,
+            "eventCount": 0
+          }
+        ],
+        "expected": [
+          {
+            "month": "2026-06",
+            "label": "June 2026",
+            "fuel": 1333,
+            "foodDays": 30,
+            "foodCost": 4500,
+            "lodgingNights": 20,
+            "lodgingCost": 3500,
+            "total": 9333,
+            "eventCount": 11
+          },
+          {
+            "month": "2026-07",
+            "label": "July 2026",
+            "fuel": 2500,
+            "foodDays": 21,
+            "foodCost": 3150,
+            "lodgingNights": 9,
+            "lodgingCost": 1575,
+            "total": 7225,
+            "eventCount": 12
+          },
+          {
+            "month": "2026-08",
+            "label": "August 2026",
+            "fuel": 2500,
+            "foodDays": 13,
+            "foodCost": 1950,
+            "lodgingNights": 3,
+            "lodgingCost": 525,
+            "total": 4975,
+            "eventCount": 10
+          },
+          {
+            "month": "2026-09",
+            "label": "September 2026",
+            "fuel": 2500,
+            "foodDays": 20,
+            "foodCost": 3000,
+            "lodgingNights": 10,
+            "lodgingCost": 1750,
+            "total": 7250,
+            "eventCount": 10
+          },
+          {
+            "month": "2026-10",
+            "label": "October 2026",
+            "fuel": 2500,
+            "foodDays": 22,
+            "foodCost": 3300,
+            "lodgingNights": 16,
+            "lodgingCost": 2800,
+            "total": 8600,
+            "eventCount": 7
+          },
+          {
+            "month": "2026-11",
+            "label": "November 2026",
+            "fuel": 250,
+            "foodDays": 0,
+            "foodCost": 0,
+            "lodgingNights": 0,
+            "lodgingCost": 0,
+            "total": 250,
+            "eventCount": 0
+          }
+        ],
+        "aggressive": [
+          {
+            "month": "2026-06",
+            "label": "June 2026",
+            "fuel": 1333,
+            "foodDays": 42,
+            "foodCost": 6300,
+            "lodgingNights": 22,
+            "lodgingCost": 3850,
+            "total": 11483,
+            "eventCount": 18
+          },
+          {
+            "month": "2026-07",
+            "label": "July 2026",
+            "fuel": 2500,
+            "foodDays": 35,
+            "foodCost": 5250,
+            "lodgingNights": 10,
+            "lodgingCost": 1750,
+            "total": 9500,
+            "eventCount": 23
+          },
+          {
+            "month": "2026-08",
+            "label": "August 2026",
+            "fuel": 2500,
+            "foodDays": 27,
+            "foodCost": 4050,
+            "lodgingNights": 3,
+            "lodgingCost": 525,
+            "total": 7075,
+            "eventCount": 24
+          },
+          {
+            "month": "2026-09",
+            "label": "September 2026",
+            "fuel": 2500,
+            "foodDays": 31,
+            "foodCost": 4650,
+            "lodgingNights": 11,
+            "lodgingCost": 1925,
+            "total": 9075,
+            "eventCount": 18
+          },
+          {
+            "month": "2026-10",
+            "label": "October 2026",
+            "fuel": 2500,
+            "foodDays": 25,
+            "foodCost": 3750,
+            "lodgingNights": 18,
+            "lodgingCost": 3150,
+            "total": 9400,
+            "eventCount": 7
+          },
+          {
+            "month": "2026-11",
+            "label": "November 2026",
+            "fuel": 250,
+            "foodDays": 0,
+            "foodCost": 0,
+            "lodgingNights": 0,
+            "lodgingCost": 0,
+            "total": 250,
+            "eventCount": 0
+          }
+        ]
+      }
+    },
+    "materials": {
+      "low": 6750,
+      "mid": 13500,
+      "high": 27000
+    },
+    "postcardMidEstimate": 27839.999999999996,
+    "sherwoodNetMidEstimate": 11500,
+    "scenarios": {
+      "bareMinimumTotal": 126783,
+      "workingCampaignTotal": 167553,
+      "aggressiveStatewideTotal": 246123
+    }
+  }
+}
