@@ -624,6 +624,91 @@ export function PresenceMapPanel({ data }: Props) {
         </div>
       ) : null}
 
+      {data.calendarFillPhaseC.mustHitCountyCount > 0 ? (
+        <div className="ep-card mb-8 border-l-4 border-blue-600">
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="font-heading font-bold">Calendar Fill Phase C</h3>
+            <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-semibold uppercase text-blue-900">
+              Operational lock review — not final
+            </span>
+          </div>
+          <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{data.calendarFillPhaseC.disclaimer}</p>
+          <div className="mt-4 ep-stat-grid">
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseC.mustHitCountyCount}</div>
+              <div className="ep-stat-label">Must-hit counties</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseC.bonusCountyCount}</div>
+              <div className="ep-stat-label">Bonus-if-time</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseC.conditionalBlocksResolved}</div>
+              <div className="ep-stat-label">Conditional resolved</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{data.calendarFillPhaseC.leadershipDecisionsPending}</div>
+              <div className="ep-stat-label">Decisions pending</div>
+            </div>
+          </div>
+          <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
+            {data.calendarFillPhaseC.pathwayMustHit} · {data.calendarFillPhaseC.pathwayFull}
+          </p>
+          {data.calendarFillPhaseC.refinedBlocks.some((b) => b.approvalStatus === "conditional_resolved") ? (
+            <div className="mt-4">
+              <h4 className="text-sm font-bold">Phase C refinements</h4>
+              <ul className="mt-2 space-y-1 text-xs">
+                {data.calendarFillPhaseC.refinedBlocks
+                  .filter((b) => b.approvalStatus === "conditional_resolved")
+                  .map((b) => (
+                    <li key={b.id}>
+                      <span className="font-medium">{b.label}</span>
+                      {b.mustHitCounties.length > 0 ? (
+                        <span className="text-[var(--ep-navy-muted)]">
+                          {" "}
+                          — must-hit: {b.mustHitCounties.join(", ")}
+                          {b.bonusIfTimeCounties.length > 0
+                            ? ` · bonus: ${b.bonusIfTimeCounties.join(", ")}`
+                            : ""}
+                        </span>
+                      ) : null}
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          ) : null}
+          {data.calendarFillPhaseC.timeAudits.length > 0 ? (
+            <div className="mt-4 overflow-x-auto">
+              <h4 className="text-sm font-bold">Kelly time allocation audit</h4>
+              <table className="mt-2 w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                    <th className="pb-2 pr-3">Block</th>
+                    <th className="pb-2 pr-3">Candidate</th>
+                    <th className="pb-2 pr-3">Travel</th>
+                    <th className="pb-2 pr-3">Event</th>
+                    <th className="pb-2 pr-3">Relationship</th>
+                    <th className="pb-2">Density</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.calendarFillPhaseC.timeAudits.map((a) => (
+                    <tr key={a.blockId} className="border-b border-[var(--ep-border)] last:border-0">
+                      <td className="py-2 pr-3 text-xs">{a.block}</td>
+                      <td className="py-2 pr-3 text-xs">{a.candidateHours}h</td>
+                      <td className="py-2 pr-3 text-xs">{a.travelHours}h</td>
+                      <td className="py-2 pr-3 text-xs">{a.eventHours}h</td>
+                      <td className="py-2 pr-3 text-xs">{a.relationshipHours}h</td>
+                      <td className="py-2 text-xs capitalize">{a.relationshipDensity}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
       <p className="text-xs text-[var(--ep-navy-muted)]">{c.doctrine}</p>
     </section>
   );

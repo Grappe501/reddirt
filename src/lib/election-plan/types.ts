@@ -513,4 +513,36 @@ export type ElectionPlanWorkbenchSnapshot = {
     }>;
     tier1RevisitsProposed: string[];
   };
+  calendarFillPhaseC: {
+    disclaimer: string;
+    status: string;
+    strategyLabel: string;
+    leadershipSignOffRequired: boolean;
+    conditionalBlocksResolved: number;
+    protectedBlocks: number;
+    mustHitCountyCount: number;
+    bonusCountyCount: number;
+    leadershipDecisionsPending: number;
+    pathwayMustHit: string;
+    pathwayFull: string;
+    refinedBlocks: Array<{
+      id: string;
+      label: string;
+      startDate: string;
+      endDate: string;
+      countiesNew: string[];
+      approvalStatus: string;
+      mustHitCounties: string[];
+      bonusIfTimeCounties: string[];
+    }>;
+    timeAudits: Array<{
+      blockId: string;
+      block: string;
+      candidateHours: number;
+      travelHours: number;
+      eventHours: number;
+      relationshipHours: number;
+      relationshipDensity: string;
+    }>;
+  };
 };

@@ -961,6 +961,94 @@ function buildCalendarFillPhaseBSection() {
   };
 }
 
+function buildCalendarFillPhaseCSection() {
+  const summary = readJson<{
+    disclaimer?: string;
+    conditionalBlocksResolved?: number;
+    protectedBlocks?: number;
+    mustHitCountyCount?: number;
+    bonusCountyCount?: number;
+    leadershipDecisionsPending?: number;
+  }>(path.join(BRAIN, "calendar-fill/calendar-fill-phase-c.summary.json"));
+
+  const v2 = readJson<{
+    strategyLabel?: string;
+    status?: string;
+    coverage?: {
+      mustHitCountyCount?: number;
+      bonusCountyCount?: number;
+      pathwayMustHit?: string;
+      pathwayFull?: string;
+    };
+    proposedBlocksV2?: Array<{
+      id: string;
+      label: string;
+      startDate: string;
+      endDate: string;
+      countiesNew: string[];
+      approvalStatus: string;
+      mustHitCounties?: string[];
+      bonusIfTimeCounties?: string[];
+    }>;
+    timeAudits?: Array<{
+      blockId: string;
+      block: string;
+      candidateHours: number;
+      travelHours: number;
+      eventHours: number;
+      relationshipHours: number;
+      relationshipDensity: string;
+    }>;
+  }>(path.join(BRAIN, "calendar-fill/proposed-calendar-fill-v2.json"));
+
+  const disclaimer =
+    summary?.disclaimer ??
+    "Operational Lock Review (Phase C). Not Kelly's final calendar. Leadership sign-off required.";
+
+  if (!summary?.mustHitCountyCount) {
+    return {
+      disclaimer,
+      status: "not_built",
+      strategyLabel: "Option C — Balanced Delta + Tier 1 reinforcement",
+      leadershipSignOffRequired: true,
+      conditionalBlocksResolved: 0,
+      protectedBlocks: 0,
+      mustHitCountyCount: 0,
+      bonusCountyCount: 0,
+      leadershipDecisionsPending: 4,
+      pathwayMustHit: "50 locked + 0 must-hit",
+      pathwayFull: "50 locked + 25 fill = 75/75 if all bonus executed",
+      refinedBlocks: [],
+      timeAudits: [],
+    };
+  }
+
+  return {
+    disclaimer,
+    status: v2?.status ?? "operational_lock_review",
+    strategyLabel: v2?.strategyLabel ?? "Option C — Balanced Delta + Tier 1 reinforcement",
+    leadershipSignOffRequired: true,
+    conditionalBlocksResolved: summary.conditionalBlocksResolved ?? 3,
+    protectedBlocks: summary.protectedBlocks ?? 1,
+    mustHitCountyCount: summary.mustHitCountyCount ?? 0,
+    bonusCountyCount: summary.bonusCountyCount ?? 0,
+    leadershipDecisionsPending: summary.leadershipDecisionsPending ?? 4,
+    pathwayMustHit: v2?.coverage?.pathwayMustHit ?? "",
+    pathwayFull: v2?.coverage?.pathwayFull ?? "",
+    refinedBlocks: (v2?.proposedBlocksV2 ?? []).map((b) => ({
+      id: b.id,
+      label: b.label,
+      startDate: b.startDate,
+      endDate: b.endDate,
+      countiesNew: b.countiesNew,
+      approvalStatus: b.approvalStatus,
+      mustHitCounties: b.mustHitCounties ?? [],
+      bonusIfTimeCounties: b.bonusIfTimeCounties ?? [],
+    })),
+    timeAudits: v2?.timeAudits ?? [],
+  };
+}
+
 function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySection>) {
   const fm = readJson<{ upcomingCount?: number; nextWeekCount?: number }>(
     path.join(BRAIN_DATA, "forward-motion-summary.json"),
@@ -1241,6 +1329,7 @@ function main() {
   const calendarSettlement = buildCalendarSettlementSection(coverageReality);
   const calendarFillPhaseA = buildCalendarFillPhaseASection();
   const calendarFillPhaseB = buildCalendarFillPhaseBSection();
+  const calendarFillPhaseC = buildCalendarFillPhaseCSection();
 
   const snapshot: ElectionPlanWorkbenchSnapshot = {
     version: 1,
@@ -1422,6 +1511,7 @@ function main() {
     calendarSettlement,
     calendarFillPhaseA,
     calendarFillPhaseB,
+    calendarFillPhaseC,
     weekPlans: buildWeekPlansSection(),
     campaignTimeline: buildCampaignTimeline(),
   };

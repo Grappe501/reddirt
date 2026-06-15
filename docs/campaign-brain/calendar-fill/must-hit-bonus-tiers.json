@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-06-15T06:10:59.317Z",
+  "tiers": [
+    {
+      "blockId": "prop-sep26-south-delta-sw",
+      "label": "Southeast Delta + Southwest completion immersion",
+      "dates": "2026-09-26 → 2026-09-27",
+      "mustHit": [
+        "Ashley",
+        "Chicot",
+        "Lincoln",
+        "Calhoun",
+        "Dallas"
+      ],
+      "bonusIfTime": [
+        "Miller",
+        "Sevier",
+        "Grant"
+      ]
+    }
+  ]
+}

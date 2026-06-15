@@ -343,6 +343,22 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       proposedBlocks: [],
       tier1RevisitsProposed: [],
     },
+    calendarFillPhaseC: {
+      disclaimer:
+        "Operational Lock Review (Phase C). Not Kelly's final calendar. Leadership sign-off required.",
+      status: "not_built",
+      strategyLabel: "Option C — Balanced Delta + Tier 1 reinforcement",
+      leadershipSignOffRequired: true,
+      conditionalBlocksResolved: 0,
+      protectedBlocks: 0,
+      mustHitCountyCount: 0,
+      bonusCountyCount: 0,
+      leadershipDecisionsPending: 4,
+      pathwayMustHit: "50 locked + 0 must-hit",
+      pathwayFull: "50 locked + 25 fill = 75/75 if all bonus executed",
+      refinedBlocks: [],
+      timeAudits: [],
+    },
   };
 }
 

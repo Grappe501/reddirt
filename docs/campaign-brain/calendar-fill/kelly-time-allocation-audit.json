@@ -1,0 +1,105 @@
+{
+  "generatedAt": "2026-06-15T06:10:59.317Z",
+  "audits": [
+    {
+      "blockId": "prop-jul19-jefferson",
+      "block": "Tier 1 revisit — Pine Bluff / Jefferson",
+      "candidateHours": 10,
+      "travelHours": 6,
+      "eventHours": 2,
+      "relationshipHours": 5,
+      "relationshipDensity": "high",
+      "notes": "Stack clerk + coalition + business + media where possible"
+    },
+    {
+      "blockId": "prop-aug8-delta-gateway",
+      "block": "Delta Gateway immersion — West Memphis + Blytheville",
+      "candidateHours": 20,
+      "travelHours": 10,
+      "eventHours": 4,
+      "relationshipHours": 8,
+      "relationshipDensity": "medium",
+      "notes": "Add one relationship anchor per county — avoid drive-by only"
+    },
+    {
+      "blockId": "prop-aug15-nwa",
+      "block": "NWA Tier 1 reinforcement — Benton + Washington stack",
+      "candidateHours": 20,
+      "travelHours": 10,
+      "eventHours": 4,
+      "relationshipHours": 10,
+      "relationshipDensity": "high",
+      "notes": "Stack clerk + coalition + business + media where possible"
+    },
+    {
+      "blockId": "prop-aug23-delta-river",
+      "block": "Delta River corridor — Helena / Phillips + Monroe + St. Francis",
+      "candidateHours": 20,
+      "travelHours": 10,
+      "eventHours": 4,
+      "relationshipHours": 8,
+      "relationshipDensity": "medium",
+      "notes": "Add one relationship anchor per county — avoid drive-by only"
+    },
+    {
+      "blockId": "prop-aug30-craighead-ne",
+      "block": "Tier 1 Jonesboro revisit + Lawrence county completion",
+      "candidateHours": 10,
+      "travelHours": 10,
+      "eventHours": 2,
+      "relationshipHours": 5,
+      "relationshipDensity": "high",
+      "notes": "Stack clerk + coalition + business + media where possible"
+    },
+    {
+      "blockId": "prop-sep6-northeast",
+      "block": "Northeast completion — Walnut Ridge / Newport / Augusta corridor",
+      "candidateHours": 20,
+      "travelHours": 10,
+      "eventHours": 3,
+      "relationshipHours": 4,
+      "relationshipDensity": "low",
+      "notes": "Risk: picture-only visit — add meeting or defer to bonus tier"
+    },
+    {
+      "blockId": "prop-sep26-south-delta-sw",
+      "block": "Southeast Delta + Southwest completion immersion",
+      "candidateHours": 20,
+      "travelHours": 10,
+      "eventHours": 4,
+      "relationshipHours": 8,
+      "relationshipDensity": "medium",
+      "notes": "Add one relationship anchor per county — avoid drive-by only"
+    },
+    {
+      "blockId": "prop-oct3-ozark",
+      "block": "Ozark / North Central completion",
+      "candidateHours": 10,
+      "travelHours": 12,
+      "eventHours": 4,
+      "relationshipHours": 6,
+      "relationshipDensity": "high",
+      "notes": "Stack clerk + coalition + business + media where possible"
+    },
+    {
+      "blockId": "prop-oct11-prairie",
+      "block": "Central Prairie + Little River (geographic correction)",
+      "candidateHours": 20,
+      "travelHours": 6,
+      "eventHours": 3,
+      "relationshipHours": 4,
+      "relationshipDensity": "low",
+      "notes": "Risk: picture-only visit — add meeting or defer to bonus tier"
+    },
+    {
+      "blockId": "prop-oct18-prep",
+      "block": "Recovery / story backlog / early vote prep",
+      "candidateHours": 10,
+      "travelHours": 0,
+      "eventHours": 0,
+      "relationshipHours": 4,
+      "relationshipDensity": "medium",
+      "notes": "Add one relationship anchor per county — avoid drive-by only"
+    }
+  ]
+}

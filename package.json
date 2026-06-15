@@ -355,6 +355,7 @@
     "campaign-brain:calendar-settlement:build": "tsx scripts/campaign-brain/build-calendar-settlement.ts",
     "campaign-brain:calendar-fill:phase-a": "tsx scripts/campaign-brain/build-calendar-fill-phase-a.ts",
     "campaign-brain:calendar-fill:phase-b": "tsx scripts/campaign-brain/build-calendar-fill-phase-b.ts",
+    "campaign-brain:calendar-fill:phase-c": "tsx scripts/campaign-brain/build-calendar-fill-phase-c.ts",
     "campaign-brain:week-candidates:build": "tsx scripts/campaign-brain/build-week-candidates.ts",
     "campaign-brain:health:build": "tsx scripts/campaign-brain/build-brain-health-dashboard.ts",
     "campaign-brain:sprint:calendar-truth": "tsx scripts/campaign-brain/build-calendar-truth-sprint.ts",
