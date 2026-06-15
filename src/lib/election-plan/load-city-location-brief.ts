@@ -1,5 +1,7 @@
 import type { ElectionPlanCity } from "@/lib/election-plan/types";
 
+import { getCityNumericTargets, type CityNumericTargets } from "@/lib/election-plan/load-city-numeric-targets";
+
 import source from "../../../data/campaign-brain/city-location-briefs.source.json";
 
 export type CityBriefStatus = "scaffold" | "draft" | "review" | "approved";
@@ -25,6 +27,7 @@ export type CityLocationBrief = {
   housePartyGoals: string;
   volunteerGoals: string;
   registrationGoals: string;
+  numericTargets?: CityNumericTargets;
 };
 
 type SourceBrief = {
@@ -71,23 +74,24 @@ function scaffoldFromCity(city: ElectionPlanCity): Omit<CityLocationBrief, "slug
 export function buildCityLocationBrief(city: ElectionPlanCity): CityLocationBrief {
   const overrides = (source.briefs as Record<string, SourceBrief>)[city.slug];
   const base = scaffoldFromCity(city);
-  if (!overrides) {
-    return { slug: city.slug, ...base };
-  }
-  return {
-    slug: city.slug,
-    ...base,
-    status: overrides.status ?? "draft",
-    briefBoard: overrides.briefBoard ?? base.briefBoard,
-    situation: overrides.situation ?? base.situation,
-    penetration: overrides.penetration ?? base.penetration,
-    accomplishment: overrides.accomplishment ?? base.accomplishment,
-    messaging: overrides.messaging ?? base.messaging,
-    kellyTalkingPoints: overrides.kellyTalkingPoints ?? base.kellyTalkingPoints,
-    housePartyGoals: overrides.housePartyGoals ?? base.housePartyGoals,
-    volunteerGoals: overrides.volunteerGoals ?? base.volunteerGoals,
-    registrationGoals: overrides.registrationGoals ?? base.registrationGoals,
-  };
+  const numericTargets = getCityNumericTargets(city.slug);
+  const merged = !overrides
+    ? { slug: city.slug, ...base }
+    : {
+        slug: city.slug,
+        ...base,
+        status: overrides.status ?? "draft",
+        briefBoard: overrides.briefBoard ?? base.briefBoard,
+        situation: overrides.situation ?? base.situation,
+        penetration: overrides.penetration ?? base.penetration,
+        accomplishment: overrides.accomplishment ?? base.accomplishment,
+        messaging: overrides.messaging ?? base.messaging,
+        kellyTalkingPoints: overrides.kellyTalkingPoints ?? base.kellyTalkingPoints,
+        housePartyGoals: overrides.housePartyGoals ?? base.housePartyGoals,
+        volunteerGoals: overrides.volunteerGoals ?? base.volunteerGoals,
+        registrationGoals: overrides.registrationGoals ?? base.registrationGoals,
+      };
+  return numericTargets ? { ...merged, numericTargets } : merged;
 }
 
 export function getCityLocationBrief(

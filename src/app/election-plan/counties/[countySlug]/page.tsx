@@ -47,6 +47,7 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
           <CountyPlaybookPanel
             county={county}
             priorityCities={priorityCities}
+            allCities={data.cities}
             strikeTeam={strikeTeam}
             fieldEvents={fieldEvents}
             referenceDate={data.executiveCalendar.referenceDate}

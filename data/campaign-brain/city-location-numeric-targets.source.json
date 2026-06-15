@@ -1,0 +1,1049 @@
+{
+  "version": 1,
+  "note": "Locked numeric targets for priority city location briefs. Registration allocated from county registrationGoal (chapter-05 Lane 3). House party / volunteer math from Power of 5; Sherwood from win-sherwood-operation.json.",
+  "generatedAt": "2026-06-15T20:48:03.811Z",
+  "statewideRegistrationGoal": 50000,
+  "targets": {
+    "little-rock": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 6167,
+        "registrationChecks": 8634,
+        "countySharePct": 58.3,
+        "countyRegistrationGoal": 10584,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 81,
+        "activeHosts": 49,
+        "powerOf5Circles": 81,
+        "conversationsTarget": 405,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 202,
+        "captains": 50
+      },
+      "votes": {
+        "target": 40315,
+        "gainNeeded": 1580
+      }
+    },
+    "fayetteville": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 2881,
+        "registrationChecks": 4033,
+        "countySharePct": 52.7,
+        "countyRegistrationGoal": 5462,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 30,
+        "activeHosts": 18,
+        "powerOf5Circles": 30,
+        "conversationsTarget": 150,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 74,
+        "captains": 18
+      },
+      "votes": {
+        "target": 14754,
+        "gainNeeded": 1115
+      }
+    },
+    "springdale": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 2581,
+        "registrationChecks": 3613,
+        "countySharePct": 47.3,
+        "countyRegistrationGoal": 5462,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 26,
+        "activeHosts": 16,
+        "powerOf5Circles": 26,
+        "conversationsTarget": 130,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 66,
+        "captains": 17
+      },
+      "votes": {
+        "target": 13217,
+        "gainNeeded": 999
+      }
+    },
+    "north-little-rock": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 1963,
+        "registrationChecks": 2748,
+        "countySharePct": 18.5,
+        "countyRegistrationGoal": 10584,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 26,
+        "activeHosts": 16,
+        "powerOf5Circles": 26,
+        "conversationsTarget": 130,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 64,
+        "captains": 16
+      },
+      "votes": {
+        "target": 12834,
+        "gainNeeded": 503
+      }
+    },
+    "fort-smith": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 1859,
+        "registrationChecks": 2603,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 1859,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 19,
+        "activeHosts": 11,
+        "powerOf5Circles": 19,
+        "conversationsTarget": 95,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 47,
+        "captains": 12
+      },
+      "votes": {
+        "target": 9433,
+        "gainNeeded": 1715
+      }
+    },
+    "rogers": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 2915,
+        "registrationChecks": 4081,
+        "countySharePct": 40.6,
+        "countyRegistrationGoal": 7183,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 18,
+        "activeHosts": 11,
+        "powerOf5Circles": 18,
+        "conversationsTarget": 90,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 45,
+        "captains": 11
+      },
+      "votes": {
+        "target": 9097,
+        "gainNeeded": 651
+      }
+    },
+    "conway": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 2361,
+        "registrationChecks": 3305,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 2361,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 17,
+        "activeHosts": 10,
+        "powerOf5Circles": 17,
+        "conversationsTarget": 85,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 42,
+        "captains": 11
+      },
+      "votes": {
+        "target": 8468,
+        "gainNeeded": 1238
+      }
+    },
+    "pine-bluff": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 1464,
+        "registrationChecks": 2050,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 1464,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 17,
+        "activeHosts": 10,
+        "powerOf5Circles": 17,
+        "conversationsTarget": 85,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 42,
+        "captains": 10
+      },
+      "votes": {
+        "target": 8339,
+        "gainNeeded": 1668
+      }
+    },
+    "jonesboro": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 1418,
+        "registrationChecks": 1985,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 1418,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 16,
+        "activeHosts": 10,
+        "powerOf5Circles": 16,
+        "conversationsTarget": 80,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 41,
+        "captains": 10
+      },
+      "votes": {
+        "target": 8196,
+        "gainNeeded": 1710
+      }
+    },
+    "bentonville": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 2256,
+        "registrationChecks": 3158,
+        "countySharePct": 31.4,
+        "countyRegistrationGoal": 7183,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 14,
+        "activeHosts": 8,
+        "powerOf5Circles": 14,
+        "conversationsTarget": 70,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 35,
+        "captains": 9
+      },
+      "votes": {
+        "target": 7041,
+        "gainNeeded": 504
+      }
+    },
+    "sherwood": {
+      "locked": true,
+      "source": "win-sherwood-operation.json + chapter-05",
+      "registration": {
+        "newRegistrations": 150,
+        "registrationChecks": 500,
+        "countySharePct": 9.4,
+        "countyRegistrationGoal": 10584,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 50,
+        "activeHosts": 20,
+        "powerOf5Circles": 20,
+        "conversationsTarget": 100,
+        "vipTables": 20
+      },
+      "volunteers": {
+        "activeVolunteers": 25,
+        "captains": 10,
+        "currentSignups": 7
+      },
+      "votes": {
+        "target": 6495,
+        "gainNeeded": 255
+      }
+    },
+    "jacksonville": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 855,
+        "registrationChecks": 1197,
+        "countySharePct": 8.1,
+        "countyRegistrationGoal": 10584,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 11,
+        "activeHosts": 7,
+        "powerOf5Circles": 11,
+        "conversationsTarget": 55,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 37,
+        "captains": 9
+      },
+      "votes": {
+        "target": 5589,
+        "gainNeeded": 219
+      }
+    },
+    "hot-springs": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 1477,
+        "registrationChecks": 2068,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 1477,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 10,
+        "activeHosts": 6,
+        "powerOf5Circles": 10,
+        "conversationsTarget": 50,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 34,
+        "captains": 9
+      },
+      "votes": {
+        "target": 5101,
+        "gainNeeded": 927
+      }
+    },
+    "benton": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 1656,
+        "registrationChecks": 2318,
+        "countySharePct": 62.3,
+        "countyRegistrationGoal": 2659,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 9,
+        "activeHosts": 5,
+        "powerOf5Circles": 9,
+        "conversationsTarget": 45,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 29,
+        "captains": 7
+      },
+      "votes": {
+        "target": 4317,
+        "gainNeeded": 654
+      }
+    },
+    "bella-vista": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 1291,
+        "registrationChecks": 1807,
+        "countySharePct": 18,
+        "countyRegistrationGoal": 7183,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 8,
+        "activeHosts": 5,
+        "powerOf5Circles": 8,
+        "conversationsTarget": 40,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 27,
+        "captains": 7
+      },
+      "votes": {
+        "target": 4028,
+        "gainNeeded": 288
+      }
+    },
+    "maumelle": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 605,
+        "registrationChecks": 847,
+        "countySharePct": 5.7,
+        "countyRegistrationGoal": 10584,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 8,
+        "activeHosts": 5,
+        "powerOf5Circles": 8,
+        "conversationsTarget": 40,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 26,
+        "captains": 7
+      },
+      "votes": {
+        "target": 3953,
+        "gainNeeded": 155
+      }
+    },
+    "west-memphis": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 686,
+        "registrationChecks": 960,
+        "countySharePct": 65.4,
+        "countyRegistrationGoal": 1049,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 8,
+        "activeHosts": 5,
+        "powerOf5Circles": 8,
+        "conversationsTarget": 40,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 25,
+        "captains": 6
+      },
+      "votes": {
+        "target": 3782,
+        "gainNeeded": 756
+      }
+    },
+    "texarkana": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 582,
+        "registrationChecks": 815,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 582,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 6,
+        "activeHosts": 4,
+        "powerOf5Circles": 6,
+        "conversationsTarget": 30,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 21,
+        "captains": 5
+      },
+      "votes": {
+        "target": 3195,
+        "gainNeeded": 1078
+      }
+    },
+    "russellville": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 744,
+        "registrationChecks": 1042,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 744,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 6,
+        "activeHosts": 4,
+        "powerOf5Circles": 6,
+        "conversationsTarget": 30,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 20,
+        "captains": 5
+      },
+      "votes": {
+        "target": 2994,
+        "gainNeeded": 992
+      }
+    },
+    "el-dorado": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 712,
+        "registrationChecks": 997,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 712,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 6,
+        "activeHosts": 4,
+        "powerOf5Circles": 6,
+        "conversationsTarget": 30,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 20,
+        "captains": 5
+      },
+      "votes": {
+        "target": 2961,
+        "gainNeeded": 817
+      }
+    },
+    "cabot": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 941,
+        "registrationChecks": 1317,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 941,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 6,
+        "activeHosts": 4,
+        "powerOf5Circles": 6,
+        "conversationsTarget": 30,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 19,
+        "captains": 5
+      },
+      "votes": {
+        "target": 2780,
+        "gainNeeded": 811
+      }
+    },
+    "bryant": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 1003,
+        "registrationChecks": 1404,
+        "countySharePct": 37.7,
+        "countyRegistrationGoal": 2659,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 5,
+        "activeHosts": 4,
+        "powerOf5Circles": 5,
+        "conversationsTarget": 25,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 17,
+        "captains": 4
+      },
+      "votes": {
+        "target": 2615,
+        "gainNeeded": 396
+      }
+    },
+    "paragould": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 362,
+        "registrationChecks": 507,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 362,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 5,
+        "activeHosts": 4,
+        "powerOf5Circles": 5,
+        "conversationsTarget": 25,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 17,
+        "captains": 4
+      },
+      "votes": {
+        "target": 2492,
+        "gainNeeded": 965
+      }
+    },
+    "van-buren": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 605,
+        "registrationChecks": 847,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 605,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 5,
+        "activeHosts": 4,
+        "powerOf5Circles": 5,
+        "conversationsTarget": 25,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 16,
+        "captains": 4
+      },
+      "votes": {
+        "target": 2362,
+        "gainNeeded": 835
+      }
+    },
+    "siloam-springs": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 721,
+        "registrationChecks": 1009,
+        "countySharePct": 10,
+        "countyRegistrationGoal": 7183,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 5,
+        "activeHosts": 4,
+        "powerOf5Circles": 5,
+        "conversationsTarget": 25,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 4
+      },
+      "votes": {
+        "target": 2250,
+        "gainNeeded": 161
+      }
+    },
+    "blytheville": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 274,
+        "registrationChecks": 384,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 274,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 4
+      },
+      "votes": {
+        "target": 2134,
+        "gainNeeded": 549
+      }
+    },
+    "searcy": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 585,
+        "registrationChecks": 819,
+        "countySharePct": 72.5,
+        "countyRegistrationGoal": 807,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 2099,
+        "gainNeeded": 616
+      }
+    },
+    "marion": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 363,
+        "registrationChecks": 508,
+        "countySharePct": 34.6,
+        "countyRegistrationGoal": 1049,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 2004,
+        "gainNeeded": 401
+      }
+    },
+    "forrest-city": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 248,
+        "registrationChecks": 347,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 248,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 1869,
+        "gainNeeded": 374
+      }
+    },
+    "mountain-home": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 576,
+        "registrationChecks": 806,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 576,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 1776,
+        "gainNeeded": 652
+      }
+    },
+    "arkadelphia": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 291,
+        "registrationChecks": 407,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 291,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 1534,
+        "gainNeeded": 360
+      }
+    },
+    "harrison": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 328,
+        "registrationChecks": 459,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 328,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 1418,
+        "gainNeeded": 586
+      }
+    },
+    "magnolia": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 316,
+        "registrationChecks": 442,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 316,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 1380,
+        "gainNeeded": 386
+      }
+    },
+    "malvern": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 272,
+        "registrationChecks": 381,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 272,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 1196,
+        "gainNeeded": 408
+      }
+    },
+    "camden": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 337,
+        "registrationChecks": 472,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 337,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 1160,
+        "gainNeeded": 269
+      }
+    },
+    "batesville": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 341,
+        "registrationChecks": 477,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 341,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 935,
+        "gainNeeded": 353
+      }
+    },
+    "wynne": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 273,
+        "registrationChecks": 382,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 273,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 909,
+        "gainNeeded": 302
+      }
+    },
+    "stuttgart": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 209,
+        "registrationChecks": 293,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 209,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 862,
+        "gainNeeded": 272
+      }
+    },
+    "hope": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 284,
+        "registrationChecks": 398,
+        "countySharePct": 100,
+        "countyRegistrationGoal": 284,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 827,
+        "gainNeeded": 249
+      }
+    },
+    "beebe": {
+      "locked": true,
+      "source": "chapter-05 county allocation + Power of 5 formulas",
+      "registration": {
+        "newRegistrations": 222,
+        "registrationChecks": 311,
+        "countySharePct": 27.5,
+        "countyRegistrationGoal": 807,
+        "chapter05Source": "election_plan_county_registration_goal"
+      },
+      "houseParties": {
+        "hosts": 4,
+        "activeHosts": 4,
+        "powerOf5Circles": 4,
+        "conversationsTarget": 20,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 796,
+        "gainNeeded": 234
+      }
+    }
+  }
+}

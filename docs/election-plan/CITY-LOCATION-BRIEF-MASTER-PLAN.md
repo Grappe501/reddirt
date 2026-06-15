@@ -64,11 +64,12 @@ Each **county** in the election plan drills down to the **full county workbench*
 - County strike team panel (captain + roles from `county-strike-teams.json`) on county and city pages
 - Priority cities listed on each county playbook with brief links
 
-### Phase 3 — Numeric targets from LANE budget
+### Phase 3 — Numeric targets from LANE budget ✅
 
-- Registration from chapter-05 county allocation
-- House party / volunteer numbers from Power of 5 and Sherwood ops
-- Replace scaffold TBDs with locked targets
+- `city-location-numeric-targets.source.json` — locked targets for all 40 cities
+- Registration allocated from chapter-05 county `registrationGoal` by priority-city vote share
+- House party / volunteer math from Power of 5; Sherwood overrides from `win-sherwood-operation.json`
+- **Locked numeric targets** panel on city briefs; registration allocation table on county playbooks
 
 ### Phase 4 — Calendar & week plan binding
 
@@ -87,5 +88,5 @@ Each **county** in the election plan drills down to the **full county workbench*
 
 - All 40 cities at `draft` or `approved`
 - County cards open workbench for all 75 counties
-- Phase 3 numeric targets populated for top 10 backbone cities
+- Phase 3 numeric targets populated for all 40 priority cities
 - Week plan and calendar show location links (Phase 4)

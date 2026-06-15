@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CityNumericTargetsPanel } from "@/components/election-plan/CityNumericTargetsPanel";
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
 import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
 import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
@@ -156,6 +157,10 @@ export function CityLocationBriefPanel({
         <NarrativeBlock title="Volunteer goals">{brief.volunteerGoals}</NarrativeBlock>
         <NarrativeBlock title="Registration goals">{brief.registrationGoals}</NarrativeBlock>
       </div>
+
+      {brief.numericTargets ? (
+        <CityNumericTargetsPanel targets={brief.numericTargets} countyName={brief.county} />
+      ) : null}
 
       <div className="mb-8">
         <LocationFieldEventsPanel

@@ -40,11 +40,12 @@ export const LOCATION_BRIEF_MASTER_PLAN = {
     {
       id: "phase-3",
       title: "Phase 3 — Numeric targets from LANE budget",
-      status: "pending" as const,
+      status: "complete" as const,
       items: [
-        "Bind registration goals from chapter-05 county allocation",
-        "House party and volunteer targets from Power of 5 / Sherwood ops",
-        "Replace TBD scaffolds with locked numbers per city",
+        "Locked registration targets allocated from chapter-05 county registrationGoal by city vote share",
+        "House party and volunteer targets from Power of 5 formulas; Sherwood from win-sherwood-operation.json",
+        "city-location-numeric-targets.source.json + Locked numeric targets panel on city briefs",
+        "County playbook registration allocation table per priority city",
       ],
     },
     {

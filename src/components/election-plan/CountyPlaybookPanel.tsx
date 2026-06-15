@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { CountyNetworkingContactsPanel } from "@/components/election-plan/CountyNetworkingContactsPanel";
+import { CountyRegistrationAllocationPanel } from "@/components/election-plan/CountyRegistrationAllocationPanel";
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
 import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
 import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
@@ -15,6 +16,7 @@ import { cn } from "@/lib/utils";
 type Props = {
   county: ElectionPlanCounty;
   priorityCities: ElectionPlanCity[];
+  allCities: ElectionPlanCity[];
   strikeTeam?: CountyStrikeTeam;
   fieldEvents: {
     upcoming: ExecutiveCalendarEntry[];
@@ -43,6 +45,7 @@ function tierClass(tier: string) {
 export function CountyPlaybookPanel({
   county,
   priorityCities,
+  allCities,
   strikeTeam,
   fieldEvents,
   referenceDate,
@@ -161,6 +164,8 @@ export function CountyPlaybookPanel({
           </ul>
         </div>
       ) : null}
+
+      <CountyRegistrationAllocationPanel county={county} cities={allCities} />
 
       <div className="mb-8">
         <LocationFieldEventsPanel
