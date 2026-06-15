@@ -1,0 +1,270 @@
+{
+  "generatedAt": "2026-06-15T05:17:02.878Z",
+  "windowStart": "2026-06-15",
+  "windowEnd": "2026-10-19",
+  "earlyVotingStart": "2026-10-20",
+  "lockedEventCount": 40,
+  "lockedDayCount": 59,
+  "openDayCount": 14,
+  "protectedWorkDayCount": 53,
+  "doNotFillDayCount": 1,
+  "visitedBaseline": 43,
+  "projectedCountiesAfterLocked": 50,
+  "stillMissingCount": 25,
+  "stillMissingCounties": [
+    "Ashley",
+    "Calhoun",
+    "Chicot",
+    "Crittenden",
+    "Dallas",
+    "Grant",
+    "Jackson",
+    "Lawrence",
+    "Lincoln",
+    "Little River",
+    "Logan",
+    "Madison",
+    "Miller",
+    "Mississippi",
+    "Monroe",
+    "Newton",
+    "Perry",
+    "Phillips",
+    "Poinsett",
+    "Prairie",
+    "Randolph",
+    "Scott",
+    "Sevier",
+    "St. Francis",
+    "Woodruff"
+  ],
+  "newlyTouchedByLocked": [
+    "Boone",
+    "Clay",
+    "Hot Spring",
+    "Howard",
+    "Sharp",
+    "Union",
+    "Yell"
+  ],
+  "topOpenRecommendations": [
+    {
+      "label": "Option — West Memphis",
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "score": 703,
+      "travelClass": "immersion",
+      "driveMinutes": 128,
+      "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+      "date": "2026-07-19",
+      "weekday": "Sun"
+    },
+    {
+      "label": "Option — West Memphis",
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "score": 703,
+      "travelClass": "immersion",
+      "driveMinutes": 128,
+      "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+      "date": "2026-08-08",
+      "weekday": "Sat"
+    },
+    {
+      "label": "Option — West Memphis",
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "score": 703,
+      "travelClass": "immersion",
+      "driveMinutes": 128,
+      "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+      "date": "2026-08-09",
+      "weekday": "Sun"
+    },
+    {
+      "label": "Option — West Memphis",
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "score": 703,
+      "travelClass": "immersion",
+      "driveMinutes": 128,
+      "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+      "date": "2026-08-15",
+      "weekday": "Sat"
+    },
+    {
+      "label": "Option — West Memphis",
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "score": 703,
+      "travelClass": "immersion",
+      "driveMinutes": 128,
+      "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+      "date": "2026-08-16",
+      "weekday": "Sun"
+    },
+    {
+      "label": "Option — West Memphis",
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "score": 703,
+      "travelClass": "immersion",
+      "driveMinutes": 128,
+      "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+      "date": "2026-08-23",
+      "weekday": "Sun"
+    },
+    {
+      "label": "Option — West Memphis",
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "score": 703,
+      "travelClass": "immersion",
+      "driveMinutes": 128,
+      "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+      "date": "2026-08-30",
+      "weekday": "Sun"
+    },
+    {
+      "label": "Option — West Memphis",
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "score": 703,
+      "travelClass": "immersion",
+      "driveMinutes": 128,
+      "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+      "date": "2026-09-06",
+      "weekday": "Sun"
+    },
+    {
+      "label": "Option — West Memphis",
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "score": 703,
+      "travelClass": "immersion",
+      "driveMinutes": 128,
+      "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+      "date": "2026-09-26",
+      "weekday": "Sat"
+    },
+    {
+      "label": "Option — West Memphis",
+      "city": "West Memphis",
+      "county": "Crittenden",
+      "score": 703,
+      "travelClass": "immersion",
+      "driveMinutes": 128,
+      "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+      "date": "2026-09-27",
+      "weekday": "Sun"
+    }
+  ],
+  "tier1RevisitStatus": [
+    {
+      "county": "Pulaski",
+      "vciRank": 1,
+      "lastVisitDate": "2026-05-18",
+      "nextLockedDate": "2026-06-19",
+      "nextLockedEvent": "Juneteenth",
+      "status": "locked_planned"
+    },
+    {
+      "county": "Benton",
+      "vciRank": 2,
+      "lastVisitDate": null,
+      "nextLockedDate": "2026-06-21",
+      "nextLockedEvent": "Benton County immersion",
+      "status": "locked_planned"
+    },
+    {
+      "county": "Washington",
+      "vciRank": 3,
+      "lastVisitDate": "2026-03-14",
+      "nextLockedDate": "2026-07-11",
+      "nextLockedEvent": "Heber 250 / Ozarks 250 Block Party",
+      "status": "locked_planned"
+    },
+    {
+      "county": "Faulkner",
+      "vciRank": 4,
+      "lastVisitDate": "2026-06-04",
+      "nextLockedDate": "2026-07-20",
+      "nextLockedEvent": "Faulkner County engagement",
+      "status": "locked_planned"
+    },
+    {
+      "county": "Saline",
+      "vciRank": 5,
+      "lastVisitDate": "2026-05-09",
+      "nextLockedDate": "2026-10-12",
+      "nextLockedEvent": "Saline County GOTV push",
+      "status": "locked_planned"
+    },
+    {
+      "county": "Sebastian",
+      "vciRank": 6,
+      "lastVisitDate": "2026-02-09",
+      "nextLockedDate": "2026-07-31",
+      "nextLockedEvent": "Sebastian County immersion",
+      "status": "locked_planned"
+    },
+    {
+      "county": "Jefferson",
+      "vciRank": 8,
+      "lastVisitDate": null,
+      "nextLockedDate": null,
+      "nextLockedEvent": null,
+      "status": "needs_schedule"
+    },
+    {
+      "county": "Garland",
+      "vciRank": 9,
+      "lastVisitDate": "2026-05-26",
+      "nextLockedDate": "2026-08-18",
+      "nextLockedEvent": "Hot Springs Village",
+      "status": "locked_planned"
+    },
+    {
+      "county": "Craighead",
+      "vciRank": 7,
+      "lastVisitDate": "2025-12-15",
+      "nextLockedDate": null,
+      "nextLockedEvent": null,
+      "status": "revisit_unscheduled"
+    },
+    {
+      "county": "Lonoke",
+      "vciRank": 12,
+      "lastVisitDate": null,
+      "nextLockedDate": "2026-07-14",
+      "nextLockedEvent": "Nixon Flower Farm",
+      "status": "locked_planned"
+    },
+    {
+      "county": "White",
+      "vciRank": 11,
+      "lastVisitDate": "2026-02-03",
+      "nextLockedDate": "2026-06-18",
+      "nextLockedEvent": "Rose Bud Summerfest",
+      "status": "locked_planned"
+    },
+    {
+      "county": "Pope",
+      "vciRank": 13,
+      "lastVisitDate": "2026-04-24",
+      "nextLockedDate": "2026-09-15",
+      "nextLockedEvent": "Pope County Fair",
+      "status": "locked_planned"
+    }
+  ],
+  "deltaCorridorCounties": [
+    "Crittenden",
+    "Mississippi",
+    "St. Francis",
+    "Phillips",
+    "Monroe",
+    "Chicot",
+    "Ashley",
+    "Lincoln"
+  ]
+}

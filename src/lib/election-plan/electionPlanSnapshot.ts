@@ -302,6 +302,22 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       tier1RevisitQueue: [],
       priorityQueue: [],
     },
+    calendarSettlement: {
+      windowStart: "2026-06-15",
+      windowEnd: "2026-10-19",
+      earlyVotingStart: "2026-10-20",
+      lockedEventCount: 0,
+      openDayCount: 0,
+      protectedWorkDayCount: 0,
+      projectedCountiesAfterLocked: 43,
+      stillMissingCount: 32,
+      stillMissingCounties: [],
+      visitedBaseline: 43,
+      lockedBackbone: [],
+      topOpenRecommendations: [],
+      tier1RevisitStatus: [],
+      deltaGapCountiesOpen: [],
+    },
   };
 }
 

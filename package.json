@@ -352,6 +352,7 @@
     "campaign-brain:verification:build": "tsx scripts/campaign-brain/build-event-verification-sprint.ts",
     "campaign-brain:coverage:build": "tsx scripts/campaign-brain/build-county-coverage-completion.ts",
     "campaign-brain:coverage-audit:build": "tsx scripts/campaign-brain/build-county-coverage-reality-audit.ts",
+    "campaign-brain:calendar-settlement:build": "tsx scripts/campaign-brain/build-calendar-settlement.ts",
     "campaign-brain:week-candidates:build": "tsx scripts/campaign-brain/build-week-candidates.ts",
     "campaign-brain:health:build": "tsx scripts/campaign-brain/build-brain-health-dashboard.ts",
     "campaign-brain:sprint:calendar-truth": "tsx scripts/campaign-brain/build-calendar-truth-sprint.ts",

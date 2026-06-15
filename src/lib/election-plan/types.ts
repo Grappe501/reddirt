@@ -442,4 +442,43 @@ export type ElectionPlanWorkbenchSnapshot = {
       recommendedAction: string;
     }>;
   };
+  calendarSettlement: {
+    windowStart: string;
+    windowEnd: string;
+    earlyVotingStart: string;
+    lockedEventCount: number;
+    openDayCount: number;
+    protectedWorkDayCount: number;
+    projectedCountiesAfterLocked: number;
+    stillMissingCount: number;
+    stillMissingCounties: string[];
+    visitedBaseline: number;
+    lockedBackbone: Array<{
+      date: string;
+      dateEnd: string | null;
+      eventName: string;
+      county: string;
+      city: string;
+      eventType: string;
+      travelClass: string;
+      overnightLikely: boolean;
+    }>;
+    topOpenRecommendations: Array<{
+      date: string;
+      weekday: string;
+      city: string;
+      county: string;
+      score: number;
+      travelClass: string;
+    }>;
+    tier1RevisitStatus: Array<{
+      county: string;
+      vciRank: number | null;
+      lastVisitDate: string | null;
+      nextLockedDate: string | null;
+      nextLockedEvent: string | null;
+      status: string;
+    }>;
+    deltaGapCountiesOpen: string[];
+  };
 };

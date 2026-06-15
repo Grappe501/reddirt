@@ -279,6 +279,7 @@ function GoalBlock({ title, items }: { title: string; items: string[] }) {
 /** Coverage Reality — leadership-confirmed county visit audit (not Forward Motion queue) */
 export function PresenceMapPanel({ data }: Props) {
   const c = data.coverageReality;
+  const s = data.calendarSettlement;
 
   return (
     <section>
@@ -294,6 +295,59 @@ export function PresenceMapPanel({ data }: Props) {
           <strong>{c.visitedCount}/75</strong>
         </p>
       </div>
+
+      {s.lockedEventCount > 0 ? (
+        <div className="ep-card mb-8">
+          <h3 className="font-heading font-bold">Calendar settlement backbone</h3>
+          <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
+            Locked schedule {s.windowStart} → {s.windowEnd} · Early voting {s.earlyVotingStart} · planning intelligence only
+          </p>
+          <div className="mt-4 ep-stat-grid">
+            <div className="ep-stat">
+              <div className="ep-stat-value">{s.lockedEventCount}</div>
+              <div className="ep-stat-label">Locked events</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{s.openDayCount}</div>
+              <div className="ep-stat-label">Open weekends</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">
+                {s.projectedCountiesAfterLocked}/75
+              </div>
+              <div className="ep-stat-label">After locked trips</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{s.stillMissingCount}</div>
+              <div className="ep-stat-label">Still missing</div>
+            </div>
+          </div>
+          {s.lockedBackbone.length > 0 ? (
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                    <th className="pb-2 pr-3">Date</th>
+                    <th className="pb-2 pr-3">Event</th>
+                    <th className="pb-2 pr-3">County</th>
+                    <th className="pb-2">Travel</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {s.lockedBackbone.map((e) => (
+                    <tr key={`${e.date}-${e.eventName}`} className="border-b border-[var(--ep-border)] last:border-0">
+                      <td className="py-2 pr-3 whitespace-nowrap">{e.date}</td>
+                      <td className="py-2 pr-3">{e.eventName}</td>
+                      <td className="py-2 pr-3">{e.county}</td>
+                      <td className="py-2 text-xs">{e.travelClass}{e.overnightLikely ? " · overnight" : ""}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
 
       <div className="mb-8 ep-stat-grid">
         <div className="ep-stat">
@@ -407,6 +461,52 @@ export function PresenceMapPanel({ data }: Props) {
           </div>
         </div>
       </div>
+
+      {s.tier1RevisitStatus.length > 0 ? (
+        <div className="ep-card mb-8">
+          <h3 className="font-heading font-bold">Tier 1 revisit status</h3>
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                  <th className="pb-2 pr-3">County</th>
+                  <th className="pb-2 pr-3">Last visit</th>
+                  <th className="pb-2 pr-3">Next locked</th>
+                  <th className="pb-2">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {s.tier1RevisitStatus.map((t) => (
+                  <tr key={t.county} className="border-b border-[var(--ep-border)] last:border-0">
+                    <td className="py-2 pr-3 font-medium">{t.county}</td>
+                    <td className="py-2 pr-3">{t.lastVisitDate ?? "—"}</td>
+                    <td className="py-2 pr-3 text-xs">{t.nextLockedEvent ?? "—"}</td>
+                    <td className="py-2 text-xs">{t.status.replace(/_/g, " ")}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : null}
+
+      {s.topOpenRecommendations.length > 0 ? (
+        <div className="ep-card mb-8">
+          <h3 className="font-heading font-bold">Top open-day recommendations</h3>
+          <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">Weekends post-debate · not Kelly&apos;s confirmed calendar</p>
+          <ul className="mt-3 space-y-2 text-sm">
+            {s.topOpenRecommendations.slice(0, 5).map((r) => (
+              <li key={`${r.date}-${r.county}`}>
+                <span className="font-medium">{r.date}</span>
+                <span className="text-[var(--ep-navy-muted)]">
+                  {" "}
+                  · {r.city}, {r.county} · score {r.score} · {r.travelClass}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       <p className="text-xs text-[var(--ep-navy-muted)]">{c.doctrine}</p>
     </section>

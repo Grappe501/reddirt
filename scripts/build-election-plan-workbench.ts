@@ -733,6 +733,100 @@ function buildCoverageRealitySection() {
   };
 }
 
+function buildCalendarSettlementSection(coverage: ReturnType<typeof buildCoverageRealitySection>) {
+  const summary = readJson<{
+    windowStart?: string;
+    windowEnd?: string;
+    earlyVotingStart?: string;
+    lockedEventCount?: number;
+    openDayCount?: number;
+    protectedWorkDayCount?: number;
+    projectedCountiesAfterLocked?: number;
+    stillMissingCount?: number;
+    stillMissingCounties?: string[];
+    visitedBaseline?: number;
+    topOpenRecommendations?: Array<{
+      date: string;
+      weekday: string;
+      city: string;
+      county: string;
+      score: number;
+      travelClass: string;
+    }>;
+    tier1RevisitStatus?: Array<{
+      county: string;
+      vciRank: number | null;
+      lastVisitDate: string | null;
+      nextLockedDate: string | null;
+      nextLockedEvent: string | null;
+      status: string;
+    }>;
+  }>(path.join(BRAIN, "calendar-settlement/calendar-settlement.summary.json"));
+
+  const normalized = readJson<{
+    events?: Array<{
+      date: string;
+      dateEnd?: string | null;
+      eventName: string;
+      county: string;
+      city: string;
+      eventType: string;
+      travelClass: string;
+      overnightLikely: boolean;
+    }>;
+  }>(path.join(BRAIN, "calendar-settlement/locked-events.normalized.json"));
+
+  const deltaOpen = coverage.deltaGapCounties.map((r) => r.county);
+
+  if (!summary?.lockedEventCount) {
+    return {
+      windowStart: "2026-06-15",
+      windowEnd: "2026-10-19",
+      earlyVotingStart: "2026-10-20",
+      lockedEventCount: 0,
+      openDayCount: 0,
+      protectedWorkDayCount: 0,
+      projectedCountiesAfterLocked: coverage.visitedCount,
+      stillMissingCount: coverage.neverVisitedCount,
+      stillMissingCounties: coverage.neverVisitedCounties.map((r) => r.county),
+      visitedBaseline: coverage.visitedCount,
+      lockedBackbone: [],
+      topOpenRecommendations: [],
+      tier1RevisitStatus: [],
+      deltaGapCountiesOpen: deltaOpen,
+    };
+  }
+
+  return {
+    windowStart: summary.windowStart ?? "2026-06-15",
+    windowEnd: summary.windowEnd ?? "2026-10-19",
+    earlyVotingStart: summary.earlyVotingStart ?? "2026-10-20",
+    lockedEventCount: summary.lockedEventCount ?? 0,
+    openDayCount: summary.openDayCount ?? 0,
+    protectedWorkDayCount: summary.protectedWorkDayCount ?? 0,
+    projectedCountiesAfterLocked: summary.projectedCountiesAfterLocked ?? coverage.visitedCount,
+    stillMissingCount: summary.stillMissingCount ?? coverage.neverVisitedCount,
+    stillMissingCounties: summary.stillMissingCounties ?? [],
+    visitedBaseline: summary.visitedBaseline ?? coverage.visitedCount,
+    lockedBackbone: (normalized?.events ?? [])
+      .sort((a, b) => a.date.localeCompare(b.date))
+      .slice(0, 20)
+      .map((e) => ({
+        date: e.date,
+        dateEnd: e.dateEnd ?? null,
+        eventName: e.eventName,
+        county: e.county,
+        city: e.city,
+        eventType: e.eventType,
+        travelClass: e.travelClass,
+        overnightLikely: e.overnightLikely,
+      })),
+    topOpenRecommendations: (summary.topOpenRecommendations ?? []).slice(0, 10),
+    tier1RevisitStatus: summary.tier1RevisitStatus ?? [],
+    deltaGapCountiesOpen: deltaOpen,
+  };
+}
+
 function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySection>) {
   const fm = readJson<{ upcomingCount?: number; nextWeekCount?: number }>(
     path.join(BRAIN_DATA, "forward-motion-summary.json"),
@@ -1010,6 +1104,7 @@ function main() {
   const expectedVotes = scenarios?.scenarios.expected.projectedVotes ?? 410_197;
 
   const coverageReality = buildCoverageRealitySection();
+  const calendarSettlement = buildCalendarSettlementSection(coverageReality);
 
   const snapshot: ElectionPlanWorkbenchSnapshot = {
     version: 1,
@@ -1188,6 +1283,7 @@ function main() {
     candidateDashboard: buildCandidateDashboard(coverageReality),
     warRoom: buildWarRoomSection(coverageReality),
     coverageReality,
+    calendarSettlement,
     weekPlans: buildWeekPlansSection(),
     campaignTimeline: buildCampaignTimeline(),
   };

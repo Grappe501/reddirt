@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T05:09:19.838Z",
+  "generatedAt": "2026-06-15T05:17:04.026Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -5558,6 +5558,466 @@
         "priorityScore": 570,
         "recommendedAction": "Relationship capital invested — revisit when calendar stacks 3+ objectives."
       }
+    ]
+  },
+  "calendarSettlement": {
+    "windowStart": "2026-06-15",
+    "windowEnd": "2026-10-19",
+    "earlyVotingStart": "2026-10-20",
+    "lockedEventCount": 40,
+    "openDayCount": 14,
+    "protectedWorkDayCount": 53,
+    "projectedCountiesAfterLocked": 50,
+    "stillMissingCount": 25,
+    "stillMissingCounties": [
+      "Ashley",
+      "Calhoun",
+      "Chicot",
+      "Crittenden",
+      "Dallas",
+      "Grant",
+      "Jackson",
+      "Lawrence",
+      "Lincoln",
+      "Little River",
+      "Logan",
+      "Madison",
+      "Miller",
+      "Mississippi",
+      "Monroe",
+      "Newton",
+      "Perry",
+      "Phillips",
+      "Poinsett",
+      "Prairie",
+      "Randolph",
+      "Scott",
+      "Sevier",
+      "St. Francis",
+      "Woodruff"
+    ],
+    "visitedBaseline": 43,
+    "lockedBackbone": [
+      {
+        "date": "2026-06-16",
+        "dateEnd": null,
+        "eventName": "Quitman fundraiser",
+        "county": "Cleburne",
+        "city": "Quitman",
+        "eventType": "fundraiser",
+        "travelClass": "local",
+        "overnightLikely": false
+      },
+      {
+        "date": "2026-06-17",
+        "dateEnd": null,
+        "eventName": "Mt Ida community stop",
+        "county": "Montgomery",
+        "city": "Mount Ida",
+        "eventType": "community",
+        "travelClass": "immersion",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-06-18",
+        "dateEnd": "2026-06-20",
+        "eventName": "Rose Bud Summerfest",
+        "county": "White",
+        "city": "Rose Bud",
+        "eventType": "festival",
+        "travelClass": "local",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-06-19",
+        "dateEnd": null,
+        "eventName": "Juneteenth",
+        "county": "Pulaski",
+        "city": "Little Rock",
+        "eventType": "festival",
+        "travelClass": "local",
+        "overnightLikely": false
+      },
+      {
+        "date": "2026-06-19",
+        "dateEnd": "2026-06-20",
+        "eventName": "Juneteenth Morrilton / Menifee corridor",
+        "county": "Conway",
+        "city": "Morrilton",
+        "eventType": "festival",
+        "travelClass": "immersion",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-06-19",
+        "dateEnd": "2026-06-20",
+        "eventName": "Mountain Home Craft Fest (Baxter)",
+        "county": "Baxter",
+        "city": "Mountain Home",
+        "eventType": "festival",
+        "travelClass": "regional",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-06-21",
+        "dateEnd": "2026-06-28",
+        "eventName": "Benton County immersion",
+        "county": "Benton",
+        "city": "Bentonville",
+        "eventType": "immersion",
+        "travelClass": "immersion",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-06-26",
+        "dateEnd": null,
+        "eventName": "SOS Debate — Annual Press Convention",
+        "county": "Carroll",
+        "city": "Eureka Springs",
+        "eventType": "debate",
+        "travelClass": "immersion",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-06-27",
+        "dateEnd": null,
+        "eventName": "Pioneer Heritage Festival",
+        "county": "Baxter",
+        "city": "Norfork",
+        "eventType": "festival",
+        "travelClass": "regional",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-06-28",
+        "dateEnd": null,
+        "eventName": "Pulaski County Dems",
+        "county": "Pulaski",
+        "city": "Little Rock",
+        "eventType": "coalition",
+        "travelClass": "local",
+        "overnightLikely": false
+      },
+      {
+        "date": "2026-06-28",
+        "dateEnd": "2026-07-06",
+        "eventName": "Volunteer leadership retreat",
+        "county": "White",
+        "city": "Rose Bud",
+        "eventType": "volunteer",
+        "travelClass": "local",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-07-03",
+        "dateEnd": null,
+        "eventName": "Sherwood Fireworks & Food Trucks",
+        "county": "Pulaski",
+        "city": "Sherwood",
+        "eventType": "festival",
+        "travelClass": "local",
+        "overnightLikely": false
+      },
+      {
+        "date": "2026-07-04",
+        "dateEnd": null,
+        "eventName": "Clay County July 4 corridor",
+        "county": "Clay",
+        "city": "Piggott",
+        "eventType": "festival",
+        "travelClass": "immersion",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-07-04",
+        "dateEnd": null,
+        "eventName": "Heber Springs Freedom Fest / Heber fundraiser",
+        "county": "Cleburne",
+        "city": "Heber Springs",
+        "eventType": "fundraiser",
+        "travelClass": "local",
+        "overnightLikely": false
+      },
+      {
+        "date": "2026-07-08",
+        "dateEnd": null,
+        "eventName": "Hot Spring County visit",
+        "county": "Hot Spring",
+        "city": "Malvern",
+        "eventType": "community",
+        "travelClass": "immersion",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-07-11",
+        "dateEnd": null,
+        "eventName": "Heber 250 / Ozarks 250 Block Party",
+        "county": "Washington",
+        "city": "Springdale",
+        "eventType": "festival",
+        "travelClass": "immersion",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-07-12",
+        "dateEnd": "2026-07-14",
+        "eventName": "Greene County immersion",
+        "county": "Greene",
+        "city": "Paragould",
+        "eventType": "immersion",
+        "travelClass": "immersion",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-07-14",
+        "dateEnd": null,
+        "eventName": "Nixon Flower Farm",
+        "county": "Lonoke",
+        "city": "England",
+        "eventType": "community",
+        "travelClass": "local",
+        "overnightLikely": false
+      },
+      {
+        "date": "2026-07-17",
+        "dateEnd": "2026-07-18",
+        "eventName": "Johnson County immersion",
+        "county": "Johnson",
+        "city": "Clarksville",
+        "eventType": "immersion",
+        "travelClass": "immersion",
+        "overnightLikely": true
+      },
+      {
+        "date": "2026-07-20",
+        "dateEnd": null,
+        "eventName": "Faulkner County engagement",
+        "county": "Faulkner",
+        "city": "Conway",
+        "eventType": "community",
+        "travelClass": "local",
+        "overnightLikely": false
+      }
+    ],
+    "topOpenRecommendations": [
+      {
+        "label": "Option — West Memphis",
+        "city": "West Memphis",
+        "county": "Crittenden",
+        "score": 703,
+        "travelClass": "immersion",
+        "driveMinutes": 128,
+        "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+        "date": "2026-07-19",
+        "weekday": "Sun"
+      },
+      {
+        "label": "Option — West Memphis",
+        "city": "West Memphis",
+        "county": "Crittenden",
+        "score": 703,
+        "travelClass": "immersion",
+        "driveMinutes": 128,
+        "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+        "date": "2026-08-08",
+        "weekday": "Sat"
+      },
+      {
+        "label": "Option — West Memphis",
+        "city": "West Memphis",
+        "county": "Crittenden",
+        "score": 703,
+        "travelClass": "immersion",
+        "driveMinutes": 128,
+        "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+        "date": "2026-08-09",
+        "weekday": "Sun"
+      },
+      {
+        "label": "Option — West Memphis",
+        "city": "West Memphis",
+        "county": "Crittenden",
+        "score": 703,
+        "travelClass": "immersion",
+        "driveMinutes": 128,
+        "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+        "date": "2026-08-15",
+        "weekday": "Sat"
+      },
+      {
+        "label": "Option — West Memphis",
+        "city": "West Memphis",
+        "county": "Crittenden",
+        "score": 703,
+        "travelClass": "immersion",
+        "driveMinutes": 128,
+        "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+        "date": "2026-08-16",
+        "weekday": "Sun"
+      },
+      {
+        "label": "Option — West Memphis",
+        "city": "West Memphis",
+        "county": "Crittenden",
+        "score": 703,
+        "travelClass": "immersion",
+        "driveMinutes": 128,
+        "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+        "date": "2026-08-23",
+        "weekday": "Sun"
+      },
+      {
+        "label": "Option — West Memphis",
+        "city": "West Memphis",
+        "county": "Crittenden",
+        "score": 703,
+        "travelClass": "immersion",
+        "driveMinutes": 128,
+        "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+        "date": "2026-08-30",
+        "weekday": "Sun"
+      },
+      {
+        "label": "Option — West Memphis",
+        "city": "West Memphis",
+        "county": "Crittenden",
+        "score": 703,
+        "travelClass": "immersion",
+        "driveMinutes": 128,
+        "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+        "date": "2026-09-06",
+        "weekday": "Sun"
+      },
+      {
+        "label": "Option — West Memphis",
+        "city": "West Memphis",
+        "county": "Crittenden",
+        "score": 703,
+        "travelClass": "immersion",
+        "driveMinutes": 128,
+        "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+        "date": "2026-09-26",
+        "weekday": "Sat"
+      },
+      {
+        "label": "Option — West Memphis",
+        "city": "West Memphis",
+        "county": "Crittenden",
+        "score": 703,
+        "travelClass": "immersion",
+        "driveMinutes": 128,
+        "rationale": "never visited · Delta gap · 128m from Rose Bud · immersion",
+        "date": "2026-09-27",
+        "weekday": "Sun"
+      }
+    ],
+    "tier1RevisitStatus": [
+      {
+        "county": "Pulaski",
+        "vciRank": 1,
+        "lastVisitDate": "2026-05-18",
+        "nextLockedDate": "2026-06-19",
+        "nextLockedEvent": "Juneteenth",
+        "status": "locked_planned"
+      },
+      {
+        "county": "Benton",
+        "vciRank": 2,
+        "lastVisitDate": null,
+        "nextLockedDate": "2026-06-21",
+        "nextLockedEvent": "Benton County immersion",
+        "status": "locked_planned"
+      },
+      {
+        "county": "Washington",
+        "vciRank": 3,
+        "lastVisitDate": "2026-03-14",
+        "nextLockedDate": "2026-07-11",
+        "nextLockedEvent": "Heber 250 / Ozarks 250 Block Party",
+        "status": "locked_planned"
+      },
+      {
+        "county": "Faulkner",
+        "vciRank": 4,
+        "lastVisitDate": "2026-06-04",
+        "nextLockedDate": "2026-07-20",
+        "nextLockedEvent": "Faulkner County engagement",
+        "status": "locked_planned"
+      },
+      {
+        "county": "Saline",
+        "vciRank": 5,
+        "lastVisitDate": "2026-05-09",
+        "nextLockedDate": "2026-10-12",
+        "nextLockedEvent": "Saline County GOTV push",
+        "status": "locked_planned"
+      },
+      {
+        "county": "Sebastian",
+        "vciRank": 6,
+        "lastVisitDate": "2026-02-09",
+        "nextLockedDate": "2026-07-31",
+        "nextLockedEvent": "Sebastian County immersion",
+        "status": "locked_planned"
+      },
+      {
+        "county": "Jefferson",
+        "vciRank": 8,
+        "lastVisitDate": null,
+        "nextLockedDate": null,
+        "nextLockedEvent": null,
+        "status": "needs_schedule"
+      },
+      {
+        "county": "Garland",
+        "vciRank": 9,
+        "lastVisitDate": "2026-05-26",
+        "nextLockedDate": "2026-08-18",
+        "nextLockedEvent": "Hot Springs Village",
+        "status": "locked_planned"
+      },
+      {
+        "county": "Craighead",
+        "vciRank": 7,
+        "lastVisitDate": "2025-12-15",
+        "nextLockedDate": null,
+        "nextLockedEvent": null,
+        "status": "revisit_unscheduled"
+      },
+      {
+        "county": "Lonoke",
+        "vciRank": 12,
+        "lastVisitDate": null,
+        "nextLockedDate": "2026-07-14",
+        "nextLockedEvent": "Nixon Flower Farm",
+        "status": "locked_planned"
+      },
+      {
+        "county": "White",
+        "vciRank": 11,
+        "lastVisitDate": "2026-02-03",
+        "nextLockedDate": "2026-06-18",
+        "nextLockedEvent": "Rose Bud Summerfest",
+        "status": "locked_planned"
+      },
+      {
+        "county": "Pope",
+        "vciRank": 13,
+        "lastVisitDate": "2026-04-24",
+        "nextLockedDate": "2026-09-15",
+        "nextLockedEvent": "Pope County Fair",
+        "status": "locked_planned"
+      }
+    ],
+    "deltaGapCountiesOpen": [
+      "Crittenden",
+      "Mississippi",
+      "St. Francis",
+      "Ashley",
+      "Phillips",
+      "Lincoln",
+      "Chicot",
+      "Monroe"
     ]
   },
   "weekPlans": [
