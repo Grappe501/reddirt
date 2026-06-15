@@ -6,6 +6,12 @@ import {
   getExecutiveCalendarEntry,
   getSourceWorksheetOverrides,
 } from "@/lib/election-plan/load-field-event";
+import {
+  buildCitySlugLookup,
+  resolveCitySlug,
+} from "@/lib/election-plan/location-calendar-integration";
+import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
+import { getCountyByName } from "@/lib/election-plan/load-county";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 
 type Props = { params: Promise<{ eventId: string }> };
@@ -37,6 +43,11 @@ export default async function FieldEventWorksheetPage({ params }: Props) {
 
   const sourceOverrides = getSourceWorksheetOverrides(decoded);
   const forwardMotion = findForwardMotionMatch(data, entry);
+  const cityLookup = buildCitySlugLookup(data.cities);
+  const citySlug = resolveCitySlug(entry.city, cityLookup);
+  const cityBriefHref = citySlug ? cityLocationBriefHref(citySlug) : undefined;
+  const countyRecord = getCountyByName(data, entry.county);
+  const countySlug = countyRecord?.slug;
 
   return (
     <>
@@ -47,6 +58,8 @@ export default async function FieldEventWorksheetPage({ params }: Props) {
             entry={entry}
             sourceOverrides={sourceOverrides}
             forwardMotion={forwardMotion}
+            cityBriefHref={cityBriefHref}
+            countySlug={countySlug}
           />
         </div>
       </div>

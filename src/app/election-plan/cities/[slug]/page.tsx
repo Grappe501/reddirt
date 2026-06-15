@@ -2,6 +2,9 @@ import { notFound } from "next/navigation";
 
 import { CityLocationBriefPanel } from "@/components/election-plan/CityLocationBriefPanel";
 import { getCityLocationBrief } from "@/lib/election-plan/load-city-location-brief";
+import { getCitiesInCounty, getCountyByName } from "@/lib/election-plan/load-county";
+import { getCountyStrikeTeamByName } from "@/lib/election-plan/load-county-strike-team";
+import { fieldEventsForLocation } from "@/lib/election-plan/location-calendar-integration";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -29,12 +32,31 @@ export default async function CityLocationBriefPage({ params }: Props) {
   const brief = getCityLocationBrief(slug, data.cities);
   if (!brief) notFound();
 
+  const countyKpi = getCountyByName(data, brief.county);
+  const countySlug = countyKpi?.slug ?? brief.county.toLowerCase().replace(/\s+/g, "-");
+  const strikeTeam = getCountyStrikeTeamByName(brief.county);
+  const siblingCities = getCitiesInCounty(data.cities, brief.county);
+  const fieldEvents = fieldEventsForLocation(data.executiveCalendar.entries, {
+    countyName: brief.county,
+    cityName: brief.name,
+    referenceDate: data.executiveCalendar.referenceDate,
+    limit: 6,
+  });
+
   return (
     <>
       <div className="ep-classification">Internal · Location brief · {brief.name}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-4xl">
-          <CityLocationBriefPanel brief={brief} />
+          <CityLocationBriefPanel
+            brief={brief}
+            countyKpi={countyKpi}
+            countySlug={countySlug}
+            strikeTeam={strikeTeam}
+            fieldEvents={fieldEvents}
+            siblingCities={siblingCities}
+            referenceDate={data.executiveCalendar.referenceDate}
+          />
         </div>
       </div>
     </>

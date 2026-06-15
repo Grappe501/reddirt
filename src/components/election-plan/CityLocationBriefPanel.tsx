@@ -1,6 +1,11 @@
 import Link from "next/link";
 
+import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
+import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
+import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
 import type { CityLocationBrief } from "@/lib/election-plan/load-city-location-brief";
+import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-team";
+import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/types";
 import {
   cityLocationsHubHref,
   countyPlaybookHref,
@@ -9,7 +14,20 @@ import {
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { cn } from "@/lib/utils";
 
-type Props = { brief: CityLocationBrief };
+type Props = {
+  brief: CityLocationBrief;
+  countyKpi?: ElectionPlanCounty;
+  countySlug: string;
+  strikeTeam?: CountyStrikeTeam;
+  fieldEvents: {
+    upcoming: ExecutiveCalendarEntry[];
+    recent: ExecutiveCalendarEntry[];
+    totalInCounty: number;
+    cityScoped: boolean;
+  };
+  siblingCities: ElectionPlanCity[];
+  referenceDate: string;
+};
 
 function statusClass(status: CityLocationBrief["status"]) {
   if (status === "approved") return "bg-emerald-100 text-emerald-900";
@@ -27,8 +45,16 @@ function NarrativeBlock({ title, children }: { title: string; children: React.Re
   );
 }
 
-export function CityLocationBriefPanel({ brief }: Props) {
-  const countyHref = countyPlaybookHref(brief.county, brief.county.toLowerCase().replace(/\s+/g, "-"));
+export function CityLocationBriefPanel({
+  brief,
+  countyKpi,
+  countySlug,
+  strikeTeam,
+  fieldEvents,
+  siblingCities,
+  referenceDate,
+}: Props) {
+  const countyHref = countyPlaybookHref(brief.county, countySlug);
 
   return (
     <section>
@@ -62,6 +88,43 @@ export function CityLocationBriefPanel({ brief }: Props) {
         </div>
       </div>
 
+      {countyKpi ? (
+        <div className="ep-card-glass mb-8">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">{brief.county} County playbook</h2>
+              <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
+                Tier {countyKpi.tier} · {countyKpi.primaryMission} · visits {countyKpi.coverageCompleted}/
+                {countyKpi.coveragePlanned}
+              </p>
+            </div>
+            <Link href={countyHref} className="ep-chapter-link text-sm">
+              County playbook →
+            </Link>
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3 text-sm">
+            <div>
+              <p className="text-xs uppercase text-[var(--ep-navy-muted)]">Registration goal</p>
+              <p className="font-semibold">{formatVotes(countyKpi.registrationGoal)}</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase text-[var(--ep-navy-muted)]">Lane 2 @ 50%</p>
+              <p className="font-semibold">{formatVotes(countyKpi.lane2Recovery50)}</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase text-[var(--ep-navy-muted)]">Field stops in county</p>
+              <p className="font-semibold">{fieldEvents.totalInCounty}</p>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {strikeTeam ? (
+        <div className="mb-8">
+          <CountyStrikeTeamPanel team={strikeTeam} compact />
+        </div>
+      ) : null}
+
       <div className="ep-card ep-priority-card mb-8 border-l-4 border-[var(--ep-gold)]">
         <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Brief board</h2>
         <p className="mt-3 text-base leading-relaxed text-[var(--ep-navy-muted)]">{brief.briefBoard}</p>
@@ -94,9 +157,25 @@ export function CityLocationBriefPanel({ brief }: Props) {
         <NarrativeBlock title="Registration goals">{brief.registrationGoals}</NarrativeBlock>
       </div>
 
+      <div className="mb-8">
+        <LocationFieldEventsPanel
+          title={`Field calendar · ${brief.name}`}
+          subtitle={
+            fieldEvents.cityScoped
+              ? `City-specific stops · ref ${referenceDate}`
+              : `County-wide stops (no city-specific entries yet) · ref ${referenceDate}`
+          }
+          upcoming={fieldEvents.upcoming}
+          recent={fieldEvents.recent}
+          cities={siblingCities}
+          countyName={brief.county}
+          countySlug={countySlug}
+        />
+      </div>
+
       <div className="flex flex-wrap gap-3 text-sm">
         <Link href={countyHref} className="ep-chapter-link">
-          Open {brief.county} County workbench →
+          Open {brief.county} County playbook →
         </Link>
         <Link href={locationBriefMasterPlanHref()} className="ep-chapter-link">
           Location brief master plan →

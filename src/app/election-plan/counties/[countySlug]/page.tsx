@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 
 import { CountyPlaybookPanel } from "@/components/election-plan/CountyPlaybookPanel";
-import { getCountyBySlug } from "@/lib/election-plan/load-county";
+import { getCitiesInCounty, getCountyBySlug } from "@/lib/election-plan/load-county";
+import { getCountyStrikeTeamBySlug } from "@/lib/election-plan/load-county-strike-team";
+import { fieldEventsForLocation } from "@/lib/election-plan/location-calendar-integration";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 
 type Props = { params: Promise<{ countySlug: string }> };
@@ -18,7 +20,7 @@ export async function generateMetadata({ params }: Props) {
   if (!county) return { title: "County not found" };
   return {
     title: `${county.county} County | County playbook`,
-    description: `County playbook and Kelly outreach contacts for ${county.county} County`,
+    description: `County playbook, strike team, field calendar, and Kelly outreach contacts for ${county.county} County`,
     robots: { index: false, follow: false },
   };
 }
@@ -29,12 +31,26 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
   const county = getCountyBySlug(data, countySlug);
   if (!county) notFound();
 
+  const priorityCities = getCitiesInCounty(data.cities, county.county);
+  const strikeTeam = getCountyStrikeTeamBySlug(county.slug);
+  const fieldEvents = fieldEventsForLocation(data.executiveCalendar.entries, {
+    countyName: county.county,
+    referenceDate: data.executiveCalendar.referenceDate,
+    limit: 8,
+  });
+
   return (
     <>
       <div className="ep-classification">Internal · County playbook · {county.county} County</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-4xl">
-          <CountyPlaybookPanel county={county} />
+          <CountyPlaybookPanel
+            county={county}
+            priorityCities={priorityCities}
+            strikeTeam={strikeTeam}
+            fieldEvents={fieldEvents}
+            referenceDate={data.executiveCalendar.referenceDate}
+          />
         </div>
       </div>
     </>

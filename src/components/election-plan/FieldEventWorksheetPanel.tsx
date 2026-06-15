@@ -35,6 +35,8 @@ type Props = {
   entry: ExecutiveCalendarEntry;
   sourceOverrides?: Partial<FieldEventWorksheet>;
   forwardMotion?: ForwardMotionStop;
+  cityBriefHref?: string;
+  countySlug?: string;
 };
 
 function TextArea({
@@ -64,7 +66,7 @@ function TextArea({
   );
 }
 
-export function FieldEventWorksheetPanel({ entry, sourceOverrides, forwardMotion }: Props) {
+export function FieldEventWorksheetPanel({ entry, sourceOverrides, forwardMotion, cityBriefHref, countySlug: countySlugProp }: Props) {
   const [worksheet, setWorksheet] = useState<FieldEventWorksheet>(() =>
     scaffoldWorksheet(entry, { ...getWorksheet(entry.id, entry), ...sourceOverrides }),
   );
@@ -82,7 +84,7 @@ export function FieldEventWorksheetPanel({ entry, sourceOverrides, forwardMotion
 
   const operationalTasks = useMemo(() => buildOperationalTasks(entry, worksheet), [entry, worksheet]);
 
-  const countySlug = entry.county.toLowerCase().replace(/\s+/g, "-");
+  const countySlug = countySlugProp ?? entry.county.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <section>
@@ -113,6 +115,11 @@ export function FieldEventWorksheetPanel({ entry, sourceOverrides, forwardMotion
         <Link href={countyPlaybookHref(entry.county, countySlug)} className="ep-chapter-link">
           County playbook →
         </Link>
+        {cityBriefHref ? (
+          <Link href={cityBriefHref} className="ep-chapter-link">
+            City location brief →
+          </Link>
+        ) : null}
         <Link href={fieldOperationalCalendarHref()} className="ep-chapter-link">
           Day-to-day operational calendar →
         </Link>

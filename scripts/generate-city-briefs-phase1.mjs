@@ -1,0 +1,695 @@
+/**
+ * One-time generator for Phase 1 city location brief narratives.
+ * Run: node scripts/generate-city-briefs-phase1.mjs
+ */
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const root = path.join(__dirname, "..");
+const snapshot = JSON.parse(
+  fs.readFileSync(path.join(root, "data/election-plan/election-plan-workbench.snapshot.json"), "utf8"),
+);
+const existing = JSON.parse(
+  fs.readFileSync(path.join(root, "data/campaign-brain/city-location-briefs.source.json"), "utf8"),
+);
+
+const KEEP = new Set(["little-rock", "sherwood", "fayetteville"]);
+
+function regGoal(city) {
+  const pct = city.isTop10 ? 0.18 : 0.12;
+  return Math.max(80, Math.round(city.targetVotes * pct));
+}
+
+function volGoal(city) {
+  if (city.isTop10) return `Recruit ${Math.round(city.targetVotes / 200)}+ active volunteers and ${Math.max(8, Math.round(city.targetVotes / 800))} neighborhood captains tied to ${city.visitFrequency} visit rhythm.`;
+  return `Build a ${Math.max(15, Math.round(city.targetVotes / 150))}-volunteer core and ${Math.max(3, Math.round(city.targetVotes / 600))} captains for ${city.county} County field memory.`;
+}
+
+function hpGoal(city) {
+  const hosts = Math.max(4, Math.round(city.targetVotes / 500));
+  return `Stand up ${hosts}+ house party hosts with Power of 5 circles before peak season; prioritize ${city.influenceTags.slice(0, 2).join(" and ").replace(/_/g, " ")} validators.`;
+}
+
+const NARRATIVES = {
+  springdale: {
+    briefBoard:
+      "Springdale is Northwest Arkansas at full velocity — poultry and logistics workforce, Marshallese and Latino community strength, and Ozarks 250 energy that rewards candidates who show up in church halls and neighborhood markets. Washington County leans GOP at the top, but Springdale's growth corridor is where registration and volunteer depth must outpace Fayetteville's campus cycle.",
+    situation:
+      "A diverse, working-class NWA city where national branding often misses local identity. Turnout swings follow community institutions — churches, employers, and school networks — more than digital ads. Lane 3 registration and Lane 4 relationship work must feel neighbor-led, not lecture-led.",
+    penetration:
+      "Community hosts in workforce neighborhoods, bilingual registration partners, chamber introductions without partisan framing, and festival visibility (farmers markets, heritage events). Tie every shift to returning hosts who survive election cycles.",
+    accomplishment:
+      "Hit the 13,217-vote target while proving NWA organizing works outside the Fayetteville campus bubble — producing captains who can cover Rogers and Siloam Springs.",
+    messaging:
+      "Springdale builds Arkansas — your vote should count the same whether you work first shift or third. Kelly runs to make elections fair, clerks supported, and registration plain-spoken.",
+    kellyTalkingPoints: [
+      "Northwest Arkansas doesn't need imported fights — it needs a Secretary of State who respects how hard people work here.",
+      "Registration is power for families who've been overlooked in the growth story.",
+      "Competence beats culture-war performance — especially for communities that keep this region running.",
+    ],
+  },
+  "north-little-rock": {
+    briefBoard:
+      "North Little Rock is Pulaski's working-class backbone — neighborhoods where 2024 energy didn't fully convert to 2022 midterm discipline. Argenta arts energy, riverfront development, and long-standing Black community leadership make NLR the Lane 2 recovery test for the whole central metro.",
+    situation:
+      "Democratic infrastructure exists but Lane 2 drop-off lives in renter-heavy blocks and aging homeowner pockets alike. Residents want competent service delivery framing, not national outrage. Trust is rebuilt through repeat visits and local validators.",
+    penetration:
+      "NAACP and faith table partnerships, Argenta event visibility, neighborhood house parties in recovery ZIPs, and clerk-facing service stories that travel through barber shops and union halls.",
+    accomplishment:
+      "Deliver the 12,834-vote target as the metro's turnout recovery proof point — showing how Lane 2 neighbors return when Kelly shows up before asking.",
+    messaging:
+      "North Little Rock deserves a Secretary of State who treats your neighborhood like the center of Arkansas politics — because for your family, it is.",
+    kellyTalkingPoints: [
+      "I'm not running to perform on cable — I'm running so your clerk's office and your ballot both work.",
+      "Turnout is neighbor work: churches, block clubs, and people who've known you for years.",
+      "We win North Little Rock by respecting working-class Democrats and independents who want honest government.",
+    ],
+  },
+  "fort-smith": {
+    briefBoard:
+      "Fort Smith anchors western Arkansas — River Valley media, chamber credibility, and moderate Republican persuasion at scale. Sebastian County's 9,433-vote city target is one of the largest persuasion lifts in the Top 10, and Kelly must sound like a competent executive, not a coastal import.",
+    situation:
+      "A proud river city where veterans, manufacturing families, and chamber leaders set the tone. Top-of-ticket GOP strength masks persuadable lanes — especially voters who want paper ballots, clerk support, and less chaos in election administration.",
+    penetration:
+      "Chamber and civic club relationship track, regional media interviews, back-to-school and fair circuit visibility, and veteran/community validators who frame SOS as service.",
+    accomplishment:
+      "Capture 9,433 votes (+1,715 gain) while establishing Fort Smith as the western persuasion hub for Crawford and the River Valley stack.",
+    messaging:
+      "Fort Smith built Arkansas with its hands — elections should work the same way: clear rules, supported clerks, no nonsense.",
+    kellyTalkingPoints: [
+      "Secretary of State is a service job for every county clerk in the River Valley.",
+      "I'll talk to Republicans who want fair process more than partisan theater.",
+      "Western Arkansas deserves a candidate who shows up before election season, not after.",
+    ],
+  },
+  rogers: {
+    briefBoard:
+      "Rogers is the NWA business corridor — chamber tables, moderate Republican conversion, and suburban growth that rewards steady relationship building over rally theatrics. The 9,097-vote target depends on Lane 4 credibility with executives and neighbors who split tickets.",
+    situation:
+      "Corporate growth and small-business Main Street coexist. Voters here respond to competence, fiscal seriousness, and respect for conscience — not national Democratic branding.",
+    penetration:
+      "Chamber introductions, executive listening sessions, farmers market and festival repetition, and host committees drawn from cross-partisan civic circles.",
+    accomplishment:
+      "Win Rogers-level persuasion proof (+651 gain) while feeding Benton County's broader NWA stack and fundraising credibility.",
+    messaging:
+      "Rogers rewards people who build things — including elections systems that clerks and voters can trust.",
+    kellyTalkingPoints: [
+      "I'm asking business leaders to judge me on competence, not party labels.",
+      "Moderate Republicans belong at the Big Table when the office is Secretary of State, not culture-war referee.",
+      "Northwest Arkansas growth needs election infrastructure that matches its ambition.",
+    ],
+  },
+  conway: {
+    briefBoard:
+      "Conway is Faulkner County's college-and-commuter engine — UCA, Hendrix, and young families driving registration velocity. The 8,468-vote target (+1,238 gain) makes Conway one of the highest-upside registration cities in central Arkansas.",
+    situation:
+      "Student turnover and suburban expansion reset the map every cycle. Conway voters respond to plain civics, campus-adjacent hosts, and a candidate who treats SOS as explain-the-process work.",
+    penetration:
+      "Campus ambassador pipeline, young-family house parties, Faulkner County fair and festival circuit, and digital that always points to in-person registration.",
+    accomplishment:
+      "Lead Faulkner County registration while building volunteer depth that survives graduation cycles and supports Lonoke/Cabot orbit.",
+    messaging:
+      "Conway's future is registered — students, renters, and young families deserve a Secretary of State who meets them where they are.",
+    kellyTalkingPoints: [
+      "Registration turns frustration into power — especially for first-time voters in college towns.",
+      "I'll support clerks statewide; Conway is where we prove the message travels.",
+      "Competence is the brand — fair elections without turning civics into a team sport.",
+    ],
+  },
+  "pine-bluff": {
+    briefBoard:
+      "Pine Bluff is Southeast Delta recovery at Tier 1 scale — Jefferson County's Democratic base with massive Lane 2 reactivation potential (+1,668 gain on an 8,339 target). Kelly's presence here must honor community leadership already in the fight, not arrive as a savior narrative.",
+    situation:
+      "Deep Democratic heritage with turnout gaps that hurt statewide math when Pine Bluff stays home. Local validators — pastors, alumni networks, civic clubs — carry more weight than any flyer.",
+    penetration:
+      "Coalition tables with existing Jefferson leadership, UAPB-adjacent registration, community event repetition, and revisit discipline tied to county fair and Tier 1 immersion weeks.",
+    accomplishment:
+      "Maximize Pine Bluff turnout toward the 8,339-vote target and model Delta recovery organizing for Forrest City, Stuttgart, and the southeast stack.",
+    messaging:
+      "Pine Bluff's voice matters statewide — the Secretary of State's office should work for Jefferson County clerks and voters who've been waiting to be seen.",
+    kellyTalkingPoints: [
+      "I'm here to amplify Pine Bluff leadership, not replace it.",
+      "Turnout is respect — for ancestors, for clerks, for neighbors who keep showing up.",
+      "Delta Arkansas deserves election administration that works as hard as this community.",
+    ],
+  },
+  jonesboro: {
+    briefBoard:
+      "Jonesboro is Northeast Arkansas's regional hub — ASU energy, chamber credibility, and media that sets tone for Crowley's Ridge counties. The 8,196-vote persuasion target (+1,710 gain) makes Jonesboro the northeast anchor for Paragould and the fair-circuit stack.",
+    situation:
+      "Business-forward city with growing diversity and a county seat mentality. Persuasion lives in civic clubs, healthcare networks, and regional media — not partisan social feeds.",
+    penetration:
+      "Northeast fair circuit hub weeks, chamber and civic club relationship track, ASU registration partnerships, and regional media that treats SOS as administrative competence.",
+    accomplishment:
+      "Hit 8,196 votes while producing northeast volunteer captains who can cover Greene, Lawrence, and Craighead orbit counties.",
+    messaging:
+      "Jonesboro leads northeast Arkansas — elections should lead too, with clerks supported and rules plain-spoken.",
+    kellyTalkingPoints: [
+      "Regional hubs deserve regional respect — I'll show up for Craighead clerks and Jonesboro voters alike.",
+      "Persuasion starts with listening to chamber, faith, and campus leaders who already hold trust.",
+      "Competent elections are economic development for democracy — especially in growth corridors.",
+    ],
+  },
+  bentonville: {
+    briefBoard:
+      "Bentonville is corporate NWA — fundraising gravity, executive relationships, and chamber visibility that shapes the whole region. The 7,041-vote target is as much about credibility and donor proof as raw turnout.",
+    situation:
+      "Global company headquarters meet small-town Arkansas identity. Voters include high-income moderates, transplants, and longtime residents who want election competence without culture-war performance.",
+    penetration:
+      "Executive listening sessions, Benton County fair immersion, chamber board introductions, and host committees that frame Kelly as a serious statewide executive.",
+    accomplishment:
+      "Meet vote targets while unlocking NWA fundraising and validator relationships that fund field across Washington and Benton counties.",
+    messaging:
+      "Bentonville invests in what works — Kelly invests in election systems that clerks and voters can rely on.",
+    kellyTalkingPoints: [
+      "Secretary of State is executive service — not a platform for national outrage.",
+      "I'll meet business leaders where they are: results, transparency, clerk support.",
+      "Northwest Arkansas's reputation for building things should include building voter confidence.",
+    ],
+  },
+  jacksonville: {
+    briefBoard:
+      "Jacksonville sits beside Little Rock Air Force Base — military-adjacent families, working-class Pulaski neighborhoods, and registration drives that must respect service-community norms. The 5,589-vote target is turnout growth through trusted local hosts.",
+    situation:
+      "Military-adjacent voters value competence, stability, and non-partisan framing around voting rights and clerk support. Lane 2 recovery mixes with young-family suburban growth.",
+    penetration:
+      "Community event visibility (Festiville, base-adjacent family networks), faith and school partnerships, and registration tables at trusted local institutions — never partisan staging.",
+    accomplishment:
+      "Grow Jacksonville turnout toward 5,589 votes while feeding Pulaski County's broader recovery map with captains who understand military-adjacent messaging.",
+    messaging:
+      "Service families deserve elections that work — plain rules, supported clerks, and a Secretary of State who respects sacrifice without exploiting it.",
+    kellyTalkingPoints: [
+      "Jacksonville families want government that functions — starting with the ballot box.",
+      "Registration drives should feel like community service, not campaign theater.",
+      "I'll treat military-adjacent voters as citizens first — with policies that protect clerks and voters alike.",
+    ],
+  },
+  "hot-springs": {
+    briefBoard:
+      "Hot Springs is tourism, retirees, and Garland County persuasion — a monthly-visit city where community events and lake-country relationships drive Lane 4 conversion. The 5,101-vote target (+927 gain) rewards festival-season repetition.",
+    situation:
+      "Retiree persuasion mixes with working-class Garland County voters and event-economy workers. National noise underperforms; local credibility at baths, fairs, and civic clubs wins.",
+    penetration:
+      "Hot Springs forum and festival circuit, retiree relationship house parties, chamber introductions, and revisit flags through summer event season.",
+    accomplishment:
+      "Deliver 5,101 votes while proving tourism-corridor persuasion for Malvern and Hot Spring County stack.",
+    messaging:
+      "Hot Springs welcomes the world — Arkansas voters deserve a Secretary of State who welcomes everyone to the ballot with clear rules.",
+    kellyTalkingPoints: [
+      "Garland County clerks need a partner in the SOS office — not a partisan referee.",
+      "Retirees and workers alike want honest elections, not cable-news performance.",
+      "I'll keep showing up in Hot Springs because relationships outlast one election cycle.",
+    ],
+  },
+  benton: {
+    briefBoard:
+      "Benton (Saline County) is central Arkansas suburban persuasion — young families, commuter moderates, and Lane 4 relationship work beside Bryant growth. The 4,317-vote target (+654 gain) depends on neighbor-to-neighbor credibility.",
+    situation:
+      "Fast-growing Saline suburb where ticket-splitters decide local math. Church, school, and youth-sports networks are the real persuasion infrastructure.",
+    penetration:
+      "Suburban house party hosts, Saline County GOTV coordination with Bryant, school-community registration drives, and monthly visibility rhythm.",
+    accomplishment:
+      "Hit Benton targets while pairing with Bryant for Saline County's combined suburban registration push.",
+    messaging:
+      "Saline County families want safe communities and fair elections — Kelly delivers the second with the same seriousness as the first.",
+    kellyTalkingPoints: [
+      "Suburban Arkansas isn't a monolith — I'm running for clerks and neighbors, not party labels.",
+      "Registration at school and community events beats blast emails every time.",
+      "Benton should know Kelly before she asks for the vote — that's how trust works.",
+    ],
+  },
+  "bella-vista": {
+    briefBoard:
+      "Bella Vista is retiree persuasion at scale — lake-country relationships, farmers market repetition, and Lane 4 conversion among moderate Republicans who moved here for peace, not politics-as-war.",
+    situation:
+      "High concentration of relocated Midwestern and Sun Belt retirees with ticket-splitting history. Relationship depth matters more than rally energy; market visibility builds name ID between quarterly visits.",
+    penetration:
+      "Farmers and makers market rhythm (weekly during season), retiree house parties, pickleball and community club introductions, and gentle SOS competence framing.",
+    accomplishment:
+      "Move the 4,028-vote target (+288 gain) through relationship persuasion that feeds Benton County's broader NWA map.",
+    messaging:
+      "Bella Vista chose Arkansas for community — elections should feel like community too: clear, fair, and clerk-supported.",
+    kellyTalkingPoints: [
+      "I'm not asking you to leave your party — I'm asking you to vote for competent election administration.",
+      "Retirees have seen what broken elections look like nationally; Arkansas can do better.",
+      "You'll see me at the market before you see me on a attack ad — that's intentional.",
+    ],
+  },
+  maumelle: {
+    briefBoard:
+      "Maumelle is affluent Pulaski persuasion — moderate Republicans, professional commuters, and neighborhood hosts who respond to executive competence over partisan heat. The 3,953-vote target is Lane 4 relationship math.",
+    situation:
+      "Master-planned suburb with high education and split-ticket history. Kelly must sound like a serious executive who respects fiscal and social conservatives on process while leading on clerk support.",
+    penetration:
+      "Neighborhood host committees, professional network introductions, Maumelle event visibility, and paired Pulaski suburban strategy with Sherwood and North Little Rock.",
+    accomplishment:
+      "Convert Maumelle persuasion targets while modeling affluent-suburb relationship playbook for statewide Lane 4 work.",
+    messaging:
+      "Maumelle voters invest in quality — Kelly invests in election quality: trained clerks, clear rules, transparent process.",
+    kellyTalkingPoints: [
+      "Secretary of State is the one office where competence should transcend party.",
+      "I'll meet Maumelle neighbors in living rooms, not shouting matches.",
+      "Your clerk depends on the SOS office — I'll run it like the executive function it is.",
+    ],
+  },
+  "west-memphis": {
+    briefBoard:
+      "West Memphis is Crittenden's Democratic anchor — Delta gateway, Memphis media spillover, and the highest recovery potential in the county (+756 gain on 3,782 target). Base turnout here lifts Marion and the whole Delta stack.",
+    situation:
+      "Working-class Democratic base with infrastructure gaps and turnout volatility. Community leaders carry authority; Kelly must defer to local tables while providing SOS-specific credibility.",
+    penetration:
+      "Delta gateway immersion weeks, church and civic club partnerships, cross-river media where appropriate, and coordinated Crittenden county captain stand-up with Marion.",
+    accomplishment:
+      "Maximize West Memphis turnout toward 3,782 votes and prove Crittenden recovery model for Delta corridor counties.",
+    messaging:
+      "West Memphis keeps Arkansas connected to the world — your vote should connect you to a Secretary of State who shows up.",
+    kellyTalkingPoints: [
+      "Crittenden clerks deserve a SOS partner who understands Delta realities.",
+      "Turnout is how West Memphis reclaims statewide voice.",
+      "I'm here to serve voters who've heard promises before — and stay after the camera leaves.",
+    ],
+  },
+  texarkana: {
+    briefBoard:
+      "Texarkana is southwest border persuasion — twin-city media market, regional identity, and a 3,195-vote target (+1,078 gain) that makes Miller County one of the highest proportional lifts outside metro Arkansas.",
+    situation:
+      "Split-state identity means voters think regionally. Chamber, civic clubs, and local media shape credibility; national framing fails.",
+    penetration:
+      "Border market media, chamber relationship track, community event repetition, and southwest stack coordination with Hope and Hempstead.",
+    accomplishment:
+      "Hit Texarkana persuasion targets while anchoring southwest Arkansas field memory for the Miller/Little River corridor.",
+    messaging:
+      "Texarkana sits on the line — elections shouldn't leave Arkansas voters on the wrong side of confusion.",
+    kellyTalkingPoints: [
+      "Southwest Arkansas deserves a SOS candidate who knows the border market isn't Little Rock.",
+      "Persuasion here is civic club and chamber work — I'll do the miles.",
+      "Competent clerks and clear ballots are messages that cross party lines in Miller County.",
+    ],
+  },
+  russellville: {
+    briefBoard:
+      "Russellville is River Valley college town organizing — Arkansas Tech pipeline, Pope County fair rhythm, and a 2,994-vote target (+992 gain) driven by student and young-family registration.",
+    situation:
+      "Tech students and River Valley workers mix in a county seat that rewards practical civics. Faith-adjacent community norms require respectful registration framing.",
+    penetration:
+      "Campus registration drives, Pope County fair immersion, young-professional hosts, and River Valley media that pairs with Fort Smith persuasion stack.",
+    accomplishment:
+      "Lead Pope County registration velocity toward 2,994 votes while feeding central Arkansas River Valley volunteer production.",
+    messaging:
+      "Russellville trains Arkansas's workforce — let's train voters too, with a SOS office that explains the process plainly.",
+    kellyTalkingPoints: [
+      "Students and workers both deserve ballots that count and clerks who are supported.",
+      "River Valley Arkansas isn't an afterthought — I'll treat Pope County that way.",
+      "Registration events should feel like community pride, not partisan recruitment.",
+    ],
+  },
+  "el-dorado": {
+    briefBoard:
+      "El Dorado is south Arkansas oil-belt civic organizing — chamber credibility, Union County fair tradition, and persuasion among business leaders who still set county tone. The 2,961-vote target (+817 gain) anchors the south stack.",
+    situation:
+      "County seat pride runs deep; civic clubs and chamber boards gate regional respect. Kelly must honor south Arkansas identity and avoid northwest-centrism in messaging.",
+    penetration:
+      "Union County fair immersion, chamber and civic club relationship track, community host recruitment, and southwest coordination with Camden and Magnolia.",
+    accomplishment:
+      "Deliver 2,961 votes while establishing El Dorado as south Arkansas validator hub for Union, Columbia, and Ouachita orbit.",
+    messaging:
+      "El Dorado built south Arkansas — elections should honor that same pride with clerk support and fair process.",
+    kellyTalkingPoints: [
+      "South Arkansas deserves a SOS who shows up for Union County, not just Pulaski.",
+      "Chamber leaders want competence — I'll meet them on election administration, not culture war.",
+      "Union County fair weeks are relationship weeks — I'll treat them that way.",
+    ],
+  },
+  cabot: {
+    briefBoard:
+      "Cabot is Lonoke County growth-suburb registration — young families, commuter expansion, and a 2,780-vote target (+811 gain) that makes Cabot one of the fastest-growing vote pools outside NWA.",
+    situation:
+      "Suburban sprawl from Little Rock brings ticket-splitters and new registrants. School and youth-sports networks are the penetration map.",
+    penetration:
+      "Young-family house parties, Lonoke County fair circuit, school-community registration, and paired strategy with Jacksonville and Conway.",
+    accomplishment:
+      "Capture Cabot registration growth toward 2,780 votes while building Lonoke captains for statewide suburban playbook reuse.",
+    messaging:
+      "Cabot families moved here for opportunity — registration is how that opportunity includes your voice at the ballot box.",
+    kellyTalkingPoints: [
+      "Growth suburbs need election systems that keep up with growth — starting with registration.",
+      "I'll meet Cabot parents where they already gather — schools, churches, community events.",
+      "Lonoke clerks deserve a SOS partner who understands commuter-county realities.",
+    ],
+  },
+  bryant: {
+    briefBoard:
+      "Bryant pairs with Benton as Saline County's twin growth engines — suburban registration drives, school-network hosts, and combined GOTV that should treat Saline as one field market.",
+    situation:
+      "Young families and longtime Saline residents mix in a county trending competitive at local levels. Volunteer depth is the bottleneck, not message awareness.",
+    penetration:
+      "Coordinated Saline house party hosts, school registration drives, Saline GOTV push weeks, and shared captains with Benton.",
+    accomplishment:
+      "Hit 2,615-vote Bryant targets as half of Saline's combined suburban registration strategy.",
+    messaging:
+      "Bryant and Benton together — Saline County deserves election competence that matches its growth.",
+    kellyTalkingPoints: [
+      "Saline County is family country — registration should feel like neighbor helping neighbor.",
+      "I'll coordinate Bryant and Benton field so we're not duplicating effort.",
+      "Your clerk's office matters — I'll run SOS to support it, not fight it.",
+    ],
+  },
+  paragould: {
+    briefBoard:
+      "Paragould is Greene County's volunteer hub — northeast orbit organizing with a 2,492-vote target (+965 gain) that supports Jonesboro's regional media and fair-circuit stack.",
+    situation:
+      "County seat community where everyone knows everyone. Regional media is limited; face-to-face repetition and fair weeks define credibility.",
+    penetration:
+      "Greene County immersion, volunteer captain stand-up, northeast fair circuit coordination, and local host committees tied to Paragould civic life.",
+    accomplishment:
+      "Maximize Paragould turnout while producing Greene/Craighead orbit captains who extend Jonesboro's northeast hub.",
+    messaging:
+      "Paragould keeps northeast Arkansas connected — voters here deserve a SOS who connects clerks to real support.",
+    kellyTalkingPoints: [
+      "Northeast Arkansas runs on relationships — I'll invest in Paragould before I ask for airtime.",
+      "Greene County volunteers can cover more ground than any ad buy.",
+      "Fair season is democracy season — I'll show up when the community does.",
+    ],
+  },
+  "van-buren": {
+    briefBoard:
+      "Van Buren is Fort Smith's Crawford County partner — metro field organizing, fair-and-festival persuasion, and a 2,362-vote target (+835 gain) that extends Sebastian County's western anchor.",
+    situation:
+      "Historic river community with working-class roots and metro spillover. Persuasion pairs with Fort Smith media but requires local validators who live in Crawford.",
+    penetration:
+      "Van Buren fair and junk fest circuit, Crawford County field captains, paired Fort Smith metro weeks, and clerk-support messaging for rural-suburban mix.",
+    accomplishment:
+      "Hit 2,362 votes while proving Crawford field depth supports Fort Smith's 9,433-vote anchor target.",
+    messaging:
+      "Van Buren stood with Fort Smith through every river flood — voters deserve election administration that stands with clerks too.",
+    kellyTalkingPoints: [
+      "Crawford County isn't Fort Smith's suburb — it's its own community with its own clerks to support.",
+      "I'll treat Van Buren fair weeks as relationship weeks, not photo ops.",
+      "Western Arkansas wins when metro and county-seat organizing work together.",
+    ],
+  },
+  "siloam-springs": {
+    briefBoard:
+      "Siloam Springs is the John Brown University corridor — student registration, small-town NWA identity, and quarterly-visit relationship depth in a 2,250-vote market.",
+    situation:
+      "College town norms meet conservative northwest Arkansas culture. Registration must be civics-first; relationship hosts bridge campus and community.",
+    penetration:
+      "JBU ambassador pipeline, downtown festival visibility, cross-partisan community hosts, and Benton County stack coordination with Rogers and Bella Vista.",
+    accomplishment:
+      "Drive Siloam registration toward 2,250 votes while feeding NWA student pipeline alongside Fayetteville and Springdale.",
+    messaging:
+      "Siloam Springs values faith, family, and fairness — Kelly runs to make elections fair starting with supported clerks.",
+    kellyTalkingPoints: [
+      "Small-town NWA deserves big respect — including from the Secretary of State's office.",
+      "Student registration is civics education, not partisan recruitment.",
+      "I'll keep returning to Siloam because quarterly visits only work if they're real.",
+    ],
+  },
+  blytheville: {
+    briefBoard:
+      "Blytheville is Mississippi Delta recovery — base turnout, Lane 2 reactivation, and a 2,134-vote target (+549 gain) in a quarter-visit city where local leadership carries all credibility.",
+    situation:
+      "Delta economic transitions left turnout gaps that hurt statewide math. Kelly must follow local tables — pastors, alumni, civic elders — not lead over them.",
+    penetration:
+      "Delta gateway immersion coordination, church and community club partnerships, Mississippi County field memory, and paired West Memphis/Crittenden learnings where applicable.",
+    accomplishment:
+      "Maximize Blytheville base turnout toward 2,134 votes and model Delta recovery for northeast Arkansas Delta counties.",
+    messaging:
+      "Blytheville's story is Arkansas's story — turnout honors that story and demands a SOS who stays after headlines fade.",
+    kellyTalkingPoints: [
+      "Delta voters deserve election administration that works as hard as they do.",
+      "I'm here to listen to Blytheville leaders who've been organizing for decades.",
+      "Turnout is respect — for community, for clerks, for the vote itself.",
+    ],
+  },
+  searcy: {
+    briefBoard:
+      "Searcy is Harding University and White County faith-adjacent outreach — student registration with respectful cross-partisan framing and a 2,099-vote target (+616 gain).",
+    situation:
+      "Conservative cultural norms require civics-first messaging. Harding and ASU-Beebe orbit makes White County a dual-campus registration opportunity.",
+    penetration:
+      "Faith-respectful campus partnerships, White County fair immersion, community host recruitment, and paired Beebe field strategy.",
+    accomplishment:
+      "Hit Searcy registration targets while building White County captains covering Beebe and rural remainder.",
+    messaging:
+      "Searcy values conscience and community — Kelly runs so elections honor both with clear rules and supported clerks.",
+    kellyTalkingPoints: [
+      "Registration is citizenship — not a fight over your faith or your party.",
+      "White County clerks need statewide backup; I'll provide it.",
+      "I'll meet Searcy on respect first, politics second.",
+    ],
+  },
+  marion: {
+    briefBoard:
+      "Marion is Memphis-adjacent Crittenden recovery — suburban Democratic potential in a 2,004-vote market (+401 gain) that pairs with West Memphis for county-wide turnout lifts.",
+    situation:
+      "Commuter and suburban growth brings new registrants and Lane 2 recovery pockets. Coordination with West Memphis prevents duplicated field effort.",
+    penetration:
+      "Crittenden county captain coordination, suburban registration drives, Memphis-spillover media where useful, and Delta gateway immersion weeks.",
+    accomplishment:
+      "Grow Marion toward 2,004 votes as part of unified Crittenden recovery hitting combined county targets.",
+    messaging:
+      "Marion families cross the river every day — your Arkansas vote should be as reliable as your commute.",
+    kellyTalkingPoints: [
+      "Crittenden County wins when Marion and West Memphis organize together.",
+      "Suburban registration is neighbor work — house parties and school drives, not ads.",
+      "I'll support your clerk like I support every county clerk statewide.",
+    ],
+  },
+  "forrest-city": {
+    briefBoard:
+      "Forrest City is St. Francis Delta county seat — Democratic base mobilization with a 1,869-vote target (+374 gain) and quarterly visit discipline tied to fair and community cycles.",
+    situation:
+      "County seat authority and church networks define turnout. Economic pressure creates skepticism — credibility comes from repeat presence and local co-signers.",
+    penetration:
+      "St. Francis County immersion, pastor and civic leader partnerships, Delta southeast stack coordination with Pine Bluff learnings.",
+    accomplishment:
+      "Mobilize Forrest City base toward 1,869 votes while extending southeast Delta field memory.",
+    messaging:
+      "Forrest City holds St. Francis together — turnout holds Arkansas together when Delta voices vote.",
+    kellyTalkingPoints: [
+      "St. Francis clerks deserve a SOS who knows Delta county seats by name.",
+      "I'll keep coming back because Forrest City isn't a one-stop market.",
+      "Base turnout is power — and respect for communities that power statewide Democrats.",
+    ],
+  },
+  "mountain-home": {
+    briefBoard:
+      "Mountain Home is Twin Lakes retiree persuasion — Baxter County lake communities, craft-fest visibility, and a 1,776-vote target (+652 gain) through relationship-based Lane 4.",
+    situation:
+      "Retiree-heavy region with strong GOP top-of-ticket habits but ticket-splitting history among transplants. Festival season is the persuasion calendar.",
+    penetration:
+      "Mountain Home craft fest and lake-community house parties, retiree relationship hosts, Baxter County immersion weeks, and gentle competence framing.",
+    accomplishment:
+      "Hit 1,776 votes through Ozarks lake-country persuasion that feeds north-central completion weeks.",
+    messaging:
+      "Twin Lakes chose Arkansas for peace — elections should feel peaceful too: clear, fair, clerk-supported.",
+    kellyTalkingPoints: [
+      "Retirees vote on trust — I'll earn it at festivals, not on Facebook fights.",
+      "Baxter County clerks need a steady SOS partner.",
+      "Mountain Home isn't Little Rock — I'll campaign like I know that.",
+    ],
+  },
+  arkadelphia: {
+    briefBoard:
+      "Arkadelphia is Ouachita Baptist and Henderson State registration — Clark County college town with a 1,534-vote target (+360 gain) and quarterly campus-community rhythm.",
+    situation:
+      "Dual-campus market with faith-adjacent norms. Registration framing must be civics and clerk-support, not partisan campus activism aesthetics.",
+    penetration:
+      "Campus ambassador pipelines at both schools, Clark County community hosts, south-central stack ties to Malvern and Hot Springs.",
+    accomplishment:
+      "Lead Clark County registration toward 1,534 votes while supporting south-central volunteer depth.",
+    messaging:
+      "Arkadelphia educates Arkansas — voter registration educates citizenship. Kelly runs to make the process trustworthy.",
+    kellyTalkingPoints: [
+      "College towns renew Arkansas every four years — registration captures that renewal.",
+      "Clark County deserves SOS attention even when cameras are elsewhere.",
+      "Faith and learning both call for fair process — I'll run the office that way.",
+    ],
+  },
+  harrison: {
+    briefBoard:
+      "Harrison is Ozarks county seat persuasion — Boone County's 1,418-vote target (+586 gain) and direct-democracy/paper-ballot Republican fracture outreach where competence messaging can find ears.",
+    situation:
+      "Conservative county seat with unique national reputation burden. Kelly must lead with clerk support, paper ballot reliability, and respect — not debate culture-war flashpoints.",
+    penetration:
+      "Harrison balloon fest and county event visibility, moderate Republican and process-focused validators, Ozarks north-central completion weeks.",
+    accomplishment:
+      "Move Harrison persuasion targets while proving Ozarks county-seat playbook for north-central stack completion.",
+    messaging:
+      "Boone County voters want elections that work — paper, process, and clerks who aren't abandoned by the state.",
+    kellyTalkingPoints: [
+      "I'll talk about elections as systems — because that's the Secretary of State's job.",
+      "Boone County clerks deserve backup from someone who's done the homework.",
+      "Respect isn't agreement — it's showing up and telling the truth about the office.",
+    ],
+  },
+  magnolia: {
+    briefBoard:
+      "Magnolia is Southern Arkansas University country — Columbia County college registration with a 1,380-vote target (+386 gain) anchoring south Arkansas campus pipeline.",
+    situation:
+      "SAU drives youth registration; county seat civic life drives validators. Kelly must connect Magnolia to El Dorado and Camden as south stack.",
+    penetration:
+      "SAU registration drives, Columbia County community hosts, south Arkansas fair coordination, and chamber-adjacent relationship work.",
+    accomplishment:
+      "Hit 1,380 votes while linking SAU registration to Union and Ouachita south Arkansas field memory.",
+    messaging:
+      "Magnolia trains south Arkansas leaders — registration trains south Arkansas voters.",
+    kellyTalkingPoints: [
+      "SAU students become SAU alumni voters — registration captures both.",
+      "South Arkansas isn't flyover country for this campaign.",
+      "Columbia County clerks need a SOS who treats south Arkansas seriously.",
+    ],
+  },
+  malvern: {
+    briefBoard:
+      "Malvern is Hot Spring County seat civic organizing — local validators, county fair rhythm, and a 1,196-vote target (+408 gain) paired with Hot Springs tourism corridor.",
+    situation:
+      "County seat pride and working-class community networks define credibility. Hot Spring County wants local respect, not central Arkansas condescension.",
+    penetration:
+      "Hot Spring County visit weeks, civic club and fair circuit, local host committees, paired Hot Springs/Garland strategy.",
+    accomplishment:
+      "Deliver Malvern targets as part of unified Hot Spring County field hitting combined registration goals.",
+    messaging:
+      "Malvern is the seat — Hot Spring County voters deserve a seat at the table through fair elections and supported clerks.",
+    kellyTalkingPoints: [
+      "County seats run Arkansas — I'll run SOS to support county clerks.",
+      "Malvern knows its neighbors; I'll know Malvern.",
+      "Hot Spring County deserves repeat visits, not one-stop tours.",
+    ],
+  },
+  camden: {
+    briefBoard:
+      "Camden is Ouachita County south Arkansas base recovery — a 1,160-vote target (+269 gain) where Democratic heritage and local civic clubs still move turnout.",
+    situation:
+      "Smaller county seat with deep community memory and turnout volatility. Leadership tables are small and trusted — Kelly earns entry through repeat visits.",
+    penetration:
+      "Ouachita County fair immersion, civic club partnerships, south Arkansas stack weeks with El Dorado and Magnolia.",
+    accomplishment:
+      "Maximize Camden base toward 1,160 votes while holding south Arkansas county-seat relationships.",
+    messaging:
+      "Camden's history is Arkansas history — turnout honors both and demands competent election administration.",
+    kellyTalkingPoints: [
+      "South Arkansas county seats deserve the same SOS attention as northwest corporate hubs.",
+      "Ouachita clerks need a partner — I'll be that partner.",
+      "Base turnout is how Camden keeps statewide voice.",
+    ],
+  },
+  batesville: {
+    briefBoard:
+      "Batesville is Independence County north-central hub — chamber credibility, civic club relationships, and a 935-vote target (+353 gain) for Ozark foothills organizing.",
+    situation:
+      "Regional hospital and manufacturing anchor with conservative lean but civic club gatekeepers who respect preparation and competence.",
+    penetration:
+      "Chamber and civic club track, Independence County community hosts, north-central completion coordination with Batesville as validator hub.",
+    accomplishment:
+      "Hit Batesville targets while serving as north-central chamber relationship anchor for Independence and surrounding counties.",
+    messaging:
+      "Batesville keeps north-central Arkansas working — elections should work the same way.",
+    kellyTalkingPoints: [
+      "Independence County clerks deserve executive-level support from the SOS office.",
+      "Chamber leaders judge candidates on preparation — I'll outprepare.",
+      "North-central Arkansas isn't an afterthought in this campaign.",
+    ],
+  },
+  wynne: {
+    briefBoard:
+      "Wynne is Cross County northeast Delta field — a 909-vote target (+302 gain) where county seat relationships and fair cycles define the organizing calendar.",
+    situation:
+      "Smaller Delta county seat with agricultural identity and tight community networks. Face-to-face repetition beats media spend.",
+    penetration:
+      "Cross County community hosts, northeast Delta field ties to Jonesboro hub, fair and festival visibility.",
+    accomplishment:
+      "Move Wynne toward 909 votes while extending northeast Delta field memory from Jonesboro/Paragould stack.",
+    messaging:
+      "Wynne feeds Arkansas agriculture — voters here feed Arkansas democracy through turnout.",
+    kellyTalkingPoints: [
+      "Cross County deserves a candidate who knows county seats by name.",
+      "Delta agriculture runs on trust — so do elections.",
+      "I'll keep Wynne on the revisit calendar because small cities carry statewide math.",
+    ],
+  },
+  stuttgart: {
+    briefBoard:
+      "Stuttgart is Arkansas County agriculture hub — chamber and community event organizing with an 862-vote target (+272 gain) in the Delta's rice and duck capital.",
+    situation:
+      "Ag economy and chamber leadership set tone. Community events (including iconic local festivals) are persuasion and turnout infrastructure.",
+    penetration:
+      "Chamber relationship track, Arkansas County community event visibility, Delta ag-community hosts, southeast stack coordination.",
+    accomplishment:
+      "Hit Stuttgart targets while holding Arkansas County chamber credibility for Delta persuasion work.",
+    messaging:
+      "Stuttgart feeds Arkansas — voters here deserve election administration that feeds clerk confidence statewide.",
+    kellyTalkingPoints: [
+      "Agriculture communities want government that works — elections included.",
+      "Stuttgart chamber leaders know who shows up; I'll show up.",
+      "Delta counties matter to statewide math — Stuttgart proves it.",
+    ],
+  },
+  hope: {
+    briefBoard:
+      "Hope is southwest Democratic heritage — Hempstead County pride, watermelon festival visibility, and an 827-vote target (+249 gain) for base recovery organizing.",
+    situation:
+      "Small city with outsized Democratic identity and hometown pride narrative. Turnout dips hurt statewide; festival season concentrates community attention.",
+    penetration:
+      "Hope watermelon festival immersion, Hempstead County civic partnerships, southwest stack with Texarkana and Nashville orbit.",
+    accomplishment:
+      "Maximize Hope base turnout toward 827 votes while holding southwest Democratic heritage relationships.",
+    messaging:
+      "Hope's name opens doors worldwide — Kelly opens doors for clerks and voters at home.",
+    kellyTalkingPoints: [
+      "Hempstead County's heritage is Arkansas's heritage — turnout honors it.",
+      "I'll campaign in Hope like hometowns matter — because they do.",
+      "Southwest base recovery starts with showing up for community leaders.",
+    ],
+  },
+  beebe: {
+    briefBoard:
+      "Beebe is ASU-Beebe community college registration — White County's 796-vote target (+234 gain) paired with Searcy for dual-campus White County field.",
+    situation:
+      "Community college students and commuter families mix in a smaller city with tight networks. Registration must be practical and non-partisan in tone.",
+    penetration:
+      "ASU-Beebe registration drives, paired Searcy/Beebe captains, White County fair circuit, faith-respectful community hosts.",
+    accomplishment:
+      "Hit Beebe targets as half of White County's combined campus registration strategy with Searcy.",
+    messaging:
+      "Beebe students and families build White County — registration builds their voice in Arkansas elections.",
+    kellyTalkingPoints: [
+      "Community colleges are registration gold — I'll treat ASU-Beebe that way.",
+      "White County wins when Beebe and Searcy organize together.",
+      "Clerks in smaller counties need a SOS who doesn't forget them.",
+    ],
+  },
+};
+
+const briefs = { ...existing.briefs };
+
+for (const city of snapshot.cities) {
+  if (KEEP.has(city.slug)) continue;
+  const n = NARRATIVES[city.slug];
+  if (!n) {
+    console.error("Missing narrative for", city.slug);
+    process.exit(1);
+  }
+  briefs[city.slug] = {
+    status: "draft",
+    ...n,
+    housePartyGoals: hpGoal(city),
+    volunteerGoals: volGoal(city),
+    registrationGoals: `Drive ${regGoal(city).toLocaleString()}+ registration completions toward the city's ${city.targetVotes.toLocaleString()}-vote target framework.`,
+  };
+}
+
+const out = {
+  version: 1,
+  note: "City location brief boards — narrative landing copy. Phase 1 complete: all 40 cities at draft status pending leadership review.",
+  briefs,
+};
+
+fs.writeFileSync(
+  path.join(root, "data/campaign-brain/city-location-briefs.source.json"),
+  JSON.stringify(out, null, 2) + "\n",
+);
+console.log("Wrote", Object.keys(briefs).length, "city briefs");

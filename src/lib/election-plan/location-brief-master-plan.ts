@@ -19,10 +19,9 @@ export const LOCATION_BRIEF_MASTER_PLAN = {
     {
       id: "phase-1",
       title: "Phase 1 — City narrative content",
-      status: "in_progress" as const,
+      status: "complete" as const,
       items: [
-        "Leadership review of 3 draft cities (Little Rock, Sherwood, Fayetteville)",
-        "Write brief boards for remaining 37 cities in city-location-briefs.source.json",
+        "All 40 priority cities at draft status in city-location-briefs.source.json",
         "Each city: situation, penetration, accomplishment, messaging, Kelly talking points, house parties, volunteers, registration",
         "Status workflow: scaffold → draft → review → approved",
       ],
@@ -30,11 +29,12 @@ export const LOCATION_BRIEF_MASTER_PLAN = {
     {
       id: "phase-2",
       title: "Phase 2 — County workbench integration",
-      status: "pending" as const,
+      status: "complete" as const,
       items: [
-        "Surface county workbench KPIs on county playbook entry (VCI, coverage, missions)",
-        "Bidirectional links: workbench events ↔ election plan city briefs",
-        "County captain ownership fields on each city brief",
+        "Expanded county KPIs on playbook entry (VCI, coverage, lanes, guardrail, field stop count)",
+        "Bidirectional links: field calendar ↔ county playbook ↔ city location briefs",
+        "County strike team / captain ownership on county and city pages",
+        "Priority cities listed on each county playbook page",
       ],
     },
     {
@@ -75,6 +75,7 @@ export const LOCATION_BRIEF_MASTER_PLAN = {
     { path: "/election-plan?tab=cities", label: "Priority cities (workbench tab)" },
     { path: "/election-plan/cities", label: "Priority cities hub" },
     { path: "/election-plan/cities/[slug]", label: "City location brief" },
+    { path: "/election-plan/counties/[countySlug]", label: "County playbook hub" },
     { path: "/election-plan/locations/master-plan", label: "This master plan" },
   ],
 };

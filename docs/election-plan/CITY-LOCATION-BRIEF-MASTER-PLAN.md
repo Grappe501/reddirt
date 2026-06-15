@@ -37,11 +37,11 @@ Each **county** in the election plan drills down to the **full county workbench*
 - County cards link to county workbench
 - Scaffold narratives for all 40 cities from snapshot
 
-### Phase 1 — City narrative content (in progress)
+### Phase 1 — City narrative content ✅ (draft complete)
 
-1. Review drafts: Little Rock, Sherwood, Fayetteville
-2. Write remaining 37 cities in `city-location-briefs.source.json`
-3. Move each city through: `scaffold` → `draft` → `review` → `approved`
+1. ~~Review drafts: Little Rock, Sherwood, Fayetteville~~
+2. ~~Write remaining 37 cities in `city-location-briefs.source.json`~~
+3. Move each city through: `scaffold` → `draft` → `review` → `approved` — **all 40 at `draft`**
 
 **Content fields per city:**
 
@@ -57,11 +57,12 @@ Each **county** in the election plan drills down to the **full county workbench*
 | `volunteerGoals` | Captains and volunteer depth |
 | `registrationGoals` | Registration contribution |
 
-### Phase 2 — County workbench integration
+### Phase 2 — County workbench integration ✅
 
-- County KPIs on playbook entry
-- Event calendar ↔ city brief cross-links
-- County captain ownership on city briefs
+- Expanded county KPIs on in-app playbook entry (VCI, coverage %, registration, Lane 2, GOP conversion, guardrail, field stop count)
+- Bidirectional links: field calendar ↔ county playbook ↔ city location briefs
+- County strike team panel (captain + roles from `county-strike-teams.json`) on county and city pages
+- Priority cities listed on each county playbook with brief links
 
 ### Phase 3 — Numeric targets from LANE budget
 

@@ -5,6 +5,12 @@ import { useMemo, useState } from "react";
 
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
 import { fieldEventWorksheetHref, fieldOperationalCalendarHref } from "@/lib/election-plan/field-calendar-links";
+import {
+  buildCitySlugLookup,
+  normalizeCountyName,
+  resolveCitySlug,
+} from "@/lib/election-plan/location-calendar-integration";
+import { cityLocationBriefHref, countyPlaybookHref } from "@/lib/election-plan/location-links";
 import { cn } from "@/lib/utils";
 
 import { FieldOperationalCalendarPanel } from "@/components/election-plan/FieldOperationalCalendarPanel";
@@ -23,6 +29,14 @@ function SectionTitle({ title, subtitle }: { title: string; subtitle?: string })
 export function FieldCalendarPanel({ data }: Props) {
   const cal = data.executiveCalendar;
   const [filter, setFilter] = useState<"all" | "past_visit" | "locked" | "scheduled" | "proposed">("all");
+  const cityLookup = useMemo(() => buildCitySlugLookup(data.cities), [data.cities]);
+  const countySlugLookup = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const c of data.counties) {
+      map.set(c.county.toLowerCase(), c.slug);
+    }
+    return map;
+  }, [data.counties]);
 
   const filtered = filter === "all" ? cal.entries : cal.entries.filter((e) => e.category === filter);
 
@@ -53,7 +67,7 @@ export function FieldCalendarPanel({ data }: Props) {
     <section>
       <SectionTitle
         title="Executive Field Calendar"
-        subtitle="Click any entry for full event worksheet — run of day, messaging, activations, logistics"
+        subtitle="Click any entry for worksheet — cross-linked to county playbooks and city location briefs"
       />
 
       <div className="ep-warning mb-8">
@@ -128,18 +142,22 @@ export function FieldCalendarPanel({ data }: Props) {
                   })}
                 </h3>
                 <div className="overflow-x-auto">
-                  <table className="w-full min-w-[640px] text-left text-sm">
+                  <table className="w-full min-w-[760px] text-left text-sm">
                     <thead>
                       <tr className="border-b border-[var(--ep-border)] text-xs uppercase text-[var(--ep-navy-muted)]">
                         <th className="py-2 pr-3">Date</th>
                         <th className="py-2 pr-3">Event</th>
                         <th className="py-2 pr-3">County</th>
+                        <th className="py-2 pr-3">Links</th>
                         <th className="py-2 pr-3">Type</th>
-                        <th className="py-2 pr-3">Status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {rows.map((e) => (
+                      {rows.map((e) => {
+                        const countyNorm = normalizeCountyName(e.county);
+                        const countySlug = countySlugLookup.get(countyNorm.toLowerCase());
+                        const citySlug = resolveCitySlug(e.city, cityLookup);
+                        return (
                         <tr key={e.id} className="border-b border-[var(--ep-border)] hover:bg-[var(--ep-cream)]/50">
                           <td className="py-2 pr-3 whitespace-nowrap">
                             <Link href={fieldEventWorksheetHref(e.id)} className="block hover:text-[var(--ep-gold)]">
@@ -156,7 +174,27 @@ export function FieldCalendarPanel({ data }: Props) {
                               ) : null}
                             </Link>
                           </td>
-                          <td className="py-2 pr-3">{e.county.replace(/ County$/i, "")}</td>
+                          <td className="py-2 pr-3">
+                            {countySlug ? (
+                              <Link href={countyPlaybookHref(countyNorm, countySlug)} className="hover:text-[var(--ep-gold)]">
+                                {countyNorm}
+                              </Link>
+                            ) : (
+                              countyNorm
+                            )}
+                          </td>
+                          <td className="py-2 pr-3 text-xs">
+                            <div className="flex flex-col gap-1">
+                              <Link href={fieldEventWorksheetHref(e.id)} className="font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]">
+                                Worksheet →
+                              </Link>
+                              {citySlug ? (
+                                <Link href={cityLocationBriefHref(citySlug)} className="font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]">
+                                  City brief →
+                                </Link>
+                              ) : null}
+                            </div>
+                          </td>
                           <td className="py-2 pr-3">
                             <span
                               className={cn(
@@ -167,13 +205,9 @@ export function FieldCalendarPanel({ data }: Props) {
                               {categoryLabel[e.category]}
                             </span>
                           </td>
-                          <td className="py-2 pr-3 text-xs text-[var(--ep-navy-muted)]">
-                            <Link href={fieldEventWorksheetHref(e.id)} className="hover:text-[var(--ep-navy)]">
-                              Worksheet →
-                            </Link>
-                          </td>
                         </tr>
-                      ))}
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
