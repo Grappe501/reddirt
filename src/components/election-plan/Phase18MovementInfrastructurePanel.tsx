@@ -72,6 +72,9 @@ export function Phase18MovementInfrastructurePanel() {
           <Link href="/election-plan/academy" className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
             Campaign Academy →
           </Link>
+          <Link href="/election-plan/academy/onboarding" className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
+            18.7C Onboarding →
+          </Link>
           <Link href="/election-plan/leadership/county-coverage" className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
             County coverage →
           </Link>

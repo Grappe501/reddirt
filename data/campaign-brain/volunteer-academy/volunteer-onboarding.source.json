@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-10",
+  "pass": "PHASE-18.7C-VOLUNTEER-ONBOARDING",
+  "mission": "Every volunteer leaves June 28 with one clear role, one manageable weekly expectation, and one first action.",
+  "launchDate": "2026-06-28",
+  "launchEvent": {
+    "title": "Volunteer Leadership Launch",
+    "subtitle": "Founding 20 · statewide role assignments · first actions",
+    "format": "Zoom · internal · password-protected follow-up materials",
+    "durationMinutes": 90,
+    "goal": "20 founding leaders confirmed with named roles before July field season",
+    "agenda": [
+      { "time": "0:00", "segment": "Welcome & why roles matter", "owner": "Kelly", "minutes": 10, "notes": "Not \"help us\" — join a job with a name" },
+      { "time": "0:10", "segment": "Campaign Academy overview", "owner": "Volunteer lead (TBD)", "minutes": 10, "notes": "Walk /election-plan/academy onboarding flow" },
+      { "time": "0:20", "segment": "Power of 5 & small rooms doctrine", "owner": "Kelly / Steve", "minutes": 15, "notes": "Relationship → trust → turnout" },
+      { "time": "0:35", "segment": "Role marketplace — choose your job", "owner": "Breakout facilitators", "minutes": 20, "notes": "County · campus · LTE · Po5 · coalition lanes" },
+      { "time": "0:55", "segment": "First action commitments", "owner": "Each participant", "minutes": 15, "notes": "Name · role · first action · due date" },
+      { "time": "1:10", "segment": "Mobilize & reporting", "owner": "Steve / Mobilize lead", "minutes": 10, "notes": "Every qualifying event needs Mobilize" },
+      { "time": "1:20", "segment": "Close & follow-up packet", "owner": "Kelly", "minutes": 10, "notes": "Training links · weekly expectation · assignment confirmation" }
+    ]
+  },
+  "followUpPacket": {
+    "sendWithin": "24 hours after June 28 call",
+    "subject": "Your Campaign Academy role — first action inside",
+    "includes": [
+      "Confirmed role title and weekly time expectation",
+      "Link to role training packet (/election-plan/academy/training/[slug])",
+      "First-week task checklist",
+      "How this role helps Kelly win Arkansas",
+      "Reporting contact for your lane",
+      "Mobilize link if event coordination applies",
+      "Calendar hold for first monthly lane call"
+    ],
+    "weekOneChecklist": [
+      "Complete role training packet (30 min)",
+      "Do your first action within 72 hours",
+      "Introduce yourself to your lane lead",
+      "Log assignment in onboarding tracker",
+      "Attend or schedule first small-room conversation"
+    ]
+  },
+  "onboardingSteps": [
+    { "id": "interest", "label": "I'm interested in helping", "route": "/election-plan/academy/onboarding" },
+    { "id": "choose-role", "label": "Choose a role", "route": "/election-plan/academy/onboarding#choose-role" },
+    { "id": "expectations", "label": "Review expectations", "route": "/election-plan/academy/onboarding#expectations" },
+    { "id": "training", "label": "Complete training packet", "route": "/election-plan/academy/training" },
+    { "id": "assigned", "label": "Get assigned", "route": "/election-plan/academy/assignments" },
+    { "id": "first-action", "label": "Begin first action", "route": "/election-plan/academy/onboarding#first-action" }
+  ],
+  "roleProfiles": {
+    "county-volunteer-captain": {
+      "weeklyExpectation": "3–5 hours · monthly call + 3 volunteer check-ins + 1 event confirmed on Mobilize",
+      "firstAction": "Identify 3 people in your county who could volunteer and send a personal invitation this week.",
+      "firstWeekTasks": [
+        "Complete county captain training packet",
+        "Review your county playbook in Election Plan",
+        "Schedule intro call with campaign ops",
+        "Recruit first volunteer or confirm county chair relationship",
+        "Create or audit Mobilize event for next local opportunity"
+      ],
+      "trainingModules": [
+        { "id": "doctrine", "title": "Power of 5 & county ownership", "durationMinutes": 15, "type": "video" },
+        { "id": "mobilize", "title": "Mobilize event setup", "durationMinutes": 10, "type": "checklist" },
+        { "id": "reporting", "title": "Weekly county activity report", "durationMinutes": 5, "type": "document" }
+      ],
+      "expectationSheet": {
+        "time": "3–5 hours per week",
+        "monthly": "1 county call · 2 local events · 1 house party target",
+        "reporting": "Weekly activity report to volunteer lead"
+      }
+    },
+    "lte-coordinator": {
+      "weeklyExpectation": "2–3 hours · coach 1 writer · log submissions · pursue 1 publication",
+      "firstAction": "Pick one tier-2 or tier-3 newspaper in your county and read its LTE guidelines today.",
+      "firstWeekTasks": [
+        "Complete LTE workflow training (7 steps)",
+        "Identify 3 potential citizen writers (not campaign staff)",
+        "Log your newspaper in Citizen Voices registry",
+        "Draft writer recruitment message",
+        "Schedule first writer coaching call"
+      ],
+      "trainingModules": [
+        { "id": "workflow", "title": "Arkansas Citizen Voices LTE workflow", "durationMinutes": 20, "type": "document" },
+        { "id": "voice", "title": "Authentic voice guidelines", "durationMinutes": 10, "type": "document" },
+        { "id": "registry", "title": "Newspaper registry walkthrough", "durationMinutes": 10, "type": "checklist" }
+      ],
+      "expectationSheet": {
+        "time": "2–3 hours per week",
+        "monthly": "2 published letters · 5 active writers",
+        "reporting": "Regional LTE lead · registry updates"
+      }
+    },
+    "campus-captain": {
+      "weeklyExpectation": "3–5 hours · recruit 2 students · advance Freshman Week checklist",
+      "firstAction": "Walk your campus student union or tabling location and identify where Kelly registration table goes in August.",
+      "firstWeekTasks": [
+        "Complete campus captain binder review",
+        "Identify 5 student leaders to recruit",
+        "Confirm Freshman Week readiness status for your campus",
+        "Create Mobilize event draft for first tabling shift",
+        "Email campus network lead with your commitment"
+      ],
+      "trainingModules": [
+        { "id": "freshman", "title": "Freshman Week blitz overview", "durationMinutes": 15, "type": "document" },
+        { "id": "mobilize-campus", "title": "Campus Mobilize requirements", "durationMinutes": 10, "type": "checklist" },
+        { "id": "registration", "title": "Voter registration tabling kit", "durationMinutes": 10, "type": "document" }
+      ],
+      "expectationSheet": {
+        "time": "3–5 hours per week",
+        "monthly": "25 volunteers · 100 registrations (season goal)",
+        "reporting": "Campus network lead · Students for Arkansas"
+      }
+    },
+    "story-corps-lead": {
+      "weeklyExpectation": "2–4 hours · 2 edited assets · 1 filming opportunity scouted",
+      "firstAction": "Film 60 seconds of B-roll at the next Kelly stop or local event you attend.",
+      "firstWeekTasks": [
+        "Review Story Corps team doctrine",
+        "Confirm vertical video kit access or phone setup",
+        "Deliver 1 test reel with captions",
+        "Coordinate with Leann on publishing pipeline",
+        "Identify backup shooter in your region"
+      ],
+      "trainingModules": [
+        { "id": "vertical", "title": "Vertical video basics", "durationMinutes": 15, "type": "video" },
+        { "id": "testimonial", "title": "Volunteer testimonial prompts", "durationMinutes": 10, "type": "document" },
+        { "id": "publish", "title": "Publishing & social resume", "durationMinutes": 10, "type": "checklist" }
+      ],
+      "expectationSheet": {
+        "time": "2–4 hours per week",
+        "monthly": "5 assets per Kelly stop in your area",
+        "reporting": "Motion & storytelling lead"
+      }
+    },
+    "power-of-5-leader": {
+      "weeklyExpectation": "2–4 hours · 2 meaningful conversations · 1 follow-up · 1 host ask",
+      "firstAction": "Write down five people you know who trust you and would take your call about civic participation.",
+      "firstWeekTasks": [
+        "Complete Po5 doctrine training",
+        "Hold 2 meaningful conversations using three asks",
+        "Log conversations in Po5 tracker",
+        "Identify 1 potential house party host",
+        "Commit to 5 Po5 introductions this month"
+      ],
+      "trainingModules": [
+        { "id": "doctrine", "title": "Eyeball-to-eyeball & small rooms", "durationMinutes": 15, "type": "video" },
+        { "id": "three-asks", "title": "Three asks framework", "durationMinutes": 10, "type": "document" },
+        { "id": "house-party", "title": "House party host kit", "durationMinutes": 10, "type": "checklist" }
+      ],
+      "expectationSheet": {
+        "time": "2–4 hours per week",
+        "monthly": "5 Po5 commitments · 1 house party pathway",
+        "reporting": "Volunteer leadership · Po5 command center"
+      }
+    },
+    "faith-outreach-lead": {
+      "weeklyExpectation": "2–3 hours · 1 faith community conversation · 1 follow-up",
+      "firstAction": "List 3 faith community connectors in your county you could ask for a listening conversation.",
+      "firstWeekTasks": [
+        "Review Big Table welcome & respectful framing",
+        "Schedule first faith community listening session",
+        "Log contact in coalition tracker",
+        "Share faith outreach scripts with county captain",
+        "Identify 1 validator endorsement pathway"
+      ],
+      "trainingModules": [
+        { "id": "big-table", "title": "Big Table welcome doctrine", "durationMinutes": 10, "type": "document" },
+        { "id": "framing", "title": "Civic engagement framing", "durationMinutes": 10, "type": "document" },
+        { "id": "coalition", "title": "Coalition command overview", "durationMinutes": 10, "type": "checklist" }
+      ],
+      "expectationSheet": {
+        "time": "2–3 hours per week",
+        "monthly": "5 relationships · 2 listening sessions",
+        "reporting": "Coalition command · county captain"
+      }
+    },
+    "union-outreach-lead": {
+      "weeklyExpectation": "2–4 hours · 1 union/labor touchpoint · briefing packet shared",
+      "firstAction": "Confirm attendance at the next Democratic Union Caucus or local union meeting in your region.",
+      "firstWeekTasks": [
+        "Read labor program briefing packet",
+        "Introduce yourself to Danny Brown / labor lead",
+        "Schedule first union meeting or hall visit",
+        "Prepare working-class kitchen table message",
+        "Log introduction for follow-up"
+      ],
+      "trainingModules": [
+        { "id": "labor-brief", "title": "Labor program briefing", "durationMinutes": 15, "type": "document" },
+        { "id": "message", "title": "Working-class message doctrine", "durationMinutes": 10, "type": "document" },
+        { "id": "intro", "title": "Union hall introduction script", "durationMinutes": 5, "type": "document" }
+      ],
+      "expectationSheet": {
+        "time": "2–4 hours per week",
+        "monthly": "2 union meetings · 5 labor introductions",
+        "reporting": "Danny Brown · Labor program"
+      }
+    },
+    "mobilize-lead": {
+      "weeklyExpectation": "2–3 hours · audit 7-day calendar · publish 3 Mobilize pages",
+      "firstAction": "Audit the next 7 days of field calendar and flag any stop missing a Mobilize event.",
+      "firstWeekTasks": [
+        "Complete Mobilize enforcement rules training",
+        "Audit next 14 days of field calendar",
+        "Create Mobilize events for all gaps",
+        "Assign volunteer shifts for next qualifying stop",
+        "Report zero Missing Mobilize warnings to Steve"
+      ],
+      "trainingModules": [
+        { "id": "rules", "title": "Mobilize enforcement rules", "durationMinutes": 15, "type": "document" },
+        { "id": "triggers", "title": "Event type triggers", "durationMinutes": 10, "type": "checklist" },
+        { "id": "stop-cc", "title": "Stop command center workflow", "durationMinutes": 10, "type": "document" }
+      ],
+      "expectationSheet": {
+        "time": "2–3 hours per week",
+        "monthly": "100% Mobilize coverage on qualifying events",
+        "reporting": "Steve Grappe · campaign ops"
+      }
+    },
+    "house-party-host": {
+      "weeklyExpectation": "One event + 2 hours prep · 8–15 guests · 5 Po5 asks",
+      "firstAction": "Pick a date in the next 30 days and text 3 people: \"Would you help me host neighbors to meet Kelly's campaign?\"",
+      "firstWeekTasks": [
+        "Review house party host kit",
+        "Confirm date and guest target list (8–15)",
+        "Create Mobilize invite page",
+        "Coordinate with county captain or Po5 leader",
+        "Prepare opening welcome and three asks"
+      ],
+      "trainingModules": [
+        { "id": "host-kit", "title": "House party host kit", "durationMinutes": 15, "type": "document" },
+        { "id": "thank-you", "title": "Thank-you closeout doctrine", "durationMinutes": 10, "type": "checklist" },
+        { "id": "small-rooms", "title": "Small rooms principle", "durationMinutes": 10, "type": "video" }
+      ],
+      "expectationSheet": {
+        "time": "One event + 2 hours prep",
+        "monthly": "1 party · 5 Po5 commitments · 2 volunteer sign-ups",
+        "reporting": "County captain · Po5 leader"
+      }
+    }
+  },
+  "assignmentSlots": [
+    { "id": "slot-captain-pulaski", "roleSlug": "county-volunteer-captain", "label": "Pulaski County Captain", "county": "Pulaski", "region": "Central", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-captain-faulkner", "roleSlug": "county-volunteer-captain", "label": "Faulkner County Captain", "county": "Faulkner", "region": "Central", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-captain-washington", "roleSlug": "county-volunteer-captain", "label": "Washington County Captain", "county": "Washington", "region": "Northwest", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-captain-craighead", "roleSlug": "county-volunteer-captain", "label": "Craighead County Captain", "county": "Craighead", "region": "Northeast", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-lte-central", "roleSlug": "lte-coordinator", "label": "Central Arkansas LTE Coordinator", "county": null, "region": "Central", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-lte-northeast", "roleSlug": "lte-coordinator", "label": "Northeast LTE Coordinator", "county": null, "region": "Northeast", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-campus-ua", "roleSlug": "campus-captain", "label": "UA Fayetteville Campus Captain", "county": "Washington", "region": "Northwest", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-campus-asu", "roleSlug": "campus-captain", "label": "A-State Campus Captain", "county": "Craighead", "region": "Northeast", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-campus-ualr", "roleSlug": "campus-captain", "label": "UALR Campus Captain", "county": "Pulaski", "region": "Central", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-story-corps", "roleSlug": "story-corps-lead", "label": "Story Corps Lead (statewide)", "county": null, "region": "Statewide", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-po5-regional-1", "roleSlug": "power-of-5-leader", "label": "Power of 5 Leader · Region 1", "county": null, "region": "Central", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-po5-regional-2", "roleSlug": "power-of-5-leader", "label": "Power of 5 Leader · Region 2", "county": null, "region": "Northwest", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-faith-central", "roleSlug": "faith-outreach-lead", "label": "Faith Outreach · Central", "county": null, "region": "Central", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-union-statewide", "roleSlug": "union-outreach-lead", "label": "Union Outreach Lead", "county": null, "region": "Statewide", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-mobilize", "roleSlug": "mobilize-lead", "label": "Mobilize Lead", "county": null, "region": "Statewide", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-house-party-open", "roleSlug": "house-party-host", "label": "House Party Host (open county)", "county": null, "region": "Any", "volunteerName": null, "status": "open", "onboardingComplete": false }
+  ],
+  "foundingLeaderGoal": 20
+}

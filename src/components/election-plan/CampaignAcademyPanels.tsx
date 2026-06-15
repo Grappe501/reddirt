@@ -6,6 +6,15 @@ import {
   volunteerAcademyHref,
   volunteerPositionHref,
 } from "@/lib/election-plan/load-volunteer-academy";
+import {
+  academyAssignmentsHref,
+  academyJune28Href,
+  academyOnboardingHref,
+  academyTrainingHref,
+  academyHowItHelpsHref,
+  academyTrainingRoleHref,
+} from "@/lib/election-plan/load-volunteer-onboarding";
+import { OnboardingStatusDashboardPanel } from "@/components/election-plan/CampaignAcademyOnboardingPanels";
 import { responsibilityMatrixHref } from "@/lib/election-plan/load-phase-18-7b-ownership";
 
 export function CampaignAcademyHubPanel() {
@@ -17,6 +26,23 @@ export function CampaignAcademyHubPanel() {
       <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">{academy.title}</h1>
       <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{academy.subtitle}</p>
       <p className="mt-3 text-sm italic text-[var(--ep-navy-muted)]">{academy.doctrine}</p>
+
+      <OnboardingStatusDashboardPanel />
+
+      <div className="mb-6 flex flex-wrap gap-2">
+        <Link href={academyOnboardingHref()} className="rounded-full bg-[var(--ep-navy)] px-3 py-1 text-xs font-semibold text-white">
+          Start onboarding →
+        </Link>
+        <Link href={academyJune28Href()} className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
+          June 28 launch →
+        </Link>
+        <Link href={academyAssignmentsHref()} className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
+          Assignments →
+        </Link>
+        <Link href={academyTrainingHref()} className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
+          Training →
+        </Link>
+      </div>
 
       <div className="my-6 ep-card">
         <h2 className="font-heading text-sm font-bold text-[var(--ep-navy)]">June 28 launch onboarding</h2>
@@ -134,10 +160,20 @@ export function CampaignAcademyPositionPanel({ slug }: { slug: string }) {
       <div className="mt-8 rounded-xl border-2 border-[var(--ep-navy)] bg-[var(--ep-navy)] p-6 text-white">
         <h2 className="font-heading font-bold">Ready to take this role?</h2>
         <p className="mt-2 text-sm text-white/80">
-          June 28 volunteer launch — choose this role at onboarding, complete training, get assigned by your county or
-          regional lead, begin weekly tasks.
+          June 28 volunteer launch — choose this role at onboarding, complete training, get assigned, begin weekly
+          tasks.
         </p>
-        <p className="mt-4 text-sm font-semibold">Next step: tell your county captain or email campaign ops with this role title.</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Link href={academyOnboardingHref()} className="rounded-md bg-white px-3 py-2 text-xs font-bold text-[var(--ep-navy)]">
+            Start onboarding →
+          </Link>
+          <Link href={academyTrainingRoleHref(slug)} className="rounded-md border border-white/30 px-3 py-2 text-xs font-semibold text-white">
+            Training packet →
+          </Link>
+          <Link href={academyHowItHelpsHref(slug)} className="rounded-md border border-white/30 px-3 py-2 text-xs font-semibold text-white">
+            How this helps Kelly win →
+          </Link>
+        </div>
       </div>
     </section>
   );
