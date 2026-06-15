@@ -1178,18 +1178,25 @@ Leadership should use the **working campaign** figure and **${fmt(WORKING_RANGE.
 
 | Document | Location |
 |----------|----------|
-| Framework overview | \`docs/campaign-brain/budget/CAMPAIGN-BUDGET-FRAMEWORK.md\` |
-| Media & outreach | \`docs/campaign-brain/budget/MEDIA-OUTREACH-BUDGET.md\` |
-| Community activation & swag | \`docs/campaign-brain/budget/COMMUNITY-ACTIVATION-SWAG-BUDGET.md\` |
-| Compliance | \`docs/campaign-brain/budget/COMPLIANCE-BUDGET.md\` |
-| County sponsorships | \`docs/campaign-brain/budget/COUNTY-SPONSORSHIPS-BUDGET.md\` |
-| Digital advertising | \`docs/campaign-brain/budget/DIGITAL-ADVERTISING-BUDGET.md\` |
-| Digital content production | \`docs/campaign-brain/budget/DIGITAL-CONTENT-PRODUCTION-BUDGET.md\` |
-| Travel | \`docs/campaign-brain/budget/TRAVEL-BUDGET.md\` |
-| Field materials | \`docs/campaign-brain/budget/FIELD-MATERIALS-BUDGET.md\` |
-| Postcards & mail | \`docs/campaign-brain/budget/POSTCARD-AND-MAIL-BUDGET.md\` |
-| Sherwood 60% | \`docs/campaign-brain/budget/SHERWOOD-60-BUDGET.md\` |
-| Fundraising model | \`docs/campaign-brain/budget/FUNDRAISING-GOAL-MODEL.md\` |
+${[
+  ["Framework overview", "campaign-budget-framework"],
+  ["Media & outreach", "media-outreach-budget"],
+  ["Community activation & swag", "community-activation-swag-budget"],
+  ["Compliance", "compliance-budget"],
+  ["County sponsorships", "county-sponsorships-budget"],
+  ["Digital advertising", "digital-advertising-budget"],
+  ["Digital content production", "digital-content-production-budget"],
+  ["Travel", "travel-budget"],
+  ["Field materials", "field-materials-budget"],
+  ["Postcards & mail", "postcard-and-mail-budget"],
+  ["Sherwood 60%", "sherwood-60-budget"],
+  ["Fundraising model", "fundraising-goal-model"],
+]
+  .map(
+    ([title, slug]) =>
+      `| ${title} | [Open document](/election-plan/executive-book/budget/documents/${slug}) |`,
+  )
+  .join("\n")}
 
 ---
 

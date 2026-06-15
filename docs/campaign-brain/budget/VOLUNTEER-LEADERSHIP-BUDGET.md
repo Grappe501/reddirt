@@ -7,7 +7,7 @@
 | | |
 |---|---:|
 | Founding leaders goal | 20 |
-| Current confirmed | 0 |
+| Current confirmed | 39 |
 
 ## June 28 — Volunteer Leadership Launch (Zoom)
 
