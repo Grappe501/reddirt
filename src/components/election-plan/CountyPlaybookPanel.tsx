@@ -5,6 +5,7 @@ import { CountyRegistrationAllocationPanel } from "@/components/election-plan/Co
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
 import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
 import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
+import { SpecialKpiGoalCard } from "@/components/election-plan/SpecialKpiGoalCard";
 import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
 import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-team";
 import type { LocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
@@ -12,6 +13,7 @@ import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/t
 import { countyWorkbenchExternalHref } from "@/lib/election-plan/location-links";
 import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import { getSpecialKpiGoalForCounty } from "@/lib/election-plan/load-special-kpi-goals";
 import { COUNTY_COVERAGE_EXPLAINER } from "@/lib/election-plan/location-links";
 import { cn } from "@/lib/utils";
 
@@ -57,6 +59,7 @@ export function CountyPlaybookPanel({
   backLabel,
 }: Props) {
   const external = countyWorkbenchExternalHref(county.county, county.slug);
+  const specialKpi = getSpecialKpiGoalForCounty(county.slug);
 
   return (
     <section>
@@ -136,6 +139,12 @@ export function CountyPlaybookPanel({
         <p className="mt-1 text-[var(--ep-navy-muted)]">{county.secondaryMission}</p>
         <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{county.recommendedAction}</p>
       </div>
+
+      {specialKpi ? (
+        <div className="mb-8">
+          <SpecialKpiGoalCard goal={specialKpi} variant="panel" />
+        </div>
+      ) : null}
 
       {strikeTeam ? (
         <div className="mb-8">

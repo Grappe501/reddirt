@@ -1,0 +1,41 @@
+{
+  "updatedAt": "2026-06-10",
+  "explanation": "Leadership-tracked secondary goals beyond standard lane math — updated manually until live SOS returns feed in.",
+  "goals": [
+    {
+      "id": "jacksonville-sos-lift-25",
+      "scope": "city",
+      "locationSlug": "jacksonville",
+      "locationName": "Jacksonville",
+      "eventLabel": "Jacksonville Festiville · Sept 20",
+      "label": "25% SOS lift vs 2022",
+      "goalType": "sos_lift_pct",
+      "description": "Increase Secretary of State votes in Jacksonville by 25% over estimated 2022 midterm performance in the city.",
+      "baseline2022SosVotes": 4869,
+      "targetIncreasePct": 25,
+      "targetSosVotes": 6086,
+      "currentSosVotes": 0,
+      "baselineSource": "Estimated from Pulaski County 2022 SOS Democratic votes (69,557) × Jacksonville population share (7.0%). Official SOS JSON city aggregation pending.",
+      "href": "/election-plan/cities/jacksonville"
+    },
+    {
+      "id": "searcy-county-outright-majority",
+      "scope": "county",
+      "locationSlug": "searcy",
+      "locationName": "Searcy County",
+      "label": "Win Searcy County outright (50%+1)",
+      "goalType": "county_majority",
+      "description": "Carry Searcy County with a majority of Secretary of State ballots cast — flip a North Central Ozarks county outright, not just hold Democratic floor.",
+      "targetWinPct": 50.01,
+      "baseline2022SosVotes": 454,
+      "baseline2022SosOpponentVotes": 2639,
+      "baseline2022Turnout": 3093,
+      "targetSosVotesMajority": 1547,
+      "currentSosVotes": 0,
+      "currentWinPct": null,
+      "planningTurnoutBasis": "2022 midterm SOS total (3,093 ballots)",
+      "baselineSource": "Arkansas Secretary of State · Searcy County · 2022 Secretary of State race (454 D · 2,639 R · 3,093 total).",
+      "href": "/election-plan/counties/searcy"
+    }
+  ]
+}

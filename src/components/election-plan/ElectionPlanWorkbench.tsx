@@ -11,6 +11,7 @@ import { BattlefieldOverviewPanel } from "@/components/election-plan/Battlefield
 import { CityStrategyList } from "@/components/election-plan/CityStrategyList";
 import { locationBriefMasterPlanHref } from "@/lib/election-plan/location-links";
 import { phase13MasterPlanHref } from "@/lib/election-plan/phase-13-build-master-plan";
+import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
 import { VciExplainerCard } from "@/components/election-plan/VciExplainerCard";
 import { CountyStrategyGrid } from "@/components/election-plan/CountyStrategyGrid";
 import { ExecutiveMetricCard } from "@/components/election-plan/ExecutiveMetricCard";
@@ -1532,13 +1533,18 @@ function ForwardMotionPanel({ data }: Props) {
                 <th className="py-2 pr-3">Release</th>
                 <th className="py-2 pr-3">Graphic</th>
                 <th className="py-2 pr-3">Story</th>
+                <th className="py-2">Command</th>
               </tr>
             </thead>
             <tbody>
               {fm.stops.map((s) => (
                 <tr key={s.eventId} className="border-b border-[var(--ep-border)]">
                   <td className="py-2 pr-3 whitespace-nowrap">{s.date}</td>
-                  <td className="py-2 pr-3 font-medium">{s.eventName}</td>
+                  <td className="py-2 pr-3 font-medium">
+                    <Link href={forwardMotionStopHref(s.eventId)} className="text-[var(--ep-navy)] hover:text-[var(--ep-gold)] hover:underline">
+                      {s.eventName}
+                    </Link>
+                  </td>
                   <td className="py-2 pr-3">{s.county.replace(" County", "")}</td>
                   <td className="py-2 pr-3">{s.effectiveScore}</td>
                   <td className="py-2 pr-3 text-xs">{s.mobilizeStatus}</td>
@@ -1546,6 +1552,11 @@ function ForwardMotionPanel({ data }: Props) {
                   <td className="py-2 pr-3 text-xs">{s.newsReleaseStatus}</td>
                   <td className="py-2 pr-3 text-xs">{s.graphicsStatus}</td>
                   <td className="py-2 pr-3 text-xs">{s.storyWorkflowStatus}</td>
+                  <td className="py-2 text-xs">
+                    <Link href={forwardMotionStopHref(s.eventId)} className="font-semibold underline">
+                      Open →
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>

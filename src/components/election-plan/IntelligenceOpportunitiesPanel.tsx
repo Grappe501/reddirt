@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
+import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
 import { laneDescriptiveLabel } from "@/lib/election-plan/four-lanes-labels";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { cn } from "@/lib/utils";
@@ -144,13 +145,18 @@ export function IntelligenceOpportunitiesPanel({ forwardMotion: fm, standalone }
                 <th className="py-2 pr-3">Kelly?</th>
                 <th className="py-2 pr-3">Primary lane</th>
                 <th className="py-2 pr-3">Next action</th>
+                <th className="py-2">Command</th>
               </tr>
             </thead>
             <tbody>
               {stops.map((s) => (
                 <tr key={s.eventId} className="border-b border-[var(--ep-border)] last:border-0">
                   <td className="py-2.5 pr-3 font-mono text-xs">{s.date}</td>
-                  <td className="py-2.5 pr-3 font-medium">{s.eventName}</td>
+                  <td className="py-2.5 pr-3 font-medium">
+                    <Link href={forwardMotionStopHref(s.eventId)} className="hover:text-[var(--ep-gold)] hover:underline">
+                      {s.eventName}
+                    </Link>
+                  </td>
                   <td className="py-2.5 pr-3 text-[var(--ep-navy-muted)]">
                     {s.county}
                     {s.countyTier ? ` · Tier ${s.countyTier}` : ""}
@@ -161,6 +167,11 @@ export function IntelligenceOpportunitiesPanel({ forwardMotion: fm, standalone }
                   <td className="py-2.5 pr-3 text-xs">{s.assignment}</td>
                   <td className="py-2.5 pr-3 text-xs leading-snug">{primaryLaneLabel(s.primaryLane)}</td>
                   <td className="py-2.5 text-xs text-[var(--ep-navy-muted)]">{s.nextAction}</td>
+                  <td className="py-2.5 text-xs">
+                    <Link href={forwardMotionStopHref(s.eventId)} className="font-semibold underline">
+                      Open →
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -177,7 +188,9 @@ export function IntelligenceOpportunitiesPanel({ forwardMotion: fm, standalone }
             <ul className="mt-3 max-h-48 space-y-1.5 overflow-y-auto text-sm">
               {items.map((s) => (
                 <li key={s.eventId} className="border-b border-[var(--ep-border)] pb-1.5 last:border-0">
-                  <span className="font-medium">{s.eventName}</span>
+                  <Link href={forwardMotionStopHref(s.eventId)} className="font-medium hover:underline">
+                    {s.eventName}
+                  </Link>
                   <span className="text-[var(--ep-navy-muted)]">
                     {" "}
                     · {s.date} · score {s.effectiveScore}
@@ -206,7 +219,11 @@ export function IntelligenceOpportunitiesPanel({ forwardMotion: fm, standalone }
           <tbody>
             {stops.slice(0, 30).map((s) => (
               <tr key={`act-${s.eventId}`} className="border-b border-[var(--ep-border)] last:border-0">
-                <td className="py-2 pr-3 font-medium">{s.eventName}</td>
+                <td className="py-2 pr-3 font-medium">
+                  <Link href={forwardMotionStopHref(s.eventId)} className="hover:underline">
+                    {s.eventName}
+                  </Link>
+                </td>
                 <td className="py-2 pr-3 tabular-nums">{s.activationReadinessPct}%</td>
                 <td className="py-2 pr-3 text-xs">{statusLabel(s.mobilizeStatus)}</td>
                 <td className="py-2 pr-3 text-xs">{statusLabel(s.facebookStatus)}</td>

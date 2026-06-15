@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
 import { CityNumericTargetsPanel } from "@/components/election-plan/CityNumericTargetsPanel";
+import { SpecialKpiGoalCard } from "@/components/election-plan/SpecialKpiGoalCard";
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
 import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
 import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
@@ -15,6 +16,7 @@ import {
   locationBriefMasterPlanHref,
 } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import { getSpecialKpiGoalForCity } from "@/lib/election-plan/load-special-kpi-goals";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -60,6 +62,7 @@ export function CityLocationBriefPanel({
   calendarBinding,
 }: Props) {
   const countyHref = countyPlaybookHref(brief.county, countySlug);
+  const specialKpi = getSpecialKpiGoalForCity(brief.slug);
 
   return (
     <section>
@@ -171,6 +174,12 @@ export function CityLocationBriefPanel({
 
       {brief.numericTargets ? (
         <CityNumericTargetsPanel targets={brief.numericTargets} countyName={brief.county} />
+      ) : null}
+
+      {specialKpi ? (
+        <div className="mb-8">
+          <SpecialKpiGoalCard goal={specialKpi} variant="panel" />
+        </div>
       ) : null}
 
       <div className="mb-8">

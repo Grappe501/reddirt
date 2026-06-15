@@ -3,7 +3,10 @@
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
 
+import { JacksonvilleFestivilleGoalsCard } from "@/components/election-plan/JacksonvilleFestivilleGoalsCard";
+import { SpecialKpiGoalsStrip } from "@/components/election-plan/SpecialKpiGoalsStrip";
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
+import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
 import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
 import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
 import { cn } from "@/lib/utils";
@@ -229,26 +232,29 @@ export function WarRoomPanel({ data }: Props) {
         <ProgressStat label="Human Contact Index" value={w.hciTotal} goal={w.hciGoal} />
       </div>
 
-      <div className="mb-8 grid gap-4 lg:grid-cols-2">
-        <div className="ep-card">
-          <h3 className="font-heading font-bold">Calendar Truth</h3>
-          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-            {w.calendarTruthVerified} verified · {w.calendarTruthPending} pending approval ·{" "}
-            {w.calendarTruthGoal} through Election Day
-          </p>
-          <div className="ep-progress mt-3">
-            <div className="ep-progress-bar" style={{ width: `${w.calendarTruthPct}%` }} />
-          </div>
-          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
-            {w.calendarTruthPct}% decided · Phase 9 lock: {w.phase9Ready ? "Ready" : "Not yet"}
-          </p>
-          <Link
-            href="/election-plan/event-approvals"
-            className="mt-3 inline-block text-sm font-semibold text-[var(--ep-navy)] underline"
-          >
-            Open approval portal →
-          </Link>
+      <SpecialKpiGoalsStrip variant="strip" />
+
+      <div className="mb-8 ep-card">
+        <h3 className="font-heading font-bold">Calendar Truth</h3>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          {w.calendarTruthVerified} verified · {w.calendarTruthPending} pending approval ·{" "}
+          {w.calendarTruthGoal} through Election Day
+        </p>
+        <div className="ep-progress mt-3">
+          <div className="ep-progress-bar" style={{ width: `${w.calendarTruthPct}%` }} />
         </div>
+        <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
+          {w.calendarTruthPct}% decided · Phase 9 lock: {w.phase9Ready ? "Ready" : "Not yet"}
+        </p>
+        <Link
+          href="/election-plan/event-approvals"
+          className="mt-3 inline-block text-sm font-semibold text-[var(--ep-navy)] underline"
+        >
+          Open approval portal →
+        </Link>
+      </div>
+
+      <div className="mb-8 grid gap-4 lg:grid-cols-2">
         <div className="ep-card">
           <h3 className="font-heading font-bold">Sherwood 60%+</h3>
           <p className="mt-2 text-sm">
@@ -280,6 +286,7 @@ export function WarRoomPanel({ data }: Props) {
             </div>
           ) : null}
         </div>
+        <JacksonvilleFestivilleGoalsCard variant="compact" />
       </div>
 
       <div className="ep-card ep-priority-card">
@@ -962,30 +969,42 @@ export function SherwoodVictoryPanel({ data }: Props) {
   const [sherwoodVolunteersOpen, setSherwoodVolunteersOpen] = useState(false);
   return (
     <section>
-      <SectionTitle title="Sherwood Victory Center" subtitle="Flagship home-base event · 60%+ win goal" />
-      <div className="ep-warning mb-8">
-        <p className="text-lg font-semibold">{s.goal}</p>
-        <p className="mt-2 text-sm">Outdoor · 700+ capacity · VIP $1,000 · show $25 · food $25 · July 3–4 corridor</p>
-        <p className="mt-2 text-sm font-medium text-[var(--ep-navy)]">
-          Co-chairs: <strong>John Duke</strong> & <strong>Jay Powell</strong> · Ops: Steve Grappe
-        </p>
+      <SectionTitle
+        title="Flagship field events"
+        subtitle="Sherwood July 3–4 corridor · Jacksonville Festiville Sept 20"
+      />
+      <div className="mb-8 grid gap-6 lg:grid-cols-2">
+        <div>
+          <h3 className="mb-3 font-heading font-bold">Sherwood Victory Center</h3>
+          <div className="ep-warning mb-4">
+            <p className="text-lg font-semibold">{s.goal}</p>
+            <p className="mt-2 text-sm">
+              Outdoor · 700+ capacity · VIP $1,000 · show $25 · food $25 · July 3–4 corridor
+            </p>
+            <p className="mt-2 text-sm font-medium text-[var(--ep-navy)]">
+              Co-chairs: <strong>John Duke</strong> & <strong>Jay Powell</strong> · Ops: Steve Grappe
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <ProgressStat label="VIP tables sold" value={w.sherwoodVipSold} goal={w.sherwoodVipGoal} />
+            <ProgressStat label="Tickets sold" value={w.sherwoodTicketsSold} goal={700} />
+            <ProgressStat
+              label="Sherwood volunteers"
+              value={w.sherwoodVolunteers}
+              goal={50}
+              onClick={() => setSherwoodVolunteersOpen((open) => !open)}
+              expanded={sherwoodVolunteersOpen}
+            >
+              <VolunteerLeaderRoster
+                leaders={w.sherwoodVolunteersRoster}
+                subtitle={`${w.sherwoodVolunteers} confirmed · contact details coming later`}
+              />
+            </ProgressStat>
+          </div>
+        </div>
+        <JacksonvilleFestivilleGoalsCard variant="panel" />
       </div>
-      <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <ProgressStat label="VIP tables sold" value={w.sherwoodVipSold} goal={w.sherwoodVipGoal} />
-        <ProgressStat label="Tickets sold" value={w.sherwoodTicketsSold} goal={700} />
-        <ProgressStat
-          label="Sherwood volunteers"
-          value={w.sherwoodVolunteers}
-          goal={50}
-          onClick={() => setSherwoodVolunteersOpen((open) => !open)}
-          expanded={sherwoodVolunteersOpen}
-        >
-          <VolunteerLeaderRoster
-            leaders={w.sherwoodVolunteersRoster}
-            subtitle={`${w.sherwoodVolunteers} confirmed · contact details coming later`}
-          />
-        </ProgressStat>
-      </div>
+      <SpecialKpiGoalsStrip variant="panel" />
       <div className="ep-card">
         <h3 className="font-heading font-bold">Activation checklist</h3>
         <ul className="mt-3 list-inside list-disc space-y-1 text-sm text-[var(--ep-navy-muted)]">
@@ -1072,7 +1091,9 @@ export function SocialResumePanel({ data }: Props) {
         <ul className="mt-3 space-y-2 text-sm">
           {data.forwardMotion.stops.slice(0, 8).map((stop) => (
             <li key={stop.eventId}>
-              {stop.date} · {stop.eventName} — {stop.county} · {stop.storyWorkflowStatus.replace(/_/g, " ")}
+              <Link href={forwardMotionStopHref(stop.eventId)} className="hover:underline">
+                {stop.date} · {stop.eventName} — {stop.county} · {stop.storyWorkflowStatus.replace(/_/g, " ")}
+              </Link>
             </li>
           ))}
         </ul>

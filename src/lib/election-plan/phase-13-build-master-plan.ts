@@ -34,12 +34,13 @@ export const PHASE_13_BUILD_MASTER_PLAN = {
     },
     {
       id: "13-2",
-      title: "Phase 13.2 — Stop drill-down UI",
-      status: "pending" as const,
+      title: "Phase 13.2 — Stop command center",
+      status: "complete" as const,
       items: [
-        "Route /election-plan/forward-motion/[eventId]",
-        "Full activation status board per stop",
-        "Links from Forward Motion table + event approvals",
+        "Route /election-plan/forward-motion/[eventId] (+ human slug alias)",
+        "Stop readiness score: promotion · coalition · volunteers · story · house parties · endorsements",
+        "County + city brief binding, coalition targets, promotion timeline, Po5 + house party engine",
+        "Links from Forward Motion tab, intelligence opportunities, and War Room story rollup",
       ],
     },
     {
