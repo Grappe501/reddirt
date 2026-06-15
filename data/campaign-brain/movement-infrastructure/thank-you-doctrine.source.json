@@ -1,0 +1,24 @@
+{
+  "updatedAt": "2026-06-10",
+  "doctrine": "Mandatory campaign closeout after every immersion and major stop. Recognition is relationship infrastructure — not optional courtesy.",
+  "hostThankYou": {
+    "items": [
+      { "id": "personal-email", "label": "Personal email", "required": true },
+      { "id": "handwritten-card", "label": "Handwritten card", "required": true },
+      { "id": "social-acknowledgment", "label": "Social media acknowledgment", "required": true },
+      { "id": "gift-card", "label": "$20 gift card", "required": true, "budgetPerUnit": 20 }
+    ]
+  },
+  "volunteerLeadThankYou": {
+    "items": [
+      { "id": "personal-call", "label": "Personal call", "required": true },
+      { "id": "card", "label": "Thank-you card", "required": true },
+      { "id": "gift-card", "label": "Gift card", "required": true, "budgetPerUnit": 20 }
+    ]
+  },
+  "trackingFields": [
+    { "id": "thankYouSent", "label": "Thank you sent?" },
+    { "id": "cardSent", "label": "Card sent?" },
+    { "id": "giftCardSent", "label": "Gift card sent?" }
+  ]
+}

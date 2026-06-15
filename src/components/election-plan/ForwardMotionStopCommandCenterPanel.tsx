@@ -6,6 +6,7 @@ import Link from "next/link";
 import { formatPromotionStatus } from "@/lib/election-plan/forward-motion-readiness";
 import { forwardMotionHubHref } from "@/lib/election-plan/forward-motion-links";
 import type { StopCommandCenterView } from "@/lib/election-plan/forward-motion-stop-types";
+import { getThankYouDoctrine } from "@/lib/election-plan/load-movement-infrastructure";
 import { eventApprovalsHref } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import {
@@ -44,6 +45,7 @@ function ReadinessBar({ label, value }: { label: string; value: number }) {
 }
 
 export function ForwardMotionStopCommandCenterPanel({ view }: Props) {
+  const thankYouDoctrine = getThankYouDoctrine();
   const [tracking, setTracking] = useState<StopCommandCenterTracking>(() =>
     loadStopCommandCenterTracking(view.stop.eventId),
   );
@@ -131,6 +133,16 @@ export function ForwardMotionStopCommandCenterPanel({ view }: Props) {
           </a>
         ))}
       </nav>
+
+      {view.mobilizeEnforcement.warning ? (
+        <div className="mb-6 rounded-lg border-2 border-red-600 bg-red-50 px-4 py-3 text-sm text-red-900">
+          <p className="font-bold uppercase tracking-wide">{view.mobilizeEnforcement.warning}</p>
+          <p className="mt-1">
+            Mobilize is required for this stop ({view.mobilizeEnforcement.reasons.join(" · ")}). Status:{" "}
+            {formatPromotionStatus(view.stop.mobilizeStatus)}.
+          </p>
+        </div>
+      ) : null}
 
       <Section id="header" title="Event header">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -473,6 +485,62 @@ export function ForwardMotionStopCommandCenterPanel({ view }: Props) {
             </ul>
           </div>
         ) : null}
+      </Section>
+
+      <Section id="thank-you" title="Event closeout · Thank-you doctrine">
+        <p className="mb-4 text-sm text-[var(--ep-navy-muted)]">{thankYouDoctrine.doctrine}</p>
+        <div className="grid gap-4 lg:grid-cols-2">
+          <div className="ep-card">
+            <h3 className="font-heading font-bold">Host thank-you</h3>
+            <ul className="mt-3 space-y-2 text-sm">
+              {thankYouDoctrine.hostThankYou.items.map((item) => (
+                <li key={item.id}>
+                  <label className="flex cursor-pointer items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={Boolean(tracking.thankYouCloseout[`host-${item.id}`])}
+                      onChange={() =>
+                        setTracking((t) => ({
+                          ...t,
+                          thankYouCloseout: {
+                            ...t.thankYouCloseout,
+                            [`host-${item.id}`]: !t.thankYouCloseout[`host-${item.id}`],
+                          },
+                        }))
+                      }
+                    />
+                    {item.label}
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="ep-card">
+            <h3 className="font-heading font-bold">Volunteer lead thank-you</h3>
+            <ul className="mt-3 space-y-2 text-sm">
+              {thankYouDoctrine.volunteerLeadThankYou.items.map((item) => (
+                <li key={item.id}>
+                  <label className="flex cursor-pointer items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={Boolean(tracking.thankYouCloseout[`lead-${item.id}`])}
+                      onChange={() =>
+                        setTracking((t) => ({
+                          ...t,
+                          thankYouCloseout: {
+                            ...t.thankYouCloseout,
+                            [`lead-${item.id}`]: !t.thankYouCloseout[`lead-${item.id}`],
+                          },
+                        }))
+                      }
+                    />
+                    {item.label}
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </Section>
 
       <p className="text-xs text-[var(--ep-navy-muted)]">

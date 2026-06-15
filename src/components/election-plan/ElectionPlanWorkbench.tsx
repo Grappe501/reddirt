@@ -11,13 +11,16 @@ import { BattlefieldOverviewPanel } from "@/components/election-plan/Battlefield
 import { CityStrategyList } from "@/components/election-plan/CityStrategyList";
 import { locationBriefMasterPlanHref } from "@/lib/election-plan/location-links";
 import { phase13MasterPlanHref } from "@/lib/election-plan/phase-13-build-master-plan";
+import { phase18MasterPlanHref } from "@/lib/election-plan/phase-18-movement-infrastructure";
 import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
+import { evaluateMobilizeRequired } from "@/lib/election-plan/mobilize-enforcement";
 import { VciExplainerCard } from "@/components/election-plan/VciExplainerCard";
 import { CountyStrategyGrid } from "@/components/election-plan/CountyStrategyGrid";
 import { ExecutiveMetricCard } from "@/components/election-plan/ExecutiveMetricCard";
 import { cn } from "@/lib/utils";
 
 import { FieldCalendarPanel } from "@/components/election-plan/FieldCalendarPanel";
+import { Phase18MovementInfrastructurePanel } from "@/components/election-plan/Phase18MovementInfrastructurePanel";
 import {
   CampaignTimelinePanel,
   CoalitionCommandPanel,
@@ -57,6 +60,7 @@ const TAB_GROUPS = [
       { id: "volunteerLeadership", label: "Volunteer Leadership" },
       { id: "endorsements", label: "Endorsements" },
       { id: "forwardMotion", label: "Forward Motion" },
+      { id: "movementInfrastructure", label: "Movement Infrastructure" },
     ],
   },
 ] as const;
@@ -161,6 +165,7 @@ function TabWorkbench({ data, initialTab }: Props) {
         {active === "volunteerLeadership" && <PeoplePowerPanel data={data} />}
         {active === "endorsements" && <EndorsementAcquisitionPanel data={data} />}
         {active === "forwardMotion" && <ForwardMotionPanel data={data} />}
+        {active === "movementInfrastructure" && <Phase18MovementInfrastructurePanel />}
       </main>
     </div>
   );
@@ -1485,6 +1490,10 @@ function ForwardMotionPanel({ data }: Props) {
           <Link href={phase13MasterPlanHref()} className="font-semibold text-[var(--ep-gold)] hover:underline">
             Phase 13 build master plan →
           </Link>
+          {" · "}
+          <Link href={phase18MasterPlanHref()} className="font-semibold text-[var(--ep-gold)] hover:underline">
+            Phase 18 Movement Infrastructure →
+          </Link>
         </p>
       </div>
 
@@ -1537,13 +1546,18 @@ function ForwardMotionPanel({ data }: Props) {
               </tr>
             </thead>
             <tbody>
-              {fm.stops.map((s) => (
+              {fm.stops.map((s) => {
+                const mobilize = evaluateMobilizeRequired(s);
+                return (
                 <tr key={s.eventId} className="border-b border-[var(--ep-border)]">
                   <td className="py-2 pr-3 whitespace-nowrap">{s.date}</td>
                   <td className="py-2 pr-3 font-medium">
                     <Link href={forwardMotionStopHref(s.eventId)} className="text-[var(--ep-navy)] hover:text-[var(--ep-gold)] hover:underline">
                       {s.eventName}
                     </Link>
+                    {mobilize.warning ? (
+                      <span className="mt-1 block text-[10px] font-bold uppercase text-red-700">{mobilize.warning}</span>
+                    ) : null}
                   </td>
                   <td className="py-2 pr-3">{s.county.replace(" County", "")}</td>
                   <td className="py-2 pr-3">{s.effectiveScore}</td>
@@ -1558,7 +1572,8 @@ function ForwardMotionPanel({ data }: Props) {
                     </Link>
                   </td>
                 </tr>
-              ))}
+                );
+              })}
             </tbody>
           </table>
         </div>

@@ -10,6 +10,7 @@ export type StopCommandCenterTracking = {
   powerOf5Actuals: Record<string, number>;
   housePartyPlanned: Record<string, boolean>;
   endorsementStatus: Record<string, "requested" | "scheduled" | "pending" | "endorsed" | "">;
+  thankYouCloseout: Record<string, boolean>;
 };
 
 const DEFAULT_TRACKING: StopCommandCenterTracking = {
@@ -20,6 +21,7 @@ const DEFAULT_TRACKING: StopCommandCenterTracking = {
   powerOf5Actuals: {},
   housePartyPlanned: {},
   endorsementStatus: {},
+  thankYouCloseout: {},
 };
 
 function storageKey(eventId: string): string {

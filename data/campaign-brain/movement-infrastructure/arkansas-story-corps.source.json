@@ -1,0 +1,24 @@
+{
+  "updatedAt": "2026-06-10",
+  "title": "Arkansas Story Corps",
+  "subtitle": "Vertical video corps — student, volunteer, community, campus, and county teams",
+  "equipmentBudget": 1500,
+  "equipmentNote": "Starter kit: cameras, microphones, lighting, mobile kits",
+  "teams": [
+    { "id": "candidate", "label": "Candidate Team", "focus": "Kelly videos", "platforms": ["YouTube Shorts", "TikTok", "Facebook Reels", "Instagram Reels"] },
+    { "id": "volunteer", "label": "Volunteer Team", "focus": "Volunteer testimonials", "platforms": ["Reels", "TikTok"] },
+    { "id": "community", "label": "Community Team", "focus": "Business spotlights", "platforms": ["Reels", "Substack embeds"] },
+    { "id": "campus", "label": "Campus Team", "focus": "Student-generated content", "platforms": ["TikTok", "Instagram Reels"] },
+    { "id": "county", "label": "County Team", "focus": "Local stories per county", "platforms": ["Facebook Reels", "YouTube Shorts"] }
+  ],
+  "goals": {
+    "shortsPerMonth": 40,
+    "countiesWithStory": 40,
+    "volunteerCreators": 25
+  },
+  "current": {
+    "shortsPublished": 0,
+    "countiesWithStory": 0,
+    "volunteerCreators": 0
+  }
+}

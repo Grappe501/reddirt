@@ -18,6 +18,7 @@ import {
   resolveCitySlug,
 } from "@/lib/election-plan/location-calendar-integration";
 import { cityLocationBriefHref, countyPlaybookHref } from "@/lib/election-plan/location-links";
+import { evaluateMobilizeRequired } from "@/lib/election-plan/mobilize-enforcement";
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
 
 const COALITION_TARGETS = [
@@ -199,6 +200,12 @@ export function assembleForwardMotionStop(
   const countyEndorsementTargets = data.endorsementAcquisition.pendingTargets.filter(
     (t) => t.county.toLowerCase().includes(countyNorm) || countyNorm.includes(t.county.toLowerCase()),
   );
+  const campusAct = detectCampus(stop, cityBrief?.name);
+  const mobilizeEnforcement = evaluateMobilizeRequired(stop, {
+    volunteerGoal: cityBrief?.numericTargets?.volunteers.activeVolunteers,
+    registrationGoal: cityBrief?.numericTargets?.registration.newRegistrations,
+    isCampusEvent: Boolean(campusAct),
+  });
 
   return {
     stop,
@@ -235,9 +242,10 @@ export function assembleForwardMotionStop(
     ],
     endorsementRoles: ENDORSEMENT_ROLES,
     countyEndorsementTargets,
-    campusActivation: detectCampus(stop, cityBrief?.name),
+    campusActivation: campusAct,
     substackAngle: briefing?.story?.substackAngle ?? null,
     readiness,
     briefingSlug,
+    mobilizeEnforcement,
   };
 }

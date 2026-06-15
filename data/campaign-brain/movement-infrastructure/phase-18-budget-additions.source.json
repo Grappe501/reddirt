@@ -1,0 +1,18 @@
+{
+  "updatedAt": "2026-06-10",
+  "disclaimer": "Phase 18 planning additions — merge into working campaign budget; not final accounting.",
+  "lineItems": [
+    { "id": "compliance-monthly", "category": "Compliance", "label": "Compliance (monthly)", "amount": 750, "unit": "per month", "annualized": 9000, "notes": "Ongoing filings, counsel retainer share" },
+    { "id": "immersion-swag", "category": "Field", "label": "Immersion swag", "amount": 500, "unit": "per immersion", "annualized": 7500, "notes": "Materials per county immersion stop" },
+    { "id": "thank-you-gift-cards", "category": "Recognition", "label": "Thank-you gift cards", "amount": 20, "unit": "per lead host", "annualized": 2000, "notes": "Mandatory closeout doctrine" },
+    { "id": "vertical-video-equipment", "category": "Story Corps", "label": "Vertical video equipment starter kit", "amount": 1500, "unit": "one-time", "annualized": 1500, "notes": "Cameras, mics, lighting, mobile kits" },
+    { "id": "campus-recruitment-materials", "category": "Campus Network", "label": "Campus recruitment materials", "amount": 2500, "unit": "one-time", "annualized": 2500, "notes": "Tabling kits, flyers, captain binders" },
+    { "id": "freshman-week-tabling", "category": "Campus Network", "label": "Freshman week tabling", "amount": 3000, "unit": "seasonal", "annualized": 3000, "notes": "August move-in blitz" },
+    { "id": "campus-fundraiser-support", "category": "Campus Network", "label": "Campus fundraiser support", "amount": 2000, "unit": "seasonal", "annualized": 2000, "notes": "Young Dems / campus org co-hosts" },
+    { "id": "lte-volunteer-program", "category": "Volunteer Media Corps", "label": "LTE volunteer program", "amount": 1500, "unit": "one-time", "annualized": 1500, "notes": "Letters to the editor training + templates" },
+    { "id": "rural-newspaper-ads", "category": "Media", "label": "Rural newspaper ads", "amount": null, "unit": "separate media line", "annualized": null, "notes": "Citizen Voices / tier-3 papers — see media-outreach budget" },
+    { "id": "rural-radio", "category": "Media", "label": "Rural radio", "amount": null, "unit": "separate media line", "annualized": null, "notes": "See media-outreach budget" }
+  ],
+  "phase18IncrementalTotal": 28000,
+  "notes": "Targeted digital ads and Q4 billboards remain in existing digital-advertising budget lines."
+}

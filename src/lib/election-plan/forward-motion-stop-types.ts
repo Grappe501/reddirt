@@ -100,4 +100,9 @@ export type StopCommandCenterView = {
   substackAngle: string | null;
   readiness: StopReadinessBreakdown;
   briefingSlug: string | null;
+  mobilizeEnforcement: {
+    required: boolean;
+    warning: string | null;
+    reasons: string[];
+  };
 };

@@ -1,0 +1,37 @@
+{
+  "updatedAt": "2026-06-10",
+  "doctrine": "If volunteers or registrations are needed for a stop, a Mobilize event must exist before promotion goes live. Forward Motion surfaces Missing Mobilize Event as a red warning.",
+  "volunteerTrigger": {
+    "volunteerGoalGtZero": true,
+    "registrationGoalGtZero": true,
+    "eventTypesRequiringMobilize": [
+      "festival",
+      "fair",
+      "tabling",
+      "campus",
+      "house_party",
+      "phone_bank",
+      "canvass",
+      "immersion",
+      "fundraiser",
+      "meet_and_greet"
+    ],
+    "labelKeywords": [
+      "fair",
+      "fest",
+      "festival",
+      "tabling",
+      "campus",
+      "house party",
+      "phone bank",
+      "canvass",
+      "immersion",
+      "fundraiser",
+      "meet and greet",
+      "college",
+      "university"
+    ]
+  },
+  "mobilizeCompleteStatuses": ["drafted", "approved", "published", "sent"],
+  "warningLabel": "Missing Mobilize Event"
+}

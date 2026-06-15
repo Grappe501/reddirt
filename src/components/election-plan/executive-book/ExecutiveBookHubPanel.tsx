@@ -1,6 +1,11 @@
 import Link from "next/link";
 
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
+import {
+  campusNetworkHref,
+  directDemocracyElectionPlanHref,
+  phase18MasterPlanHref,
+} from "@/lib/election-plan/phase-18-movement-infrastructure";
 import { EXECUTIVE_BOOK_EDITION } from "@/lib/election-plan/executiveBookNav";
 
 type Props = {
@@ -143,6 +148,24 @@ export function ExecutiveBookHubPanel({ data, standalone = false }: Props) {
           </div>
         </div>
       ) : null}
+
+      <div className="mb-10">
+        <h3 className="mb-3 font-heading text-lg font-bold text-[var(--ep-navy)]">Phase 18 · Movement Infrastructure</h3>
+        <p className="mb-4 text-sm text-[var(--ep-navy-muted)]">
+          Statewide overlay — campus network, trust building, direct democracy, story corps, Mobilize rules, thank-you doctrine.
+        </p>
+        <div className="grid gap-3 sm:grid-cols-3">
+          <Link href={phase18MasterPlanHref()} className="ep-card block text-sm hover:border-[var(--ep-gold)]">
+            <span className="font-heading font-bold">Phase 18 master plan</span>
+          </Link>
+          <Link href={campusNetworkHref()} className="ep-card block text-sm hover:border-[var(--ep-gold)]">
+            <span className="font-heading font-bold">Campus network</span>
+          </Link>
+          <Link href={directDemocracyElectionPlanHref()} className="ep-card block text-sm hover:border-[var(--ep-gold)]">
+            <span className="font-heading font-bold">Direct democracy</span>
+          </Link>
+        </div>
+      </div>
 
       {hub.chapters.length === 0 ? (
         <div className="ep-card-glass text-sm text-[var(--ep-navy-muted)]">

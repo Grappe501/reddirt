@@ -1,0 +1,23 @@
+{
+  "updatedAt": "2026-06-10",
+  "title": "Direct Democracy Initiative",
+  "signatureIssue": "The people should have a meaningful pathway to propose laws and repeal laws.",
+  "doctrine": "Not framed around a specific petition — Secretary of State competence includes making initiative and referendum pathways understandable and accessible.",
+  "integrationSurfaces": [
+    "Executive Book",
+    "Candidate messaging doctrine",
+    "Coalition strategy",
+    "County playbooks",
+    "Debate prep",
+    "Website platform section"
+  ],
+  "resourceCenter": {
+    "ballotCommitteeOutreach": { "status": "planning", "count": 0, "goal": 12 },
+    "clerkPartnerships": { "status": "planning", "count": 0, "goal": 15 },
+    "libraryPartnerships": { "status": "planning", "count": 0, "goal": 25 },
+    "educationalResources": { "status": "draft", "count": 3, "goal": 10 },
+    "trainingOpportunities": { "status": "planning", "count": 0, "goal": 8 }
+  },
+  "publicHref": "/direct-democracy",
+  "publicBallotProcessHref": "/direct-democracy/ballot-initiative-process"
+}

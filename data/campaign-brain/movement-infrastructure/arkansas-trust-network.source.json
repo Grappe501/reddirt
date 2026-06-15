@@ -1,0 +1,32 @@
+{
+  "updatedAt": "2026-06-10",
+  "title": "Arkansas Trust Network",
+  "doctrine": "We will work with anyone acting in good faith to improve Arkansas — not agreement, partnership. Cross-party relationship building for election integrity, civic function, and community trust.",
+  "objective": "Build relationships with Republicans, independents, business leaders, election officials, and civic leaders statewide.",
+  "metrics": {
+    "introductions": 0,
+    "meetings": 0,
+    "followUps": 0,
+    "communityLeaders": 0,
+    "countyInfluencers": 0
+  },
+  "goalTargets": {
+    "introductions": 150,
+    "meetings": 75,
+    "followUps": 200,
+    "communityLeaders": 50,
+    "countyInfluencers": 75
+  },
+  "relationshipTypes": [
+    { "id": "republican", "label": "Republican leaders", "prompt": "County party chairs, business Republicans open to election integrity" },
+    { "id": "independent", "label": "Independents", "prompt": "Unaffiliated civic leaders, chamber members, Rotarians" },
+    { "id": "business", "label": "Business leaders", "prompt": "Employers, downtown alliances, main street advocates" },
+    { "id": "election-official", "label": "Election officials", "prompt": "County clerks, election commissioners — competence posture" },
+    { "id": "civic", "label": "Civic leaders", "prompt": "Nonprofit heads, faith leaders acting in civic capacity" }
+  ],
+  "searcyCountyPilot": {
+    "label": "Searcy County outright win (50%+1)",
+    "note": "Trust network is force multiplier for cross-partisan credibility in North Central Ozarks counties.",
+    "href": "/election-plan/counties/searcy"
+  }
+}
