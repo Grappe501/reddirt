@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T13:57:39.054Z",
+  "generatedAt": "2026-06-15T14:43:44.220Z",
   "pass": "EXECUTIVE-BOOK-COMPLETION-1.0",
   "weekOf": "2026-06-15",
   "rows": [
@@ -11,12 +11,12 @@
     {
       "metric": "Counties Covered",
       "goal": 75,
-      "current": 43
+      "current": 45
     },
     {
       "metric": "Founding Leaders",
       "goal": 20,
-      "current": 0
+      "current": 39
     },
     {
       "metric": "HCI",

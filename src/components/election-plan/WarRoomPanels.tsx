@@ -890,6 +890,9 @@ export function SherwoodVictoryPanel({ data }: Props) {
       <div className="ep-warning mb-8">
         <p className="text-lg font-semibold">{s.goal}</p>
         <p className="mt-2 text-sm">Outdoor · 700+ capacity · VIP $1,000 · show $25 · food $25 · July 3–4 corridor</p>
+        <p className="mt-2 text-sm font-medium text-[var(--ep-navy)]">
+          Co-chairs: <strong>John Duke</strong> & <strong>Jay Powell</strong> · Ops: Steve Grappe
+        </p>
       </div>
       <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <ProgressStat label="VIP tables sold" value={w.sherwoodVipSold} goal={w.sherwoodVipGoal} />

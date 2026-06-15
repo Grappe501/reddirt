@@ -523,7 +523,12 @@ function TheoryPanel({ data }: Props) {
       </div>
 
       <div className="ep-card-glass">
-        <h3 className="font-heading text-xl font-bold">{data.theoryOfVictory.doctrine.title}</h3>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <h3 className="font-heading text-xl font-bold">{data.theoryOfVictory.doctrine.title}</h3>
+          <Link href="/election-plan/big-table-doctrine" className="text-xs font-semibold text-[var(--ep-gold)] hover:underline">
+            Full doctrine →
+          </Link>
+        </div>
         <ul className="mt-4 space-y-2">
           {data.theoryOfVictory.doctrine.pillars.map((p) => (
             <li key={p} className="text-sm leading-relaxed">

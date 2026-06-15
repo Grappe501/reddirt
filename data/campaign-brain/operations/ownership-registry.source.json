@@ -22,7 +22,7 @@
     {
       "id": "mobilize-ops",
       "function": "Mobilize",
-      "owner": "TBD",
+      "owner": "Steve Grappe",
       "backup": "TBD",
       "status": "active",
       "nextAction": "Draft Mobilize events for July 3–4 · Kelly approval before publish",
@@ -32,10 +32,10 @@
     {
       "id": "sherwood-event",
       "function": "Sherwood Event",
-      "owner": "Steve",
-      "backup": "TBD",
+      "owner": "John Duke & Jay Powell",
+      "backup": "Steve Grappe",
       "status": "critical",
-      "nextAction": "VIP table sales push · 5 tables sold by end of Week 1",
+      "nextAction": "Co-chairs lead VIP table sales · Steve Grappe ops · 5 tables sold by end of Week 1",
       "dueDate": "2026-07-03",
       "weeklyDeliverable": "VIP tables"
     },
@@ -62,7 +62,7 @@
     {
       "id": "naacp-program",
       "function": "NAACP Program",
-      "owner": "TBD",
+      "owner": "Barry Jefferson",
       "backup": "TBD",
       "status": "active",
       "nextAction": "First 5 branch calls · 2 speaking requests",
@@ -92,7 +92,7 @@
     {
       "id": "social-motion",
       "function": "Motion & Storytelling",
-      "owner": "TBD",
+      "owner": "Leann Solice",
       "backup": "TBD",
       "status": "active",
       "nextAction": "5 content assets per Kelly stop this week",
@@ -132,7 +132,7 @@
     {
       "id": "county-completion-routing",
       "function": "County Completion Routing",
-      "owner": "TBD",
+      "owner": "Steve Grappe",
       "backup": "TBD",
       "status": "active",
       "nextAction": "Execute Phase C must-hit path",

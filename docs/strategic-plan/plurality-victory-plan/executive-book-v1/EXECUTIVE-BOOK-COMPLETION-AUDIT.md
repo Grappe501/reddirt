@@ -10,7 +10,7 @@
 |---|---|
 | **Executive Book V1.1** | **OPERATIONAL — assign remaining TBD owners** |
 | **Overall completeness** | ~95% |
-| **Primary blocker** | 8 ownership slots still TBD |
+| **Primary blocker** | 4 ownership slots still TBD |
 
 ---
 
@@ -27,7 +27,7 @@
 | Motion & Storytelling | Complete | 85 |
 | Endorsements | Complete | 85 |
 | Operations Lock | Complete | 100 |
-| Executive Leadership Layer | In Progress | 38 |
+| Executive Leadership Layer | In Progress | 69 |
 | Field Execution Data | In Progress | 25 |
 
 ---
@@ -36,7 +36,7 @@
 
 | # | Deliverable | Status |
 |---|-------------|--------|
-| 1 | Leadership Ownership Matrix | ⚠️ 8 TBD |
+| 1 | Leadership Ownership Matrix | ⚠️ 4 TBD |
 | 2 | Executive Contact Plan (Arkansas Influence Map) | ✅ 8 categories · 6 seed targets |
 | 3 | Labor Day Readiness Chapter | ✅ |
 | 4 | Weekly Executive Scorecard | ✅ 9 metrics |
@@ -68,7 +68,7 @@
 
 ## What IS required to win
 
-1. Assign 8 remaining primary owners
+1. Assign 4 remaining primary owners
 2. Populate influence map from field relationships
 3. June 28 volunteer leadership launch
 4. Move Human Contact Index off zero

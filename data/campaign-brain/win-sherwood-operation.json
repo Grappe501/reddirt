@@ -4,6 +4,8 @@
   "goal": "Win Sherwood outright with 60%+",
   "event": {
     "name": "Sherwood GOTV Kickoff",
+    "coChairs": ["John Duke", "Jay Powell"],
+    "operationsLead": "Steve Grappe",
     "frames": [
       "Sherwood GOTV kickoff",
       "Central Arkansas GOTV kickoff",

@@ -7,25 +7,25 @@ Not departments. Not committees. **Names.**
 | Status | Count |
 |--------|------:|
 | Functions | 13 |
-| **Primary owner still TBD** | **8** |
+| **Primary owner still TBD** | **4** |
 
 ## Ownership matrix
 
 | Function | Primary Owner | Backup | Weekly Deliverable |
 |----------|---------------|--------|--------------------|
 | Volunteer Leadership | **TBD** | TBD | Founding 20 progress |
-| Mobilize | **TBD** | TBD | Event promotion |
-| Sherwood Event | **Steve** | TBD | VIP tables |
+| Mobilize | **Steve Grappe** | TBD | Event promotion |
+| Sherwood Event | **John Duke & Jay Powell** | Steve Grappe | VIP tables |
 | Labor Program | **Danny Brown / Team** | TBD | Union meetings |
 | AEA Program | **April Reisma liaison** | TBD | Teacher network |
-| NAACP Program | **TBD** | TBD | Branch contacts |
+| NAACP Program | **Barry Jefferson** | TBD | Branch contacts |
 | Muslim Outreach | **Ali Khan / Ebrahim** | TBD | Community meetings |
 | Hispanic Outreach | **Jasmine Serano** | TBD | Hispanic engagement |
-| Motion & Storytelling | **TBD** | TBD | Weekly content |
+| Motion & Storytelling | **Leann Solice** | TBD | Weekly content |
 | Endorsements | **TBD** | TBD | Validator pipeline |
 | Calendar Truth | **TBD** | TBD | Verified events + guardrails closed |
 | Candidate Partnerships | **TBD** | TBD | Shared event dates |
-| County Completion Routing | **TBD** | TBD | Counties touched + relationship notes |
+| County Completion Routing | **Steve Grappe** | TBD | Counties touched + relationship notes |
 
 ## Operating rules
 
@@ -33,6 +33,7 @@ Not departments. Not committees. **Names.**
 2. Backup is named before the owner is unavailable, not instead of naming a primary
 3. Weekly deliverable is due before Monday leadership call
 4. TBD owners are the #1 execution risk — assign before field week begins
+5. **Sherwood Event:** John Duke & Jay Powell are **co-chairs**; Steve Grappe is backup / operations support
 
 ## Update path
 

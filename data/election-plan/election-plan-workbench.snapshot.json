@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T14:39:53.493Z",
+  "generatedAt": "2026-06-15T14:43:45.167Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -3039,7 +3039,7 @@
           "id": "big-table",
           "title": "Big Table Democrat Doctrine",
           "description": "Working-class coalition · dignity · nonpartisan local offices",
-          "path": "docs/campaign-brain/relational-organizing/BIG-TABLE-DEMOCRAT-DOCTRINE.md"
+          "path": "/election-plan/big-table-doctrine"
         }
       ]
     },
@@ -9997,7 +9997,7 @@
     "version": "1.1",
     "status": "operational",
     "laborDayDeadline": "2026-09-07",
-    "unassignedOwners": 8,
+    "unassignedOwners": 4,
     "weeklyScorecard": [
       {
         "metric": "Verified Events",
@@ -10007,12 +10007,12 @@
       {
         "metric": "Counties Covered",
         "goal": 75,
-        "actual": 43
+        "actual": 45
       },
       {
         "metric": "Founding Leaders",
         "goal": 20,
-        "actual": 0
+        "actual": 39
       },
       {
         "metric": "HCI",
@@ -12284,8 +12284,8 @@
             "subtitle": "Leadership ownership matrix — names, not committees",
             "href": "/election-plan/executive-book/ownership",
             "statusLines": [
-              "5 assigned",
-              "8 unassigned"
+              "9 assigned",
+              "4 unassigned"
             ],
             "metrics": [
               {
@@ -12294,7 +12294,7 @@
               },
               {
                 "label": "TBD",
-                "value": "8"
+                "value": "4"
               }
             ]
           },
@@ -12317,7 +12317,7 @@
               },
               {
                 "label": "Counties",
-                "value": "43"
+                "value": "45"
               },
               {
                 "label": "Events",
@@ -12325,7 +12325,7 @@
               },
               {
                 "label": "Leaders",
-                "value": "0"
+                "value": "39"
               }
             ]
           }
@@ -12539,7 +12539,7 @@
               },
               {
                 "label": "TBD owners",
-                "value": "8"
+                "value": "4"
               }
             ]
           }
@@ -12554,8 +12554,8 @@
         "subtitle": "Leadership ownership matrix — names, not committees",
         "href": "/election-plan/executive-book/ownership",
         "statusLines": [
-          "5 assigned",
-          "8 unassigned"
+          "9 assigned",
+          "4 unassigned"
         ],
         "metrics": [
           {
@@ -12564,7 +12564,7 @@
           },
           {
             "label": "TBD",
-            "value": "8"
+            "value": "4"
           }
         ]
       },
@@ -12633,7 +12633,7 @@
           },
           {
             "label": "Counties",
-            "value": "43"
+            "value": "45"
           },
           {
             "label": "Events",
@@ -12641,7 +12641,7 @@
           },
           {
             "label": "Leaders",
-            "value": "0"
+            "value": "39"
           }
         ]
       },
@@ -12785,7 +12785,7 @@
           },
           {
             "label": "TBD owners",
-            "value": "8"
+            "value": "4"
           }
         ]
       }

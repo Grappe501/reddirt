@@ -12,8 +12,8 @@
 | Metric | Goal | Current |
 |--------|-----:|--------:|
 | Verified Events | 300 | 122 |
-| Counties Covered | 75 | 43 |
-| Founding Leaders | 20 | 0 |
+| Counties Covered | 75 | 45 |
+| Founding Leaders | 20 | 39 |
 | HCI | 250000 | 0 |
 | Endorsements Requested | — | 0 |
 | Endorsements Activated | — | 0 |

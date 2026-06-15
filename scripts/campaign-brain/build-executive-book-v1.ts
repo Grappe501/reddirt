@@ -86,6 +86,7 @@ ${assignments.map((a) => `| ${a.function} | **${a.owner}** | ${a.backup && !isUn
 2. Backup is named before the owner is unavailable, not instead of naming a primary
 3. Weekly deliverable is due before Monday leadership call
 4. TBD owners are the #1 execution risk — assign before field week begins
+5. **Sherwood Event:** John Duke & Jay Powell are **co-chairs**; Steve Grappe is backup / operations support
 
 ## Update path
 

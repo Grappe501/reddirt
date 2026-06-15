@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-06-15T13:57:39.054Z",
+  "generatedAt": "2026-06-15T14:43:44.220Z",
   "pass": "EXECUTIVE-BOOK-COMPLETION-1.0",
   "version": "1.1",
   "status": "operational_assign_owners",
-  "unassignedOwners": 8,
+  "unassignedOwners": 4,
   "influenceCategories": 8,
   "contactSeedTargets": 6,
   "scorecardMetrics": 9,

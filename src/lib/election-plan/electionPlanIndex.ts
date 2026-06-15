@@ -24,7 +24,7 @@ export const ELECTION_PLAN_ARCHITECTURE: ElectionPlanArchitectureSection[] = [
         id: "big-table",
         title: "Big Table Democrat Doctrine",
         description: "Working-class coalition · dignity · nonpartisan local offices",
-        path: "docs/campaign-brain/relational-organizing/BIG-TABLE-DEMOCRAT-DOCTRINE.md",
+        path: "/election-plan/big-table-doctrine",
       },
     ],
   },
