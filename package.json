@@ -361,6 +361,7 @@
     "campaign-brain:executive-book:completion": "tsx scripts/campaign-brain/build-executive-book-v1.ts",
     "campaign-brain:executive-calendar:build": "tsx scripts/campaign-brain/build-executive-calendar.ts",
     "campaign-brain:public-calendar-snapshot:build": "tsx scripts/campaign-brain/build-public-campaign-calendar-snapshot.ts",
+    "campaign-brain:event-briefings:build": "tsx scripts/campaign-brain/build-campaign-event-briefings.ts",
     "campaign-brain:budget:build": "tsx scripts/campaign-brain/build-campaign-budget.ts",
     "campaign-brain:power-of-5-chapter:build": "tsx scripts/campaign-brain/build-power-of-5-executive-chapter.ts",
     "campaign-brain:citizen-voices:build": "tsx scripts/campaign-brain/build-citizen-voices-network.ts",

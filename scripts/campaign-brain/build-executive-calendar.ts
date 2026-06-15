@@ -365,7 +365,9 @@ function main() {
   );
 
   const snap = buildPublicCampaignCalendarSnapshot();
-  console.log(`Public calendar snapshot: ${snap.count} events through ${ELECTION_DAY}`);
+  console.log(
+    `Public calendar snapshot: ${snap.count} events · ${snap.briefingCount} field briefings through ${ELECTION_DAY}`,
+  );
 }
 
 main();

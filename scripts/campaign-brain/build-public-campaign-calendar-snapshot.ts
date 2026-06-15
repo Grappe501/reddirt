@@ -11,9 +11,11 @@ import path from "node:path";
 
 import { CampaignEventType } from "@prisma/client";
 
+import { campaignEventSlug } from "../../src/lib/calendar/campaign-event-slug";
 import { PUBLIC_CALENDAR_DEFAULT_TZ } from "../../src/lib/calendar/public-event-types";
 import { findInstantOnYmd } from "../../src/lib/calendar/public-event-format";
 import { ARKANSAS_COUNTY_REGISTRY } from "../../src/lib/county/arkansas-county-registry";
+import { buildCampaignEventBriefingsSnapshot } from "./build-campaign-event-briefings";
 
 const ELECTION_DAY = "2026-11-03";
 const EXEC_PATH = path.join(process.cwd(), "docs/campaign-brain/executive-calendar/executive-calendar.json");
@@ -105,7 +107,7 @@ function buildLocation(entry: ExecEntry): string | null {
 
 function toSnapshotEvent(entry: ExecEntry): PublicCalendarSnapshotEvent {
   const { startAt, endAt } = defaultTimes(entry.startDate, entry.endDate);
-  const slug = slugify(`${entry.label}-${entry.startDate}`);
+  const slug = campaignEventSlug(entry.label, entry.startDate);
   const locationName = buildLocation(entry);
   const county = resolveCounty(entry.county);
   const eventType = mapEventType(entry.eventType, entry.label);
@@ -131,7 +133,7 @@ function toSnapshotEvent(entry: ExecEntry): PublicCalendarSnapshotEvent {
   };
 }
 
-export function buildPublicCampaignCalendarSnapshot(): { path: string; count: number } {
+export function buildPublicCampaignCalendarSnapshot(): { path: string; count: number; briefingCount: number } {
   const exec = JSON.parse(readFileSync(EXEC_PATH, "utf8")) as { entries: ExecEntry[] };
 
   const events = exec.entries
@@ -154,11 +156,13 @@ export function buildPublicCampaignCalendarSnapshot(): { path: string; count: nu
     ),
   );
 
-  return { path: OUT_PATH, count: events.length };
+  const briefings = buildCampaignEventBriefingsSnapshot();
+  return { path: OUT_PATH, count: events.length, briefingCount: briefings.count };
 }
 
 const invokedDirectly = process.argv[1]?.replace(/\\/g, "/").endsWith("build-public-campaign-calendar-snapshot.ts");
 if (invokedDirectly) {
-  const { path: out, count } = buildPublicCampaignCalendarSnapshot();
+  const { path: out, count, briefingCount } = buildPublicCampaignCalendarSnapshot();
   console.log(`Public campaign calendar snapshot: ${count} events → ${out}`);
+  console.log(`Campaign event briefings: ${briefingCount} events`);
 }

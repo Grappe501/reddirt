@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "note": "Manual field briefing enrichments keyed by event slug. Re-run npm run campaign-brain:event-briefings:build after edits.",
+  "overrides": {}
+}
