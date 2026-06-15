@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
 import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
@@ -22,22 +22,80 @@ function ProgressStat({
   value,
   goal,
   format = "number",
+  onClick,
+  expanded,
+  children,
 }: {
   label: string;
   value: number;
   goal: number;
   format?: "number" | "pct";
+  onClick?: () => void;
+  expanded?: boolean;
+  children?: ReactNode;
 }) {
   const pct = goal > 0 ? Math.min(100, (value / goal) * 100) : 0;
   const display =
     format === "pct" ? `${value.toFixed(1)}%` : `${formatVotes(value)}${goal ? ` / ${formatVotes(goal)}` : ""}`;
+  const interactive = Boolean(onClick);
   return (
-    <div className="ep-card">
-      <div className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">{label}</div>
-      <div className="mt-1 font-heading text-xl font-bold text-[var(--ep-navy)]">{display}</div>
-      <div className="ep-progress mt-3">
-        <div className="ep-progress-bar" style={{ width: `${pct}%` }} />
-      </div>
+    <div className={cn("ep-card", interactive && "cursor-pointer transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]")}>
+      <button
+        type="button"
+        className={cn("w-full text-left", !interactive && "cursor-default")}
+        onClick={onClick}
+        disabled={!interactive}
+        aria-expanded={expanded}
+      >
+        <div className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">{label}</div>
+        <div className="mt-1 font-heading text-xl font-bold text-[var(--ep-navy)]">{display}</div>
+        <div className="ep-progress mt-3">
+          <div className="ep-progress-bar" style={{ width: `${pct}%` }} />
+        </div>
+        {interactive ? (
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+            {expanded ? "Hide roster ▲" : "View roster ▼"}
+          </p>
+        ) : null}
+      </button>
+      {expanded && children ? <div className="mt-4 border-t border-[var(--ep-border)] pt-4">{children}</div> : null}
+    </div>
+  );
+}
+
+function VolunteerLeaderRoster({
+  leaders,
+  subtitle,
+}: {
+  leaders: Array<{
+    id: string;
+    name: string;
+    locationHint: string | null;
+    inviteStatus: string;
+    confirmedFoundingTeam: boolean;
+  }>;
+  subtitle?: string;
+}) {
+  if (leaders.length === 0) {
+    return <p className="text-sm text-[var(--ep-navy-muted)]">No volunteers on roster yet.</p>;
+  }
+  return (
+    <div>
+      {subtitle ? <p className="mb-3 text-xs text-[var(--ep-navy-muted)]">{subtitle}</p> : null}
+      <ul className="max-h-80 space-y-2 overflow-y-auto text-sm">
+        {leaders.map((v) => (
+          <li
+            key={v.id}
+            className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5 border-b border-[var(--ep-border)] pb-2 last:border-0"
+          >
+            <span className="font-medium text-[var(--ep-navy)]">{v.name}</span>
+            <span className="text-xs text-[var(--ep-navy-muted)]">
+              {v.locationHint ?? "Location TBD at June 28 call"}
+              {v.confirmedFoundingTeam ? " · founding team" : ""}
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -45,6 +103,7 @@ function ProgressStat({
 /** PASS-17 Deliverable 1 — Executive War Room Homepage */
 export function WarRoomPanel({ data }: Props) {
   const w = data.warRoom;
+  const [volunteerRosterOpen, setVolunteerRosterOpen] = useState(false);
   return (
     <section>
       <SectionTitle
@@ -88,7 +147,14 @@ export function WarRoomPanel({ data }: Props) {
           label="Volunteer leaders"
           value={w.volunteerLeadersCurrent}
           goal={w.volunteerLeadersGoal}
-        />
+          onClick={() => setVolunteerRosterOpen((open) => !open)}
+          expanded={volunteerRosterOpen}
+        >
+          <VolunteerLeaderRoster
+            leaders={w.volunteerLeaders}
+            subtitle={`${w.volunteerLeaders.length} on June 28 invite list · ${w.volunteerLeadersCurrent} total campaign signups`}
+          />
+        </ProgressStat>
         <ProgressStat
           label="Intelligence opportunities (7d)"
           value={w.upcomingEvents}

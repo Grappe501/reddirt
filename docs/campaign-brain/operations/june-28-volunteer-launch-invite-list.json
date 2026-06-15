@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T06:42:12.147Z",
+  "generatedAt": "2026-06-15T14:23:44.072Z",
   "launchCall": {
     "date": "2026-06-28",
     "time": "18:00",
@@ -8,6 +8,7 @@
     "purpose": "Launch Volunteer Leadership Network"
   },
   "inviteCount": 36,
+  "signedUpCount": 36,
   "confirmedFoundingTeam": 0,
   "foundingTeamGoal": 20,
   "invitees": [
@@ -15,252 +16,252 @@
       "id": "invite-gibson",
       "displayName": "John and Judy Gibson",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-larue",
       "displayName": "Will LaRue",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-dare",
       "displayName": "Judy Dare",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-duke",
       "displayName": "John Duke",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-solice",
       "displayName": "Leann Solice",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-hurst",
       "displayName": "Ben Hurst",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-low",
       "displayName": "Christy Low",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-holloway",
       "displayName": "Lisa Holloway",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-rampone",
       "displayName": "Sarah Rampone",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-stebbins",
       "displayName": "Kate Stebbins",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-chsm",
       "displayName": "Lela Chsm",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-dannaway",
       "displayName": "Teresa Dannaway",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-disderio",
       "displayName": "Nicole Disderio and Luke",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-mclennon",
       "displayName": "Xav Mclennon",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-bradford",
       "displayName": "Chance Bradford",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-bledsoe",
       "displayName": "Zach Bledsoe",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-harrison",
       "displayName": "Judy Harrison",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-powell",
       "displayName": "Jay Powell",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-huffines",
       "displayName": "The Huffines",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-browns-benton",
       "displayName": "The Browns",
       "locationHint": "Benton",
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-hutto",
       "displayName": "Carol Hutto",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-brooke-searcy",
       "displayName": "Brooke",
       "locationHint": "Searcy",
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-dana-jeff-searcy",
       "displayName": "Dana and Jeff",
       "locationHint": "Searcy",
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-rolanda-jax",
       "displayName": "Rolanda",
       "locationHint": "Jacksonville",
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-trenika-jax",
       "displayName": "Trenika",
       "locationHint": "Jacksonville",
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-jean-carroll",
       "displayName": "Jean",
       "locationHint": "Carroll County",
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-eagan",
       "displayName": "Carol Eagan",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-kahn",
       "displayName": "Ali Kahn",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-heifner",
       "displayName": "Kevin Heifner",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-dianne-vanessa-conway",
       "displayName": "Dianne / Vanessa",
       "locationHint": "Conway County",
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-mary-ella-russellville",
       "displayName": "Mary Ella",
       "locationHint": "Russellville",
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-marnie-dan",
       "displayName": "Marnie and Dan",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-roosevelt-williams",
       "displayName": "Roosevelt Williams",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-choate",
       "displayName": "Gail Choate",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-dunbar",
       "displayName": "Ethan and Christie Dunbar",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     },
     {
       "id": "invite-elaine-williams",
       "displayName": "Elaine Williams",
       "locationHint": null,
-      "inviteStatus": "listed",
+      "inviteStatus": "signed_up",
       "confirmedFoundingTeam": false
     }
   ]

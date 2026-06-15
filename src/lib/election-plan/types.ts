@@ -153,6 +153,13 @@ export type ElectionPlanWorkbenchSnapshot = {
   peoplePower: {
     foundingVolunteersGoal: number;
     foundingVolunteersCurrent: number;
+    foundingVolunteers: Array<{
+      id: string;
+      name: string;
+      locationHint: string | null;
+      inviteStatus: string;
+      confirmedFoundingTeam: boolean;
+    }>;
     launchLabel: string;
     retreatLocation: string;
     monthlyCalls: string;
@@ -433,6 +440,13 @@ export type ElectionPlanWorkbenchSnapshot = {
     endorsementsEndorsed: number;
     volunteerLeadersGoal: number;
     volunteerLeadersCurrent: number;
+    volunteerLeaders: Array<{
+      id: string;
+      name: string;
+      locationHint: string | null;
+      inviteStatus: string;
+      confirmedFoundingTeam: boolean;
+    }>;
     upcomingEvents: number;
     countiesCovered: number;
     countiesTotal: number;

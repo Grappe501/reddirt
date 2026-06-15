@@ -31,6 +31,13 @@ function buildPeoplePowerSection() {
       foundingTeamCurrent: number;
       julyRetreat: { location: string };
       monthlyCalls: { schedule: string };
+      leaders?: Array<{
+        id: string;
+        name: string;
+        locationHint: string | null;
+        inviteStatus?: string;
+        confirmedFoundingTeam?: boolean;
+      }>;
     };
     mobilize: { eventsLinked: number; rsvpTotal: number };
     substack: { storiesPublished: number };
@@ -77,6 +84,13 @@ function buildPeoplePowerSection() {
   return {
     foundingVolunteersGoal: pp?.volunteerLeadership.foundingTeamGoal ?? 20,
     foundingVolunteersCurrent: pp?.volunteerLeadership.foundingTeamCurrent ?? 0,
+    foundingVolunteers: (pp?.volunteerLeadership.leaders ?? []).map((l) => ({
+      id: l.id,
+      name: l.name,
+      locationHint: l.locationHint,
+      inviteStatus: l.inviteStatus ?? "listed",
+      confirmedFoundingTeam: l.confirmedFoundingTeam ?? false,
+    })),
     launchLabel: "June 28 · 6 PM · Zoom",
     retreatLocation: pp?.volunteerLeadership.julyRetreat?.location ?? "Forevermost Farms",
     monthlyCalls: pp?.volunteerLeadership.monthlyCalls?.schedule ?? "Last Sunday · 6 PM",
@@ -1192,9 +1206,19 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
   const fm = readJson<{ upcomingCount?: number; nextWeekCount?: number }>(
     path.join(BRAIN_DATA, "forward-motion-summary.json"),
   );
-  const pp = readJson<{ volunteerLeadership?: { foundingTeamGoal?: number; foundingTeamCurrent?: number } }>(
-    path.join(BRAIN_DATA, "people-power-network.json"),
-  );
+  const pp = readJson<{
+    volunteerLeadership?: {
+      foundingTeamGoal?: number;
+      foundingTeamCurrent?: number;
+      leaders?: Array<{
+        id: string;
+        name: string;
+        locationHint: string | null;
+        inviteStatus?: string;
+        confirmedFoundingTeam?: boolean;
+      }>;
+    };
+  }>(path.join(BRAIN_DATA, "people-power-network.json"));
   const sherwood = readJson<{
     vipTablesSold?: number;
     vipTablesGoal?: number;
@@ -1228,6 +1252,13 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
     endorsementsEndorsed: endorse?.endorsed ?? 0,
     volunteerLeadersGoal: pp?.volunteerLeadership?.foundingTeamGoal ?? 20,
     volunteerLeadersCurrent: pp?.volunteerLeadership?.foundingTeamCurrent ?? 0,
+    volunteerLeaders: (pp?.volunteerLeadership?.leaders ?? []).map((l) => ({
+      id: l.id,
+      name: l.name,
+      locationHint: l.locationHint,
+      inviteStatus: l.inviteStatus ?? "listed",
+      confirmedFoundingTeam: l.confirmedFoundingTeam ?? false,
+    })),
     upcomingEvents: fm?.nextWeekCount ?? 14, // Forward Motion intelligence queue — not confirmed Kelly calendar
     countiesCovered: coverage.visitedCount,
     countiesTotal: 75,

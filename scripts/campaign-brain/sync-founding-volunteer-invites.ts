@@ -19,11 +19,13 @@ type Invitee = {
   locationHint: string | null;
   inviteStatus: string;
   confirmedFoundingTeam: boolean;
+  campaignVolunteerSignup?: boolean;
 };
 
 function main() {
   const source = readJson<{
     launchCall: { date: string; time: string; timezone: string; format: string; purpose: string };
+    foundingTeamSignedUpCount?: number;
     invitees: Invitee[];
   }>(SOURCE);
 
@@ -32,7 +34,11 @@ function main() {
   }
 
   const invitees = source.invitees;
+  const signedUp = invitees.filter(
+    (i) => i.inviteStatus === "signed_up" || i.campaignVolunteerSignup === true,
+  ).length;
   const confirmed = invitees.filter((i) => i.confirmedFoundingTeam).length;
+  const foundingTeamCurrent = source.foundingTeamSignedUpCount ?? signedUp;
 
   const peoplePower = readJson<Record<string, unknown>>(PEOPLE_POWER) ?? {};
   const vl = (peoplePower.volunteerLeadership as Record<string, unknown>) ?? {};
@@ -40,8 +46,9 @@ function main() {
   peoplePower.volunteerLeadership = {
     ...vl,
     foundingTeamGoal: 20,
-    foundingTeamCurrent: confirmed,
+    foundingTeamCurrent: foundingTeamCurrent,
     foundingTeamInvited: invitees.length,
+    foundingTeamSignedUp: signedUp,
     launchCall: source.launchCall,
     leaders: invitees.map((i) => ({
       id: i.id,
@@ -64,7 +71,7 @@ function main() {
 
 **Purpose:** ${source.launchCall.purpose}
 
-**Listed:** ${invitees.length} · **Confirmed founding team:** ${confirmed} / 20 goal
+**Listed:** ${invitees.length} · **Signed up:** ${signedUp} · **Confirmed founding team:** ${confirmed} / 20 goal
 
 County assignments and role preferences — capture **at the meeting**.
 
@@ -86,6 +93,7 @@ Edit \`data/campaign-brain/founding-volunteer-invite-list.source.json\` · sync 
         generatedAt: new Date().toISOString(),
         launchCall: source.launchCall,
         inviteCount: invitees.length,
+        signedUpCount: signedUp,
         confirmedFoundingTeam: confirmed,
         foundingTeamGoal: 20,
         invitees,
@@ -95,7 +103,7 @@ Edit \`data/campaign-brain/founding-volunteer-invite-list.source.json\` · sync 
     ),
   );
 
-  console.log(`Volunteer invite sync: ${invitees.length} listed · ${confirmed} confirmed founding team`);
+  console.log(`Volunteer invite sync: ${invitees.length} listed · ${signedUp} signed up · ${foundingTeamCurrent} on war room counter · ${confirmed} confirmed founding team`);
 }
 
 main();

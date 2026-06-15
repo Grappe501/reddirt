@@ -872,6 +872,7 @@ function ArchitecturePanel({ data }: Props) {
 
 function PeoplePowerPanel({ data }: Props) {
   const pp = data.peoplePower;
+  const [rosterOpen, setRosterOpen] = useState(false);
   const leaderPct = pp.foundingVolunteersGoal > 0
     ? Math.round((pp.foundingVolunteersCurrent / pp.foundingVolunteersGoal) * 1000) / 10
     : 0;
@@ -890,12 +891,20 @@ function PeoplePowerPanel({ data }: Props) {
       </div>
 
       <div className="mb-8 ep-stat-grid">
-        <div className="ep-stat">
+        <button
+          type="button"
+          className="ep-stat w-full cursor-pointer text-left transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]"
+          onClick={() => setRosterOpen((o) => !o)}
+          aria-expanded={rosterOpen}
+        >
           <div className="ep-stat-value">
             {pp.foundingVolunteersCurrent} / {pp.foundingVolunteersGoal}
           </div>
           <div className="ep-stat-label">Founding volunteer leaders</div>
-        </div>
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+            {rosterOpen ? "Hide roster ▲" : "View roster ▼"}
+          </p>
+        </button>
         <div className="ep-stat">
           <div className="ep-stat-value">{pp.launchLabel}</div>
           <div className="ep-stat-label">Launch call</div>
@@ -909,6 +918,28 @@ function PeoplePowerPanel({ data }: Props) {
           <div className="ep-stat-label">Mobilize events linked</div>
         </div>
       </div>
+
+      {rosterOpen && pp.foundingVolunteers.length > 0 ? (
+        <div className="mb-8 ep-card">
+          <h3 className="font-heading font-bold">Campaign volunteer roster</h3>
+          <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
+            {pp.foundingVolunteers.length} signed up · June 28 leadership launch invite list
+          </p>
+          <ul className="mt-4 max-h-96 space-y-2 overflow-y-auto text-sm">
+            {pp.foundingVolunteers.map((v) => (
+              <li
+                key={v.id}
+                className="flex flex-wrap items-baseline justify-between gap-x-3 border-b border-[var(--ep-border)] pb-2 last:border-0"
+              >
+                <span className="font-medium text-[var(--ep-navy)]">{v.name}</span>
+                <span className="text-xs text-[var(--ep-navy-muted)]">
+                  {v.locationHint ?? "Location TBD at June 28 call"}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       <div className="mb-8 grid gap-4 lg:grid-cols-2">
         <div className="ep-card">

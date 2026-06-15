@@ -92,6 +92,7 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
     peoplePower: {
       foundingVolunteersGoal: 20,
       foundingVolunteersCurrent: 0,
+      foundingVolunteers: [],
       launchLabel: "June 28 · 6 PM · Zoom",
       retreatLocation: "Forevermost Farms",
       monthlyCalls: "Last Sunday · 6 PM",
@@ -327,6 +328,7 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       endorsementsEndorsed: 0,
       volunteerLeadersGoal: 20,
       volunteerLeadersCurrent: 0,
+      volunteerLeaders: [],
       upcomingEvents: 14,
       countiesCovered: 43,
       countiesTotal: 75,

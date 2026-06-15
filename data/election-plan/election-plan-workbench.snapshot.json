@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T14:16:03.010Z",
+  "generatedAt": "2026-06-15T14:23:45.145Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -2916,7 +2916,261 @@
   ],
   "peoplePower": {
     "foundingVolunteersGoal": 20,
-    "foundingVolunteersCurrent": 0,
+    "foundingVolunteersCurrent": 39,
+    "foundingVolunteers": [
+      {
+        "id": "invite-gibson",
+        "name": "John and Judy Gibson",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-larue",
+        "name": "Will LaRue",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dare",
+        "name": "Judy Dare",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-duke",
+        "name": "John Duke",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-solice",
+        "name": "Leann Solice",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-hurst",
+        "name": "Ben Hurst",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-low",
+        "name": "Christy Low",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-holloway",
+        "name": "Lisa Holloway",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-rampone",
+        "name": "Sarah Rampone",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-stebbins",
+        "name": "Kate Stebbins",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-chsm",
+        "name": "Lela Chsm",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dannaway",
+        "name": "Teresa Dannaway",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-disderio",
+        "name": "Nicole Disderio and Luke",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-mclennon",
+        "name": "Xav Mclennon",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-bradford",
+        "name": "Chance Bradford",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-bledsoe",
+        "name": "Zach Bledsoe",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-harrison",
+        "name": "Judy Harrison",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-powell",
+        "name": "Jay Powell",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-huffines",
+        "name": "The Huffines",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-browns-benton",
+        "name": "The Browns",
+        "locationHint": "Benton",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-hutto",
+        "name": "Carol Hutto",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-brooke-searcy",
+        "name": "Brooke",
+        "locationHint": "Searcy",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dana-jeff-searcy",
+        "name": "Dana and Jeff",
+        "locationHint": "Searcy",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-rolanda-jax",
+        "name": "Rolanda",
+        "locationHint": "Jacksonville",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-trenika-jax",
+        "name": "Trenika",
+        "locationHint": "Jacksonville",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-jean-carroll",
+        "name": "Jean",
+        "locationHint": "Carroll County",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-eagan",
+        "name": "Carol Eagan",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-kahn",
+        "name": "Ali Kahn",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-heifner",
+        "name": "Kevin Heifner",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dianne-vanessa-conway",
+        "name": "Dianne / Vanessa",
+        "locationHint": "Conway County",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-mary-ella-russellville",
+        "name": "Mary Ella",
+        "locationHint": "Russellville",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-marnie-dan",
+        "name": "Marnie and Dan",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-roosevelt-williams",
+        "name": "Roosevelt Williams",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-choate",
+        "name": "Gail Choate",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dunbar",
+        "name": "Ethan and Christie Dunbar",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-elaine-williams",
+        "name": "Elaine Williams",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      }
+    ],
     "launchLabel": "June 28 · 6 PM · Zoom",
     "retreatLocation": "Forevermost Farms",
     "monthlyCalls": "Last Sunday of each month · 6 PM",
@@ -4955,7 +5209,7 @@
     "countiesTotal": 75,
     "upcomingStops": 14,
     "volunteerLeadersGoal": 20,
-    "volunteerLeadersCurrent": 0,
+    "volunteerLeadersCurrent": 39,
     "sherwoodGoal": "60%+",
     "sherwoodVipSold": 0,
     "sherwoodVipGoal": 20,
@@ -4980,7 +5234,261 @@
     "endorsementsRequested": 0,
     "endorsementsEndorsed": 0,
     "volunteerLeadersGoal": 20,
-    "volunteerLeadersCurrent": 0,
+    "volunteerLeadersCurrent": 39,
+    "volunteerLeaders": [
+      {
+        "id": "invite-gibson",
+        "name": "John and Judy Gibson",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-larue",
+        "name": "Will LaRue",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dare",
+        "name": "Judy Dare",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-duke",
+        "name": "John Duke",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-solice",
+        "name": "Leann Solice",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-hurst",
+        "name": "Ben Hurst",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-low",
+        "name": "Christy Low",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-holloway",
+        "name": "Lisa Holloway",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-rampone",
+        "name": "Sarah Rampone",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-stebbins",
+        "name": "Kate Stebbins",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-chsm",
+        "name": "Lela Chsm",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dannaway",
+        "name": "Teresa Dannaway",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-disderio",
+        "name": "Nicole Disderio and Luke",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-mclennon",
+        "name": "Xav Mclennon",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-bradford",
+        "name": "Chance Bradford",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-bledsoe",
+        "name": "Zach Bledsoe",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-harrison",
+        "name": "Judy Harrison",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-powell",
+        "name": "Jay Powell",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-huffines",
+        "name": "The Huffines",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-browns-benton",
+        "name": "The Browns",
+        "locationHint": "Benton",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-hutto",
+        "name": "Carol Hutto",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-brooke-searcy",
+        "name": "Brooke",
+        "locationHint": "Searcy",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dana-jeff-searcy",
+        "name": "Dana and Jeff",
+        "locationHint": "Searcy",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-rolanda-jax",
+        "name": "Rolanda",
+        "locationHint": "Jacksonville",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-trenika-jax",
+        "name": "Trenika",
+        "locationHint": "Jacksonville",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-jean-carroll",
+        "name": "Jean",
+        "locationHint": "Carroll County",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-eagan",
+        "name": "Carol Eagan",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-kahn",
+        "name": "Ali Kahn",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-heifner",
+        "name": "Kevin Heifner",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dianne-vanessa-conway",
+        "name": "Dianne / Vanessa",
+        "locationHint": "Conway County",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-mary-ella-russellville",
+        "name": "Mary Ella",
+        "locationHint": "Russellville",
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-marnie-dan",
+        "name": "Marnie and Dan",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-roosevelt-williams",
+        "name": "Roosevelt Williams",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-choate",
+        "name": "Gail Choate",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dunbar",
+        "name": "Ethan and Christie Dunbar",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-elaine-williams",
+        "name": "Elaine Williams",
+        "locationHint": null,
+        "inviteStatus": "signed_up",
+        "confirmedFoundingTeam": false
+      }
+    ],
     "upcomingEvents": 14,
     "countiesCovered": 45,
     "countiesTotal": 75,
@@ -9197,7 +9705,7 @@
               },
               {
                 "label": "Founding leaders",
-                "value": "0/20"
+                "value": "39/20"
               },
               {
                 "label": "Endorsements",
@@ -9430,7 +9938,7 @@
           },
           {
             "label": "Founding leaders",
-            "value": "0/20"
+            "value": "39/20"
           },
           {
             "label": "Endorsements",
