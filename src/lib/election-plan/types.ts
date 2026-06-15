@@ -558,4 +558,45 @@ export type ElectionPlanWorkbenchSnapshot = {
       current?: string | number;
     }>;
   };
+  executiveCalendar: {
+    disclaimer: string;
+    referenceDate: string;
+    summary: {
+      pastVisitCount: number;
+      lockedCount: number;
+      scheduledCount: number;
+      proposedCount: number;
+      totalEntries: number;
+      countiesVisited: number;
+      countiesScheduled: number;
+    };
+    entries: Array<{
+      id: string;
+      startDate: string;
+      endDate: string | null;
+      label: string;
+      city: string | null;
+      county: string;
+      category: "past_visit" | "locked" | "scheduled" | "proposed";
+      status: string;
+      source: string;
+      eventType?: string;
+      notes?: string;
+    }>;
+  };
+  executiveBookHub: {
+    version: string;
+    status: string;
+    laborDayDeadline: string;
+    completenessEstimate: string;
+    chapters: Array<{
+      slug: string;
+      number: number;
+      title: string;
+      subtitle: string;
+      href: string;
+      statusLines: string[];
+      metrics: Array<{ label: string; value: string }>;
+    }>;
+  };
 };

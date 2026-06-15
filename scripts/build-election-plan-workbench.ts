@@ -1108,6 +1108,173 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
   };
 }
 
+function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageRealitySection>) {
+  const EXEC = path.join(PLAN, "executive-book-v1");
+  const summary = readJson<{
+    version?: string;
+    status?: string;
+    laborDayDeadline?: string;
+    completenessEstimate?: string;
+  }>(path.join(EXEC, "executive-book-v1.summary.json"));
+  const ownership = readJson<{
+    assignments?: Array<{ function: string; owner: string }>;
+    unassignedCount?: number;
+  }>(path.join(EXEC, "ownership-matrix.json"));
+  const contact = readJson<{
+    influenceGroups?: Array<{ title: string }>;
+  }>(path.join(EXEC, "executive-contact-plan.json"));
+  const scorecard = readJson<{
+    rows?: Array<{ metric: string; goal: string | number; current: string | number }>;
+  }>(path.join(EXEC, "weekly-scorecard.json"));
+  const audit = readJson<{ completenessEstimate?: string; status?: string }>(
+    path.join(EXEC, "executive-book-completion-audit.json"),
+  );
+  const pp = readJson<{
+    volunteerLeadership?: { foundingTeamGoal?: number; foundingTeamCurrent?: number };
+  }>(path.join(BRAIN_DATA, "people-power-network.json"));
+  const endorsement = readJson<{ requested?: number; activated?: number }>(
+    path.join(BRAIN_DATA, "endorsement-pipeline-summary.json"),
+  );
+
+  const assignedCount = (ownership?.assignments?.length ?? 0) - (ownership?.unassignedCount ?? 0);
+  const score = (name: string) => scorecard?.rows?.find((r) => r.metric === name);
+
+  const messagePillars = [
+    "Working-Class Democrat",
+    "Big Tent Democrat",
+    "Public Education",
+    "Election Integrity",
+    "Arkansas First",
+    "Faith and Freedom",
+    "Community Before Ideology",
+    "Plurality frame",
+  ];
+
+  return {
+    version: summary?.version ?? "1.0",
+    status: summary?.status ?? "operational",
+    laborDayDeadline: summary?.laborDayDeadline ?? "2026-09-07",
+    completenessEstimate: audit?.completenessEstimate ?? summary?.completenessEstimate ?? "95%",
+    chapters: [
+      {
+        slug: "ownership",
+        number: 1,
+        title: "Who Owns What",
+        subtitle: "Leadership ownership matrix — names, not committees",
+        href: "/election-plan/executive-book/ownership",
+        statusLines: [`${assignedCount} assigned`, `${ownership?.unassignedCount ?? 8} unassigned`],
+        metrics: [
+          { label: "Functions", value: String(ownership?.assignments?.length ?? 13) },
+          { label: "TBD", value: String(ownership?.unassignedCount ?? 8) },
+        ],
+      },
+      {
+        slug: "influence-map",
+        number: 2,
+        title: "Arkansas Influence Map",
+        subtitle: "Executive contact plan — statewide relationship targets",
+        href: "/election-plan/executive-book/influence-map",
+        statusLines: (contact?.influenceGroups ?? []).slice(0, 6).map((g) => g.title),
+        metrics: [{ label: "Categories", value: String(contact?.influenceGroups?.length ?? 8) }],
+      },
+      {
+        slug: "labor-day",
+        number: 3,
+        title: "Labor Day Readiness",
+        subtitle: "September readiness gate — first major campaign checkpoint",
+        href: "/election-plan/executive-book/labor-day",
+        statusLines: ["72/75 Path Active", "Counties · Volunteer launch · Sherwood · Endorsements"],
+        metrics: [
+          { label: "Counties", value: `${coverage.visitedCount}/75` },
+          { label: "Founding leaders", value: `${pp?.volunteerLeadership?.foundingTeamCurrent ?? 0}/${pp?.volunteerLeadership?.foundingTeamGoal ?? 20}` },
+          { label: "Endorsements", value: String(endorsement?.activated ?? score("Endorsements Activated")?.current ?? 0) },
+        ],
+      },
+      {
+        slug: "scorecard",
+        number: 4,
+        title: "Weekly Success Scorecard",
+        subtitle: "Monday leadership review — live campaign metrics",
+        href: "/election-plan/executive-book/scorecard",
+        statusLines: ["HCI", "Founding Leaders", "Counties Covered", "Verified Events"],
+        metrics: [
+          { label: "HCI", value: String(score("HCI")?.current ?? 0) },
+          { label: "Counties", value: String(score("Counties Covered")?.current ?? coverage.visitedCount) },
+          { label: "Events", value: String(score("Verified Events")?.current ?? 0) },
+          { label: "Leaders", value: String(score("Founding Leaders")?.current ?? 0) },
+        ],
+      },
+      {
+        slug: "message",
+        number: 5,
+        title: "The Kelly Grappe Message",
+        subtitle: "Eight-pillar candidate doctrine for every room",
+        href: "/election-plan/executive-book/message",
+        statusLines: messagePillars.slice(0, 4),
+        metrics: [{ label: "Pillars", value: "8" }],
+      },
+      {
+        slug: "audit",
+        number: 6,
+        title: "Executive Book Audit",
+        subtitle: "V1.0 readiness assessment for leadership review",
+        href: "/election-plan/executive-book/audit",
+        statusLines: [`Executive Book V${summary?.version ?? "1.0"}`, `Status: ${(audit?.status ?? summary?.status ?? "operational").replace(/_/g, " ")}`],
+        metrics: [
+          { label: "Completeness", value: audit?.completenessEstimate ?? summary?.completenessEstimate ?? "95%" },
+          { label: "TBD owners", value: String(ownership?.unassignedCount ?? 8) },
+        ],
+      },
+    ],
+  };
+}
+
+function buildExecutiveCalendarSection() {
+  const cal = readJson<{
+    disclaimer?: string;
+    referenceDate?: string;
+    summary?: {
+      pastVisitCount: number;
+      lockedCount: number;
+      scheduledCount: number;
+      proposedCount: number;
+      totalEntries: number;
+      countiesVisited: number;
+      countiesScheduled: number;
+    };
+    entries?: Array<{
+      id: string;
+      startDate: string;
+      endDate: string | null;
+      label: string;
+      city: string | null;
+      county: string;
+      category: "past_visit" | "locked" | "scheduled" | "proposed";
+      status: string;
+      source: string;
+      eventType?: string;
+      notes?: string;
+    }>;
+  }>(path.join(BRAIN, "executive-calendar/executive-calendar.json"));
+
+  return {
+    disclaimer:
+      cal?.disclaimer ??
+      "Internal leadership calendar. Run npm run campaign-brain:executive-calendar:build to generate.",
+    referenceDate: cal?.referenceDate ?? "2026-06-15",
+    summary: cal?.summary ?? {
+      pastVisitCount: 0,
+      lockedCount: 0,
+      scheduledCount: 0,
+      proposedCount: 0,
+      totalEntries: 0,
+      countiesVisited: 0,
+      countiesScheduled: 0,
+    },
+    entries: cal?.entries ?? [],
+  };
+}
+
 function buildExecutiveBookV1Section() {
   const summary = readJson<{
     version?: string;
@@ -1540,6 +1707,8 @@ function main() {
     calendarFillPhaseB,
     calendarFillPhaseC,
     executiveBookV1: buildExecutiveBookV1Section(),
+    executiveCalendar: buildExecutiveCalendarSection(),
+    executiveBookHub: buildExecutiveBookHubSection(coverageReality),
     weekPlans: buildWeekPlansSection(),
     campaignTimeline: buildCampaignTimeline(),
   };

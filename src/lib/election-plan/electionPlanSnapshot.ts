@@ -366,6 +366,28 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       unassignedOwners: 11,
       weeklyScorecard: [],
     },
+    executiveCalendar: {
+      disclaimer:
+        "Internal leadership calendar. Run npm run campaign-brain:executive-calendar:build to generate.",
+      referenceDate: "2026-06-15",
+      summary: {
+        pastVisitCount: 0,
+        lockedCount: 0,
+        scheduledCount: 0,
+        proposedCount: 0,
+        totalEntries: 0,
+        countiesVisited: 0,
+        countiesScheduled: 0,
+      },
+      entries: [],
+    },
+    executiveBookHub: {
+      version: "1.0",
+      status: "not_built",
+      laborDayDeadline: "2026-09-07",
+      completenessEstimate: "—",
+      chapters: [],
+    },
   };
 }
 

@@ -7,7 +7,12 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function ElectionPlanPage() {
+type Props = {
+  searchParams: Promise<{ tab?: string }>;
+};
+
+export default async function ElectionPlanPage({ searchParams }: Props) {
+  const { tab } = await searchParams;
   const data = loadElectionPlanSnapshot();
-  return <ElectionPlanWorkbench data={data} />;
+  return <ElectionPlanWorkbench data={data} initialTab={tab} />;
 }
