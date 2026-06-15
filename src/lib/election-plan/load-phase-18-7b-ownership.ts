@@ -19,6 +19,8 @@ export type CampaignInitiative = {
   unassigned: boolean;
 };
 
+type CampaignInitiativeSource = Omit<CampaignInitiative, "unassigned">;
+
 export type CountyLeadershipRole = {
   county: string;
   chairIdentified: boolean;
@@ -74,7 +76,7 @@ function roleFilled(value: unknown): boolean {
 }
 
 export function getCampaignResponsibilityMatrix() {
-  const initiatives = (responsibilitySource as { initiatives: CampaignInitiative[] }).initiatives.map((i) => ({
+  const initiatives = (responsibilitySource as { initiatives: CampaignInitiativeSource[] }).initiatives.map((i) => ({
     ...i,
     unassigned: !i.owner || i.owner === "TBD",
   }));
