@@ -59,3 +59,7 @@ npm run campaign-brain:forward-motion
 npm run campaign-brain:build
 npm run election-plan:build
 ```
+
+## Build master plan
+
+Sub-phases to finish UI, approvals, and operator workflow: [`PHASE-13-BUILD-MASTER-PLAN.md`](./PHASE-13-BUILD-MASTER-PLAN.md) · in-app at `/election-plan/forward-motion/master-plan`

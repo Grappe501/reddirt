@@ -10,6 +10,7 @@ import { formatPct, formatBudget, formatVotes } from "@/lib/election-plan/electi
 import { BattlefieldOverviewPanel } from "@/components/election-plan/BattlefieldOverviewPanel";
 import { CityStrategyList } from "@/components/election-plan/CityStrategyList";
 import { locationBriefMasterPlanHref } from "@/lib/election-plan/location-links";
+import { phase13MasterPlanHref } from "@/lib/election-plan/phase-13-build-master-plan";
 import { VciExplainerCard } from "@/components/election-plan/VciExplainerCard";
 import { CountyStrategyGrid } from "@/components/election-plan/CountyStrategyGrid";
 import { ExecutiveMetricCard } from "@/components/election-plan/ExecutiveMetricCard";
@@ -632,9 +633,17 @@ function CountiesPanel({ data }: Props) {
   return (
     <section>
       <SectionTitle
-        title="County Strategy"
-        subtitle="75 counties · Victory Contribution Index rank · coverage · guardrails"
+        title="County Playbooks"
+        subtitle="75 counties · open the full county playbook for events, calendar, leaders, tasks, and goals"
       />
+      <div className="ep-card-glass mb-6 text-sm leading-relaxed text-[var(--ep-navy-muted)]">
+        <p>
+          <strong className="text-[var(--ep-navy)]">Coverage</strong> on each card is{" "}
+          <em>visit contacts completed vs planned</em> for that county’s tier (A=5, B=3, C=2, D=1 visits). It tracks
+          field touch progress — not votes or registration. Expand a card for VCI and mission stats; use{" "}
+          <strong className="text-[var(--ep-navy)]">Open county playbook</strong> for the operational workbench.
+        </p>
+      </div>
       <VciExplainerCard compact />
       <div className="mt-6">
         <CountyStrategyGrid counties={data.counties} />
@@ -1635,6 +1644,11 @@ function ForwardMotionPanel({ data }: Props) {
         <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
           No live emails, Facebook posts, Mobilize publish, or press distribution from this system. Human approval
           required for all public release.
+        </p>
+        <p className="mt-3 text-sm">
+          <Link href={phase13MasterPlanHref()} className="font-semibold text-[var(--ep-gold)] hover:underline">
+            Phase 13 build master plan →
+          </Link>
         </p>
       </div>
 

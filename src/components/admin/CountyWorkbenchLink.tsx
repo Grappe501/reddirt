@@ -20,16 +20,20 @@ export function CountyWorkbenchLink({
       <Link href={bundle.adminBridgeHref} className="font-semibold text-kelly-navy underline underline-offset-2">
         {bundle.displayName}
       </Link>
-      {bundle.workbenchDashboardV2Href ? (
+      {bundle.workbenchLeaderHref ? (
         <a
-          href={bundle.workbenchDashboardV2Href}
+          href={bundle.workbenchLeaderHref}
           target="_blank"
           rel="noopener noreferrer"
           className="font-body text-[10px] font-bold text-kelly-subtle hover:text-kelly-navy"
-          title="Open County Workbench Dashboard V2"
+          title="Open county playbook (leader workbench)"
         >
-          WB ↗
+          Playbook ↗
         </a>
+      ) : bundle.redDirtBriefingV2Href ? (
+        <Link href={bundle.redDirtBriefingV2Href} className="font-body text-[10px] font-bold text-kelly-subtle hover:text-kelly-navy">
+          Playbook
+        </Link>
       ) : null}
     </span>
   );

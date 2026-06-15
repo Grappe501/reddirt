@@ -3,12 +3,15 @@
 import Link from "next/link";
 
 import type { LanesOverview } from "@/lib/election-plan/types";
+import type { LanesClusterKpi } from "@/lib/election-plan/load-lanes-drill-down";
+import { lanesClusterHref } from "@/lib/election-plan/lanes-drill-down-links";
 import { FOUR_LANE_DEFINITIONS, laneDescriptiveLabel } from "@/lib/election-plan/four-lanes-labels";
 import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
 import { cn } from "@/lib/utils";
 
 type Props = {
   overview: LanesOverview;
+  clusterDrillDown?: LanesClusterKpi[];
   standalone?: boolean;
 };
 
@@ -19,7 +22,7 @@ const LANE_COLORS: Record<string, string> = {
   lane4: "bg-amber-600",
 };
 
-export function LanesOverviewPanel({ overview, standalone }: Props) {
+export function LanesOverviewPanel({ overview, clusterDrillDown, standalone }: Props) {
   const expected = overview.scenarios.find((s) => s.label === "Expected") ?? overview.scenarios[1];
   const inRange =
     overview.expectedProjection >= overview.pluralityRange.low &&
@@ -209,7 +212,47 @@ export function LanesOverviewPanel({ overview, standalone }: Props) {
         </>
       ) : null}
 
-      {overview.clusterContribution.length > 0 ? (
+      {clusterDrillDown && clusterDrillDown.length > 0 ? (
+        <>
+          <h2 className="mb-3 font-heading text-lg font-bold">Four lane breakdown by cluster</h2>
+          <p className="mb-4 text-sm text-[var(--ep-navy-muted)]">
+            Expected scenario at {(overview.achievementRates.lane2 * 100).toFixed(0)}% /{" "}
+            {(overview.achievementRates.lane3 * 100).toFixed(0)}% / {(overview.achievementRates.lane4 * 100).toFixed(0)}%
+            Lane 2–4 achievement rates. Open a cluster for county KPIs, then counties for city, town, and rural areas.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {clusterDrillDown.map((c) => (
+              <Link
+                key={c.id}
+                href={lanesClusterHref(c.id)}
+                className="ep-card block text-sm transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]"
+              >
+                <h3 className="font-heading font-bold">{c.name}</h3>
+                <p className="mt-2 font-semibold tabular-nums">
+                  {formatVotes(c.expectedContribution)} expected · {formatPct(c.shareOfExpected)} of projection
+                </p>
+                <div className="mt-3 grid grid-cols-3 gap-1 text-xs text-[var(--ep-navy-muted)]">
+                  <div>
+                    <span className="block font-semibold text-[var(--ep-navy)]">{formatVotes(c.lane2)}</span>
+                    L2
+                  </div>
+                  <div>
+                    <span className="block font-semibold text-[var(--ep-navy)]">{formatVotes(c.lane3)}</span>
+                    L3
+                  </div>
+                  <div>
+                    <span className="block font-semibold text-[var(--ep-navy)]">{formatVotes(c.lane4)}</span>
+                    L4
+                  </div>
+                </div>
+                <p className="mt-3 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                  {c.counties.length} counties · drill down →
+                </p>
+              </Link>
+            ))}
+          </div>
+        </>
+      ) : overview.clusterContribution.length > 0 ? (
         <>
           <h2 className="mb-3 font-heading text-lg font-bold">Cluster share of expected projection</h2>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

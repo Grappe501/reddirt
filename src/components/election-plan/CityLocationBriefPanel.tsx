@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { CityLocationBrief } from "@/lib/election-plan/load-city-location-brief";
 import {
   cityLocationsHubHref,
-  countyWorkbenchHref,
+  countyPlaybookHref,
   locationBriefMasterPlanHref,
 } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
@@ -28,7 +28,7 @@ function NarrativeBlock({ title, children }: { title: string; children: React.Re
 }
 
 export function CityLocationBriefPanel({ brief }: Props) {
-  const countyHref = countyWorkbenchHref(brief.county, brief.county.toLowerCase().replace(/\s+/g, "-"));
+  const countyHref = countyPlaybookHref(brief.county, brief.county.toLowerCase().replace(/\s+/g, "-"));
 
   return (
     <section>
