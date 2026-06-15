@@ -6,7 +6,8 @@ export type ExecutiveBookChapterSlug =
   | "labor-day"
   | "scorecard"
   | "message"
-  | "audit";
+  | "audit"
+  | "budget";
 
 export type ExecutiveBookChapterDef = {
   slug: ExecutiveBookChapterSlug;
@@ -65,6 +66,14 @@ export const EXECUTIVE_BOOK_CHAPTERS: ExecutiveBookChapterDef[] = [
     subtitle: "V1.0 readiness assessment for leadership review",
     markdownFile: "EXECUTIVE-BOOK-COMPLETION-AUDIT.md",
     href: "/election-plan/executive-book/audit",
+  },
+  {
+    slug: "budget",
+    number: 7,
+    title: "Campaign Budget & Fundraising Targets",
+    subtitle: "Projected budget framework — salary floor, travel, materials, fundraising goals",
+    markdownFile: "06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md",
+    href: "/election-plan/executive-book/budget",
   },
 ];
 

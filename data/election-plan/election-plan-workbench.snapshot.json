@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T06:55:16.315Z",
+  "generatedAt": "2026-06-15T07:16:15.682Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -6713,7 +6713,22 @@
         "goal": "—",
         "actual": 0
       }
-    ]
+    ],
+    "campaignBudget": {
+      "disclaimer": "Planning budget framework only — not final accounting, not guaranteed fundraising, not donor-facing claims.",
+      "salaryFloor": 72000,
+      "salaryMonthly": 12000,
+      "workingCampaignTarget": 167553,
+      "monthlyBurnWorking": 27926,
+      "bareMinimumTotal": 126783,
+      "aggressiveStatewideTotal": 246123,
+      "travelConservative": 31533,
+      "travelAggressive": 46783,
+      "materialsMid": 13500,
+      "postcardMid": 27840,
+      "sherwoodNetMid": 11500,
+      "chapterHref": "/election-plan/executive-book/budget"
+    }
   },
   "executiveCalendar": {
     "disclaimer": "Internal leadership calendar. Past visits, locked backbone, and scheduled stops. Not Kelly's Google Calendar. Not public /events.",
@@ -8756,6 +8771,32 @@
           {
             "label": "TBD owners",
             "value": "8"
+          }
+        ]
+      },
+      {
+        "slug": "budget",
+        "number": 7,
+        "title": "Campaign Budget & Fundraising Targets",
+        "subtitle": "Salary floor, travel, materials, and fundraising goal scenarios",
+        "href": "/election-plan/executive-book/budget",
+        "statusLines": [
+          "Salary floor $72K",
+          "Working campaign $168K",
+          "~$28K/mo burn target"
+        ],
+        "metrics": [
+          {
+            "label": "Salary floor",
+            "value": "$72K"
+          },
+          {
+            "label": "Working target",
+            "value": "$168K"
+          },
+          {
+            "label": "Monthly burn",
+            "value": "$28K"
           }
         ]
       }

@@ -365,6 +365,22 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       laborDayDeadline: "2026-09-07",
       unassignedOwners: 11,
       weeklyScorecard: [],
+      campaignBudget: {
+        disclaimer:
+          "Planning targets only — not guaranteed costs or fundraising outcomes.",
+        salaryFloor: 72000,
+        salaryMonthly: 12000,
+        workingCampaignTarget: 167553,
+        monthlyBurnWorking: 27926,
+        bareMinimumTotal: 126783,
+        aggressiveStatewideTotal: 246123,
+        travelConservative: 31533,
+        travelAggressive: 46783,
+        materialsMid: 13500,
+        postcardMid: 27840,
+        sherwoodNetMid: 11500,
+        chapterHref: "/election-plan/executive-book/budget",
+      },
     },
     executiveCalendar: {
       disclaimer:

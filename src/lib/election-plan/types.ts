@@ -557,6 +557,21 @@ export type ElectionPlanWorkbenchSnapshot = {
       status?: string;
       current?: string | number;
     }>;
+    campaignBudget: {
+      disclaimer: string;
+      salaryFloor: number;
+      salaryMonthly: number;
+      workingCampaignTarget: number;
+      monthlyBurnWorking: number;
+      bareMinimumTotal: number;
+      aggressiveStatewideTotal: number;
+      travelConservative: number;
+      travelAggressive: number;
+      materialsMid: number;
+      postcardMid: number;
+      sherwoodNetMid: number;
+      chapterHref: string;
+    };
   };
   executiveCalendar: {
     disclaimer: string;

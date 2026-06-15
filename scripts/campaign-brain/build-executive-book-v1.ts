@@ -380,11 +380,13 @@ The Executive Book is complete enough to **run the campaign**. Remaining work is
 | 4 | **Campaign Health Scorecard** | [04-WEEKLY-SUCCESS-SCORECARD.md](./04-WEEKLY-SUCCESS-SCORECARD.md) |
 | 5 | **The Kelly Grappe Message** | [05-THE-KELLY-GRAPPE-MESSAGE.md](./05-THE-KELLY-GRAPPE-MESSAGE.md) |
 | 6 | **Completion Audit** | [EXECUTIVE-BOOK-COMPLETION-AUDIT.md](./EXECUTIVE-BOOK-COMPLETION-AUDIT.md) |
+| 7 | **Campaign Budget & Fundraising Targets** | [06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md](./06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md) |
 
 ## Rebuild
 
 \`\`\`bash
 npm run campaign-brain:executive-book:completion
+npm run campaign-brain:budget:build
 npm run election-plan:build
 \`\`\`
 
@@ -502,7 +504,7 @@ function main() {
         version: "1.0",
         status: unassigned <= 3 ? "complete" : "operational",
         completenessEstimate: "95%",
-        chapters: 6,
+        chapters: 7,
         unassignedOwners: unassigned,
         contactSeedTargets: targets.length,
         laborDayDeadline: LABOR_DAY,

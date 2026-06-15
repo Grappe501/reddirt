@@ -1135,6 +1135,18 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
   const endorsement = readJson<{ requested?: number; activated?: number }>(
     path.join(BRAIN_DATA, "endorsement-pipeline-summary.json"),
   );
+  const budget = readJson<{
+    salaryTotal?: number;
+    workingCampaignTotal?: number;
+    monthlyBurnWorking?: number;
+    travelConservative?: number;
+    travelAggressive?: number;
+    bareMinimumTotal?: number;
+    aggressiveStatewideTotal?: number;
+  }>(path.join(BRAIN_DATA, "budget/budget-summary.json"));
+
+  const fmtK = (n: number) =>
+    n >= 1000 ? `$${Math.round(n / 1000)}K` : `$${n}`;
 
   const assignedCount = (ownership?.assignments?.length ?? 0) - (ownership?.unassignedCount ?? 0);
   const score = (name: string) => scorecard?.rows?.find((r) => r.metric === name);
@@ -1225,6 +1237,23 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
           { label: "TBD owners", value: String(ownership?.unassignedCount ?? 8) },
         ],
       },
+      {
+        slug: "budget",
+        number: 7,
+        title: "Campaign Budget & Fundraising Targets",
+        subtitle: "Salary floor, travel, materials, and fundraising goal scenarios",
+        href: "/election-plan/executive-book/budget",
+        statusLines: [
+          `Salary floor ${fmtK(budget?.salaryTotal ?? 72000)}`,
+          `Working campaign ${fmtK(budget?.workingCampaignTotal ?? 167553)}`,
+          "~$28K/mo burn target",
+        ],
+        metrics: [
+          { label: "Salary floor", value: fmtK(budget?.salaryTotal ?? 72000) },
+          { label: "Working target", value: fmtK(budget?.workingCampaignTotal ?? 167553) },
+          { label: "Monthly burn", value: fmtK(budget?.monthlyBurnWorking ?? 27926) },
+        ],
+      },
     ],
   };
 }
@@ -1288,6 +1317,21 @@ function buildExecutiveBookV1Section() {
     rows?: Array<{ metric: string; goal: string | number; actual?: string | number; current?: string | number; status?: string }>;
   }>(path.join(PLAN, "executive-book-v1/weekly-scorecard.json"));
 
+  const budget = readJson<{
+    disclaimer?: string;
+    salaryTotal?: number;
+    salaryMonthly?: number;
+    workingCampaignTotal?: number;
+    monthlyBurnWorking?: number;
+    bareMinimumTotal?: number;
+    aggressiveStatewideTotal?: number;
+    travelConservative?: number;
+    travelAggressive?: number;
+    materialsMid?: number;
+    postcardMid?: number;
+    sherwoodNetMid?: number;
+  }>(path.join(BRAIN_DATA, "budget/budget-summary.json"));
+
   return {
     version: summary?.version ?? "1.0",
     status: summary?.status ?? "not_built",
@@ -1299,6 +1343,23 @@ function buildExecutiveBookV1Section() {
       actual: r.actual ?? r.current ?? 0,
       status: r.status,
     })),
+    campaignBudget: {
+      disclaimer:
+        budget?.disclaimer ??
+        "Planning targets only — not guaranteed costs or fundraising outcomes.",
+      salaryFloor: budget?.salaryTotal ?? 72000,
+      salaryMonthly: budget?.salaryMonthly ?? 12000,
+      workingCampaignTarget: budget?.workingCampaignTotal ?? 167553,
+      monthlyBurnWorking: budget?.monthlyBurnWorking ?? 27926,
+      bareMinimumTotal: budget?.bareMinimumTotal ?? 126783,
+      aggressiveStatewideTotal: budget?.aggressiveStatewideTotal ?? 246123,
+      travelConservative: budget?.travelConservative ?? 31533,
+      travelAggressive: budget?.travelAggressive ?? 46783,
+      materialsMid: budget?.materialsMid ?? 13500,
+      postcardMid: Math.round(budget?.postcardMid ?? 27840),
+      sherwoodNetMid: budget?.sherwoodNetMid ?? 11500,
+      chapterHref: "/election-plan/executive-book/budget",
+    },
   };
 }
 

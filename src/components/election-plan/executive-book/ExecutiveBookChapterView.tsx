@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ExecutiveBookMarkdown } from "@/components/election-plan/executive-book/ExecutiveBookMarkdown";
+import { formatBudget } from "@/lib/election-plan/electionPlanData";
 import type { ExecutiveBookChapterPayload } from "@/lib/election-plan/loadExecutiveBook";
 
 type Props = {
@@ -41,8 +42,18 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
       <main className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-3xl">
           <div className="ep-card-glass mb-8 text-sm text-[var(--ep-navy-muted)]">
-            <strong className="text-[var(--ep-navy)]">Shareable briefing.</strong> Send this URL to coalition partners,
-            donors, or validators. This is leadership narrative — not Kelly&apos;s live Google Calendar.
+            {chapter.slug === "budget" ? (
+              <>
+                <strong className="text-[var(--ep-navy)]">Planning targets only.</strong> These are planning
+                targets, not guaranteed costs or guaranteed fundraising outcomes. Unknown vendor expenses are marked{" "}
+                <strong>needs_quote</strong>.
+              </>
+            ) : (
+              <>
+                <strong className="text-[var(--ep-navy)]">Shareable briefing.</strong> Send this URL to coalition
+                partners, donors, or validators. This is leadership narrative — not Kelly&apos;s live Google Calendar.
+              </>
+            )}
           </div>
 
           {chapter.liveStrip.length > 0 ? (
@@ -54,6 +65,54 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                   {item.detail ? <p className="mt-1 text-[0.625rem] text-[var(--ep-navy-muted)]">{item.detail}</p> : null}
                 </div>
               ))}
+            </div>
+          ) : null}
+
+          {chapter.budgetSummary ? (
+            <div className="ep-card mb-8 overflow-x-auto">
+              <h2 className="font-heading font-bold text-[var(--ep-navy)]">Fundraising planning targets</h2>
+              <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{chapter.budgetSummary.disclaimer}</p>
+              <table className="mt-4 w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase text-[var(--ep-navy-muted)]">
+                    <th className="pb-2 pr-3">Line item</th>
+                    <th className="pb-2">Planning amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["Salary floor (Kelly leave-of-absence)", chapter.budgetSummary.salaryFloor],
+                    ["Travel (conservative → aggressive)", null],
+                    ["Materials mid tier", chapter.budgetSummary.materialsMid],
+                    ["Postcards/mail mid placeholder", chapter.budgetSummary.postcardMid],
+                    ["Sherwood expected net (projected)", chapter.budgetSummary.sherwoodNetMid],
+                    ["Bare minimum scenario", chapter.budgetSummary.bareMinimumTotal],
+                    ["Working campaign scenario", chapter.budgetSummary.workingCampaignTotal],
+                    ["Aggressive statewide scenario", chapter.budgetSummary.aggressiveStatewideTotal],
+                  ].map(([label, amount]) =>
+                    label === "Travel (conservative → aggressive)" ? (
+                      <tr key={String(label)} className="border-b border-[var(--ep-border)]">
+                        <td className="py-2 pr-3">{label}</td>
+                        <td className="py-2 font-semibold">
+                          {formatBudget(chapter.budgetSummary!.travelConservative)} →{" "}
+                          {formatBudget(chapter.budgetSummary!.travelAggressive)}
+                        </td>
+                      </tr>
+                    ) : (
+                      <tr key={String(label)} className="border-b border-[var(--ep-border)] last:border-0">
+                        <td className="py-2 pr-3 font-medium">{label}</td>
+                        <td className="py-2 font-semibold">{formatBudget(amount as number)}</td>
+                      </tr>
+                    ),
+                  )}
+                </tbody>
+              </table>
+              <p className="mt-4 text-sm text-[var(--ep-navy-muted)]">
+                Monthly burn (working scenario):{" "}
+                <strong className="text-[var(--ep-navy)]">
+                  {formatBudget(chapter.budgetSummary.monthlyBurnWorking)}/month
+                </strong>
+              </p>
             </div>
           ) : null}
 

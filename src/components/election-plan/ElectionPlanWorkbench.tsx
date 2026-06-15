@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
-import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
+import { formatPct, formatBudget, formatVotes } from "@/lib/election-plan/electionPlanData";
 import { CityStrategyGrid } from "@/components/election-plan/CityStrategyGrid";
 import { CountyStrategyGrid } from "@/components/election-plan/CountyStrategyGrid";
 import { ExecutiveMetricCard } from "@/components/election-plan/ExecutiveMetricCard";
@@ -26,6 +26,7 @@ const TAB_GROUPS = [
     tabs: [
       { id: "warRoom", label: "Executive War Room" },
       { id: "executiveBook", label: "Executive Book" },
+      { id: "weeklyDashboard", label: "Weekly Dashboard" },
       { id: "fieldCalendar", label: "Field Calendar" },
       { id: "weekPlans", label: "Week Plans" },
       { id: "timeline", label: "20-Week Timeline" },
@@ -109,7 +110,7 @@ function TabWorkbench({ data, initialTab }: Props) {
       <nav className="ep-sidebar" aria-label="Plan sections">
         <div className="hidden px-4 pb-3 lg:block">
           <div className="font-heading text-sm font-bold text-[var(--ep-navy)]">Victory Plan</div>
-          <p className="mt-0.5 text-[0.625rem] uppercase tracking-wide text-[var(--ep-navy-muted)]">19 sections</p>
+          <p className="mt-0.5 text-[0.625rem] uppercase tracking-wide text-[var(--ep-navy-muted)]">20 sections</p>
         </div>
         <div className="flex gap-1 overflow-x-auto px-2 lg:flex-col lg:overflow-visible lg:px-0">
           {TAB_GROUPS.map((group) => (
@@ -134,6 +135,7 @@ function TabWorkbench({ data, initialTab }: Props) {
       <main className="ep-content">
         {active === "warRoom" && <WarRoomPanel data={data} />}
         {active === "executiveBook" && <ExecutiveBookHubPanel data={data} />}
+        {active === "weeklyDashboard" && <KellyDashboardPanel data={data} />}
         {active === "fieldCalendar" && <ExecutiveCalendarPanel data={data} />}
         {active === "weekPlans" && <WeekOperationalPanel data={data} />}
         {active === "timeline" && <CampaignTimelinePanel data={data} />}
@@ -167,12 +169,36 @@ function SectionTitle({ title, subtitle }: { title: string; subtitle?: string })
 
 function KellyDashboardPanel({ data }: Props) {
   const d = data.candidateDashboard;
+  const b = data.executiveBookV1.campaignBudget;
   return (
     <section>
       <SectionTitle
         title="Weekly Dashboard"
         subtitle={`Week ${d.currentWeek} · ${d.weekRange} — good morning, Kelly`}
       />
+      <div className="ep-card mb-8 border-l-4 border-[var(--ep-gold)]">
+        <h3 className="font-heading font-bold">Campaign Budget — Fundraising Targets</h3>
+        <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{b.disclaimer}</p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          <div className="ep-stat">
+            <div className="ep-stat-value">{formatBudget(b.workingCampaignTarget)}</div>
+            <div className="ep-stat-label">Working campaign target</div>
+          </div>
+          <div className="ep-stat">
+            <div className="ep-stat-value">{formatBudget(b.monthlyBurnWorking)}</div>
+            <div className="ep-stat-label">Monthly burn (~)</div>
+          </div>
+          <div className="ep-stat">
+            <div className="ep-stat-value">{formatBudget(b.salaryFloor)}</div>
+            <div className="ep-stat-label">Salary floor</div>
+          </div>
+        </div>
+        <p className="mt-4 text-sm">
+          <a href={b.chapterHref} className="ep-chapter-link">
+            Open Executive Book Chapter 7 →
+          </a>
+        </p>
+      </div>
       {data.executiveBookV1.weeklyScorecard.length > 0 ? (
         <div className="ep-card mb-8 border-l-4 border-[var(--ep-navy)]">
           <h3 className="font-heading font-bold">Campaign Health Scorecard</h3>
