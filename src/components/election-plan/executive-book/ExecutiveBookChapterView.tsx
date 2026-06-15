@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ExecutiveBookMarkdown } from "@/components/election-plan/executive-book/ExecutiveBookMarkdown";
+import { ExecutiveBookBudgetLeadershipPanel } from "@/components/election-plan/executive-book/ExecutiveBookBudgetLeadershipPanel";
 import { formatBudget } from "@/lib/election-plan/electionPlanData";
 import { EXECUTIVE_BOOK_EDITION, EXECUTIVE_BOOK_PILLAR_LABELS } from "@/lib/election-plan/executiveBookNav";
 import type { ExecutiveBookChapterPayload } from "@/lib/election-plan/loadExecutiveBook";
@@ -44,7 +45,12 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
       </header>
 
       <main className="ep-chapter-body px-6 py-10 lg:px-10">
-        <div className="mx-auto max-w-3xl">
+        <div className={chapter.slug === "budget" ? "mx-auto max-w-5xl" : "mx-auto max-w-3xl"}>
+          {chapter.slug === "budget" ? (
+            <div className="mb-10">
+              <ExecutiveBookBudgetLeadershipPanel variant="chapter" />
+            </div>
+          ) : null}
           <div className="ep-card-glass mb-8 text-sm text-[var(--ep-navy-muted)]">
             {chapter.slug === "budget" ? (
               <>

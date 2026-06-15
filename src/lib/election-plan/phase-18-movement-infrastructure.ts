@@ -79,10 +79,14 @@ export const PHASE_18_MOVEMENT_INFRASTRUCTURE = {
     },
     {
       id: "18-7",
-      title: "Letters to the Editor Program",
-      status: "pending" as const,
+      title: "Arkansas Citizen Voices (LTE Corps)",
+      status: "in_progress" as const,
       href: "/election-plan/movement-infrastructure/lte-program",
-      items: ["LTE volunteer corps", "Tier-3 newspaper inventory binding", "Citizen Voices integration"],
+      items: [
+        "Newspaper registry with county + coordinator tracking",
+        "LTE workflow — real citizens, not press releases",
+        "Publication tracking · weekly goal every region",
+      ],
     },
     {
       id: "18-8",
@@ -94,9 +98,13 @@ export const PHASE_18_MOVEMENT_INFRASTRUCTURE = {
     {
       id: "18-9",
       title: "Freshman Week Blitz",
-      status: "pending" as const,
-      href: "/election-plan/campuses",
-      items: ["August tabling budget ($3,000)", "Captain assignment workflow", "Mobilize required for tabling events"],
+      status: "in_progress" as const,
+      href: "/election-plan/campuses/freshman-week",
+      items: [
+        "Freshman Week Readiness dashboard per campus",
+        "Captain · table · Mobilize · volunteers · materials · Kelly status",
+        "August tabling budget ($3,000) — operational before August",
+      ],
     },
     {
       id: "18-10",
@@ -112,6 +120,8 @@ export const PHASE_18_MOVEMENT_INFRASTRUCTURE = {
     { system: "Coalition Command", link: "/election-plan?tab=coalitionCommand" },
     { system: "Forward Motion", link: "/election-plan?tab=forwardMotion" },
     { system: "Budget", link: "/election-plan/executive-book/budget" },
+    { system: "Budget Dashboard", link: "/election-plan/executive-book/budget/dashboard" },
+    { system: "Labor Day gaps", link: "/election-plan/executive-book/labor-day/resource-gap" },
   ],
   buildOrder: [
     "18.1 Campus registry + dashboard",

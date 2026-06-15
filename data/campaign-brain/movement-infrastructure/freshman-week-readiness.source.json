@@ -1,0 +1,131 @@
+{
+  "updatedAt": "2026-06-10",
+  "targetOperationalDate": "2026-08-01",
+  "laborDayGate": "2026-09-07",
+  "checklistLabels": {
+    "captainAssigned": "Captain assigned",
+    "tableLocationSecured": "Table location secured",
+    "mobilizeEventCreated": "Mobilize event created",
+    "volunteersAssigned": "Volunteers assigned",
+    "registrationMaterialsReady": "Registration materials ready",
+    "kellyAppearanceStatus": "Kelly appearance status"
+  },
+  "kellyAppearanceOptions": ["not_requested", "requested", "confirmed", "declined", "completed"],
+  "campuses": {
+    "university-of-arkansas": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested",
+      "notes": "Fayetteville leader recruitment pending"
+    },
+    "arkansas-state-university": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested",
+      "notes": "A-State leader recruitment pending"
+    },
+    "university-of-central-arkansas": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    },
+    "ualr": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested",
+      "notes": "UALR leader recruitment pending"
+    },
+    "philander-smith": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    },
+    "uapb": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    },
+    "hendrix": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    },
+    "arkansas-tech": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    },
+    "southern-arkansas": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    },
+    "harding": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    },
+    "ouachita-baptist": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    },
+    "asu-beebe": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    },
+    "nwacc": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    },
+    "uaccm": {
+      "captainAssigned": false,
+      "tableLocationSecured": false,
+      "mobilizeEventCreated": false,
+      "volunteersAssigned": false,
+      "registrationMaterialsReady": false,
+      "kellyAppearanceStatus": "not_requested"
+    }
+  }
+}

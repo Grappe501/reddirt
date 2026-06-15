@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-10",
+  "pass": "PHASE-18.7A-BUDGET-LEADERSHIP",
+  "disclaimer": "Planning targets only — not guaranteed costs or fundraising outcomes. Unknown vendor expenses marked needs_quote. Phase 18 lines merged into working campaign scenario.",
+  "scenario": "working_campaign",
+  "headlineQuestion": "How much money do we need to raise between now and Election Day?",
+  "electionDay": "2026-11-03",
+  "referenceDate": "2026-06-15",
+  "workingCampaignTotal": 232053,
+  "categories": [
+    { "id": "travel", "label": "Travel", "amount": 22483, "notes": "Fuel allowance + mileage from budget-summary travelExpected minus lodging/food" },
+    { "id": "lodging", "label": "Lodging", "amount": 8400, "notes": "~48 nights @ $175/night on immersion and field travel" },
+    { "id": "food", "label": "Food", "amount": 6750, "notes": "Steve + Kelly travel days @ $150/day" },
+    { "id": "swag", "label": "Swag", "amount": 9500, "notes": "Immersion swag ($7,500) + thank-you gift cards ($2,000)" },
+    { "id": "signs", "label": "Signs", "amount": 6750, "notes": "Mid-tier yard signs @ $9 — 750 signs" },
+    { "id": "shirts", "label": "Shirts", "amount": 6750, "notes": "Mid-tier shirts @ $9 — 750 shirts" },
+    { "id": "social-media-advertising", "label": "Social Media Advertising", "amount": 30000, "notes": "County-targeted visit promotion · storytelling · volunteer recruitment · late persuasion" },
+    { "id": "billboards", "label": "Billboards", "amount": 5000, "notes": "Q4 Top-40 corridor billboards carved from digital persuasion budget" },
+    { "id": "newspaper-ads", "label": "Newspaper Ads", "amount": 9000, "notes": "Rural newspaper advertising @ $1,500/month × 6" },
+    { "id": "rural-radio", "label": "Rural Radio", "amount": 9000, "notes": "Rural radio @ $1,500/month × 6" },
+    { "id": "story-corps", "label": "Story Corps", "amount": 4500, "notes": "Vertical video equipment ($1,500) + digital content production share ($3,000)" },
+    { "id": "campus-program", "label": "Campus Program", "amount": 7000, "notes": "Recruitment materials ($2,500) + campus fundraiser support ($2,000) + student outreach media share ($2,500)" },
+    { "id": "freshman-week", "label": "Freshman Week", "amount": 3000, "notes": "August move-in tabling blitz — must be operational before August" },
+    { "id": "lte-program", "label": "LTE Program", "amount": 1500, "notes": "Arkansas Citizen Voices — LTE training + templates" },
+    { "id": "compliance", "label": "Compliance", "amount": 9000, "notes": "Compliance counsel @ $750/month — hard monthly expense" },
+    { "id": "sherwood", "label": "Sherwood", "amount": -11500, "notes": "Projected net revenue from Sherwood event (offsets spend)" },
+    { "id": "gotv", "label": "GOTV", "amount": 27840, "notes": "Postcard/mail mid-tier placeholder — senior + youth GOTV programs" },
+    { "id": "salary", "label": "Kelly salary floor (leave-of-absence)", "amount": 72000, "notes": "$12,000/month × 6 months — non-negotiable floor" },
+    { "id": "reserve", "label": "Reserve", "amount": 1580, "notes": "County sponsorships · digital tools · production · contingency to working total" },
+    { "id": "volunteer-appreciation", "label": "Volunteer Appreciation", "amount": 3500, "notes": "Annual recognition event · volunteer awards · leadership appreciation ($2,500–$5,000 reserve)" }
+  ],
+  "fundraising": {
+    "raisedAsOf": "2026-06-15",
+    "raisedToDate": 60000,
+    "workingCampaignGoal": 232053,
+    "remainingToRaise": 172053,
+    "rampUpNote": "Ramp up fundraising — Sherwood hosts and VIP tables are priority levers. $60K raised against working campaign target.",
+    "monthlyTargets": [
+      { "period": "June", "month": "2026-06", "goal": 22000, "notes": "Partial month + close June strong" },
+      { "period": "July", "month": "2026-07", "goal": 35000, "notes": "Immersion season · host cultivation" },
+      { "period": "August", "month": "2026-08", "goal": 38000, "notes": "Freshman week · county fair season" },
+      { "period": "September", "month": "2026-09", "goal": 42000, "notes": "Persuasion season · Labor Day gate" },
+      { "period": "October", "month": "2026-10", "goal": 35053, "notes": "Final push before Election Day" }
+    ],
+    "sources": [
+      { "id": "major-donors", "label": "Major donors & finance committee", "shareNote": "Primary lever through September" },
+      { "id": "sherwood", "label": "Sherwood event (VIP tables · tickets · drink tickets)", "shareNote": "Priority near-term — projected $11.5K net" },
+      { "id": "online", "label": "Online / ActBlue", "shareNote": "Story-driven small-dollar" },
+      { "id": "house-parties", "label": "House parties & Po5 host cultivation", "shareNote": "County-by-county relationship fundraising" },
+      { "id": "campus", "label": "Campus fundraisers", "shareNote": "Hold full workflow until co-chairs and campus leaders recruited" }
+    ]
+  },
+  "laborDayFundingPriorities": [
+    { "item": "Freshman Week tabling ($3,000)", "deadline": "2026-08-01", "status": "unfunded", "priority": "critical" },
+    { "item": "Campus recruitment materials ($2,500)", "deadline": "2026-08-01", "status": "unfunded", "priority": "critical" },
+    { "item": "LTE volunteer program ($1,500)", "deadline": "2026-07-15", "status": "unfunded", "priority": "high" },
+    { "item": "Story Corps equipment ($1,500)", "deadline": "2026-07-31", "status": "unfunded", "priority": "high" },
+    { "item": "Immersion swag reserve ($7,500)", "deadline": "2026-09-07", "status": "partial", "priority": "high" },
+    { "item": "Compliance retainer (Jul–Sep)", "deadline": "2026-07-01", "status": "partial", "priority": "critical" }
+  ]
+}

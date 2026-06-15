@@ -6,6 +6,7 @@ import {
   type ArkansasCampus,
 } from "@/lib/election-plan/load-movement-infrastructure";
 import { campusDetailHref, campusNetworkHref, phase18MasterPlanHref } from "@/lib/election-plan/phase-18-movement-infrastructure";
+import { campusCaptainDashboardHref, freshmanWeekReadinessHref } from "@/lib/election-plan/load-citizen-voices-lte";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 import { formatBudget } from "@/lib/election-plan/electionPlanData";
 
@@ -35,6 +36,21 @@ export function CampusNetworkDashboardPanel() {
       <div className="mt-2">
         <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">Arkansas Higher Education Network</h1>
         <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Statewide campus dashboard · registration · volunteers · fundraising · captains</p>
+      </div>
+
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Link
+          href={freshmanWeekReadinessHref()}
+          className="rounded-full border border-[var(--ep-border)] bg-white px-3 py-1 text-xs font-semibold text-[var(--ep-navy)] hover:bg-[var(--ep-cream)]"
+        >
+          Freshman Week Readiness →
+        </Link>
+        <Link
+          href={campusCaptainDashboardHref()}
+          className="rounded-full border border-[var(--ep-border)] bg-white px-3 py-1 text-xs font-semibold text-[var(--ep-navy)] hover:bg-[var(--ep-cream)]"
+        >
+          Captain assignment →
+        </Link>
       </div>
 
       <div className="my-6 ep-stat-grid">
@@ -141,6 +157,33 @@ export function CampusDetailPanel({ campus }: { campus: ArkansasCampus }) {
           </div>
         ))}
       </div>
+
+      {campus.freshmanWeekOpportunity && campus.freshmanWeekReadiness ? (
+        <div className="ep-card mb-6 text-sm">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="font-heading font-bold">Freshman Week Readiness</h2>
+            <Link href={freshmanWeekReadinessHref()} className="text-xs font-semibold underline">
+              Dashboard →
+            </Link>
+          </div>
+          <ul className="mt-3 space-y-1 text-[var(--ep-navy-muted)]">
+            {(
+              [
+                ["Captain assigned", campus.freshmanWeekReadiness.captainAssigned],
+                ["Table location secured", campus.freshmanWeekReadiness.tableLocationSecured],
+                ["Mobilize event created", campus.freshmanWeekReadiness.mobilizeEventCreated],
+                ["Volunteers assigned", campus.freshmanWeekReadiness.volunteersAssigned],
+                ["Registration materials ready", campus.freshmanWeekReadiness.registrationMaterialsReady],
+              ] as const
+            ).map(([label, ok]) => (
+              <li key={label}>
+                {ok ? "✓" : "○"} {label}
+              </li>
+            ))}
+            <li>Kelly appearance: {campus.freshmanWeekReadiness.kellyAppearanceStatus.replace(/_/g, " ")}</li>
+          </ul>
+        </div>
+      ) : null}
 
       <div className="ep-card mb-6 text-sm">
         <h2 className="font-heading font-bold">Campus operating plan</h2>

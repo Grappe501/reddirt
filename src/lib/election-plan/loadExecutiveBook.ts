@@ -6,6 +6,7 @@ import {
   getExecutiveBookChapter,
   type ExecutiveBookChapterSlug,
 } from "./executiveBookChapters";
+import { getExecutiveBookBudgetLeadership } from "./load-executive-book-budget-leadership";
 import {
   extractExecutiveBookToc,
   getAdjacentExecutiveBookChapters,
@@ -314,6 +315,7 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
   }
 
   if (chapter.slug === "budget" && budget) {
+    const leadership = getExecutiveBookBudgetLeadership();
     budgetSummary = {
       disclaimer:
         budget.disclaimer ??
@@ -337,9 +339,9 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
       complianceTotal: budget.complianceTotal,
     };
     liveStrip.push(
-      { label: "Salary floor", value: fmt(budgetSummary.salaryFloor) },
+      { label: "Remaining to raise", value: fmt(leadership.fundraising.remainingToRaise) },
       { label: "Working campaign", value: fmt(budgetSummary.workingCampaignTotal) },
-      { label: "Planning range", value: `${fmt(budget.workingCampaignRangeLow ?? 225000)}–${fmt(budget.workingCampaignRangeHigh ?? 250000)}` },
+      { label: "Raised to date", value: fmt(leadership.fundraising.raisedToDate) },
     );
   }
 
