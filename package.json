@@ -359,6 +359,7 @@
     "campaign-brain:operations-lock:build": "tsx scripts/campaign-brain/build-operations-lock-pass.ts",
     "campaign-brain:executive-book:v1": "tsx scripts/campaign-brain/build-executive-book-v1.ts",
     "campaign-brain:executive-book:completion": "tsx scripts/campaign-brain/build-executive-book-v1.ts",
+    "campaign-brain:volunteer-invites:sync": "tsx scripts/campaign-brain/sync-founding-volunteer-invites.ts",
     "campaign-brain:week-candidates:build": "tsx scripts/campaign-brain/build-week-candidates.ts",
     "campaign-brain:health:build": "tsx scripts/campaign-brain/build-brain-health-dashboard.ts",
     "campaign-brain:sprint:calendar-truth": "tsx scripts/campaign-brain/build-calendar-truth-sprint.ts",

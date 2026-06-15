@@ -18,9 +18,340 @@
     "monthlyCalls": {
       "schedule": "Last Sunday of each month · 6 PM",
       "format": "Statewide Zoom",
-      "track": ["attendance", "countiesRepresented", "volunteerGrowth", "actionAssignments"]
+      "track": [
+        "attendance",
+        "countiesRepresented",
+        "volunteerGrowth",
+        "actionAssignments"
+      ]
     },
-    "leaders": []
+    "leaders": [
+      {
+        "id": "invite-gibson",
+        "name": "John and Judy Gibson",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-larue",
+        "name": "Will LaRue",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dare",
+        "name": "Judy Dare",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-duke",
+        "name": "John Duke",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-solice",
+        "name": "Leann Solice",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-hurst",
+        "name": "Ben Hurst",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-low",
+        "name": "Christy Low",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-holloway",
+        "name": "Lisa Holloway",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-rampone",
+        "name": "Sarah Rampone",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-stebbins",
+        "name": "Kate Stebbins",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-chsm",
+        "name": "Lela Chsm",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dannaway",
+        "name": "Teresa Dannaway",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-disderio",
+        "name": "Nicole Disderio and Luke",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-mclennon",
+        "name": "Xav Mclennon",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-bradford",
+        "name": "Chance Bradford",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-bledsoe",
+        "name": "Zach Bledsoe",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-harrison",
+        "name": "Judy Harrison",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-powell",
+        "name": "Jay Powell",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-huffines",
+        "name": "The Huffines",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-browns-benton",
+        "name": "The Browns",
+        "locationHint": "Benton",
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-hutto",
+        "name": "Carol Hutto",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-brooke-searcy",
+        "name": "Brooke",
+        "locationHint": "Searcy",
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dana-jeff-searcy",
+        "name": "Dana and Jeff",
+        "locationHint": "Searcy",
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-rolanda-jax",
+        "name": "Rolanda",
+        "locationHint": "Jacksonville",
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-trenika-jax",
+        "name": "Trenika",
+        "locationHint": "Jacksonville",
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-jean-carroll",
+        "name": "Jean",
+        "locationHint": "Carroll County",
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-eagan",
+        "name": "Carol Eagan",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-kahn",
+        "name": "Ali Kahn",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-heifner",
+        "name": "Kevin Heifner",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dianne-vanessa-conway",
+        "name": "Dianne / Vanessa",
+        "locationHint": "Conway County",
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-mary-ella-russellville",
+        "name": "Mary Ella",
+        "locationHint": "Russellville",
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-marnie-dan",
+        "name": "Marnie and Dan",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-roosevelt-williams",
+        "name": "Roosevelt Williams",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-choate",
+        "name": "Gail Choate",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-dunbar",
+        "name": "Ethan and Christie Dunbar",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      },
+      {
+        "id": "invite-elaine-williams",
+        "name": "Elaine Williams",
+        "locationHint": null,
+        "countyAssignment": null,
+        "rolePreference": null,
+        "inviteStatus": "listed",
+        "confirmedFoundingTeam": false
+      }
+    ],
+    "foundingTeamInvited": 36
   },
   "mobilize": {
     "platformUrl": "",
