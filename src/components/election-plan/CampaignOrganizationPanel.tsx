@@ -12,6 +12,8 @@ import {
   weeklyPacketHref,
 } from "@/lib/election-plan/load-phase-18-7b-ownership";
 import { academyOnboardingHref } from "@/lib/election-plan/load-volunteer-onboarding";
+import { meetingsHubHref } from "@/lib/election-plan/load-meeting-accountability";
+import { conversationStrategyHref } from "@/lib/election-plan/load-arkansas-conversation-strategy";
 
 function TeamStatusBadge({ team }: { team: FunctionalTeam }) {
   if (team.unassigned) {
@@ -159,9 +161,24 @@ export function CampaignOrganizationPanel() {
       </div>
 
       <div className="mt-8 ep-card border border-dashed border-[var(--ep-border)]">
-        <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Next build · {org.nextBuild.phase}</p>
-        <h3 className="mt-1 font-heading font-bold text-[var(--ep-navy)]">{org.nextBuild.title}</h3>
-        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{org.nextBuild.note}</p>
+        <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Operating doctrine · 18.7E & 18.7F</p>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <Link href={meetingsHubHref()} className="rounded-lg border border-[var(--ep-border)] p-4 transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]">
+            <h3 className="font-heading font-bold text-[var(--ep-navy)]">Meeting & Accountability</h3>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">5 weekly rhythms · agenda · action items · owners</p>
+          </Link>
+          <Link href={conversationStrategyHref()} className="rounded-lg border border-[var(--ep-border)] p-4 transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]">
+            <h3 className="font-heading font-bold text-[var(--ep-navy)]">Arkansas Conversation Strategy</h3>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Conversation ladder · trust doctrine · Po5 engine</p>
+          </Link>
+          <Link href="/election-plan/executive-book/county-victory-targets" className="rounded-lg border border-[var(--ep-border)] p-4 transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]">
+            <h3 className="font-heading font-bold text-[var(--ep-navy)]">County Victory Targets</h3>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Votes · % increase · weekly pace · Po5 leaders</p>
+          </Link>
+        </div>
+        <p className="mt-4 text-xs text-[var(--ep-navy-muted)]">
+          Next build · {org.nextBuild.phase}: {org.nextBuild.title} — {org.nextBuild.note}
+        </p>
       </div>
     </section>
   );

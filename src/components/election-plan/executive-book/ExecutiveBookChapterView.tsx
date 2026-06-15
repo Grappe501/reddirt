@@ -1,6 +1,9 @@
 import Link from "next/link";
 
 import { ExecutiveBookMarkdown } from "@/components/election-plan/executive-book/ExecutiveBookMarkdown";
+import { ArkansasConversationStrategyPanel } from "@/components/election-plan/ArkansasConversationStrategyPanel";
+import { CountyVictoryTargetsExecutivePanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
+import { PageBrief } from "@/components/election-plan/PageBrief";
 import { ExecutiveBookBudgetLeadershipPanel } from "@/components/election-plan/executive-book/ExecutiveBookBudgetLeadershipPanel";
 import { formatBudget } from "@/lib/election-plan/electionPlanData";
 import { EXECUTIVE_BOOK_EDITION, EXECUTIVE_BOOK_PILLAR_LABELS } from "@/lib/election-plan/executiveBookNav";
@@ -45,10 +48,46 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
       </header>
 
       <main className="ep-chapter-body px-6 py-10 lg:px-10">
-        <div className={chapter.slug === "budget" ? "mx-auto max-w-5xl" : "mx-auto max-w-3xl"}>
+        <div
+          className={
+            chapter.slug === "county-victory-targets"
+              ? "mx-auto max-w-6xl"
+              : chapter.slug === "budget" || chapter.slug === "power-of-5"
+                ? "mx-auto max-w-5xl"
+                : "mx-auto max-w-3xl"
+          }
+        >
           {chapter.slug === "budget" ? (
             <div className="mb-10">
               <ExecutiveBookBudgetLeadershipPanel variant="chapter" />
+            </div>
+          ) : null}
+          {chapter.slug === "power-of-5" ? (
+            <div className="mb-10">
+              <ArkansasConversationStrategyPanel variant="chapter" />
+            </div>
+          ) : null}
+          {chapter.slug === "county-victory-targets" ? (
+            <div className="mb-10">
+              <CountyVictoryTargetsExecutivePanel />
+            </div>
+          ) : null}
+          {chapter.slug !== "county-victory-targets" && chapter.slug !== "budget" && chapter.slug !== "power-of-5" ? (
+            <div className="mb-8">
+              <PageBrief
+                brief={{
+                  id: chapter.slug,
+                  title: chapter.title,
+                  answers: chapter.subtitle,
+                  keyMetrics: chapter.liveStrip.map((s) => s.label),
+                  bestFor: ["Kelly", "Ernie", "Coalition partners", "Donors"],
+                  relatedLinks: chapter.relatedChapters.slice(0, 3).map((r) => ({
+                    label: `Ch. ${r.number}: ${r.title}`,
+                    href: r.href,
+                  })),
+                }}
+                compact
+              />
             </div>
           ) : null}
           <div className="ep-card-glass mb-8 text-sm text-[var(--ep-navy-muted)]">
@@ -60,9 +99,14 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
               </>
             ) : chapter.slug === "power-of-5" ? (
               <>
-                <strong className="text-[var(--ep-navy)]">Organizing doctrine.</strong> Most persuasion happens in
-                small rooms — not TV, not mail, not Facebook. This chapter explains how the movement grows before
-                GOTV deploys it.
+                <strong className="text-[var(--ep-navy)]">Campaign doctrine.</strong> People change minds through
+                trusted relationships — not ads. Large events create visibility; small events create votes. Read in
+                under 10 minutes.
+              </>
+            ) : chapter.slug === "county-victory-targets" ? (
+              <>
+                <strong className="text-[var(--ep-navy)]">Local organizing language.</strong> County chairs need votes
+                and percent increase — not VCI scores. Every county playbook inherits these numbers.
               </>
             ) : chapter.slug === "students-for-arkansas" ? (
               <>

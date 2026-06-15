@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-10",
+  "pass": "PHASE-18.7F-ARKANSAS-CONVERSATION-STRATEGY",
+  "title": "Arkansas Conversation Strategy",
+  "subtitle": "Eyeball-to-Eyeball Organizing Doctrine",
+  "executiveBookChapter": "power-of-5",
+  "underTenMinutes": true,
+  "corePrinciple": "People do not change their minds because of ads. People change their minds because of trusted relationships. The campaign wins through conversations.",
+  "notThis": "Not a campaign tactic. A campaign doctrine.",
+  "visibilityVsVotes": {
+    "visibility": "Large events create visibility.",
+    "votes": "Small events create votes.",
+    "doctrine": "You need both — but the vote engine is relationships, not attendance counts."
+  },
+  "successQuestion": "How many new relationship leaders emerged?",
+  "notSuccessQuestion": "How many people attended?",
+  "conversationLadder": [
+    { "level": 1, "name": "Coffee", "description": "One-on-one trust begins" },
+    { "level": 2, "name": "Lunch", "description": "Deeper listening · shared story" },
+    { "level": 3, "name": "Meet & Greet", "description": "Small group introduction to Kelly or surrogate" },
+    { "level": 4, "name": "House Party", "description": "8–15 neighbors · Po5 commitments · host cultivation" },
+    { "level": 5, "name": "Community Event", "description": "County fair · forum · festival · credibility" },
+    { "level": 6, "name": "Volunteer Leader", "description": "Owns weekly tasks · recruits others" },
+    { "level": 7, "name": "Power of 5 Leader", "description": "Multiplies relationships · five asks" },
+    { "level": 8, "name": "County Leader", "description": "County captain · hosts · field OS" },
+    { "level": 9, "name": "Surrogate", "description": "Carries Kelly's message into rooms she cannot reach this week" }
+  ],
+  "powerOf5Engine": {
+    "firstAsk": "Will you help us find five people?",
+    "secondAsk": "Will those five help us find five more?",
+    "metricLabel": "Relationship Network Growth",
+    "notMetricLabel": "Volunteer count alone",
+    "networkGoal": 60000,
+    "hciGoal": 250000
+  },
+  "eyeballToEyeballVenues": [
+    "Breakfast meetings",
+    "Coffee meetings",
+    "Lunch meetings",
+    "Small meetups",
+    "House parties",
+    "Living room conversations",
+    "Church parking lots",
+    "Chamber lunches",
+    "Volunteer fire department fish fries",
+    "Rotary clubs",
+    "County fairs"
+  ],
+  "trustNotArgument": "The campaign is not attempting to win arguments. The campaign is attempting to build trust.",
+  "crossPartyTrust": {
+    "message": "You do not have to agree with Kelly to work with Kelly.",
+    "sosFrame": "The Secretary of State serves every voter.",
+    "goal": "Build enough trust that Republican local leaders open their networks and introduce the campaign to other community leaders.",
+    "priorityCounties": ["Searcy", "Benton", "Washington", "Saline"],
+    "ruralGopTemplate": ["Baxter", "Boone", "Marion", "Sharp", "Fulton", "Stone", "Izard"],
+    "href": "/election-plan/movement-infrastructure/searcy-trust-pilot"
+  },
+  "directDemocracyPlank": {
+    "tier": "top",
+    "notPartisan": true,
+    "citizenPower": true,
+    "doctrine": "The people of Arkansas should have a meaningful pathway to propose laws, repeal laws, and place issues before voters.",
+    "sosRole": "The Secretary of State's office should help citizens understand and navigate the process, regardless of whether the office agrees with the issue being proposed.",
+    "href": "/election-plan/direct-democracy/leadership"
+  },
+  "systemConnections": [
+    { "system": "Power of 5", "href": "/election-plan/power-of-5/command-center" },
+    { "system": "House Parties", "href": "/election-plan/academy/house-party-host" },
+    { "system": "Searcy Trust Network", "href": "/election-plan/movement-infrastructure/searcy-trust-pilot" },
+    { "system": "Direct Democracy", "href": "/election-plan/direct-democracy/leadership" },
+    { "system": "Volunteer Leadership", "href": "/election-plan/academy/assignments" },
+    { "system": "Coalition Building", "href": "/election-plan?tab=coalitionCommand" },
+    { "system": "Campus Program", "href": "/election-plan/campuses" },
+    { "system": "Faith Outreach", "href": "/election-plan/academy/faith-outreach-lead" },
+    { "system": "Labor Outreach", "href": "/election-plan/academy/union-outreach-lead" }
+  ],
+  "stopCommandCenterPrompt": "After every stop: How many people moved up the conversation ladder? How many new relationship leaders emerged?"
+}

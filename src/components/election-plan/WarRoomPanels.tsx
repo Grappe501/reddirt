@@ -9,6 +9,7 @@ import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
 import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
 import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
 import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
+import { getCountyVictoryTarget, formatPercentIncrease } from "@/lib/election-plan/load-county-victory-targets";
 import { cn } from "@/lib/utils";
 
 type Props = { data: ElectionPlanWorkbenchSnapshot };
@@ -567,7 +568,7 @@ export function PresenceMapPanel({ data }: Props) {
       <div className="mb-8 ep-card">
         <h3 className="font-heading font-bold">Top county priority queue</h3>
         <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
-          Fill open calendar days from this queue + locked trips — not the Forward Motion intelligence feed.
+          Fill open calendar days from this queue + locked trips. Growth columns show county victory targets (18.7G).
         </p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-sm">
@@ -575,6 +576,8 @@ export function PresenceMapPanel({ data }: Props) {
               <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">
                 <th className="pb-2 pr-3">#</th>
                 <th className="pb-2 pr-3">County</th>
+                <th className="pb-2 pr-3">Growth</th>
+                <th className="pb-2 pr-3">% Inc.</th>
                 <th className="pb-2 pr-3">VCI</th>
                 <th className="pb-2 pr-3">Visits</th>
                 <th className="pb-2 pr-3">Days since</th>
@@ -583,17 +586,25 @@ export function PresenceMapPanel({ data }: Props) {
               </tr>
             </thead>
             <tbody>
-              {c.priorityQueue.map((r, i) => (
-                <tr key={r.county} className="border-b border-[var(--ep-border)] last:border-0">
-                  <td className="py-2 pr-3">{i + 1}</td>
-                  <td className="py-2 pr-3 font-medium">{r.county}</td>
-                  <td className="py-2 pr-3">{r.vciRank ?? "—"}</td>
-                  <td className="py-2 pr-3">{r.visitCount}</td>
-                  <td className="py-2 pr-3">{r.daysSinceLastVisit ?? "—"}</td>
-                  <td className="py-2 pr-3 text-xs">{r.planningCategory.replace(/_/g, " ")}</td>
-                  <td className="py-2">{r.priorityScore}</td>
-                </tr>
-              ))}
+              {c.priorityQueue.map((r, i) => {
+                const vt = getCountyVictoryTarget(r.county);
+                return (
+                  <tr key={r.county} className="border-b border-[var(--ep-border)] last:border-0">
+                    <td className="py-2 pr-3">{i + 1}</td>
+                    <td className="py-2 pr-3 font-medium">
+                      {r.county}
+                      {vt?.isStrategic ? " ★" : ""}
+                    </td>
+                    <td className="py-2 pr-3 tabular-nums">{vt ? `+${formatVotes(vt.growthNeeded)}` : "—"}</td>
+                    <td className="py-2 pr-3 tabular-nums">{vt ? formatPercentIncrease(vt.percentIncrease) : "—"}</td>
+                    <td className="py-2 pr-3">{r.vciRank ?? "—"}</td>
+                    <td className="py-2 pr-3">{r.visitCount}</td>
+                    <td className="py-2 pr-3">{r.daysSinceLastVisit ?? "—"}</td>
+                    <td className="py-2 pr-3 text-xs">{r.planningCategory.replace(/_/g, " ")}</td>
+                    <td className="py-2">{r.priorityScore}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

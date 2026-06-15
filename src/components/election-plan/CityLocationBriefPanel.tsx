@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CityVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
 import { CityNumericTargetsPanel } from "@/components/election-plan/CityNumericTargetsPanel";
 import { SpecialKpiGoalCard } from "@/components/election-plan/SpecialKpiGoalCard";
@@ -16,6 +17,7 @@ import {
   locationBriefMasterPlanHref,
 } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import { getCityVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { getSpecialKpiGoalForCity } from "@/lib/election-plan/load-special-kpi-goals";
 import { cn } from "@/lib/utils";
 
@@ -63,6 +65,15 @@ export function CityLocationBriefPanel({
 }: Props) {
   const countyHref = countyPlaybookHref(brief.county, countySlug);
   const specialKpi = getSpecialKpiGoalForCity(brief.slug);
+  const cityVictory = getCityVictoryTarget({
+    name: brief.name,
+    slug: brief.slug,
+    county: brief.county,
+    baselineVote: brief.targetVotes - brief.voteGain,
+    targetVotes: brief.targetVotes,
+    voteGain: brief.voteGain,
+    isTop10: brief.isTop10,
+  });
 
   return (
     <section>
@@ -79,6 +90,10 @@ export function CityLocationBriefPanel({
         <span className={cn("rounded-full px-3 py-1 text-xs font-bold uppercase", statusClass(brief.status))}>
           {brief.status}
         </span>
+      </div>
+
+      <div className="mb-8">
+        <CityVictoryTargetsPanel target={cityVictory} variant="hero" />
       </div>
 
       <div className="my-6 ep-stat-grid">

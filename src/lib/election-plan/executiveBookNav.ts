@@ -39,6 +39,7 @@ export function getExecutiveBookPillar(slug: ExecutiveBookChapterSlug): Executiv
     case "influence-map":
     case "labor-day":
     case "message":
+    case "county-victory-targets":
       return "strategy";
     case "budget":
       return "resources";
@@ -75,7 +76,8 @@ export function getRelatedExecutiveBookChapters(slug: ExecutiveBookChapterSlug):
     gotv: ["power-of-5", "labor-day", "scorecard"],
     budget: ["labor-day", "gotv"],
     "labor-day": ["scorecard", "power-of-5", "budget"],
-    message: ["power-of-5", "influence-map"],
+    message: ["power-of-5", "influence-map", "county-victory-targets"],
+    "county-victory-targets": ["power-of-5", "gotv", "scorecard"],
     ownership: ["scorecard", "audit"],
   };
 

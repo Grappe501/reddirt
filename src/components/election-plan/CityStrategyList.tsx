@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ElectionPlanCity } from "@/lib/election-plan/types";
 import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import { formatPercentIncrease, getCityVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -72,6 +73,23 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
                 <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[var(--ep-navy-muted)]">
                   {city.strategicRole}
                 </p>
+                {(() => {
+                  const vt = getCityVictoryTarget({
+                    name: city.name,
+                    slug: city.slug,
+                    county: city.county,
+                    baselineVote: city.baselineVote,
+                    targetVotes: city.targetVotes,
+                    voteGain: city.voteGain,
+                    isTop10: city.isTop10,
+                  });
+                  return (
+                    <p className="mt-2 text-xs font-semibold text-emerald-800">
+                      +{formatVotes(vt.growthNeeded)} votes · {formatPercentIncrease(vt.percentIncrease)} ·{" "}
+                      {vt.powerOf5LeadersNeeded} Po5 leaders
+                    </p>
+                  );
+                })()}
               </div>
               <div className="text-right">
                 <div className="font-heading text-2xl font-bold text-[var(--ep-navy)]">

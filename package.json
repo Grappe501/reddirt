@@ -381,6 +381,7 @@
     "campaign-brain:voter-contact:build": "tsx scripts/campaign-brain/build-voter-contact-gotv-system.ts",
     "campaign-brain:ingest:field-events": "tsx scripts/campaign-brain/ingest-field-event-leads.ts",
     "election-plan:build": "tsx scripts/build-election-plan-workbench.ts",
+    "election-plan:search:build": "tsx scripts/election-plan/build-election-plan-search-index.ts",
     "campaign-brain:relational:build": "tsx scripts/campaign-brain/build-relationship-capital-dashboard.ts",
     "campaign-brain:captured:build": "tsx scripts/campaign-brain/build-captured-opportunity-layer.ts",
     "campaign-brain:learning:build": "tsx scripts/campaign-brain/build-event-learning.ts",

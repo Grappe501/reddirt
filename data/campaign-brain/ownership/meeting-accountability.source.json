@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-10",
+  "pass": "PHASE-18.7E-MEETING-ACCOUNTABILITY",
+  "doctrine": "The goal is not meetings. The goal is execution. Every meeting answers four questions only.",
+  "fourQuestions": [
+    { "id": "committed", "question": "What did we commit to?" },
+    { "id": "done", "question": "What got done?" },
+    { "id": "blocked", "question": "What is blocked?" },
+    { "id": "next", "question": "What happens next?" }
+  ],
+  "underTenMinutes": "Every team lead should be able to explain their meeting rhythm and weekly deliverable in under 10 minutes.",
+  "meetings": [
+    {
+      "id": "monday-leadership",
+      "title": "Monday Leadership",
+      "day": "Monday",
+      "durationMinutes": 60,
+      "attendees": ["Kelly Grappe", "Ernie", "Steve Grappe", "Functional team leads"],
+      "purpose": "Set the week — 5 priorities, 5 owners, due dates",
+      "href": "/election-plan/meetings/monday-leadership",
+      "dashboardMetrics": [
+        { "id": "hci", "label": "HCI", "source": "Power of 5 command center" },
+        { "id": "volunteer-leaders", "label": "Volunteer leaders", "source": "Academy assignments" },
+        { "id": "endorsements", "label": "Endorsements", "source": "Coalition command" },
+        { "id": "mobilize", "label": "Mobilize events", "source": "Field calendar · Mobilize audit" },
+        { "id": "travel", "label": "Upcoming travel", "source": "Forward Motion" },
+        { "id": "fundraising", "label": "Fundraising", "source": "Budget dashboard" },
+        { "id": "sherwood", "label": "Sherwood", "source": "Sherwood Victory tab" },
+        { "id": "campus", "label": "Campus", "source": "Campus captains · Freshman Week" }
+      ],
+      "agenda": [
+        { "segment": "Four questions review", "minutes": 10, "owner": "Steve" },
+        { "segment": "Dashboard walk — HCI · volunteers · endorsements · Mobilize", "minutes": 15, "owner": "Steve" },
+        { "segment": "Fundraising · Sherwood · campus snapshot", "minutes": 10, "owner": "Ernie / team leads" },
+        { "segment": "Forward Motion — next 7 days travel", "minutes": 10, "owner": "Steve" },
+        { "segment": "Set 5 priorities · 5 owners · due dates", "minutes": 10, "owner": "Kelly" },
+        { "segment": "Blocked items & escalations", "minutes": 5, "owner": "All" }
+      ],
+      "requiredOutput": {
+        "label": "Weekly leadership output",
+        "items": ["5 priorities", "5 owners", "Due dates", "Blocked items logged"]
+      },
+      "actionItems": [
+        { "id": "ml-1", "item": "Assign open team owners (7 teams TBD)", "owner": "Kelly / Ernie", "dueDate": "2026-06-21", "status": "open", "committedWeek": "2026-06-16" },
+        { "id": "ml-2", "item": "Confirm June 28 volunteer launch agenda", "owner": "Volunteer lead TBD", "dueDate": "2026-06-21", "status": "open", "committedWeek": "2026-06-16" },
+        { "id": "ml-3", "item": "Sherwood VIP table progress — 5 tables", "owner": "Steve", "dueDate": "2026-06-21", "status": "in_progress", "committedWeek": "2026-06-16" }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "tuesday-campus",
+      "title": "Tuesday Campus Network",
+      "day": "Tuesday",
+      "durationMinutes": 45,
+      "attendees": ["Chance", "Xav", "ASU lead (TBD)", "UALR lead (TBD)", "Fayetteville lead (TBD)", "Campus network lead (TBD)"],
+      "purpose": "Campus captains · Freshman Week · registrations · Mobilize",
+      "href": "/election-plan/meetings/tuesday-campus",
+      "dashboardMetrics": [
+        { "id": "captains", "label": "Campus captains", "source": "/election-plan/campuses/captains" },
+        { "id": "freshman", "label": "Freshman week readiness", "source": "/election-plan/campuses/freshman-week" },
+        { "id": "registrations", "label": "Registrations", "source": "Campus network rollup" },
+        { "id": "fundraisers", "label": "Fundraisers", "source": "Hold until leaders recruited" },
+        { "id": "mobilize", "label": "Mobilize events", "source": "Per-campus Mobilize count" }
+      ],
+      "agenda": [
+        { "segment": "Four questions — last week campus commitments", "minutes": 5, "owner": "Campus lead" },
+        { "segment": "Captain assignment — ASU · UALR · UA priority", "minutes": 15, "owner": "All" },
+        { "segment": "Freshman Week readiness by campus", "minutes": 15, "owner": "All" },
+        { "segment": "Mobilize gaps · registration goals", "minutes": 5, "owner": "Steve" },
+        { "segment": "Next week actions", "minutes": 5, "owner": "Campus lead" }
+      ],
+      "requiredOutput": {
+        "label": "Campus weekly output",
+        "items": ["Captain assignment progress", "Freshman Week checklist updates", "Mobilize events created"]
+      },
+      "actionItems": [
+        { "id": "tc-1", "item": "Recruit UA Fayetteville campus captain", "owner": "TBD", "dueDate": "2026-07-01", "status": "open", "committedWeek": null },
+        { "id": "tc-2", "item": "Recruit A-State campus captain", "owner": "TBD", "dueDate": "2026-07-01", "status": "open", "committedWeek": null },
+        { "id": "tc-3", "item": "Recruit UALR campus captain", "owner": "TBD", "dueDate": "2026-07-01", "status": "open", "committedWeek": null }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "wednesday-coalition",
+      "title": "Wednesday Coalition Call",
+      "day": "Wednesday",
+      "durationMinutes": 45,
+      "attendees": ["Coalition lead (TBD)", "Danny Brown (Labor)", "April liaison (AEA)", "Barry Jefferson (NAACP)", "Ali / Ebrahim (Muslim)", "Jasmine Serano (Hispanic)", "Faith lead (TBD)"],
+      "purpose": "Coalition lanes — introductions · endorsements · volunteer leaders",
+      "href": "/election-plan/meetings/wednesday-coalition",
+      "dashboardMetrics": [
+        { "id": "labor", "label": "Labor", "source": "Danny Brown track" },
+        { "id": "aea", "label": "AEA / Educators", "source": "April liaison track" },
+        { "id": "naacp", "label": "NAACP", "source": "Barry Jefferson track" },
+        { "id": "faith", "label": "Faith", "source": "Faith outreach lead" },
+        { "id": "muslim", "label": "Muslim", "source": "Ali / Ebrahim track" },
+        { "id": "hispanic", "label": "Hispanic", "source": "Jasmine Serano track" }
+      ],
+      "agenda": [
+        { "segment": "Four questions — coalition lane review", "minutes": 5, "owner": "Coalition lead" },
+        { "segment": "Labor · AEA · NAACP lane reports", "minutes": 15, "owner": "Lane owners" },
+        { "segment": "Faith · Muslim · Hispanic lane reports", "minutes": 15, "owner": "Lane owners" },
+        { "segment": "New introductions & validator pipeline", "minutes": 5, "owner": "All" },
+        { "segment": "Endorsement & volunteer leader targets", "minutes": 5, "owner": "Coalition lead" }
+      ],
+      "requiredOutput": {
+        "label": "Coalition weekly output",
+        "items": ["New introductions logged", "New endorsements pipeline", "New volunteer leaders identified"]
+      },
+      "actionItems": [
+        { "id": "wc-1", "item": "5 NAACP branch calls", "owner": "Barry Jefferson", "dueDate": "2026-06-21", "status": "in_progress", "committedWeek": "2026-06-16" },
+        { "id": "wc-2", "item": "Democratic Union Caucus meeting", "owner": "Danny Brown", "dueDate": "2026-06-21", "status": "open", "committedWeek": null },
+        { "id": "wc-3", "item": "Benton + Washington educator intros", "owner": "April liaison", "dueDate": "2026-06-28", "status": "open", "committedWeek": null }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "thursday-story-corps",
+      "title": "Thursday Story Corps",
+      "day": "Thursday",
+      "durationMinutes": 30,
+      "attendees": ["Leann Solice", "Story Corps leads", "LTE regional leads (TBD)", "Comms"],
+      "purpose": "Content pipeline — video · LTE · amplification",
+      "href": "/election-plan/meetings/thursday-story-corps",
+      "dashboardMetrics": [
+        { "id": "video", "label": "Vertical video", "source": "Story Corps" },
+        { "id": "lte", "label": "LTE", "source": "Citizen Voices registry" },
+        { "id": "substack", "label": "Substack", "source": "Post-publication amplification" },
+        { "id": "youtube", "label": "YouTube", "source": "Social resume" },
+        { "id": "facebook", "label": "Facebook", "source": "County-targeted boosts" }
+      ],
+      "agenda": [
+        { "segment": "Four questions — content commitments", "minutes": 5, "owner": "Leann" },
+        { "segment": "Vertical video — Kelly stops & assets due", "minutes": 8, "owner": "Story Corps" },
+        { "segment": "LTE — submissions & publications this week", "minutes": 8, "owner": "LTE leads" },
+        { "segment": "What publishes next week?", "minutes": 7, "owner": "Leann" },
+        { "segment": "Blocked content & resource needs", "minutes": 2, "owner": "All" }
+      ],
+      "requiredOutput": {
+        "label": "Story Corps weekly output",
+        "items": ["Next week publish calendar", "LTE submission targets", "Video assets assigned"]
+      },
+      "actionItems": [
+        { "id": "ts-1", "item": "5 assets per next Kelly stop planned", "owner": "Leann Solice", "dueDate": "2026-06-21", "status": "in_progress", "committedWeek": "2026-06-16" },
+        { "id": "ts-2", "item": "Assign 2 regional LTE coordinators", "owner": "LTE lead TBD", "dueDate": "2026-07-01", "status": "open", "committedWeek": null }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "sunday-volunteer-leadership",
+      "title": "Last Sunday Volunteer Leadership Call",
+      "day": "Last Sunday of month",
+      "durationMinutes": 60,
+      "attendees": ["Volunteer leadership lead (TBD)", "County captains", "Po5 leaders", "House party hosts", "Campus captains", "Kelly (monthly)"],
+      "purpose": "The engine of the campaign — every volunteer leader reports activity",
+      "href": "/election-plan/meetings/sunday-volunteer-leadership",
+      "dashboardMetrics": [
+        { "id": "events", "label": "Events", "source": "Field calendar · Mobilize" },
+        { "id": "relationships", "label": "Relationships", "source": "Po5 · conversation ladder" },
+        { "id": "po5", "label": "Power of 5", "source": "Po5 command center" },
+        { "id": "recruitment", "label": "Volunteer recruitment", "source": "Academy assignments" }
+      ],
+      "agenda": [
+        { "segment": "Four questions — month in review", "minutes": 10, "owner": "Volunteer lead" },
+        { "segment": "County captain round-robin — events & relationships", "minutes": 20, "owner": "Captains" },
+        { "segment": "Po5 & house party reports", "minutes": 15, "owner": "Po5 leaders" },
+        { "segment": "Relationship leaders emerged — not just attendance", "minutes": 10, "owner": "All" },
+        { "segment": "Next month commitments", "minutes": 5, "owner": "Volunteer lead" }
+      ],
+      "requiredOutput": {
+        "label": "Volunteer leadership output",
+        "items": ["Events held", "Relationships deepened", "Po5 commitments", "New leaders identified"]
+      },
+      "actionItems": [
+        { "id": "sv-1", "item": "June 28 launch — 20 founding leaders confirmed", "owner": "Volunteer lead TBD", "dueDate": "2026-06-28", "status": "open", "committedWeek": null },
+        { "id": "sv-2", "item": "Each captain reports 1 house party pathway", "owner": "County captains", "dueDate": "2026-07-31", "status": "open", "committedWeek": null }
+      ],
+      "notes": ""
+    }
+  ]
+}

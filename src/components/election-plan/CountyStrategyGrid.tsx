@@ -9,6 +9,9 @@ import {
   countyPlaybookHref,
 } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
+import { formatPercentIncrease } from "@/lib/election-plan/load-county-victory-targets";
+import { CountyVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -87,10 +90,27 @@ export function CountyStrategyGrid({ counties }: Props) {
                     Visits {c.coverageCompleted}/{c.coveragePlanned}
                   </span>
                 </div>
+                {(() => {
+                  const vt = getCountyVictoryTarget(c.county, c.tier);
+                  return vt ? (
+                    <p className="mt-2 text-xs font-semibold text-[var(--ep-navy)]">
+                      +{formatVotes(vt.growthNeeded)} votes · {formatPercentIncrease(vt.percentIncrease)}
+                    </p>
+                  ) : null;
+                })()}
               </button>
 
               {open ? (
                 <div className="mt-3 space-y-2 border-t border-[var(--ep-border)] pt-3 text-sm">
+                  {(() => {
+                    const vt = getCountyVictoryTarget(c.county, c.tier);
+                    return vt ? (
+                      <div className="mb-3 rounded-lg bg-[var(--ep-cream)] p-3">
+                        <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">Victory target</p>
+                        <CountyVictoryTargetsPanel target={vt} variant="compact" />
+                      </div>
+                    ) : null;
+                  })()}
                   <Row label="VCI" value={formatVotes(c.vci)} />
                   <Row label="Primary mission" value={c.primaryMission} />
                   <Row label="Lane 2 @ 50%" value={formatVotes(c.lane2Recovery50)} />

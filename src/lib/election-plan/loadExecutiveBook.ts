@@ -7,6 +7,7 @@ import {
   type ExecutiveBookChapterSlug,
 } from "./executiveBookChapters";
 import { getExecutiveBookBudgetLeadership } from "./load-executive-book-budget-leadership";
+import { getCountyVictoryTargetsRollup } from "./load-county-victory-targets";
 import {
   extractExecutiveBookToc,
   getAdjacentExecutiveBookChapters,
@@ -303,6 +304,15 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     liveStrip.push(
       { label: "Doctrine pillars", value: "8" },
       { label: "Audience", value: "Every room" },
+    );
+  }
+
+  if (chapter.slug === "county-victory-targets") {
+    const rollup = getCountyVictoryTargetsRollup();
+    liveStrip.push(
+      { label: "Counties", value: String(rollup.countyCount) },
+      { label: "Total growth needed", value: `+${rollup.totalGrowthNeeded.toLocaleString("en-US")}` },
+      { label: "Po5 leaders (state)", value: rollup.totalPo5Leaders.toLocaleString("en-US") },
     );
   }
 

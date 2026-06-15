@@ -42,6 +42,9 @@ export function CampaignAcademyHubPanel() {
         <Link href={academyTrainingHref()} className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
           Training →
         </Link>
+        <Link href="/election-plan/conversation-strategy" className="rounded-full border border-[var(--ep-gold)] px-3 py-1 text-xs font-semibold">
+          Organizing doctrine (10 min) →
+        </Link>
       </div>
 
       <div className="my-6 ep-card">

@@ -6,6 +6,7 @@ export type ExecutiveBookChapterSlug =
   | "labor-day"
   | "scorecard"
   | "message"
+  | "county-victory-targets"
   | "budget"
   | "power-of-5"
   | "students-for-arkansas"
@@ -63,6 +64,14 @@ export const EXECUTIVE_BOOK_CHAPTERS: ExecutiveBookChapterDef[] = [
     href: "/election-plan/executive-book/message",
   },
   {
+    slug: "county-victory-targets",
+    number: 6,
+    title: "County Victory Targets",
+    subtitle: "Votes, percent increase, weekly pace, and Power of 5 leaders — all 75 counties",
+    markdownFile: "06-COUNTY-VICTORY-TARGETS.md",
+    href: "/election-plan/executive-book/county-victory-targets",
+  },
+  {
     slug: "budget",
     number: 7,
     title: "Campaign Budget & Fundraising Targets",
@@ -73,8 +82,8 @@ export const EXECUTIVE_BOOK_CHAPTERS: ExecutiveBookChapterDef[] = [
   {
     slug: "power-of-5",
     number: 8,
-    title: "Eyeball-to-Eyeball Organizing & Power of 5",
-    subtitle: "How the movement grows — small rooms, surrogates, and the Power of 5",
+    title: "Arkansas Conversation Strategy",
+    subtitle: "Eyeball-to-eyeball organizing doctrine — trust, the conversation ladder, and Power of 5",
     markdownFile: "07-EYEBALL-TO-EYEBALL-ORGANIZING-AND-POWER-OF-5.md",
     href: "/election-plan/executive-book/power-of-5",
   },

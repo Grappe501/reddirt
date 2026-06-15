@@ -18,6 +18,9 @@ import {
 } from "@/lib/election-plan/load-phase-18-7b-ownership";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 import { OrganizationSummaryStrip } from "@/components/election-plan/CampaignOrganizationPanel";
+import { MeetingsSummaryStrip } from "@/components/election-plan/Phase187EMeetingPanels";
+import { ConversationStrategySummaryStrip } from "@/components/election-plan/ArkansasConversationStrategyPanel";
+import { CountyVictoryTargetsSummaryStrip } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { campaignOrganizationHref, getCampaignOrganizationRollup } from "@/lib/election-plan/load-campaign-organization";
 
 function coverageColor(level: CountyLeadershipRole["coverageLevel"]): string {
@@ -43,6 +46,12 @@ export function LeadershipHubPanel() {
 
       <div className="my-6">
         <OrganizationSummaryStrip />
+      </div>
+
+      <div className="my-6 grid gap-3 lg:grid-cols-3">
+        <MeetingsSummaryStrip />
+        <ConversationStrategySummaryStrip />
+        <CountyVictoryTargetsSummaryStrip />
       </div>
 
       <div className="my-6 ep-stat-grid">
@@ -73,6 +82,10 @@ export function LeadershipHubPanel() {
           { href: powerOf5CommandCenterHref(), title: "Power of 5 Command Center", detail: "Headline metric beside HCI" },
           { href: directDemocracyLeadershipHref(), title: "Direct Democracy Leadership", detail: "Ballot Initiative Support Program" },
           { href: searcyTrustPilotHref(), title: "Searcy County Trust Project", detail: "Cross-partisan pilot template" },
+          { href: "/election-plan/meetings", title: "Meeting & Accountability System", detail: "5 weekly rhythms · 4 questions every call" },
+          { href: "/election-plan/conversation-strategy", title: "Arkansas Conversation Strategy", detail: "Organizing doctrine · under 10 minutes" },
+          { href: "/election-plan/executive-book/county-victory-targets", title: "County Victory Targets", detail: "75 counties · votes · % increase · Po5 leaders" },
+          { href: "/election-plan/search", title: "Election Plan Search", detail: "Find any page · local index · 18.7H" },
         ].map((item) => (
           <Link key={item.href} href={item.href} className="ep-card block transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]">
             <h2 className="font-heading font-bold text-[var(--ep-navy)]">{item.title}</h2>

@@ -7,6 +7,7 @@ import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
 import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
 import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
 import { formatPct, formatBudget, formatVotes } from "@/lib/election-plan/electionPlanData";
+import { countyVictoryTargetsExecutiveHref, getCountyVictoryTargetsRollup } from "@/lib/election-plan/load-county-victory-targets";
 import { BattlefieldOverviewPanel } from "@/components/election-plan/BattlefieldOverviewPanel";
 import { CityStrategyList } from "@/components/election-plan/CityStrategyList";
 import { locationBriefMasterPlanHref } from "@/lib/election-plan/location-links";
@@ -264,6 +265,38 @@ function KellyDashboardPanel({ data }: Props) {
           </div>
         </div>
       ) : null}
+      {(() => {
+        const rollup = getCountyVictoryTargetsRollup();
+        return (
+          <div className="ep-card mb-8 border-l-4 border-emerald-600">
+            <h3 className="font-heading font-bold">County Victory Targets · 18.7G</h3>
+            <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
+              Local organizing language — votes, percent increase, weekly pace, Po5 leaders for all 75 counties
+            </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-4">
+              <div className="ep-stat">
+                <div className="ep-stat-value">+{formatVotes(rollup.totalGrowthNeeded)}</div>
+                <div className="ep-stat-label">Statewide growth needed</div>
+              </div>
+              <div className="ep-stat">
+                <div className="ep-stat-value">{rollup.redCount}</div>
+                <div className="ep-stat-label">Red counties (20%+)</div>
+              </div>
+              <div className="ep-stat">
+                <div className="ep-stat-value">{rollup.strategicCount}</div>
+                <div className="ep-stat-label">Strategic counties ★</div>
+              </div>
+              <div className="ep-stat">
+                <div className="ep-stat-value">{rollup.totalPo5Leaders.toLocaleString()}</div>
+                <div className="ep-stat-label">Po5 leaders needed</div>
+              </div>
+            </div>
+            <Link href={countyVictoryTargetsExecutiveHref()} className="ep-chapter-link mt-4 inline-flex text-sm">
+              Executive Book Ch. 6 · all 75 counties →
+            </Link>
+          </div>
+        );
+      })()}
       <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div className="ep-stat">
           <div className="ep-stat-value">{d.weeksRemaining}</div>
@@ -645,9 +678,8 @@ function CountiesPanel({ data }: Props) {
       />
       <div className="ep-card-glass mb-6 text-sm leading-relaxed text-[var(--ep-navy-muted)]">
         <p>
-          <strong className="text-[var(--ep-navy)]">Coverage</strong> on each card is{" "}
-          <em>visit contacts completed vs planned</em> for that county’s tier (A=5, B=3, C=2, D=1 visits). It tracks
-          field touch progress — not votes or registration. Expand a card for VCI and mission stats; use{" "}
+          <strong className="text-[var(--ep-navy)]">Victory targets</strong> on each card show votes needed and percent
+          increase — the language county chairs use. Expand for full target · weekly pace · Po5 leaders.{" "}
           <strong className="text-[var(--ep-navy)]">Open county playbook</strong> for the operational workbench.
         </p>
       </div>

@@ -1,0 +1,294 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-10",
+  "pass": "PHASE-18.7H-PAGE-BRIEFS",
+  "briefs": [
+    {
+      "id": "executive-book-hub",
+      "pathPattern": "/election-plan/executive-book",
+      "exact": true,
+      "title": "Executive Book",
+      "answers": "What is the leadership narrative? Which chapters can I share with partners, donors, and validators?",
+      "keyMetrics": ["10 chapters", "Weekly scorecard", "Budget targets", "GOTV manual"],
+      "bestFor": ["Kelly", "Ernie", "Steve", "Coalition partners", "Major donors"],
+      "relatedLinks": [
+        { "label": "County Victory Targets · Ch. 6", "href": "/election-plan/executive-book/county-victory-targets" },
+        { "label": "Budget · Ch. 7", "href": "/election-plan/executive-book/budget" },
+        { "label": "Conversation Strategy · Ch. 8", "href": "/election-plan/executive-book/power-of-5" }
+      ],
+      "searchKeywords": ["executive book", "leadership briefing", "chapters"]
+    },
+    {
+      "id": "executive-book-chapter",
+      "pathPattern": "/election-plan/executive-book/",
+      "exact": false,
+      "title": "Executive Book Chapter",
+      "answers": "What does leadership need to know about this topic — in shareable, board-ready form?",
+      "keyMetrics": ["Chapter metrics strip", "Live scorecard overlays", "Related chapters"],
+      "bestFor": ["Kelly", "Ernie", "Coalition validators", "Donor briefings"],
+      "relatedLinks": [{ "label": "Executive Book hub", "href": "/election-plan/executive-book" }],
+      "searchKeywords": ["executive book", "chapter"]
+    },
+    {
+      "id": "county-victory-targets",
+      "pathPattern": "/election-plan/county-victory-targets",
+      "exact": true,
+      "title": "County Victory Targets",
+      "answers": "How many more votes does each county need? What percent increase? How many Po5 leaders?",
+      "keyMetrics": ["75 counties", "Baseline vs target", "Weekly pace", "Traffic lights"],
+      "bestFor": ["County chairs", "County captains", "Volunteer leaders", "Local elected officials"],
+      "relatedLinks": [
+        { "label": "Executive Book Ch. 6", "href": "/election-plan/executive-book/county-victory-targets" },
+        { "label": "County playbooks", "href": "/election-plan?tab=countyPlaybooks" }
+      ],
+      "searchKeywords": ["county victory", "percent increase", "votes needed", "20%", "power of 5 leaders"]
+    },
+    {
+      "id": "county-playbook",
+      "pathPattern": "/election-plan/counties/",
+      "exact": false,
+      "title": "County Playbook",
+      "answers": "What is our county's vote target, field plan, calendar, strike team, and Kelly outreach contacts?",
+      "keyMetrics": ["Victory target", "Visit coverage", "Registration goal", "Field calendar stops"],
+      "bestFor": ["County chairs", "County captains", "Field organizers", "Steve · Ernie"],
+      "relatedLinks": [
+        { "label": "County victory targets", "href": "/election-plan/county-victory-targets" },
+        { "label": "Leadership hub", "href": "/election-plan/leadership" }
+      ],
+      "searchKeywords": ["county playbook", "county plan", "searcy", "white county", "pulaski"]
+    },
+    {
+      "id": "city-brief",
+      "pathPattern": "/election-plan/cities/",
+      "exact": false,
+      "title": "City Location Brief",
+      "answers": "What is the vote target and organizing plan for this priority city?",
+      "keyMetrics": ["Vote target", "Growth needed", "Visit cadence", "House party goals"],
+      "bestFor": ["City hosts", "County captains", "Field team", "Story Corps"],
+      "relatedLinks": [
+        { "label": "All priority cities", "href": "/election-plan/cities" },
+        { "label": "Location brief master plan", "href": "/election-plan/locations/master-plan" }
+      ],
+      "searchKeywords": ["city brief", "top 40 cities", "searcy city", "fayetteville", "little rock"]
+    },
+    {
+      "id": "conversation-strategy",
+      "pathPattern": "/election-plan/conversation-strategy",
+      "exact": true,
+      "title": "Arkansas Conversation Strategy",
+      "answers": "What is the organizing doctrine? How do we build trust through conversations, not ads?",
+      "keyMetrics": ["9-step conversation ladder", "Po5 engine", "Cross-party trust", "Direct Democracy plank"],
+      "bestFor": ["Every volunteer", "County captains", "Coalition leaders", "Campus leaders", "Surrogates"],
+      "relatedLinks": [
+        { "label": "Executive Book Ch. 8", "href": "/election-plan/executive-book/power-of-5" },
+        { "label": "Po5 command center", "href": "/election-plan/power-of-5/command-center" }
+      ],
+      "searchKeywords": ["conversation strategy", "eyeball to eyeball", "trust", "organizing doctrine"]
+    },
+    {
+      "id": "meetings-hub",
+      "pathPattern": "/election-plan/meetings",
+      "exact": true,
+      "title": "Meeting & Accountability System",
+      "answers": "How do we know teams are actually executing? What are the weekly meeting rhythms?",
+      "keyMetrics": ["5 weekly meetings", "4 questions every call", "Action items", "Owners & due dates"],
+      "bestFor": ["Kelly", "Ernie", "Steve", "Team leads", "Functional owners"],
+      "relatedLinks": [
+        { "label": "Org chart", "href": "/election-plan/organization" },
+        { "label": "Weekly leadership packet", "href": "/election-plan/leadership/weekly-packet" }
+      ],
+      "searchKeywords": ["meetings", "accountability", "monday leadership", "weekly rhythm"]
+    },
+    {
+      "id": "leadership-hub",
+      "pathPattern": "/election-plan/leadership",
+      "exact": true,
+      "title": "Leadership & Ownership Hub",
+      "answers": "Who owns what? What does each owner deliver every week?",
+      "keyMetrics": ["Teams without owner", "County chairs identified", "Responsibility matrix warnings"],
+      "bestFor": ["Kelly", "Ernie", "Steve", "Team leads"],
+      "relatedLinks": [
+        { "label": "Responsibility matrix", "href": "/election-plan/leadership/responsibility-matrix" },
+        { "label": "Campaign org chart", "href": "/election-plan/organization" }
+      ],
+      "searchKeywords": ["leadership", "ownership", "who owns what", "responsibility"]
+    },
+    {
+      "id": "organization",
+      "pathPattern": "/election-plan/organization",
+      "exact": true,
+      "title": "Campaign Organizational Chart",
+      "answers": "Who leads each functional team? What is the weekly deliverable for each team?",
+      "keyMetrics": ["12 functional teams", "Open positions", "Weekly meeting times", "Critical teams"],
+      "bestFor": ["Kelly", "Ernie", "Steve", "Prospective team leads"],
+      "relatedLinks": [
+        { "label": "Meeting rhythm", "href": "/election-plan/meetings" },
+        { "label": "Campaign Academy", "href": "/election-plan/academy" }
+      ],
+      "searchKeywords": ["org chart", "organization", "functional teams", "team owners"]
+    },
+    {
+      "id": "academy-hub",
+      "pathPattern": "/election-plan/academy",
+      "exact": true,
+      "title": "Campaign Academy",
+      "answers": "What volunteer roles exist? How does a new leader get onboarded?",
+      "keyMetrics": ["9 role tracks", "June 28 launch", "16 assignment slots", "Founding 20 tracker"],
+      "bestFor": ["Volunteers", "County captains", "Po5 leaders", "New recruits"],
+      "relatedLinks": [
+        { "label": "Start onboarding", "href": "/election-plan/academy/onboarding" },
+        { "label": "Conversation strategy", "href": "/election-plan/conversation-strategy" }
+      ],
+      "searchKeywords": ["campaign academy", "volunteer roles", "onboarding", "training"]
+    },
+    {
+      "id": "academy-role",
+      "pathPattern": "/election-plan/academy/",
+      "exact": false,
+      "title": "Campaign Academy Role",
+      "answers": "What does this volunteer role do? How does it connect to the victory plan?",
+      "keyMetrics": ["Role responsibilities", "Weekly tasks", "Connection to plan"],
+      "bestFor": ["Volunteers", "Role recruits", "County captains"],
+      "relatedLinks": [{ "label": "Campaign Academy hub", "href": "/election-plan/academy" }],
+      "searchKeywords": ["academy", "volunteer role", "county captain", "house party host"]
+    },
+    {
+      "id": "power-of-5",
+      "pathPattern": "/election-plan/power-of-5",
+      "exact": false,
+      "title": "Power of 5 Command Center",
+      "answers": "How is the relational network growing? What is the Po5 headline metric beside HCI?",
+      "keyMetrics": ["Network goal", "HCI goal", "Founding leaders", "Relationship network growth"],
+      "bestFor": ["Po5 leaders", "Volunteer leads", "Kelly", "Ernie"],
+      "relatedLinks": [
+        { "label": "Conversation strategy", "href": "/election-plan/conversation-strategy" },
+        { "label": "Executive Book Ch. 8", "href": "/election-plan/executive-book/power-of-5" }
+      ],
+      "searchKeywords": ["power of 5", "po5", "relational organizing", "bring 5"]
+    },
+    {
+      "id": "direct-democracy",
+      "pathPattern": "/election-plan/direct-democracy",
+      "exact": false,
+      "title": "Direct Democracy",
+      "answers": "What is the Ballot Initiative Support Program? How does Kelly's SOS role connect to citizen power?",
+      "keyMetrics": ["Initiative support program", "Citizen navigation role", "Platform plank tier"],
+      "bestFor": ["Policy validators", "Coalition partners", "Grassroots leaders", "Media"],
+      "relatedLinks": [
+        { "label": "Direct Democracy leadership", "href": "/election-plan/direct-democracy/leadership" },
+        { "label": "Conversation strategy", "href": "/election-plan/conversation-strategy" }
+      ],
+      "searchKeywords": ["direct democracy", "ballot initiative", "citizen power", "initiative support"]
+    },
+    {
+      "id": "budget-dashboard",
+      "pathPattern": "/election-plan/executive-book/budget",
+      "exact": false,
+      "title": "Campaign Budget",
+      "answers": "What is our budget framework? What are the fundraising targets by month?",
+      "keyMetrics": ["Salary floor", "Monthly burn", "Fundraising targets", "Remaining to raise"],
+      "bestFor": ["Kelly", "Ernie", "Finance committee", "Major donors"],
+      "relatedLinks": [
+        { "label": "Budget dashboard", "href": "/election-plan/executive-book/budget/dashboard" },
+        { "label": "Weekly dashboard", "href": "/election-plan?tab=weeklyDashboard" }
+      ],
+      "searchKeywords": ["budget", "fundraising", "raise", "money", "salary", "burn rate"]
+    },
+    {
+      "id": "campus-hub",
+      "pathPattern": "/election-plan/campuses",
+      "exact": false,
+      "title": "Campus Network",
+      "answers": "Which campuses have captains? Is Freshman Week ready?",
+      "keyMetrics": ["Campus captains", "Freshman Week readiness", "Registrations", "Mobilize events"],
+      "bestFor": ["Chance", "Xav", "Campus captains", "Students for Arkansas leads"],
+      "relatedLinks": [
+        { "label": "Freshman Week", "href": "/election-plan/campuses/freshman-week" },
+        { "label": "Campus captains", "href": "/election-plan/campuses/captains" },
+        { "label": "Tuesday campus meeting", "href": "/election-plan/meetings/tuesday-campus" }
+      ],
+      "searchKeywords": ["campus", "freshman week", "ASU", "UALR", "students for arkansas", "college"]
+    },
+    {
+      "id": "forward-motion-stop",
+      "pathPattern": "/election-plan/forward-motion/",
+      "exact": false,
+      "title": "Forward Motion Stop Command Center",
+      "answers": "Is this Kelly stop ready? What are the county, coalition, promotion, and Po5 goals for this event?",
+      "keyMetrics": ["Readiness score", "Po5 goals", "House party engine", "Conversation ladder leaders"],
+      "bestFor": ["Steve", "Field team", "Story Corps", "County captains at stop"],
+      "relatedLinks": [
+        { "label": "Forward Motion hub", "href": "/election-plan?tab=forwardMotion" },
+        { "label": "Field calendar", "href": "/election-plan?tab=fieldCalendar" }
+      ],
+      "searchKeywords": ["forward motion", "kelly stop", "event command center", "stop readiness"]
+    },
+    {
+      "id": "field-calendar",
+      "pathPattern": "/election-plan/field-calendar",
+      "exact": false,
+      "title": "Field Calendar",
+      "answers": "What events are on the field calendar? What is the operations view?",
+      "keyMetrics": ["Upcoming events", "Event worksheets", "County bindings"],
+      "bestFor": ["Steve", "Field ops", "Mobilize lead", "County captains"],
+      "relatedLinks": [
+        { "label": "Forward Motion", "href": "/election-plan?tab=forwardMotion" },
+        { "label": "Event approvals", "href": "/election-plan/event-approvals" }
+      ],
+      "searchKeywords": ["field calendar", "events", "mobilize", "calendar"]
+    },
+    {
+      "id": "coverage-reality",
+      "pathPattern": "/election-plan",
+      "exact": false,
+      "title": "Coverage Reality",
+      "answers": "Which counties has Kelly actually visited? Where are the gaps?",
+      "keyMetrics": ["Counties visited", "Never visited", "Priority queue", "Growth targets per county"],
+      "bestFor": ["Kelly", "Steve", "Ernie", "Travel planning"],
+      "relatedLinks": [
+        { "label": "Open Coverage Reality tab", "href": "/election-plan?tab=presenceMap" },
+        { "label": "County victory targets", "href": "/election-plan/county-victory-targets" }
+      ],
+      "searchKeywords": ["coverage reality", "counties visited", "presence map", "never visited"]
+    },
+    {
+      "id": "weekly-dashboard",
+      "pathPattern": "/election-plan",
+      "exact": false,
+      "title": "Weekly Dashboard",
+      "answers": "What are Kelly's priorities this week? How is fundraising and county coverage tracking?",
+      "keyMetrics": ["Weeks remaining", "Fundraising progress", "Scorecard", "County victory rollup"],
+      "bestFor": ["Kelly", "Ernie", "Monday leadership"],
+      "relatedLinks": [
+        { "label": "Weekly dashboard tab", "href": "/election-plan?tab=weeklyDashboard" },
+        { "label": "Monday leadership meeting", "href": "/election-plan/meetings/monday-leadership" }
+      ],
+      "searchKeywords": ["weekly dashboard", "kelly dashboard", "this week", "priorities"]
+    },
+    {
+      "id": "searcy-trust",
+      "pathPattern": "/election-plan/movement-infrastructure/searcy-trust-pilot",
+      "exact": true,
+      "title": "Searcy County Trust Pilot",
+      "answers": "How do we build cross-party trust in rural Republican counties?",
+      "keyMetrics": ["Trust network targets", "Cross-party validators", "Pilot template"],
+      "bestFor": ["Coalition lead", "Barry Jefferson", "Rural county chairs", "Faith outreach"],
+      "relatedLinks": [
+        { "label": "Searcy County playbook", "href": "/election-plan/counties/searcy" },
+        { "label": "Conversation strategy", "href": "/election-plan/conversation-strategy" }
+      ],
+      "searchKeywords": ["searcy", "trust pilot", "cross party", "rural republican"]
+    },
+    {
+      "id": "search-hub",
+      "pathPattern": "/election-plan/search",
+      "exact": true,
+      "title": "Election Plan Search",
+      "answers": "Where is anything in the Election Plan, Executive Book, or campaign docs?",
+      "keyMetrics": ["Keyword search", "Local corpus only", "No admin or private data"],
+      "bestFor": ["Everyone with Election Plan access"],
+      "relatedLinks": [{ "label": "Election Plan home", "href": "/election-plan" }],
+      "searchKeywords": ["search", "find", "where is"]
+    }
+  ]
+}

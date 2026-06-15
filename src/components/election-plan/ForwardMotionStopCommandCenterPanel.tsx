@@ -7,6 +7,7 @@ import { formatPromotionStatus } from "@/lib/election-plan/forward-motion-readin
 import { forwardMotionHubHref } from "@/lib/election-plan/forward-motion-links";
 import type { StopCommandCenterView } from "@/lib/election-plan/forward-motion-stop-types";
 import { getThankYouDoctrine } from "@/lib/election-plan/load-movement-infrastructure";
+import { conversationStrategyHref, getArkansasConversationStrategy } from "@/lib/election-plan/load-arkansas-conversation-strategy";
 import { eventApprovalsHref } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import {
@@ -393,6 +394,24 @@ export function ForwardMotionStopCommandCenterPanel({ view }: Props) {
               ))}
             </tbody>
           </table>
+        </div>
+      </Section>
+
+      <Section id="conversation-ladder" title="Conversation ladder · relationship leaders">
+        <p className="mb-3 text-sm text-[var(--ep-navy-muted)]">
+          {getArkansasConversationStrategy().stopCommandCenterPrompt}
+        </p>
+        <div className="ep-card border-l-4 border-[var(--ep-gold)]">
+          <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Not just attendance</p>
+          <p className="mt-1 text-sm font-medium text-[var(--ep-navy)]">
+            {getArkansasConversationStrategy().successQuestion}
+          </p>
+          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
+            Large events create visibility. Small events create votes.
+          </p>
+          <Link href={conversationStrategyHref()} className="mt-3 inline-block text-xs font-semibold underline">
+            Arkansas Conversation Strategy →
+          </Link>
         </div>
       </Section>
 

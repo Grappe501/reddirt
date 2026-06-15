@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CountyVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { CountyNetworkingContactsPanel } from "@/components/election-plan/CountyNetworkingContactsPanel";
 import { CountyRegistrationAllocationPanel } from "@/components/election-plan/CountyRegistrationAllocationPanel";
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
@@ -13,6 +14,7 @@ import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/t
 import { countyWorkbenchExternalHref } from "@/lib/election-plan/location-links";
 import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { getSpecialKpiGoalForCounty } from "@/lib/election-plan/load-special-kpi-goals";
 import { COUNTY_COVERAGE_EXPLAINER } from "@/lib/election-plan/location-links";
 import { cn } from "@/lib/utils";
@@ -60,6 +62,7 @@ export function CountyPlaybookPanel({
 }: Props) {
   const external = countyWorkbenchExternalHref(county.county, county.slug);
   const specialKpi = getSpecialKpiGoalForCounty(county.slug);
+  const victoryTarget = getCountyVictoryTarget(county.county, county.tier);
 
   return (
     <section>
@@ -89,6 +92,12 @@ export function CountyPlaybookPanel({
           Full county workbench ↗
         </a>
       </div>
+
+      {victoryTarget ? (
+        <div className="mb-8">
+          <CountyVictoryTargetsPanel target={victoryTarget} variant="hero" />
+        </div>
+      ) : null}
 
       <div className="my-6 ep-stat-grid">
         <div className="ep-stat">
