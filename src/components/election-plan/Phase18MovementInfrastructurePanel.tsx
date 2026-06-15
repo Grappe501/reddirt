@@ -56,6 +56,28 @@ export function Phase18MovementInfrastructurePanel() {
         </div>
       </div>
 
+      <div className="mb-8 ep-card border-2 border-[var(--ep-navy)]">
+        <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--ep-navy-muted)]">Phase 18.7B · Ownership Activation</p>
+        <h3 className="mt-1 font-heading font-bold text-[var(--ep-navy)]">Who makes it happen this week?</h3>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Link href="/election-plan/leadership" className="rounded-full bg-[var(--ep-navy)] px-3 py-1 text-xs font-semibold text-white">
+            Leadership hub →
+          </Link>
+          <Link href="/election-plan/leadership/responsibility-matrix" className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
+            Responsibility matrix →
+          </Link>
+          <Link href="/election-plan/leadership/weekly-packet" className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
+            Weekly packet →
+          </Link>
+          <Link href="/election-plan/leadership/county-coverage" className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
+            County coverage →
+          </Link>
+          <Link href="/election-plan/power-of-5/command-center" className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
+            Power of 5 →
+          </Link>
+        </div>
+      </div>
+
       <div className="mb-8 ep-stat-grid">
         <div className="ep-stat">
           <div className="ep-stat-value">{campus.campusCount}</div>

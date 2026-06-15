@@ -1,0 +1,22 @@
+{
+  "updatedAt": "2026-06-10",
+  "title": "Ballot Initiative Support Program",
+  "subtitle": "Kelly's signature issue — meaningful pathway to propose and repeal laws",
+  "integrationSurfaces": [
+    "Executive Book",
+    "Coalition Command",
+    "Candidate Messaging",
+    "Trust Network",
+    "Debate prep"
+  ],
+  "tracking": [
+    { "id": "clerks-contacted", "label": "Clerks contacted", "goal": 15, "current": 0, "owner": null },
+    { "id": "librarians-contacted", "label": "Librarians contacted", "goal": 25, "current": 0, "owner": null },
+    { "id": "committee-meetings", "label": "Ballot committee meetings", "goal": 12, "current": 0, "owner": null },
+    { "id": "presentations", "label": "Educational presentations", "goal": 10, "current": 0, "owner": null },
+    { "id": "training-sessions", "label": "Training sessions", "goal": 8, "current": 0, "owner": null }
+  ],
+  "weeklyDeliverable": "2 clerk or library contacts · 1 presentation or training scheduled",
+  "publicResourceCenter": "/direct-democracy",
+  "electionPlanHref": "/election-plan/direct-democracy"
+}

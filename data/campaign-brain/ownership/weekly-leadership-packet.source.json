@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-10",
+  "pass": "PHASE-18.7B-WEEKLY-PACKET",
+  "doctrine": "Every Monday — leadership operates from this packet alone.",
+  "generationDay": "Monday",
+  "sections": {
+    "kelly": {
+      "label": "Kelly priorities",
+      "owner": "Kelly Grappe",
+      "priorities": [
+        "Fundraising conversations — major donors and Sherwood hosts",
+        "Relationship rooms — small gatherings over large events",
+        "County completion corridors — immersion schedule adherence",
+        "Direct democracy signature issue — clerk and library conversations",
+        "Searcy County trust pilot — cross-partisan listening sessions"
+      ]
+    },
+    "ernie": {
+      "label": "Ernie priorities",
+      "owner": "Ernie",
+      "priorities": [
+        "Finance committee and major donor pipeline",
+        "Sherwood VIP table and host cultivation",
+        "Monthly fundraising goal tracking against $172K remaining",
+        "Compliance and reporting sign-off",
+        "Volunteer appreciation budget planning"
+      ]
+    },
+    "volunteer": {
+      "label": "Volunteer priorities",
+      "owner": "TBD — Volunteer Launch lead",
+      "priorities": [
+        "Confirm 20 founding leaders for June 28 launch",
+        "Mobilize events for every qualifying field stop",
+        "Thank-you closeout on every immersion",
+        "Power of 5 commitments and house party hosts",
+        "Phone bank and postcard team recruitment"
+      ]
+    },
+    "lte": {
+      "label": "LTE priorities",
+      "owner": "TBD — LTE Corps lead",
+      "priorities": [
+        "Assign regional LTE coordinators (8 regions)",
+        "Recruit 3–5 citizen writers per priority county",
+        "Submit letters to tier-2/3 newspapers this week",
+        "Log submissions and publications in registry",
+        "Amplify only after publication"
+      ]
+    },
+    "campus": {
+      "label": "Campus priorities",
+      "owner": "TBD — Campus Network lead",
+      "priorities": [
+        "Recruit ASU · UALR · UA Fayetteville campus captains",
+        "Freshman Week readiness — table locations by August 1",
+        "Mobilize events for tabling and Kelly appearances",
+        "Registration materials for move-in blitz",
+        "Hold campus fundraising workflow until leaders confirmed"
+      ]
+    },
+    "coalition": {
+      "label": "Coalition priorities",
+      "owner": "Coalition command",
+      "priorities": [
+        "Danny — labor meetings and Democratic Union Caucus",
+        "April liaison — educator county intros (Benton · Washington)",
+        "Ali / Ebrahim — Muslim community leader meetings",
+        "Jasmine — Hispanic outreach framework conversations",
+        "Barry Jefferson — NAACP branch calls (5 branches)"
+      ]
+    }
+  }
+}

@@ -484,7 +484,12 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
 
           {chapter.ownershipRows && chapter.ownershipRows.length > 0 ? (
             <div className="ep-card mb-8 overflow-x-auto">
-              <h2 className="font-heading font-bold text-[var(--ep-navy)]">Ownership matrix</h2>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h2 className="font-heading font-bold text-[var(--ep-navy)]">Ownership matrix</h2>
+                <Link href="/election-plan/leadership/responsibility-matrix" className="text-xs font-semibold text-[var(--ep-navy)] hover:underline">
+                  Phase 18.7B responsibility matrix →
+                </Link>
+              </div>
               <table className="mt-4 w-full min-w-[640px] text-sm">
                 <thead>
                   <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase text-[var(--ep-navy-muted)]">

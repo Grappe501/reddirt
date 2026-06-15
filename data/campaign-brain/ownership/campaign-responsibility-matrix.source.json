@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-10",
+  "pass": "PHASE-18.7B-RESPONSIBILITY-MATRIX",
+  "doctrine": "One named owner per major initiative — not committees. Red warnings for anything unassigned.",
+  "initiatives": [
+    {
+      "id": "volunteer-launch",
+      "initiative": "Volunteer Launch",
+      "owner": null,
+      "backup": null,
+      "goal": "20 founding leaders by June 28 · statewide volunteer OS live",
+      "weeklyDeliverable": "Founding leader confirmations · Mobilize events live",
+      "status": "critical",
+      "href": "/election-plan?tab=volunteerLeadership"
+    },
+    {
+      "id": "sherwood-event",
+      "initiative": "Sherwood Event",
+      "owner": "Steve Grappe",
+      "backup": "John Duke & Jay Powell",
+      "goal": "50 hosts · 5 VIP tables · projected $11.5K net",
+      "weeklyDeliverable": "Host sales · VIP tables · event ops",
+      "status": "critical",
+      "href": "/election-plan?tab=sherwoodVictory"
+    },
+    {
+      "id": "lte-corps",
+      "initiative": "LTE Corps (Arkansas Citizen Voices)",
+      "owner": null,
+      "backup": null,
+      "goal": "Every week · every region · every tier-2/3 newspaper",
+      "weeklyDeliverable": "Letters submitted · publications logged · coordinators assigned",
+      "status": "critical",
+      "href": "/election-plan/movement-infrastructure/lte-program"
+    },
+    {
+      "id": "campus-network",
+      "initiative": "Campus Network",
+      "owner": null,
+      "backup": null,
+      "goal": "16 campuses · captains · registration goals · ASU · UALR · UA priority",
+      "weeklyDeliverable": "Captain assignments · campus Mobilize events",
+      "status": "critical",
+      "href": "/election-plan/campuses/captains"
+    },
+    {
+      "id": "freshman-week",
+      "initiative": "Freshman Week",
+      "owner": null,
+      "backup": null,
+      "goal": "14 campuses operational before August move-in",
+      "weeklyDeliverable": "Readiness checklist progress · table locations · materials",
+      "status": "critical",
+      "href": "/election-plan/campuses/freshman-week"
+    },
+    {
+      "id": "story-corps",
+      "initiative": "Story Corps",
+      "owner": "Leann Solice",
+      "backup": null,
+      "goal": "Vertical video teams · 5 assets per Kelly stop",
+      "weeklyDeliverable": "Reels · testimonials · forum clips published",
+      "status": "active",
+      "href": "/election-plan/movement-infrastructure/story-corps"
+    },
+    {
+      "id": "labor-outreach",
+      "initiative": "Labor Outreach",
+      "owner": "Danny Brown",
+      "backup": null,
+      "goal": "Democratic Union Caucus · statewide labor validators",
+      "weeklyDeliverable": "Union meetings · labor briefing distribution",
+      "status": "active",
+      "href": "/election-plan?tab=coalitionCommand"
+    },
+    {
+      "id": "aea-outreach",
+      "initiative": "AEA Outreach",
+      "owner": "April Reisma liaison",
+      "backup": null,
+      "goal": "Educator network · Benton + Washington county intros",
+      "weeklyDeliverable": "Teacher network meetings",
+      "status": "active",
+      "href": "/election-plan?tab=coalitionCommand"
+    },
+    {
+      "id": "muslim-outreach",
+      "initiative": "Muslim Outreach",
+      "owner": "Ali Khan / Ebrahim",
+      "backup": null,
+      "goal": "Community leader relationships · first meetings scheduled",
+      "weeklyDeliverable": "Community meetings · introductions",
+      "status": "active",
+      "href": "/election-plan?tab=coalitionCommand"
+    },
+    {
+      "id": "hispanic-outreach",
+      "initiative": "Hispanic Outreach",
+      "owner": "Jasmine Serano",
+      "backup": null,
+      "goal": "Hispanic community engagement framework live",
+      "weeklyDeliverable": "Community conversations · coalition validators",
+      "status": "active",
+      "href": "/election-plan?tab=coalitionCommand"
+    },
+    {
+      "id": "fundraising",
+      "initiative": "Fundraising",
+      "owner": "Kelly Grappe / Ernie",
+      "backup": "Steve Grappe",
+      "goal": "$172K remaining to working campaign target by Election Day",
+      "weeklyDeliverable": "Monthly goal progress · major donor pipeline · Sherwood revenue",
+      "status": "critical",
+      "href": "/election-plan/executive-book/budget/dashboard"
+    },
+    {
+      "id": "direct-democracy",
+      "initiative": "Direct Democracy Leadership",
+      "owner": null,
+      "backup": null,
+      "goal": "Ballot Initiative Support Program — clerks · libraries · committees",
+      "weeklyDeliverable": "Outreach contacts · presentations · training sessions",
+      "status": "active",
+      "href": "/election-plan/direct-democracy/leadership"
+    },
+    {
+      "id": "power-of-5",
+      "initiative": "Power of 5",
+      "owner": null,
+      "backup": null,
+      "goal": "60K network · 75 county hosts · house parties multiplying",
+      "weeklyDeliverable": "Active leaders · Po5 commitments · house parties hosted",
+      "status": "critical",
+      "href": "/election-plan/power-of-5/command-center"
+    },
+    {
+      "id": "searcy-trust-pilot",
+      "initiative": "Searcy County Trust Project",
+      "owner": null,
+      "backup": null,
+      "goal": "50%+1 outright win pilot · cross-partisan trust template",
+      "weeklyDeliverable": "Republican relationship meetings · clerk partnership progress",
+      "status": "active",
+      "href": "/election-plan/movement-infrastructure/searcy-trust-pilot"
+    },
+    {
+      "id": "campaign-ops",
+      "initiative": "Campaign Operations",
+      "owner": "Steve Grappe",
+      "backup": null,
+      "goal": "Calendar truth · county completion · Kelly approval queue",
+      "weeklyDeliverable": "Ops routing · event promotion · counties touched",
+      "status": "active",
+      "href": "/election-plan?tab=warRoom"
+    }
+  ]
+}

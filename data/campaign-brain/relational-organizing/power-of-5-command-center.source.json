@@ -1,0 +1,16 @@
+{
+  "updatedAt": "2026-06-10",
+  "title": "Power of 5 Command Center",
+  "subtitle": "Vote-generation system — headline metric beside HCI",
+  "headlineMetrics": [
+    { "id": "active-leaders", "label": "Active Po5 leaders", "current": 0, "goal": 500 },
+    { "id": "people-recruited", "label": "People recruited", "current": 0, "goal": 60000 },
+    { "id": "house-parties", "label": "House parties hosted", "current": 0, "goal": 150 },
+    { "id": "contacts-generated", "label": "Contacts generated", "current": 0, "goal": 250000 },
+    { "id": "volunteers-activated", "label": "Volunteers activated", "current": 0, "goal": 2000 },
+    { "id": "po5-commitments", "label": "Po5 commitments", "current": 0, "goal": 12000 }
+  ],
+  "foundingLeaders": { "current": 0, "goal": 20, "deadline": "2026-06-28" },
+  "countyHosts": { "current": 0, "goal": 75 },
+  "hciLink": { "current": 0, "goal": 250000, "label": "HCI (Household Contact Index)" }
+}

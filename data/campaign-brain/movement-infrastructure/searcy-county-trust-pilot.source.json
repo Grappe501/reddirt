@@ -1,0 +1,29 @@
+{
+  "updatedAt": "2026-06-10",
+  "title": "Searcy County Trust Project",
+  "subtitle": "Dedicated cross-partisan pilot — if it works here, it becomes the template for rural GOP counties",
+  "doctrine": "Partnership in good faith — not agreement. Election integrity through competence and listening.",
+  "winCondition": {
+    "label": "Win Searcy County outright (50%+1)",
+    "targetVotes": 1547,
+    "basis": "2022 turnout @ 50%+1 majority"
+  },
+  "replicationCounties": ["Baxter", "Boone", "Marion", "Sharp", "Fulton", "Stone", "Izard"],
+  "goals": [
+    { "id": "republican-meetings", "label": "Republican relationship meetings", "target": 12, "completed": 0, "owner": null },
+    { "id": "listening-sessions", "label": "Election system listening sessions", "target": 6, "completed": 0, "owner": null },
+    { "id": "hardware-audit", "label": "Hardware audit discussions", "target": 3, "completed": 0, "owner": null },
+    { "id": "clerk-partnership", "label": "County clerk partnership", "target": 1, "completed": 0, "owner": null },
+    { "id": "community-intros", "label": "Community leadership introductions", "target": 20, "completed": 0, "owner": null }
+  ],
+  "milestones": [
+    { "date": "2026-07-15", "label": "First Republican relationship meeting scheduled" },
+    { "date": "2026-08-01", "label": "Clerk partnership conversation initiated" },
+    { "date": "2026-09-07", "label": "Labor Day gate — trust network metrics reviewed" }
+  ],
+  "linkedSurfaces": [
+    { "label": "Special KPI", "href": "/election-plan?tab=warRoom" },
+    { "label": "Trust Network", "href": "/election-plan/movement-infrastructure/trust-network" },
+    { "label": "Searcy County playbook", "href": "/election-plan/counties/searcy" }
+  ]
+}

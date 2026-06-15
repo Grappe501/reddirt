@@ -1,0 +1,60 @@
+{
+  "updatedAt": "2026-06-10",
+  "note": "Sparse overrides — loader scaffolds all 75 counties; fill as chairs and leads are confirmed.",
+  "counties": {
+    "Pulaski": {
+      "chairIdentified": true,
+      "chairName": "County party chair (confirmed)",
+      "volunteerCaptain": null,
+      "mobilizeLead": null,
+      "mediaLead": null,
+      "faithLead": null,
+      "laborLead": null
+    },
+    "Benton": {
+      "chairIdentified": false,
+      "volunteerCaptain": null,
+      "mobilizeLead": null,
+      "mediaLead": null,
+      "faithLead": null,
+      "laborLead": null,
+      "notes": "NWACC · Fayetteville campus priority"
+    },
+    "Washington": {
+      "chairIdentified": false,
+      "volunteerCaptain": null,
+      "mobilizeLead": null,
+      "mediaLead": null,
+      "faithLead": null,
+      "laborLead": null,
+      "notes": "UA Fayetteville campus priority"
+    },
+    "Craighead": {
+      "chairIdentified": false,
+      "volunteerCaptain": null,
+      "mobilizeLead": null,
+      "mediaLead": null,
+      "faithLead": null,
+      "laborLead": null,
+      "notes": "A-State campus priority"
+    },
+    "Searcy": {
+      "chairIdentified": false,
+      "volunteerCaptain": null,
+      "mobilizeLead": null,
+      "mediaLead": null,
+      "faithLead": null,
+      "laborLead": null,
+      "notes": "Trust pilot · 50%+1 outright win KPI"
+    },
+    "Greene": {
+      "chairIdentified": false,
+      "volunteerCaptain": null,
+      "mobilizeLead": null,
+      "mediaLead": null,
+      "faithLead": null,
+      "laborLead": null,
+      "notes": "Jacksonville Festiville secondary goal"
+    }
+  }
+}
