@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T07:16:15.682Z",
+  "generatedAt": "2026-06-15T07:52:35.444Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -8754,27 +8754,6 @@
         ]
       },
       {
-        "slug": "audit",
-        "number": 6,
-        "title": "Executive Book Audit",
-        "subtitle": "V1.0 readiness assessment for leadership review",
-        "href": "/election-plan/executive-book/audit",
-        "statusLines": [
-          "Executive Book V1.0",
-          "Status: operational assign owners"
-        ],
-        "metrics": [
-          {
-            "label": "Completeness",
-            "value": "95%"
-          },
-          {
-            "label": "TBD owners",
-            "value": "8"
-          }
-        ]
-      },
-      {
         "slug": "budget",
         "number": 7,
         "title": "Campaign Budget & Fundraising Targets",
@@ -8797,6 +8776,53 @@
           {
             "label": "Monthly burn",
             "value": "$28K"
+          }
+        ]
+      },
+      {
+        "slug": "gotv",
+        "number": 8,
+        "title": "Arkansas GOTV Operations Plan",
+        "subtitle": "Field manual — how we win Election Day",
+        "href": "/election-plan/executive-book/gotv",
+        "statusLines": [
+          "Election Day Nov 3",
+          "Ballots cast = win condition",
+          "Sherwood launches statewide GOTV"
+        ],
+        "metrics": [
+          {
+            "label": "HCI goal",
+            "value": "250K"
+          },
+          {
+            "label": "Lane 2 target",
+            "value": "51K"
+          },
+          {
+            "label": "Counties",
+            "value": "75"
+          }
+        ]
+      },
+      {
+        "slug": "audit",
+        "number": 9,
+        "title": "Executive Book Audit",
+        "subtitle": "V1.0 readiness assessment for leadership review",
+        "href": "/election-plan/executive-book/audit",
+        "statusLines": [
+          "Executive Book V1.0",
+          "Status: operational assign owners"
+        ],
+        "metrics": [
+          {
+            "label": "Completeness",
+            "value": "95%"
+          },
+          {
+            "label": "TBD owners",
+            "value": "8"
           }
         ]
       }

@@ -13,14 +13,16 @@ The Executive Book is complete enough to **run the campaign**. Remaining work is
 | 3 | **Labor Day Readiness** | [03-SEPTEMBER-READINESS-LABOR-DAY.md](./03-SEPTEMBER-READINESS-LABOR-DAY.md) |
 | 4 | **Campaign Health Scorecard** | [04-WEEKLY-SUCCESS-SCORECARD.md](./04-WEEKLY-SUCCESS-SCORECARD.md) |
 | 5 | **The Kelly Grappe Message** | [05-THE-KELLY-GRAPPE-MESSAGE.md](./05-THE-KELLY-GRAPPE-MESSAGE.md) |
-| 6 | **Completion Audit** | [EXECUTIVE-BOOK-COMPLETION-AUDIT.md](./EXECUTIVE-BOOK-COMPLETION-AUDIT.md) |
 | 7 | **Campaign Budget & Fundraising Targets** | [06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md](./06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md) |
+| 8 | **Arkansas GOTV Operations Plan** | [07-ARKANSAS-GOTV-OPERATIONS-PLAN.md](./07-ARKANSAS-GOTV-OPERATIONS-PLAN.md) |
+| 9 | **Completion Audit** | [EXECUTIVE-BOOK-COMPLETION-AUDIT.md](./EXECUTIVE-BOOK-COMPLETION-AUDIT.md) |
 
 ## Rebuild
 
 ```bash
 npm run campaign-brain:executive-book:completion
 npm run campaign-brain:budget:build
+npm run campaign-brain:gotv-operations:build
 npm run election-plan:build
 ```
 

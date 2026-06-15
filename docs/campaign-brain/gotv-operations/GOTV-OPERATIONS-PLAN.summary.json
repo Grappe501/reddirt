@@ -1,0 +1,135 @@
+{
+  "generatedAt": "2026-06-15T07:52:24.506Z",
+  "pass": "GOTV-OPERATIONS-PLAN-1.0",
+  "disclaimer": "Field operations manual — planning document. Assign owners before execution. Not legal advice. Not individual voter targeting automation.",
+  "electionDay": "2026-11-03",
+  "earlyVotingStart": "2026-10-20",
+  "winCondition": {
+    "lane2TurnoutTarget": 51051,
+    "registrationGoal": 50000,
+    "hciGoal": 250000,
+    "hciCurrent": 0
+  },
+  "targetUniverse": {
+    "tier1Top10": [
+      "Little Rock",
+      "Fayetteville",
+      "Springdale",
+      "North Little Rock",
+      "Fort Smith",
+      "Rogers",
+      "Conway",
+      "Pine Bluff",
+      "Jonesboro",
+      "Bentonville"
+    ],
+    "tier2Top40Count": 40,
+    "tier3DeltaCounties": [
+      "Crittenden",
+      "Mississippi",
+      "St. Francis",
+      "Phillips",
+      "Monroe",
+      "Chicot",
+      "Ashley",
+      "Lincoln"
+    ],
+    "tier4CountyRecords": 75
+  },
+  "channelGoals": [
+    {
+      "id": "phoneBank",
+      "label": "Phone Bank",
+      "goal": 29000,
+      "current": 0
+    },
+    {
+      "id": "postcard",
+      "label": "Postcards",
+      "goal": 48000,
+      "current": 0
+    },
+    {
+      "id": "canvass",
+      "label": "Canvass",
+      "goal": 60000,
+      "current": 0
+    },
+    {
+      "id": "powerOf5",
+      "label": "Power of 5",
+      "goal": 25000,
+      "current": 0
+    },
+    {
+      "id": "houseParty",
+      "label": "House Parties",
+      "goal": 3000,
+      "current": 0
+    },
+    {
+      "id": "gotv",
+      "label": "GOTV",
+      "goal": 15000,
+      "current": 0
+    }
+  ],
+  "dailyMetrics": [
+    {
+      "metric": "Calls",
+      "goal": 29000,
+      "current": 0
+    },
+    {
+      "metric": "Conversations (HCI)",
+      "goal": 250000,
+      "current": 0
+    },
+    {
+      "metric": "Postcards mailed",
+      "goal": 48000,
+      "current": 0
+    },
+    {
+      "metric": "Doors knocked",
+      "goal": 60000,
+      "current": 0
+    },
+    {
+      "metric": "GOTV contacts",
+      "goal": 15000,
+      "current": 0
+    },
+    {
+      "metric": "Ballots cast",
+      "goal": "Plurality coalition",
+      "current": "Election Day"
+    }
+  ],
+  "electionDayChecklist": [
+    {
+      "item": "Poll greeters assigned",
+      "status": "needs_assignment"
+    },
+    {
+      "item": "Poll watcher credentials",
+      "status": "needs_assignment"
+    },
+    {
+      "item": "Poll coverage map",
+      "status": "needs_build"
+    },
+    {
+      "item": "Candidate Election Day routing",
+      "status": "needs_lock"
+    },
+    {
+      "item": "War room lead",
+      "status": "needs_assignment"
+    },
+    {
+      "item": "Voter hotline",
+      "status": "needs_assignment"
+    }
+  ]
+}

@@ -6,8 +6,9 @@ export type ExecutiveBookChapterSlug =
   | "labor-day"
   | "scorecard"
   | "message"
-  | "audit"
-  | "budget";
+  | "budget"
+  | "gotv"
+  | "audit";
 
 export type ExecutiveBookChapterDef = {
   slug: ExecutiveBookChapterSlug;
@@ -60,20 +61,28 @@ export const EXECUTIVE_BOOK_CHAPTERS: ExecutiveBookChapterDef[] = [
     href: "/election-plan/executive-book/message",
   },
   {
-    slug: "audit",
-    number: 6,
-    title: "Executive Book Audit",
-    subtitle: "V1.0 readiness assessment for leadership review",
-    markdownFile: "EXECUTIVE-BOOK-COMPLETION-AUDIT.md",
-    href: "/election-plan/executive-book/audit",
-  },
-  {
     slug: "budget",
     number: 7,
     title: "Campaign Budget & Fundraising Targets",
     subtitle: "Projected budget framework — salary floor, travel, materials, fundraising goals",
     markdownFile: "06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md",
     href: "/election-plan/executive-book/budget",
+  },
+  {
+    slug: "gotv",
+    number: 8,
+    title: "Arkansas GOTV Operations Plan",
+    subtitle: "Field manual — how we win Election Day",
+    markdownFile: "07-ARKANSAS-GOTV-OPERATIONS-PLAN.md",
+    href: "/election-plan/executive-book/gotv",
+  },
+  {
+    slug: "audit",
+    number: 9,
+    title: "Executive Book Audit",
+    subtitle: "V1.0 readiness assessment for leadership review",
+    markdownFile: "EXECUTIVE-BOOK-COMPLETION-AUDIT.md",
+    href: "/election-plan/executive-book/audit",
   },
 ];
 

@@ -12,6 +12,7 @@ const EXEC_BOOK_DIR = path.join(
   "docs/strategic-plan/plurality-victory-plan/executive-book-v1",
 );
 const BUDGET_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/budget/budget-summary.json");
+const GOTV_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/gotv/gotv-operations-plan.json");
 
 function readJsonFile<T>(fileName: string): T | null {
   const p = path.join(EXEC_BOOK_DIR, fileName);
@@ -36,6 +37,18 @@ function readBudgetSummary(): {
 } | null {
   if (!existsSync(BUDGET_SUMMARY_PATH)) return null;
   return JSON.parse(readFileSync(BUDGET_SUMMARY_PATH, "utf8"));
+}
+
+function readGotvSummary(): {
+  electionDay?: string;
+  earlyVotingStart?: string;
+  winCondition?: { hciGoal?: number; hciCurrent?: number; lane2TurnoutTarget?: number; registrationGoal?: number };
+  dailyMetrics?: Array<{ metric: string; goal: string | number; current: string | number }>;
+  electionDayChecklist?: Array<{ item: string; status: string }>;
+  generatedAt?: string;
+} | null {
+  if (!existsSync(GOTV_SUMMARY_PATH)) return null;
+  return JSON.parse(readFileSync(GOTV_SUMMARY_PATH, "utf8"));
 }
 
 function readMarkdown(fileName: string): string | null {
@@ -81,6 +94,8 @@ export type ExecutiveBookChapterPayload = {
   }>;
   influenceGroups?: Array<{ title: string; tier: number; weeklyConversationTarget: number }>;
   budgetSummary?: ExecutiveBookBudgetSummary;
+  gotvMetrics?: Array<{ metric: string; goal: string | number; current: string | number }>;
+  electionDayChecklist?: Array<{ item: string; status: string }>;
 };
 
 export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayload | null {
@@ -109,6 +124,7 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     laborDayDeadline?: string;
   }>("executive-book-completion-audit.json");
   const budget = readBudgetSummary();
+  const gotv = readGotvSummary();
 
   const liveStrip: ExecutiveBookChapterPayload["liveStrip"] = [];
   let budgetSummary: ExecutiveBookBudgetSummary | undefined;
@@ -187,18 +203,32 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     );
   }
 
+  if (chapter.slug === "gotv" && gotv) {
+    liveStrip.push(
+      { label: "Election Day", value: gotv.electionDay ?? "2026-11-03" },
+      { label: "Early voting", value: gotv.earlyVotingStart ?? "2026-10-20" },
+      {
+        label: "HCI",
+        value: String(gotv.winCondition?.hciCurrent ?? 0),
+        detail: `Goal: ${gotv.winCondition?.hciGoal ?? 250000}`,
+      },
+    );
+  }
+
   return {
     slug: chapter.slug,
     number: chapter.number,
     title: chapter.title,
     subtitle: chapter.subtitle,
     markdown,
-    generatedAt: budget?.generatedAt ?? summary?.generatedAt ?? null,
+    generatedAt: gotv?.generatedAt ?? budget?.generatedAt ?? summary?.generatedAt ?? null,
     liveStrip,
     scorecardRows: chapter.slug === "scorecard" ? scorecard?.rows : undefined,
     ownershipRows: chapter.slug === "ownership" ? ownership?.assignments : undefined,
     influenceGroups: chapter.slug === "influence-map" ? contact?.influenceGroups : undefined,
     budgetSummary,
+    gotvMetrics: chapter.slug === "gotv" ? gotv?.dailyMetrics : undefined,
+    electionDayChecklist: chapter.slug === "gotv" ? gotv?.electionDayChecklist : undefined,
   };
 }
 

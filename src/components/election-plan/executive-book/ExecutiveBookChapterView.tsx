@@ -48,6 +48,12 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                 targets, not guaranteed costs or guaranteed fundraising outcomes. Unknown vendor expenses are marked{" "}
                 <strong>needs_quote</strong>.
               </>
+            ) : chapter.slug === "gotv" ? (
+              <>
+                <strong className="text-[var(--ep-navy)]">Field operations manual.</strong> Assign owners before
+                execution. Election Day success = ballots cast. Items marked <strong>needs_assignment</strong> require
+                leadership action before October.
+              </>
             ) : (
               <>
                 <strong className="text-[var(--ep-navy)]">Shareable briefing.</strong> Send this URL to coalition
@@ -113,6 +119,46 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                   {formatBudget(chapter.budgetSummary.monthlyBurnWorking)}/month
                 </strong>
               </p>
+            </div>
+          ) : null}
+
+          {chapter.gotvMetrics && chapter.gotvMetrics.length > 0 ? (
+            <div className="ep-card mb-8 overflow-x-auto">
+              <h2 className="font-heading font-bold text-[var(--ep-navy)]">Daily GOTV metrics</h2>
+              <table className="mt-4 w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--ep-border)] text-left text-xs uppercase text-[var(--ep-navy-muted)]">
+                    <th className="pb-2 pr-3">Metric</th>
+                    <th className="pb-2 pr-3">Goal</th>
+                    <th className="pb-2">Current</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {chapter.gotvMetrics.map((row) => (
+                    <tr key={row.metric} className="border-b border-[var(--ep-border)] last:border-0">
+                      <td className="py-2 pr-3 font-medium">{row.metric}</td>
+                      <td className="py-2 pr-3">{row.goal}</td>
+                      <td className="py-2 font-semibold">{row.current}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
+
+          {chapter.electionDayChecklist && chapter.electionDayChecklist.length > 0 ? (
+            <div className="ep-card mb-8">
+              <h2 className="font-heading font-bold text-[var(--ep-navy)]">Election Day readiness</h2>
+              <ul className="mt-4 space-y-2 text-sm">
+                {chapter.electionDayChecklist.map((item) => (
+                  <li key={item.item} className="flex items-center justify-between gap-3 border-b border-[var(--ep-border)] pb-2 last:border-0">
+                    <span>{item.item}</span>
+                    <span className="shrink-0 rounded-full bg-[var(--ep-cream)] px-2 py-0.5 text-xs font-medium text-[var(--ep-navy-muted)]">
+                      {item.status.replace(/_/g, " ")}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ) : null}
 
