@@ -27,7 +27,7 @@
 | Motion & Storytelling | Complete | 85 |
 | Endorsements | Complete | 85 |
 | Operations Lock | Complete | 100 |
-| Executive Leadership Layer | In Progress | 69 |
+| Executive Leadership Layer | In Progress | 67 |
 | Field Execution Data | In Progress | 25 |
 
 ---

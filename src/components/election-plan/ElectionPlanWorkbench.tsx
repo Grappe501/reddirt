@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
+import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
+import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
 import { formatPct, formatBudget, formatVotes } from "@/lib/election-plan/electionPlanData";
+import { BattlefieldOverviewPanel } from "@/components/election-plan/BattlefieldOverviewPanel";
 import { CityStrategyGrid } from "@/components/election-plan/CityStrategyGrid";
 import { CountyStrategyGrid } from "@/components/election-plan/CountyStrategyGrid";
 import { ExecutiveMetricCard } from "@/components/election-plan/ExecutiveMetricCard";
@@ -170,7 +173,10 @@ function SectionTitle({ title, subtitle }: { title: string; subtitle?: string })
 
 function KellyDashboardPanel({ data }: Props) {
   const d = data.candidateDashboard;
+  const w = data.warRoom;
   const b = data.executiveBookV1.campaignBudget;
+  const fundraisingPct =
+    w.fundraisingGoal > 0 ? Math.min(100, (w.fundraisingRaised / w.fundraisingGoal) * 100) : 0;
   return (
     <section>
       <SectionTitle
@@ -182,9 +188,23 @@ function KellyDashboardPanel({ data }: Props) {
         <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{b.disclaimer}</p>
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
           <div className="ep-stat">
-            <div className="ep-stat-value">{formatBudget(b.workingCampaignTarget)}</div>
+            <div className="ep-stat-value">{formatBudget(w.fundraisingRaised)}</div>
+            <div className="ep-stat-label">Raised to date</div>
+          </div>
+          <div className="ep-stat">
+            <div className="ep-stat-value">{formatBudget(w.fundraisingGoal)}</div>
             <div className="ep-stat-label">Working campaign target</div>
           </div>
+          <div className="ep-stat">
+            <div className="ep-stat-value">{Math.round(fundraisingPct)}%</div>
+            <div className="ep-stat-label">Progress · ramp up fundraising</div>
+          </div>
+        </div>
+        <div className="ep-progress mt-4">
+          <div className="ep-progress-bar" style={{ width: `${fundraisingPct}%` }} />
+        </div>
+        <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">{w.fundraisingNote}</p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
           <div className="ep-stat">
             <div className="ep-stat-value">{formatBudget(b.monthlyBurnWorking)}</div>
             <div className="ep-stat-label">Monthly burn (~)</div>
@@ -192,6 +212,10 @@ function KellyDashboardPanel({ data }: Props) {
           <div className="ep-stat">
             <div className="ep-stat-value">{formatBudget(b.salaryFloor)}</div>
             <div className="ep-stat-label">Salary floor</div>
+          </div>
+          <div className="ep-stat">
+            <div className="ep-stat-value">{formatBudget(b.workingCampaignTarget)}</div>
+            <div className="ep-stat-label">Budget framework total</div>
           </div>
         </div>
         <p className="mt-4 text-sm">
@@ -242,7 +266,8 @@ function KellyDashboardPanel({ data }: Props) {
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{formatVotes(d.lane2Potential)}</div>
-          <div className="ep-stat-label">Lane 2 potential</div>
+          <div className="ep-stat-label">{FOUR_LANE_DEFINITIONS.lane2.shortName} potential</div>
+          <p className="mt-1 text-[10px] text-[var(--ep-navy-muted)]">{FOUR_LANE_DEFINITIONS.lane2.voteGoal}</p>
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{formatVotes(d.registrationGoal)}</div>
@@ -267,7 +292,8 @@ function KellyDashboardPanel({ data }: Props) {
         <div className="ep-stat">
           <div className="ep-stat-value">{d.sherwoodGoal}</div>
           <div className="ep-stat-label">
-            Sherwood · VIP {d.sherwoodVipSold}/{d.sherwoodVipGoal}
+            Sherwood · Hosts {w.sherwoodHostsCurrent}/{w.sherwoodHostsGoal} · VIP {d.sherwoodVipSold}/
+            {d.sherwoodVipGoal}
           </div>
         </div>
       </div>
@@ -334,16 +360,7 @@ function FourLanesPanel({ data }: Props) {
 function BattlefieldPanel({ data }: Props) {
   return (
     <section>
-      <SectionTitle title="Arkansas Battlefield" subtitle="Nine clusters · 75 counties · VCI-ranked missions" />
-      <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {data.execution.clusters.map((c) => (
-          <div key={c.id} className="ep-card text-sm">
-            <h4 className="font-heading font-bold">{c.name}</h4>
-            <p className="mt-1 text-[var(--ep-navy-muted)]">{c.counties.join(" · ")}</p>
-            <p className="mt-2 font-semibold">VCI {formatVotes(c.vci)} · {(c.shareOfExpected * 100).toFixed(1)}% of expected</p>
-          </div>
-        ))}
-      </div>
+      <BattlefieldOverviewPanel clusters={data.execution.clusters} />
     </section>
   );
 }
@@ -817,7 +834,11 @@ function ExecutionPanel({ data }: Props) {
       <h3 className="mb-3 font-heading font-bold">Top clusters</h3>
       <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {data.execution.clusters.map((c) => (
-          <div key={c.id} className="ep-card">
+          <Link
+            key={c.id}
+            href={battlefieldClusterHref(c.id)}
+            className="ep-card block transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]"
+          >
             <div className="font-heading font-bold">{c.name}</div>
             <div className="mt-1 text-sm text-[var(--ep-navy-muted)]">{c.counties.join(" · ")}</div>
             <div className="mt-2 flex gap-4 text-xs">
@@ -825,7 +846,10 @@ function ExecutionPanel({ data }: Props) {
               <span>{formatPct(c.shareOfExpected)} of expected</span>
               <span>{c.recommendedVisits} visits</span>
             </div>
-          </div>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+              Cluster drill-down →
+            </p>
+          </Link>
         ))}
       </div>
 

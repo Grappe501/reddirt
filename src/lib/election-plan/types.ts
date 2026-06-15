@@ -396,6 +396,32 @@ export type ElectionPlanWorkbenchSnapshot = {
       source: string;
       daysUntil: number;
     }>;
+    stopsThroughElection: Array<{
+      eventId: string;
+      eventName: string;
+      county: string;
+      city: string;
+      date: string;
+      assignment: string;
+      effectiveScore: number;
+      campaignImpactScore: number;
+      verificationStatus: string;
+      activationReadinessPct: number;
+      mobilizeStatus: string;
+      facebookStatus: string;
+      newsReleaseStatus: string;
+      graphicsStatus: string;
+      phoneBankStatus: string;
+      postcardStatus: string;
+      storyWorkflowStatus: string;
+      nextAction: string;
+      cluster: string;
+      countyTier: string;
+      primaryLane: string;
+      source: string;
+      daysUntil: number;
+    }>;
+    throughElectionCount: number;
     missingPieces: string[];
     components: Array<{ id: string; title: string; description: string }>;
   };
@@ -525,8 +551,66 @@ export type ElectionPlanWorkbenchSnapshot = {
     storytellingGoals?: string[];
     endorsementGoals?: string[];
     gotvGoals?: string[];
-    metrics?: Array<{ label: string; target: number | string }>;
+    metrics?: Array<{ label: string; target: number | string; current?: number | string }>;
   }>;
+  eventApprovals: {
+    approvalWeekStart: string;
+    approvalWeekEnd: string;
+    electionDay: string;
+    explanation: string;
+    weekCalendar: Array<{
+      id: string;
+      slug: string;
+      title: string;
+      date: string;
+      locationName: string;
+      county: string;
+      eventType: string;
+      status: "pending" | "verified" | "declined" | "kelly" | "volunteers" | "both";
+      decision: {
+        kellyAttends: boolean;
+        needsVolunteers: boolean;
+        declined: boolean;
+        verified: boolean;
+        notes: string | null;
+      };
+    }>;
+    items: Array<{
+      id: string;
+      slug: string;
+      queueEventId: string | null;
+      title: string;
+      date: string;
+      county: string;
+      city: string;
+      locationName: string;
+      assignment: string;
+      verificationStatus: string;
+      effectiveScore: number;
+      cluster: string;
+      source: string;
+      status: "pending" | "verified" | "declined" | "kelly" | "volunteers" | "both";
+      decision: {
+        kellyAttends: boolean;
+        needsVolunteers: boolean;
+        declined: boolean;
+        verified: boolean;
+        notes: string | null;
+      };
+    }>;
+    pendingItems: Array<{
+      id: string;
+      slug: string;
+      title: string;
+      date: string;
+      county: string;
+    }>;
+    pendingCount: number;
+    verifiedCount: number;
+    declinedCount: number;
+    decidedCount: number;
+    throughElectionCount: number;
+  };
   warRoom: {
     weeksRemaining: number;
     currentWeek: number;
@@ -537,6 +621,10 @@ export type ElectionPlanWorkbenchSnapshot = {
     registrationProgress: number;
     endorsementsRequested: number;
     endorsementsEndorsed: number;
+    endorsementsGoal: number;
+    fundraisingRaised: number;
+    fundraisingGoal: number;
+    fundraisingNote: string;
     volunteerLeadersGoal: number;
     volunteerLeadersCurrent: number;
     volunteerLeaders: Array<{
@@ -553,10 +641,14 @@ export type ElectionPlanWorkbenchSnapshot = {
     hciGoal: number;
     hciCompletionPct: number;
     calendarTruthVerified: number;
+    calendarTruthPending: number;
     calendarTruthGoal: number;
     calendarTruthPct: number;
     phase9Ready: boolean;
     sherwoodGoal: string;
+    sherwoodHostsCurrent: number;
+    sherwoodHostsGoal: number;
+    sherwoodHostDonation: number;
     sherwoodVipSold: number;
     sherwoodVipGoal: number;
     sherwoodTicketsSold: number;

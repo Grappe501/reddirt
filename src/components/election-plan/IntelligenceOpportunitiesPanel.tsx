@@ -13,7 +13,7 @@ type Props = {
   standalone?: boolean;
 };
 
-type WindowFilter = "7d" | "21d" | "90d";
+type WindowFilter = "7d" | "21d" | "90d" | "election";
 
 function statusLabel(s: string) {
   return s.replace(/_/g, " ");
@@ -37,6 +37,7 @@ export function IntelligenceOpportunitiesPanel({ forwardMotion: fm, standalone }
   const stops = useMemo(() => {
     if (window === "7d") return fm.stopsNext7Days;
     if (window === "21d") return fm.stopsNext21Days;
+    if (window === "election") return fm.stopsThroughElection ?? fm.stops;
     return fm.stops;
   }, [fm, window]);
 
@@ -92,8 +93,8 @@ export function IntelligenceOpportunitiesPanel({ forwardMotion: fm, standalone }
           <div className="ep-stat-label">Priority window (21d)</div>
         </div>
         <div className="ep-stat">
-          <div className="ep-stat-value">{formatVotes(fm.upcomingCount)}</div>
-          <div className="ep-stat-label">Horizon (90d queue)</div>
+          <div className="ep-stat-value">{fm.throughElectionCount ?? fm.stops.length}</div>
+          <div className="ep-stat-label">Through Election Day</div>
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{fm.avgActivationReadiness}%</div>
@@ -106,7 +107,8 @@ export function IntelligenceOpportunitiesPanel({ forwardMotion: fm, standalone }
           [
             ["7d", `Next 7 days (${fm.stopsNext7Days.length})`],
             ["21d", `Priority 21 days (${fm.stopsNext21Days.length})`],
-            ["90d", `Full queue top ${fm.stops.length}`],
+            ["90d", `90-day queue (${fm.stops.length})`],
+            ["election", `Through Nov (${fm.throughElectionCount ?? fm.stops.length})`],
           ] as const
         ).map(([key, label]) => (
           <button

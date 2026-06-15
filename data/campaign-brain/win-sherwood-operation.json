@@ -22,7 +22,16 @@
     "planningTeamSize": 8,
     "status": "planning"
   },
+  "hostTier": {
+    "donationAmount": 250,
+    "goal": 50,
+    "current": 0,
+    "label": "Listed host — $250 donation (may also purchase VIP table)",
+    "note": "Hosts are public-listed supporters; VIP table ($1,000) is a separate upgrade path"
+  },
   "tracking": {
+    "hostsListed": 0,
+    "hostsGoal": 50,
     "vipTablesSold": 0,
     "vipTablesGoal": 20,
     "ticketsSold": 0,

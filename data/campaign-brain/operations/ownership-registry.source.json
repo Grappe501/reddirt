@@ -10,6 +10,16 @@
   },
   "assignments": [
     {
+      "id": "campaign-manager",
+      "function": "Campaign Manager",
+      "owner": "Steve Grappe",
+      "backup": "TBD",
+      "status": "active",
+      "nextAction": "Mobilize drafts · county completion routing · Kelly approval queue · Phase C must-hit path",
+      "dueDate": "2026-09-07",
+      "weeklyDeliverable": "Ops routing · event promotion · counties touched"
+    },
+    {
       "id": "volunteer-leadership",
       "function": "Volunteer Leadership",
       "owner": "TBD",
@@ -20,24 +30,14 @@
       "weeklyDeliverable": "Founding 20 progress"
     },
     {
-      "id": "mobilize-ops",
-      "function": "Mobilize",
-      "owner": "Steve Grappe",
-      "backup": "TBD",
-      "status": "active",
-      "nextAction": "Draft Mobilize events for July 3–4 · Kelly approval before publish",
-      "dueDate": "2026-06-25",
-      "weeklyDeliverable": "Event promotion"
-    },
-    {
       "id": "sherwood-event",
       "function": "Sherwood Event",
       "owner": "John Duke & Jay Powell",
       "backup": "Steve Grappe",
       "status": "critical",
-      "nextAction": "Co-chairs lead VIP table sales · Steve Grappe ops · 5 tables sold by end of Week 1",
+      "nextAction": "Co-chairs lead VIP table + host sales · 50 hosts @ $250 · 5 VIP tables by end of Week 1",
       "dueDate": "2026-07-03",
-      "weeklyDeliverable": "VIP tables"
+      "weeklyDeliverable": "Hosts + VIP tables"
     },
     {
       "id": "labor-program",
@@ -105,7 +105,7 @@
       "owner": "TBD",
       "backup": "TBD",
       "status": "active",
-      "nextAction": "Week One strike targets · validator pipeline",
+      "nextAction": "Week One strike targets · validator pipeline · goal 50",
       "dueDate": "2026-06-21",
       "weeklyDeliverable": "Validator pipeline"
     },
@@ -115,7 +115,7 @@
       "owner": "TBD",
       "backup": "TBD",
       "status": "active",
-      "nextAction": "Verification War Room Teams A–D · 10 events verified this week",
+      "nextAction": "Event approval portal · Verification War Room Teams A–D · 10 events verified this week",
       "dueDate": "2026-06-21",
       "weeklyDeliverable": "Verified events + guardrails closed"
     },
@@ -128,16 +128,6 @@
       "nextAction": "Identify 5 running-candidate partnership targets",
       "dueDate": "2026-06-28",
       "weeklyDeliverable": "Shared event dates"
-    },
-    {
-      "id": "county-completion-routing",
-      "function": "County Completion Routing",
-      "owner": "Steve Grappe",
-      "backup": "TBD",
-      "status": "active",
-      "nextAction": "Execute Phase C must-hit path",
-      "dueDate": "2026-09-07",
-      "weeklyDeliverable": "Counties touched + relationship notes"
     }
   ]
 }

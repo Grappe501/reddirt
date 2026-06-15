@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "note": "Leadership event approval queue — edit decisions here; re-run npm run election-plan:build",
+  "approvalWeekStart": "2026-06-15",
+  "approvalWeekEnd": "2026-06-21",
+  "electionDay": "2026-11-03",
+  "decisions": {
+    "river-valley-crawfish-festival-2026-06-18": {
+      "declined": true,
+      "kellyAttends": false,
+      "needsVolunteers": false,
+      "verified": false,
+      "notes": "Not attending — River Valley Crawfish Festival"
+    },
+    "june-craftfest-2026-06-19": {
+      "declined": true,
+      "kellyAttends": false,
+      "needsVolunteers": false,
+      "verified": false,
+      "notes": "Not attending — June CraftFest"
+    },
+    "mountain-home-craft-fest-2026-06-19": {
+      "declined": true,
+      "kellyAttends": false,
+      "needsVolunteers": false,
+      "verified": false,
+      "notes": "Not attending — Mountain Home Craft Fest"
+    },
+    "mountain-home-craft-fest-baxter-2026-06-19": {
+      "declined": true,
+      "kellyAttends": false,
+      "needsVolunteers": false,
+      "verified": false,
+      "notes": "Not attending — Mountain Home Craft Fest (Baxter block)"
+    },
+    "menifee-juneteenth-2026-06-20": {
+      "declined": false,
+      "kellyAttends": false,
+      "needsVolunteers": false,
+      "verified": true,
+      "notes": "Verified — Menifee Juneteenth June 20"
+    },
+    "surf-the-bay-2026-06-20": {
+      "declined": true,
+      "kellyAttends": false,
+      "needsVolunteers": false,
+      "verified": false,
+      "notes": "Not attending — Surf the Bay June 20"
+    },
+    "rodeo-of-the-ozarks-2026-06-24": {
+      "declined": true,
+      "kellyAttends": false,
+      "needsVolunteers": false,
+      "verified": false,
+      "notes": "Not attending — Rodeo of the Ozarks"
+    }
+  }
+}

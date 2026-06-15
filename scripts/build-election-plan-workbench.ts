@@ -488,6 +488,8 @@ function buildForwardMotionSection() {
   const stopsNext7Days = futureStops.filter((s) => daysUntil(s.date) <= 7).map(mapStop);
   const stopsNext21Days = futureStops.filter((s) => daysUntil(s.date) <= 21).map(mapStop);
   const upcomingStops = futureStops.slice(0, 90).map(mapStop);
+  const electionDay = "2026-11-03";
+  const stopsThroughElection = futureStops.filter((s) => s.date <= electionDay).map(mapStop);
 
   const missingPieces: string[] = [];
   for (const s of futureStops.slice(0, 30)) {
@@ -514,6 +516,8 @@ function buildForwardMotionSection() {
     stops: upcomingStops,
     stopsNext7Days,
     stopsNext21Days,
+    stopsThroughElection,
+    throughElectionCount: stopsThroughElection.length,
     missingPieces: missingPieces.slice(0, 15),
     components: [
       { id: "queue", title: "Activation Queue", description: "Upcoming stops with full activation status" },
@@ -791,13 +795,60 @@ type WeekPlanRow = {
   storytellingGoals?: string[];
   endorsementGoals?: string[];
   gotvGoals?: string[];
-  metrics?: Array<{ label: string; target: number | string }>;
+  metrics?: Array<{ label: string; target: number | string; current?: number | string }>;
 };
+
+function enrichWeekPlanMetrics(weeks: WeekPlanRow[]): WeekPlanRow[] {
+  const pp = readJson<{
+    volunteerLeadership?: { foundingTeamCurrent?: number };
+    substack?: { storiesPublished?: number };
+  }>(path.join(BRAIN_DATA, "people-power-network.json"));
+  const sherwood = readJson<{ tracking?: { vipTablesSold?: number; hostsListed?: number } }>(
+    path.join(BRAIN_DATA, "win-sherwood-operation.json"),
+  );
+  const hci = readJson<{ components?: { powerOf5Conversations?: number; volunteerRecruits?: number } }>(
+    path.join(BRAIN_DATA, "human-contact-index.json"),
+  );
+  const endorse = readJson<{ endorsed?: number }>(path.join(BRAIN_DATA, "endorsement-scorecard.json"));
+
+  const currentByLabel: Record<string, number | string> = {
+    "Founding volunteers confirmed": pp?.volunteerLeadership?.foundingTeamCurrent ?? 0,
+    "VIP tables sold": sherwood?.tracking?.vipTablesSold ?? 0,
+    "VIP tables (cumulative)": sherwood?.tracking?.vipTablesSold ?? 0,
+    "VIP tables (final)": sherwood?.tracking?.vipTablesSold ?? 0,
+    "Po5 conversations": hci?.components?.powerOf5Conversations ?? 0,
+    "County captains assigned": 0,
+    "Stories captured": pp?.substack?.storiesPublished ?? 0,
+    "Stories published (cumulative)": pp?.substack?.storiesPublished ?? 0,
+    "Registration forms": 0,
+    "Registration forms (cumulative)": 0,
+    "Launch attendees (Zoom)": 0,
+    "Founding team confirmed": pp?.volunteerLeadership?.foundingTeamCurrent ?? 0,
+    "NWA county captains": 0,
+    "Sherwood event attendance": 0,
+    "Fort Smith contacts": 0,
+    "Clerk meetings": 0,
+    "Jonesboro contacts": 0,
+    "Phone bank dials": 0,
+    "County captains (NE)": 0,
+  };
+
+  return weeks.map((week) => {
+    if (!week.metrics?.length) return week;
+    return {
+      ...week,
+      metrics: week.metrics.map((m) => ({
+        ...m,
+        current: currentByLabel[m.label] ?? 0,
+      })),
+    };
+  });
+}
 
 function buildWeekPlansSection(): WeekPlanRow[] {
   const plan = readJson<{ weeks: WeekPlanRow[] }>(path.join(OUT_DIR, "twenty-week-plan.json"));
 
-  return plan?.weeks ?? [];
+  return enrichWeekPlanMetrics(plan?.weeks ?? []);
 }
 
 function buildCampaignTimeline() {
@@ -1231,6 +1282,164 @@ function buildCalendarFillPhaseCSection() {
   };
 }
 
+function buildEventApprovalsSection() {
+  type Decision = {
+    kellyAttends?: boolean;
+    needsVolunteers?: boolean;
+    declined?: boolean;
+    verified?: boolean;
+    notes?: string;
+  };
+
+  const source = readJson<{
+    approvalWeekStart: string;
+    approvalWeekEnd: string;
+    electionDay: string;
+    decisions: Record<string, Decision>;
+  }>(path.join(BRAIN_DATA, "event-approvals.source.json"));
+
+  const calendar = readJson<{
+    events: Array<{
+      id: string;
+      slug: string;
+      title: string;
+      startAt: string;
+      locationName: string;
+      eventType: string;
+      county: { displayName: string } | null;
+    }>;
+  }>(path.join(ROOT, "data/calendar-command-center/public-campaign-calendar.snapshot.json"));
+
+  const queue = readJson<{
+    stops: Array<{
+      eventId: string;
+      eventName: string;
+      county: string;
+      city: string;
+      date: string;
+      assignment: string;
+      verificationStatus: string;
+      effectiveScore: number;
+      cluster: string;
+    }>;
+  }>(path.join(BRAIN_DATA, "upcoming-stops-activation-queue.json"));
+
+  const weekStart = source?.approvalWeekStart ?? "2026-06-15";
+  const weekEnd = source?.approvalWeekEnd ?? "2026-06-21";
+  const electionDay = source?.electionDay ?? "2026-11-03";
+  const decisions = source?.decisions ?? {};
+  const todayYmd = new Date().toISOString().slice(0, 10);
+
+  function ymdFromIso(iso: string): string {
+    return iso.slice(0, 10);
+  }
+
+  function lookupDecision(slug: string, calendarId: string, queueId?: string): Decision {
+    return (
+      decisions[slug] ??
+      decisions[calendarId] ??
+      (queueId ? decisions[queueId] : undefined) ??
+      {}
+    );
+  }
+
+  function statusFromDecision(d: Decision): "pending" | "verified" | "declined" | "kelly" | "volunteers" | "both" {
+    if (d.verified && !d.declined) return "verified";
+    if (d.declined) return "declined";
+    if (d.kellyAttends && d.needsVolunteers) return "both";
+    if (d.kellyAttends) return "kelly";
+    if (d.needsVolunteers) return "volunteers";
+    return "pending";
+  }
+
+  const calendarEvents = (calendar?.events ?? []).filter((e) => {
+    const d = ymdFromIso(e.startAt);
+    return d >= todayYmd && d <= electionDay;
+  });
+
+  const weekCalendar = calendarEvents
+    .filter((e) => {
+      const d = ymdFromIso(e.startAt);
+      return d >= weekStart && d <= weekEnd;
+    })
+    .map((e) => {
+      const d = lookupDecision(e.slug, e.id);
+      return {
+        id: e.id,
+        slug: e.slug,
+        title: e.title,
+        date: ymdFromIso(e.startAt),
+        locationName: e.locationName ?? "",
+        county: e.county?.displayName ?? "Unknown",
+        eventType: e.eventType,
+        status: statusFromDecision(d),
+        decision: {
+          kellyAttends: d.kellyAttends ?? false,
+          needsVolunteers: d.needsVolunteers ?? false,
+          declined: d.declined ?? false,
+          verified: d.verified ?? false,
+          notes: d.notes ?? null,
+        },
+      };
+    })
+    .sort((a, b) => a.date.localeCompare(b.date) || a.title.localeCompare(b.title));
+
+  const queueByTitleDate = new Map<string, NonNullable<typeof queue>["stops"][number]>();
+  for (const s of queue?.stops ?? []) {
+    queueByTitleDate.set(`${s.eventName}|${s.date}`, s);
+  }
+
+  const approvalItems = calendarEvents.map((e) => {
+    const date = ymdFromIso(e.startAt);
+    const q = queueByTitleDate.get(`${e.title}|${date}`);
+    const d = lookupDecision(e.slug, e.id, q?.eventId);
+    return {
+      id: e.id,
+      slug: e.slug,
+      queueEventId: q?.eventId ?? null,
+      title: e.title,
+      date,
+      county: e.county?.displayName ?? "Unknown",
+      city: q?.city ?? (e.locationName?.split(" · ")[0] ?? e.locationName ?? ""),
+      locationName: e.locationName ?? "",
+      assignment: q?.assignment ?? "TBD",
+      verificationStatus: q?.verificationStatus ?? "unverified",
+      effectiveScore: q?.effectiveScore ?? 0,
+      cluster: q?.cluster ?? "",
+      source: q ? "queue+calendar" : "calendar",
+      status: statusFromDecision(d),
+      decision: {
+        kellyAttends: d.kellyAttends ?? false,
+        needsVolunteers: d.needsVolunteers ?? false,
+        declined: d.declined ?? false,
+        verified: d.verified ?? false,
+        notes: d.notes ?? null,
+      },
+    };
+  });
+
+  const pendingItems = approvalItems.filter((i) => i.status === "pending");
+  const verifiedCount = approvalItems.filter((i) => i.decision.verified).length;
+  const declinedCount = approvalItems.filter((i) => i.decision.declined).length;
+  const decidedCount = approvalItems.filter((i) => i.status !== "pending").length;
+
+  return {
+    approvalWeekStart: weekStart,
+    approvalWeekEnd: weekEnd,
+    electionDay,
+    explanation:
+      "Leadership approval portal — decide Kelly attendance, volunteer coverage, and decline before events hit Mobilize or public calendar.",
+    weekCalendar,
+    items: approvalItems,
+    pendingItems,
+    pendingCount: pendingItems.length,
+    verifiedCount,
+    declinedCount,
+    decidedCount,
+    throughElectionCount: approvalItems.length,
+  };
+}
+
 function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySection>) {
   const fm = readJson<{ upcomingCount?: number; nextWeekCount?: number }>(
     path.join(BRAIN_DATA, "forward-motion-summary.json"),
@@ -1254,15 +1463,21 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
       vipTablesGoal?: number;
       ticketsSold?: number;
       volunteerSignups?: number;
+      hostsListed?: number;
+      hostsGoal?: number;
     };
     volunteers?: Array<{ id: string; displayName: string }>;
   }>(path.join(BRAIN_DATA, "win-sherwood-operation.json"));
-  const endorse = readJson<{ requested?: number; endorsed?: number }>(
+  const endorse = readJson<{ requested?: number; endorsed?: number; goal?: number }>(
     path.join(BRAIN_DATA, "endorsement-scorecard.json"),
   );
   const hci = readJson<{ total?: number; goal?: number; completionPct?: number }>(
     path.join(BRAIN_DATA, "human-contact-index.json"),
   );
+  const fundraising = readJson<{ raised?: number; goal?: number; rampUpNote?: string }>(
+    path.join(BRAIN_DATA, "fundraising-tracker.json"),
+  );
+  const eventApprovals = buildEventApprovalsSection();
 
   const topPriorities = [
     "Volunteer Leadership Launch — June 28 · 6 PM · Zoom",
@@ -1294,6 +1509,10 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
     registrationProgress: 0,
     endorsementsRequested: endorse?.requested ?? 0,
     endorsementsEndorsed: endorse?.endorsed ?? 0,
+    endorsementsGoal: endorse?.goal ?? 50,
+    fundraisingRaised: fundraising?.raised ?? 0,
+    fundraisingGoal: fundraising?.goal ?? 232_053,
+    fundraisingNote: fundraising?.rampUpNote ?? "Ramp up fundraising",
     volunteerLeadersGoal: pp?.volunteerLeadership?.foundingTeamGoal ?? 20,
     volunteerLeadersCurrent: pp?.volunteerLeadership?.foundingTeamCurrent ?? 0,
     volunteerLeaders: (pp?.volunteerLeadership?.leaders ?? []).map((l) => ({
@@ -1309,11 +1528,18 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
     hciTotal: hci?.total ?? 0,
     hciGoal: hci?.goal ?? 250_000,
     hciCompletionPct: hci?.completionPct ?? 0,
-    calendarTruthVerified: 122,
-    calendarTruthGoal: 300,
-    calendarTruthPct: Math.round((122 / 300) * 1000) / 10,
+    calendarTruthVerified: eventApprovals.verifiedCount,
+    calendarTruthPending: eventApprovals.pendingCount,
+    calendarTruthGoal: eventApprovals.throughElectionCount,
+    calendarTruthPct:
+      eventApprovals.throughElectionCount > 0
+        ? Math.round((eventApprovals.decidedCount / eventApprovals.throughElectionCount) * 1000) / 10
+        : 0,
     phase9Ready: false,
     sherwoodGoal: "60%+",
+    sherwoodHostsCurrent: sherwood?.tracking?.hostsListed ?? 0,
+    sherwoodHostsGoal: sherwood?.tracking?.hostsGoal ?? 50,
+    sherwoodHostDonation: 250,
     sherwoodVipSold: sherwood?.tracking?.vipTablesSold ?? 0,
     sherwoodVipGoal: sherwood?.tracking?.vipTablesGoal ?? 20,
     sherwoodTicketsSold: sherwood?.tracking?.ticketsSold ?? 0,
@@ -2204,6 +2430,7 @@ function main() {
     executiveBookHub: buildExecutiveBookHubSection(coverageReality),
     weekPlans: buildWeekPlansSection(),
     campaignTimeline: buildCampaignTimeline(),
+    eventApprovals: buildEventApprovalsSection(),
   };
 
   writeFileSync(OUT_FILE, JSON.stringify(snapshot, null, 2), "utf8");

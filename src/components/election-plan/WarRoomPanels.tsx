@@ -111,6 +111,9 @@ export function WarRoomPanel({ data }: Props) {
   const w = data.warRoom;
   const [volunteerRosterOpen, setVolunteerRosterOpen] = useState(false);
   const [sherwoodVolunteersOpen, setSherwoodVolunteersOpen] = useState(false);
+  const [countiesRosterOpen, setCountiesRosterOpen] = useState(false);
+  const fundraisingPct =
+    w.fundraisingGoal > 0 ? Math.min(100, (w.fundraisingRaised / w.fundraisingGoal) * 100) : 0;
   return (
     <section>
       <SectionTitle
@@ -149,9 +152,25 @@ export function WarRoomPanel({ data }: Props) {
         </Link>
         <div className="ep-card ep-war-stat">
           <div className="ep-war-stat-value">
-            {w.endorsementsEndorsed} / {w.endorsementsRequested}
+            {w.endorsementsEndorsed} / {w.endorsementsGoal}
           </div>
-          <div className="ep-war-stat-label">Endorsed / requested</div>
+          <div className="ep-war-stat-label">Endorsed / goal</div>
+          <p className="mt-1 text-[10px] text-[var(--ep-navy-muted)]">{w.endorsementsRequested} requested</p>
+        </div>
+      </div>
+
+      <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="ep-card">
+          <div className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+            Fundraising
+          </div>
+          <div className="mt-1 font-heading text-xl font-bold text-[var(--ep-navy)]">
+            ${w.fundraisingRaised.toLocaleString()} / ${w.fundraisingGoal.toLocaleString()}
+          </div>
+          <div className="ep-progress mt-3">
+            <div className="ep-progress-bar" style={{ width: `${fundraisingPct}%` }} />
+          </div>
+          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{w.fundraisingNote}</p>
         </div>
       </div>
 
@@ -185,7 +204,28 @@ export function WarRoomPanel({ data }: Props) {
             Forward Motion breakdown →
           </p>
         </Link>
-        <ProgressStat label="Counties visited" value={w.countiesCovered} goal={w.countiesTotal} />
+        <ProgressStat
+          label="Counties visited"
+          value={w.countiesCovered}
+          goal={w.countiesTotal}
+          onClick={() => setCountiesRosterOpen((open) => !open)}
+          expanded={countiesRosterOpen}
+        >
+          <ul className="max-h-80 space-y-1 overflow-y-auto text-sm">
+            {data.coverageReality.visitedCounties.map((c) => (
+              <li
+                key={c.county}
+                className="flex justify-between gap-2 border-b border-[var(--ep-border)] pb-1 last:border-0"
+              >
+                <span className="font-medium">{c.county}</span>
+                <span className="text-xs text-[var(--ep-navy-muted)]">
+                  {c.visitCount} visit{c.visitCount === 1 ? "" : "s"}
+                  {c.lastVisitDate ? ` · ${c.lastVisitDate}` : ""}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </ProgressStat>
         <ProgressStat label="Human Contact Index" value={w.hciTotal} goal={w.hciGoal} />
       </div>
 
@@ -193,18 +233,30 @@ export function WarRoomPanel({ data }: Props) {
         <div className="ep-card">
           <h3 className="font-heading font-bold">Calendar Truth</h3>
           <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-            {w.calendarTruthVerified} / {w.calendarTruthGoal} verified events · Phase 9 lock:{" "}
-            {w.phase9Ready ? "Ready" : "Not yet"}
+            {w.calendarTruthVerified} verified · {w.calendarTruthPending} pending approval ·{" "}
+            {w.calendarTruthGoal} through Election Day
           </p>
           <div className="ep-progress mt-3">
             <div className="ep-progress-bar" style={{ width: `${w.calendarTruthPct}%` }} />
           </div>
-          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{w.calendarTruthPct}% toward verification goal</p>
+          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
+            {w.calendarTruthPct}% decided · Phase 9 lock: {w.phase9Ready ? "Ready" : "Not yet"}
+          </p>
+          <Link
+            href="/election-plan/event-approvals"
+            className="mt-3 inline-block text-sm font-semibold text-[var(--ep-navy)] underline"
+          >
+            Open approval portal →
+          </Link>
         </div>
         <div className="ep-card">
           <h3 className="font-heading font-bold">Sherwood 60%+</h3>
           <p className="mt-2 text-sm">
-            VIP {w.sherwoodVipSold}/{w.sherwoodVipGoal} · Tickets {w.sherwoodTicketsSold}
+            Hosts {w.sherwoodHostsCurrent}/{w.sherwoodHostsGoal} @ ${w.sherwoodHostDonation} · VIP{" "}
+            {w.sherwoodVipSold}/{w.sherwoodVipGoal} · Tickets {w.sherwoodTicketsSold}
+          </p>
+          <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
+            Listed host = ${w.sherwoodHostDonation} donation; VIP table is a separate upgrade
           </p>
           <button
             type="button"
@@ -358,13 +410,37 @@ export function WeekOperationalPanel({ data }: Props) {
           {week.metrics?.length ? (
             <div className="ep-card">
               <h4 className="font-heading font-bold">Metrics</h4>
+              <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">Actual vs weekly target — sourced from live campaign data</p>
               <dl className="mt-3 grid gap-2 sm:grid-cols-2">
-                {week.metrics.map((m) => (
-                  <div key={m.label} className="flex justify-between text-sm">
-                    <dt className="text-[var(--ep-navy-muted)]">{m.label}</dt>
-                    <dd className="font-semibold">{m.target}</dd>
-                  </div>
-                ))}
+                {week.metrics.map((m) => {
+                  const hasCurrent = m.current !== undefined && m.current !== null;
+                  const currentNum = hasCurrent ? Number(m.current) : null;
+                  const targetNum = Number(m.target);
+                  const pct =
+                    hasCurrent && targetNum > 0 && currentNum !== null
+                      ? Math.min(100, (currentNum / targetNum) * 100)
+                      : 0;
+                  return (
+                    <div key={m.label} className="rounded border border-[var(--ep-border)] p-2">
+                      <dt className="text-xs text-[var(--ep-navy-muted)]">{m.label}</dt>
+                      <dd className="mt-1 flex items-baseline justify-between gap-2 text-sm font-semibold">
+                        <span>
+                          {hasCurrent ? `${m.current} / ${m.target}` : m.target}
+                        </span>
+                        {hasCurrent && targetNum > 0 ? (
+                          <span className="text-xs font-normal text-[var(--ep-navy-muted)]">
+                            {Math.round(pct)}%
+                          </span>
+                        ) : null}
+                      </dd>
+                      {hasCurrent && targetNum > 0 ? (
+                        <div className="ep-progress mt-2 h-1">
+                          <div className="ep-progress-bar" style={{ width: `${pct}%` }} />
+                        </div>
+                      ) : null}
+                    </div>
+                  );
+                })}
               </dl>
             </div>
           ) : null}

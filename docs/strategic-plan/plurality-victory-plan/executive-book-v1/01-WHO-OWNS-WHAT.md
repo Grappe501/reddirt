@@ -6,16 +6,16 @@ Not departments. Not committees. **Names.**
 
 | Status | Count |
 |--------|------:|
-| Functions | 13 |
+| Functions | 12 |
 | **Primary owner still TBD** | **4** |
 
 ## Ownership matrix
 
 | Function | Primary Owner | Backup | Weekly Deliverable |
 |----------|---------------|--------|--------------------|
+| Campaign Manager | **Steve Grappe** | TBD | Ops routing · event promotion · counties touched |
 | Volunteer Leadership | **TBD** | TBD | Founding 20 progress |
-| Mobilize | **Steve Grappe** | TBD | Event promotion |
-| Sherwood Event | **John Duke & Jay Powell** | Steve Grappe | VIP tables |
+| Sherwood Event | **John Duke & Jay Powell** | Steve Grappe | Hosts + VIP tables |
 | Labor Program | **Danny Brown / Team** | TBD | Union meetings |
 | AEA Program | **April Reisma liaison** | TBD | Teacher network |
 | NAACP Program | **Barry Jefferson** | TBD | Branch contacts |
@@ -25,7 +25,6 @@ Not departments. Not committees. **Names.**
 | Endorsements | **TBD** | TBD | Validator pipeline |
 | Calendar Truth | **TBD** | TBD | Verified events + guardrails closed |
 | Candidate Partnerships | **TBD** | TBD | Shared event dates |
-| County Completion Routing | **Steve Grappe** | TBD | Counties touched + relationship notes |
 
 ## Operating rules
 
