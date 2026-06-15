@@ -7,6 +7,8 @@ export type ExecutiveBookChapterSlug =
   | "scorecard"
   | "message"
   | "budget"
+  | "power-of-5"
+  | "students-for-arkansas"
   | "gotv"
   | "audit";
 
@@ -69,16 +71,32 @@ export const EXECUTIVE_BOOK_CHAPTERS: ExecutiveBookChapterDef[] = [
     href: "/election-plan/executive-book/budget",
   },
   {
-    slug: "gotv",
+    slug: "power-of-5",
     number: 8,
+    title: "Eyeball-to-Eyeball Organizing & Power of 5",
+    subtitle: "How the movement grows — small rooms, surrogates, and the Power of 5",
+    markdownFile: "07-EYEBALL-TO-EYEBALL-ORGANIZING-AND-POWER-OF-5.md",
+    href: "/election-plan/executive-book/power-of-5",
+  },
+  {
+    slug: "students-for-arkansas",
+    number: 9,
+    title: "Kelly Grappe Students for Arkansas",
+    subtitle: "Student-led movement — voters, volunteers, content, future leaders",
+    markdownFile: "08-STUDENTS-FOR-ARKANSAS.md",
+    href: "/election-plan/executive-book/students-for-arkansas",
+  },
+  {
+    slug: "gotv",
+    number: 10,
     title: "Arkansas GOTV Operations Plan",
     subtitle: "Field manual — how we win Election Day",
-    markdownFile: "07-ARKANSAS-GOTV-OPERATIONS-PLAN.md",
+    markdownFile: "09-ARKANSAS-GOTV-OPERATIONS-PLAN.md",
     href: "/election-plan/executive-book/gotv",
   },
   {
     slug: "audit",
-    number: 9,
+    number: 11,
     title: "Executive Book Audit",
     subtitle: "V1.0 readiness assessment for leadership review",
     markdownFile: "EXECUTIVE-BOOK-COMPLETION-AUDIT.md",

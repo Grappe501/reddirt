@@ -13,6 +13,8 @@ const EXEC_BOOK_DIR = path.join(
 );
 const BUDGET_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/budget/budget-summary.json");
 const GOTV_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/gotv/gotv-operations-plan.json");
+const PO5_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/relational-organizing/power-of-5-executive-chapter.json");
+const SFA_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/students-for-arkansas/students-for-arkansas.json");
 
 function readJsonFile<T>(fileName: string): T | null {
   const p = path.join(EXEC_BOOK_DIR, fileName);
@@ -49,6 +51,16 @@ function readGotvSummary(): {
 } | null {
   if (!existsSync(GOTV_SUMMARY_PATH)) return null;
   return JSON.parse(readFileSync(GOTV_SUMMARY_PATH, "utf8"));
+}
+
+function readPo5Summary(): ExecutiveBookChapterPayload["powerOf5Summary"] | null {
+  if (!existsSync(PO5_SUMMARY_PATH)) return null;
+  return JSON.parse(readFileSync(PO5_SUMMARY_PATH, "utf8"));
+}
+
+function readStudentsSummary(): ExecutiveBookChapterPayload["studentsForArkansasSummary"] | null {
+  if (!existsSync(SFA_SUMMARY_PATH)) return null;
+  return JSON.parse(readFileSync(SFA_SUMMARY_PATH, "utf8"));
 }
 
 function readMarkdown(fileName: string): string | null {
@@ -96,6 +108,55 @@ export type ExecutiveBookChapterPayload = {
   budgetSummary?: ExecutiveBookBudgetSummary;
   gotvMetrics?: Array<{ metric: string; goal: string | number; current: string | number }>;
   electionDayChecklist?: Array<{ item: string; status: string }>;
+  powerOf5Summary?: {
+    generatedAt?: string;
+    chapterTitle?: string;
+    doctrine: string;
+    objective?: string;
+    smallRoomsPrinciple?: string;
+    networkGoal: number;
+    countyHostsGoal?: number;
+    hciGoal: number;
+    hciCurrent: number;
+    powerOf5Commitments: number;
+    conversations: number;
+    foundingLeaders: number;
+    foundingLeadersGoal: number;
+    operatingFunnel?: string[];
+    threeAsks?: string[];
+    eventPyramid?: Array<{ tier: string; purpose: string; examples: string[] }>;
+    surrogateTiers?: Array<{ tier: number; name: string; role: string; examples?: string[] }>;
+    relationshipLadder: string[];
+    bigTableWelcome: string[];
+  };
+  studentsForArkansasSummary?: {
+    generatedAt?: string;
+    programName?: string;
+    doctrine?: string;
+    foundingCoChairs?: Array<{
+      id: string;
+      name: string | null;
+      title: string;
+      status: string;
+      leadCampus?: string;
+      campusFocus?: string[];
+    }>;
+    campusRoles?: string[];
+    internshipTracks?: Array<{ id: string; label: string; activities: string[] }>;
+    fundraisingCommissionPercent?: number;
+    powerOf5Integration?: string;
+    milestones?: Record<string, unknown>;
+    metrics?: {
+      coChairsConfirmed: number;
+      coChairsGoal: number;
+      campusLeaders: number;
+      campusLeadersLaborDayGoal: number;
+      studentVolunteers: number;
+      voterRegistrations: number;
+      activeCampuses: number;
+      campusesInInventory: number;
+    };
+  };
 };
 
 export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayload | null {
@@ -125,6 +186,8 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
   }>("executive-book-completion-audit.json");
   const budget = readBudgetSummary();
   const gotv = readGotvSummary();
+  const po5 = readPo5Summary();
+  const sfa = readStudentsSummary();
 
   const liveStrip: ExecutiveBookChapterPayload["liveStrip"] = [];
   let budgetSummary: ExecutiveBookBudgetSummary | undefined;
@@ -203,6 +266,22 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     );
   }
 
+  if (chapter.slug === "power-of-5" && po5) {
+    liveStrip.push(
+      { label: "Objective", value: "Relationships", detail: po5.objective ?? "Meaningful relationships" },
+      { label: "Network goal", value: po5.networkGoal.toLocaleString("en-US") },
+      { label: "County hosts", value: String(po5.countyHostsGoal ?? 75), detail: "Planning target" },
+    );
+  }
+
+  if (chapter.slug === "students-for-arkansas" && sfa?.metrics) {
+    liveStrip.push(
+      { label: "Co-chairs", value: `${sfa.metrics.coChairsConfirmed}/${sfa.metrics.coChairsGoal}` },
+      { label: "Volunteers", value: String(sfa.metrics.studentVolunteers), detail: `Labor Day: ${(sfa.milestones && (sfa.milestones as { laborDay?: { studentVolunteers?: number } }).laborDay?.studentVolunteers) ?? 100}` },
+      { label: "Registrations", value: String(sfa.metrics.voterRegistrations), detail: "Goal: 5,000+" },
+    );
+  }
+
   if (chapter.slug === "gotv" && gotv) {
     liveStrip.push(
       { label: "Election Day", value: gotv.electionDay ?? "2026-11-03" },
@@ -221,12 +300,14 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     title: chapter.title,
     subtitle: chapter.subtitle,
     markdown,
-    generatedAt: gotv?.generatedAt ?? budget?.generatedAt ?? summary?.generatedAt ?? null,
+    generatedAt: sfa?.generatedAt ?? po5?.generatedAt ?? gotv?.generatedAt ?? budget?.generatedAt ?? summary?.generatedAt ?? null,
     liveStrip,
     scorecardRows: chapter.slug === "scorecard" ? scorecard?.rows : undefined,
     ownershipRows: chapter.slug === "ownership" ? ownership?.assignments : undefined,
     influenceGroups: chapter.slug === "influence-map" ? contact?.influenceGroups : undefined,
     budgetSummary,
+    powerOf5Summary: chapter.slug === "power-of-5" ? po5 ?? undefined : undefined,
+    studentsForArkansasSummary: chapter.slug === "students-for-arkansas" ? sfa ?? undefined : undefined,
     gotvMetrics: chapter.slug === "gotv" ? gotv?.dailyMetrics : undefined,
     electionDayChecklist: chapter.slug === "gotv" ? gotv?.electionDayChecklist : undefined,
   };

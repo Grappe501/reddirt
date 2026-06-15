@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "note": "Arkansas campus inventory for Students for Arkansas chapters.",
+  "campuses": [
+    { "id": "philander-smith", "name": "Philander Smith College", "city": "Little Rock", "county": "Pulaski", "tier": "hbcu", "priority": "high", "coChairRegion": "hbcu" },
+    { "id": "arkansas-baptist", "name": "Arkansas Baptist College", "city": "Little Rock", "county": "Pulaski", "tier": "hbcu", "priority": "high", "coChairRegion": "hbcu" },
+    { "id": "uapb", "name": "University of Arkansas at Pine Bluff", "city": "Pine Bluff", "county": "Jefferson", "tier": "hbcu", "priority": "high", "coChairRegion": "hbcu" },
+    { "id": "uca", "name": "University of Central Arkansas", "city": "Conway", "county": "Faulkner", "tier": "public", "priority": "high", "coChairRegion": "central" },
+    { "id": "hendrix", "name": "Hendrix College", "city": "Conway", "county": "Faulkner", "tier": "private", "priority": "high", "coChairRegion": "central" },
+    { "id": "cbc", "name": "Central Baptist College", "city": "Conway", "county": "Faulkner", "tier": "private", "priority": "standard", "coChairRegion": "central" },
+    { "id": "astate", "name": "Arkansas State University", "city": "Jonesboro", "county": "Craighead", "tier": "public", "priority": "high", "coChairRegion": "northeast" },
+    { "id": "uark", "name": "University of Arkansas", "city": "Fayetteville", "county": "Washington", "tier": "public", "priority": "high", "coChairRegion": "northwest" },
+    { "id": "ualr", "name": "University of Arkansas Little Rock", "city": "Little Rock", "county": "Pulaski", "tier": "public", "priority": "high", "coChairRegion": "metro" },
+    { "id": "uaptc", "name": "UA Pulaski Technical College", "city": "North Little Rock", "county": "Pulaski", "tier": "community", "priority": "standard", "coChairRegion": "metro" },
+    { "id": "arkansas-tech", "name": "Arkansas Tech University", "city": "Russellville", "county": "Pope", "tier": "public", "priority": "standard", "coChairRegion": "unassigned" },
+    { "id": "sau", "name": "Southern Arkansas University", "city": "Magnolia", "county": "Columbia", "tier": "public", "priority": "standard", "coChairRegion": "unassigned" },
+    { "id": "hsu", "name": "Henderson State University", "city": "Arkadelphia", "county": "Clark", "tier": "public", "priority": "standard", "coChairRegion": "unassigned" },
+    { "id": "atu-ozark", "name": "Arkansas Tech – Ozark Campus", "city": "Ozark", "county": "Franklin", "tier": "community", "priority": "standard", "coChairRegion": "unassigned" }
+  ]
+}

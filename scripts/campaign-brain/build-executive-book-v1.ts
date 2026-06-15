@@ -379,16 +379,19 @@ The Executive Book is complete enough to **run the campaign**. Remaining work is
 | 3 | **Labor Day Readiness** | [03-SEPTEMBER-READINESS-LABOR-DAY.md](./03-SEPTEMBER-READINESS-LABOR-DAY.md) |
 | 4 | **Campaign Health Scorecard** | [04-WEEKLY-SUCCESS-SCORECARD.md](./04-WEEKLY-SUCCESS-SCORECARD.md) |
 | 5 | **The Kelly Grappe Message** | [05-THE-KELLY-GRAPPE-MESSAGE.md](./05-THE-KELLY-GRAPPE-MESSAGE.md) |
-| 6 | **Completion Audit** | [EXECUTIVE-BOOK-COMPLETION-AUDIT.md](./EXECUTIVE-BOOK-COMPLETION-AUDIT.md) |
 | 7 | **Campaign Budget & Fundraising Targets** | [06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md](./06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md) |
-| 8 | **Arkansas GOTV Operations Plan** | [07-ARKANSAS-GOTV-OPERATIONS-PLAN.md](./07-ARKANSAS-GOTV-OPERATIONS-PLAN.md) |
-| 9 | **Completion Audit** | [EXECUTIVE-BOOK-COMPLETION-AUDIT.md](./EXECUTIVE-BOOK-COMPLETION-AUDIT.md) |
+| 8 | **Eyeball-to-Eyeball Organizing & Power of 5** | [07-EYEBALL-TO-EYEBALL-ORGANIZING-AND-POWER-OF-5.md](./07-EYEBALL-TO-EYEBALL-ORGANIZING-AND-POWER-OF-5.md) |
+| 9 | **Kelly Grappe Students for Arkansas** | [08-STUDENTS-FOR-ARKANSAS.md](./08-STUDENTS-FOR-ARKANSAS.md) |
+| 10 | **Arkansas GOTV Operations Plan** | [09-ARKANSAS-GOTV-OPERATIONS-PLAN.md](./09-ARKANSAS-GOTV-OPERATIONS-PLAN.md) |
+| 11 | **Completion Audit** | [EXECUTIVE-BOOK-COMPLETION-AUDIT.md](./EXECUTIVE-BOOK-COMPLETION-AUDIT.md) |
 
 ## Rebuild
 
 \`\`\`bash
 npm run campaign-brain:executive-book:completion
 npm run campaign-brain:budget:build
+npm run campaign-brain:power-of-5-chapter:build
+npm run campaign-brain:students-for-arkansas:build
 npm run campaign-brain:gotv-operations:build
 npm run election-plan:build
 \`\`\`
@@ -507,7 +510,7 @@ function main() {
         version: "1.0",
         status: unassigned <= 3 ? "complete" : "operational",
         completenessEstimate: "95%",
-        chapters: 9,
+        chapters: 10,
         unassignedOwners: unassigned,
         contactSeedTargets: targets.length,
         laborDayDeadline: LABOR_DAY,

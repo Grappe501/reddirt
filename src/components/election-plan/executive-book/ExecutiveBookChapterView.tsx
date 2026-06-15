@@ -48,6 +48,17 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                 targets, not guaranteed costs or guaranteed fundraising outcomes. Unknown vendor expenses are marked{" "}
                 <strong>needs_quote</strong>.
               </>
+            ) : chapter.slug === "power-of-5" ? (
+              <>
+                <strong className="text-[var(--ep-navy)]">Organizing doctrine.</strong> Most persuasion happens in
+                small rooms — not TV, not mail, not Facebook. This chapter explains how the movement grows before
+                GOTV deploys it.
+              </>
+            ) : chapter.slug === "students-for-arkansas" ? (
+              <>
+                <strong className="text-[var(--ep-navy)]">Youth leadership pipeline.</strong> Not campus outreach alone — a
+                statewide student movement for registration, turnout, content, and future civic leaders.
+              </>
             ) : chapter.slug === "gotv" ? (
               <>
                 <strong className="text-[var(--ep-navy)]">Field operations manual.</strong> Assign owners before
@@ -71,6 +82,205 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                   {item.detail ? <p className="mt-1 text-[0.625rem] text-[var(--ep-navy-muted)]">{item.detail}</p> : null}
                 </div>
               ))}
+            </div>
+          ) : null}
+
+          {chapter.powerOf5Summary ? (
+            <div className="ep-card mb-8 space-y-8">
+              <div>
+                <h2 className="font-heading font-bold text-[var(--ep-navy)]">Eyeball-to-Eyeball Organizing Model</h2>
+                <p className="mt-2 text-sm italic text-[var(--ep-navy-muted)]">{chapter.powerOf5Summary.doctrine}</p>
+                {chapter.powerOf5Summary.smallRoomsPrinciple ? (
+                  <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+                    {chapter.powerOf5Summary.smallRoomsPrinciple}
+                  </p>
+                ) : null}
+              </div>
+
+              {chapter.powerOf5Summary.operatingFunnel && chapter.powerOf5Summary.operatingFunnel.length > 0 ? (
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                    The real funnel
+                  </h3>
+                  <div className="mt-3 flex flex-wrap items-center gap-1 text-sm">
+                    {chapter.powerOf5Summary.operatingFunnel.map((step, i) => (
+                      <span key={step} className="flex items-center gap-1">
+                        <span className="rounded-full bg-[var(--ep-cream)] px-2.5 py-1 font-medium text-[var(--ep-navy)]">
+                          {step}
+                        </span>
+                        {i < chapter.powerOf5Summary!.operatingFunnel!.length - 1 ? (
+                          <span className="text-[var(--ep-navy-muted)]">→</span>
+                        ) : null}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {chapter.powerOf5Summary.threeAsks && chapter.powerOf5Summary.threeAsks.length > 0 ? (
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                    Every event ends with three asks
+                  </h3>
+                  <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm">
+                    {chapter.powerOf5Summary.threeAsks.map((ask) => (
+                      <li key={ask}>{ask}</li>
+                    ))}
+                  </ol>
+                </div>
+              ) : null}
+
+              {chapter.powerOf5Summary.eventPyramid && chapter.powerOf5Summary.eventPyramid.length > 0 ? (
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                    Event pyramid
+                  </h3>
+                  <div className="mt-3 grid gap-3 sm:grid-cols-3">
+                    {chapter.powerOf5Summary.eventPyramid.map((level) => (
+                      <div key={level.tier} className="rounded-lg border border-[var(--ep-border)] p-3">
+                        <p className="font-semibold text-[var(--ep-navy)]">{level.tier}</p>
+                        <p className="mt-1 text-xs font-medium uppercase text-[var(--ep-gold)]">{level.purpose}</p>
+                        <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{level.examples.join(" · ")}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {chapter.powerOf5Summary.surrogateTiers && chapter.powerOf5Summary.surrogateTiers.length > 0 ? (
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                    Surrogate layer — Kelly cannot be everywhere
+                  </h3>
+                  <div className="mt-3 space-y-2">
+                    {chapter.powerOf5Summary.surrogateTiers.map((tier) => (
+                      <div
+                        key={tier.tier}
+                        className="flex flex-col gap-1 border-b border-[var(--ep-border)] pb-2 last:border-0 sm:flex-row sm:items-start sm:gap-4"
+                      >
+                        <span className="shrink-0 text-xs font-bold uppercase text-[var(--ep-gold)]">
+                          Tier {tier.tier}
+                        </span>
+                        <div>
+                          <p className="font-medium text-[var(--ep-navy)]">{tier.name}</p>
+                          <p className="text-sm text-[var(--ep-navy-muted)]">{tier.role}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                    Relationship ladder
+                  </h3>
+                  <ol className="mt-3 space-y-1 text-sm">
+                    {chapter.powerOf5Summary.relationshipLadder.map((step, i) => (
+                      <li key={step} className="flex items-center gap-2">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--ep-cream)] text-xs font-semibold text-[var(--ep-navy)]">
+                          {i + 1}
+                        </span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                    The Big Table Democrat
+                  </h3>
+                  <ul className="mt-3 space-y-1 text-sm">
+                    {chapter.powerOf5Summary.bigTableWelcome.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--ep-gold)]" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="ep-stat-grid">
+                <div className="ep-stat">
+                  <div className="ep-stat-value">{chapter.powerOf5Summary.networkGoal.toLocaleString("en-US")}</div>
+                  <div className="ep-stat-label">Network goal</div>
+                </div>
+                <div className="ep-stat">
+                  <div className="ep-stat-value">{chapter.powerOf5Summary.countyHostsGoal ?? 75}</div>
+                  <div className="ep-stat-label">County hosts target</div>
+                </div>
+                <div className="ep-stat">
+                  <div className="ep-stat-value">
+                    {chapter.powerOf5Summary.foundingLeaders}/{chapter.powerOf5Summary.foundingLeadersGoal}
+                  </div>
+                  <div className="ep-stat-label">Founding leaders</div>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          {chapter.studentsForArkansasSummary ? (
+            <div className="ep-card mb-8 space-y-6">
+              <div>
+                <h2 className="font-heading font-bold text-[var(--ep-navy)]">{chapter.studentsForArkansasSummary.programName}</h2>
+                <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{chapter.studentsForArkansasSummary.doctrine}</p>
+              </div>
+
+              {chapter.studentsForArkansasSummary.foundingCoChairs &&
+              chapter.studentsForArkansasSummary.foundingCoChairs.length > 0 ? (
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+                    Founding co-chairs
+                  </h3>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {chapter.studentsForArkansasSummary.foundingCoChairs.map((c) => (
+                      <li key={c.id} className="flex flex-col gap-0.5 border-b border-[var(--ep-border)] pb-2 last:border-0">
+                        <span className="font-medium text-[var(--ep-navy)]">
+                          {c.name ?? "OPEN SEAT"} — {c.title}
+                        </span>
+                        <span className="text-xs text-[var(--ep-navy-muted)]">
+                          {c.leadCampus} · {c.status}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {chapter.studentsForArkansasSummary.metrics ? (
+                <div className="ep-stat-grid">
+                  <div className="ep-stat">
+                    <div className="ep-stat-value">
+                      {chapter.studentsForArkansasSummary.metrics.coChairsConfirmed}/
+                      {chapter.studentsForArkansasSummary.metrics.coChairsGoal}
+                    </div>
+                    <div className="ep-stat-label">Co-chairs</div>
+                  </div>
+                  <div className="ep-stat">
+                    <div className="ep-stat-value">
+                      {chapter.studentsForArkansasSummary.metrics.campusLeaders}/
+                      {chapter.studentsForArkansasSummary.metrics.campusLeadersLaborDayGoal}
+                    </div>
+                    <div className="ep-stat-label">Campus leaders</div>
+                  </div>
+                  <div className="ep-stat">
+                    <div className="ep-stat-value">{chapter.studentsForArkansasSummary.metrics.studentVolunteers}</div>
+                    <div className="ep-stat-label">Student volunteers</div>
+                  </div>
+                  <div className="ep-stat">
+                    <div className="ep-stat-value">{chapter.studentsForArkansasSummary.metrics.voterRegistrations}</div>
+                    <div className="ep-stat-label">Registrations</div>
+                  </div>
+                </div>
+              ) : null}
+
+              {chapter.studentsForArkansasSummary.powerOf5Integration ? (
+                <p className="text-sm italic text-[var(--ep-navy-muted)]">
+                  Power of 5: {chapter.studentsForArkansasSummary.powerOf5Integration}
+                </p>
+              ) : null}
             </div>
           ) : null}
 

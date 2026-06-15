@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-06-15T08:35:53.489Z",
+  "pass": "CITIZEN-VOICES-NETWORK-1.0",
+  "weeklyRhythm": [
+    {
+      "day": "Monday",
+      "activity": "Issue brief distributed to writers"
+    },
+    {
+      "day": "Tuesday",
+      "activity": "Drafting"
+    },
+    {
+      "day": "Wednesday",
+      "activity": "Review and editing"
+    },
+    {
+      "day": "Thursday",
+      "activity": "Submission day"
+    },
+    {
+      "day": "Friday",
+      "activity": "Publication tracking and amplification"
+    }
+  ],
+  "contentCategories": [
+    {
+      "id": "why-kelly",
+      "label": "Why I Support Kelly Grappe",
+      "description": "Personal stories"
+    },
+    {
+      "id": "elections-matter",
+      "label": "Why Elections Matter",
+      "description": "Civic participation"
+    },
+    {
+      "id": "local-communities",
+      "label": "Why Local Communities Matter",
+      "description": "Community-focused content"
+    },
+    {
+      "id": "small-business",
+      "label": "Small Business Voices",
+      "description": "Business filing and economic issues"
+    },
+    {
+      "id": "public-education",
+      "label": "Public Education Voices",
+      "description": "Teachers, parents, students"
+    },
+    {
+      "id": "veterans",
+      "label": "Veterans Voices",
+      "description": "Service and civic responsibility"
+    },
+    {
+      "id": "faith-community",
+      "label": "Faith and Community Voices",
+      "description": "Neighbor engagement"
+    },
+    {
+      "id": "young-arkansas",
+      "label": "Young Arkansas Voices",
+      "description": "Students and young professionals"
+    }
+  ],
+  "weeklyTargets": {
+    "lettersSubmitted": 25,
+    "lettersPublished": 10,
+    "guestColumnsSubmitted": 5,
+    "guestColumnsPublished": 2
+  },
+  "electionSeasonTargets": {
+    "submissionsPerWeek": 50,
+    "publicationsPerWeek": 20
+  }
+}

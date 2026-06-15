@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T07:52:35.444Z",
+  "generatedAt": "2026-06-15T08:45:04.869Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -3013,6 +3013,16 @@
         "description": "Trusted network scaling"
       },
       {
+        "id": "students",
+        "title": "Students for Arkansas",
+        "description": "Campus chapters · internships · registration · Po5 pipeline"
+      },
+      {
+        "id": "citizen-voices",
+        "title": "Citizen Voices Network",
+        "description": "Letters to the editor · local validation · earned media"
+      },
+      {
         "id": "capital",
         "title": "Relationship Capital",
         "description": "Physical trust manifestations"
@@ -3028,6 +3038,149 @@
         "description": "75 county deployment captains"
       }
     ]
+  },
+  "citizenVoices": {
+    "networkName": "Citizen Voices Network",
+    "programName": "Arkansas Citizen Voices Project",
+    "positioning": "Not a Kelly promotion team — authentic community voices in local media",
+    "doctrine": "Earned media · local validation · meaningful volunteer role without canvassing or phone banking",
+    "laborDayDeadline": "2026-09-07",
+    "foundingWritersGoal": 20,
+    "foundingWritersCurrent": 0,
+    "activeWritersGoal": 50,
+    "activeWritersCurrent": 0,
+    "lettersSubmitted": 0,
+    "lettersSubmittedGoal": 200,
+    "lettersPublished": 0,
+    "guestColumnsPublished": 0,
+    "countiesRepresented": 0,
+    "countiesGoal": 75,
+    "outletsInInventory": 35,
+    "weeklyTargets": {
+      "lettersSubmitted": 25,
+      "lettersPublished": 10,
+      "guestColumnsSubmitted": 5,
+      "guestColumnsPublished": 2
+    },
+    "editorialRhythm": [
+      {
+        "day": "Monday",
+        "activity": "Issue brief distributed to writers"
+      },
+      {
+        "day": "Tuesday",
+        "activity": "Drafting"
+      },
+      {
+        "day": "Wednesday",
+        "activity": "Review and editing"
+      },
+      {
+        "day": "Thursday",
+        "activity": "Submission day"
+      },
+      {
+        "day": "Friday",
+        "activity": "Publication tracking and amplification"
+      }
+    ],
+    "contentCategories": [
+      "Why I Support Kelly Grappe",
+      "Why Elections Matter",
+      "Why Local Communities Matter",
+      "Small Business Voices",
+      "Public Education Voices",
+      "Veterans Voices"
+    ],
+    "docPath": "docs/campaign-brain/citizen-voices/CITIZEN-VOICES-NETWORK.md"
+  },
+  "studentsForArkansas": {
+    "programName": "Kelly Grappe Students for Arkansas",
+    "doctrine": "Not campus outreach alone — a statewide student movement that survives beyond Election Day",
+    "laborDayDeadline": "2026-09-07",
+    "coChairsConfirmed": 2,
+    "coChairsGoal": 5,
+    "coChairsOpen": 3,
+    "foundingCoChairs": [
+      {
+        "id": "chance-bradford",
+        "name": "Chance Bradford",
+        "title": "Co-Chair – HBCU Outreach",
+        "status": "confirmed",
+        "leadCampus": "Philander Smith College"
+      },
+      {
+        "id": "xav-mclennon",
+        "name": "Xav McLennon",
+        "title": "Co-Chair – Central Arkansas Universities",
+        "status": "confirmed",
+        "leadCampus": "University of Central Arkansas"
+      },
+      {
+        "id": "open-northeast",
+        "name": null,
+        "title": "Co-Chair – Northeast Arkansas",
+        "status": "open",
+        "leadCampus": "Arkansas State University"
+      },
+      {
+        "id": "open-northwest",
+        "name": null,
+        "title": "Co-Chair – Northwest Arkansas",
+        "status": "open",
+        "leadCampus": "University of Arkansas"
+      },
+      {
+        "id": "open-metro",
+        "name": null,
+        "title": "Co-Chair – Metro / UALR",
+        "status": "open",
+        "leadCampus": "University of Arkansas Little Rock"
+      }
+    ],
+    "campusLeaders": 0,
+    "campusLeadersLaborDayGoal": 25,
+    "studentVolunteers": 0,
+    "studentVolunteersLaborDayGoal": 100,
+    "voterRegistrations": 0,
+    "voterRegistrationsLaborDayGoal": 500,
+    "voterRegistrationsOctoberGoal": 2500,
+    "voterRegistrationsElectionGoal": 5000,
+    "activeCampuses": 0,
+    "activeCampusesOctoberGoal": 10,
+    "campusesInInventory": 14,
+    "campusRoles": [
+      "Campus Chair",
+      "Voter Registration Director",
+      "Events Director",
+      "Volunteer Director",
+      "Communications Director",
+      "Fundraising Director"
+    ],
+    "internshipTracks": [
+      "Field Organizing",
+      "Digital Media",
+      "Research",
+      "Communications",
+      "Event Operations"
+    ],
+    "fundraisingCommissionPercent": 15,
+    "powerOf5Integration": "Every student leader recruits five · 20 leaders → 100 volunteers → 500 supporters",
+    "monthlyRequirements": [
+      "One voter registration event",
+      "One volunteer recruitment event",
+      "One community service project",
+      "One fundraising event"
+    ],
+    "semesterRequirements": [
+      "One Kelly campus event",
+      "One debate watch event",
+      "One candidate forum",
+      "One GOTV event"
+    ],
+    "docPath": "docs/campaign-brain/students-for-arkansas/STUDENTS-FOR-ARKANSAS.md",
+    "june28BriefPath": "docs/campaign-brain/students-for-arkansas/JUNE-28-LAUNCH-BRIEF.md",
+    "executiveBookHref": "/election-plan/executive-book/students-for-arkansas"
   },
   "motionPresence": {
     "doctrine": "The Arkansas Presence Strategy — visible statewide motion. When voters ask 'Has Kelly been to my area?' the answer should almost always be yes.",
@@ -6718,10 +6871,14 @@
       "disclaimer": "Planning budget framework only — not final accounting, not guaranteed fundraising, not donor-facing claims.",
       "salaryFloor": 72000,
       "salaryMonthly": 12000,
-      "workingCampaignTarget": 167553,
-      "monthlyBurnWorking": 27926,
-      "bareMinimumTotal": 126783,
-      "aggressiveStatewideTotal": 246123,
+      "workingCampaignTarget": 232053,
+      "monthlyBurnWorking": 38676,
+      "bareMinimumTotal": 181783,
+      "aggressiveStatewideTotal": 339123,
+      "workingCampaignRangeLow": 225000,
+      "workingCampaignRangeHigh": 250000,
+      "fieldStrategyTotal": 43500,
+      "digitalProgramTotal": 42000,
       "travelConservative": 31533,
       "travelAggressive": 46783,
       "materialsMid": 13500,
@@ -8761,8 +8918,8 @@
         "href": "/election-plan/executive-book/budget",
         "statusLines": [
           "Salary floor $72K",
-          "Working campaign $168K",
-          "~$28K/mo burn target"
+          "Working $232K",
+          "$225K–$250K planning range"
         ],
         "metrics": [
           {
@@ -8771,17 +8928,69 @@
           },
           {
             "label": "Working target",
-            "value": "$168K"
+            "value": "$232K"
           },
           {
             "label": "Monthly burn",
-            "value": "$28K"
+            "value": "$39K"
+          }
+        ]
+      },
+      {
+        "slug": "power-of-5",
+        "number": 8,
+        "title": "Eyeball-to-Eyeball Organizing & Power of 5",
+        "subtitle": "How the movement grows — small rooms, surrogates, and the Power of 5",
+        "href": "/election-plan/executive-book/power-of-5",
+        "statusLines": [
+          "Small rooms create ownership",
+          "Kelly → Surrogates → Hosts → Po5",
+          "60,000 network goal"
+        ],
+        "metrics": [
+          {
+            "label": "County hosts",
+            "value": "75"
+          },
+          {
+            "label": "Founding leaders",
+            "value": "0/20"
+          },
+          {
+            "label": "Network goal",
+            "value": "60K"
+          }
+        ]
+      },
+      {
+        "slug": "students-for-arkansas",
+        "number": 9,
+        "title": "Kelly Grappe Students for Arkansas",
+        "subtitle": "Campus chapters · registration · internships · youth leadership pipeline",
+        "href": "/election-plan/executive-book/students-for-arkansas",
+        "statusLines": [
+          "Statewide student movement beyond Election Day",
+          "Chance Bradford · Xav McLennon founding co-chairs",
+          "Power of 5 on every campus"
+        ],
+        "metrics": [
+          {
+            "label": "Co-chairs",
+            "value": "2/5"
+          },
+          {
+            "label": "Campuses",
+            "value": "14"
+          },
+          {
+            "label": "Registrations goal",
+            "value": "5K+"
           }
         ]
       },
       {
         "slug": "gotv",
-        "number": 8,
+        "number": 10,
         "title": "Arkansas GOTV Operations Plan",
         "subtitle": "Field manual — how we win Election Day",
         "href": "/election-plan/executive-book/gotv",
@@ -8807,7 +9016,7 @@
       },
       {
         "slug": "audit",
-        "number": 9,
+        "number": 11,
         "title": "Executive Book Audit",
         "subtitle": "V1.0 readiness assessment for leadership review",
         "href": "/election-plan/executive-book/audit",

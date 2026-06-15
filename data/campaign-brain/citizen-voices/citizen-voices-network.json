@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-06-15T08:35:53.489Z",
+  "pass": "CITIZEN-VOICES-NETWORK-1.0",
+  "programName": "Arkansas Citizen Voices Project",
+  "networkName": "Citizen Voices Network",
+  "positioning": "Not a Kelly promotion team — authentic community voices in local media",
+  "doctrine": "Earned media · local validation · meaningful volunteer role without canvassing or phone banking",
+  "laborDayDeadline": "2026-09-07",
+  "electionDay": "2026-11-03",
+  "targets": {
+    "foundingWriters": 20,
+    "foundingWritersBy": "2026-09-07",
+    "activeWriters": 50,
+    "activeWritersBy": "2026-10-01",
+    "lettersSubmittedBeforeElection": 200,
+    "weeklyPublishedInMajorMarkets": 1
+  },
+  "weeklyProduction": {
+    "lettersSubmitted": 25,
+    "lettersPublished": 10,
+    "guestColumnsSubmitted": 5,
+    "guestColumnsPublished": 2
+  },
+  "electionSeasonProduction": {
+    "submissionsPerWeek": 50,
+    "publicationsPerWeek": 20
+  },
+  "metrics": {
+    "writersRecruited": 0,
+    "foundingWriters": 0,
+    "activeWriters": 0,
+    "countiesRepresented": 0,
+    "countiesGoal": 75,
+    "lettersSubmitted": 0,
+    "lettersSubmittedGoal": 200,
+    "lettersPublished": 0,
+    "guestColumnsSubmitted": 0,
+    "guestColumnsPublished": 0,
+    "outletsTotal": 35,
+    "publicationsTotal": 0
+  },
+  "newspaperInventory": {
+    "tier1": 4,
+    "tier2": 11,
+    "tier3": 15,
+    "tier4": 4,
+    "tier5": 1,
+    "total": 35
+  },
+  "contentCategories": [
+    {
+      "id": "why-kelly",
+      "label": "Why I Support Kelly Grappe",
+      "description": "Personal stories"
+    },
+    {
+      "id": "elections-matter",
+      "label": "Why Elections Matter",
+      "description": "Civic participation"
+    },
+    {
+      "id": "local-communities",
+      "label": "Why Local Communities Matter",
+      "description": "Community-focused content"
+    },
+    {
+      "id": "small-business",
+      "label": "Small Business Voices",
+      "description": "Business filing and economic issues"
+    },
+    {
+      "id": "public-education",
+      "label": "Public Education Voices",
+      "description": "Teachers, parents, students"
+    },
+    {
+      "id": "veterans",
+      "label": "Veterans Voices",
+      "description": "Service and civic responsibility"
+    },
+    {
+      "id": "faith-community",
+      "label": "Faith and Community Voices",
+      "description": "Neighbor engagement"
+    },
+    {
+      "id": "young-arkansas",
+      "label": "Young Arkansas Voices",
+      "description": "Students and young professionals"
+    }
+  ],
+  "organizationalRoles": [
+    "state_lead",
+    "regional_lead",
+    "county_writer",
+    "subject_matter_writer"
+  ],
+  "spendMixNote": "Campaign amplification (Substack, Facebook, Instagram, email, website) only after publication."
+}

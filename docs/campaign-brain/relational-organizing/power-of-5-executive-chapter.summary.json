@@ -1,0 +1,133 @@
+{
+  "generatedAt": "2026-06-15T08:41:51.065Z",
+  "pass": "EYEBALL-TO-EYEBALL-EXECUTIVE-CHAPTER-1.0",
+  "chapterTitle": "Eyeball-to-Eyeball Organizing & Power of 5",
+  "disclaimer": "Organizing doctrine — not a volunteer how-to. Operators use field dashboards for execution detail.",
+  "doctrine": "Relationships create trust. Trust creates turnout. Turnout creates victory.",
+  "objective": "Meaningful relationships.",
+  "smallRoomsPrinciple": "Large events create visibility. Small events create ownership.",
+  "networkGoal": 60000,
+  "countyHostsGoal": 75,
+  "hciGoal": 250000,
+  "hciCurrent": 0,
+  "powerOf5Commitments": 0,
+  "conversations": 0,
+  "foundingLeaders": 0,
+  "foundingLeadersGoal": 20,
+  "operatingFunnel": [
+    "Conversation",
+    "Relationship",
+    "Trust",
+    "Volunteer",
+    "Host",
+    "Recruit Five",
+    "Vote"
+  ],
+  "threeAsks": [
+    "Who else should we meet?",
+    "Who would host the next gathering?",
+    "Who are the five people everyone in this room knows?"
+  ],
+  "eventPyramid": [
+    {
+      "tier": "Large events",
+      "purpose": "Visibility",
+      "examples": [
+        "Sherwood launch",
+        "Candidate forums",
+        "Festivals",
+        "Major rallies"
+      ]
+    },
+    {
+      "tier": "Medium events",
+      "purpose": "Credibility",
+      "examples": [
+        "County meetings",
+        "Union halls",
+        "NAACP branches",
+        "Rotary",
+        "Chambers of Commerce"
+      ]
+    },
+    {
+      "tier": "Small events",
+      "purpose": "Relationship building",
+      "examples": [
+        "Breakfasts",
+        "Coffee meetings",
+        "House parties",
+        "Backyard gatherings",
+        "Living room conversations"
+      ]
+    }
+  ],
+  "surrogateTiers": [
+    {
+      "tier": 1,
+      "name": "Kelly Grappe",
+      "role": "Highest-value rooms · statewide validators · defining moments",
+      "examples": [
+        "Labor Day gate events",
+        "Sherwood",
+        "Tier-1 county breakthroughs",
+        "Coalition validators"
+      ]
+    },
+    {
+      "tier": 2,
+      "name": "Campaign surrogates",
+      "role": "Carry Kelly's message into rooms she cannot reach this week",
+      "examples": [
+        "Former officials",
+        "Community leaders",
+        "Educators",
+        "Faith leaders",
+        "Union leaders",
+        "NAACP leaders",
+        "Volunteer leaders"
+      ]
+    },
+    {
+      "tier": 3,
+      "name": "County hosts",
+      "role": "Local ownership — coffee, living rooms, backyards, lunch discussions",
+      "examples": [
+        "House party hosts",
+        "Civic introducers",
+        "Rotary connectors",
+        "Church gathering hosts"
+      ]
+    },
+    {
+      "tier": 4,
+      "name": "Power of 5 organizers",
+      "role": "Grassroots multiplication — every supporter recruits five trusted contacts",
+      "examples": [
+        "Po5 commitments",
+        "Conversation logs",
+        "Peer invitations",
+        "Trusted-network GOTV"
+      ]
+    }
+  ],
+  "relationshipLadder": [
+    "Meet",
+    "Listen",
+    "Follow Up",
+    "Invite",
+    "Engage",
+    "Volunteer",
+    "Lead",
+    "Recruit Five"
+  ],
+  "bigTableWelcome": [
+    "Rural Democrats",
+    "Conservative Democrats",
+    "Union Democrats",
+    "Faith Democrats",
+    "Young Democrats",
+    "Independents",
+    "Moderate Republicans willing to listen"
+  ]
+}

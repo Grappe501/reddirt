@@ -1,0 +1,206 @@
+{
+  "generatedAt": "2026-06-15T08:41:49.152Z",
+  "pass": "STUDENTS-FOR-ARKANSAS-1.0",
+  "programName": "Kelly Grappe Students for Arkansas",
+  "mission": "Student-led statewide organization — register · educate · turn out 18–24 year-olds · build civic leaders · campus relationships · leadership pipeline",
+  "doctrine": "Not campus outreach alone — a statewide student movement that survives beyond Election Day",
+  "laborDayDeadline": "2026-09-07",
+  "octoberGate": "2026-10-01",
+  "electionDay": "2026-11-03",
+  "foundingCoChairs": [
+    {
+      "id": "chance-bradford",
+      "name": "Chance Bradford",
+      "title": "Co-Chair – HBCU Outreach",
+      "status": "confirmed",
+      "region": "HBCU / minority-serving institutions",
+      "leadCampus": "Philander Smith College",
+      "campusFocus": [
+        "Philander Smith College",
+        "Arkansas Baptist College",
+        "University of Arkansas at Pine Bluff"
+      ],
+      "responsibilities": [
+        "Lead Philander Smith chapter",
+        "Coordinate HBCU strategy statewide",
+        "Build leadership teams at HBCU and minority-serving institutions"
+      ]
+    },
+    {
+      "id": "xav-mclennon",
+      "name": "Xav McLennon",
+      "title": "Co-Chair – Central Arkansas Universities",
+      "status": "confirmed",
+      "region": "Central Arkansas",
+      "leadCampus": "University of Central Arkansas",
+      "campusFocus": [
+        "University of Central Arkansas",
+        "Hendrix College",
+        "Central Baptist College"
+      ],
+      "responsibilities": [
+        "Lead UCA chapter",
+        "Coordinate Central Arkansas campus outreach"
+      ]
+    },
+    {
+      "id": "open-northeast",
+      "name": null,
+      "title": "Co-Chair – Northeast Arkansas",
+      "status": "open",
+      "region": "Northeast Arkansas",
+      "leadCampus": "Arkansas State University",
+      "campusFocus": [
+        "Arkansas State University (Jonesboro)"
+      ],
+      "responsibilities": [
+        "Jonesboro region leadership",
+        "Northeast Arkansas student recruitment"
+      ]
+    },
+    {
+      "id": "open-northwest",
+      "name": null,
+      "title": "Co-Chair – Northwest Arkansas",
+      "status": "open",
+      "region": "Northwest Arkansas",
+      "leadCampus": "University of Arkansas",
+      "campusFocus": [
+        "University of Arkansas (Fayetteville)"
+      ],
+      "responsibilities": [
+        "Northwest Arkansas student outreach",
+        "Benton and Washington county campus coordination"
+      ]
+    },
+    {
+      "id": "open-metro",
+      "name": null,
+      "title": "Co-Chair – Metro / UALR",
+      "status": "open",
+      "region": "Central Arkansas Metro",
+      "leadCampus": "University of Arkansas Little Rock",
+      "campusFocus": [
+        "University of Arkansas Little Rock",
+        "Pulaski Technical College",
+        "UA-PTC"
+      ],
+      "responsibilities": [
+        "Metro outreach",
+        "Community college coordination"
+      ]
+    }
+  ],
+  "coChairsConfirmed": 2,
+  "coChairsOpen": 3,
+  "campusRoles": [
+    "Campus Chair",
+    "Voter Registration Director",
+    "Events Director",
+    "Volunteer Director",
+    "Communications Director",
+    "Fundraising Director"
+  ],
+  "internshipTracks": [
+    {
+      "id": "field",
+      "label": "Field Organizing",
+      "activities": [
+        "Events",
+        "Meet-and-greets",
+        "Volunteer recruitment",
+        "County immersions"
+      ]
+    },
+    {
+      "id": "digital",
+      "label": "Digital Media",
+      "activities": [
+        "Reels",
+        "TikTok",
+        "Instagram",
+        "Photography"
+      ]
+    },
+    {
+      "id": "research",
+      "label": "Research",
+      "activities": [
+        "Campus issues",
+        "Student voter participation",
+        "Local community research"
+      ]
+    },
+    {
+      "id": "communications",
+      "label": "Communications",
+      "activities": [
+        "Press releases",
+        "Substack stories",
+        "Newsletter support"
+      ]
+    },
+    {
+      "id": "events",
+      "label": "Event Operations",
+      "activities": [
+        "Mobilize",
+        "Check-in systems",
+        "Volunteer management"
+      ]
+    }
+  ],
+  "fundraisingCommissionPercent": 15,
+  "monthlyRequirements": [
+    "One voter registration event",
+    "One volunteer recruitment event",
+    "One community service project",
+    "One fundraising event"
+  ],
+  "semesterRequirements": [
+    "One Kelly campus event",
+    "One debate watch event",
+    "One candidate forum",
+    "One GOTV event"
+  ],
+  "milestones": {
+    "laborDay": {
+      "label": "By Labor Day",
+      "date": "2026-09-07",
+      "coChairs": 5,
+      "campusLeaders": 25,
+      "studentVolunteers": 100,
+      "voterRegistrations": 500
+    },
+    "october": {
+      "label": "By October 1",
+      "date": "2026-10-01",
+      "activeCampuses": 10,
+      "studentVolunteers": 250,
+      "voterRegistrations": 2500
+    },
+    "electionDay": {
+      "label": "Election Day",
+      "date": "2026-11-03",
+      "studentVolunteers": 500,
+      "voterRegistrations": 5000,
+      "mediaMarkets": "Student presence in every major media market"
+    }
+  },
+  "powerOf5Integration": "Every student leader recruits five · 20 leaders → 100 volunteers → 500 supporters",
+  "metrics": {
+    "coChairsConfirmed": 2,
+    "coChairsGoal": 5,
+    "campusLeaders": 0,
+    "campusLeadersLaborDayGoal": 25,
+    "studentVolunteers": 0,
+    "studentVolunteersLaborDayGoal": 100,
+    "voterRegistrations": 0,
+    "voterRegistrationsLaborDayGoal": 500,
+    "voterRegistrationsOctoberGoal": 2500,
+    "voterRegistrationsElectionGoal": 5000,
+    "activeCampuses": 0,
+    "activeCampusesOctoberGoal": 10,
+    "campusesInInventory": 14
+  }
+}

@@ -16,8 +16,13 @@ const SOURCE = path.join(OUT_DATA, "campaign-budget-assumptions.source.json");
 const REFERENCE_DATE = "2026-06-15";
 const ELECTION_DAY = "2026-11-03";
 
+const PASS = "CAMPAIGN-BUDGET-FRAMEWORK-1.2";
+
 const DISCLAIMER =
   "Planning budget framework only — not final accounting, not guaranteed fundraising, not donor-facing claims.";
+
+const WORKING_RANGE = { low: 225_000, high: 250_000 };
+const AGGRESSIVE_RANGE = { low: 300_000, high: 350_000 };
 
 type Assumptions = {
   version: number;
@@ -47,6 +52,57 @@ type Assumptions = {
     string,
     { label: string; description: string; materialsTier: string }
   >;
+  mediaAndOutreach?: {
+    monthsBudgeted: number;
+    monthly: Record<string, number>;
+    monthlyTotal: number;
+    campaignTotal: number;
+    bareCampaignTotal?: number;
+    aggressiveCampaignTotal: number;
+    note?: string;
+  };
+  communityActivationAndSwag?: {
+    perImmersionVisit: number;
+    knownImmersionCorridors?: string[];
+    scenarios: {
+      conservative: { immersions: number; total: number };
+      expected: { immersions: number; total: number };
+      aggressive: { immersions: number; total: number };
+    };
+    note?: string;
+  };
+  complianceReporting?: {
+    complianceConsultantMonthly: number;
+    monthsBudgeted: number;
+    campaignTotal: number;
+    note?: string;
+  };
+  countyEventSponsorships?: {
+    scenarios: { conservative: number; expected: number; aggressive: number };
+    note?: string;
+  };
+  digitalAdvertising?: {
+    doctrine?: string;
+    strategyPrinciples?: string[];
+    monthlySchedule?: {
+      conservative: Array<{ month: string; label: string; amount: number; focus?: string }>;
+      working: Array<{ month: string; label: string; amount: number; focus?: string }>;
+      aggressive: Array<{ month: string; label: string; amount: number; focus?: string }>;
+    };
+    spendAllocation?: Record<string, { percent: number; label: string; examples?: string[] }>;
+    campaignTotals: { conservative: number; working: number; aggressive: number };
+  };
+  digitalContentProduction?: {
+    monthlyAmount: number;
+    monthsBudgeted: number;
+    campaignTotal: number;
+    includes?: string[];
+    note?: string;
+  };
+  digitalToolsAndPlatforms?: {
+    campaignTotals: { conservative: number; working: number; aggressive: number };
+    note?: string;
+  };
 };
 
 type CalendarEvent = {
@@ -73,6 +129,49 @@ type MonthTravel = {
 
 function fmt(n: number): string {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+}
+
+type FieldStrategyTotals = {
+  media: number;
+  immersionSwag: number;
+  compliance: number;
+  countySponsorships: number;
+  total: number;
+};
+
+function fieldStrategyTotals(assumptions: Assumptions, tier: "conservative" | "expected" | "aggressive"): FieldStrategyTotals {
+  const media = assumptions.mediaAndOutreach
+    ? tier === "aggressive"
+      ? assumptions.mediaAndOutreach.aggressiveCampaignTotal
+      : tier === "conservative"
+        ? (assumptions.mediaAndOutreach.bareCampaignTotal ?? assumptions.mediaAndOutreach.campaignTotal * 0.75)
+        : assumptions.mediaAndOutreach.campaignTotal
+    : 0;
+
+  const immersionSwag = assumptions.communityActivationAndSwag?.scenarios[tier === "conservative" ? "conservative" : tier === "aggressive" ? "aggressive" : "expected"].total ?? 0;
+
+  const compliance = assumptions.complianceReporting?.campaignTotal ?? 0;
+
+  const countySponsorships = assumptions.countyEventSponsorships?.scenarios[
+    tier === "conservative" ? "conservative" : tier === "aggressive" ? "aggressive" : "expected"
+  ] ?? 0;
+
+  return { media, immersionSwag, compliance, countySponsorships, total: media + immersionSwag + compliance + countySponsorships };
+}
+
+type DigitalProgramTotals = {
+  advertising: number;
+  contentProduction: number;
+  toolsAndPlatforms: number;
+  total: number;
+};
+
+function digitalProgramTotals(assumptions: Assumptions, tier: "conservative" | "expected" | "aggressive"): DigitalProgramTotals {
+  const key = tier === "expected" ? "working" : tier === "conservative" ? "conservative" : "aggressive";
+  const advertising = assumptions.digitalAdvertising?.campaignTotals[key] ?? 0;
+  const contentProduction = assumptions.digitalContentProduction?.campaignTotal ?? 0;
+  const toolsAndPlatforms = assumptions.digitalToolsAndPlatforms?.campaignTotals[key] ?? 0;
+  return { advertising, contentProduction, toolsAndPlatforms, total: advertising + contentProduction + toolsAndPlatforms };
 }
 
 function daysInclusive(start: string, end: string): number {
@@ -273,7 +372,13 @@ Kelly cannot campaign full-time without leave-of-absence replacement income.
 | Postcards & mail | [POSTCARD-AND-MAIL-BUDGET.md](./POSTCARD-AND-MAIL-BUDGET.md) | Quantities from People Power · print/postage needs quote |
 | Sherwood 60% | [SHERWOOD-60-BUDGET.md](./SHERWOOD-60-BUDGET.md) | Revenue model + cost placeholders |
 | Volunteer leadership | [VOLUNTEER-LEADERSHIP-BUDGET.md](./VOLUNTEER-LEADERSHIP-BUDGET.md) | June 28 launch · July retreat |
-| Communications | [COMMUNICATIONS-BUDGET.md](./COMMUNICATIONS-BUDGET.md) | Motion · Forward Motion · digital |
+| Media & outreach | [MEDIA-OUTREACH-BUDGET.md](./MEDIA-OUTREACH-BUDGET.md) | **Modeled** — rural newspaper/radio · campus · community ads |
+| Community activation & swag | [COMMUNITY-ACTIVATION-SWAG-BUDGET.md](./COMMUNITY-ACTIVATION-SWAG-BUDGET.md) | **Modeled** — $500/immersion visit |
+| Compliance & reporting | [COMPLIANCE-BUDGET.md](./COMPLIANCE-BUDGET.md) | **Modeled** — $750/month hard expense |
+| County event sponsorships | [COUNTY-SPONSORSHIPS-BUDGET.md](./COUNTY-SPONSORSHIPS-BUDGET.md) | **Modeled** — fairs · forums · civic events |
+| Digital advertising | [DIGITAL-ADVERTISING-BUDGET.md](./DIGITAL-ADVERTISING-BUDGET.md) | **Modeled** — field force multiplier · $30K working |
+| Digital content production | [DIGITAL-CONTENT-PRODUCTION-BUDGET.md](./DIGITAL-CONTENT-PRODUCTION-BUDGET.md) | **Modeled** — $500/mo production |
+| Communications (tools) | [COMMUNICATIONS-BUDGET.md](./COMMUNICATIONS-BUDGET.md) | Email · Mobilize · SMS platforms |
 | Fundraising goals | [FUNDRAISING-GOAL-MODEL.md](./FUNDRAISING-GOAL-MODEL.md) | Scenario targets — not guarantees |
 
 ## Scenario totals (planning)
@@ -281,8 +386,8 @@ Kelly cannot campaign full-time without leave-of-absence replacement income.
 | Scenario | Total projected need |
 |----------|---------------------:|
 | Bare minimum | ${fmt(summary.bareMinimumTotal as number)} |
-| Working campaign | ${fmt(summary.workingCampaignTotal as number)} |
-| Aggressive statewide | ${fmt(summary.aggressiveStatewideTotal as number)} |
+| Working campaign | ${fmt(summary.workingCampaignTotal as number)} (${fmt(WORKING_RANGE.low)}–${fmt(WORKING_RANGE.high)} range) |
+| Aggressive statewide | ${fmt(summary.aggressiveStatewideTotal as number)} (${fmt(AGGRESSIVE_RANGE.low)}–${fmt(AGGRESSIVE_RANGE.high)} range) |
 
 ## Plan artifacts used
 
@@ -603,35 +708,261 @@ See \`data/campaign-brain/phone-banks-field.json\` — platform subscription **n
 }
 
 function buildCommunicationsMd(assumptions: Assumptions): string {
+  const tools = assumptions.digitalToolsAndPlatforms;
+  const digital = assumptions.digitalAdvertising;
   return `# Communications Budget
 
-> ${DISCLAIMER} · Motion & Storytelling + Forward Motion activation costs.
+> ${DISCLAIMER} · Platform tools only — **ad spend is modeled separately** in [DIGITAL-ADVERTISING-BUDGET.md](./DIGITAL-ADVERTISING-BUDGET.md).
 
-## Categories
+## Digital doctrine
 
-| Category | Source artifact | Status |
-|----------|-----------------|--------|
-| Social graphics | Forward Motion queue | needs_quote |
-| Video editing | Motion & Storytelling pipeline | needs_quote |
-| Boosted posts | Forward Motion / Facebook drafts | needs_quote |
-| Local newspaper ads | Coalition / top-city forums | needs_quote |
-| Press release tools | Forward Motion | needs_quote |
-| Email platform | SendGrid / email command center | needs_quote |
-| SMS / phone tools | GOTV + volunteer ops | needs_quote |
-| Website maintenance | kgrappe.netlify.app | needs_quote |
-| Content production | Story pipeline · Substack | needs_quote |
-| Mobilize | mobilize-events.json | needs_quote |
-| Substack | substack-stories.json | needs_quote |
+${digital?.doctrine ?? "Digital is a force multiplier for field operations — not a replacement for them."}
 
-## Planning tiers (all placeholders)
+County-targeted visit promotion, storytelling boosts, and volunteer recruitment ads are budgeted in the **digital advertising** line item — not here.
 
-| Tier | Monthly burn | Jun–Nov total (6 mo) |
-|------|-------------:|---------------------:|
-| Minimum | ${fmt(1500)} | ${fmt(9000)} |
-| Working | ${fmt(3500)} | ${fmt(21000)} |
-| Aggressive | ${fmt(7000)} | ${fmt(42000)} |
+## Platform & tools (modeled)
 
-These tiers cover graphics, modest digital boost, email/SMS tools, and content support — **not** large paid media buys.
+| Scenario | Email · Mobilize · SMS · website tools |
+|----------|---------------------------------------:|
+| Conservative | ${fmt(tools?.campaignTotals.conservative ?? 6000)} |
+| Working | ${fmt(tools?.campaignTotals.working ?? 9000)} |
+| Aggressive | ${fmt(tools?.campaignTotals.aggressive ?? 12000)} |
+
+${tools?.note ?? ""}
+
+## Remaining needs_quote
+
+| Category | Status |
+|----------|--------|
+| Press release distribution | needs_quote |
+| Substack paid tier | needs_quote |
+| Advanced SMS / P2P texting scale | needs_quote |
+
+## Related modeled budgets
+
+| Document | Purpose |
+|----------|---------|
+| [DIGITAL-ADVERTISING-BUDGET.md](./DIGITAL-ADVERTISING-BUDGET.md) | County-targeted ads · visit promotion · storytelling · GOTV push |
+| [DIGITAL-CONTENT-PRODUCTION-BUDGET.md](./DIGITAL-CONTENT-PRODUCTION-BUDGET.md) | Reels · graphics · forum clips · testimonial videos |
+| [MEDIA-OUTREACH-BUDGET.md](./MEDIA-OUTREACH-BUDGET.md) | Rural newspaper · rural radio · campus · community print |
+`;
+}
+
+function buildDigitalAdvertisingMd(assumptions: Assumptions): string {
+  const d = assumptions.digitalAdvertising;
+  if (!d) return "# Digital Advertising Budget\n\n> No modeled assumptions.\n";
+
+  const scheduleTable = (tier: "working" | "aggressive" | "conservative", title: string) => {
+    const rows = d.monthlySchedule?.[tier] ?? [];
+    return `### ${title}
+
+| Month | Budget | Focus |
+|-------|-------:|-------|
+${rows.map((r) => `| ${r.label} | ${fmt(r.amount)} | ${r.focus ?? "—"} |`).join("\n")}
+| **Total** | **${fmt(d.campaignTotals[tier])}** | |`;
+  };
+
+  const allocation = d.spendAllocation
+    ? Object.values(d.spendAllocation)
+        .map(
+          (a) =>
+            `### ${a.percent}% — ${a.label}\n\n${(a.examples ?? []).map((e) => `- ${e}`).join("\n")}`,
+        )
+        .join("\n\n")
+    : "";
+
+  return `# Digital Advertising Budget
+
+> ${DISCLAIMER} · **Modeled assumptions** — force multiplier for field operations, not broad statewide FB/Google.
+
+## Doctrine
+
+${d.doctrine ?? ""}
+
+${(d.strategyPrinciples ?? []).map((p) => `- ${p}`).join("\n")}
+
+**Do not budget this like a typical statewide campaign.** Most statewide campaigns spend heavily on broad Facebook and Google advertising. That does not match this strategy.
+
+---
+
+## Monthly schedule — working scenario
+
+${scheduleTable("working", "Working digital budget ($30,000)")}
+
+---
+
+## Aggressive scenario (if fundraising improves)
+
+${scheduleTable("aggressive", "Aggressive digital budget ($47,500)")}
+
+Allows meaningful saturation in the Top 40 cities.
+
+---
+
+## Conservative scenario
+
+${scheduleTable("conservative", "Conservative digital budget ($16,500)")}
+
+---
+
+## How to spend it
+
+${allocation}
+
+---
+
+## Leadership note
+
+Save major **direct candidate persuasion** spending for the final 30–45 days. Early months prioritize **visit promotion** and **local storytelling** — geographically targeted, highly efficient.
+`;
+}
+
+function buildDigitalContentProductionMd(assumptions: Assumptions): string {
+  const p = assumptions.digitalContentProduction;
+  if (!p) return "# Digital Content Production Budget\n\n> No modeled assumptions.\n";
+
+  return `# Digital Content Production Budget
+
+> ${DISCLAIMER} · **Production — not ad spend.**
+
+${p.note ?? ""}
+
+The campaign's strategy depends on appearing to be everywhere. **Content production is as important as ad placement.**
+
+| | |
+|---|---:|
+| Monthly | ${fmt(p.monthlyAmount)} |
+| Months | ${p.monthsBudgeted} |
+| **Campaign total** | **${fmt(p.campaignTotal)}** |
+
+## Includes
+
+${(p.includes ?? []).map((i) => `- ${i}`).join("\n")}
+
+Production supports Forward Motion · Motion & Storytelling · county visit content · forum clips · volunteer testimonials.
+`;
+}
+
+function buildMediaOutreachMd(assumptions: Assumptions): string {
+  const m = assumptions.mediaAndOutreach;
+  if (!m) return "# Media & Outreach Budget\n\n> No modeled assumptions in source file.\n";
+
+  const rows = Object.entries(m.monthly)
+    .map(([k, v]) => {
+      const label = k
+        .replace(/([A-Z])/g, " $1")
+        .replace(/^./, (c) => c.toUpperCase())
+        .replace(/Advertising/g, " advertising");
+      return `| ${label} | ${fmt(v)}/month | ${fmt(v * m.monthsBudgeted)} |`;
+    })
+    .join("\n");
+
+  return `# Media & Outreach Budget
+
+> ${DISCLAIMER} · **Modeled assumptions** — core field strategy, not placeholder.
+
+${m.note ?? ""}
+
+## Monthly assumptions
+
+| Category | Monthly | ${m.monthsBudgeted}-month total |
+|----------|--------:|------------------:|
+${rows}
+| **Total media & outreach** | **${fmt(m.monthlyTotal)}/month** | **${fmt(m.campaignTotal)}** |
+
+## Scenario totals
+
+| Scenario | Monthly | Campaign total | Notes |
+|----------|--------:|---------------:|-------|
+| Working (modest) | ${fmt(m.monthlyTotal)} | ${fmt(m.campaignTotal)} | Jun–Aug baseline |
+| Aggressive | ${fmt(m.aggressiveCampaignTotal / m.monthsBudgeted)} avg | ${fmt(m.aggressiveCampaignTotal)} | May double Sep–Oct if traction builds |
+
+## Leadership note
+
+This is intentionally modest. If the campaign starts seeing traction, rural media could easily **double in September and October** — plan contingency in the ${fmt(WORKING_RANGE.low)}–${fmt(WORKING_RANGE.high)} working range.
+`;
+}
+
+function buildCommunityActivationMd(assumptions: Assumptions): string {
+  const c = assumptions.communityActivationAndSwag;
+  if (!c) return "# Community Activation & Swag Budget\n\n> No modeled assumptions.\n";
+
+  const corridors = (c.knownImmersionCorridors ?? []).map((x) => `- ${x}`).join("\n");
+
+  return `# Community Activation & Swag Budget
+
+> ${DISCLAIMER} · **Modeled assumptions** — $${c.perImmersionVisit} swag per immersion visit.
+
+${c.note ?? ""}
+
+## Per-visit planning line item
+
+| Item | Amount |
+|------|-------:|
+| Swag budget per immersion visit | **${fmt(c.perImmersionVisit)}** |
+
+Includes: local shirts · giveaways · fans · buttons · stickers · booth items · local sponsor materials.
+
+## Immersion scenarios
+
+| Scenario | Immersions | Total |
+|----------|----------:|------:|
+| Conservative | ${c.scenarios.conservative.immersions} | ${fmt(c.scenarios.conservative.total)} |
+| Expected | ${c.scenarios.expected.immersions} | ${fmt(c.scenarios.expected.total)} |
+| Aggressive | ${c.scenarios.aggressive.immersions} | ${fmt(c.scenarios.aggressive.total)} |
+
+## Known immersion corridors (planning)
+
+${corridors}
+
+Verify actual immersion count against Executive Field Calendar before locking cash flow.
+`;
+}
+
+function buildComplianceMd(assumptions: Assumptions): string {
+  const c = assumptions.complianceReporting;
+  if (!c) return "# Compliance Budget\n\n> No modeled assumptions.\n";
+
+  return `# Compliance & Reporting Budget
+
+> ${DISCLAIMER} · **Hard monthly expense** — not optional.
+
+${c.note ?? ""}
+
+| Category | Monthly | ${c.monthsBudgeted}-month total |
+|----------|--------:|------------------:|
+| Compliance / reporting consultant | ${fmt(c.complianceConsultantMonthly)} | **${fmt(c.campaignTotal)}** |
+
+Treat similarly to accounting and filing costs. Leadership should budget **${fmt(c.complianceConsultantMonthly)}/month** through Election Day regardless of scenario tier.
+`;
+}
+
+function buildCountySponsorshipsMd(assumptions: Assumptions): string {
+  const s = assumptions.countyEventSponsorships;
+  if (!s) return "# County Event Sponsorships Budget\n\n> No modeled assumptions.\n";
+
+  return `# County Event Sponsorships Budget
+
+> ${DISCLAIMER} · **Modeled assumptions** — relationship-building spend across 75 counties.
+
+${s.note ?? ""}
+
+Small **$100–$500** sponsorships accumulate quickly. These are often among the highest relationship-building expenditures in rural Arkansas.
+
+## Scenarios
+
+| Scenario | Budget |
+|----------|-------:|
+| Conservative | ${fmt(s.scenarios.conservative)} |
+| Expected | ${fmt(s.scenarios.expected)} |
+| Aggressive | ${fmt(s.scenarios.aggressive)} |
+
+## Typical uses
+
+- County fairs · festivals · parades
+- Democratic dinners · Juneteenth events
+- Local civic events · candidate forums
+- Table fees · booth fees · program ads
 `;
 }
 
@@ -640,25 +971,25 @@ function buildFundraisingMd(
   summary: Record<string, unknown>,
 ): string {
   const salary = assumptions.salary.total;
-  const travelConservative = summary.travelConservative as number;
   const travelExpected = summary.travelExpected as number;
-  const travelAggressive = summary.travelAggressive as number;
-  const materialsLow = summary.materialsLow as number;
   const materialsMid = summary.materialsMid as number;
-  const materialsHigh = summary.materialsHigh as number;
-  const commsLow = 9000;
-  const commsMid = 21000;
-  const commsHigh = 42000;
-  const volunteerLow = 2500;
   const volunteerMid = 6000;
-  const volunteerHigh = 12000;
   const postcardMid = summary.postcardMid as number;
   const sherwoodNetMid = summary.sherwoodNetMid as number;
   const opsPlaceholder = 15000;
+  const media = summary.mediaOutreachTotal as number;
+  const immersion = summary.immersionSwagTotal as number;
+  const compliance = summary.complianceTotal as number;
+  const sponsorships = summary.countySponsorshipsTotal as number;
+  const fieldStrategy = summary.fieldStrategyTotal as number;
+  const digitalAds = summary.digitalAdvertisingTotal as number;
+  const digitalProduction = summary.digitalContentProductionTotal as number;
+  const digitalTools = summary.digitalToolsTotal as number;
+  const digitalProgram = summary.digitalProgramTotal as number;
 
-  const bare = salary + travelConservative + materialsLow + volunteerLow + commsLow + 5000;
-  const working = salary + travelExpected + materialsMid + volunteerMid + commsMid + postcardMid * 0.5 + opsPlaceholder - sherwoodNetMid;
-  const aggressive = salary + travelAggressive + materialsHigh + volunteerHigh + commsHigh + postcardMid + opsPlaceholder * 2 - sherwoodNetMid;
+  const bare = summary.bareMinimumTotal as number;
+  const working = summary.workingCampaignTotal as number;
+  const aggressive = summary.aggressiveStatewideTotal as number;
 
   return `# Fundraising Goal Model
 
@@ -674,11 +1005,13 @@ Without this, Kelly cannot take leave from work to campaign full-time.
 
 ## Scenario summary
 
-| Scenario | Projected total need | Approx. monthly burn (6 mo) |
-|----------|---------------------:|----------------------------:|
-| **Bare minimum** | ${fmt(bare)} | ${fmt(Math.round(bare / 6))} |
-| **Working campaign** | ${fmt(working)} | ${fmt(Math.round(working / 6))} |
-| **Aggressive statewide** | ${fmt(aggressive)} | ${fmt(Math.round(aggressive / 6))} |
+| Scenario | Projected total need | Planning range | ~Monthly burn (6 mo) |
+|----------|---------------------:|---------------:|---------------------:|
+| **Bare minimum** | ${fmt(bare)} | — | ${fmt(Math.round(bare / 6))} |
+| **Working campaign** | ${fmt(working)} | ${fmt(WORKING_RANGE.low)}–${fmt(WORKING_RANGE.high)} | ${fmt(Math.round(working / 6))} |
+| **Aggressive statewide** | ${fmt(aggressive)} | ${fmt(AGGRESSIVE_RANGE.low)}–${fmt(AGGRESSIVE_RANGE.high)} | ${fmt(Math.round(aggressive / 6))} |
+
+> **Leadership note:** The campaign's realistic operating target is **${fmt(WORKING_RANGE.low)}–${fmt(WORKING_RANGE.high)}** through Election Day — statewide travel, immersion visits, signs, shirts, postcards, rural media, Sherwood, coalition work, volunteer leadership, Power of 5 organizing, and a steadily increasing **digital program** that culminates in a heavy Top 40 city push during the final month. Aggressive statewide target: **${fmt(AGGRESSIVE_RANGE.low)}**.
 
 ## Breakdown — working campaign (illustrative)
 
@@ -689,14 +1022,26 @@ Without this, Kelly cannot take leave from work to campaign full-time.
 | Field materials (mid) | ${fmt(materialsMid)} |
 | Postcards & mail (50% of mid scenario) | ${fmt(Math.round(postcardMid * 0.5))} |
 | Volunteer leadership | ${fmt(volunteerMid)} |
-| Communications | ${fmt(commsMid)} |
-| Operations / compliance / contingency | ${fmt(opsPlaceholder)} |
+| **Digital advertising (field force multiplier)** | **${fmt(digitalAds)}** |
+| **Digital content production ($500/mo)** | **${fmt(digitalProduction)}** |
+| Digital tools & platforms | ${fmt(digitalTools)} |
+| **Media & outreach (rural print/radio)** | **${fmt(media)}** |
+| **Immersion swag (15 visits × $500)** | **${fmt(immersion)}** |
+| **Compliance / reporting ($750/mo)** | **${fmt(compliance)}** |
+| **County event sponsorships** | **${fmt(sponsorships)}** |
+| Operations / contingency | ${fmt(opsPlaceholder)} |
 | Sherwood net contribution (expected − mid cost) | −${fmt(sherwoodNetMid)} |
+| **Field strategy subtotal** | **${fmt(fieldStrategy)}** |
+| **Digital program subtotal** | **${fmt(digitalProgram)}** |
 | **Working total** | **${fmt(working)}** |
 
 ## Monthly burn target (working scenario)
 
-Leadership should plan to raise roughly **${fmt(Math.round(working / 6))}/month** through Election Day to run a working statewide campaign including Kelly's salary.
+Leadership should plan to raise roughly **${fmt(Math.round(working / 6))}/month** through Election Day — including Kelly's salary, field strategy, and the digital force-multiplier program.
+
+## Digital doctrine
+
+Digital is a **force multiplier for field operations** — not a replacement for them. Do not budget like a typical statewide campaign. See [DIGITAL-ADVERTISING-BUDGET.md](./DIGITAL-ADVERTISING-BUDGET.md).
 
 ## Sherwood contribution
 
@@ -714,7 +1059,8 @@ Model Sherwood as **net** fundraising after costs — see [SHERWOOD-60-BUDGET.md
 
 ## What this does NOT include
 
-- Large paid TV/radio (not in current plan)
+- Large paid TV (not in current plan)
+- Broad statewide Facebook/Google saturation (not this strategy)
 - Guaranteed endorsement costs
 - Legal defense contingencies
 - Final vendor quotes for print, postage, Sherwood production
@@ -724,13 +1070,24 @@ Rebuild: \`npm run campaign-brain:budget:build\`
 }
 
 function buildExecutiveBookBudgetChapter(summary: Record<string, number | string>): string {
+  const s = summary as Record<string, number>;
   return `# Campaign Budget & Fundraising Targets
 
-> CAMPAIGN-BUDGET-FRAMEWORK-1.0 · **Chapter 7 — Leadership fundraising planning**
+> ${PASS} · **Chapter 7 — Leadership fundraising planning**
 
-**These are planning targets, not guaranteed costs or guaranteed fundraising outcomes.** Unknown vendor expenses are marked **needs_quote** in \`data/campaign-brain/budget/campaign-budget-assumptions.json\`.
+**These are planning targets, not guaranteed costs or guaranteed fundraising outcomes.** Modeled line items cover rural media, immersion swag, compliance, county sponsorships, and a **field-aligned digital program** — not broad statewide FB/Google saturation.
 
 Kelly cannot campaign full-time without leave-of-absence replacement income. **Salary is the non-negotiable floor.**
+
+---
+
+## Leadership guidance
+
+> Plan around a **working budget of ${fmt(WORKING_RANGE.low)}–${fmt(WORKING_RANGE.high)}** through Election Day — statewide travel, immersion visits, signs, shirts, postcards, rural media, Sherwood, coalition work, volunteer leadership, Power of 5 organizing, and a steadily increasing digital program culminating in a heavy Top 40 city push during the final month. **Aggressive statewide target: ${fmt(AGGRESSIVE_RANGE.low)}.**
+
+**Digital doctrine:** Social media amplifies physical presence — it does not replace field operations. Save major persuasion spending for the final 30–45 days.
+
+Once September arrives, the campaign will almost certainly add additional signs, shirts, radio, forum sponsorships, newspaper ads, GOTV printing, travel, and volunteer materials — budget contingency accordingly.
 
 ---
 
@@ -738,9 +1095,44 @@ Kelly cannot campaign full-time without leave-of-absence replacement income. **S
 
 | | |
 |---|---:|
-| Kelly replacement salary | **$72,000** |
-| Monthly | $12,000 × 6 months (Jun–Nov 2026) |
+| Kelly replacement salary | **${fmt(s.salaryTotal)}** |
+| Monthly | ${fmt(s.salaryMonthly)} × 6 months (Jun–Nov 2026) |
 | Purpose | Leave-of-absence from work so Kelly can campaign full-time |
+
+---
+
+## Modeled field strategy
+
+| Category | Working scenario |
+|----------|-----------------:|
+| Media & outreach ($4,000/mo) | ${fmt(s.mediaOutreachTotal ?? 24000)} |
+| Immersion swag (15 × $500) | ${fmt(s.immersionSwagTotal ?? 7500)} |
+| Compliance ($750/mo × 6) | ${fmt(s.complianceTotal ?? 4500)} |
+| County event sponsorships | ${fmt(s.countySponsorshipsTotal ?? 7500)} |
+| **Field strategy subtotal** | **${fmt(s.fieldStrategyTotal ?? 43500)}** |
+
+---
+
+## Modeled digital program
+
+| Category | Working scenario |
+|----------|-----------------:|
+| Digital advertising (county-targeted) | ${fmt(s.digitalAdvertisingTotal ?? 30000)} |
+| Digital content production ($500/mo) | ${fmt(s.digitalContentProductionTotal ?? 3000)} |
+| Digital tools & platforms | ${fmt(s.digitalToolsTotal ?? 9000)} |
+| **Digital program subtotal** | **${fmt(s.digitalProgramTotal ?? 42000)}** |
+
+### Working digital ad schedule
+
+| Month | Budget | Focus |
+|-------|-------:|-------|
+| June | $1,000 | Visit promotion · Sherwood · volunteer launch |
+| July | $2,000 | Immersion amplification |
+| August | $4,000 | Top 40 cities |
+| September | $8,000 | Persuasion season |
+| October | $15,000 | GOTV · early voting · Top 40 push |
+
+**Spend mix:** 40% visit promotion · 25% storytelling · 20% volunteer recruitment · 15% direct persuasion (late race only).
 
 ---
 
@@ -748,14 +1140,16 @@ Kelly cannot campaign full-time without leave-of-absence replacement income. **S
 
 | Line item | Amount |
 |-----------|-------:|
-| Salary floor | $72,000 |
-| Travel (conservative → aggressive) | $31,533 → $46,783 |
-| Materials mid (1,000 signs + 500 shirts) | $13,500 |
-| Postcards/mail mid placeholder | ~$27,840 |
-| Sherwood expected net (projected) | ~$11,500 |
-| **Bare minimum scenario** | **$126,783** |
-| **Working campaign scenario** | **$167,553** |
-| **Aggressive statewide scenario** | **$246,123** |
+| Salary floor | ${fmt(s.salaryTotal)} |
+| Travel (conservative → aggressive) | ${fmt(s.travelConservative)} → ${fmt(s.travelAggressive)} |
+| Materials mid (1,000 signs + 500 shirts) | ${fmt(s.materialsMid)} |
+| Postcards/mail mid placeholder | ~${fmt(Math.round(s.postcardMid))} |
+| Sherwood expected net (projected) | ~${fmt(s.sherwoodNetMid)} |
+| **Bare minimum scenario** | **${fmt(s.bareMinimumTotal)}** |
+| **Working campaign scenario** | **${fmt(s.workingCampaignTotal)}** |
+| **Working planning range** | **${fmt(WORKING_RANGE.low)}–${fmt(WORKING_RANGE.high)}** |
+| **Aggressive statewide scenario** | **${fmt(s.aggressiveStatewideTotal)}** |
+| **Aggressive planning range** | **${fmt(AGGRESSIVE_RANGE.low)}–${fmt(AGGRESSIVE_RANGE.high)}** |
 
 ---
 
@@ -763,10 +1157,10 @@ Kelly cannot campaign full-time without leave-of-absence replacement income. **S
 
 | | |
 |---|---:|
-| Working campaign total | $167,553 |
-| Approx. monthly burn (6 months) | **~$27,926** |
+| Working campaign total | ${fmt(s.workingCampaignTotal)} |
+| Approx. monthly burn (6 months) | **~${fmt(s.monthlyBurnWorking)}** |
 
-Leadership should use the **working campaign** figure for finance committee planning — not the bare minimum alone.
+Leadership should use the **working campaign** figure and **${fmt(WORKING_RANGE.low)}–${fmt(WORKING_RANGE.high)}** range for finance committee planning.
 
 ---
 
@@ -774,9 +1168,9 @@ Leadership should use the **working campaign** figure for finance committee plan
 
 | Scenario | Total projected need | ~Monthly burn |
 |----------|---------------------:|--------------:|
-| Bare minimum | $126,783 | $21,131 |
-| **Working campaign** | **$167,553** | **$27,926** |
-| Aggressive statewide | $246,123 | $41,021 |
+| Bare minimum | ${fmt(s.bareMinimumTotal)} | ${fmt(s.monthlyBurnBare)} |
+| **Working campaign** | **${fmt(s.workingCampaignTotal)}** | **${fmt(s.monthlyBurnWorking)}** |
+| Aggressive statewide | ${fmt(s.aggressiveStatewideTotal)} | ${fmt(s.monthlyBurnAggressive)} |
 
 ---
 
@@ -785,6 +1179,12 @@ Leadership should use the **working campaign** figure for finance committee plan
 | Document | Location |
 |----------|----------|
 | Framework overview | \`docs/campaign-brain/budget/CAMPAIGN-BUDGET-FRAMEWORK.md\` |
+| Media & outreach | \`docs/campaign-brain/budget/MEDIA-OUTREACH-BUDGET.md\` |
+| Community activation & swag | \`docs/campaign-brain/budget/COMMUNITY-ACTIVATION-SWAG-BUDGET.md\` |
+| Compliance | \`docs/campaign-brain/budget/COMPLIANCE-BUDGET.md\` |
+| County sponsorships | \`docs/campaign-brain/budget/COUNTY-SPONSORSHIPS-BUDGET.md\` |
+| Digital advertising | \`docs/campaign-brain/budget/DIGITAL-ADVERTISING-BUDGET.md\` |
+| Digital content production | \`docs/campaign-brain/budget/DIGITAL-CONTENT-PRODUCTION-BUDGET.md\` |
 | Travel | \`docs/campaign-brain/budget/TRAVEL-BUDGET.md\` |
 | Field materials | \`docs/campaign-brain/budget/FIELD-MATERIALS-BUDGET.md\` |
 | Postcards & mail | \`docs/campaign-brain/budget/POSTCARD-AND-MAIL-BUDGET.md\` |
@@ -797,7 +1197,7 @@ Leadership should use the **working campaign** figure for finance committee plan
 
 - Do not present these numbers as guaranteed fundraising outcomes
 - Do not use in donor materials without finance committee review
-- Replace **needs_quote** placeholders with vendor quotes before committing spend
+- Replace remaining **needs_quote** placeholders with vendor quotes before committing spend
 
 Rebuild: \`npm run campaign-brain:budget:build\` · Shareable chapter: \`/election-plan/executive-book/budget\`
 `;
@@ -838,32 +1238,50 @@ function main() {
     200 * sherwood.donationDrinkTicketPrice;
   const sherwoodNetMid = revenueExpected - 25000;
 
+  const fieldBare = fieldStrategyTotals(assumptions, "conservative");
+  const fieldExpected = fieldStrategyTotals(assumptions, "expected");
+  const fieldAggressive = fieldStrategyTotals(assumptions, "aggressive");
+
+  const opsPlaceholder = 15000;
+  const digitalBare = digitalProgramTotals(assumptions, "conservative");
+  const digitalExpected = digitalProgramTotals(assumptions, "expected");
+  const digitalAggressive = digitalProgramTotals(assumptions, "aggressive");
+
   const bareMinimumTotal =
-    assumptions.salary.total + travelConservative.totals.total + materialsLow + 2500 + 9000 + 5000;
+    assumptions.salary.total +
+    travelConservative.totals.total +
+    materialsLow +
+    2500 +
+    6000 +
+    5000 +
+    fieldBare.total +
+    digitalBare.total;
   const workingCampaignTotal =
     assumptions.salary.total +
     travelExpected.totals.total +
     materialsMid +
     6000 +
-    21000 +
     postcardMid * 0.5 +
-    15000 -
-    sherwoodNetMid;
+    opsPlaceholder -
+    sherwoodNetMid +
+    fieldExpected.total +
+    digitalExpected.total;
   const aggressiveStatewideTotal =
     assumptions.salary.total +
     travelAggressive.totals.total +
     materialsHigh +
     12000 +
-    42000 +
     postcardMid +
-    30000 -
-    sherwoodNetMid;
+    opsPlaceholder * 2 -
+    sherwoodNetMid +
+    fieldAggressive.total +
+    digitalAggressive.total;
 
   const generatedAt = new Date().toISOString();
 
   const summary = {
     generatedAt,
-    pass: "CAMPAIGN-BUDGET-FRAMEWORK-1.0",
+    pass: PASS,
     disclaimer: DISCLAIMER,
     referenceDate: REFERENCE_DATE,
     electionDay: ELECTION_DAY,
@@ -880,9 +1298,23 @@ function main() {
     materialsHigh,
     postcardMid,
     sherwoodNetMid,
+    mediaOutreachTotal: fieldExpected.media,
+    immersionSwagTotal: fieldExpected.immersionSwag,
+    complianceTotal: fieldExpected.compliance,
+    countySponsorshipsTotal: fieldExpected.countySponsorships,
+    fieldStrategyTotal: fieldExpected.total,
+    digitalAdvertisingTotal: digitalExpected.advertising,
+    digitalContentProductionTotal: digitalExpected.contentProduction,
+    digitalToolsTotal: digitalExpected.toolsAndPlatforms,
+    digitalProgramTotal: digitalExpected.total,
+    priorWorkingCampaignTotal: 211053,
     bareMinimumTotal,
     workingCampaignTotal,
     aggressiveStatewideTotal,
+    workingCampaignRangeLow: WORKING_RANGE.low,
+    workingCampaignRangeHigh: WORKING_RANGE.high,
+    aggressiveRangeLow: AGGRESSIVE_RANGE.low,
+    aggressiveRangeHigh: AGGRESSIVE_RANGE.high,
     monthlyBurnWorking: Math.round(workingCampaignTotal / 6),
     monthlyBurnBare: Math.round(bareMinimumTotal / 6),
     monthlyBurnAggressive: Math.round(aggressiveStatewideTotal / 6),
@@ -905,6 +1337,16 @@ function main() {
       materials: { low: materialsLow, mid: materialsMid, high: materialsHigh },
       postcardMidEstimate: postcardMid,
       sherwoodNetMidEstimate: sherwoodNetMid,
+      fieldStrategy: {
+        conservative: fieldBare,
+        expected: fieldExpected,
+        aggressive: fieldAggressive,
+      },
+      digitalProgram: {
+        conservative: digitalBare,
+        expected: digitalExpected,
+        aggressive: digitalAggressive,
+      },
       scenarios: {
         bareMinimumTotal,
         workingCampaignTotal,
@@ -923,7 +1365,13 @@ function main() {
   writeFileSync(path.join(OUT_DOCS, "POSTCARD-AND-MAIL-BUDGET.md"), buildPostcardMd(assumptions));
   writeFileSync(path.join(OUT_DOCS, "SHERWOOD-60-BUDGET.md"), buildSherwoodMd(assumptions));
   writeFileSync(path.join(OUT_DOCS, "VOLUNTEER-LEADERSHIP-BUDGET.md"), buildVolunteerMd(assumptions));
+  writeFileSync(path.join(OUT_DOCS, "DIGITAL-ADVERTISING-BUDGET.md"), buildDigitalAdvertisingMd(assumptions));
+  writeFileSync(path.join(OUT_DOCS, "DIGITAL-CONTENT-PRODUCTION-BUDGET.md"), buildDigitalContentProductionMd(assumptions));
   writeFileSync(path.join(OUT_DOCS, "COMMUNICATIONS-BUDGET.md"), buildCommunicationsMd(assumptions));
+  writeFileSync(path.join(OUT_DOCS, "MEDIA-OUTREACH-BUDGET.md"), buildMediaOutreachMd(assumptions));
+  writeFileSync(path.join(OUT_DOCS, "COMMUNITY-ACTIVATION-SWAG-BUDGET.md"), buildCommunityActivationMd(assumptions));
+  writeFileSync(path.join(OUT_DOCS, "COMPLIANCE-BUDGET.md"), buildComplianceMd(assumptions));
+  writeFileSync(path.join(OUT_DOCS, "COUNTY-SPONSORSHIPS-BUDGET.md"), buildCountySponsorshipsMd(assumptions));
   writeFileSync(path.join(OUT_DOCS, "FUNDRAISING-GOAL-MODEL.md"), buildFundraisingMd(assumptions, summary));
 
   const execBookDir = path.join(process.cwd(), "docs/strategic-plan/plurality-victory-plan/executive-book-v1");

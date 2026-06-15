@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "note": "Kelly Grappe Students for Arkansas founding co-chairs. Update status as seats fill.",
+  "coChairs": [
+    {
+      "id": "chance-bradford",
+      "name": "Chance Bradford",
+      "title": "Co-Chair – HBCU Outreach",
+      "status": "confirmed",
+      "region": "HBCU / minority-serving institutions",
+      "leadCampus": "Philander Smith College",
+      "campusFocus": [
+        "Philander Smith College",
+        "Arkansas Baptist College",
+        "University of Arkansas at Pine Bluff"
+      ],
+      "responsibilities": [
+        "Lead Philander Smith chapter",
+        "Coordinate HBCU strategy statewide",
+        "Build leadership teams at HBCU and minority-serving institutions"
+      ]
+    },
+    {
+      "id": "xav-mclennon",
+      "name": "Xav McLennon",
+      "title": "Co-Chair – Central Arkansas Universities",
+      "status": "confirmed",
+      "region": "Central Arkansas",
+      "leadCampus": "University of Central Arkansas",
+      "campusFocus": [
+        "University of Central Arkansas",
+        "Hendrix College",
+        "Central Baptist College"
+      ],
+      "responsibilities": [
+        "Lead UCA chapter",
+        "Coordinate Central Arkansas campus outreach"
+      ]
+    },
+    {
+      "id": "open-northeast",
+      "name": null,
+      "title": "Co-Chair – Northeast Arkansas",
+      "status": "open",
+      "region": "Northeast Arkansas",
+      "leadCampus": "Arkansas State University",
+      "campusFocus": ["Arkansas State University (Jonesboro)"],
+      "responsibilities": [
+        "Jonesboro region leadership",
+        "Northeast Arkansas student recruitment"
+      ]
+    },
+    {
+      "id": "open-northwest",
+      "name": null,
+      "title": "Co-Chair – Northwest Arkansas",
+      "status": "open",
+      "region": "Northwest Arkansas",
+      "leadCampus": "University of Arkansas",
+      "campusFocus": ["University of Arkansas (Fayetteville)"],
+      "responsibilities": [
+        "Northwest Arkansas student outreach",
+        "Benton and Washington county campus coordination"
+      ]
+    },
+    {
+      "id": "open-metro",
+      "name": null,
+      "title": "Co-Chair – Metro / UALR",
+      "status": "open",
+      "region": "Central Arkansas Metro",
+      "leadCampus": "University of Arkansas Little Rock",
+      "campusFocus": [
+        "University of Arkansas Little Rock",
+        "Pulaski Technical College",
+        "UA-PTC"
+      ],
+      "responsibilities": [
+        "Metro outreach",
+        "Community college coordination"
+      ]
+    }
+  ]
+}

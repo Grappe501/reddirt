@@ -1,11 +1,11 @@
 /**
- * Executive Book Chapter 8 — Arkansas GOTV Operations Plan.
+ * Executive Book Chapter 10 — Arkansas GOTV Operations Plan.
  * Field manual synthesized from existing plan artifacts. Not a new Brain phase.
  *
  * Usage: npm run campaign-brain:gotv-operations:build
  */
 
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { BRAIN_DATA, BRAIN_ROOT, readJson } from "./lib/inputs";
@@ -94,7 +94,7 @@ function buildChapter(): string {
 
   return `# Arkansas GOTV Operations Plan
 
-> ${PASS} · **Executive Book Chapter 8 — Field manual**
+> ${PASS} · **Executive Book Chapter 10 — Field manual**
 
 **Election Day:** ${ELECTION_DAY} · **Early voting begins:** ${EARLY_VOTING_START}
 
@@ -402,14 +402,19 @@ function main() {
   const chapter = buildChapter();
   const summary = buildJsonSummary();
 
-  writeFileSync(path.join(EXEC_BOOK, "07-ARKANSAS-GOTV-OPERATIONS-PLAN.md"), chapter);
+  writeFileSync(path.join(EXEC_BOOK, "09-ARKANSAS-GOTV-OPERATIONS-PLAN.md"), chapter);
+  try {
+    unlinkSync(path.join(EXEC_BOOK, "08-ARKANSAS-GOTV-OPERATIONS-PLAN.md"));
+  } catch {
+    // legacy path
+  }
   writeFileSync(path.join(OUT_DATA, "gotv-operations-plan.json"), JSON.stringify(summary, null, 2));
   mkdirSync(path.join(BRAIN_ROOT, "gotv-operations"), { recursive: true });
 
   writeFileSync(path.join(BRAIN_ROOT, "gotv-operations", "GOTV-OPERATIONS-PLAN.summary.json"), JSON.stringify(summary, null, 2));
 
   console.log(
-    `GOTV Operations Plan: Chapter 8 · HCI ${summary.winCondition.hciCurrent}/${summary.winCondition.hciGoal} · ${summary.targetUniverse.tier1Top10.length} Top 10 cities · ${summary.electionDayChecklist.filter((c) => c.status !== "complete").length} Election Day items need assignment`,
+    `GOTV Operations Plan: Chapter 10 · HCI ${summary.winCondition.hciCurrent}/${summary.winCondition.hciGoal} · ${summary.targetUniverse.tier1Top10.length} Top 10 cities · ${summary.electionDayChecklist.filter((c) => c.status !== "complete").length} Election Day items need assignment`,
   );
 }
 

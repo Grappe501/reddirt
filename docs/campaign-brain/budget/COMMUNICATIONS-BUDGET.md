@@ -1,29 +1,35 @@
 # Communications Budget
 
-> Planning budget framework only — not final accounting, not guaranteed fundraising, not donor-facing claims. · Motion & Storytelling + Forward Motion activation costs.
+> Planning budget framework only — not final accounting, not guaranteed fundraising, not donor-facing claims. · Platform tools only — **ad spend is modeled separately** in [DIGITAL-ADVERTISING-BUDGET.md](./DIGITAL-ADVERTISING-BUDGET.md).
 
-## Categories
+## Digital doctrine
 
-| Category | Source artifact | Status |
-|----------|-----------------|--------|
-| Social graphics | Forward Motion queue | needs_quote |
-| Video editing | Motion & Storytelling pipeline | needs_quote |
-| Boosted posts | Forward Motion / Facebook drafts | needs_quote |
-| Local newspaper ads | Coalition / top-city forums | needs_quote |
-| Press release tools | Forward Motion | needs_quote |
-| Email platform | SendGrid / email command center | needs_quote |
-| SMS / phone tools | GOTV + volunteer ops | needs_quote |
-| Website maintenance | kgrappe.netlify.app | needs_quote |
-| Content production | Story pipeline · Substack | needs_quote |
-| Mobilize | mobilize-events.json | needs_quote |
-| Substack | substack-stories.json | needs_quote |
+Digital is a force multiplier for field operations — not a replacement for them. Do not budget like a typical statewide campaign.
 
-## Planning tiers (all placeholders)
+County-targeted visit promotion, storytelling boosts, and volunteer recruitment ads are budgeted in the **digital advertising** line item — not here.
 
-| Tier | Monthly burn | Jun–Nov total (6 mo) |
-|------|-------------:|---------------------:|
-| Minimum | $1,500 | $9,000 |
-| Working | $3,500 | $21,000 |
-| Aggressive | $7,000 | $42,000 |
+## Platform & tools (modeled)
 
-These tiers cover graphics, modest digital boost, email/SMS tools, and content support — **not** large paid media buys.
+| Scenario | Email · Mobilize · SMS · website tools |
+|----------|---------------------------------------:|
+| Conservative | $6,000 |
+| Working | $9,000 |
+| Aggressive | $12,000 |
+
+Email, Mobilize, SMS, website tools — separate from county-targeted ad spend
+
+## Remaining needs_quote
+
+| Category | Status |
+|----------|--------|
+| Press release distribution | needs_quote |
+| Substack paid tier | needs_quote |
+| Advanced SMS / P2P texting scale | needs_quote |
+
+## Related modeled budgets
+
+| Document | Purpose |
+|----------|---------|
+| [DIGITAL-ADVERTISING-BUDGET.md](./DIGITAL-ADVERTISING-BUDGET.md) | County-targeted ads · visit promotion · storytelling · GOTV push |
+| [DIGITAL-CONTENT-PRODUCTION-BUDGET.md](./DIGITAL-CONTENT-PRODUCTION-BUDGET.md) | Reels · graphics · forum clips · testimonial videos |
+| [MEDIA-OUTREACH-BUDGET.md](./MEDIA-OUTREACH-BUDGET.md) | Rural newspaper · rural radio · campus · community print |

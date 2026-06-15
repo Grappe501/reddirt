@@ -32,18 +32,18 @@
     "doorHangers": { "status": "needs_quote", "note": "Per unit print" },
     "pushCards": { "status": "needs_quote", "note": "Per unit print" },
     "banners": { "status": "needs_quote", "note": "Vinyl / mesh banners" },
-    "tableFees": { "status": "needs_quote", "note": "Festival vendor tables from field calendar" },
-    "boothFees": { "status": "needs_quote", "note": "Fair booth fees — verify per event" },
-    "eventSponsorships": { "status": "needs_quote", "note": "Parade, festival sponsorship tiers" },
-    "digitalAds": { "status": "needs_quote", "note": "Meta / Google / local digital" },
-    "videoEditing": { "status": "needs_quote", "note": "Contractor or in-house time" },
-    "graphicDesign": { "status": "needs_quote", "note": "Forward Motion graphics queue" },
+    "eventSponsorships": { "status": "modeled_in_countyEventSponsorships", "note": "See countyEventSponsorships — $5K–$10K" },
+    "boothFees": { "status": "modeled_in_countyEventSponsorships", "note": "Included in county sponsorships model" },
+    "tableFees": { "status": "modeled_in_countyEventSponsorships", "note": "Included in county sponsorships model" },
+    "digitalAds": { "status": "modeled_in_digitalAdvertising", "note": "See digitalAdvertising — field force multiplier, not broad FB/Google" },
+    "videoEditing": { "status": "modeled_in_digitalContentProduction", "note": "See digitalContentProduction — $500/mo production" },
+    "graphicDesign": { "status": "modeled_in_digitalContentProduction", "note": "Included in digital content production budget" },
     "websiteSoftware": { "status": "needs_quote", "note": "Hosting, Netlify, domain, tools" },
     "mobilize": { "status": "needs_quote", "note": "Mobilize subscription tier" },
     "substack": { "status": "needs_quote", "note": "Substack paid tier if used" },
     "emailTools": { "status": "needs_quote", "note": "SendGrid / email platform" },
     "textTools": { "status": "needs_quote", "note": "SMS / peer-to-peer texting platform" },
-    "compliance": { "status": "needs_quote", "note": "Campaign counsel, ethics filings support" },
+    "compliance": { "status": "modeled_in_complianceReporting", "note": "See complianceReporting — $750/month × 6" },
     "accounting": { "status": "needs_quote", "note": "Bookkeeper / treasurer services" },
     "filingFees": { "status": "needs_quote", "note": "Arkansas SOS / ethics filing fees" },
     "insurance": { "status": "needs_quote", "note": "Event liability, general campaign" },
@@ -61,8 +61,8 @@
     "tents": { "status": "needs_quote" },
     "literature": { "status": "needs_quote" },
     "phoneBankTools": { "status": "needs_quote", "note": "Dialer / OpenVPB / similar" },
-    "localNewspaperAds": { "status": "needs_quote" },
-    "boostedPosts": { "status": "needs_quote" }
+    "localNewspaperAds": { "status": "modeled_in_mediaAndOutreach", "note": "See mediaAndOutreach — $1,500/month rural newspaper" },
+    "boostedPosts": { "status": "modeled_in_digitalAdvertising", "note": "County-targeted visit promotion and story boosts" }
   },
   "fieldMaterialsScenarios": {
     "yardSigns": [500, 1000, 2000, 3000],
@@ -86,18 +86,131 @@
   "fundraisingScenarios": {
     "bareMinimum": {
       "label": "Bare minimum",
-      "description": "Salary + travel (conservative) + minimal materials + Sherwood break-even",
+      "description": "Salary + travel (conservative) + minimal materials + field strategy (conservative tiers)",
       "materialsTier": "low"
     },
     "workingCampaign": {
       "label": "Working campaign",
-      "description": "Salary + expected travel + mid-tier materials + communications + volunteer ops",
+      "description": "Salary + expected travel + mid materials + rural media + immersion swag + compliance + sponsorships",
       "materialsTier": "mid"
     },
     "aggressiveStatewide": {
       "label": "Aggressive statewide push",
-      "description": "Salary + aggressive travel + high materials + full mail + digital + GOTV",
+      "description": "Salary + aggressive travel + high materials + doubled media + full field activation",
       "materialsTier": "high"
+    }
+  },
+  "mediaAndOutreach": {
+    "status": "modeled_assumption",
+    "note": "Intentionally modest Jun–Aug. May double Sep–Oct if traction builds.",
+    "monthsBudgeted": 6,
+    "monthly": {
+      "ruralNewspaperAdvertising": 1500,
+      "ruralRadioAdvertising": 1500,
+      "collegeCampusStudentOutreach": 500,
+      "creativeCommunityAdvertising": 500
+    },
+    "monthlyTotal": 4000,
+    "campaignTotal": 24000,
+    "aggressiveMonthlyTotal": 8000,
+    "aggressiveCampaignTotal": 48000,
+    "bareCampaignTotal": 18000
+  },
+  "communityActivationAndSwag": {
+    "status": "modeled_assumption",
+    "note": "$500 swag budget per immersion visit — local shirts, giveaways, fans, buttons, stickers, booth items",
+    "perImmersionVisit": 500,
+    "knownImmersionCorridors": [
+      "Benton County",
+      "Johnson County",
+      "Greene County",
+      "Union County",
+      "Sebastian County",
+      "Delta corridor immersions",
+      "Additional completion corridors"
+    ],
+    "scenarios": {
+      "conservative": { "immersions": 10, "total": 5000 },
+      "expected": { "immersions": 15, "total": 7500 },
+      "aggressive": { "immersions": 20, "total": 10000 }
+    }
+  },
+  "complianceReporting": {
+    "status": "modeled_assumption",
+    "note": "Hard monthly expense — not optional. Similar to accounting and filing costs.",
+    "complianceConsultantMonthly": 750,
+    "monthsBudgeted": 6,
+    "campaignTotal": 4500
+  },
+  "countyEventSponsorships": {
+    "status": "modeled_assumption",
+    "note": "County fairs, festivals, Democratic dinners, Juneteenth, civic events, candidate forums — $100–$500 each adds up across 75 counties",
+    "scenarios": {
+      "conservative": 5000,
+      "expected": 7500,
+      "aggressive": 10000
+    }
+  },
+  "digitalAdvertising": {
+    "status": "modeled_assumption",
+    "doctrine": "Digital is a force multiplier for field operations — not a replacement for them. Do not budget like a typical statewide campaign.",
+    "strategyPrinciples": [
+      "Use social media to amplify physical presence",
+      "Promote Kelly's visits before she arrives",
+      "Boost local stories after she leaves",
+      "Build local algorithms county by county",
+      "Save major persuasion spending for the final 30–45 days"
+    ],
+    "monthlySchedule": {
+      "conservative": [
+        { "month": "2026-06", "label": "June", "amount": 1000, "focus": "Testing + visit promotion" },
+        { "month": "2026-07", "label": "July", "amount": 1500, "focus": "Immersion amplification" },
+        { "month": "2026-08", "label": "August", "amount": 2500, "focus": "Top 40 cities (limited)" },
+        { "month": "2026-09", "label": "September", "amount": 4000, "focus": "Persuasion season begins" },
+        { "month": "2026-10", "label": "October", "amount": 7500, "focus": "Turnout push (reduced)" }
+      ],
+      "working": [
+        { "month": "2026-06", "label": "June", "amount": 1000, "focus": "Testing + visit promotion · county targeting · Sherwood awareness · volunteer launch" },
+        { "month": "2026-07", "label": "July", "amount": 2000, "focus": "Immersion amplification · Benton · Johnson · Greene · Union · Sebastian" },
+        { "month": "2026-08", "label": "August", "amount": 4000, "focus": "Scale into Top 40 cities" },
+        { "month": "2026-09", "label": "September", "amount": 8000, "focus": "Persuasion season · Top 10 · Delta · Sherwood · forums · county fair content" },
+        { "month": "2026-10", "label": "October", "amount": 15000, "focus": "Heavy turnout · early voting · GOTV · Top 40 · retargeting · volunteer recruitment" }
+      ],
+      "aggressive": [
+        { "month": "2026-06", "label": "June", "amount": 1500, "focus": "Testing + visit promotion" },
+        { "month": "2026-07", "label": "July", "amount": 3000, "focus": "Immersion amplification" },
+        { "month": "2026-08", "label": "August", "amount": 6000, "focus": "Top 40 saturation" },
+        { "month": "2026-09", "label": "September", "amount": 12000, "focus": "Full persuasion season" },
+        { "month": "2026-10", "label": "October", "amount": 25000, "focus": "Maximum Top 40 city push" }
+      ]
+    },
+    "spendAllocation": {
+      "visitPromotion": { "percent": 40, "label": "Upcoming visit promotion", "examples": ["Kelly Grappe is coming to Jonesboro", "Meet Kelly in Bentonville", "Coffee with Kelly"] },
+      "storytelling": { "percent": 25, "label": "Storytelling", "examples": ["Local businesses", "Local volunteers", "Veterans", "Educators", "Farmers"] },
+      "volunteerRecruitment": { "percent": 20, "label": "Volunteer recruitment", "examples": ["June 28 launch", "Mobilize events", "House parties", "Postcard teams", "Phone banks"] },
+      "directPersuasion": { "percent": 15, "label": "Direct candidate persuasion (late race)", "examples": ["Election integrity", "Working-class message", "Public education", "Arkansas-first", "SOS role"] }
+    },
+    "campaignTotals": {
+      "conservative": 16500,
+      "working": 30000,
+      "aggressive": 47500
+    }
+  },
+  "digitalContentProduction": {
+    "status": "modeled_assumption",
+    "note": "Production — not ad spend. Content production is as important as ad placement.",
+    "monthlyAmount": 500,
+    "monthsBudgeted": 6,
+    "campaignTotal": 3000,
+    "includes": ["Video editing", "Reels", "Captions", "Thumbnails", "Graphics", "Forum clips", "Testimonial videos"]
+  },
+  "digitalToolsAndPlatforms": {
+    "status": "modeled_assumption",
+    "note": "Email, Mobilize, SMS, website tools — separate from county-targeted ad spend",
+    "campaignTotals": {
+      "conservative": 6000,
+      "working": 9000,
+      "aggressive": 12000
     }
   }
 }

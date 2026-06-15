@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
@@ -976,7 +977,240 @@ function PeoplePowerPanel({ data }: Props) {
           Founding leaders: {leaderPct}% toward goal of {pp.foundingVolunteersGoal}
         </p>
       </div>
+
+      <StudentsForArkansasPanel data={data.studentsForArkansas} />
+      <CitizenVoicesPanel data={data.citizenVoices} />
     </section>
+  );
+}
+
+function StudentsForArkansasPanel({ data }: { data: Props["data"]["studentsForArkansas"] }) {
+  const coChairPct =
+    data.coChairsGoal > 0 ? Math.round((data.coChairsConfirmed / data.coChairsGoal) * 1000) / 10 : 0;
+
+  return (
+    <div className="mt-10 border-t border-[var(--ep-border)] pt-10">
+      <SectionTitle
+        title={data.programName}
+        subtitle="Campus chapters · voter registration · internships · youth leadership pipeline"
+      />
+
+      <div className="ep-card-glass mb-6 text-sm">
+        <p className="font-medium text-[var(--ep-navy)]">{data.doctrine}</p>
+        {data.powerOf5Integration ? (
+          <p className="mt-2 text-[var(--ep-navy-muted)]">Power of 5: {data.powerOf5Integration}</p>
+        ) : null}
+      </div>
+
+      <div className="mb-8 ep-stat-grid">
+        <div className="ep-stat">
+          <div className="ep-stat-value">
+            {data.coChairsConfirmed} / {data.coChairsGoal}
+          </div>
+          <div className="ep-stat-label">Founding co-chairs (Labor Day)</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">
+            {data.campusLeaders} / {data.campusLeadersLaborDayGoal}
+          </div>
+          <div className="ep-stat-label">Campus leaders</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">
+            {data.studentVolunteers} / {data.studentVolunteersLaborDayGoal}
+          </div>
+          <div className="ep-stat-label">Student volunteers</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">
+            {data.voterRegistrations} / {data.voterRegistrationsElectionGoal}
+          </div>
+          <div className="ep-stat-label">Voter registrations</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">
+            {data.activeCampuses} / {data.activeCampusesOctoberGoal}
+          </div>
+          <div className="ep-stat-label">Active campuses (Oct 1)</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">{data.campusesInInventory}</div>
+          <div className="ep-stat-label">Campuses in inventory</div>
+        </div>
+      </div>
+
+      {data.foundingCoChairs.length > 0 ? (
+        <div className="mb-8 ep-card">
+          <h3 className="font-heading font-bold">Founding leadership team</h3>
+          <ul className="mt-3 space-y-2 text-sm">
+            {data.foundingCoChairs.map((c) => (
+              <li key={c.id} className="flex flex-col gap-0.5 border-b border-[var(--ep-border)] pb-2 last:border-0">
+                <span className="font-medium text-[var(--ep-navy)]">
+                  {c.name ?? "OPEN SEAT"} — {c.title}
+                </span>
+                <span className="text-xs text-[var(--ep-navy-muted)]">
+                  {c.leadCampus} · {c.status}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      <div className="mb-8 grid gap-4 lg:grid-cols-2">
+        {data.campusRoles.length > 0 ? (
+          <div className="ep-card">
+            <h3 className="font-heading font-bold">Campus captain roles</h3>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
+              {data.campusRoles.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+        {data.internshipTracks.length > 0 ? (
+          <div className="ep-card">
+            <h3 className="font-heading font-bold">Summer internship tracks</h3>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
+              {data.internshipTracks.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
+
+      <div className="mb-8 grid gap-4 lg:grid-cols-2">
+        {data.monthlyRequirements.length > 0 ? (
+          <div className="ep-card">
+            <h3 className="font-heading font-bold">Monthly chapter requirements</h3>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
+              {data.monthlyRequirements.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+        {data.semesterRequirements.length > 0 ? (
+          <div className="ep-card">
+            <h3 className="font-heading font-bold">Semester chapter requirements</h3>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
+              {data.semesterRequirements.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
+
+      <p className="text-xs text-[var(--ep-navy-muted)]">
+        Co-chairs: {coChairPct}% toward Labor Day goal · {data.fundraisingCommissionPercent}% fundraising commission
+        returned to chapters ·{" "}
+        <Link href={data.executiveBookHref} className="text-[var(--ep-gold)] underline">
+          Executive Book Chapter 9
+        </Link>{" "}
+        · June 28 brief: <code className="text-[0.65rem]">{data.june28BriefPath}</code>
+      </p>
+    </div>
+  );
+}
+
+function CitizenVoicesPanel({ data }: { data: Props["data"]["citizenVoices"] }) {
+  const foundingPct =
+    data.foundingWritersGoal > 0
+      ? Math.round((data.foundingWritersCurrent / data.foundingWritersGoal) * 1000) / 10
+      : 0;
+
+  return (
+    <div className="mt-10 border-t border-[var(--ep-border)] pt-10">
+      <SectionTitle
+        title={data.networkName}
+        subtitle={`${data.programName} · earned media · local validation · writing volunteers`}
+      />
+
+      <div className="ep-card-glass mb-6 text-sm">
+        <p className="font-medium text-[var(--ep-navy)]">{data.positioning}</p>
+        <p className="mt-2 text-[var(--ep-navy-muted)]">{data.doctrine}</p>
+      </div>
+
+      <div className="mb-8 ep-stat-grid">
+        <div className="ep-stat">
+          <div className="ep-stat-value">
+            {data.foundingWritersCurrent} / {data.foundingWritersGoal}
+          </div>
+          <div className="ep-stat-label">Founding writers (Labor Day)</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">
+            {data.activeWritersCurrent} / {data.activeWritersGoal}
+          </div>
+          <div className="ep-stat-label">Active writers (October)</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">
+            {data.lettersSubmitted} / {data.lettersSubmittedGoal}
+          </div>
+          <div className="ep-stat-label">Letters submitted</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">{data.lettersPublished}</div>
+          <div className="ep-stat-label">Letters published</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">
+            {data.countiesRepresented} / {data.countiesGoal}
+          </div>
+          <div className="ep-stat-label">Counties with writers</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">{data.outletsInInventory}</div>
+          <div className="ep-stat-label">Outlets in inventory</div>
+        </div>
+      </div>
+
+      <div className="mb-8 grid gap-4 lg:grid-cols-2">
+        <div className="ep-card">
+          <h3 className="font-heading font-bold">Weekly production targets</h3>
+          <ul className="mt-3 space-y-1 text-sm">
+            <li>{data.weeklyTargets.lettersSubmitted} letters submitted</li>
+            <li>{data.weeklyTargets.lettersPublished} letters published</li>
+            <li>{data.weeklyTargets.guestColumnsSubmitted} guest columns submitted</li>
+            <li>{data.weeklyTargets.guestColumnsPublished} guest columns published</li>
+          </ul>
+        </div>
+        <div className="ep-card">
+          <h3 className="font-heading font-bold">Editorial rhythm</h3>
+          <ul className="mt-3 space-y-1 text-sm">
+            {data.editorialRhythm.map((d) => (
+              <li key={d.day}>
+                <strong>{d.day}:</strong> {d.activity}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {data.contentCategories.length > 0 ? (
+        <>
+          <h3 className="mb-3 font-heading font-bold">Content categories</h3>
+          <div className="mb-6 flex flex-wrap gap-2">
+            {data.contentCategories.map((c) => (
+              <span
+                key={c}
+                className="rounded-full bg-[var(--ep-cream)] px-3 py-1 text-xs font-medium text-[var(--ep-navy)]"
+              >
+                {c}
+              </span>
+            ))}
+          </div>
+        </>
+      ) : null}
+
+      <p className="text-xs text-[var(--ep-navy-muted)]">
+        Founding writers: {foundingPct}% toward Labor Day goal · Operating manual:{" "}
+        <code className="text-[0.65rem]">{data.docPath}</code>
+      </p>
+    </div>
   );
 }
 

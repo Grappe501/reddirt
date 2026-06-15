@@ -1,6 +1,6 @@
 # Arkansas GOTV Operations Plan
 
-> GOTV-OPERATIONS-PLAN-1.0 · **Executive Book Chapter 8 — Field manual**
+> GOTV-OPERATIONS-PLAN-1.0 · **Executive Book Chapter 10 — Field manual**
 
 **Election Day:** 2026-11-03 · **Early voting begins:** 2026-10-20
 

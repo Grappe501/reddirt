@@ -105,10 +105,149 @@ function buildPeoplePowerSection() {
       { id: "phones", title: "Phone Banks", description: "Missing D · visits · GOTV · follow-up" },
       { id: "house", title: "House Parties", description: "10 · 25 · 50 · 100 person templates" },
       { id: "po5", title: "Power of 5", description: "Trusted network scaling" },
+      { id: "students", title: "Students for Arkansas", description: "Campus chapters · internships · registration · Po5 pipeline" },
+      { id: "citizen-voices", title: "Citizen Voices Network", description: "Letters to the editor · local validation · earned media" },
       { id: "capital", title: "Relationship Capital", description: "Physical trust manifestations" },
       { id: "stories", title: "Community Stories", description: "Story-first event workflow" },
       { id: "strike", title: "County Strike Teams", description: "75 county deployment captains" },
     ],
+  };
+}
+
+function buildCitizenVoicesSection() {
+  const cv = readJson<{
+    networkName?: string;
+    positioning?: string;
+    doctrine?: string;
+    laborDayDeadline?: string;
+    targets?: {
+      foundingWriters?: number;
+      foundingWritersBy?: string;
+      activeWriters?: number;
+      activeWritersBy?: string;
+      lettersSubmittedBeforeElection?: number;
+    };
+    weeklyProduction?: {
+      lettersSubmitted?: number;
+      lettersPublished?: number;
+      guestColumnsSubmitted?: number;
+      guestColumnsPublished?: number;
+    };
+    metrics?: {
+      writersRecruited?: number;
+      foundingWriters?: number;
+      activeWriters?: number;
+      countiesRepresented?: number;
+      countiesGoal?: number;
+      lettersSubmitted?: number;
+      lettersSubmittedGoal?: number;
+      lettersPublished?: number;
+      guestColumnsPublished?: number;
+      outletsTotal?: number;
+    };
+    newspaperInventory?: { tier1?: number; tier2?: number; tier3?: number; tier4?: number; total?: number };
+    contentCategories?: Array<{ id: string; label: string; description: string }>;
+  }>(path.join(BRAIN_DATA, "citizen-voices/citizen-voices-network.json"));
+
+  const editorial = readJson<{
+    weeklyRhythm?: Array<{ day: string; activity: string }>;
+  }>(path.join(BRAIN_DATA, "citizen-voices/editorial-calendar.json"));
+
+  return {
+    networkName: cv?.networkName ?? "Citizen Voices Network",
+    programName: "Arkansas Citizen Voices Project",
+    positioning: cv?.positioning ?? "Not a Kelly promotion team — authentic community voices",
+    doctrine: cv?.doctrine ?? "Earned media · local validation · writing volunteers",
+    laborDayDeadline: cv?.laborDayDeadline ?? "2026-09-07",
+    foundingWritersGoal: cv?.targets?.foundingWriters ?? 20,
+    foundingWritersCurrent: cv?.metrics?.foundingWriters ?? 0,
+    activeWritersGoal: cv?.targets?.activeWriters ?? 50,
+    activeWritersCurrent: cv?.metrics?.activeWriters ?? 0,
+    lettersSubmitted: cv?.metrics?.lettersSubmitted ?? 0,
+    lettersSubmittedGoal: cv?.targets?.lettersSubmittedBeforeElection ?? 200,
+    lettersPublished: cv?.metrics?.lettersPublished ?? 0,
+    guestColumnsPublished: cv?.metrics?.guestColumnsPublished ?? 0,
+    countiesRepresented: cv?.metrics?.countiesRepresented ?? 0,
+    countiesGoal: cv?.metrics?.countiesGoal ?? 75,
+    outletsInInventory: cv?.newspaperInventory?.total ?? cv?.metrics?.outletsTotal ?? 0,
+    weeklyTargets: {
+      lettersSubmitted: cv?.weeklyProduction?.lettersSubmitted ?? 25,
+      lettersPublished: cv?.weeklyProduction?.lettersPublished ?? 10,
+      guestColumnsSubmitted: cv?.weeklyProduction?.guestColumnsSubmitted ?? 5,
+      guestColumnsPublished: cv?.weeklyProduction?.guestColumnsPublished ?? 2,
+    },
+    editorialRhythm: editorial?.weeklyRhythm ?? [
+      { day: "Monday", activity: "Issue brief to writers" },
+      { day: "Thursday", activity: "Submission day" },
+      { day: "Friday", activity: "Publication tracking" },
+    ],
+    contentCategories: (cv?.contentCategories ?? []).slice(0, 6).map((c) => c.label),
+    docPath: "docs/campaign-brain/citizen-voices/CITIZEN-VOICES-NETWORK.md",
+  };
+}
+
+function buildStudentsForArkansasSection() {
+  const sfa = readJson<{
+    programName?: string;
+    doctrine?: string;
+    laborDayDeadline?: string;
+    foundingCoChairs?: Array<{ id: string; name: string | null; title: string; status: string; leadCampus?: string }>;
+    campusRoles?: string[];
+    internshipTracks?: Array<{ label: string; activities: string[] }>;
+    fundraisingCommissionPercent?: number;
+    powerOf5Integration?: string;
+    metrics?: {
+      coChairsConfirmed?: number;
+      coChairsGoal?: number;
+      campusLeaders?: number;
+      campusLeadersLaborDayGoal?: number;
+      studentVolunteers?: number;
+      voterRegistrations?: number;
+      voterRegistrationsLaborDayGoal?: number;
+      voterRegistrationsOctoberGoal?: number;
+      voterRegistrationsElectionGoal?: number;
+      activeCampuses?: number;
+      activeCampusesOctoberGoal?: number;
+      campusesInInventory?: number;
+    };
+    monthlyRequirements?: string[];
+    semesterRequirements?: string[];
+  }>(path.join(BRAIN_DATA, "students-for-arkansas/students-for-arkansas.json"));
+
+  return {
+    programName: sfa?.programName ?? "Kelly Grappe Students for Arkansas",
+    doctrine: sfa?.doctrine ?? "Statewide student movement — survives beyond Election Day",
+    laborDayDeadline: sfa?.laborDayDeadline ?? "2026-09-07",
+    coChairsConfirmed: sfa?.metrics?.coChairsConfirmed ?? 0,
+    coChairsGoal: sfa?.metrics?.coChairsGoal ?? 5,
+    coChairsOpen: (sfa?.foundingCoChairs ?? []).filter((c) => c.status === "open").length,
+    foundingCoChairs: (sfa?.foundingCoChairs ?? []).map((c) => ({
+      id: c.id,
+      name: c.name,
+      title: c.title,
+      status: c.status,
+      leadCampus: c.leadCampus ?? "",
+    })),
+    campusLeaders: sfa?.metrics?.campusLeaders ?? 0,
+    campusLeadersLaborDayGoal: sfa?.metrics?.campusLeadersLaborDayGoal ?? 25,
+    studentVolunteers: sfa?.metrics?.studentVolunteers ?? 0,
+    studentVolunteersLaborDayGoal: 100,
+    voterRegistrations: sfa?.metrics?.voterRegistrations ?? 0,
+    voterRegistrationsLaborDayGoal: sfa?.metrics?.voterRegistrationsLaborDayGoal ?? 500,
+    voterRegistrationsOctoberGoal: sfa?.metrics?.voterRegistrationsOctoberGoal ?? 2500,
+    voterRegistrationsElectionGoal: sfa?.metrics?.voterRegistrationsElectionGoal ?? 5000,
+    activeCampuses: sfa?.metrics?.activeCampuses ?? 0,
+    activeCampusesOctoberGoal: sfa?.metrics?.activeCampusesOctoberGoal ?? 10,
+    campusesInInventory: sfa?.metrics?.campusesInInventory ?? 14,
+    campusRoles: sfa?.campusRoles ?? [],
+    internshipTracks: (sfa?.internshipTracks ?? []).map((t) => t.label),
+    fundraisingCommissionPercent: sfa?.fundraisingCommissionPercent ?? 15,
+    powerOf5Integration: sfa?.powerOf5Integration ?? "",
+    monthlyRequirements: sfa?.monthlyRequirements ?? [],
+    semesterRequirements: sfa?.semesterRequirements ?? [],
+    docPath: "docs/campaign-brain/students-for-arkansas/STUDENTS-FOR-ARKANSAS.md",
+    june28BriefPath: "docs/campaign-brain/students-for-arkansas/JUNE-28-LAUNCH-BRIEF.md",
+    executiveBookHref: "/election-plan/executive-book/students-for-arkansas",
   };
 }
 
@@ -1143,7 +1282,22 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
     travelAggressive?: number;
     bareMinimumTotal?: number;
     aggressiveStatewideTotal?: number;
+    workingCampaignRangeLow?: number;
+    workingCampaignRangeHigh?: number;
+    fieldStrategyTotal?: number;
+    digitalProgramTotal?: number;
   }>(path.join(BRAIN_DATA, "budget/budget-summary.json"));
+  const po5Chapter = readJson<{
+    networkGoal?: number;
+    hciCurrent?: number;
+    hciGoal?: number;
+    powerOf5Commitments?: number;
+    foundingLeaders?: number;
+    foundingLeadersGoal?: number;
+  }>(path.join(BRAIN_DATA, "relational-organizing/power-of-5-executive-chapter.json"));
+  const sfa = readJson<{
+    metrics?: { coChairsConfirmed?: number; coChairsGoal?: number; studentVolunteers?: number; voterRegistrations?: number; campusesInInventory?: number };
+  }>(path.join(BRAIN_DATA, "students-for-arkansas/students-for-arkansas.json"));
 
   const fmtK = (n: number) =>
     n >= 1000 ? `$${Math.round(n / 1000)}K` : `$${n}`;
@@ -1233,18 +1387,52 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
         href: "/election-plan/executive-book/budget",
         statusLines: [
           `Salary floor ${fmtK(budget?.salaryTotal ?? 72000)}`,
-          `Working campaign ${fmtK(budget?.workingCampaignTotal ?? 167553)}`,
-          "~$28K/mo burn target",
+          `Working ${fmtK(budget?.workingCampaignTotal ?? 232053)}`,
+          "$225K–$250K planning range",
         ],
         metrics: [
           { label: "Salary floor", value: fmtK(budget?.salaryTotal ?? 72000) },
-          { label: "Working target", value: fmtK(budget?.workingCampaignTotal ?? 167553) },
-          { label: "Monthly burn", value: fmtK(budget?.monthlyBurnWorking ?? 27926) },
+          { label: "Working target", value: fmtK(budget?.workingCampaignTotal ?? 232053) },
+          { label: "Monthly burn", value: fmtK(budget?.monthlyBurnWorking ?? 38676) },
+        ],
+      },
+      {
+        slug: "power-of-5",
+        number: 8,
+        title: "Eyeball-to-Eyeball Organizing & Power of 5",
+        subtitle: "How the movement grows — small rooms, surrogates, and the Power of 5",
+        href: "/election-plan/executive-book/power-of-5",
+        statusLines: [
+          "Small rooms create ownership",
+          "Kelly → Surrogates → Hosts → Po5",
+          "60,000 network goal",
+        ],
+        metrics: [
+          { label: "County hosts", value: "75" },
+          { label: "Founding leaders", value: `${po5Chapter?.foundingLeaders ?? 0}/${po5Chapter?.foundingLeadersGoal ?? 20}` },
+          { label: "Network goal", value: `${((po5Chapter?.networkGoal ?? 60000) / 1000).toFixed(0)}K` },
+        ],
+      },
+      {
+        slug: "students-for-arkansas",
+        number: 9,
+        title: "Kelly Grappe Students for Arkansas",
+        subtitle: "Campus chapters · registration · internships · youth leadership pipeline",
+        href: "/election-plan/executive-book/students-for-arkansas",
+        statusLines: [
+          "Statewide student movement beyond Election Day",
+          "Chance Bradford · Xav McLennon founding co-chairs",
+          "Power of 5 on every campus",
+        ],
+        metrics: [
+          { label: "Co-chairs", value: `${sfa?.metrics?.coChairsConfirmed ?? 2}/${sfa?.metrics?.coChairsGoal ?? 5}` },
+          { label: "Campuses", value: String(sfa?.metrics?.campusesInInventory ?? 14) },
+          { label: "Registrations goal", value: "5K+" },
         ],
       },
       {
         slug: "gotv",
-        number: 8,
+        number: 10,
         title: "Arkansas GOTV Operations Plan",
         subtitle: "Field manual — how we win Election Day",
         href: "/election-plan/executive-book/gotv",
@@ -1261,7 +1449,7 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
       },
       {
         slug: "audit",
-        number: 9,
+        number: 11,
         title: "Executive Book Audit",
         subtitle: "V1.0 readiness assessment for leadership review",
         href: "/election-plan/executive-book/audit",
@@ -1342,6 +1530,10 @@ function buildExecutiveBookV1Section() {
     monthlyBurnWorking?: number;
     bareMinimumTotal?: number;
     aggressiveStatewideTotal?: number;
+    workingCampaignRangeLow?: number;
+    workingCampaignRangeHigh?: number;
+    fieldStrategyTotal?: number;
+    digitalProgramTotal?: number;
     travelConservative?: number;
     travelAggressive?: number;
     materialsMid?: number;
@@ -1366,10 +1558,14 @@ function buildExecutiveBookV1Section() {
         "Planning targets only — not guaranteed costs or fundraising outcomes.",
       salaryFloor: budget?.salaryTotal ?? 72000,
       salaryMonthly: budget?.salaryMonthly ?? 12000,
-      workingCampaignTarget: budget?.workingCampaignTotal ?? 167553,
-      monthlyBurnWorking: budget?.monthlyBurnWorking ?? 27926,
-      bareMinimumTotal: budget?.bareMinimumTotal ?? 126783,
-      aggressiveStatewideTotal: budget?.aggressiveStatewideTotal ?? 246123,
+      workingCampaignTarget: budget?.workingCampaignTotal ?? 232053,
+      monthlyBurnWorking: budget?.monthlyBurnWorking ?? 38676,
+      bareMinimumTotal: budget?.bareMinimumTotal ?? 181783,
+      aggressiveStatewideTotal: budget?.aggressiveStatewideTotal ?? 339123,
+      workingCampaignRangeLow: budget?.workingCampaignRangeLow ?? 225000,
+      workingCampaignRangeHigh: budget?.workingCampaignRangeHigh ?? 250000,
+      fieldStrategyTotal: budget?.fieldStrategyTotal ?? 43500,
+      digitalProgramTotal: budget?.digitalProgramTotal ?? 42000,
       travelConservative: budget?.travelConservative ?? 31533,
       travelAggressive: budget?.travelAggressive ?? 46783,
       materialsMid: budget?.materialsMid ?? 13500,
@@ -1772,6 +1968,8 @@ function main() {
     },
     architecture: ELECTION_PLAN_ARCHITECTURE,
     peoplePower: buildPeoplePowerSection(),
+    citizenVoices: buildCitizenVoicesSection(),
+    studentsForArkansas: buildStudentsForArkansasSection(),
     motionPresence: buildMotionPresenceSection(),
     forwardMotion: buildForwardMotionSection(),
     coalitionPowerMap: buildCoalitionPowerMapSection(),

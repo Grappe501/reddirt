@@ -1,0 +1,375 @@
+{
+  "generatedAt": "2026-06-15T08:35:53.489Z",
+  "pass": "CITIZEN-VOICES-NETWORK-1.0",
+  "outlets": [
+    {
+      "id": "adg",
+      "name": "Arkansas Democrat-Gazette",
+      "tier": 1,
+      "mediaMarket": "statewide",
+      "counties": [
+        "statewide"
+      ],
+      "submissionType": "letters_to_editor",
+      "website": "https://www.arkansasonline.com/"
+    },
+    {
+      "id": "nwa-dg",
+      "name": "Northwest Arkansas Democrat-Gazette",
+      "tier": 1,
+      "mediaMarket": "northwest-arkansas",
+      "counties": [
+        "Benton",
+        "Washington"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "ark-times",
+      "name": "Arkansas Times",
+      "tier": 1,
+      "mediaMarket": "little-rock",
+      "counties": [
+        "Pulaski",
+        "statewide"
+      ],
+      "submissionType": "guest_column"
+    },
+    {
+      "id": "ark-advocate",
+      "name": "Arkansas Advocate",
+      "tier": 1,
+      "mediaMarket": "statewide",
+      "counties": [
+        "statewide"
+      ],
+      "submissionType": "guest_column"
+    },
+    {
+      "id": "jonesboro-sun",
+      "name": "The Jonesboro Sun",
+      "tier": 2,
+      "mediaMarket": "jonesboro",
+      "counties": [
+        "Craighead",
+        "Greene",
+        "Mississippi"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "texarkana-gazette",
+      "name": "Texarkana Gazette",
+      "tier": 2,
+      "mediaMarket": "texarkana",
+      "counties": [
+        "Miller",
+        "Little River"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "sw-times-record",
+      "name": "Southwest Times Record",
+      "tier": 2,
+      "mediaMarket": "fort-smith",
+      "counties": [
+        "Sebastian",
+        "Crawford"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "log-cabin",
+      "name": "Log Cabin Democrat",
+      "tier": 2,
+      "mediaMarket": "conway",
+      "counties": [
+        "Faulkner",
+        "Conway"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "baxter-bulletin",
+      "name": "The Baxter Bulletin",
+      "tier": 2,
+      "mediaMarket": "mountain-home",
+      "counties": [
+        "Baxter",
+        "Marion"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "courier-news",
+      "name": "The Courier News",
+      "tier": 2,
+      "mediaMarket": "batesville",
+      "counties": [
+        "Independence",
+        "Jackson"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "pine-bluff-com",
+      "name": "Pine Bluff Commercial",
+      "tier": 2,
+      "mediaMarket": "pine-bluff",
+      "counties": [
+        "Jefferson"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "eldorado-news",
+      "name": "El Dorado News-Times",
+      "tier": 2,
+      "mediaMarket": "el-dorado",
+      "counties": [
+        "Union"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "hot-springs-sentinel",
+      "name": "Hot Springs Sentinel-Record",
+      "tier": 2,
+      "mediaMarket": "hot-springs",
+      "counties": [
+        "Garland"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "harrison-daily",
+      "name": "Harrison Daily Times",
+      "tier": 2,
+      "mediaMarket": "harrison",
+      "counties": [
+        "Boone",
+        "Newton"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "paragould-daily",
+      "name": "Paragould Daily Press",
+      "tier": 2,
+      "mediaMarket": "paragould",
+      "counties": [
+        "Greene"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "stuttgart-daily",
+      "name": "Stuttgart Daily Leader",
+      "tier": 3,
+      "mediaMarket": "stuttgart",
+      "counties": [
+        "Arkansas"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "magnolia-banner",
+      "name": "Magnolia Banner-News",
+      "tier": 3,
+      "mediaMarket": "magnolia",
+      "counties": [
+        "Columbia"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "camden-news",
+      "name": "Camden News",
+      "tier": 3,
+      "mediaMarket": "camden",
+      "counties": [
+        "Ouachita",
+        "Calhoun"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "helena-world",
+      "name": "Helena-West Helena World",
+      "tier": 3,
+      "mediaMarket": "delta",
+      "counties": [
+        "Phillips"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "forrest-city-times",
+      "name": "Forrest City Times-Herald",
+      "tier": 3,
+      "mediaMarket": "delta",
+      "counties": [
+        "St. Francis"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "batesville-guard",
+      "name": "Batesville Guard",
+      "tier": 3,
+      "mediaMarket": "batesville",
+      "counties": [
+        "Independence"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "morrilton-democrat",
+      "name": "Morrilton Democrat",
+      "tier": 3,
+      "mediaMarket": "river-valley",
+      "counties": [
+        "Conway"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "russellville-courier",
+      "name": "Russellville Courier",
+      "tier": 3,
+      "mediaMarket": "river-valley",
+      "counties": [
+        "Pope"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "searcy-daily",
+      "name": "Searcy Daily Citizen",
+      "tier": 3,
+      "mediaMarket": "searcy",
+      "counties": [
+        "White"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "malvern-daily",
+      "name": "Malvern Daily Record",
+      "tier": 3,
+      "mediaMarket": "malvern",
+      "counties": [
+        "Hot Spring"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "monticello-news",
+      "name": "Monticello News",
+      "tier": 3,
+      "mediaMarket": "southeast",
+      "counties": [
+        "Drew"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "warren-eagle",
+      "name": "Warren Eagle-Democrat",
+      "tier": 3,
+      "mediaMarket": "southeast",
+      "counties": [
+        "Bradley"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "mena-star",
+      "name": "Mena Star",
+      "tier": 3,
+      "mediaMarket": "mena",
+      "counties": [
+        "Polk"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "de-queen-bee",
+      "name": "De Queen Bee",
+      "tier": 3,
+      "mediaMarket": "southwest",
+      "counties": [
+        "Sevier"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "ashley-county-leader",
+      "name": "Ashley County Leader",
+      "tier": 3,
+      "mediaMarket": "crossett",
+      "counties": [
+        "Ashley"
+      ],
+      "submissionType": "letters_to_editor"
+    },
+    {
+      "id": "talk-business",
+      "name": "Talk Business & Politics",
+      "tier": 4,
+      "mediaMarket": "statewide",
+      "counties": [
+        "statewide"
+      ],
+      "submissionType": "guest_column"
+    },
+    {
+      "id": "county-party-newsletters",
+      "name": "County Democratic Party newsletters",
+      "tier": 4,
+      "mediaMarket": "statewide",
+      "counties": [
+        "statewide"
+      ],
+      "submissionType": "community_newsletter"
+    },
+    {
+      "id": "civic-club-bulletins",
+      "name": "Civic club & Rotary bulletins",
+      "tier": 4,
+      "mediaMarket": "statewide",
+      "counties": [
+        "statewide"
+      ],
+      "submissionType": "community_newsletter"
+    },
+    {
+      "id": "faith-community-bulletins",
+      "name": "Faith community bulletins",
+      "tier": 4,
+      "mediaMarket": "statewide",
+      "counties": [
+        "statewide"
+      ],
+      "submissionType": "community_newsletter"
+    },
+    {
+      "id": "substack-amplify",
+      "name": "Campaign Substack (post-publication only)",
+      "tier": 5,
+      "mediaMarket": "statewide",
+      "counties": [
+        "statewide"
+      ],
+      "submissionType": "amplification"
+    }
+  ],
+  "byTier": {
+    "1": 4,
+    "2": 11,
+    "3": 15,
+    "4": 4,
+    "5": 1
+  }
+}

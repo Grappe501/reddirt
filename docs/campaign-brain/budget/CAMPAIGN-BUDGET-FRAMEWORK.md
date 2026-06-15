@@ -38,16 +38,22 @@ Kelly cannot campaign full-time without leave-of-absence replacement income.
 | Postcards & mail | [POSTCARD-AND-MAIL-BUDGET.md](./POSTCARD-AND-MAIL-BUDGET.md) | Quantities from People Power · print/postage needs quote |
 | Sherwood 60% | [SHERWOOD-60-BUDGET.md](./SHERWOOD-60-BUDGET.md) | Revenue model + cost placeholders |
 | Volunteer leadership | [VOLUNTEER-LEADERSHIP-BUDGET.md](./VOLUNTEER-LEADERSHIP-BUDGET.md) | June 28 launch · July retreat |
-| Communications | [COMMUNICATIONS-BUDGET.md](./COMMUNICATIONS-BUDGET.md) | Motion · Forward Motion · digital |
+| Media & outreach | [MEDIA-OUTREACH-BUDGET.md](./MEDIA-OUTREACH-BUDGET.md) | **Modeled** — rural newspaper/radio · campus · community ads |
+| Community activation & swag | [COMMUNITY-ACTIVATION-SWAG-BUDGET.md](./COMMUNITY-ACTIVATION-SWAG-BUDGET.md) | **Modeled** — $500/immersion visit |
+| Compliance & reporting | [COMPLIANCE-BUDGET.md](./COMPLIANCE-BUDGET.md) | **Modeled** — $750/month hard expense |
+| County event sponsorships | [COUNTY-SPONSORSHIPS-BUDGET.md](./COUNTY-SPONSORSHIPS-BUDGET.md) | **Modeled** — fairs · forums · civic events |
+| Digital advertising | [DIGITAL-ADVERTISING-BUDGET.md](./DIGITAL-ADVERTISING-BUDGET.md) | **Modeled** — field force multiplier · $30K working |
+| Digital content production | [DIGITAL-CONTENT-PRODUCTION-BUDGET.md](./DIGITAL-CONTENT-PRODUCTION-BUDGET.md) | **Modeled** — $500/mo production |
+| Communications (tools) | [COMMUNICATIONS-BUDGET.md](./COMMUNICATIONS-BUDGET.md) | Email · Mobilize · SMS platforms |
 | Fundraising goals | [FUNDRAISING-GOAL-MODEL.md](./FUNDRAISING-GOAL-MODEL.md) | Scenario targets — not guarantees |
 
 ## Scenario totals (planning)
 
 | Scenario | Total projected need |
 |----------|---------------------:|
-| Bare minimum | $126,783 |
-| Working campaign | $167,553 |
-| Aggressive statewide | $246,123 |
+| Bare minimum | $181,783 |
+| Working campaign | $232,053 ($225,000–$250,000 range) |
+| Aggressive statewide | $339,123 ($300,000–$350,000 range) |
 
 ## Plan artifacts used
 
