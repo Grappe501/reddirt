@@ -275,8 +275,8 @@ Three candidates on the ballot. Plurality wins.
 
 ## Companion doctrine
 
-- [Big Table Democrat Doctrine](../../campaign-brain/relational-organizing/BIG-TABLE-DEMOCRAT-DOCTRINE.md)
-- [How We Win — Candidate Version](../../campaign-brain/executive-narrative/candidate-version.md)
+- [Big Table Democrat Doctrine](/election-plan/big-table-doctrine)
+- [How We Win — Candidate Version](/election-plan/how-we-win/candidate-version)
 `;
 }
 

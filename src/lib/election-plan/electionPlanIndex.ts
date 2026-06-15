@@ -21,6 +21,12 @@ export const ELECTION_PLAN_ARCHITECTURE: ElectionPlanArchitectureSection[] = [
         path: "docs/strategic-plan/plurality-victory-plan/part-i-theory-of-victory/chapter-01-four-lane-model",
       },
       {
+        id: "how-we-win-candidate",
+        title: "How We Win — Candidate Version",
+        description: "Kelly's north star for every room — 10 minutes from the heart",
+        path: "/election-plan/how-we-win/candidate-version",
+      },
+      {
         id: "big-table",
         title: "Big Table Democrat Doctrine",
         description: "Working-class coalition · dignity · nonpartisan local offices",

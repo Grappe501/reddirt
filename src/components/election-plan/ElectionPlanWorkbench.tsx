@@ -297,6 +297,11 @@ function HowWeWinPanel({ data }: Props) {
           <strong>102,070 missing Democrats</strong> · register <strong>50,000</strong> · build relationships in all 75
           counties · win Sherwood at <strong>60%+</strong>.
         </p>
+        <p className="mt-4">
+          <Link href="/election-plan/how-we-win/candidate-version" className="font-semibold text-[var(--ep-gold)] hover:underline">
+            Kelly&apos;s candidate version brief →
+          </Link>
+        </p>
       </div>
       <TheoryPanel data={data} />
     </section>
