@@ -7348,3 +7348,19 @@ model CommunityWorkbenchNote {
   @@index([workbenchId, noteType])
   @@schema("public")
 }
+
+/// Field defect log during live pilot (Sherwood / Jacksonville).
+model CommunityWorkbenchPilotDefect {
+  id               String   @id @default(cuid())
+  workbenchSlug    String
+  title            String
+  body             String
+  severity         String   @default("medium")
+  status           String   @default("open")
+  operatorInitials String?  @db.VarChar(3)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([workbenchSlug, status])
+  @@schema("public")
+}

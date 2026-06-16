@@ -4,6 +4,10 @@ import { CommunityWorkbenchShell } from "@/components/election-plan/CommunityWor
 import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
 import { loadCommunityWorkbench } from "@/lib/election-plan/community-workbench/load-workbench";
 import { buildCommunityWorkbenchRegistry } from "@/lib/election-plan/community-workbench/build-registry";
+import { isCommunityPilotSlug, pilotWorkbenchMeta } from "@/lib/election-plan/community-workbench/pilot";
+import { evaluatePilotWorkbench } from "@/lib/election-plan/community-workbench/pilot-validation";
+import { getPilotSmokePath } from "@/lib/election-plan/community-workbench/pilot-smoke-paths";
+import { prisma } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
@@ -32,12 +36,56 @@ export default async function CommunityWorkbenchPage({ params }: Props) {
   ]);
   if (!workbench) notFound();
 
+  let pilotSmokePath = null;
+  let pilotValidation = null;
+  let pilotDefects: Array<{
+    id: string;
+    workbenchSlug: string;
+    title: string;
+    body: string;
+    severity: string;
+    status: string;
+    operatorInitials: string | null;
+    createdAt: string;
+  }> = [];
+
+  if (isCommunityPilotSlug(slug)) {
+    const meta = pilotWorkbenchMeta(slug)!;
+    pilotSmokePath = getPilotSmokePath(slug);
+    pilotValidation = evaluatePilotWorkbench(workbench, meta.context);
+    try {
+      const rows = await prisma.communityWorkbenchPilotDefect.findMany({
+        where: { workbenchSlug: slug },
+        orderBy: { createdAt: "desc" },
+        take: 30,
+      });
+      pilotDefects = rows.map((d) => ({
+        id: d.id,
+        workbenchSlug: d.workbenchSlug,
+        title: d.title,
+        body: d.body,
+        severity: d.severity,
+        status: d.status,
+        operatorInitials: d.operatorInitials,
+        createdAt: d.createdAt.toISOString(),
+      }));
+    } catch {
+      pilotDefects = [];
+    }
+  }
+
   return (
     <>
       <div className="ep-classification">Internal · Community Workbench · {workbench.name}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-4xl">
-          <CommunityWorkbenchShell workbench={workbench} operatorInitials={operator?.initials ?? null} />
+          <CommunityWorkbenchShell
+            workbench={workbench}
+            operatorInitials={operator?.initials ?? null}
+            pilotSmokePath={pilotSmokePath}
+            pilotValidation={pilotValidation}
+            pilotDefects={pilotDefects}
+          />
         </div>
       </div>
     </>

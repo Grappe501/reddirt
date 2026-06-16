@@ -149,6 +149,24 @@ export function runCommunityWorkbenchFieldQA(root = process.cwd()): CommunityFie
     detail: `before=${readinessBefore.overallPct}% after=${readinessAfter.overallPct}%`,
   });
 
+  checks.push({
+    id: "pilot-doc",
+    label: "v1.3 pilot smoke doc present",
+    pass: existsSync(join(root, "docs/COMMUNITY_WORKBENCH_V1_3_PILOT.md")),
+  });
+
+  checks.push({
+    id: "pilot-preflight-script",
+    label: "Pilot preflight script present",
+    pass: existsSync(join(root, "scripts/election-plan/community-workbench-pilot-preflight.ts")),
+  });
+
+  checks.push({
+    id: "defect-api",
+    label: "Pilot defect log API route present",
+    pass: existsSync(join(root, "src/app/api/election-plan/workbenches/defects/route.ts")),
+  });
+
   return checks;
 }
 

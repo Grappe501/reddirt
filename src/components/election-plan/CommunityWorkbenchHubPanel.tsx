@@ -6,14 +6,19 @@ import { useMemo, useState, type ReactNode } from "react";
 import { communityWorkbenchHref } from "@/lib/election-plan/community-workbench/links";
 import { readinessBandLabel } from "@/lib/election-plan/community-workbench/ownership-warnings";
 import type { CommunityFieldQACheck } from "@/lib/election-plan/community-workbench/field-qa";
+import type { PilotValidationSnapshot } from "@/lib/election-plan/community-workbench/load-pilot-status";
 import type { CommunityWorkbenchHubSummary } from "@/lib/election-plan/community-workbench/types";
 import { cn } from "@/lib/utils";
+
+import { CommunityWorkbenchPilotStatusPanel } from "./CommunityWorkbenchPilotStatusPanel";
 
 type Props = {
   workbenches: CommunityWorkbenchHubSummary[];
   totalCount: number;
   initialQuery?: string;
   qaChecks: CommunityFieldQACheck[];
+  pilotSnapshot: PilotValidationSnapshot;
+  operatorInitials: string | null;
 };
 
 type KindFilter = "all" | "city" | "campus" | "program";
@@ -33,7 +38,14 @@ function readinessBadge(band: "green" | "yellow" | "red"): string {
   return "bg-red-100 text-red-900";
 }
 
-export function CommunityWorkbenchHubPanel({ workbenches, totalCount, initialQuery = "", qaChecks }: Props) {
+export function CommunityWorkbenchHubPanel({
+  workbenches,
+  totalCount,
+  initialQuery = "",
+  qaChecks,
+  pilotSnapshot,
+  operatorInitials,
+}: Props) {
   const [q, setQ] = useState(initialQuery);
   const [kind, setKind] = useState<KindFilter>("all");
   const [owner, setOwner] = useState<OwnerFilter>("all");
@@ -69,7 +81,7 @@ export function CommunityWorkbenchHubPanel({ workbenches, totalCount, initialQue
 
   return (
     <div>
-      <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--ep-gold)]">Community Workbench Framework v1.2</p>
+      <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--ep-gold)]">Community Workbench Framework v1.3</p>
       <h1 className="mt-1 font-heading text-2xl font-bold text-[var(--ep-navy)] lg:text-3xl">Local Action Hubs</h1>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--ep-navy-muted)]">
         One operating template. Unlimited communities. Jacksonville, Sherwood, Quitman, campuses, and movement programs
@@ -97,6 +109,12 @@ export function CommunityWorkbenchHubPanel({ workbenches, totalCount, initialQue
         >
           Field QA · {qaPassCount}/{qaChecks.length}
         </button>
+        <Link
+          href="/election-plan/workbenches#pilot-validation"
+          className="rounded-lg border border-[var(--ep-navy)] bg-[var(--ep-navy)] px-3 py-2 text-xs font-semibold text-white hover:opacity-90"
+        >
+          Live pilot status
+        </Link>
         <Link
           href="/election-plan/workbenches#deploy-gate"
           className="rounded-lg border border-[var(--ep-border)] bg-white px-3 py-2 text-xs font-semibold text-[var(--ep-navy)] hover:border-[var(--ep-gold)]"
@@ -146,6 +164,8 @@ export function CommunityWorkbenchHubPanel({ workbenches, totalCount, initialQue
           <p className="mt-1 text-xs">Filter by &ldquo;No owner&rdquo; below to find and assign leads before field rollout.</p>
         </div>
       ) : null}
+
+      <CommunityWorkbenchPilotStatusPanel snapshot={pilotSnapshot} operatorInitials={operatorInitials} />
 
       <div className="mt-6">
         <label htmlFor="wb-search" className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">
@@ -260,7 +280,8 @@ export function CommunityWorkbenchHubPanel({ workbenches, totalCount, initialQue
           <li>Smoke: sign in → open workbench → create test event → verify readiness updates → delete test event.</li>
         </ol>
         <p className="mt-3 text-xs">
-          Full checklist: <code>docs/COMMUNITY_WORKBENCH_V1_2_DEPLOY_GATE.md</code> and <code>docs/NETLIFY_FIRST_DEPLOY.md</code> §6
+          Full checklist: <code>docs/COMMUNITY_WORKBENCH_V1_3_PILOT.md</code>,{" "}
+          <code>docs/COMMUNITY_WORKBENCH_V1_2_DEPLOY_GATE.md</code>, and <code>docs/NETLIFY_FIRST_DEPLOY.md</code> §6
         </p>
       </section>
     </div>

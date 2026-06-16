@@ -7,8 +7,13 @@ import { useCallback, useMemo, useState, type FormEvent, type ReactNode } from "
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { CommunityWorkbenchEventOpsPanel } from "@/components/election-plan/CommunityWorkbenchEventOpsPanel";
 import { CommunityWorkbenchOwnershipWarnings } from "@/components/election-plan/CommunityWorkbenchOwnershipWarnings";
+import { CommunityWorkbenchPilotSmokePanel } from "@/components/election-plan/CommunityWorkbenchPilotSmokePanel";
+import { CommunityWorkbenchDefectLogPanel } from "@/components/election-plan/CommunityWorkbenchDefectLogPanel";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 import { collectOwnershipWarnings } from "@/lib/election-plan/community-workbench/ownership-warnings";
+import type { CommunityPilotDefectRow } from "@/lib/election-plan/community-workbench/load-pilot-status";
+import type { PilotSmokePath } from "@/lib/election-plan/community-workbench/pilot-smoke-paths";
+import type { PilotWorkbenchValidation } from "@/lib/election-plan/community-workbench/pilot-validation";
 import type { CommunityWorkbenchView } from "@/lib/election-plan/community-workbench/types";
 import { COMMUNITY_INTEL_SECTIONS, COMMUNITY_NOTE_TYPES } from "@/lib/election-plan/community-workbench/constants";
 import { communityWorkbenchHubHref } from "@/lib/election-plan/community-workbench/links";
@@ -18,6 +23,9 @@ import { cn } from "@/lib/utils";
 type Props = {
   workbench: CommunityWorkbenchView;
   operatorInitials: string | null;
+  pilotSmokePath?: PilotSmokePath | null;
+  pilotValidation?: PilotWorkbenchValidation | null;
+  pilotDefects?: CommunityPilotDefectRow[];
 };
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
@@ -51,7 +59,13 @@ function kindLabel(kind: string): string {
   return "Community";
 }
 
-export function CommunityWorkbenchShell({ workbench, operatorInitials }: Props) {
+export function CommunityWorkbenchShell({
+  workbench,
+  operatorInitials,
+  pilotSmokePath = null,
+  pilotValidation = null,
+  pilotDefects = [],
+}: Props) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -166,6 +180,20 @@ export function CommunityWorkbenchShell({ workbench, operatorInitials }: Props) 
       {error ? <p className="mt-4 text-sm text-red-700">{error}</p> : null}
 
       <CommunityWorkbenchOwnershipWarnings warnings={ownershipWarnings} slug={workbench.slug} />
+
+      {pilotSmokePath && pilotValidation ? (
+        <CommunityWorkbenchPilotSmokePanel smokePath={pilotSmokePath} validation={pilotValidation} />
+      ) : null}
+
+      {pilotValidation ? (
+        <div className="mb-10">
+          <CommunityWorkbenchDefectLogPanel
+            initialDefects={pilotDefects}
+            operatorInitials={operatorInitials}
+            workbenchSlug={workbench.slug}
+          />
+        </div>
+      ) : null}
 
       <Section id="overview" title="Overview">
         <div className="ep-stat-grid">
