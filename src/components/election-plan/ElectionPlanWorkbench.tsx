@@ -8,6 +8,7 @@ import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
 import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
 import { formatPct, formatBudget, formatVotes } from "@/lib/election-plan/electionPlanData";
 import { countyVictoryTargetsExecutiveHref, getCountyVictoryTargetsRollup } from "@/lib/election-plan/load-county-victory-targets";
+import { CampaignFundraisingProgressCard } from "@/components/election-plan/CampaignFundraisingProgressCard";
 import { BattlefieldOverviewPanel } from "@/components/election-plan/BattlefieldOverviewPanel";
 import { CityStrategyList } from "@/components/election-plan/CityStrategyList";
 import { locationBriefMasterPlanHref } from "@/lib/election-plan/location-links";
@@ -185,8 +186,6 @@ function KellyDashboardPanel({ data }: Props) {
   const d = data.candidateDashboard;
   const w = data.warRoom;
   const b = data.executiveBookV1.campaignBudget;
-  const fundraisingPct =
-    w.fundraisingGoal > 0 ? Math.min(100, (w.fundraisingRaised / w.fundraisingGoal) * 100) : 0;
   return (
     <section>
       <SectionTitle
@@ -196,24 +195,9 @@ function KellyDashboardPanel({ data }: Props) {
       <div className="ep-card mb-8 border-l-4 border-[var(--ep-gold)]">
         <h3 className="font-heading font-bold">Campaign Budget — Fundraising Targets</h3>
         <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{b.disclaimer}</p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          <div className="ep-stat">
-            <div className="ep-stat-value">{formatBudget(w.fundraisingRaised)}</div>
-            <div className="ep-stat-label">Raised to date</div>
-          </div>
-          <div className="ep-stat">
-            <div className="ep-stat-value">{formatBudget(w.fundraisingGoal)}</div>
-            <div className="ep-stat-label">Working campaign target</div>
-          </div>
-          <div className="ep-stat">
-            <div className="ep-stat-value">{Math.round(fundraisingPct)}%</div>
-            <div className="ep-stat-label">Progress · ramp up fundraising</div>
-          </div>
+        <div className="mt-4">
+          <CampaignFundraisingProgressCard data={w} variant="dashboard" />
         </div>
-        <div className="ep-progress mt-4">
-          <div className="ep-progress-bar" style={{ width: `${fundraisingPct}%` }} />
-        </div>
-        <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">{w.fundraisingNote}</p>
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
           <div className="ep-stat">
             <div className="ep-stat-value">{formatBudget(b.monthlyBurnWorking)}</div>

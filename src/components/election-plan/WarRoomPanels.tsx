@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
 
+import { CampaignFundraisingProgressCard } from "@/components/election-plan/CampaignFundraisingProgressCard";
 import { JacksonvilleFestivilleGoalsCard } from "@/components/election-plan/JacksonvilleFestivilleGoalsCard";
 import { SpecialKpiGoalsStrip } from "@/components/election-plan/SpecialKpiGoalsStrip";
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
@@ -116,8 +117,6 @@ export function WarRoomPanel({ data }: Props) {
   const [volunteerRosterOpen, setVolunteerRosterOpen] = useState(false);
   const [sherwoodVolunteersOpen, setSherwoodVolunteersOpen] = useState(false);
   const [countiesRosterOpen, setCountiesRosterOpen] = useState(false);
-  const fundraisingPct =
-    w.fundraisingGoal > 0 ? Math.min(100, (w.fundraisingRaised / w.fundraisingGoal) * 100) : 0;
   return (
     <section>
       <SectionTitle
@@ -164,18 +163,7 @@ export function WarRoomPanel({ data }: Props) {
       </div>
 
       <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="ep-card">
-          <div className="text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
-            Fundraising
-          </div>
-          <div className="mt-1 font-heading text-xl font-bold text-[var(--ep-navy)]">
-            ${w.fundraisingRaised.toLocaleString()} / ${w.fundraisingGoal.toLocaleString()}
-          </div>
-          <div className="ep-progress mt-3">
-            <div className="ep-progress-bar" style={{ width: `${fundraisingPct}%` }} />
-          </div>
-          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{w.fundraisingNote}</p>
-        </div>
+        <CampaignFundraisingProgressCard data={w} variant="war" />
       </div>
 
       <p className="mb-4 text-xs text-[var(--ep-navy-muted)]">

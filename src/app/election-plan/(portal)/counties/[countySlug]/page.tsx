@@ -7,6 +7,7 @@ import { buildCountyCalendarBinding } from "@/lib/election-plan/location-calenda
 import { fieldEventsForLocation } from "@/lib/election-plan/location-calendar-integration";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
+import { getFosCountyRollup } from "@/lib/election-plan/load-fundraising-operating-system";
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
 
 type Props = { params: Promise<{ countySlug: string }> };
@@ -49,6 +50,8 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
     loadCurrentElectionPlanOperator(),
   ]);
 
+  const fosCountyRollup = getFosCountyRollup(county.slug);
+
   return (
     <>
       <div className="ep-classification">Internal · County playbook · {county.county} County</div>
@@ -70,6 +73,7 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
             referenceDate={data.executiveCalendar.referenceDate}
             fieldEntrySummary={fieldEntrySummary}
             operatorInitials={operator?.initials ?? null}
+            fosCountyRollup={fosCountyRollup}
           />
         </div>
       </div>

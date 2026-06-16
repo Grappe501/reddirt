@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CountyFundraisingRollupPanel } from "@/components/election-plan/CountyFundraisingRollupPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { CountyVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { CountyPartyIntelligencePanel } from "@/components/election-plan/CountyPartyIntelligencePanel";
@@ -22,6 +23,7 @@ import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-
 import { getCountyPartyProfileBySlug } from "@/lib/election-plan/load-county-party-intelligence";
 import { getImmersionMissionForCounty } from "@/lib/election-plan/load-immersion-county-missions";
 import { getSpecialKpiGoalForCounty } from "@/lib/election-plan/load-special-kpi-goals";
+import type { FosCountyRollup } from "@/lib/election-plan/load-fundraising-operating-system";
 import { COUNTY_COVERAGE_EXPLAINER } from "@/lib/election-plan/location-links";
 import { cn } from "@/lib/utils";
 
@@ -42,6 +44,7 @@ type Props = {
   backLabel?: string;
   fieldEntrySummary?: FieldEntryLocationSummary;
   operatorInitials?: string | null;
+  fosCountyRollup?: FosCountyRollup | null;
 };
 
 function guardrailClass(status: string) {
@@ -69,6 +72,7 @@ export function CountyPlaybookPanel({
   backLabel,
   fieldEntrySummary,
   operatorInitials,
+  fosCountyRollup = null,
 }: Props) {
   const external = countyWorkbenchExternalHref(county.county, county.slug);
   const specialKpi = getSpecialKpiGoalForCounty(county.slug);
@@ -114,6 +118,12 @@ export function CountyPlaybookPanel({
       {immersionMission ? (
         <div className="mb-8">
           <ImmersionCountyMissionCard mission={immersionMission} />
+        </div>
+      ) : null}
+
+      {fosCountyRollup ? (
+        <div id="fundraising" className="mb-8 scroll-mt-24">
+          <CountyFundraisingRollupPanel rollup={fosCountyRollup} />
         </div>
       ) : null}
 

@@ -3,6 +3,8 @@ import "server-only";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
+import { mergeBonusCitiesIntoSnapshot } from "./load-bonus-city-workbenches";
+import { buildWarRoomFundraisingFromTracker } from "./load-fundraising-tracker";
 import type { ElectionPlanWorkbenchSnapshot } from "./types";
 
 export const ELECTION_PLAN_SNAPSHOT_PATH = path.join(
@@ -12,7 +14,7 @@ export const ELECTION_PLAN_SNAPSHOT_PATH = path.join(
 
 let cached: ElectionPlanWorkbenchSnapshot | null = null;
 
-/** Minimal fallback when snapshot has not been built yet. */
+/** Minimal fallback when snapshot has not been built yet — no unsourced plan numbers. */
 export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
   return {
     version: 1,
@@ -24,17 +26,17 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       tagline:
         "The 20-week campaign operating plan to win a three-candidate race by building the largest coalition in Arkansas.",
       metrics: [
-        { label: "Expected projection", value: "410,197" },
-        { label: "Plurality win range", value: "390K–420K" },
-        { label: "Democratic drop-off pool", value: "102,070" },
-        { label: "Lane 2 @ 50% recovery", value: "51,051" },
-        { label: "Registration goal", value: "50,000" },
-        { label: "Top 40 city target", value: "207,507" },
-        { label: "Verified events", value: "— / 300+", detail: "Run npm run election-plan:build" },
+        { label: "Expected projection", value: "—" },
+        { label: "Plurality win range", value: "—" },
+        { label: "Democratic drop-off pool", value: "—" },
+        { label: "Lane 2 @ 50% recovery", value: "—" },
+        { label: "Registration goal", value: "—" },
+        { label: "Top 40 city target", value: "—" },
+        { label: "Verified events", value: "— / —", detail: "Run npm run election-plan:build" },
       ],
     },
     executive: {
-      summary: "Run npm run election-plan:build to load live campaign data.",
+      summary: "Run npm run election-plan:build to load live campaign data from the strategic plan pipeline.",
       constraints: ["Snapshot not found — build pipeline has not run."],
       cards: [],
       brainStatus: "Pending snapshot build",
@@ -42,35 +44,33 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
     },
     theoryOfVictory: { lanes: [], doctrine: { title: "Big Table Democrat Doctrine", pillars: [], tableBeliefs: [] } },
     electoralMath: {
-      baselineD: 325_814,
-      traditionalMajorityTarget: 498_963,
-      pluralityRange: { low: 390_000, high: 420_000 },
+      baselineD: 0,
+      traditionalMajorityTarget: 0,
+      pluralityRange: { low: 0, high: 0 },
       scenarios: [],
       dropOff: {
-        presidential2024Dem: 397_420,
-        midterm2022Dem: 295_350,
-        rawDropOff: 102_070,
-        recovery50: 51_051,
-        recovery75: 76_563,
+        presidential2024Dem: 0,
+        midterm2022Dem: 0,
+        rawDropOff: 0,
+        recovery50: 0,
+        recovery75: 0,
       },
-      explanation:
-        "The campaign does not need to convince Arkansas to become something it is not. The campaign needs to recover missing Democrats, register new voters, build trust in rural communities, and win a plurality in a three-candidate race.",
+      explanation: "Run npm run election-plan:build to load SOS-derived electoral math.",
     },
     lanesOverview: {
-      expectedProjection: 410_197,
-      pluralityRange: { low: 390_000, high: 420_000 },
-      achievementRates: { lane2: 0.5, lane3: 0.6, lane4: 0.4 },
+      expectedProjection: 0,
+      pluralityRange: { low: 0, high: 0 },
+      achievementRates: { lane2: 0, lane3: 0, lane4: 0 },
       lanes: [],
       scenarios: [],
       topCounties: [],
       clusterContribution: [],
-      explanation:
-        "The campaign does not need to convince Arkansas to become something it is not. The campaign needs to recover missing Democrats, register new voters, build trust in rural communities, and win a plurality in a three-candidate race.",
+      explanation: "Run npm run election-plan:build to load lane overview from the strategic plan.",
     },
     counties: [],
     cities: [],
-    top10TargetVotes: 131_694,
-    top40TargetVotes: 207_507,
+    top10TargetVotes: 0,
+    top40TargetVotes: 0,
     campaignBrain: { flow: "Strategic Plan → Campaign Brain → Weekly Execution", modules: [] },
     calendarTruth: {
       verifiedEvents: 0,
@@ -254,7 +254,7 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       electedOfficials: { contacted: 0, total: 0, meetingsCompleted: 0, introductionsRequested: 0 },
       candidates: { activePartnerships: 0, sharedEvents: 0, jointMobilize: 0 },
       pastOfficials: { engaged: 0, total: 0 },
-      sherwood: { goal: "Win Sherwood 60%+", vipTablesSold: 0, vipTablesGoal: 20, ticketsSold: 0, status: "planning", onTrack: false },
+      sherwood: { goal: "—", vipTablesSold: 0, vipTablesGoal: 0, ticketsSold: 0, status: "planning", onTrack: false },
       cityForums: { planned: 0, booked: 0, total: 20, fortSmithBooked: false },
       ruralTownhalls: { planned: 0, total: 10 },
       standardAskPackage: [],
@@ -287,7 +287,7 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       doctrine: "Volunteer → Voter Contact → Commitment → Turnout.",
       humanContactIndex: {
         total: 0,
-        goal: 250_000,
+        goal: 0,
         completionPct: 0,
         components: {
           phoneCalls: 0,
@@ -300,34 +300,34 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
         },
       },
       tracks: {
-        lane2Reactivation: { contacted: 0, engaged: 0, committed: 0, turnoutTarget: 51_051, completionPct: 0 },
+        lane2Reactivation: { contacted: 0, engaged: 0, committed: 0, turnoutTarget: 0, completionPct: 0 },
         lane3Registration: {
           registrationsStarted: 0,
           registrationsCompleted: 0,
           registrationEvents: 0,
           volunteerRegistrars: 0,
-          goal: 50_000,
+          goal: 0,
           completionPct: 0,
         },
         lane4Persuasion: { conversations: 0, followUps: 0, eventAttendance: 0, endorsementsGenerated: 0 },
       },
-      funnel: { volunteersActive: 0, voterContacts: 0, commitments: 0, turnoutTargets: 51_051 },
+      funnel: { volunteersActive: 0, voterContacts: 0, commitments: 0, turnoutTargets: 0 },
       channels: [],
       components: [],
     },
     candidateDashboard: {
-      weeksRemaining: 20,
-      projectedVotes: 410_197,
-      lane2Potential: 51_051,
-      registrationGoal: 50_000,
-      countiesCovered: 43,
+      weeksRemaining: 0,
+      projectedVotes: 0,
+      lane2Potential: 0,
+      registrationGoal: 0,
+      countiesCovered: 0,
       countiesTotal: 75,
-      upcomingStops: 14,
-      volunteerLeadersGoal: 20,
+      upcomingStops: 0,
+      volunteerLeadersGoal: 0,
       volunteerLeadersCurrent: 0,
-      sherwoodGoal: "60%+",
+      sherwoodGoal: "—",
       sherwoodVipSold: 0,
-      sherwoodVipGoal: 20,
+      sherwoodVipGoal: 0,
       topPrioritiesThisWeek: ["Run npm run election-plan:build"],
       currentWeek: 1,
       weekRange: "2026-06-15 → 2026-06-21",
@@ -348,39 +348,39 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       throughElectionCount: 0,
     },
     warRoom: {
-      weeksRemaining: 20,
-      currentWeek: 1,
-      weekRange: "2026-06-15 → 2026-06-21",
-      projectedVotes: 410_197,
-      lane2Potential: 51_051,
-      registrationGoal: 50_000,
+      weeksRemaining: 0,
+      currentWeek: 0,
+      weekRange: "—",
+      projectedVotes: 0,
+      lane2Potential: 0,
+      registrationGoal: 0,
       registrationProgress: 0,
       endorsementsRequested: 0,
       endorsementsEndorsed: 0,
-      endorsementsGoal: 50,
-      fundraisingRaised: 60_000,
-      fundraisingGoal: 232_053,
-      fundraisingNote: "Ramp up fundraising",
-      volunteerLeadersGoal: 20,
+      endorsementsGoal: 0,
+      fundraisingRaised: 0,
+      fundraisingGoal: 0,
+      fundraisingNote: "Run npm run election-plan:build",
+      volunteerLeadersGoal: 0,
       volunteerLeadersCurrent: 0,
       volunteerLeaders: [],
-      upcomingEvents: 14,
-      countiesCovered: 43,
+      upcomingEvents: 0,
+      countiesCovered: 0,
       countiesTotal: 75,
       hciTotal: 0,
-      hciGoal: 250_000,
+      hciGoal: 0,
       hciCompletionPct: 0,
       calendarTruthVerified: 0,
       calendarTruthPending: 0,
       calendarTruthGoal: 0,
       calendarTruthPct: 0,
       phase9Ready: false,
-      sherwoodGoal: "60%+",
+      sherwoodGoal: "—",
       sherwoodHostsCurrent: 0,
-      sherwoodHostsGoal: 50,
-      sherwoodHostDonation: 250,
+      sherwoodHostsGoal: 0,
+      sherwoodHostDonation: 0,
       sherwoodVipSold: 0,
-      sherwoodVipGoal: 20,
+      sherwoodVipGoal: 0,
       sherwoodTicketsSold: 0,
       sherwoodVolunteers: 0,
       sherwoodVolunteersRoster: [],
@@ -524,7 +524,15 @@ export function loadElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
     return cached;
   }
   const raw = readFileSync(ELECTION_PLAN_SNAPSHOT_PATH, "utf8");
-  cached = JSON.parse(raw) as ElectionPlanWorkbenchSnapshot;
+  const parsed = JSON.parse(raw) as ElectionPlanWorkbenchSnapshot;
+  cached = {
+    ...parsed,
+    cities: mergeBonusCitiesIntoSnapshot(parsed.cities ?? []),
+    warRoom: {
+      ...parsed.warRoom,
+      ...buildWarRoomFundraisingFromTracker(),
+    },
+  };
   return cached;
 }
 

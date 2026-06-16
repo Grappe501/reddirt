@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState, type FormEvent, type ReactNode } from "react";
 
+import { CommunityFundraisingGoalPanel } from "@/components/election-plan/CommunityFundraisingGoalPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { CommunityWorkbenchEventOpsPanel } from "@/components/election-plan/CommunityWorkbenchEventOpsPanel";
 import { CommunityWorkbenchOwnershipWarnings } from "@/components/election-plan/CommunityWorkbenchOwnershipWarnings";
@@ -20,6 +21,7 @@ import { COMMUNITY_INTEL_SECTIONS, COMMUNITY_NOTE_TYPES } from "@/lib/election-p
 import { communityWorkbenchHubHref } from "@/lib/election-plan/community-workbench/links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { formatCushionPercent } from "@/lib/election-plan/community-workbench/vote-cushion";
+import type { FosCommunityAllocation } from "@/lib/election-plan/load-fundraising-operating-system";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -28,6 +30,7 @@ type Props = {
   pilotSmokePath?: PilotSmokePath | null;
   pilotValidation?: PilotWorkbenchValidation | null;
   pilotDefects?: CommunityPilotDefectRow[];
+  fosAllocation?: FosCommunityAllocation | null;
 };
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
@@ -67,6 +70,7 @@ export function CommunityWorkbenchShell({
   pilotSmokePath = null,
   pilotValidation = null,
   pilotDefects = [],
+  fosAllocation = null,
 }: Props) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
@@ -116,6 +120,7 @@ export function CommunityWorkbenchShell({
   const nav = [
     { id: "overview", label: "Overview" },
     ...(workbench.voteCushion ? [{ id: "vote-cushion", label: "Vote cushion" }] : []),
+    ...(fosAllocation ? [{ id: "fundraising", label: "Fundraising" }] : []),
     { id: "readiness", label: "Readiness" },
     { id: "leadership", label: "Leadership" },
     { id: "missions", label: "Missions" },
@@ -279,6 +284,12 @@ export function CommunityWorkbenchShell({
           cushion={workbench.voteCushion}
           operatorInitials={operatorInitials}
         />
+      ) : null}
+
+      {fosAllocation ? (
+        <Section id="fundraising" title="Fundraising">
+          <CommunityFundraisingGoalPanel allocation={fosAllocation} />
+        </Section>
       ) : null}
 
       <Section id="readiness" title="Community readiness">

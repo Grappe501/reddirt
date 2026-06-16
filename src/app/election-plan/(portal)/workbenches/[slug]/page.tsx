@@ -7,6 +7,7 @@ import { buildCommunityWorkbenchRegistry } from "@/lib/election-plan/community-w
 import { isCommunityPilotSlug, pilotWorkbenchMeta } from "@/lib/election-plan/community-workbench/pilot";
 import { evaluatePilotWorkbench } from "@/lib/election-plan/community-workbench/pilot-validation";
 import { getPilotSmokePath } from "@/lib/election-plan/community-workbench/pilot-smoke-paths";
+import { getFosCommunityAllocation } from "@/lib/election-plan/load-fundraising-operating-system";
 import { prisma } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
@@ -74,6 +75,8 @@ export default async function CommunityWorkbenchPage({ params }: Props) {
     }
   }
 
+  const fosAllocation = getFosCommunityAllocation(slug);
+
   return (
     <>
       <div className="ep-classification">Internal · Community Workbench · {workbench.name}</div>
@@ -85,6 +88,7 @@ export default async function CommunityWorkbenchPage({ params }: Props) {
             pilotSmokePath={pilotSmokePath}
             pilotValidation={pilotValidation}
             pilotDefects={pilotDefects}
+            fosAllocation={fosAllocation}
           />
         </div>
       </div>
