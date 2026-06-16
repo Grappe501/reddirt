@@ -1,6 +1,6 @@
 import type { CommunityWorkbenchKind } from "@prisma/client";
 
-import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
+import { loadElectionPlanSnapshotFromDisk } from "@/lib/election-plan/election-plan-snapshot-disk";
 import { getCountyByName } from "@/lib/election-plan/load-county";
 import {
   COMMUNITY_KPI_SLUG_OVERRIDES,
@@ -12,7 +12,7 @@ import { getCchWorkbenchRegistry } from "./load-cch-workbench-profile";
 import type { CommunityWorkbenchRegistryEntry } from "./types";
 
 function countySlugForName(countyName: string): string {
-  const data = loadElectionPlanSnapshot();
+  const data = loadElectionPlanSnapshotFromDisk();
   const row = getCountyByName(data, countyName);
   return row?.slug ?? countyName.toLowerCase().replace(/\s+/g, "-").replace(/-county$/, "");
 }
@@ -22,7 +22,7 @@ function kpiTemplateForSlug(slug: string): string {
 }
 
 export function buildCommunityWorkbenchRegistry(): CommunityWorkbenchRegistryEntry[] {
-  const data = loadElectionPlanSnapshot();
+  const data = loadElectionPlanSnapshotFromDisk();
   const cityEntries: CommunityWorkbenchRegistryEntry[] = data.cities.map((city) => ({
     slug: city.slug,
     name: city.name,

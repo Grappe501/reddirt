@@ -17,7 +17,7 @@ import {
   type DeployReadinessCheck,
   type PilotWorkbenchValidation,
 } from "./pilot-validation";
-import { mapDbEventToRow } from "./load-workbench-event";
+import { mapDbEventToRow } from "./map-db-event-row";
 import { ensurePilotEventsSeeded } from "./seed-pilot-events";
 import { matchEventSlug } from "./pilot-event-seeds";
 

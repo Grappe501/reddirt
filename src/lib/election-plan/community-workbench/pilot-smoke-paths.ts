@@ -107,9 +107,10 @@ export const GRASSROOTS_GUITAR_STRINGS_PILOT_SMOKE_PATH: PilotSmokePath = {
     },
     {
       order: 4,
-      title: "Committee onboarding path (PPEN preview)",
-      action: "For each committee slot: invite → activation → Level 1 access → event participation record → event workbench access. Log PILOT participants only.",
-      passCriteria: "At least one committee slot filled with a named participant record (not snapshot KPI).",
+      title: "Committee slots remain OPEN until PPEN A.0b",
+      action:
+        "Document committee member slots as OPEN on the event workbench. Do not build enrollment UI or duplicate leaders — PPEN A.0b (Person + Participation) unlocks participant records.",
+      passCriteria: "Slots visible as OPEN; no fake people or enrollment before PpenPerson exists.",
       anchor: "committee",
     },
     {
