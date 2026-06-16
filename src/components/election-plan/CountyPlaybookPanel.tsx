@@ -17,6 +17,7 @@ import { countyWorkbenchExternalHref } from "@/lib/election-plan/location-links"
 import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
+import { getCountyPartyProfileBySlug } from "@/lib/election-plan/load-county-party-intelligence";
 import { getImmersionMissionForCounty } from "@/lib/election-plan/load-immersion-county-missions";
 import { getSpecialKpiGoalForCounty } from "@/lib/election-plan/load-special-kpi-goals";
 import { COUNTY_COVERAGE_EXPLAINER } from "@/lib/election-plan/location-links";
