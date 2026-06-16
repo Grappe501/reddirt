@@ -33,9 +33,16 @@ Use this when the site has never successfully built on Netlify or the database i
 | `OPENAI_API_KEY` | RAG search answers, ingest, intake classification |
 | `SKIP_DB_SEED` | Set to `1` to **skip** `prisma db seed` on build (default is **to seed**). |
 
-**Lambda env cap (Lambda compatibility mode only):** If deploy fails with `Invalid AWS Lambda parameters`, scope build-only vars to **Builds only**: `PRISMA_*`, `ALLOW_*`, `SKIP_DB_SEED`, `NODE_OPTIONS`. Also check **Team settings → Environment variables** for shared vars scoped to Functions.
+**Lambda env cap (Lambda compatibility mode only):** If deploy fails at **Deploy site** with `Invalid AWS Lambda parameters` / `Failed to create function`, the build succeeded but AWS rejected the function. Most common fix: reduce env vars injected into `___netlify-server-handler`.
 
-**Note:** Build logs may show `FEATURE_FLAGS` (~9 KB) — that is **Netlify-internal** platform JSON injected during every build, not something you set. It is not listed in your site env UI.
+| Scope in Netlify UI | Variables |
+|---------------------|-----------|
+| **Builds only** | `PRISMA_*`, `ALLOW_*`, `SKIP_DB_SEED`, `NODE_OPTIONS`, `NODE_VERSION`, **all `NEXT_PUBLIC_*`** (inlined at build time) |
+| **Functions** (runtime) | `DATABASE_URL`, `DIRECT_URL`, `ADMIN_SECRET`, `ELECTION_PLAN_PASSWORD`, API keys your routes actually read at runtime |
+
+Also check **Team settings → Environment variables** for shared vars scoped to **All** or **Functions**.
+
+**Note:** Build logs may show `FEATURE_FLAGS` (~9 KB) — Netlify-internal platform JSON. On **Lambda compatibility mode** that alone exceeds AWS’s 4 KB env cap. Modern Netlify Functions runtime (June 2026+) removed the limit — if scoping vars does not fix deploy, ask Netlify support to confirm the site is not stuck on compatibility mode.
 
 Never put secrets in `NEXT_PUBLIC_*`.
 
@@ -67,7 +74,17 @@ npx netlify deploy --build --prod
 4. **Prisma binary** — `schema.prisma` includes `rhel-openssl-3.0.x` for Linux builders; if the error is binary-related, say so in a ticket and check Prisma `binaryTargets`.
 5. **Clear cache** — Deploys → **Clear cache and deploy site**.
 
-## 6. After the site is up
+## 6. Build green, deploy red (`Invalid AWS Lambda parameters`)
+
+Symptom: log shows `Starting to deploy site from '.next'` then `Failed to upload file: ___netlify-server-handler` with HTTP 400.
+
+1. **Env scope (most common)** — In Netlify → **Environment variables**, set every `NEXT_PUBLIC_*` and build-only var to **Builds** scope only (see table in §2). Redeploy.
+2. **Prune plugin line** — In the deploy log, find `Prune server handler (pre-deploy)`. If measured size is near **250 MB**, the handler is too large; open a ticket with that line.
+3. **Base directory** — Git root is this repo (`reddirt`); **Base directory** should be empty. If you use the monorepo parent, set Base directory to `RedDirt`.
+4. **Clear cache and deploy site** — stale handler artifacts occasionally confuse upload.
+5. **Netlify support** — if env is scoped and handler is under 245 MB, ask whether the site is on Lambda compatibility mode and `FEATURE_FLAGS` injection is blocking function creation.
+
+## 7. After the site is up
 
 - Smoke public routes (`/`, `/privacy`, `/get-involved`, etc.).
 - Optional: run search ingest from a secure context (`npm run ingest`) — **not** part of Netlify build by design (see `deployment.md`).

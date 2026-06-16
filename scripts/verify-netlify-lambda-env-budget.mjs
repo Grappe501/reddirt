@@ -19,6 +19,9 @@ const BUILD_ONLY_HINTS = [
   "NPM_CONFIG_",
   "NETLIFY_DATABASE_URL",
   "NODE_OPTIONS",
+  "NODE_VERSION",
+  /** Inlined into the client bundle at build time — must not ship to Lambda env. */
+  "NEXT_PUBLIC_",
 ];
 
 /** Netlify-internal build injections — never user-configured site env vars. */
@@ -96,12 +99,25 @@ function main() {
   }
 
   if (total >= LAMBDA_ENV_LIMIT_BYTES) {
-    console.warn("");
-    console.warn(">>> Deploy may fail on Lambda compatibility mode if these vars are scoped to Functions/All.");
-    console.warn(">>> Netlify removed the 4 KB cap on the modern Functions runtime (June 2026) — contact support if deploy still fails.");
+    console.error("");
+    console.error(">>> FAIL: runtime env estimate exceeds the 4 KB AWS Lambda cap.");
+    console.error(">>> Netlify deploy will fail with: Invalid AWS Lambda parameters");
+    console.error(">>> Fix in Netlify UI → Environment variables → edit each var → Scope:");
+    console.error(">>>   Builds only: PRISMA_*, ALLOW_*, SKIP_DB_SEED, NODE_OPTIONS, all NEXT_PUBLIC_*");
+    console.error(">>>   Functions (runtime): DATABASE_URL, DIRECT_URL, ADMIN_SECRET, ELECTION_PLAN_PASSWORD, API keys in use");
+    console.error(">>> Also check Team → Environment variables for shared vars scoped to All/Functions.");
+    process.exit(1);
   }
 
-  // Advisory only — never fail the build on this estimate.
+  if (featureFlags && featureFlags.bytes >= LAMBDA_ENV_LIMIT_BYTES) {
+    console.warn("");
+    console.warn(
+      `>>> WARNING: Netlify injects FEATURE_FLAGS (~${featureFlags.bytes} B) at deploy. On Lambda compatibility mode this alone exceeds 4 KB.`,
+    );
+    console.warn(">>> Ask Netlify support to confirm your site uses the modern Functions runtime (June 2026+ env limit removed).");
+    console.warn(">>> Meanwhile keep runtime-scoped user vars minimal (see Builds-only list above).");
+  }
+
   void totalRaw;
 }
 
