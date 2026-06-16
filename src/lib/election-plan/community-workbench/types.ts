@@ -1,6 +1,7 @@
 import type { CommunityWorkbenchKind } from "@prisma/client";
 
 import type { FieldEntryLocationSummary } from "@/lib/election-plan/field-entry/types";
+import type { VoteCushionView } from "./vote-cushion";
 
 export type CommunityWorkbenchRegistryEntry = {
   slug: string;
@@ -120,6 +121,7 @@ export type CommunityWorkbenchView = {
   /** Snapshot context when workbench maps to a priority city */
   voteTarget?: number;
   voteGain?: number;
+  voteCushion?: VoteCushionView;
 };
 
 export type CommunityWorkbenchSearchHit = {

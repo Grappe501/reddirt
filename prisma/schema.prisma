@@ -7364,3 +7364,19 @@ model CommunityWorkbenchPilotDefect {
   @@index([workbenchSlug, status])
   @@schema("public")
 }
+
+/// Local vote-target cushion — field ops boost; does not change global snapshot.
+model CommunityWorkbenchVoteCushion {
+  id                 String   @id @default(cuid())
+  workbenchSlug      String   @unique
+  label              String?
+  targetIncreasePct  Float?
+  targetVotes        Int?
+  notes              String?
+  operatorInitials   String?  @db.VarChar(3)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([workbenchSlug])
+  @@schema("public")
+}

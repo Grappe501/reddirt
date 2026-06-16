@@ -9,6 +9,7 @@ import { CommunityWorkbenchEventOpsPanel } from "@/components/election-plan/Comm
 import { CommunityWorkbenchOwnershipWarnings } from "@/components/election-plan/CommunityWorkbenchOwnershipWarnings";
 import { CommunityWorkbenchPilotSmokePanel } from "@/components/election-plan/CommunityWorkbenchPilotSmokePanel";
 import { CommunityWorkbenchDefectLogPanel } from "@/components/election-plan/CommunityWorkbenchDefectLogPanel";
+import { CommunityWorkbenchVoteCushionPanel } from "@/components/election-plan/CommunityWorkbenchVoteCushionPanel";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 import { collectOwnershipWarnings } from "@/lib/election-plan/community-workbench/ownership-warnings";
 import type { CommunityPilotDefectRow } from "@/lib/election-plan/community-workbench/load-pilot-status";
@@ -18,6 +19,7 @@ import type { CommunityWorkbenchView } from "@/lib/election-plan/community-workb
 import { COMMUNITY_INTEL_SECTIONS, COMMUNITY_NOTE_TYPES } from "@/lib/election-plan/community-workbench/constants";
 import { communityWorkbenchHubHref } from "@/lib/election-plan/community-workbench/links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import { formatCushionPercent } from "@/lib/election-plan/community-workbench/vote-cushion";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -113,6 +115,7 @@ export function CommunityWorkbenchShell({
 
   const nav = [
     { id: "overview", label: "Overview" },
+    ...(workbench.voteCushion ? [{ id: "vote-cushion", label: "Vote cushion" }] : []),
     { id: "readiness", label: "Readiness" },
     { id: "leadership", label: "Leadership" },
     { id: "missions", label: "Missions" },
@@ -197,18 +200,58 @@ export function CommunityWorkbenchShell({
 
       <Section id="overview" title="Overview">
         <div className="ep-stat-grid">
-          {workbench.voteTarget ? (
-            <div className="ep-stat">
-              <div className="ep-stat-value">{formatVotes(workbench.voteTarget)}</div>
-              <div className="ep-stat-label">Vote target</div>
-            </div>
-          ) : null}
-          {workbench.voteGain ? (
-            <div className="ep-stat">
-              <div className="ep-stat-value">+{formatVotes(workbench.voteGain)}</div>
-              <div className="ep-stat-label">Est. gain needed</div>
-            </div>
-          ) : null}
+          {workbench.voteCushion ? (
+            <>
+              <div className="ep-stat">
+                <div className="ep-stat-value">
+                  {formatVotes(
+                    workbench.voteCushion.hasLocalCushion && workbench.voteCushion.localTargetVotes != null
+                      ? workbench.voteCushion.localTargetVotes
+                      : workbench.voteCushion.globalTargetVotes,
+                  )}
+                </div>
+                <div className="ep-stat-label">
+                  {workbench.voteCushion.hasLocalCushion ? "Local vote target" : "Vote target"}
+                </div>
+              </div>
+              <div className="ep-stat">
+                <div className="ep-stat-value">
+                  {formatCushionPercent(
+                    workbench.voteCushion.hasLocalCushion && workbench.voteCushion.localPercentIncrease != null
+                      ? workbench.voteCushion.localPercentIncrease
+                      : workbench.voteCushion.globalPercentIncrease,
+                  )}
+                </div>
+                <div className="ep-stat-label">Required increase</div>
+              </div>
+              <div className="ep-stat">
+                <div className="ep-stat-value">
+                  +
+                  {formatVotes(
+                    workbench.voteCushion.hasLocalCushion && workbench.voteCushion.localVoteGain != null
+                      ? workbench.voteCushion.localVoteGain
+                      : workbench.voteCushion.globalVoteGain,
+                  )}
+                </div>
+                <div className="ep-stat-label">Gain needed</div>
+              </div>
+            </>
+          ) : (
+            <>
+              {workbench.voteTarget ? (
+                <div className="ep-stat">
+                  <div className="ep-stat-value">{formatVotes(workbench.voteTarget)}</div>
+                  <div className="ep-stat-label">Vote target</div>
+                </div>
+              ) : null}
+              {workbench.voteGain ? (
+                <div className="ep-stat">
+                  <div className="ep-stat-value">+{formatVotes(workbench.voteGain)}</div>
+                  <div className="ep-stat-label">Est. gain needed</div>
+                </div>
+              ) : null}
+            </>
+          )}
           <div className="ep-stat">
             <div className="ep-stat-value">{workbench.fieldEntry.totalQuantity}</div>
             <div className="ep-stat-label">Field log total</div>
@@ -229,6 +272,14 @@ export function CommunityWorkbenchShell({
           missions, events, relationships, and field logging — without waiting on statewide dashboards.
         </p>
       </Section>
+
+      {workbench.voteCushion ? (
+        <CommunityWorkbenchVoteCushionPanel
+          slug={workbench.slug}
+          cushion={workbench.voteCushion}
+          operatorInitials={operatorInitials}
+        />
+      ) : null}
 
       <Section id="readiness" title="Community readiness">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

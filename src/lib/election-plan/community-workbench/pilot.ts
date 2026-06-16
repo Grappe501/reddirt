@@ -34,6 +34,7 @@ export const COMMUNITY_WORKBENCH_MIGRATIONS = [
   "20260616140000_community_workbench_framework",
   "20260616150000_community_workbench_event_ops",
   "20260616160000_community_workbench_pilot_defects",
+  "20260616170000_community_workbench_vote_cushion",
 ] as const;
 
 export const COMMUNITY_DEFECT_SEVERITIES = [

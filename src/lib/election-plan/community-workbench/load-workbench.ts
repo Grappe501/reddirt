@@ -12,6 +12,7 @@ import {
 } from "./constants";
 import { computeCommunityReadiness, kpiMetricsForTemplate } from "./compute-readiness";
 import { ensureCommunityWorkbenchesSynced } from "./sync-workbenches";
+import { computeVoteCushionView } from "./vote-cushion";
 import type {
   CommunityWorkbenchEventRow,
   CommunityWorkbenchRegistryEntry,
@@ -219,6 +220,27 @@ export async function loadCommunityWorkbench(slug: string): Promise<CommunityWor
 
   partial.kpiMetrics = kpiMetricsForTemplate(kpiTemplate, fieldEntry.rollups, events);
   partial.readiness = computeCommunityReadiness(partial);
+
+  if (city?.targetVotes != null) {
+    const globalBaseline = city.targetVotes - (city.voteGain ?? 0);
+    let cushionRecord = null;
+    try {
+      const row = await prisma.communityWorkbenchVoteCushion.findUnique({ where: { workbenchSlug: slug } });
+      if (row) {
+        cushionRecord = {
+          label: row.label,
+          targetIncreasePct: row.targetIncreasePct,
+          targetVotes: row.targetVotes,
+          notes: row.notes,
+          operatorInitials: row.operatorInitials,
+          updatedAt: row.updatedAt.toISOString(),
+        };
+      }
+    } catch {
+      cushionRecord = null;
+    }
+    partial.voteCushion = computeVoteCushionView(globalBaseline, city.targetVotes, cushionRecord);
+  }
 
   return partial;
 }
