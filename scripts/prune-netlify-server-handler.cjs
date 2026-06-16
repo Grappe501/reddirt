@@ -140,8 +140,6 @@ const DIR_PRUNE_AFTER_MATERIALIZE = [
 ];
 
 const MAX_MB = 250;
-/** AWS direct-upload zip cap (unzipped limit is MAX_MB). */
-const ZIP_FAIL_MB = 48;
 /** Fail the build before Netlify upload if deploy-size estimate exceeds this (symlink drift margin). */
 const DEPLOY_FAIL_MB = 245;
 
@@ -674,13 +672,6 @@ function largestFiles(handlerRoot, limit = 15, followSymlinks = true) {
   return rows.sort((a, b) => b.size - a.size).slice(0, limit);
 }
 
-/**
- * Rough zip size: sum of file bytes (actual zip is smaller; use as upper-bound sanity check).
- */
-function estimateZipMb(handlerRoot) {
-  return dirSizeBytesFollowSymlinks(handlerRoot) / (1024 * 1024);
-}
-
 function pruneNetlifyServerHandler(cwd = process.cwd()) {
   /** Only mutate the packaged handler — never repo `.next` (breaks @netlify/plugin-nextjs onBuild). */
   const handlers = HANDLER_DIRS.map((d) => path.join(cwd, d)).filter(exists);
@@ -701,13 +692,11 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
   let beforeMb = 0;
   let afterMb = 0;
   let deployMb = 0;
-  let zipMb = 0;
   for (const handler of handlers) {
     beforeMb += dirSizeBytes(handler) / (1024 * 1024);
     removed.push(...pruneHandler(handler, cwd));
     afterMb += dirSizeBytes(handler) / (1024 * 1024);
     deployMb += dirSizeBytesFollowSymlinks(handler) / (1024 * 1024);
-    zipMb += estimateZipMb(handler);
   }
 
   const manifestPatched = isOppositionDebateLaunch() ? patchServerHandlerManifest(cwd) : false;
@@ -718,7 +707,6 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
     beforeMb,
     afterMb,
     deployMb,
-    zipMb,
     manifestPatched,
     removed: [...new Set(removed)],
   };
@@ -732,13 +720,9 @@ function formatOversizeMessage(result) {
     .map((row) => `  ${(row.size / (1024 * 1024)).toFixed(2)} MB  ${row.rel}`)
     .join("\n");
   const launchNote = isOppositionDebateLaunch() ? "\nLaunch mode: opposition_debate." : "";
-  const zipNote =
-    result.zipMb != null
-      ? ` Raw file sum (zip upper bound): ${result.zipMb.toFixed(1)} MB (AWS zip upload cap ~${ZIP_FAIL_MB} MB).`
-      : "";
   return (
     `___netlify-server-handler deploy size is ${result.deployMb.toFixed(1)} MB (Netlify unzipped limit ${MAX_MB} MB).` +
-    ` Staging tree: ${result.afterMb.toFixed(1)} MB.${zipNote}${launchNote}\nLargest files:\n${top}`
+    ` Staging tree: ${result.afterMb.toFixed(1)} MB.${launchNote}\nLargest files:\n${top}`
   );
 }
 
@@ -747,9 +731,7 @@ function shouldFailDeploy(result) {
     return isOppositionDebateLaunch();
   }
   const measuredMb = Math.max(result.afterMb, result.deployMb);
-  if (measuredMb > DEPLOY_FAIL_MB) return true;
-  if (result.zipMb != null && result.zipMb > ZIP_FAIL_MB) return true;
-  return false;
+  return measuredMb > DEPLOY_FAIL_MB;
 }
 
 if (require.main === module) {
@@ -773,5 +755,4 @@ module.exports = {
   shouldFailDeploy,
   MAX_MB,
   DEPLOY_FAIL_MB,
-  ZIP_FAIL_MB,
 };
