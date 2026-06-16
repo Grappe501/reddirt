@@ -48,6 +48,5 @@ Three candidates on the ballot. Plurality wins.
 
 ## Companion doctrine
 
-- [Campaign Doctrine — The Arkansas Way to Win](/election-plan/executive-book/doctrine)
 - [Big Table Democrat Doctrine](/election-plan/big-table-doctrine)
 - [How We Win — Candidate Version](/election-plan/how-we-win/candidate-version)

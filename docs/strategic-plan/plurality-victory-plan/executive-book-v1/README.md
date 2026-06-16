@@ -8,7 +8,6 @@ The Executive Book is complete enough to **run the campaign**. Remaining work is
 
 | # | Chapter | File |
 |---|---------|------|
-| 0 | **Campaign Doctrine — The Arkansas Way to Win** | [00-CAMPAIGN-DOCTRINE-THE-ARKANSAS-WAY-TO-WIN.md](./00-CAMPAIGN-DOCTRINE-THE-ARKANSAS-WAY-TO-WIN.md) |
 | 1 | **WHO OWNS WHAT** | [01-WHO-OWNS-WHAT.md](./01-WHO-OWNS-WHAT.md) |
 | 2 | **Arkansas Influence Map** | [02-EXECUTIVE-CONTACT-PLAN.md](./02-EXECUTIVE-CONTACT-PLAN.md) |
 | 3 | **Labor Day Readiness** | [03-SEPTEMBER-READINESS-LABOR-DAY.md](./03-SEPTEMBER-READINESS-LABOR-DAY.md) |

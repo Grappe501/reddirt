@@ -35,6 +35,11 @@
   overflow: hidden;
 }
 
+.ep-hero .text-\[var\(--ep-navy\)\],
+.ep-hero .text-\[var\(--ep-navy-muted\)\] {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .ep-hero::before {
   content: "";
   position: absolute;
@@ -192,6 +197,11 @@
   border-left: 4px solid var(--ep-accent);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
+  color: var(--ep-navy);
+}
+
+.ep-warning .text-\[var\(--ep-navy-muted\)\] {
+  color: #3d5270;
 }
 
 .ep-lane-card {

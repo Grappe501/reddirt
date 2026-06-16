@@ -107,7 +107,7 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                         title: chapter.title,
                         answers: chapter.subtitle,
                         keyMetrics: chapter.liveStrip.map((s) => s.label),
-                        bestFor: ["Kelly", "Ernie", "Coalition partners", "Donors"],
+                        bestFor: ["Kelly", "Campaign leadership", "Coalition partners", "Donors"],
                         relatedLinks: chapter.relatedChapters.slice(0, 3).map((r) => ({
                           label: `Ch. ${r.number}: ${r.title}`,
                           href: r.href,

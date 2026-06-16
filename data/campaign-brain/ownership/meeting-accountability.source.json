@@ -16,7 +16,7 @@
       "title": "Monday Leadership",
       "day": "Monday",
       "durationMinutes": 60,
-      "attendees": ["Kelly Grappe", "Ernie", "Steve Grappe", "Functional team leads"],
+      "attendees": ["Kelly Grappe", "Campaign Manager", "Steve Grappe", "Functional team leads"],
       "purpose": "Set the week — 5 priorities, 5 owners, due dates",
       "href": "/election-plan/meetings/monday-leadership",
       "dashboardMetrics": [
@@ -32,7 +32,7 @@
       "agenda": [
         { "segment": "Four questions review", "minutes": 10, "owner": "Steve" },
         { "segment": "Dashboard walk — HCI · volunteers · endorsements · Mobilize", "minutes": 15, "owner": "Steve" },
-        { "segment": "Fundraising · Sherwood · campus snapshot", "minutes": 10, "owner": "Ernie / team leads" },
+        { "segment": "Fundraising · Sherwood · campus snapshot", "minutes": 10, "owner": "Campaign Manager / team leads" },
         { "segment": "Forward Motion — next 7 days travel", "minutes": 10, "owner": "Steve" },
         { "segment": "Set 5 priorities · 5 owners · due dates", "minutes": 10, "owner": "Kelly" },
         { "segment": "Blocked items & escalations", "minutes": 5, "owner": "All" }
@@ -42,7 +42,7 @@
         "items": ["5 priorities", "5 owners", "Due dates", "Blocked items logged"]
       },
       "actionItems": [
-        { "id": "ml-1", "item": "Assign open team owners (7 teams TBD)", "owner": "Kelly / Ernie", "dueDate": "2026-06-21", "status": "open", "committedWeek": "2026-06-16" },
+        { "id": "ml-1", "item": "Assign open team owners (7 teams TBD)", "owner": "Kelly / Campaign Manager", "dueDate": "2026-06-21", "status": "open", "committedWeek": "2026-06-16" },
         { "id": "ml-2", "item": "Confirm June 28 volunteer launch agenda", "owner": "Volunteer lead TBD", "dueDate": "2026-06-21", "status": "open", "committedWeek": "2026-06-16" },
         { "id": "ml-3", "item": "Sherwood VIP table progress — 5 tables", "owner": "Steve", "dueDate": "2026-06-21", "status": "in_progress", "committedWeek": "2026-06-16" }
       ],

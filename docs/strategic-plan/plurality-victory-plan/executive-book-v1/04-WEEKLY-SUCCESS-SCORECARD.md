@@ -2,7 +2,7 @@
 
 > EXECUTIVE-BOOK-COMPLETION-1.0 · **Chapter 4 — One page · Monday morning · two minutes**
 
-**Week of:** 2026-06-15
+**Week of:** 2026-06-16
 
 | Metric | Goal | Current |
 |--------|-----:|--------:|

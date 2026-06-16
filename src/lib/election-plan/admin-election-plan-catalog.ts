@@ -9,7 +9,7 @@ import {
 import type { CommunityWorkbenchKind } from "@prisma/client";
 import { BUDGET_SUPPORTING_DOCUMENTS } from "@/lib/election-plan/budget-documents-registry";
 import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
-import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
+import { loadElectionPlanSnapshotFromDisk } from "@/lib/election-plan/election-plan-snapshot-disk";
 import { EXECUTIVE_BOOK_CHAPTERS } from "@/lib/election-plan/executiveBookChapters";
 import { fieldEventWorksheetHref, fieldOperationalCalendarHref } from "@/lib/election-plan/field-calendar-links";
 import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
@@ -276,7 +276,7 @@ function countLinks(sections: AdminElectionPlanSection[]): number {
 
 /** Full election-plan link registry for admin operators — every workbench and portal route. */
 export function buildAdminElectionPlanCatalog(): AdminElectionPlanCatalog {
-  const data = loadElectionPlanSnapshot();
+  const data = loadElectionPlanSnapshotFromDisk();
   const registry = buildCommunityWorkbenchRegistry();
   const lanes = buildLanesDrillDown(data);
   const campuses = getArkansasCampuses();

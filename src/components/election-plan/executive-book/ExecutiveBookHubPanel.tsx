@@ -94,7 +94,7 @@ export function ExecutiveBookHubPanel({ data, standalone = false }: Props) {
           </p>
         </div>
         <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
-          For Kelly, Ernie, donors, validators, and coalition partners. Each chapter has a shareable URL at{" "}
+          For Kelly, campaign leadership, donors, validators, and coalition partners. Each chapter has a shareable URL at{" "}
           <code className="text-[0.65rem]">/election-plan/executive-book/[chapter]</code>. Operators continue in War
           Room, Field Calendar, and Coverage Reality tabs.
         </p>

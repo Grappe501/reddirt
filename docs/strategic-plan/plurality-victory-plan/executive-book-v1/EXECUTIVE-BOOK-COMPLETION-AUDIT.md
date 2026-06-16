@@ -2,7 +2,7 @@
 
 > EXECUTIVE-BOOK-COMPLETION-1.0 · Version 1.1 leadership readiness assessment
 
-**Generated:** 2026-06-15
+**Generated:** 2026-06-16
 
 ## Verdict
 
