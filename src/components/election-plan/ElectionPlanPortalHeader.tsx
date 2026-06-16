@@ -1,15 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useState, type FormEvent } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useEffect, useState, type FormEvent } from "react";
 
 import { electionPlanSearchHref } from "@/lib/election-plan/load-election-plan-search";
 
 export function ElectionPlanSearchBar({ className }: { className?: string }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [q, setQ] = useState("");
+  const searchParams = useSearchParams();
+  const urlQuery = pathname === "/election-plan/search" ? (searchParams.get("q") ?? "") : "";
+  const [q, setQ] = useState(urlQuery);
+
+  useEffect(() => {
+    if (pathname === "/election-plan/search") {
+      setQ(searchParams.get("q") ?? "");
+    }
+  }, [pathname, searchParams]);
 
   const onSubmit = useCallback(
     (e: FormEvent) => {
@@ -67,9 +75,14 @@ export function ElectionPlanPortalHeader() {
           <Link href="/election-plan/search" className="hidden text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)] sm:inline">
             Search
           </Link>
+          <span className="hidden rounded-full bg-[var(--ep-cream)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[var(--ep-navy-muted)] lg:inline">
+            18.7H
+          </span>
         </div>
         <div className="w-full min-w-[12rem] flex-1 sm:max-w-md">
-          <ElectionPlanSearchBar />
+          <Suspense fallback={<div className="h-10 w-full animate-pulse rounded-lg bg-[var(--ep-cream)]" />}>
+            <ElectionPlanSearchBar />
+          </Suspense>
         </div>
       </div>
     </header>

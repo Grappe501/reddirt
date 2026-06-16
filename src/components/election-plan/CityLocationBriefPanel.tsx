@@ -4,6 +4,7 @@ import { CityVictoryTargetsPanel } from "@/components/election-plan/CountyVictor
 import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
 import { CityNumericTargetsPanel } from "@/components/election-plan/CityNumericTargetsPanel";
 import { SpecialKpiGoalCard } from "@/components/election-plan/SpecialKpiGoalCard";
+import { ImmersionCountyMissionCard } from "@/components/election-plan/ImmersionCountyMissionCard";
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
 import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
 import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
@@ -19,6 +20,7 @@ import {
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCityVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { getSpecialKpiGoalForCity } from "@/lib/election-plan/load-special-kpi-goals";
+import { getImmersionMissionForLocation } from "@/lib/election-plan/load-immersion-county-missions";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -74,6 +76,7 @@ export function CityLocationBriefPanel({
     voteGain: brief.voteGain,
     isTop10: brief.isTop10,
   });
+  const immersionMission = getImmersionMissionForLocation({ countySlug, citySlug: brief.slug });
 
   return (
     <section>
@@ -95,6 +98,12 @@ export function CityLocationBriefPanel({
       <div className="mb-8">
         <CityVictoryTargetsPanel target={cityVictory} variant="hero" />
       </div>
+
+      {immersionMission ? (
+        <div className="mb-8">
+          <ImmersionCountyMissionCard mission={immersionMission} />
+        </div>
+      ) : null}
 
       <div className="my-6 ep-stat-grid">
         <div className="ep-stat">

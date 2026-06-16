@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { CountyVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
+import { CountyPartyIntelligencePanel } from "@/components/election-plan/CountyPartyIntelligencePanel";
+import { ImmersionCountyMissionCard } from "@/components/election-plan/ImmersionCountyMissionCard";
 import { CountyNetworkingContactsPanel } from "@/components/election-plan/CountyNetworkingContactsPanel";
 import { CountyRegistrationAllocationPanel } from "@/components/election-plan/CountyRegistrationAllocationPanel";
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
@@ -15,6 +17,7 @@ import { countyWorkbenchExternalHref } from "@/lib/election-plan/location-links"
 import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
+import { getImmersionMissionForCounty } from "@/lib/election-plan/load-immersion-county-missions";
 import { getSpecialKpiGoalForCounty } from "@/lib/election-plan/load-special-kpi-goals";
 import { COUNTY_COVERAGE_EXPLAINER } from "@/lib/election-plan/location-links";
 import { cn } from "@/lib/utils";
@@ -63,6 +66,8 @@ export function CountyPlaybookPanel({
   const external = countyWorkbenchExternalHref(county.county, county.slug);
   const specialKpi = getSpecialKpiGoalForCounty(county.slug);
   const victoryTarget = getCountyVictoryTarget(county.county, county.tier);
+  const countyParty = getCountyPartyProfileBySlug(county.slug);
+  const immersionMission = getImmersionMissionForCounty(county.slug);
 
   return (
     <section>
@@ -96,6 +101,18 @@ export function CountyPlaybookPanel({
       {victoryTarget ? (
         <div className="mb-8">
           <CountyVictoryTargetsPanel target={victoryTarget} variant="hero" />
+        </div>
+      ) : null}
+
+      {immersionMission ? (
+        <div className="mb-8">
+          <ImmersionCountyMissionCard mission={immersionMission} />
+        </div>
+      ) : null}
+
+      {countyParty ? (
+        <div className="mb-8">
+          <CountyPartyIntelligencePanel profile={countyParty} />
         </div>
       ) : null}
 

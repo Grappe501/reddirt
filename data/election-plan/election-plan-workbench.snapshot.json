@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T21:11:27.142Z",
+  "generatedAt": "2026-06-16T03:04:26.273Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -4592,7 +4592,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-&-car-show",
@@ -4617,7 +4617,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-2026-06-17-montgomery-county-meeting",
@@ -4642,7 +4642,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "aea-montgomery-stub",
@@ -4667,7 +4667,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-2026-06-18-greenwood-river-valley-crawfish-festival",
@@ -4692,7 +4692,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-nodate-little-rock-juneteenth-in-little-rock",
@@ -4717,7 +4717,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
@@ -4742,7 +4742,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-june-craftfest",
@@ -4767,7 +4767,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-juneteenth-morrilton-c5",
@@ -4792,7 +4792,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-20-fairfield-bay-surf-the-bay",
@@ -4817,7 +4817,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-20-menifee-juneteenth",
@@ -4842,7 +4842,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
@@ -4867,7 +4867,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 6
+        "daysUntil": 5
       },
       {
         "eventId": "fest-2026-06-24-springdale-rodeo-of-the-ozarks",
@@ -4892,7 +4892,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 9
+        "daysUntil": 8
       },
       {
         "eventId": "fest-2026-06-26-north-little-rock-arkansas-folklife-festival",
@@ -4917,7 +4917,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 11
+        "daysUntil": 10
       },
       {
         "eventId": "fest-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
@@ -4942,7 +4942,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 11
+        "daysUntil": 10
       },
       {
         "eventId": "fest-2026-06-26-jasper-buffalo-river-elk-festival",
@@ -4967,7 +4967,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 11
+        "daysUntil": 10
       },
       {
         "eventId": "fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
@@ -4992,7 +4992,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 13
+        "daysUntil": 12
       },
       {
         "eventId": "fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
@@ -5017,7 +5017,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 13
+        "daysUntil": 12
       },
       {
         "eventId": "fest-2026-07-02-salem-fulton-county-freedom-festival",
@@ -5042,7 +5042,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 17
+        "daysUntil": 16
       },
       {
         "eventId": "fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
@@ -5067,7 +5067,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 18
+        "daysUntil": 17
       },
       {
         "eventId": "fest-2026-07-04-little-rock-pops-on-the-river",
@@ -5092,7 +5092,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 19
+        "daysUntil": 18
       },
       {
         "eventId": "fest-2026-07-04-heber-springs-freedom-fest-on-the-lake",
@@ -5117,7 +5117,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 19
+        "daysUntil": 18
       },
       {
         "eventId": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
@@ -5142,7 +5142,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 20
+        "daysUntil": 19
       },
       {
         "eventId": "fair-418be1689fc0c6f0d6a144f5",
@@ -5167,7 +5167,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 25
+        "daysUntil": 24
       },
       {
         "eventId": "fest-2026-07-10-salem-fulton-county-fair",
@@ -5192,7 +5192,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 25
+        "daysUntil": 24
       },
       {
         "eventId": "fest-2026-07-11-springdale-ozarks-250-block-party-in-springdale",
@@ -5217,7 +5217,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 26
+        "daysUntil": 25
       },
       {
         "eventId": "fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
@@ -5242,7 +5242,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 27
+        "daysUntil": 26
       },
       {
         "eventId": "fest-2026-07-16-clarksville-johnson-co-peach-festival",
@@ -5267,7 +5267,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 31
+        "daysUntil": 30
       },
       {
         "eventId": "fest-nodate-clarksville-johnson-county-peach-festival",
@@ -5292,7 +5292,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 31
+        "daysUntil": 30
       },
       {
         "eventId": "fest-2026-07-19-bella-vista-bella-vista-sunday-outdoor-farmers-and-makers-ma",
@@ -5317,7 +5317,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 34
+        "daysUntil": 33
       },
       {
         "eventId": "fair-8e31ab602a94385aa9919463",
@@ -5342,7 +5342,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "campaign-impact-scores",
-        "daysUntil": 38
+        "daysUntil": 37
       },
       {
         "eventId": "fest-2026-07-23-little-rock-3492-music-festival-a-celebration-of-community-a",
@@ -5367,7 +5367,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 38
+        "daysUntil": 37
       },
       {
         "eventId": "fest-2026-07-23-el-dorado-union-county-fair",
@@ -5392,7 +5392,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 38
+        "daysUntil": 37
       },
       {
         "eventId": "fest-2026-07-26-bella-vista-bella-vista-midsummer-farmers-and-makers-market",
@@ -5417,7 +5417,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 41
+        "daysUntil": 40
       },
       {
         "eventId": "fest-2026-07-31-fort-smith-fort-smith-back-2-school-shopping-extravaganza",
@@ -5442,7 +5442,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 46
+        "daysUntil": 45
       },
       {
         "eventId": "fest-2026-08-02-bella-vista-bella-vista-first-sunday-farmers-and-makers-mark",
@@ -5467,7 +5467,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 48
+        "daysUntil": 47
       },
       {
         "eventId": "fest-2026-08-04-fayetteville-tontitown-grape-festival",
@@ -5492,7 +5492,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 50
+        "daysUntil": 49
       },
       {
         "eventId": "fest-2026-08-06-hope-hope-watermelon-festival",
@@ -5517,7 +5517,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 52
+        "daysUntil": 51
       },
       {
         "eventId": "fest-2026-08-09-bella-vista-bella-vista-second-sunday-farmers-and-makers-mar",
@@ -5542,7 +5542,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 55
+        "daysUntil": 54
       },
       {
         "eventId": "fair-ef8a3bf07796f5d116269e4e",
@@ -5567,7 +5567,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 56
+        "daysUntil": 55
       },
       {
         "eventId": "fest-2026-08-10-imboden-lawrence-county-fair",
@@ -5592,7 +5592,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 56
+        "daysUntil": 55
       },
       {
         "eventId": "fair-dd3cef345b5f6d95088be298",
@@ -5617,7 +5617,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 60
+        "daysUntil": 59
       },
       {
         "eventId": "fest-2026-08-14-jasper-newton-county-fair",
@@ -5642,7 +5642,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 60
+        "daysUntil": 59
       },
       {
         "eventId": "fest-2026-08-15-little-rock-central-arkansas-women's-expo",
@@ -5667,7 +5667,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 61
+        "daysUntil": 60
       },
       {
         "eventId": "fest-2026-08-16-bella-vista-bella-vista-third-sunday-farmers-and-makers-mark",
@@ -5692,7 +5692,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 62
+        "daysUntil": 61
       },
       {
         "eventId": "fair-7b9fd5feee3eb99deeb9317a",
@@ -5717,7 +5717,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 63
+        "daysUntil": 62
       },
       {
         "eventId": "fest-2026-08-17-foreman-little-river-county-fair-and-rodeo",
@@ -5742,7 +5742,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 63
+        "daysUntil": 62
       },
       {
         "eventId": "fest-2026-08-23-bella-vista-bella-vista-fourth-sunday-farmers-and-makers-mar",
@@ -5767,7 +5767,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 69
+        "daysUntil": 68
       },
       {
         "eventId": "fair-571afd59db5f2040264c4ac1",
@@ -5792,7 +5792,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 70
+        "daysUntil": 69
       },
       {
         "eventId": "fest-2026-08-24-pocahontas-randolph-county-fair",
@@ -5817,7 +5817,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 70
+        "daysUntil": 69
       },
       {
         "eventId": "fest-2026-08-28-conway-bella-rustina-modern-vintage-market",
@@ -5842,7 +5842,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 74
+        "daysUntil": 73
       },
       {
         "eventId": "fest-2026-08-29-mount-vernon-arkansas-renaissance-festival",
@@ -5867,7 +5867,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 75
+        "daysUntil": 74
       },
       {
         "eventId": "fest-2026-08-29-dardanelle-79th-annual-mt-nebo-chicken-fry",
@@ -5892,7 +5892,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 75
+        "daysUntil": 74
       },
       {
         "eventId": "fest-2026-08-30-bella-vista-bella-vista-fifth-sunday-farmers-and-makers-mark",
@@ -5917,7 +5917,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 76
+        "daysUntil": 75
       },
       {
         "eventId": "fair-9e03993e30d8f62d3e8067dc",
@@ -5942,7 +5942,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 77
+        "daysUntil": 76
       },
       {
         "eventId": "fest-2026-08-31-lewisville-lafayette-county-fair-and-livestock-show",
@@ -5967,7 +5967,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 77
+        "daysUntil": 76
       },
       {
         "eventId": "fest-2026-09-02-clinton-van-buren-livestock-show-and-fair",
@@ -5992,7 +5992,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 79
+        "daysUntil": 78
       },
       {
         "eventId": "fair-a9c2bbe56f939da4c7898261",
@@ -6017,7 +6017,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 81
+        "daysUntil": 80
       },
       {
         "eventId": "fest-2026-09-04-crossett-ashley-county-fair-and-livestock-show",
@@ -6042,7 +6042,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 81
+        "daysUntil": 80
       },
       {
         "eventId": "fest-2026-09-05-mount-vernon-arkansas-labor-day-renaissance-festival",
@@ -6067,7 +6067,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 82
+        "daysUntil": 81
       },
       {
         "eventId": "fest-2026-09-05-rose-bud-daisy-days-vendor-market",
@@ -6092,7 +6092,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 82
+        "daysUntil": 81
       },
       {
         "eventId": "fest-2026-09-06-bella-vista-bella-vista-end-of-summer-farmers-and-makers-mar",
@@ -6117,7 +6117,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 83
+        "daysUntil": 82
       },
       {
         "eventId": "fair-7d4b1643af8887c9137f0856",
@@ -6142,7 +6142,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 84
+        "daysUntil": 83
       },
       {
         "eventId": "fair-fc9b80fc6ddcf7dd5cddf15a",
@@ -6167,7 +6167,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 84
+        "daysUntil": 83
       },
       {
         "eventId": "fest-2026-09-07-glenwoood-pike-county-fair-rodeo",
@@ -6192,7 +6192,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 84
+        "daysUntil": 83
       },
       {
         "eventId": "fest-2026-09-07-danville-yell-county-fair",
@@ -6217,7 +6217,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 84
+        "daysUntil": 83
       },
       {
         "eventId": "fest-2026-09-09-camden-quachita-county-fair",
@@ -6242,7 +6242,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 86
+        "daysUntil": 85
       },
       {
         "eventId": "fair-67cc3c414b72663f68984577",
@@ -6267,7 +6267,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 87
+        "daysUntil": 86
       },
       {
         "eventId": "fest-2026-09-10-prescott-nevada-county-fair",
@@ -6292,7 +6292,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 87
+        "daysUntil": 86
       },
       {
         "eventId": "fest-2026-09-11-little-rock-little-rock-fine-arts-art-market",
@@ -6317,7 +6317,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fest-2026-09-11-little-rock-vintage-market-days-of-little-rock",
@@ -6342,7 +6342,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fair-7da0f84811b62d6378c8eab1",
@@ -6367,7 +6367,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 89
+        "daysUntil": 88
       },
       {
         "eventId": "fest-2026-09-12-mount-vernon-arkansas-summer-renaissance-festival",
@@ -6392,7 +6392,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 89
+        "daysUntil": 88
       },
       {
         "eventId": "fair-85d27f33244a77c6ebeaf3c8",
@@ -6417,7 +6417,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "campaign-impact-scores",
-        "daysUntil": 89
+        "daysUntil": 88
       },
       {
         "eventId": "fest-2026-09-12-van-buren-van-buren-junk-fest",
@@ -6442,7 +6442,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 89
+        "daysUntil": 88
       },
       {
         "eventId": "fest-2026-09-12-mulberry-crawford-county-fair",
@@ -6467,7 +6467,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 89
+        "daysUntil": 88
       },
       {
         "eventId": "fest-2026-09-12-piggott-clay-county-fair",
@@ -6492,7 +6492,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 89
+        "daysUntil": 88
       }
     ],
     "stopsNext7Days": [
@@ -6519,7 +6519,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-&-car-show",
@@ -6544,7 +6544,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-2026-06-17-montgomery-county-meeting",
@@ -6569,7 +6569,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "aea-montgomery-stub",
@@ -6594,7 +6594,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-2026-06-18-greenwood-river-valley-crawfish-festival",
@@ -6619,7 +6619,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-nodate-little-rock-juneteenth-in-little-rock",
@@ -6644,7 +6644,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
@@ -6669,7 +6669,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-june-craftfest",
@@ -6694,7 +6694,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-juneteenth-morrilton-c5",
@@ -6719,7 +6719,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-20-fairfield-bay-surf-the-bay",
@@ -6744,7 +6744,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-20-menifee-juneteenth",
@@ -6769,7 +6769,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
@@ -6794,7 +6794,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 6
+        "daysUntil": 5
       }
     ],
     "stopsNext21Days": [
@@ -6821,7 +6821,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-&-car-show",
@@ -6846,7 +6846,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-2026-06-17-montgomery-county-meeting",
@@ -6871,7 +6871,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "aea-montgomery-stub",
@@ -6896,7 +6896,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-2026-06-18-greenwood-river-valley-crawfish-festival",
@@ -6921,7 +6921,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-nodate-little-rock-juneteenth-in-little-rock",
@@ -6946,7 +6946,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
@@ -6971,7 +6971,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-june-craftfest",
@@ -6996,7 +6996,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-juneteenth-morrilton-c5",
@@ -7021,7 +7021,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-20-fairfield-bay-surf-the-bay",
@@ -7046,7 +7046,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-20-menifee-juneteenth",
@@ -7071,7 +7071,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
@@ -7096,7 +7096,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 6
+        "daysUntil": 5
       },
       {
         "eventId": "fest-2026-06-24-springdale-rodeo-of-the-ozarks",
@@ -7121,7 +7121,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 9
+        "daysUntil": 8
       },
       {
         "eventId": "fest-2026-06-26-north-little-rock-arkansas-folklife-festival",
@@ -7146,7 +7146,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 11
+        "daysUntil": 10
       },
       {
         "eventId": "fest-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
@@ -7171,7 +7171,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 11
+        "daysUntil": 10
       },
       {
         "eventId": "fest-2026-06-26-jasper-buffalo-river-elk-festival",
@@ -7196,7 +7196,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 11
+        "daysUntil": 10
       },
       {
         "eventId": "fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
@@ -7221,7 +7221,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 13
+        "daysUntil": 12
       },
       {
         "eventId": "fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
@@ -7246,7 +7246,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 13
+        "daysUntil": 12
       },
       {
         "eventId": "fest-2026-07-02-salem-fulton-county-freedom-festival",
@@ -7271,7 +7271,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 17
+        "daysUntil": 16
       },
       {
         "eventId": "fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
@@ -7296,7 +7296,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 18
+        "daysUntil": 17
       },
       {
         "eventId": "fest-2026-07-04-little-rock-pops-on-the-river",
@@ -7321,7 +7321,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 19
+        "daysUntil": 18
       },
       {
         "eventId": "fest-2026-07-04-heber-springs-freedom-fest-on-the-lake",
@@ -7346,7 +7346,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 19
+        "daysUntil": 18
       },
       {
         "eventId": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
@@ -7371,7 +7371,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 20
+        "daysUntil": 19
       }
     ],
     "stopsThroughElection": [
@@ -7398,7 +7398,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-&-car-show",
@@ -7423,7 +7423,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-2026-06-17-montgomery-county-meeting",
@@ -7448,7 +7448,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "aea-montgomery-stub",
@@ -7473,7 +7473,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-2026-06-18-greenwood-river-valley-crawfish-festival",
@@ -7498,7 +7498,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-nodate-little-rock-juneteenth-in-little-rock",
@@ -7523,7 +7523,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
@@ -7548,7 +7548,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-june-craftfest",
@@ -7573,7 +7573,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-19-juneteenth-morrilton-c5",
@@ -7598,7 +7598,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-20-fairfield-bay-surf-the-bay",
@@ -7623,7 +7623,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-20-menifee-juneteenth",
@@ -7648,7 +7648,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
@@ -7673,7 +7673,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 6
+        "daysUntil": 5
       },
       {
         "eventId": "fest-2026-06-24-springdale-rodeo-of-the-ozarks",
@@ -7698,7 +7698,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 9
+        "daysUntil": 8
       },
       {
         "eventId": "fest-2026-06-26-north-little-rock-arkansas-folklife-festival",
@@ -7723,7 +7723,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 11
+        "daysUntil": 10
       },
       {
         "eventId": "fest-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
@@ -7748,7 +7748,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 11
+        "daysUntil": 10
       },
       {
         "eventId": "fest-2026-06-26-jasper-buffalo-river-elk-festival",
@@ -7773,7 +7773,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 11
+        "daysUntil": 10
       },
       {
         "eventId": "fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
@@ -7798,7 +7798,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 13
+        "daysUntil": 12
       },
       {
         "eventId": "fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
@@ -7823,7 +7823,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 13
+        "daysUntil": 12
       },
       {
         "eventId": "fest-2026-07-02-salem-fulton-county-freedom-festival",
@@ -7848,7 +7848,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 17
+        "daysUntil": 16
       },
       {
         "eventId": "fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
@@ -7873,7 +7873,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 18
+        "daysUntil": 17
       },
       {
         "eventId": "fest-2026-07-04-little-rock-pops-on-the-river",
@@ -7898,7 +7898,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 19
+        "daysUntil": 18
       },
       {
         "eventId": "fest-2026-07-04-heber-springs-freedom-fest-on-the-lake",
@@ -7923,7 +7923,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 19
+        "daysUntil": 18
       },
       {
         "eventId": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
@@ -7948,7 +7948,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 20
+        "daysUntil": 19
       },
       {
         "eventId": "fair-418be1689fc0c6f0d6a144f5",
@@ -7973,7 +7973,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 25
+        "daysUntil": 24
       },
       {
         "eventId": "fest-2026-07-10-salem-fulton-county-fair",
@@ -7998,7 +7998,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 25
+        "daysUntil": 24
       },
       {
         "eventId": "fest-2026-07-11-springdale-ozarks-250-block-party-in-springdale",
@@ -8023,7 +8023,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 26
+        "daysUntil": 25
       },
       {
         "eventId": "fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
@@ -8048,7 +8048,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 27
+        "daysUntil": 26
       },
       {
         "eventId": "fest-2026-07-16-clarksville-johnson-co-peach-festival",
@@ -8073,7 +8073,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 31
+        "daysUntil": 30
       },
       {
         "eventId": "fest-nodate-clarksville-johnson-county-peach-festival",
@@ -8098,7 +8098,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 31
+        "daysUntil": 30
       },
       {
         "eventId": "fest-2026-07-19-bella-vista-bella-vista-sunday-outdoor-farmers-and-makers-ma",
@@ -8123,7 +8123,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 34
+        "daysUntil": 33
       },
       {
         "eventId": "fair-8e31ab602a94385aa9919463",
@@ -8148,7 +8148,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "campaign-impact-scores",
-        "daysUntil": 38
+        "daysUntil": 37
       },
       {
         "eventId": "fest-2026-07-23-little-rock-3492-music-festival-a-celebration-of-community-a",
@@ -8173,7 +8173,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 38
+        "daysUntil": 37
       },
       {
         "eventId": "fest-2026-07-23-el-dorado-union-county-fair",
@@ -8198,7 +8198,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 38
+        "daysUntil": 37
       },
       {
         "eventId": "fest-2026-07-26-bella-vista-bella-vista-midsummer-farmers-and-makers-market",
@@ -8223,7 +8223,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 41
+        "daysUntil": 40
       },
       {
         "eventId": "fest-2026-07-31-fort-smith-fort-smith-back-2-school-shopping-extravaganza",
@@ -8248,7 +8248,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 46
+        "daysUntil": 45
       },
       {
         "eventId": "fest-2026-08-02-bella-vista-bella-vista-first-sunday-farmers-and-makers-mark",
@@ -8273,7 +8273,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 48
+        "daysUntil": 47
       },
       {
         "eventId": "fest-2026-08-04-fayetteville-tontitown-grape-festival",
@@ -8298,7 +8298,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 50
+        "daysUntil": 49
       },
       {
         "eventId": "fest-2026-08-06-hope-hope-watermelon-festival",
@@ -8323,7 +8323,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 52
+        "daysUntil": 51
       },
       {
         "eventId": "fest-2026-08-09-bella-vista-bella-vista-second-sunday-farmers-and-makers-mar",
@@ -8348,7 +8348,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 55
+        "daysUntil": 54
       },
       {
         "eventId": "fair-ef8a3bf07796f5d116269e4e",
@@ -8373,7 +8373,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 56
+        "daysUntil": 55
       },
       {
         "eventId": "fest-2026-08-10-imboden-lawrence-county-fair",
@@ -8398,7 +8398,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 56
+        "daysUntil": 55
       },
       {
         "eventId": "fair-dd3cef345b5f6d95088be298",
@@ -8423,7 +8423,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 60
+        "daysUntil": 59
       },
       {
         "eventId": "fest-2026-08-14-jasper-newton-county-fair",
@@ -8448,7 +8448,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 60
+        "daysUntil": 59
       },
       {
         "eventId": "fest-2026-08-15-little-rock-central-arkansas-women's-expo",
@@ -8473,7 +8473,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 61
+        "daysUntil": 60
       },
       {
         "eventId": "fest-2026-08-16-bella-vista-bella-vista-third-sunday-farmers-and-makers-mark",
@@ -8498,7 +8498,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 62
+        "daysUntil": 61
       },
       {
         "eventId": "fair-7b9fd5feee3eb99deeb9317a",
@@ -8523,7 +8523,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 63
+        "daysUntil": 62
       },
       {
         "eventId": "fest-2026-08-17-foreman-little-river-county-fair-and-rodeo",
@@ -8548,7 +8548,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 63
+        "daysUntil": 62
       },
       {
         "eventId": "fest-2026-08-23-bella-vista-bella-vista-fourth-sunday-farmers-and-makers-mar",
@@ -8573,7 +8573,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 69
+        "daysUntil": 68
       },
       {
         "eventId": "fair-571afd59db5f2040264c4ac1",
@@ -8598,7 +8598,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 70
+        "daysUntil": 69
       },
       {
         "eventId": "fest-2026-08-24-pocahontas-randolph-county-fair",
@@ -8623,7 +8623,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 70
+        "daysUntil": 69
       },
       {
         "eventId": "fest-2026-08-28-conway-bella-rustina-modern-vintage-market",
@@ -8648,7 +8648,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 74
+        "daysUntil": 73
       },
       {
         "eventId": "fest-2026-08-29-mount-vernon-arkansas-renaissance-festival",
@@ -8673,7 +8673,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 75
+        "daysUntil": 74
       },
       {
         "eventId": "fest-2026-08-29-dardanelle-79th-annual-mt-nebo-chicken-fry",
@@ -8698,7 +8698,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 75
+        "daysUntil": 74
       },
       {
         "eventId": "fest-2026-08-30-bella-vista-bella-vista-fifth-sunday-farmers-and-makers-mark",
@@ -8723,7 +8723,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 76
+        "daysUntil": 75
       },
       {
         "eventId": "fair-9e03993e30d8f62d3e8067dc",
@@ -8748,7 +8748,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 77
+        "daysUntil": 76
       },
       {
         "eventId": "fest-2026-08-31-lewisville-lafayette-county-fair-and-livestock-show",
@@ -8773,7 +8773,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 77
+        "daysUntil": 76
       },
       {
         "eventId": "fest-2026-09-02-clinton-van-buren-livestock-show-and-fair",
@@ -8798,7 +8798,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 79
+        "daysUntil": 78
       },
       {
         "eventId": "fair-a9c2bbe56f939da4c7898261",
@@ -8823,7 +8823,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 81
+        "daysUntil": 80
       },
       {
         "eventId": "fest-2026-09-04-crossett-ashley-county-fair-and-livestock-show",
@@ -8848,7 +8848,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 81
+        "daysUntil": 80
       },
       {
         "eventId": "fest-2026-09-05-mount-vernon-arkansas-labor-day-renaissance-festival",
@@ -8873,7 +8873,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 82
+        "daysUntil": 81
       },
       {
         "eventId": "fest-2026-09-05-rose-bud-daisy-days-vendor-market",
@@ -8898,7 +8898,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 82
+        "daysUntil": 81
       },
       {
         "eventId": "fest-2026-09-06-bella-vista-bella-vista-end-of-summer-farmers-and-makers-mar",
@@ -8923,7 +8923,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 83
+        "daysUntil": 82
       },
       {
         "eventId": "fair-7d4b1643af8887c9137f0856",
@@ -8948,7 +8948,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 84
+        "daysUntil": 83
       },
       {
         "eventId": "fair-fc9b80fc6ddcf7dd5cddf15a",
@@ -8973,7 +8973,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 84
+        "daysUntil": 83
       },
       {
         "eventId": "fest-2026-09-07-glenwoood-pike-county-fair-rodeo",
@@ -8998,7 +8998,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 84
+        "daysUntil": 83
       },
       {
         "eventId": "fest-2026-09-07-danville-yell-county-fair",
@@ -9023,7 +9023,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 84
+        "daysUntil": 83
       },
       {
         "eventId": "fest-2026-09-09-camden-quachita-county-fair",
@@ -9048,7 +9048,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 86
+        "daysUntil": 85
       },
       {
         "eventId": "fair-67cc3c414b72663f68984577",
@@ -9073,7 +9073,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 87
+        "daysUntil": 86
       },
       {
         "eventId": "fest-2026-09-10-prescott-nevada-county-fair",
@@ -9098,7 +9098,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 87
+        "daysUntil": 86
       },
       {
         "eventId": "fest-2026-09-11-little-rock-little-rock-fine-arts-art-market",
@@ -9123,7 +9123,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fest-2026-09-11-little-rock-vintage-market-days-of-little-rock",
@@ -9148,7 +9148,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fair-7da0f84811b62d6378c8eab1",
@@ -9173,7 +9173,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 89
+        "daysUntil": 88
       },
       {
         "eventId": "fest-2026-09-12-mount-vernon-arkansas-summer-renaissance-festival",
@@ -9198,7 +9198,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 89
+        "daysUntil": 88
       },
       {
         "eventId": "fair-85d27f33244a77c6ebeaf3c8",
@@ -9223,7 +9223,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "campaign-impact-scores",
-        "daysUntil": 89
+        "daysUntil": 88
       },
       {
         "eventId": "fest-2026-09-12-van-buren-van-buren-junk-fest",
@@ -9248,7 +9248,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 89
+        "daysUntil": 88
       },
       {
         "eventId": "fest-2026-09-12-mulberry-crawford-county-fair",
@@ -9273,7 +9273,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 89
+        "daysUntil": 88
       },
       {
         "eventId": "fest-2026-09-12-piggott-clay-county-fair",
@@ -9298,7 +9298,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 89
+        "daysUntil": 88
       }
     ],
     "throughElectionCount": 77,
@@ -10051,8 +10051,8 @@
     "hciGoal": 250000,
     "hciCompletionPct": 0,
     "calendarTruthVerified": 1,
-    "calendarTruthPending": 112,
-    "calendarTruthGoal": 117,
+    "calendarTruthPending": 111,
+    "calendarTruthGoal": 116,
     "calendarTruthPct": 4.3,
     "phase9Ready": false,
     "sherwoodGoal": "60%+",
@@ -13926,7 +13926,7 @@
     "status": "operational",
     "laborDayDeadline": "2026-09-07",
     "completenessEstimate": "95%",
-    "readOrderNote": "Read Chapters 1–5 for governance and strategy, then 7–10 for resources and field execution, finish with Chapter 11 audit.",
+    "readOrderNote": "Read Chapter 0 (Campaign Doctrine) first, then Chapters 1–5 for governance and strategy, 7–10 for resources and field execution, finish with Chapter 11 audit.",
     "companionPillars": [
       {
         "id": "citizen-voices",
@@ -13943,67 +13943,31 @@
     ],
     "pillars": [
       {
-        "id": "governance",
-        "label": "Governance & Accountability",
-        "chapters": [
-          {
-            "slug": "ownership",
-            "number": 1,
-            "title": "Who Owns What",
-            "subtitle": "Leadership ownership matrix — names, not committees",
-            "href": "/election-plan/executive-book/ownership",
-            "statusLines": [
-              "8 assigned",
-              "4 unassigned"
-            ],
-            "metrics": [
-              {
-                "label": "Functions",
-                "value": "12"
-              },
-              {
-                "label": "TBD",
-                "value": "4"
-              }
-            ]
-          },
-          {
-            "slug": "scorecard",
-            "number": 4,
-            "title": "Weekly Success Scorecard",
-            "subtitle": "Monday leadership review — live campaign metrics",
-            "href": "/election-plan/executive-book/scorecard",
-            "statusLines": [
-              "HCI",
-              "Founding Leaders",
-              "Counties Covered",
-              "Verified Events"
-            ],
-            "metrics": [
-              {
-                "label": "HCI",
-                "value": "0"
-              },
-              {
-                "label": "Counties",
-                "value": "45"
-              },
-              {
-                "label": "Events",
-                "value": "122"
-              },
-              {
-                "label": "Leaders",
-                "value": "39"
-              }
-            ]
-          }
-        ]
-      },
-      {
         "id": "strategy",
         "label": "Strategy & Message",
         "chapters": [
+          {
+            "slug": "doctrine",
+            "number": 0,
+            "title": "Campaign Doctrine",
+            "subtitle": "The Arkansas Way to Win — philosophy before mechanics",
+            "href": "/election-plan/executive-book/doctrine",
+            "statusLines": [
+              "Movement, not campaign",
+              "Open doors fundraising",
+              "One mission per immersion county"
+            ],
+            "metrics": [
+              {
+                "label": "Immersion missions",
+                "value": "7"
+              },
+              {
+                "label": "Fundraising model",
+                "value": "Open doors"
+              }
+            ]
+          },
           {
             "slug": "influence-map",
             "number": 2,
@@ -14066,6 +14030,64 @@
               {
                 "label": "Pillars",
                 "value": "8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "governance",
+        "label": "Governance & Accountability",
+        "chapters": [
+          {
+            "slug": "ownership",
+            "number": 1,
+            "title": "Who Owns What",
+            "subtitle": "Leadership ownership matrix — names, not committees",
+            "href": "/election-plan/executive-book/ownership",
+            "statusLines": [
+              "8 assigned",
+              "4 unassigned"
+            ],
+            "metrics": [
+              {
+                "label": "Functions",
+                "value": "12"
+              },
+              {
+                "label": "TBD",
+                "value": "4"
+              }
+            ]
+          },
+          {
+            "slug": "scorecard",
+            "number": 4,
+            "title": "Weekly Success Scorecard",
+            "subtitle": "Monday leadership review — live campaign metrics",
+            "href": "/election-plan/executive-book/scorecard",
+            "statusLines": [
+              "HCI",
+              "Founding Leaders",
+              "Counties Covered",
+              "Verified Events"
+            ],
+            "metrics": [
+              {
+                "label": "HCI",
+                "value": "0"
+              },
+              {
+                "label": "Counties",
+                "value": "45"
+              },
+              {
+                "label": "Events",
+                "value": "122"
+              },
+              {
+                "label": "Leaders",
+                "value": "39"
               }
             ]
           }
@@ -14216,6 +14238,28 @@
       }
     ],
     "chapters": [
+      {
+        "slug": "doctrine",
+        "number": 0,
+        "title": "Campaign Doctrine",
+        "subtitle": "The Arkansas Way to Win — philosophy before mechanics",
+        "href": "/election-plan/executive-book/doctrine",
+        "statusLines": [
+          "Movement, not campaign",
+          "Open doors fundraising",
+          "One mission per immersion county"
+        ],
+        "metrics": [
+          {
+            "label": "Immersion missions",
+            "value": "7"
+          },
+          {
+            "label": "Fundraising model",
+            "value": "Open doors"
+          }
+        ]
+      },
       {
         "slug": "ownership",
         "number": 1,
@@ -15199,23 +15243,6 @@
     "explanation": "Leadership approval portal — decide Kelly attendance, volunteer coverage, and decline before events hit Mobilize or public calendar.",
     "weekCalendar": [
       {
-        "id": "snap-plan-2026-06-15-20-week-execution-begins-central-metro",
-        "slug": "20-week-execution-begins-central-metro-2026-06-15",
-        "title": "20-week execution begins · Central Metro",
-        "date": "2026-06-15",
-        "locationName": "",
-        "county": "Unknown",
-        "eventType": "OTHER",
-        "status": "pending",
-        "decision": {
-          "kellyAttends": false,
-          "needsVolunteers": false,
-          "declined": false,
-          "verified": false,
-          "notes": null
-        }
-      },
-      {
         "id": "snap-lock-quitman-fundraiser",
         "slug": "quitman-fundraiser-2026-06-16",
         "title": "Quitman fundraiser",
@@ -15438,29 +15465,6 @@
       }
     ],
     "items": [
-      {
-        "id": "snap-plan-2026-06-15-20-week-execution-begins-central-metro",
-        "slug": "20-week-execution-begins-central-metro-2026-06-15",
-        "queueEventId": null,
-        "title": "20-week execution begins · Central Metro",
-        "date": "2026-06-15",
-        "county": "Unknown",
-        "city": "",
-        "locationName": "",
-        "assignment": "TBD",
-        "verificationStatus": "unverified",
-        "effectiveScore": 0,
-        "cluster": "",
-        "source": "calendar",
-        "status": "pending",
-        "decision": {
-          "kellyAttends": false,
-          "needsVolunteers": false,
-          "declined": false,
-          "verified": false,
-          "notes": null
-        }
-      },
       {
         "id": "snap-lock-quitman-fundraiser",
         "slug": "quitman-fundraiser-2026-06-16",
@@ -18132,29 +18136,6 @@
     ],
     "pendingItems": [
       {
-        "id": "snap-plan-2026-06-15-20-week-execution-begins-central-metro",
-        "slug": "20-week-execution-begins-central-metro-2026-06-15",
-        "queueEventId": null,
-        "title": "20-week execution begins · Central Metro",
-        "date": "2026-06-15",
-        "county": "Unknown",
-        "city": "",
-        "locationName": "",
-        "assignment": "TBD",
-        "verificationStatus": "unverified",
-        "effectiveScore": 0,
-        "cluster": "",
-        "source": "calendar",
-        "status": "pending",
-        "decision": {
-          "kellyAttends": false,
-          "needsVolunteers": false,
-          "declined": false,
-          "verified": false,
-          "notes": null
-        }
-      },
-      {
         "id": "snap-lock-quitman-fundraiser",
         "slug": "quitman-fundraiser-2026-06-16",
         "queueEventId": null,
@@ -20708,10 +20689,10 @@
         }
       }
     ],
-    "pendingCount": 112,
+    "pendingCount": 111,
     "verifiedCount": 1,
     "declinedCount": 4,
     "decidedCount": 5,
-    "throughElectionCount": 117
+    "throughElectionCount": 116
   }
 }

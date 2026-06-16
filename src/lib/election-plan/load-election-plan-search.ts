@@ -15,7 +15,8 @@ export type ElectionPlanSearchResultType =
   | "Public Website"
   | "Strategic Plan"
   | "Campaign Brain"
-  | "Election Plan";
+  | "Election Plan"
+  | "County Party";
 
 export type ElectionPlanSearchEntry = {
   id: string;
@@ -24,6 +25,8 @@ export type ElectionPlanSearchEntry = {
   excerpt: string;
   type: ElectionPlanSearchResultType;
   sourcePath: string;
+  /** Public ArkDems or campaign URL when applicable */
+  sourcePublicUrl?: string;
   keywords: string[];
 };
 
@@ -71,6 +74,7 @@ export function searchElectionPlanLocal(query: string, limit = 12): ElectionPlan
   const entries = getElectionPlanSearchIndex();
   const terms = tokenize(q);
   const qLower = q.toLowerCase();
+  const wantsHighGrowth = /20\s*%|20\s*percent|twenty percent/.test(qLower);
 
   const scored = entries.map((entry) => {
     const titleLower = entry.title.toLowerCase();
@@ -88,6 +92,11 @@ export function searchElectionPlanLocal(query: string, limit = 12): ElectionPlan
       if (entry.keywords.some((k) => k.toLowerCase().includes(term))) score += 0.2;
       if (blob.includes(term)) score += 0.1;
     }
+
+    if (entry.id.startsWith("county-party:") && qLower.includes("chair")) score += 0.2;
+
+    if (entry.id === "aggregate:counties-20pct" && wantsHighGrowth) score += 0.6;
+    if (wantsHighGrowth && entry.keywords.some((k) => k.includes("20%"))) score += 0.15;
 
     const matchedTerms = terms.filter((t) => blob.includes(t)).length;
     if (terms.length > 0) score += (matchedTerms / terms.length) * 0.3;
@@ -117,7 +126,8 @@ export function getSearchIndexMeta() {
 
 /** Suggested queries for empty search state */
 export const ELECTION_PLAN_SEARCH_SUGGESTIONS: Array<{ label: string; query: string }> = [
-  { label: "Searcy County plan", query: "Searcy County" },
+  { label: "Searcy County chair", query: "Searcy county chair" },
+  { label: "Faulkner County meeting", query: "Faulkner county party" },
   { label: "Power of 5", query: "Power of 5" },
   { label: "Campaign budget", query: "budget" },
   { label: "Direct democracy", query: "direct democracy" },

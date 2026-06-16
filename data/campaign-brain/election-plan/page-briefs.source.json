@@ -9,9 +9,10 @@
       "exact": true,
       "title": "Executive Book",
       "answers": "What is the leadership narrative? Which chapters can I share with partners, donors, and validators?",
-      "keyMetrics": ["10 chapters", "Weekly scorecard", "Budget targets", "GOTV manual"],
-      "bestFor": ["Kelly", "Ernie", "Steve", "Coalition partners", "Major donors"],
+      "keyMetrics": ["Chapter 0 doctrine", "12 chapters", "Weekly scorecard", "Budget targets", "GOTV manual"],
+      "bestFor": ["Kelly", "Ernie", "Steve", "Every volunteer leader", "Coalition partners", "Major donors"],
       "relatedLinks": [
+        { "label": "Campaign Doctrine · Ch. 0", "href": "/election-plan/executive-book/doctrine" },
         { "label": "County Victory Targets · Ch. 6", "href": "/election-plan/executive-book/county-victory-targets" },
         { "label": "Budget · Ch. 7", "href": "/election-plan/executive-book/budget" },
         { "label": "Conversation Strategy · Ch. 8", "href": "/election-plan/executive-book/power-of-5" }
@@ -195,6 +196,21 @@
       "searchKeywords": ["budget", "fundraising", "raise", "money", "salary", "burn rate"]
     },
     {
+      "id": "freshman-week",
+      "pathPattern": "/election-plan/campuses/freshman-week",
+      "exact": true,
+      "title": "Freshman Week Readiness",
+      "answers": "Which campuses are ready for August move-in registration tables? What still needs a captain, Mobilize event, or Kelly appearance?",
+      "keyMetrics": ["Campus checklist", "Captain assigned", "Mobilize event", "Aug 1 target date"],
+      "bestFor": ["Chance", "Xav", "Campus captains", "Students for Arkansas leads"],
+      "relatedLinks": [
+        { "label": "Campus captains", "href": "/election-plan/campuses/captains" },
+        { "label": "Campus network hub", "href": "/election-plan/campuses" },
+        { "label": "Students for Arkansas · Ch. 9", "href": "/election-plan/executive-book/students-for-arkansas" }
+      ],
+      "searchKeywords": ["freshman week", "move-in", "campus registration", "august", "college"]
+    },
+    {
       "id": "campus-hub",
       "pathPattern": "/election-plan/campuses",
       "exact": false,
@@ -240,7 +256,8 @@
     {
       "id": "coverage-reality",
       "pathPattern": "/election-plan",
-      "exact": false,
+      "exact": true,
+      "tabPattern": "presenceMap",
       "title": "Coverage Reality",
       "answers": "Which counties has Kelly actually visited? Where are the gaps?",
       "keyMetrics": ["Counties visited", "Never visited", "Priority queue", "Growth targets per county"],
@@ -254,7 +271,8 @@
     {
       "id": "weekly-dashboard",
       "pathPattern": "/election-plan",
-      "exact": false,
+      "exact": true,
+      "tabPattern": "weeklyDashboard",
       "title": "Weekly Dashboard",
       "answers": "What are Kelly's priorities this week? How is fundraising and county coverage tracking?",
       "keyMetrics": ["Weeks remaining", "Fundraising progress", "Scorecard", "County victory rollup"],
@@ -264,6 +282,36 @@
         { "label": "Monday leadership meeting", "href": "/election-plan/meetings/monday-leadership" }
       ],
       "searchKeywords": ["weekly dashboard", "kelly dashboard", "this week", "priorities"]
+    },
+    {
+      "id": "forward-motion-tab",
+      "pathPattern": "/election-plan",
+      "exact": true,
+      "tabPattern": "forwardMotion",
+      "title": "Forward Motion",
+      "answers": "Where should Kelly go next? Which field stops are highest impact and need promotion?",
+      "keyMetrics": ["Upcoming stops", "Activation readiness", "Priority window", "Next week count"],
+      "bestFor": ["Steve", "Kelly", "Field team", "Story Corps"],
+      "relatedLinks": [
+        { "label": "Field calendar tab", "href": "/election-plan?tab=fieldCalendar" },
+        { "label": "Event approvals", "href": "/election-plan/event-approvals" }
+      ],
+      "searchKeywords": ["forward motion", "kelly stops", "field activation", "where next"]
+    },
+    {
+      "id": "field-calendar-tab",
+      "pathPattern": "/election-plan",
+      "exact": true,
+      "tabPattern": "fieldCalendar",
+      "title": "Field Calendar",
+      "answers": "What events are on the field calendar? What is the operations view?",
+      "keyMetrics": ["Upcoming events", "Event worksheets", "County bindings"],
+      "bestFor": ["Steve", "Field ops", "Mobilize lead", "County captains"],
+      "relatedLinks": [
+        { "label": "Forward Motion tab", "href": "/election-plan?tab=forwardMotion" },
+        { "label": "Event approvals", "href": "/election-plan/event-approvals" }
+      ],
+      "searchKeywords": ["field calendar", "events", "mobilize", "calendar"]
     },
     {
       "id": "searcy-trust",
@@ -278,6 +326,35 @@
         { "label": "Conversation strategy", "href": "/election-plan/conversation-strategy" }
       ],
       "searchKeywords": ["searcy", "trust pilot", "cross party", "rural republican"]
+    },
+    {
+      "id": "county-parties-hub",
+      "pathPattern": "/election-plan/county-parties",
+      "exact": true,
+      "title": "County Party Intelligence",
+      "answers": "Who chairs each county Democratic party? When do they meet? This ingests public ArkDems data, flags verified vs needs-a-phone-call, and turns it into a routing plan — not live outreach.",
+      "keyMetrics": ["75 counties scraped", "Chairs found", "Parseable meetings", "Verification queue"],
+      "bestFor": ["Field team", "Steve", "County captains", "Kelly · surrogates"],
+      "relatedLinks": [
+        { "label": "County playbooks", "href": "/election-plan?tab=countyPlaybooks" },
+        { "label": "Meeting routing plan", "href": "/election-plan/county-parties" },
+        { "label": "Executive Book · Influence Map", "href": "/election-plan/executive-book/influence-map" }
+      ],
+      "searchKeywords": ["county party", "arkdems", "county chair", "democratic party", "meeting"]
+    },
+    {
+      "id": "immersion-missions",
+      "pathPattern": "/election-plan/immersion-missions",
+      "exact": true,
+      "title": "Immersion County Missions",
+      "answers": "What is the one thing each immersion community owns? Not 15 metrics — one mission people can remember and track.",
+      "keyMetrics": ["7 immersion missions", "Quitman 100", "Montgomery Po5 leaders", "One mission rule"],
+      "bestFor": ["Kelly", "County captains", "Field team", "Every volunteer leader"],
+      "relatedLinks": [
+        { "label": "Campaign Doctrine · Ch. 0", "href": "/election-plan/executive-book/doctrine" },
+        { "label": "Power of 5 command center", "href": "/election-plan/power-of-5/command-center" }
+      ],
+      "searchKeywords": ["immersion mission", "quitman 100", "one mission", "campaign doctrine", "montgomery county"]
     },
     {
       "id": "search-hub",

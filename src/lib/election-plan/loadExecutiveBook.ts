@@ -6,8 +6,9 @@ import {
   getExecutiveBookChapter,
   type ExecutiveBookChapterSlug,
 } from "./executiveBookChapters";
-import { getExecutiveBookBudgetLeadership } from "./load-executive-book-budget-leadership";
+import { getCountyPartyIntelligenceRollup } from "./load-county-party-intelligence";
 import { getCountyVictoryTargetsRollup } from "./load-county-victory-targets";
+import { getExecutiveBookBudgetLeadership } from "./load-executive-book-budget-leadership";
 import {
   extractExecutiveBookToc,
   getAdjacentExecutiveBookChapters,
@@ -265,6 +266,14 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
   const liveStrip: ExecutiveBookChapterPayload["liveStrip"] = [];
   let budgetSummary: ExecutiveBookBudgetSummary | undefined;
 
+  if (chapter.slug === "doctrine") {
+    liveStrip.push(
+      { label: "Standard", value: "Movement", detail: "Not a campaign" },
+      { label: "Immersion missions", value: "7", detail: "One mission per county" },
+      { label: "Fundraising", value: "Open doors", detail: "Introductions over call time" },
+    );
+  }
+
   if (chapter.slug === "ownership" && ownership?.assignments) {
     const assigned = ownership.assignments.length - (ownership.unassignedCount ?? 0);
     liveStrip.push(
@@ -309,11 +318,32 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
 
   if (chapter.slug === "county-victory-targets") {
     const rollup = getCountyVictoryTargetsRollup();
+    const party = getCountyPartyIntelligenceRollup();
     liveStrip.push(
       { label: "Counties", value: String(rollup.countyCount) },
       { label: "Total growth needed", value: `+${rollup.totalGrowthNeeded.toLocaleString("en-US")}` },
-      { label: "Po5 leaders (state)", value: rollup.totalPo5Leaders.toLocaleString("en-US") },
+      { label: "Party chairs ingested", value: String(party.chairsFound) },
+      { label: "Parseable meetings", value: String(party.parseableMeetings) },
     );
+  }
+
+  if (chapter.slug === "influence-map") {
+    const party = getCountyPartyIntelligenceRollup();
+    liveStrip.push(
+      { label: "County party chairs", value: String(party.chairsFound) },
+      { label: "Needs verification", value: String(party.needsVerification) },
+      { label: "Source", value: "ArkDems.org" },
+    );
+  }
+
+  if (chapter.slug === "scorecard") {
+    const party = getCountyPartyIntelligenceRollup();
+    liveStrip.push({ label: "County party scrape", value: `${party.fetchedOk}/75` });
+  }
+
+  if (chapter.slug === "labor-day") {
+    const party = getCountyPartyIntelligenceRollup();
+    liveStrip.push({ label: "Meeting candidates", value: String(party.meetingCandidates) });
   }
 
   if (chapter.slug === "audit" && audit) {

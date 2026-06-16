@@ -1624,6 +1624,22 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
 
   const chapterCards = [
       {
+        slug: "doctrine",
+        number: 0,
+        title: "Campaign Doctrine",
+        subtitle: "The Arkansas Way to Win — philosophy before mechanics",
+        href: "/election-plan/executive-book/doctrine",
+        statusLines: [
+          "Movement, not campaign",
+          "Open doors fundraising",
+          "One mission per immersion county",
+        ],
+        metrics: [
+          { label: "Immersion missions", value: "7" },
+          { label: "Fundraising model", value: "Open doors" },
+        ],
+      },
+      {
         slug: "ownership",
         number: 1,
         title: "Who Owns What",
@@ -1763,8 +1779,8 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
   ];
 
   const pillarDefs = [
+    { id: "strategy", label: "Strategy & Message", slugs: ["doctrine", "influence-map", "labor-day", "message"] },
     { id: "governance", label: "Governance & Accountability", slugs: ["ownership", "scorecard"] },
-    { id: "strategy", label: "Strategy & Message", slugs: ["influence-map", "labor-day", "message"] },
     { id: "resources", label: "Resources & Budget", slugs: ["budget"] },
     { id: "field", label: "Field Operations & People Power", slugs: ["power-of-5", "students-for-arkansas", "gotv"] },
     { id: "completion", label: "Readiness & Audit", slugs: ["audit"] },
@@ -1777,7 +1793,7 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
     laborDayDeadline: summary?.laborDayDeadline ?? "2026-09-07",
     completenessEstimate: audit?.completenessEstimate ?? summary?.completenessEstimate ?? "95%",
     readOrderNote:
-      "Read Chapters 1–5 for governance and strategy, then 7–10 for resources and field execution, finish with Chapter 11 audit.",
+      "Read Chapter 0 (Campaign Doctrine) first, then Chapters 1–5 for governance and strategy, 7–10 for resources and field execution, finish with Chapter 11 audit.",
     companionPillars: [
       {
         id: "citizen-voices",

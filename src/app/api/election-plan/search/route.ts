@@ -10,6 +10,8 @@ import {
   getSearchIndexMeta,
   searchElectionPlanLocal,
 } from "@/lib/election-plan/load-election-plan-search";
+import { buildElectionPlanSearchAiAnswer } from "@/lib/election-plan/election-plan-search-ai";
+import { isOpenAIConfigured } from "@/lib/openai/client";
 
 export const runtime = "nodejs";
 
@@ -41,12 +43,25 @@ export async function GET(request: Request) {
   }
 
   const results = searchElectionPlanLocal(q, limit);
+  const useAi = searchParams.get("ai") === "1" && isOpenAIConfigured();
+
+  let aiAnswer: string | null = null;
+  if (useAi && results.length > 0) {
+    try {
+      const ai = await buildElectionPlanSearchAiAnswer(q, results);
+      aiAnswer = ai?.answer ?? null;
+    } catch {
+      aiAnswer = null;
+    }
+  }
 
   return NextResponse.json({
     query: q,
     results,
     meta: getSearchIndexMeta(),
-    mode: "keyword-local",
-    note: "Local corpus only. No external web search. Optional semantic layer uses same allowlisted paths when configured.",
+    mode: useAi && aiAnswer ? "keyword-local+ai" : "keyword-local",
+    aiAnswer,
+    aiEnabled: isOpenAIConfigured(),
+    note: "Local corpus only. No external web search.",
   });
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 import { PageBrief } from "@/components/election-plan/PageBrief";
 import { getPageBriefForPath } from "@/lib/election-plan/load-page-briefs";
@@ -16,10 +16,14 @@ type Props = {
 
 export function PageBriefFromPath({ override, compact, hideOnHub = true }: Props) {
   const pathname = usePathname() ?? "";
-  if (hideOnHub && (pathname === "/election-plan" || pathname === "/election-plan/search")) return null;
+  const searchParams = useSearchParams();
+  const tab = searchParams.get("tab");
+
+  if (hideOnHub && pathname === "/election-plan/search") return null;
+  if (hideOnHub && pathname === "/election-plan" && !tab) return null;
   if (pathname.startsWith("/election-plan/executive-book/")) return null;
 
-  const base = getPageBriefForPath(pathname);
+  const base = getPageBriefForPath(pathname, tab);
   if (!base && !override) return null;
 
   const brief = base

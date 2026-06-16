@@ -1,0 +1,19 @@
+import { CountyPartiesHubPanel } from "@/components/election-plan/CountyPartyIntelligencePanel";
+
+export const metadata = {
+  title: "County Party Intelligence | Election Plan",
+  robots: { index: false, follow: false },
+};
+
+export default function CountyPartiesHubPage() {
+  return (
+    <>
+      <div className="ep-classification">Phase 18.7I · County Party Intelligence · Public source data</div>
+      <div className="ep-chapter-body px-6 py-10 lg:px-10">
+        <div className="mx-auto max-w-6xl">
+          <CountyPartiesHubPanel />
+        </div>
+      </div>
+    </>
+  );
+}

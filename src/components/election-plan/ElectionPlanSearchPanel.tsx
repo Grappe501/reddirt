@@ -17,9 +17,15 @@ function confidenceClass(c: ElectionPlanSearchHit["confidence"]): string {
 
 function typeClass(type: string): string {
   if (type === "Executive Book") return "bg-[var(--ep-navy)] text-white";
+  if (type === "Doctrine") return "bg-violet-800 text-white";
   if (type === "County") return "bg-emerald-700 text-white";
   if (type === "City") return "bg-teal-700 text-white";
-  if (type === "Public Website") return "bg-blue-600 text-white";
+  if (type === "Campus") return "bg-indigo-700 text-white";
+  if (type === "Calendar") return "bg-orange-700 text-white";
+  if (type === "Budget") return "bg-amber-700 text-white";
+  if (type === "Message") return "bg-sky-700 text-white";
+  if (type === "Academy") return "bg-rose-700 text-white";
+  if (type === "County Party") return "bg-blue-700 text-white";
   return "bg-[var(--ep-cream)] text-[var(--ep-navy)]";
 }
 
@@ -30,11 +36,15 @@ export function ElectionPlanSearchPanel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [meta, setMeta] = useState<{ entryCount: number; generatedAt: string } | null>(null);
+  const [aiAnswer, setAiAnswer] = useState<string | null>(null);
+  const [searchMode, setSearchMode] = useState<string>("keyword-local");
+  const [aiEnabled, setAiEnabled] = useState(false);
 
   useEffect(() => {
     if (!q) {
       setResults([]);
       setError(null);
+      setAiAnswer(null);
       return;
     }
 
@@ -42,7 +52,7 @@ export function ElectionPlanSearchPanel() {
     setLoading(true);
     setError(null);
 
-    fetch(`/api/election-plan/search?q=${encodeURIComponent(q)}`)
+    fetch(`/api/election-plan/search?q=${encodeURIComponent(q)}&ai=1`)
       .then(async (res) => {
         if (!res.ok) {
           const body = (await res.json().catch(() => ({}))) as { error?: string };
@@ -52,12 +62,18 @@ export function ElectionPlanSearchPanel() {
           query: string;
           results: ElectionPlanSearchHit[];
           meta: { entryCount: number; generatedAt: string };
+          mode?: string;
+          aiAnswer?: string | null;
+          aiEnabled?: boolean;
         }>;
       })
       .then((data) => {
         if (cancelled) return;
         setResults(data.results);
         setMeta(data.meta);
+        setAiAnswer(data.aiAnswer ?? null);
+        setSearchMode(data.mode ?? "keyword-local");
+        setAiEnabled(Boolean(data.aiEnabled));
       })
       .catch((err: Error) => {
         if (cancelled) return;
@@ -110,6 +126,24 @@ export function ElectionPlanSearchPanel() {
           {loading ? <p className="mt-4 text-sm italic">Searching…</p> : null}
           {error ? <p className="mt-4 text-sm text-red-700">{error}</p> : null}
 
+          {!loading && !error && aiAnswer ? (
+            <div className="mt-4 rounded-lg border border-[var(--ep-border)] bg-[var(--ep-cream)] p-4">
+              <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--ep-gold)]">
+                {searchMode === "keyword-local+ai" ? "AI summary · local sources only" : "Summary"}
+              </p>
+              <p className="mt-2 whitespace-pre-wrap text-sm text-[var(--ep-navy)]">{aiAnswer}</p>
+              <p className="mt-2 text-[10px] text-[var(--ep-navy-muted)]">
+                Citations must match result cards below. Uncertain meeting dates require human verification.
+              </p>
+            </div>
+          ) : null}
+
+          {!loading && !error && q && !aiAnswer && aiEnabled === false ? (
+            <p className="mt-4 text-xs text-[var(--ep-navy-muted)]">
+              Keyword search only · set OPENAI_API_KEY for optional AI summary from local hits.
+            </p>
+          ) : null}
+
           {!loading && !error && results.length === 0 ? (
             <p className="mt-4 text-sm text-[var(--ep-navy-muted)]">No matches. Try a county name, topic, or chapter title.</p>
           ) : null}
@@ -134,7 +168,16 @@ export function ElectionPlanSearchPanel() {
                   </div>
                   <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{hit.excerpt}</p>
                   <p className="mt-2 text-[10px] text-[var(--ep-navy-muted)]">
-                    Source: {hit.sourcePath} · relevance {Math.round(hit.score * 100)}%
+                    Source: {hit.sourcePath}
+                    {hit.sourcePublicUrl ? (
+                      <>
+                        {" · "}
+                        <a href={hit.sourcePublicUrl} target="_blank" rel="noopener noreferrer" className="underline">
+                          public source ↗
+                        </a>
+                      </>
+                    ) : null}
+                    {" · "}relevance {Math.round(hit.score * 100)}%
                   </p>
                 </Link>
               </li>

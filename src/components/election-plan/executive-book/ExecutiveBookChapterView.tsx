@@ -75,18 +75,46 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
           {chapter.slug !== "county-victory-targets" && chapter.slug !== "budget" && chapter.slug !== "power-of-5" ? (
             <div className="mb-8">
               <PageBrief
-                brief={{
-                  id: chapter.slug,
-                  title: chapter.title,
-                  answers: chapter.subtitle,
-                  keyMetrics: chapter.liveStrip.map((s) => s.label),
-                  bestFor: ["Kelly", "Ernie", "Coalition partners", "Donors"],
-                  relatedLinks: chapter.relatedChapters.slice(0, 3).map((r) => ({
-                    label: `Ch. ${r.number}: ${r.title}`,
-                    href: r.href,
-                  })),
-                }}
-                compact
+                brief={
+                  chapter.slug === "doctrine"
+                    ? {
+                        id: "doctrine",
+                        title: "Campaign Doctrine — The Arkansas Way to Win",
+                        answers:
+                          "What is our movement philosophy? How do we build quietly and stand up everywhere? What is the one mission for each immersion county?",
+                        keyMetrics: [
+                          "7 immersion missions",
+                          "Open doors fundraising",
+                          "Quitman 100",
+                          "Movement not campaign",
+                        ],
+                        bestFor: [
+                          "Every volunteer",
+                          "County chairs",
+                          "Surrogates",
+                          "Donor hosts",
+                          "Campus captains",
+                          "Power of 5 leaders",
+                        ],
+                        relatedLinks: [
+                          { label: "Kelly Grappe Message · Ch. 5", href: "/election-plan/executive-book/message" },
+                          { label: "Conversation Strategy · Ch. 8", href: "/election-plan/executive-book/power-of-5" },
+                          { label: "Budget · Ch. 7", href: "/election-plan/executive-book/budget" },
+                        ],
+                      }
+                    : {
+                        id: chapter.slug,
+                        title: chapter.title,
+                        answers: chapter.subtitle,
+                        keyMetrics: chapter.liveStrip.map((s) => s.label),
+                        bestFor: ["Kelly", "Ernie", "Coalition partners", "Donors"],
+                        relatedLinks: chapter.relatedChapters.slice(0, 3).map((r) => ({
+                          label: `Ch. ${r.number}: ${r.title}`,
+                          href: r.href,
+                        })),
+                      }
+                }
+                compact={chapter.slug !== "doctrine"}
               />
             </div>
           ) : null}

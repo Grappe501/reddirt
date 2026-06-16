@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T23:30:58.750Z",
-  "entryCount": 1094,
+  "generatedAt": "2026-06-16T03:20:18.688Z",
+  "entryCount": 1282,
   "corpusNote": "Local-only index. Excludes admin, voter files, donor data, private contacts, opposition raw.",
   "entries": [
     {
@@ -48,6 +48,22 @@
       ]
     },
     {
+      "id": "fm:fest-2026-07-23-little-rock-3492-music-festival-a-celebration-of-community-a",
+      "title": "3492 Music Festival: A Celebration of Community and Sound",
+      "href": "/election-plan/forward-motion/fest-2026-07-23-little-rock-3492-music-festival-a-celebration-of-community-a",
+      "excerpt": "Pulaski County · Little Rock · 2026-07-23 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "3492 music festival: a celebration of community and sound",
+        "pulaski county",
+        "little rock",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/field-operating-system/house-parties/template-50-person.md",
       "title": "50 Person House Party Template",
       "href": "/election-plan",
@@ -59,6 +75,38 @@
         "house",
         "party",
         "template"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-29-dardanelle-79th-annual-mt-nebo-chicken-fry",
+      "title": "79th Annual Mt. Nebo Chicken Fry",
+      "href": "/election-plan/forward-motion/fest-2026-08-29-dardanelle-79th-annual-mt-nebo-chicken-fry",
+      "excerpt": "Yell County · Dardanelle · 2026-08-29 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "79th annual mt. nebo chicken fry",
+        "yell county",
+        "dardanelle",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "campus:arkansas-state-university",
+      "title": "A-State · Campus",
+      "href": "/election-plan/campuses/arkansas-state-university",
+      "excerpt": "Jonesboro, Craighead County · captain vacant · reg goal 650",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "arkansas state university",
+        "a-state",
+        "jonesboro",
+        "campus",
+        "freshman week",
+        "freshman week"
       ]
     },
     {
@@ -335,14 +383,15 @@
       "title": "Arkansas Conversation Strategy",
       "href": "/election-plan/conversation-strategy",
       "excerpt": "What is the organizing doctrine? How do we build trust through conversations, not ads?",
-      "type": "Election Plan",
+      "type": "Message",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "conversation strategy",
         "eyeball to eyeball",
         "trust",
         "organizing doctrine",
-        "arkansas conversation strategy"
+        "arkansas conversation strategy",
+        "conversation-strategy"
       ]
     },
     {
@@ -420,6 +469,28 @@
       ]
     },
     {
+      "id": "county-party:arkansas",
+      "title": "Arkansas County Democratic Party",
+      "href": "/election-plan/county-parties/arkansas",
+      "excerpt": "County Chair: Election Commissioner John Mahfouz\nElection Commissioner: John Mahfouz\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/arkansas/",
+      "keywords": [
+        "arkansas",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "election commissioner john mahfouz",
+        "county chair",
+        "meeting",
+        "arkansas county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:arkansas",
       "title": "Arkansas County Playbook",
       "href": "/election-plan/counties/arkansas",
@@ -449,9 +520,25 @@
       ]
     },
     {
+      "id": "fm:fest-2026-06-26-north-little-rock-arkansas-folklife-festival",
+      "title": "Arkansas Folklife Festival",
+      "href": "/election-plan/forward-motion/fest-2026-06-26-north-little-rock-arkansas-folklife-festival",
+      "excerpt": "Pulaski County · North Little Rock · 2026-06-26 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "arkansas folklife festival",
+        "pulaski county",
+        "north little rock",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/09-ARKANSAS-GOTV-OPERATIONS-PLAN.md",
       "title": "Arkansas GOTV Operations Plan",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/gotv",
       "excerpt": "Arkansas GOTV Operations Plan GOTV OPERATIONS PLAN 1.0 · Executive Book Chapter 10 — Field manual Election Day: 2026 11 03 · Early voting begins: 2026 10 20 It is October 19. How exactly do we win Election Day? This cha…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/09-ARKANSAS-GOTV-OPERATIONS-PLAN.md",
@@ -460,6 +547,22 @@
         "gotv",
         "operations",
         "plan"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-05-mount-vernon-arkansas-labor-day-renaissance-festival",
+      "title": "Arkansas Labor Day Renaissance Festival",
+      "href": "/election-plan/forward-motion/fest-2026-09-05-mount-vernon-arkansas-labor-day-renaissance-festival",
+      "excerpt": "Faulkner County · Mount Vernon · 2026-09-05 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "arkansas labor day renaissance festival",
+        "faulkner county",
+        "mount vernon",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -499,6 +602,54 @@
         "arkansas",
         "presence",
         "dashboard"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-29-mount-vernon-arkansas-renaissance-festival",
+      "title": "Arkansas Renaissance Festival",
+      "href": "/election-plan/forward-motion/fest-2026-08-29-mount-vernon-arkansas-renaissance-festival",
+      "excerpt": "Faulkner County · Mount Vernon · 2026-08-29 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "arkansas renaissance festival",
+        "faulkner county",
+        "mount vernon",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-12-mount-vernon-arkansas-summer-renaissance-festival",
+      "title": "Arkansas Summer Renaissance Festival",
+      "href": "/election-plan/forward-motion/fest-2026-09-12-mount-vernon-arkansas-summer-renaissance-festival",
+      "excerpt": "Faulkner County · Mount Vernon · 2026-09-12 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "arkansas summer renaissance festival",
+        "faulkner county",
+        "mount vernon",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "campus:arkansas-tech",
+      "title": "Arkansas Tech · Campus",
+      "href": "/election-plan/campuses/arkansas-tech",
+      "excerpt": "Russellville, Pope County · captain vacant · reg goal 450",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "arkansas tech university",
+        "arkansas tech",
+        "russellville",
+        "campus",
+        "freshman week",
+        "freshman week"
       ]
     },
     {
@@ -576,6 +727,60 @@
       ]
     },
     {
+      "id": "county-party:ashley",
+      "title": "Ashley County Democratic Party",
+      "href": "/election-plan/county-parties/ashley",
+      "excerpt": "County Chair: Emily Wisener\nElection Commissioner: Regina Kersten\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://ww",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/ashley/",
+      "keywords": [
+        "ashley",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "emily wisener",
+        "county chair",
+        "meeting",
+        "ashley county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-a9c2bbe56f939da4c7898261",
+      "title": "Ashley County Fair",
+      "href": "/election-plan/forward-motion/fair-a9c2bbe56f939da4c7898261",
+      "excerpt": "Ashley County · 2026-09-04 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "ashley county fair",
+        "ashley county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-04-crossett-ashley-county-fair-and-livestock-show",
+      "title": "Ashley County Fair and Livestock Show",
+      "href": "/election-plan/forward-motion/fest-2026-09-04-crossett-ashley-county-fair-and-livestock-show",
+      "excerpt": "Ashley County · Crossett · 2026-09-04 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "ashley county fair and livestock show",
+        "ashley county",
+        "crossett",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "county:ashley",
       "title": "Ashley County Playbook",
       "href": "/election-plan/counties/ashley",
@@ -602,6 +807,22 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "campus:asu-beebe",
+      "title": "ASU-Beebe · Campus",
+      "href": "/election-plan/campuses/asu-beebe",
+      "excerpt": "Beebe, White County · captain vacant · reg goal 350",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "arkansas state university-beebe",
+        "asu-beebe",
+        "beebe",
+        "campus",
+        "freshman week",
+        "freshman week"
       ]
     },
     {
@@ -706,6 +927,28 @@
       ]
     },
     {
+      "id": "county-party:baxter",
+      "title": "Baxter County Democratic Party",
+      "href": "/election-plan/county-parties/baxter",
+      "excerpt": "County Chair: Mary O’Shields\nElection Commissioner: Bob Bodenhamer\nMeeting: Monthly 1st Saturday at 10:00 AM at the Baxter County Library\nWebsite: https://www.democratsofbaxtercounty.com\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confi",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/baxter/",
+      "keywords": [
+        "baxter",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "mary o’shields",
+        "county chair",
+        "meeting",
+        "baxter county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:baxter",
       "title": "Baxter County Playbook",
       "href": "/election-plan/counties/baxter",
@@ -762,6 +1005,22 @@
       ]
     },
     {
+      "id": "fm:fest-2026-08-28-conway-bella-rustina-modern-vintage-market",
+      "title": "Bella Rustina Modern Vintage Market",
+      "href": "/election-plan/forward-motion/fest-2026-08-28-conway-bella-rustina-modern-vintage-market",
+      "excerpt": "Faulkner County · Conway · 2026-08-28 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella rustina modern vintage market",
+        "faulkner county",
+        "conway",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bella-vista.md",
       "title": "Bella Vista — City Strategy",
       "href": "/election-plan",
@@ -787,6 +1046,198 @@
         "benton",
         "city",
         "brief"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-06-bella-vista-bella-vista-end-of-summer-farmers-and-makers-mar",
+      "title": "Bella Vista End of Summer Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-09-06-bella-vista-bella-vista-end-of-summer-farmers-and-makers-mar",
+      "excerpt": "Benton County · Bella Vista · 2026-09-06 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista end of summer farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-30-bella-vista-bella-vista-fifth-sunday-farmers-and-makers-mark",
+      "title": "Bella Vista Fifth Sunday Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-08-30-bella-vista-bella-vista-fifth-sunday-farmers-and-makers-mark",
+      "excerpt": "Benton County · Bella Vista · 2026-08-30 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista fifth sunday farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-02-bella-vista-bella-vista-first-sunday-farmers-and-makers-mark",
+      "title": "Bella Vista First Sunday Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-08-02-bella-vista-bella-vista-first-sunday-farmers-and-makers-mark",
+      "excerpt": "Benton County · Bella Vista · 2026-08-02 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista first sunday farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-23-bella-vista-bella-vista-fourth-sunday-farmers-and-makers-mar",
+      "title": "Bella Vista Fourth Sunday Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-08-23-bella-vista-bella-vista-fourth-sunday-farmers-and-makers-mar",
+      "excerpt": "Benton County · Bella Vista · 2026-08-23 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista fourth sunday farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-26-bella-vista-bella-vista-midsummer-farmers-and-makers-market",
+      "title": "Bella Vista Midsummer Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-07-26-bella-vista-bella-vista-midsummer-farmers-and-makers-market",
+      "excerpt": "Benton County · Bella Vista · 2026-07-26 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista midsummer farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
+      "title": "Bella Vista Outdoor Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
+      "excerpt": "Benton County · Bella Vista · 2026-07-05 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista outdoor farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-09-bella-vista-bella-vista-second-sunday-farmers-and-makers-mar",
+      "title": "Bella Vista Second Sunday Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-08-09-bella-vista-bella-vista-second-sunday-farmers-and-makers-mar",
+      "excerpt": "Benton County · Bella Vista · 2026-08-09 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista second sunday farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
+      "title": "Bella Vista Summer Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
+      "excerpt": "Benton County · Bella Vista · 2026-06-21 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista summer farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
+      "title": "Bella Vista Summer Outdoor Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
+      "excerpt": "Benton County · Bella Vista · 2026-07-12 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista summer outdoor farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
+      "title": "Bella Vista Summer Sunday Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
+      "excerpt": "Benton County · Bella Vista · 2026-06-28 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista summer sunday farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-19-bella-vista-bella-vista-sunday-outdoor-farmers-and-makers-ma",
+      "title": "Bella Vista Sunday Outdoor Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-07-19-bella-vista-bella-vista-sunday-outdoor-farmers-and-makers-ma",
+      "excerpt": "Benton County · Bella Vista · 2026-07-19 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista sunday outdoor farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-16-bella-vista-bella-vista-third-sunday-farmers-and-makers-mark",
+      "title": "Bella Vista Third Sunday Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-08-16-bella-vista-bella-vista-third-sunday-farmers-and-makers-mark",
+      "excerpt": "Benton County · Bella Vista · 2026-08-16 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista third sunday farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -888,6 +1339,44 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "immersion-mission:benton-votes",
+      "title": "Benton County · Top Vote Production County",
+      "href": "/election-plan/immersion-missions",
+      "excerpt": "Maximum SOS vote output in Northwest Arkansas — every conversation converts. · Success: Highest SOS vote total among non-Pulaski counties",
+      "type": "Doctrine",
+      "sourcePath": "data/campaign-brain/election-plan/immersion-county-missions.source.json",
+      "keywords": [
+        "benton county",
+        "top vote production county",
+        "benton",
+        "immersion mission",
+        "campaign doctrine",
+        "one mission"
+      ]
+    },
+    {
+      "id": "county-party:benton",
+      "title": "Benton County Democratic Party",
+      "href": "/election-plan/county-parties/benton",
+      "excerpt": "County Chair: Anna Good\nElection Commissioner: Melanie Hoskins\nMeeting: Monthly 2nd Monday at 6:30 PM; check website or social media for location\nWebsite: https://www.democraticpartybentoncounty.org/\nFacebook: https://www.facebook.com/democraticpartybentoncounty\nRecommended actio",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/benton/",
+      "keywords": [
+        "benton",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "anna good",
+        "county chair",
+        "meeting",
+        "benton county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -1061,6 +1550,28 @@
       ]
     },
     {
+      "id": "county-party:boone",
+      "title": "Boone County Democratic Party",
+      "href": "/election-plan/county-parties/boone",
+      "excerpt": "County Chair: Wanda Evans\nElection Commissioner: Sherrill Bishop\nMeeting: Monthly 3rd Tuesday\nFacebook: https://www.facebook.com/Boonecountydemocrats\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intelligence · confirm",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/boone/",
+      "keywords": [
+        "boone",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "wanda evans",
+        "county chair",
+        "meeting",
+        "boone county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:boone",
       "title": "Boone County Playbook",
       "href": "/election-plan/counties/boone",
@@ -1164,6 +1675,28 @@
       ]
     },
     {
+      "id": "county-party:bradley",
+      "title": "Bradley County Democratic Party",
+      "href": "/election-plan/county-parties/bradley",
+      "excerpt": "County Chair: Election Commissioner Jerry Butler\nElection Commissioner: Jerry Butler\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/bradley/",
+      "keywords": [
+        "bradley",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "election commissioner jerry butler",
+        "county chair",
+        "meeting",
+        "bradley county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:bradley",
       "title": "Bradley County Playbook",
       "href": "/election-plan/counties/bradley",
@@ -1230,6 +1763,22 @@
         "saline",
         "city",
         "brief"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-26-jasper-buffalo-river-elk-festival",
+      "title": "Buffalo River Elk Festival",
+      "href": "/election-plan/forward-motion/fest-2026-06-26-jasper-buffalo-river-elk-festival",
+      "excerpt": "Newton County · Jasper · 2026-06-26 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "buffalo river elk festival",
+        "newton county",
+        "jasper",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -1443,6 +1992,28 @@
       ]
     },
     {
+      "id": "county-party:calhoun",
+      "title": "Calhoun County Democratic Party",
+      "href": "/election-plan/county-parties/calhoun",
+      "excerpt": "County Chair: Earnest Woods\nElection Commissioner: Norman McRae\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/calhoun/",
+      "keywords": [
+        "calhoun",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "earnest woods",
+        "county chair",
+        "meeting",
+        "calhoun county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:calhoun",
       "title": "Calhoun County Playbook",
       "href": "/election-plan/counties/calhoun",
@@ -1503,14 +2074,15 @@
       "title": "Campaign Academy",
       "href": "/election-plan/academy",
       "excerpt": "What volunteer roles exist? How does a new leader get onboarded?",
-      "type": "Election Plan",
+      "type": "Academy",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "campaign academy",
         "volunteer roles",
         "onboarding",
         "training",
-        "campaign academy"
+        "campaign academy",
+        "academy-hub"
       ]
     },
     {
@@ -1518,14 +2090,15 @@
       "title": "Campaign Academy Role",
       "href": "/election-plan/academy/",
       "excerpt": "What does this volunteer role do? How does it connect to the victory plan?",
-      "type": "Election Plan",
+      "type": "Academy",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "academy",
         "volunteer role",
         "county captain",
         "house party host",
-        "campaign academy role"
+        "campaign academy role",
+        "academy-role"
       ]
     },
     {
@@ -1644,7 +2217,7 @@
       "title": "Campaign Budget",
       "href": "/election-plan/executive-book/budget",
       "excerpt": "What is our budget framework? What are the fundraising targets by month?",
-      "type": "Election Plan",
+      "type": "Budget",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "budget",
@@ -1653,13 +2226,14 @@
         "money",
         "salary",
         "burn rate",
-        "campaign budget"
+        "campaign budget",
+        "budget-dashboard"
       ]
     },
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md",
       "title": "Campaign Budget & Fundraising Targets",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/budget",
       "excerpt": "Campaign Budget & Fundraising Targets CAMPAIGN BUDGET FRAMEWORK 1.2 · Chapter 7 — Leadership fundraising planning These are planning targets, not guaranteed costs or guaranteed fundraising outcomes. Modeled line items c…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md",
@@ -1710,9 +2284,29 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/00-CAMPAIGN-DOCTRINE-THE-ARKANSAS-WAY-TO-WIN.md",
+      "title": "Campaign Doctrine — The Arkansas Way to Win",
+      "href": "/election-plan/executive-book/doctrine",
+      "excerpt": "Campaign Doctrine — The Arkansas Way to Win Chapter 0 — Read this first · Philosophy before mechanics · Every volunteer, county chair, surrogate, donor host, campus captain, LTE writer, and Power of 5 leader Most campai…",
+      "type": "Doctrine",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/00-CAMPAIGN-DOCTRINE-THE-ARKANSAS-WAY-TO-WIN.md",
+      "keywords": [
+        "campaign",
+        "doctrine",
+        "the",
+        "arkansas",
+        "way",
+        "win",
+        "campaign doctrine",
+        "arkansas way to win",
+        "open doors",
+        "movement"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/04-WEEKLY-SUCCESS-SCORECARD.md",
       "title": "Campaign Health Scorecard",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/scorecard",
       "excerpt": "Campaign Health Scorecard EXECUTIVE BOOK COMPLETION 1.0 · Chapter 4 — One page · Monday morning · two minutes Week of: 2026 06 15 Metric Goal Current : : Verified Events 300 122 Counties Covered 75 45 Founding Leaders 2…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/04-WEEKLY-SUCCESS-SCORECARD.md",
@@ -1760,7 +2354,8 @@
         "organization",
         "functional teams",
         "team owners",
-        "campaign organizational chart"
+        "campaign organizational chart",
+        "organization"
       ]
     },
     {
@@ -1807,7 +2402,7 @@
       "title": "Campus Network",
       "href": "/election-plan/campuses",
       "excerpt": "Which campuses have captains? Is Freshman Week ready?",
-      "type": "Election Plan",
+      "type": "Campus",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "campus",
@@ -1816,7 +2411,8 @@
         "UALR",
         "students for arkansas",
         "college",
-        "campus network"
+        "campus network",
+        "campus-hub"
       ]
     },
     {
@@ -1965,6 +2561,20 @@
       ]
     },
     {
+      "id": "md:docs/campaign-brain/review/CANDIDATE-REVIEW-HARDENING-CHECKLIST.md",
+      "title": "Candidate Review Hardening Checklist",
+      "href": "/election-plan",
+      "excerpt": "Candidate Review Hardening Checklist Use when Kelly, Ernie, or Steve reviews the Election Plan or Executive Book live. Key presentation line (county party intelligence) This is not pretending every county page is perfec…",
+      "type": "Campaign Brain",
+      "sourcePath": "docs/campaign-brain/review/CANDIDATE-REVIEW-HARDENING-CHECKLIST.md",
+      "keywords": [
+        "candidate",
+        "review",
+        "hardening",
+        "checklist"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/voter-contact/canvass-dashboard.md",
       "title": "Canvass Dashboard",
       "href": "/election-plan",
@@ -2090,6 +2700,28 @@
       ]
     },
     {
+      "id": "county-party:carroll",
+      "title": "Carroll County Democratic Party",
+      "href": "/election-plan/county-parties/carroll",
+      "excerpt": "County Chair: Margy Thompson\nElection Commissioner: Cris Yackle\nMeeting: Monthly 2nd Tuesday at 6:00 PM at ECHO Clinic Community Room in Eureka Springs\nWebsite: https://www.carrollcountydemocrats.org/\nFacebook: https:/www.facebook.com/CarrollCountyDemocrats\nRecommended action: Re",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/carroll/",
+      "keywords": [
+        "carroll",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "margy thompson",
+        "county chair",
+        "meeting",
+        "carroll county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:carroll",
       "title": "Carroll County Playbook",
       "href": "/election-plan/counties/carroll",
@@ -2116,6 +2748,39 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-15-little-rock-central-arkansas-women's-expo",
+      "title": "Central Arkansas Women's Expo",
+      "href": "/election-plan/forward-motion/fest-2026-08-15-little-rock-central-arkansas-women's-expo",
+      "excerpt": "Pulaski County · Little Rock · 2026-08-15 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "central arkansas women's expo",
+        "pulaski county",
+        "little rock",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "eb:doctrine",
+      "title": "Ch. 0: Campaign Doctrine",
+      "href": "/election-plan/executive-book/doctrine",
+      "excerpt": "The Arkansas Way to Win — philosophy before mechanics, for every leader in the movement",
+      "type": "Doctrine",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/00-CAMPAIGN-DOCTRINE-THE-ARKANSAS-WAY-TO-WIN.md",
+      "keywords": [
+        "doctrine",
+        "campaign doctrine",
+        "executive book",
+        "chapter",
+        "campaign doctrine",
+        "open doors",
+        "movement"
       ]
     },
     {
@@ -2207,7 +2872,7 @@
       "title": "Ch. 5: The Kelly Grappe Message",
       "href": "/election-plan/executive-book/message",
       "excerpt": "Eight-pillar candidate doctrine for every room",
-      "type": "Executive Book",
+      "type": "Message",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/05-THE-KELLY-GRAPPE-MESSAGE.md",
       "keywords": [
         "message",
@@ -2235,7 +2900,7 @@
       "title": "Ch. 7: Campaign Budget & Fundraising Targets",
       "href": "/election-plan/executive-book/budget",
       "excerpt": "Projected budget framework — salary floor, travel, materials, fundraising goals",
-      "type": "Executive Book",
+      "type": "Budget",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md",
       "keywords": [
         "budget",
@@ -2249,7 +2914,7 @@
       "title": "Ch. 8: Arkansas Conversation Strategy",
       "href": "/election-plan/executive-book/power-of-5",
       "excerpt": "Eyeball-to-eyeball organizing doctrine — trust, the conversation ladder, and Power of 5",
-      "type": "Executive Book",
+      "type": "Message",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/07-EYEBALL-TO-EYEBALL-ORGANIZING-AND-POWER-OF-5.md",
       "keywords": [
         "power-of-5",
@@ -2574,6 +3239,28 @@
       ]
     },
     {
+      "id": "county-party:chicot",
+      "title": "Chicot County Democratic Party",
+      "href": "/election-plan/county-parties/chicot",
+      "excerpt": "County Chair: Mike Boyd\nElection Commissioner: Joseph Williamson\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/chicot/",
+      "keywords": [
+        "chicot",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "mike boyd",
+        "county chair",
+        "meeting",
+        "chicot county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:chicot",
       "title": "Chicot County Playbook",
       "href": "/election-plan/counties/chicot",
@@ -2620,7 +3307,7 @@
       "title": "City Location Brief",
       "href": "/election-plan/cities/",
       "excerpt": "What is the vote target and organizing plan for this priority city?",
-      "type": "Election Plan",
+      "type": "City",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "city brief",
@@ -2628,7 +3315,8 @@
         "searcy city",
         "fayetteville",
         "little rock",
-        "city location brief"
+        "city location brief",
+        "city-brief"
       ]
     },
     {
@@ -2715,6 +3403,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:clark",
+      "title": "Clark County Democratic Party",
+      "href": "/election-plan/county-parties/clark",
+      "excerpt": "County Chair: Leslie Bohn\nElection Commissioner: Lori Stewart\nMeeting: Monthly 3rd Tuesday\nFacebook: https://www.facebook.com/clarkcodems\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intelligence · confirm by phone\nPu",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/clark/",
+      "keywords": [
+        "clark",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "leslie bohn",
+        "county chair",
+        "meeting",
+        "clark county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -2821,6 +3531,60 @@
       ]
     },
     {
+      "id": "county-party:clay",
+      "title": "Clay County Democratic Party",
+      "href": "/election-plan/county-parties/clay",
+      "excerpt": "County Chair: Ryan Carter\nElection Commissioner: Danny Winberry\nMeeting: Monthly 3rd Thursday at 6:00 PM\nFacebook: https://www.facebook.com/claycodems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intelligence · confi",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/clay/",
+      "keywords": [
+        "clay",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "ryan carter",
+        "county chair",
+        "meeting",
+        "clay county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-7da0f84811b62d6378c8eab1",
+      "title": "Clay County Fair",
+      "href": "/election-plan/forward-motion/fair-7da0f84811b62d6378c8eab1",
+      "excerpt": "Clay County · 2026-09-12 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "clay county fair",
+        "clay county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-12-piggott-clay-county-fair",
+      "title": "Clay County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-09-12-piggott-clay-county-fair",
+      "excerpt": "Clay County · Piggott · 2026-09-12 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "clay county fair",
+        "clay county",
+        "piggott",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "county:clay",
       "title": "Clay County Playbook",
       "href": "/election-plan/counties/clay",
@@ -2921,6 +3685,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:cleburne",
+      "title": "Cleburne County Democratic Party",
+      "href": "/election-plan/county-parties/cleburne",
+      "excerpt": "County Chair: Lisa Holloway\nElection Commissioner: Larry Crabtree\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/groups/215481195169048/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic sou",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/cleburne/",
+      "keywords": [
+        "cleburne",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "lisa holloway",
+        "county chair",
+        "meeting",
+        "cleburne county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -3038,6 +3824,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:cleveland",
+      "title": "Cleveland County Democratic Party",
+      "href": "/election-plan/county-parties/cleveland",
+      "excerpt": "County Chair: Jametta Harper\nElection Commissioner: Gloria Johnston\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/cleveland/",
+      "keywords": [
+        "cleveland",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "jametta harper",
+        "county chair",
+        "meeting",
+        "cleveland county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -3206,6 +4014,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:columbia",
+      "title": "Columbia County Democratic Party",
+      "href": "/election-plan/county-parties/columbia",
+      "excerpt": "County Chair: Sandra Manning\nElection Commissioner: Shaneka Crockett\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https:/",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/columbia/",
+      "keywords": [
+        "columbia",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "sandra manning",
+        "county chair",
+        "meeting",
+        "columbia county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -3443,6 +4273,28 @@
       ]
     },
     {
+      "id": "county-party:conway",
+      "title": "Conway County Democratic Party",
+      "href": "/election-plan/county-parties/conway",
+      "excerpt": "County Chair: Linda Everette-Williams\nElection Commissioner: Delores Brockman\nMeeting: Monthly 1st Monday at 6:30 PM at Morrilton City Hall\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nSta",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/conway/",
+      "keywords": [
+        "conway",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "linda everette-williams",
+        "county chair",
+        "meeting",
+        "conway county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:conway",
       "title": "Conway County Playbook",
       "href": "/election-plan/counties/conway",
@@ -3469,6 +4321,22 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "aggregate:counties-20pct",
+      "title": "Counties needing 20%+ vote increase",
+      "href": "/election-plan/county-victory-targets",
+      "excerpt": "70 counties need 20% or more Democratic vote growth: Arkansas, Ashley, Baxter, Boone, Bradley, Calhoun, Carroll, Chicot, Clark, Clay…",
+      "type": "County",
+      "sourcePath": "data/election/kelly-win-target-scenario-v1.json",
+      "keywords": [
+        "20%",
+        "20 percent",
+        "percent increase",
+        "high growth",
+        "counties",
+        "victory targets"
       ]
     },
     {
@@ -3663,6 +4531,20 @@
       ]
     },
     {
+      "id": "md:docs/campaign-brain/county-party-intelligence/COUNTY-MEETING-ROUTING-PLAN.md",
+      "title": "County Meeting Routing Plan",
+      "href": "/election-plan",
+      "excerpt": "County Meeting Routing Plan Generated: 2026 06 16T03:04:19.027Z Presentation line: This is not pretending every county page is perfectly current. It ingests public data, flags what is verified, flags what needs a phone …",
+      "type": "Campaign Brain",
+      "sourcePath": "docs/campaign-brain/county-party-intelligence/COUNTY-MEETING-ROUTING-PLAN.md",
+      "keywords": [
+        "county",
+        "meeting",
+        "routing",
+        "plan"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/forward-motion/phone-bank-invitations/county-missing-democrat-script.md",
       "title": "County Missing Democrat Script",
       "href": "/election-plan",
@@ -3691,6 +4573,52 @@
       ]
     },
     {
+      "id": "brief:county-parties-hub",
+      "title": "County Party Intelligence",
+      "href": "/election-plan/county-parties",
+      "excerpt": "Who chairs each county Democratic party? When do they meet? This ingests public ArkDems data, flags verified vs needs-a-phone-call, and turns it into a routing plan — not live outreach.",
+      "type": "Election Plan",
+      "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
+      "keywords": [
+        "county party",
+        "arkdems",
+        "county chair",
+        "democratic party",
+        "meeting",
+        "county party intelligence",
+        "county-parties-hub"
+      ]
+    },
+    {
+      "id": "md:docs/campaign-brain/county-party-intelligence/README.md",
+      "title": "County Party Intelligence (Phase 18.7I)",
+      "href": "/election-plan",
+      "excerpt": "County Party Intelligence (Phase 18.7I) Public ArkDems.org county party data — ingested, normalized, searchable, wired into county playbooks and the Executive Book. Primary source: https://www.arkdems.org/counties/ Rebu…",
+      "type": "Campaign Brain",
+      "sourcePath": "docs/campaign-brain/county-party-intelligence/README.md",
+      "keywords": [
+        "county",
+        "party",
+        "intelligence",
+        "(phase",
+        "18.7i)"
+      ]
+    },
+    {
+      "id": "md:docs/campaign-brain/county-party-intelligence/COUNTY-PARTY-INTELLIGENCE-REPORT.md",
+      "title": "County Party Intelligence Report",
+      "href": "/election-plan",
+      "excerpt": "County Party Intelligence Report Generated: 2026 06 16T03:04:19.018Z Source: Arkansas Democrats Counties Directory Rollup Metric Count : Counties in registry 75 Pages fetched OK 75 County chairs found 75 Election commis…",
+      "type": "Campaign Brain",
+      "sourcePath": "docs/campaign-brain/county-party-intelligence/COUNTY-PARTY-INTELLIGENCE-REPORT.md",
+      "keywords": [
+        "county",
+        "party",
+        "intelligence",
+        "report"
+      ]
+    },
+    {
       "id": "route:/events/county-party-meetings",
       "title": "County Party Meetings",
       "href": "/events/county-party-meetings",
@@ -3708,7 +4636,7 @@
       "title": "County Playbook",
       "href": "/election-plan/counties/",
       "excerpt": "What is our county's vote target, field plan, calendar, strike team, and Kelly outreach contacts?",
-      "type": "Election Plan",
+      "type": "County",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "county playbook",
@@ -3716,7 +4644,8 @@
         "searcy",
         "white county",
         "pulaski",
-        "county playbook"
+        "county playbook",
+        "county-playbook"
       ]
     },
     {
@@ -3791,7 +4720,7 @@
       "title": "County Victory Targets",
       "href": "/election-plan/county-victory-targets",
       "excerpt": "How many more votes does each county need? What percent increase? How many Po5 leaders?",
-      "type": "Election Plan",
+      "type": "County",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "county victory",
@@ -3799,13 +4728,14 @@
         "votes needed",
         "20%",
         "power of 5 leaders",
-        "county victory targets"
+        "county victory targets",
+        "county-victory-targets"
       ]
     },
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-COUNTY-VICTORY-TARGETS.md",
       "title": "County Victory Targets",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/county-victory-targets",
       "excerpt": "County Victory Targets Why this chapter exists Campaign leadership thinks in VCI, lane recovery, and opportunity scores. County chairs think in votes. Every county leader should be able to answer four questions in under…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-COUNTY-VICTORY-TARGETS.md",
@@ -3885,7 +4815,7 @@
     {
       "id": "brief:coverage-reality",
       "title": "Coverage Reality",
-      "href": "/election-plan",
+      "href": "/election-plan?tab=presenceMap",
       "excerpt": "Which counties has Kelly actually visited? Where are the gaps?",
       "type": "Election Plan",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
@@ -3894,7 +4824,8 @@
         "counties visited",
         "presence map",
         "never visited",
-        "coverage reality"
+        "coverage reality",
+        "coverage-reality"
       ]
     },
     {
@@ -3969,6 +4900,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:craighead",
+      "title": "Craighead County Democratic Party",
+      "href": "/election-plan/county-parties/craighead",
+      "excerpt": "County Chair: David McAvoy\nElection Commissioner: Bruce Freeman\nMeeting: Monthly 4th Tuesday at 5:30 PM at Earl Bell Community Center\nWebsite: https://www.craigheaddems.org/\nFacebook: https://www.facebook.com/CraigheadCountyDems\nRecommended action: Request speaking slot · confirm",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/craighead/",
+      "keywords": [
+        "craighead",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "david mcavoy",
+        "county chair",
+        "meeting",
+        "craighead county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -4076,6 +5029,60 @@
       ]
     },
     {
+      "id": "county-party:crawford",
+      "title": "Crawford County Democratic Party",
+      "href": "/election-plan/county-parties/crawford",
+      "excerpt": "County Chair: Karen Robertson\nElection Commissioner: Memory Boucher\nMeeting: Monthly 2nd Thursday at 6:30 PM at Van Buren Senior Center Senior\nFacebook: https://www.facebook.com/CrawfordCountyDemocrats\nRecommended action: Request speaking slot · confirm with chair · add to calend",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/crawford/",
+      "keywords": [
+        "crawford",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "karen robertson",
+        "county chair",
+        "meeting",
+        "crawford county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-85d27f33244a77c6ebeaf3c8",
+      "title": "Crawford County Fair",
+      "href": "/election-plan/forward-motion/fair-85d27f33244a77c6ebeaf3c8",
+      "excerpt": "Crawford County · 2026-09-12 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "crawford county fair",
+        "crawford county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-12-mulberry-crawford-county-fair",
+      "title": "Crawford County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-09-12-mulberry-crawford-county-fair",
+      "excerpt": "Crawford County · Mulberry · 2026-09-12 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "crawford county fair",
+        "crawford county",
+        "mulberry",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "county:crawford",
       "title": "Crawford County Playbook",
       "href": "/election-plan/counties/crawford",
@@ -4176,6 +5183,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:crittenden",
+      "title": "Crittenden County Democratic Party",
+      "href": "/election-plan/county-parties/crittenden",
+      "excerpt": "County Chair: Joyce Gray\nElection Commissioner: James Pulliaum\nMeeting: Monthly 2nd Monday at 6:00 PM\nFacebook: https://facebook.com/CrittendenCountyDemocraticParty/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intell",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/crittenden/",
+      "keywords": [
+        "crittenden",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "joyce gray",
+        "county chair",
+        "meeting",
+        "crittenden county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -4282,6 +5311,28 @@
       ]
     },
     {
+      "id": "county-party:cross",
+      "title": "Cross County Democratic Party",
+      "href": "/election-plan/county-parties/cross",
+      "excerpt": "County Chair: Joanna Gahr\nElection Commissioner: Bonnie Huff\nMeeting: Monthly 2nd Monday at 6:00 PM at Chamber of Commerce\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intel",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/cross/",
+      "keywords": [
+        "cross",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "joanna gahr",
+        "county chair",
+        "meeting",
+        "cross county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:cross",
       "title": "Cross County Playbook",
       "href": "/election-plan/counties/cross",
@@ -4322,6 +5373,22 @@
         "official",
         "call",
         "script"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-05-rose-bud-daisy-days-vendor-market",
+      "title": "Daisy Days Vendor Market",
+      "href": "/election-plan/forward-motion/fest-2026-09-05-rose-bud-daisy-days-vendor-market",
+      "excerpt": "White County · Rose Bud · 2026-09-05 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "daisy days vendor market",
+        "white county",
+        "rose bud",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -4396,6 +5463,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:dallas",
+      "title": "Dallas County Democratic Party",
+      "href": "/election-plan/county-parties/dallas",
+      "excerpt": "County Chair: Election Commissioner C Barnes\nElection Commissioner: C Barnes\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source:",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/dallas/",
+      "keywords": [
+        "dallas",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "election commissioner c barnes",
+        "county chair",
+        "meeting",
+        "dallas county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -4561,6 +5650,28 @@
       ]
     },
     {
+      "id": "county-party:desha",
+      "title": "Desha County Democratic Party",
+      "href": "/election-plan/county-parties/desha",
+      "excerpt": "County Chair: Charles Killion\nElection Commissioner: Carsell Mathis\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/desha/",
+      "keywords": [
+        "desha",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "charles killion",
+        "county chair",
+        "meeting",
+        "desha county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:desha",
       "title": "Desha County Playbook",
       "href": "/election-plan/counties/desha",
@@ -4621,14 +5732,15 @@
       "title": "Direct Democracy",
       "href": "/election-plan/direct-democracy",
       "excerpt": "What is the Ballot Initiative Support Program? How does Kelly's SOS role connect to citizen power?",
-      "type": "Election Plan",
+      "type": "Message",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "direct democracy",
         "ballot initiative",
         "citizen power",
         "initiative support",
-        "direct democracy"
+        "direct democracy",
+        "direct-democracy"
       ]
     },
     {
@@ -5080,6 +6192,28 @@
       ]
     },
     {
+      "id": "county-party:drew",
+      "title": "Drew County Democratic Party",
+      "href": "/election-plan/county-parties/drew",
+      "excerpt": "County Chair: Peggy Orr\nElection Commissioner: Tony Williams\nMeeting: Monthly 4th Monday at 6:00 PM at Wilmar Community Center\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public i",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/drew/",
+      "keywords": [
+        "drew",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "peggy orr",
+        "county chair",
+        "meeting",
+        "drew county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:drew",
       "title": "Drew County Playbook",
       "href": "/election-plan/counties/drew",
@@ -5172,7 +6306,8 @@
         "search",
         "find",
         "where is",
-        "election plan search"
+        "election plan search",
+        "search-hub"
       ]
     },
     {
@@ -5381,13 +6516,14 @@
       "title": "Executive Book",
       "href": "/election-plan/executive-book",
       "excerpt": "What is the leadership narrative? Which chapters can I share with partners, donors, and validators?",
-      "type": "Election Plan",
+      "type": "Executive Book",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "executive book",
         "leadership briefing",
         "chapters",
-        "executive book"
+        "executive book",
+        "executive-book-hub"
       ]
     },
     {
@@ -5395,18 +6531,19 @@
       "title": "Executive Book Chapter",
       "href": "/election-plan/executive-book/",
       "excerpt": "What does leadership need to know about this topic — in shareable, board-ready form?",
-      "type": "Election Plan",
+      "type": "Executive Book",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "executive book",
         "chapter",
-        "executive book chapter"
+        "executive book chapter",
+        "executive-book-chapter"
       ]
     },
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/EXECUTIVE-BOOK-COMPLETION-AUDIT.md",
       "title": "Executive Book Completion Audit",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/audit",
       "excerpt": "Executive Book Completion Audit EXECUTIVE BOOK COMPLETION 1.0 · Version 1.1 leadership readiness assessment Generated: 2026 06 15 Verdict Executive Book V1.1 OPERATIONAL — assign remaining TBD owners Overall completenes…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/EXECUTIVE-BOOK-COMPLETION-AUDIT.md",
@@ -5434,7 +6571,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/02-EXECUTIVE-CONTACT-PLAN.md",
       "title": "Executive Contact Plan — Arkansas Influence Map",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/influence-map",
       "excerpt": "Executive Contact Plan — Arkansas Influence Map EXECUTIVE BOOK COMPLETION 1.0 · Chapter 2 — Most important operational chapter The relationship strategy exists. This is the statewide relationship target list — ranked, o…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/02-EXECUTIVE-CONTACT-PLAN.md",
@@ -5503,7 +6640,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/07-EYEBALL-TO-EYEBALL-ORGANIZING-AND-POWER-OF-5.md",
       "title": "Eyeball to Eyeball Organizing & Power of 5",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/power-of-5",
       "excerpt": "Eyeball to Eyeball Organizing & Power of 5 EYEBALL TO EYEBALL EXECUTIVE CHAPTER 1.0 · Executive Book Chapter 8 — Campaign organizing doctrine \"What is the organizing philosophy of this campaign?\" This chapter answers th…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/07-EYEBALL-TO-EYEBALL-ORGANIZING-AND-POWER-OF-5.md",
@@ -5735,6 +6872,28 @@
       ]
     },
     {
+      "id": "county-party:faulkner",
+      "title": "Faulkner County Democratic Party",
+      "href": "/election-plan/county-parties/faulkner",
+      "excerpt": "County Chair: Teresa Huff\nElection Commissioner: Betty Pickett\nMeeting: Monthly 1st Monday at 6:30 PM at McGee Center in Conway\nWebsite: http://faulknerdemocrats.com\nFacebook: https://www.facebook.com/faulknerdems\nRecommended action: Request speaking slot · confirm with chair · a",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/faulkner/",
+      "keywords": [
+        "faulkner",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "teresa huff",
+        "county chair",
+        "meeting",
+        "faulkner county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:faulkner",
       "title": "Faulkner County Playbook",
       "href": "/election-plan/counties/faulkner",
@@ -5870,14 +7029,31 @@
       "title": "Field Calendar",
       "href": "/election-plan/field-calendar",
       "excerpt": "What events are on the field calendar? What is the operations view?",
-      "type": "Election Plan",
+      "type": "Calendar",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "field calendar",
         "events",
         "mobilize",
         "calendar",
-        "field calendar"
+        "field calendar",
+        "field-calendar"
+      ]
+    },
+    {
+      "id": "brief:field-calendar-tab",
+      "title": "Field Calendar",
+      "href": "/election-plan?tab=fieldCalendar",
+      "excerpt": "What events are on the field calendar? What is the operations view?",
+      "type": "Calendar",
+      "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
+      "keywords": [
+        "field calendar",
+        "events",
+        "mobilize",
+        "calendar",
+        "field calendar",
+        "field-calendar-tab"
       ]
     },
     {
@@ -5905,6 +7081,22 @@
         "reporting",
         "minute",
         "forms"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
+      "title": "Fireworks & Food Trucks - Family Independence Day",
+      "href": "/election-plan/forward-motion/fest-2026-07-03-sherwood-fireworks-%26-food-trucks-family-independence-da",
+      "excerpt": "Pulaski County · Sherwood · 2026-07-03 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "fireworks & food trucks - family independence day",
+        "pulaski county",
+        "sherwood",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -5990,18 +7182,51 @@
       ]
     },
     {
+      "id": "fm:fest-2026-07-31-fort-smith-fort-smith-back-2-school-shopping-extravaganza",
+      "title": "Fort Smith Back 2 School Shopping Extravaganza",
+      "href": "/election-plan/forward-motion/fest-2026-07-31-fort-smith-fort-smith-back-2-school-shopping-extravaganza",
+      "excerpt": "Sebastian County · Fort Smith · 2026-07-31 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "fort smith back 2 school shopping extravaganza",
+        "sebastian county",
+        "fort smith",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "brief:forward-motion-tab",
+      "title": "Forward Motion",
+      "href": "/election-plan?tab=forwardMotion",
+      "excerpt": "Where should Kelly go next? Which field stops are highest impact and need promotion?",
+      "type": "Calendar",
+      "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
+      "keywords": [
+        "forward motion",
+        "kelly stops",
+        "field activation",
+        "where next",
+        "forward motion",
+        "forward-motion-tab"
+      ]
+    },
+    {
       "id": "brief:forward-motion-stop",
       "title": "Forward Motion Stop Command Center",
       "href": "/election-plan/forward-motion/",
       "excerpt": "Is this Kelly stop ready? What are the county, coalition, promotion, and Po5 goals for this event?",
-      "type": "Election Plan",
+      "type": "Calendar",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "forward motion",
         "kelly stop",
         "event command center",
         "stop readiness",
-        "forward motion stop command center"
+        "forward motion stop command center",
+        "forward-motion-stop"
       ]
     },
     {
@@ -6106,6 +7331,28 @@
       ]
     },
     {
+      "id": "county-party:franklin",
+      "title": "Franklin County Democratic Party",
+      "href": "/election-plan/county-parties/franklin",
+      "excerpt": "County Chair: Stephen Outlaw\nElection Commissioner: James Gorman\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/franklin/",
+      "keywords": [
+        "franklin",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "stephen outlaw",
+        "county chair",
+        "meeting",
+        "franklin county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:franklin",
       "title": "Franklin County Playbook",
       "href": "/election-plan/counties/franklin",
@@ -6132,6 +7379,55 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-04-heber-springs-freedom-fest-on-the-lake",
+      "title": "Freedom Fest on the Lake",
+      "href": "/election-plan/forward-motion/fest-2026-07-04-heber-springs-freedom-fest-on-the-lake",
+      "excerpt": "Cleburne County · Heber Springs · 2026-07-04 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "freedom fest on the lake",
+        "cleburne county",
+        "heber springs",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "brief:freshman-week",
+      "title": "Freshman Week Readiness",
+      "href": "/election-plan/campuses/freshman-week",
+      "excerpt": "Which campuses are ready for August move-in registration tables? What still needs a captain, Mobilize event, or Kelly appearance?",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
+      "keywords": [
+        "freshman week",
+        "move-in",
+        "campus registration",
+        "august",
+        "college",
+        "freshman week readiness",
+        "freshman-week"
+      ]
+    },
+    {
+      "id": "freshman-week-hub",
+      "title": "Freshman Week Readiness",
+      "href": "/election-plan/campuses/freshman-week",
+      "excerpt": "0/14 campuses fully ready · target 2026-08-01 · Labor Day gate 2026-09-07",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/freshman-week-readiness.source.json",
+      "keywords": [
+        "freshman week",
+        "campus",
+        "move-in",
+        "registration",
+        "august",
+        "college"
       ]
     },
     {
@@ -6222,6 +7518,76 @@
       ]
     },
     {
+      "id": "county-party:fulton",
+      "title": "Fulton County Democratic Party",
+      "href": "/election-plan/county-parties/fulton",
+      "excerpt": "County Chair: Heath Shrable\nElection Commissioner: Sonny Brown\nMeeting: Monthly 2nd Saturday mornings at Fulton County Fairgrounds. 9:30am breakfast, 10:00am meeting\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add t",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/fulton/",
+      "keywords": [
+        "fulton",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "heath shrable",
+        "county chair",
+        "meeting",
+        "fulton county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-418be1689fc0c6f0d6a144f5",
+      "title": "Fulton County Fair",
+      "href": "/election-plan/forward-motion/fair-418be1689fc0c6f0d6a144f5",
+      "excerpt": "Fulton County · 2026-07-10 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "fulton county fair",
+        "fulton county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-10-salem-fulton-county-fair",
+      "title": "Fulton County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-07-10-salem-fulton-county-fair",
+      "excerpt": "Fulton County · Salem · 2026-07-10 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "fulton county fair",
+        "fulton county",
+        "salem",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-02-salem-fulton-county-freedom-festival",
+      "title": "Fulton County Freedom Festival",
+      "href": "/election-plan/forward-motion/fest-2026-07-02-salem-fulton-county-freedom-festival",
+      "excerpt": "Fulton County · Salem · 2026-07-02 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "fulton county freedom festival",
+        "fulton county",
+        "salem",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "county:fulton",
       "title": "Fulton County Playbook",
       "href": "/election-plan/counties/fulton",
@@ -6248,6 +7614,22 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-16-fundraiser-in-quitman",
+      "title": "Fundraiser in Quitman",
+      "href": "/election-plan/forward-motion/fest-2026-06-16-fundraiser-in-quitman",
+      "excerpt": "Cleburne County · 2026-06-16 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "fundraiser in quitman",
+        "cleburne county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -6348,6 +7730,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:garland",
+      "title": "Garland County Democratic Party",
+      "href": "/election-plan/county-parties/garland",
+      "excerpt": "County Chair: Paul Kagebein\nElection Commissioner: Kay Ekey\nMeeting: Monthly 3rd Thursday at 5:30 PM at Garland County Library\nWebsite: http://www.garlandcountydemocrats.org\nFacebook: https://www.facebook.com/GarlandDems\nRecommended action: Request speaking slot · confirm with ch",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/garland/",
+      "keywords": [
+        "garland",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "paul kagebein",
+        "county chair",
+        "meeting",
+        "garland county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -6492,6 +7896,28 @@
       ]
     },
     {
+      "id": "county-party:grant",
+      "title": "Grant County Democratic Party",
+      "href": "/election-plan/county-parties/grant",
+      "excerpt": "County Chair: David Murray\nElection Commissioner: Tanya Diotte\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.a",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/grant/",
+      "keywords": [
+        "grant",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "david murray",
+        "county chair",
+        "meeting",
+        "grant county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:grant",
       "title": "Grant County Playbook",
       "href": "/election-plan/counties/grant",
@@ -6595,6 +8021,44 @@
       ]
     },
     {
+      "id": "immersion-mission:greene-hub",
+      "title": "Greene County · Northeast Arkansas Organizing Hub",
+      "href": "/election-plan/immersion-missions",
+      "excerpt": "One county that trains captains for the whole NE Arkansas corridor. · Success: Regional leader pipeline and repeatable field rhythm",
+      "type": "Doctrine",
+      "sourcePath": "data/campaign-brain/election-plan/immersion-county-missions.source.json",
+      "keywords": [
+        "greene county",
+        "northeast arkansas organizing hub",
+        "greene",
+        "immersion mission",
+        "campaign doctrine",
+        "one mission"
+      ]
+    },
+    {
+      "id": "county-party:greene",
+      "title": "Greene County Democratic Party",
+      "href": "/election-plan/county-parties/greene",
+      "excerpt": "County Chair: Lisa Birmingham\nElection Commissioner: Faye Parker\nMeeting: Monthly 2nd Monday at 6:00 PM at Greene Co. Public Library\nWebsite: http://greenecoardemocrats.org\nFacebook: https://www.facebook.com/share/1DF2FyK8P9/?mibextid=wwXIfr\nRecommended action: Request speaking s",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/greene/",
+      "keywords": [
+        "greene",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "lisa birmingham",
+        "county chair",
+        "meeting",
+        "greene county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:greene",
       "title": "Greene County Playbook",
       "href": "/election-plan/counties/greene",
@@ -6621,6 +8085,22 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "campus:harding",
+      "title": "Harding · Campus",
+      "href": "/election-plan/campuses/harding",
+      "excerpt": "Searcy, White County · captain vacant · reg goal 180",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "harding university",
+        "harding",
+        "searcy",
+        "campus",
+        "freshman week",
+        "freshman week"
       ]
     },
     {
@@ -6725,6 +8205,28 @@
       ]
     },
     {
+      "id": "county-party:hempstead",
+      "title": "Hempstead County Democratic Party",
+      "href": "/election-plan/county-parties/hempstead",
+      "excerpt": "County Chair: Kristaryon Easter\nElection Commissioner: Meeting Info Monthly last Monday at 6:00 PM at Hempstead County Library\nMeeting: Monthly last Monday at 6:00 PM at Hempstead County Library\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/hempstead/",
+      "keywords": [
+        "hempstead",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "kristaryon easter",
+        "county chair",
+        "meeting",
+        "hempstead county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:hempstead",
       "title": "Hempstead County Playbook",
       "href": "/election-plan/counties/hempstead",
@@ -6751,6 +8253,22 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "campus:hendrix",
+      "title": "Hendrix · Campus",
+      "href": "/election-plan/campuses/hendrix",
+      "excerpt": "Conway, Faulkner County · captain vacant · reg goal 80",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "hendrix college",
+        "hendrix",
+        "conway",
+        "campus",
+        "freshman week",
+        "freshman week"
       ]
     },
     {
@@ -6834,6 +8352,22 @@
       ]
     },
     {
+      "id": "fm:fest-2026-08-06-hope-hope-watermelon-festival",
+      "title": "Hope Watermelon Festival",
+      "href": "/election-plan/forward-motion/fest-2026-08-06-hope-hope-watermelon-festival",
+      "excerpt": "Hempstead County · Hope · 2026-08-06 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "hope watermelon festival",
+        "hempstead county",
+        "hope",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/hot-spring-county.md",
       "title": "Hot Spring County — Campaign Playbook",
       "href": "/election-plan",
@@ -6910,6 +8444,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:hot-spring",
+      "title": "Hot Spring County Democratic Party",
+      "href": "/election-plan/county-parties/hot-spring",
+      "excerpt": "County Chair: Tom Dillard\nElection Commissioner: Laura Cantrell\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/hot-spring/",
+      "keywords": [
+        "hot spring",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "tom dillard",
+        "county chair",
+        "meeting",
+        "hot spring county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -7129,6 +8685,28 @@
       ]
     },
     {
+      "id": "county-party:howard",
+      "title": "Howard County Democratic Party",
+      "href": "/election-plan/county-parties/howard",
+      "excerpt": "County Chair: Jo Green\nElection Commissioner: Joe Green\nMeeting: Monthly 2nd Tuesday at 6:00 PM\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intelligence · confirm by phone\n",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/howard/",
+      "keywords": [
+        "howard",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "jo green",
+        "county chair",
+        "meeting",
+        "howard county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:howard",
       "title": "Howard County Playbook",
       "href": "/election-plan/counties/howard",
@@ -7155,6 +8733,23 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "brief:immersion-missions",
+      "title": "Immersion County Missions",
+      "href": "/election-plan/immersion-missions",
+      "excerpt": "What is the one thing each immersion community owns? Not 15 metrics — one mission people can remember and track.",
+      "type": "Election Plan",
+      "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
+      "keywords": [
+        "immersion mission",
+        "quitman 100",
+        "one mission",
+        "campaign doctrine",
+        "montgomery county",
+        "immersion county missions",
+        "immersion-missions"
       ]
     },
     {
@@ -7229,6 +8824,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:independence",
+      "title": "Independence County Democratic Party",
+      "href": "/election-plan/county-parties/independence",
+      "excerpt": "County Chair: Robert Burns\nElection Commissioner: Jennifer Emery\nMeeting: Monthly 4th Tuesday at US Pizza Batesville\nWebsite: http://indcodems.com\nFacebook: https://www.facebook.com/indcodems\nRecommended action: Request speaking slot · confirm with chair · add to calendar as prop",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/independence/",
+      "keywords": [
+        "independence",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "robert burns",
+        "county chair",
+        "meeting",
+        "independence county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -7348,6 +8965,28 @@
       ]
     },
     {
+      "id": "county-party:izard",
+      "title": "Izard County Democratic Party",
+      "href": "/election-plan/county-parties/izard",
+      "excerpt": "County Chair: Sandy Maier\nElection Commissioner: Stephen Williams\nMeeting: Quarterly 3rd Tuesday\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intelligence · confirm by phone",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/izard/",
+      "keywords": [
+        "izard",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "sandy maier",
+        "county chair",
+        "meeting",
+        "izard county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:izard",
       "title": "Izard County Playbook",
       "href": "/election-plan/counties/izard",
@@ -7451,6 +9090,28 @@
       ]
     },
     {
+      "id": "county-party:jackson",
+      "title": "Jackson County Democratic Party",
+      "href": "/election-plan/county-parties/jackson",
+      "excerpt": "County Chair: Jamie Darling\nElection Commissioner: Donna Gould\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.a",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/jackson/",
+      "keywords": [
+        "jackson",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "jamie darling",
+        "county chair",
+        "meeting",
+        "jackson county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:jackson",
       "title": "Jackson County Playbook",
       "href": "/election-plan/counties/jackson",
@@ -7504,6 +9165,22 @@
         "pulaski",
         "city",
         "brief"
+      ]
+    },
+    {
+      "id": "immersion-mission:jacksonville-dd",
+      "title": "Jacksonville · Direct Democracy Leadership Hub",
+      "href": "/election-plan/direct-democracy/leadership",
+      "excerpt": "Citizen power, ballot initiative literacy, and local leaders who understand the SOS role. · Success: Leaders who can explain and champion direct democracy locally",
+      "type": "Doctrine",
+      "sourcePath": "data/campaign-brain/election-plan/immersion-county-missions.source.json",
+      "keywords": [
+        "jacksonville",
+        "direct democracy leadership hub",
+        "pulaski",
+        "immersion mission",
+        "campaign doctrine",
+        "one mission"
       ]
     },
     {
@@ -7595,6 +9272,28 @@
       ]
     },
     {
+      "id": "county-party:jefferson",
+      "title": "Jefferson County Democratic Party",
+      "href": "/election-plan/county-parties/jefferson",
+      "excerpt": "County Chair: Ted Davis\nElection Commissioner: Sharon Hardin\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.ark",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/jefferson/",
+      "keywords": [
+        "jefferson",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "ted davis",
+        "county chair",
+        "meeting",
+        "jefferson county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:jefferson",
       "title": "Jefferson County Playbook",
       "href": "/election-plan/counties/jefferson",
@@ -7622,6 +9321,22 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-16-clarksville-johnson-co-peach-festival",
+      "title": "Johnson CO Peach Festival",
+      "href": "/election-plan/forward-motion/fest-2026-07-16-clarksville-johnson-co-peach-festival",
+      "excerpt": "Johnson County · Clarksville · 2026-07-16 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "johnson co peach festival",
+        "johnson county",
+        "clarksville",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -7696,6 +9411,44 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:johnson",
+      "title": "Johnson County Democratic Party",
+      "href": "/election-plan/county-parties/johnson",
+      "excerpt": "County Chair: Kenneth Smith\nElection Commissioner: Linda Taylor\nMeeting: Every other 3rd Thursday at 6:30 PM in Clarksville\nFacebook: https://www.facebook.com/profile.php?id=100064733646818\nRecommended action: Request speaking slot · confirm with chair · add to calendar as propos",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/johnson/",
+      "keywords": [
+        "johnson",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "kenneth smith",
+        "county chair",
+        "meeting",
+        "johnson county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fest-nodate-clarksville-johnson-county-peach-festival",
+      "title": "Johnson County Peach Festival",
+      "href": "/election-plan/forward-motion/fest-nodate-clarksville-johnson-county-peach-festival",
+      "excerpt": "Johnson County · Clarksville · 2026-07-16 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "johnson county peach festival",
+        "johnson county",
+        "clarksville",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -7801,6 +9554,54 @@
       ]
     },
     {
+      "id": "fm:fest-2026-06-19-mountain-home-june-craftfest",
+      "title": "June CraftFest",
+      "href": "/election-plan/forward-motion/fest-2026-06-19-mountain-home-june-craftfest",
+      "excerpt": "Baxter County · Mountain Home · 2026-06-19 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "june craftfest",
+        "baxter county",
+        "mountain home",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-nodate-little-rock-juneteenth-in-little-rock",
+      "title": "Juneteenth in Little Rock",
+      "href": "/election-plan/forward-motion/fest-nodate-little-rock-juneteenth-in-little-rock",
+      "excerpt": "Pulaski County · Little Rock · 2026-06-19 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "juneteenth in little rock",
+        "pulaski county",
+        "little rock",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-19-juneteenth-morrilton-c5",
+      "title": "Juneteenth Morrilton c5",
+      "href": "/election-plan/forward-motion/fest-2026-06-19-juneteenth-morrilton-c5",
+      "excerpt": "Conway County · 2026-06-19 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "juneteenth morrilton c5",
+        "conway county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/README.md",
       "title": "Kelly Grappe Campaign Brain",
       "href": "/election-plan",
@@ -7832,7 +9633,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/08-STUDENTS-FOR-ARKANSAS.md",
       "title": "Kelly Grappe Students for Arkansas",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/students-for-arkansas",
       "excerpt": "Kelly Grappe Students for Arkansas STUDENTS FOR ARKANSAS 1.0 · Executive Book Chapter 9 — Youth leadership pipeline 18–24 year olds are one of the few groups where a relatively small investment can produce a large numbe…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/08-STUDENTS-FOR-ARKANSAS.md",
@@ -7971,6 +9772,60 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:lafayette",
+      "title": "Lafayette County Democratic Party",
+      "href": "/election-plan/county-parties/lafayette",
+      "excerpt": "County Chair: Cheryl Stuart\nElection Commissioner: Rebecca Martin\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://ww",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/lafayette/",
+      "keywords": [
+        "lafayette",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "cheryl stuart",
+        "county chair",
+        "meeting",
+        "lafayette county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-9e03993e30d8f62d3e8067dc",
+      "title": "Lafayette County Fair",
+      "href": "/election-plan/forward-motion/fair-9e03993e30d8f62d3e8067dc",
+      "excerpt": "Lafayette County · 2026-08-31 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "lafayette county fair",
+        "lafayette county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-31-lewisville-lafayette-county-fair-and-livestock-show",
+      "title": "Lafayette County Fair and Livestock Show",
+      "href": "/election-plan/forward-motion/fest-2026-08-31-lewisville-lafayette-county-fair-and-livestock-show",
+      "excerpt": "Lafayette County · Lewisville · 2026-08-31 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "lafayette county fair and livestock show",
+        "lafayette county",
+        "lewisville",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -8145,6 +10000,60 @@
       ]
     },
     {
+      "id": "county-party:lawrence",
+      "title": "Lawrence County Democratic Party",
+      "href": "/election-plan/county-parties/lawrence",
+      "excerpt": "County Chair: John Thomison\nElection Commissioner: Larry Combs\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.a",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/lawrence/",
+      "keywords": [
+        "lawrence",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "john thomison",
+        "county chair",
+        "meeting",
+        "lawrence county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-ef8a3bf07796f5d116269e4e",
+      "title": "Lawrence County Fair",
+      "href": "/election-plan/forward-motion/fair-ef8a3bf07796f5d116269e4e",
+      "excerpt": "Lawrence County · 2026-08-10 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "lawrence county fair",
+        "lawrence county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-10-imboden-lawrence-county-fair",
+      "title": "Lawrence County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-08-10-imboden-lawrence-county-fair",
+      "excerpt": "Lawrence County · Imboden · 2026-08-10 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "lawrence county fair",
+        "lawrence county",
+        "imboden",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "county:lawrence",
       "title": "Lawrence County Playbook",
       "href": "/election-plan/counties/lawrence",
@@ -8185,7 +10094,8 @@
         "ownership",
         "who owns what",
         "responsibility",
-        "leadership & ownership hub"
+        "leadership & ownership hub",
+        "leadership-hub"
       ]
     },
     {
@@ -8380,6 +10290,28 @@
       ]
     },
     {
+      "id": "county-party:lee",
+      "title": "Lee County Democratic Party",
+      "href": "/election-plan/county-parties/lee",
+      "excerpt": "County Chair: Mattie Allison\nElection Commissioner: Clyde Noel\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.a",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/lee/",
+      "keywords": [
+        "lee",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "mattie allison",
+        "county chair",
+        "meeting",
+        "lee county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:lee",
       "title": "Lee County Playbook",
       "href": "/election-plan/counties/lee",
@@ -8480,6 +10412,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:lincoln",
+      "title": "Lincoln County Democratic Party",
+      "href": "/election-plan/county-parties/lincoln",
+      "excerpt": "County Chair: Ray Haywood\nElection Commissioner: David Rochell\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.a",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/lincoln/",
+      "keywords": [
+        "lincoln",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "ray haywood",
+        "county chair",
+        "meeting",
+        "lincoln county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -8603,6 +10557,60 @@
       ]
     },
     {
+      "id": "county-party:little-river",
+      "title": "Little River County Democratic Party",
+      "href": "/election-plan/county-parties/little-river",
+      "excerpt": "County Chair: Drew Steed\nElection Commissioner: Leslie Carter\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.ar",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/little-river/",
+      "keywords": [
+        "little river",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "drew steed",
+        "county chair",
+        "meeting",
+        "little river county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-7b9fd5feee3eb99deeb9317a",
+      "title": "Little River County Fair",
+      "href": "/election-plan/forward-motion/fair-7b9fd5feee3eb99deeb9317a",
+      "excerpt": "Little River County · 2026-08-17 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "little river county fair",
+        "little river county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-17-foreman-little-river-county-fair-and-rodeo",
+      "title": "Little River County Fair and Rodeo",
+      "href": "/election-plan/forward-motion/fest-2026-08-17-foreman-little-river-county-fair-and-rodeo",
+      "excerpt": "Little River County · Foreman · 2026-08-17 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "little river county fair and rodeo",
+        "little river county",
+        "foreman",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "county:little-river",
       "title": "Little River County Playbook",
       "href": "/election-plan/counties/little-river",
@@ -8672,6 +10680,38 @@
         "pulaski",
         "city",
         "brief"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
+      "title": "Little Rock Bridal and Wedding Expo",
+      "href": "/election-plan/forward-motion/fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
+      "excerpt": "Pulaski County · Little Rock · 2026-06-28 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "little rock bridal and wedding expo",
+        "pulaski county",
+        "little rock",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-11-little-rock-little-rock-fine-arts-art-market",
+      "title": "Little Rock Fine Arts Art Market",
+      "href": "/election-plan/forward-motion/fest-2026-09-11-little-rock-little-rock-fine-arts-art-market",
+      "excerpt": "Pulaski County · Little Rock · 2026-09-11 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "little rock fine arts art market",
+        "pulaski county",
+        "little rock",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -8936,6 +10976,28 @@
       ]
     },
     {
+      "id": "county-party:logan",
+      "title": "Logan County Democratic Party",
+      "href": "/election-plan/county-parties/logan",
+      "excerpt": "County Chair: Ethan Harbour\nElection Commissioner: Meeting Info Monthly 3rd Tuesday at 5:30 PM\nMeeting: Monthly 3rd Tuesday at 5:30 PM\nFacebook: https://www.facebook.com/LCDemocrats/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStat",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/logan/",
+      "keywords": [
+        "logan",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "ethan harbour",
+        "county chair",
+        "meeting",
+        "logan county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:logan",
       "title": "Logan County Playbook",
       "href": "/election-plan/counties/logan",
@@ -9039,6 +11101,28 @@
       ]
     },
     {
+      "id": "county-party:lonoke",
+      "title": "Lonoke County Democratic Party",
+      "href": "/election-plan/county-parties/lonoke",
+      "excerpt": "County Chair: Corey Spangler\nElection Commissioner: Dan Stowers\nMeeting: Monthly 4th Thursday at 6:30 PM at Cabot Public Library\nWebsite: http://dplc.us\nFacebook: https://www.facebook.com/profile.php?id=61560306980933\nRecommended action: Request speaking slot · confirm with chair",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/lonoke/",
+      "keywords": [
+        "lonoke",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "corey spangler",
+        "county chair",
+        "meeting",
+        "lonoke county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:lonoke",
       "title": "Lonoke County Playbook",
       "href": "/election-plan/counties/lonoke",
@@ -9139,6 +11223,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:madison",
+      "title": "Madison County Democratic Party",
+      "href": "/election-plan/county-parties/madison",
+      "excerpt": "County Chair: Derek Donahou\nElection Commissioner: T.J. McCollough\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://w",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/madison/",
+      "keywords": [
+        "madison",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "derek donahou",
+        "county chair",
+        "meeting",
+        "madison county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -9326,6 +11432,28 @@
       ]
     },
     {
+      "id": "county-party:marion",
+      "title": "Marion County Democratic Party",
+      "href": "/election-plan/county-parties/marion",
+      "excerpt": "County Chair: Carl McBee\nElection Commissioner: Linda Lynch\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.arkd",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/marion/",
+      "keywords": [
+        "marion",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "carl mcbee",
+        "county chair",
+        "meeting",
+        "marion county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:marion",
       "title": "Marion County Playbook",
       "href": "/election-plan/counties/marion",
@@ -9459,7 +11587,24 @@
         "accountability",
         "monday leadership",
         "weekly rhythm",
-        "meeting & accountability system"
+        "meeting & accountability system",
+        "meetings-hub"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-20-menifee-juneteenth",
+      "title": "Menifee Juneteenth",
+      "href": "/election-plan/forward-motion/fest-2026-06-20-menifee-juneteenth",
+      "excerpt": "Conway County · 2026-06-20 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "menifee juneteenth",
+        "conway county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -9534,6 +11679,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:miller",
+      "title": "Miller County Democratic Party",
+      "href": "/election-plan/county-parties/miller",
+      "excerpt": "County Chair: Vicki Lacy\nElection Commissioner: Anderson Neal\nMeeting: Monthly 1st Monday at 5:00 PM at 403 E. 9th St. in Texarkana\nWebsite: http://millercountyarkdems.org\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair ·",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/miller/",
+      "keywords": [
+        "miller",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "vicki lacy",
+        "county chair",
+        "meeting",
+        "miller county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -9637,6 +11804,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:mississippi",
+      "title": "Mississippi County Democratic Party",
+      "href": "/election-plan/county-parties/mississippi",
+      "excerpt": "County Chair: Sandra Mitchell\nElection Commissioner: Boyd Thomas\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/mississippi/",
+      "keywords": [
+        "mississippi",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "sandra mitchell",
+        "county chair",
+        "meeting",
+        "mississippi county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -9876,6 +12065,28 @@
       ]
     },
     {
+      "id": "county-party:monroe",
+      "title": "Monroe County Democratic Party",
+      "href": "/election-plan/county-parties/monroe",
+      "excerpt": "County Chair: Oscar Conyears\nElection Commissioner: Charlotte Houston\nMeeting: Monthly 3rd Tuesday at 4:00 PM\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intelligence · con",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/monroe/",
+      "keywords": [
+        "monroe",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "oscar conyears",
+        "county chair",
+        "meeting",
+        "monroe county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:monroe",
       "title": "Monroe County Playbook",
       "href": "/election-plan/counties/monroe",
@@ -9902,6 +12113,22 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "fm:aea-montgomery-stub",
+      "title": "Montgomery County — AEA local / area meeting (verify schedule)",
+      "href": "/election-plan/forward-motion/aea-montgomery-stub",
+      "excerpt": "Montgomery County · 2026-06-17 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "montgomery county — aea local / area meeting (verify schedule)",
+        "montgomery county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -9976,6 +12203,44 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:montgomery",
+      "title": "Montgomery County Democratic Party",
+      "href": "/election-plan/county-parties/montgomery",
+      "excerpt": "County Chair: William Bradshaw\nElection Commissioner: Mark Whisenhunt\nMeeting: Monthly 3rd Wednesday at 5:30 PM at County Annex\nWebsite: http://montgomerycountydems.com\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public int",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/montgomery/",
+      "keywords": [
+        "montgomery",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "william bradshaw",
+        "county chair",
+        "meeting",
+        "montgomery county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-17-montgomery-county-meeting",
+      "title": "Montgomery county meeting",
+      "href": "/election-plan/forward-motion/fest-2026-06-17-montgomery-county-meeting",
+      "excerpt": "Montgomery County · 2026-06-17 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "montgomery county meeting",
+        "montgomery county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -10061,6 +12326,38 @@
         "baxter",
         "city",
         "brief"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-19-mountain-home-mountain-home-craft-fest",
+      "title": "Mountain Home Craft Fest",
+      "href": "/election-plan/forward-motion/fest-2026-06-19-mountain-home-mountain-home-craft-fest",
+      "excerpt": "Baxter County · Mountain Home · 2026-06-19 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "mountain home craft fest",
+        "baxter county",
+        "mountain home",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "immersion-mission:montgomery-leadership",
+      "title": "Mt. Ida · 15 Power of 5 Leaders",
+      "href": "/election-plan/immersion-missions",
+      "excerpt": "Leadership capacity — Montgomery County as a regional organizing hub. · Success: Leadership capacity, not raw votes",
+      "type": "Doctrine",
+      "sourcePath": "data/campaign-brain/election-plan/immersion-county-missions.source.json",
+      "keywords": [
+        "mt. ida",
+        "15 power of 5 leaders",
+        "montgomery",
+        "immersion mission",
+        "campaign doctrine",
+        "one mission"
       ]
     },
     {
@@ -10235,6 +12532,60 @@
       ]
     },
     {
+      "id": "county-party:nevada",
+      "title": "Nevada County Democratic Party",
+      "href": "/election-plan/county-parties/nevada",
+      "excerpt": "County Chair: Elaine Williams\nElection Commissioner: Edna Adams\nMeeting: Quarterly 1st Thursday at 6:00 PM at Nevada County Library\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: pub",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/nevada/",
+      "keywords": [
+        "nevada",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "elaine williams",
+        "county chair",
+        "meeting",
+        "nevada county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-67cc3c414b72663f68984577",
+      "title": "Nevada County Fair",
+      "href": "/election-plan/forward-motion/fair-67cc3c414b72663f68984577",
+      "excerpt": "Nevada County · 2026-09-10 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "nevada county fair",
+        "nevada county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-10-prescott-nevada-county-fair",
+      "title": "Nevada County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-09-10-prescott-nevada-county-fair",
+      "excerpt": "Nevada County · Prescott · 2026-09-10 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "nevada county fair",
+        "nevada county",
+        "prescott",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "county:nevada",
       "title": "Nevada County Playbook",
       "href": "/election-plan/counties/nevada",
@@ -10351,6 +12702,60 @@
       ]
     },
     {
+      "id": "county-party:newton",
+      "title": "Newton County Democratic Party",
+      "href": "/election-plan/county-parties/newton",
+      "excerpt": "County Chair: Election Commissioner Ronnie Samuels\nElection Commissioner: Ronnie Samuels\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPu",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/newton/",
+      "keywords": [
+        "newton",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "election commissioner ronnie samuels",
+        "county chair",
+        "meeting",
+        "newton county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-dd3cef345b5f6d95088be298",
+      "title": "Newton County Fair",
+      "href": "/election-plan/forward-motion/fair-dd3cef345b5f6d95088be298",
+      "excerpt": "Newton County · 2026-08-14 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "newton county fair",
+        "newton county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-14-jasper-newton-county-fair",
+      "title": "Newton County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-08-14-jasper-newton-county-fair",
+      "excerpt": "Newton County · Jasper · 2026-08-14 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "newton county fair",
+        "newton county",
+        "jasper",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "county:newton",
       "title": "Newton County Playbook",
       "href": "/election-plan/counties/newton",
@@ -10452,6 +12857,22 @@
       ]
     },
     {
+      "id": "campus:nwacc",
+      "title": "NWACC · Campus",
+      "href": "/election-plan/campuses/nwacc",
+      "excerpt": "Bentonville, Benton County · captain vacant · reg goal 400",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "northwest arkansas community college",
+        "nwacc",
+        "bentonville",
+        "campus",
+        "freshman week",
+        "freshman week"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/calendar-fill/oct-air-show-resolution.md",
       "title": "Oct 3–4 Air Show Conflict Resolution",
       "href": "/election-plan",
@@ -10549,6 +12970,22 @@
       ]
     },
     {
+      "id": "campus:ouachita-baptist",
+      "title": "Ouachita · Campus",
+      "href": "/election-plan/campuses/ouachita-baptist",
+      "excerpt": "Arkadelphia, Clark County · captain vacant · reg goal 90",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "ouachita baptist university",
+        "ouachita",
+        "arkadelphia",
+        "campus",
+        "freshman week",
+        "freshman week"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/ouachita-county.md",
       "title": "Ouachita County — Campaign Playbook",
       "href": "/election-plan",
@@ -10623,6 +13060,28 @@
       ]
     },
     {
+      "id": "county-party:ouachita",
+      "title": "Ouachita County Democratic Party",
+      "href": "/election-plan/county-parties/ouachita",
+      "excerpt": "County Chair: Gregory Nettles\nElection Commissioner: Robert White\nMeeting: Monthly 2nd Wednesday at County Courthouse\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intelligen",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/ouachita/",
+      "keywords": [
+        "ouachita",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "gregory nettles",
+        "county chair",
+        "meeting",
+        "ouachita county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:ouachita",
       "title": "Ouachita County Playbook",
       "href": "/election-plan/counties/ouachita",
@@ -10664,6 +13123,22 @@
       ]
     },
     {
+      "id": "fm:fest-2026-07-11-springdale-ozarks-250-block-party-in-springdale",
+      "title": "Ozarks 250 Block Party in Springdale",
+      "href": "/election-plan/forward-motion/fest-2026-07-11-springdale-ozarks-250-block-party-in-springdale",
+      "excerpt": "Washington County · Springdale · 2026-07-11 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "ozarks 250 block party in springdale",
+        "washington county",
+        "springdale",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/paragould.md",
       "title": "Paragould — City Strategy",
       "href": "/election-plan",
@@ -10702,6 +13177,21 @@
         "official",
         "call",
         "script"
+      ]
+    },
+    {
+      "id": "campus:pccua",
+      "title": "PCCUA · Campus",
+      "href": "/election-plan/campuses/pccua",
+      "excerpt": "Helena-West Helena, Phillips County · captain vacant · reg goal 120",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "phillips community college of the university of arkansas",
+        "pccua",
+        "helena-west helena",
+        "campus",
+        "freshman week"
       ]
     },
     {
@@ -10776,6 +13266,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:perry",
+      "title": "Perry County Democratic Party",
+      "href": "/election-plan/county-parties/perry",
+      "excerpt": "County Chair: David Gill\nElection Commissioner: Billy Jarvis\nMeeting: Quarterly 2nd Saturday at 10:00 AM\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intelligence · confirm ",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/perry/",
+      "keywords": [
+        "perry",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "david gill",
+        "county chair",
+        "meeting",
+        "perry county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -11001,6 +13513,22 @@
       ]
     },
     {
+      "id": "campus:philander-smith",
+      "title": "Philander Smith · Campus",
+      "href": "/election-plan/campuses/philander-smith",
+      "excerpt": "Little Rock, Pulaski County · captain vacant · reg goal 120",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "philander smith university",
+        "philander smith",
+        "little rock",
+        "campus",
+        "freshman week",
+        "freshman week"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/phillips-county.md",
       "title": "Phillips County — Campaign Playbook",
       "href": "/election-plan",
@@ -11072,6 +13600,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:phillips",
+      "title": "Phillips County Democratic Party",
+      "href": "/election-plan/county-parties/phillips",
+      "excerpt": "County Chair: Jerome Turner\nElection Commissioner: Evelyn Schmidt\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://ww",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/phillips/",
+      "keywords": [
+        "phillips",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "jerome turner",
+        "county chair",
+        "meeting",
+        "phillips county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -11284,6 +13834,60 @@
       ]
     },
     {
+      "id": "county-party:pike",
+      "title": "Pike County Democratic Party",
+      "href": "/election-plan/county-parties/pike",
+      "excerpt": "County Chair: Michael Myers\nElection Commissioner: Joan Hooper\nMeeting: Every other 3rd Tuesday at 6:00 PM at Murfreesboro Municipal Building\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nS",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/pike/",
+      "keywords": [
+        "pike",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "michael myers",
+        "county chair",
+        "meeting",
+        "pike county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-fc9b80fc6ddcf7dd5cddf15a",
+      "title": "Pike County Fair",
+      "href": "/election-plan/forward-motion/fair-fc9b80fc6ddcf7dd5cddf15a",
+      "excerpt": "Pike County · 2026-09-07 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "pike county fair",
+        "pike county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-07-glenwoood-pike-county-fair-rodeo",
+      "title": "Pike County Fair Rodeo",
+      "href": "/election-plan/forward-motion/fest-2026-09-07-glenwoood-pike-county-fair-rodeo",
+      "excerpt": "Pike County · Glenwoood · 2026-09-07 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "pike county fair rodeo",
+        "pike county",
+        "glenwoood",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "county:pike",
       "title": "Pike County Playbook",
       "href": "/election-plan/counties/pike",
@@ -11429,6 +14033,28 @@
       ]
     },
     {
+      "id": "county-party:poinsett",
+      "title": "Poinsett County Democratic Party",
+      "href": "/election-plan/county-parties/poinsett",
+      "excerpt": "County Chair: Wesley Hooper\nElection Commissioner: Sandy Teague\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/poinsett/",
+      "keywords": [
+        "poinsett",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "wesley hooper",
+        "county chair",
+        "meeting",
+        "poinsett county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:poinsett",
       "title": "Poinsett County Playbook",
       "href": "/election-plan/counties/poinsett",
@@ -11529,6 +14155,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:polk",
+      "title": "Polk County Democratic Party",
+      "href": "/election-plan/county-parties/polk",
+      "excerpt": "County Chair: Linda Johnson\nElection Commissioner: J. Ray\nMeeting: Monthly 2nd Monday at 6:30 PM at Papa’s Mexican Cafe\nFacebook: https://www.facebook.com/groups/1164899764476732/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus:",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/polk/",
+      "keywords": [
+        "polk",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "linda johnson",
+        "county chair",
+        "meeting",
+        "polk county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -11635,6 +14283,28 @@
       ]
     },
     {
+      "id": "county-party:pope",
+      "title": "Pope County Democratic Party",
+      "href": "/election-plan/county-parties/pope",
+      "excerpt": "County Chair: Chad Easley\nElection Commissioner: Carol Shoptaw\nMeeting: Monthly 2nd Monday at 7:00 PM at Courthouse\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intelligence",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/pope/",
+      "keywords": [
+        "pope",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "chad easley",
+        "county chair",
+        "meeting",
+        "pope county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:pope",
       "title": "Pope County Playbook",
       "href": "/election-plan/counties/pope",
@@ -11661,6 +14331,22 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-04-little-rock-pops-on-the-river",
+      "title": "Pops on the River",
+      "href": "/election-plan/forward-motion/fest-2026-07-04-little-rock-pops-on-the-river",
+      "excerpt": "Pulaski County · Little Rock · 2026-07-04 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "pops on the river",
+        "pulaski county",
+        "little rock",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -11783,14 +14469,15 @@
       "title": "Power of 5 Command Center",
       "href": "/election-plan/power-of-5",
       "excerpt": "How is the relational network growing? What is the Po5 headline metric beside HCI?",
-      "type": "Election Plan",
+      "type": "Message",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "power of 5",
         "po5",
         "relational organizing",
         "bring 5",
-        "power of 5 command center"
+        "power of 5 command center",
+        "power-of-5"
       ]
     },
     {
@@ -11901,6 +14588,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:prairie",
+      "title": "Prairie County Democratic Party",
+      "href": "/election-plan/county-parties/prairie",
+      "excerpt": "County Chair: Joseph “Byrum” Kelly\nElection Commissioner: Meeting Info Contact County Party\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/prairie/",
+      "keywords": [
+        "prairie",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "joseph “byrum” kelly",
+        "county chair",
+        "meeting",
+        "prairie county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -12033,6 +14742,28 @@
       ]
     },
     {
+      "id": "county-party:pulaski",
+      "title": "Pulaski County Democratic Party",
+      "href": "/election-plan/county-parties/pulaski",
+      "excerpt": "County Chair: Katrina Bishop\nElection Commissioner: Meeting Info Monthly last Monday at 6:00 PM at Pulaski County Regional Building\nMeeting: Monthly last Monday at 6:00 PM at Pulaski County Regional Building\nWebsite: https://www.pulaskidemocrats.org/\nFacebook: https://www.faceboo",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/pulaski/",
+      "keywords": [
+        "pulaski",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "katrina bishop",
+        "county chair",
+        "meeting",
+        "pulaski county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:pulaski",
       "title": "Pulaski County Playbook",
       "href": "/election-plan/counties/pulaski",
@@ -12059,6 +14790,38 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-09-camden-quachita-county-fair",
+      "title": "Quachita County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-09-09-camden-quachita-county-fair",
+      "excerpt": "Quachita County · Camden · 2026-09-09 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "quachita county fair",
+        "quachita county",
+        "camden",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "immersion-mission:quitman-100",
+      "title": "Quitman · 100 Conversations",
+      "href": "/election-plan/immersion-missions",
+      "excerpt": "Quitman can directly influence a statewide election — not through money, through relationships. · Success: Meaningful conversations before Election Day",
+      "type": "Doctrine",
+      "sourcePath": "data/campaign-brain/election-plan/immersion-county-missions.source.json",
+      "keywords": [
+        "quitman",
+        "100 conversations",
+        "cleburne",
+        "immersion mission",
+        "campaign doctrine",
+        "one mission"
       ]
     },
     {
@@ -12133,6 +14896,60 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:randolph",
+      "title": "Randolph County Democratic Party",
+      "href": "/election-plan/county-parties/randolph",
+      "excerpt": "County Chair: Doris Sharp\nElection Commissioner: Vicki Raglin\nMeeting: Monthly 3rd Tuesday at 5:00 PM at Clay County Electric\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public in",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/randolph/",
+      "keywords": [
+        "randolph",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "doris sharp",
+        "county chair",
+        "meeting",
+        "randolph county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-571afd59db5f2040264c4ac1",
+      "title": "Randolph County Fair",
+      "href": "/election-plan/forward-motion/fair-571afd59db5f2040264c4ac1",
+      "excerpt": "Randolph County · 2026-08-24 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "randolph county fair",
+        "randolph county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-08-24-pocahontas-randolph-county-fair",
+      "title": "Randolph County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-08-24-pocahontas-randolph-county-fair",
+      "excerpt": "Randolph County · Pocahontas · 2026-08-24 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "randolph county fair",
+        "randolph county",
+        "pocahontas",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -12267,6 +15084,38 @@
         "relationship",
         "capital",
         "scorecard"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-18-greenwood-river-valley-crawfish-festival",
+      "title": "River Valley Crawfish Festival",
+      "href": "/election-plan/forward-motion/fest-2026-06-18-greenwood-river-valley-crawfish-festival",
+      "excerpt": "Sebastian County · Greenwood · 2026-06-18 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "river valley crawfish festival",
+        "sebastian county",
+        "greenwood",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-24-springdale-rodeo-of-the-ozarks",
+      "title": "Rodeo of the Ozarks",
+      "href": "/election-plan/forward-motion/fest-2026-06-24-springdale-rodeo-of-the-ozarks",
+      "excerpt": "Washington County · Springdale · 2026-06-24 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "rodeo of the ozarks",
+        "washington county",
+        "springdale",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -12437,6 +15286,28 @@
       ]
     },
     {
+      "id": "county-party:saline",
+      "title": "Saline County Democratic Party",
+      "href": "/election-plan/county-parties/saline",
+      "excerpt": "County Chair: Bailey Morgan\nElection Commissioner: Tamme Adams\nMeeting: Monthly 2nd Tuesday at 6:30 PM\nWebsite: https://salinedems.com/\nFacebook: http://facebook.com/salinedems\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: pu",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/saline/",
+      "keywords": [
+        "saline",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "bailey morgan",
+        "county chair",
+        "meeting",
+        "saline county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:saline",
       "title": "Saline County Playbook",
       "href": "/election-plan/counties/saline",
@@ -12463,6 +15334,22 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "campus:southern-arkansas",
+      "title": "SAU · Campus",
+      "href": "/election-plan/campuses/southern-arkansas",
+      "excerpt": "Magnolia, Columbia County · captain vacant · reg goal 250",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "southern arkansas university",
+        "sau",
+        "magnolia",
+        "campus",
+        "freshman week",
+        "freshman week"
       ]
     },
     {
@@ -12549,6 +15436,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:scott",
+      "title": "Scott County Democratic Party",
+      "href": "/election-plan/county-parties/scott",
+      "excerpt": "County Chair: Election Commissioner\nElection Commissioner: Meeting Info Contact County Party\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verificatio",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/scott/",
+      "keywords": [
+        "scott",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "election commissioner",
+        "county chair",
+        "meeting",
+        "scott county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -12682,6 +15591,44 @@
       ]
     },
     {
+      "id": "immersion-mission:searcy-trust",
+      "title": "Searcy County · Republican Trust Network",
+      "href": "/election-plan/movement-infrastructure/searcy-trust-pilot",
+      "excerpt": "Cross-party credibility in a rural Republican county — relationships before persuasion. · Success: Trusted validators and cross-party relationships",
+      "type": "Doctrine",
+      "sourcePath": "data/campaign-brain/election-plan/immersion-county-missions.source.json",
+      "keywords": [
+        "searcy county",
+        "republican trust network",
+        "searcy",
+        "immersion mission",
+        "campaign doctrine",
+        "one mission"
+      ]
+    },
+    {
+      "id": "county-party:searcy",
+      "title": "Searcy County Democratic Party",
+      "href": "/election-plan/county-parties/searcy",
+      "excerpt": "County Chair: James White\nElection Commissioner: LC Ratchford\nMeeting: Monthly 4th Tuesday at 6:00 PM at Leslie Community Center\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/searcy/",
+      "keywords": [
+        "searcy",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "james white",
+        "county chair",
+        "meeting",
+        "searcy county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:searcy",
       "title": "Searcy County Playbook",
       "href": "/election-plan/counties/searcy",
@@ -12716,14 +15663,15 @@
       "title": "Searcy County Trust Pilot",
       "href": "/election-plan/movement-infrastructure/searcy-trust-pilot",
       "excerpt": "How do we build cross-party trust in rural Republican counties?",
-      "type": "Election Plan",
+      "type": "Leadership",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
       "keywords": [
         "searcy",
         "trust pilot",
         "cross party",
         "rural republican",
-        "searcy county trust pilot"
+        "searcy county trust pilot",
+        "searcy-trust"
       ]
     },
     {
@@ -12801,6 +15749,28 @@
       ]
     },
     {
+      "id": "county-party:sebastian",
+      "title": "Sebastian County Democratic Party",
+      "href": "/election-plan/county-parties/sebastian",
+      "excerpt": "County Chair: Janet Renwick\nElection Commissioner: Carolyn Mosley\nMeeting: Monthly 2nd Monday at 6:00 PM at Creekmore Community Center\nWebsite: https://sebastiancountydemocrats.org/\nFacebook: https://www.facebook.com/democraticpartyofsebastiancounty\nRecommended action: Request sp",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/sebastian/",
+      "keywords": [
+        "sebastian",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "janet renwick",
+        "county chair",
+        "meeting",
+        "sebastian county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:sebastian",
       "title": "Sebastian County Playbook",
       "href": "/election-plan/counties/sebastian",
@@ -12875,7 +15845,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/03-SEPTEMBER-READINESS-LABOR-DAY.md",
       "title": "September Readiness — Labor Day Executive Milestone",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/labor-day",
       "excerpt": "September Readiness — Labor Day Executive Milestone EXECUTIVE BOOK COMPLETION 1.0 · Chapter 3 — First major campaign checkpoint Deadline: Labor Day · 2026 09 07 This is the campaign's first major readiness gate before p…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/03-SEPTEMBER-READINESS-LABOR-DAY.md",
@@ -13018,6 +15988,28 @@
       ]
     },
     {
+      "id": "county-party:sevier",
+      "title": "Sevier County Democratic Party",
+      "href": "/election-plan/county-parties/sevier",
+      "excerpt": "County Chair: Gary Walker\nElection Commissioner: Andrea Timmons\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/sevier/",
+      "keywords": [
+        "sevier",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "gary walker",
+        "county chair",
+        "meeting",
+        "sevier county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:sevier",
       "title": "Sevier County Playbook",
       "href": "/election-plan/counties/sevier",
@@ -13121,6 +16113,28 @@
       ]
     },
     {
+      "id": "county-party:sharp",
+      "title": "Sharp County Democratic Party",
+      "href": "/election-plan/county-parties/sharp",
+      "excerpt": "County Chair: Cindy Arnn\nElection Commissioner: Homer Wiles\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic source: https://www.arkd",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/sharp/",
+      "keywords": [
+        "sharp",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "cindy arnn",
+        "county chair",
+        "meeting",
+        "sharp county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:sharp",
       "title": "Sharp County Playbook",
       "href": "/election-plan/counties/sharp",
@@ -13160,6 +16174,22 @@
         "sherwood",
         "city",
         "strategy"
+      ]
+    },
+    {
+      "id": "immersion-mission:sherwood-victory",
+      "title": "Sherwood · 60%+ Victory Model",
+      "href": "/election-plan/immersion-missions",
+      "excerpt": "Prove the model in Kelly's home corridor — then export it statewide. · Success: SOS vote share 60%+ in Sherwood precincts",
+      "type": "Doctrine",
+      "sourcePath": "data/campaign-brain/election-plan/immersion-county-missions.source.json",
+      "keywords": [
+        "sherwood",
+        "60%+ victory model",
+        "pulaski",
+        "immersion mission",
+        "campaign doctrine",
+        "one mission"
       ]
     },
     {
@@ -13285,6 +16315,22 @@
       ]
     },
     {
+      "id": "fm:fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-&-car-show",
+      "title": "Sixty-Eight Petit Jean Swap Meet & Car Show",
+      "href": "/election-plan/forward-motion/fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-%26-car-show",
+      "excerpt": "Conway County · Morrilton · 2026-06-17 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "sixty-eight petit jean swap meet & car show",
+        "conway county",
+        "morrilton",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/forward-motion/social-graphics/graphics-request-dashboard.md",
       "title": "Social Graphics Request Queue",
       "href": "/election-plan",
@@ -13383,6 +16429,22 @@
         "media",
         "resume",
         "dashboard"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
+      "title": "SOS debate - Annual Press Convention - Eureka Springs",
+      "href": "/election-plan/forward-motion/fest-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
+      "excerpt": "Carroll County · 2026-06-26 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "sos debate - annual press convention - eureka springs",
+        "carroll county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -13502,6 +16564,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:st.-francis",
+      "title": "St. Francis County Democratic Party",
+      "href": "/election-plan/county-parties/st.-francis",
+      "excerpt": "County Chair: Adrian Winfrey\nElection Commissioner: Frederick Freeman\nMeeting: Monthly 3rd Thursday at 6:00 PM at St. Francis County Circuit Courtroom\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as p",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/st.-francis/",
+      "keywords": [
+        "st. francis",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "adrian winfrey",
+        "county chair",
+        "meeting",
+        "st. francis county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -13633,6 +16717,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:stone",
+      "title": "Stone County Democratic Party",
+      "href": "/election-plan/county-parties/stone",
+      "excerpt": "County Chair: Jerry Weber\nElection Commissioner: Janice Cavender\nMeeting: Monthly 3rd Wednesday at 6:00 PM at Stone County Library\nFacebook: https://www.facebook.com/groups/569780343534809\nRecommended action: Request speaking slot · confirm with chair · add to calendar as propose",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/stone/",
+      "keywords": [
+        "stone",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "jerry weber",
+        "county chair",
+        "meeting",
+        "stone county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -13824,6 +16930,22 @@
       ]
     },
     {
+      "id": "fm:fest-2026-06-20-fairfield-bay-surf-the-bay",
+      "title": "Surf the Bay",
+      "href": "/election-plan/forward-motion/fest-2026-06-20-fairfield-bay-surf-the-bay",
+      "excerpt": "Van Buren County · Fairfield Bay · 2026-06-20 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "surf the bay",
+        "van buren county",
+        "fairfield bay",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/routing/surrogate-schedule.md",
       "title": "Surrogate Schedule (Congressional + Senate)",
       "href": "/election-plan",
@@ -13946,7 +17068,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/05-THE-KELLY-GRAPPE-MESSAGE.md",
       "title": "The Kelly Grappe Message",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/message",
       "excerpt": "The Kelly Grappe Message EXECUTIVE BOOK COMPLETION 1.0 · Chapter 5 — Candidate doctrine for every room Not issue papers. Not policy white papers. The campaign message. Use in speeches, interviews, forums, editorials, an…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/05-THE-KELLY-GRAPPE-MESSAGE.md",
@@ -14067,6 +17189,22 @@
       ]
     },
     {
+      "id": "fm:fest-2026-08-04-fayetteville-tontitown-grape-festival",
+      "title": "Tontitown Grape Festival",
+      "href": "/election-plan/forward-motion/fest-2026-08-04-fayetteville-tontitown-grape-festival",
+      "excerpt": "Washington County · Fayetteville · 2026-08-04 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "tontitown grape festival",
+        "washington county",
+        "fayetteville",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/coalition-power-map/top-city-candidate-forums/top-20-city-candidate-forum-plan.md",
       "title": "Top 20 City Candidate Forum Plan",
       "href": "/election-plan",
@@ -14149,6 +17287,101 @@
       "keywords": [
         "travel",
         "budget"
+      ]
+    },
+    {
+      "id": "campus:university-of-arkansas",
+      "title": "UA Fayetteville · Campus",
+      "href": "/election-plan/campuses/university-of-arkansas",
+      "excerpt": "Fayetteville, Washington County · captain vacant · reg goal 1,200",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "university of arkansas",
+        "ua fayetteville",
+        "fayetteville",
+        "campus",
+        "freshman week",
+        "freshman week"
+      ]
+    },
+    {
+      "id": "campus:uacch",
+      "title": "UACCH · Campus",
+      "href": "/election-plan/campuses/uacch",
+      "excerpt": "De Queen, Sevier County · captain vacant · reg goal 90",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "university of arkansas cossatot",
+        "uacch",
+        "de queen",
+        "campus",
+        "freshman week"
+      ]
+    },
+    {
+      "id": "campus:uaccm",
+      "title": "UACCM · Campus",
+      "href": "/election-plan/campuses/uaccm",
+      "excerpt": "Morrilton, Conway County · captain vacant · reg goal 100",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "university of arkansas community college at morrilton",
+        "uaccm",
+        "morrilton",
+        "campus",
+        "freshman week",
+        "freshman week"
+      ]
+    },
+    {
+      "id": "campus:ualr",
+      "title": "UALR · Campus",
+      "href": "/election-plan/campuses/ualr",
+      "excerpt": "Little Rock, Pulaski County · captain vacant · reg goal 550",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "university of arkansas at little rock",
+        "ualr",
+        "little rock",
+        "campus",
+        "freshman week",
+        "freshman week"
+      ]
+    },
+    {
+      "id": "campus:uapb",
+      "title": "UAPB · Campus",
+      "href": "/election-plan/campuses/uapb",
+      "excerpt": "Pine Bluff, Jefferson County · captain vacant · reg goal 200",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "university of arkansas at pine bluff",
+        "uapb",
+        "pine bluff",
+        "campus",
+        "freshman week",
+        "freshman week"
+      ]
+    },
+    {
+      "id": "campus:university-of-central-arkansas",
+      "title": "UCA · Campus",
+      "href": "/election-plan/campuses/university-of-central-arkansas",
+      "excerpt": "Conway, Faulkner County · captain vacant · reg goal 500",
+      "type": "Campus",
+      "sourcePath": "data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json",
+      "keywords": [
+        "university of central arkansas",
+        "uca",
+        "conway",
+        "campus",
+        "freshman week",
+        "freshman week"
       ]
     },
     {
@@ -14249,6 +17482,60 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:union",
+      "title": "Union County Democratic Party",
+      "href": "/election-plan/county-parties/union",
+      "excerpt": "County Chair: Dr. O’Dell Carr\nElection Commissioner: Horace Charles\nMeeting: Monthly 4th Tuesday at 6:00 PM at Simmons Bank Building\nFacebook: https://www.facebook.com/people/Democrat-Party-of-Union-County-Arkansas/61579195394441/\nRecommended action: Request speaking slot · confi",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/union/",
+      "keywords": [
+        "union",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "dr. o’dell carr",
+        "county chair",
+        "meeting",
+        "union county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-8e31ab602a94385aa9919463",
+      "title": "Union County Fair",
+      "href": "/election-plan/forward-motion/fair-8e31ab602a94385aa9919463",
+      "excerpt": "Union County · 2026-07-23 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "union county fair",
+        "union county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-07-23-el-dorado-union-county-fair",
+      "title": "Union County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-07-23-el-dorado-union-county-fair",
+      "excerpt": "Union County · El Dorado · 2026-07-23 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "union county fair",
+        "union county",
+        "el dorado",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -14443,6 +17730,28 @@
       ]
     },
     {
+      "id": "county-party:van-buren",
+      "title": "Van Buren County Democratic Party",
+      "href": "/election-plan/county-parties/van-buren",
+      "excerpt": "County Chair: Carol Gray Hutto\nElection Commissioner: Carol Beavers\nMeeting: Monthly 1st Monday at 6:30 PM at Western Sizzlin’ in Clinton\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatu",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/van-buren/",
+      "keywords": [
+        "van buren",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "carol gray hutto",
+        "county chair",
+        "meeting",
+        "van buren county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:van-buren",
       "title": "Van Buren County Playbook",
       "href": "/election-plan/counties/van-buren",
@@ -14470,6 +17779,54 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-12-van-buren-van-buren-junk-fest",
+      "title": "Van Buren Junk Fest",
+      "href": "/election-plan/forward-motion/fest-2026-09-12-van-buren-van-buren-junk-fest",
+      "excerpt": "Crawford County · Van Buren · 2026-09-12 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "van buren junk fest",
+        "crawford county",
+        "van buren",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-02-clinton-van-buren-livestock-show-and-fair",
+      "title": "Van Buren Livestock Show and Fair",
+      "href": "/election-plan/forward-motion/fest-2026-09-02-clinton-van-buren-livestock-show-and-fair",
+      "excerpt": "Van Buren County · Clinton · 2026-09-02 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "van buren livestock show and fair",
+        "van buren county",
+        "clinton",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-11-little-rock-vintage-market-days-of-little-rock",
+      "title": "Vintage Market Days of Little Rock",
+      "href": "/election-plan/forward-motion/fest-2026-09-11-little-rock-vintage-market-days-of-little-rock",
+      "excerpt": "Pulaski County · Little Rock · 2026-09-11 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "vintage market days of little rock",
+        "pulaski county",
+        "little rock",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -14716,6 +18073,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:washington",
+      "title": "Washington County Democratic Party",
+      "href": "/election-plan/county-parties/washington",
+      "excerpt": "County Chair: Caitlin Oxford\nElection Commissioner: Alexis Ward\nMeeting: Monthly 3rd Monday at 6:00 PM at 1102 S Thompson in Springdale\nWebsite: http://washcodemocrats.com\nFacebook: http://www.facebook.com/WashCoDemocrats/\nRecommended action: Request speaking slot · confirm with ",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/washington/",
+      "keywords": [
+        "washington",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "caitlin oxford",
+        "county chair",
+        "meeting",
+        "washington county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -15065,7 +18444,7 @@
     {
       "id": "brief:weekly-dashboard",
       "title": "Weekly Dashboard",
-      "href": "/election-plan",
+      "href": "/election-plan?tab=weeklyDashboard",
       "excerpt": "What are Kelly's priorities this week? How is fundraising and county coverage tracking?",
       "type": "Election Plan",
       "sourcePath": "data/campaign-brain/election-plan/page-briefs.source.json",
@@ -15074,7 +18453,8 @@
         "kelly dashboard",
         "this week",
         "priorities",
-        "weekly dashboard"
+        "weekly dashboard",
+        "weekly-dashboard"
       ]
     },
     {
@@ -15251,6 +18631,28 @@
       ]
     },
     {
+      "id": "county-party:white",
+      "title": "White County Democratic Party",
+      "href": "/election-plan/county-parties/white",
+      "excerpt": "County Chair: Brook Linson\nElection Commissioner: Tina Niederbrach\nMeeting: Every First Thursday at 6pm\nWebsite: https://whitecountyardems.org\nFacebook: https://www.facebook.com/whitecountydems\nRecommended action: Request speaking slot · confirm with chair · add to calendar as pr",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/white/",
+      "keywords": [
+        "white",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "brook linson",
+        "county chair",
+        "meeting",
+        "white county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
       "id": "county:white",
       "title": "White County Playbook",
       "href": "/election-plan/counties/white",
@@ -15282,7 +18684,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/01-WHO-OWNS-WHAT.md",
       "title": "WHO OWNS WHAT",
-      "href": "/election-plan/executive-book",
+      "href": "/election-plan/executive-book/ownership",
       "excerpt": "WHO OWNS WHAT EXECUTIVE BOOK COMPLETION 1.0 · Chapter 1 — Leadership sees this first Not departments. Not committees. Names. Status Count : Functions 12 Primary owner still TBD 4 Ownership matrix Function Primary Owner …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/01-WHO-OWNS-WHAT.md",
@@ -15404,6 +18806,28 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:woodruff",
+      "title": "Woodruff County Democratic Party",
+      "href": "/election-plan/county-parties/woodruff",
+      "excerpt": "County Chair: Election Commissioner John Bell\nElection Commissioner: John Bell\nMeeting: Contact County Party\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Call county party chair and confirm meeting before scheduling\nStatus: needs human verification\nPublic sourc",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/woodruff/",
+      "keywords": [
+        "woodruff",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "election commissioner john bell",
+        "county chair",
+        "meeting",
+        "woodruff county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
       ]
     },
     {
@@ -15534,6 +18958,60 @@
         "registration",
         "opportunity",
         "dashboard"
+      ]
+    },
+    {
+      "id": "county-party:yell",
+      "title": "Yell County Democratic Party",
+      "href": "/election-plan/county-parties/yell",
+      "excerpt": "County Chair: Cathy George\nElection Commissioner: Mike Merritt\nMeeting: Monthly last Saturday at 2:00 PM\nFacebook: https://www.facebook.com/ArkDems/\nRecommended action: Request speaking slot · confirm with chair · add to calendar as proposed\nStatus: public intelligence · confirm ",
+      "type": "County Party",
+      "sourcePath": "data/campaign-brain/county-party-intelligence/county-party-profiles.normalized.json",
+      "sourcePublicUrl": "https://www.arkdems.org/county/yell/",
+      "keywords": [
+        "yell",
+        "county party",
+        "democratic party",
+        "arkdems",
+        "cathy george",
+        "county chair",
+        "meeting",
+        "yell county chair",
+        "county chair",
+        "arkdems",
+        "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fair-7d4b1643af8887c9137f0856",
+      "title": "Yell County Fair",
+      "href": "/election-plan/forward-motion/fair-7d4b1643af8887c9137f0856",
+      "excerpt": "Yell County · 2026-09-07 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "yell county fair",
+        "yell county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-07-danville-yell-county-fair",
+      "title": "Yell County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-09-07-danville-yell-county-fair",
+      "excerpt": "Yell County · Danville · 2026-09-07 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "yell county fair",
+        "yell county",
+        "danville",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {

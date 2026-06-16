@@ -1,6 +1,7 @@
 /** Executive Book V1 — chapter registry for hub cards and shareable routes. */
 
 export type ExecutiveBookChapterSlug =
+  | "doctrine"
   | "ownership"
   | "influence-map"
   | "labor-day"
@@ -23,6 +24,14 @@ export type ExecutiveBookChapterDef = {
 };
 
 export const EXECUTIVE_BOOK_CHAPTERS: ExecutiveBookChapterDef[] = [
+  {
+    slug: "doctrine",
+    number: 0,
+    title: "Campaign Doctrine",
+    subtitle: "The Arkansas Way to Win — philosophy before mechanics, for every leader in the movement",
+    markdownFile: "00-CAMPAIGN-DOCTRINE-THE-ARKANSAS-WAY-TO-WIN.md",
+    href: "/election-plan/executive-book/doctrine",
+  },
   {
     slug: "ownership",
     number: 1,

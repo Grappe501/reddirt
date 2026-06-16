@@ -86,6 +86,7 @@ export function LeadershipHubPanel() {
           { href: "/election-plan/conversation-strategy", title: "Arkansas Conversation Strategy", detail: "Organizing doctrine · under 10 minutes" },
           { href: "/election-plan/executive-book/county-victory-targets", title: "County Victory Targets", detail: "75 counties · votes · % increase · Po5 leaders" },
           { href: "/election-plan/search", title: "Election Plan Search", detail: "Find any page · local index · 18.7H" },
+          { href: "/election-plan/county-parties", title: "County Party Intelligence", detail: "ArkDems chairs · meetings · 18.7I" },
         ].map((item) => (
           <Link key={item.href} href={item.href} className="ep-card block transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]">
             <h2 className="font-heading font-bold text-[var(--ep-navy)]">{item.title}</h2>

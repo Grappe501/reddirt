@@ -98,6 +98,22 @@ export function Phase18MovementInfrastructurePanel() {
         </div>
       </div>
 
+      <div className="mb-8 ep-card border-2 border-blue-600">
+        <p className="text-xs font-bold uppercase tracking-[0.15em] text-blue-700">Phase 18.7I · County Party Intelligence</p>
+        <h3 className="mt-1 font-heading font-bold text-[var(--ep-navy)]">ArkDems chairs · meetings · routing</h3>
+        <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
+          Public source data only — flags what needs a phone call before Kelly or a surrogate attends.
+        </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Link href="/election-plan/county-parties" className="rounded-full bg-blue-700 px-3 py-1 text-xs font-semibold text-white">
+            County party dashboard →
+          </Link>
+          <Link href="/election-plan/search?q=county+party+meeting" className="rounded-full border border-[var(--ep-border)] px-3 py-1 text-xs font-semibold">
+            Search county meetings →
+          </Link>
+        </div>
+      </div>
+
       <div className="mb-8 ep-card border-2 border-[var(--ep-navy)]">
         <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--ep-navy-muted)]">Phase 18.7B · Ownership Activation</p>
         <h3 className="mt-1 font-heading font-bold text-[var(--ep-navy)]">Who makes it happen this week?</h3>

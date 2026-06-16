@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "pass": "CAMPAIGN-DOCTRINE-IMMERSION-MISSIONS",
+  "operatingPrinciple": "The campaign plan is the operating system. The product is thousands of Arkansans who each know exactly one thing they can do to help win.",
+  "doctrineHref": "/election-plan/executive-book/doctrine",
+  "missions": [
+    {
+      "id": "quitman-100",
+      "community": "Quitman",
+      "county": "Cleburne",
+      "countySlug": "cleburne",
+      "citySlug": "quitman",
+      "headline": "100 Conversations",
+      "tagline": "Quitman can directly influence a statewide election — not through money, through relationships.",
+      "successMetric": "Meaningful conversations before Election Day",
+      "primaryGoal": 100,
+      "primaryGoalLabel": "Conversations",
+      "thenSteps": [
+        "Recruit 10 Power of 5 leaders",
+        "Each leader recruits 5 → 50-person relationship network"
+      ],
+      "activityTypes": [
+        "Coffee meetings",
+        "Breakfasts",
+        "Church conversations",
+        "Rotary & civic clubs",
+        "House parties",
+        "Small business visits",
+        "Community events"
+      ],
+      "notThis": ["Registration drives alone", "Fundraising targets", "Giant turnout dashboards"]
+    },
+    {
+      "id": "montgomery-leadership",
+      "community": "Mt. Ida",
+      "county": "Montgomery",
+      "countySlug": "montgomery",
+      "citySlug": "mt-ida",
+      "headline": "15 Power of 5 Leaders",
+      "tagline": "Leadership capacity — Montgomery County as a regional organizing hub.",
+      "successMetric": "Leadership capacity, not raw votes",
+      "subTargets": [
+        { "label": "Power of 5 leaders", "goal": 15 },
+        { "label": "House party hosts", "goal": 3 },
+        { "label": "Monthly coffee gathering", "goal": 1 },
+        { "label": "Volunteer shifts", "goal": 25 },
+        { "label": "Meaningful conversations", "goal": 250 },
+        { "label": "County storytelling team", "goal": 1 }
+      ]
+    },
+    {
+      "id": "searcy-trust",
+      "community": "Searcy County",
+      "county": "Searcy",
+      "countySlug": "searcy",
+      "headline": "Republican Trust Network",
+      "tagline": "Cross-party credibility in a rural Republican county — relationships before persuasion.",
+      "successMetric": "Trusted validators and cross-party relationships",
+      "href": "/election-plan/movement-infrastructure/searcy-trust-pilot"
+    },
+    {
+      "id": "jacksonville-dd",
+      "community": "Jacksonville",
+      "county": "Pulaski",
+      "countySlug": "pulaski",
+      "citySlug": "jacksonville",
+      "headline": "Direct Democracy Leadership Hub",
+      "tagline": "Citizen power, ballot initiative literacy, and local leaders who understand the SOS role.",
+      "successMetric": "Leaders who can explain and champion direct democracy locally",
+      "href": "/election-plan/direct-democracy/leadership"
+    },
+    {
+      "id": "sherwood-victory",
+      "community": "Sherwood",
+      "county": "Pulaski",
+      "countySlug": "pulaski",
+      "citySlug": "sherwood",
+      "headline": "60%+ Victory Model",
+      "tagline": "Prove the model in Kelly's home corridor — then export it statewide.",
+      "successMetric": "SOS vote share 60%+ in Sherwood precincts",
+      "primaryGoalLabel": "Victory model"
+    },
+    {
+      "id": "greene-hub",
+      "community": "Greene County",
+      "county": "Greene",
+      "countySlug": "greene",
+      "headline": "Northeast Arkansas Organizing Hub",
+      "tagline": "One county that trains captains for the whole NE Arkansas corridor.",
+      "successMetric": "Regional leader pipeline and repeatable field rhythm"
+    },
+    {
+      "id": "benton-votes",
+      "community": "Benton County",
+      "county": "Benton",
+      "countySlug": "benton",
+      "headline": "Top Vote Production County",
+      "tagline": "Maximum SOS vote output in Northwest Arkansas — every conversation converts.",
+      "successMetric": "Highest SOS vote total among non-Pulaski counties"
+    }
+  ]
+}

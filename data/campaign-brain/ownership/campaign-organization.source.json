@@ -181,8 +181,8 @@
     }
   ],
   "nextBuild": {
-    "phase": "18.7I",
+    "phase": "18.7J",
     "title": "Live field results & progress tracking",
-    "note": "County chairs update progress against victory targets — feed real people and meeting results into the system"
+    "note": "County chairs update weekly progress · meeting confirmations logged in platform"
   }
 }

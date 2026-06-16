@@ -1,0 +1,608 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-16T03:03:24.125Z",
+  "sourceIndexUrl": "https://www.arkdems.org/counties/",
+  "countyCount": 75,
+  "entries": [
+    {
+      "county": "Arkansas",
+      "slug": "arkansas",
+      "sourceUrl": "https://www.arkdems.org/county/arkansas/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Ashley",
+      "slug": "ashley",
+      "sourceUrl": "https://www.arkdems.org/county/ashley/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Baxter",
+      "slug": "baxter",
+      "sourceUrl": "https://www.arkdems.org/county/baxter/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Benton",
+      "slug": "benton",
+      "sourceUrl": "https://www.arkdems.org/county/benton/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Boone",
+      "slug": "boone",
+      "sourceUrl": "https://www.arkdems.org/county/boone/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Bradley",
+      "slug": "bradley",
+      "sourceUrl": "https://www.arkdems.org/county/bradley/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Calhoun",
+      "slug": "calhoun",
+      "sourceUrl": "https://www.arkdems.org/county/calhoun/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Carroll",
+      "slug": "carroll",
+      "sourceUrl": "https://www.arkdems.org/county/carroll/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Chicot",
+      "slug": "chicot",
+      "sourceUrl": "https://www.arkdems.org/county/chicot/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Clark",
+      "slug": "clark",
+      "sourceUrl": "https://www.arkdems.org/county/clark/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Clay",
+      "slug": "clay",
+      "sourceUrl": "https://www.arkdems.org/county/clay/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Cleburne",
+      "slug": "cleburne",
+      "sourceUrl": "https://www.arkdems.org/county/cleburne/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Cleveland",
+      "slug": "cleveland",
+      "sourceUrl": "https://www.arkdems.org/county/cleveland/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Columbia",
+      "slug": "columbia",
+      "sourceUrl": "https://www.arkdems.org/county/columbia/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Conway",
+      "slug": "conway",
+      "sourceUrl": "https://www.arkdems.org/county/conway/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Craighead",
+      "slug": "craighead",
+      "sourceUrl": "https://www.arkdems.org/county/craighead/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Crawford",
+      "slug": "crawford",
+      "sourceUrl": "https://www.arkdems.org/county/crawford/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Crittenden",
+      "slug": "crittenden",
+      "sourceUrl": "https://www.arkdems.org/county/crittenden/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Cross",
+      "slug": "cross",
+      "sourceUrl": "https://www.arkdems.org/county/cross/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Dallas",
+      "slug": "dallas",
+      "sourceUrl": "https://www.arkdems.org/county/dallas/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Desha",
+      "slug": "desha",
+      "sourceUrl": "https://www.arkdems.org/county/desha/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Drew",
+      "slug": "drew",
+      "sourceUrl": "https://www.arkdems.org/county/drew/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Faulkner",
+      "slug": "faulkner",
+      "sourceUrl": "https://www.arkdems.org/county/faulkner/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Franklin",
+      "slug": "franklin",
+      "sourceUrl": "https://www.arkdems.org/county/franklin/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Fulton",
+      "slug": "fulton",
+      "sourceUrl": "https://www.arkdems.org/county/fulton/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Garland",
+      "slug": "garland",
+      "sourceUrl": "https://www.arkdems.org/county/garland/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Grant",
+      "slug": "grant",
+      "sourceUrl": "https://www.arkdems.org/county/grant/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Greene",
+      "slug": "greene",
+      "sourceUrl": "https://www.arkdems.org/county/greene/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Hempstead",
+      "slug": "hempstead",
+      "sourceUrl": "https://www.arkdems.org/county/hempstead/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Hot Spring",
+      "slug": "hot-spring",
+      "sourceUrl": "https://www.arkdems.org/county/hot-spring/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Howard",
+      "slug": "howard",
+      "sourceUrl": "https://www.arkdems.org/county/howard/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Independence",
+      "slug": "independence",
+      "sourceUrl": "https://www.arkdems.org/county/independence/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Izard",
+      "slug": "izard",
+      "sourceUrl": "https://www.arkdems.org/county/izard/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Jackson",
+      "slug": "jackson",
+      "sourceUrl": "https://www.arkdems.org/county/jackson/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Jefferson",
+      "slug": "jefferson",
+      "sourceUrl": "https://www.arkdems.org/county/jefferson/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Johnson",
+      "slug": "johnson",
+      "sourceUrl": "https://www.arkdems.org/county/johnson/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Lafayette",
+      "slug": "lafayette",
+      "sourceUrl": "https://www.arkdems.org/county/lafayette/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Lawrence",
+      "slug": "lawrence",
+      "sourceUrl": "https://www.arkdems.org/county/lawrence/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Lee",
+      "slug": "lee",
+      "sourceUrl": "https://www.arkdems.org/county/lee/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Lincoln",
+      "slug": "lincoln",
+      "sourceUrl": "https://www.arkdems.org/county/lincoln/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Little River",
+      "slug": "little-river",
+      "sourceUrl": "https://www.arkdems.org/county/little-river/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Logan",
+      "slug": "logan",
+      "sourceUrl": "https://www.arkdems.org/county/logan/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Lonoke",
+      "slug": "lonoke",
+      "sourceUrl": "https://www.arkdems.org/county/lonoke/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Madison",
+      "slug": "madison",
+      "sourceUrl": "https://www.arkdems.org/county/madison/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Marion",
+      "slug": "marion",
+      "sourceUrl": "https://www.arkdems.org/county/marion/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Miller",
+      "slug": "miller",
+      "sourceUrl": "https://www.arkdems.org/county/miller/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Mississippi",
+      "slug": "mississippi",
+      "sourceUrl": "https://www.arkdems.org/county/mississippi/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Monroe",
+      "slug": "monroe",
+      "sourceUrl": "https://www.arkdems.org/county/monroe/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Montgomery",
+      "slug": "montgomery",
+      "sourceUrl": "https://www.arkdems.org/county/montgomery/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Nevada",
+      "slug": "nevada",
+      "sourceUrl": "https://www.arkdems.org/county/nevada/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Newton",
+      "slug": "newton",
+      "sourceUrl": "https://www.arkdems.org/county/newton/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Ouachita",
+      "slug": "ouachita",
+      "sourceUrl": "https://www.arkdems.org/county/ouachita/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Perry",
+      "slug": "perry",
+      "sourceUrl": "https://www.arkdems.org/county/perry/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Phillips",
+      "slug": "phillips",
+      "sourceUrl": "https://www.arkdems.org/county/phillips/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Pike",
+      "slug": "pike",
+      "sourceUrl": "https://www.arkdems.org/county/pike/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Poinsett",
+      "slug": "poinsett",
+      "sourceUrl": "https://www.arkdems.org/county/poinsett/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Polk",
+      "slug": "polk",
+      "sourceUrl": "https://www.arkdems.org/county/polk/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Pope",
+      "slug": "pope",
+      "sourceUrl": "https://www.arkdems.org/county/pope/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Prairie",
+      "slug": "prairie",
+      "sourceUrl": "https://www.arkdems.org/county/prairie/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Pulaski",
+      "slug": "pulaski",
+      "sourceUrl": "https://www.arkdems.org/county/pulaski/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Randolph",
+      "slug": "randolph",
+      "sourceUrl": "https://www.arkdems.org/county/randolph/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "St. Francis",
+      "slug": "st.-francis",
+      "sourceUrl": "https://www.arkdems.org/county/st.-francis/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Saline",
+      "slug": "saline",
+      "sourceUrl": "https://www.arkdems.org/county/saline/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Scott",
+      "slug": "scott",
+      "sourceUrl": "https://www.arkdems.org/county/scott/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Searcy",
+      "slug": "searcy",
+      "sourceUrl": "https://www.arkdems.org/county/searcy/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Sebastian",
+      "slug": "sebastian",
+      "sourceUrl": "https://www.arkdems.org/county/sebastian/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Sevier",
+      "slug": "sevier",
+      "sourceUrl": "https://www.arkdems.org/county/sevier/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Sharp",
+      "slug": "sharp",
+      "sourceUrl": "https://www.arkdems.org/county/sharp/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Stone",
+      "slug": "stone",
+      "sourceUrl": "https://www.arkdems.org/county/stone/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Union",
+      "slug": "union",
+      "sourceUrl": "https://www.arkdems.org/county/union/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Van Buren",
+      "slug": "van-buren",
+      "sourceUrl": "https://www.arkdems.org/county/van-buren/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Washington",
+      "slug": "washington",
+      "sourceUrl": "https://www.arkdems.org/county/washington/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "White",
+      "slug": "white",
+      "sourceUrl": "https://www.arkdems.org/county/white/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Woodruff",
+      "slug": "woodruff",
+      "sourceUrl": "https://www.arkdems.org/county/woodruff/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    },
+    {
+      "county": "Yell",
+      "slug": "yell",
+      "sourceUrl": "https://www.arkdems.org/county/yell/",
+      "fetchStatus": "ok",
+      "lastFetchedAt": "2026-06-16T03:03:24.125Z",
+      "confidence": "high"
+    }
+  ]
+}

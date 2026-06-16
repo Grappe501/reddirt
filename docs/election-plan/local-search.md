@@ -2,13 +2,21 @@
 
 Password-protected keyword search over an allowlisted local corpus. No external web search. No admin, voter, donor, or private contact data.
 
+**Full spec:** [18.7H-EXECUTIVE-SEARCH-AND-PAGE-BRIEFS.md](./18.7H-EXECUTIVE-SEARCH-AND-PAGE-BRIEFS.md)
+
 ## Rebuild the index
 
 ```bash
-npm run election-plan:search:build
+node scripts/run-with-h-drive-env.cjs npm run election-plan:18.7h:rebuild
 ```
 
-Writes `data/election-plan/election-plan-search-index.json` (~1,000+ entries from page briefs, 75 counties, cities, executive book chapters, strategic plan markdown, campaign brain docs, and safe public routes).
+Or search index only:
+
+```bash
+node scripts/run-with-h-drive-env.cjs npm run election-plan:search:build
+```
+
+Writes `data/election-plan/election-plan-search-index.json` (~1,200+ entries from page briefs, 75 counties, cities, campuses, Forward Motion stops, executive book chapters, strategic plan markdown, campaign brain docs, and safe public routes).
 
 Also run after:
 

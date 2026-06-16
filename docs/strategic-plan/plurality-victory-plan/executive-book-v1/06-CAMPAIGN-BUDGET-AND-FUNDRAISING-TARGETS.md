@@ -12,6 +12,8 @@ Kelly cannot campaign full-time without leave-of-absence replacement income. **S
 
 > Plan around a **working budget of $225,000–$250,000** through Election Day — statewide travel, immersion visits, signs, shirts, postcards, rural media, Sherwood, coalition work, volunteer leadership, Power of 5 organizing, and a steadily increasing digital program culminating in a heavy Top 40 city push during the final month. **Aggressive statewide target: $300,000.**
 
+**Fundraising doctrine:** Kelly's time belongs with voters, not dead-end call lists. The fundraising team **opens doors** — house parties, community introductions, coalition events — and money follows relationships. See [Campaign Doctrine — Open Doors](/election-plan/executive-book/doctrine#fundraising-doctrine--open-doors).
+
 **Digital doctrine:** Social media amplifies physical presence — it does not replace field operations. Save major persuasion spending for the final 30–45 days.
 
 Once September arrives, the campaign will almost certainly add additional signs, shirts, radio, forum sponsorships, newspaper ads, GOTV printing, travel, and volunteer materials — budget contingency accordingly.

@@ -33,14 +33,15 @@ export type ExecutiveBookTocEntry = {
 
 export function getExecutiveBookPillar(slug: ExecutiveBookChapterSlug): ExecutiveBookPillar {
   switch (slug) {
-    case "ownership":
-    case "scorecard":
-      return "governance";
+    case "doctrine":
     case "influence-map":
     case "labor-day":
     case "message":
     case "county-victory-targets":
       return "strategy";
+    case "ownership":
+    case "scorecard":
+      return "governance";
     case "budget":
       return "resources";
     case "power-of-5":
@@ -71,14 +72,15 @@ export function getRelatedExecutiveBookChapters(slug: ExecutiveBookChapterSlug):
   );
 
   const crossLinks: Partial<Record<ExecutiveBookChapterSlug, ExecutiveBookChapterSlug[]>> = {
-    "power-of-5": ["students-for-arkansas", "gotv", "labor-day"],
+    doctrine: ["message", "power-of-5", "budget"],
+    ownership: ["doctrine", "scorecard", "audit"],
+    "power-of-5": ["doctrine", "students-for-arkansas", "gotv", "labor-day"],
     "students-for-arkansas": ["power-of-5", "labor-day", "gotv"],
     gotv: ["power-of-5", "labor-day", "scorecard"],
-    budget: ["labor-day", "gotv"],
+    budget: ["doctrine", "labor-day", "gotv"],
     "labor-day": ["scorecard", "power-of-5", "budget"],
-    message: ["power-of-5", "influence-map", "county-victory-targets"],
+    message: ["doctrine", "power-of-5", "influence-map", "county-victory-targets"],
     "county-victory-targets": ["power-of-5", "gotv", "scorecard"],
-    ownership: ["scorecard", "audit"],
   };
 
   const linked = (crossLinks[slug] ?? [])
