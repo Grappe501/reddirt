@@ -3,8 +3,10 @@ import {
   COMMUNITY_KPI_TEMPLATES,
   COMMUNITY_LEADERSHIP_ROLES,
 } from "./constants";
+import { computeEventReadinessPct, eventKpiCurrent } from "./event-readiness";
 import type {
   CommunityReadinessDimension,
+  CommunityWorkbenchEventRow,
   CommunityWorkbenchView,
 } from "./types";
 
@@ -24,8 +26,7 @@ export function computeCommunityReadiness(input: ReadinessInput): {
     input.fieldEntry.rollups.find((r) => r.category === "volunteer")?.totalQuantity ?? 0;
   const volunteerPct = Math.min(100, Math.round((volunteerQty / 25) * 100));
 
-  const scheduledEvents = input.events.filter((e) => e.status !== "cancelled").length;
-  const eventsPct = Math.min(100, Math.round((scheduledEvents / 3) * 100));
+  const eventsPct = computeEventReadinessPct(input.events);
 
   const relationshipsPct = Math.min(100, Math.round((input.relationships.length / 10) * 100));
 
@@ -50,6 +51,7 @@ export function computeCommunityReadiness(input: ReadinessInput): {
 export function kpiMetricsForTemplate(
   templateKey: string,
   fieldRollups: CommunityWorkbenchView["fieldEntry"]["rollups"],
+  events: CommunityWorkbenchEventRow[] = [],
 ): CommunityWorkbenchView["kpiMetrics"] {
   const template = COMMUNITY_KPI_TEMPLATES[templateKey] ?? COMMUNITY_KPI_TEMPLATES.default_city;
   return template.metrics.map((m) => {
@@ -66,7 +68,12 @@ export function kpiMetricsForTemplate(
       }
     }
     if (m.key === "events" || m.key === "town_halls" || m.key === "fairs") {
-      current = fieldRollups.find((r) => r.category === "house_party")?.entryCount;
+      const fromEvents = eventKpiCurrent(events, m.key);
+      if (fromEvents != null) current = fromEvents;
+      else current = fieldRollups.find((r) => r.category === "house_party")?.entryCount;
+    }
+    if (m.key === "town_hall") {
+      current = eventKpiCurrent(events, m.key) ?? current;
     }
     if (m.key === "leaders" || m.key === "faith" || m.key === "business") {
       current = fieldRollups.find((r) => r.category === "leader")?.totalQuantity;

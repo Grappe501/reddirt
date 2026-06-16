@@ -60,7 +60,7 @@ type WorkbenchRecord = Prisma.CommunityWorkbenchGetPayload<{
     leadership: true;
     missions: true;
     committees: true;
-    events: true;
+    events: { include: { committee: { select: { id: true; name: true } } } };
     intelPages: true;
     relationships: true;
     notes: true;
@@ -85,7 +85,10 @@ export async function loadCommunityWorkbench(slug: string): Promise<CommunityWor
         leadership: true,
         missions: { orderBy: [{ priority: "desc" }, { createdAt: "desc" }] },
         committees: { orderBy: { name: "asc" } },
-        events: { orderBy: [{ eventDate: "asc" }, { createdAt: "desc" }] },
+        events: {
+          orderBy: [{ eventDate: "asc" }, { createdAt: "desc" }],
+          include: { committee: { select: { id: true, name: true } } },
+        },
         intelPages: { orderBy: [{ sectionKey: "asc" }, { title: "asc" }] },
         relationships: { orderBy: { personName: "asc" } },
         notes: { orderBy: { createdAt: "desc" }, take: 50 },
@@ -144,12 +147,17 @@ export async function loadCommunityWorkbench(slug: string): Promise<CommunityWor
       eventDate: e.eventDate?.toISOString() ?? null,
       location: e.location,
       expectedAttendance: e.expectedAttendance,
+      actualAttendance: e.actualAttendance,
       leadName: e.leadName,
       status: e.status,
-      runOfShow: parseJsonArray<{ time: string; label: string }>(e.runOfShowJson, []),
-      assignments: parseJsonArray<{ role: string; assignee: string }>(e.assignmentsJson, []),
+      committeeId: e.committeeId,
+      committeeName: e.committee?.name ?? null,
+      runOfShow: parseJsonArray<{ time: string; label: string; owner?: string }>(e.runOfShowJson, []),
+      assignments: parseJsonArray<{ role: string; assignee: string; notes?: string }>(e.assignmentsJson, []),
       documents: parseJsonArray<{ label: string; url?: string }>(e.documentsJson, []),
+      aarBody: e.aarBody,
       operatorInitials: e.operatorInitials,
+      updatedAt: e.updatedAt.toISOString(),
     })) ?? [];
 
   const intel =
@@ -209,7 +217,7 @@ export async function loadCommunityWorkbench(slug: string): Promise<CommunityWor
     voteGain: city?.voteGain,
   };
 
-  partial.kpiMetrics = kpiMetricsForTemplate(kpiTemplate, fieldEntry.rollups);
+  partial.kpiMetrics = kpiMetricsForTemplate(kpiTemplate, fieldEntry.rollups, events);
   partial.readiness = computeCommunityReadiness(partial);
 
   return partial;

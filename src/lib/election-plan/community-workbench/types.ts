@@ -45,12 +45,17 @@ export type CommunityWorkbenchEventRow = {
   eventDate: string | null;
   location: string | null;
   expectedAttendance: number | null;
+  actualAttendance: number | null;
   leadName: string | null;
   status: string;
-  runOfShow: Array<{ time: string; label: string }>;
-  assignments: Array<{ role: string; assignee: string }>;
+  committeeId: string | null;
+  committeeName: string | null;
+  runOfShow: Array<{ time: string; label: string; owner?: string }>;
+  assignments: Array<{ role: string; assignee: string; notes?: string }>;
   documents: Array<{ label: string; url?: string }>;
+  aarBody: string | null;
   operatorInitials: string | null;
+  updatedAt: string;
 };
 
 export type CommunityWorkbenchIntelRow = {

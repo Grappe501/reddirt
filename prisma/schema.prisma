@@ -7256,29 +7256,47 @@ model CommunityWorkbenchCommittee {
   operatorInitials String?            @db.VarChar(3)
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
+  events           CommunityWorkbenchEvent[]
 
   @@index([workbenchId])
   @@schema("public")
 }
 
+enum CommunityWorkbenchEventStatus {
+  idea
+  planned
+  confirmed
+  executed
+  aar_complete
+  cancelled
+
+  @@schema("public")
+}
+
 model CommunityWorkbenchEvent {
-  id                 String             @id @default(cuid())
+  id                 String                        @id @default(cuid())
   workbenchId        String
-  workbench          CommunityWorkbench @relation(fields: [workbenchId], references: [id], onDelete: Cascade)
+  workbench          CommunityWorkbench            @relation(fields: [workbenchId], references: [id], onDelete: Cascade)
+  committeeId        String?
+  committee          CommunityWorkbenchCommittee?  @relation(fields: [committeeId], references: [id], onDelete: SetNull)
   title              String
   eventDate          DateTime?
   location           String?
   expectedAttendance Int?
+  actualAttendance   Int?
   leadName           String?
-  status             String             @default("planning")
+  status             CommunityWorkbenchEventStatus @default(idea)
   runOfShowJson      String?
   assignmentsJson    String?
   documentsJson      String?
-  operatorInitials   String?            @db.VarChar(3)
-  createdAt          DateTime           @default(now())
-  updatedAt          DateTime           @updatedAt
+  aarBody            String?
+  operatorInitials   String?                       @db.VarChar(3)
+  createdAt          DateTime                      @default(now())
+  updatedAt          DateTime                      @updatedAt
 
   @@index([workbenchId, eventDate])
+  @@index([workbenchId, status])
+  @@index([committeeId])
   @@schema("public")
 }
 

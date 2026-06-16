@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useState, type FormEvent, type ReactNode } from "react";
 
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
+import { CommunityWorkbenchEventOpsPanel } from "@/components/election-plan/CommunityWorkbenchEventOpsPanel";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 import type { CommunityWorkbenchView } from "@/lib/election-plan/community-workbench/types";
 import { COMMUNITY_INTEL_SECTIONS, COMMUNITY_NOTE_TYPES } from "@/lib/election-plan/community-workbench/constants";
@@ -275,55 +276,16 @@ export function CommunityWorkbenchShell({ workbench, operatorInitials }: Props) 
       </Section>
 
       <Section id="events" title="Event command center">
-        <SimpleAddForm
-          label="Event title"
-          placeholder="Election Integrity Town Hall"
+        <p className="mb-4 text-sm text-[var(--ep-navy-muted)]">
+          Field operations — run of show, volunteer roles, committee link, status pipeline, and after-action reports.
+          Every save is tagged with operator initials.
+        </p>
+        <CommunityWorkbenchEventOpsPanel
+          workbenchSlug={workbench.slug}
+          events={workbench.events}
+          committees={workbench.committees}
           operatorInitials={operatorInitials}
-          busy={busy}
-          onSubmit={async (title) => post("event", { title, status: "planning" })}
         />
-        <ul className="mt-4 space-y-4">
-          {workbench.events.map((ev) => (
-            <li key={ev.id} className="rounded-lg border border-[var(--ep-border)] p-4">
-              <div className="flex flex-wrap items-start justify-between gap-2">
-                <div>
-                  <p className="font-heading text-lg font-bold text-[var(--ep-navy)]">{ev.title}</p>
-                  <p className="text-xs text-[var(--ep-navy-muted)]">
-                    [{ev.operatorInitials}] · {ev.status}
-                    {ev.location ? ` · ${ev.location}` : ""}
-                  </p>
-                </div>
-                {ev.leadName ? (
-                  <span className="rounded bg-[var(--ep-cream)] px-2 py-1 text-xs font-semibold">Lead: {ev.leadName}</span>
-                ) : null}
-              </div>
-              {ev.runOfShow.length > 0 ? (
-                <div className="mt-3">
-                  <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Run of show</p>
-                  <ul className="mt-1 space-y-1 text-sm">
-                    {ev.runOfShow.map((r, i) => (
-                      <li key={i}>
-                        <span className="font-mono text-xs text-[var(--ep-gold)]">{r.time}</span> {r.label}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-              {ev.assignments.length > 0 ? (
-                <div className="mt-3">
-                  <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Assignments</p>
-                  <ul className="mt-1 grid gap-1 text-sm sm:grid-cols-2">
-                    {ev.assignments.map((a, i) => (
-                      <li key={i}>
-                        {a.role}: <strong>{a.assignee || "TBD"}</strong>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-            </li>
-          ))}
-        </ul>
       </Section>
 
       <Section id="intel" title="Local intelligence">

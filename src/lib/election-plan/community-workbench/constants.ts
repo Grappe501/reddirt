@@ -120,6 +120,28 @@ export const COMMUNITY_KPI_SLUG_OVERRIDES: Record<string, string> = {
   "county-fair-circuit": "events",
 };
 
+export const COMMUNITY_EVENT_STATUSES = [
+  { value: "idea", label: "Idea" },
+  { value: "planned", label: "Planned" },
+  { value: "confirmed", label: "Confirmed" },
+  { value: "executed", label: "Executed" },
+  { value: "aar_complete", label: "After-action complete" },
+  { value: "cancelled", label: "Cancelled" },
+] as const;
+
+export type CommunityEventStatus = (typeof COMMUNITY_EVENT_STATUSES)[number]["value"];
+
+/** Default volunteer assignment slots for event command center. */
+export const COMMUNITY_EVENT_VOLUNTEER_ROLES = [
+  "Registration table",
+  "AV team",
+  "Greeters",
+  "Media",
+  "Security",
+  "Food",
+  "Cleanup",
+] as const;
+
 export const PROGRAM_WORKBENCHES = [
   {
     slug: "election-integrity",

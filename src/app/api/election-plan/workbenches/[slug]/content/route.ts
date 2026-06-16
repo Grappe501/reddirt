@@ -1,3 +1,4 @@
+import type { CommunityWorkbenchEventStatus } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 import { requireElectionPlanOperator } from "@/lib/election-plan/auth/require-election-plan-api";
@@ -104,7 +105,7 @@ export async function POST(
           location: payload.location ? String(payload.location).trim() : null,
           leadName: payload.leadName ? String(payload.leadName).trim() : null,
           expectedAttendance: payload.expectedAttendance ? Number(payload.expectedAttendance) : null,
-          status: String(payload.status ?? "planning"),
+          status: (String(payload.status ?? "idea") as CommunityWorkbenchEventStatus) || "idea",
           runOfShowJson: payload.runOfShow ? JSON.stringify(payload.runOfShow) : null,
           assignmentsJson: payload.assignments ? JSON.stringify(payload.assignments) : null,
           operatorInitials: initials,
