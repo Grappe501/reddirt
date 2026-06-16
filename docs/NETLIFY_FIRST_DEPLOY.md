@@ -33,14 +33,9 @@ Use this when the site has never successfully built on Netlify or the database i
 | `OPENAI_API_KEY` | RAG search answers, ingest, intake classification |
 | `SKIP_DB_SEED` | Set to `1` to **skip** `prisma db seed` on build (default is **to seed**). |
 
-**Netlify Lambda env cap:** AWS limits function environment variables to **~4 KB total**. Common blockers:
+**Lambda env cap (Lambda compatibility mode only):** If deploy fails with `Invalid AWS Lambda parameters`, scope build-only vars to **Builds only**: `PRISMA_*`, `ALLOW_*`, `SKIP_DB_SEED`, `NODE_OPTIONS`. Also check **Team settings → Environment variables** for shared vars scoped to Functions.
 
-| Variable | Fix |
-|----------|-----|
-| **`FEATURE_FLAGS`** | Often a **~9 KB** Netlify blob — **delete** it or scope to **Builds only** (never All/Functions). This alone causes `Invalid AWS Lambda parameters`. |
-| `PRISMA_MIGRATE_*`, `ALLOW_PRISMA_*`, `SKIP_DB_SEED`, `NODE_OPTIONS` | Scope to **Builds only** |
-
-If deploy fails after a successful build, check env scoping first, then **Clear cache and deploy site**.
+**Note:** Build logs may show `FEATURE_FLAGS` (~9 KB) — that is **Netlify-internal** platform JSON injected during every build, not something you set. It is not listed in your site env UI.
 
 Never put secrets in `NEXT_PUBLIC_*`.
 

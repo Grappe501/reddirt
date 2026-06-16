@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 /**
- * AWS Lambda allows ~4096 bytes total for environment variables (keys + values).
- * Netlify injects site env vars scoped to "Functions" or "All" into ___netlify-server-handler.
- * Build-only vars (Prisma retries, bypass flags) must be scoped to "Builds" in Netlify UI.
+ * Advisory check: estimate runtime env vars that may reach ___netlify-server-handler.
+ * AWS Lambda compatibility mode caps env at ~4096 bytes (Netlify removed this limit on
+ * the modern Functions runtime — see netlify.com/changelog/2026-06-12).
+ *
+ * FEATURE_FLAGS is NOT a user env var — Netlify injects ~9 KB of internal platform JSON
+ * during builds (Next runtime rollout flags). It is excluded from this estimate.
  */
 const LAMBDA_ENV_LIMIT_BYTES = 4096;
-const WARN_BYTES = 3800;
-const FAIL_BYTES = 4050;
+const WARN_BYTES = 3500;
 
-/** Vars that should be scoped to Builds only in Netlify UI (never Functions). */
+/** Scope to Builds only in Netlify UI (not Functions / All). */
 const BUILD_ONLY_HINTS = [
   "PRISMA_MIGRATE_",
   "PRISMA_RESOLVE_",
@@ -19,8 +21,8 @@ const BUILD_ONLY_HINTS = [
   "NODE_OPTIONS",
 ];
 
-/** Netlify build-time injections — not needed at Lambda runtime; exclude from budget estimate. */
-const NETLIFY_BUILD_INJECTIONS = new Set([
+/** Netlify-internal build injections — never user-configured site env vars. */
+const NETLIFY_INTERNAL = new Set([
   "FEATURE_FLAGS",
   "NETLIFY_SKEW_PROTECTION_TOKEN",
   "NETLIFY_BUILD_BASE",
@@ -35,32 +37,16 @@ function isRuntimeNoiseKey(key) {
     k === "home" ||
     k === "pwd" ||
     k === "shlvl" ||
-    k === "shell" ||
-    k === "term" ||
-    k === "lang" ||
     k.startsWith("npm_") ||
     k.startsWith("_") ||
     k.startsWith("netlify_build_") ||
     k.startsWith("vscode_") ||
-    k.startsWith("cursor_") ||
-    k.startsWith("psmodulepath") ||
-    k.startsWith("windir") ||
-    k.startsWith("systemroot") ||
-    k.startsWith("userprofile") ||
-    k.startsWith("programfiles") ||
-    k.startsWith("comspec") ||
-    k.startsWith("chocolatey") ||
-    k.startsWith("localappdata") ||
-    k.startsWith("appdata")
+    k.startsWith("cursor_")
   );
 }
 
-function isBuildOnlyKey(key) {
-  return BUILD_ONLY_HINTS.some((p) => key.startsWith(p) || key === p);
-}
-
 function isExcludedFromLambdaBudget(key) {
-  return NETLIFY_BUILD_INJECTIONS.has(key) || isBuildOnlyKey(key);
+  return NETLIFY_INTERNAL.has(key) || BUILD_ONLY_HINTS.some((p) => key.startsWith(p) || key === p);
 }
 
 function estimateLambdaEnvBytes(env = process.env) {
@@ -74,7 +60,7 @@ function estimateLambdaEnvBytes(env = process.env) {
     totalRaw += bytes;
     const excluded = isExcludedFromLambdaBudget(key);
     if (!excluded) total += bytes;
-    rows.push({ key, bytes, excluded, buildOnly: isBuildOnlyKey(key) });
+    rows.push({ key, bytes, excluded });
   }
   rows.sort((a, b) => b.bytes - a.bytes);
   return { total, totalRaw, rows };
@@ -82,63 +68,41 @@ function estimateLambdaEnvBytes(env = process.env) {
 
 function main() {
   const { total, totalRaw, rows } = estimateLambdaEnvBytes();
-  console.log(
-    `>>> Lambda env budget estimate: ${total} bytes (${(total / 1024).toFixed(2)} KB) runtime vars — AWS limit ${LAMBDA_ENV_LIMIT_BYTES} bytes`,
-  );
-  if (totalRaw !== total) {
-    console.log(`>>> (Build process total ${totalRaw} bytes — ${totalRaw - total} bytes excluded as build-only / Netlify injections)`);
-  }
-
   const featureFlags = rows.find((r) => r.key === "FEATURE_FLAGS");
-  if (featureFlags && featureFlags.bytes > 500) {
-    console.warn("");
-    console.warn(
-      `>>> CRITICAL: FEATURE_FLAGS is ${featureFlags.bytes} bytes alone (limit ${LAMBDA_ENV_LIMIT_BYTES}).`,
+
+  console.log(
+    `>>> Lambda env advisory: ~${total} bytes (${(total / 1024).toFixed(2)} KB) estimated runtime vars (AWS Lambda compat limit ${LAMBDA_ENV_LIMIT_BYTES} bytes)`,
+  );
+
+  if (featureFlags) {
+    console.log(
+      `>>> FEATURE_FLAGS (${featureFlags.bytes} B) is Netlify-internal platform JSON — not in your site env; safe to ignore.`,
     );
-    console.warn(">>> Netlify → Environment variables → delete FEATURE_FLAGS or scope to Builds only.");
-    console.warn(">>> If scoped to All or Functions, deploy fails with Invalid AWS Lambda parameters.");
   }
 
-  const buildOnlyPresent = rows.filter((r) => r.buildOnly && r.bytes > 0);
-  if (buildOnlyPresent.length > 0) {
-    console.log(">>> Build-only vars (scope to Builds in Netlify UI, not Functions):");
-    for (const r of buildOnlyPresent.slice(0, 8)) {
-      console.log(`    ${r.key} (${r.bytes} B)`);
-    }
-  }
-
-  const runtimeRows = rows.filter((r) => !r.excluded).slice(0, 8);
+  const runtimeRows = rows.filter((r) => !r.excluded).slice(0, 10);
   if (runtimeRows.length > 0) {
-    console.log(">>> Largest runtime env vars (estimated Lambda payload):");
+    console.log(">>> Your runtime-scoped vars (estimate):");
     for (const r of runtimeRows) {
       console.log(`    ${r.key}: ${r.bytes} B`);
     }
   }
 
-  if (featureFlags && featureFlags.bytes > LAMBDA_ENV_LIMIT_BYTES) {
-    console.warn("");
-    console.warn("========================================================================");
-    console.warn(`  FEATURE_FLAGS is ${featureFlags.bytes} bytes — over the Lambda 4 KB cap.`);
-    console.warn("  If scoped to All or Functions, deploy WILL fail.");
-    console.warn("  Netlify → Environment variables → delete FEATURE_FLAGS");
-    console.warn("  or set scope to Builds only, then redeploy.");
-    console.warn("========================================================================");
-  }
-
-  if (total >= FAIL_BYTES) {
-    console.error("");
-    console.error("========================================================================");
-    console.error("  Netlify deploy may fail: runtime Lambda env vars exceed ~4 KB.");
-    console.error("  Netlify → Site configuration → Environment variables");
-    console.error("  Scope PRISMA_*, ALLOW_*, SKIP_DB_SEED, NODE_OPTIONS to Builds only.");
-    console.error("========================================================================");
-    process.exit(1);
-  }
-
   if (total >= WARN_BYTES) {
     console.warn("");
-    console.warn(">>> WARNING: Lambda env budget is near the 4 KB cap. Review Netlify variable scoping.");
+    console.warn(">>> WARNING: runtime env estimate is near the 4 KB Lambda compat cap.");
+    console.warn(">>> Netlify UI → Environment variables → scope PRISMA_*, ALLOW_*, SKIP_DB_SEED, NODE_OPTIONS to Builds only.");
+    console.warn(">>> Also check Team settings → Environment variables for shared vars scoped to Functions.");
   }
+
+  if (total >= LAMBDA_ENV_LIMIT_BYTES) {
+    console.warn("");
+    console.warn(">>> Deploy may fail on Lambda compatibility mode if these vars are scoped to Functions/All.");
+    console.warn(">>> Netlify removed the 4 KB cap on the modern Functions runtime (June 2026) — contact support if deploy still fails.");
+  }
+
+  // Advisory only — never fail the build on this estimate.
+  void totalRaw;
 }
 
 main();
