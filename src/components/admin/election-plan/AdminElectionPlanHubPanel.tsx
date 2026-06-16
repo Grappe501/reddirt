@@ -7,7 +7,7 @@ import type {
   AdminElectionPlanCatalog,
   AdminElectionPlanLink,
   AdminElectionPlanSection,
-} from "@/lib/election-plan/admin-election-plan-catalog";
+} from "@/lib/election-plan/admin-election-plan-catalog-types";
 
 type Props = {
   catalog: AdminElectionPlanCatalog;

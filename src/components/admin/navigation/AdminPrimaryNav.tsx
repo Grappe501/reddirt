@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { isCampaignOsNavLinkActive } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
 import { CAMPAIGN_MANAGER_WORKBENCH_NAME } from "@/lib/admin/campaign-manager-workbench-labels";
-import { ADMIN_ELECTION_PLAN_HREF } from "@/lib/election-plan/admin-election-plan-catalog";
+import { ADMIN_ELECTION_PLAN_HREF } from "@/lib/election-plan/admin-election-plan-href";
 
 /** Primary Campaign Manager shortcuts — Path to Victory near the top of the sidebar. */
 const PRIMARY_LINKS = [

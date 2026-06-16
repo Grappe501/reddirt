@@ -5,7 +5,8 @@
 import { existsSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 
-import { buildAdminElectionPlanCatalog } from "../../src/lib/election-plan/admin-election-plan-catalog";
+import { buildAdminElectionPlanCatalogFromSnapshot } from "../../src/lib/election-plan/admin-election-plan-catalog-build";
+import { loadElectionPlanSnapshotFromDisk } from "../../src/lib/election-plan/election-plan-snapshot-disk";
 import { EXECUTIVE_BOOK_CHAPTERS } from "../../src/lib/election-plan/executiveBookChapters";
 import { getVolunteerAcademy } from "../../src/lib/election-plan/load-volunteer-academy";
 import { KELLY_SOS_PLATFORM } from "../../src/lib/election-plan/kelly-sos-platform";
@@ -72,7 +73,7 @@ function routeExists(staticRoutes: Set<string>, href: string): boolean {
 }
 
 function collectCatalogHrefs(): string[] {
-  const catalog = buildAdminElectionPlanCatalog();
+  const catalog = buildAdminElectionPlanCatalogFromSnapshot(loadElectionPlanSnapshotFromDisk());
   const hrefs: string[] = [];
   const walk = (link: { href: string; related?: { href: string }[] }) => {
     hrefs.push(link.href);

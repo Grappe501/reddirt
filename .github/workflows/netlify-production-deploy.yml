@@ -63,7 +63,7 @@ jobs:
         run: npx prisma migrate deploy
 
       - name: Production build (netlify-build.sh parity)
-        run: NODE_ENV=production npx next build
+        run: npm run election-plan:build && NODE_ENV=production npx next build
 
       - name: Trigger Netlify build hook (optional)
         env:
