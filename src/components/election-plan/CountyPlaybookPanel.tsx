@@ -1,6 +1,9 @@
 import Link from "next/link";
 
 import { CountyFundraisingRollupPanel } from "@/components/election-plan/CountyFundraisingRollupPanel";
+import { CountyIntelligenceNav } from "@/components/election-plan/CountyIntelligenceNav";
+import { CountyWorkbenchV3IntelPanel } from "@/components/election-plan/CountyWorkbenchV3IntelPanel";
+import { CountyWorkbenchV4OperationsPanel } from "@/components/election-plan/CountyWorkbenchV4OperationsPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { CountyVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { CountyPartyIntelligencePanel } from "@/components/election-plan/CountyPartyIntelligencePanel";
@@ -8,15 +11,17 @@ import { ImmersionCountyMissionCard } from "@/components/election-plan/Immersion
 import { CountyNetworkingContactsPanel } from "@/components/election-plan/CountyNetworkingContactsPanel";
 import { CountyRegistrationAllocationPanel } from "@/components/election-plan/CountyRegistrationAllocationPanel";
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
+import { LegacyCountySystemsPanel } from "@/components/election-plan/LegacyCountySystemsPanel";
 import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
 import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
 import { SpecialKpiGoalCard } from "@/components/election-plan/SpecialKpiGoalCard";
+import type { CountyWorkbenchV4OperationalView } from "@/lib/election-plan/county-workbench/build-county-v4-operational";
+import type { CountyWorkbenchV3View } from "@/lib/election-plan/county-workbench/types";
 import type { FieldEntryLocationSummary } from "@/lib/election-plan/field-entry/types";
 import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
 import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-team";
 import type { LocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/types";
-import { countyWorkbenchExternalHref } from "@/lib/election-plan/location-links";
 import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
@@ -45,6 +50,8 @@ type Props = {
   fieldEntrySummary?: FieldEntryLocationSummary;
   operatorInitials?: string | null;
   fosCountyRollup?: FosCountyRollup | null;
+  countyIntel?: CountyWorkbenchV3View | null;
+  v4Ops?: CountyWorkbenchV4OperationalView | null;
 };
 
 function guardrailClass(status: string) {
@@ -73,8 +80,9 @@ export function CountyPlaybookPanel({
   fieldEntrySummary,
   operatorInitials,
   fosCountyRollup = null,
+  countyIntel = null,
+  v4Ops = null,
 }: Props) {
-  const external = countyWorkbenchExternalHref(county.county, county.slug);
   const specialKpi = getSpecialKpiGoalForCounty(county.slug);
   const victoryTarget = getCountyVictoryTarget(county.county, county.tier);
   const countyParty = getCountyPartyProfileBySlug(county.slug);
@@ -91,173 +99,255 @@ export function CountyPlaybookPanel({
           href="/election-plan?tab=countyPlaybooks"
           className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]"
         >
-          ← County playbooks
+          ← County intelligence index
         </Link>
       )}
 
-      <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <p className="text-xs font-semibold text-[var(--ep-gold)]">
-            <span className={tierClass(county.tier)}>Tier {county.tier}</span>
-            {" · "}VCI #{county.vciRank}
-          </p>
-          <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">{county.county} County</h1>
-          <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{county.strategicRole}</p>
+      <CountyIntelligenceNav />
+
+      <div id="overview" className="scroll-mt-24">
+        <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs font-semibold text-[var(--ep-gold)]">
+              County intelligence · Election Plan
+              {" · "}
+              <span className={tierClass(county.tier)}>Tier {county.tier}</span>
+              {" · "}VCI #{county.vciRank}
+            </p>
+            <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">{county.county} County</h1>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{county.strategicRole}</p>
+          </div>
         </div>
-        <a href={external} target="_blank" rel="noopener noreferrer" className="ep-chapter-link text-sm">
-          Full county workbench ↗
-        </a>
+
+        <div className="my-6 ep-stat-grid">
+          <div className="ep-stat">
+            <div className="ep-stat-value">{formatVotes(county.vci)}</div>
+            <div className="ep-stat-label">VCI</div>
+          </div>
+          <div className="ep-stat">
+            <div className="ep-stat-value">
+              {county.coverageCompleted}/{county.coveragePlanned}
+            </div>
+            <div className="ep-stat-label" title={COUNTY_COVERAGE_EXPLAINER}>
+              Visit contacts ({county.coveragePct}%)
+            </div>
+          </div>
+          <div className="ep-stat">
+            <div className="ep-stat-value">{formatVotes(county.registrationGoal)}</div>
+            <div className="ep-stat-label">Registration goal</div>
+          </div>
+          <div className="ep-stat">
+            <div className="ep-stat-value">{formatVotes(county.lane2Recovery50)}</div>
+            <div className="ep-stat-label">Lane 2 @ 50%</div>
+          </div>
+        </div>
+
+        <div className="mb-6 ep-stat-grid">
+          <div className="ep-stat">
+            <div className="ep-stat-value">{formatVotes(county.gopConversionPotential)}</div>
+            <div className="ep-stat-label">GOP conversion pool</div>
+          </div>
+          <div className="ep-stat">
+            <div className={cn("ep-stat-value text-base", guardrailClass(county.guardrailStatus))}>
+              {county.guardrailStatus}
+            </div>
+            <div className="ep-stat-label">Visit guardrail</div>
+          </div>
+          <div className="ep-stat">
+            <div className="ep-stat-value">{fieldEvents.totalInCounty}</div>
+            <div className="ep-stat-label">Field calendar stops</div>
+          </div>
+          <div className="ep-stat">
+            <div className="ep-stat-value">{priorityCities.length}</div>
+            <div className="ep-stat-label">Priority cities</div>
+          </div>
+        </div>
+
+        {countyIntel ? (
+          <div className="mb-8 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
+            <div className="ep-card py-2 px-3">
+              <span className="text-xs text-[var(--ep-navy-muted)]">FIPS</span>
+              <p className="font-semibold">{countyIntel.fips || "—"}</p>
+            </div>
+            <div className="ep-card py-2 px-3">
+              <span className="text-xs text-[var(--ep-navy-muted)]">Region</span>
+              <p className="font-semibold">{countyIntel.regionLabel}</p>
+            </div>
+            <div className="ep-card py-2 px-3">
+              <span className="text-xs text-[var(--ep-navy-muted)]">County seat</span>
+              <p className="font-semibold">{countyIntel.countySeat ?? "—"}</p>
+            </div>
+            <div className="ep-card py-2 px-3">
+              <span className="text-xs text-[var(--ep-navy-muted)]">Population</span>
+              <p className="font-semibold">
+                {countyIntel.censusDemographics.population?.toLocaleString("en-US") ?? "—"}
+              </p>
+            </div>
+          </div>
+        ) : null}
       </div>
 
-      {victoryTarget ? (
-        <div className="mb-8">
-          <CountyVictoryTargetsPanel target={victoryTarget} variant="hero" />
-        </div>
-      ) : null}
+      <div id="strategy" className="scroll-mt-24">
+        {victoryTarget ? (
+          <div className="mb-8">
+            <CountyVictoryTargetsPanel target={victoryTarget} variant="hero" />
+          </div>
+        ) : null}
 
-      {immersionMission ? (
-        <div className="mb-8">
-          <ImmersionCountyMissionCard mission={immersionMission} />
+        {immersionMission ? (
+          <div className="mb-8">
+            <ImmersionCountyMissionCard mission={immersionMission} />
+          </div>
+        ) : null}
+
+        {countyParty ? (
+          <div className="mb-8">
+            <CountyPartyIntelligencePanel profile={countyParty} />
+          </div>
+        ) : null}
+
+        <div className="ep-card-glass mb-8 text-sm">
+          <p className="font-semibold text-[var(--ep-navy)]">{county.primaryMission}</p>
+          <p className="mt-1 text-[var(--ep-navy-muted)]">{county.secondaryMission}</p>
+          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{county.recommendedAction}</p>
         </div>
-      ) : null}
+
+        {specialKpi ? (
+          <div className="mb-8">
+            <SpecialKpiGoalCard goal={specialKpi} variant="panel" />
+          </div>
+        ) : null}
+
+        {countyIntel?.campaignReasoning.pathToVictory ? (
+          <div className="ep-card mb-8 text-sm">
+            <h2 className="font-heading text-base font-bold text-[var(--ep-navy)]">Path to victory</h2>
+            <p className="mt-2 text-[var(--ep-navy-muted)]">{countyIntel.campaignReasoning.pathToVictory}</p>
+          </div>
+        ) : null}
+      </div>
 
       {fosCountyRollup ? (
         <div id="fundraising" className="mb-8 scroll-mt-24">
           <CountyFundraisingRollupPanel rollup={fosCountyRollup} />
         </div>
-      ) : null}
-
-      {fieldEntrySummary ? (
-        <div className="mb-8">
-          <ElectionPlanFieldEntryPanel
-            countySlug={county.slug}
-            countyName={county.county}
-            initial={fieldEntrySummary}
-            operatorInitials={operatorInitials ?? null}
-          />
-        </div>
-      ) : null}
-
-      {countyParty ? (
-        <div className="mb-8">
-          <CountyPartyIntelligencePanel profile={countyParty} />
-        </div>
-      ) : null}
-
-      <div className="my-6 ep-stat-grid">
-        <div className="ep-stat">
-          <div className="ep-stat-value">{formatVotes(county.vci)}</div>
-          <div className="ep-stat-label">VCI</div>
-        </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value">
-            {county.coverageCompleted}/{county.coveragePlanned}
-          </div>
-          <div className="ep-stat-label" title={COUNTY_COVERAGE_EXPLAINER}>
-            Visit contacts ({county.coveragePct}%)
+      ) : (
+        <div id="fundraising" className="mb-8 scroll-mt-24">
+          <div className="ep-card border-dashed text-sm text-[var(--ep-navy-muted)]">
+            <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Fundraising</h2>
+            <p className="mt-2">Data gap — FOS county rollup not available for this county slug.</p>
           </div>
         </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value">{formatVotes(county.registrationGoal)}</div>
-          <div className="ep-stat-label">Registration goal</div>
-        </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value">{formatVotes(county.lane2Recovery50)}</div>
-          <div className="ep-stat-label">Lane 2 @ 50%</div>
-        </div>
-      </div>
+      )}
 
-      <div className="mb-6 ep-stat-grid">
-        <div className="ep-stat">
-          <div className="ep-stat-value">{formatVotes(county.gopConversionPotential)}</div>
-          <div className="ep-stat-label">GOP conversion pool</div>
-        </div>
-        <div className="ep-stat">
-          <div className={cn("ep-stat-value text-base", guardrailClass(county.guardrailStatus))}>
-            {county.guardrailStatus}
+      <div className="scroll-mt-24">
+        {strikeTeam ? (
+          <div className="mb-8">
+            <CountyStrikeTeamPanel team={strikeTeam} />
           </div>
-          <div className="ep-stat-label">Visit guardrail</div>
-        </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value">{fieldEvents.totalInCounty}</div>
-          <div className="ep-stat-label">Field calendar stops</div>
-        </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value">{priorityCities.length}</div>
-          <div className="ep-stat-label">Priority cities</div>
-        </div>
+        ) : null}
+        {v4Ops ? <CountyWorkbenchV4OperationsPanel countyName={county.county} ops={v4Ops} /> : (
+          <div id="leadership" className="ep-card mb-8 border-dashed scroll-mt-24">
+            <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Leadership</h2>
+            <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">Data gap — county leadership framework not loaded.</p>
+          </div>
+        )}
       </div>
-
-      <div className="ep-card-glass mb-8 text-sm">
-        <p className="font-semibold text-[var(--ep-navy)]">{county.primaryMission}</p>
-        <p className="mt-1 text-[var(--ep-navy-muted)]">{county.secondaryMission}</p>
-        <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{county.recommendedAction}</p>
-      </div>
-
-      {specialKpi ? (
-        <div className="mb-8">
-          <SpecialKpiGoalCard goal={specialKpi} variant="panel" />
-        </div>
-      ) : null}
-
-      {strikeTeam ? (
-        <div className="mb-8">
-          <CountyStrikeTeamPanel team={strikeTeam} />
-        </div>
-      ) : null}
 
       {priorityCities.length > 0 ? (
-        <div className="ep-card mb-8">
-          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Priority cities in {county.county}</h2>
+        <div id="cities" className="ep-card mb-8 scroll-mt-24">
+          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Cities & communities in {county.county}</h2>
           <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-            City location briefs ↔ county playbook ↔ field calendar worksheets
+            Priority cities open community workbenches — Sherwood and other cities live under{" "}
+            <code className="text-xs">/election-plan/workbenches/{`{slug}`}</code>, not as county slugs.
           </p>
           <ul className="mt-4 space-y-2">
             {priorityCities.map((city) => (
-              <li key={city.slug} className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--ep-border)] py-2 last:border-0">
+              <li
+                key={city.slug}
+                className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--ep-border)] py-2 last:border-0"
+              >
                 <div>
-                  <Link href={cityLocationBriefHref(city.slug)} className="font-semibold text-[var(--ep-navy)] hover:text-[var(--ep-gold)]">
+                  <Link
+                    href={cityLocationBriefHref(city.slug)}
+                    className="font-semibold text-[var(--ep-navy)] hover:text-[var(--ep-gold)]"
+                  >
                     #{city.rank} {city.name}
                   </Link>
                   <p className="text-xs text-[var(--ep-navy-muted)]">
                     {formatVotes(city.targetVotes)} target · {city.visitFrequency}
                   </p>
                 </div>
-                <Link href={cityLocationBriefHref(city.slug)} className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]">
-                  Location brief →
+                <Link
+                  href={`/election-plan/workbenches/${city.slug}`}
+                  className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]"
+                >
+                  Community workbench →
                 </Link>
               </li>
             ))}
           </ul>
         </div>
-      ) : null}
+      ) : (
+        <div id="cities" className="ep-card mb-8 scroll-mt-24 border-dashed">
+          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Cities & communities</h2>
+          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">Data gap — no priority cities mapped in election plan snapshot.</p>
+        </div>
+      )}
 
-      <CountyRegistrationAllocationPanel county={county} cities={allCities} />
+      <div id="field" className="scroll-mt-24">
+        {fieldEntrySummary ? (
+          <div className="mb-8">
+            <ElectionPlanFieldEntryPanel
+              countySlug={county.slug}
+              countyName={county.county}
+              initial={fieldEntrySummary}
+              operatorInitials={operatorInitials ?? null}
+            />
+          </div>
+        ) : null}
 
-      <LocationCalendarBindingPanel
-        binding={{
-          ...calendarBinding,
-          weekPlans: calendarBinding.weekPlans,
-          currentWeekPlan: calendarBinding.weekPlans.find((w) => w.isCurrentWeek) ?? null,
-        }}
-        locationLabel={`${county.county} County`}
-        countyName={county.county}
-      />
+        <CountyRegistrationAllocationPanel county={county} cities={allCities} />
 
-      <div className="mb-8">
-        <LocationFieldEventsPanel
-          title={`${county.county} County field calendar`}
-          subtitle={`${fieldEvents.upcoming.length} upcoming from reference date ${referenceDate} · cross-linked to city briefs`}
-          upcoming={fieldEvents.upcoming}
-          recent={fieldEvents.recent}
-          cities={priorityCities}
+        <LocationCalendarBindingPanel
+          binding={{
+            ...calendarBinding,
+            weekPlans: calendarBinding.weekPlans,
+            currentWeekPlan: calendarBinding.weekPlans.find((w) => w.isCurrentWeek) ?? null,
+          }}
+          locationLabel={`${county.county} County`}
           countyName={county.county}
-          countySlug={county.slug}
-          showCountyLink={false}
         />
+
+        <div id="events" className="mb-8 scroll-mt-24">
+          <LocationFieldEventsPanel
+            title={`${county.county} County field calendar`}
+            subtitle={`${fieldEvents.upcoming.length} upcoming from reference date ${referenceDate} · cross-linked to city briefs`}
+            upcoming={fieldEvents.upcoming}
+            recent={fieldEvents.recent}
+            cities={priorityCities}
+            countyName={county.county}
+            countySlug={county.slug}
+            showCountyLink={false}
+          />
+        </div>
       </div>
 
-      <CountyNetworkingContactsPanel countySlug={county.slug} countyName={county.county} />
+      <div id="relationships" className="mb-8 scroll-mt-24">
+        <CountyNetworkingContactsPanel countySlug={county.slug} countyName={county.county} />
+      </div>
+
+      {countyIntel ? (
+        <CountyWorkbenchV3IntelPanel intel={countyIntel} hideNav skipStrategySection skipIdentitySection />
+      ) : (
+        <div id="gaps" className="ep-card mb-8 scroll-mt-24 border-dashed">
+          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Data gaps</h2>
+          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+            County intelligence profile failed to load — census, BLS, elections, officials, and history unavailable.
+          </p>
+        </div>
+      )}
+
+      <LegacyCountySystemsPanel countyName={county.county} />
     </section>
   );
 }

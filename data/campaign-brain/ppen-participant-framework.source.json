@@ -1,0 +1,126 @@
+{
+  "version": 2,
+  "updatedAt": "2026-06-16",
+  "note": "PPEN core objects + A.0b identity + A.0c intake. All counts from records only.",
+  "coreObjects": [
+    {
+      "key": "person",
+      "label": "Person",
+      "question": "Who they are",
+      "description": "One canonical human — name, contact, username, access level, journey shell"
+    },
+    {
+      "key": "participation",
+      "label": "Participation",
+      "question": "How they are involved",
+      "description": "Involvement in a specific org context — county, community, coalition, event committee, comms tier"
+    },
+    {
+      "key": "relationship",
+      "label": "Relationship",
+      "question": "Who they know and influence",
+      "description": "My Five edges, Help 10 assists, contacts, trust graph"
+    },
+    {
+      "key": "impact",
+      "label": "Impact",
+      "question": "What changed because of them",
+      "description": "Because of You rollups — people joined, network impact, vote plans"
+    }
+  ],
+  "accessLevels": [
+    { "level": 1, "key": "participant", "label": "Participant" },
+    { "level": 2, "key": "leader", "label": "Leader" },
+    { "level": 3, "key": "county", "label": "County" },
+    { "level": 4, "key": "regional", "label": "Regional" },
+    { "level": 5, "key": "state", "label": "State" },
+    { "level": 6, "key": "executive", "label": "Executive" }
+  ],
+  "personFields": [
+    { "key": "name", "label": "Name", "required": true },
+    { "key": "address", "label": "Address", "required": false },
+    { "key": "phone", "label": "Phone", "required": true },
+    { "key": "email", "label": "Email", "required": true },
+    { "key": "username", "label": "Username", "required": true },
+    { "key": "status", "label": "Status", "required": true }
+  ],
+  "participationContexts": [
+    { "key": "county", "label": "County", "example": "Faulkner County Volunteer Lead" },
+    { "key": "community", "label": "Community", "example": "Sherwood community volunteer" },
+    { "key": "coalition", "label": "Coalition", "example": "Veterans Outreach Contributor" },
+    { "key": "event_committee", "label": "Event Committee", "example": "Sherwood Event Committee Member" },
+    { "key": "comms", "label": "Communications", "example": "Substack Insider Member" },
+    { "key": "program", "label": "Program", "example": "Direct Democracy Coalition Participant" }
+  ],
+  "participationFields": [
+    { "key": "person_id", "label": "Person", "required": true },
+    { "key": "context_type", "label": "Context Type", "required": true },
+    { "key": "context_slug", "label": "Context Slug", "required": true },
+    { "key": "role_title", "label": "Role Title", "required": true },
+    { "key": "status", "label": "Status", "required": true },
+    { "key": "access_scope", "label": "Access Scope", "required": false },
+    { "key": "started_at", "label": "Started At", "required": false },
+    { "key": "ended_at", "label": "Ended At", "required": false }
+  ],
+  "journeyTracks": [
+    { "key": "leadership_journey", "label": "Leadership Journey", "optional": true },
+    { "key": "my_five", "label": "My Five", "optional": false },
+    { "key": "help_ten", "label": "Help 10 Participate", "optional": false },
+    { "key": "training", "label": "Training", "optional": false },
+    { "key": "certifications", "label": "Certifications", "optional": false },
+    { "key": "volunteer_hours", "label": "Volunteer Hours", "optional": false },
+    { "key": "events", "label": "Events", "optional": false }
+  ],
+  "myJourneyHomeFields": [
+    { "key": "my_five_progress", "label": "My Five", "format": "fraction", "example": "3 / 5" },
+    { "key": "help_ten_progress", "label": "Help 10 Participate", "format": "fraction", "example": "6 / 10" },
+    { "key": "events_worked", "label": "Events Worked", "format": "count" },
+    { "key": "volunteer_hours", "label": "Volunteer Hours", "format": "count" },
+    { "key": "leadership_opportunities", "label": "Leadership Opportunities", "format": "count" },
+    { "key": "county_assignment", "label": "County Assignment", "format": "label" },
+    { "key": "current_role", "label": "Current Role", "format": "label" },
+    { "key": "next_step", "label": "Next Step", "format": "label" }
+  ],
+  "impactMetrics": [
+    { "key": "people_joined", "label": "People Joined", "section": "Because of You" },
+    { "key": "network_impact", "label": "Network Impact", "section": "Because of You" },
+    { "key": "people_helped_participate", "label": "People Helped Participate", "section": "Because of You" },
+    { "key": "vote_plans_completed", "label": "Vote Plans Completed", "section": "Because of You" }
+  ],
+  "workbenchOperatingSections": [
+    { "key": "leadership", "label": "Leadership" },
+    { "key": "open_positions", "label": "Open Positions" },
+    { "key": "interested_candidates", "label": "Interested Candidates" },
+    { "key": "volunteer_pipeline", "label": "Volunteer Pipeline" },
+    { "key": "training", "label": "Training" },
+    { "key": "events", "label": "Events" },
+    { "key": "relationships", "label": "Relationships" },
+    { "key": "communications", "label": "Communications" },
+    { "key": "my_five", "label": "My Five" },
+    { "key": "help_ten", "label": "Help 10 Participate" }
+  ],
+  "intakeActivationPipeline": [
+    { "key": "volunteer_signup", "label": "Volunteer Signup", "phase": "A.0c" },
+    { "key": "confirmation_email", "label": "Confirmation Email", "phase": "A.0c" },
+    { "key": "activation_link", "label": "One-Time Activation Link", "phase": "A.0c" },
+    { "key": "create_username", "label": "Create Username", "phase": "A.0c" },
+    { "key": "create_password", "label": "Create Password", "phase": "A.0c" },
+    { "key": "accept_terms", "label": "Accept Terms", "phase": "A.0c" },
+    { "key": "create_person", "label": "Create Person Record", "phase": "A.0b" },
+    { "key": "create_journey", "label": "Create Journey Record", "phase": "A.0b" },
+    { "key": "create_participation", "label": "Create Participation Record(s)", "phase": "A.0b" },
+    { "key": "assign_county", "label": "Assign County", "phase": "A.0c" },
+    { "key": "assign_community", "label": "Assign Community", "phase": "A.0c" },
+    { "key": "assign_coalition_interests", "label": "Assign Coalition Interests", "phase": "A.0c" },
+    { "key": "grant_level_1", "label": "Grant Level 1 (Participant)", "phase": "A.0b" },
+    { "key": "enter_os", "label": "Enter OS → My Journey", "phase": "A.0c" }
+  ],
+  "osLayers": [
+    { "key": "participant", "label": "Participant Layer", "position": 1 },
+    { "key": "relationship", "label": "Relationship Layer", "position": 2, "includes": ["My Five", "Help 10", "Contacts", "Trust"] },
+    { "key": "work", "label": "Work Layer", "position": 3, "includes": ["Events", "Committees", "Assignments", "Training"] },
+    { "key": "organization", "label": "Organization Layer", "position": 4, "includes": ["Community", "Coalition", "County", "Region"] },
+    { "key": "communications", "label": "Communications Layer", "position": 5, "includes": ["CCH", "Substack", "Social", "Email", "SMS"] },
+    { "key": "campaign", "label": "Campaign Layer", "position": 6, "includes": ["Statewide visibility", "Reporting", "Strategy"] }
+  ]
+}

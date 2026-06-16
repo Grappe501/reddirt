@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "note": "County Workbench v4 operating center — leadership slots, PPEN framework, volunteer pipeline stages. Counts from records only.",
+  "navSections": [
+    { "id": "overview", "label": "Overview" },
+    { "id": "fundraising", "label": "Fundraising" },
+    { "id": "leadership", "label": "Leadership" },
+    { "id": "intelligence", "label": "Intelligence" },
+    { "id": "open-positions", "label": "Open Positions" },
+    { "id": "my-five", "label": "My Five" },
+    { "id": "help-ten", "label": "Help 10 Participate" },
+    { "id": "volunteer-pipeline", "label": "Volunteer Pipeline" },
+    { "id": "events", "label": "Events" },
+    { "id": "communications", "label": "Communications" },
+    { "id": "coalitions", "label": "Coalitions" },
+    { "id": "relationships", "label": "Relationships" },
+    { "id": "documents", "label": "Documents" },
+    { "id": "activity", "label": "Activity Feed" }
+  ],
+  "leadershipRoles": [
+    { "key": "community_lead", "label": "Community Lead", "strikeTeamKey": "countyCaptain" },
+    { "key": "volunteer_lead", "label": "Volunteer Lead", "strikeTeamKey": "volunteerCaptain" },
+    { "key": "faith_lead", "label": "Faith Lead", "strikeTeamKey": "faithCaptain" },
+    { "key": "youth_lead", "label": "Youth Lead", "strikeTeamKey": null },
+    { "key": "events_lead", "label": "Events Lead", "strikeTeamKey": "eventsCaptain" },
+    { "key": "media_lead", "label": "Media Lead", "strikeTeamKey": "mediaCaptain" }
+  ],
+  "volunteerPipelineStages": [
+    { "key": "applications", "label": "Volunteer Applications", "recordSource": "ppen_application" },
+    { "key": "pending_review", "label": "Pending Review", "recordSource": "ppen_application_status" },
+    { "key": "approved", "label": "Approved", "recordSource": "ppen_application_status" },
+    { "key": "training", "label": "Training", "recordSource": "ppen_training" },
+    { "key": "leadership_candidates", "label": "Leadership Candidates", "recordSource": "ppen_leadership_path" }
+  ],
+  "ppenMyFiveMetrics": [
+    { "key": "participants", "label": "Participants" },
+    { "key": "my_five_completion_pct", "label": "My Five Completion" },
+    { "key": "network_impact", "label": "Network Impact (people)" }
+  ],
+  "ppenHelpTenMetrics": [
+    { "key": "people_assisted", "label": "People Assisted" },
+    { "key": "registration_verification", "label": "Registration Verification" },
+    { "key": "vote_plans", "label": "Vote Plans" }
+  ]
+}

@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { CountyPlaybookPanel } from "@/components/election-plan/CountyPlaybookPanel";
+import { buildCountyWorkbenchV4OperationalView } from "@/lib/election-plan/county-workbench/build-county-v4-operational";
+import { loadCountyWorkbenchV3 } from "@/lib/election-plan/county-workbench/load-county-workbench-v3";
 import { getCitiesInCounty, getCountyBySlug } from "@/lib/election-plan/load-county";
 import { getCountyStrikeTeamBySlug } from "@/lib/election-plan/load-county-strike-team";
 import { buildCountyCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
@@ -25,8 +27,8 @@ export async function generateMetadata({ params }: Props) {
   const county = getCountyBySlug(data, countySlug);
   if (!county) return { title: "County not found" };
   return {
-    title: `${county.county} County | County playbook`,
-    description: `County playbook, strike team, field calendar, and Kelly outreach contacts for ${county.county} County`,
+    title: `${county.county} County | County intelligence`,
+    description: `County intelligence drilldown — VCI, vote targets, cities, leadership, fundraising, field activity, demographics, and election history for ${county.county} County`,
     robots: { index: false, follow: false },
   };
 }
@@ -45,18 +47,20 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
     limit: 8,
   });
   const countyCalendar = buildCountyCalendarBinding(data, county.county);
-  const [fieldEntrySummary, operator] = await Promise.all([
+  const [fieldEntrySummary, operator, countyIntel] = await Promise.all([
     loadFieldEntriesForLocation({ countySlug: county.slug }),
     loadCurrentElectionPlanOperator(),
+    loadCountyWorkbenchV3(county),
   ]);
 
   const fosCountyRollup = getFosCountyRollup(county.slug);
+  const v4Ops = buildCountyWorkbenchV4OperationalView(strikeTeam, fieldEntrySummary);
 
   return (
     <>
-      <div className="ep-classification">Internal · County playbook · {county.county} County</div>
+      <div className="ep-classification">Internal · County intelligence · {county.county} County</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-6xl">
           <CountyPlaybookPanel
             county={county}
             priorityCities={priorityCities}
@@ -74,6 +78,8 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
             fieldEntrySummary={fieldEntrySummary}
             operatorInitials={operator?.initials ?? null}
             fosCountyRollup={fosCountyRollup}
+            countyIntel={countyIntel}
+            v4Ops={v4Ops}
           />
         </div>
       </div>

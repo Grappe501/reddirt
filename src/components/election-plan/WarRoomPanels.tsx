@@ -3,10 +3,11 @@
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
 
-import { CampaignFundraisingProgressCard } from "@/components/election-plan/CampaignFundraisingProgressCard";
+import { WarRoomFundraisingHeaderStat } from "@/components/election-plan/CampaignFundraisingProgressCard";
 import { JacksonvilleFestivilleGoalsCard } from "@/components/election-plan/JacksonvilleFestivilleGoalsCard";
 import { SpecialKpiGoalsStrip } from "@/components/election-plan/SpecialKpiGoalsStrip";
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
+import { grassrootsGuitarStringsEventHref } from "@/lib/election-plan/community-workbench/event-links";
 import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
 import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
 import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
@@ -111,11 +112,70 @@ function VolunteerLeaderRoster({
   );
 }
 
+function SherwoodVolunteerStat({
+  volunteers,
+  roster,
+}: {
+  volunteers: number;
+  roster: ElectionPlanWorkbenchSnapshot["warRoom"]["sherwoodVolunteersRoster"];
+}) {
+  const [open, setOpen] = useState(false);
+  const snapshotOnly =
+    volunteers > 0 && roster.length > 0 && roster.every((r) => !r.confirmedFoundingTeam);
+
+  return (
+    <>
+      {snapshotOnly ? (
+        <p className="mt-2 rounded-md border border-amber-300 bg-amber-50 px-2 py-1.5 text-[10px] text-amber-950">
+          Snapshot roster — not activated participants. Track G&amp;G committee on{" "}
+          <Link href={grassrootsGuitarStringsEventHref()} className="font-semibold underline">
+            event workbench
+          </Link>
+          .
+        </p>
+      ) : volunteers > 0 && roster.length === 0 ? (
+        <p className="mt-2 text-[10px] text-amber-800">
+          Volunteer count has no openable roster — treat as data gap until PPEN records exist.
+        </p>
+      ) : null}
+      <button
+        type="button"
+        className="mt-3 w-full rounded-md border border-[var(--ep-border)] bg-[var(--ep-cream)] px-3 py-2 text-left text-sm transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+      >
+        <span className="font-semibold text-[var(--ep-navy)]">
+          G&amp;G / event volunteers (record-backed): {snapshotOnly ? 0 : volunteers}
+        </span>
+        {snapshotOnly ? (
+          <span className="mt-1 block text-[10px] text-amber-800">
+            Snapshot listed {volunteers} — not counted as active until activation records exist
+          </span>
+        ) : null}
+        <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+          {open ? "Hide roster ▲" : "View roster ▼"}
+        </span>
+      </button>
+      {open && roster.length > 0 ? (
+        <div className="mt-4 border-t border-[var(--ep-border)] pt-4">
+          <VolunteerLeaderRoster
+            leaders={roster}
+            subtitle={
+              snapshotOnly
+                ? "Planning snapshot names only — not activated event participants"
+                : `${volunteers} confirmed · contact details coming later`
+            }
+          />
+        </div>
+      ) : null}
+    </>
+  );
+}
+
 /** PASS-17 Deliverable 1 — Executive War Room Homepage */
 export function WarRoomPanel({ data }: Props) {
   const w = data.warRoom;
   const [volunteerRosterOpen, setVolunteerRosterOpen] = useState(false);
-  const [sherwoodVolunteersOpen, setSherwoodVolunteersOpen] = useState(false);
   const [countiesRosterOpen, setCountiesRosterOpen] = useState(false);
   return (
     <section>
@@ -124,7 +184,7 @@ export function WarRoomPanel({ data }: Props) {
         subtitle={`Week ${w.currentWeek} · ${w.weekRange} — campaign command center`}
       />
 
-      <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         <div className="ep-card ep-war-stat">
           <div className="ep-war-stat-value">{w.weeksRemaining}</div>
           <div className="ep-war-stat-label">Weeks remaining</div>
@@ -153,6 +213,7 @@ export function WarRoomPanel({ data }: Props) {
             County breakdown →
           </p>
         </Link>
+        <WarRoomFundraisingHeaderStat data={w} />
         <div className="ep-card ep-war-stat">
           <div className="ep-war-stat-value">
             {w.endorsementsEndorsed} / {w.endorsementsGoal}
@@ -160,10 +221,6 @@ export function WarRoomPanel({ data }: Props) {
           <div className="ep-war-stat-label">Endorsed / goal</div>
           <p className="mt-1 text-[10px] text-[var(--ep-navy-muted)]">{w.endorsementsRequested} requested</p>
         </div>
-      </div>
-
-      <div className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <CampaignFundraisingProgressCard data={w} variant="war" />
       </div>
 
       <p className="mb-4 text-xs text-[var(--ep-navy-muted)]">
@@ -253,27 +310,7 @@ export function WarRoomPanel({ data }: Props) {
           <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
             Listed host = ${w.sherwoodHostDonation} donation; VIP table is a separate upgrade
           </p>
-          <button
-            type="button"
-            className="mt-3 w-full rounded-md border border-[var(--ep-border)] bg-[var(--ep-cream)] px-3 py-2 text-left text-sm transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]"
-            onClick={() => setSherwoodVolunteersOpen((open) => !open)}
-            aria-expanded={sherwoodVolunteersOpen}
-          >
-            <span className="font-semibold text-[var(--ep-navy)]">
-              Sherwood volunteers: {w.sherwoodVolunteers}
-            </span>
-            <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
-              {sherwoodVolunteersOpen ? "Hide roster ▲" : "View roster ▼"}
-            </span>
-          </button>
-          {sherwoodVolunteersOpen ? (
-            <div className="mt-4 border-t border-[var(--ep-border)] pt-4">
-              <VolunteerLeaderRoster
-                leaders={w.sherwoodVolunteersRoster}
-                subtitle={`${w.sherwoodVolunteers} confirmed for Sherwood event ops · contact details coming later`}
-              />
-            </div>
-          ) : null}
+          <SherwoodVolunteerStat volunteers={w.sherwoodVolunteers} roster={w.sherwoodVolunteersRoster} />
         </div>
         <JacksonvilleFestivilleGoalsCard variant="compact" />
       </div>
@@ -907,65 +944,10 @@ export function PresenceMapPanel({ data }: Props) {
   );
 }
 
-/** PASS-17 Deliverable 5 — Coalition Command Center */
-export function CoalitionCommandPanel({ data }: Props) {
-  const c = data.coalitionPowerMap;
-  const tracks = [
-    { label: "NAACP", called: c.naacp.called, total: c.naacp.branchesTotal, meetings: c.naacp.meetingsRequested, speaking: c.naacp.speakingScheduled },
-    { label: "Labor", called: c.labor.contacted, total: c.labor.unionsTotal, meetings: c.labor.meetingsCompleted, speaking: c.labor.endorsementsInProgress },
-    { label: "AEA / Teachers", called: c.aea.teacherSupporters, total: c.aea.countiesActive, meetings: c.aea.meetingsCompleted, speaking: 0 },
-    { label: "Muslim community", called: c.muslim.contactsTotal, total: c.muslim.contactsTotal, meetings: c.muslim.meetingsOpen, speaking: c.muslim.meetingsRequested },
-    { label: "Hispanic outreach", called: 0, total: 0, meetings: 0, speaking: 0, note: c.hispanic.frameworkStatus },
-    { label: "Current officials", called: c.electedOfficials.contacted, total: c.electedOfficials.total, meetings: c.electedOfficials.meetingsCompleted, speaking: c.electedOfficials.introductionsRequested },
-    { label: "Former officials", called: c.pastOfficials.engaged, total: c.pastOfficials.total, meetings: 0, speaking: 0 },
-    { label: "Candidate partnerships", called: c.candidates.activePartnerships, total: c.candidates.activePartnerships, meetings: c.candidates.sharedEvents, speaking: c.candidates.jointMobilize },
-  ];
-
-  return (
-    <section>
-      <SectionTitle title="Coalition Command Center" subtitle={c.heroLine} />
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {tracks.map((t) => (
-          <div key={t.label} className="ep-card text-sm">
-            <h4 className="font-heading font-bold">{t.label}</h4>
-            {"note" in t && t.note ? (
-              <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{String(t.note)}</p>
-            ) : (
-              <dl className="mt-2 space-y-1">
-                <div className="flex justify-between">
-                  <dt className="text-[var(--ep-navy-muted)]">Contacted</dt>
-                  <dd className="font-semibold">{t.called}{t.total ? ` / ${t.total}` : ""}</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="text-[var(--ep-navy-muted)]">Meetings</dt>
-                  <dd className="font-semibold">{t.meetings}</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="text-[var(--ep-navy-muted)]">Events / intros</dt>
-                  <dd className="font-semibold">{t.speaking}</dd>
-                </div>
-              </dl>
-            )}
-          </div>
-        ))}
-      </div>
-      <div className="mt-6 ep-card">
-        <h3 className="font-heading font-bold">Endorsement pipeline (linked)</h3>
-        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-          {data.endorsementAcquisition.requested} requested · {data.endorsementAcquisition.endorsed} endorsed ·{" "}
-          {data.endorsementAcquisition.activated} activated · {data.endorsementAcquisition.volunteerLeadsGenerated}{" "}
-          volunteer leads
-        </p>
-      </div>
-    </section>
-  );
-}
-
 /** PASS-17 Deliverable 6 — Sherwood Victory Center */
 export function SherwoodVictoryPanel({ data }: Props) {
   const s = data.coalitionPowerMap.sherwood;
   const w = data.warRoom;
-  const [sherwoodVolunteersOpen, setSherwoodVolunteersOpen] = useState(false);
   return (
     <section>
       <SectionTitle
@@ -987,18 +969,15 @@ export function SherwoodVictoryPanel({ data }: Props) {
           <div className="grid gap-3 sm:grid-cols-2">
             <ProgressStat label="VIP tables sold" value={w.sherwoodVipSold} goal={w.sherwoodVipGoal} />
             <ProgressStat label="Tickets sold" value={w.sherwoodTicketsSold} goal={700} />
-            <ProgressStat
-              label="Sherwood volunteers"
-              value={w.sherwoodVolunteers}
-              goal={50}
-              onClick={() => setSherwoodVolunteersOpen((open) => !open)}
-              expanded={sherwoodVolunteersOpen}
+          </div>
+          <div className="mt-4">
+            <Link
+              href={grassrootsGuitarStringsEventHref()}
+              className="text-sm font-semibold text-[var(--ep-navy)] underline"
             >
-              <VolunteerLeaderRoster
-                leaders={w.sherwoodVolunteersRoster}
-                subtitle={`${w.sherwoodVolunteers} confirmed · contact details coming later`}
-              />
-            </ProgressStat>
+              Grassroots &amp; Guitar Strings event workbench (Sept 17 · $20K profit KPI) →
+            </Link>
+            <SherwoodVolunteerStat volunteers={w.sherwoodVolunteers} roster={w.sherwoodVolunteersRoster} />
           </div>
         </div>
         <JacksonvilleFestivilleGoalsCard variant="panel" />

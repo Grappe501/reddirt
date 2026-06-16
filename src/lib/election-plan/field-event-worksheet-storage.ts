@@ -32,15 +32,14 @@ function addDaysYmd(ymd: string, days: number): string {
   return d.toISOString().slice(0, 10);
 }
 
-export function defaultWorksheet(entry: ExecutiveCalendarEntry): FieldEventWorksheet {
-  const place = entry.city ? `${entry.city}, ${entry.county} County` : `${entry.county} County`;
+export function defaultWorksheet(_entry: ExecutiveCalendarEntry): FieldEventWorksheet {
   return {
-    accomplishment: `What we are trying to accomplish at ${entry.label} in ${place} — fill from field intelligence and county/city brief.`,
-    messaging: `Localized message for ${place} — competent SOS service, Arkansas everyday life, Big Table framing.`,
+    accomplishment: "",
+    messaging: "",
     volunteers: "",
     localContact: "",
     localContactRole: "",
-    runOfDay: `Run of day for ${entry.startDate}:\n\n• Travel / arrival\n• Setup\n• Kelly program\n• Volunteer shifts\n• Departure / debrief`,
+    runOfDay: "",
     logisticsTravel: "",
     logisticsVenue: "",
     logisticsMaterials: "",

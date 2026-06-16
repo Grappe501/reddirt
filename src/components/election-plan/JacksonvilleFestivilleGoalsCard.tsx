@@ -24,7 +24,9 @@ export function JacksonvilleFestivilleGoalsCard({ variant = "panel" }: Props) {
 
       {isPanel ? (
         <div className="ep-warning mb-4">
-          <p className="text-lg font-semibold">5,589-vote city target · Sept 20</p>
+          <p className="text-lg font-semibold">
+            {formatVotes(targets.votes.target)}-vote city target · Sept 20
+          </p>
           <p className="mt-2 text-sm">
             LRAFB corridor · Pulaski County suburban anchor · community event visibility
           </p>

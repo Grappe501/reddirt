@@ -31,88 +31,11 @@ export const COMMUNITY_NOTE_TYPES = [
   { key: "idea", label: "Ideas" },
 ] as const;
 
-export const COMMUNITY_KPI_TEMPLATES: Record<
-  string,
-  { label: string; metrics: Array<{ key: string; label: string; target?: number }> }
-> = {
-  default_city: {
-    label: "Standard city",
-    metrics: [
-      { key: "hci", label: "HCI conversations", target: 100 },
-      { key: "volunteers", label: "Active volunteers", target: 25 },
-      { key: "events", label: "Events held", target: 6 },
-      { key: "leaders", label: "Leader meetings", target: 15 },
-    ],
-  },
-  sherwood: {
-    label: "Sherwood model",
-    metrics: [
-      { key: "hci", label: "HCI", target: 200 },
-      { key: "town_hall", label: "Town hall attendance", target: 80 },
-      { key: "volunteers", label: "Volunteer recruitment", target: 40 },
-      { key: "faith", label: "Faith leader meetings", target: 12 },
-    ],
-  },
-  jacksonville: {
-    label: "Jacksonville",
-    metrics: [
-      { key: "petition_leaders", label: "Petition leaders", target: 20 },
-      { key: "captains", label: "Community captains", target: 15 },
-      { key: "ward_meetings", label: "Ward meetings", target: 8 },
-      { key: "turnout", label: "Turnout targets met", target: 100 },
-    ],
-  },
-  bentonville: {
-    label: "Bentonville / NWA pro",
-    metrics: [
-      { key: "young_pro", label: "Young professional outreach", target: 50 },
-      { key: "business", label: "Business meetings", target: 20 },
-      { key: "chamber", label: "Chamber engagement", target: 10 },
-      { key: "volunteers", label: "Volunteers", target: 30 },
-    ],
-  },
-  campus: {
-    label: "Campus program",
-    metrics: [
-      { key: "captains", label: "Campus captains", target: 12 },
-      { key: "registrations", label: "Registrations", target: 500 },
-      { key: "events", label: "Campus events", target: 8 },
-      { key: "conversations", label: "Student conversations", target: 300 },
-    ],
-  },
-  election_integrity: {
-    label: "Election integrity",
-    metrics: [
-      { key: "town_halls", label: "Town halls", target: 10 },
-      { key: "trainings", label: "Observer trainings", target: 25 },
-      { key: "counties", label: "Counties active", target: 20 },
-      { key: "volunteers", label: "Integrity volunteers", target: 100 },
-    ],
-  },
-  direct_democracy: {
-    label: "Direct democracy",
-    metrics: [
-      { key: "petitions", label: "Petition circulators", target: 50 },
-      { key: "signatures", label: "Signature progress", target: 10000 },
-      { key: "events", label: "Education events", target: 12 },
-      { key: "coalitions", label: "Coalition partners", target: 8 },
-    ],
-  },
-  events: {
-    label: "Events / fairs",
-    metrics: [
-      { key: "fairs", label: "County fairs covered", target: 15 },
-      { key: "booth_shifts", label: "Booth shifts filled", target: 60 },
-      { key: "contacts", label: "Contacts collected", target: 500 },
-      { key: "volunteers", label: "Fair volunteers", target: 40 },
-    ],
-  },
-};
-
 /** Per-slug KPI template overrides (content local, structure shared). */
 export const COMMUNITY_KPI_SLUG_OVERRIDES: Record<string, string> = {
   sherwood: "sherwood",
   jacksonville: "jacksonville",
+  quitman: "quitman",
   bentonville: "bentonville",
   "uca-campus": "campus",
   "election-integrity": "election_integrity",

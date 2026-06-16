@@ -1,0 +1,749 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "pass": "FUNDRAISING-PATHWAYS-INVENTORY",
+  "status": "planning_only",
+  "note": "Planning inventory only — no Prisma, UI, donation processing, forecasting, or fake donor/raised totals. Defines how participants self-select fundraising lanes through A.0c extension and route to Participation records, leadership candidate queues, or workbench surfaces. FOS = how much; Opportunity Architecture = how we get there; Pathways = who participates how.",
+  "doctrineRefs": [
+    "docs/FUNDRAISING_PATHWAYS_ARCHITECTURE.md",
+    "docs/FUNDRAISING_OPPORTUNITY_ARCHITECTURE.md",
+    "docs/FUNDRAISING_OPERATING_SYSTEM_ARCHITECTURE.md",
+    "docs/LEADERSHIP_WORKBENCH_ARCHITECTURE.md",
+    "docs/PPEN_A0C_VOLUNTEER_INTAKE_ACTIVATION.md",
+    "docs/PPEN_A0B_PARTICIPANT_IDENTITY_LAYER.md",
+    "docs/ELECTION_PLAN_DATA_INTEGRITY_DOCTRINE.md",
+    "data/campaign-brain/fundraising-operating-system.source.json",
+    "data/campaign-brain/fundraising-opportunity-registry.source.json",
+    "data/campaign-brain/leadership-workbench-registry.source.json"
+  ],
+  "buildGate": {
+    "blockedUntil": [
+      "sherwood_jacksonville_pilot_smoke",
+      "ppen_a0b_person_participation",
+      "ppen_a0c_intake_activation",
+      "leadership_workbench_planning_locked",
+      "fundraising_opportunity_planning_locked"
+    ],
+    "sequencingAfterPilot": [
+      "PPEN A.0b",
+      "PPEN A.0c",
+      "A.0 leadership opportunities",
+      "Leadership Workbenches",
+      "Fundraising Opportunity Architecture (FOP-1)",
+      "Fundraising Pathways UI (FPA-1)",
+      "Fundraising Leadership Workbenches",
+      "Donation Record Layer"
+    ],
+    "noFakeCounts": true,
+    "noFakeRaisedTotals": true,
+    "noForecasting": true,
+    "noDonationProcessing": true,
+    "enrollmentNotEqualOpportunityHeld": true,
+    "enrollmentNotEqualRevenue": true
+  },
+  "fourLayerStack": {
+    "electionMath": { "unit": "votes", "question": "How many votes?" },
+    "fundraisingOperatingSystem": { "unit": "dollars_allocated", "question": "How much?" },
+    "fundraisingOpportunityArchitecture": { "unit": "executable_opportunities", "question": "How do we get there?" },
+    "fundraisingPathwaysArchitecture": { "unit": "people_in_lanes", "question": "Who participates how?" },
+    "donationRecordLayer": { "unit": "dollars_received", "question": "What actually came in?", "status": "future" }
+  },
+  "a0cIntegration": {
+    "baseFlowRef": "docs/PPEN_A0C_VOLUNTEER_INTAKE_ACTIVATION.md",
+    "extensionPoint": "after_county_assignment_before_or_on_my_journey",
+    "promptSurfaces": [
+      "activation_completion_optional_step",
+      "my_journey_fundraising_section",
+      "admin_volunteer_intake_follow_up"
+    ],
+    "selectionRules": {
+      "primaryPathwayMax": 1,
+      "secondaryPathwayMax": 1,
+      "requiresCountyParticipation": true,
+      "communityParticipationRecommended": true,
+      "autoGrantAccessLevel": 1,
+      "neverAutoGrantL2Plus": true
+    },
+    "routingOutcomes": [
+      {
+        "key": "participation_record",
+        "description": "Default — ppen_participation with context=fundraising_pathway"
+      },
+      {
+        "key": "leadership_candidate_queue",
+        "description": "When intake signals lead capacity — A.0 review before placement"
+      },
+      {
+        "key": "workbench_deep_link",
+        "description": "Geographic or program workbench section for execution"
+      }
+    ]
+  },
+  "recordModelPreview": {
+    "status": "not_in_prisma",
+    "tableName": "FundraisingPathwayEnrollment",
+    "fields": [
+      "id",
+      "personId",
+      "pathwayKey",
+      "primaryOrSecondary",
+      "countySlug",
+      "communitySlug",
+      "coalitionSlug",
+      "campusSlug",
+      "status",
+      "intakeResponsesJson",
+      "trainingCompletedKeys",
+      "leadershipCandidateFlag",
+      "leadershipCandidateRoleKey",
+      "programLeadPersonId",
+      "enrolledAt",
+      "activatedAt",
+      "createdAt",
+      "updatedAt"
+    ],
+    "participationPreview": {
+      "context": "fundraising_pathway",
+      "roleDefault": "pathway_participant",
+      "statusValues": ["interested", "training", "active", "paused", "completed"]
+    },
+    "note": "Enrollment row is staging until A.0c extension ships — may merge into ppen_participation with pathwayKey column"
+  },
+  "rollupDoctrine": {
+    "layers": ["community", "county", "cluster", "state", "coalition_isolated", "campus_attributed", "statewide_program"],
+    "rules": [
+      "Pathway enrollment counts roll separately from FOS dollars and FOP opportunity pipeline counts",
+      "Coalition pathway enrollments roll within coalition workbench — avoid double-count in county totals when coalition spans counties",
+      "Online and recurring volunteer-recruitment pathways may use statewide bucket — no fake geographic split",
+      "Bonus cities (#41+) isolated from statewide enrollment rollups same as FOS Quitman rule",
+      "Campus enrollments attribute to campus workbench slug; county attribution for map context only"
+    ],
+    "formulas": {
+      "community": "count(FundraisingPathwayEnrollment OR Participation where pathwayKey and communitySlug match)",
+      "county": "sum(community enrollments in county) + county-scoped enrollments without community",
+      "cluster": "sum(county enrollments where county in cluster.executionGroup)",
+      "state": "sum(non-isolated community/county enrollments) + statewide_program bucket"
+    }
+  },
+  "sharedTrainingCatalog": [
+    { "key": "fundraising_compliance_101", "label": "Arkansas campaign finance basics (volunteer)", "requiredFor": "all_pathways_before_solicitation" },
+    { "key": "data_integrity_no_fake_numbers", "label": "Record-backed reporting — no vanity counts", "requiredFor": "all_pathways" },
+    { "key": "ask_script_acknowledgment", "label": "Approved ask scripts and disclaimers", "requiredFor": ["small_dollar_peer", "business_outreach", "major_donor_introductions"] }
+  ],
+  "pathways": [
+    {
+      "id": "house_party_host",
+      "name": "House Party Host",
+      "slug": "house-party-host",
+      "sortOrder": 1,
+      "phase": "FPA-1",
+      "mapsToOpportunityType": "house_party_program",
+      "whoItIsFor": {
+        "audience": "Neighbors and supporters willing to host a gathering in their home or private venue",
+        "capacity": "Can invite 15–40 guests; comfortable welcoming people; available for one event in next 90 days",
+        "geography": "Must have county Participation; community slug strongly preferred for Top 40 placement",
+        "notFor": "Large public venue events (→ Fundraising Committee Member / Event Leadership); business-only meetings (→ Business Outreach)"
+      },
+      "intakeQuestions": [
+        { "key": "host_address_county", "label": "County where you would host", "type": "county_select", "required": true },
+        { "key": "host_community", "label": "City / community (if known)", "type": "community_select", "required": false },
+        { "key": "venue_type", "label": "Venue type", "type": "select", "options": ["private_home", "apartment_common", "faith_host", "other_private"], "required": true },
+        { "key": "estimated_capacity", "label": "Estimated guest capacity", "type": "number", "required": true },
+        { "key": "preferred_month", "label": "Preferred month to host", "type": "month_select", "required": true },
+        { "key": "hosted_before", "label": "Have you hosted a house party or similar gathering before?", "type": "boolean", "required": true },
+        { "key": "lead_interest", "label": "Interested in coordinating other hosts in your area?", "type": "boolean", "required": false, "triggersLeadershipCandidate": true, "candidateRoleKey": "house_party_lead" }
+      ],
+      "requiredTraining": [
+        { "key": "fundraising_compliance_101", "before": "inviting_guests" },
+        { "key": "house_party_host_kit", "label": "House party host kit — run of show, compliance, Kelly briefing", "before": "scheduling_date" },
+        { "key": "data_integrity_no_fake_numbers", "before": "reporting_attendance" }
+      ],
+      "accessLevel": {
+        "startingLevel": 1,
+        "elevatedActionsBlockedUntilTraining": true,
+        "escalateToLevel2When": "placed_as_house_party_lead_via_A0"
+      },
+      "connectedWorkbench": {
+        "primaryRoutePattern": "/election-plan/workbenches/{communitySlug}#fundraising",
+        "sections": ["fundraising", "fundraising-opportunities", "house-parties"],
+        "countyOversightRoutePattern": "/election-plan/counties/{countySlug}#fundraising-pipeline",
+        "futureLeadershipWorkbench": "fundraising_leadership · house_party_lead"
+      },
+      "kpis": [
+        { "key": "enrolled_hosts", "label": "Hosts enrolled", "recordSource": "FundraisingPathwayEnrollment.pathwayKey=house_party_host", "drillDown": true },
+        { "key": "training_complete", "label": "Training complete", "recordSource": "trainingCompletedKeys includes house_party_host_kit", "drillDown": true },
+        { "key": "scheduled_parties", "label": "Parties scheduled", "recordSource": "fos_opportunity_record.type=house_party.status=scheduled", "drillDown": true, "note": "Not incremented at enrollment" },
+        { "key": "parties_held", "label": "Parties held", "recordSource": "fos_opportunity_record.status=held", "drillDown": true },
+        { "key": "revenue", "label": "Revenue", "recordSource": "compliance_donation_record.attributed_opportunity_id", "liveToday": false, "drillDown": true }
+      ],
+      "participationRecordsCreated": [
+        {
+          "context": "fundraising_pathway",
+          "pathwayKey": "house_party_host",
+          "roleKey": "house_party_host",
+          "scope": "community",
+          "status": "interested",
+          "note": "Distinct from field_entry.category=house_party — created when program lead confirms host"
+        },
+        {
+          "context": "community",
+          "roleKey": "volunteer",
+          "scope": "community",
+          "status": "active",
+          "conditional": "when communitySlug assigned at A.0c"
+        }
+      ],
+      "leadershipEscalationPath": {
+        "candidateTrigger": "lead_interest=true OR prior host with 2+ held parties",
+        "candidateRoleKey": "house_party_lead",
+        "reviewedBy": ["community_fundraising_lead", "county_fundraising_lead"],
+        "placementRecord": "ppen_participation.roleKey=house_party_lead · minAccessLevel=2",
+        "escalationIfOpen": { "days": 14, "to": "county_fundraising_lead", "display": "OPEN" }
+      },
+      "rollupLogic": {
+        "community": "count enrollments and active hosts where communitySlug matches",
+        "county": "sum communities in county",
+        "cluster": "sum counties in cluster",
+        "state": "sum all non-isolated Top 40 communities",
+        "isolatedBonusCities": "quitman and #41+ excluded from statewide sum"
+      }
+    },
+    {
+      "id": "fundraising_committee_member",
+      "name": "Fundraising Committee Member",
+      "slug": "fundraising-committee-member",
+      "sortOrder": 2,
+      "phase": "FPA-1",
+      "mapsToOpportunityType": "grassroots_events",
+      "whoItIsFor": {
+        "audience": "Volunteers who want to help plan and execute fundraising-oriented community events (not home hosts)",
+        "capacity": "Can attend planning meetings; take assignments (logistics, invite list, day-of)",
+        "geography": "County required; tied to specific community event when assigned",
+        "notFor": "Solo home hosts (→ House Party Host); statewide comms (→ Online Fundraising Team)"
+      },
+      "intakeQuestions": [
+        { "key": "county", "label": "Your county", "type": "county_select", "required": true },
+        { "key": "community", "label": "Primary community", "type": "community_select", "required": false },
+        { "key": "committee_skills", "label": "Skills you can contribute", "type": "multi_select", "options": ["logistics", "invitations", "day_of_ops", "program", "fundraising_ask", "photography", "setup_teardown"], "required": true },
+        { "key": "hours_per_month", "label": "Hours available per month", "type": "select", "options": ["1-3", "4-8", "9+"], "required": true },
+        { "key": "event_chair_interest", "label": "Interested in chairing an event committee?", "type": "boolean", "required": false, "triggersLeadershipCandidate": true, "candidateRoleKey": "events_lead" }
+      ],
+      "requiredTraining": [
+        { "key": "fundraising_compliance_101", "before": "soliciting_donations_at_event" },
+        { "key": "event_committee_basics", "label": "Event committee roles and run of show", "before": "first_assignment" },
+        { "key": "data_integrity_no_fake_numbers", "before": "reporting" }
+      ],
+      "accessLevel": { "startingLevel": 1, "elevatedActionsBlockedUntilTraining": true, "escalateToLevel2When": "placed_as_events_lead_or_event_chair" },
+      "connectedWorkbench": {
+        "primaryRoutePattern": "/election-plan/workbenches/{communitySlug}#events",
+        "sections": ["events", "fundraising-opportunities"],
+        "eventLeadershipWorkbench": true,
+        "futureLeadershipWorkbench": "event_leadership · events_lead"
+      },
+      "kpis": [
+        { "key": "committee_members_enrolled", "label": "Committee members enrolled", "recordSource": "FundraisingPathwayEnrollment.pathwayKey=fundraising_committee_member", "drillDown": true },
+        { "key": "active_on_event", "label": "Active on event", "recordSource": "community_workbench_event.assignment", "drillDown": true },
+        { "key": "events_held", "label": "Events held", "recordSource": "community_workbench_event.status=executed", "drillDown": true },
+        { "key": "revenue", "label": "Revenue", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true }
+      ],
+      "participationRecordsCreated": [
+        { "context": "fundraising_pathway", "pathwayKey": "fundraising_committee_member", "roleKey": "event_committee_member", "scope": "community", "status": "interested" },
+        { "context": "event", "roleKey": "committee_member", "scope": "event", "status": "assigned", "conditional": "when linked to CommunityWorkbenchEvent" }
+      ],
+      "leadershipEscalationPath": {
+        "candidateTrigger": "event_chair_interest=true OR demonstrated committee lead on 2+ events",
+        "candidateRoleKey": "events_lead",
+        "reviewedBy": ["events_lead", "community_lead", "county_fundraising_lead"],
+        "placementRecord": "ppen_participation.roleKey=events_lead · Event Leadership Workbench",
+        "escalationIfOpen": { "days": 21, "to": "county.eventsCaptain", "display": "OPEN" }
+      },
+      "rollupLogic": {
+        "community": "count committee enrollments + event assignments",
+        "county": "sum communities",
+        "cluster": "sum counties",
+        "state": "sum non-isolated"
+      }
+    },
+    {
+      "id": "business_outreach",
+      "name": "Business Outreach",
+      "slug": "business-outreach",
+      "sortOrder": 3,
+      "phase": "FPA-1",
+      "mapsToOpportunityType": "business_outreach",
+      "whoItIsFor": {
+        "audience": "Connectors with credibility on Main Street — chamber members, small business owners, professional networks",
+        "capacity": "Can schedule and attend business meetings; introduce Kelly's campaign to local employers",
+        "geography": "Community or county scoped; business relationships tagged in community workbench",
+        "notFor": "Major donor closers (→ Major Donor Introductions as validator only); sponsor-only asks without relationship (→ Event Sponsor Recruitment)"
+      },
+      "intakeQuestions": [
+        { "key": "county", "label": "County", "type": "county_select", "required": true },
+        { "key": "community", "label": "Primary community", "type": "community_select", "required": true },
+        { "key": "business_connections", "label": "Describe your business / professional network in this area", "type": "textarea", "required": true },
+        { "key": "meetings_per_month", "label": "Business meetings you could help schedule per month", "type": "select", "options": ["1-2", "3-5", "6+"], "required": true },
+        { "key": "existing_relationships", "label": "Do you already know local business owners who might meet?", "type": "boolean", "required": true },
+        { "key": "business_lead_interest", "label": "Interested in leading business outreach for your community?", "type": "boolean", "required": false, "triggersLeadershipCandidate": true, "candidateRoleKey": "business_outreach_lead" }
+      ],
+      "requiredTraining": [
+        { "key": "fundraising_compliance_101", "before": "any_ask" },
+        { "key": "ask_script_acknowledgment", "before": "first_meeting" },
+        { "key": "business_outreach_playbook", "label": "Business outreach playbook — validator meetings, not cold spam", "before": "scheduling_meetings" }
+      ],
+      "accessLevel": { "startingLevel": 1, "elevatedActionsBlockedUntilTraining": true, "escalateToLevel2When": "placed_as_business_lead" },
+      "connectedWorkbench": {
+        "primaryRoutePattern": "/election-plan/workbenches/{communitySlug}#fundraising-opportunities",
+        "sections": ["relationships", "fundraising-opportunities", "business-outreach"],
+        "communityLeadershipSlot": "business_lead",
+        "futureLeadershipWorkbench": "community_leadership · business_lead"
+      },
+      "kpis": [
+        { "key": "outreach_volunteers_enrolled", "label": "Outreach volunteers enrolled", "recordSource": "FundraisingPathwayEnrollment", "drillDown": true },
+        { "key": "meetings_scheduled", "label": "Meetings scheduled", "recordSource": "fos_opportunity_record.type=business_meeting", "drillDown": true },
+        { "key": "meetings_held", "label": "Meetings held", "recordSource": "fos_opportunity_record.status=held", "drillDown": true },
+        { "key": "businesses_engaged", "label": "Businesses engaged", "recordSource": "community_workbench_relationship.roleLabel=business", "drillDown": true },
+        { "key": "revenue", "label": "Revenue", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true }
+      ],
+      "participationRecordsCreated": [
+        { "context": "fundraising_pathway", "pathwayKey": "business_outreach", "roleKey": "business_outreach_volunteer", "scope": "community", "status": "interested" },
+        { "context": "community", "roleKey": "business_connector", "scope": "community", "status": "active", "conditional": "when staff confirms first meeting scheduled" }
+      ],
+      "leadershipEscalationPath": {
+        "candidateTrigger": "business_lead_interest=true OR 5+ held business meetings as volunteer",
+        "candidateRoleKey": "business_outreach_lead",
+        "reviewedBy": ["community_fundraising_lead", "county_fundraising_lead"],
+        "placementRecord": "community_workbench_leadership.business_lead OR ppen_participation.roleKey=business_outreach_lead",
+        "escalationIfOpen": { "days": 14, "to": "county_fundraising_lead", "display": "OPEN" }
+      },
+      "rollupLogic": {
+        "community": "count enrollments + business meetings attributed",
+        "county": "sum communities",
+        "cluster": "sum counties",
+        "state": "sum non-isolated"
+      }
+    },
+    {
+      "id": "major_donor_introductions",
+      "name": "Major Donor Introductions",
+      "slug": "major-donor-introductions",
+      "sortOrder": 4,
+      "phase": "FPA-2",
+      "mapsToOpportunityType": "major_donor_meetings",
+      "whoItIsFor": {
+        "audience": "Trusted validators who can open doors to major-gift prospects — not the closer",
+        "capacity": "Willing to make warm introductions; attend joint meetings; vouch for Kelly",
+        "geography": "Often county or regional; may span multiple communities",
+        "notFor": "Volunteers without existing high-trust relationships; Kelly does not cold-call from this pathway"
+      },
+      "intakeQuestions": [
+        { "key": "county", "label": "Primary county", "type": "county_select", "required": true },
+        { "key": "introduction_capacity", "label": "How many warm introductions could you make in the next 60 days?", "type": "select", "options": ["1", "2-3", "4+"], "required": true },
+        { "key": "prospect_description", "label": "Describe the type of leaders you could introduce (no names required at intake)", "type": "textarea", "required": true },
+        { "key": "prior_fundraising", "label": "Prior experience with major gift or nonprofit fundraising?", "type": "boolean", "required": true },
+        { "key": "major_donor_lead_interest", "label": "Interested in coordinating major donor pipeline for your county?", "type": "boolean", "required": false, "triggersLeadershipCandidate": true, "candidateRoleKey": "major_donor_lead" }
+      ],
+      "requiredTraining": [
+        { "key": "fundraising_compliance_101", "before": "any_introduction" },
+        { "key": "major_donor_validator_role", "label": "Validator role — introductions only, Kelly/closer handles ask", "before": "first_introduction" },
+        { "key": "ask_script_acknowledgment", "before": "first_introduction" },
+        { "key": "confidentiality_and_no_pii_in_chat", "label": "Prospect confidentiality — no PII in unsecured channels", "before": "logging_prospect" }
+      ],
+      "accessLevel": { "startingLevel": 1, "elevatedActionsBlockedUntilTraining": true, "escalateToLevel2When": "placed_as_major_donor_lead", "note": "Prospect names stored only in secured opportunity records — not in intake JSON long-term" },
+      "connectedWorkbench": {
+        "primaryRoutePattern": "/election-plan/counties/{countySlug}#fundraising",
+        "sections": ["fundraising", "fundraising-pipeline", "major-donor"],
+        "stateOversight": "state_fundraising_director",
+        "futureLeadershipWorkbench": "fundraising_leadership · major_donor_lead"
+      },
+      "kpis": [
+        { "key": "validators_enrolled", "label": "Validators enrolled", "recordSource": "FundraisingPathwayEnrollment", "drillDown": true },
+        { "key": "introductions_made", "label": "Introductions made", "recordSource": "fos_opportunity_record.type=major_donor_meeting.source=validator_intro", "drillDown": true },
+        { "key": "meetings_held", "label": "Meetings held", "recordSource": "fos_opportunity_record.status=held", "drillDown": true },
+        { "key": "closed", "label": "Closed / received", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true }
+      ],
+      "participationRecordsCreated": [
+        { "context": "fundraising_pathway", "pathwayKey": "major_donor_introductions", "roleKey": "major_donor_validator", "scope": "county", "status": "interested" },
+        { "context": "fundraising", "roleKey": "validator", "scope": "opportunity", "status": "linked", "conditional": "when linked to fos_opportunity_record" }
+      ],
+      "leadershipEscalationPath": {
+        "candidateTrigger": "major_donor_lead_interest=true OR staff nomination",
+        "candidateRoleKey": "major_donor_lead",
+        "reviewedBy": ["state_fundraising_director", "county_fundraising_lead"],
+        "placementRecord": "ppen_participation.roleKey=major_donor_lead · minAccessLevel=2",
+        "escalationIfOpen": { "days": 7, "to": "state_fundraising_director", "display": "OPEN" }
+      },
+      "rollupLogic": {
+        "community": "attribute introductions to validator's home community when known",
+        "county": "primary rollup for major donor pipeline",
+        "cluster": "sum counties",
+        "state": "sum — Kelly time doctrine applies at state layer"
+      }
+    },
+    {
+      "id": "campus_grassroots_fundraising",
+      "name": "Campus Grassroots Fundraising Team",
+      "slug": "campus-grassroots-fundraising",
+      "sortOrder": 5,
+      "phase": "FPA-1",
+      "mapsToOpportunityType": "campus_fundraising",
+      "whoItIsFor": {
+        "audience": "Students and campus organizers at Arkansas colleges — Students for Arkansas doctrine",
+        "capacity": "Can recruit peers; host monthly campus fundraising activity",
+        "geography": "Campus workbench slug (e.g. uca-campus) + campus county attribution",
+        "notFor": "Non-campus community events (→ Fundraising Committee Member)"
+      },
+      "intakeQuestions": [
+        { "key": "campus", "label": "Your campus", "type": "campus_select", "required": true },
+        { "key": "class_standing", "label": "Class standing", "type": "select", "options": ["freshman", "sophomore", "junior", "senior", "graduate", "faculty_staff", "alumni_local"], "required": true },
+        { "key": "organization_affiliation", "label": "Campus org affiliation (if any)", "type": "text", "required": false },
+        { "key": "monthly_event_capacity", "label": "Can you help lead one fundraising activity per month?", "type": "boolean", "required": true },
+        { "key": "campus_lead_interest", "label": "Interested in campus fundraising lead?", "type": "boolean", "required": false, "triggersLeadershipCandidate": true, "candidateRoleKey": "campus_fundraising_lead" }
+      ],
+      "requiredTraining": [
+        { "key": "fundraising_compliance_101", "before": "any_campus_ask" },
+        { "key": "students_for_arkansas_fundraising", "label": "Students for Arkansas — monthly fundraising event doctrine", "before": "first_event" },
+        { "key": "data_integrity_no_fake_numbers", "before": "reporting" }
+      ],
+      "accessLevel": { "startingLevel": 1, "elevatedActionsBlockedUntilTraining": true, "escalateToLevel2When": "placed_as_campus_fundraising_lead" },
+      "connectedWorkbench": {
+        "primaryRoutePattern": "/election-plan/workbenches/{campusSlug}",
+        "sections": ["fundraising", "campus-network"],
+        "programWorkbench": "students-for-arkansas",
+        "futureLeadershipWorkbench": "fundraising_leadership · campus_fundraising_lead"
+      },
+      "kpis": [
+        { "key": "campus_members_enrolled", "label": "Team members enrolled", "recordSource": "FundraisingPathwayEnrollment", "drillDown": true },
+        { "key": "campus_events_held", "label": "Campus fundraisers held", "recordSource": "fos_opportunity_record.type=campus_fundraiser", "drillDown": true },
+        { "key": "participants", "label": "Participants", "recordSource": "ppen_participation.context=campus", "liveToday": false, "drillDown": true },
+        { "key": "new_donors", "label": "New donors", "recordSource": "compliance_donation_record.first_gift=true", "liveToday": false, "drillDown": true },
+        { "key": "revenue", "label": "Revenue", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true }
+      ],
+      "participationRecordsCreated": [
+        { "context": "fundraising_pathway", "pathwayKey": "campus_grassroots_fundraising", "roleKey": "campus_fundraiser", "scope": "campus", "status": "interested" },
+        { "context": "campus", "roleKey": "volunteer", "scope": "campus", "status": "active" }
+      ],
+      "leadershipEscalationPath": {
+        "candidateTrigger": "campus_lead_interest=true OR led 2+ campus fundraisers",
+        "candidateRoleKey": "campus_fundraising_lead",
+        "reviewedBy": ["state_fundraising_director", "county_fundraising_lead for campus county"],
+        "placementRecord": "ppen_participation.roleKey=campus_fundraising_lead",
+        "escalationIfOpen": { "days": 21, "to": "state_fundraising_director", "display": "OPEN" }
+      },
+      "rollupLogic": {
+        "campus": "primary — per campus workbench slug",
+        "county": "campus county attribution for FOS context map only",
+        "state": "sum all campus workbenches"
+      }
+    },
+    {
+      "id": "online_fundraising_team",
+      "name": "Online Fundraising Team",
+      "slug": "online-fundraising-team",
+      "sortOrder": 6,
+      "phase": "FPA-2",
+      "mapsToOpportunityType": "online_fundraising",
+      "whoItIsFor": {
+        "audience": "Comms volunteers — email drafts, social CTAs, donate link discipline — working with CCH/SMOS",
+        "capacity": "Comfortable with approved copy; can follow UTM/source-code rules",
+        "geography": "Often statewide; community attribution when volunteer is locally rooted",
+        "notFor": "Unapproved mass messaging; paid ads management (separate comms lane)"
+      },
+      "intakeQuestions": [
+        { "key": "county", "label": "Home county", "type": "county_select", "required": true },
+        { "key": "skills", "label": "Skills", "type": "multi_select", "options": ["email_draft", "social_post", "graphic_support", "copy_edit", "list_hygiene"], "required": true },
+        { "key": "platforms", "label": "Platforms comfortable with", "type": "multi_select", "options": ["email", "facebook", "instagram", "tiktok", "substack"], "required": true },
+        { "key": "hours_per_week", "label": "Hours per week", "type": "select", "options": ["1-2", "3-5", "6+"], "required": true },
+        { "key": "comms_lead_interest", "label": "Interested in coordinating online fundraising pushes?", "type": "boolean", "required": false, "triggersLeadershipCandidate": true, "candidateRoleKey": "small_donor_lead" }
+      ],
+      "requiredTraining": [
+        { "key": "fundraising_compliance_101", "before": "any_fundraising_send" },
+        { "key": "cch_donate_cta_discipline", "label": "CCH donate CTA and approval workflow", "before": "draft_with_donate_link" },
+        { "key": "utm_and_attribution", "label": "UTM / source code discipline — no vanity click KPIs", "before": "publishing" }
+      ],
+      "accessLevel": { "startingLevel": 1, "elevatedActionsBlockedUntilTraining": true, "escalateToLevel2When": "placed_as_small_donor_lead_or_comms_fundraising_coordinator" },
+      "connectedWorkbench": {
+        "primaryRoutePattern": "/election-plan/workbenches/cch#fundraising",
+        "alternateRoutes": ["/election-plan/workbenches/smos", "/admin/communications/studio"],
+        "sections": ["fundraising", "publish-queue"],
+        "futureLeadershipWorkbench": "communications_leadership · small_donor_lead"
+      },
+      "kpis": [
+        { "key": "team_members_enrolled", "label": "Team members enrolled", "recordSource": "FundraisingPathwayEnrollment", "drillDown": true },
+        { "key": "campaigns_with_donate_cta", "label": "Campaigns with donate CTA", "recordSource": "cch_content_record.with_donate_cta", "liveToday": false, "drillDown": true },
+        { "key": "online_donors", "label": "Online donors", "recordSource": "compliance_donation_record.channel=online", "liveToday": false, "drillDown": true },
+        { "key": "raised_online", "label": "Raised (online)", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true, "note": "Statewide bucket — geographic split only with attribution tag" }
+      ],
+      "participationRecordsCreated": [
+        { "context": "fundraising_pathway", "pathwayKey": "online_fundraising_team", "roleKey": "online_fundraising_volunteer", "scope": "statewide_program", "status": "interested" },
+        { "context": "communications", "roleKey": "fundraising_comms_volunteer", "scope": "cch", "status": "active", "conditional": "when assigned to CCH draft queue" }
+      ],
+      "leadershipEscalationPath": {
+        "candidateTrigger": "comms_lead_interest=true OR led 3+ approved fundraising sends",
+        "candidateRoleKey": "small_donor_lead",
+        "reviewedBy": ["communications_lead", "state_fundraising_director"],
+        "placementRecord": "ppen_participation.roleKey=small_donor_lead",
+        "escalationIfOpen": { "days": 14, "to": "state_fundraising_director", "display": "OPEN" }
+      },
+      "rollupLogic": {
+        "statewide_program": "primary bucket for online team enrollment",
+        "community": "optional home-community tag for volunteer map — not for splitting platform totals",
+        "state": "enrollment statewide; raised only with attribution"
+      }
+    },
+    {
+      "id": "recurring_donor_program",
+      "name": "Recurring Donor Program",
+      "slug": "recurring-donor-program",
+      "sortOrder": 7,
+      "phase": "FPA-2",
+      "mapsToOpportunityType": "recurring_donor_program",
+      "whoItIsFor": {
+        "audience": "Volunteers recruiting monthly sustainers — distinct from donors who sign up via donate page",
+        "capacity": "Comfortable asking friends to join monthly program; follow-up on lapses",
+        "geography": "Primarily statewide recruitment; local peer asks when community tagged",
+        "parallelLane": "Donor self-serve recurring via public donate flow — NOT an A.0c pathway enrollment; creates compliance record only"
+      },
+      "intakeQuestions": [
+        { "key": "county", "label": "Home county", "type": "county_select", "required": true },
+        { "key": "community", "label": "Community (optional)", "type": "community_select", "required": false },
+        { "key": "recruiting_capacity", "label": "How many sustainers could you personally recruit?", "type": "select", "options": ["1-3", "4-10", "10+"], "required": true },
+        { "key": "already_recurring", "label": "Are you already a monthly sustainer?", "type": "boolean", "required": true, "note": "If yes, link to donate record when layer exists — not required for volunteer enrollment" },
+        { "key": "sustainer_drive_lead_interest", "label": "Lead a local sustainer drive?", "type": "boolean", "required": false, "triggersLeadershipCandidate": true, "candidateRoleKey": "small_donor_lead" }
+      ],
+      "requiredTraining": [
+        { "key": "fundraising_compliance_101", "before": "any_ask" },
+        { "key": "recurring_ask_script", "label": "Monthly sustainer ask script and opt-in rules", "before": "first_recruit_ask" },
+        { "key": "lapse_follow_up", "label": "Lapse follow-up — human review before re-ask", "before": "contacting_lapsed" }
+      ],
+      "accessLevel": { "startingLevel": 1, "elevatedActionsBlockedUntilTraining": true, "escalateToLevel2When": "placed_as_small_donor_lead" },
+      "connectedWorkbench": {
+        "primaryRoutePattern": "/election-plan/workbenches/{communitySlug}#fundraising",
+        "stateRoute": "statewide_program",
+        "sections": ["fundraising-opportunities", "recurring-donors"],
+        "futureLeadershipWorkbench": "fundraising_leadership · small_donor_lead"
+      },
+      "kpis": [
+        { "key": "recruiters_enrolled", "label": "Sustainer recruiters enrolled", "recordSource": "FundraisingPathwayEnrollment", "drillDown": true },
+        { "key": "active_recurring", "label": "Active recurring donors", "recordSource": "compliance_donation_record.recurring=true", "liveToday": false, "drillDown": true },
+        { "key": "mrr", "label": "Monthly recurring revenue", "recordSource": "computed from donation records", "liveToday": false, "drillDown": true },
+        { "key": "lapsed", "label": "Lapsed needing follow-up", "recordSource": "compliance_donation_record.lapsed", "liveToday": false, "drillDown": true }
+      ],
+      "participationRecordsCreated": [
+        { "context": "fundraising_pathway", "pathwayKey": "recurring_donor_program", "roleKey": "sustainer_recruiter", "scope": "statewide_program", "status": "interested" },
+        { "context": "fundraising", "roleKey": "recurring_donor", "scope": "person", "status": "active", "conditional": "parallel lane — donor via donate page, not volunteer enrollment" }
+      ],
+      "leadershipEscalationPath": {
+        "candidateTrigger": "sustainer_drive_lead_interest=true",
+        "candidateRoleKey": "small_donor_lead",
+        "reviewedBy": ["state_fundraising_director"],
+        "placementRecord": "ppen_participation.roleKey=small_donor_lead",
+        "escalationIfOpen": { "days": 14, "to": "state_fundraising_director", "display": "OPEN" }
+      },
+      "rollupLogic": {
+        "statewide_program": "primary for recurring counts and MRR",
+        "community": "only when donation record has community attribution",
+        "state": "no invented county split of platform MRR"
+      }
+    },
+    {
+      "id": "event_sponsor_recruitment",
+      "name": "Event Sponsor Recruitment",
+      "slug": "event-sponsor-recruitment",
+      "sortOrder": 8,
+      "phase": "FPA-2",
+      "mapsToOpportunityType": "event_sponsorships",
+      "whoItIsFor": {
+        "audience": "Volunteers recruiting business sponsors for forums, rallies, and executive-calendar events",
+        "capacity": "Can deliver sponsor tiers/benefits pitch; coordinate with events team",
+        "geography": "Event-scoped + community/county rollup",
+        "notFor": "General business relationship building without sponsor tier (→ Business Outreach)"
+      },
+      "intakeQuestions": [
+        { "key": "county", "label": "County", "type": "county_select", "required": true },
+        { "key": "community", "label": "Community", "type": "community_select", "required": false },
+        { "key": "sponsor_connections", "label": "Businesses or employers you could approach for sponsorship", "type": "textarea", "required": true },
+        { "key": "target_events", "label": "Event types you want to support", "type": "multi_select", "options": ["community_forum", "rally", "fundraiser_dinner", "county_convention", "other"], "required": true },
+        { "key": "sponsor_lead_interest", "label": "Lead sponsor recruitment for your community?", "type": "boolean", "required": false, "triggersLeadershipCandidate": true, "candidateRoleKey": "business_outreach_lead" }
+      ],
+      "requiredTraining": [
+        { "key": "fundraising_compliance_101", "before": "any_commitment" },
+        { "key": "sponsor_tiers_and_benefits", "label": "Sponsor tiers, in-kind vs cash, fulfillment checklist", "before": "first_sponsor_ask" },
+        { "key": "executive_calendar_coordination", "label": "Lock events before selling sponsor slots", "before": "committing_sponsor" }
+      ],
+      "accessLevel": { "startingLevel": 1, "elevatedActionsBlockedUntilTraining": true, "escalateToLevel2When": "placed_as_business_lead_or_sponsor_coordinator" },
+      "connectedWorkbench": {
+        "primaryRoutePattern": "/election-plan/workbenches/{communitySlug}#fundraising-opportunities",
+        "eventLink": "Event Leadership Workbench + executive calendar locked events",
+        "sections": ["fundraising-opportunities", "sponsorships"],
+        "futureLeadershipWorkbench": "community_leadership · business_lead"
+      },
+      "kpis": [
+        { "key": "recruiters_enrolled", "label": "Sponsor recruiters enrolled", "recordSource": "FundraisingPathwayEnrollment", "drillDown": true },
+        { "key": "sponsors_goal", "label": "Sponsors (goal)", "recordSource": "fos_opportunity_record.type=sponsorship", "drillDown": true },
+        { "key": "committed", "label": "Committed", "recordSource": "fos_opportunity_record.status=committed", "drillDown": true },
+        { "key": "revenue", "label": "Revenue", "recordSource": "compliance_donation_record | compliance_in_kind", "liveToday": false, "drillDown": true }
+      ],
+      "participationRecordsCreated": [
+        { "context": "fundraising_pathway", "pathwayKey": "event_sponsor_recruitment", "roleKey": "sponsor_recruiter", "scope": "community", "status": "interested" },
+        { "context": "event", "roleKey": "sponsor_coordinator", "scope": "event", "status": "assigned", "conditional": "when linked to locked calendar event" }
+      ],
+      "leadershipEscalationPath": {
+        "candidateTrigger": "sponsor_lead_interest=true OR 3+ committed sponsors as volunteer",
+        "candidateRoleKey": "business_outreach_lead",
+        "reviewedBy": ["events_lead", "community_fundraising_lead", "county_fundraising_lead"],
+        "placementRecord": "community_workbench_leadership.business_lead",
+        "escalationIfOpen": { "days": 14, "to": "county_fundraising_lead", "display": "OPEN" }
+      },
+      "rollupLogic": {
+        "event": "per locked executive calendar event",
+        "community": "sum sponsor opportunities in community",
+        "county": "sum communities",
+        "state": "sum non-isolated"
+      }
+    },
+    {
+      "id": "coalition_fundraising",
+      "name": "Coalition Fundraising",
+      "slug": "coalition-fundraising",
+      "sortOrder": 9,
+      "phase": "FPA-2",
+      "mapsToOpportunityType": "coalition_fundraising",
+      "whoItIsFor": {
+        "audience": "Coalition-aligned volunteers — faith, labor, veterans, women, business, cultural outreach lanes",
+        "capacity": "Trusted messenger within coalition; can host coalition-specific fundraising activity",
+        "geography": "Coalition workbench slug + county of activity",
+        "notFor": "Generic community fundraising without coalition alignment"
+      },
+      "intakeQuestions": [
+        { "key": "county", "label": "Primary county", "type": "county_select", "required": true },
+        { "key": "coalition", "label": "Coalition lane", "type": "coalition_select", "required": true, "optionsSource": "coalition-workbenches.registry.source.json" },
+        { "key": "coalition_role", "label": "Your role in this community", "type": "textarea", "required": true },
+        { "key": "fundraising_activity", "label": "Fundraising activity you could lead or support", "type": "multi_select", "options": ["house_party", "community_event", "org_partnership", "faith_venue", "membership_drive"], "required": true },
+        { "key": "coalition_lead_interest", "label": "Interested in coalition fundraising lead?", "type": "boolean", "required": false, "triggersLeadershipCandidate": true, "candidateRoleKey": "coalition_lead" }
+      ],
+      "requiredTraining": [
+        { "key": "fundraising_compliance_101", "before": "any_ask" },
+        { "key": "coalition_messaging_and_claims", "label": "Coalition messaging — claims firewall on public adaptations", "before": "public_facing_event" },
+        { "key": "cultural_competence_basics", "label": "Cultural competence basics for coalition lane", "before": "hosting_event" }
+      ],
+      "accessLevel": { "startingLevel": 1, "elevatedActionsBlockedUntilTraining": true, "escalateToLevel2When": "placed_as_coalition_lead" },
+      "connectedWorkbench": {
+        "primaryRoutePattern": "/election-plan/workbenches/{coalitionSlug}",
+        "sections": ["fundraising", "coalition-events"],
+        "registry": "coalition-workbenches.registry.source.json",
+        "futureLeadershipWorkbench": "coalition_leadership"
+      },
+      "kpis": [
+        { "key": "coalition_fundraisers_enrolled", "label": "Coalition fundraisers enrolled", "recordSource": "FundraisingPathwayEnrollment", "drillDown": true },
+        { "key": "coalition_events", "label": "Coalition events", "recordSource": "fos_opportunity_record.type=coalition_event", "drillDown": true },
+        { "key": "orgs_engaged", "label": "Organizations engaged", "recordSource": "community_workbench_relationship | fos_opportunity_record", "drillDown": true },
+        { "key": "raised", "label": "Raised", "recordSource": "compliance_donation_record.attribution=coalition", "liveToday": false, "drillDown": true }
+      ],
+      "participationRecordsCreated": [
+        { "context": "fundraising_pathway", "pathwayKey": "coalition_fundraising", "roleKey": "coalition_fundraiser", "scope": "coalition", "status": "interested" },
+        { "context": "coalition", "roleKey": "volunteer", "scope": "coalition", "status": "interested", "conditional": "mirrors A.0c coalition interest if not already set" }
+      ],
+      "leadershipEscalationPath": {
+        "candidateTrigger": "coalition_lead_interest=true OR staff nomination from coalition intel",
+        "candidateRoleKey": "coalition_lead",
+        "reviewedBy": ["coalition_lead", "county_fundraising_lead", "state_fundraising_director"],
+        "placementRecord": "ppen_participation.roleKey=coalition_lead · Coalition Leadership Workbench",
+        "escalationIfOpen": { "days": 21, "to": "state_fundraising_director", "display": "OPEN" }
+      },
+      "rollupLogic": {
+        "coalition": "primary — per coalition workbench; do not double-count in county totals",
+        "county": "coalitions active in county — overlay map only",
+        "state": "sum coalition workbenches — isolated from Top 40 FOS city pool"
+      }
+    },
+    {
+      "id": "small_dollar_peer_fundraising",
+      "name": "Small-Dollar Peer Fundraising",
+      "slug": "small-dollar-peer-fundraising",
+      "sortOrder": 10,
+      "phase": "FPA-1",
+      "mapsToOpportunityType": "small_dollar_program",
+      "whoItIsFor": {
+        "audience": "Volunteers making friend-to-friend and neighbor asks — Power of 5 / relational network aligned",
+        "capacity": "Comfortable personal ask; 5–20 contacts in first 30 days",
+        "geography": "Community-scoped; rolls to county FOS context",
+        "notFor": "Mass email/text (→ Online Fundraising Team with approvals); major gift pipeline (→ Major Donor Introductions)"
+      },
+      "intakeQuestions": [
+        { "key": "county", "label": "County", "type": "county_select", "required": true },
+        { "key": "community", "label": "Community", "type": "community_select", "required": true },
+        { "key": "contacts_willing", "label": "How many friends/neighbors could you ask in the next 30 days?", "type": "select", "options": ["1-5", "6-15", "16+"], "required": true },
+        { "key": "my_five_aligned", "label": "Are you working My Five relationships?", "type": "boolean", "required": true, "note": "Links to My Journey — separate mandatory journey" },
+        { "key": "small_donor_lead_interest", "label": "Coordinate peer fundraising for your community?", "type": "boolean", "required": false, "triggersLeadershipCandidate": true, "candidateRoleKey": "small_donor_lead" }
+      ],
+      "requiredTraining": [
+        { "key": "fundraising_compliance_101", "before": "any_ask" },
+        { "key": "ask_script_acknowledgment", "before": "first_ask" },
+        { "key": "peer_ask_and_thank_you", "label": "Peer ask script, thank-you, and no-pressure follow-up", "before": "first_ask" },
+        { "key": "data_integrity_no_fake_numbers", "before": "reporting" }
+      ],
+      "accessLevel": { "startingLevel": 1, "elevatedActionsBlockedUntilTraining": true, "escalateToLevel2When": "placed_as_small_donor_lead" },
+      "connectedWorkbench": {
+        "primaryRoutePattern": "/election-plan/workbenches/{communitySlug}#fundraising",
+        "sections": ["fundraising", "fundraising-opportunities", "relationships"],
+        "myJourneyLink": "My Five · Help 10 — relational context",
+        "futureLeadershipWorkbench": "fundraising_leadership · small_donor_lead"
+      },
+      "kpis": [
+        { "key": "peer_fundraisers_enrolled", "label": "Peer fundraisers enrolled", "recordSource": "FundraisingPathwayEnrollment", "drillDown": true },
+        { "key": "asks_completed", "label": "Asks completed", "recordSource": "fos_opportunity_record.type=peer_ask.status=held", "drillDown": true },
+        { "key": "donors", "label": "Donors", "recordSource": "compliance_donation_record distinct person", "liveToday": false, "drillDown": true },
+        { "key": "average_gift", "label": "Average gift", "recordSource": "computed from donation records", "liveToday": false, "drillDown": true },
+        { "key": "raised", "label": "Raised", "recordSource": "compliance_donation_record.amount_tier=small", "liveToday": false, "drillDown": true }
+      ],
+      "participationRecordsCreated": [
+        { "context": "fundraising_pathway", "pathwayKey": "small_dollar_peer_fundraising", "roleKey": "peer_fundraiser", "scope": "community", "status": "interested" },
+        { "context": "community", "roleKey": "volunteer", "scope": "community", "status": "active" }
+      ],
+      "leadershipEscalationPath": {
+        "candidateTrigger": "small_donor_lead_interest=true OR top peer ask volume with training complete",
+        "candidateRoleKey": "small_donor_lead",
+        "reviewedBy": ["community_fundraising_lead", "county_fundraising_lead"],
+        "placementRecord": "ppen_participation.roleKey=small_donor_lead",
+        "escalationIfOpen": { "days": 14, "to": "county_fundraising_lead", "display": "OPEN" }
+      },
+      "rollupLogic": {
+        "community": "count enrollments + peer asks + attributed small donations",
+        "county": "sum communities",
+        "cluster": "sum counties",
+        "state": "sum non-isolated"
+      }
+    }
+  ],
+  "pathwayToOpportunityMap": [
+    { "pathwayKey": "house_party_host", "opportunityTypeId": "house_party_program" },
+    { "pathwayKey": "fundraising_committee_member", "opportunityTypeId": "grassroots_events" },
+    { "pathwayKey": "business_outreach", "opportunityTypeId": "business_outreach" },
+    { "pathwayKey": "major_donor_introductions", "opportunityTypeId": "major_donor_meetings" },
+    { "pathwayKey": "campus_grassroots_fundraising", "opportunityTypeId": "campus_fundraising" },
+    { "pathwayKey": "online_fundraising_team", "opportunityTypeId": "online_fundraising" },
+    { "pathwayKey": "recurring_donor_program", "opportunityTypeId": "recurring_donor_program" },
+    { "pathwayKey": "event_sponsor_recruitment", "opportunityTypeId": "event_sponsorships" },
+    { "pathwayKey": "coalition_fundraising", "opportunityTypeId": "coalition_fundraising" },
+    { "pathwayKey": "small_dollar_peer_fundraising", "opportunityTypeId": "small_dollar_program" }
+  ],
+  "myJourneyFundraisingSection": {
+    "status": "planning_only",
+    "label": "Fundraising",
+    "emptyState": "No fundraising pathway selected — browse lanes",
+    "panels": [
+      "your_pathways_enrolled",
+      "training_due",
+      "next_step_deep_link",
+      "program_lead_contact_or_OPEN"
+    ],
+    "noFakeProgress": true
+  },
+  "drillDownDoctrine": {
+    "rule": "Enrollment count ≠ opportunity held ≠ dollars raised — three separate rollups.",
+    "everyEnrollmentDrillsTo": "FundraisingPathwayEnrollment row or ppen_participation with pathwayKey",
+    "everyKpiDrillsTo": "Participation · opportunity record · or compliance_donation_record — never a static banner",
+    "antiPattern": "47 hosts enrolled displayed as $12,000 raised",
+    "targetPattern": "Pathway card → enrollment list → training status → opportunity record → donation when layer exists"
+  }
+}

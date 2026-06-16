@@ -18,9 +18,9 @@ export default async function TravelLedgerLandingPage() {
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-6">
       <TravelLedgerPageHeader
-        eyebrow="Admin subsystem"
+        eyebrow="Campaign Manager"
         title="Travel Ledger / Reimbursement Wizard"
-        description="Review campaign travel, calculate mileage, approve reimbursement items, and generate invoices inside the RedDirt admin dashboard."
+        description="Review campaign travel, calculate mileage, approve reimbursement items, and generate invoices inside Campaign Manager."
         actions={
           <>
             <PrimaryAdminAction href="/admin/travel-ledger/wizard">Start Wizard</PrimaryAdminAction>

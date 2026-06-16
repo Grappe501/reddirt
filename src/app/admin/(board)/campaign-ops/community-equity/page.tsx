@@ -5,9 +5,10 @@ import {
   MUSLIM_ACTIVE_INITIATIVES,
   MUSLIM_TURNOUT_GOALS,
 } from "@/lib/campaign-ops/community-equity-plan";
+import { campaignManagerPageTitle } from "@/lib/admin/campaign-manager-workbench-labels";
 
 export const metadata = {
-  title: "Community equity outreach | Kelly SOS admin",
+  title: campaignManagerPageTitle("Community equity outreach"),
 };
 
 export default function CommunityEquityOpsPage() {

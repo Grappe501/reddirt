@@ -12,18 +12,6 @@ export const ELECTION_PLAN_BRAND = {
   workbenchTitle: "Campaign Brain Workbench",
 } as const;
 
-export const ELECTION_PLAN_HERO_DEFAULTS = {
-  expectedProjection: 410_197,
-  pluralityLow: 390_000,
-  pluralityHigh: 420_000,
-  dropOffPool: 102_070,
-  lane2Recovery50: 51_051,
-  registrationGoal: 50_000,
-  top40CityTarget: 207_507,
-  verifiedEvents: 3,
-  verifiedGoal: 300,
-} as const;
-
 export function formatVotes(n: number): string {
   return n.toLocaleString("en-US");
 }
@@ -39,6 +27,7 @@ export function formatCompactVotes(n: number): string {
 }
 
 export function formatPluralityRange(low: number, high: number): string {
+  if (low <= 0 && high <= 0) return "—";
   return `${formatCompactVotes(low)}–${formatCompactVotes(high)}`;
 }
 

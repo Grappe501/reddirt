@@ -1,6 +1,6 @@
 import { formatBudget, formatVotes } from "@/lib/election-plan/electionPlanData";
-import type { FosCommunityAllocation } from "@/lib/election-plan/load-fundraising-operating-system";
-import { getFosConfig } from "@/lib/election-plan/load-fundraising-operating-system";
+import type { FosCommunityAllocation } from "@/lib/election-plan/fundraising-operating-system-shared";
+import { getFosConfig } from "@/lib/election-plan/fundraising-operating-system-shared";
 
 type Props = {
   allocation: FosCommunityAllocation;

@@ -12,13 +12,6 @@ export const VCI_EXPLAINER = {
     "Lane 2 @ 50% recovery + registration goal + GOP conversion @ 12% peel + city influence votes",
   formulaNote:
     "These are campaign planning inputs from the four-lane model — not election results, not a public polling number, and not a promise of actual turnout.",
-  example: {
-    county: "Pulaski",
-    rank: 1,
-    vci: 97_376,
-    explanation:
-      "Pulaski ranks #1 because it combines the largest Democratic drop-off pool, strong registration potential, meaningful persuasion universe, and Little Rock–area city influence.",
-  },
   uses: [
     "Rank all 75 counties for travel, staff time, and volunteer priority",
     "Group counties into nine battlefield clusters and set recommended visit counts",

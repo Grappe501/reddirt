@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-16T03:04:26.273Z",
+  "generatedAt": "2026-06-16T21:59:10.660Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -9786,8 +9786,13 @@
     "endorsementsEndorsed": 0,
     "endorsementsGoal": 50,
     "fundraisingRaised": 60000,
-    "fundraisingGoal": 232053,
-    "fundraisingNote": "Ramp up fundraising — $60K raised against working campaign target; Sherwood hosts and VIP tables are priority levers.",
+    "fundraisingGoal": 292053,
+    "fundraisingNetworkGoal": 60000,
+    "fundraisingWorkingCampaignGoal": 232053,
+    "fundraisingCombinedGoal": 292053,
+    "fundraisingRaisedProvisional": true,
+    "fundraisingRaisedNote": "Provisional until post-filing reconciliation next week — replace with AR filing total when available.",
+    "fundraisingNote": "Overall fundraising target is $292K ($60K milestone + $232K working campaign). Sherwood hosts and VIP tables remain priority levers.",
     "volunteerLeadersGoal": 20,
     "volunteerLeadersCurrent": 39,
     "volunteerLeaders": [

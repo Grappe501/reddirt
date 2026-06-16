@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "note": "Quitman bonus cushion plan — isolated from Top 40 and statewide lane totals.",
+  "citySlug": "quitman",
+  "rank": 41,
+  "headline": "Quitman Bonus Cushion Plan",
+  "isolationNote": "These KPIs are bonus cushion only. They do not change Top 40 combined targets or statewide lane math.",
+  "countyLead": "Lisa Holloway",
+  "countyLeadContact": {
+    "name": "Lisa Holloway",
+    "phone": "662-549-8543",
+    "email": "lisaholloway123@icloud.com",
+    "role": "County lead · Cleburne"
+  },
+  "countySlug": "cleburne",
+  "fundraising": {
+    "goal": 2000,
+    "current": 0,
+    "label": "Quitman corridor fundraising",
+    "unit": "USD"
+  },
+  "houseParties": {
+    "goal": 3,
+    "current": 1,
+    "label": "House parties executed",
+    "events": [
+      {
+        "id": "quitman-house-party-2026-06-16",
+        "label": "House party tonight",
+        "date": "2026-06-16",
+        "hostName": "Linda Griffith",
+        "hostPhone": "501-556-7441",
+        "countyLead": "Lisa Holloway",
+        "countyLeadPhone": "662-549-8543",
+        "countyLeadEmail": "lisaholloway123@icloud.com",
+        "status": "tonight"
+      }
+    ]
+  },
+  "conversations": {
+    "goal": 100,
+    "current": 17,
+    "label": "Meaningful conversations"
+  },
+  "votePlan": {
+    "baseline2022SosVotes": 42,
+    "baselineSource": "Cleburne County 2022 SOS Democratic votes (1,447) × Quitman population share (716 / 24,711).",
+    "chapterTargetVotes": 84,
+    "chapterVoteGain": 38,
+    "stretchIncreasePct": 20,
+    "stretchTargetSosVotes": 50,
+    "stretchNote": "+20% above 2022 SOS baseline — bonus cushion votes only, not added to Top 40 totals."
+  },
+  "pathToGoal": [
+    {
+      "step": 1,
+      "title": "Tonight — capture every guest",
+      "detail": "Lisa Holloway (662-549-8543) leads county ops. Linda Griffith hosts (501-556-7441). Kelly captures name, phone, photo, and interest flags on the capture page before guests leave."
+    },
+    {
+      "step": 2,
+      "title": "48-hour follow-up",
+      "detail": "Lisa assigns each new contact a Po5 leader for a coffee or phone call within 48 hours. Mark follow-up on the contact page."
+    },
+    {
+      "step": 3,
+      "title": "Lock house party #2 host",
+      "detail": "Identify next host from tonight's attendee list — target a Republican-leaning neighbor who met Kelly in person."
+    },
+    {
+      "step": 4,
+      "title": "Fundraising path to $2,000",
+      "detail": "Tonight's event + two follow-on house parties. Track every dollar on this workbench — small-donor corridor proof, not statewide fundraising dashboards."
+    },
+    {
+      "step": 5,
+      "title": "Vote stretch — +20% on 2022 baseline",
+      "detail": "Baseline 42 SOS votes (2022) → stretch target 50. Every conversation and host recruited is a cushion vote — isolated from Top 40 math."
+    }
+  ],
+  "tonightEvent": {
+    "slug": "quitman-house-party-2026-06-16",
+    "label": "House party · Lisa Holloway · Linda Griffith hosting",
+    "captureHref": "/election-plan/workbenches/quitman/capture"
+  }
+}

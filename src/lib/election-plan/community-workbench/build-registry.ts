@@ -6,6 +6,9 @@ import {
   COMMUNITY_KPI_SLUG_OVERRIDES,
   PROGRAM_WORKBENCHES,
 } from "./constants";
+import { getCoalitionWorkbenchRegistry } from "./load-coalition-workbench-profile";
+import { getSmosWorkbenchRegistry } from "./load-smos-workbench-profile";
+import { getCchWorkbenchRegistry } from "./load-cch-workbench-profile";
 import type { CommunityWorkbenchRegistryEntry } from "./types";
 
 function countySlugForName(countyName: string): string {
@@ -42,8 +45,41 @@ export function buildCommunityWorkbenchRegistry(): CommunityWorkbenchRegistryEnt
     population: null,
   }));
 
+  const coalitionEntries: CommunityWorkbenchRegistryEntry[] = getCoalitionWorkbenchRegistry().map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    kind: "coalition" as CommunityWorkbenchKind,
+    countySlug: null,
+    citySlug: null,
+    kpiTemplate: "coalition",
+    tagline: c.tagline,
+    population: null,
+  }));
+
+  const smosEntries: CommunityWorkbenchRegistryEntry[] = getSmosWorkbenchRegistry().map((s) => ({
+    slug: s.slug,
+    name: s.name,
+    kind: "media" as CommunityWorkbenchKind,
+    countySlug: null,
+    citySlug: null,
+    kpiTemplate: "media",
+    tagline: s.tagline,
+    population: null,
+  }));
+
+  const cchEntries: CommunityWorkbenchRegistryEntry[] = getCchWorkbenchRegistry().map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    kind: "communications" as CommunityWorkbenchKind,
+    countySlug: null,
+    citySlug: null,
+    kpiTemplate: "communications",
+    tagline: c.tagline,
+    population: null,
+  }));
+
   const bySlug = new Map<string, CommunityWorkbenchRegistryEntry>();
-  for (const entry of [...cityEntries, ...programEntries]) {
+  for (const entry of [...cityEntries, ...programEntries, ...coalitionEntries, ...smosEntries, ...cchEntries]) {
     bySlug.set(entry.slug, entry);
   }
   return [...bySlug.values()].sort((a, b) => a.name.localeCompare(b.name));

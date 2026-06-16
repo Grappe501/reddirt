@@ -1,6 +1,9 @@
 import type { CommunityWorkbenchKind } from "@prisma/client";
 
 import type { FieldEntryLocationSummary } from "@/lib/election-plan/field-entry/types";
+import type { CoalitionWorkbenchProfile } from "./load-coalition-workbench-profile";
+import type { SmosWorkbenchProfile } from "./load-smos-workbench-profile";
+import type { CchWorkbenchProfile } from "./load-cch-workbench-profile";
 import type { VoteCushionView } from "./vote-cushion";
 
 export type CommunityWorkbenchRegistryEntry = {
@@ -105,6 +108,23 @@ export type CommunityWorkbenchView = {
   tagline: string | null;
   population: number | null;
   kpiTemplate: string;
+  /** Record-backed counts only — Principle 1 */
+  recordCounts: Array<{
+    key: string;
+    label: string;
+    count: number;
+    drillAnchor: string;
+    drillLabel: string;
+  }>;
+  /** Strategic plan targets — not live counts; Principle 1 separation */
+  planningGoals: Array<{
+    key: string;
+    label: string;
+    target: number;
+    source: string;
+    unit?: string;
+  }>;
+  /** @deprecated — use recordCounts */
   kpiMetrics: Array<{ key: string; label: string; target?: number; current?: number }>;
   leadership: CommunityWorkbenchLeadershipRow[];
   missions: CommunityWorkbenchMissionRow[];
@@ -122,6 +142,12 @@ export type CommunityWorkbenchView = {
   voteTarget?: number;
   voteGain?: number;
   voteCushion?: VoteCushionView;
+  /** Coalition workbench cultural framework (slots — local leaders fill content) */
+  coalitionProfile?: CoalitionWorkbenchProfile;
+  /** Social Media OS workbench framework */
+  smosProfile?: SmosWorkbenchProfile;
+  /** Campaign Communications Hub workbench framework */
+  cchProfile?: CchWorkbenchProfile;
 };
 
 export type CommunityWorkbenchSearchHit = {

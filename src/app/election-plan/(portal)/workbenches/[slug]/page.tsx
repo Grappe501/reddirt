@@ -4,9 +4,10 @@ import { CommunityWorkbenchShell } from "@/components/election-plan/CommunityWor
 import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
 import { loadCommunityWorkbench } from "@/lib/election-plan/community-workbench/load-workbench";
 import { buildCommunityWorkbenchRegistry } from "@/lib/election-plan/community-workbench/build-registry";
-import { isCommunityPilotSlug, pilotWorkbenchMeta } from "@/lib/election-plan/community-workbench/pilot";
+import { isPrimaryCityPilotSlug, pilotWorkbenchMeta, COMMUNITY_PILOT_OPTIONAL_CITY } from "@/lib/election-plan/community-workbench/pilot";
 import { evaluatePilotWorkbench } from "@/lib/election-plan/community-workbench/pilot-validation";
 import { getPilotSmokePath } from "@/lib/election-plan/community-workbench/pilot-smoke-paths";
+import { ensurePilotEventsSeeded } from "@/lib/election-plan/community-workbench/seed-pilot-events";
 import { getFosCommunityAllocation } from "@/lib/election-plan/load-fundraising-operating-system";
 import { prisma } from "@/lib/db";
 
@@ -31,6 +32,8 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function CommunityWorkbenchPage({ params }: Props) {
   const { slug } = await params;
+  await ensurePilotEventsSeeded();
+
   const [workbench, operator] = await Promise.all([
     loadCommunityWorkbench(slug),
     loadCurrentElectionPlanOperator(),
@@ -50,7 +53,7 @@ export default async function CommunityWorkbenchPage({ params }: Props) {
     createdAt: string;
   }> = [];
 
-  if (isCommunityPilotSlug(slug)) {
+  if (isPrimaryCityPilotSlug(slug)) {
     const meta = pilotWorkbenchMeta(slug)!;
     pilotSmokePath = getPilotSmokePath(slug);
     pilotValidation = evaluatePilotWorkbench(workbench, meta.context);
@@ -73,6 +76,12 @@ export default async function CommunityWorkbenchPage({ params }: Props) {
     } catch {
       pilotDefects = [];
     }
+  } else if (slug === COMMUNITY_PILOT_OPTIONAL_CITY.slug) {
+    pilotSmokePath = getPilotSmokePath(slug);
+    pilotValidation = {
+      ...evaluatePilotWorkbench(workbench, COMMUNITY_PILOT_OPTIONAL_CITY.context),
+      kind: "optional_city" as const,
+    };
   }
 
   const fosAllocation = getFosCommunityAllocation(slug);
@@ -89,6 +98,7 @@ export default async function CommunityWorkbenchPage({ params }: Props) {
             pilotValidation={pilotValidation}
             pilotDefects={pilotDefects}
             fosAllocation={fosAllocation}
+            showOptionalPilotBanner={slug === COMMUNITY_PILOT_OPTIONAL_CITY.slug}
           />
         </div>
       </div>

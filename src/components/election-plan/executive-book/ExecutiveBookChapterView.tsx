@@ -422,7 +422,7 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                     ["Materials mid tier", chapter.budgetSummary.materialsMid],
                     ["Field strategy (media · swag · compliance · sponsorships)", chapter.budgetSummary.fieldStrategyTotal],
                     ["Digital program (ads · production · tools)", chapter.budgetSummary.digitalProgramTotal],
-                    ["Postcards/mail mid placeholder", chapter.budgetSummary.postcardMid],
+                    ["Postcards / mail (mid season)", chapter.budgetSummary.postcardMid],
                     ["Sherwood expected net (projected)", chapter.budgetSummary.sherwoodNetMid],
                     ["Bare minimum scenario", chapter.budgetSummary.bareMinimumTotal],
                     ["Working campaign scenario", chapter.budgetSummary.workingCampaignTotal],

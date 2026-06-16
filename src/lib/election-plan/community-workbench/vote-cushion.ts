@@ -26,6 +26,13 @@ export type VoteCushionView = {
   notes: string | null;
   operatorInitials: string | null;
   updatedAt: string | null;
+  /** Sourced planning hints from special-kpi-goals / city numeric targets */
+  planningHint?: {
+    label?: string;
+    targetIncreasePct?: number;
+    targetVotes?: number;
+    notes?: string;
+  };
 };
 
 export function computeVoteCushionView(

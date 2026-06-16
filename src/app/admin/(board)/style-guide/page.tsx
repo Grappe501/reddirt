@@ -50,7 +50,7 @@ const HUB: HubItem[] = [
 const UI = [
   { label: "Tailwind + design tokens", note: "globals.css + tailwind.config — Kelly Grappe SOS (`kelly-*` tokens only)." },
   { label: "Layout primitives", note: "SiteHeader, SiteFooter, CampaignPaidForBar — keep tap targets min-h-11 on mobile." },
-  { label: "Admin shell", note: "AdminBoardShell — operations vs site content vs orchestrator groupings." },
+  { label: "Campaign Manager shell", note: "AdminBoardShell — operations vs site content vs orchestrator groupings." },
 ] as const;
 
 export default function AdminStyleGuideHubPage() {

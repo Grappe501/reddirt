@@ -10,9 +10,18 @@ import {
   COMMUNITY_KPI_SLUG_OVERRIDES,
   COMMUNITY_LEADERSHIP_ROLES,
 } from "./constants";
-import { computeCommunityReadiness, kpiMetricsForTemplate } from "./compute-readiness";
+import { computeCommunityReadiness } from "./compute-readiness";
+import type { CoalitionWorkbenchProfile } from "./load-coalition-workbench-profile";
+import { getCoalitionWorkbenchProfile } from "./load-coalition-workbench-profile";
+import { getSmosWorkbenchProfile } from "./load-smos-workbench-profile";
+import { getCchWorkbenchProfile } from "./load-cch-workbench-profile";
+import { getSpecialKpiGoalForCity } from "@/lib/election-plan/load-special-kpi-goals";
+import {
+  planningGoalsForSlug,
+  recordCountsForWorkbench,
+} from "./load-community-kpi-targets";
 import { ensureCommunityWorkbenchesSynced } from "./sync-workbenches";
-import { computeVoteCushionView } from "./vote-cushion";
+import { computeVoteCushionView, type VoteCushionView } from "./vote-cushion";
 import type {
   CommunityWorkbenchEventRow,
   CommunityWorkbenchRegistryEntry,
@@ -204,6 +213,8 @@ export async function loadCommunityWorkbench(slug: string): Promise<CommunityWor
     tagline: wb?.tagline ?? registry.tagline,
     population: wb?.population ?? registry.population,
     kpiTemplate,
+    recordCounts: [],
+    planningGoals: [],
     kpiMetrics: [],
     leadership,
     missions,
@@ -218,8 +229,23 @@ export async function loadCommunityWorkbench(slug: string): Promise<CommunityWor
     voteGain: city?.voteGain,
   };
 
-  partial.kpiMetrics = kpiMetricsForTemplate(kpiTemplate, fieldEntry.rollups, events);
+  partial.recordCounts = recordCountsForWorkbench({
+    leadership: partial.leadership,
+    events: partial.events,
+    relationships: partial.relationships,
+    fieldEntry: partial.fieldEntry,
+  });
+  partial.planningGoals = planningGoalsForSlug(slug);
+  partial.kpiMetrics = partial.recordCounts.map((r) => ({
+    key: r.key,
+    label: r.label,
+    current: r.count,
+  }));
   partial.readiness = computeCommunityReadiness(partial);
+
+  partial.coalitionProfile = getCoalitionWorkbenchProfile(slug);
+  partial.smosProfile = getSmosWorkbenchProfile(slug);
+  partial.cchProfile = getCchWorkbenchProfile(slug);
 
   if (city?.targetVotes != null) {
     const globalBaseline = city.targetVotes - (city.voteGain ?? 0);
@@ -239,10 +265,25 @@ export async function loadCommunityWorkbench(slug: string): Promise<CommunityWor
     } catch {
       cushionRecord = null;
     }
-    partial.voteCushion = computeVoteCushionView(globalBaseline, city.targetVotes, cushionRecord);
+    partial.voteCushion = {
+      ...computeVoteCushionView(globalBaseline, city.targetVotes, cushionRecord),
+      planningHint: buildVoteCushionPlanningHint(registry.citySlug ?? slug),
+    };
   }
 
   return partial;
+}
+
+function buildVoteCushionPlanningHint(citySlug: string | null | undefined): VoteCushionView["planningHint"] {
+  if (!citySlug) return undefined;
+  const special = getSpecialKpiGoalForCity(citySlug);
+  if (!special) return undefined;
+  return {
+    label: special.eventLabel ? `${special.label} · ${special.eventLabel}` : special.label,
+    targetIncreasePct: special.targetIncreasePct,
+    targetVotes: special.targetSosVotes,
+    notes: special.baselineSource,
+  };
 }
 
 export async function getCommunityWorkbenchCount(): Promise<number> {

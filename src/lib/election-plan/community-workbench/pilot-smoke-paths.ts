@@ -1,4 +1,6 @@
 import type { CommunityPilotSlug } from "./pilot";
+import { grassrootsGuitarStringsEventHref } from "./event-links";
+import { GRASSROOTS_GUITAR_STRINGS_EVENT_SLUG } from "./pilot-event-seeds";
 
 export type PilotSmokePathStep = {
   order: number;
@@ -6,70 +8,26 @@ export type PilotSmokePathStep = {
   action: string;
   passCriteria: string;
   anchor?: string;
+  href?: string;
 };
 
 export type PilotSmokePath = {
-  slug: CommunityPilotSlug;
+  slug: string;
   name: string;
   intro: string;
+  kind: "city" | "event" | "optional_city";
+  workbenchSlug?: string;
+  eventSlug?: string;
   steps: PilotSmokePathStep[];
-};
-
-export const SHERWOOD_PILOT_SMOKE_PATH: PilotSmokePath = {
-  slug: "sherwood",
-  name: "Sherwood",
-  intro:
-    "Sherwood is the first live pilot city. Complete these steps in production with fake training data only — no real voter PII.",
-  steps: [
-    {
-      order: 1,
-      title: "Sign in and set operator initials",
-      action: "Open Election Plan → enter password → set initials (KGR, SGR, or ERN from seed).",
-      passCriteria: "Operator bar shows your initials; edits are not blocked.",
-    },
-    {
-      order: 2,
-      title: "Assign first Community Lead",
-      action: "Open Sherwood workbench → Leadership → Community Lead → save a lead name.",
-      passCriteria: "Community Lead row persists after page refresh.",
-      anchor: "leadership",
-    },
-    {
-      order: 3,
-      title: "Create first live event",
-      action: "Events → New event → title, date, location, event lead → add 3 run-of-show rows → assign 2 volunteer roles.",
-      passCriteria: "Event appears in list; Events readiness dimension increases.",
-      anchor: "events",
-    },
-    {
-      order: 4,
-      title: "Confirm Sherwood KPIs respond",
-      action: "Check KPI dashboard — events held metric should reflect active events.",
-      passCriteria: "KPI card shows current count (Sherwood template).",
-      anchor: "kpis",
-    },
-    {
-      order: 5,
-      title: "Complete first After Action Report",
-      action: "Set event Executed → actual attendance → write AAR → status After-action complete.",
-      passCriteria: "Event status is aar_complete; AAR body saved; readiness updated.",
-      anchor: "events",
-    },
-    {
-      order: 6,
-      title: "Log a defect if anything failed",
-      action: "Hub → Pilot validation → Defect log, or workbench pilot panel.",
-      passCriteria: "Defect saved with severity; visible on hub defect list.",
-      anchor: "pilot-smoke",
-    },
-  ],
 };
 
 export const JACKSONVILLE_PILOT_SMOKE_PATH: PilotSmokePath = {
   slug: "jacksonville",
   name: "Jacksonville",
+  kind: "city",
+  workbenchSlug: "jacksonville",
   intro:
-    "Jacksonville is the second live pilot — municipal / petition-leader focus. Use training labels on test events (e.g. PILOT — ward meeting).",
+    "Primary city pilot — municipal / petition-leader focus. Start here: /election-plan/workbenches/jacksonville. Use PILOT-labeled test events only.",
   steps: [
     {
       order: 1,
@@ -88,7 +46,7 @@ export const JACKSONVILLE_PILOT_SMOKE_PATH: PilotSmokePath = {
       order: 3,
       title: "Create first live event",
       action: "Events → New event (e.g. PILOT — Ward 3 meeting) → run-of-show + volunteer assignments.",
-      passCriteria: "Event saved; petition-leader / ward meeting KPI template visible.",
+      passCriteria: "Event saved; petition-leader KPI template visible.",
       anchor: "events",
     },
     {
@@ -108,20 +66,144 @@ export const JACKSONVILLE_PILOT_SMOKE_PATH: PilotSmokePath = {
     {
       order: 6,
       title: "Log a defect if anything failed",
-      action: "Record blocker/high defects for anything that blocked the smoke path.",
+      action: "Hub → Pilot validation → Defect log.",
       passCriteria: "Defect appears on hub with Jacksonville slug.",
       anchor: "pilot-smoke",
     },
   ],
 };
 
+export const GRASSROOTS_GUITAR_STRINGS_PILOT_SMOKE_PATH: PilotSmokePath = {
+  slug: GRASSROOTS_GUITAR_STRINGS_EVENT_SLUG,
+  name: "Grassroots & Guitar Strings",
+  kind: "event",
+  workbenchSlug: "sherwood",
+  eventSlug: GRASSROOTS_GUITAR_STRINGS_EVENT_SLUG,
+  intro:
+    "Primary event pilot — Sept 17 special KPI / $20,000 profit opportunity. Event leadership ≠ Sherwood city leadership. Event hosts ≠ house-party hosts.",
+  steps: [
+    {
+      order: 1,
+      title: "Open event workbench (not city leadership board)",
+      action: `Navigate to ${grassrootsGuitarStringsEventHref()} — confirm working committee, run-of-show, and assignments load.`,
+      passCriteria: "Event ops panel shows Sept 17 date, committee link, and OPEN role slots.",
+      href: grassrootsGuitarStringsEventHref(),
+      anchor: "event-ops",
+    },
+    {
+      order: 2,
+      title: "Confirm city vs event separation",
+      action: "Sherwood city workbench → Leadership should remain OPEN unless a city lead is explicitly placed. G&G chairs live on the event only.",
+      passCriteria: "No G&G committee members appear as Sherwood community_lead rows.",
+      href: "/election-plan/workbenches/sherwood#leadership",
+    },
+    {
+      order: 3,
+      title: "Assign Event Chair on event workbench",
+      action: "Event workbench → Event Chair assignment → save name (PILOT prefix OK).",
+      passCriteria: "Event Chair assignee persists — not copied to city leadership.",
+      href: grassrootsGuitarStringsEventHref(),
+      anchor: "event-ops",
+    },
+    {
+      order: 4,
+      title: "Committee onboarding path (PPEN preview)",
+      action: "For each committee slot: invite → activation → Level 1 access → event participation record → event workbench access. Log PILOT participants only.",
+      passCriteria: "At least one committee slot filled with a named participant record (not snapshot KPI).",
+      anchor: "committee",
+    },
+    {
+      order: 5,
+      title: "Run-of-show and volunteer assignments",
+      action: "Add or confirm 3+ run-of-show rows and 2+ volunteer role assignments on the event.",
+      passCriteria: "Run-of-show and assignments save with operator initials.",
+      anchor: "event-ops",
+    },
+    {
+      order: 6,
+      title: "Fundraising opportunity card",
+      action: "Review $20,000 profit goal on event fundraising panel — sponsors/tickets/donations at zero until records exist.",
+      passCriteria: "Profit goal shown separately from Sherwood city base/stretch FOS goals.",
+      anchor: "fundraising",
+    },
+    {
+      order: 7,
+      title: "Complete pilot AAR on event",
+      action: "Set event Executed → attendance → write AAR → After-action complete.",
+      passCriteria: "Event status aar_complete with body saved.",
+      anchor: "event-ops",
+    },
+    {
+      order: 8,
+      title: "Log a defect if anything failed",
+      action: "Defect log with workbench slug sherwood and note G&G event path.",
+      passCriteria: "Defect saved and visible on hub.",
+      anchor: "pilot-smoke",
+    },
+  ],
+};
+
+/** Optional — Sherwood city campaign plan only; not gated on G&G event pilot. */
+export const SHERWOOD_CITY_OPTIONAL_SMOKE_PATH: PilotSmokePath = {
+  slug: "sherwood",
+  name: "Sherwood (city — optional)",
+  kind: "optional_city",
+  workbenchSlug: "sherwood",
+  intro:
+    "Optional city workbench smoke — 60% vote-share stretch goal and OPEN city leadership. Do not conflate with Grassroots & Guitar Strings event ops.",
+  steps: [
+    {
+      order: 1,
+      title: "Review vote cushion / 60% stretch",
+      action: "Sherwood workbench → Vote cushion section — confirm planning targets only.",
+      passCriteria: "Stretch goal visible; not mixed with G&G profit KPI.",
+      anchor: "vote-cushion",
+    },
+    {
+      order: 2,
+      title: "City leadership remains OPEN until accepted",
+      action: "Leadership board — Community Lead and city roles stay OPEN unless explicitly filled.",
+      passCriteria: "No auto-populated G&G event leaders on city board.",
+      anchor: "leadership",
+    },
+    {
+      order: 3,
+      title: "Link to community events",
+      action: "Overview → Community Events → open Grassroots & Guitar Strings event workbench.",
+      passCriteria: "Deep link to event workbench works.",
+      href: grassrootsGuitarStringsEventHref(),
+    },
+    {
+      order: 4,
+      title: "FOS city goals vs opportunities",
+      action: "Fundraising section — base $9,390 / stretch $16,433 separate from G&G $20,000 opportunity.",
+      passCriteria: "Opportunity rollup shows potential total, not replacement of base goal.",
+      anchor: "fundraising",
+    },
+  ],
+};
+
+export const PRIMARY_PILOT_SMOKE_PATHS: PilotSmokePath[] = [
+  JACKSONVILLE_PILOT_SMOKE_PATH,
+  GRASSROOTS_GUITAR_STRINGS_PILOT_SMOKE_PATH,
+];
+
 export const PILOT_SMOKE_PATHS: Record<CommunityPilotSlug, PilotSmokePath> = {
-  sherwood: SHERWOOD_PILOT_SMOKE_PATH,
   jacksonville: JACKSONVILLE_PILOT_SMOKE_PATH,
+  sherwood: SHERWOOD_CITY_OPTIONAL_SMOKE_PATH,
 };
 
 export function getPilotSmokePath(slug: string): PilotSmokePath | null {
-  if (slug === "sherwood") return SHERWOOD_PILOT_SMOKE_PATH;
   if (slug === "jacksonville") return JACKSONVILLE_PILOT_SMOKE_PATH;
+  if (slug === "sherwood") return SHERWOOD_CITY_OPTIONAL_SMOKE_PATH;
   return null;
+}
+
+export function getEventPilotSmokePath(eventSlug: string): PilotSmokePath | null {
+  if (eventSlug === GRASSROOTS_GUITAR_STRINGS_EVENT_SLUG) return GRASSROOTS_GUITAR_STRINGS_PILOT_SMOKE_PATH;
+  return null;
+}
+
+export function getPrimaryPilotSmokePath(slug: string): PilotSmokePath | null {
+  return PRIMARY_PILOT_SMOKE_PATHS.find((p) => p.slug === slug) ?? null;
 }

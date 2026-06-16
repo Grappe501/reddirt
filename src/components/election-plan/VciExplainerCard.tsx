@@ -1,11 +1,13 @@
 import { VCI_EXPLAINER } from "@/lib/election-plan/vci-explainer";
+import type { VciExample } from "@/lib/election-plan/vci-example";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 
 type Props = {
   compact?: boolean;
+  example?: VciExample | null;
 };
 
-export function VciExplainerCard({ compact }: Props) {
+export function VciExplainerCard({ compact, example }: Props) {
   const e = VCI_EXPLAINER;
 
   if (compact) {
@@ -30,10 +32,17 @@ export function VciExplainerCard({ compact }: Props) {
         <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{e.formulaNote}</p>
       </div>
 
-      <p className="mt-4 text-sm text-[var(--ep-navy-muted)]">
-        <strong className="text-[var(--ep-navy)]">Example:</strong> {e.example.county} ranks #{e.example.rank} with{" "}
-        {formatVotes(e.example.vci)} VCI — {e.example.explanation}
-      </p>
+      {example ? (
+        <p className="mt-4 text-sm text-[var(--ep-navy-muted)]">
+          <strong className="text-[var(--ep-navy)]">Top county (snapshot):</strong> {example.county} ranks #
+          {example.rank} with {formatVotes(example.vci)} VCI — {example.explanation}
+        </p>
+      ) : (
+        <p className="mt-4 text-sm text-[var(--ep-navy-muted)]">
+          Run <code className="text-xs">npm run election-plan:build</code> to load county VCI rankings from the strategic
+          plan snapshot.
+        </p>
+      )}
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <div>

@@ -19,6 +19,22 @@
       "href": "/election-plan/cities/jacksonville"
     },
     {
+      "id": "quitman-sos-lift-20",
+      "scope": "city",
+      "locationSlug": "quitman",
+      "locationName": "Quitman",
+      "eventLabel": "Cleburne County immersion · bonus cushion",
+      "label": "20% SOS lift vs 2022 (bonus cushion)",
+      "goalType": "sos_lift_pct",
+      "description": "Increase Secretary of State votes in Quitman by 20% over 2022 midterm performance — bonus cushion votes isolated from Top 40 totals.",
+      "baseline2022SosVotes": 42,
+      "targetIncreasePct": 20,
+      "targetSosVotes": 50,
+      "currentSosVotes": 0,
+      "baselineSource": "Cleburne County 2022 SOS Democratic votes (1,447) × Quitman population share (716 / 24,711). Not added to Top 40 combined target.",
+      "href": "/election-plan/workbenches/quitman"
+    },
+    {
       "id": "searcy-county-outright-majority",
       "scope": "county",
       "locationSlug": "searcy",

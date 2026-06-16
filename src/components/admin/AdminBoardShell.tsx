@@ -7,13 +7,19 @@ import { CampaignOsNavRail } from "@/components/admin/navigation/CampaignOsNavRa
 import { AdminPrimaryNav } from "@/components/admin/navigation/AdminPrimaryNav";
 import { GlobalAiCommandPalette } from "@/components/admin/navigation/GlobalAiCommandPalette";
 import { isAskKellyUiEnabled } from "@/lib/feature-flags/ask-kelly-ui";
+import {
+  CAMPAIGN_MANAGER_WORKBENCH_EYEBROW,
+  CAMPAIGN_MANAGER_WORKBENCH_HEADLINE,
+  CAMPAIGN_MANAGER_WORKBENCH_NAME,
+  CAMPAIGN_MANAGER_WORKBENCH_TAGLINE,
+} from "@/lib/admin/campaign-manager-workbench-labels";
 import { OperatorContextProvider } from "@/components/admin/navigation/OperatorContextProvider";
 import type { CampaignOsNavGroup } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
 import { KellySingleCampaignBadge } from "@/components/admin/campaign-tenancy/KellySingleCampaignBadge";
 import { GlobalCampaignSwitcher } from "@/components/admin/campaign-tenancy/GlobalCampaignSwitcher";
 import { CampaignBrandingStyles } from "@/components/admin/campaign-tenancy/CampaignBrandingStyles";
 import type { CampaignBranding, CampaignTenant } from "@/lib/campaign-tenancy/types";
-import { showDevTenancyUi, KELLY_CAMPAIGN_OS_TAGLINE } from "@/lib/campaign-tenancy/single-campaign-mode";
+import { showDevTenancyUi } from "@/lib/campaign-tenancy/single-campaign-mode";
 
 const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/content", label: "Overview" },
@@ -72,15 +78,18 @@ export function AdminBoardShell({
         <aside className="flex w-[min(100%,300px)] flex-col border-r border-[var(--border-on-navy)] bg-kelly-text text-kelly-inverse">
           <div className="border-b border-[var(--border-on-navy)] px-5 py-6">
             <p className="os-eyebrow-inverse tracking-[0.28em]">
-              {oppositionDebateLaunchMode ? "Debate week" : "Kelly Campaign OS"}
+              {oppositionDebateLaunchMode ? "Debate week" : CAMPAIGN_MANAGER_WORKBENCH_EYEBROW}
             </p>
             <p className="mt-2 font-heading text-lg font-bold leading-tight text-kelly-inverse">
-              {oppositionDebateLaunchMode ? "Opposition & debate intelligence" : "Operational command"}
+              {oppositionDebateLaunchMode ? "Opposition & debate intelligence" : CAMPAIGN_MANAGER_WORKBENCH_HEADLINE}
+            </p>
+            <p className="mt-1 font-heading text-sm font-semibold text-kelly-gold/90">
+              {oppositionDebateLaunchMode ? null : CAMPAIGN_MANAGER_WORKBENCH_NAME}
             </p>
             <p className="mt-2 font-body text-xs leading-relaxed text-kelly-inverse-soft">
               {oppositionDebateLaunchMode
                 ? "Internal workbench — claims require human review before any public use."
-                : KELLY_CAMPAIGN_OS_TAGLINE}
+                : CAMPAIGN_MANAGER_WORKBENCH_TAGLINE}
             </p>
           </div>
           <nav className="flex flex-1 flex-col gap-3 overflow-y-auto px-3 py-4" aria-label="Campaign OS">

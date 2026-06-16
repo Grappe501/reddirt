@@ -1,8 +1,41 @@
 # People Power Execution Network (PPEN) — Roadmap
 
 **Status:** Planning · **Gate:** Sherwood + Jacksonville live pilot complete (v1.3) before Phase A.0 code  
-**Updated:** 2026-06-16 (My Five + Help 10 Participate doctrine)  
-**Related:** Community Workbench OS v1–v1.3 (`3436c531`), [`COMMUNITY_WORKBENCH_PILOT_OPERATOR_RUNBOOK.md`](./COMMUNITY_WORKBENCH_PILOT_OPERATOR_RUNBOOK.md)
+**Updated:** 2026-06-16 (Person Layer · PPEN A.0b priority)  
+**Related:** [`ELECTION_PLAN_OPERATING_SYSTEM_DOCTRINE.md`](./ELECTION_PLAN_OPERATING_SYSTEM_DOCTRINE.md), [`PPEN_A0B_PARTICIPANT_IDENTITY_LAYER.md`](./PPEN_A0B_PARTICIPANT_IDENTITY_LAYER.md), Community Workbench OS v1–v1.3 (`3436c531`), [`COMMUNITY_WORKBENCH_PILOT_OPERATOR_RUNBOOK.md`](./COMMUNITY_WORKBENCH_PILOT_OPERATOR_RUNBOOK.md), [`ELECTION_PLAN_DATA_INTEGRITY_DOCTRINE.md`](./ELECTION_PLAN_DATA_INTEGRITY_DOCTRINE.md), [`COALITION_COMMAND_WORKBENCH_MIGRATION.md`](./COALITION_COMMAND_WORKBENCH_MIGRATION.md), [`CAMPAIGN_COMMUNICATIONS_HUB_DOCTRINE.md`](./CAMPAIGN_COMMUNICATIONS_HUB_DOCTRINE.md), [`SOCIAL_MEDIA_OS_MIGRATION.md`](./SOCIAL_MEDIA_OS_MIGRATION.md), [`COUNTY_WORKBENCH_V4_DOCTRINE.md`](./COUNTY_WORKBENCH_V4_DOCTRINE.md)
+
+> **System doctrine:** No dashboard number without openable records. See [Data Integrity Doctrine](./ELECTION_PLAN_DATA_INTEGRITY_DOCTRINE.md) before any PPEN counter or KPI work.
+
+---
+
+## Person Layer — the missing center
+
+Workbenches (county, community, coalition), CCH, and SMOS converge into **one operating system**.  
+They must revolve around a **Participant Profile** — not dashboards.
+
+```text
+People → Relationships → Communities → Counties → Campaign
+```
+
+**Next build after v4 lock:** [PPEN A.0b — Identity & Access](./PPEN_A0B_PARTICIPANT_IDENTITY_LAYER.md) + [A.0c — Volunteer Intake](./PPEN_A0C_VOLUNTEER_INTAKE_ACTIVATION.md)  
+**Not next:** 75-county ACS/BLS bulk import.
+
+See [`ELECTION_PLAN_OPERATING_SYSTEM_DOCTRINE.md`](./ELECTION_PLAN_OPERATING_SYSTEM_DOCTRINE.md) — **views, not projects**; six layers; four objects (Person, Participation, Relationship, Impact); **My Journey** = movement home screen.
+
+---
+
+## Four operating systems (campaign backbone)
+
+PPEN lives **inside** Community Workbench OS but connects to all four:
+
+```text
+Community Workbench OS   → people & field operations
+PPEN                     → growth & participation (inside workbenches)
+Social Media OS (SMOS)   → content & narrative operations (downstream distribution)
+Campaign Communications Hub (CCH) → Kelly's voice · Substack source of truth
+```
+
+When PPEN pilot gate clears, volunteer approval triggers CCH access tiers (public feed → insider feed) — see CCH doctrine § PPEN integration.
 
 ---
 
@@ -206,7 +239,10 @@ onboarding → training → certification → access → promotion (Leadership J
 
 ## Phase A.0b — Identity, Access, and Journey System
 
-**Foundation before HCI, captains, and accountability.** Build alongside or immediately after A.0.
+**Foundation before HCI, captains, accountability, and all workbench people features.**  
+**Build immediately after pilot gate — before ACS/BLS scale.**
+
+Full doctrine: [`PPEN_A0B_PARTICIPANT_IDENTITY_LAYER.md`](./PPEN_A0B_PARTICIPANT_IDENTITY_LAYER.md)
 
 The platform must answer for every person:
 
@@ -221,16 +257,21 @@ What is their My Five status?
 What is their My Ten status?
 ```
 
-### A.0b build list
+### A.0b deliverables (Burt)
 
-1. Participant identity record (linked to operator account when applicable)  
-2. Access levels L1–L6 (Volunteer → Executive)  
-3. Workbench + county assignment scoping  
-4. Committee membership links  
-5. Journey state store (Leadership / Network Growth / Civic Engagement tracks)  
-6. My Five + My Ten placeholders (status summary on profile)  
-7. **My Journey** page shell (three tracks)  
-8. Permission gates for Election Plan / workbench sections  
+1. Participant profile model  
+2. Username activation workflow  
+3. One-time invite activation  
+4. Access levels L1–L6  
+5. County assignment  
+6. Coalition assignment  
+7. My Journey framework (three tracks)  
+8. My Five object  
+9. Help 10 Participate object  
+10. Impact tracking framework ("Because of You")  
+11. Interested candidates on leadership positions (county + coalition workbenches)
+
+Framework registry (structural today): `data/campaign-brain/ppen-participant-framework.source.json`
 
 Today: operator whitelist + `field_entry` only. A.0b replaces ad-hoc assumptions.
 
@@ -289,14 +330,22 @@ Individual civic profile · community growth + participation charts.
 
 ---
 
-## Build gate
+## Build gate (locked order)
 
-1. v1.3 pilot — Sherwood → Jacksonville → defect log  
-2. v1.4 — defect fixes only  
-3. **PPEN A.0 + A.0b** — onboarding front door + identity/journey foundation  
-4. **A.1 + A.1b** — Network Growth + Civic Engagement engines  
-5. **A.2** — HCI  
-6. No Executive Book rollups until field data exists  
+| Step | Phase | Deliverable |
+|------|-------|-------------|
+| 0 | v4 structural | County Workbench v4 operating shell ✓ |
+| **1** | Pilot smoke | Sherwood + Jacksonville — prove OS live |
+| **2–3** | **A.0b + A.0c together** | Person, Participation, Access, My Journey **+** volunteer form → activation → L1 |
+| 4 | A.0 | Leadership opportunities, interested candidates, onboarding |
+| 5 | A.1 | My Five engine |
+| 5b | A.1b | Help 10 Participate engine |
+| 6 | A.2 | HCI / Because of You |
+| 7 | ACS/BLS | Faulkner or Saline pilot only — then scale to 75 |
+
+**A.0b without A.0c is incomplete.** **A.0c without A.0b is another disconnected volunteer form.** Ship as one slice after step 1.
+
+**Hard rules:** No fake movement numbers · no dashboard totals without records · no PPEN **code** before pilot smoke passes. No Executive Book rollups until field data exists.
 
 ---
 

@@ -1,0 +1,348 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "note": "Social Media OS (SMOS) — workbench registry. Content counts come from records only (ideas, drafts, assets, publishes). Planning goals live in campaign-brain, not dashboard KPIs.",
+  "workbenches": [
+    {
+      "slug": "content-studio",
+      "name": "Content Studio",
+      "category": "core",
+      "tagline": "Heart of SMOS — ideas, assignments, pipeline status",
+      "frameworkNote": "Idea → Draft → Review → Approved → Scheduled → Published → Archived. Every item is a record.",
+      "pipelineStatuses": ["Idea", "Draft", "Review", "Approved", "Scheduled", "Published", "Archived"],
+      "ideaBuckets": ["Raw Ideas", "In Development", "Ready To Create"],
+      "assignmentRoles": ["Writer", "Photographer", "Video Editor", "Reviewer", "Publisher"],
+      "intelSections": [
+        { "key": "ideas", "label": "Content Ideas" },
+        { "key": "assignments", "label": "Active Assignments" },
+        { "key": "queue", "label": "Publish Queue" }
+      ],
+      "volunteerPathways": [
+        { "key": "writer", "label": "Writer" },
+        { "key": "photographer", "label": "Photographer" },
+        { "key": "video_editor", "label": "Video Editor" },
+        { "key": "reviewer", "label": "Reviewer" },
+        { "key": "publisher", "label": "Publisher" }
+      ]
+    },
+    {
+      "slug": "media-library",
+      "name": "Media Command Center",
+      "category": "core",
+      "tagline": "Searchable, taggable library — not an uploads folder",
+      "frameworkNote": "Assets are records with tags, source workbench, and reuse rights — no orphan files.",
+      "mediaImageTags": ["Kelly", "Events", "Volunteers", "Counties", "Coalitions", "Graphics"],
+      "mediaVideoTags": ["Short Clips", "Testimonials", "Town Halls", "Debates", "Ads", "Interviews"],
+      "intelSections": [
+        { "key": "images", "label": "Image Library" },
+        { "key": "videos", "label": "Video Library" },
+        { "key": "graphics", "label": "Graphics & Templates" }
+      ],
+      "volunteerPathways": [
+        { "key": "photographer", "label": "Photographer" },
+        { "key": "video_creator", "label": "Video Creator" },
+        { "key": "graphic_designer", "label": "Graphic Designer" },
+        { "key": "librarian", "label": "Media Librarian" }
+      ]
+    },
+    {
+      "slug": "story-corps",
+      "name": "Story Corps",
+      "category": "core",
+      "tagline": "Stories submitted from city, coalition, and field workbenches feed here",
+      "frameworkNote": "Inbound: story, photo, video, quote, issue — each submission is a record with source workbench slug.",
+      "submissionTypes": ["Story", "Photo", "Video", "Quote", "Issue"],
+      "intelSections": [
+        { "key": "inbound", "label": "Inbound Submissions" },
+        { "key": "in_production", "label": "In Production" },
+        { "key": "published", "label": "Published Stories" }
+      ],
+      "volunteerPathways": [
+        { "key": "story_editor", "label": "Story Editor" },
+        { "key": "field_submitter", "label": "Field Submitter" },
+        { "key": "producer", "label": "Producer" }
+      ]
+    },
+    {
+      "slug": "rapid-response",
+      "name": "Rapid Response",
+      "category": "core",
+      "tagline": "Issue → Research → Draft → Approval → Publish — separate from normal content",
+      "pipelineStatuses": ["Issue Logged", "Research", "Draft Response", "Approval", "Published"],
+      "intelSections": [
+        { "key": "active_issues", "label": "Active Issues" },
+        { "key": "research", "label": "Research Notes" },
+        { "key": "approved_responses", "label": "Approved Responses" }
+      ],
+      "volunteerPathways": [
+        { "key": "researcher", "label": "Researcher" },
+        { "key": "draft_writer", "label": "Draft Writer" },
+        { "key": "approver", "label": "Approver" }
+      ]
+    },
+    {
+      "slug": "creator-network",
+      "name": "Volunteer Creator Network",
+      "category": "core",
+      "tagline": "PPEN meets media — county creators, photographers, writers, designers",
+      "frameworkNote": "Creator records only — training, assignments, uploads, performance tracked per person.",
+      "volunteerPathways": [
+        { "key": "county_creator", "label": "County Creator" },
+        { "key": "photographer", "label": "Photographer" },
+        { "key": "video_creator", "label": "Video Creator" },
+        { "key": "graphic_designer", "label": "Graphic Designer" },
+        { "key": "writer", "label": "Writer" },
+        { "key": "podcast_contributor", "label": "Podcast Contributor" }
+      ],
+      "intelSections": [
+        { "key": "creators", "label": "Creator Roster" },
+        { "key": "training", "label": "Training Completed" },
+        { "key": "assignments", "label": "Open Assignments" }
+      ]
+    },
+    {
+      "slug": "publishing-queue",
+      "name": "Publishing Engine",
+      "category": "core",
+      "tagline": "Phase 1: approve + queue · Phase 2: platform APIs",
+      "frameworkNote": "Creator → Editor → Approver → Publisher. No auto-publish in Phase 1.",
+      "approvalChain": ["Creator", "Editor", "Approver", "Publisher"],
+      "intelSections": [
+        { "key": "queued", "label": "Queued for Publish" },
+        { "key": "scheduled", "label": "Scheduled" },
+        { "key": "published_log", "label": "Published Log" }
+      ],
+      "volunteerPathways": [
+        { "key": "editor", "label": "Editor" },
+        { "key": "approver", "label": "Approver" },
+        { "key": "publisher", "label": "Publisher" }
+      ]
+    },
+    {
+      "slug": "sm-analytics",
+      "name": "Analytics",
+      "category": "core",
+      "tagline": "Record-backed performance — not dashboard placeholders",
+      "frameworkNote": "Metrics attach to published content records only until live API feeds exist.",
+      "intelSections": [
+        { "key": "by_platform", "label": "By Platform" },
+        { "key": "by_content", "label": "By Content Item" },
+        { "key": "by_creator", "label": "By Creator" }
+      ],
+      "volunteerPathways": [{ "key": "analyst", "label": "Analytics Lead" }]
+    },
+    {
+      "slug": "video-studio",
+      "name": "Video Studio",
+      "category": "production",
+      "tagline": "Production workbench — scripts, shoots, edits",
+      "intelSections": [
+        { "key": "scripts", "label": "Scripts" },
+        { "key": "shoots", "label": "Shoot Schedule" },
+        { "key": "edits", "label": "Edit Queue" }
+      ],
+      "volunteerPathways": [
+        { "key": "videographer", "label": "Videographer" },
+        { "key": "editor", "label": "Video Editor" },
+        { "key": "producer", "label": "Producer" }
+      ]
+    },
+    {
+      "slug": "photography-library",
+      "name": "Photography Library",
+      "category": "production",
+      "tagline": "Field photography ops — events, counties, coalitions",
+      "intelSections": [
+        { "key": "assignments", "label": "Photo Assignments" },
+        { "key": "deliverables", "label": "Deliverables" },
+        { "key": "rights", "label": "Usage Rights" }
+      ],
+      "volunteerPathways": [
+        { "key": "photographer", "label": "Photographer" },
+        { "key": "photo_editor", "label": "Photo Editor" }
+      ]
+    },
+    {
+      "slug": "writing-press-releases",
+      "name": "Press Releases",
+      "category": "writing",
+      "tagline": "Owner · status · deadline · approvals · versions",
+      "pipelineStatuses": ["Idea", "Draft", "Review", "Approved", "Scheduled", "Published", "Archived"],
+      "volunteerPathways": [{ "key": "writer", "label": "Press Writer" }, { "key": "reviewer", "label": "Comms Reviewer" }]
+    },
+    {
+      "slug": "writing-facebook-posts",
+      "name": "Facebook Posts",
+      "category": "writing",
+      "tagline": "Short-form social copy workbench",
+      "pipelineStatuses": ["Idea", "Draft", "Review", "Approved", "Scheduled", "Published", "Archived"],
+      "volunteerPathways": [{ "key": "writer", "label": "Social Writer" }]
+    },
+    {
+      "slug": "writing-email",
+      "name": "Email Writing",
+      "category": "writing",
+      "tagline": "Newsletter and mobilization email drafts",
+      "pipelineStatuses": ["Idea", "Draft", "Review", "Approved", "Scheduled", "Published", "Archived"],
+      "volunteerPathways": [{ "key": "writer", "label": "Email Writer" }]
+    },
+    {
+      "slug": "writing-debate-prep",
+      "name": "Debate Prep",
+      "category": "writing",
+      "tagline": "Debate briefs and candidate prep materials",
+      "pipelineStatuses": ["Idea", "Draft", "Review", "Approved", "Archived"],
+      "volunteerPathways": [{ "key": "writer", "label": "Debate Writer" }, { "key": "researcher", "label": "Researcher" }]
+    },
+    {
+      "slug": "writing-speeches",
+      "name": "Speech Writing",
+      "category": "writing",
+      "tagline": "Kelly remarks, stops, and event scripts",
+      "pipelineStatuses": ["Idea", "Draft", "Review", "Approved", "Archived"],
+      "volunteerPathways": [{ "key": "writer", "label": "Speechwriter" }]
+    },
+    {
+      "slug": "writing-video-scripts",
+      "name": "Video Scripts",
+      "category": "writing",
+      "tagline": "Reels, ads, and long-form video scripts",
+      "pipelineStatuses": ["Idea", "Draft", "Review", "Approved", "Archived"],
+      "volunteerPathways": [{ "key": "writer", "label": "Script Writer" }]
+    },
+    {
+      "slug": "writing-lte",
+      "name": "Letters to the Editor",
+      "category": "writing",
+      "tagline": "LTE pipeline by county and topic",
+      "pipelineStatuses": ["Idea", "Draft", "Review", "Approved", "Submitted", "Published", "Archived"],
+      "volunteerPathways": [{ "key": "writer", "label": "LTE Writer" }, { "key": "county_lead", "label": "County LTE Lead" }]
+    },
+    {
+      "slug": "writing-opinion",
+      "name": "Opinion Pieces",
+      "category": "writing",
+      "tagline": "Op-eds and guest columns",
+      "pipelineStatuses": ["Idea", "Draft", "Review", "Approved", "Submitted", "Published", "Archived"],
+      "volunteerPathways": [{ "key": "writer", "label": "Opinion Writer" }]
+    },
+    {
+      "slug": "platform-facebook",
+      "name": "Facebook Workbench",
+      "category": "platform",
+      "tagline": "Audience · strategy · content queue · performance (records)",
+      "intelSections": [
+        { "key": "strategy", "label": "Content Strategy" },
+        { "key": "queue", "label": "Content Queue" },
+        { "key": "performance", "label": "Performance Log" }
+      ],
+      "volunteerPathways": [{ "key": "platform_lead", "label": "Facebook Lead" }, { "key": "publisher", "label": "Publisher" }]
+    },
+    {
+      "slug": "platform-instagram",
+      "name": "Instagram Workbench",
+      "category": "platform",
+      "tagline": "Reels, stories, and visual cadence",
+      "intelSections": [
+        { "key": "strategy", "label": "Content Strategy" },
+        { "key": "queue", "label": "Content Queue" },
+        { "key": "performance", "label": "Performance Log" }
+      ],
+      "volunteerPathways": [{ "key": "platform_lead", "label": "Instagram Lead" }]
+    },
+    {
+      "slug": "platform-tiktok",
+      "name": "TikTok Workbench",
+      "category": "platform",
+      "tagline": "Short video and creator network tie-in",
+      "intelSections": [
+        { "key": "strategy", "label": "Content Strategy" },
+        { "key": "queue", "label": "Content Queue" },
+        { "key": "creators", "label": "Creator Assignments" }
+      ],
+      "volunteerPathways": [{ "key": "platform_lead", "label": "TikTok Lead" }, { "key": "video_creator", "label": "Video Creator" }]
+    },
+    {
+      "slug": "platform-youtube",
+      "name": "YouTube Workbench",
+      "category": "platform",
+      "tagline": "Long-form and interview content",
+      "intelSections": [
+        { "key": "strategy", "label": "Content Strategy" },
+        { "key": "queue", "label": "Content Queue" },
+        { "key": "performance", "label": "Performance Log" }
+      ],
+      "volunteerPathways": [{ "key": "platform_lead", "label": "YouTube Lead" }]
+    },
+    {
+      "slug": "platform-threads",
+      "name": "Threads Workbench",
+      "category": "platform",
+      "tagline": "Conversation and rapid response tie-in",
+      "intelSections": [
+        { "key": "strategy", "label": "Content Strategy" },
+        { "key": "queue", "label": "Content Queue" }
+      ],
+      "volunteerPathways": [{ "key": "platform_lead", "label": "Threads Lead" }]
+    },
+    {
+      "slug": "platform-x",
+      "name": "X Workbench",
+      "category": "platform",
+      "tagline": "Short-form posts and reply routing from CCH adaptations",
+      "intelSections": [
+        { "key": "strategy", "label": "Content Strategy" },
+        { "key": "queue", "label": "Content Queue" },
+        { "key": "replies", "label": "Reply Routing" }
+      ],
+      "volunteerPathways": [{ "key": "platform_lead", "label": "X Lead" }, { "key": "publisher", "label": "Publisher" }]
+    },
+    {
+      "slug": "platform-linkedin",
+      "name": "LinkedIn Workbench",
+      "category": "platform",
+      "tagline": "Professional narrative and long-form adaptations",
+      "intelSections": [
+        { "key": "strategy", "label": "Content Strategy" },
+        { "key": "queue", "label": "Content Queue" },
+        { "key": "performance", "label": "Performance Log" }
+      ],
+      "volunteerPathways": [{ "key": "platform_lead", "label": "LinkedIn Lead" }]
+    },
+    {
+      "slug": "platform-substack",
+      "name": "Substack Workbench",
+      "category": "platform",
+      "tagline": "Canonical post home — public and insider feeds; comment routing",
+      "frameworkNote": "Upstream of all platform workbenches. Substack post = source-of-truth record; adaptations are child records in other platform workbenches.",
+      "intelSections": [
+        { "key": "public", "label": "Public Feed Posts" },
+        { "key": "insider", "label": "Insider Feed Posts" },
+        { "key": "comments", "label": "Comment Routing" }
+      ],
+      "volunteerPathways": [{ "key": "platform_lead", "label": "Substack Lead" }, { "key": "editor", "label": "Editor" }]
+    },
+    {
+      "slug": "platform-email-content",
+      "name": "Email Content Workbench",
+      "category": "platform",
+      "tagline": "Mobilize, Substack, and list content",
+      "intelSections": [
+        { "key": "strategy", "label": "Email Strategy" },
+        { "key": "queue", "label": "Send Queue" }
+      ],
+      "volunteerPathways": [{ "key": "platform_lead", "label": "Email Content Lead" }]
+    },
+    {
+      "slug": "platform-website",
+      "name": "Website Content Workbench",
+      "category": "platform",
+      "tagline": "Site copy, from-the-road, and public narrative",
+      "intelSections": [
+        { "key": "pages", "label": "Page Updates" },
+        { "key": "blog", "label": "From the Road / Blog" }
+      ],
+      "volunteerPathways": [{ "key": "platform_lead", "label": "Web Content Lead" }]
+    }
+  ]
+}

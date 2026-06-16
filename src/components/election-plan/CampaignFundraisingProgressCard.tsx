@@ -10,6 +10,34 @@ type Props = {
   variant?: "war" | "dashboard";
 };
 
+/** Compact KPI for Executive War Room header stat row */
+export function WarRoomFundraisingHeaderStat({ data }: { data: WarRoomFundraisingFields }) {
+  const f = fundraisingProgressView(data);
+
+  return (
+    <div className="ep-card ep-war-stat">
+      <div className="flex flex-wrap items-center justify-center gap-2">
+        <div className="ep-war-stat-label mb-0">Fundraising</div>
+        {f.raisedProvisional ? (
+          <span className="rounded-full bg-amber-100 px-1.5 py-0.5 text-[9px] font-bold uppercase text-amber-900">
+            Pending filing
+          </span>
+        ) : null}
+      </div>
+      <div className="ep-war-stat-value tabular-nums">
+        {formatBudget(f.raised)} / {formatBudget(f.networkGoal)}
+      </div>
+      <div className="ep-war-stat-label">$60K milestone</div>
+      <div className="ep-progress mx-auto mt-2 max-w-[12rem]">
+        <div className="ep-progress-bar bg-[var(--ep-gold)]" style={{ width: `${f.networkPct}%` }} />
+      </div>
+      <p className="mt-2 text-[10px] text-[var(--ep-navy-muted)]">
+        {Math.round(f.networkPct)}% milestone · {formatBudget(f.combinedGoal)} overall
+      </p>
+    </div>
+  );
+}
+
 export function CampaignFundraisingProgressCard({ data, variant = "war" }: Props) {
   const f = fundraisingProgressView(data);
   const isWar = variant === "war";

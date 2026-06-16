@@ -1,4 +1,13 @@
-import fosSource from "../../../data/campaign-brain/fundraising-operating-system.source.json";
+import { getFosSourceFile } from "@/lib/election-plan/fundraising-operating-system-shared";
+import type {
+  FosClusterRollup,
+  FosCommunityAllocation,
+  FosConfig,
+  FosCountyRollup,
+  FosStateRollup,
+} from "@/lib/election-plan/fundraising-operating-system-shared";
+export type { FosClusterRollup, FosCommunityAllocation, FosConfig, FosCountyRollup, FosStateRollup };
+export { getFosConfig } from "@/lib/election-plan/fundraising-operating-system-shared";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 import { getCountyByName } from "@/lib/election-plan/load-county";
 import { getCityNumericTargets } from "@/lib/election-plan/load-city-numeric-targets";
@@ -6,86 +15,7 @@ import { isBonusCitySlug } from "@/lib/election-plan/load-bonus-city-workbenches
 import { getFundraisingTracker } from "@/lib/election-plan/load-fundraising-tracker";
 import type { ElectionPlanCity } from "@/lib/election-plan/types";
 
-export type FosConfig = {
-  stateGoal: number;
-  stateGoalLabel: string;
-  stretchMultiplierDefault: number;
-  formulaExpression: string;
-};
-
-export type FosCommunityAllocation = {
-  slug: string;
-  name: string;
-  county: string;
-  countySlug: string;
-  voteGoal: number;
-  voteSharePct: number;
-  baseGoal: number;
-  stretchGoal: number;
-  raised: number;
-  remaining: number;
-  progressPct: number;
-  isBonusCity: boolean;
-  isolatedFromStateRollup: boolean;
-  raisedNote: string;
-  formulaNote: string;
-};
-
-export type FosCountyRollup = {
-  countySlug: string;
-  countyName: string;
-  clusterId: string | null;
-  clusterName: string | null;
-  communities: FosCommunityAllocation[];
-  voteGoal: number;
-  baseGoal: number;
-  stretchGoal: number;
-  raised: number;
-  remaining: number;
-  progressPct: number;
-};
-
-export type FosClusterRollup = {
-  id: string;
-  name: string;
-  counties: string[];
-  voteGoal: number;
-  baseGoal: number;
-  stretchGoal: number;
-  raised: number;
-  remaining: number;
-  progressPct: number;
-  countyRollups: FosCountyRollup[];
-};
-
-export type FosStateRollup = {
-  stateGoal: number;
-  top40TotalVoteGoal: number;
-  voteGoalAllocated: number;
-  baseGoal: number;
-  stretchGoal: number;
-  raised: number;
-  raisedProvisional: boolean;
-  raisedNote: string;
-  remaining: number;
-  progressPct: number;
-  formulaExpression: string;
-  clusters: FosClusterRollup[];
-};
-
-type FosSourceFile = {
-  stateGoal: number;
-  stateGoalLabel: string;
-  stretchMultiplierDefault: number;
-  formula: { expression: string };
-  bonusCityOverrides?: Record<
-    string,
-    { baseGoal: number; stretchGoal: number; source: string; isolated?: boolean; note?: string }
-  >;
-  communityStretchMultipliers?: Record<string, number>;
-};
-
-const source = fosSource as FosSourceFile;
+const source = getFosSourceFile();
 
 function top40Cities(cities: ElectionPlanCity[]): ElectionPlanCity[] {
   return cities.filter((c) => !c.isBonusCity);
@@ -166,15 +96,6 @@ function allCommunityAllocations(): FosCommunityAllocation[] {
   const top40 = top40Cities(data.cities);
   const totalVoteGoal = top40.reduce((sum, c) => sum + voteGoalForCity(c), 0);
   return data.cities.map((city) => buildCommunityAllocation(city, totalVoteGoal));
-}
-
-export function getFosConfig(): FosConfig {
-  return {
-    stateGoal: source.stateGoal,
-    stateGoalLabel: source.stateGoalLabel,
-    stretchMultiplierDefault: source.stretchMultiplierDefault,
-    formulaExpression: source.formula.expression,
-  };
 }
 
 export function getFosCommunityAllocation(slug: string): FosCommunityAllocation | null {

@@ -1,31 +1,70 @@
-/** Live pilot cities — prove production before statewide rollout. */
-export const COMMUNITY_PILOT_WORKBENCHES = [
-  {
-    slug: "sherwood",
-    name: "Sherwood",
-    countySlug: "pulaski",
-    countyName: "Pulaski",
-    context: "Sherwood model city · town hall + faith outreach pilot",
-  },
+/** Live pilot workbenches — prove production before statewide rollout. */
+
+export const COMMUNITY_PILOT_CITY_WORKBENCHES = [
   {
     slug: "jacksonville",
     name: "Jacksonville",
     countySlug: "pulaski",
     countyName: "Pulaski",
-    context: "Jacksonville municipal · petition leaders + ward meetings pilot",
+    context: "Primary city pilot · municipal / petition-leader focus · /election-plan/workbenches/jacksonville",
+    isPrimaryGate: true,
   },
 ] as const;
 
-export type CommunityPilotSlug = (typeof COMMUNITY_PILOT_WORKBENCHES)[number]["slug"];
+/** Optional city smoke — not part of primary pilot gate. */
+export const COMMUNITY_PILOT_OPTIONAL_CITY = {
+  slug: "sherwood",
+  name: "Sherwood",
+  countySlug: "pulaski",
+  countyName: "Pulaski",
+  context: "Optional city workbench · 60% vote-share stretch · leadership OPEN · separate from G&G event",
+  isPrimaryGate: false,
+} as const;
 
-export const COMMUNITY_PILOT_SLUGS: CommunityPilotSlug[] = COMMUNITY_PILOT_WORKBENCHES.map((p) => p.slug);
+/** Event workbench pilots — event leadership ≠ city leadership. */
+export const COMMUNITY_PILOT_EVENT_WORKBENCHES = [
+  {
+    workbenchSlug: "sherwood",
+    eventSlug: "grassroots-and-guitar-strings",
+    name: "Grassroots & Guitar Strings",
+    dateLabel: "Sept 17",
+    context: "Primary event pilot · $20,000 profit KPI · committee + run-of-show + AAR",
+    isPrimaryGate: true,
+  },
+] as const;
+
+/** @deprecated — use COMMUNITY_PILOT_CITY_WORKBENCHES + optional + events */
+export const COMMUNITY_PILOT_WORKBENCHES = [
+  COMMUNITY_PILOT_OPTIONAL_CITY,
+  ...COMMUNITY_PILOT_CITY_WORKBENCHES,
+] as const;
+
+export type CommunityPilotCitySlug = (typeof COMMUNITY_PILOT_CITY_WORKBENCHES)[number]["slug"];
+export type CommunityPilotSlug = CommunityPilotCitySlug | typeof COMMUNITY_PILOT_OPTIONAL_CITY.slug;
+export type CommunityPilotEventSlug = (typeof COMMUNITY_PILOT_EVENT_WORKBENCHES)[number]["eventSlug"];
+
+export const COMMUNITY_PILOT_SLUGS: CommunityPilotSlug[] = [
+  ...COMMUNITY_PILOT_CITY_WORKBENCHES.map((p) => p.slug),
+  COMMUNITY_PILOT_OPTIONAL_CITY.slug,
+];
 
 export function isCommunityPilotSlug(slug: string): slug is CommunityPilotSlug {
   return (COMMUNITY_PILOT_SLUGS as string[]).includes(slug);
 }
 
+export function isPrimaryCityPilotSlug(slug: string): slug is CommunityPilotCitySlug {
+  return COMMUNITY_PILOT_CITY_WORKBENCHES.some((p) => p.slug === slug);
+}
+
 export function pilotWorkbenchMeta(slug: string) {
-  return COMMUNITY_PILOT_WORKBENCHES.find((p) => p.slug === slug);
+  const city = COMMUNITY_PILOT_CITY_WORKBENCHES.find((p) => p.slug === slug);
+  if (city) return city;
+  if (slug === COMMUNITY_PILOT_OPTIONAL_CITY.slug) return COMMUNITY_PILOT_OPTIONAL_CITY;
+  return undefined;
+}
+
+export function pilotEventMeta(eventSlug: string) {
+  return COMMUNITY_PILOT_EVENT_WORKBENCHES.find((p) => p.eventSlug === eventSlug);
 }
 
 /** Required community workbench migrations for production pilot. */

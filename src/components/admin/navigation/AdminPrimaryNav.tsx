@@ -2,11 +2,14 @@
 
 import Link from "next/link";
 import { isCampaignOsNavLinkActive } from "@/lib/dashboard-orchestration/campaign-os-nav-config";
+import { CAMPAIGN_MANAGER_WORKBENCH_NAME } from "@/lib/admin/campaign-manager-workbench-labels";
+import { ADMIN_ELECTION_PLAN_HREF } from "@/lib/election-plan/admin-election-plan-catalog";
 
-/** Primary admin shortcuts — Path to Victory near the top of the sidebar. */
+/** Primary Campaign Manager shortcuts — Path to Victory near the top of the sidebar. */
 const PRIMARY_LINKS = [
-  { href: "/admin/ai-command-center", label: "Dashboard" },
+  { href: "/admin/ai-command-center", label: CAMPAIGN_MANAGER_WORKBENCH_NAME },
   { href: "/admin/mission-brief", label: "Path to Victory" },
+  { href: ADMIN_ELECTION_PLAN_HREF, label: "Election Plan OS" },
 ] as const;
 
 export function AdminPrimaryNav({ pathname }: { pathname: string }) {
