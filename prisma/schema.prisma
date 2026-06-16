@@ -7117,3 +7117,216 @@ model CampaignFeatureFlags {
 
   @@schema("public")
 }
+
+// --- Election Plan live field entry (18.7J) — operator initials + granular county/city logging ---
+
+enum ElectionPlanFieldCategory {
+  follower
+  volunteer
+  leader
+  email_contact
+  conversation
+  house_party
+  other
+
+  @@schema("public")
+}
+
+enum ElectionPlanOperatorCapability {
+  field_entry
+  county_scope
+  manage_operators
+
+  @@schema("public")
+}
+
+model ElectionPlanOperator {
+  id           String                           @id @default(cuid())
+  initials     String                           @unique @db.VarChar(3)
+  displayName  String
+  email        String?
+  countySlug   String?
+  capabilities ElectionPlanOperatorCapability[] @default([field_entry])
+  active       Boolean                          @default(true)
+  createdAt    DateTime                         @default(now())
+  updatedAt    DateTime                         @updatedAt
+  entries      ElectionPlanFieldEntry[]
+
+  @@index([active])
+  @@schema("public")
+}
+
+model ElectionPlanFieldEntry {
+  id               String                    @id @default(cuid())
+  operatorId       String
+  operator         ElectionPlanOperator      @relation(fields: [operatorId], references: [id], onDelete: Restrict)
+  operatorInitials String                    @db.VarChar(3)
+  category         ElectionPlanFieldCategory
+  label            String
+  description      String?
+  quantity         Int                       @default(1)
+  countySlug       String
+  citySlug         String?
+  createdAt        DateTime                  @default(now())
+
+  @@index([countySlug, citySlug])
+  @@index([operatorInitials])
+  @@index([category])
+  @@index([createdAt])
+  @@schema("public")
+}
+
+// --- Community Workbench Framework v1 (Election Plan operational layer) ---
+
+enum CommunityWorkbenchKind {
+  city
+  campus
+  program
+  county_hub
+  coalition
+
+  @@schema("public")
+}
+
+model CommunityWorkbench {
+  id            String                           @id @default(cuid())
+  slug          String                           @unique
+  name          String
+  kind          CommunityWorkbenchKind
+  countySlug    String?
+  citySlug      String?
+  population    Int?
+  tagline       String?
+  kpiTemplate   String                           @default("default_city")
+  active        Boolean                          @default(true)
+  createdAt     DateTime                         @default(now())
+  updatedAt     DateTime                         @updatedAt
+  leadership    CommunityWorkbenchLeadership[]
+  missions      CommunityWorkbenchMission[]
+  committees    CommunityWorkbenchCommittee[]
+  events        CommunityWorkbenchEvent[]
+  intelPages    CommunityWorkbenchIntel[]
+  relationships CommunityWorkbenchRelationship[]
+  notes         CommunityWorkbenchNote[]
+
+  @@index([kind])
+  @@index([countySlug])
+  @@index([active])
+  @@schema("public")
+}
+
+model CommunityWorkbenchLeadership {
+  id               String             @id @default(cuid())
+  workbenchId      String
+  workbench        CommunityWorkbench @relation(fields: [workbenchId], references: [id], onDelete: Cascade)
+  roleKey          String
+  personName       String
+  contact          String?
+  notes            String?
+  operatorInitials String?            @db.VarChar(3)
+  updatedAt        DateTime           @updatedAt
+
+  @@unique([workbenchId, roleKey])
+  @@schema("public")
+}
+
+model CommunityWorkbenchMission {
+  id               String             @id @default(cuid())
+  workbenchId      String
+  workbench        CommunityWorkbench @relation(fields: [workbenchId], references: [id], onDelete: Cascade)
+  title            String
+  status           String             @default("open")
+  priority         Int                @default(0)
+  operatorInitials String?            @db.VarChar(3)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  @@index([workbenchId, status])
+  @@schema("public")
+}
+
+model CommunityWorkbenchCommittee {
+  id               String             @id @default(cuid())
+  workbenchId      String
+  workbench        CommunityWorkbench @relation(fields: [workbenchId], references: [id], onDelete: Cascade)
+  name             String
+  goals            String?
+  membersJson      String?
+  notes            String?
+  operatorInitials String?            @db.VarChar(3)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  @@index([workbenchId])
+  @@schema("public")
+}
+
+model CommunityWorkbenchEvent {
+  id                 String             @id @default(cuid())
+  workbenchId        String
+  workbench          CommunityWorkbench @relation(fields: [workbenchId], references: [id], onDelete: Cascade)
+  title              String
+  eventDate          DateTime?
+  location           String?
+  expectedAttendance Int?
+  leadName           String?
+  status             String             @default("planning")
+  runOfShowJson      String?
+  assignmentsJson    String?
+  documentsJson      String?
+  operatorInitials   String?            @db.VarChar(3)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  @@index([workbenchId, eventDate])
+  @@schema("public")
+}
+
+model CommunityWorkbenchIntel {
+  id               String             @id @default(cuid())
+  workbenchId      String
+  workbench        CommunityWorkbench @relation(fields: [workbenchId], references: [id], onDelete: Cascade)
+  sectionKey       String
+  title            String
+  body             String
+  operatorInitials String?            @db.VarChar(3)
+  updatedAt        DateTime           @updatedAt
+
+  @@unique([workbenchId, sectionKey, title])
+  @@index([workbenchId, sectionKey])
+  @@schema("public")
+}
+
+model CommunityWorkbenchRelationship {
+  id               String             @id @default(cuid())
+  workbenchId      String
+  workbench        CommunityWorkbench @relation(fields: [workbenchId], references: [id], onDelete: Cascade)
+  personName       String
+  roleLabel        String?
+  strength         Int                @default(50)
+  lastContact      String?
+  nextFollowUp     String?
+  knowsWho         String?
+  notes            String?
+  operatorInitials String?            @db.VarChar(3)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  @@index([workbenchId])
+  @@schema("public")
+}
+
+model CommunityWorkbenchNote {
+  id               String             @id @default(cuid())
+  workbenchId      String
+  workbench        CommunityWorkbench @relation(fields: [workbenchId], references: [id], onDelete: Cascade)
+  noteType         String             @default("meeting")
+  title            String
+  body             String
+  operatorInitials String?            @db.VarChar(3)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  @@index([workbenchId, noteType])
+  @@schema("public")
+}

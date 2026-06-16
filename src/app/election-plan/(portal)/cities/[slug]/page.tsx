@@ -1,14 +1,20 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { CityLocationBriefPanel } from "@/components/election-plan/CityLocationBriefPanel";
+import { buildCommunityWorkbenchRegistry } from "@/lib/election-plan/community-workbench/build-registry";
+import { communityWorkbenchHref } from "@/lib/election-plan/community-workbench/links";
 import { getCityLocationBrief } from "@/lib/election-plan/load-city-location-brief";
 import { getCitiesInCounty, getCountyByName } from "@/lib/election-plan/load-county";
 import { getCountyStrikeTeamByName } from "@/lib/election-plan/load-county-strike-team";
 import { buildLocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import { fieldEventsForLocation } from "@/lib/election-plan/location-calendar-integration";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
+import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
+import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
 
 type Props = { params: Promise<{ slug: string }> };
+
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   const data = loadElectionPlanSnapshot();
@@ -29,6 +35,12 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function CityLocationBriefPage({ params }: Props) {
   const { slug } = await params;
+
+  const hasWorkbench = buildCommunityWorkbenchRegistry().some((w) => w.slug === slug && w.kind === "city");
+  if (hasWorkbench) {
+    redirect(communityWorkbenchHref(slug));
+  }
+
   const data = loadElectionPlanSnapshot();
   const brief = getCityLocationBrief(slug, data.cities);
   if (!brief) notFound();
@@ -48,6 +60,10 @@ export default async function CityLocationBriefPage({ params }: Props) {
     countyName: brief.county,
     referenceDate: data.executiveCalendar.referenceDate,
   });
+  const [fieldEntrySummary, operator] = await Promise.all([
+    loadFieldEntriesForLocation({ countySlug, citySlug: brief.slug }),
+    loadCurrentElectionPlanOperator(),
+  ]);
 
   return (
     <>
@@ -63,6 +79,8 @@ export default async function CityLocationBriefPage({ params }: Props) {
             siblingCities={siblingCities}
             referenceDate={data.executiveCalendar.referenceDate}
             calendarBinding={calendarBinding}
+            fieldEntrySummary={fieldEntrySummary}
+            operatorInitials={operator?.initials ?? null}
           />
         </div>
       </div>

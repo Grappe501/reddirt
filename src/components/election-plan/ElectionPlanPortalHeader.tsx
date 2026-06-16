@@ -43,7 +43,7 @@ export function ElectionPlanSearchBar({ className }: { className?: string }) {
           type="search"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Search plan, counties, budget, Po5…"
+          placeholder="Search workbenches, counties, budget, Po5…"
           className="min-w-0 flex-1 px-3 py-2 text-sm text-[var(--ep-navy)] placeholder:text-[var(--ep-navy-muted)] focus:outline-none"
           autoComplete="off"
         />
@@ -74,6 +74,12 @@ export function ElectionPlanPortalHeader() {
           <span className="hidden text-[var(--ep-navy-muted)] sm:inline">·</span>
           <Link href="/election-plan/search" className="hidden text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)] sm:inline">
             Search
+          </Link>
+          <Link href="/election-plan/workbenches" className="hidden text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)] sm:inline">
+            Workbenches
+          </Link>
+          <Link href="/election-plan/operators" className="hidden text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)] sm:inline">
+            Operators
           </Link>
           <span className="hidden rounded-full bg-[var(--ep-cream)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[var(--ep-navy-muted)] lg:inline">
             18.7H

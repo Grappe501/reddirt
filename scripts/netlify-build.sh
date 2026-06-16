@@ -277,7 +277,7 @@ if [ -f "scripts/analyze-next-trace-union.mjs" ]; then
   node scripts/analyze-next-trace-union.mjs || echo ">>> trace union over 250 MB (continuing — prune-server-handler enforces real upload size)"
 fi
 
-if [ -f "scripts/verify-netlify-lambda-env-budget.mjs" ]; then
+if [ -f "scripts/verify-netlify-lambda-env-budget.cjs" ]; then
   echo ">>> Lambda env budget check (AWS 4 KB cap for function environment)"
-  node scripts/verify-netlify-lambda-env-budget.mjs
+  node scripts/verify-netlify-lambda-env-budget.cjs
 fi

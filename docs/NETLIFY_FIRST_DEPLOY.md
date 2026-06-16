@@ -78,11 +78,43 @@ npx netlify deploy --build --prod
 
 Symptom: log shows `Starting to deploy site from '.next'` then `Failed to upload file: ___netlify-server-handler` with HTTP 400.
 
-1. **Env scope (most common)** — In Netlify → **Environment variables**, set every `NEXT_PUBLIC_*` and build-only var to **Builds** scope only (see table in §2). Redeploy.
-2. **Prune plugin line** — In the deploy log, find `Prune server handler (pre-deploy)`. If measured size is near **250 MB**, the handler is too large; open a ticket with that line.
-3. **Base directory** — Git root is this repo (`reddirt`); **Base directory** should be empty. If you use the monorepo parent, set Base directory to `RedDirt`.
-4. **Clear cache and deploy site** — stale handler artifacts occasionally confuse upload.
-5. **Netlify support** — if env is scoped and handler is under 245 MB, ask whether the site is on Lambda compatibility mode and `FEATURE_FLAGS` injection is blocking function creation.
+**Root cause:** AWS Lambda rejects the function when **environment variables** injected into `___netlify-server-handler` exceed **4,096 bytes** total (keys + values), or when **`NODE_OPTIONS=--max-old-space-size=6144`** reaches the function (invalid for Lambda memory). Netlify **Lambda compatibility mode** also counts internal **`FEATURE_FLAGS`** (~9 KB) toward that cap — modern Functions runtime (June 2026+) removes the limit.
+
+### Fix in Netlify UI (do this first)
+
+Site configuration → **Environment variables** → for **each** row below, click **Edit** → **Scopes** → choose **Builds** only (uncheck Functions / All):
+
+| Variable | Scope |
+|----------|--------|
+| All `NEXT_PUBLIC_*` (including from `netlify.toml`) | **Builds only** |
+| `NODE_OPTIONS`, `NODE_VERSION`, `NPM_CONFIG_PRODUCTION` | **Builds only** |
+| `PRISMA_MIGRATE_RETRIES`, `PRISMA_MIGRATE_RETRY_DELAY_SECONDS` | **Builds only** |
+| `ALLOW_PRISMA_P1001_BYPASS`, `ALLOW_PRISMA_SEED_P2022_BYPASS` | **Builds only** |
+| `SKIP_DB_SEED` | **Builds only** |
+
+Keep on **Functions** (or **All** if you accept the size budget):
+
+| Variable | Scope |
+|----------|--------|
+| `DATABASE_URL`, `DIRECT_URL` | Functions |
+| `ADMIN_SECRET`, `ELECTION_PLAN_PASSWORD` | Functions |
+| `OPENAI_*`, `SENDGRID_*`, `TWILIO_*`, `GOOGLE_CALENDAR_*`, `ELEVENLABS_*` | Functions (only keys your live routes use) |
+
+Also check **Team settings → Environment variables** for shared vars scoped to **All** — those count toward every function.
+
+After scoping: **Deploys → Clear cache and deploy site**.
+
+### Build log checks
+
+1. **`Lambda env check`** — should show runtime estimate **under ~3 KB**. If it fails, follow the printed var list.
+2. **`Prune server handler (pre-deploy)`** — measured size must stay **under 245 MB**.
+3. **`Lambda deploy env check`** (plugin) — repeats the scoping checklist before upload.
+
+### If scoping is correct and deploy still fails
+
+1. Open a Netlify support ticket: ask to confirm **modern Functions runtime** (not Lambda compatibility mode) for `___netlify-server-handler` — `FEATURE_FLAGS` alone exceeds 4 KB on compat mode.
+2. **Base directory** — repo root should be the RedDirt app; **Publish** = `.next` (empty override is fine).
+3. **Clear cache and deploy site**.
 
 ## 7. After the site is up
 

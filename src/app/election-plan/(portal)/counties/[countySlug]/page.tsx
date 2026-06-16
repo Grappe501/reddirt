@@ -6,8 +6,12 @@ import { getCountyStrikeTeamBySlug } from "@/lib/election-plan/load-county-strik
 import { buildCountyCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import { fieldEventsForLocation } from "@/lib/election-plan/location-calendar-integration";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
+import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
+import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
 
 type Props = { params: Promise<{ countySlug: string }> };
+
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   const data = loadElectionPlanSnapshot();
@@ -40,6 +44,10 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
     limit: 8,
   });
   const countyCalendar = buildCountyCalendarBinding(data, county.county);
+  const [fieldEntrySummary, operator] = await Promise.all([
+    loadFieldEntriesForLocation({ countySlug: county.slug }),
+    loadCurrentElectionPlanOperator(),
+  ]);
 
   return (
     <>
@@ -60,6 +68,8 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
               currentWeekPlan: countyCalendar.weekPlans.find((w) => w.isCurrentWeek) ?? null,
             }}
             referenceDate={data.executiveCalendar.referenceDate}
+            fieldEntrySummary={fieldEntrySummary}
+            operatorInitials={operator?.initials ?? null}
           />
         </div>
       </div>

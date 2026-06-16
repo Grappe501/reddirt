@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { CityVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
+import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
 import { CityNumericTargetsPanel } from "@/components/election-plan/CityNumericTargetsPanel";
 import { SpecialKpiGoalCard } from "@/components/election-plan/SpecialKpiGoalCard";
@@ -12,6 +13,7 @@ import type { CityLocationBrief } from "@/lib/election-plan/load-city-location-b
 import type { LocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-team";
 import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/types";
+import type { FieldEntryLocationSummary } from "@/lib/election-plan/field-entry/types";
 import {
   cityLocationsHubHref,
   countyPlaybookHref,
@@ -37,6 +39,8 @@ type Props = {
   siblingCities: ElectionPlanCity[];
   referenceDate: string;
   calendarBinding: LocationCalendarBinding;
+  fieldEntrySummary?: FieldEntryLocationSummary;
+  operatorInitials?: string | null;
 };
 
 function statusClass(status: CityLocationBrief["status"]) {
@@ -64,6 +68,8 @@ export function CityLocationBriefPanel({
   siblingCities,
   referenceDate,
   calendarBinding,
+  fieldEntrySummary,
+  operatorInitials,
 }: Props) {
   const countyHref = countyPlaybookHref(brief.county, countySlug);
   const specialKpi = getSpecialKpiGoalForCity(brief.slug);
@@ -102,6 +108,19 @@ export function CityLocationBriefPanel({
       {immersionMission ? (
         <div className="mb-8">
           <ImmersionCountyMissionCard mission={immersionMission} />
+        </div>
+      ) : null}
+
+      {fieldEntrySummary ? (
+        <div className="mb-8">
+          <ElectionPlanFieldEntryPanel
+            countySlug={countySlug}
+            countyName={brief.county}
+            citySlug={brief.slug}
+            cityName={brief.name}
+            initial={fieldEntrySummary}
+            operatorInitials={operatorInitials ?? null}
+          />
         </div>
       ) : null}
 

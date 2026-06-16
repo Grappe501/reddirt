@@ -10,6 +10,10 @@ import {
   getSearchIndexMeta,
   searchElectionPlanLocal,
 } from "@/lib/election-plan/load-election-plan-search";
+import {
+  communityWorkbenchSearchAsElectionPlanHits,
+  searchCommunityWorkbenches,
+} from "@/lib/election-plan/community-workbench/search-workbenches";
 import { buildElectionPlanSearchAiAnswer } from "@/lib/election-plan/election-plan-search-ai";
 import { isOpenAIConfigured } from "@/lib/openai/client";
 
@@ -42,7 +46,15 @@ export async function GET(request: Request) {
     });
   }
 
-  const results = searchElectionPlanLocal(q, limit);
+  const localResults = searchElectionPlanLocal(q, limit);
+  const workbenchHits = await searchCommunityWorkbenches(q, Math.min(8, limit));
+  const workbenchResults = communityWorkbenchSearchAsElectionPlanHits(workbenchHits);
+
+  const merged = [...workbenchResults, ...localResults]
+    .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
+    .slice(0, limit);
+
+  const results = merged;
   const useAi = searchParams.get("ai") === "1" && isOpenAIConfigured();
 
   let aiAnswer: string | null = null;

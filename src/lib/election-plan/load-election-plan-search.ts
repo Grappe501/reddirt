@@ -16,7 +16,8 @@ export type ElectionPlanSearchResultType =
   | "Strategic Plan"
   | "Campaign Brain"
   | "Election Plan"
-  | "County Party";
+  | "County Party"
+  | "Community Workbench";
 
 export type ElectionPlanSearchEntry = {
   id: string;
@@ -130,7 +131,12 @@ export const ELECTION_PLAN_SEARCH_SUGGESTIONS: Array<{ label: string; query: str
   { label: "Faulkner County meeting", query: "Faulkner county party" },
   { label: "Power of 5", query: "Power of 5" },
   { label: "Campaign budget", query: "budget" },
+  { label: "Sherwood workbench", query: "Sherwood" },
+  { label: "Jacksonville workbench", query: "Jacksonville" },
+  { label: "Election Integrity", query: "election integrity" },
   { label: "Direct democracy", query: "direct democracy" },
+  { label: "County Fair", query: "county fair" },
+  { label: "Campus Program", query: "uca campus" },
   { label: "Counties 20% increase", query: "20% increase county" },
   { label: "Freshman week", query: "freshman week" },
 ];

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { CountyVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { CountyPartyIntelligencePanel } from "@/components/election-plan/CountyPartyIntelligencePanel";
 import { ImmersionCountyMissionCard } from "@/components/election-plan/ImmersionCountyMissionCard";
@@ -9,6 +10,7 @@ import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTe
 import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
 import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
 import { SpecialKpiGoalCard } from "@/components/election-plan/SpecialKpiGoalCard";
+import type { FieldEntryLocationSummary } from "@/lib/election-plan/field-entry/types";
 import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
 import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-team";
 import type { LocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
@@ -38,6 +40,8 @@ type Props = {
   referenceDate: string;
   backHref?: string;
   backLabel?: string;
+  fieldEntrySummary?: FieldEntryLocationSummary;
+  operatorInitials?: string | null;
 };
 
 function guardrailClass(status: string) {
@@ -63,6 +67,8 @@ export function CountyPlaybookPanel({
   referenceDate,
   backHref,
   backLabel,
+  fieldEntrySummary,
+  operatorInitials,
 }: Props) {
   const external = countyWorkbenchExternalHref(county.county, county.slug);
   const specialKpi = getSpecialKpiGoalForCounty(county.slug);
@@ -108,6 +114,17 @@ export function CountyPlaybookPanel({
       {immersionMission ? (
         <div className="mb-8">
           <ImmersionCountyMissionCard mission={immersionMission} />
+        </div>
+      ) : null}
+
+      {fieldEntrySummary ? (
+        <div className="mb-8">
+          <ElectionPlanFieldEntryPanel
+            countySlug={county.slug}
+            countyName={county.county}
+            initial={fieldEntrySummary}
+            operatorInitials={operatorInitials ?? null}
+          />
         </div>
       ) : null}
 
