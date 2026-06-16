@@ -301,6 +301,9 @@ export function PowerOf5CommandCenterPanel() {
       <div className="mt-2">
         <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">{po5.title}</h1>
         <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{po5.subtitle}</p>
+        <p className="mt-2 text-sm font-semibold text-[var(--ep-navy)]">
+          Are we actually growing? Track leaders, conversations, and recruits — this screen matters as much as fundraising.
+        </p>
       </div>
 
       <div className="my-6 rounded-xl border-2 border-[var(--ep-gold)] bg-gradient-to-br from-amber-50 to-white p-6">

@@ -33,6 +33,8 @@ Use this when the site has never successfully built on Netlify or the database i
 | `OPENAI_API_KEY` | RAG search answers, ingest, intake classification |
 | `SKIP_DB_SEED` | Set to `1` to **skip** `prisma db seed` on build (default is **to seed**). |
 
+**Netlify Lambda env cap:** AWS limits function environment variables to **~4 KB total**. In Netlify UI, scope these to **Builds only** (not Functions / All): `PRISMA_MIGRATE_*`, `PRISMA_RESOLVE_ROLLED_BACK`, `ALLOW_PRISMA_*`, `SKIP_DB_SEED`, `NETLIFY_DATABASE_URL`. If deploy fails with `Invalid AWS Lambda parameters` after a successful build, check env scoping first, then clear cache and redeploy.
+
 Never put secrets in `NEXT_PUBLIC_*`.
 
 ## 3. What the build runs

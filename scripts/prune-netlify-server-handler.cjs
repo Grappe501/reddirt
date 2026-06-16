@@ -37,6 +37,9 @@ const LAUNCH_DATA_DIR_PRUNE = [
 const LAUNCH_ADMIN_TOP_KEEP = new Set(["login", "(board)", "opposition"]);
 const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence", "opposition"]);
+/** Kelly SOS production — keep public site + election-plan portal (force-dynamic). */
+const LAUNCH_APP_TOP_KEEP = new Set(["admin", "election-plan", "(site)"]);
+const LAUNCH_API_TOP_KEEP = new Set(["admin", "election-plan", "forms", "search"]);
 
 /** Standalone copy lands the whole repo in the handler — keep only these top-level names. */
 const LAUNCH_HANDLER_ROOT_KEEP = new Set([
@@ -375,8 +378,8 @@ function pruneLaunchAppAndApi(handlerRoot) {
 
   for (const ent of fs.readdirSync(appRoot, { withFileTypes: true })) {
     if (!ent.isDirectory()) continue;
-    if (ent.name === "admin") {
-      removed.push(...pruneLaunchAdminServer(handlerRoot));
+    if (LAUNCH_APP_TOP_KEEP.has(ent.name)) {
+      if (ent.name === "admin") removed.push(...pruneLaunchAdminServer(handlerRoot));
       continue;
     }
     const rel = path.join(".next/server/app", ent.name);
@@ -387,14 +390,16 @@ function pruneLaunchAppAndApi(handlerRoot) {
   if (exists(apiRoot)) {
     for (const ent of fs.readdirSync(apiRoot, { withFileTypes: true })) {
       if (!ent.isDirectory()) continue;
-      if (ent.name === "admin") {
-        const adminApi = path.join(apiRoot, "admin");
-        if (exists(adminApi)) {
-          for (const child of fs.readdirSync(adminApi, { withFileTypes: true })) {
-            if (!child.isDirectory()) continue;
-            if (LAUNCH_API_ADMIN_KEEP.has(child.name)) continue;
-            const rel = path.join(".next/server/app/api/admin", child.name);
-            if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
+      if (LAUNCH_API_TOP_KEEP.has(ent.name)) {
+        if (ent.name === "admin") {
+          const adminApi = path.join(apiRoot, "admin");
+          if (exists(adminApi)) {
+            for (const child of fs.readdirSync(adminApi, { withFileTypes: true })) {
+              if (!child.isDirectory()) continue;
+              if (LAUNCH_API_ADMIN_KEEP.has(child.name)) continue;
+              const rel = path.join(".next/server/app/api/admin", child.name);
+              if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
+            }
           }
         }
         continue;

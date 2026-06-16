@@ -10,6 +10,7 @@ import {
   getTopCountyMeetingQueue,
   type CountyPartyProfile,
 } from "@/lib/election-plan/load-county-party-intelligence";
+import { getCountyMeetingAssignment } from "@/lib/election-plan/load-county-meeting-assignments";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 
 function ConfidenceBadge({ profile }: { profile: CountyPartyProfile }) {
@@ -34,6 +35,7 @@ type Props = {
 export function CountyPartyIntelligencePanel({ profile, variant = "panel" }: Props) {
   const meetings = getCountyMeetingCandidatesForCounty(profile.slug).filter((m) => m.status === "candidate");
   const action = getRecommendedCountyPartyAction(profile);
+  const assignment = getCountyMeetingAssignment(profile.slug);
 
   if (variant === "compact") {
     return (
@@ -131,6 +133,31 @@ export function CountyPartyIntelligencePanel({ profile, variant = "panel" }: Pro
         <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">Recommended action</p>
         <p className="mt-1">{action}</p>
       </div>
+
+      {assignment ? (
+        <div className="mt-4 grid gap-2 sm:grid-cols-2 text-sm">
+          <div>
+            <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Meeting plan</p>
+            <p className="font-semibold">{assignment.meetingAttendanceLabel}</p>
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Volunteer captain</p>
+            <p className="font-semibold">{assignment.volunteerCaptain}</p>
+          </div>
+          {assignment.countyMissionHeadline ? (
+            <div>
+              <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">County mission</p>
+              <p className="font-semibold">{assignment.countyMissionHeadline}</p>
+            </div>
+          ) : null}
+          {assignment.lastKellyVisit ? (
+            <div>
+              <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Last Kelly visit</p>
+              <p className="font-semibold">{assignment.lastKellyVisit}</p>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
 
       {profile.sourceQuote ? (
         <p className="mt-3 text-[10px] italic text-[var(--ep-navy-muted)]">Source quote: {profile.sourceQuote}</p>

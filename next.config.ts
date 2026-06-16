@@ -17,6 +17,9 @@ const oppositionDebateTraceExcludes = oppositionDebateLaunch
       "data/election/**",
       "data/simulations/**",
       "data/intelligence/briefs/**",
+      "docs/kelly-grappe-sos-strategic-plan-manual/**",
+      "docs/strategic-plan/**",
+      "campaign-system-manual/**",
       ".local/**",
       "**/.local/**",
       "**/npm-cache/**",
@@ -210,6 +213,17 @@ const nextConfig: NextConfig = {
         "/admin/opposition/**": [
           "./data/opposition/**",
           "./docs/opposition/**",
+        ],
+        "/election-plan/**": [
+          "./data/election-plan/**",
+          "./data/campaign-brain/election-plan/**",
+          "./data/campaign-brain/county-party-intelligence/**",
+          "./data/campaign-brain/relational-organizing/power-of-5-command-center.source.json",
+          "./docs/strategic-plan/plurality-victory-plan/**",
+        ],
+        "/api/election-plan/**": [
+          "./data/election-plan/election-plan-search-index.json",
+          "./data/campaign-brain/election-plan/page-briefs.source.json",
         ],
       }
     : {

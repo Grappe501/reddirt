@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "pass": "MISSION-PROGRESS-EXECUTION-LAYER",
+  "note": "Field team updates current values weekly. Goals come from immersion-county-missions.source.json.",
+  "missions": {
+    "quitman-100": {
+      "owner": "County captain · Cleburne",
+      "updatedAt": "2026-06-16",
+      "nextAction": "Confirm next house party host · report conversations after Quitman fundraiser",
+      "metrics": [
+        { "id": "conversations", "label": "Conversations", "current": 17, "goal": 100, "primary": true },
+        { "id": "po5-leaders", "label": "Power of 5 leaders", "current": 2, "goal": 10 },
+        { "id": "house-parties", "label": "House parties", "current": 1, "goal": 3 },
+        { "id": "coffee-meetings", "label": "Coffee meetings", "current": 2, "goal": 6 },
+        { "id": "republican-leaders", "label": "Republican leaders met", "current": 4, "goal": 8 },
+        { "id": "new-volunteers", "label": "New volunteers", "current": 3, "goal": 15 }
+      ]
+    },
+    "montgomery-leadership": {
+      "owner": "Mt. Ida field lead",
+      "updatedAt": "2026-06-16",
+      "nextAction": "Recruit 3rd house party host before July county Dem meeting",
+      "metrics": [
+        { "id": "po5-leaders", "label": "Power of 5 leaders", "current": 4, "goal": 15, "primary": true },
+        { "id": "house-party-hosts", "label": "House party hosts", "current": 1, "goal": 3 },
+        { "id": "coffee-gathering", "label": "Monthly coffee gathering", "current": 0, "goal": 1 },
+        { "id": "volunteer-shifts", "label": "Volunteer shifts", "current": 6, "goal": 25 },
+        { "id": "conversations", "label": "Meaningful conversations", "current": 42, "goal": 250 },
+        { "id": "storytelling-team", "label": "County storytelling team", "current": 0, "goal": 1 }
+      ]
+    },
+    "searcy-trust": {
+      "owner": "Coalition lead · Barry Jefferson",
+      "updatedAt": "2026-06-16",
+      "nextAction": "Confirm cross-party coffee with county party chair before June 23 meeting",
+      "metrics": [
+        { "id": "gop-leaders-met", "label": "GOP leaders met", "current": 3, "goal": 12, "primary": true },
+        { "id": "gop-leaders-recruited", "label": "GOP leaders recruited", "current": 1, "goal": 6 },
+        { "id": "joint-events", "label": "Joint events", "current": 0, "goal": 4 },
+        { "id": "trust-conversations", "label": "Trust conversations", "current": 11, "goal": 50 },
+        { "id": "republican-po5", "label": "Republican Po5 leaders", "current": 0, "goal": 5 }
+      ]
+    },
+    "jacksonville-dd": {
+      "owner": "Direct Democracy lead",
+      "updatedAt": "2026-06-16",
+      "nextAction": "Train 2 petition leaders before Festiville Sept 20",
+      "metrics": [
+        { "id": "petition-leaders", "label": "Petition leaders trained", "current": 2, "goal": 10, "primary": true },
+        { "id": "clerks-engaged", "label": "Clerks engaged", "current": 1, "goal": 5 },
+        { "id": "librarians-engaged", "label": "Librarians engaged", "current": 0, "goal": 4 },
+        { "id": "public-meetings", "label": "Public meetings", "current": 1, "goal": 6 },
+        { "id": "ballot-committees", "label": "Ballot question committees assisted", "current": 0, "goal": 3 }
+      ]
+    },
+    "sherwood-victory": {
+      "owner": "John Duke & Jay Powell · Sherwood co-chairs",
+      "updatedAt": "2026-06-16",
+      "nextAction": "Lock July 3–4 volunteer shifts · report HCI after fireworks stop",
+      "metrics": [
+        { "id": "vote-goal-pct", "label": "SOS vote share (planning)", "current": 0, "goal": 60, "primary": true, "unit": "%" },
+        { "id": "volunteers", "label": "Volunteers", "current": 18, "goal": 75 },
+        { "id": "house-parties", "label": "House parties", "current": 2, "goal": 8 },
+        { "id": "yard-signs", "label": "Yard signs", "current": 45, "goal": 200 },
+        { "id": "endorsements", "label": "Endorsements", "current": 3, "goal": 12 },
+        { "id": "hci", "label": "HCI (household contacts)", "current": 420, "goal": 2500 }
+      ]
+    },
+    "greene-hub": {
+      "owner": "NE Arkansas regional lead",
+      "updatedAt": "2026-06-16",
+      "nextAction": "Name 2 campus captains before July immersion week",
+      "metrics": [
+        { "id": "county-captains", "label": "County captains trained", "current": 1, "goal": 5, "primary": true },
+        { "id": "po5-leaders", "label": "Po5 leaders in corridor", "current": 6, "goal": 25 },
+        { "id": "house-parties", "label": "House parties", "current": 1, "goal": 6 },
+        { "id": "conversations", "label": "Corridor conversations", "current": 38, "goal": 200 },
+        { "id": "counties-activated", "label": "NE counties with active team", "current": 2, "goal": 6 }
+      ]
+    },
+    "benton-votes": {
+      "owner": "NW Arkansas field lead",
+      "updatedAt": "2026-06-16",
+      "nextAction": "Report vote projection after Benton immersion · assign Po5 hosts in Top 40 cities",
+      "metrics": [
+        { "id": "sos-votes-tracked", "label": "SOS votes tracked (planning)", "current": 0, "goal": 18500, "primary": true },
+        { "id": "po5-leaders", "label": "Po5 leaders", "current": 8, "goal": 40 },
+        { "id": "house-parties", "label": "House parties", "current": 3, "goal": 15 },
+        { "id": "conversations", "label": "Conversations", "current": 156, "goal": 1200 },
+        { "id": "volunteers", "label": "Active volunteers", "current": 22, "goal": 100 }
+      ]
+    }
+  }
+}

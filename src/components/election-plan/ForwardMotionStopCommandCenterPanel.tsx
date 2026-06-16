@@ -7,8 +7,7 @@ import { formatPromotionStatus } from "@/lib/election-plan/forward-motion-readin
 import { forwardMotionHubHref } from "@/lib/election-plan/forward-motion-links";
 import type { StopCommandCenterView } from "@/lib/election-plan/forward-motion-stop-types";
 import { getThankYouDoctrine } from "@/lib/election-plan/load-movement-infrastructure";
-import { getImmersionMissionForLocation } from "@/lib/election-plan/load-immersion-county-missions";
-import { ImmersionCountyMissionCard } from "@/components/election-plan/ImmersionCountyMissionCard";
+import { KellyStopBriefPanel } from "@/components/election-plan/KellyStopBriefPanel";
 import { conversationStrategyHref, getArkansasConversationStrategy } from "@/lib/election-plan/load-arkansas-conversation-strategy";
 import { eventApprovalsHref } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
@@ -58,10 +57,6 @@ export function ForwardMotionStopCommandCenterPanel({ view }: Props) {
   }, [tracking, view.stop.eventId]);
 
   const readiness = useMemo(() => mergeReadinessWithTracking(view, tracking), [view, tracking]);
-  const immersionMission = getImmersionMissionForLocation({
-    countySlug: view.countySlug ?? undefined,
-    citySlug: view.cityBrief?.slug,
-  });
 
   const updatePct = (key: keyof StopCommandCenterTracking, value: number) => {
     setTracking((t) => ({ ...t, [key]: Math.min(100, Math.max(0, value)) }));
@@ -117,11 +112,7 @@ export function ForwardMotionStopCommandCenterPanel({ view }: Props) {
         </div>
       </div>
 
-      {immersionMission ? (
-        <div className="mb-6">
-          <ImmersionCountyMissionCard mission={immersionMission} variant="compact" />
-        </div>
-      ) : null}
+      <KellyStopBriefPanel view={view} />
 
       <nav className="my-6 flex flex-wrap gap-2 text-xs">
         {[

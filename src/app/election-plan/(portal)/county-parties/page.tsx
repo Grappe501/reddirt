@@ -1,4 +1,5 @@
 import { CountyPartiesHubPanel } from "@/components/election-plan/CountyPartyIntelligencePanel";
+import { CountyMeetingTrackerPanel } from "@/components/election-plan/CountyMeetingTrackerPanel";
 
 export const metadata = {
   title: "County Party Intelligence | Election Plan",
@@ -12,6 +13,7 @@ export default function CountyPartiesHubPage() {
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-6xl">
           <CountyPartiesHubPanel />
+          <CountyMeetingTrackerPanel />
         </div>
       </div>
     </>

@@ -1,9 +1,11 @@
 import Link from "next/link";
 
+import { MissionProgressPanel } from "@/components/election-plan/MissionProgressPanel";
 import {
   getImmersionDoctrineHref,
   type ImmersionCountyMission,
 } from "@/lib/election-plan/load-immersion-county-missions";
+import { getMissionProgress } from "@/lib/election-plan/load-immersion-mission-progress";
 
 type Props = {
   mission: ImmersionCountyMission;
@@ -12,6 +14,7 @@ type Props = {
 
 export function ImmersionCountyMissionCard({ mission, variant = "hero" }: Props) {
   const detailHref = mission.href ?? getImmersionDoctrineHref();
+  const progress = getMissionProgress(mission.id);
 
   if (variant === "compact") {
     return (
@@ -19,6 +22,7 @@ export function ImmersionCountyMissionCard({ mission, variant = "hero" }: Props)
         <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--ep-gold)]">One mission</p>
         <p className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">{mission.headline}</p>
         <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{mission.tagline}</p>
+        {progress ? <MissionProgressPanel progress={progress} missionHeadline={mission.headline} compact /> : null}
       </div>
     );
   }
@@ -43,7 +47,11 @@ export function ImmersionCountyMissionCard({ mission, variant = "hero" }: Props)
         <span className="text-[var(--ep-navy-muted)]">{mission.successMetric}</span>
       </p>
 
-      {mission.primaryGoal != null ? (
+      {progress ? (
+        <MissionProgressPanel progress={progress} missionHeadline={mission.headline} />
+      ) : null}
+
+      {mission.primaryGoal != null && !progress ? (
         <div className="mt-4 rounded-lg bg-[var(--ep-cream)] px-4 py-3">
           <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Goal</p>
           <p className="font-heading text-3xl font-bold text-[var(--ep-navy)]">

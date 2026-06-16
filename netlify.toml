@@ -20,6 +20,7 @@
 
 [build]
   command = "bash scripts/netlify-build.sh"
+  publish = ".next"
 
 # Option A — branch deploys: enable in Netlify UI → Build & deploy → Branches → "All branches"
 # or deploy only feature/kelly-schedule-settlement-dashboard for Kelly search testing.

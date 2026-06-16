@@ -18,7 +18,8 @@ export function ImmersionMissionsHubPanel() {
         {getImmersionOperatingPrinciple()}
       </p>
       <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-        People remember missions. They do not remember dashboards.{" "}
+        People remember missions. They do not remember dashboards. Each mission below shows live progress — field
+        team updates numbers weekly.{" "}
         <Link href={getImmersionDoctrineHref()} className="font-semibold text-[var(--ep-navy)] hover:underline">
           Read full doctrine →
         </Link>

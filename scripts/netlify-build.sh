@@ -276,3 +276,8 @@ if [ -f "scripts/analyze-next-trace-union.mjs" ]; then
   echo ">>> trace union size check (Next NFT — advisory; Netlify plugin prunes handler next)"
   node scripts/analyze-next-trace-union.mjs || echo ">>> trace union over 250 MB (continuing — prune-server-handler enforces real upload size)"
 fi
+
+if [ -f "scripts/verify-netlify-lambda-env-budget.mjs" ]; then
+  echo ">>> Lambda env budget check (AWS 4 KB cap for function environment)"
+  node scripts/verify-netlify-lambda-env-budget.mjs
+fi

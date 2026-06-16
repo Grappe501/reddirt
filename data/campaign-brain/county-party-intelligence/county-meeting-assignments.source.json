@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "pass": "COUNTY-MEETING-TRACKER",
+  "assignmentLabels": {
+    "candidate_can_attend": "Kelly attends",
+    "surrogate_should_attend": "Surrogate attends",
+    "virtual_appearance": "Virtual appearance",
+    "letter_or_video": "Letter / video message",
+    "county_team_follow_up": "County team only",
+    "needs_confirmation": "Needs confirmation call"
+  },
+  "assignments": [
+    {
+      "countySlug": "searcy",
+      "volunteerCaptain": "TBD",
+      "countyMissionId": "searcy-trust",
+      "lastKellyVisit": "2026-01-16",
+      "nextKellyVisit": null,
+      "meetingAttendancePlan": "candidate_can_attend",
+      "nextMeetingCandidateDate": "2026-06-23",
+      "notes": "Trust pilot county · confirm speaking slot with chair James White"
+    },
+    {
+      "countySlug": "craighead",
+      "volunteerCaptain": "TBD",
+      "countyMissionId": null,
+      "lastKellyVisit": null,
+      "nextKellyVisit": "2026-06-23",
+      "meetingAttendancePlan": "candidate_can_attend",
+      "nextMeetingCandidateDate": "2026-06-23",
+      "notes": "Strategic · +26% growth target"
+    },
+    {
+      "countySlug": "faulkner",
+      "volunteerCaptain": "TBD",
+      "countyMissionId": null,
+      "lastKellyVisit": null,
+      "nextKellyVisit": "2026-07-06",
+      "meetingAttendancePlan": "candidate_can_attend",
+      "nextMeetingCandidateDate": "2026-07-06",
+      "notes": "Teresa Huff chair · McGee Center Conway · 1st Monday 6:30 PM"
+    },
+    {
+      "countySlug": "montgomery",
+      "volunteerCaptain": "Mt. Ida field lead",
+      "countyMissionId": "montgomery-leadership",
+      "lastKellyVisit": null,
+      "nextKellyVisit": null,
+      "meetingAttendancePlan": "surrogate_should_attend",
+      "nextMeetingCandidateDate": "2026-06-17",
+      "notes": "15 Po5 leaders mission · surrogate until Kelly immersion confirmed"
+    },
+    {
+      "countySlug": "cleburne",
+      "volunteerCaptain": "Quitman mission lead",
+      "countyMissionId": "quitman-100",
+      "lastKellyVisit": "2026-06-09",
+      "nextKellyVisit": null,
+      "meetingAttendancePlan": "county_team_follow_up",
+      "nextMeetingCandidateDate": null,
+      "notes": "Quitman 100 conversations · pair county Dem meeting with house party"
+    },
+    {
+      "countySlug": "pulaski",
+      "volunteerCaptain": "Sherwood co-chairs",
+      "countyMissionId": "sherwood-victory",
+      "lastKellyVisit": null,
+      "nextKellyVisit": "2026-06-29",
+      "meetingAttendancePlan": "candidate_can_attend",
+      "nextMeetingCandidateDate": "2026-06-29",
+      "notes": "Sherwood 60%+ model · county party meeting + July 3 corridor"
+    },
+    {
+      "countySlug": "greene",
+      "volunteerCaptain": "TBD",
+      "countyMissionId": "greene-hub",
+      "lastKellyVisit": null,
+      "nextKellyVisit": "2026-07-12",
+      "meetingAttendancePlan": "candidate_can_attend",
+      "nextMeetingCandidateDate": "2026-07-13",
+      "notes": "NE Arkansas organizing hub · immersion week locked"
+    },
+    {
+      "countySlug": "benton",
+      "volunteerCaptain": "NW field lead",
+      "countyMissionId": "benton-votes",
+      "lastKellyVisit": null,
+      "nextKellyVisit": "2026-06-21",
+      "meetingAttendancePlan": "candidate_can_attend",
+      "nextMeetingCandidateDate": "2026-07-13",
+      "notes": "Top vote production county · July 13 county Dem meeting"
+    }
+  ]
+}
