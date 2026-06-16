@@ -390,6 +390,7 @@
     "election-plan:county-parties:scrape": "tsx scripts/election-plan/scrape-arkdems-county-parties.ts",
     "election-plan:18.7i:rebuild": "npm run election-plan:county-parties:scrape && npm run election-plan:18.7h:rebuild",
     "election-plan:audit:routes": "tsx scripts/election-plan/audit-portal-routes.ts",
+    "election-plan:audit:county-links": "tsx scripts/election-plan/audit-county-playbook-links.ts",
     "campaign-brain:relational:build": "tsx scripts/campaign-brain/build-relationship-capital-dashboard.ts",
     "campaign-brain:captured:build": "tsx scripts/campaign-brain/build-captured-opportunity-layer.ts",
     "campaign-brain:learning:build": "tsx scripts/campaign-brain/build-event-learning.ts",

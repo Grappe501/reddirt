@@ -30,9 +30,11 @@ function ConfidenceBadge({ profile }: { profile: CountyPartyProfile }) {
 type Props = {
   profile: CountyPartyProfile;
   variant?: "panel" | "compact";
+  /** When true, omit self-link back to county playbook (e.g. already on county page). */
+  hidePlaybookLink?: boolean;
 };
 
-export function CountyPartyIntelligencePanel({ profile, variant = "panel" }: Props) {
+export function CountyPartyIntelligencePanel({ profile, variant = "panel", hidePlaybookLink = false }: Props) {
   const meetings = getCountyMeetingCandidatesForCounty(profile.slug).filter((m) => m.status === "candidate");
   const action = getRecommendedCountyPartyAction(profile);
   const assignment = getCountyMeetingAssignment(profile.slug);
@@ -124,9 +126,11 @@ export function CountyPartyIntelligencePanel({ profile, variant = "panel" }: Pro
         <Link href={countyPartyDetailHref(profile.slug)} className="rounded-full bg-blue-700 px-3 py-1 font-semibold text-white">
           Full county party page →
         </Link>
-        <Link href={countyPlaybookHref(profile.county, profile.slug)} className="rounded-full border px-3 py-1 font-semibold">
-          County playbook →
-        </Link>
+        {hidePlaybookLink ? null : (
+          <Link href={countyPlaybookHref(profile.county, profile.slug)} className="rounded-full border px-3 py-1 font-semibold">
+            County operating center →
+          </Link>
+        )}
       </div>
 
       <div className="mt-4 rounded-lg bg-[var(--ep-cream)] px-3 py-2 text-sm">

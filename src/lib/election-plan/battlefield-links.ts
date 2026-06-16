@@ -15,5 +15,5 @@ export function countyDashboardHref(countySlug: string): string {
 }
 
 export function countyDashboardLabel(_countySlug: string): string {
-  return "Open county workbench v4";
+  return "Open county operating center";
 }
