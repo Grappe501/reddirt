@@ -105,6 +105,17 @@ export function CountyPlaybookPanel({
 
       <CountyIntelligenceNav />
 
+      <div className="ep-card-glass mb-6 border border-[var(--ep-gold)]/30 px-4 py-3 text-sm">
+        <p className="font-semibold text-[var(--ep-navy)]">County operating center · Election Plan</p>
+        <p className="mt-1 text-[var(--ep-navy-muted)]">
+          You are on the primary county surface. Legacy{" "}
+          <code className="text-xs">/county-briefings</code> and{" "}
+          <code className="text-xs">/counties</code> paths are not used from this page — all county workbench links
+          stay in Election Plan at{" "}
+          <code className="text-xs">/election-plan/counties/{county.slug}</code>.
+        </p>
+      </div>
+
       <div id="overview" className="scroll-mt-24">
         <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
           <div>
@@ -202,7 +213,7 @@ export function CountyPlaybookPanel({
 
         {countyParty ? (
           <div className="mb-8">
-            <CountyPartyIntelligencePanel profile={countyParty} />
+            <CountyPartyIntelligencePanel profile={countyParty} hidePlaybookLink />
           </div>
         ) : null}
 

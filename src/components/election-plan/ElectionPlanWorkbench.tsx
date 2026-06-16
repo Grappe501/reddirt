@@ -662,14 +662,14 @@ function CountiesPanel({ data }: SnapshotPanelProps) {
     <section>
       <SectionTitle
         title="County intelligence"
-        subtitle="75 counties · open the in-system county drilldown for strategy, cities, field, fundraising, demographics, and election history"
+        subtitle="75 counties · each card opens the in-system county operating center at /election-plan/counties/{slug} — not legacy county-briefings"
       />
       <div className="ep-card-glass mb-6 text-sm leading-relaxed text-[var(--ep-navy-muted)]">
         <p>
           <strong className="text-[var(--ep-navy)]">Victory targets</strong> on each card show votes needed and percent
           increase — the language county chairs use. Expand for full target · weekly pace · Po5 leaders.{" "}
-          <strong className="text-[var(--ep-navy)]">Open county intelligence</strong> for the full drilldown at{" "}
-          <code className="text-xs">/election-plan/counties/{"{slug}"}</code>.
+          <strong className="text-[var(--ep-navy)]">Open county operating center</strong> for the full drilldown at{" "}
+          <code className="text-xs">/election-plan/counties/{"{slug}"}</code> (replaces legacy county workbench links).
         </p>
       </div>
       <VciExplainerCard compact />
