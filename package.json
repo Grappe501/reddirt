@@ -382,6 +382,7 @@
     "campaign-brain:ingest:field-events": "tsx scripts/campaign-brain/ingest-field-event-leads.ts",
     "election-plan:build": "tsx scripts/build-election-plan-workbench.ts",
     "election-plan:search:build": "tsx scripts/election-plan/build-election-plan-search-index.ts",
+    "election-plan:community-workbench:qa": "node scripts/run-with-h-drive-env.cjs tsx scripts/election-plan/community-workbench-qa.ts",
     "election-plan:18.7h:rebuild": "npm run election-plan:build && npm run election-plan:search:build",
     "election-plan:county-parties:scrape": "tsx scripts/election-plan/scrape-arkdems-county-parties.ts",
     "election-plan:18.7i:rebuild": "npm run election-plan:county-parties:scrape && npm run election-plan:18.7h:rebuild",

@@ -131,3 +131,28 @@ export type CommunityWorkbenchSearchHit = {
   href: string;
   score: number;
 };
+
+export type CommunityWorkbenchDeepSearchHit = {
+  slug: string;
+  name: string;
+  kind: CommunityWorkbenchKind;
+  href: string;
+  score: number;
+  matchKind: "workbench" | "leadership" | "committee" | "event" | "relationship" | "notebook";
+  matchLabel: string;
+  excerpt: string;
+};
+
+export type CommunityWorkbenchHubSummary = {
+  slug: string;
+  name: string;
+  kind: CommunityWorkbenchKind;
+  countySlug: string | null;
+  tagline: string | null;
+  communityLead: string | null;
+  hasOwner: boolean;
+  hasUpcomingEvent: boolean;
+  readinessPct: number;
+  readinessBand: "green" | "yellow" | "red";
+  warningCount: number;
+};

@@ -17,7 +17,12 @@ export type ElectionPlanSearchResultType =
   | "Campaign Brain"
   | "Election Plan"
   | "County Party"
-  | "Community Workbench";
+  | "Community Workbench"
+  | "Workbench Leader"
+  | "Workbench Committee"
+  | "Workbench Event"
+  | "Workbench Relationship"
+  | "Workbench Notebook";
 
 export type ElectionPlanSearchEntry = {
   id: string;

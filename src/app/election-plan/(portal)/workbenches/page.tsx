@@ -1,8 +1,7 @@
 import { CommunityWorkbenchHubPanel } from "@/components/election-plan/CommunityWorkbenchHubPanel";
-import {
-  getCommunityWorkbenchCount,
-  listCommunityWorkbenches,
-} from "@/lib/election-plan/community-workbench/load-workbench";
+import { runCommunityWorkbenchFieldQA } from "@/lib/election-plan/community-workbench/field-qa";
+import { listCommunityWorkbenchHubSummaries } from "@/lib/election-plan/community-workbench/hub-summary";
+import { getCommunityWorkbenchCount } from "@/lib/election-plan/community-workbench/load-workbench";
 
 export const dynamic = "force-dynamic";
 
@@ -16,14 +15,23 @@ type Props = { searchParams: Promise<{ q?: string }> };
 
 export default async function CommunityWorkbenchesHubPage({ searchParams }: Props) {
   const { q } = await searchParams;
-  const [workbenches, totalCount] = await Promise.all([listCommunityWorkbenches(), getCommunityWorkbenchCount()]);
+  const [workbenches, totalCount, qaChecks] = await Promise.all([
+    listCommunityWorkbenchHubSummaries(),
+    getCommunityWorkbenchCount(),
+    Promise.resolve(runCommunityWorkbenchFieldQA()),
+  ]);
 
   return (
     <>
-      <div className="ep-classification">Internal · Community Workbench Framework v1</div>
+      <div className="ep-classification">Internal · Community Workbench Framework v1.2</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-4xl">
-          <CommunityWorkbenchHubPanel workbenches={workbenches} totalCount={totalCount} initialQuery={q} />
+          <CommunityWorkbenchHubPanel
+            workbenches={workbenches}
+            totalCount={totalCount}
+            initialQuery={q}
+            qaChecks={qaChecks}
+          />
         </div>
       </div>
     </>

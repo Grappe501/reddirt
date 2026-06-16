@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useState, type FormEvent, type ReactNode } from "react";
+import { useCallback, useMemo, useState, type FormEvent, type ReactNode } from "react";
 
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { CommunityWorkbenchEventOpsPanel } from "@/components/election-plan/CommunityWorkbenchEventOpsPanel";
+import { CommunityWorkbenchOwnershipWarnings } from "@/components/election-plan/CommunityWorkbenchOwnershipWarnings";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
+import { collectOwnershipWarnings } from "@/lib/election-plan/community-workbench/ownership-warnings";
 import type { CommunityWorkbenchView } from "@/lib/election-plan/community-workbench/types";
 import { COMMUNITY_INTEL_SECTIONS, COMMUNITY_NOTE_TYPES } from "@/lib/election-plan/community-workbench/constants";
 import { communityWorkbenchHubHref } from "@/lib/election-plan/community-workbench/links";
@@ -53,6 +55,16 @@ export function CommunityWorkbenchShell({ workbench, operatorInitials }: Props) 
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const ownershipWarnings = useMemo(
+    () =>
+      collectOwnershipWarnings({
+        workbenchName: workbench.name,
+        leadership: workbench.leadership,
+        events: workbench.events,
+        committees: workbench.committees,
+      }),
+    [workbench],
+  );
 
   const post = useCallback(
     async (section: string, payload: Record<string, unknown>) => {
@@ -152,6 +164,8 @@ export function CommunityWorkbenchShell({ workbench, operatorInitials }: Props) 
       </nav>
 
       {error ? <p className="mt-4 text-sm text-red-700">{error}</p> : null}
+
+      <CommunityWorkbenchOwnershipWarnings warnings={ownershipWarnings} slug={workbench.slug} />
 
       <Section id="overview" title="Overview">
         <div className="ep-stat-grid">

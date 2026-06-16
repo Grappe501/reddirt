@@ -27,6 +27,7 @@ function typeClass(type: string): string {
   if (type === "Academy") return "bg-rose-700 text-white";
   if (type === "County Party") return "bg-blue-700 text-white";
   if (type === "Community Workbench") return "bg-[var(--ep-gold)] text-[var(--ep-navy)]";
+  if (type.startsWith("Workbench ")) return "bg-amber-100 text-amber-950";
   return "bg-[var(--ep-cream)] text-[var(--ep-navy)]";
 }
 
