@@ -1,7 +1,11 @@
 import { buildCommunityWorkbenchRegistry } from "@/lib/election-plan/community-workbench/build-registry";
 import { communityWorkbenchEventHref } from "@/lib/election-plan/community-workbench/event-links";
 import { communityWorkbenchHref, communityWorkbenchHubHref } from "@/lib/election-plan/community-workbench/links";
-import { PILOT_EVENT_SEEDS } from "@/lib/election-plan/community-workbench/pilot-event-seeds";
+import {
+  GRASSROOTS_GUITAR_STRINGS_EVENT,
+  PILOT_EVENT_SEEDS,
+  type PilotEventSeed,
+} from "@/lib/election-plan/community-workbench/pilot-event-seeds";
 import type { CommunityWorkbenchKind } from "@prisma/client";
 import { BUDGET_SUPPORTING_DOCUMENTS } from "@/lib/election-plan/budget-documents-registry";
 import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
@@ -24,21 +28,29 @@ export const ADMIN_ELECTION_PLAN_HREF = "/admin/election-plan" as const;
 export type AdminElectionPlanLink = {
   label: string;
   href: string;
+  /** One-line context under the label (e.g. event parent, goal, date) */
+  detail?: string;
   /** Extra search tokens (slug, county name, etc.) */
   keywords?: string[];
   /** Secondary links shown inline on the row */
   related?: AdminElectionPlanLink[];
+  /** UI hint for smoke-test / pilot rows */
+  variant?: "event-workbench" | "city-workbench" | "county-playbook";
 };
 
 export type AdminElectionPlanSection = {
   id: string;
   title: string;
   description?: string;
+  /** When true, section stays expanded by default in admin hub */
+  pinned?: boolean;
   links: AdminElectionPlanLink[];
 };
 
 export type AdminElectionPlanCatalog = {
   generatedAt: string;
+  /** Steve smoke-test doorway — always pinned at top of /admin/election-plan */
+  smokeTestLinks: AdminElectionPlanLink[];
   stats: {
     totalLinks: number;
     sectionCount: number;
@@ -150,6 +162,92 @@ function kindLabel(kind: CommunityWorkbenchKind): string {
   return kind.charAt(0).toUpperCase() + kind.slice(1);
 }
 
+function formatPilotEventDateLabel(iso: string): string {
+  const d = new Date(iso);
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+}
+
+function parentCityLabel(workbenchSlug: string): string {
+  return workbenchSlug.charAt(0).toUpperCase() + workbenchSlug.slice(1);
+}
+
+function buildPilotEventAdminLink(seed: PilotEventSeed): AdminElectionPlanLink {
+  const dateLabel = formatPilotEventDateLabel(seed.eventDateIso);
+  const parent = parentCityLabel(seed.workbenchSlug);
+  return {
+    label: `${seed.title} · Event workbench`,
+    href: communityWorkbenchEventHref(seed.workbenchSlug, seed.eventSlug),
+    detail: `Parent: ${parent} · Goal: $${seed.profitGoal.toLocaleString()} profit · Date: ${dateLabel} · Not city leadership`,
+    variant: "event-workbench",
+    keywords: [
+      seed.eventSlug,
+      seed.workbenchSlug,
+      "event workbench",
+      "grassroots",
+      "guitar strings",
+      "pilot",
+      parent.toLowerCase(),
+      dateLabel,
+      "$20000",
+      "profit",
+    ],
+    related: [
+      {
+        label: `${parent} city workbench (leadership separate)`,
+        href: communityWorkbenchHref(seed.workbenchSlug),
+      },
+      {
+        label: `${parent} community events list`,
+        href: `/election-plan/workbenches/${seed.workbenchSlug}#events`,
+      },
+    ],
+  };
+}
+
+function buildSmokeTestQuickLinks(): AdminElectionPlanLink[] {
+  const gAndG = GRASSROOTS_GUITAR_STRINGS_EVENT;
+  const gAndGDate = formatPilotEventDateLabel(gAndG.eventDateIso);
+  return [
+    {
+      label: "Faulkner County · county playbook",
+      href: countyPlaybookHref("faulkner"),
+      variant: "county-playbook",
+      keywords: ["faulkner", "county", "smoke"],
+    },
+    {
+      label: "Jacksonville · City workbench (primary pilot)",
+      href: communityWorkbenchHref("jacksonville"),
+      detail: "Primary city pilot — municipal / petition-leader focus",
+      variant: "city-workbench",
+      keywords: ["jacksonville", "city", "pilot", "smoke"],
+      related: [{ label: "Pulaski county playbook", href: countyPlaybookHref("pulaski") }],
+    },
+    {
+      label: "Sherwood · City workbench (optional — city leadership)",
+      href: communityWorkbenchHref("sherwood"),
+      detail: "City campaign plan & OPEN city leadership — not G&G event chairs",
+      variant: "city-workbench",
+      keywords: ["sherwood", "city", "smoke"],
+      related: [
+        { label: "Sherwood community events", href: "/election-plan/workbenches/sherwood#events" },
+        buildPilotEventAdminLink(gAndG),
+      ],
+    },
+    {
+      label: "Sherwood · Community events (anchor)",
+      href: "/election-plan/workbenches/sherwood#events",
+      detail: "Jump to events block — link through to Grassroots & Guitar Strings event workbench",
+      keywords: ["sherwood", "events", "smoke", "anchor"],
+      related: [buildPilotEventAdminLink(gAndG)],
+    },
+    {
+      ...buildPilotEventAdminLink(gAndG),
+      label: `Grassroots & Guitar Strings · Event workbench · ${gAndGDate}`,
+      detail: `Event workbench · Parent: Sherwood · Goal: $${gAndG.profitGoal.toLocaleString()} profit · Date: ${gAndGDate} · Not Sherwood city leadership`,
+    },
+  ];
+}
+
 function workbenchRelatedLinks(slug: string, countySlug: string | null, citySlug: string | null): AdminElectionPlanLink[] {
   const related: AdminElectionPlanLink[] = [
     { label: "Capture", href: `/election-plan/workbenches/${slug}/capture` },
@@ -209,15 +307,7 @@ export function buildAdminElectionPlanCatalog(): AdminElectionPlanCatalog {
     related: workbenchRelatedLinks(wb.slug, wb.countySlug, wb.citySlug),
   }));
 
-  const eventWorkbenchLinks: AdminElectionPlanLink[] = PILOT_EVENT_SEEDS.map((event) => ({
-    label: `${event.title} · event workbench`,
-    href: communityWorkbenchEventHref(event.workbenchSlug, event.eventSlug),
-    keywords: [event.eventSlug, event.workbenchSlug, "event", "pilot", event.location],
-    related: [
-      { label: "Parent city workbench", href: communityWorkbenchHref(event.workbenchSlug) },
-      { label: "Events anchor", href: `/election-plan/workbenches/${event.workbenchSlug}#events` },
-    ],
-  }));
+  const eventWorkbenchLinks: AdminElectionPlanLink[] = PILOT_EVENT_SEEDS.map(buildPilotEventAdminLink);
 
   const countyLinks: AdminElectionPlanLink[] = data.counties.map((county) => ({
     label: `${county.county} · county playbook`,
@@ -341,7 +431,17 @@ export function buildAdminElectionPlanCatalog(): AdminElectionPlanCatalog {
     related: [{ label: "County playbook", href: countyPlaybookHref(profile.slug) }],
   }));
 
+  const smokeTestLinks = buildSmokeTestQuickLinks();
+
   const sections: AdminElectionPlanSection[] = [
+    {
+      id: "smoke-test",
+      title: "Smoke test quick links",
+      description:
+        "Steve doorway — verify these open in the election-plan portal. G&G is an event workbench on Sherwood, not city leadership.",
+      pinned: true,
+      links: smokeTestLinks,
+    },
     {
       id: "entry",
       title: "Portal entry & search",
@@ -474,6 +574,7 @@ export function buildAdminElectionPlanCatalog(): AdminElectionPlanCatalog {
 
   return {
     generatedAt: new Date().toISOString(),
+    smokeTestLinks,
     stats: {
       totalLinks: countLinks(sections),
       sectionCount: sections.length,

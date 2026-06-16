@@ -32,20 +32,46 @@ function sectionMatches(section: AdminElectionPlanSection, term: string): AdminE
   return { ...section, links };
 }
 
+function variantBadge(variant: AdminElectionPlanLink["variant"]): string | null {
+  if (variant === "event-workbench") return "Event workbench";
+  if (variant === "city-workbench") return "City workbench";
+  if (variant === "county-playbook") return "County playbook";
+  return null;
+}
+
 function LinkRow({ link }: { link: AdminElectionPlanLink }) {
   const portal = isPortalHref(link.href);
+  const badge = variantBadge(link.variant);
   return (
-    <li className="rounded-lg border border-kelly-text/10 bg-white/60 px-3 py-2.5">
+    <li
+      className={`rounded-lg border px-3 py-2.5 ${
+        link.variant === "event-workbench"
+          ? "border-kelly-gold/40 bg-kelly-gold/10"
+          : "border-kelly-text/10 bg-white/60"
+      }`}
+    >
       <div className="flex flex-wrap items-start justify-between gap-2">
-        <Link
-          href={link.href}
-          {...(portal ? { target: "_blank", rel: "noreferrer" } : {})}
-          className="font-body text-sm font-semibold text-kelly-navy hover:underline"
-        >
-          {link.label}
-          {portal ? <span className="ml-1 text-[10px] font-normal text-kelly-muted">↗ portal</span> : null}
-        </Link>
-        <code className="max-w-full truncate rounded bg-kelly-text/5 px-1.5 py-0.5 font-mono text-[10px] text-kelly-muted">
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            {badge ? (
+              <span className="rounded-full bg-kelly-navy px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-kelly-inverse">
+                {badge}
+              </span>
+            ) : null}
+            <Link
+              href={link.href}
+              {...(portal ? { target: "_blank", rel: "noreferrer" } : {})}
+              className="font-body text-sm font-semibold text-kelly-navy hover:underline"
+            >
+              {link.label}
+              {portal ? <span className="ml-1 text-[10px] font-normal text-kelly-muted">↗ portal</span> : null}
+            </Link>
+          </div>
+          {link.detail ? (
+            <p className="mt-1 text-xs leading-relaxed text-kelly-muted">{link.detail}</p>
+          ) : null}
+        </div>
+        <code className="max-w-full shrink-0 truncate rounded bg-kelly-text/5 px-1.5 py-0.5 font-mono text-[10px] text-kelly-muted">
           {link.href}
         </code>
       </div>
@@ -78,6 +104,7 @@ export function AdminElectionPlanHubPanel({ catalog }: Props) {
 
   const filteredSections = useMemo(() => {
     return catalog.sections
+      .filter((s) => s.id !== "smoke-test")
       .map((s) => sectionMatches(s, term))
       .filter((s): s is AdminElectionPlanSection => s !== null);
   }, [catalog.sections, term]);
@@ -98,6 +125,23 @@ export function AdminElectionPlanHubPanel({ catalog }: Props) {
         Every election-plan workbench, county playbook, war room tab, and portal module — with cross-links intact.
         Portal routes open in a new tab (separate operator auth). Admin routes stay in this window.
       </p>
+
+      {catalog.smokeTestLinks.length > 0 ? (
+        <div className="mt-6 rounded-xl border-2 border-kelly-gold/35 bg-kelly-gold/5 p-4">
+          <h2 className="font-heading text-sm font-bold uppercase tracking-wide text-kelly-navy">
+            Smoke test doorway
+          </h2>
+          <p className="mt-1 text-xs text-kelly-muted">
+            Primary paths for Steve — county, city pilots, Sherwood events anchor, and Grassroots &amp; Guitar Strings
+            as an <strong className="font-semibold text-kelly-text">event workbench</strong> (not city leadership).
+          </p>
+          <ul className="mt-3 space-y-2">
+            {catalog.smokeTestLinks.map((link) => (
+              <LinkRow key={`smoke-${link.href}-${link.label}`} link={link} />
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {[
@@ -135,7 +179,7 @@ export function AdminElectionPlanHubPanel({ catalog }: Props) {
 
       <div className="mt-8 space-y-4">
         {filteredSections.map((section) => {
-          const isCollapsed = collapsed[section.id] ?? false;
+          const isCollapsed = section.pinned ? false : (collapsed[section.id] ?? false);
           return (
             <section
               key={section.id}
