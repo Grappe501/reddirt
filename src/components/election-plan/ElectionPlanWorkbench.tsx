@@ -3,11 +3,14 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import type { CoalitionCommandHubView } from "@/lib/election-plan/community-workbench/load-coalition-command-hub";
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
 import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
 import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
 import { formatPct, formatBudget, formatVotes } from "@/lib/election-plan/electionPlanData";
 import { countyVictoryTargetsExecutiveHref, getCountyVictoryTargetsRollup } from "@/lib/election-plan/load-county-victory-targets";
+import { CampaignFundraisingProgressCard } from "@/components/election-plan/CampaignFundraisingProgressCard";
+import { CoalitionCommandHubPanel } from "@/components/election-plan/CoalitionCommandHubPanel";
 import { BattlefieldOverviewPanel } from "@/components/election-plan/BattlefieldOverviewPanel";
 import { CityStrategyList } from "@/components/election-plan/CityStrategyList";
 import { locationBriefMasterPlanHref } from "@/lib/election-plan/location-links";
@@ -24,7 +27,6 @@ import { FieldCalendarPanel } from "@/components/election-plan/FieldCalendarPane
 import { Phase18MovementInfrastructurePanel } from "@/components/election-plan/Phase18MovementInfrastructurePanel";
 import {
   CampaignTimelinePanel,
-  CoalitionCommandPanel,
   PresenceMapPanel,
   SherwoodVictoryPanel,
   SocialResumePanel,
@@ -78,12 +80,15 @@ function parseTabId(value: string | undefined): TabId {
   return "warRoom";
 }
 
-type Props = {
+type ElectionPlanWorkbenchProps = {
   data: ElectionPlanWorkbenchSnapshot;
+  coalitionHub: CoalitionCommandHubView;
   initialTab?: string;
 };
 
-export function ElectionPlanWorkbench({ data, initialTab }: Props) {
+type SnapshotPanelProps = { data: ElectionPlanWorkbenchSnapshot };
+
+export function ElectionPlanWorkbench({ data, coalitionHub, initialTab }: ElectionPlanWorkbenchProps) {
   return (
     <>
       <div className="ep-classification">{data.classification}</div>
@@ -111,12 +116,12 @@ export function ElectionPlanWorkbench({ data, initialTab }: Props) {
         </div>
       </header>
 
-      <TabWorkbench data={data} initialTab={initialTab} />
+      <TabWorkbench data={data} coalitionHub={coalitionHub} initialTab={initialTab} />
     </>
   );
 }
 
-function TabWorkbench({ data, initialTab }: Props) {
+function TabWorkbench({ data, coalitionHub, initialTab }: ElectionPlanWorkbenchProps) {
   const [active, setActive] = useState<TabId>(() => parseTabId(initialTab));
 
   return (
@@ -154,7 +159,7 @@ function TabWorkbench({ data, initialTab }: Props) {
         {active === "weekPlans" && <WeekOperationalPanel data={data} />}
         {active === "timeline" && <CampaignTimelinePanel data={data} />}
         {active === "presenceMap" && <PresenceMapPanel data={data} />}
-        {active === "coalitionCommand" && <CoalitionCommandPanel data={data} />}
+        {active === "coalitionCommand" && <CoalitionCommandHubPanel hub={coalitionHub} data={data} />}
         {active === "sherwoodVictory" && <SherwoodVictoryPanel data={data} />}
         {active === "socialResume" && <SocialResumePanel data={data} />}
         {active === "executive" && <ExecutivePanel data={data} />}
@@ -181,12 +186,10 @@ function SectionTitle({ title, subtitle }: { title: string; subtitle?: string })
   );
 }
 
-function KellyDashboardPanel({ data }: Props) {
+function KellyDashboardPanel({ data }: SnapshotPanelProps) {
   const d = data.candidateDashboard;
   const w = data.warRoom;
   const b = data.executiveBookV1.campaignBudget;
-  const fundraisingPct =
-    w.fundraisingGoal > 0 ? Math.min(100, (w.fundraisingRaised / w.fundraisingGoal) * 100) : 0;
   return (
     <section>
       <SectionTitle
@@ -196,24 +199,9 @@ function KellyDashboardPanel({ data }: Props) {
       <div className="ep-card mb-8 border-l-4 border-[var(--ep-gold)]">
         <h3 className="font-heading font-bold">Campaign Budget — Fundraising Targets</h3>
         <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{b.disclaimer}</p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          <div className="ep-stat">
-            <div className="ep-stat-value">{formatBudget(w.fundraisingRaised)}</div>
-            <div className="ep-stat-label">Raised to date</div>
-          </div>
-          <div className="ep-stat">
-            <div className="ep-stat-value">{formatBudget(w.fundraisingGoal)}</div>
-            <div className="ep-stat-label">Working campaign target</div>
-          </div>
-          <div className="ep-stat">
-            <div className="ep-stat-value">{Math.round(fundraisingPct)}%</div>
-            <div className="ep-stat-label">Progress · ramp up fundraising</div>
-          </div>
+        <div className="mt-4">
+          <CampaignFundraisingProgressCard data={w} variant="dashboard" />
         </div>
-        <div className="ep-progress mt-4">
-          <div className="ep-progress-bar" style={{ width: `${fundraisingPct}%` }} />
-        </div>
-        <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">{w.fundraisingNote}</p>
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
           <div className="ep-stat">
             <div className="ep-stat-value">{formatBudget(b.monthlyBurnWorking)}</div>
@@ -354,7 +342,7 @@ function KellyDashboardPanel({ data }: Props) {
   );
 }
 
-function HowWeWinPanel({ data }: Props) {
+function HowWeWinPanel({ data }: SnapshotPanelProps) {
   return (
     <section>
       <SectionTitle title="How We Win" subtitle="Plurality · three candidates · recovery before persuasion" />
@@ -380,7 +368,7 @@ function HowWeWinPanel({ data }: Props) {
   );
 }
 
-function FourLanesPanel({ data }: Props) {
+function FourLanesPanel({ data }: SnapshotPanelProps) {
   return (
     <section>
       <SectionTitle title="Four Lanes" subtitle="All four move simultaneously" />
@@ -403,7 +391,7 @@ function FourLanesPanel({ data }: Props) {
   );
 }
 
-function BattlefieldPanel({ data }: Props) {
+function BattlefieldPanel({ data }: SnapshotPanelProps) {
   return (
     <section>
       <BattlefieldOverviewPanel clusters={data.execution.clusters} />
@@ -411,7 +399,7 @@ function BattlefieldPanel({ data }: Props) {
   );
 }
 
-function SherwoodPanel({ data }: Props) {
+function SherwoodPanel({ data }: SnapshotPanelProps) {
   const s = data.coalitionPowerMap.sherwood;
   return (
     <section>
@@ -443,7 +431,7 @@ function SherwoodPanel({ data }: Props) {
   );
 }
 
-function TwentyWeekPlanPanel({ data }: Props) {
+function TwentyWeekPlanPanel({ data }: SnapshotPanelProps) {
   const [selected, setSelected] = useState(1);
   const week = data.weekPlans.find((w) => w.weekNumber === selected) ?? data.weekPlans[0];
   return (
@@ -509,7 +497,7 @@ function TwentyWeekPlanPanel({ data }: Props) {
   );
 }
 
-function ExecutivePanel({ data }: Props) {
+function ExecutivePanel({ data }: SnapshotPanelProps) {
   return (
     <section>
       <SectionTitle title="Executive Mission" subtitle="Why this plan wins · current constraints" />
@@ -544,7 +532,7 @@ function ExecutivePanel({ data }: Props) {
   );
 }
 
-function TheoryPanel({ data }: Props) {
+function TheoryPanel({ data }: SnapshotPanelProps) {
   return (
     <section>
       <SectionTitle title="Theory of Victory" subtitle="Four lanes · Big Table Democrat identity" />
@@ -595,7 +583,7 @@ function TheoryPanel({ data }: Props) {
   );
 }
 
-function MathPanel({ data }: Props) {
+function MathPanel({ data }: SnapshotPanelProps) {
   const m = data.electoralMath;
   return (
     <section>
@@ -669,18 +657,19 @@ function DropRow({ label, value, highlight }: { label: string; value: number; hi
   );
 }
 
-function CountiesPanel({ data }: Props) {
+function CountiesPanel({ data }: SnapshotPanelProps) {
   return (
     <section>
       <SectionTitle
-        title="County Playbooks"
-        subtitle="75 counties · open the full county playbook for events, calendar, leaders, tasks, and goals"
+        title="County intelligence"
+        subtitle="75 counties · open the in-system county drilldown for strategy, cities, field, fundraising, demographics, and election history"
       />
       <div className="ep-card-glass mb-6 text-sm leading-relaxed text-[var(--ep-navy-muted)]">
         <p>
           <strong className="text-[var(--ep-navy)]">Victory targets</strong> on each card show votes needed and percent
           increase — the language county chairs use. Expand for full target · weekly pace · Po5 leaders.{" "}
-          <strong className="text-[var(--ep-navy)]">Open county playbook</strong> for the operational workbench.
+          <strong className="text-[var(--ep-navy)]">Open county intelligence</strong> for the full drilldown at{" "}
+          <code className="text-xs">/election-plan/counties/{"{slug}"}</code>.
         </p>
       </div>
       <VciExplainerCard compact />
@@ -691,7 +680,7 @@ function CountiesPanel({ data }: Props) {
   );
 }
 
-function CitiesPanel({ data }: Props) {
+function CitiesPanel({ data }: SnapshotPanelProps) {
   return (
     <section>
       <SectionTitle
@@ -708,7 +697,7 @@ function CitiesPanel({ data }: Props) {
   );
 }
 
-function BrainPanel({ data }: Props) {
+function BrainPanel({ data }: SnapshotPanelProps) {
   return (
     <section>
       <SectionTitle title="Campaign Brain" subtitle={data.campaignBrain.flow} />
@@ -732,7 +721,7 @@ function BrainPanel({ data }: Props) {
   );
 }
 
-function CalendarPanel({ data }: Props) {
+function CalendarPanel({ data }: SnapshotPanelProps) {
   const ct = data.calendarTruth;
   const verifiedPct = Math.min(100, (ct.verifiedEvents / ct.verifiedGoal) * 100);
 
@@ -804,7 +793,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function RelationshipPanel({ data }: Props) {
+function RelationshipPanel({ data }: SnapshotPanelProps) {
   const rc = data.relationshipCapital;
   return (
     <section>
@@ -861,7 +850,7 @@ function RelationshipPanel({ data }: Props) {
   );
 }
 
-function ExecutionPanel({ data }: Props) {
+function ExecutionPanel({ data }: SnapshotPanelProps) {
   return (
     <section>
       <SectionTitle title="20-Week Execution" subtitle="Phase 8 candidates · not locked" />
@@ -916,7 +905,7 @@ function ExecutionPanel({ data }: Props) {
   );
 }
 
-function ArchitecturePanel({ data }: Props) {
+function ArchitecturePanel({ data }: SnapshotPanelProps) {
   return (
     <section>
       <SectionTitle title="Executive Book Architecture" subtitle="300-page plan · clickable table of contents" />
@@ -943,7 +932,7 @@ function ArchitecturePanel({ data }: Props) {
   );
 }
 
-function PeoplePowerPanel({ data }: Props) {
+function PeoplePowerPanel({ data }: SnapshotPanelProps) {
   const pp = data.peoplePower;
   const [rosterOpen, setRosterOpen] = useState(false);
   const leaderPct = pp.foundingVolunteersGoal > 0
@@ -1088,7 +1077,7 @@ function PeoplePowerPanel({ data }: Props) {
   );
 }
 
-function StudentsForArkansasPanel({ data }: { data: Props["data"]["studentsForArkansas"] }) {
+function StudentsForArkansasPanel({ data }: { data: ElectionPlanWorkbenchSnapshot["studentsForArkansas"] }) {
   const coChairPct =
     data.coChairsGoal > 0 ? Math.round((data.coChairsConfirmed / data.coChairsGoal) * 1000) / 10 : 0;
 
@@ -1219,7 +1208,7 @@ function StudentsForArkansasPanel({ data }: { data: Props["data"]["studentsForAr
   );
 }
 
-function CitizenVoicesPanel({ data }: { data: Props["data"]["citizenVoices"] }) {
+function CitizenVoicesPanel({ data }: { data: ElectionPlanWorkbenchSnapshot["citizenVoices"] }) {
   const foundingPct =
     data.foundingWritersGoal > 0
       ? Math.round((data.foundingWritersCurrent / data.foundingWritersGoal) * 1000) / 10
@@ -1318,7 +1307,7 @@ function CitizenVoicesPanel({ data }: { data: Props["data"]["citizenVoices"] }) 
   );
 }
 
-function MotionPresencePanel({ data }: Props) {
+function MotionPresencePanel({ data }: SnapshotPanelProps) {
   const mp = data.motionPresence;
   const countyPct =
     mp.countiesTotal > 0 ? Math.round((mp.countiesVisited / mp.countiesTotal) * 1000) / 10 : 0;
@@ -1502,7 +1491,7 @@ function MotionPresencePanel({ data }: Props) {
   );
 }
 
-function ForwardMotionPanel({ data }: Props) {
+function ForwardMotionPanel({ data }: SnapshotPanelProps) {
   const fm = data.forwardMotion;
 
   return (
@@ -1634,7 +1623,7 @@ function ForwardMotionPanel({ data }: Props) {
   );
 }
 
-function CoalitionPowerMapPanel({ data }: Props) {
+function CoalitionPowerMapPanel({ data }: SnapshotPanelProps) {
   const cp = data.coalitionPowerMap;
 
   return (
@@ -1767,7 +1756,7 @@ function CoalitionPowerMapPanel({ data }: Props) {
   );
 }
 
-function EndorsementAcquisitionPanel({ data }: Props) {
+function EndorsementAcquisitionPanel({ data }: SnapshotPanelProps) {
   const ea = data.endorsementAcquisition;
 
   return (
@@ -1894,7 +1883,7 @@ function EndorsementAcquisitionPanel({ data }: Props) {
   );
 }
 
-function VoterContactPanel({ data }: Props) {
+function VoterContactPanel({ data }: SnapshotPanelProps) {
   const vc = data.voterContact;
   const hci = vc.humanContactIndex;
   const c = hci.components;

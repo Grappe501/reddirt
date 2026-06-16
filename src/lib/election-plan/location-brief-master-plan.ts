@@ -76,7 +76,7 @@ export const LOCATION_BRIEF_MASTER_PLAN = {
     { path: "/election-plan?tab=cities", label: "Priority cities (workbench tab)" },
     { path: "/election-plan/cities", label: "Priority cities hub" },
     { path: "/election-plan/cities/[slug]", label: "City location brief" },
-    { path: "/election-plan/counties/[countySlug]", label: "County playbook hub" },
+    { path: "/election-plan/counties/[countySlug]", label: "County intelligence drilldown" },
     { path: "/election-plan/locations/master-plan", label: "This master plan" },
   ],
 };

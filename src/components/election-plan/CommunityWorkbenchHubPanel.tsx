@@ -16,12 +16,13 @@ type Props = {
   workbenches: CommunityWorkbenchHubSummary[];
   totalCount: number;
   initialQuery?: string;
+  initialKind?: KindFilter;
   qaChecks: CommunityFieldQACheck[];
   pilotSnapshot: PilotValidationSnapshot;
   operatorInitials: string | null;
 };
 
-type KindFilter = "all" | "city" | "campus" | "program";
+type KindFilter = "all" | "city" | "campus" | "program" | "coalition" | "media" | "communications";
 type OwnerFilter = "all" | "has" | "missing";
 type EventsFilter = "all" | "upcoming" | "none";
 type ReadinessFilter = "all" | "green" | "yellow" | "red";
@@ -29,6 +30,9 @@ type ReadinessFilter = "all" | "green" | "yellow" | "red";
 function kindBadge(kind: string): string {
   if (kind === "program") return "bg-violet-100 text-violet-900";
   if (kind === "campus") return "bg-indigo-100 text-indigo-900";
+  if (kind === "coalition") return "bg-rose-100 text-rose-900";
+  if (kind === "media") return "bg-fuchsia-100 text-fuchsia-900";
+  if (kind === "communications") return "bg-violet-100 text-violet-900";
   return "bg-teal-100 text-teal-900";
 }
 
@@ -42,12 +46,13 @@ export function CommunityWorkbenchHubPanel({
   workbenches,
   totalCount,
   initialQuery = "",
+  initialKind = "all",
   qaChecks,
   pilotSnapshot,
   operatorInitials,
 }: Props) {
   const [q, setQ] = useState(initialQuery);
-  const [kind, setKind] = useState<KindFilter>("all");
+  const [kind, setKind] = useState<KindFilter>(initialKind);
   const [owner, setOwner] = useState<OwnerFilter>("all");
   const [events, setEvents] = useState<EventsFilter>("all");
   const [readiness, setReadiness] = useState<ReadinessFilter>("all");
@@ -191,6 +196,9 @@ export function CommunityWorkbenchHubPanel({
           <option value="city">City</option>
           <option value="campus">Campus</option>
           <option value="program">Program</option>
+          <option value="coalition">Coalition</option>
+          <option value="media">Social Media (SMOS)</option>
+          <option value="communications">Campaign Communications (CCH)</option>
         </FilterSelect>
         <FilterSelect label="Owner" value={owner} onChange={(v) => setOwner(v as OwnerFilter)}>
           <option value="all">All</option>

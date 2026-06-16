@@ -10,7 +10,7 @@
       "title": "Executive Book",
       "answers": "What is the leadership narrative? Which chapters can I share with partners, donors, and validators?",
       "keyMetrics": ["Chapter 0 doctrine", "12 chapters", "Weekly scorecard", "Budget targets", "GOTV manual"],
-      "bestFor": ["Kelly", "Ernie", "Steve", "Every volunteer leader", "Coalition partners", "Major donors"],
+      "bestFor": ["Kelly", "Campaign leadership", "Steve", "Every volunteer leader", "Coalition partners", "Major donors"],
       "relatedLinks": [
         { "label": "Campaign Doctrine · Ch. 0", "href": "/election-plan/executive-book/doctrine" },
         { "label": "County Victory Targets · Ch. 6", "href": "/election-plan/executive-book/county-victory-targets" },
@@ -26,7 +26,7 @@
       "title": "Executive Book Chapter",
       "answers": "What does leadership need to know about this topic — in shareable, board-ready form?",
       "keyMetrics": ["Chapter metrics strip", "Live scorecard overlays", "Related chapters"],
-      "bestFor": ["Kelly", "Ernie", "Coalition validators", "Donor briefings"],
+      "bestFor": ["Kelly", "Campaign leadership", "Coalition validators", "Donor briefings"],
       "relatedLinks": [{ "label": "Executive Book hub", "href": "/election-plan/executive-book" }],
       "searchKeywords": ["executive book", "chapter"]
     },
@@ -51,7 +51,7 @@
       "title": "County Playbook",
       "answers": "What is our county's vote target, field plan, calendar, strike team, and Kelly outreach contacts?",
       "keyMetrics": ["Victory target", "Visit coverage", "Registration goal", "Field calendar stops"],
-      "bestFor": ["County chairs", "County captains", "Field organizers", "Steve · Ernie"],
+      "bestFor": ["County chairs", "County captains", "Field organizers", "Steve · Campaign leadership"],
       "relatedLinks": [
         { "label": "County victory targets", "href": "/election-plan/county-victory-targets" },
         { "label": "Leadership hub", "href": "/election-plan/leadership" }
@@ -93,7 +93,7 @@
       "title": "Meeting & Accountability System",
       "answers": "How do we know teams are actually executing? What are the weekly meeting rhythms?",
       "keyMetrics": ["5 weekly meetings", "4 questions every call", "Action items", "Owners & due dates"],
-      "bestFor": ["Kelly", "Ernie", "Steve", "Team leads", "Functional owners"],
+      "bestFor": ["Kelly", "Campaign leadership", "Steve", "Team leads", "Functional owners"],
       "relatedLinks": [
         { "label": "Org chart", "href": "/election-plan/organization" },
         { "label": "Weekly leadership packet", "href": "/election-plan/leadership/weekly-packet" }
@@ -107,7 +107,7 @@
       "title": "Leadership & Ownership Hub",
       "answers": "Who owns what? What does each owner deliver every week?",
       "keyMetrics": ["Teams without owner", "County chairs identified", "Responsibility matrix warnings"],
-      "bestFor": ["Kelly", "Ernie", "Steve", "Team leads"],
+      "bestFor": ["Kelly", "Campaign leadership", "Steve", "Team leads"],
       "relatedLinks": [
         { "label": "Responsibility matrix", "href": "/election-plan/leadership/responsibility-matrix" },
         { "label": "Campaign org chart", "href": "/election-plan/organization" }
@@ -121,7 +121,7 @@
       "title": "Campaign Organizational Chart",
       "answers": "Who leads each functional team? What is the weekly deliverable for each team?",
       "keyMetrics": ["12 functional teams", "Open positions", "Weekly meeting times", "Critical teams"],
-      "bestFor": ["Kelly", "Ernie", "Steve", "Prospective team leads"],
+      "bestFor": ["Kelly", "Campaign leadership", "Steve", "Prospective team leads"],
       "relatedLinks": [
         { "label": "Meeting rhythm", "href": "/election-plan/meetings" },
         { "label": "Campaign Academy", "href": "/election-plan/academy" }
@@ -160,7 +160,7 @@
       "title": "Power of 5 Command Center",
       "answers": "How is the relational network growing? What is the Po5 headline metric beside HCI?",
       "keyMetrics": ["Network goal", "HCI goal", "Founding leaders", "Relationship network growth"],
-      "bestFor": ["Po5 leaders", "Volunteer leads", "Kelly", "Ernie"],
+      "bestFor": ["Po5 leaders", "Volunteer leads", "Kelly", "Campaign leadership"],
       "relatedLinks": [
         { "label": "Conversation strategy", "href": "/election-plan/conversation-strategy" },
         { "label": "Executive Book Ch. 8", "href": "/election-plan/executive-book/power-of-5" }
@@ -188,7 +188,7 @@
       "title": "Campaign Budget",
       "answers": "What is our budget framework? What are the fundraising targets by month?",
       "keyMetrics": ["Salary floor", "Monthly burn", "Fundraising targets", "Remaining to raise"],
-      "bestFor": ["Kelly", "Ernie", "Finance committee", "Major donors"],
+      "bestFor": ["Kelly", "Campaign leadership", "Finance committee", "Major donors"],
       "relatedLinks": [
         { "label": "Budget dashboard", "href": "/election-plan/executive-book/budget/dashboard" },
         { "label": "Weekly dashboard", "href": "/election-plan?tab=weeklyDashboard" }
@@ -261,7 +261,7 @@
       "title": "Coverage Reality",
       "answers": "Which counties has Kelly actually visited? Where are the gaps?",
       "keyMetrics": ["Counties visited", "Never visited", "Priority queue", "Growth targets per county"],
-      "bestFor": ["Kelly", "Steve", "Ernie", "Travel planning"],
+      "bestFor": ["Kelly", "Steve", "Campaign leadership", "Travel planning"],
       "relatedLinks": [
         { "label": "Open Coverage Reality tab", "href": "/election-plan?tab=presenceMap" },
         { "label": "County victory targets", "href": "/election-plan/county-victory-targets" }
@@ -276,7 +276,7 @@
       "title": "Weekly Dashboard",
       "answers": "What are Kelly's priorities this week? How is fundraising and county coverage tracking?",
       "keyMetrics": ["Weeks remaining", "Fundraising progress", "Scorecard", "County victory rollup"],
-      "bestFor": ["Kelly", "Ernie", "Monday leadership"],
+      "bestFor": ["Kelly", "Campaign leadership", "Monday leadership"],
       "relatedLinks": [
         { "label": "Weekly dashboard tab", "href": "/election-plan?tab=weeklyDashboard" },
         { "label": "Monday leadership meeting", "href": "/election-plan/meetings/monday-leadership" }

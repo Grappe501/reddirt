@@ -10,7 +10,6 @@ export {
   ELECTION_PLAN_ARCHITECTURE,
   ELECTION_PLAN_BRAND,
   ELECTION_PLAN_CLASSIFICATION,
-  ELECTION_PLAN_HERO_DEFAULTS,
   formatCompactVotes,
   formatPct,
   formatPluralityRange,

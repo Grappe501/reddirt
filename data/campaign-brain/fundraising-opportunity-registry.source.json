@@ -1,0 +1,525 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "pass": "FUNDRAISING-OPPORTUNITY-INVENTORY",
+  "status": "planning_only",
+  "note": "Inventory and architecture only — no Opportunity Pipeline UI, Prisma, or donation records until PPEN A.0b/A.0c, Leadership Workbench gates, and this registry are locked. FOS answers How much? This layer answers How do we get there? Every KPI must drill to openable opportunity records; zeros until records exist.",
+  "doctrineRefs": [
+    "docs/FUNDRAISING_OPPORTUNITY_ARCHITECTURE.md",
+    "docs/FUNDRAISING_OPERATING_SYSTEM_ARCHITECTURE.md",
+    "docs/LEADERSHIP_WORKBENCH_ARCHITECTURE.md",
+    "docs/ELECTION_PLAN_DATA_INTEGRITY_DOCTRINE.md",
+    "data/campaign-brain/fundraising-operating-system.source.json",
+    "data/campaign-brain/leadership-workbench-registry.source.json"
+  ],
+  "buildGate": {
+    "blockedUntil": [
+      "sherwood_jacksonville_pilot_smoke",
+      "ppen_a0b_person_participation",
+      "ppen_a0c_intake_activation",
+      "leadership_workbench_planning_locked"
+    ],
+    "sequencingAfterPilot": [
+      "PPEN A.0b",
+      "PPEN A.0c",
+      "Leadership Workbenches",
+      "Fundraising Opportunity Architecture",
+      "Fundraising Leadership Workbenches",
+      "Donation Record Layer"
+    ],
+    "noFakeCounts": true,
+    "noGoalWithoutOwnerField": true,
+    "noFundraisingNumberWithoutRecords": true
+  },
+  "threeSystemAlignment": {
+    "electionMath": { "unit": "votes", "source": "city-location-numeric-targets · chapter-05 · VCI" },
+    "fundraisingOperatingSystem": { "unit": "dollars", "source": "fundraising-operating-system.source.json" },
+    "ppen": { "unit": "people", "source": "ppen_participation · ppen_person · field_entry" },
+    "workbenchQuestion": "How many votes? How many people? How many dollars? — from the same workbench."
+  },
+  "goalCardRequiredFields": [
+    { "key": "base_goal", "label": "Base Goal", "source": "fos_vote_target_formula" },
+    { "key": "stretch_goal", "label": "Stretch Goal", "source": "fos_stretch_multiplier" },
+    { "key": "raised", "label": "Raised", "recordSource": "compliance_donation_record", "liveToday": false },
+    { "key": "gap", "label": "Gap", "formula": "base_goal - raised", "liveToday": "partial" },
+    { "key": "ownership", "label": "Fundraising Lead", "recordSource": "ppen_participation | community_workbench_leadership | OPEN", "liveToday": "partial" }
+  ],
+  "goalCardExample": {
+    "community": "Sherwood",
+    "baseGoal": 9390,
+    "stretchGoal": 16433,
+    "raised": 0,
+    "gap": 9390,
+    "fundraisingLead": "OPEN",
+    "note": "Live FOS calc at $300K state goal · ownership OPEN until placement"
+  },
+  "ownershipStructure": {
+    "levels": [
+      {
+        "level": "state",
+        "roleKey": "state_fundraising_director",
+        "label": "State Fundraising Director",
+        "minAccessLevel": 5,
+        "owns": ["statewide_goal", "major_donor_program", "compliance_reconciliation"]
+      },
+      {
+        "level": "county",
+        "roleKey": "county_fundraising_lead",
+        "label": "County Fundraising Lead",
+        "minAccessLevel": 3,
+        "strikeTeamKey": null,
+        "owns": ["county_fos_rollup", "county_opportunity_pipeline", "county_escalations"]
+      },
+      {
+        "level": "community",
+        "roleKey": "community_fundraising_lead",
+        "label": "Fundraising Lead",
+        "minAccessLevel": 2,
+        "mapsToCommunityLeadership": "volunteer_lead_or_events_lead_until_dedicated_slot",
+        "owns": ["community_fos_goal_card", "community_opportunity_pipeline"]
+      },
+      {
+        "level": "program",
+        "roleKeys": [
+          "house_party_lead",
+          "major_donor_lead",
+          "small_donor_lead",
+          "campus_fundraising_lead",
+          "business_outreach_lead"
+        ],
+        "minAccessLevel": 2,
+        "owns": ["program_opportunity_lane"]
+      }
+    ],
+    "openSlotDisplay": "OPEN",
+    "placementRecord": "ppen_participation.context=fundraising | community_workbench_leadership.roleKey=fundraising_lead"
+  },
+  "communityOpportunityPanelTemplate": {
+    "sectionLabel": "Fundraising Opportunities",
+    "description": "Makes dollar targets executable — each lane has a count goal, owner, and drill-down records.",
+    "exampleLanes": [
+      { "key": "house_parties", "label": "House Parties", "exampleGoal": 10 },
+      { "key": "business_meetings", "label": "Business Meetings", "exampleGoal": 20 },
+      { "key": "major_donor_meetings", "label": "Major Donor Meetings", "exampleGoal": 15 },
+      { "key": "community_events", "label": "Community Events", "exampleGoal": 4 },
+      { "key": "campus_fundraisers", "label": "Campus Fundraisers", "exampleGoal": 2 }
+    ],
+    "note": "Example counts are illustrative — live goals derive from numeric targets and opportunity registry formulas, not hardcoded everywhere."
+  },
+  "opportunityTypes": [
+    {
+      "id": "house_party_program",
+      "name": "House Party Program",
+      "slug": "house-parties",
+      "phase": "FOP-1",
+      "primaryUsers": ["House Party Lead", "Community Fundraising Lead", "County Fundraising Lead"],
+      "ownershipStructure": {
+        "stateOwner": "state_fundraising_director",
+        "countyOwner": "county_fundraising_lead",
+        "communityOwner": "house_party_lead",
+        "eventHostDistinctFrom": "community_lead · event_chair — house party hosts are field-entry category house_party"
+      },
+      "owns": [
+        "Listed hosts and active hosts before peak season",
+        "House party schedule and follow-up",
+        "Per-party revenue attribution when donation records exist",
+        "VIP table coordination (Sherwood and similar)"
+      ],
+      "kpis": [
+        { "key": "hosts_goal", "label": "Hosts (goal)", "planningSource": "city-location-numeric-targets.houseParties.hosts", "recordSource": "field_entry.category=house_party | fos_opportunity_record", "drillDown": true },
+        { "key": "active_hosts", "label": "Active hosts", "planningSource": "city-location-numeric-targets.houseParties.activeHosts", "recordSource": "field_entry | fos_opportunity_record.status=active", "drillDown": true },
+        { "key": "scheduled", "label": "Scheduled", "recordSource": "community_workbench_event.type=house_party | fos_opportunity_record", "drillDown": true },
+        { "key": "held", "label": "Held", "recordSource": "community_workbench_event.status=executed", "drillDown": true },
+        { "key": "revenue", "label": "Revenue", "recordSource": "compliance_donation_record.attributed_opportunity_id", "liveToday": false, "drillDown": true }
+      ],
+      "rollupLogic": {
+        "community": "sum opportunity records in community",
+        "county": "sum communities in county",
+        "cluster": "sum counties in cluster",
+        "state": "sum all non-isolated communities"
+      },
+      "countyCommunityIntegration": {
+        "communityWorkbenchSection": "fundraising#opportunities",
+        "countyWorkbenchSection": "fundraising#houseParties",
+        "fieldLogCategory": "house_party",
+        "linksTo": ["win-sherwood-operation.json hosts for Sherwood planning panel only — not live KPI"]
+      },
+      "workbenchRequirements": [
+        "Opportunity list with status: prospect · scheduled · held · closed",
+        "Owner per opportunity (Person or OPEN)",
+        "Drill from hosts_goal count to host records",
+        "Separate from Event Leadership Workbench — hosts ≠ event committee chairs"
+      ],
+      "leadershipWorkbenchLink": "fundraising_leadership · house_party_lead"
+    },
+    {
+      "id": "grassroots_events",
+      "name": "Grassroots Events",
+      "slug": "grassroots-events",
+      "phase": "FOP-1",
+      "primaryUsers": ["Event Chair", "Community Fundraising Lead", "Events Lead"],
+      "ownershipStructure": {
+        "stateOwner": "state_fundraising_director",
+        "countyOwner": "eventsCaptain",
+        "communityOwner": "events_lead",
+        "doctrine": "Grassroots & Guitar Strings and similar are Event Leadership Workbench — not community_lead"
+      },
+      "owns": [
+        "Fundraising-oriented community events",
+        "Run of show with revenue targets",
+        "Committee assignments and AAR",
+        "Turnout vs fundraising dual KPIs"
+      ],
+      "kpis": [
+        { "key": "events_goal", "label": "Events (goal)", "planningSource": "community_planning", "recordSource": "community_workbench_event", "drillDown": true },
+        { "key": "scheduled", "label": "Scheduled", "recordSource": "community_workbench_event.status=planned|confirmed", "drillDown": true },
+        { "key": "held", "label": "Held", "recordSource": "community_workbench_event.status=executed|aar_complete", "drillDown": true },
+        { "key": "expected_attendance", "label": "Expected attendance", "recordSource": "community_workbench_event.expectedAttendance", "drillDown": true },
+        { "key": "revenue", "label": "Revenue", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true }
+      ],
+      "rollupLogic": { "community": "event records tagged fundraising=true", "county": "sum communities", "cluster": "sum counties", "state": "sum statewide" },
+      "countyCommunityIntegration": {
+        "communityWorkbenchSection": "events · fundraising#opportunities",
+        "eventLeadershipWorkbench": true,
+        "sherwoodPilot": "Seed Grassroots & Guitar Strings as CommunityWorkbenchEvent — not community_lead"
+      },
+      "workbenchRequirements": [
+        "Event ops panel already partial — extend with fundraising opportunity link",
+        "Revenue field on event when donation layer exists",
+        "Event chair ownership visible on goal card"
+      ],
+      "leadershipWorkbenchLink": "event_leadership · events_lead"
+    },
+    {
+      "id": "major_donor_meetings",
+      "name": "Major Donor Meetings",
+      "slug": "major-donor-meetings",
+      "phase": "FOP-2",
+      "primaryUsers": ["Major Donor Lead", "County Fundraising Lead", "Kelly (closer)"],
+      "ownershipStructure": {
+        "stateOwner": "state_fundraising_director",
+        "countyOwner": "county_fundraising_lead",
+        "communityOwner": "major_donor_lead",
+        "kellyTimeDoctrine": "Kelly opens doors — team runs meeting pipeline"
+      },
+      "owns": [
+        "Prospect list and ask ladder",
+        "Meeting schedule and follow-up",
+        "Validator introductions",
+        "Pledge tracking until compliance record"
+      ],
+      "kpis": [
+        { "key": "meetings_goal", "label": "Meetings (goal)", "planningSource": "derived_from_fos_base_goal / avg_major_gift_assumption", "recordSource": "fos_opportunity_record.type=major_donor_meeting", "drillDown": true },
+        { "key": "scheduled", "label": "Scheduled", "recordSource": "fos_opportunity_record.status=scheduled", "drillDown": true },
+        { "key": "held", "label": "Held", "recordSource": "fos_opportunity_record.status=held", "drillDown": true },
+        { "key": "pledged", "label": "Pledged", "recordSource": "fos_opportunity_record.pledge_amount", "liveToday": false, "drillDown": true },
+        { "key": "closed", "label": "Closed / received", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true }
+      ],
+      "rollupLogic": { "community": "count meetings", "county": "sum", "cluster": "sum", "state": "sum" },
+      "countyCommunityIntegration": {
+        "communityWorkbenchSection": "fundraising#opportunities",
+        "countyWorkbenchSection": "fundraising#donors",
+        "relationshipLink": "community_workbench_relationship.strength for validator paths"
+      },
+      "workbenchRequirements": [
+        "Prospect records with next action date",
+        "Overdue follow-up escalation",
+        "No fake pledged amounts — pledge field hidden until staff confirms"
+      ],
+      "leadershipWorkbenchLink": "fundraising_leadership · major_donor_lead"
+    },
+    {
+      "id": "small_dollar_program",
+      "name": "Small Dollar Program",
+      "slug": "small-dollar",
+      "phase": "FOP-2",
+      "primaryUsers": ["Small Donor Lead", "Volunteer Lead", "Communications Lead"],
+      "ownershipStructure": {
+        "stateOwner": "state_fundraising_director",
+        "countyOwner": "county_fundraising_lead",
+        "communityOwner": "small_donor_lead"
+      },
+      "owns": [
+        "Email and text ask cadence",
+        "Volunteer-led friend-to-friend asks",
+        "Event table donations",
+        "Average gift tracking"
+      ],
+      "kpis": [
+        { "key": "donors_goal", "label": "Donors (goal)", "planningSource": "derived_from_fos_stretch / avg_small_gift", "recordSource": "compliance_donation_record.amount_tier=small", "liveToday": false, "drillDown": true },
+        { "key": "donors", "label": "Donors", "recordSource": "compliance_donation_record distinct person", "liveToday": false, "drillDown": true },
+        { "key": "average_gift", "label": "Average gift", "recordSource": "computed from donation records", "liveToday": false, "drillDown": true },
+        { "key": "raised", "label": "Raised", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true }
+      ],
+      "rollupLogic": { "community": "sum donations attributed", "county": "sum", "cluster": "sum", "state": "sum" },
+      "countyCommunityIntegration": {
+        "communityWorkbenchSection": "fundraising#opportunities",
+        "cchLink": "Kelly source posts with donate CTA — attribution lane"
+      },
+      "workbenchRequirements": [
+        "Donor count drills to Person records",
+        "Integrate with CCH publish tracking — not vanity click counts"
+      ],
+      "leadershipWorkbenchLink": "fundraising_leadership · small_donor_lead"
+    },
+    {
+      "id": "campus_fundraising",
+      "name": "Campus Fundraising",
+      "slug": "campus-fundraising",
+      "phase": "FOP-2",
+      "primaryUsers": ["Campus Fundraising Lead", "Students for Arkansas chapter leads"],
+      "ownershipStructure": {
+        "stateOwner": "state_fundraising_director",
+        "countyOwner": "county_fundraising_lead",
+        "communityOwner": "campus_fundraising_lead",
+        "programWorkbench": "students-for-arkansas · campus workbenches"
+      },
+      "owns": [
+        "Campus team recruitment",
+        "Monthly fundraising event (Students for Arkansas doctrine)",
+        "New donor acquisition on campus",
+        "Campus revenue rollups"
+      ],
+      "kpis": [
+        { "key": "campus_fundraisers_goal", "label": "Campus fundraisers (goal)", "exampleGoal": 2, "planningSource": "movement-infrastructure arkansas-campuses", "recordSource": "fos_opportunity_record.type=campus_fundraiser", "drillDown": true },
+        { "key": "participants", "label": "Participants", "recordSource": "ppen_participation.context=campus", "liveToday": false, "drillDown": true },
+        { "key": "revenue", "label": "Revenue", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true },
+        { "key": "new_donors", "label": "New donors", "recordSource": "compliance_donation_record.first_gift=true", "liveToday": false, "drillDown": true }
+      ],
+      "rollupLogic": { "community": "campus workbench slug", "county": "campus county attribution", "state": "sum campuses" },
+      "countyCommunityIntegration": {
+        "workbenchKind": "campus",
+        "existingSurface": "CampusNetworkPanels fundraisingGoal — align with FOS not duplicate"
+      },
+      "workbenchRequirements": [
+        "Link uca-campus and other campus workbenches to FOS opportunity lane",
+        "Monthly one-fundraising-event doctrine from Students for Arkansas"
+      ],
+      "leadershipWorkbenchLink": "fundraising_leadership · campus_fundraising_lead"
+    },
+    {
+      "id": "coalition_fundraising",
+      "name": "Coalition Fundraising",
+      "slug": "coalition-fundraising",
+      "phase": "FOP-2",
+      "primaryUsers": ["Coalition Lead", "County Fundraising Lead", "Faith / Labor / Business leads"],
+      "ownershipStructure": {
+        "stateOwner": "state_fundraising_director",
+        "countyOwner": "county_fundraising_lead",
+        "communityOwner": "coalition_lead per coalition workbench",
+        "subLanes": ["veterans", "women", "faith", "labor", "business", "hispanic", "african_american", "muslim", "disability", "youth"]
+      },
+      "owns": [
+        "Coalition-specific fundraising events",
+        "Trusted messenger introductions",
+        "Org partnership giving",
+        "Culturally specific pathways"
+      ],
+      "kpis": [
+        { "key": "events_goal", "label": "Coalition events (goal)", "recordSource": "fos_opportunity_record.type=coalition_event", "drillDown": true },
+        { "key": "orgs_engaged", "label": "Organizations engaged", "recordSource": "community_workbench_relationship | fos_opportunity_record", "drillDown": true },
+        { "key": "raised", "label": "Raised", "recordSource": "compliance_donation_record.attribution=coalition", "liveToday": false, "drillDown": true }
+      ],
+      "rollupLogic": { "coalition": "per coalition workbench", "county": "coalitions active in county", "state": "sum" },
+      "countyCommunityIntegration": {
+        "workbenchKind": "coalition",
+        "registry": "coalition-workbenches.registry.source.json"
+      },
+      "workbenchRequirements": [
+        "Coalition Leadership Workbench gets fundraising opportunity subsection",
+        "Sub-lane rollups without double-counting statewide"
+      ],
+      "leadershipWorkbenchLink": "coalition_leadership"
+    },
+    {
+      "id": "online_fundraising",
+      "name": "Online Fundraising",
+      "slug": "online-fundraising",
+      "phase": "FOP-3",
+      "primaryUsers": ["Small Donor Lead", "Communications Lead", "CCH Editor"],
+      "ownershipStructure": {
+        "stateOwner": "state_fundraising_director",
+        "communityOwner": "small_donor_lead",
+        "commsOwner": "communications_leadership"
+      },
+      "owns": [
+        "Donate page and ActBlue/Anedot attribution",
+        "Email fundraising sends",
+        "Social CTAs from SMOS adaptations",
+        "UTM / source code discipline"
+      ],
+      "kpis": [
+        { "key": "campaigns_launched", "label": "Campaigns launched", "recordSource": "cch_content_record.with_donate_cta", "liveToday": false, "drillDown": true },
+        { "key": "raised", "label": "Raised (online)", "recordSource": "compliance_donation_record.channel=online", "liveToday": false, "drillDown": true },
+        { "key": "donors", "label": "Online donors", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true }
+      ],
+      "rollupLogic": { "community": "attribution tag", "state": "sum — no geographic fake split of platform totals" },
+      "countyCommunityIntegration": {
+        "cchWorkbench": true,
+        "smosWorkbench": "platform adaptations with donate links"
+      },
+      "workbenchRequirements": [
+        "Communications Leadership Workbench tracks draft → publish with donate intent",
+        "Geographic raised only when donation record has community attribution"
+      ],
+      "leadershipWorkbenchLink": "communications_leadership · small_donor_lead"
+    },
+    {
+      "id": "event_sponsorships",
+      "name": "Event Sponsorships",
+      "slug": "event-sponsorships",
+      "phase": "FOP-2",
+      "primaryUsers": ["Business Outreach Lead", "Events Lead", "County Fundraising Lead"],
+      "ownershipStructure": {
+        "communityOwner": "business_lead",
+        "countyOwner": "county_fundraising_lead"
+      },
+      "owns": [
+        "Sponsor prospect list",
+        "Sponsor tiers and benefits",
+        "Forum and event sponsorship fulfillment",
+        "County event sponsorship budget line (executive book)"
+      ],
+      "kpis": [
+        { "key": "sponsors_goal", "label": "Sponsors (goal)", "recordSource": "fos_opportunity_record.type=sponsorship", "drillDown": true },
+        { "key": "committed", "label": "Committed", "recordSource": "fos_opportunity_record.status=committed", "drillDown": true },
+        { "key": "revenue", "label": "Revenue", "recordSource": "compliance_donation_record | compliance_in_kind", "liveToday": false, "drillDown": true }
+      ],
+      "rollupLogic": { "event": "per event", "community": "sum", "county": "sum", "state": "sum" },
+      "countyCommunityIntegration": {
+        "executiveCalendar": "locked events with sponsor slots",
+        "businessLeadSlot": "community_leadership business_lead"
+      },
+      "workbenchRequirements": [
+        "Sponsor record with tier, benefit delivered, payment status",
+        "Link to Event Leadership Workbench for forum sponsorships"
+      ],
+      "leadershipWorkbenchLink": "community_leadership · business_lead"
+    },
+    {
+      "id": "recurring_donor_program",
+      "name": "Recurring Donor Program",
+      "slug": "recurring-donors",
+      "phase": "FOP-3",
+      "primaryUsers": ["Small Donor Lead", "State Fundraising Director"],
+      "ownershipStructure": {
+        "stateOwner": "state_fundraising_director",
+        "communityOwner": "small_donor_lead"
+      },
+      "owns": [
+        "Monthly sustainer acquisition",
+        "Churn and lapse follow-up",
+        "Recurring gift upgrade path"
+      ],
+      "kpis": [
+        { "key": "active_recurring", "label": "Active recurring donors", "recordSource": "compliance_donation_record.recurring=true", "liveToday": false, "drillDown": true },
+        { "key": "mrr", "label": "Monthly recurring revenue", "recordSource": "computed from donation records", "liveToday": false, "drillDown": true },
+        { "key": "lapsed", "label": "Lapsed needing follow-up", "recordSource": "compliance_donation_record.lapsed", "liveToday": false, "drillDown": true }
+      ],
+      "rollupLogic": { "state": "primary — community attribution when known" },
+      "countyCommunityIntegration": {
+        "note": "Recurring often statewide — do not invent county splits"
+      },
+      "workbenchRequirements": [
+        "Person-linked recurring status",
+        "Overdue lapse list on Fundraising Leadership Workbench"
+      ],
+      "leadershipWorkbenchLink": "fundraising_leadership · small_donor_lead"
+    },
+    {
+      "id": "business_outreach",
+      "name": "Business Outreach",
+      "slug": "business-outreach",
+      "phase": "FOP-1",
+      "primaryUsers": ["Business Lead", "County Fundraising Lead", "Community Fundraising Lead"],
+      "ownershipStructure": {
+        "communityOwner": "business_lead",
+        "countyOwner": "county_fundraising_lead",
+        "mapsToCommunityLeadership": "business_lead"
+      },
+      "owns": [
+        "Business meeting pipeline",
+        "Main Street validator relationships",
+        "Small business giving and in-kind",
+        "Business-hosted house parties"
+      ],
+      "kpis": [
+        { "key": "meetings_goal", "label": "Business meetings (goal)", "exampleGoal": 20, "planningSource": "derived from business relationship targets", "recordSource": "fos_opportunity_record.type=business_meeting", "drillDown": true },
+        { "key": "meetings_held", "label": "Meetings held", "recordSource": "fos_opportunity_record.status=held", "drillDown": true },
+        { "key": "businesses_engaged", "label": "Businesses engaged", "recordSource": "community_workbench_relationship.roleLabel=business", "drillDown": true },
+        { "key": "revenue", "label": "Revenue", "recordSource": "compliance_donation_record", "liveToday": false, "drillDown": true }
+      ],
+      "rollupLogic": { "community": "sum meetings", "county": "sum", "cluster": "sum", "state": "sum" },
+      "countyCommunityIntegration": {
+        "communityWorkbenchSection": "relationships · fundraising#opportunities",
+        "communityLeadershipSlot": "business_lead"
+      },
+      "workbenchRequirements": [
+        "Meeting records with business name, owner, next step",
+        "Drill from meetings_goal to open opportunity list",
+        "Integrate with relationship workbench — not duplicate CRM"
+      ],
+      "leadershipWorkbenchLink": "community_leadership · business_lead"
+    }
+  ],
+  "fundraisingLeadershipWorkbench": {
+    "status": "planning_only",
+    "blockedUntil": ["leadership_workbench_implementation", "fundraising_opportunity_records"],
+    "answers": [
+      "How much is my goal?",
+      "What opportunities exist?",
+      "Who owns each opportunity?",
+      "What is overdue?",
+      "Where is the gap?"
+    ],
+    "notSufficient": "Goal $25,000 banner alone",
+    "shellSections": [
+      "overview",
+      "goal_card",
+      "opportunity_pipeline",
+      "owners",
+      "overdue",
+      "gap_analysis",
+      "escalations"
+    ],
+    "roleKeys": [
+      "county_fundraising_lead",
+      "house_party_lead",
+      "major_donor_lead",
+      "small_donor_lead",
+      "campus_fundraising_lead",
+      "business_outreach_lead"
+    ]
+  },
+  "drillDownDoctrine": {
+    "rule": "No fundraising number without underlying records.",
+    "everyDollarDrillsTo": ["meetings", "events", "house_parties", "sponsors", "donors", "opportunities"],
+    "everyCountDrillsTo": "fos_opportunity_record row or compliance_donation_record row",
+    "antiPattern": "Fundraising Goal $9,390 · Raised $0 · nothing else",
+    "targetPattern": "Goal card → opportunity lanes → record list → Person or Event"
+  },
+  "recordModelPreview": {
+    "status": "not_in_prisma",
+    "tableName": "FundraisingOpportunityRecord",
+    "fields": [
+      "id",
+      "workbenchSlug",
+      "countySlug",
+      "opportunityType",
+      "title",
+      "status",
+      "ownerPersonId",
+      "scheduledAt",
+      "heldAt",
+      "expectedRevenue",
+      "actualRevenue",
+      "pledgeAmount",
+      "linkedEventId",
+      "linkedDonationId",
+      "operatorInitials",
+      "createdAt",
+      "updatedAt"
+    ],
+    "note": "Schema preview for Phase FOP-1 implementation — not migrated until gates pass"
+  }
+}

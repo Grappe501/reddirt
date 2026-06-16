@@ -2,6 +2,7 @@ import { CommunityWorkbenchHubPanel } from "@/components/election-plan/Community
 import { runCommunityWorkbenchFieldQA } from "@/lib/election-plan/community-workbench/field-qa";
 import { listCommunityWorkbenchHubSummaries } from "@/lib/election-plan/community-workbench/hub-summary";
 import { loadPilotValidationSnapshot } from "@/lib/election-plan/community-workbench/load-pilot-status";
+import { ensurePilotEventsSeeded } from "@/lib/election-plan/community-workbench/seed-pilot-events";
 import { getCommunityWorkbenchCount } from "@/lib/election-plan/community-workbench/load-workbench";
 import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
 
@@ -13,10 +14,26 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-type Props = { searchParams: Promise<{ q?: string }> };
+type Props = { searchParams: Promise<{ q?: string; kind?: string }> };
+
+function parseKindFilter(value: string | undefined): "all" | "city" | "campus" | "program" | "coalition" | "media" | "communications" {
+  if (
+    value === "city" ||
+    value === "campus" ||
+    value === "program" ||
+    value === "coalition" ||
+    value === "media" ||
+    value === "communications"
+  ) {
+    return value;
+  }
+  return "all";
+}
 
 export default async function CommunityWorkbenchesHubPage({ searchParams }: Props) {
-  const { q } = await searchParams;
+  const { q, kind: kindParam } = await searchParams;
+  await ensurePilotEventsSeeded();
+
   const [workbenches, totalCount, qaChecks, pilotSnapshot, operator] = await Promise.all([
     listCommunityWorkbenchHubSummaries(),
     getCommunityWorkbenchCount(),
@@ -34,6 +51,7 @@ export default async function CommunityWorkbenchesHubPage({ searchParams }: Prop
             workbenches={workbenches}
             totalCount={totalCount}
             initialQuery={q}
+            initialKind={parseKindFilter(kindParam)}
             qaChecks={qaChecks}
             pilotSnapshot={pilotSnapshot}
             operatorInitials={operator?.initials ?? null}

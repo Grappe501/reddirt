@@ -1474,9 +1474,20 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
   const hci = readJson<{ total?: number; goal?: number; completionPct?: number }>(
     path.join(BRAIN_DATA, "human-contact-index.json"),
   );
-  const fundraising = readJson<{ raised?: number; goal?: number; rampUpNote?: string }>(
-    path.join(BRAIN_DATA, "fundraising-tracker.json"),
-  );
+  const fundraising = readJson<{
+    raised?: number;
+    goal?: number;
+    networkGoal?: number;
+    workingCampaignGoal?: number;
+    combinedGoal?: number;
+    raisedProvisional?: boolean;
+    raisedNote?: string;
+    rampUpNote?: string;
+  }>(path.join(BRAIN_DATA, "fundraising-tracker.json"));
+  const fundraisingNetworkGoal = fundraising?.networkGoal ?? 60_000;
+  const fundraisingWorkingCampaignGoal = fundraising?.workingCampaignGoal ?? 232_053;
+  const fundraisingCombinedGoal =
+    fundraising?.combinedGoal ?? fundraisingNetworkGoal + fundraisingWorkingCampaignGoal;
   const eventApprovals = buildEventApprovalsSection();
 
   const topPriorities = [
@@ -1511,7 +1522,12 @@ function buildWarRoomSection(coverage: ReturnType<typeof buildCoverageRealitySec
     endorsementsEndorsed: endorse?.endorsed ?? 0,
     endorsementsGoal: endorse?.goal ?? 50,
     fundraisingRaised: fundraising?.raised ?? 0,
-    fundraisingGoal: fundraising?.goal ?? 232_053,
+    fundraisingGoal: fundraisingCombinedGoal,
+    fundraisingNetworkGoal,
+    fundraisingWorkingCampaignGoal,
+    fundraisingCombinedGoal,
+    fundraisingRaisedProvisional: fundraising?.raisedProvisional ?? false,
+    fundraisingRaisedNote: fundraising?.raisedNote ?? "",
     fundraisingNote: fundraising?.rampUpNote ?? "Ramp up fundraising",
     volunteerLeadersGoal: pp?.volunteerLeadership?.foundingTeamGoal ?? 20,
     volunteerLeadersCurrent: pp?.volunteerLeadership?.foundingTeamCurrent ?? 0,

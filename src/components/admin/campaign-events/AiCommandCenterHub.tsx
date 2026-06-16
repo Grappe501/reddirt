@@ -32,7 +32,10 @@ import { CampaignIntelligenceV3Panel } from "@/components/admin/campaign-intelli
 import { SPRINT10_CAMPAIGN_INTELLIGENCE_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-10-campaign-intelligence-tools";
 import { SPRINT_SINGLE_CAMPAIGN_HARDENING_TOOL_CONTRACTS } from "@/lib/campaign-events/ai-tools/sprint-single-campaign-hardening-tools";
 import { scorePresentationReadiness } from "@/lib/agents/onboarding/presentation-readiness-scorer";
-import { KELLY_CAMPAIGN_OS_TAGLINE } from "@/lib/campaign-tenancy/single-campaign-mode";
+import {
+  CAMPAIGN_MANAGER_WORKBENCH_NAME,
+  CAMPAIGN_MANAGER_WORKBENCH_TAGLINE,
+} from "@/lib/admin/campaign-manager-workbench-labels";
 import { appendGlobalUserObservation } from "@/lib/agents/user-intelligence/user-observations";
 import { KellyOsCompletionPlanPanel } from "@/components/admin/campaign-events/KellyOsCompletionPlanPanel";
 import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
@@ -101,8 +104,8 @@ export async function AiCommandCenterHub() {
     <AgentObservationTracker role="operator" pathname="/admin/ai-command-center" period={snapshot.period}>
       <div className="mx-auto flex max-w-[1100px] flex-col gap-6 pb-16 font-body">
         <header className="rounded-3xl border border-kelly-navy/20 bg-kelly-navy/[0.05] p-8">
-        <p className="text-xs font-bold uppercase tracking-wider text-kelly-slate">{KELLY_CAMPAIGN_OS_TAGLINE}</p>
-        <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-navy">Kelly Campaign OS — command center</h1>
+        <p className="text-xs font-bold uppercase tracking-wider text-kelly-slate">{CAMPAIGN_MANAGER_WORKBENCH_TAGLINE}</p>
+        <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-navy">{CAMPAIGN_MANAGER_WORKBENCH_NAME}</h1>
         <p className="mt-3 max-w-2xl text-sm text-kelly-text/75">
           Strategic intelligence, supervised workflows, and on-demand dashboard blueprints for Kelly SOS.
           Presentation readiness: <strong>{presentation.score}/100</strong> ({presentation.label}).

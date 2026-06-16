@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "pass": "FUNDRAISING-OPERATING-SYSTEM-PHASE-1",
+  "status": "planning_and_allocation",
+  "note": "Phase 1 — vote-target allocation and rollups only. No donation processing, donor CRM, projections, or forecasting. Raised amounts stay zero at community/county/cluster until compliance-backed donation records exist.",
+  "doctrineRefs": [
+    "docs/FUNDRAISING_OPERATING_SYSTEM_ARCHITECTURE.md",
+    "docs/FUNDRAISING_OPPORTUNITY_ARCHITECTURE.md",
+    "docs/LEADERSHIP_WORKBENCH_ARCHITECTURE.md",
+    "docs/ELECTION_PLAN_DATA_INTEGRITY_DOCTRINE.md",
+    "docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md"
+  ],
+  "formula": {
+    "description": "Fundraising share follows victory math — not population, not equal split.",
+    "expression": "(communityVoteGoal / top40TotalVoteGoal) × stateGoal",
+    "allocationUniverse": "top40_cities_only",
+    "bonusCitiesExcludedFromDenominator": true
+  },
+  "stateGoal": 300000,
+  "stateGoalLabel": "Aggressive statewide fundraising target",
+  "stateGoalSource": "executive-book-v1/06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md · aggressiveRangeLow",
+  "stretchMultiplierDefault": 1.67,
+  "stretchNote": "Stretch goal captures house parties, special events, campus fundraising, and unexpected upside without rewriting base victory math.",
+  "goalCardRequiredFields": [
+    { "key": "base_goal", "label": "Base Goal", "source": "vote_target_formula" },
+    { "key": "stretch_goal", "label": "Stretch Goal", "source": "stretch_multiplier" },
+    { "key": "raised", "label": "Raised", "recordSource": "compliance_donation_record", "liveToday": false },
+    { "key": "gap", "label": "Gap", "formula": "base_goal - raised" },
+    { "key": "ownership", "label": "Fundraising Lead", "recordSource": "ppen_participation | OPEN", "liveToday": "partial" }
+  ],
+  "opportunityArchitectureRef": "data/campaign-brain/fundraising-opportunity-registry.source.json",
+  "bonusCityOverrides": {
+    "quitman": {
+      "baseGoal": 2000,
+      "stretchGoal": 5000,
+      "source": "win-quitman-operation.json",
+      "isolated": true,
+      "note": "Bonus city #41 — isolated from Top 40 vote-share denominator and statewide rollups."
+    }
+  },
+  "communityStretchMultipliers": {
+    "sherwood": 1.75,
+    "little-rock": 1.5,
+    "fayetteville": 1.55
+  },
+  "fundraisingSources": [
+    {
+      "key": "direct_donations",
+      "label": "Direct Donations",
+      "kpis": ["goal", "raised", "donors", "averageGift"],
+      "phase": 2
+    },
+    {
+      "key": "house_parties",
+      "label": "House Parties",
+      "kpis": ["goal", "held", "scheduled", "revenue"],
+      "phase": 2
+    },
+    {
+      "key": "fundraising_events",
+      "label": "Fundraising Events",
+      "kpis": ["goal", "held", "revenue"],
+      "phase": 2
+    },
+    {
+      "key": "college_teams",
+      "label": "College Teams",
+      "kpis": ["participants", "revenue", "newDonors"],
+      "phase": 2
+    },
+    {
+      "key": "coalition_giving",
+      "label": "Coalition Giving",
+      "subLanes": ["veterans", "women", "faith", "labor", "business"],
+      "kpis": ["goal", "raised"],
+      "phase": 2
+    }
+  ],
+  "countyWorkbenchSections": [
+    "overview",
+    "goal",
+    "raised",
+    "pipeline",
+    "events",
+    "houseParties",
+    "donors",
+    "opportunities"
+  ],
+  "futureLeadershipRoles": [
+    { "key": "county_fundraising_lead", "label": "County Fundraising Lead", "workbenchType": "fundraising_leadership" },
+    { "key": "house_party_lead", "label": "House Party Lead", "workbenchType": "fundraising_leadership" },
+    { "key": "major_donor_lead", "label": "Major Donor Lead", "workbenchType": "fundraising_leadership" },
+    { "key": "small_donor_lead", "label": "Small Donor Lead", "workbenchType": "fundraising_leadership" },
+    { "key": "campus_fundraising_lead", "label": "Campus Fundraising Lead", "workbenchType": "fundraising_leadership" }
+  ],
+  "buildGate": {
+    "phase1CompleteWhen": [
+      "community_goals_calculated_from_vote_targets",
+      "county_cluster_state_rollups_automatic",
+      "goals_visible_on_community_and_county_workbenches"
+    ],
+    "sequencingAfterPilot": [
+      "PPEN A.0b",
+      "PPEN A.0c",
+      "Leadership Workbenches",
+      "Fundraising Opportunity Architecture",
+      "Fundraising Leadership Workbenches",
+      "Donation Record Layer"
+    ],
+    "phase2BlockedUntil": [
+      "compliance_donation_record_model",
+      "fundraising_leadership_workbench_placement",
+      "fundraising_opportunity_record_model"
+    ],
+    "noFakeRaisedCounts": true,
+    "noGoalWithoutOwner": true,
+    "noFundraisingNumberWithoutRecords": true
+  }
+}

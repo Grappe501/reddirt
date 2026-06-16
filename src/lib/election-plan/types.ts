@@ -89,6 +89,8 @@ export type ElectionPlanCity = {
   influenceCategory: string;
   influenceTags: string[];
   isTop10: boolean;
+  /** Rank 41+ bonus workbench — KPIs isolated from Top 40 combined totals */
+  isBonusCity?: boolean;
 };
 
 export type ElectionPlanCluster = {
@@ -626,6 +628,14 @@ export type ElectionPlanWorkbenchSnapshot = {
     fundraisingRaised: number;
     fundraisingGoal: number;
     fundraisingNote: string;
+    /** $60K near-term milestone (progress bar primary) */
+    fundraisingNetworkGoal?: number;
+    /** $232K working campaign budget component */
+    fundraisingWorkingCampaignGoal?: number;
+    /** $60K + $232K combined overall target */
+    fundraisingCombinedGoal?: number;
+    fundraisingRaisedProvisional?: boolean;
+    fundraisingRaisedNote?: string;
     volunteerLeadersGoal: number;
     volunteerLeadersCurrent: number;
     volunteerLeaders: Array<{

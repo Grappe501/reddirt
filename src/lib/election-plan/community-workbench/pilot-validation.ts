@@ -2,8 +2,9 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 import { COMMUNITY_WORKBENCH_MIGRATIONS } from "./pilot";
-import type { CommunityWorkbenchView } from "./types";
+import { communityWorkbenchEventHref } from "./event-links";
 import { communityWorkbenchHref } from "./links";
+import type { CommunityWorkbenchCommitteeRow, CommunityWorkbenchEventRow, CommunityWorkbenchView } from "./types";
 
 export type PilotSmokeStep = {
   id: string;
@@ -17,6 +18,9 @@ export type PilotWorkbenchValidation = {
   slug: string;
   name: string;
   context: string;
+  kind: "city" | "event" | "optional_city";
+  workbenchSlug?: string;
+  eventSlug?: string;
   steps: PilotSmokeStep[];
   stepsPassed: number;
   allPass: boolean;
@@ -74,6 +78,86 @@ export function evaluatePilotWorkbench(
     slug: wb.slug,
     name: wb.name,
     context,
+    kind: "city",
+    workbenchSlug: wb.slug,
+    steps,
+    stepsPassed,
+    allPass: steps.every((s) => s.pass),
+  };
+}
+
+export function evaluatePilotEvent(
+  meta: { workbenchSlug: string; eventSlug: string; name: string; context: string },
+  event: CommunityWorkbenchEventRow,
+  committee: CommunityWorkbenchCommitteeRow | null,
+): PilotWorkbenchValidation {
+  const baseHref = communityWorkbenchEventHref(meta.workbenchSlug, meta.eventSlug);
+  const activeStatuses = new Set(["planned", "confirmed", "executed", "aar_complete"]);
+  const isActive = activeStatuses.has(event.status);
+  const hasCommittee = Boolean(committee?.name?.trim());
+  const assignments = event.assignments ?? [];
+  const filledRoles = assignments.filter((a) => a.assignee?.trim() && a.assignee.trim().toUpperCase() !== "OPEN");
+  const hasEventChair = filledRoles.some((a) => /event chair/i.test(a.role));
+  const hasRunOfShow = (event.runOfShow?.length ?? 0) >= 3;
+  const hasAssignments = assignments.length >= 2;
+  const aarComplete = event.status === "aar_complete" && Boolean(event.aarBody?.trim());
+
+  const steps: PilotSmokeStep[] = [
+    {
+      id: "event_workbench_loads",
+      label: "Event workbench seeded and active",
+      pass: isActive && event.title.length > 0,
+      detail: isActive ? `${event.title} · ${event.status}` : "Seed G&G event on Sherwood workbench",
+      href: baseHref,
+    },
+    {
+      id: "event_committee_linked",
+      label: "Working committee linked",
+      pass: hasCommittee,
+      detail: hasCommittee ? committee!.name : "Link Grassroots & Guitar Strings Working Committee",
+      href: `${baseHref}#committee`,
+    },
+    {
+      id: "event_chair_assigned",
+      label: "Event Chair assigned (not city lead)",
+      pass: hasEventChair,
+      detail: hasEventChair
+        ? filledRoles.find((a) => /event chair/i.test(a.role))?.assignee ?? "Assigned"
+        : "Assign Event Chair on event workbench only",
+      href: `${baseHref}#event-ops`,
+    },
+    {
+      id: "run_of_show",
+      label: "Run-of-show rows (3+)",
+      pass: hasRunOfShow,
+      detail: hasRunOfShow ? `${event.runOfShow.length} rows` : "Add run-of-show on event ops panel",
+      href: `${baseHref}#event-ops`,
+    },
+    {
+      id: "volunteer_assignments",
+      label: "Volunteer / role assignments (2+)",
+      pass: hasAssignments,
+      detail: hasAssignments ? `${assignments.length} roles` : "Add assignments on event ops panel",
+      href: `${baseHref}#event-ops`,
+    },
+    {
+      id: "complete_aar",
+      label: "After Action Report complete",
+      pass: aarComplete,
+      detail: aarComplete ? "AAR saved" : "Execute → attendance → AAR → after-action complete",
+      href: `${baseHref}#event-ops`,
+    },
+  ];
+
+  const stepsPassed = steps.filter((s) => s.pass).length;
+
+  return {
+    slug: meta.eventSlug,
+    name: meta.name,
+    context: meta.context,
+    kind: "event",
+    workbenchSlug: meta.workbenchSlug,
+    eventSlug: meta.eventSlug,
     steps,
     stepsPassed,
     allPass: steps.every((s) => s.pass),

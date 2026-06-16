@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "note": "Campaign Communications Hub (CCH) — Substack as source of truth; all channels downstream. Counts from records only.",
+  "workbenches": [
+    {
+      "slug": "candidate-communications",
+      "name": "Candidate Communications",
+      "category": "hub",
+      "tagline": "Kelly writes once → Substack → platform adaptations → approval → publish",
+      "frameworkNote": "Not a newsletter strategy — the Campaign Communications Operating System. Substack post is the canonical record; SMOS platform workbenches hold adaptations.",
+      "pipelineStatuses": ["Draft", "Kelly Review", "Comms Review", "Approved", "Published", "Archived"],
+      "approvalChain": ["Kelly", "Comms Lead", "Editor", "Publisher"],
+      "intelSections": [
+        { "key": "public_feed", "label": "Public Feed (Substack)" },
+        { "key": "insider_feed", "label": "Insider Feed (Substack Private)" },
+        { "key": "platform_adaptations", "label": "Platform Adaptations" },
+        { "key": "comms_calendar", "label": "Communications Calendar" },
+        { "key": "message_library", "label": "Message Library" }
+      ],
+      "volunteerPathways": [
+        { "key": "comms_lead", "label": "Communications Lead" },
+        { "key": "editor", "label": "Editor" },
+        { "key": "publisher", "label": "Publisher" },
+        { "key": "platform_lead", "label": "Platform Lead" }
+      ]
+    },
+    {
+      "slug": "substack-public-feed",
+      "name": "Public Feed",
+      "category": "feeds",
+      "tagline": "Kelly's Public Voice — campaign updates, road thoughts, county visits, issue positions",
+      "frameworkNote": "Campaign Public Communications Hub. All signup roads (website, volunteer, event, QR, social, referrals) lead here.",
+      "pipelineStatuses": ["Idea", "Draft", "Review", "Approved", "Scheduled", "Published", "Archived"],
+      "intelSections": [
+        { "key": "updates", "label": "Campaign Updates" },
+        { "key": "road", "label": "Thoughts from the Road" },
+        { "key": "counties", "label": "County Visits" },
+        { "key": "issues", "label": "Issue Positions" },
+        { "key": "media", "label": "Videos & Photos" },
+        { "key": "endorsements", "label": "Endorsements" },
+        { "key": "recaps", "label": "Event Recaps" }
+      ],
+      "volunteerPathways": [
+        { "key": "writer", "label": "Writer" },
+        { "key": "editor", "label": "Editor" },
+        { "key": "publisher", "label": "Publisher" }
+      ]
+    },
+    {
+      "slug": "substack-insider-feed",
+      "name": "Insider Feed",
+      "category": "feeds",
+      "tagline": "Campaign Insider Network — not donors-only, not premium content",
+      "frameworkNote": "Campaign Insider Access: granted for volunteering, donating, leadership, or approved campaign involvement. Access may be suspended or revoked for misuse, harassment, security, legal compliance, or policy violations.",
+      "pipelineStatuses": ["Draft", "Review", "Approved", "Published", "Archived"],
+      "intelSections": [
+        { "key": "behind_scenes", "label": "Behind the Scenes" },
+        { "key": "field_updates", "label": "Field Updates" },
+        { "key": "what_we_see", "label": "What We're Seeing" },
+        { "key": "volunteer_ops", "label": "Volunteer Opportunities" },
+        { "key": "leadership_ops", "label": "Leadership Opportunities" },
+        { "key": "priorities", "label": "Campaign Priorities" },
+        { "key": "briefings", "label": "Insider Briefings" },
+        { "key": "training", "label": "Training" },
+        { "key": "early_announcements", "label": "Early Announcements" }
+      ],
+      "volunteerPathways": [
+        { "key": "insider_writer", "label": "Insider Writer" },
+        { "key": "field_liaison", "label": "Field Liaison" },
+        { "key": "training_lead", "label": "Training Lead" }
+      ]
+    },
+    {
+      "slug": "communications-calendar",
+      "name": "Communications Calendar",
+      "category": "operations",
+      "tagline": "Daily · weekly · campaign events · announcements",
+      "frameworkNote": "Schedule records only — each slot links to a content record in Candidate Communications or a platform workbench.",
+      "intelSections": [
+        { "key": "daily", "label": "Daily Cadence" },
+        { "key": "weekly", "label": "Weekly Rhythm" },
+        { "key": "events", "label": "Campaign Events" },
+        { "key": "announcements", "label": "Announcements" }
+      ],
+      "volunteerPathways": [{ "key": "calendar_lead", "label": "Calendar Lead" }]
+    },
+    {
+      "slug": "message-library",
+      "name": "Message Library",
+      "category": "operations",
+      "tagline": "Reusable campaign message records — issues, bio, debates, press, fundraising, volunteer recruitment",
+      "frameworkNote": "Canonical talking points and message variants — not static copy decks. Each entry is a versioned record.",
+      "intelSections": [
+        { "key": "issues", "label": "Issues" },
+        { "key": "biography", "label": "Biography" },
+        { "key": "debates", "label": "Debates" },
+        { "key": "press", "label": "Press" },
+        { "key": "fundraising", "label": "Fundraising" },
+        { "key": "volunteer_recruitment", "label": "Volunteer Recruitment" }
+      ],
+      "volunteerPathways": [
+        { "key": "message_lead", "label": "Message Lead" },
+        { "key": "researcher", "label": "Researcher" }
+      ]
+    },
+    {
+      "slug": "engagement-routing",
+      "name": "Engagement Routing",
+      "category": "operations",
+      "tagline": "Public interaction → platform workbench → Kelly responds once → routed publish",
+      "frameworkNote": "Facebook comment → Facebook Workbench. Instagram DM → Instagram Workbench. Substack comment → Substack Workbench. Kelly reply is one record; system routes to origin platform.",
+      "pipelineStatuses": ["Received", "Triaged", "Draft Response", "Kelly Review", "Approved", "Published"],
+      "intelSections": [
+        { "key": "inbound", "label": "Inbound Engagement" },
+        { "key": "assigned", "label": "Assigned to Platform" },
+        { "key": "responses", "label": "Response Queue" }
+      ],
+      "volunteerPathways": [
+        { "key": "community_manager", "label": "Community Manager" },
+        { "key": "platform_lead", "label": "Platform Lead" }
+      ]
+    },
+    {
+      "slug": "master-communications-list",
+      "name": "Master Communications List",
+      "category": "operations",
+      "tagline": "Anyone who intentionally opts in through any campaign channel",
+      "frameworkNote": "Single opt-in doctrine. Segments: Public · Volunteer · Leader · Donor · Insider · County · Coalition — all originating from the same communication system.",
+      "intelSections": [
+        { "key": "public", "label": "Public" },
+        { "key": "volunteer", "label": "Volunteer" },
+        { "key": "leader", "label": "Leader" },
+        { "key": "donor", "label": "Donor" },
+        { "key": "insider", "label": "Insider" },
+        { "key": "county", "label": "County" },
+        { "key": "coalition", "label": "Coalition" }
+      ],
+      "volunteerPathways": [{ "key": "list_admin", "label": "List Administrator" }]
+    }
+  ]
+}

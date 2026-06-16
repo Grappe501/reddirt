@@ -5,11 +5,12 @@
   "note": "Field team updates current values weekly. Goals come from immersion-county-missions.source.json.",
   "missions": {
     "quitman-100": {
-      "owner": "County captain · Cleburne",
+      "owner": "Lisa Holloway · 662-549-8543 · lisaholloway123@icloud.com",
       "updatedAt": "2026-06-16",
       "nextAction": "Confirm next house party host · report conversations after Quitman fundraiser",
       "metrics": [
         { "id": "conversations", "label": "Conversations", "current": 17, "goal": 100, "primary": true },
+        { "id": "fundraising", "label": "Fundraising ($)", "current": 0, "goal": 2000, "unit": "$" },
         { "id": "po5-leaders", "label": "Power of 5 leaders", "current": 2, "goal": 10 },
         { "id": "house-parties", "label": "House parties", "current": 1, "goal": 3 },
         { "id": "coffee-meetings", "label": "Coffee meetings", "current": 2, "goal": 6 },

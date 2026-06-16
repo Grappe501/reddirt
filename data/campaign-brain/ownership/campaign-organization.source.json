@@ -7,7 +7,7 @@
   "subtitle": "Team Structure & Operational Ownership",
   "leadership": {
     "candidate": { "name": "Kelly Grappe", "title": "Candidate", "focus": "Relationship rooms · fundraising · validator moments · doctrine" },
-    "campaignManager": { "name": "Ernie", "title": "Campaign Manager", "focus": "Finance committee · major donors · compliance sign-off · Sherwood revenue" },
+    "campaignManager": { "name": "Assign owner", "title": "Campaign Manager", "focus": "Finance committee · major donors · compliance sign-off · Sherwood revenue" },
     "operationsDirector": { "name": "Steve Grappe", "title": "Operations Director", "focus": "Calendar truth · Mobilize · county routing · Kelly approval queue · field ops" }
   },
   "teams": [
@@ -126,7 +126,7 @@
     {
       "id": "fundraising",
       "name": "Fundraising",
-      "owner": "Kelly Grappe / Ernie",
+      "owner": "Kelly Grappe / Campaign Manager",
       "deputy": "Steve Grappe",
       "currentVolunteers": 0,
       "openPositions": 0,

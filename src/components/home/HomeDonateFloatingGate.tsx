@@ -111,9 +111,9 @@ export function HomeDonateFloatingGate() {
           <button
             type="button"
             onClick={dismiss}
-            className="mt-4 w-full text-center font-body text-sm font-medium tracking-wide text-white/88 underline decoration-white/35 underline-offset-4 transition duration-300 hover:text-kelly-gold hover:decoration-kelly-gold/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
+            className="mt-4 w-full text-center font-body text-base font-semibold tracking-wide text-white/95 underline decoration-white/45 underline-offset-4 transition duration-300 hover:text-kelly-gold hover:decoration-kelly-gold/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold sm:text-lg"
           >
-            Click to Website
+            Continue to website
           </button>
         </div>
       </div>

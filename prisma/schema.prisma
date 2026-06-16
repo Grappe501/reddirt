@@ -7151,8 +7151,56 @@ model ElectionPlanOperator {
   createdAt    DateTime                         @default(now())
   updatedAt    DateTime                         @updatedAt
   entries      ElectionPlanFieldEntry[]
+  voterContacts ElectionPlanVoterContact[]
 
   @@index([active])
+  @@schema("public")
+}
+
+enum ElectionPlanVoterContactStatus {
+  new_contact
+  follow_up
+  converted_volunteer
+  converted_donor
+  converted_leader
+
+  @@schema("public")
+}
+
+model ElectionPlanVoterContact {
+  id               String                         @id @default(cuid())
+  operatorId       String
+  operator         ElectionPlanOperator           @relation(fields: [operatorId], references: [id], onDelete: Restrict)
+  operatorInitials String                         @db.VarChar(3)
+
+  firstName String
+  lastName  String
+  email     String?
+  phone     String?
+
+  interestVolunteer  Boolean @default(false)
+  interestDonor      Boolean @default(false)
+  interestLeadership Boolean @default(false)
+  interestHost       Boolean @default(false)
+  notes              String?
+
+  photoDataUrl String? @db.Text
+
+  countySlug    String
+  citySlug      String?
+  workbenchSlug String?
+  eventSlug     String?
+  eventLabel    String?
+
+  status ElectionPlanVoterContactStatus @default(new_contact)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([countySlug, citySlug])
+  @@index([workbenchSlug])
+  @@index([status])
+  @@index([createdAt])
   @@schema("public")
 }
 
@@ -7184,6 +7232,8 @@ enum CommunityWorkbenchKind {
   program
   county_hub
   coalition
+  media
+  communications
 
   @@schema("public")
 }

@@ -1,0 +1,479 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "pass": "LEADERSHIP-WORKBENCH-INVENTORY",
+  "status": "planning_only",
+  "note": "Inventory and architecture only — no Leadership Workbench UI or Prisma until Sherwood + Jacksonville pilot smoke passes and PPEN A.0b + A.0c land together. Every KPI must drill to records; zeros until records exist.",
+  "doctrineRefs": [
+    "docs/LEADERSHIP_WORKBENCH_ARCHITECTURE.md",
+    "docs/ELECTION_PLAN_OPERATING_SYSTEM_DOCTRINE.md",
+    "docs/ELECTION_PLAN_DATA_INTEGRITY_DOCTRINE.md",
+    "docs/PPEN_A0B_PARTICIPANT_IDENTITY_LAYER.md",
+    "docs/PPEN_A0C_VOLUNTEER_INTAKE_ACTIVATION.md",
+    "docs/COMMUNITY_WORKBENCH_PPEN_ROADMAP.md"
+  ],
+  "buildGate": {
+    "pilotSmokeRequired": ["sherwood", "jacksonville"],
+    "pilotSmokePath": "/election-plan/workbenches/sherwood#pilot-smoke",
+    "ppenRequiredTogether": ["A.0b", "A.0c"],
+    "noFakeCounts": true,
+    "noPlaceholdersAsLive": true
+  },
+  "sharedShellSections": [
+    { "key": "overview", "label": "Overview", "answers": "Who owns this? What is the status?" },
+    { "key": "role_description", "label": "Role Description", "answers": "What are they supposed to do?" },
+    { "key": "current_leader", "label": "Current Leader", "recordSource": "ppen_participation | strike_team | workbench_leadership" },
+    { "key": "deputy_backup", "label": "Deputy / Backup", "recordSource": "ppen_participation" },
+    { "key": "responsibilities", "label": "Responsibilities", "recordSource": "doctrine + role_registry" },
+    { "key": "kpi_dashboard", "label": "KPI Dashboard", "recordSource": "record_counts_only" },
+    { "key": "task_board", "label": "Task Board", "recordSource": "ppen_task | workbench_mission" },
+    { "key": "people_list", "label": "People List", "recordSource": "ppen_person | voter_contact | field_entry" },
+    { "key": "calendar", "label": "Calendar", "recordSource": "community_workbench_event | executive_calendar" },
+    { "key": "training", "label": "Training", "recordSource": "ppen_training_completion" },
+    { "key": "documents", "label": "Documents", "recordSource": "workbench_intel | compliance_doc" },
+    { "key": "notes", "label": "Notes", "recordSource": "community_workbench_note" },
+    { "key": "reports", "label": "Reports", "recordSource": "generated_from_records" },
+    { "key": "escalations", "label": "Escalations", "recordSource": "ppen_escalation | pilot_defect" }
+  ],
+  "hardRules": [
+    "Event leaders are not automatically city/community leaders",
+    "Event hosts are not house-party hosts",
+    "Active volunteers must come from participant or field-entry records — not planning JSON",
+    "Every KPI must drill down to openable records",
+    "Power of 5 Lead is doctrine and journey — not an org-chart slot key",
+    "My Five and Help 10 Participate are separate mandatory journeys",
+    "Coalition workbench slots are framework until local leads populate intel"
+  ],
+  "accessLevels": [
+    { "level": 1, "key": "participant", "label": "Participant", "typicalUse": "My Journey, assigned tasks, own My Five / Help 10" },
+    { "level": 2, "key": "leader", "label": "Leader", "typicalUse": "Community, event, volunteer, coalition, creator workbenches" },
+    { "level": 3, "key": "county", "label": "County", "typicalUse": "County Leadership Workbench (one per county)" },
+    { "level": 4, "key": "regional", "label": "Regional", "typicalUse": "Multi-county corridor oversight" },
+    { "level": 5, "key": "state", "label": "State", "typicalUse": "Statewide program leads, CCH, SMOS hub" },
+    { "level": 6, "key": "executive", "label": "Executive", "typicalUse": "Kelly, Steve, campaign principals — war room + escalations" }
+  ],
+  "workbenchTypes": [
+    {
+      "id": "county_leadership",
+      "name": "County Leadership Workbench",
+      "slugPattern": "county-lead-{countySlug}",
+      "instanceCount": 75,
+      "routePattern": "/election-plan/counties/{countySlug}#leadership-workbench",
+      "primaryUsers": ["County chair", "County captain", "County strike team leads"],
+      "minAccessLevel": 3,
+      "implementationPhase": "B.1",
+      "liveToday": "partial",
+      "liveSurfaces": [
+        "County Workbench v4 — leadership, open positions, My Five, Help 10, pipeline (zeroed until PPEN)",
+        "county-strike-teams.json — interim assignment source",
+        "CountyPlaybookPanel + CountyWorkbenchV4OperationsPanel"
+      ],
+      "owns": [
+        "County leadership slots (6 v4-mapped + 3 strike-only)",
+        "County goals and registration lane targets (planning — separate from live counts)",
+        "Community workbenches inside county",
+        "County calendar and event coverage",
+        "Volunteer pipeline stages",
+        "Local relationships and issue intelligence",
+        "Coalition touchpoints in county"
+      ],
+      "roles": [
+        { "key": "community_lead", "label": "Community Lead / County Captain", "strikeTeamKey": "countyCaptain", "source": "county-workbench-v4-framework.source.json" },
+        { "key": "volunteer_lead", "label": "Volunteer Lead", "strikeTeamKey": "volunteerCaptain" },
+        { "key": "faith_lead", "label": "Faith Lead", "strikeTeamKey": "faithCaptain" },
+        { "key": "youth_lead", "label": "Youth Lead", "strikeTeamKey": null },
+        { "key": "events_lead", "label": "Events Lead", "strikeTeamKey": "eventsCaptain" },
+        { "key": "media_lead", "label": "Media Lead", "strikeTeamKey": "mediaCaptain" },
+        { "key": "postcard_captain", "label": "Postcard Captain", "strikeTeamKey": "postcardCaptain", "inV4Ui": false },
+        { "key": "phone_bank_captain", "label": "Phone Bank Captain", "strikeTeamKey": "phoneBankCaptain", "inV4Ui": false },
+        { "key": "canvass_captain", "label": "Canvass Captain", "strikeTeamKey": "canvassCaptain", "inV4Ui": false },
+        { "key": "candidate_liaison", "label": "Candidate Liaison", "strikeTeamKey": "candidateLiaison", "inV4Ui": false }
+      ],
+      "kpis": [
+        { "key": "leadership_roles_filled", "label": "Leadership roles filled", "recordSource": "CommunityWorkbenchLeadership + strike_team assigned", "drillDown": "leadership#open-positions", "liveToday": "partial" },
+        { "key": "active_volunteers", "label": "Active volunteers", "recordSource": "ElectionPlanFieldEntry.category=volunteer rollup + PpenPerson.active", "drillDown": "field-log", "liveToday": "partial" },
+        { "key": "events_scheduled", "label": "Events scheduled", "recordSource": "CommunityWorkbenchEvent.status in planned|confirmed", "drillDown": "events", "liveToday": "partial" },
+        { "key": "my_five_completion", "label": "My Five completion (county rollup)", "recordSource": "PpenRelationship.my_five edges", "drillDown": "my-five", "liveToday": false },
+        { "key": "help_ten_participation", "label": "Help 10 participation", "recordSource": "PpenRelationship.help_ten assists", "drillDown": "help-ten", "liveToday": false },
+        { "key": "county_contact_universe", "label": "County contact universe", "recordSource": "ElectionPlanVoterContact + PpenPerson county filter", "drillDown": "people_list", "liveToday": "partial" },
+        { "key": "overdue_follow_ups", "label": "Overdue follow-ups", "recordSource": "CommunityWorkbenchRelationship.nextFollowUp + VoterContact.status=follow_up", "drillDown": "escalations", "liveToday": "partial" }
+      ],
+      "connectedSurfaces": [
+        "/election-plan/counties/{countySlug}",
+        "/election-plan/workbenches?county={countySlug}",
+        "Coalition hub links from county v4",
+        "CCH county story intake"
+      ]
+    },
+    {
+      "id": "volunteer_leadership",
+      "name": "Volunteer Leadership Workbench",
+      "slugPattern": "volunteer-lead-{contextSlug}",
+      "instanceCount": "per county + per community + statewide hub",
+      "routePattern": "/election-plan/leadership/volunteer/{contextSlug}",
+      "primaryUsers": ["Volunteer Lead", "Volunteer Captain", "Onboarding manager (shared with training)"],
+      "minAccessLevel": 2,
+      "implementationPhase": "B.2",
+      "liveToday": false,
+      "liveSurfaces": ["CommunityWorkbenchShell volunteer_lead slot", "County v4 volunteer pipeline (zeroed)"],
+      "owns": [
+        "Volunteer onboarding and activation",
+        "Active volunteer list",
+        "Shift scheduling and assignments",
+        "Training completion tracking",
+        "Retention and re-engagement",
+        "Volunteer-to-leadership pathway nominations"
+      ],
+      "roles": [
+        { "key": "volunteer_lead", "label": "Volunteer Lead", "communityRoleKey": "volunteer_lead" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain", "strikeTeamKey": "volunteerCaptain" },
+        { "key": "shift_captain", "label": "Shift Captain", "recordSource": "ppen_participation.event_committee" },
+        { "key": "trainer", "label": "Trainer", "recordSource": "ppen_training" }
+      ],
+      "kpis": [
+        { "key": "new_signups", "label": "New signups", "recordSource": "WorkflowIntake + PpenPerson.created_at", "drillDown": "people_list?status=new", "liveToday": "partial" },
+        { "key": "activated_accounts", "label": "Activated accounts", "recordSource": "PpenPerson.status=active L1", "drillDown": "people_list?status=active", "liveToday": false },
+        { "key": "trained_volunteers", "label": "Trained volunteers", "recordSource": "PpenTrainingCompletion", "drillDown": "training", "liveToday": false },
+        { "key": "volunteers_assigned", "label": "Volunteers assigned", "recordSource": "CommunityWorkbenchEvent.assignmentsJson + PpenParticipation", "drillDown": "events", "liveToday": "partial" },
+        { "key": "volunteer_hours", "label": "Volunteer hours", "recordSource": "PpenVolunteerHours", "drillDown": "reports", "liveToday": false },
+        { "key": "inactive_needing_follow_up", "label": "Inactive volunteers needing follow-up", "recordSource": "PpenPerson.last_active_at threshold", "drillDown": "escalations", "liveToday": false }
+      ],
+      "connectedSurfaces": [
+        "Community workbench volunteer_lead slot",
+        "County v4 volunteer pipeline",
+        "Event Leadership Workbench assignments",
+        "Training / Onboarding Workbench"
+      ]
+    },
+    {
+      "id": "community_leadership",
+      "name": "Community Leadership Workbench",
+      "slugPattern": "{citySlug} | existing CommunityWorkbench city rows",
+      "instanceCount": "Top 40 + bonus cities + campus programs",
+      "routePattern": "/election-plan/workbenches/{slug}",
+      "primaryUsers": ["Community Lead", "Deputy Lead", "City captains"],
+      "minAccessLevel": 2,
+      "implementationPhase": "B.1",
+      "liveToday": "partial",
+      "liveSurfaces": ["CommunityWorkbenchShell — full shell except dedicated Leadership Workbench nav"],
+      "owns": [
+        "City/community plan and numeric targets (planning separate from records)",
+        "Local events and committees",
+        "Local leaders (8 COMMUNITY_LEADERSHIP_ROLES)",
+        "Local relationships",
+        "Community goals and bonus KPI plans (e.g. Quitman #41)"
+      ],
+      "roles": [
+        { "key": "community_lead", "label": "Community Lead", "source": "constants.ts COMMUNITY_LEADERSHIP_ROLES" },
+        { "key": "deputy_lead", "label": "Deputy Lead" },
+        { "key": "volunteer_lead", "label": "Volunteer Lead" },
+        { "key": "events_lead", "label": "Events Lead" },
+        { "key": "faith_lead", "label": "Faith Lead" },
+        { "key": "business_lead", "label": "Business Lead" },
+        { "key": "youth_lead", "label": "Youth Lead" },
+        { "key": "data_lead", "label": "Data Lead" }
+      ],
+      "kpis": [
+        { "key": "leadership_slots_filled", "label": "Leadership slots filled", "recordSource": "CommunityWorkbenchLeadership.personName", "drillDown": "leadership", "liveToday": true },
+        { "key": "events_completed", "label": "Events completed", "recordSource": "CommunityWorkbenchEvent.status executed|aar_complete", "drillDown": "events", "liveToday": true },
+        { "key": "relationships_contacted", "label": "Relationships contacted", "recordSource": "CommunityWorkbenchRelationship", "drillDown": "relationships", "liveToday": true },
+        { "key": "active_local_volunteers", "label": "Active local volunteers", "recordSource": "ElectionPlanFieldEntry rollup volunteer", "drillDown": "field-log", "liveToday": true },
+        { "key": "my_five_progress", "label": "My Five progress (community rollup)", "recordSource": "PpenRelationship", "drillDown": "my-five", "liveToday": false },
+        { "key": "help_ten_progress", "label": "Help 10 progress", "recordSource": "PpenRelationship", "drillDown": "help-ten", "liveToday": false }
+      ],
+      "connectedSurfaces": [
+        "/election-plan/workbenches/{slug}",
+        "/election-plan/cities/{slug} → redirects to workbench",
+        "County Leadership Workbench — child communities",
+        "Voter contact capture (e.g. Quitman /capture)"
+      ]
+    },
+    {
+      "id": "event_leadership",
+      "name": "Event Leadership Workbench",
+      "slugPattern": "event-{eventId}",
+      "instanceCount": "one per CommunityWorkbenchEvent + major calendar locks",
+      "routePattern": "/election-plan/workbenches/{workbenchSlug}/events/{eventId}",
+      "primaryUsers": ["Event Chair", "Event lead", "Committee members", "Run-of-show owners"],
+      "minAccessLevel": 2,
+      "implementationPhase": "B.2",
+      "liveToday": "partial",
+      "liveSurfaces": ["CommunityWorkbenchEventOpsPanel — leadName, assignments, run of show, AAR"],
+      "doctrineFix": {
+        "issue": "Grassroots & Guitar Strings leaders must live on EVENT workbench — not Sherwood community_lead slots",
+        "exampleEvent": "Grassroots & Guitar Strings",
+        "exampleWorkbench": "sherwood",
+        "wrongSurface": "CommunityWorkbenchLeadership community_lead for event chair",
+        "rightSurface": "CommunityWorkbenchEvent.leadName + assignmentsJson + committee"
+      },
+      "owns": [
+        "Event plan and run of show",
+        "Volunteer role assignments (Registration, AV, Greeters, Media, Security, Food, Cleanup)",
+        "Host committee (distinct from house-party hosts)",
+        "Turnout goals vs actual attendance",
+        "After-action report"
+      ],
+      "roles": [
+        { "key": "event_chair", "label": "Event Chair", "recordSource": "CommunityWorkbenchEvent.leadName" },
+        { "key": "committee_chair", "label": "Committee Chair", "recordSource": "CommunityWorkbenchCommittee" },
+        { "key": "registration_lead", "label": "Registration table", "assignmentRole": "Registration table" },
+        { "key": "av_lead", "label": "AV team", "assignmentRole": "AV team" },
+        { "key": "greeters_lead", "label": "Greeters", "assignmentRole": "Greeters" },
+        { "key": "media_lead", "label": "Media", "assignmentRole": "Media" },
+        { "key": "security_lead", "label": "Security", "assignmentRole": "Security" },
+        { "key": "food_lead", "label": "Food", "assignmentRole": "Food" },
+        { "key": "cleanup_lead", "label": "Cleanup", "assignmentRole": "Cleanup" }
+      ],
+      "kpis": [
+        { "key": "event_status", "label": "Event status", "recordSource": "CommunityWorkbenchEvent.status", "drillDown": "overview", "liveToday": true },
+        { "key": "roles_filled", "label": "Roles filled", "recordSource": "assignmentsJson assignee non-empty count", "drillDown": "events#assignments", "liveToday": true },
+        { "key": "expected_attendance", "label": "Expected attendance", "recordSource": "CommunityWorkbenchEvent.expectedAttendance", "drillDown": "overview", "liveToday": true },
+        { "key": "confirmed_attendance", "label": "Confirmed attendance", "recordSource": "CommunityWorkbenchEvent.actualAttendance", "drillDown": "overview", "liveToday": true },
+        { "key": "volunteers_assigned", "label": "Volunteers assigned", "recordSource": "assignmentsJson", "drillDown": "events#assignments", "liveToday": true },
+        { "key": "follow_ups_completed", "label": "Follow-ups completed post-event", "recordSource": "VoterContact + CommunityWorkbenchNote noteType=aar", "drillDown": "notes", "liveToday": "partial" }
+      ],
+      "connectedSurfaces": [
+        "Community workbench Events section",
+        "Executive calendar locked events",
+        "win-sherwood-operation.json — event metadata only (not live KPI)",
+        "Voter contact capture at event"
+      ]
+    },
+    {
+      "id": "voter_engagement",
+      "name": "Voter Engagement Workbench",
+      "slugPattern": "voter-engagement-{scope}",
+      "instanceCount": "statewide hub + optional county scopes",
+      "routePattern": "/election-plan/leadership/voter-engagement",
+      "primaryUsers": ["Help 10 team leads", "Registration verification team", "Election info team"],
+      "minAccessLevel": 2,
+      "implementationPhase": "B.3",
+      "liveToday": false,
+      "liveSurfaces": ["County v4 Help 10 section (zeroed)", "PPEN help_ten journey track"],
+      "owns": [
+        "Help 10 Participate records",
+        "Registration verification workflow",
+        "Polling location support",
+        "Vote plan support",
+        "Nonpartisan election information routing"
+      ],
+      "roles": [
+        { "key": "help_ten_lead", "label": "Help 10 Team Lead" },
+        { "key": "registration_verifier", "label": "Registration Verifier" },
+        { "key": "polling_location_support", "label": "Polling Location Support" },
+        { "key": "vote_plan_coach", "label": "Vote Plan Coach" },
+        { "key": "election_info_specialist", "label": "Election Information Specialist" }
+      ],
+      "kpis": [
+        { "key": "people_submitted", "label": "People submitted", "recordSource": "PpenHelpTenSubmission", "drillDown": "people_list", "liveToday": false },
+        { "key": "contacted", "label": "Contacted", "recordSource": "PpenRelationship.help_ten status=contacted", "drillDown": "people_list", "liveToday": false },
+        { "key": "registration_verified", "label": "Registration verified", "recordSource": "PpenHelpTenSubmission.registration_verified", "drillDown": "people_list", "liveToday": false },
+        { "key": "polling_info_sent", "label": "Polling info sent", "recordSource": "PpenHelpTenSubmission.polling_info_sent", "drillDown": "people_list", "liveToday": false },
+        { "key": "vote_plans_completed", "label": "Vote plans completed", "recordSource": "PpenImpact.vote_plans_completed", "drillDown": "reports", "liveToday": false },
+        { "key": "unresolved_cases", "label": "Unresolved cases", "recordSource": "PpenHelpTenSubmission.status=open", "drillDown": "escalations", "liveToday": false }
+      ],
+      "connectedSurfaces": ["County v4 Help 10", "Coalition election_info_team pathways", "My Journey Help 10 track"]
+    },
+    {
+      "id": "network_growth_my_five",
+      "name": "Network Growth / My Five Workbench",
+      "slugPattern": "my-five-{scope}",
+      "instanceCount": "per participant (My Journey) + county/community rollups for leads",
+      "routePattern": "/election-plan/my-journey/my-five | leadership rollup routes",
+      "primaryUsers": ["Every participant (L1)", "Community/county leads for rollups"],
+      "minAccessLevel": 1,
+      "implementationPhase": "B.3",
+      "liveToday": false,
+      "liveSurfaces": ["PPEN framework JSON", "County v4 My Five section (zeroed)"],
+      "owns": [
+        "My Five completion (5/5 active relationships)",
+        "Direct recruits and downstream generations",
+        "Network impact attribution per person"
+      ],
+      "roles": [
+        { "key": "participant", "label": "Participant (self)", "note": "Not an org-chart slot — universal doctrine" },
+        { "key": "network_coach", "label": "Network Coach", "optional": true }
+      ],
+      "kpis": [
+        { "key": "participants_with_5_of_5", "label": "Participants with 5/5", "recordSource": "PpenRelationship.my_five count=5 active", "drillDown": "people_list", "liveToday": false },
+        { "key": "direct_joins", "label": "Direct joins", "recordSource": "PpenPerson.referred_by", "drillDown": "people_list", "liveToday": false },
+        { "key": "downstream_joins_gen2", "label": "Second-generation joins", "recordSource": "PpenRelationship.generation=2", "drillDown": "reports", "liveToday": false },
+        { "key": "downstream_joins_gen3", "label": "Third-generation joins", "recordSource": "PpenRelationship.generation=3", "drillDown": "reports", "liveToday": false },
+        { "key": "network_impact_by_context", "label": "Network impact by person/county/community", "recordSource": "PpenImpact.network_impact grouped", "drillDown": "reports", "liveToday": false }
+      ],
+      "connectedSurfaces": ["My Journey home", "Community + County rollups", "PPEN Relationship layer"]
+    },
+    {
+      "id": "coalition_leadership",
+      "name": "Coalition Leadership Workbench",
+      "slugPattern": "existing coalition CommunityWorkbench slugs",
+      "instanceCount": 12,
+      "routePattern": "/election-plan/workbenches/{coalitionSlug}",
+      "primaryUsers": ["Coalition leads", "Cultural outreach captains", "Trusted messengers"],
+      "minAccessLevel": 2,
+      "implementationPhase": "B.2",
+      "liveToday": "partial",
+      "liveSurfaces": ["12 coalition workbenches in build-registry", "War Room Coalition Command hub"],
+      "priorityCoalitions": [
+        { "slug": "african-american-outreach", "name": "African American Outreach" },
+        { "slug": "hispanic-outreach", "name": "Hispanic Outreach" },
+        { "slug": "muslim-community", "name": "Muslim Outreach", "pathways": ["womens_outreach"] },
+        { "slug": "youth-engagement", "name": "Youth Outreach" },
+        { "slug": "veterans", "name": "Veterans" },
+        { "slug": "labor", "name": "Labor" },
+        { "slug": "educators", "name": "Educators" },
+        { "slug": "disability-community", "name": "Disability Community" },
+        { "slug": "faith-communities", "name": "Faith Communities" },
+        { "slug": "small-business", "name": "Small Business / Main Street" }
+      ],
+      "owns": [
+        "Coalition-specific leadership slots",
+        "Culturally specific pathways (volunteerPathways in registry)",
+        "Coalition events and trusted messengers",
+        "Organization relationship intel",
+        "Volunteer pathways into PPEN"
+      ],
+      "rolesFromRegistry": "coalition-workbenches.registry.source.json volunteerPathways per workbench",
+      "kpis": [
+        { "key": "pathway_slots_filled", "label": "Volunteer pathway slots filled", "recordSource": "PpenParticipation context=coalition", "drillDown": "leadership", "liveToday": false },
+        { "key": "trusted_messengers", "label": "Trusted messengers engaged", "recordSource": "CommunityWorkbenchRelationship", "drillDown": "relationships", "liveToday": "partial" },
+        { "key": "coalition_events", "label": "Coalition events executed", "recordSource": "CommunityWorkbenchEvent", "drillDown": "events", "liveToday": "partial" },
+        { "key": "organizations_mapped", "label": "Organizations mapped", "recordSource": "CommunityWorkbenchIntel", "drillDown": "intel", "liveToday": "partial" },
+        { "key": "volunteer_conversions", "label": "Volunteer pathway conversions", "recordSource": "PpenParticipation from coalition intake", "drillDown": "people_list", "liveToday": false }
+      ],
+      "connectedSurfaces": [
+        "/election-plan/workbenches?kind=coalition",
+        "County v4 coalitions section",
+        "Community workbench cross-links"
+      ]
+    },
+    {
+      "id": "communications_leadership",
+      "name": "Communications Leadership Workbench",
+      "slugPattern": "CCH workbench slugs",
+      "instanceCount": 7,
+      "routePattern": "/election-plan/workbenches?kind=communications",
+      "primaryUsers": ["Comms Lead", "Editor", "Publisher", "Platform leads", "Kelly (approver)"],
+      "minAccessLevel": 5,
+      "implementationPhase": "B.4",
+      "liveToday": "partial",
+      "liveSurfaces": ["7 CCH workbenches", "CampaignCommunicationsHubPanel"],
+      "owns": [
+        "Kelly source posts (Substack canonical)",
+        "Public and Insider Substack feeds",
+        "Platform adaptations via SMOS",
+        "Content calendar",
+        "Reply routing and creator assignments"
+      ],
+      "rolesFromRegistry": "campaign-communications-workbenches.registry.source.json approvalChain + volunteerPathways",
+      "kpis": [
+        { "key": "posts_drafted", "label": "Posts drafted", "recordSource": "CchContentRecord.status=Draft", "drillDown": "pipeline", "liveToday": false },
+        { "key": "posts_approved", "label": "Posts approved", "recordSource": "CchContentRecord.status=Approved", "drillDown": "pipeline", "liveToday": false },
+        { "key": "posts_published", "label": "Posts published", "recordSource": "CchContentRecord.status=Published", "drillDown": "pipeline", "liveToday": false },
+        { "key": "replies_needing_response", "label": "Replies needing response", "recordSource": "CchReplyQueue.open", "drillDown": "escalations", "liveToday": false },
+        { "key": "platform_adaptations_completed", "label": "Platform adaptations completed", "recordSource": "SmosContentRecord linked to Cch canonical", "drillDown": "SMOS platform workbenches", "liveToday": false },
+        { "key": "creator_tasks_completed", "label": "Creator tasks completed", "recordSource": "SmosAssignment.status=Published", "drillDown": "task_board", "liveToday": false }
+      ],
+      "connectedSurfaces": ["CCH hub", "SMOS Content Studio", "Substack public/insider feeds"]
+    },
+    {
+      "id": "media_creator",
+      "name": "Media Creator Workbench",
+      "slugPattern": "SMOS creator-facing workbenches",
+      "instanceCount": "content-studio, media-library, story-corps + platform workbenches",
+      "routePattern": "/election-plan/workbenches?kind=media",
+      "primaryUsers": ["Writers", "Photographers", "Videographers", "Editors", "Graphic designers"],
+      "minAccessLevel": 2,
+      "implementationPhase": "B.4",
+      "liveToday": "partial",
+      "liveSurfaces": ["27 SMOS workbenches", "SocialMediaCommandPanel"],
+      "owns": [
+        "Asset uploads and media library tags",
+        "Story intake from field workbenches",
+        "Photo/video/writing assignments",
+        "Draft and approval pipeline"
+      ],
+      "rolesFromRegistry": "social-media-workbenches.registry.source.json assignmentRoles",
+      "kpis": [
+        { "key": "assets_uploaded", "label": "Assets uploaded", "recordSource": "SmosMediaAsset", "drillDown": "media-library", "liveToday": false },
+        { "key": "drafts_completed", "label": "Drafts completed", "recordSource": "SmosContentRecord.status=Draft", "drillDown": "content-studio", "liveToday": false },
+        { "key": "stories_collected", "label": "Stories collected", "recordSource": "StoryCorpsSubmission", "drillDown": "story-corps", "liveToday": false },
+        { "key": "content_approved", "label": "Content approved", "recordSource": "SmosContentRecord.status=Approved", "drillDown": "content-studio", "liveToday": false },
+        { "key": "content_published", "label": "Content published", "recordSource": "SmosContentRecord.status=Published", "drillDown": "platform workbench", "liveToday": false }
+      ],
+      "connectedSurfaces": ["SMOS hub", "CCH downstream adaptations", "Field story submissions"]
+    },
+    {
+      "id": "training_onboarding",
+      "name": "Training / Onboarding Workbench",
+      "slugPattern": "training-onboarding",
+      "instanceCount": "statewide hub + per-pathway modules",
+      "routePattern": "/election-plan/leadership/training",
+      "primaryUsers": ["Onboarding managers", "Training leads", "Level 2 leadership reviewers"],
+      "minAccessLevel": 3,
+      "implementationPhase": "B.2",
+      "liveToday": false,
+      "liveSurfaces": ["PPEN intakeActivationPipeline in framework JSON", "A.0c doctrine"],
+      "owns": [
+        "Activation pipeline (signup → L1)",
+        "Level 1 access grants",
+        "Level 2 leadership onboarding",
+        "Training modules and certifications",
+        "Overdue training escalations"
+      ],
+      "roles": [
+        { "key": "onboarding_manager", "label": "Onboarding Manager" },
+        { "key": "training_lead", "label": "Training Lead" },
+        { "key": "level2_reviewer", "label": "Level 2 Leadership Reviewer" }
+      ],
+      "kpis": [
+        { "key": "signups", "label": "Signups", "recordSource": "WorkflowIntake + volunteer form", "drillDown": "people_list?stage=signup", "liveToday": "partial" },
+        { "key": "activations", "label": "Activations", "recordSource": "PpenPerson L1 granted", "drillDown": "people_list?stage=active", "liveToday": false },
+        { "key": "onboarding_completed", "label": "Onboarding completed", "recordSource": "PpenIntakePipeline step=enter_os", "drillDown": "people_list", "liveToday": false },
+        { "key": "level2_candidates", "label": "Level 2 candidates", "recordSource": "PpenLeadershipApplication", "drillDown": "open_positions", "liveToday": false },
+        { "key": "trainings_overdue", "label": "Trainings overdue", "recordSource": "PpenTrainingCompletion.due_at past", "drillDown": "escalations", "liveToday": false }
+      ],
+      "connectedSurfaces": [
+        "Website volunteer form → WorkflowIntake",
+        "PPEN A.0c activation",
+        "Volunteer Leadership Workbench",
+        "All Leadership Workbench placement flow"
+      ]
+    }
+  ],
+  "recordModelTarget": {
+    "phase": "post-pilot with A.0b + A.0c",
+    "models": [
+      { "name": "PpenPerson", "backs": "people_list, activated_accounts, signups" },
+      { "name": "PpenParticipation", "backs": "current_leader, role assignments, coalition/county/community context" },
+      { "name": "PpenRelationship", "backs": "My Five, Help 10, relationships_contacted" },
+      { "name": "PpenImpact", "backs": "network_impact, vote_plans_completed" },
+      { "name": "PpenTrainingCompletion", "backs": "training KPIs, certifications" },
+      { "name": "PpenLeadershipApplication", "backs": "interested_candidates, level2_candidates, open_positions count" },
+      { "name": "CommunityWorkbenchLeadership", "backs": "interim view until Participation sync" },
+      { "name": "CommunityWorkbenchEvent", "backs": "event leadership KPIs" },
+      { "name": "ElectionPlanFieldEntry", "backs": "field log volunteer/leader/conversation counts" },
+      { "name": "ElectionPlanVoterContact", "backs": "county contact universe, event capture" }
+    ],
+    "notYetInSchema": [
+      "PpenPerson",
+      "PpenParticipation",
+      "PpenRelationship",
+      "PpenImpact",
+      "CchContentRecord",
+      "SmosContentRecord",
+      "SmosMediaAsset",
+      "PpenHelpTenSubmission",
+      "PpenTrainingCompletion",
+      "PpenLeadershipApplication"
+    ]
+  },
+  "implementationOrder": [
+    { "phase": "A.0", "label": "Pilot smoke Sherwood + Jacksonville", "blocks": "all Leadership Workbench code" },
+    { "phase": "A.0b+A.0c", "label": "Person + Participation + intake activation", "blocks": "record-backed people KPIs" },
+    { "phase": "B.1", "label": "County + Community Leadership Workbench shells", "extends": "existing CommunityWorkbenchShell + County v4" },
+    { "phase": "B.2", "label": "Volunteer, Event, Coalition, Training workbenches", "includes": "Grassroots & Guitar Strings event seed" },
+    { "phase": "B.3", "label": "Voter Engagement + My Five rollups", "includes": "Help 10 operational records" },
+    { "phase": "B.4", "label": "Communications + Media Creator leadership views", "extends": "CCH + SMOS registries" }
+  ]
+}

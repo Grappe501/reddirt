@@ -48,7 +48,7 @@ export default function AdminDashboardPage() {
             Open Communication Command Center
           </Link>{" "}
           — daily priorities, message follow-ups, readiness checks, audiences, imports, Message Studio, and send governance
-          (admin workbench).
+          (Campaign Manager workbench).
         </p>
         <div className="rounded-lg border border-emerald-800/25 bg-emerald-50/90 px-4 py-3 font-body text-sm text-kelly-text/90">
           <strong>Field plan (volunteers):</strong>{" "}

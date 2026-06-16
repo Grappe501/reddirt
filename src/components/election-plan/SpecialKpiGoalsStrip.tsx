@@ -1,4 +1,5 @@
 import { SpecialKpiGoalCard } from "@/components/election-plan/SpecialKpiGoalCard";
+import { EventFundraisingKpiStripCard } from "@/components/election-plan/EventFundraisingOpportunityPanel";
 import {
   getSpecialKpiGoals,
   specialKpiExplanation,
@@ -12,7 +13,9 @@ type Props = {
 
 export function SpecialKpiGoalsStrip({ variant = "strip", goalIds }: Props) {
   const goals = getSpecialKpiGoals().filter((g) => !goalIds?.length || goalIds.includes(g.id));
-  if (!goals.length) return null;
+  const showEventKpi = !goalIds?.length || goalIds.includes("grassroots-guitar-strings-profit");
+
+  if (!goals.length && !showEventKpi) return null;
 
   return (
     <section className={variant === "panel" ? "mb-8" : undefined}>
@@ -22,7 +25,8 @@ export function SpecialKpiGoalsStrip({ variant = "strip", goalIds }: Props) {
           <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{specialKpiExplanation()}</p>
         </div>
       ) : null}
-      <div className={`grid gap-4 ${goals.length > 1 ? "lg:grid-cols-2" : ""}`}>
+      <div className={`grid gap-4 ${goals.length > 0 || showEventKpi ? "lg:grid-cols-2" : ""}`}>
+        {showEventKpi ? <EventFundraisingKpiStripCard /> : null}
         {goals.map((goal) => (
           <SpecialKpiGoalCard key={goal.id} goal={goal} variant={variant} />
         ))}

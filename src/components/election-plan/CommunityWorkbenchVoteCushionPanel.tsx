@@ -46,6 +46,8 @@ export function CommunityWorkbenchVoteCushionPanel({ slug, cushion, operatorInit
     ? cushion.localPercentIncrease
     : cushion.globalPercentIncrease;
 
+  const hint = cushion.planningHint;
+
   async function save(e: React.FormEvent) {
     e.preventDefault();
     if (!operatorInitials) {
@@ -179,7 +181,7 @@ export function CommunityWorkbenchVoteCushionPanel({ slug, cushion, operatorInit
           <input
             value={label}
             onChange={(e) => setLabel(e.target.value)}
-            placeholder="25% SOS lift · Festiville goal"
+            placeholder={hint?.label ?? "Local cushion label"}
             className="mt-1 w-full rounded-lg border border-[var(--ep-border)] px-3 py-2 text-sm"
           />
         </label>
@@ -194,7 +196,7 @@ export function CommunityWorkbenchVoteCushionPanel({ slug, cushion, operatorInit
               step={0.1}
               value={pct}
               onChange={(e) => setPct(e.target.value)}
-              placeholder="25"
+              placeholder={hint?.targetIncreasePct != null ? String(hint.targetIncreasePct) : "Percent over baseline"}
               className="mt-1 w-full max-w-xs rounded-lg border border-[var(--ep-border)] px-3 py-2 text-sm"
             />
             <p className="mt-1 text-[10px] text-[var(--ep-navy-muted)]">
@@ -209,7 +211,7 @@ export function CommunityWorkbenchVoteCushionPanel({ slug, cushion, operatorInit
               min={1}
               value={votes}
               onChange={(e) => setVotes(e.target.value)}
-              placeholder="6086"
+              placeholder={hint?.targetVotes != null ? String(hint.targetVotes) : "Vote target"}
               className="mt-1 w-full max-w-xs rounded-lg border border-[var(--ep-border)] px-3 py-2 text-sm"
             />
           </label>
@@ -221,7 +223,7 @@ export function CommunityWorkbenchVoteCushionPanel({ slug, cushion, operatorInit
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={2}
-            placeholder="Why this cushion — Festiville, ward plan, etc."
+            placeholder={hint?.notes ?? "Field rationale for this local cushion"}
             className="mt-1 w-full rounded-lg border border-[var(--ep-border)] px-3 py-2 text-sm"
           />
         </label>

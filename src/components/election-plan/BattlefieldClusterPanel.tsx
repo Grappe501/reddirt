@@ -7,6 +7,7 @@ import {
   countyDashboardLabel,
 } from "@/lib/election-plan/battlefield-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import { getVciExampleFromCounties } from "@/lib/election-plan/vci-example";
 import { VciExplainerCard } from "@/components/election-plan/VciExplainerCard";
 import { cn } from "@/lib/utils";
 
@@ -68,7 +69,7 @@ export function BattlefieldClusterPanel({ cluster, counties: allCounties }: Prop
         </div>
       </div>
 
-      <VciExplainerCard compact />
+      <VciExplainerCard compact example={getVciExampleFromCounties(allCounties)} />
 
       <h2 className="mb-3 font-heading text-lg font-bold">Counties in this cluster</h2>
       <p className="mb-4 text-xs text-[var(--ep-navy-muted)]">

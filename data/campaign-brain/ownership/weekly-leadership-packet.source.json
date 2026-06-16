@@ -16,9 +16,9 @@
         "Searcy County trust pilot — cross-partisan listening sessions"
       ]
     },
-    "ernie": {
-      "label": "Ernie priorities",
-      "owner": "Ernie",
+    "campaignLeadership": {
+      "label": "Campaign leadership priorities",
+      "owner": "Campaign Manager (assign owner)",
       "priorities": [
         "Finance committee and major donor pipeline",
         "Sherwood VIP table and host cultivation",

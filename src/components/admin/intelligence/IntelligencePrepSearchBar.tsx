@@ -538,7 +538,7 @@ export function IntelligencePrepSearchBar({
             <p className="text-[10px] text-kelly-subtle">
               {indexStatus
                 ? `${indexStatus.corpusTotal.toLocaleString()} docs · seminar briefs · Socratic drill`
-                : "Admin intelligence only"}
+                : "Campaign Manager intelligence only"}
               {indexStatus?.openai ? " · GPT on" : " · keyword only"}
             </p>
             {smart ? (

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -70,7 +71,11 @@ export function CommunityWorkbenchPilotSmokePanel({ smokePath, validation }: Pro
                 <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
                   <span className="font-semibold">Pass:</span> {step.passCriteria}
                 </p>
-                {step.anchor ? (
+                {step.href ? (
+                  <Link href={step.href} className="mt-2 inline-block text-xs font-semibold text-[var(--ep-gold)] hover:underline">
+                    Open step →
+                  </Link>
+                ) : step.anchor ? (
                   <a href={`#${step.anchor}`} className="mt-2 inline-block text-xs font-semibold text-[var(--ep-gold)] hover:underline">
                     Jump to {step.anchor} →
                   </a>

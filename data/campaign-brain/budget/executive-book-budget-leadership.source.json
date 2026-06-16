@@ -31,11 +31,15 @@
     { "id": "volunteer-appreciation", "label": "Volunteer Appreciation", "amount": 3500, "notes": "Annual recognition event · volunteer awards · leadership appreciation ($2,500–$5,000 reserve)" }
   ],
   "fundraising": {
-    "raisedAsOf": "2026-06-15",
+    "raisedAsOf": "2026-06-16",
     "raisedToDate": 60000,
+    "raisedProvisional": true,
+    "raisedNote": "Provisional until post-filing reconciliation next week.",
+    "networkGoal": 60000,
     "workingCampaignGoal": 232053,
-    "remainingToRaise": 172053,
-    "rampUpNote": "Ramp up fundraising — Sherwood hosts and VIP tables are priority levers. $60K raised against working campaign target.",
+    "combinedGoal": 292053,
+    "remainingToRaise": 232053,
+    "rampUpNote": "Overall target $292K ($60K + $232K working campaign). $60K milestone progress shown until filing confirms raised-to-date.",
     "monthlyTargets": [
       { "period": "June", "month": "2026-06", "goal": 22000, "notes": "Partial month + close June strong" },
       { "period": "July", "month": "2026-07", "goal": 35000, "notes": "Immersion season · host cultivation" },

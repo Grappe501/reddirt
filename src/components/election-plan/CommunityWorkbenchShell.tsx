@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState, type FormEvent, type ReactNode } from "react";
 
+import { CommunityFundraisingGoalPanel } from "@/components/election-plan/CommunityFundraisingGoalPanel";
+import { CommunityFundraisingOpportunitiesPanel } from "@/components/election-plan/CommunityFundraisingOpportunitiesPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { CommunityWorkbenchEventOpsPanel } from "@/components/election-plan/CommunityWorkbenchEventOpsPanel";
 import { CommunityWorkbenchOwnershipWarnings } from "@/components/election-plan/CommunityWorkbenchOwnershipWarnings";
@@ -18,8 +20,11 @@ import type { PilotWorkbenchValidation } from "@/lib/election-plan/community-wor
 import type { CommunityWorkbenchView } from "@/lib/election-plan/community-workbench/types";
 import { COMMUNITY_INTEL_SECTIONS, COMMUNITY_NOTE_TYPES } from "@/lib/election-plan/community-workbench/constants";
 import { communityWorkbenchHubHref } from "@/lib/election-plan/community-workbench/links";
+import { communityWorkbenchEventHref, grassrootsGuitarStringsEventHref } from "@/lib/election-plan/community-workbench/event-links";
+import { matchEventSlug, GRASSROOTS_GUITAR_STRINGS_EVENT_SLUG } from "@/lib/election-plan/community-workbench/pilot-event-seeds";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { formatCushionPercent } from "@/lib/election-plan/community-workbench/vote-cushion";
+import type { FosCommunityAllocation } from "@/lib/election-plan/fundraising-operating-system-shared";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -28,6 +33,8 @@ type Props = {
   pilotSmokePath?: PilotSmokePath | null;
   pilotValidation?: PilotWorkbenchValidation | null;
   pilotDefects?: CommunityPilotDefectRow[];
+  fosAllocation?: FosCommunityAllocation | null;
+  showOptionalPilotBanner?: boolean;
 };
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
@@ -67,6 +74,8 @@ export function CommunityWorkbenchShell({
   pilotSmokePath = null,
   pilotValidation = null,
   pilotDefects = [],
+  fosAllocation = null,
+  showOptionalPilotBanner = false,
 }: Props) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
@@ -113,9 +122,15 @@ export function CommunityWorkbenchShell({
     [operatorInitials, router, workbench.slug],
   );
 
+  const coalitionProfile = workbench.coalitionProfile;
+  const intelSectionOptions = coalitionProfile
+    ? coalitionProfile.intelSections.map((s) => ({ key: s.key, label: s.label }))
+    : [...COMMUNITY_INTEL_SECTIONS];
+
   const nav = [
     { id: "overview", label: "Overview" },
     ...(workbench.voteCushion ? [{ id: "vote-cushion", label: "Vote cushion" }] : []),
+    ...(fosAllocation ? [{ id: "fundraising", label: "Fundraising" }] : []),
     { id: "readiness", label: "Readiness" },
     { id: "leadership", label: "Leadership" },
     { id: "missions", label: "Missions" },
@@ -123,6 +138,7 @@ export function CommunityWorkbenchShell({
     { id: "field-log", label: "Field log" },
     { id: "committees", label: "Committees" },
     { id: "events", label: "Events" },
+    ...(coalitionProfile ? [{ id: "coalition-framework", label: "Coalition framework" }] : []),
     { id: "intel", label: "Local intel" },
     { id: "relationships", label: "Relationships" },
     { id: "notebook", label: "Notebook" },
@@ -133,6 +149,14 @@ export function CommunityWorkbenchShell({
       <Link href={communityWorkbenchHubHref()} className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]">
         ← Community Workbenches
       </Link>
+      {workbench.kind === "coalition" ? (
+        <Link
+          href="/election-plan?tab=coalitionCommand"
+          className="ml-3 text-xs font-semibold text-[var(--ep-gold)] hover:underline"
+        >
+          Coalition Command hub
+        </Link>
+      ) : null}
 
       <div className="mt-3 flex flex-wrap items-start justify-between gap-4">
         <div>
@@ -181,6 +205,23 @@ export function CommunityWorkbenchShell({
       </nav>
 
       {error ? <p className="mt-4 text-sm text-red-700">{error}</p> : null}
+
+      {showOptionalPilotBanner ? (
+        <div className="mb-6 rounded-lg border border-[var(--ep-border)] bg-white px-4 py-3 text-sm">
+          <p className="font-semibold text-[var(--ep-navy)]">Optional city pilot — not the primary smoke gate</p>
+          <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
+            Primary pilots:{" "}
+            <Link href="/election-plan/workbenches/jacksonville#pilot-smoke" className="font-semibold text-[var(--ep-gold)] hover:underline">
+              Jacksonville city
+            </Link>
+            {" · "}
+            <Link href={grassrootsGuitarStringsEventHref()} className="font-semibold text-[var(--ep-gold)] hover:underline">
+              Grassroots &amp; Guitar Strings event
+            </Link>
+            . G&amp;G event leadership lives on the event workbench — not city leadership.
+          </p>
+        </div>
+      ) : null}
 
       <CommunityWorkbenchOwnershipWarnings warnings={ownershipWarnings} slug={workbench.slug} />
 
@@ -271,6 +312,46 @@ export function CommunityWorkbenchShell({
           One template, completely local content. This workbench is where {workbench.name} teams run leadership,
           missions, events, relationships, and field logging — without waiting on statewide dashboards.
         </p>
+        {workbench.slug === "sherwood" ? (
+          <div className="mt-4 rounded-lg border border-[var(--ep-gold)] bg-[var(--ep-cream)] p-4 text-sm">
+            <p className="font-heading font-bold text-[var(--ep-navy)]">Community events</p>
+            <ul className="mt-2 space-y-2">
+              {workbench.events
+                .filter((e) => e.status !== "cancelled")
+                .map((e) => {
+                  const eventSlug = matchEventSlug(e.title);
+                  const isGgs = eventSlug === GRASSROOTS_GUITAR_STRINGS_EVENT_SLUG;
+                  return (
+                    <li key={e.id}>
+                      <Link
+                        href={
+                          isGgs
+                            ? grassrootsGuitarStringsEventHref()
+                            : communityWorkbenchEventHref(workbench.slug, eventSlug)
+                        }
+                        className="font-semibold text-[var(--ep-navy)] hover:underline"
+                      >
+                        {e.title}
+                      </Link>
+                      {e.eventDate ? (
+                        <span className="ml-2 text-xs text-[var(--ep-navy-muted)]">
+                          · {new Date(e.eventDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                        </span>
+                      ) : null}
+                      {isGgs ? (
+                        <span className="ml-2 rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-bold text-rose-900">
+                          Event workbench · $20K profit KPI
+                        </span>
+                      ) : null}
+                    </li>
+                  );
+                })}
+              {workbench.events.filter((e) => e.status !== "cancelled").length === 0 ? (
+                <li className="text-xs italic text-[var(--ep-navy-muted)]">No events seeded yet — refresh after DB sync.</li>
+              ) : null}
+            </ul>
+          </div>
+        ) : null}
       </Section>
 
       {workbench.voteCushion ? (
@@ -279,6 +360,15 @@ export function CommunityWorkbenchShell({
           cushion={workbench.voteCushion}
           operatorInitials={operatorInitials}
         />
+      ) : null}
+
+      {fosAllocation ? (
+        <Section id="fundraising" title="Fundraising">
+          <CommunityFundraisingGoalPanel allocation={fosAllocation} />
+          {workbench.slug === "sherwood" ? (
+            <CommunityFundraisingOpportunitiesPanel allocation={fosAllocation} />
+          ) : null}
+        </Section>
       ) : null}
 
       <Section id="readiness" title="Community readiness">
@@ -381,9 +471,69 @@ export function CommunityWorkbenchShell({
         />
       </Section>
 
+      {coalitionProfile ? (
+        <Section id="coalition-framework" title="Coalition framework">
+          {coalitionProfile.frameworkNote ? (
+            <p className="mb-4 rounded-lg border border-[var(--ep-gold)] bg-[var(--ep-cream)] px-4 py-3 text-sm text-[var(--ep-navy)]">
+              {coalitionProfile.frameworkNote}
+            </p>
+          ) : null}
+          {coalitionProfile.leadRole ? (
+            <p className="mb-4 text-sm text-[var(--ep-navy-muted)]">
+              Suggested lead role: <strong className="text-[var(--ep-navy)]">{coalitionProfile.leadRole}</strong>
+            </p>
+          ) : null}
+
+          <h3 className="mb-2 font-heading text-base font-bold text-[var(--ep-navy)]">Intel framework slots</h3>
+          <p className="mb-3 text-xs text-[var(--ep-navy-muted)]">
+            Empty until coalition lead adds intel pages — each slot maps to the intel section dropdown below.
+          </p>
+          <ul className="mb-8 grid gap-2 sm:grid-cols-2">
+            {coalitionProfile.intelSections.map((slot) => {
+              const filled = workbench.intel.some((i) => i.sectionKey === slot.key);
+              return (
+                <li
+                  key={slot.key}
+                  className={cn(
+                    "rounded-lg border px-3 py-2 text-sm",
+                    filled ? "border-emerald-300 bg-emerald-50" : "border-[var(--ep-border)] bg-white",
+                  )}
+                >
+                  <p className="font-medium text-[var(--ep-navy)]">{slot.label}</p>
+                  <p className="text-[10px] text-[var(--ep-navy-muted)]">
+                    {filled ? "Intel page exists — see Local intel" : "Open slot"}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+
+          <h3 className="mb-2 font-heading text-base font-bold text-[var(--ep-navy)]">Volunteer pathway framework</h3>
+          <p className="mb-3 text-xs text-[var(--ep-navy-muted)]">
+            Pathway labels are containers for recruitment — PPEN activation waits on pilot gate unless approved.
+          </p>
+          <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {coalitionProfile.volunteerPathways.map((path) => (
+              <li key={path.key} className="rounded-lg border border-[var(--ep-border)] bg-white px-3 py-2 text-sm">
+                <p className="font-medium text-[var(--ep-navy)]">{path.label}</p>
+                {path.labelEs ? (
+                  <p className="text-xs text-[var(--ep-navy-muted)]">{path.labelEs}</p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </Section>
+      ) : null}
+
       <Section id="intel" title="Local intelligence">
-        <p className="mb-3 text-sm text-[var(--ep-navy-muted)]">Local wiki — churches, employers, leaders, schools, history.</p>
-        <IntelAddForm slug={workbench.slug} onSave={post} busy={busy} operatorInitials={operatorInitials} />
+        {coalitionProfile ? (
+          <p className="mb-3 text-sm text-[var(--ep-navy-muted)]">
+            Coalition intel uses framework section keys from the registry — local leaders define org names and relationships inside each slot.
+          </p>
+        ) : (
+          <p className="mb-3 text-sm text-[var(--ep-navy-muted)]">Local wiki — churches, employers, leaders, schools, history.</p>
+        )}
+        <IntelAddForm slug={workbench.slug} sectionOptions={intelSectionOptions} onSave={post} busy={busy} operatorInitials={operatorInitials} />
         <ul className="mt-4 space-y-3">
           {workbench.intel.map((i) => (
             <li key={i.id} className="ep-card text-sm">
@@ -575,13 +725,15 @@ function IntelAddForm({
   onSave,
   busy,
   operatorInitials,
+  sectionOptions,
 }: {
   slug: string;
   onSave: (section: string, payload: Record<string, unknown>) => Promise<boolean>;
   busy: boolean;
   operatorInitials: string | null;
+  sectionOptions: Array<{ key: string; label: string }>;
 }) {
-  const [sectionKey, setSectionKey] = useState("leaders");
+  const [sectionKey, setSectionKey] = useState(sectionOptions[0]?.key ?? "leaders");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const submit = async (e: FormEvent) => {
@@ -595,7 +747,7 @@ function IntelAddForm({
   return (
     <form onSubmit={submit} className="space-y-2 rounded-lg border border-[var(--ep-border)] p-3">
       <select value={sectionKey} onChange={(e) => setSectionKey(e.target.value)} className="w-full rounded border px-2 py-2 text-sm">
-        {COMMUNITY_INTEL_SECTIONS.map((s) => (
+        {sectionOptions.map((s) => (
           <option key={s.key} value={s.key}>
             {s.label}
           </option>

@@ -74,6 +74,8 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) and [docs/deployment.md](./docs/deploym
 
 **Quality gate before substantive pushes:** `npm run check` from this folder (lint + `tsc` + build).
 
+**Agent passes:** every pass that changes files must **commit and push** before handoff — see [`docs/END_OF_PASS_GIT.md`](./docs/END_OF_PASS_GIT.md).
+
 ---
 
 ## Docs

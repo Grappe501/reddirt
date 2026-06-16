@@ -1,8 +1,13 @@
 {
-  "version": 1,
-  "asOf": "2026-06-15",
+  "version": 2,
+  "asOf": "2026-06-16",
+  "networkGoal": 60000,
+  "networkGoalLabel": "$60K near-term fundraising milestone",
+  "workingCampaignGoal": 232053,
+  "workingCampaignGoalLabel": "Working campaign budget",
+  "combinedGoal": 292053,
   "raised": 60000,
-  "goal": 232053,
-  "goalLabel": "Working campaign budget",
-  "rampUpNote": "Ramp up fundraising — $60K raised against working campaign target; Sherwood hosts and VIP tables are priority levers."
+  "raisedProvisional": true,
+  "raisedNote": "Provisional until post-filing reconciliation next week — replace with AR filing total when available.",
+  "rampUpNote": "Overall fundraising target is $292K ($60K milestone + $232K working campaign). Sherwood hosts and VIP tables remain priority levers."
 }

@@ -3,7 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { COMMUNITY_DEFECT_SEVERITIES, COMMUNITY_PILOT_WORKBENCHES } from "@/lib/election-plan/community-workbench/pilot";
+import {
+  COMMUNITY_DEFECT_SEVERITIES,
+  COMMUNITY_PILOT_CITY_WORKBENCHES,
+  COMMUNITY_PILOT_OPTIONAL_CITY,
+  COMMUNITY_PILOT_EVENT_WORKBENCHES,
+} from "@/lib/election-plan/community-workbench/pilot";
 import type { CommunityPilotDefectRow } from "@/lib/election-plan/community-workbench/load-pilot-status";
 import { cn } from "@/lib/utils";
 
@@ -92,7 +97,7 @@ export function CommunityWorkbenchDefectLogPanel({
     <div>
       <h3 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Field defect log</h3>
       <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-        {openCount} open · Sherwood & Jacksonville pilot only. No PII in defect descriptions.
+        {openCount} open · Jacksonville + G&amp;G event pilot. No PII in defect descriptions.
       </p>
 
       <form onSubmit={submitDefect} className="mt-4 space-y-3 rounded-lg border border-[var(--ep-border)] bg-[var(--ep-cream)] p-4">
@@ -104,11 +109,19 @@ export function CommunityWorkbenchDefectLogPanel({
               onChange={(e) => setSlug(e.target.value)}
               className="mt-1 w-full rounded-lg border border-[var(--ep-border)] px-3 py-2 text-sm"
             >
-              {COMMUNITY_PILOT_WORKBENCHES.map((p) => (
+              {COMMUNITY_PILOT_CITY_WORKBENCHES.map((p) => (
                 <option key={p.slug} value={p.slug}>
-                  {p.name}
+                  {p.name} (city)
                 </option>
               ))}
+              {COMMUNITY_PILOT_EVENT_WORKBENCHES.map((p) => (
+                <option key={p.eventSlug} value={p.workbenchSlug}>
+                  {p.name} (event on {p.workbenchSlug})
+                </option>
+              ))}
+              <option value={COMMUNITY_PILOT_OPTIONAL_CITY.slug}>
+                {COMMUNITY_PILOT_OPTIONAL_CITY.name} (optional city)
+              </option>
             </select>
           </label>
         ) : null}

@@ -18,6 +18,8 @@ export const REDDIRT_COUNTY_BRIEFING_V2_SLUGS = new Set(["pope", "pulaski", "fau
 export type CountyEventLinkBundle = {
   registry: ArkansasRegistryCounty;
   displayName: string;
+  /** Primary Election Plan county intelligence drilldown. */
+  electionPlanCountyHref: string;
   /** RedDirt admin bridge (placeholder panels + outbound links). */
   adminBridgeHref: string;
   /** Public RedDirt county command page. */
@@ -47,6 +49,7 @@ export function buildCountyEventLinkBundle(countyLabel: string | null | undefine
   return {
     registry,
     displayName: registry.displayName,
+    electionPlanCountyHref: `/election-plan/counties/${wbSlug}`,
     adminBridgeHref: `/admin/counties/${slug}`,
     redDirtCountyHref: `/counties/${slug}`,
     organizingIntelligenceHref: `/organizing-intelligence/counties/${slug}`,

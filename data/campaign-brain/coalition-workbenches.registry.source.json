@@ -1,0 +1,239 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-16",
+  "note": "Coalition Command → Community Workbench registry. Framework slots are fillable by local coalition leads — not campaign assumptions about any community.",
+  "workbenches": [
+    {
+      "slug": "african-american-outreach",
+      "name": "African American Outreach",
+      "tagline": "Faith, civic orgs, NAACP, Greek life, HBCU, business, youth — local structures",
+      "locale": "en",
+      "frameworkNote": "Use community-specific org names and relationships — framework slots only until leads populate intel.",
+      "intelSections": [
+        { "key": "faith_communities", "label": "Faith Communities" },
+        { "key": "civic_organizations", "label": "Civic Organizations" },
+        { "key": "naacp", "label": "NAACP Relationships" },
+        { "key": "greek_life", "label": "Fraternities & Sororities" },
+        { "key": "hbcu", "label": "HBCU Connections" },
+        { "key": "small_business", "label": "Small Business Leaders" },
+        { "key": "youth_leadership", "label": "Youth Leadership" }
+      ],
+      "volunteerPathways": [
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "faith_connector", "label": "Faith Connector" },
+        { "key": "civic_org_liaison", "label": "Civic Organization Liaison" },
+        { "key": "youth_ambassador", "label": "Youth Ambassador" },
+        { "key": "election_info_team", "label": "Election Information Team" }
+      ]
+    },
+    {
+      "slug": "hispanic-outreach",
+      "name": "Hispanic Outreach",
+      "tagline": "Arkansas Hispanic communities — natural Spanish where leads choose",
+      "locale": "es-US",
+      "leadRole": "Hispanic Outreach Lead (confirm with coalition lead)",
+      "frameworkNote": "Public volunteer pathways may use natural Arkansas Spanish — not literal translation. Lead review required before publish.",
+      "intelSections": [
+        { "key": "community_leaders", "label": "Community Leaders / Líderes comunitarios" },
+        { "key": "church_relationships", "label": "Church Relationships / Relaciones con iglesias" },
+        { "key": "family_networks", "label": "Family Networks / Redes familiares" },
+        { "key": "small_business", "label": "Small Business Networks / Negocios locales" },
+        { "key": "schools", "label": "School Connections / Conexiones escolares" },
+        { "key": "soccer_leagues", "label": "Soccer Leagues / Ligas de fútbol" },
+        { "key": "festivals", "label": "Community Festivals / Festivales comunitarios" }
+      ],
+      "volunteerPathways": [
+        { "key": "community_connector", "label": "Community Connector", "labelEs": "Conector comunitario" },
+        { "key": "faith_connector", "label": "Faith Connector", "labelEs": "Conector de fe" },
+        { "key": "family_outreach", "label": "Family Outreach Team", "labelEs": "Equipo de alcance familiar" },
+        { "key": "election_info", "label": "Election Information Team", "labelEs": "Equipo de información electoral" },
+        { "key": "youth_ambassador", "label": "Youth Ambassador", "labelEs": "Embajador juvenil" }
+      ]
+    },
+    {
+      "slug": "faith-communities",
+      "name": "Faith Communities",
+      "tagline": "Multi-faith relationship organizing — local leaders define structure",
+      "locale": "en",
+      "intelSections": [
+        { "key": "congregations", "label": "Congregations & Fellowships" },
+        { "key": "denominational", "label": "Denominational Networks" },
+        { "key": "clergy", "label": "Clergy & Faith Leaders" },
+        { "key": "faith_based_orgs", "label": "Faith-Based Organizations" },
+        { "key": "community_service", "label": "Community Service Partners" }
+      ],
+      "volunteerPathways": [
+        { "key": "faith_connector", "label": "Faith Connector" },
+        { "key": "congregation_captain", "label": "Congregation Captain" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ]
+    },
+    {
+      "slug": "muslim-community",
+      "name": "Muslim Community",
+      "tagline": "Culturally appropriate organizing structures — local leaders shape content",
+      "locale": "en",
+      "frameworkNote": "Dedicated sections for women's leadership, youth, and faith leaders — local leaders define how each is used.",
+      "intelSections": [
+        { "key": "community_leadership", "label": "Community Leadership" },
+        { "key": "faith_leaders", "label": "Faith Leader Relationships" },
+        { "key": "womens_leadership", "label": "Women's Community Leadership" },
+        { "key": "youth_leadership", "label": "Youth Leadership" },
+        { "key": "community_service", "label": "Community Service Projects" },
+        { "key": "election_info", "label": "Election Information" }
+      ],
+      "volunteerPathways": [
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "faith_connector", "label": "Faith Connector" },
+        { "key": "womens_outreach", "label": "Women's Outreach Team" },
+        { "key": "youth_ambassador", "label": "Youth Ambassador" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ]
+    },
+    {
+      "slug": "womens-leadership",
+      "name": "Women's Leadership",
+      "tagline": "County chairs, candidate recruitment, leadership development",
+      "locale": "en",
+      "intelSections": [
+        { "key": "county_chairs", "label": "County Women's Chairs" },
+        { "key": "professional_networks", "label": "Professional Networks" },
+        { "key": "civic_orgs", "label": "Civic & Service Organizations" },
+        { "key": "faith_communities", "label": "Faith Communities" }
+      ],
+      "volunteerPathways": [
+        { "key": "county_chair", "label": "County Women's Chair" },
+        { "key": "candidate_recruitment", "label": "Candidate Recruitment" },
+        { "key": "leadership_development", "label": "Leadership Development" },
+        { "key": "community_outreach", "label": "Community Outreach" }
+      ]
+    },
+    {
+      "slug": "labor",
+      "name": "Labor",
+      "tagline": "Union relationships, worksite captains, worker stories",
+      "locale": "en",
+      "intelSections": [
+        { "key": "unions", "label": "Union Relationships" },
+        { "key": "worksites", "label": "Worksite Contacts" },
+        { "key": "labor_education", "label": "Labor Education Partners" },
+        { "key": "worker_stories", "label": "Worker Story Corps" }
+      ],
+      "volunteerPathways": [
+        { "key": "union_liaison", "label": "Union Liaison" },
+        { "key": "worksite_captain", "label": "Worksite Captain" },
+        { "key": "labor_education", "label": "Labor Education Team" },
+        { "key": "worker_story_corps", "label": "Worker Story Corps" }
+      ]
+    },
+    {
+      "slug": "veterans",
+      "name": "Veterans",
+      "tagline": "VFW, American Legion, veteran story corps",
+      "locale": "en",
+      "intelSections": [
+        { "key": "vfw", "label": "VFW Relationships" },
+        { "key": "american_legion", "label": "American Legion Relationships" },
+        { "key": "veteran_orgs", "label": "Veteran Service Organizations" },
+        { "key": "stories", "label": "Veteran Story Corps" }
+      ],
+      "volunteerPathways": [
+        { "key": "veteran_outreach", "label": "Veteran Outreach" },
+        { "key": "vfw_liaison", "label": "VFW Liaison" },
+        { "key": "legion_liaison", "label": "American Legion Liaison" },
+        { "key": "story_corps", "label": "Veteran Story Corps" },
+        { "key": "volunteer_team", "label": "Veteran Volunteer Team" }
+      ]
+    },
+    {
+      "slug": "youth-engagement",
+      "name": "Youth Engagement",
+      "tagline": "Campus leaders, peer recruitment, civic challenges — younger voice",
+      "locale": "en",
+      "intelSections": [
+        { "key": "campus_leaders", "label": "Campus Leaders" },
+        { "key": "student_orgs", "label": "Student Organizations" },
+        { "key": "high_schools", "label": "High School Programs" },
+        { "key": "content", "label": "Content Creation" },
+        { "key": "civic_challenges", "label": "Civic Challenges" }
+      ],
+      "volunteerPathways": [
+        { "key": "campus_captain", "label": "Campus Captain" },
+        { "key": "peer_recruiter", "label": "Peer Recruiter" },
+        { "key": "content_creator", "label": "Content Creator" },
+        { "key": "civic_challenge_lead", "label": "Civic Challenge Lead" },
+        { "key": "volunteer_hours", "label": "Volunteer Hours Coordinator" }
+      ]
+    },
+    {
+      "slug": "disability-community",
+      "name": "Disability Community",
+      "tagline": "Accessibility, advocacy orgs, inclusive events — local leaders define",
+      "locale": "en",
+      "intelSections": [
+        { "key": "advocacy_orgs", "label": "Advocacy Organizations" },
+        { "key": "service_providers", "label": "Service Providers" },
+        { "key": "accessibility", "label": "Accessibility Partners" },
+        { "key": "community_leaders", "label": "Community Leaders" }
+      ],
+      "volunteerPathways": [
+        { "key": "accessibility_lead", "label": "Accessibility Lead" },
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "event_accessibility", "label": "Event Accessibility Team" }
+      ]
+    },
+    {
+      "slug": "rural-arkansas",
+      "name": "Rural Arkansas",
+      "tagline": "Town halls, county fairs, rural validators",
+      "locale": "en",
+      "intelSections": [
+        { "key": "town_halls", "label": "Town Hall Networks" },
+        { "key": "county_fairs", "label": "County Fair Circuit" },
+        { "key": "rural_business", "label": "Rural Business & Ag" },
+        { "key": "faith_rural", "label": "Rural Faith Communities" },
+        { "key": "local_media", "label": "Local Media & Radio" }
+      ],
+      "volunteerPathways": [
+        { "key": "town_hall_host", "label": "Town Hall Host" },
+        { "key": "fair_circuit", "label": "Fair Circuit Volunteer" },
+        { "key": "rural_connector", "label": "Rural Connector" }
+      ]
+    },
+    {
+      "slug": "small-business",
+      "name": "Small Business",
+      "tagline": "Chamber, main street, employer networks",
+      "locale": "en",
+      "intelSections": [
+        { "key": "chamber", "label": "Chamber Relationships" },
+        { "key": "main_street", "label": "Main Street Businesses" },
+        { "key": "employers", "label": "Major Employers" },
+        { "key": "networks", "label": "Business Networks" }
+      ],
+      "volunteerPathways": [
+        { "key": "business_connector", "label": "Business Connector" },
+        { "key": "chamber_liaison", "label": "Chamber Liaison" },
+        { "key": "employer_outreach", "label": "Employer Outreach Team" }
+      ]
+    },
+    {
+      "slug": "educators",
+      "name": "Educators",
+      "tagline": "AEA, teachers, school districts, education allies",
+      "locale": "en",
+      "intelSections": [
+        { "key": "aea", "label": "AEA & Teacher Networks" },
+        { "key": "districts", "label": "School Districts" },
+        { "key": "administrators", "label": "Administrators & Staff" },
+        { "key": "education_allies", "label": "Education Allies" }
+      ],
+      "volunteerPathways": [
+        { "key": "teacher_connector", "label": "Teacher Connector" },
+        { "key": "aea_liaison", "label": "AEA Liaison" },
+        { "key": "school_event_lead", "label": "School Event Lead" },
+        { "key": "education_story", "label": "Education Story Corps" }
+      ]
+    }
+  ]
+}

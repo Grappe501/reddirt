@@ -4,6 +4,10 @@ import { adminLoginAction } from "@/lib/admin/admin-auth-actions";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { getAdminSecret } from "@/lib/admin/session";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
+import {
+  CAMPAIGN_MANAGER_WORKBENCH_NAME,
+  campaignManagerPageTitle,
+} from "@/lib/admin/campaign-manager-workbench-labels";
 
 function getAdminLoginDefaultPath(): string {
   return process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate"
@@ -12,7 +16,7 @@ function getAdminLoginDefaultPath(): string {
 }
 
 export const metadata: Metadata = {
-  title: "Admin · Content board",
+  title: campaignManagerPageTitle("Sign in"),
   robots: { index: false, follow: false },
 };
 
@@ -39,12 +43,12 @@ export default async function AdminLoginPage({ searchParams }: Props) {
           Kelly Grappe campaign
         </p>
         <h1 className="mt-3 font-heading text-2xl font-bold">
-          {debateLaunch ? "Debate intelligence workbench" : "Content board"}
+          {debateLaunch ? "Debate intelligence workbench" : CAMPAIGN_MANAGER_WORKBENCH_NAME}
         </h1>
         <p className="mt-3 font-body text-sm leading-relaxed text-kelly-inverse-soft">
           {debateLaunch
             ? "Sign in to access opposition research, debate prep, claims review, and action queues. Internal use only."
-            : "Sign in with the shared admin passphrase. This area manages public website content and Substack sync only."}
+            : "Sign in with your Campaign Manager passphrase. This is your statewide operations workbench—content, field, calendar, and fundraising."}
         </p>
 
         {sp.error === "config" ? (
@@ -83,7 +87,7 @@ export default async function AdminLoginPage({ searchParams }: Props) {
               type="submit"
               className="w-full rounded-btn bg-kelly-gold px-4 py-3 font-body text-sm font-bold text-kelly-navy shadow-soft transition hover:-translate-y-0.5 hover:brightness-105"
             >
-              {debateLaunch ? "Enter intelligence workbench" : "Enter content board"}
+              {debateLaunch ? "Enter intelligence workbench" : `Enter ${CAMPAIGN_MANAGER_WORKBENCH_NAME}`}
             </button>
           </form>
         )}

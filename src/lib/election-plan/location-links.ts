@@ -1,20 +1,14 @@
-import { buildCountyEventLinkBundle } from "@/lib/county/county-workbench-event-links";
+import { countyIntelligenceHref } from "@/lib/election-plan/county-intelligence-nav";
 
-/** In-app county playbook hub — KPIs, outreach contacts, link to full workbench. */
+/** Primary in-system county intelligence route inside Election Plan. */
 export function countyPlaybookHref(_countyName: string, electionPlanSlug?: string): string {
   const slug = electionPlanSlug ?? _countyName.toLowerCase().replace(/\s+/g, "-");
-  return `/election-plan/counties/${slug.replace(/-county$/, "")}`;
+  return countyIntelligenceHref(slug.replace(/-county$/, ""));
 }
 
-/** Sister workbench / public county command (external drill-down). */
+/** @deprecated Use countyPlaybookHref — legacy external/sister-app paths belong in LegacyCountySystemsPanel only. */
 export function countyWorkbenchExternalHref(countyName: string, electionPlanSlug?: string): string {
-  const bundle = buildCountyEventLinkBundle(`${countyName} County`);
-  if (bundle?.workbenchLeaderHref) return bundle.workbenchLeaderHref;
-  if (bundle?.redDirtBriefingV2Href) return bundle.redDirtBriefingV2Href;
-  if (bundle?.redDirtCountyHref) return bundle.redDirtCountyHref;
-  const slug = electionPlanSlug ?? countyName.toLowerCase().replace(/\s+/g, "-");
-  const registrySlug = slug.endsWith("-county") ? slug : `${slug}-county`;
-  return `/counties/${registrySlug}`;
+  return countyPlaybookHref(countyName, electionPlanSlug);
 }
 
 /** @deprecated Prefer countyPlaybookHref — same destination. */

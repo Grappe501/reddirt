@@ -2,6 +2,10 @@
  * V2.5 — Ask Kelly system guide: pathname-aware + keyword intents (no DB, no voter/donor data).
  */
 
+import {
+  CAMPAIGN_MANAGER_WORKBENCH_NAME,
+} from "@/lib/admin/campaign-manager-workbench-labels";
+
 /** Public routes only — never filesystem paths or server internals. */
 export type AskKellySystemGuideLink = { label: string; href: string };
 
@@ -98,12 +102,12 @@ function adminLocationSummary(pathname?: string): string | null {
   if (p === ASK_KELLY_SYSTEM_ROUTES.betaFeedback) return "Ask Kelly beta feedback";
   if (p === "/admin/workbench") return "Campaign workbench";
   if (p === "/admin/content") return "Content overview";
-  if (p === "/admin/homepage") return "Homepage (admin)";
+  if (p === "/admin/homepage") return "Homepage";
   if (p === "/admin/volunteers/intake") return "Volunteer sheet intake";
   if (p === ASK_KELLY_SYSTEM_ROUTES.countyIntel) return "County intelligence";
   const slug = adminPagesSlug(p);
   if (slug) return `Page content for “${slugToDisplayLabel(slug)}”`;
-  return "Admin";
+  return CAMPAIGN_MANAGER_WORKBENCH_NAME;
 }
 
 type RuleBuild = {
@@ -126,7 +130,7 @@ function applyAdminPreface(built: RuleBuild, pathname?: string): RuleBuild {
   if (!summary) return built;
   return {
     ...built,
-    answer: `You’re signed into admin (${summary}). ${built.answer}`.trim(),
+    answer: `You're in ${CAMPAIGN_MANAGER_WORKBENCH_NAME} (${summary}). ${built.answer}`.trim(),
   };
 }
 
@@ -266,7 +270,7 @@ function buildLocationAnswer(kind: LocKind, pathname?: string): AskKellySystemGu
       return {
         matched: true,
         title: "Which screen this is",
-        answer: `You’re in Admin → Page content, editing “${label}.” The slug in the URL lines up with the pillar page your changes will attach to.`,
+        answer: `You're in ${CAMPAIGN_MANAGER_WORKBENCH_NAME} → Page content, editing “${label}.” The slug in the URL lines up with the pillar page your changes will attach to.`,
         links: [{ label: "Page list", href: ASK_KELLY_SYSTEM_ROUTES.pages }],
         nextStep: "If this isn’t the page you meant, go back to the list and choose the correct row.",
       };
@@ -286,7 +290,7 @@ function buildLocationAnswer(kind: LocKind, pathname?: string): AskKellySystemGu
         matched: true,
         title: "Which screen this is",
         answer:
-          "You’re on Candidate onboarding—the admin home that explains dashboards, beta triage, and how page saves work.",
+          `You're on Candidate onboarding—the ${CAMPAIGN_MANAGER_WORKBENCH_NAME} home that explains dashboards, beta triage, and how page saves work.`,
         links: [{ label: "Page content", href: ASK_KELLY_SYSTEM_ROUTES.pages }],
         nextStep: "Skim sections top to bottom, then open Page content when you want to try one edit.",
       };
@@ -302,11 +306,11 @@ function buildLocationAnswer(kind: LocKind, pathname?: string): AskKellySystemGu
       };
     }
     if (p.startsWith("/admin")) {
-      const summary = adminLocationSummary(pathname) ?? "Admin";
+      const summary = adminLocationSummary(pathname) ?? CAMPAIGN_MANAGER_WORKBENCH_NAME;
       return {
         matched: true,
         title: "Which screen this is",
-        answer: `You’re signed into admin (${summary}). Use the sidebar to move between ops, content, and onboarding screens.`,
+        answer: `You're in ${CAMPAIGN_MANAGER_WORKBENCH_NAME} (${summary}). Use the sidebar to move between ops, content, and onboarding screens.`,
         links: [
           { label: "Candidate onboarding", href: ASK_KELLY_SYSTEM_ROUTES.onboarding },
           { label: "Campaign workbench", href: ASK_KELLY_SYSTEM_ROUTES.workbench },
@@ -451,7 +455,7 @@ function buildLocationAnswer(kind: LocKind, pathname?: string): AskKellySystemGu
       matched: true,
       title: "How to get back",
       answer:
-        "Use the browser Back button for one step, or use the admin sidebar and Candidate onboarding as stable anchors. Nothing here grants extra access—navigation is the same as any other admin session.",
+        `Use the browser Back button for one step, or use the Campaign Manager sidebar and Candidate onboarding as stable anchors. Nothing here grants extra access—navigation is the same as any other Campaign Manager session.`,
       links: [
         { label: "Candidate onboarding", href: ASK_KELLY_SYSTEM_ROUTES.onboarding },
         { label: "Campaign workbench", href: ASK_KELLY_SYSTEM_ROUTES.workbench },
@@ -715,7 +719,7 @@ const rules: Rule[] = [
         { label: "Pope briefing (canonical)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingPope },
         { label: "Pulaski briefing v2 (central Arkansas)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingPulaskiV2 },
         { label: "Faulkner briefing v2 (central Arkansas)", href: ASK_KELLY_SYSTEM_ROUTES.countyBriefingFaulknerV2 },
-        { label: "County intelligence (admin)", href: ASK_KELLY_SYSTEM_ROUTES.countyIntel },
+        { label: "County intelligence", href: ASK_KELLY_SYSTEM_ROUTES.countyIntel },
       ],
       nextStep: "Keep voter-level detail in gated admin tools—Ask Kelly does not search the voter file.",
       safetyNote: "Aggregates only on public briefing pages; follow counsel on what may be shown.",
@@ -735,7 +739,7 @@ const rules: Rule[] = [
       links: [
         { label: "About Kelly (public hub)", href: ASK_KELLY_SYSTEM_ROUTES.volunteerPublic },
         { label: "/volunteerPage (redirect alias)", href: ASK_KELLY_SYSTEM_ROUTES.aliasVolunteerPage },
-        { label: "Volunteer sheet intake (admin)", href: ASK_KELLY_SYSTEM_ROUTES.adminVolunteerIntake },
+        { label: "Volunteer sheet intake", href: ASK_KELLY_SYSTEM_ROUTES.adminVolunteerIntake },
       ],
       nextStep: "If you meant field coordination tools, open Campaign workbench or ask your admin which authenticated lanes are enabled.",
     }),
@@ -808,7 +812,7 @@ const rules: Rule[] = [
     build: () => ({
       title: "Minimizing the Ask Kelly console",
       answer:
-        "On Candidate onboarding, use Minimize on the console toolbar to collapse the large header into a compact bar (your choice is saved in this browser). The admin sidebar stays put—only the console chrome tucks away so the rest of the dashboard has more room.",
+        `On Candidate onboarding, use Minimize on the console toolbar to collapse the large header into a compact bar (your choice is saved in this browser). The Campaign Manager sidebar stays put—only the console chrome tucks away so the rest of the dashboard has more room.`,
       links: [{ label: "Candidate onboarding", href: ASK_KELLY_SYSTEM_ROUTES.onboarding }],
       nextStep: "Open the bar when you want the full orientation again—Open Ask Kelly returns the default view.",
     }),
@@ -985,7 +989,7 @@ const rules: Rule[] = [
     build: () => ({
       title: "Candidate onboarding",
       answer:
-        "Candidate onboarding is the admin home for learning the tools: where page editing lives, where beta feedback is triaged, and how updates are meant to flow. It does not change the public site by itself—it orients you.",
+        `Candidate onboarding is the ${CAMPAIGN_MANAGER_WORKBENCH_NAME} home for learning the tools: where page editing lives, where beta feedback is triaged, and how updates are meant to flow. It does not change the public site by itself—it orients you.`,
       links: [{ label: "Candidate onboarding", href: ASK_KELLY_SYSTEM_ROUTES.onboarding }],
       nextStep: "Open that page, read “First things to learn,” then open Page content when you’re ready to try a hero edit.",
     }),
@@ -1194,7 +1198,7 @@ const rules: Rule[] = [
       title: "Homepage",
       answer:
         "Homepage composition lives under its own admin screen (sections and featured content). It’s separate from editing a pillar page hero in Page content. Use homepage when you’re changing what the `/` route shows—not when you’re only fixing text on a single issue page.",
-      links: [{ label: "Homepage (admin)", href: ASK_KELLY_SYSTEM_ROUTES.homepage }],
+      links: [{ label: "Homepage", href: ASK_KELLY_SYSTEM_ROUTES.homepage }],
       nextStep: "Open Homepage, change one thing you understand, and complete the save path there so you know what it affects.",
     }),
   },
@@ -1243,7 +1247,7 @@ const rules: Rule[] = [
         { label: "Campaign workbench", href: ASK_KELLY_SYSTEM_ROUTES.workbench },
         { label: "Content overview", href: ASK_KELLY_SYSTEM_ROUTES.contentOverview },
       ],
-      nextStep: "Open the workbench from the admin sidebar and bookmark the panels you’ll use weekly.",
+      nextStep: "Open the workbench from the Campaign Manager sidebar and bookmark the panels you'll use weekly.",
     }),
   },
   {

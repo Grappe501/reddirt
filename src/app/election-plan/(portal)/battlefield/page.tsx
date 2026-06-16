@@ -15,7 +15,7 @@ export default function BattlefieldOverviewPage() {
       <div className="ep-classification">Internal · Part III · Arkansas Battlefield</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-6xl">
-          <BattlefieldOverviewPanel clusters={data.execution.clusters} standalone />
+          <BattlefieldOverviewPanel clusters={data.execution.clusters} counties={data.counties} standalone />
         </div>
       </div>
     </>

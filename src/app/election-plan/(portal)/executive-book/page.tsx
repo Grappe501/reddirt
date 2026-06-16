@@ -6,7 +6,7 @@ import { ExecutiveBookHubPanel } from "@/components/election-plan/executive-book
 
 export const metadata = {
   title: "Executive Book V1.1 | Kelly Grappe Victory Plan",
-  description: "Leadership briefing — shareable chapters for Kelly, Ernie, donors, validators, and coalition partners.",
+  description: "Leadership briefing — shareable chapters for Kelly, campaign leadership, donors, validators, and coalition partners.",
   robots: { index: false, follow: false },
 };
 

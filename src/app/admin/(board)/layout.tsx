@@ -1,9 +1,11 @@
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { AdminBoardShell } from "@/components/admin/AdminBoardShell";
 import { KellyCalendarCockpitChrome } from "@/components/admin/kelly-calendar-cockpit/KellyCalendarCockpitChrome";
 import { IntelligenceLaunchBoardShell } from "@/components/admin/intelligence/IntelligenceLaunchBoardShell";
 import { requireAdminPage } from "@/lib/admin/require-admin";
+import { CAMPAIGN_MANAGER_WORKBENCH_NAME } from "@/lib/admin/campaign-manager-workbench-labels";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { resolveActiveCampaignTenant } from "@/lib/campaign-tenancy/resolve-active-tenant";
@@ -11,6 +13,14 @@ import { resolveActiveCampaignTenant } from "@/lib/campaign-tenancy/resolve-acti
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 export const maxDuration = 26;
+
+export const metadata: Metadata = {
+  title: {
+    default: CAMPAIGN_MANAGER_WORKBENCH_NAME,
+    template: `%s · ${CAMPAIGN_MANAGER_WORKBENCH_NAME}`,
+  },
+  robots: { index: false, follow: false },
+};
 
 export default async function AdminBoardLayout({ children }: { children: ReactNode }) {
   await requireAdminPage();

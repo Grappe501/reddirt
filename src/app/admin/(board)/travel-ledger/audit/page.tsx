@@ -12,7 +12,7 @@ export default async function TravelLedgerAuditPage() {
       <TravelLedgerPageHeader
         eyebrow="Audit packet"
         title="Campaign mileage reimbursement support file"
-        description="Admin-only support view with reimbursement totals, exceptions, review notes, and audit trail entries."
+        description="Campaign Manager staff view with reimbursement totals, exceptions, review notes, and audit trail entries."
       />
       <TravelLedgerNav />
       <section className="grid gap-4 md:grid-cols-3">

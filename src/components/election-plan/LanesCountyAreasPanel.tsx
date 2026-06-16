@@ -30,7 +30,7 @@ export function LanesCountyAreasPanel({ cluster, county }: Props) {
           </p>
         </div>
         <Link href={countyPlaybookHref(county.county, county.slug)} className="ep-chapter-link text-sm">
-          County playbook →
+          County intelligence →
         </Link>
       </div>
 

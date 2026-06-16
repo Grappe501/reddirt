@@ -1,17 +1,22 @@
 import Link from "next/link";
 
-import type { ElectionPlanCluster } from "@/lib/election-plan/types";
+import type { ElectionPlanCluster, ElectionPlanCounty } from "@/lib/election-plan/types";
 import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
 import { formatPct, formatVotes } from "@/lib/election-plan/electionPlanData";
+import type { VciExample } from "@/lib/election-plan/vci-example";
+import { getVciExampleFromCounties } from "@/lib/election-plan/vci-example";
 import { VciExplainerCard } from "@/components/election-plan/VciExplainerCard";
 
 type Props = {
   clusters: ElectionPlanCluster[];
+  counties?: ElectionPlanCounty[];
+  vciExample?: VciExample | null;
   standalone?: boolean;
 };
 
-export function BattlefieldOverviewPanel({ clusters, standalone }: Props) {
+export function BattlefieldOverviewPanel({ clusters, counties, vciExample, standalone }: Props) {
   const totalVci = clusters.reduce((sum, c) => sum + c.vci, 0);
+  const example = vciExample ?? (counties ? getVciExampleFromCounties(counties) : null);
 
   return (
     <section>
@@ -47,7 +52,7 @@ export function BattlefieldOverviewPanel({ clusters, standalone }: Props) {
         </div>
       </div>
 
-      <VciExplainerCard />
+      <VciExplainerCard example={example} />
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {clusters.map((c) => (

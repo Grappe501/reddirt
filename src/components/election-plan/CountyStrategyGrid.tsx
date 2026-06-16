@@ -125,10 +125,10 @@ export function CountyStrategyGrid({ counties }: Props) {
                   className="ep-chapter-link block text-center text-sm font-semibold"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  Open county playbook →
+                  Open county intelligence →
                 </Link>
                 <p className="mt-1 text-center text-[10px] text-[var(--ep-navy-muted)]">
-                  KPIs · Kelly outreach contacts · workbench
+                  Strategy · cities · field · fundraising · demographics
                 </p>
               </div>
             </div>

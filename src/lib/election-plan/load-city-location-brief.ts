@@ -1,6 +1,12 @@
 import type { ElectionPlanCity } from "@/lib/election-plan/types";
 
-import { getCityNumericTargets, type CityNumericTargets } from "@/lib/election-plan/load-city-numeric-targets";
+import {
+  formatHousePartyGoalLine,
+  formatRegistrationGoalLine,
+  formatVolunteerGoalLine,
+  getCityNumericTargets,
+  type CityNumericTargets,
+} from "@/lib/election-plan/load-city-numeric-targets";
 
 import source from "../../../data/campaign-brain/city-location-briefs.source.json";
 
@@ -43,8 +49,18 @@ type SourceBrief = {
   registrationGoals?: string;
 };
 
+function goalsFromNumeric(city: ElectionPlanCity, numeric: CityNumericTargets) {
+  return {
+    housePartyGoals: formatHousePartyGoalLine(numeric),
+    volunteerGoals: formatVolunteerGoalLine(numeric),
+    registrationGoals: formatRegistrationGoalLine(numeric, city.county),
+  };
+}
+
 function scaffoldFromCity(city: ElectionPlanCity): Omit<CityLocationBrief, "slug"> {
-  const tags = city.influenceTags.map((t) => t.replace(/_/g, " ")).join(", ");
+  const numericTargets = getCityNumericTargets(city.slug);
+  const goalLines = numericTargets ? goalsFromNumeric(city, numericTargets) : null;
+
   return {
     name: city.name,
     county: city.county,
@@ -56,18 +72,15 @@ function scaffoldFromCity(city: ElectionPlanCity): Omit<CityLocationBrief, "slug
     visitFrequency: city.visitFrequency,
     isTop10: city.isTop10,
     status: "scaffold",
-    briefBoard: `${city.name} sits in ${city.county} County as a ${city.influenceCategory.toLowerCase()} — ${city.strategicRole} Visit cadence: ${city.visitFrequency}. This brief board is scaffolded from the priority city strategy until field intelligence and leadership review fill narrative depth.`,
-    situation: `${city.strategicRole} Influence tags: ${tags || "local community"}. Field context pending — describe what is happening politically and socially in ${city.name} before we ask for votes.`,
-    penetration: `Penetration plan pending — start from ${tags || "local validators"}, county clerk relationships, and ${city.visitFrequency} visibility rhythm. See county workbench for ${city.county} County field memory.`,
-    accomplishment: `Move the ${city.targetVotes.toLocaleString()}-vote city target (+${city.voteGain.toLocaleString()} estimated gain) through lane work aligned to county playbook missions.`,
-    messaging: `Localize Big Table doctrine: competent SOS service, Arkansas everyday life, and respect for community identity — not national partisan framing.`,
-    kellyTalkingPoints: [
-      `In ${city.name}, the Secretary of State's job is to make elections understandable and county clerks supported.`,
-      "I'm asking for your vote — and for neighbors to come back to the table even when we disagree.",
-    ],
-    housePartyGoals: "TBD — set after county captain stand-up and Power of 5 host recruitment.",
-    volunteerGoals: "TBD — align to county workbench volunteer KPIs.",
-    registrationGoals: "TBD — allocate from county registration goal once field plan locks.",
+    briefBoard: `Priority city #${city.rank} · ${city.county} County · ${city.influenceCategory}. Add narrative in city-location-briefs.source.json.`,
+    situation: "Field intelligence pending — sourced narrative required in city-location-briefs.source.json.",
+    penetration: "Penetration plan pending field review and county workbench input.",
+    accomplishment: `${city.targetVotes.toLocaleString()}-vote target (+${city.voteGain.toLocaleString()} gain) from priority city / chapter-05 allocation.`,
+    messaging: "Localized messaging pending in city-location-briefs.source.json.",
+    kellyTalkingPoints: [],
+    housePartyGoals: goalLines?.housePartyGoals ?? "Numeric targets pending in city-location-numeric-targets.source.json.",
+    volunteerGoals: goalLines?.volunteerGoals ?? "Numeric targets pending in city-location-numeric-targets.source.json.",
+    registrationGoals: goalLines?.registrationGoals ?? "Numeric targets pending in city-location-numeric-targets.source.json.",
   };
 }
 

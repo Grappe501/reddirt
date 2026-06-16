@@ -1055,6 +1055,43 @@
         "target": 796,
         "gainNeeded": 234
       }
+    },
+    "quitman": {
+      "locked": true,
+      "source": "win-quitman-operation.json — bonus cushion (isolated from Top 40)",
+      "registration": {
+        "newRegistrations": 25,
+        "registrationChecks": 50,
+        "countySharePct": 9.7,
+        "countyRegistrationGoal": 257,
+        "chapter05Source": "allocated_from_lane2_weight"
+      },
+      "houseParties": {
+        "hosts": 3,
+        "activeHosts": 3,
+        "powerOf5Circles": 3,
+        "conversationsTarget": 100,
+        "vipTables": null
+      },
+      "volunteers": {
+        "activeVolunteers": 15,
+        "captains": 3
+      },
+      "votes": {
+        "target": 84,
+        "gainNeeded": 38
+      },
+      "secondaryGoals": [
+        {
+          "id": "quitman-sos-2022-plus-20",
+          "label": "20% SOS lift vs 2022 (bonus cushion)",
+          "description": "Bonus cushion: increase Secretary of State votes in Quitman by 20% over 2022 midterm — isolated from Top 40 combined totals.",
+          "targetIncreasePct": 20,
+          "baseline2022SosVotes": 42,
+          "targetSosVotes": 50,
+          "baselineSource": "Cleburne 2022 SOS × Quitman pop share — not in Top 40 totals"
+        }
+      ]
     }
   }
 }
