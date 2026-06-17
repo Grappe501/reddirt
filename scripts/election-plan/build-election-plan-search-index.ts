@@ -209,6 +209,11 @@ function main(): void {
     "Executive Book",
     entries,
   );
+  walkMarkdown(
+    path.join(ROOT, "docs/strategic-plan/plurality-victory-plan/executive-book-v2"),
+    "Executive Book 2.0",
+    entries,
+  );
   walkMarkdown(path.join(ROOT, "docs/strategic-plan/plurality-victory-plan"), "Strategic Plan", entries);
   walkMarkdown(path.join(ROOT, "docs/campaign-brain"), "Campaign Brain", entries);
 

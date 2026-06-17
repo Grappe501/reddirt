@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-16T23:15:34.985Z",
+  "generatedAt": "2026-06-17T00:11:45.684Z",
   "classification": "Internal campaign strategy presentation — not for public distribution.",
   "hero": {
     "title": "Arkansas Plurality Victory Plan",
@@ -4570,31 +4570,6 @@
     "explanation": "Scored field opportunities from the Forward Motion activation queue — fairs, forums, and community stops ranked by campaign impact, verification confidence, and county strategy. Use this list to decide where Kelly or surrogates should go next and what promotion still needs drafting.",
     "stops": [
       {
-        "eventId": "fest-2026-06-16-fundraiser-in-quitman",
-        "eventName": "Fundraiser in Quitman",
-        "county": "Cleburne County",
-        "city": "TBD",
-        "date": "2026-06-16",
-        "assignment": "County Team",
-        "effectiveScore": 38,
-        "campaignImpactScore": 50,
-        "verificationStatus": "tentative",
-        "activationReadinessPct": 0,
-        "mobilizeStatus": "not_started",
-        "facebookStatus": "not_started",
-        "newsReleaseStatus": "not_started",
-        "graphicsStatus": "needed",
-        "phoneBankStatus": "list_needed",
-        "postcardStatus": "not_started",
-        "storyWorkflowStatus": "not_started",
-        "nextAction": "Draft Mobilize event — human approval required before publish",
-        "cluster": "North Central Ozarks Cluster",
-        "countyTier": "B",
-        "primaryLane": "Relationship + persuasion",
-        "source": "festival-activation-queue",
-        "daysUntil": 0
-      },
-      {
         "eventId": "fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-&-car-show",
         "eventName": "Sixty-Eight Petit Jean Swap Meet & Car Show",
         "county": "Conway County",
@@ -4617,7 +4592,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-17-montgomery-county-meeting",
@@ -4642,7 +4617,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "aea-montgomery-stub",
@@ -4667,7 +4642,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-18-greenwood-river-valley-crawfish-festival",
@@ -4692,7 +4667,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-nodate-little-rock-juneteenth-in-little-rock",
@@ -4717,7 +4692,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
@@ -4742,7 +4717,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-june-craftfest",
@@ -4767,7 +4742,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-juneteenth-morrilton-c5",
@@ -4792,7 +4767,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-20-fairfield-bay-surf-the-bay",
@@ -4817,7 +4792,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-20-menifee-juneteenth",
@@ -4842,7 +4817,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
@@ -4867,7 +4842,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-24-springdale-rodeo-of-the-ozarks",
@@ -4892,7 +4867,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 8
+        "daysUntil": 7
       },
       {
         "eventId": "fest-2026-06-26-north-little-rock-arkansas-folklife-festival",
@@ -4917,7 +4892,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 10
+        "daysUntil": 9
       },
       {
         "eventId": "fest-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
@@ -4942,7 +4917,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 10
+        "daysUntil": 9
       },
       {
         "eventId": "fest-2026-06-26-jasper-buffalo-river-elk-festival",
@@ -4967,7 +4942,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 10
+        "daysUntil": 9
       },
       {
         "eventId": "fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
@@ -4992,7 +4967,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 12
+        "daysUntil": 11
       },
       {
         "eventId": "fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
@@ -5017,7 +4992,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 12
+        "daysUntil": 11
       },
       {
         "eventId": "fest-2026-07-02-salem-fulton-county-freedom-festival",
@@ -5042,7 +5017,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 16
+        "daysUntil": 15
       },
       {
         "eventId": "fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
@@ -5067,7 +5042,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 17
+        "daysUntil": 16
       },
       {
         "eventId": "fest-2026-07-04-little-rock-pops-on-the-river",
@@ -5092,7 +5067,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 18
+        "daysUntil": 17
       },
       {
         "eventId": "fest-2026-07-04-heber-springs-freedom-fest-on-the-lake",
@@ -5117,7 +5092,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 18
+        "daysUntil": 17
       },
       {
         "eventId": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
@@ -5142,7 +5117,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 19
+        "daysUntil": 18
       },
       {
         "eventId": "fair-418be1689fc0c6f0d6a144f5",
@@ -5167,7 +5142,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 24
+        "daysUntil": 23
       },
       {
         "eventId": "fest-2026-07-10-salem-fulton-county-fair",
@@ -5192,7 +5167,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 24
+        "daysUntil": 23
       },
       {
         "eventId": "fest-2026-07-11-springdale-ozarks-250-block-party-in-springdale",
@@ -5217,7 +5192,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 25
+        "daysUntil": 24
       },
       {
         "eventId": "fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
@@ -5242,7 +5217,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 26
+        "daysUntil": 25
       },
       {
         "eventId": "fest-2026-07-16-clarksville-johnson-co-peach-festival",
@@ -5267,7 +5242,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 30
+        "daysUntil": 29
       },
       {
         "eventId": "fest-nodate-clarksville-johnson-county-peach-festival",
@@ -5292,7 +5267,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 30
+        "daysUntil": 29
       },
       {
         "eventId": "fest-2026-07-19-bella-vista-bella-vista-sunday-outdoor-farmers-and-makers-ma",
@@ -5317,7 +5292,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 33
+        "daysUntil": 32
       },
       {
         "eventId": "fair-8e31ab602a94385aa9919463",
@@ -5342,7 +5317,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "campaign-impact-scores",
-        "daysUntil": 37
+        "daysUntil": 36
       },
       {
         "eventId": "fest-2026-07-23-little-rock-3492-music-festival-a-celebration-of-community-a",
@@ -5367,7 +5342,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 37
+        "daysUntil": 36
       },
       {
         "eventId": "fest-2026-07-23-el-dorado-union-county-fair",
@@ -5392,7 +5367,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 37
+        "daysUntil": 36
       },
       {
         "eventId": "fest-2026-07-26-bella-vista-bella-vista-midsummer-farmers-and-makers-market",
@@ -5417,7 +5392,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 40
+        "daysUntil": 39
       },
       {
         "eventId": "fest-2026-07-31-fort-smith-fort-smith-back-2-school-shopping-extravaganza",
@@ -5442,7 +5417,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 45
+        "daysUntil": 44
       },
       {
         "eventId": "fest-2026-08-02-bella-vista-bella-vista-first-sunday-farmers-and-makers-mark",
@@ -5467,7 +5442,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 47
+        "daysUntil": 46
       },
       {
         "eventId": "fest-2026-08-04-fayetteville-tontitown-grape-festival",
@@ -5492,7 +5467,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 49
+        "daysUntil": 48
       },
       {
         "eventId": "fest-2026-08-06-hope-hope-watermelon-festival",
@@ -5517,7 +5492,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 51
+        "daysUntil": 50
       },
       {
         "eventId": "fest-2026-08-09-bella-vista-bella-vista-second-sunday-farmers-and-makers-mar",
@@ -5542,7 +5517,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 54
+        "daysUntil": 53
       },
       {
         "eventId": "fair-ef8a3bf07796f5d116269e4e",
@@ -5567,7 +5542,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 55
+        "daysUntil": 54
       },
       {
         "eventId": "fest-2026-08-10-imboden-lawrence-county-fair",
@@ -5592,7 +5567,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 55
+        "daysUntil": 54
       },
       {
         "eventId": "fair-dd3cef345b5f6d95088be298",
@@ -5617,7 +5592,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 59
+        "daysUntil": 58
       },
       {
         "eventId": "fest-2026-08-14-jasper-newton-county-fair",
@@ -5642,7 +5617,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 59
+        "daysUntil": 58
       },
       {
         "eventId": "fest-2026-08-15-little-rock-central-arkansas-women's-expo",
@@ -5667,7 +5642,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 60
+        "daysUntil": 59
       },
       {
         "eventId": "fest-2026-08-16-bella-vista-bella-vista-third-sunday-farmers-and-makers-mark",
@@ -5692,7 +5667,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 61
+        "daysUntil": 60
       },
       {
         "eventId": "fair-7b9fd5feee3eb99deeb9317a",
@@ -5717,7 +5692,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 62
+        "daysUntil": 61
       },
       {
         "eventId": "fest-2026-08-17-foreman-little-river-county-fair-and-rodeo",
@@ -5742,7 +5717,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 62
+        "daysUntil": 61
       },
       {
         "eventId": "fest-2026-08-23-bella-vista-bella-vista-fourth-sunday-farmers-and-makers-mar",
@@ -5767,7 +5742,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 68
+        "daysUntil": 67
       },
       {
         "eventId": "fair-571afd59db5f2040264c4ac1",
@@ -5792,7 +5767,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 69
+        "daysUntil": 68
       },
       {
         "eventId": "fest-2026-08-24-pocahontas-randolph-county-fair",
@@ -5817,7 +5792,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 69
+        "daysUntil": 68
       },
       {
         "eventId": "fest-2026-08-28-conway-bella-rustina-modern-vintage-market",
@@ -5842,7 +5817,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 73
+        "daysUntil": 72
       },
       {
         "eventId": "fest-2026-08-29-mount-vernon-arkansas-renaissance-festival",
@@ -5867,7 +5842,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 74
+        "daysUntil": 73
       },
       {
         "eventId": "fest-2026-08-29-dardanelle-79th-annual-mt-nebo-chicken-fry",
@@ -5892,7 +5867,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 74
+        "daysUntil": 73
       },
       {
         "eventId": "fest-2026-08-30-bella-vista-bella-vista-fifth-sunday-farmers-and-makers-mark",
@@ -5917,7 +5892,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 75
+        "daysUntil": 74
       },
       {
         "eventId": "fair-9e03993e30d8f62d3e8067dc",
@@ -5942,7 +5917,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 76
+        "daysUntil": 75
       },
       {
         "eventId": "fest-2026-08-31-lewisville-lafayette-county-fair-and-livestock-show",
@@ -5967,7 +5942,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 76
+        "daysUntil": 75
       },
       {
         "eventId": "fest-2026-09-02-clinton-van-buren-livestock-show-and-fair",
@@ -5992,7 +5967,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 78
+        "daysUntil": 77
       },
       {
         "eventId": "fair-a9c2bbe56f939da4c7898261",
@@ -6017,7 +5992,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 80
+        "daysUntil": 79
       },
       {
         "eventId": "fest-2026-09-04-crossett-ashley-county-fair-and-livestock-show",
@@ -6042,7 +6017,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 80
+        "daysUntil": 79
       },
       {
         "eventId": "fest-2026-09-05-mount-vernon-arkansas-labor-day-renaissance-festival",
@@ -6067,7 +6042,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 81
+        "daysUntil": 80
       },
       {
         "eventId": "fest-2026-09-05-rose-bud-daisy-days-vendor-market",
@@ -6092,7 +6067,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 81
+        "daysUntil": 80
       },
       {
         "eventId": "fest-2026-09-06-bella-vista-bella-vista-end-of-summer-farmers-and-makers-mar",
@@ -6117,7 +6092,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 82
+        "daysUntil": 81
       },
       {
         "eventId": "fair-7d4b1643af8887c9137f0856",
@@ -6142,7 +6117,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 83
+        "daysUntil": 82
       },
       {
         "eventId": "fair-fc9b80fc6ddcf7dd5cddf15a",
@@ -6167,7 +6142,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 83
+        "daysUntil": 82
       },
       {
         "eventId": "fest-2026-09-07-glenwoood-pike-county-fair-rodeo",
@@ -6192,7 +6167,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 83
+        "daysUntil": 82
       },
       {
         "eventId": "fest-2026-09-07-danville-yell-county-fair",
@@ -6217,7 +6192,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 83
+        "daysUntil": 82
       },
       {
         "eventId": "fest-2026-09-09-camden-quachita-county-fair",
@@ -6242,7 +6217,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 85
+        "daysUntil": 84
       },
       {
         "eventId": "fair-67cc3c414b72663f68984577",
@@ -6267,7 +6242,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 86
+        "daysUntil": 85
       },
       {
         "eventId": "fest-2026-09-10-prescott-nevada-county-fair",
@@ -6292,7 +6267,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 86
+        "daysUntil": 85
       },
       {
         "eventId": "fest-2026-09-11-little-rock-little-rock-fine-arts-art-market",
@@ -6317,7 +6292,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 87
+        "daysUntil": 86
       },
       {
         "eventId": "fest-2026-09-11-little-rock-vintage-market-days-of-little-rock",
@@ -6342,7 +6317,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 87
+        "daysUntil": 86
       },
       {
         "eventId": "fair-7da0f84811b62d6378c8eab1",
@@ -6367,7 +6342,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fest-2026-09-12-mount-vernon-arkansas-summer-renaissance-festival",
@@ -6392,7 +6367,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fair-85d27f33244a77c6ebeaf3c8",
@@ -6417,7 +6392,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "campaign-impact-scores",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fest-2026-09-12-van-buren-van-buren-junk-fest",
@@ -6442,7 +6417,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fest-2026-09-12-mulberry-crawford-county-fair",
@@ -6467,7 +6442,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fest-2026-09-12-piggott-clay-county-fair",
@@ -6492,36 +6467,11 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       }
     ],
     "stopsNext7Days": [
       {
-        "eventId": "fest-2026-06-16-fundraiser-in-quitman",
-        "eventName": "Fundraiser in Quitman",
-        "county": "Cleburne County",
-        "city": "TBD",
-        "date": "2026-06-16",
-        "assignment": "County Team",
-        "effectiveScore": 38,
-        "campaignImpactScore": 50,
-        "verificationStatus": "tentative",
-        "activationReadinessPct": 0,
-        "mobilizeStatus": "not_started",
-        "facebookStatus": "not_started",
-        "newsReleaseStatus": "not_started",
-        "graphicsStatus": "needed",
-        "phoneBankStatus": "list_needed",
-        "postcardStatus": "not_started",
-        "storyWorkflowStatus": "not_started",
-        "nextAction": "Draft Mobilize event — human approval required before publish",
-        "cluster": "North Central Ozarks Cluster",
-        "countyTier": "B",
-        "primaryLane": "Relationship + persuasion",
-        "source": "festival-activation-queue",
-        "daysUntil": 0
-      },
-      {
         "eventId": "fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-&-car-show",
         "eventName": "Sixty-Eight Petit Jean Swap Meet & Car Show",
         "county": "Conway County",
@@ -6544,7 +6494,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-17-montgomery-county-meeting",
@@ -6569,7 +6519,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "aea-montgomery-stub",
@@ -6594,7 +6544,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-18-greenwood-river-valley-crawfish-festival",
@@ -6619,7 +6569,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-nodate-little-rock-juneteenth-in-little-rock",
@@ -6644,7 +6594,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
@@ -6669,7 +6619,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-june-craftfest",
@@ -6694,7 +6644,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-juneteenth-morrilton-c5",
@@ -6719,7 +6669,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-20-fairfield-bay-surf-the-bay",
@@ -6744,7 +6694,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-20-menifee-juneteenth",
@@ -6769,7 +6719,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
@@ -6794,36 +6744,36 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
+      },
+      {
+        "eventId": "fest-2026-06-24-springdale-rodeo-of-the-ozarks",
+        "eventName": "Rodeo of the Ozarks",
+        "county": "Washington County",
+        "city": "Springdale",
+        "date": "2026-06-24",
+        "assignment": "Kelly",
+        "effectiveScore": 65,
+        "campaignImpactScore": 65,
+        "verificationStatus": "verified",
+        "activationReadinessPct": 0,
+        "mobilizeStatus": "not_started",
+        "facebookStatus": "draft_needed",
+        "newsReleaseStatus": "draft_needed",
+        "graphicsStatus": "needed",
+        "phoneBankStatus": "list_needed",
+        "postcardStatus": "not_started",
+        "storyWorkflowStatus": "capture_plan_ready",
+        "nextAction": "Draft Mobilize event — human approval required before publish",
+        "cluster": "Northwest Arkansas Cluster",
+        "countyTier": "A",
+        "primaryLane": "Lane 2 recovery + registration",
+        "source": "festival-activation-queue",
+        "daysUntil": 7
       }
     ],
     "stopsNext21Days": [
       {
-        "eventId": "fest-2026-06-16-fundraiser-in-quitman",
-        "eventName": "Fundraiser in Quitman",
-        "county": "Cleburne County",
-        "city": "TBD",
-        "date": "2026-06-16",
-        "assignment": "County Team",
-        "effectiveScore": 38,
-        "campaignImpactScore": 50,
-        "verificationStatus": "tentative",
-        "activationReadinessPct": 0,
-        "mobilizeStatus": "not_started",
-        "facebookStatus": "not_started",
-        "newsReleaseStatus": "not_started",
-        "graphicsStatus": "needed",
-        "phoneBankStatus": "list_needed",
-        "postcardStatus": "not_started",
-        "storyWorkflowStatus": "not_started",
-        "nextAction": "Draft Mobilize event — human approval required before publish",
-        "cluster": "North Central Ozarks Cluster",
-        "countyTier": "B",
-        "primaryLane": "Relationship + persuasion",
-        "source": "festival-activation-queue",
-        "daysUntil": 0
-      },
-      {
         "eventId": "fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-&-car-show",
         "eventName": "Sixty-Eight Petit Jean Swap Meet & Car Show",
         "county": "Conway County",
@@ -6846,7 +6796,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-17-montgomery-county-meeting",
@@ -6871,7 +6821,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "aea-montgomery-stub",
@@ -6896,7 +6846,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-18-greenwood-river-valley-crawfish-festival",
@@ -6921,7 +6871,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-nodate-little-rock-juneteenth-in-little-rock",
@@ -6946,7 +6896,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
@@ -6971,7 +6921,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-june-craftfest",
@@ -6996,7 +6946,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-juneteenth-morrilton-c5",
@@ -7021,7 +6971,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-20-fairfield-bay-surf-the-bay",
@@ -7046,7 +6996,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-20-menifee-juneteenth",
@@ -7071,7 +7021,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
@@ -7096,7 +7046,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-24-springdale-rodeo-of-the-ozarks",
@@ -7121,7 +7071,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 8
+        "daysUntil": 7
       },
       {
         "eventId": "fest-2026-06-26-north-little-rock-arkansas-folklife-festival",
@@ -7146,7 +7096,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 10
+        "daysUntil": 9
       },
       {
         "eventId": "fest-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
@@ -7171,7 +7121,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 10
+        "daysUntil": 9
       },
       {
         "eventId": "fest-2026-06-26-jasper-buffalo-river-elk-festival",
@@ -7196,7 +7146,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 10
+        "daysUntil": 9
       },
       {
         "eventId": "fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
@@ -7221,7 +7171,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 12
+        "daysUntil": 11
       },
       {
         "eventId": "fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
@@ -7246,7 +7196,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 12
+        "daysUntil": 11
       },
       {
         "eventId": "fest-2026-07-02-salem-fulton-county-freedom-festival",
@@ -7271,7 +7221,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 16
+        "daysUntil": 15
       },
       {
         "eventId": "fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
@@ -7296,7 +7246,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 17
+        "daysUntil": 16
       },
       {
         "eventId": "fest-2026-07-04-little-rock-pops-on-the-river",
@@ -7321,7 +7271,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 18
+        "daysUntil": 17
       },
       {
         "eventId": "fest-2026-07-04-heber-springs-freedom-fest-on-the-lake",
@@ -7346,7 +7296,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 18
+        "daysUntil": 17
       },
       {
         "eventId": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
@@ -7371,36 +7321,11 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 19
+        "daysUntil": 18
       }
     ],
     "stopsThroughElection": [
       {
-        "eventId": "fest-2026-06-16-fundraiser-in-quitman",
-        "eventName": "Fundraiser in Quitman",
-        "county": "Cleburne County",
-        "city": "TBD",
-        "date": "2026-06-16",
-        "assignment": "County Team",
-        "effectiveScore": 38,
-        "campaignImpactScore": 50,
-        "verificationStatus": "tentative",
-        "activationReadinessPct": 0,
-        "mobilizeStatus": "not_started",
-        "facebookStatus": "not_started",
-        "newsReleaseStatus": "not_started",
-        "graphicsStatus": "needed",
-        "phoneBankStatus": "list_needed",
-        "postcardStatus": "not_started",
-        "storyWorkflowStatus": "not_started",
-        "nextAction": "Draft Mobilize event — human approval required before publish",
-        "cluster": "North Central Ozarks Cluster",
-        "countyTier": "B",
-        "primaryLane": "Relationship + persuasion",
-        "source": "festival-activation-queue",
-        "daysUntil": 0
-      },
-      {
         "eventId": "fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-&-car-show",
         "eventName": "Sixty-Eight Petit Jean Swap Meet & Car Show",
         "county": "Conway County",
@@ -7423,7 +7348,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-17-montgomery-county-meeting",
@@ -7448,7 +7373,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "aea-montgomery-stub",
@@ -7473,7 +7398,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 1
+        "daysUntil": 0
       },
       {
         "eventId": "fest-2026-06-18-greenwood-river-valley-crawfish-festival",
@@ -7498,7 +7423,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 2
+        "daysUntil": 1
       },
       {
         "eventId": "fest-nodate-little-rock-juneteenth-in-little-rock",
@@ -7523,7 +7448,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
@@ -7548,7 +7473,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-mountain-home-june-craftfest",
@@ -7573,7 +7498,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-19-juneteenth-morrilton-c5",
@@ -7598,7 +7523,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 3
+        "daysUntil": 2
       },
       {
         "eventId": "fest-2026-06-20-fairfield-bay-surf-the-bay",
@@ -7623,7 +7548,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-20-menifee-juneteenth",
@@ -7648,7 +7573,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 4
+        "daysUntil": 3
       },
       {
         "eventId": "fest-2026-06-21-bella-vista-bella-vista-summer-farmers-and-makers-market",
@@ -7673,7 +7598,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 5
+        "daysUntil": 4
       },
       {
         "eventId": "fest-2026-06-24-springdale-rodeo-of-the-ozarks",
@@ -7698,7 +7623,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 8
+        "daysUntil": 7
       },
       {
         "eventId": "fest-2026-06-26-north-little-rock-arkansas-folklife-festival",
@@ -7723,7 +7648,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 10
+        "daysUntil": 9
       },
       {
         "eventId": "fest-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
@@ -7748,7 +7673,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 10
+        "daysUntil": 9
       },
       {
         "eventId": "fest-2026-06-26-jasper-buffalo-river-elk-festival",
@@ -7773,7 +7698,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 10
+        "daysUntil": 9
       },
       {
         "eventId": "fest-2026-06-28-little-rock-little-rock-bridal-and-wedding-expo",
@@ -7798,7 +7723,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 12
+        "daysUntil": 11
       },
       {
         "eventId": "fest-2026-06-28-bella-vista-bella-vista-summer-sunday-farmers-and-makers-mar",
@@ -7823,7 +7748,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 12
+        "daysUntil": 11
       },
       {
         "eventId": "fest-2026-07-02-salem-fulton-county-freedom-festival",
@@ -7848,7 +7773,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 16
+        "daysUntil": 15
       },
       {
         "eventId": "fest-2026-07-03-sherwood-fireworks-&-food-trucks-family-independence-da",
@@ -7873,7 +7798,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 17
+        "daysUntil": 16
       },
       {
         "eventId": "fest-2026-07-04-little-rock-pops-on-the-river",
@@ -7898,7 +7823,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 18
+        "daysUntil": 17
       },
       {
         "eventId": "fest-2026-07-04-heber-springs-freedom-fest-on-the-lake",
@@ -7923,7 +7848,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 18
+        "daysUntil": 17
       },
       {
         "eventId": "fest-2026-07-05-bella-vista-bella-vista-outdoor-farmers-and-makers-market",
@@ -7948,7 +7873,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 19
+        "daysUntil": 18
       },
       {
         "eventId": "fair-418be1689fc0c6f0d6a144f5",
@@ -7973,7 +7898,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 24
+        "daysUntil": 23
       },
       {
         "eventId": "fest-2026-07-10-salem-fulton-county-fair",
@@ -7998,7 +7923,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 24
+        "daysUntil": 23
       },
       {
         "eventId": "fest-2026-07-11-springdale-ozarks-250-block-party-in-springdale",
@@ -8023,7 +7948,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 25
+        "daysUntil": 24
       },
       {
         "eventId": "fest-2026-07-12-bella-vista-bella-vista-summer-outdoor-farmers-and-makers-ma",
@@ -8048,7 +7973,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 26
+        "daysUntil": 25
       },
       {
         "eventId": "fest-2026-07-16-clarksville-johnson-co-peach-festival",
@@ -8073,7 +7998,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 30
+        "daysUntil": 29
       },
       {
         "eventId": "fest-nodate-clarksville-johnson-county-peach-festival",
@@ -8098,7 +8023,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 30
+        "daysUntil": 29
       },
       {
         "eventId": "fest-2026-07-19-bella-vista-bella-vista-sunday-outdoor-farmers-and-makers-ma",
@@ -8123,7 +8048,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 33
+        "daysUntil": 32
       },
       {
         "eventId": "fair-8e31ab602a94385aa9919463",
@@ -8148,7 +8073,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "campaign-impact-scores",
-        "daysUntil": 37
+        "daysUntil": 36
       },
       {
         "eventId": "fest-2026-07-23-little-rock-3492-music-festival-a-celebration-of-community-a",
@@ -8173,7 +8098,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 37
+        "daysUntil": 36
       },
       {
         "eventId": "fest-2026-07-23-el-dorado-union-county-fair",
@@ -8198,7 +8123,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 37
+        "daysUntil": 36
       },
       {
         "eventId": "fest-2026-07-26-bella-vista-bella-vista-midsummer-farmers-and-makers-market",
@@ -8223,7 +8148,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 40
+        "daysUntil": 39
       },
       {
         "eventId": "fest-2026-07-31-fort-smith-fort-smith-back-2-school-shopping-extravaganza",
@@ -8248,7 +8173,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 45
+        "daysUntil": 44
       },
       {
         "eventId": "fest-2026-08-02-bella-vista-bella-vista-first-sunday-farmers-and-makers-mark",
@@ -8273,7 +8198,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 47
+        "daysUntil": 46
       },
       {
         "eventId": "fest-2026-08-04-fayetteville-tontitown-grape-festival",
@@ -8298,7 +8223,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 49
+        "daysUntil": 48
       },
       {
         "eventId": "fest-2026-08-06-hope-hope-watermelon-festival",
@@ -8323,7 +8248,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 51
+        "daysUntil": 50
       },
       {
         "eventId": "fest-2026-08-09-bella-vista-bella-vista-second-sunday-farmers-and-makers-mar",
@@ -8348,7 +8273,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 54
+        "daysUntil": 53
       },
       {
         "eventId": "fair-ef8a3bf07796f5d116269e4e",
@@ -8373,7 +8298,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 55
+        "daysUntil": 54
       },
       {
         "eventId": "fest-2026-08-10-imboden-lawrence-county-fair",
@@ -8398,7 +8323,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 55
+        "daysUntil": 54
       },
       {
         "eventId": "fair-dd3cef345b5f6d95088be298",
@@ -8423,7 +8348,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 59
+        "daysUntil": 58
       },
       {
         "eventId": "fest-2026-08-14-jasper-newton-county-fair",
@@ -8448,7 +8373,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 59
+        "daysUntil": 58
       },
       {
         "eventId": "fest-2026-08-15-little-rock-central-arkansas-women's-expo",
@@ -8473,7 +8398,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 60
+        "daysUntil": 59
       },
       {
         "eventId": "fest-2026-08-16-bella-vista-bella-vista-third-sunday-farmers-and-makers-mark",
@@ -8498,7 +8423,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 61
+        "daysUntil": 60
       },
       {
         "eventId": "fair-7b9fd5feee3eb99deeb9317a",
@@ -8523,7 +8448,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 62
+        "daysUntil": 61
       },
       {
         "eventId": "fest-2026-08-17-foreman-little-river-county-fair-and-rodeo",
@@ -8548,7 +8473,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 62
+        "daysUntil": 61
       },
       {
         "eventId": "fest-2026-08-23-bella-vista-bella-vista-fourth-sunday-farmers-and-makers-mar",
@@ -8573,7 +8498,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 68
+        "daysUntil": 67
       },
       {
         "eventId": "fair-571afd59db5f2040264c4ac1",
@@ -8598,7 +8523,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 69
+        "daysUntil": 68
       },
       {
         "eventId": "fest-2026-08-24-pocahontas-randolph-county-fair",
@@ -8623,7 +8548,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 69
+        "daysUntil": 68
       },
       {
         "eventId": "fest-2026-08-28-conway-bella-rustina-modern-vintage-market",
@@ -8648,7 +8573,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 73
+        "daysUntil": 72
       },
       {
         "eventId": "fest-2026-08-29-mount-vernon-arkansas-renaissance-festival",
@@ -8673,7 +8598,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 74
+        "daysUntil": 73
       },
       {
         "eventId": "fest-2026-08-29-dardanelle-79th-annual-mt-nebo-chicken-fry",
@@ -8698,7 +8623,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 74
+        "daysUntil": 73
       },
       {
         "eventId": "fest-2026-08-30-bella-vista-bella-vista-fifth-sunday-farmers-and-makers-mark",
@@ -8723,7 +8648,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 75
+        "daysUntil": 74
       },
       {
         "eventId": "fair-9e03993e30d8f62d3e8067dc",
@@ -8748,7 +8673,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 76
+        "daysUntil": 75
       },
       {
         "eventId": "fest-2026-08-31-lewisville-lafayette-county-fair-and-livestock-show",
@@ -8773,7 +8698,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 76
+        "daysUntil": 75
       },
       {
         "eventId": "fest-2026-09-02-clinton-van-buren-livestock-show-and-fair",
@@ -8798,7 +8723,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 78
+        "daysUntil": 77
       },
       {
         "eventId": "fair-a9c2bbe56f939da4c7898261",
@@ -8823,7 +8748,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 80
+        "daysUntil": 79
       },
       {
         "eventId": "fest-2026-09-04-crossett-ashley-county-fair-and-livestock-show",
@@ -8848,7 +8773,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 80
+        "daysUntil": 79
       },
       {
         "eventId": "fest-2026-09-05-mount-vernon-arkansas-labor-day-renaissance-festival",
@@ -8873,7 +8798,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 81
+        "daysUntil": 80
       },
       {
         "eventId": "fest-2026-09-05-rose-bud-daisy-days-vendor-market",
@@ -8898,7 +8823,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 81
+        "daysUntil": 80
       },
       {
         "eventId": "fest-2026-09-06-bella-vista-bella-vista-end-of-summer-farmers-and-makers-mar",
@@ -8923,7 +8848,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 82
+        "daysUntil": 81
       },
       {
         "eventId": "fair-7d4b1643af8887c9137f0856",
@@ -8948,7 +8873,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 83
+        "daysUntil": 82
       },
       {
         "eventId": "fair-fc9b80fc6ddcf7dd5cddf15a",
@@ -8973,7 +8898,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 83
+        "daysUntil": 82
       },
       {
         "eventId": "fest-2026-09-07-glenwoood-pike-county-fair-rodeo",
@@ -8998,7 +8923,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 83
+        "daysUntil": 82
       },
       {
         "eventId": "fest-2026-09-07-danville-yell-county-fair",
@@ -9023,7 +8948,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 83
+        "daysUntil": 82
       },
       {
         "eventId": "fest-2026-09-09-camden-quachita-county-fair",
@@ -9048,7 +8973,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 85
+        "daysUntil": 84
       },
       {
         "eventId": "fair-67cc3c414b72663f68984577",
@@ -9073,7 +8998,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "campaign-impact-scores",
-        "daysUntil": 86
+        "daysUntil": 85
       },
       {
         "eventId": "fest-2026-09-10-prescott-nevada-county-fair",
@@ -9098,7 +9023,7 @@
         "countyTier": "D",
         "primaryLane": "Maintenance + presence",
         "source": "festival-activation-queue",
-        "daysUntil": 86
+        "daysUntil": 85
       },
       {
         "eventId": "fest-2026-09-11-little-rock-little-rock-fine-arts-art-market",
@@ -9123,7 +9048,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 87
+        "daysUntil": 86
       },
       {
         "eventId": "fest-2026-09-11-little-rock-vintage-market-days-of-little-rock",
@@ -9148,7 +9073,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 87
+        "daysUntil": 86
       },
       {
         "eventId": "fair-7da0f84811b62d6378c8eab1",
@@ -9173,7 +9098,7 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "campaign-impact-scores",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fest-2026-09-12-mount-vernon-arkansas-summer-renaissance-festival",
@@ -9198,7 +9123,7 @@
         "countyTier": "A",
         "primaryLane": "Lane 2 recovery + registration",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fair-85d27f33244a77c6ebeaf3c8",
@@ -9223,7 +9148,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "campaign-impact-scores",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fest-2026-09-12-van-buren-van-buren-junk-fest",
@@ -9248,7 +9173,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fest-2026-09-12-mulberry-crawford-county-fair",
@@ -9273,7 +9198,7 @@
         "countyTier": "B",
         "primaryLane": "Relationship + persuasion",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       },
       {
         "eventId": "fest-2026-09-12-piggott-clay-county-fair",
@@ -9298,15 +9223,11 @@
         "countyTier": "C",
         "primaryLane": "Coverage + volunteer build",
         "source": "festival-activation-queue",
-        "daysUntil": 88
+        "daysUntil": 87
       }
     ],
-    "throughElectionCount": 77,
+    "throughElectionCount": 76,
     "missingPieces": [
-      "Fundraiser in Quitman: Mobilize draft",
-      "Fundraiser in Quitman: Facebook draft",
-      "Fundraiser in Quitman: News release",
-      "Fundraiser in Quitman: Graphics request",
       "Sixty-Eight Petit Jean Swap Meet & Car Show: Mobilize draft",
       "Sixty-Eight Petit Jean Swap Meet & Car Show: Facebook draft",
       "Sixty-Eight Petit Jean Swap Meet & Car Show: News release",
@@ -9317,7 +9238,11 @@
       "Montgomery county meeting: Graphics request",
       "Montgomery County — AEA local / area meeting (verify schedule): Mobilize draft",
       "Montgomery County — AEA local / area meeting (verify schedule): Facebook draft",
-      "Montgomery County — AEA local / area meeting (verify schedule): News release"
+      "Montgomery County — AEA local / area meeting (verify schedule): News release",
+      "Montgomery County — AEA local / area meeting (verify schedule): Graphics request",
+      "River Valley Crawfish Festival: Mobilize draft",
+      "River Valley Crawfish Festival: Facebook draft",
+      "River Valley Crawfish Festival: News release"
     ],
     "components": [
       {
@@ -10056,8 +9981,8 @@
     "hciGoal": 250000,
     "hciCompletionPct": 0,
     "calendarTruthVerified": 1,
-    "calendarTruthPending": 111,
-    "calendarTruthGoal": 116,
+    "calendarTruthPending": 110,
+    "calendarTruthGoal": 115,
     "calendarTruthPct": 4.3,
     "phase9Ready": false,
     "sherwoodGoal": "60%+",
@@ -13926,12 +13851,12 @@
     ]
   },
   "executiveBookHub": {
-    "version": "1.1",
-    "edition": "1.1",
-    "status": "operational",
+    "version": "2.0",
+    "edition": "2.0",
+    "status": "operational_scaffold",
     "laborDayDeadline": "2026-09-07",
-    "completenessEstimate": "95%",
-    "readOrderNote": "Read Chapter 0 (Campaign Doctrine) first, then Chapters 1–5 for governance and strategy, 7–10 for resources and field execution, finish with Chapter 11 audit.",
+    "completenessEstimate": "35%",
+    "readOrderNote": "Read Chapter 0 (Doctrine), then Part I (Victory Strategy) for PPEN and Leadership, Part II for County & Community workbenches, Parts III–IV for Comms & FOS, Part VI for Labor Day and Election Day gates.",
     "companionPillars": [
       {
         "id": "citizen-voices",
@@ -13948,19 +13873,18 @@
     ],
     "pillars": [
       {
-        "id": "strategy",
-        "label": "Strategy & Message",
+        "id": "doctrine",
+        "label": "Chapter 0 — Campaign Doctrine",
         "chapters": [
           {
             "slug": "doctrine",
             "number": 0,
             "title": "Campaign Doctrine",
-            "subtitle": "The Arkansas Way to Win — philosophy before mechanics",
+            "subtitle": "The Arkansas Way to Win — movement, not campaign; philosophy before mechanics",
             "href": "/election-plan/executive-book/doctrine",
+            "partId": "doctrine",
             "statusLines": [
-              "Movement, not campaign",
-              "Open doors fundraising",
-              "One mission per immersion county"
+              "The Arkansas Way to Win — movement, not campaign; philosophy before mechanics"
             ],
             "metrics": [
               {
@@ -13972,87 +13896,122 @@
                 "value": "Open doors"
               }
             ]
-          },
-          {
-            "slug": "influence-map",
-            "number": 2,
-            "title": "Arkansas Influence Map",
-            "subtitle": "Executive contact plan — statewide relationship targets",
-            "href": "/election-plan/executive-book/influence-map",
-            "statusLines": [
-              "Current Elected Officials",
-              "Former Elected Officials",
-              "Labor",
-              "Civil Rights",
-              "Education",
-              "Faith"
-            ],
-            "metrics": [
-              {
-                "label": "Categories",
-                "value": "8"
-              }
-            ]
-          },
-          {
-            "slug": "labor-day",
-            "number": 3,
-            "title": "Labor Day Readiness",
-            "subtitle": "September readiness gate — first major campaign checkpoint",
-            "href": "/election-plan/executive-book/labor-day",
-            "statusLines": [
-              "72/75 Path Active",
-              "Counties · Volunteer launch · Sherwood · Endorsements"
-            ],
-            "metrics": [
-              {
-                "label": "Counties",
-                "value": "45/75"
-              },
-              {
-                "label": "Founding leaders",
-                "value": "39/20"
-              },
-              {
-                "label": "Endorsements",
-                "value": "0"
-              }
-            ]
-          },
-          {
-            "slug": "message",
-            "number": 5,
-            "title": "The Kelly Grappe Message",
-            "subtitle": "Eight-pillar candidate doctrine for every room",
-            "href": "/election-plan/executive-book/message",
-            "statusLines": [
-              "Working-Class Democrat",
-              "Big Tent Democrat",
-              "Public Education",
-              "Election Integrity"
-            ],
-            "metrics": [
-              {
-                "label": "Pillars",
-                "value": "8"
-              }
-            ]
           }
         ]
       },
       {
-        "id": "governance",
-        "label": "Governance & Accountability",
+        "id": "part-i-victory-strategy",
+        "label": "Part I — Victory Strategy",
         "chapters": [
           {
-            "slug": "ownership",
+            "slug": "path-to-victory",
             "number": 1,
-            "title": "Who Owns What",
-            "subtitle": "Leadership ownership matrix — names, not committees",
-            "href": "/election-plan/executive-book/ownership",
+            "title": "Path to Victory",
+            "subtitle": "Electoral math, vote targets, cushion strategy, Top 40 cities, clusters, 50%+1",
+            "href": "/election-plan/executive-book/path-to-victory",
+            "partId": "part-i-victory-strategy",
             "statusLines": [
-              "8 assigned",
-              "4 unassigned"
+              "Electoral math, vote targets, cushion strategy, Top 40 cities, clusters, 50%+1"
+            ],
+            "metrics": [
+              {
+                "label": "Counties",
+                "value": "75"
+              },
+              {
+                "label": "Top 40 cities",
+                "value": "40"
+              }
+            ]
+          },
+          {
+            "slug": "county-strategy",
+            "number": 2,
+            "title": "County Strategy",
+            "subtitle": "County classifications, workbench doctrine, battlefield vs growth vs maintenance counties",
+            "href": "/election-plan/executive-book/county-strategy",
+            "partId": "part-i-victory-strategy",
+            "statusLines": [
+              "County classifications, workbench doctrine, battlefield vs growth vs maintenance counties"
+            ],
+            "metrics": [
+              {
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "community-strategy",
+            "number": 3,
+            "title": "Community Strategy",
+            "subtitle": "Community Workbench doctrine — city, campus, program, and event workbenches",
+            "href": "/election-plan/executive-book/community-strategy",
+            "partId": "part-i-victory-strategy",
+            "statusLines": [
+              "Community Workbench doctrine — city, campus, program, and event workbenches"
+            ],
+            "metrics": [
+              {
+                "label": "Co-chairs",
+                "value": "2/5"
+              },
+              {
+                "label": "Campuses",
+                "value": "14"
+              }
+            ]
+          },
+          {
+            "slug": "coalition-strategy",
+            "number": 4,
+            "title": "Coalition Strategy",
+            "subtitle": "Coalition Command — outreach lanes, faith, labor, educators, youth, business",
+            "href": "/election-plan/executive-book/coalition-strategy",
+            "partId": "part-i-victory-strategy",
+            "statusLines": [
+              "Current Elected Officials",
+              "Former Elected Officials",
+              "Labor",
+              "Civil Rights"
+            ],
+            "metrics": [
+              {
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "ppen",
+            "number": 5,
+            "title": "People Power Execution Network (PPEN)",
+            "subtitle": "Person → participation → relationship → impact · My Five · Help 10 Participate",
+            "href": "/election-plan/executive-book/ppen",
+            "partId": "part-i-victory-strategy",
+            "statusLines": [
+              "Person → participation → relationship → impact · My Five · Help 10 Participate"
+            ],
+            "metrics": [
+              {
+                "label": "Network goal",
+                "value": "60K"
+              },
+              {
+                "label": "Founding leaders",
+                "value": "0/20"
+              }
+            ]
+          },
+          {
+            "slug": "leadership-development",
+            "number": 6,
+            "title": "Leadership Development System",
+            "subtitle": "Leadership Workbench doctrine — county, community, coalition, event, and succession",
+            "href": "/election-plan/executive-book/leadership-development",
+            "partId": "part-i-victory-strategy",
+            "statusLines": [
+              "Leadership Workbench doctrine — county, community, coalition, event, and succession"
             ],
             "metrics": [
               {
@@ -14064,60 +14023,175 @@
                 "value": "4"
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "id": "part-ii-field-operations",
+        "label": "Part II — Field Operations",
+        "chapters": [
           {
-            "slug": "scorecard",
-            "number": 4,
-            "title": "Weekly Success Scorecard",
-            "subtitle": "Monday leadership review — live campaign metrics",
-            "href": "/election-plan/executive-book/scorecard",
+            "slug": "county-workbench-system",
+            "number": 7,
+            "title": "County Workbench System",
+            "subtitle": "County intelligence operating center — leadership, field, fundraising, demographics",
+            "href": "/election-plan/executive-book/county-workbench-system",
+            "partId": "part-ii-field-operations",
             "statusLines": [
-              "HCI",
-              "Founding Leaders",
-              "Counties Covered",
-              "Verified Events"
+              "County intelligence operating center — leadership, field, fundraising, demographics"
             ],
             "metrics": [
               {
-                "label": "HCI",
-                "value": "0"
-              },
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "community-workbench-system",
+            "number": 8,
+            "title": "Community Workbench System",
+            "subtitle": "City execution model, readiness, committees, relationships, special KPI projects",
+            "href": "/election-plan/executive-book/community-workbench-system",
+            "partId": "part-ii-field-operations",
+            "statusLines": [
+              "City execution model, readiness, committees, relationships, special KPI projects"
+            ],
+            "metrics": [
               {
-                "label": "Counties",
-                "value": "45"
-              },
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "event-operations",
+            "number": 9,
+            "title": "Event Operations",
+            "subtitle": "Grassroots & Guitar Strings, house parties, fairs, forums, run of show, AAR",
+            "href": "/election-plan/executive-book/event-operations",
+            "partId": "part-ii-field-operations",
+            "statusLines": [
+              "Grassroots & Guitar Strings, house parties, fairs, forums, run of show, AAR"
+            ],
+            "metrics": [
               {
-                "label": "Events",
-                "value": "122"
-              },
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "voter-engagement",
+            "number": 10,
+            "title": "Voter Engagement",
+            "subtitle": "Help 10 Participate, registration verification, vote plans, election reminders",
+            "href": "/election-plan/executive-book/voter-engagement",
+            "partId": "part-ii-field-operations",
+            "statusLines": [
+              "Help 10 Participate, registration verification, vote plans, election reminders"
+            ],
+            "metrics": [
               {
-                "label": "Leaders",
-                "value": "39"
+                "label": "Campaign OS",
+                "value": "Live"
               }
             ]
           }
         ]
       },
       {
-        "id": "resources",
-        "label": "Resources & Budget",
+        "id": "part-iii-communications",
+        "label": "Part III — Communications",
         "chapters": [
           {
-            "slug": "budget",
-            "number": 7,
-            "title": "Campaign Budget & Fundraising Targets",
-            "subtitle": "Salary floor, travel, materials, and fundraising goal scenarios",
-            "href": "/election-plan/executive-book/budget",
+            "slug": "campaign-communications-hub",
+            "number": 11,
+            "title": "Campaign Communications Hub (CCH)",
+            "subtitle": "Substack architecture, public/insider feeds, contact acquisition, segmentation",
+            "href": "/election-plan/executive-book/campaign-communications-hub",
+            "partId": "part-iii-communications",
             "statusLines": [
-              "Salary floor $72K",
-              "Working $232K",
-              "$225K–$250K planning range"
+              "Substack architecture, public/insider feeds, contact acquisition, segmentation"
             ],
             "metrics": [
               {
-                "label": "Salary floor",
-                "value": "$72K"
-              },
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "social-media-operating-system",
+            "number": 12,
+            "title": "Social Media Operating System",
+            "subtitle": "Content Studio, platform workbenches, creator network, rapid response workflow",
+            "href": "/election-plan/executive-book/social-media-operating-system",
+            "partId": "part-iii-communications",
+            "statusLines": [
+              "Content Studio, platform workbenches, creator network, rapid response workflow"
+            ],
+            "metrics": [
+              {
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "media-storytelling",
+            "number": 13,
+            "title": "Media & Storytelling",
+            "subtitle": "Story Corps, photography, video, testimonials, LTE, candidate narrative",
+            "href": "/election-plan/executive-book/media-storytelling",
+            "partId": "part-iii-communications",
+            "statusLines": [
+              "Working-Class Democrat",
+              "Big Tent Democrat",
+              "Public Education",
+              "Election Integrity"
+            ],
+            "metrics": [
+              {
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "communications-calendar",
+            "number": 14,
+            "title": "Communications Calendar",
+            "subtitle": "Daily/weekly rhythm, county, coalition, and event communications cadence",
+            "href": "/election-plan/executive-book/communications-calendar",
+            "partId": "part-iii-communications",
+            "statusLines": [
+              "Daily/weekly rhythm, county, coalition, and event communications cadence"
+            ],
+            "metrics": [
+              {
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "part-iv-fundraising",
+        "label": "Part IV — Fundraising",
+        "chapters": [
+          {
+            "slug": "fundraising-operating-system",
+            "number": 15,
+            "title": "Fundraising Operating System (FOS)",
+            "subtitle": "Vote-target allocation, community goals, county/cluster/statewide rollups",
+            "href": "/election-plan/executive-book/fundraising-operating-system",
+            "partId": "part-iv-fundraising",
+            "statusLines": [
+              "Vote-target allocation, community goals, county/cluster/statewide rollups"
+            ],
+            "metrics": [
               {
                 "label": "Working target",
                 "value": "$232K"
@@ -14127,75 +14201,172 @@
                 "value": "$39K"
               }
             ]
+          },
+          {
+            "slug": "fundraising-opportunities",
+            "number": 16,
+            "title": "Fundraising Opportunities",
+            "subtitle": "House parties, sponsors, grassroots events, campus and coalition fundraising",
+            "href": "/election-plan/executive-book/fundraising-opportunities",
+            "partId": "part-iv-fundraising",
+            "statusLines": [
+              "House parties, sponsors, grassroots events, campus and coalition fundraising"
+            ],
+            "metrics": [
+              {
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "fundraising-leadership",
+            "number": 17,
+            "title": "Fundraising Leadership",
+            "subtitle": "County, community, and event fundraising leads — opportunity ownership",
+            "href": "/election-plan/executive-book/fundraising-leadership",
+            "partId": "part-iv-fundraising",
+            "statusLines": [
+              "County, community, and event fundraising leads — opportunity ownership"
+            ],
+            "metrics": [
+              {
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
           }
         ]
       },
       {
-        "id": "field",
-        "label": "Field Operations & People Power",
+        "id": "part-v-infrastructure",
+        "label": "Part V — Organizational Infrastructure",
         "chapters": [
           {
-            "slug": "power-of-5",
-            "number": 8,
-            "title": "Eyeball-to-Eyeball Organizing & Power of 5",
-            "subtitle": "How the movement grows — small rooms, surrogates, and the Power of 5",
-            "href": "/election-plan/executive-book/power-of-5",
+            "slug": "volunteer-onboarding",
+            "number": 18,
+            "title": "Volunteer Onboarding & Activation",
+            "subtitle": "Recruitment funnel, access levels, training, certifications, placement",
+            "href": "/election-plan/executive-book/volunteer-onboarding",
+            "partId": "part-v-infrastructure",
             "statusLines": [
-              "Small rooms create ownership",
-              "Kelly → Surrogates → Hosts → Po5",
-              "60,000 network goal"
+              "Recruitment funnel, access levels, training, certifications, placement"
             ],
             "metrics": [
               {
-                "label": "County hosts",
-                "value": "75"
-              },
-              {
-                "label": "Founding leaders",
-                "value": "0/20"
-              },
-              {
-                "label": "Network goal",
-                "value": "60K"
+                "label": "Campaign OS",
+                "value": "Live"
               }
             ]
           },
           {
-            "slug": "students-for-arkansas",
-            "number": 9,
-            "title": "Kelly Grappe Students for Arkansas",
-            "subtitle": "Campus chapters · registration · internships · youth leadership pipeline",
-            "href": "/election-plan/executive-book/students-for-arkansas",
+            "slug": "technology-data-systems",
+            "number": 19,
+            "title": "Technology & Data Systems",
+            "subtitle": "Election Plan OS, workbenches, PPEN, CCH, FOS, CRM, Discord roadmap",
+            "href": "/election-plan/executive-book/technology-data-systems",
+            "partId": "part-v-infrastructure",
             "statusLines": [
-              "Statewide student movement beyond Election Day",
-              "Chance Bradford · Xav McLennon founding co-chairs",
-              "Power of 5 on every campus"
+              "Election Plan OS, workbenches, PPEN, CCH, FOS, CRM, Discord roadmap"
             ],
             "metrics": [
               {
-                "label": "Co-chairs",
-                "value": "2/5"
-              },
-              {
-                "label": "Campuses",
-                "value": "14"
-              },
-              {
-                "label": "Registrations goal",
-                "value": "5K+"
+                "label": "Campaign OS",
+                "value": "Live"
               }
             ]
           },
           {
-            "slug": "gotv",
-            "number": 10,
-            "title": "Arkansas GOTV Operations Plan",
-            "subtitle": "Field manual — how we win Election Day",
-            "href": "/election-plan/executive-book/gotv",
+            "slug": "accountability-reporting",
+            "number": 20,
+            "title": "Accountability & Reporting",
+            "subtitle": "Weekly reporting, county/coalition reviews, KPI standards, data integrity",
+            "href": "/election-plan/executive-book/accountability-reporting",
+            "partId": "part-v-infrastructure",
             "statusLines": [
-              "Election Day Nov 3",
-              "Ballots cast = win condition",
-              "Sherwood launches statewide GOTV"
+              "Weekly reporting, county/coalition reviews, KPI standards, data integrity"
+            ],
+            "metrics": [
+              {
+                "label": "HCI",
+                "value": "0"
+              },
+              {
+                "label": "Counties",
+                "value": "45"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "part-vi-execution",
+        "label": "Part VI — Execution",
+        "chapters": [
+          {
+            "slug": "immersion-county-missions",
+            "number": 21,
+            "title": "Immersion County Missions",
+            "subtitle": "Quitman, Jacksonville, Sherwood, Mt. Ida, Jonesboro, Benton — one mission each",
+            "href": "/election-plan/executive-book/immersion-county-missions",
+            "partId": "part-vi-execution",
+            "statusLines": [
+              "Quitman, Jacksonville, Sherwood, Mt. Ida, Jonesboro, Benton — one mission each"
+            ],
+            "metrics": [
+              {
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "campaign-calendar",
+            "number": 22,
+            "title": "Campaign Calendar",
+            "subtitle": "County sequence, leadership, hiring, fundraising, and event deadlines",
+            "href": "/election-plan/executive-book/campaign-calendar",
+            "partId": "part-vi-execution",
+            "statusLines": [
+              "County sequence, leadership, hiring, fundraising, and event deadlines"
+            ],
+            "metrics": [
+              {
+                "label": "Campaign OS",
+                "value": "Live"
+              }
+            ]
+          },
+          {
+            "slug": "labor-day-readiness",
+            "number": 23,
+            "title": "Labor Day Readiness Gate",
+            "subtitle": "September readiness — county, leadership, fundraising, communications criteria",
+            "href": "/election-plan/executive-book/labor-day-readiness",
+            "partId": "part-vi-execution",
+            "statusLines": [
+              "September readiness — county, leadership, fundraising, communications criteria"
+            ],
+            "metrics": [
+              {
+                "label": "Counties",
+                "value": "45/75"
+              },
+              {
+                "label": "Endorsements",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "slug": "election-day-operations",
+            "number": 24,
+            "title": "Election Day Operations",
+            "subtitle": "GOTV, poll watching, voter assistance, war room, reporting",
+            "href": "/election-plan/executive-book/election-day-operations",
+            "partId": "part-vi-execution",
+            "statusLines": [
+              "GOTV, poll watching, voter assistance, war room, reporting"
             ],
             "metrics": [
               {
@@ -14203,39 +14374,31 @@
                 "value": "250K"
               },
               {
-                "label": "Lane 2 target",
-                "value": "51K"
-              },
-              {
-                "label": "Counties",
-                "value": "75"
+                "label": "Election Day",
+                "value": "Nov 3"
               }
             ]
           }
         ]
       },
       {
-        "id": "completion",
-        "label": "Readiness & Audit",
+        "id": "appendices",
+        "label": "Appendices",
         "chapters": [
           {
-            "slug": "audit",
-            "number": 11,
-            "title": "Executive Book Audit",
-            "subtitle": "V1.1 readiness assessment for leadership review",
-            "href": "/election-plan/executive-book/audit",
+            "slug": "appendix-workbench-architecture",
+            "number": 25,
+            "title": "Appendix H — Workbench Architecture",
+            "subtitle": "Campaign OS map — how Election Plan, workbenches, PPEN, FOS, and CCH connect",
+            "href": "/election-plan/executive-book/appendix-workbench-architecture",
+            "partId": "appendices",
             "statusLines": [
-              "Executive Book V1.1",
-              "Status: operational assign owners"
+              "Campaign OS map — how Election Plan, workbenches, PPEN, FOS, and CCH connect"
             ],
             "metrics": [
               {
-                "label": "Completeness",
-                "value": "95%"
-              },
-              {
-                "label": "TBD owners",
-                "value": "4"
+                "label": "Campaign OS",
+                "value": "Live"
               }
             ]
           }
@@ -14247,12 +14410,11 @@
         "slug": "doctrine",
         "number": 0,
         "title": "Campaign Doctrine",
-        "subtitle": "The Arkansas Way to Win — philosophy before mechanics",
+        "subtitle": "The Arkansas Way to Win — movement, not campaign; philosophy before mechanics",
         "href": "/election-plan/executive-book/doctrine",
+        "partId": "doctrine",
         "statusLines": [
-          "Movement, not campaign",
-          "Open doors fundraising",
-          "One mission per immersion county"
+          "The Arkansas Way to Win — movement, not campaign; philosophy before mechanics"
         ],
         "metrics": [
           {
@@ -14266,14 +14428,114 @@
         ]
       },
       {
-        "slug": "ownership",
+        "slug": "path-to-victory",
         "number": 1,
-        "title": "Who Owns What",
-        "subtitle": "Leadership ownership matrix — names, not committees",
-        "href": "/election-plan/executive-book/ownership",
+        "title": "Path to Victory",
+        "subtitle": "Electoral math, vote targets, cushion strategy, Top 40 cities, clusters, 50%+1",
+        "href": "/election-plan/executive-book/path-to-victory",
+        "partId": "part-i-victory-strategy",
         "statusLines": [
-          "8 assigned",
-          "4 unassigned"
+          "Electoral math, vote targets, cushion strategy, Top 40 cities, clusters, 50%+1"
+        ],
+        "metrics": [
+          {
+            "label": "Counties",
+            "value": "75"
+          },
+          {
+            "label": "Top 40 cities",
+            "value": "40"
+          }
+        ]
+      },
+      {
+        "slug": "county-strategy",
+        "number": 2,
+        "title": "County Strategy",
+        "subtitle": "County classifications, workbench doctrine, battlefield vs growth vs maintenance counties",
+        "href": "/election-plan/executive-book/county-strategy",
+        "partId": "part-i-victory-strategy",
+        "statusLines": [
+          "County classifications, workbench doctrine, battlefield vs growth vs maintenance counties"
+        ],
+        "metrics": [
+          {
+            "label": "Campaign OS",
+            "value": "Live"
+          }
+        ]
+      },
+      {
+        "slug": "community-strategy",
+        "number": 3,
+        "title": "Community Strategy",
+        "subtitle": "Community Workbench doctrine — city, campus, program, and event workbenches",
+        "href": "/election-plan/executive-book/community-strategy",
+        "partId": "part-i-victory-strategy",
+        "statusLines": [
+          "Community Workbench doctrine — city, campus, program, and event workbenches"
+        ],
+        "metrics": [
+          {
+            "label": "Co-chairs",
+            "value": "2/5"
+          },
+          {
+            "label": "Campuses",
+            "value": "14"
+          }
+        ]
+      },
+      {
+        "slug": "coalition-strategy",
+        "number": 4,
+        "title": "Coalition Strategy",
+        "subtitle": "Coalition Command — outreach lanes, faith, labor, educators, youth, business",
+        "href": "/election-plan/executive-book/coalition-strategy",
+        "partId": "part-i-victory-strategy",
+        "statusLines": [
+          "Current Elected Officials",
+          "Former Elected Officials",
+          "Labor",
+          "Civil Rights"
+        ],
+        "metrics": [
+          {
+            "label": "Campaign OS",
+            "value": "Live"
+          }
+        ]
+      },
+      {
+        "slug": "ppen",
+        "number": 5,
+        "title": "People Power Execution Network (PPEN)",
+        "subtitle": "Person → participation → relationship → impact · My Five · Help 10 Participate",
+        "href": "/election-plan/executive-book/ppen",
+        "partId": "part-i-victory-strategy",
+        "statusLines": [
+          "Person → participation → relationship → impact · My Five · Help 10 Participate"
+        ],
+        "metrics": [
+          {
+            "label": "Network goal",
+            "value": "60K"
+          },
+          {
+            "label": "Founding leaders",
+            "value": "0/20"
+          }
+        ]
+      },
+      {
+        "slug": "leadership-development",
+        "number": 6,
+        "title": "Leadership Development System",
+        "subtitle": "Leadership Workbench doctrine — county, community, coalition, event, and succession",
+        "href": "/election-plan/executive-book/leadership-development",
+        "partId": "part-i-victory-strategy",
+        "statusLines": [
+          "Leadership Workbench doctrine — county, community, coalition, event, and succession"
         ],
         "metrics": [
           {
@@ -14287,88 +14549,114 @@
         ]
       },
       {
-        "slug": "influence-map",
-        "number": 2,
-        "title": "Arkansas Influence Map",
-        "subtitle": "Executive contact plan — statewide relationship targets",
-        "href": "/election-plan/executive-book/influence-map",
+        "slug": "county-workbench-system",
+        "number": 7,
+        "title": "County Workbench System",
+        "subtitle": "County intelligence operating center — leadership, field, fundraising, demographics",
+        "href": "/election-plan/executive-book/county-workbench-system",
+        "partId": "part-ii-field-operations",
         "statusLines": [
-          "Current Elected Officials",
-          "Former Elected Officials",
-          "Labor",
-          "Civil Rights",
-          "Education",
-          "Faith"
+          "County intelligence operating center — leadership, field, fundraising, demographics"
         ],
         "metrics": [
           {
-            "label": "Categories",
-            "value": "8"
+            "label": "Campaign OS",
+            "value": "Live"
           }
         ]
       },
       {
-        "slug": "labor-day",
-        "number": 3,
-        "title": "Labor Day Readiness",
-        "subtitle": "September readiness gate — first major campaign checkpoint",
-        "href": "/election-plan/executive-book/labor-day",
+        "slug": "community-workbench-system",
+        "number": 8,
+        "title": "Community Workbench System",
+        "subtitle": "City execution model, readiness, committees, relationships, special KPI projects",
+        "href": "/election-plan/executive-book/community-workbench-system",
+        "partId": "part-ii-field-operations",
         "statusLines": [
-          "72/75 Path Active",
-          "Counties · Volunteer launch · Sherwood · Endorsements"
+          "City execution model, readiness, committees, relationships, special KPI projects"
         ],
         "metrics": [
           {
-            "label": "Counties",
-            "value": "45/75"
-          },
-          {
-            "label": "Founding leaders",
-            "value": "39/20"
-          },
-          {
-            "label": "Endorsements",
-            "value": "0"
+            "label": "Campaign OS",
+            "value": "Live"
           }
         ]
       },
       {
-        "slug": "scorecard",
-        "number": 4,
-        "title": "Weekly Success Scorecard",
-        "subtitle": "Monday leadership review — live campaign metrics",
-        "href": "/election-plan/executive-book/scorecard",
+        "slug": "event-operations",
+        "number": 9,
+        "title": "Event Operations",
+        "subtitle": "Grassroots & Guitar Strings, house parties, fairs, forums, run of show, AAR",
+        "href": "/election-plan/executive-book/event-operations",
+        "partId": "part-ii-field-operations",
         "statusLines": [
-          "HCI",
-          "Founding Leaders",
-          "Counties Covered",
-          "Verified Events"
+          "Grassroots & Guitar Strings, house parties, fairs, forums, run of show, AAR"
         ],
         "metrics": [
           {
-            "label": "HCI",
-            "value": "0"
-          },
-          {
-            "label": "Counties",
-            "value": "45"
-          },
-          {
-            "label": "Events",
-            "value": "122"
-          },
-          {
-            "label": "Leaders",
-            "value": "39"
+            "label": "Campaign OS",
+            "value": "Live"
           }
         ]
       },
       {
-        "slug": "message",
-        "number": 5,
-        "title": "The Kelly Grappe Message",
-        "subtitle": "Eight-pillar candidate doctrine for every room",
-        "href": "/election-plan/executive-book/message",
+        "slug": "voter-engagement",
+        "number": 10,
+        "title": "Voter Engagement",
+        "subtitle": "Help 10 Participate, registration verification, vote plans, election reminders",
+        "href": "/election-plan/executive-book/voter-engagement",
+        "partId": "part-ii-field-operations",
+        "statusLines": [
+          "Help 10 Participate, registration verification, vote plans, election reminders"
+        ],
+        "metrics": [
+          {
+            "label": "Campaign OS",
+            "value": "Live"
+          }
+        ]
+      },
+      {
+        "slug": "campaign-communications-hub",
+        "number": 11,
+        "title": "Campaign Communications Hub (CCH)",
+        "subtitle": "Substack architecture, public/insider feeds, contact acquisition, segmentation",
+        "href": "/election-plan/executive-book/campaign-communications-hub",
+        "partId": "part-iii-communications",
+        "statusLines": [
+          "Substack architecture, public/insider feeds, contact acquisition, segmentation"
+        ],
+        "metrics": [
+          {
+            "label": "Campaign OS",
+            "value": "Live"
+          }
+        ]
+      },
+      {
+        "slug": "social-media-operating-system",
+        "number": 12,
+        "title": "Social Media Operating System",
+        "subtitle": "Content Studio, platform workbenches, creator network, rapid response workflow",
+        "href": "/election-plan/executive-book/social-media-operating-system",
+        "partId": "part-iii-communications",
+        "statusLines": [
+          "Content Studio, platform workbenches, creator network, rapid response workflow"
+        ],
+        "metrics": [
+          {
+            "label": "Campaign OS",
+            "value": "Live"
+          }
+        ]
+      },
+      {
+        "slug": "media-storytelling",
+        "number": 13,
+        "title": "Media & Storytelling",
+        "subtitle": "Story Corps, photography, video, testimonials, LTE, candidate narrative",
+        "href": "/election-plan/executive-book/media-storytelling",
+        "partId": "part-iii-communications",
         "statusLines": [
           "Working-Class Democrat",
           "Big Tent Democrat",
@@ -14377,27 +14665,39 @@
         ],
         "metrics": [
           {
-            "label": "Pillars",
-            "value": "8"
+            "label": "Campaign OS",
+            "value": "Live"
           }
         ]
       },
       {
-        "slug": "budget",
-        "number": 7,
-        "title": "Campaign Budget & Fundraising Targets",
-        "subtitle": "Salary floor, travel, materials, and fundraising goal scenarios",
-        "href": "/election-plan/executive-book/budget",
+        "slug": "communications-calendar",
+        "number": 14,
+        "title": "Communications Calendar",
+        "subtitle": "Daily/weekly rhythm, county, coalition, and event communications cadence",
+        "href": "/election-plan/executive-book/communications-calendar",
+        "partId": "part-iii-communications",
         "statusLines": [
-          "Salary floor $72K",
-          "Working $232K",
-          "$225K–$250K planning range"
+          "Daily/weekly rhythm, county, coalition, and event communications cadence"
         ],
         "metrics": [
           {
-            "label": "Salary floor",
-            "value": "$72K"
-          },
+            "label": "Campaign OS",
+            "value": "Live"
+          }
+        ]
+      },
+      {
+        "slug": "fundraising-operating-system",
+        "number": 15,
+        "title": "Fundraising Operating System (FOS)",
+        "subtitle": "Vote-target allocation, community goals, county/cluster/statewide rollups",
+        "href": "/election-plan/executive-book/fundraising-operating-system",
+        "partId": "part-iv-fundraising",
+        "statusLines": [
+          "Vote-target allocation, community goals, county/cluster/statewide rollups"
+        ],
+        "metrics": [
           {
             "label": "Working target",
             "value": "$232K"
@@ -14409,67 +14709,158 @@
         ]
       },
       {
-        "slug": "power-of-5",
-        "number": 8,
-        "title": "Eyeball-to-Eyeball Organizing & Power of 5",
-        "subtitle": "How the movement grows — small rooms, surrogates, and the Power of 5",
-        "href": "/election-plan/executive-book/power-of-5",
+        "slug": "fundraising-opportunities",
+        "number": 16,
+        "title": "Fundraising Opportunities",
+        "subtitle": "House parties, sponsors, grassroots events, campus and coalition fundraising",
+        "href": "/election-plan/executive-book/fundraising-opportunities",
+        "partId": "part-iv-fundraising",
         "statusLines": [
-          "Small rooms create ownership",
-          "Kelly → Surrogates → Hosts → Po5",
-          "60,000 network goal"
+          "House parties, sponsors, grassroots events, campus and coalition fundraising"
         ],
         "metrics": [
           {
-            "label": "County hosts",
-            "value": "75"
-          },
-          {
-            "label": "Founding leaders",
-            "value": "0/20"
-          },
-          {
-            "label": "Network goal",
-            "value": "60K"
+            "label": "Campaign OS",
+            "value": "Live"
           }
         ]
       },
       {
-        "slug": "students-for-arkansas",
-        "number": 9,
-        "title": "Kelly Grappe Students for Arkansas",
-        "subtitle": "Campus chapters · registration · internships · youth leadership pipeline",
-        "href": "/election-plan/executive-book/students-for-arkansas",
+        "slug": "fundraising-leadership",
+        "number": 17,
+        "title": "Fundraising Leadership",
+        "subtitle": "County, community, and event fundraising leads — opportunity ownership",
+        "href": "/election-plan/executive-book/fundraising-leadership",
+        "partId": "part-iv-fundraising",
         "statusLines": [
-          "Statewide student movement beyond Election Day",
-          "Chance Bradford · Xav McLennon founding co-chairs",
-          "Power of 5 on every campus"
+          "County, community, and event fundraising leads — opportunity ownership"
         ],
         "metrics": [
           {
-            "label": "Co-chairs",
-            "value": "2/5"
-          },
-          {
-            "label": "Campuses",
-            "value": "14"
-          },
-          {
-            "label": "Registrations goal",
-            "value": "5K+"
+            "label": "Campaign OS",
+            "value": "Live"
           }
         ]
       },
       {
-        "slug": "gotv",
-        "number": 10,
-        "title": "Arkansas GOTV Operations Plan",
-        "subtitle": "Field manual — how we win Election Day",
-        "href": "/election-plan/executive-book/gotv",
+        "slug": "volunteer-onboarding",
+        "number": 18,
+        "title": "Volunteer Onboarding & Activation",
+        "subtitle": "Recruitment funnel, access levels, training, certifications, placement",
+        "href": "/election-plan/executive-book/volunteer-onboarding",
+        "partId": "part-v-infrastructure",
         "statusLines": [
-          "Election Day Nov 3",
-          "Ballots cast = win condition",
-          "Sherwood launches statewide GOTV"
+          "Recruitment funnel, access levels, training, certifications, placement"
+        ],
+        "metrics": [
+          {
+            "label": "Campaign OS",
+            "value": "Live"
+          }
+        ]
+      },
+      {
+        "slug": "technology-data-systems",
+        "number": 19,
+        "title": "Technology & Data Systems",
+        "subtitle": "Election Plan OS, workbenches, PPEN, CCH, FOS, CRM, Discord roadmap",
+        "href": "/election-plan/executive-book/technology-data-systems",
+        "partId": "part-v-infrastructure",
+        "statusLines": [
+          "Election Plan OS, workbenches, PPEN, CCH, FOS, CRM, Discord roadmap"
+        ],
+        "metrics": [
+          {
+            "label": "Campaign OS",
+            "value": "Live"
+          }
+        ]
+      },
+      {
+        "slug": "accountability-reporting",
+        "number": 20,
+        "title": "Accountability & Reporting",
+        "subtitle": "Weekly reporting, county/coalition reviews, KPI standards, data integrity",
+        "href": "/election-plan/executive-book/accountability-reporting",
+        "partId": "part-v-infrastructure",
+        "statusLines": [
+          "Weekly reporting, county/coalition reviews, KPI standards, data integrity"
+        ],
+        "metrics": [
+          {
+            "label": "HCI",
+            "value": "0"
+          },
+          {
+            "label": "Counties",
+            "value": "45"
+          }
+        ]
+      },
+      {
+        "slug": "immersion-county-missions",
+        "number": 21,
+        "title": "Immersion County Missions",
+        "subtitle": "Quitman, Jacksonville, Sherwood, Mt. Ida, Jonesboro, Benton — one mission each",
+        "href": "/election-plan/executive-book/immersion-county-missions",
+        "partId": "part-vi-execution",
+        "statusLines": [
+          "Quitman, Jacksonville, Sherwood, Mt. Ida, Jonesboro, Benton — one mission each"
+        ],
+        "metrics": [
+          {
+            "label": "Campaign OS",
+            "value": "Live"
+          }
+        ]
+      },
+      {
+        "slug": "campaign-calendar",
+        "number": 22,
+        "title": "Campaign Calendar",
+        "subtitle": "County sequence, leadership, hiring, fundraising, and event deadlines",
+        "href": "/election-plan/executive-book/campaign-calendar",
+        "partId": "part-vi-execution",
+        "statusLines": [
+          "County sequence, leadership, hiring, fundraising, and event deadlines"
+        ],
+        "metrics": [
+          {
+            "label": "Campaign OS",
+            "value": "Live"
+          }
+        ]
+      },
+      {
+        "slug": "labor-day-readiness",
+        "number": 23,
+        "title": "Labor Day Readiness Gate",
+        "subtitle": "September readiness — county, leadership, fundraising, communications criteria",
+        "href": "/election-plan/executive-book/labor-day-readiness",
+        "partId": "part-vi-execution",
+        "statusLines": [
+          "September readiness — county, leadership, fundraising, communications criteria"
+        ],
+        "metrics": [
+          {
+            "label": "Counties",
+            "value": "45/75"
+          },
+          {
+            "label": "Endorsements",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "slug": "election-day-operations",
+        "number": 24,
+        "title": "Election Day Operations",
+        "subtitle": "GOTV, poll watching, voter assistance, war room, reporting",
+        "href": "/election-plan/executive-book/election-day-operations",
+        "partId": "part-vi-execution",
+        "statusLines": [
+          "GOTV, poll watching, voter assistance, war room, reporting"
         ],
         "metrics": [
           {
@@ -14477,33 +14868,25 @@
             "value": "250K"
           },
           {
-            "label": "Lane 2 target",
-            "value": "51K"
-          },
-          {
-            "label": "Counties",
-            "value": "75"
+            "label": "Election Day",
+            "value": "Nov 3"
           }
         ]
       },
       {
-        "slug": "audit",
-        "number": 11,
-        "title": "Executive Book Audit",
-        "subtitle": "V1.1 readiness assessment for leadership review",
-        "href": "/election-plan/executive-book/audit",
+        "slug": "appendix-workbench-architecture",
+        "number": 25,
+        "title": "Appendix H — Workbench Architecture",
+        "subtitle": "Campaign OS map — how Election Plan, workbenches, PPEN, FOS, and CCH connect",
+        "href": "/election-plan/executive-book/appendix-workbench-architecture",
+        "partId": "appendices",
         "statusLines": [
-          "Executive Book V1.1",
-          "Status: operational assign owners"
+          "Campaign OS map — how Election Plan, workbenches, PPEN, FOS, and CCH connect"
         ],
         "metrics": [
           {
-            "label": "Completeness",
-            "value": "95%"
-          },
-          {
-            "label": "TBD owners",
-            "value": "4"
+            "label": "Campaign OS",
+            "value": "Live"
           }
         ]
       }
@@ -15248,23 +15631,6 @@
     "explanation": "Leadership approval portal — decide Kelly attendance, volunteer coverage, and decline before events hit Mobilize or public calendar.",
     "weekCalendar": [
       {
-        "id": "snap-lock-quitman-fundraiser",
-        "slug": "quitman-fundraiser-2026-06-16",
-        "title": "Quitman fundraiser",
-        "date": "2026-06-16",
-        "locationName": "Quitman · Cleburne",
-        "county": "Cleburne County",
-        "eventType": "OTHER",
-        "status": "pending",
-        "decision": {
-          "kellyAttends": false,
-          "needsVolunteers": false,
-          "declined": false,
-          "verified": false,
-          "notes": null
-        }
-      },
-      {
         "id": "snap-aea-montgomery-stub",
         "slug": "montgomery-county-aea-local-area-meeting-verify-schedule-2026-06",
         "title": "Montgomery County — AEA local / area meeting (verify schedule)",
@@ -15470,29 +15836,6 @@
       }
     ],
     "items": [
-      {
-        "id": "snap-lock-quitman-fundraiser",
-        "slug": "quitman-fundraiser-2026-06-16",
-        "queueEventId": null,
-        "title": "Quitman fundraiser",
-        "date": "2026-06-16",
-        "county": "Cleburne County",
-        "city": "Quitman",
-        "locationName": "Quitman · Cleburne",
-        "assignment": "TBD",
-        "verificationStatus": "unverified",
-        "effectiveScore": 0,
-        "cluster": "",
-        "source": "calendar",
-        "status": "pending",
-        "decision": {
-          "kellyAttends": false,
-          "needsVolunteers": false,
-          "declined": false,
-          "verified": false,
-          "notes": null
-        }
-      },
       {
         "id": "snap-aea-montgomery-stub",
         "slug": "montgomery-county-aea-local-area-meeting-verify-schedule-2026-06",
@@ -18141,29 +18484,6 @@
     ],
     "pendingItems": [
       {
-        "id": "snap-lock-quitman-fundraiser",
-        "slug": "quitman-fundraiser-2026-06-16",
-        "queueEventId": null,
-        "title": "Quitman fundraiser",
-        "date": "2026-06-16",
-        "county": "Cleburne County",
-        "city": "Quitman",
-        "locationName": "Quitman · Cleburne",
-        "assignment": "TBD",
-        "verificationStatus": "unverified",
-        "effectiveScore": 0,
-        "cluster": "",
-        "source": "calendar",
-        "status": "pending",
-        "decision": {
-          "kellyAttends": false,
-          "needsVolunteers": false,
-          "declined": false,
-          "verified": false,
-          "notes": null
-        }
-      },
-      {
         "id": "snap-aea-montgomery-stub",
         "slug": "montgomery-county-aea-local-area-meeting-verify-schedule-2026-06",
         "queueEventId": "aea-montgomery-stub",
@@ -20694,10 +21014,10 @@
         }
       }
     ],
-    "pendingCount": 111,
+    "pendingCount": 110,
     "verifiedCount": 1,
     "declinedCount": 4,
     "decidedCount": 5,
-    "throughElectionCount": 116
+    "throughElectionCount": 115
   }
 }

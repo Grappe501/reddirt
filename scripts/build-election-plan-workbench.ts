@@ -9,6 +9,11 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { ELECTION_PLAN_ARCHITECTURE } from "../src/lib/election-plan/electionPlanIndex";
+import {
+  EXECUTIVE_BOOK_CHAPTERS,
+  EXECUTIVE_BOOK_PARTS,
+} from "../src/lib/election-plan/executiveBookChapters";
+import { EXECUTIVE_BOOK_EDITION } from "../src/lib/election-plan/executiveBookNav";
 import type {
   ElectionPlanCity,
   ElectionPlanCounty,
@@ -1638,178 +1643,90 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
     "Plurality frame",
   ];
 
-  const chapterCards = [
-      {
-        slug: "doctrine",
-        number: 0,
-        title: "Campaign Doctrine",
-        subtitle: "The Arkansas Way to Win — philosophy before mechanics",
-        href: "/election-plan/executive-book/doctrine",
-        statusLines: [
-          "Movement, not campaign",
-          "Open doors fundraising",
-          "One mission per immersion county",
-        ],
-        metrics: [
+  const v2Summary = readJson<{
+    version?: string;
+    edition?: string;
+    status?: string;
+    laborDayDeadline?: string;
+    completenessEstimate?: string;
+  }>(path.join(PLAN, "executive-book-v2/executive-book-v2.summary.json"));
+
+  const metricsForSlug = (slug: string): Array<{ label: string; value: string }> => {
+    switch (slug) {
+      case "doctrine":
+        return [
           { label: "Immersion missions", value: "7" },
           { label: "Fundraising model", value: "Open doors" },
-        ],
-      },
-      {
-        slug: "ownership",
-        number: 1,
-        title: "Who Owns What",
-        subtitle: "Leadership ownership matrix — names, not committees",
-        href: "/election-plan/executive-book/ownership",
-        statusLines: [`${assignedCount} assigned`, `${ownership?.unassignedCount ?? 8} unassigned`],
-        metrics: [
+        ];
+      case "path-to-victory":
+        return [{ label: "Counties", value: "75" }, { label: "Top 40 cities", value: "40" }];
+      case "leadership-development":
+        return [
           { label: "Functions", value: String(ownership?.assignments?.length ?? 13) },
           { label: "TBD", value: String(ownership?.unassignedCount ?? 8) },
-        ],
-      },
-      {
-        slug: "influence-map",
-        number: 2,
-        title: "Arkansas Influence Map",
-        subtitle: "Executive contact plan — statewide relationship targets",
-        href: "/election-plan/executive-book/influence-map",
-        statusLines: (contact?.influenceGroups ?? []).slice(0, 6).map((g) => g.title),
-        metrics: [{ label: "Categories", value: String(contact?.influenceGroups?.length ?? 8) }],
-      },
-      {
-        slug: "labor-day",
-        number: 3,
-        title: "Labor Day Readiness",
-        subtitle: "September readiness gate — first major campaign checkpoint",
-        href: "/election-plan/executive-book/labor-day",
-        statusLines: ["72/75 Path Active", "Counties · Volunteer launch · Sherwood · Endorsements"],
-        metrics: [
-          { label: "Counties", value: `${coverage.visitedCount}/75` },
-          { label: "Founding leaders", value: `${pp?.volunteerLeadership?.foundingTeamCurrent ?? 0}/${pp?.volunteerLeadership?.foundingTeamGoal ?? 20}` },
-          { label: "Endorsements", value: String(endorsement?.activated ?? score("Endorsements Activated")?.current ?? 0) },
-        ],
-      },
-      {
-        slug: "scorecard",
-        number: 4,
-        title: "Weekly Success Scorecard",
-        subtitle: "Monday leadership review — live campaign metrics",
-        href: "/election-plan/executive-book/scorecard",
-        statusLines: ["HCI", "Founding Leaders", "Counties Covered", "Verified Events"],
-        metrics: [
+        ];
+      case "accountability-reporting":
+        return [
           { label: "HCI", value: String(score("HCI")?.current ?? 0) },
           { label: "Counties", value: String(score("Counties Covered")?.current ?? coverage.visitedCount) },
-          { label: "Events", value: String(score("Verified Events")?.current ?? 0) },
-          { label: "Leaders", value: String(score("Founding Leaders")?.current ?? 0) },
-        ],
-      },
-      {
-        slug: "message",
-        number: 5,
-        title: "The Kelly Grappe Message",
-        subtitle: "Eight-pillar candidate doctrine for every room",
-        href: "/election-plan/executive-book/message",
-        statusLines: messagePillars.slice(0, 4),
-        metrics: [{ label: "Pillars", value: "8" }],
-      },
-      {
-        slug: "budget",
-        number: 7,
-        title: "Campaign Budget & Fundraising Targets",
-        subtitle: "Salary floor, travel, materials, and fundraising goal scenarios",
-        href: "/election-plan/executive-book/budget",
-        statusLines: [
-          `Salary floor ${fmtK(budget?.salaryTotal ?? 72000)}`,
-          `Working ${fmtK(budget?.workingCampaignTotal ?? 232053)}`,
-          "$225K–$250K planning range",
-        ],
-        metrics: [
-          { label: "Salary floor", value: fmtK(budget?.salaryTotal ?? 72000) },
+        ];
+      case "fundraising-operating-system":
+        return [
           { label: "Working target", value: fmtK(budget?.workingCampaignTotal ?? 232053) },
           { label: "Monthly burn", value: fmtK(budget?.monthlyBurnWorking ?? 38676) },
-        ],
-      },
-      {
-        slug: "power-of-5",
-        number: 8,
-        title: "Eyeball-to-Eyeball Organizing & Power of 5",
-        subtitle: "How the movement grows — small rooms, surrogates, and the Power of 5",
-        href: "/election-plan/executive-book/power-of-5",
-        statusLines: [
-          "Small rooms create ownership",
-          "Kelly → Surrogates → Hosts → Po5",
-          "60,000 network goal",
-        ],
-        metrics: [
-          { label: "County hosts", value: "75" },
-          { label: "Founding leaders", value: `${po5Chapter?.foundingLeaders ?? 0}/${po5Chapter?.foundingLeadersGoal ?? 20}` },
+        ];
+      case "ppen":
+        return [
           { label: "Network goal", value: `${((po5Chapter?.networkGoal ?? 60000) / 1000).toFixed(0)}K` },
-        ],
-      },
-      {
-        slug: "students-for-arkansas",
-        number: 9,
-        title: "Kelly Grappe Students for Arkansas",
-        subtitle: "Campus chapters · registration · internships · youth leadership pipeline",
-        href: "/election-plan/executive-book/students-for-arkansas",
-        statusLines: [
-          "Statewide student movement beyond Election Day",
-          "Chance Bradford · Xav McLennon founding co-chairs",
-          "Power of 5 on every campus",
-        ],
-        metrics: [
+          { label: "Founding leaders", value: `${po5Chapter?.foundingLeaders ?? 0}/${po5Chapter?.foundingLeadersGoal ?? 20}` },
+        ];
+      case "community-strategy":
+        return [
           { label: "Co-chairs", value: `${sfa?.metrics?.coChairsConfirmed ?? 2}/${sfa?.metrics?.coChairsGoal ?? 5}` },
           { label: "Campuses", value: String(sfa?.metrics?.campusesInInventory ?? 14) },
-          { label: "Registrations goal", value: "5K+" },
-        ],
-      },
-      {
-        slug: "gotv",
-        number: 10,
-        title: "Arkansas GOTV Operations Plan",
-        subtitle: "Field manual — how we win Election Day",
-        href: "/election-plan/executive-book/gotv",
-        statusLines: [
-          "Election Day Nov 3",
-          "Ballots cast = win condition",
-          "Sherwood launches statewide GOTV",
-        ],
-        metrics: [
-          { label: "HCI goal", value: "250K" },
-          { label: "Lane 2 target", value: "51K" },
-          { label: "Counties", value: "75" },
-        ],
-      },
-      {
-        slug: "audit",
-        number: 11,
-        title: "Executive Book Audit",
-        subtitle: "V1.1 readiness assessment for leadership review",
-        href: "/election-plan/executive-book/audit",
-        statusLines: [`Executive Book V${summary?.version ?? "1.1"}`, `Status: ${(audit?.status ?? summary?.status ?? "operational").replace(/_/g, " ")}`],
-        metrics: [
-          { label: "Completeness", value: audit?.completenessEstimate ?? summary?.completenessEstimate ?? "95%" },
-          { label: "TBD owners", value: String(ownership?.unassignedCount ?? 8) },
-        ],
-      },
-  ];
+        ];
+      case "election-day-operations":
+        return [{ label: "HCI goal", value: "250K" }, { label: "Election Day", value: "Nov 3" }];
+      case "labor-day-readiness":
+        return [
+          { label: "Counties", value: `${coverage.visitedCount}/75` },
+          { label: "Endorsements", value: String(endorsement?.activated ?? score("Endorsements Activated")?.current ?? 0) },
+        ];
+      default:
+        return [{ label: "Campaign OS", value: "Live" }];
+    }
+  };
 
-  const pillarDefs = [
-    { id: "strategy", label: "Strategy & Message", slugs: ["doctrine", "influence-map", "labor-day", "message"] },
-    { id: "governance", label: "Governance & Accountability", slugs: ["ownership", "scorecard"] },
-    { id: "resources", label: "Resources & Budget", slugs: ["budget"] },
-    { id: "field", label: "Field Operations & People Power", slugs: ["power-of-5", "students-for-arkansas", "gotv"] },
-    { id: "completion", label: "Readiness & Audit", slugs: ["audit"] },
-  ];
+  const chapterCards = EXECUTIVE_BOOK_CHAPTERS.map((ch) => ({
+    slug: ch.slug,
+    number: ch.number,
+    title: ch.title,
+    subtitle: ch.subtitle,
+    href: ch.href,
+    partId: ch.partId,
+    statusLines:
+      ch.slug === "media-storytelling"
+        ? messagePillars.slice(0, 4)
+        : ch.slug === "coalition-strategy"
+          ? (contact?.influenceGroups ?? []).slice(0, 4).map((g) => g.title)
+          : [ch.subtitle],
+    metrics: metricsForSlug(ch.slug),
+  }));
+
+  const pillars = EXECUTIVE_BOOK_PARTS.map((part) => ({
+    id: part.id,
+    label: part.label,
+    chapters: chapterCards.filter((c) => c.partId === part.id),
+  })).filter((g) => g.chapters.length > 0);
 
   return {
-    version: summary?.version ?? "1.1",
-    edition: "1.1",
-    status: summary?.status ?? "operational",
-    laborDayDeadline: summary?.laborDayDeadline ?? "2026-09-07",
-    completenessEstimate: audit?.completenessEstimate ?? summary?.completenessEstimate ?? "95%",
+    version: v2Summary?.version ?? EXECUTIVE_BOOK_EDITION.version,
+    edition: v2Summary?.edition ?? EXECUTIVE_BOOK_EDITION.version,
+    status: v2Summary?.status ?? summary?.status ?? "operational_scaffold",
+    laborDayDeadline: v2Summary?.laborDayDeadline ?? summary?.laborDayDeadline ?? "2026-09-07",
+    completenessEstimate: v2Summary?.completenessEstimate ?? audit?.completenessEstimate ?? "35%",
     readOrderNote:
-      "Read Chapter 0 (Campaign Doctrine) first, then Chapters 1–5 for governance and strategy, 7–10 for resources and field execution, finish with Chapter 11 audit.",
+      "Read Chapter 0 (Doctrine), then Part I (Victory Strategy) for PPEN and Leadership, Part II for County & Community workbenches, Parts III–IV for Comms & FOS, Part VI for Labor Day and Election Day gates.",
     companionPillars: [
       {
         id: "citizen-voices",
@@ -1824,13 +1741,7 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
         href: "/election-plan?tab=peoplePower",
       },
     ],
-    pillars: pillarDefs
-      .map((p) => ({
-        id: p.id,
-        label: p.label,
-        chapters: chapterCards.filter((c) => p.slugs.includes(c.slug)),
-      }))
-      .filter((p) => p.chapters.length > 0),
+    pillars,
     chapters: chapterCards,
   };
 }

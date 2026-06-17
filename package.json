@@ -358,6 +358,7 @@
     "campaign-brain:calendar-fill:phase-c": "tsx scripts/campaign-brain/build-calendar-fill-phase-c.ts",
     "campaign-brain:operations-lock:build": "tsx scripts/campaign-brain/build-operations-lock-pass.ts",
     "campaign-brain:executive-book:v1": "tsx scripts/campaign-brain/build-executive-book-v1.ts",
+    "campaign-brain:executive-book:v2:scaffold": "tsx scripts/campaign-brain/scaffold-executive-book-v2.ts",
     "campaign-brain:executive-book:completion": "tsx scripts/campaign-brain/build-executive-book-v1.ts",
     "campaign-brain:executive-calendar:build": "tsx scripts/campaign-brain/build-executive-calendar.ts",
     "campaign-brain:public-calendar-snapshot:build": "tsx scripts/campaign-brain/build-public-campaign-calendar-snapshot.ts",

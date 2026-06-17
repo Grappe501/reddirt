@@ -13,6 +13,10 @@ type Props = {
   chapter: ExecutiveBookChapterPayload;
 };
 
+function slugIs(chapter: ExecutiveBookChapterPayload, ...slugs: string[]): boolean {
+  return slugs.includes(chapter.slug);
+}
+
 export function ExecutiveBookChapterView({ chapter }: Props) {
   return (
     <>
@@ -37,8 +41,15 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
           </h1>
           <p className="mt-3 text-base text-white/80">{chapter.subtitle}</p>
           <p className="mt-2 text-xs uppercase tracking-wide text-white/50">
-            {EXECUTIVE_BOOK_PILLAR_LABELS[chapter.pillar]}
+            {EXECUTIVE_BOOK_PILLAR_LABELS[chapter.pillar] ?? chapter.pillar}
           </p>
+          {chapter.osRoute ? (
+            <p className="mt-3 text-sm text-white/80">
+              <Link href={chapter.osRoute} className="font-semibold text-[var(--ep-gold)] hover:underline">
+                Open live Campaign OS surface →
+              </Link>
+            </p>
+          ) : null}
           {chapter.generatedAt ? (
             <p className="mt-4 text-xs text-white/50">
               Generated {new Date(chapter.generatedAt).toLocaleDateString("en-US", { dateStyle: "medium" })}
@@ -50,29 +61,31 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
       <main className="ep-chapter-body px-6 py-10 lg:px-10">
         <div
           className={
-            chapter.slug === "county-victory-targets"
+            slugIs(chapter, "path-to-victory", "county-victory-targets")
               ? "mx-auto max-w-6xl"
-              : chapter.slug === "budget" || chapter.slug === "power-of-5"
+              : slugIs(chapter, "fundraising-operating-system", "budget", "ppen", "power-of-5")
                 ? "mx-auto max-w-5xl"
                 : "mx-auto max-w-3xl"
           }
         >
-          {chapter.slug === "budget" ? (
+          {slugIs(chapter, "fundraising-operating-system", "budget") ? (
             <div className="mb-10">
               <ExecutiveBookBudgetLeadershipPanel variant="chapter" />
             </div>
           ) : null}
-          {chapter.slug === "power-of-5" ? (
+          {slugIs(chapter, "ppen", "power-of-5") ? (
             <div className="mb-10">
               <ArkansasConversationStrategyPanel variant="chapter" />
             </div>
           ) : null}
-          {chapter.slug === "county-victory-targets" ? (
+          {slugIs(chapter, "path-to-victory", "county-victory-targets") ? (
             <div className="mb-10">
               <CountyVictoryTargetsExecutivePanel />
             </div>
           ) : null}
-          {chapter.slug !== "county-victory-targets" && chapter.slug !== "budget" && chapter.slug !== "power-of-5" ? (
+          {chapter.slug !== "path-to-victory" &&
+          chapter.slug !== "county-victory-targets" &&
+          !slugIs(chapter, "fundraising-operating-system", "budget", "ppen", "power-of-5") ? (
             <div className="mb-8">
               <PageBrief
                 brief={
@@ -98,8 +111,8 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
                         ],
                         relatedLinks: [
                           { label: "Kelly Grappe Message · Ch. 5", href: "/election-plan/executive-book/message" },
-                          { label: "Conversation Strategy · Ch. 8", href: "/election-plan/executive-book/power-of-5" },
-                          { label: "Budget · Ch. 7", href: "/election-plan/executive-book/budget" },
+                          { label: "PPEN · Ch. 5", href: "/election-plan/executive-book/ppen" },
+                          { label: "FOS · Ch. 15", href: "/election-plan/executive-book/fundraising-operating-system" },
                         ],
                       }
                     : {
@@ -119,29 +132,29 @@ export function ExecutiveBookChapterView({ chapter }: Props) {
             </div>
           ) : null}
           <div className="ep-card-glass mb-8 text-sm text-[var(--ep-navy-muted)]">
-            {chapter.slug === "budget" ? (
+            {slugIs(chapter, "fundraising-operating-system", "budget") ? (
               <>
                 <strong className="text-[var(--ep-navy)]">Planning targets only.</strong> These are planning
                 targets, not guaranteed costs or guaranteed fundraising outcomes. Unknown vendor expenses are marked{" "}
                 <strong>needs_quote</strong>.
               </>
-            ) : chapter.slug === "power-of-5" ? (
+            ) : slugIs(chapter, "ppen", "power-of-5") ? (
               <>
                 <strong className="text-[var(--ep-navy)]">Campaign doctrine.</strong> People change minds through
                 trusted relationships — not ads. Large events create visibility; small events create votes. Read in
                 under 10 minutes.
               </>
-            ) : chapter.slug === "county-victory-targets" ? (
+            ) : slugIs(chapter, "path-to-victory", "county-victory-targets") ? (
               <>
                 <strong className="text-[var(--ep-navy)]">Local organizing language.</strong> County chairs need votes
                 and percent increase — not VCI scores. Every county playbook inherits these numbers.
               </>
-            ) : chapter.slug === "students-for-arkansas" ? (
+            ) : slugIs(chapter, "community-strategy", "students-for-arkansas") ? (
               <>
                 <strong className="text-[var(--ep-navy)]">Youth leadership pipeline.</strong> Not campus outreach alone — a
                 statewide student movement for registration, turnout, content, and future civic leaders.
               </>
-            ) : chapter.slug === "gotv" ? (
+            ) : slugIs(chapter, "election-day-operations", "gotv") ? (
               <>
                 <strong className="text-[var(--ep-navy)]">Field operations manual.</strong> Assign owners before
                 execution. Election Day success = ballots cast. Items marked <strong>needs_assignment</strong> require

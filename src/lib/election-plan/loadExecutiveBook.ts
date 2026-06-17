@@ -2,8 +2,9 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import {
-  EXECUTIVE_BOOK_CHAPTERS,
   getExecutiveBookChapter,
+  listExecutiveBookChapterSlugs as allExecutiveBookSlugs,
+  getCanonicalExecutiveBookChapter,
   type ExecutiveBookChapterSlug,
 } from "./executiveBookChapters";
 import { getCountyPartyIntelligenceRollup } from "./load-county-party-intelligence";
@@ -15,14 +16,14 @@ import {
   getRelatedExecutiveBookChapters,
   getExecutiveBookPillar,
   EXECUTIVE_BOOK_EDITION,
-  type ExecutiveBookPillar,
   type ExecutiveBookTocEntry,
 } from "./executiveBookNav";
 
-const EXEC_BOOK_DIR = path.join(
+const EXEC_BOOK_ROOT = path.join(
   process.cwd(),
-  "docs/strategic-plan/plurality-victory-plan/executive-book-v1",
+  "docs/strategic-plan/plurality-victory-plan",
 );
+const V1_META_DIR = path.join(EXEC_BOOK_ROOT, "executive-book-v1");
 const BUDGET_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/budget/budget-summary.json");
 const GOTV_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/gotv/gotv-operations-plan.json");
 const PO5_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/relational-organizing/power-of-5-executive-chapter.json");
@@ -30,7 +31,7 @@ const SFA_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/students-
 const CV_SUMMARY_PATH = path.join(process.cwd(), "data/campaign-brain/citizen-voices/citizen-voices-network.json");
 
 function readJsonFile<T>(fileName: string): T | null {
-  const p = path.join(EXEC_BOOK_DIR, fileName);
+  const p = path.join(V1_META_DIR, fileName);
   if (!existsSync(p)) return null;
   return JSON.parse(readFileSync(p, "utf8")) as T;
 }
@@ -109,10 +110,15 @@ function readCitizenVoicesSummary(): ExecutiveBookChapterPayload["citizenVoicesS
   };
 }
 
-function readMarkdown(fileName: string): string | null {
-  const p = path.join(EXEC_BOOK_DIR, fileName);
+function readMarkdown(markdownFile: string): string | null {
+  const p = path.normalize(path.join(EXEC_BOOK_ROOT, markdownFile));
+  if (!p.startsWith(EXEC_BOOK_ROOT)) return null;
   if (!existsSync(p)) return null;
   return readFileSync(p, "utf8");
+}
+
+function chapterSlugMatches(slug: ExecutiveBookChapterSlug, ...candidates: string[]): boolean {
+  return candidates.includes(slug);
 }
 
 function fmt(n: number): string {
@@ -219,8 +225,9 @@ export type ExecutiveBookChapterPayload = {
     countiesRepresented: number;
     countiesGoal: number;
   };
-  pillar: ExecutiveBookPillar;
+  pillar: string;
   edition: string;
+  osRoute: string | null;
   tableOfContents: ExecutiveBookTocEntry[];
   navigation: {
     prev: { slug: ExecutiveBookChapterSlug; number: number; title: string; href: string } | null;
@@ -230,8 +237,9 @@ export type ExecutiveBookChapterPayload = {
 };
 
 export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayload | null {
-  const chapter = getExecutiveBookChapter(slug);
-  if (!chapter) return null;
+  const resolved = getExecutiveBookChapter(slug);
+  if (!resolved) return null;
+  const chapter = getCanonicalExecutiveBookChapter(resolved.slug);
 
   const markdown = readMarkdown(chapter.markdownFile);
   if (!markdown) return null;
@@ -274,7 +282,7 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     );
   }
 
-  if (chapter.slug === "ownership" && ownership?.assignments) {
+  if (chapterSlugMatches(chapter.slug, "leadership-development", "ownership") && ownership?.assignments) {
     const assigned = ownership.assignments.length - (ownership.unassignedCount ?? 0);
     liveStrip.push(
       { label: "Assigned", value: String(assigned) },
@@ -283,20 +291,22 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     );
   }
 
-  if (chapter.slug === "influence-map" && contact?.influenceGroups) {
+  if (chapterSlugMatches(chapter.slug, "coalition-strategy", "influence-map") && contact?.influenceGroups) {
     for (const g of contact.influenceGroups.slice(0, 6)) {
       liveStrip.push({ label: g.title, value: `Tier ${g.tier}`, detail: `${g.weeklyConversationTarget}/wk` });
     }
   }
 
-  if (chapter.slug === "labor-day") {
+  if (chapterSlugMatches(chapter.slug, "labor-day-readiness", "labor-day")) {
     liveStrip.push(
       { label: "Pathway", value: "72/75 Active" },
       { label: "Labor Day gate", value: audit?.laborDayDeadline ?? "2026-09-07" },
     );
+    const party = getCountyPartyIntelligenceRollup();
+    liveStrip.push({ label: "Meeting candidates", value: String(party.meetingCandidates) });
   }
 
-  if (chapter.slug === "scorecard" && scorecard?.rows) {
+  if (chapterSlugMatches(chapter.slug, "accountability-reporting", "scorecard", "audit") && scorecard?.rows) {
     for (const row of ["HCI", "Founding Leaders", "Counties Covered", "Verified Events"]) {
       const match = scorecard.rows.find((r) => r.metric === row);
       if (match) {
@@ -307,16 +317,26 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
         });
       }
     }
+    const party = getCountyPartyIntelligenceRollup();
+    liveStrip.push({ label: "County party scrape", value: `${party.fetchedOk}/75` });
   }
 
-  if (chapter.slug === "message") {
+  if (chapterSlugMatches(chapter.slug, "accountability-reporting", "audit") && audit) {
+    liveStrip.push(
+      { label: "Version", value: audit.version ?? "2.0" },
+      { label: "Status", value: (audit.status ?? "operational").replace(/_/g, " ") },
+      { label: "TBD owners", value: String(audit.unassignedOwners ?? 0) },
+    );
+  }
+
+  if (chapterSlugMatches(chapter.slug, "media-storytelling", "message")) {
     liveStrip.push(
       { label: "Doctrine pillars", value: "8" },
       { label: "Audience", value: "Every room" },
     );
   }
 
-  if (chapter.slug === "county-victory-targets") {
+  if (chapterSlugMatches(chapter.slug, "path-to-victory", "county-victory-targets")) {
     const rollup = getCountyVictoryTargetsRollup();
     const party = getCountyPartyIntelligenceRollup();
     liveStrip.push(
@@ -327,34 +347,7 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     );
   }
 
-  if (chapter.slug === "influence-map") {
-    const party = getCountyPartyIntelligenceRollup();
-    liveStrip.push(
-      { label: "County party chairs", value: String(party.chairsFound) },
-      { label: "Needs verification", value: String(party.needsVerification) },
-      { label: "Source", value: "ArkDems.org" },
-    );
-  }
-
-  if (chapter.slug === "scorecard") {
-    const party = getCountyPartyIntelligenceRollup();
-    liveStrip.push({ label: "County party scrape", value: `${party.fetchedOk}/75` });
-  }
-
-  if (chapter.slug === "labor-day") {
-    const party = getCountyPartyIntelligenceRollup();
-    liveStrip.push({ label: "Meeting candidates", value: String(party.meetingCandidates) });
-  }
-
-  if (chapter.slug === "audit" && audit) {
-    liveStrip.push(
-      { label: "Version", value: audit.version ?? "1.0" },
-      { label: "Status", value: (audit.status ?? "operational").replace(/_/g, " ") },
-      { label: "TBD owners", value: String(audit.unassignedOwners ?? 0) },
-    );
-  }
-
-  if (chapter.slug === "budget" && budget) {
+  if (chapterSlugMatches(chapter.slug, "fundraising-operating-system", "budget") && budget) {
     const leadership = getExecutiveBookBudgetLeadership();
     budgetSummary = {
       disclaimer:
@@ -385,7 +378,7 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     );
   }
 
-  if (chapter.slug === "power-of-5" && po5) {
+  if (chapterSlugMatches(chapter.slug, "ppen", "power-of-5") && po5) {
     liveStrip.push(
       { label: "Objective", value: "Relationships", detail: po5.objective ?? "Meaningful relationships" },
       { label: "Network goal", value: po5.networkGoal.toLocaleString("en-US") },
@@ -393,7 +386,7 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     );
   }
 
-  if (chapter.slug === "students-for-arkansas" && sfa?.metrics) {
+  if (chapterSlugMatches(chapter.slug, "community-strategy", "students-for-arkansas") && sfa?.metrics) {
     liveStrip.push(
       { label: "Co-chairs", value: `${sfa.metrics.coChairsConfirmed}/${sfa.metrics.coChairsGoal}` },
       { label: "Volunteers", value: String(sfa.metrics.studentVolunteers), detail: `Labor Day: ${(sfa.milestones && (sfa.milestones as { laborDay?: { studentVolunteers?: number } }).laborDay?.studentVolunteers) ?? 100}` },
@@ -401,7 +394,7 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     );
   }
 
-  if (chapter.slug === "gotv" && gotv) {
+  if (chapterSlugMatches(chapter.slug, "election-day-operations", "gotv") && gotv) {
     liveStrip.push(
       { label: "Election Day", value: gotv.electionDay ?? "2026-11-03" },
       { label: "Early voting", value: gotv.earlyVotingStart ?? "2026-10-20" },
@@ -421,17 +414,28 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
     markdown,
     generatedAt: sfa?.generatedAt ?? po5?.generatedAt ?? gotv?.generatedAt ?? budget?.generatedAt ?? summary?.generatedAt ?? null,
     liveStrip,
-    scorecardRows: chapter.slug === "scorecard" ? scorecard?.rows : undefined,
-    ownershipRows: chapter.slug === "ownership" ? ownership?.assignments : undefined,
-    influenceGroups: chapter.slug === "influence-map" ? contact?.influenceGroups : undefined,
+    scorecardRows: chapterSlugMatches(chapter.slug, "accountability-reporting", "scorecard")
+      ? scorecard?.rows
+      : undefined,
+    ownershipRows: chapterSlugMatches(chapter.slug, "leadership-development", "ownership")
+      ? ownership?.assignments
+      : undefined,
+    influenceGroups: chapterSlugMatches(chapter.slug, "coalition-strategy", "influence-map")
+      ? contact?.influenceGroups
+      : undefined,
     budgetSummary,
-    powerOf5Summary: chapter.slug === "power-of-5" ? po5 ?? undefined : undefined,
-    studentsForArkansasSummary: chapter.slug === "students-for-arkansas" ? sfa ?? undefined : undefined,
-    gotvMetrics: chapter.slug === "gotv" ? gotv?.dailyMetrics : undefined,
-    electionDayChecklist: chapter.slug === "gotv" ? gotv?.electionDayChecklist : undefined,
-    citizenVoicesSummary: chapter.slug === "power-of-5" ? citizenVoices ?? undefined : undefined,
+    powerOf5Summary: chapterSlugMatches(chapter.slug, "ppen", "power-of-5") ? po5 ?? undefined : undefined,
+    studentsForArkansasSummary: chapterSlugMatches(chapter.slug, "community-strategy", "students-for-arkansas")
+      ? sfa ?? undefined
+      : undefined,
+    gotvMetrics: chapterSlugMatches(chapter.slug, "election-day-operations", "gotv") ? gotv?.dailyMetrics : undefined,
+    electionDayChecklist: chapterSlugMatches(chapter.slug, "election-day-operations", "gotv")
+      ? gotv?.electionDayChecklist
+      : undefined,
+    citizenVoicesSummary: chapterSlugMatches(chapter.slug, "ppen", "power-of-5") ? citizenVoices ?? undefined : undefined,
     pillar: getExecutiveBookPillar(chapter.slug),
     edition: EXECUTIVE_BOOK_EDITION.version,
+    osRoute: chapter.osRoute ?? null,
     tableOfContents,
     navigation: {
       prev: adjacent.prev
@@ -450,6 +454,8 @@ export function loadExecutiveBookChapter(slug: string): ExecutiveBookChapterPayl
   };
 }
 
+export { getExecutiveBookChapter } from "./executiveBookChapters";
+
 export function listExecutiveBookChapterSlugs(): ExecutiveBookChapterSlug[] {
-  return EXECUTIVE_BOOK_CHAPTERS.map((c) => c.slug);
+  return allExecutiveBookSlugs();
 }

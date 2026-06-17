@@ -1,28 +1,19 @@
 import {
   EXECUTIVE_BOOK_CHAPTERS,
+  EXECUTIVE_BOOK_PARTS,
   type ExecutiveBookChapterDef,
-  type ExecutiveBookChapterSlug,
 } from "./executiveBookChapters";
 
-export type ExecutiveBookPillar =
-  | "governance"
-  | "strategy"
-  | "resources"
-  | "field"
-  | "completion";
+export type ExecutiveBookPartId = (typeof EXECUTIVE_BOOK_PARTS)[number]["id"];
 
-export const EXECUTIVE_BOOK_PILLAR_LABELS: Record<ExecutiveBookPillar, string> = {
-  governance: "Governance & Accountability",
-  strategy: "Strategy & Message",
-  resources: "Resources & Budget",
-  field: "Field Operations & People Power",
-  completion: "Readiness & Audit",
-};
+export const EXECUTIVE_BOOK_PILLAR_LABELS: Record<string, string> = Object.fromEntries(
+  EXECUTIVE_BOOK_PARTS.map((p) => [p.id, p.label]),
+);
 
 export const EXECUTIVE_BOOK_EDITION = {
-  version: "1.1",
-  label: "Executive Book V1.1",
-  tagline: "Leadership briefing · shareable chapters · board-ready narrative",
+  version: "2.0",
+  label: "Executive Book 2.0",
+  tagline: "Campaign Operating System manual · shareable chapters · board-ready doctrine",
 };
 
 export type ExecutiveBookTocEntry = {
@@ -31,69 +22,58 @@ export type ExecutiveBookTocEntry = {
   level: 2 | 3;
 };
 
-export function getExecutiveBookPillar(slug: ExecutiveBookChapterSlug): ExecutiveBookPillar {
-  switch (slug) {
-    case "doctrine":
-    case "influence-map":
-    case "labor-day":
-    case "message":
-    case "county-victory-targets":
-      return "strategy";
-    case "ownership":
-    case "scorecard":
-      return "governance";
-    case "budget":
-      return "resources";
-    case "power-of-5":
-    case "students-for-arkansas":
-    case "gotv":
-      return "field";
-    case "audit":
-      return "completion";
-  }
+export function getExecutiveBookPillar(slug: string): string {
+  const chapter = EXECUTIVE_BOOK_CHAPTERS.find((c) => c.slug === slug);
+  return chapter?.partId ?? "part-i-victory-strategy";
 }
 
-export function getAdjacentExecutiveBookChapters(slug: ExecutiveBookChapterSlug): {
+export function getAdjacentExecutiveBookChapters(slug: string): {
   prev: ExecutiveBookChapterDef | null;
   next: ExecutiveBookChapterDef | null;
 } {
-  const index = EXECUTIVE_BOOK_CHAPTERS.findIndex((c) => c.slug === slug);
+  const canonical = EXECUTIVE_BOOK_CHAPTERS;
+  const index = canonical.findIndex((c) => c.slug === slug);
   if (index < 0) return { prev: null, next: null };
   return {
-    prev: index > 0 ? EXECUTIVE_BOOK_CHAPTERS[index - 1]! : null,
-    next: index < EXECUTIVE_BOOK_CHAPTERS.length - 1 ? EXECUTIVE_BOOK_CHAPTERS[index + 1]! : null,
+    prev: index > 0 ? canonical[index - 1]! : null,
+    next: index < canonical.length - 1 ? canonical[index + 1]! : null,
   };
 }
 
-export function getRelatedExecutiveBookChapters(slug: ExecutiveBookChapterSlug): ExecutiveBookChapterDef[] {
-  const pillar = getExecutiveBookPillar(slug);
-  const samePillar = EXECUTIVE_BOOK_CHAPTERS.filter(
-    (c) => c.slug !== slug && getExecutiveBookPillar(c.slug) === pillar,
-  );
+export function getRelatedExecutiveBookChapters(slug: string): ExecutiveBookChapterDef[] {
+  const chapter = EXECUTIVE_BOOK_CHAPTERS.find((c) => c.slug === slug);
+  if (!chapter) return [];
 
-  const crossLinks: Partial<Record<ExecutiveBookChapterSlug, ExecutiveBookChapterSlug[]>> = {
-    doctrine: ["message", "power-of-5", "budget"],
-    ownership: ["doctrine", "scorecard", "audit"],
-    "power-of-5": ["doctrine", "students-for-arkansas", "gotv", "labor-day"],
-    "students-for-arkansas": ["power-of-5", "labor-day", "gotv"],
-    gotv: ["power-of-5", "labor-day", "scorecard"],
-    budget: ["doctrine", "labor-day", "gotv"],
-    "labor-day": ["scorecard", "power-of-5", "budget"],
-    message: ["doctrine", "power-of-5", "influence-map", "county-victory-targets"],
-    "county-victory-targets": ["power-of-5", "gotv", "scorecard"],
+  const crossLinks: Partial<Record<string, string[]>> = {
+    doctrine: ["path-to-victory", "ppen", "leadership-development"],
+    "path-to-victory": ["county-strategy", "ppen", "fundraising-operating-system"],
+    "county-strategy": ["county-workbench-system", "path-to-victory", "immersion-county-missions"],
+    "community-strategy": ["community-workbench-system", "event-operations", "ppen"],
+    "coalition-strategy": ["leadership-development", "campaign-communications-hub", "fundraising-opportunities"],
+    ppen: ["leadership-development", "voter-engagement", "volunteer-onboarding"],
+    "leadership-development": ["ppen", "accountability-reporting", "volunteer-onboarding"],
+    "county-workbench-system": ["county-strategy", "community-workbench-system", "fundraising-operating-system"],
+    "community-workbench-system": ["event-operations", "fundraising-opportunities", "ppen"],
+    "event-operations": ["fundraising-opportunities", "community-workbench-system", "communications-calendar"],
+    "fundraising-operating-system": ["fundraising-opportunities", "path-to-victory", "county-workbench-system"],
+    "labor-day-readiness": ["campaign-calendar", "accountability-reporting", "leadership-development"],
+    "election-day-operations": ["voter-engagement", "ppen", "campaign-calendar"],
+    "technology-data-systems": ["appendix-workbench-architecture", "accountability-reporting", "volunteer-onboarding"],
   };
 
   const linked = (crossLinks[slug] ?? [])
     .map((s) => EXECUTIVE_BOOK_CHAPTERS.find((c) => c.slug === s))
     .filter((c): c is ExecutiveBookChapterDef => Boolean(c));
 
+  const samePart = EXECUTIVE_BOOK_CHAPTERS.filter(
+    (c) => c.slug !== slug && c.partId === chapter.partId,
+  );
+
   const merged = [...linked];
-  for (const chapter of samePillar) {
-    if (!merged.some((c) => c.slug === chapter.slug) && merged.length < 3) {
-      merged.push(chapter);
-    }
+  for (const c of samePart) {
+    if (!merged.some((m) => m.slug === c.slug) && merged.length < 4) merged.push(c);
   }
-  return merged.slice(0, 3);
+  return merged.slice(0, 4);
 }
 
 /** Extract h2/h3 headings for on-page table of contents. */
@@ -117,7 +97,6 @@ function stripMarkdown(text: string): string {
   return text.replace(/\*\*/g, "").replace(/`/g, "").trim();
 }
 
-/** Match rehype-slug / GitHub-style heading ids. */
 function slugifyHeading(text: string): string {
   return stripMarkdown(text)
     .toLowerCase()
@@ -126,15 +105,15 @@ function slugifyHeading(text: string): string {
     .replace(/\s+/g, "-");
 }
 
-export function groupChaptersByPillar<T extends { slug: string }>(
+export function groupChaptersByPillar<T extends { slug: string; partId?: string }>(
   chapters: T[],
-): Array<{ pillar: ExecutiveBookPillar; label: string; chapters: T[] }> {
-  const order: ExecutiveBookPillar[] = ["governance", "strategy", "resources", "field", "completion"];
-  return order
-    .map((pillar) => ({
-      pillar,
-      label: EXECUTIVE_BOOK_PILLAR_LABELS[pillar],
-      chapters: chapters.filter((c) => getExecutiveBookPillar(c.slug as ExecutiveBookChapterSlug) === pillar),
-    }))
-    .filter((g) => g.chapters.length > 0);
+): Array<{ pillar: string; label: string; chapters: T[] }> {
+  return EXECUTIVE_BOOK_PARTS.map((part) => ({
+    pillar: part.id,
+    label: part.label,
+    chapters: chapters.filter((c) => c.partId === part.id),
+  })).filter((g) => g.chapters.length > 0);
 }
+
+/** @deprecated use groupChaptersByPillar — alias for hub snapshot builder. */
+export { groupChaptersByPillar as groupChaptersByPart };
