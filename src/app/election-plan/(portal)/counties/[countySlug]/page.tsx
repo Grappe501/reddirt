@@ -10,6 +10,7 @@ import { fieldEventsForLocation } from "@/lib/election-plan/location-calendar-in
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
 import { getFosCountyRollup } from "@/lib/election-plan/load-fundraising-operating-system";
+import { loadCountyPlaybookMarkdown } from "@/lib/election-plan/load-county-playbook-markdown";
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
 
 type Props = { params: Promise<{ countySlug: string }> };
@@ -55,6 +56,7 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
 
   const fosCountyRollup = getFosCountyRollup(county.slug);
   const v4Ops = buildCountyWorkbenchV4OperationalView(strikeTeam, fieldEntrySummary);
+  const playbookMarkdown = loadCountyPlaybookMarkdown(county.playbookPath);
 
   return (
     <>
@@ -80,6 +82,7 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
             fosCountyRollup={fosCountyRollup}
             countyIntel={countyIntel}
             v4Ops={v4Ops}
+            playbookMarkdown={playbookMarkdown}
           />
         </div>
       </div>

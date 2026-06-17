@@ -11,6 +11,7 @@ import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
 import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySection";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { MeetKellySixQuestions } from "@/components/about/MeetKellySixQuestions";
+import { MeetKellyChapterIndex } from "@/components/about/MeetKellyChapterIndex";
 import { MeetKellyTrustIndicators } from "@/components/about/MeetKellyTrustIndicators";
 import { meetKellyExecutiveSummary } from "@/content/about/meet-kelly-hub";
 
@@ -57,6 +58,14 @@ export default async function AboutPage() {
         <ContentContainer wide>
           <div className="mx-auto max-w-4xl">
             <MeetKellySixQuestions />
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer wide>
+          <div className="mx-auto max-w-4xl">
+            <MeetKellyChapterIndex />
           </div>
         </ContentContainer>
       </FullBleedSection>
