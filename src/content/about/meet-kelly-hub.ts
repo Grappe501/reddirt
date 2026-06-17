@@ -26,17 +26,17 @@ export const MEET_KELLY_QUESTIONS: readonly MeetKellyQuestion[] = [
     id: "who",
     title: "Who is Kelly?",
     summary:
-      "Arkansas roots, family, faith as practice, and a life built in community—not performance. Personal background and values on the journey page.",
-    href: "/about/journey",
-    hrefLabel: "Read her journey",
+      "Arkansas roots, family, faith as practice, and a life built in community—not performance. Personal background and values in the trust & story chapter.",
+    href: "/about/story",
+    hrefLabel: "Read her story",
   },
   {
     id: "done",
     title: "What has she done?",
     summary:
       "Telecom operations career, small-business and farm work, civic nonprofit leadership, and grassroots petition organizing. Detailed résumé claims link to external sources where available.",
-    href: "/about/journey",
-    hrefLabel: "Career & community",
+    href: "/about/business",
+    hrefLabel: "Business & career",
   },
   {
     id: "why-running",
@@ -51,8 +51,8 @@ export const MEET_KELLY_QUESTIONS: readonly MeetKellyQuestion[] = [
     title: "What has she learned?",
     summary:
       "Systems must respect people; small businesses feel every friction in paperwork; democracy is a skill neighbors will practice when the process is intelligible.",
-    href: "/about/journey",
-    hrefLabel: "Life lessons",
+    href: "/about/forevermost",
+    hrefLabel: "Stewardship & lessons",
   },
   {
     id: "office",
@@ -86,5 +86,5 @@ export const meetKellyExecutiveSummary = {
   subtitle:
     "Candidate for Arkansas Secretary of State. Before systems and statutes, you deserve to know the person asking for your trust—where she comes from, what she has built, and why she entered this race.",
   lead:
-    "This page answers six questions voters, reporters, and local leaders ask—not a chronological résumé. Go deeper on journey, community work, and why Kelly entered the race from the links below.",
+    "This page answers six questions voters, reporters, and local leaders ask—not a chronological résumé. Read the summaries here, then open each campaign chapter for the full essay. The long-form literary biography manuscript stays offline until Kelly approves depth 4.",
 } as const;

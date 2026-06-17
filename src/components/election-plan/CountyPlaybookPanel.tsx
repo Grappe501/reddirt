@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CountyPlaybookMarkdownPanel } from "@/components/election-plan/CountyPlaybookMarkdownPanel";
 import { CountyFundraisingRollupPanel } from "@/components/election-plan/CountyFundraisingRollupPanel";
 import { CountyIntelligenceNav } from "@/components/election-plan/CountyIntelligenceNav";
 import { CountyWorkbenchV3IntelPanel } from "@/components/election-plan/CountyWorkbenchV3IntelPanel";
@@ -52,6 +53,7 @@ type Props = {
   fosCountyRollup?: FosCountyRollup | null;
   countyIntel?: CountyWorkbenchV3View | null;
   v4Ops?: CountyWorkbenchV4OperationalView | null;
+  playbookMarkdown?: string | null;
 };
 
 function guardrailClass(status: string) {
@@ -82,6 +84,7 @@ export function CountyPlaybookPanel({
   fosCountyRollup = null,
   countyIntel = null,
   v4Ops = null,
+  playbookMarkdown = null,
 }: Props) {
   const specialKpi = getSpecialKpiGoalForCounty(county.slug);
   const victoryTarget = getCountyVictoryTarget(county.county, county.tier);
@@ -199,6 +202,10 @@ export function CountyPlaybookPanel({
       </div>
 
       <div id="strategy" className="scroll-mt-24">
+        {playbookMarkdown ? (
+          <CountyPlaybookMarkdownPanel countyName={county.county} markdown={playbookMarkdown} />
+        ) : null}
+
         {victoryTarget ? (
           <div className="mb-8">
             <CountyVictoryTargetsPanel target={victoryTarget} variant="hero" />

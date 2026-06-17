@@ -12,8 +12,8 @@ export function MeetKellySixQuestions() {
         Six questions voters ask
       </h2>
       <p className="mt-3 max-w-2xl font-body text-base leading-relaxed text-kelly-text/78">
-        Not a chronological résumé—a trust funnel. Read the overview here; go deeper on journey, community, and why
-        Kelly entered the race.
+        Summaries on the overview — full essays on each campaign chapter. Journey and community pages collect related
+        arcs; open a chapter for the complete read.
       </p>
       <ol className="mt-10 grid gap-6 md:grid-cols-2">
         {MEET_KELLY_QUESTIONS.map((q, index) => (

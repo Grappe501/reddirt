@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -69,6 +70,14 @@ export default function AboutJourneyPage() {
               ))}
             </ul>
           </section>
+
+          <p className="mt-12 font-body text-base leading-relaxed text-kelly-text/85">
+            For the full essays on each arc—not these summaries—open the{" "}
+            <Link href="/about/story" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+              campaign chapters
+            </Link>{" "}
+            from the Meet Kelly overview.
+          </p>
         </ContentContainer>
       </FullBleedSection>
     </>
