@@ -1,0 +1,10 @@
+{
+  "version": "2.0",
+  "edition": "2.0",
+  "status": "operational_scaffold",
+  "laborDayDeadline": "2026-09-07",
+  "completenessEstimate": "35%",
+  "chapterCount": 26,
+  "note": "V2 OS manual — scaffolds + migrated V1 prose. PPEN and Leadership chapters are priority rewrites.",
+  "generatedAt": "2026-06-17T00:09:42.884Z"
+}

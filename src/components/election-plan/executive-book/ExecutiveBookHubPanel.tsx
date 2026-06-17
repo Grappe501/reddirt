@@ -127,7 +127,7 @@ export function ExecutiveBookHubPanel({ data, standalone = false }: Props) {
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{pillarGroups.length}</div>
-          <div className="ep-stat-label">Pillar groups</div>
+          <div className="ep-stat-label">Parts</div>
         </div>
       </div>
 
