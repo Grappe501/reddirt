@@ -34,6 +34,7 @@ import {
   WeekOperationalPanel,
 } from "@/components/election-plan/WarRoomPanels";
 import { ExecutiveBookHubPanel } from "@/components/election-plan/executive-book/ExecutiveBookHubPanel";
+import { ElectionPlanOperatorQuickLinks } from "@/components/election-plan/ElectionPlanOperatorQuickLinks";
 
 const TAB_GROUPS = [
   {
@@ -109,6 +110,8 @@ export function ElectionPlanWorkbench({ data, coalitionHub, initialTab }: Electi
               <ExecutiveMetricCard key={m.label} label={m.label} value={m.value} detail={m.detail} variant="hero" />
             ))}
           </div>
+
+          <ElectionPlanOperatorQuickLinks variant="hero" />
 
           <p className="mt-6 text-xs text-white/45">
             Snapshot generated {new Date(data.generatedAt).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })}

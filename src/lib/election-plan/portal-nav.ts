@@ -12,6 +12,7 @@ export const ELECTION_PLAN_PORTAL_NAV: ElectionPlanPortalNavItem[] = [
   { href: "/election-plan/search", label: "Search" },
   { href: "/election-plan/workbenches", label: "Workbenches" },
   { href: "/election-plan/operators", label: "Operators" },
+  { href: "/election-plan/executive-book", label: "Executive Book" },
   { href: "/election-plan/debate-prep", label: "Debate Prep" },
   { href: "/election-plan/opposition-research", label: "Opposition Research" },
 ];
