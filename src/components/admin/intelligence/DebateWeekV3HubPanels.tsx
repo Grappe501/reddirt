@@ -20,15 +20,21 @@ import type { KellyDebateIntensiveProgress } from "@/lib/intelligence/v4/kellyDe
 
 const tierOrder: DrillDownLaneTier[] = ["essential", "deeper", "stretch"];
 
-export function DebateWeekReadinessPanel({ initialProgress }: { initialProgress: KellyDebateIntensiveProgress }) {
+export function DebateWeekReadinessPanel({
+  initialProgress,
+  progressApiBase = "/api/admin/intelligence/debate-week-intensive/progress",
+}: {
+  initialProgress: KellyDebateIntensiveProgress;
+  progressApiBase?: string;
+}) {
   const [progress, setProgress] = useState(initialProgress);
   const readiness = computeDebateIntensiveReadiness(progress);
 
   const refresh = useCallback(async () => {
-    const res = await fetch("/api/admin/intelligence/debate-week-intensive/progress");
+    const res = await fetch(progressApiBase);
     const data = (await res.json()) as { ok: boolean; progress?: KellyDebateIntensiveProgress };
     if (data.ok && data.progress) setProgress(data.progress);
-  }, []);
+  }, [progressApiBase]);
 
   useEffect(() => {
     void refresh();
@@ -72,20 +78,29 @@ export function DebateWeekReadinessPanel({ initialProgress }: { initialProgress:
   );
 }
 
-export function DebateWeekLanesHubClient({ initialProgress }: { initialProgress: KellyDebateIntensiveProgress }) {
+export function DebateWeekLanesHubClient({
+  initialProgress,
+  progressApiBase = "/api/admin/intelligence/debate-week-intensive/progress",
+}: {
+  initialProgress: KellyDebateIntensiveProgress;
+  progressApiBase?: string;
+}) {
   const [progress, setProgress] = useState(initialProgress);
   const lanes = listAllDrillDownLanes();
   const completed = new Set(progress.completedLanes ?? []);
 
-  const postProgress = useCallback(async (laneId: string) => {
-    const res = await fetch("/api/admin/intelligence/debate-week-intensive/progress", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "toggle_lane", laneId }),
-    });
-    const data = (await res.json()) as { ok: boolean; progress?: KellyDebateIntensiveProgress };
-    if (data.ok && data.progress) setProgress(data.progress);
-  }, []);
+  const postProgress = useCallback(
+    async (laneId: string) => {
+      const res = await fetch(progressApiBase, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "toggle_lane", laneId }),
+      });
+      const data = (await res.json()) as { ok: boolean; progress?: KellyDebateIntensiveProgress };
+      if (data.ok && data.progress) setProgress(data.progress);
+    },
+    [progressApiBase],
+  );
 
   return (
     <div className="space-y-8">

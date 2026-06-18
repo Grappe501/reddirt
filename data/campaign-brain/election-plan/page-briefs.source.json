@@ -17,6 +17,7 @@
         { "label": "Budget · Ch. 7", "href": "/election-plan/executive-book/budget" },
         { "label": "Conversation Strategy · Ch. 8", "href": "/election-plan/executive-book/power-of-5" },
         { "label": "Debate prep", "href": "/election-plan/debate-prep" },
+        { "label": "Debate prep · AI tutor", "href": "/election-plan/debate-prep/tutor" },
         { "label": "Forum transcript lab", "href": "/election-plan/debate-prep/forum-lab" }
       ],
       "searchKeywords": ["executive book", "leadership briefing", "chapters"]
@@ -374,15 +375,78 @@
       "pathPattern": "/election-plan/debate-prep",
       "exact": true,
       "title": "Debate Prep",
-      "answers": "Where is Kelly's SOS debate rehearsal course, forum transcript lab, and capitalize playbook?",
-      "keyMetrics": ["7-day intensive", "Command Mode", "Forum transcript lab", "ACCA drop folder"],
+      "answers": "Where is Kelly's SOS debate prep v5 hub — command course, AI tutor, rehearsal engine, forum lab, and drill lanes?",
+      "keyMetrics": ["Debate prep v5", "7-day intensive", "AI tutor", "Rehearsal engine", "Forum transcript lab"],
       "bestFor": ["Kelly", "Debate prep staff", "Campaign leadership"],
       "relatedLinks": [
+        { "label": "Command home", "href": "/election-plan/debate-prep/command" },
+        { "label": "AI tutor", "href": "/election-plan/debate-prep/tutor" },
+        { "label": "Rehearsal engine", "href": "/election-plan/debate-prep/rehearsal" },
+        { "label": "Drill lanes", "href": "/election-plan/debate-prep/lanes" },
         { "label": "Forum transcript lab", "href": "/election-plan/debate-prep/forum-lab" },
         { "label": "Opposition research", "href": "/election-plan/opposition-research" },
         { "label": "Executive Book", "href": "/election-plan/executive-book" }
       ],
-      "searchKeywords": ["debate prep", "debate week", "sos debate", "rehearsal", "command mode", "eureka springs"]
+      "searchKeywords": ["debate prep", "debate week", "sos debate", "rehearsal", "command mode", "eureka springs", "v5", "tutor"]
+    },
+    {
+      "id": "debate-prep-command",
+      "pathPattern": "/election-plan/debate-prep/command",
+      "exact": true,
+      "title": "Debate Prep · Command Home",
+      "answers": "What is Kelly's readiness score tonight, and which lines are safe vs blocked?",
+      "keyMetrics": ["Readiness %", "Safe lines", "Blocked lines", "Tonight's focus"],
+      "bestFor": ["Kelly", "Debate prep staff"],
+      "relatedLinks": [
+        { "label": "Debate prep hub", "href": "/election-plan/debate-prep" },
+        { "label": "Rehearsal engine", "href": "/election-plan/debate-prep/rehearsal" },
+        { "label": "AI tutor", "href": "/election-plan/debate-prep/tutor" }
+      ],
+      "searchKeywords": ["command home", "readiness", "safe lines", "blocked", "tonight"]
+    },
+    {
+      "id": "debate-prep-tutor",
+      "pathPattern": "/election-plan/debate-prep/tutor",
+      "exact": true,
+      "title": "Debate Prep · AI Tutor",
+      "answers": "How does Kelly run a 5 / 15 / 30 minute coach session or professor seminar before the debate?",
+      "keyMetrics": ["Coach modes", "Professor modes", "Practice feedback", "Claims gate"],
+      "bestFor": ["Kelly", "Debate prep staff"],
+      "relatedLinks": [
+        { "label": "Debate prep hub", "href": "/election-plan/debate-prep" },
+        { "label": "Drill lanes", "href": "/election-plan/debate-prep/lanes" },
+        { "label": "Rehearsal engine", "href": "/election-plan/debate-prep/rehearsal" }
+      ],
+      "searchKeywords": ["tutor", "coach", "professor", "seminar", "panic", "three-way panel"]
+    },
+    {
+      "id": "debate-prep-rehearsal",
+      "pathPattern": "/election-plan/debate-prep/rehearsal",
+      "exact": true,
+      "title": "Debate Prep · Rehearsal Engine",
+      "answers": "Where is tonight's stage rehearsal — encounters, run of show, drill queue, and iPad player?",
+      "keyMetrics": ["SRE encounters", "Drill queue", "Run of show", "Session debrief"],
+      "bestFor": ["Kelly", "Debate prep staff"],
+      "relatedLinks": [
+        { "label": "Command home", "href": "/election-plan/debate-prep/command" },
+        { "label": "Debate prep hub", "href": "/election-plan/debate-prep" },
+        { "label": "AI tutor", "href": "/election-plan/debate-prep/tutor" }
+      ],
+      "searchKeywords": ["rehearsal", "sre", "encounter", "drill", "ipad", "run of show"]
+    },
+    {
+      "id": "debate-prep-lanes",
+      "pathPattern": "/election-plan/debate-prep/lanes",
+      "exact": true,
+      "title": "Debate Prep · Drill Lanes",
+      "answers": "Where are the optional intensive v3 drill-down lanes across debate week?",
+      "keyMetrics": ["Essential lanes", "Deeper lanes", "Stretch lanes", "Progress tracking"],
+      "bestFor": ["Kelly", "Debate prep staff"],
+      "relatedLinks": [
+        { "label": "Debate prep hub", "href": "/election-plan/debate-prep" },
+        { "label": "AI tutor", "href": "/election-plan/debate-prep/tutor" }
+      ],
+      "searchKeywords": ["lanes", "drill down", "intensive v3", "theory", "essential"]
     },
     {
       "id": "forum-transcript-lab",

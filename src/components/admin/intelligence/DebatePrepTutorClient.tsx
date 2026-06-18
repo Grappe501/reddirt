@@ -69,7 +69,13 @@ function ElementGuideCallout({ elementId }: { elementId: keyof typeof TUTOR_ELEM
   );
 }
 
-export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
+export function DebatePrepTutorClient({
+  embedded,
+  apiBase = "/api/admin/intelligence/debate-prep-tutor",
+}: {
+  embedded?: boolean;
+  apiBase?: string;
+}) {
   const [mode, setMode] = useState<DebatePrepTutorMode | null>(null);
   const [session, setSession] = useState<TutorSession | ProfessorTutorSession | null>(null);
   const [professorMode, setProfessorMode] = useState<DebatePrepProfessorMode | null>(null);
@@ -99,7 +105,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
     setCardIndex(0);
     setTurnIndex(0);
     try {
-      const res = await fetch("/api/admin/intelligence/debate-prep-tutor", {
+      const res = await fetch(apiBase, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "start-session", mode: selected }),
@@ -112,7 +118,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
       setMode(selected);
       setSession(data.session);
       if (selected === "check-my-record") {
-        const cmrRes = await fetch("/api/admin/intelligence/debate-prep-tutor", {
+        const cmrRes = await fetch(apiBase, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action: "check-my-record-content" }),
@@ -127,7 +133,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [apiBase]);
 
   const startProfessorSession = useCallback(async (selected: DebatePrepProfessorMode) => {
     setLoading(true);
@@ -139,7 +145,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
     setCardIndex(0);
     setTurnIndex(0);
     try {
-      const res = await fetch("/api/admin/intelligence/debate-prep-tutor", {
+      const res = await fetch(apiBase, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "start-professor-session", mode: selected }),
@@ -157,7 +163,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [apiBase]);
 
   async function requestCritique() {
     if (!session || !practiceAnswer.trim()) return;
@@ -169,7 +175,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
     setProfessorCritique(null);
     try {
       const action = session && isProfessorSession(session) ? "critique-professor-answer" : "critique-answer";
-      const res = await fetch("/api/admin/intelligence/debate-prep-tutor", {
+      const res = await fetch(apiBase, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -205,7 +211,7 @@ export function DebatePrepTutorClient({ embedded }: { embedded?: boolean }) {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/admin/intelligence/debate-prep-tutor", {
+      const res = await fetch(apiBase, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

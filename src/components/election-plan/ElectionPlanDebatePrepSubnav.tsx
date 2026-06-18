@@ -3,11 +3,22 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { EP_DEBATE_PREP_HREF, EP_FORUM_TRANSCRIPT_LAB_HREF } from "@/lib/election-plan/debate-prep-links";
+import {
+  EP_DEBATE_PREP_COMMAND_HREF,
+  EP_DEBATE_PREP_HREF,
+  EP_DEBATE_PREP_LANES_HREF,
+  EP_DEBATE_PREP_REHEARSAL_HREF,
+  EP_DEBATE_PREP_TUTOR_HREF,
+  EP_FORUM_TRANSCRIPT_LAB_HREF,
+} from "@/lib/election-plan/debate-prep-links";
 
 const tabs = [
-  { href: EP_DEBATE_PREP_HREF, label: "Command course" },
-  { href: EP_FORUM_TRANSCRIPT_LAB_HREF, label: "Forum transcript lab" },
+  { href: EP_DEBATE_PREP_HREF, label: "Hub", exact: true },
+  { href: EP_DEBATE_PREP_COMMAND_HREF, label: "Command home" },
+  { href: EP_DEBATE_PREP_TUTOR_HREF, label: "AI tutor" },
+  { href: EP_DEBATE_PREP_REHEARSAL_HREF, label: "Rehearsal" },
+  { href: EP_DEBATE_PREP_LANES_HREF, label: "Drill lanes" },
+  { href: EP_FORUM_TRANSCRIPT_LAB_HREF, label: "Forum lab" },
 ] as const;
 
 export function ElectionPlanDebatePrepSubnav() {
@@ -16,7 +27,10 @@ export function ElectionPlanDebatePrepSubnav() {
   return (
     <nav className="mb-8 flex flex-wrap gap-2 border-b border-[var(--ep-border)] pb-3" aria-label="Debate prep sections">
       {tabs.map((tab) => {
-        const active = path === tab.href || (tab.href !== EP_DEBATE_PREP_HREF && path.startsWith(tab.href));
+        const active =
+          tab.exact === true
+            ? path === tab.href
+            : path === tab.href || path.startsWith(`${tab.href}/`);
         return (
           <Link
             key={tab.href}
