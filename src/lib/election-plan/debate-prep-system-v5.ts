@@ -116,8 +116,8 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
       tagline: "SRE stage rehearsal engine · encounters · iPad drill player",
       href: EP_DEBATE_PREP_REHEARSAL_HREF,
       lane: "kelly",
-      status: feed.rehearsalLauncher.primaryEncounterId ? "in-progress" : "not-started",
-      statusNote: feed.rehearsalLauncher.headline,
+      status: feed.rehearsalLauncher.encounterCount > 0 ? "in-progress" : "not-started",
+      statusNote: feed.rehearsalLauncher.tonightReminder,
     },
     {
       id: "drill-lanes",
@@ -147,7 +147,9 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
       "Election Plan is the primary operator surface — command course, conversational tutor, forum intelligence, rehearsal engine, and opposition crosswalk in one lane.",
     readinessPct: feed.readinessPct,
     readinessLabel: feed.readinessLabel,
-    todayFocus: todayPlan ? `${todayPlan.title} — ${todayPlan.subtitle}` : feed.tonightFocus,
+    todayFocus: todayPlan
+      ? `${todayPlan.title} — ${todayPlan.subtitle}`
+      : feed.todayFocus[0] ?? null,
     intensiveDaysComplete: progress.completedDays.length,
     intensiveDaysTotal: DEBATE_WEEK_INTENSIVE_DAYS.length,
     forumTranscriptReady,

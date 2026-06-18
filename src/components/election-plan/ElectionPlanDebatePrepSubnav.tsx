@@ -28,7 +28,7 @@ export function ElectionPlanDebatePrepSubnav() {
     <nav className="mb-8 flex flex-wrap gap-2 border-b border-[var(--ep-border)] pb-3" aria-label="Debate prep sections">
       {tabs.map((tab) => {
         const active =
-          tab.exact === true
+          "exact" in tab && tab.exact === true
             ? path === tab.href
             : path === tab.href || path.startsWith(`${tab.href}/`);
         return (
