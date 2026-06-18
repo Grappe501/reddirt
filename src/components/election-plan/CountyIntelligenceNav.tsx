@@ -1,12 +1,19 @@
-import { COUNTY_INTELLIGENCE_NAV_SECTIONS } from "@/lib/election-plan/county-intelligence-nav";
+import { getCountyIntelligenceNavSections, type CountyIntelligenceNavSection } from "@/lib/election-plan/county-intelligence-nav";
 
-export function CountyIntelligenceNav() {
+type Props = {
+  hasDbIntel?: boolean;
+  hasVault?: boolean;
+};
+
+export function CountyIntelligenceNav({ hasDbIntel = false, hasVault = false }: Props) {
+  const sections: CountyIntelligenceNavSection[] = getCountyIntelligenceNavSections({ hasDbIntel, hasVault });
+
   return (
     <nav
       aria-label="County intelligence sections"
       className="sticky top-0 z-10 mb-8 flex flex-wrap gap-2 border-b border-[var(--ep-border)] bg-[var(--ep-page)]/95 py-3 backdrop-blur-sm"
     >
-      {COUNTY_INTELLIGENCE_NAV_SECTIONS.map((s) => (
+      {sections.map((s) => (
         <a
           key={s.id}
           href={`#${s.id}`}

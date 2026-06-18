@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { CountyElectoralMathDetailPanel } from "@/components/election-plan/CountyElectoralMathDetailPanel";
+import { CountyElectoralMathMissingPanel } from "@/components/election-plan/CountyElectoralMathMissingPanel";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 import { getCountyBySlug } from "@/lib/election-plan/load-county";
 import { loadCountyDropOffMarkdown } from "@/lib/election-plan/load-county-electoral-math-markdown";
@@ -32,7 +33,18 @@ export default async function CountyDropOffPage({ params }: Props) {
   if (!county) notFound();
 
   const markdown = loadCountyDropOffMarkdown(county.slug);
-  if (!markdown) notFound();
+  if (!markdown) {
+    return (
+      <>
+        <div className="ep-classification">Internal · Chapter 4 · Democratic drop-off · {county.county} County</div>
+        <div className="ep-chapter-body px-6 py-10 lg:px-10">
+          <div className="mx-auto max-w-4xl">
+            <CountyElectoralMathMissingPanel countySlug={county.slug} countyName={county.county} kind="drop-off" />
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

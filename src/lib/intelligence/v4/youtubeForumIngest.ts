@@ -42,6 +42,14 @@ function parseCaptionXml(xml: string): string {
   return parts.join(" ").replace(/\s+/g, " ").trim();
 }
 
+type YoutubePlayerCaptions = {
+  captions?: {
+    playerCaptionsTracklistRenderer?: {
+      captionTracks?: Array<{ baseUrl?: string; languageCode?: string }>;
+    };
+  };
+};
+
 async function fetchCaptionTrackUrl(videoId: string): Promise<string | null> {
   const res = await fetch(`https://www.youtube.com/watch?v=${videoId}`, {
     headers: {
@@ -53,13 +61,13 @@ async function fetchCaptionTrackUrl(videoId: string): Promise<string | null> {
   const html = await res.text();
 
   const playerMatch =
-    html.match(/ytInitialPlayerResponse\s*=\s*(\{.+?\})\s*;\s*(?:var|<\/script)/s) ??
-    html.match(/var ytInitialPlayerResponse = (\{.+?\});/s);
+    html.match(/ytInitialPlayerResponse\s*=\s*(\{[\s\S]+?\})\s*;\s*(?:var|<\/script)/) ??
+    html.match(/var ytInitialPlayerResponse = (\{[\s\S]+?\});/);
   if (!playerMatch?.[1]) return null;
 
-  let player: { captions?: { playerCaptionsTracklistRenderer?: { captionTracks?: Array<{ baseUrl?: string; languageCode?: string }> } } } };
+  let player: YoutubePlayerCaptions;
   try {
-    player = JSON.parse(playerMatch[1]) as typeof player;
+    player = JSON.parse(playerMatch[1]) as YoutubePlayerCaptions;
   } catch {
     return null;
   }
@@ -161,7 +169,9 @@ export async function ingestYoutubeForumVideo(opts: IngestYoutubeForumOpts = {})
   const videoId = parseYoutubeVideoId(opts.urlOrId ?? ACCA_2026_SOS_FORUM_EVENT.youtubeVideoId);
   if (!videoId) return { ok: false, error: "Invalid YouTube URL or video ID." };
 
-  const { loadForumTranscriptLab, saveForumTranscriptLab } = await import("@/lib/intelligence/v4/forumTranscriptLab");
+  const lab = await import("@/lib/intelligence/v4/forumTranscriptLab");
+  const { loadForumTranscriptLab, saveForumTranscriptLab } = lab;
+  type ForumTranscriptLabRecord = import("@/lib/intelligence/v4/forumTranscriptLab").ForumTranscriptLabRecord;
   const { diarizeForumTranscript, analyzeForumTranscript, analyzeForumTranscriptDeep } = await import(
     "@/lib/intelligence/v4/forumTranscriptAnalysis",
   );
@@ -221,9 +231,9 @@ export async function ingestYoutubeForumVideo(opts: IngestYoutubeForumOpts = {})
   }
 
   const current = loadForumTranscriptLab();
-  let record = {
+  let record: ForumTranscriptLabRecord = {
     ...current,
-    version: 2 as const,
+    version: 2,
     updatedAt: new Date().toISOString(),
     title: opts.title ?? ACCA_2026_SOS_FORUM_EVENT.title,
     eventLabel: opts.eventLabel ?? `${ACCA_2026_SOS_FORUM_EVENT.date} · YouTube ${videoId}`,
@@ -232,8 +242,8 @@ export async function ingestYoutubeForumVideo(opts: IngestYoutubeForumOpts = {})
     transcriptSource,
     analysis: null,
     deepAnalysis: null,
-    analysisStatus: "pending" as const,
-    deepAnalysisStatus: "not_started" as const,
+    analysisStatus: "pending",
+    deepAnalysisStatus: "not_started",
     analysisError: null,
     deepAnalysisError: null,
   };

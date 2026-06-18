@@ -19,6 +19,7 @@ import { phase18MasterPlanHref } from "@/lib/election-plan/phase-18-movement-inf
 import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
 import { evaluateMobilizeRequired } from "@/lib/election-plan/mobilize-enforcement";
 import { VciExplainerCard } from "@/components/election-plan/VciExplainerCard";
+import { CountyPlaybookInstructionPanel } from "@/components/election-plan/CountyPlaybookInstructionPanel";
 import { CountyStrategyGrid } from "@/components/election-plan/CountyStrategyGrid";
 import { ExecutiveMetricCard } from "@/components/election-plan/ExecutiveMetricCard";
 import { cn } from "@/lib/utils";
@@ -676,6 +677,7 @@ function CountiesPanel({ data }: SnapshotPanelProps) {
         </p>
       </div>
       <VciExplainerCard compact />
+      <CountyPlaybookInstructionPanel />
       <div className="mt-6">
         <CountyStrategyGrid counties={data.counties} />
       </div>

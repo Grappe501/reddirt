@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ExecutiveBookMarkdown } from "@/components/election-plan/executive-book/ExecutiveBookMarkdown";
+import { CH4_READING_GUIDE, CH5_READING_GUIDE } from "@/lib/election-plan/county-playbook-operator-guide";
 import {
   COUNTY_PLAYBOOK_EXECUTIVE_JUMP_LINKS,
   countyDropOffHref,
@@ -76,6 +77,22 @@ export function CountyElectoralMathDetailPanel({ countySlug, countyName, kind, m
           Executive Book · County strategy →
         </Link>
       </nav>
+
+      <div className="ep-card mb-8 border border-[var(--ep-gold)]/20 bg-[var(--ep-cream)]/50 p-4 text-sm">
+        <p className="font-semibold text-[var(--ep-navy)]">How to read this chapter</p>
+        <ul className="mt-2 list-inside list-disc space-y-1 text-[var(--ep-navy-muted)]">
+          {(kind === "drop-off" ? CH4_READING_GUIDE : CH5_READING_GUIDE).map((line) => (
+            <li key={line.slice(0, 48)}>{line}</li>
+          ))}
+        </ul>
+        <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
+          Return to the{" "}
+          <Link href={`/election-plan/counties/${countySlug}#field`} className="font-semibold underline">
+            county field section
+          </Link>{" "}
+          to log Mobilize events and registration pace after reading.
+        </p>
+      </div>
 
       <div className="ep-card ep-chapter-article">
         <ExecutiveBookMarkdown markdown={markdown} />

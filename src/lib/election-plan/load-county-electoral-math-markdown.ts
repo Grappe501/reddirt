@@ -70,3 +70,15 @@ export const COUNTY_PLAYBOOK_EXECUTIVE_JUMP_LINKS = {
   registrationGoalsOs: "/election-plan/registration-goals",
   countyStrategy: "/election-plan/executive-book/county-strategy",
 } as const;
+
+export function countyElectoralMathBundleMeta(): {
+  generatedAt: string | null;
+  dropOffCount: number;
+  registrationCount: number;
+} {
+  return {
+    generatedAt: bundle.generatedAt ?? null,
+    dropOffCount: Object.keys(bundle.dropOffBySlug ?? {}).length,
+    registrationCount: Object.keys(bundle.registrationBySlug ?? {}).length,
+  };
+}

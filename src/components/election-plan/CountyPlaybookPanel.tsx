@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CountyPlaybookOperatorGuidePanel } from "@/components/election-plan/CountyPlaybookOperatorGuidePanel";
 import { CountyPlaybookMissingPanel } from "@/components/election-plan/CountyPlaybookMissingPanel";
 import { CountyPlaybookMarkdownPanel } from "@/components/election-plan/CountyPlaybookMarkdownPanel";
 import { CountyFundraisingRollupPanel } from "@/components/election-plan/CountyFundraisingRollupPanel";
@@ -116,7 +117,9 @@ export function CountyPlaybookPanel({
         </Link>
       )}
 
-      <CountyIntelligenceNav />
+      <CountyIntelligenceNav hasDbIntel={Boolean(countyIntel)} hasVault={Boolean(vaultStats && vaultCountySlug)} />
+
+      <CountyPlaybookOperatorGuidePanel countySlug={county.slug} countyName={county.county} tier={county.tier} />
 
       <div className="ep-card-glass mb-6 border border-[var(--ep-gold)]/30 px-4 py-3 text-sm">
         <p className="font-semibold text-[var(--ep-navy)]">County operating center · Election Plan</p>

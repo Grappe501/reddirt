@@ -8,6 +8,10 @@ import {
   COUNTY_COVERAGE_EXPLAINER,
   countyPlaybookHref,
 } from "@/lib/election-plan/location-links";
+import {
+  countyDropOffHref,
+  countyRegistrationDashboardHref,
+} from "@/lib/election-plan/load-county-electoral-math-markdown";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { formatPercentIncrease } from "@/lib/election-plan/load-county-victory-targets";
@@ -119,7 +123,7 @@ export function CountyStrategyGrid({ counties }: Props) {
                 </div>
               ) : null}
 
-              <div className="mt-auto border-t border-[var(--ep-border)] pt-3">
+              <div className="mt-auto border-t border-[var(--ep-border)] pt-3 space-y-2">
                 <Link
                   href={href}
                   className="ep-chapter-link block text-center text-sm font-semibold"
@@ -127,8 +131,24 @@ export function CountyStrategyGrid({ counties }: Props) {
                 >
                   Open county operating center →
                 </Link>
-                <p className="mt-1 text-center text-[10px] text-[var(--ep-navy-muted)]">
-                  In Election Plan · strategy · leadership · field · fundraising · intel
+                <div className="flex flex-wrap justify-center gap-2">
+                  <Link
+                    href={countyDropOffHref(c.slug)}
+                    className="rounded-full border border-rose-200 bg-rose-50 px-2 py-0.5 text-[10px] font-semibold text-rose-900 hover:border-rose-400"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Ch. 4 drop-off
+                  </Link>
+                  <Link
+                    href={countyRegistrationDashboardHref(c.slug)}
+                    className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold text-indigo-900 hover:border-indigo-400"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Ch. 5 registration
+                  </Link>
+                </div>
+                <p className="text-center text-[10px] text-[var(--ep-navy-muted)]">
+                  Strategy · leadership · field · fundraising · electoral math
                 </p>
               </div>
             </div>
