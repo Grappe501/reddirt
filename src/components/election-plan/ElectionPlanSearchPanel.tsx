@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { ElectionPlanSearchBar } from "@/components/election-plan/ElectionPlanPortalHeader";
 import {
   ELECTION_PLAN_SEARCH_SUGGESTIONS,
   type ElectionPlanSearchHit,
@@ -99,9 +100,11 @@ export function ElectionPlanSearchPanel() {
         Local-only index · election plan · executive book · strategic docs · public website · no admin or private data
       </p>
 
+      <ElectionPlanSearchBar prominent className="mt-6" />
+
       {!q ? (
         <div className="mt-8">
-          <p className="text-sm font-semibold text-[var(--ep-navy)]">Try asking:</p>
+          <p className="text-sm font-semibold text-[var(--ep-navy)]">Or try a suggested search:</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {ELECTION_PLAN_SEARCH_SUGGESTIONS.map((s) => (
               <Link

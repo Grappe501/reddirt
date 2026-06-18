@@ -15,7 +15,9 @@
         { "label": "Campaign Doctrine · Ch. 0", "href": "/election-plan/executive-book/doctrine" },
         { "label": "County Victory Targets · Ch. 6", "href": "/election-plan/executive-book/county-victory-targets" },
         { "label": "Budget · Ch. 7", "href": "/election-plan/executive-book/budget" },
-        { "label": "Conversation Strategy · Ch. 8", "href": "/election-plan/executive-book/power-of-5" }
+        { "label": "Conversation Strategy · Ch. 8", "href": "/election-plan/executive-book/power-of-5" },
+        { "label": "Debate prep", "href": "/election-plan/debate-prep" },
+        { "label": "Forum transcript lab", "href": "/election-plan/debate-prep/forum-lab" }
       ],
       "searchKeywords": ["executive book", "leadership briefing", "chapters"]
     },
@@ -366,6 +368,49 @@
       "bestFor": ["Everyone with Election Plan access"],
       "relatedLinks": [{ "label": "Election Plan home", "href": "/election-plan" }],
       "searchKeywords": ["search", "find", "where is"]
+    },
+    {
+      "id": "debate-prep-hub",
+      "pathPattern": "/election-plan/debate-prep",
+      "exact": true,
+      "title": "Debate Prep",
+      "answers": "Where is Kelly's SOS debate rehearsal course, forum transcript lab, and capitalize playbook?",
+      "keyMetrics": ["7-day intensive", "Command Mode", "Forum transcript lab", "ACCA drop folder"],
+      "bestFor": ["Kelly", "Debate prep staff", "Campaign leadership"],
+      "relatedLinks": [
+        { "label": "Forum transcript lab", "href": "/election-plan/debate-prep/forum-lab" },
+        { "label": "Opposition research", "href": "/election-plan/opposition-research" },
+        { "label": "Executive Book", "href": "/election-plan/executive-book" }
+      ],
+      "searchKeywords": ["debate prep", "debate week", "sos debate", "rehearsal", "command mode", "eureka springs"]
+    },
+    {
+      "id": "forum-transcript-lab",
+      "pathPattern": "/election-plan/debate-prep/forum-lab",
+      "exact": true,
+      "title": "Forum Transcript Lab",
+      "answers": "How do we transcribe the three-candidate ACCA forum and build debate capitalize lines?",
+      "keyMetrics": ["Whisper transcript", "Deep analysis", "ACCA Jun 11 panel"],
+      "bestFor": ["Debate prep staff", "Kelly prep team"],
+      "relatedLinks": [
+        { "label": "Debate prep hub", "href": "/election-plan/debate-prep" },
+        { "label": "Opposition research", "href": "/election-plan/opposition-research" }
+      ],
+      "searchKeywords": ["forum", "transcript", "acca", "mountain view", "hammer", "pakko", "mp4", "video"]
+    },
+    {
+      "id": "opposition-research-hub",
+      "pathPattern": "/election-plan/opposition-research",
+      "exact": true,
+      "title": "Opposition Research",
+      "answers": "Where is Kim Hammer bill research, dossiers, and claims-gated contrast material?",
+      "keyMetrics": ["KH modules", "Claims to verify", "Bill index"],
+      "bestFor": ["Staff researchers", "Debate prep team", "Comms leads"],
+      "relatedLinks": [
+        { "label": "Debate prep", "href": "/election-plan/debate-prep" },
+        { "label": "Executive Book", "href": "/election-plan/executive-book" }
+      ],
+      "searchKeywords": ["opposition", "kim hammer", "dossier", "contrast", "evidence", "claims"]
     }
   ]
 }

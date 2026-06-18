@@ -212,7 +212,7 @@ export function CountyPlaybookPanel({
       </div>
 
       {playbookMarkdown ? (
-        <CountyPlaybookMarkdownPanel countyName={county.county} markdown={playbookMarkdown} />
+        <CountyPlaybookMarkdownPanel countyName={county.county} countySlug={county.slug} markdown={playbookMarkdown} />
       ) : (
         <CountyPlaybookMissingPanel countyName={county.county} playbookPath={county.playbookPath} />
       )}

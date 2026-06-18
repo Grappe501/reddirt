@@ -21,6 +21,7 @@ import type {
   ElectionPlanWorkbenchSnapshot,
 } from "../src/lib/election-plan/types";
 import { writeCountyPlaybookMarkdownBundle } from "./election-plan/bundle-county-playbook-markdown";
+import { writeCountyElectoralMathMarkdownBundle } from "./election-plan/bundle-county-electoral-math-markdown";
 
 const ROOT = process.cwd();
 const OUT_DIR = path.join(ROOT, "data/election-plan");
@@ -2449,6 +2450,7 @@ function main() {
   writeFileSync(OUT_FILE, JSON.stringify(snapshot, null, 2), "utf8");
 
   writeCountyPlaybookMarkdownBundle(counties);
+  writeCountyElectoralMathMarkdownBundle(counties);
 
   // eslint-disable-next-line no-console
   console.log(

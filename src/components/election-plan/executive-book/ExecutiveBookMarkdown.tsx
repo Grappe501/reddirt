@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
+import { resolveCountyPlaybookMarkdownHref } from "@/lib/election-plan/load-county-electoral-math-markdown";
 import { budgetDocPathToRoute } from "@/lib/election-plan/budget-documents-registry";
 
 type Props = {
@@ -11,6 +12,8 @@ type Props = {
 
 function resolveHref(href: string): string | null {
   if (href.startsWith("/election-plan")) return href;
+  const countyElectoral = resolveCountyPlaybookMarkdownHref(href);
+  if (countyElectoral) return countyElectoral;
   const lower = href.toLowerCase();
   if (lower.includes("big-table-democrat-doctrine")) return "/election-plan/big-table-doctrine";
   if (lower.includes("sos-platform") || lower.includes("kelly-grappe-sos-platform")) return "/election-plan/platform";

@@ -25,11 +25,20 @@ export function DebateWeekIntensivePanel({
   compact,
   initialDay = 1,
   todayDate,
+  linkOverrides,
 }: {
   compact?: boolean;
   initialDay?: number;
   todayDate?: string;
+  linkOverrides?: {
+    forumLab?: string;
+    lanes?: string;
+    tutor?: string;
+  };
 }) {
+  const forumLabHref = linkOverrides?.forumLab ?? FORUM_TRANSCRIPT_LAB_HREF;
+  const lanesHref = linkOverrides?.lanes ?? DEBATE_WEEK_LANES_HUB_HREF;
+  const tutorHref = linkOverrides?.tutor ?? "/admin/intelligence/debate-prep-tutor";
   const [activeDay, setActiveDay] = useState(initialDay);
   const plan = DEBATE_WEEK_INTENSIVE_DAYS.find((d) => d.day === activeDay)!;
   const deepOverlay = getDayDeepOverlay(plan.dayId as IntensiveDayId);
@@ -54,19 +63,19 @@ export function DebateWeekIntensivePanel({
         {!compact ? (
           <div className="flex flex-col gap-2">
             <Link
-              href={FORUM_TRANSCRIPT_LAB_HREF}
+              href={forumLabHref}
               className="rounded-lg bg-kelly-gold px-4 py-2 text-center text-xs font-bold uppercase tracking-wide text-kelly-text hover:bg-kelly-gold/90"
             >
               Forum transcript lab
             </Link>
             <Link
-              href={DEBATE_WEEK_LANES_HUB_HREF}
+              href={lanesHref}
               className="rounded-lg border border-indigo-300 bg-indigo-500/20 px-4 py-2 text-center text-xs font-bold uppercase tracking-wide text-indigo-100 hover:bg-indigo-500/30"
             >
               Drill-down lanes
             </Link>
             <Link
-              href="/admin/intelligence/debate-prep-tutor"
+              href={tutorHref}
               className="rounded-lg border border-kelly-gold/50 px-4 py-2 text-center text-xs font-bold uppercase tracking-wide text-kelly-gold hover:bg-white/5"
             >
               AI prep tutor

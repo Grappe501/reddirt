@@ -6,9 +6,17 @@ import type { ForumDeepAnalysis, ForumTranscriptLabRecord } from "@/lib/intellig
 type Props = {
   initialRecord: ForumTranscriptLabRecord;
   openaiConfigured?: boolean;
+  /** API root without trailing slash — defaults to admin intelligence route. */
+  apiBase?: string;
 };
 
-export function ForumTranscriptLabClient({ initialRecord, openaiConfigured = false }: Props) {
+const DEFAULT_FORUM_LAB_API = "/api/admin/intelligence/forum-transcript-lab";
+
+export function ForumTranscriptLabClient({
+  initialRecord,
+  openaiConfigured = false,
+  apiBase = DEFAULT_FORUM_LAB_API,
+}: Props) {
   const [record, setRecord] = useState(initialRecord);
   const [title, setTitle] = useState(initialRecord.title);
   const [eventLabel, setEventLabel] = useState(initialRecord.eventLabel);
@@ -17,10 +25,10 @@ export function ForumTranscriptLabClient({ initialRecord, openaiConfigured = fal
   const [error, setError] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
-    const res = await fetch("/api/admin/intelligence/forum-transcript-lab");
+    const res = await fetch(apiBase);
     const data = (await res.json()) as { ok: boolean; record?: ForumTranscriptLabRecord };
     if (data.ok && data.record) setRecord(data.record);
-  }, []);
+  }, [apiBase]);
 
   async function handleUpload(file: File) {
     setBusy("upload");
@@ -30,7 +38,7 @@ export function ForumTranscriptLabClient({ initialRecord, openaiConfigured = fal
     form.set("title", title);
     form.set("eventLabel", eventLabel);
     try {
-      const res = await fetch("/api/admin/intelligence/forum-transcript-lab/upload", {
+      const res = await fetch(`${apiBase}/upload`, {
         method: "POST",
         body: form,
       });
@@ -48,7 +56,7 @@ export function ForumTranscriptLabClient({ initialRecord, openaiConfigured = fal
     setBusy("paste");
     setError(null);
     try {
-      const res = await fetch("/api/admin/intelligence/forum-transcript-lab/upload", {
+      const res = await fetch(`${apiBase}/upload`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -73,7 +81,7 @@ export function ForumTranscriptLabClient({ initialRecord, openaiConfigured = fal
     setBusy("analyze");
     setError(null);
     try {
-      const res = await fetch("/api/admin/intelligence/forum-transcript-lab/upload", {
+      const res = await fetch(`${apiBase}/upload`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "analyze" }),
@@ -92,7 +100,7 @@ export function ForumTranscriptLabClient({ initialRecord, openaiConfigured = fal
     setBusy("analyze_deep");
     setError(null);
     try {
-      const res = await fetch("/api/admin/intelligence/forum-transcript-lab/upload", {
+      const res = await fetch(`${apiBase}/upload`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "analyze_deep" }),
