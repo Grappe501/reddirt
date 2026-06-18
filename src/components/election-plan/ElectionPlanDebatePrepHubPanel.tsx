@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
 import { DebateWeekIntensivePanel } from "@/components/admin/intelligence/DebateWeekIntensivePanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import {
@@ -99,6 +100,7 @@ export function ElectionPlanDebatePrepHubPanel() {
         <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
           Candidates: {ACCA_2026_SOS_FORUM_EVENT.candidates.join(" · ")}
         </p>
+        <AccaForumYoutubeEmbed compact />
         <div className="mt-4 rounded-lg border border-[var(--ep-border)] bg-white p-4">
           <p className="text-xs font-semibold text-[var(--ep-navy)]">Drop your MP4 here (7.5 GB OK on disk)</p>
           <code className="mt-2 block break-all text-[11px] text-[var(--ep-navy-muted)]">

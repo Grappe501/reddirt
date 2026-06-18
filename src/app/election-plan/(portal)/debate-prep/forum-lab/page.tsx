@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
 import { ForumTranscriptLabClient } from "@/components/admin/intelligence/ForumTranscriptLabClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { EP_FORUM_TRANSCRIPT_LAB_API } from "@/lib/election-plan/debate-prep-links";
@@ -33,6 +34,8 @@ export default function ElectionPlanForumTranscriptLabPage() {
               SOS debate.
             </p>
           </header>
+
+          <AccaForumYoutubeEmbed />
 
           <section className="ep-card mb-8 border border-[var(--ep-border)] bg-[var(--ep-cream)]/40 p-4 text-sm">
             <p className="font-semibold text-[var(--ep-navy)]">Large MP4 (e.g. 7.5 GB ACCA panel)</p>
