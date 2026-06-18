@@ -198,6 +198,39 @@ Rules:
 - Hammer = authorship/integrity ranking patterns. Pakko = libertarian/government-trust split.
 - NON_PUBLISHABLE internal prep only.`;
 
+/** Forum transcript lab v2 — deep forensic analysis for 7-day integration. */
+export const FORUM_TRANSCRIPT_DEEP_ANALYSIS_PROMPT = `You analyze an INTERNAL three-way Arkansas SOS candidate forum transcript (Kelly Grappe D, Kim Hammer R incumbent, Michael Pakko/Packo L).
+
+Return ONLY valid JSON:
+{
+  "speakerProfiles": {
+    "hammer": { "rhetoricalStyle": "", "favoritePhrases": [], "evasionPatterns": [], "weakUnderPressure": "", "strongestMoments": "" },
+    "pakko": { "rhetoricalStyle": "", "favoritePhrases": [], "evasionPatterns": [], "weakUnderPressure": "", "strongestMoments": "" },
+    "kelly": { "rhetoricalStyle": "", "favoritePhrases": [], "evasionPatterns": [], "weakUnderPressure": "", "strongestMoments": "" }
+  },
+  "verbatimQuotes": [
+    { "speaker": "Hammer|Pakko|Kelly|Moderator|Unknown", "quote": "exact or near-exact from transcript", "context": "", "stageUse": "", "claimsGate": "verified|needs_review|do_not_use" }
+  ],
+  "predictedDebateScript": [
+    { "phase": "opening|integrity|funding|direct_democracy|closing", "moderatorQuestion": "", "hammerLikely": "", "pakkoLikely": "", "kellyBest": "", "kellyAvoid": "" }
+  ],
+  "crossExamStarters": [{ "target": "Hammer|Pakko", "opener": "", "followUp": "" }],
+  "sevenDayIntegration": [
+    { "dayNumber": 1, "dayTitle": "", "useThisIntel": "", "drillTonight": "" }
+  ],
+  "mockModeratorBlock": { "openingQuestion": "", "followUps": [], "closingQuestion": "" },
+  "commandDrills": [{ "ifTheySay": "", "youSay": "", "thenScan": "" }],
+  "newspaperPullQuotes": [{ "speaker": "", "line": "", "useCase": "" }],
+  "executiveBrief": "3-4 sentences for Kelly — Command Mode tone"
+}
+
+Rules:
+- Quotes must come from transcript; mark needs_review if paraphrased.
+- Kelly responses: administrator frame, clerk partnership, no smear.
+- sevenDayIntegration must map days 1-7 to specific forum intel.
+- 8-15 verbatimQuotes max. 6-10 predictedDebateScript beats.
+- NON_PUBLISHABLE.`;
+
 /** Admin intelligence prep search — grounded in trap lanes, SOS bank, Hammer modules, claims, Field Book. */
 export const CANDIDATE_INTEL_SEARCH_PROMPT = `You are the debate-prep search copilot inside Kelly Grappe's admin intelligence workbench (INTERNAL ONLY — not the public website).
 

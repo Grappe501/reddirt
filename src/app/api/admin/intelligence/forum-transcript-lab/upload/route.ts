@@ -10,7 +10,7 @@ import {
   saveForumTranscriptLab,
   type ForumTranscriptLabRecord,
 } from "@/lib/intelligence/v4/forumTranscriptLab";
-import { analyzeForumTranscript, transcribeForumMediaFile } from "@/lib/intelligence/v4/forumTranscriptAnalysis";
+import { analyzeForumTranscript, analyzeForumTranscriptDeep, transcribeForumMediaFile } from "@/lib/intelligence/v4/forumTranscriptAnalysis";
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +24,19 @@ const pasteSchema = z.object({
 const analyzeSchema = z.object({
   action: z.literal("analyze"),
 });
+
+const analyzeDeepSchema = z.object({
+  action: z.literal("analyze_deep"),
+});
+
+function mergeRecord(current: ForumTranscriptLabRecord, patch: Partial<ForumTranscriptLabRecord>): ForumTranscriptLabRecord {
+  return {
+    ...current,
+    ...patch,
+    version: 2,
+    updatedAt: new Date().toISOString(),
+  };
+}
 
 export async function POST(req: Request): Promise<Response> {
   const denied = await assertAdminApi();
@@ -80,18 +93,20 @@ export async function POST(req: Request): Promise<Response> {
       transcriptSource = "upload_whisper";
     }
 
-    const record: ForumTranscriptLabRecord = {
-      version: 1,
-      updatedAt: new Date().toISOString(),
+    const current = loadForumTranscriptLab();
+    const record: ForumTranscriptLabRecord = mergeRecord(current, {
       title,
       eventLabel,
       ownedMediaAssetId: assetId,
       transcriptText,
       transcriptSource,
       analysis: null,
+      deepAnalysis: null,
       analysisStatus: transcriptText ? "pending" : "error",
+      deepAnalysisStatus: "not_started",
       analysisError: transcriptText ? null : tx.ok ? null : tx.error,
-    };
+      deepAnalysisError: null,
+    });
     saveForumTranscriptLab(record);
 
     return Response.json({
@@ -118,18 +133,20 @@ export async function POST(req: Request): Promise<Response> {
     if (!parsed.success) {
       return Response.json({ ok: false, error: "validation", details: parsed.error.flatten() }, { status: 400 });
     }
-    const record: ForumTranscriptLabRecord = {
-      version: 1,
-      updatedAt: new Date().toISOString(),
+    const current = loadForumTranscriptLab();
+    const record: ForumTranscriptLabRecord = mergeRecord(current, {
       title: parsed.data.title,
       eventLabel: parsed.data.eventLabel ?? "Pasted forum transcript",
       ownedMediaAssetId: null,
       transcriptText: parsed.data.transcriptText.trim(),
       transcriptSource: "paste",
       analysis: null,
+      deepAnalysis: null,
       analysisStatus: "pending",
+      deepAnalysisStatus: "not_started",
       analysisError: null,
-    };
+      deepAnalysisError: null,
+    });
     saveForumTranscriptLab(record);
     return Response.json({ ok: true, record });
   }
@@ -145,22 +162,51 @@ export async function POST(req: Request): Promise<Response> {
     }
     try {
       const analysis = await analyzeForumTranscript(current.transcriptText);
-      const record: ForumTranscriptLabRecord = {
-        ...current,
+      const record = mergeRecord(current, {
         analysis,
         analysisStatus: "ready",
         analysisError: null,
-        updatedAt: new Date().toISOString(),
-      };
+      });
       saveForumTranscriptLab(record);
       return Response.json({ ok: true, record });
     } catch (e) {
       const message = e instanceof Error ? e.message : String(e);
-      saveForumTranscriptLab({
-        ...current,
-        analysisStatus: "error",
-        analysisError: message,
+      saveForumTranscriptLab(
+        mergeRecord(current, {
+          analysisStatus: "error",
+          analysisError: message,
+        }),
+      );
+      return Response.json({ ok: false, error: message }, { status: 500 });
+    }
+  }
+
+  if (action === "analyze_deep") {
+    const parsed = analyzeDeepSchema.safeParse(json);
+    if (!parsed.success) {
+      return Response.json({ ok: false, error: "validation" }, { status: 400 });
+    }
+    const current = loadForumTranscriptLab();
+    if (!current.transcriptText || current.transcriptText.length < 50) {
+      return Response.json({ ok: false, error: "transcript_missing" }, { status: 400 });
+    }
+    try {
+      const deepAnalysis = await analyzeForumTranscriptDeep(current.transcriptText);
+      const record = mergeRecord(current, {
+        deepAnalysis,
+        deepAnalysisStatus: "ready",
+        deepAnalysisError: null,
       });
+      saveForumTranscriptLab(record);
+      return Response.json({ ok: true, record });
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      saveForumTranscriptLab(
+        mergeRecord(current, {
+          deepAnalysisStatus: "error",
+          deepAnalysisError: message,
+        }),
+      );
       return Response.json({ ok: false, error: message }, { status: 500 });
     }
   }

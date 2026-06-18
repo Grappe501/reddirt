@@ -12,6 +12,7 @@ import {
   totalIntensiveMinutes,
   type IntensiveDayId,
 } from "@/lib/intelligence/v4/debateWeekIntensive2026";
+import { DEBATE_INTENSIVE_V2_LABEL, getDayDeepOverlay } from "@/lib/intelligence/v4/debateWeekIntensive2026Deep";
 
 const dayTab =
   "rounded-lg border px-2 py-2 text-left text-[11px] font-semibold transition sm:px-3 sm:text-xs";
@@ -30,6 +31,7 @@ export function DebateWeekIntensivePanel({
 }) {
   const [activeDay, setActiveDay] = useState(initialDay);
   const plan = DEBATE_WEEK_INTENSIVE_DAYS.find((d) => d.day === activeDay)!;
+  const deepOverlay = getDayDeepOverlay(plan.dayId as IntensiveDayId);
   const totalHours = Math.round((totalIntensiveMinutes() / 60) * 10) / 10;
   const todayPlan = todayDate
     ? DEBATE_WEEK_INTENSIVE_DAYS.find((d) => d.calendarDate === todayDate)
@@ -40,7 +42,7 @@ export function DebateWeekIntensivePanel({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-gold">
-            Command Mode · Debate week intensive
+            Command Mode · Debate week intensive · {DEBATE_INTENSIVE_V2_LABEL}
           </p>
           <h2 className="mt-1 font-heading text-2xl font-bold text-white">{DEBATE_WEEK_INTENSIVE_PRIMER.headline}</h2>
           <p className="mt-2 max-w-3xl text-sm text-kelly-inverse-muted">
@@ -122,6 +124,18 @@ export function DebateWeekIntensivePanel({
         <p className="mt-1 text-xs text-kelly-muted">
           Target: ~{plan.hoursTarget}h · {plan.blocks.reduce((s, b) => s + b.minutes, 0)} min scheduled
         </p>
+
+        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+          <p className="rounded-lg border border-emerald-300/50 bg-emerald-950/10 px-3 py-2 text-[11px] text-emerald-100">
+            <span className="font-bold">Strength:</span> {deepOverlay.kellyStrengthToday}
+          </p>
+          <p className="rounded-lg border border-rose-300/50 bg-rose-950/10 px-3 py-2 text-[11px] text-rose-100">
+            <span className="font-bold">Watch:</span> {deepOverlay.kellyWatchOut}
+          </p>
+        </div>
+        {deepOverlay.forumIntelHook ? (
+          <p className="mt-2 text-[11px] text-kelly-gold">{deepOverlay.forumIntelHook}</p>
+        ) : null}
 
         <h4 className="mt-5 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">
           Study blocks (in order)

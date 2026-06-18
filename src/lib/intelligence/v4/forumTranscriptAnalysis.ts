@@ -1,7 +1,7 @@
 import { createReadStream } from "node:fs";
 import { getOpenAIClient, getOpenAIConfigFromEnv, isOpenAIConfigured, formatOpenAIErrorForClient } from "@/lib/openai/client";
-import { FORUM_TRANSCRIPT_ANALYSIS_PROMPT } from "@/lib/openai/prompts";
-import type { ForumTranscriptAnalysis } from "@/lib/intelligence/v4/forumTranscriptLab";
+import { FORUM_TRANSCRIPT_ANALYSIS_PROMPT, FORUM_TRANSCRIPT_DEEP_ANALYSIS_PROMPT } from "@/lib/openai/prompts";
+import type { ForumDeepAnalysis, ForumTranscriptAnalysis } from "@/lib/intelligence/v4/forumTranscriptLab";
 
 export async function transcribeForumMediaFile(
   absolutePath: string,
@@ -57,5 +57,53 @@ export async function analyzeForumTranscript(transcriptText: string): Promise<Fo
     newspaperAngles: parsed.newspaperAngles ?? [],
     claimsGateNotes: parsed.claimsGateNotes ?? [],
     summary: parsed.summary ?? "",
+  };
+}
+
+export async function analyzeForumTranscriptDeep(transcriptText: string): Promise<ForumDeepAnalysis> {
+  if (!isOpenAIConfigured()) {
+    throw new Error("OPENAI_API_KEY not set — cannot run deep analysis.");
+  }
+  const { model } = getOpenAIConfigFromEnv();
+  const openai = getOpenAIClient();
+  const completion = await openai.chat.completions.create({
+    model,
+    temperature: 0.25,
+    response_format: { type: "json_object" },
+    messages: [
+      { role: "system", content: FORUM_TRANSCRIPT_DEEP_ANALYSIS_PROMPT },
+      {
+        role: "user",
+        content: `TRANSCRIPT (deep forensic analysis for 7-day Kelly Grappe debate intensive):\n\n${transcriptText.slice(0, 120_000)}`,
+      },
+    ],
+  });
+
+  const raw = completion.choices[0]?.message?.content ?? "{}";
+  const parsed = JSON.parse(raw) as Partial<ForumDeepAnalysis>;
+  const emptyProfile = {
+    rhetoricalStyle: "",
+    favoritePhrases: [] as string[],
+    evasionPatterns: [] as string[],
+    weakUnderPressure: "",
+    strongestMoments: "",
+  };
+
+  return {
+    generatedAt: new Date().toISOString(),
+    model,
+    speakerProfiles: {
+      hammer: { ...emptyProfile, ...parsed.speakerProfiles?.hammer },
+      pakko: { ...emptyProfile, ...parsed.speakerProfiles?.pakko },
+      kelly: { ...emptyProfile, ...parsed.speakerProfiles?.kelly },
+    },
+    verbatimQuotes: parsed.verbatimQuotes ?? [],
+    predictedDebateScript: parsed.predictedDebateScript ?? [],
+    crossExamStarters: parsed.crossExamStarters ?? [],
+    sevenDayIntegration: parsed.sevenDayIntegration ?? [],
+    mockModeratorBlock: parsed.mockModeratorBlock ?? { openingQuestion: "", followUps: [], closingQuestion: "" },
+    commandDrills: parsed.commandDrills ?? [],
+    newspaperPullQuotes: parsed.newspaperPullQuotes ?? [],
+    executiveBrief: parsed.executiveBrief ?? "",
   };
 }

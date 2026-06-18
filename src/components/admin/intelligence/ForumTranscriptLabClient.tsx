@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import type { ForumTranscriptLabRecord } from "@/lib/intelligence/v4/forumTranscriptLab";
+import type { ForumDeepAnalysis, ForumTranscriptLabRecord } from "@/lib/intelligence/v4/forumTranscriptLab";
 
 type Props = {
   initialRecord: ForumTranscriptLabRecord;
@@ -87,11 +87,31 @@ export function ForumTranscriptLabClient({ initialRecord }: Props) {
     }
   }
 
+  async function handleAnalyzeDeep() {
+    setBusy("analyze_deep");
+    setError(null);
+    try {
+      const res = await fetch("/api/admin/intelligence/forum-transcript-lab/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "analyze_deep" }),
+      });
+      const data = (await res.json()) as { ok: boolean; record?: ForumTranscriptLabRecord; error?: string };
+      if (!data.ok) throw new Error(data.error ?? "Deep analysis failed");
+      if (data.record) setRecord(data.record);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(null);
+    }
+  }
+
   useEffect(() => {
     void refresh();
   }, [refresh]);
 
   const analysis = record.analysis;
+  const deepAnalysis = record.deepAnalysis;
   const hasTranscript = record.transcriptText.length >= 50;
 
   return (
@@ -185,16 +205,30 @@ export function ForumTranscriptLabClient({ initialRecord }: Props) {
             onClick={() => void handleAnalyze()}
             className="rounded-lg bg-kelly-text px-5 py-2.5 text-xs font-bold uppercase tracking-wide text-kelly-gold disabled:opacity-50"
           >
-            {busy === "analyze" ? "Analyzing…" : "Run AI analysis"}
+            {busy === "analyze" ? "Analyzing…" : "Run AI analysis (v1)"}
+          </button>
+          <button
+            type="button"
+            disabled={!hasTranscript || busy !== null}
+            onClick={() => void handleAnalyzeDeep()}
+            className="rounded-lg border-2 border-violet-700 bg-violet-700 px-5 py-2.5 text-xs font-bold uppercase tracking-wide text-white disabled:opacity-50"
+          >
+            {busy === "analyze_deep" ? "Deep analyzing…" : "Run deep analysis (v2)"}
           </button>
           <span className="text-xs text-kelly-muted">
-            Status: {record.analysisStatus}
+            v1: {record.analysisStatus} · v2: {record.deepAnalysisStatus ?? "not_started"}
             {record.transcriptText.length > 0 ? ` · ${record.transcriptText.length.toLocaleString()} chars` : ""}
           </span>
         </div>
         {record.analysisError ? (
-          <p className="mt-2 text-sm text-rose-800">{record.analysisError}</p>
+          <p className="mt-2 text-sm text-rose-800">v1: {record.analysisError}</p>
         ) : null}
+        {record.deepAnalysisError ? (
+          <p className="mt-2 text-sm text-rose-800">v2: {record.deepAnalysisError}</p>
+        ) : null}
+        <p className="mt-2 text-xs text-kelly-muted">
+          v2 feeds Day 4–5 drills: speaker profiles, verbatim quotes, mock moderator script, 7-day integration map.
+        </p>
       </section>
 
       {hasTranscript && !analysis ? (
@@ -238,7 +272,94 @@ export function ForumTranscriptLabClient({ initialRecord }: Props) {
           </article>
         </section>
       ) : null}
+
+      {deepAnalysis ? <DeepAnalysisSection deep={deepAnalysis} /> : null}
     </div>
+  );
+}
+
+function DeepAnalysisSection({ deep }: { deep: ForumDeepAnalysis }) {
+  return (
+    <section className="space-y-6">
+      <article className="rounded-xl border-2 border-violet-500/40 bg-violet-950 p-5 text-violet-50">
+        <h2 className="font-heading text-xl font-bold text-violet-200">Deep analysis v2 — executive brief</h2>
+        <p className="mt-3 text-sm leading-relaxed">{deep.executiveBrief}</p>
+      </article>
+
+      <div className="grid gap-4 lg:grid-cols-3">
+        {(["hammer", "pakko", "kelly"] as const).map((speaker) => {
+          const profile = deep.speakerProfiles[speaker];
+          return (
+            <article key={speaker} className="rounded-xl border border-kelly-text/10 bg-white p-4 text-sm">
+              <h3 className="text-xs font-bold uppercase text-kelly-subtle">{speaker} profile</h3>
+              <p className="mt-2 text-kelly-muted">{profile.rhetoricalStyle}</p>
+              {profile.favoritePhrases.length ? (
+                <p className="mt-2 text-xs">
+                  <span className="font-bold">Phrases:</span> {profile.favoritePhrases.join(" · ")}
+                </p>
+              ) : null}
+              {profile.weakUnderPressure ? (
+                <p className="mt-2 text-xs text-rose-900">
+                  <span className="font-bold">Weak under pressure:</span> {profile.weakUnderPressure}
+                </p>
+              ) : null}
+            </article>
+          );
+        })}
+      </div>
+
+      {deep.verbatimQuotes.length > 0 ? (
+        <article className="rounded-xl border border-amber-200 bg-amber-50/40 p-5">
+          <h3 className="font-heading text-lg font-bold text-amber-950">Verbatim quotes (claims-gated)</h3>
+          <div className="mt-4 space-y-3">
+            {deep.verbatimQuotes.map((q, i) => (
+              <div key={`${q.quote.slice(0, 24)}-${i}`} className="rounded-lg border border-amber-200 bg-white p-3 text-sm">
+                <p className="font-bold text-kelly-navy">
+                  {q.speaker} · <span className="text-xs uppercase">{q.claimsGate}</span>
+                </p>
+                <p className="mt-1 italic">&ldquo;{q.quote}&rdquo;</p>
+                <p className="mt-1 text-xs text-kelly-muted">Stage use: {q.stageUse}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ) : null}
+
+      {deep.predictedDebateScript.length > 0 ? (
+        <article className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-5">
+          <h3 className="font-heading text-lg font-bold text-indigo-950">Predicted debate script</h3>
+          <div className="mt-4 space-y-4">
+            {deep.predictedDebateScript.map((beat, i) => (
+              <div key={`${beat.phase}-${i}`} className="rounded-lg border border-indigo-200 bg-white p-4 text-sm">
+                <p className="font-bold uppercase text-indigo-900">{beat.phase}</p>
+                <p className="mt-2 text-kelly-muted">Q: {beat.moderatorQuestion}</p>
+                <p className="mt-1 text-rose-900">Hammer: {beat.hammerLikely}</p>
+                <p className="mt-1 text-amber-900">Pakko: {beat.pakkoLikely}</p>
+                <p className="mt-2 font-bold text-emerald-900">Kelly best: {beat.kellyBest}</p>
+                <p className="text-xs text-rose-800">Avoid: {beat.kellyAvoid}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ) : null}
+
+      {deep.sevenDayIntegration.length > 0 ? (
+        <article className="rounded-xl border border-emerald-200 bg-emerald-50/40 p-5">
+          <h3 className="font-heading text-lg font-bold text-emerald-950">7-day integration map</h3>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {deep.sevenDayIntegration.map((d) => (
+              <div key={d.dayNumber} className="rounded-lg border border-emerald-200 bg-white p-3 text-xs">
+                <p className="font-bold text-kelly-navy">
+                  Day {d.dayNumber}: {d.dayTitle}
+                </p>
+                <p className="mt-1 text-kelly-muted">{d.useThisIntel}</p>
+                <p className="mt-2 font-bold text-emerald-900">Drill: {d.drillTonight}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ) : null}
+    </section>
   );
 }
 
