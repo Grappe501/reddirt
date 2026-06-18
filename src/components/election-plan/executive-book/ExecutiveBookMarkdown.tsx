@@ -4,6 +4,7 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 import { resolveCountyPlaybookMarkdownHref } from "@/lib/election-plan/county-playbook-links";
+import { mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 import { budgetDocPathToRoute } from "@/lib/election-plan/budget-documents-registry";
 
 type Props = {
@@ -12,6 +13,7 @@ type Props = {
 
 function resolveHref(href: string): string | null {
   if (href.startsWith("/election-plan")) return href;
+  if (href.startsWith("/admin")) return mapAdminHrefToElectionPlan(href);
   const countyElectoral = resolveCountyPlaybookMarkdownHref(href);
   if (countyElectoral) return countyElectoral;
   const lower = href.toLowerCase();
@@ -44,11 +46,14 @@ export function ExecutiveBookMarkdown({ markdown }: Props) {
                 </Link>
               );
             }
-            return (
-              <a href={href} className="text-[var(--ep-navy)] underline hover:text-[var(--ep-gold)]">
-                {children}
-              </a>
-            );
+            if (href?.startsWith("http")) {
+              return (
+                <a href={href} className="text-[var(--ep-navy)] underline hover:text-[var(--ep-gold)]" rel="noreferrer" target="_blank">
+                  {children}
+                </a>
+              );
+            }
+            return <span className="text-[var(--ep-navy-muted)]">{children}</span>;
           },
           code: ({ children }) => {
             const text = String(children).trim();

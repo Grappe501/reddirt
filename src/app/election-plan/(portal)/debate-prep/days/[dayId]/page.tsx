@@ -10,8 +10,9 @@ import {
   EP_DEBATE_PREP_PROGRESS_API,
 } from "@/lib/election-plan/debate-prep-links";
 import {
+  epDebatePrepDayHref,
   epDebatePrepLaneHref,
-  mapAdminDebateHrefToElectionPlan,
+  mapAdminHrefToElectionPlan,
 } from "@/lib/election-plan/debate-prep-route-map";
 import {
   DEBATE_WEEK_INTENSIVE_DAY_IDS,
@@ -99,7 +100,7 @@ export default async function ElectionPlanDebatePrepDayPage({
                 <p className="mt-1 text-xs italic text-indigo-800">{block.why}</p>
                 {block.href ? (
                   <Link
-                    href={mapAdminDebateHrefToElectionPlan(block.href)}
+                    href={mapAdminHrefToElectionPlan(block.href)}
                     className="mt-3 inline-block font-bold text-[var(--ep-navy)] underline"
                   >
                     Open →
@@ -151,7 +152,8 @@ export default async function ElectionPlanDebatePrepDayPage({
             progressApiBase={EP_DEBATE_PREP_PROGRESS_API}
             laneHrefFn={epDebatePrepLaneHref}
             lanesHubHref={EP_DEBATE_PREP_LANES_HREF}
-            resolveHref={mapAdminDebateHrefToElectionPlan}
+            theoryHubHref={EP_DEBATE_PREP_LANES_HREF}
+            resolveHref={mapAdminHrefToElectionPlan}
           />
         </div>
       </div>

@@ -10,6 +10,7 @@ import { loadKellyDebateIntensiveProgress } from "@/lib/intelligence/v4/kellyDeb
 import { loadForumTranscriptLab } from "@/lib/intelligence/v4/forumTranscriptLab";
 import { buildCceClosureSummary } from "@/lib/intelligence/v4/phase15P9Closure";
 import { buildSreClosureSummary } from "@/lib/intelligence/v4/phase16P9Closure";
+import { mapAdminHrefsDeep } from "@/lib/election-plan/debate-prep-route-map";
 import {
   EP_DEBATE_PREP_COMMAND_HREF,
   EP_DEBATE_PREP_HREF,
@@ -162,9 +163,10 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
 }
 
 export function buildDebatePrepCommandHomeBundle() {
-  return {
+  const raw = {
     feed: buildCandidateCommandHomeFeed(),
     cceClosure: buildCceClosureSummary(),
     sreClosure: buildSreClosureSummary(),
   };
+  return mapAdminHrefsDeep(raw);
 }

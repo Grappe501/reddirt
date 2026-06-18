@@ -13,18 +13,21 @@ const card =
 export function KimHammerModuleNavPanel({
   compact,
   activeHref,
+  resolveHref = (href: string) => href,
 }: {
   compact?: boolean;
   activeHref?: string;
+  resolveHref?: (href: string) => string;
 }) {
   const groups = buildKimHammerTier3NavGroups();
+  const commandCenterHref = resolveHref(KIM_HAMMER_COMMAND_CENTER_HREF);
 
   if (compact) {
     return (
       <section className="mb-6 rounded-xl border border-rose-200/50 bg-rose-50/30 p-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="text-[10px] font-bold uppercase tracking-wider text-rose-950">Hammer research modules</p>
-          <Link href={KIM_HAMMER_COMMAND_CENTER_HREF} className="text-[10px] font-bold text-kelly-navy underline">
+          <Link href={commandCenterHref} className="text-[10px] font-bold text-kelly-navy underline">
             Full record map →
           </Link>
         </div>
@@ -32,14 +35,14 @@ export function KimHammerModuleNavPanel({
           {groups.flatMap((g) => g.modules).slice(0, 12).map((mod) => (
             <IntelligenceNavLink
               key={mod.href}
-              href={mod.href}
+              href={resolveHref(mod.href)}
               variant="chip"
               className={`${chip} ${activeHref === mod.href ? "border-kelly-navy bg-kelly-page" : ""}`}
             >
               {mod.title}
             </IntelligenceNavLink>
           ))}
-          <IntelligenceNavLink href={KIM_HAMMER_COMMAND_CENTER_HREF} variant="chip" className={chip}>
+          <IntelligenceNavLink href={commandCenterHref} variant="chip" className={chip}>
             + all modules
           </IntelligenceNavLink>
         </div>
@@ -58,13 +61,13 @@ export function KimHammerModuleNavPanel({
           night; staff uses KH-3/KH-4 for retrieval and export.
         </p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
-          <IntelligenceNavLink href="/admin/intelligence/kim-hammer/debate-prep" variant="chip" className={chip}>
+          <IntelligenceNavLink href={resolveHref("/admin/intelligence/kim-hammer/debate-prep")} variant="chip" className={chip}>
             Debate prep
           </IntelligenceNavLink>
-          <IntelligenceNavLink href="/admin/intelligence/opponents/dossiers/kim-hammer" variant="chip" className={chip}>
+          <IntelligenceNavLink href={resolveHref("/admin/intelligence/opponents/dossiers/kim-hammer")} variant="chip" className={chip}>
             Hammer dossier
           </IntelligenceNavLink>
-          <IntelligenceNavLink href="/admin/intelligence/kim-hammer/evidence-command" variant="chip" className={chip}>
+          <IntelligenceNavLink href={resolveHref("/admin/intelligence/kim-hammer/evidence-command")} variant="chip" className={chip}>
             Evidence command
           </IntelligenceNavLink>
         </div>
@@ -79,7 +82,7 @@ export function KimHammerModuleNavPanel({
             {group.modules.map((mod) => (
               <IntelligenceNavLink
                 key={mod.href}
-                href={mod.href}
+                href={resolveHref(mod.href)}
                 variant="chip"
                 className={`${card} block ${activeHref === mod.href ? "border-kelly-navy ring-1 ring-kelly-navy/20" : ""}`}
               >

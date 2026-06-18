@@ -4,6 +4,7 @@ import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHamm
 import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { buildKimHammerCommandCenterNavModules } from "@/lib/intelligence/v4/kimHammerOpponentModuleNav";
 import { EP_DEBATE_PREP_HREF, EP_EXECUTIVE_BOOK_HREF } from "@/lib/election-plan/debate-prep-links";
+import { mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 
 export function ElectionPlanOppositionResearchHubPanel() {
   const v4 = loadDebateIntelligenceV4HubPacket();
@@ -48,7 +49,7 @@ export function ElectionPlanOppositionResearchHubPanel() {
           <article key={mod.id} className="ep-card flex flex-col p-4">
             <h2 className="font-heading text-base font-bold text-[var(--ep-navy)]">{mod.title}</h2>
             <p className="mt-2 flex-1 text-xs text-[var(--ep-navy-muted)]">{mod.summary}</p>
-            <p className="mt-3 text-[10px] font-mono text-[var(--ep-navy-muted)]">{mod.href}</p>
+            <p className="mt-3 text-[10px] font-mono text-[var(--ep-navy-muted)]">{mapAdminHrefToElectionPlan(mod.href)}</p>
             <p className="mt-2 text-[10px] text-[var(--ep-navy-muted)]">
               Full Election Plan module pages roll out next — open via Debate Prep cross-links or staff intelligence routes
               until mirrored.
@@ -64,7 +65,7 @@ export function ElectionPlanOppositionResearchHubPanel() {
         </section>
       ) : null}
 
-      <KimHammerModuleNavPanel />
+      <KimHammerModuleNavPanel resolveHref={mapAdminHrefToElectionPlan} />
 
       <section className="mt-10 ep-card p-5">
         <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Executive Book crosswalk</p>

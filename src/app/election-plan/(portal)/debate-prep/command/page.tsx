@@ -1,6 +1,7 @@
 import { CandidateCommandHomePanel } from "@/components/admin/intelligence/CandidateCommandHomePanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { buildDebatePrepCommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v5";
+import { mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +30,7 @@ export default function ElectionPlanDebatePrepCommandPage() {
             </p>
           </header>
 
-          <CandidateCommandHomePanel feed={feed} cceClosure={cceClosure} sreClosure={sreClosure} />
+          <CandidateCommandHomePanel feed={feed} cceClosure={cceClosure} sreClosure={sreClosure} resolveHref={mapAdminHrefToElectionPlan} />
         </div>
       </div>
     </>

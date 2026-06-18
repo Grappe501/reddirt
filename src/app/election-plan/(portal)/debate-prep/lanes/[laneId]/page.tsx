@@ -10,7 +10,7 @@ import {
 } from "@/lib/election-plan/debate-prep-links";
 import {
   epDebatePrepDayHref,
-  mapAdminDebateHrefToElectionPlan,
+  mapAdminHrefToElectionPlan,
 } from "@/lib/election-plan/debate-prep-route-map";
 import { DEBATE_WEEK_INTENSIVE_DAYS } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { getDrillDownLane, listAllDrillDownLanes } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
@@ -70,7 +70,7 @@ export default async function ElectionPlanDebatePrepLanePage({
             lane={lane}
             initialDone={done}
             progressApiBase={EP_DEBATE_PREP_PROGRESS_API}
-            resolveHref={mapAdminDebateHrefToElectionPlan}
+            resolveHref={mapAdminHrefToElectionPlan}
           />
         </div>
       </div>

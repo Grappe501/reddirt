@@ -35,6 +35,7 @@ type Props = {
   laneHrefFn?: (laneId: string) => string;
   lanesHubHref?: string;
   resolveHref?: (href: string) => string;
+  theoryHubHref?: string;
 };
 
 export function DebateWeekDayV3Panel({
@@ -44,6 +45,7 @@ export function DebateWeekDayV3Panel({
   progressApiBase = "/api/admin/intelligence/debate-week-intensive/progress",
   laneHrefFn = debateWeekIntensiveLaneHref,
   lanesHubHref = "/admin/intelligence/debate-week-intensive/lanes",
+  theoryHubHref = "/admin/intelligence/debate-week-intensive/theory",
   resolveHref = (href: string) => href,
 }: Props) {
   const [progress, setProgress] = useState(initialProgress);
@@ -77,7 +79,7 @@ export function DebateWeekDayV3Panel({
             All drill-down lanes
           </Link>
           <Link
-            href="/admin/intelligence/debate-week-intensive/theory"
+            href={theoryHubHref}
             className="rounded-lg border border-indigo-300/50 px-3 py-1.5 text-xs font-bold uppercase text-indigo-200 hover:bg-white/5"
           >
             Theory library

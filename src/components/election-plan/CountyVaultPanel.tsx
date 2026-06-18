@@ -11,7 +11,6 @@ type Props = {
 
 export function CountyVaultPanel({ countySlug, countyDisplayName, stats, previewItems, isOperator }: Props) {
   const vaultHref = `/counties/${countySlug}/media`;
-  const adminBatchHref = `/admin/owned-media?county=${encodeURIComponent(countySlug)}`;
 
   return (
     <section
@@ -42,9 +41,6 @@ export function CountyVaultPanel({ countySlug, countyDisplayName, stats, preview
               Upload panel ↓
             </Link>
           ) : null}
-          <Link href={adminBatchHref} className="rounded-lg border border-white/30 px-4 py-2 text-sm font-semibold hover:bg-white/10">
-            Media center
-          </Link>
         </div>
       </div>
 

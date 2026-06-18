@@ -23,10 +23,12 @@ export function CandidateCommandHomePanel({
   feed,
   cceClosure,
   sreClosure,
+  resolveHref = (href: string) => href,
 }: {
   feed: CandidateCommandHomeFeed;
   cceClosure?: CceClosureSummary;
   sreClosure?: SreClosureSummary;
+  resolveHref?: (href: string) => string;
 }) {
   return (
     <section className="mb-6 rounded-xl border-2 border-indigo-300/80 bg-gradient-to-br from-indigo-50/60 to-white p-5">
@@ -123,7 +125,7 @@ export function CandidateCommandHomePanel({
           <ul className="mt-3 space-y-2 text-sm">
             {feed.safeTonight.map((line) => (
               <li key={line.id} className="rounded border border-emerald-100 bg-white p-2">
-                <Link href={line.href} className="font-semibold text-kelly-navy underline">
+                <Link href={resolveHref(line.href)} className="font-semibold text-kelly-navy underline">
                   {line.claimText.slice(0, 120)}
                   {line.claimText.length > 120 ? "…" : ""}
                 </Link>
@@ -141,7 +143,7 @@ export function CandidateCommandHomePanel({
           <ul className="mt-3 space-y-2 text-sm">
             {feed.blockedTonight.map((line) => (
               <li key={line.id} className="rounded border border-rose-100 bg-white p-2">
-                <Link href={line.href} className="font-semibold text-rose-900 underline">
+                <Link href={resolveHref(line.href)} className="font-semibold text-rose-900 underline">
                   {line.claimText.slice(0, 120)}
                   {line.claimText.length > 120 ? "…" : ""}
                 </Link>
@@ -164,37 +166,37 @@ export function CandidateCommandHomePanel({
         </ul>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link
-            href="/admin/intelligence/demo-mode"
+            href={resolveHref("/admin/intelligence/demo-mode")}
             className="rounded-full border border-teal-400 bg-teal-50 px-3 py-1 text-[10px] font-bold text-teal-950"
           >
             Demo script
           </Link>
           <Link
-            href="/admin/intelligence/kelly-prep-week"
+            href={resolveHref("/admin/intelligence/kelly-prep-week")}
             className="rounded-full border border-indigo-400 bg-indigo-50 px-3 py-1 text-[10px] font-bold text-indigo-950"
           >
             Kelly prep week
           </Link>
           <Link
-            href="/admin/intelligence/top-tier-prep"
+            href={resolveHref("/admin/intelligence/top-tier-prep")}
             className="rounded-full border border-violet-400 bg-violet-50 px-3 py-1 text-[10px] font-bold text-violet-950"
           >
             Top-tier prep
           </Link>
           <Link
-            href="/admin/intelligence/debate-command"
+            href={resolveHref("/admin/intelligence/debate-command")}
             className="rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-[10px] font-bold text-indigo-950"
           >
             Debate command
           </Link>
           <Link
-            href="/admin/intelligence/trap-lanes"
+            href={resolveHref("/admin/intelligence/trap-lanes")}
             className="rounded-full border border-emerald-300 bg-emerald-50 px-3 py-1 text-[10px] font-bold text-emerald-950"
           >
             Rehearse trap lanes
           </Link>
           <Link
-            href="/admin/intelligence/claims"
+            href={resolveHref("/admin/intelligence/claims")}
             className="rounded-full border border-rose-300 bg-rose-50 px-3 py-1 text-[10px] font-bold text-rose-950"
           >
             Claims ledger

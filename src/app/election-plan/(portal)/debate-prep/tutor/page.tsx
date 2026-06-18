@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { DebatePrepTutorClient } from "@/components/admin/intelligence/DebatePrepTutorClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import { EP_DEBATE_PREP_TUTOR_API } from "@/lib/election-plan/debate-prep-links";
+import { EP_DEBATE_PREP_REHEARSAL_HREF, EP_DEBATE_PREP_TUTOR_API } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_PREP_TUTOR_V5_VERSION, TUTOR_HUB_WELCOME } from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
 import { PROFESSOR_SHOWCASE_V6_VERSION } from "@/lib/intelligence/v4/debatePrepProfessorShowcaseV6";
 
@@ -36,8 +36,8 @@ export default function ElectionPlanDebatePrepTutorPage() {
             <p className="mt-4 text-[10px] font-bold uppercase text-amber-900">{TUTOR_HUB_WELCOME.governance}</p>
             <p className="mt-4 text-xs text-[var(--ep-navy-muted)]">
               Need the full admin drill queue?{" "}
-              <Link href="/admin/intelligence/drill-queue" className="font-semibold underline">
-                Staff drill queue →
+              <Link href={EP_DEBATE_PREP_REHEARSAL_HREF} className="font-semibold underline">
+                Drill queue &amp; rehearsal →
               </Link>
             </p>
           </section>

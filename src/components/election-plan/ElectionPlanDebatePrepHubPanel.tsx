@@ -11,7 +11,7 @@ import {
   EP_FORUM_TRANSCRIPT_LAB_HREF,
   EP_OPPOSITION_RESEARCH_HREF,
 } from "@/lib/election-plan/debate-prep-links";
-import { epDebatePrepDayHref, mapAdminDebateHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
+import { epDebatePrepDayHref, mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 import { buildDebatePrepSystemV5Snapshot } from "@/lib/election-plan/debate-prep-system-v5";
 import { ACCA_2026_SOS_FORUM_DROP_REL, ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 
@@ -126,7 +126,7 @@ export function ElectionPlanDebatePrepHubPanel() {
           tutor: EP_DEBATE_PREP_TUTOR_HREF,
           dayHref: epDebatePrepDayHref,
           intensiveHub: EP_DEBATE_PREP_HREF,
-          resolveHref: mapAdminDebateHrefToElectionPlan,
+          resolveHref: mapAdminHrefToElectionPlan,
         }}
         initialDay={1}
         todayDate={referenceDate}
