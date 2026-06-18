@@ -17,8 +17,10 @@ import {
   EP_DEBATE_PREP_LANES_HREF,
   EP_DEBATE_PREP_REHEARSAL_HREF,
   EP_DEBATE_PREP_TUTOR_HREF,
+  EP_DEBATE_TECHNIQUES_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
   EP_OPPOSITION_RESEARCH_HREF,
+  EP_TRAP_LANES_HREF,
 } from "@/lib/election-plan/debate-prep-links";
 
 export const DEBATE_PREP_SYSTEM_V5_VERSION = "debate-prep-system-v5.0-election-plan";
@@ -26,6 +28,8 @@ export const DEBATE_PREP_SYSTEM_V5_VERSION = "debate-prep-system-v5.0-election-p
 export type DebatePrepV5ModuleId =
   | "command-course"
   | "command-home"
+  | "trap-lanes"
+  | "techniques"
   | "ai-tutor"
   | "forum-lab"
   | "rehearsal"
@@ -88,6 +92,24 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
       lane: "kelly",
       status: feed.readinessPct >= 70 ? "ready" : "in-progress",
       statusNote: `${feed.readinessPct}% · ${feed.readinessLabel}`,
+    },
+    {
+      id: "trap-lanes",
+      label: "Trap lanes",
+      tagline: "Six opponent traps — setup questions, bait psychology, 45-second pivots",
+      href: EP_TRAP_LANES_HREF,
+      lane: "kelly",
+      status: "ready",
+      statusNote: "Chess not insults — rehearse 1–2 lanes nightly",
+    },
+    {
+      id: "techniques",
+      label: "Techniques library",
+      tagline: "Hammer attack patterns · culture-war defense · brain-freeze recovery",
+      href: EP_DEBATE_TECHNIQUES_HREF,
+      lane: "kelly",
+      status: "ready",
+      statusNote: "5 depth guides · ~12–15 min each",
     },
     {
       id: "ai-tutor",

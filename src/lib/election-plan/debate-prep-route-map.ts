@@ -8,9 +8,13 @@ import {
   EP_DEBATE_PREP_LANES_HREF,
   EP_DEBATE_PREP_REHEARSAL_HREF,
   EP_DEBATE_PREP_TUTOR_HREF,
+  EP_DEBATE_TECHNIQUES_HREF,
   EP_EXECUTIVE_BOOK_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
   EP_OPPOSITION_RESEARCH_HREF,
+  EP_TRAP_LANES_HREF,
+  epDebateTechniqueHref,
+  epTrapLaneHref,
 } from "@/lib/election-plan/debate-prep-links";
 
 const INTENSIVE_DAY_IDS = new Set([
@@ -59,7 +63,8 @@ const EXACT: Record<string, string> = {
   "/admin/intelligence/kelly-prep-week": EP_DEBATE_PREP_HREF,
   "/admin/intelligence/top-tier-prep": EP_DEBATE_PREP_COMMAND_HREF,
   "/admin/intelligence/sos-debate-questions": EP_DEBATE_PREP_COMMAND_HREF,
-  "/admin/intelligence/trap-lanes": EP_DEBATE_PREP_REHEARSAL_HREF,
+  "/admin/intelligence/trap-lanes": EP_TRAP_LANES_HREF,
+  "/admin/intelligence/debate-depth": EP_DEBATE_TECHNIQUES_HREF,
   "/admin/intelligence/demo-mode": EP_DEBATE_PREP_COMMAND_HREF,
   "/admin/intelligence/live-event": EP_DEBATE_PREP_COMMAND_HREF,
   "/admin/intelligence/sre-closure": EP_DEBATE_PREP_REHEARSAL_HREF,
@@ -78,9 +83,7 @@ const PREFIX: Array<{ prefix: string; target: string }> = [
   { prefix: "/admin/intelligence/kim-hammer/", target: EP_OPPOSITION_RESEARCH_HREF },
   { prefix: "/admin/intelligence/opponents/", target: EP_OPPOSITION_RESEARCH_HREF },
   { prefix: "/admin/intelligence/debate-briefings/", target: EP_DEBATE_PREP_TUTOR_HREF },
-  { prefix: "/admin/intelligence/debate-depth/", target: EP_DEBATE_PREP_TUTOR_HREF },
   { prefix: "/admin/intelligence/debate-prep/", target: EP_DEBATE_PREP_TUTOR_HREF },
-  { prefix: "/admin/intelligence/trap-lanes/", target: EP_DEBATE_PREP_REHEARSAL_HREF },
   { prefix: "/admin/intelligence/sos-debate-questions/", target: EP_DEBATE_PREP_COMMAND_HREF },
   { prefix: "/admin/intelligence/candidate-dossiers/", target: EP_OPPOSITION_RESEARCH_HREF },
   { prefix: "/admin/intelligence/diligence/", target: EP_OPPOSITION_RESEARCH_HREF },
@@ -106,6 +109,12 @@ export function mapAdminHrefToElectionPlan(href: string): string {
 
   const laneMatch = path.match(/^\/admin\/intelligence\/debate-week-intensive\/lanes\/([^/]+)$/);
   if (laneMatch?.[1]) return epDebatePrepLaneHref(laneMatch[1]) + query;
+
+  const trapMatch = path.match(/^\/admin\/intelligence\/trap-lanes\/([^/]+)$/);
+  if (trapMatch?.[1]) return epTrapLaneHref(trapMatch[1]) + query;
+
+  const depthMatch = path.match(/^\/admin\/intelligence\/debate-depth\/([^/]+)$/);
+  if (depthMatch?.[1]) return epDebateTechniqueHref(depthMatch[1]) + query;
 
   const dayMatch = path.match(/^\/admin\/intelligence\/debate-week-intensive\/([^/]+)$/);
   if (dayMatch?.[1] && INTENSIVE_DAY_IDS.has(dayMatch[1])) {

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
+import { DebatePrepInstructionPanel } from "@/components/election-plan/DebatePrepInstructionPanel";
 import { DebateWeekIntensivePanel } from "@/components/admin/intelligence/DebateWeekIntensivePanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import {
@@ -64,6 +65,8 @@ export function ElectionPlanDebatePrepHubPanel() {
           <p className="mt-4 text-[10px] font-bold uppercase text-amber-900">{snapshot.governance}</p>
         </div>
       </section>
+
+      <DebatePrepInstructionPanel />
 
       <section className="mb-10">
         <h2 className="mb-4 font-heading text-lg font-bold text-[var(--ep-navy)]">Modules</h2>

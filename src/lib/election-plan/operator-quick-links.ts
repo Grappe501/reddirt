@@ -5,9 +5,11 @@ import {
   EP_DEBATE_PREP_LANES_HREF,
   EP_DEBATE_PREP_REHEARSAL_HREF,
   EP_DEBATE_PREP_TUTOR_HREF,
+  EP_DEBATE_TECHNIQUES_HREF,
   EP_EXECUTIVE_BOOK_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
   EP_OPPOSITION_RESEARCH_HREF,
+  EP_TRAP_LANES_HREF,
 } from "@/lib/election-plan/debate-prep-links";
 
 export type ElectionPlanQuickLink = {
@@ -30,6 +32,8 @@ export const ELECTION_PLAN_OPERATOR_QUICK_LINK_GROUPS: ElectionPlanQuickLinkGrou
     links: [
       { label: "Debate prep hub", href: EP_DEBATE_PREP_HREF, detail: "Readiness + 7-day course", emphasis: "gold" },
       { label: "Command home", href: EP_DEBATE_PREP_COMMAND_HREF, detail: "Safe & blocked lines tonight" },
+      { label: "Trap lanes", href: EP_TRAP_LANES_HREF, detail: "6 opponent traps · setup & pivot scripts", emphasis: "gold" },
+      { label: "Techniques library", href: EP_DEBATE_TECHNIQUES_HREF, detail: "Hammer attacks · culture-war · recovery" },
       { label: "AI tutor", href: EP_DEBATE_PREP_TUTOR_HREF, detail: "Coach + professor modes" },
       { label: "Rehearsal engine", href: EP_DEBATE_PREP_REHEARSAL_HREF, detail: "Encounters · drill queue · iPad" },
       { label: "Drill lanes", href: EP_DEBATE_PREP_LANES_HREF, detail: "Intensive v3 optional lanes" },

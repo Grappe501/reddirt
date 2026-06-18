@@ -26,11 +26,17 @@ export function V4TrapLaneDrillDownPanel({
   prev,
   next,
   stageSafeDecision,
+  trapLaneHref = (laneId: string) => `/admin/intelligence/trap-lanes/${laneId}`,
+  trapLanesIndexHref = "/admin/intelligence/trap-lanes",
+  resolveHref = (href: string) => href,
 }: {
   drill: TrapLaneWithBriefing;
   prev: { laneId: string; title: string } | null;
   next: { laneId: string; title: string } | null;
   stageSafeDecision?: StageSafeContentDecision;
+  trapLaneHref?: (laneId: string) => string;
+  trapLanesIndexHref?: string;
+  resolveHref?: (href: string) => string;
 }) {
   const fiveLayer = getTrapLaneFiveLayer(drill.laneId);
   const candidateProfile = stageSafeDecision?.audience === "candidate";
@@ -250,7 +256,7 @@ export function V4TrapLaneDrillDownPanel({
               {drill.relatedBills.map((b) => (
                 <Link
                   key={b}
-                  href={`/admin/intelligence/kim-hammer/bills/${b}/act-proof`}
+                  href={resolveHref(`/admin/intelligence/kim-hammer/bills/${b}/act-proof`)}
                   className="mr-2 font-bold text-kelly-navy underline"
                 >
                   {b}
@@ -258,7 +264,10 @@ export function V4TrapLaneDrillDownPanel({
               ))}
             </p>
           ) : null}
-          <Link href="/admin/intelligence/video-archive-room" className="mt-3 inline-block font-bold text-kelly-navy underline">
+          <Link
+            href={resolveHref("/admin/intelligence/video-archive-room")}
+            className="mt-3 inline-block font-bold text-kelly-navy underline"
+          >
             Legislative offense tab →
           </Link>
         </Block>
@@ -302,17 +311,17 @@ export function V4TrapLaneDrillDownPanel({
 
       <nav className="flex flex-wrap items-center justify-between gap-2 text-xs font-bold">
         {prev ? (
-          <Link href={`/admin/intelligence/trap-lanes/${prev.laneId}`} className="text-kelly-navy underline">
+          <Link href={trapLaneHref(prev.laneId)} className="text-kelly-navy underline">
             ← {prev.title}
           </Link>
         ) : (
           <span />
         )}
-        <Link href="/admin/intelligence/trap-lanes" className="text-kelly-navy underline">
+        <Link href={trapLanesIndexHref} className="text-kelly-navy underline">
           All trap lanes
         </Link>
         {next ? (
-          <Link href={`/admin/intelligence/trap-lanes/${next.laneId}`} className="text-kelly-navy underline">
+          <Link href={trapLaneHref(next.laneId)} className="text-kelly-navy underline">
             {next.title} →
           </Link>
         ) : (
