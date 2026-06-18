@@ -12,8 +12,6 @@ Kelly cannot campaign full-time without leave-of-absence replacement income. **S
 
 > Plan around a **working budget of $225,000–$250,000** through Election Day — statewide travel, immersion visits, signs, shirts, postcards, rural media, Sherwood, coalition work, volunteer leadership, Power of 5 organizing, and a steadily increasing digital program culminating in a heavy Top 40 city push during the final month. **Aggressive statewide target: $300,000.**
 
-**Fundraising doctrine:** Kelly's time belongs with voters, not dead-end call lists. The fundraising team **opens doors** — house parties, community introductions, coalition events — and money follows relationships. See [Campaign Doctrine — Open Doors](/election-plan/executive-book/doctrine#fundraising-doctrine--open-doors).
-
 **Digital doctrine:** Social media amplifies physical presence — it does not replace field operations. Save major persuasion spending for the final 30–45 days.
 
 Once September arrives, the campaign will almost certainly add additional signs, shirts, radio, forum sponsorships, newspaper ads, GOTV printing, travel, and volunteer materials — budget contingency accordingly.
@@ -34,11 +32,11 @@ Once September arrives, the campaign will almost certainly add additional signs,
 
 | Category | Working scenario |
 |----------|-----------------:|
-| Media & outreach ($4,000/mo) | $24,000 |
+| Media & outreach ($4,000/mo) | $25,800 |
 | Immersion swag (15 × $500) | $7,500 |
 | Compliance ($750/mo × 6) | $4,500 |
 | County event sponsorships | $7,500 |
-| **Field strategy subtotal** | **$43,500** |
+| **Field strategy subtotal** | **$45,300** |
 
 ---
 
@@ -70,14 +68,14 @@ Once September arrives, the campaign will almost certainly add additional signs,
 | Line item | Amount |
 |-----------|-------:|
 | Salary floor | $72,000 |
-| Travel (conservative → aggressive) | $31,533 → $46,783 |
+| Travel (conservative → aggressive) | $31,683 → $46,933 |
 | Materials mid (1,000 signs + 500 shirts) | $13,500 |
 | Postcards/mail mid placeholder | ~$27,840 |
 | Sherwood expected net (projected) | ~$11,500 |
-| **Bare minimum scenario** | **$181,783** |
-| **Working campaign scenario** | **$232,053** |
+| **Bare minimum scenario** | **$183,733** |
+| **Working campaign scenario** | **$234,003** |
 | **Working planning range** | **$225,000–$250,000** |
-| **Aggressive statewide scenario** | **$339,123** |
+| **Aggressive statewide scenario** | **$342,873** |
 | **Aggressive planning range** | **$300,000–$350,000** |
 
 ---
@@ -86,8 +84,8 @@ Once September arrives, the campaign will almost certainly add additional signs,
 
 | | |
 |---|---:|
-| Working campaign total | $232,053 |
-| Approx. monthly burn (6 months) | **~$38,676** |
+| Working campaign total | $234,003 |
+| Approx. monthly burn (6 months) | **~$39,001** |
 
 Leadership should use the **working campaign** figure and **$225,000–$250,000** range for finance committee planning.
 
@@ -97,9 +95,9 @@ Leadership should use the **working campaign** figure and **$225,000–$250,000*
 
 | Scenario | Total projected need | ~Monthly burn |
 |----------|---------------------:|--------------:|
-| Bare minimum | $181,783 | $30,297 |
-| **Working campaign** | **$232,053** | **$38,676** |
-| Aggressive statewide | $339,123 | $56,521 |
+| Bare minimum | $183,733 | $30,622 |
+| **Working campaign** | **$234,003** | **$39,001** |
+| Aggressive statewide | $342,873 | $57,146 |
 
 ---
 

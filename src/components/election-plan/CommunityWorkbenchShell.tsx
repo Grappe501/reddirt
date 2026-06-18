@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { CityElectionIntelPanel } from "@/components/election-plan/CityElectionIntelPanel";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState, type FormEvent, type ReactNode } from "react";
 
@@ -24,6 +25,7 @@ import { communityWorkbenchEventHref, grassrootsGuitarStringsEventHref } from "@
 import { matchEventSlug, GRASSROOTS_GUITAR_STRINGS_EVENT_SLUG } from "@/lib/election-plan/community-workbench/pilot-event-seeds";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { formatCushionPercent } from "@/lib/election-plan/community-workbench/vote-cushion";
+import type { CityElectionIntel } from "@/lib/election-plan/load-city-election-intel";
 import type { FosCommunityAllocation } from "@/lib/election-plan/fundraising-operating-system-shared";
 import { cn } from "@/lib/utils";
 
@@ -35,6 +37,7 @@ type Props = {
   pilotDefects?: CommunityPilotDefectRow[];
   fosAllocation?: FosCommunityAllocation | null;
   showOptionalPilotBanner?: boolean;
+  cityElectionIntel?: CityElectionIntel | null;
 };
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
@@ -76,6 +79,7 @@ export function CommunityWorkbenchShell({
   pilotDefects = [],
   fosAllocation = null,
   showOptionalPilotBanner = false,
+  cityElectionIntel = null,
 }: Props) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
@@ -240,6 +244,7 @@ export function CommunityWorkbenchShell({
       ) : null}
 
       <Section id="overview" title="Overview">
+        {cityElectionIntel ? <CityElectionIntelPanel intel={cityElectionIntel} showWorkbenchLink={false} /> : null}
         <div className="ep-stat-grid">
           {workbench.voteCushion ? (
             <>

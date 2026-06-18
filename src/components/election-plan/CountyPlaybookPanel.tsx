@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CountyPlaybookMissingPanel } from "@/components/election-plan/CountyPlaybookMissingPanel";
 import { CountyPlaybookMarkdownPanel } from "@/components/election-plan/CountyPlaybookMarkdownPanel";
 import { CountyFundraisingRollupPanel } from "@/components/election-plan/CountyFundraisingRollupPanel";
 import { CountyIntelligenceNav } from "@/components/election-plan/CountyIntelligenceNav";
@@ -201,11 +202,13 @@ export function CountyPlaybookPanel({
         ) : null}
       </div>
 
-      <div id="strategy" className="scroll-mt-24">
-        {playbookMarkdown ? (
-          <CountyPlaybookMarkdownPanel countyName={county.county} markdown={playbookMarkdown} />
-        ) : null}
+      {playbookMarkdown ? (
+        <CountyPlaybookMarkdownPanel countyName={county.county} markdown={playbookMarkdown} />
+      ) : (
+        <CountyPlaybookMissingPanel countyName={county.county} playbookPath={county.playbookPath} />
+      )}
 
+      <div id="strategy" className="scroll-mt-24">
         {victoryTarget ? (
           <div className="mb-8">
             <CountyVictoryTargetsPanel target={victoryTarget} variant="hero" />
@@ -293,6 +296,7 @@ export function CountyPlaybookPanel({
                   </Link>
                   <p className="text-xs text-[var(--ep-navy-muted)]">
                     {formatVotes(city.targetVotes)} target · {city.visitFrequency}
+                    {city.population2020 ? ` · pop. ${city.population2020.toLocaleString("en-US")}` : ""}
                   </p>
                 </div>
                 <Link
@@ -358,9 +362,10 @@ export function CountyPlaybookPanel({
         <CountyWorkbenchV3IntelPanel intel={countyIntel} hideNav skipStrategySection skipIdentitySection />
       ) : (
         <div id="gaps" className="ep-card mb-8 scroll-mt-24 border-dashed">
-          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Data gaps</h2>
+          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Reference data gaps</h2>
           <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-            County intelligence profile failed to load — census, BLS, elections, officials, and history unavailable.
+            Census, BLS, election history, and elected officials require database ingest. Campaign snapshot metrics
+            (VCI, tier, missions, cities) above remain available offline.
           </p>
         </div>
       )}

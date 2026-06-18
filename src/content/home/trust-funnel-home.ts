@@ -7,7 +7,8 @@ export const trustFunnelHomeCopy = {
   hero: {
     eyebrow: "Kelly Grappe · Secretary of State",
     headline: "A Secretary of State for Everyone",
-    subhead: "Fair elections · Accessible government · Transparent records · Service for all 75 counties",
+    subhead:
+      "Fair elections · Direct democracy & ballot access · Accessible government · Transparent records · All 75 counties",
     body:
       "Kelly Grappe is running to administer the Secretary of State’s office the way it should work: clear rules, reliable processes, and service that answers to every county—faithful to the law, not party pressure.",
     closing: {
@@ -15,10 +16,11 @@ export const trustFunnelHomeCopy = {
       rest: "—competent administration you can count on.",
     },
     ctas: {
-      learnOffice: "What the office does",
       meetKelly: "Meet Kelly",
-      getInvolved: "Get involved",
+      directDemocracy: "Direct democracy",
+      learnOffice: "What the office does",
       inviteKelly: "Invite Kelly",
+      getInvolved: "Get involved",
     },
   },
 
@@ -82,6 +84,38 @@ export const trustFunnelHomeCopy = {
       supportingLine:
         "Arkansas elections administered for Arkansans—under law, without partisan favoritism.",
       href: "/about/why-kelly",
+    },
+  },
+
+  directDemocracy: {
+    eyebrow: "Campaign center pillar",
+    title: "Direct democracy & the ballot initiative process",
+    lead:
+      "Kelly entered this race to defend fair elections and the citizen path to ballot measures—not to narrow who gets to petition or how signatures are counted.",
+    body:
+      "Stand Up Arkansas, LEARNS petition work, and the commitment network are the same story: neighbors learning the process, circulating responsibly, and holding power accountable when it overreaches.",
+    pillars: [
+      {
+        title: "Protect ballot access",
+        body: "Initiatives and referenda belong to volunteers and voters—not gatekeepers who treat signature gathering as a privilege.",
+      },
+      {
+        title: "Teach the official process",
+        body: "Plain-language steps from title drafting through verification—so organizers know what the Secretary of State’s office actually controls.",
+      },
+      {
+        title: "Organize the commitment network",
+        body: "Circulators, notaries, and local captains who pledge to follow Arkansas law and keep citizen-led work in citizens’ hands.",
+      },
+      {
+        title: "Kelly’s organizing record",
+        body: "Grassroots petition work after LEARNS—including temporary field offices and neighbor-to-neighbor training—is part of why she is running.",
+      },
+    ] as const,
+    ctas: {
+      hub: "Direct democracy hub",
+      process: "How initiatives reach the ballot",
+      commitment: "Join the commitment network",
     },
   },
 
@@ -150,6 +184,7 @@ export const trustFunnelHomeCopy = {
   },
 
   trustBand: [
+    "Defend direct democracy & ballot access",
     "All 75 counties deserve equal service",
     "Transparent systems",
     "Accessible government",
@@ -174,11 +209,12 @@ export const trustFunnelHomeCopy = {
   },
 
   finalCta: {
-    title: "Learn the story. Understand the office. Join the work.",
+    title: "Learn the story. Defend ballot access. Join the work.",
     body:
-      "Take it one step at a time. Read Meet Kelly, learn what this office actually does, and lend a hand only if it fits your life.",
+      "Read Meet Kelly, walk through the ballot initiative process, and lend a hand—circulating, hosting, or staying connected on your timeline.",
     ctas: {
       meetKelly: "Meet Kelly",
+      directDemocracy: "Direct democracy",
       inviteKelly: "Invite Kelly",
       volunteer: "Get involved",
     },

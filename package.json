@@ -1,6 +1,6 @@
 {
   "name": "reddirt-site",
-  "version": "0.55.0",
+  "version": "0.56.0",
   "private": true,
   "scripts": {
     "dev": "node scripts/run-with-h-drive-env.cjs next dev",
@@ -376,12 +376,13 @@
     "campaign-brain:people-power:build": "tsx scripts/campaign-brain/build-people-power-operating-system.ts",
     "campaign-brain:motion:build": "tsx scripts/campaign-brain/build-motion-storytelling-engine.ts",
     "campaign-brain:forward-motion": "tsx scripts/campaign-brain/build-forward-motion-activation.ts",
+    "campaign-brain:apa-media:build": "tsx scripts/campaign-brain/build-apa-media-program.ts",
     "campaign-brain:relationship-network:build": "tsx scripts/campaign-brain/build-relationship-influence-network.ts",
     "campaign-brain:coalition": "tsx scripts/campaign-brain/build-coalition-power-map.ts",
     "campaign-brain:endorsements:build": "tsx scripts/campaign-brain/build-endorsement-acquisition-system.ts",
     "campaign-brain:voter-contact:build": "tsx scripts/campaign-brain/build-voter-contact-gotv-system.ts",
     "campaign-brain:ingest:field-events": "tsx scripts/campaign-brain/ingest-field-event-leads.ts",
-    "election-plan:build": "tsx scripts/build-election-plan-workbench.ts",
+    "election-plan:build": "tsx scripts/campaign-brain/build-apa-media-program.ts && tsx scripts/build-election-plan-workbench.ts",
     "election-plan:search:build": "tsx scripts/election-plan/build-election-plan-search-index.ts",
     "election-plan:community-workbench:qa": "node scripts/run-with-h-drive-env.cjs tsx scripts/election-plan/community-workbench-qa.ts",
     "election-plan:community-workbench:pilot-preflight": "node scripts/run-with-h-drive-env.cjs tsx scripts/election-plan/community-workbench-pilot-preflight.ts",

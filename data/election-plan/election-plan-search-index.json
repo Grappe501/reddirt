@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-16T22:16:04.936Z",
-  "entryCount": 1282,
+  "generatedAt": "2026-06-18T04:09:53.940Z",
+  "entryCount": 1318,
   "corpusNote": "Local-only index. Excludes admin, voter files, donor data, private contacts, opposition raw.",
   "entries": [
     {
@@ -137,6 +137,19 @@
       ]
     },
     {
+      "id": "md:docs/campaign-brain/media-outreach/APA-MEDIA-PROGRAM.md",
+      "title": "APA Media Program",
+      "href": "/election-plan",
+      "excerpt": "APA Media Program Arkansas Press Association media programs — planning only. Human approval before any APA placement or LTE send. Partner: Arkansas Press Association (APA) · active negotiation Programs Program Cadence B…",
+      "type": "Campaign Brain",
+      "sourcePath": "docs/campaign-brain/media-outreach/APA-MEDIA-PROGRAM.md",
+      "keywords": [
+        "apa",
+        "media",
+        "program"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/appendices/README.md",
       "title": "Appendices",
       "href": "/election-plan",
@@ -241,6 +254,19 @@
         "appendix",
         "festival",
         "calendar"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/APPENDIX-H-WORKBENCH-ARCHITECTURE.md",
+      "title": "Appendix H — Workbench Architecture",
+      "href": "/election-plan",
+      "excerpt": "Appendix H — Workbench Architecture Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campaign …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/APPENDIX-H-WORKBENCH-ARCHITECTURE.md",
+      "keywords": [
+        "appendix",
+        "workbench",
+        "architecture"
       ]
     },
     {
@@ -538,7 +564,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/09-ARKANSAS-GOTV-OPERATIONS-PLAN.md",
       "title": "Arkansas GOTV Operations Plan",
-      "href": "/election-plan/executive-book/gotv",
+      "href": "/election-plan/executive-book",
       "excerpt": "Arkansas GOTV Operations Plan GOTV OPERATIONS PLAN 1.0 · Executive Book Chapter 10 — Field manual Election Day: 2026 11 03 · Early voting begins: 2026 10 20 It is October 19. How exactly do we win Election Day? This cha…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/09-ARKANSAS-GOTV-OPERATIONS-PLAN.md",
@@ -1057,6 +1083,22 @@
       "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
       "keywords": [
         "bella vista end of summer farmers and makers market",
+        "benton county",
+        "bella vista",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-13-bella-vista-bella-vista-farmers-and-makers-market",
+      "title": "Bella Vista Farmers and Makers Market",
+      "href": "/election-plan/forward-motion/fest-2026-09-13-bella-vista-bella-vista-farmers-and-makers-market",
+      "excerpt": "Benton County · Bella Vista · 2026-09-13 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bella vista farmers and makers market",
         "benton county",
         "bella vista",
         "forward motion",
@@ -1882,7 +1924,7 @@
       "id": "md:docs/campaign-brain/calendar-settlement/CALENDAR-SETTLEMENT-REPORT.md",
       "title": "Calendar Settlement Report",
       "href": "/election-plan",
-      "excerpt": "Calendar Settlement Report Generated 2026 06 15 · Window 2026 06 15 → 2026 10 19 · Early voting 2026 10 20 Mission Turn the 20 week strategy into Kelly's executable travel calendar using locked events only , reconciled …",
+      "excerpt": "Calendar Settlement Report Generated 2026 06 18 · Window 2026 06 15 → 2026 10 19 · Early voting 2026 10 20 Mission Turn the 20 week strategy into Kelly's executable travel calendar using locked events only , reconciled …",
       "type": "Campaign Brain",
       "sourcePath": "docs/campaign-brain/calendar-settlement/CALENDAR-SETTLEMENT-REPORT.md",
       "keywords": [
@@ -2233,7 +2275,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md",
       "title": "Campaign Budget & Fundraising Targets",
-      "href": "/election-plan/executive-book/budget",
+      "href": "/election-plan/executive-book",
       "excerpt": "Campaign Budget & Fundraising Targets CAMPAIGN BUDGET FRAMEWORK 1.2 · Chapter 7 — Leadership fundraising planning These are planning targets, not guaranteed costs or guaranteed fundraising outcomes. Modeled line items c…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md",
@@ -2286,7 +2328,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/00-CAMPAIGN-DOCTRINE-THE-ARKANSAS-WAY-TO-WIN.md",
       "title": "Campaign Doctrine — The Arkansas Way to Win",
-      "href": "/election-plan/executive-book/doctrine",
+      "href": "/election-plan/executive-book",
       "excerpt": "Campaign Doctrine — The Arkansas Way to Win Chapter 0 — Read this first · Philosophy before mechanics · Every volunteer, county chair, surrogate, donor host, campus captain, LTE writer, and Power of 5 leader Most campai…",
       "type": "Doctrine",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/00-CAMPAIGN-DOCTRINE-THE-ARKANSAS-WAY-TO-WIN.md",
@@ -2306,7 +2348,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/04-WEEKLY-SUCCESS-SCORECARD.md",
       "title": "Campaign Health Scorecard",
-      "href": "/election-plan/executive-book/scorecard",
+      "href": "/election-plan/executive-book",
       "excerpt": "Campaign Health Scorecard EXECUTIVE BOOK COMPLETION 1.0 · Chapter 4 — One page · Monday morning · two minutes Week of: 2026 06 16 Metric Goal Current : : Verified Events 300 122 Counties Covered 75 45 Founding Leaders 2…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/04-WEEKLY-SUCCESS-SCORECARD.md",
@@ -2770,9 +2812,9 @@
       "id": "eb:doctrine",
       "title": "Ch. 0: Campaign Doctrine",
       "href": "/election-plan/executive-book/doctrine",
-      "excerpt": "The Arkansas Way to Win — philosophy before mechanics, for every leader in the movement",
+      "excerpt": "The Arkansas Way to Win — movement, not campaign; philosophy before mechanics",
       "type": "Doctrine",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/00-CAMPAIGN-DOCTRINE-THE-ARKANSAS-WAY-TO-WIN.md",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/../executive-book-v1/00-CAMPAIGN-DOCTRINE-THE-ARKANSAS-WAY-TO-WIN.md",
       "keywords": [
         "doctrine",
         "campaign doctrine",
@@ -2784,155 +2826,351 @@
       ]
     },
     {
-      "id": "eb:ownership",
-      "title": "Ch. 1: Who Owns What",
-      "href": "/election-plan/executive-book/ownership",
-      "excerpt": "Leadership ownership matrix — names, not committees",
+      "id": "eb:path-to-victory",
+      "title": "Ch. 1: Path to Victory",
+      "href": "/election-plan/executive-book/path-to-victory",
+      "excerpt": "Electoral math, vote targets, cushion strategy, Top 40 cities, clusters, 50%+1",
       "type": "Executive Book",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/01-WHO-OWNS-WHAT.md",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/../executive-book-v1/06-COUNTY-VICTORY-TARGETS.md",
       "keywords": [
-        "ownership",
-        "who owns what",
+        "path-to-victory",
+        "path to victory",
         "executive book",
         "chapter"
       ]
     },
     {
-      "id": "eb:gotv",
-      "title": "Ch. 10: Arkansas GOTV Operations Plan",
-      "href": "/election-plan/executive-book/gotv",
-      "excerpt": "Field manual — how we win Election Day",
+      "id": "eb:voter-engagement",
+      "title": "Ch. 10: Voter Engagement",
+      "href": "/election-plan/executive-book/voter-engagement",
+      "excerpt": "Help 10 Participate, registration verification, vote plans, election reminders",
       "type": "Executive Book",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/09-ARKANSAS-GOTV-OPERATIONS-PLAN.md",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/10-VOTER-ENGAGEMENT.md",
       "keywords": [
-        "gotv",
-        "arkansas gotv operations plan",
+        "voter-engagement",
+        "voter engagement",
         "executive book",
         "chapter"
       ]
     },
     {
-      "id": "eb:audit",
-      "title": "Ch. 11: Executive Book Audit",
-      "href": "/election-plan/executive-book/audit",
-      "excerpt": "V1.0 readiness assessment for leadership review",
+      "id": "eb:campaign-communications-hub",
+      "title": "Ch. 11: Campaign Communications Hub (CCH)",
+      "href": "/election-plan/executive-book/campaign-communications-hub",
+      "excerpt": "Substack architecture, public/insider feeds, contact acquisition, segmentation",
       "type": "Executive Book",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/EXECUTIVE-BOOK-COMPLETION-AUDIT.md",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/11-CAMPAIGN-COMMUNICATIONS-HUB.md",
       "keywords": [
-        "audit",
-        "executive book audit",
+        "campaign-communications-hub",
+        "campaign communications hub (cch)",
         "executive book",
         "chapter"
       ]
     },
     {
-      "id": "eb:influence-map",
-      "title": "Ch. 2: Arkansas Influence Map",
-      "href": "/election-plan/executive-book/influence-map",
-      "excerpt": "Executive contact plan — statewide relationship targets",
+      "id": "eb:social-media-operating-system",
+      "title": "Ch. 12: Social Media Operating System",
+      "href": "/election-plan/executive-book/social-media-operating-system",
+      "excerpt": "Content Studio, platform workbenches, creator network, rapid response workflow",
       "type": "Executive Book",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/02-EXECUTIVE-CONTACT-PLAN.md",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/12-SOCIAL-MEDIA-OPERATING-SYSTEM.md",
       "keywords": [
-        "influence-map",
-        "arkansas influence map",
+        "social-media-operating-system",
+        "social media operating system",
         "executive book",
         "chapter"
       ]
     },
     {
-      "id": "eb:labor-day",
-      "title": "Ch. 3: Labor Day Readiness",
-      "href": "/election-plan/executive-book/labor-day",
-      "excerpt": "September readiness gate — first major campaign checkpoint",
+      "id": "eb:media-storytelling",
+      "title": "Ch. 13: Media & Storytelling",
+      "href": "/election-plan/executive-book/media-storytelling",
+      "excerpt": "Story Corps, photography, video, testimonials, LTE, candidate narrative",
       "type": "Executive Book",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/03-SEPTEMBER-READINESS-LABOR-DAY.md",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/../executive-book-v1/05-THE-KELLY-GRAPPE-MESSAGE.md",
       "keywords": [
-        "labor-day",
-        "labor day readiness",
+        "media-storytelling",
+        "media & storytelling",
         "executive book",
         "chapter"
       ]
     },
     {
-      "id": "eb:scorecard",
-      "title": "Ch. 4: Weekly Success Scorecard",
-      "href": "/election-plan/executive-book/scorecard",
-      "excerpt": "Monday leadership review — live campaign metrics",
+      "id": "eb:communications-calendar",
+      "title": "Ch. 14: Communications Calendar",
+      "href": "/election-plan/executive-book/communications-calendar",
+      "excerpt": "Daily/weekly rhythm, county, coalition, and event communications cadence",
       "type": "Executive Book",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/04-WEEKLY-SUCCESS-SCORECARD.md",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/14-COMMUNICATIONS-CALENDAR.md",
       "keywords": [
-        "scorecard",
-        "weekly success scorecard",
+        "communications-calendar",
+        "communications calendar",
         "executive book",
         "chapter"
       ]
     },
     {
-      "id": "eb:message",
-      "title": "Ch. 5: The Kelly Grappe Message",
-      "href": "/election-plan/executive-book/message",
-      "excerpt": "Eight-pillar candidate doctrine for every room",
-      "type": "Message",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/05-THE-KELLY-GRAPPE-MESSAGE.md",
-      "keywords": [
-        "message",
-        "the kelly grappe message",
-        "executive book",
-        "chapter"
-      ]
-    },
-    {
-      "id": "eb:county-victory-targets",
-      "title": "Ch. 6: County Victory Targets",
-      "href": "/election-plan/executive-book/county-victory-targets",
-      "excerpt": "Votes, percent increase, weekly pace, and Power of 5 leaders — all 75 counties",
+      "id": "eb:fundraising-operating-system",
+      "title": "Ch. 15: Fundraising Operating System (FOS)",
+      "href": "/election-plan/executive-book/fundraising-operating-system",
+      "excerpt": "Vote-target allocation, community goals, county/cluster/statewide rollups",
       "type": "Executive Book",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-COUNTY-VICTORY-TARGETS.md",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/../executive-book-v1/06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md",
       "keywords": [
-        "county-victory-targets",
-        "county victory targets",
+        "fundraising-operating-system",
+        "fundraising operating system (fos)",
         "executive book",
         "chapter"
       ]
     },
     {
-      "id": "eb:budget",
-      "title": "Ch. 7: Campaign Budget & Fundraising Targets",
-      "href": "/election-plan/executive-book/budget",
-      "excerpt": "Projected budget framework — salary floor, travel, materials, fundraising goals",
-      "type": "Budget",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-CAMPAIGN-BUDGET-AND-FUNDRAISING-TARGETS.md",
-      "keywords": [
-        "budget",
-        "campaign budget & fundraising targets",
-        "executive book",
-        "chapter"
-      ]
-    },
-    {
-      "id": "eb:power-of-5",
-      "title": "Ch. 8: Arkansas Conversation Strategy",
-      "href": "/election-plan/executive-book/power-of-5",
-      "excerpt": "Eyeball-to-eyeball organizing doctrine — trust, the conversation ladder, and Power of 5",
-      "type": "Message",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/07-EYEBALL-TO-EYEBALL-ORGANIZING-AND-POWER-OF-5.md",
-      "keywords": [
-        "power-of-5",
-        "arkansas conversation strategy",
-        "executive book",
-        "chapter"
-      ]
-    },
-    {
-      "id": "eb:students-for-arkansas",
-      "title": "Ch. 9: Kelly Grappe Students for Arkansas",
-      "href": "/election-plan/executive-book/students-for-arkansas",
-      "excerpt": "Student-led movement — voters, volunteers, content, future leaders",
+      "id": "eb:fundraising-opportunities",
+      "title": "Ch. 16: Fundraising Opportunities",
+      "href": "/election-plan/executive-book/fundraising-opportunities",
+      "excerpt": "House parties, sponsors, grassroots events, campus and coalition fundraising",
       "type": "Executive Book",
-      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/08-STUDENTS-FOR-ARKANSAS.md",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/16-FUNDRAISING-OPPORTUNITIES.md",
       "keywords": [
-        "students-for-arkansas",
-        "kelly grappe students for arkansas",
+        "fundraising-opportunities",
+        "fundraising opportunities",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:fundraising-leadership",
+      "title": "Ch. 17: Fundraising Leadership",
+      "href": "/election-plan/executive-book/fundraising-leadership",
+      "excerpt": "County, community, and event fundraising leads — opportunity ownership",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/17-FUNDRAISING-LEADERSHIP.md",
+      "keywords": [
+        "fundraising-leadership",
+        "fundraising leadership",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:volunteer-onboarding",
+      "title": "Ch. 18: Volunteer Onboarding & Activation",
+      "href": "/election-plan/executive-book/volunteer-onboarding",
+      "excerpt": "Recruitment funnel, access levels, training, certifications, placement",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/18-VOLUNTEER-ONBOARDING.md",
+      "keywords": [
+        "volunteer-onboarding",
+        "volunteer onboarding & activation",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:technology-data-systems",
+      "title": "Ch. 19: Technology & Data Systems",
+      "href": "/election-plan/executive-book/technology-data-systems",
+      "excerpt": "Election Plan OS, workbenches, PPEN, CCH, FOS, CRM, Discord roadmap",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/19-TECHNOLOGY-DATA-SYSTEMS.md",
+      "keywords": [
+        "technology-data-systems",
+        "technology & data systems",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:county-strategy",
+      "title": "Ch. 2: County Strategy",
+      "href": "/election-plan/executive-book/county-strategy",
+      "excerpt": "County classifications, workbench doctrine, battlefield vs growth vs maintenance counties",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/02-COUNTY-STRATEGY.md",
+      "keywords": [
+        "county-strategy",
+        "county strategy",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:accountability-reporting",
+      "title": "Ch. 20: Accountability & Reporting",
+      "href": "/election-plan/executive-book/accountability-reporting",
+      "excerpt": "Weekly reporting, county/coalition reviews, KPI standards, data integrity",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/../executive-book-v1/04-WEEKLY-SUCCESS-SCORECARD.md",
+      "keywords": [
+        "accountability-reporting",
+        "accountability & reporting",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:immersion-county-missions",
+      "title": "Ch. 21: Immersion County Missions",
+      "href": "/election-plan/executive-book/immersion-county-missions",
+      "excerpt": "Quitman, Jacksonville, Sherwood, Mt. Ida, Jonesboro, Benton — one mission each",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/21-IMMERSION-COUNTY-MISSIONS.md",
+      "keywords": [
+        "immersion-county-missions",
+        "immersion county missions",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:campaign-calendar",
+      "title": "Ch. 22: Campaign Calendar",
+      "href": "/election-plan/executive-book/campaign-calendar",
+      "excerpt": "County sequence, leadership, hiring, fundraising, and event deadlines",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/22-CAMPAIGN-CALENDAR.md",
+      "keywords": [
+        "campaign-calendar",
+        "campaign calendar",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:labor-day-readiness",
+      "title": "Ch. 23: Labor Day Readiness Gate",
+      "href": "/election-plan/executive-book/labor-day-readiness",
+      "excerpt": "September readiness — county, leadership, fundraising, communications criteria",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/../executive-book-v1/03-SEPTEMBER-READINESS-LABOR-DAY.md",
+      "keywords": [
+        "labor-day-readiness",
+        "labor day readiness gate",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:election-day-operations",
+      "title": "Ch. 24: Election Day Operations",
+      "href": "/election-plan/executive-book/election-day-operations",
+      "excerpt": "GOTV, poll watching, voter assistance, war room, reporting",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/../executive-book-v1/09-ARKANSAS-GOTV-OPERATIONS-PLAN.md",
+      "keywords": [
+        "election-day-operations",
+        "election day operations",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:appendix-workbench-architecture",
+      "title": "Ch. 25: Appendix H — Workbench Architecture",
+      "href": "/election-plan/executive-book/appendix-workbench-architecture",
+      "excerpt": "Campaign OS map — how Election Plan, workbenches, PPEN, FOS, and CCH connect",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/APPENDIX-H-WORKBENCH-ARCHITECTURE.md",
+      "keywords": [
+        "appendix-workbench-architecture",
+        "appendix h — workbench architecture",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:community-strategy",
+      "title": "Ch. 3: Community Strategy",
+      "href": "/election-plan/executive-book/community-strategy",
+      "excerpt": "Community Workbench doctrine — city, campus, program, and event workbenches",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/03-COMMUNITY-STRATEGY.md",
+      "keywords": [
+        "community-strategy",
+        "community strategy",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:coalition-strategy",
+      "title": "Ch. 4: Coalition Strategy",
+      "href": "/election-plan/executive-book/coalition-strategy",
+      "excerpt": "Coalition Command — outreach lanes, faith, labor, educators, youth, business",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/04-COALITION-STRATEGY.md",
+      "keywords": [
+        "coalition-strategy",
+        "coalition strategy",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:ppen",
+      "title": "Ch. 5: People Power Execution Network (PPEN)",
+      "href": "/election-plan/executive-book/ppen",
+      "excerpt": "Person → participation → relationship → impact · My Five · Help 10 Participate",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/05-PPEN.md",
+      "keywords": [
+        "ppen",
+        "people power execution network (ppen)",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:leadership-development",
+      "title": "Ch. 6: Leadership Development System",
+      "href": "/election-plan/executive-book/leadership-development",
+      "excerpt": "Leadership Workbench doctrine — county, community, coalition, event, and succession",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/06-LEADERSHIP-DEVELOPMENT.md",
+      "keywords": [
+        "leadership-development",
+        "leadership development system",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:county-workbench-system",
+      "title": "Ch. 7: County Workbench System",
+      "href": "/election-plan/executive-book/county-workbench-system",
+      "excerpt": "County intelligence operating center — leadership, field, fundraising, demographics",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/07-COUNTY-WORKBENCH-SYSTEM.md",
+      "keywords": [
+        "county-workbench-system",
+        "county workbench system",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:community-workbench-system",
+      "title": "Ch. 8: Community Workbench System",
+      "href": "/election-plan/executive-book/community-workbench-system",
+      "excerpt": "City execution model, readiness, committees, relationships, special KPI projects",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/08-COMMUNITY-WORKBENCH-SYSTEM.md",
+      "keywords": [
+        "community-workbench-system",
+        "community workbench system",
+        "executive book",
+        "chapter"
+      ]
+    },
+    {
+      "id": "eb:event-operations",
+      "title": "Ch. 9: Event Operations",
+      "href": "/election-plan/executive-book/event-operations",
+      "excerpt": "Grassroots & Guitar Strings, house parties, fairs, forums, run of show, AAR",
+      "type": "Executive Book",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/executive-book-v2/09-EVENT-OPERATIONS.md",
+      "keywords": [
+        "event-operations",
+        "event operations",
         "executive book",
         "chapter"
       ]
@@ -2978,6 +3216,34 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/10-VOTER-ENGAGEMENT.md",
+      "title": "Chapter 10 — Voter Engagement",
+      "href": "/election-plan",
+      "excerpt": "Chapter 10 — Voter Engagement Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campaign plan P…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/10-VOTER-ENGAGEMENT.md",
+      "keywords": [
+        "chapter",
+        "voter",
+        "engagement"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/11-CAMPAIGN-COMMUNICATIONS-HUB.md",
+      "title": "Chapter 11 — Campaign Communications Hub (CCH)",
+      "href": "/election-plan",
+      "excerpt": "Chapter 11 — Campaign Communications Hub (CCH) Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalon…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/11-CAMPAIGN-COMMUNICATIONS-HUB.md",
+      "keywords": [
+        "chapter",
+        "campaign",
+        "communications",
+        "hub",
+        "(cch)"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-v-secretary-of-state/chapter-11-county-clerks.md",
       "title": "Chapter 11 County Clerks",
       "href": "/election-plan",
@@ -2988,6 +3254,21 @@
         "chapter",
         "county",
         "clerks"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/12-SOCIAL-MEDIA-OPERATING-SYSTEM.md",
+      "title": "Chapter 12 — Social Media Operating System",
+      "href": "/election-plan",
+      "excerpt": "Chapter 12 — Social Media Operating System Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone ca…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/12-SOCIAL-MEDIA-OPERATING-SYSTEM.md",
+      "keywords": [
+        "chapter",
+        "social",
+        "media",
+        "operating",
+        "system"
       ]
     },
     {
@@ -3017,6 +3298,19 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/14-COMMUNICATIONS-CALENDAR.md",
+      "title": "Chapter 14 — Communications Calendar",
+      "href": "/election-plan",
+      "excerpt": "Chapter 14 — Communications Calendar Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campaign…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/14-COMMUNICATIONS-CALENDAR.md",
+      "keywords": [
+        "chapter",
+        "communications",
+        "calendar"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-vi-campaign-dashboard/chapter-14-weekly-victory-scorecard.md",
       "title": "Chapter 14 — Weekly Victory Scorecard",
       "href": "/election-plan",
@@ -3028,6 +3322,73 @@
         "weekly",
         "victory",
         "scorecard"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/16-FUNDRAISING-OPPORTUNITIES.md",
+      "title": "Chapter 16 — Fundraising Opportunities",
+      "href": "/election-plan",
+      "excerpt": "Chapter 16 — Fundraising Opportunities Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campai…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/16-FUNDRAISING-OPPORTUNITIES.md",
+      "keywords": [
+        "chapter",
+        "fundraising",
+        "opportunities"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/17-FUNDRAISING-LEADERSHIP.md",
+      "title": "Chapter 17 — Fundraising Leadership",
+      "href": "/election-plan",
+      "excerpt": "Chapter 17 — Fundraising Leadership Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campaign …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/17-FUNDRAISING-LEADERSHIP.md",
+      "keywords": [
+        "chapter",
+        "fundraising",
+        "leadership"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/18-VOLUNTEER-ONBOARDING.md",
+      "title": "Chapter 18 — Volunteer Onboarding & Activation",
+      "href": "/election-plan",
+      "excerpt": "Chapter 18 — Volunteer Onboarding & Activation Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalon…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/18-VOLUNTEER-ONBOARDING.md",
+      "keywords": [
+        "chapter",
+        "volunteer",
+        "onboarding",
+        "activation"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/19-TECHNOLOGY-DATA-SYSTEMS.md",
+      "title": "Chapter 19 — Technology & Data Systems",
+      "href": "/election-plan",
+      "excerpt": "Chapter 19 — Technology & Data Systems Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campai…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/19-TECHNOLOGY-DATA-SYSTEMS.md",
+      "keywords": [
+        "chapter",
+        "technology",
+        "data",
+        "systems"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/02-COUNTY-STRATEGY.md",
+      "title": "Chapter 2 — County Strategy",
+      "href": "/election-plan",
+      "excerpt": "Chapter 2 — County Strategy Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campaign plan PDF…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/02-COUNTY-STRATEGY.md",
+      "keywords": [
+        "chapter",
+        "county",
+        "strategy"
       ]
     },
     {
@@ -3043,6 +3404,46 @@
         "four",
         "paths",
         "victory"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/21-IMMERSION-COUNTY-MISSIONS.md",
+      "title": "Chapter 21 — Immersion County Missions",
+      "href": "/election-plan",
+      "excerpt": "Chapter 21 — Immersion County Missions Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campai…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/21-IMMERSION-COUNTY-MISSIONS.md",
+      "keywords": [
+        "chapter",
+        "immersion",
+        "county",
+        "missions"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/22-CAMPAIGN-CALENDAR.md",
+      "title": "Chapter 22 — Campaign Calendar",
+      "href": "/election-plan",
+      "excerpt": "Chapter 22 — Campaign Calendar Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campaign plan …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/22-CAMPAIGN-CALENDAR.md",
+      "keywords": [
+        "chapter",
+        "campaign",
+        "calendar"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/03-COMMUNITY-STRATEGY.md",
+      "title": "Chapter 3 — Community Strategy",
+      "href": "/election-plan",
+      "excerpt": "Chapter 3 — Community Strategy Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campaign plan …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/03-COMMUNITY-STRATEGY.md",
+      "keywords": [
+        "chapter",
+        "community",
+        "strategy"
       ]
     },
     {
@@ -3075,6 +3476,19 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/04-COALITION-STRATEGY.md",
+      "title": "Chapter 4 — Coalition Strategy",
+      "href": "/election-plan",
+      "excerpt": "Chapter 4 — Coalition Strategy Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campaign plan …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/04-COALITION-STRATEGY.md",
+      "keywords": [
+        "chapter",
+        "coalition",
+        "strategy"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-ii-electoral-math/chapter-04-democratic-drop-off/README.md",
       "title": "Chapter 4 — Democratic Drop Off Opportunity",
       "href": "/election-plan",
@@ -3087,6 +3501,22 @@
         "drop",
         "off",
         "opportunity"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/05-PPEN.md",
+      "title": "Chapter 5 — People Power Execution Network (PPEN)",
+      "href": "/election-plan",
+      "excerpt": "Chapter 5 — People Power Execution Network (PPEN) Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing Replaces: Executive Book 1.x \"Power of 5\" chapter — same doctrine, now the central e…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/05-PPEN.md",
+      "keywords": [
+        "chapter",
+        "people",
+        "power",
+        "execution",
+        "network",
+        "(ppen)"
       ]
     },
     {
@@ -3106,6 +3536,20 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/06-LEADERSHIP-DEVELOPMENT.md",
+      "title": "Chapter 6 — Leadership Development System",
+      "href": "/election-plan",
+      "excerpt": "Chapter 6 — Leadership Development System Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing Replaces: Executive Book 1.x \"Who Owns What\" — ownership matrix remains, now embedded in a L…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/06-LEADERSHIP-DEVELOPMENT.md",
+      "keywords": [
+        "chapter",
+        "leadership",
+        "development",
+        "system"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-ii-electoral-math/chapter-06-republican-conversion-model.md",
       "title": "Chapter 6 The Republican Conversion Model",
       "href": "/election-plan",
@@ -3118,6 +3562,20 @@
         "republican",
         "conversion",
         "model"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/07-COUNTY-WORKBENCH-SYSTEM.md",
+      "title": "Chapter 7 — County Workbench System",
+      "href": "/election-plan",
+      "excerpt": "Chapter 7 — County Workbench System Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campaign …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/07-COUNTY-WORKBENCH-SYSTEM.md",
+      "keywords": [
+        "chapter",
+        "county",
+        "workbench",
+        "system"
       ]
     },
     {
@@ -3136,6 +3594,20 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/08-COMMUNITY-WORKBENCH-SYSTEM.md",
+      "title": "Chapter 8 — Community Workbench System",
+      "href": "/election-plan",
+      "excerpt": "Chapter 8 — Community Workbench System Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campai…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/08-COMMUNITY-WORKBENCH-SYSTEM.md",
+      "keywords": [
+        "chapter",
+        "community",
+        "workbench",
+        "system"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/README.md",
       "title": "Chapter 8 — The Top 10 Strategic Cities",
       "href": "/election-plan",
@@ -3148,6 +3620,19 @@
         "top",
         "strategic",
         "cities"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/09-EVENT-OPERATIONS.md",
+      "title": "Chapter 9 — Event Operations",
+      "href": "/election-plan",
+      "excerpt": "Chapter 9 — Event Operations Executive Book 2.0 · Campaign Operating System manual · Internal leadership briefing This chapter is part of the operating manual for the full Campaign OS — not a standalone campaign plan PD…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/09-EVENT-OPERATIONS.md",
+      "keywords": [
+        "chapter",
+        "event",
+        "operations"
       ]
     },
     {
@@ -4386,7 +4871,7 @@
       "id": "md:docs/campaign-brain/calendar-settlement/COUNTY-COMPLETION-ROADMAP.md",
       "title": "County Completion Roadmap",
       "href": "/election-plan",
-      "excerpt": "County Completion Roadmap Current state Metric Value : Visited (leadership confirmed) 43 Never visited 32 After locked backbone 50 / 75 Still missing after locked schedule 25 Projected completion At current open weekend…",
+      "excerpt": "County Completion Roadmap Current state Metric Value : Visited (leadership confirmed) 45 Never visited 30 After locked backbone 50 / 75 Still missing after locked schedule 25 Projected completion At current open weekend…",
       "type": "Campaign Brain",
       "sourcePath": "docs/campaign-brain/calendar-settlement/COUNTY-COMPLETION-ROADMAP.md",
       "keywords": [
@@ -4735,7 +5220,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-COUNTY-VICTORY-TARGETS.md",
       "title": "County Victory Targets",
-      "href": "/election-plan/executive-book/county-victory-targets",
+      "href": "/election-plan/executive-book",
       "excerpt": "County Victory Targets Why this chapter exists Campaign leadership thinks in VCI, lane recovery, and opportunity scores. County chairs think in votes. Every county leader should be able to answer four questions in under…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/06-COUNTY-VICTORY-TARGETS.md",
@@ -5966,6 +6451,23 @@
       ]
     },
     {
+      "id": "md:docs/campaign-brain/forward-motion/news-releases/drafts/fest-2026-07-31-fort-smith-fort-smith-back-2-school-shopping.md",
+      "title": "DRAFT — Fort Smith Back 2 School Shopping Extravaganza",
+      "href": "/election-plan",
+      "excerpt": "DRAFT — Fort Smith Back 2 School Shopping Extravaganza Approval status: DRAFT — not for distribution Event ID: fest 2026 07 31 fort smith fort smith back 2 school shopping extravaganza Date: 2026 07 31 County: Sebastian…",
+      "type": "Campaign Brain",
+      "sourcePath": "docs/campaign-brain/forward-motion/news-releases/drafts/fest-2026-07-31-fort-smith-fort-smith-back-2-school-shopping.md",
+      "keywords": [
+        "draft",
+        "fort",
+        "smith",
+        "back",
+        "school",
+        "shopping",
+        "extravaganza"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/forward-motion/news-releases/drafts/fair-418be1689fc0c6f0d6a144f5.md",
       "title": "DRAFT — Fulton County Fair",
       "href": "/election-plan",
@@ -6527,6 +7029,23 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v2/README.md",
+      "title": "Executive Book 2.0 — The Arkansas Way to Win",
+      "href": "/election-plan",
+      "excerpt": "Executive Book 2.0 — The Arkansas Way to Win Campaign Operating System manual · Internal · Election Plan portal Executive Book 1.x was a leadership briefing. Executive Book 2.0 is the operating manual for the full Campa…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v2/README.md",
+      "keywords": [
+        "executive",
+        "book",
+        "2.0",
+        "the",
+        "arkansas",
+        "way",
+        "win"
+      ]
+    },
+    {
       "id": "brief:executive-book-chapter",
       "title": "Executive Book Chapter",
       "href": "/election-plan/executive-book/",
@@ -6543,7 +7062,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/EXECUTIVE-BOOK-COMPLETION-AUDIT.md",
       "title": "Executive Book Completion Audit",
-      "href": "/election-plan/executive-book/audit",
+      "href": "/election-plan/executive-book",
       "excerpt": "Executive Book Completion Audit EXECUTIVE BOOK COMPLETION 1.0 · Version 1.1 leadership readiness assessment Generated: 2026 06 16 Verdict Executive Book V1.1 OPERATIONAL — assign remaining TBD owners Overall completenes…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/EXECUTIVE-BOOK-COMPLETION-AUDIT.md",
@@ -6571,7 +7090,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/02-EXECUTIVE-CONTACT-PLAN.md",
       "title": "Executive Contact Plan — Arkansas Influence Map",
-      "href": "/election-plan/executive-book/influence-map",
+      "href": "/election-plan/executive-book",
       "excerpt": "Executive Contact Plan — Arkansas Influence Map EXECUTIVE BOOK COMPLETION 1.0 · Chapter 2 — Most important operational chapter The relationship strategy exists. This is the statewide relationship target list — ranked, o…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/02-EXECUTIVE-CONTACT-PLAN.md",
@@ -6640,7 +7159,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/07-EYEBALL-TO-EYEBALL-ORGANIZING-AND-POWER-OF-5.md",
       "title": "Eyeball to Eyeball Organizing & Power of 5",
-      "href": "/election-plan/executive-book/power-of-5",
+      "href": "/election-plan/executive-book",
       "excerpt": "Eyeball to Eyeball Organizing & Power of 5 EYEBALL TO EYEBALL EXECUTIVE CHAPTER 1.0 · Executive Book Chapter 8 — Campaign organizing doctrine \"What is the organizing philosophy of this campaign?\" This chapter answers th…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/07-EYEBALL-TO-EYEBALL-ORGANIZING-AND-POWER-OF-5.md",
@@ -6669,7 +7188,7 @@
       "id": "md:docs/campaign-brain/forward-motion/facebook-events/facebook-event-draft-queue.md",
       "title": "Facebook Event Draft Queue",
       "href": "/election-plan",
-      "excerpt": "Facebook Event Draft Queue 25 stops in priority window. Bella Vista Sunday Farmers and Makers Market (2026 06 14) Title: Kelly Grappe — Bella Vista Sunday Farmers and Makers Market · Bella Vista Status: draft needed Des…",
+      "excerpt": "Facebook Event Draft Queue 20 stops in priority window. River Valley Crawfish Festival (2026 06 18) Title: Kelly Grappe — River Valley Crawfish Festival · Greenwood Status: draft needed Description draft: Kelly Grappe, …",
       "type": "Campaign Brain",
       "sourcePath": "docs/campaign-brain/forward-motion/facebook-events/facebook-event-draft-queue.md",
       "keywords": [
@@ -7614,22 +8133,6 @@
         "county",
         "strike",
         "team"
-      ]
-    },
-    {
-      "id": "fm:fest-2026-06-16-fundraiser-in-quitman",
-      "title": "Fundraiser in Quitman",
-      "href": "/election-plan/forward-motion/fest-2026-06-16-fundraiser-in-quitman",
-      "excerpt": "Cleburne County · 2026-06-16 · Forward Motion stop command center",
-      "type": "Calendar",
-      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
-      "keywords": [
-        "fundraiser in quitman",
-        "cleburne county",
-        "tbd",
-        "forward motion",
-        "kelly stop",
-        "field"
       ]
     },
     {
@@ -9586,22 +10089,6 @@
       ]
     },
     {
-      "id": "fm:fest-2026-06-19-juneteenth-morrilton-c5",
-      "title": "Juneteenth Morrilton c5",
-      "href": "/election-plan/forward-motion/fest-2026-06-19-juneteenth-morrilton-c5",
-      "excerpt": "Conway County · 2026-06-19 · Forward Motion stop command center",
-      "type": "Calendar",
-      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
-      "keywords": [
-        "juneteenth morrilton c5",
-        "conway county",
-        "tbd",
-        "forward motion",
-        "kelly stop",
-        "field"
-      ]
-    },
-    {
       "id": "md:docs/campaign-brain/README.md",
       "title": "Kelly Grappe Campaign Brain",
       "href": "/election-plan",
@@ -9633,7 +10120,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/08-STUDENTS-FOR-ARKANSAS.md",
       "title": "Kelly Grappe Students for Arkansas",
-      "href": "/election-plan/executive-book/students-for-arkansas",
+      "href": "/election-plan/executive-book",
       "excerpt": "Kelly Grappe Students for Arkansas STUDENTS FOR ARKANSAS 1.0 · Executive Book Chapter 9 — Youth leadership pipeline 18–24 year olds are one of the few groups where a relatively small investment can produce a large numbe…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/08-STUDENTS-FOR-ARKANSAS.md",
@@ -9685,6 +10172,19 @@
         "time",
         "allocation",
         "audit"
+      ]
+    },
+    {
+      "id": "route:/about/initiatives-petitions",
+      "title": "Kelly's petition organizing",
+      "href": "/about/initiatives-petitions",
+      "excerpt": "Public campaign page · Direct Democracy",
+      "type": "Public Website",
+      "sourcePath": "src/config/navigation.ts",
+      "keywords": [
+        "kelly's petition organizing",
+        "direct democracy",
+        "public"
       ]
     },
     {
@@ -11592,22 +12092,6 @@
       ]
     },
     {
-      "id": "fm:fest-2026-06-20-menifee-juneteenth",
-      "title": "Menifee Juneteenth",
-      "href": "/election-plan/forward-motion/fest-2026-06-20-menifee-juneteenth",
-      "excerpt": "Conway County · 2026-06-20 · Forward Motion stop command center",
-      "type": "Calendar",
-      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
-      "keywords": [
-        "menifee juneteenth",
-        "conway county",
-        "tbd",
-        "forward motion",
-        "kelly stop",
-        "field"
-      ]
-    },
-    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/miller-county.md",
       "title": "Miller County — Campaign Playbook",
       "href": "/election-plan",
@@ -11888,7 +12372,7 @@
       "id": "md:docs/campaign-brain/forward-motion/mobilize/mobilize-event-draft-queue.md",
       "title": "Mobilize Event Draft Queue",
       "href": "/election-plan",
-      "excerpt": "Mobilize Event Draft Queue Date Event County Status RSVP Assignment 2026 06 14 Bella Vista Sunday Farmers and Makers Market Benton County not started TBD Kelly 2026 06 18 River Valley Crawfish Festival Sebastian County …",
+      "excerpt": "Mobilize Event Draft Queue Date Event County Status RSVP Assignment 2026 06 18 River Valley Crawfish Festival Sebastian County not started TBD Kelly 2026 06 19 Juneteenth in Little Rock Pulaski County not started TBD Ke…",
       "type": "Campaign Brain",
       "sourcePath": "docs/campaign-brain/forward-motion/mobilize/mobilize-event-draft-queue.md",
       "keywords": [
@@ -12116,22 +12600,6 @@
       ]
     },
     {
-      "id": "fm:aea-montgomery-stub",
-      "title": "Montgomery County — AEA local / area meeting (verify schedule)",
-      "href": "/election-plan/forward-motion/aea-montgomery-stub",
-      "excerpt": "Montgomery County · 2026-06-17 · Forward Motion stop command center",
-      "type": "Calendar",
-      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
-      "keywords": [
-        "montgomery county — aea local / area meeting (verify schedule)",
-        "montgomery county",
-        "tbd",
-        "forward motion",
-        "kelly stop",
-        "field"
-      ]
-    },
-    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/montgomery-county.md",
       "title": "Montgomery County — Campaign Playbook",
       "href": "/election-plan",
@@ -12225,22 +12693,6 @@
         "county chair",
         "arkdems",
         "county party meeting"
-      ]
-    },
-    {
-      "id": "fm:fest-2026-06-17-montgomery-county-meeting",
-      "title": "Montgomery county meeting",
-      "href": "/election-plan/forward-motion/fest-2026-06-17-montgomery-county-meeting",
-      "excerpt": "Montgomery County · 2026-06-17 · Forward Motion stop command center",
-      "type": "Calendar",
-      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
-      "keywords": [
-        "montgomery county meeting",
-        "montgomery county",
-        "tbd",
-        "forward motion",
-        "kelly stop",
-        "field"
       ]
     },
     {
@@ -13394,7 +13846,7 @@
       "id": "md:docs/campaign-brain/forward-motion/PHASE-13-FORWARD-MOTION-ACTIVATION-SYSTEM.md",
       "title": "Phase 13 — Forward Motion Activation System",
       "href": "/election-plan",
-      "excerpt": "Phase 13 — Forward Motion Activation System Backward proof (Phase 12) + Forward motion (Phase 13) = perceived statewide momentum. Updated: 2026 06 15 Mission Build the system that announces, promotes, activates, and mea…",
+      "excerpt": "Phase 13 — Forward Motion Activation System Backward proof (Phase 12) + Forward motion (Phase 13) = perceived statewide momentum. Updated: 2026 06 18 Mission Build the system that announces, promotes, activates, and mea…",
       "type": "Campaign Brain",
       "sourcePath": "docs/campaign-brain/forward-motion/PHASE-13-FORWARD-MOTION-ACTIVATION-SYSTEM.md",
       "keywords": [
@@ -13684,7 +14136,7 @@
       "id": "md:docs/campaign-brain/forward-motion/phone-bank-invitations/phone-bank-assignment-queue.md",
       "title": "Phone Bank Assignment Queue",
       "href": "/election-plan",
-      "excerpt": "Phone Bank Assignment Queue County Event Date List status Script Suggested call dates Call goal Captain Benton County Bella Vista Sunday Farmers and Makers Market 2026 06 14 list needed event invitation 7d before event …",
+      "excerpt": "Phone Bank Assignment Queue County Event Date List status Script Suggested call dates Call goal Captain Sebastian County River Valley Crawfish Festival 2026 06 18 list needed event invitation 6d before event 50 calls TB…",
       "type": "Campaign Brain",
       "sourcePath": "docs/campaign-brain/forward-motion/phone-bank-invitations/phone-bank-assignment-queue.md",
       "keywords": [
@@ -14302,6 +14754,38 @@
         "county chair",
         "arkdems",
         "county party meeting"
+      ]
+    },
+    {
+      "id": "fm:fest-2026-09-15-russellville-pope-county-fair",
+      "title": "Pope County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-09-15-russellville-pope-county-fair",
+      "excerpt": "Pope County · Russellville · 2026-09-15 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "pope county fair",
+        "pope county",
+        "russellville",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fair-7488da8016f2918085330536",
+      "title": "Pope County Fair",
+      "href": "/election-plan/forward-motion/fair-7488da8016f2918085330536",
+      "excerpt": "Pope County · 2026-09-15 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "pope county fair",
+        "pope county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
       ]
     },
     {
@@ -15845,7 +16329,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/03-SEPTEMBER-READINESS-LABOR-DAY.md",
       "title": "September Readiness — Labor Day Executive Milestone",
-      "href": "/election-plan/executive-book/labor-day",
+      "href": "/election-plan/executive-book",
       "excerpt": "September Readiness — Labor Day Executive Milestone EXECUTIVE BOOK COMPLETION 1.0 · Chapter 3 — First major campaign checkpoint Deadline: Labor Day · 2026 09 07 This is the campaign's first major readiness gate before p…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/03-SEPTEMBER-READINESS-LABOR-DAY.md",
@@ -16315,26 +16799,10 @@
       ]
     },
     {
-      "id": "fm:fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-&-car-show",
-      "title": "Sixty-Eight Petit Jean Swap Meet & Car Show",
-      "href": "/election-plan/forward-motion/fest-2026-06-17-morrilton-sixty-eight-petit-jean-swap-meet-%26-car-show",
-      "excerpt": "Conway County · Morrilton · 2026-06-17 · Forward Motion stop command center",
-      "type": "Calendar",
-      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
-      "keywords": [
-        "sixty-eight petit jean swap meet & car show",
-        "conway county",
-        "morrilton",
-        "forward motion",
-        "kelly stop",
-        "field"
-      ]
-    },
-    {
       "id": "md:docs/campaign-brain/forward-motion/social-graphics/graphics-request-dashboard.md",
       "title": "Social Graphics Request Queue",
       "href": "/election-plan",
-      "excerpt": "Social Graphics Request Queue 75 graphic briefs for upcoming stops (next 21 days). Formats per stop: square post · vertical story/reel · Facebook event banner · (future: postcard · door hanger) Data: social graphics req…",
+      "excerpt": "Social Graphics Request Queue 60 graphic briefs for upcoming stops (next 21 days). Formats per stop: square post · vertical story/reel · Facebook event banner · (future: postcard · door hanger) Data: social graphics req…",
       "type": "Campaign Brain",
       "sourcePath": "docs/campaign-brain/forward-motion/social-graphics/graphics-request-dashboard.md",
       "keywords": [
@@ -17068,7 +17536,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/05-THE-KELLY-GRAPPE-MESSAGE.md",
       "title": "The Kelly Grappe Message",
-      "href": "/election-plan/executive-book/message",
+      "href": "/election-plan/executive-book",
       "excerpt": "The Kelly Grappe Message EXECUTIVE BOOK COMPLETION 1.0 · Chapter 5 — Candidate doctrine for every room Not issue papers. Not policy white papers. The campaign message. Use in speeches, interviews, forums, editorials, an…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/05-THE-KELLY-GRAPPE-MESSAGE.md",
@@ -17612,7 +18080,7 @@
       "id": "md:docs/campaign-brain/forward-motion/story-capture/upcoming-stop-story-briefs.md",
       "title": "Upcoming Stop Story Briefs",
       "href": "/election-plan",
-      "excerpt": "Upcoming Stop Story Briefs Bella Vista Sunday Farmers and Makers Market · 2026 06 14 Local business angle: TBD — identify on arrival Community person angle: TBD Faith/civic angle: event dependent County issue angle: Lan…",
+      "excerpt": "Upcoming Stop Story Briefs River Valley Crawfish Festival · 2026 06 18 Local business angle: TBD — identify on arrival Community person angle: TBD Faith/civic angle: event dependent County issue angle: Lane 2 recovery +…",
       "type": "Campaign Brain",
       "sourcePath": "docs/campaign-brain/forward-motion/story-capture/upcoming-stop-story-briefs.md",
       "keywords": [
@@ -18474,7 +18942,7 @@
       "id": "md:docs/campaign-brain/forward-motion/weekly-forward-motion-packet.md",
       "title": "Weekly Forward Motion Packet",
       "href": "/election-plan",
-      "excerpt": "Weekly Forward Motion Packet Generated: 2026 06 15 Summary Assignment Stops next 7 days : Kelly 4 Surrogate 0 County Team 10 What must be approved All public facing pieces require human approval before release. Nothing …",
+      "excerpt": "Weekly Forward Motion Packet Generated: 2026 06 18 Summary Assignment Stops next 7 days : Kelly 4 Surrogate 0 County Team 6 What must be approved All public facing pieces require human approval before release. Nothing i…",
       "type": "Campaign Brain",
       "sourcePath": "docs/campaign-brain/forward-motion/weekly-forward-motion-packet.md",
       "keywords": [
@@ -18653,6 +19121,38 @@
       ]
     },
     {
+      "id": "fm:fest-2026-09-14-searcy-white-county-fair",
+      "title": "White County Fair",
+      "href": "/election-plan/forward-motion/fest-2026-09-14-searcy-white-county-fair",
+      "excerpt": "White County · Searcy · 2026-09-14 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "white county fair",
+        "white county",
+        "searcy",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
+      "id": "fm:fair-c6d957f78268e5a414b4d80f",
+      "title": "White County Fair",
+      "href": "/election-plan/forward-motion/fair-c6d957f78268e5a414b4d80f",
+      "excerpt": "White County · 2026-09-14 · Forward Motion stop command center",
+      "type": "Calendar",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "white county fair",
+        "white county",
+        "tbd",
+        "forward motion",
+        "kelly stop",
+        "field"
+      ]
+    },
+    {
       "id": "county:white",
       "title": "White County Playbook",
       "href": "/election-plan/counties/white",
@@ -18684,7 +19184,7 @@
     {
       "id": "md:docs/strategic-plan/plurality-victory-plan/executive-book-v1/01-WHO-OWNS-WHAT.md",
       "title": "WHO OWNS WHAT",
-      "href": "/election-plan/executive-book/ownership",
+      "href": "/election-plan/executive-book",
       "excerpt": "WHO OWNS WHAT EXECUTIVE BOOK COMPLETION 1.0 · Chapter 1 — Leadership sees this first Not departments. Not committees. Names. Status Count : Functions 12 Primary owner still TBD 4 Ownership matrix Function Primary Owner …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/executive-book-v1/01-WHO-OWNS-WHAT.md",

@@ -14,9 +14,9 @@
 
 | Source | Count |
 |--------|------:|
-| Locked backbone events | 40 |
+| Locked backbone events | 41 |
 | Phase C proposed blocks | 10 |
-| Scheduled opportunities (aggressive only) | 40 of 77 |
+| Scheduled opportunities (aggressive only) | 40 of 79 |
 
 ## Conservative — locked events only
 
@@ -24,7 +24,7 @@ Lodging discounted 25% · food days discounted 15% (more day trips assumed).
 
 | Month | Events | Fuel | Food days | Food | Lodging nights | Lodging | **Total** |
 |-------|-------:|-----:|----------:|-----:|---------------:|--------:|----------:|
-| June 2026 | 11 | $1,333 | 28 | $4,200 | 16 | $2,800 | **$8,333** |
+| June 2026 | 12 | $1,333 | 29 | $4,350 | 16 | $2,800 | **$8,483** |
 | July 2026 | 11 | $2,500 | 19 | $2,850 | 8 | $1,400 | **$6,750** |
 | August 2026 | 6 | $2,500 | 6 | $900 | 0 | $0 | **$3,400** |
 | September 2026 | 8 | $2,500 | 15 | $2,250 | 7 | $1,225 | **$5,975** |
@@ -34,15 +34,15 @@ Lodging discounted 25% · food days discounted 15% (more day trips assumed).
 | | |
 |---|---:|
 | Total fuel | $11,583 |
-| Total food (84 days) | $12,600 |
+| Total food (85 days) | $12,750 |
 | Total lodging (42 nights) | $7,350 |
-| **Conservative travel total** | **$31,533** |
+| **Conservative travel total** | **$31,683** |
 
 ## Expected — locked + Phase C proposed blocks
 
 | Month | Events | Fuel | Food days | Food | Lodging nights | Lodging | **Total** |
 |-------|-------:|-----:|----------:|-----:|---------------:|--------:|----------:|
-| June 2026 | 11 | $1,333 | 30 | $4,500 | 20 | $3,500 | **$9,333** |
+| June 2026 | 12 | $1,333 | 31 | $4,650 | 20 | $3,500 | **$9,483** |
 | July 2026 | 12 | $2,500 | 21 | $3,150 | 9 | $1,575 | **$7,225** |
 | August 2026 | 10 | $2,500 | 13 | $1,950 | 3 | $525 | **$4,975** |
 | September 2026 | 10 | $2,500 | 20 | $3,000 | 10 | $1,750 | **$7,250** |
@@ -51,13 +51,13 @@ Lodging discounted 25% · food days discounted 15% (more day trips assumed).
 
 | | |
 |---|---:|
-| **Expected travel total** | **$37,633** |
+| **Expected travel total** | **$37,783** |
 
 ## Aggressive — locked + proposed + top scheduled opportunities
 
 | Month | Events | Fuel | Food days | Food | Lodging nights | Lodging | **Total** |
 |-------|-------:|-----:|----------:|-----:|---------------:|--------:|----------:|
-| June 2026 | 18 | $1,333 | 42 | $6,300 | 22 | $3,850 | **$11,483** |
+| June 2026 | 19 | $1,333 | 43 | $6,450 | 22 | $3,850 | **$11,633** |
 | July 2026 | 23 | $2,500 | 35 | $5,250 | 10 | $1,750 | **$9,500** |
 | August 2026 | 24 | $2,500 | 27 | $4,050 | 3 | $525 | **$7,075** |
 | September 2026 | 18 | $2,500 | 31 | $4,650 | 11 | $1,925 | **$9,075** |
@@ -66,10 +66,10 @@ Lodging discounted 25% · food days discounted 15% (more day trips assumed).
 
 | | |
 |---|---:|
-| **Aggressive travel total** | **$46,783** |
+| **Aggressive travel total** | **$46,933** |
 
 ## Leadership note
 
-Travel alone could run **$31,533–$46,783+** through Election Day once fuel, meals, lodging, and immersion trips are counted — before materials, mail, Sherwood production, or salary.
+Travel alone could run **$31,683–$46,933+** through Election Day once fuel, meals, lodging, and immersion trips are counted — before materials, mail, Sherwood production, or salary.
 
 Immersion trips (Benton, Greene, Union, Sebastian, early voting window) drive lodging nights. Verify actual overnight plans with Steve before locking travel cash flow.

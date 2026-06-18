@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T21:11:26.179Z",
+  "generatedAt": "2026-06-18T04:09:50.293Z",
   "version": 1,
   "briefings": {
     "20-week-execution-begins-central-metro-2026-06-15": {
@@ -151,7 +151,7 @@
       "verificationStatus": "leadership_locked",
       "who": {
         "audience": null,
-        "host": "Lisa Holloway",
+        "host": "Linda Griffith",
         "organizers": null,
         "expectedAttendance": null
       },
@@ -159,7 +159,7 @@
         "title": "Quitman fundraiser",
         "eventType": "fundraiser",
         "eventTypeEnum": "FUNDRAISER",
-        "description": "Lisa Holloway host · Cleburne County"
+        "description": "House party · Linda Griffith host · Griffiths Farm · Lisa Holloway county lead (662-549-8543) · Cleburne County · COMPLETED 2026-06-16 · $600 raised · new attendees · family outreach momentum"
       },
       "when": {
         "startAt": "2026-06-16T15:00:00.000Z",
@@ -176,7 +176,7 @@
         "countySlug": "cleburne-county"
       },
       "why": {
-        "campaignRationale": "Lisa Holloway host · Cleburne County",
+        "campaignRationale": "House party · Linda Griffith host · Griffiths Farm · Lisa Holloway county lead (662-549-8543) · Cleburne County · COMPLETED 2026-06-16 · $600 raised · new attendees · family outreach momentum",
         "strategicGoal": "Leadership-locked backbone event.",
         "laneFocus": [
           "Four-lane plurality strategy — retention + reactivation + registration + conversion"
@@ -198,11 +198,11 @@
         "officialSiteNotes": null
       },
       "localContact": {
-        "name": "Lisa Holloway",
+        "name": "Linda Griffith",
         "role": "Local host / validator",
         "phone": null,
         "email": null,
-        "notes": "Lisa Holloway host · Cleburne County"
+        "notes": "House party · Linda Griffith host · Griffiths Farm · Lisa Holloway county lead (662-549-8543) · Cleburne County · COMPLETED 2026-06-16 · $600 raised · new attendees · family outreach momentum"
       },
       "trip": {
         "travelClass": "local",
@@ -1172,7 +1172,7 @@
         "title": "Juneteenth Morrilton / Menifee corridor",
         "eventType": "festival",
         "eventTypeEnum": "OTHER",
-        "description": "Conway County Juneteenth stack · Menifee Jun 20"
+        "description": "Single Conway County corridor stop — Morrilton Jun 19 + Menifee Jun 20 · not separate calendar entries"
       },
       "when": {
         "startAt": "2026-06-19T15:00:00.000Z",
@@ -1189,7 +1189,7 @@
         "countySlug": "conway-county"
       },
       "why": {
-        "campaignRationale": "Conway County Juneteenth stack · Menifee Jun 20",
+        "campaignRationale": "Single Conway County corridor stop — Morrilton Jun 19 + Menifee Jun 20 · not separate calendar entries",
         "strategicGoal": "Leadership-locked backbone event.",
         "laneFocus": [
           "Four-lane plurality strategy — retention + reactivation + registration + conversion"
@@ -1216,7 +1216,7 @@
         "role": null,
         "phone": null,
         "email": null,
-        "notes": "Conway County Juneteenth stack · Menifee Jun 20"
+        "notes": "Single Conway County corridor stop — Morrilton Jun 19 + Menifee Jun 20 · not separate calendar entries"
       },
       "trip": {
         "travelClass": "immersion",
@@ -1455,148 +1455,6 @@
         "Official event website / social"
       ],
       "internalNotes": "Source: locked-events-steve"
-    },
-    "menifee-juneteenth-2026-06-20": {
-      "slug": "menifee-juneteenth-2026-06-20",
-      "eventId": "fest-2026-06-20-menifee-juneteenth",
-      "calendarCategory": "scheduled",
-      "verificationStatus": "tentative",
-      "who": {
-        "audience": null,
-        "host": null,
-        "organizers": null,
-        "expectedAttendance": null
-      },
-      "what": {
-        "title": "Menifee Juneteenth",
-        "eventType": "opportunity",
-        "eventTypeEnum": "OTHER",
-        "description": "Draft Mobilize event — human approval required before publish"
-      },
-      "when": {
-        "startAt": "2026-06-20T15:00:00.000Z",
-        "endAt": "2026-06-20T23:00:00.000Z",
-        "timezone": "America/Chicago",
-        "timeKnown": false,
-        "dateEnd": null
-      },
-      "where": {
-        "venue": "Conway",
-        "address": null,
-        "city": null,
-        "county": "Conway",
-        "countySlug": "conway-county"
-      },
-      "why": {
-        "campaignRationale": "Draft Mobilize event — human approval required before publish",
-        "strategicGoal": null,
-        "laneFocus": [
-          "Four-lane plurality strategy — retention + reactivation + registration + conversion"
-        ]
-      },
-      "campaignGoal": {
-        "primary": "Build relationships and visibility in Conway.",
-        "successMetrics": [
-          "Po5 conversations logged",
-          "Volunteer signups",
-          "Story captured for Substack/social"
-        ],
-        "volunteerAsk": "Shift signup via Mobilize once event is published.",
-        "registrationGoal": "County registration goal — see /election-plan/registration-goals"
-      },
-      "onlineIntel": {
-        "lastResearched": null,
-        "sources": [],
-        "officialSiteNotes": null
-      },
-      "localContact": {
-        "name": null,
-        "role": null,
-        "phone": null,
-        "email": null,
-        "notes": "Draft Mobilize event — human approval required before publish"
-      },
-      "trip": {
-        "travelClass": null,
-        "driveMinutes": null,
-        "overnight": null,
-        "lodging": null,
-        "departureBase": "Sherwood / Central Arkansas (default)",
-        "companions": null,
-        "outsideEventPlans": []
-      },
-      "runOfShow": [
-        {
-          "time": "T-14d",
-          "activity": "Confirm date, time, venue, and local contact",
-          "owner": "Field director",
-          "notes": null
-        },
-        {
-          "time": "T-7d",
-          "activity": "Volunteer shift draft in Mobilize (approval before publish)",
-          "owner": "People Power",
-          "notes": null
-        },
-        {
-          "time": "T-1d",
-          "activity": "Pack kit: signs, Po5 cards, merch, literature",
-          "owner": "Logistics",
-          "notes": null
-        },
-        {
-          "time": "Day of",
-          "activity": "Execute visit per locked schedule",
-          "owner": "Kelly",
-          "notes": null
-        },
-        {
-          "time": "Day +1",
-          "activity": "Thank-you follow-up · outcome report",
-          "owner": "Field",
-          "notes": null
-        }
-      ],
-      "kelly": {
-        "role": "Candidate presence · conversations · photos · short remarks if invited.",
-        "visibility": "Public · campaign-branded",
-        "assignment": "tentative",
-        "talkingPoints": [
-          "People over Politics · competent SOS administration",
-          "Fair elections · accessible government · all 75 counties"
-        ],
-        "boothOrStage": null
-      },
-      "logistics": {
-        "parking": "Pending — add in campaign-event-briefings.overrides.json",
-        "loadIn": null,
-        "avNeeds": null,
-        "merchAndSignage": "Standard field kit",
-        "dressCode": "Business casual · Kelly campaign shirt available"
-      },
-      "volunteer": {
-        "lead": null,
-        "shifts": [
-          "Setup",
-          "Booth / crowd",
-          "Po5 signup",
-          "Breakdown"
-        ],
-        "mobilizeNotes": "Publish Mobilize event only after leadership approval."
-      },
-      "story": {
-        "capturePlan": "Same-day social draft · Substack within 72h if story warrants.",
-        "substackAngle": "Conway community · real Arkansans · not staged politics",
-        "socialHooks": []
-      },
-      "openItems": [],
-      "dataGaps": [
-        "Exact start/end time",
-        "Street address / GPS",
-        "Local contact name & phone",
-        "Official event website / social"
-      ],
-      "internalNotes": "Source: upcoming-stops-activation-queue"
     },
     "surf-the-bay-2026-06-20": {
       "slug": "surf-the-bay-2026-06-20",
@@ -2028,6 +1886,150 @@
         "Exact start/end time",
         "Street address / GPS",
         "Local contact name & phone"
+      ],
+      "internalNotes": "Source: locked-events-steve"
+    },
+    "chamber-luncheon-rex-nelson-2026-06-22": {
+      "slug": "chamber-luncheon-rex-nelson-2026-06-22",
+      "eventId": "lock-rex-nelson-chamber-luncheon",
+      "calendarCategory": "locked",
+      "verificationStatus": "leadership_locked",
+      "who": {
+        "audience": null,
+        "host": null,
+        "organizers": null,
+        "expectedAttendance": null
+      },
+      "what": {
+        "title": "Chamber luncheon — Rex Nelson",
+        "eventType": "coalition",
+        "eventTypeEnum": "OTHER",
+        "description": "Little Rock chamber luncheon for Rex Nelson · Kelly attending"
+      },
+      "when": {
+        "startAt": "2026-06-22T15:00:00.000Z",
+        "endAt": "2026-06-22T23:00:00.000Z",
+        "timezone": "America/Chicago",
+        "timeKnown": false,
+        "dateEnd": null
+      },
+      "where": {
+        "venue": "Little Rock · Pulaski",
+        "address": null,
+        "city": "Little Rock",
+        "county": "Pulaski",
+        "countySlug": "pulaski-county"
+      },
+      "why": {
+        "campaignRationale": "Little Rock chamber luncheon for Rex Nelson · Kelly attending",
+        "strategicGoal": "Leadership-locked backbone event.",
+        "laneFocus": [
+          "Four-lane plurality strategy — retention + reactivation + registration + conversion"
+        ]
+      },
+      "campaignGoal": {
+        "primary": "Build relationships and visibility in Pulaski.",
+        "successMetrics": [
+          "Po5 conversations logged",
+          "Volunteer signups",
+          "Story captured for Substack/social"
+        ],
+        "volunteerAsk": "Shift signup via Mobilize once event is published.",
+        "registrationGoal": "County registration goal — see /election-plan/registration-goals"
+      },
+      "onlineIntel": {
+        "lastResearched": null,
+        "sources": [],
+        "officialSiteNotes": null
+      },
+      "localContact": {
+        "name": null,
+        "role": null,
+        "phone": null,
+        "email": null,
+        "notes": "Little Rock chamber luncheon for Rex Nelson · Kelly attending"
+      },
+      "trip": {
+        "travelClass": "local",
+        "driveMinutes": 43,
+        "overnight": false,
+        "lodging": null,
+        "departureBase": "Sherwood / Central Arkansas (default)",
+        "companions": null,
+        "outsideEventPlans": []
+      },
+      "runOfShow": [
+        {
+          "time": "T-14d",
+          "activity": "Confirm date, time, venue, and local contact",
+          "owner": "Field director",
+          "notes": null
+        },
+        {
+          "time": "T-7d",
+          "activity": "Volunteer shift draft in Mobilize (approval before publish)",
+          "owner": "People Power",
+          "notes": null
+        },
+        {
+          "time": "T-1d",
+          "activity": "Pack kit: signs, Po5 cards, merch, literature",
+          "owner": "Logistics",
+          "notes": null
+        },
+        {
+          "time": "Day of",
+          "activity": "Execute visit per locked schedule",
+          "owner": "Kelly",
+          "notes": null
+        },
+        {
+          "time": "Day +1",
+          "activity": "Thank-you follow-up · outcome report",
+          "owner": "Field",
+          "notes": null
+        }
+      ],
+      "kelly": {
+        "role": "Candidate presence · conversations · photos · short remarks if invited.",
+        "visibility": "Public · campaign-branded",
+        "assignment": "leadership_locked",
+        "talkingPoints": [
+          "People over Politics · competent SOS administration",
+          "Fair elections · accessible government · all 75 counties"
+        ],
+        "boothOrStage": null
+      },
+      "logistics": {
+        "parking": "Pending — add in campaign-event-briefings.overrides.json",
+        "loadIn": null,
+        "avNeeds": null,
+        "merchAndSignage": "Standard field kit",
+        "dressCode": "Business casual · Kelly campaign shirt available"
+      },
+      "volunteer": {
+        "lead": null,
+        "shifts": [
+          "Setup",
+          "Booth / crowd",
+          "Po5 signup",
+          "Breakdown"
+        ],
+        "mobilizeNotes": "Publish Mobilize event only after leadership approval."
+      },
+      "story": {
+        "capturePlan": "Same-day social draft · Substack within 72h if story warrants.",
+        "substackAngle": "Pulaski community · real Arkansans · not staged politics",
+        "socialHooks": []
+      },
+      "openItems": [
+        "Verify exact time with county team"
+      ],
+      "dataGaps": [
+        "Exact start/end time",
+        "Street address / GPS",
+        "Local contact name & phone",
+        "Official event website / social"
       ],
       "internalNotes": "Source: locked-events-steve"
     },
@@ -13232,74 +13234,65 @@
       ],
       "internalNotes": "Source: upcoming-stops-activation-queue"
     },
-    "white-county-fair-2026-09-14": {
-      "slug": "white-county-fair-2026-09-14",
-      "eventId": "plan-2026-09-14-white-county-fair",
+    "bella-vista-farmers-and-makers-market-2026-09-13": {
+      "slug": "bella-vista-farmers-and-makers-market-2026-09-13",
+      "eventId": "fest-2026-09-13-bella-vista-bella-vista-farmers-and-makers-market",
       "calendarCategory": "scheduled",
-      "verificationStatus": "plan_standard",
+      "verificationStatus": "verified",
       "who": {
-        "audience": "families · farm_ag · persuasion",
+        "audience": null,
         "host": null,
-        "organizers": "Recommended coverage: staff_only",
+        "organizers": null,
         "expectedAttendance": null
       },
       "what": {
-        "title": "White County Fair",
-        "eventType": "fair",
-        "eventTypeEnum": "FESTIVAL",
-        "description": "Week 14 · 20-week operating plan"
+        "title": "Bella Vista Farmers and Makers Market",
+        "eventType": "opportunity",
+        "eventTypeEnum": "OTHER",
+        "description": "Draft Mobilize event — human approval required before publish"
       },
       "when": {
-        "startAt": "2026-09-14T15:00:00.000Z",
-        "endAt": "2026-09-14T23:00:00.000Z",
+        "startAt": "2026-09-13T15:00:00.000Z",
+        "endAt": "2026-09-13T23:00:00.000Z",
         "timezone": "America/Chicago",
         "timeKnown": false,
         "dateEnd": null
       },
       "where": {
-        "venue": "White",
+        "venue": "Bella Vista · Benton",
         "address": null,
-        "city": null,
-        "county": "White",
-        "countySlug": "white-county"
+        "city": "Bella Vista",
+        "county": "Benton",
+        "countySlug": "benton-county"
       },
       "why": {
-        "campaignRationale": "Week 14 · 20-week operating plan",
+        "campaignRationale": "Draft Mobilize event — human approval required before publish",
         "strategicGoal": null,
         "laneFocus": [
-          "Lane 2 — Democratic Reactivation (recover drop-off Democrats who skipped 2022)",
-          "Lane 4 — Republican / Independent Conversion (relationship persuasion · 12% peel model)",
-          "20-week operating plan milestone"
+          "Four-lane plurality strategy — retention + reactivation + registration + conversion"
         ]
       },
       "campaignGoal": {
-        "primary": "County fair/festival presence · voter contact · local validator introductions in White.",
+        "primary": "Build relationships and visibility in Benton.",
         "successMetrics": [
           "Po5 conversations logged",
           "Volunteer signups",
-          "Story captured for Substack/social",
-          "Booth traffic · VIP/donor touches"
+          "Story captured for Substack/social"
         ],
         "volunteerAsk": "Shift signup via Mobilize once event is published.",
         "registrationGoal": "County registration goal — see /election-plan/registration-goals"
       },
       "onlineIntel": {
-        "lastResearched": "2026-05-13",
-        "sources": [
-          {
-            "label": "Community opportunities inventory",
-            "url": null,
-            "snippet": "Prefer: opening night · parade · livestock auction · senior night · family night · pageant · rodeo/demo derby · Saturday PM — confirm on official schedule. · No structured fair row yet — use query templates; verify robots.txt before automated fetch. | queries:6"
-          }
-        ],
-        "officialSiteNotes": "Prefer: opening night · parade · livestock auction · senior night · family night · pageant · rodeo/demo derby · Saturday PM — confirm on official schedule. · No structured fair row yet — use query templates; verify robots.txt before automated fetch. | queries:6"
+        "lastResearched": null,
+        "sources": [],
+        "officialSiteNotes": null
       },
       "localContact": {
         "name": null,
         "role": null,
         "phone": null,
         "email": null,
-        "notes": "Week 14 · 20-week operating plan"
+        "notes": "Draft Mobilize event — human approval required before publish"
       },
       "trip": {
         "travelClass": null,
@@ -13330,33 +13323,176 @@
           "notes": null
         },
         {
-          "time": "Day · AM",
-          "activity": "Travel / arrival · scout parking & booth",
-          "owner": "Driver + field",
+          "time": "Day of",
+          "activity": "Execute visit per locked schedule",
+          "owner": "Kelly",
           "notes": null
         },
         {
-          "time": "Day · event",
-          "activity": "Kelly walk · booth · conversations · photos",
-          "owner": "Kelly + volunteers",
-          "notes": null
-        },
-        {
-          "time": "Day · PM",
-          "activity": "Debrief · story capture · Po5 log",
-          "owner": "Comms",
+          "time": "Day +1",
+          "activity": "Thank-you follow-up · outcome report",
+          "owner": "Field",
           "notes": null
         }
       ],
       "kelly": {
-        "role": "Walk the fair · booth · livestock/parade visibility as appropriate · 45–120 min.",
+        "role": "Candidate presence · conversations · photos · short remarks if invited.",
         "visibility": "Public · campaign-branded",
-        "assignment": "plan_standard",
+        "assignment": "verified",
         "talkingPoints": [
           "People over Politics · competent SOS administration",
           "Fair elections · accessible government · all 75 counties"
         ],
-        "boothOrStage": "Confirm booth vs stage vs walk-only with local team"
+        "boothOrStage": null
+      },
+      "logistics": {
+        "parking": "Pending — add in campaign-event-briefings.overrides.json",
+        "loadIn": null,
+        "avNeeds": null,
+        "merchAndSignage": "Standard field kit",
+        "dressCode": "Business casual · Kelly campaign shirt available"
+      },
+      "volunteer": {
+        "lead": null,
+        "shifts": [
+          "Setup",
+          "Booth / crowd",
+          "Po5 signup",
+          "Breakdown"
+        ],
+        "mobilizeNotes": "Publish Mobilize event only after leadership approval."
+      },
+      "story": {
+        "capturePlan": "Same-day social draft · Substack within 72h if story warrants.",
+        "substackAngle": "Benton community · real Arkansans · not staged politics",
+        "socialHooks": []
+      },
+      "openItems": [],
+      "dataGaps": [
+        "Exact start/end time",
+        "Street address / GPS",
+        "Local contact name & phone",
+        "Official event website / social"
+      ],
+      "internalNotes": "Source: upcoming-stops-activation-queue"
+    },
+    "white-county-fair-2026-09-14": {
+      "slug": "white-county-fair-2026-09-14",
+      "eventId": "fair-c6d957f78268e5a414b4d80f",
+      "calendarCategory": "scheduled",
+      "verificationStatus": "verified",
+      "who": {
+        "audience": "families · farm_ag · persuasion",
+        "host": null,
+        "organizers": "Recommended coverage: staff_only",
+        "expectedAttendance": null
+      },
+      "what": {
+        "title": "White County Fair",
+        "eventType": "opportunity",
+        "eventTypeEnum": "FESTIVAL",
+        "description": "Draft Mobilize event — human approval required before publish"
+      },
+      "when": {
+        "startAt": "2026-09-14T15:00:00.000Z",
+        "endAt": "2026-09-14T23:00:00.000Z",
+        "timezone": "America/Chicago",
+        "timeKnown": false,
+        "dateEnd": null
+      },
+      "where": {
+        "venue": "White",
+        "address": null,
+        "city": null,
+        "county": "White",
+        "countySlug": "white-county"
+      },
+      "why": {
+        "campaignRationale": "Draft Mobilize event — human approval required before publish",
+        "strategicGoal": null,
+        "laneFocus": [
+          "Four-lane plurality strategy — retention + reactivation + registration + conversion"
+        ]
+      },
+      "campaignGoal": {
+        "primary": "County fair/festival presence · voter contact · local validator introductions in White.",
+        "successMetrics": [
+          "Po5 conversations logged",
+          "Volunteer signups",
+          "Story captured for Substack/social",
+          "Booth traffic · VIP/donor touches"
+        ],
+        "volunteerAsk": "Shift signup via Mobilize once event is published.",
+        "registrationGoal": "County registration goal — see /election-plan/registration-goals"
+      },
+      "onlineIntel": {
+        "lastResearched": "2026-05-13",
+        "sources": [
+          {
+            "label": "Community opportunities inventory",
+            "url": null,
+            "snippet": "Prefer: opening night · parade · livestock auction · senior night · family night · pageant · rodeo/demo derby · Saturday PM — confirm on official schedule. · No structured fair row yet — use query templates; verify robots.txt before automated fetch. | queries:6"
+          }
+        ],
+        "officialSiteNotes": "Prefer: opening night · parade · livestock auction · senior night · family night · pageant · rodeo/demo derby · Saturday PM — confirm on official schedule. · No structured fair row yet — use query templates; verify robots.txt before automated fetch. | queries:6"
+      },
+      "localContact": {
+        "name": null,
+        "role": null,
+        "phone": null,
+        "email": null,
+        "notes": "Draft Mobilize event — human approval required before publish"
+      },
+      "trip": {
+        "travelClass": null,
+        "driveMinutes": null,
+        "overnight": null,
+        "lodging": null,
+        "departureBase": "Sherwood / Central Arkansas (default)",
+        "companions": null,
+        "outsideEventPlans": []
+      },
+      "runOfShow": [
+        {
+          "time": "T-14d",
+          "activity": "Confirm date, time, venue, and local contact",
+          "owner": "Field director",
+          "notes": null
+        },
+        {
+          "time": "T-7d",
+          "activity": "Volunteer shift draft in Mobilize (approval before publish)",
+          "owner": "People Power",
+          "notes": null
+        },
+        {
+          "time": "T-1d",
+          "activity": "Pack kit: signs, Po5 cards, merch, literature",
+          "owner": "Logistics",
+          "notes": null
+        },
+        {
+          "time": "Day of",
+          "activity": "Execute visit per locked schedule",
+          "owner": "Kelly",
+          "notes": null
+        },
+        {
+          "time": "Day +1",
+          "activity": "Thank-you follow-up · outcome report",
+          "owner": "Field",
+          "notes": null
+        }
+      ],
+      "kelly": {
+        "role": "Candidate presence · conversations · photos · short remarks if invited.",
+        "visibility": "Public · campaign-branded",
+        "assignment": "verified",
+        "talkingPoints": [
+          "People over Politics · competent SOS administration",
+          "Fair elections · accessible government · all 75 counties"
+        ],
+        "boothOrStage": null
       },
       "logistics": {
         "parking": "Pending — add in campaign-event-briefings.overrides.json",
@@ -13386,7 +13522,7 @@
         "Street address / GPS",
         "Local contact name & phone"
       ],
-      "internalNotes": "Source: twenty-week-plan"
+      "internalNotes": "Source: upcoming-stops-activation-queue"
     },
     "pope-county-fair-2026-09-15": {
       "slug": "pope-county-fair-2026-09-15",

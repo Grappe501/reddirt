@@ -91,6 +91,8 @@ export type ElectionPlanCity = {
   isTop10: boolean;
   /** Rank 41+ bonus workbench — KPIs isolated from Top 40 combined totals */
   isBonusCity?: boolean;
+  /** 2020 Census — present on snapshot rows when sourced */
+  population2020?: number;
 };
 
 export type ElectionPlanCluster = {
@@ -427,6 +429,41 @@ export type ElectionPlanWorkbenchSnapshot = {
     throughElectionCount: number;
     missingPieces: string[];
     components: Array<{ id: string; title: string; description: string }>;
+  };
+  mediaOutreach: {
+    heroLine: string;
+    disclaimer: string;
+    partner: { name: string; shortName: string; relationshipStatus: string };
+    summary: {
+      ruralVisitCount: number;
+      printUrgentCount: number;
+      radioResearchCount: number;
+      lteDraftNeeded: number;
+      statewideLteMonthlyCost: number;
+      statewideLteCampaignTotal: number;
+    };
+    monthlyLte: Array<{
+      month: string;
+      label: string;
+      targetSendDate: string;
+      theme: string;
+      status: string;
+    }>;
+    visitPlacements: Array<{
+      eventId: string;
+      eventName: string;
+      county: string;
+      city: string;
+      visitDate: string;
+      countyTier: string;
+      assignment: string;
+      papersTargeted: number;
+      printUnit: string;
+      printStatus: string;
+      radioStatus: string;
+      nextAction: string;
+    }>;
+    programs: Array<{ id: string; label: string; cadence: string; note: string }>;
   };
   coalitionPowerMap: {
     heroLine: string;

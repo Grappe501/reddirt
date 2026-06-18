@@ -76,23 +76,103 @@ function computeLastTurnout(rows: CountyWorkbenchElectionRow[]): number | null {
   return rows.find((r) => r.turnoutPct != null)?.turnoutPct ?? null;
 }
 
+function buildCountyIntelFallback(
+  county: ElectionPlanCounty,
+  registrySlug: string,
+  reg: ReturnType<typeof getRegistryCountyBySlug>,
+  regionLabel: string,
+  wiki: ReturnType<typeof loadCountyWikipediaReference>,
+  factoryBrief: CountyWorkbenchV3View["factoryBrief"],
+): CountyWorkbenchV3View {
+  const factoryFacts: CountyWorkbenchFactRow[] = findFactsByCounty(registrySlug)
+    .filter((f) => f.factType !== "identity")
+    .map((f) => ({
+      factType: f.factType,
+      factKey: f.factKey,
+      value: formatFactValue(f.value),
+      sourceName: f.sourceName,
+      verificationStatus: f.verificationStatus,
+    }));
+
+  return {
+    registrySlug,
+    electionPlanSlug: county.slug,
+    displayName: reg?.displayName ?? `${county.county} County`,
+    fips: reg?.fips ?? "",
+    regionLabel,
+    countySeat: wiki?.countySeat ?? null,
+    wikipediaUrl: wiki?.canonicalUrl ?? null,
+    wikipediaExcerpt: wiki?.excerpt ?? null,
+    wikipediaLicenseNote: wiki?.licenseNote ?? null,
+    campaignReasoning: {
+      strategicRole: county.strategicRole,
+      primaryMission: county.primaryMission,
+      secondaryMission: county.secondaryMission,
+      recommendedAction: county.recommendedAction,
+      pathToVictory: null,
+      engagementPlan: [],
+      vciRank: county.vciRank,
+      vci: county.vci,
+      tier: county.tier,
+    },
+    censusDemographics: {
+      population: null,
+      votingAgePopulation: null,
+      medianIncome: null,
+      povertyRate: null,
+      bachelorsPct: null,
+      ageBands: null,
+      raceEthnicity: null,
+      source: null,
+      asOfYear: null,
+      missingWarnings: ["County profile engine unavailable — DB or ingest not reachable."],
+    },
+    blsEconomy: {
+      unemploymentRate: null,
+      industryMix: null,
+      laborNote: null,
+      missingWarnings: ["BLS block unavailable offline."],
+    },
+    electionHistory: [],
+    lastGeneralTurnoutPct: null,
+    registeredVotersEstimate: null,
+    electedOfficials: [],
+    factoryFacts,
+    factoryBrief,
+    dataGaps: [
+      "County political profile could not load — election history and census require DB or ingest.",
+      "Election plan snapshot metrics (VCI, tier, missions) still available above.",
+      ...(factoryBrief?.whatWeDoNotKnow ?? []),
+    ],
+    sources: [],
+    profileMissingWarnings: ["County profile engine offline"],
+  };
+}
+
 export async function loadCountyWorkbenchV3(county: ElectionPlanCounty): Promise<CountyWorkbenchV3View> {
   const registrySlug = toRegistrySlug(county.slug);
   const reg = getRegistryCountyBySlug(registrySlug);
   const fips = reg?.fips ?? "";
   const regionLabel = reg ? (regionMetaForId(reg.regionId)?.label ?? reg.regionId) : "—";
+  const factoryBrief = loadFactoryBrief(registrySlug);
 
   const [profile, dbCounty, wiki] = await Promise.all([
-    buildCountyPoliticalProfile({ countyName: county.county, fips: fips || undefined }),
-    prisma.county.findFirst({
-      where: { OR: [{ slug: registrySlug }, ...(fips ? [{ fips }] : [])] },
-      include: {
-        demographics: true,
-        elected: { orderBy: [{ jurisdiction: "asc" }, { sortOrder: "asc" }] },
-      },
-    }),
+    buildCountyPoliticalProfile({ countyName: county.county, fips: fips || undefined }).catch(() => null),
+    prisma.county
+      .findFirst({
+        where: { OR: [{ slug: registrySlug }, ...(fips ? [{ fips }] : [])] },
+        include: {
+          demographics: true,
+          elected: { orderBy: [{ jurisdiction: "asc" }, { sortOrder: "asc" }] },
+        },
+      })
+      .catch(() => null),
     Promise.resolve(loadCountyWikipediaReference(registrySlug)),
   ]);
+
+  if (!profile) {
+    return buildCountyIntelFallback(county, registrySlug, reg, regionLabel, wiki, factoryBrief);
+  }
 
   const demo = dbCounty?.demographics;
   const acs = profile.censusAcsBls;
@@ -120,7 +200,6 @@ export async function loadCountyWorkbenchV3(county: ElectionPlanCounty): Promise
   }));
 
   const electionHistory = electionRowsFromProfile(profile.electionHistory);
-  const factoryBrief = loadFactoryBrief(registrySlug);
 
   const dataGaps = [
     ...new Set([

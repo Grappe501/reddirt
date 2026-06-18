@@ -1,14 +1,6 @@
 # Facebook Event Draft Queue
 
-25 stops in priority window.
-
-## Bella Vista Sunday Farmers and Makers Market (2026-06-14)
-
-- **Title:** Kelly Grappe — Bella Vista Sunday Farmers and Makers Market · Bella Vista
-- **Status:** draft_needed
-- **Description draft:** Kelly Grappe, candidate for Secretary of State, invites you to Bella Vista Sunday Farmers and Makers Market in Benton County. [MOBILIZE_LINK]
-- **Co-host suggestions:** Benton County County Democrats · local chamber · event host
-- **Approval:** Required before publish
+20 stops in priority window.
 
 ## River Valley Crawfish Festival (2026-06-18)
 
@@ -154,44 +146,12 @@
 - **Co-host suggestions:** Montgomery County County Democrats · local chamber · event host
 - **Approval:** Required before publish
 
-## Fundraiser in Quitman (2026-06-16)
-
-- **Title:** Kelly Grappe — Fundraiser in Quitman
-- **Status:** not_started
-- **Description draft:** Kelly Grappe, candidate for Secretary of State, invites you to Fundraiser in Quitman in Cleburne County. [MOBILIZE_LINK]
-- **Co-host suggestions:** Cleburne County County Democrats · local chamber · event host
-- **Approval:** Required before publish
-
-## Juneteenth Morrilton c5 (2026-06-19)
-
-- **Title:** Kelly Grappe — Juneteenth Morrilton c5
-- **Status:** not_started
-- **Description draft:** Kelly Grappe, candidate for Secretary of State, invites you to Juneteenth Morrilton c5 in Conway County. [MOBILIZE_LINK]
-- **Co-host suggestions:** Conway County County Democrats · local chamber · event host
-- **Approval:** Required before publish
-
-## Menifee Juneteenth (2026-06-20)
-
-- **Title:** Kelly Grappe — Menifee Juneteenth
-- **Status:** not_started
-- **Description draft:** Kelly Grappe, candidate for Secretary of State, invites you to Menifee Juneteenth in Conway County. [MOBILIZE_LINK]
-- **Co-host suggestions:** Conway County County Democrats · local chamber · event host
-- **Approval:** Required before publish
-
 ## SOS debate - Annual Press Convention - Eureka Springs (2026-06-26)
 
 - **Title:** Kelly Grappe — SOS debate - Annual Press Convention - Eureka Springs
 - **Status:** not_started
 - **Description draft:** Kelly Grappe, candidate for Secretary of State, invites you to SOS debate - Annual Press Convention - Eureka Springs in Carroll County. [MOBILIZE_LINK]
 - **Co-host suggestions:** Carroll County County Democrats · local chamber · event host
-- **Approval:** Required before publish
-
-## Monticello Juneteenth festival - Clarissa pace (2026-06-14)
-
-- **Title:** Kelly Grappe — Monticello Juneteenth festival - Clarissa pace
-- **Status:** not_started
-- **Description draft:** Kelly Grappe, candidate for Secretary of State, invites you to Monticello Juneteenth festival - Clarissa pace in Drew County. [MOBILIZE_LINK]
-- **Co-host suggestions:** Drew County County Democrats · local chamber · event host
 - **Approval:** Required before publish
 
 ## Montgomery county meeting (2026-06-17)

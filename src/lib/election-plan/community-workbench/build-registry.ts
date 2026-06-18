@@ -1,5 +1,6 @@
 import type { CommunityWorkbenchKind } from "@prisma/client";
 
+import { getBonusCityPopulation } from "@/lib/election-plan/load-bonus-city-workbenches";
 import { loadElectionPlanSnapshotFromDisk } from "@/lib/election-plan/election-plan-snapshot-disk";
 import { getCountyByName } from "@/lib/election-plan/load-county";
 import {
@@ -31,7 +32,7 @@ export function buildCommunityWorkbenchRegistry(): CommunityWorkbenchRegistryEnt
     citySlug: city.slug,
     kpiTemplate: kpiTemplateForSlug(city.slug),
     tagline: `${city.county} County · ${city.influenceCategory}`,
-    population: null,
+    population: city.population2020 ?? getBonusCityPopulation(city.slug),
   }));
 
   const programEntries: CommunityWorkbenchRegistryEntry[] = PROGRAM_WORKBENCHES.map((p) => ({

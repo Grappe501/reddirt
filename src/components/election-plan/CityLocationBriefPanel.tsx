@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CityElectionIntelPanel } from "@/components/election-plan/CityElectionIntelPanel";
 import { CityVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
@@ -22,6 +23,7 @@ import {
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCityVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { getSpecialKpiGoalForCity } from "@/lib/election-plan/load-special-kpi-goals";
+import { getCityElectionIntel } from "@/lib/election-plan/load-city-election-intel";
 import { getImmersionMissionForLocation } from "@/lib/election-plan/load-immersion-county-missions";
 import { cn } from "@/lib/utils";
 
@@ -83,6 +85,7 @@ export function CityLocationBriefPanel({
     isTop10: brief.isTop10,
   });
   const immersionMission = getImmersionMissionForLocation({ countySlug, citySlug: brief.slug });
+  const cityElectionIntel = getCityElectionIntel(brief.slug);
 
   return (
     <section>
@@ -104,6 +107,8 @@ export function CityLocationBriefPanel({
       <div className="mb-8">
         <CityVictoryTargetsPanel target={cityVictory} variant="hero" />
       </div>
+
+      {cityElectionIntel ? <CityElectionIntelPanel intel={cityElectionIntel} /> : null}
 
       {immersionMission ? (
         <div className="mb-8">

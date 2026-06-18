@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-06-15T21:11:25.796Z",
+  "generatedAt": "2026-06-18T04:09:49.959Z",
   "referenceDate": "2026-06-15",
   "disclaimer": "Internal leadership calendar. Past visits, locked backbone, and scheduled stops. Not Kelly's Google Calendar. Not public /events.",
   "summary": {
     "pastVisitCount": 31,
-    "lockedCount": 46,
+    "lockedCount": 47,
     "scheduledCount": 61,
     "proposedCount": 10,
-    "totalEntries": 148,
+    "totalEntries": 149,
     "countiesVisited": 29,
     "countiesScheduled": 39
   },
@@ -413,7 +413,7 @@
       "status": "leadership_locked",
       "source": "locked-events-steve",
       "eventType": "fundraiser",
-      "notes": "Lisa Holloway host · Cleburne County"
+      "notes": "House party · Linda Griffith host · Griffiths Farm · Lisa Holloway county lead (662-549-8543) · Cleburne County · COMPLETED 2026-06-16 · $600 raised · new attendees · family outreach momentum"
     },
     {
       "id": "aea-montgomery-stub",
@@ -504,7 +504,7 @@
       "status": "leadership_locked",
       "source": "locked-events-steve",
       "eventType": "festival",
-      "notes": "Conway County Juneteenth stack · Menifee Jun 20"
+      "notes": "Single Conway County corridor stop — Morrilton Jun 19 + Menifee Jun 20 · not separate calendar entries"
     },
     {
       "id": "lock-baxter",
@@ -518,19 +518,6 @@
       "source": "locked-events-steve",
       "eventType": "festival",
       "notes": "Baxter County Fairgrounds"
-    },
-    {
-      "id": "fest-2026-06-20-menifee-juneteenth",
-      "startDate": "2026-06-20",
-      "endDate": null,
-      "label": "Menifee Juneteenth",
-      "city": null,
-      "county": "Conway",
-      "category": "scheduled",
-      "status": "tentative",
-      "source": "upcoming-stops-activation-queue",
-      "eventType": "opportunity",
-      "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
       "id": "fest-2026-06-20-fairfield-bay-surf-the-bay",
@@ -570,6 +557,19 @@
       "source": "locked-events-steve",
       "eventType": "immersion",
       "notes": "NWA multi-purpose trip · Bella Vista markets · volunteer launch anchor Jun 28"
+    },
+    {
+      "id": "lock-rex-nelson-chamber-luncheon",
+      "startDate": "2026-06-22",
+      "endDate": null,
+      "label": "Chamber luncheon — Rex Nelson",
+      "city": "Little Rock",
+      "county": "Pulaski",
+      "category": "locked",
+      "status": "leadership_locked",
+      "source": "locked-events-steve",
+      "eventType": "coalition",
+      "notes": "Little Rock chamber luncheon for Rex Nelson · Kelly attending"
     },
     {
       "id": "fest-2026-06-24-springdale-rodeo-of-the-ozarks",
@@ -1586,17 +1586,30 @@
       "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
-      "id": "plan-2026-09-14-white-county-fair",
+      "id": "fest-2026-09-13-bella-vista-bella-vista-farmers-and-makers-market",
+      "startDate": "2026-09-13",
+      "endDate": null,
+      "label": "Bella Vista Farmers and Makers Market",
+      "city": "Bella Vista",
+      "county": "Benton",
+      "category": "scheduled",
+      "status": "verified",
+      "source": "upcoming-stops-activation-queue",
+      "eventType": "opportunity",
+      "notes": "Draft Mobilize event — human approval required before publish"
+    },
+    {
+      "id": "fair-c6d957f78268e5a414b4d80f",
       "startDate": "2026-09-14",
       "endDate": null,
       "label": "White County Fair",
       "city": null,
       "county": "White",
       "category": "scheduled",
-      "status": "plan_standard",
-      "source": "twenty-week-plan",
-      "eventType": "fair",
-      "notes": "Week 14 · 20-week operating plan"
+      "status": "verified",
+      "source": "upcoming-stops-activation-queue",
+      "eventType": "opportunity",
+      "notes": "Draft Mobilize event — human approval required before publish"
     },
     {
       "id": "lock-pope",

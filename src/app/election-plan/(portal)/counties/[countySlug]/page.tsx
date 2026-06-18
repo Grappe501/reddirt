@@ -48,15 +48,16 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
     limit: 8,
   });
   const countyCalendar = buildCountyCalendarBinding(data, county.county);
-  const [fieldEntrySummary, operator, countyIntel] = await Promise.all([
+  const [fieldEntrySummary, operator, countyIntelResult] = await Promise.all([
     loadFieldEntriesForLocation({ countySlug: county.slug }),
     loadCurrentElectionPlanOperator(),
-    loadCountyWorkbenchV3(county),
+    loadCountyWorkbenchV3(county).catch(() => null),
   ]);
+  const countyIntel = countyIntelResult;
 
   const fosCountyRollup = getFosCountyRollup(county.slug);
   const v4Ops = buildCountyWorkbenchV4OperationalView(strikeTeam, fieldEntrySummary);
-  const playbookMarkdown = loadCountyPlaybookMarkdown(county.playbookPath);
+  const playbookMarkdown = loadCountyPlaybookMarkdown(county.slug, county.playbookPath);
 
   return (
     <>

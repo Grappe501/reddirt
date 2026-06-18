@@ -51,14 +51,14 @@ Kelly cannot campaign full-time without leave-of-absence replacement income.
 
 | Scenario | Total projected need |
 |----------|---------------------:|
-| Bare minimum | $181,783 |
-| Working campaign | $232,053 ($225,000–$250,000 range) |
-| Aggressive statewide | $339,123 ($300,000–$350,000 range) |
+| Bare minimum | $183,733 |
+| Working campaign | $234,003 ($225,000–$250,000 range) |
+| Aggressive statewide | $342,873 ($300,000–$350,000 range) |
 
 ## Plan artifacts used
 
 - Election Plan / 20-week plan (`data/election-plan/twenty-week-plan.json`)
-- Locked events (`data/campaign-brain/locked-events-steve.json`) — 40 events
+- Locked events (`data/campaign-brain/locked-events-steve.json`) — 41 events
 - Calendar Fill Phase C proposed blocks — 10 blocks
 - Executive Field Calendar / upcoming stops queue
 - People Power / postcards field (`data/campaign-brain/postcards-field.json`)

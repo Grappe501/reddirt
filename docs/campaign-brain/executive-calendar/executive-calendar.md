@@ -7,10 +7,10 @@
 | Category | Count |
 |----------|------:|
 | Past visits | 31 |
-| Locked backbone | 46 |
+| Locked backbone | 47 |
 | Scheduled opportunities | 61 |
 | Proposed (Phase C) | 10 |
-| **Total entries** | **148** |
+| **Total entries** | **149** |
 
 ## Past locations visited
 
@@ -60,6 +60,7 @@
 | 2026-06-19 → 2026-06-20 | Juneteenth Morrilton / Menifee corridor · Morrilton | Conway | leadership_locked |
 | 2026-06-19 → 2026-06-20 | Mountain Home Craft Fest (Baxter) · Mountain Home | Baxter | leadership_locked |
 | 2026-06-21 → 2026-06-28 | Benton County immersion · Bentonville | Benton | leadership_locked |
+| 2026-06-22 | Chamber luncheon — Rex Nelson · Little Rock | Pulaski | leadership_locked |
 | 2026-06-26 | SOS Debate — Annual Press Convention · Eureka Springs | Carroll | leadership_locked |
 | 2026-06-27 | Pioneer Heritage Festival · Norfork | Baxter | leadership_locked |
 | 2026-06-28 | Pulaski County Dems · Little Rock | Pulaski | leadership_locked |
@@ -109,7 +110,6 @@
 | 2026-06-17 | Montgomery County — AEA local / area meeting (verify schedule) | Montgomery | verified |
 | 2026-06-17 | Sixty-Eight Petit Jean Swap Meet & Car Show · Morrilton | Conway | verified |
 | 2026-06-18 | River Valley Crawfish Festival · Greenwood | Sebastian | verified |
-| 2026-06-20 | Menifee Juneteenth | Conway | tentative |
 | 2026-06-20 | Surf the Bay · Fairfield Bay | Van Buren | verified |
 | 2026-06-21 | Bella Vista Summer Farmers and Makers Market · Bella Vista | Benton | verified |
 | 2026-06-24 | Rodeo of the Ozarks · Springdale | Washington | verified |
@@ -161,7 +161,8 @@
 | 2026-09-12 | Clay County Fair | Clay | verified |
 | 2026-09-12 | Crawford County Fair | Crawford | verified |
 | 2026-09-12 | Van Buren Junk Fest · Van Buren | Crawford | verified |
-| 2026-09-14 | White County Fair | White | plan_standard |
+| 2026-09-13 | Bella Vista Farmers and Makers Market · Bella Vista | Benton | verified |
+| 2026-09-14 | White County Fair | White | verified |
 | 2026-09-21 | Candidate forums wave (20 cities) | — | plan_major |
 | 2026-09-23 | Lonoke County Fair | Lonoke | plan_standard |
 | 2026-09-25 | Benton County Fair | Benton | plan_major |

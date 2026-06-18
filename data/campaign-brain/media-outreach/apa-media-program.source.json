@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-15",
+  "note": "Arkansas Press Association media programs — planning only. Human approval before any APA placement or LTE send.",
+  "partner": {
+    "name": "Arkansas Press Association",
+    "shortName": "APA",
+    "relationshipStatus": "active_negotiation",
+    "contactNote": "Coordinate statewide LTE distribution and visit-adjacent print buys through APA rep — not direct paper cold calls."
+  },
+  "programs": {
+    "statewideLte": {
+      "id": "apa-statewide-lte",
+      "label": "Statewide letter to the editor — APA distribution",
+      "cadence": "monthly",
+      "author": "Kelly Grappe (candidate byline — direct from candidate)",
+      "costPerMonth": 300,
+      "monthsBudgeted": 6,
+      "campaignTotal": 1800,
+      "leadTimeDays": 7,
+      "approvalRequired": true,
+      "notes": "APA sends LTE to every newspaper in Arkansas. One candidate voice piece per month — not volunteer LTE program."
+    },
+    "visitLocalPrint": {
+      "id": "apa-visit-local-print",
+      "label": "Visit-adjacent local newspaper ads",
+      "cadence": "per_rural_visit",
+      "papersPerVisit": 2,
+      "preferredUnit": "one_eighth_page",
+      "pricingStatus": "needs_quote",
+      "pricingNote": "APA negotiates best available unit (1/8 page or better deal) in county papers ahead of Kelly rural stops.",
+      "leadTimeDaysBeforeVisit": 14,
+      "approvalRequired": true,
+      "budgetPoolNote": "Funded from rural newspaper advertising line ($1,500/month working scenario)"
+    },
+    "visitRuralRadio": {
+      "id": "apa-visit-rural-radio",
+      "label": "Rural stop radio advertising",
+      "cadence": "per_rural_visit",
+      "status": "research_and_quote",
+      "pricingStatus": "needs_quote",
+      "leadTimeDaysBeforeVisit": 10,
+      "approvalRequired": true,
+      "budgetPoolNote": "Funded from rural radio line ($1,500/month working scenario) — start quoting stations tied to upcoming rural stops."
+    }
+  },
+  "ruralVisitCriteria": {
+    "countyTiers": ["C", "D"],
+    "alsoIncludeTiers": ["B"],
+    "tierBWhenPrimaryLaneMatches": ["Coverage", "Maintenance", "Relationship"]
+  },
+  "monthlyLteSchedule": [
+    { "month": "2026-06", "label": "June", "targetSendDate": "2026-06-20", "theme": "Quitman/Cleburne field momentum · rural access", "status": "draft_needed" },
+    { "month": "2026-07", "label": "July", "targetSendDate": "2026-07-15", "theme": "Immersion season · showing up in every county", "status": "not_started" },
+    { "month": "2026-08", "label": "August", "targetSendDate": "2026-08-15", "theme": "County fair season · local business voice", "status": "not_started" },
+    { "month": "2026-09", "label": "September", "targetSendDate": "2026-09-15", "theme": "Persuasion · election integrity · voter access", "status": "not_started" },
+    { "month": "2026-10", "label": "October", "targetSendDate": "2026-10-10", "theme": "Early voting · turnout · Arkansas-first leadership", "status": "not_started" },
+    { "month": "2026-11", "label": "November", "targetSendDate": "2026-10-25", "theme": "Final GOTV · Election Day readiness", "status": "not_started" }
+  ]
+}

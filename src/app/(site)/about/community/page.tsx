@@ -5,6 +5,8 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
+import { MeetKellyDirectDemocracyCallout } from "@/components/about/MeetKellyDirectDemocracyCallout";
+import { directDemocracyHubHref } from "@/config/direct-democracy-links";
 import { meetKellyCommunityCopy } from "@/content/about/meet-kelly-pages";
 import { pageMeta } from "@/lib/seo/metadata";
 
@@ -24,6 +26,9 @@ export default function AboutCommunityPage() {
   return (
     <>
       <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
+        <Button href={directDemocracyHubHref} variant="primary">
+          Direct democracy hub
+        </Button>
         <Button href="/about" variant="outline">
           Meet Kelly overview
         </Button>
@@ -35,6 +40,9 @@ export default function AboutCommunityPage() {
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-3xl">
           <MeetKellySubnav current="/about/community" />
+          <div className="mt-10">
+            <MeetKellyDirectDemocracyCallout />
+          </div>
           <div className="mt-10 space-y-8">
             {c.sections.map((section) => (
               <article

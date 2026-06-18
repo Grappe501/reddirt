@@ -1,16 +1,17 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-16",
+  "updatedAt": "2026-06-17",
   "pass": "MISSION-PROGRESS-EXECUTION-LAYER",
   "note": "Field team updates current values weekly. Goals come from immersion-county-missions.source.json.",
   "missions": {
     "quitman-100": {
       "owner": "Lisa Holloway · 662-549-8543 · lisaholloway123@icloud.com",
-      "updatedAt": "2026-06-16",
-      "nextAction": "Confirm next house party host · report conversations after Quitman fundraiser",
+      "updatedAt": "2026-06-17",
+      "nextAction": "Lisa — enter Griffiths farm guest capture · log family outreach names hosts discussed · recruit house party #2 host · report conversation count",
+      "lastFieldReport": "2026-06-16 Griffiths Farm fundraiser (Quitman) · $600 raised · new attendees not previously involved · vision shared · hosts mapping families to contact about Kelly and the race at departure",
       "metrics": [
         { "id": "conversations", "label": "Conversations", "current": 17, "goal": 100, "primary": true },
-        { "id": "fundraising", "label": "Fundraising ($)", "current": 0, "goal": 2000, "unit": "$" },
+        { "id": "fundraising", "label": "Fundraising ($)", "current": 600, "goal": 2000, "unit": "$" },
         { "id": "po5-leaders", "label": "Power of 5 leaders", "current": 2, "goal": 10 },
         { "id": "house-parties", "label": "House parties", "current": 1, "goal": 3 },
         { "id": "coffee-meetings", "label": "Coffee meetings", "current": 2, "goal": 6 },
@@ -20,7 +21,7 @@
     },
     "montgomery-leadership": {
       "owner": "Mt. Ida field lead",
-      "updatedAt": "2026-06-16",
+      "updatedAt": "2026-06-17",
       "nextAction": "Recruit 3rd house party host before July county Dem meeting",
       "metrics": [
         { "id": "po5-leaders", "label": "Power of 5 leaders", "current": 4, "goal": 15, "primary": true },
@@ -33,7 +34,7 @@
     },
     "searcy-trust": {
       "owner": "Coalition lead · Barry Jefferson",
-      "updatedAt": "2026-06-16",
+      "updatedAt": "2026-06-17",
       "nextAction": "Confirm cross-party coffee with county party chair before June 23 meeting",
       "metrics": [
         { "id": "gop-leaders-met", "label": "GOP leaders met", "current": 3, "goal": 12, "primary": true },
@@ -45,7 +46,7 @@
     },
     "jacksonville-dd": {
       "owner": "Direct Democracy lead",
-      "updatedAt": "2026-06-16",
+      "updatedAt": "2026-06-17",
       "nextAction": "Train 2 petition leaders before Festiville Sept 20",
       "metrics": [
         { "id": "petition-leaders", "label": "Petition leaders trained", "current": 2, "goal": 10, "primary": true },
@@ -57,7 +58,7 @@
     },
     "sherwood-victory": {
       "owner": "John Duke & Jay Powell · Sherwood co-chairs",
-      "updatedAt": "2026-06-16",
+      "updatedAt": "2026-06-17",
       "nextAction": "Lock July 3–4 volunteer shifts · report HCI after fireworks stop",
       "metrics": [
         { "id": "vote-goal-pct", "label": "SOS vote share (planning)", "current": 0, "goal": 60, "primary": true, "unit": "%" },
@@ -70,7 +71,7 @@
     },
     "greene-hub": {
       "owner": "NE Arkansas regional lead",
-      "updatedAt": "2026-06-16",
+      "updatedAt": "2026-06-17",
       "nextAction": "Name 2 campus captains before July immersion week",
       "metrics": [
         { "id": "county-captains", "label": "County captains trained", "current": 1, "goal": 5, "primary": true },
@@ -82,7 +83,7 @@
     },
     "benton-votes": {
       "owner": "NW Arkansas field lead",
-      "updatedAt": "2026-06-16",
+      "updatedAt": "2026-06-17",
       "nextAction": "Report vote projection after Benton immersion · assign Po5 hosts in Top 40 cities",
       "metrics": [
         { "id": "sos-votes-tracked", "label": "SOS votes tracked (planning)", "current": 0, "goal": 18500, "primary": true },

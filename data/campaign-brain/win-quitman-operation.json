@@ -13,9 +13,17 @@
     "role": "County lead · Cleburne"
   },
   "countySlug": "cleburne",
+  "lastFieldUpdate": {
+    "date": "2026-06-17",
+    "eventDate": "2026-06-16",
+    "location": "Griffiths Farm · Quitman",
+    "hostName": "Linda Griffith",
+    "summary": "Successful fundraiser · $600 raised · met new people not previously involved in civic work · vision shared · hosts discussing family outreach lists as Kelly left",
+    "reportedBy": "Steve · field update"
+  },
   "fundraising": {
     "goal": 2000,
-    "current": 0,
+    "current": 600,
     "label": "Quitman corridor fundraising",
     "unit": "USD"
   },
@@ -26,21 +34,23 @@
     "events": [
       {
         "id": "quitman-house-party-2026-06-16",
-        "label": "House party tonight",
+        "label": "Griffiths Farm fundraiser · Quitman",
         "date": "2026-06-16",
         "hostName": "Linda Griffith",
         "hostPhone": "501-556-7441",
         "countyLead": "Lisa Holloway",
         "countyLeadPhone": "662-549-8543",
         "countyLeadEmail": "lisaholloway123@icloud.com",
-        "status": "tonight"
+        "status": "completed",
+        "outcome": "$600 raised · new attendees · family outreach momentum at departure"
       }
     ]
   },
   "conversations": {
     "goal": 100,
     "current": 17,
-    "label": "Meaningful conversations"
+    "label": "Meaningful conversations",
+    "pendingNote": "Lisa to report conversation count from Griffiths farm guest capture"
   },
   "votePlan": {
     "baseline2022SosVotes": 42,
@@ -54,33 +64,38 @@
   "pathToGoal": [
     {
       "step": 1,
-      "title": "Tonight — capture every guest",
-      "detail": "Lisa Holloway (662-549-8543) leads county ops. Linda Griffith hosts (501-556-7441). Kelly captures name, phone, photo, and interest flags on the capture page before guests leave."
+      "title": "Griffiths Farm fundraiser — complete",
+      "detail": "June 16 · Linda Griffith host · $600 raised · new neighbors met · vision shared · hosts already mapping families to contact about Kelly and the race.",
+      "status": "complete"
     },
     {
       "step": 2,
       "title": "48-hour follow-up",
-      "detail": "Lisa assigns each new contact a Po5 leader for a coffee or phone call within 48 hours. Mark follow-up on the contact page."
+      "detail": "Lisa assigns each new contact a Po5 leader for a coffee or phone call within 48 hours. Capture family outreach names hosts discussed at departure.",
+      "status": "active"
     },
     {
       "step": 3,
       "title": "Lock house party #2 host",
-      "detail": "Identify next host from tonight's attendee list — target a Republican-leaning neighbor who met Kelly in person."
+      "detail": "Recruit next host from Griffiths farm attendee list — prioritize a neighbor who met Kelly in person and is not already in civic circles.",
+      "status": "pending"
     },
     {
       "step": 4,
       "title": "Fundraising path to $2,000",
-      "detail": "Tonight's event + two follow-on house parties. Track every dollar on this workbench — small-donor corridor proof, not statewide fundraising dashboards."
+      "detail": "$600 from Griffiths farm + two follow-on house parties. Track every dollar on this workbench — small-donor corridor proof, not statewide fundraising dashboards.",
+      "status": "in_progress"
     },
     {
       "step": 5,
       "title": "Vote stretch — +20% on 2022 baseline",
-      "detail": "Baseline 42 SOS votes (2022) → stretch target 50. Every conversation and host recruited is a cushion vote — isolated from Top 40 math."
+      "detail": "Baseline 42 SOS votes (2022) → stretch target 50. Every conversation and host recruited is a cushion vote — isolated from Top 40 math.",
+      "status": "pending"
     }
   ],
   "tonightEvent": {
-    "slug": "quitman-house-party-2026-06-16",
-    "label": "House party · Lisa Holloway · Linda Griffith hosting",
+    "slug": "quitman-house-party-2",
+    "label": "House party #2 · host TBD from Griffiths farm list",
     "captureHref": "/election-plan/workbenches/quitman/capture"
   }
 }

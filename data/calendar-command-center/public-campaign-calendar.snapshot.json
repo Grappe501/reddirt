@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T21:11:26.025Z",
+  "generatedAt": "2026-06-18T04:09:50.122Z",
   "horizonEnd": "2026-11-03",
   "source": "executive-calendar",
   "events": [
@@ -161,22 +161,6 @@
       }
     },
     {
-      "id": "snap-fest-2026-06-20-menifee-juneteenth",
-      "slug": "menifee-juneteenth-2026-06-20",
-      "title": "Menifee Juneteenth",
-      "publicSummary": null,
-      "startAt": "2026-06-20T15:00:00.000Z",
-      "endAt": "2026-06-20T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Conway",
-      "address": null,
-      "eventType": "OTHER",
-      "county": {
-        "displayName": "Conway County",
-        "slug": "conway-county"
-      }
-    },
-    {
       "id": "snap-fest-2026-06-20-fairfield-bay-surf-the-bay",
       "slug": "surf-the-bay-2026-06-20",
       "title": "Surf the Bay",
@@ -222,6 +206,22 @@
       "county": {
         "displayName": "Benton County",
         "slug": "benton-county"
+      }
+    },
+    {
+      "id": "snap-lock-rex-nelson-chamber-luncheon",
+      "slug": "chamber-luncheon-rex-nelson-2026-06-22",
+      "title": "Chamber luncheon — Rex Nelson",
+      "publicSummary": null,
+      "startAt": "2026-06-22T15:00:00.000Z",
+      "endAt": "2026-06-22T23:00:00.000Z",
+      "timezone": "America/Chicago",
+      "locationName": "Little Rock · Pulaski",
+      "address": null,
+      "eventType": "OTHER",
+      "county": {
+        "displayName": "Pulaski County",
+        "slug": "pulaski-county"
       }
     },
     {
@@ -1461,10 +1461,26 @@
       }
     },
     {
-      "id": "snap-plan-2026-09-14-white-county-fair",
+      "id": "snap-fest-2026-09-13-bella-vista-bella-vista-farmers-and-makers-market",
+      "slug": "bella-vista-farmers-and-makers-market-2026-09-13",
+      "title": "Bella Vista Farmers and Makers Market",
+      "publicSummary": null,
+      "startAt": "2026-09-13T15:00:00.000Z",
+      "endAt": "2026-09-13T23:00:00.000Z",
+      "timezone": "America/Chicago",
+      "locationName": "Bella Vista · Benton",
+      "address": null,
+      "eventType": "OTHER",
+      "county": {
+        "displayName": "Benton County",
+        "slug": "benton-county"
+      }
+    },
+    {
+      "id": "snap-fair-c6d957f78268e5a414b4d80f",
       "slug": "white-county-fair-2026-09-14",
       "title": "White County Fair",
-      "publicSummary": "From the 20-week operating plan.",
+      "publicSummary": null,
       "startAt": "2026-09-14T15:00:00.000Z",
       "endAt": "2026-09-14T23:00:00.000Z",
       "timezone": "America/Chicago",

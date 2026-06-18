@@ -8,6 +8,7 @@ import { isPrimaryCityPilotSlug, pilotWorkbenchMeta, COMMUNITY_PILOT_OPTIONAL_CI
 import { evaluatePilotWorkbench } from "@/lib/election-plan/community-workbench/pilot-validation";
 import { getPilotSmokePath } from "@/lib/election-plan/community-workbench/pilot-smoke-paths";
 import { ensurePilotEventsSeeded } from "@/lib/election-plan/community-workbench/seed-pilot-events";
+import { getCityElectionIntel } from "@/lib/election-plan/load-city-election-intel";
 import { getFosCommunityAllocation } from "@/lib/election-plan/load-fundraising-operating-system";
 import { prisma } from "@/lib/db";
 
@@ -85,6 +86,7 @@ export default async function CommunityWorkbenchPage({ params }: Props) {
   }
 
   const fosAllocation = getFosCommunityAllocation(slug);
+  const cityElectionIntel = workbench.citySlug ? getCityElectionIntel(workbench.citySlug) : null;
 
   return (
     <>
@@ -99,6 +101,7 @@ export default async function CommunityWorkbenchPage({ params }: Props) {
             pilotDefects={pilotDefects}
             fosAllocation={fosAllocation}
             showOptionalPilotBanner={slug === COMMUNITY_PILOT_OPTIONAL_CITY.slug}
+            cityElectionIntel={cityElectionIntel}
           />
         </div>
       </div>

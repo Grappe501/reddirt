@@ -14,9 +14,9 @@ Without this, Kelly cannot take leave from work to campaign full-time.
 
 | Scenario | Projected total need | Planning range | ~Monthly burn (6 mo) |
 |----------|---------------------:|---------------:|---------------------:|
-| **Bare minimum** | $181,783 | — | $30,297 |
-| **Working campaign** | $232,053 | $225,000–$250,000 | $38,676 |
-| **Aggressive statewide** | $339,123 | $300,000–$350,000 | $56,521 |
+| **Bare minimum** | $183,733 | — | $30,622 |
+| **Working campaign** | $234,003 | $225,000–$250,000 | $39,001 |
+| **Aggressive statewide** | $342,873 | $300,000–$350,000 | $57,146 |
 
 > **Leadership note:** The campaign's realistic operating target is **$225,000–$250,000** through Election Day — statewide travel, immersion visits, signs, shirts, postcards, rural media, Sherwood, coalition work, volunteer leadership, Power of 5 organizing, and a steadily increasing **digital program** that culminates in a heavy Top 40 city push during the final month. Aggressive statewide target: **$300,000**.
 
@@ -25,26 +25,26 @@ Without this, Kelly cannot take leave from work to campaign full-time.
 | Category | Amount |
 |----------|-------:|
 | Kelly replacement salary | $72,000 |
-| Travel (expected) | $37,633 |
+| Travel (expected) | $37,783 |
 | Field materials (mid) | $13,500 |
 | Postcards & mail (50% of mid scenario) | $13,920 |
 | Volunteer leadership | $6,000 |
 | **Digital advertising (field force multiplier)** | **$30,000** |
 | **Digital content production ($500/mo)** | **$3,000** |
 | Digital tools & platforms | $9,000 |
-| **Media & outreach (rural print/radio)** | **$24,000** |
+| **Media & outreach (rural print/radio)** | **$25,800** |
 | **Immersion swag (15 visits × $500)** | **$7,500** |
 | **Compliance / reporting ($750/mo)** | **$4,500** |
 | **County event sponsorships** | **$7,500** |
 | Operations / contingency | $15,000 |
 | Sherwood net contribution (expected − mid cost) | −$11,500 |
-| **Field strategy subtotal** | **$43,500** |
+| **Field strategy subtotal** | **$45,300** |
 | **Digital program subtotal** | **$42,000** |
-| **Working total** | **$232,053** |
+| **Working total** | **$234,003** |
 
 ## Monthly burn target (working scenario)
 
-Leadership should plan to raise roughly **$38,676/month** through Election Day — including Kelly's salary, field strategy, and the digital force-multiplier program.
+Leadership should plan to raise roughly **$39,001/month** through Election Day — including Kelly's salary, field strategy, and the digital force-multiplier program.
 
 ## Digital doctrine
 
@@ -58,11 +58,11 @@ Model Sherwood as **net** fundraising after costs — see [SHERWOOD-60-BUDGET.md
 
 | Stream | Working-scenario planning target |
 |--------|--------------------------------:|
-| Major donors / finance committee | $92,821 |
+| Major donors / finance committee | $93,601 |
 | Sherwood net | $11,500 |
-| VIP tables + events | $34,808 |
-| Recurring small-dollar (monthly) | $23,205 |
-| Late push / match (Sep–Oct) | $46,411 |
+| VIP tables + events | $35,100 |
+| Recurring small-dollar (monthly) | $23,400 |
+| Late push / match (Sep–Oct) | $46,801 |
 
 ## What this does NOT include
 

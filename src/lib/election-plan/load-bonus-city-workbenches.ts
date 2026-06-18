@@ -3,6 +3,9 @@ import type { ElectionPlanCity } from "@/lib/election-plan/types";
 
 type BonusCitySource = ElectionPlanCity & {
   population2020?: number;
+  countyPopulation2020?: number;
+  estimatedRegisteredVoters?: number | null;
+  registeredVotersNote?: string | null;
 };
 
 type BonusSourceFile = {
@@ -23,4 +26,13 @@ export function mergeBonusCitiesIntoSnapshot(cities: ElectionPlanCity[]): Electi
 
 export function isBonusCitySlug(slug: string): boolean {
   return getBonusCityWorkbenches().some((c) => c.slug === slug);
+}
+
+export function getBonusCitySourceRecord(slug: string): BonusCitySource | undefined {
+  const file = bonusSource as BonusSourceFile;
+  return file.cities.find((c) => c.slug === slug);
+}
+
+export function getBonusCityPopulation(slug: string): number | null {
+  return getBonusCitySourceRecord(slug)?.population2020 ?? null;
 }
