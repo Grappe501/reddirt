@@ -31,7 +31,8 @@ import { buildCandidateCommandHomeFeed } from "@/lib/intelligence/v4/candidateCo
 import { buildCceClosureSummary } from "@/lib/intelligence/v4/phase15P9Closure";
 import { buildSreClosureSummary } from "@/lib/intelligence/v4/phase16P9Closure";
 import { CandidateCommandHomePanel } from "@/components/admin/intelligence/CandidateCommandHomePanel";
-import { KellyPrepWeekPathPanel } from "@/components/admin/intelligence/KellyPrepWeekPathPanel";
+import { DebateWeekIntensivePanel } from "@/components/admin/intelligence/DebateWeekIntensivePanel";
+import { DEBATE_WEEK_INTENSIVE_DAYS } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
 
 const card =
@@ -51,6 +52,8 @@ export default function IntelligenceHubLaunchPage() {
   const { hub } = v4;
   const clerkWeek = isCountyClerkPrimaryAudience();
   const profile = resolveIntelligenceNavProfileClient(clerkWeek);
+  const referenceDate = process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
+  const todayIntensive = DEBATE_WEEK_INTENSIVE_DAYS.find((d) => d.calendarDate === referenceDate);
   const staffView = profile === "STAFF";
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -69,7 +72,13 @@ export default function IntelligenceHubLaunchPage() {
 
       <CandidateCommandHomePanel feed={homeFeed} cceClosure={cceClosure} sreClosure={sreClosure} />
 
-      {!staffView ? <KellyPrepWeekPathPanel compact initialDay={new Date().getDay() === 0 ? 7 : Math.min(7, new Date().getDay())} /> : null}
+      {!staffView ? (
+        <DebateWeekIntensivePanel
+          compact
+          initialDay={todayIntensive?.day ?? 1}
+          todayDate={referenceDate}
+        />
+      ) : null}
 
       <div className="mb-6">
         <V4SupremeWorkbenchPanel packet={supreme} variant="compact" />

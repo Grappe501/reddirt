@@ -38,6 +38,16 @@ function buildKellySections(): CandidateCommandNavSection[] {
   return [
     section("home", "Home", "Tonight's briefing, readiness, and first moves.", [
       {
+        href: "/admin/intelligence/debate-week-intensive",
+        label: "Debate week intensive",
+        description: "Command Mode 7-day course — start here for SOS debate prep.",
+      },
+      {
+        href: "/admin/intelligence/forum-transcript-lab",
+        label: "Forum transcript lab",
+        description: "Upload forum video · AI transcript · capitalize playbook.",
+      },
+      {
         href: CANDIDATE_COMMAND_HOME_HREF,
         label: "Command home",
         description: "Readiness score, safe lines, blocked lines, and today's focus.",

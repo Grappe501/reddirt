@@ -29,6 +29,8 @@ const KIM_HAMMER_TIER_3_NAV_ITEMS: DebateWeekNavItem[] = buildKimHammerTier3Side
 /** Canonical debate-week operator paths (opposition + debate prep + review queues). */
 export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence",
+  "/admin/intelligence/debate-week-intensive",
+  "/admin/intelligence/forum-transcript-lab",
   "/admin/intelligence/supreme-workbench",
   "/admin/intelligence/opposition-strategy",
   "/admin/intelligence/command-center",
@@ -222,6 +224,19 @@ export const COUNTY_CLERK_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
 /** Kelly-first path — supreme workbench + debate prep stack. */
 export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
   ...PHASE_A_COMMAND_NAV_ITEMS,
+  {
+    href: "/admin/intelligence/debate-week-intensive",
+    label: "Debate week intensive",
+    badgeKey: "opposition",
+    description:
+      "Command Mode — 7 study days + debate day. Adult-education pacing, opponent examples, forum transcript lab, AI tutor. Start here tonight.",
+  },
+  {
+    href: "/admin/intelligence/forum-transcript-lab",
+    label: "Forum transcript lab",
+    description:
+      "Upload three-candidate forum video · Whisper transcript · AI capitalize playbook for Hammer/Pakko patterns.",
+  },
   {
     href: "/admin/intelligence/opposition-strategy",
     label: "Opposition strategy",
