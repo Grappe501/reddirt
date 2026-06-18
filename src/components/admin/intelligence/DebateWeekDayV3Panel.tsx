@@ -31,23 +31,38 @@ type Props = {
   dayId: IntensiveDayId;
   blocks: IntensiveBlock[];
   initialProgress: KellyDebateIntensiveProgress;
+  progressApiBase?: string;
+  laneHrefFn?: (laneId: string) => string;
+  lanesHubHref?: string;
+  resolveHref?: (href: string) => string;
 };
 
-export function DebateWeekDayV3Panel({ dayId, blocks, initialProgress }: Props) {
+export function DebateWeekDayV3Panel({
+  dayId,
+  blocks,
+  initialProgress,
+  progressApiBase = "/api/admin/intelligence/debate-week-intensive/progress",
+  laneHrefFn = debateWeekIntensiveLaneHref,
+  lanesHubHref = "/admin/intelligence/debate-week-intensive/lanes",
+  resolveHref = (href: string) => href,
+}: Props) {
   const [progress, setProgress] = useState(initialProgress);
   const overlay = getDayV3Overlay(dayId);
   const lanes = listDrillDownLanesForDay(dayId);
   const completedLanes = progress.completedLanes ?? [];
 
-  const postProgress = useCallback(async (body: Record<string, string>) => {
-    const res = await fetch("/api/admin/intelligence/debate-week-intensive/progress", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    const data = (await res.json()) as { ok: boolean; progress?: KellyDebateIntensiveProgress };
-    if (data.ok && data.progress) setProgress(data.progress);
-  }, []);
+  const postProgress = useCallback(
+    async (body: Record<string, string>) => {
+      const res = await fetch(progressApiBase, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = (await res.json()) as { ok: boolean; progress?: KellyDebateIntensiveProgress };
+      if (data.ok && data.progress) setProgress(data.progress);
+    },
+    [progressApiBase],
+  );
 
   return (
     <div className="space-y-8">
@@ -56,7 +71,7 @@ export function DebateWeekDayV3Panel({ dayId, blocks, initialProgress }: Props) 
         <p className="mt-2 text-sm text-kelly-inverse-soft">{overlay.pacingNote}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
-            href="/admin/intelligence/debate-week-intensive/lanes"
+            href={lanesHubHref}
             className="rounded-lg bg-indigo-500 px-3 py-1.5 text-xs font-bold uppercase text-white hover:bg-indigo-400"
           >
             All drill-down lanes
@@ -103,7 +118,7 @@ export function DebateWeekDayV3Panel({ dayId, blocks, initialProgress }: Props) 
                 </div>
                 {expansion.stretchLaneId ? (
                   <Link
-                    href={debateWeekIntensiveLaneHref(expansion.stretchLaneId)}
+                    href={laneHrefFn(expansion.stretchLaneId)}
                     className="inline-block text-xs font-bold text-indigo-800 underline"
                   >
                     Open linked drill-down lane →
@@ -123,6 +138,8 @@ export function DebateWeekDayV3Panel({ dayId, blocks, initialProgress }: Props) 
             lane={lane}
             done={completedLanes.includes(lane.id)}
             onToggle={() => void postProgress({ action: "toggle_lane", laneId: lane.id })}
+            laneHrefFn={laneHrefFn}
+            resolveHref={resolveHref}
           />
         ))}
       </section>
@@ -134,10 +151,14 @@ function LaneCard({
   lane,
   done,
   onToggle,
+  laneHrefFn,
+  resolveHref,
 }: {
   lane: DrillDownLane;
   done: boolean;
   onToggle: () => void;
+  laneHrefFn: (laneId: string) => string;
+  resolveHref: (href: string) => string;
 }) {
   return (
     <article className={`rounded-xl border p-4 text-sm ${tierBorder[lane.tier]} ${done ? "ring-2 ring-emerald-400" : ""}`}>
@@ -183,13 +204,13 @@ function LaneCard({
 
       <div className="mt-4 flex flex-wrap gap-2">
         <Link
-          href={debateWeekIntensiveLaneHref(lane.id)}
+          href={laneHrefFn(lane.id)}
           className="rounded-full border border-kelly-navy/20 px-3 py-1 text-[10px] font-bold text-kelly-navy hover:bg-white"
         >
           Full lane page →
         </Link>
         {lane.href ? (
-          <Link href={lane.href} className="rounded-full border border-indigo-300 px-3 py-1 text-[10px] font-bold text-indigo-900 hover:bg-white">
+          <Link href={resolveHref(lane.href)} className="rounded-full border border-indigo-300 px-3 py-1 text-[10px] font-bold text-indigo-900 hover:bg-white">
             Open linked tool →
           </Link>
         ) : null}

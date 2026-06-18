@@ -1,6 +1,7 @@
 import { DebateWeekLanesHubClient } from "@/components/admin/intelligence/DebateWeekV3HubPanels";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { EP_DEBATE_PREP_PROGRESS_API } from "@/lib/election-plan/debate-prep-links";
+import { epDebatePrepDayHref, epDebatePrepLaneHref } from "@/lib/election-plan/debate-prep-route-map";
 import { DEBATE_INTENSIVE_V3_LABEL, listAllDrillDownLanes } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
 import { loadKellyDebateIntensiveProgress } from "@/lib/intelligence/v4/kellyDebateIntensiveProgress";
 
@@ -32,7 +33,12 @@ export default function ElectionPlanDebatePrepLanesPage() {
             </p>
           </header>
 
-          <DebateWeekLanesHubClient initialProgress={progress} progressApiBase={EP_DEBATE_PREP_PROGRESS_API} />
+          <DebateWeekLanesHubClient
+            initialProgress={progress}
+            progressApiBase={EP_DEBATE_PREP_PROGRESS_API}
+            laneHrefFn={epDebatePrepLaneHref}
+            dayHrefFn={epDebatePrepDayHref}
+          />
         </div>
       </div>
     </>

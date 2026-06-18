@@ -17,6 +17,7 @@ type Props = {
   forumCapitalizeMoves?: Array<{ trigger: string; kellyLine: string; why: string }>;
   forumDeepAnalysis?: ForumDeepAnalysis | null;
   initialProgress: KellyDebateIntensiveProgress;
+  progressApiBase?: string;
 };
 
 export function DebateWeekDayDeepPanel({
@@ -25,6 +26,7 @@ export function DebateWeekDayDeepPanel({
   forumCapitalizeMoves = [],
   forumDeepAnalysis,
   initialProgress,
+  progressApiBase = "/api/admin/intelligence/debate-week-intensive/progress",
 }: Props) {
   const [progress, setProgress] = useState(initialProgress);
   const overlay = getDayDeepOverlay(dayId);
@@ -49,15 +51,18 @@ export function DebateWeekDayDeepPanel({
   const completedBlocks = progress.completedBlocks[dayId] ?? [];
   const dayComplete = progress.completedDays.includes(dayId);
 
-  const postProgress = useCallback(async (body: Record<string, string>) => {
-    const res = await fetch("/api/admin/intelligence/debate-week-intensive/progress", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    const data = (await res.json()) as { ok: boolean; progress?: KellyDebateIntensiveProgress };
-    if (data.ok && data.progress) setProgress(data.progress);
-  }, []);
+  const postProgress = useCallback(
+    async (body: Record<string, string>) => {
+      const res = await fetch(progressApiBase, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = (await res.json()) as { ok: boolean; progress?: KellyDebateIntensiveProgress };
+      if (data.ok && data.progress) setProgress(data.progress);
+    },
+    [progressApiBase],
+  );
 
   const dayIntegration = forumDeepAnalysis?.sevenDayIntegration?.find((d) => {
     const n = dayId.match(/day-(\d+)/)?.[1];

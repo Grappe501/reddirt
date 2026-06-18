@@ -3,10 +3,14 @@ import Link from "next/link";
 import { DebateWeekIntensivePanel } from "@/components/admin/intelligence/DebateWeekIntensivePanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import {
+  EP_DEBATE_PREP_HREF,
+  EP_DEBATE_PREP_LANES_HREF,
+  EP_DEBATE_PREP_TUTOR_HREF,
   EP_EXECUTIVE_BOOK_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
   EP_OPPOSITION_RESEARCH_HREF,
 } from "@/lib/election-plan/debate-prep-links";
+import { epDebatePrepDayHref, mapAdminDebateHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 import { buildDebatePrepSystemV5Snapshot } from "@/lib/election-plan/debate-prep-system-v5";
 import { ACCA_2026_SOS_FORUM_DROP_REL, ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 
@@ -116,8 +120,11 @@ export function ElectionPlanDebatePrepHubPanel() {
       <DebateWeekIntensivePanel
         linkOverrides={{
           forumLab: EP_FORUM_TRANSCRIPT_LAB_HREF,
-          lanes: "/election-plan/debate-prep/lanes",
-          tutor: "/election-plan/debate-prep/tutor",
+          lanes: EP_DEBATE_PREP_LANES_HREF,
+          tutor: EP_DEBATE_PREP_TUTOR_HREF,
+          dayHref: epDebatePrepDayHref,
+          intensiveHub: EP_DEBATE_PREP_HREF,
+          resolveHref: mapAdminDebateHrefToElectionPlan,
         }}
         initialDay={1}
         todayDate={referenceDate}

@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import {
   DEBATE_WEEK_INTENSIVE_DAYS,
   debateWeekIntensiveDayHref,
+  type IntensiveDayId,
 } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import {
   computeDebateIntensiveReadiness,
@@ -81,9 +82,13 @@ export function DebateWeekReadinessPanel({
 export function DebateWeekLanesHubClient({
   initialProgress,
   progressApiBase = "/api/admin/intelligence/debate-week-intensive/progress",
+  laneHrefFn = debateWeekIntensiveLaneHref,
+  dayHrefFn = debateWeekIntensiveDayHref,
 }: {
   initialProgress: KellyDebateIntensiveProgress;
   progressApiBase?: string;
+  laneHrefFn?: (laneId: string) => string;
+  dayHrefFn?: (dayId: IntensiveDayId) => string;
 }) {
   const [progress, setProgress] = useState(initialProgress);
   const lanes = listAllDrillDownLanes();
@@ -115,7 +120,7 @@ export function DebateWeekLanesHubClient({
               <h2 className="font-heading text-lg font-bold text-kelly-navy">
                 Day {day.day} — {day.title}
               </h2>
-              <Link href={debateWeekIntensiveDayHref(day.dayId)} className="text-xs font-bold text-indigo-800 underline">
+              <Link href={dayHrefFn(day.dayId as IntensiveDayId)} className="text-xs font-bold text-indigo-800 underline">
                 Day page →
               </Link>
             </div>
@@ -146,7 +151,7 @@ export function DebateWeekLanesHubClient({
                           </div>
                           <p className="mt-2 line-clamp-2 text-xs text-kelly-muted">{lane.whyKelly}</p>
                           <Link
-                            href={debateWeekIntensiveLaneHref(lane.id)}
+                            href={laneHrefFn(lane.id)}
                             className="mt-2 inline-block text-xs font-bold text-indigo-800 underline"
                           >
                             Open lane →

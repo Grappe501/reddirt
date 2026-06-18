@@ -34,11 +34,17 @@ export function DebateWeekIntensivePanel({
     forumLab?: string;
     lanes?: string;
     tutor?: string;
+    dayHref?: (dayId: IntensiveDayId) => string;
+    intensiveHub?: string;
+    resolveHref?: (href: string) => string;
   };
 }) {
   const forumLabHref = linkOverrides?.forumLab ?? FORUM_TRANSCRIPT_LAB_HREF;
   const lanesHref = linkOverrides?.lanes ?? DEBATE_WEEK_LANES_HUB_HREF;
   const tutorHref = linkOverrides?.tutor ?? "/admin/intelligence/debate-prep-tutor";
+  const dayHref = linkOverrides?.dayHref ?? debateWeekIntensiveDayHref;
+  const intensiveHubHref = linkOverrides?.intensiveHub ?? DEBATE_WEEK_INTENSIVE_HUB_HREF;
+  const resolveHref = linkOverrides?.resolveHref ?? ((href: string) => href);
   const [activeDay, setActiveDay] = useState(initialDay);
   const plan = DEBATE_WEEK_INTENSIVE_DAYS.find((d) => d.day === activeDay)!;
   const deepOverlay = getDayDeepOverlay(plan.dayId as IntensiveDayId);
@@ -87,7 +93,7 @@ export function DebateWeekIntensivePanel({
       {todayPlan ? (
         <div className="mt-4 rounded-lg border border-kelly-gold/30 bg-kelly-gold/10 px-4 py-3 text-sm">
           <span className="font-bold text-kelly-gold">Today&apos;s focus:</span>{" "}
-          <Link href={debateWeekIntensiveDayHref(todayPlan.dayId)} className="font-semibold underline text-white">
+          <Link href={dayHref(todayPlan.dayId)} className="font-semibold underline text-white">
             {todayPlan.title}
           </Link>
           {" — "}
@@ -142,15 +148,15 @@ export function DebateWeekIntensivePanel({
         </p>
 
         <div className="mt-4 grid gap-2 sm:grid-cols-2">
-          <p className="rounded-lg border border-emerald-300/50 bg-emerald-950/10 px-3 py-2 text-[11px] text-emerald-100">
+          <p className="rounded-lg border border-emerald-300/50 bg-emerald-50/70 px-3 py-2 text-[11px] text-emerald-950">
             <span className="font-bold">Strength:</span> {deepOverlay.kellyStrengthToday}
           </p>
-          <p className="rounded-lg border border-rose-300/50 bg-rose-950/10 px-3 py-2 text-[11px] text-rose-100">
+          <p className="rounded-lg border border-rose-300/50 bg-rose-50/70 px-3 py-2 text-[11px] text-rose-950">
             <span className="font-bold">Watch:</span> {deepOverlay.kellyWatchOut}
           </p>
         </div>
         {deepOverlay.forumIntelHook ? (
-          <p className="mt-2 text-[11px] text-kelly-gold">{deepOverlay.forumIntelHook}</p>
+          <p className="mt-2 text-[11px] font-medium text-amber-950">{deepOverlay.forumIntelHook}</p>
         ) : null}
 
         <h4 className="mt-5 text-[10px] font-bold uppercase tracking-wider text-kelly-subtle">
@@ -175,7 +181,7 @@ export function DebateWeekIntensivePanel({
                 <span className="font-semibold not-italic">Why:</span> {block.why}
               </p>
               {block.href ? (
-                <Link href={block.href} className="mt-2 inline-block font-bold text-kelly-navy underline">
+                <Link href={resolveHref(block.href)} className="mt-2 inline-block font-bold text-kelly-navy underline">
                   Open →
                 </Link>
               ) : null}
@@ -204,14 +210,14 @@ export function DebateWeekIntensivePanel({
 
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
-            href={debateWeekIntensiveDayHref(plan.dayId as IntensiveDayId)}
+            href={dayHref(plan.dayId as IntensiveDayId)}
             className="rounded-full border border-kelly-gold bg-kelly-gold/10 px-3 py-1 text-[10px] font-bold text-kelly-navy"
           >
             Full day page →
           </Link>
           {!compact ? (
             <Link
-              href={DEBATE_WEEK_INTENSIVE_HUB_HREF}
+              href={intensiveHubHref}
               className="rounded-full border border-indigo-200 px-3 py-1 text-[10px] font-bold text-indigo-800"
             >
               Intensive hub

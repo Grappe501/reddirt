@@ -4,18 +4,28 @@ import Link from "next/link";
 import { useCallback, useState } from "react";
 import type { DrillDownLane } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
 
-export function DebateWeekLaneDetailClient({ lane, initialDone }: { lane: DrillDownLane; initialDone: boolean }) {
+export function DebateWeekLaneDetailClient({
+  lane,
+  initialDone,
+  progressApiBase = "/api/admin/intelligence/debate-week-intensive/progress",
+  resolveHref = (href: string) => href,
+}: {
+  lane: DrillDownLane;
+  initialDone: boolean;
+  progressApiBase?: string;
+  resolveHref?: (href: string) => string;
+}) {
   const [done, setDone] = useState(initialDone);
 
   const toggle = useCallback(async () => {
-    const res = await fetch("/api/admin/intelligence/debate-week-intensive/progress", {
+    const res = await fetch(progressApiBase, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action: "toggle_lane", laneId: lane.id }),
     });
     const data = (await res.json()) as { ok: boolean };
     if (data.ok) setDone((d) => !d);
-  }, [lane.id]);
+  }, [lane.id, progressApiBase]);
 
   return (
     <div className="space-y-6 pb-12">
@@ -30,7 +40,7 @@ export function DebateWeekLaneDetailClient({ lane, initialDone }: { lane: DrillD
           {done ? "Lane complete ✓" : "Mark lane complete"}
         </button>
         {lane.href ? (
-          <Link href={lane.href} className="rounded-lg border border-indigo-400 px-4 py-2 text-xs font-bold text-indigo-950">
+          <Link href={resolveHref(lane.href)} className="rounded-lg border border-indigo-400 px-4 py-2 text-xs font-bold text-indigo-950">
             Open linked tool →
           </Link>
         ) : null}
