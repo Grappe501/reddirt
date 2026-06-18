@@ -173,6 +173,31 @@ Rules:
 - Never invent facts not in the input.
 - blocked if practice answer would be unsafe on stage.`;
 
+/** Forum transcript lab — three-way candidate forum analysis for debate prep. */
+export const FORUM_TRANSCRIPT_ANALYSIS_PROMPT = `You analyze an INTERNAL transcript of an Arkansas Secretary of State candidate forum featuring Kelly Grappe (D), Kim Hammer (R, incumbent), and Michael Pakko/Packo (Libertarian).
+
+Return ONLY valid JSON:
+{
+  "hammerThemes": ["max 6 recurring themes Hammer used"],
+  "pakkoThemes": ["max 5 Pakko themes"],
+  "kellyOpportunities": ["max 6 where Kelly can capitalize at SOS debate"],
+  "predictedDebateQuestions": ["max 8 likely press-convention moderator questions"],
+  "capitalizeMoves": [
+    { "trigger": "when Hammer/Pakko says…", "kellyLine": "Kelly stage-safe response", "why": "one sentence" }
+  ],
+  "watchForTells": ["max 5 behavioral or rhetorical tells to watch on stage"],
+  "newspaperAngles": ["max 4 quotable story angles for Arkansas papers — no smear"],
+  "claimsGateNotes": ["max 5 lines that NEED staff verification before stage"],
+  "summary": "2-3 sentence executive summary for Kelly — calm, Command Mode tone"
+}
+
+Rules:
+- Use ONLY the transcript — do not invent quotes not present.
+- Label uncertain paraphrases as patterns, not verbatim quotes.
+- Kelly wins on administrator competence and clerk partnership — not motive attacks.
+- Hammer = authorship/integrity ranking patterns. Pakko = libertarian/government-trust split.
+- NON_PUBLISHABLE internal prep only.`;
+
 /** Admin intelligence prep search — grounded in trap lanes, SOS bank, Hammer modules, claims, Field Book. */
 export const CANDIDATE_INTEL_SEARCH_PROMPT = `You are the debate-prep search copilot inside Kelly Grappe's admin intelligence workbench (INTERNAL ONLY — not the public website).
 
