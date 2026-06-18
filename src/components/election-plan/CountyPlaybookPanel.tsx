@@ -32,6 +32,9 @@ import { getImmersionMissionForCounty } from "@/lib/election-plan/load-immersion
 import { getSpecialKpiGoalForCounty } from "@/lib/election-plan/load-special-kpi-goals";
 import type { FosCountyRollup } from "@/lib/election-plan/load-fundraising-operating-system";
 import { COUNTY_COVERAGE_EXPLAINER } from "@/lib/election-plan/location-links";
+import { CountyVaultPanel } from "@/components/election-plan/CountyVaultPanel";
+import { CountyVaultUploadPanel } from "@/components/admin/county/CountyVaultUploadPanel";
+import type { CountyVaultListItem } from "@/lib/county-vault/types";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -55,6 +58,9 @@ type Props = {
   countyIntel?: CountyWorkbenchV3View | null;
   v4Ops?: CountyWorkbenchV4OperationalView | null;
   playbookMarkdown?: string | null;
+  vaultStats?: { total: number; publicCount: number; withTranscript: number; videos: number };
+  vaultPreview?: CountyVaultListItem[];
+  vaultCountySlug?: string;
 };
 
 function guardrailClass(status: string) {
@@ -86,6 +92,9 @@ export function CountyPlaybookPanel({
   countyIntel = null,
   v4Ops = null,
   playbookMarkdown = null,
+  vaultStats,
+  vaultPreview = [],
+  vaultCountySlug,
 }: Props) {
   const specialKpi = getSpecialKpiGoalForCounty(county.slug);
   const victoryTarget = getCountyVictoryTarget(county.county, county.tier);
@@ -369,6 +378,25 @@ export function CountyPlaybookPanel({
           </p>
         </div>
       )}
+
+      {vaultStats && vaultCountySlug ? (
+        <div id="county-media-vault" className="mb-8 scroll-mt-24 space-y-6">
+          <CountyVaultPanel
+            countySlug={vaultCountySlug}
+            countyDisplayName={`${county.county} County`}
+            stats={vaultStats}
+            previewItems={vaultPreview}
+            isOperator={Boolean(operatorInitials)}
+          />
+          {operatorInitials ? (
+            <CountyVaultUploadPanel
+              countySlug={vaultCountySlug}
+              countyDisplayName={`${county.county} County`}
+              uploadEndpoint="/api/election-plan/county-vault/upload"
+            />
+          ) : null}
+        </div>
+      ) : null}
 
       <LegacyCountySystemsPanel countyName={county.county} />
     </section>

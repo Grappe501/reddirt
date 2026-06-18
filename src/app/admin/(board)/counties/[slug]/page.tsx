@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { saveCountyCommandPageAction } from "@/app/admin/county-admin-actions";
 import { CountyVictoryMissionWidget } from "@/components/admin/victory-os/CountyVictoryMissionWidget";
+import { CountyVaultUploadPanel } from "@/components/admin/county/CountyVaultUploadPanel";
 import { prisma } from "@/lib/db";
 import { loadCountyMissionStack } from "@/lib/victory-os/mission-framework/load-county-missions";
 import { CountyContentReviewStatus, PublicDemographicsSource } from "@prisma/client";
@@ -326,6 +327,14 @@ export default async function AdminCountyEditPage({ params, searchParams }: Prop
       </form>
 
       <CountyVictoryMissionWidget stack={missionStack} />
+
+      <div className="mt-12 max-w-3xl">
+        <CountyVaultUploadPanel
+          countySlug={c.slug}
+          countyDisplayName={c.displayName}
+          uploadEndpoint="/api/admin/county-vault/upload"
+        />
+      </div>
     </div>
   );
 }

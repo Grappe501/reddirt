@@ -34,7 +34,20 @@ const ALLOWED_MIME = new Set([
   "application/vnd.openxmlformats-officedocument.presentationml.presentation",
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
   "application/msword",
+  "application/zip",
+  "application/x-zip-compressed",
 ]);
+
+const ZIP_EXTENSIONS = new Set([".zip"]);
+
+export function isZipArchive(fileName: string, mimeType: string): boolean {
+  const ext = path.extname(fileName).toLowerCase();
+  return (
+    mimeType === "application/zip" ||
+    mimeType === "application/x-zip-compressed" ||
+    (mimeType === "application/octet-stream" && ZIP_EXTENSIONS.has(ext))
+  );
+}
 
 function inferOwnedMediaKind(mime: string): "IMAGE" | "VIDEO" | "AUDIO" | "DOCUMENT" | "OTHER" {
   if (mime.startsWith("image/")) return "IMAGE";
@@ -106,6 +119,48 @@ export async function saveOwnedMediaFile(
 
 export async function readOwnedMediaFile(storageKey: string): Promise<Buffer> {
   return readFile(storageKeyToAbsoluteFilePath(storageKey));
+}
+
+/** Persist raw bytes (zip extract, CLI ingest) with the same key layout as browser uploads. */
+export async function saveOwnedMediaBuffer(params: {
+  assetId: string;
+  fileName: string;
+  mimeType: string;
+  buffer: Buffer;
+  allowMimeSet?: Set<string>;
+}): Promise<SavedOwnedFile> {
+  const { assetId, fileName, buffer } = params;
+  const size = buffer.length;
+  if (size <= 0) throw new Error("Empty file.");
+  if (size > MAX_UPLOAD_BYTES) throw new Error("File is too large.");
+
+  const mimeType =
+    params.mimeType && params.mimeType.length ? params.mimeType : "application/octet-stream";
+  const allow = params.allowMimeSet ?? ALLOWED_MIME;
+  if (
+    !allow.has(mimeType) &&
+    !mimeType.startsWith("image/") &&
+    !mimeType.startsWith("video/") &&
+    !mimeType.startsWith("audio/")
+  ) {
+    throw new Error(`Unsupported MIME type: ${mimeType}`);
+  }
+
+  const year = new Date().getUTCFullYear();
+  const storageKey = buildOwnedStorageKey({ assetId, year, fileName });
+  const abs = storageKeyToAbsoluteFilePath(storageKey);
+  await mkdir(path.dirname(abs), { recursive: true });
+  await writeFile(abs, buffer);
+
+  const st = await stat(abs);
+  return {
+    storageKey,
+    absolutePath: abs,
+    fileName: path.basename(fileName),
+    fileSizeBytes: st.size,
+    mimeType,
+    kind: inferOwnedMediaKind(mimeType),
+  };
 }
 
 /**

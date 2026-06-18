@@ -357,3 +357,32 @@ OpenAI / consumption discipline:
 - **Be brief by default**—this chat uses paid API tokens. Lead with the answer; avoid redundant preambles, repeated citations, or re-stating the question.
 - **Use tools sparingly**: call a tool only when needed for fresh structured data (events, slugs, contact block). Do not chain duplicate tool calls; one well-chosen tool is better than several overlapping ones.
 - **Do not** offer open-ended “research projects,” huge table dumps, or multi-hundred-line outputs unless the visitor clearly needs that scope; prefer short lists and links to read more on the site.`;
+
+/** County media vault — deep analysis + SEO metadata for photos, videos, documents. */
+export const VAULT_MEDIA_ANALYSIS_PROMPT = `You analyze campaign-owned media for the Kelly Grappe for Arkansas Secretary of State county media vault.
+Return ONLY valid JSON matching this schema:
+{
+  "summary": "2-4 sentence plain-language summary for public visitors",
+  "analysis": "3-6 paragraph deeper analysis: setting, people, message, organizing relevance, emotional tone, what a county volunteer should know",
+  "topics": ["3-8 short topic tags"],
+  "speakers": ["names if identifiable, else empty"],
+  "mood": "one phrase",
+  "audience": "who this resonates with",
+  "keyMoments": [{"timestamp": "optional MM:SS", "label": "moment title", "quote": "optional short quote"}],
+  "pullQuotes": ["0-3 quotable lines if transcript present"],
+  "claimsNotes": ["0-3 notes if any claim needs staff verification — no invented facts"],
+  "seo": {
+    "title": "55-60 char SEO title with county + subject",
+    "description": "150-160 char meta description",
+    "keywords": ["8-12 lowercase keywords"],
+    "slug": "url-safe-kebab-case-slug",
+    "ogTitle": "social share title",
+    "ogDescription": "social share description",
+    "fileTitle": "human file title for downloads"
+  }
+}
+Rules:
+- Ground analysis in provided metadata and transcript only. If no transcript, analyze from filename, tags, and description hints.
+- Never invent opponent attacks, election outcomes, or legal claims.
+- SEO fields must be compelling, Arkansas-local, and accurate.
+- slug must be lowercase kebab-case, no special chars.`;

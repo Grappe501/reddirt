@@ -156,6 +156,7 @@ export type CountyPageSnapshot = {
   latestVisitPost: RoadPostCard | null;
   latestStoryPost: RoadPostCard | null;
   mediaGallery: Awaited<ReturnType<typeof loadCountyOwnedMediaPreview>>;
+  vaultPublicCount: number;
   /** Public CampaignOS events for this county (PUBLISHED + isPublicOnWebsite + not canceled) */
   upcomingPublicCampaignEvents: PublicCampaignEvent[];
   nextPublicCampaignEvent: PublicCampaignEvent | null;
@@ -194,8 +195,10 @@ async function loadCountyOwnedMediaPreview(countySlug: string) {
   return prisma.ownedMediaAsset.findMany({
     where: {
       countySlug,
-      isPublic: true,
-      reviewStatus: OwnedMediaReviewStatus.APPROVED,
+      OR: [
+        { isPublic: true, reviewStatus: OwnedMediaReviewStatus.APPROVED },
+        { approvedForPublicSite: true },
+      ],
     },
     orderBy: [{ eventDate: "desc" }, { updatedAt: "desc" }],
     take: 8,
@@ -210,6 +213,18 @@ async function loadCountyOwnedMediaPreview(countySlug: string) {
   });
 }
 
+async function countCountyVaultPublic(countySlug: string) {
+  return prisma.ownedMediaAsset.count({
+    where: {
+      countySlug,
+      OR: [
+        { isPublic: true, reviewStatus: OwnedMediaReviewStatus.APPROVED },
+        { approvedForPublicSite: true },
+      ],
+    },
+  });
+}
+
 /**
  * Composes public county page: DB county row + events content + (optional) road + owned media.
  */
@@ -217,10 +232,11 @@ export async function getCountyPageSnapshot(slug: string): Promise<CountyPageSna
   const county = await resolveCountyCommandBySlug(slug);
   if (!county) return null;
 
-  const [{ visit, story }, mediaGallery, latestVoterMetrics] = await Promise.all([
+  const [{ visit, story }, mediaGallery, latestVoterMetrics, vaultPublicCount] = await Promise.all([
     loadStoryAndVisitPosts(slug),
     loadCountyOwnedMediaPreview(slug),
     getLatestCountyVoterMetrics(county.id),
+    countCountyVaultPublic(slug),
   ]);
 
   const publicEv = await listUpcomingPublicCampaignEventsForCountySlug(slug, 20);
@@ -232,6 +248,7 @@ export async function getCountyPageSnapshot(slug: string): Promise<CountyPageSna
     latestVisitPost: visit,
     latestStoryPost: story,
     mediaGallery,
+    vaultPublicCount,
     upcomingPublicCampaignEvents: publicEv,
     nextPublicCampaignEvent,
   };

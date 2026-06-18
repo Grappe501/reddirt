@@ -12,6 +12,8 @@ import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-c
 import { getFosCountyRollup } from "@/lib/election-plan/load-fundraising-operating-system";
 import { loadCountyPlaybookMarkdown } from "@/lib/election-plan/load-county-playbook-markdown";
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
+import { getCountyVaultStats, queryCountyVaultAssets } from "@/lib/county-vault/queries";
+import { resolveDbCountyForVault } from "@/lib/county-vault/resolve-county";
 
 type Props = { params: Promise<{ countySlug: string }> };
 
@@ -59,6 +61,15 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
   const v4Ops = buildCountyWorkbenchV4OperationalView(strikeTeam, fieldEntrySummary);
   const playbookMarkdown = loadCountyPlaybookMarkdown(county.slug, county.playbookPath);
 
+  const dbCounty = await resolveDbCountyForVault(county.slug);
+  const vaultCountySlug = dbCounty?.slug ?? county.slug;
+  const [vaultStats, vaultPreview] = dbCounty
+    ? await Promise.all([
+        getCountyVaultStats(vaultCountySlug),
+        queryCountyVaultAssets(vaultCountySlug, { limit: 4 }),
+      ])
+    : [{ total: 0, publicCount: 0, withTranscript: 0, videos: 0 }, []];
+
   return (
     <>
       <div className="ep-classification">Internal · County intelligence · {county.county} County</div>
@@ -84,6 +95,9 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
             countyIntel={countyIntel}
             v4Ops={v4Ops}
             playbookMarkdown={playbookMarkdown}
+            vaultStats={vaultStats}
+            vaultPreview={vaultPreview}
+            vaultCountySlug={vaultCountySlug}
           />
         </div>
       </div>

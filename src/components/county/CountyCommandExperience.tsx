@@ -21,6 +21,7 @@ import { getCountyIntelligenceEntryForSlug } from "@/lib/county/county-intellige
 import { getCampaignRegistrationBaselineDisplayCentral } from "@/config/campaign-registration-baseline";
 import { cn } from "@/lib/utils";
 import { PublicCampaignEventCard } from "@/components/calendar/PublicCampaignEventCard";
+import { ownedMediaPreviewUrl } from "@/lib/media-library/public-urls";
 
 const introFallback =
   "Kelly’s Arkansas campaign runs through all 75 counties—this page is your field sheet: who’s leading, what’s happening, and how we’re growing the electorate where you live.";
@@ -57,7 +58,7 @@ function formatDistanceAgo(d: Date) {
 }
 
 export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) {
-  const { county, latestVoterMetrics, latestVisitPost, latestStoryPost, mediaGallery, nextPublicCampaignEvent, upcomingPublicCampaignEvents } =
+  const { county, latestVoterMetrics, latestVisitPost, latestStoryPost, mediaGallery, vaultPublicCount, nextPublicCampaignEvent, upcomingPublicCampaignEvents } =
     data;
   const countyIntel = getCountyIntelligenceEntryForSlug(county.slug);
   const stats = county.campaignStats;
@@ -213,24 +214,51 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
               empty="Subscribe to field updates in this county—stories with this county’s tag will surface automatically."
             />
             <div className={cn(card, "lg:col-span-2")}>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">Photo &amp; video</p>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">Photo &amp; video vault</p>
+                {vaultPublicCount > 0 ? (
+                  <Link
+                    href={`/counties/${county.slug}/media`}
+                    className="text-xs font-bold text-kelly-navy underline-offset-2 hover:underline"
+                  >
+                    Open full library ({vaultPublicCount}) →
+                  </Link>
+                ) : null}
+              </div>
               {mediaGallery.length > 0 ? (
                 <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {mediaGallery.map((m) => (
-                    <li key={m.id} className="relative aspect-square overflow-hidden rounded-xl border border-kelly-text/10">
-                      {m.kind === "IMAGE" && m.publicUrl ? (
-                        <Image src={m.publicUrl} alt={m.title ?? "County media"} fill className="object-cover" unoptimized={m.publicUrl.startsWith("http")} />
-                      ) : (
-                        <div className="flex h-full items-center justify-center bg-kelly-text/5 p-2 text-center text-xs text-kelly-text/60">
-                          {m.kind} · {m.title ?? "Media"}
-                        </div>
-                      )}
+                    <li key={m.id}>
+                      <Link
+                        href={`/counties/${county.slug}/media/${m.id}`}
+                        className="relative block aspect-square overflow-hidden rounded-xl border border-kelly-text/10 transition hover:border-kelly-navy/30"
+                      >
+                        {m.kind === "IMAGE" ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={ownedMediaPreviewUrl(m.id)} alt={m.title ?? "County media"} className="h-full w-full object-cover" />
+                        ) : m.kind === "VIDEO" ? (
+                          <video src={ownedMediaPreviewUrl(m.id)} className="h-full w-full object-cover" muted preload="metadata" />
+                        ) : (
+                          <div className="flex h-full items-center justify-center bg-kelly-text/5 p-2 text-center text-xs text-kelly-text/60">
+                            {m.kind} · {m.title ?? "Media"}
+                          </div>
+                        )}
+                      </Link>
                     </li>
                   ))}
                 </ul>
               ) : (
                 <p className="mt-2 text-sm text-kelly-text/70">
                   The gallery will fill in as we publish approved, county-tagged media from the campaign library.
+                  {vaultPublicCount > 0 ? (
+                    <>
+                      {" "}
+                      <Link href={`/counties/${county.slug}/media`} className="font-semibold text-kelly-navy underline">
+                        Browse the vault
+                      </Link>
+                      .
+                    </>
+                  ) : null}
                 </p>
               )}
             </div>
