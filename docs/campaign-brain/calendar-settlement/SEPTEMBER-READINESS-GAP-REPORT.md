@@ -99,7 +99,7 @@ September readiness is **partial**. Locked backbone covers **50/75** counties st
 
 | Metric | Value |
 |--------|------:|
-| Leadership-confirmed visited | 43 |
+| Leadership-confirmed visited | 45 |
 | After locked backbone | 50 |
 | Still missing | 25 |
 | Delta gaps open | 8 |

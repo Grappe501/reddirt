@@ -1,6 +1,6 @@
 # Calendar Settlement Report
 
-> Generated 2026-06-15 · Window 2026-06-15 → 2026-10-19 · Early voting 2026-10-20
+> Generated 2026-06-18 · Window 2026-06-15 → 2026-10-19 · Early voting 2026-10-20
 
 ## Mission
 
@@ -10,7 +10,7 @@ Turn the 20-week strategy into Kelly's executable travel calendar using **locked
 
 ---
 
-## Locked events (40)
+## Locked events (41)
 
 | Date | Event | County | Type | Travel | Overnight |
 |------|-------|--------|------|--------|-----------|
@@ -21,6 +21,7 @@ Turn the 20-week strategy into Kelly's executable travel calendar using **locked
 | 2026-06-19–2026-06-20 | Juneteenth Morrilton / Menifee corridor | Conway | festival | immersion (298m) | likely |
 | 2026-06-19–2026-06-20 | Mountain Home Craft Fest (Baxter) | Baxter | festival | regional (77m) | likely |
 | 2026-06-21–2026-06-28 | Benton County immersion | Benton | immersion | immersion (144m) | likely |
+| 2026-06-22 | Chamber luncheon — Rex Nelson | Pulaski | coalition | local (43m) | — |
 | 2026-06-26 | SOS Debate — Annual Press Convention | Carroll | debate | immersion (113m) | likely |
 | 2026-06-27 | Pioneer Heritage Festival | Baxter | festival | regional (77m) | likely |
 | 2026-06-28 | Pulaski County Dems | Pulaski | coalition | local (43m) | — |
@@ -118,9 +119,9 @@ Origin: Rose Bud (home) · Tue/Fri → Little Rock work base
 
 | Metric | Count |
 |--------|------:|
-| Leadership-confirmed visited | 43 |
+| Leadership-confirmed visited | 45 |
 | After locked backbone | 50 |
-| New counties touched by locked trips | 7 |
+| New counties touched by locked trips | 5 |
 | Still missing | 25 |
 
-New from locked schedule: Boone, Clay, Hot Spring, Howard, Sharp, Union, Yell
+New from locked schedule: Boone, Clay, Hot Spring, Howard, Union

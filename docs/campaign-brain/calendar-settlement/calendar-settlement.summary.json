@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-06-15T05:57:42.295Z",
+  "generatedAt": "2026-06-18T04:09:48.856Z",
   "windowStart": "2026-06-15",
   "windowEnd": "2026-10-19",
   "earlyVotingStart": "2026-10-20",
-  "lockedEventCount": 40,
+  "lockedEventCount": 41,
   "lockedDayCount": 59,
   "openDayCount": 14,
   "protectedWorkDayCount": 53,
   "doNotFillDayCount": 1,
-  "visitedBaseline": 43,
+  "visitedBaseline": 45,
   "projectedCountiesAfterLocked": 50,
   "stillMissingCount": 25,
   "stillMissingCounties": [
@@ -43,9 +43,7 @@
     "Clay",
     "Hot Spring",
     "Howard",
-    "Sharp",
-    "Union",
-    "Yell"
+    "Union"
   ],
   "topOpenRecommendations": [
     {

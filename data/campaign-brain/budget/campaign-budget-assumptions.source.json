@@ -102,19 +102,41 @@
   },
   "mediaAndOutreach": {
     "status": "modeled_assumption",
-    "note": "Intentionally modest Jun–Aug. May double Sep–Oct if traction builds.",
+    "note": "Intentionally modest Jun–Aug. May double Sep–Oct if traction builds. APA statewide LTE is separate from volunteer LTE training.",
     "monthsBudgeted": 6,
     "monthly": {
+      "apaStatewideLteDistribution": 300,
       "ruralNewspaperAdvertising": 1500,
       "ruralRadioAdvertising": 1500,
       "collegeCampusStudentOutreach": 500,
       "creativeCommunityAdvertising": 500
     },
-    "monthlyTotal": 4000,
-    "campaignTotal": 24000,
-    "aggressiveMonthlyTotal": 8000,
-    "aggressiveCampaignTotal": 48000,
-    "bareCampaignTotal": 18000
+    "monthlyTotal": 4300,
+    "campaignTotal": 25800,
+    "aggressiveMonthlyTotal": 8600,
+    "aggressiveCampaignTotal": 51600,
+    "bareCampaignTotal": 19800,
+    "apaPrograms": {
+      "statewideLte": {
+        "vendor": "Arkansas Press Association",
+        "costPerMonth": 300,
+        "cadence": "monthly",
+        "author": "Kelly Grappe (candidate byline)",
+        "note": "APA sends LTE to every newspaper in Arkansas — direct from candidate"
+      },
+      "visitLocalPrint": {
+        "vendor": "Arkansas Press Association",
+        "papersPerRuralVisit": 2,
+        "preferredUnit": "one_eighth_page",
+        "leadTimeDaysBeforeVisit": 14,
+        "pricingStatus": "needs_quote"
+      },
+      "visitRuralRadio": {
+        "status": "research_and_quote",
+        "leadTimeDaysBeforeVisit": 10,
+        "pricingStatus": "needs_quote"
+      }
+    }
   },
   "communityActivationAndSwag": {
     "status": "modeled_assumption",

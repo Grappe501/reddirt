@@ -1493,6 +1493,7 @@ function MotionPresencePanel({ data }: SnapshotPanelProps) {
 
 function ForwardMotionPanel({ data }: SnapshotPanelProps) {
   const fm = data.forwardMotion;
+  const media = data.mediaOutreach;
 
   return (
     <section>
@@ -1517,6 +1518,69 @@ function ForwardMotionPanel({ data }: SnapshotPanelProps) {
           </Link>
         </p>
       </div>
+
+      {media ? (
+        <div className="mb-8 rounded-lg border border-[var(--ep-border)] bg-[var(--ep-surface)] p-5">
+          <h3 className="font-heading text-lg font-bold">APA media program</h3>
+          <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{media.heroLine}</p>
+          <div className="mt-4 ep-stat-grid">
+            <div className="ep-stat">
+              <div className="ep-stat-value">${media.summary.statewideLteMonthlyCost}</div>
+              <div className="ep-stat-label">Statewide LTE / month</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{formatVotes(media.summary.ruralVisitCount)}</div>
+              <div className="ep-stat-label">Rural visit ad queue</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{formatVotes(media.summary.printUrgentCount)}</div>
+              <div className="ep-stat-label">Print quotes needed</div>
+            </div>
+            <div className="ep-stat">
+              <div className="ep-stat-value">{formatVotes(media.summary.radioResearchCount)}</div>
+              <div className="ep-stat-label">Radio research window</div>
+            </div>
+          </div>
+          <ul className="mt-4 list-inside list-disc space-y-1 text-sm text-[var(--ep-navy-muted)]">
+            {media.programs.map((p) => (
+              <li key={p.id}>
+                <span className="font-medium text-[var(--ep-navy)]">{p.label}</span> — {p.note}
+              </li>
+            ))}
+          </ul>
+          {media.visitPlacements.length > 0 ? (
+            <>
+              <h4 className="mt-5 mb-2 font-heading font-bold text-sm">Visit-adjacent print & radio (next stops)</h4>
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[640px] text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-[var(--ep-border)] text-xs uppercase text-[var(--ep-navy-muted)]">
+                      <th className="py-2 pr-3">Date</th>
+                      <th className="py-2 pr-3">Event</th>
+                      <th className="py-2 pr-3">County</th>
+                      <th className="py-2 pr-3">Print</th>
+                      <th className="py-2 pr-3">Radio</th>
+                      <th className="py-2">Next action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {media.visitPlacements.slice(0, 12).map((v) => (
+                      <tr key={v.eventId} className="border-b border-[var(--ep-border)]">
+                        <td className="py-2 pr-3 whitespace-nowrap">{v.visitDate}</td>
+                        <td className="py-2 pr-3 font-medium">{v.eventName}</td>
+                        <td className="py-2 pr-3">{v.county}</td>
+                        <td className="py-2 pr-3">{v.printStatus.replace(/_/g, " ")}</td>
+                        <td className="py-2 pr-3">{v.radioStatus.replace(/_/g, " ")}</td>
+                        <td className="py-2 text-xs text-[var(--ep-navy-muted)]">{v.nextAction}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          ) : null}
+        </div>
+      ) : null}
 
       <div className="mb-8 ep-stat-grid">
         <div className="ep-stat">

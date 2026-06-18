@@ -1,3 +1,9 @@
+import {
+  ballotInitiativeProcessHref,
+  directDemocracyCommitmentHref,
+  directDemocracyHubHref,
+  kellyInitiativesChapterHref,
+} from "@/config/direct-democracy-links";
 import { getCampaignBlogUrl } from "@/config/external-campaign";
 
 export type NavItem = {
@@ -30,9 +36,16 @@ export const voterRegistrationHref = "/voter-registration";
 
 /**
  * Mobile drawer group order (psychology: field activity before news cycle).
- * Desktop primary nav order stays Meet Kelly → The Office → News → Events → Get Involved.
+ * Desktop primary nav: Meet Kelly → Direct Democracy → The Office → News → Events → Get Involved.
  */
-export const primaryNavMobileDrawerGroupOrder = ["meet", "office", "events", "news", "involved"] as const;
+export const primaryNavMobileDrawerGroupOrder = [
+  "meet",
+  "direct-democracy",
+  "office",
+  "events",
+  "news",
+  "involved",
+] as const;
 
 /** Top nav: substance-first mega groups + utility actions (Vote, Volunteer, Donate) in SiteHeader */
 export const primaryNavGroups: NavGroup[] = [
@@ -45,6 +58,18 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Her Journey", href: "/about/journey" },
       { label: "Community & Civic Work", href: "/about/community" },
       { label: "Why I'm Running", href: "/about/why-im-running" },
+      { label: "Initiatives & petitions", href: kellyInitiativesChapterHref },
+    ],
+  },
+  {
+    id: "direct-democracy",
+    label: "Direct Democracy",
+    groupLandingHref: directDemocracyHubHref,
+    items: [
+      { label: "Direct Democracy hub", href: directDemocracyHubHref },
+      { label: "Ballot initiative process", href: ballotInitiativeProcessHref },
+      { label: "Commitment network", href: directDemocracyCommitmentHref },
+      { label: "Kelly's petition organizing", href: kellyInitiativesChapterHref },
     ],
   },
   {
@@ -103,22 +128,28 @@ export const primaryNavGroups: NavGroup[] = [
 
 export const allPrimaryNavItems: NavItem[] = primaryNavGroups.flatMap((g) => g.items);
 
+const navGroupById = (id: string) => primaryNavGroups.find((g) => g.id === id);
+
 export const footerNavGroups: { title: string; items: NavItem[] }[] = [
   {
     title: "Meet Kelly",
-    items: [...primaryNavGroups[0].items],
+    items: [...(navGroupById("meet")?.items ?? [])],
+  },
+  {
+    title: "Direct Democracy",
+    items: [...(navGroupById("direct-democracy")?.items ?? [])],
   },
   {
     title: "The Office",
     items: [
-      ...primaryNavGroups[1].items,
+      ...(navGroupById("office")?.items ?? []),
       { label: "Explainers", href: "/explainers" },
     ],
   },
   {
     title: "News & action",
     items: [
-      ...primaryNavGroups[2].items,
+      ...(navGroupById("news")?.items ?? []),
       { label: "Stories", href: "/stories" },
       { label: "Kelly’s Substack", href: getCampaignBlogUrl() },
       { label: "Events", href: "/events" },

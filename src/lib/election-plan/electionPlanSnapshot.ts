@@ -235,6 +235,22 @@ export function fallbackElectionPlanSnapshot(): ElectionPlanWorkbenchSnapshot {
       missingPieces: [],
       components: [],
     },
+    mediaOutreach: {
+      heroLine: "Rural credibility runs through local papers and radio — APA coordinates statewide LTE and visit-adjacent print.",
+      disclaimer: "Run npm run campaign-brain:apa-media:build to load live APA media queue.",
+      partner: { name: "Arkansas Press Association", shortName: "APA", relationshipStatus: "active_negotiation" },
+      summary: {
+        ruralVisitCount: 0,
+        printUrgentCount: 0,
+        radioResearchCount: 0,
+        lteDraftNeeded: 0,
+        statewideLteMonthlyCost: 300,
+        statewideLteCampaignTotal: 1800,
+      },
+      monthlyLte: [],
+      visitPlacements: [],
+      programs: [],
+    },
     coalitionPowerMap: {
       heroLine: "Move from opportunity to organized relationships.",
       naacp: { branchesTotal: 0, called: 0, meetingsRequested: 0, speakingScheduled: 0 },

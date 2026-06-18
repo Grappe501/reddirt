@@ -4,12 +4,12 @@
       "month": "2026-06",
       "label": "June 2026",
       "fuel": 1333,
-      "foodDays": 30,
-      "foodCost": 4500,
+      "foodDays": 31,
+      "foodCost": 4650,
       "lodgingNights": 20,
       "lodgingCost": 3500,
-      "total": 9333,
-      "eventCount": 11
+      "total": 9483,
+      "eventCount": 12
     },
     {
       "month": "2026-07",
@@ -69,10 +69,10 @@
   ],
   "totals": {
     "fuel": 11583,
-    "food": 15900,
+    "food": 16050,
     "lodging": 10150,
-    "total": 37633,
-    "foodDays": 106,
+    "total": 37783,
+    "foodDays": 107,
     "lodgingNights": 58
   }
 }

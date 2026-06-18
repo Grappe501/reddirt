@@ -1,15 +1,5 @@
 # Upcoming Stop Story Briefs
 
-## Bella Vista Sunday Farmers and Makers Market · 2026-06-14
-
-- **Local business angle:** TBD — identify on arrival
-- **Community person angle:** TBD
-- **Faith/civic angle:** event-dependent
-- **County issue angle:** Lane 2 recovery + registration
-- **Photo/video checklist:** vertical clip · carousel · B-roll
-- **Substack follow-up:** within 7 days
-- **Status:** capture_plan_ready
-
 ## River Valley Crawfish Festival · 2026-06-18
 
 - **Local business angle:** TBD — identify on arrival
@@ -190,52 +180,12 @@
 - **Substack follow-up:** within 7 days
 - **Status:** not_started
 
-## Fundraiser in Quitman · 2026-06-16
-
-- **Local business angle:** TBD — identify on arrival
-- **Community person angle:** TBD
-- **Faith/civic angle:** event-dependent
-- **County issue angle:** Relationship + persuasion
-- **Photo/video checklist:** vertical clip · carousel · B-roll
-- **Substack follow-up:** within 7 days
-- **Status:** not_started
-
-## Juneteenth Morrilton c5 · 2026-06-19
-
-- **Local business angle:** TBD — identify on arrival
-- **Community person angle:** TBD
-- **Faith/civic angle:** event-dependent
-- **County issue angle:** Relationship + persuasion
-- **Photo/video checklist:** vertical clip · carousel · B-roll
-- **Substack follow-up:** within 7 days
-- **Status:** not_started
-
-## Menifee Juneteenth · 2026-06-20
-
-- **Local business angle:** TBD — identify on arrival
-- **Community person angle:** TBD
-- **Faith/civic angle:** event-dependent
-- **County issue angle:** Relationship + persuasion
-- **Photo/video checklist:** vertical clip · carousel · B-roll
-- **Substack follow-up:** within 7 days
-- **Status:** not_started
-
 ## SOS debate - Annual Press Convention - Eureka Springs · 2026-06-26
 
 - **Local business angle:** TBD — identify on arrival
 - **Community person angle:** TBD
 - **Faith/civic angle:** event-dependent
 - **County issue angle:** Relationship + persuasion
-- **Photo/video checklist:** vertical clip · carousel · B-roll
-- **Substack follow-up:** within 7 days
-- **Status:** not_started
-
-## Monticello Juneteenth festival - Clarissa pace · 2026-06-14
-
-- **Local business angle:** TBD — identify on arrival
-- **Community person angle:** TBD
-- **Faith/civic angle:** event-dependent
-- **County issue angle:** Coverage + volunteer build
 - **Photo/video checklist:** vertical clip · carousel · B-roll
 - **Substack follow-up:** within 7 days
 - **Status:** not_started

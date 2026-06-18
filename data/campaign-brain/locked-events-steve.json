@@ -16,7 +16,7 @@
       "eventType": "fundraiser",
       "lockedStatus": "leadership_locked",
       "timeKnown": true,
-      "notes": "House party · Linda Griffith host (501-556-7441) · Lisa Holloway county lead (662-549-8543) · Cleburne County"
+      "notes": "House party · Linda Griffith host · Griffiths Farm · Lisa Holloway county lead (662-549-8543) · Cleburne County · COMPLETED 2026-06-16 · $600 raised · new attendees · family outreach momentum"
     },
     {
       "id": "lock-mt-ida",
@@ -64,7 +64,19 @@
       "eventType": "festival",
       "lockedStatus": "leadership_locked",
       "timeKnown": false,
-      "notes": "Conway County Juneteenth stack · Menifee Jun 20"
+      "notes": "Single Conway County corridor stop — Morrilton Jun 19 + Menifee Jun 20 · not separate calendar entries"
+    },
+    {
+      "id": "lock-rex-nelson-chamber-luncheon",
+      "eventName": "Chamber luncheon — Rex Nelson",
+      "date": "2026-06-22",
+      "dateEnd": null,
+      "city": "Little Rock",
+      "county": "Pulaski",
+      "eventType": "coalition",
+      "lockedStatus": "leadership_locked",
+      "timeKnown": false,
+      "notes": "Little Rock chamber luncheon for Rex Nelson · Kelly attending"
     },
     {
       "id": "lock-benton-immersion",

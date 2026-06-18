@@ -32,7 +32,7 @@ Benton County immersion
 
 ## 2026-06-22 (Mon) — LOCKED
 
-Benton County immersion
+Chamber luncheon — Rex Nelson · Benton County immersion
 
 ## 2026-06-23 (Tue) — LOCKED
 

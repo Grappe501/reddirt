@@ -57,8 +57,8 @@ export const meetKellyCommunityCopy = {
       title: "Ballot petitions & LEARNS",
       body:
         "After the LEARNS Act, Kelly and neighbors organized referendum and initiative support—including a temporary Sherwood office for petition packets and notaries. Timeline and scope need campaign verification. Democracy starts local; citizen-led work stays volunteer-centered.",
-      href: "/about/why-im-running",
-      hrefLabel: "Why I'm running",
+      href: "/direct-democracy/ballot-initiative-process",
+      hrefLabel: "How initiatives reach the ballot",
       status: "NEEDS KELLY APPROVAL" as const,
     },
     {

@@ -3,6 +3,8 @@
  * Two-level public architecture: overview summaries → journey / community / why-im-running drill-downs.
  */
 
+import { directDemocracyHubHref, kellyInitiativesChapterHref } from "@/config/direct-democracy-links";
+
 export type MeetKellyQuestionId =
   | "who"
   | "done"
@@ -78,6 +80,8 @@ export const MEET_KELLY_SUBNAV = [
   { href: "/about/journey", label: "Journey" },
   { href: "/about/community", label: "Community" },
   { href: "/about/why-im-running", label: "Why I'm running" },
+  { href: directDemocracyHubHref, label: "Direct democracy" },
+  { href: kellyInitiativesChapterHref, label: "Initiatives & petitions" },
 ] as const;
 
 export const meetKellyExecutiveSummary = {

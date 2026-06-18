@@ -1,6 +1,6 @@
 # Weekly Forward Motion Packet
 
-Generated: 2026-06-15
+Generated: 2026-06-18
 
 ## Summary
 
@@ -8,7 +8,7 @@ Generated: 2026-06-15
 | ---------- | ----------------: |
 | Kelly | 4 |
 | Surrogate | 0 |
-| County Team | 10 |
+| County Team | 6 |
 
 ## What must be approved
 
@@ -16,10 +16,6 @@ All public-facing pieces require human approval before release. Nothing in this 
 
 ## Missing promotion pieces (next 21 days)
 
-- Bella Vista Sunday Farmers and Makers Market: Mobilize draft
-- Bella Vista Sunday Farmers and Makers Market: Facebook draft
-- Bella Vista Sunday Farmers and Makers Market: News release
-- Bella Vista Sunday Farmers and Makers Market: Graphics request
 - River Valley Crawfish Festival: Mobilize draft
 - River Valley Crawfish Festival: Facebook draft
 - River Valley Crawfish Festival: News release
@@ -41,33 +37,14 @@ All public-facing pieces require human approval before release. Nothing in this 
 - Arkansas Folklife Festival: News release
 - Arkansas Folklife Festival: Graphics request
 - Little Rock Bridal and Wedding Expo: Mobilize draft
+- Little Rock Bridal and Wedding Expo: Facebook draft
+- Little Rock Bridal and Wedding Expo: News release
+- Little Rock Bridal and Wedding Expo: Graphics request
+- Bella Vista Summer Sunday Farmers and Makers Market: Mobilize draft
 
 ---
 
 ## Kelly stops next week
-
-### Bella Vista Sunday Farmers and Makers Market
-
-| Field | Value |
-| ----- | ----- |
-| Event | Bella Vista Sunday Farmers and Makers Market |
-| County | Benton County |
-| City | Bella Vista |
-| Date | 2026-06-14 |
-| Assignment | Kelly |
-| Score | 65 (impact 65) |
-| Verification | verified |
-| Mobilize | not_started |
-| Facebook | draft_needed |
-| News Release | draft_needed |
-| Graphic | needed |
-| Phone Bank | list_needed |
-| Postcard | not_started |
-| Canvass | future |
-| Door Hanger | future |
-| Story Plan | capture_plan_ready |
-| Readiness | 0% |
-| **Next Action** | Draft Mobilize event — human approval required before publish |
 
 ### River Valley Crawfish Festival
 
@@ -123,6 +100,29 @@ All public-facing pieces require human approval before release. Nothing in this 
 | County | Benton County |
 | City | Bella Vista |
 | Date | 2026-06-21 |
+| Assignment | Kelly |
+| Score | 65 (impact 65) |
+| Verification | verified |
+| Mobilize | not_started |
+| Facebook | draft_needed |
+| News Release | draft_needed |
+| Graphic | needed |
+| Phone Bank | list_needed |
+| Postcard | not_started |
+| Canvass | future |
+| Door Hanger | future |
+| Story Plan | capture_plan_ready |
+| Readiness | 0% |
+| **Next Action** | Draft Mobilize event — human approval required before publish |
+
+### Rodeo of the Ozarks
+
+| Field | Value |
+| ----- | ----- |
+| Event | Rodeo of the Ozarks |
+| County | Washington County |
+| City | Springdale |
+| Date | 2026-06-24 |
 | Assignment | Kelly |
 | Score | 65 (impact 65) |
 | Verification | verified |
@@ -248,98 +248,6 @@ _None scheduled._
 | Assignment | County Team |
 | Score | 7 (impact 9) |
 | Verification | verified |
-| Mobilize | not_started |
-| Facebook | not_started |
-| News Release | not_started |
-| Graphic | needed |
-| Phone Bank | list_needed |
-| Postcard | not_started |
-| Canvass | future |
-| Door Hanger | future |
-| Story Plan | not_started |
-| Readiness | 0% |
-| **Next Action** | Draft Mobilize event — human approval required before publish |
-
-### Fundraiser in Quitman
-
-| Field | Value |
-| ----- | ----- |
-| Event | Fundraiser in Quitman |
-| County | Cleburne County |
-| City | TBD |
-| Date | 2026-06-16 |
-| Assignment | County Team |
-| Score | 38 (impact 50) |
-| Verification | tentative |
-| Mobilize | not_started |
-| Facebook | not_started |
-| News Release | not_started |
-| Graphic | needed |
-| Phone Bank | list_needed |
-| Postcard | not_started |
-| Canvass | future |
-| Door Hanger | future |
-| Story Plan | not_started |
-| Readiness | 0% |
-| **Next Action** | Draft Mobilize event — human approval required before publish |
-
-### Juneteenth Morrilton c5
-
-| Field | Value |
-| ----- | ----- |
-| Event | Juneteenth Morrilton c5 |
-| County | Conway County |
-| City | TBD |
-| Date | 2026-06-19 |
-| Assignment | County Team |
-| Score | 38 (impact 50) |
-| Verification | tentative |
-| Mobilize | not_started |
-| Facebook | not_started |
-| News Release | not_started |
-| Graphic | needed |
-| Phone Bank | list_needed |
-| Postcard | not_started |
-| Canvass | future |
-| Door Hanger | future |
-| Story Plan | not_started |
-| Readiness | 0% |
-| **Next Action** | Draft Mobilize event — human approval required before publish |
-
-### Menifee Juneteenth
-
-| Field | Value |
-| ----- | ----- |
-| Event | Menifee Juneteenth |
-| County | Conway County |
-| City | TBD |
-| Date | 2026-06-20 |
-| Assignment | County Team |
-| Score | 38 (impact 50) |
-| Verification | tentative |
-| Mobilize | not_started |
-| Facebook | not_started |
-| News Release | not_started |
-| Graphic | needed |
-| Phone Bank | list_needed |
-| Postcard | not_started |
-| Canvass | future |
-| Door Hanger | future |
-| Story Plan | not_started |
-| Readiness | 0% |
-| **Next Action** | Draft Mobilize event — human approval required before publish |
-
-### Monticello Juneteenth festival - Clarissa pace
-
-| Field | Value |
-| ----- | ----- |
-| Event | Monticello Juneteenth festival - Clarissa pace |
-| County | Drew County |
-| City | TBD |
-| Date | 2026-06-14 |
-| Assignment | County Team |
-| Score | 29 (impact 38) |
-| Verification | tentative |
 | Mobilize | not_started |
 | Facebook | not_started |
 | News Release | not_started |

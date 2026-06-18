@@ -4,8 +4,8 @@
 
 | Metric | Value |
 |--------|------:|
-| Visited (leadership-confirmed) | 43 |
-| Never visited | 32 |
+| Visited (leadership-confirmed) | 45 |
+| Never visited | 30 |
 | After locked backbone | 50 / 75 |
 | Still missing after locked schedule | 25 |
 
@@ -65,6 +65,4 @@ Use Tue/Fri LR origin for same-day regional stacks.
 - Clay
 - Hot Spring
 - Howard
-- Sharp
 - Union
-- Yell

@@ -2,7 +2,7 @@
 
 > **Backward proof** (Phase 12) + **Forward motion** (Phase 13) = perceived statewide momentum.
 
-Updated: 2026-06-15
+Updated: 2026-06-18
 
 ## Mission
 
@@ -31,9 +31,9 @@ Arkansas is a relationship state. Voters need to repeatedly encounter evidence K
 | Metric | Count |
 | ------ | ----: |
 | Upcoming stops (90d horizon) | 79 |
-| Next 7 days | 14 |
-| Kelly assignment | 45 |
-| Verified | 73 |
+| Next 7 days | 10 |
+| Kelly assignment | 48 |
+| Verified | 77 |
 
 ## Objectives
 
@@ -59,7 +59,3 @@ npm run campaign-brain:forward-motion
 npm run campaign-brain:build
 npm run election-plan:build
 ```
-
-## Build master plan
-
-Sub-phases to finish UI, approvals, and operator workflow: [`PHASE-13-BUILD-MASTER-PLAN.md`](./PHASE-13-BUILD-MASTER-PLAN.md) · in-app at `/election-plan/forward-motion/master-plan`

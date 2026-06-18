@@ -4,7 +4,6 @@
 | ---- | ------ | ----- | -------- | -------- | -------- | ------- | ------- |
 | visit-announcement | Union County | Union County Fair | 200 | T-21d | T-14d | T-10d | TBD |
 | visit-announcement | Fulton County | Fulton County Fair | 200 | T-21d | T-14d | T-10d | TBD |
-| visit-announcement | Benton County | Bella Vista Sunday Farmers and Makers Market | 200 | T-21d | T-14d | T-10d | TBD |
 | visit-announcement | Sebastian County | River Valley Crawfish Festival | 200 | T-21d | T-14d | T-10d | TBD |
 | visit-announcement | Pulaski County | Juneteenth in Little Rock | 200 | T-21d | T-14d | T-10d | TBD |
 | visit-announcement | Benton County | Bella Vista Summer Farmers and Makers Market | 200 | T-21d | T-14d | T-10d | TBD |
@@ -20,5 +19,6 @@
 | visit-announcement | Benton County | Bella Vista Sunday Outdoor Farmers and Makers Market | 200 | T-21d | T-14d | T-10d | TBD |
 | visit-announcement | Pulaski County | 3492 Music Festival: A Celebration of Community and Sound | 200 | T-21d | T-14d | T-10d | TBD |
 | visit-announcement | Benton County | Bella Vista Midsummer Farmers and Makers Market | 200 | T-21d | T-14d | T-10d | TBD |
+| visit-announcement | Sebastian County | Fort Smith Back 2 School Shopping Extravaganza | 200 | T-21d | T-14d | T-10d | TBD |
 | visit-announcement | Conway County | Sixty-Eight Petit Jean Swap Meet & Car Show | 200 | T-21d | T-14d | T-10d | TBD |
 | visit-announcement | Baxter County | Mountain Home Craft Fest | 200 | T-21d | T-14d | T-10d | TBD |

@@ -20,6 +20,10 @@ export const heardItems = [
 
 export const movementBeliefs = [
   {
+    title: "Defend direct democracy",
+    body: "Ballot initiatives and referenda belong to citizens—not insiders who treat signature gathering as a privilege. Kelly entered this race to protect that path.",
+  },
+  {
     title: "Protect the vote",
     body: "Fair, secure elections administered consistently—free from political pressure or favoritism. That’s the baseline for confidence in Arkansas democracy.",
   },
@@ -39,6 +43,18 @@ export const movementBeliefs = [
 
 export const pathwayCards = [
   {
+    title: "Direct democracy & ballot access",
+    description: "How initiatives and referenda move from idea to ballot—and how we protect citizen-led petition work.",
+    href: "/direct-democracy",
+    ctaLabel: "Explore direct democracy",
+  },
+  {
+    title: "Ballot initiative process",
+    description: "Official steps from title drafting through signature verification—plain language, no insider jargon.",
+    href: "/direct-democracy/ballot-initiative-process",
+    ctaLabel: "Walk the process",
+  },
+  {
     title: "Stay connected",
     description: "Updates and honest context about the office—without noise or shame.",
     href: "/get-involved",
@@ -49,12 +65,6 @@ export const pathwayCards = [
     description: "Host, knock doors, or support neighbors stepping up in your county.",
     href: "/local-organizing",
     ctaLabel: "Organize nearby",
-  },
-  {
-    title: "Learn ballot access",
-    description: "How initiatives and referenda move from idea to ballot—and how we protect voter access responsibly.",
-    href: "/direct-democracy",
-    ctaLabel: "Explore tools",
   },
   {
     title: "Office priorities",

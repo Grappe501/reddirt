@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ContentImage } from "@/components/media/ContentImage";
 import { media } from "@/content/media/registry";
+import { directDemocracyHubHref } from "@/config/direct-democracy-links";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -119,6 +120,23 @@ export function TrustFunnelHero() {
               className="sm:inline-flex"
             >
               <Link
+                href={directDemocracyHubHref}
+                className={cn(
+                  ctaClass,
+                  "w-full sm:w-auto",
+                  "border-2 border-kelly-gold/70 bg-kelly-gold/15 text-kelly-gold hover:bg-kelly-gold/25 focus-visible:outline-kelly-gold",
+                )}
+              >
+                {copy.ctas.directDemocracy}
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.42, ease }}
+              className="sm:inline-flex"
+            >
+              <Link
                 href="/understand"
                 className={cn(
                   ctaClass,
@@ -132,7 +150,7 @@ export function TrustFunnelHero() {
             <motion.div
               initial={reduceMotion ? false : { opacity: 0, y }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.42, ease }}
+              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.48, ease }}
               className="sm:inline-flex"
             >
               <Link
@@ -149,7 +167,7 @@ export function TrustFunnelHero() {
             <motion.div
               initial={reduceMotion ? false : { opacity: 0, y }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.48, ease }}
+              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.54, ease }}
               className="sm:inline-flex"
             >
               <Link

@@ -1,8 +1,6 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 import { CityLocationBriefPanel } from "@/components/election-plan/CityLocationBriefPanel";
-import { buildCommunityWorkbenchRegistry } from "@/lib/election-plan/community-workbench/build-registry";
-import { communityWorkbenchHref } from "@/lib/election-plan/community-workbench/links";
 import { getCityLocationBrief } from "@/lib/election-plan/load-city-location-brief";
 import { getCitiesInCounty, getCountyByName } from "@/lib/election-plan/load-county";
 import { getCountyStrikeTeamByName } from "@/lib/election-plan/load-county-strike-team";
@@ -35,11 +33,6 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function CityLocationBriefPage({ params }: Props) {
   const { slug } = await params;
-
-  const hasWorkbench = buildCommunityWorkbenchRegistry().some((w) => w.slug === slug && w.kind === "city");
-  if (hasWorkbench) {
-    redirect(communityWorkbenchHref(slug));
-  }
 
   const data = loadElectionPlanSnapshot();
   const brief = getCityLocationBrief(slug, data.cities);

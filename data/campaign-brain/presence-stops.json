@@ -1,5 +1,29 @@
 {
   "version": 1,
   "note": "Log every Kelly stop — field updates this file; npm run campaign-brain:motion:build → docs/campaign-brain/motion-and-storytelling/",
-  "stops": []
+  "stops": [
+    {
+      "id": "quitman-griffiths-farm-fundraiser-2026-06-16",
+      "county": "Cleburne",
+      "city": "Quitman",
+      "date": "2026-06-16",
+      "location": "Griffiths Farm · Linda Griffith host",
+      "type": "house_party",
+      "storyCategory": "community_organization",
+      "photos": false,
+      "video": false,
+      "storyPublished": false,
+      "socialPostsPublished": 0,
+      "substackPublished": false,
+      "mediaCoverage": false,
+      "contentPyramid": {
+        "verticalVideo": false,
+        "photoCarousel": false,
+        "localStory": false,
+        "substack": false,
+        "emailRecap": false
+      },
+      "notes": "Fundraiser completed · $600 raised · attendees mostly new to civic involvement · Kelly shared campaign vision · as team left, hosts were already discussing which families to contact about the race and Kelly · Lisa Holloway county lead · Linda Griffith host · Cleburne County"
+    }
+  ]
 }

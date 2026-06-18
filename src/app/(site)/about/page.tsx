@@ -13,6 +13,8 @@ import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { MeetKellySixQuestions } from "@/components/about/MeetKellySixQuestions";
 import { MeetKellyChapterIndex } from "@/components/about/MeetKellyChapterIndex";
 import { MeetKellyTrustIndicators } from "@/components/about/MeetKellyTrustIndicators";
+import { MeetKellyDirectDemocracyCallout } from "@/components/about/MeetKellyDirectDemocracyCallout";
+import { directDemocracyHubHref } from "@/config/direct-democracy-links";
 import { meetKellyExecutiveSummary } from "@/content/about/meet-kelly-hub";
 
 export const dynamic = "force-dynamic";
@@ -33,7 +35,10 @@ export default async function AboutPage() {
   return (
     <>
       <PageHero eyebrow={summary.eyebrow} title={summary.title} subtitle={summary.subtitle}>
-        <Button href="/about/why-im-running" variant="primary">
+        <Button href={directDemocracyHubHref} variant="primary">
+          Direct democracy
+        </Button>
+        <Button href="/about/why-im-running" variant="outline">
           Why I&apos;m running
         </Button>
         <Button href="/about/journey" variant="outline">
@@ -51,6 +56,14 @@ export default async function AboutPage() {
         <ContentContainer className="max-w-3xl">
           <MeetKellySubnav current="/about" />
           <p className="mt-6 font-body text-base leading-relaxed text-kelly-text/85">{summary.lead}</p>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY>
+        <ContentContainer wide>
+          <div className="mx-auto max-w-4xl">
+            <MeetKellyDirectDemocracyCallout />
+          </div>
         </ContentContainer>
       </FullBleedSection>
 

@@ -4,6 +4,8 @@ import { getCampaignBlogUrl, getVolunteerSignupHref } from "@/config/external-ca
 import { siteConfig } from "@/config/site";
 import type { RoadPostCard } from "@/lib/content/content-hub-queries";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
+import { TrustFunnelDirectDemocracySection } from "@/components/home/trust-funnel/TrustFunnelDirectDemocracySection";
+import { directDemocracyHubHref } from "@/config/direct-democracy-links";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { TrustFunnelHero } from "@/components/home/trust-funnel/TrustFunnelHero";
 import { TrustFunnelMeetKellySection } from "@/components/home/trust-funnel/TrustFunnelMeetKellySection";
@@ -30,6 +32,8 @@ export function HomeTrustFunnelWireframe({ roadPreviewPosts, upcomingPublicEvent
       <TrustFunnelHero />
 
       <TrustFunnelOfficeExplainerSection />
+
+      <TrustFunnelDirectDemocracySection />
 
       <TrustFunnelMeetKellySection />
 
@@ -95,6 +99,12 @@ export function HomeTrustFunnelWireframe({ roadPreviewPosts, upcomingPublicEvent
                 className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-navy/20 bg-white px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:border-kelly-gold hover:shadow-md"
               >
                 {final.ctas.meetKelly}
+              </Link>
+              <Link
+                href={directDemocracyHubHref}
+                className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-gold/50 bg-kelly-gold/15 px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:bg-kelly-gold/25"
+              >
+                {final.ctas.directDemocracy}
               </Link>
               <Link
                 href="/events/request"

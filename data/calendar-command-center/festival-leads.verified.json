@@ -227,15 +227,6 @@
     "spreadsheetNotes": "Field ingest 2026-06-15 — verify date and Mobilize link"
   },
   {
-    "id": "fest-2026-06-19-juneteenth-morrilton-c5",
-    "date": "2026-06-19",
-    "eventName": "Juneteenth Morrilton c5",
-    "county": "Conway",
-    "source": "Kelly uploaded ICS",
-    "spreadsheetNotes": "Scheduled / verify details",
-    "reconcileStatus": "needs_confirmation"
-  },
-  {
     "id": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
     "date": "2026-06-19",
     "dateEnd": null,
@@ -276,15 +267,6 @@
     "category": "festival",
     "reconcileStatus": "field_ingest_web_date",
     "spreadsheetNotes": "Date from Juneteenth federal observance — field verify before Mobilize"
-  },
-  {
-    "id": "fest-2026-06-20-menifee-juneteenth",
-    "date": "2026-06-20",
-    "eventName": "Menifee Juneteenth",
-    "county": "Conway",
-    "source": "Kelly uploaded ICS",
-    "spreadsheetNotes": "Scheduled / verify details",
-    "reconcileStatus": "needs_confirmation"
   },
   {
     "id": "fest-2026-06-20-fairfield-bay-surf-the-bay",

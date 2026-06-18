@@ -20,6 +20,7 @@ import type {
   ElectionPlanLane,
   ElectionPlanWorkbenchSnapshot,
 } from "../src/lib/election-plan/types";
+import { writeCountyPlaybookMarkdownBundle } from "./election-plan/bundle-county-playbook-markdown";
 
 const ROOT = process.cwd();
 const OUT_DIR = path.join(ROOT, "data/election-plan");
@@ -535,6 +536,74 @@ function buildForwardMotionSection() {
       { id: "postcard", title: "Postcards", description: "Visit announcement · writing parties" },
       { id: "canvass", title: "Canvass / Door Hangers", description: "Future layer — defaults to future" },
       { id: "story", title: "Story Capture", description: "Pre-stop briefs → Phase 12 post-event proof" },
+    ],
+  };
+}
+
+function buildMediaOutreachSection() {
+  const apa = readJson<{
+    disclaimer: string;
+    partner: { name: string; shortName: string; relationshipStatus: string };
+    programs: Record<string, { id: string; label: string; cadence: string; notes?: string; budgetPoolNote?: string }>;
+    monthlyLte: Array<{ month: string; label: string; targetSendDate: string; theme: string; status: string }>;
+    visitPlacements: Array<{
+      eventId: string;
+      eventName: string;
+      county: string;
+      city: string;
+      visitDate: string;
+      countyTier: string;
+      assignment: string;
+      papersTargeted: number;
+      printUnit: string;
+      printStatus: string;
+      radioStatus: string;
+      nextAction: string;
+    }>;
+    summary: {
+      ruralVisitCount: number;
+      printUrgentCount: number;
+      radioResearchCount: number;
+      lteDraftNeeded: number;
+      statewideLteMonthlyCost: number;
+      statewideLteCampaignTotal: number;
+    };
+  }>(path.join(BRAIN_DATA, "media-outreach/apa-media-program.json"));
+
+  const programs = apa?.programs ?? {};
+  return {
+    heroLine: "Rural credibility runs through local papers and radio — APA coordinates statewide LTE and visit-adjacent print.",
+    disclaimer: apa?.disclaimer ?? "Planning only — human approval before APA placement.",
+    partner: apa?.partner ?? { name: "Arkansas Press Association", shortName: "APA", relationshipStatus: "active_negotiation" },
+    summary: apa?.summary ?? {
+      ruralVisitCount: 0,
+      printUrgentCount: 0,
+      radioResearchCount: 0,
+      lteDraftNeeded: 0,
+      statewideLteMonthlyCost: 300,
+      statewideLteCampaignTotal: 1800,
+    },
+    monthlyLte: apa?.monthlyLte ?? [],
+    visitPlacements: (apa?.visitPlacements ?? []).slice(0, 30),
+    programs: [
+      {
+        id: programs.statewideLte?.id ?? "apa-statewide-lte",
+        label: programs.statewideLte?.label ?? "Statewide LTE",
+        cadence: programs.statewideLte?.cadence ?? "monthly",
+        note: programs.statewideLte?.notes ?? "$300/month · candidate byline to every paper",
+      },
+      {
+        id: programs.visitLocalPrint?.id ?? "apa-visit-local-print",
+        label: programs.visitLocalPrint?.label ?? "Visit local print",
+        cadence: programs.visitLocalPrint?.cadence ?? "per_rural_visit",
+        note: programs.visitLocalPrint?.budgetPoolNote ?? "2 papers · 1/8 page via APA before rural stops",
+      },
+      {
+        id: programs.visitRuralRadio?.id ?? "apa-visit-rural-radio",
+        label: programs.visitRuralRadio?.label ?? "Rural radio",
+        cadence: programs.visitRuralRadio?.cadence ?? "per_rural_visit",
+        note: programs.visitRuralRadio?.budgetPoolNote ?? "Quote rural stations tied to upcoming stops",
+      },
     ],
   };
 }
@@ -2358,6 +2427,7 @@ function main() {
     studentsForArkansas: buildStudentsForArkansasSection(),
     motionPresence: buildMotionPresenceSection(),
     forwardMotion: buildForwardMotionSection(),
+    mediaOutreach: buildMediaOutreachSection(),
     coalitionPowerMap: buildCoalitionPowerMapSection(),
     endorsementAcquisition: buildEndorsementAcquisitionSection(),
     voterContact: buildVoterContactSection(),
@@ -2377,6 +2447,9 @@ function main() {
   };
 
   writeFileSync(OUT_FILE, JSON.stringify(snapshot, null, 2), "utf8");
+
+  writeCountyPlaybookMarkdownBundle(counties);
+
   // eslint-disable-next-line no-console
   console.log(
     `Election plan workbench snapshot: ${counties.length} counties · ${snapshot.cities.length} cities · ${OUT_FILE}`,

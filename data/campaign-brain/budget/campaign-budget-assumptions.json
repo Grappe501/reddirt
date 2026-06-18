@@ -240,19 +240,41 @@
   },
   "mediaAndOutreach": {
     "status": "modeled_assumption",
-    "note": "Intentionally modest Jun–Aug. May double Sep–Oct if traction builds.",
+    "note": "Intentionally modest Jun–Aug. May double Sep–Oct if traction builds. APA statewide LTE is separate from volunteer LTE training.",
     "monthsBudgeted": 6,
     "monthly": {
+      "apaStatewideLteDistribution": 300,
       "ruralNewspaperAdvertising": 1500,
       "ruralRadioAdvertising": 1500,
       "collegeCampusStudentOutreach": 500,
       "creativeCommunityAdvertising": 500
     },
-    "monthlyTotal": 4000,
-    "campaignTotal": 24000,
-    "aggressiveMonthlyTotal": 8000,
-    "aggressiveCampaignTotal": 48000,
-    "bareCampaignTotal": 18000
+    "monthlyTotal": 4300,
+    "campaignTotal": 25800,
+    "aggressiveMonthlyTotal": 8600,
+    "aggressiveCampaignTotal": 51600,
+    "bareCampaignTotal": 19800,
+    "apaPrograms": {
+      "statewideLte": {
+        "vendor": "Arkansas Press Association",
+        "costPerMonth": 300,
+        "cadence": "monthly",
+        "author": "Kelly Grappe (candidate byline)",
+        "note": "APA sends LTE to every newspaper in Arkansas — direct from candidate"
+      },
+      "visitLocalPrint": {
+        "vendor": "Arkansas Press Association",
+        "papersPerRuralVisit": 2,
+        "preferredUnit": "one_eighth_page",
+        "leadTimeDaysBeforeVisit": 14,
+        "pricingStatus": "needs_quote"
+      },
+      "visitRuralRadio": {
+        "status": "research_and_quote",
+        "leadTimeDaysBeforeVisit": 10,
+        "pricingStatus": "needs_quote"
+      }
+    }
   },
   "communityActivationAndSwag": {
     "status": "modeled_assumption",
@@ -481,31 +503,31 @@
       "aggressive": 12000
     }
   },
-  "generatedAt": "2026-06-15T14:47:36.651Z",
+  "generatedAt": "2026-06-18T04:09:46.618Z",
   "computed": {
     "travel": {
       "conservative": {
         "fuel": 11583,
-        "food": 12600,
+        "food": 12750,
         "lodging": 7350,
-        "total": 31533,
-        "foodDays": 84,
+        "total": 31683,
+        "foodDays": 85,
         "lodgingNights": 42
       },
       "expected": {
         "fuel": 11583,
-        "food": 15900,
+        "food": 16050,
         "lodging": 10150,
-        "total": 37633,
-        "foodDays": 106,
+        "total": 37783,
+        "foodDays": 107,
         "lodgingNights": 58
       },
       "aggressive": {
         "fuel": 11583,
-        "food": 24000,
+        "food": 24150,
         "lodging": 11200,
-        "total": 46783,
-        "foodDays": 160,
+        "total": 46933,
+        "foodDays": 161,
         "lodgingNights": 64
       },
       "monthlyBreakdown": {
@@ -514,12 +536,12 @@
             "month": "2026-06",
             "label": "June 2026",
             "fuel": 1333,
-            "foodDays": 28,
-            "foodCost": 4200,
+            "foodDays": 29,
+            "foodCost": 4350,
             "lodgingNights": 16,
             "lodgingCost": 2800,
-            "total": 8333,
-            "eventCount": 11
+            "total": 8483,
+            "eventCount": 12
           },
           {
             "month": "2026-07",
@@ -582,12 +604,12 @@
             "month": "2026-06",
             "label": "June 2026",
             "fuel": 1333,
-            "foodDays": 30,
-            "foodCost": 4500,
+            "foodDays": 31,
+            "foodCost": 4650,
             "lodgingNights": 20,
             "lodgingCost": 3500,
-            "total": 9333,
-            "eventCount": 11
+            "total": 9483,
+            "eventCount": 12
           },
           {
             "month": "2026-07",
@@ -650,12 +672,12 @@
             "month": "2026-06",
             "label": "June 2026",
             "fuel": 1333,
-            "foodDays": 42,
-            "foodCost": 6300,
+            "foodDays": 43,
+            "foodCost": 6450,
             "lodgingNights": 22,
             "lodgingCost": 3850,
-            "total": 11483,
-            "eventCount": 18
+            "total": 11633,
+            "eventCount": 19
           },
           {
             "month": "2026-07",
@@ -724,25 +746,25 @@
     "sherwoodNetMidEstimate": 11500,
     "fieldStrategy": {
       "conservative": {
-        "media": 18000,
+        "media": 19800,
         "immersionSwag": 5000,
         "compliance": 4500,
         "countySponsorships": 5000,
-        "total": 32500
+        "total": 34300
       },
       "expected": {
-        "media": 24000,
+        "media": 25800,
         "immersionSwag": 7500,
         "compliance": 4500,
         "countySponsorships": 7500,
-        "total": 43500
+        "total": 45300
       },
       "aggressive": {
-        "media": 48000,
+        "media": 51600,
         "immersionSwag": 10000,
         "compliance": 4500,
         "countySponsorships": 10000,
-        "total": 72500
+        "total": 76100
       }
     },
     "digitalProgram": {
@@ -766,9 +788,9 @@
       }
     },
     "scenarios": {
-      "bareMinimumTotal": 181783,
-      "workingCampaignTotal": 232053,
-      "aggressiveStatewideTotal": 339123
+      "bareMinimumTotal": 183733,
+      "workingCampaignTotal": 234003,
+      "aggressiveStatewideTotal": 342873
     }
   }
 }

@@ -236,16 +236,6 @@
       "reconcileStatus": "field_ingest_pending"
     },
     {
-      "id": "fest-2026-06-19-juneteenth-morrilton-c5",
-      "eventName": "Juneteenth Morrilton c5",
-      "date": "2026-06-19",
-      "dateEnd": null,
-      "city": "",
-      "county": "Conway",
-      "mobilizeUrl": "",
-      "reconcileStatus": "needs_confirmation"
-    },
-    {
       "id": "fest-2026-06-19-mountain-home-mountain-home-craft-fest",
       "eventName": "Mountain Home Craft Fest",
       "date": "2026-06-19",
@@ -274,16 +264,6 @@
       "county": "Pulaski",
       "mobilizeUrl": "",
       "reconcileStatus": "field_ingest_web_date"
-    },
-    {
-      "id": "fest-2026-06-20-menifee-juneteenth",
-      "eventName": "Menifee Juneteenth",
-      "date": "2026-06-20",
-      "dateEnd": null,
-      "city": "",
-      "county": "Conway",
-      "mobilizeUrl": "",
-      "reconcileStatus": "needs_confirmation"
     },
     {
       "id": "fest-2026-06-20-fairfield-bay-surf-the-bay",
