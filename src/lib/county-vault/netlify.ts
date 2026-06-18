@@ -13,6 +13,3 @@ export function validateVaultUploadTotalBytes(totalBytes: number): string | null
 export function getVaultUploadMaxBytesForClient(): number {
   return getRuntimeUploadMaxBytes();
 }
-
-/** Netlify @netlify/plugin-nextjs — keep in sync with admin intelligence routes. */
-export const COUNTY_VAULT_ROUTE_MAX_DURATION = process.env.NETLIFY ? 26 : 300;

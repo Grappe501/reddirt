@@ -2,10 +2,11 @@ import { assertAdminApi } from "@/lib/admin/require-admin";
 import { runCountyVaultIngest } from "@/lib/county-vault/ingest-pipeline";
 import { resolveDbCountyForVault } from "@/lib/county-vault/resolve-county";
 
-import { COUNTY_VAULT_ROUTE_MAX_DURATION, validateVaultUploadTotalBytes } from "@/lib/county-vault/netlify";
+import { validateVaultUploadTotalBytes } from "@/lib/county-vault/netlify";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = COUNTY_VAULT_ROUTE_MAX_DURATION;
+/** Next.js requires a literal — Netlify/serverless cap matches admin intelligence routes. */
+export const maxDuration = 26;
 
 export async function POST(req: Request): Promise<Response> {
   const denied = await assertAdminApi();

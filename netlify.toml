@@ -32,7 +32,7 @@
   command = "bash scripts/netlify-build.sh"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
   # Do not set NODE_ENV=production here — Netlify npm install would omit devDependencies
   # (typescript required for next.config.ts). netlify-build.sh sets production for next build only.
   NPM_CONFIG_PRODUCTION = "false"
