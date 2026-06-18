@@ -13,6 +13,7 @@ import {
   type IntensiveDayId,
 } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { DEBATE_INTENSIVE_V2_LABEL, getDayDeepOverlay } from "@/lib/intelligence/v4/debateWeekIntensive2026Deep";
+import { DEBATE_INTENSIVE_V3_LABEL, DEBATE_WEEK_LANES_HUB_HREF } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
 
 const dayTab =
   "rounded-lg border px-2 py-2 text-left text-[11px] font-semibold transition sm:px-3 sm:text-xs";
@@ -42,7 +43,7 @@ export function DebateWeekIntensivePanel({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-kelly-gold">
-            Command Mode · Debate week intensive · {DEBATE_INTENSIVE_V2_LABEL}
+            Command Mode · {DEBATE_INTENSIVE_V2_LABEL} · {DEBATE_INTENSIVE_V3_LABEL}
           </p>
           <h2 className="mt-1 font-heading text-2xl font-bold text-white">{DEBATE_WEEK_INTENSIVE_PRIMER.headline}</h2>
           <p className="mt-2 max-w-3xl text-sm text-kelly-inverse-muted">
@@ -57,6 +58,12 @@ export function DebateWeekIntensivePanel({
               className="rounded-lg bg-kelly-gold px-4 py-2 text-center text-xs font-bold uppercase tracking-wide text-kelly-text hover:bg-kelly-gold/90"
             >
               Forum transcript lab
+            </Link>
+            <Link
+              href={DEBATE_WEEK_LANES_HUB_HREF}
+              className="rounded-lg border border-indigo-300 bg-indigo-500/20 px-4 py-2 text-center text-xs font-bold uppercase tracking-wide text-indigo-100 hover:bg-indigo-500/30"
+            >
+              Drill-down lanes
             </Link>
             <Link
               href="/admin/intelligence/debate-prep-tutor"

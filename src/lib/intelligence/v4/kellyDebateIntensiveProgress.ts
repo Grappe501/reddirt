@@ -6,10 +6,11 @@ import path from "node:path";
 import type { IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export type KellyDebateIntensiveProgress = {
-  version: 2;
+  version: 3;
   updatedAt: string;
   completedBlocks: Partial<Record<IntensiveDayId, string[]>>;
   completedDrills: string[];
+  completedLanes: string[];
   completedDays: IntensiveDayId[];
   notes: Partial<Record<IntensiveDayId, string>>;
 };
@@ -17,10 +18,11 @@ export type KellyDebateIntensiveProgress = {
 const STATE_REL = path.join("data", "intelligence", "kelly-debate-intensive-progress.json");
 
 const EMPTY: KellyDebateIntensiveProgress = {
-  version: 2,
+  version: 3,
   updatedAt: new Date(0).toISOString(),
   completedBlocks: {},
   completedDrills: [],
+  completedLanes: [],
   completedDays: [],
   notes: {},
 };
@@ -39,9 +41,10 @@ export function loadKellyDebateIntensiveProgress(root = process.cwd()): KellyDeb
     return {
       ...EMPTY,
       ...parsed,
-      version: 2,
+      version: 3,
       completedBlocks: parsed.completedBlocks ?? {},
       completedDrills: parsed.completedDrills ?? [],
+      completedLanes: parsed.completedLanes ?? [],
       completedDays: parsed.completedDays ?? [],
       notes: parsed.notes ?? {},
     };
@@ -82,6 +85,16 @@ export function toggleDrillProgress(
     ? state.completedDrills.filter((id) => id !== drillId)
     : [...state.completedDrills, drillId];
   return { ...state, completedDrills: next };
+}
+
+export function toggleLaneProgress(
+  state: KellyDebateIntensiveProgress,
+  laneId: string,
+): KellyDebateIntensiveProgress {
+  const next = state.completedLanes.includes(laneId)
+    ? state.completedLanes.filter((id) => id !== laneId)
+    : [...state.completedLanes, laneId];
+  return { ...state, completedLanes: next };
 }
 
 export function markDayComplete(

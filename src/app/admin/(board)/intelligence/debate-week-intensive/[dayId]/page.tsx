@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DebateWeekDayDeepPanel } from "@/components/admin/intelligence/DebateWeekDayDeepPanel";
+import { DebateWeekDayV3Panel } from "@/components/admin/intelligence/DebateWeekDayV3Panel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import {
   DEBATE_WEEK_INTENSIVE_DAY_IDS,
@@ -122,6 +123,8 @@ export default async function DebateWeekIntensiveDayPage({
         forumDeepAnalysis={forumLab.deepAnalysis}
         initialProgress={progress}
       />
+
+      <DebateWeekDayV3Panel dayId={dayId as IntensiveDayId} blocks={plan.blocks} initialProgress={progress} />
     </div>
   );
 }

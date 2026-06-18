@@ -7,7 +7,9 @@ import {
   saveKellyDebateIntensiveProgress,
   toggleBlockProgress,
   toggleDrillProgress,
+  toggleLaneProgress,
 } from "@/lib/intelligence/v4/kellyDebateIntensiveProgress";
+import { computeDebateIntensiveReadiness } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
 
 export const dynamic = "force-dynamic";
 
@@ -31,10 +33,20 @@ const completeDaySchema = z.object({
   dayId: dayIdSchema,
 });
 
+const toggleLaneSchema = z.object({
+  action: z.literal("toggle_lane"),
+  laneId: z.string().min(1),
+});
+
 export async function GET(): Promise<Response> {
   const denied = await assertAdminApi();
   if (denied) return denied;
-  return Response.json({ ok: true, progress: loadKellyDebateIntensiveProgress() });
+  const progress = loadKellyDebateIntensiveProgress();
+  return Response.json({
+    ok: true,
+    progress,
+    readiness: computeDebateIntensiveReadiness(progress),
+  });
 }
 
 export async function POST(req: Request): Promise<Response> {
@@ -65,6 +77,18 @@ export async function POST(req: Request): Promise<Response> {
     const progress = toggleDrillProgress(current, parsed.data.drillId);
     saveKellyDebateIntensiveProgress(progress);
     return Response.json({ ok: true, progress });
+  }
+
+  if (action === "toggle_lane") {
+    const parsed = toggleLaneSchema.safeParse(json);
+    if (!parsed.success) return Response.json({ ok: false, error: "validation" }, { status: 400 });
+    const progress = toggleLaneProgress(current, parsed.data.laneId);
+    saveKellyDebateIntensiveProgress(progress);
+    return Response.json({
+      ok: true,
+      progress,
+      readiness: computeDebateIntensiveReadiness(progress),
+    });
   }
 
   if (action === "complete_day") {

@@ -30,6 +30,8 @@ const KIM_HAMMER_TIER_3_NAV_ITEMS: DebateWeekNavItem[] = buildKimHammerTier3Side
 export const DEBATE_WEEK_ROUTES = [
   "/admin/intelligence",
   "/admin/intelligence/debate-week-intensive",
+  "/admin/intelligence/debate-week-intensive/lanes",
+  "/admin/intelligence/debate-week-intensive/theory",
   "/admin/intelligence/forum-transcript-lab",
   "/admin/intelligence/supreme-workbench",
   "/admin/intelligence/opposition-strategy",
@@ -230,6 +232,18 @@ export const DEBATE_WEEK_PRIMARY_NAV_ITEMS: DebateWeekNavItem[] = [
     badgeKey: "opposition",
     description:
       "Command Mode — 7 study days + debate day. Adult-education pacing, opponent examples, forum transcript lab, AI tutor. Start here tonight.",
+  },
+  {
+    href: "/admin/intelligence/debate-week-intensive/lanes",
+    label: "Drill-down lanes",
+    description:
+      "Command Mode v3 — optional essential/deeper/stretch lanes per day with theory, why Kelly, and what to look for.",
+  },
+  {
+    href: "/admin/intelligence/debate-week-intensive/theory",
+    label: "Theory library",
+    description:
+      "Cross-cutting primers: Command Mode, adult-education pacing, agree-add, author vs administrator, three-way geometry, claims gate.",
   },
   {
     href: "/admin/intelligence/forum-transcript-lab",

@@ -3,6 +3,7 @@ import { ForumTranscriptLabClient } from "@/components/admin/intelligence/ForumT
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import { loadForumTranscriptLab } from "@/lib/intelligence/v4/forumTranscriptLab";
 import { DEBATE_WEEK_INTENSIVE_HUB_HREF } from "@/lib/intelligence/v4/debateWeekIntensive2026";
+import { isOpenAIConfigured } from "@/lib/openai/client";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +26,7 @@ export default function ForumTranscriptLabPage() {
         </Link>
       </V4PageHeader>
 
-      <ForumTranscriptLabClient initialRecord={record} />
+      <ForumTranscriptLabClient initialRecord={record} openaiConfigured={isOpenAIConfigured()} />
     </div>
   );
 }
