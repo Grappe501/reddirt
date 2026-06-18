@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DebateWeekDayDeepPanel } from "@/components/admin/intelligence/DebateWeekDayDeepPanel";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import {
   DEBATE_WEEK_INTENSIVE_DAY_IDS,
@@ -7,6 +8,8 @@ import {
   getDebateWeekIntensiveDay,
   type IntensiveDayId,
 } from "@/lib/intelligence/v4/debateWeekIntensive2026";
+import { loadForumTranscriptLab } from "@/lib/intelligence/v4/forumTranscriptLab";
+import { loadKellyDebateIntensiveProgress } from "@/lib/intelligence/v4/kellyDebateIntensiveProgress";
 
 export const dynamic = "force-dynamic";
 
@@ -23,6 +26,8 @@ export default async function DebateWeekIntensiveDayPage({
   if (!DEBATE_WEEK_INTENSIVE_DAY_IDS.includes(dayId as IntensiveDayId)) notFound();
 
   const plan = getDebateWeekIntensiveDay(dayId as IntensiveDayId)!;
+  const forumLab = loadForumTranscriptLab();
+  const progress = loadKellyDebateIntensiveProgress();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -109,6 +114,14 @@ export default async function DebateWeekIntensiveDayPage({
           </ul>
         </section>
       ) : null}
+
+      <DebateWeekDayDeepPanel
+        dayId={dayId as IntensiveDayId}
+        blocks={plan.blocks}
+        forumCapitalizeMoves={forumLab.analysis?.capitalizeMoves}
+        forumDeepAnalysis={forumLab.deepAnalysis}
+        initialProgress={progress}
+      />
     </div>
   );
 }
