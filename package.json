@@ -460,6 +460,7 @@
     "opportunities:plan-weekends": "tsx scripts/opportunities/plan-weekend-routes.ts",
     "opportunities:ai-rank": "tsx scripts/opportunities/ai-rank-weekend-routes.ts",
     "forum:ingest-acca-drop": "node scripts/run-with-h-drive-env.cjs npx tsx scripts/ingest-acca-forum-video-from-drop.ts",
+    "forum:ingest-youtube-acca": "node scripts/run-with-h-drive-env.cjs npx tsx scripts/ingest-acca-forum-from-youtube.ts",
     "media:ingest-county": "tsx scripts/media/ingest-county-media.ts",
     "agent:knowledge-index": "tsx scripts/agent/build-kelly-agent-knowledge-index.ts",
     "ingest:external-media": "tsx scripts/ingest-external-media.ts",

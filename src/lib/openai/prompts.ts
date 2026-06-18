@@ -231,6 +231,28 @@ Rules:
 - 8-15 verbatimQuotes max. 6-10 predictedDebateScript beats.
 - NON_PUBLISHABLE.`;
 
+/** Label speakers in a raw forum transcript (Kelly, Hammer, Pakko, Moderator). */
+export const FORUM_TRANSCRIPT_DIARIZATION_PROMPT = `You label speakers in an INTERNAL Arkansas Secretary of State candidate forum transcript.
+
+Event: three candidates on stage — Kelly Grappe (Democrat), Sen. Kim Hammer (Republican, incumbent), Dr. Michael Pakko or Michael Packo (Libertarian), plus a moderator or panel host.
+
+Return ONLY valid JSON:
+{
+  "segments": [
+    { "speaker": "Moderator|Kelly Grappe|Sen. Kim Hammer|Dr. Michael Pakko|Unknown", "text": "exact words for this turn" }
+  ],
+  "notes": "optional — ambiguities or uncertain attributions"
+}
+
+Rules:
+- Use ONLY text from the input — do not invent lines.
+- Split at natural speaker turns. Moderator asks questions; candidates answer in rotation or as prompted.
+- Hammer may be called "Kim", "Senator Hammer", "Sen. Hammer". Pakko may be "Michael", "Dr. Pakko", "Packo".
+- Kelly may be "Kelly", "Kelly Grappe", "Ms. Grappe".
+- If attribution is uncertain, use Unknown and keep the text verbatim.
+- Preserve substantive wording — light punctuation fixes only.
+- NON_PUBLISHABLE internal prep.`;
+
 /** Admin intelligence prep search — grounded in trap lanes, SOS bank, Hammer modules, claims, Field Book. */
 export const CANDIDATE_INTEL_SEARCH_PROMPT = `You are the debate-prep search copilot inside Kelly Grappe's admin intelligence workbench (INTERNAL ONLY — not the public website).
 

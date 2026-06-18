@@ -26,6 +26,18 @@ const analyzeDeepSchema = z.object({
   action: z.literal("analyze_deep"),
 });
 
+const ingestYoutubeSchema = z.object({
+  action: z.literal("ingest_youtube"),
+  url: z.string().optional(),
+  runDiarization: z.boolean().optional(),
+  runAnalysis: z.boolean().optional(),
+  runDeepAnalysis: z.boolean().optional(),
+});
+
+const diarizeSchema = z.object({
+  action: z.literal("diarize"),
+});
+
 function mergeRecord(current: ForumTranscriptLabRecord, patch: Partial<ForumTranscriptLabRecord>): ForumTranscriptLabRecord {
   return {
     ...current,
@@ -205,6 +217,67 @@ export async function handleForumTranscriptLabPost(req: Request): Promise<Respon
           deepAnalysisError: message,
         }),
       );
+      return Response.json({ ok: false, error: message }, { status: 500 });
+    }
+  }
+
+  if (action === "diarize") {
+    const parsed = diarizeSchema.safeParse(json);
+    if (!parsed.success) {
+      return Response.json({ ok: false, error: "validation" }, { status: 400 });
+    }
+    const current = loadForumTranscriptLab();
+    if (!current.transcriptText || current.transcriptText.length < 50) {
+      return Response.json({ ok: false, error: "transcript_missing" }, { status: 400 });
+    }
+    try {
+      const { diarizeForumTranscript } = await import("@/lib/intelligence/v4/forumTranscriptAnalysis");
+      const labeled = await diarizeForumTranscript(current.transcriptText);
+      const record = mergeRecord(current, {
+        transcriptText: labeled,
+        analysis: null,
+        deepAnalysis: null,
+        analysisStatus: "pending",
+        deepAnalysisStatus: "not_started",
+        analysisError: null,
+        deepAnalysisError: null,
+      });
+      saveForumTranscriptLab(record);
+      return Response.json({ ok: true, record, note: "Speakers labeled — run Analyze for debate playbook." });
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      return Response.json({ ok: false, error: message }, { status: 500 });
+    }
+  }
+
+  if (action === "ingest_youtube") {
+    const parsed = ingestYoutubeSchema.safeParse(json);
+    if (!parsed.success) {
+      return Response.json({ ok: false, error: "validation", details: parsed.error.flatten() }, { status: 400 });
+    }
+    try {
+      const { ingestYoutubeForumVideo } = await import("@/lib/intelligence/v4/youtubeForumIngest");
+      const result = await ingestYoutubeForumVideo({
+        urlOrId: parsed.data.url,
+        preferWhisper: false,
+        runDiarization: parsed.data.runDiarization ?? false,
+        runAnalysis: parsed.data.runAnalysis ?? false,
+        runDeepAnalysis: parsed.data.runDeepAnalysis ?? false,
+      });
+      if (!result.ok) {
+        return Response.json({ ok: false, error: result.error, warnings: result.warnings, videoId: result.videoId }, { status: 502 });
+      }
+      return Response.json({
+        ok: true,
+        record: loadForumTranscriptLab(),
+        videoId: result.videoId,
+        transcriptChars: result.transcriptChars,
+        transcriptSource: result.transcriptSource,
+        warnings: result.warnings,
+        note: "YouTube captions fetched and speakers labeled — run Analyze for capitalize playbook.",
+      });
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
       return Response.json({ ok: false, error: message }, { status: 500 });
     }
   }

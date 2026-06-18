@@ -77,6 +77,50 @@ export function ForumTranscriptLabClient({
     }
   }
 
+  async function handleYoutubeIngest() {
+    setBusy("youtube");
+    setError(null);
+    try {
+      const res1 = await fetch(`${apiBase}/upload`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "ingest_youtube",
+          url: "https://youtu.be/Hl_n-A9aL1s",
+          runDiarization: false,
+        }),
+      });
+      const data1 = (await res1.json()) as {
+        ok: boolean;
+        record?: ForumTranscriptLabRecord;
+        error?: string;
+        warnings?: string[];
+        note?: string;
+      };
+      if (!data1.ok) throw new Error(data1.error ?? "YouTube fetch failed");
+      if (data1.record) setRecord(data1.record);
+
+      if (!openaiConfigured) {
+        setError("Captions saved — set OPENAI_API_KEY to label speakers and analyze.");
+        return;
+      }
+
+      setBusy("diarize");
+      const res2 = await fetch(`${apiBase}/upload`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "diarize" }),
+      });
+      const data2 = (await res2.json()) as { ok: boolean; record?: ForumTranscriptLabRecord; error?: string };
+      if (!data2.ok) throw new Error(data2.error ?? "Speaker labeling failed");
+      if (data2.record) setRecord(data2.record);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(null);
+    }
+  }
+
   async function handleAnalyze() {
     setBusy("analyze");
     setError(null);
@@ -149,6 +193,33 @@ export function ForumTranscriptLabClient({
       {error ? (
         <div className="rounded-lg border border-rose-300 bg-rose-50 px-4 py-3 text-sm text-rose-950">{error}</div>
       ) : null}
+
+      <section className="rounded-xl border-2 border-kelly-gold/40 bg-kelly-gold/5 p-5">
+        <h2 className="font-heading text-lg font-bold text-kelly-navy">0 · ACCA forum on YouTube</h2>
+        <p className="mt-1 text-sm text-kelly-muted">
+          Fetch captions from the three-candidate Mountain View panel, then AI labels Kelly, Hammer, Pakko, and the
+          moderator so analysis can attribute quotes for debate prep.
+        </p>
+        <p className="mt-2 text-xs text-kelly-subtle">
+          <a href="https://youtu.be/Hl_n-A9aL1s" target="_blank" rel="noopener noreferrer" className="font-semibold underline">
+            youtu.be/Hl_n-A9aL1s
+          </a>
+          {" · "}
+          Best quality: run <code className="text-[10px]">npm run forum:ingest-youtube-acca</code> locally (yt-dlp + Whisper).
+        </p>
+        <button
+          type="button"
+          disabled={busy !== null || !openaiConfigured}
+          onClick={() => void handleYoutubeIngest()}
+          className="mt-4 rounded-lg bg-kelly-navy px-4 py-2 text-sm font-bold text-white disabled:opacity-50"
+        >
+          {busy === "youtube"
+            ? "Fetching YouTube captions…"
+            : busy === "diarize"
+              ? "Labeling speakers…"
+              : "Transcribe & label speakers"}
+        </button>
+      </section>
 
       <section className="rounded-xl border border-kelly-gold/30 bg-white p-5">
         <h2 className="font-heading text-lg font-bold text-kelly-navy">1 · Upload forum video</h2>

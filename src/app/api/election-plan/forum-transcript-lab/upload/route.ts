@@ -3,7 +3,7 @@ import { handleForumTranscriptLabPost } from "@/lib/intelligence/v4/forumTranscr
 
 export const dynamic = "force-dynamic";
 /** Next.js requires a literal — Netlify/serverless cap. */
-export const maxDuration = 26;
+export const maxDuration = 120;
 
 export async function POST(req: Request): Promise<Response> {
   if (!(await requireElectionPlanApiSession())) {

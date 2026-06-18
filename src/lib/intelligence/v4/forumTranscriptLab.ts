@@ -74,7 +74,7 @@ export type ForumTranscriptLabRecord = {
   eventLabel: string;
   ownedMediaAssetId: string | null;
   transcriptText: string;
-  transcriptSource: "upload_whisper" | "paste" | "pending";
+  transcriptSource: "upload_whisper" | "paste" | "pending" | "youtube_captions" | "youtube_whisper";
   analysis: ForumTranscriptAnalysis | null;
   deepAnalysis: ForumDeepAnalysis | null;
   analysisStatus: "pending" | "ready" | "error";
