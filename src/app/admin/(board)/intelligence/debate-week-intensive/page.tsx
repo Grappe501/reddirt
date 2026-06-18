@@ -4,7 +4,6 @@ import { DebateWeekReadinessPanel } from "@/components/admin/intelligence/Debate
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import {
   DEBATE_DATE,
-  DEBATE_WEEK_INTENSIVE_HUB_HREF,
   DEBATE_WEEK_INTENSIVE_PRIMER,
   FORUM_TRANSCRIPT_LAB_HREF,
   totalIntensiveMinutes,
@@ -83,5 +82,3 @@ export default function DebateWeekIntensiveHubPage() {
     </div>
   );
 }
-
-export { DEBATE_WEEK_INTENSIVE_HUB_HREF };

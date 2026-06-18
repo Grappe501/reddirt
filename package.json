@@ -459,7 +459,7 @@
     "opportunities:route-matrix": "tsx scripts/opportunities/build-route-matrix.ts",
     "opportunities:plan-weekends": "tsx scripts/opportunities/plan-weekend-routes.ts",
     "opportunities:ai-rank": "tsx scripts/opportunities/ai-rank-weekend-routes.ts",
-    "vault:scaffold": "tsx scripts/vault/scaffold-county-vault.ts",
+    "forum:ingest-acca-drop": "node scripts/run-with-h-drive-env.cjs npx tsx scripts/ingest-acca-forum-video-from-drop.ts",
     "media:ingest-county": "tsx scripts/media/ingest-county-media.ts",
     "agent:knowledge-index": "tsx scripts/agent/build-kelly-agent-knowledge-index.ts",
     "ingest:external-media": "tsx scripts/ingest-external-media.ts",

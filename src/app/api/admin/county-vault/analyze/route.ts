@@ -1,8 +1,10 @@
 import { runVaultDeepAnalysis } from "@/lib/county-vault/vault-analysis";
 import { assertAdminApi } from "@/lib/admin/require-admin";
 
+import { COUNTY_VAULT_ROUTE_MAX_DURATION } from "@/lib/county-vault/netlify";
+
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = COUNTY_VAULT_ROUTE_MAX_DURATION;
 
 export async function POST(req: Request): Promise<Response> {
   const denied = await assertAdminApi();

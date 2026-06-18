@@ -69,6 +69,11 @@ prisma/*.db-journal
 
 # campaign-owned binary uploads (local / self-hosted; use S3 + keys in production if you migrate)
 data/owned-campaign-media
+# Local event drop folders — keep README/manifest; never commit raw video/audio/zips
+data/local-ingest/**/*
+!data/local-ingest/**/README.md
+!data/local-ingest/**/event-manifest.json
+!data/local-ingest/**/.gitkeep
 # Hot Wash event media (binaries + media-index.json — may contain captions/PII)
 data/campaign-events/media/**
 !data/campaign-events/media/.gitkeep

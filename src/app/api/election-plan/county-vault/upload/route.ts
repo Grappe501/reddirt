@@ -2,8 +2,10 @@ import { runCountyVaultIngest } from "@/lib/county-vault/ingest-pipeline";
 import { resolveDbCountyForVault } from "@/lib/county-vault/resolve-county";
 import { requireElectionPlanApiSession, getElectionPlanOperatorFromRequest } from "@/lib/election-plan/auth/require-election-plan-api";
 
+import { COUNTY_VAULT_ROUTE_MAX_DURATION, validateVaultUploadTotalBytes } from "@/lib/county-vault/netlify";
+
 export const dynamic = "force-dynamic";
-export const maxDuration = 300;
+export const maxDuration = COUNTY_VAULT_ROUTE_MAX_DURATION;
 
 export async function POST(req: Request): Promise<Response> {
   if (!(await requireElectionPlanApiSession())) {
@@ -43,6 +45,12 @@ export async function POST(req: Request): Promise<Response> {
       buffer: Buffer.from(await f.arrayBuffer()),
     })),
   );
+
+  const totalBytes = buffers.reduce((n, f) => n + f.buffer.length, 0);
+  const sizeErr = validateVaultUploadTotalBytes(totalBytes);
+  if (sizeErr) {
+    return Response.json({ ok: false, error: sizeErr }, { status: 413 });
+  }
 
   try {
     const result = await runCountyVaultIngest({

@@ -74,8 +74,9 @@ export function CountyVaultUploadPanel({
       <h2 className="font-heading mt-2 text-xl font-bold text-kelly-navy">{countyDisplayName} — upload &amp; analyze</h2>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-kelly-text/75">
         Upload photos, videos, PDFs, or a <strong>.zip</strong> archive. Files land in the campaign library, get AI
-        transcription (video/audio), deep analysis, and SEO metadata. Trusted signed-in upload — review before publishing
-        to the public vault.
+        transcription (video/audio), deep analysis, and SEO metadata. On Netlify, keep each request under ~6&nbsp;MB and
+        set <code className="text-xs">SUPABASE_URL</code> + <code className="text-xs">SUPABASE_SERVICE_ROLE_KEY</code>{" "}
+        for durable storage.
       </p>
 
       <form onSubmit={onSubmit} className="mt-5 space-y-4">
@@ -101,7 +102,7 @@ export function CountyVaultUploadPanel({
             className="mt-2 block w-full max-w-xl text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-kelly-navy file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:brightness-110"
           />
           <span className="mt-1 block text-xs text-kelly-muted">
-            Single files or .zip containing multiple media. Max size per lane policy (up to 4GB).
+            Single files or .zip containing multiple media. Netlify: ~6 MB per request; local/dev up to 4 GB.
           </span>
         </label>
 

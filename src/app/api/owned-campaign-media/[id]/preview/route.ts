@@ -2,7 +2,8 @@ import { readFile, stat } from "node:fs/promises";
 import { extname } from "node:path";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { OwnedMediaStorageBackend, OwnedMediaReviewStatus } from "@prisma/client";
+import { OwnedMediaStorageBackend } from "@prisma/client";
+import { canPublicReadOwnedMedia } from "@/lib/owned-media/public-read-access";
 import { ADMIN_SESSION_COOKIE, getAdminSecret, verifyAdminSessionToken } from "@/lib/admin/session";
 import { storageKeyToAbsoluteFilePath } from "@/lib/owned-media/paths";
 import { prisma } from "@/lib/db";
@@ -38,7 +39,7 @@ export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> 
   }
 
   const admin = await isAdminRequest();
-  const canPublicRead = asset.isPublic && asset.reviewStatus === OwnedMediaReviewStatus.APPROVED;
+  const canPublicRead = canPublicReadOwnedMedia(asset);
   if (!admin && !canPublicRead) {
     return new Response("Forbidden", { status: 403 });
   }

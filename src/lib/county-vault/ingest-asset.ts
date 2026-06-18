@@ -8,12 +8,11 @@ import {
   OwnedMediaReviewStatus,
   OwnedMediaRole,
   OwnedMediaSourceType,
-  OwnedMediaStorageBackend,
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { buildIngestOriginalCanonicalName } from "@/lib/owned-media/campaign-filename";
 import { extractOwnedMediaMetadata } from "@/lib/owned-media/metadata/extract-owned-media-metadata";
-import { saveOwnedMediaBuffer } from "@/lib/owned-media/storage";
+import { saveOwnedMediaForRuntime } from "@/lib/owned-media/runtime-storage";
 import { addAssetToCountyCollection, ensureCountyVaultCollection } from "./collections";
 import type { VaultEnrichmentMetadata } from "./types";
 
@@ -35,7 +34,7 @@ export type IngestSingleAssetInput = {
 
 export async function ingestSingleVaultAsset(input: IngestSingleAssetInput): Promise<string> {
   const id = randomUUID();
-  const saved = await saveOwnedMediaBuffer({
+  const saved = await saveOwnedMediaForRuntime({
     assetId: id,
     fileName: input.fileName,
     mimeType: input.mimeType,
@@ -78,7 +77,8 @@ export async function ingestSingleVaultAsset(input: IngestSingleAssetInput): Pro
     data: {
       id,
       storageKey: saved.storageKey,
-      storageBackend: OwnedMediaStorageBackend.LOCAL_DISK,
+      storageBackend: saved.storageBackend,
+      publicUrl: saved.publicUrl,
       fileName: canonicalName,
       originalFileName: origName,
       canonicalFileName: canonicalName,

@@ -1,7 +1,8 @@
 import { createReadStream } from "node:fs";
 import { TranscriptSource } from "@prisma/client";
 import { formatOpenAIErrorForClient, getOpenAIClient, isOpenAIConfigured } from "@/lib/openai/client";
-import { storageKeyToAbsoluteFilePath } from "@/lib/owned-media/paths";
+import { resolveOwnedMediaAbsolutePath } from "@/lib/owned-media/runtime-storage";
+import { prisma } from "@/lib/db";
 import type { TranscriptionProvider } from "./types";
 
 export const openaiWhisperTranscriptionProvider: TranscriptionProvider = {
@@ -11,7 +12,9 @@ export const openaiWhisperTranscriptionProvider: TranscriptionProvider = {
       return { ok: false, error: "OPENAI_API_KEY not set — add a human transcript or configure Whisper." };
     }
     try {
-      const abs = storageKeyToAbsoluteFilePath(req.storageKey);
+      const asset = await prisma.ownedMediaAsset.findUnique({ where: { id: req.assetId } });
+      if (!asset) return { ok: false, error: "Asset not found." };
+      const abs = await resolveOwnedMediaAbsolutePath(asset);
       const openai = getOpenAIClient();
       const result = await openai.audio.transcriptions.create({
         file: createReadStream(abs),

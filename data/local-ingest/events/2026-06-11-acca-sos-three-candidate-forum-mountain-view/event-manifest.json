@@ -1,0 +1,22 @@
+{
+  "eventId": "acca-summer-conference-2026-mountain-view-sos-panel",
+  "title": "Secretary of State Candidates Moderated Panel Q & A",
+  "conference": "Arkansas County Clerks Continuing Education Conference",
+  "date": "2026-06-11",
+  "startTime": "13:00",
+  "endTime": "15:00",
+  "timezone": "America/Chicago",
+  "venue": {
+    "name": "Ozark Mountain Folk Center",
+    "city": "Mountain View",
+    "state": "Arkansas"
+  },
+  "candidates": [
+    { "name": "Kelly Grappe", "party": "D" },
+    { "name": "Kim Hammer", "party": "R", "title": "Sen." },
+    { "name": "Dr. Michael Pakko", "party": "L" }
+  ],
+  "intelligenceRef": "data/intelligence/acca-clerks-summer-conference-2026.json",
+  "forumTranscriptLabPath": "/admin/intelligence/forum-transcript-lab",
+  "localDropFolder": "data/local-ingest/events/2026-06-11-acca-sos-three-candidate-forum-mountain-view"
+}
