@@ -6,11 +6,14 @@ import {
   COUNTY_WEEKLY_OPERATOR_FLOW,
   MOBILIZE_COUNTY_PLAYBOOK_STEPS,
 } from "@/lib/election-plan/county-playbook-operator-guide";
-import { COUNTY_PLAYBOOK_EXECUTIVE_JUMP_LINKS } from "@/lib/election-plan/load-county-electoral-math-markdown";
-import { countyPlaybookBundleMeta } from "@/lib/election-plan/load-county-playbook-markdown";
+import {
+  COUNTY_PLAYBOOK_EXECUTIVE_JUMP_LINKS,
+  countyPlaybookBundleMetaFromJson,
+} from "@/lib/election-plan/county-playbook-links";
+import playbookBundle from "../../../data/election-plan/county-playbook-markdown.json";
 
 export function CountyPlaybookInstructionPanel() {
-  const meta = countyPlaybookBundleMeta();
+  const meta = countyPlaybookBundleMetaFromJson(playbookBundle);
   const generated = meta.generatedAt
     ? new Date(meta.generatedAt).toLocaleDateString("en-US", { dateStyle: "medium" })
     : null;

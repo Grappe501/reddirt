@@ -11,7 +11,7 @@ import {
 import {
   countyDropOffHref,
   countyRegistrationDashboardHref,
-} from "@/lib/election-plan/load-county-electoral-math-markdown";
+} from "@/lib/election-plan/county-playbook-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { formatPercentIncrease } from "@/lib/election-plan/load-county-victory-targets";

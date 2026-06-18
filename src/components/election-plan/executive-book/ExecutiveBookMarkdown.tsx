@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
-import { resolveCountyPlaybookMarkdownHref } from "@/lib/election-plan/load-county-electoral-math-markdown";
+import { resolveCountyPlaybookMarkdownHref } from "@/lib/election-plan/county-playbook-links";
 import { budgetDocPathToRoute } from "@/lib/election-plan/budget-documents-registry";
 
 type Props = {

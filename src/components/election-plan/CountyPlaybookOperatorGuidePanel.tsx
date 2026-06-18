@@ -10,7 +10,7 @@ import {
 import {
   countyDropOffHref,
   countyRegistrationDashboardHref,
-} from "@/lib/election-plan/load-county-electoral-math-markdown";
+} from "@/lib/election-plan/county-playbook-links";
 
 type Props = {
   countySlug: string;
