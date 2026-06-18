@@ -73,6 +73,9 @@ export type ForumTranscriptLabRecord = {
   title: string;
   eventLabel: string;
   ownedMediaAssetId: string | null;
+  /** Repo-relative path to local drop MP4 when file exceeds Prisma INT4 or DB skipped. */
+  localVideoRelativePath?: string | null;
+  videoSizeBytes?: number | null;
   transcriptText: string;
   transcriptSource: "upload_whisper" | "paste" | "pending" | "youtube_captions" | "youtube_whisper";
   analysis: ForumTranscriptAnalysis | null;

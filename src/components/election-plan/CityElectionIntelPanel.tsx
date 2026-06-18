@@ -26,7 +26,7 @@ export function CityElectionIntelPanel({ intel, showWorkbenchLink = true }: Prop
           </h2>
           <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
             #{intel.rank} · {intel.influenceCategory}
-            {intel.isBonusCity ? " · Bonus cushion (isolated from Top 40 totals)" : null}
+            {intel.isBonusCity ? " · Bonus cushion (isolated from Top 75 totals)" : null}
           </p>
         </div>
         <div className="flex flex-wrap gap-2 text-xs">

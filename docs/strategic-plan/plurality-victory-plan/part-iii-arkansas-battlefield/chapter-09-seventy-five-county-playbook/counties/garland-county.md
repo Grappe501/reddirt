@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Hot Springs** — 5,101 target votes · Business / chamber hub
 

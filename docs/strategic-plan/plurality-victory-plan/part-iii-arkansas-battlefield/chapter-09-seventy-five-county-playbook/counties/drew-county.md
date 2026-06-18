@@ -8,7 +8,7 @@
 > **County:** Drew
 > **FIPS:** 05043
 > **Opportunity Tier:** C (rank #43)
-> **VCI Rank:** #43 of 75 · Priority 3
+> **VCI Rank:** #32 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#43** |
 | Opportunity score | 780 |
-| Victory Contribution Index (VCI) | **780** |
+| Victory Contribution Index (VCI) | **1,977** |
 | Lane 2 @ 50% | 171 |
 | Registration goal | 186 |
 | Lane 4 peel potential (12%) | 423 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Monticello** — 1,197 target votes · University / youth registration hub
 
 ---
 

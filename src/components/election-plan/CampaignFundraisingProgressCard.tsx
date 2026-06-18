@@ -106,7 +106,7 @@ export function CampaignFundraisingProgressCard({ data, variant = "war" }: Props
       <p className="mt-3 text-xs leading-relaxed text-[var(--ep-navy-muted)]">
         Geographic goals follow the{" "}
         <strong className="text-[var(--ep-navy)]">Fundraising Operating System</strong> — vote-target allocation to
-        Top 40 communities ($300K state goal). See community and county workbenches for base / stretch goals.
+        Top 75 communities ($300K state goal). See community and county workbenches for base / stretch goals.
       </p>
     </div>
   );

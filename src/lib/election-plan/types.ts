@@ -89,7 +89,7 @@ export type ElectionPlanCity = {
   influenceCategory: string;
   influenceTags: string[];
   isTop10: boolean;
-  /** Rank 41+ bonus workbench — KPIs isolated from Top 40 combined totals */
+  /** Rank 41+ bonus workbench — KPIs isolated from Top 75 combined totals */
   isBonusCity?: boolean;
   /** 2020 Census — present on snapshot rows when sourced */
   population2020?: number;
@@ -167,6 +167,8 @@ export type ElectionPlanWorkbenchSnapshot = {
   cities: ElectionPlanCity[];
   top10TargetVotes: number;
   top40TargetVotes: number;
+  /** Combined vote target — all 75 priority cities (excludes bonus workbenches). */
+  top75TargetVotes: number;
   campaignBrain: {
     flow: string;
     modules: Array<{ name: string; description: string; path: string }>;

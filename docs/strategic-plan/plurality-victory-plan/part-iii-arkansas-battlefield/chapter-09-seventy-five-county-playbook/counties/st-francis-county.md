@@ -8,7 +8,7 @@
 > **County:** St. Francis
 > **FIPS:** 05123
 > **Opportunity Tier:** C (rank #42)
-> **VCI Rank:** #21 of 75 · Priority 2
+> **VCI Rank:** #22 of 75 · Priority 2
 
 ---
 
@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Forrest City** — 1,869 target votes · Democratic recovery hub
 

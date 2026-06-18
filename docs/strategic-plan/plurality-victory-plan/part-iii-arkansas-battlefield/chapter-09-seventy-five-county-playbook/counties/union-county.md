@@ -8,7 +8,7 @@
 > **County:** Union
 > **FIPS:** 05139
 > **Opportunity Tier:** B (rank #16)
-> **VCI Rank:** #15 of 75 · Priority 2
+> **VCI Rank:** #16 of 75 · Priority 2
 
 ---
 
@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **El Dorado** — 2,961 target votes · Business / chamber hub
 

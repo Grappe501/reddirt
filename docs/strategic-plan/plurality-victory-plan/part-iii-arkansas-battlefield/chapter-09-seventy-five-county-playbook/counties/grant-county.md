@@ -8,7 +8,7 @@
 > **County:** Grant
 > **FIPS:** 05053
 > **Opportunity Tier:** C (rank #33)
-> **VCI Rank:** #35 of 75 · Priority 3
+> **VCI Rank:** #37 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#33** |
 | Opportunity score | 950 |
-| Victory Contribution Index (VCI) | **950** |
+| Victory Contribution Index (VCI) | **1,450** |
 | Lane 2 @ 50% | 146 |
 | Registration goal | 162 |
 | Lane 4 peel potential (12%) | 642 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Sheridan** — 500 target votes · Business / chamber hub
 
 ---
 

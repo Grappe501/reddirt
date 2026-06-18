@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Mountain Home** — 1,776 target votes · Persuasion / conversion hub
 

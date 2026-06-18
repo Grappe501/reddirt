@@ -64,16 +64,17 @@
 | Opportunity tier | **A** |
 | Statewide opportunity rank | **#6** |
 | Opportunity score | 6,712 |
-| Victory Contribution Index (VCI) | **16,145** |
+| Victory Contribution Index (VCI) | **16,648** |
 | Lane 2 @ 50% | 1,952 |
 | Registration goal | 1,859 |
 | Lane 4 peel potential (12%) | 2,901 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Fort Smith** — 9,433 target votes · Business / chamber hub
+- **Barling** — 503 target votes · Democratic recovery hub
 
 ---
 

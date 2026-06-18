@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-14T14:17:10.019Z",
+  "generatedAt": "2026-06-18T21:54:24.623Z",
   "top10VCI": [
     {
       "county": "Pulaski",
@@ -16,26 +16,12 @@
       }
     },
     {
-      "county": "Benton",
-      "slug": "benton-county",
-      "vci": 44415,
-      "rank": 2,
-      "priority": "Priority 1",
-      "cityInfluenceVotes": 22416,
-      "mission": {
-        "role": "Republican Conversion County",
-        "primaryMission": "Moderate Republican Outreach",
-        "secondaryMission": "New Voter Registration",
-        "tertiaryMission": "Business Community Engagement"
-      }
-    },
-    {
       "county": "Washington",
       "slug": "washington-county",
-      "vci": 43741,
-      "rank": 3,
+      "vci": 46814,
+      "rank": 2,
       "priority": "Priority 1",
-      "cityInfluenceVotes": 27971,
+      "cityInfluenceVotes": 31044,
       "mission": {
         "role": "Statewide Vote Maximization County",
         "primaryMission": "Lane 2 Recovery",
@@ -44,12 +30,26 @@
       }
     },
     {
+      "county": "Benton",
+      "slug": "benton-county",
+      "vci": 46015,
+      "rank": 3,
+      "priority": "Priority 1",
+      "cityInfluenceVotes": 24016,
+      "mission": {
+        "role": "Republican Conversion County",
+        "primaryMission": "Moderate Republican Outreach",
+        "secondaryMission": "New Voter Registration",
+        "tertiaryMission": "Business Community Engagement"
+      }
+    },
+    {
       "county": "Faulkner",
       "slug": "faulkner-county",
-      "vci": 16572,
+      "vci": 17907,
       "rank": 4,
       "priority": "Priority 1",
-      "cityInfluenceVotes": 8468,
+      "cityInfluenceVotes": 9803,
       "mission": {
         "role": "Youth Registration County",
         "primaryMission": "New Voter Registration",
@@ -60,10 +60,10 @@
     {
       "county": "Saline",
       "slug": "saline-county",
-      "vci": 16215,
+      "vci": 16767,
       "rank": 5,
       "priority": "Priority 1",
-      "cityInfluenceVotes": 6932,
+      "cityInfluenceVotes": 7484,
       "mission": {
         "role": "Youth Registration County",
         "primaryMission": "New Voter Registration",
@@ -74,10 +74,10 @@
     {
       "county": "Sebastian",
       "slug": "sebastian-county",
-      "vci": 16145,
+      "vci": 16648,
       "rank": 6,
       "priority": "Priority 1",
-      "cityInfluenceVotes": 9433,
+      "cityInfluenceVotes": 9936,
       "mission": {
         "role": "Youth Registration County",
         "primaryMission": "New Voter Registration",
@@ -88,10 +88,10 @@
     {
       "county": "Craighead",
       "slug": "craighead-county",
-      "vci": 13397,
+      "vci": 13827,
       "rank": 7,
       "priority": "Priority 1",
-      "cityInfluenceVotes": 8196,
+      "cityInfluenceVotes": 8626,
       "mission": {
         "role": "Youth Registration County",
         "primaryMission": "New Voter Registration",
@@ -102,10 +102,10 @@
     {
       "county": "Jefferson",
       "slug": "jefferson-county",
-      "vci": 12205,
+      "vci": 13330,
       "rank": 8,
       "priority": "Priority 1",
-      "cityInfluenceVotes": 8339,
+      "cityInfluenceVotes": 9464,
       "mission": {
         "role": "Youth Registration County",
         "primaryMission": "New Voter Registration",

@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Russellville** — 2,994 target votes · University / youth registration hub
 

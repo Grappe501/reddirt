@@ -8,7 +8,7 @@
 > **County:** Randolph
 > **FIPS:** 05121
 > **Opportunity Tier:** C (rank #44)
-> **VCI Rank:** #44 of 75 · Priority 3
+> **VCI Rank:** #38 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#44** |
 | Opportunity score | 737 |
-| Victory Contribution Index (VCI) | **737** |
+| Victory Contribution Index (VCI) | **1,427** |
 | Lane 2 @ 50% | 102 |
 | Registration goal | 121 |
 | Lane 4 peel potential (12%) | 514 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Pocahontas** — 690 target votes · Business / chamber hub
 
 ---
 

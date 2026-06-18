@@ -8,7 +8,7 @@
 > **County:** Carroll
 > **FIPS:** 05015
 > **Opportunity Tier:** B (rank #21)
-> **VCI Rank:** #30 of 75 · Priority 2
+> **VCI Rank:** #26 of 75 · Priority 2
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **B** |
 | Statewide opportunity rank | **#21** |
 | Opportunity score | 1,529 |
-| Victory Contribution Index (VCI) | **1,529** |
+| Victory Contribution Index (VCI) | **2,410** |
 | Lane 2 @ 50% | 406 |
 | Registration goal | 406 |
 | Lane 4 peel potential (12%) | 717 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Berryville** — 881 target votes · Business / chamber hub
 
 ---
 

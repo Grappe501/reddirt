@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Little Rock** — 40,315 target votes · Statewide influence hub
 - **North Little Rock** — 12,834 target votes · Democratic recovery hub

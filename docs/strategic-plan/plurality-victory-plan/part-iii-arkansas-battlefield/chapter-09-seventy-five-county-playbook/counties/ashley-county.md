@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#34** |
 | Opportunity score | 929 |
-| Victory Contribution Index (VCI) | **929** |
+| Victory Contribution Index (VCI) | **1,466** |
 | Lane 2 @ 50% | 214 |
 | Registration goal | 226 |
 | Lane 4 peel potential (12%) | 489 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Crossett** — 537 target votes · Business / chamber hub
 
 ---
 

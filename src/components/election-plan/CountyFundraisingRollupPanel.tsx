@@ -89,7 +89,7 @@ export function CountyFundraisingRollupPanel({ rollup }: Props) {
         </div>
       ) : (
         <p className="mt-4 text-sm text-[var(--ep-navy-muted)]">
-          No Top 40 community allocations in this county yet — goals roll up when city workbenches have vote targets.
+          No Top 75 community allocations in this county yet — goals roll up when city workbenches have vote targets.
         </p>
       )}
     </div>

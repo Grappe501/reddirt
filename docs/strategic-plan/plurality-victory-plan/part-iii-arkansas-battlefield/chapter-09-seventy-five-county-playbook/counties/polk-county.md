@@ -8,7 +8,7 @@
 > **County:** Polk
 > **FIPS:** 05113
 > **Opportunity Tier:** C (rank #38)
-> **VCI Rank:** #40 of 75 · Priority 3
+> **VCI Rank:** #39 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#38** |
 | Opportunity score | 840 |
-| Victory Contribution Index (VCI) | **840** |
+| Victory Contribution Index (VCI) | **1,391** |
 | Lane 2 @ 50% | 60 |
 | Registration goal | 81 |
 | Lane 4 peel potential (12%) | 699 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Mena** — 551 target votes · Business / chamber hub
 
 ---
 

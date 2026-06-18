@@ -8,7 +8,7 @@
 > **County:** Clay
 > **FIPS:** 05021
 > **Opportunity Tier:** C (rank #54)
-> **VCI Rank:** #54 of 75 · Priority 3
+> **VCI Rank:** #58 of 75 · Priority 3
 
 ---
 
@@ -71,9 +71,9 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- No Top 75 priority city — county-seat and community event focus
 
 ---
 

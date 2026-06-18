@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Magnolia** — 1,380 target votes · University / youth registration hub
 

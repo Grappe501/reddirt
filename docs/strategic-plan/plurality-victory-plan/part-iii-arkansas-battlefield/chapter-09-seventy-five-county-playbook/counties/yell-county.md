@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#40** |
 | Opportunity score | 822 |
-| Victory Contribution Index (VCI) | **822** |
+| Victory Contribution Index (VCI) | **1,194** |
 | Lane 2 @ 50% | 145 |
 | Registration goal | 161 |
 | Lane 4 peel potential (12%) | 516 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Dardanelle** — 372 target votes · Business / chamber hub
 
 ---
 

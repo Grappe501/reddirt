@@ -64,16 +64,18 @@
 | Opportunity tier | **A** |
 | Statewide opportunity rank | **#5** |
 | Opportunity score | 8,104 |
-| Victory Contribution Index (VCI) | **16,572** |
+| Victory Contribution Index (VCI) | **17,907** |
 | Lane 2 @ 50% | 2,487 |
 | Registration goal | 2,361 |
 | Lane 4 peel potential (12%) | 3,256 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Conway** — 8,468 target votes · University / youth registration hub
+- **Greenbrier** — 762 target votes · Democratic recovery hub
+- **Vilonia** — 573 target votes · Democratic recovery hub
 
 ---
 

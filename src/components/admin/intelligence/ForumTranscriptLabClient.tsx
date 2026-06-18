@@ -271,6 +271,10 @@ export function ForumTranscriptLabClient({
               Preview
             </a>
           </p>
+        ) : record.localVideoRelativePath ? (
+          <p className="mt-2 text-xs text-emerald-800">
+            Local recording on disk · {record.videoSizeBytes ? `${(record.videoSizeBytes / 1e9).toFixed(1)} GB` : "see player above"}
+          </p>
         ) : null}
       </section>
 
@@ -332,12 +336,12 @@ export function ForumTranscriptLabClient({
         </p>
       </section>
 
-      {hasTranscript && !analysis ? (
+      {hasTranscript ? (
         <section className="rounded-xl border border-kelly-text/10 bg-white p-5">
           <h3 className="text-xs font-bold uppercase text-kelly-subtle">Transcript preview</h3>
-          <pre className="mt-2 max-h-48 overflow-auto whitespace-pre-wrap text-xs text-kelly-muted">
-            {record.transcriptText.slice(0, 4000)}
-            {record.transcriptText.length > 4000 ? "…" : ""}
+          <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap text-xs text-kelly-muted">
+            {record.transcriptText.slice(0, 8000)}
+            {record.transcriptText.length > 8000 ? "…" : ""}
           </pre>
         </section>
       ) : null}

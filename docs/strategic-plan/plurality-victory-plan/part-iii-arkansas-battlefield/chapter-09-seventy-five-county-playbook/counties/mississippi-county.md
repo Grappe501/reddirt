@@ -8,7 +8,7 @@
 > **County:** Mississippi
 > **FIPS:** 05093
 > **Opportunity Tier:** B (rank #24)
-> **VCI Rank:** #20 of 75 · Priority 2
+> **VCI Rank:** #19 of 75 · Priority 2
 
 ---
 
@@ -64,16 +64,17 @@
 | Opportunity tier | **B** |
 | Statewide opportunity rank | **#24** |
 | Opportunity score | 1,184 |
-| Victory Contribution Index (VCI) | **3,318** |
+| Victory Contribution Index (VCI) | **4,050** |
 | Lane 2 @ 50% | 265 |
 | Registration goal | 274 |
 | Lane 4 peel potential (12%) | 645 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Blytheville** — 2,134 target votes · Democratic recovery hub
+- **Osceola** — 732 target votes · Business / chamber hub
 
 ---
 

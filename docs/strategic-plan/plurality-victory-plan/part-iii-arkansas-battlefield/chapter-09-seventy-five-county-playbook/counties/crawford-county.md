@@ -8,7 +8,7 @@
 > **County:** Crawford
 > **FIPS:** 05033
 > **Opportunity Tier:** B (rank #13)
-> **VCI Rank:** #16 of 75 · Priority 2
+> **VCI Rank:** #14 of 75 · Priority 2
 
 ---
 
@@ -64,16 +64,17 @@
 | Opportunity tier | **B** |
 | Statewide opportunity rank | **#13** |
 | Opportunity score | 2,915 |
-| Victory Contribution Index (VCI) | **5,277** |
+| Victory Contribution Index (VCI) | **5,862** |
 | Lane 2 @ 50% | 618 |
 | Registration goal | 605 |
 | Lane 4 peel potential (12%) | 1,692 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Van Buren** — 2,362 target votes · Persuasion / conversion hub
+- **Alma** — 585 target votes · Democratic recovery hub
 
 ---
 

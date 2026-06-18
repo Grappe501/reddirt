@@ -8,7 +8,7 @@
 > **County:** Fulton
 > **FIPS:** 05049
 > **Opportunity Tier:** C (rank #55)
-> **VCI Rank:** #55 of 75 · Priority 3
+> **VCI Rank:** #45 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#55** |
 | Opportunity score | 551 |
-| Victory Contribution Index (VCI) | **551** |
+| Victory Contribution Index (VCI) | **1,075** |
 | Lane 2 @ 50% | 75 |
 | Registration goal | 95 |
 | Lane 4 peel potential (12%) | 381 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Cherokee Village** — 524 target votes · Persuasion / conversion hub
 
 ---
 

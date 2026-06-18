@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "builtAt": "2026-06-18T22:52:06.587Z",
+  "sourceUpdatedAt": "2026-06-18T22:51:43.475Z",
+  "transcriptChars": 73365,
+  "executiveBrief": "Kelly Grappe is focused on serving the people of Arkansas, emphasizing collaboration with county clerks and improving civic engagement. She aims to ensure election integrity while advocating for innovative solutions to enhance public confidence in the electoral process.",
+  "capitalizeMoves": [
+    {
+      "trigger": "when Hammer says 'we need to work together'",
+      "kellyLine": "Absolutely, collaboration is key to ensuring our elections run smoothly.",
+      "why": "This reinforces her commitment to partnership while aligning with Hammer's sentiment."
+    },
+    {
+      "trigger": "when Pakko mentions 'competition in politics'",
+      "kellyLine": "I agree, we need more voices at the table to enrich our democracy.",
+      "why": "This positions her as supportive of diverse political representation."
+    },
+    {
+      "trigger": "when Hammer talks about election security",
+      "kellyLine": "Election security is paramount, and I will prioritize transparency and integrity.",
+      "why": "This aligns her with the audience's concerns while showcasing her commitment."
+    },
+    {
+      "trigger": "when Pakko discusses voter engagement",
+      "kellyLine": "Engaging our youth is crucial, and I have plans to make that happen.",
+      "why": "This highlights her proactive approach to a shared concern."
+    },
+    {
+      "trigger": "when Hammer emphasizes civic education",
+      "kellyLine": "Civic education is essential, and I will work to implement programs that inspire participation.",
+      "why": "This shows her alignment with Hammer's theme while enhancing her own platform."
+    },
+    {
+      "trigger": "Our elections are not secure.",
+      "kellyLine": "We have robust systems in place to ensure integrity.",
+      "why": "Look for opportunities to provide evidence of security measures."
+    },
+    {
+      "trigger": "I don't trust the government.",
+      "kellyLine": "I understand those concerns and want to work to rebuild trust.",
+      "why": "Identify specific actions to address trust issues."
+    }
+  ],
+  "commandDrills": [
+    {
+      "ifTheySay": "Our elections are not secure.",
+      "youSay": "We have robust systems in place to ensure integrity.",
+      "thenScan": "Look for opportunities to provide evidence of security measures."
+    },
+    {
+      "ifTheySay": "I don't trust the government.",
+      "youSay": "I understand those concerns and want to work to rebuild trust.",
+      "thenScan": "Identify specific actions to address trust issues."
+    }
+  ],
+  "hammerThemes": [
+    "Experience and integrity in public service",
+    "Collaboration with county clerks",
+    "Importance of civic education and engagement",
+    "Commitment to election security",
+    "Proactive communication and support",
+    "Advocacy for legal compliance and voter rights"
+  ],
+  "pakkoThemes": [
+    "Advocacy for competition in politics",
+    "Focus on transparency and integrity in elections",
+    "Critique of the two-party system",
+    "Support for voter engagement and participation",
+    "Emphasis on reducing government overreach"
+  ],
+  "predictedQuestions": [
+    "What specific steps will you take to improve voter engagement?",
+    "How will you ensure the integrity of elections in Arkansas?",
+    "What is your stance on online voter registration?",
+    "How do you plan to address misinformation about elections?",
+    "What role should the Secretary of State play in local election issues?",
+    "How will you support county clerks in their administrative duties?",
+    "What changes would you advocate for in election technology?",
+    "How do you plan to foster collaboration between parties?"
+  ],
+  "watchForTells": [
+    "Hammer's emphasis on personal anecdotes to establish credibility",
+    "Pakko's outsider rhetoric to appeal to disenchanted voters",
+    "Kelly's focus on collaboration and unity",
+    "Body language indicating confidence or defensiveness",
+    "Reactions to direct questions about election integrity"
+  ],
+  "claimsGateNotes": [
+    "Verify Hammer's legislative history and specific bills related to election security.",
+    "Check Pakko's claims about the Libertarian Party's ballot access challenges.",
+    "Confirm Kelly's experience in business leadership roles.",
+    "Validate the statistics on voter engagement and turnout in Arkansas.",
+    "Ensure accuracy of claims regarding election technology upgrades."
+  ],
+  "techniquePatches": [
+    {
+      "topicId": "three-way-pivot",
+      "addendum": "Hammer forum tells: Experience and integrity in public service · Collaboration with county clerks · Importance of civic education and engagement · Commitment to election security"
+    },
+    {
+      "topicId": "split-the-table",
+      "addendum": "Pakko forum tells: Advocacy for competition in politics · Focus on transparency and integrity in elections · Critique of the two-party system · Support for voter engagement and participation"
+    },
+    {
+      "topicId": "capitalize-moves",
+      "addendum": "7 forum-derived capitalize moves wired into Day 5 command drills."
+    }
+  ]
+}

@@ -8,7 +8,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
-import { ARKANSAS_TOP_40_CITIES } from "../strategic-plan/data/arkansas-top-40-cities";
+import { ARKANSAS_TOP_75_CITIES } from "../strategic-plan/data/arkansas-top-40-cities";
 import { approxCountyCenter, ROSE_BUD } from "../../src/lib/opportunities/approx-county-center";
 import { BRAIN_DATA, BRAIN_ROOT, readJson } from "./lib/inputs";
 
@@ -495,7 +495,7 @@ function buildTopCityReadiness(
 ) {
   const visitedByCounty = new Map((audit.visitedCounties ?? []).map((r: AuditRow) => [r.county, r]));
 
-  return ARKANSAS_TOP_40_CITIES.map((city) => {
+  return ARKANSAS_TOP_75_CITIES.map((city) => {
     const countyRow = visitedByCounty.get(city.county) as AuditRow | undefined;
     const lockedInCity = locked.filter(
       (e) =>
@@ -530,7 +530,7 @@ function buildTopCityReadiness(
     else sepStatus = "partial";
 
     return {
-      rank: ARKANSAS_TOP_40_CITIES.indexOf(city) + 1,
+      rank: ARKANSAS_TOP_75_CITIES.indexOf(city) + 1,
       city: city.name,
       county: city.county,
       isTop10: city.isTop10,

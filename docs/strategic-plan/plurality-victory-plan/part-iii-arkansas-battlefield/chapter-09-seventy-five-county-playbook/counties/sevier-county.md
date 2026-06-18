@@ -8,7 +8,7 @@
 > **County:** Sevier
 > **FIPS:** 05133
 > **Opportunity Tier:** C (rank #56)
-> **VCI Rank:** #56 of 75 · Priority 3
+> **VCI Rank:** #49 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#56** |
 | Opportunity score | 526 |
-| Victory Contribution Index (VCI) | **526** |
+| Victory Contribution Index (VCI) | **997** |
 | Lane 2 @ 50% | 79 |
 | Registration goal | 99 |
 | Lane 4 peel potential (12%) | 348 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **De Queen** — 471 target votes · Business / chamber hub
 
 ---
 

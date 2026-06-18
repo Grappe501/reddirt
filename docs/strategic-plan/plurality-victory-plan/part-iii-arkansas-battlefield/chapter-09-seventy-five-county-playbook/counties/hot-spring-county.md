@@ -8,7 +8,7 @@
 > **County:** Hot Spring
 > **FIPS:** 05059
 > **Opportunity Tier:** B (rank #23)
-> **VCI Rank:** #22 of 75 · Priority 2
+> **VCI Rank:** #23 of 75 · Priority 2
 
 ---
 
@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Malvern** — 1,196 target votes · Persuasion / conversion hub
 

@@ -8,7 +8,7 @@
 > **County:** Cleburne
 > **FIPS:** 05023
 > **Opportunity Tier:** B (rank #22)
-> **VCI Rank:** #31 of 75 · Priority 3
+> **VCI Rank:** #28 of 75 · Priority 2
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **B** |
 | Statewide opportunity rank | **#22** |
 | Opportunity score | 1,526 |
-| Victory Contribution Index (VCI) | **1,526** |
+| Victory Contribution Index (VCI) | **2,343** |
 | Lane 2 @ 50% | 247 |
 | Registration goal | 257 |
 | Lane 4 peel potential (12%) | 1,022 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Heber Springs** — 817 target votes · Business / chamber hub
 
 ---
 

@@ -8,7 +8,7 @@
 > **County:** Poinsett
 > **FIPS:** 05111
 > **Opportunity Tier:** C (rank #45)
-> **VCI Rank:** #45 of 75 · Priority 3
+> **VCI Rank:** #40 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#45** |
 | Opportunity score | 732 |
-| Victory Contribution Index (VCI) | **732** |
+| Victory Contribution Index (VCI) | **1,312** |
 | Lane 2 @ 50% | 88 |
 | Registration goal | 108 |
 | Lane 4 peel potential (12%) | 536 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Trumann** — 580 target votes · Democratic recovery hub
 
 ---
 

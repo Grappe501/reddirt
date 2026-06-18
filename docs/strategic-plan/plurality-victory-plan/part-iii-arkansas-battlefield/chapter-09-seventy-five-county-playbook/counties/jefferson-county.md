@@ -64,16 +64,17 @@
 | Opportunity tier | **A** |
 | Statewide opportunity rank | **#11** |
 | Opportunity score | 3,866 |
-| Victory Contribution Index (VCI) | **12,205** |
+| Victory Contribution Index (VCI) | **13,330** |
 | Lane 2 @ 50% | 1,532 |
 | Registration goal | 1,464 |
 | Lane 4 peel potential (12%) | 870 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Pine Bluff** — 8,339 target votes · Democratic recovery hub
+- **White Hall** — 1,125 target votes · Democratic recovery hub
 
 ---
 

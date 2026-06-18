@@ -64,17 +64,18 @@
 | Opportunity tier | **A** |
 | Statewide opportunity rank | **#4** |
 | Opportunity score | 9,283 |
-| Victory Contribution Index (VCI) | **16,215** |
+| Victory Contribution Index (VCI) | **16,767** |
 | Lane 2 @ 50% | 2,804 |
 | Registration goal | 2,659 |
 | Lane 4 peel potential (12%) | 3,820 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Benton** — 4,317 target votes · Democratic recovery hub
 - **Bryant** — 2,615 target votes · Democratic recovery hub
+- **Shannon Hills** — 552 target votes · Democratic recovery hub
 
 ---
 

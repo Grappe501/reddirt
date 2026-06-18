@@ -8,7 +8,7 @@
 > **County:** Izard
 > **FIPS:** 05065
 > **Opportunity Tier:** C (rank #49)
-> **VCI Rank:** #49 of 75 · Priority 3
+> **VCI Rank:** #55 of 75 · Priority 3
 
 ---
 
@@ -71,9 +71,9 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- No Top 75 priority city — county-seat and community event focus
 
 ---
 

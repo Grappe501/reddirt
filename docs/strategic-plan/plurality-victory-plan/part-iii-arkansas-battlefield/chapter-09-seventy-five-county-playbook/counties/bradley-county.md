@@ -8,7 +8,7 @@
 > **County:** Bradley
 > **FIPS:** 05011
 > **Opportunity Tier:** C (rank #60)
-> **VCI Rank:** #60 of 75 · Priority 3
+> **VCI Rank:** #48 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#60** |
 | Opportunity score | 434 |
-| Victory Contribution Index (VCI) | **434** |
+| Victory Contribution Index (VCI) | **1,036** |
 | Lane 2 @ 50% | 98 |
 | Registration goal | 117 |
 | Lane 4 peel potential (12%) | 219 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Warren** — 602 target votes · Business / chamber hub
 
 ---
 

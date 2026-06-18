@@ -8,7 +8,7 @@
 > **County:** Cross
 > **FIPS:** 05037
 > **Opportunity Tier:** C (rank #31)
-> **VCI Rank:** #27 of 75 · Priority 2
+> **VCI Rank:** #33 of 75 · Priority 3
 
 ---
 
@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Wynne** — 909 target votes · Persuasion / conversion hub
 

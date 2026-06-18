@@ -9,7 +9,7 @@ import path from "node:path";
 
 import {
   ARKANSAS_COUNTY_POPULATION_2020,
-  ARKANSAS_TOP_40_CITIES,
+  ARKANSAS_TOP_75_CITIES,
   type ArkansasTop40City,
   type CityInfluenceTag,
 } from "./data/arkansas-top-40-cities";
@@ -77,7 +77,7 @@ function buildCityMarkdown(city: ArkansasTop40City, rank: number): string {
 > **Classification:** CONFIDENTIAL CAMPAIGN DOCUMENT
 > **Part:** III — The Arkansas Battlefield
 > **Chapter:** 7
-> **City rank (vote target):** #${rank} of 40
+> **City rank (vote target):** #${rank} of 75
 > **Top 10 strategic city:** ${city.isTop10 ? "Yes" : "No"}
 
 ---
@@ -175,7 +175,7 @@ ${city.influenceTags.map((t) => `1. **${INFLUENCE_LABELS[t]}** — deploy for co
 
 function main() {
   const scenario = loadWinTargets();
-  const citiesWithVotes = ARKANSAS_TOP_40_CITIES.map((city) => ({
+  const citiesWithVotes = ARKANSAS_TOP_75_CITIES.map((city) => ({
     city,
     ...computeCityElectoral(city),
   }));
@@ -202,7 +202,8 @@ function main() {
 
   const top10 = summaryRows.filter((r) => r.isTop10);
   const top10TargetSum = top10.reduce((s, r) => s + r.targetVotes, 0);
-  const top40TargetSum = summaryRows.reduce((s, r) => s + r.targetVotes, 0);
+  const top75TargetSum = summaryRows.reduce((s, r) => s + r.targetVotes, 0);
+  const top40TargetSum = summaryRows.slice(0, 40).reduce((s, r) => s + r.targetVotes, 0);
 
   for (const row of citiesWithVotes) {
     const rank = summaryRows.find((s) => s.slug === row.city.slug)!.rank;
@@ -221,6 +222,8 @@ function main() {
     JSON.stringify(
       {
         generatedAt: new Date().toISOString(),
+        top75TargetVotes: top75TargetSum,
+        top75ShareOfStatewideWorkingTarget: top75TargetSum / scenario.statewide.workingTargetWithCushion,
         top40TargetVotes: top40TargetSum,
         top40ShareOfStatewideWorkingTarget: top40TargetSum / scenario.statewide.workingTargetWithCushion,
         top10TargetVotes: top10TargetSum,
@@ -235,7 +238,7 @@ function main() {
 
   // eslint-disable-next-line no-console
   console.log(
-    `Wrote 40 city profiles + 10 deep dives. Top 40 targets: ${top40TargetSum.toLocaleString()} | Top 10: ${top10TargetSum.toLocaleString()}.`,
+    `Wrote ${ARKANSAS_TOP_75_CITIES.length} city profiles + 10 deep dives. Top 75 targets: ${top75TargetSum.toLocaleString()} | Top 40 (legacy slice): ${top40TargetSum.toLocaleString()} | Top 10: ${top10TargetSum.toLocaleString()}.`,
   );
 }
 

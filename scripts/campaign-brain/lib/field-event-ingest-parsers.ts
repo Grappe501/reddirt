@@ -3,7 +3,7 @@
  */
 
 import { ARKANSAS_COUNTY_EVENT_DIRECTORY } from "../../../src/lib/festivals/arkansas-county-event-directory";
-import { ARKANSAS_TOP_40_CITIES } from "../../strategic-plan/data/arkansas-top-40-cities";
+import { ARKANSAS_TOP_75_CITIES } from "../../strategic-plan/data/arkansas-top-40-cities";
 
 export type IngestLead = {
   eventName: string;
@@ -27,7 +27,7 @@ for (const row of ARKANSAS_COUNTY_EVENT_DIRECTORY) {
   CITY_TO_COUNTY.set(row.countyName.toLowerCase(), row.countyName);
 }
 
-for (const c of ARKANSAS_TOP_40_CITIES) {
+for (const c of ARKANSAS_TOP_75_CITIES) {
   CITY_TO_COUNTY.set(c.name.toLowerCase(), c.county);
 }
 

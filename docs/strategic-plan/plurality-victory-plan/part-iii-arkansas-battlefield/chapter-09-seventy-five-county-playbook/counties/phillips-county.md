@@ -8,7 +8,7 @@
 > **County:** Phillips
 > **FIPS:** 05107
 > **Opportunity Tier:** C (rank #46)
-> **VCI Rank:** #46 of 75 · Priority 3
+> **VCI Rank:** #27 of 75 · Priority 2
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#46** |
 | Opportunity score | 720 |
-| Victory Contribution Index (VCI) | **720** |
+| Victory Contribution Index (VCI) | **2,400** |
 | Lane 2 @ 50% | 238 |
 | Registration goal | 249 |
 | Lane 4 peel potential (12%) | 233 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Helena-West Helena** — 1,680 target votes · Democratic recovery hub
 
 ---
 

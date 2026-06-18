@@ -38,6 +38,19 @@ if (!env.NODE_OPTIONS?.includes("max-old-space-size")) {
 
 if (!isCiBuild && process.platform === "win32") {
   env.npm_config_cache = npmCache;
+  const ffmpegBin = path.join(localRoot, "ffmpeg", "bin");
+  const ytdlpBin = path.join(localRoot, "yt-dlp");
+  const extraBins = [ffmpegBin, ytdlpBin].filter((d) => fs.existsSync(d));
+  if (extraBins.length) {
+    env.PATH = `${extraBins.join(path.delimiter)}${path.delimiter}${env.PATH ?? ""}`;
+  }
+  const nodeDirs = [
+    path.dirname(process.execPath),
+    "C:\\Program Files\\nodejs",
+  ].filter((d, i, a) => d && a.indexOf(d) === i && fs.existsSync(d));
+  if (nodeDirs.length) {
+    env.PATH = `${nodeDirs.join(path.delimiter)}${path.delimiter}${env.PATH ?? ""}`;
+  }
 }
 
 const args = process.argv.slice(2);

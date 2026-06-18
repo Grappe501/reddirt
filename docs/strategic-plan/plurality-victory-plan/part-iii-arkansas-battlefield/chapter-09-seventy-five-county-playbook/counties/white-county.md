@@ -8,7 +8,7 @@
 > **County:** White
 > **FIPS:** 05145
 > **Opportunity Tier:** A (rank #10)
-> **VCI Rank:** #11 of 75 · Priority 1
+> **VCI Rank:** #12 of 75 · Priority 1
 
 ---
 
@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Searcy** — 2,099 target votes · University / youth registration hub
 - **Beebe** — 796 target votes · University / youth registration hub

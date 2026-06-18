@@ -269,7 +269,7 @@ export function ForwardMotionStopCommandCenterPanel({ view }: Props) {
           </div>
         ) : (
           <p className="text-sm text-[var(--ep-navy-muted)]">
-            County-seat and community event focus — no Top 40 city brief. Use county playbook and coalition targets.
+            County-seat and community event focus — no Top 75 city brief. Use county playbook and coalition targets.
           </p>
         )}
       </Section>

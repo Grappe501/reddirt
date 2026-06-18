@@ -8,7 +8,7 @@
 > **County:** Lonoke
 > **FIPS:** 05085
 > **Opportunity Tier:** A (rank #9)
-> **VCI Rank:** #12 of 75 · Priority 1
+> **VCI Rank:** #11 of 75 · Priority 1
 
 ---
 
@@ -64,16 +64,18 @@
 | Opportunity tier | **A** |
 | Statewide opportunity rank | **#9** |
 | Opportunity score | 4,003 |
-| Victory Contribution Index (VCI) | **6,783** |
+| Victory Contribution Index (VCI) | **7,836** |
 | Lane 2 @ 50% | 975 |
 | Registration goal | 941 |
 | Lane 4 peel potential (12%) | 2,087 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Cabot** — 2,780 target votes · Democratic recovery hub
+- **Ward** — 626 target votes · Democratic recovery hub
+- **Lonoke** — 427 target votes · Business / chamber hub
 
 ---
 

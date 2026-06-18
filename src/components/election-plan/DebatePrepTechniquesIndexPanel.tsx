@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { DebatePrepOperatorGuideCard } from "@/components/election-plan/DebatePrepOperatorGuideCard";
+import { ForumDebateUpgradePanel } from "@/components/election-plan/ForumDebateUpgradePanel";
 import {
   DEBATE_REHEARSAL_TECHNIQUES,
   MODERATOR_INTERACTION_TECHNIQUES,
@@ -17,6 +18,8 @@ export function DebatePrepTechniquesIndexPanel() {
   return (
     <section className="space-y-6">
       {depthGuide ? <DebatePrepOperatorGuideCard title="Techniques library — how to use" guide={depthGuide} /> : null}
+
+      <ForumDebateUpgradePanel />
 
       <p className="text-sm text-[var(--ep-navy-muted)]">
         Plain-language recovery and attack-pattern guides. Read{" "}

@@ -8,7 +8,7 @@
 > **County:** Benton
 > **FIPS:** 05007
 > **Opportunity Tier:** A (rank #2)
-> **VCI Rank:** #2 of 75 · Priority 1
+> **VCI Rank:** #3 of 75 · Priority 1
 
 ---
 
@@ -64,19 +64,21 @@
 | Opportunity tier | **A** |
 | Statewide opportunity rank | **#2** |
 | Opportunity score | 21,999 |
-| Victory Contribution Index (VCI) | **44,415** |
+| Victory Contribution Index (VCI) | **46,015** |
 | Lane 2 @ 50% | 7,620 |
 | Registration goal | 7,183 |
 | Lane 4 peel potential (12%) | 7,196 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Rogers** — 9,097 target votes · Business / chamber hub
 - **Bentonville** — 7,041 target votes · Business / chamber hub
 - **Bella Vista** — 4,028 target votes · Persuasion / conversion hub
 - **Siloam Springs** — 2,250 target votes · University / youth registration hub
+- **Pea Ridge** — 868 target votes · Democratic recovery hub
+- **Cave Springs** — 732 target votes · Business / chamber hub
 
 ---
 

@@ -76,7 +76,7 @@ const STATIC_PORTAL_HUBS: AdminElectionPlanLink[] = [
   { label: "County drop-off analysis", href: "/election-plan/counties/pulaski/drop-off", keywords: ["chapter 4", "drop-off", "lane 2", "electoral math"] },
   { label: "County registration dashboard", href: "/election-plan/counties/pulaski/registration-dashboard", keywords: ["chapter 5", "registration", "lane 3", "new voters"] },
   { label: "Arkansas Battlefield", href: "/election-plan/battlefield", keywords: ["clusters", "vci"] },
-  { label: "Priority cities hub", href: "/election-plan/cities", keywords: ["top 40", "location briefs"] },
+      { label: "Priority cities hub", href: "/election-plan/cities", keywords: ["top 75", "top 40", "location briefs"] },
   { label: "County victory targets", href: "/election-plan/county-victory-targets", keywords: ["75 counties", "percent increase"] },
   { label: "Conversation strategy", href: "/election-plan/conversation-strategy", keywords: ["po5", "doctrine"] },
   { label: "Organization chart", href: "/election-plan/organization", keywords: ["ownership", "roles"] },

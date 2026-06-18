@@ -8,7 +8,7 @@
 > **County:** Washington
 > **FIPS:** 05143
 > **Opportunity Tier:** A (rank #3)
-> **VCI Rank:** #3 of 75 · Priority 1
+> **VCI Rank:** #2 of 75 · Priority 1
 
 ---
 
@@ -64,17 +64,20 @@
 | Opportunity tier | **A** |
 | Statewide opportunity rank | **#3** |
 | Opportunity score | 15,770 |
-| Victory Contribution Index (VCI) | **43,741** |
+| Victory Contribution Index (VCI) | **46,814** |
 | Lane 2 @ 50% | 5,788 |
 | Registration goal | 5,462 |
 | Lane 4 peel potential (12%) | 4,520 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Fayetteville** — 14,754 target votes · University / youth registration hub
 - **Springdale** — 13,217 target votes · University / youth registration hub
+- **Farmington** — 1,204 target votes · Democratic recovery hub
+- **Prairie Grove** — 1,125 target votes · Democratic recovery hub
+- **Tontitown** — 744 target votes · Business / chamber hub
 
 ---
 

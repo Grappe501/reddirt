@@ -8,7 +8,7 @@
 > **County:** Howard
 > **FIPS:** 05061
 > **Opportunity Tier:** C (rank #53)
-> **VCI Rank:** #53 of 75 · Priority 3
+> **VCI Rank:** #47 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#53** |
 | Opportunity score | 557 |
-| Victory Contribution Index (VCI) | **557** |
+| Victory Contribution Index (VCI) | **1,042** |
 | Lane 2 @ 50% | 109 |
 | Registration goal | 127 |
 | Lane 4 peel potential (12%) | 321 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Nashville** — 485 target votes · Business / chamber hub
 
 ---
 

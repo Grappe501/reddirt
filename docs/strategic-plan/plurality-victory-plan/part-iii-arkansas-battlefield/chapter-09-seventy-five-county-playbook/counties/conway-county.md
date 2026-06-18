@@ -8,7 +8,7 @@
 > **County:** Conway
 > **FIPS:** 05029
 > **Opportunity Tier:** B (rank #28)
-> **VCI Rank:** #33 of 75 · Priority 3
+> **VCI Rank:** #30 of 75 · Priority 2
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **B** |
 | Statewide opportunity rank | **#28** |
 | Opportunity score | 1,077 |
-| Victory Contribution Index (VCI) | **1,077** |
+| Victory Contribution Index (VCI) | **2,140** |
 | Lane 2 @ 50% | 251 |
 | Registration goal | 261 |
 | Lane 4 peel potential (12%) | 565 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Morrilton** — 1,063 target votes · Business / chamber hub
 
 ---
 

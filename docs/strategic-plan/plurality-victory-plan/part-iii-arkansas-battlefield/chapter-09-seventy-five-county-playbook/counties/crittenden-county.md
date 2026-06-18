@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **West Memphis** — 3,782 target votes · Democratic recovery hub
 - **Marion** — 2,004 target votes · Democratic recovery hub

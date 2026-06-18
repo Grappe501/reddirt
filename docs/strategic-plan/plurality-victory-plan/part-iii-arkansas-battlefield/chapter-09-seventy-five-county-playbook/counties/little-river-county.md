@@ -8,7 +8,7 @@
 > **County:** Little River
 > **FIPS:** 05081
 > **Opportunity Tier:** C (rank #50)
-> **VCI Rank:** #50 of 75 · Priority 3
+> **VCI Rank:** #44 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#50** |
 | Opportunity score | 600 |
-| Victory Contribution Index (VCI) | **600** |
+| Victory Contribution Index (VCI) | **1,107** |
 | Lane 2 @ 50% | 115 |
 | Registration goal | 133 |
 | Lane 4 peel potential (12%) | 352 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Ashdown** — 507 target votes · Business / chamber hub
 
 ---
 

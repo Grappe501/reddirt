@@ -8,7 +8,7 @@
 > **County:** Boone
 > **FIPS:** 05009
 > **Opportunity Tier:** B (rank #18)
-> **VCI Rank:** #19 of 75 · Priority 2
+> **VCI Rank:** #20 of 75 · Priority 2
 
 ---
 
@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Harrison** — 1,418 target votes · Persuasion / conversion hub
 

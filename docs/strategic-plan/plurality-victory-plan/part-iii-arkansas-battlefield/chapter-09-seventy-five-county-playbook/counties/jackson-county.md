@@ -8,7 +8,7 @@
 > **County:** Jackson
 > **FIPS:** 05067
 > **Opportunity Tier:** C (rank #58)
-> **VCI Rank:** #58 of 75 · Priority 3
+> **VCI Rank:** #41 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#58** |
 | Opportunity score | 505 |
-| Victory Contribution Index (VCI) | **505** |
+| Victory Contribution Index (VCI) | **1,249** |
 | Lane 2 @ 50% | 65 |
 | Registration goal | 86 |
 | Lane 4 peel potential (12%) | 354 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Newport** — 744 target votes · Business / chamber hub
 
 ---
 

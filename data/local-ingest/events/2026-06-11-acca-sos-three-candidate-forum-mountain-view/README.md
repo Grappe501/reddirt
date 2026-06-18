@@ -36,7 +36,7 @@ cd H:\SOSWebsite\RedDirt
 node scripts/run-with-h-drive-env.cjs npm run forum:ingest-acca-drop
 ```
 
-This **moves** the video into managed storage (same H: drive = instant rename, no double disk use), registers it in the database, **chunks audio for Whisper** (~12 min segments), runs v1 + v2 debate analysis, and updates Forum transcript lab.
+This **transcribes in place** — your source MP4 is **never moved or deleted**. Files over 2 GiB skip the Prisma owned-media row (INT4 limit); the forum lab stores the local path and streams video on the Election Plan forum lab page. Whisper chunks audio (~12 min segments), runs v1 + v2 debate analysis, and updates `data/intelligence/forum-transcript-lab.json`.
 
 Transcription may take **30–90+ minutes** for a 2-hour forum depending on chunk count and OpenAI latency.
 

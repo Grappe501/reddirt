@@ -8,7 +8,7 @@
 > **County:** Miller
 > **FIPS:** 05091
 > **Opportunity Tier:** B (rank #17)
-> **VCI Rank:** #14 of 75 · Priority 2
+> **VCI Rank:** #15 of 75 · Priority 2
 
 ---
 
@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Texarkana** — 3,195 target votes · Persuasion / conversion hub
 

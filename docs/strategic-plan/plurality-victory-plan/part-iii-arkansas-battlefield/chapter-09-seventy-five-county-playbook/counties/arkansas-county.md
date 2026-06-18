@@ -8,7 +8,7 @@
 > **County:** Arkansas
 > **FIPS:** 05001
 > **Opportunity Tier:** C (rank #41)
-> **VCI Rank:** #29 of 75 · Priority 2
+> **VCI Rank:** #35 of 75 · Priority 3
 
 ---
 
@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Stuttgart** — 862 target votes · Business / chamber hub
 

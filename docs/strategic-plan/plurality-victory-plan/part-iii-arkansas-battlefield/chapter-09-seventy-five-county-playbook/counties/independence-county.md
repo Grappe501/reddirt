@@ -8,7 +8,7 @@
 > **County:** Independence
 > **FIPS:** 05063
 > **Opportunity Tier:** B (rank #20)
-> **VCI Rank:** #23 of 75 · Priority 2
+> **VCI Rank:** #21 of 75 · Priority 2
 
 ---
 
@@ -64,16 +64,17 @@
 | Opportunity tier | **B** |
 | Statewide opportunity rank | **#20** |
 | Opportunity score | 1,687 |
-| Victory Contribution Index (VCI) | **2,622** |
+| Victory Contribution Index (VCI) | **3,034** |
 | Lane 2 @ 50% | 336 |
 | Registration goal | 341 |
 | Lane 4 peel potential (12%) | 1,010 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Batesville** — 935 target votes · Business / chamber hub
+- **Southside** — 412 target votes · Democratic recovery hub
 
 ---
 

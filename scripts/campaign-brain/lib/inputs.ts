@@ -6,7 +6,7 @@ import path from "node:path";
 
 import { ARKANSAS_COUNTY_REGISTRY } from "../../../src/lib/county/arkansas-county-registry";
 import { readJson, shortCountyName, PLAN_ROOT, fmt } from "../../strategic-plan/lib/strategic-plan-shared";
-import { ARKANSAS_TOP_40_CITIES } from "../../strategic-plan/data/arkansas-top-40-cities";
+import { ARKANSAS_TOP_75_CITIES } from "../../strategic-plan/data/arkansas-top-40-cities";
 import { OPPORTUNITY_CLUSTERS } from "../../strategic-plan/data/opportunity-clusters";
 
 const ROOT = process.cwd();
@@ -136,7 +136,7 @@ export function cityInfluenceByCounty(): Map<string, number> {
     )?.cities ?? [];
 
   const map = new Map<string, number>();
-  for (const city of ARKANSAS_TOP_40_CITIES) {
+  for (const city of ARKANSAS_TOP_75_CITIES) {
     const row = citySummary.find((s) => s.name === city.name);
     const votes = row?.targetVotes ?? 0;
     map.set(city.county, (map.get(city.county) ?? 0) + votes);

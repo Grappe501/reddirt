@@ -64,16 +64,17 @@
 | Opportunity tier | **A** |
 | Statewide opportunity rank | **#8** |
 | Opportunity score | 5,201 |
-| Victory Contribution Index (VCI) | **13,397** |
+| Victory Contribution Index (VCI) | **13,827** |
 | Lane 2 @ 50% | 1,483 |
 | Registration goal | 1,418 |
 | Lane 4 peel potential (12%) | 2,300 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Jonesboro** — 8,196 target votes · Business / chamber hub
+- **Brookland** — 430 target votes · Democratic recovery hub
 
 ---
 

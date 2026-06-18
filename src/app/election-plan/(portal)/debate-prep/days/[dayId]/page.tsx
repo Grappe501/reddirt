@@ -20,6 +20,7 @@ import {
   type IntensiveDayId,
 } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { loadForumTranscriptLab } from "@/lib/intelligence/v4/forumTranscriptLab";
+import { loadForumDebateUpgrade } from "@/lib/intelligence/v4/forumDebateUpgrade";
 import { loadKellyDebateIntensiveProgress } from "@/lib/intelligence/v4/kellyDebateIntensiveProgress";
 
 export const dynamic = "force-dynamic";
@@ -43,6 +44,11 @@ export default async function ElectionPlanDebatePrepDayPage({
 
   const plan = getDebateWeekIntensiveDay(dayId as IntensiveDayId)!;
   const forumLab = loadForumTranscriptLab();
+  const forumUpgrade = loadForumDebateUpgrade();
+  const forumCapitalizeMoves =
+    forumLab.analysis?.capitalizeMoves?.length
+      ? forumLab.analysis.capitalizeMoves
+      : forumUpgrade.capitalizeMoves;
   const progress = loadKellyDebateIntensiveProgress();
 
   return (
@@ -139,7 +145,7 @@ export default async function ElectionPlanDebatePrepDayPage({
           <DebateWeekDayDeepPanel
             dayId={dayId as IntensiveDayId}
             blocks={plan.blocks}
-            forumCapitalizeMoves={forumLab.analysis?.capitalizeMoves}
+            forumCapitalizeMoves={forumCapitalizeMoves}
             forumDeepAnalysis={forumLab.deepAnalysis}
             initialProgress={progress}
             progressApiBase={EP_DEBATE_PREP_PROGRESS_API}

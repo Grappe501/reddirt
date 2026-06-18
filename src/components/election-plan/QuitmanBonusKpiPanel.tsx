@@ -93,7 +93,7 @@ export function QuitmanBonusKpiPanel({ plan, contactCount }: Props) {
               {formatVotes(vp.chapterTargetVotes)}
             </p>
             <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-              +{formatVotes(vp.chapterVoteGain)} gain · not in Top 40 combined total
+              +{formatVotes(vp.chapterVoteGain)} gain · not in Top 75 combined total
             </p>
           </div>
           <div className="rounded-lg border-2 border-[var(--ep-gold)] bg-[var(--ep-gold)]/5 p-4">

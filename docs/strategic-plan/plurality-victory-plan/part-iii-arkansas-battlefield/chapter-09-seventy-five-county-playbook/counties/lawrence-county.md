@@ -8,7 +8,7 @@
 > **County:** Lawrence
 > **FIPS:** 05075
 > **Opportunity Tier:** C (rank #48)
-> **VCI Rank:** #48 of 75 · Priority 3
+> **VCI Rank:** #43 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **C** |
 | Statewide opportunity rank | **#48** |
 | Opportunity score | 649 |
-| Victory Contribution Index (VCI) | **649** |
+| Victory Contribution Index (VCI) | **1,123** |
 | Lane 2 @ 50% | 89 |
 | Registration goal | 109 |
 | Lane 4 peel potential (12%) | 451 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Walnut Ridge** — 474 target votes · University / youth registration hub
 
 ---
 

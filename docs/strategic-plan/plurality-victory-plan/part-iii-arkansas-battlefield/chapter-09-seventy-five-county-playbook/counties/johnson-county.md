@@ -8,7 +8,7 @@
 > **County:** Johnson
 > **FIPS:** 05071
 > **Opportunity Tier:** B (rank #27)
-> **VCI Rank:** #32 of 75 · Priority 3
+> **VCI Rank:** #31 of 75 · Priority 3
 
 ---
 
@@ -64,16 +64,16 @@
 | Opportunity tier | **B** |
 | Statewide opportunity rank | **#27** |
 | Opportunity score | 1,097 |
-| Victory Contribution Index (VCI) | **1,097** |
+| Victory Contribution Index (VCI) | **2,132** |
 | Lane 2 @ 50% | 225 |
 | Registration goal | 236 |
 | Lane 4 peel potential (12%) | 636 |
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
-- No Top 40 city — county-seat and community event focus
+- **Clarksville** — 1,035 target votes · University / youth registration hub
 
 ---
 

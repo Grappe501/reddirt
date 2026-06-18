@@ -8,7 +8,7 @@
 > **County:** Ouachita
 > **FIPS:** 05103
 > **Opportunity Tier:** B (rank #25)
-> **VCI Rank:** #26 of 75 · Priority 2
+> **VCI Rank:** #29 of 75 · Priority 2
 
 ---
 
@@ -71,7 +71,7 @@
 
 ---
 
-## Cities in county (Top 40)
+## Cities in county (Top 75 priority)
 
 - **Camden** — 1,160 target votes · Democratic recovery hub
 

@@ -690,14 +690,14 @@ function CitiesPanel({ data }: SnapshotPanelProps) {
     <section>
       <SectionTitle
         title="Priority Cities"
-        subtitle={`${data.cities.length} cities · ${formatVotes(data.top40TargetVotes)} combined vote target · each opens a location brief`}
+        subtitle={`${data.cities.filter((c) => !c.isBonusCity).length} priority cities · ${formatVotes(data.top75TargetVotes ?? data.top40TargetVotes)} combined vote target · each opens a location brief`}
       />
       <p className="mb-6 text-sm">
         <Link href={locationBriefMasterPlanHref()} className="font-semibold text-[var(--ep-gold)] hover:underline">
           Location brief master plan →
         </Link>
       </p>
-      <CityStrategyList cities={data.cities} combinedTargetVotes={data.top40TargetVotes} />
+      <CityStrategyList cities={data.cities} combinedTargetVotes={data.top75TargetVotes ?? data.top40TargetVotes} />
     </section>
   );
 }
