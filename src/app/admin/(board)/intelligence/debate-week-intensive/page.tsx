@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DebateWeekIntensivePanel } from "@/components/admin/intelligence/DebateWeekIntensivePanel";
+import { DebateWeekReadinessPanel } from "@/components/admin/intelligence/DebateWeekV3HubPanels";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 import {
   DEBATE_DATE,
@@ -8,12 +9,15 @@ import {
   FORUM_TRANSCRIPT_LAB_HREF,
   totalIntensiveMinutes,
 } from "@/lib/intelligence/v4/debateWeekIntensive2026";
+import { DEBATE_WEEK_LANES_HUB_HREF, DEBATE_WEEK_THEORY_HUB_HREF } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
+import { loadKellyDebateIntensiveProgress } from "@/lib/intelligence/v4/kellyDebateIntensiveProgress";
 
 export const dynamic = "force-dynamic";
 
 export default function DebateWeekIntensiveHubPage() {
   const referenceDate = process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
   const totalHours = Math.round((totalIntensiveMinutes() / 60) * 10) / 10;
+  const progress = loadKellyDebateIntensiveProgress();
 
   return (
     <div className="mx-auto max-w-7xl text-kelly-text">
@@ -41,7 +45,21 @@ export default function DebateWeekIntensiveHubPage() {
         >
           AI tutor
         </Link>
+        <Link
+          href={DEBATE_WEEK_LANES_HUB_HREF}
+          className="rounded-full border border-indigo-500 bg-indigo-100 px-3 py-1 text-xs font-bold text-indigo-950"
+        >
+          Drill-down lanes
+        </Link>
+        <Link
+          href={DEBATE_WEEK_THEORY_HUB_HREF}
+          className="rounded-full border border-violet-400 bg-violet-50 px-3 py-1 text-xs font-bold text-violet-950"
+        >
+          Theory library
+        </Link>
       </V4PageHeader>
+
+      <DebateWeekReadinessPanel initialProgress={progress} />
 
       <section className="mb-6 grid gap-4 sm:grid-cols-3">
         <div className="rounded-xl border border-kelly-gold/30 bg-kelly-gold/5 p-4 text-sm">

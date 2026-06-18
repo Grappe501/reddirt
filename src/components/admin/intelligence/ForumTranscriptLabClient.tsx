@@ -5,9 +5,10 @@ import type { ForumDeepAnalysis, ForumTranscriptLabRecord } from "@/lib/intellig
 
 type Props = {
   initialRecord: ForumTranscriptLabRecord;
+  openaiConfigured?: boolean;
 };
 
-export function ForumTranscriptLabClient({ initialRecord }: Props) {
+export function ForumTranscriptLabClient({ initialRecord, openaiConfigured = false }: Props) {
   const [record, setRecord] = useState(initialRecord);
   const [title, setTitle] = useState(initialRecord.title);
   const [eventLabel, setEventLabel] = useState(initialRecord.eventLabel);
@@ -116,6 +117,27 @@ export function ForumTranscriptLabClient({ initialRecord }: Props) {
 
   return (
     <div className="space-y-8">
+      <div
+        className={`rounded-lg border px-4 py-3 text-sm ${
+          openaiConfigured
+            ? "border-emerald-300 bg-emerald-50 text-emerald-950"
+            : "border-amber-300 bg-amber-50 text-amber-950"
+        }`}
+      >
+        {openaiConfigured ? (
+          <>
+            <span className="font-bold">OpenAI connected.</span> Whisper transcription and v1/v2 analysis will run on
+            upload. If the dev server was started before you added the key, restart it once.
+          </>
+        ) : (
+          <>
+            <span className="font-bold">OpenAI not detected in this server process.</span> Add{" "}
+            <code className="text-xs">OPENAI_API_KEY</code> to <code className="text-xs">.env.local</code>, restart the
+            dev server, or paste the transcript manually.
+          </>
+        )}
+      </div>
+
       {error ? (
         <div className="rounded-lg border border-rose-300 bg-rose-50 px-4 py-3 text-sm text-rose-950">{error}</div>
       ) : null}
