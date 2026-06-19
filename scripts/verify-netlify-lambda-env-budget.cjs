@@ -119,24 +119,25 @@ function printNetlifyEnvScopingChecklist(rows) {
 function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, rows, buildOnlyLeaked }) {
   const ffBytes = featureFlags?.bytes ?? 0;
   const worstCase = deployEstimate ?? total + (buildOnlyLeaked ?? 0);
-  const compatRisk = total + (ffBytes || FEATURE_FLAGS_TYPICAL_BYTES);
-  const nodeOptions = rows.find((r) => r.key === "NODE_OPTIONS");
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
+  const platformPadding = ffBytes >= LAMBDA_ENV_LIMIT_BYTES ? ffBytes : 0;
+  const lambdaDeployBytes = worstCase + platformPadding;
+  const nodeOptions = rows.find((r) => r.key === "NODE_OPTIONS");
 
   let fail = false;
   const lines = [];
+
+  if (onNetlify && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES) {
+    fail = true;
+    lines.push(
+      `Estimated Lambda deploy env ${lambdaDeployBytes} B (runtime ${total} B + ${buildOnlyLeaked ?? 0} B build-only leak risk + ${platformPadding} B platform). Scope build-only vars with npm run netlify:env:scopes or Netlify UI (docs/NETLIFY_FIRST_DEPLOY.md §6). If runtime is already minimal, ask Netlify support to confirm modern Functions runtime.`,
+    );
+  }
 
   if (total >= LAMBDA_ENV_LIMIT_BYTES) {
     fail = true;
     lines.push(
       `Runtime env estimate ${total} B exceeds AWS Lambda 4 KB cap. Deploy will fail with Invalid AWS Lambda parameters.`,
-    );
-  }
-
-  if (onNetlify && worstCase >= LAMBDA_ENV_LIMIT_BYTES) {
-    fail = true;
-    lines.push(
-      `Worst-case function env ${worstCase} B (runtime ${total} B + ${buildOnlyLeaked ?? 0} B build-only keys if scoped to All/Functions). Scope every NEXT_PUBLIC_*, PRISMA_*, ALLOW_PRISMA_*, SKIP_DB_SEED, NODE_OPTIONS, NODE_VERSION, and NPM_CONFIG_PRODUCTION to Builds only — or run: npm run netlify:env:scopes`,
     );
   }
 
@@ -147,54 +148,15 @@ function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, r
     );
   }
 
-  if (onNetlify && ffBytes > 0 && total + ffBytes > LAMBDA_ENV_LIMIT_BYTES) {
-    if (worstCase >= LAMBDA_ENV_LIMIT_BYTES) {
-      fail = true;
-      lines.push(
-        `FEATURE_FLAGS ${ffBytes} B plus runtime ${total} B exceeds the 4 KB Lambda compat cap. Scope build-only vars to Builds only (npm run netlify:env:scopes).`,
-      );
-    } else {
-      lines.push(
-        `FEATURE_FLAGS ${ffBytes} B is Netlify-internal. Runtime ${total} B looks OK, but deploy can still fail on Lambda compat mode after a green build. Run npm run netlify:env:scopes, then ask Netlify support to confirm modern Functions runtime if upload still fails.`,
-      );
-    }
-  } else if (onNetlify && worstCase >= WARN_BYTES && worstCase + FEATURE_FLAGS_TYPICAL_BYTES > LAMBDA_ENV_LIMIT_BYTES) {
+  if (!fail && onNetlify && worstCase >= WARN_BYTES) {
     lines.push(
-      `Warning: worst-case env ${worstCase} B is high; on Lambda compatibility mode, platform FEATURE_FLAGS (~9 KB) can also break deploy after a green build.`,
-    );
-  }
-
-  if (
-    onNetlify &&
-    !fail &&
-    (buildOnlyLeaked ?? 0) > 400 &&
-    worstCase >= LAMBDA_ENV_LIMIT_BYTES - 384
-  ) {
-    fail = true;
-    lines.push(
-      `${buildOnlyLeaked} B of build-only vars are in this build. If any are scoped to All or Functions in Netlify UI, deploy will exceed the 4 KB Lambda env cap. Run npm run netlify:env:scopes or fix scopes manually (docs/NETLIFY_FIRST_DEPLOY.md §6).`,
-    );
-  }
-
-  if (!fail && (buildOnlyLeaked ?? 0) > 1500 && total > WARN_BYTES) {
-    lines.push(
-      `Warning: ${buildOnlyLeaked} B of build-only vars present — if any are scoped to All/Functions in Netlify UI, deploy may fail.`,
-    );
-  }
-
-  if (!fail && ffBytes >= LAMBDA_ENV_LIMIT_BYTES) {
-    lines.push(
-      `FEATURE_FLAGS alone is ${ffBytes} B. On Lambda compatibility mode, deploy fails even with minimal user env. Contact Netlify support to confirm modern Functions runtime.`,
-    );
-  } else if (!fail && compatRisk > LAMBDA_ENV_LIMIT_BYTES && total > 2000) {
-    lines.push(
-      `Compat-mode risk: runtime ${total} B + platform flags ≈ ${compatRisk} B. Scope all NEXT_PUBLIC_* and PRISMA_* to Builds only.`,
+      `Warning: worst-case ${worstCase} B. If deploy fails at upload with Invalid AWS Lambda parameters, scope build-only vars (npm run netlify:env:scopes) and confirm modern Functions runtime with Netlify support.`,
     );
   }
 
   const summary = fail
-    ? `FAIL worst-case ${worstCase} B function env — fix scoping before deploy`
-    : `~${total} B runtime env (${(total / 1024).toFixed(1)} KB), worst-case ${worstCase} B, ${(totalRaw / 1024).toFixed(1)} KB total in build`;
+    ? `FAIL deploy est. ${lambdaDeployBytes} B — fix env scoping before deploy`
+    : `~${total} B runtime env (${(total / 1024).toFixed(1)} KB), deploy est. ${lambdaDeployBytes} B, ${(totalRaw / 1024).toFixed(1)} KB total in build`;
 
   return {
     fail,

@@ -1,7 +1,7 @@
 import {
-  ElectionPlanDay1ContinueButton,
   ElectionPlanDay1PathwayPanel,
 } from "@/components/election-plan/ElectionPlanDay1PathwayPanel";
+import { ElectionPlanDay1ContinueButton } from "@/components/election-plan/ElectionPlanDay1ContinueButton";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import { DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";

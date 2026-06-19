@@ -65,6 +65,17 @@ jobs:
       - name: Production build (netlify-build.sh parity)
         run: npm run election-plan:build && NODE_ENV=production npx next build
 
+      - name: Enforce Netlify env scopes (when secrets set)
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          if [ -z "${NETLIFY_AUTH_TOKEN:-}" ] || [ -z "${NETLIFY_SITE_ID:-}" ]; then
+            echo "Skip env scope enforcement — add NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID to GitHub repo secrets."
+            exit 0
+          fi
+          node scripts/netlify-enforce-env-scopes.cjs
+
       - name: Trigger Netlify build hook (optional)
         env:
           NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}

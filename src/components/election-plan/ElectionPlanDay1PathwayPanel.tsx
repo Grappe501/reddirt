@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ElectionPlanDay1PathwayProgressBar } from "@/components/election-plan/ElectionPlanDay1PathwayProgressBar";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import {
   buildDay1PathwaySteps,
@@ -58,6 +59,8 @@ export function ElectionPlanDay1PathwayPanel({
 
   return (
     <section className="mb-8">
+      <ElectionPlanDay1PathwayProgressBar activeStepId={activeStepId} />
+
       {activeStepId && activeIdx >= 0 ? (
         <p className="mb-3 text-xs font-bold uppercase text-[var(--ep-navy-muted)]">
           Step {activeIdx + 1} of {steps.length}
@@ -113,37 +116,5 @@ export function ElectionPlanDay1PathwayPanel({
         </>
       ) : null}
     </section>
-  );
-}
-
-export function ElectionPlanDay1ContinueButton({
-  currentStepId,
-  className = "",
-}: {
-  currentStepId: string;
-  className?: string;
-}) {
-  const steps = buildDay1PathwaySteps();
-  const idx = steps.findIndex((s) => s.id === currentStepId);
-  const next = idx >= 0 && idx < steps.length - 1 ? steps[idx + 1] : undefined;
-
-  if (!next) {
-    return (
-      <Link
-        href={epDebatePrepDayHref(DAY1_ID)}
-        className={`inline-block rounded-full bg-emerald-800 px-6 py-3 text-sm font-bold text-white ${className}`}
-      >
-        Day 1 complete — evening check →
-      </Link>
-    );
-  }
-
-  return (
-    <Link
-      href={next.href}
-      className={`inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 ${className}`}
-    >
-      Continue · {next.label} ({next.minutes} min) →
-    </Link>
   );
 }

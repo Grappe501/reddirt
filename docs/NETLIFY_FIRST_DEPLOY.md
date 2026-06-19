@@ -80,6 +80,8 @@ Symptom: log shows `Starting to deploy site from '.next'` then `Failed to upload
 
 **Root cause:** AWS Lambda rejects the function when **environment variables** injected into `___netlify-server-handler` exceed **4,096 bytes** total (keys + values), or when **`NODE_OPTIONS=--max-old-space-size=6144`** reaches the function (invalid for Lambda memory). Netlify **Lambda compatibility mode** also counts internal **`FEATURE_FLAGS`** (~9 KB) toward that cap — modern Functions runtime (June 2026+) removes the limit.
 
+**GitHub Actions (automated scoping):** Add repo secrets `NETLIFY_AUTH_TOKEN` (personal access token) and `NETLIFY_SITE_ID`. The `Netlify production deploy gate` workflow runs `npm run netlify:env:scopes` on each push to `main` when both secrets are set.
+
 ### Fix in Netlify UI (do this first)
 
 Site configuration → **Environment variables** → for **each** row below, click **Edit** → **Scopes** → choose **Builds** only (uncheck Functions / All):

@@ -2,6 +2,7 @@ import Link from "next/link";
 import "server-only";
 
 import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
+import { ElectionPlanDay1PathwayHubCard } from "@/components/election-plan/ElectionPlanDay1PathwayHubCard";
 import { ElectionPlanDay1StartCard } from "@/components/election-plan/ElectionPlanDay1PathwayPanel";
 import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
@@ -21,7 +22,6 @@ import {
 } from "@/lib/election-plan/debate-prep-links";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
 import { DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
-import { showPlatformMeta } from "@/lib/election-plan/kelly-facing-ui";
 import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 
 export function ElectionPlanDebatePrepHubPanel() {
@@ -62,28 +62,36 @@ export function ElectionPlanDebatePrepHubPanel() {
 
       <ElectionPlanDay1StartCard />
 
-      <section className="ep-card mb-8 grid gap-4 border-[var(--ep-gold)]/30 bg-[var(--ep-cream)]/30 p-5 sm:grid-cols-3">
+      <ElectionPlanDay1PathwayHubCard />
+
+      <section className="ep-card mb-8 grid gap-4 border-[var(--ep-border)] bg-white/60 p-5 sm:grid-cols-2">
         <div>
-          <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Readiness</p>
-          <p className="mt-1 font-heading text-3xl font-bold text-[var(--ep-navy)]">{snapshot.readinessPct}%</p>
-          <p className="text-xs text-[var(--ep-navy-muted)]">Debate {snapshot.debateDate}</p>
+          <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Full debate week</p>
+          <p className="mt-1 font-heading text-2xl font-bold text-[var(--ep-navy)]">{snapshot.readinessPct}%</p>
+          <p className="text-xs text-[var(--ep-navy-muted)]">
+            Staff composite (forum intel + 7-day course) — not your Day 1 bar above.
+          </p>
         </div>
-        <div className="sm:col-span-2">
-          <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Tonight</p>
+        <div>
+          <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Tonight focus</p>
           <p className="mt-1 text-sm font-semibold text-[var(--ep-navy)]">
             {snapshot.todayFocus ?? "Command Mode foundation — start Day 1 pathway above."}
           </p>
-          {showPlatformMeta() ? (
-            <p className="mt-2 text-[10px] font-bold uppercase text-amber-900">{snapshot.governance}</p>
-          ) : null}
         </div>
       </section>
 
-      <DebatePrepTonightPackageClient
-        tonightPackage={snapshot.tonightPackage}
-        packageCompletenessPct={snapshot.packageCompletenessPct}
-        packageLabel={DEBATE_PREP_PACKAGE_LABEL}
-      />
+      <details className="ep-card mb-8 p-5 text-sm">
+        <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
+          Staff tonight package checklist (optional — Day 1 pathway is primary)
+        </summary>
+        <div className="mt-4">
+          <DebatePrepTonightPackageClient
+            tonightPackage={snapshot.tonightPackage}
+            packageCompletenessPct={snapshot.packageCompletenessPct}
+            packageLabel={DEBATE_PREP_PACKAGE_LABEL}
+          />
+        </div>
+      </details>
 
       <details className="ep-card mb-8 p-5 text-sm">
         <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
