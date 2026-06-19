@@ -6,7 +6,6 @@ import {
   buildDebatePrepSystemV6Snapshot,
   type DebatePrepSystemV6Snapshot,
 } from "@/lib/election-plan/debate-prep-system-v6";
-import { buildDebatePrepCommandHomeBundle as buildV5CommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v5-command-bundle";
 import {
   EP_DEBATE_PREP_COMMAND_HREF,
   EP_DEBATE_PREP_REHEARSAL_HREF,
@@ -240,9 +239,4 @@ export function buildDebatePrepSystemV7Snapshot(referenceDate?: string): DebateP
           ? "Package in progress · follow tonight path"
           : base.readinessLabel,
   };
-}
-
-/** v7 re-exports command home bundle — use debate-prep-system-v8 for the world-class engine. */
-export function buildDebatePrepCommandHomeBundle() {
-  return buildV5CommandHomeBundle();
 }

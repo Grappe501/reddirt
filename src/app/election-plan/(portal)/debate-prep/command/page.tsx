@@ -1,10 +1,8 @@
 import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
 import { CandidateCommandHomePanel } from "@/components/admin/intelligence/CandidateCommandHomePanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import {
-  buildDebatePrepCommandHomeBundle,
-  buildDebatePrepSystemV8Snapshot,
-} from "@/lib/election-plan/debate-prep-system-v8";
+import { buildDebatePrepCommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v5-command-bundle";
+import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
 import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import { mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 

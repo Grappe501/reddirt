@@ -29,7 +29,28 @@ const statusStyles = {
 
 export function ElectionPlanDebatePrepHubPanel() {
   const referenceDate = process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
-  const snapshot = buildDebatePrepSystemV8Snapshot(referenceDate);
+  let snapshot;
+  try {
+    snapshot = buildDebatePrepSystemV8Snapshot(referenceDate);
+  } catch (error) {
+    console.error("[debate-prep-hub] snapshot failed", error);
+    return (
+      <section className="ep-card mx-auto max-w-3xl p-6 text-sm text-[var(--ep-navy)]">
+        <p className="font-semibold">Debate prep hub is temporarily unavailable.</p>
+        <p className="mt-2 text-[var(--ep-navy-muted)]">
+          Try{" "}
+          <Link href={EP_DEBATE_PREP_WAR_ROOM_HREF} className="font-bold underline">
+            war room
+          </Link>{" "}
+          or{" "}
+          <Link href={EP_FORUM_TRANSCRIPT_LAB_HREF} className="font-bold underline">
+            forum lab
+          </Link>
+          . If this persists after deploy, contact staff.
+        </p>
+      </section>
+    );
+  }
 
   return (
     <>

@@ -10,7 +10,6 @@ import {
   type DebatePrepSystemV7Snapshot,
   type DebatePrepTonightPackage,
 } from "@/lib/election-plan/debate-prep-system-v7";
-import { buildDebatePrepCommandHomeBundle as buildV7CommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v7";
 import {
   buildDebatePrepWorldClassEngine,
   pickSmartTrapLane,
@@ -145,11 +144,6 @@ export function buildDebatePrepSystemV8Snapshot(referenceDate?: string): DebateP
     modules,
     worldClass,
   };
-}
-
-/** v8 owns command home bundle. */
-export function buildDebatePrepCommandHomeBundle() {
-  return buildV7CommandHomeBundle();
 }
 
 export { pickSmartTrapLane };
