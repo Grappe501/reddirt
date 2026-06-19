@@ -11,6 +11,7 @@ import { loadForumTranscriptLab } from "@/lib/intelligence/v4/forumTranscriptLab
 import { buildCceClosureSummary } from "@/lib/intelligence/v4/phase15P9Closure";
 import { buildSreClosureSummary } from "@/lib/intelligence/v4/phase16P9Closure";
 import { mapAdminHrefsDeep } from "@/lib/election-plan/debate-prep-route-map";
+import { shouldSkipHumanActionQueueSyncOnRequest } from "@/lib/intelligence/intelligenceLaunchMode";
 import {
   EP_DEBATE_PREP_COMMAND_HREF,
   EP_DEBATE_PREP_HREF,
@@ -64,15 +65,39 @@ export type DebatePrepSystemV5Snapshot = {
   governance: string;
 };
 
+function computeElectionPlanReadiness(
+  intensiveDaysComplete: number,
+  intensiveDaysTotal: number,
+  completedLanes: number,
+  forumTranscriptReady: boolean,
+  forumAnalysisReady: boolean,
+): { readinessPct: number; readinessLabel: string } {
+  const dayPct = Math.round((intensiveDaysComplete / Math.max(1, intensiveDaysTotal)) * 50);
+  const forumPct = forumAnalysisReady ? 35 : forumTranscriptReady ? 15 : 0;
+  const lanePct = Math.min(15, completedLanes * 3);
+  const readinessPct = Math.min(100, dayPct + forumPct + lanePct);
+  const readinessLabel =
+    readinessPct >= 85 ? "Stage-ready band" : readinessPct >= 70 ? "Rehearsal band" : "Build gaps open";
+  return { readinessPct, readinessLabel };
+}
+
 export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebatePrepSystemV5Snapshot {
   const ref = referenceDate ?? process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
-  const feed = buildCandidateCommandHomeFeed();
+  const useLightFeed = shouldSkipHumanActionQueueSyncOnRequest();
+  const feed = useLightFeed ? null : buildCandidateCommandHomeFeed();
   const progress = loadKellyDebateIntensiveProgress();
   const forum = loadForumTranscriptLab();
   const todayPlan = DEBATE_WEEK_INTENSIVE_DAYS.find((d) => d.calendarDate === ref);
 
   const forumTranscriptReady = Boolean(forum.transcriptText && forum.transcriptText.length > 50);
   const forumAnalysisReady = forum.analysisStatus === "ready" || forum.deepAnalysisStatus === "ready";
+  const lightReadiness = computeElectionPlanReadiness(
+    progress.completedDays.length,
+    DEBATE_WEEK_INTENSIVE_DAYS.length,
+    progress.completedLanes.length,
+    forumTranscriptReady,
+    forumAnalysisReady,
+  );
 
   const modules: DebatePrepV5Module[] = [
     {
@@ -90,8 +115,8 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
       tagline: "Readiness, safe lines, blocked lines, top-tier prep",
       href: EP_DEBATE_PREP_COMMAND_HREF,
       lane: "kelly",
-      status: feed.readinessPct >= 70 ? "ready" : "in-progress",
-      statusNote: `${feed.readinessPct}% · ${feed.readinessLabel}`,
+      status: (feed?.readinessPct ?? lightReadiness.readinessPct) >= 70 ? "ready" : "in-progress",
+      statusNote: `${feed?.readinessPct ?? lightReadiness.readinessPct}% · ${feed?.readinessLabel ?? lightReadiness.readinessLabel}`,
     },
     {
       id: "trap-lanes",
@@ -139,8 +164,18 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
       tagline: "SRE stage rehearsal engine · encounters · iPad drill player",
       href: EP_DEBATE_PREP_REHEARSAL_HREF,
       lane: "kelly",
-      status: feed.rehearsalLauncher.encounterCount > 0 ? "in-progress" : "not-started",
-      statusNote: feed.rehearsalLauncher.tonightReminder,
+      status: useLightFeed
+        ? forumAnalysisReady
+          ? "in-progress"
+          : "not-started"
+        : feed!.rehearsalLauncher.encounterCount > 0
+          ? "in-progress"
+          : "not-started",
+      statusNote: useLightFeed
+        ? forumAnalysisReady
+          ? "Forum intel + EP drill queues — open rehearsal when logged in."
+          : "Run forum lab or standard tonight queue."
+        : feed!.rehearsalLauncher.tonightReminder,
     },
     {
       id: "drill-lanes",
@@ -168,11 +203,11 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
     headline: "Debate Prep System v5",
     intro:
       "Election Plan is the primary operator surface — command course, conversational tutor, forum intelligence, rehearsal engine, and opposition crosswalk in one lane.",
-    readinessPct: feed.readinessPct,
-    readinessLabel: feed.readinessLabel,
+    readinessPct: feed?.readinessPct ?? lightReadiness.readinessPct,
+    readinessLabel: feed?.readinessLabel ?? lightReadiness.readinessLabel,
     todayFocus: todayPlan
       ? `${todayPlan.title} — ${todayPlan.subtitle}`
-      : feed.todayFocus[0] ?? null,
+      : feed?.todayFocus[0] ?? null,
     intensiveDaysComplete: progress.completedDays.length,
     intensiveDaysTotal: DEBATE_WEEK_INTENSIVE_DAYS.length,
     forumTranscriptReady,

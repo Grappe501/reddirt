@@ -10,6 +10,12 @@ export async function middleware(request: NextRequest) {
   const electionPlanResponse = handleElectionPlanAuth(request);
   if (electionPlanResponse) return electionPlanResponse;
 
+  if (request.nextUrl.pathname.startsWith("/election-plan")) {
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-pathname", request.nextUrl.pathname);
+    return NextResponse.next({ request: { headers: requestHeaders } });
+  }
+
   const { updateSession } = await import("@/utils/supabase/middleware");
   return updateSession(request);
 }

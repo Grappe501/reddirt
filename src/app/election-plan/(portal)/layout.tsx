@@ -9,6 +9,7 @@ import { requireElectionPlanPage } from "@/lib/election-plan/auth/require-electi
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
+export const maxDuration = 26;
 
 export default async function ElectionPlanPortalLayout({ children }: { children: ReactNode }) {
   await requireElectionPlanPage();

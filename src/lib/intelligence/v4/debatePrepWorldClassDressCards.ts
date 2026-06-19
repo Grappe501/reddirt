@@ -142,5 +142,11 @@ export function buildWorldClassDressQueueCards(): DrillQueueCard[] {
 }
 
 export function countWorldClassDressQueueCards(): number {
-  return buildWorldClassDressQueueCards().length;
+  const intel = loadForumTranscriptIntel();
+  let count = 10;
+  if (intel.ready) {
+    count += Math.min(3, intel.capitalizeMoves.length);
+    count += Math.min(2, intel.capitalizeMoves.length > 0 ? 2 : 0);
+  }
+  return count;
 }

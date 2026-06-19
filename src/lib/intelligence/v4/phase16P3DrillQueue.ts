@@ -20,6 +20,7 @@ import {
 } from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 import { getSosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { getTrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDowns";
+import { shouldSkipHumanActionQueueSyncOnRequest } from "@/lib/intelligence/intelligenceLaunchMode";
 
 export {
   drillQueueCardTypeLabel,
@@ -247,12 +248,37 @@ export function buildDrillQueueSummary(): DrillQueueSummary {
     : dressQueueAvailable
       ? "world-class-dress"
       : "standard-tonight";
-  const defaultQueue = getDrillQueue(defaultQueueId) ?? getDrillQueue("standard-tonight")!;
   const forumReminder = forumRehearsalTonightReminder();
   const queueCount =
     PHASE16_P3_QUEUE_TOTAL -
     (forumQueueAvailable ? 0 : 1) -
     (dressQueueAvailable ? 0 : 0);
+
+  if (shouldSkipHumanActionQueueSyncOnRequest()) {
+    const defaultCardCount =
+      defaultQueueId === "forum-acca-tonight"
+        ? forumCardCount
+        : defaultQueueId === "world-class-dress"
+          ? dressCardCount
+          : PHASE16_P3_STANDARD_QUEUE_CARD_TOTAL;
+    return {
+      hubHref: EP_DRILL_QUEUE_HUB_HREF,
+      queueCount: Math.max(3, queueCount),
+      defaultQueueId,
+      defaultCardCount,
+      tonightReminder:
+        forumReminder ??
+        (dressQueueAvailable
+          ? `World-class dress queue live — ${dressCardCount} cards for Day 6 full simulation.`
+          : "Run the drill queue — one card at a time, SOS speak-order and trap pivots with stage-safe gates on every line."),
+      forumQueueAvailable,
+      forumCardCount,
+      dressQueueAvailable,
+      dressCardCount,
+    };
+  }
+
+  const defaultQueue = getDrillQueue(defaultQueueId) ?? getDrillQueue("standard-tonight")!;
   return {
     hubHref: EP_DRILL_QUEUE_HUB_HREF,
     queueCount: Math.max(3, queueCount),

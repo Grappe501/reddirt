@@ -38,6 +38,17 @@ let cachedSimulation: {
   summary: StrategicScenarioSimulationSummary;
 } | null = null;
 
+const EMPTY_DEBATE_SCENARIO_PREP: DebateScenarioPrepSummary = {
+  likelyOpponentAttacks: [],
+  doctrineSafeResponseNotes: [],
+  debateTrapWarnings: [],
+  evidenceDependencies: [],
+  weakCitationWarnings: [],
+  countySensitiveNotes: [],
+  bridgeLineGuidance: [],
+  whatNotToSay: [],
+};
+
 function resolveRepoRoot(repoRoot?: string): string {
   return repoRoot ?? process.cwd();
 }
@@ -652,6 +663,9 @@ export function resolveCountyScenarioWatch(
 }
 
 export function summarizeDebateScenarioPrep(repoRoot?: string): DebateScenarioPrepSummary {
+  if (shouldSkipHumanActionQueueSyncOnRequest()) {
+    return EMPTY_DEBATE_SCENARIO_PREP;
+  }
   const summary = summarizeStrategicScenarioSimulation(repoRoot);
   const debateResults = summary.allResults.filter((row) => row.scenarioType === "DEBATE" || row.scenarioType === "OPPONENT_RESPONSE");
   const memory = summarizeLongitudinalIntelligence(repoRoot);

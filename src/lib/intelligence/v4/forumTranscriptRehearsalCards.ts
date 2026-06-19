@@ -89,7 +89,16 @@ export function buildForumDrillQueueCards(): DrillQueueCard[] {
 }
 
 export function countForumDrillQueueCards(): number {
-  return buildForumDrillQueueCards().length;
+  const intel = loadForumTranscriptIntel();
+  if (!intel.ready) return 0;
+
+  let count = 0;
+  if (intel.mockModeratorBlock?.openingQuestion) {
+    count += 1 + Math.min(2, intel.mockModeratorBlock.followUps.length);
+  }
+  count += Math.min(6, intel.capitalizeMoves.length);
+  count += Math.min(4, intel.predictedQuestions.length);
+  return count;
 }
 
 /** Prepend forum intel steps to ACCA / debate run-of-show when transcript analysis exists. */
