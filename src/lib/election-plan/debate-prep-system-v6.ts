@@ -87,6 +87,3 @@ export function buildDebatePrepSystemV6Snapshot(referenceDate?: string): DebateP
     forumIntelReadinessBoost,
   };
 }
-
-/** v6 re-exports command home bundle — use debate-prep-system-v7 for the unified package. */
-export { buildDebatePrepCommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v5-command-bundle";
