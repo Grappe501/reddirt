@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { DebateWeekLaneDetailClient } from "@/components/admin/intelligence/DebateWeekLaneDetailClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
 import {
   EP_DEBATE_PREP_HREF,
   EP_DEBATE_PREP_LANES_HREF,
@@ -42,7 +43,7 @@ export default async function ElectionPlanDebatePrepLanePage({
 
   return (
     <>
-      <div className="ep-classification">Internal · Drill lane · Debate prep v5</div>
+      <div className="ep-classification">Internal · Drill lane · {DEBATE_PREP_PACKAGE_LABEL}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-4xl">
           <ElectionPlanDebatePrepSubnav />

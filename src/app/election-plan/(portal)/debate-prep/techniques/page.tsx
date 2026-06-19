@@ -1,6 +1,8 @@
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { DebatePrepTechniquesIndexPanel } from "@/components/election-plan/DebatePrepTechniquesIndexPanel";
 
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
+
 export const dynamic = "force-dynamic";
 
 export const metadata = {
@@ -12,7 +14,7 @@ export const metadata = {
 export default function ElectionPlanDebateTechniquesPage() {
   return (
     <>
-      <div className="ep-classification">Internal · Techniques library · Debate prep v5</div>
+      <div className="ep-classification">Internal · Techniques library · {DEBATE_PREP_PACKAGE_LABEL}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-5xl">
           <ElectionPlanDebatePrepSubnav />

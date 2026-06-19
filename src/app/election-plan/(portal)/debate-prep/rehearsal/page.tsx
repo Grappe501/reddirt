@@ -10,7 +10,7 @@ import { CandidateSessionDebriefStrip } from "@/components/admin/intelligence/Ca
 import { CandidateSreClosureStrip } from "@/components/admin/intelligence/CandidateSreClosureStrip";
 import { ForumRehearsalIntelPanel } from "@/components/election-plan/ForumRehearsalIntelPanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import { buildDebatePrepCommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v6";
+import { buildDebatePrepCommandHomeBundle, DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
 import {
   EP_DRILL_QUEUE_HUB_HREF,
   getDrillQueue,
@@ -42,7 +42,7 @@ export default async function ElectionPlanDebatePrepRehearsalPage({
 
   return (
     <>
-      <div className="ep-classification">Internal · Rehearsal engine · Debate prep v6</div>
+      <div className="ep-classification">Internal · Rehearsal engine · {DEBATE_PREP_PACKAGE_LABEL}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-5xl">
           <ElectionPlanDebatePrepSubnav />

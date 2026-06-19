@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { DebateWeekDayDeepPanel } from "@/components/admin/intelligence/DebateWeekDayDeepPanel";
 import { DebateWeekDayV3Panel } from "@/components/admin/intelligence/DebateWeekDayV3Panel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
 import {
   EP_DEBATE_PREP_HREF,
   EP_DEBATE_PREP_LANES_HREF,
@@ -53,7 +54,7 @@ export default async function ElectionPlanDebatePrepDayPage({
 
   return (
     <>
-      <div className="ep-classification">Internal · Command course day · Debate prep v5</div>
+      <div className="ep-classification">Internal · Command course day · {DEBATE_PREP_PACKAGE_LABEL}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-5xl">
           <ElectionPlanDebatePrepSubnav />

@@ -1,5 +1,6 @@
 import { DebateWeekLanesHubClient } from "@/components/admin/intelligence/DebateWeekV3HubPanels";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
 import { EP_DEBATE_PREP_PROGRESS_API } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepDayHref, epDebatePrepLaneHref } from "@/lib/election-plan/debate-prep-route-map";
 import { DEBATE_INTENSIVE_V3_LABEL, listAllDrillDownLanes } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
@@ -19,7 +20,7 @@ export default function ElectionPlanDebatePrepLanesPage() {
 
   return (
     <>
-      <div className="ep-classification">Internal · Drill lanes · Debate prep v5</div>
+      <div className="ep-classification">Internal · Drill lanes · {DEBATE_PREP_PACKAGE_LABEL}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-5xl">
           <ElectionPlanDebatePrepSubnav />

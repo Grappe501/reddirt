@@ -13,7 +13,9 @@ import {
   EP_OPPOSITION_RESEARCH_HREF,
 } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepDayHref, mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
-import { buildDebatePrepSystemV6Snapshot } from "@/lib/election-plan/debate-prep-system-v6";
+import { buildDebatePrepSystemV8Snapshot, DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
+import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
+import { EP_DEBATE_PREP_WAR_ROOM_HREF } from "@/lib/election-plan/debate-prep-links";
 import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
 import { ACCA_2026_SOS_FORUM_DROP_REL, ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 
@@ -25,7 +27,7 @@ const statusStyles = {
 
 export function ElectionPlanDebatePrepHubPanel() {
   const referenceDate = process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
-  const snapshot = buildDebatePrepSystemV6Snapshot(referenceDate);
+  const snapshot = buildDebatePrepSystemV8Snapshot(referenceDate);
 
   return (
     <>
@@ -48,8 +50,8 @@ export function ElectionPlanDebatePrepHubPanel() {
             Debate day: <span className="font-semibold text-[var(--ep-navy)]">{snapshot.debateDate}</span>
           </p>
           <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
-            Intensive: {snapshot.intensiveDaysComplete}/{snapshot.intensiveDaysTotal} days ·{" "}
-            {snapshot.intensiveV3Label}
+            {snapshot.worldClass.countdownLabel} · {snapshot.worldClass.compositeReadinessScore}% composite ·{" "}
+            {snapshot.wiredSurfaceCount} wired surfaces
           </p>
           <div className="mt-4 h-2 overflow-hidden rounded-full bg-[var(--ep-border)]">
             <div
@@ -65,6 +67,26 @@ export function ElectionPlanDebatePrepHubPanel() {
           </p>
           <p className="mt-4 text-[10px] font-bold uppercase text-amber-900">{snapshot.governance}</p>
         </div>
+      </section>
+
+      <DebatePrepTonightPackageClient
+        tonightPackage={snapshot.tonightPackage}
+        packageCompletenessPct={snapshot.packageCompletenessPct}
+        packageLabel={DEBATE_PREP_PACKAGE_LABEL}
+      />
+
+      <section className="ep-card mb-8 border-2 border-[var(--ep-gold)]/40 p-5">
+        <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">v8 · War room</p>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          8-dimension radar · 8 prep modes · pile-on scenarios · quotable bank · psychology stack ·{" "}
+          {snapshot.worldClass.worldClassDressCardCount} dress-rehearsal cards.
+        </p>
+        <Link
+          href={EP_DEBATE_PREP_WAR_ROOM_HREF}
+          className="mt-4 inline-block rounded-full bg-[var(--ep-navy)] px-4 py-2 text-xs font-bold text-white"
+        >
+          Open war room →
+        </Link>
       </section>
 
       <DebatePrepInstructionPanel />

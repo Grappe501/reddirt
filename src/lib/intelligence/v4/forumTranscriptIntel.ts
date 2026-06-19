@@ -51,7 +51,8 @@ const WIRED_SURFACES_WHEN_READY = [
   "Techniques library (forum upgrade banner + topic addenda)",
   "Trap lanes index (Hammer tells from forum)",
   "AI tutor (forum-acca cards + coach/critique context)",
-  "Rehearsal engine (forum-acca-tonight queue + enriched run-of-show)",
+  "War room (v8 readiness radar + prep modes)",
+  "World-class dress rehearsal queue",
   "Command home tonight focus (when analysis ready)",
 ] as const;
 

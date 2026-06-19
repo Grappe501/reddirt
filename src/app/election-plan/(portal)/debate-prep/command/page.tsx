@@ -1,6 +1,11 @@
+import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
 import { CandidateCommandHomePanel } from "@/components/admin/intelligence/CandidateCommandHomePanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import { buildDebatePrepCommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v5";
+import {
+  buildDebatePrepCommandHomeBundle,
+  buildDebatePrepSystemV8Snapshot,
+  DEBATE_PREP_PACKAGE_LABEL,
+} from "@/lib/election-plan/debate-prep-system-v8";
 import { mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 
 export const dynamic = "force-dynamic";
@@ -13,10 +18,11 @@ export const metadata = {
 
 export default function ElectionPlanDebatePrepCommandPage() {
   const { feed, cceClosure, sreClosure } = buildDebatePrepCommandHomeBundle();
+  const snapshot = buildDebatePrepSystemV8Snapshot();
 
   return (
     <>
-      <div className="ep-classification">Internal · Command home · Debate prep v5</div>
+      <div className="ep-classification">Internal · Command home · {DEBATE_PREP_PACKAGE_LABEL}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-5xl">
           <ElectionPlanDebatePrepSubnav />
@@ -29,6 +35,12 @@ export default function ElectionPlanDebatePrepCommandPage() {
               staff admin profile.
             </p>
           </header>
+
+          <DebatePrepTonightPackageClient
+            tonightPackage={snapshot.tonightPackage}
+            packageCompletenessPct={snapshot.packageCompletenessPct}
+            packageLabel={DEBATE_PREP_PACKAGE_LABEL}
+          />
 
           <CandidateCommandHomePanel feed={feed} cceClosure={cceClosure} sreClosure={sreClosure} resolveHref={mapAdminHrefToElectionPlan} />
         </div>

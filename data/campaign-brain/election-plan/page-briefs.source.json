@@ -375,8 +375,8 @@
       "pathPattern": "/election-plan/debate-prep",
       "exact": true,
       "title": "Debate Prep",
-      "answers": "Where is Kelly's SOS debate prep v5 hub — command course, AI tutor, rehearsal engine, forum lab, and drill lanes?",
-      "keyMetrics": ["Debate prep v5", "7-day intensive", "AI tutor", "Rehearsal engine", "Forum transcript lab"],
+      "answers": "Where is Kelly's SOS debate prep v8 war room — readiness radar, prep modes, dress rehearsal, and tonight package?",
+      "keyMetrics": ["Debate prep v8", "War room", "Readiness radar", "Full dress rehearsal", "AI tutor", "Forum transcript lab"],
       "bestFor": ["Kelly", "Debate prep staff", "Campaign leadership"],
       "relatedLinks": [
         { "label": "Command home", "href": "/election-plan/debate-prep/command" },

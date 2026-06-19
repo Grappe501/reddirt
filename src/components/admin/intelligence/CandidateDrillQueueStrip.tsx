@@ -12,6 +12,7 @@ export function CandidateDrillQueueStrip({ summary }: { summary: DrillQueueSumma
         <p className="text-right font-mono text-[10px]">
           {summary.queueCount} queues · {summary.defaultCardCount} cards
           {summary.forumQueueAvailable ? ` · forum ${summary.forumCardCount}` : ""}
+          {summary.dressQueueAvailable ? ` · dress ${summary.dressCardCount}` : ""}
         </p>
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
@@ -21,6 +22,14 @@ export function CandidateDrillQueueStrip({ summary }: { summary: DrillQueueSumma
         >
           {summary.forumQueueAvailable ? "Start forum-acca queue →" : "Start standard queue →"}
         </Link>
+        {summary.dressQueueAvailable ? (
+          <Link
+            href={`${summary.hubHref}?queue=world-class-dress&card=1`}
+            className="inline-block rounded-full border border-indigo-400 bg-indigo-50 px-3 py-1 text-[10px] font-bold text-indigo-950"
+          >
+            World-class dress →
+          </Link>
+        ) : null}
         {summary.forumQueueAvailable && summary.defaultQueueId !== "standard-tonight" ? (
           <Link
             href={`${summary.hubHref}?queue=standard-tonight&card=1`}

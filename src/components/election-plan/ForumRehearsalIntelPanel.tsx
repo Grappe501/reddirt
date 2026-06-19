@@ -46,6 +46,12 @@ export function ForumRehearsalIntelPanel() {
         >
           Tutor · three-way panel →
         </Link>
+        <Link
+          href={`${EP_DEBATE_PREP_REHEARSAL_HREF}?queue=world-class-dress&card=1`}
+          className="rounded-full border border-indigo-400 bg-indigo-50 px-3 py-1.5 text-indigo-950"
+        >
+          World-class dress →
+        </Link>
         <Link href={EP_FORUM_TRANSCRIPT_LAB_HREF} className="rounded-full border border-[var(--ep-border)] px-3 py-1.5">
           Forum lab →
         </Link>

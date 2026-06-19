@@ -2,7 +2,7 @@ import { ElectionPlanDebatePrepHubPanel } from "@/components/election-plan/Elect
 
 export const metadata = {
   title: "Debate Prep | Election Plan",
-  description: "Debate Prep System v5 — command course, AI tutor, rehearsal engine, forum lab, and drill lanes.",
+  description: "Debate Prep System v8 — world-class engine with war room, readiness radar, prep modes, and full dress rehearsal.",
   robots: { index: false, follow: false },
 };
 

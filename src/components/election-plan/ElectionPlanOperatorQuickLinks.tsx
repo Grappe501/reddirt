@@ -43,7 +43,7 @@ export function ElectionPlanOperatorQuickLinks({ variant = "hero" }: { variant?:
           Operator quick links
         </p>
         <p className={`mt-1 text-sm ${hero ? "text-white/80" : "text-[var(--ep-navy-muted)]"}`}>
-          Debate prep v5, opposition, field ops, and plan search — one click from War Room home.
+          Debate prep v8, opposition, field ops, and plan search — one click from War Room home.
         </p>
       </div>
 

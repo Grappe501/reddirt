@@ -11,11 +11,13 @@ import {
   EP_DEBATE_PREP_TUTOR_HREF,
   EP_DEBATE_TECHNIQUES_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
+  EP_DEBATE_PREP_WAR_ROOM_HREF,
   EP_TRAP_LANES_HREF,
 } from "@/lib/election-plan/debate-prep-links";
 
 const tabs = [
   { href: EP_DEBATE_PREP_HREF, label: "Hub", exact: true },
+  { href: EP_DEBATE_PREP_WAR_ROOM_HREF, label: "War room" },
   { href: EP_DEBATE_PREP_COMMAND_HREF, label: "Command home" },
   { href: EP_TRAP_LANES_HREF, label: "Trap lanes" },
   { href: EP_DEBATE_TECHNIQUES_HREF, label: "Techniques" },

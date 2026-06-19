@@ -4,7 +4,7 @@ import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTr
 import { DebatePrepTutorClient } from "@/components/admin/intelligence/DebatePrepTutorClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { EP_DEBATE_PREP_REHEARSAL_HREF, EP_DEBATE_PREP_TUTOR_API } from "@/lib/election-plan/debate-prep-links";
-import { buildDebatePrepSystemV6Snapshot } from "@/lib/election-plan/debate-prep-system-v6";
+import { buildDebatePrepSystemV8Snapshot, DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
 import { DEBATE_PREP_TUTOR_V5_VERSION, TUTOR_HUB_WELCOME } from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
 import { PROFESSOR_SHOWCASE_V6_VERSION } from "@/lib/intelligence/v4/debatePrepProfessorShowcaseV6";
 
@@ -15,11 +15,11 @@ export const metadata = {
 };
 
 export default function ElectionPlanDebatePrepTutorPage() {
-  const snapshot = buildDebatePrepSystemV6Snapshot();
+  const snapshot = buildDebatePrepSystemV8Snapshot();
 
   return (
     <>
-      <div className="ep-classification">Internal · AI tutor · Debate prep v5</div>
+      <div className="ep-classification">Internal · AI tutor · {DEBATE_PREP_PACKAGE_LABEL}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-3xl">
           <ElectionPlanDebatePrepSubnav />
