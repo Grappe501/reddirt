@@ -12,6 +12,7 @@ import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/Election
 import { CountyVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { CountyPartyIntelligencePanel } from "@/components/election-plan/CountyPartyIntelligencePanel";
 import { VoterFileCountyIntelSection } from "@/components/election-plan/VoterFileLocationIntelPanel";
+import { LocationAudienceStrip } from "@/components/election-plan/voter-audience/LocationAudienceStrip";
 import { ImmersionCountyMissionCard } from "@/components/election-plan/ImmersionCountyMissionCard";
 import { CountyNetworkingContactsPanel } from "@/components/election-plan/CountyNetworkingContactsPanel";
 import { CountyRegistrationAllocationPanel } from "@/components/election-plan/CountyRegistrationAllocationPanel";
@@ -32,6 +33,7 @@ import { countyPathToVictoryHref } from "@/lib/election-plan/path-to-victory-lin
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { getCountyPartyProfileBySlug } from "@/lib/election-plan/load-county-party-intelligence";
+import { getCountyAudienceOverlay } from "@/lib/election-plan/voter-audience-models/load";
 import {
   filterImmersionMissionForDisplay,
   getImmersionMissionForCounty,
@@ -105,6 +107,7 @@ export function CountyPlaybookPanel({
 }: Props) {
   const specialKpi = getSpecialKpiGoalForCounty(county.slug);
   const victoryTarget = getCountyVictoryTarget(county.county, county.tier);
+  const countyAudience = getCountyAudienceOverlay(county.slug);
   const countyParty = getCountyPartyProfileBySlug(county.slug);
   const immersionMission = filterImmersionMissionForDisplay(getImmersionMissionForCounty(county.slug), {
     surface: "county",
@@ -248,6 +251,8 @@ export function CountyPlaybookPanel({
         ) : null}
 
         <VoterFileCountyIntelSection countySlug={county.slug} countyName={county.county} />
+
+        {countyAudience ? <LocationAudienceStrip overlay={countyAudience} /> : null}
 
         <CountyMissionImpactPanel county={county} victoryTarget={victoryTarget} />
 

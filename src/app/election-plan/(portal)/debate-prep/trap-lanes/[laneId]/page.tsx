@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 
 import { V4TrapLaneDrillDownPanel } from "@/components/admin/intelligence/v4/V4TrapLaneDrillDownPanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
+import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import { EP_TRAP_LANES_HREF, epTrapLaneHref } from "@/lib/election-plan/debate-prep-links";
 import { mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
+import { resolveAudiencesForTrapLane } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import { evaluateStageSafeContent } from "@/lib/intelligence/v4/phase15StageSafeFilter";
 import { getAllTrapLaneIds, getTrapLaneDrillDown, getTrapLaneWithBriefing } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 
@@ -60,6 +62,8 @@ export default async function ElectionPlanTrapLaneDetailPage({
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{drill.title}</h1>
             <p className="mt-3 text-sm text-[var(--ep-navy-muted)]">{drill.summary}</p>
           </header>
+
+          <VoterAudienceSpeakToBanner profiles={resolveAudiencesForTrapLane(laneId)} />
 
           <V4TrapLaneDrillDownPanel
             drill={drill}

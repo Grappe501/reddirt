@@ -8,6 +8,7 @@ import {
   EP_DEBATE_PREP_HREF,
   EP_DEBATE_PREP_WAR_ROOM_HREF,
   EP_LEGISLATIVE_INTEL_HREF,
+  EP_VOTER_AUDIENCES_HREF,
   EP_OPPONENT_BIOS_HREF,
   EP_DEBATE_QUESTIONS_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
@@ -25,6 +26,7 @@ const fullTabs = [
   { href: EP_DEBATE_QUESTIONS_HREF, label: "40 questions" },
   { href: EP_OPPONENT_BIOS_HREF, label: "Opponent bios" },
   { href: EP_LEGISLATIVE_INTEL_HREF, label: "Bills" },
+  { href: EP_VOTER_AUDIENCES_HREF, label: "Audiences" },
   { href: EP_DEBATE_PREP_COMMAND_HREF, label: "Command home" },
   { href: EP_TRAP_LANES_HREF, label: "Trap lanes" },
   { href: EP_DEBATE_TECHNIQUES_HREF, label: "Techniques" },
@@ -36,6 +38,7 @@ const fullTabs = [
 
 const compactTabs = [
   { href: EP_DEBATE_PREP_HREF, label: "Hub", exact: true },
+  { href: EP_VOTER_AUDIENCES_HREF, label: "Audiences" },
   { href: EP_LEGISLATIVE_INTEL_HREF, label: "Bills" },
   { href: EP_DEBATE_PREP_WAR_ROOM_HREF, label: "War room" },
   { href: EP_DEBATE_QUESTIONS_HREF, label: "Questions" },

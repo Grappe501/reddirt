@@ -1,16 +1,26 @@
 import Link from "next/link";
 
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
+import { VoterAudiencePracticeLine } from "@/components/election-plan/voter-audience/VoterAudiencePracticeLine";
+import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import type { LegislativeIntelPage } from "@/lib/election-plan/legislative-intel-drill-down";
+import {
+  resolveAudiencesForLegislativeIntel,
+  resolveAudiencesForLegislativePracticeLine,
+} from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 
 type Props = {
   page: LegislativeIntelPage;
 };
 
 export function LegislativeIntelDrillDownPanel({ page }: Props) {
+  const pageAudiences = resolveAudiencesForLegislativeIntel(page.id);
+
   return (
     <>
       <KellyPageSummary summary={page.pageSummary} />
+
+      <VoterAudienceSpeakToBanner profiles={pageAudiences} />
 
       <article className="ep-card mb-6 p-5 text-sm">
         <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Plain English</p>
@@ -24,6 +34,11 @@ export function LegislativeIntelDrillDownPanel({ page }: Props) {
         </article>
         <article className="ep-card border-emerald-200 bg-emerald-50/40 p-5 text-sm">
           <p className="text-xs font-bold uppercase text-emerald-900">Your pivot</p>
+          <VoterAudienceSpeakToBanner
+            profiles={pageAudiences.slice(0, 2)}
+            compact
+            label="Pivot toward"
+          />
           <p className="mt-2 text-[var(--ep-navy-muted)]">{page.kellyPivot}</p>
         </article>
       </div>
@@ -67,10 +82,12 @@ export function LegislativeIntelDrillDownPanel({ page }: Props) {
       <article className="ep-card mb-6 border-emerald-200 bg-emerald-50/40 p-5 text-sm">
         <p className="text-xs font-bold uppercase text-emerald-900">Practice lines — say aloud</p>
         <ul className="mt-3 space-y-3">
-          {page.practiceLines.map((line) => (
-            <li key={line.slice(0, 48)} className="italic text-[var(--ep-navy-muted)]">
-              &ldquo;{line}&rdquo;
-            </li>
+          {page.practiceLines.map((line, i) => (
+            <VoterAudiencePracticeLine
+              key={line.slice(0, 48)}
+              text={line}
+              audiences={resolveAudiencesForLegislativePracticeLine(page.id, i)}
+            />
           ))}
         </ul>
       </article>

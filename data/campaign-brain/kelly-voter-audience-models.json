@@ -1,0 +1,4112 @@
+{
+  "version": 1,
+  "builtAt": "2026-06-19T09:39:37.346Z",
+  "pageSummary": "Sixteen named Arkansans in Kelly's big tent — who she is talking to when she speaks. Use the badge on every practice line: picture one person, not a crowd.",
+  "modelNote": "Fictional personas for message targeting only — not voter file rows. Location overlays combine region, city intelligence tags, and aggregate SOS registration mix.",
+  "profiles": [
+    {
+      "id": "marcia-truman",
+      "displayName": "Marcia T.",
+      "initials": "MT",
+      "avatarColor": "bg-blue-700",
+      "segment": "lane2_democrat",
+      "segmentLabel": "Lane 2 recovery Democrat",
+      "tagline": "Voted before, drifted — needs competence, not slogans",
+      "demographicSketch": "Late 50s · suburban Little Rock · college-educated · voted in 2020, sat out 2022",
+      "geographySketch": "Pulaski, Saline, Faulkner suburbs; Central Metro cluster",
+      "estimatedShareNote": "Planning est. 8–12% of statewide persuadable pool in Tier A counties",
+      "whatTheyFear": [
+        "Another chaotic election cycle",
+        "Being lectured",
+        "Candidates who only attack"
+      ],
+      "whatTheyNeedToHear": [
+        "Kelly has run things — SOS is operations, not performance",
+        "Clerks will get clear rules and respect",
+        "Democratic recovery is practical access, not Twitter fights"
+      ],
+      "kellyTone": "Warm executive — short sentences, zero condescension",
+      "doNotSay": [
+        "Republicans are evil",
+        "Stolen election",
+        "You must turn out or democracy dies"
+      ],
+      "debatePrepHooks": [
+        "author-vs-administrator",
+        "county-champion",
+        "lane-2"
+      ],
+      "homeCounties": [
+        "pulaski",
+        "saline",
+        "faulkner",
+        "lonoke"
+      ],
+      "homeCities": [
+        "little-rock",
+        "north-little-rock",
+        "benton",
+        "bryant",
+        "conway"
+      ]
+    },
+    {
+      "id": "rev-james-holloway",
+      "displayName": "Rev. James H.",
+      "initials": "JH",
+      "avatarColor": "bg-indigo-800",
+      "segment": "faith_community",
+      "segmentLabel": "Faith & community anchor",
+      "tagline": "Pastor who moves souls and precincts",
+      "demographicSketch": "60s · Jefferson County · lifelong church leader · trusted validator",
+      "geographySketch": "Pine Bluff, Delta, southeast Black belt counties",
+      "estimatedShareNote": "Validator network — influence outweighs raw vote share",
+      "whatTheyFear": [
+        "Voter suppression dressed as reform",
+        "Candidates who disrespect congregations",
+        "Cynicism in young voters"
+      ],
+      "whatTheyNeedToHear": [
+        "Respect for faith community without pandering",
+        "SOS protects access — Sunday souls need Tuesday ballots",
+        "Kelly partners with churches on registration, not photo ops"
+      ],
+      "kellyTone": "Pastoral respect — listen first, promise only what SOS can deliver",
+      "doNotSay": [
+        "Weaponize scripture",
+        "Attack Hammer's ministry",
+        "Assume automatic turnout"
+      ],
+      "debatePrepHooks": [
+        "voter-access",
+        "faith-organizing",
+        "delta"
+      ],
+      "homeCounties": [
+        "jefferson",
+        "phillips",
+        "crittenden",
+        "st-francis",
+        "lee"
+      ],
+      "homeCities": [
+        "pine-bluff",
+        "west-memphis",
+        "helena-west-helena",
+        "forrest-city"
+      ]
+    },
+    {
+      "id": "carol-whitfield",
+      "displayName": "Carol W.",
+      "initials": "CW",
+      "avatarColor": "bg-slate-700",
+      "segment": "election_professional",
+      "segmentLabel": "County election professional",
+      "tagline": "The clerk room is her jury",
+      "demographicSketch": "50s · county clerk staff · nonpartisan professional identity",
+      "geographySketch": "Every county — especially understaffed rural offices",
+      "estimatedShareNote": "75 county ecosystems — clerks repeat your tone in courthouse hallways",
+      "whatTheyFear": [
+        "Unfunded mandates",
+        "Friday rule drops",
+        "Candidates who've never run a polling site"
+      ],
+      "whatTheyNeedToHear": [
+        "Implementation dollars and training timelines",
+        "SOS as service desk — calls returned, guidance published",
+        "Security and access are not opposites"
+      ],
+      "kellyTone": "Peer professional — specifics over slogans",
+      "doNotSay": [
+        "Clerks are failing",
+        "Just follow the law",
+        "I wrote the bill"
+      ],
+      "debatePrepHooks": [
+        "county-champion",
+        "integrity-without-participation",
+        "acca"
+      ],
+      "homeCounties": [
+        "pope",
+        "white",
+        "sebastian",
+        "garland",
+        "benton"
+      ],
+      "homeCities": [
+        "russellville",
+        "fort-smith",
+        "hot-springs",
+        "fayetteville"
+      ]
+    },
+    {
+      "id": "tyler-martinez",
+      "displayName": "Tyler M.",
+      "initials": "TM",
+      "avatarColor": "bg-cyan-700",
+      "segment": "young_voter",
+      "segmentLabel": "Young voter / campus",
+      "tagline": "First or second statewide vote — digital native",
+      "demographicSketch": "22 · UA student · works part-time · registers online",
+      "geographySketch": "Fayetteville, Conway, Jonesboro, Little Rock colleges",
+      "estimatedShareNote": "High mobility — registration churn is the story",
+      "whatTheyFear": [
+        "Process confusion",
+        "Being ignored",
+        "Cringe politicians on TikTok"
+      ],
+      "whatTheyNeedToHear": [
+        "How to register and vote in plain steps",
+        "SOS modernizes — not their parents' paperwork maze",
+        "Ballot measures matter to their future"
+      ],
+      "kellyTone": "Direct, unpatronizing — policy in one breath, invite in the next",
+      "doNotSay": [
+        "Kids these days",
+        "Mandatory civics lecture",
+        "Fake slang"
+      ],
+      "debatePrepHooks": [
+        "registration",
+        "direct-democracy",
+        "digital"
+      ],
+      "homeCounties": [
+        "washington",
+        "pulaski",
+        "faulkner",
+        "craighead"
+      ],
+      "homeCities": [
+        "fayetteville",
+        "conway",
+        "jonesboro",
+        "little-rock"
+      ]
+    },
+    {
+      "id": "linda-sutton",
+      "displayName": "Linda S.",
+      "initials": "LS",
+      "avatarColor": "bg-amber-700",
+      "segment": "rural_independent",
+      "segmentLabel": "Rural independent mom",
+      "tagline": "Votes the person, not the party",
+      "demographicSketch": "40s · Johnson County · school board follower · drives 25 min to vote",
+      "geographySketch": "River Valley, south Arkansas timber counties",
+      "estimatedShareNote": "Classic swing temperament — low party registration, high local trust",
+      "whatTheyFear": [
+        "Little Rock ignoring small towns",
+        "Culture-war noise",
+        "Long lines with kids in the car"
+      ],
+      "whatTheyNeedToHear": [
+        "Kelly shows up — fair rules for every county",
+        "Schools and clerks supported, not used as props",
+        "Respect for gun-country independence without baiting"
+      ],
+      "kellyTone": "Neighborly competence — Ozark/Valley plain speech",
+      "doNotSay": [
+        "Coastal elite",
+        "Deplorables",
+        "Nationalize every answer"
+      ],
+      "debatePrepHooks": [
+        "persuasion",
+        "rural",
+        "county-champion"
+      ],
+      "homeCounties": [
+        "johnson",
+        "logan",
+        "scott",
+        "polk",
+        "howard"
+      ],
+      "homeCities": [
+        "clarksville",
+        "magnolia",
+        "arkadelphia"
+      ]
+    },
+    {
+      "id": "robert-kessler",
+      "displayName": "Robert K.",
+      "initials": "RK",
+      "avatarColor": "bg-red-800",
+      "segment": "moderate_republican",
+      "segmentLabel": "Moderate Republican open door",
+      "tagline": "Chamber Republican who hates chaos",
+      "demographicSketch": "55 · Bentonville business owner · voted R but tired of drama",
+      "geographySketch": "Northwest Arkansas corporate corridor",
+      "estimatedShareNote": "NWA persuasion lane — business services frame lands here",
+      "whatTheyFear": [
+        "Partisan SOS",
+        "Ballot chaos hurting recruitment",
+        "Hammer's legislature-only record"
+      ],
+      "whatTheyNeedToHear": [
+        "SOS runs business services too — competent administration",
+        "Election security with implementation funding",
+        "Not asking him to leave his party — asking for steady hands"
+      ],
+      "kellyTone": "Boardroom calm — agree on security, add operations proof",
+      "doNotSay": [
+        "Republicans are fascists",
+        "Trump bait",
+        "Shame his vote history"
+      ],
+      "debatePrepHooks": [
+        "business-services",
+        "nwa-persuasion",
+        "integrity"
+      ],
+      "homeCounties": [
+        "benton",
+        "washington",
+        "sebastian"
+      ],
+      "homeCities": [
+        "bentonville",
+        "rogers",
+        "springdale",
+        "fort-smith"
+      ]
+    },
+    {
+      "id": "diane-porter",
+      "displayName": "Diane P.",
+      "initials": "DP",
+      "avatarColor": "bg-emerald-800",
+      "segment": "direct_democracy",
+      "segmentLabel": "Direct democracy defender",
+      "tagline": "Signed petitions since the Ozarks populist tradition",
+      "demographicSketch": "48 · Madison County · initiative veteran · distrusts Little Rock",
+      "geographySketch": "Ozarks, petition culture counties, issue campaigns",
+      "estimatedShareNote": "Cross-partisan — cares about ballot access for measures",
+      "whatTheyFear": [
+        "Hammer's 2025 petition friction",
+        "SOS used to kill initiatives",
+        "Opaque ballot titles"
+      ],
+      "whatTheyNeedToHear": [
+        "Kelly honors Arkansas ballot-measure tradition",
+        "Transparent rules for petitioners and clerks",
+        "Courts decide fights — SOS administers fairly"
+      ],
+      "kellyTone": "Civic pride — populist respect without anti-government rage",
+      "doNotSay": [
+        "Anti-petition",
+        "Only Democrats use initiatives",
+        "Hammer is evil"
+      ],
+      "debatePrepHooks": [
+        "direct-democracy",
+        "2025-petitions",
+        "ozarks"
+      ],
+      "homeCounties": [
+        "madison",
+        "newton",
+        "searcy",
+        "boone",
+        "marion"
+      ],
+      "homeCities": [
+        "harrison",
+        "mountain-home",
+        "berryville"
+      ]
+    },
+    {
+      "id": "frank-donnelly",
+      "displayName": "Frank D.",
+      "initials": "FD",
+      "avatarColor": "bg-stone-600",
+      "segment": "election_skeptic",
+      "segmentLabel": "Skeptical election watcher",
+      "tagline": "Wants proof, not promises",
+      "demographicSketch": "62 · Garland County · consumes cable news · voted every general",
+      "geographySketch": "Retiree-heavy tourism counties, mail-in worriers",
+      "estimatedShareNote": "Anxiety voter — wins with process transparency, not dunks",
+      "whatTheyFear": [
+        "Fraud and suppression simultaneously",
+        "Machines and mail distrust",
+        "Candidates who dodge specifics"
+      ],
+      "whatTheyNeedToHear": [
+        "Show the process — observers, audits, public checks",
+        "Prosecute real fraud; protect lawful voters",
+        "Clerks are heroes when funded"
+      ],
+      "kellyTone": "Calm forensic — slow down, reassure, cite process",
+      "doNotSay": [
+        "Nothing to see here",
+        "Deny all fraud concerns",
+        "Mock worry"
+      ],
+      "debatePrepHooks": [
+        "integrity",
+        "anxious-audience",
+        "show-process"
+      ],
+      "homeCounties": [
+        "garland",
+        "baxter",
+        "carroll",
+        "hot-spring"
+      ],
+      "homeCities": [
+        "hot-springs",
+        "mountain-home",
+        "bella-vista"
+      ]
+    },
+    {
+      "id": "maria-gutierrez",
+      "displayName": "Maria G.",
+      "initials": "MG",
+      "avatarColor": "bg-orange-700",
+      "segment": "community_organizer",
+      "segmentLabel": "Community organizer",
+      "tagline": "Registers neighbors — bilingual bridge",
+      "demographicSketch": "35 · Springdale · nonprofit organizer · church + school networks",
+      "geographySketch": "NWA poultry corridor, growing Latino communities statewide",
+      "estimatedShareNote": "High growth communities — registration drives are relational",
+      "whatTheyFear": [
+        "Language barriers at SOS",
+        "ICE-politicized election talk",
+        "Being invisible in campaigns"
+      ],
+      "whatTheyNeedToHear": [
+        "Spanish-accessible SOS materials",
+        "Partnership with community orgs — not last-minute outreach",
+        "Safe registration events"
+      ],
+      "kellyTone": "Organizer respect — credit community leaders",
+      "doNotSay": [
+        "Outreach starts in September",
+        "Token photo",
+        "English-only framing"
+      ],
+      "debatePrepHooks": [
+        "registration",
+        "nwa",
+        "community"
+      ],
+      "homeCounties": [
+        "washington",
+        "sebastian",
+        "pulaski"
+      ],
+      "homeCities": [
+        "springdale",
+        "rogers",
+        "fort-smith",
+        "little-rock"
+      ]
+    },
+    {
+      "id": "bill-jennings",
+      "displayName": "Bill J.",
+      "initials": "BJ",
+      "avatarColor": "bg-neutral-600",
+      "segment": "senior_veteran",
+      "segmentLabel": "Senior veteran",
+      "tagline": "Votes every November — expects dignity",
+      "demographicSketch": "71 · Miller County · VFW member · absentee voter",
+      "geographySketch": "Southwest border counties, veteran-heavy communities",
+      "estimatedShareNote": "Reliable turnout — persuasion is respect and clarity",
+      "whatTheyFear": [
+        "Mail ballot confusion",
+        "Disrespect for service",
+        "Rapid rule changes"
+      ],
+      "whatTheyNeedToHear": [
+        "Absentee process explained clearly",
+        "SOS honors veterans as voters, not props",
+        "Stable rules with lead time for clerks"
+      ],
+      "kellyTone": "Dignified — never performative patriotism",
+      "doNotSay": [
+        "Stolen valor themes",
+        "Mock older voters",
+        "Complex jargon"
+      ],
+      "debatePrepHooks": [
+        "absentee",
+        "southwest",
+        "senior"
+      ],
+      "homeCounties": [
+        "miller",
+        "lafayette",
+        "hempstead",
+        "little-river"
+      ],
+      "homeCities": [
+        "texarkana",
+        "hope",
+        "ashdown"
+      ]
+    },
+    {
+      "id": "aisha-reed",
+      "displayName": "Aisha R.",
+      "initials": "AR",
+      "avatarColor": "bg-violet-800",
+      "segment": "delta_base",
+      "segmentLabel": "Delta base mobilizer",
+      "tagline": "Turnout is the mission",
+      "demographicSketch": "38 · Phillips County · Democratic county chair volunteer",
+      "geographySketch": "Delta — Phillips, Desha, Chicot, Lee",
+      "estimatedShareNote": "Base mobilization — energy + access stories",
+      "whatTheyFear": [
+        "Drop-off after presidential years",
+        "Underfunded Black counties",
+        "National Democrats who disappear"
+      ],
+      "whatTheyNeedToHear": [
+        "Kelly invests in Delta clerks and registration",
+        "Lane 2 recovery with receipts",
+        "Statewide campaign that doesn't skip east Arkansas"
+      ],
+      "kellyTone": "Coalition partner — name counties, name partners",
+      "doNotSay": [
+        "Take Black vote for granted",
+        "Only visit in October",
+        "Poverty tourism"
+      ],
+      "debatePrepHooks": [
+        "delta",
+        "turnout",
+        "lane-2"
+      ],
+      "homeCounties": [
+        "phillips",
+        "desha",
+        "chicot",
+        "lee",
+        "monroe"
+      ],
+      "homeCities": [
+        "helena-west-helena",
+        "stuttgart",
+        "lake-village"
+      ]
+    },
+    {
+      "id": "coach-pat-nolan",
+      "displayName": "Coach Pat N.",
+      "initials": "PN",
+      "avatarColor": "bg-green-800",
+      "segment": "small_town_validator",
+      "segmentLabel": "Small-town validator",
+      "tagline": "Friday night lights to Tuesday ballots",
+      "demographicSketch": "50s · Pope County · retired coach · everyone knows his number",
+      "geographySketch": "County seats, high school hubs — Russellville, Searcy, Batesville",
+      "estimatedShareNote": "Validator multiplier — one Pat moves fifty voters",
+      "whatTheyFear": [
+        "Candidates who fly in and fly out",
+        "Talking down to towns",
+        "Ignoring schools"
+      ],
+      "whatTheyNeedToHear": [
+        "Kelly keeps coming back",
+        "Fair rules for small counties with small staffs",
+        "Student registration as civic pride"
+      ],
+      "kellyTone": "Locker-room direct — handshake energy",
+      "doNotSay": [
+        "Flyover country",
+        "Only care about Little Rock",
+        "Edgy attacks"
+      ],
+      "debatePrepHooks": [
+        "validators",
+        "schools",
+        "pope"
+      ],
+      "homeCounties": [
+        "pope",
+        "white",
+        "independence",
+        "lawrence"
+      ],
+      "homeCities": [
+        "russellville",
+        "searcy",
+        "batesville",
+        "paragould"
+      ]
+    },
+    {
+      "id": "susan-ellis",
+      "displayName": "Susan E.",
+      "initials": "SE",
+      "avatarColor": "bg-pink-800",
+      "segment": "suburban_persuadable",
+      "segmentLabel": "Suburban persuadable woman",
+      "tagline": "Schools + safety + sanity",
+      "demographicSketch": "44 · Saline County · PTA · voted split ticket",
+      "geographySketch": "Bryant/Benton suburbs, Cabot, Fayetteville suburbs",
+      "estimatedShareNote": "National bellwether temperament — tone wins",
+      "whatTheyFear": [
+        "Extremism on both sides",
+        "Schools politicized",
+        "Election chaos affecting kids"
+      ],
+      "whatTheyNeedToHear": [
+        "Steady mom-executive energy",
+        "Elections boring in the good way — well-run",
+        "Clerks supported so lines stay short"
+      ],
+      "kellyTone": "Kelly archetype — competent warmth",
+      "doNotSay": [
+        "Culture war bait",
+        "Mansplaining",
+        "Panic"
+      ],
+      "debatePrepHooks": [
+        "suburban",
+        "schools",
+        "kelly-archetype"
+      ],
+      "homeCounties": [
+        "saline",
+        "lonoke",
+        "benton",
+        "faulkner"
+      ],
+      "homeCities": [
+        "bryant",
+        "benton",
+        "cabot",
+        "conway"
+      ]
+    },
+    {
+      "id": "tom-rutherford",
+      "displayName": "Tom R.",
+      "initials": "TR",
+      "avatarColor": "bg-teal-800",
+      "segment": "ozarks_retiree",
+      "segmentLabel": "Ozarks retiree civic",
+      "tagline": "Moved here for peace — votes for competence",
+      "demographicSketch": "67 · Baxter County · retired teacher from Missouri",
+      "geographySketch": "Retiree Ozarks — lakes, tourism, part-time residency",
+      "estimatedShareNote": "High civic participation rate per capita",
+      "whatTheyFear": [
+        "Growth overwhelming clerks",
+        "Partisan SOS",
+        "Being dismissed as transplant"
+      ],
+      "whatTheyNeedToHear": [
+        "Retiree-friendly voting info",
+        "Growth managed with clerk funding",
+        "Respect for local Ozarks identity"
+      ],
+      "kellyTone": "Teacher respect — clear explanations",
+      "doNotSay": [
+        "Go back where you came from",
+        "Dismiss retirees",
+        "Overpromise growth"
+      ],
+      "debatePrepHooks": [
+        "ozarks",
+        "retiree",
+        "civic"
+      ],
+      "homeCounties": [
+        "baxter",
+        "boone",
+        "carroll",
+        "marion",
+        "newton"
+      ],
+      "homeCities": [
+        "mountain-home",
+        "harrison",
+        "eureka-springs",
+        "berryville"
+      ]
+    },
+    {
+      "id": "keisha-lyons",
+      "displayName": "Keisha L.",
+      "initials": "KL",
+      "avatarColor": "bg-rose-800",
+      "segment": "working_parent",
+      "segmentLabel": "Working shift parent",
+      "tagline": "Votes after second shift",
+      "demographicSketch": "34 · Pulaski · hospital CNA · childcare juggle",
+      "geographySketch": "Service workers statewide — Little Rock, Jonesboro, Fort Smith",
+      "estimatedShareNote": "Access story — hours, ID, childcare, early vote",
+      "whatTheyFear": [
+        "Missing work to vote",
+        "Rules changing",
+        "No one explains deadlines"
+      ],
+      "whatTheyNeedToHear": [
+        "Early vote and absentee spelled out",
+        "SOS meets people where they are",
+        "No shame for asking how"
+      ],
+      "kellyTone": "Practical empathy — steps, dates, places",
+      "doNotSay": [
+        "Just vote harder",
+        "Assume flexible schedule",
+        "Jargon"
+      ],
+      "debatePrepHooks": [
+        "voter-access",
+        "working-families",
+        "practical"
+      ],
+      "homeCounties": [
+        "pulaski",
+        "craighead",
+        "sebastian",
+        "jefferson"
+      ],
+      "homeCities": [
+        "little-rock",
+        "jonesboro",
+        "fort-smith",
+        "pine-bluff"
+      ]
+    },
+    {
+      "id": "paul-listener",
+      "displayName": "Paul L.",
+      "initials": "PL",
+      "avatarColor": "bg-purple-700",
+      "segment": "reform_curious",
+      "segmentLabel": "Reform-curious independent",
+      "tagline": "Listens to Pakko — open to Kelly's competence",
+      "demographicSketch": "52 · Conway · likes third-way ideas · distrusts parties",
+      "geographySketch": "College towns, ACCA-adjacent policy literates",
+      "estimatedShareNote": "Three-way geometry — agree-add without insulting Pakko",
+      "whatTheyFear": [
+        "Duopoly forever",
+        "Chaos candidates",
+        "No real reform"
+      ],
+      "whatTheyNeedToHear": [
+        "Respect Pakko's reform themes",
+        "Kelly is the one who can implement Monday morning",
+        "Transparency plus operations"
+      ],
+      "kellyTone": "Intellectual calm — bridge, don't bulldoze",
+      "doNotSay": [
+        "Waste your vote",
+        "Attack Pakko personally",
+        "Ignore reform"
+      ],
+      "debatePrepHooks": [
+        "three-way",
+        "pakko",
+        "reform"
+      ],
+      "homeCounties": [
+        "faulkner",
+        "pulaski",
+        "washington"
+      ],
+      "homeCities": [
+        "conway",
+        "fayetteville",
+        "little-rock"
+      ]
+    }
+  ],
+  "counties": {
+    "arkansas": {
+      "slug": "arkansas",
+      "name": "Arkansas",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "marcia-truman",
+        "keisha-lyons",
+        "robert-kessler",
+        "linda-sutton"
+      ],
+      "makeupNote": "Primary speak-to cast for Arkansas: Rev. James H., Aisha R., Marcia T., Keisha L., Robert K., Linda S.. Overlay uses region (southeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "ashley": {
+      "slug": "ashley",
+      "name": "Ashley",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "linda-sutton",
+        "bill-jennings",
+        "aisha-reed",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Ashley: Rev. James H., Linda S., Bill J., Aisha R., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "baxter": {
+      "slug": "baxter",
+      "name": "Baxter",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "tom-rutherford",
+        "frank-donnelly",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "diane-porter",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Baxter: Tom R., Frank D., Linda S., Coach Pat N., Diane P., Robert K.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "benton": {
+      "slug": "benton",
+      "name": "Benton",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "robert-kessler",
+        "susan-ellis",
+        "carol-whitfield",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "linda-sutton"
+      ],
+      "makeupNote": "Primary speak-to cast for Benton: Robert K., Susan E., Carol W., Tyler M., Maria G., Linda S.. Overlay uses region (northwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "boone": {
+      "slug": "boone",
+      "name": "Boone",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "tom-rutherford",
+        "diane-porter",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Boone: Tom R., Diane P., Linda S., Coach Pat N., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "bradley": {
+      "slug": "bradley",
+      "name": "Bradley",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "linda-sutton",
+        "bill-jennings",
+        "aisha-reed",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Bradley: Rev. James H., Linda S., Bill J., Aisha R., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "calhoun": {
+      "slug": "calhoun",
+      "name": "Calhoun",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "rev-james-holloway",
+        "bill-jennings",
+        "aisha-reed",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Calhoun: Linda S., Rev. James H., Bill J., Aisha R., Robert K., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "carroll": {
+      "slug": "carroll",
+      "name": "Carroll",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "frank-donnelly",
+        "robert-kessler",
+        "tom-rutherford",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "susan-ellis"
+      ],
+      "makeupNote": "Primary speak-to cast for Carroll: Frank D., Robert K., Tom R., Tyler M., Maria G., Susan E.. Overlay uses region (northwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "chicot": {
+      "slug": "chicot",
+      "name": "Chicot",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "marcia-truman",
+        "keisha-lyons",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Chicot: Aisha R., Rev. James H., Marcia T., Keisha L., Carol W.. Overlay uses region (southeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "clark": {
+      "slug": "clark",
+      "name": "Clark",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "linda-sutton",
+        "bill-jennings",
+        "aisha-reed",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Clark: Rev. James H., Linda S., Bill J., Aisha R., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "clay": {
+      "slug": "clay",
+      "name": "Clay",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "frank-donnelly",
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "linda-sutton"
+      ],
+      "makeupNote": "Primary speak-to cast for Clay: Frank D., Aisha R., Rev. James H., Coach Pat N., Robert K., Linda S.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "cleburne": {
+      "slug": "cleburne",
+      "name": "Cleburne",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "coach-pat-nolan",
+        "tom-rutherford",
+        "diane-porter",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Cleburne: Linda S., Coach Pat N., Tom R., Diane P., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "cleveland": {
+      "slug": "cleveland",
+      "name": "Cleveland",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "rev-james-holloway",
+        "bill-jennings",
+        "aisha-reed",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Cleveland: Linda S., Rev. James H., Bill J., Aisha R., Robert K., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "columbia": {
+      "slug": "columbia",
+      "name": "Columbia",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "rev-james-holloway",
+        "bill-jennings",
+        "aisha-reed",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Columbia: Linda S., Rev. James H., Bill J., Aisha R., Robert K., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "conway": {
+      "slug": "conway",
+      "name": "Conway",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "carol-whitfield",
+        "marcia-truman",
+        "susan-ellis",
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Conway: Carol W., Marcia T., Susan E., Keisha L., Tyler M., Robert K.. Overlay uses region (central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "craighead": {
+      "slug": "craighead",
+      "name": "Craighead",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "tyler-martinez",
+        "keisha-lyons",
+        "frank-donnelly",
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan"
+      ],
+      "makeupNote": "Primary speak-to cast for Craighead: Tyler M., Keisha L., Frank D., Aisha R., Rev. James H., Coach Pat N.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "crawford": {
+      "slug": "crawford",
+      "name": "Crawford",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "carol-whitfield",
+        "frank-donnelly",
+        "tom-rutherford",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Crawford: Linda S., Carol W., Frank D., Tom R., Robert K.. Overlay uses region (west_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "crittenden": {
+      "slug": "crittenden",
+      "name": "Crittenden",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "coach-pat-nolan",
+        "frank-donnelly",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Crittenden: Rev. James H., Aisha R., Coach Pat N., Frank D., Marcia T., Carol W.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "cross": {
+      "slug": "cross",
+      "name": "Cross",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "frank-donnelly",
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "linda-sutton"
+      ],
+      "makeupNote": "Primary speak-to cast for Cross: Frank D., Aisha R., Rev. James H., Coach Pat N., Robert K., Linda S.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "dallas": {
+      "slug": "dallas",
+      "name": "Dallas",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "linda-sutton",
+        "bill-jennings",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Dallas: Rev. James H., Aisha R., Linda S., Bill J., Marcia T., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "desha": {
+      "slug": "desha",
+      "name": "Desha",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "marcia-truman",
+        "keisha-lyons",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Desha: Aisha R., Rev. James H., Marcia T., Keisha L., Carol W.. Overlay uses region (southeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "drew": {
+      "slug": "drew",
+      "name": "Drew",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "marcia-truman",
+        "keisha-lyons",
+        "robert-kessler",
+        "linda-sutton"
+      ],
+      "makeupNote": "Primary speak-to cast for Drew: Rev. James H., Aisha R., Marcia T., Keisha L., Robert K., Linda S.. Overlay uses region (southeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "faulkner": {
+      "slug": "faulkner",
+      "name": "Faulkner",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "marcia-truman",
+        "susan-ellis",
+        "tyler-martinez",
+        "carol-whitfield",
+        "paul-listener",
+        "keisha-lyons"
+      ],
+      "makeupNote": "Primary speak-to cast for Faulkner: Marcia T., Susan E., Tyler M., Carol W., Paul L., Keisha L.. Overlay uses region (central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "franklin": {
+      "slug": "franklin",
+      "name": "Franklin",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "carol-whitfield",
+        "frank-donnelly",
+        "tom-rutherford",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Franklin: Linda S., Carol W., Frank D., Tom R., Robert K.. Overlay uses region (west_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "fulton": {
+      "slug": "fulton",
+      "name": "Fulton",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "coach-pat-nolan",
+        "tom-rutherford",
+        "diane-porter",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Fulton: Linda S., Coach Pat N., Tom R., Diane P., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "garland": {
+      "slug": "garland",
+      "name": "Garland",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "carol-whitfield",
+        "frank-donnelly",
+        "linda-sutton",
+        "tom-rutherford",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Garland: Carol W., Frank D., Linda S., Tom R., Robert K.. Overlay uses region (west_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "grant": {
+      "slug": "grant",
+      "name": "Grant",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "carol-whitfield",
+        "marcia-truman",
+        "susan-ellis",
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Grant: Carol W., Marcia T., Susan E., Keisha L., Tyler M., Robert K.. Overlay uses region (central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "greene": {
+      "slug": "greene",
+      "name": "Greene",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "frank-donnelly",
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "linda-sutton"
+      ],
+      "makeupNote": "Primary speak-to cast for Greene: Frank D., Aisha R., Rev. James H., Coach Pat N., Robert K., Linda S.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "hempstead": {
+      "slug": "hempstead",
+      "name": "Hempstead",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "bill-jennings",
+        "linda-sutton",
+        "carol-whitfield",
+        "keisha-lyons",
+        "robert-kessler",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Primary speak-to cast for Hempstead: Bill J., Linda S., Carol W., Keisha L., Robert K., Frank D.. Overlay uses region (southwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "hot-spring": {
+      "slug": "hot-spring",
+      "name": "Hot Spring",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "frank-donnelly",
+        "linda-sutton",
+        "carol-whitfield",
+        "tom-rutherford",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Hot Spring: Frank D., Linda S., Carol W., Tom R., Robert K.. Overlay uses region (west_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "howard": {
+      "slug": "howard",
+      "name": "Howard",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "carol-whitfield",
+        "bill-jennings",
+        "keisha-lyons",
+        "robert-kessler",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Primary speak-to cast for Howard: Linda S., Carol W., Bill J., Keisha L., Robert K., Frank D.. Overlay uses region (southwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "independence": {
+      "slug": "independence",
+      "name": "Independence",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "coach-pat-nolan",
+        "linda-sutton",
+        "tom-rutherford",
+        "diane-porter",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Independence: Coach Pat N., Linda S., Tom R., Diane P., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "izard": {
+      "slug": "izard",
+      "name": "Izard",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "coach-pat-nolan",
+        "tom-rutherford",
+        "diane-porter",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Izard: Linda S., Coach Pat N., Tom R., Diane P., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "jackson": {
+      "slug": "jackson",
+      "name": "Jackson",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "frank-donnelly",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Jackson: Aisha R., Rev. James H., Coach Pat N., Frank D., Marcia T., Carol W.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "jefferson": {
+      "slug": "jefferson",
+      "name": "Jefferson",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "keisha-lyons",
+        "aisha-reed",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Jefferson: Rev. James H., Keisha L., Aisha R., Marcia T., Carol W.. Overlay uses region (southeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "johnson": {
+      "slug": "johnson",
+      "name": "Johnson",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "coach-pat-nolan",
+        "tom-rutherford",
+        "diane-porter",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Johnson: Linda S., Coach Pat N., Tom R., Diane P., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "lafayette": {
+      "slug": "lafayette",
+      "name": "Lafayette",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "bill-jennings",
+        "linda-sutton",
+        "carol-whitfield",
+        "keisha-lyons",
+        "robert-kessler",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Primary speak-to cast for Lafayette: Bill J., Linda S., Carol W., Keisha L., Robert K., Frank D.. Overlay uses region (southwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "lawrence": {
+      "slug": "lawrence",
+      "name": "Lawrence",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "coach-pat-nolan",
+        "frank-donnelly",
+        "aisha-reed",
+        "rev-james-holloway",
+        "robert-kessler",
+        "linda-sutton"
+      ],
+      "makeupNote": "Primary speak-to cast for Lawrence: Coach Pat N., Frank D., Aisha R., Rev. James H., Robert K., Linda S.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "lee": {
+      "slug": "lee",
+      "name": "Lee",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "marcia-truman",
+        "keisha-lyons",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Lee: Rev. James H., Aisha R., Marcia T., Keisha L., Carol W.. Overlay uses region (southeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "lincoln": {
+      "slug": "lincoln",
+      "name": "Lincoln",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "rev-james-holloway",
+        "bill-jennings",
+        "aisha-reed",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Lincoln: Linda S., Rev. James H., Bill J., Aisha R., Robert K., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "little-river": {
+      "slug": "little-river",
+      "name": "Little River",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "bill-jennings",
+        "linda-sutton",
+        "carol-whitfield",
+        "keisha-lyons",
+        "robert-kessler",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Primary speak-to cast for Little River: Bill J., Linda S., Carol W., Keisha L., Robert K., Frank D.. Overlay uses region (southwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "logan": {
+      "slug": "logan",
+      "name": "Logan",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "carol-whitfield",
+        "frank-donnelly",
+        "tom-rutherford",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Logan: Linda S., Carol W., Frank D., Tom R., Robert K.. Overlay uses region (west_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "lonoke": {
+      "slug": "lonoke",
+      "name": "Lonoke",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "marcia-truman",
+        "susan-ellis",
+        "carol-whitfield",
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Lonoke: Marcia T., Susan E., Carol W., Keisha L., Tyler M., Robert K.. Overlay uses region (central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "madison": {
+      "slug": "madison",
+      "name": "Madison",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "robert-kessler",
+        "diane-porter",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "susan-ellis",
+        "linda-sutton"
+      ],
+      "makeupNote": "Primary speak-to cast for Madison: Robert K., Diane P., Tyler M., Maria G., Susan E., Linda S.. Overlay uses region (northwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "marion": {
+      "slug": "marion",
+      "name": "Marion",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "tom-rutherford",
+        "diane-porter",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Marion: Tom R., Diane P., Linda S., Coach Pat N., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "miller": {
+      "slug": "miller",
+      "name": "Miller",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "bill-jennings",
+        "linda-sutton",
+        "carol-whitfield",
+        "keisha-lyons",
+        "robert-kessler",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Primary speak-to cast for Miller: Bill J., Linda S., Carol W., Keisha L., Robert K., Frank D.. Overlay uses region (southwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "mississippi": {
+      "slug": "mississippi",
+      "name": "Mississippi",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "frank-donnelly",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Mississippi: Aisha R., Rev. James H., Coach Pat N., Frank D., Marcia T., Carol W.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "monroe": {
+      "slug": "monroe",
+      "name": "Monroe",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "marcia-truman",
+        "keisha-lyons",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Monroe: Aisha R., Rev. James H., Marcia T., Keisha L., Carol W.. Overlay uses region (southeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "montgomery": {
+      "slug": "montgomery",
+      "name": "Montgomery",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "carol-whitfield",
+        "frank-donnelly",
+        "tom-rutherford",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Montgomery: Linda S., Carol W., Frank D., Tom R., Robert K.. Overlay uses region (west_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "nevada": {
+      "slug": "nevada",
+      "name": "Nevada",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "rev-james-holloway",
+        "bill-jennings",
+        "aisha-reed",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Nevada: Linda S., Rev. James H., Bill J., Aisha R., Robert K., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "newton": {
+      "slug": "newton",
+      "name": "Newton",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "tom-rutherford",
+        "diane-porter",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Newton: Tom R., Diane P., Linda S., Coach Pat N., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "ouachita": {
+      "slug": "ouachita",
+      "name": "Ouachita",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "linda-sutton",
+        "bill-jennings",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Ouachita: Rev. James H., Aisha R., Linda S., Bill J., Marcia T., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "perry": {
+      "slug": "perry",
+      "name": "Perry",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "carol-whitfield",
+        "marcia-truman",
+        "susan-ellis",
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Perry: Carol W., Marcia T., Susan E., Keisha L., Tyler M., Robert K.. Overlay uses region (central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "phillips": {
+      "slug": "phillips",
+      "name": "Phillips",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "marcia-truman",
+        "keisha-lyons",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Phillips: Rev. James H., Aisha R., Marcia T., Keisha L., Carol W.. Overlay uses region (southeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "pike": {
+      "slug": "pike",
+      "name": "Pike",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "carol-whitfield",
+        "bill-jennings",
+        "keisha-lyons",
+        "robert-kessler",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Primary speak-to cast for Pike: Linda S., Carol W., Bill J., Keisha L., Robert K., Frank D.. Overlay uses region (southwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "poinsett": {
+      "slug": "poinsett",
+      "name": "Poinsett",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "frank-donnelly",
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "linda-sutton"
+      ],
+      "makeupNote": "Primary speak-to cast for Poinsett: Frank D., Aisha R., Rev. James H., Coach Pat N., Robert K., Linda S.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "polk": {
+      "slug": "polk",
+      "name": "Polk",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "carol-whitfield",
+        "frank-donnelly",
+        "tom-rutherford",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Polk: Linda S., Carol W., Frank D., Tom R., Robert K.. Overlay uses region (west_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "pope": {
+      "slug": "pope",
+      "name": "Pope",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "carol-whitfield",
+        "coach-pat-nolan",
+        "marcia-truman",
+        "susan-ellis",
+        "keisha-lyons",
+        "tyler-martinez"
+      ],
+      "makeupNote": "Primary speak-to cast for Pope: Carol W., Coach Pat N., Marcia T., Susan E., Keisha L., Tyler M.. Overlay uses region (central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "prairie": {
+      "slug": "prairie",
+      "name": "Prairie",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "carol-whitfield",
+        "marcia-truman",
+        "susan-ellis",
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Prairie: Carol W., Marcia T., Susan E., Keisha L., Tyler M., Robert K.. Overlay uses region (central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "pulaski": {
+      "slug": "pulaski",
+      "name": "Pulaski",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "marcia-truman",
+        "keisha-lyons",
+        "tyler-martinez",
+        "carol-whitfield",
+        "maria-gutierrez",
+        "paul-listener"
+      ],
+      "makeupNote": "Primary speak-to cast for Pulaski: Marcia T., Keisha L., Tyler M., Carol W., Maria G., Paul L.. Overlay uses region (central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "randolph": {
+      "slug": "randolph",
+      "name": "Randolph",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "frank-donnelly",
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "linda-sutton"
+      ],
+      "makeupNote": "Primary speak-to cast for Randolph: Frank D., Aisha R., Rev. James H., Coach Pat N., Robert K., Linda S.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "st-francis": {
+      "slug": "st-francis",
+      "name": "St. Francis",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "coach-pat-nolan",
+        "frank-donnelly",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for St. Francis: Rev. James H., Aisha R., Coach Pat N., Frank D., Marcia T., Carol W.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "saline": {
+      "slug": "saline",
+      "name": "Saline",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "marcia-truman",
+        "susan-ellis",
+        "carol-whitfield",
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Saline: Marcia T., Susan E., Carol W., Keisha L., Tyler M., Robert K.. Overlay uses region (central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "scott": {
+      "slug": "scott",
+      "name": "Scott",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "carol-whitfield",
+        "frank-donnelly",
+        "tom-rutherford",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Scott: Linda S., Carol W., Frank D., Tom R., Robert K.. Overlay uses region (west_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "searcy": {
+      "slug": "searcy",
+      "name": "Searcy",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "diane-porter",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "tom-rutherford",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Searcy: Diane P., Linda S., Coach Pat N., Tom R., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "sebastian": {
+      "slug": "sebastian",
+      "name": "Sebastian",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "carol-whitfield",
+        "robert-kessler",
+        "linda-sutton",
+        "maria-gutierrez",
+        "keisha-lyons",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Primary speak-to cast for Sebastian: Carol W., Robert K., Linda S., Maria G., Keisha L., Frank D.. Overlay uses region (west_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "sevier": {
+      "slug": "sevier",
+      "name": "Sevier",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "carol-whitfield",
+        "bill-jennings",
+        "keisha-lyons",
+        "robert-kessler",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Primary speak-to cast for Sevier: Linda S., Carol W., Bill J., Keisha L., Robert K., Frank D.. Overlay uses region (southwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "sharp": {
+      "slug": "sharp",
+      "name": "Sharp",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "coach-pat-nolan",
+        "tom-rutherford",
+        "diane-porter",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Sharp: Linda S., Coach Pat N., Tom R., Diane P., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "stone": {
+      "slug": "stone",
+      "name": "Stone",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "coach-pat-nolan",
+        "tom-rutherford",
+        "diane-porter",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Stone: Linda S., Coach Pat N., Tom R., Diane P., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "union": {
+      "slug": "union",
+      "name": "Union",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "rev-james-holloway",
+        "bill-jennings",
+        "aisha-reed",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Union: Linda S., Rev. James H., Bill J., Aisha R., Robert K., Carol W.. Overlay uses region (south), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "van-buren": {
+      "slug": "van-buren",
+      "name": "Van Buren",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "coach-pat-nolan",
+        "tom-rutherford",
+        "diane-porter",
+        "robert-kessler",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Van Buren: Linda S., Coach Pat N., Tom R., Diane P., Robert K., Carol W.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "washington": {
+      "slug": "washington",
+      "name": "Washington",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "robert-kessler",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "paul-listener",
+        "susan-ellis",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Washington: Robert K., Tyler M., Maria G., Paul L., Susan E., Carol W.. Overlay uses region (northwest), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "white": {
+      "slug": "white",
+      "name": "White",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "linda-sutton",
+        "tom-rutherford",
+        "diane-porter",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for White: Coach Pat N., Carol W., Linda S., Tom R., Diane P., Robert K.. Overlay uses region (north_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "woodruff": {
+      "slug": "woodruff",
+      "name": "Woodruff",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "frank-donnelly",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Primary speak-to cast for Woodruff: Aisha R., Rev. James H., Coach Pat N., Frank D., Marcia T., Carol W.. Overlay uses region (northeast), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "yell": {
+      "slug": "yell",
+      "name": "Yell",
+      "kind": "county",
+      "populationNote": null,
+      "profileIds": [
+        "linda-sutton",
+        "carol-whitfield",
+        "frank-donnelly",
+        "tom-rutherford",
+        "robert-kessler"
+      ],
+      "makeupNote": "Primary speak-to cast for Yell: Linda S., Carol W., Frank D., Tom R., Robert K.. Overlay uses region (west_central), persona home counties, and SOS registration party mix where available.",
+      "sources": [
+        "voter-audience/seeds.ts",
+        "arkansas-county-registry",
+        "voter-file-location-rollups.json"
+      ]
+    }
+  },
+  "cities": {
+    "little-rock": {
+      "slug": "little-rock",
+      "name": "Little Rock",
+      "kind": "city",
+      "countySlug": "pulaski",
+      "populationNote": "202,591 (2020 Census)",
+      "profileIds": [
+        "maria-gutierrez",
+        "marcia-truman",
+        "keisha-lyons",
+        "tyler-martinez",
+        "paul-listener"
+      ],
+      "makeupNote": "Little Rock speak-to cast: Maria G., Marcia T., Keisha L., Tyler M., Paul L.. Tags: media, fundraising, volunteers, political_influence.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "fort-smith": {
+      "slug": "fort-smith",
+      "name": "Fort Smith",
+      "kind": "city",
+      "countySlug": "sebastian",
+      "populationNote": "89,942 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "carol-whitfield",
+        "maria-gutierrez",
+        "keisha-lyons",
+        "linda-sutton"
+      ],
+      "makeupNote": "Fort Smith speak-to cast: Robert K., Carol W., Maria G., Keisha L., Linda S.. Tags: regional_media, persuasion, chambers, moderate_republicans.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "fayetteville": {
+      "slug": "fayetteville",
+      "name": "Fayetteville",
+      "kind": "city",
+      "countySlug": "washington",
+      "populationNote": "93,949 (2020 Census)",
+      "profileIds": [
+        "tyler-martinez",
+        "paul-listener",
+        "carol-whitfield",
+        "maria-gutierrez",
+        "robert-kessler"
+      ],
+      "makeupNote": "Fayetteville speak-to cast: Tyler M., Paul L., Carol W., Maria G., Robert K.. Tags: students, volunteers, digital_reach.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "springdale": {
+      "slug": "springdale",
+      "name": "Springdale",
+      "kind": "city",
+      "countySlug": "washington",
+      "populationNote": "84,161 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "maria-gutierrez",
+        "tyler-martinez",
+        "paul-listener",
+        "coach-pat-nolan"
+      ],
+      "makeupNote": "Springdale speak-to cast: Robert K., Maria G., Tyler M., Paul L., Coach Pat N.. Tags: volunteers, students, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "jonesboro": {
+      "slug": "jonesboro",
+      "name": "Jonesboro",
+      "kind": "city",
+      "countySlug": "craighead",
+      "populationNote": "78,576 (2020 Census)",
+      "profileIds": [
+        "tyler-martinez",
+        "keisha-lyons",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Jonesboro speak-to cast: Tyler M., Keisha L., Coach Pat N., Robert K., Frank D.. Tags: persuasion, regional_media, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "north-little-rock": {
+      "slug": "north-little-rock",
+      "name": "North Little Rock",
+      "kind": "city",
+      "countySlug": "pulaski",
+      "populationNote": "64,491 (2020 Census)",
+      "profileIds": [
+        "marcia-truman",
+        "keisha-lyons",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "aisha-reed"
+      ],
+      "makeupNote": "North Little Rock speak-to cast: Marcia T., Keisha L., Tyler M., Maria G., Aisha R.. Tags: democratic_recovery, volunteers, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "conway": {
+      "slug": "conway",
+      "name": "Conway",
+      "kind": "city",
+      "countySlug": "faulkner",
+      "populationNote": "64,134 (2020 Census)",
+      "profileIds": [
+        "tyler-martinez",
+        "paul-listener",
+        "marcia-truman",
+        "susan-ellis",
+        "keisha-lyons"
+      ],
+      "makeupNote": "Conway speak-to cast: Tyler M., Paul L., Marcia T., Susan E., Keisha L.. Tags: students, volunteers, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "rogers": {
+      "slug": "rogers",
+      "name": "Rogers",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "69,908 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "maria-gutierrez",
+        "susan-ellis",
+        "linda-sutton",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Rogers speak-to cast: Robert K., Maria G., Susan E., Linda S., Carol W.. Tags: business_leaders, chambers, moderate_republicans.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "bentonville": {
+      "slug": "bentonville",
+      "name": "Bentonville",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "54,108 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "susan-ellis",
+        "carol-whitfield",
+        "tyler-martinez",
+        "maria-gutierrez"
+      ],
+      "makeupNote": "Bentonville speak-to cast: Robert K., Susan E., Carol W., Tyler M., Maria G.. Tags: business_leaders, fundraising, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "pine-bluff": {
+      "slug": "pine-bluff",
+      "name": "Pine Bluff",
+      "kind": "city",
+      "countySlug": "jefferson",
+      "populationNote": "41,353 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "keisha-lyons",
+        "aisha-reed",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Pine Bluff speak-to cast: Rev. James H., Keisha L., Aisha R., Marcia T., Carol W.. Tags: turnout_growth, democratic_recovery, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "hot-springs": {
+      "slug": "hot-springs",
+      "name": "Hot Springs",
+      "kind": "city",
+      "countySlug": "garland",
+      "populationNote": "38,624 (2020 Census)",
+      "profileIds": [
+        "carol-whitfield",
+        "frank-donnelly",
+        "robert-kessler",
+        "linda-sutton",
+        "coach-pat-nolan"
+      ],
+      "makeupNote": "Hot Springs speak-to cast: Carol W., Frank D., Robert K., Linda S., Coach Pat N.. Tags: persuasion, volunteers, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "benton": {
+      "slug": "benton",
+      "name": "Benton",
+      "kind": "city",
+      "countySlug": "saline",
+      "populationNote": "35,241 (2020 Census)",
+      "profileIds": [
+        "susan-ellis",
+        "marcia-truman",
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler"
+      ],
+      "makeupNote": "Benton speak-to cast: Susan E., Marcia T., Keisha L., Tyler M., Robert K.. Tags: moderate_republicans, turnout_growth, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "texarkana": {
+      "slug": "texarkana",
+      "name": "Texarkana",
+      "kind": "city",
+      "countySlug": "miller",
+      "populationNote": "30,259 (2020 Census)",
+      "profileIds": [
+        "bill-jennings",
+        "linda-sutton",
+        "robert-kessler",
+        "carol-whitfield",
+        "keisha-lyons"
+      ],
+      "makeupNote": "Texarkana speak-to cast: Bill J., Linda S., Robert K., Carol W., Keisha L.. Tags: regional_media, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "sherwood": {
+      "slug": "sherwood",
+      "name": "Sherwood",
+      "kind": "city",
+      "countySlug": "pulaski",
+      "populationNote": "32,640 (2020 Census)",
+      "profileIds": [
+        "marcia-truman",
+        "maria-gutierrez",
+        "rev-james-holloway",
+        "keisha-lyons",
+        "tyler-martinez"
+      ],
+      "makeupNote": "Sherwood speak-to cast: Marcia T., Maria G., Rev. James H., Keisha L., Tyler M.. Tags: democratic_recovery, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "jacksonville": {
+      "slug": "jacksonville",
+      "name": "Jacksonville",
+      "kind": "city",
+      "countySlug": "pulaski",
+      "populationNote": "28,087 (2020 Census)",
+      "profileIds": [
+        "keisha-lyons",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Jacksonville speak-to cast: Keisha L., Tyler M., Maria G., Marcia T., Carol W.. Tags: volunteers, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "russellville": {
+      "slug": "russellville",
+      "name": "Russellville",
+      "kind": "city",
+      "countySlug": "pope",
+      "populationNote": "28,940 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "tyler-martinez",
+        "marcia-truman",
+        "susan-ellis"
+      ],
+      "makeupNote": "Russellville speak-to cast: Coach Pat N., Carol W., Tyler M., Marcia T., Susan E.. Tags: students, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "bella-vista": {
+      "slug": "bella-vista",
+      "name": "Bella Vista",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "30,957 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "frank-donnelly",
+        "susan-ellis",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Bella Vista speak-to cast: Robert K., Linda S., Frank D., Susan E., Carol W.. Tags: moderate_republicans, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "paragould": {
+      "slug": "paragould",
+      "name": "Paragould",
+      "kind": "city",
+      "countySlug": "greene",
+      "populationNote": "29,137 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "rev-james-holloway",
+        "frank-donnelly",
+        "aisha-reed",
+        "robert-kessler"
+      ],
+      "makeupNote": "Paragould speak-to cast: Coach Pat N., Rev. James H., Frank D., Aisha R., Robert K.. Tags: volunteers, regional_media.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "cabot": {
+      "slug": "cabot",
+      "name": "Cabot",
+      "kind": "city",
+      "countySlug": "lonoke",
+      "populationNote": "27,118 (2020 Census)",
+      "profileIds": [
+        "susan-ellis",
+        "keisha-lyons",
+        "tyler-martinez",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Cabot speak-to cast: Susan E., Keisha L., Tyler M., Marcia T., Carol W.. Tags: turnout_growth, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "searcy": {
+      "slug": "searcy",
+      "name": "Searcy",
+      "kind": "city",
+      "countySlug": "white",
+      "populationNote": "23,529 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "linda-sutton",
+        "tom-rutherford",
+        "diane-porter"
+      ],
+      "makeupNote": "Searcy speak-to cast: Coach Pat N., Carol W., Linda S., Tom R., Diane P.. Tags: students, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "van-buren": {
+      "slug": "van-buren",
+      "name": "Van Buren",
+      "kind": "city",
+      "countySlug": "crawford",
+      "populationNote": "23,518 (2020 Census)",
+      "profileIds": [
+        "linda-sutton",
+        "robert-kessler",
+        "carol-whitfield",
+        "frank-donnelly",
+        "tom-rutherford"
+      ],
+      "makeupNote": "Van Buren speak-to cast: Linda S., Robert K., Carol W., Frank D., Tom R.. Tags: persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "el-dorado": {
+      "slug": "el-dorado",
+      "name": "El Dorado",
+      "kind": "city",
+      "countySlug": "union",
+      "populationNote": "20,681 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "rev-james-holloway",
+        "bill-jennings",
+        "aisha-reed"
+      ],
+      "makeupNote": "El Dorado speak-to cast: Robert K., Linda S., Rev. James H., Bill J., Aisha R.. Tags: chambers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "blytheville": {
+      "slug": "blytheville",
+      "name": "Blytheville",
+      "kind": "city",
+      "countySlug": "mississippi",
+      "populationNote": "20,221 (2020 Census)",
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "marcia-truman",
+        "coach-pat-nolan",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Blytheville speak-to cast: Aisha R., Rev. James H., Marcia T., Coach Pat N., Frank D.. Tags: democratic_recovery, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "harrison": {
+      "slug": "harrison",
+      "name": "Harrison",
+      "kind": "city",
+      "countySlug": "boone",
+      "populationNote": "13,147 (2020 Census)",
+      "profileIds": [
+        "tom-rutherford",
+        "diane-porter",
+        "linda-sutton",
+        "robert-kessler",
+        "coach-pat-nolan"
+      ],
+      "makeupNote": "Harrison speak-to cast: Tom R., Diane P., Linda S., Robert K., Coach Pat N.. Tags: persuasion, moderate_republicans.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "mountain-home": {
+      "slug": "mountain-home",
+      "name": "Mountain Home",
+      "kind": "city",
+      "countySlug": "baxter",
+      "populationNote": "13,244 (2020 Census)",
+      "profileIds": [
+        "tom-rutherford",
+        "frank-donnelly",
+        "diane-porter",
+        "linda-sutton",
+        "coach-pat-nolan"
+      ],
+      "makeupNote": "Mountain Home speak-to cast: Tom R., Frank D., Diane P., Linda S., Coach Pat N.. Tags: persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "marion": {
+      "slug": "marion",
+      "name": "Marion",
+      "kind": "city",
+      "countySlug": "crittenden",
+      "populationNote": "13,044 (2020 Census)",
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "marcia-truman",
+        "coach-pat-nolan",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Marion speak-to cast: Aisha R., Rev. James H., Marcia T., Coach Pat N., Frank D.. Tags: democratic_recovery, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "bryant": {
+      "slug": "bryant",
+      "name": "Bryant",
+      "kind": "city",
+      "countySlug": "saline",
+      "populationNote": "21,346 (2020 Census)",
+      "profileIds": [
+        "marcia-truman",
+        "susan-ellis",
+        "keisha-lyons",
+        "tyler-martinez",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Bryant speak-to cast: Marcia T., Susan E., Keisha L., Tyler M., Carol W.. Tags: turnout_growth, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "lowell": {
+      "slug": "lowell",
+      "name": "Lowell",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "9,957 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "coach-pat-nolan",
+        "susan-ellis"
+      ],
+      "makeupNote": "Lowell speak-to cast: Robert K., Tyler M., Maria G., Coach Pat N., Susan E.. Tags: turnout_growth, volunteers, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "greenwood": {
+      "slug": "greenwood",
+      "name": "Greenwood",
+      "kind": "city",
+      "countySlug": "sebastian",
+      "populationNote": "9,506 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "carol-whitfield",
+        "maria-gutierrez",
+        "keisha-lyons"
+      ],
+      "makeupNote": "Greenwood speak-to cast: Robert K., Linda S., Carol W., Maria G., Keisha L.. Tags: persuasion, chambers, moderate_republicans.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "siloam-springs": {
+      "slug": "siloam-springs",
+      "name": "Siloam Springs",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "17,287 (2020 Census)",
+      "profileIds": [
+        "tyler-martinez",
+        "maria-gutierrez",
+        "robert-kessler",
+        "susan-ellis",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Siloam Springs speak-to cast: Tyler M., Maria G., Robert K., Susan E., Carol W.. Tags: students, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "maumelle": {
+      "slug": "maumelle",
+      "name": "Maumelle",
+      "kind": "city",
+      "countySlug": "pulaski",
+      "populationNote": "19,864 (2020 Census)",
+      "profileIds": [
+        "paul-listener",
+        "robert-kessler",
+        "linda-sutton",
+        "marcia-truman",
+        "keisha-lyons"
+      ],
+      "makeupNote": "Maumelle speak-to cast: Paul L., Robert K., Linda S., Marcia T., Keisha L.. Tags: moderate_republicans, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "centerton": {
+      "slug": "centerton",
+      "name": "Centerton",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "18,213 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "coach-pat-nolan",
+        "susan-ellis"
+      ],
+      "makeupNote": "Centerton speak-to cast: Robert K., Tyler M., Maria G., Coach Pat N., Susan E.. Tags: turnout_growth, volunteers, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "malvern": {
+      "slug": "malvern",
+      "name": "Malvern",
+      "kind": "city",
+      "countySlug": "hot-spring",
+      "populationNote": "10,869 (2020 Census)",
+      "profileIds": [
+        "linda-sutton",
+        "robert-kessler",
+        "frank-donnelly",
+        "carol-whitfield",
+        "tom-rutherford"
+      ],
+      "makeupNote": "Malvern speak-to cast: Linda S., Robert K., Frank D., Carol W., Tom R.. Tags: volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "arkadelphia": {
+      "slug": "arkadelphia",
+      "name": "Arkadelphia",
+      "kind": "city",
+      "countySlug": "clark",
+      "populationNote": "9,783 (2020 Census)",
+      "profileIds": [
+        "linda-sutton",
+        "rev-james-holloway",
+        "bill-jennings",
+        "aisha-reed",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Arkadelphia speak-to cast: Linda S., Rev. James H., Bill J., Aisha R., Carol W.. Tags: students, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "batesville": {
+      "slug": "batesville",
+      "name": "Batesville",
+      "kind": "city",
+      "countySlug": "independence",
+      "populationNote": "9,682 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "robert-kessler",
+        "linda-sutton",
+        "tom-rutherford",
+        "diane-porter"
+      ],
+      "makeupNote": "Batesville speak-to cast: Coach Pat N., Robert K., Linda S., Tom R., Diane P.. Tags: chambers, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "hope": {
+      "slug": "hope",
+      "name": "Hope",
+      "kind": "city",
+      "countySlug": "hempstead",
+      "populationNote": "8,787 (2020 Census)",
+      "profileIds": [
+        "bill-jennings",
+        "keisha-lyons",
+        "aisha-reed",
+        "linda-sutton",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Hope speak-to cast: Bill J., Keisha L., Aisha R., Linda S., Carol W.. Tags: democratic_recovery, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "magnolia": {
+      "slug": "magnolia",
+      "name": "Magnolia",
+      "kind": "city",
+      "countySlug": "columbia",
+      "populationNote": "11,113 (2020 Census)",
+      "profileIds": [
+        "linda-sutton",
+        "rev-james-holloway",
+        "bill-jennings",
+        "aisha-reed",
+        "robert-kessler"
+      ],
+      "makeupNote": "Magnolia speak-to cast: Linda S., Rev. James H., Bill J., Aisha R., Robert K.. Tags: students, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "stuttgart": {
+      "slug": "stuttgart",
+      "name": "Stuttgart",
+      "kind": "city",
+      "countySlug": "arkansas",
+      "populationNote": "8,451 (2020 Census)",
+      "profileIds": [
+        "aisha-reed",
+        "robert-kessler",
+        "linda-sutton",
+        "rev-james-holloway",
+        "marcia-truman"
+      ],
+      "makeupNote": "Stuttgart speak-to cast: Aisha R., Robert K., Linda S., Rev. James H., Marcia T.. Tags: chambers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "camden": {
+      "slug": "camden",
+      "name": "Camden",
+      "kind": "city",
+      "countySlug": "ouachita",
+      "populationNote": "6,869 (2020 Census)",
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "marcia-truman",
+        "linda-sutton",
+        "bill-jennings"
+      ],
+      "makeupNote": "Camden speak-to cast: Aisha R., Rev. James H., Marcia T., Linda S., Bill J.. Tags: democratic_recovery, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "forrest-city": {
+      "slug": "forrest-city",
+      "name": "Forrest City",
+      "kind": "city",
+      "countySlug": "st-francis",
+      "populationNote": "13,605 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "marcia-truman",
+        "coach-pat-nolan",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Forrest City speak-to cast: Rev. James H., Aisha R., Marcia T., Coach Pat N., Frank D.. Tags: democratic_recovery, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "west-memphis": {
+      "slug": "west-memphis",
+      "name": "West Memphis",
+      "kind": "city",
+      "countySlug": "crittenden",
+      "populationNote": "24,620 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "coach-pat-nolan",
+        "marcia-truman",
+        "frank-donnelly"
+      ],
+      "makeupNote": "West Memphis speak-to cast: Rev. James H., Aisha R., Coach Pat N., Marcia T., Frank D.. Tags: democratic_recovery, turnout_growth, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "beebe": {
+      "slug": "beebe",
+      "name": "Beebe",
+      "kind": "city",
+      "countySlug": "white",
+      "populationNote": "8,923 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "linda-sutton",
+        "tom-rutherford",
+        "diane-porter"
+      ],
+      "makeupNote": "Beebe speak-to cast: Coach Pat N., Carol W., Linda S., Tom R., Diane P.. Tags: students, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "wynne": {
+      "slug": "wynne",
+      "name": "Wynne",
+      "kind": "city",
+      "countySlug": "cross",
+      "populationNote": "7,857 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "linda-sutton",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Wynne speak-to cast: Rev. James H., Coach Pat N., Robert K., Linda S., Frank D.. Tags: volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "helena-west-helena": {
+      "slug": "helena-west-helena",
+      "name": "Helena-West Helena",
+      "kind": "city",
+      "countySlug": "phillips",
+      "populationNote": "9,432 (2020 Census)",
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "marcia-truman",
+        "keisha-lyons",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Helena-West Helena speak-to cast: Aisha R., Rev. James H., Marcia T., Keisha L., Carol W.. Tags: democratic_recovery, turnout_growth, regional_media.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "clarksville": {
+      "slug": "clarksville",
+      "name": "Clarksville",
+      "kind": "city",
+      "countySlug": "johnson",
+      "populationNote": "9,394 (2020 Census)",
+      "profileIds": [
+        "linda-sutton",
+        "coach-pat-nolan",
+        "robert-kessler",
+        "tom-rutherford",
+        "diane-porter"
+      ],
+      "makeupNote": "Clarksville speak-to cast: Linda S., Coach Pat N., Robert K., Tom R., Diane P.. Tags: students, volunteers, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "monticello": {
+      "slug": "monticello",
+      "name": "Monticello",
+      "kind": "city",
+      "countySlug": "drew",
+      "populationNote": "8,417 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "robert-kessler",
+        "coach-pat-nolan",
+        "aisha-reed",
+        "marcia-truman"
+      ],
+      "makeupNote": "Monticello speak-to cast: Rev. James H., Robert K., Coach Pat N., Aisha R., Marcia T.. Tags: students, volunteers, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "newport": {
+      "slug": "newport",
+      "name": "Newport",
+      "kind": "city",
+      "countySlug": "jackson",
+      "populationNote": "7,826 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "aisha-reed",
+        "marcia-truman",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Newport speak-to cast: Rev. James H., Coach Pat N., Aisha R., Marcia T., Frank D.. Tags: democratic_recovery, chambers, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "farmington": {
+      "slug": "farmington",
+      "name": "Farmington",
+      "kind": "city",
+      "countySlug": "washington",
+      "populationNote": "7,665 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "susan-ellis",
+        "paul-listener"
+      ],
+      "makeupNote": "Farmington speak-to cast: Robert K., Tyler M., Maria G., Susan E., Paul L.. Tags: turnout_growth, volunteers, moderate_republicans.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "pocahontas": {
+      "slug": "pocahontas",
+      "name": "Pocahontas",
+      "kind": "city",
+      "countySlug": "randolph",
+      "populationNote": "7,387 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "robert-kessler",
+        "rev-james-holloway",
+        "linda-sutton",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Pocahontas speak-to cast: Coach Pat N., Robert K., Rev. James H., Linda S., Frank D.. Tags: chambers, volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "trumann": {
+      "slug": "trumann",
+      "name": "Trumann",
+      "kind": "city",
+      "countySlug": "poinsett",
+      "populationNote": "7,381 (2020 Census)",
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "frank-donnelly",
+        "robert-kessler"
+      ],
+      "makeupNote": "Trumann speak-to cast: Aisha R., Rev. James H., Coach Pat N., Frank D., Robert K.. Tags: democratic_recovery, volunteers, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "prairie-grove": {
+      "slug": "prairie-grove",
+      "name": "Prairie Grove",
+      "kind": "city",
+      "countySlug": "washington",
+      "populationNote": "7,164 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "paul-listener",
+        "susan-ellis"
+      ],
+      "makeupNote": "Prairie Grove speak-to cast: Robert K., Tyler M., Maria G., Paul L., Susan E.. Tags: persuasion, volunteers, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "morrilton": {
+      "slug": "morrilton",
+      "name": "Morrilton",
+      "kind": "city",
+      "countySlug": "conway",
+      "populationNote": "7,024 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "marcia-truman",
+        "susan-ellis"
+      ],
+      "makeupNote": "Morrilton speak-to cast: Robert K., Coach Pat N., Carol W., Marcia T., Susan E.. Tags: chambers, volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "heber-springs": {
+      "slug": "heber-springs",
+      "name": "Heber Springs",
+      "kind": "city",
+      "countySlug": "cleburne",
+      "populationNote": "6,960 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "robert-kessler",
+        "linda-sutton",
+        "tom-rutherford",
+        "diane-porter"
+      ],
+      "makeupNote": "Heber Springs speak-to cast: Coach Pat N., Robert K., Linda S., Tom R., Diane P.. Tags: persuasion, volunteers, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "osceola": {
+      "slug": "osceola",
+      "name": "Osceola",
+      "kind": "city",
+      "countySlug": "mississippi",
+      "populationNote": "6,941 (2020 Census)",
+      "profileIds": [
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "marcia-truman",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Osceola speak-to cast: Aisha R., Rev. James H., Coach Pat N., Marcia T., Frank D.. Tags: democratic_recovery, turnout_growth, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "pea-ridge": {
+      "slug": "pea-ridge",
+      "name": "Pea Ridge",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "6,670 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "susan-ellis",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "linda-sutton"
+      ],
+      "makeupNote": "Pea Ridge speak-to cast: Robert K., Susan E., Tyler M., Maria G., Linda S.. Tags: turnout_growth, volunteers, moderate_republicans.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "ward": {
+      "slug": "ward",
+      "name": "Ward",
+      "kind": "city",
+      "countySlug": "lonoke",
+      "populationNote": "6,107 (2020 Census)",
+      "profileIds": [
+        "keisha-lyons",
+        "tyler-martinez",
+        "marcia-truman",
+        "susan-ellis",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Ward speak-to cast: Keisha L., Tyler M., Marcia T., Susan E., Carol W.. Tags: turnout_growth, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "de-queen": {
+      "slug": "de-queen",
+      "name": "De Queen",
+      "kind": "city",
+      "countySlug": "sevier",
+      "populationNote": "6,073 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "bill-jennings"
+      ],
+      "makeupNote": "De Queen speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Bill J.. Tags: volunteers, persuasion, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "alma": {
+      "slug": "alma",
+      "name": "Alma",
+      "kind": "city",
+      "countySlug": "crawford",
+      "populationNote": "5,826 (2020 Census)",
+      "profileIds": [
+        "linda-sutton",
+        "robert-kessler",
+        "carol-whitfield",
+        "frank-donnelly",
+        "tom-rutherford"
+      ],
+      "makeupNote": "Alma speak-to cast: Linda S., Robert K., Carol W., Frank D., Tom R.. Tags: turnout_growth, volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "greenbrier": {
+      "slug": "greenbrier",
+      "name": "Greenbrier",
+      "kind": "city",
+      "countySlug": "faulkner",
+      "populationNote": "5,771 (2020 Census)",
+      "profileIds": [
+        "susan-ellis",
+        "tyler-martinez",
+        "keisha-lyons",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Greenbrier speak-to cast: Susan E., Tyler M., Keisha L., Marcia T., Carol W.. Tags: turnout_growth, volunteers, moderate_republicans.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "berryville": {
+      "slug": "berryville",
+      "name": "Berryville",
+      "kind": "city",
+      "countySlug": "carroll",
+      "populationNote": "5,647 (2020 Census)",
+      "profileIds": [
+        "tom-rutherford",
+        "robert-kessler",
+        "diane-porter",
+        "maria-gutierrez",
+        "coach-pat-nolan"
+      ],
+      "makeupNote": "Berryville speak-to cast: Tom R., Robert K., Diane P., Maria G., Coach Pat N.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "cave-springs": {
+      "slug": "cave-springs",
+      "name": "Cave Springs",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "5,629 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "susan-ellis",
+        "tyler-martinez",
+        "linda-sutton",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Cave Springs speak-to cast: Robert K., Susan E., Tyler M., Linda S., Carol W.. Tags: business_leaders, turnout_growth, moderate_republicans.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "white-hall": {
+      "slug": "white-hall",
+      "name": "White Hall",
+      "kind": "city",
+      "countySlug": "jefferson",
+      "populationNote": "5,577 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "keisha-lyons",
+        "marcia-truman",
+        "carol-whitfield"
+      ],
+      "makeupNote": "White Hall speak-to cast: Rev. James H., Aisha R., Keisha L., Marcia T., Carol W.. Tags: turnout_growth, volunteers, democratic_recovery.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "mena": {
+      "slug": "mena",
+      "name": "Mena",
+      "kind": "city",
+      "countySlug": "polk",
+      "populationNote": "5,574 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Mena speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: persuasion, chambers, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "warren": {
+      "slug": "warren",
+      "name": "Warren",
+      "kind": "city",
+      "countySlug": "bradley",
+      "populationNote": "5,436 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "coach-pat-nolan",
+        "linda-sutton",
+        "bill-jennings"
+      ],
+      "makeupNote": "Warren speak-to cast: Rev. James H., Aisha R., Coach Pat N., Linda S., Bill J.. Tags: chambers, democratic_recovery, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "walnut-ridge": {
+      "slug": "walnut-ridge",
+      "name": "Walnut Ridge",
+      "kind": "city",
+      "countySlug": "lawrence",
+      "populationNote": "5,401 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "rev-james-holloway",
+        "robert-kessler",
+        "frank-donnelly",
+        "aisha-reed"
+      ],
+      "makeupNote": "Walnut Ridge speak-to cast: Coach Pat N., Rev. James H., Robert K., Frank D., Aisha R.. Tags: students, volunteers, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "sheridan": {
+      "slug": "sheridan",
+      "name": "Sheridan",
+      "kind": "city",
+      "countySlug": "grant",
+      "populationNote": "4,952 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "marcia-truman",
+        "susan-ellis"
+      ],
+      "makeupNote": "Sheridan speak-to cast: Robert K., Coach Pat N., Carol W., Marcia T., Susan E.. Tags: persuasion, chambers, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "crossett": {
+      "slug": "crossett",
+      "name": "Crossett",
+      "kind": "city",
+      "countySlug": "ashley",
+      "populationNote": "4,795 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "linda-sutton",
+        "robert-kessler",
+        "coach-pat-nolan",
+        "bill-jennings"
+      ],
+      "makeupNote": "Crossett speak-to cast: Rev. James H., Linda S., Robert K., Coach Pat N., Bill J.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "barling": {
+      "slug": "barling",
+      "name": "Barling",
+      "kind": "city",
+      "countySlug": "sebastian",
+      "populationNote": "4,793 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "maria-gutierrez",
+        "keisha-lyons",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Barling speak-to cast: Robert K., Linda S., Maria G., Keisha L., Carol W.. Tags: volunteers, persuasion, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "cherokee-village": {
+      "slug": "cherokee-village",
+      "name": "Cherokee Village",
+      "kind": "city",
+      "countySlug": "fulton",
+      "populationNote": "4,789 (2020 Census)",
+      "profileIds": [
+        "linda-sutton",
+        "robert-kessler",
+        "coach-pat-nolan",
+        "tom-rutherford",
+        "diane-porter"
+      ],
+      "makeupNote": "Cherokee Village speak-to cast: Linda S., Robert K., Coach Pat N., Tom R., Diane P.. Tags: persuasion, moderate_republicans, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "tontitown": {
+      "slug": "tontitown",
+      "name": "Tontitown",
+      "kind": "city",
+      "countySlug": "washington",
+      "populationNote": "4,736 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "coach-pat-nolan",
+        "paul-listener"
+      ],
+      "makeupNote": "Tontitown speak-to cast: Robert K., Tyler M., Maria G., Coach Pat N., Paul L.. Tags: chambers, volunteers, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "shannon-hills": {
+      "slug": "shannon-hills",
+      "name": "Shannon Hills",
+      "kind": "city",
+      "countySlug": "saline",
+      "populationNote": "4,510 (2020 Census)",
+      "profileIds": [
+        "susan-ellis",
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler",
+        "marcia-truman"
+      ],
+      "makeupNote": "Shannon Hills speak-to cast: Susan E., Keisha L., Tyler M., Robert K., Marcia T.. Tags: turnout_growth, volunteers, moderate_republicans.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "dardanelle": {
+      "slug": "dardanelle",
+      "name": "Dardanelle",
+      "kind": "city",
+      "countySlug": "yell",
+      "populationNote": "4,497 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Dardanelle speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: chambers, volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "vilonia": {
+      "slug": "vilonia",
+      "name": "Vilonia",
+      "kind": "city",
+      "countySlug": "faulkner",
+      "populationNote": "4,341 (2020 Census)",
+      "profileIds": [
+        "tyler-martinez",
+        "keisha-lyons",
+        "marcia-truman",
+        "susan-ellis",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Vilonia speak-to cast: Tyler M., Keisha L., Marcia T., Susan E., Carol W.. Tags: turnout_growth, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "southside": {
+      "slug": "southside",
+      "name": "Southside",
+      "kind": "city",
+      "countySlug": "independence",
+      "populationNote": "4,267 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "linda-sutton",
+        "robert-kessler",
+        "tom-rutherford",
+        "diane-porter"
+      ],
+      "makeupNote": "Southside speak-to cast: Coach Pat N., Linda S., Robert K., Tom R., Diane P.. Tags: turnout_growth, volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "ashdown": {
+      "slug": "ashdown",
+      "name": "Ashdown",
+      "kind": "city",
+      "countySlug": "little-river",
+      "populationNote": "4,180 (2020 Census)",
+      "profileIds": [
+        "bill-jennings",
+        "robert-kessler",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "carol-whitfield"
+      ],
+      "makeupNote": "Ashdown speak-to cast: Bill J., Robert K., Linda S., Coach Pat N., Carol W.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "lonoke": {
+      "slug": "lonoke",
+      "name": "Lonoke",
+      "kind": "city",
+      "countySlug": "lonoke",
+      "populationNote": "4,164 (2020 Census)",
+      "profileIds": [
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler",
+        "coach-pat-nolan",
+        "marcia-truman"
+      ],
+      "makeupNote": "Lonoke speak-to cast: Keisha L., Tyler M., Robert K., Coach Pat N., Marcia T.. Tags: chambers, volunteers, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "nashville": {
+      "slug": "nashville",
+      "name": "Nashville",
+      "kind": "city",
+      "countySlug": "howard",
+      "populationNote": "4,141 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "bill-jennings"
+      ],
+      "makeupNote": "Nashville speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Bill J.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "brookland": {
+      "slug": "brookland",
+      "name": "Brookland",
+      "kind": "city",
+      "countySlug": "craighead",
+      "populationNote": "4,118 (2020 Census)",
+      "profileIds": [
+        "tyler-martinez",
+        "keisha-lyons",
+        "aisha-reed",
+        "rev-james-holloway",
+        "coach-pat-nolan"
+      ],
+      "makeupNote": "Brookland speak-to cast: Tyler M., Keisha L., Aisha R., Rev. James H., Coach Pat N.. Tags: turnout_growth, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "dumas": {
+      "slug": "dumas",
+      "name": "Dumas",
+      "kind": "city",
+      "countySlug": "desha",
+      "populationNote": "3,978 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "marcia-truman",
+        "coach-pat-nolan",
+        "keisha-lyons"
+      ],
+      "makeupNote": "Dumas speak-to cast: Rev. James H., Aisha R., Marcia T., Coach Pat N., Keisha L.. Tags: democratic_recovery, chambers, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "haskell": {
+      "slug": "haskell",
+      "name": "Haskell",
+      "kind": "city",
+      "countySlug": "saline",
+      "populationNote": "3,970 (2020 Census)",
+      "profileIds": [
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler",
+        "marcia-truman",
+        "susan-ellis"
+      ],
+      "makeupNote": "Haskell speak-to cast: Keisha L., Tyler M., Robert K., Marcia T., Susan E.. Tags: turnout_growth, volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "mcgehee": {
+      "slug": "mcgehee",
+      "name": "McGehee",
+      "kind": "city",
+      "countySlug": "desha",
+      "populationNote": "3,856 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "marcia-truman",
+        "coach-pat-nolan",
+        "keisha-lyons"
+      ],
+      "makeupNote": "McGehee speak-to cast: Rev. James H., Aisha R., Marcia T., Coach Pat N., Keisha L.. Tags: democratic_recovery, chambers, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "gentry": {
+      "slug": "gentry",
+      "name": "Gentry",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "3,850 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "maria-gutierrez",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "susan-ellis"
+      ],
+      "makeupNote": "Gentry speak-to cast: Robert K., Maria G., Linda S., Coach Pat N., Susan E.. Tags: chambers, volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "booneville": {
+      "slug": "booneville",
+      "name": "Booneville",
+      "kind": "city",
+      "countySlug": "logan",
+      "populationNote": "3,806 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Booneville speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "manila": {
+      "slug": "manila",
+      "name": "Manila",
+      "kind": "city",
+      "countySlug": "mississippi",
+      "populationNote": "3,677 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "rev-james-holloway",
+        "robert-kessler",
+        "aisha-reed",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Manila speak-to cast: Coach Pat N., Rev. James H., Robert K., Aisha R., Frank D.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "elkins": {
+      "slug": "elkins",
+      "name": "Elkins",
+      "kind": "city",
+      "countySlug": "washington",
+      "populationNote": "3,660 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "coach-pat-nolan",
+        "paul-listener"
+      ],
+      "makeupNote": "Elkins speak-to cast: Robert K., Tyler M., Maria G., Coach Pat N., Paul L.. Tags: turnout_growth, volunteers, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "johnson": {
+      "slug": "johnson",
+      "name": "Johnson",
+      "kind": "city",
+      "countySlug": "washington",
+      "populationNote": "3,633 (2020 Census)",
+      "profileIds": [
+        "tyler-martinez",
+        "maria-gutierrez",
+        "paul-listener",
+        "robert-kessler",
+        "susan-ellis"
+      ],
+      "makeupNote": "Johnson speak-to cast: Tyler M., Maria G., Paul L., Robert K., Susan E.. Tags: students, volunteers, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "piggott": {
+      "slug": "piggott",
+      "name": "Piggott",
+      "kind": "city",
+      "countySlug": "clay",
+      "populationNote": "3,614 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "robert-kessler",
+        "rev-james-holloway",
+        "linda-sutton",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Piggott speak-to cast: Coach Pat N., Robert K., Rev. James H., Linda S., Frank D.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "gravette": {
+      "slug": "gravette",
+      "name": "Gravette",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "3,574 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "coach-pat-nolan",
+        "susan-ellis"
+      ],
+      "makeupNote": "Gravette speak-to cast: Robert K., Tyler M., Maria G., Coach Pat N., Susan E.. Tags: volunteers, turnout_growth, chambers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "austin": {
+      "slug": "austin",
+      "name": "Austin",
+      "kind": "city",
+      "countySlug": "lonoke",
+      "populationNote": "3,568 (2020 Census)",
+      "profileIds": [
+        "keisha-lyons",
+        "tyler-martinez",
+        "robert-kessler",
+        "marcia-truman",
+        "susan-ellis"
+      ],
+      "makeupNote": "Austin speak-to cast: Keisha L., Tyler M., Robert K., Marcia T., Susan E.. Tags: turnout_growth, volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "marianna": {
+      "slug": "marianna",
+      "name": "Marianna",
+      "kind": "city",
+      "countySlug": "lee",
+      "populationNote": "3,559 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "aisha-reed",
+        "marcia-truman",
+        "coach-pat-nolan",
+        "keisha-lyons"
+      ],
+      "makeupNote": "Marianna speak-to cast: Rev. James H., Aisha R., Marcia T., Coach Pat N., Keisha L.. Tags: democratic_recovery, chambers, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "ozark": {
+      "slug": "ozark",
+      "name": "Ozark",
+      "kind": "city",
+      "countySlug": "franklin",
+      "populationNote": "3,557 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Ozark speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "alexander": {
+      "slug": "alexander",
+      "name": "Alexander",
+      "kind": "city",
+      "countySlug": "pulaski",
+      "populationNote": "3,418 (2020 Census)",
+      "profileIds": [
+        "marcia-truman",
+        "keisha-lyons",
+        "tyler-martinez",
+        "maria-gutierrez",
+        "aisha-reed"
+      ],
+      "makeupNote": "Alexander speak-to cast: Marcia T., Keisha L., Tyler M., Maria G., Aisha R.. Tags: turnout_growth, volunteers, democratic_recovery.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "fordyce": {
+      "slug": "fordyce",
+      "name": "Fordyce",
+      "kind": "city",
+      "countySlug": "dallas",
+      "populationNote": "3,406 (2020 Census)",
+      "profileIds": [
+        "rev-james-holloway",
+        "linda-sutton",
+        "robert-kessler",
+        "coach-pat-nolan",
+        "aisha-reed"
+      ],
+      "makeupNote": "Fordyce speak-to cast: Rev. James H., Linda S., Robert K., Coach Pat N., Aisha R.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "waldron": {
+      "slug": "waldron",
+      "name": "Waldron",
+      "kind": "city",
+      "countySlug": "scott",
+      "populationNote": "3,319 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Waldron speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "corning": {
+      "slug": "corning",
+      "name": "Corning",
+      "kind": "city",
+      "countySlug": "clay",
+      "populationNote": "3,209 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "robert-kessler",
+        "rev-james-holloway",
+        "linda-sutton",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Corning speak-to cast: Coach Pat N., Robert K., Rev. James H., Linda S., Frank D.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "paris": {
+      "slug": "paris",
+      "name": "Paris",
+      "kind": "city",
+      "countySlug": "logan",
+      "populationNote": "3,205 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "coach-pat-nolan",
+        "carol-whitfield",
+        "frank-donnelly"
+      ],
+      "makeupNote": "Paris speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "pottsville": {
+      "slug": "pottsville",
+      "name": "Pottsville",
+      "kind": "city",
+      "countySlug": "pope",
+      "populationNote": "3,133 (2020 Census)",
+      "profileIds": [
+        "coach-pat-nolan",
+        "keisha-lyons",
+        "tyler-martinez",
+        "carol-whitfield",
+        "marcia-truman"
+      ],
+      "makeupNote": "Pottsville speak-to cast: Coach Pat N., Keisha L., Tyler M., Carol W., Marcia T.. Tags: turnout_growth, volunteers, persuasion.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "prescott": {
+      "slug": "prescott",
+      "name": "Prescott",
+      "kind": "city",
+      "countySlug": "nevada",
+      "populationNote": "3,059 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "linda-sutton",
+        "rev-james-holloway",
+        "coach-pat-nolan",
+        "bill-jennings"
+      ],
+      "makeupNote": "Prescott speak-to cast: Robert K., Linda S., Rev. James H., Coach Pat N., Bill J.. Tags: chambers, persuasion, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "little-flock": {
+      "slug": "little-flock",
+      "name": "Little Flock",
+      "kind": "city",
+      "countySlug": "benton",
+      "populationNote": "3,051 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "susan-ellis",
+        "linda-sutton",
+        "carol-whitfield",
+        "tyler-martinez"
+      ],
+      "makeupNote": "Little Flock speak-to cast: Robert K., Susan E., Linda S., Carol W., Tyler M.. Tags: business_leaders, chambers, moderate_republicans.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    },
+    "green-forest": {
+      "slug": "green-forest",
+      "name": "Green Forest",
+      "kind": "city",
+      "countySlug": "carroll",
+      "populationNote": "3,007 (2020 Census)",
+      "profileIds": [
+        "robert-kessler",
+        "maria-gutierrez",
+        "coach-pat-nolan",
+        "frank-donnelly",
+        "tom-rutherford"
+      ],
+      "makeupNote": "Green Forest speak-to cast: Robert K., Maria G., Coach Pat N., Frank D., Tom R.. Tags: persuasion, chambers, volunteers.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts"
+      ]
+    }
+  }
+}

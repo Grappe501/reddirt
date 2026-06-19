@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CityElectionIntelPanel } from "@/components/election-plan/CityElectionIntelPanel";
 import { CityIntelligenceEnrichmentPanel } from "@/components/election-plan/CityIntelligenceEnrichmentPanel";
 import { VoterFileCityIntelSection } from "@/components/election-plan/VoterFileLocationIntelPanel";
+import { LocationAudienceStrip } from "@/components/election-plan/voter-audience/LocationAudienceStrip";
 import { LocationFundraisingPanel } from "@/components/election-plan/LocationFundraisingPanel";
 import { CityVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
@@ -30,6 +31,7 @@ import type { LocationFundraisingView } from "@/lib/election-plan/load-location-
 import { getCityVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { getSpecialKpiGoalForCity } from "@/lib/election-plan/load-special-kpi-goals";
 import { getCityElectionIntel } from "@/lib/election-plan/load-city-election-intel";
+import { getCityAudienceOverlay } from "@/lib/election-plan/voter-audience-models/load";
 import {
   filterImmersionMissionForDisplay,
   getImmersionMissionForLocation,
@@ -102,6 +104,7 @@ export function CityLocationBriefPanel({
     { surface: "city", citySlug: brief.slug },
   );
   const cityElectionIntel = getCityElectionIntel(brief.slug);
+  const cityAudience = getCityAudienceOverlay(brief.slug);
 
   return (
     <section>
@@ -139,6 +142,8 @@ export function CityLocationBriefPanel({
         countySlug={countySlug}
         countyName={brief.county}
       />
+
+      {cityAudience ? <LocationAudienceStrip overlay={cityAudience} /> : null}
 
       {cityElectionIntel ? <CityElectionIntelPanel intel={cityElectionIntel} /> : null}
 

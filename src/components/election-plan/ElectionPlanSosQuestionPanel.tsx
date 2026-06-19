@@ -4,8 +4,10 @@ import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
+import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import { mapQuestionRelatedLinksForElectionPlan } from "@/lib/election-plan/debateQuestionReferenceDrillDown";
 import { epDebateQuestionHref } from "@/lib/election-plan/debate-prep-links";
+import { resolveAudiencesForCategory } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import type { SosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionTypes";
 
 function ScriptBlock({ title, text, accent }: { title: string; text: string; accent: string }) {
@@ -60,9 +62,12 @@ export function ElectionPlanSosQuestionPanel({
   }
 
   const relatedLinks = mapQuestionRelatedLinksForElectionPlan(drill);
+  const speakTo = resolveAudiencesForCategory(drill.category);
 
   return (
     <div className="space-y-6">
+      <VoterAudienceSpeakToBanner profiles={speakTo} />
+
       <article className="ep-card border-2 border-[var(--ep-navy)]/20 bg-[var(--ep-cream)]/40 p-6">
         <p className="text-[10px] font-bold uppercase text-[var(--ep-navy-muted)]">
           Q{drill.questionNumber} · {drill.probability} · {drill.categoryLabel}

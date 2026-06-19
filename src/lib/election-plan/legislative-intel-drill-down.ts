@@ -13,6 +13,7 @@ import {
   epLegislativeIntel2025Href,
   epOppositionResearchModuleHref,
   epTrapLaneHref,
+  EP_VOTER_AUDIENCES_HREF,
 } from "@/lib/election-plan/debate-prep-links";
 
 export type LegislativeIntelBillCard = {
@@ -80,6 +81,7 @@ export function getLegislativeIntel2021Page(): LegislativeIntelPage {
       "Fraud without evidence",
     ].filter(Boolean) as string[],
     relatedHrefs: [
+      { href: EP_VOTER_AUDIENCES_HREF, label: "Who is in the room" },
       { href: epLegislativeIntel2025Href(), label: "2025 direct democracy bills" },
       { href: epTrapLaneHref("2021-vs-2025-pivot"), label: "Trap lane · 2021 vs 2025" },
       { href: epOppositionResearchModuleHref("integrity-foundation-2021"), label: "Full opposition dossier" },
@@ -130,6 +132,7 @@ export function getLegislativeIntel2025Page(): LegislativeIntelPage {
       "Act numbers on stage without Arkleg verification",
     ],
     relatedHrefs: [
+      { href: EP_VOTER_AUDIENCES_HREF, label: "Who is in the room" },
       { href: epLegislativeIntel2021Href(), label: "2021 integrity package" },
       { href: epTrapLaneHref("2021-vs-2025-pivot"), label: "Trap lane · 2021 vs 2025" },
       { href: epOppositionResearchModuleHref("direct-democracy"), label: "Opposition dossier" },

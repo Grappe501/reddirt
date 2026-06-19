@@ -9,6 +9,7 @@ import {
   EP_DEBATE_QUESTIONS_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
   EP_LEGISLATIVE_INTEL_HREF,
+  EP_VOTER_AUDIENCES_HREF,
   EP_OPPONENT_BIOS_HREF,
   epLegislativeIntel2021Href,
   epLegislativeIntel2025Href,
@@ -55,9 +56,16 @@ export function ElectionPlanDebatePrepHubPanel() {
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--ep-navy-muted)]">{snapshot.intro}</p>
       </header>
 
-      <KellyPageSummary summary="Tonight: rehearse your opening, know Hammer's 2021 and 2025 election bills, and practice one agree-and-add pivot on county clerks. Everything else is reference — open only what you need." />
+      <KellyPageSummary summary="Tonight: rehearse your opening, know Hammer's 2021 and 2025 election bills, and practice one agree-and-add pivot on county clerks. Picture who is in the room — open Audiences when a line feels flat." />
 
       <section className="mb-8 grid gap-4 sm:grid-cols-2">
+        <Link href={EP_VOTER_AUDIENCES_HREF} className="ep-card block border-violet-200 bg-violet-50/40 p-5 transition hover:border-violet-400">
+          <p className="text-xs font-bold uppercase text-violet-950">Who is in the room?</p>
+          <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">16 voter audiences</h2>
+          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+            Named Arkansans in Kelly&apos;s big tent — Marcia, Rev. James, Carol, Linda, and twelve more. Every practice line shows who you are speaking to.
+          </p>
+        </Link>
         <Link href={epLegislativeIntel2021Href()} className="ep-card block border-violet-200 bg-violet-50/40 p-5 transition hover:border-violet-400">
           <p className="text-xs font-bold uppercase text-violet-950">Must read</p>
           <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">2021 integrity bills</h2>

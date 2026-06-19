@@ -27,6 +27,11 @@ export function epOppositionResearchModuleHref(moduleId: string): string {
 }
 
 export const EP_LEGISLATIVE_INTEL_HREF = "/election-plan/debate-prep/legislative-intel";
+export const EP_VOTER_AUDIENCES_HREF = "/election-plan/debate-prep/voter-audiences";
+
+export function epVoterAudienceProfileHref(profileId: string): string {
+  return `${EP_VOTER_AUDIENCES_HREF}/${profileId}`;
+}
 
 export function epLegislativeIntel2021Href(): string {
   return `${EP_LEGISLATIVE_INTEL_HREF}/2021-integrity`;
