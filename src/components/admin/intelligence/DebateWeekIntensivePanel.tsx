@@ -12,6 +12,13 @@ import {
   totalIntensiveMinutes,
   type IntensiveDayId,
 } from "@/lib/intelligence/v4/debateWeekIntensive2026";
+import {
+  EP_DEBATE_PREP_HREF,
+  EP_DEBATE_PREP_LANES_HREF,
+  EP_DEBATE_PREP_TUTOR_HREF,
+  EP_FORUM_TRANSCRIPT_LAB_HREF,
+} from "@/lib/election-plan/debate-prep-links";
+import { epDebatePrepDayHref, mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 import { DEBATE_INTENSIVE_V2_LABEL, getDayDeepOverlay } from "@/lib/intelligence/v4/debateWeekIntensive2026Deep";
 import { DEBATE_INTENSIVE_V3_LABEL, DEBATE_WEEK_LANES_HUB_HREF } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
 
@@ -25,26 +32,31 @@ export function DebateWeekIntensivePanel({
   compact,
   initialDay = 1,
   todayDate,
+  surface = "admin",
   linkOverrides,
 }: {
   compact?: boolean;
   initialDay?: number;
   todayDate?: string;
+  /** Election Plan routes — href helpers stay in this client module (no function props from RSC). */
+  surface?: "admin" | "election-plan";
   linkOverrides?: {
     forumLab?: string;
     lanes?: string;
     tutor?: string;
-    dayHref?: (dayId: IntensiveDayId) => string;
     intensiveHub?: string;
-    resolveHref?: (href: string) => string;
   };
 }) {
-  const forumLabHref = linkOverrides?.forumLab ?? FORUM_TRANSCRIPT_LAB_HREF;
-  const lanesHref = linkOverrides?.lanes ?? DEBATE_WEEK_LANES_HUB_HREF;
-  const tutorHref = linkOverrides?.tutor ?? "/admin/intelligence/debate-prep-tutor";
-  const dayHref = linkOverrides?.dayHref ?? debateWeekIntensiveDayHref;
-  const intensiveHubHref = linkOverrides?.intensiveHub ?? DEBATE_WEEK_INTENSIVE_HUB_HREF;
-  const resolveHref = linkOverrides?.resolveHref ?? ((href: string) => href);
+  const electionPlan = surface === "election-plan";
+  const forumLabHref =
+    linkOverrides?.forumLab ?? (electionPlan ? EP_FORUM_TRANSCRIPT_LAB_HREF : FORUM_TRANSCRIPT_LAB_HREF);
+  const lanesHref = linkOverrides?.lanes ?? (electionPlan ? EP_DEBATE_PREP_LANES_HREF : DEBATE_WEEK_LANES_HUB_HREF);
+  const tutorHref =
+    linkOverrides?.tutor ?? (electionPlan ? EP_DEBATE_PREP_TUTOR_HREF : "/admin/intelligence/debate-prep-tutor");
+  const dayHref = electionPlan ? epDebatePrepDayHref : debateWeekIntensiveDayHref;
+  const intensiveHubHref =
+    linkOverrides?.intensiveHub ?? (electionPlan ? EP_DEBATE_PREP_HREF : DEBATE_WEEK_INTENSIVE_HUB_HREF);
+  const resolveHref = electionPlan ? mapAdminHrefToElectionPlan : (href: string) => href;
   const [activeDay, setActiveDay] = useState(initialDay);
   const plan = DEBATE_WEEK_INTENSIVE_DAYS.find((d) => d.day === activeDay)!;
   const deepOverlay = getDayDeepOverlay(plan.dayId as IntensiveDayId);

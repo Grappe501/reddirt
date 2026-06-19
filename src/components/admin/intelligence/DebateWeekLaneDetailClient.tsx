@@ -2,19 +2,21 @@
 
 import Link from "next/link";
 import { useCallback, useState } from "react";
+import { mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 import type { DrillDownLane } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
 
 export function DebateWeekLaneDetailClient({
   lane,
   initialDone,
   progressApiBase = "/api/admin/intelligence/debate-week-intensive/progress",
-  resolveHref = (href: string) => href,
+  surface = "admin",
 }: {
   lane: DrillDownLane;
   initialDone: boolean;
   progressApiBase?: string;
-  resolveHref?: (href: string) => string;
+  surface?: "admin" | "election-plan";
 }) {
+  const resolveHref = surface === "election-plan" ? mapAdminHrefToElectionPlan : (href: string) => href;
   const [done, setDone] = useState(initialDone);
 
   const toggle = useCallback(async () => {

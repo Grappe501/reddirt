@@ -6,14 +6,10 @@ import { DebatePrepInstructionPanel } from "@/components/election-plan/DebatePre
 import { DebateWeekIntensivePanel } from "@/components/admin/intelligence/DebateWeekIntensivePanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import {
-  EP_DEBATE_PREP_HREF,
-  EP_DEBATE_PREP_LANES_HREF,
-  EP_DEBATE_PREP_TUTOR_HREF,
   EP_EXECUTIVE_BOOK_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
   EP_OPPOSITION_RESEARCH_HREF,
 } from "@/lib/election-plan/debate-prep-links";
-import { epDebatePrepDayHref, mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
 import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
@@ -170,18 +166,7 @@ export function ElectionPlanDebatePrepHubPanel() {
       </section>
 
       <h2 className="mb-4 font-heading text-lg font-bold text-[var(--ep-navy)]">7-day command course</h2>
-      <DebateWeekIntensivePanel
-        linkOverrides={{
-          forumLab: EP_FORUM_TRANSCRIPT_LAB_HREF,
-          lanes: EP_DEBATE_PREP_LANES_HREF,
-          tutor: EP_DEBATE_PREP_TUTOR_HREF,
-          dayHref: epDebatePrepDayHref,
-          intensiveHub: EP_DEBATE_PREP_HREF,
-          resolveHref: mapAdminHrefToElectionPlan,
-        }}
-        initialDay={1}
-        todayDate={referenceDate}
-      />
+      <DebateWeekIntensivePanel surface="election-plan" initialDay={1} todayDate={referenceDate} />
 
       <section className="mt-10 grid gap-4 sm:grid-cols-2">
         <Link href={EP_OPPOSITION_RESEARCH_HREF} className="ep-card block p-5 transition hover:border-[var(--ep-gold)]">

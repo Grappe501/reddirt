@@ -12,7 +12,6 @@ import {
 } from "@/lib/election-plan/debate-prep-links";
 import {
   epDebatePrepDayHref,
-  epDebatePrepLaneHref,
   mapAdminHrefToElectionPlan,
 } from "@/lib/election-plan/debate-prep-route-map";
 import {
@@ -157,10 +156,7 @@ export default async function ElectionPlanDebatePrepDayPage({
             blocks={plan.blocks}
             initialProgress={progress}
             progressApiBase={EP_DEBATE_PREP_PROGRESS_API}
-            laneHrefFn={epDebatePrepLaneHref}
-            lanesHubHref={EP_DEBATE_PREP_LANES_HREF}
-            theoryHubHref={EP_DEBATE_PREP_LANES_HREF}
-            resolveHref={mapAdminHrefToElectionPlan}
+            surface="election-plan"
           />
         </div>
       </div>

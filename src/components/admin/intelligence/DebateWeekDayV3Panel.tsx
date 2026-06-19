@@ -2,6 +2,10 @@
 
 import Link from "next/link";
 import { useCallback, useState } from "react";
+import {
+  EP_DEBATE_PREP_LANES_HREF,
+} from "@/lib/election-plan/debate-prep-links";
+import { epDebatePrepLaneHref, mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 import type { IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import type { IntensiveBlock } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import {
@@ -32,9 +36,8 @@ type Props = {
   blocks: IntensiveBlock[];
   initialProgress: KellyDebateIntensiveProgress;
   progressApiBase?: string;
-  laneHrefFn?: (laneId: string) => string;
+  surface?: "admin" | "election-plan";
   lanesHubHref?: string;
-  resolveHref?: (href: string) => string;
   theoryHubHref?: string;
 };
 
@@ -43,11 +46,17 @@ export function DebateWeekDayV3Panel({
   blocks,
   initialProgress,
   progressApiBase = "/api/admin/intelligence/debate-week-intensive/progress",
-  laneHrefFn = debateWeekIntensiveLaneHref,
-  lanesHubHref = "/admin/intelligence/debate-week-intensive/lanes",
-  theoryHubHref = "/admin/intelligence/debate-week-intensive/theory",
-  resolveHref = (href: string) => href,
+  surface = "admin",
+  lanesHubHref,
+  theoryHubHref,
 }: Props) {
+  const electionPlan = surface === "election-plan";
+  const laneHrefFn = electionPlan ? epDebatePrepLaneHref : debateWeekIntensiveLaneHref;
+  const resolveHref = electionPlan ? mapAdminHrefToElectionPlan : (href: string) => href;
+  const lanesHub =
+    lanesHubHref ?? (electionPlan ? EP_DEBATE_PREP_LANES_HREF : "/admin/intelligence/debate-week-intensive/lanes");
+  const theoryHub =
+    theoryHubHref ?? (electionPlan ? EP_DEBATE_PREP_LANES_HREF : "/admin/intelligence/debate-week-intensive/theory");
   const [progress, setProgress] = useState(initialProgress);
   const overlay = getDayV3Overlay(dayId);
   const lanes = listDrillDownLanesForDay(dayId);
@@ -73,13 +82,13 @@ export function DebateWeekDayV3Panel({
         <p className="mt-2 text-sm text-kelly-inverse-soft">{overlay.pacingNote}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
-            href={lanesHubHref}
+            href={lanesHub}
             className="rounded-lg bg-indigo-500 px-3 py-1.5 text-xs font-bold uppercase text-white hover:bg-indigo-400"
           >
             All drill-down lanes
           </Link>
           <Link
-            href={theoryHubHref}
+            href={theoryHub}
             className="rounded-lg border border-indigo-300/50 px-3 py-1.5 text-xs font-bold uppercase text-indigo-200 hover:bg-white/5"
           >
             Theory library
