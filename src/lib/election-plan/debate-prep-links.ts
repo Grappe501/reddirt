@@ -15,6 +15,10 @@ export const EP_DEBATE_PREP_PSYCHOLOGY_HREF = "/election-plan/debate-prep/psycho
 export const EP_OPPOSITION_RESEARCH_HREF = "/election-plan/opposition-research";
 export const EP_EXECUTIVE_BOOK_HREF = "/election-plan/executive-book";
 
+export function epOppositionResearchModuleHref(moduleId: string): string {
+  return `${EP_OPPOSITION_RESEARCH_HREF}/${moduleId}`;
+}
+
 export const EP_FORUM_TRANSCRIPT_LAB_API = "/api/election-plan/forum-transcript-lab";
 export const EP_DEBATE_PREP_TUTOR_API = "/api/election-plan/debate-prep-tutor";
 export const EP_DEBATE_PREP_PROGRESS_API = "/api/election-plan/debate-week-intensive/progress";
