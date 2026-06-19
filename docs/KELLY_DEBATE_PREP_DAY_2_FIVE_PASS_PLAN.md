@@ -351,7 +351,7 @@ Passes 2 and 3 can run in parallel after Pass 1 if two builders coordinate; **Pa
 
 | Pass | Date | Commit | Notes |
 |------|------|--------|-------|
-| 1 | 2026-06-18 | (this pass) | Data spine: DAY2_ID, pathway, drill-down, static params |
+| 1 | 2026-06-18 | b64b60e1 | Data spine: DAY2_ID, pathway, drill-down, static params |
 | 2 | | | |
 | 3 | | | |
 | 4 | | | |
