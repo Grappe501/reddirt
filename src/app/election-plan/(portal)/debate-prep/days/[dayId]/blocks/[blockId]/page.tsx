@@ -9,15 +9,17 @@ import {
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { getDay1BlockStudy } from "@/lib/election-plan/debatePrepDay1BlockStudy";
+import { staticParamsForDayBlocks } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
-import { getDayBlockDrillDown, listDayBlocksDrillDown, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
+import { getDayBlockDrillDown, DAY1_ID, DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
-  return listDayBlocksDrillDown(DAY1_ID).map((b) => ({ dayId: DAY1_ID, blockId: b.blockId }));
+  return staticParamsForDayBlocks();
 }
 
 export default async function ElectionPlanDayBlockPage({
@@ -33,13 +35,15 @@ export default async function ElectionPlanDayBlockPage({
   const study = dayId === DAY1_ID ? getDay1BlockStudy(blockId) : undefined;
   const title = study?.studyGuideTitle ?? block.title;
   const eyebrow = study ? `Step · ~${block.minutes} min` : `Study block · ~${block.minutes} min`;
-  const pathwayStep = dayId === DAY1_ID ? getDay1PathwayStep(blockId) : undefined;
+  const pathwayStep =
+    dayId === DAY1_ID ? getDay1PathwayStep(blockId) : dayId === DAY2_ID ? getDay2PathwayStep(blockId) : undefined;
+  const dayLabel = dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : "Day";
 
   return (
     <ElectionPlanDrillDownShell
       backHref={epDebatePrepDayHref(dayId)}
-      backLabel="Day 1 pathway"
-      eyebrow={pathwayStep ? `Day 1 · ${eyebrow}` : eyebrow}
+      backLabel={`${dayLabel} pathway`}
+      eyebrow={pathwayStep ? `${dayLabel} · ${eyebrow}` : eyebrow}
       title={title}
       description={study?.overview ?? block.why}
       pageSummary={study?.professorLead ?? study?.overview}

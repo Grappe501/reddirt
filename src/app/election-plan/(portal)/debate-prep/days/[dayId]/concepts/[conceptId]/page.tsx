@@ -6,14 +6,15 @@ import {
   ElectionPlanDrillDownShell,
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
-import { getDayConcept, listDayConcepts, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayConcept } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { staticParamsForDayConcepts } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
-  return listDayConcepts(DAY1_ID).map((c) => ({ dayId: DAY1_ID, conceptId: c.id }));
+  return staticParamsForDayConcepts();
 }
 
 export default async function ElectionPlanDayConceptPage({

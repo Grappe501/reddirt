@@ -7,16 +7,15 @@ import {
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import {
   getDayMicroLessonDrillDown,
-  listDayMicroLessonsDrillDown,
-  DAY1_ID,
 } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { staticParamsForDayMicroLessons } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
-  return listDayMicroLessonsDrillDown(DAY1_ID).map((l) => ({ dayId: DAY1_ID, lessonId: l.id }));
+  return staticParamsForDayMicroLessons();
 }
 
 export default async function ElectionPlanDayMicroLessonPage({

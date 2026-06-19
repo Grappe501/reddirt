@@ -7,7 +7,8 @@ import {
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { getDayRehearsalScript, listDayRehearsalScripts, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayRehearsalScript, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { staticParamsForDayRehearsals } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
@@ -15,7 +16,7 @@ import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intell
 export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
-  return listDayRehearsalScripts(DAY1_ID).map((s) => ({ dayId: DAY1_ID, scriptId: s.id }));
+  return staticParamsForDayRehearsals();
 }
 
 export default async function ElectionPlanDayRehearsalPage({

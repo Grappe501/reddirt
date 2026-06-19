@@ -10,13 +10,14 @@ import {
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { getDay1OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay1OpponentExampleStudy";
 import { getDayExampleDrillDown, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { staticParamsForDayExamples } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
-  return [{ dayId: DAY1_ID, exampleId: "ex1-hammer-open" }];
+  return staticParamsForDayExamples();
 }
 
 export default async function ElectionPlanDayExamplePage({
