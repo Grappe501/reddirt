@@ -4,7 +4,6 @@ import type { ElectionPlanCity } from "@/lib/election-plan/types";
 import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { formatPercentIncrease, getCityVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
-import { cn } from "@/lib/utils";
 
 type Props = {
   cities: ElectionPlanCity[];
@@ -83,7 +82,7 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
         <div>
           <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">Priority cities</h1>
           <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-            {priorityCities.length} priority cities (Top 75) · ranked by vote target · bonus cities listed separately
+            {priorityCities.length} priority cities (Top 100) · ranked by vote target · bonus cities listed separately
           </p>
         </div>
         {standalone ? (
@@ -99,11 +98,11 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
       <div className="mb-8 ep-stat-grid">
         <div className="ep-stat">
           <div className="ep-stat-value">{priorityCities.length}</div>
-          <div className="ep-stat-label">Priority cities (Top 75)</div>
+          <div className="ep-stat-label">Priority cities (Top 100)</div>
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{formatVotes(combinedTargetVotes)}</div>
-          <div className="ep-stat-label">Top 75 combined target</div>
+          <div className="ep-stat-label">Top 100 combined target</div>
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{priorityCities.filter((c) => c.isTop10).length}</div>
@@ -121,7 +120,7 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
         <div className="mt-10">
           <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Bonus cushion cities</h2>
           <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-            Isolated KPI plans — not included in Top 75 combined vote target
+            Isolated KPI plans — not included in Top 100 combined vote target
           </p>
           <div className="mt-4 space-y-3">
             {bonus.map((city) => (

@@ -1,4 +1,5 @@
 import { ELECTION_PLAN_ARCHITECTURE } from "./electionPlanIndex";
+import type { ElectionPlanWorkbenchSnapshot } from "./types";
 
 export { ELECTION_PLAN_ARCHITECTURE };
 
@@ -33,4 +34,11 @@ export function formatPluralityRange(low: number, high: number): string {
 
 export function formatPct(n: number): string {
   return `${Math.round(n * 1000) / 10}%`;
+}
+
+/** Combined vote target for priority cities (Top 100 registry, with legacy fallbacks). */
+export function priorityCitiesCombinedTarget(
+  data: Pick<ElectionPlanWorkbenchSnapshot, "top100TargetVotes" | "top75TargetVotes" | "top40TargetVotes">,
+): number {
+  return data.top100TargetVotes ?? data.top75TargetVotes ?? data.top40TargetVotes;
 }

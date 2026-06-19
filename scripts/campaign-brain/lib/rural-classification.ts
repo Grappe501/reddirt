@@ -2,7 +2,7 @@
  * Rural strategy overlay — push routing toward stated rural-heavy campaign path.
  */
 
-import { ARKANSAS_TOP_75_CITIES } from "../../strategic-plan/data/arkansas-top-40-cities";
+import { ARKANSAS_TOP_100_CITIES } from "../../strategic-plan/data/arkansas-top-40-cities";
 
 export type RuralClass = "urban" | "mixed" | "rural";
 
@@ -14,11 +14,11 @@ export const RURAL_MULTIPLIER: Record<RuralClass, number> = {
 
 const URBAN_CORE = new Set(["Pulaski", "Benton", "Washington"]);
 
-const top75Counties = new Set(ARKANSAS_TOP_75_CITIES.map((c) => c.county));
+const top100Counties = new Set(ARKANSAS_TOP_100_CITIES.map((c) => c.county));
 
 export function classifyCounty(county: string, population2020: number): RuralClass {
   if (population2020 >= 100_000 || URBAN_CORE.has(county)) return "urban";
-  if (population2020 >= 25_000 || top75Counties.has(county)) return "mixed";
+  if (population2020 >= 25_000 || top100Counties.has(county)) return "mixed";
   return "rural";
 }
 

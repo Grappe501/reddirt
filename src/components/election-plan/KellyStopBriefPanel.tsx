@@ -1,7 +1,10 @@
 import Link from "next/link";
 
 import { getCountyPartyProfileBySlug } from "@/lib/election-plan/load-county-party-intelligence";
-import { getImmersionMissionForLocation } from "@/lib/election-plan/load-immersion-county-missions";
+import {
+  filterImmersionMissionForDisplay,
+  getImmersionMissionForLocation,
+} from "@/lib/election-plan/load-immersion-county-missions";
 import { getMissionProgress } from "@/lib/election-plan/load-immersion-mission-progress";
 import { MissionProgressPanel } from "@/components/election-plan/MissionProgressPanel";
 import type { StopCommandCenterView } from "@/lib/election-plan/forward-motion-stop-types";
@@ -27,10 +30,13 @@ function buildAfterLeave(view: StopCommandCenterView): string {
 
 export function KellyStopBriefPanel({ view }: Props) {
   const countyParty = view.countySlug ? getCountyPartyProfileBySlug(view.countySlug) : null;
-  const mission = getImmersionMissionForLocation({
-    countySlug: view.countySlug ?? undefined,
-    citySlug: view.cityBrief?.slug,
-  });
+  const mission = filterImmersionMissionForDisplay(
+    getImmersionMissionForLocation({
+      countySlug: view.countySlug ?? undefined,
+      citySlug: view.cityBrief?.slug,
+    }),
+    { surface: "stop-brief", citySlug: view.cityBrief?.slug },
+  );
   const progress = mission ? getMissionProgress(mission.id) : null;
 
   const whoMeeting = [

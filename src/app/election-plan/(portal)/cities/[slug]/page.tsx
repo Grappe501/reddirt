@@ -9,6 +9,7 @@ import { fieldEventsForLocation } from "@/lib/election-plan/location-calendar-in
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
 import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
+import { loadLocationFundraisingForCity } from "@/lib/election-plan/load-location-fundraising";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -53,9 +54,10 @@ export default async function CityLocationBriefPage({ params }: Props) {
     countyName: brief.county,
     referenceDate: data.executiveCalendar.referenceDate,
   });
-  const [fieldEntrySummary, operator] = await Promise.all([
+  const [fieldEntrySummary, operator, locationFundraising] = await Promise.all([
     loadFieldEntriesForLocation({ countySlug, citySlug: brief.slug }),
     loadCurrentElectionPlanOperator(),
+    loadLocationFundraisingForCity(brief.slug),
   ]);
 
   return (
@@ -74,6 +76,7 @@ export default async function CityLocationBriefPage({ params }: Props) {
             calendarBinding={calendarBinding}
             fieldEntrySummary={fieldEntrySummary}
             operatorInitials={operator?.initials ?? null}
+            locationFundraising={locationFundraising}
           />
         </div>
       </div>

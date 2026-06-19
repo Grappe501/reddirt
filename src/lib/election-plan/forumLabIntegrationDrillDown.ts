@@ -4,6 +4,7 @@
 import {
   EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
+  EP_OPPONENT_BIOS_HREF,
   EP_OPPOSITION_RESEARCH_HREF,
   epDebatePrepBriefingHref,
   epDebatePrepDayHref,
@@ -98,6 +99,7 @@ const ENRICHMENT: Record<
     ],
     relatedLinks: [
       { href: epDebatePrepDayHref("day-2-read-the-table"), label: "Command course · Day 2" },
+      { href: EP_OPPONENT_BIOS_HREF, label: "Opponent biographies · first read" },
       { href: epTrapLaneHref("experience-equals-sos-ready"), label: "Trap lane · experience" },
       { href: EP_FORUM_TRANSCRIPT_LAB_HREF, label: "Forum lab · speaker profiles" },
     ],
@@ -140,6 +142,7 @@ const ENRICHMENT: Record<
     ],
     relatedLinks: [
       { href: epDebatePrepDayHref("day-4-forum-intelligence"), label: "Command course · Day 4" },
+      { href: EP_OPPONENT_BIOS_HREF, label: "Opponent biographies · re-read" },
       { href: epDebatePrepBriefingHref("county-clerk-partnership"), label: "County clerk partnership briefing" },
       { href: EP_FORUM_TRANSCRIPT_LAB_HREF, label: "Forum transcript lab" },
     ],
@@ -176,6 +179,7 @@ const ENRICHMENT: Record<
     ],
     relatedLinks: [
       { href: epDebatePrepDayHref("day-6-full-simulation"), label: "Command course · Day 6" },
+      { href: EP_OPPONENT_BIOS_HREF, label: "Opponent biographies · lock-in" },
       { href: "/election-plan/debate-prep/war-room", label: "War room" },
     ],
   },

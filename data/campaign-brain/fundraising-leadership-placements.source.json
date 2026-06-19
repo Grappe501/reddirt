@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-19",
+  "note": "Explicit fundraising lead placements override interim resolution from strike teams and community workbench. Leave name empty to fall through to resolver. Status: assigned | recruiting | vacant.",
+  "openSlotDisplay": "OPEN",
+  "city": {},
+  "county": {},
+  "cluster": {}
+}

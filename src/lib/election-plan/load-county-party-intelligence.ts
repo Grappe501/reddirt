@@ -81,6 +81,17 @@ export function getCountyMeetingCandidates(): CountyMeetingCandidate[] {
   return (candidatesSource as { candidates: CountyMeetingCandidate[] }).candidates;
 }
 
+export function countyPartyMeetingEventId(slug: string, date: string): string {
+  return `county-party-${slug}-${date}`;
+}
+
+export function getProposedCountyPartyMeetingsForCounty(slug: string): CountyMeetingCandidate[] {
+  const today = new Date().toISOString().slice(0, 10);
+  return getCountyMeetingCandidates()
+    .filter((c) => c.slug === slug && c.status === "candidate" && c.date && c.date >= today)
+    .sort((a, b) => a.date.localeCompare(b.date));
+}
+
 export function getCountyMeetingCandidatesForCounty(slug: string): CountyMeetingCandidate[] {
   const today = new Date().toISOString().slice(0, 10);
   return getCountyMeetingCandidates().filter(

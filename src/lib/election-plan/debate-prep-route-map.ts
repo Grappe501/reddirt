@@ -18,6 +18,8 @@ import {
   epDebatePrepDayHref,
   epDebatePrepPsychologySectionHref,
   epDebateQuestionHref,
+  EP_OPPONENT_BIOS_HREF,
+  epOpponentBioHref,
   EP_OPPOSITION_RESEARCH_HREF,
   EP_TRAP_LANES_HREF,
   epDebateTechniqueHref,
@@ -68,6 +70,7 @@ const EXACT: Record<string, string> = {
   "/admin/intelligence/claims": EP_OPPOSITION_RESEARCH_HREF,
   "/admin/intelligence/election-funding": EP_OPPOSITION_RESEARCH_HREF,
   "/admin/intelligence/film-room": EP_FORUM_TRANSCRIPT_LAB_HREF,
+  "/admin/intelligence/opponent-bios": EP_OPPONENT_BIOS_HREF,
   "/admin/intelligence/kelly-debate-coaching": EP_DEBATE_PREP_TUTOR_HREF,
   "/admin/intelligence/kelly-prep-week": EP_DEBATE_PREP_HREF,
   "/admin/intelligence/top-tier-prep": EP_DEBATE_PREP_COMMAND_HREF,
@@ -131,6 +134,9 @@ export function mapAdminHrefToElectionPlan(href: string): string {
 
   const questionMatch = path.match(/^\/admin\/intelligence\/sos-debate-questions\/([^/]+)$/);
   if (questionMatch?.[1]) return epDebateQuestionHref(questionMatch[1]) + query;
+
+  const opponentBioMatch = path.match(/^\/admin\/intelligence\/opponents\/(kim-hammer|michael-packo)$/);
+  if (opponentBioMatch?.[1]) return epOpponentBioHref(opponentBioMatch[1]) + query;
 
   const dayMatch = path.match(/^\/admin\/intelligence\/debate-week-intensive\/([^/]+)$/);
   if (dayMatch?.[1] && INTENSIVE_DAY_IDS.has(dayMatch[1])) {

@@ -3,13 +3,15 @@ import Link from "next/link";
 import {
   countyPartiesHubHref,
   countyPartyDetailHref,
-  getCountyMeetingCandidatesForCounty,
+  countyPartyMeetingEventId,
   getCountyPartyIntelligenceRollup,
   getCountyPartyProfiles,
+  getProposedCountyPartyMeetingsForCounty,
   getRecommendedCountyPartyAction,
   getTopCountyMeetingQueue,
   type CountyPartyProfile,
 } from "@/lib/election-plan/load-county-party-intelligence";
+import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
 import { getCountyMeetingAssignment } from "@/lib/election-plan/load-county-meeting-assignments";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 
@@ -35,7 +37,7 @@ type Props = {
 };
 
 export function CountyPartyIntelligencePanel({ profile, variant = "panel", hidePlaybookLink = false }: Props) {
-  const meetings = getCountyMeetingCandidatesForCounty(profile.slug).filter((m) => m.status === "candidate");
+  const proposedMeetings = getProposedCountyPartyMeetingsForCounty(profile.slug);
   const action = getRecommendedCountyPartyAction(profile);
   const assignment = getCountyMeetingAssignment(profile.slug);
 
@@ -92,13 +94,24 @@ export function CountyPartyIntelligencePanel({ profile, variant = "panel", hideP
         </div>
       </div>
 
-      {meetings.length > 0 ? (
+      {proposedMeetings.length > 0 ? (
         <div className="mt-4">
           <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Next possible meeting dates (proposed)</p>
-          <ul className="mt-2 space-y-1 text-sm">
-            {meetings.slice(0, 5).map((m) => (
-              <li key={`${m.date}-${m.county}`}>
-                <strong>{m.date}</strong> · {m.timeLocal ?? "time TBD"} · {m.location ?? "location TBD"}
+          <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
+            Parsed from public ArkDems meeting rules · confirm by phone before locking Kelly or a surrogate on calendar
+          </p>
+          <ul className="mt-3 space-y-2 text-sm">
+            {proposedMeetings.map((m) => (
+              <li key={`${m.date}-${m.slug}`} className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[var(--ep-border)] pb-2 last:border-0">
+                <span>
+                  <strong>{m.date}</strong> · {m.timeLocal ?? "time TBD"} · {m.location ?? "location TBD"}
+                </span>
+                <Link
+                  href={forwardMotionStopHref(countyPartyMeetingEventId(m.slug, m.date))}
+                  className="text-xs font-semibold text-blue-700 hover:underline"
+                >
+                  Calendar queue →
+                </Link>
               </li>
             ))}
           </ul>

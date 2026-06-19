@@ -6,9 +6,10 @@ import { DebatePrepInstructionPanel } from "@/components/election-plan/DebatePre
 import { DebateWeekIntensivePanel } from "@/components/admin/intelligence/DebateWeekIntensivePanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import {
-  EP_EXECUTIVE_BOOK_HREF,
   EP_DEBATE_QUESTIONS_HREF,
+  EP_EXECUTIVE_BOOK_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
+  EP_OPPONENT_BIOS_HREF,
   EP_OPPOSITION_RESEARCH_HREF,
 } from "@/lib/election-plan/debate-prep-links";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
@@ -94,6 +95,19 @@ export function ElectionPlanDebatePrepHubPanel() {
         packageCompletenessPct={snapshot.packageCompletenessPct}
         packageLabel={DEBATE_PREP_PACKAGE_LABEL}
       />
+
+      <section className="ep-card mb-8 border-2 border-rose-300/50 p-5">
+        <p className="text-xs font-bold uppercase text-rose-900">Opponent biographies</p>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Full Hammer & Pakko bios — priorities, psychology, debate tells, command mode, and memory lines. Read at end of Day 2, re-read after Day 4 forum lab, lock in again on Day 6 before simulation.
+        </p>
+        <Link
+          href={EP_OPPONENT_BIOS_HREF}
+          className="mt-4 inline-block rounded-full bg-rose-900 px-4 py-2 text-xs font-bold text-white"
+        >
+          Open opponent bios →
+        </Link>
+      </section>
 
       <section className="ep-card mb-8 border-2 border-violet-300/50 p-5">
         <p className="text-xs font-bold uppercase text-violet-900">40 expected questions</p>

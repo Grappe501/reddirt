@@ -2,7 +2,7 @@
 
 > **Backward proof** (Phase 12) + **Forward motion** (Phase 13) = perceived statewide momentum.
 
-Updated: 2026-06-18
+Updated: 2026-06-19
 
 ## Mission
 
@@ -30,10 +30,10 @@ Arkansas is a relationship state. Voters need to repeatedly encounter evidence K
 
 | Metric | Count |
 | ------ | ----: |
-| Upcoming stops (90d horizon) | 79 |
-| Next 7 days | 10 |
-| Kelly assignment | 48 |
-| Verified | 77 |
+| Upcoming stops (90d horizon) | 264 |
+| Next 7 days | 15 |
+| Kelly assignment | 47 |
+| Verified | 74 |
 
 ## Objectives
 

@@ -1,6 +1,6 @@
 # Weekly Forward Motion Packet
 
-Generated: 2026-06-18
+Generated: 2026-06-19
 
 ## Summary
 
@@ -8,7 +8,7 @@ Generated: 2026-06-18
 | ---------- | ----------------: |
 | Kelly | 4 |
 | Surrogate | 0 |
-| County Team | 6 |
+| County Team | 11 |
 
 ## What must be approved
 
@@ -16,10 +16,10 @@ All public-facing pieces require human approval before release. Nothing in this 
 
 ## Missing promotion pieces (next 21 days)
 
-- River Valley Crawfish Festival: Mobilize draft
-- River Valley Crawfish Festival: Facebook draft
-- River Valley Crawfish Festival: News release
-- River Valley Crawfish Festival: Graphics request
+- Fulton County Fair: Mobilize draft
+- Fulton County Fair: Facebook draft
+- Fulton County Fair: News release
+- Fulton County Fair: Graphics request
 - Juneteenth in Little Rock: Mobilize draft
 - Juneteenth in Little Rock: Facebook draft
 - Juneteenth in Little Rock: News release
@@ -45,29 +45,6 @@ All public-facing pieces require human approval before release. Nothing in this 
 ---
 
 ## Kelly stops next week
-
-### River Valley Crawfish Festival
-
-| Field | Value |
-| ----- | ----- |
-| Event | River Valley Crawfish Festival |
-| County | Sebastian County |
-| City | Greenwood |
-| Date | 2026-06-18 |
-| Assignment | Kelly |
-| Score | 65 (impact 65) |
-| Verification | verified |
-| Mobilize | not_started |
-| Facebook | draft_needed |
-| News Release | draft_needed |
-| Graphic | needed |
-| Phone Bank | list_needed |
-| Postcard | not_started |
-| Canvass | future |
-| Door Hanger | future |
-| Story Plan | capture_plan_ready |
-| Readiness | 0% |
-| **Next Action** | Draft Mobilize event — human approval required before publish |
 
 ### Juneteenth in Little Rock
 
@@ -138,23 +115,16 @@ All public-facing pieces require human approval before release. Nothing in this 
 | Readiness | 0% |
 | **Next Action** | Draft Mobilize event — human approval required before publish |
 
-
-## Surrogate stops next week
-
-_None scheduled._
-
-## County team stops next week
-
-### Sixty-Eight Petit Jean Swap Meet & Car Show
+### Arkansas Folklife Festival
 
 | Field | Value |
 | ----- | ----- |
-| Event | Sixty-Eight Petit Jean Swap Meet & Car Show |
-| County | Conway County |
-| City | Morrilton |
-| Date | 2026-06-17 |
-| Assignment | County Team |
-| Score | 50 (impact 50) |
+| Event | Arkansas Folklife Festival |
+| County | Pulaski County |
+| City | North Little Rock |
+| Date | 2026-06-26 |
+| Assignment | Kelly |
+| Score | 65 (impact 65) |
 | Verification | verified |
 | Mobilize | not_started |
 | Facebook | draft_needed |
@@ -167,6 +137,13 @@ _None scheduled._
 | Story Plan | capture_plan_ready |
 | Readiness | 0% |
 | **Next Action** | Draft Mobilize event — human approval required before publish |
+
+
+## Surrogate stops next week
+
+_None scheduled._
+
+## County team stops next week
 
 ### Mountain Home Craft Fest
 
@@ -237,16 +214,16 @@ _None scheduled._
 | Readiness | 0% |
 | **Next Action** | Draft Mobilize event — human approval required before publish |
 
-### Montgomery County — AEA local / area meeting (verify schedule)
+### Buffalo River Elk Festival
 
 | Field | Value |
 | ----- | ----- |
-| Event | Montgomery County — AEA local / area meeting (verify schedule) |
-| County | Montgomery County |
-| City | TBD |
-| Date | 2026-06-17 |
+| Event | Buffalo River Elk Festival |
+| County | Newton County |
+| City | Jasper |
+| Date | 2026-06-26 |
 | Assignment | County Team |
-| Score | 7 (impact 9) |
+| Score | 28 (impact 28) |
 | Verification | verified |
 | Mobilize | not_started |
 | Facebook | not_started |
@@ -260,14 +237,152 @@ _None scheduled._
 | Readiness | 0% |
 | **Next Action** | Draft Mobilize event — human approval required before publish |
 
-### Montgomery county meeting
+### ArkDems · Craighead County Party Meeting
 
 | Field | Value |
 | ----- | ----- |
-| Event | Montgomery county meeting |
-| County | Montgomery County |
+| Event | ArkDems · Craighead County Party Meeting |
+| County | Craighead County |
+| City | Earl Bell Community Center |
+| Date | 2026-06-23 |
+| Assignment | County Team |
+| Score | 49 (impact 65) |
+| Verification | tentative |
+| Mobilize | not_started |
+| Facebook | not_started |
+| News Release | not_started |
+| Graphic | needed |
+| Phone Bank | list_needed |
+| Postcard | not_started |
+| Canvass | future |
+| Door Hanger | future |
+| Story Plan | not_started |
+| Readiness | 0% |
+| **Next Action** | Call county party chair and confirm meeting before scheduling Kelly or surrogate |
+
+### ArkDems · Lonoke County Party Meeting
+
+| Field | Value |
+| ----- | ----- |
+| Event | ArkDems · Lonoke County Party Meeting |
+| County | Lonoke County |
+| City | Cabot Public Library |
+| Date | 2026-06-25 |
+| Assignment | County Team |
+| Score | 49 (impact 65) |
+| Verification | tentative |
+| Mobilize | not_started |
+| Facebook | not_started |
+| News Release | not_started |
+| Graphic | needed |
+| Phone Bank | list_needed |
+| Postcard | not_started |
+| Canvass | future |
+| Door Hanger | future |
+| Story Plan | not_started |
+| Readiness | 0% |
+| **Next Action** | Call county party chair and confirm meeting before scheduling Kelly or surrogate |
+
+### ArkDems · Independence County Party Meeting
+
+| Field | Value |
+| ----- | ----- |
+| Event | ArkDems · Independence County Party Meeting |
+| County | Independence County |
+| City | US Pizza Batesville |
+| Date | 2026-06-23 |
+| Assignment | County Team |
+| Score | 38 (impact 50) |
+| Verification | tentative |
+| Mobilize | not_started |
+| Facebook | not_started |
+| News Release | not_started |
+| Graphic | needed |
+| Phone Bank | list_needed |
+| Postcard | not_started |
+| Canvass | future |
+| Door Hanger | future |
+| Story Plan | not_started |
+| Readiness | 0% |
+| **Next Action** | Call county party chair and confirm meeting before scheduling Kelly or surrogate |
+
+### ArkDems · Union County Party Meeting
+
+| Field | Value |
+| ----- | ----- |
+| Event | ArkDems · Union County Party Meeting |
+| County | Union County |
+| City | Simmons Bank Building |
+| Date | 2026-06-23 |
+| Assignment | County Team |
+| Score | 38 (impact 50) |
+| Verification | tentative |
+| Mobilize | not_started |
+| Facebook | not_started |
+| News Release | not_started |
+| Graphic | needed |
+| Phone Bank | list_needed |
+| Postcard | not_started |
+| Canvass | future |
+| Door Hanger | future |
+| Story Plan | not_started |
+| Readiness | 0% |
+| **Next Action** | Call county party chair and confirm meeting before scheduling Kelly or surrogate |
+
+### SOS debate - Annual Press Convention - Eureka Springs
+
+| Field | Value |
+| ----- | ----- |
+| Event | SOS debate - Annual Press Convention - Eureka Springs |
+| County | Carroll County |
 | City | TBD |
-| Date | 2026-06-17 |
+| Date | 2026-06-26 |
+| Assignment | County Team |
+| Score | 38 (impact 50) |
+| Verification | tentative |
+| Mobilize | not_started |
+| Facebook | not_started |
+| News Release | not_started |
+| Graphic | needed |
+| Phone Bank | list_needed |
+| Postcard | not_started |
+| Canvass | future |
+| Door Hanger | future |
+| Story Plan | not_started |
+| Readiness | 0% |
+| **Next Action** | Draft Mobilize event — human approval required before publish |
+
+### ArkDems · Drew County Party Meeting
+
+| Field | Value |
+| ----- | ----- |
+| Event | ArkDems · Drew County Party Meeting |
+| County | Drew County |
+| City | Wilmar Community Center |
+| Date | 2026-06-22 |
+| Assignment | County Team |
+| Score | 29 (impact 38) |
+| Verification | tentative |
+| Mobilize | not_started |
+| Facebook | not_started |
+| News Release | not_started |
+| Graphic | needed |
+| Phone Bank | list_needed |
+| Postcard | not_started |
+| Canvass | future |
+| Door Hanger | future |
+| Story Plan | not_started |
+| Readiness | 0% |
+| **Next Action** | Call county party chair and confirm meeting before scheduling Kelly or surrogate |
+
+### ArkDems · Searcy County Party Meeting
+
+| Field | Value |
+| ----- | ----- |
+| Event | ArkDems · Searcy County Party Meeting |
+| County | Searcy County |
+| City | Leslie Community Center |
+| Date | 2026-06-23 |
 | Assignment | County Team |
 | Score | 21 (impact 28) |
 | Verification | tentative |
@@ -281,5 +396,5 @@ _None scheduled._
 | Door Hanger | future |
 | Story Plan | not_started |
 | Readiness | 0% |
-| **Next Action** | Draft Mobilize event — human approval required before publish |
+| **Next Action** | Call county party chair and confirm meeting before scheduling Kelly or surrogate |
 

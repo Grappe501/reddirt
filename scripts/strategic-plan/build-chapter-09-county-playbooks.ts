@@ -8,7 +8,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { ARKANSAS_COUNTY_REGISTRY } from "../../src/lib/county/arkansas-county-registry";
-import { ARKANSAS_TOP_75_CITIES } from "./data/arkansas-top-40-cities";
+import { ARKANSAS_TOP_100_CITIES } from "./data/arkansas-top-40-cities";
 import { clusterForCounty } from "./data/opportunity-clusters";
 import {
   computeVictoryContributionIndex,
@@ -109,7 +109,7 @@ function buildPlaybook(params: {
       ? params.cities
           .map((c) => `- **${c.name}** — ${fmt(c.targetVotes)} target votes · ${c.influenceCategory}`)
           .join("\n")
-      : "- No Top 75 priority city — county-seat and community event focus";
+      : "- No Top 100 priority city — county-seat and community event focus";
 
   return `# ${params.county} County — Campaign Playbook
 
@@ -184,7 +184,7 @@ function buildPlaybook(params: {
 
 ---
 
-## Cities in county (Top 75 priority)
+## Cities in county (Top 100 priority)
 
 ${cityLines}
 
@@ -237,7 +237,7 @@ async function main() {
   }
 
   const cityVotesByCounty = new Map<string, number>();
-  for (const city of ARKANSAS_TOP_75_CITIES) {
+  for (const city of ARKANSAS_TOP_100_CITIES) {
     const row = citySummary.find((s) => s.name === city.name);
     const votes = row?.targetVotes ?? 0;
     cityVotesByCounty.set(city.county, (cityVotesByCounty.get(city.county) ?? 0) + votes);
@@ -347,7 +347,7 @@ async function main() {
       {
         generatedAt: new Date().toISOString(),
         formula:
-          "VCI = Lane 2 @ 50% + Registration Goal + GOP Conversion @ 12% + City Influence (Top 75 vote targets in county)",
+          "VCI = Lane 2 @ 50% + Registration Goal + GOP Conversion @ 12% + City Influence (Top 100 vote targets in county)",
         useCases: [
           "Candidate travel priority",
           "Staff deployment",

@@ -23,14 +23,11 @@
 | October | 2026-10-10 | $300 | Early voting · turnout · Arkansas-first leadership | not_started |
 | November | 2026-10-25 | $300 | Final GOTV · Election Day readiness | not_started |
 
-## Visit-adjacent placements (84 rural stops queued)
+## Visit-adjacent placements (222 rural stops queued)
 
 | Visit date | Event | County | Print | Radio | Next action |
 | ---------- | ----- | ------ | ----- | ----- | ----------- |
 | 2026-06-16 | Quitman fundraiser | Cleburne | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
-| 2026-06-17 | Sixty-Eight Petit Jean Swap Meet & Car Show | Conway | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
-| 2026-06-17 | Montgomery County — AEA local / area meeting (verify schedule) | Montgomery | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
-| 2026-06-17 | Montgomery county meeting | Montgomery | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
 | 2026-06-17 | Mt Ida community stop | Montgomery | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
 | 2026-06-18 | Rose Bud Summerfest | White | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
 | 2026-06-19 | Mountain Home Craft Fest | Baxter | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
@@ -40,41 +37,44 @@
 | 2026-06-19 | Mountain Home Craft Fest (Baxter) | Baxter | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
 | 2026-06-20 | Surf the Bay | Van Buren | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
 | 2026-06-21 | Benton County immersion | Benton | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
+| 2026-06-22 | ArkDems · Drew County Party Meeting | Drew | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
 | 2026-06-22 | Chamber luncheon — Rex Nelson | Pulaski | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
+| 2026-06-23 | ArkDems · Independence County Party Meeting | Independence | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
+| 2026-06-23 | ArkDems · Union County Party Meeting | Union | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
+| 2026-06-23 | ArkDems · Searcy County Party Meeting | Searcy | urgent_book | quote_urgent | Contact APA immediately — visit within lead window |
 | 2026-06-26 | Buffalo River Elk Festival | Newton | urgent_book | research_stations | Contact APA immediately — visit within lead window |
 | 2026-06-26 | SOS debate - Annual Press Convention - Eureka Springs | Carroll | urgent_book | research_stations | Contact APA immediately — visit within lead window |
 | 2026-06-26 | SOS Debate — Annual Press Convention | Carroll | urgent_book | research_stations | Contact APA immediately — visit within lead window |
+| 2026-06-27 | ArkDems · Yell County Party Meeting | Yell | urgent_book | research_stations | Contact APA immediately — visit within lead window |
 | 2026-06-27 | Pioneer Heritage Festival | Baxter | urgent_book | research_stations | Contact APA immediately — visit within lead window |
 | 2026-06-28 | Pulaski County Dems | Pulaski | urgent_book | research_stations | Contact APA immediately — visit within lead window |
 | 2026-06-28 | Volunteer leadership retreat | White | urgent_book | research_stations | Contact APA immediately — visit within lead window |
+| 2026-06-29 | ArkDems · Hempstead County Party Meeting | Hempstead | urgent_book | research_stations | Contact APA immediately — visit within lead window |
 | 2026-07-02 | Fulton County Freedom Festival | Fulton | quote_needed | research_stations | Request APA quote — 2 local papers · 1/8 page or best deal |
+| 2026-07-02 | ArkDems · Nevada County Party Meeting | Nevada | quote_needed | research_stations | Request APA quote — 2 local papers · 1/8 page or best deal |
 | 2026-07-03 | Sherwood Fireworks & Food Trucks | Pulaski | quote_needed | research_stations | Request APA quote — 2 local papers · 1/8 page or best deal |
 | 2026-07-04 | Freedom Fest on the Lake | Cleburne | quote_needed | research_stations | Request APA quote — 2 local papers · 1/8 page or best deal |
+| 2026-07-04 | ArkDems · Baxter County Party Meeting | Baxter | quote_needed | research_stations | Request APA quote — 2 local papers · 1/8 page or best deal |
 | 2026-07-04 | Clay County July 4 corridor | Clay | quote_needed | research_stations | Request APA quote — 2 local papers · 1/8 page or best deal |
 | 2026-07-04 | Heber Springs Freedom Fest / Heber fundraiser | Cleburne | quote_needed | research_stations | Request APA quote — 2 local papers · 1/8 page or best deal |
+| 2026-07-06 | ArkDems · Conway County Party Meeting | Conway | quote_needed | research_stations | Request APA quote — 2 local papers · 1/8 page or best deal |
+| 2026-07-06 | ArkDems · Miller County Party Meeting | Miller | quote_needed | research_stations | Request APA quote — 2 local papers · 1/8 page or best deal |
+| 2026-07-06 | ArkDems · Van Buren County Party Meeting | Van Buren | quote_needed | research_stations | Request APA quote — 2 local papers · 1/8 page or best deal |
+| 2026-07-08 | ArkDems · Ouachita County Party Meeting | Ouachita | planned | queued | Hold for APA visit-ad package when date firms up |
 | 2026-07-08 | Hot Spring County visit | Hot Spring | planned | queued | Hold for APA visit-ad package when date firms up |
+| 2026-07-09 | ArkDems · Crawford County Party Meeting | Crawford | planned | queued | Hold for APA visit-ad package when date firms up |
 | 2026-07-10 | Fulton County Fair | Fulton | planned | queued | Hold for APA visit-ad package when date firms up |
 | 2026-07-10 | Fulton County Fair | Fulton | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-11 | Heber 250 / Ozarks 250 Block Party | Washington | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-12 | Greene County immersion | Greene | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-14 | Nixon Flower Farm | Lonoke | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-16 | Johnson CO Peach Festival | Johnson | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-16 | Johnson County Peach Festival | Johnson | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-17 | Johnson County immersion | Johnson | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-20 | Faulkner County engagement | Faulkner | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-23 | Union County Fair | Union | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-23 | Union County Fair | Union | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-25 | Union County immersion | Union | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-07-31 | Sebastian County immersion | Sebastian | planned | queued | Hold for APA visit-ad package when date firms up |
-| 2026-08-05 | NWA Senior Dems | Washington | planned | queued | Hold for APA visit-ad package when date firms up |
+| 2026-07-11 | ArkDems · Fulton County Party Meeting | Fulton | planned | queued | Hold for APA visit-ad package when date firms up |
+| 2026-07-11 | ArkDems · Perry County Party Meeting | Perry | planned | queued | Hold for APA visit-ad package when date firms up |
 
 ## Summary
 
 | Metric | Count |
 | ------ | ----: |
-| Rural visits in queue | 84 |
-| Print urgent (≤14d lead) | 25 |
-| Radio research window (≤21d) | 25 |
+| Rural visits in queue | 222 |
+| Print urgent (≤14d lead) | 33 |
+| Radio research window (≤21d) | 33 |
 | LTE drafts needed | 6 |
 
 Rebuild: `npm run campaign-brain:apa-media:build`

@@ -4,6 +4,8 @@
  * SOS Debate · Annual Press Convention · Eureka Springs · 2026-06-26.
  */
 
+import { EP_OPPONENT_BIOS_HREF } from "@/lib/election-plan/debate-prep-links";
+
 export const DEBATE_WEEK_INTENSIVE_HUB_HREF = "/admin/intelligence/debate-week-intensive";
 export const FORUM_TRANSCRIPT_LAB_HREF = "/admin/intelligence/forum-transcript-lab";
 
@@ -192,6 +194,15 @@ export const DEBATE_WEEK_INTENSIVE_DAYS: IntensiveDayPlan[] = [
         activity: "Three-way geometry: where to look when Hammer and Pakko talk.",
         why: "Command Mode includes where your eyes go — never look rattled.",
       },
+      {
+        id: "b2-opponent-bios",
+        title: "Opponent biographies — first full read",
+        minutes: 60,
+        href: EP_OPPONENT_BIOS_HREF,
+        activity:
+          "Read full Kim Hammer bio (30 min), then full Dr. Michael Pakko bio (30 min). Priorities, psychology, tells, memory lines — nothing on stage should surprise you.",
+        why: "Understanding opponents is command — you anticipate rhythm before they speak.",
+      },
     ],
     opponentExamples: [
       {
@@ -322,6 +333,15 @@ export const DEBATE_WEEK_INTENSIVE_DAYS: IntensiveDayPlan[] = [
         activity: "Walk, hydrate, one 60s opening only — no new content.",
         why: "Sunday is ingest day — cognitive load from transcript, not new traps.",
       },
+      {
+        id: "b4-opponent-bios-reread",
+        title: "Opponent biographies — re-read after forum lab",
+        minutes: 45,
+        href: EP_OPPONENT_BIOS_HREF,
+        activity:
+          "Re-read both bios with forum notes in hand. Compare forecast sections to transcript — update capitalize triggers and memory lines.",
+        why: "Forum reality beats guesswork — engrave what they actually said.",
+      },
     ],
     opponentExamples: [
       {
@@ -415,6 +435,15 @@ export const DEBATE_WEEK_INTENSIVE_DAYS: IntensiveDayPlan[] = [
       "Run full simulation: opening, three trap lanes, five SOS questions, closing — staff plays Hammer and Pakko.",
     hoursTarget: 5,
     blocks: [
+      {
+        id: "b6-opponent-bios-lock",
+        title: "Opponent biographies — lock-in before simulation",
+        minutes: 30,
+        href: EP_OPPONENT_BIOS_HREF,
+        activity:
+          "Third read: memory lines + command mode sections only (15 min each opponent). Speak aloud until boring — then simulation.",
+        why: "Bios are muscle memory on stage night — not homework under lights.",
+      },
       {
         id: "b6-sim",
         title: "Full simulation block",
