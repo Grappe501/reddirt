@@ -284,6 +284,18 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
         commonMistakes: ["Watching without writing tells", "Trying to counter every line in the clip", "Ignoring Pakko because Hammer is louder"],
         stretchLaneId: "lane-d2-film-deep",
       },
+      {
+        blockId: "b2-opponent-bios",
+        adultEducationWhy:
+          "Deep opponent knowledge converts surprise into recognition — Kelly stays in command when Hammer and Pakko feel predictable.",
+        whatSuccessLooksLike:
+          "Both full bios read; three Hammer priorities and one Pakko respect line spoken without notes.",
+        commonMistakes: [
+          "Skipping Pakko because Hammer is louder",
+          "Reading bios before film room — tells land better after clips",
+          "Memorizing attack lines instead of command pivots",
+        ],
+      },
     ],
     drillDownLanes: [
       {
@@ -438,6 +450,17 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
         commonMistakes: ["Memorizing every quote", "Using unverified verbatim lines on stage", "Skipping deep analysis v2"],
         stretchLaneId: "lane-d4-lab-deep",
       },
+      {
+        blockId: "b4-opponent-bios-reread",
+        adultEducationWhy:
+          "Elaborative rehearsal — re-reading bios after forum ingest updates mental models with real words, not forecasts.",
+        whatSuccessLooksLike: "Five forum lines paired with bio forecast sections; memory lines adjusted if transcript differs.",
+        commonMistakes: [
+          "Re-reading before forum lab completes",
+          "Adding unverified forum quotes to memory lines",
+          "Skipping Pakko re-read",
+        ],
+      },
     ],
     drillDownLanes: [
       {
@@ -552,6 +575,17 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
     dayId: "day-6-full-simulation",
     pacingNote: "Fail in the room with staff, not on stage. No new material today.",
     blockExpansions: [
+      {
+        blockId: "b6-opponent-bios-lock",
+        adultEducationWhy:
+          "Spaced retrieval on Day 6 — memory lines and command mode only, after two prior reads, become automatic under sim stress.",
+        whatSuccessLooksLike: "Memory lines spoken twice per opponent; staff bait drill feels boring.",
+        commonMistakes: [
+          "Full dossier re-read instead of lock-in sections",
+          "Skipping Pakko respect line",
+          "Starting simulation without lock-in",
+        ],
+      },
       {
         blockId: "b6-sim",
         adultEducationWhy: "Stress inoculation — anxiety during simulation is the point.",

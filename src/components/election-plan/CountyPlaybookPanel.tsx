@@ -5,6 +5,7 @@ import { CountyPlaybookMissingPanel } from "@/components/election-plan/CountyPla
 import { CountyPlaybookMarkdownPanel } from "@/components/election-plan/CountyPlaybookMarkdownPanel";
 import { CountyFundraisingRollupPanel } from "@/components/election-plan/CountyFundraisingRollupPanel";
 import { CountyIntelligenceNav } from "@/components/election-plan/CountyIntelligenceNav";
+import { CountyMissionImpactPanel } from "@/components/election-plan/CountyMissionImpactPanel";
 import { CountyWorkbenchV3IntelPanel } from "@/components/election-plan/CountyWorkbenchV3IntelPanel";
 import { CountyWorkbenchV4OperationsPanel } from "@/components/election-plan/CountyWorkbenchV4OperationsPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
@@ -26,10 +27,14 @@ import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-te
 import type { LocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/types";
 import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
+import { countyPathToVictoryHref } from "@/lib/election-plan/path-to-victory-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { getCountyPartyProfileBySlug } from "@/lib/election-plan/load-county-party-intelligence";
-import { getImmersionMissionForCounty } from "@/lib/election-plan/load-immersion-county-missions";
+import {
+  filterImmersionMissionForDisplay,
+  getImmersionMissionForCounty,
+} from "@/lib/election-plan/load-immersion-county-missions";
 import { getSpecialKpiGoalForCounty } from "@/lib/election-plan/load-special-kpi-goals";
 import type { FosCountyRollup } from "@/lib/election-plan/load-fundraising-operating-system";
 import { COUNTY_COVERAGE_EXPLAINER } from "@/lib/election-plan/location-links";
@@ -100,7 +105,9 @@ export function CountyPlaybookPanel({
   const specialKpi = getSpecialKpiGoalForCounty(county.slug);
   const victoryTarget = getCountyVictoryTarget(county.county, county.tier);
   const countyParty = getCountyPartyProfileBySlug(county.slug);
-  const immersionMission = getImmersionMissionForCounty(county.slug);
+  const immersionMission = filterImmersionMissionForDisplay(getImmersionMissionForCounty(county.slug), {
+    surface: "county",
+  });
 
   return (
     <section>
@@ -239,11 +246,7 @@ export function CountyPlaybookPanel({
           </div>
         ) : null}
 
-        <div className="ep-card-glass mb-8 text-sm">
-          <p className="font-semibold text-[var(--ep-navy)]">{county.primaryMission}</p>
-          <p className="mt-1 text-[var(--ep-navy-muted)]">{county.secondaryMission}</p>
-          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{county.recommendedAction}</p>
-        </div>
+        <CountyMissionImpactPanel county={county} victoryTarget={victoryTarget} />
 
         {specialKpi ? (
           <div className="mb-8">
@@ -251,12 +254,27 @@ export function CountyPlaybookPanel({
           </div>
         ) : null}
 
-        {countyIntel?.campaignReasoning.pathToVictory ? (
-          <div className="ep-card mb-8 text-sm">
+        <div className="ep-card mb-8 border-l-4 border-[var(--ep-gold)] text-sm">
+          <div className="flex flex-wrap items-start justify-between gap-3">
             <h2 className="font-heading text-base font-bold text-[var(--ep-navy)]">Path to victory</h2>
-            <p className="mt-2 text-[var(--ep-navy-muted)]">{countyIntel.campaignReasoning.pathToVictory}</p>
+            <Link href={countyPathToVictoryHref(county.slug)} className="ep-chapter-link text-xs font-semibold">
+              Full drill-down →
+            </Link>
           </div>
-        ) : null}
+          {countyIntel?.campaignReasoning.pathToVictory ? (
+            <p className="mt-2 line-clamp-4 text-[var(--ep-navy-muted)]">{countyIntel.campaignReasoning.pathToVictory}</p>
+          ) : (
+            <p className="mt-2 text-[var(--ep-navy-muted)]">
+              Lane vote math, registration, house parties, fundraising, coalition frameworks, and weekly volunteer focus
+              for {county.county} County.
+            </p>
+          )}
+          {victoryTarget ? (
+            <div className="mt-3 border-t border-[var(--ep-border)] pt-3">
+              <CountyVictoryTargetsPanel target={victoryTarget} variant="inline" />
+            </div>
+          ) : null}
+        </div>
       </div>
 
       {fosCountyRollup ? (

@@ -12,6 +12,14 @@ export function countyRegistrationDashboardHref(countySlug: string): string {
   return `/election-plan/counties/${normalizeCountySlug(countySlug)}/registration-dashboard`;
 }
 
+export function countyPathToVictoryHref(countySlug: string): string {
+  return `/election-plan/counties/${normalizeCountySlug(countySlug)}/path-to-victory`;
+}
+
+export function cityPathToVictoryHref(citySlug: string): string {
+  return `/election-plan/cities/${citySlug}/path-to-victory`;
+}
+
 export const COUNTY_PLAYBOOK_EXECUTIVE_JUMP_LINKS = {
   pathToVictory: "/election-plan/executive-book/path-to-victory",
   countyVictoryTargets: "/election-plan/executive-book/county-victory-targets",

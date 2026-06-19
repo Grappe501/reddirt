@@ -1729,7 +1729,7 @@ function buildExecutiveBookHubSection(coverage: ReturnType<typeof buildCoverageR
           { label: "Fundraising model", value: "Open doors" },
         ];
       case "path-to-victory":
-        return [{ label: "Counties", value: "75" }, { label: "Priority cities", value: "75" }];
+        return [{ label: "Counties", value: "75" }, { label: "Priority cities", value: "100" }];
       case "leadership-development":
         return [
           { label: "Functions", value: String(ownership?.assignments?.length ?? 13) },
@@ -2066,6 +2066,7 @@ function main() {
   }>(path.join(PLAN, "part-ii-electoral-math/chapter-04-democratic-drop-off/statewide-drop-off-summary.json"));
 
   const citiesData = readJson<{
+    top100TargetVotes?: number;
     top75TargetVotes: number;
     top40TargetVotes: number;
     top10TargetVotes: number;
@@ -2264,7 +2265,7 @@ function main() {
         { label: "Democratic drop-off pool", value: fmt(dropOff?.totals.rawDropOff ?? 102_070) },
         { label: "Lane 2 @ 50% recovery", value: fmt(dropOff?.totals.recovery50Total ?? 51_051) },
         { label: "Registration goal", value: fmt(50_000) },
-        { label: "Top 75 city target", value: fmt(citiesData?.top75TargetVotes ?? citiesData?.top40TargetVotes ?? 0) },
+        { label: "Top 100 city target", value: fmt(citiesData?.top100TargetVotes ?? citiesData?.top75TargetVotes ?? citiesData?.top40TargetVotes ?? 0) },
         {
           label: "Verified events",
           value: `${brainHealth?.current.verifiedEvents ?? 3} / 300+`,
@@ -2287,7 +2288,7 @@ function main() {
         { label: "Democratic drop-off pool", value: fmt(dropOff?.totals.rawDropOff ?? 102_070) },
         { label: "Lane 2 @ 50% recovery", value: fmt(dropOff?.totals.recovery50Total ?? 51_051) },
         { label: "Registration goal", value: fmt(50_000) },
-        { label: "Top 75 city target", value: fmt(citiesData?.top75TargetVotes ?? citiesData?.top40TargetVotes ?? 0) },
+        { label: "Top 100 city target", value: fmt(citiesData?.top100TargetVotes ?? citiesData?.top75TargetVotes ?? citiesData?.top40TargetVotes ?? 0) },
         { label: "Top 10 city target", value: fmt(citiesData?.top10TargetVotes ?? 131_694) },
       ],
       brainStatus: "Operational — decision intelligence, routing, and weekly brief active.",
@@ -2346,7 +2347,8 @@ function main() {
     counties,
     cities: citiesData?.cities ?? [],
     top10TargetVotes: citiesData?.top10TargetVotes ?? 131_694,
-    top75TargetVotes: citiesData?.top75TargetVotes ?? citiesData?.top40TargetVotes ?? 207_507,
+    top100TargetVotes: citiesData?.top100TargetVotes ?? citiesData?.top75TargetVotes ?? citiesData?.top40TargetVotes ?? 207_507,
+    top75TargetVotes: citiesData?.top100TargetVotes ?? citiesData?.top75TargetVotes ?? citiesData?.top40TargetVotes ?? 207_507,
     top40TargetVotes: citiesData?.top40TargetVotes ?? 207_507,
     campaignBrain: {
       flow: "Strategic Plan → Campaign Brain → Weekly Execution",

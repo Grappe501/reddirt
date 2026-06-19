@@ -237,6 +237,35 @@ export function loadEventCandidates(): RawEventCandidate[] {
     }
   }
 
+  const partyMeetings = readJson<{
+    electionDay?: string;
+    candidates?: Array<{
+      county: string;
+      slug: string;
+      date: string;
+      timeLocal: string | null;
+      location: string | null;
+      status: string;
+      routingRecommendation: string;
+    }>;
+  }>(path.join(BRAIN_DATA, "county-party-intelligence/county-party-meeting-calendar.candidates.json"));
+
+  for (const m of partyMeetings?.candidates ?? []) {
+    if (m.status !== "candidate") continue;
+    const date = parseDate(m.date);
+    if (!date) continue;
+    const eventId = `county-party-${m.slug}-${date}`;
+    out.set(eventId, {
+      eventId,
+      eventName: `ArkDems · ${m.county} County Party Meeting`,
+      county: m.county,
+      city: m.location?.trim() || "County-wide",
+      date,
+      reconcileStatus: "needs_confirmation",
+      source: "county-party-meeting-candidates",
+    });
+  }
+
   return [...out.values()];
 }
 
@@ -271,7 +300,11 @@ export function buildActivationQueue(options: {
 
   const candidates = loadEventCandidates().filter((c) => {
     const d = daysFromToday(c.date);
-    return d >= 0 && d <= horizonDays && c.county;
+    if (!c.county) return false;
+    if (c.source === "county-party-meeting-candidates") {
+      return d >= 0;
+    }
+    return d >= 0 && d <= horizonDays;
   });
 
   const stops: UpcomingStopActivation[] = candidates.map((c) => {
@@ -330,7 +363,11 @@ export function buildActivationQueue(options: {
 
   for (const s of stops) {
     s.nextAction = nextActionFor(s);
-    if (s.verificationStatus === "verified" && s.effectiveScore >= 50) {
+    if (s.source === "county-party-meeting-candidates") {
+      s.nextAction = "Call county party chair and confirm meeting before scheduling Kelly or surrogate";
+      s.assignment = "County Team";
+      s.storyWorkflowStatus = "not_started";
+    } else if (s.verificationStatus === "verified" && s.effectiveScore >= 50) {
       s.storyWorkflowStatus = "capture_plan_ready";
       if (s.facebookStatus === "not_started") s.facebookStatus = "draft_needed";
     }

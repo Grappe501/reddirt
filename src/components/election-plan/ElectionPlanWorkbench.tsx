@@ -7,7 +7,7 @@ import type { CoalitionCommandHubView } from "@/lib/election-plan/community-work
 import type { ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
 import { FOUR_LANE_DEFINITIONS } from "@/lib/election-plan/four-lanes-labels";
 import { battlefieldClusterHref } from "@/lib/election-plan/battlefield-links";
-import { formatPct, formatBudget, formatVotes } from "@/lib/election-plan/electionPlanData";
+import { formatPct, formatBudget, formatVotes, priorityCitiesCombinedTarget } from "@/lib/election-plan/electionPlanData";
 import { countyVictoryTargetsExecutiveHref, getCountyVictoryTargetsRollup } from "@/lib/election-plan/load-county-victory-targets";
 import { CampaignFundraisingProgressCard } from "@/components/election-plan/CampaignFundraisingProgressCard";
 import { CoalitionCommandHubPanel } from "@/components/election-plan/CoalitionCommandHubPanel";
@@ -690,14 +690,14 @@ function CitiesPanel({ data }: SnapshotPanelProps) {
     <section>
       <SectionTitle
         title="Priority Cities"
-        subtitle={`${data.cities.filter((c) => !c.isBonusCity).length} priority cities · ${formatVotes(data.top75TargetVotes ?? data.top40TargetVotes)} combined vote target · each opens a location brief`}
+        subtitle={`${data.cities.filter((c) => !c.isBonusCity).length} priority cities · ${formatVotes(priorityCitiesCombinedTarget(data))} combined vote target · each opens a location brief`}
       />
       <p className="mb-6 text-sm">
         <Link href={locationBriefMasterPlanHref()} className="font-semibold text-[var(--ep-gold)] hover:underline">
           Location brief master plan →
         </Link>
       </p>
-      <CityStrategyList cities={data.cities} combinedTargetVotes={data.top75TargetVotes ?? data.top40TargetVotes} />
+      <CityStrategyList cities={data.cities} combinedTargetVotes={priorityCitiesCombinedTarget(data)} />
     </section>
   );
 }

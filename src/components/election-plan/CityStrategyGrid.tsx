@@ -10,6 +10,7 @@ type Props = {
   cities: ElectionPlanCity[];
   top10TargetVotes: number;
   top40TargetVotes: number;
+  top100TargetVotes?: number;
   top75TargetVotes?: number;
   initialTop10Only?: boolean;
 };
@@ -18,10 +19,11 @@ export function CityStrategyGrid({
   cities,
   top10TargetVotes,
   top40TargetVotes,
+  top100TargetVotes,
   top75TargetVotes,
   initialTop10Only = true,
 }: Props) {
-  const combinedTarget = top75TargetVotes ?? top40TargetVotes;
+  const combinedTarget = top100TargetVotes ?? top75TargetVotes ?? top40TargetVotes;
   const [showTop10Only, setShowTop10Only] = useState(initialTop10Only);
 
   const displayed = useMemo(
@@ -34,7 +36,7 @@ export function CityStrategyGrid({
       <div className="ep-stat-grid">
         <div className="ep-stat">
           <div className="ep-stat-value">{formatVotes(combinedTarget)}</div>
-          <div className="ep-stat-label">Top 75 target votes</div>
+          <div className="ep-stat-label">Top 100 target votes</div>
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{formatVotes(top10TargetVotes)}</div>
@@ -61,7 +63,7 @@ export function CityStrategyGrid({
             !showTop10Only ? "bg-[var(--ep-navy)] text-white" : "bg-[var(--ep-cream)]",
           )}
         >
-          All 75 cities
+          All 100 cities
         </button>
       </div>
 

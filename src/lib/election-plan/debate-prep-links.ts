@@ -10,6 +10,12 @@ export const EP_DEBATE_PREP_LANES_HREF = "/election-plan/debate-prep/lanes";
 export const EP_TRAP_LANES_HREF = "/election-plan/debate-prep/trap-lanes";
 export const EP_DEBATE_TECHNIQUES_HREF = "/election-plan/debate-prep/techniques";
 export const EP_FORUM_TRANSCRIPT_LAB_HREF = "/election-plan/debate-prep/forum-lab";
+export const EP_OPPONENT_BIOS_HREF = "/election-plan/debate-prep/opponent-bios";
+
+export function epOpponentBioHref(opponentId: string): string {
+  return `${EP_OPPONENT_BIOS_HREF}/${opponentId}`;
+}
+
 export const EP_DEBATE_QUESTIONS_HREF = "/election-plan/debate-prep/questions";
 export const EP_DEBATE_PREP_BRIEFINGS_HREF = "/election-plan/debate-prep/briefings";
 export const EP_DEBATE_PREP_PSYCHOLOGY_HREF = "/election-plan/debate-prep/psychology-manual";

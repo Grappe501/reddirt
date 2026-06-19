@@ -48,11 +48,45 @@ export function getImmersionMissionById(id: string): ImmersionCountyMission | un
   return file.missions.find((m) => m.id === id);
 }
 
+export const JACKSONVILLE_DD_MISSION_ID = "jacksonville-dd";
+
+export function isJacksonvilleDirectDemocracyMission(
+  mission: ImmersionCountyMission | undefined,
+): mission is ImmersionCountyMission {
+  return mission?.id === JACKSONVILLE_DD_MISSION_ID;
+}
+
+export type ImmersionMissionDisplaySurface =
+  | "city"
+  | "county"
+  | "hub"
+  | "dd-leadership"
+  | "stop-brief";
+
+/** Jacksonville DD hub card is Jacksonville-only — not a county or global template. */
+export function shouldShowJacksonvilleDirectDemocracyMission(context: {
+  surface: ImmersionMissionDisplaySurface;
+  citySlug?: string;
+}): boolean {
+  if (context.surface === "dd-leadership") return true;
+  if (context.surface === "city") return context.citySlug === "jacksonville";
+  return false;
+}
+
+export function filterImmersionMissionForDisplay(
+  mission: ImmersionCountyMission | undefined,
+  context: { surface: ImmersionMissionDisplaySurface; citySlug?: string },
+): ImmersionCountyMission | undefined {
+  if (!mission) return undefined;
+  if (isJacksonvilleDirectDemocracyMission(mission)) {
+    return shouldShowJacksonvilleDirectDemocracyMission(context) ? mission : undefined;
+  }
+  return mission;
+}
+
 export function getImmersionMissionForCounty(countySlug: string): ImmersionCountyMission | undefined {
   const slug = countySlug.toLowerCase();
-  const countyOnly = file.missions.find((m) => m.countySlug === slug && !m.citySlug);
-  if (countyOnly) return countyOnly;
-  return file.missions.find((m) => m.countySlug === slug);
+  return file.missions.find((m) => m.countySlug === slug && !m.citySlug);
 }
 
 /** City-specific missions (Quitman, Sherwood, Jacksonville) beat county-only missions. */

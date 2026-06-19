@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-18T21:53:26.468Z",
+  "generatedAt": "2026-06-19T06:15:41.118Z",
   "modelNote": "Scenario model for planning — not a forecast. Replace synthetic or partial inputs with official SOS / county results and registration goals as they are ingested.",
   "config": {
     "cushionPct": 0.0075,
@@ -2188,6 +2188,6 @@
     "Guardrail applied: Van Buren target capped at plausible share.",
     "Guardrail applied: Woodruff target capped at plausible share.",
     "Guardrail applied: Yell target capped at plausible share.",
-    "CountyCampaignStats unavailable; using staged JSON fallback (\nInvalid `prisma.countyCampaignStats.findMany()` invocation in\nH:\\SOSWebsite\\RedDirt\\src\\lib\\field-ops\\county-campaign-stats-source.ts:18:51\n\n  15   prisma: PrismaClient,\n  16 ): Promise<{ rows: CountyCampaignStatsSourceRow[]; warning?: string }> {\n  17   try {\n→ 18     const rows = await prisma.countyCampaignStats.findMany(\nCan't reach database server at `aws-1-us-east-1.pooler.supabase.com:5432`\n\nPlease make sure your database server is running at `aws-1-us-east-1.pooler.supabase.com:5432`.)."
+    "CountyCampaignStats unavailable; using staged JSON fallback (\nInvalid `prisma.countyCampaignStats.findMany()` invocation in\nH:\\SOSWebsite\\RedDirt\\src\\lib\\field-ops\\county-campaign-stats-source.ts:18:51\n\n  15   prisma: PrismaClient,\n  16 ): Promise<{ rows: CountyCampaignStatsSourceRow[]; warning?: string }> {\n  17   try {\n→ 18     const rows = await prisma.countyCampaignStats.findMany(\nError occurred during query execution:\nConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(PostgresError { code: \"42883\", message: \"operator does not exist: uuid = text\", severity: \"ERROR\", detail: None, column: None, hint: Some(\"No operator matches the given name and argument types. You might need to add explicit type casts.\") }), transient: false }))."
   ]
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updatedAt": "2026-06-16",
-  "note": "Bonus city workbenches ranked after Top 75 priority list. KPIs are isolated — never roll into top75TargetVotes or statewide lane totals.",
+  "note": "Bonus city workbenches ranked after Top 100 priority list. KPIs are isolated — never roll into top100TargetVotes or statewide lane totals.",
   "cities": [
     {
       "slug": "quitman",

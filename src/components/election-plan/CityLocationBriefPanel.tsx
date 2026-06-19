@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { CityElectionIntelPanel } from "@/components/election-plan/CityElectionIntelPanel";
+import { LocationFundraisingPanel } from "@/components/election-plan/LocationFundraisingPanel";
 import { CityVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
@@ -20,11 +21,16 @@ import {
   countyPlaybookHref,
   locationBriefMasterPlanHref,
 } from "@/lib/election-plan/location-links";
+import { cityPathToVictoryHref } from "@/lib/election-plan/path-to-victory-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
+import type { LocationFundraisingView } from "@/lib/election-plan/load-location-fundraising";
 import { getCityVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { getSpecialKpiGoalForCity } from "@/lib/election-plan/load-special-kpi-goals";
 import { getCityElectionIntel } from "@/lib/election-plan/load-city-election-intel";
-import { getImmersionMissionForLocation } from "@/lib/election-plan/load-immersion-county-missions";
+import {
+  filterImmersionMissionForDisplay,
+  getImmersionMissionForLocation,
+} from "@/lib/election-plan/load-immersion-county-missions";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -43,6 +49,7 @@ type Props = {
   calendarBinding: LocationCalendarBinding;
   fieldEntrySummary?: FieldEntryLocationSummary;
   operatorInitials?: string | null;
+  locationFundraising?: LocationFundraisingView | null;
 };
 
 function statusClass(status: CityLocationBrief["status"]) {
@@ -72,6 +79,7 @@ export function CityLocationBriefPanel({
   calendarBinding,
   fieldEntrySummary,
   operatorInitials,
+  locationFundraising,
 }: Props) {
   const countyHref = countyPlaybookHref(brief.county, countySlug);
   const specialKpi = getSpecialKpiGoalForCity(brief.slug);
@@ -84,7 +92,10 @@ export function CityLocationBriefPanel({
     voteGain: brief.voteGain,
     isTop10: brief.isTop10,
   });
-  const immersionMission = getImmersionMissionForLocation({ countySlug, citySlug: brief.slug });
+  const immersionMission = filterImmersionMissionForDisplay(
+    getImmersionMissionForLocation({ countySlug, citySlug: brief.slug }),
+    { surface: "city", citySlug: brief.slug },
+  );
   const cityElectionIntel = getCityElectionIntel(brief.slug);
 
   return (
@@ -106,6 +117,11 @@ export function CityLocationBriefPanel({
 
       <div className="mb-8">
         <CityVictoryTargetsPanel target={cityVictory} variant="hero" />
+        <div className="mt-3 flex justify-end">
+          <Link href={cityPathToVictoryHref(brief.slug)} className="ep-chapter-link text-sm font-semibold">
+            Path to victory drill-down →
+          </Link>
+        </div>
       </div>
 
       {cityElectionIntel ? <CityElectionIntelPanel intel={cityElectionIntel} /> : null}
@@ -174,6 +190,8 @@ export function CityLocationBriefPanel({
           </div>
         </div>
       ) : null}
+
+      {locationFundraising ? <LocationFundraisingPanel fundraising={locationFundraising} /> : null}
 
       {strikeTeam ? (
         <div className="mb-8">

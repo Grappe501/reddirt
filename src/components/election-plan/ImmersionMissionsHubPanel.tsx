@@ -5,10 +5,11 @@ import {
   getAllImmersionCountyMissions,
   getImmersionDoctrineHref,
   getImmersionOperatingPrinciple,
+  JACKSONVILLE_DD_MISSION_ID,
 } from "@/lib/election-plan/load-immersion-county-missions";
 
 export function ImmersionMissionsHubPanel() {
-  const missions = getAllImmersionCountyMissions();
+  const missions = getAllImmersionCountyMissions().filter((m) => m.id !== JACKSONVILLE_DD_MISSION_ID);
 
   return (
     <section>
@@ -23,6 +24,17 @@ export function ImmersionMissionsHubPanel() {
         <Link href={getImmersionDoctrineHref()} className="font-semibold text-[var(--ep-navy)] hover:underline">
           Read full doctrine →
         </Link>
+      </p>
+      <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
+        Jacksonville Direct Democracy Leadership Hub is on the{" "}
+        <Link href="/election-plan/cities/jacksonville" className="font-semibold underline">
+          Jacksonville city brief
+        </Link>{" "}
+        and{" "}
+        <Link href="/election-plan/direct-democracy/leadership" className="font-semibold underline">
+          Direct Democracy leadership
+        </Link>{" "}
+        pages only — not a global county template.
       </p>
 
       <div className="mt-8 space-y-8">

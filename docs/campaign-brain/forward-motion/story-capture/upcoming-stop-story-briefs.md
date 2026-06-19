@@ -1,11 +1,11 @@
 # Upcoming Stop Story Briefs
 
-## River Valley Crawfish Festival · 2026-06-18
+## Fulton County Fair · 2026-07-10
 
 - **Local business angle:** TBD — identify on arrival
 - **Community person angle:** TBD
 - **Faith/civic angle:** event-dependent
-- **County issue angle:** Lane 2 recovery + registration
+- **County issue angle:** Coverage + volunteer build
 - **Photo/video checklist:** vertical clip · carousel · B-roll
 - **Substack follow-up:** within 7 days
 - **Status:** capture_plan_ready
@@ -100,16 +100,6 @@
 - **Substack follow-up:** within 7 days
 - **Status:** capture_plan_ready
 
-## Sixty-Eight Petit Jean Swap Meet & Car Show · 2026-06-17
-
-- **Local business angle:** TBD — identify on arrival
-- **Community person angle:** TBD
-- **Faith/civic angle:** event-dependent
-- **County issue angle:** Relationship + persuasion
-- **Photo/video checklist:** vertical clip · carousel · B-roll
-- **Substack follow-up:** within 7 days
-- **Status:** capture_plan_ready
-
 ## Mountain Home Craft Fest · 2026-06-19
 
 - **Local business angle:** TBD — identify on arrival
@@ -160,6 +150,16 @@
 - **Substack follow-up:** within 7 days
 - **Status:** not_started
 
+## Fulton County Fair · 2026-07-10
+
+- **Local business angle:** TBD — identify on arrival
+- **Community person angle:** TBD
+- **Faith/civic angle:** event-dependent
+- **County issue angle:** Coverage + volunteer build
+- **Photo/video checklist:** vertical clip · carousel · B-roll
+- **Substack follow-up:** within 7 days
+- **Status:** not_started
+
 ## Buffalo River Elk Festival · 2026-06-26
 
 - **Local business angle:** TBD — identify on arrival
@@ -170,12 +170,72 @@
 - **Substack follow-up:** within 7 days
 - **Status:** not_started
 
-## Montgomery County — AEA local / area meeting (verify schedule) · 2026-06-17
+## ArkDems · Craighead County Party Meeting · 2026-06-23
 
 - **Local business angle:** TBD — identify on arrival
 - **Community person angle:** TBD
 - **Faith/civic angle:** event-dependent
-- **County issue angle:** Maintenance + presence
+- **County issue angle:** Lane 2 recovery + registration
+- **Photo/video checklist:** vertical clip · carousel · B-roll
+- **Substack follow-up:** within 7 days
+- **Status:** not_started
+
+## ArkDems · Lonoke County Party Meeting · 2026-06-25
+
+- **Local business angle:** TBD — identify on arrival
+- **Community person angle:** TBD
+- **Faith/civic angle:** event-dependent
+- **County issue angle:** Lane 2 recovery + registration
+- **Photo/video checklist:** vertical clip · carousel · B-roll
+- **Substack follow-up:** within 7 days
+- **Status:** not_started
+
+## ArkDems · Pulaski County Party Meeting · 2026-06-29
+
+- **Local business angle:** TBD — identify on arrival
+- **Community person angle:** TBD
+- **Faith/civic angle:** event-dependent
+- **County issue angle:** Lane 2 recovery + registration
+- **Photo/video checklist:** vertical clip · carousel · B-roll
+- **Substack follow-up:** within 7 days
+- **Status:** not_started
+
+## ArkDems · White County Party Meeting · 2026-07-02
+
+- **Local business angle:** TBD — identify on arrival
+- **Community person angle:** TBD
+- **Faith/civic angle:** event-dependent
+- **County issue angle:** Lane 2 recovery + registration
+- **Photo/video checklist:** vertical clip · carousel · B-roll
+- **Substack follow-up:** within 7 days
+- **Status:** not_started
+
+## ArkDems · Faulkner County Party Meeting · 2026-07-06
+
+- **Local business angle:** TBD — identify on arrival
+- **Community person angle:** TBD
+- **Faith/civic angle:** event-dependent
+- **County issue angle:** Lane 2 recovery + registration
+- **Photo/video checklist:** vertical clip · carousel · B-roll
+- **Substack follow-up:** within 7 days
+- **Status:** not_started
+
+## ArkDems · Independence County Party Meeting · 2026-06-23
+
+- **Local business angle:** TBD — identify on arrival
+- **Community person angle:** TBD
+- **Faith/civic angle:** event-dependent
+- **County issue angle:** Relationship + persuasion
+- **Photo/video checklist:** vertical clip · carousel · B-roll
+- **Substack follow-up:** within 7 days
+- **Status:** not_started
+
+## ArkDems · Union County Party Meeting · 2026-06-23
+
+- **Local business angle:** TBD — identify on arrival
+- **Community person angle:** TBD
+- **Faith/civic angle:** event-dependent
+- **County issue angle:** Relationship + persuasion
 - **Photo/video checklist:** vertical clip · carousel · B-roll
 - **Substack follow-up:** within 7 days
 - **Status:** not_started
@@ -186,16 +246,6 @@
 - **Community person angle:** TBD
 - **Faith/civic angle:** event-dependent
 - **County issue angle:** Relationship + persuasion
-- **Photo/video checklist:** vertical clip · carousel · B-roll
-- **Substack follow-up:** within 7 days
-- **Status:** not_started
-
-## Montgomery county meeting · 2026-06-17
-
-- **Local business angle:** TBD — identify on arrival
-- **Community person angle:** TBD
-- **Faith/civic angle:** event-dependent
-- **County issue angle:** Maintenance + presence
 - **Photo/video checklist:** vertical clip · carousel · B-roll
 - **Substack follow-up:** within 7 days
 - **Status:** not_started
