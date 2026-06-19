@@ -1,6 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import {
+  EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF,
+  EP_FORUM_LAB_INTEGRATION_HREF,
+  epForumLabIntegrationDayHref,
+} from "@/lib/election-plan/debate-prep-links";
 import type { ForumDeepAnalysis, ForumTranscriptLabRecord } from "@/lib/intelligence/v4/forumTranscriptLab";
 
 type Props = {
@@ -8,6 +14,8 @@ type Props = {
   openaiConfigured?: boolean;
   /** API root without trailing slash — defaults to admin intelligence route. */
   apiBase?: string;
+  /** When election-plan, 7-day integration cards link to drill-down routes. */
+  surface?: "admin" | "election-plan";
 };
 
 const DEFAULT_FORUM_LAB_API = "/api/admin/intelligence/forum-transcript-lab";
@@ -16,6 +24,7 @@ export function ForumTranscriptLabClient({
   initialRecord,
   openaiConfigured = false,
   apiBase = DEFAULT_FORUM_LAB_API,
+  surface = "admin",
 }: Props) {
   const [record, setRecord] = useState(initialRecord);
   const [title, setTitle] = useState(initialRecord.title);
@@ -378,12 +387,18 @@ export function ForumTranscriptLabClient({
         </section>
       ) : null}
 
-      {deepAnalysis ? <DeepAnalysisSection deep={deepAnalysis} /> : null}
+      {deepAnalysis ? <DeepAnalysisSection deep={deepAnalysis} surface={surface} /> : null}
     </div>
   );
 }
 
-function DeepAnalysisSection({ deep }: { deep: ForumDeepAnalysis }) {
+function DeepAnalysisSection({
+  deep,
+  surface,
+}: {
+  deep: ForumDeepAnalysis;
+  surface: "admin" | "election-plan";
+}) {
   return (
     <section className="space-y-6">
       <article className="rounded-xl border-2 border-violet-500/40 bg-violet-950 p-5 text-violet-50">
@@ -450,17 +465,54 @@ function DeepAnalysisSection({ deep }: { deep: ForumDeepAnalysis }) {
 
       {deep.sevenDayIntegration.length > 0 ? (
         <article className="rounded-xl border border-emerald-200 bg-emerald-50/40 p-5">
-          <h3 className="font-heading text-lg font-bold text-emerald-950">7-day integration map</h3>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            {deep.sevenDayIntegration.map((d) => (
-              <div key={d.dayNumber} className="rounded-lg border border-emerald-200 bg-white p-3 text-xs">
-                <p className="font-bold text-kelly-navy">
-                  Day {d.dayNumber}: {d.dayTitle}
-                </p>
-                <p className="mt-1 text-kelly-muted">{d.useThisIntel}</p>
-                <p className="mt-2 font-bold text-emerald-900">Drill: {d.drillTonight}</p>
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <h3 className="font-heading text-lg font-bold text-emerald-950">7-day integration map</h3>
+            {surface === "election-plan" ? (
+              <div className="flex flex-wrap gap-2 text-xs font-bold">
+                <Link
+                  href={EP_FORUM_LAB_INTEGRATION_HREF}
+                  className="rounded-full border border-emerald-700 px-3 py-1 text-emerald-900 hover:bg-white"
+                >
+                  Integration hub →
+                </Link>
+                <Link
+                  href={EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF}
+                  className="rounded-full border border-emerald-700 px-3 py-1 text-emerald-900 hover:bg-white"
+                >
+                  Election law study →
+                </Link>
               </div>
-            ))}
+            ) : null}
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {deep.sevenDayIntegration.map((d) => {
+              const cardBody = (
+                <>
+                  <p className="font-bold text-kelly-navy">
+                    Day {d.dayNumber}: {d.dayTitle}
+                  </p>
+                  <p className="mt-1 text-kelly-muted">{d.useThisIntel}</p>
+                  <p className="mt-2 font-bold text-emerald-900">Drill: {d.drillTonight}</p>
+                </>
+              );
+              if (surface === "election-plan") {
+                return (
+                  <Link
+                    key={d.dayNumber}
+                    href={epForumLabIntegrationDayHref(d.dayNumber)}
+                    className="block rounded-lg border border-emerald-200 bg-white p-3 text-xs transition hover:border-emerald-500 hover:shadow-sm"
+                  >
+                    {cardBody}
+                    <p className="mt-2 text-[11px] font-bold uppercase tracking-wide text-emerald-700">Drill down →</p>
+                  </Link>
+                );
+              }
+              return (
+                <div key={d.dayNumber} className="rounded-lg border border-emerald-200 bg-white p-3 text-xs">
+                  {cardBody}
+                </div>
+              );
+            })}
           </div>
         </article>
       ) : null}

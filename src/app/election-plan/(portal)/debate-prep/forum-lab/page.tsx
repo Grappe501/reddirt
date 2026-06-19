@@ -6,6 +6,10 @@ import { ForumTranscriptLabClient } from "@/components/admin/intelligence/ForumT
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import { EP_FORUM_TRANSCRIPT_LAB_API } from "@/lib/election-plan/debate-prep-links";
+import {
+  EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF,
+  EP_FORUM_LAB_INTEGRATION_HREF,
+} from "@/lib/election-plan/debate-prep-links";
 import { ACCA_2026_SOS_FORUM_DROP_REL, ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 import { loadForumTranscriptLab } from "@/lib/intelligence/v4/forumTranscriptLab";
 import { isOpenAIConfigured } from "@/lib/openai/client";
@@ -35,6 +39,20 @@ export default function ElectionPlanForumTranscriptLabPage() {
               Upload the three-candidate forum video, transcribe with AI, and build Kelly&apos;s capitalize playbook for the
               SOS debate.
             </p>
+            <div className="mt-4 flex flex-wrap gap-2 text-xs font-bold">
+              <Link
+                href={EP_FORUM_LAB_INTEGRATION_HREF}
+                className="rounded-full border border-[var(--ep-navy)] px-3 py-1 text-[var(--ep-navy)] hover:bg-[var(--ep-cream)]"
+              >
+                7-day integration map →
+              </Link>
+              <Link
+                href={EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF}
+                className="rounded-full border border-[var(--ep-navy)] px-3 py-1 text-[var(--ep-navy)] hover:bg-[var(--ep-cream)]"
+              >
+                Current election law study →
+              </Link>
+            </div>
           </header>
 
           <AccaForumYoutubeEmbed />
@@ -58,6 +76,7 @@ export default function ElectionPlanForumTranscriptLabPage() {
             initialRecord={record}
             openaiConfigured={isOpenAIConfigured()}
             apiBase={EP_FORUM_TRANSCRIPT_LAB_API}
+            surface="election-plan"
           />
 
           <p className="mt-8 text-xs text-[var(--ep-navy-muted)]">

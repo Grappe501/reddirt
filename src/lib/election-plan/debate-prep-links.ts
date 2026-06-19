@@ -64,3 +64,14 @@ export function epDebatePrepDayMicroLessonHref(dayId: string, lessonId: string):
 export function epDebatePrepDayDrillHref(dayId: string, drillId: string): string {
   return `${epDebatePrepDayHref(dayId)}/drills/${drillId}`;
 }
+
+export const EP_FORUM_LAB_INTEGRATION_HREF = `${EP_FORUM_TRANSCRIPT_LAB_HREF}/integration`;
+export const EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF = `${EP_FORUM_TRANSCRIPT_LAB_HREF}/election-law-study`;
+
+export function epForumLabIntegrationDayHref(dayNumber: number): string {
+  return `${EP_FORUM_LAB_INTEGRATION_HREF}/${dayNumber}`;
+}
+
+export function epForumLabElectionLawTopicHref(topicId: string): string {
+  return `${EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF}/${topicId}`;
+}
