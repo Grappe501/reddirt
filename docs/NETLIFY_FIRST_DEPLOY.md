@@ -106,7 +106,7 @@ After scoping: **Deploys → Clear cache and deploy site**.
 
 ### Build log checks
 
-1. **`Lambda env check`** — should show runtime estimate **under ~3 KB**. If it fails, follow the printed var list.
+1. **`Lambda env check`** — runtime user env should be **under ~3 KB**. A **compat-mode note** about `FEATURE_FLAGS` (~9 KB, Netlify-internal) is OK when runtime is under cap — deploy still proceeds; contact Netlify only if upload fails.
 2. **`Prune server handler (pre-deploy)`** — measured size must stay **under 245 MB**.
 3. **`Lambda deploy env check`** (plugin) — repeats the scoping checklist before upload.
 

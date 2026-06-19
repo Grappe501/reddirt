@@ -138,16 +138,17 @@ function getDeployRiskMessage({ total, totalRaw, featureFlags, rows, buildOnlyLe
     );
   }
 
-  if (onNetlify && ffBytes >= LAMBDA_ENV_LIMIT_BYTES) {
-    fail = true;
-    lines.push(
-      `FEATURE_FLAGS is ${ffBytes} B — exceeds AWS 4 KB env cap alone (Lambda compatibility mode). Ask Netlify support for modern Functions runtime, or scope all build-only vars to Builds only.`,
-    );
-  } else if (onNetlify && ffBytes > 0 && total + ffBytes > LAMBDA_ENV_LIMIT_BYTES) {
-    fail = true;
-    lines.push(
-      `Deploy env budget ${total + ffBytes} B (runtime ${total} B + FEATURE_FLAGS ${ffBytes} B) exceeds AWS 4 KB cap. Scope NEXT_PUBLIC_*, PRISMA_*, NODE_OPTIONS to Builds only in Netlify UI; see docs/NETLIFY_FIRST_DEPLOY.md §6.`,
-    );
+  if (onNetlify && ffBytes > 0 && total + ffBytes > LAMBDA_ENV_LIMIT_BYTES) {
+    if (total >= LAMBDA_ENV_LIMIT_BYTES) {
+      fail = true;
+      lines.push(
+        `Runtime env ${total} B exceeds AWS Lambda 4 KB cap before platform flags. Scope NEXT_PUBLIC_*, PRISMA_*, NODE_OPTIONS to Builds only in Netlify UI; see docs/NETLIFY_FIRST_DEPLOY.md §6.`,
+      );
+    } else {
+      lines.push(
+        `FEATURE_FLAGS ${ffBytes} B is Netlify-internal (not user-scoped). Runtime user env ${total} B is within cap — deploy proceeds. If upload fails with Invalid AWS Lambda parameters on legacy compatibility mode, ask Netlify support for modern Functions runtime.`,
+      );
+    }
   } else if (onNetlify && total >= WARN_BYTES && total + FEATURE_FLAGS_TYPICAL_BYTES > LAMBDA_ENV_LIMIT_BYTES) {
     lines.push(
       `Warning: runtime ${total} B is high; on Lambda compatibility mode, platform FEATURE_FLAGS (~9 KB) causes deploy failure. Scope build-only vars to Builds only.`,
