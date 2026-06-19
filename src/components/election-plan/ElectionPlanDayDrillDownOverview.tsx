@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import {
   ElectionPlanDay1ContinueButton,
   ElectionPlanDay1PathwayPanel,
@@ -7,7 +5,7 @@ import {
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import { DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
-import { useKellyDay1StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
+import { isKellyDay1StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import type { IntensiveDayId, IntensiveDayPlan } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { dayHasDrillDownPages } from "@/lib/election-plan/debatePrepDayDrillDown";
@@ -25,7 +23,7 @@ export function ElectionPlanDayDrillDownOverview({
 }) {
   if (!dayHasDrillDownPages(dayId)) return null;
 
-  const streamlined = useKellyDay1StreamlinedPath() && dayId === DAY1_ID;
+  const streamlined = isKellyDay1StreamlinedPath() && dayId === DAY1_ID;
   const day1Audiences = dayId === DAY1_ID ? resolveAudiencesForHooks(["lane-2", "county-champion", "author-vs-administrator"]) : [];
 
   if (streamlined) {

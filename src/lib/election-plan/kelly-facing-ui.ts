@@ -14,7 +14,7 @@ export function showFullDebatePrepSubnav(): boolean {
 }
 
 /** Kelly Day 1 — linear pathway, not concept rabbit holes */
-export function useKellyDay1StreamlinedPath(): boolean {
+export function isKellyDay1StreamlinedPath(): boolean {
   return KELLY_FACING_ELECTION_PLAN;
 }
 

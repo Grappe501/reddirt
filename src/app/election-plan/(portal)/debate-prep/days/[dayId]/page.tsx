@@ -7,7 +7,7 @@ import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { getFirstDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { dayHasDrillDownPages, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { EP_DEBATE_PREP_HREF } from "@/lib/election-plan/debate-prep-links";
-import { useKellyDay1StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
+import { isKellyDay1StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import {
   DEBATE_WEEK_INTENSIVE_DAY_IDS,
   getDebateWeekIntensiveDay,
@@ -34,7 +34,7 @@ export default async function ElectionPlanDebatePrepDayPage({
   if (!DEBATE_WEEK_INTENSIVE_DAY_IDS.includes(dayId as IntensiveDayId)) notFound();
 
   const plan = getDebateWeekIntensiveDay(dayId as IntensiveDayId)!;
-  const streamlinedDay1 = useKellyDay1StreamlinedPath() && dayId === DAY1_ID;
+  const streamlinedDay1 = isKellyDay1StreamlinedPath() && dayId === DAY1_ID;
   const firstStep = dayId === DAY1_ID ? getFirstDay1PathwayStep() : null;
 
   return (
