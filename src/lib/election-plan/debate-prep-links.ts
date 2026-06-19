@@ -26,6 +26,16 @@ export function epOppositionResearchModuleHref(moduleId: string): string {
   return `${EP_OPPOSITION_RESEARCH_HREF}/${moduleId}`;
 }
 
+export const EP_LEGISLATIVE_INTEL_HREF = "/election-plan/debate-prep/legislative-intel";
+
+export function epLegislativeIntel2021Href(): string {
+  return `${EP_LEGISLATIVE_INTEL_HREF}/2021-integrity`;
+}
+
+export function epLegislativeIntel2025Href(): string {
+  return `${EP_LEGISLATIVE_INTEL_HREF}/2025-direct-democracy`;
+}
+
 export const EP_FORUM_TRANSCRIPT_LAB_API = "/api/election-plan/forum-transcript-lab";
 export const EP_DEBATE_PREP_TUTOR_API = "/api/election-plan/debate-prep-tutor";
 export const EP_DEBATE_PREP_PROGRESS_API = "/api/election-plan/debate-week-intensive/progress";

@@ -1,4 +1,5 @@
 import { DebatePrepGuideLinkText } from "@/components/election-plan/DebatePrepGuideLinkText";
+import { showOperatorGuides } from "@/lib/election-plan/kelly-facing-ui";
 import type { OperatorGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 
 type Props = {
@@ -50,6 +51,8 @@ function DepthListBlock({
 }
 
 export function DebatePrepOperatorGuideCard({ title, guide }: Props) {
+  if (!showOperatorGuides()) return null;
+
   const hasDepth =
     guide.whatToExpectPlain ||
     (guide.howHeWillAttack?.length ?? 0) > 0 ||

@@ -11,6 +11,7 @@ import { CountyWorkbenchV4OperationsPanel } from "@/components/election-plan/Cou
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { CountyVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { CountyPartyIntelligencePanel } from "@/components/election-plan/CountyPartyIntelligencePanel";
+import { VoterFileCountyIntelSection } from "@/components/election-plan/VoterFileLocationIntelPanel";
 import { ImmersionCountyMissionCard } from "@/components/election-plan/ImmersionCountyMissionCard";
 import { CountyNetworkingContactsPanel } from "@/components/election-plan/CountyNetworkingContactsPanel";
 import { CountyRegistrationAllocationPanel } from "@/components/election-plan/CountyRegistrationAllocationPanel";
@@ -245,6 +246,8 @@ export function CountyPlaybookPanel({
             <CountyPartyIntelligencePanel profile={countyParty} hidePlaybookLink />
           </div>
         ) : null}
+
+        <VoterFileCountyIntelSection countySlug={county.slug} countyName={county.county} />
 
         <CountyMissionImpactPanel county={county} victoryTarget={victoryTarget} />
 

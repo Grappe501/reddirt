@@ -197,6 +197,46 @@ const TOPICS: ElectionLawStudyTopic[] = [
     relatedTopicIds: ["county-implementation-burden"],
   },
   {
+    id: "2025-direct-democracy-cluster",
+    title: "2025 direct democracy / petition cluster",
+    summary:
+      "Hammer's 2025 bills add friction to initiatives and referendums — frame as continuity from 2021, not a fresh security pivot.",
+    sections: [
+      {
+        heading: "Package pattern",
+        body:
+          "Five primary-sponsored bills (Acts 218, 240, 241, 274, 768) touch signature verification, canvasser registration, petition restrictions, and ballot title rules. Verify each on Arkleg before citing on stage.",
+      },
+      {
+        heading: "Kelly frame",
+        body:
+          "Arkansas voters cherish ballot measures. SOS protects lawful signatures with transparent rules — courts resolve fights; the Secretary of State administers the process fairly.",
+      },
+      {
+        heading: "Continuity trap",
+        body:
+          "When Hammer says 2025 is a new start, pivot to 2021: six election bills already shifted county burden. Ask what changed for clerks besides more paperwork.",
+      },
+    ],
+    anchorBills: [
+      { billNumber: "SB207", label: "Act 218", note: "Petition signature verification" },
+      { billNumber: "SB208", label: "Act 240", note: "Canvasser registration" },
+      { billNumber: "SB210", label: "Act 274", note: "Petition process restrictions" },
+      { billNumber: "SB211", label: "Act 241", note: "Ballot title / summary rules" },
+      { billNumber: "SB296", label: "Act 768", note: "Package capstone — verify text" },
+    ],
+    debateLines: [
+      "Arkansas voters cherish ballot measures — I'll protect lawful signatures with transparent rules, not slogans.",
+      "You sponsored six election bills in 2021 and petition bills in 2025 — what changed for county clerks?",
+    ],
+    claimsGate: [
+      "Verify act numbers on Arkleg before stage.",
+      "No fraud statistics without sourced data.",
+      "Do not sound anti-petition or anti-direct-democracy.",
+    ],
+    relatedTopicIds: ["2021-integrity-package", "sos-role-vs-legislature"],
+  },
+  {
     id: "claims-gate-and-sources",
     title: "Claims gate & sources",
     summary:
@@ -233,6 +273,7 @@ export function getElectionLawStudyHub(): ElectionLawStudyHub {
     studyOrder: [
       "sos-role-vs-legislature",
       "2021-integrity-package",
+      "2025-direct-democracy-cluster",
       "county-implementation-burden",
       "anchor-bills-sb250-act350",
       "complaints-and-enforcement-act279",

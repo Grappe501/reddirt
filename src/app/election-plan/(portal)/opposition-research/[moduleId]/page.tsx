@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { ElectionPlanOppositionResearchModulePanel } from "@/components/election-plan/ElectionPlanOppositionResearchModulePanel";
 import { EP_OPPOSITION_RESEARCH_HREF } from "@/lib/election-plan/debate-prep-links";
 import {
@@ -53,6 +54,9 @@ export default async function ElectionPlanOppositionResearchModulePage({
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{mod.title}</h1>
             <p className="mt-3 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{mod.summary}</p>
           </header>
+          {(moduleId === "integrity-foundation-2021" || moduleId === "direct-democracy") ? null : (
+            <KellyPageSummary summary={mod.summary} />
+          )}
           <ElectionPlanOppositionResearchModulePanel module={mod} />
         </div>
       </div>

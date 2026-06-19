@@ -18,7 +18,11 @@ import { getKimHammerV4ModuleEntry } from "@/lib/intelligence/kimHammerV4ModuleR
 import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getPrepSectionGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
-import { loadKimHammerIntegrityFoundation2021 } from "@/lib/opposition/kimHammerLegislativeNarratives";
+import { LegislativeIntelDrillDownPanel } from "@/components/election-plan/LegislativeIntelDrillDownPanel";
+import {
+  getLegislativeIntel2021Page,
+  getLegislativeIntel2025Page,
+} from "@/lib/election-plan/legislative-intel-drill-down";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import {
   OPPONENT_DOSSIER_SECTIONS,
@@ -226,56 +230,11 @@ export function ElectionPlanOppositionResearchModulePanel({ module }: { module: 
     }
 
     case "integrity-foundation-2021": {
-      const guide = getSurfaceGuide("integrity2021");
-      const pkg = v4.integrity2021;
-      const detail = loadKimHammerIntegrityFoundation2021();
-      return (
-        <div className="space-y-6">
-          {guide ? <DebatePrepOperatorGuideCard title="2021 integrity foundation" guide={guide} /> : null}
-          {pkg ? (
-            <article className="ep-card border-violet-200 bg-violet-50/40 p-5 text-sm">
-              <p className="text-xs font-bold uppercase text-violet-950">Plain English</p>
-              <p className="mt-3 leading-relaxed text-violet-950">{pkg.plainEnglishSummary}</p>
-            </article>
-          ) : null}
-          <article className="ep-card p-5 text-sm">
-            <h3 className="text-xs font-bold uppercase text-[var(--ep-navy)]">Package bills</h3>
-            <ul className="mt-3 space-y-2 font-mono text-xs">
-              {detail.billNumbers.map((bill, i) => (
-                <li key={bill}>
-                  {bill}
-                  {detail.actNumbers[i] != null ? ` → Act ${detail.actNumbers[i]}` : ""}
-                </li>
-              ))}
-            </ul>
-          </article>
-          {pkg?.narrativeArc.length ? (
-            <article className="ep-card p-5 text-sm">
-              <h3 className="text-xs font-bold uppercase text-[var(--ep-navy)]">Narrative arc</h3>
-              <ul className="mt-3 list-inside list-disc space-y-1 text-[var(--ep-navy-muted)]">
-                {pkg.narrativeArc.map((line) => (
-                  <li key={line.slice(0, 48)}>{line}</li>
-                ))}
-              </ul>
-            </article>
-          ) : null}
-          {pkg?.strategicBriefing ? (
-            <article className="ep-card p-5 text-sm">
-              <h3 className="text-xs font-bold uppercase text-emerald-900">Kelly message help</h3>
-              <p className="mt-2 text-[var(--ep-navy-muted)]">{pkg.strategicBriefing.kellyMessageHelp}</p>
-              <p className="mt-3 text-xs text-amber-900">When not to use: {pkg.strategicBriefing.whenNotToUse}</p>
-            </article>
-          ) : null}
-          <nav className="flex flex-wrap gap-2 text-xs font-bold">
-            <Link href={epTrapLaneHref("2021-vs-2025-pivot")} className="rounded-full border border-violet-300 px-3 py-1">
-              Trap lane · 2021 vs 2025 →
-            </Link>
-            <Link href={EP_DEBATE_TECHNIQUES_HREF} className="rounded-full border border-[var(--ep-border)] px-3 py-1">
-              Techniques library →
-            </Link>
-          </nav>
-        </div>
-      );
+      return <LegislativeIntelDrillDownPanel page={getLegislativeIntel2021Page()} />;
+    }
+
+    case "direct-democracy": {
+      return <LegislativeIntelDrillDownPanel page={getLegislativeIntel2025Page()} />;
     }
 
     case "claims-ledger": {
@@ -379,7 +338,7 @@ export function ElectionPlanOppositionResearchModulePanel({ module }: { module: 
       return (
         <article className="ep-card p-5 text-sm text-[var(--ep-navy-muted)]">
           <p>{module.summary}</p>
-          <p className="mt-3">Staff module — full workbench content migrates in a future pass.</p>
+          <p className="mt-3">Reference module — open linked study guides from Debate Prep when available.</p>
           <Link href={EP_EXECUTIVE_BOOK_HREF} className="mt-4 inline-block text-xs font-bold underline">
             Executive Book crosswalk →
           </Link>

@@ -2,28 +2,24 @@ import Link from "next/link";
 import "server-only";
 
 import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
-import { DebatePrepInstructionPanel } from "@/components/election-plan/DebatePrepInstructionPanel";
 import { DebateWeekIntensivePanel } from "@/components/admin/intelligence/DebateWeekIntensivePanel";
+import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import {
   EP_DEBATE_QUESTIONS_HREF,
-  EP_EXECUTIVE_BOOK_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
+  EP_LEGISLATIVE_INTEL_HREF,
   EP_OPPONENT_BIOS_HREF,
-  EP_OPPOSITION_RESEARCH_HREF,
+  epLegislativeIntel2021Href,
+  epLegislativeIntel2025Href,
 } from "@/lib/election-plan/debate-prep-links";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
 import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
 import { EP_DEBATE_PREP_WAR_ROOM_HREF } from "@/lib/election-plan/debate-prep-links";
 import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
-import { ACCA_2026_SOS_FORUM_DROP_REL, ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
-
-const statusStyles = {
-  ready: "border-emerald-300 bg-emerald-50/60 text-emerald-950",
-  "in-progress": "border-amber-300 bg-amber-50/60 text-amber-950",
-  "not-started": "border-[var(--ep-border)] bg-white text-[var(--ep-navy-muted)]",
-} as const;
+import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
+import { showPlatformMeta } from "@/lib/election-plan/kelly-facing-ui";
 
 export function ElectionPlanDebatePrepHubPanel() {
   const referenceDate = process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
@@ -55,12 +51,24 @@ export function ElectionPlanDebatePrepHubPanel() {
       <ElectionPlanDebatePrepSubnav />
 
       <header className="mb-8">
-        <p className="text-xs font-bold uppercase tracking-[0.24em] text-[var(--ep-gold)]">
-          Debate prep · {snapshot.version}
-        </p>
-        <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{snapshot.headline}</h1>
+        <h1 className="font-heading text-3xl font-bold text-[var(--ep-navy)]">Debate prep</h1>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--ep-navy-muted)]">{snapshot.intro}</p>
       </header>
+
+      <KellyPageSummary summary="Tonight: rehearse your opening, know Hammer's 2021 and 2025 election bills, and practice one agree-and-add pivot on county clerks. Everything else is reference — open only what you need." />
+
+      <section className="mb-8 grid gap-4 sm:grid-cols-2">
+        <Link href={epLegislativeIntel2021Href()} className="ep-card block border-violet-200 bg-violet-50/40 p-5 transition hover:border-violet-400">
+          <p className="text-xs font-bold uppercase text-violet-950">Must read</p>
+          <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">2021 integrity bills</h2>
+          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">Six bills Hammer sponsored — your continuity trap anchor.</p>
+        </Link>
+        <Link href={epLegislativeIntel2025Href()} className="ep-card block border-amber-200 bg-amber-50/40 p-5 transition hover:border-amber-400">
+          <p className="text-xs font-bold uppercase text-amber-950">Must read</p>
+          <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">2025 direct democracy bills</h2>
+          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">Petition restrictions — honor Arkansas ballot measures.</p>
+        </Link>
+      </section>
 
       <section className="ep-card mb-8 grid gap-6 border-2 border-[var(--ep-gold)]/30 bg-[var(--ep-cream)]/40 p-6 lg:grid-cols-[1fr_2fr]">
         <div>
@@ -68,11 +76,7 @@ export function ElectionPlanDebatePrepHubPanel() {
           <p className="mt-2 font-heading text-5xl font-bold text-[var(--ep-navy)]">{snapshot.readinessPct}%</p>
           <p className="mt-1 text-sm font-semibold text-[var(--ep-navy)]">{snapshot.readinessLabel}</p>
           <p className="mt-4 text-xs text-[var(--ep-navy-muted)]">
-            Debate day: <span className="font-semibold text-[var(--ep-navy)]">{snapshot.debateDate}</span>
-          </p>
-          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
-            {snapshot.worldClass.countdownLabel} · {snapshot.worldClass.compositeReadinessScore}% composite ·{" "}
-            {snapshot.wiredSurfaceCount} wired surfaces
+            Debate: <span className="font-semibold text-[var(--ep-navy)]">{snapshot.debateDate}</span>
           </p>
           <div className="mt-4 h-2 overflow-hidden rounded-full bg-[var(--ep-border)]">
             <div
@@ -84,9 +88,11 @@ export function ElectionPlanDebatePrepHubPanel() {
         <div>
           <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Tonight&apos;s focus</p>
           <p className="mt-2 text-sm font-semibold text-[var(--ep-navy)]">
-            {snapshot.todayFocus ?? "Open command home for tonight's briefing."}
+            {snapshot.todayFocus ?? "Open the 7-day course below and start tonight's day."}
           </p>
-          <p className="mt-4 text-[10px] font-bold uppercase text-amber-900">{snapshot.governance}</p>
+          {showPlatformMeta() ? (
+            <p className="mt-4 text-[10px] font-bold uppercase text-amber-900">{snapshot.governance}</p>
+          ) : null}
         </div>
       </section>
 
@@ -123,10 +129,9 @@ export function ElectionPlanDebatePrepHubPanel() {
       </section>
 
       <section className="ep-card mb-8 border-2 border-[var(--ep-gold)]/40 p-5">
-        <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">v8 · War room</p>
+        <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">War room</p>
         <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-          8-dimension radar · 8 prep modes · pile-on scenarios · quotable bank · psychology stack ·{" "}
-          {snapshot.worldClass.worldClassDressCardCount} dress-rehearsal cards.
+          Readiness radar, dress-rehearsal cards, and trap-lane practice.
         </p>
         <Link
           href={EP_DEBATE_PREP_WAR_ROOM_HREF}
@@ -136,80 +141,29 @@ export function ElectionPlanDebatePrepHubPanel() {
         </Link>
       </section>
 
-      <DebatePrepInstructionPanel />
-
       <ForumTranscriptIntelHubPanel intel={snapshot.forumIntel} />
 
-      <section className="mb-10">
-        <h2 className="mb-4 font-heading text-lg font-bold text-[var(--ep-navy)]">Modules</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {snapshot.modules.map((mod) => (
-            <Link
-              key={mod.id}
-              href={mod.href}
-              className={`ep-card block p-5 transition hover:border-[var(--ep-gold)] ${statusStyles[mod.status]}`}
-            >
-              <div className="flex items-start justify-between gap-2">
-                <p className="text-xs font-bold uppercase tracking-wide">{mod.label}</p>
-                <span className="shrink-0 rounded-full border border-current px-2 py-0.5 text-[10px] font-bold uppercase">
-                  {mod.status.replace("-", " ")}
-                </span>
-              </div>
-              <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{mod.tagline}</p>
-              {mod.statusNote ? (
-                <p className="mt-3 text-xs font-medium text-[var(--ep-navy)]">{mod.statusNote}</p>
-              ) : null}
-              {mod.lane === "staff" ? (
-                <p className="mt-2 text-[10px] font-bold uppercase text-rose-700">Staff lane</p>
-              ) : null}
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="ep-card mb-8 border-2 border-[var(--ep-gold)]/40 bg-[var(--ep-cream)]/50 p-5">
-        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)]">ACCA three-candidate forum · local drop</p>
+      <section className="ep-card mb-8 p-5">
+        <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">ACCA forum recording</p>
         <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-          {ACCA_2026_SOS_FORUM_EVENT.title} — {ACCA_2026_SOS_FORUM_EVENT.date} · {ACCA_2026_SOS_FORUM_EVENT.venue}
-        </p>
-        <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
-          Candidates: {ACCA_2026_SOS_FORUM_EVENT.candidates.join(" · ")}
+          {ACCA_2026_SOS_FORUM_EVENT.title} — {ACCA_2026_SOS_FORUM_EVENT.date}
         </p>
         <AccaForumYoutubeEmbed compact />
-        <div className="mt-4 rounded-lg border border-[var(--ep-border)] bg-white p-4">
-          <p className="text-xs font-semibold text-[var(--ep-navy)]">Drop your MP4 here (7.5 GB OK on disk)</p>
-          <code className="mt-2 block break-all text-[11px] text-[var(--ep-navy-muted)]">
-            RedDirt/{ACCA_2026_SOS_FORUM_DROP_REL.replace(/\\/g, "/")}/
-          </code>
-          <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
-            Large files: run{" "}
-            <code className="rounded bg-[var(--ep-cream)] px-1">npm run forum:ingest-acca-drop</code> from{" "}
-            <code className="rounded bg-[var(--ep-cream)] px-1">RedDirt/</code>. Browser upload in{" "}
-            <Link href={EP_FORUM_TRANSCRIPT_LAB_HREF} className="font-semibold underline">
-              Forum transcript lab
-            </Link>{" "}
-            is for smaller files only.
-          </p>
-        </div>
+        <Link href={EP_FORUM_TRANSCRIPT_LAB_HREF} className="mt-4 inline-block text-xs font-bold text-[var(--ep-navy)] underline">
+          Forum lab →
+        </Link>
       </section>
 
-      <h2 className="mb-4 font-heading text-lg font-bold text-[var(--ep-navy)]">7-day command course</h2>
+      <h2 className="mb-4 font-heading text-lg font-bold text-[var(--ep-navy)]">7-day prep course</h2>
+      <p className="mb-4 text-sm text-[var(--ep-navy-muted)]">
+        Work one day at a time. After you open a study block, you will only see the next step — not this full list again.
+      </p>
       <DebateWeekIntensivePanel surface="election-plan" initialDay={1} todayDate={referenceDate} />
 
-      <section className="mt-10 grid gap-4 sm:grid-cols-2">
-        <Link href={EP_OPPOSITION_RESEARCH_HREF} className="ep-card block p-5 transition hover:border-[var(--ep-gold)]">
-          <p className="text-xs font-bold uppercase text-rose-700">Staff lane</p>
-          <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">Opposition research</h2>
-          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-            Kim Hammer modules, dossiers, evidence command — claims-gated before any public line.
-          </p>
-        </Link>
-        <Link href={EP_EXECUTIVE_BOOK_HREF} className="ep-card block p-5 transition hover:border-[var(--ep-gold)]">
-          <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">Leadership</p>
-          <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">Executive Book</h2>
-          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-            Narrative crosswalk — forum intelligence and debate lines tie back to leadership chapters.
-          </p>
+      <section className="mt-10">
+        <Link href={EP_LEGISLATIVE_INTEL_HREF} className="ep-card block p-5 transition hover:border-[var(--ep-gold)]">
+          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">All legislative intelligence</h2>
+          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">2021 integrity + 2025 petition bills with practice lines.</p>
         </Link>
       </section>
     </>

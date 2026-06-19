@@ -44,7 +44,8 @@ export default async function ElectionPlanDayBlockPage({
       backLabel="Day 1 command foundation"
       eyebrow={eyebrow}
       title={title}
-      description={study?.professorLead ?? study?.overview ?? block.why}
+      description={study?.overview ?? block.why}
+      pageSummary={study?.professorLead ?? study?.overview}
     >
       {study ? (
         <ElectionPlanBlockStudyPanel study={study} />

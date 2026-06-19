@@ -2,10 +2,11 @@ import Link from "next/link";
 
 import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
 import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
+import { PETITION_2025_CLUSTER_DEPTH } from "@/lib/intelligence/v4/integrityPackageDepth";
 import { listOppositionResearchModules, resolveOppositionResearchHref } from "@/lib/election-plan/oppositionResearchModules";
 import {
   EP_DEBATE_PREP_HREF,
-  EP_EXECUTIVE_BOOK_HREF,
+  epLegislativeIntel2025Href,
   epOppositionResearchModuleHref,
 } from "@/lib/election-plan/debate-prep-links";
 
@@ -20,15 +21,7 @@ export function ElectionPlanOppositionResearchHubPanel() {
         <p className="text-xs font-bold uppercase tracking-[0.24em] text-rose-800">Opposition research · Election Plan</p>
         <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">Kim Hammer &amp; opponent intelligence</h1>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--ep-navy-muted)]">
-          Staff research lane — bills, debate profile, dossiers, and evidence governance. Kelly rehearses contrast in{" "}
-          <Link href={EP_DEBATE_PREP_HREF} className="font-semibold text-[var(--ep-navy)] underline">
-            Debate Prep
-          </Link>
-          ; verify every line against the{" "}
-          <Link href={epOppositionResearchModuleHref("claims-ledger")} className="font-semibold underline">
-            claims ledger
-          </Link>{" "}
-          before broadcast.
+          Hammer&apos;s legislative record — bills, debate pivots, and practice lines for stage use.
         </p>
       </header>
 
@@ -71,26 +64,24 @@ export function ElectionPlanOppositionResearchHubPanel() {
       {v4.integrity2021 ? (
         <Link
           href={epOppositionResearchModuleHref("integrity-foundation-2021")}
-          className="ep-card mb-8 block border border-violet-200 bg-violet-50/40 p-5 transition hover:border-violet-400"
+          className="ep-card mb-4 block border border-violet-200 bg-violet-50/40 p-5 transition hover:border-violet-400"
         >
           <h2 className="text-sm font-bold uppercase text-violet-950">2021 integrity foundation</h2>
           <p className="mt-2 text-sm text-violet-950">{v4.integrity2021.plainEnglishSummary}</p>
-          <p className="mt-3 text-xs font-bold text-violet-900">Full package drill-down →</p>
+          <p className="mt-3 text-xs font-bold text-violet-900">Open study guide →</p>
         </Link>
       ) : null}
 
-      <KimHammerModuleNavPanel resolveHref={(href) => resolveOppositionResearchHref(href, v4)} />
+      <Link
+        href={epLegislativeIntel2025Href()}
+        className="ep-card mb-8 block border border-amber-200 bg-amber-50/40 p-5 transition hover:border-amber-400"
+      >
+        <h2 className="text-sm font-bold uppercase text-amber-950">2025 direct democracy bills</h2>
+        <p className="mt-2 text-sm text-amber-950">{PETITION_2025_CLUSTER_DEPTH.plainEnglishSummary}</p>
+        <p className="mt-3 text-xs font-bold text-amber-900">Open study guide →</p>
+      </Link>
 
-      <section className="mt-10 ep-card p-5">
-        <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Executive Book crosswalk</p>
-        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-          Opposition contrast and clerk-room vocabulary feed leadership chapters — especially conversation strategy and
-          immersion missions.
-        </p>
-        <Link href={EP_EXECUTIVE_BOOK_HREF} className="ep-chapter-link mt-3 inline-block">
-          Open Executive Book →
-        </Link>
-      </section>
+      <KimHammerModuleNavPanel resolveHref={(href) => resolveOppositionResearchHref(href, v4)} />
     </>
   );
 }

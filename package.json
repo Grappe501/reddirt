@@ -335,6 +335,7 @@
     "ingest:interactive": "node scripts/ingest-prompt-key.cjs",
     "ingest:watch": "tsx scripts/campaign-media-ingest-watcher.ts",
     "voter-file:import": "tsx scripts/voter-file-import.ts",
+    "voter-file-location-rollups:build": "tsx scripts/build-voter-file-location-rollups.ts",
     "ingest:election-results": "tsx scripts/ingest-election-results-json.ts",
     "election:history:build": "tsx scripts/election-targets/build-election-history-from-sos-json.ts",
     "election:targets:build": "npm run election:history:build && tsx scripts/election-targets/build-kelly-win-targets.ts",

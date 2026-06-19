@@ -58,7 +58,7 @@ export default async function ForumLabElectionLawTopicPage({
       backLabel="Election law study"
       eyebrow="Forum lab · election law"
       title={topic.title}
-      description={topic.summary}
+      pageSummary={topic.summary}
     >
       <div className="space-y-4">
         {topic.sections.map((section) => (

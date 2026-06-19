@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
+import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import type { DrillDownLink } from "@/lib/election-plan/debatePrepDayDrillDown";
 
 export function ElectionPlanDrillDownShell({
@@ -10,6 +11,7 @@ export function ElectionPlanDrillDownShell({
   eyebrow,
   title,
   description,
+  pageSummary,
   children,
 }: {
   backHref: string;
@@ -17,14 +19,14 @@ export function ElectionPlanDrillDownShell({
   eyebrow: string;
   title: string;
   description?: string;
+  pageSummary?: string;
   children: ReactNode;
 }) {
   return (
     <>
-      <div className="ep-classification">Internal · {eyebrow}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-5xl">
-          <ElectionPlanDebatePrepSubnav />
+          <ElectionPlanDebatePrepSubnav compact />
           <header className="mb-8">
             <Link href={backHref} className="text-xs font-bold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]">
               ← {backLabel}
@@ -35,6 +37,7 @@ export function ElectionPlanDrillDownShell({
               <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--ep-navy-muted)]">{description}</p>
             ) : null}
           </header>
+          {pageSummary ? <KellyPageSummary summary={pageSummary} /> : null}
           {children}
         </div>
       </div>

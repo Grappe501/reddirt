@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { CityElectionIntelPanel } from "@/components/election-plan/CityElectionIntelPanel";
 import { CityIntelligenceEnrichmentPanel } from "@/components/election-plan/CityIntelligenceEnrichmentPanel";
+import { VoterFileCityIntelSection } from "@/components/election-plan/VoterFileLocationIntelPanel";
 import { LocationFundraisingPanel } from "@/components/election-plan/LocationFundraisingPanel";
 import { CityVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
@@ -131,6 +132,13 @@ export function CityLocationBriefPanel({
       {cityIntelligence ? (
         <CityIntelligenceEnrichmentPanel profile={cityIntelligence} countySlug={countySlug} />
       ) : null}
+
+      <VoterFileCityIntelSection
+        citySlug={brief.slug}
+        cityName={brief.name}
+        countySlug={countySlug}
+        countyName={brief.county}
+      />
 
       {cityElectionIntel ? <CityElectionIntelPanel intel={cityElectionIntel} /> : null}
 
