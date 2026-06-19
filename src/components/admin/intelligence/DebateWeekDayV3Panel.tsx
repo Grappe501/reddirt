@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useState } from "react";
 import {
   EP_DEBATE_PREP_LANES_HREF,
+  epDebatePrepDayBlockHref,
 } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepLaneHref, mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 import type { IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
@@ -104,6 +105,10 @@ export function DebateWeekDayV3Panel({
         {blocks.map((block) => {
           const expansion = getBlockTheoryExpansion(dayId, block.id);
           if (!expansion) return null;
+          const blockStudyHref =
+            electionPlan && dayId === "day-1-command-foundation"
+              ? epDebatePrepDayBlockHref(dayId, block.id)
+              : null;
           return (
             <details key={block.id} className="rounded-xl border border-kelly-text/10 bg-white text-sm">
               <summary className="cursor-pointer px-4 py-3 font-bold text-kelly-navy">
@@ -127,14 +132,21 @@ export function DebateWeekDayV3Panel({
                     ))}
                   </ul>
                 </div>
-                {expansion.stretchLaneId ? (
-                  <Link
-                    href={laneHrefFn(expansion.stretchLaneId)}
-                    className="inline-block text-xs font-bold text-indigo-800 underline"
-                  >
-                    Open linked drill-down lane →
-                  </Link>
-                ) : null}
+                <div className="flex flex-wrap gap-3">
+                  {blockStudyHref ? (
+                    <Link href={blockStudyHref} className="inline-block text-xs font-bold text-emerald-800 underline">
+                      Full study guide ({block.minutes} min) →
+                    </Link>
+                  ) : null}
+                  {expansion.stretchLaneId ? (
+                    <Link
+                      href={laneHrefFn(expansion.stretchLaneId)}
+                      className="inline-block text-xs font-bold text-indigo-800 underline"
+                    >
+                      Open linked drill-down lane →
+                    </Link>
+                  ) : null}
+                </div>
               </div>
             </details>
           );
@@ -151,6 +163,8 @@ export function DebateWeekDayV3Panel({
             onToggle={() => void postProgress({ action: "toggle_lane", laneId: lane.id })}
             laneHrefFn={laneHrefFn}
             resolveHref={resolveHref}
+            electionPlan={electionPlan}
+            dayId={dayId}
           />
         ))}
       </section>
@@ -164,13 +178,20 @@ function LaneCard({
   onToggle,
   laneHrefFn,
   resolveHref,
+  electionPlan,
+  dayId,
 }: {
   lane: DrillDownLane;
   done: boolean;
   onToggle: () => void;
   laneHrefFn: (laneId: string) => string;
   resolveHref: (href: string) => string;
+  electionPlan?: boolean;
+  dayId?: IntensiveDayId;
 }) {
+  const relatedBlockId = lane.relatedBlockIds?.[0];
+  const blockStudyHref =
+    electionPlan && dayId && relatedBlockId ? epDebatePrepDayBlockHref(dayId, relatedBlockId) : null;
   return (
     <article className={`rounded-xl border p-4 text-sm ${tierBorder[lane.tier]} ${done ? "ring-2 ring-emerald-400" : ""}`}>
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -220,7 +241,14 @@ function LaneCard({
         >
           Full lane page →
         </Link>
-        {lane.href ? (
+        {blockStudyHref ? (
+          <Link
+            href={blockStudyHref}
+            className="rounded-full border border-emerald-400 px-3 py-1 text-[10px] font-bold text-emerald-900 hover:bg-white"
+          >
+            Block study guide →
+          </Link>
+        ) : lane.href ? (
           <Link href={resolveHref(lane.href)} className="rounded-full border border-indigo-300 px-3 py-1 text-[10px] font-bold text-indigo-900 hover:bg-white">
             Open linked tool →
           </Link>

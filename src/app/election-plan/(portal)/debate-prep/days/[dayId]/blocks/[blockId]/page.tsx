@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 
+import { ElectionPlanBlockStudyPanel } from "@/components/election-plan/ElectionPlanBlockStudyPanel";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownSections,
   ElectionPlanDrillDownShell,
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
+import { getDay1BlockStudy } from "@/lib/election-plan/debatePrepDay1BlockStudy";
 import { getDayBlockDrillDown, listDayBlocksDrillDown, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
@@ -26,17 +28,27 @@ export default async function ElectionPlanDayBlockPage({
   const block = getDayBlockDrillDown(dayId as IntensiveDayId, blockId);
   if (!block) notFound();
 
+  const study = dayId === DAY1_ID ? getDay1BlockStudy(blockId) : undefined;
+  const title = study?.studyGuideTitle ?? block.title;
+  const eyebrow = study ? `Study guide · ~${block.minutes} min` : `Study block · ~${block.minutes} min`;
+
   return (
     <ElectionPlanDrillDownShell
       backHref={epDebatePrepDayHref(dayId)}
-      backLabel="Day page"
-      eyebrow={`Study block · ~${block.minutes} min`}
-      title={block.title}
-      description={block.why}
+      backLabel="Day 1 command foundation"
+      eyebrow={eyebrow}
+      title={title}
+      description={study?.overview ?? block.why}
     >
-      <ElectionPlanDrillDownSections sections={block.sections} />
-      <ElectionPlanDrillDownSteps title="Practice steps — in order" steps={block.practiceSteps} />
-      <ElectionPlanDrillDownRelated links={block.relatedLinks} />
+      {study ? (
+        <ElectionPlanBlockStudyPanel study={study} />
+      ) : (
+        <>
+          <ElectionPlanDrillDownSections sections={block.sections} />
+          <ElectionPlanDrillDownSteps title="Practice steps — in order" steps={block.practiceSteps} />
+          <ElectionPlanDrillDownRelated links={block.relatedLinks} />
+        </>
+      )}
     </ElectionPlanDrillDownShell>
   );
 }

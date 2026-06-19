@@ -8,6 +8,7 @@ import {
   listDayMicroLessonsDrillDown,
   listDayRehearsalScripts,
 } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay1BlockStudy } from "@/lib/election-plan/debatePrepDay1BlockStudy";
 import {
   epDebatePrepDayBlockHref,
   epDebatePrepDayConceptHref,
@@ -16,7 +17,6 @@ import {
   epDebatePrepDayMicroLessonHref,
   epDebatePrepDayRehearsalHref,
 } from "@/lib/election-plan/debate-prep-links";
-import { mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 import type { IntensiveDayId, IntensiveDayPlan } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 const CONCEPT_FIELD_MAP: Array<{
@@ -60,47 +60,44 @@ export function ElectionPlanDayDrillDownOverview({
 
       <section className="mb-8 space-y-4">
         <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Study blocks</h2>
-        {plan.blocks.map((block, idx) => (
+        {plan.blocks.map((block, idx) => {
+          const study = dayId === "day-1-command-foundation" ? getDay1BlockStudy(block.id) : undefined;
+          return (
           <article key={block.id} className="ep-card p-4 text-sm">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="font-bold text-[var(--ep-navy)]">
-                {idx + 1}. {block.title}
+                {idx + 1}. {study?.studyGuideTitle ?? block.title}
               </p>
               <span className="font-mono text-xs text-[var(--ep-navy-muted)]">{block.minutes} min</span>
             </div>
             <p className="mt-2 text-[var(--ep-navy-muted)]">{block.activity}</p>
             <p className="mt-1 text-xs italic text-indigo-800">{block.why}</p>
-            <div className="mt-3 flex flex-wrap gap-3">
+            <div className="mt-3">
               <ElectionPlanDrillDownLink href={epDebatePrepDayBlockHref(dayId, block.id)}>
-                Block deep dive →
+                Full study guide ({block.minutes} min) →
               </ElectionPlanDrillDownLink>
-              {block.href ? (
-                <Link
-                  href={mapAdminHrefToElectionPlan(block.href)}
-                  className="text-xs font-bold text-[var(--ep-navy)] underline"
-                >
-                  Open linked tool →
-                </Link>
-              ) : null}
             </div>
           </article>
-        ))}
+          );
+        })}
       </section>
 
       {plan.opponentExamples.length > 0 ? (
         <section className="mb-8 space-y-4">
-          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Opponent examples</h2>
+          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Opponent examples — drill down</h2>
           {plan.opponentExamples.map((ex) => (
-            <article key={ex.id} className="ep-card border-rose-200 bg-rose-50/40 p-4 text-sm">
+            <Link
+              key={ex.id}
+              href={epDebatePrepDayExampleHref(dayId, ex.id)}
+              className="ep-card block border-rose-200 bg-rose-50/40 p-4 text-sm transition hover:border-rose-400 hover:shadow-sm"
+            >
               <p className="font-bold text-rose-950">{ex.opponent}</p>
               <p className="mt-2 text-[var(--ep-navy-muted)]">{ex.theirMove}</p>
               <p className="mt-3 font-bold text-emerald-900">Kelly</p>
-              <p>{ex.kellyResponse}</p>
+              <p className="font-semibold text-[var(--ep-navy)]">{ex.kellyResponse}</p>
               <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{ex.sourceNote}</p>
-              <ElectionPlanDrillDownLink href={epDebatePrepDayExampleHref(dayId, ex.id)}>
-                Full example drill →
-              </ElectionPlanDrillDownLink>
-            </article>
+              <p className="mt-3 text-xs font-bold uppercase tracking-wide text-rose-800">Full opponent drill-down →</p>
+            </Link>
           ))}
         </section>
       ) : null}

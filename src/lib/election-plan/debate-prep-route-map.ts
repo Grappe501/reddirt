@@ -90,6 +90,7 @@ const PREFIX: Array<{ prefix: string; target: string }> = [
   { prefix: "/admin/intelligence/kim-hammer/", target: EP_OPPOSITION_RESEARCH_HREF },
   { prefix: "/admin/intelligence/opponents/", target: EP_OPPOSITION_RESEARCH_HREF },
   { prefix: "/admin/intelligence/debate-prep-tutor", target: EP_DEBATE_PREP_TUTOR_HREF },
+  { prefix: "/admin/intelligence/debate-prep/psychology-manual", target: EP_DEBATE_PREP_PSYCHOLOGY_HREF },
   { prefix: "/admin/intelligence/debate-prep/", target: EP_DEBATE_PREP_TUTOR_HREF },
   { prefix: "/admin/intelligence/sos-debate-questions/", target: EP_DEBATE_PREP_COMMAND_HREF },
   { prefix: "/admin/intelligence/candidate-dossiers/", target: EP_OPPOSITION_RESEARCH_HREF },

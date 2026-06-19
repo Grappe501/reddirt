@@ -20,6 +20,7 @@ import {
   epTrapLaneHref,
 } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepLaneHref } from "@/lib/election-plan/debate-prep-route-map";
+import { getDay1BlockStudy } from "@/lib/election-plan/debatePrepDay1BlockStudy";
 import { getBlockTheoryExpansion } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
 import { getDayDeepOverlay } from "@/lib/intelligence/v4/debateWeekIntensive2026Deep";
 import {
@@ -349,7 +350,25 @@ const DAY1_EXAMPLE: DayExampleDrillDown = {
 function buildDay1Blocks(): DayBlockDrillDown[] {
   const plan = getDebateWeekIntensiveDay(DAY1_ID)!;
   return plan.blocks.map((block) => {
+    const study = getDay1BlockStudy(block.id);
     const theory = getBlockTheoryExpansion(DAY1_ID, block.id);
+
+    if (study) {
+      return {
+        blockId: block.id,
+        title: study.studyGuideTitle,
+        minutes: block.minutes,
+        activity: block.activity,
+        why: block.why,
+        sections: [
+          { title: "Block goal", body: block.why },
+          ...study.deepSections.map((s) => ({ title: s.title, body: s.body })),
+        ],
+        practiceSteps: study.practiceSteps,
+        relatedLinks: study.relatedLinks,
+      };
+    }
+
     const sections: Array<{ title: string; body: string }> = [
       { title: "Activity", body: block.activity },
       { title: "Why this block", body: block.why },
@@ -378,7 +397,7 @@ function buildDay1Blocks(): DayBlockDrillDown[] {
       );
     }
     if (block.id === "b1-tutor") {
-      relatedLinks.push({ href: `${EP_DEBATE_PREP_TUTOR_HREF}?focus=opening`, label: "AI tutor · opening focus" });
+      relatedLinks.push({ href: epDebatePrepDayBlockHref(DAY1_ID, "b1-tutor"), label: "First impression opening study guide" });
     }
     if (block.id === "b1-posture") {
       relatedLinks.push({ href: epDebatePrepLaneHref("lane-d1-asp-deep"), label: "ASP protocol lane" });
