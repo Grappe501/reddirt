@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { CityElectionIntelPanel } from "@/components/election-plan/CityElectionIntelPanel";
+import { CityIntelligenceEnrichmentPanel } from "@/components/election-plan/CityIntelligenceEnrichmentPanel";
 import { LocationFundraisingPanel } from "@/components/election-plan/LocationFundraisingPanel";
 import { CityVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
@@ -11,6 +12,7 @@ import { ImmersionCountyMissionCard } from "@/components/election-plan/Immersion
 import { CountyStrikeTeamPanel } from "@/components/election-plan/CountyStrikeTeamPanel";
 import { LocationFieldEventsPanel } from "@/components/election-plan/LocationFieldEventsPanel";
 import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-worksheet-storage";
+import type { CityIntelligenceProfile } from "@/lib/election-plan/city-intelligence-types";
 import type { CityLocationBrief } from "@/lib/election-plan/load-city-location-brief";
 import type { LocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-team";
@@ -50,6 +52,7 @@ type Props = {
   fieldEntrySummary?: FieldEntryLocationSummary;
   operatorInitials?: string | null;
   locationFundraising?: LocationFundraisingView | null;
+  cityIntelligence?: CityIntelligenceProfile | null;
 };
 
 function statusClass(status: CityLocationBrief["status"]) {
@@ -80,6 +83,7 @@ export function CityLocationBriefPanel({
   fieldEntrySummary,
   operatorInitials,
   locationFundraising,
+  cityIntelligence,
 }: Props) {
   const countyHref = countyPlaybookHref(brief.county, countySlug);
   const specialKpi = getSpecialKpiGoalForCity(brief.slug);
@@ -123,6 +127,10 @@ export function CityLocationBriefPanel({
           </Link>
         </div>
       </div>
+
+      {cityIntelligence ? (
+        <CityIntelligenceEnrichmentPanel profile={cityIntelligence} countySlug={countySlug} />
+      ) : null}
 
       {cityElectionIntel ? <CityElectionIntelPanel intel={cityElectionIntel} /> : null}
 

@@ -10,6 +10,7 @@ import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapsh
 import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
 import { loadLocationFundraisingForCity } from "@/lib/election-plan/load-location-fundraising";
+import { getCityIntelligenceProfile } from "@/lib/election-plan/load-city-intelligence-profile";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -60,11 +61,13 @@ export default async function CityLocationBriefPage({ params }: Props) {
     loadLocationFundraisingForCity(brief.slug),
   ]);
 
+  const cityIntelligence = getCityIntelligenceProfile(brief.slug);
+
   return (
     <>
       <div className="ep-classification">Internal · Location brief · {brief.name}</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-6xl">
           <CityLocationBriefPanel
             brief={brief}
             countyKpi={countyKpi}
@@ -77,6 +80,7 @@ export default async function CityLocationBriefPage({ params }: Props) {
             fieldEntrySummary={fieldEntrySummary}
             operatorInitials={operator?.initials ?? null}
             locationFundraising={locationFundraising}
+            cityIntelligence={cityIntelligence ?? null}
           />
         </div>
       </div>
