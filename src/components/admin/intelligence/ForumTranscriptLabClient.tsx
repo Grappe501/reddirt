@@ -3,10 +3,27 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import {
+  EP_FORUM_LAB_ANALYSIS_HREF,
+  EP_FORUM_LAB_CAPITALIZE_MOVES_HREF,
+  EP_FORUM_LAB_DEEP_ANALYSIS_HREF,
   EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF,
   EP_FORUM_LAB_INTEGRATION_HREF,
+  EP_FORUM_LAB_PREDICTED_SCRIPT_HREF,
+  epForumLabAnalysisCategoryHref,
+  epForumLabAnalysisItemHref,
+  epForumLabCapitalizeMoveHref,
+  epForumLabDeepAnalysisLessonHref,
   epForumLabIntegrationDayHref,
+  epForumLabPredictedScriptPhaseHref,
 } from "@/lib/election-plan/debate-prep-links";
+import {
+  forumAnalysisCategoryIdFromTitle,
+  resolveForumAnalysisLessonFromBullet,
+  type ForumAnalysisCategoryId,
+} from "@/lib/election-plan/forumLabAnalysisDrillDown";
+import { resolveCapitalizeMoveFromTrigger } from "@/lib/election-plan/forumLabCapitalizeMovesDrillDown";
+import { resolveDeepProfessorQuoteLesson } from "@/lib/election-plan/forumLabDeepAnalysisDrillDown";
+import { resolvePredictedScriptLessonFromPhase } from "@/lib/election-plan/forumLabPredictedScriptDrillDown";
 import type { ForumDeepAnalysis, ForumTranscriptLabRecord } from "@/lib/intelligence/v4/forumTranscriptLab";
 
 type Props = {
@@ -363,25 +380,109 @@ export function ForumTranscriptLabClient({
           </article>
 
           <div className="grid gap-4 lg:grid-cols-2">
-            <AnalysisList title="Hammer themes" items={analysis.hammerThemes} tone="rose" />
-            <AnalysisList title="Pakko themes" items={analysis.pakkoThemes} tone="amber" />
-            <AnalysisList title="Kelly opportunities" items={analysis.kellyOpportunities} tone="emerald" />
-            <AnalysisList title="Predicted debate questions" items={analysis.predictedDebateQuestions} tone="indigo" />
-            <AnalysisList title="Watch for tells" items={analysis.watchForTells} tone="violet" />
-            <AnalysisList title="Newspaper angles" items={analysis.newspaperAngles} tone="sky" />
-            <AnalysisList title="Claims gate notes" items={analysis.claimsGateNotes} tone="rose" />
+            <AnalysisList
+              title="Hammer themes"
+              items={analysis.hammerThemes}
+              tone="rose"
+              categoryId="hammer-themes"
+              surface={surface}
+            />
+            <AnalysisList
+              title="Pakko themes"
+              items={analysis.pakkoThemes}
+              tone="amber"
+              categoryId="pakko-themes"
+              surface={surface}
+            />
+            <AnalysisList
+              title="Kelly opportunities"
+              items={analysis.kellyOpportunities}
+              tone="emerald"
+              categoryId="kelly-opportunities"
+              surface={surface}
+            />
+            <AnalysisList
+              title="Predicted debate questions"
+              items={analysis.predictedDebateQuestions}
+              tone="indigo"
+              categoryId="predicted-debate-questions"
+              surface={surface}
+            />
+            <AnalysisList
+              title="Watch for tells"
+              items={analysis.watchForTells}
+              tone="violet"
+              categoryId="watch-for-tells"
+              surface={surface}
+            />
+            <AnalysisList
+              title="Newspaper angles"
+              items={analysis.newspaperAngles}
+              tone="sky"
+              categoryId="newspaper-angles"
+              surface={surface}
+            />
+            <AnalysisList
+              title="Claims gate notes"
+              items={analysis.claimsGateNotes}
+              tone="rose"
+              categoryId="claims-gate-notes"
+              surface={surface}
+            />
           </div>
 
           <article className="rounded-xl border border-emerald-200 bg-emerald-50/40 p-5">
-            <h3 className="font-heading text-lg font-bold text-emerald-950">Capitalize moves — when X, say Y</h3>
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <h3 className="font-heading text-lg font-bold text-emerald-950">Capitalize moves — when X, say Y</h3>
+              {surface === "election-plan" ? (
+                <Link
+                  href={EP_FORUM_LAB_CAPITALIZE_MOVES_HREF}
+                  className="rounded-full border border-emerald-700 px-3 py-1 text-xs font-bold text-emerald-900 hover:bg-white"
+                >
+                  Full strategy hub →
+                </Link>
+              ) : null}
+            </div>
+            <p className="mt-2 text-xs text-kelly-muted">
+              {surface === "election-plan"
+                ? "Where the debate is won in viewers' eyes — each trigger drills down to psychology, optional phrasing, and phase guidance."
+                : "Rehearsed agree-add pivots from ACCA forum analysis."}
+            </p>
             <div className="mt-4 space-y-4">
-              {analysis.capitalizeMoves.map((move, i) => (
-                <div key={`${move.trigger.slice(0, 24)}-${i}`} className="rounded-lg border border-emerald-200 bg-white p-4 text-sm">
-                  <p className="font-bold text-rose-950">Trigger: {move.trigger}</p>
-                  <p className="mt-2 font-bold text-kelly-navy">Kelly: {move.kellyLine}</p>
-                  <p className="mt-1 text-xs text-kelly-muted">{move.why}</p>
-                </div>
-              ))}
+              {analysis.capitalizeMoves.map((move, i) => {
+                const lesson = surface === "election-plan" ? resolveCapitalizeMoveFromTrigger(move.trigger) : undefined;
+                const cardBody = (
+                  <>
+                    <p className="font-bold text-rose-950">Trigger: {move.trigger}</p>
+                    <p className="mt-2 font-bold text-kelly-navy">Kelly: {move.kellyLine}</p>
+                    <p className="mt-1 text-xs text-kelly-muted">{move.why}</p>
+                    {lesson ? (
+                      <p className="mt-3 text-[11px] font-bold uppercase tracking-wide text-emerald-800">
+                        Strategy, psychology & phrasing →
+                      </p>
+                    ) : null}
+                  </>
+                );
+                if (lesson) {
+                  return (
+                    <Link
+                      key={`${move.trigger.slice(0, 24)}-${i}`}
+                      href={epForumLabCapitalizeMoveHref(lesson.id)}
+                      className="block rounded-lg border border-emerald-200 bg-white p-4 text-sm transition hover:border-emerald-500 hover:shadow-sm"
+                    >
+                      {cardBody}
+                    </Link>
+                  );
+                }
+                return (
+                  <div
+                    key={`${move.trigger.slice(0, 24)}-${i}`}
+                    className="rounded-lg border border-emerald-200 bg-white p-4 text-sm"
+                  >
+                    {cardBody}
+                  </div>
+                );
+              })}
             </div>
           </article>
         </section>
@@ -399,19 +500,38 @@ function DeepAnalysisSection({
   deep: ForumDeepAnalysis;
   surface: "admin" | "election-plan";
 }) {
+  const profileLessonId = { hammer: "profile-hammer", pakko: "profile-pakko", kelly: "profile-kelly" } as const;
+
   return (
     <section className="space-y-6">
       <article className="rounded-xl border-2 border-violet-500/40 bg-violet-950 p-5 text-violet-50">
-        <h2 className="font-heading text-xl font-bold text-violet-200">Deep analysis v2 — executive brief</h2>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <h2 className="font-heading text-xl font-bold text-violet-200">Deep analysis v2 — executive brief</h2>
+          {surface === "election-plan" ? (
+            <Link
+              href={epForumLabDeepAnalysisLessonHref("executive-brief")}
+              className="rounded-full border border-violet-300 px-3 py-1 text-xs font-bold text-violet-100 hover:bg-violet-900"
+            >
+              Professor study →
+            </Link>
+          ) : null}
+        </div>
         <p className="mt-3 text-sm leading-relaxed">{deep.executiveBrief}</p>
+        {surface === "election-plan" ? (
+          <Link
+            href={EP_FORUM_LAB_DEEP_ANALYSIS_HREF}
+            className="mt-3 inline-block text-xs font-bold text-violet-200 underline"
+          >
+            Deep analysis v2 hub — profiles & quotes →
+          </Link>
+        ) : null}
       </article>
 
       <div className="grid gap-4 lg:grid-cols-3">
         {(["hammer", "pakko", "kelly"] as const).map((speaker) => {
           const profile = deep.speakerProfiles[speaker];
-          return (
-            <article key={speaker} className="rounded-xl border border-kelly-text/10 bg-white p-4 text-sm">
-              <h3 className="text-xs font-bold uppercase text-kelly-subtle">{speaker} profile</h3>
+          const cardBody = (
+            <>
               <p className="mt-2 text-kelly-muted">{profile.rhetoricalStyle}</p>
               {profile.favoritePhrases.length ? (
                 <p className="mt-2 text-xs">
@@ -423,6 +543,29 @@ function DeepAnalysisSection({
                   <span className="font-bold">Weak under pressure:</span> {profile.weakUnderPressure}
                 </p>
               ) : null}
+              {surface === "election-plan" ? (
+                <p className="mt-3 text-[11px] font-bold uppercase tracking-wide text-kelly-navy">
+                  Rhetoric forecast & strategy →
+                </p>
+              ) : null}
+            </>
+          );
+          if (surface === "election-plan") {
+            return (
+              <Link
+                key={speaker}
+                href={epForumLabDeepAnalysisLessonHref(profileLessonId[speaker])}
+                className="block rounded-xl border border-kelly-text/10 bg-white p-4 text-sm transition hover:border-violet-400 hover:shadow-sm"
+              >
+                <h3 className="text-xs font-bold uppercase text-kelly-subtle">{speaker} profile</h3>
+                {cardBody}
+              </Link>
+            );
+          }
+          return (
+            <article key={speaker} className="rounded-xl border border-kelly-text/10 bg-white p-4 text-sm">
+              <h3 className="text-xs font-bold uppercase text-kelly-subtle">{speaker} profile</h3>
+              {cardBody}
             </article>
           );
         })}
@@ -430,35 +573,106 @@ function DeepAnalysisSection({
 
       {deep.verbatimQuotes.length > 0 ? (
         <article className="rounded-xl border border-amber-200 bg-amber-50/40 p-5">
-          <h3 className="font-heading text-lg font-bold text-amber-950">Verbatim quotes (claims-gated)</h3>
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <h3 className="font-heading text-lg font-bold text-amber-950">Verbatim quotes (claims-gated)</h3>
+            {surface === "election-plan" ? (
+              <Link
+                href={EP_FORUM_LAB_DEEP_ANALYSIS_HREF}
+                className="rounded-full border border-amber-700 px-3 py-1 text-xs font-bold text-amber-900 hover:bg-white"
+              >
+                All quote lessons →
+              </Link>
+            ) : null}
+          </div>
           <div className="mt-4 space-y-3">
-            {deep.verbatimQuotes.map((q, i) => (
-              <div key={`${q.quote.slice(0, 24)}-${i}`} className="rounded-lg border border-amber-200 bg-white p-3 text-sm">
-                <p className="font-bold text-kelly-navy">
-                  {q.speaker} · <span className="text-xs uppercase">{q.claimsGate}</span>
-                </p>
-                <p className="mt-1 italic">&ldquo;{q.quote}&rdquo;</p>
-                <p className="mt-1 text-xs text-kelly-muted">Stage use: {q.stageUse}</p>
-              </div>
-            ))}
+            {deep.verbatimQuotes.map((q, i) => {
+              const lesson = surface === "election-plan" ? resolveDeepProfessorQuoteLesson(q.quote) : undefined;
+              const cardBody = (
+                <>
+                  <p className="font-bold text-kelly-navy">
+                    {q.speaker} · <span className="text-xs uppercase">{q.claimsGate}</span>
+                  </p>
+                  <p className="mt-1 italic">&ldquo;{q.quote}&rdquo;</p>
+                  <p className="mt-1 text-xs text-kelly-muted">Stage use: {q.stageUse}</p>
+                  {lesson ? (
+                    <p className="mt-2 text-[11px] font-bold uppercase tracking-wide text-amber-800">
+                      Professor breakdown →
+                    </p>
+                  ) : null}
+                </>
+              );
+              if (lesson) {
+                return (
+                  <Link
+                    key={`${q.quote.slice(0, 24)}-${i}`}
+                    href={epForumLabDeepAnalysisLessonHref(lesson.id)}
+                    className="block rounded-lg border border-amber-200 bg-white p-3 text-sm transition hover:border-amber-500 hover:shadow-sm"
+                  >
+                    {cardBody}
+                  </Link>
+                );
+              }
+              return (
+                <div key={`${q.quote.slice(0, 24)}-${i}`} className="rounded-lg border border-amber-200 bg-white p-3 text-sm">
+                  {cardBody}
+                </div>
+              );
+            })}
           </div>
         </article>
       ) : null}
 
       {deep.predictedDebateScript.length > 0 ? (
         <article className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-5">
-          <h3 className="font-heading text-lg font-bold text-indigo-950">Predicted debate script</h3>
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <h3 className="font-heading text-lg font-bold text-indigo-950">Predicted debate script</h3>
+            {surface === "election-plan" ? (
+              <Link
+                href={EP_FORUM_LAB_PREDICTED_SCRIPT_HREF}
+                className="rounded-full border border-indigo-700 px-3 py-1 text-xs font-bold text-indigo-900 hover:bg-white"
+              >
+                Script professor hub →
+              </Link>
+            ) : null}
+          </div>
           <div className="mt-4 space-y-4">
-            {deep.predictedDebateScript.map((beat, i) => (
-              <div key={`${beat.phase}-${i}`} className="rounded-lg border border-indigo-200 bg-white p-4 text-sm">
-                <p className="font-bold uppercase text-indigo-900">{beat.phase}</p>
-                <p className="mt-2 text-kelly-muted">Q: {beat.moderatorQuestion}</p>
-                <p className="mt-1 text-rose-900">Hammer: {beat.hammerLikely}</p>
-                <p className="mt-1 text-amber-900">Pakko: {beat.pakkoLikely}</p>
-                <p className="mt-2 font-bold text-emerald-900">Kelly best: {beat.kellyBest}</p>
-                <p className="text-xs text-rose-800">Avoid: {beat.kellyAvoid}</p>
-              </div>
-            ))}
+            {deep.predictedDebateScript.map((beat, i) => {
+              const lesson =
+                surface === "election-plan" ? resolvePredictedScriptLessonFromPhase(beat.phase) : undefined;
+              const cardBody = (
+                <>
+                  <p className="font-bold uppercase text-indigo-900">{beat.phase}</p>
+                  {beat.moderatorQuestion ? (
+                    <p className="mt-2 text-kelly-muted">Q: {beat.moderatorQuestion}</p>
+                  ) : null}
+                  <p className="mt-1 text-rose-900">Hammer: {beat.hammerLikely}</p>
+                  <p className="mt-1 text-amber-900">Pakko: {beat.pakkoLikely}</p>
+                  <p className="mt-2 font-bold text-emerald-900">Kelly best: {beat.kellyBest}</p>
+                  <p className="text-xs text-rose-800">Avoid: {beat.kellyAvoid}</p>
+                  {lesson ? (
+                    <p className="mt-3 text-[11px] font-bold uppercase tracking-wide text-indigo-800">
+                      Mock-moderator professor page →
+                    </p>
+                  ) : null}
+                </>
+              );
+              if (lesson) {
+                return (
+                  <Link
+                    key={`${beat.phase}-${i}`}
+                    href={epForumLabPredictedScriptPhaseHref(lesson.id)}
+                    className="block rounded-lg border border-indigo-200 bg-white p-4 text-sm transition hover:border-indigo-500 hover:shadow-sm"
+                  >
+                    {cardBody}
+                  </Link>
+                );
+              }
+              return (
+                <div key={`${beat.phase}-${i}`} className="rounded-lg border border-indigo-200 bg-white p-4 text-sm">
+                  {cardBody}
+                </div>
+              );
+            })}
           </div>
         </article>
       ) : null}
@@ -480,6 +694,30 @@ function DeepAnalysisSection({
                   className="rounded-full border border-emerald-700 px-3 py-1 text-emerald-900 hover:bg-white"
                 >
                   Election law study →
+                </Link>
+                <Link
+                  href={EP_FORUM_LAB_ANALYSIS_HREF}
+                  className="rounded-full border border-emerald-700 px-3 py-1 text-emerald-900 hover:bg-white"
+                >
+                  Analysis lessons →
+                </Link>
+                <Link
+                  href={EP_FORUM_LAB_CAPITALIZE_MOVES_HREF}
+                  className="rounded-full border border-emerald-700 px-3 py-1 text-emerald-900 hover:bg-white"
+                >
+                  Capitalize moves →
+                </Link>
+                <Link
+                  href={EP_FORUM_LAB_DEEP_ANALYSIS_HREF}
+                  className="rounded-full border border-emerald-700 px-3 py-1 text-emerald-900 hover:bg-white"
+                >
+                  Deep analysis v2 →
+                </Link>
+                <Link
+                  href={EP_FORUM_LAB_PREDICTED_SCRIPT_HREF}
+                  className="rounded-full border border-emerald-700 px-3 py-1 text-emerald-900 hover:bg-white"
+                >
+                  Predicted script →
                 </Link>
               </div>
             ) : null}
@@ -524,10 +762,14 @@ function AnalysisList({
   title,
   items,
   tone,
+  categoryId,
+  surface,
 }: {
   title: string;
   items: string[];
   tone: "rose" | "amber" | "emerald" | "indigo" | "violet" | "sky";
+  categoryId?: ForumAnalysisCategoryId;
+  surface?: "admin" | "election-plan";
 }) {
   const border = {
     rose: "border-rose-200",
@@ -540,14 +782,48 @@ function AnalysisList({
 
   if (!items.length) return null;
 
+  const resolvedCategoryId = categoryId ?? forumAnalysisCategoryIdFromTitle(title);
+  const linkLessons = surface === "election-plan" && resolvedCategoryId;
+
   return (
     <article className={`rounded-xl border ${border} bg-white p-4`}>
-      <h3 className="text-xs font-bold uppercase text-kelly-subtle">{title}</h3>
+      <h3 className="text-xs font-bold uppercase text-kelly-subtle">
+        {linkLessons ? (
+          <Link href={epForumLabAnalysisCategoryHref(resolvedCategoryId)} className="hover:text-kelly-navy hover:underline">
+            {title}
+          </Link>
+        ) : (
+          title
+        )}
+      </h3>
       <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-kelly-text">
-        {items.map((item) => (
-          <li key={item.slice(0, 48)}>{item}</li>
-        ))}
+        {items.map((item) => {
+          const lesson =
+            linkLessons && resolvedCategoryId
+              ? resolveForumAnalysisLessonFromBullet(resolvedCategoryId, item)
+              : undefined;
+          if (lesson && resolvedCategoryId) {
+            return (
+              <li key={item.slice(0, 48)}>
+                <Link
+                  href={epForumLabAnalysisItemHref(resolvedCategoryId, lesson.id)}
+                  className="font-medium text-kelly-navy underline decoration-kelly-navy/30 hover:decoration-kelly-navy"
+                >
+                  {item}
+                </Link>
+              </li>
+            );
+          }
+          return <li key={item.slice(0, 48)}>{item}</li>;
+        })}
       </ul>
+      {linkLessons ? (
+        <p className="mt-3 text-[10px] font-bold uppercase tracking-wide text-kelly-muted">
+          <Link href={epForumLabAnalysisCategoryHref(resolvedCategoryId)} className="text-kelly-navy underline">
+            All {title.toLowerCase()} lessons →
+          </Link>
+        </p>
+      ) : null}
     </article>
   );
 }

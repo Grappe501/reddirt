@@ -7,13 +7,31 @@ import type { OpponentExampleStudyDeep } from "@/lib/election-plan/debatePrepDay
 
 type StudyGuideContent = Pick<
   Day1BlockStudyDeep,
-  "overview" | "phases" | "deepSections" | "sampleLines" | "keyTakeaways" | "practiceSteps" | "relatedLinks"
+  | "overview"
+  | "professorLead"
+  | "phases"
+  | "deepSections"
+  | "psychology"
+  | "opponentForecast"
+  | "sampleLines"
+  | "doNotSay"
+  | "claimsGate"
+  | "keyTakeaways"
+  | "practiceSteps"
+  | "relatedLinks"
 >;
 
 export function ElectionPlanBlockStudyPanel({ study }: { study: StudyGuideContent | OpponentExampleStudyDeep }) {
   return (
     <>
-      <article className="ep-card border-indigo-200 bg-indigo-50/30 p-5 text-sm">
+      {study.professorLead ? (
+        <article className="ep-card border-[var(--ep-gold)]/50 bg-[var(--ep-cream)]/60 p-5 text-sm">
+          <h2 className="text-xs font-bold uppercase text-[var(--ep-gold)]">Professor lead</h2>
+          <p className="mt-3 text-base font-medium leading-relaxed text-[var(--ep-navy)]">{study.professorLead}</p>
+        </article>
+      ) : null}
+
+      <article className="ep-card mt-6 border-indigo-200 bg-indigo-50/30 p-5 text-sm">
         <h2 className="text-xs font-bold uppercase text-indigo-900">Study overview</h2>
         <p className="mt-3 leading-relaxed text-[var(--ep-navy-muted)]">{study.overview}</p>
       </article>
@@ -34,6 +52,30 @@ export function ElectionPlanBlockStudyPanel({ study }: { study: StudyGuideConten
           </article>
         ))}
       </section>
+
+      {study.psychology && study.psychology.length > 0 ? (
+        <section className="mt-6 space-y-4">
+          <h2 className="text-xs font-bold uppercase text-violet-900">Psychology & viewer read</h2>
+          {study.psychology.map((section) => (
+            <article key={section.title} className="ep-card border-violet-200 bg-violet-50/30 p-5 text-sm">
+              <h3 className="text-xs font-bold uppercase text-violet-900">{section.title}</h3>
+              <p className="mt-3 leading-relaxed text-[var(--ep-navy-muted)]">{section.body}</p>
+            </article>
+          ))}
+        </section>
+      ) : null}
+
+      {study.opponentForecast && study.opponentForecast.length > 0 ? (
+        <section className="mt-6 space-y-4">
+          <h2 className="text-xs font-bold uppercase text-amber-900">Opponent forecast</h2>
+          {study.opponentForecast.map((section) => (
+            <article key={section.title} className="ep-card border-amber-200 bg-amber-50/30 p-5 text-sm">
+              <h3 className="text-xs font-bold uppercase text-amber-900">{section.title}</h3>
+              <p className="mt-3 leading-relaxed text-[var(--ep-navy-muted)]">{section.body}</p>
+            </article>
+          ))}
+        </section>
+      ) : null}
 
       <section className="mt-6 space-y-4">
         <h2 className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Deep reference</h2>
@@ -58,6 +100,28 @@ export function ElectionPlanBlockStudyPanel({ study }: { study: StudyGuideConten
             ))}
           </div>
         </section>
+      ) : null}
+
+      {study.doNotSay && study.doNotSay.length > 0 ? (
+        <article className="ep-card mt-6 border-red-200 bg-red-50/30 p-5 text-sm">
+          <h2 className="text-xs font-bold uppercase text-red-900">Do not say</h2>
+          <ul className="mt-3 list-inside list-disc space-y-1 text-[var(--ep-navy-muted)]">
+            {study.doNotSay.map((line) => (
+              <li key={line.slice(0, 48)}>{line}</li>
+            ))}
+          </ul>
+        </article>
+      ) : null}
+
+      {study.claimsGate && study.claimsGate.length > 0 ? (
+        <article className="ep-card mt-6 border-slate-300 bg-slate-50/50 p-5 text-sm">
+          <h2 className="text-xs font-bold uppercase text-slate-800">Claims gate</h2>
+          <ul className="mt-3 list-inside list-disc space-y-1 text-[var(--ep-navy-muted)]">
+            {study.claimsGate.map((line) => (
+              <li key={line.slice(0, 48)}>{line}</li>
+            ))}
+          </ul>
+        </article>
       ) : null}
 
       <article className="ep-card mt-6 border-[var(--ep-gold)]/40 bg-[var(--ep-cream)]/50 p-5 text-sm">

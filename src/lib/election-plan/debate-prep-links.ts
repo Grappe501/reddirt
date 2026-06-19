@@ -10,6 +10,7 @@ export const EP_DEBATE_PREP_LANES_HREF = "/election-plan/debate-prep/lanes";
 export const EP_TRAP_LANES_HREF = "/election-plan/debate-prep/trap-lanes";
 export const EP_DEBATE_TECHNIQUES_HREF = "/election-plan/debate-prep/techniques";
 export const EP_FORUM_TRANSCRIPT_LAB_HREF = "/election-plan/debate-prep/forum-lab";
+export const EP_DEBATE_QUESTIONS_HREF = "/election-plan/debate-prep/questions";
 export const EP_DEBATE_PREP_BRIEFINGS_HREF = "/election-plan/debate-prep/briefings";
 export const EP_DEBATE_PREP_PSYCHOLOGY_HREF = "/election-plan/debate-prep/psychology-manual";
 export const EP_OPPOSITION_RESEARCH_HREF = "/election-plan/opposition-research";
@@ -31,6 +32,10 @@ export function epTrapLaneHref(laneId: string): string {
 
 export function epDebateTechniqueHref(topicId: string): string {
   return `${EP_DEBATE_TECHNIQUES_HREF}/${topicId}`;
+}
+
+export function epDebateQuestionHref(questionId: string): string {
+  return `${EP_DEBATE_QUESTIONS_HREF}/${questionId}`;
 }
 
 export function epDebatePrepBriefingHref(briefingId: string): string {
@@ -71,6 +76,7 @@ export function epDebatePrepDayDrillHref(dayId: string, drillId: string): string
 
 export const EP_FORUM_LAB_INTEGRATION_HREF = `${EP_FORUM_TRANSCRIPT_LAB_HREF}/integration`;
 export const EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF = `${EP_FORUM_TRANSCRIPT_LAB_HREF}/election-law-study`;
+export const EP_FORUM_LAB_ANALYSIS_HREF = `${EP_FORUM_TRANSCRIPT_LAB_HREF}/analysis`;
 
 export function epForumLabIntegrationDayHref(dayNumber: number): string {
   return `${EP_FORUM_LAB_INTEGRATION_HREF}/${dayNumber}`;
@@ -78,4 +84,30 @@ export function epForumLabIntegrationDayHref(dayNumber: number): string {
 
 export function epForumLabElectionLawTopicHref(topicId: string): string {
   return `${EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF}/${topicId}`;
+}
+
+export function epForumLabAnalysisCategoryHref(categoryId: string): string {
+  return `${EP_FORUM_LAB_ANALYSIS_HREF}/${categoryId}`;
+}
+
+export function epForumLabAnalysisItemHref(categoryId: string, itemId: string): string {
+  return `${EP_FORUM_LAB_ANALYSIS_HREF}/${categoryId}/${itemId}`;
+}
+
+export const EP_FORUM_LAB_CAPITALIZE_MOVES_HREF = `${EP_FORUM_TRANSCRIPT_LAB_HREF}/capitalize-moves`;
+
+export function epForumLabCapitalizeMoveHref(moveId: string): string {
+  return `${EP_FORUM_LAB_CAPITALIZE_MOVES_HREF}/${moveId}`;
+}
+
+export const EP_FORUM_LAB_DEEP_ANALYSIS_HREF = `${EP_FORUM_TRANSCRIPT_LAB_HREF}/deep-analysis`;
+
+export function epForumLabDeepAnalysisLessonHref(lessonId: string): string {
+  return `${EP_FORUM_LAB_DEEP_ANALYSIS_HREF}/${lessonId}`;
+}
+
+export const EP_FORUM_LAB_PREDICTED_SCRIPT_HREF = `${EP_FORUM_TRANSCRIPT_LAB_HREF}/predicted-script`;
+
+export function epForumLabPredictedScriptPhaseHref(phaseId: string): string {
+  return `${EP_FORUM_LAB_PREDICTED_SCRIPT_HREF}/${phaseId}`;
 }

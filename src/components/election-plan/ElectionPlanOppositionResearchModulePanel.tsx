@@ -1,16 +1,20 @@
 import Link from "next/link";
 
+import { KimHammerV4ModuleBody } from "@/components/admin/intelligence/kim-hammer/KimHammerV4ModuleBody";
 import { DebatePrepOperatorGuideCard } from "@/components/election-plan/DebatePrepOperatorGuideCard";
 import { ElectionPlanV4ThemeMatrix } from "@/components/election-plan/ElectionPlanV4ThemeMatrix";
 import {
   EP_DEBATE_PREP_HREF,
   EP_DEBATE_TECHNIQUES_HREF,
   EP_EXECUTIVE_BOOK_HREF,
+  EP_OPPOSITION_RESEARCH_HREF,
   EP_TRAP_LANES_HREF,
   epOppositionResearchModuleHref,
   epTrapLaneHref,
 } from "@/lib/election-plan/debate-prep-links";
 import type { OppositionResearchModule } from "@/lib/election-plan/oppositionResearchModules";
+import { resolveOppositionResearchHref } from "@/lib/election-plan/oppositionResearchModules";
+import { getKimHammerV4ModuleEntry } from "@/lib/intelligence/kimHammerV4ModuleRegistry";
 import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { getPrepSectionGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
@@ -351,7 +355,27 @@ export function ElectionPlanOppositionResearchModulePanel({ module }: { module: 
       );
     }
 
-    default:
+    default: {
+      const entry = getKimHammerV4ModuleEntry(module.id);
+      if (entry) {
+        const guide = entry.guideKey ? getSurfaceGuide(entry.guideKey) : undefined;
+        return (
+          <div className="space-y-6">
+            {guide ? (
+              <DebatePrepOperatorGuideCard title={`${module.title} — how to use`} guide={guide} />
+            ) : null}
+            <div className="ep-card p-5">
+              <KimHammerV4ModuleBody
+                entry={entry}
+                resolveHref={(href) => resolveOppositionResearchHref(href, v4)}
+                claimsHref={epOppositionResearchModuleHref("claims-ledger")}
+                commandCenterHref={EP_OPPOSITION_RESEARCH_HREF}
+              />
+            </div>
+          </div>
+        );
+      }
+
       return (
         <article className="ep-card p-5 text-sm text-[var(--ep-navy-muted)]">
           <p>{module.summary}</p>
@@ -361,6 +385,7 @@ export function ElectionPlanOppositionResearchModulePanel({ module }: { module: 
           </Link>
         </article>
       );
+    }
   }
 }
 

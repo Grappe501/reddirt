@@ -7,6 +7,7 @@ import { DebateWeekIntensivePanel } from "@/components/admin/intelligence/Debate
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import {
   EP_EXECUTIVE_BOOK_HREF,
+  EP_DEBATE_QUESTIONS_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
   EP_OPPOSITION_RESEARCH_HREF,
 } from "@/lib/election-plan/debate-prep-links";
@@ -93,6 +94,19 @@ export function ElectionPlanDebatePrepHubPanel() {
         packageCompletenessPct={snapshot.packageCompletenessPct}
         packageLabel={DEBATE_PREP_PACKAGE_LABEL}
       />
+
+      <section className="ep-card mb-8 border-2 border-violet-300/50 p-5">
+        <p className="text-xs font-bold uppercase text-violet-900">40 expected questions</p>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Hammer & Pakko forecasts, speak-order scripts (first / second / third), rebuttals, and cross-exchange handling for every likely moderator question.
+        </p>
+        <Link
+          href={EP_DEBATE_QUESTIONS_HREF}
+          className="mt-4 inline-block rounded-full bg-violet-900 px-4 py-2 text-xs font-bold text-white"
+        >
+          Open question bank →
+        </Link>
+      </section>
 
       <section className="ep-card mb-8 border-2 border-[var(--ep-gold)]/40 p-5">
         <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">v8 · War room</p>

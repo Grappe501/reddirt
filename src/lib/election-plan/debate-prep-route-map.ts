@@ -10,12 +10,14 @@ import {
   EP_DEBATE_PREP_BRIEFINGS_HREF,
   EP_DEBATE_PREP_PSYCHOLOGY_HREF,
   EP_DEBATE_PREP_TUTOR_HREF,
+  EP_DEBATE_QUESTIONS_HREF,
   EP_DEBATE_TECHNIQUES_HREF,
   EP_EXECUTIVE_BOOK_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
   epDebatePrepBriefingHref,
   epDebatePrepDayHref,
   epDebatePrepPsychologySectionHref,
+  epDebateQuestionHref,
   EP_OPPOSITION_RESEARCH_HREF,
   EP_TRAP_LANES_HREF,
   epDebateTechniqueHref,
@@ -69,7 +71,7 @@ const EXACT: Record<string, string> = {
   "/admin/intelligence/kelly-debate-coaching": EP_DEBATE_PREP_TUTOR_HREF,
   "/admin/intelligence/kelly-prep-week": EP_DEBATE_PREP_HREF,
   "/admin/intelligence/top-tier-prep": EP_DEBATE_PREP_COMMAND_HREF,
-  "/admin/intelligence/sos-debate-questions": EP_DEBATE_PREP_COMMAND_HREF,
+  "/admin/intelligence/sos-debate-questions": EP_DEBATE_QUESTIONS_HREF,
   "/admin/intelligence/trap-lanes": EP_TRAP_LANES_HREF,
   "/admin/intelligence/debate-depth": EP_DEBATE_TECHNIQUES_HREF,
   "/admin/intelligence/demo-mode": EP_DEBATE_PREP_COMMAND_HREF,
@@ -92,7 +94,6 @@ const PREFIX: Array<{ prefix: string; target: string }> = [
   { prefix: "/admin/intelligence/debate-prep-tutor", target: EP_DEBATE_PREP_TUTOR_HREF },
   { prefix: "/admin/intelligence/debate-prep/psychology-manual", target: EP_DEBATE_PREP_PSYCHOLOGY_HREF },
   { prefix: "/admin/intelligence/debate-prep/", target: EP_DEBATE_PREP_TUTOR_HREF },
-  { prefix: "/admin/intelligence/sos-debate-questions/", target: EP_DEBATE_PREP_COMMAND_HREF },
   { prefix: "/admin/intelligence/candidate-dossiers/", target: EP_OPPOSITION_RESEARCH_HREF },
   { prefix: "/admin/intelligence/diligence/", target: EP_OPPOSITION_RESEARCH_HREF },
   { prefix: "/admin/intelligence/county-clerk-week/", target: EP_OPPOSITION_RESEARCH_HREF },
@@ -127,6 +128,9 @@ export function mapAdminHrefToElectionPlan(href: string): string {
 
   const psychMatch = path.match(/^\/admin\/intelligence\/debate-prep\/psychology-manual\/([^/]+)$/);
   if (psychMatch?.[1]) return epDebatePrepPsychologySectionHref(psychMatch[1]) + query;
+
+  const questionMatch = path.match(/^\/admin\/intelligence\/sos-debate-questions\/([^/]+)$/);
+  if (questionMatch?.[1]) return epDebateQuestionHref(questionMatch[1]) + query;
 
   const dayMatch = path.match(/^\/admin\/intelligence\/debate-week-intensive\/([^/]+)$/);
   if (dayMatch?.[1] && INTENSIVE_DAY_IDS.has(dayMatch[1])) {

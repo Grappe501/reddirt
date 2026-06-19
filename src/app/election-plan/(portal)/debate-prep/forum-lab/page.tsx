@@ -7,8 +7,12 @@ import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/Electio
 import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import { EP_FORUM_TRANSCRIPT_LAB_API } from "@/lib/election-plan/debate-prep-links";
 import {
+  EP_FORUM_LAB_ANALYSIS_HREF,
+  EP_FORUM_LAB_CAPITALIZE_MOVES_HREF,
+  EP_FORUM_LAB_DEEP_ANALYSIS_HREF,
   EP_FORUM_LAB_ELECTION_LAW_STUDY_HREF,
   EP_FORUM_LAB_INTEGRATION_HREF,
+  EP_FORUM_LAB_PREDICTED_SCRIPT_HREF,
 } from "@/lib/election-plan/debate-prep-links";
 import { ACCA_2026_SOS_FORUM_DROP_REL, ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 import { loadForumTranscriptLab } from "@/lib/intelligence/v4/forumTranscriptLab";
@@ -51,6 +55,30 @@ export default function ElectionPlanForumTranscriptLabPage() {
                 className="rounded-full border border-[var(--ep-navy)] px-3 py-1 text-[var(--ep-navy)] hover:bg-[var(--ep-cream)]"
               >
                 Current election law study →
+              </Link>
+              <Link
+                href={EP_FORUM_LAB_ANALYSIS_HREF}
+                className="rounded-full border border-[var(--ep-navy)] px-3 py-1 text-[var(--ep-navy)] hover:bg-[var(--ep-cream)]"
+              >
+                Forum analysis lessons →
+              </Link>
+              <Link
+                href={EP_FORUM_LAB_CAPITALIZE_MOVES_HREF}
+                className="rounded-full border border-[var(--ep-navy)] px-3 py-1 text-[var(--ep-navy)] hover:bg-[var(--ep-cream)]"
+              >
+                Capitalize moves →
+              </Link>
+              <Link
+                href={EP_FORUM_LAB_DEEP_ANALYSIS_HREF}
+                className="rounded-full border border-[var(--ep-navy)] px-3 py-1 text-[var(--ep-navy)] hover:bg-[var(--ep-cream)]"
+              >
+                Deep analysis v2 →
+              </Link>
+              <Link
+                href={EP_FORUM_LAB_PREDICTED_SCRIPT_HREF}
+                className="rounded-full border border-[var(--ep-navy)] px-3 py-1 text-[var(--ep-navy)] hover:bg-[var(--ep-cream)]"
+              >
+                Predicted script →
               </Link>
             </div>
           </header>

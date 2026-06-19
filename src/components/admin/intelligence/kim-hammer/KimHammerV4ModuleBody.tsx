@@ -16,7 +16,19 @@ function loadPacketForEntry(entry: KimHammerV4ModuleEntry) {
   return loadDebateIntelligenceV4HubPacket();
 }
 
-export function KimHammerV4ModuleBody({ entry }: { entry: KimHammerV4ModuleEntry }) {
+type KimHammerV4ModuleBodyProps = {
+  entry: KimHammerV4ModuleEntry;
+  resolveHref?: (href: string) => string;
+  claimsHref?: string;
+  commandCenterHref?: string;
+};
+
+export function KimHammerV4ModuleBody({
+  entry,
+  resolveHref = (href) => href,
+  claimsHref = "/admin/intelligence/claims",
+  commandCenterHref = KIM_HAMMER_COMMAND_CENTER_HREF,
+}: KimHammerV4ModuleBodyProps) {
   const v4 = loadPacketForEntry(entry);
   const render = entry.render;
 
@@ -29,13 +41,13 @@ export function KimHammerV4ModuleBody({ entry }: { entry: KimHammerV4ModuleEntry
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
-            href={render.primaryHref ?? "/admin/intelligence"}
+            href={resolveHref(render.primaryHref ?? "/admin/intelligence")}
             className="rounded-full border border-kelly-navy/30 bg-white px-3 py-1 text-xs font-bold text-kelly-navy"
           >
             {render.primaryLabel ?? "Debate hub"} →
           </Link>
           <Link
-            href={KIM_HAMMER_COMMAND_CENTER_HREF}
+            href={resolveHref(commandCenterHref)}
             className="rounded-full border border-kelly-navy/30 px-3 py-1 text-xs font-bold text-kelly-navy"
           >
             Opponent record
@@ -163,7 +175,9 @@ export function KimHammerV4ModuleBody({ entry }: { entry: KimHammerV4ModuleEntry
           {pkg.billNumbers.map((billNumber) => (
             <Link
               key={billNumber}
-              href={`${KIM_HAMMER_COMMAND_CENTER_HREF}/bills/${encodeURIComponent(billNumber)}`}
+              href={resolveHref(
+                `${KIM_HAMMER_COMMAND_CENTER_HREF}/bills/${encodeURIComponent(billNumber)}`,
+              )}
               className="rounded border border-kelly-navy/20 px-2 py-1 font-bold text-kelly-navy"
             >
               {billNumber}
@@ -237,7 +251,7 @@ export function KimHammerV4ModuleBody({ entry }: { entry: KimHammerV4ModuleEntry
           <p className="text-[10px] font-bold uppercase text-rose-900">Needs research</p>
           <p className="mt-1 text-2xl font-bold">{claims.needsResearch.length}</p>
         </div>
-        <Link href="/admin/intelligence/claims" className="text-sm font-bold text-kelly-navy underline sm:col-span-3">
+        <Link href={claimsHref} className="text-sm font-bold text-kelly-navy underline sm:col-span-3">
           Open full claims ledger →
         </Link>
       </section>

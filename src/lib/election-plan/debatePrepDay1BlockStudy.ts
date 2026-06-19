@@ -5,6 +5,7 @@ import {
   EP_DEBATE_PREP_PSYCHOLOGY_HREF,
   EP_DEBATE_PREP_REHEARSAL_HREF,
   EP_DEBATE_PREP_TUTOR_HREF,
+  EP_FORUM_LAB_CAPITALIZE_MOVES_HREF,
   epDebatePrepBriefingHref,
   epDebatePrepDayBlockHref,
   epDebatePrepDayDrillHref,
@@ -12,6 +13,10 @@ import {
   epDebatePrepDayMicroLessonHref,
   epDebatePrepDayRehearsalHref,
   epDebatePrepPsychologySectionHref,
+  epForumLabCapitalizeMoveHref,
+  epForumLabDeepAnalysisLessonHref,
+  epForumLabPredictedScriptPhaseHref,
+  epTrapLaneHref,
 } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepLaneHref } from "@/lib/election-plan/debate-prep-route-map";
 import type { DrillDownLink } from "@/lib/election-plan/debatePrepDayDrillDown";
@@ -34,9 +39,14 @@ export type Day1BlockStudyDeep = {
   blockId: string;
   studyGuideTitle: string;
   overview: string;
+  professorLead?: string;
   phases: BlockStudyPhase[];
   deepSections: Array<{ title: string; body: string }>;
+  psychology?: Array<{ title: string; body: string }>;
+  opponentForecast?: Array<{ title: string; body: string }>;
   sampleLines?: BlockStudySampleLine[];
+  doNotSay?: string[];
+  claimsGate?: string[];
   keyTakeaways: string[];
   practiceSteps: string[];
   relatedLinks: DrillDownLink[];
@@ -46,6 +56,8 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
   "b1-posture": {
     blockId: "b1-posture",
     studyGuideTitle: "Command posture & 4-4-6 breathing — 45-minute study",
+    professorLead:
+      "Viewers decide whether you belong on stage in the first ten seconds — before a single policy word. This block trains the body that carries every later answer; skip it and philosophy sounds scripted.",
     overview:
       "This block trains your body before your vocabulary. Seasoned politicians look calm because stillness is rehearsed — not because adrenaline disappeared. Follow the five phases in order; do not skip mirror work.",
     phases: [
@@ -131,6 +143,40 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
           "1) Feet planted, weight even. 2) Exhale before the mic opens. 3) First sentence short — pause. 4) Hands still until gesture serves meaning. This is borrowed from police and military communication training: body protocol before content.",
       },
     ],
+    psychology: [
+      {
+        title: "Parasympathetic activation on camera",
+        body:
+          "The longer exhale (6 counts) signals safety to your nervous system. On split screen, opponents who breathe visibly before speaking read as in control — not slow.",
+      },
+      {
+        title: "Listening stillness as dominance",
+        body:
+          "Hammer will gesture early and tell stories. Kelly's stillness while he speaks reads as confidence, not passivity — if chin stays neutral and hands are quiet.",
+      },
+      {
+        title: "First-ten-second viewer scan",
+        body:
+          "Undecided voters decide whether you 'belong' before content lands. Sway, filler, or talking over the moderator reads as unprepared — breath protocol is the fix before philosophy.",
+      },
+    ],
+    opponentForecast: [
+      {
+        title: "When Hammer accelerates",
+        body:
+          "His pace is trained — yours must not match out of nerves. One quiet exhale while he finishes; then your first sentence at your pace, not his.",
+      },
+      {
+        title: "Moderator pile-on",
+        body:
+          "If the moderator interrupts mid-breath, finish exhale before answering — never start on inhale even when pressured.",
+      },
+    ],
+    doNotSay: [
+      "Sorry for the pause — the pause is power.",
+      "I'm nervous — never narrate fear on stage.",
+    ],
+    claimsGate: [],
     keyTakeaways: [
       "Two full 4-4-6 cycles without notes = minimum Day 1 posture success.",
       "Pause after your name is allowed — rush reads as fear.",
@@ -151,6 +197,8 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
   "b1-philosophy": {
     blockId: "b1-philosophy",
     studyGuideTitle: "Philosophy spine — agree but never only agree (60 min)",
+    professorLead:
+      "This is the debate move viewers reward most: warmth without surrender. Hammer will agree with himself; Pakko will agree with disillusionment. Kelly must agree once — then add the SOS layer only an administrator can deliver. Ending on agree alone loses the split screen.",
     overview:
       "Hammer's first move is always agree-on-security. This block builds muscle memory for the add-on — the SOS implementation layer he cannot claim from the Senate floor. You are not learning to disagree; you are learning to agree once, then add what only the administrator can deliver.",
     phases: [
@@ -227,6 +275,50 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         body:
           "Ending with 'I agree with Senator Hammer' and stopping. Adding abstract promises ('I'll work hard') instead of SOS deliverables. Attacking motives instead of contrasting roles (author vs administrator).",
       },
+      {
+        title: "Forum lab crosswalk",
+        body:
+          "ACCA capitalize moves: when Hammer says 'work together,' when he talks election security, when he emphasizes civic education — each has a rehearsed agree-add in forum lab. Philosophy block is the parent framework; capitalize pages are the triggers.",
+      },
+      {
+        title: "Three-way geometry",
+        body:
+          "When Pakko says both parties failed, agree on fair process — do not litigate party reform. When you speak third after two agree lines, use echo-trap escape: 'I won't repeat what you heard twice — here's what SOS does next week.'",
+      },
+    ],
+    psychology: [
+      {
+        title: "Why 'And' beats 'But'",
+        body:
+          "Shared-value agreement is emotional glue. 'But' signals combat to viewers who want calm. 'And' carries the add-on without breaking warmth — critical for Kelly's people-over-politics brand.",
+      },
+      {
+        title: "Eight seconds of trust",
+        body:
+          "Forum research pattern: agreement buys ~8 seconds of audience trust — enough for one fresh sentence. The add-on must be concrete (clerks, funding, Friday rule drop) or you waste the trust.",
+      },
+      {
+        title: "Viewer read on agree-only",
+        body:
+          "If Kelly stops after agreeing with Hammer, undecided voters mark her as 'same as him but less experienced.' The add-on is not optional — it is the differentiation move.",
+      },
+    ],
+    opponentForecast: [
+      {
+        title: "Hammer predictable openers",
+        body:
+          "'We all want secure elections.' 'We need to work together.' '#1 state in the nation.' 'I've worked with clerks 16 years.' — each gets agree + clerk/SOS add.",
+      },
+      {
+        title: "Pakko predictable openers",
+        body:
+          "'Both parties failed.' 'More competition.' — agree on voices/fair rules; do not become Libertarian surrogate.",
+      },
+      {
+        title: "Moderator yes/no traps",
+        body:
+          "'Don't you agree integrity matters?' — yes, then add. Never yes and stop.",
+      },
     ],
     sampleLines: [
       {
@@ -244,6 +336,25 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         text: "I won't repeat what you just heard twice — here's what the Secretary of State actually does next week.",
         note: "Confident differentiation",
       },
+      {
+        label: "Security agree-add",
+        text: "Absolutely — secure elections matter. And voters deserve to see how clerks make that real in every county.",
+        note: "Pairs with forum capitalize · hammer-security",
+      },
+      {
+        label: "Clerk Friday rule",
+        text: "We all want the same outcome — the question is who answers the phone when a new rule lands at 4 p.m. on a Friday.",
+        note: "Service-forward — ACCA clerk-room language",
+      },
+    ],
+    doNotSay: [
+      "I agree with Senator Hammer. (full stop)",
+      "He's wrong about… — motive attack before add-on",
+      "I'll work hard for Arkansas — empty add",
+    ],
+    claimsGate: [
+      "Do not agree to unverified statistics — NEEDS_RESEARCH lines stay off stage.",
+      "No specific act numbers in philosophy drill unless claims-verified.",
     ],
     keyTakeaways: [
       "Never end on agree alone — always add clerk/SOS layer.",
@@ -260,11 +371,17 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
       { href: epDebatePrepDayDrillHref(DAY1, "d1-agree-add"), label: "Command drill · agree-add" },
       { href: epDebatePrepDayRehearsalHref(DAY1, "rehearse-agree-contrast-30s"), label: "30s agree-contrast script" },
       { href: epDebatePrepLaneHref("lane-d1-author-deep"), label: "Author vs administrator lane" },
+      { href: epForumLabCapitalizeMoveHref("hammer-work-together"), label: "Forum · capitalize work together" },
+      { href: epForumLabCapitalizeMoveHref("hammer-security"), label: "Forum · capitalize security" },
+      { href: epForumLabDeepAnalysisLessonHref("profile-hammer"), label: "Forum · Hammer profile" },
+      { href: EP_FORUM_LAB_CAPITALIZE_MOVES_HREF, label: "Capitalize moves hub" },
     ],
   },
   "b1-author": {
     blockId: "b1-author",
     studyGuideTitle: "Author vs administrator — 60-minute contrast study",
+    professorLead:
+      "Hammer's best trap is collapsing 'I wrote the law' into 'I can run elections.' This block makes the job-fit counter automatic — two jobs voters already understand, no motive attacks, no bill-number tennis on Day 1.",
     overview:
       "Hammer's strongest move collapses 'wrote the law' into 'can run elections.' This block makes the job-fit counter automatic — writing is not administering seventy-five counties. No motive attacks; two jobs voters already understand.",
     phases: [
@@ -336,6 +453,35 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         body:
           "Listing too many jobs. Sounding defensive about never holding office. Attacking Hammer's motives. Debating bill text line-by-line without verification.",
       },
+      {
+        title: "Stack with philosophy block",
+        body:
+          "Author pivot is often phrase 3 after agree-add: agree on security → 'And the SOS job is making sure seventy-five counties can execute it.' Practice the chain in b1-philosophy block 45–60 min phase.",
+      },
+    ],
+    psychology: [
+      {
+        title: "Job-fit vs personality",
+        body:
+          "Voters hire SOS for operations, not charisma contests. Framing contrast as two jobs avoids sounding like you are attacking a senator — you are clarifying which job is on the ballot.",
+      },
+      {
+        title: "Competence without apology",
+        body:
+          "Never having held office is only a liability if you act defensive. Anchor on organizations run, clerks organized with, deadlines met — then ask for the administrator job plainly.",
+      },
+    ],
+    opponentForecast: [
+      {
+        title: "Hammer authorship bait",
+        body:
+          "'I wrote the bills that secured Arkansas elections.' 'I have more experience than anyone on this stage.' '#1 in the nation for election integrity.' — each gets clerk credit + administrator frame, not ranking debate.",
+      },
+      {
+        title: "Moderator experience questions",
+        body:
+          "'Why you and not him?' — administrator qualifications in 45 seconds: who answers clerk calls, who funds training, who shows up when rules change.",
+      },
     ],
     sampleLines: [
       {
@@ -351,6 +497,15 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         text: "Writing law and running the office clerks depend on are different jobs. I am asking for the administrator job.",
       },
     ],
+    doNotSay: [
+      "He doesn't care about clerks — motive attack",
+      "Heritage ranking says… — unverified stat on stage",
+      "I've never held office so… — apology frame",
+    ],
+    claimsGate: [
+      "Do not cite specific acts or Heritage rankings until staff verifies in claims ledger.",
+      "'Clerks secured those elections' is frame-safe; invented funding figures are not.",
+    ],
     keyTakeaways: [
       "One-sentence author vs administrator line without apology = success.",
       "Credit clerks; name SOS as service desk.",
@@ -365,11 +520,16 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
       { href: epDebatePrepBriefingHref("author-vs-administrator"), label: "Full contrast briefing" },
       { href: epDebatePrepDayExampleHref(DAY1, "ex1-hammer-open"), label: "Hammer opening example" },
       { href: epDebatePrepLaneHref("lane-d1-author-deep"), label: "Author vs administrator lane" },
+      { href: epDebatePrepDayBlockHref(DAY1, "b1-philosophy"), label: "Philosophy · agree-add stack" },
+      { href: epForumLabDeepAnalysisLessonHref("profile-hammer"), label: "Forum · Hammer profile" },
+      { href: epTrapLaneHref("experience-equals-sos-ready"), label: "Trap lane · experience equals SOS" },
     ],
   },
   "b1-psych": {
     blockId: "b1-psych",
     studyGuideTitle: "Debate atmosphere & psychology — 45-minute study",
+    professorLead:
+      "Adults learn under threat poorly — you cannot absorb trap lanes while adrenaline is high. This block names fear, rehearses atmosphere scripts, and locks Kelly's archetype: competent warmth, not performative toughness.",
     overview:
       "Adult learners need emotional honesty before opponent content sticks. This block names fear, reduces threat, and rehearses atmosphere scripts — not just reading manual pages.",
     phases: [
@@ -434,6 +594,47 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         body:
           "Voters distrust performative politicians. Steady body + honest preparation reads as authentic. 'Never debated' paired with visible rehearsal beats polished emptiness.",
       },
+      {
+        title: "Fear journal protocol",
+        body:
+          "Two sentences only — private to Kelly and coach. Sentence 1 names fear honestly; sentence 2 names what the room gets from you. Speaking them aloud reduces amygdala hijack before opponent content.",
+      },
+    ],
+    psychology: [
+      {
+        title: "Adult learning safety",
+        body:
+          "Day 1 intensive principle: reduce threat first. Body block → philosophy → contrast → psychology → opening. Skipping emotional honesty makes later drills feel like performance.",
+      },
+      {
+        title: "Anxious audience mirror",
+        body:
+          "If you mirror panic, the room escalates. Slow pace 10%, lower voice slightly, finish sentences cleanly — your breath protocol from b1-posture is the anchor.",
+      },
+      {
+        title: "Innocence reframe",
+        body:
+          "'I have never debated on TV — I have run organizations under pressure.' Replace apology with competence anchor: nonprofit leadership, clerk partnerships, deadlines met.",
+      },
+    ],
+    opponentForecast: [
+      {
+        title: "When Hammer goes personal",
+        body:
+          "Do not take bait into biography defense on Day 1. Atmosphere script: acknowledge, pivot to SOS service desk, return to clerks.",
+      },
+      {
+        title: "When Pakko amplifies cynicism",
+        body:
+          "Audience may nod at 'both parties failed.' Agree on fair process without becoming Libertarian surrogate — warmth + authority, not combat.",
+      },
+    ],
+    doNotSay: [
+      "I'm terrified — never narrate fear publicly",
+      "You should calm down — condescension to anxious voters",
+    ],
+    claimsGate: [
+      "Psychology journal is private — not for broadcast or social.",
     ],
     keyTakeaways: [
       "Fear sentence + offer sentence spoken aloud.",
@@ -457,6 +658,8 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
   "b1-tutor": {
     blockId: "b1-tutor",
     studyGuideTitle: "First impression opening — 30-minute study (replaces tutor-only block)",
+    professorLead:
+      "Opening lines written before body protocol sound performative. You earn the 90-second spine by finishing breath, philosophy, and contrast first — then deliver clerk partnership with a steady body. AI tutor is optional repetition, not a substitute for mirror work.",
     overview:
       "This block builds your opening without requiring AI first. Study the script architecture, rehearse on video, then optionally use the AI tutor for repetition — not as a substitute for out-loud work.",
     phases: [
@@ -509,6 +712,30 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         body:
           "Use tutor for judgment-free repetition after you have rehearsed aloud. Tutor does not replace mirror work, staff bait drills, or claims gate. Fifteen minutes max — opening only.",
       },
+      {
+        title: "Forum predicted script crosswalk",
+        body:
+          "Forum lab predicted-script opening beat has moderator setup, presence notes, and newspaper angle — use after this block's two video takes for full ACCA integration.",
+      },
+    ],
+    psychology: [
+      {
+        title: "First impression without opponent names",
+        body:
+          "Day 1 opening defines Kelly before Hammer defines her. No opponent names, no bill numbers — clerk partnership and administrator frame only. Viewers file you as SOS-ready, not reactive.",
+      },
+      {
+        title: "Presence beats polish",
+        body:
+          "Two clean video takes with visible pause after name beat one long AI session. Ums under three; hands still early; one open gesture at 'seventy-five counties.'",
+      },
+    ],
+    opponentForecast: [
+      {
+        title: "What comes after your opening",
+        body:
+          "Hammer will likely open with integrity ranking — you already rehearsed agree-add in b1-philosophy and author pivot in b1-author. Opening sets clerk frame; his open is your first capitalize trigger.",
+      },
     ],
     sampleLines: [
       {
@@ -523,6 +750,13 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         label: "Opening close",
         text: "Compare records, compare readiness, compare who will show up for clerks.",
       },
+    ],
+    doNotSay: [
+      "Senator Hammer… — no opponent names in Day 1 opening",
+      "Act 123… — no bill numbers in opening",
+    ],
+    claimsGate: [
+      "Opening spine uses frame-safe clerk language only — no unverified rankings or fraud framing.",
     ],
     keyTakeaways: [
       "Two clean video takes beats one long tutor session.",
@@ -539,6 +773,8 @@ export const DAY1_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
       { href: epDebatePrepDayDrillHref(DAY1, "d1-calm-open"), label: "Command drill · calm opening" },
       { href: `${EP_DEBATE_PREP_REHEARSAL_HREF}?queue=standard-tonight&card=1`, label: "Rehearsal queue" },
       { href: `${EP_DEBATE_PREP_TUTOR_HREF}?focus=opening`, label: "Optional · AI tutor (opening focus)" },
+      { href: epDebatePrepDayBlockHref(DAY1, "b1-posture"), label: "Posture · breath protocol" },
+      { href: epForumLabPredictedScriptPhaseHref("opening"), label: "Forum · predicted opening beat" },
     ],
   },
 };
