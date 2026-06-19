@@ -1,6 +1,8 @@
 /**
  * Phase 16 P3 — Speak-order drill queue (SOS + trap lanes as sequential cards).
  */
+import "server-only";
+
 import { evaluateStageSafeContent } from "@/lib/intelligence/v4/phase15StageSafeFilter";
 import { buildForumDrillQueueCards, countForumDrillQueueCards, forumRehearsalTonightReminder } from "@/lib/intelligence/v4/forumTranscriptRehearsalCards";
 import {
@@ -8,6 +10,10 @@ import {
   countWorldClassDressQueueCards,
 } from "@/lib/intelligence/v4/debatePrepWorldClassDressCards";
 import {
+  DRILL_QUEUE_HUB_HREF,
+  EP_DRILL_QUEUE_HUB_HREF,
+  DRILL_QUEUE_IDS,
+  resolveDrillQueueCardIndex,
   type DrillQueueCard,
   type DrillQueueCardType,
   type DrillQueueId,
@@ -17,13 +23,15 @@ import { getTrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 
 export {
   drillQueueCardTypeLabel,
+  DRILL_QUEUE_HUB_HREF,
+  EP_DRILL_QUEUE_HUB_HREF,
+  DRILL_QUEUE_IDS,
+  resolveDrillQueueCardIndex,
+  resolveDrillQueueIdClient,
   type DrillQueueCard,
   type DrillQueueCardType,
   type DrillQueueId,
 } from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
-
-export const DRILL_QUEUE_HUB_HREF = "/admin/intelligence/drill-queue";
-export const EP_DRILL_QUEUE_HUB_HREF = "/election-plan/debate-prep/rehearsal";
 
 export const PHASE16_P3_QUEUE_TOTAL = 5;
 export const PHASE16_P3_STANDARD_QUEUE_CARD_TOTAL = 6;
@@ -108,8 +116,6 @@ const QUEUE_META: Record<
     launchHref: `${EP_DRILL_QUEUE_HUB_HREF}?queue=world-class-dress`,
   },
 };
-
-export const DRILL_QUEUE_IDS = Object.keys(QUEUE_META) as DrillQueueId[];
 
 function buildSosCard(spec: Extract<CardSpec, { kind: "sos" }>, order: number): DrillQueueCard | undefined {
   const drill = getSosDebateQuestionDrillDown(spec.questionId);
@@ -213,12 +219,6 @@ export function resolveDrillQueueId(raw: string | undefined): DrillQueueId {
   if (countForumDrillQueueCards() > 0) return "forum-acca-tonight";
   if (countWorldClassDressQueueCards() > 0) return "world-class-dress";
   return "standard-tonight";
-}
-
-export function resolveDrillQueueCardIndex(raw: string | undefined, cardTotal: number): number {
-  const parsed = raw ? Number.parseInt(raw, 10) : 1;
-  if (!Number.isFinite(parsed) || parsed < 1) return 0;
-  return Math.min(cardTotal - 1, parsed - 1);
 }
 
 export function countDrillQueueStageSafeBlocked(cards: DrillQueueCard[]): number {

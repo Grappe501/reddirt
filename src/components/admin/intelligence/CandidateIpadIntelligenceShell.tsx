@@ -19,7 +19,7 @@ import {
   resolveIpadActiveSectionId,
   type IpadCceSectionId,
 } from "@/lib/intelligence/v4/phase15P7IpadPolish";
-import { isIpadDrillPlayerRoute } from "@/lib/intelligence/v4/phase16P5IpadDrillPlayer";
+import { isIpadDrillPlayerRoute } from "@/lib/intelligence/v4/phase16P5IpadDrillPlayerShared";
 import { resolveIntelligenceNavProfileClient } from "@/lib/intelligence/v4/roleBasedNavProfile";
 
 export function CandidateIpadIntelligenceShell({ children }: { children: React.ReactNode }) {

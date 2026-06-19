@@ -4,25 +4,23 @@ import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { CandidateIpadDrillPlayerBottomNav } from "@/components/admin/intelligence/CandidateIpadDrillPlayerBottomNav";
 import {
-  getDrillQueueCards,
   resolveDrillQueueCardIndex,
-  resolveDrillQueueId,
-} from "@/lib/intelligence/v4/phase16P3DrillQueue";
+  resolveDrillQueueIdClient,
+} from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 
 function IpadDrillPlayerBottomNavInner() {
   const searchParams = useSearchParams();
-  const queueId = resolveDrillQueueId(searchParams.get("queue") ?? undefined);
-  const cards = getDrillQueueCards(queueId);
-  if (cards.length === 0) return null;
-  const cardIndex = resolveDrillQueueCardIndex(searchParams.get("card") ?? undefined, cards.length);
-  const card = cards[cardIndex]!;
+  const queueId = resolveDrillQueueIdClient(searchParams.get("queue") ?? undefined);
+  const totalCards = Math.max(1, Number.parseInt(searchParams.get("total") ?? "6", 10) || 6);
+  const cardIndex = resolveDrillQueueCardIndex(searchParams.get("card") ?? undefined, totalCards);
+  const cardDurationMinutes = Math.max(1, Number.parseInt(searchParams.get("dur") ?? "5", 10) || 5);
 
   return (
     <CandidateIpadDrillPlayerBottomNav
       queueId={queueId}
       cardIndex={cardIndex}
-      totalCards={cards.length}
-      cardDurationMinutes={card.durationMinutes}
+      totalCards={totalCards}
+      cardDurationMinutes={cardDurationMinutes}
     />
   );
 }

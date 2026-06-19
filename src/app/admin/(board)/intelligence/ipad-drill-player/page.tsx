@@ -55,7 +55,10 @@ export default async function IpadDrillPlayerPage({
         {session.cards.map((c, i) => (
           <Link
             key={c.cardId}
-            href={buildIpadDrillPlayerHref(session.queueId, i + 1)}
+            href={buildIpadDrillPlayerHref(session.queueId, i + 1, {
+              total: session.totalCards,
+              minutes: c.durationMinutes,
+            })}
             className={`min-h-12 rounded-full border px-3 py-2 text-[10px] font-bold ${
               i === session.cardIndex
                 ? "border-teal-500 bg-teal-600 text-white"

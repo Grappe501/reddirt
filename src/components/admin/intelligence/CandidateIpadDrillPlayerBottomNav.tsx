@@ -7,8 +7,8 @@ import { CANDIDATE_COMMAND_HOME_HREF } from "@/lib/intelligence/v4/phase15Candid
 import {
   buildIpadDrillPlayerHref,
   IPAD_DRILL_PLAYER_HREF,
-} from "@/lib/intelligence/v4/phase16P5IpadDrillPlayer";
-import type { DrillQueueId } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+} from "@/lib/intelligence/v4/phase16P5IpadDrillPlayerShared";
+import type { DrillQueueId } from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 
 export function CandidateIpadDrillPlayerBottomNav({
   queueId,
@@ -43,7 +43,12 @@ export function CandidateIpadDrillPlayerBottomNav({
   const nextCard = cardIndex < totalCards - 1 ? cardIndex + 2 : null;
 
   function navigate(cardNumber: number) {
-    router.push(buildIpadDrillPlayerHref(queueId, cardNumber));
+    router.push(
+      buildIpadDrillPlayerHref(queueId, cardNumber, {
+        total: totalCards,
+        minutes: cardDurationMinutes,
+      }),
+    );
   }
 
   const mm = String(Math.floor(secondsLeft / 60)).padStart(2, "0");

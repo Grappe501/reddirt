@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { IpadDrillPlayerSummary } from "@/lib/intelligence/v4/phase16P5IpadDrillPlayer";
+import type { IpadDrillPlayerSummary } from "@/lib/intelligence/v4/phase16P5IpadDrillPlayerShared";
 
 export function CandidateIpadDrillPlayerStrip({ summary }: { summary: IpadDrillPlayerSummary }) {
   return (
