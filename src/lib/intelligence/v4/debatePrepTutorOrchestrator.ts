@@ -12,6 +12,12 @@ import {
   type DrillQueueCard,
   type DrillQueueId,
 } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+import { buildForumDrillQueueCards } from "@/lib/intelligence/v4/forumTranscriptRehearsalCards";
+import {
+  buildForumTutorContextPayload,
+  forumTutorCoachOpeningAddon,
+} from "@/lib/intelligence/v4/forumTranscriptTutorContext";
+import { loadForumTranscriptIntel } from "@/lib/intelligence/v4/forumTranscriptIntel";
 import {
   CHECK_MY_RECORD_PLAYBOOK,
   CHECK_MY_RECORD_REHEARSAL_SCRIPT,
@@ -63,6 +69,8 @@ export type TutorSession = {
   frameworkPrinciples: (typeof POLITICAL_DEBATE_COACH_FRAMEWORK.principles)[number][];
   estimatedMinutes: number;
   checkMyRecordBeats?: typeof CHECK_MY_RECORD_PLAYBOOK.deliveryWalkthrough;
+  forumIntelReady?: boolean;
+  forumIntelBrief?: string | null;
 };
 
 export type TutorCritiqueResult = {
@@ -77,12 +85,35 @@ export type TutorCritiqueResult = {
   timeEstimateSeconds: number | null;
 };
 
-function pickCards(queueId: DrillQueueId, cap: number): DrillQueueCard[] {
-  return getDrillQueueCards(queueId).slice(0, cap);
+function pickCards(queueId: DrillQueueId, cap: number, mode: DebatePrepTutorMode): DrillQueueCard[] {
+  const intel = loadForumTranscriptIntel();
+  let cards: DrillQueueCard[];
+
+  if (mode === "three-way-panel" && intel.ready) {
+    cards = getDrillQueueCards("forum-acca-tonight");
+    if (cards.length < cap) {
+      cards = [...cards, ...getDrillQueueCards("sos-speak-order")];
+    }
+  } else {
+    cards = getDrillQueueCards(queueId);
+    if (intel.ready && (mode === "deep-30" || mode === "tonight-15")) {
+      const forumPrefix = buildForumDrillQueueCards().slice(0, mode === "tonight-15" ? 2 : 3);
+      cards = [...forumPrefix, ...cards];
+    }
+  }
+
+  return cards.slice(0, cap);
 }
 
 function politicalTipsForCard(card: DrillQueueCard, focusIds: string[]): string[] {
   const tips: string[] = [];
+  if (card.cardType === "forum-capitalize" || card.cardType === "forum-moderator-q") {
+    tips.push("Forum-derived card — verify in claims gate; do not invent new opponent quotes.");
+    if (focusIds.includes("three-way-position")) {
+      tips.push(POLITICAL_DEBATE_COACH_FRAMEWORK.principles.find((p) => p.id === "three-way-position")!.rule);
+    }
+    return tips.slice(0, 3);
+  }
   for (const p of POLITICAL_DEBATE_COACH_FRAMEWORK.principles) {
     if (!focusIds.includes(p.id)) continue;
     if (card.cardType === "trap-pivot" && p.id === "trap-chess") {
@@ -103,11 +134,20 @@ function buildCoachTurns(card: DrillQueueCard, mode: DebatePrepTutorMode, index:
   turns.push({
     turnIndex: 0,
     coachMessage:
-      card.cardType === "trap-pivot"
-        ? `Card ${index + 1} — trap pivot. Hammer will likely say something like: "${card.prompt.slice(0, 120)}…" Your job is not to argue yet — listen for the bait.`
-        : `Card ${index + 1} — SOS speak-order. Moderators ask this because: ${card.prompt.slice(0, 120)}. Open with one verified line, not a biography.`,
+      card.cardType === "forum-capitalize"
+        ? `Card ${index + 1} — ACCA forum capitalize. When they say: "${card.prompt.slice(0, 100)}…"`
+        : card.cardType === "forum-moderator-q"
+          ? `Card ${index + 1} — predicted moderator question from ACCA forum: "${card.prompt.slice(0, 120)}…"`
+          : card.cardType === "trap-pivot"
+            ? `Card ${index + 1} — trap pivot. Hammer will likely say something like: "${card.prompt.slice(0, 120)}…" Your job is not to argue yet — listen for the bait.`
+            : `Card ${index + 1} — SOS speak-order. Moderators ask this because: ${card.prompt.slice(0, 120)}. Open with one verified line, not a biography.`,
     socraticQuestion: "What is the ONE sentence you say before he finishes talking?",
-    focusPrinciple: card.cardType === "trap-pivot" ? "trap-chess" : "three-way-position",
+    focusPrinciple:
+      card.cardType === "forum-capitalize" || card.cardType === "forum-moderator-q"
+        ? "three-way-position"
+        : card.cardType === "trap-pivot"
+          ? "trap-chess"
+          : "three-way-position",
     doThisNext: "Read the prompt once. Do not memorize — recognize the pattern.",
     timeBoxSeconds: mode === "panic-5" ? 60 : 90,
   });
@@ -148,7 +188,8 @@ function buildCoachTurns(card: DrillQueueCard, mode: DebatePrepTutorMode, index:
 
 export function buildDebatePrepTutorSession(mode: DebatePrepTutorMode): TutorSession {
   const config = getTutorModeConfig(mode);
-  const cards = pickCards(config.queueId, config.cardCap).map((card, i) => {
+  const intel = loadForumTranscriptIntel();
+  const cards = pickCards(config.queueId, config.cardCap, mode).map((card, i) => {
     const gate = evaluateStageSafeContent(card.claimsGate, "candidate");
     return {
       card,
@@ -169,13 +210,14 @@ export function buildDebatePrepTutorSession(mode: DebatePrepTutorMode): TutorSes
   const sequenceSteps = getTutorSequenceSteps(config.sequenceId);
 
   const modeGuide = getCoachModeGuide(mode);
+  const forumAddon = forumTutorCoachOpeningAddon();
   return {
     version: DEBATE_PREP_TUTOR_V5_VERSION,
     mode,
     config,
     modeGuide,
     sessionFlow: buildCoachSessionFlow(mode),
-    openingCoachMessage: modeGuide.coachVoice,
+    openingCoachMessage: forumAddon ? `${modeGuide.coachVoice} ${forumAddon}` : modeGuide.coachVoice,
     panicReminder: mode === "panic-5" ? POLITICAL_DEBATE_COACH_FRAMEWORK.panicScript : null,
     cards,
     sequenceSteps,
@@ -185,6 +227,8 @@ export function buildDebatePrepTutorSession(mode: DebatePrepTutorMode): TutorSes
     estimatedMinutes: config.minutes,
     checkMyRecordBeats:
       mode === "check-my-record" ? CHECK_MY_RECORD_PLAYBOOK.deliveryWalkthrough : undefined,
+    forumIntelReady: intel.ready,
+    forumIntelBrief: intel.ready ? intel.executiveBrief.slice(0, 400) : null,
   };
 }
 
@@ -268,9 +312,11 @@ function deterministicCritique(
     doNotSay,
     safeLineSuggestion: card.speakLine && !gate.blocked ? card.speakLine : null,
     politicalDebateNote:
-      card.cardType === "trap-pivot"
-        ? "Trap lanes reward patience — let him bite, pivot once, stop talking."
-        : "SOS questions reward clarity — one line for moderator, one for voters, one for clerks.",
+      card.cardType === "forum-capitalize" || card.cardType === "forum-moderator-q"
+        ? "Forum-derived drill — match ACCA panel tone: clerks audience, agree + fresh add, claims-gate every quote."
+        : card.cardType === "trap-pivot"
+          ? "Trap lanes reward patience — let him bite, pivot once, stop talking."
+          : "SOS questions reward clarity — one line for moderator, one for voters, one for clerks.",
     stageSafe,
     timeEstimateSeconds: Math.round(wordCount * 0.45),
   };
@@ -307,6 +353,7 @@ export async function critiqueTutorPracticeAnswer(
             practiceAnswer,
             topic: topic ?? card.title,
             deterministicHeadline: deterministic.headline,
+            forumIntel: buildForumTutorContextPayload(),
           }),
         },
       ],
@@ -356,6 +403,7 @@ export async function generateSocraticCoachMessage(
             kellyBeat: card.kellyBeat,
             turnIndex,
             baseMessage: turn.coachMessage,
+            forumIntel: buildForumTutorContextPayload(),
           }),
         },
       ],

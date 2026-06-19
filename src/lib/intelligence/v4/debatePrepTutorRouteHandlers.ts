@@ -13,6 +13,8 @@ import {
 import { listTutorModes } from "@/lib/intelligence/v4/debatePrepTutorPackage";
 import { listProfessorModes } from "@/lib/intelligence/v4/debatePrepProfessorV5";
 import { DEBATE_PREP_TUTOR_V5_VERSION, getTutorHubGuides } from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
+import { buildForumTutorContextPayload } from "@/lib/intelligence/v4/forumTranscriptTutorContext";
+import { countForumDrillQueueCards } from "@/lib/intelligence/v4/forumTranscriptRehearsalCards";
 import { getDrillQueueCards, resolveDrillQueueId } from "@/lib/intelligence/v4/phase16P3DrillQueue";
 import { runCopilotWithLlmDraftQueue } from "@/lib/intelligence/aiCopilotOrchestrator";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
@@ -77,6 +79,7 @@ function findCard(cardId: string, queueId?: string) {
 }
 
 export function getDebatePrepTutorPayload() {
+  const forumCards = countForumDrillQueueCards();
   return {
     ok: true as const,
     route: "debate-prep-tutor",
@@ -86,6 +89,8 @@ export function getDebatePrepTutorPayload() {
     professorModes: listProfessorModes(),
     guides: getTutorHubGuides(),
     governance: "NON_PUBLISHABLE · HUMAN_REVIEW · stage-safe gates enforced",
+    forumIntel: buildForumTutorContextPayload(),
+    forumDrillCardCount: forumCards,
   };
 }
 

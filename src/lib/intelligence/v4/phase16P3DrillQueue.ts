@@ -2,17 +2,19 @@
  * Phase 16 P3 — Speak-order drill queue (SOS + trap lanes as sequential cards).
  */
 import { evaluateStageSafeContent } from "@/lib/intelligence/v4/phase15StageSafeFilter";
+import { buildForumDrillQueueCards, countForumDrillQueueCards, forumRehearsalTonightReminder } from "@/lib/intelligence/v4/forumTranscriptRehearsalCards";
 import { getSosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { getTrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 
 export const DRILL_QUEUE_HUB_HREF = "/admin/intelligence/drill-queue";
+export const EP_DRILL_QUEUE_HUB_HREF = "/election-plan/debate-prep/rehearsal";
 
-export const PHASE16_P3_QUEUE_TOTAL = 3;
+export const PHASE16_P3_QUEUE_TOTAL = 4;
 export const PHASE16_P3_STANDARD_QUEUE_CARD_TOTAL = 6;
 
-export type DrillQueueId = "standard-tonight" | "sos-speak-order" | "trap-pivot";
+export type DrillQueueId = "standard-tonight" | "sos-speak-order" | "trap-pivot" | "forum-acca-tonight";
 
-export type DrillQueueCardType = "sos-speak-order" | "trap-pivot";
+export type DrillQueueCardType = "sos-speak-order" | "trap-pivot" | "forum-capitalize" | "forum-moderator-q";
 
 export type DrillQueueCard = {
   cardId: string;
@@ -43,7 +45,7 @@ type CardSpec =
   | { kind: "sos"; questionId: string; minutes: number }
   | { kind: "trap"; laneId: string; minutes: number };
 
-const QUEUE_CARD_SPECS: Record<DrillQueueId, CardSpec[]> = {
+const QUEUE_CARD_SPECS: Record<Exclude<DrillQueueId, "forum-acca-tonight">, CardSpec[]> = {
   "standard-tonight": [
     { kind: "trap", laneId: "county-champion", minutes: 7 },
     { kind: "sos", questionId: "integrity-vs-access", minutes: 5 },
@@ -91,6 +93,14 @@ const QUEUE_META: Record<
     description: "Four trap lanes — opponent signal, setup timing, and pivot script per card.",
     kellyRule: "Trap lanes are chess — rehearse pivot when Hammer bites, one-sentence bridge if he does not.",
     launchHref: `${DRILL_QUEUE_HUB_HREF}?queue=trap-pivot`,
+  },
+  "forum-acca-tonight": {
+    queueId: "forum-acca-tonight",
+    title: "Forum ACCA tonight",
+    description:
+      "Capitalize moves, mock moderator block, and predicted questions from ACCA Mountain View transcript analysis.",
+    kellyRule: "Forum-derived only — verify quotes in claims gate; do not invent new Hammer/Pakko lines.",
+    launchHref: `${EP_DRILL_QUEUE_HUB_HREF}?queue=forum-acca-tonight`,
   },
 };
 
@@ -147,6 +157,9 @@ function buildCard(spec: CardSpec, order: number): DrillQueueCard | undefined {
 }
 
 export function getDrillQueueCards(queueId: DrillQueueId): DrillQueueCard[] {
+  if (queueId === "forum-acca-tonight") {
+    return buildForumDrillQueueCards();
+  }
   const specs = QUEUE_CARD_SPECS[queueId] ?? [];
   return specs
     .map((spec, index) => buildCard(spec, index + 1))
@@ -154,6 +167,9 @@ export function getDrillQueueCards(queueId: DrillQueueId): DrillQueueCard[] {
 }
 
 export function getDrillQueue(queueId: DrillQueueId): DrillQueue | undefined {
+  if (queueId === "forum-acca-tonight" && countForumDrillQueueCards() === 0) {
+    return undefined;
+  }
   const meta = QUEUE_META[queueId];
   if (!meta) return undefined;
   const cards = getDrillQueueCards(queueId);
@@ -162,14 +178,40 @@ export function getDrillQueue(queueId: DrillQueueId): DrillQueue | undefined {
 }
 
 export function listDrillQueues(): DrillQueue[] {
-  return DRILL_QUEUE_IDS.map((id) => getDrillQueue(id)!);
+  return DRILL_QUEUE_IDS.map((id) => getDrillQueue(id)).filter((q): q is DrillQueue => Boolean(q));
+}
+
+export function drillQueueCardTypeLabel(cardType: DrillQueueCardType): string {
+  switch (cardType) {
+    case "sos-speak-order":
+      return "SOS speak-order";
+    case "trap-pivot":
+      return "Trap pivot";
+    case "forum-capitalize":
+      return "Forum capitalize";
+    case "forum-moderator-q":
+      return "Forum moderator Q";
+    default:
+      return cardType;
+  }
+}
+
+export function buildDrillQueueLaunchHref(
+  queueId: DrillQueueId,
+  hubBaseHref: string = DRILL_QUEUE_HUB_HREF,
+): string {
+  return `${hubBaseHref}?queue=${queueId}&card=1`;
 }
 
 export function resolveDrillQueueId(raw: string | undefined): DrillQueueId {
   if (raw && DRILL_QUEUE_IDS.includes(raw as DrillQueueId)) {
-    return raw as DrillQueueId;
+    const id = raw as DrillQueueId;
+    if (id === "forum-acca-tonight" && countForumDrillQueueCards() === 0) {
+      return "standard-tonight";
+    }
+    return id;
   }
-  return "standard-tonight";
+  return countForumDrillQueueCards() > 0 ? "forum-acca-tonight" : "standard-tonight";
 }
 
 export function resolveDrillQueueCardIndex(raw: string | undefined, cardTotal: number): number {
@@ -188,16 +230,25 @@ export type DrillQueueSummary = {
   defaultQueueId: DrillQueueId;
   defaultCardCount: number;
   tonightReminder: string;
+  forumQueueAvailable: boolean;
+  forumCardCount: number;
 };
 
 export function buildDrillQueueSummary(): DrillQueueSummary {
-  const defaultQueue = getDrillQueue("standard-tonight")!;
+  const forumCardCount = countForumDrillQueueCards();
+  const forumQueueAvailable = forumCardCount > 0;
+  const defaultQueueId: DrillQueueId = forumQueueAvailable ? "forum-acca-tonight" : "standard-tonight";
+  const defaultQueue = getDrillQueue(defaultQueueId) ?? getDrillQueue("standard-tonight")!;
+  const forumReminder = forumRehearsalTonightReminder();
   return {
-    hubHref: DRILL_QUEUE_HUB_HREF,
-    queueCount: PHASE16_P3_QUEUE_TOTAL,
-    defaultQueueId: "standard-tonight",
+    hubHref: EP_DRILL_QUEUE_HUB_HREF,
+    queueCount: forumQueueAvailable ? PHASE16_P3_QUEUE_TOTAL : PHASE16_P3_QUEUE_TOTAL - 1,
+    defaultQueueId,
     defaultCardCount: defaultQueue.cardCount,
     tonightReminder:
+      forumReminder ??
       "Run the drill queue — one card at a time, SOS speak-order and trap pivots with stage-safe gates on every line.",
+    forumQueueAvailable,
+    forumCardCount,
   };
 }

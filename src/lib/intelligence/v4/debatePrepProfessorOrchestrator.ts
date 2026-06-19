@@ -12,6 +12,10 @@ import {
   type TutorSession,
 } from "@/lib/intelligence/v4/debatePrepTutorOrchestrator";
 import {
+  buildForumTutorContextPayload,
+  forumTutorCoachOpeningAddon,
+} from "@/lib/intelligence/v4/forumTranscriptTutorContext";
+import {
   buildProfessorLecture,
   getProfessorModeConfig,
   gradePracticeAnswerProfessor,
@@ -59,6 +63,7 @@ export function buildProfessorTutorSession(mode: DebatePrepProfessorMode, topic 
   lecture.assignedReading = cardMeta.slice(0, 4).map((c) => ({ href: c.href, title: c.title }));
 
   const modeGuide = getProfessorModeGuide(mode);
+  const forumAddon = forumTutorCoachOpeningAddon();
   return {
     ...base,
     version: DEBATE_PREP_TUTOR_V5_VERSION,
@@ -70,7 +75,7 @@ export function buildProfessorTutorSession(mode: DebatePrepProfessorMode, topic 
     pedagogyPillars: PROFESSOR_PEDAGOGY_FRAMEWORK.pillars.filter((p) =>
       professorConfig.pedagogicalFocus.includes(p.id),
     ),
-    openingCoachMessage: modeGuide.coachVoice,
+    openingCoachMessage: forumAddon ? `${modeGuide.coachVoice} ${forumAddon}` : modeGuide.coachVoice,
     config: {
       ...base.config,
       label: professorConfig.label,
@@ -95,7 +100,7 @@ export async function generateProfessorMootChallenge(
       temperature: 0.35,
       messages: [
         { role: "system", content: DEBATE_PREP_PROFESSOR_MOOT_PROMPT },
-        { role: "user", content: JSON.stringify({ cardTitle, practiceAnswer }) },
+        { role: "user", content: JSON.stringify({ cardTitle, practiceAnswer, forumIntel: buildForumTutorContextPayload() }) },
       ],
     });
     return completion.choices[0]?.message?.content?.trim() || fallback;
@@ -120,7 +125,7 @@ export async function generateProfessorLectureNarrative(
       temperature: 0.32,
       messages: [
         { role: "system", content: DEBATE_PREP_PROFESSOR_LECTURE_PROMPT },
-        { role: "user", content: JSON.stringify(lecture) },
+        { role: "user", content: JSON.stringify({ lecture, forumIntel: buildForumTutorContextPayload() }) },
       ],
     });
     return completion.choices[0]?.message?.content?.trim() || fallback;

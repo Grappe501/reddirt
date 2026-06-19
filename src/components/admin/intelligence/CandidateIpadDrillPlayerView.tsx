@@ -4,6 +4,7 @@ import Link from "next/link";
 import { StageSafeBlockedPanel } from "@/components/admin/intelligence/StageSafeBlockedPanel";
 import { evaluateStageSafeContent } from "@/lib/intelligence/v4/phase15StageSafeFilter";
 import type { IpadDrillPlayerSession } from "@/lib/intelligence/v4/phase16P5IpadDrillPlayer";
+import { drillQueueCardTypeLabel } from "@/lib/intelligence/v4/phase16P3DrillQueue";
 
 export function CandidateIpadDrillPlayerView({ session }: { session: IpadDrillPlayerSession }) {
   const { card, queueTitle, totalCards, cardIndex } = session;
@@ -20,7 +21,7 @@ export function CandidateIpadDrillPlayerView({ session }: { session: IpadDrillPl
 
       <article className="rounded-2xl border-2 border-teal-400/80 bg-white p-5 shadow-sm">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-teal-950">
-          {card.cardType === "sos-speak-order" ? "SOS speak-order" : "Trap pivot"}
+          {drillQueueCardTypeLabel(card.cardType)}
         </p>
         <h1 className="mt-3 font-heading text-2xl font-bold leading-tight text-kelly-navy">{card.title}</h1>
         <p className="mt-4 rounded-xl border border-kelly-text/10 bg-kelly-surface/30 p-4 text-sm italic leading-relaxed text-kelly-muted">

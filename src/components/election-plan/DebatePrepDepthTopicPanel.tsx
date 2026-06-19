@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { DebateDepthTopic } from "@/lib/intelligence/v4/debateEncounterDepthTypes";
+import { getForumTechniquePatch } from "@/lib/intelligence/v4/forumTranscriptIntel";
 import { mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 import { EP_DEBATE_TECHNIQUES_HREF, EP_TRAP_LANES_HREF } from "@/lib/election-plan/debate-prep-links";
 
@@ -26,9 +27,16 @@ function ListBlock({ title, items, tone }: { title: string; items: string[]; ton
 
 export function DebatePrepDepthTopicPanel({ topic }: Props) {
   const { depth } = topic;
+  const forumAddendum = getForumTechniquePatch(topic.topicId);
 
   return (
     <section className="space-y-6">
+      {forumAddendum ? (
+        <article className="ep-card border-2 border-violet-300 bg-violet-50/50 p-5 text-sm">
+          <p className="text-xs font-bold uppercase text-violet-900">ACCA forum intel · technique addendum</p>
+          <p className="mt-2 text-[var(--ep-navy-muted)]">{forumAddendum}</p>
+        </article>
+      ) : null}
       <article className="ep-card border-2 border-[var(--ep-gold)]/25 bg-[var(--ep-cream)]/40 p-5">
         <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">Techniques · ~{topic.estimatedMinutes} min</p>
         <p className="mt-3 text-sm leading-relaxed text-[var(--ep-navy-muted)]">{depth.whatToExpectPlain}</p>

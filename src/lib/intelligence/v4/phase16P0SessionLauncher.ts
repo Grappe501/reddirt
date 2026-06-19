@@ -3,6 +3,7 @@
  */
 import { CANDIDATE_COMMAND_HOME_HREF } from "@/lib/intelligence/v4/phase15CandidateCommandDepth";
 import { DEMO_MODE_HUB_HREF } from "@/lib/intelligence/v4/phase15P6DemoMode";
+import { enrichRunOfShowWithForumIntel, forumRehearsalTonightReminder, countForumDrillQueueCards } from "@/lib/intelligence/v4/forumTranscriptRehearsalCards";
 
 export const REHEARSAL_HUB_HREF = "/admin/intelligence/rehearsal";
 
@@ -164,9 +165,11 @@ export function buildTonightRehearsalOptions(): RehearsalEncounterOption[] {
 export function getDefaultRunOfShowSteps(
   encounterId: RehearsalEncounterId = "debate-prep",
 ): RehearsalRunOfShowStep[] {
-  if (encounterId === "debate-prep") return DEBATE_PREP_RUN_OF_SHOW;
+  if (encounterId === "debate-prep") {
+    return enrichRunOfShowWithForumIntel(DEBATE_PREP_RUN_OF_SHOW, "debate-prep");
+  }
   if (encounterId === "acca-panel") {
-    return [
+    const base: RehearsalRunOfShowStep[] = [
       {
         stepId: "acca-prep-hub",
         order: 1,
@@ -208,6 +211,7 @@ export function getDefaultRunOfShowSteps(
         stageSafeRequired: true,
       },
     ];
+    return enrichRunOfShowWithForumIntel(base, "acca-panel");
   }
   if (encounterId === "clerk-meeting") {
     return [
@@ -270,17 +274,21 @@ export type RehearsalLauncherSummary = {
   defaultMinutes: number;
   defaultStepCount: number;
   tonightReminder: string;
+  forumRunOfShowEnriched: boolean;
 };
 
 export function buildRehearsalLauncherSummary(): RehearsalLauncherSummary {
   const defaultSession = buildRehearsalSession("debate-prep");
+  const forumReminder = forumRehearsalTonightReminder();
   return {
     hubHref: REHEARSAL_HUB_HREF,
     encounterCount: ENCOUNTER_OPTIONS.length,
-    defaultEncounterId: "debate-prep",
+    defaultEncounterId: countForumDrillQueueCards() > 0 ? "acca-panel" : "debate-prep",
     defaultMinutes: defaultSession.durationMinutes,
     defaultStepCount: defaultSession.steps.length,
     tonightReminder:
+      forumReminder ??
       "Start tonight's rehearsal — pick an encounter, run the timed steps, deep-link into existing prep surfaces (no new content silos).",
+    forumRunOfShowEnriched: countForumDrillQueueCards() > 0,
   };
 }

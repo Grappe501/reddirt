@@ -13,7 +13,8 @@ import {
   EP_OPPOSITION_RESEARCH_HREF,
 } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepDayHref, mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
-import { buildDebatePrepSystemV5Snapshot } from "@/lib/election-plan/debate-prep-system-v5";
+import { buildDebatePrepSystemV6Snapshot } from "@/lib/election-plan/debate-prep-system-v6";
+import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
 import { ACCA_2026_SOS_FORUM_DROP_REL, ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 
 const statusStyles = {
@@ -24,7 +25,7 @@ const statusStyles = {
 
 export function ElectionPlanDebatePrepHubPanel() {
   const referenceDate = process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
-  const snapshot = buildDebatePrepSystemV5Snapshot(referenceDate);
+  const snapshot = buildDebatePrepSystemV6Snapshot(referenceDate);
 
   return (
     <>
@@ -67,6 +68,8 @@ export function ElectionPlanDebatePrepHubPanel() {
       </section>
 
       <DebatePrepInstructionPanel />
+
+      <ForumTranscriptIntelHubPanel intel={snapshot.forumIntel} />
 
       <section className="mb-10">
         <h2 className="mb-4 font-heading text-lg font-bold text-[var(--ep-navy)]">Modules</h2>

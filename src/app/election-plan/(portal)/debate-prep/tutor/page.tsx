@@ -1,8 +1,10 @@
 import Link from "next/link";
 
+import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
 import { DebatePrepTutorClient } from "@/components/admin/intelligence/DebatePrepTutorClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { EP_DEBATE_PREP_REHEARSAL_HREF, EP_DEBATE_PREP_TUTOR_API } from "@/lib/election-plan/debate-prep-links";
+import { buildDebatePrepSystemV6Snapshot } from "@/lib/election-plan/debate-prep-system-v6";
 import { DEBATE_PREP_TUTOR_V5_VERSION, TUTOR_HUB_WELCOME } from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
 import { PROFESSOR_SHOWCASE_V6_VERSION } from "@/lib/intelligence/v4/debatePrepProfessorShowcaseV6";
 
@@ -13,6 +15,8 @@ export const metadata = {
 };
 
 export default function ElectionPlanDebatePrepTutorPage() {
+  const snapshot = buildDebatePrepSystemV6Snapshot();
+
   return (
     <>
       <div className="ep-classification">Internal · AI tutor · Debate prep v5</div>
@@ -27,6 +31,8 @@ export default function ElectionPlanDebatePrepTutorPage() {
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">Debate prep seminar</h1>
             <p className="mt-3 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{TUTOR_HUB_WELCOME.intro}</p>
           </header>
+
+          <ForumTranscriptIntelHubPanel intel={snapshot.forumIntel} compact />
 
           <DebatePrepTutorClient embedded apiBase={EP_DEBATE_PREP_TUTOR_API} />
 

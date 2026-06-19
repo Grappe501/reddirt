@@ -12,14 +12,31 @@ import {
   epTrapLaneHref,
 } from "@/lib/election-plan/debate-prep-links";
 import { getSurfaceGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
+import { loadForumTranscriptIntel } from "@/lib/intelligence/v4/forumTranscriptIntel";
 import { TRAP_LANE_FIRST_TIMER_NOTE, listTrapLaneSummaries } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 
 export function DebatePrepTrapLanesIndexPanel() {
   const guide = getSurfaceGuide("trap-lanes-index");
   const lanes = listTrapLaneSummaries();
+  const forumIntel = loadForumTranscriptIntel();
 
   return (
     <section className="space-y-6">
+      {forumIntel.hammerThemes.length ? (
+        <article className="ep-card border-2 border-rose-200 bg-rose-50/40 p-5 text-sm">
+          <p className="text-xs font-bold uppercase text-rose-900">Hammer tells · from ACCA forum transcript</p>
+          <ul className="mt-3 list-inside list-disc space-y-1 text-[var(--ep-navy-muted)]">
+            {forumIntel.hammerThemes.map((t) => (
+              <li key={t.slice(0, 48)}>{t}</li>
+            ))}
+          </ul>
+          {forumIntel.watchForTells.length ? (
+            <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
+              <span className="font-bold text-violet-900">Watch:</span> {forumIntel.watchForTells.slice(0, 3).join(" · ")}
+            </p>
+          ) : null}
+        </article>
+      ) : null}
       <p className="text-sm text-[var(--ep-navy-muted)]">
         Position Hammer into your hand: setup questions, bait psychology, rebuttal scripts, and 45-second pivots.
         Verify act numbers in opposition research before any public line.

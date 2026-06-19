@@ -5,15 +5,18 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { StageSafeBlockedPanel } from "@/components/admin/intelligence/StageSafeBlockedPanel";
 import { evaluateStageSafeContent } from "@/lib/intelligence/v4/phase15StageSafeFilter";
 import type { DrillQueueCard, DrillQueueId } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+import { drillQueueCardTypeLabel } from "@/lib/intelligence/v4/phase16P3DrillQueue";
 
 export function CandidateDrillQueueCardPlayer({
   queueId,
   cards,
   queueTitle,
+  hubBaseHref = "/admin/intelligence/drill-queue",
 }: {
   queueId: DrillQueueId;
   cards: DrillQueueCard[];
   queueTitle: string;
+  hubBaseHref?: string;
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -31,7 +34,7 @@ export function CandidateDrillQueueCardPlayer({
     const params = new URLSearchParams(searchParams.toString());
     params.set("queue", queueId);
     params.set("card", String(cardNumber));
-    router.push(`/admin/intelligence/drill-queue?${params.toString()}`);
+    router.push(`${hubBaseHref}?${params.toString()}`);
   }
 
   return (
@@ -46,7 +49,7 @@ export function CandidateDrillQueueCardPlayer({
       <article className="rounded-xl border-2 border-teal-400/80 bg-white p-6 text-sm shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-teal-950">
-            {card.cardType === "sos-speak-order" ? "SOS speak-order" : "Trap pivot"}
+            {drillQueueCardTypeLabel(card.cardType)}
           </p>
           {card.stageSafeBlocked ? (
             <span className="rounded-full border border-rose-300 bg-rose-50 px-2 py-0.5 text-[10px] font-bold text-rose-950">

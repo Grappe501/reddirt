@@ -185,6 +185,38 @@ export function DebateWeekDayDeepPanel({
         </section>
       ) : null}
 
+      {dayId === "day-4-forum-intelligence" && forumDeepAnalysis?.verbatimQuotes?.length ? (
+        <section className="rounded-xl border border-amber-200 bg-amber-50/40 p-5 text-sm">
+          <h2 className="font-heading text-lg font-bold text-amber-950">Verbatim forum quotes (claims-gated)</h2>
+          <div className="mt-4 space-y-3">
+            {forumDeepAnalysis.verbatimQuotes.slice(0, 6).map((q, i) => (
+              <div key={`${q.quote.slice(0, 24)}-${i}`} className="rounded-lg border border-amber-200 bg-white p-3">
+                <p className="font-bold text-kelly-navy">
+                  {q.speaker} · <span className="text-[10px] uppercase">{q.claimsGate}</span>
+                </p>
+                <p className="mt-1 italic">&ldquo;{q.quote}&rdquo;</p>
+                <p className="mt-1 text-xs text-kelly-muted">Stage use: {q.stageUse}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {dayId === "day-4-forum-intelligence" && forumDeepAnalysis?.predictedDebateScript?.length ? (
+        <section className="rounded-xl border border-indigo-200 bg-indigo-50/40 p-5 text-sm">
+          <h2 className="font-heading text-lg font-bold text-indigo-950">Predicted debate beats (from forum)</h2>
+          <div className="mt-4 space-y-3">
+            {forumDeepAnalysis.predictedDebateScript.slice(0, 4).map((beat, i) => (
+              <div key={`${beat.phase}-${i}`} className="rounded-lg border border-indigo-200 bg-white p-3">
+                <p className="font-bold uppercase text-indigo-900">{beat.phase}</p>
+                <p className="mt-1 text-kelly-muted">Q: {beat.moderatorQuestion}</p>
+                <p className="mt-2 font-bold text-emerald-900">Kelly best: {beat.kellyBest}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       {dayId === "day-5-anticipate-and-capitalize" && forumDeepAnalysis?.mockModeratorBlock ? (
         <section className="rounded-xl border border-violet-300 bg-violet-50/40 p-5 text-sm">
           <h2 className="font-heading text-lg font-bold text-violet-950">Mock moderator block (from forum deep analysis)</h2>

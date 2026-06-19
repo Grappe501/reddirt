@@ -19,7 +19,7 @@ export type TutorModeConfig = {
   headline: string;
   coachOpening: string;
   cardCap: number;
-  queueId: "standard-tonight" | "sos-speak-order" | "trap-pivot";
+  queueId: "standard-tonight" | "sos-speak-order" | "trap-pivot" | "forum-acca-tonight";
   sequenceId: string | null;
   politicalFocus: string[];
 };
@@ -120,7 +120,7 @@ export const TUTOR_MODE_CONFIGS: Record<DebatePrepTutorMode, TutorModeConfig> = 
     coachOpening:
       "Three-way panels punish pile-ons and reward the calm third voice. We rehearse SOS speak-order with Packo add-ons and Hammer bait — agree with Packo where fair, never join a smear, bridge to county service.",
     cardCap: 4,
-    queueId: "sos-speak-order",
+    queueId: "forum-acca-tonight",
     sequenceId: "three-way-contrast",
     politicalFocus: ["three-way-position", "agree-fresh-add", "composure-contrast"],
   },

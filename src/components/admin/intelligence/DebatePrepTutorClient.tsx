@@ -335,6 +335,15 @@ export function DebatePrepTutorClient({
                 {session.panicReminder}
               </p>
             ) : null}
+            {session.forumIntelReady && session.forumIntelBrief ? (
+              <div className="rounded-xl border-2 border-violet-300/70 bg-violet-50/50 p-4 text-sm">
+                <p className="text-[10px] font-bold uppercase tracking-wide text-violet-900">ACCA forum intel · active in this session</p>
+                <p className="mt-2 leading-relaxed text-violet-950/90">{session.forumIntelBrief}</p>
+                <p className="mt-2 text-xs text-violet-900/80">
+                  Forum-derived cards are mixed into your queue — verify quotes in claims gate before stage.
+                </p>
+              </div>
+            ) : null}
             <ShowcaseSessionTimeline steps={session.sessionFlow} skin={skin} />
           </>
         );

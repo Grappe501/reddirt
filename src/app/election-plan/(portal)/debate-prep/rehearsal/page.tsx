@@ -1,3 +1,6 @@
+import { Suspense } from "react";
+
+import { CandidateDrillQueuePanel } from "@/components/admin/intelligence/CandidateDrillQueuePanel";
 import { CandidateDrillQueueStrip } from "@/components/admin/intelligence/CandidateDrillQueueStrip";
 import { CandidateEncounterScenariosStrip } from "@/components/admin/intelligence/CandidateEncounterScenariosStrip";
 import { CandidateIpadDrillPlayerStrip } from "@/components/admin/intelligence/CandidateIpadDrillPlayerStrip";
@@ -5,8 +8,16 @@ import { CandidateRehearsalLauncherStrip } from "@/components/admin/intelligence
 import { CandidateRunOfShowStrip } from "@/components/admin/intelligence/CandidateRunOfShowStrip";
 import { CandidateSessionDebriefStrip } from "@/components/admin/intelligence/CandidateSessionDebriefStrip";
 import { CandidateSreClosureStrip } from "@/components/admin/intelligence/CandidateSreClosureStrip";
+import { ForumRehearsalIntelPanel } from "@/components/election-plan/ForumRehearsalIntelPanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import { buildDebatePrepCommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v5";
+import { buildDebatePrepCommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v6";
+import {
+  EP_DRILL_QUEUE_HUB_HREF,
+  getDrillQueue,
+  getDrillQueueCards,
+  listDrillQueues,
+  resolveDrillQueueId,
+} from "@/lib/intelligence/v4/phase16P3DrillQueue";
 
 export const dynamic = "force-dynamic";
 
@@ -16,12 +27,22 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function ElectionPlanDebatePrepRehearsalPage() {
+export default async function ElectionPlanDebatePrepRehearsalPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ queue?: string; card?: string }>;
+}) {
+  const params = await searchParams;
   const { feed, sreClosure } = buildDebatePrepCommandHomeBundle();
+  const queueId = resolveDrillQueueId(params.queue);
+  const queues = listDrillQueues();
+  const activeQueue = getDrillQueue(queueId)!;
+  const cards = getDrillQueueCards(queueId);
+  const showDrillPlayer = Boolean(params.queue || params.card || feed.drillQueue.forumQueueAvailable);
 
   return (
     <>
-      <div className="ep-classification">Internal · Rehearsal engine · Debate prep v5</div>
+      <div className="ep-classification">Internal · Rehearsal engine · Debate prep v6</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-5xl">
           <ElectionPlanDebatePrepSubnav />
@@ -34,6 +55,21 @@ export default function ElectionPlanDebatePrepRehearsalPage() {
               encounter first, then debrief.
             </p>
           </header>
+
+          <ForumRehearsalIntelPanel />
+
+          {showDrillPlayer ? (
+            <div className="mb-8">
+              <Suspense fallback={<p className="text-sm text-[var(--ep-navy-muted)]">Loading drill queue…</p>}>
+                <CandidateDrillQueuePanel
+                  queues={queues}
+                  cards={cards}
+                  activeQueue={activeQueue}
+                  hubBaseHref={EP_DRILL_QUEUE_HUB_HREF}
+                />
+              </Suspense>
+            </div>
+          ) : null}
 
           <div className="space-y-4">
             <CandidateRehearsalLauncherStrip summary={feed.rehearsalLauncher} />

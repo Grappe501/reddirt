@@ -36,6 +36,18 @@ const commandDrills = (deep?.commandDrills ?? []).slice(0, 16);
 const techniquePatches: ForumDebateUpgradeRecord["techniquePatches"] = [];
 if (analysis?.hammerThemes?.length) {
   techniquePatches.push({
+    topicId: "hammer-attacks",
+    addendum: `Hammer ACCA forum themes: ${analysis.hammerThemes.slice(0, 5).join(" · ")}`,
+  });
+}
+if (analysis?.pakkoThemes?.length) {
+  techniquePatches.push({
+    topicId: "three-way",
+    addendum: `Pakko ACCA forum themes: ${analysis.pakkoThemes.slice(0, 5).join(" · ")}`,
+  });
+}
+if (analysis?.hammerThemes?.length) {
+  techniquePatches.push({
     topicId: "three-way-pivot",
     addendum: `Hammer forum tells: ${analysis.hammerThemes.slice(0, 4).join(" · ")}`,
   });

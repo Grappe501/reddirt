@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "builtAt": "2026-06-18T22:52:06.587Z",
+  "builtAt": "2026-06-19T00:00:11.546Z",
   "sourceUpdatedAt": "2026-06-18T22:51:43.475Z",
   "transcriptChars": 73365,
   "executiveBrief": "Kelly Grappe is focused on serving the people of Arkansas, emphasizing collaboration with county clerks and improving civic engagement. She aims to ensure election integrity while advocating for innovative solutions to enhance public confidence in the electoral process.",
@@ -93,6 +93,14 @@
     "Ensure accuracy of claims regarding election technology upgrades."
   ],
   "techniquePatches": [
+    {
+      "topicId": "hammer-attacks",
+      "addendum": "Hammer ACCA forum themes: Experience and integrity in public service · Collaboration with county clerks · Importance of civic education and engagement · Commitment to election security · Proactive communication and support"
+    },
+    {
+      "topicId": "three-way",
+      "addendum": "Pakko ACCA forum themes: Advocacy for competition in politics · Focus on transparency and integrity in elections · Critique of the two-party system · Support for voter engagement and participation · Emphasis on reducing government overreach"
+    },
     {
       "topicId": "three-way-pivot",
       "addendum": "Hammer forum tells: Experience and integrity in public service · Collaboration with county clerks · Importance of civic education and engagement · Commitment to election security"
