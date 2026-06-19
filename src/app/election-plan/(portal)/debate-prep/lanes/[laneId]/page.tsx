@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { DebateWeekLaneDetailClient } from "@/components/admin/intelligence/DebateWeekLaneDetailClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import {
   EP_DEBATE_PREP_HREF,
   EP_DEBATE_PREP_LANES_HREF,

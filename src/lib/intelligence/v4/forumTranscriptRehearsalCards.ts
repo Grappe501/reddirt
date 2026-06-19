@@ -32,7 +32,7 @@ export function buildForumDrillQueueCards(): DrillQueueCard[] {
       durationMinutes: 6,
       durationLabel: "6 min",
     });
-    for (const followUp of intel.mockModeratorBlock.followUps.slice(0, 2)) {
+    for (const followUp of intel.mockModeratorBlock.followUps?.slice(0, 2) ?? []) {
       cards.push({
         cardId: `forum-mod-fu-${order}`,
         order: order++,
@@ -94,7 +94,7 @@ export function countForumDrillQueueCards(): number {
 
   let count = 0;
   if (intel.mockModeratorBlock?.openingQuestion) {
-    count += 1 + Math.min(2, intel.mockModeratorBlock.followUps.length);
+    count += 1 + Math.min(2, intel.mockModeratorBlock.followUps?.length ?? 0);
   }
   count += Math.min(6, intel.capitalizeMoves.length);
   count += Math.min(4, intel.predictedQuestions.length);

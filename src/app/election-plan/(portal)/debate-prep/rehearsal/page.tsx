@@ -10,7 +10,8 @@ import { CandidateSessionDebriefStrip } from "@/components/admin/intelligence/Ca
 import { CandidateSreClosureStrip } from "@/components/admin/intelligence/CandidateSreClosureStrip";
 import { ForumRehearsalIntelPanel } from "@/components/election-plan/ForumRehearsalIntelPanel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import { buildDebatePrepCommandHomeBundle, DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
+import { buildDebatePrepCommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v8";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import {
   EP_DRILL_QUEUE_HUB_HREF,
   getDrillQueue,

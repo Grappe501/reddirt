@@ -1,7 +1,7 @@
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { DebatePrepTechniquesIndexPanel } from "@/components/election-plan/DebatePrepTechniquesIndexPanel";
 
-import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 
 export const dynamic = "force-dynamic";
 

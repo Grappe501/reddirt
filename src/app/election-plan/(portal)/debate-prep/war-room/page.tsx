@@ -1,10 +1,8 @@
 import { DebatePrepWarRoomPanel } from "@/components/election-plan/DebatePrepWarRoomPanel";
 import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import {
-  buildDebatePrepSystemV8Snapshot,
-  DEBATE_PREP_PACKAGE_LABEL,
-} from "@/lib/election-plan/debate-prep-system-v8";
+import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 
 export const dynamic = "force-dynamic";
 

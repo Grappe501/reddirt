@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { DebateWeekDayDeepPanel } from "@/components/admin/intelligence/DebateWeekDayDeepPanel";
 import { DebateWeekDayV3Panel } from "@/components/admin/intelligence/DebateWeekDayV3Panel";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import {
   EP_DEBATE_PREP_HREF,
   EP_DEBATE_PREP_LANES_HREF,

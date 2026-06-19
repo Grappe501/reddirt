@@ -2,12 +2,13 @@
  * Debate Prep System v8 — world-class readiness engine.
  * Layers unified operator package (v7) with 8-dimension radar, prep modes, simulations, and dress rehearsal.
  */
+import "server-only";
+
 import {
   buildDebatePrepTonightPackage,
   buildDebatePrepSystemV7Snapshot,
   type DebatePrepSystemV7Snapshot,
   type DebatePrepTonightPackage,
-  type DebatePrepTonightStep,
 } from "@/lib/election-plan/debate-prep-system-v7";
 import { buildDebatePrepCommandHomeBundle as buildV7CommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v7";
 import {
@@ -16,20 +17,18 @@ import {
   type DebatePrepWorldClassEngineSlice,
 } from "@/lib/election-plan/debatePrepWorldClassEngine";
 import { epTrapLaneHref } from "@/lib/election-plan/debate-prep-links";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import { loadKellyDebatePackageProgress } from "@/lib/intelligence/v4/kellyDebatePackageProgress";
 import { countWorldClassDressQueueCards } from "@/lib/intelligence/v4/debatePrepWorldClassDressCards";
+import type {
+  DebatePrepTonightPackageV8,
+  DebatePrepTonightStepV8,
+} from "@/lib/election-plan/debate-prep-system-v8-types";
+
+export { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
+export type { DebatePrepTonightPackageV8, DebatePrepTonightStepV8 } from "@/lib/election-plan/debate-prep-system-v8-types";
 
 export const DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.0-world-class-engine";
-export const DEBATE_PREP_PACKAGE_LABEL = "Debate prep v8";
-
-export type DebatePrepTonightStepV8 = DebatePrepTonightStep & {
-  completed: boolean;
-};
-
-export type DebatePrepTonightPackageV8 = Omit<DebatePrepTonightPackage, "steps"> & {
-  steps: DebatePrepTonightStepV8[];
-  stepsCompleted: number;
-};
 
 export type DebatePrepSystemV8Snapshot = Omit<
   DebatePrepSystemV7Snapshot,
@@ -61,7 +60,7 @@ function enrichTonightPackageWithSmartTrap(
       ...step,
       href,
       completed: completedStepIds.includes(step.stepId),
-    };
+    } satisfies DebatePrepTonightStepV8;
   });
   return {
     ...pkg,

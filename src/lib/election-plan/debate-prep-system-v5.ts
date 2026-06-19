@@ -2,14 +2,11 @@
  * Debate Prep System v5 — Election Plan primary orchestration layer.
  * Unifies command course, tutor, forum lab, rehearsal engine, and opposition crosswalk.
  */
-import { buildCandidateCommandHomeFeed } from "@/lib/intelligence/v4/candidateCommandHome";
 import { DEBATE_PREP_TUTOR_V5_VERSION, TUTOR_HUB_WELCOME } from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
 import { DEBATE_DATE, DEBATE_WEEK_INTENSIVE_DAYS, DEBATE_WEEK_INTENSIVE_PRIMER } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { DEBATE_INTENSIVE_V3_LABEL } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
 import { loadKellyDebateIntensiveProgress } from "@/lib/intelligence/v4/kellyDebateIntensiveProgress";
 import { loadForumTranscriptLab } from "@/lib/intelligence/v4/forumTranscriptLab";
-import { buildCceClosureSummary } from "@/lib/intelligence/v4/phase15P9Closure";
-import { buildSreClosureSummary } from "@/lib/intelligence/v4/phase16P9Closure";
 import { mapAdminHrefsDeep } from "@/lib/election-plan/debate-prep-route-map";
 import { shouldSkipHumanActionQueueSyncOnRequest } from "@/lib/intelligence/intelligenceLaunchMode";
 import {
@@ -84,7 +81,9 @@ function computeElectionPlanReadiness(
 export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebatePrepSystemV5Snapshot {
   const ref = referenceDate ?? process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
   const useLightFeed = shouldSkipHumanActionQueueSyncOnRequest();
-  const feed = useLightFeed ? null : buildCandidateCommandHomeFeed();
+  const feed = useLightFeed
+    ? null
+    : require("@/lib/intelligence/v4/candidateCommandHome").buildCandidateCommandHomeFeed();
   const progress = loadKellyDebateIntensiveProgress();
   const forum = loadForumTranscriptLab();
   const todayPlan = DEBATE_WEEK_INTENSIVE_DAYS.find((d) => d.calendarDate === ref);
@@ -220,6 +219,9 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
 }
 
 export function buildDebatePrepCommandHomeBundle() {
+  const { buildCandidateCommandHomeFeed } = require("@/lib/intelligence/v4/candidateCommandHome") as typeof import("@/lib/intelligence/v4/candidateCommandHome");
+  const { buildCceClosureSummary } = require("@/lib/intelligence/v4/phase15P9Closure") as typeof import("@/lib/intelligence/v4/phase15P9Closure");
+  const { buildSreClosureSummary } = require("@/lib/intelligence/v4/phase16P9Closure") as typeof import("@/lib/intelligence/v4/phase16P9Closure");
   const raw = {
     feed: buildCandidateCommandHomeFeed(),
     cceClosure: buildCceClosureSummary(),

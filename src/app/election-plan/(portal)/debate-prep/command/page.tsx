@@ -4,8 +4,8 @@ import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/Electio
 import {
   buildDebatePrepCommandHomeBundle,
   buildDebatePrepSystemV8Snapshot,
-  DEBATE_PREP_PACKAGE_LABEL,
 } from "@/lib/election-plan/debate-prep-system-v8";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import { mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
 
 export const dynamic = "force-dynamic";

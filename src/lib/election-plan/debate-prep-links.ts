@@ -17,6 +17,8 @@ export const EP_FORUM_TRANSCRIPT_LAB_API = "/api/election-plan/forum-transcript-
 export const EP_DEBATE_PREP_TUTOR_API = "/api/election-plan/debate-prep-tutor";
 export const EP_DEBATE_PREP_PROGRESS_API = "/api/election-plan/debate-week-intensive/progress";
 
+export const DEBATE_PREP_PACKAGE_LABEL = "Debate prep v8";
+
 export function epTrapLaneHref(laneId: string): string {
   return `${EP_TRAP_LANES_HREF}/${laneId}`;
 }

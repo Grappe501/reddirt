@@ -3,8 +3,8 @@
 import { useCallback, useState } from "react";
 import Link from "next/link";
 
-import type { DebatePrepTonightPackageV8 } from "@/lib/election-plan/debate-prep-system-v8";
-import { EP_DEBATE_PREP_PACKAGE_PROGRESS_API } from "@/lib/election-plan/debate-prep-links";
+import type { DebatePrepTonightPackageV8 } from "@/lib/election-plan/debate-prep-system-v8-types";
+import { DEBATE_PREP_PACKAGE_LABEL, EP_DEBATE_PREP_PACKAGE_PROGRESS_API } from "@/lib/election-plan/debate-prep-links";
 
 export function DebatePrepTonightPackageClient({
   tonightPackage,

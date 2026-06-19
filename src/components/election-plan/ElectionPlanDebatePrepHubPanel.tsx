@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "server-only";
 
 import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
 import { DebatePrepInstructionPanel } from "@/components/election-plan/DebatePrepInstructionPanel";
@@ -13,7 +14,8 @@ import {
   EP_OPPOSITION_RESEARCH_HREF,
 } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepDayHref, mapAdminHrefToElectionPlan } from "@/lib/election-plan/debate-prep-route-map";
-import { buildDebatePrepSystemV8Snapshot, DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-system-v8";
+import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
+import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
 import { EP_DEBATE_PREP_WAR_ROOM_HREF } from "@/lib/election-plan/debate-prep-links";
 import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
