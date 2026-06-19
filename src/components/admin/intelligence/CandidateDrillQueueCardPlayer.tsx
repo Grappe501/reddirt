@@ -4,8 +4,11 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { StageSafeBlockedPanel } from "@/components/admin/intelligence/StageSafeBlockedPanel";
 import { evaluateStageSafeContent } from "@/lib/intelligence/v4/phase15StageSafeFilter";
-import type { DrillQueueCard, DrillQueueId } from "@/lib/intelligence/v4/phase16P3DrillQueue";
-import { drillQueueCardTypeLabel } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+import {
+  drillQueueCardTypeLabel,
+  type DrillQueueCard,
+  type DrillQueueId,
+} from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 
 export function CandidateDrillQueueCardPlayer({
   queueId,

@@ -2,7 +2,7 @@
  * Forum transcript → drill queue cards and rehearsal steps for tutor/SRE integration.
  */
 import { EP_FORUM_TRANSCRIPT_LAB_HREF } from "@/lib/election-plan/debate-prep-links";
-import type { DrillQueueCard } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+import type { DrillQueueCard } from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 import type { RehearsalRunOfShowStep } from "@/lib/intelligence/v4/phase16P0SessionLauncher";
 import { loadForumTranscriptIntel } from "@/lib/intelligence/v4/forumTranscriptIntel";
 

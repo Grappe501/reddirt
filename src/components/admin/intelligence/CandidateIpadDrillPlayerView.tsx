@@ -4,7 +4,7 @@ import Link from "next/link";
 import { StageSafeBlockedPanel } from "@/components/admin/intelligence/StageSafeBlockedPanel";
 import { evaluateStageSafeContent } from "@/lib/intelligence/v4/phase15StageSafeFilter";
 import type { IpadDrillPlayerSession } from "@/lib/intelligence/v4/phase16P5IpadDrillPlayer";
-import { drillQueueCardTypeLabel } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+import { drillQueueCardTypeLabel } from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 
 export function CandidateIpadDrillPlayerView({ session }: { session: IpadDrillPlayerSession }) {
   const { card, queueTitle, totalCards, cardIndex } = session;

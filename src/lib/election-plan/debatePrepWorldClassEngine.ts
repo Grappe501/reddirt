@@ -2,6 +2,8 @@
  * Debate Prep v8 — world-class readiness engine.
  * Unifies intensive progress, forum intel, scenarios, trap/SOS depth, and prep modes.
  */
+import "server-only";
+
 import {
   EP_DEBATE_PREP_COMMAND_HREF,
   EP_DEBATE_PREP_LANES_HREF,
@@ -15,7 +17,7 @@ import {
   epTrapLaneHref,
 } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-route-map";
-import { TRAP_LANE_SELECTION_GUIDE } from "@/lib/election-plan/debate-prep-operator-guide";
+import { pickSmartTrapLane } from "@/lib/election-plan/debatePrepSmartTrapLane";
 import { DEBATE_DATE, DEBATE_WEEK_INTENSIVE_DAYS } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import {
   computeDebateIntensiveReadiness,
@@ -127,44 +129,18 @@ export type DebatePrepWorldClassEngineSlice = {
   worldClassDressCardCount: number;
 };
 
-const HAMMER_THEME_LANE_MAP: Record<string, string> = {
-  "2021": "2021-vs-2025-pivot",
-  "2025": "2021-vs-2025-pivot",
-  pivot: "2021-vs-2025-pivot",
-  integrity: "integrity-without-participation",
-  participation: "integrity-without-participation",
-  clerk: "county-champion",
-  county: "county-champion",
-  fraud: "fraud-data-dare",
-  data: "fraud-data-dare",
-  experience: "experience-equals-sos-ready",
-  decades: "experience-equals-sos-ready",
-  culture: "culture-war-escalation",
-  pastor: "culture-war-escalation",
-  faith: "culture-war-escalation",
-};
-
 function parseReferenceDate(referenceDate?: string): Date {
   const raw = referenceDate ?? process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
   return new Date(`${raw}T12:00:00`);
 }
+
+export { pickSmartTrapLane } from "@/lib/election-plan/debatePrepSmartTrapLane";
 
 export function computeDaysUntilDebate(referenceDate?: string): number {
   const ref = parseReferenceDate(referenceDate);
   const debate = new Date(`${DEBATE_DATE}T12:00:00`);
   const ms = debate.getTime() - ref.getTime();
   return Math.max(0, Math.ceil(ms / (24 * 60 * 60 * 1000)));
-}
-
-export function pickSmartTrapLane(forumIntel: ForumTranscriptIntelSlice): string {
-  const themes = [...forumIntel.hammerThemes, ...forumIntel.watchForTells].join(" ").toLowerCase();
-  for (const [needle, laneId] of Object.entries(HAMMER_THEME_LANE_MAP)) {
-    if (themes.includes(needle)) return laneId;
-  }
-  for (const row of TRAP_LANE_SELECTION_GUIDE) {
-    if (themes.includes(row.laneId.replace(/-/g, " ").slice(0, 8))) return row.laneId;
-  }
-  return TRAP_LANE_SELECTION_GUIDE[2]?.laneId ?? "county-champion";
 }
 
 function dimensionStatus(score: number, target: number): "green" | "amber" | "red" {

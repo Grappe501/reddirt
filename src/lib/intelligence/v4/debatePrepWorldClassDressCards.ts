@@ -2,8 +2,8 @@
  * v8 — World-class full dress rehearsal drill queue (90-min simulation).
  */
 import { EP_DEBATE_PREP_WAR_ROOM_HREF } from "@/lib/election-plan/debate-prep-links";
-import { pickSmartTrapLane } from "@/lib/election-plan/debatePrepWorldClassEngine";
-import type { DrillQueueCard } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+import { pickSmartTrapLane } from "@/lib/election-plan/debatePrepSmartTrapLane";
+import type { DrillQueueCard } from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 import { buildForumDrillQueueCards } from "@/lib/intelligence/v4/forumTranscriptRehearsalCards";
 import { loadForumTranscriptIntel } from "@/lib/intelligence/v4/forumTranscriptIntel";
 import { evaluateStageSafeContent } from "@/lib/intelligence/v4/phase15StageSafeFilter";

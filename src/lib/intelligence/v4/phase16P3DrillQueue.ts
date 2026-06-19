@@ -7,38 +7,26 @@ import {
   buildWorldClassDressQueueCards,
   countWorldClassDressQueueCards,
 } from "@/lib/intelligence/v4/debatePrepWorldClassDressCards";
+import {
+  type DrillQueueCard,
+  type DrillQueueCardType,
+  type DrillQueueId,
+} from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 import { getSosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { getTrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDowns";
+
+export {
+  drillQueueCardTypeLabel,
+  type DrillQueueCard,
+  type DrillQueueCardType,
+  type DrillQueueId,
+} from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 
 export const DRILL_QUEUE_HUB_HREF = "/admin/intelligence/drill-queue";
 export const EP_DRILL_QUEUE_HUB_HREF = "/election-plan/debate-prep/rehearsal";
 
 export const PHASE16_P3_QUEUE_TOTAL = 5;
 export const PHASE16_P3_STANDARD_QUEUE_CARD_TOTAL = 6;
-
-export type DrillQueueId =
-  | "standard-tonight"
-  | "sos-speak-order"
-  | "trap-pivot"
-  | "forum-acca-tonight"
-  | "world-class-dress";
-
-export type DrillQueueCardType = "sos-speak-order" | "trap-pivot" | "forum-capitalize" | "forum-moderator-q";
-
-export type DrillQueueCard = {
-  cardId: string;
-  order: number;
-  cardType: DrillQueueCardType;
-  title: string;
-  prompt: string;
-  speakLine: string | null;
-  claimsGate: string;
-  stageSafeBlocked: boolean;
-  href: string;
-  kellyBeat: string;
-  durationMinutes: number;
-  durationLabel: string;
-};
 
 export type DrillQueue = {
   queueId: DrillQueueId;
@@ -202,21 +190,6 @@ export function getDrillQueue(queueId: DrillQueueId): DrillQueue | undefined {
 
 export function listDrillQueues(): DrillQueue[] {
   return DRILL_QUEUE_IDS.map((id) => getDrillQueue(id)).filter((q): q is DrillQueue => Boolean(q));
-}
-
-export function drillQueueCardTypeLabel(cardType: DrillQueueCardType): string {
-  switch (cardType) {
-    case "sos-speak-order":
-      return "SOS speak-order";
-    case "trap-pivot":
-      return "Trap pivot";
-    case "forum-capitalize":
-      return "Forum capitalize";
-    case "forum-moderator-q":
-      return "Forum moderator Q";
-    default:
-      return cardType;
-  }
 }
 
 export function buildDrillQueueLaunchHref(
