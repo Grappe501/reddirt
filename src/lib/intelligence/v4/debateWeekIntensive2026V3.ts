@@ -171,6 +171,32 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
         commonMistakes: ["Listing too many jobs", "Sounding defensive about never having held office", "Attacking Hammer's motives instead of job fit"],
         stretchLaneId: "lane-d1-author-deep",
       },
+      {
+        blockId: "b1-philosophy",
+        adultEducationWhy:
+          "Hammer's agree-on-security opener is predictable. Kelly must have muscle memory for the add-on before Day 2 trap lanes.",
+        whatSuccessLooksLike:
+          "60-second closing that agrees once, adds clerk layer, stops — no bill-number tennis.",
+        commonMistakes: ["Stopping at agreement", "Adding abstract promises instead of SOS deliverables", "Sounding argumentative on shared values"],
+        stretchLaneId: "lane-d1-author-deep",
+      },
+      {
+        blockId: "b1-psych",
+        adultEducationWhy:
+          "Naming fear reduces amygdala hijack. Adult learners need emotional honesty before opponent content sticks.",
+        whatSuccessLooksLike:
+          "One fear sentence + one offer sentence spoken aloud; three psychology sections skimmed with one rehearsal script each.",
+        commonMistakes: ["Skipping the journal", "Reading without rehearsing scripts aloud", "Apologizing for being new instead of anchoring competence"],
+        stretchLaneId: "lane-d1-psych-stretch",
+      },
+      {
+        blockId: "b1-tutor",
+        adultEducationWhy:
+          "AI repeats without judgment — builds confidence before human critique and forum-informed cards in later days.",
+        whatSuccessLooksLike:
+          "15-minute tutor session on opening only; Kelly can deliver opening twice without reading notes.",
+        commonMistakes: ["Trying to cover every topic in one session", "Skipping video self-review", "Letting tutor session replace out-loud rehearsal"],
+      },
     ],
     drillDownLanes: [
       {
@@ -195,7 +221,7 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
           "Deliver opening under 12 words, pause, then second sentence.",
           "Mirror check: hands still until gesture carries meaning.",
         ],
-        href: "/admin/intelligence/debate-prep/psychology-manual/debate-atmosphere-and-crowd-energy",
+        href: "/admin/intelligence/debate-prep/psychology-manual/atmosphere-management-overview",
         relatedBlockIds: ["b1-posture"],
       },
       {
@@ -242,7 +268,7 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
           "Read psychology manual sections 1–3.",
           "Say both sentences aloud to one person.",
         ],
-        href: "/admin/intelligence/debate-prep/psychology-manual/debate-atmosphere-and-crowd-energy",
+        href: "/admin/intelligence/debate-prep/psychology-manual/atmosphere-management-overview",
         relatedBlockIds: ["b1-psych"],
       },
     ],

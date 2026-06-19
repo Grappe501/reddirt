@@ -115,7 +115,7 @@ export const DEBATE_WEEK_INTENSIVE_DAYS: IntensiveDayPlan[] = [
         id: "b1-psych",
         title: "Psychology manual — debate atmosphere",
         minutes: 45,
-        href: "/admin/intelligence/debate-prep/psychology-manual/debate-atmosphere-and-crowd-energy",
+        href: "/admin/intelligence/debate-prep/psychology-manual",
         activity: "Read sections 1–3; journal one sentence on what scares you and one on what you offer the room.",
         why: "Naming fear reduces it — adult education requires emotional honesty before skill drills.",
       },

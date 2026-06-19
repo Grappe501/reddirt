@@ -3,17 +3,14 @@ import { notFound } from "next/navigation";
 
 import { DebateWeekDayDeepPanel } from "@/components/admin/intelligence/DebateWeekDayDeepPanel";
 import { DebateWeekDayV3Panel } from "@/components/admin/intelligence/DebateWeekDayV3Panel";
+import { ElectionPlanDayDrillDownOverview } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
+import { dayHasDrillDownPages } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import {
   EP_DEBATE_PREP_HREF,
-  EP_DEBATE_PREP_LANES_HREF,
   EP_DEBATE_PREP_PROGRESS_API,
 } from "@/lib/election-plan/debate-prep-links";
-import {
-  epDebatePrepDayHref,
-  mapAdminHrefToElectionPlan,
-} from "@/lib/election-plan/debate-prep-route-map";
 import {
   DEBATE_WEEK_INTENSIVE_DAY_IDS,
   getDebateWeekIntensiveDay,
@@ -69,78 +66,50 @@ export default async function ElectionPlanDebatePrepDayPage({
             </Link>
           </header>
 
-          <section className="ep-card mb-6 grid gap-4 sm:grid-cols-2 p-5 text-sm">
-            <div>
-              <p className="font-bold text-[var(--ep-navy)]">Command focus</p>
-              <p className="mt-2 text-[var(--ep-navy-muted)]">{plan.commandModeFocus}</p>
-            </div>
-            <div>
-              <p className="font-bold text-[var(--ep-navy)]">Psychology</p>
-              <p className="mt-2 text-[var(--ep-navy-muted)]">{plan.psychologyPrinciple}</p>
-            </div>
-          </section>
-
-          <section className="ep-card mb-6 p-5 text-sm">
-            <p className="text-[var(--ep-navy-muted)]">
-              <span className="font-bold text-[var(--ep-navy)]">Goal:</span> {plan.goalForKelly}
-            </p>
-            <p className="mt-2 text-emerald-900">
-              <span className="font-bold">Success:</span> {plan.successCheck}
-            </p>
-            <p className="mt-2 text-indigo-900">
-              <span className="font-bold">Newspaper:</span> {plan.newspaperAngle}
-            </p>
-          </section>
-
-          <section className="mb-8 space-y-4">
-            <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Study blocks</h2>
-            {plan.blocks.map((block, idx) => (
-              <article key={block.id} className="ep-card p-4 text-sm">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="font-bold text-[var(--ep-navy)]">
-                    {idx + 1}. {block.title}
-                  </p>
-                  <span className="font-mono text-xs text-[var(--ep-navy-muted)]">{block.minutes} min</span>
+          {dayHasDrillDownPages(dayId as IntensiveDayId) ? (
+            <ElectionPlanDayDrillDownOverview dayId={dayId as IntensiveDayId} plan={plan} />
+          ) : (
+            <>
+              <section className="ep-card mb-6 grid gap-4 sm:grid-cols-2 p-5 text-sm">
+                <div>
+                  <p className="font-bold text-[var(--ep-navy)]">Command focus</p>
+                  <p className="mt-2 text-[var(--ep-navy-muted)]">{plan.commandModeFocus}</p>
                 </div>
-                <p className="mt-2 text-[var(--ep-navy-muted)]">{block.activity}</p>
-                <p className="mt-1 text-xs italic text-indigo-800">{block.why}</p>
-                {block.href ? (
-                  <Link
-                    href={mapAdminHrefToElectionPlan(block.href)}
-                    className="mt-3 inline-block font-bold text-[var(--ep-navy)] underline"
-                  >
-                    Open →
-                  </Link>
-                ) : null}
-              </article>
-            ))}
-          </section>
+                <div>
+                  <p className="font-bold text-[var(--ep-navy)]">Psychology</p>
+                  <p className="mt-2 text-[var(--ep-navy-muted)]">{plan.psychologyPrinciple}</p>
+                </div>
+              </section>
 
-          {plan.opponentExamples.length > 0 ? (
-            <section className="mb-8 space-y-4">
-              <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Opponent examples</h2>
-              {plan.opponentExamples.map((ex) => (
-                <article key={ex.id} className="ep-card border-rose-200 bg-rose-50/40 p-4 text-sm">
-                  <p className="font-bold text-rose-950">{ex.opponent}</p>
-                  <p className="mt-2 text-[var(--ep-navy-muted)]">{ex.theirMove}</p>
-                  <p className="mt-3 font-bold text-emerald-900">Kelly</p>
-                  <p>{ex.kellyResponse}</p>
-                  <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{ex.sourceNote}</p>
-                </article>
-              ))}
-            </section>
-          ) : null}
+              <section className="ep-card mb-6 p-5 text-sm">
+                <p className="text-[var(--ep-navy-muted)]">
+                  <span className="font-bold text-[var(--ep-navy)]">Goal:</span> {plan.goalForKelly}
+                </p>
+                <p className="mt-2 text-emerald-900">
+                  <span className="font-bold">Success:</span> {plan.successCheck}
+                </p>
+                <p className="mt-2 text-indigo-900">
+                  <span className="font-bold">Newspaper:</span> {plan.newspaperAngle}
+                </p>
+              </section>
 
-          {plan.rehearsalOutLoud.length ? (
-            <section className="ep-card mb-6 border-emerald-200 bg-emerald-50/50 p-5 text-sm">
-              <h2 className="text-xs font-bold uppercase text-emerald-900">Rehearse out loud</h2>
-              <ul className="mt-3 list-inside list-disc space-y-1 text-[var(--ep-navy-muted)]">
-                {plan.rehearsalOutLoud.map((line) => (
-                  <li key={line.slice(0, 48)}>{line}</li>
+              <section className="mb-8 space-y-4">
+                <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Study blocks</h2>
+                {plan.blocks.map((block, idx) => (
+                  <article key={block.id} className="ep-card p-4 text-sm">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="font-bold text-[var(--ep-navy)]">
+                        {idx + 1}. {block.title}
+                      </p>
+                      <span className="font-mono text-xs text-[var(--ep-navy-muted)]">{block.minutes} min</span>
+                    </div>
+                    <p className="mt-2 text-[var(--ep-navy-muted)]">{block.activity}</p>
+                    <p className="mt-1 text-xs italic text-indigo-800">{block.why}</p>
+                  </article>
                 ))}
-              </ul>
-            </section>
-          ) : null}
+              </section>
+            </>
+          )}
 
           <DebateWeekDayDeepPanel
             dayId={dayId as IntensiveDayId}

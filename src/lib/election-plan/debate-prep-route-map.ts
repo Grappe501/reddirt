@@ -7,10 +7,15 @@ import {
   EP_DEBATE_PREP_HREF,
   EP_DEBATE_PREP_LANES_HREF,
   EP_DEBATE_PREP_REHEARSAL_HREF,
+  EP_DEBATE_PREP_BRIEFINGS_HREF,
+  EP_DEBATE_PREP_PSYCHOLOGY_HREF,
   EP_DEBATE_PREP_TUTOR_HREF,
   EP_DEBATE_TECHNIQUES_HREF,
   EP_EXECUTIVE_BOOK_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
+  epDebatePrepBriefingHref,
+  epDebatePrepDayHref,
+  epDebatePrepPsychologySectionHref,
   EP_OPPOSITION_RESEARCH_HREF,
   EP_TRAP_LANES_HREF,
   epDebateTechniqueHref,
@@ -51,6 +56,8 @@ const EXACT: Record<string, string> = {
   "/admin/intelligence/debate-week-intensive": EP_DEBATE_PREP_HREF,
   "/admin/intelligence/debate-week-intensive/lanes": EP_DEBATE_PREP_LANES_HREF,
   "/admin/intelligence/debate-week-intensive/theory": EP_DEBATE_PREP_LANES_HREF,
+  "/admin/intelligence/debate-briefings": EP_DEBATE_PREP_BRIEFINGS_HREF,
+  "/admin/intelligence/debate-prep/psychology-manual": EP_DEBATE_PREP_PSYCHOLOGY_HREF,
   "/admin/intelligence/kim-hammer": EP_OPPOSITION_RESEARCH_HREF,
   "/admin/intelligence/kim-hammer/debate-prep": EP_OPPOSITION_RESEARCH_HREF,
   "/admin/intelligence/opposition-strategy": EP_OPPOSITION_RESEARCH_HREF,
@@ -82,7 +89,7 @@ const EXACT: Record<string, string> = {
 const PREFIX: Array<{ prefix: string; target: string }> = [
   { prefix: "/admin/intelligence/kim-hammer/", target: EP_OPPOSITION_RESEARCH_HREF },
   { prefix: "/admin/intelligence/opponents/", target: EP_OPPOSITION_RESEARCH_HREF },
-  { prefix: "/admin/intelligence/debate-briefings/", target: EP_DEBATE_PREP_TUTOR_HREF },
+  { prefix: "/admin/intelligence/debate-prep-tutor", target: EP_DEBATE_PREP_TUTOR_HREF },
   { prefix: "/admin/intelligence/debate-prep/", target: EP_DEBATE_PREP_TUTOR_HREF },
   { prefix: "/admin/intelligence/sos-debate-questions/", target: EP_DEBATE_PREP_COMMAND_HREF },
   { prefix: "/admin/intelligence/candidate-dossiers/", target: EP_OPPOSITION_RESEARCH_HREF },
@@ -96,9 +103,7 @@ export function epDebatePrepLaneHref(laneId: string): string {
   return `${EP_DEBATE_PREP_LANES_HREF}/${laneId}`;
 }
 
-export function epDebatePrepDayHref(dayId: string): string {
-  return `/election-plan/debate-prep/days/${dayId}`;
-}
+export { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 
 export function mapAdminHrefToElectionPlan(href: string): string {
   if (!href?.startsWith("/admin")) return href;
@@ -115,6 +120,12 @@ export function mapAdminHrefToElectionPlan(href: string): string {
 
   const depthMatch = path.match(/^\/admin\/intelligence\/debate-depth\/([^/]+)$/);
   if (depthMatch?.[1]) return epDebateTechniqueHref(depthMatch[1]) + query;
+
+  const briefingMatch = path.match(/^\/admin\/intelligence\/debate-briefings\/([^/]+)$/);
+  if (briefingMatch?.[1]) return epDebatePrepBriefingHref(briefingMatch[1]) + query;
+
+  const psychMatch = path.match(/^\/admin\/intelligence\/debate-prep\/psychology-manual\/([^/]+)$/);
+  if (psychMatch?.[1]) return epDebatePrepPsychologySectionHref(psychMatch[1]) + query;
 
   const dayMatch = path.match(/^\/admin\/intelligence\/debate-week-intensive\/([^/]+)$/);
   if (dayMatch?.[1] && INTENSIVE_DAY_IDS.has(dayMatch[1])) {

@@ -10,6 +10,8 @@ export const EP_DEBATE_PREP_LANES_HREF = "/election-plan/debate-prep/lanes";
 export const EP_TRAP_LANES_HREF = "/election-plan/debate-prep/trap-lanes";
 export const EP_DEBATE_TECHNIQUES_HREF = "/election-plan/debate-prep/techniques";
 export const EP_FORUM_TRANSCRIPT_LAB_HREF = "/election-plan/debate-prep/forum-lab";
+export const EP_DEBATE_PREP_BRIEFINGS_HREF = "/election-plan/debate-prep/briefings";
+export const EP_DEBATE_PREP_PSYCHOLOGY_HREF = "/election-plan/debate-prep/psychology-manual";
 export const EP_OPPOSITION_RESEARCH_HREF = "/election-plan/opposition-research";
 export const EP_EXECUTIVE_BOOK_HREF = "/election-plan/executive-book";
 
@@ -25,4 +27,40 @@ export function epTrapLaneHref(laneId: string): string {
 
 export function epDebateTechniqueHref(topicId: string): string {
   return `${EP_DEBATE_TECHNIQUES_HREF}/${topicId}`;
+}
+
+export function epDebatePrepBriefingHref(briefingId: string): string {
+  return `${EP_DEBATE_PREP_BRIEFINGS_HREF}/${briefingId}`;
+}
+
+export function epDebatePrepPsychologySectionHref(sectionId: string): string {
+  return `${EP_DEBATE_PREP_PSYCHOLOGY_HREF}/${sectionId}`;
+}
+
+export function epDebatePrepDayHref(dayId: string): string {
+  return `/election-plan/debate-prep/days/${dayId}`;
+}
+
+export function epDebatePrepDayConceptHref(dayId: string, conceptId: string): string {
+  return `${epDebatePrepDayHref(dayId)}/concepts/${conceptId}`;
+}
+
+export function epDebatePrepDayBlockHref(dayId: string, blockId: string): string {
+  return `${epDebatePrepDayHref(dayId)}/blocks/${blockId}`;
+}
+
+export function epDebatePrepDayExampleHref(dayId: string, exampleId: string): string {
+  return `${epDebatePrepDayHref(dayId)}/examples/${exampleId}`;
+}
+
+export function epDebatePrepDayRehearsalHref(dayId: string, scriptId: string): string {
+  return `${epDebatePrepDayHref(dayId)}/rehearsal/${scriptId}`;
+}
+
+export function epDebatePrepDayMicroLessonHref(dayId: string, lessonId: string): string {
+  return `${epDebatePrepDayHref(dayId)}/micro-lessons/${lessonId}`;
+}
+
+export function epDebatePrepDayDrillHref(dayId: string, drillId: string): string {
+  return `${epDebatePrepDayHref(dayId)}/drills/${drillId}`;
 }
