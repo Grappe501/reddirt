@@ -7,8 +7,6 @@ import { DEBATE_DATE, DEBATE_WEEK_INTENSIVE_DAYS, DEBATE_WEEK_INTENSIVE_PRIMER }
 import { DEBATE_INTENSIVE_V3_LABEL } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
 import { loadKellyDebateIntensiveProgress } from "@/lib/intelligence/v4/kellyDebateIntensiveProgress";
 import { loadForumTranscriptLab } from "@/lib/intelligence/v4/forumTranscriptLab";
-import { mapAdminHrefsDeep } from "@/lib/election-plan/debate-prep-route-map";
-import { shouldSkipHumanActionQueueSyncOnRequest } from "@/lib/intelligence/intelligenceLaunchMode";
 import {
   EP_DEBATE_PREP_COMMAND_HREF,
   EP_DEBATE_PREP_HREF,
@@ -80,10 +78,6 @@ function computeElectionPlanReadiness(
 
 export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebatePrepSystemV5Snapshot {
   const ref = referenceDate ?? process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
-  const useLightFeed = shouldSkipHumanActionQueueSyncOnRequest();
-  const feed = useLightFeed
-    ? null
-    : require("@/lib/intelligence/v4/candidateCommandHome").buildCandidateCommandHomeFeed();
   const progress = loadKellyDebateIntensiveProgress();
   const forum = loadForumTranscriptLab();
   const todayPlan = DEBATE_WEEK_INTENSIVE_DAYS.find((d) => d.calendarDate === ref);
@@ -114,8 +108,8 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
       tagline: "Readiness, safe lines, blocked lines, top-tier prep",
       href: EP_DEBATE_PREP_COMMAND_HREF,
       lane: "kelly",
-      status: (feed?.readinessPct ?? lightReadiness.readinessPct) >= 70 ? "ready" : "in-progress",
-      statusNote: `${feed?.readinessPct ?? lightReadiness.readinessPct}% · ${feed?.readinessLabel ?? lightReadiness.readinessLabel}`,
+      status: lightReadiness.readinessPct >= 70 ? "ready" : "in-progress",
+      statusNote: `${lightReadiness.readinessPct}% · ${lightReadiness.readinessLabel}`,
     },
     {
       id: "trap-lanes",
@@ -163,18 +157,10 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
       tagline: "SRE stage rehearsal engine · encounters · iPad drill player",
       href: EP_DEBATE_PREP_REHEARSAL_HREF,
       lane: "kelly",
-      status: useLightFeed
-        ? forumAnalysisReady
-          ? "in-progress"
-          : "not-started"
-        : feed!.rehearsalLauncher.encounterCount > 0
-          ? "in-progress"
-          : "not-started",
-      statusNote: useLightFeed
-        ? forumAnalysisReady
-          ? "Forum intel + EP drill queues — open rehearsal when logged in."
-          : "Run forum lab or standard tonight queue."
-        : feed!.rehearsalLauncher.tonightReminder,
+      status: forumAnalysisReady ? "in-progress" : "not-started",
+      statusNote: forumAnalysisReady
+        ? "Forum intel + EP drill queues — open rehearsal when logged in."
+        : "Run forum lab or standard tonight queue.",
     },
     {
       id: "drill-lanes",
@@ -202,11 +188,11 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
     headline: "Debate Prep System v5",
     intro:
       "Election Plan is the primary operator surface — command course, conversational tutor, forum intelligence, rehearsal engine, and opposition crosswalk in one lane.",
-    readinessPct: feed?.readinessPct ?? lightReadiness.readinessPct,
-    readinessLabel: feed?.readinessLabel ?? lightReadiness.readinessLabel,
+    readinessPct: lightReadiness.readinessPct,
+    readinessLabel: lightReadiness.readinessLabel,
     todayFocus: todayPlan
       ? `${todayPlan.title} — ${todayPlan.subtitle}`
-      : feed?.todayFocus[0] ?? null,
+      : null,
     intensiveDaysComplete: progress.completedDays.length,
     intensiveDaysTotal: DEBATE_WEEK_INTENSIVE_DAYS.length,
     forumTranscriptReady,
@@ -216,16 +202,4 @@ export function buildDebatePrepSystemV5Snapshot(referenceDate?: string): DebateP
     intensiveV3Label: DEBATE_INTENSIVE_V3_LABEL,
     governance: TUTOR_HUB_WELCOME.governance,
   };
-}
-
-export function buildDebatePrepCommandHomeBundle() {
-  const { buildCandidateCommandHomeFeed } = require("@/lib/intelligence/v4/candidateCommandHome") as typeof import("@/lib/intelligence/v4/candidateCommandHome");
-  const { buildCceClosureSummary } = require("@/lib/intelligence/v4/phase15P9Closure") as typeof import("@/lib/intelligence/v4/phase15P9Closure");
-  const { buildSreClosureSummary } = require("@/lib/intelligence/v4/phase16P9Closure") as typeof import("@/lib/intelligence/v4/phase16P9Closure");
-  const raw = {
-    feed: buildCandidateCommandHomeFeed(),
-    cceClosure: buildCceClosureSummary(),
-    sreClosure: buildSreClosureSummary(),
-  };
-  return mapAdminHrefsDeep(raw);
 }

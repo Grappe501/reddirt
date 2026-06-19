@@ -6,7 +6,7 @@ import {
   buildDebatePrepSystemV6Snapshot,
   type DebatePrepSystemV6Snapshot,
 } from "@/lib/election-plan/debate-prep-system-v6";
-import { buildDebatePrepCommandHomeBundle as buildV5CommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v5";
+import { buildDebatePrepCommandHomeBundle as buildV5CommandHomeBundle } from "@/lib/election-plan/debate-prep-system-v5-command-bundle";
 import {
   EP_DEBATE_PREP_COMMAND_HREF,
   EP_DEBATE_PREP_REHEARSAL_HREF,
