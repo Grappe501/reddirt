@@ -119,6 +119,7 @@ function getDeployRiskMessage({ total, totalRaw, featureFlags, rows, buildOnlyLe
   const ffBytes = featureFlags?.bytes ?? 0;
   const compatRisk = total + (ffBytes || FEATURE_FLAGS_TYPICAL_BYTES);
   const nodeOptions = rows.find((r) => r.key === "NODE_OPTIONS");
+  const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
 
   let fail = false;
   const lines = [];
@@ -133,7 +134,35 @@ function getDeployRiskMessage({ total, totalRaw, featureFlags, rows, buildOnlyLe
   if (nodeOptions && !nodeOptions.excluded && nodeOptions.bytes > 0) {
     fail = true;
     lines.push(
-      `NODE_OPTIONS (${nodeOptions.bytes} B) must be Builds-only scope. Lambda rejects --max-old-space-size=6144 on the server handler.`,
+      `NODE_OPTIONS (${nodeOptions.bytes} B) must be Builds-only scope. Lambda rejects --max-old-space-size on the server handler.`,
+    );
+  }
+
+  if (onNetlify && ffBytes >= LAMBDA_ENV_LIMIT_BYTES) {
+    fail = true;
+    lines.push(
+      `FEATURE_FLAGS is ${ffBytes} B — exceeds AWS 4 KB env cap alone (Lambda compatibility mode). Ask Netlify support for modern Functions runtime, or scope all build-only vars to Builds only.`,
+    );
+  } else if (onNetlify && ffBytes > 0 && total + ffBytes > LAMBDA_ENV_LIMIT_BYTES) {
+    fail = true;
+    lines.push(
+      `Deploy env budget ${total + ffBytes} B (runtime ${total} B + FEATURE_FLAGS ${ffBytes} B) exceeds AWS 4 KB cap. Scope NEXT_PUBLIC_*, PRISMA_*, NODE_OPTIONS to Builds only in Netlify UI; see docs/NETLIFY_FIRST_DEPLOY.md §6.`,
+    );
+  } else if (onNetlify && total >= WARN_BYTES && total + FEATURE_FLAGS_TYPICAL_BYTES > LAMBDA_ENV_LIMIT_BYTES) {
+    lines.push(
+      `Warning: runtime ${total} B is high; on Lambda compatibility mode, platform FEATURE_FLAGS (~9 KB) causes deploy failure. Scope build-only vars to Builds only.`,
+    );
+  }
+
+  if (
+    onNetlify &&
+    !fail &&
+    buildOnlyLeaked > 800 &&
+    total + buildOnlyLeaked > LAMBDA_ENV_LIMIT_BYTES - 512
+  ) {
+    fail = true;
+    lines.push(
+      `${buildOnlyLeaked} B of build-only vars are present in this build environment. If any are scoped to All or Functions in Netlify UI, deploy will exceed the 4 KB Lambda env cap.`,
     );
   }
 

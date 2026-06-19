@@ -87,7 +87,7 @@ Site configuration → **Environment variables** → for **each** row below, cli
 | Variable | Scope |
 |----------|--------|
 | All `NEXT_PUBLIC_*` (including from `netlify.toml`) | **Builds only** |
-| `NODE_OPTIONS`, `NODE_VERSION`, `NPM_CONFIG_PRODUCTION` | **Builds only** |
+| `NODE_OPTIONS`, `NODE_VERSION`, `NPM_CONFIG_PRODUCTION` | **Builds only** (heap is set in `scripts/netlify-build.sh` during `next build` only — not in `netlify.toml`) |
 | `PRISMA_MIGRATE_RETRIES`, `PRISMA_MIGRATE_RETRY_DELAY_SECONDS` | **Builds only** |
 | `ALLOW_PRISMA_P1001_BYPASS`, `ALLOW_PRISMA_SEED_P2022_BYPASS` | **Builds only** |
 | `SKIP_DB_SEED` | **Builds only** |

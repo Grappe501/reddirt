@@ -36,8 +36,8 @@
   # Do not set NODE_ENV=production here — Netlify npm install would omit devDependencies
   # (typescript required for next.config.ts). netlify-build.sh sets production for next build only.
   NPM_CONFIG_PRODUCTION = "false"
-  # next build (tsc + eslint) can exceed default ~2GB heap on this app
-  NODE_OPTIONS = "--max-old-space-size=6144"
+  # NODE_OPTIONS heap is set only in scripts/netlify-build.sh during `next build` —
+  # do NOT declare here; Netlify UI vars scoped to All/Functions break Lambda deploy.
   # Emergency internal launch — opposition + debate prep workbench only (banner + skip county rollups)
   NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE = "opposition_debate"
   # County clerks tour — clerk-first nav + hub copy (see debateAudienceMode.ts)

@@ -260,7 +260,9 @@ npm run election-plan:build
 
 echo ">>> next build (NODE_ENV=production; npx next build — no H: npm-cache wrapper on CI)"
 export NODE_ENV=production
+export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=6144}"
 npx next build
+unset NODE_OPTIONS 2>/dev/null || NODE_OPTIONS=
 
 if [ -f "scripts/sanitize-next-trace-manifests.cjs" ]; then
   echo ">>> sanitize Next NFT manifests (drop npm-cache / absolute paths)"
