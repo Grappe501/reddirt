@@ -84,6 +84,15 @@ Symptom: log shows `Starting to deploy site from '.next'` then `Failed to upload
 
 Site configuration → **Environment variables** → for **each** row below, click **Edit** → **Scopes** → choose **Builds** only (uncheck Functions / All):
 
+**Or automate (recommended):** from `RedDirt/` after `npx netlify login` or with a personal access token:
+
+```bash
+NETLIFY_AUTH_TOKEN=your_token NETLIFY_SITE_ID=your_site_id npm run netlify:env:scopes:dry
+NETLIFY_AUTH_TOKEN=your_token NETLIFY_SITE_ID=your_site_id npm run netlify:env:scopes
+```
+
+Then **Clear cache and deploy site**.
+
 | Variable | Scope |
 |----------|--------|
 | All `NEXT_PUBLIC_*` (including from `netlify.toml`) | **Builds only** |
@@ -106,9 +115,9 @@ After scoping: **Deploys → Clear cache and deploy site**.
 
 ### Build log checks
 
-1. **`Lambda env check`** — runtime user env should be **under ~3 KB**. A **compat-mode note** about `FEATURE_FLAGS` (~9 KB, Netlify-internal) is OK when runtime is under cap — deploy still proceeds; contact Netlify only if upload fails.
+1. **`Lambda env check`** — runtime user env should be **under ~3 KB**; worst-case line includes build-only leak if `NEXT_PUBLIC_*` are scoped to All. Build should **fail** before deploy when worst-case ≥ 4 KB.
 2. **`Prune server handler (pre-deploy)`** — measured size must stay **under 245 MB**.
-3. **`Lambda deploy env check`** (plugin) — repeats the scoping checklist before upload.
+3. **`Lambda deploy env check`** (plugin) — repeats the scoping checklist before upload. A green build followed by `Failed to upload file: ___netlify-server-handler` means scopes were not applied or the site is on Lambda compat mode — run `npm run netlify:env:scopes` and redeploy.
 
 ### If scoping is correct and deploy still fails
 

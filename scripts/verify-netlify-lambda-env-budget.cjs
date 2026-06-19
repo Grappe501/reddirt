@@ -98,7 +98,8 @@ function estimateLambdaEnvBytes(env = process.env) {
     rows.push({ key, bytes, excluded, buildOnly: isBuildOnlyKey(key) });
   }
   rows.sort((a, b) => b.bytes - a.bytes);
-  return { total, totalRaw, buildOnlyLeaked, rows };
+  const deployEstimate = total + buildOnlyLeaked;
+  return { total, totalRaw, buildOnlyLeaked, deployEstimate, rows };
 }
 
 function printNetlifyEnvScopingChecklist(rows) {
@@ -115,8 +116,9 @@ function printNetlifyEnvScopingChecklist(rows) {
   console.log("");
 }
 
-function getDeployRiskMessage({ total, totalRaw, featureFlags, rows, buildOnlyLeaked }) {
+function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, rows, buildOnlyLeaked }) {
   const ffBytes = featureFlags?.bytes ?? 0;
+  const worstCase = deployEstimate ?? total + (buildOnlyLeaked ?? 0);
   const compatRisk = total + (ffBytes || FEATURE_FLAGS_TYPICAL_BYTES);
   const nodeOptions = rows.find((r) => r.key === "NODE_OPTIONS");
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
@@ -131,6 +133,13 @@ function getDeployRiskMessage({ total, totalRaw, featureFlags, rows, buildOnlyLe
     );
   }
 
+  if (onNetlify && worstCase >= LAMBDA_ENV_LIMIT_BYTES) {
+    fail = true;
+    lines.push(
+      `Worst-case function env ${worstCase} B (runtime ${total} B + ${buildOnlyLeaked ?? 0} B build-only keys if scoped to All/Functions). Scope every NEXT_PUBLIC_*, PRISMA_*, ALLOW_PRISMA_*, SKIP_DB_SEED, NODE_OPTIONS, NODE_VERSION, and NPM_CONFIG_PRODUCTION to Builds only — or run: npm run netlify:env:scopes`,
+    );
+  }
+
   if (nodeOptions && !nodeOptions.excluded && nodeOptions.bytes > 0) {
     fail = true;
     lines.push(
@@ -139,35 +148,35 @@ function getDeployRiskMessage({ total, totalRaw, featureFlags, rows, buildOnlyLe
   }
 
   if (onNetlify && ffBytes > 0 && total + ffBytes > LAMBDA_ENV_LIMIT_BYTES) {
-    if (total >= LAMBDA_ENV_LIMIT_BYTES) {
+    if (worstCase >= LAMBDA_ENV_LIMIT_BYTES) {
       fail = true;
       lines.push(
-        `Runtime env ${total} B exceeds AWS Lambda 4 KB cap before platform flags. Scope NEXT_PUBLIC_*, PRISMA_*, NODE_OPTIONS to Builds only in Netlify UI; see docs/NETLIFY_FIRST_DEPLOY.md §6.`,
+        `FEATURE_FLAGS ${ffBytes} B plus runtime ${total} B exceeds the 4 KB Lambda compat cap. Scope build-only vars to Builds only (npm run netlify:env:scopes).`,
       );
     } else {
       lines.push(
-        `FEATURE_FLAGS ${ffBytes} B is Netlify-internal (not user-scoped). Runtime user env ${total} B is within cap — deploy proceeds. If upload fails with Invalid AWS Lambda parameters on legacy compatibility mode, ask Netlify support for modern Functions runtime.`,
+        `FEATURE_FLAGS ${ffBytes} B is Netlify-internal. Runtime ${total} B looks OK, but deploy can still fail on Lambda compat mode after a green build. Run npm run netlify:env:scopes, then ask Netlify support to confirm modern Functions runtime if upload still fails.`,
       );
     }
-  } else if (onNetlify && total >= WARN_BYTES && total + FEATURE_FLAGS_TYPICAL_BYTES > LAMBDA_ENV_LIMIT_BYTES) {
+  } else if (onNetlify && worstCase >= WARN_BYTES && worstCase + FEATURE_FLAGS_TYPICAL_BYTES > LAMBDA_ENV_LIMIT_BYTES) {
     lines.push(
-      `Warning: runtime ${total} B is high; on Lambda compatibility mode, platform FEATURE_FLAGS (~9 KB) causes deploy failure. Scope build-only vars to Builds only.`,
+      `Warning: worst-case env ${worstCase} B is high; on Lambda compatibility mode, platform FEATURE_FLAGS (~9 KB) can also break deploy after a green build.`,
     );
   }
 
   if (
     onNetlify &&
     !fail &&
-    buildOnlyLeaked > 800 &&
-    total + buildOnlyLeaked > LAMBDA_ENV_LIMIT_BYTES - 512
+    (buildOnlyLeaked ?? 0) > 400 &&
+    worstCase >= LAMBDA_ENV_LIMIT_BYTES - 384
   ) {
     fail = true;
     lines.push(
-      `${buildOnlyLeaked} B of build-only vars are present in this build environment. If any are scoped to All or Functions in Netlify UI, deploy will exceed the 4 KB Lambda env cap.`,
+      `${buildOnlyLeaked} B of build-only vars are in this build. If any are scoped to All or Functions in Netlify UI, deploy will exceed the 4 KB Lambda env cap. Run npm run netlify:env:scopes or fix scopes manually (docs/NETLIFY_FIRST_DEPLOY.md §6).`,
     );
   }
 
-  if (!fail && buildOnlyLeaked > 1500 && total > WARN_BYTES) {
+  if (!fail && (buildOnlyLeaked ?? 0) > 1500 && total > WARN_BYTES) {
     lines.push(
       `Warning: ${buildOnlyLeaked} B of build-only vars present — if any are scoped to All/Functions in Netlify UI, deploy may fail.`,
     );
@@ -184,8 +193,8 @@ function getDeployRiskMessage({ total, totalRaw, featureFlags, rows, buildOnlyLe
   }
 
   const summary = fail
-    ? `FAIL ${total} B runtime env — fix scoping before deploy`
-    : `~${total} B runtime env (${(total / 1024).toFixed(1)} KB), ${(totalRaw / 1024).toFixed(1)} KB total in build`;
+    ? `FAIL worst-case ${worstCase} B function env — fix scoping before deploy`
+    : `~${total} B runtime env (${(total / 1024).toFixed(1)} KB), worst-case ${worstCase} B, ${(totalRaw / 1024).toFixed(1)} KB total in build`;
 
   return {
     fail,
@@ -195,11 +204,11 @@ function getDeployRiskMessage({ total, totalRaw, featureFlags, rows, buildOnlyLe
 }
 
 function main() {
-  const { total, totalRaw, buildOnlyLeaked, rows } = estimateLambdaEnvBytes();
+  const { total, totalRaw, buildOnlyLeaked, deployEstimate, rows } = estimateLambdaEnvBytes();
   const featureFlags = rows.find((r) => r.key === "FEATURE_FLAGS");
 
   console.log(
-    `>>> Lambda env check: ~${total} bytes (${(total / 1024).toFixed(2)} KB) estimated for Functions (limit ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compat mode)`,
+    `>>> Lambda env check: ~${total} bytes (${(total / 1024).toFixed(2)} KB) runtime, worst-case ${deployEstimate} B if build-only vars leak to Functions (limit ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compat mode)`,
   );
 
   if (featureFlags) {
@@ -216,7 +225,14 @@ function main() {
 
   printNetlifyEnvScopingChecklist(rows);
 
-  const risk = getDeployRiskMessage({ total, totalRaw, featureFlags, rows, buildOnlyLeaked });
+  const risk = getDeployRiskMessage({
+    total,
+    totalRaw,
+    deployEstimate,
+    featureFlags,
+    rows,
+    buildOnlyLeaked,
+  });
   if (risk.message && !risk.fail) {
     console.warn(`>>> ${risk.message}`);
   }
@@ -241,6 +257,7 @@ module.exports = {
   estimateLambdaEnvBytes,
   printNetlifyEnvScopingChecklist,
   getDeployRiskMessage,
+  isBuildOnlyKey,
   LAMBDA_ENV_LIMIT_BYTES,
   BUILD_ONLY_EXACT,
   BUILD_ONLY_PREFIXES,

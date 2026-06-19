@@ -11,9 +11,16 @@ const {
 exports.onPostBuild = async ({ utils }) => {
   if (!process.env.NETLIFY && !process.env.NETLIFY_BUILD_BASE) return;
 
-  const { total, totalRaw, rows } = estimateLambdaEnvBytes();
+  const { total, totalRaw, buildOnlyLeaked, deployEstimate, rows } = estimateLambdaEnvBytes();
   const featureFlags = rows.find((r) => r.key === "FEATURE_FLAGS");
-  const risk = getDeployRiskMessage({ total, totalRaw, featureFlags, rows });
+  const risk = getDeployRiskMessage({
+    total,
+    totalRaw,
+    deployEstimate,
+    featureFlags,
+    rows,
+    buildOnlyLeaked,
+  });
 
   utils.status.show({
     title: "Lambda deploy env check",
