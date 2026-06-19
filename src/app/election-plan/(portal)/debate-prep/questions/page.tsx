@@ -39,6 +39,9 @@ export default function ElectionPlanDebateQuestionsHubPage() {
         <p className="mt-4 text-xs font-semibold text-violet-950">
           {highCount} HIGH-probability · {total} total questions · speak-order scripts on every drill-down
         </p>
+        <p className="mt-2 text-xs text-violet-900/80">
+          Hammer bill numbers link to optional walkthroughs — trap setups, county frames, and cross-links back to these questions.
+        </p>
       </article>
 
       <article className="ep-card mt-6 border-[var(--ep-gold)]/40 bg-[var(--ep-cream)]/50 p-5 text-sm">

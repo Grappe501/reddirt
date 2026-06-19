@@ -7,6 +7,7 @@ import {
   EP_OPPOSITION_RESEARCH_HREF,
   epDebatePrepBriefingHref,
   epForumLabDeepAnalysisLessonHref,
+  epHammerBillHref,
   epTrapLaneHref,
 } from "@/lib/election-plan/debate-prep-links";
 import type { DrillDownLink } from "@/lib/election-plan/debatePrepDayDrillDown";
@@ -70,5 +71,29 @@ export function mapQuestionRelatedLinksForElectionPlan(drill: SosDebateQuestionD
     }
   }
 
+  for (const bill of drill.relatedBills) {
+    links.unshift({ href: epHammerBillHref(bill), label: `${bill} — bill walkthrough` });
+  }
+
+  for (const link of drill.relatedLinks) {
+    const mapped = mapStoredQuestionLinkForElectionPlan(link.href, link.label);
+    if (mapped && !links.some((l) => l.href === mapped.href)) {
+      links.push(mapped);
+    }
+  }
+
   return links;
+}
+
+function mapStoredQuestionLinkForElectionPlan(href: string, label: string): DrillDownLink | null {
+  const billMatch = href.match(/\/bills\/([^/]+)(?:\/act-proof)?/);
+  if (billMatch) {
+    return { href: epHammerBillHref(billMatch[1]!), label: `${billMatch[1]} — bill walkthrough` };
+  }
+  const trapMatch = href.match(/trap-lanes\/([^/?#]+)/);
+  if (trapMatch) {
+    return { href: epTrapLaneHref(trapMatch[1]!), label: label || "Trap lane drill" };
+  }
+  if (href.includes("/admin/")) return null;
+  return { href, label };
 }

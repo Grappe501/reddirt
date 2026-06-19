@@ -4,6 +4,7 @@ import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
+import { DebateDeepLinkText, HammerBillDrillDownChip } from "@/components/election-plan/DebateDeepLinkText";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import { mapQuestionRelatedLinksForElectionPlan } from "@/lib/election-plan/debateQuestionReferenceDrillDown";
 import { epDebateQuestionHref } from "@/lib/election-plan/debate-prep-links";
@@ -14,7 +15,9 @@ function ScriptBlock({ title, text, accent }: { title: string; text: string; acc
   return (
     <article className={`ep-card p-5 text-sm leading-relaxed ${accent}`}>
       <h3 className="text-xs font-bold uppercase tracking-wider">{title}</h3>
-      <p className="mt-3 text-[var(--ep-navy)]">{text}</p>
+      <p className="mt-3 text-[var(--ep-navy)]">
+        <DebateDeepLinkText text={text} />
+      </p>
     </article>
   );
 }
@@ -36,9 +39,11 @@ function ExchangeList({
         {exchanges.map((ex) => (
           <article key={ex.opponentLine.slice(0, 40)} className="rounded-lg border border-[var(--ep-border)] bg-white p-4">
             <p className="text-xs font-bold text-rose-900">They may say:</p>
-            <p className="mt-1 italic text-[var(--ep-navy-muted)]">&ldquo;{ex.opponentLine}&rdquo;</p>
+            <p className="mt-1 italic text-[var(--ep-navy-muted)]">&ldquo;<DebateDeepLinkText text={ex.opponentLine} />&rdquo;</p>
             <p className="mt-3 text-xs font-bold text-emerald-900">Kelly responds:</p>
-            <p className="mt-1 leading-relaxed text-[var(--ep-navy)]">{ex.kellyResponse}</p>
+            <p className="mt-1 leading-relaxed text-[var(--ep-navy)]">
+              <DebateDeepLinkText text={ex.kellyResponse} />
+            </p>
             {ex.toneNote ? <p className="mt-2 text-[10px] font-semibold text-amber-900">{ex.toneNote}</p> : null}
           </article>
         ))}
@@ -67,6 +72,22 @@ export function ElectionPlanSosQuestionPanel({
   return (
     <div className="space-y-6">
       <VoterAudienceSpeakToBanner profiles={speakTo} />
+
+      {(drill.relatedBills.length > 0 || drill.relatedLinks.some((l) => /\/bills\//.test(l.href))) ? (
+        <section className="ep-card border-[var(--ep-gold)]/40 bg-[var(--ep-cream)]/50 p-5">
+          <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">Hammer bills on this question — optional rabbit holes</p>
+          <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
+            Tap any bill for full walkthrough: what it does, how to use it offensively, and Kelly Q&amp;A tiers.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {[...new Set([...drill.relatedBills, ...drill.relatedLinks.map((l) => l.href.match(/\/bills\/([^/]+)/)?.[1]).filter(Boolean) as string[]])].map(
+              (bill) => (
+                <HammerBillDrillDownChip key={bill} billNumber={bill} />
+              ),
+            )}
+          </div>
+        </section>
+      ) : null}
 
       <article className="ep-card border-2 border-[var(--ep-navy)]/20 bg-[var(--ep-cream)]/40 p-6">
         <p className="text-[10px] font-bold uppercase text-[var(--ep-navy-muted)]">
@@ -97,10 +118,14 @@ export function ElectionPlanSosQuestionPanel({
       <div className="grid gap-4 lg:grid-cols-2">
         <article className="ep-card border-rose-200 bg-rose-50/30 p-5 text-sm">
           <h3 className="text-xs font-bold uppercase text-rose-950">What Kim Hammer will likely say</h3>
-          <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{c.hammerExpectedNarrative}</p>
+          <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">
+            <DebateDeepLinkText text={c.hammerExpectedNarrative} />
+          </p>
           <ul className="mt-3 list-inside list-disc text-xs text-rose-950/90">
             {drill.whatHammerLikelySays.map((l) => (
-              <li key={l.slice(0, 48)}>{l}</li>
+              <li key={l.slice(0, 48)}>
+                <DebateDeepLinkText text={l} />
+              </li>
             ))}
           </ul>
         </article>
@@ -193,7 +218,7 @@ export function ElectionPlanSosQuestionPanel({
                 <p className="text-xs font-bold text-rose-900">When: {r.trigger}</p>
                 <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">He may say: &ldquo;{r.hammerLikelyLine}&rdquo;</p>
                 <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">
-                  {r.agree} {r.contrast} {r.bridge}
+                  <DebateDeepLinkText text={`${r.agree} ${r.contrast} ${r.bridge}`} />
                 </p>
                 {r.claimsNote ? <p className="mt-2 text-[10px] font-bold text-amber-900">{r.claimsNote}</p> : null}
               </article>

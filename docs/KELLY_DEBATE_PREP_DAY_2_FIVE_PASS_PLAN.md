@@ -2,7 +2,7 @@
 
 **Doc ID:** KELLY-DP-D2-5PASS  
 **Lane:** `RedDirt/` only  
-**Status:** Day 1 **done on production** · Day 2 **scaffolded in data, not wired in Election Plan UI**  
+**Status:** Day 1 **done on production** · Day 2 **Pass 1–2 done** · Pass 3 pathway UI pending  
 **Created:** 2026-06-18  
 **Goal:** Bring **Day 2 · Read the table** to the same Kelly-facing experience as Day 1 — one linear pathway, phased block study, Continue footers, evening check, Day 3 teaser.
 
@@ -352,7 +352,7 @@ Passes 2 and 3 can run in parallel after Pass 1 if two builders coordinate; **Pa
 | Pass | Date | Commit | Notes |
 |------|------|--------|-------|
 | 1 | 2026-06-18 | b64b60e1 | Data spine: DAY2_ID, pathway, drill-down, static params |
-| 2 | | | |
+| 2 | 2026-06-19 | | Block study guides + Day 2 example study panels on all 5 blocks |
 | 3 | | | |
 | 4 | | | |
 | 5 | | | |

@@ -9,6 +9,7 @@ import {
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { getDay1BlockStudy } from "@/lib/election-plan/debatePrepDay1BlockStudy";
+import { getDay2BlockStudy } from "@/lib/election-plan/debatePrepDay2BlockStudy";
 import { staticParamsForDayBlocks } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
@@ -32,7 +33,8 @@ export default async function ElectionPlanDayBlockPage({
   const block = getDayBlockDrillDown(dayId as IntensiveDayId, blockId);
   if (!block) notFound();
 
-  const study = dayId === DAY1_ID ? getDay1BlockStudy(blockId) : undefined;
+  const study =
+    dayId === DAY1_ID ? getDay1BlockStudy(blockId) : dayId === DAY2_ID ? getDay2BlockStudy(blockId) : undefined;
   const title = study?.studyGuideTitle ?? block.title;
   const eyebrow = study ? `Step · ~${block.minutes} min` : `Study block · ~${block.minutes} min`;
   const pathwayStep =

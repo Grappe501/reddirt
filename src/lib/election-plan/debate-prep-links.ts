@@ -41,6 +41,10 @@ export function epLegislativeIntel2025Href(): string {
   return `${EP_LEGISLATIVE_INTEL_HREF}/2025-direct-democracy`;
 }
 
+export function epHammerBillHref(billNumber: string): string {
+  return `${EP_LEGISLATIVE_INTEL_HREF}/bills/${encodeURIComponent(billNumber)}`;
+}
+
 export const EP_FORUM_TRANSCRIPT_LAB_API = "/api/election-plan/forum-transcript-lab";
 export const EP_DEBATE_PREP_TUTOR_API = "/api/election-plan/debate-prep-tutor";
 export const EP_DEBATE_PREP_PROGRESS_API = "/api/election-plan/debate-week-intensive/progress";

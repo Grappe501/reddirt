@@ -1,5 +1,6 @@
 import { CityStrategyList } from "@/components/election-plan/CityStrategyList";
 import { LocationBriefWeekRollupPanel } from "@/components/election-plan/LocationBriefWeekRollupPanel";
+import { PriorityCitySearchBar } from "@/components/election-plan/PriorityCitySearchBar";
 import { computeBriefCompletionRollup } from "@/lib/election-plan/location-calendar-binding";
 import { priorityCitiesCombinedTarget } from "@/lib/election-plan/electionPlanData";
 import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapshot";
@@ -18,6 +19,14 @@ export default function PriorityCitiesPage() {
       <div className="ep-classification">Internal · Priority cities · Location briefs</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
         <div className="mx-auto max-w-6xl">
+          <PriorityCitySearchBar
+            cities={data.cities.map((city) => ({
+              slug: city.slug,
+              name: city.name,
+              county: city.county,
+              isBonusCity: city.isBonusCity ?? false,
+            }))}
+          />
           <LocationBriefWeekRollupPanel rollup={rollup} cities={data.cities} data={data} />
           <CityStrategyList cities={data.cities} combinedTargetVotes={priorityCitiesCombinedTarget(data)} standalone />
         </div>

@@ -48,17 +48,6 @@ export function getSosDebateQuestionWithBriefing(questionId: string): SosDebateQ
   return drill ? attachSosQuestionBriefing(drill) : undefined;
 }
 
-export function listSosDebateQuestionSummaries(): SosDebateQuestionSummary[] {
-  return FULL_SOS_DEBATE_QUESTION_BANK.map((q) => ({
-    questionId: q.questionId,
-    questionNumber: q.questionNumber,
-    title: q.title,
-    categoryLabel: q.categoryLabel,
-    probability: q.probability,
-    oneLinePrep: q.directAnswer30s,
-  }));
-}
-
 export function listSosDebateQuestionsByCategory(): Array<{
   category: string;
   categoryLabel: string;
@@ -78,6 +67,49 @@ export function listSosDebateQuestionsByCategory(): Array<{
     map.set(q.category, entry);
   }
   return [...map.entries()].map(([category, v]) => ({ category, ...v }));
+}
+
+export function listSosDebateQuestionSummaries(): SosDebateQuestionSummary[] {
+  return FULL_SOS_DEBATE_QUESTION_BANK.map((q) => ({
+    questionId: q.questionId,
+    questionNumber: q.questionNumber,
+    title: q.title,
+    categoryLabel: q.categoryLabel,
+    probability: q.probability,
+    oneLinePrep: q.directAnswer30s,
+  }));
+}
+
+function questionMentionsBill(q: SosDebateQuestionDrillDown, billNumber: string): boolean {
+  const norm = billNumber.toUpperCase();
+  if (q.relatedBills.some((b) => b.toUpperCase() === norm)) return true;
+  const blob = [
+    q.title,
+    q.directAnswer30s,
+    q.directAnswer60s,
+    q.whyModeratorsAsk,
+    ...q.whatHammerLikelySays,
+    ...q.moderatorLikelyPhrasings,
+    q.comprehensive?.hammerExpectedNarrative ?? "",
+    q.comprehensive?.questionAsAsked ?? "",
+  ]
+    .join(" ")
+    .toUpperCase();
+  return blob.includes(norm);
+}
+
+export function listSosQuestionsReferencingBill(billNumber: string): Array<{
+  questionId: string;
+  questionNumber: number;
+  title: string;
+}> {
+  return FULL_SOS_DEBATE_QUESTION_BANK.filter((q) => questionMentionsBill(q, billNumber))
+    .sort((a, b) => a.questionNumber - b.questionNumber)
+    .map((q) => ({
+      questionId: q.questionId,
+      questionNumber: q.questionNumber,
+      title: q.title,
+    }));
 }
 
 export const SOS_DEBATE_SPEAK_ORDER_RULE =

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
+import { DebateDeepLinkText, HammerBillDrillDownChip } from "@/components/election-plan/DebateDeepLinkText";
 import { VoterAudiencePracticeLine } from "@/components/election-plan/voter-audience/VoterAudiencePracticeLine";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import type { LegislativeIntelPage } from "@/lib/election-plan/legislative-intel-drill-down";
@@ -24,7 +25,9 @@ export function LegislativeIntelDrillDownPanel({ page }: Props) {
 
       <article className="ep-card mb-6 p-5 text-sm">
         <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Plain English</p>
-        <p className="mt-3 leading-relaxed text-[var(--ep-navy-muted)]">{page.plainEnglish}</p>
+        <p className="mt-3 leading-relaxed text-[var(--ep-navy-muted)]">
+          <DebateDeepLinkText text={page.plainEnglish} />
+        </p>
       </article>
 
       <div className="mb-6 grid gap-4 sm:grid-cols-2">
@@ -65,6 +68,9 @@ export function LegislativeIntelDrillDownPanel({ page }: Props) {
               </div>
               <p className="mt-2 font-semibold text-[var(--ep-navy)]">{bill.theme}</p>
               <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{bill.clerkImpact}</p>
+              <div className="mt-3">
+                <HammerBillDrillDownChip billNumber={bill.billNumber} />
+              </div>
             </div>
           ))}
         </div>

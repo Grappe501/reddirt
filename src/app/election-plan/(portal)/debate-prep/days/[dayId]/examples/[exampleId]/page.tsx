@@ -9,8 +9,10 @@ import {
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { getDay1OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay1OpponentExampleStudy";
-import { getDayExampleDrillDown, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay2OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay2OpponentExampleStudy";
+import { getDayExampleDrillDown, DAY1_ID, DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayExamples } from "@/lib/election-plan/debatePrepDayStaticParams";
+import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
@@ -30,14 +32,31 @@ export default async function ElectionPlanDayExamplePage({
   const example = getDayExampleDrillDown(dayId as IntensiveDayId, exampleId);
   if (!example) notFound();
 
-  const study = dayId === DAY1_ID ? getDay1OpponentExampleStudy(exampleId) : undefined;
+  const study =
+    dayId === DAY1_ID
+      ? getDay1OpponentExampleStudy(exampleId)
+      : dayId === DAY2_ID
+        ? getDay2OpponentExampleStudy(exampleId)
+        : undefined;
+
+  const dayLabel = dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : "Day";
+  const pathwayStep = dayId === DAY2_ID ? getDay2PathwayStep(exampleId) : undefined;
+  const isOptional = pathwayStep?.label.toLowerCase().includes("optional") ?? false;
+  const eyebrow = isOptional
+    ? `${dayLabel} · Optional · opponent example`
+    : dayId === DAY1_ID
+      ? "Optional · Hammer opening pivot"
+      : `${dayLabel} · opponent example`;
 
   return (
     <ElectionPlanDrillDownShell
       backHref={epDebatePrepDayHref(dayId)}
-      backLabel="Day 1 pathway"
-      eyebrow="Optional · Hammer opening pivot"
-      title={study?.drillDownTitle ?? "Hammer opening — authorship pivot"}
+      backLabel={`${dayLabel} pathway`}
+      eyebrow={eyebrow}
+      title={
+        study?.drillDownTitle ??
+        (example.opponent === "Hammer" ? "Hammer example pivot" : "Opponent example pivot")
+      }
       description={example.theirMove}
     >
       <article className="ep-card border-rose-200 bg-rose-50/40 p-5 text-sm">

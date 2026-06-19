@@ -127,10 +127,23 @@ function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, r
   let fail = false;
   const lines = [];
 
-  if (onNetlify && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES) {
+  if (onNetlify && worstCase > LAMBDA_ENV_LIMIT_BYTES) {
     fail = true;
     lines.push(
-      `Estimated Lambda deploy env ${lambdaDeployBytes} B (runtime ${total} B + ${buildOnlyLeaked ?? 0} B build-only leak risk + ${platformPadding} B platform). Scope build-only vars with npm run netlify:env:scopes or Netlify UI (docs/NETLIFY_FIRST_DEPLOY.md §6). If runtime is already minimal, ask Netlify support to confirm modern Functions runtime.`,
+      `Estimated runtime Lambda env ${worstCase} B exceeds ${LAMBDA_ENV_LIMIT_BYTES} B (runtime ${total} B + ${buildOnlyLeaked ?? 0} B build-only leak risk). Scope build-only vars with npm run netlify:env:scopes or Netlify UI (docs/NETLIFY_FIRST_DEPLOY.md §6).`,
+    );
+  } else if (
+    onNetlify &&
+    platformPadding > 0 &&
+    lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES &&
+    worstCase < WARN_BYTES
+  ) {
+    lines.push(
+      `Note: Netlify compat mode may inject ~${platformPadding} B FEATURE_FLAGS on top of ${worstCase} B runtime — deploy usually still succeeds when runtime stays under ${LAMBDA_ENV_LIMIT_BYTES} B. If upload fails with Invalid AWS Lambda parameters, scope build-only vars and confirm modern Functions runtime with Netlify support.`,
+    );
+  } else if (onNetlify && platformPadding > 0 && worstCase >= WARN_BYTES) {
+    lines.push(
+      `Warning: runtime ${worstCase} B is near the cap; compat-mode FEATURE_FLAGS (~${platformPadding} B) may push deploy over ${LAMBDA_ENV_LIMIT_BYTES} B — scope build-only vars in Netlify UI.`,
     );
   }
 
