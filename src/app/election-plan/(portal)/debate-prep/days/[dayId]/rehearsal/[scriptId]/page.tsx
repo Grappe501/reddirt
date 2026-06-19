@@ -1,12 +1,15 @@
 import { notFound } from "next/navigation";
 
+import { ElectionPlanDay1StepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownShell,
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
+import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import { getDayRehearsalScript, listDayRehearsalScripts, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
+import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export const dynamic = "force-dynamic";
@@ -28,10 +31,14 @@ export default async function ElectionPlanDayRehearsalPage({
   return (
     <ElectionPlanDrillDownShell
       backHref={epDebatePrepDayHref(dayId)}
-      backLabel="Day page"
-      eyebrow={`Rehearse out loud · ${script.durationLabel}`}
+      backLabel="Day 1 pathway"
+      eyebrow={`Say aloud · ${script.durationLabel}`}
       title={script.label}
     >
+      <VoterAudienceSpeakToBanner
+        profiles={resolveAudiencesForHooks(["county-champion", "author-vs-administrator"])}
+        compact
+      />
       <article className="ep-card border-2 border-emerald-300/50 bg-emerald-50/40 p-5 text-sm">
         <p className="text-xs font-bold uppercase text-emerald-900">Script</p>
         <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{script.script}</p>
@@ -53,6 +60,7 @@ export default async function ElectionPlanDayRehearsalPage({
         </ul>
       </article>
       <ElectionPlanDrillDownRelated links={script.relatedLinks} />
+      {dayId === DAY1_ID ? <ElectionPlanDay1StepFooter currentStepId={scriptId} /> : null}
     </ElectionPlanDrillDownShell>
   );
 }

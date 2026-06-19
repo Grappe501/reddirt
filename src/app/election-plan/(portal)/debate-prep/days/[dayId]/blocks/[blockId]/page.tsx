@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 
 import { ElectionPlanBlockStudyPanel } from "@/components/election-plan/ElectionPlanBlockStudyPanel";
+import { ElectionPlanDay1StepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownSections,
@@ -9,8 +9,9 @@ import {
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { getDay1BlockStudy } from "@/lib/election-plan/debatePrepDay1BlockStudy";
+import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDayBlockDrillDown, listDayBlocksDrillDown, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
-import { epDebatePrepDayBlockHref, epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
+import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export const dynamic = "force-dynamic";
@@ -31,18 +32,14 @@ export default async function ElectionPlanDayBlockPage({
 
   const study = dayId === DAY1_ID ? getDay1BlockStudy(blockId) : undefined;
   const title = study?.studyGuideTitle ?? block.title;
-  const eyebrow = study ? `Study guide · ~${block.minutes} min` : `Study block · ~${block.minutes} min`;
-
-  const dayBlocks = dayId === DAY1_ID ? listDayBlocksDrillDown(DAY1_ID) : [];
-  const blockIndex = dayBlocks.findIndex((b) => b.blockId === blockId);
-  const prevBlock = blockIndex > 0 ? dayBlocks[blockIndex - 1] : undefined;
-  const nextBlock = blockIndex >= 0 && blockIndex < dayBlocks.length - 1 ? dayBlocks[blockIndex + 1] : undefined;
+  const eyebrow = study ? `Step · ~${block.minutes} min` : `Study block · ~${block.minutes} min`;
+  const pathwayStep = dayId === DAY1_ID ? getDay1PathwayStep(blockId) : undefined;
 
   return (
     <ElectionPlanDrillDownShell
       backHref={epDebatePrepDayHref(dayId)}
-      backLabel="Day 1 command foundation"
-      eyebrow={eyebrow}
+      backLabel="Day 1 pathway"
+      eyebrow={pathwayStep ? `Day 1 · ${eyebrow}` : eyebrow}
       title={title}
       description={study?.overview ?? block.why}
       pageSummary={study?.professorLead ?? study?.overview}
@@ -57,30 +54,7 @@ export default async function ElectionPlanDayBlockPage({
         </>
       )}
 
-      {dayId === DAY1_ID && (prevBlock || nextBlock) ? (
-        <nav className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--ep-navy)]/10 pt-6">
-          {prevBlock ? (
-            <Link
-              href={epDebatePrepDayBlockHref(DAY1_ID, prevBlock.blockId)}
-              className="ep-card ep-chapter-nav-link max-w-md p-4 text-sm"
-            >
-              <span className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Previous block</span>
-              <span className="mt-1 block font-heading font-bold text-[var(--ep-navy)]">{prevBlock.title}</span>
-            </Link>
-          ) : (
-            <span />
-          )}
-          {nextBlock ? (
-            <Link
-              href={epDebatePrepDayBlockHref(DAY1_ID, nextBlock.blockId)}
-              className="ep-card ep-chapter-nav-link max-w-md p-4 text-right text-sm"
-            >
-              <span className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Next block</span>
-              <span className="mt-1 block font-heading font-bold text-[var(--ep-navy)]">{nextBlock.title}</span>
-            </Link>
-          ) : null}
-        </nav>
-      ) : null}
+      {dayId === DAY1_ID ? <ElectionPlanDay1StepFooter currentStepId={blockId} /> : null}
     </ElectionPlanDrillDownShell>
   );
 }

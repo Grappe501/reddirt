@@ -4,12 +4,15 @@ import type { VoterAudienceProfile } from "@/lib/election-plan/voter-audience-mo
 export function VoterAudiencePracticeLine({
   text,
   audiences,
+  label,
 }: {
   text: string;
   audiences: VoterAudienceProfile[];
+  label?: string;
 }) {
   return (
     <li className="rounded-lg border border-[var(--ep-border)] bg-white/60 p-4">
+      {label ? <p className="mb-2 text-xs font-bold uppercase text-emerald-900">{label}</p> : null}
       {audiences.length > 0 ? (
         <div className="mb-2 flex flex-wrap gap-2">
           {audiences.map((p) => (

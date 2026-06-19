@@ -2,8 +2,11 @@ import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
+import { VoterAudiencePracticeLine } from "@/components/election-plan/voter-audience/VoterAudiencePracticeLine";
 import type { Day1BlockStudyDeep } from "@/lib/election-plan/debatePrepDay1BlockStudy";
 import type { OpponentExampleStudyDeep } from "@/lib/election-plan/debatePrepDay1OpponentExampleStudy";
+import { kellyStudyLeadLabel, showOptionalDeepReference, showOperatorGuides } from "@/lib/election-plan/kelly-facing-ui";
+import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 
 type StudyGuideContent = Pick<
   Day1BlockStudyDeep,
@@ -22,11 +25,18 @@ type StudyGuideContent = Pick<
 >;
 
 export function ElectionPlanBlockStudyPanel({ study }: { study: StudyGuideContent | OpponentExampleStudyDeep }) {
+  const leadLabel = kellyStudyLeadLabel();
+  const showDeepRef = showOptionalDeepReference();
+  const lineAudiences = resolveAudiencesForHooks(["county-champion", "author-vs-administrator", "lane-2"]);
+  const relatedLinks = showOperatorGuides()
+    ? study.relatedLinks
+    : study.relatedLinks.filter((l) => !l.href.includes("/admin/"));
+
   return (
     <>
       {study.professorLead ? (
         <article className="ep-card border-[var(--ep-gold)]/50 bg-[var(--ep-cream)]/60 p-5 text-sm">
-          <h2 className="text-xs font-bold uppercase text-[var(--ep-gold)]">Professor lead</h2>
+          <h2 className="text-xs font-bold uppercase text-[var(--ep-gold)]">{leadLabel}</h2>
           <p className="mt-3 text-base font-medium leading-relaxed text-[var(--ep-navy)]">{study.professorLead}</p>
         </article>
       ) : null}
@@ -77,26 +87,43 @@ export function ElectionPlanBlockStudyPanel({ study }: { study: StudyGuideConten
         </section>
       ) : null}
 
-      <section className="mt-6 space-y-4">
-        <h2 className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Deep reference</h2>
-        {study.deepSections.map((section) => (
-          <article key={section.title} className="ep-card p-5 text-sm">
-            <h3 className="text-xs font-bold uppercase text-[var(--ep-navy)]">{section.title}</h3>
-            <p className="mt-3 leading-relaxed text-[var(--ep-navy-muted)]">{section.body}</p>
-          </article>
-        ))}
-      </section>
+      {showDeepRef ? (
+        <section className="mt-6 space-y-4">
+          <h2 className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Deep reference</h2>
+          {study.deepSections.map((section) => (
+            <article key={section.title} className="ep-card p-5 text-sm">
+              <h3 className="text-xs font-bold uppercase text-[var(--ep-navy)]">{section.title}</h3>
+              <p className="mt-3 leading-relaxed text-[var(--ep-navy-muted)]">{section.body}</p>
+            </article>
+          ))}
+        </section>
+      ) : study.deepSections.length > 0 ? (
+        <details className="ep-card mt-6 p-5 text-sm">
+          <summary className="cursor-pointer text-xs font-bold uppercase text-[var(--ep-navy-muted)]">
+            Optional reference ({study.deepSections.length} sections)
+          </summary>
+          <div className="mt-4 space-y-4">
+            {study.deepSections.map((section) => (
+              <article key={section.title}>
+                <h3 className="text-xs font-bold uppercase text-[var(--ep-navy)]">{section.title}</h3>
+                <p className="mt-2 leading-relaxed text-[var(--ep-navy-muted)]">{section.body}</p>
+              </article>
+            ))}
+          </div>
+        </details>
+      ) : null}
 
       {study.sampleLines && study.sampleLines.length > 0 ? (
         <section className="mt-6">
           <h2 className="text-xs font-bold uppercase text-emerald-900">Sample lines — practice aloud</h2>
           <div className="mt-3 space-y-3">
             {study.sampleLines.map((line) => (
-              <article key={line.label} className="ep-card border-emerald-200 bg-emerald-50/40 p-4 text-sm">
-                <p className="text-xs font-bold uppercase text-emerald-900">{line.label}</p>
-                <p className="mt-2 italic text-[var(--ep-navy)]">&ldquo;{line.text}&rdquo;</p>
-                {line.note ? <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">{line.note}</p> : null}
-              </article>
+              <VoterAudiencePracticeLine
+                key={line.label}
+                label={line.label}
+                text={line.text}
+                audiences={lineAudiences.slice(0, 2)}
+              />
             ))}
           </div>
         </section>
@@ -134,7 +161,7 @@ export function ElectionPlanBlockStudyPanel({ study }: { study: StudyGuideConten
       </article>
 
       <ElectionPlanDrillDownSteps title="End-of-block checklist" steps={study.practiceSteps} />
-      <ElectionPlanDrillDownRelated links={study.relatedLinks} />
+      <ElectionPlanDrillDownRelated links={relatedLinks} />
     </>
   );
 }

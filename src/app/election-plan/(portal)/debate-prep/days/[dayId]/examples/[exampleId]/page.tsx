@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { ElectionPlanDay1StepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import { ElectionPlanBlockStudyPanel } from "@/components/election-plan/ElectionPlanBlockStudyPanel";
 import {
   ElectionPlanDrillDownRelated,
@@ -33,8 +34,8 @@ export default async function ElectionPlanDayExamplePage({
   return (
     <ElectionPlanDrillDownShell
       backHref={epDebatePrepDayHref(dayId)}
-      backLabel="Day 1 command foundation"
-      eyebrow={`Opponent drill-down · ${example.opponent}`}
+      backLabel="Day 1 pathway"
+      eyebrow="Optional · Hammer opening pivot"
       title={study?.drillDownTitle ?? "Hammer opening — authorship pivot"}
       description={example.theirMove}
     >
@@ -69,6 +70,7 @@ export default async function ElectionPlanDayExamplePage({
           <ElectionPlanDrillDownRelated links={example.relatedLinks} />
         </>
       )}
+      {dayId === DAY1_ID ? <ElectionPlanDay1StepFooter currentStepId={exampleId} /> : null}
     </ElectionPlanDrillDownShell>
   );
 }

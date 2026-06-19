@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { ElectionPlanDay1StepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownShell,
@@ -32,7 +33,7 @@ export default async function ElectionPlanDayCommandDrillPage({
   return (
     <ElectionPlanDrillDownShell
       backHref={epDebatePrepDayHref(dayId)}
-      backLabel="Day page"
+      backLabel="Day 1 pathway"
       eyebrow="Command drill · if / then / scan"
       title={drill.ifTheySay}
     >
@@ -48,6 +49,7 @@ export default async function ElectionPlanDayCommandDrillPage({
       </article>
       <ElectionPlanDrillDownSteps title="Rehearsal loop" steps={drill.practiceSteps} />
       <ElectionPlanDrillDownRelated links={drill.relatedLinks} />
+      {dayId === DAY1_ID ? <ElectionPlanDay1StepFooter currentStepId={drillId} /> : null}
     </ElectionPlanDrillDownShell>
   );
 }

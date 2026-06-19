@@ -3,8 +3,11 @@ import { notFound } from "next/navigation";
 
 import { ElectionPlanDayDrillDownOverview } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import { dayHasDrillDownPages } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
+import { getFirstDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
+import { dayHasDrillDownPages, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { EP_DEBATE_PREP_HREF } from "@/lib/election-plan/debate-prep-links";
+import { useKellyDay1StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import {
   DEBATE_WEEK_INTENSIVE_DAY_IDS,
   getDebateWeekIntensiveDay,
@@ -31,71 +34,55 @@ export default async function ElectionPlanDebatePrepDayPage({
   if (!DEBATE_WEEK_INTENSIVE_DAY_IDS.includes(dayId as IntensiveDayId)) notFound();
 
   const plan = getDebateWeekIntensiveDay(dayId as IntensiveDayId)!;
+  const streamlinedDay1 = useKellyDay1StreamlinedPath() && dayId === DAY1_ID;
+  const firstStep = dayId === DAY1_ID ? getFirstDay1PathwayStep() : null;
 
   return (
-    <>
-      <div className="ep-chapter-body px-6 py-10 lg:px-10">
-        <div className="mx-auto max-w-5xl">
-          <ElectionPlanDebatePrepSubnav compact />
+    <div className="ep-chapter-body px-6 py-10 lg:px-10">
+      <div className="mx-auto max-w-5xl">
+        <ElectionPlanDebatePrepSubnav compact />
 
-          <header className="mb-6">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-[var(--ep-gold)]">
-              {plan.weekdayLabel}
-            </p>
-            <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{plan.title}</h1>
-            <p className="mt-3 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
-            <Link href={EP_DEBATE_PREP_HREF} className="mt-4 inline-block text-xs font-bold text-[var(--ep-navy)] underline">
-              ← Debate prep hub
+        <header className="mb-6">
+          <Link href={EP_DEBATE_PREP_HREF} className="text-xs font-bold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]">
+            ← Debate prep
+          </Link>
+          <p className="mt-3 text-xs font-bold uppercase tracking-[0.24em] text-[var(--ep-gold)]">{plan.weekdayLabel}</p>
+          <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{plan.title}</h1>
+          <p className="mt-3 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
+        </header>
+
+        {streamlinedDay1 && firstStep ? (
+          <>
+            <KellyPageSummary
+              summary={`${plan.goalForKelly} One pathway below — start at the top and tap Continue on each page.`}
+            />
+            <Link
+              href={firstStep.href}
+              className="mb-8 inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white"
+            >
+              Start now · {firstStep.label} →
             </Link>
-          </header>
+          </>
+        ) : null}
 
-          {dayHasDrillDownPages(dayId as IntensiveDayId) ? (
-            <ElectionPlanDayDrillDownOverview dayId={dayId as IntensiveDayId} plan={plan} blockListMode="compact" />
-          ) : (
-            <>
-              <section className="ep-card mb-6 grid gap-4 sm:grid-cols-2 p-5 text-sm">
-                <div>
-                  <p className="font-bold text-[var(--ep-navy)]">Command focus</p>
-                  <p className="mt-2 text-[var(--ep-navy-muted)]">{plan.commandModeFocus}</p>
-                </div>
-                <div>
-                  <p className="font-bold text-[var(--ep-navy)]">Psychology</p>
-                  <p className="mt-2 text-[var(--ep-navy-muted)]">{plan.psychologyPrinciple}</p>
-                </div>
-              </section>
-
-              <section className="ep-card mb-6 p-5 text-sm">
-                <p className="text-[var(--ep-navy-muted)]">
-                  <span className="font-bold text-[var(--ep-navy)]">Goal:</span> {plan.goalForKelly}
-                </p>
-                <p className="mt-2 text-emerald-900">
-                  <span className="font-bold">Success:</span> {plan.successCheck}
-                </p>
-                <p className="mt-2 text-indigo-900">
-                  <span className="font-bold">Newspaper:</span> {plan.newspaperAngle}
-                </p>
-              </section>
-
-              <section className="mb-8 space-y-4">
-                <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Study blocks</h2>
-                {plan.blocks.map((block, idx) => (
-                  <article key={block.id} className="ep-card p-4 text-sm">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="font-bold text-[var(--ep-navy)]">
-                        {idx + 1}. {block.title}
-                      </p>
-                      <span className="font-mono text-xs text-[var(--ep-navy-muted)]">{block.minutes} min</span>
-                    </div>
-                    <p className="mt-2 text-[var(--ep-navy-muted)]">{block.activity}</p>
-                    <p className="mt-1 text-xs italic text-indigo-800">{block.why}</p>
-                  </article>
-                ))}
-              </section>
-            </>
-          )}
-
-        </div>
+        {dayHasDrillDownPages(dayId as IntensiveDayId) ? (
+          <ElectionPlanDayDrillDownOverview dayId={dayId as IntensiveDayId} plan={plan} />
+        ) : (
+          <>
+            <section className="ep-card mb-6 grid gap-4 p-5 text-sm sm:grid-cols-2">
+              <div>
+                <p className="font-bold text-[var(--ep-navy)]">Tonight&apos;s focus</p>
+                <p className="mt-2 text-[var(--ep-navy-muted)]">{plan.commandModeFocus}</p>
+              </div>
+              <div>
+                <p className="font-bold text-[var(--ep-navy)]">Success</p>
+                <p className="mt-2 text-[var(--ep-navy-muted)]">{plan.successCheck}</p>
+              </div>
+            </section>
+            <KellyPageSummary summary={plan.goalForKelly} />
+          </>
+        )}
       </div>
-    </>
+    </div>
   );
 }

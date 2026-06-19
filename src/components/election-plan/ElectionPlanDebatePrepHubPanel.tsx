@@ -2,25 +2,27 @@ import Link from "next/link";
 import "server-only";
 
 import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
-import { DebateWeekIntensivePanel } from "@/components/admin/intelligence/DebateWeekIntensivePanel";
-import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
+import { ElectionPlanDay1StartCard } from "@/components/election-plan/ElectionPlanDay1PathwayPanel";
+import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
+import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
+import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import {
+  DEBATE_PREP_PACKAGE_LABEL,
+  EP_DEBATE_PREP_WAR_ROOM_HREF,
   EP_DEBATE_QUESTIONS_HREF,
   EP_FORUM_TRANSCRIPT_LAB_HREF,
   EP_LEGISLATIVE_INTEL_HREF,
-  EP_VOTER_AUDIENCES_HREF,
   EP_OPPONENT_BIOS_HREF,
+  EP_VOTER_AUDIENCES_HREF,
+  epDebatePrepDayHref,
   epLegislativeIntel2021Href,
   epLegislativeIntel2025Href,
 } from "@/lib/election-plan/debate-prep-links";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
-import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
-import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
-import { EP_DEBATE_PREP_WAR_ROOM_HREF } from "@/lib/election-plan/debate-prep-links";
-import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
-import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
+import { DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { showPlatformMeta } from "@/lib/election-plan/kelly-facing-ui";
+import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 
 export function ElectionPlanDebatePrepHubPanel() {
   const referenceDate = process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
@@ -51,55 +53,28 @@ export function ElectionPlanDebatePrepHubPanel() {
     <>
       <ElectionPlanDebatePrepSubnav />
 
-      <header className="mb-8">
+      <header className="mb-6">
         <h1 className="font-heading text-3xl font-bold text-[var(--ep-navy)]">Debate prep</h1>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--ep-navy-muted)]">{snapshot.intro}</p>
       </header>
 
-      <KellyPageSummary summary="Tonight: rehearse your opening, know Hammer's 2021 and 2025 election bills, and practice one agree-and-add pivot on county clerks. Picture who is in the room — open Audiences when a line feels flat." />
+      <KellyPageSummary summary="Day 1 tonight: body, breath, author-vs-administrator, then your 90-second opening. One pathway — tap Continue on each page. Bills and trap lanes come on Day 2." />
 
-      <section className="mb-8 grid gap-4 sm:grid-cols-2">
-        <Link href={EP_VOTER_AUDIENCES_HREF} className="ep-card block border-violet-200 bg-violet-50/40 p-5 transition hover:border-violet-400">
-          <p className="text-xs font-bold uppercase text-violet-950">Who is in the room?</p>
-          <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">16 voter audiences</h2>
-          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-            Named Arkansans in Kelly&apos;s big tent — Marcia, Rev. James, Carol, Linda, and twelve more. Every practice line shows who you are speaking to.
-          </p>
-        </Link>
-        <Link href={epLegislativeIntel2021Href()} className="ep-card block border-violet-200 bg-violet-50/40 p-5 transition hover:border-violet-400">
-          <p className="text-xs font-bold uppercase text-violet-950">Must read</p>
-          <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">2021 integrity bills</h2>
-          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">Six bills Hammer sponsored — your continuity trap anchor.</p>
-        </Link>
-        <Link href={epLegislativeIntel2025Href()} className="ep-card block border-amber-200 bg-amber-50/40 p-5 transition hover:border-amber-400">
-          <p className="text-xs font-bold uppercase text-amber-950">Must read</p>
-          <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">2025 direct democracy bills</h2>
-          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">Petition restrictions — honor Arkansas ballot measures.</p>
-        </Link>
-      </section>
+      <ElectionPlanDay1StartCard />
 
-      <section className="ep-card mb-8 grid gap-6 border-2 border-[var(--ep-gold)]/30 bg-[var(--ep-cream)]/40 p-6 lg:grid-cols-[1fr_2fr]">
+      <section className="ep-card mb-8 grid gap-4 border-[var(--ep-gold)]/30 bg-[var(--ep-cream)]/30 p-5 sm:grid-cols-3">
         <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Readiness</p>
-          <p className="mt-2 font-heading text-5xl font-bold text-[var(--ep-navy)]">{snapshot.readinessPct}%</p>
-          <p className="mt-1 text-sm font-semibold text-[var(--ep-navy)]">{snapshot.readinessLabel}</p>
-          <p className="mt-4 text-xs text-[var(--ep-navy-muted)]">
-            Debate: <span className="font-semibold text-[var(--ep-navy)]">{snapshot.debateDate}</span>
-          </p>
-          <div className="mt-4 h-2 overflow-hidden rounded-full bg-[var(--ep-border)]">
-            <div
-              className="h-full rounded-full bg-[var(--ep-navy)] transition-all"
-              style={{ width: `${Math.min(100, snapshot.readinessPct)}%` }}
-            />
-          </div>
+          <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Readiness</p>
+          <p className="mt-1 font-heading text-3xl font-bold text-[var(--ep-navy)]">{snapshot.readinessPct}%</p>
+          <p className="text-xs text-[var(--ep-navy-muted)]">Debate {snapshot.debateDate}</p>
         </div>
-        <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Tonight&apos;s focus</p>
-          <p className="mt-2 text-sm font-semibold text-[var(--ep-navy)]">
-            {snapshot.todayFocus ?? "Open the 7-day course below and start tonight's day."}
+        <div className="sm:col-span-2">
+          <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Tonight</p>
+          <p className="mt-1 text-sm font-semibold text-[var(--ep-navy)]">
+            {snapshot.todayFocus ?? "Command Mode foundation — start Day 1 pathway above."}
           </p>
           {showPlatformMeta() ? (
-            <p className="mt-4 text-[10px] font-bold uppercase text-amber-900">{snapshot.governance}</p>
+            <p className="mt-2 text-[10px] font-bold uppercase text-amber-900">{snapshot.governance}</p>
           ) : null}
         </div>
       </section>
@@ -110,44 +85,37 @@ export function ElectionPlanDebatePrepHubPanel() {
         packageLabel={DEBATE_PREP_PACKAGE_LABEL}
       />
 
-      <section className="ep-card mb-8 border-2 border-rose-300/50 p-5">
-        <p className="text-xs font-bold uppercase text-rose-900">Opponent biographies</p>
-        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-          Full Hammer & Pakko bios — priorities, psychology, debate tells, command mode, and memory lines. Read at end of Day 2, re-read after Day 4 forum lab, lock in again on Day 6 before simulation.
-        </p>
-        <Link
-          href={EP_OPPONENT_BIOS_HREF}
-          className="mt-4 inline-block rounded-full bg-rose-900 px-4 py-2 text-xs font-bold text-white"
-        >
-          Open opponent bios →
-        </Link>
-      </section>
-
-      <section className="ep-card mb-8 border-2 border-violet-300/50 p-5">
-        <p className="text-xs font-bold uppercase text-violet-900">40 expected questions</p>
-        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-          Hammer & Pakko forecasts, speak-order scripts (first / second / third), rebuttals, and cross-exchange handling for every likely moderator question.
-        </p>
-        <Link
-          href={EP_DEBATE_QUESTIONS_HREF}
-          className="mt-4 inline-block rounded-full bg-violet-900 px-4 py-2 text-xs font-bold text-white"
-        >
-          Open question bank →
-        </Link>
-      </section>
-
-      <section className="ep-card mb-8 border-2 border-[var(--ep-gold)]/40 p-5">
-        <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">War room</p>
-        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-          Readiness radar, dress-rehearsal cards, and trap-lane practice.
-        </p>
-        <Link
-          href={EP_DEBATE_PREP_WAR_ROOM_HREF}
-          className="mt-4 inline-block rounded-full bg-[var(--ep-navy)] px-4 py-2 text-xs font-bold text-white"
-        >
-          Open war room →
-        </Link>
-      </section>
+      <details className="ep-card mb-8 p-5 text-sm">
+        <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
+          Reference tonight (optional — after Day 1 blocks)
+        </summary>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <Link href={EP_VOTER_AUDIENCES_HREF} className="rounded-lg border border-violet-200 bg-violet-50/40 p-4 hover:border-violet-400">
+            <p className="text-xs font-bold uppercase text-violet-950">Audiences</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Who is in the room when you speak</p>
+          </Link>
+          <Link href={epLegislativeIntel2021Href()} className="rounded-lg border border-violet-200 p-4 hover:border-violet-400">
+            <p className="text-xs font-bold uppercase text-violet-950">2021 bills</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">For Day 2+ — not required tonight</p>
+          </Link>
+          <Link href={epLegislativeIntel2025Href()} className="rounded-lg border border-amber-200 p-4 hover:border-amber-400">
+            <p className="text-xs font-bold uppercase text-amber-950">2025 petitions</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">For Day 2+ — not required tonight</p>
+          </Link>
+          <Link href={EP_DEBATE_QUESTIONS_HREF} className="rounded-lg border border-violet-200 p-4 hover:border-violet-400">
+            <p className="text-xs font-bold uppercase text-violet-900">40 questions</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Bank for later this week</p>
+          </Link>
+          <Link href={EP_OPPONENT_BIOS_HREF} className="rounded-lg border border-rose-200 p-4 hover:border-rose-400">
+            <p className="text-xs font-bold uppercase text-rose-900">Opponent bios</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Best after Day 2 film room</p>
+          </Link>
+          <Link href={EP_DEBATE_PREP_WAR_ROOM_HREF} className="rounded-lg border border-[var(--ep-gold)]/40 p-4 hover:border-[var(--ep-gold)]">
+            <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">War room</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Trap lanes — Day 2 onward</p>
+          </Link>
+        </div>
+      </details>
 
       <ForumTranscriptIntelHubPanel intel={snapshot.forumIntel} />
 
@@ -162,18 +130,21 @@ export function ElectionPlanDebatePrepHubPanel() {
         </Link>
       </section>
 
-      <h2 className="mb-4 font-heading text-lg font-bold text-[var(--ep-navy)]">7-day prep course</h2>
-      <p className="mb-4 text-sm text-[var(--ep-navy-muted)]">
-        Work one day at a time. After you open a study block, you will only see the next step — not this full list again.
-      </p>
-      <DebateWeekIntensivePanel surface="election-plan" initialDay={1} todayDate={referenceDate} />
+      <Link
+        href={epDebatePrepDayHref("day-2-read-the-table")}
+        className="ep-card mb-8 block border-indigo-200 bg-indigo-50/30 p-5 transition hover:border-indigo-400"
+      >
+        <p className="text-xs font-bold uppercase text-indigo-900">After Day 1</p>
+        <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">Day 2 · Read the table</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Film room, Hammer tells, trap lanes 1–2. Finish Day 1 first — you will be ready.
+        </p>
+      </Link>
 
-      <section className="mt-10">
-        <Link href={EP_LEGISLATIVE_INTEL_HREF} className="ep-card block p-5 transition hover:border-[var(--ep-gold)]">
-          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">All legislative intelligence</h2>
-          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">2021 integrity + 2025 petition bills with practice lines.</p>
-        </Link>
-      </section>
+      <Link href={EP_LEGISLATIVE_INTEL_HREF} className="ep-card block p-5 transition hover:border-[var(--ep-gold)]">
+        <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">All legislative intelligence</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">2021 integrity + 2025 petition bills with practice lines.</p>
+      </Link>
     </>
   );
 }
