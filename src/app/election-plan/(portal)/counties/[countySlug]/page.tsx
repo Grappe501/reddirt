@@ -13,6 +13,7 @@ import { getFosCountyRollup } from "@/lib/election-plan/load-fundraising-operati
 import { loadCountyPlaybookMarkdown } from "@/lib/election-plan/load-county-playbook-markdown";
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
 import { getCountyVaultStats, queryCountyVaultAssets } from "@/lib/county-vault/queries";
+import type { CountyVaultListItem } from "@/lib/county-vault/types";
 import { resolveDbCountyForVault } from "@/lib/county-vault/resolve-county";
 
 type Props = { params: Promise<{ countySlug: string }> };
@@ -61,14 +62,21 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
   const v4Ops = buildCountyWorkbenchV4OperationalView(strikeTeam, fieldEntrySummary);
   const playbookMarkdown = loadCountyPlaybookMarkdown(county.slug, county.playbookPath);
 
-  const dbCounty = await resolveDbCountyForVault(county.slug);
-  const vaultCountySlug = dbCounty?.slug ?? county.slug;
-  const [vaultStats, vaultPreview] = dbCounty
-    ? await Promise.all([
-        getCountyVaultStats(vaultCountySlug),
-        queryCountyVaultAssets(vaultCountySlug, { limit: 4 }),
-      ])
-    : [{ total: 0, publicCount: 0, withTranscript: 0, videos: 0 }, []];
+  const emptyVaultStats = { total: 0, publicCount: 0, withTranscript: 0, videos: 0 };
+  let vaultStats = emptyVaultStats;
+  let vaultPreview: CountyVaultListItem[] = [];
+  const vaultCountySlug = county.slug;
+
+  try {
+    await resolveDbCountyForVault(county.slug);
+    [vaultStats, vaultPreview] = await Promise.all([
+      getCountyVaultStats(vaultCountySlug),
+      queryCountyVaultAssets(vaultCountySlug, { limit: 4 }),
+    ]);
+  } catch {
+    vaultStats = emptyVaultStats;
+    vaultPreview = [];
+  }
 
   return (
     <>

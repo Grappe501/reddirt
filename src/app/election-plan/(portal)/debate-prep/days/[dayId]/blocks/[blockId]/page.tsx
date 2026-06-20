@@ -54,7 +54,7 @@ export default async function ElectionPlanDayBlockPage({
       {dayId === DAY2_ID && blockId === "b2-film" ? <ElectionPlanFilmTellWorksheetPanel /> : null}
 
       {study ? (
-        <ElectionPlanBlockStudyPanel study={study} />
+        <ElectionPlanBlockStudyPanel study={study} dayId={dayId} blockId={blockId} />
       ) : (
         <>
           <ElectionPlanDrillDownSections sections={block.sections} />

@@ -12,6 +12,7 @@ import {
   listDayExampleIds,
   type DrillDownDayId,
 } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { listDayBlockPhaseParams } from "@/lib/election-plan/debatePrepBlockPhase";
 
 export const DRILL_DOWN_DAY_IDS: DrillDownDayId[] = [DAY1_ID, DAY2_ID];
 
@@ -48,5 +49,17 @@ export function staticParamsForDayMicroLessons() {
 export function staticParamsForDayRehearsals() {
   return DRILL_DOWN_DAY_IDS.flatMap((dayId) =>
     listDayRehearsalScripts(dayId).map((s) => ({ dayId, scriptId: s.id })),
+  );
+}
+
+export function staticParamsForDayBlockPhases() {
+  return DRILL_DOWN_DAY_IDS.flatMap((dayId) =>
+    listDayBlocksDrillDown(dayId).flatMap((b) =>
+      listDayBlockPhaseParams(dayId, b.blockId).map((phaseIndex) => ({
+        dayId,
+        blockId: b.blockId,
+        phaseIndex: String(phaseIndex),
+      })),
+    ),
   );
 }

@@ -128,7 +128,10 @@ export function CountyPlaybookPanel({
         </Link>
       )}
 
-      <CountyIntelligenceNav hasDbIntel={Boolean(countyIntel)} hasVault={Boolean(vaultStats && vaultCountySlug)} />
+      <CountyIntelligenceNav
+        hasDbIntel={Boolean(countyIntel)}
+        hasVault={Boolean(vaultStats && vaultCountySlug && (vaultStats.total > 0 || vaultPreview.length > 0))}
+      />
 
       <CountyPlaybookOperatorGuidePanel countySlug={county.slug} countyName={county.county} tier={county.tier} />
 
@@ -408,7 +411,7 @@ export function CountyPlaybookPanel({
         </div>
       )}
 
-      {vaultStats && vaultCountySlug ? (
+      {vaultStats && vaultCountySlug && (vaultStats.total > 0 || vaultPreview.length > 0) ? (
         <div id="county-media-vault" className="mb-8 scroll-mt-24 space-y-6">
           <CountyVaultPanel
             countySlug={vaultCountySlug}

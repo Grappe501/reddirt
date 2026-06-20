@@ -83,6 +83,10 @@ export function epDebatePrepDayBlockHref(dayId: string, blockId: string): string
   return `${epDebatePrepDayHref(dayId)}/blocks/${blockId}`;
 }
 
+export function epDebatePrepDayBlockPhaseHref(dayId: string, blockId: string, phaseIndex: number): string {
+  return `${epDebatePrepDayBlockHref(dayId, blockId)}/phases/${phaseIndex}`;
+}
+
 export function epDebatePrepDayExampleHref(dayId: string, exampleId: string): string {
   return `${epDebatePrepDayHref(dayId)}/examples/${exampleId}`;
 }

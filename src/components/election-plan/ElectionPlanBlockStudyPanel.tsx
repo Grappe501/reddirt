@@ -5,8 +5,10 @@ import {
 import { VoterAudiencePracticeLine } from "@/components/election-plan/voter-audience/VoterAudiencePracticeLine";
 import type { Day1BlockStudyDeep } from "@/lib/election-plan/debatePrepDay1BlockStudy";
 import type { OpponentExampleStudyDeep } from "@/lib/election-plan/debatePrepDay1OpponentExampleStudy";
+import { epDebatePrepDayBlockPhaseHref } from "@/lib/election-plan/debate-prep-links";
 import { kellyStudyLeadLabel, showOptionalDeepReference, showOperatorGuides } from "@/lib/election-plan/kelly-facing-ui";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
+import Link from "next/link";
 
 type StudyGuideContent = Pick<
   Day1BlockStudyDeep,
@@ -24,7 +26,15 @@ type StudyGuideContent = Pick<
   | "relatedLinks"
 >;
 
-export function ElectionPlanBlockStudyPanel({ study }: { study: StudyGuideContent | OpponentExampleStudyDeep }) {
+export function ElectionPlanBlockStudyPanel({
+  study,
+  dayId,
+  blockId,
+}: {
+  study: StudyGuideContent | OpponentExampleStudyDeep;
+  dayId?: string;
+  blockId?: string;
+}) {
   const leadLabel = kellyStudyLeadLabel();
   const showDeepRef = showOptionalDeepReference();
   const lineAudiences = resolveAudiencesForHooks(["county-champion", "author-vs-administrator", "lane-2"]);
@@ -48,19 +58,45 @@ export function ElectionPlanBlockStudyPanel({ study }: { study: StudyGuideConten
 
       <section className="mt-6 space-y-4">
         <h2 className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Timed phases — follow in order</h2>
-        {study.phases.map((phase) => (
-          <article key={phase.title} className="ep-card p-5 text-sm">
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="font-heading text-base font-bold text-[var(--ep-navy)]">{phase.title}</h3>
-              <span className="font-mono text-xs font-bold text-[var(--ep-gold)]">{phase.minutesLabel}</span>
-            </div>
-            <ol className="mt-3 list-inside list-decimal space-y-2 text-[var(--ep-navy-muted)]">
-              {phase.steps.map((step) => (
-                <li key={step.slice(0, 48)}>{step}</li>
-              ))}
-            </ol>
-          </article>
-        ))}
+        {study.phases.map((phase, index) => {
+          const phaseNumber = index + 1;
+          const href =
+            dayId && blockId ? epDebatePrepDayBlockPhaseHref(dayId, blockId, phaseNumber) : null;
+          const card = (
+            <>
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="font-heading text-base font-bold text-[var(--ep-navy)]">{phase.title}</h3>
+                <span className="font-mono text-xs font-bold text-[var(--ep-gold)]">{phase.minutesLabel}</span>
+              </div>
+              <ol className="mt-3 list-inside list-decimal space-y-2 text-[var(--ep-navy-muted)]">
+                {phase.steps.slice(0, 2).map((step) => (
+                  <li key={step.slice(0, 48)}>{step}</li>
+                ))}
+                {phase.steps.length > 2 ? (
+                  <li className="list-none text-xs font-semibold text-[var(--ep-navy)]">
+                    +{phase.steps.length - 2} more steps in drill-down
+                  </li>
+                ) : null}
+              </ol>
+              {href ? (
+                <p className="mt-3 text-xs font-bold text-[var(--ep-gold)]">Open phase drill-down →</p>
+              ) : null}
+            </>
+          );
+          return href ? (
+            <Link
+              key={phase.title}
+              href={href}
+              className="ep-card block p-5 text-sm transition hover:border-[var(--ep-gold)] hover:shadow-sm"
+            >
+              {card}
+            </Link>
+          ) : (
+            <article key={phase.title} className="ep-card p-5 text-sm">
+              {card}
+            </article>
+          );
+        })}
       </section>
 
       {study.psychology && study.psychology.length > 0 ? (

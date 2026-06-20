@@ -1,6 +1,6 @@
 {
   "name": "reddirt-site",
-  "version": "0.60.1",
+  "version": "0.60.2",
   "private": true,
   "scripts": {
     "dev": "node scripts/run-with-h-drive-env.cjs next dev",
@@ -98,6 +98,7 @@
     "opposition:archive:ingest": "tsx scripts/ingest-kim-hammer-opposition-archive.ts",
     "opposition:hammer-bills:enrolled-sections": "python scripts/opposition/build-hammer-bill-enrolled-sections.py",
     "agents:test-hammer-bill-enrolled-sections": "tsx scripts/test-hammer-bill-enrolled-sections.ts",
+    "agents:test-debate-prep-block-phases": "tsx scripts/test-debate-prep-block-phases.ts",
     "legislature:discover-videos": "tsx scripts/discover-legislative-videos-for-priority-bills.ts",
     "legislature:process-video-queue": "tsx scripts/process-legislative-video-queue.ts",
     "legislature:chunk-transcripts": "tsx scripts/chunk-legislative-transcripts.ts",
