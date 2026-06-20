@@ -28,7 +28,7 @@ import type {
 export { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 export type { DebatePrepTonightPackageV8, DebatePrepTonightStepV8 } from "@/lib/election-plan/debate-prep-system-v8-types";
 
-export const DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.0-world-class-engine";
+export const DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.1-day2-read-the-table";
 
 export type DebatePrepSystemV8Snapshot = Omit<
   DebatePrepSystemV7Snapshot,

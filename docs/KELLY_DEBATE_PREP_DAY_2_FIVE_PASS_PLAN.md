@@ -2,7 +2,7 @@
 
 **Doc ID:** KELLY-DP-D2-5PASS  
 **Lane:** `RedDirt/` only  
-**Status:** Day 1 **done on production** · Day 2 **Pass 1–5 done** · ready for Steve sign-off  
+**Status:** Day 1 **done on production** · Day 2 **v1.0.0 production** (`day-2-read-the-table-v1.0.0` · site `0.59.0`) · Steve sign-off welcome  
 **Created:** 2026-06-18  
 **Goal:** Bring **Day 2 · Read the table** to the same Kelly-facing experience as Day 1 — one linear pathway, phased block study, Continue footers, evening check, Day 3 teaser.
 
@@ -356,6 +356,7 @@ Passes 2 and 3 can run in parallel after Pass 1 if two builders coordinate; **Pa
 | 3 | 2026-06-20 | 2e296588 | Linear Day 2 pathway UI, Continue footers, hub start cards, evening check + Day 3 teaser |
 | 4 | 2026-06-20 | 480f7600 | Film tell worksheet + ACCA embed, supplement footers on concepts/micro-lessons, thenScan drill UX, pass4 test |
 | 5 | 2026-06-20 | 1ba3ac9f | Hub calendar focus, Day 2 primary on 6/20, subnav Day 1/2, parity test, pathway study titles |
+| **release** | 2026-06-20 | | `0.59.0` + `day-2-read-the-table-v1.0.0` merged to `main` → Netlify production |
 
 ---
 

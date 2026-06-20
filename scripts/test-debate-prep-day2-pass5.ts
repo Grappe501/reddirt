@@ -10,6 +10,7 @@ import {
   debatePrepHubPrimaryDayId,
   resolveDebatePrepTonightDayId,
 } from "../src/lib/election-plan/debate-prep-hub-tonight";
+import { DEBATE_PREP_DAY2_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day2-release";
 import { DAY1_ID, DAY2_ID } from "../src/lib/election-plan/debatePrepDayDrillDown";
 
 assert.equal(resolveDebatePrepTonightDayId("2026-06-19"), DAY1_ID);
@@ -38,5 +39,6 @@ assert.ok(subnav.includes("Day 2"), "subnav should include Day 2");
 
 const v8 = fs.readFileSync(path.join(process.cwd(), "src/lib/election-plan/debate-prep-system-v8.ts"), "utf8");
 assert.ok(v8.includes("buildDebatePrepPathwayTonightFocus"), "v8 snapshot should use pathway tonight focus");
+assert.equal(DEBATE_PREP_DAY2_RELEASE_VERSION, "day-2-read-the-table-v1.0.0");
 
-console.log("test-debate-prep-day2-pass5: OK (hub focus, subnav, todayFocus)");
+console.log("test-debate-prep-day2-pass5: OK (hub focus, subnav, todayFocus, release version)");
