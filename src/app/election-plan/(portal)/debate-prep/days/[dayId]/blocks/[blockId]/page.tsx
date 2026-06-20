@@ -16,7 +16,7 @@ import { staticParamsForDayBlocks } from "@/lib/election-plan/debatePrepDayStati
 import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
 import { getDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
-import { getDayBlockDrillDown, DAY1_ID, DAY2_ID, DAY3_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayBlockDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
@@ -78,8 +78,8 @@ export default async function ElectionPlanDayBlockPage({
         </>
       )}
 
-      {dayId === DAY1_ID || dayId === DAY2_ID ? (
-        <ElectionPlanDayStepFooter dayId={dayId as typeof DAY1_ID | typeof DAY2_ID} currentStepId={blockId} />
+      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID ? (
+        <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={blockId} />
       ) : null}
     </ElectionPlanDrillDownShell>
   );

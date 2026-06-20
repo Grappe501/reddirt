@@ -40,7 +40,7 @@ assert.ok((hammerAdmin.professorLead ?? "").length > 20);
 assert.equal(Object.keys(DAY3_OPPONENT_EXAMPLE_STUDY).length, 1);
 
 assert.equal(kellyStudyLeadLabel(), "Start here");
-assert.ok(DEBATE_PREP_DAY3_RELEASE_VERSION.includes("pass2"));
+assert.ok(DEBATE_PREP_DAY3_RELEASE_VERSION.includes("pass3"));
 
 console.log(
   `test-debate-prep-day3-pass2: OK (${blockIds.length} blocks · ${totalDeepSections} deep sections · ex3-hammer-admin ${hammerAdmin.phases.length} phases)`,

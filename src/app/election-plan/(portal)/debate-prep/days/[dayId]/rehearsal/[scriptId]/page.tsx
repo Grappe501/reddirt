@@ -7,7 +7,7 @@ import {
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { getDayRehearsalScript, DAY1_ID, DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayRehearsalScript, DAY1_ID, DAY2_ID, DAY3_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayRehearsals } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
@@ -29,11 +29,14 @@ export default async function ElectionPlanDayRehearsalPage({
   const script = getDayRehearsalScript(dayId as IntensiveDayId, scriptId);
   if (!script) notFound();
 
-  const dayLabel = dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : "Day";
+  const dayLabel =
+    dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : dayId === DAY3_ID ? "Day 3" : "Day";
   const audienceHooks =
-    dayId === DAY2_ID
-      ? (["county-champion", "integrity", "three-way"] as const)
-      : (["county-champion", "author-vs-administrator"] as const);
+    dayId === DAY3_ID
+      ? (["county-champion", "author-vs-administrator", "integrity"] as const)
+      : dayId === DAY2_ID
+        ? (["county-champion", "integrity", "three-way"] as const)
+        : (["county-champion", "author-vs-administrator"] as const);
 
   return (
     <ElectionPlanDrillDownShell
@@ -64,8 +67,8 @@ export default async function ElectionPlanDayRehearsalPage({
         </ul>
       </article>
       <ElectionPlanDrillDownRelated links={script.relatedLinks} />
-      {dayId === DAY1_ID || dayId === DAY2_ID ? (
-        <ElectionPlanDayStepFooter dayId={dayId as typeof DAY1_ID | typeof DAY2_ID} currentStepId={scriptId} />
+      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID ? (
+        <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={scriptId} />
       ) : null}
     </ElectionPlanDrillDownShell>
   );

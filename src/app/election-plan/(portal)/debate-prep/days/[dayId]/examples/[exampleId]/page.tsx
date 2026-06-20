@@ -11,7 +11,7 @@ import {
 import { getDay1OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay1OpponentExampleStudy";
 import { getDay2OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay2OpponentExampleStudy";
 import { getDay3OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay3OpponentExampleStudy";
-import { getDayExampleDrillDown, DAY1_ID, DAY2_ID, DAY3_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayExampleDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayExamples } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
@@ -101,8 +101,8 @@ export default async function ElectionPlanDayExamplePage({
           <ElectionPlanDrillDownRelated links={example.relatedLinks} />
         </>
       )}
-      {dayId === DAY1_ID || dayId === DAY2_ID ? (
-        <ElectionPlanDayStepFooter dayId={dayId as typeof DAY1_ID | typeof DAY2_ID} currentStepId={exampleId} />
+      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID ? (
+        <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={exampleId} />
       ) : null}
     </ElectionPlanDrillDownShell>
   );

@@ -95,8 +95,8 @@ export default async function ElectionPlanDayBlockPhasePage({
         )}
       </nav>
 
-      {dayId === DAY1_ID || dayId === DAY2_ID ? (
-        <ElectionPlanDayStepFooter dayId={dayId as typeof DAY1_ID | typeof DAY2_ID} currentStepId={blockId} />
+      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID ? (
+        <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={blockId} />
       ) : null}
     </ElectionPlanDrillDownShell>
   );
