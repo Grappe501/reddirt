@@ -355,7 +355,7 @@ Passes 2 and 3 can run in parallel after Pass 1 if two builders coordinate; **Pa
 | 2 | 2026-06-19 | cbe30d19 | Block study guides + Day 2 example study panels on all 5 blocks |
 | 3 | 2026-06-20 | 2e296588 | Linear Day 2 pathway UI, Continue footers, hub start cards, evening check + Day 3 teaser |
 | 4 | 2026-06-20 | 480f7600 | Film tell worksheet + ACCA embed, supplement footers on concepts/micro-lessons, thenScan drill UX, pass4 test |
-| 5 | 2026-06-20 | | Hub calendar focus, Day 2 primary on 6/20, subnav Day 1/2, parity test, pathway study titles |
+| 5 | 2026-06-20 | 1ba3ac9f | Hub calendar focus, Day 2 primary on 6/20, subnav Day 1/2, parity test, pathway study titles |
 
 ---
 
