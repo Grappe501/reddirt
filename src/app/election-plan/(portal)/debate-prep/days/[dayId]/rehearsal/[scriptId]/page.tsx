@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation";
 
-import { ElectionPlanDay1StepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
+import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownShell,
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { getDayRehearsalScript, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayRehearsalScript, DAY1_ID, DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayRehearsals } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
@@ -29,17 +29,20 @@ export default async function ElectionPlanDayRehearsalPage({
   const script = getDayRehearsalScript(dayId as IntensiveDayId, scriptId);
   if (!script) notFound();
 
+  const dayLabel = dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : "Day";
+  const audienceHooks =
+    dayId === DAY2_ID
+      ? (["county-champion", "integrity", "three-way"] as const)
+      : (["county-champion", "author-vs-administrator"] as const);
+
   return (
     <ElectionPlanDrillDownShell
       backHref={epDebatePrepDayHref(dayId)}
-      backLabel="Day 1 pathway"
+      backLabel={`${dayLabel} pathway`}
       eyebrow={`Say aloud · ${script.durationLabel}`}
       title={script.label}
     >
-      <VoterAudienceSpeakToBanner
-        profiles={resolveAudiencesForHooks(["county-champion", "author-vs-administrator"])}
-        compact
-      />
+      <VoterAudienceSpeakToBanner profiles={resolveAudiencesForHooks([...audienceHooks])} compact />
       <article className="ep-card border-2 border-emerald-300/50 bg-emerald-50/40 p-5 text-sm">
         <p className="text-xs font-bold uppercase text-emerald-900">Script</p>
         <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{script.script}</p>
@@ -61,7 +64,9 @@ export default async function ElectionPlanDayRehearsalPage({
         </ul>
       </article>
       <ElectionPlanDrillDownRelated links={script.relatedLinks} />
-      {dayId === DAY1_ID ? <ElectionPlanDay1StepFooter currentStepId={scriptId} /> : null}
+      {dayId === DAY1_ID || dayId === DAY2_ID ? (
+        <ElectionPlanDayStepFooter dayId={dayId as typeof DAY1_ID | typeof DAY2_ID} currentStepId={scriptId} />
+      ) : null}
     </ElectionPlanDrillDownShell>
   );
 }

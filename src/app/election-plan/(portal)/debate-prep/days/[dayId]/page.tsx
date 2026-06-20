@@ -5,9 +5,10 @@ import { ElectionPlanDayDrillDownOverview } from "@/components/election-plan/Ele
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { getFirstDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
-import { dayHasDrillDownPages, DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getFirstDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
+import { dayHasDrillDownPages, DAY1_ID, DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { EP_DEBATE_PREP_HREF } from "@/lib/election-plan/debate-prep-links";
-import { isKellyDay1StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
+import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import {
   DEBATE_WEEK_INTENSIVE_DAY_IDS,
   getDebateWeekIntensiveDay,
@@ -35,7 +36,9 @@ export default async function ElectionPlanDebatePrepDayPage({
 
   const plan = getDebateWeekIntensiveDay(dayId as IntensiveDayId)!;
   const streamlinedDay1 = isKellyDay1StreamlinedPath() && dayId === DAY1_ID;
-  const firstStep = dayId === DAY1_ID ? getFirstDay1PathwayStep() : null;
+  const streamlinedDay2 = isKellyDay2StreamlinedPath() && dayId === DAY2_ID;
+  const firstStep =
+    dayId === DAY1_ID ? getFirstDay1PathwayStep() : dayId === DAY2_ID ? getFirstDay2PathwayStep() : null;
 
   return (
     <div className="ep-chapter-body px-6 py-10 lg:px-10">
@@ -56,6 +59,18 @@ export default async function ElectionPlanDebatePrepDayPage({
             <KellyPageSummary
               summary={`${plan.goalForKelly} One pathway below — start at the top and tap Continue on each page.`}
             />
+            <Link
+              href={firstStep.href}
+              className="mb-8 inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white"
+            >
+              Start now · {firstStep.label} →
+            </Link>
+          </>
+        ) : null}
+
+        {streamlinedDay2 && firstStep ? (
+          <>
+            <KellyPageSummary summary={`${plan.goalForKelly} One pathway below — watch tells first, then trap lanes until boring.`} />
             <Link
               href={firstStep.href}
               className="mb-8 inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white"

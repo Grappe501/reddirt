@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { ElectionPlanDay1StepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
+import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownShell,
@@ -9,6 +9,7 @@ import {
 import {
   getDayCommandDrillDrillDown,
   DAY1_ID,
+  DAY2_ID,
 } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayDrills } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
@@ -30,10 +31,12 @@ export default async function ElectionPlanDayCommandDrillPage({
   const drill = getDayCommandDrillDrillDown(dayId as IntensiveDayId, drillId);
   if (!drill) notFound();
 
+  const dayLabel = dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : "Day";
+
   return (
     <ElectionPlanDrillDownShell
       backHref={epDebatePrepDayHref(dayId)}
-      backLabel="Day 1 pathway"
+      backLabel={`${dayLabel} pathway`}
       eyebrow="Command drill · if / then / scan"
       title={drill.ifTheySay}
     >
@@ -49,7 +52,9 @@ export default async function ElectionPlanDayCommandDrillPage({
       </article>
       <ElectionPlanDrillDownSteps title="Rehearsal loop" steps={drill.practiceSteps} />
       <ElectionPlanDrillDownRelated links={drill.relatedLinks} />
-      {dayId === DAY1_ID ? <ElectionPlanDay1StepFooter currentStepId={drillId} /> : null}
+      {dayId === DAY1_ID || dayId === DAY2_ID ? (
+        <ElectionPlanDayStepFooter dayId={dayId as typeof DAY1_ID | typeof DAY2_ID} currentStepId={drillId} />
+      ) : null}
     </ElectionPlanDrillDownShell>
   );
 }

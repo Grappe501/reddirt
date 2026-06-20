@@ -4,6 +4,7 @@ import "server-only";
 import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
 import { ElectionPlanDay1PathwayHubCard } from "@/components/election-plan/ElectionPlanDay1PathwayHubCard";
 import { ElectionPlanDay1StartCard } from "@/components/election-plan/ElectionPlanDay1PathwayPanel";
+import { ElectionPlanDay2StartCard, ElectionPlanDay2PathwayHubCard } from "@/components/election-plan/ElectionPlanDay2PathwayPanel";
 import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
@@ -16,12 +17,10 @@ import {
   EP_LEGISLATIVE_INTEL_HREF,
   EP_OPPONENT_BIOS_HREF,
   EP_VOTER_AUDIENCES_HREF,
-  epDebatePrepDayHref,
   epLegislativeIntel2021Href,
   epLegislativeIntel2025Href,
 } from "@/lib/election-plan/debate-prep-links";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
-import { DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 
 export function ElectionPlanDebatePrepHubPanel() {
@@ -63,6 +62,10 @@ export function ElectionPlanDebatePrepHubPanel() {
       <ElectionPlanDay1StartCard />
 
       <ElectionPlanDay1PathwayHubCard />
+
+      <ElectionPlanDay2StartCard />
+
+      <ElectionPlanDay2PathwayHubCard />
 
       <section className="ep-card mb-8 grid gap-4 border-[var(--ep-border)] bg-white/60 p-5 sm:grid-cols-2">
         <div>
@@ -137,17 +140,6 @@ export function ElectionPlanDebatePrepHubPanel() {
           Forum lab →
         </Link>
       </section>
-
-      <Link
-        href={epDebatePrepDayHref("day-2-read-the-table")}
-        className="ep-card mb-8 block border-indigo-200 bg-indigo-50/30 p-5 transition hover:border-indigo-400"
-      >
-        <p className="text-xs font-bold uppercase text-indigo-900">After Day 1</p>
-        <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">Day 2 · Read the table</h2>
-        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-          Film room, Hammer tells, trap lanes 1–2. Finish Day 1 first — you will be ready.
-        </p>
-      </Link>
 
       <Link href={EP_LEGISLATIVE_INTEL_HREF} className="ep-card block p-5 transition hover:border-[var(--ep-gold)]">
         <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">All legislative intelligence</h2>

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { ElectionPlanBlockStudyPanel } from "@/components/election-plan/ElectionPlanBlockStudyPanel";
-import { ElectionPlanDay1StepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
+import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownSections,
@@ -60,7 +60,9 @@ export default async function ElectionPlanDayBlockPage({
         </>
       )}
 
-      {dayId === DAY1_ID ? <ElectionPlanDay1StepFooter currentStepId={blockId} /> : null}
+      {dayId === DAY1_ID || dayId === DAY2_ID ? (
+        <ElectionPlanDayStepFooter dayId={dayId as typeof DAY1_ID | typeof DAY2_ID} currentStepId={blockId} />
+      ) : null}
     </ElectionPlanDrillDownShell>
   );
 }

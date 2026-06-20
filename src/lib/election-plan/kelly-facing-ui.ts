@@ -18,6 +18,11 @@ export function isKellyDay1StreamlinedPath(): boolean {
   return KELLY_FACING_ELECTION_PLAN;
 }
 
+/** Kelly Day 2 — same linear pathway pattern as Day 1 */
+export function isKellyDay2StreamlinedPath(): boolean {
+  return KELLY_FACING_ELECTION_PLAN;
+}
+
 export function kellyStudyLeadLabel(): string {
   return KELLY_FACING_ELECTION_PLAN ? "Start here" : "Professor lead";
 }
