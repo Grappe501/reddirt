@@ -357,7 +357,7 @@ Passes 2 and 3 can run in parallel after Pass 1 if two builders coordinate; **Pa
 | 4 | 2026-06-20 | 480f7600 | Film tell worksheet + ACCA embed, supplement footers on concepts/micro-lessons, thenScan drill UX, pass4 test |
 | 5 | 2026-06-20 | 1ba3ac9f | Hub calendar focus, Day 2 primary on 6/20, subnav Day 1/2, parity test, pathway study titles |
 | **release** | 2026-06-20 | 01e6a315 | `0.59.1` + `day-2-read-the-table-v1.0.0` on `main` → Netlify production live |
-| **parity** | 2026-06-20 | (pending) | `0.60.0` + `day-2-read-the-table-v1.1.0` — Day 1 supplement footers, shared pathway chips, Day 2 deep study parity (26 deep sections), stricter `test-debate-prep-day-parity` |
+| **parity** | 2026-06-20 | 4b272b09 | `0.60.0` + `day-2-read-the-table-v1.1.0` — Day 1 supplement footers, shared pathway chips, Day 2 deep study parity (26 deep sections), stricter `test-debate-prep-day-parity` |
 
 ---
 
