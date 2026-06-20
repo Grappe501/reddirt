@@ -2,7 +2,7 @@
 
 **Doc ID:** KELLY-DP-D2-5PASS  
 **Lane:** `RedDirt/` only  
-**Status:** Day 1 **done on production** · Day 2 **Pass 1–3 done** · Pass 4 footers partial · Pass 5 hub polish pending  
+**Status:** Day 1 **done on production** · Day 2 **Pass 1–4 done** · Pass 5 hub polish pending  
 **Created:** 2026-06-18  
 **Goal:** Bring **Day 2 · Read the table** to the same Kelly-facing experience as Day 1 — one linear pathway, phased block study, Continue footers, evening check, Day 3 teaser.
 
@@ -263,11 +263,11 @@ Each pass is a **shippable increment** — deployable to production without brea
 
 **Exit criteria**
 
-- [ ] Full pathway walk: Start → block 1 → … → evening close without dead ends  
-- [ ] Continue button label shows next step name + minutes  
-- [ ] Optional examples clearly labeled Optional in pathway list  
-- [ ] Voter audience banner on overview + at least rehearsals  
-- [ ] Hammer ranking example has claims gate visible  
+- [x] Full pathway walk: Start → block 1 → … → evening close without dead ends  
+- [x] Continue button label shows next step name + minutes  
+- [x] Optional examples clearly labeled Optional in pathway list  
+- [x] Voter audience banner on overview + at least rehearsals  
+- [x] Hammer ranking example has claims gate visible  
 
 ---
 
@@ -354,7 +354,7 @@ Passes 2 and 3 can run in parallel after Pass 1 if two builders coordinate; **Pa
 | 1 | 2026-06-18 | b64b60e1 | Data spine: DAY2_ID, pathway, drill-down, static params |
 | 2 | 2026-06-19 | cbe30d19 | Block study guides + Day 2 example study panels on all 5 blocks |
 | 3 | 2026-06-20 | 2e296588 | Linear Day 2 pathway UI, Continue footers, hub start cards, evening check + Day 3 teaser |
-| 4 | | | |
+| 4 | 2026-06-20 | | Film tell worksheet + ACCA embed, supplement footers on concepts/micro-lessons, thenScan drill UX, pass4 test |
 | 5 | | | |
 
 ---

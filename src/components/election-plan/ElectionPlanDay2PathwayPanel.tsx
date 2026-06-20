@@ -114,9 +114,10 @@ export function ElectionPlanDay2PathwayPanel({
                 >
                   <div className="min-w-0">
                     <p className="text-[10px] font-bold uppercase text-indigo-900">{stepIcon(step.kind)}</p>
-                    <p className="font-bold text-[var(--ep-navy)]">
-                      {optional ? `${step.label}` : step.label}
-                    </p>
+                    {optional ? (
+                      <p className="text-[10px] font-bold uppercase text-violet-700">Optional</p>
+                    ) : null}
+                    <p className="font-bold text-[var(--ep-navy)]">{step.label}</p>
                     {!isActive ? (
                       <p className="mt-1 truncate text-xs text-[var(--ep-navy-muted)]">{step.teaser}</p>
                     ) : null}

@@ -45,6 +45,7 @@ const steps = [
   { label: "test-phase11-p8-field-book-promotion-execution", cmd: "npx", args: ["tsx", "scripts/test-phase11-p8-field-book-promotion-execution.ts"] },
   { label: "test-phase11-p9-stack-closure", cmd: "npx", args: ["tsx", "scripts/test-phase11-p9-stack-closure.ts"] },
   { label: "test-debate-prep-day2-pathway", cmd: "npx", args: ["tsx", "scripts/test-debate-prep-day2-pathway.ts"] },
+  { label: "test-debate-prep-day2-pass4", cmd: "npx", args: ["tsx", "scripts/test-debate-prep-day2-pass4.ts"] },
   { label: "test-phase15-p0-p1-candidate-command", cmd: "npx", args: ["tsx", "scripts/test-phase15-p0-p1-candidate-command.ts"] },
   { label: "test-phase15-p2-kelly-prep-week", cmd: "npx", args: ["tsx", "scripts/test-phase15-p2-kelly-prep-week.ts"] },
   { label: "test-phase15-p3-stage-safe-filter", cmd: "npx", args: ["tsx", "scripts/test-phase15-p3-stage-safe-filter.ts"] },

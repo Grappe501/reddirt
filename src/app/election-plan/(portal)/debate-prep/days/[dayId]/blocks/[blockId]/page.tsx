@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { ElectionPlanBlockStudyPanel } from "@/components/election-plan/ElectionPlanBlockStudyPanel";
+import { ElectionPlanFilmTellWorksheetPanel } from "@/components/election-plan/ElectionPlanFilmTellWorksheetPanel";
 import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import {
   ElectionPlanDrillDownRelated,
@@ -50,6 +51,8 @@ export default async function ElectionPlanDayBlockPage({
       description={study?.overview ?? block.why}
       pageSummary={study?.professorLead ?? study?.overview}
     >
+      {dayId === DAY2_ID && blockId === "b2-film" ? <ElectionPlanFilmTellWorksheetPanel /> : null}
+
       {study ? (
         <ElectionPlanBlockStudyPanel study={study} />
       ) : (

@@ -111,6 +111,10 @@ export function getFirstDay2PathwayStep(): Day2PathwayStep {
   return buildDay2PathwaySteps()[0]!;
 }
 
+export function isDay2PathwayStepOptional(stepId: string): boolean {
+  return buildDay2PathwaySteps().some((s) => s.id === stepId && s.kind === "example");
+}
+
 export const DAY2_MINIMUM_BLOCK_IDS = ["b2-film", "b2-trap1"] as const;
 
 export const DAY2_EVENING_REVIEW = [
