@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   ElectionPlanDay1PathwayPanel,
 } from "@/components/election-plan/ElectionPlanDay1PathwayPanel";
@@ -12,7 +13,8 @@ import {
 import { ElectionPlanDay3ContinueButton } from "@/components/election-plan/ElectionPlanDay3ContinueButton";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { DAY1_ID, DAY2_ID, DAY3_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { buildDay4PathwaySteps, getFirstDay4PathwayStep } from "@/lib/election-plan/day4-learning-pathway";
 import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import type { IntensiveDayId, IntensiveDayPlan } from "@/lib/intelligence/v4/debateWeekIntensive2026";
@@ -72,6 +74,39 @@ export function ElectionPlanDayDrillDownOverview({
         />
         <VoterAudienceSpeakToBanner profiles={day3Audiences} compact label="Who needs to hear three beats" />
         <ElectionPlanDay3PathwayPanel showFullList showDay4Teaser />
+      </>
+    );
+  }
+
+  if (dayId === DAY4_ID) {
+    const first = getFirstDay4PathwayStep();
+    const steps = buildDay4PathwaySteps();
+    return (
+      <>
+        <KellyPageSummary
+          summary={`Listen like an analyst first — the forum transcript is your Rosetta stone. ${dayPageSummary(plan)} Minimum tonight: forum lab ingest if tired.`}
+        />
+        <section className="ep-card mb-8 border-2 border-violet-300 bg-violet-50/20 p-6">
+          <p className="text-xs font-bold uppercase text-violet-900">Day 4 · forum intelligence lab</p>
+          <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">{plan.title}</h2>
+          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
+          <Link
+            href={first.href}
+            className="mt-4 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"
+          >
+            Start forum lab · {first.minutes} min →
+          </Link>
+          <ol className="mt-6 space-y-2 text-sm">
+            {steps.map((step) => (
+              <li key={step.id}>
+                <Link href={step.href} className="font-medium text-[var(--ep-navy)] underline-offset-2 hover:underline">
+                  {step.label}
+                </Link>
+                <span className="text-[var(--ep-navy-muted)]"> · {step.minutes} min</span>
+              </li>
+            ))}
+          </ol>
+        </section>
       </>
     );
   }
