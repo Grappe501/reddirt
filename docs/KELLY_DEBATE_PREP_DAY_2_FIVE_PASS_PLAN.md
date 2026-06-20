@@ -225,11 +225,11 @@ Each pass is a **shippable increment** — deployable to production without brea
 
 **Exit criteria**
 
-- [ ] `/election-plan/debate-prep/days/day-2-read-the-table` shows full step list + Start CTA  
-- [ ] Step N of M visible when `activeStepId` passed to pathway panel  
-- [ ] Evening review card matches `DAY2_EVENING_REVIEW`  
-- [ ] Day 3 teaser card links to `day-3-superiority-map`  
-- [ ] Day 1 pathway unchanged (regression spot-check)
+- [x] `/election-plan/debate-prep/days/day-2-read-the-table` shows full step list + Start CTA  
+- [x] Step N of M visible when `activeStepId` passed to pathway panel  
+- [x] Evening review card matches `DAY2_EVENING_REVIEW`  
+- [x] Day 3 teaser card links to `day-3-superiority-map`  
+- [x] Day 1 pathway unchanged (regression spot-check)
 
 ---
 
@@ -353,7 +353,7 @@ Passes 2 and 3 can run in parallel after Pass 1 if two builders coordinate; **Pa
 |------|------|--------|-------|
 | 1 | 2026-06-18 | b64b60e1 | Data spine: DAY2_ID, pathway, drill-down, static params |
 | 2 | 2026-06-19 | cbe30d19 | Block study guides + Day 2 example study panels on all 5 blocks |
-| 3 | 2026-06-20 | (this commit) | Linear Day 2 pathway UI, Continue footers, hub start cards, evening check + Day 3 teaser |
+| 3 | 2026-06-20 | (pending push) | Linear Day 2 pathway UI, Continue footers, hub start cards, evening check + Day 3 teaser |
 | 4 | | | |
 | 5 | | | |
 

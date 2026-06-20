@@ -26,10 +26,12 @@ import {
   PHASE16_P3_QUEUE_TOTAL,
   PHASE16_P3_STANDARD_QUEUE_CARD_TOTAL,
 } from "../src/lib/intelligence/v4/phase16P3DrillQueue";
+import { EP_DRILL_QUEUE_HUB_HREF } from "../src/lib/intelligence/v4/phase16P3DrillQueueShared";
 import { flattenCandidateCommandNavLinks, buildCandidateCommandNavSections } from "../src/lib/intelligence/v4/candidateCommandNav";
 import { PHASE15_P0_MAX_CANDIDATE_LINKS } from "../src/lib/intelligence/v4/phase15CandidateCommandDepth";
 import { getFieldBookArticle } from "../src/lib/intelligence/fieldBookRegistry";
 import { resolveCanonBinding } from "../src/lib/intelligence/fieldBookCanonRegistry";
+import { rehearsalRouteWired } from "../src/lib/intelligence/v4/rehearsalRouteWiring";
 import { listStrategyMigrationRoutes, validateStrategyMigrationBridge } from "../src/lib/intelligence/v4/strategyMigrationBridge";
 
 const APP_ROOT = path.join(process.cwd(), "src/app/admin/(board)/intelligence");
@@ -61,7 +63,7 @@ function main() {
     assert.ok(overlay && drillQueueMeetsPhase16P3Bar(overlay), queueId);
     const cards = getDrillQueueCards(queueId);
     assert.ok(cards.length > 0, `${queueId} cards`);
-    assert.ok(cards.every((c) => c.href.startsWith("/admin/intelligence")), `${queueId} hrefs`);
+    assert.ok(cards.every((c) => rehearsalRouteWired(c.href)), `${queueId} hrefs`);
     assert.ok(cards.every((c) => c.claimsGate.length > 0), `${queueId} claims gates`);
   }
 
@@ -86,11 +88,12 @@ function main() {
 
   const summary = buildDrillQueueSummary();
   assert.ok(summary.tonightReminder.length > 0, "tonight reminder");
-  assert.ok(summary.hubHref === DRILL_QUEUE_HUB_HREF, "hub href");
+  const allowedDrillHubs = new Set([DRILL_QUEUE_HUB_HREF, EP_DRILL_QUEUE_HUB_HREF]);
+  assert.ok(allowedDrillHubs.has(summary.hubHref), `hub href ${summary.hubHref}`);
 
   const feed = buildCandidateCommandHomeFeed();
   assert.ok(feed.drillQueue?.tonightReminder, "home strip");
-  assert.ok(feed.drillQueue.hubHref === DRILL_QUEUE_HUB_HREF, "home hub href");
+  assert.ok(allowedDrillHubs.has(feed.drillQueue.hubHref), `home hub href ${feed.drillQueue.hubHref}`);
 
   const candidateHrefs = flattenCandidateCommandNavLinks(buildCandidateCommandNavSections("CANDIDATE")).map(
     (l) => l.href,

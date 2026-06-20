@@ -4,8 +4,8 @@
 export const CANDIDATE_COMMAND_HOME_HREF = "/admin/intelligence";
 
 export const PHASE15_P0_MAX_SECTIONS = 5;
-export const PHASE15_P0_MAX_LINKS_PER_SECTION = 5;
-export const PHASE15_P0_MAX_CANDIDATE_LINKS = 25;
+export const PHASE15_P0_MAX_LINKS_PER_SECTION = 6;
+export const PHASE15_P0_MAX_CANDIDATE_LINKS = 27;
 
 export const BUILDER_INFRA_HREF_PREFIXES = [
   "/admin/intelligence/phase-3-upgrade",

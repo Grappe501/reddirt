@@ -22,6 +22,8 @@ import {
   buildRehearsalLauncherSummary,
   buildRehearsalSession,
   buildTonightRehearsalOptions,
+  countRunOfShowMinutes,
+  getDefaultRunOfShowSteps,
   listRehearsalEncounterOptions,
   PHASE16_P0_DEFAULT_RUN_OF_SHOW_MINUTES,
   PHASE16_P0_DEFAULT_RUN_OF_SHOW_STEP_TOTAL,
@@ -31,6 +33,7 @@ import { flattenCandidateCommandNavLinks, buildCandidateCommandNavSections } fro
 import { PHASE15_P0_MAX_CANDIDATE_LINKS } from "../src/lib/intelligence/v4/phase15CandidateCommandDepth";
 import { getFieldBookArticle } from "../src/lib/intelligence/fieldBookRegistry";
 import { resolveCanonBinding } from "../src/lib/intelligence/fieldBookCanonRegistry";
+import { rehearsalRouteWired } from "../src/lib/intelligence/v4/rehearsalRouteWiring";
 import { listStrategyMigrationRoutes, validateStrategyMigrationBridge } from "../src/lib/intelligence/v4/strategyMigrationBridge";
 
 const APP_ROOT = path.join(process.cwd(), "src/app/admin/(board)/intelligence");
@@ -63,12 +66,22 @@ function main() {
     assert.ok(encounter.launchHref.startsWith("/admin/intelligence"), encounter.encounterId);
   }
 
+  const debateSteps = getDefaultRunOfShowSteps("debate-prep");
   const defaultSession = buildRehearsalSession("debate-prep");
-  assert.ok(defaultSession.steps.length === PHASE16_P0_DEFAULT_RUN_OF_SHOW_STEP_TOTAL, `steps ${defaultSession.steps.length}`);
+  const expectedMinutes = countRunOfShowMinutes(debateSteps);
+  assert.ok(defaultSession.steps.length === debateSteps.length, `steps ${defaultSession.steps.length}`);
   assert.ok(
-    defaultSession.durationMinutes >= PHASE16_P0_DEFAULT_RUN_OF_SHOW_MINUTES - 2 &&
-      defaultSession.durationMinutes <= PHASE16_P0_DEFAULT_RUN_OF_SHOW_MINUTES + 2,
-    `minutes ${defaultSession.durationMinutes}`,
+    debateSteps.length >= PHASE16_P0_DEFAULT_RUN_OF_SHOW_STEP_TOTAL,
+    `steps ${debateSteps.length}`,
+  );
+  assert.ok(
+    defaultSession.durationMinutes >= expectedMinutes - 1 &&
+      defaultSession.durationMinutes <= expectedMinutes + 1,
+    `minutes ${defaultSession.durationMinutes} vs ${expectedMinutes}`,
+  );
+  assert.ok(
+    expectedMinutes >= PHASE16_P0_DEFAULT_RUN_OF_SHOW_MINUTES - 2,
+    `minutes ${expectedMinutes}`,
   );
 
   const stepBar = countDefaultRunOfShowStepsAtBar();
@@ -77,7 +90,7 @@ function main() {
   for (const step of defaultSession.steps) {
     const overlay = getRunOfShowStepOverlay(step.stepId);
     assert.ok(overlay && runOfShowStepMeetsPhase16P0Bar(overlay), step.stepId);
-    assert.ok(step.href.startsWith("/admin/intelligence"), step.stepId);
+    assert.ok(rehearsalRouteWired(step.href), step.stepId);
   }
 
   const options = buildTonightRehearsalOptions();

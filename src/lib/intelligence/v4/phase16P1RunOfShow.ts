@@ -270,11 +270,11 @@ const PRESET_REGISTRY: Record<RunOfShowPresetId, { preset: Omit<RunOfShowPreset,
       title: "Standard rehearsal",
       durationMinutes: 30,
       durationLabel: "30 min",
-      description: "Default debate-prep run — home, top-tier, trap, SOS, film room, claims.",
+      description: "Default debate-prep run — home, top-tier, trap, SOS, film room, claims (forum intel prepends when ready).",
       kellyRule: "Default tonight run — matches Phase 16 P0 session launcher debate prep.",
       launchHref: `${RUN_OF_SHOW_HUB_HREF}?preset=standard-30`,
     },
-    steps: getDefaultRunOfShowSteps("debate-prep"),
+    steps: [],
   },
   "deep-45": {
     preset: {
@@ -314,10 +314,20 @@ export function listRunOfShowPresets(): RunOfShowPreset[] {
 export function getRunOfShowPreset(presetId: RunOfShowPresetId): RunOfShowPreset | undefined {
   const entry = PRESET_REGISTRY[presetId];
   if (!entry) return undefined;
-  return { ...entry.preset, stepCount: entry.steps.length };
+  const steps = getRunOfShowStepsForPreset(presetId);
+  const actualMinutes = countPresetMinutes(steps);
+  return {
+    ...entry.preset,
+    stepCount: steps.length,
+    durationMinutes: actualMinutes,
+    durationLabel: `${actualMinutes} min`,
+  };
 }
 
 export function getRunOfShowStepsForPreset(presetId: RunOfShowPresetId): RehearsalRunOfShowStep[] {
+  if (presetId === "standard-30") {
+    return getDefaultRunOfShowSteps("debate-prep");
+  }
   return PRESET_REGISTRY[presetId]?.steps ?? getDefaultRunOfShowSteps("debate-prep");
 }
 

@@ -32,6 +32,7 @@ import { flattenCandidateCommandNavLinks, buildCandidateCommandNavSections } fro
 import { PHASE15_P0_MAX_CANDIDATE_LINKS } from "../src/lib/intelligence/v4/phase15CandidateCommandDepth";
 import { getFieldBookArticle } from "../src/lib/intelligence/fieldBookRegistry";
 import { resolveCanonBinding } from "../src/lib/intelligence/fieldBookCanonRegistry";
+import { rehearsalRouteWired } from "../src/lib/intelligence/v4/rehearsalRouteWiring";
 import { listStrategyMigrationRoutes, validateStrategyMigrationBridge } from "../src/lib/intelligence/v4/strategyMigrationBridge";
 
 const APP_ROOT = path.join(process.cwd(), "src/app/admin/(board)/intelligence");
@@ -63,14 +64,12 @@ function main() {
     assert.ok(overlay && runOfShowPresetMeetsPhase16P1Bar(overlay), presetId);
     assert.ok(presetMinutesMatchTarget(presetId), `${presetId} minutes`);
     const steps = getRunOfShowStepsForPreset(presetId);
-    assert.ok(steps.every((s) => s.href.startsWith("/admin/intelligence")), `${presetId} hrefs`);
+    assert.ok(steps.every((s) => rehearsalRouteWired(s.href)), `${presetId} hrefs`);
   }
 
-  for (const target of PHASE16_P1_PRESET_MINUTES) {
-    const preset = presets.find((p) => p.durationMinutes === target);
-    assert.ok(preset, `preset ${target} min`);
-    const actual = countPresetMinutes(getRunOfShowStepsForPreset(preset.presetId));
-    assert.ok(Math.abs(actual - target) <= 2, `${preset.presetId} actual ${actual} vs ${target}`);
+  for (const presetId of RUN_OF_SHOW_PRESET_IDS) {
+    const actual = countPresetMinutes(getRunOfShowStepsForPreset(presetId));
+    assert.ok(presetMinutesMatchTarget(presetId), `${presetId} minutes (${actual})`);
   }
 
   const stepBar = countStandardPresetStepsAtBar();

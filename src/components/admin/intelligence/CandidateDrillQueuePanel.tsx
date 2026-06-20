@@ -3,9 +3,9 @@ import { CandidateDrillQueueCardPlayer } from "@/components/admin/intelligence/C
 import {
   buildDrillQueueLaunchHref,
   drillQueueCardTypeLabel,
-  type DrillQueue,
   type DrillQueueCard,
-} from "@/lib/intelligence/v4/phase16P3DrillQueue";
+} from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
+import type { DrillQueue } from "@/lib/intelligence/v4/phase16P3DrillQueue";
 
 export function CandidateDrillQueuePanel({
   queues,

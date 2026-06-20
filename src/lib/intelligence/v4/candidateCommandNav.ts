@@ -30,8 +30,9 @@ function section(
   label: string,
   summary: string,
   links: CandidateCommandNavLink[],
+  maxLinks: number = PHASE15_P0_MAX_LINKS_PER_SECTION,
 ): CandidateCommandNavSection {
-  return { id, label, summary, links: links.slice(0, PHASE15_P0_MAX_LINKS_PER_SECTION) };
+  return { id, label, summary, links: links.slice(0, maxLinks) };
 }
 
 function buildKellySections(): CandidateCommandNavSection[] {
@@ -41,6 +42,11 @@ function buildKellySections(): CandidateCommandNavSection[] {
         href: "/admin/intelligence/debate-week-intensive",
         label: "Debate week intensive",
         description: "Command Mode 7-day course — start here for SOS debate prep.",
+      },
+      {
+        href: "/admin/intelligence/top-tier-prep",
+        label: "Top-tier prep",
+        description: "Promoted briefings, depth guides, and psychology — start here tonight.",
       },
       {
         href: "/admin/intelligence/forum-transcript-lab",
@@ -53,36 +59,26 @@ function buildKellySections(): CandidateCommandNavSection[] {
         description: "Readiness score, safe lines, blocked lines, and today's focus.",
       },
       {
-        href: SEARCH_AI_PREP_HUB_HREF,
-        label: "Search & AI prep",
-        description: "Smart search v4 + 12 governed AI prep tools — Ctrl+K anywhere.",
-      },
-      {
-        href: "/admin/intelligence/rehearsal-history",
-        label: "Rehearsal history",
-        description: "Continue last drill — session memory and staff reset.",
-      },
-      {
-        href: "/admin/intelligence/top-tier-prep",
-        label: "Top-tier prep",
-        description: "Promoted briefings, depth guides, and psychology — start here tonight.",
+        href: "/admin/intelligence/sre-closure",
+        label: "SRE closure",
+        description: "Nine P0–P8 checkpoints — Stage Rehearsal Engine exit gate.",
       },
       {
         href: "/admin/intelligence/live-event",
         label: "Live event",
         description: "ACCA Jun 11 countdown — day-of shortest stage-safe run-of-show.",
       },
-      {
-        href: "/admin/intelligence/sre-closure",
-        label: "SRE closure",
-        description: "Nine P0–P8 checkpoints — Stage Rehearsal Engine exit gate.",
-      },
-    ]),
+    ], 6),
     section("rehearse", "Rehearse", "Stage prep — scripts, drills, and coaching.", [
       {
         href: DEBATE_PREP_TUTOR_HUB_HREF,
         label: "AI debate prep tutor",
         description: "5–30 min coached sessions — trap pivots, SOS speak-order, practice critique. Start here when time is short.",
+      },
+      {
+        href: "/admin/intelligence/rehearsal-history",
+        label: "Rehearsal history",
+        description: "Continue last drill — session memory and staff reset.",
       },
       {
         href: "/admin/intelligence/rehearsal",
@@ -109,8 +105,13 @@ function buildKellySections(): CandidateCommandNavSection[] {
         label: "iPad drill player",
         description: "Full-screen stepper — Exit · Prev · Next · Timer when rehearsing side-stage.",
       },
-    ]),
+    ], 7),
     section("philosophy", "Philosophy", "How to handle attacks and stay on message.", [
+      {
+        href: SEARCH_AI_PREP_HUB_HREF,
+        label: "Search & AI prep",
+        description: "Smart search v4 + 12 governed AI prep tools — Ctrl+K anywhere.",
+      },
       {
         href: "/admin/intelligence/kelly-prep-week",
         label: "Kelly prep week",

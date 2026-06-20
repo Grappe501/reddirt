@@ -9,6 +9,7 @@ import {
   RUN_OF_SHOW_PRESET_IDS,
   type RunOfShowPresetId,
 } from "@/lib/intelligence/v4/phase16P1RunOfShow";
+import { rehearsalRouteWired } from "@/lib/intelligence/v4/rehearsalRouteWiring";
 
 export { RUN_OF_SHOW_HUB_HREF };
 
@@ -51,6 +52,10 @@ export function countRunOfShowPresetsAtBar(): { atBar: number; total: number } {
   return { atBar, total: RUN_OF_SHOW_PRESET_IDS.length };
 }
 
+function stepWiredOnRoute(href: string): boolean {
+  return rehearsalRouteWired(href);
+}
+
 export function getRunOfShowPresetStepOverlay(
   presetId: RunOfShowPresetId,
   stepId: string,
@@ -61,7 +66,7 @@ export function getRunOfShowPresetStepOverlay(
     stepId,
     operatorSteps: [step.kellyBeat, `Duration: ${step.durationLabel}`, `Route: ${step.href}`],
     stageSafeRequired: step.stageSafeRequired,
-    wiredOnRoute: step.href.startsWith("/admin/intelligence"),
+    wiredOnRoute: stepWiredOnRoute(step.href),
   };
 }
 

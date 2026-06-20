@@ -1,7 +1,7 @@
 /**
  * Phase 16 P3 — Speak-order drill queue (SOS + trap lanes as sequential cards).
+ * Server boundary: import drill queue builders from server routes only — client-safe symbols live in phase16P3DrillQueueShared.ts.
  */
-import "server-only";
 
 import { evaluateStageSafeContent } from "@/lib/intelligence/v4/phase15StageSafeFilter";
 import { buildForumDrillQueueCards, countForumDrillQueueCards, forumRehearsalTonightReminder } from "@/lib/intelligence/v4/forumTranscriptRehearsalCards";
@@ -17,12 +17,14 @@ import {
   type DrillQueueCard,
   type DrillQueueCardType,
   type DrillQueueId,
+  type DrillQueueSummary,
 } from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 import { getSosDebateQuestionDrillDown } from "@/lib/intelligence/v4/sosDebateQuestionBank";
 import { getTrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 import { shouldSkipHumanActionQueueSyncOnRequest } from "@/lib/intelligence/intelligenceLaunchMode";
 
 export {
+  buildDrillQueueLaunchHref,
   drillQueueCardTypeLabel,
   DRILL_QUEUE_HUB_HREF,
   EP_DRILL_QUEUE_HUB_HREF,
@@ -32,6 +34,7 @@ export {
   type DrillQueueCard,
   type DrillQueueCardType,
   type DrillQueueId,
+  type DrillQueueSummary,
 } from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 
 export const PHASE16_P3_QUEUE_TOTAL = 5;
@@ -199,13 +202,6 @@ export function listDrillQueues(): DrillQueue[] {
   return DRILL_QUEUE_IDS.map((id) => getDrillQueue(id)).filter((q): q is DrillQueue => Boolean(q));
 }
 
-export function buildDrillQueueLaunchHref(
-  queueId: DrillQueueId,
-  hubBaseHref: string = DRILL_QUEUE_HUB_HREF,
-): string {
-  return `${hubBaseHref}?queue=${queueId}&card=1`;
-}
-
 export function resolveDrillQueueId(raw: string | undefined): DrillQueueId {
   if (raw && DRILL_QUEUE_IDS.includes(raw as DrillQueueId)) {
     const id = raw as DrillQueueId;
@@ -225,18 +221,6 @@ export function resolveDrillQueueId(raw: string | undefined): DrillQueueId {
 export function countDrillQueueStageSafeBlocked(cards: DrillQueueCard[]): number {
   return cards.filter((c) => c.stageSafeBlocked).length;
 }
-
-export type DrillQueueSummary = {
-  hubHref: string;
-  queueCount: number;
-  defaultQueueId: DrillQueueId;
-  defaultCardCount: number;
-  tonightReminder: string;
-  forumQueueAvailable: boolean;
-  forumCardCount: number;
-  dressQueueAvailable: boolean;
-  dressCardCount: number;
-};
 
 export function buildDrillQueueSummary(): DrillQueueSummary {
   const forumCardCount = countForumDrillQueueCards();

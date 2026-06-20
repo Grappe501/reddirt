@@ -29,7 +29,7 @@ import { loadAiCopilotToolRegistry } from "@/lib/intelligence/aiCopilotOrchestra
 import { REHEARSAL_HUB_HREF } from "@/lib/intelligence/v4/phase16P0SessionLauncher";
 import { RUN_OF_SHOW_HUB_HREF } from "@/lib/intelligence/v4/phase16P1RunOfShow";
 import { ENCOUNTERS_HUB_HREF } from "@/lib/intelligence/v4/phase16P2EncounterScenarios";
-import { DRILL_QUEUE_HUB_HREF } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+import { DRILL_QUEUE_HUB_HREF } from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 import { SESSION_DEBRIEF_HUB_HREF } from "@/lib/intelligence/v4/phase16P4SessionDebrief";
 import { REHEARSAL_HISTORY_HUB_HREF } from "@/lib/intelligence/v4/phase16P6SessionMemory";
 import { REHEARSAL_COACH_HUB_HREF } from "@/lib/intelligence/v4/phase16P7StaffCoach";

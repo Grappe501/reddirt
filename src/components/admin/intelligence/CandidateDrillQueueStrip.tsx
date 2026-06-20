@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { DrillQueueSummary } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+import type { DrillQueueSummary } from "@/lib/intelligence/v4/phase16P3DrillQueueShared";
 
 export function CandidateDrillQueueStrip({ summary }: { summary: DrillQueueSummary }) {
   return (

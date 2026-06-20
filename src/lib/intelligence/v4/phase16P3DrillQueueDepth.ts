@@ -9,6 +9,7 @@ import {
   type DrillQueueCard,
   type DrillQueueId,
 } from "@/lib/intelligence/v4/phase16P3DrillQueue";
+import { rehearsalRouteWired } from "@/lib/intelligence/v4/rehearsalRouteWiring";
 
 export { DRILL_QUEUE_HUB_HREF };
 
@@ -39,9 +40,9 @@ export function getDrillQueueOverlay(queueId: DrillQueueId): DrillQueueOverlay |
       queue.kellyRule,
       `${cards.length} cards · ~${queue.estimatedMinutes} min · ${blockedCount} stage-safe blocked`,
     ],
-    cardsWired: cards.every((c) => c.href.startsWith("/admin/intelligence")),
+    cardsWired: cards.every((c) => rehearsalRouteWired(c.href)),
     stageSafeEnforced: cards.every((c) => c.claimsGate.length > 0),
-    wiredOnRoute: queue.launchHref.startsWith("/admin/intelligence"),
+    wiredOnRoute: rehearsalRouteWired(queue.launchHref),
   };
 }
 
@@ -75,7 +76,7 @@ function buildCardOverlay(card: DrillQueueCard): DrillQueueCardOverlay {
       `Route: ${card.href}`,
     ],
     stageSafeBlocked: card.stageSafeBlocked,
-    wiredOnRoute: card.href.startsWith("/admin/intelligence"),
+    wiredOnRoute: rehearsalRouteWired(card.href),
   };
 }
 

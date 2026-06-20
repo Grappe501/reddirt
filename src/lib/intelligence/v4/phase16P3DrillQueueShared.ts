@@ -65,3 +65,22 @@ export function resolveDrillQueueCardIndex(raw: string | undefined, cardTotal: n
   if (!Number.isFinite(parsed) || parsed < 1) return 0;
   return Math.min(cardTotal - 1, parsed - 1);
 }
+
+export function buildDrillQueueLaunchHref(
+  queueId: DrillQueueId,
+  hubBaseHref: string = DRILL_QUEUE_HUB_HREF,
+): string {
+  return `${hubBaseHref}?queue=${queueId}&card=1`;
+}
+
+export type DrillQueueSummary = {
+  hubHref: string;
+  queueCount: number;
+  defaultQueueId: DrillQueueId;
+  defaultCardCount: number;
+  tonightReminder: string;
+  forumQueueAvailable: boolean;
+  forumCardCount: number;
+  dressQueueAvailable: boolean;
+  dressCardCount: number;
+};

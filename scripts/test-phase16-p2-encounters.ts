@@ -31,6 +31,7 @@ import { flattenCandidateCommandNavLinks, buildCandidateCommandNavSections } fro
 import { PHASE15_P0_MAX_CANDIDATE_LINKS } from "../src/lib/intelligence/v4/phase15CandidateCommandDepth";
 import { getFieldBookArticle } from "../src/lib/intelligence/fieldBookRegistry";
 import { resolveCanonBinding } from "../src/lib/intelligence/fieldBookCanonRegistry";
+import { rehearsalRouteWired } from "../src/lib/intelligence/v4/rehearsalRouteWiring";
 import { listStrategyMigrationRoutes, validateStrategyMigrationBridge } from "../src/lib/intelligence/v4/strategyMigrationBridge";
 
 const APP_ROOT = path.join(process.cwd(), "src/app/admin/(board)/intelligence");
@@ -75,7 +76,7 @@ function main() {
   for (const step of getEncounterScenarioSteps("acca-panel")) {
     const overlay = getEncounterScenarioStepOverlay("acca-panel", step.stepId);
     assert.ok(overlay && encounterScenarioStepMeetsPhase16P2Bar(overlay), step.stepId);
-    assert.ok(step.href.startsWith("/admin/intelligence"), step.stepId);
+    assert.ok(rehearsalRouteWired(step.href), step.stepId);
   }
 
   const purchase = getEncounterScenario("purchase-walkthrough")!;

@@ -4,6 +4,22 @@
  * Order: strategy manual → intelligence tests → lint → typecheck → production build.
  */
 import { spawnSync } from "node:child_process";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const SERVER_ONLY_SHIM = path.join(__dirname, "tsx-server-only-shim.cjs");
+
+function withTsxSandboxRequire(args) {
+  if (args[0] !== "tsx") return args;
+  if (args.includes("--require")) return args;
+  return ["tsx", "--require", SERVER_ONLY_SHIM, ...args.slice(1)];
+}
+
+function runStep(step) {
+  const args = step.cmd === "npx" && step.args[0] === "tsx" ? withTsxSandboxRequire(step.args) : step.args;
+  return spawnSync(step.cmd, args, { stdio: "inherit", shell: true, env: process.env });
+}
 
 const steps = [
   { label: "strategy-manual:verify", cmd: "npm", args: ["run", "strategy-manual:verify"] },
@@ -28,6 +44,7 @@ const steps = [
   { label: "test-phase11-p7-briefing-papers-chunk-attach", cmd: "npx", args: ["tsx", "scripts/test-phase11-p7-briefing-papers-chunk-attach.ts"] },
   { label: "test-phase11-p8-field-book-promotion-execution", cmd: "npx", args: ["tsx", "scripts/test-phase11-p8-field-book-promotion-execution.ts"] },
   { label: "test-phase11-p9-stack-closure", cmd: "npx", args: ["tsx", "scripts/test-phase11-p9-stack-closure.ts"] },
+  { label: "test-debate-prep-day2-pathway", cmd: "npx", args: ["tsx", "scripts/test-debate-prep-day2-pathway.ts"] },
   { label: "test-phase15-p0-p1-candidate-command", cmd: "npx", args: ["tsx", "scripts/test-phase15-p0-p1-candidate-command.ts"] },
   { label: "test-phase15-p2-kelly-prep-week", cmd: "npx", args: ["tsx", "scripts/test-phase15-p2-kelly-prep-week.ts"] },
   { label: "test-phase15-p3-stage-safe-filter", cmd: "npx", args: ["tsx", "scripts/test-phase15-p3-stage-safe-filter.ts"] },
@@ -57,7 +74,7 @@ console.log("=== Intelligence phase sandbox run ===\n");
 
 for (const step of steps) {
   process.stdout.write(`→ ${step.label}...\n`);
-  const result = spawnSync(step.cmd, step.args, { stdio: "inherit", shell: true, env: process.env });
+  const result = runStep(step);
   if (result.status !== 0) {
     console.error(`\n✗ FAILED at step: ${step.label}`);
     process.exit(result.status ?? 1);

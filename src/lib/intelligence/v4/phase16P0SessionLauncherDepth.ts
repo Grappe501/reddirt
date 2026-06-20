@@ -9,6 +9,7 @@ import {
   type RehearsalEncounterId,
   type RehearsalRunOfShowStep,
 } from "@/lib/intelligence/v4/phase16P0SessionLauncher";
+import { rehearsalRouteWired } from "@/lib/intelligence/v4/rehearsalRouteWiring";
 
 export { REHEARSAL_HUB_HREF };
 
@@ -58,11 +59,12 @@ export function getRunOfShowStepOverlay(stepId: string): RehearsalRunOfShowStepO
 }
 
 function buildStepOverlay(step: RehearsalRunOfShowStep): RehearsalRunOfShowStepOverlay {
+  const wiredOnRoute = rehearsalRouteWired(step.href);
   return {
     stepId: step.stepId,
     operatorSteps: [step.kellyBeat, `Duration: ${step.durationLabel}`, `Route: ${step.href}`],
     stageSafeRequired: step.stageSafeRequired,
-    wiredOnRoute: step.href.startsWith("/admin/intelligence"),
+    wiredOnRoute,
   };
 }
 

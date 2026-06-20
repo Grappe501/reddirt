@@ -140,6 +140,38 @@ MIGRATE_SKIPPED=0
 MIGRATE_RETRIES="${PRISMA_MIGRATE_RETRIES:-3}"
 MIGRATE_RETRY_DELAY_SECONDS="${PRISMA_MIGRATE_RETRY_DELAY_SECONDS:-8}"
 
+# Transient migrate failures: retry instead of failing the build immediately.
+is_transient_migrate_error() {
+  local out="$1"
+  [[ "$out" == *"P1001"* ]] && return 0
+  [[ "$out" == *"EMAXCONNSESSION"* ]] && return 0
+  [[ "$out" == *"max clients reached"* ]] && return 0
+  return 1
+}
+
+print_supabase_pool_exhaustion_help() {
+  echo "  Supabase session pooler is full (pool_size is often 15 in session mode)."
+  echo ""
+  echo "  Netlify builds run prisma migrate deploy via DIRECT_URL. When runtime and"
+  echo "  migrations both use the session pooler on port 5432, live serverless"
+  echo "  traffic can exhaust the pool before migrate gets a connection."
+  echo ""
+  echo "  Recommended Netlify env split (Supabase → Connect):"
+  echo "    DATABASE_URL  → Transaction pooler (port 6543, add ?pgbouncer=true)"
+  echo "    DIRECT_URL    → Session pooler (5432) or Direct (db.<ref>.supabase.co)"
+  echo ""
+  echo "  Quick unblock: wait for traffic to drop and redeploy, or bump"
+  echo "    PRISMA_MIGRATE_RETRY_DELAY_SECONDS=30"
+  echo "  See docs/deployment.md — Database URL strategy."
+}
+
+if [[ "${DIRECT_URL}" == *"pooler.supabase.com"* ]] \
+  && [[ "${DIRECT_URL}" != *":6543"* ]] \
+  && [[ "${DIRECT_URL}" != *"pgbouncer=true"* ]]; then
+  echo ">>> advisory: DIRECT_URL uses Supabase session pooler (port 5432)."
+  echo ">>>   Migrations share pool_size with runtime unless you split URLs (see docs/deployment.md)."
+fi
+
 # Optional bypass for transient hosted DB reachability failures (P1001).
 # Recommended use:
 #   - deploy previews where schema changes are not required for static/page validation
@@ -169,38 +201,57 @@ while [ "$attempt" -le "$MIGRATE_RETRIES" ]; do
 
   echo "$MIGRATE_OUTPUT"
 
-  if [[ "$MIGRATE_OUTPUT" != *"P1001"* ]]; then
+  if ! is_transient_migrate_error "$MIGRATE_OUTPUT"; then
     echo ""
     echo "========================================================================"
-    echo "  Build failed: prisma migrate deploy failed with a non-P1001 error."
+    echo "  Build failed: prisma migrate deploy failed with a non-retryable error."
     echo "  Refusing to continue because migration state may be unsafe."
     echo "========================================================================"
+    if [[ "$MIGRATE_OUTPUT" == *"EMAXCONNSESSION"* ]] || [[ "$MIGRATE_OUTPUT" == *"max clients reached"* ]]; then
+      echo ""
+      print_supabase_pool_exhaustion_help
+    fi
     echo ""
     exit "$MIGRATE_EXIT_CODE"
   fi
 
   if [ "$attempt" -lt "$MIGRATE_RETRIES" ]; then
-    echo ">>> prisma migrate deploy hit P1001; retrying in ${MIGRATE_RETRY_DELAY_SECONDS}s..."
+    if [[ "$MIGRATE_OUTPUT" == *"EMAXCONNSESSION"* ]] || [[ "$MIGRATE_OUTPUT" == *"max clients reached"* ]]; then
+      echo ">>> prisma migrate deploy hit session pool exhaustion; retrying in ${MIGRATE_RETRY_DELAY_SECONDS}s..."
+    else
+      echo ">>> prisma migrate deploy hit P1001; retrying in ${MIGRATE_RETRY_DELAY_SECONDS}s..."
+    fi
     sleep "$MIGRATE_RETRY_DELAY_SECONDS"
   else
     if [ "$ALLOW_PRISMA_P1001_BYPASS" = "1" ] || [ "$ALLOW_PRISMA_P1001_BYPASS" = "true" ] || [ "$ALLOW_PRISMA_P1001_BYPASS" = "yes" ]; then
       echo ""
       echo "========================================================================"
-      echo "  WARNING: prisma migrate deploy failed with P1001 after ${MIGRATE_RETRIES} attempts."
+      echo "  WARNING: prisma migrate deploy failed after ${MIGRATE_RETRIES} attempts"
+      echo "  (transient DB reachability or pool exhaustion)."
       echo "  Continuing build because ALLOW_PRISMA_P1001_BYPASS is enabled."
       echo "  Database migration + seed were skipped for this deploy."
       echo "========================================================================"
+      if [[ "$MIGRATE_OUTPUT" == *"EMAXCONNSESSION"* ]] || [[ "$MIGRATE_OUTPUT" == *"max clients reached"* ]]; then
+        echo ""
+        print_supabase_pool_exhaustion_help
+      fi
       echo ""
       MIGRATE_SKIPPED=1
     else
       echo ""
       echo "========================================================================"
-      echo "  Build failed: prisma migrate deploy failed with P1001 after ${MIGRATE_RETRIES} attempts."
-      echo "  Hosted DB may be unreachable from Netlify right now."
-      echo ""
-      echo "  If this is a deploy-preview-only unblock, set:"
-      echo "    ALLOW_PRISMA_P1001_BYPASS=1"
-      echo "  Then rerun deploy and fix DB connectivity separately."
+      echo "  Build failed: prisma migrate deploy failed after ${MIGRATE_RETRIES} attempts."
+      if [[ "$MIGRATE_OUTPUT" == *"EMAXCONNSESSION"* ]] || [[ "$MIGRATE_OUTPUT" == *"max clients reached"* ]]; then
+        echo "  Supabase session pooler rejected the connection (pool full)."
+        echo ""
+        print_supabase_pool_exhaustion_help
+      else
+        echo "  Hosted DB may be unreachable from Netlify right now."
+        echo ""
+        echo "  If this is a deploy-preview-only unblock, set:"
+        echo "    ALLOW_PRISMA_P1001_BYPASS=1"
+        echo "  Then rerun deploy and fix DB connectivity separately."
+      fi
       echo "========================================================================"
       echo ""
       exit "$MIGRATE_EXIT_CODE"

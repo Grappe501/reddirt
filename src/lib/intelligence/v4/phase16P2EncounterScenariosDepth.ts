@@ -9,6 +9,7 @@ import {
   scenarioPrimaryBindMatches,
   type EncounterScenarioId,
 } from "@/lib/intelligence/v4/phase16P2EncounterScenarios";
+import { rehearsalRouteWired } from "@/lib/intelligence/v4/rehearsalRouteWiring";
 
 export { ENCOUNTERS_HUB_HREF };
 
@@ -74,7 +75,7 @@ export function getEncounterScenarioStepOverlay(
     stepId,
     operatorSteps: [step.kellyBeat, `Duration: ${step.durationLabel}`, `Route: ${step.href}`],
     stageSafeRequired: step.stageSafeRequired,
-    wiredOnRoute: step.href.startsWith("/admin/intelligence"),
+    wiredOnRoute: rehearsalRouteWired(step.href),
   };
 }
 
