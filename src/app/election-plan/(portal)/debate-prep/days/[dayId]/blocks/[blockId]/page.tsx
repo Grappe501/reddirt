@@ -11,10 +11,12 @@ import {
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { getDay1BlockStudy } from "@/lib/election-plan/debatePrepDay1BlockStudy";
 import { getDay2BlockStudy } from "@/lib/election-plan/debatePrepDay2BlockStudy";
+import { getDay3BlockStudy } from "@/lib/election-plan/debatePrepDay3BlockStudy";
 import { staticParamsForDayBlocks } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
-import { getDayBlockDrillDown, DAY1_ID, DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
+import { getDayBlockDrillDown, DAY1_ID, DAY2_ID, DAY3_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
@@ -35,12 +37,25 @@ export default async function ElectionPlanDayBlockPage({
   if (!block) notFound();
 
   const study =
-    dayId === DAY1_ID ? getDay1BlockStudy(blockId) : dayId === DAY2_ID ? getDay2BlockStudy(blockId) : undefined;
+    dayId === DAY1_ID
+      ? getDay1BlockStudy(blockId)
+      : dayId === DAY2_ID
+        ? getDay2BlockStudy(blockId)
+        : dayId === DAY3_ID
+          ? getDay3BlockStudy(blockId)
+          : undefined;
   const title = study?.studyGuideTitle ?? block.title;
   const eyebrow = study ? `Step · ~${block.minutes} min` : `Study block · ~${block.minutes} min`;
   const pathwayStep =
-    dayId === DAY1_ID ? getDay1PathwayStep(blockId) : dayId === DAY2_ID ? getDay2PathwayStep(blockId) : undefined;
-  const dayLabel = dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : "Day";
+    dayId === DAY1_ID
+      ? getDay1PathwayStep(blockId)
+      : dayId === DAY2_ID
+        ? getDay2PathwayStep(blockId)
+        : dayId === DAY3_ID
+          ? getDay3PathwayStep(blockId)
+          : undefined;
+  const dayLabel =
+    dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : dayId === DAY3_ID ? "Day 3" : "Day";
 
   return (
     <ElectionPlanDrillDownShell

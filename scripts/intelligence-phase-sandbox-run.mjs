@@ -46,6 +46,7 @@ const steps = [
   { label: "test-phase11-p9-stack-closure", cmd: "npx", args: ["tsx", "scripts/test-phase11-p9-stack-closure.ts"] },
   { label: "test-debate-prep-day2-pathway", cmd: "npx", args: ["tsx", "scripts/test-debate-prep-day2-pathway.ts"] },
   { label: "test-debate-prep-day3-pathway", cmd: "npx", args: ["tsx", "scripts/test-debate-prep-day3-pathway.ts"] },
+  { label: "test-debate-prep-day3-pass2", cmd: "npx", args: ["tsx", "scripts/test-debate-prep-day3-pass2.ts"] },
   { label: "test-debate-prep-day2-pass4", cmd: "npx", args: ["tsx", "scripts/test-debate-prep-day2-pass4.ts"] },
   { label: "test-debate-prep-day2-pass5", cmd: "npx", args: ["tsx", "scripts/test-debate-prep-day2-pass5.ts"] },
   { label: "test-debate-prep-day-parity", cmd: "npx", args: ["tsx", "scripts/test-debate-prep-day-parity.ts"] },

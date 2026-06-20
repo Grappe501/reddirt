@@ -10,10 +10,12 @@ import {
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { getDay1OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay1OpponentExampleStudy";
 import { getDay2OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay2OpponentExampleStudy";
-import { getDayExampleDrillDown, DAY1_ID, DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay3OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay3OpponentExampleStudy";
+import { getDayExampleDrillDown, DAY1_ID, DAY2_ID, DAY3_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayExamples } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
+import { getDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
@@ -38,11 +40,20 @@ export default async function ElectionPlanDayExamplePage({
       ? getDay1OpponentExampleStudy(exampleId)
       : dayId === DAY2_ID
         ? getDay2OpponentExampleStudy(exampleId)
-        : undefined;
+        : dayId === DAY3_ID
+          ? getDay3OpponentExampleStudy(exampleId)
+          : undefined;
 
-  const dayLabel = dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : "Day";
+  const dayLabel =
+    dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : dayId === DAY3_ID ? "Day 3" : "Day";
   const pathwayStep =
-    dayId === DAY1_ID ? getDay1PathwayStep(exampleId) : dayId === DAY2_ID ? getDay2PathwayStep(exampleId) : undefined;
+    dayId === DAY1_ID
+      ? getDay1PathwayStep(exampleId)
+      : dayId === DAY2_ID
+        ? getDay2PathwayStep(exampleId)
+        : dayId === DAY3_ID
+          ? getDay3PathwayStep(exampleId)
+          : undefined;
   const isOptional = pathwayStep?.kind === "example";
   const eyebrow = isOptional
     ? `${dayLabel} · Optional · opponent example`

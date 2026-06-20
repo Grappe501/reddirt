@@ -1,6 +1,7 @@
 import { getDay1BlockStudy, type BlockStudyPhase } from "@/lib/election-plan/debatePrepDay1BlockStudy";
 import { getDay2BlockStudy } from "@/lib/election-plan/debatePrepDay2BlockStudy";
-import { DAY1_ID, DAY2_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay3BlockStudy } from "@/lib/election-plan/debatePrepDay3BlockStudy";
+import { DAY1_ID, DAY2_ID, DAY3_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import type { Day1BlockStudyDeep } from "@/lib/election-plan/debatePrepDay1BlockStudy";
 
 export type BlockPhaseContext = {
@@ -15,6 +16,7 @@ export type BlockPhaseContext = {
 export function getDayBlockStudyForDay(dayId: DrillDownDayId, blockId: string): Day1BlockStudyDeep | undefined {
   if (dayId === DAY1_ID) return getDay1BlockStudy(blockId);
   if (dayId === DAY2_ID) return getDay2BlockStudy(blockId);
+  if (dayId === DAY3_ID) return getDay3BlockStudy(blockId);
   return undefined;
 }
 
