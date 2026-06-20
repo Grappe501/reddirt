@@ -12,6 +12,18 @@ import {
   type Day1PathwayProgressSnapshot,
 } from "@/lib/election-plan/day1-pathway-progress";
 
+const EMPTY_PROGRESS: Day1PathwayProgressSnapshot = {
+  completedStepIds: [],
+  requiredTotal: 0,
+  requiredDone: 0,
+  requiredPct: 0,
+  allTotal: 0,
+  allDone: 0,
+  allPct: 0,
+  isMinimumComplete: false,
+  isFullyComplete: false,
+};
+
 function subscribe(onStoreChange: () => void) {
   window.addEventListener("storage", onStoreChange);
   window.addEventListener("kelly-day1-pathway-progress", onStoreChange);
@@ -21,8 +33,33 @@ function subscribe(onStoreChange: () => void) {
   };
 }
 
+/** useSyncExternalStore requires referential stability when data is unchanged. */
+let cachedProgress: Day1PathwayProgressSnapshot = EMPTY_PROGRESS;
+let cachedProgressKey = "";
+
+function progressSnapshotKey(snapshot: Day1PathwayProgressSnapshot): string {
+  return [
+    snapshot.completedStepIds.join("\u0001"),
+    snapshot.requiredDone,
+    snapshot.requiredTotal,
+    snapshot.allDone,
+    snapshot.allTotal,
+    snapshot.isMinimumComplete,
+    snapshot.isFullyComplete,
+  ].join("\u0000");
+}
+
 function getSnapshot(): Day1PathwayProgressSnapshot {
-  return getDay1PathwayProgress();
+  const next = getDay1PathwayProgress();
+  const key = progressSnapshotKey(next);
+  if (key === cachedProgressKey) return cachedProgress;
+  cachedProgressKey = key;
+  cachedProgress = next;
+  return next;
+}
+
+function getServerSnapshot(): Day1PathwayProgressSnapshot {
+  return EMPTY_PROGRESS;
 }
 
 function stepStatus(step: Day1PathwayStep, activeStepId?: string): "done" | "active" | "upcoming" {
@@ -38,17 +75,7 @@ export function ElectionPlanDay1PathwayProgressBar({
   activeStepId?: string;
   compact?: boolean;
 }) {
-  const progress = useSyncExternalStore(subscribe, getSnapshot, () => ({
-    completedStepIds: [],
-    requiredTotal: 0,
-    requiredDone: 0,
-    requiredPct: 0,
-    allTotal: 0,
-    allDone: 0,
-    allPct: 0,
-    isMinimumComplete: false,
-    isFullyComplete: false,
-  }));
+  const progress = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const steps = buildDay1PathwaySteps();
 

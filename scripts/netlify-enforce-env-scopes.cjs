@@ -10,6 +10,9 @@
  * Get a token: Netlify UI → User settings → Applications → Personal access tokens.
  * Site ID: Site configuration → General → Site details → Site ID.
  */
+const fs = require("node:fs");
+const os = require("node:os");
+const path = require("node:path");
 const {
   isBuildOnlyKey,
   RUNTIME_ESSENTIAL,
@@ -17,14 +20,55 @@ const {
 
 const API = "https://api.netlify.com/api/v1";
 const dryRun = process.argv.includes("--dry-run");
+const triggerDeploy = process.argv.includes("--deploy");
 
-function required(name) {
-  const v = process.env[name]?.trim();
-  if (!v) {
-    console.error(`Missing ${name}. See docs/NETLIFY_FIRST_DEPLOY.md §6.`);
-    process.exit(1);
+function readJson(filePath) {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return null;
   }
-  return v;
+}
+
+function resolveAuthToken() {
+  const fromEnv = process.env.NETLIFY_AUTH_TOKEN?.trim();
+  if (fromEnv) return fromEnv;
+
+  const configPaths = [
+    path.join(os.homedir(), ".config", "netlify", "config.json"),
+    path.join(os.homedir(), ".netlify", "config.json"),
+    path.join(process.env.APPDATA ?? "", "netlify", "Config", "config.json"),
+  ].filter(Boolean);
+
+  for (const configPath of configPaths) {
+    const config = readJson(configPath);
+    const users = config?.users;
+    if (!users || typeof users !== "object") continue;
+    for (const user of Object.values(users)) {
+      const token = user?.auth?.token?.trim();
+      if (token) return token;
+    }
+  }
+
+  console.error("Missing NETLIFY_AUTH_TOKEN. Run `npx netlify login` or set a personal access token.");
+  process.exit(1);
+}
+
+function resolveSiteId() {
+  const fromEnv = process.env.NETLIFY_SITE_ID?.trim();
+  if (fromEnv) return fromEnv;
+
+  const statePaths = [
+    path.join(process.cwd(), ".netlify", "state.json"),
+    path.join(process.cwd(), "RedDirt", ".netlify", "state.json"),
+  ];
+  for (const statePath of statePaths) {
+    const siteId = readJson(statePath)?.siteId?.trim();
+    if (siteId) return siteId;
+  }
+
+  console.error("Missing NETLIFY_SITE_ID. Run `npx netlify link` from RedDirt/ or set the site ID.");
+  process.exit(1);
 }
 
 async function api(token, path, options = {}) {
@@ -62,9 +106,18 @@ function scopesEqual(a, b) {
   return sa === sb;
 }
 
+async function triggerClearCacheDeploy(token, siteId) {
+  const build = await api(token, `/sites/${siteId}/builds?clear_cache=true`, {
+    method: "POST",
+    body: JSON.stringify({}),
+  });
+  console.log(`Triggered clear-cache deploy: ${build.id ?? "(pending)"} — ${build.deploy_url ?? build.url ?? "watch Netlify UI"}`);
+  return build;
+}
+
 async function main() {
-  const token = required("NETLIFY_AUTH_TOKEN");
-  const siteId = required("NETLIFY_SITE_ID");
+  const token = resolveAuthToken();
+  const siteId = resolveSiteId();
 
   const site = await api(token, `/sites/${siteId}`);
   const accountId = site.account_id;
@@ -78,11 +131,17 @@ async function main() {
 
   let updated = 0;
   let skipped = 0;
+  let leaking = 0;
 
   for (const row of envVars) {
     const key = row.key;
     const current = row.scopes ?? [];
     const target = desiredScopes(key);
+    const reachesFunctions = current.some((s) => s === "functions" || s === "all");
+
+    if (isBuildOnlyKey(key) && reachesFunctions) {
+      leaking += 1;
+    }
 
     if (scopesEqual(current, target)) {
       skipped += 1;
@@ -96,6 +155,10 @@ async function main() {
     }
 
     console.log(`${dryRun ? "[dry-run] " : ""}${key}: ${current.join(",") || "(none)"} → ${target.join(",")}`);
+
+    if (key === "NODE_OPTIONS" && !dryRun) {
+      console.log("  (Remove NODE_OPTIONS from Netlify UI entirely if possible — scripts/netlify-build.sh sets heap during next build only.)");
+    }
 
     if (!dryRun) {
       await api(token, `/accounts/${accountId}/env/${encodeURIComponent(key)}?site_id=${siteId}`, {
@@ -113,9 +176,21 @@ async function main() {
 
   console.log("");
   console.log(`Done. ${updated} build-only var(s) ${dryRun ? "would be" : ""} scoped to Builds only; ${skipped} unchanged.`);
-  if (updated > 0 && !dryRun) {
-    console.log("Redeploy: Netlify UI → Deploys → Clear cache and deploy site.");
+  if (leaking > 0 && updated === 0 && dryRun) {
+    console.log(`${leaking} build-only var(s) still reach Functions — rerun without --dry-run to narrow scopes.`);
   }
+  if (updated > 0 && !dryRun && !triggerDeploy) {
+    console.log("Redeploy: Netlify UI → Deploys → Clear cache and deploy site, or rerun with --deploy.");
+  }
+
+  if (triggerDeploy && !dryRun) {
+    console.log("");
+    console.log(">>> Triggering clear-cache production deploy");
+    await triggerClearCacheDeploy(token, siteId);
+  } else if (triggerDeploy && dryRun) {
+    console.log("[dry-run] Would trigger clear-cache deploy after scoping.");
+  }
+
   if (updated === 0) {
     console.log("If deploy still fails with Invalid AWS Lambda parameters:");
     console.log("  1. Check Team settings → Environment variables (shared All/Functions scope).");

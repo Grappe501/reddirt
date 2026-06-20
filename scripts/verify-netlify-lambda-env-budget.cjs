@@ -154,10 +154,20 @@ function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, r
     );
   }
 
-  if (nodeOptions && !nodeOptions.excluded && nodeOptions.bytes > 0) {
+  if (nodeOptions && nodeOptions.bytes > 0 && onNetlify) {
+    lines.push(
+      `NODE_OPTIONS (${nodeOptions.bytes} B) is present in the build environment. Scope it to Builds only in Netlify UI (or delete it — heap is set in scripts/netlify-build.sh). If scoped to All or Functions, deploy fails with Invalid AWS Lambda parameters.`,
+    );
+  }
+
+  if (
+    onNetlify &&
+    process.env.AWS_LAMBDA_JS_RUNTIME &&
+    lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES
+  ) {
     fail = true;
     lines.push(
-      `NODE_OPTIONS (${nodeOptions.bytes} B) must be Builds-only scope. Lambda rejects --max-old-space-size on the server handler.`,
+      `Lambda compatibility mode (AWS_LAMBDA_JS_RUNTIME=${process.env.AWS_LAMBDA_JS_RUNTIME}) with deploy env est. ${lambdaDeployBytes} B exceeds ${LAMBDA_ENV_LIMIT_BYTES} B. Scope build-only vars (npm run netlify:env:scopes) or ask Netlify support to move ___netlify-server-handler to modern Functions runtime.`,
     );
   }
 
