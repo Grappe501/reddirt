@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ElectionPlanBillEnrolledSectionsPanel } from "@/components/election-plan/ElectionPlanBillEnrolledSectionsPanel";
 import { DebateDeepLinkText } from "@/components/election-plan/DebateDeepLinkText";
 import type { ElectionPlanHammerBillDrillDown } from "@/lib/election-plan/load-hammer-bill-drill-down";
 import {
@@ -66,6 +67,10 @@ export function ElectionPlanHammerBillPanel({ deep }: { deep: ElectionPlanHammer
           ) : null}
         </div>
       </section>
+
+      {deep.enrolledAct ? (
+        <ElectionPlanBillEnrolledSectionsPanel enrolledAct={deep.enrolledAct} variant="election-plan" />
+      ) : null}
 
       {deep.playbook.trapSetup ? (
         <section className="ep-card border-2 border-[var(--ep-gold)]/50 bg-[var(--ep-cream)]/60 p-5 text-sm">

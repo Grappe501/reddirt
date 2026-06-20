@@ -3,6 +3,8 @@ import path from "node:path";
 import type { V3BillNarrative } from "@/lib/intelligence/v3/debateIntelligenceV3Types";
 import type { BillOperatorPlaybook } from "@/lib/intelligence/v4/debateOperatorPlaybookTypes";
 import { getBillOperatorPlaybook } from "@/lib/intelligence/v4/debateBillOperatorPlaybooks";
+import type { BillEnrolledActRecord } from "@/lib/intelligence/v4/hammerBillEnrolledSections";
+import { loadHammerBillEnrolledAct } from "@/lib/intelligence/v4/hammerBillEnrolledSections";
 
 export type BillIndexRow = {
   billNumber: string;
@@ -43,6 +45,7 @@ export type BillActProofDeep = {
   opponentExpectedResponses: Array<{ speaker: "Hammer" | "Packo"; round: number; likelyLine: string; kellyRebuttal: string }>;
   inIntegrity2021: boolean;
   themeLabels: string[];
+  enrolledAct: BillEnrolledActRecord | null;
 };
 
 let billIndexCache: BillIndexRow[] | null = null;
@@ -287,6 +290,7 @@ export function buildBillActProofDeep(
     opponentExpectedResponses: buildOpponentResponses(narrative, playbook),
     inIntegrity2021: opts?.inIntegrity2021 ?? false,
     themeLabels: opts?.themeLabels ?? [],
+    enrolledAct: loadHammerBillEnrolledAct(narrative.billNumber, narrative),
   };
 }
 

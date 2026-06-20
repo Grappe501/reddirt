@@ -1,5 +1,6 @@
 import type { BillActProofDeep } from "@/lib/intelligence/v4/billActProofDepth";
 import Link from "next/link";
+import { ElectionPlanBillEnrolledSectionsPanel } from "@/components/election-plan/ElectionPlanBillEnrolledSectionsPanel";
 import { KIM_HAMMER_COMMAND_CENTER_HREF } from "@/lib/opposition/kimHammerBriefingRegistry";
 import { V4BackLinks, V4PageHeader } from "@/components/admin/intelligence/v4/V4PageHeader";
 
@@ -97,6 +98,12 @@ export function BillActProofDeepPage({ deep }: { deep: BillActProofDeep }) {
           ))}
         </dl>
       </section>
+
+      {deep.enrolledAct ? (
+        <section className="mb-6">
+          <ElectionPlanBillEnrolledSectionsPanel enrolledAct={deep.enrolledAct} variant="admin" />
+        </section>
+      ) : null}
 
       <section className="mb-6 space-y-4">
         <h2 className="text-sm font-bold uppercase text-kelly-navy">Education tiers — novice to expert</h2>
