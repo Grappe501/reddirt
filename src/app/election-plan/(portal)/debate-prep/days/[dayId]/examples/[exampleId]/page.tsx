@@ -12,6 +12,7 @@ import { getDay1OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay1O
 import { getDay2OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay2OpponentExampleStudy";
 import { getDayExampleDrillDown, DAY1_ID, DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayExamples } from "@/lib/election-plan/debatePrepDayStaticParams";
+import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
@@ -40,13 +41,12 @@ export default async function ElectionPlanDayExamplePage({
         : undefined;
 
   const dayLabel = dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : "Day";
-  const pathwayStep = dayId === DAY2_ID ? getDay2PathwayStep(exampleId) : undefined;
-  const isOptional = pathwayStep?.label.toLowerCase().includes("optional") ?? false;
+  const pathwayStep =
+    dayId === DAY1_ID ? getDay1PathwayStep(exampleId) : dayId === DAY2_ID ? getDay2PathwayStep(exampleId) : undefined;
+  const isOptional = pathwayStep?.kind === "example";
   const eyebrow = isOptional
     ? `${dayLabel} · Optional · opponent example`
-    : dayId === DAY1_ID
-      ? "Optional · Hammer opening pivot"
-      : `${dayLabel} · opponent example`;
+    : `${dayLabel} · opponent example`;
 
   return (
     <ElectionPlanDrillDownShell

@@ -41,7 +41,7 @@ export const DAY2_CONCEPT_ANCHORS: Record<string, Day2SupplementAnchor> = {
     returnLabel: "Film room block",
   },
   "success-check-d2": {
-    continueFromStepId: "evening-close",
+    continueFromStepId: "b2-trap1",
     returnHref: epDebatePrepDayBlockHref(DAY2_ID, "b2-trap1"),
     returnLabel: "Trap lanes block",
   },

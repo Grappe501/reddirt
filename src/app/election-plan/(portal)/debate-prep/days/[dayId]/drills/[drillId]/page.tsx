@@ -48,18 +48,20 @@ export default async function ElectionPlanDayCommandDrillPage({
         {drill.claimsNote ? <p className="mt-4 text-xs font-bold text-amber-900">{drill.claimsNote}</p> : null}
       </article>
 
-      {dayId === DAY2_ID ? (
-        <article className="ep-card mt-4 border-indigo-300 bg-indigo-50/50 p-5 text-sm">
-          <h2 className="text-xs font-bold uppercase text-indigo-900">Then scan — presence</h2>
+      {(dayId === DAY1_ID || dayId === DAY2_ID) && (
+        <article
+          className={`ep-card mt-4 p-5 text-sm ${
+            dayId === DAY2_ID ? "border-indigo-300 bg-indigo-50/50" : "border-[var(--ep-gold)]/50 bg-[var(--ep-cream)]/50"
+          }`}
+        >
+          <h2 className={`text-xs font-bold uppercase ${dayId === DAY2_ID ? "text-indigo-900" : "text-[var(--ep-gold)]"}`}>
+            Then scan — presence
+          </h2>
           <p className="mt-3 text-base font-semibold leading-relaxed text-[var(--ep-navy)]">{drill.thenScan}</p>
           <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
             Pause after your line — eyes and still hands matter as much as the words.
           </p>
         </article>
-      ) : (
-        <p className="mt-4 text-xs text-[var(--ep-navy-muted)]">
-          <span className="font-bold">Then scan:</span> {drill.thenScan}
-        </p>
       )}
       <ElectionPlanDrillDownSteps title="Rehearsal loop" steps={drill.practiceSteps} />
       <ElectionPlanDrillDownRelated links={drill.relatedLinks} />

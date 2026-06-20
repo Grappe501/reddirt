@@ -6,6 +6,7 @@ import {
   buildDay1PathwaySteps,
   type Day1PathwayStep,
 } from "@/lib/election-plan/day1-learning-pathway";
+import { pathwayStepChipLabel } from "@/lib/election-plan/pathway-step-chip";
 import {
   getDay1PathwayProgress,
   isDay1PathwayStepComplete,
@@ -107,7 +108,7 @@ export function ElectionPlanDay1PathwayProgressBar({
 
       {!compact ? (
         <ol className="mt-4 flex flex-wrap gap-2">
-          {steps.map((step) => {
+          {steps.map((step, idx) => {
             const status = stepStatus(step, activeStepId);
             return (
               <li
@@ -122,7 +123,7 @@ export function ElectionPlanDay1PathwayProgressBar({
                 title={step.label}
               >
                 {status === "done" ? "✓ " : ""}
-                {step.kind === "block" ? `B${steps.indexOf(step) + 1}` : step.kind.slice(0, 4)}
+                {pathwayStepChipLabel(step.kind, idx)}
               </li>
             );
           })}

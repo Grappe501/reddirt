@@ -2,9 +2,10 @@
  * Day 1 linear pathway — client-side completion (localStorage).
  * Kelly marks steps via Continue; progress is per-browser, no server file writes on Netlify.
  */
-import { buildDay1PathwaySteps, DAY1_MINIMUM_BLOCK_IDS } from "@/lib/election-plan/day1-learning-pathway";
+import { buildDay1PathwaySteps, DAY1_MINIMUM_BLOCK_IDS, isDay1PathwayStepOptional } from "@/lib/election-plan/day1-learning-pathway";
+import { DEBATE_PREP_DAY1_PATHWAY_STORAGE_VERSION } from "@/lib/election-plan/debate-prep-day1-release";
 
-const STORAGE_KEY = "kelly-day1-pathway-v1";
+const STORAGE_KEY = `kelly-day1-pathway-${DEBATE_PREP_DAY1_PATHWAY_STORAGE_VERSION}`;
 
 export type Day1PathwayProgressSnapshot = {
   completedStepIds: string[];
@@ -19,9 +20,8 @@ export type Day1PathwayProgressSnapshot = {
 };
 
 function requiredStepIds(): string[] {
-  const optional = new Set(["ex1-hammer-open"]);
   return buildDay1PathwaySteps()
-    .filter((s) => !optional.has(s.id))
+    .filter((s) => !isDay1PathwayStepOptional(s.id))
     .map((s) => s.id);
 }
 

@@ -46,7 +46,9 @@ export function ElectionPlanDayDrillDownOverview({
   if (streamlinedDay2) {
     return (
       <>
-        <KellyPageSummary summary="Watch before you counter. Three Hammer tells tonight — trap lanes 1–2 until boring." />
+        <KellyPageSummary
+          summary={`Watch before you counter. ${dayPageSummary(plan)} Trap lanes 1–2 until boring — film worksheet + trap lane 1 minimum if tired.`}
+        />
         <VoterAudienceSpeakToBanner profiles={day2Audiences} compact label="Who is watching your pivot" />
         <ElectionPlanDay2PathwayPanel showFullList showDay3Teaser />
       </>

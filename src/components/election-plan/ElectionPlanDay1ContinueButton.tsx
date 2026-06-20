@@ -52,7 +52,7 @@ export function ElectionPlanDay1ContinueButton({
       <Link
         href={next.href}
         onClick={() => signOffAndNavigate(next.href)}
-        className="inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90"
+        className="inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"
       >
         Sign off &amp; continue · {next.label} ({next.minutes} min) →
       </Link>

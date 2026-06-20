@@ -10,6 +10,10 @@ import {
   getFirstDay1PathwayStep,
   type Day1PathwayStep,
 } from "@/lib/election-plan/day1-learning-pathway";
+import {
+  DEBATE_PREP_DAY1_RELEASE_LABEL,
+  DEBATE_PREP_DAY1_RELEASE_VERSION,
+} from "@/lib/election-plan/debate-prep-day1-release";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DAY1_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { getDebateWeekIntensiveDay } from "@/lib/intelligence/v4/debateWeekIntensive2026";
@@ -40,6 +44,9 @@ export function ElectionPlanDay1StartCard() {
       </Link>
       <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
         Minimum tonight: posture + author/administrator ({DAY1_MINIMUM_BLOCK_IDS.length} blocks).
+      </p>
+      <p className="mt-2 text-[10px] font-mono text-[var(--ep-navy-muted)]">
+        {DEBATE_PREP_DAY1_RELEASE_VERSION} · {DEBATE_PREP_DAY1_RELEASE_LABEL}
       </p>
     </section>
   );

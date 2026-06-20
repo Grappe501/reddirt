@@ -64,6 +64,7 @@ export const DAY2_OPPONENT_EXAMPLE_STUDY: Record<string, OpponentExampleStudyDee
         title: "Lock-in",
         steps: [
           "One ranking pivot without notes.",
+          "Body check: still hands when Hammer voice would accelerate.",
           "Mark optional example complete.",
         ],
       },
@@ -78,6 +79,28 @@ export const DAY2_OPPONENT_EXAMPLE_STUDY: Record<string, OpponentExampleStudyDee
         title: "County frame",
         body:
           "Saline, Phillips, Sebastian — pick a county clerk image voters recognize. Abstract vs concrete is the whole debate.",
+      },
+      {
+        title: "Body protocol when ranking cite lands",
+        body:
+          "Hammer often speeds up on ranking lines. Kelly slows down, looks at moderator, delivers clerk phone line — contrast reads as command, not rebuttal panic.",
+      },
+      {
+        title: "Speak-order positions",
+        body:
+          "Ranking cite works in first, second, or third speak position — practice all three so you are not surprised by timing.",
+      },
+      {
+        title: "Bundled authorship + ranking",
+        body:
+          "If Hammer stacks bill list with Heritage cite, bridge to author vs administrator — do not debate two scorecards in one answer.",
+      },
+    ],
+    psychology: [
+      {
+        title: "Integrity-anxious viewer",
+        body:
+          "They want calm competence, not a fight about national indices. Clerk service is the emotional antidote to abstract fear.",
       },
     ],
     opponentForecast: [
@@ -94,6 +117,14 @@ export const DAY2_OPPONENT_EXAMPLE_STUDY: Record<string, OpponentExampleStudyDee
       {
         label: "Phone line",
         text: "Clerks in your county know whether the SOS office answered the phone last week.",
+      },
+      {
+        label: "Author bridge",
+        text: "Writing law and running the office clerks depend on are different jobs — I am asking for the administrator job.",
+      },
+      {
+        label: "Agree-add",
+        text: "We all want secure elections — clerks in every county made that happen. I want an SOS who serves them.",
       },
     ],
     doNotSay: [
@@ -165,12 +196,48 @@ export const DAY2_OPPONENT_EXAMPLE_STUDY: Record<string, OpponentExampleStudyDee
           "Mark optional example complete.",
         ],
       },
+      {
+        minutesLabel: "28–35 min",
+        title: "Lock-in & claims gate",
+        steps: [
+          "One 30s pivot on video without notes.",
+          "Read claims gate aloud — no unsourced Pakko quotes.",
+          "Mark optional example complete.",
+        ],
+      },
     ],
     deepSections: [
       {
         title: "Reform lane steal",
         body:
           "Both opponents can sound anti-bureaucracy. Kelly agrees on clerk burden, differentiates who will publish rules and answer phones Monday morning.",
+      },
+      {
+        title: "Respect without patronizing",
+        body:
+          "Third-candidate status is not your target. Acknowledge reform concern in one sentence — pivot to seventy-five county administratorship.",
+      },
+      {
+        title: "Pile-on after Pakko agree",
+        body:
+          "Hammer may tag-team when you agree with Pakko. Bridge to moderator, one clerk sentence, stop — never fight two fronts.",
+      },
+    ],
+    psychology: [
+      {
+        title: "Libertarian-leaning viewer",
+        body:
+          "They reward authenticity over party labels. Agree on clerk burden, then name SOS as service desk — not Capitol credit.",
+      },
+    ],
+    opponentForecast: [
+      {
+        title: "Hammer after Pakko",
+        body: "May pivot to authorship when Kelly agrees on reform — ready author vs administrator bridge.",
+      },
+      {
+        title: "Pakko follow-up",
+        body: "May cite unfunded mandates — Kelly owns that lane with on-the-record clerk burden framing.",
       },
     ],
     sampleLines: [

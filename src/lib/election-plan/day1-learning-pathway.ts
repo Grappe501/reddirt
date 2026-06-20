@@ -50,6 +50,14 @@ export function buildDay1PathwaySteps(): Day1PathwayStep[] {
       teaser: plan.rehearsalOutLoud[0] ?? "Opening with no opponent names.",
     },
     {
+      id: "d1-calm-open",
+      kind: "drill",
+      label: "Quick drill · calm opening",
+      minutes: 5,
+      href: epDebatePrepDayDrillHref(DAY1_ID, "d1-calm-open"),
+      teaser: "Mic opens — exhale, twelve words, pause.",
+    },
+    {
       id: "rehearse-agree-contrast-30s",
       kind: "rehearsal",
       label: "30s agree-and-add on secure elections",
@@ -97,6 +105,10 @@ export function getNextDay1PathwayStep(stepId: string): Day1PathwayStep | undefi
 
 export function getFirstDay1PathwayStep(): Day1PathwayStep {
   return buildDay1PathwaySteps()[0]!;
+}
+
+export function isDay1PathwayStepOptional(stepId: string): boolean {
+  return buildDay1PathwaySteps().some((s) => s.id === stepId && s.kind === "example");
 }
 
 export const DAY1_MINIMUM_BLOCK_IDS = ["b1-posture", "b1-author"] as const;

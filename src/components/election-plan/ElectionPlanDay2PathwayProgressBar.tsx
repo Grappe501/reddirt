@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 
 import { buildDay2PathwaySteps, type Day2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
+import { pathwayStepChipLabel } from "@/lib/election-plan/pathway-step-chip";
 import {
   getDay2PathwayProgress,
   isDay2PathwayStepComplete,
@@ -117,7 +118,7 @@ export function ElectionPlanDay2PathwayProgressBar({
                 title={step.label}
               >
                 {status === "done" ? "✓ " : ""}
-                {step.kind === "block" ? `B${idx + 1}` : step.kind === "example" ? "Opt" : step.kind.slice(0, 4)}
+                {pathwayStepChipLabel(step.kind, idx)}
               </li>
             );
           })}

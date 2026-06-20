@@ -3,7 +3,7 @@
  */
 import { DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { DEBATE_PREP_DAY2_PATHWAY_STORAGE_VERSION } from "@/lib/election-plan/debate-prep-day2-release";
-import { buildDay2PathwaySteps, DAY2_MINIMUM_BLOCK_IDS } from "@/lib/election-plan/day2-learning-pathway";
+import { buildDay2PathwaySteps, DAY2_MINIMUM_BLOCK_IDS, isDay2PathwayStepOptional } from "@/lib/election-plan/day2-learning-pathway";
 
 const STORAGE_KEY = `kelly-day2-pathway-${DEBATE_PREP_DAY2_PATHWAY_STORAGE_VERSION}`;
 
@@ -20,9 +20,8 @@ export type Day2PathwayProgressSnapshot = {
 };
 
 function requiredStepIds(): string[] {
-  const optional = new Set(["ex2-hammer-rank", "ex2-pakko-split"]);
   return buildDay2PathwaySteps()
-    .filter((s) => !optional.has(s.id))
+    .filter((s) => !isDay2PathwayStepOptional(s.id))
     .map((s) => s.id);
 }
 

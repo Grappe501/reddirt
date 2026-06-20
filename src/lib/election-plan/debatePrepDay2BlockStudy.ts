@@ -99,6 +99,16 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         body:
           "When Pakko looks at Hammer during a pile-on, Kelly looks at the moderator. One bridge sentence to clerks — never fight two fronts in one answer.",
       },
+      {
+        title: "When to apply film tells",
+        body:
+          "Use worksheet tells during trap lanes tonight and forum lab on Day 4 — not as a script of every Hammer line. Recognition triggers pivot phrases you already rehearsed in Day 1 philosophy and author blocks.",
+      },
+      {
+        title: "Common mistakes",
+        body:
+          "Rewatching clips without pausing. Debating Heritage rankings instead of clerk pivot. Skipping Pakko segment because Hammer is louder. Jumping to trap lanes before worksheet is filled.",
+      },
     ],
     psychology: [
       {
@@ -230,6 +240,26 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         body:
           "2025 petition bills continue 2021 architecture — not a fresh start. Kelly honors security, asks for county implementation ledger and training dollars.",
       },
+      {
+        title: "When to apply lane 1",
+        body:
+          "Experience/readiness questions. Hammer cites authorship or Heritage rankings. Moderator asks why Kelly over a senator. Any 'what qualifies you' beat after film tells land.",
+      },
+      {
+        title: "When NOT to apply",
+        body:
+          "Direct factual correction on act text (claims gate). Culture-war bait designed for biography defense. Moments where clerk service story is stronger than contrast frame.",
+      },
+      {
+        title: "Common mistakes",
+        body:
+          "Stopping at 'I agree with Senator Hammer.' Listing bill numbers without verification. Attacking motives instead of contrasting jobs. Matching Hammer's pace when bait accelerates.",
+      },
+      {
+        title: "Stack with film block",
+        body:
+          "Each trap bait should map to a tell from the film worksheet — ranking cite → clerk phone line; authorship cite → administrator pivot. Rehearse tell → pivot chain before combined bait drill.",
+      },
     ],
     opponentForecast: [
       {
@@ -329,6 +359,43 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         body:
           "Pakko plays measured reform economist. Kelly agrees where true, differentiates administrator vs commentator. Never make the debate Kelly vs Pakko — Hammer is authorship lane.",
       },
+      {
+        title: "Contrast gate",
+        body:
+          "Agree on clerk burden without endorsing anti-participation framing. Reform yes — SOS execution is the differentiator.",
+      },
+      {
+        title: "30-second architecture",
+        body:
+          "Sentence one: respect. Sentence two: pivot to administrator job. Stop. Do not add a third attack line.",
+      },
+      {
+        title: "When to apply",
+        body:
+          "Pakko speaks on reform or clerk burden. Hammer and Pakko pile-on in the same segment. Moderator asks Kelly to respond to third-candidate framing. Never initiate Pakko contrast unprompted.",
+      },
+      {
+        title: "Common mistakes",
+        body:
+          "Making the debate Kelly vs Pakko. Patronizing reform voters. Endorsing anti-participation framing to sound tough. Looking at Pakko when Hammer bait follows — bridge to clerks instead.",
+      },
+    ],
+    psychology: [
+      {
+        title: "Respect without patronizing",
+        body:
+          "Libertarian-leaning viewers punish condescension. Acknowledge Pakko's reform concern as legitimate, then name who runs Monday morning.",
+      },
+    ],
+    opponentForecast: [
+      {
+        title: "After Kelly agrees",
+        body: "Hammer may tag-team with authorship — bridge to author vs administrator, not Pakko attack.",
+      },
+      {
+        title: "Pakko overreach line",
+        body: "Government failed clerks framing — agree on burden, pivot to SOS service desk and published rules.",
+      },
     ],
     sampleLines: [
       {
@@ -339,13 +406,17 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         label: "Respect line",
         text: "Dr. Pakko raises fair reform questions — the Secretary of State administers the process in daylight for every county.",
       },
+      {
+        label: "Clerk burden agree",
+        text: "Clerks carry unfunded mandates — I want those on the record, not more Capitol credit without implementation.",
+      },
     ],
     doNotSay: [
       "Attacking third-candidate status",
       "Anti-democracy or anti-petition framing",
       "Ignoring Pakko because Hammer is louder",
     ],
-    claimsGate: ["No unsourced Pakko quotes — forum lab verification only."],
+    claimsGate: ["No unsourced Pakko quotes — verify in forum lab before stage use."],
     keyTakeaways: [
       "One Pakko pivot rehearsed aloud — Day 2 evening check item.",
       "Respect without ceding SOS.",
@@ -417,6 +488,26 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         body:
           "Audience reads furtive eye movement as uncertainty. When challenged, look at the moderator — not the floor, not your notes.",
       },
+      {
+        title: "Pile-on bridge patterns",
+        body:
+          "When Hammer and Pakko both speak, still hands + one bridge sentence to clerks beats a two-front counterattack every time.",
+      },
+      {
+        title: "When to stop talking",
+        body:
+          "After the bridge sentence, stop. Over-talking under pile-on reads as panic. Let the moderator retake the floor.",
+      },
+      {
+        title: "Eye-line drill checklist",
+        body:
+          "Opponent speaks → eyes to moderator. You speak → start on moderator, finish on audience. Never track bait with your head.",
+      },
+      {
+        title: "Stack with trap lanes",
+        body:
+          "After authorship pivot reps, run pile-on drill with same clerk bridge line — body protocol from Day 1 posture block carries the pivot. Still hands under double-team is the visual proof of command.",
+      },
     ],
     psychology: [
       {
@@ -424,7 +515,37 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         body:
           "Integrity-anxious voters watch body language before policy. Stillness under pile-on is a trust signal.",
       },
+      {
+        title: "Three-way geometry preview",
+        body:
+          "Kelly center: engage Hammer on job fit, acknowledge Pakko briefly, never fight two fronts in one answer.",
+      },
     ],
+    opponentForecast: [
+      {
+        title: "Double-team moment",
+        body: "Hammer authorship bait + Pakko reform agree in same segment — bridge to clerks, do not split attention.",
+      },
+      {
+        title: "Moderator interruption",
+        body: "If cut off mid-bridge, thank moderator, deliver one clerk line, stop — do not restart the fight.",
+      },
+    ],
+    sampleLines: [
+      {
+        label: "Pile-on bridge",
+        text: "Clerks in seventy-five counties need an administrator who answers the phone — that is the job I am asking for.",
+      },
+      {
+        label: "Stillness cue",
+        text: "I hear both of you — let me answer the clerk service question first.",
+      },
+      {
+        label: "Moderator return",
+        text: "Thank you, moderator — one sentence for county clerks.",
+      },
+    ],
+    claimsGate: ["No unsourced opponent quotes in pile-on drills — verify forum timestamps before broadcast use."],
     doNotSay: ["Reactive head-shaking while opponents speak", "Looking down when double-teamed"],
     keyTakeaways: [
       "Eyes to moderator when not speaking.",
@@ -503,6 +624,26 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         title: "Day 2 reading cadence",
         body:
           "First read after film room and trap lanes. Day 4 re-read after forum lab. Day 6 lock-in before simulation — memory lines only.",
+      },
+      {
+        title: "Hammer bio reading protocol",
+        body:
+          "Read professor lead and biography aloud once. Match three film tells to psychology section. Star ACCA tactics and 2021 package — do not memorize attack lines. End with one agree-add pivot in debate voice.",
+      },
+      {
+        title: "Pakko bio reading protocol",
+        body:
+          "Read respect scaffold and reform lane. Note one agree-add on clerk burden. Speak one memory line — under 15 seconds. Link three-way geometry micro-lesson before closing the block.",
+      },
+      {
+        title: "Memory line rules",
+        body:
+          "Memory lines are frames, not zingers. Speak twice in natural debate voice — not theatrical. If a line needs act numbers, claims-gate it before stage use.",
+      },
+      {
+        title: "Common mistakes",
+        body:
+          "Reading bios before film worksheet. Skipping Pakko segment. Memorizing dossier attacks instead of command pivots. Quoting opponent lines without forum timestamp verification.",
       },
     ],
     opponentForecast: [
