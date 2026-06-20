@@ -78,6 +78,7 @@
     "agents:test-sprint-10": "tsx scripts/test-sprint-10-campaign-platform.ts",
     "agents:test-single-campaign-hardening": "tsx scripts/test-single-campaign-hardening.ts",
     "agents:test-county-intelligence": "tsx scripts/test-county-intelligence.ts",
+    "agents:test-city-location-briefs": "tsx scripts/test-city-location-briefs.ts",
     "county:factory:audit": "tsx scripts/county-factory-audit.ts",
     "county:sources:build": "tsx scripts/county-source-catalog-build.ts",
     "county:ingest:dry-run": "tsx scripts/county-ingestion-dry-run.ts",

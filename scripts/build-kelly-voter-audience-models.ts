@@ -10,6 +10,7 @@ import { VOTER_AUDIENCE_SEEDS } from "./voter-audience/seeds";
 import type {
   KellyVoterAudienceModelsFile,
   LocationAudienceOverlay,
+  LocationAudienceProfileEstimate,
 } from "../src/lib/election-plan/voter-audience-models/types";
 
 const ROOT = process.cwd();
@@ -113,6 +114,36 @@ function buildCountyOverlays(): Record<string, LocationAudienceOverlay> {
   return out;
 }
 
+function profileEstimatesFromScores(
+  profileIds: string[],
+  scores: Map<string, number>,
+  opts: { activeRegistered: number | null; voteTarget: number | null },
+): LocationAudienceProfileEstimate[] {
+  if (profileIds.length === 0) return [];
+  const totalScore = profileIds.reduce((sum, id) => sum + (scores.get(id) ?? 1), 0);
+  if (totalScore <= 0) return [];
+
+  return profileIds.map((profileId) => {
+    const weight = (scores.get(profileId) ?? 1) / totalScore;
+    const weightPct = Math.round(weight * 1000) / 10;
+    return {
+      profileId,
+      weightPct,
+      estimatedRegisteredPool:
+        opts.activeRegistered != null ? Math.max(1, Math.round(opts.activeRegistered * weight)) : 0,
+      estimatedVoteTarget: opts.voteTarget != null ? Math.max(1, Math.round(opts.voteTarget * weight)) : 0,
+    };
+  });
+}
+
+function readCityRollup(citySlug: string): { active: number | null } {
+  if (!existsSync(VOTER_ROLLUPS)) return { active: null };
+  const rollups = JSON.parse(readFileSync(VOTER_ROLLUPS, "utf8")) as {
+    cities: Record<string, { registration?: { active?: number } }>;
+  };
+  return { active: rollups.cities[citySlug]?.registration?.active ?? null };
+}
+
 function buildCityOverlays(counties: Record<string, LocationAudienceOverlay>): Record<string, LocationAudienceOverlay> {
   if (!existsSync(CITY_INTEL)) return {};
   const intel = JSON.parse(readFileSync(CITY_INTEL, "utf8")) as {
@@ -123,7 +154,7 @@ function buildCityOverlays(counties: Record<string, LocationAudienceOverlay>): R
         name: string;
         county: string;
         population2020: number;
-        election: { influenceTags: string[] };
+        election: { influenceTags: string[]; targetVotes: number };
         narrative: { socioEconomic: string };
       }
     >;
@@ -156,6 +187,12 @@ function buildCityOverlays(counties: Record<string, LocationAudienceOverlay>): R
       .map((id) => VOTER_AUDIENCE_SEEDS.find((p) => p.id === id)?.displayName)
       .filter(Boolean);
 
+    const rollup = readCityRollup(city.slug);
+    const profileEstimates = profileEstimatesFromScores(profileIds, scores, {
+      activeRegistered: rollup.active,
+      voteTarget: city.election.targetVotes ?? null,
+    });
+
     out[city.slug] = {
       slug: city.slug,
       name: city.name,
@@ -163,8 +200,13 @@ function buildCityOverlays(counties: Record<string, LocationAudienceOverlay>): R
       countySlug,
       populationNote: `${city.population2020.toLocaleString("en-US")} (2020 Census)`,
       profileIds,
+      profileEstimates,
       makeupNote: `${city.name} speak-to cast: ${names.join(", ")}. Tags: ${city.election.influenceTags.join(", ")}.`,
-      sources: ["city-intelligence-profiles.json", "voter-audience/seeds.ts"],
+      sources: [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts",
+        existsSync(VOTER_ROLLUPS) ? "voter-file-location-rollups.json" : "no rollups",
+      ],
     };
   }
   return out;

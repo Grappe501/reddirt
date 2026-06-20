@@ -24,6 +24,10 @@ export function cityLocationBriefHref(citySlug: string): string {
   return `/election-plan/cities/${citySlug}`;
 }
 
+export function cityLocationBriefSectionHref(citySlug: string, sectionId: string): string {
+  return `${cityLocationBriefHref(citySlug)}#${sectionId}`;
+}
+
 export function cityLocationsHubHref(): string {
   return "/election-plan/cities";
 }

@@ -64,7 +64,7 @@ export function CityIntelligenceEnrichmentPanel({ profile, countySlug }: Props) 
   >;
 
   return (
-    <section className="mb-8 space-y-6">
+    <section id="place-profile" className="mb-8 scroll-mt-24 space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--ep-gold)]">
@@ -112,7 +112,7 @@ export function CityIntelligenceEnrichmentPanel({ profile, countySlug }: Props) 
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <div className="ep-card">
+        <div className="ep-card" id="geographic">
           <h3 className="font-heading text-base font-bold text-[var(--ep-navy)]">Geographic & cluster</h3>
           <p className="mt-3 text-sm leading-relaxed text-[var(--ep-navy-muted)]">{profile.narrative.geographic}</p>
           {profile.cluster ? (
@@ -121,11 +121,11 @@ export function CityIntelligenceEnrichmentPanel({ profile, countySlug }: Props) 
             </p>
           ) : null}
         </div>
-        <div className="ep-card">
+        <div className="ep-card" id="cultural">
           <h3 className="font-heading text-base font-bold text-[var(--ep-navy)]">Historical & cultural</h3>
           <p className="mt-3 text-sm leading-relaxed text-[var(--ep-navy-muted)]">{profile.narrative.historicalCultural}</p>
         </div>
-        <div className="ep-card">
+        <div className="ep-card" id="socioeconomic">
           <h3 className="font-heading text-base font-bold text-[var(--ep-navy)]">Socio-economic</h3>
           <p className="mt-3 text-sm leading-relaxed text-[var(--ep-navy-muted)]">{profile.narrative.socioEconomic}</p>
           {profile.countyIntel.topIssues.length > 0 ? (

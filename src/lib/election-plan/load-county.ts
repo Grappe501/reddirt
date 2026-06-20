@@ -1,10 +1,16 @@
 import type { ElectionPlanCounty, ElectionPlanCity, ElectionPlanWorkbenchSnapshot } from "@/lib/election-plan/types";
 
+/** Election-plan county slugs omit the `-county` suffix (e.g. `washington`, not `washington-county`). */
+export function normalizeElectionPlanCountySlug(countySlug: string): string {
+  return countySlug.trim().toLowerCase().replace(/-county$/, "");
+}
+
 export function getCountyBySlug(
   data: ElectionPlanWorkbenchSnapshot,
   countySlug: string,
 ): ElectionPlanCounty | undefined {
-  return data.counties.find((c) => c.slug === countySlug);
+  const normalized = normalizeElectionPlanCountySlug(countySlug);
+  return data.counties.find((c) => c.slug === normalized);
 }
 
 export function getCountyByName(

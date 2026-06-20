@@ -10,6 +10,7 @@ import path from "node:path";
 import {
   ARKANSAS_COUNTY_POPULATION_2020,
   ARKANSAS_TOP_100_CITIES,
+  type ArkansasTop40City,
   type CityInfluenceTag,
 } from "./strategic-plan/data/arkansas-top-40-cities";
 import { loadWinTargets, readJson } from "./strategic-plan/lib/strategic-plan-shared";
@@ -28,6 +29,7 @@ const ROOT = process.cwd();
 const OUT_PATH = path.join(ROOT, "data/campaign-brain/city-intelligence-profiles.json");
 const ISSUE_CLUSTERS_PATH = path.join(ROOT, "data/public-narrative/county-issue-clusters.json");
 const SNAPSHOT_PATH = path.join(ROOT, "data/election-plan/election-plan-workbench.snapshot.json");
+const BONUS_CITIES_PATH = path.join(ROOT, "data/campaign-brain/bonus-city-workbenches.source.json");
 const WIKI_DIR = path.join(ROOT, "docs/ingested/county-wikipedia");
 
 const CLUSTER_DESCRIPTIONS: Record<string, string> = {
@@ -202,6 +204,66 @@ function countStatuses(profile: { dimensions: Record<string, { status: string }>
   return counts;
 }
 
+function loadBonusCitiesForIntelBuild(): ArkansasTop40City[] {
+  if (!existsSync(BONUS_CITIES_PATH)) return [];
+  const file = JSON.parse(readFileSync(BONUS_CITIES_PATH, "utf8")) as {
+    cities: Array<{
+      slug: string;
+      name: string;
+      county: string;
+      population2020?: number;
+      influenceTags: CityInfluenceTag[];
+      strategicRole: string;
+      visitFrequency: ArkansasTop40City["visitFrequency"];
+      isTop10: boolean;
+      targetVotes?: number;
+      baselineVote?: number;
+      voteGain?: number;
+      influenceCategory?: string;
+    }>;
+  };
+  const topSlugs = new Set(ARKANSAS_TOP_100_CITIES.map((c) => c.slug));
+  return file.cities
+    .filter((c) => c.population2020 && !topSlugs.has(c.slug))
+    .map((c) => ({
+      slug: c.slug,
+      name: c.name,
+      county: c.county,
+      population2020: c.population2020!,
+      influenceTags: c.influenceTags,
+      strategicRole: c.strategicRole,
+      visitFrequency: c.visitFrequency,
+      isTop10: c.isTop10,
+    }));
+}
+
+function loadBonusCitySnapshotRows(): Map<
+  string,
+  { targetVotes: number; baselineVote: number; voteGain: number; influenceCategory: string }
+> {
+  if (!existsSync(BONUS_CITIES_PATH)) return new Map();
+  const file = JSON.parse(readFileSync(BONUS_CITIES_PATH, "utf8")) as {
+    cities: Array<{
+      slug: string;
+      targetVotes: number;
+      baselineVote: number;
+      voteGain: number;
+      influenceCategory?: string;
+    }>;
+  };
+  return new Map(
+    file.cities.map((c) => [
+      c.slug,
+      {
+        targetVotes: c.targetVotes,
+        baselineVote: c.baselineVote,
+        voteGain: c.voteGain,
+        influenceCategory: c.influenceCategory ?? "Bonus immersion hub",
+      },
+    ]),
+  );
+}
+
 async function main() {
   const env = loadEnv();
   const civicKey = env.GOOGLE_CIVIC_API_KEY;
@@ -223,6 +285,8 @@ async function main() {
 
   const countyByName = new Map(snapshot?.counties.map((c) => [c.county, c]) ?? []);
   const citySnapshot = new Map(snapshot?.cities.map((c) => [c.slug, c]) ?? []);
+  const bonusCitySnapshot = loadBonusCitySnapshotRows();
+  const citiesToBuild = [...ARKANSAS_TOP_100_CITIES, ...loadBonusCitiesForIntelBuild()];
   const clusterByCounty = new Map<string, { id: string; name: string; description: string }>();
   for (const cl of snapshot?.execution.clusters ?? []) {
     for (const cn of cl.counties) {
@@ -237,9 +301,9 @@ async function main() {
   const cities: Record<string, unknown> = {};
   let civicFetched = 0;
 
-  for (let i = 0; i < ARKANSAS_TOP_100_CITIES.length; i++) {
-    const city = ARKANSAS_TOP_100_CITIES[i];
-    const snap = citySnapshot.get(city.slug);
+  for (let i = 0; i < citiesToBuild.length; i++) {
+    const city = citiesToBuild[i];
+    const snap = citySnapshot.get(city.slug) ?? bonusCitySnapshot.get(city.slug);
     const countyRow = countyByName.get(city.county);
     const countyPop = ARKANSAS_COUNTY_POPULATION_2020[city.county] ?? city.population2020;
     const sharePct = (city.population2020 / countyPop) * 100;
@@ -399,14 +463,14 @@ async function main() {
     };
 
     cities[city.slug] = profile;
-    process.stdout.write(`Built ${city.slug} (${i + 1}/100)\n`);
+    process.stdout.write(`Built ${city.slug} (${i + 1}/${citiesToBuild.length})\n`);
   }
 
   const bundle = {
     version: 1,
     generatedAt: new Date().toISOString(),
     modelNote:
-      "Ten enrichment dimensions per Top 100 city. API rows cached at build time. Scaffold rows require field verification before public claims.",
+      "Ten enrichment dimensions per Top 100 priority city plus bonus immersion hubs. API rows cached at build time. Scaffold rows require field verification before public claims.",
     dimensionLabels: {
       stateHouse: "State House district & representative",
       stateSenate: "State Senate district & senator",

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "builtAt": "2026-06-19T17:48:45.003Z",
+  "builtAt": "2026-06-20T16:52:49.093Z",
   "pageSummary": "Sixteen named Arkansans in Kelly's big tent — who she is talking to when she speaks. Use the badge on every practice line: picture one person, not a crowd.",
   "modelNote": "Fictional personas for message targeting only — not voter file rows. Location overlays combine region, city intelligence tags, and aggregate SOS registration mix.",
   "profiles": [
@@ -2221,10 +2221,43 @@
         "tyler-martinez",
         "paul-listener"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 23.8,
+          "estimatedRegisteredPool": 23648,
+          "estimatedVoteTarget": 9599
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 19,
+          "estimatedRegisteredPool": 18919,
+          "estimatedVoteTarget": 7679
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 19,
+          "estimatedRegisteredPool": 18919,
+          "estimatedVoteTarget": 7679
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 19,
+          "estimatedRegisteredPool": 18919,
+          "estimatedVoteTarget": 7679
+        },
+        {
+          "profileId": "paul-listener",
+          "weightPct": 19,
+          "estimatedRegisteredPool": 18919,
+          "estimatedVoteTarget": 7679
+        }
+      ],
       "makeupNote": "Little Rock speak-to cast: Maria G., Marcia T., Keisha L., Tyler M., Paul L.. Tags: media, fundraising, volunteers, political_influence.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "fort-smith": {
@@ -2240,10 +2273,43 @@
         "keisha-lyons",
         "linda-sutton"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 31.8,
+          "estimatedRegisteredPool": 13150,
+          "estimatedVoteTarget": 3001
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 7514,
+          "estimatedVoteTarget": 1715
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 7514,
+          "estimatedVoteTarget": 1715
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 7514,
+          "estimatedVoteTarget": 1715
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 13.6,
+          "estimatedRegisteredPool": 5636,
+          "estimatedVoteTarget": 1286
+        }
+      ],
       "makeupNote": "Fort Smith speak-to cast: Robert K., Carol W., Maria G., Keisha L., Linda S.. Tags: regional_media, persuasion, chambers, moderate_republicans.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "fayetteville": {
@@ -2259,10 +2325,43 @@
         "maria-gutierrez",
         "robert-kessler"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 29.4,
+          "estimatedRegisteredPool": 16965,
+          "estimatedVoteTarget": 4339
+        },
+        {
+          "profileId": "paul-listener",
+          "weightPct": 29.4,
+          "estimatedRegisteredPool": 16965,
+          "estimatedVoteTarget": 4339
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 23.5,
+          "estimatedRegisteredPool": 13572,
+          "estimatedVoteTarget": 3472
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 11.8,
+          "estimatedRegisteredPool": 6786,
+          "estimatedVoteTarget": 1736
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 5.9,
+          "estimatedRegisteredPool": 3393,
+          "estimatedVoteTarget": 868
+        }
+      ],
       "makeupNote": "Fayetteville speak-to cast: Tyler M., Paul L., Carol W., Maria G., Robert K.. Tags: students, volunteers, digital_reach.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "springdale": {
@@ -2278,10 +2377,43 @@
         "paul-listener",
         "coach-pat-nolan"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 31.3,
+          "estimatedRegisteredPool": 10558,
+          "estimatedVoteTarget": 4130
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 31.3,
+          "estimatedRegisteredPool": 10558,
+          "estimatedVoteTarget": 4130
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 4223,
+          "estimatedVoteTarget": 1652
+        },
+        {
+          "profileId": "paul-listener",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 4223,
+          "estimatedVoteTarget": 1652
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 4223,
+          "estimatedVoteTarget": 1652
+        }
+      ],
       "makeupNote": "Springdale speak-to cast: Robert K., Maria G., Tyler M., Paul L., Coach Pat N.. Tags: volunteers, students, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "jonesboro": {
@@ -2297,10 +2429,43 @@
         "robert-kessler",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 30.8,
+          "estimatedRegisteredPool": 11164,
+          "estimatedVoteTarget": 2522
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 30.8,
+          "estimatedRegisteredPool": 11164,
+          "estimatedVoteTarget": 2522
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 15.4,
+          "estimatedRegisteredPool": 5582,
+          "estimatedVoteTarget": 1261
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 15.4,
+          "estimatedRegisteredPool": 5582,
+          "estimatedVoteTarget": 1261
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 7.7,
+          "estimatedRegisteredPool": 2791,
+          "estimatedVoteTarget": 630
+        }
+      ],
       "makeupNote": "Jonesboro speak-to cast: Tyler M., Keisha L., Coach Pat N., Robert K., Frank D.. Tags: persuasion, regional_media, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "north-little-rock": {
@@ -2316,10 +2481,43 @@
         "maria-gutierrez",
         "aisha-reed"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 38.5,
+          "estimatedRegisteredPool": 11581,
+          "estimatedVoteTarget": 4936
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 15.4,
+          "estimatedRegisteredPool": 4632,
+          "estimatedVoteTarget": 1974
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 15.4,
+          "estimatedRegisteredPool": 4632,
+          "estimatedVoteTarget": 1974
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 15.4,
+          "estimatedRegisteredPool": 4632,
+          "estimatedVoteTarget": 1974
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 15.4,
+          "estimatedRegisteredPool": 4632,
+          "estimatedVoteTarget": 1974
+        }
+      ],
       "makeupNote": "North Little Rock speak-to cast: Marcia T., Keisha L., Tyler M., Maria G., Aisha R.. Tags: democratic_recovery, volunteers, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "conway": {
@@ -2335,10 +2533,43 @@
         "susan-ellis",
         "keisha-lyons"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 11963,
+          "estimatedVoteTarget": 2419
+        },
+        {
+          "profileId": "paul-listener",
+          "weightPct": 23.8,
+          "estimatedRegisteredPool": 9970,
+          "estimatedVoteTarget": 2016
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 19,
+          "estimatedRegisteredPool": 7976,
+          "estimatedVoteTarget": 1613
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 19,
+          "estimatedRegisteredPool": 7976,
+          "estimatedVoteTarget": 1613
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 9.5,
+          "estimatedRegisteredPool": 3988,
+          "estimatedVoteTarget": 806
+        }
+      ],
       "makeupNote": "Conway speak-to cast: Tyler M., Paul L., Marcia T., Susan E., Keisha L.. Tags: students, volunteers, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "rogers": {
@@ -2354,10 +2585,43 @@
         "linda-sutton",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 40,
+          "estimatedRegisteredPool": 15993,
+          "estimatedVoteTarget": 3639
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 26.7,
+          "estimatedRegisteredPool": 10662,
+          "estimatedVoteTarget": 2426
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 13.3,
+          "estimatedRegisteredPool": 5331,
+          "estimatedVoteTarget": 1213
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 13.3,
+          "estimatedRegisteredPool": 5331,
+          "estimatedVoteTarget": 1213
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 6.7,
+          "estimatedRegisteredPool": 2665,
+          "estimatedVoteTarget": 606
+        }
+      ],
       "makeupNote": "Rogers speak-to cast: Robert K., Maria G., Susan E., Linda S., Carol W.. Tags: business_leaders, chambers, moderate_republicans.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "bentonville": {
@@ -2373,10 +2637,43 @@
         "tyler-martinez",
         "maria-gutierrez"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 55.6,
+          "estimatedRegisteredPool": 19343,
+          "estimatedVoteTarget": 3912
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 3869,
+          "estimatedVoteTarget": 782
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 3869,
+          "estimatedVoteTarget": 782
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 3869,
+          "estimatedVoteTarget": 782
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 3869,
+          "estimatedVoteTarget": 782
+        }
+      ],
       "makeupNote": "Bentonville speak-to cast: Robert K., Susan E., Carol W., Tyler M., Maria G.. Tags: business_leaders, fundraising, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "pine-bluff": {
@@ -2392,10 +2689,43 @@
         "marcia-truman",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 35.3,
+          "estimatedRegisteredPool": 6881,
+          "estimatedVoteTarget": 2943
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 29.4,
+          "estimatedRegisteredPool": 5734,
+          "estimatedVoteTarget": 2453
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 17.6,
+          "estimatedRegisteredPool": 3441,
+          "estimatedVoteTarget": 1472
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 11.8,
+          "estimatedRegisteredPool": 2294,
+          "estimatedVoteTarget": 981
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 5.9,
+          "estimatedRegisteredPool": 1147,
+          "estimatedVoteTarget": 491
+        }
+      ],
       "makeupNote": "Pine Bluff speak-to cast: Rev. James H., Keisha L., Aisha R., Marcia T., Carol W.. Tags: turnout_growth, democratic_recovery, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "hot-springs": {
@@ -2411,10 +2741,43 @@
         "linda-sutton",
         "coach-pat-nolan"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 26.7,
+          "estimatedRegisteredPool": 11630,
+          "estimatedVoteTarget": 1360
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 26.7,
+          "estimatedRegisteredPool": 11630,
+          "estimatedVoteTarget": 1360
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 8723,
+          "estimatedVoteTarget": 1020
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 13.3,
+          "estimatedRegisteredPool": 5815,
+          "estimatedVoteTarget": 680
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 13.3,
+          "estimatedRegisteredPool": 5815,
+          "estimatedVoteTarget": 680
+        }
+      ],
       "makeupNote": "Hot Springs speak-to cast: Carol W., Frank D., Robert K., Linda S., Coach Pat N.. Tags: persuasion, volunteers, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "benton": {
@@ -2430,10 +2793,43 @@
         "tyler-martinez",
         "robert-kessler"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 9829,
+          "estimatedVoteTarget": 1439
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 26.7,
+          "estimatedRegisteredPool": 7863,
+          "estimatedVoteTarget": 1151
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 13.3,
+          "estimatedRegisteredPool": 3932,
+          "estimatedVoteTarget": 576
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 13.3,
+          "estimatedRegisteredPool": 3932,
+          "estimatedVoteTarget": 576
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 13.3,
+          "estimatedRegisteredPool": 3932,
+          "estimatedVoteTarget": 576
+        }
+      ],
       "makeupNote": "Benton speak-to cast: Susan E., Marcia T., Keisha L., Tyler M., Robert K.. Tags: moderate_republicans, turnout_growth, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "texarkana": {
@@ -2449,10 +2845,43 @@
         "carol-whitfield",
         "keisha-lyons"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 40,
+          "estimatedRegisteredPool": 6014,
+          "estimatedVoteTarget": 1278
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 3007,
+          "estimatedVoteTarget": 639
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 3007,
+          "estimatedVoteTarget": 639
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 1504,
+          "estimatedVoteTarget": 320
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 1504,
+          "estimatedVoteTarget": 320
+        }
+      ],
       "makeupNote": "Texarkana speak-to cast: Bill J., Linda S., Robert K., Carol W., Keisha L.. Tags: regional_media, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "sherwood": {
@@ -2468,10 +2897,43 @@
         "keisha-lyons",
         "tyler-martinez"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 4673,
+          "estimatedVoteTarget": 1624
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 4673,
+          "estimatedVoteTarget": 1624
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 4673,
+          "estimatedVoteTarget": 1624
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 2337,
+          "estimatedVoteTarget": 812
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 2337,
+          "estimatedVoteTarget": 812
+        }
+      ],
       "makeupNote": "Sherwood speak-to cast: Marcia T., Maria G., Rev. James H., Keisha L., Tyler M.. Tags: democratic_recovery, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "jacksonville": {
@@ -2487,10 +2949,43 @@
         "marcia-truman",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 3373,
+          "estimatedVoteTarget": 1397
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 3373,
+          "estimatedVoteTarget": 1397
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 3373,
+          "estimatedVoteTarget": 1397
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 1687,
+          "estimatedVoteTarget": 699
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 1687,
+          "estimatedVoteTarget": 699
+        }
+      ],
       "makeupNote": "Jacksonville speak-to cast: Keisha L., Tyler M., Maria G., Marcia T., Carol W.. Tags: volunteers, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "russellville": {
@@ -2506,10 +3001,43 @@
         "marcia-truman",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 38.5,
+          "estimatedRegisteredPool": 6890,
+          "estimatedVoteTarget": 1152
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 30.8,
+          "estimatedRegisteredPool": 5512,
+          "estimatedVoteTarget": 921
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 15.4,
+          "estimatedRegisteredPool": 2756,
+          "estimatedVoteTarget": 461
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 7.7,
+          "estimatedRegisteredPool": 1378,
+          "estimatedVoteTarget": 230
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 7.7,
+          "estimatedRegisteredPool": 1378,
+          "estimatedVoteTarget": 230
+        }
+      ],
       "makeupNote": "Russellville speak-to cast: Coach Pat N., Carol W., Tyler M., Marcia T., Susan E.. Tags: students, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "bella-vista": {
@@ -2525,10 +3053,43 @@
         "susan-ellis",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 5986,
+          "estimatedVoteTarget": 1007
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 5986,
+          "estimatedVoteTarget": 1007
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 5986,
+          "estimatedVoteTarget": 1007
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 16.7,
+          "estimatedRegisteredPool": 3991,
+          "estimatedVoteTarget": 671
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 8.3,
+          "estimatedRegisteredPool": 1995,
+          "estimatedVoteTarget": 336
+        }
+      ],
       "makeupNote": "Bella Vista speak-to cast: Robert K., Linda S., Frank D., Susan E., Carol W.. Tags: moderate_republicans, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "paragould": {
@@ -2544,10 +3105,43 @@
         "aisha-reed",
         "robert-kessler"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 50,
+          "estimatedRegisteredPool": 8112,
+          "estimatedVoteTarget": 1246
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 3245,
+          "estimatedVoteTarget": 498
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 1622,
+          "estimatedVoteTarget": 249
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 1622,
+          "estimatedVoteTarget": 249
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 1622,
+          "estimatedVoteTarget": 249
+        }
+      ],
       "makeupNote": "Paragould speak-to cast: Coach Pat N., Rev. James H., Frank D., Aisha R., Robert K.. Tags: volunteers, regional_media.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "cabot": {
@@ -2563,10 +3157,43 @@
         "marcia-truman",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 40,
+          "estimatedRegisteredPool": 7180,
+          "estimatedVoteTarget": 1112
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 3590,
+          "estimatedVoteTarget": 556
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 3590,
+          "estimatedVoteTarget": 556
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 1795,
+          "estimatedVoteTarget": 278
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 1795,
+          "estimatedVoteTarget": 278
+        }
+      ],
       "makeupNote": "Cabot speak-to cast: Susan E., Keisha L., Tyler M., Marcia T., Carol W.. Tags: turnout_growth, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "searcy": {
@@ -2582,10 +3209,43 @@
         "tom-rutherford",
         "diane-porter"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 55.6,
+          "estimatedRegisteredPool": 9724,
+          "estimatedVoteTarget": 1166
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 1945,
+          "estimatedVoteTarget": 233
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 1945,
+          "estimatedVoteTarget": 233
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 1945,
+          "estimatedVoteTarget": 233
+        },
+        {
+          "profileId": "diane-porter",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 1945,
+          "estimatedVoteTarget": 233
+        }
+      ],
       "makeupNote": "Searcy speak-to cast: Coach Pat N., Carol W., Linda S., Tom R., Diane P.. Tags: students, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "van-buren": {
@@ -2601,10 +3261,43 @@
         "frank-donnelly",
         "tom-rutherford"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 4231,
+          "estimatedVoteTarget": 675
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 4231,
+          "estimatedVoteTarget": 675
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 2115,
+          "estimatedVoteTarget": 337
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 2115,
+          "estimatedVoteTarget": 337
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 2115,
+          "estimatedVoteTarget": 337
+        }
+      ],
       "makeupNote": "Van Buren speak-to cast: Linda S., Robert K., Carol W., Frank D., Tom R.. Tags: persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "el-dorado": {
@@ -2620,10 +3313,43 @@
         "bill-jennings",
         "aisha-reed"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 37.5,
+          "estimatedRegisteredPool": 5081,
+          "estimatedVoteTarget": 1110
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 3388,
+          "estimatedVoteTarget": 740
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 1694,
+          "estimatedVoteTarget": 370
+        },
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 1694,
+          "estimatedVoteTarget": 370
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 1694,
+          "estimatedVoteTarget": 370
+        }
+      ],
       "makeupNote": "El Dorado speak-to cast: Robert K., Linda S., Rev. James H., Bill J., Aisha R.. Tags: chambers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "blytheville": {
@@ -2639,10 +3365,43 @@
         "coach-pat-nolan",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 2073,
+          "estimatedVoteTarget": 711
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1382,
+          "estimatedVoteTarget": 474
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1382,
+          "estimatedVoteTarget": 474
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 691,
+          "estimatedVoteTarget": 237
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 691,
+          "estimatedVoteTarget": 237
+        }
+      ],
       "makeupNote": "Blytheville speak-to cast: Aisha R., Rev. James H., Marcia T., Coach Pat N., Frank D.. Tags: democratic_recovery, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "harrison": {
@@ -2658,10 +3417,43 @@
         "robert-kessler",
         "coach-pat-nolan"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 26.7,
+          "estimatedRegisteredPool": 4339,
+          "estimatedVoteTarget": 378
+        },
+        {
+          "profileId": "diane-porter",
+          "weightPct": 26.7,
+          "estimatedRegisteredPool": 4339,
+          "estimatedVoteTarget": 378
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 3254,
+          "estimatedVoteTarget": 284
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 3254,
+          "estimatedVoteTarget": 284
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 6.7,
+          "estimatedRegisteredPool": 1085,
+          "estimatedVoteTarget": 95
+        }
+      ],
       "makeupNote": "Harrison speak-to cast: Tom R., Diane P., Linda S., Robert K., Coach Pat N.. Tags: persuasion, moderate_republicans.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "mountain-home": {
@@ -2677,10 +3469,43 @@
         "linda-sutton",
         "coach-pat-nolan"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 444
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 444
+        },
+        {
+          "profileId": "diane-porter",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 444
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 222
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 222
+        }
+      ],
       "makeupNote": "Mountain Home speak-to cast: Tom R., Frank D., Diane P., Linda S., Coach Pat N.. Tags: persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "marion": {
@@ -2696,10 +3521,43 @@
         "coach-pat-nolan",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 2348,
+          "estimatedVoteTarget": 668
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1566,
+          "estimatedVoteTarget": 445
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1566,
+          "estimatedVoteTarget": 445
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 783,
+          "estimatedVoteTarget": 223
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 783,
+          "estimatedVoteTarget": 223
+        }
+      ],
       "makeupNote": "Marion speak-to cast: Aisha R., Rev. James H., Marcia T., Coach Pat N., Frank D.. Tags: democratic_recovery, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "bryant": {
@@ -2715,10 +3573,43 @@
         "tyler-martinez",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 30.8,
+          "estimatedRegisteredPool": 2957,
+          "estimatedVoteTarget": 805
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 30.8,
+          "estimatedRegisteredPool": 2957,
+          "estimatedVoteTarget": 805
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 15.4,
+          "estimatedRegisteredPool": 1478,
+          "estimatedVoteTarget": 402
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 15.4,
+          "estimatedRegisteredPool": 1478,
+          "estimatedVoteTarget": 402
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 7.7,
+          "estimatedRegisteredPool": 739,
+          "estimatedVoteTarget": 201
+        }
+      ],
       "makeupNote": "Bryant speak-to cast: Marcia T., Susan E., Keisha L., Tyler M., Carol W.. Tags: turnout_growth, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "lowell": {
@@ -2734,10 +3625,43 @@
         "coach-pat-nolan",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1552,
+          "estimatedVoteTarget": 288
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1552,
+          "estimatedVoteTarget": 288
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1552,
+          "estimatedVoteTarget": 288
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1552,
+          "estimatedVoteTarget": 288
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 776,
+          "estimatedVoteTarget": 144
+        }
+      ],
       "makeupNote": "Lowell speak-to cast: Robert K., Tyler M., Maria G., Coach Pat N., Susan E.. Tags: turnout_growth, volunteers, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "greenwood": {
@@ -2753,10 +3677,43 @@
         "maria-gutierrez",
         "keisha-lyons"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 40,
+          "estimatedRegisteredPool": 3590,
+          "estimatedVoteTarget": 399
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 2693,
+          "estimatedVoteTarget": 299
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 898,
+          "estimatedVoteTarget": 100
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 898,
+          "estimatedVoteTarget": 100
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 898,
+          "estimatedVoteTarget": 100
+        }
+      ],
       "makeupNote": "Greenwood speak-to cast: Robert K., Linda S., Carol W., Maria G., Keisha L.. Tags: persuasion, chambers, moderate_republicans.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "siloam-springs": {
@@ -2772,10 +3729,43 @@
         "susan-ellis",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 643
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 643
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 321
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 321
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 321
+        }
+      ],
       "makeupNote": "Siloam Springs speak-to cast: Tyler M., Maria G., Robert K., Susan E., Carol W.. Tags: students, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "maumelle": {
@@ -2791,10 +3781,43 @@
         "marcia-truman",
         "keisha-lyons"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "paul-listener",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 3495,
+          "estimatedVoteTarget": 988
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 3495,
+          "estimatedVoteTarget": 988
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 3495,
+          "estimatedVoteTarget": 988
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 1747,
+          "estimatedVoteTarget": 494
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 1747,
+          "estimatedVoteTarget": 494
+        }
+      ],
       "makeupNote": "Maumelle speak-to cast: Paul L., Robert K., Linda S., Marcia T., Keisha L.. Tags: moderate_republicans, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "centerton": {
@@ -2810,10 +3833,43 @@
         "coach-pat-nolan",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 2122,
+          "estimatedVoteTarget": 527
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 2122,
+          "estimatedVoteTarget": 527
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 2122,
+          "estimatedVoteTarget": 527
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 2122,
+          "estimatedVoteTarget": 527
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 1061,
+          "estimatedVoteTarget": 263
+        }
+      ],
       "makeupNote": "Centerton speak-to cast: Robert K., Tyler M., Maria G., Coach Pat N., Susan E.. Tags: turnout_growth, volunteers, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "malvern": {
@@ -2829,10 +3885,43 @@
         "carol-whitfield",
         "tom-rutherford"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 2773,
+          "estimatedVoteTarget": 342
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 2773,
+          "estimatedVoteTarget": 342
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 1387,
+          "estimatedVoteTarget": 171
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 1387,
+          "estimatedVoteTarget": 171
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 1387,
+          "estimatedVoteTarget": 171
+        }
+      ],
       "makeupNote": "Malvern speak-to cast: Linda S., Robert K., Frank D., Carol W., Tom R.. Tags: volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "arkadelphia": {
@@ -2848,10 +3937,43 @@
         "aisha-reed",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 44.4,
+          "estimatedRegisteredPool": 2824,
+          "estimatedVoteTarget": 682
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1412,
+          "estimatedVoteTarget": 341
+        },
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 706,
+          "estimatedVoteTarget": 170
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 706,
+          "estimatedVoteTarget": 170
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 706,
+          "estimatedVoteTarget": 170
+        }
+      ],
       "makeupNote": "Arkadelphia speak-to cast: Linda S., Rev. James H., Bill J., Aisha R., Carol W.. Tags: students, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "batesville": {
@@ -2867,10 +3989,43 @@
         "tom-rutherford",
         "diane-porter"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 54.5,
+          "estimatedRegisteredPool": 5038,
+          "estimatedVoteTarget": 510
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 1679,
+          "estimatedVoteTarget": 170
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 840,
+          "estimatedVoteTarget": 85
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 840,
+          "estimatedVoteTarget": 85
+        },
+        {
+          "profileId": "diane-porter",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 840,
+          "estimatedVoteTarget": 85
+        }
+      ],
       "makeupNote": "Batesville speak-to cast: Coach Pat N., Robert K., Linda S., Tom R., Diane P.. Tags: chambers, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "hope": {
@@ -2886,10 +4041,43 @@
         "linda-sutton",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 40,
+          "estimatedRegisteredPool": 1929,
+          "estimatedVoteTarget": 331
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 965,
+          "estimatedVoteTarget": 165
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 965,
+          "estimatedVoteTarget": 165
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 482,
+          "estimatedVoteTarget": 83
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 482,
+          "estimatedVoteTarget": 83
+        }
+      ],
       "makeupNote": "Hope speak-to cast: Bill J., Keisha L., Aisha R., Linda S., Carol W.. Tags: democratic_recovery, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "magnolia": {
@@ -2905,10 +4093,43 @@
         "aisha-reed",
         "robert-kessler"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 44.4,
+          "estimatedRegisteredPool": 2688,
+          "estimatedVoteTarget": 613
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1344,
+          "estimatedVoteTarget": 307
+        },
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 672,
+          "estimatedVoteTarget": 153
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 672,
+          "estimatedVoteTarget": 153
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 672,
+          "estimatedVoteTarget": 153
+        }
+      ],
       "makeupNote": "Magnolia speak-to cast: Linda S., Rev. James H., Bill J., Aisha R., Robert K.. Tags: students, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "stuttgart": {
@@ -2924,10 +4145,43 @@
         "rev-james-holloway",
         "marcia-truman"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 36.4,
+          "estimatedRegisteredPool": 1231,
+          "estimatedVoteTarget": 313
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 923,
+          "estimatedVoteTarget": 235
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 615,
+          "estimatedVoteTarget": 157
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 308,
+          "estimatedVoteTarget": 78
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 308,
+          "estimatedVoteTarget": 78
+        }
+      ],
       "makeupNote": "Stuttgart speak-to cast: Aisha R., Robert K., Linda S., Rev. James H., Marcia T.. Tags: chambers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "camden": {
@@ -2943,10 +4197,43 @@
         "linda-sutton",
         "bill-jennings"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 2087,
+          "estimatedVoteTarget": 387
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1391,
+          "estimatedVoteTarget": 258
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1391,
+          "estimatedVoteTarget": 258
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 696,
+          "estimatedVoteTarget": 129
+        },
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 696,
+          "estimatedVoteTarget": 129
+        }
+      ],
       "makeupNote": "Camden speak-to cast: Aisha R., Rev. James H., Marcia T., Linda S., Bill J.. Tags: democratic_recovery, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "forrest-city": {
@@ -2962,10 +4249,43 @@
         "coach-pat-nolan",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 41.7,
+          "estimatedRegisteredPool": 1830,
+          "estimatedVoteTarget": 779
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 1098,
+          "estimatedVoteTarget": 467
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 16.7,
+          "estimatedRegisteredPool": 732,
+          "estimatedVoteTarget": 312
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 8.3,
+          "estimatedRegisteredPool": 366,
+          "estimatedVoteTarget": 156
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 8.3,
+          "estimatedRegisteredPool": 366,
+          "estimatedVoteTarget": 156
+        }
+      ],
       "makeupNote": "Forrest City speak-to cast: Rev. James H., Aisha R., Marcia T., Coach Pat N., Frank D.. Tags: democratic_recovery, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "west-memphis": {
@@ -2981,10 +4301,43 @@
         "marcia-truman",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 42.9,
+          "estimatedRegisteredPool": 3186,
+          "estimatedVoteTarget": 1621
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 21.4,
+          "estimatedRegisteredPool": 1593,
+          "estimatedVoteTarget": 810
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 1062,
+          "estimatedVoteTarget": 540
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 1062,
+          "estimatedVoteTarget": 540
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 7.1,
+          "estimatedRegisteredPool": 531,
+          "estimatedVoteTarget": 270
+        }
+      ],
       "makeupNote": "West Memphis speak-to cast: Rev. James H., Aisha R., Coach Pat N., Marcia T., Frank D.. Tags: democratic_recovery, turnout_growth, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "beebe": {
@@ -3000,10 +4353,43 @@
         "tom-rutherford",
         "diane-porter"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 2227,
+          "estimatedVoteTarget": 265
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 16.7,
+          "estimatedRegisteredPool": 1114,
+          "estimatedVoteTarget": 133
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 16.7,
+          "estimatedRegisteredPool": 1114,
+          "estimatedVoteTarget": 133
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 16.7,
+          "estimatedRegisteredPool": 1114,
+          "estimatedVoteTarget": 133
+        },
+        {
+          "profileId": "diane-porter",
+          "weightPct": 16.7,
+          "estimatedRegisteredPool": 1114,
+          "estimatedVoteTarget": 133
+        }
+      ],
       "makeupNote": "Beebe speak-to cast: Coach Pat N., Carol W., Linda S., Tom R., Diane P.. Tags: students, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "wynne": {
@@ -3019,10 +4405,43 @@
         "linda-sutton",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1228,
+          "estimatedVoteTarget": 202
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1228,
+          "estimatedVoteTarget": 202
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1228,
+          "estimatedVoteTarget": 202
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1228,
+          "estimatedVoteTarget": 202
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 614,
+          "estimatedVoteTarget": 101
+        }
+      ],
       "makeupNote": "Wynne speak-to cast: Rev. James H., Coach Pat N., Robert K., Linda S., Frank D.. Tags: volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "helena-west-helena": {
@@ -3038,10 +4457,43 @@
         "keisha-lyons",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 37.5,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 630
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 31.3,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 525
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 210
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 210
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 6.3,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 105
+        }
+      ],
       "makeupNote": "Helena-West Helena speak-to cast: Aisha R., Rev. James H., Marcia T., Keisha L., Carol W.. Tags: democratic_recovery, turnout_growth, regional_media.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "clarksville": {
@@ -3057,10 +4509,43 @@
         "tom-rutherford",
         "diane-porter"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 36.4,
+          "estimatedRegisteredPool": 2463,
+          "estimatedVoteTarget": 376
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 1847,
+          "estimatedVoteTarget": 282
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 1231,
+          "estimatedVoteTarget": 188
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 616,
+          "estimatedVoteTarget": 94
+        },
+        {
+          "profileId": "diane-porter",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 616,
+          "estimatedVoteTarget": 94
+        }
+      ],
       "makeupNote": "Clarksville speak-to cast: Linda S., Coach Pat N., Robert K., Tom R., Diane P.. Tags: students, volunteers, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "monticello": {
@@ -3076,10 +4561,43 @@
         "aisha-reed",
         "marcia-truman"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 1519,
+          "estimatedVoteTarget": 299
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 1519,
+          "estimatedVoteTarget": 299
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 1519,
+          "estimatedVoteTarget": 299
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 760,
+          "estimatedVoteTarget": 150
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 760,
+          "estimatedVoteTarget": 150
+        }
+      ],
       "makeupNote": "Monticello speak-to cast: Rev. James H., Robert K., Coach Pat N., Aisha R., Marcia T.. Tags: students, volunteers, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "newport": {
@@ -3095,10 +4613,43 @@
         "marcia-truman",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 830,
+          "estimatedVoteTarget": 203
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 830,
+          "estimatedVoteTarget": 203
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 553,
+          "estimatedVoteTarget": 135
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 553,
+          "estimatedVoteTarget": 135
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 277,
+          "estimatedVoteTarget": 68
+        }
+      ],
       "makeupNote": "Newport speak-to cast: Rev. James H., Coach Pat N., Aisha R., Marcia T., Frank D.. Tags: democratic_recovery, chambers, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "farmington": {
@@ -3114,10 +4665,43 @@
         "susan-ellis",
         "paul-listener"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1505,
+          "estimatedVoteTarget": 268
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1505,
+          "estimatedVoteTarget": 268
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1505,
+          "estimatedVoteTarget": 268
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1505,
+          "estimatedVoteTarget": 268
+        },
+        {
+          "profileId": "paul-listener",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 753,
+          "estimatedVoteTarget": 134
+        }
+      ],
       "makeupNote": "Farmington speak-to cast: Robert K., Tyler M., Maria G., Susan E., Paul L.. Tags: turnout_growth, volunteers, moderate_republicans.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "pocahontas": {
@@ -3133,10 +4717,43 @@
         "linda-sutton",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 1624,
+          "estimatedVoteTarget": 188
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 1624,
+          "estimatedVoteTarget": 188
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 1083,
+          "estimatedVoteTarget": 125
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 1083,
+          "estimatedVoteTarget": 125
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 541,
+          "estimatedVoteTarget": 63
+        }
+      ],
       "makeupNote": "Pocahontas speak-to cast: Coach Pat N., Robert K., Rev. James H., Linda S., Frank D.. Tags: chambers, volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "trumann": {
@@ -3152,10 +4769,43 @@
         "frank-donnelly",
         "robert-kessler"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 923,
+          "estimatedVoteTarget": 174
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 923,
+          "estimatedVoteTarget": 174
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 615,
+          "estimatedVoteTarget": 116
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 308,
+          "estimatedVoteTarget": 58
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 308,
+          "estimatedVoteTarget": 58
+        }
+      ],
       "makeupNote": "Trumann speak-to cast: Aisha R., Rev. James H., Coach Pat N., Frank D., Robert K.. Tags: democratic_recovery, volunteers, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "prairie-grove": {
@@ -3171,10 +4821,43 @@
         "paul-listener",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1503,
+          "estimatedVoteTarget": 250
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1503,
+          "estimatedVoteTarget": 250
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1503,
+          "estimatedVoteTarget": 250
+        },
+        {
+          "profileId": "paul-listener",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1503,
+          "estimatedVoteTarget": 250
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 751,
+          "estimatedVoteTarget": 125
+        }
+      ],
       "makeupNote": "Prairie Grove speak-to cast: Robert K., Tyler M., Maria G., Paul L., Susan E.. Tags: persuasion, volunteers, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "morrilton": {
@@ -3190,10 +4873,43 @@
         "marcia-truman",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 37.5,
+          "estimatedRegisteredPool": 2061,
+          "estimatedVoteTarget": 399
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 1374,
+          "estimatedVoteTarget": 266
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 687,
+          "estimatedVoteTarget": 133
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 687,
+          "estimatedVoteTarget": 133
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 687,
+          "estimatedVoteTarget": 133
+        }
+      ],
       "makeupNote": "Morrilton speak-to cast: Robert K., Coach Pat N., Carol W., Marcia T., Susan E.. Tags: chambers, volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "heber-springs": {
@@ -3209,10 +4925,43 @@
         "tom-rutherford",
         "diane-porter"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 2075,
+          "estimatedVoteTarget": 245
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 2075,
+          "estimatedVoteTarget": 245
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 1383,
+          "estimatedVoteTarget": 163
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 692,
+          "estimatedVoteTarget": 82
+        },
+        {
+          "profileId": "diane-porter",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 692,
+          "estimatedVoteTarget": 82
+        }
+      ],
       "makeupNote": "Heber Springs speak-to cast: Coach Pat N., Robert K., Linda S., Tom R., Diane P.. Tags: persuasion, volunteers, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "osceola": {
@@ -3228,10 +4977,43 @@
         "marcia-truman",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 663,
+          "estimatedVoteTarget": 220
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 442,
+          "estimatedVoteTarget": 146
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 442,
+          "estimatedVoteTarget": 146
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 442,
+          "estimatedVoteTarget": 146
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 221,
+          "estimatedVoteTarget": 73
+        }
+      ],
       "makeupNote": "Osceola speak-to cast: Aisha R., Rev. James H., Coach Pat N., Marcia T., Frank D.. Tags: democratic_recovery, turnout_growth, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "pea-ridge": {
@@ -3247,10 +5029,43 @@
         "maria-gutierrez",
         "linda-sutton"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 1301,
+          "estimatedVoteTarget": 174
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 1301,
+          "estimatedVoteTarget": 174
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 1301,
+          "estimatedVoteTarget": 174
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 1301,
+          "estimatedVoteTarget": 174
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 1301,
+          "estimatedVoteTarget": 174
+        }
+      ],
       "makeupNote": "Pea Ridge speak-to cast: Robert K., Susan E., Tyler M., Maria G., Linda S.. Tags: turnout_growth, volunteers, moderate_republicans.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "ward": {
@@ -3266,10 +5081,43 @@
         "susan-ellis",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 1253,
+          "estimatedVoteTarget": 179
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 1253,
+          "estimatedVoteTarget": 179
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 626,
+          "estimatedVoteTarget": 89
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 626,
+          "estimatedVoteTarget": 89
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 626,
+          "estimatedVoteTarget": 89
+        }
+      ],
       "makeupNote": "Ward speak-to cast: Keisha L., Tyler M., Marcia T., Susan E., Carol W.. Tags: turnout_growth, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "de-queen": {
@@ -3285,10 +5133,43 @@
         "carol-whitfield",
         "bill-jennings"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 1062,
+          "estimatedVoteTarget": 157
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 708,
+          "estimatedVoteTarget": 105
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 708,
+          "estimatedVoteTarget": 105
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 354,
+          "estimatedVoteTarget": 52
+        },
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 354,
+          "estimatedVoteTarget": 52
+        }
+      ],
       "makeupNote": "De Queen speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Bill J.. Tags: volunteers, persuasion, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "alma": {
@@ -3304,10 +5185,43 @@
         "frank-donnelly",
         "tom-rutherford"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 1927,
+          "estimatedVoteTarget": 167
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 1927,
+          "estimatedVoteTarget": 167
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 964,
+          "estimatedVoteTarget": 84
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 964,
+          "estimatedVoteTarget": 84
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 964,
+          "estimatedVoteTarget": 84
+        }
+      ],
       "makeupNote": "Alma speak-to cast: Linda S., Robert K., Carol W., Frank D., Tom R.. Tags: turnout_growth, volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "greenbrier": {
@@ -3323,10 +5237,43 @@
         "marcia-truman",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 2910,
+          "estimatedVoteTarget": 191
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 2910,
+          "estimatedVoteTarget": 191
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 2910,
+          "estimatedVoteTarget": 191
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 1455,
+          "estimatedVoteTarget": 95
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 1455,
+          "estimatedVoteTarget": 95
+        }
+      ],
       "makeupNote": "Greenbrier speak-to cast: Susan E., Tyler M., Keisha L., Marcia T., Carol W.. Tags: turnout_growth, volunteers, moderate_republicans.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "berryville": {
@@ -3342,10 +5289,43 @@
         "maria-gutierrez",
         "coach-pat-nolan"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 1247,
+          "estimatedVoteTarget": 252
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 21.4,
+          "estimatedRegisteredPool": 935,
+          "estimatedVoteTarget": 189
+        },
+        {
+          "profileId": "diane-porter",
+          "weightPct": 21.4,
+          "estimatedRegisteredPool": 935,
+          "estimatedVoteTarget": 189
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 623,
+          "estimatedVoteTarget": 126
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 623,
+          "estimatedVoteTarget": 126
+        }
+      ],
       "makeupNote": "Berryville speak-to cast: Tom R., Robert K., Diane P., Maria G., Coach Pat N.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "cave-springs": {
@@ -3361,10 +5341,43 @@
         "linda-sutton",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 794,
+          "estimatedVoteTarget": 163
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 794,
+          "estimatedVoteTarget": 163
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 794,
+          "estimatedVoteTarget": 163
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 794,
+          "estimatedVoteTarget": 163
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 397,
+          "estimatedVoteTarget": 81
+        }
+      ],
       "makeupNote": "Cave Springs speak-to cast: Robert K., Susan E., Tyler M., Linda S., Carol W.. Tags: business_leaders, turnout_growth, moderate_republicans.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "white-hall": {
@@ -3380,10 +5393,43 @@
         "marcia-truman",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 890,
+          "estimatedVoteTarget": 307
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 890,
+          "estimatedVoteTarget": 307
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 593,
+          "estimatedVoteTarget": 205
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 593,
+          "estimatedVoteTarget": 205
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 297,
+          "estimatedVoteTarget": 102
+        }
+      ],
       "makeupNote": "White Hall speak-to cast: Rev. James H., Aisha R., Keisha L., Marcia T., Carol W.. Tags: turnout_growth, volunteers, democratic_recovery.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "mena": {
@@ -3399,10 +5445,43 @@
         "carol-whitfield",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 2440,
+          "estimatedVoteTarget": 184
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1627,
+          "estimatedVoteTarget": 122
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1627,
+          "estimatedVoteTarget": 122
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 813,
+          "estimatedVoteTarget": 61
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 813,
+          "estimatedVoteTarget": 61
+        }
+      ],
       "makeupNote": "Mena speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: persuasion, chambers, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "warren": {
@@ -3418,10 +5497,43 @@
         "linda-sutton",
         "bill-jennings"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 901,
+          "estimatedVoteTarget": 201
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 601,
+          "estimatedVoteTarget": 134
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 601,
+          "estimatedVoteTarget": 134
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 300,
+          "estimatedVoteTarget": 67
+        },
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 300,
+          "estimatedVoteTarget": 67
+        }
+      ],
       "makeupNote": "Warren speak-to cast: Rev. James H., Aisha R., Coach Pat N., Linda S., Bill J.. Tags: chambers, democratic_recovery, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "walnut-ridge": {
@@ -3437,10 +5549,43 @@
         "frank-donnelly",
         "aisha-reed"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 842,
+          "estimatedVoteTarget": 158
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 561,
+          "estimatedVoteTarget": 105
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 561,
+          "estimatedVoteTarget": 105
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 281,
+          "estimatedVoteTarget": 53
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 281,
+          "estimatedVoteTarget": 53
+        }
+      ],
       "makeupNote": "Walnut Ridge speak-to cast: Coach Pat N., Rev. James H., Robert K., Frank D., Aisha R.. Tags: students, volunteers, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "sheridan": {
@@ -3456,10 +5601,43 @@
         "marcia-truman",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 37.5,
+          "estimatedRegisteredPool": 2575,
+          "estimatedVoteTarget": 188
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 1717,
+          "estimatedVoteTarget": 125
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 858,
+          "estimatedVoteTarget": 63
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 858,
+          "estimatedVoteTarget": 63
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 858,
+          "estimatedVoteTarget": 63
+        }
+      ],
       "makeupNote": "Sheridan speak-to cast: Robert K., Coach Pat N., Carol W., Marcia T., Susan E.. Tags: persuasion, chambers, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "crossett": {
@@ -3475,10 +5653,43 @@
         "coach-pat-nolan",
         "bill-jennings"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1050,
+          "estimatedVoteTarget": 119
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1050,
+          "estimatedVoteTarget": 119
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1050,
+          "estimatedVoteTarget": 119
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1050,
+          "estimatedVoteTarget": 119
+        },
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 525,
+          "estimatedVoteTarget": 60
+        }
+      ],
       "makeupNote": "Crossett speak-to cast: Rev. James H., Linda S., Robert K., Coach Pat N., Bill J.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "barling": {
@@ -3494,10 +5705,43 @@
         "keisha-lyons",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 546,
+          "estimatedVoteTarget": 112
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 546,
+          "estimatedVoteTarget": 112
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 546,
+          "estimatedVoteTarget": 112
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 546,
+          "estimatedVoteTarget": 112
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 273,
+          "estimatedVoteTarget": 56
+        }
+      ],
       "makeupNote": "Barling speak-to cast: Robert K., Linda S., Maria G., Keisha L., Carol W.. Tags: volunteers, persuasion, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "cherokee-village": {
@@ -3513,10 +5757,43 @@
         "tom-rutherford",
         "diane-porter"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 135,
+          "estimatedVoteTarget": 157
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 135,
+          "estimatedVoteTarget": 157
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 90,
+          "estimatedVoteTarget": 105
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 45,
+          "estimatedVoteTarget": 52
+        },
+        {
+          "profileId": "diane-porter",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 45,
+          "estimatedVoteTarget": 52
+        }
+      ],
       "makeupNote": "Cherokee Village speak-to cast: Linda S., Robert K., Coach Pat N., Tom R., Diane P.. Tags: persuasion, moderate_republicans, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "tontitown": {
@@ -3532,10 +5809,43 @@
         "coach-pat-nolan",
         "paul-listener"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 165
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 165
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 165
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 165
+        },
+        {
+          "profileId": "paul-listener",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 83
+        }
+      ],
       "makeupNote": "Tontitown speak-to cast: Robert K., Tyler M., Maria G., Coach Pat N., Paul L.. Tags: chambers, volunteers, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "shannon-hills": {
@@ -3551,10 +5861,43 @@
         "robert-kessler",
         "marcia-truman"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 123
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 123
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 123
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 123
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 61
+        }
+      ],
       "makeupNote": "Shannon Hills speak-to cast: Susan E., Keisha L., Tyler M., Robert K., Marcia T.. Tags: turnout_growth, volunteers, moderate_republicans.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "dardanelle": {
@@ -3570,10 +5913,43 @@
         "carol-whitfield",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 1233,
+          "estimatedVoteTarget": 124
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 822,
+          "estimatedVoteTarget": 83
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 822,
+          "estimatedVoteTarget": 83
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 411,
+          "estimatedVoteTarget": 41
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 411,
+          "estimatedVoteTarget": 41
+        }
+      ],
       "makeupNote": "Dardanelle speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: chambers, volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "vilonia": {
@@ -3589,10 +5965,43 @@
         "susan-ellis",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 1623,
+          "estimatedVoteTarget": 164
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 28.6,
+          "estimatedRegisteredPool": 1623,
+          "estimatedVoteTarget": 164
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 811,
+          "estimatedVoteTarget": 82
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 811,
+          "estimatedVoteTarget": 82
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 14.3,
+          "estimatedRegisteredPool": 811,
+          "estimatedVoteTarget": 82
+        }
+      ],
       "makeupNote": "Vilonia speak-to cast: Tyler M., Keisha L., Marcia T., Susan E., Carol W.. Tags: turnout_growth, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "southside": {
@@ -3608,10 +6017,43 @@
         "tom-rutherford",
         "diane-porter"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 478,
+          "estimatedVoteTarget": 103
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 478,
+          "estimatedVoteTarget": 103
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 478,
+          "estimatedVoteTarget": 103
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 239,
+          "estimatedVoteTarget": 52
+        },
+        {
+          "profileId": "diane-porter",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 239,
+          "estimatedVoteTarget": 52
+        }
+      ],
       "makeupNote": "Southside speak-to cast: Coach Pat N., Linda S., Robert K., Tom R., Diane P.. Tags: turnout_growth, volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "ashdown": {
@@ -3627,10 +6069,43 @@
         "coach-pat-nolan",
         "carol-whitfield"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 1286,
+          "estimatedVoteTarget": 169
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 964,
+          "estimatedVoteTarget": 127
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 16.7,
+          "estimatedRegisteredPool": 643,
+          "estimatedVoteTarget": 85
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 16.7,
+          "estimatedRegisteredPool": 643,
+          "estimatedVoteTarget": 85
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 8.3,
+          "estimatedRegisteredPool": 321,
+          "estimatedVoteTarget": 42
+        }
+      ],
       "makeupNote": "Ashdown speak-to cast: Bill J., Robert K., Linda S., Coach Pat N., Carol W.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "lonoke": {
@@ -3646,10 +6121,43 @@
         "coach-pat-nolan",
         "marcia-truman"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1068,
+          "estimatedVoteTarget": 95
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1068,
+          "estimatedVoteTarget": 95
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1068,
+          "estimatedVoteTarget": 95
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 1068,
+          "estimatedVoteTarget": 95
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 534,
+          "estimatedVoteTarget": 47
+        }
+      ],
       "makeupNote": "Lonoke speak-to cast: Keisha L., Tyler M., Robert K., Coach Pat N., Marcia T.. Tags: chambers, volunteers, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "nashville": {
@@ -3665,10 +6173,43 @@
         "carol-whitfield",
         "bill-jennings"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 1198,
+          "estimatedVoteTarget": 162
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 798,
+          "estimatedVoteTarget": 108
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 798,
+          "estimatedVoteTarget": 108
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 399,
+          "estimatedVoteTarget": 54
+        },
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 399,
+          "estimatedVoteTarget": 54
+        }
+      ],
       "makeupNote": "Nashville speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Bill J.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "brookland": {
@@ -3684,10 +6225,43 @@
         "rev-james-holloway",
         "coach-pat-nolan"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 504,
+          "estimatedVoteTarget": 86
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 504,
+          "estimatedVoteTarget": 86
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 504,
+          "estimatedVoteTarget": 86
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 504,
+          "estimatedVoteTarget": 86
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 504,
+          "estimatedVoteTarget": 86
+        }
+      ],
       "makeupNote": "Brookland speak-to cast: Tyler M., Keisha L., Aisha R., Rev. James H., Coach Pat N.. Tags: turnout_growth, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "dumas": {
@@ -3703,10 +6277,43 @@
         "coach-pat-nolan",
         "keisha-lyons"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 556,
+          "estimatedVoteTarget": 186
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 371,
+          "estimatedVoteTarget": 124
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 371,
+          "estimatedVoteTarget": 124
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 371,
+          "estimatedVoteTarget": 124
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 185,
+          "estimatedVoteTarget": 62
+        }
+      ],
       "makeupNote": "Dumas speak-to cast: Rev. James H., Aisha R., Marcia T., Coach Pat N., Keisha L.. Tags: democratic_recovery, chambers, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "haskell": {
@@ -3722,10 +6329,43 @@
         "marcia-truman",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 122
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 122
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 122
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 61
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 61
+        }
+      ],
       "makeupNote": "Haskell speak-to cast: Keisha L., Tyler M., Robert K., Marcia T., Susan E.. Tags: turnout_growth, volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "mcgehee": {
@@ -3741,10 +6381,43 @@
         "coach-pat-nolan",
         "keisha-lyons"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 517,
+          "estimatedVoteTarget": 180
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 345,
+          "estimatedVoteTarget": 120
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 345,
+          "estimatedVoteTarget": 120
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 345,
+          "estimatedVoteTarget": 120
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 172,
+          "estimatedVoteTarget": 60
+        }
+      ],
       "makeupNote": "McGehee speak-to cast: Rev. James H., Aisha R., Marcia T., Coach Pat N., Keisha L.. Tags: democratic_recovery, chambers, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "gentry": {
@@ -3760,10 +6433,43 @@
         "coach-pat-nolan",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 1398,
+          "estimatedVoteTarget": 150
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 932,
+          "estimatedVoteTarget": 100
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 932,
+          "estimatedVoteTarget": 100
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 932,
+          "estimatedVoteTarget": 100
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 466,
+          "estimatedVoteTarget": 50
+        }
+      ],
       "makeupNote": "Gentry speak-to cast: Robert K., Maria G., Linda S., Coach Pat N., Susan E.. Tags: chambers, volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "booneville": {
@@ -3779,10 +6485,43 @@
         "carol-whitfield",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 1149,
+          "estimatedVoteTarget": 124
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 766,
+          "estimatedVoteTarget": 83
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 766,
+          "estimatedVoteTarget": 83
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 383,
+          "estimatedVoteTarget": 41
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 383,
+          "estimatedVoteTarget": 41
+        }
+      ],
       "makeupNote": "Booneville speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "manila": {
@@ -3798,10 +6537,43 @@
         "aisha-reed",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 680,
+          "estimatedVoteTarget": 129
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 453,
+          "estimatedVoteTarget": 86
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 453,
+          "estimatedVoteTarget": 86
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 227,
+          "estimatedVoteTarget": 43
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 227,
+          "estimatedVoteTarget": 43
+        }
+      ],
       "makeupNote": "Manila speak-to cast: Coach Pat N., Rev. James H., Robert K., Aisha R., Frank D.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "elkins": {
@@ -3817,10 +6589,43 @@
         "coach-pat-nolan",
         "paul-listener"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 639,
+          "estimatedVoteTarget": 128
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 639,
+          "estimatedVoteTarget": 128
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 639,
+          "estimatedVoteTarget": 128
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 639,
+          "estimatedVoteTarget": 128
+        },
+        {
+          "profileId": "paul-listener",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 319,
+          "estimatedVoteTarget": 64
+        }
+      ],
       "makeupNote": "Elkins speak-to cast: Robert K., Tyler M., Maria G., Coach Pat N., Paul L.. Tags: turnout_growth, volunteers, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "johnson": {
@@ -3836,10 +6641,43 @@
         "robert-kessler",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 190
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 127
+        },
+        {
+          "profileId": "paul-listener",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 127
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 63
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 63
+        }
+      ],
       "makeupNote": "Johnson speak-to cast: Tyler M., Maria G., Paul L., Robert K., Susan E.. Tags: students, volunteers, turnout_growth.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "piggott": {
@@ -3855,10 +6693,43 @@
         "linda-sutton",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 623,
+          "estimatedVoteTarget": 90
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 623,
+          "estimatedVoteTarget": 90
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 416,
+          "estimatedVoteTarget": 60
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 416,
+          "estimatedVoteTarget": 60
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 208,
+          "estimatedVoteTarget": 30
+        }
+      ],
       "makeupNote": "Piggott speak-to cast: Coach Pat N., Robert K., Rev. James H., Linda S., Frank D.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "gravette": {
@@ -3874,10 +6745,43 @@
         "coach-pat-nolan",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 892,
+          "estimatedVoteTarget": 103
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 892,
+          "estimatedVoteTarget": 103
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 892,
+          "estimatedVoteTarget": 103
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 892,
+          "estimatedVoteTarget": 103
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 446,
+          "estimatedVoteTarget": 52
+        }
+      ],
       "makeupNote": "Gravette speak-to cast: Robert K., Tyler M., Maria G., Coach Pat N., Susan E.. Tags: volunteers, turnout_growth, chambers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "austin": {
@@ -3893,10 +6797,43 @@
         "marcia-truman",
         "susan-ellis"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 1313,
+          "estimatedVoteTarget": 92
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 1313,
+          "estimatedVoteTarget": 92
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 1313,
+          "estimatedVoteTarget": 92
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 656,
+          "estimatedVoteTarget": 46
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 656,
+          "estimatedVoteTarget": 46
+        }
+      ],
       "makeupNote": "Austin speak-to cast: Keisha L., Tyler M., Robert K., Marcia T., Susan E.. Tags: turnout_growth, volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "marianna": {
@@ -3912,10 +6849,43 @@
         "coach-pat-nolan",
         "keisha-lyons"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 704,
+          "estimatedVoteTarget": 173
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 469,
+          "estimatedVoteTarget": 115
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 469,
+          "estimatedVoteTarget": 115
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 469,
+          "estimatedVoteTarget": 115
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 235,
+          "estimatedVoteTarget": 58
+        }
+      ],
       "makeupNote": "Marianna speak-to cast: Rev. James H., Aisha R., Marcia T., Coach Pat N., Keisha L.. Tags: democratic_recovery, chambers, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "ozark": {
@@ -3931,10 +6901,43 @@
         "carol-whitfield",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 1478,
+          "estimatedVoteTarget": 119
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 985,
+          "estimatedVoteTarget": 79
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 985,
+          "estimatedVoteTarget": 79
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 493,
+          "estimatedVoteTarget": 40
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 493,
+          "estimatedVoteTarget": 40
+        }
+      ],
       "makeupNote": "Ozark speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "alexander": {
@@ -3950,10 +6953,43 @@
         "maria-gutierrez",
         "aisha-reed"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 130,
+          "estimatedVoteTarget": 136
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 130,
+          "estimatedVoteTarget": 136
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 130,
+          "estimatedVoteTarget": 136
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 130,
+          "estimatedVoteTarget": 136
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 130,
+          "estimatedVoteTarget": 136
+        }
+      ],
       "makeupNote": "Alexander speak-to cast: Marcia T., Keisha L., Tyler M., Maria G., Aisha R.. Tags: turnout_growth, volunteers, democratic_recovery.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "fordyce": {
@@ -3969,10 +7005,43 @@
         "coach-pat-nolan",
         "aisha-reed"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 372,
+          "estimatedVoteTarget": 110
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 372,
+          "estimatedVoteTarget": 110
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 372,
+          "estimatedVoteTarget": 110
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 372,
+          "estimatedVoteTarget": 110
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 186,
+          "estimatedVoteTarget": 55
+        }
+      ],
       "makeupNote": "Fordyce speak-to cast: Rev. James H., Linda S., Robert K., Coach Pat N., Aisha R.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "waldron": {
@@ -3988,10 +7057,43 @@
         "carol-whitfield",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 822,
+          "estimatedVoteTarget": 87
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 548,
+          "estimatedVoteTarget": 58
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 548,
+          "estimatedVoteTarget": 58
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 274,
+          "estimatedVoteTarget": 29
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 274,
+          "estimatedVoteTarget": 29
+        }
+      ],
       "makeupNote": "Waldron speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "corning": {
@@ -4007,10 +7109,43 @@
         "linda-sutton",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 440,
+          "estimatedVoteTarget": 80
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 27.3,
+          "estimatedRegisteredPool": 440,
+          "estimatedVoteTarget": 80
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 293,
+          "estimatedVoteTarget": 53
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 18.2,
+          "estimatedRegisteredPool": 293,
+          "estimatedVoteTarget": 53
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 9.1,
+          "estimatedRegisteredPool": 147,
+          "estimatedVoteTarget": 27
+        }
+      ],
       "makeupNote": "Corning speak-to cast: Coach Pat N., Robert K., Rev. James H., Linda S., Frank D.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "paris": {
@@ -4026,10 +7161,43 @@
         "carol-whitfield",
         "frank-donnelly"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 914,
+          "estimatedVoteTarget": 105
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 609,
+          "estimatedVoteTarget": 70
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 609,
+          "estimatedVoteTarget": 70
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 305,
+          "estimatedVoteTarget": 35
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 305,
+          "estimatedVoteTarget": 35
+        }
+      ],
       "makeupNote": "Paris speak-to cast: Robert K., Linda S., Coach Pat N., Carol W., Frank D.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "pottsville": {
@@ -4045,10 +7213,43 @@
         "carol-whitfield",
         "marcia-truman"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 456,
+          "estimatedVoteTarget": 81
+        },
+        {
+          "profileId": "keisha-lyons",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 456,
+          "estimatedVoteTarget": 81
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 456,
+          "estimatedVoteTarget": 81
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 228,
+          "estimatedVoteTarget": 41
+        },
+        {
+          "profileId": "marcia-truman",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 228,
+          "estimatedVoteTarget": 41
+        }
+      ],
       "makeupNote": "Pottsville speak-to cast: Coach Pat N., Keisha L., Tyler M., Carol W., Marcia T.. Tags: turnout_growth, volunteers, persuasion.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "prescott": {
@@ -4064,10 +7265,43 @@
         "coach-pat-nolan",
         "bill-jennings"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 30,
+          "estimatedRegisteredPool": 608,
+          "estimatedVoteTarget": 119
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 405,
+          "estimatedVoteTarget": 80
+        },
+        {
+          "profileId": "rev-james-holloway",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 405,
+          "estimatedVoteTarget": 80
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 20,
+          "estimatedRegisteredPool": 405,
+          "estimatedVoteTarget": 80
+        },
+        {
+          "profileId": "bill-jennings",
+          "weightPct": 10,
+          "estimatedRegisteredPool": 203,
+          "estimatedVoteTarget": 40
+        }
+      ],
       "makeupNote": "Prescott speak-to cast: Robert K., Linda S., Rev. James H., Coach Pat N., Bill J.. Tags: chambers, persuasion, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "little-flock": {
@@ -4083,10 +7317,43 @@
         "carol-whitfield",
         "tyler-martinez"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 497,
+          "estimatedVoteTarget": 132
+        },
+        {
+          "profileId": "susan-ellis",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 332,
+          "estimatedVoteTarget": 88
+        },
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 332,
+          "estimatedVoteTarget": 88
+        },
+        {
+          "profileId": "carol-whitfield",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 166,
+          "estimatedVoteTarget": 44
+        },
+        {
+          "profileId": "tyler-martinez",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 166,
+          "estimatedVoteTarget": 44
+        }
+      ],
       "makeupNote": "Little Flock speak-to cast: Robert K., Susan E., Linda S., Carol W., Tyler M.. Tags: business_leaders, chambers, moderate_republicans.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     },
     "green-forest": {
@@ -4102,10 +7369,95 @@
         "frank-donnelly",
         "tom-rutherford"
       ],
+      "profileEstimates": [
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 33.3,
+          "estimatedRegisteredPool": 855,
+          "estimatedVoteTarget": 156
+        },
+        {
+          "profileId": "maria-gutierrez",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 570,
+          "estimatedVoteTarget": 104
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 22.2,
+          "estimatedRegisteredPool": 570,
+          "estimatedVoteTarget": 104
+        },
+        {
+          "profileId": "frank-donnelly",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 285,
+          "estimatedVoteTarget": 52
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 11.1,
+          "estimatedRegisteredPool": 285,
+          "estimatedVoteTarget": 52
+        }
+      ],
       "makeupNote": "Green Forest speak-to cast: Robert K., Maria G., Coach Pat N., Frank D., Tom R.. Tags: persuasion, chambers, volunteers.",
       "sources": [
         "city-intelligence-profiles.json",
-        "voter-audience/seeds.ts"
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
+      ]
+    },
+    "quitman": {
+      "slug": "quitman",
+      "name": "Quitman",
+      "kind": "city",
+      "countySlug": "cleburne",
+      "populationNote": "716 (2020 Census)",
+      "profileIds": [
+        "linda-sutton",
+        "robert-kessler",
+        "aisha-reed",
+        "coach-pat-nolan",
+        "tom-rutherford"
+      ],
+      "profileEstimates": [
+        {
+          "profileId": "linda-sutton",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 21
+        },
+        {
+          "profileId": "robert-kessler",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 21
+        },
+        {
+          "profileId": "aisha-reed",
+          "weightPct": 25,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 21
+        },
+        {
+          "profileId": "coach-pat-nolan",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 11
+        },
+        {
+          "profileId": "tom-rutherford",
+          "weightPct": 12.5,
+          "estimatedRegisteredPool": 0,
+          "estimatedVoteTarget": 11
+        }
+      ],
+      "makeupNote": "Quitman speak-to cast: Linda S., Robert K., Aisha R., Coach Pat N., Tom R.. Tags: democratic_recovery, persuasion, turnout_growth.",
+      "sources": [
+        "city-intelligence-profiles.json",
+        "voter-audience/seeds.ts",
+        "voter-file-location-rollups.json"
       ]
     }
   }

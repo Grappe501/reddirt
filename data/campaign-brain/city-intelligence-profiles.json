@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-19T17:48:41.786Z",
-  "modelNote": "Ten enrichment dimensions per Top 100 city. API rows cached at build time. Scaffold rows require field verification before public claims.",
+  "generatedAt": "2026-06-20T16:52:43.067Z",
+  "modelNote": "Ten enrichment dimensions per Top 100 priority city plus bonus immersion hubs. API rows cached at build time. Scaffold rows require field verification before public claims.",
   "dimensionLabels": {
     "stateHouse": "State House district & representative",
     "stateSenate": "State Senate district & senator",
@@ -21,7 +21,7 @@
       "county": "Pulaski",
       "rank": 1,
       "population2020": 202591,
-      "generatedAt": "2026-06-19T17:48:21.356Z",
+      "generatedAt": "2026-06-20T16:52:24.768Z",
       "narrative": {
         "geographic": "Little Rock is a 202,591-resident city in Pulaski County (2020 Census) — roughly 50.8% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Statewide hub — media, fundraising, volunteer production, political coalition center.",
         "historicalCultural": "Little Rock organizes around media market reach, fundraising capacity, volunteer production, statewide political influence. County context: Pulaski County is a county in the U.S. state of Arkansas. With a population of 399,125 as of the 2020 United States census, it is the most populous county in Arkansas. The county is included in the Little Rock–North Little Rock–Conway metropolitan area. Its county seat is Little Rock, which is also Arkansas's capital and largest city. Pulaski County is Arkansas's fifth county, formed on December 15, 1818, alongside Clark and Hempstead Counties. Pulaski County is named for Brigadier General Casimir Pulaski, a Polish-born Continental Army officer who was killed in action at the Siege of Savannah… Top-10 strategic city — field presence here signals statewide seriousness.",
@@ -164,7 +164,7 @@
       "county": "Sebastian",
       "rank": 2,
       "population2020": 89942,
-      "generatedAt": "2026-06-19T17:48:21.669Z",
+      "generatedAt": "2026-06-20T16:52:24.984Z",
       "narrative": {
         "geographic": "Fort Smith is a 89,942-resident city in Sebastian County (2020 Census) — roughly 70.4% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. Western Arkansas anchor — regional media and River Valley persuasion.",
         "historicalCultural": "Fort Smith organizes around regional media, persuasion opportunity, chamber network, moderate Republican persuasion. County context: Sebastian County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 127,799, making it the fourth-most populous county in Arkansas. The county has two county seats, Greenwood and Fort Smith. Sebastian County is part of the Fort Smith metropolitan area. History Early settlement Following the upheaval caused by the 1811–1812 New Madrid earthquakes in Northeast Arkansas, Cherokee relocated in the area now known as Sebastian County; they were joined by Cherokee relocating from eastern states to form a sizeable community which would conflict with the Osage … Top-10 strategic city — field presence here signals statewide seriousness.",
@@ -308,7 +308,7 @@
       "county": "Washington",
       "rank": 3,
       "population2020": 93949,
-      "generatedAt": "2026-06-19T17:48:21.987Z",
+      "generatedAt": "2026-06-20T16:52:25.194Z",
       "narrative": {
         "geographic": "Fayetteville is a 93,949-resident city in Washington County (2020 Census) — roughly 38.2% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. University town — student registration, volunteer production, digital amplification.",
         "historicalCultural": "Fayetteville organizes around student / campus pipeline, volunteer production, digital amplification. County context: Washington County is a regional economic, educational, and cultural hub in the Northwest Arkansas region. Created as Arkansas's 17th county on November 30, 1848, Washington County has 13 incorporated municipalities, including Fayetteville, the county seat, and Springdale. The county is also the site of small towns, bedroom communities, and unincorporated places. The county is named for George Washington, the first President of the United States. Located within the Ozark Mountains, the county is roughly divided into two halves: the rolling Springfield Plateau in the more populous north of the c… Top-10 strategic city — field presence here signals statewide seriousness.",
@@ -450,7 +450,7 @@
       "county": "Washington",
       "rank": 4,
       "population2020": 84161,
-      "generatedAt": "2026-06-19T17:48:22.235Z",
+      "generatedAt": "2026-06-20T16:52:25.402Z",
       "narrative": {
         "geographic": "Springdale is a 84,161-resident city in Washington County (2020 Census) — roughly 34.2% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. NWA growth corridor — diverse community organizing and workforce registration.",
         "historicalCultural": "Springdale organizes around volunteer production, student / campus pipeline, chamber network. County context: Washington County is a regional economic, educational, and cultural hub in the Northwest Arkansas region. Created as Arkansas's 17th county on November 30, 1848, Washington County has 13 incorporated municipalities, including Fayetteville, the county seat, and Springdale. The county is also the site of small towns, bedroom communities, and unincorporated places. The county is named for George Washington, the first President of the United States. Located within the Ozark Mountains, the county is roughly divided into two halves: the rolling Springfield Plateau in the more populous north of the c… Top-10 strategic city — field presence here signals statewide seriousness.",
@@ -592,7 +592,7 @@
       "county": "Craighead",
       "rank": 5,
       "population2020": 78576,
-      "generatedAt": "2026-06-19T17:48:22.503Z",
+      "generatedAt": "2026-06-20T16:52:25.635Z",
       "narrative": {
         "geographic": "Jonesboro is a 78,576-resident city in Craighead County (2020 Census) — roughly 70.6% of county population. Deployment cluster: Northeast Arkansas Cluster. Crowley's Ridge — persuasion, regional chambers, volunteer hubs. Northeast hub — regional persuasion and media for Crowley's Ridge counties.",
         "historicalCultural": "Jonesboro organizes around persuasion opportunity, regional media, chamber network. County context: Craighead County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 111,231. The county has two county seats — Jonesboro and Lake City. Craighead County is Arkansas's 58th county, formed on February 19, 1859, and named for state Senator Thomas Craighead. It is one of several dry counties within the state of Arkansas, in which the sale of alcoholic beverages is largely prohibited. Craighead County is included in Jonesboro–Paragould Combined Statistical Area. History Craighead County was part of the territory claimed for France on April 9, 1682, by René … Top-10 strategic city — field presence here signals statewide seriousness.",
@@ -734,7 +734,7 @@
       "county": "Pulaski",
       "rank": 6,
       "population2020": 64491,
-      "generatedAt": "2026-06-19T17:48:22.716Z",
+      "generatedAt": "2026-06-20T16:52:25.869Z",
       "narrative": {
         "geographic": "North Little Rock is a 64,491-resident city in Pulaski County (2020 Census) — roughly 16.2% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Central Arkansas working-class recovery — Lane 2 drop-off and turnout growth.",
         "historicalCultural": "North Little Rock organizes around Democratic drop-off recovery, volunteer production, turnout growth. County context: Pulaski County is a county in the U.S. state of Arkansas. With a population of 399,125 as of the 2020 United States census, it is the most populous county in Arkansas. The county is included in the Little Rock–North Little Rock–Conway metropolitan area. Its county seat is Little Rock, which is also Arkansas's capital and largest city. Pulaski County is Arkansas's fifth county, formed on December 15, 1818, alongside Clark and Hempstead Counties. Pulaski County is named for Brigadier General Casimir Pulaski, a Polish-born Continental Army officer who was killed in action at the Siege of Savannah… Top-10 strategic city — field presence here signals statewide seriousness.",
@@ -876,7 +876,7 @@
       "county": "Faulkner",
       "rank": 7,
       "population2020": 64134,
-      "generatedAt": "2026-06-19T17:48:22.915Z",
+      "generatedAt": "2026-06-20T16:52:26.068Z",
       "narrative": {
         "geographic": "Conway is a 64,134-resident city in Faulkner County (2020 Census) — roughly 50.8% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. College town + commuter growth — student and young-professional registration.",
         "historicalCultural": "Conway organizes around student / campus pipeline, volunteer production, turnout growth. County context: Faulkner County is a county located in the Central Arkansas region of the U.S. state of Arkansas. As of the 2020 census, the population was 123,498, making it the fifth most populous of Arkansas's 75 counties. The county seat and largest city is Conway. Faulkner County was created on April 12, 1873, one of nine counties formed during Reconstruction, and is named for Sandford C. Faulkner, better known as Sandy Faulkner, a popular figure in the state at the time. Located at the intersection of the Ozarks and Arkansas River Valley, the county was sparsely populated for much of its early years. La… Top-10 strategic city — field presence here signals statewide seriousness.",
@@ -1018,7 +1018,7 @@
       "county": "Benton",
       "rank": 8,
       "population2020": 69908,
-      "generatedAt": "2026-06-19T17:48:23.113Z",
+      "generatedAt": "2026-06-20T16:52:26.268Z",
       "narrative": {
         "geographic": "Rogers is a 69,908-resident city in Benton County (2020 Census) — roughly 24.6% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. NWA business corridor — chamber relationships and moderate Republican conversion.",
         "historicalCultural": "Rogers organizes around business leader access, chamber network, moderate Republican persuasion. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Top-10 strategic city — field presence here signals statewide seriousness.",
@@ -1160,7 +1160,7 @@
       "county": "Benton",
       "rank": 9,
       "population2020": 54108,
-      "generatedAt": "2026-06-19T17:48:23.297Z",
+      "generatedAt": "2026-06-20T16:52:26.484Z",
       "narrative": {
         "geographic": "Bentonville is a 54,108-resident city in Benton County (2020 Census) — roughly 19.0% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Corporate NWA — fundraising, business community, executive relationships.",
         "historicalCultural": "Bentonville organizes around business leader access, fundraising capacity, chamber network. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Top-10 strategic city — field presence here signals statewide seriousness.",
@@ -1302,7 +1302,7 @@
       "county": "Jefferson",
       "rank": 10,
       "population2020": 41353,
-      "generatedAt": "2026-06-19T17:48:23.530Z",
+      "generatedAt": "2026-06-20T16:52:26.702Z",
       "narrative": {
         "geographic": "Pine Bluff is a 41,353-resident city in Jefferson County (2020 Census) — roughly 63.0% of county population. Deployment cluster: Southeast Delta Cluster. Delta / Southeast — Democratic recovery, faith organizing, base turnout. Southeast Delta recovery — Democratic base turnout and Lane 2 reactivation.",
         "historicalCultural": "Pine Bluff organizes around turnout growth, Democratic drop-off recovery, volunteer production. County context: Jefferson County is a county located in the U.S. state of Arkansas in the area known as the Arkansas Delta that extends west of the Mississippi River. Jefferson County consists of five cities, two towns, and 20 townships. It is bisected by the Arkansas River, which was critical to its development and long the chief transportation byway. In 2020, Jefferson County's population was estimated at 67,260. The county seat and most populous city is Pine Bluff. The county is included in the Pine Bluff micropolitan statistical area. Jefferson County was formed from Vaugine Township, Pulaski County and R… Top-10 strategic city — field presence here signals statewide seriousness.",
@@ -1444,7 +1444,7 @@
       "county": "Garland",
       "rank": 11,
       "population2020": 38624,
-      "generatedAt": "2026-06-19T17:48:23.762Z",
+      "generatedAt": "2026-06-20T16:52:26.915Z",
       "narrative": {
         "geographic": "Hot Springs is a 38,624-resident city in Garland County (2020 Census) — roughly 38.9% of county population. Deployment cluster: Hot Springs & Ouachita Cluster. Hot Springs / Ouachita — tourism, retiree persuasion, lake communities. Tourism and retiree corridor — persuasion and community event organizing.",
         "historicalCultural": "Hot Springs organizes around persuasion opportunity, volunteer production, chamber network. County context: Garland County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 100,180. The county seat is Hot Springs. Garland County comprises the Hot Springs, Arkansas Metropolitan Statistical Area. The county includes Hot Springs National Park, the only national park in the state of Arkansas as well as the first property to be protected under federal legislation. A law was passed in 1832 supported by President Andrew Jackson to preserve this area, even before Arkansas was admitted as a state. History This area was occupied by the historic Natchitoches people, w… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -1586,7 +1586,7 @@
       "county": "Saline",
       "rank": 12,
       "population2020": 35241,
-      "generatedAt": "2026-06-19T17:48:24.012Z",
+      "generatedAt": "2026-06-20T16:52:27.153Z",
       "narrative": {
         "geographic": "Benton is a 35,241-resident city in Saline County (2020 Census) — roughly 28.6% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Central Arkansas suburban persuasion — commuter moderates and Lane 4.",
         "historicalCultural": "Benton organizes around moderate Republican persuasion, turnout growth, volunteer production. County context: Saline County ( sə-LEEN) is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 123,416.  Its county seat and largest city is Benton. Saline County was formed on November 2, 1835, and named for the salt water (brine) springs in the area, despite a differing pronunciation from saline. Until November 2014, it was an alcohol prohibition or dry county. Saline County is included in the Central Arkansas region. Geography According to the U.S. Census Bureau, the county has a total area of 730 square miles (1,900 km2), of which 724 square miles (1,880 km2) is land… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -1728,7 +1728,7 @@
       "county": "Miller",
       "rank": 13,
       "population2020": 30259,
-      "generatedAt": "2026-06-19T17:48:24.238Z",
+      "generatedAt": "2026-06-20T16:52:27.352Z",
       "narrative": {
         "geographic": "Texarkana is a 30,259-resident city in Miller County (2020 Census) — roughly 71.3% of county population. Deployment cluster: Southwest Arkansas Cluster. Southwest Arkansas — chamber relationships, county seats, school registration. Southwest border media market — regional persuasion.",
         "historicalCultural": "Texarkana organizes around regional media, persuasion opportunity. County context: Miller County is a county located in the southwestern corner of the U.S. state of Arkansas. As of the 2020 census, the population was 42,600. The county seat is Texarkana. Miller County is part of the Texarkana, TX-AR, Metropolitan Statistical Area. History When first formed, Miller County was Arkansas's sixth county, established on April 1, 1820, and named for James Miller, the first governor of the Arkansas Territory. Additionally, Miller County was the first of the state's counties to be formed upon the creation of the Arkansas Territory. The first five — Arkansas, Lawrence, Clark, Hempstea… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -1870,7 +1870,7 @@
       "county": "Pulaski",
       "rank": 14,
       "population2020": 32640,
-      "generatedAt": "2026-06-19T17:48:24.421Z",
+      "generatedAt": "2026-06-20T16:52:27.536Z",
       "narrative": {
         "geographic": "Sherwood is a 32,640-resident city in Pulaski County (2020 Census) — roughly 8.2% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Pulaski suburban recovery — Lane 2 neighborhood organizing.",
         "historicalCultural": "Sherwood organizes around Democratic drop-off recovery, volunteer production. County context: Pulaski County is a county in the U.S. state of Arkansas. With a population of 399,125 as of the 2020 United States census, it is the most populous county in Arkansas. The county is included in the Little Rock–North Little Rock–Conway metropolitan area. Its county seat is Little Rock, which is also Arkansas's capital and largest city. Pulaski County is Arkansas's fifth county, formed on December 15, 1818, alongside Clark and Hempstead Counties. Pulaski County is named for Brigadier General Casimir Pulaski, a Polish-born Continental Army officer who was killed in action at the Siege of Savannah… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -2011,7 +2011,7 @@
       "county": "Pulaski",
       "rank": 15,
       "population2020": 28087,
-      "generatedAt": "2026-06-19T17:48:24.620Z",
+      "generatedAt": "2026-06-20T16:52:27.752Z",
       "narrative": {
         "geographic": "Jacksonville is a 28,087-resident city in Pulaski County (2020 Census) — roughly 7.0% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Military-adjacent community — registration and turnout drives.",
         "historicalCultural": "Jacksonville organizes around volunteer production, turnout growth. County context: Pulaski County is a county in the U.S. state of Arkansas. With a population of 399,125 as of the 2020 United States census, it is the most populous county in Arkansas. The county is included in the Little Rock–North Little Rock–Conway metropolitan area. Its county seat is Little Rock, which is also Arkansas's capital and largest city. Pulaski County is Arkansas's fifth county, formed on December 15, 1818, alongside Clark and Hempstead Counties. Pulaski County is named for Brigadier General Casimir Pulaski, a Polish-born Continental Army officer who was killed in action at the Siege of Savannah… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -2152,7 +2152,7 @@
       "county": "Pope",
       "rank": 16,
       "population2020": 28940,
-      "generatedAt": "2026-06-19T17:48:24.992Z",
+      "generatedAt": "2026-06-20T16:52:27.952Z",
       "narrative": {
         "geographic": "Russellville is a 28,940-resident city in Pope County (2020 Census) — roughly 45.7% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. River Valley college town — student registration pipeline.",
         "historicalCultural": "Russellville organizes around student / campus pipeline, volunteer production. County context: Pope County is a county in the U.S. state of Arkansas. As of the 2020 census, the population was 63,381. The county seat is Russellville. The county was formed on November 2, 1829, from a portion of Crawford County and named for John Pope, the third governor of the Arkansas Territory. Pope County was the nineteenth (of seventy-five) county formed. The county's borders changed eighteen times in the 19th century with the creation of new counties and adjustments between counties. The current boundaries were set on March 8, 1877. Pope County is geographically diverse, with the Arkansas River Valle… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -2293,7 +2293,7 @@
       "county": "Benton",
       "rank": 17,
       "population2020": 30957,
-      "generatedAt": "2026-06-19T17:48:25.161Z",
+      "generatedAt": "2026-06-20T16:52:28.136Z",
       "narrative": {
         "geographic": "Bella Vista is a 30,957-resident city in Benton County (2020 Census) — roughly 10.9% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Retiree persuasion — relationship-based Lane 4.",
         "historicalCultural": "Bella Vista organizes around moderate Republican persuasion, persuasion opportunity. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -2434,7 +2434,7 @@
       "county": "Greene",
       "rank": 18,
       "population2020": 29137,
-      "generatedAt": "2026-06-19T17:48:25.344Z",
+      "generatedAt": "2026-06-20T16:52:28.301Z",
       "narrative": {
         "geographic": "Paragould is a 29,137-resident city in Greene County (2020 Census) — roughly 63.0% of county population. Deployment cluster: Northeast Arkansas Cluster. Crowley's Ridge — persuasion, regional chambers, volunteer hubs. Northeast county seat — volunteer hub for Greene/Craighead orbit.",
         "historicalCultural": "Paragould organizes around volunteer production, regional media. County context: Greene County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 45,736. The county seat is Paragould, which sits atop Crowley's Ridge. Greene County is included in Jonesboro–Paragould Combined Statistical Area. History The first settler in the area was Benjamin Crowley, who arrived from Kentucky in 1821 and made his home about 12 miles (19 km) west of Paragould. Greene County was formed on November 5, 1833, out of portions of Lawrence County and originally contained parts of present Clay and Craighead counties. The county was named for Revolutionary W… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -2575,7 +2575,7 @@
       "county": "Lonoke",
       "rank": 19,
       "population2020": 27118,
-      "generatedAt": "2026-06-19T17:48:25.596Z",
+      "generatedAt": "2026-06-20T16:52:28.501Z",
       "narrative": {
         "geographic": "Cabot is a 27,118-resident city in Lonoke County (2020 Census) — roughly 36.5% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Lonoke County growth suburb — young-family registration.",
         "historicalCultural": "Cabot organizes around turnout growth, volunteer production. County context: Lonoke County is a county located in the Central Arkansas region of the U.S. state of Arkansas. As of the 2020 census, the population was 74,015, making it the 10th-most populous of Arkansas's 75 counties. The county seat is Lonoke and largest city is Cabot. Included in the Central Arkansas metropolitan area, with Little Rock as the principal city, it is an alcohol prohibition or dry county. Etymology Lonoke County was named for the \"lone oak\" located in the county at the time of its formation, by simply spelling it phonetically, at the suggestion of the chief engineer of the Cairo & Fulton Ra… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -2716,7 +2716,7 @@
       "county": "White",
       "rank": 20,
       "population2020": 23529,
-      "generatedAt": "2026-06-19T17:48:25.811Z",
+      "generatedAt": "2026-06-20T16:52:28.667Z",
       "narrative": {
         "geographic": "Searcy is a 23,529-resident city in White County (2020 Census) — roughly 30.6% of county population. Deployment cluster: North Central Ozarks Cluster. Ozarks — event-driven presence, retiree persuasion, fair circuit. Harding University corridor — faith-adjacent student outreach.",
         "historicalCultural": "Searcy organizes around student / campus pipeline, volunteer production. County context: White County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 76,822. The county seat is Searcy. White County is Arkansas's 31st county, formed on October 23, 1835, from portions of Independence, Jackson, and Pulaski counties and named for Hugh Lawson White, a Whig candidate for President of the United States. It is an alcohol prohibition or dry county, though a few private establishments (such as the Searcy Country Club, and Veterans of Foreign Wars posts in Searcy and Beebe) can serve alcohol. White County comprises the Searcy, AR Micropolitan Stat… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -2857,7 +2857,7 @@
       "county": "Crawford",
       "rank": 21,
       "population2020": 23518,
-      "generatedAt": "2026-06-19T17:48:26.041Z",
+      "generatedAt": "2026-06-20T16:52:28.885Z",
       "narrative": {
         "geographic": "Van Buren is a 23,518-resident city in Crawford County (2020 Census) — roughly 39.1% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. Fort Smith metro partner — Crawford County field organizing.",
         "historicalCultural": "Van Buren organizes around persuasion opportunity, volunteer production. County context: Crawford County is a county located in the Ozarks region of the U.S. state of Arkansas. As of the 2020 census, its population was 60,133. The county seat and largest city is Van Buren. Crawford County was formed on October 18, 1820, from the former Lovely County and Indian Territory, and was named for William H. Crawford, the United States Secretary of War in 1815. Located largely within the Ozarks, the southern border of the county is the Arkansas River, placing the extreme southern edge of the county in the Arkansas River Valley. The frontier county became an early crossroads, beginning with… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -2998,7 +2998,7 @@
       "county": "Union",
       "rank": 22,
       "population2020": 20681,
-      "generatedAt": "2026-06-19T17:48:26.267Z",
+      "generatedAt": "2026-06-20T16:52:29.098Z",
       "narrative": {
         "geographic": "El Dorado is a 20,681-resident city in Union County (2020 Census) — roughly 53.5% of county population. Deployment cluster: Southwest Arkansas Cluster. Southwest Arkansas — chamber relationships, county seats, school registration. South Arkansas oil belt — chamber and civic club relationships.",
         "historicalCultural": "El Dorado organizes around chamber network, persuasion opportunity. County context: Union County is a county located on the central southern border of the U.S. state of Arkansas. As of the 2020 census, the population was 39,054. The county seat is El Dorado. The county was formed on November 2, 1829, and named in recognition of the citizens' petition for a new county, which said that they were petitioning \"in the spirit of Union and Unity.\" The county is directly adjacent to the south to Union Parish in the state of Louisiana. The El Dorado, AR Micropolitan Statistical Area includes all of Union County. Called by boosters the \"Queen City of South Arkansas\", El Dorado was at t… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -3139,7 +3139,7 @@
       "county": "Mississippi",
       "rank": 23,
       "population2020": 20221,
-      "generatedAt": "2026-06-19T17:48:26.537Z",
+      "generatedAt": "2026-06-20T16:52:29.269Z",
       "narrative": {
         "geographic": "Blytheville is a 20,221-resident city in Mississippi County (2020 Census) — roughly 50.4% of county population. Deployment cluster: Crittenden / Memphis-Adjacent Cluster. Crittenden / Memphis spillover — turnout growth, Delta base mobilization. Mississippi Delta recovery — base turnout and Lane 2.",
         "historicalCultural": "Blytheville organizes around Democratic drop-off recovery, turnout growth. County context: Mississippi County is the easternmost county in the U.S. state of Arkansas. As of the 2020 census, the population was 40,685. There are two county seats, Blytheville and Osceola. The county is named for the Mississippi River which borders the county to the east. Mississippi County is part of the First Congressional District in Arkansas. The Blytheville, AR Micropolitan Statistical Area includes all of Mississippi County. History Pre-European exploration Extant early settlements include the Eaker Site and the Sherman Mound. 1812 New Madrid earthquake Local oral tradition held that prior to the … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -3280,7 +3280,7 @@
       "county": "Boone",
       "rank": 24,
       "population2020": 13147,
-      "generatedAt": "2026-06-19T17:48:26.767Z",
+      "generatedAt": "2026-06-20T16:52:29.453Z",
       "narrative": {
         "geographic": "Harrison is a 13,147-resident city in Boone County (2020 Census) — roughly 35.0% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Ozarks county seat — direct-democracy / paper-ballot Republican fracture outreach.",
         "historicalCultural": "Harrison organizes around persuasion opportunity, moderate Republican persuasion. County context: Boone County is a county located in the U.S. state of Arkansas, along the Missouri border. As of the 2020 census, the population was 37,373. The county seat is Harrison. It is Arkansas's 62nd county, formed on April 9, 1869. Boone County is part of the Harrison, Arkansas, Micropolitan Statistical Area. History Boone County was formed from the eastern portion of Carroll County. Contrary to popular belief, it was not named for frontiersman Daniel Boone. It was originally called Boon, since the residents believed it would be a \"boon\" to all who settled there. The county's first newspaper, begun i… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -3421,7 +3421,7 @@
       "county": "Baxter",
       "rank": 25,
       "population2020": 13244,
-      "generatedAt": "2026-06-19T17:48:27.018Z",
+      "generatedAt": "2026-06-20T16:52:29.637Z",
       "narrative": {
         "geographic": "Mountain Home is a 13,244-resident city in Baxter County (2020 Census) — roughly 31.8% of county population. Deployment cluster: North Central Ozarks Cluster. Ozarks — event-driven presence, retiree persuasion, fair circuit. Twin Lakes region — retiree and lake-community persuasion.",
         "historicalCultural": "Mountain Home organizes around persuasion opportunity, volunteer production. County context: Baxter County is a county in the Ozark Mountains of Arkansas. Created as Arkansas's 66th county on March 24, 1873, the county has eight incorporated municipalities, including Mountain Home, its largest city and county seat. The county is named for Elisha Baxter, the tenth governor of Arkansas. It is coterminal with the Mountain Home Micropolitan Statistical Area. The county is located in a steep section of the Ozark Mountains sometimes known as the Twin Lakes Area because it is bordered by two of Arkansas's largest lakes, Bull Shoals Lake and Norfork Lake. On its southern border are the White … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -3562,7 +3562,7 @@
       "county": "Crittenden",
       "rank": 26,
       "population2020": 13044,
-      "generatedAt": "2026-06-19T17:48:27.216Z",
+      "generatedAt": "2026-06-20T16:52:29.848Z",
       "narrative": {
         "geographic": "Marion is a 13,044-resident city in Crittenden County (2020 Census) — roughly 27.1% of county population. Deployment cluster: Crittenden / Memphis-Adjacent Cluster. Crittenden / Memphis spillover — turnout growth, Delta base mobilization. Memphis-adjacent suburb — Democratic recovery in Crittenden.",
         "historicalCultural": "Marion organizes around Democratic drop-off recovery, turnout growth. County context: Crittenden County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 48,163. The county seat is Marion, and the largest city is West Memphis. Crittenden County is part of the Memphis, TN-MS-AR Metropolitan Statistical Area. Most of the county's media comes from Memphis, although some Little Rock TV (Arkansas Educational Television Network, KATV) is imported by Comcast Cable. It lies within Arkansas's 1st congressional district. History Located in the Arkansas Delta, Crittenden County is Arkansas's 12th county, formed October 22, 1825, and named for Rob… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -3703,7 +3703,7 @@
       "county": "Saline",
       "rank": 27,
       "population2020": 21346,
-      "generatedAt": "2026-06-19T17:48:27.454Z",
+      "generatedAt": "2026-06-20T16:52:30.018Z",
       "narrative": {
         "geographic": "Bryant is a 21,346-resident city in Saline County (2020 Census) — roughly 17.3% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Saline County growth — suburban registration drives.",
         "historicalCultural": "Bryant organizes around turnout growth, volunteer production. County context: Saline County ( sə-LEEN) is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 123,416.  Its county seat and largest city is Benton. Saline County was formed on November 2, 1835, and named for the salt water (brine) springs in the area, despite a differing pronunciation from saline. Until November 2014, it was an alcohol prohibition or dry county. Saline County is included in the Central Arkansas region. Geography According to the U.S. Census Bureau, the county has a total area of 730 square miles (1,900 km2), of which 724 square miles (1,880 km2) is land… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -3844,7 +3844,7 @@
       "county": "Benton",
       "rank": 28,
       "population2020": 9957,
-      "generatedAt": "2026-06-19T17:48:27.621Z",
+      "generatedAt": "2026-06-20T16:52:30.202Z",
       "narrative": {
         "geographic": "Lowell is a 9,957-resident city in Benton County (2020 Census) — roughly 3.5% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. NWA industrial corridor — diverse workforce registration and chamber ties.",
         "historicalCultural": "Lowell organizes around turnout growth, volunteer production, chamber network. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -3986,7 +3986,7 @@
       "county": "Sebastian",
       "rank": 29,
       "population2020": 9506,
-      "generatedAt": "2026-06-19T17:48:27.867Z",
+      "generatedAt": "2026-06-20T16:52:30.430Z",
       "narrative": {
         "geographic": "Greenwood is a 9,506-resident city in Sebastian County (2020 Census) — roughly 7.4% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. Fort Smith metro partner — Sebastian County south-side persuasion and events.",
         "historicalCultural": "Greenwood organizes around persuasion opportunity, chamber network, moderate Republican persuasion. County context: Sebastian County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 127,799, making it the fourth-most populous county in Arkansas. The county has two county seats, Greenwood and Fort Smith. Sebastian County is part of the Fort Smith metropolitan area. History Early settlement Following the upheaval caused by the 1811–1812 New Madrid earthquakes in Northeast Arkansas, Cherokee relocated in the area now known as Sebastian County; they were joined by Cherokee relocating from eastern states to form a sizeable community which would conflict with the Osage … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -4128,7 +4128,7 @@
       "county": "Benton",
       "rank": 30,
       "population2020": 17287,
-      "generatedAt": "2026-06-19T17:48:28.050Z",
+      "generatedAt": "2026-06-20T16:52:30.620Z",
       "narrative": {
         "geographic": "Siloam Springs is a 17,287-resident city in Benton County (2020 Census) — roughly 6.1% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. John Brown University corridor — student registration.",
         "historicalCultural": "Siloam Springs organizes around student / campus pipeline, volunteer production. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -4269,7 +4269,7 @@
       "county": "Pulaski",
       "rank": 31,
       "population2020": 19864,
-      "generatedAt": "2026-06-19T17:48:28.218Z",
+      "generatedAt": "2026-06-20T16:52:30.787Z",
       "narrative": {
         "geographic": "Maumelle is a 19,864-resident city in Pulaski County (2020 Census) — roughly 5.0% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Affluent Pulaski suburb — moderate Republican relationship building.",
         "historicalCultural": "Maumelle organizes around moderate Republican persuasion, persuasion opportunity. County context: Pulaski County is a county in the U.S. state of Arkansas. With a population of 399,125 as of the 2020 United States census, it is the most populous county in Arkansas. The county is included in the Little Rock–North Little Rock–Conway metropolitan area. Its county seat is Little Rock, which is also Arkansas's capital and largest city. Pulaski County is Arkansas's fifth county, formed on December 15, 1818, alongside Clark and Hempstead Counties. Pulaski County is named for Brigadier General Casimir Pulaski, a Polish-born Continental Army officer who was killed in action at the Siege of Savannah… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -4410,7 +4410,7 @@
       "county": "Benton",
       "rank": 32,
       "population2020": 18213,
-      "generatedAt": "2026-06-19T17:48:28.405Z",
+      "generatedAt": "2026-06-20T16:52:30.953Z",
       "narrative": {
         "geographic": "Centerton is a 18,213-resident city in Benton County (2020 Census) — roughly 6.4% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Fast-growing NWA suburb — new-resident registration and school-community networks.",
         "historicalCultural": "Centerton organizes around turnout growth, volunteer production, chamber network. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -4552,7 +4552,7 @@
       "county": "Hot Spring",
       "rank": 33,
       "population2020": 10869,
-      "generatedAt": "2026-06-19T17:48:28.583Z",
+      "generatedAt": "2026-06-20T16:52:31.118Z",
       "narrative": {
         "geographic": "Malvern is a 10,869-resident city in Hot Spring County (2020 Census) — roughly 32.3% of county population. Deployment cluster: Hot Springs & Ouachita Cluster. Hot Springs / Ouachita — tourism, retiree persuasion, lake communities. Hot Spring County seat — local civic organizing.",
         "historicalCultural": "Malvern organizes around volunteer production, persuasion opportunity. County context: Hot Spring County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 33,040. The county seat is Malvern. Established on November 2, 1829, in the Arkansas Territory from a part of Clark County; it was named after the hot springs at Hot Springs, Arkansas, which were formerly in the county. The creation of Garland County in 1873 detached the town of Hot Springs to the newly created county. For nearly 80 years, Hot Spring County was an alcohol prohibition or dry county, though attempts in recent years to locate the county prohibition ordinance were unsucce… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -4693,7 +4693,7 @@
       "county": "Clark",
       "rank": 34,
       "population2020": 9783,
-      "generatedAt": "2026-06-19T17:48:28.896Z",
+      "generatedAt": "2026-06-20T16:52:31.301Z",
       "narrative": {
         "geographic": "Arkadelphia is a 9,783-resident city in Clark County (2020 Census) — roughly 45.9% of county population. Deployment cluster: Hot Springs & Ouachita Cluster. Hot Springs / Ouachita — tourism, retiree persuasion, lake communities. Ouachita Baptist / Henderson — college registration.",
         "historicalCultural": "Arkadelphia organizes around student / campus pipeline, volunteer production. County context: Clark County is a county located in the south-central part of the U.S. state of Arkansas. As of the 2020 census, the population was 21,446. The county seat is Arkadelphia. The Arkadelphia, AR Micropolitan Statistical Area includes all of Clark County. History Ancient Indigenous peoples occupied areas along the waterways for thousands of years prior to European exploration. Among the various cultures was the Caddoan Mississippian culture, which developed by 1000 AD and occupied certain sites in Arkansas at different times. This was the westernmost expression of the Mississippian culture, which … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -4834,7 +4834,7 @@
       "county": "Independence",
       "rank": 35,
       "population2020": 9682,
-      "generatedAt": "2026-06-19T17:48:29.104Z",
+      "generatedAt": "2026-06-20T16:52:31.468Z",
       "narrative": {
         "geographic": "Batesville is a 9,682-resident city in Independence County (2020 Census) — roughly 25.6% of county population. Deployment cluster: North Central Ozarks Cluster. Ozarks — event-driven presence, retiree persuasion, fair circuit. North-central county seat — chamber and civic club hub.",
         "historicalCultural": "Batesville organizes around chamber network, volunteer production. County context: Independence County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 37,938. The county seat is Batesville. Independence County is Arkansas's ninth county, formed on October 20, 1820, from a portion of Lawrence County and named in commemoration of the Declaration of Independence. It is an alcohol prohibition or dry county. The Batesville, AR Micropolitan Statistical Area includes all of Independence County. Geography According to the U.S. Census Bureau, the county has a total area of 772 square miles (2,000 km2), of which 764 square miles (1,980 km2)… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -4975,7 +4975,7 @@
       "county": "Hempstead",
       "rank": 36,
       "population2020": 8787,
-      "generatedAt": "2026-06-19T17:48:29.320Z",
+      "generatedAt": "2026-06-20T16:52:31.636Z",
       "narrative": {
         "geographic": "Hope is a 8,787-resident city in Hempstead County (2020 Census) — roughly 41.1% of county population. Deployment cluster: Southwest Arkansas Cluster. Southwest Arkansas — chamber relationships, county seats, school registration. Southwest Democratic heritage — base recovery and pride organizing.",
         "historicalCultural": "Hope organizes around Democratic drop-off recovery, turnout growth. County context: Hempstead County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 20,065, down from 22,609 at the 2010 census.  The county seat is Hope. Hempstead County is Arkansas's fourth county, formed on December 15, 1818, alongside Clark and Pulaski counties. The county is named for Edward Hempstead, a delegate to the U.S. Congress from the Missouri Territory, which included present-day Arkansas at the time.  It is an alcohol prohibition or dry county. The 42nd United States President, Bill Clinton, who served from 1993 to 2001, was born in the county seat of … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -5116,7 +5116,7 @@
       "county": "Columbia",
       "rank": 37,
       "population2020": 11113,
-      "generatedAt": "2026-06-19T17:48:29.535Z",
+      "generatedAt": "2026-06-20T16:52:31.802Z",
       "narrative": {
         "geographic": "Magnolia is a 11,113-resident city in Columbia County (2020 Census) — roughly 48.7% of county population. Deployment cluster: Southwest Arkansas Cluster. Southwest Arkansas — chamber relationships, county seats, school registration. Southern Arkansas University — college town registration.",
         "historicalCultural": "Magnolia organizes around student / campus pipeline, volunteer production. County context: Columbia County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 22,801. The county seat is Magnolia. The county was formed on December 17, 1852, and was named for Christopher Columbus. The Magnolia, AR Micropolitan Statistical Area includes all of Columbia County. Columbia County is home to Southern Arkansas University, which dominates the economic and cultural landscape of the county. Geography According to the U.S. Census Bureau, the county has a total area of 767 square miles (1,990 km2), of which 766 square miles (1,980 km2) is land and 0.7 squa… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -5257,7 +5257,7 @@
       "county": "Arkansas",
       "rank": 38,
       "population2020": 8451,
-      "generatedAt": "2026-06-19T17:48:29.983Z",
+      "generatedAt": "2026-06-20T16:52:32.001Z",
       "narrative": {
         "geographic": "Stuttgart is a 8,451-resident city in Arkansas County (2020 Census) — roughly 47.5% of county population. Deployment cluster: Southeast Delta Cluster. Delta / Southeast — Democratic recovery, faith organizing, base turnout. Delta agriculture hub — chamber and community event organizing.",
         "historicalCultural": "Stuttgart organizes around chamber network, persuasion opportunity. County context: Arkansas County, officially the County of Arkansas, is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 17,149. Located in the Arkansas Delta, the county has two county seats, DeWitt and Stuttgart. The first of the state's 75 present-day counties to be created, Arkansas County was formed from New Madrid County on December 13, 1813, when this area was part of the Missouri Territory. The county was named after the Arkansas River (itself named for the Arkansas tribe), as was the subsequent Arkansas Territory which was later split off from Missouri Territor… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -5398,7 +5398,7 @@
       "county": "Ouachita",
       "rank": 39,
       "population2020": 6869,
-      "generatedAt": "2026-06-19T17:48:30.218Z",
+      "generatedAt": "2026-06-20T16:52:32.226Z",
       "narrative": {
         "geographic": "Camden is a 6,869-resident city in Ouachita County (2020 Census) — roughly 30.1% of county population. Deployment cluster: Southwest Arkansas Cluster. Southwest Arkansas — chamber relationships, county seats, school registration. South Arkansas county seat — base turnout recovery.",
         "historicalCultural": "Camden organizes around Democratic drop-off recovery, turnout growth. County context: Ouachita County ( WAH-shih-tah) is a county located in the south central part of the U.S. state of Arkansas. As of the 2020 census, the population was 22,650. The county seat is Camden. Ouachita County is part of the Camden, AR Micropolitan Statistical Area. Formed on November 29, 1842, the county is named for the Ouachita River. History Until the late 20th century, the county was a Democratic Party stronghold, aided by the state's having disenfranchised most African Americans at the turn of the century. As in much of the rest of the South, conservative whites, who constitute the majority of t… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -5539,7 +5539,7 @@
       "county": "St. Francis",
       "rank": 40,
       "population2020": 13605,
-      "generatedAt": "2026-06-19T17:48:30.406Z",
+      "generatedAt": "2026-06-20T16:52:32.418Z",
       "narrative": {
         "geographic": "Forrest City is a 13,605-resident city in St. Francis County (2020 Census) — roughly 56.8% of county population. St. Francis County field geography — coordinate with county playbook and cluster assignment. Delta county seat — Democratic base mobilization.",
         "historicalCultural": "Forrest City organizes around Democratic drop-off recovery, turnout growth. St. Francis County cultural identity shapes how neighbors hear election messages — lead with service, not national noise. Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -5673,7 +5673,7 @@
       "county": "Crittenden",
       "rank": 41,
       "population2020": 24620,
-      "generatedAt": "2026-06-19T17:48:30.570Z",
+      "generatedAt": "2026-06-20T16:52:32.585Z",
       "narrative": {
         "geographic": "West Memphis is a 24,620-resident city in Crittenden County (2020 Census) — roughly 51.1% of county population. Deployment cluster: Crittenden / Memphis-Adjacent Cluster. Crittenden / Memphis spillover — turnout growth, Delta base mobilization. Crittenden Democratic anchor — highest Delta recovery potential in county.",
         "historicalCultural": "West Memphis organizes around Democratic drop-off recovery, turnout growth, volunteer production. County context: Crittenden County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 48,163. The county seat is Marion, and the largest city is West Memphis. Crittenden County is part of the Memphis, TN-MS-AR Metropolitan Statistical Area. Most of the county's media comes from Memphis, although some Little Rock TV (Arkansas Educational Television Network, KATV) is imported by Comcast Cable. It lies within Arkansas's 1st congressional district. History Located in the Arkansas Delta, Crittenden County is Arkansas's 12th county, formed October 22, 1825, and named for Rob… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -5815,7 +5815,7 @@
       "county": "White",
       "rank": 42,
       "population2020": 8923,
-      "generatedAt": "2026-06-19T17:48:30.754Z",
+      "generatedAt": "2026-06-20T16:52:32.762Z",
       "narrative": {
         "geographic": "Beebe is a 8,923-resident city in White County (2020 Census) — roughly 11.6% of county population. Deployment cluster: North Central Ozarks Cluster. Ozarks — event-driven presence, retiree persuasion, fair circuit. ASU-Beebe corridor — community college registration.",
         "historicalCultural": "Beebe organizes around student / campus pipeline, volunteer production. County context: White County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 76,822. The county seat is Searcy. White County is Arkansas's 31st county, formed on October 23, 1835, from portions of Independence, Jackson, and Pulaski counties and named for Hugh Lawson White, a Whig candidate for President of the United States. It is an alcohol prohibition or dry county, though a few private establishments (such as the Searcy Country Club, and Veterans of Foreign Wars posts in Searcy and Beebe) can serve alcohol. White County comprises the Searcy, AR Micropolitan Stat… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -5956,7 +5956,7 @@
       "county": "Cross",
       "rank": 43,
       "population2020": 7857,
-      "generatedAt": "2026-06-19T17:48:31.005Z",
+      "generatedAt": "2026-06-20T16:52:32.935Z",
       "narrative": {
         "geographic": "Wynne is a 7,857-resident city in Cross County (2020 Census) — roughly 46.6% of county population. Deployment cluster: Northeast Arkansas Cluster. Crowley's Ridge — persuasion, regional chambers, volunteer hubs. Cross County seat — northeast Delta field organizing.",
         "historicalCultural": "Wynne organizes around volunteer production, persuasion opportunity. County context: Cross County is a rural Northeast Arkansas county in the Arkansas Delta. Created as Arkansas's 53rd county on November 15, 1862, Cross County contains four incorporated municipalities, including Wynne, the county seat and most populous city. It is named for Confederate Colonel David C. Cross, a political leader in the area. The county is largely flat and fertile, mostly used for row agriculture typical of the rich alluvial soils of the Arkansas Delta. Crowley's Ridge, a forested deposit of loess hills rising from the flat Delta bisects the county from north to south, including part of Wynne an… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -6097,7 +6097,7 @@
       "county": "Phillips",
       "rank": 44,
       "population2020": 9432,
-      "generatedAt": "2026-06-19T17:48:31.204Z",
+      "generatedAt": "2026-06-20T16:52:33.134Z",
       "narrative": {
         "geographic": "Helena-West Helena is a 9,432-resident city in Phillips County (2020 Census) — roughly 56.4% of county population. Deployment cluster: Crittenden / Memphis-Adjacent Cluster. Crittenden / Memphis spillover — turnout growth, Delta base mobilization. Delta county seat — Democratic base recovery and Mississippi River media market.",
         "historicalCultural": "Helena-West Helena organizes around Democratic drop-off recovery, turnout growth, regional media. County context: Phillips County is a county located in the eastern part of the U.S. state of Arkansas, in what is known as the Arkansas Delta along the Mississippi River. As of the 2020 census, the population was 16,568. The county seat is Helena–West Helena. Phillips County is Arkansas's seventh (7th) county, formed on May 1, 1820. It was named for Sylvanus Phillips, the area's first-known white or European-American settler; he was elected as representative to the first Territorial Legislature of the Arkansas Territory. This fertile lowland area was developed for cotton plantations in the antebellum area and… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -6239,7 +6239,7 @@
       "county": "Johnson",
       "rank": 45,
       "population2020": 9394,
-      "generatedAt": "2026-06-19T17:48:31.436Z",
+      "generatedAt": "2026-06-20T16:52:33.301Z",
       "narrative": {
         "geographic": "Clarksville is a 9,394-resident city in Johnson County (2020 Census) — roughly 38.5% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. University of the Ozarks corridor — Johnson County seat and Ozark foothills organizing.",
         "historicalCultural": "Clarksville organizes around student / campus pipeline, volunteer production, chamber network. County context: Johnson County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 25,749. The county seat is Clarksville. Johnson County is Arkansas's 30th county, formed on November 16, 1833, from a portion of Pope County and named for Benjamin Johnson, a Territorial Judge. It is an alcohol prohibition or dry county. Geography According to the U.S. Census Bureau, the county has a total area of 683 square miles (1,770 km2), of which 660 square miles (1,700 km2) is land and 23 square miles (60 km2) (3.4%) is water. Major highways  Interstate 40  U.S. Route 64  Arkansas… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -6381,7 +6381,7 @@
       "county": "Drew",
       "rank": 46,
       "population2020": 8417,
-      "generatedAt": "2026-06-19T17:48:31.633Z",
+      "generatedAt": "2026-06-20T16:52:33.468Z",
       "narrative": {
         "geographic": "Monticello is a 8,417-resident city in Drew County (2020 Census) — roughly 48.0% of county population. Deployment cluster: Southeast Delta Cluster. Delta / Southeast — Democratic recovery, faith organizing, base turnout. UAM college town — southeast Arkansas registration and county-seat civic hub.",
         "historicalCultural": "Monticello organizes around student / campus pipeline, volunteer production, chamber network. County context: Drew County is regional economic, educational, and cultural hub in the Southeast Arkansas region. Created as Arkansas's 51st county on November 26, 1846, Drew County contains four municipalities, including Monticello, the county seat and largest city. The county is named for Thomas Drew, the third governor of Arkansas. Located mostly within the Piney Woods on the border with the Arkansas Delta, the county is largely flat to rolling and covered in pine-hardwood flatwoods or pine plantations.  Drew County occupies 835.51 square miles (2,164.0 km2) and contained a population of 17,350 people in 7… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -6523,7 +6523,7 @@
       "county": "Jackson",
       "rank": 47,
       "population2020": 7826,
-      "generatedAt": "2026-06-19T17:48:31.849Z",
+      "generatedAt": "2026-06-20T16:52:33.637Z",
       "narrative": {
         "geographic": "Newport is a 7,826-resident city in Jackson County (2020 Census) — roughly 46.8% of county population. Deployment cluster: Northeast Arkansas Cluster. Crowley's Ridge — persuasion, regional chambers, volunteer hubs. White River Delta county seat — base turnout and civic club relationships.",
         "historicalCultural": "Newport organizes around Democratic drop-off recovery, chamber network, volunteer production. County context: Jackson County is located in the Arkansas Delta in the U.S. state of Arkansas. The county is named for Andrew Jackson, a national hero during the War of 1812. By the county's formation in 1829, Jackson had become the seventh President of the United States. Jackson County is home to seven incorporated towns and four incorporated cities, including Newport, the largest city and county seat. The county is also the site of numerous unincorporated communities and ghost towns. Occupying 633.94 square miles (164,190 ha), Jackson County is the 41st largest county of the 75 in Arkansas. As of the 2020 C… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -6665,7 +6665,7 @@
       "county": "Washington",
       "rank": 48,
       "population2020": 7665,
-      "generatedAt": "2026-06-19T17:48:32.064Z",
+      "generatedAt": "2026-06-20T16:52:33.816Z",
       "narrative": {
         "geographic": "Farmington is a 7,665-resident city in Washington County (2020 Census) — roughly 3.1% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. West Washington growth suburb — NWA commuter registration and persuasion.",
         "historicalCultural": "Farmington organizes around turnout growth, volunteer production, moderate Republican persuasion. County context: Washington County is a regional economic, educational, and cultural hub in the Northwest Arkansas region. Created as Arkansas's 17th county on November 30, 1848, Washington County has 13 incorporated municipalities, including Fayetteville, the county seat, and Springdale. The county is also the site of small towns, bedroom communities, and unincorporated places. The county is named for George Washington, the first President of the United States. Located within the Ozark Mountains, the county is roughly divided into two halves: the rolling Springfield Plateau in the more populous north of the c… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -6807,7 +6807,7 @@
       "county": "Randolph",
       "rank": 49,
       "population2020": 7387,
-      "generatedAt": "2026-06-19T17:48:32.247Z",
+      "generatedAt": "2026-06-20T16:52:33.989Z",
       "narrative": {
         "geographic": "Pocahontas is a 7,387-resident city in Randolph County (2020 Census) — roughly 41.1% of county population. Deployment cluster: Northeast Arkansas Cluster. Crowley's Ridge — persuasion, regional chambers, volunteer hubs. Northeast county seat — Black River valley field organizing hub.",
         "historicalCultural": "Pocahontas organizes around chamber network, volunteer production, persuasion opportunity. County context: Randolph County is located between the Ozark Mountains and Arkansas Delta in the U.S. state of Arkansas. The county is named for John Randolph, a U.S. senator from Virginia influential in obtaining congressional approval of the Louisiana Purchase, which includes today's Randolph County. Created as Arkansas's 32nd county on October 29, 1835, Randolph County has six incorporated cities, including Pocahontas, the county seat and most populous city, Biggers, Maynard, O'Kean, Ravenden Springs, and Reyno. The county is also the site of numerous unincorporated communities and ghost towns. History Ear… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -6949,7 +6949,7 @@
       "county": "Poinsett",
       "rank": 50,
       "population2020": 7381,
-      "generatedAt": "2026-06-19T17:48:32.451Z",
+      "generatedAt": "2026-06-20T16:52:34.168Z",
       "narrative": {
         "geographic": "Trumann is a 7,381-resident city in Poinsett County (2020 Census) — roughly 32.0% of county population. Deployment cluster: Northeast Arkansas Cluster. Crowley's Ridge — persuasion, regional chambers, volunteer hubs. Poinsett County anchor — Delta recovery and community event organizing.",
         "historicalCultural": "Trumann organizes around Democratic drop-off recovery, volunteer production, turnout growth. County context: Poinsett County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 22,965. The county seat is Harrisburg. Poinsett County is included in the Jonesboro–Paragould Combined Statistical Area. History Poinsett County was formed on February 28, 1838, and named for Joel Roberts Poinsett, U.S. Secretary of War. County business was initially conducted in the county judge's home until first court was held in Bolivar, upon completion of a courthouse in 1839. In 1859, the county seat was moved to the more centrally located town of Harrisburg, where it still remain… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -7091,7 +7091,7 @@
       "county": "Washington",
       "rank": 51,
       "population2020": 7164,
-      "generatedAt": "2026-06-19T17:48:32.635Z",
+      "generatedAt": "2026-06-20T16:52:34.336Z",
       "narrative": {
         "geographic": "Prairie Grove is a 7,164-resident city in Washington County (2020 Census) — roughly 2.9% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Civil War heritage community — Washington County west-side persuasion.",
         "historicalCultural": "Prairie Grove organizes around persuasion opportunity, volunteer production, turnout growth. County context: Washington County is a regional economic, educational, and cultural hub in the Northwest Arkansas region. Created as Arkansas's 17th county on November 30, 1848, Washington County has 13 incorporated municipalities, including Fayetteville, the county seat, and Springdale. The county is also the site of small towns, bedroom communities, and unincorporated places. The county is named for George Washington, the first President of the United States. Located within the Ozark Mountains, the county is roughly divided into two halves: the rolling Springfield Plateau in the more populous north of the c… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -7233,7 +7233,7 @@
       "county": "Conway",
       "rank": 52,
       "population2020": 7024,
-      "generatedAt": "2026-06-19T17:48:32.818Z",
+      "generatedAt": "2026-06-20T16:52:34.516Z",
       "narrative": {
         "geographic": "Morrilton is a 7,024-resident city in Conway County (2020 Census) — roughly 33.8% of county population. Conway County field geography — coordinate with county playbook and cluster assignment. Conway County seat — Petit Jean region chamber and civic organizing.",
         "historicalCultural": "Morrilton organizes around chamber network, volunteer production, persuasion opportunity. County context: Conway County is a county located in the U.S. state of Arkansas. Created as Arkansas's 11th county on October 20, 1825, Conway County has four incorporated municipalities, including Morrilton, the county seat and most populous city. The county is also the site of numerous unincorporated communities and ghost towns. The county was formed from a portion of Pulaski County and is named for Henry Wharton Conway, a politician from a powerful political family who served as the delegate from the Arkansas Territory to the U.S. Congress from 1823 to 1827. In 2010, the center of population of Arkansas wa… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -7371,7 +7371,7 @@
       "county": "Cleburne",
       "rank": 53,
       "population2020": 6960,
-      "generatedAt": "2026-06-19T17:48:33.047Z",
+      "generatedAt": "2026-06-20T16:52:34.686Z",
       "narrative": {
         "geographic": "Heber Springs is a 6,960-resident city in Cleburne County (2020 Census) — roughly 28.2% of county population. Deployment cluster: North Central Ozarks Cluster. Ozarks — event-driven presence, retiree persuasion, fair circuit. Greers Ferry lake community — Cleburne County seat and retiree persuasion.",
         "historicalCultural": "Heber Springs organizes around persuasion opportunity, volunteer production, chamber network. County context: Cleburne County ( KLEE-burn, historically  KLAY-burn) is a county located in the north-central portion of the U.S. state of Arkansas. As of the 2020 census, the population was 24,711. The county seat and most populous city is Heber Springs. The county was formed on February 20, 1883, making it the youngest of Arkansas's 75 counties. It is named for Confederate Major-General Patrick Cleburne. Cleburne is an alcohol-prohibition or dry county. Geography According to the U.S. Census Bureau, the county has a total area of 592 square miles (1,530 km2), of which 554 square miles (1,430 km2) is land a… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -7513,7 +7513,7 @@
       "county": "Mississippi",
       "rank": 54,
       "population2020": 6941,
-      "generatedAt": "2026-06-19T17:48:33.211Z",
+      "generatedAt": "2026-06-20T16:52:34.900Z",
       "narrative": {
         "geographic": "Osceola is a 6,941-resident city in Mississippi County (2020 Census) — roughly 17.3% of county population. Deployment cluster: Crittenden / Memphis-Adjacent Cluster. Crittenden / Memphis spillover — turnout growth, Delta base mobilization. Mississippi County seat — Delta base recovery paired with Blytheville corridor.",
         "historicalCultural": "Osceola organizes around Democratic drop-off recovery, turnout growth, chamber network. County context: Mississippi County is the easternmost county in the U.S. state of Arkansas. As of the 2020 census, the population was 40,685. There are two county seats, Blytheville and Osceola. The county is named for the Mississippi River which borders the county to the east. Mississippi County is part of the First Congressional District in Arkansas. The Blytheville, AR Micropolitan Statistical Area includes all of Mississippi County. History Pre-European exploration Extant early settlements include the Eaker Site and the Sherman Mound. 1812 New Madrid earthquake Local oral tradition held that prior to the … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -7655,7 +7655,7 @@
       "county": "Benton",
       "rank": 55,
       "population2020": 6670,
-      "generatedAt": "2026-06-19T17:48:33.409Z",
+      "generatedAt": "2026-06-20T16:52:35.068Z",
       "narrative": {
         "geographic": "Pea Ridge is a 6,670-resident city in Benton County (2020 Census) — roughly 2.3% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Benton County growth corridor — suburban registration north of Rogers.",
         "historicalCultural": "Pea Ridge organizes around turnout growth, volunteer production, moderate Republican persuasion. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -7797,7 +7797,7 @@
       "county": "Lonoke",
       "rank": 56,
       "population2020": 6107,
-      "generatedAt": "2026-06-19T17:48:33.587Z",
+      "generatedAt": "2026-06-20T16:52:35.234Z",
       "narrative": {
         "geographic": "Ward is a 6,107-resident city in Lonoke County (2020 Census) — roughly 8.2% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Lonoke County growth town — young-family registration alongside Cabot.",
         "historicalCultural": "Ward organizes around turnout growth, volunteer production. County context: Lonoke County is a county located in the Central Arkansas region of the U.S. state of Arkansas. As of the 2020 census, the population was 74,015, making it the 10th-most populous of Arkansas's 75 counties. The county seat is Lonoke and largest city is Cabot. Included in the Central Arkansas metropolitan area, with Little Rock as the principal city, it is an alcohol prohibition or dry county. Etymology Lonoke County was named for the \"lone oak\" located in the county at the time of its formation, by simply spelling it phonetically, at the suggestion of the chief engineer of the Cairo & Fulton Ra… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -7938,7 +7938,7 @@
       "county": "Sevier",
       "rank": 57,
       "population2020": 6073,
-      "generatedAt": "2026-06-19T17:48:33.781Z",
+      "generatedAt": "2026-06-20T16:52:35.401Z",
       "narrative": {
         "geographic": "De Queen is a 6,073-resident city in Sevier County (2020 Census) — roughly 38.7% of county population. Sevier County field geography — coordinate with county playbook and cluster assignment. Southwest border county seat — diverse workforce and regional media.",
         "historicalCultural": "De Queen organizes around volunteer production, persuasion opportunity, chamber network. County context: Sevier County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 15,839. The county seat is De Queen. Sevier County is Arkansas's 16th county, formed on October 17, 1828, and named for Ambrose Sevier, U.S. Senator from Arkansas. On November 3, 2020, voters in Sevier County, AR approved alcohol sales by a vote of 3,499 (67.31 percent) to 1,699 (32.69 percent). History Sevier County was organized on October 17, 1828, under legislative authority. It was formed from Hempstead and Miller Counties. Five days later on October 22, 1828, the legislature expande… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -8076,7 +8076,7 @@
       "county": "Crawford",
       "rank": 58,
       "population2020": 5826,
-      "generatedAt": "2026-06-19T17:48:33.985Z",
+      "generatedAt": "2026-06-20T16:52:35.568Z",
       "narrative": {
         "geographic": "Alma is a 5,826-resident city in Crawford County (2020 Census) — roughly 9.7% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. I-49 corridor growth — Crawford County organizing partner to Van Buren.",
         "historicalCultural": "Alma organizes around turnout growth, volunteer production, persuasion opportunity. County context: Crawford County is a county located in the Ozarks region of the U.S. state of Arkansas. As of the 2020 census, its population was 60,133. The county seat and largest city is Van Buren. Crawford County was formed on October 18, 1820, from the former Lovely County and Indian Territory, and was named for William H. Crawford, the United States Secretary of War in 1815. Located largely within the Ozarks, the southern border of the county is the Arkansas River, placing the extreme southern edge of the county in the Arkansas River Valley. The frontier county became an early crossroads, beginning with… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -8218,7 +8218,7 @@
       "county": "Faulkner",
       "rank": 59,
       "population2020": 5771,
-      "generatedAt": "2026-06-19T17:48:34.204Z",
+      "generatedAt": "2026-06-20T16:52:35.750Z",
       "narrative": {
         "geographic": "Greenbrier is a 5,771-resident city in Faulkner County (2020 Census) — roughly 4.6% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Faulkner County growth suburb — commuter registration east of Conway.",
         "historicalCultural": "Greenbrier organizes around turnout growth, volunteer production, moderate Republican persuasion. County context: Faulkner County is a county located in the Central Arkansas region of the U.S. state of Arkansas. As of the 2020 census, the population was 123,498, making it the fifth most populous of Arkansas's 75 counties. The county seat and largest city is Conway. Faulkner County was created on April 12, 1873, one of nine counties formed during Reconstruction, and is named for Sandford C. Faulkner, better known as Sandy Faulkner, a popular figure in the state at the time. Located at the intersection of the Ozarks and Arkansas River Valley, the county was sparsely populated for much of its early years. La… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -8360,7 +8360,7 @@
       "county": "Carroll",
       "rank": 60,
       "population2020": 5647,
-      "generatedAt": "2026-06-19T17:48:34.420Z",
+      "generatedAt": "2026-06-20T16:52:35.935Z",
       "narrative": {
         "geographic": "Berryville is a 5,647-resident city in Carroll County (2020 Census) — roughly 20.0% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Carroll County seat — Ozarks tourism and chamber relationships.",
         "historicalCultural": "Berryville organizes around chamber network, persuasion opportunity, volunteer production. County context: Carroll County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 28,260. The county has two county seats, Berryville and Eureka Springs.  Carroll County is Arkansas's 26th county, formed on November 1, 1833, and named after Charles Carroll, the last surviving signer of the United States Declaration of Independence. Geography According to the U.S. Census Bureau, the county has a total area of 639 square miles (1,660 km2), of which 630 square miles (1,600 km2) is land and 8.7 square miles (23 km2) (1.4%) is water. Major highways Transit Jefferson Lines … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -8502,7 +8502,7 @@
       "county": "Benton",
       "rank": 61,
       "population2020": 5629,
-      "generatedAt": "2026-06-19T17:48:34.635Z",
+      "generatedAt": "2026-06-20T16:52:36.100Z",
       "narrative": {
         "geographic": "Cave Springs is a 5,629-resident city in Benton County (2020 Census) — roughly 2.0% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Fast-growing NWA suburb — business-community and commuter persuasion.",
         "historicalCultural": "Cave Springs organizes around business leader access, turnout growth, moderate Republican persuasion. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -8644,7 +8644,7 @@
       "county": "Jefferson",
       "rank": 62,
       "population2020": 5577,
-      "generatedAt": "2026-06-19T17:48:34.802Z",
+      "generatedAt": "2026-06-20T16:52:36.267Z",
       "narrative": {
         "geographic": "White Hall is a 5,577-resident city in Jefferson County (2020 Census) — roughly 8.5% of county population. Deployment cluster: Southeast Delta Cluster. Delta / Southeast — Democratic recovery, faith organizing, base turnout. Jefferson County suburb — Pine Bluff metro recovery and turnout growth.",
         "historicalCultural": "White Hall organizes around turnout growth, volunteer production, Democratic drop-off recovery. County context: Jefferson County is a county located in the U.S. state of Arkansas in the area known as the Arkansas Delta that extends west of the Mississippi River. Jefferson County consists of five cities, two towns, and 20 townships. It is bisected by the Arkansas River, which was critical to its development and long the chief transportation byway. In 2020, Jefferson County's population was estimated at 67,260. The county seat and most populous city is Pine Bluff. The county is included in the Pine Bluff micropolitan statistical area. Jefferson County was formed from Vaugine Township, Pulaski County and R… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -8786,7 +8786,7 @@
       "county": "Polk",
       "rank": 63,
       "population2020": 5574,
-      "generatedAt": "2026-06-19T17:48:35.016Z",
+      "generatedAt": "2026-06-20T16:52:36.433Z",
       "narrative": {
         "geographic": "Mena is a 5,574-resident city in Polk County (2020 Census) — roughly 28.8% of county population. Polk County field geography — coordinate with county playbook and cluster assignment. Ouachita Mountains county seat — southwest Arkansas persuasion hub.",
         "historicalCultural": "Mena organizes around persuasion opportunity, chamber network, volunteer production. County context: Polk County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 19,221. The county seat is Mena. Polk County is Arkansas's 48th county, formed on November 30, 1844; it was named for James K. Polk, 11th President of the United States. Wet county Pol County was formerly under an alcohol prohibition as a dry county. However, following a historic mid-term election in 2022, Polk County is now a wet county. Geography According to the U.S. Census Bureau, the county has a total area of 862 square miles (2,230 km2), of which 858 square miles (2,220 km2) is land … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -8924,7 +8924,7 @@
       "county": "Bradley",
       "rank": 64,
       "population2020": 5436,
-      "generatedAt": "2026-06-19T17:48:35.198Z",
+      "generatedAt": "2026-06-20T16:52:36.603Z",
       "narrative": {
         "geographic": "Warren is a 5,436-resident city in Bradley County (2020 Census) — roughly 52.0% of county population. Deployment cluster: Southeast Delta Cluster. Delta / Southeast — Democratic recovery, faith organizing, base turnout. South Arkansas timber belt county seat — civic club and base turnout.",
         "historicalCultural": "Warren organizes around chamber network, Democratic drop-off recovery, volunteer production. County context: Bradley County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 10,545. The county seat is Warren. It is Arkansas's 43rd county, formed on December 18, 1840, and named for Captain Hugh Bradley, who fought in the War of 1812. Bradley County is a dry county, which means that the sale of alcoholic beverages is prohibited within the county. However, some cities within the county, such as Warren and Hermitage, may have their own laws allowing for the sale of alcohol within their city limits. History Indigenous peoples of various cultures had lived along t… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -9066,7 +9066,7 @@
       "county": "Lawrence",
       "rank": 65,
       "population2020": 5401,
-      "generatedAt": "2026-06-19T17:48:35.394Z",
+      "generatedAt": "2026-06-20T16:52:36.768Z",
       "narrative": {
         "geographic": "Walnut Ridge is a 5,401-resident city in Lawrence County (2020 Census) — roughly 33.3% of county population. Deployment cluster: Northeast Arkansas Cluster. Crowley's Ridge — persuasion, regional chambers, volunteer hubs. Williams Baptist University corridor — Lawrence County seat organizing.",
         "historicalCultural": "Walnut Ridge organizes around student / campus pipeline, volunteer production, chamber network. County context: Lawrence County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 16,216. The county seat is Walnut Ridge. Lawrence County is Arkansas's second county, formed on January 15, 1815, and named for Captain James Lawrence who fought in the War of 1812. It is an alcohol prohibition or dry county. History There were French-speaking people living in what is now Lawrence County, Arkansas in the late eighteenth and early nineteenth centuries. Part of Lawrence County, Arkansas, along the Black River, was formerly known as \"Fourche De Maux,\" probably after the na… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -9208,7 +9208,7 @@
       "county": "Grant",
       "rank": 66,
       "population2020": 4952,
-      "generatedAt": "2026-06-19T17:48:35.577Z",
+      "generatedAt": "2026-06-20T16:52:36.934Z",
       "narrative": {
         "geographic": "Sheridan is a 4,952-resident city in Grant County (2020 Census) — roughly 27.6% of county population. Grant County field geography — coordinate with county playbook and cluster assignment. Grant County seat — south-central Arkansas chamber and community events.",
         "historicalCultural": "Sheridan organizes around persuasion opportunity, chamber network, volunteer production. County context: Grant County is a county in the U.S. state of Arkansas. Its population was 17,958 at the 2020 United States census. The county seat is Sheridan. Grant County is included in the Little Rock-North Little Rock-Conway metropolitan area. It is an alcohol prohibition or dry county. History Established on February 4, 1869, Grant County was named after of U.S. President-elect  Ulysses S. Grant. Robert W. Glover, a Missionary Baptist clergyman who served in both houses of the Arkansas General Assembly (1905-1912) from Sheridan, introduced in 1909 the resolution calling for the establishment of four sta… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -9346,7 +9346,7 @@
       "county": "Ashley",
       "rank": 67,
       "population2020": 4795,
-      "generatedAt": "2026-06-19T17:48:35.761Z",
+      "generatedAt": "2026-06-20T16:52:37.100Z",
       "narrative": {
         "geographic": "Crossett is a 4,795-resident city in Ashley County (2020 Census) — roughly 24.7% of county population. Deployment cluster: Southeast Delta Cluster. Delta / Southeast — Democratic recovery, faith organizing, base turnout. Paper-mill community — Ashley County industrial corridor relationships.",
         "historicalCultural": "Crossett organizes around chamber network, persuasion opportunity, volunteer production. County context: Ashley County is a rural South Arkansas county with a culture, economy, and history based on timber and agriculture. Created as Arkansas's 52nd county on November 30, 1848, Ashley County has seven incorporated municipalities, including Hamburg, the county seat and Crossett, the most populous city. The county is also the site of numerous unincorporated communities and ghost towns. The county is named for Chester Ashley, a prominent lawyer in the Arkansas Territory and U.S. senator from the state from 1844 to 1848. The county is roughly divided into two halves by Bayou Bartholomew, with the rich… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -9488,7 +9488,7 @@
       "county": "Sebastian",
       "rank": 68,
       "population2020": 4793,
-      "generatedAt": "2026-06-19T17:48:35.976Z",
+      "generatedAt": "2026-06-20T16:52:37.262Z",
       "narrative": {
         "geographic": "Barling is a 4,793-resident city in Sebastian County (2020 Census) — roughly 3.8% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. Fort Smith metro partner — Sebastian County south-side field organizing.",
         "historicalCultural": "Barling organizes around volunteer production, persuasion opportunity, turnout growth. County context: Sebastian County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 127,799, making it the fourth-most populous county in Arkansas. The county has two county seats, Greenwood and Fort Smith. Sebastian County is part of the Fort Smith metropolitan area. History Early settlement Following the upheaval caused by the 1811–1812 New Madrid earthquakes in Northeast Arkansas, Cherokee relocated in the area now known as Sebastian County; they were joined by Cherokee relocating from eastern states to form a sizeable community which would conflict with the Osage … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -9630,7 +9630,7 @@
       "county": "Fulton",
       "rank": 69,
       "population2020": 4789,
-      "generatedAt": "2026-06-19T17:48:36.174Z",
+      "generatedAt": "2026-06-20T16:52:37.433Z",
       "narrative": {
         "geographic": "Cherokee Village is a 4,789-resident city in Fulton County (2020 Census) — roughly 39.7% of county population. Deployment cluster: North Central Ozarks Cluster. Ozarks — event-driven presence, retiree persuasion, fair circuit. Retiree lake community — Fulton/Sharp Ozarks relationship persuasion.",
         "historicalCultural": "Cherokee Village organizes around persuasion opportunity, moderate Republican persuasion, volunteer production. County context: Fulton County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 12,075. The county seat is Salem. Fulton County was formed on December 21, 1842, and named for William Fulton, the last governor of the Arkansas Territory. It is an alcohol prohibition or dry county. Geography According to the U.S. Census Bureau, the county has a total area of 620 square miles (1,600 km2), of which 618 square miles (1,600 km2) is land and 2.1 square miles (5.4 km2) (0.3%) is water. Major highways Adjacent counties Ozark County, Missouri (northwest) Howell County, Missouri… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -9772,7 +9772,7 @@
       "county": "Washington",
       "rank": 70,
       "population2020": 4736,
-      "generatedAt": "2026-06-19T17:48:36.342Z",
+      "generatedAt": "2026-06-20T16:52:37.617Z",
       "narrative": {
         "geographic": "Tontitown is a 4,736-resident city in Washington County (2020 Census) — roughly 1.9% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Italian heritage community — Washington County west NWA civic organizing.",
         "historicalCultural": "Tontitown organizes around chamber network, volunteer production, turnout growth. County context: Washington County is a regional economic, educational, and cultural hub in the Northwest Arkansas region. Created as Arkansas's 17th county on November 30, 1848, Washington County has 13 incorporated municipalities, including Fayetteville, the county seat, and Springdale. The county is also the site of small towns, bedroom communities, and unincorporated places. The county is named for George Washington, the first President of the United States. Located within the Ozark Mountains, the county is roughly divided into two halves: the rolling Springfield Plateau in the more populous north of the c… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -9914,7 +9914,7 @@
       "county": "Saline",
       "rank": 71,
       "population2020": 4510,
-      "generatedAt": "2026-06-19T17:48:36.541Z",
+      "generatedAt": "2026-06-20T16:52:37.787Z",
       "narrative": {
         "geographic": "Shannon Hills is a 4,510-resident city in Saline County (2020 Census) — roughly 3.7% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Saline County suburb — Bryant/Benton corridor commuter registration.",
         "historicalCultural": "Shannon Hills organizes around turnout growth, volunteer production, moderate Republican persuasion. County context: Saline County ( sə-LEEN) is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 123,416.  Its county seat and largest city is Benton. Saline County was formed on November 2, 1835, and named for the salt water (brine) springs in the area, despite a differing pronunciation from saline. Until November 2014, it was an alcohol prohibition or dry county. Saline County is included in the Central Arkansas region. Geography According to the U.S. Census Bureau, the county has a total area of 730 square miles (1,900 km2), of which 724 square miles (1,880 km2) is land… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -10056,7 +10056,7 @@
       "county": "Yell",
       "rank": 72,
       "population2020": 4497,
-      "generatedAt": "2026-06-19T17:48:36.710Z",
+      "generatedAt": "2026-06-20T16:52:37.952Z",
       "narrative": {
         "geographic": "Dardanelle is a 4,497-resident city in Yell County (2020 Census) — roughly 22.2% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. Arkansas River valley county seat — Yell County civic hub.",
         "historicalCultural": "Dardanelle organizes around chamber network, volunteer production, persuasion opportunity. County context: Yell County is a county in the U.S. state of Arkansas. As of the 2020 census, its population was 20,263. The county has two county seats, Dardanelle and Danville.  Yell County is Arkansas's 42nd county, formed on December 5, 1840, from portions of Scott and Pope Counties. It was named after Archibald Yell, who was the state's first member of the United States House of Representatives and the second governor of Arkansas. He died in combat at the Battle of Buena Vista during the Mexican–American War. Yell County is part of the Russellville micropolitan statistical area. Yell County is a dry coun… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -10198,7 +10198,7 @@
       "county": "Faulkner",
       "rank": 73,
       "population2020": 4341,
-      "generatedAt": "2026-06-19T17:48:36.873Z",
+      "generatedAt": "2026-06-20T16:52:38.119Z",
       "narrative": {
         "geographic": "Vilonia is a 4,341-resident city in Faulkner County (2020 Census) — roughly 3.4% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Faulkner County growth town — tornado-recovery community pride organizing.",
         "historicalCultural": "Vilonia organizes around turnout growth, volunteer production. County context: Faulkner County is a county located in the Central Arkansas region of the U.S. state of Arkansas. As of the 2020 census, the population was 123,498, making it the fifth most populous of Arkansas's 75 counties. The county seat and largest city is Conway. Faulkner County was created on April 12, 1873, one of nine counties formed during Reconstruction, and is named for Sandford C. Faulkner, better known as Sandy Faulkner, a popular figure in the state at the time. Located at the intersection of the Ozarks and Arkansas River Valley, the county was sparsely populated for much of its early years. La… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -10339,7 +10339,7 @@
       "county": "Independence",
       "rank": 74,
       "population2020": 4267,
-      "generatedAt": "2026-06-19T17:48:37.071Z",
+      "generatedAt": "2026-06-20T16:52:38.284Z",
       "narrative": {
         "geographic": "Southside is a 4,267-resident city in Independence County (2020 Census) — roughly 11.3% of county population. Deployment cluster: North Central Ozarks Cluster. Ozarks — event-driven presence, retiree persuasion, fair circuit. Batesville metro partner — Independence County suburban registration.",
         "historicalCultural": "Southside organizes around turnout growth, volunteer production, persuasion opportunity. County context: Independence County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 37,938. The county seat is Batesville. Independence County is Arkansas's ninth county, formed on October 20, 1820, from a portion of Lawrence County and named in commemoration of the Declaration of Independence. It is an alcohol prohibition or dry county. The Batesville, AR Micropolitan Statistical Area includes all of Independence County. Geography According to the U.S. Census Bureau, the county has a total area of 772 square miles (2,000 km2), of which 764 square miles (1,980 km2)… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -10481,7 +10481,7 @@
       "county": "Little River",
       "rank": 75,
       "population2020": 4180,
-      "generatedAt": "2026-06-19T17:48:37.260Z",
+      "generatedAt": "2026-06-20T16:52:38.449Z",
       "narrative": {
         "geographic": "Ashdown is a 4,180-resident city in Little River County (2020 Census) — roughly 35.9% of county population. Deployment cluster: Hot Springs & Ouachita Cluster. Hot Springs / Ouachita — tourism, retiree persuasion, lake communities. Little River County seat — southwest border regional organizing.",
         "historicalCultural": "Ashdown organizes around chamber network, persuasion opportunity, volunteer production. County context: Little River County is a county located on the southwest border of the U.S. state of Arkansas, bordering a corner with Texas and Oklahoma. As of the 2020 census, the population was 12,026. The county seat is Ashdown. Little River County is included in the Texarkana metropolitan area. History Little River County is Arkansas's 59th county, formed from Sevier County on March 5, 1867, during the Reconstruction era and named for the Little River. The county is separated from all other surrounding counties in the state by water (a characteristic shared only with neighboring Miller County). The Littl… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -10623,7 +10623,7 @@
       "county": "Lonoke",
       "rank": 76,
       "population2020": 4164,
-      "generatedAt": "2026-06-19T17:48:37.428Z",
+      "generatedAt": "2026-06-20T16:52:38.619Z",
       "narrative": {
         "geographic": "Lonoke is a 4,164-resident city in Lonoke County (2020 Census) — roughly 5.6% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Lonoke County seat — central Arkansas agricultural community organizing.",
         "historicalCultural": "Lonoke organizes around chamber network, volunteer production, turnout growth. County context: Lonoke County is a county located in the Central Arkansas region of the U.S. state of Arkansas. As of the 2020 census, the population was 74,015, making it the 10th-most populous of Arkansas's 75 counties. The county seat is Lonoke and largest city is Cabot. Included in the Central Arkansas metropolitan area, with Little Rock as the principal city, it is an alcohol prohibition or dry county. Etymology Lonoke County was named for the \"lone oak\" located in the county at the time of its formation, by simply spelling it phonetically, at the suggestion of the chief engineer of the Cairo & Fulton Ra… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -10765,7 +10765,7 @@
       "county": "Howard",
       "rank": 77,
       "population2020": 4141,
-      "generatedAt": "2026-06-19T17:48:37.596Z",
+      "generatedAt": "2026-06-20T16:52:38.800Z",
       "narrative": {
         "geographic": "Nashville is a 4,141-resident city in Howard County (2020 Census) — roughly 33.3% of county population. Howard County field geography — coordinate with county playbook and cluster assignment. Howard County seat — southwest Arkansas county-seat relationships.",
         "historicalCultural": "Nashville organizes around chamber network, persuasion opportunity, volunteer production. County context: Howard County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 12,785. The county seat is Nashville. Howard County is Arkansas's 74th county, formed on April 17, 1873, and named for James Howard, a state senator. It is a dry county. Geography According to the U.S. Census Bureau, the county has a total area of 595 square miles (1,540 km2), of which 589 square miles (1,530 km2) is land and 6.8 square miles (18 km2) (1.1%) is water. Major highways  U.S. Highway 70  U.S. Highway 278  U.S. Highway 371  Highway 26  Highway 27  Highway 84 Adjacent counties … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -10903,7 +10903,7 @@
       "county": "Craighead",
       "rank": 78,
       "population2020": 4118,
-      "generatedAt": "2026-06-19T17:48:37.759Z",
+      "generatedAt": "2026-06-20T16:52:38.980Z",
       "narrative": {
         "geographic": "Brookland is a 4,118-resident city in Craighead County (2020 Census) — roughly 3.7% of county population. Deployment cluster: Northeast Arkansas Cluster. Crowley's Ridge — persuasion, regional chambers, volunteer hubs. Jonesboro metro growth — Craighead County suburban registration pipeline.",
         "historicalCultural": "Brookland organizes around turnout growth, volunteer production. County context: Craighead County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 111,231. The county has two county seats — Jonesboro and Lake City. Craighead County is Arkansas's 58th county, formed on February 19, 1859, and named for state Senator Thomas Craighead. It is one of several dry counties within the state of Arkansas, in which the sale of alcoholic beverages is largely prohibited. Craighead County is included in Jonesboro–Paragould Combined Statistical Area. History Craighead County was part of the territory claimed for France on April 9, 1682, by René … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -11044,7 +11044,7 @@
       "county": "Desha",
       "rank": 79,
       "population2020": 3978,
-      "generatedAt": "2026-06-19T17:48:37.959Z",
+      "generatedAt": "2026-06-20T16:52:39.151Z",
       "narrative": {
         "geographic": "Dumas is a 3,978-resident city in Desha County (2020 Census) — roughly 35.0% of county population. Deployment cluster: Southeast Delta Cluster. Delta / Southeast — Democratic recovery, faith organizing, base turnout. Desha County seat — Delta agricultural community and Lane 2 recovery.",
         "historicalCultural": "Dumas organizes around Democratic drop-off recovery, chamber network, volunteer production. County context: Desha County ( də-SHAY) is a county located in the southeast part of the U.S. state of Arkansas, with its eastern border the Mississippi River. At the 2020 census, the population was 11,395. The county is plurality-African American. The county seat is Arkansas City. History Desha County was created by the Arkansas Legislature on December 12, 1838, consisting of the lands of Arkansas County separated from the county seat by the Arkansas River and the White River, and land from Chicot County. The county was named for Captain Benjamin Desha, who fought in the War of 1812. Located in the Arkansas … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -11186,7 +11186,7 @@
       "county": "Saline",
       "rank": 80,
       "population2020": 3970,
-      "generatedAt": "2026-06-19T17:48:38.126Z",
+      "generatedAt": "2026-06-20T16:52:39.320Z",
       "narrative": {
         "geographic": "Haskell is a 3,970-resident city in Saline County (2020 Census) — roughly 3.2% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Saline County suburb — Bryant/Benton corridor commuter organizing.",
         "historicalCultural": "Haskell organizes around turnout growth, volunteer production, persuasion opportunity. County context: Saline County ( sə-LEEN) is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 123,416.  Its county seat and largest city is Benton. Saline County was formed on November 2, 1835, and named for the salt water (brine) springs in the area, despite a differing pronunciation from saline. Until November 2014, it was an alcohol prohibition or dry county. Saline County is included in the Central Arkansas region. Geography According to the U.S. Census Bureau, the county has a total area of 730 square miles (1,900 km2), of which 724 square miles (1,880 km2) is land… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -11328,7 +11328,7 @@
       "county": "Desha",
       "rank": 81,
       "population2020": 3856,
-      "generatedAt": "2026-06-19T17:48:38.287Z",
+      "generatedAt": "2026-06-20T16:52:39.498Z",
       "narrative": {
         "geographic": "McGehee is a 3,856-resident city in Desha County (2020 Census) — roughly 33.9% of county population. Deployment cluster: Southeast Delta Cluster. Delta / Southeast — Democratic recovery, faith organizing, base turnout. Southeast Delta hub — Desha/Drew county-seat relationships.",
         "historicalCultural": "McGehee organizes around Democratic drop-off recovery, chamber network, volunteer production. County context: Desha County ( də-SHAY) is a county located in the southeast part of the U.S. state of Arkansas, with its eastern border the Mississippi River. At the 2020 census, the population was 11,395. The county is plurality-African American. The county seat is Arkansas City. History Desha County was created by the Arkansas Legislature on December 12, 1838, consisting of the lands of Arkansas County separated from the county seat by the Arkansas River and the White River, and land from Chicot County. The county was named for Captain Benjamin Desha, who fought in the War of 1812. Located in the Arkansas … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -11470,7 +11470,7 @@
       "county": "Benton",
       "rank": 82,
       "population2020": 3850,
-      "generatedAt": "2026-06-19T17:48:38.454Z",
+      "generatedAt": "2026-06-20T16:52:39.668Z",
       "narrative": {
         "geographic": "Gentry is a 3,850-resident city in Benton County (2020 Census) — roughly 1.4% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Western Benton County — poultry-industry community and NWA west organizing.",
         "historicalCultural": "Gentry organizes around chamber network, volunteer production, persuasion opportunity. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -11612,7 +11612,7 @@
       "county": "Logan",
       "rank": 83,
       "population2020": 3806,
-      "generatedAt": "2026-06-19T17:48:38.637Z",
+      "generatedAt": "2026-06-20T16:52:39.833Z",
       "narrative": {
         "geographic": "Booneville is a 3,806-resident city in Logan County (2020 Census) — roughly 17.8% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. Logan County seat — River Valley west county-seat civic hub.",
         "historicalCultural": "Booneville organizes around chamber network, persuasion opportunity, volunteer production. County context: Logan County (formerly Sarber County) is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 21,131.  Its two county seats are Booneville and Paris. History The Arkansas General Assembly defined the state's 64th county on March 22, 1871, incorporating parts of Scott, Yell, and Pope counties (later adding part of Franklin County). They named it Sarber County for John Newton Sarber (1837–1905), an attorney and  Republican state senator from Yell County. He had introduced the resolution to organize the county. Born and reared in Pittsburgh, Pennsylvania, he h… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -11754,7 +11754,7 @@
       "county": "Mississippi",
       "rank": 84,
       "population2020": 3677,
-      "generatedAt": "2026-06-19T17:48:38.802Z",
+      "generatedAt": "2026-06-20T16:52:40.003Z",
       "narrative": {
         "geographic": "Manila is a 3,677-resident city in Mississippi County (2020 Census) — roughly 9.2% of county population. Deployment cluster: Crittenden / Memphis-Adjacent Cluster. Crittenden / Memphis spillover — turnout growth, Delta base mobilization. Mississippi County northeast — Bootheel regional organizing.",
         "historicalCultural": "Manila organizes around chamber network, persuasion opportunity, volunteer production. County context: Mississippi County is the easternmost county in the U.S. state of Arkansas. As of the 2020 census, the population was 40,685. There are two county seats, Blytheville and Osceola. The county is named for the Mississippi River which borders the county to the east. Mississippi County is part of the First Congressional District in Arkansas. The Blytheville, AR Micropolitan Statistical Area includes all of Mississippi County. History Pre-European exploration Extant early settlements include the Eaker Site and the Sherman Mound. 1812 New Madrid earthquake Local oral tradition held that prior to the … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -11896,7 +11896,7 @@
       "county": "Washington",
       "rank": 85,
       "population2020": 3660,
-      "generatedAt": "2026-06-19T17:48:38.966Z",
+      "generatedAt": "2026-06-20T16:52:40.166Z",
       "narrative": {
         "geographic": "Elkins is a 3,660-resident city in Washington County (2020 Census) — roughly 1.5% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Washington County growth town — Fayetteville metro fringe registration.",
         "historicalCultural": "Elkins organizes around turnout growth, volunteer production, chamber network. County context: Washington County is a regional economic, educational, and cultural hub in the Northwest Arkansas region. Created as Arkansas's 17th county on November 30, 1848, Washington County has 13 incorporated municipalities, including Fayetteville, the county seat, and Springdale. The county is also the site of small towns, bedroom communities, and unincorporated places. The county is named for George Washington, the first President of the United States. Located within the Ozark Mountains, the county is roughly divided into two halves: the rolling Springfield Plateau in the more populous north of the c… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -12038,7 +12038,7 @@
       "county": "Washington",
       "rank": 86,
       "population2020": 3633,
-      "generatedAt": "2026-06-19T17:48:39.119Z",
+      "generatedAt": "2026-06-20T16:52:40.333Z",
       "narrative": {
         "geographic": "Johnson is a 3,633-resident city in Washington County (2020 Census) — roughly 1.5% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. University of Arkansas adjacency — student and young-professional pipeline.",
         "historicalCultural": "Johnson organizes around student / campus pipeline, volunteer production, turnout growth. County context: Washington County is a regional economic, educational, and cultural hub in the Northwest Arkansas region. Created as Arkansas's 17th county on November 30, 1848, Washington County has 13 incorporated municipalities, including Fayetteville, the county seat, and Springdale. The county is also the site of small towns, bedroom communities, and unincorporated places. The county is named for George Washington, the first President of the United States. Located within the Ozark Mountains, the county is roughly divided into two halves: the rolling Springfield Plateau in the more populous north of the c… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -12180,7 +12180,7 @@
       "county": "Clay",
       "rank": 87,
       "population2020": 3614,
-      "generatedAt": "2026-06-19T17:48:39.337Z",
+      "generatedAt": "2026-06-20T16:52:40.515Z",
       "narrative": {
         "geographic": "Piggott is a 3,614-resident city in Clay County (2020 Census) — roughly 25.3% of county population. Deployment cluster: Northeast Arkansas Cluster. Crowley's Ridge — persuasion, regional chambers, volunteer hubs. Clay County seat — northeast border county civic relationships.",
         "historicalCultural": "Piggott organizes around chamber network, persuasion opportunity, volunteer production. County context: Clay County is a county located in the U.S. state of Arkansas. Originally incorporated as Clayton County, as of the 2020 United States census, its population was 14,552. The county has two county seats, Corning and Piggott. It is a dry county, in which the sale of alcoholic beverages is restricted or prohibited. History When Clay County was created as Arkansas's 67th county on 24 March 1873 (along with Baxter County), it was named Clayton County after John M. Clayton, then a member of the Arkansas Senate and a brother of then-U.S. Senator Powell Clayton, though some sources suggest it may have… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -12322,7 +12322,7 @@
       "county": "Benton",
       "rank": 88,
       "population2020": 3574,
-      "generatedAt": "2026-06-19T17:48:39.504Z",
+      "generatedAt": "2026-06-20T16:52:40.686Z",
       "narrative": {
         "geographic": "Gravette is a 3,574-resident city in Benton County (2020 Census) — roughly 1.3% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Northwest Benton County — rural NWA community organizing.",
         "historicalCultural": "Gravette organizes around volunteer production, turnout growth, chamber network. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -12464,7 +12464,7 @@
       "county": "Lonoke",
       "rank": 89,
       "population2020": 3568,
-      "generatedAt": "2026-06-19T17:48:39.669Z",
+      "generatedAt": "2026-06-20T16:52:40.917Z",
       "narrative": {
         "geographic": "Austin is a 3,568-resident city in Lonoke County (2020 Census) — roughly 4.8% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Lonoke County suburb — central Arkansas commuter registration.",
         "historicalCultural": "Austin organizes around turnout growth, volunteer production, persuasion opportunity. County context: Lonoke County is a county located in the Central Arkansas region of the U.S. state of Arkansas. As of the 2020 census, the population was 74,015, making it the 10th-most populous of Arkansas's 75 counties. The county seat is Lonoke and largest city is Cabot. Included in the Central Arkansas metropolitan area, with Little Rock as the principal city, it is an alcohol prohibition or dry county. Etymology Lonoke County was named for the \"lone oak\" located in the county at the time of its formation, by simply spelling it phonetically, at the suggestion of the chief engineer of the Cairo & Fulton Ra… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -12606,7 +12606,7 @@
       "county": "Lee",
       "rank": 90,
       "population2020": 3559,
-      "generatedAt": "2026-06-19T17:48:39.853Z",
+      "generatedAt": "2026-06-20T16:52:41.092Z",
       "narrative": {
         "geographic": "Marianna is a 3,559-resident city in Lee County (2020 Census) — roughly 42.6% of county population. Deployment cluster: Crittenden / Memphis-Adjacent Cluster. Crittenden / Memphis spillover — turnout growth, Delta base mobilization. Lee County seat — Delta east county-seat and faith-community ties.",
         "historicalCultural": "Marianna organizes around Democratic drop-off recovery, chamber network, volunteer production. County context: Lee County is a county located in the U.S. state of Arkansas. With its eastern border formed by the Mississippi River, it is considered to be part of the Arkansas Delta. As of the 2020 census, the population was 8,600. The county seat is Marianna. The county was established by the state legislature on April 17, 1873, during the Reconstruction era. It was named for General Robert E. Lee, who served as General in Chief of the Armies of the Confederate States during the American Civil War. History The area of the Delta was developed largely for cotton as a commodity crop before the Civil War, bas… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -12748,7 +12748,7 @@
       "county": "Franklin",
       "rank": 91,
       "population2020": 3557,
-      "generatedAt": "2026-06-19T17:48:40.106Z",
+      "generatedAt": "2026-06-20T16:52:41.267Z",
       "narrative": {
         "geographic": "Ozark is a 3,557-resident city in Franklin County (2020 Census) — roughly 20.0% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. Franklin County seat — River Valley west organizing anchor.",
         "historicalCultural": "Ozark organizes around chamber network, persuasion opportunity, volunteer production. County context: Franklin County is a county in Arkansas. As of the 2020 census, the population was 17,097. The county has two county seats, Charleston and Ozark. The county was formed on December 19, 1837, and named for Benjamin Franklin, American statesman. Franklin County is a damp county, with alcohol sales allowed except in Alix township, and limits on liquor sales in the city of Branch. History Franklin County was carved out of Crawford County in December 1837. At that time, Franklin was significantly larger than it is at present, encompassing part of present-day Logan County which was formed in 1871. In… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -12890,7 +12890,7 @@
       "county": "Pulaski",
       "rank": 92,
       "population2020": 3418,
-      "generatedAt": "2026-06-19T17:48:40.270Z",
+      "generatedAt": "2026-06-20T16:52:41.483Z",
       "narrative": {
         "geographic": "Alexander is a 3,418-resident city in Pulaski County (2020 Census) — roughly 0.9% of county population. Deployment cluster: Central Arkansas Metro Cluster. Central Arkansas Metro — media, fundraising, volunteer production, Lane 2 recovery at scale. Pulaski south suburb — Little Rock metro fringe recovery blocks.",
         "historicalCultural": "Alexander organizes around turnout growth, volunteer production, Democratic drop-off recovery. County context: Pulaski County is a county in the U.S. state of Arkansas. With a population of 399,125 as of the 2020 United States census, it is the most populous county in Arkansas. The county is included in the Little Rock–North Little Rock–Conway metropolitan area. Its county seat is Little Rock, which is also Arkansas's capital and largest city. Pulaski County is Arkansas's fifth county, formed on December 15, 1818, alongside Clark and Hempstead Counties. Pulaski County is named for Brigadier General Casimir Pulaski, a Polish-born Continental Army officer who was killed in action at the Siege of Savannah… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -13032,7 +13032,7 @@
       "county": "Dallas",
       "rank": 93,
       "population2020": 3406,
-      "generatedAt": "2026-06-19T17:48:40.490Z",
+      "generatedAt": "2026-06-20T16:52:41.654Z",
       "narrative": {
         "geographic": "Fordyce is a 3,406-resident city in Dallas County (2020 Census) — roughly 51.5% of county population. Deployment cluster: Southeast Delta Cluster. Delta / Southeast — Democratic recovery, faith organizing, base turnout. Dallas County seat — south-central Arkansas county-seat relationships.",
         "historicalCultural": "Fordyce organizes around chamber network, persuasion opportunity, volunteer production. County context: Dallas County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 6,482, making it the fourth-least populous county in Arkansas. The county seat is Fordyce. Dallas County is Arkansas's 49th county, formed on January 1, 1845; it was named for George M. Dallas, 11th Vice President of the United States. Geography According to the U.S. Census Bureau, the county has a total area of 668 square miles (1,730 km2), of which 667 square miles (1,730 km2) is land and 0.7 square miles (1.8 km2) (0.1%) is water. Major highways  U.S. Highway 79  U.S. Highway 167  High… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -13174,7 +13174,7 @@
       "county": "Scott",
       "rank": 94,
       "population2020": 3319,
-      "generatedAt": "2026-06-19T17:48:40.684Z",
+      "generatedAt": "2026-06-20T16:52:41.842Z",
       "narrative": {
         "geographic": "Waldron is a 3,319-resident city in Scott County (2020 Census) — roughly 34.4% of county population. Scott County field geography — coordinate with county playbook and cluster assignment. Scott County seat — Ouachita foothills regional hub.",
         "historicalCultural": "Waldron organizes around chamber network, persuasion opportunity, volunteer production. County context: Scott County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 9,836. The county seat is Waldron. Scott County is Arkansas' 28th county, formed on November 5, 1833, and named for Andrew Scott, a justice of the Supreme Court of the Arkansas Territory. It is an alcohol-prohibited or dry county. Geography According to the U.S. Census Bureau, the county has a total area of 898 square miles (2,330 km2), of which 892 square miles (2,310 km2) is land and 5.8 square miles (15 km2) (0.6%) is water. Major highways  Future Interstate 49  U.S. Highway 71  U.S. Hi… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -13312,7 +13312,7 @@
       "county": "Clay",
       "rank": 95,
       "population2020": 3209,
-      "generatedAt": "2026-06-19T17:48:40.851Z",
+      "generatedAt": "2026-06-20T16:52:42.033Z",
       "narrative": {
         "geographic": "Corning is a 3,209-resident city in Clay County (2020 Census) — roughly 22.5% of county population. Deployment cluster: Northeast Arkansas Cluster. Crowley's Ridge — persuasion, regional chambers, volunteer hubs. Clay County river town — northeast Arkansas civic partnerships.",
         "historicalCultural": "Corning organizes around chamber network, persuasion opportunity, volunteer production. County context: Clay County is a county located in the U.S. state of Arkansas. Originally incorporated as Clayton County, as of the 2020 United States census, its population was 14,552. The county has two county seats, Corning and Piggott. It is a dry county, in which the sale of alcoholic beverages is restricted or prohibited. History When Clay County was created as Arkansas's 67th county on 24 March 1873 (along with Baxter County), it was named Clayton County after John M. Clayton, then a member of the Arkansas Senate and a brother of then-U.S. Senator Powell Clayton, though some sources suggest it may have… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -13454,7 +13454,7 @@
       "county": "Logan",
       "rank": 96,
       "population2020": 3205,
-      "generatedAt": "2026-06-19T17:48:41.020Z",
+      "generatedAt": "2026-06-20T16:52:42.197Z",
       "narrative": {
         "geographic": "Paris is a 3,205-resident city in Logan County (2020 Census) — roughly 15.0% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. Logan County seat — Mount Magazine region county relationships.",
         "historicalCultural": "Paris organizes around chamber network, persuasion opportunity, volunteer production. County context: Logan County (formerly Sarber County) is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 21,131.  Its two county seats are Booneville and Paris. History The Arkansas General Assembly defined the state's 64th county on March 22, 1871, incorporating parts of Scott, Yell, and Pope counties (later adding part of Franklin County). They named it Sarber County for John Newton Sarber (1837–1905), an attorney and  Republican state senator from Yell County. He had introduced the resolution to organize the county. Born and reared in Pittsburgh, Pennsylvania, he h… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -13596,7 +13596,7 @@
       "county": "Pope",
       "rank": 97,
       "population2020": 3133,
-      "generatedAt": "2026-06-19T17:48:41.181Z",
+      "generatedAt": "2026-06-20T16:52:42.368Z",
       "narrative": {
         "geographic": "Pottsville is a 3,133-resident city in Pope County (2020 Census) — roughly 4.9% of county population. Deployment cluster: River Valley Cluster. River Valley — regional media, clerk relationships, moderate GOP outreach. Pope County suburb — Russellville metro commuter organizing.",
         "historicalCultural": "Pottsville organizes around turnout growth, volunteer production, persuasion opportunity. County context: Pope County is a county in the U.S. state of Arkansas. As of the 2020 census, the population was 63,381. The county seat is Russellville. The county was formed on November 2, 1829, from a portion of Crawford County and named for John Pope, the third governor of the Arkansas Territory. Pope County was the nineteenth (of seventy-five) county formed. The county's borders changed eighteen times in the 19th century with the creation of new counties and adjustments between counties. The current boundaries were set on March 8, 1877. Pope County is geographically diverse, with the Arkansas River Valle… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -13738,7 +13738,7 @@
       "county": "Nevada",
       "rank": 98,
       "population2020": 3059,
-      "generatedAt": "2026-06-19T17:48:41.453Z",
+      "generatedAt": "2026-06-20T16:52:42.550Z",
       "narrative": {
         "geographic": "Prescott is a 3,059-resident city in Nevada County (2020 Census) — roughly 36.8% of county population. Deployment cluster: Southwest Arkansas Cluster. Southwest Arkansas — chamber relationships, county seats, school registration. Nevada County seat — southwest Arkansas county-seat hub.",
         "historicalCultural": "Prescott organizes around chamber network, persuasion opportunity, volunteer production. County context: Nevada County ( nə-VAY-də) is a county located in the southwestern part of the U.S. state of Arkansas. As of the 2020 Census, the population was 8,310, less than half of its peak in 1920. The county seat is Prescott.  Nevada County is Arkansas's 63rd county, formed during the Reconstruction era on March 20, 1871, from portions of Hempstead, Ouachita and Columbia counties. It was named after the state of Nevada because of the perceived similarity between their physical shapes; the Arkansas county's shape, inverted, roughly follows the same outline as the state's boundary. It is an alcohol prohi… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -13880,7 +13880,7 @@
       "county": "Benton",
       "rank": 99,
       "population2020": 3051,
-      "generatedAt": "2026-06-19T17:48:41.621Z",
+      "generatedAt": "2026-06-20T16:52:42.716Z",
       "narrative": {
         "geographic": "Little Flock is a 3,051-resident city in Benton County (2020 Census) — roughly 1.1% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Bentonville/Rogers adjacency — corporate commuter persuasion.",
         "historicalCultural": "Little Flock organizes around business leader access, chamber network, moderate Republican persuasion. County context: Benton County is a county in the Northwest region of the U.S. state of Arkansas. Created as Arkansas' 35th county on September 30, 1836, Benton County contains thirteen incorporated municipalities, including Bentonville, the county seat, and Rogers, the most populous city. The county was named after Thomas Hart Benton, a U.S. Senator from Missouri influential in Arkansas statehood. The county is located within the Springfield Plateau of the Ozarks. Much of eastern Benton County is located along Beaver Lake, a reservoir of the White River. The county contains three protected areas: Logan Cave N… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -14022,7 +14022,7 @@
       "county": "Carroll",
       "rank": 100,
       "population2020": 3007,
-      "generatedAt": "2026-06-19T17:48:41.786Z",
+      "generatedAt": "2026-06-20T16:52:42.900Z",
       "narrative": {
         "geographic": "Green Forest is a 3,007-resident city in Carroll County (2020 Census) — roughly 10.6% of county population. Deployment cluster: Northwest Arkansas Cluster. Northwest Arkansas — university pipeline, chamber networks, moderate Republican conversion. Carroll County east — Ozarks tourism and small-business relationships.",
         "historicalCultural": "Green Forest organizes around persuasion opportunity, chamber network, volunteer production. County context: Carroll County is a county located in the U.S. state of Arkansas. As of the 2020 census, the population was 28,260. The county has two county seats, Berryville and Eureka Springs.  Carroll County is Arkansas's 26th county, formed on November 1, 1833, and named after Charles Carroll, the last surviving signer of the United States Declaration of Independence. Geography According to the U.S. Census Bureau, the county has a total area of 639 square miles (1,660 km2), of which 630 square miles (1,600 km2) is land and 8.7 square miles (23 km2) (1.4%) is water. Major highways Transit Jefferson Lines … Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
@@ -14138,6 +14138,148 @@
         "fieldValidatorTargets": {
           "label": "Validator targets",
           "name": "Chamber board member or small-business owner willing to host a civic conversation · Veteran, Rotarian, or civic club officer for relationship persuasion · Neighborhood captain who can run a Power of Five circle",
+          "status": "inherited",
+          "source": "Influence tags + county mission"
+        }
+      },
+      "enrichmentSummary": {
+        "verified": 0,
+        "api": 0,
+        "inherited": 2,
+        "scaffold": 8
+      },
+      "sources": [
+        "ARKANSAS_TOP_100_CITIES",
+        "election-plan-workbench.snapshot.json",
+        "kelly-win-target-scenario-v1.json",
+        "county-issue-clusters.json",
+        "docs/ingested/county-wikipedia",
+        "Google Civic Information API"
+      ],
+      "strategicPlanReady": true
+    },
+    "quitman": {
+      "slug": "quitman",
+      "name": "Quitman",
+      "county": "Cleburne",
+      "rank": 101,
+      "population2020": 716,
+      "generatedAt": "2026-06-20T16:52:43.067Z",
+      "narrative": {
+        "geographic": "Quitman is a 716-resident city in Cleburne County (2020 Census) — roughly 2.9% of county population. Deployment cluster: North Central Ozarks Cluster. Ozarks — event-driven presence, retiree persuasion, fair circuit. Cleburne County bonus cushion — relationship-first immersion that proves small towns can move statewide margins without touching Top 40 math.",
+        "historicalCultural": "Quitman organizes around Democratic drop-off recovery, persuasion opportunity, turnout growth. County context: Cleburne County ( KLEE-burn, historically  KLAY-burn) is a county located in the north-central portion of the U.S. state of Arkansas. As of the 2020 census, the population was 24,711. The county seat and most populous city is Heber Springs. The county was formed on February 20, 1883, making it the youngest of Arkansas's 75 counties. It is named for Confederate Major-General Patrick Cleburne. Cleburne is an alcohol-prohibition or dry county. Geography According to the U.S. Census Bureau, the county has a total area of 592 square miles (1,530 km2), of which 554 square miles (1,430 km2) is land a… Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
+        "socioEconomic": "Neighbors name roads and infrastructure, local jobs as top local concerns (county issue cluster). Frame SOS competence around clerk support, registration access, and business services — not national abstraction.",
+        "clusterContext": "North Central Ozarks Cluster: Ozarks — event-driven presence, retiree persuasion, fair circuit.",
+        "countyContext": "County tier B · primary mission Power of 5 Organizing · County seat: Heber Springs"
+      },
+      "election": {
+        "targetVotes": 84,
+        "baselineVote": 46,
+        "voteGain": 38,
+        "influenceCategory": "Bonus immersion hub",
+        "strategicRole": "Cleburne County bonus cushion — relationship-first immersion that proves small towns can move statewide margins without touching Top 40 math.",
+        "influenceTags": [
+          "democratic_recovery",
+          "persuasion",
+          "turnout_growth"
+        ],
+        "visitFrequency": "campaign_sprint",
+        "countySharePct": 2.9
+      },
+      "cluster": {
+        "id": "north-central-ozarks",
+        "name": "North Central Ozarks Cluster",
+        "description": "Ozarks — event-driven presence, retiree persuasion, fair circuit."
+      },
+      "countyIntel": {
+        "seat": "Heber Springs",
+        "topIssues": [
+          "roads and infrastructure",
+          "local jobs"
+        ],
+        "wikiExcerpt": "Cleburne County ( KLEE-burn, historically  KLAY-burn) is a county located in the north-central portion of the U.S. state of Arkansas. As of the 2020 census, the population was 24,711. The county seat and most populous city is Heber Springs. The county was formed on February 20, 1883, making it the youngest of Arkansas's 75 counties. It is named for Confederate Major-General Patrick Cleburne. Cleburne is an alcohol-prohibition or dry county. Geography According to the U.S. Census Bureau, the county has a total area of 592 square miles (1,530 km2), of which 554 square miles (1,430 km2) is land a…",
+        "primaryMission": "Power of 5 Organizing",
+        "tier": "B"
+      },
+      "dimensions": {
+        "stateHouse": {
+          "label": "State House",
+          "name": null,
+          "district": null,
+          "party": null,
+          "phone": null,
+          "url": null,
+          "status": "scaffold",
+          "source": "Pending Google Civic or Arkleg lookup",
+          "note": "Look up Quitman address in Arkleg district finder"
+        },
+        "stateSenate": {
+          "label": "State Senate",
+          "name": null,
+          "district": null,
+          "party": null,
+          "phone": null,
+          "url": null,
+          "status": "scaffold",
+          "source": "Pending Google Civic or Arkleg lookup"
+        },
+        "usCongress": {
+          "label": "U.S. House",
+          "name": null,
+          "district": null,
+          "party": null,
+          "phone": null,
+          "url": null,
+          "status": "scaffold",
+          "source": "Pending Google Civic lookup"
+        },
+        "chamberOfCommerce": {
+          "label": "Chamber of Commerce",
+          "name": "Quitman Area Chamber of Commerce",
+          "url": null,
+          "status": "scaffold",
+          "source": "Naming convention — field verify",
+          "note": "Confirm executive director and membership event calendar"
+        },
+        "rotaryClub": {
+          "label": "Rotary Club",
+          "name": "Rotary Club of Quitman",
+          "status": "scaffold",
+          "source": "Naming convention — field verify at rotary.org",
+          "note": "Recruit club president or service chair for validator conversation"
+        },
+        "mainHighSchool": {
+          "label": "Main high school",
+          "name": "Quitman High School",
+          "title": "Quitman area school district (verify with ADE)",
+          "status": "scaffold",
+          "source": "Default naming — verify with ADE"
+        },
+        "schoolDistrict": {
+          "label": "School district",
+          "name": "Quitman area school district (verify with ADE)",
+          "status": "scaffold",
+          "source": "ADE / district website — field verify"
+        },
+        "localGovernment": {
+          "label": "City government",
+          "name": "Quitman Mayor & City Council",
+          "title": "Mayor / City Council",
+          "phone": null,
+          "url": null,
+          "status": "scaffold",
+          "source": "Municipal website — field verify",
+          "note": "Request clerk liaison meeting for registration partnership"
+        },
+        "mediaMarket": {
+          "label": "Media market",
+          "name": "Quitman · Cleburne County — local paper + county-seat radio (verify)",
+          "status": "inherited",
+          "source": "County + city influence tags"
+        },
+        "fieldValidatorTargets": {
+          "label": "Validator targets",
+          "name": "Pastor or faith coalition leader who can validate nonpartisan election-service framing · Veteran, Rotarian, or civic club officer for relationship persuasion",
           "status": "inherited",
           "source": "Influence tags + county mission"
         }

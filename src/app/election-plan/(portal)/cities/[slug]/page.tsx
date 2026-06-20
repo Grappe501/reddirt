@@ -41,7 +41,7 @@ export default async function CityLocationBriefPage({ params }: Props) {
   if (!brief) notFound();
 
   const countyKpi = getCountyByName(data, brief.county);
-  const countySlug = countyKpi?.slug ?? brief.county.toLowerCase().replace(/\s+/g, "-");
+  const countySlug = countyKpi?.slug ?? brief.county.toLowerCase().replace(/\s+/g, "-").replace(/-county$/, "");
   const strikeTeam = getCountyStrikeTeamByName(brief.county);
   const siblingCities = getCitiesInCounty(data.cities, brief.county);
   const fieldEvents = fieldEventsForLocation(data.executiveCalendar.entries, {

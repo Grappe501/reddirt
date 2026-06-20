@@ -2,8 +2,9 @@ import Link from "next/link";
 
 import { CityElectionIntelPanel } from "@/components/election-plan/CityElectionIntelPanel";
 import { CityIntelligenceEnrichmentPanel } from "@/components/election-plan/CityIntelligenceEnrichmentPanel";
+import { CityModelVotersPanel } from "@/components/election-plan/CityModelVotersPanel";
+import { CityStrategicPlanPanel } from "@/components/election-plan/CityStrategicPlanPanel";
 import { VoterFileCityIntelSection } from "@/components/election-plan/VoterFileLocationIntelPanel";
-import { LocationAudienceStrip } from "@/components/election-plan/voter-audience/LocationAudienceStrip";
 import { LocationFundraisingPanel } from "@/components/election-plan/LocationFundraisingPanel";
 import { CityVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
@@ -22,6 +23,7 @@ import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/t
 import type { FieldEntryLocationSummary } from "@/lib/election-plan/field-entry/types";
 import {
   cityLocationsHubHref,
+  cityLocationBriefSectionHref,
   countyPlaybookHref,
   locationBriefMasterPlanHref,
 } from "@/lib/election-plan/location-links";
@@ -132,20 +134,84 @@ export function CityLocationBriefPanel({
         </div>
       </div>
 
+      <nav className="mb-6 flex flex-wrap gap-2 text-xs">
+        {cityIntelligence ? (
+          <a
+            href={cityLocationBriefSectionHref(brief.slug, "place-profile")}
+            className="rounded-full border border-[var(--ep-border)] px-3 py-1 font-semibold hover:border-[var(--ep-gold)]"
+          >
+            Place profile
+          </a>
+        ) : null}
+        {cityAudience ? (
+          <a
+            href={cityLocationBriefSectionHref(brief.slug, "model-voters")}
+            className="rounded-full border border-[var(--ep-border)] px-3 py-1 font-semibold hover:border-[var(--ep-gold)]"
+          >
+            Model voters
+          </a>
+        ) : null}
+        <a
+          href={cityLocationBriefSectionHref(brief.slug, "strategic-plan")}
+          className="rounded-full border border-[var(--ep-border)] px-3 py-1 font-semibold hover:border-[var(--ep-gold)]"
+        >
+          Strategic plan
+        </a>
+        <a
+          href={cityLocationBriefSectionHref(brief.slug, "brief-board")}
+          className="rounded-full border border-[var(--ep-border)] px-3 py-1 font-semibold hover:border-[var(--ep-gold)]"
+        >
+          Brief board
+        </a>
+      </nav>
+
       {cityIntelligence ? (
         <CityIntelligenceEnrichmentPanel profile={cityIntelligence} countySlug={countySlug} />
       ) : null}
 
-      <VoterFileCityIntelSection
-        citySlug={brief.slug}
-        cityName={brief.name}
-        countySlug={countySlug}
-        countyName={brief.county}
-      />
+      {cityAudience ? (
+        <CityModelVotersPanel overlay={cityAudience} voteTarget={brief.targetVotes} />
+      ) : null}
 
-      {cityAudience ? <LocationAudienceStrip overlay={cityAudience} /> : null}
+      <CityStrategicPlanPanel brief={brief} />
 
-      {cityElectionIntel ? <CityElectionIntelPanel intel={cityElectionIntel} /> : null}
+      <div id="brief-board" className="scroll-mt-24">
+        <div className="ep-card ep-priority-card mb-4 border-l-4 border-[var(--ep-gold)]">
+          <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Brief board</h2>
+          <p className="mt-3 text-base leading-relaxed text-[var(--ep-navy-muted)]">{brief.briefBoard}</p>
+        </div>
+        <NarrativeBlock title="What is going on here">{brief.situation}</NarrativeBlock>
+      </div>
+
+      <div className="ep-card mb-8">
+        <h2 className="font-heading text-lg font-bold">Kelly talking points</h2>
+        <div className="mt-4 space-y-4">
+          {brief.kellyTalkingPoints.map((tp) => (
+            <blockquote
+              key={tp}
+              className="border-l-4 border-[var(--ep-navy)] pl-4 text-sm italic leading-relaxed text-[var(--ep-navy)]"
+            >
+              {tp}
+            </blockquote>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-8 grid gap-4 lg:grid-cols-3">
+        <NarrativeBlock title="House party goals">{brief.housePartyGoals}</NarrativeBlock>
+        <NarrativeBlock title="Volunteer goals">{brief.volunteerGoals}</NarrativeBlock>
+        <NarrativeBlock title="Registration goals">{brief.registrationGoals}</NarrativeBlock>
+      </div>
+
+      {brief.numericTargets ? (
+        <CityNumericTargetsPanel targets={brief.numericTargets} countyName={brief.county} />
+      ) : null}
+
+      {specialKpi ? (
+        <div className="mb-8">
+          <SpecialKpiGoalCard goal={specialKpi} variant="panel" />
+        </div>
+      ) : null}
 
       {immersionMission ? (
         <div className="mb-8">
@@ -227,47 +293,14 @@ export function CityLocationBriefPanel({
         cityName={brief.name}
       />
 
-      <div className="ep-card ep-priority-card mb-8 border-l-4 border-[var(--ep-gold)]">
-        <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Brief board</h2>
-        <p className="mt-3 text-base leading-relaxed text-[var(--ep-navy-muted)]">{brief.briefBoard}</p>
-      </div>
+      <VoterFileCityIntelSection
+        citySlug={brief.slug}
+        cityName={brief.name}
+        countySlug={countySlug}
+        countyName={brief.county}
+      />
 
-      <div className="mb-8 space-y-4">
-        <NarrativeBlock title="What is going on here">{brief.situation}</NarrativeBlock>
-        <NarrativeBlock title="How we penetrate">{brief.penetration}</NarrativeBlock>
-        <NarrativeBlock title="What we are trying to accomplish">{brief.accomplishment}</NarrativeBlock>
-        <NarrativeBlock title="Messaging in this location">{brief.messaging}</NarrativeBlock>
-      </div>
-
-      <div className="ep-card mb-8">
-        <h2 className="font-heading text-lg font-bold">Kelly talking points</h2>
-        <div className="mt-4 space-y-4">
-          {brief.kellyTalkingPoints.map((tp) => (
-            <blockquote
-              key={tp}
-              className="border-l-4 border-[var(--ep-navy)] pl-4 text-sm italic leading-relaxed text-[var(--ep-navy)]"
-            >
-              {tp}
-            </blockquote>
-          ))}
-        </div>
-      </div>
-
-      <div className="mb-8 grid gap-4 lg:grid-cols-3">
-        <NarrativeBlock title="House party goals">{brief.housePartyGoals}</NarrativeBlock>
-        <NarrativeBlock title="Volunteer goals">{brief.volunteerGoals}</NarrativeBlock>
-        <NarrativeBlock title="Registration goals">{brief.registrationGoals}</NarrativeBlock>
-      </div>
-
-      {brief.numericTargets ? (
-        <CityNumericTargetsPanel targets={brief.numericTargets} countyName={brief.county} />
-      ) : null}
-
-      {specialKpi ? (
-        <div className="mb-8">
-          <SpecialKpiGoalCard goal={specialKpi} variant="panel" />
-        </div>
-      ) : null}
+      {cityElectionIntel ? <CityElectionIntelPanel intel={cityElectionIntel} /> : null}
 
       <div className="mb-8">
         <LocationFieldEventsPanel

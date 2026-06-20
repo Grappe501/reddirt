@@ -43,6 +43,15 @@ export type VoterAudienceProfile = {
   homeCities: string[];
 };
 
+export type LocationAudienceProfileEstimate = {
+  profileId: string;
+  weightPct: number;
+  /** Planning slice of SOS active registration — not a census claim */
+  estimatedRegisteredPool: number;
+  /** Planning slice of city/county vote target for this persona */
+  estimatedVoteTarget: number;
+};
+
 export type LocationAudienceOverlay = {
   slug: string;
   name: string;
@@ -51,6 +60,8 @@ export type LocationAudienceOverlay = {
   populationNote: string | null;
   /** Ordered — first is primary “speak to” for this place */
   profileIds: string[];
+  /** Optional planning estimates from voter-file rollups + vote targets */
+  profileEstimates?: LocationAudienceProfileEstimate[];
   makeupNote: string;
   sources: string[];
 };
