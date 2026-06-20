@@ -24,7 +24,7 @@ const steps = buildDay3PathwaySteps();
 assert.ok(steps.length >= 8, "Day 3 pathway should have blocks + rehearsals + close");
 assert.equal(getFirstDay3PathwayStep().id, DAY3_MINIMUM_BLOCK_IDS[0]);
 assert.ok(isKellyDay3StreamlinedPath(), "Kelly streamlined Day 3 flag should be on by default");
-assert.ok(DEBATE_PREP_DAY3_RELEASE_VERSION.includes("pass3"));
+assert.ok(DEBATE_PREP_DAY3_RELEASE_VERSION.includes("day-3-superiority-map"));
 assert.ok(DAY3_PATHWAY_STORAGE_KEY.includes("kelly-day3-pathway"));
 
 const optionalExample = steps.find((s) => s.kind === "example");

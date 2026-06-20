@@ -20,6 +20,10 @@ import {
   DAY2_MICRO_LESSON_ANCHORS,
 } from "../src/lib/election-plan/day2-supplement-anchors";
 import {
+  DAY3_CONCEPT_ANCHORS,
+  DAY3_MICRO_LESSON_ANCHORS,
+} from "../src/lib/election-plan/day3-supplement-anchors";
+import {
   buildDay2PathwaySteps,
   DAY2_EVENING_REVIEW,
   DAY2_MINIMUM_BLOCK_IDS,
@@ -31,9 +35,19 @@ import { DAY1_BLOCK_STUDY, getDay1BlockStudy } from "../src/lib/election-plan/de
 import { DAY2_BLOCK_STUDY, getDay2BlockStudy } from "../src/lib/election-plan/debatePrepDay2BlockStudy";
 import { getDay1OpponentExampleStudy } from "../src/lib/election-plan/debatePrepDay1OpponentExampleStudy";
 import { getDay2OpponentExampleStudy } from "../src/lib/election-plan/debatePrepDay2OpponentExampleStudy";
+import { DEBATE_PREP_DAY3_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day3-release";
+import { DAY3_BLOCK_STUDY, getDay3BlockStudy } from "../src/lib/election-plan/debatePrepDay3BlockStudy";
+import { getDay3OpponentExampleStudy } from "../src/lib/election-plan/debatePrepDay3OpponentExampleStudy";
+import {
+  buildDay3PathwaySteps,
+  DAY3_EVENING_REVIEW,
+  DAY3_MINIMUM_BLOCK_IDS,
+  isDay3PathwayStepOptional,
+} from "../src/lib/election-plan/day3-learning-pathway";
 import {
   DAY1_ID,
   DAY2_ID,
+  DAY3_ID,
   listDayBlocksDrillDown,
   listDayConcepts,
   listDayMicroLessonsDrillDown,
@@ -155,6 +169,7 @@ const conceptPage = fs.readFileSync(
 );
 assert.ok(conceptPage.includes("ElectionPlanDay1SupplementFooter"));
 assert.ok(conceptPage.includes("ElectionPlanDay2SupplementFooter"));
+assert.ok(conceptPage.includes("ElectionPlanDay3SupplementFooter"));
 
 const drillPage = fs.readFileSync(
   path.join(root, "app/election-plan/(portal)/debate-prep/days/[dayId]/drills/[drillId]/page.tsx"),
@@ -163,6 +178,65 @@ const drillPage = fs.readFileSync(
 assert.ok(drillPage.includes("Then scan — presence"));
 assert.ok(drillPage.includes("DAY1_ID"));
 
+// --- Day 3 parity (vs Day 2 bar) ---
+const day3Steps = buildDay3PathwaySteps();
+const day3Kinds = countByKind(day3Steps);
+const day3Micro = listDayMicroLessonsDrillDown(DAY3_ID);
+
+assert.equal(listDayBlocksDrillDown(DAY3_ID).length, 4, "Day 3 has four intensive blocks");
+assert.equal(listDayConcepts(DAY3_ID).length, 6);
+assert.ok(Math.abs(day3Steps.length - day2Steps.length) <= 3, "Day 3 pathway steps within ±3 of Day 2 (4 vs 5 blocks)");
+
+const day3Minutes = day3Steps.reduce((sum, s) => sum + s.minutes, 0);
+assert.ok(day3Minutes >= day2Minutes * 0.75, "Day 3 pathway minutes comparable to Day 2 (4 blocks vs 5)");
+
+assert.equal(DAY3_EVENING_REVIEW.length, DAY2_EVENING_REVIEW.length);
+assert.equal(DAY3_MINIMUM_BLOCK_IDS.length, 2);
+
+assert.equal(day3Kinds.block, 4);
+assert.equal(day3Kinds.rehearsal, 2);
+assert.equal(day3Kinds.drill, 1);
+assert.equal(day3Kinds.close, 1);
+
+const d3Depth = studyDepthScore(Object.keys(DAY3_BLOCK_STUDY), getDay3BlockStudy);
+const day3DepthRatio = listDayBlocksDrillDown(DAY3_ID).length / listDayBlocksDrillDown(DAY2_ID).length;
+assert.ok(
+  d3Depth.phases >= d2Depth.phases * day3DepthRatio * 0.9,
+  "Day 3 block study phases should match Day 2 depth (4 vs 5 blocks)",
+);
+assert.ok(
+  d3Depth.deepSections >= d2Depth.deepSections * day3DepthRatio * 0.85,
+  "Day 3 deep sections should match Day 2",
+);
+assert.equal(d3Depth.claimsGates, 4, "all four Day 3 blocks should have claims gates");
+
+for (const concept of listDayConcepts(DAY3_ID)) {
+  assert.ok(DAY3_CONCEPT_ANCHORS[concept.id], `Day 3 concept ${concept.id} needs supplement anchor`);
+}
+for (const lesson of day3Micro) {
+  assert.ok(DAY3_MICRO_LESSON_ANCHORS[lesson.id], `Day 3 micro-lesson ${lesson.id} needs anchor`);
+}
+
+const d3Example = getDay3OpponentExampleStudy("ex3-hammer-admin");
+assert.ok(d3Example && d3Example.phases.length >= 4);
+assert.ok((d3Example.deepSections?.length ?? 0) >= 3);
+assert.ok(d3Example.claimsGate?.length);
+
+for (const step of day3Steps) {
+  assert.ok(!step.href.includes("/admin/"), `${step.id} must not link to admin on Day 3 pathway`);
+  if (step.kind === "example") {
+    assert.ok(isDay3PathwayStepOptional(step.id), `${step.id} example should be optional`);
+  }
+}
+
+assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v1.0.0");
+
+const microLessonPage = fs.readFileSync(
+  path.join(root, "app/election-plan/(portal)/debate-prep/days/[dayId]/micro-lessons/[lessonId]/page.tsx"),
+  "utf8",
+);
+assert.ok(microLessonPage.includes("ElectionPlanDay3SupplementFooter"));
+
 console.log(
-  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases} · deep ${d1Depth.deepSections}/${d2Depth.deepSections})`,
+  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases})`,
 );

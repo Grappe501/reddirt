@@ -5,6 +5,10 @@ import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutu
 import { ElectionPlanDay1PathwayHubCard } from "@/components/election-plan/ElectionPlanDay1PathwayHubCard";
 import { ElectionPlanDay1StartCard } from "@/components/election-plan/ElectionPlanDay1PathwayPanel";
 import { ElectionPlanDay2StartCard, ElectionPlanDay2PathwayHubCard } from "@/components/election-plan/ElectionPlanDay2PathwayPanel";
+import {
+  ElectionPlanDay3StartCard,
+  ElectionPlanDay3PathwayHubCard,
+} from "@/components/election-plan/ElectionPlanDay3PathwayPanel";
 import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
@@ -25,12 +29,16 @@ import {
   resolveDebateWeekReferenceDate,
 } from "@/lib/election-plan/debate-prep-hub-tonight";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
-import { DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY2_ID, DAY3_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/election-plan/acca-forum-event";
 
 export function ElectionPlanDebatePrepHubPanel() {
   const referenceDate = resolveDebateWeekReferenceDate();
-  const focusDay2 = debatePrepHubPrimaryDayId(referenceDate) === DAY2_ID;
+  const primaryDayId = debatePrepHubPrimaryDayId(referenceDate);
+  const focusDay3 = primaryDayId === DAY3_ID;
+  const focusDay2 = primaryDayId === DAY2_ID;
+  const pathwayDayLabel = focusDay3 ? "3" : focusDay2 ? "2" : "1";
+
   let snapshot;
   try {
     snapshot = buildDebatePrepSystemV8Snapshot(referenceDate);
@@ -54,9 +62,11 @@ export function ElectionPlanDebatePrepHubPanel() {
     );
   }
 
-  const hubSummary = focusDay2
-    ? "Day 2 tonight: watch before you counter. Three Hammer tells, trap lanes 1–2 until boring — one pathway, tap Continue on each page."
-    : "Day 1 tonight: body, breath, author-vs-administrator, then your 90-second opening. One pathway — tap Continue on each page. Film and trap lanes are Day 2.";
+  const hubSummary = focusDay3
+    ? "Day 3 tonight: stack three qualifications until the list feels boring — organization history beats bill lists. Manual + claims gate minimum; one pathway, tap Continue on each page."
+    : focusDay2
+      ? "Day 2 tonight: watch before you counter. Three Hammer tells, trap lanes 1–2 until boring — one pathway, tap Continue on each page."
+      : "Day 1 tonight: body, breath, author-vs-administrator, then your 90-second opening. One pathway — tap Continue on each page. Film and trap lanes are Day 2.";
 
   return (
     <>
@@ -69,7 +79,32 @@ export function ElectionPlanDebatePrepHubPanel() {
 
       <KellyPageSummary summary={hubSummary} />
 
-      {focusDay2 ? (
+      {focusDay3 ? (
+        <>
+          <ElectionPlanDay3StartCard />
+          <ElectionPlanDay3PathwayHubCard />
+
+          <details className="ep-card mb-8 p-5 text-sm">
+            <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
+              Day 2 complete? Review Day 2 pathway
+            </summary>
+            <div className="mt-4 space-y-0">
+              <ElectionPlanDay2StartCard />
+              <ElectionPlanDay2PathwayHubCard />
+            </div>
+          </details>
+
+          <details className="ep-card mb-8 p-5 text-sm">
+            <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
+              Day 1 complete? Review Day 1 pathway
+            </summary>
+            <div className="mt-4 space-y-0">
+              <ElectionPlanDay1StartCard />
+              <ElectionPlanDay1PathwayHubCard />
+            </div>
+          </details>
+        </>
+      ) : focusDay2 ? (
         <>
           <ElectionPlanDay2StartCard />
           <ElectionPlanDay2PathwayHubCard />
@@ -98,7 +133,7 @@ export function ElectionPlanDebatePrepHubPanel() {
           <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Full debate week</p>
           <p className="mt-1 font-heading text-2xl font-bold text-[var(--ep-navy)]">{snapshot.readinessPct}%</p>
           <p className="text-xs text-[var(--ep-navy-muted)]">
-            Staff composite (forum intel + 7-day course) — not your Day {focusDay2 ? "2" : "1"} bar above.
+            Staff composite (forum intel + 7-day course) — not your Day {pathwayDayLabel} bar above.
           </p>
         </div>
         <div>
@@ -111,7 +146,7 @@ export function ElectionPlanDebatePrepHubPanel() {
 
       <details className="ep-card mb-8 p-5 text-sm">
         <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
-          Staff tonight package checklist (optional — Day {focusDay2 ? "2" : "1"} pathway is primary)
+          Staff tonight package checklist (optional — Day {pathwayDayLabel} pathway is primary)
         </summary>
         <div className="mt-4">
           <DebatePrepTonightPackageClient
@@ -124,7 +159,7 @@ export function ElectionPlanDebatePrepHubPanel() {
 
       <details className="ep-card mb-8 p-5 text-sm">
         <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
-          Reference tonight (optional — after {focusDay2 ? "Day 2" : "Day 1"} blocks)
+          Reference tonight (optional — after Day {pathwayDayLabel} blocks)
         </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <Link href={EP_VOTER_AUDIENCES_HREF} className="rounded-lg border border-violet-200 bg-violet-50/40 p-4 hover:border-violet-400">
@@ -134,13 +169,13 @@ export function ElectionPlanDebatePrepHubPanel() {
           <Link href={epLegislativeIntel2021Href()} className="rounded-lg border border-violet-200 p-4 hover:border-violet-400">
             <p className="text-xs font-bold uppercase text-violet-950">2021 bills</p>
             <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-              {focusDay2 ? "Trap lane 2 context — clerk frame only" : "For Day 2+ — not required tonight"}
+              {focusDay2 || focusDay3 ? "Trap lane context — clerk frame only" : "For Day 2+ — not required tonight"}
             </p>
           </Link>
           <Link href={epLegislativeIntel2025Href()} className="rounded-lg border border-amber-200 p-4 hover:border-amber-400">
             <p className="text-xs font-bold uppercase text-amber-950">2025 petitions</p>
             <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-              {focusDay2 ? "Contrast without act-number debates" : "For Day 2+ — not required tonight"}
+              {focusDay2 || focusDay3 ? "Contrast without act-number debates" : "For Day 2+ — not required tonight"}
             </p>
           </Link>
           <Link href={EP_DEBATE_QUESTIONS_HREF} className="rounded-lg border border-violet-200 p-4 hover:border-violet-400">
@@ -150,13 +185,13 @@ export function ElectionPlanDebatePrepHubPanel() {
           <Link href={EP_OPPONENT_BIOS_HREF} className="rounded-lg border border-rose-200 p-4 hover:border-rose-400">
             <p className="text-xs font-bold uppercase text-rose-900">Opponent bios</p>
             <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-              {focusDay2 ? "Hammer + Pakko after film room" : "Best after Day 2 film room"}
+              {focusDay2 ? "Hammer + Pakko after film room" : focusDay3 ? "Re-read after qualification stack" : "Best after Day 2 film room"}
             </p>
           </Link>
           <Link href={EP_DEBATE_PREP_WAR_ROOM_HREF} className="rounded-lg border border-[var(--ep-gold)]/40 p-4 hover:border-[var(--ep-gold)]">
             <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">War room</p>
             <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-              {focusDay2 ? "Trap lanes 1–2 — open from pathway blocks" : "Trap lanes — Day 2 onward"}
+              {focusDay2 ? "Trap lanes 1–2 — open from pathway blocks" : focusDay3 ? "Offense lanes — after claims gate" : "Trap lanes — Day 2 onward"}
             </p>
           </Link>
         </div>

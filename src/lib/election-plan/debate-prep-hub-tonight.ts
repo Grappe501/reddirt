@@ -1,15 +1,18 @@
 /**
  * Which intensive day is "tonight" on the debate-prep hub (calendar-driven).
  */
-import { DAY1_ID, DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { getFirstDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getFirstDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
+import { getFirstDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
 import {
   DEBATE_WEEK_INTENSIVE_DAYS,
   type IntensiveDayId,
 } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export const DEFAULT_DEBATE_WEEK_TODAY = "2026-06-19";
+
+export type DebatePrepHubPrimaryDayId = typeof DAY1_ID | typeof DAY2_ID | typeof DAY3_ID;
 
 export function resolveDebateWeekReferenceDate(referenceDate?: string): string {
   return referenceDate ?? process.env.DEBATE_WEEK_TODAY ?? DEFAULT_DEBATE_WEEK_TODAY;
@@ -25,14 +28,18 @@ export function isDebatePrepTonightDay(dayId: IntensiveDayId, referenceDate?: st
   return resolveDebatePrepTonightDayId(referenceDate) === dayId;
 }
 
-export function debatePrepHubPrimaryDayId(referenceDate?: string): typeof DAY1_ID | typeof DAY2_ID {
+export function debatePrepHubPrimaryDayId(referenceDate?: string): DebatePrepHubPrimaryDayId {
   const tonight = resolveDebatePrepTonightDayId(referenceDate);
+  if (tonight === DAY3_ID) return DAY3_ID;
   if (tonight === DAY2_ID) return DAY2_ID;
   return DAY1_ID;
 }
 
 export function buildDebatePrepPathwayTonightFocus(referenceDate?: string): string {
   const primaryDayId = debatePrepHubPrimaryDayId(referenceDate);
+  if (primaryDayId === DAY3_ID) {
+    return `Day 3 pathway — start ${getFirstDay3PathwayStep().label}. Manual + claims gate minimum tonight.`;
+  }
   if (primaryDayId === DAY2_ID) {
     return `Day 2 pathway — start ${getFirstDay2PathwayStep().label}. Film tells + trap lane 1 minimum tonight.`;
   }

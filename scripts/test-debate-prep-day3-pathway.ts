@@ -35,7 +35,7 @@ assert.equal(getFirstDay3PathwayStep().id, DAY3_MINIMUM_BLOCK_IDS[0]);
 assert.ok(getNextDay3PathwayStep(steps[0]!.id), "first step should have a next step");
 assert.equal(DAY3_EVENING_REVIEW.length, 3);
 assert.ok(DAY3_DAY4_TEASER.href.includes("day-4-forum-intelligence"));
-assert.ok(DEBATE_PREP_DAY3_RELEASE_VERSION.includes("pass3"));
+assert.ok(DEBATE_PREP_DAY3_RELEASE_VERSION.includes("day-3-superiority-map-v1.0.0"));
 
 for (const step of steps) {
   assert.ok(step.href.startsWith("/election-plan/"), `${step.id} href must stay in election-plan portal`);
