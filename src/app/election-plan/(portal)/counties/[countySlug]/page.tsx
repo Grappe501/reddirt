@@ -12,6 +12,7 @@ import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-c
 import { getFosCountyRollup } from "@/lib/election-plan/load-fundraising-operating-system";
 import { loadCountyPlaybookMarkdown } from "@/lib/election-plan/load-county-playbook-markdown";
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
+import { withAsyncTimeout } from "@/lib/election-plan/with-async-timeout";
 import { getCountyVaultStats, queryCountyVaultAssets } from "@/lib/county-vault/queries";
 import type { CountyVaultListItem } from "@/lib/county-vault/types";
 import { resolveDbCountyForVault } from "@/lib/county-vault/resolve-county";
@@ -19,6 +20,10 @@ import { resolveDbCountyForVault } from "@/lib/county-vault/resolve-county";
 type Props = { params: Promise<{ countySlug: string }> };
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 26;
+
+const EMPTY_FIELD_SUMMARY = { entries: [], rollups: [], totalQuantity: 0 };
+const EMPTY_VAULT_STATS = { total: 0, publicCount: 0, withTranscript: 0, videos: 0 };
 
 export function generateStaticParams() {
   const data = loadElectionPlanSnapshot();
@@ -37,6 +42,28 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
+async function loadCountyVaultPreview(countySlug: string): Promise<{
+  vaultStats: typeof EMPTY_VAULT_STATS;
+  vaultPreview: CountyVaultListItem[];
+  vaultCountySlug: string;
+}> {
+  try {
+    const resolved = await withAsyncTimeout(resolveDbCountyForVault(countySlug), 5_000, "county vault resolve");
+    const vaultCountySlug = resolved?.slug ?? countySlug.replace(/-county$/, "");
+    const [vaultStats, vaultPreview] = await withAsyncTimeout(
+      Promise.all([
+        getCountyVaultStats(vaultCountySlug),
+        queryCountyVaultAssets(vaultCountySlug, { limit: 4 }),
+      ]),
+      8_000,
+      "county vault stats",
+    );
+    return { vaultStats, vaultPreview, vaultCountySlug };
+  } catch {
+    return { vaultStats: EMPTY_VAULT_STATS, vaultPreview: [], vaultCountySlug: countySlug.replace(/-county$/, "") };
+  }
+}
+
 export default async function ElectionPlanCountyPage({ params }: Props) {
   const { countySlug } = await params;
   const data = loadElectionPlanSnapshot();
@@ -51,32 +78,19 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
     limit: 8,
   });
   const countyCalendar = buildCountyCalendarBinding(data, county.county);
-  const [fieldEntrySummary, operator, countyIntelResult] = await Promise.all([
-    loadFieldEntriesForLocation({ countySlug: county.slug }),
-    loadCurrentElectionPlanOperator(),
-    loadCountyWorkbenchV3(county).catch(() => null),
+
+  const [fieldEntrySummary, operator, countyIntel, vaultBundle] = await Promise.all([
+    withAsyncTimeout(loadFieldEntriesForLocation({ countySlug: county.slug }), 8_000, "field entries").catch(
+      () => EMPTY_FIELD_SUMMARY,
+    ),
+    loadCurrentElectionPlanOperator().catch(() => null),
+    withAsyncTimeout(loadCountyWorkbenchV3(county), 12_000, "county intel v3").catch(() => null),
+    loadCountyVaultPreview(county.slug),
   ]);
-  const countyIntel = countyIntelResult;
 
   const fosCountyRollup = getFosCountyRollup(county.slug);
   const v4Ops = buildCountyWorkbenchV4OperationalView(strikeTeam, fieldEntrySummary);
   const playbookMarkdown = loadCountyPlaybookMarkdown(county.slug, county.playbookPath);
-
-  const emptyVaultStats = { total: 0, publicCount: 0, withTranscript: 0, videos: 0 };
-  let vaultStats = emptyVaultStats;
-  let vaultPreview: CountyVaultListItem[] = [];
-  const vaultCountySlug = county.slug;
-
-  try {
-    await resolveDbCountyForVault(county.slug);
-    [vaultStats, vaultPreview] = await Promise.all([
-      getCountyVaultStats(vaultCountySlug),
-      queryCountyVaultAssets(vaultCountySlug, { limit: 4 }),
-    ]);
-  } catch {
-    vaultStats = emptyVaultStats;
-    vaultPreview = [];
-  }
 
   return (
     <>
@@ -103,9 +117,9 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
             countyIntel={countyIntel}
             v4Ops={v4Ops}
             playbookMarkdown={playbookMarkdown}
-            vaultStats={vaultStats}
-            vaultPreview={vaultPreview}
-            vaultCountySlug={vaultCountySlug}
+            vaultStats={vaultBundle.vaultStats}
+            vaultPreview={vaultBundle.vaultPreview}
+            vaultCountySlug={vaultBundle.vaultCountySlug}
           />
         </div>
       </div>

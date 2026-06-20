@@ -157,7 +157,13 @@ export async function loadCountyWorkbenchV3(county: ElectionPlanCounty): Promise
   const factoryBrief = loadFactoryBrief(registrySlug);
 
   const [profile, dbCounty, wiki] = await Promise.all([
-    buildCountyPoliticalProfile({ countyName: county.county, fips: fips || undefined }).catch(() => null),
+    buildCountyPoliticalProfile({
+      countyName: county.county,
+      fips: fips || undefined,
+      lite: true,
+      includePrecincts: false,
+      includeOpposition: false,
+    }).catch(() => null),
     prisma.county
       .findFirst({
         where: { OR: [{ slug: registrySlug }, ...(fips ? [{ fips }] : [])] },
@@ -227,7 +233,7 @@ export async function loadCountyWorkbenchV3(county: ElectionPlanCounty): Promise
       secondaryMission: county.secondaryMission,
       recommendedAction: county.recommendedAction,
       pathToVictory: profile.pathToVictory || null,
-      engagementPlan: profile.engagementPlan.thisWeek.slice(0, 5),
+      engagementPlan: profile.engagementPlan?.thisWeek?.slice(0, 5) ?? [],
       vciRank: county.vciRank,
       vci: county.vci,
       tier: county.tier,

@@ -301,6 +301,8 @@ export type BuildCountyPoliticalProfileParams = {
   office?: string;
   includePrecincts?: boolean;
   includeOpposition?: boolean;
+  /** Election Plan county pages — smaller DB fan-out for Netlify Lambda budgets. */
+  lite?: boolean;
 };
 
 export async function buildCountyPoliticalProfile(
@@ -490,7 +492,7 @@ export async function buildCountyPoliticalProfile(
       : Promise.resolve(0),
     prisma.electionCountyResult.findMany({
       where: electionResultWhere,
-      take: 400,
+      take: params.lite ? 80 : 400,
       orderBy: [{ source: { electionDate: "desc" } }],
       include: { source: true, contest: true },
     }),
@@ -513,19 +515,19 @@ export async function buildCountyPoliticalProfile(
             source: { electionName: string; electionDate: Date };
           }[]
         ),
-    countyIdForRel ? prisma.relationalContact.count({ where: { countyId: countyIdForRel } }).catch(() => 0) : 0,
-    countyIdForRel
+    countyIdForRel && !params.lite ? prisma.relationalContact.count({ where: { countyId: countyIdForRel } }).catch(() => 0) : 0,
+    countyIdForRel && !params.lite
       ? prisma.relationalContact.count({ where: { countyId: countyIdForRel, isCoreFive: true } }).catch(() => 0)
       : 0,
-    countyIdForRel
+    countyIdForRel && !params.lite
       ? prisma.relationalContact
           .count({
             where: { countyId: countyIdForRel, nextFollowUpAt: { not: null } },
           })
           .catch(() => 0)
       : 0,
-    countyIdForRel ? prisma.voterRecord.count({ where: { countyId: countyIdForRel } }).catch(() => 0) : 0,
-    countyIdForRel ? prisma.volunteerAsk.count({ where: { countyId: countyIdForRel } }).catch(() => 0) : 0,
+    countyIdForRel && !params.lite ? prisma.voterRecord.count({ where: { countyId: countyIdForRel } }).catch(() => 0) : 0,
+    countyIdForRel && !params.lite ? prisma.volunteerAsk.count({ where: { countyId: countyIdForRel } }).catch(() => 0) : 0,
   ]);
 
   if (relCount > 0) {

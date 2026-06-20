@@ -143,7 +143,7 @@ export function buildCountyMissionImpact(
   victoryTarget?: CountyVictoryTarget | null,
 ): CountyMissionImpact {
   const data = loadElectionPlanSnapshot();
-  const rates = data.lanesOverview.achievementRates;
+  const rates = data.lanesOverview?.achievementRates ?? { lane2: 0, lane3: 0, lane4: 0 };
   const primaryLane = missionLaneKey(county.primaryMission);
   const secondaryLane = missionLaneKey(county.secondaryMission);
 

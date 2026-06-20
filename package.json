@@ -99,6 +99,7 @@
     "opposition:hammer-bills:enrolled-sections": "python scripts/opposition/build-hammer-bill-enrolled-sections.py",
     "agents:test-hammer-bill-enrolled-sections": "tsx scripts/test-hammer-bill-enrolled-sections.ts",
     "agents:test-debate-prep-block-phases": "tsx scripts/test-debate-prep-block-phases.ts",
+    "agents:test-county-operating-center-page": "tsx scripts/test-county-operating-center-page.ts",
     "legislature:discover-videos": "tsx scripts/discover-legislative-videos-for-priority-bills.ts",
     "legislature:process-video-queue": "tsx scripts/process-legislative-video-queue.ts",
     "legislature:chunk-transcripts": "tsx scripts/chunk-legislative-transcripts.ts",
