@@ -1,4 +1,4 @@
-import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
+import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/election-plan/acca-forum-event";
 
 export function AccaForumYoutubeEmbed({ compact }: { compact?: boolean }) {
   const { youtubeVideoId, title, youtubeWatchUrl } = ACCA_2026_SOS_FORUM_EVENT;

@@ -26,7 +26,7 @@ import {
 } from "@/lib/election-plan/debate-prep-hub-tonight";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
 import { DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
-import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
+import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/election-plan/acca-forum-event";
 
 export function ElectionPlanDebatePrepHubPanel() {
   const referenceDate = resolveDebateWeekReferenceDate();
