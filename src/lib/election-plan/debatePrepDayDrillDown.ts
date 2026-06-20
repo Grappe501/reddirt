@@ -1,6 +1,6 @@
 /**
  * Election Plan — per-day drill-down pages (concepts, blocks, examples, rehearsal, micro-lessons, drills).
- * Day 1 and Day 2 wired; other days return empty until expanded.
+ * Days 1–3 wired; other days return empty until expanded.
  */
 import {
   EP_DEBATE_PREP_BRIEFINGS_HREF,
@@ -20,6 +20,7 @@ import {
   epDebatePrepDayRehearsalHref,
   epDebatePrepPsychologySectionHref,
   epOpponentBioHref,
+  epOppositionResearchModuleHref,
   epTrapLaneHref,
 } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepLaneHref } from "@/lib/election-plan/debate-prep-route-map";
@@ -33,10 +34,11 @@ import {
 
 export const DAY1_ID = "day-1-command-foundation" as const satisfies IntensiveDayId;
 export const DAY2_ID = "day-2-read-the-table" as const satisfies IntensiveDayId;
+export const DAY3_ID = "day-3-superiority-map" as const satisfies IntensiveDayId;
 
-export type DrillDownDayId = typeof DAY1_ID | typeof DAY2_ID;
+export type DrillDownDayId = typeof DAY1_ID | typeof DAY2_ID | typeof DAY3_ID;
 
-const DRILL_DOWN_DAY_ID_SET = new Set<IntensiveDayId>([DAY1_ID, DAY2_ID]);
+const DRILL_DOWN_DAY_ID_SET = new Set<IntensiveDayId>([DAY1_ID, DAY2_ID, DAY3_ID]);
 
 export type DrillDownLink = { href: string; label: string };
 
@@ -920,6 +922,351 @@ function buildDay2Drills(): DayCommandDrillDown[] {
   }));
 }
 
+const DAY3_CONCEPTS: DayConceptDrillDown[] = [
+  {
+    id: "overwhelm-with-competence",
+    label: "Overwhelm with competence",
+    summary: "Hammer overwhelms with bill numbers — Kelly overwhelms with three operational stories told slowly and specifically.",
+    sections: [
+      {
+        title: "Competence beats volume",
+        body:
+          "Working memory holds about three items under stress. Stack three Kelly jobs — who you served, what broke, how you fixed it — then stop. Slower + specific beats fast + abstract every time.",
+      },
+      {
+        title: "Not a résumé dump",
+        body:
+          "Listing every job reads as insecurity. Three beats, smile, wait. If Hammer sprays act numbers, pivot to night three of early voting — clerks need an administrator.",
+      },
+    ],
+    practiceSteps: [
+      "Pick three Kelly jobs from executive book / platform chapters.",
+      "Write one clerk-relevant beat per notecard.",
+      "Deliver 90s stack without bill numbers — timer on.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepDayBlockHref(DAY3_ID, "b3-manual"), label: "Manual / framework block" },
+      { href: epDebatePrepDayMicroLessonHref(DAY3_ID, "d3-overwhelm"), label: "Micro-lesson · overwhelm with competence" },
+      { href: EP_EXECUTIVE_BOOK_HREF, label: "Executive book hub" },
+    ],
+  },
+  {
+    id: "three-beats-only",
+    label: "Three beats only",
+    summary: "Stop at three qualification beats — repetition beats breadth on stage.",
+    sections: [
+      {
+        title: "Why three",
+        body:
+          "Day 3 psychology: self-efficacy through mastery. Repeat the same three beats until they feel boring — that is when they will survive adrenaline on stage.",
+      },
+    ],
+    practiceSteps: [
+      "Run qualification stack drill three times.",
+      "Note urge to add a fourth job — mark it for staff research, not stage.",
+      "End with then-scan: smile, pause, hands still.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepDayDrillHref(DAY3_ID, "d3-qual-stack"), label: "Qualification stack drill" },
+      { href: epDebatePrepLaneHref("lane-d3-stack"), label: "Qualification stack lane" },
+    ],
+  },
+  {
+    id: "administrator-vs-author",
+    label: "Administrator vs author",
+    summary: "Writing law and running the office clerks depend on are different jobs — Day 3 stacks Kelly operational history.",
+    sections: [
+      {
+        title: "Hammer's frame vs Kelly's frame",
+        body:
+          "Hammer lists bill numbers as proof he can run SOS. Kelly stacks organizations managed, budgets met, people who got answers under deadline — especially for county clerks.",
+      },
+    ],
+    practiceSteps: [
+      "Speak author vs administrator line once — link to Hammer admin example.",
+      "Rehearse ex3-hammer-admin response if claims gate is green.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepBriefingHref("author-vs-administrator"), label: "Author vs administrator briefing" },
+      { href: epDebatePrepDayExampleHref(DAY3_ID, "ex3-hammer-admin"), label: "Hammer admin example" },
+    ],
+  },
+  {
+    id: "research-question-frame",
+    label: "Research question frame",
+    summary: "Questions signal competence without claims risk — ask for the ledger, do not invent dollar amounts.",
+    sections: [
+      {
+        title: "Funding without fabrication",
+        body:
+          "Clerks care about unfunded mandates. Kelly can ask where CVSGF and federal pass-through dollars landed county-by-county — research frame only unless claims-verified.",
+      },
+    ],
+    practiceSteps: [
+      "Memorize one clerk funding research question.",
+      "Rehearse 60s answer — no numbers unless green in claims ledger.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepDayBlockHref(DAY3_ID, "b3-funding"), label: "Election funding block" },
+      { href: epDebatePrepLaneHref("lane-d3-funding-deep"), label: "Election funding deep lane" },
+      { href: epTrapLaneHref("election-funding"), label: "Trap lane · election funding" },
+    ],
+  },
+  {
+    id: "goal-for-kelly-d3",
+    label: "Goal for Kelly",
+    summary:
+      "Build a mental stack of Kelly advantages — SOS desk experience, clerk relationships, direct democracy organizing, nonprofit administration.",
+    sections: [
+      {
+        title: "Superiority without arrogance",
+        body:
+          "Specific beats abstract. Tell who depended on you and what broke — voters read humility + competence, not bragging.",
+      },
+    ],
+    practiceSteps: [
+      "Write one sentence: which Kelly job story makes clerks nod?",
+      "Read goal from day plan aloud once.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepDayBlockHref(DAY3_ID, "b3-manual"), label: "Manual block" },
+      { href: EP_EXECUTIVE_BOOK_HREF, label: "Executive book" },
+    ],
+  },
+  {
+    id: "success-check-d3",
+    label: "Success check",
+    summary: "Kelly recites three verified superiority points from memory.",
+    sections: [
+      {
+        title: "Evening gate",
+        body:
+          "Three superiority points verified in claims? Offense move felt natural? Any stat red-lined? If yes/no/no — successful Day 3.",
+      },
+    ],
+    practiceSteps: [
+      "Recite three superiority beats without notes.",
+      "Claims-check each fact used today.",
+      "Log one offense move that felt natural vs forced.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepDayBlockHref(DAY3_ID, "b3-claims"), label: "Claims gate block" },
+      { href: epOppositionResearchModuleHref("claims-ledger"), label: "Claims ledger module" },
+    ],
+  },
+];
+
+const DAY3_REHEARSAL: DayRehearsalDrillDown[] = [
+  {
+    id: "rehearse-qualified-90s",
+    label: "90s why I'm qualified",
+    durationLabel: "~90 seconds",
+    script:
+      "I have managed organizations, budgets, and people under deadline — and I have organized statewide with clerks in the room, not just legislators in the Capitol. Nonprofit leadership taught me what breaks when funding is late. Direct democracy organizing taught me what clerks need on the record. That is the administrator job — not reading act numbers on night three of early voting.",
+    presenceNotes: [
+      "Three beats only — stop even if you want to add a fourth job.",
+      "No bill numbers unless claims-verified.",
+      "End with then-scan: smile, pause, wait.",
+      "Slow down if you feel rushed — contrast reads as command.",
+    ],
+    successCheck: [
+      "Under 90 seconds on timer.",
+      "Three distinct Kelly jobs named.",
+      "Administrator frame in first sentence.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepDayDrillHref(DAY3_ID, "d3-qual-stack"), label: "Qualification stack drill" },
+      { href: epDebatePrepDayBlockHref(DAY3_ID, "b3-manual"), label: "Manual block" },
+      { href: epDebatePrepBriefingHref("author-vs-administrator"), label: "Author vs administrator briefing" },
+    ],
+  },
+  {
+    id: "rehearse-clerk-funding-60s",
+    label: "60s clerk funding — research frame",
+    durationLabel: "~60 seconds",
+    script:
+      "I've been researching how election funding flows to counties, and it is hard for the public to find county-by-county accounting. Clerks should not have to guess whether a mandate came with dollars. I will publish a grant ledger as Secretary of State — and I will ask where pass-through funds landed before we add new Capitol mandates.",
+    presenceNotes: [
+      "Research question frame — no invented CVSGF or HAVA totals.",
+      "Look at moderator on pivot from Hammer bill spray.",
+      "Clerk-centered language — not partisan attack.",
+    ],
+    successCheck: [
+      "Under 60 seconds.",
+      "Contains a research question or ledger commitment.",
+      "Zero unsourced dollar amounts.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepDayBlockHref(DAY3_ID, "b3-funding"), label: "Election funding block" },
+      { href: epTrapLaneHref("election-funding"), label: "Trap lane · election funding" },
+      { href: epOppositionResearchModuleHref("claims-ledger"), label: "Claims ledger" },
+    ],
+  },
+];
+
+function buildDay3Examples(): DayExampleDrillDown[] {
+  const plan = getDebateWeekIntensiveDay(DAY3_ID)!;
+  return plan.opponentExamples.map((ex) => ({
+    id: ex.id,
+    opponent: ex.opponent,
+    theirMove: ex.theirMove,
+    kellyResponse: ex.kellyResponse,
+    whyItWorks: ex.whyItWorks,
+    sourceNote: ex.sourceNote,
+    sections: [
+      { title: "What they are doing", body: ex.theirMove },
+      { title: "Kelly pivot", body: ex.kellyResponse },
+      { title: "Why it works", body: ex.whyItWorks },
+      { title: "Claims gate", body: ex.sourceNote },
+    ],
+    alternateLines: [
+      "I've managed organizations, budgets, and people who depend on timely answers — clerks need an administrator on night three of early voting, not a sponsor reading act numbers.",
+      "Writing law and running the office clerks depend on are different jobs — I am asking for the administrator job.",
+      "Rankings measure rhetoric. I measure whether your county clerk got her grant question answered this week.",
+    ],
+    practiceSteps: [
+      "Staff reads Hammer bill-list move verbatim.",
+      "Kelly delivers administrator pivot in 45s without notes.",
+      "Repeat three times; mark complete when boring.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepBriefingHref("author-vs-administrator"), label: "Author vs administrator briefing" },
+      { href: EP_OPPOSITION_RESEARCH_HREF, label: "Opposition research hub" },
+      { href: epDebatePrepDayBlockHref(DAY3_ID, "b3-claims"), label: "Claims gate block" },
+    ],
+  }));
+}
+
+function buildDay3Blocks(): DayBlockDrillDown[] {
+  const plan = getDebateWeekIntensiveDay(DAY3_ID)!;
+  return plan.blocks.map((block) => {
+    const theory = getBlockTheoryExpansion(DAY3_ID, block.id);
+    const sections: Array<{ title: string; body: string }> = [
+      { title: "Activity", body: block.activity },
+      { title: "Why this block", body: block.why },
+    ];
+    if (theory) {
+      sections.push(
+        { title: "Adult-education rationale", body: theory.adultEducationWhy },
+        { title: "What success looks like", body: theory.whatSuccessLooksLike },
+        { title: "Common mistakes", body: theory.commonMistakes.join(" · ") },
+      );
+    }
+
+    const relatedLinks: DrillDownLink[] = [];
+    if (block.id === "b3-manual") {
+      relatedLinks.push(
+        { href: EP_EXECUTIVE_BOOK_HREF, label: "Executive book hub" },
+        { href: epDebatePrepLaneHref("lane-d3-stack"), label: "Qualification stack lane" },
+        { href: epDebatePrepDayConceptHref(DAY3_ID, "three-beats-only"), label: "Three beats only concept" },
+      );
+    }
+    if (block.id === "b3-opposition") {
+      relatedLinks.push(
+        { href: EP_OPPOSITION_RESEARCH_HREF, label: "Opposition research hub" },
+        { href: epDebatePrepLaneHref("lane-d3-offense-stretch"), label: "Offense sequence lane" },
+        { href: epDebatePrepDayConceptHref(DAY3_ID, "administrator-vs-author"), label: "Administrator vs author" },
+      );
+    }
+    if (block.id === "b3-funding") {
+      relatedLinks.push(
+        { href: EP_OPPOSITION_RESEARCH_HREF, label: "Election funding intelligence" },
+        { href: epDebatePrepLaneHref("lane-d3-funding-deep"), label: "Funding research lane" },
+        { href: epTrapLaneHref("election-funding"), label: "Trap lane · election funding" },
+      );
+    }
+    if (block.id === "b3-claims") {
+      relatedLinks.push(
+        { href: epOppositionResearchModuleHref("claims-ledger"), label: "Claims ledger module" },
+        { href: epDebatePrepDayConceptHref(DAY3_ID, "success-check-d3"), label: "Success check concept" },
+        { href: epDebatePrepDayRehearsalHref(DAY3_ID, "rehearse-qualified-90s"), label: "90s qualification rehearsal" },
+      );
+    }
+    if (theory?.stretchLaneId) {
+      relatedLinks.push({ href: epDebatePrepLaneHref(theory.stretchLaneId), label: "Linked drill-down lane" });
+    }
+
+    const practiceSteps: string[] = [];
+    if (block.id === "b3-manual") {
+      practiceSteps.push(
+        "Open executive book — map three pillars to debate answers (one notecard each).",
+        "Pick three Kelly jobs — nonprofit, organizing, clerk partnership.",
+        "90s qualification stack aloud — no bill numbers.",
+      );
+    } else if (block.id === "b3-opposition") {
+      practiceSteps.push(
+        "Skim six offensive moves in opposition research — pick two that feel natural.",
+        "Rehearse 90s each — contrast on job fit, not smear.",
+        "Run chosen lines through claims gate before stage use.",
+      );
+    } else if (block.id === "b3-funding") {
+      practiceSteps.push(
+        "Skim election funding traps — research question frame only.",
+        "Memorize one clerk funding question.",
+        "Rehearse 60s answer — no invented dollar amounts.",
+      );
+    } else if (block.id === "b3-claims") {
+      practiceSteps.push(
+        "Open claims ledger — mark every superiority stat green or red.",
+        "Red-line anything NEEDS_REVIEW — do not stage.",
+        "Lock three green superiority points for tomorrow's rehearsal.",
+      );
+    }
+
+    return {
+      blockId: block.id,
+      title: block.title,
+      minutes: block.minutes,
+      activity: block.activity,
+      why: block.why,
+      sections,
+      practiceSteps,
+      relatedLinks,
+    };
+  });
+}
+
+function buildDay3MicroLessons(): DayMicroLessonDrillDown[] {
+  const overlay = getDayDeepOverlay(DAY3_ID);
+  return overlay.microLessons.map((lesson) => ({
+    id: lesson.id,
+    title: lesson.title,
+    readMinutes: lesson.readMinutes,
+    body: lesson.body,
+    practiceSteps: [
+      "Read lesson once — note one sentence to keep.",
+      "Pick three Kelly jobs — say them slower than feels natural.",
+      "Stop at three beats — smile, wait.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepDayBlockHref(DAY3_ID, "b3-manual"), label: "Manual block" },
+      { href: epDebatePrepDayConceptHref(DAY3_ID, "overwhelm-with-competence"), label: "Overwhelm with competence" },
+    ],
+  }));
+}
+
+function buildDay3Drills(): DayCommandDrillDown[] {
+  const overlay = getDayDeepOverlay(DAY3_ID);
+  return overlay.commandDrills.map((drill) => ({
+    id: drill.id,
+    ifTheySay: drill.ifTheySay,
+    youSay: drill.youSay,
+    thenScan: drill.thenScan,
+    claimsNote: drill.claimsNote,
+    practiceSteps: [
+      "Staff reads 'if they say' line.",
+      "Kelly delivers 'you say' — three beats maximum.",
+      "Execute then-scan: stop, smile, wait.",
+      "Repeat three times; mark drill complete when boring.",
+    ],
+    relatedLinks: [
+      { href: epDebatePrepDayRehearsalHref(DAY3_ID, "rehearse-qualified-90s"), label: "90s qualification rehearsal" },
+      { href: epDebatePrepDayBlockHref(DAY3_ID, "b3-manual"), label: "Manual block" },
+      { href: epDebatePrepLaneHref("lane-d3-stack"), label: "Qualification stack lane" },
+    ],
+  }));
+}
+
 export function dayHasDrillDownPages(dayId: IntensiveDayId): boolean {
   return DRILL_DOWN_DAY_ID_SET.has(dayId);
 }
@@ -927,12 +1274,14 @@ export function dayHasDrillDownPages(dayId: IntensiveDayId): boolean {
 export function listDayExampleIds(dayId: IntensiveDayId): string[] {
   if (dayId === DAY1_ID) return [DAY1_EXAMPLE.id];
   if (dayId === DAY2_ID) return buildDay2Examples().map((e) => e.id);
+  if (dayId === DAY3_ID) return buildDay3Examples().map((e) => e.id);
   return [];
 }
 
 export function listDayConcepts(dayId: IntensiveDayId): DayConceptDrillDown[] {
   if (dayId === DAY1_ID) return DAY1_CONCEPTS;
   if (dayId === DAY2_ID) return DAY2_CONCEPTS;
+  if (dayId === DAY3_ID) return DAY3_CONCEPTS;
   return [];
 }
 
@@ -943,6 +1292,7 @@ export function getDayConcept(dayId: IntensiveDayId, conceptId: string): DayConc
 export function listDayBlocksDrillDown(dayId: IntensiveDayId): DayBlockDrillDown[] {
   if (dayId === DAY1_ID) return buildDay1Blocks();
   if (dayId === DAY2_ID) return buildDay2Blocks();
+  if (dayId === DAY3_ID) return buildDay3Blocks();
   return [];
 }
 
@@ -953,12 +1303,14 @@ export function getDayBlockDrillDown(dayId: IntensiveDayId, blockId: string): Da
 export function getDayExampleDrillDown(dayId: IntensiveDayId, exampleId: string): DayExampleDrillDown | undefined {
   if (dayId === DAY1_ID) return exampleId === DAY1_EXAMPLE.id ? DAY1_EXAMPLE : undefined;
   if (dayId === DAY2_ID) return buildDay2Examples().find((e) => e.id === exampleId);
+  if (dayId === DAY3_ID) return buildDay3Examples().find((e) => e.id === exampleId);
   return undefined;
 }
 
 export function listDayRehearsalScripts(dayId: IntensiveDayId): DayRehearsalDrillDown[] {
   if (dayId === DAY1_ID) return DAY1_REHEARSAL;
   if (dayId === DAY2_ID) return DAY2_REHEARSAL;
+  if (dayId === DAY3_ID) return DAY3_REHEARSAL;
   return [];
 }
 
@@ -969,6 +1321,7 @@ export function getDayRehearsalScript(dayId: IntensiveDayId, scriptId: string): 
 export function listDayMicroLessonsDrillDown(dayId: IntensiveDayId): DayMicroLessonDrillDown[] {
   if (dayId === DAY1_ID) return buildDay1MicroLessons();
   if (dayId === DAY2_ID) return buildDay2MicroLessons();
+  if (dayId === DAY3_ID) return buildDay3MicroLessons();
   return [];
 }
 
@@ -979,6 +1332,7 @@ export function getDayMicroLessonDrillDown(dayId: IntensiveDayId, lessonId: stri
 export function listDayCommandDrillsDrillDown(dayId: IntensiveDayId): DayCommandDrillDown[] {
   if (dayId === DAY1_ID) return buildDay1Drills();
   if (dayId === DAY2_ID) return buildDay2Drills();
+  if (dayId === DAY3_ID) return buildDay3Drills();
   return [];
 }
 

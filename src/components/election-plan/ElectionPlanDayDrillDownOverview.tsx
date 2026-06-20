@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   ElectionPlanDay1PathwayPanel,
 } from "@/components/election-plan/ElectionPlanDay1PathwayPanel";
@@ -8,7 +9,8 @@ import {
 import { ElectionPlanDay2ContinueButton } from "@/components/election-plan/ElectionPlanDay2ContinueButton";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { DAY1_ID, DAY2_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { buildDay3PathwaySteps, getFirstDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
 import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import type { IntensiveDayId, IntensiveDayPlan } from "@/lib/intelligence/v4/debateWeekIntensive2026";
@@ -51,6 +53,39 @@ export function ElectionPlanDayDrillDownOverview({
         />
         <VoterAudienceSpeakToBanner profiles={day2Audiences} compact label="Who is watching your pivot" />
         <ElectionPlanDay2PathwayPanel showFullList showDay3Teaser />
+      </>
+    );
+  }
+
+  if (dayId === DAY3_ID) {
+    const first = getFirstDay3PathwayStep();
+    const steps = buildDay3PathwaySteps();
+    return (
+      <>
+        <KellyPageSummary
+          summary={`Stack three operational beats — slower and specific beats fast and abstract. ${dayPageSummary(plan)} Minimum tonight: manual + claims gate if tired.`}
+        />
+        <section className="ep-card mb-8 border-2 border-emerald-300 bg-emerald-50/20 p-6">
+          <p className="text-xs font-bold uppercase text-emerald-900">Day 3 · superiority map</p>
+          <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">{plan.title}</h2>
+          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
+          <Link
+            href={first.href}
+            className="mt-4 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"
+          >
+            Start block 1 · {first.minutes} min →
+          </Link>
+          <ol className="mt-6 space-y-2 text-sm">
+            {steps.map((step) => (
+              <li key={step.id}>
+                <Link href={step.href} className="font-medium text-[var(--ep-navy)] underline-offset-2 hover:underline">
+                  {step.label}
+                </Link>
+                <span className="text-[var(--ep-navy-muted)]"> · {step.minutes} min</span>
+              </li>
+            ))}
+          </ol>
+        </section>
       </>
     );
   }
