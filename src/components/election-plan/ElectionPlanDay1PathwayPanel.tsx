@@ -34,7 +34,7 @@ export function ElectionPlanDay1StartCard() {
       <KellyPageSummary summary="~4 hours if you do everything — or finish posture + author/administrator and stop. That is a successful Day 1." />
       <Link
         href={first.href}
-        className="mt-4 inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90"
+        className="mt-4 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"
       >
         Start block 1 · {first.minutes} min →
       </Link>
@@ -72,6 +72,7 @@ export function ElectionPlanDay1PathwayPanel({
           {steps.map((step, idx) => {
             const isActive = step.id === activeStepId;
             const isPast = activeIdx >= 0 && idx < activeIdx;
+            const optional = step.kind === "example";
             return (
               <li key={step.id}>
                 <Link
@@ -82,6 +83,9 @@ export function ElectionPlanDay1PathwayPanel({
                 >
                   <div className="min-w-0">
                     <p className="text-[10px] font-bold uppercase text-violet-900">{stepIcon(step.kind)}</p>
+                    {optional ? (
+                      <p className="text-[10px] font-bold uppercase text-violet-700">Optional</p>
+                    ) : null}
                     <p className="font-bold text-[var(--ep-navy)]">{step.label}</p>
                     {!isActive ? <p className="mt-1 truncate text-xs text-[var(--ep-navy-muted)]">{step.teaser}</p> : null}
                   </div>

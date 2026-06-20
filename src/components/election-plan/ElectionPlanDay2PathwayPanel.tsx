@@ -36,7 +36,7 @@ export function ElectionPlanDay2StartCard() {
       <KellyPageSummary summary="Watch before you counter. Three Hammer tells tonight — trap lanes 1–2 until boring. Minimum: film worksheet + trap lane 1." />
       <Link
         href={first.href}
-        className="mt-4 inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90"
+        className="mt-4 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"
       >
         Start block 1 · {first.minutes} min →
       </Link>
@@ -57,7 +57,7 @@ export function ElectionPlanDay2PathwayHubCard() {
       <div className="mt-4 flex flex-wrap gap-3">
         <Link
           href={first.href}
-          className="inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white"
+          className="inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
         >
           {first.label} →
         </Link>

@@ -61,7 +61,7 @@ export default async function ElectionPlanDebatePrepDayPage({
             />
             <Link
               href={firstStep.href}
-              className="mb-8 inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white"
+              className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
             >
               Start now · {firstStep.label} →
             </Link>
@@ -73,7 +73,7 @@ export default async function ElectionPlanDebatePrepDayPage({
             <KellyPageSummary summary={`${plan.goalForKelly} One pathway below — watch tells first, then trap lanes until boring.`} />
             <Link
               href={firstStep.href}
-              className="mb-8 inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white"
+              className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
             >
               Start now · {firstStep.label} →
             </Link>

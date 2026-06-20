@@ -20,11 +20,17 @@ import {
   epLegislativeIntel2021Href,
   epLegislativeIntel2025Href,
 } from "@/lib/election-plan/debate-prep-links";
+import {
+  debatePrepHubPrimaryDayId,
+  resolveDebateWeekReferenceDate,
+} from "@/lib/election-plan/debate-prep-hub-tonight";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
+import { DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 
 export function ElectionPlanDebatePrepHubPanel() {
-  const referenceDate = process.env.DEBATE_WEEK_TODAY ?? "2026-06-19";
+  const referenceDate = resolveDebateWeekReferenceDate();
+  const focusDay2 = debatePrepHubPrimaryDayId(referenceDate) === DAY2_ID;
   let snapshot;
   try {
     snapshot = buildDebatePrepSystemV8Snapshot(referenceDate);
@@ -48,6 +54,10 @@ export function ElectionPlanDebatePrepHubPanel() {
     );
   }
 
+  const hubSummary = focusDay2
+    ? "Day 2 tonight: watch before you counter. Three Hammer tells, trap lanes 1–2 until boring — one pathway, tap Continue on each page."
+    : "Day 1 tonight: body, breath, author-vs-administrator, then your 90-second opening. One pathway — tap Continue on each page. Film and trap lanes are Day 2.";
+
   return (
     <>
       <ElectionPlanDebatePrepSubnav />
@@ -57,22 +67,38 @@ export function ElectionPlanDebatePrepHubPanel() {
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--ep-navy-muted)]">{snapshot.intro}</p>
       </header>
 
-      <KellyPageSummary summary="Day 1 tonight: body, breath, author-vs-administrator, then your 90-second opening. One pathway — tap Continue on each page. Bills and trap lanes come on Day 2." />
+      <KellyPageSummary summary={hubSummary} />
 
-      <ElectionPlanDay1StartCard />
+      {focusDay2 ? (
+        <>
+          <ElectionPlanDay2StartCard />
+          <ElectionPlanDay2PathwayHubCard />
 
-      <ElectionPlanDay1PathwayHubCard />
-
-      <ElectionPlanDay2StartCard />
-
-      <ElectionPlanDay2PathwayHubCard />
+          <details className="ep-card mb-8 p-5 text-sm">
+            <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
+              Day 1 complete? Review Day 1 pathway
+            </summary>
+            <div className="mt-4 space-y-0">
+              <ElectionPlanDay1StartCard />
+              <ElectionPlanDay1PathwayHubCard />
+            </div>
+          </details>
+        </>
+      ) : (
+        <>
+          <ElectionPlanDay1StartCard />
+          <ElectionPlanDay1PathwayHubCard />
+          <ElectionPlanDay2StartCard />
+          <ElectionPlanDay2PathwayHubCard />
+        </>
+      )}
 
       <section className="ep-card mb-8 grid gap-4 border-[var(--ep-border)] bg-white/60 p-5 sm:grid-cols-2">
         <div>
           <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Full debate week</p>
           <p className="mt-1 font-heading text-2xl font-bold text-[var(--ep-navy)]">{snapshot.readinessPct}%</p>
           <p className="text-xs text-[var(--ep-navy-muted)]">
-            Staff composite (forum intel + 7-day course) — not your Day 1 bar above.
+            Staff composite (forum intel + 7-day course) — not your Day {focusDay2 ? "2" : "1"} bar above.
           </p>
         </div>
         <div>
@@ -85,7 +111,7 @@ export function ElectionPlanDebatePrepHubPanel() {
 
       <details className="ep-card mb-8 p-5 text-sm">
         <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
-          Staff tonight package checklist (optional — Day 1 pathway is primary)
+          Staff tonight package checklist (optional — Day {focusDay2 ? "2" : "1"} pathway is primary)
         </summary>
         <div className="mt-4">
           <DebatePrepTonightPackageClient
@@ -98,7 +124,7 @@ export function ElectionPlanDebatePrepHubPanel() {
 
       <details className="ep-card mb-8 p-5 text-sm">
         <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
-          Reference tonight (optional — after Day 1 blocks)
+          Reference tonight (optional — after {focusDay2 ? "Day 2" : "Day 1"} blocks)
         </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <Link href={EP_VOTER_AUDIENCES_HREF} className="rounded-lg border border-violet-200 bg-violet-50/40 p-4 hover:border-violet-400">
@@ -107,11 +133,15 @@ export function ElectionPlanDebatePrepHubPanel() {
           </Link>
           <Link href={epLegislativeIntel2021Href()} className="rounded-lg border border-violet-200 p-4 hover:border-violet-400">
             <p className="text-xs font-bold uppercase text-violet-950">2021 bills</p>
-            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">For Day 2+ — not required tonight</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
+              {focusDay2 ? "Trap lane 2 context — clerk frame only" : "For Day 2+ — not required tonight"}
+            </p>
           </Link>
           <Link href={epLegislativeIntel2025Href()} className="rounded-lg border border-amber-200 p-4 hover:border-amber-400">
             <p className="text-xs font-bold uppercase text-amber-950">2025 petitions</p>
-            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">For Day 2+ — not required tonight</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
+              {focusDay2 ? "Contrast without act-number debates" : "For Day 2+ — not required tonight"}
+            </p>
           </Link>
           <Link href={EP_DEBATE_QUESTIONS_HREF} className="rounded-lg border border-violet-200 p-4 hover:border-violet-400">
             <p className="text-xs font-bold uppercase text-violet-900">40 questions</p>
@@ -119,11 +149,15 @@ export function ElectionPlanDebatePrepHubPanel() {
           </Link>
           <Link href={EP_OPPONENT_BIOS_HREF} className="rounded-lg border border-rose-200 p-4 hover:border-rose-400">
             <p className="text-xs font-bold uppercase text-rose-900">Opponent bios</p>
-            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Best after Day 2 film room</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
+              {focusDay2 ? "Hammer + Pakko after film room" : "Best after Day 2 film room"}
+            </p>
           </Link>
           <Link href={EP_DEBATE_PREP_WAR_ROOM_HREF} className="rounded-lg border border-[var(--ep-gold)]/40 p-4 hover:border-[var(--ep-gold)]">
             <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">War room</p>
-            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Trap lanes — Day 2 onward</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
+              {focusDay2 ? "Trap lanes 1–2 — open from pathway blocks" : "Trap lanes — Day 2 onward"}
+            </p>
           </Link>
         </div>
       </details>

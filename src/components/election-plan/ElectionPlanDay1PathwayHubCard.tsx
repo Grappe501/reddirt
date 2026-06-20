@@ -17,7 +17,7 @@ export function ElectionPlanDay1PathwayHubCard() {
       <div className="mt-4 flex flex-wrap gap-3">
         <Link
           href={first.href}
-          className="inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white"
+          className="inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
         >
           {first.label} →
         </Link>

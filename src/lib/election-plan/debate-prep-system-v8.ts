@@ -10,6 +10,7 @@ import {
   type DebatePrepSystemV7Snapshot,
   type DebatePrepTonightPackage,
 } from "@/lib/election-plan/debate-prep-system-v7";
+import { buildDebatePrepPathwayTonightFocus } from "@/lib/election-plan/debate-prep-hub-tonight";
 import {
   buildDebatePrepWorldClassEngine,
   pickSmartTrapLane,
@@ -119,6 +120,13 @@ export function buildDebatePrepSystemV8Snapshot(referenceDate?: string): DebateP
 
   const weakHigh = worldClass.weakSpots.filter((w) => w.severity === "high").length;
 
+  const pathwayTonightFocus = buildDebatePrepPathwayTonightFocus(referenceDate);
+
+  const packageTonightFocus =
+    tonightPackage.stepsCompleted < tonightPackage.steps.length
+      ? `Tonight package ${tonightPackage.stepsCompleted}/${tonightPackage.steps.length} — next: ${tonightPackage.steps.find((s) => !s.completed)?.label ?? "debrief"}`
+      : `Tonight package complete — run world-class dress (${worldClass.worldClassDressCardCount} cards) or T-24h war room.`;
+
   return {
     ...base,
     version: DEBATE_PREP_SYSTEM_V8_VERSION,
@@ -133,10 +141,7 @@ export function buildDebatePrepSystemV8Snapshot(referenceDate?: string): DebateP
         : weakHigh > 0
           ? `${weakHigh} high-priority gap${weakHigh > 1 ? "s" : ""} · fix before stage`
           : worldClass.compositeReadinessLabel,
-    todayFocus:
-      tonightPackage.stepsCompleted < tonightPackage.steps.length
-        ? `Tonight package ${tonightPackage.stepsCompleted}/${tonightPackage.steps.length} — next: ${tonightPackage.steps.find((s) => !s.completed)?.label ?? "debrief"}`
-        : `Tonight package complete — run world-class dress (${worldClass.worldClassDressCardCount} cards) or T-24h war room.`,
+    todayFocus: `${pathwayTonightFocus} Staff package: ${packageTonightFocus}`,
     tonightPackage,
     packageCompletenessPct: Math.round(
       (base.packageCompletenessPct + worldClass.compositeReadinessScore) / 2,

@@ -17,7 +17,9 @@ import {
   EP_DEBATE_PREP_LANES_HREF,
   EP_TRAP_LANES_HREF,
   EP_DEBATE_TECHNIQUES_HREF,
+  epDebatePrepDayHref,
 } from "@/lib/election-plan/debate-prep-links";
+import { DAY1_ID, DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { showFullDebatePrepSubnav } from "@/lib/election-plan/kelly-facing-ui";
 
 const fullTabs = [
@@ -38,6 +40,8 @@ const fullTabs = [
 
 const compactTabs = [
   { href: EP_DEBATE_PREP_HREF, label: "Hub", exact: true },
+  { href: epDebatePrepDayHref(DAY1_ID), label: "Day 1" },
+  { href: epDebatePrepDayHref(DAY2_ID), label: "Day 2" },
   { href: EP_VOTER_AUDIENCES_HREF, label: "Audiences" },
   { href: EP_LEGISLATIVE_INTEL_HREF, label: "Bills" },
   { href: EP_DEBATE_PREP_WAR_ROOM_HREF, label: "War room" },

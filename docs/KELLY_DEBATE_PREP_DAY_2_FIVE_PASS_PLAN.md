@@ -2,7 +2,7 @@
 
 **Doc ID:** KELLY-DP-D2-5PASS  
 **Lane:** `RedDirt/` only  
-**Status:** Day 1 **done on production** · Day 2 **Pass 1–4 done** · Pass 5 hub polish pending  
+**Status:** Day 1 **done on production** · Day 2 **Pass 1–5 done** · ready for Steve sign-off  
 **Created:** 2026-06-18  
 **Goal:** Bring **Day 2 · Read the table** to the same Kelly-facing experience as Day 1 — one linear pathway, phased block study, Continue footers, evening check, Day 3 teaser.
 
@@ -296,9 +296,9 @@ Each pass is a **shippable increment** — deployable to production without brea
 
 **Exit criteria**
 
-- [ ] Hub surfaces Day 2 with same visual weight pattern as Day 1 start card  
-- [ ] Day 1 regression: start card, pathway, deploy still green  
-- [ ] No admin-only URLs in Day 2 pathway without election-plan mirror  
+- [x] Hub surfaces Day 2 with same visual weight pattern as Day 1 start card  
+- [x] Day 1 regression: start card, pathway, deploy still green  
+- [x] No admin-only URLs in Day 2 pathway without election-plan mirror  
 - [ ] Steve sign-off: “Day 2 feels as finishable as Day 1”  
 
 ---
@@ -355,7 +355,7 @@ Passes 2 and 3 can run in parallel after Pass 1 if two builders coordinate; **Pa
 | 2 | 2026-06-19 | cbe30d19 | Block study guides + Day 2 example study panels on all 5 blocks |
 | 3 | 2026-06-20 | 2e296588 | Linear Day 2 pathway UI, Continue footers, hub start cards, evening check + Day 3 teaser |
 | 4 | 2026-06-20 | 480f7600 | Film tell worksheet + ACCA embed, supplement footers on concepts/micro-lessons, thenScan drill UX, pass4 test |
-| 5 | | | |
+| 5 | 2026-06-20 | | Hub calendar focus, Day 2 primary on 6/20, subnav Day 1/2, parity test, pathway study titles |
 
 ---
 
