@@ -13,6 +13,7 @@ import {
   DAY3_ID,
   DAY4_ID,
   DAY5_ID,
+  DAY6_ID,
   type DrillDownDayId,
 } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayDrills } from "@/lib/election-plan/debatePrepDayStaticParams";
@@ -46,6 +47,8 @@ export default async function ElectionPlanDayCommandDrillPage({
             ? "Day 4"
             : dayId === DAY5_ID
               ? "Day 5"
+              : dayId === DAY6_ID
+                ? "Day 6"
               : "Day";
 
   return (
@@ -88,7 +91,7 @@ export default async function ElectionPlanDayCommandDrillPage({
       )}
       <ElectionPlanDrillDownSteps title="Rehearsal loop" steps={drill.practiceSteps} />
       <ElectionPlanDrillDownRelated links={drill.relatedLinks} />
-      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID || dayId === DAY5_ID ? (
+      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID || dayId === DAY5_ID || dayId === DAY6_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={drillId} />
       ) : null}
     </ElectionPlanDrillDownShell>

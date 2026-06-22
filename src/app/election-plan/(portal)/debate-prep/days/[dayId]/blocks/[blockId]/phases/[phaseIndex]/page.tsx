@@ -5,7 +5,7 @@ import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPl
 import { ElectionPlanDrillDownShell, ElectionPlanDrillDownSteps } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { getDayBlockPhaseContext } from "@/lib/election-plan/debatePrepBlockPhase";
 import { staticParamsForDayBlockPhases } from "@/lib/election-plan/debatePrepDayStaticParams";
-import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import {
   epDebatePrepDayBlockHref,
   epDebatePrepDayBlockPhaseHref,
@@ -29,7 +29,8 @@ export default async function ElectionPlanDayBlockPhasePage({
     dayId !== DAY2_ID &&
     dayId !== DAY3_ID &&
     dayId !== DAY4_ID &&
-    dayId !== DAY5_ID
+    dayId !== DAY5_ID &&
+    dayId !== DAY6_ID
   ) {
     notFound();
   }
@@ -52,6 +53,8 @@ export default async function ElectionPlanDayBlockPhasePage({
             ? "Day 4"
             : dayId === DAY5_ID
               ? "Day 5"
+              : dayId === DAY6_ID
+                ? "Day 6"
               : "Day";
   const prevIndex = phaseIndex > 1 ? phaseIndex - 1 : null;
   const nextIndex = phaseIndex < ctx.totalPhases ? phaseIndex + 1 : null;
@@ -117,7 +120,8 @@ export default async function ElectionPlanDayBlockPhasePage({
       dayId === DAY2_ID ||
       dayId === DAY3_ID ||
       dayId === DAY4_ID ||
-      dayId === DAY5_ID ? (
+      dayId === DAY5_ID ||
+      dayId === DAY6_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={blockId} />
       ) : null}
     </ElectionPlanDrillDownShell>

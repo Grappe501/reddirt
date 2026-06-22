@@ -38,6 +38,11 @@ export function isKellyDay5StreamlinedPath(): boolean {
   return KELLY_FACING_ELECTION_PLAN;
 }
 
+/** Kelly Day 6 — full simulation linear pathway */
+export function isKellyDay6StreamlinedPath(): boolean {
+  return KELLY_FACING_ELECTION_PLAN;
+}
+
 export function kellyStudyLeadLabel(): string {
   return KELLY_FACING_ELECTION_PLAN ? "Start here" : "Professor lead";
 }

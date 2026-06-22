@@ -58,3 +58,9 @@ export const DAY6_SIM_SOS_COUNT = 5;
 export const DAY6_SIM_TOTAL_MINUTES = 60;
 
 export const DAY6_SIM_DEBRIEF_MINUTES = 30;
+
+export const DAY6_V3_KELLY_MINIMUM_SUMMARY =
+  "Minimum path (~90 min): full simulation block only — bios lock-in and debrief roll to Wednesday AM if tired. Staff plays Hammer and Pakko; fail in the room, not on broadcast.";
+
+export const DAY6_HUB_TONIGHT_SUMMARY =
+  "Day 6 tonight: 60-minute three-way dress rehearsal — opening, trap lanes, SOS sprint, closing. Use Day 5 when-X-say-Y sheet live. Minimum: b6-sim block only.";

@@ -10,7 +10,9 @@ import {
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { getDayRehearsalScript, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayRehearsalScript, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { buildDay6SimulationSurface } from "@/lib/election-plan/load-day6-simulation-surface";
+import { DAY6_APA_SIM_FRAME } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
 import { staticParamsForDayRehearsals } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
@@ -44,6 +46,8 @@ export default async function ElectionPlanDayRehearsalPage({
             ? "Day 4"
             : dayId === DAY5_ID
               ? "Day 5"
+              : dayId === DAY6_ID
+                ? "Day 6"
               : "Day";
   const audienceHooks =
     dayId === DAY4_ID
@@ -55,6 +59,8 @@ export default async function ElectionPlanDayRehearsalPage({
         : (["county-champion", "author-vs-administrator"] as const);
 
   const forumSurface = dayId === DAY4_ID ? buildDay4ForumPipelineSurface() : null;
+
+  const simSurface = dayId === DAY6_ID ? buildDay6SimulationSurface() : null;
 
   return (
     <ElectionPlanDrillDownShell
@@ -71,6 +77,21 @@ export default async function ElectionPlanDayRehearsalPage({
         </>
       ) : null}
       {dayId === DAY5_ID ? <ElectionPlanDay5RehearsalEmbed /> : null}
+      {dayId === DAY6_ID && simSurface ? (
+        <>
+          <p className="mb-4 rounded-lg border border-violet-300/60 bg-violet-50/40 px-3 py-2 text-xs text-violet-950">
+            {DAY6_APA_SIM_FRAME}
+          </p>
+          <article className="ep-card mb-6 border-violet-200 bg-violet-50/30 p-5 text-sm">
+            <p className="text-xs font-bold uppercase text-violet-900">Opening · 90s</p>
+            <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{simSurface.bookends.opening.script}</p>
+          </article>
+          <article className="ep-card mb-6 border-violet-200 bg-violet-50/30 p-5 text-sm">
+            <p className="text-xs font-bold uppercase text-violet-900">Closing · 60s</p>
+            <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{simSurface.bookends.closing.script}</p>
+          </article>
+        </>
+      ) : null}
       <article className="ep-card border-2 border-emerald-300/50 bg-emerald-50/40 p-5 text-sm">
         <p className="text-xs font-bold uppercase text-emerald-900">Script</p>
         <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{script.script}</p>
@@ -93,7 +114,7 @@ export default async function ElectionPlanDayRehearsalPage({
       </article>
       <ElectionPlanDrillDownRelated links={script.relatedLinks} />
       {dayId === DAY4_ID ? <ElectionPlanDay4HandoffBanner /> : null}
-      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID || dayId === DAY5_ID ? (
+      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID || dayId === DAY5_ID || dayId === DAY6_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={scriptId} />
       ) : null}
     </ElectionPlanDrillDownShell>
