@@ -14,10 +14,11 @@ import {
   ElectionPlanDay4PathwayPanel,
 } from "@/components/election-plan/ElectionPlanDay4PathwayPanel";
 import { ElectionPlanDay4ContinueButton } from "@/components/election-plan/ElectionPlanDay4ContinueButton";
+import { ElectionPlanDay5PathwayStub } from "@/components/election-plan/ElectionPlanDay5PathwayStub";
 import { ElectionPlanNorrisCoalitionDrillPanel } from "@/components/election-plan/ElectionPlanNorrisCoalitionDrillPanel";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { DAY4_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day4-forum-intelligence-copy";
 import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
@@ -109,6 +110,17 @@ export function ElectionPlanDayDrillDownOverview({
           summary={`Listen like an analyst first — the forum transcript is your Rosetta stone. ${dayPageSummary(plan)} Minimum tonight: forum lab ingest if tired.`}
         />
         <ElectionPlanDay4PathwayPanel showFullList showDay5Teaser />
+      </>
+    );
+  }
+
+  if (dayId === DAY5_ID) {
+    return (
+      <>
+        <KellyPageSummary
+          summary={`${plan.goalForKelly} Pre-load when-X-say-Y pairs from Day 4 green lines — timed drills until muscle memory.`}
+        />
+        <ElectionPlanDay5PathwayStub showDay4Review showDay6Teaser />
       </>
     );
   }

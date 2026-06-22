@@ -11,6 +11,8 @@ import {
   DAY1_ID,
   DAY2_ID,
   DAY3_ID,
+  DAY4_ID,
+  DAY5_ID,
   type DrillDownDayId,
 } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayDrills } from "@/lib/election-plan/debatePrepDayStaticParams";
@@ -34,7 +36,17 @@ export default async function ElectionPlanDayCommandDrillPage({
   if (!drill) notFound();
 
   const dayLabel =
-    dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : dayId === DAY3_ID ? "Day 3" : "Day";
+    dayId === DAY1_ID
+      ? "Day 1"
+      : dayId === DAY2_ID
+        ? "Day 2"
+        : dayId === DAY3_ID
+          ? "Day 3"
+          : dayId === DAY4_ID
+            ? "Day 4"
+            : dayId === DAY5_ID
+              ? "Day 5"
+              : "Day";
 
   return (
     <ElectionPlanDrillDownShell

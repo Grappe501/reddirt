@@ -8,7 +8,8 @@ import { getFirstDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathw
 import { getFirstDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
 import { getFirstDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
 import { getFirstDay4PathwayStep } from "@/lib/election-plan/day4-learning-pathway";
-import { dayHasDrillDownPages, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getFirstDay5PathwayStep } from "@/lib/election-plan/day5-learning-pathway";
+import { dayHasDrillDownPages, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { EP_DEBATE_PREP_HREF } from "@/lib/election-plan/debate-prep-links";
 import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import {
@@ -50,7 +51,9 @@ export default async function ElectionPlanDebatePrepDayPage({
           ? getFirstDay3PathwayStep()
           : dayId === DAY4_ID
             ? getFirstDay4PathwayStep()
-            : null;
+            : dayId === DAY5_ID
+              ? getFirstDay5PathwayStep()
+              : null;
 
   return (
     <div className="ep-chapter-body px-6 py-10 lg:px-10">
@@ -110,6 +113,20 @@ export default async function ElectionPlanDebatePrepDayPage({
           <>
             <KellyPageSummary
               summary={`${plan.goalForKelly} Listen like an analyst first — forum lab ingest is the job tonight.`}
+            />
+            <Link
+              href={firstStep.href}
+              className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
+            >
+              Start now · {firstStep.label} →
+            </Link>
+          </>
+        ) : null}
+
+        {dayId === DAY5_ID && firstStep ? (
+          <>
+            <KellyPageSummary
+              summary={`${plan.goalForKelly} Turn Day 4 forum intel into timed when-X-say-Y pairs — claims-green only.`}
             />
             <Link
               href={firstStep.href}
