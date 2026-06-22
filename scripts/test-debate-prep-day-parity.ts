@@ -72,11 +72,24 @@ import { DAY5_HUB_TONIGHT_SUMMARY } from "../src/lib/election-plan/debate-prep-d
 import { DAY5_BLOCK_STUDY, getDay5BlockStudy } from "../src/lib/election-plan/debatePrepDay5BlockStudy";
 import { getDay5OpponentExampleStudy } from "../src/lib/election-plan/debatePrepDay5OpponentExampleStudy";
 import {
+  DAY6_CONCEPT_ANCHORS,
+  DAY6_MICRO_LESSON_ANCHORS,
+} from "../src/lib/election-plan/day6-supplement-anchors";
+import {
+  buildDay6PathwaySteps,
+  DAY6_EVENING_REVIEW,
+  DAY6_MINIMUM_BLOCK_IDS,
+} from "../src/lib/election-plan/day6-learning-pathway";
+import { DEBATE_PREP_DAY6_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day6-release";
+import { DAY6_HUB_TONIGHT_SUMMARY } from "../src/lib/election-plan/debate-prep-day6-simulation-copy";
+import { DAY6_BLOCK_STUDY, getDay6BlockStudy } from "../src/lib/election-plan/debatePrepDay6BlockStudy";
+import {
   DAY1_ID,
   DAY2_ID,
   DAY3_ID,
   DAY4_ID,
   DAY5_ID,
+  DAY6_ID,
   listDayBlocksDrillDown,
   listDayConcepts,
   listDayMicroLessonsDrillDown,
@@ -384,7 +397,60 @@ assert.ok(
 );
 
 assert.ok(conceptPage.includes("ElectionPlanDay5SupplementFooter"));
+assert.ok(conceptPage.includes("ElectionPlanDay6SupplementFooter"));
+
+const hubPanel = fs.readFileSync(
+  path.join(root, "components/election-plan/ElectionPlanDebatePrepHubPanel.tsx"),
+  "utf8",
+);
+assert.ok(hubPanel.includes("ElectionPlanDay6StartCard"), "hub should promote Day 6 start card");
+assert.ok(hubPanel.includes("Day 5 complete? Review Day 5"), "Day 6 hub should collapse Day 5 review");
+
+// --- Day 6 parity (vs Day 5 bar) ---
+const day6Steps = buildDay6PathwaySteps();
+const day6Kinds = countByKind(day6Steps);
+const day6Micro = listDayMicroLessonsDrillDown(DAY6_ID);
+
+assert.equal(listDayBlocksDrillDown(DAY6_ID).length, 5, "Day 6 has five intensive blocks");
+assert.equal(listDayConcepts(DAY6_ID).length, 6);
+assert.ok(day6Steps.length >= day5Steps.length, "Day 6 pathway should be at least as long as Day 5");
+
+const day6Minutes = day6Steps.reduce((sum, s) => sum + s.minutes, 0);
+assert.ok(day6Minutes >= day5Minutes * 0.85, "Day 6 pathway minutes comparable to Day 5");
+
+assert.equal(DAY6_EVENING_REVIEW.length, DAY5_EVENING_REVIEW.length);
+assert.equal(DAY6_MINIMUM_BLOCK_IDS.length, 1);
+
+assert.equal(day6Kinds.block, 5);
+assert.equal(day6Kinds.rehearsal, 1);
+assert.equal(day6Kinds["micro-lesson"], 1);
+assert.equal(day6Kinds["command-drill"], 1);
+assert.equal(day6Kinds.close, 1);
+
+const d6Depth = studyDepthScore(Object.keys(DAY6_BLOCK_STUDY), getDay6BlockStudy);
+assert.equal(d6Depth.claimsGates, 5, "all five Day 6 blocks should have claims gates");
+assert.ok(d6Depth.phases >= d5Depth.phases, "Day 6 block study phases should match or exceed Day 5 depth");
+assert.ok(d6Depth.deepSections >= d5Depth.deepSections * 0.85, "Day 6 deep sections should be substantive");
+
+for (const concept of listDayConcepts(DAY6_ID)) {
+  assert.ok(DAY6_CONCEPT_ANCHORS[concept.id], `Day 6 concept ${concept.id} needs supplement anchor`);
+}
+for (const lesson of day6Micro) {
+  assert.ok(DAY6_MICRO_LESSON_ANCHORS[lesson.id], `Day 6 micro-lesson ${lesson.id} needs anchor`);
+}
+
+for (const step of day6Steps) {
+  assert.ok(!step.href.includes("/admin/"), `${step.id} must not link to admin on Day 6 pathway`);
+}
+
+assert.equal(DEBATE_PREP_DAY6_RELEASE_VERSION, "day-6-full-simulation-v1.0.0");
+assert.equal(debatePrepHubPrimaryDayId("2026-06-24"), DAY6_ID);
+assert.ok(DAY6_HUB_TONIGHT_SUMMARY.includes("dress rehearsal"), "Day 6 hub summary names full dress rehearsal");
+assert.ok(
+  buildDebatePrepPathwayTonightFocus("2026-06-24").includes("Day 6 pathway"),
+  "tonight focus on 2026-06-24 promotes Day 6",
+);
 
 console.log(
-  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · D4 ${day4Steps.length}/${day4Minutes}m · D5 ${day5Steps.length}/${day5Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases}/${d4Depth.phases}/${d5Depth.phases})`,
+  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · D4 ${day4Steps.length}/${day4Minutes}m · D5 ${day5Steps.length}/${day5Minutes}m · D6 ${day6Steps.length}/${day6Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases}/${d4Depth.phases}/${d5Depth.phases}/${d6Depth.phases})`,
 );

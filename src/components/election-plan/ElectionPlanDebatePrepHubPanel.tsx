@@ -17,6 +17,10 @@ import {
   ElectionPlanDay5StartCard,
   ElectionPlanDay5PathwayHubCard,
 } from "@/components/election-plan/ElectionPlanDay5PathwayPanel";
+import {
+  ElectionPlanDay6StartCard,
+  ElectionPlanDay6PathwayHubCard,
+} from "@/components/election-plan/ElectionPlanDay6PathwayPanel";
 import { DebatePrepTonightPackageClient } from "@/components/election-plan/DebatePrepTonightPackageClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
@@ -37,18 +41,20 @@ import {
   resolveDebateWeekReferenceDate,
 } from "@/lib/election-plan/debate-prep-hub-tonight";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
-import { DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { DAY5_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
+import { DAY6_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
 import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/election-plan/acca-forum-event";
 
 export function ElectionPlanDebatePrepHubPanel() {
   const referenceDate = resolveDebateWeekReferenceDate();
   const primaryDayId = debatePrepHubPrimaryDayId(referenceDate);
+  const focusDay6 = primaryDayId === DAY6_ID;
   const focusDay5 = primaryDayId === DAY5_ID;
   const focusDay4 = primaryDayId === DAY4_ID;
   const focusDay3 = primaryDayId === DAY3_ID;
   const focusDay2 = primaryDayId === DAY2_ID;
-  const pathwayDayLabel = focusDay5 ? "5" : focusDay4 ? "4" : focusDay3 ? "3" : focusDay2 ? "2" : "1";
+  const pathwayDayLabel = focusDay6 ? "6" : focusDay5 ? "5" : focusDay4 ? "4" : focusDay3 ? "3" : focusDay2 ? "2" : "1";
 
   let snapshot;
   try {
@@ -73,7 +79,9 @@ export function ElectionPlanDebatePrepHubPanel() {
     );
   }
 
-  const hubSummary = focusDay5
+  const hubSummary = focusDay6
+    ? DAY6_HUB_TONIGHT_SUMMARY
+    : focusDay5
     ? DAY5_HUB_TONIGHT_SUMMARY
     : focusDay4
     ? "Day 4 tonight: forum lab ingest → claims-gated notecard → one 60s counter — transcript stays internal tactical intelligence until verified."
@@ -95,7 +103,32 @@ export function ElectionPlanDebatePrepHubPanel() {
 
       <KellyPageSummary summary={hubSummary} />
 
-      {focusDay5 ? (
+      {focusDay6 ? (
+        <>
+          <ElectionPlanDay6StartCard />
+          <ElectionPlanDay6PathwayHubCard />
+
+          <details className="ep-card mb-8 p-5 text-sm">
+            <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
+              Day 5 complete? Review Day 5 anticipate & capitalize pathway
+            </summary>
+            <div className="mt-4 space-y-0">
+              <ElectionPlanDay5StartCard />
+              <ElectionPlanDay5PathwayHubCard />
+            </div>
+          </details>
+
+          <details className="ep-card mb-8 p-5 text-sm">
+            <summary className="cursor-pointer font-heading text-base font-bold text-[var(--ep-navy)]">
+              Day 4 complete? Review Day 4 forum intel pathway
+            </summary>
+            <div className="mt-4 space-y-0">
+              <ElectionPlanDay4StartCard />
+              <ElectionPlanDay4PathwayHubCard />
+            </div>
+          </details>
+        </>
+      ) : focusDay5 ? (
         <>
           <ElectionPlanDay5StartCard />
           <ElectionPlanDay5PathwayHubCard />
@@ -251,7 +284,9 @@ export function ElectionPlanDebatePrepHubPanel() {
           <Link href={EP_OPPONENT_BIOS_HREF} className="rounded-lg border border-rose-200 p-4 hover:border-rose-400">
             <p className="text-xs font-bold uppercase text-rose-900">Opponent bios</p>
             <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-              {focusDay5
+              {focusDay6
+                ? "Hammer + Pakko memory lines — speak twice before sim"
+                : focusDay5
                 ? "Hammer + Pakko — forum lines feed timed pairs for APA broadcast"
                 : focusDay4
                 ? "Hammer + Pakko after forum lab"
@@ -265,7 +300,9 @@ export function ElectionPlanDebatePrepHubPanel() {
           <Link href={EP_DEBATE_PREP_WAR_ROOM_HREF} className="rounded-lg border border-[var(--ep-gold)]/40 p-4 hover:border-[var(--ep-gold)]">
             <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">War room</p>
             <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-              {focusDay5
+              {focusDay6
+                ? "Full sim block — traps + SOS at moderator pace"
+                : focusDay5
                 ? "Trap lanes 3–6 sprint — open from Day 5 pathway blocks"
                 : focusDay4
                 ? "Trap lanes after SOS map — open from pathway blocks"

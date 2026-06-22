@@ -2,7 +2,7 @@
 
 **Doc ID:** KELLY-DP-D6-5PASS  
 **Lane:** `RedDirt/` only  
-**Status:** Day 1–5 **production parity signed** · Day 6 **not started** (intensive week data exists; no EP pathway spine)  
+**Status:** Day 1–6 **production parity signed** · Day 6 **v1.0.0** on `2026-06-24` hub  
 **Created:** 2026-06-22  
 **Goal:** Bring **Day 6 · Full simulation** to Kelly-facing production parity — one linear pathway, **opening → traps → SOS → closing** dress rehearsal, APA statewide broadcast framing, debrief + readiness audit, **no admin detours** on the minimum path.
 
@@ -297,8 +297,8 @@ Add to `package.json`:
 | 1 | 2026-06-22 | Pass 1 — pathway spine, registry, stub block study, day landing |
 | 2 | 2026-06-22 | Pass 2 — full block study, simulation surface, sim copy |
 | 3 | 2026-06-22 | Pass 3 — pathway UI, Continue footers, Day 6 subnav |
-| 4 | | |
-| 5 | | |
+| 4 | 2026-06-22 | Pass 4 — sim runner, bookends, debrief, readiness audit (`b4de60cd`) |
+| 5 | 2026-06-22 | Pass 5 — hub integration on 2026-06-24, parity test, v1.0.0 sign-off |
 
 ---
 

@@ -62,7 +62,7 @@ assert.ok(getNextDay6PathwayStep(steps[0]!.id), "first step should have a next s
 assert.equal(DAY6_EVENING_REVIEW.length, 3);
 assert.ok(DAY6_DAY5_REVIEW.href.includes("day-5-anticipate-and-capitalize"));
 assert.ok(DAY6_DAY7_TEASER.href.includes("day-7-refine-and-steal-show"));
-assert.equal(DEBATE_PREP_DAY6_RELEASE_VERSION, "day-6-full-simulation-pass4");
+assert.equal(DEBATE_PREP_DAY6_RELEASE_VERSION, "day-6-full-simulation-v1.0.0");
 assert.ok(isKellyDay6StreamlinedPath(), "Kelly Day 6 streamlined path enabled");
 assert.ok(DAY6_PATHWAY_STORAGE_KEY.includes("day6"));
 assert.ok(DAY6_APA_SIM_FRAME.includes("APA"));
