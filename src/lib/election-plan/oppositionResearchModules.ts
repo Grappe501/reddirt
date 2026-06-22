@@ -23,6 +23,14 @@ export type OppositionResearchModule = {
 
 export const OPPOSITION_RESEARCH_EXTRA_MODULES: OppositionResearchModule[] = [
   {
+    id: "gop-primary-election-analysis",
+    title: "Republican primary election analysis",
+    summary:
+      "Executive brief: 2026 GOP SOS primary vs runoff — geographic patterns, turnout collapse, Norris coalition map, and Kelly field utilization.",
+    href: "/election-plan/opposition-research/gop-primary-election-analysis",
+    epHref: epOppositionResearchModuleHref("gop-primary-election-analysis"),
+  },
+  {
     id: "debate-night",
     title: "Debate night card",
     summary: "Kelly's 5-minute pre-stage card — export-ready Hammer lines, top rebuttals, Pakko respect pivots.",

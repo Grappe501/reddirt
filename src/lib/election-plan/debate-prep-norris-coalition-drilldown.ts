@@ -19,7 +19,7 @@ export type NorrisCoalitionDrillLink = {
 export function getNorrisCoalitionStatewideOneLiner(): string {
   const sw = getGopSos2026StatewideSummary();
   if (!sw) {
-    return "2026 GOP SOS runoff was a 918-vote statewide margin — county maps are loading from election data.";
+    return "2026 GOP SOS runoff county map is loading from election data.";
   }
   return `Statewide GOP runoff: Hammer ${sw.runoff.hammerPct.toFixed(1)}% · Norris ${sw.runoff.norrisPct.toFixed(1)}% (${sw.runoff.marginVotes.toLocaleString()}-vote margin). Norris won ${sw.runoff.norrisCountiesWon} counties; Hammer won ${sw.runoff.hammerCountiesWon}.`;
 }

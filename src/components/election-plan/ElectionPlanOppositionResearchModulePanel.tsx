@@ -19,6 +19,7 @@ import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateI
 import { getPrepSectionGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
 import { LegislativeIntelDrillDownPanel } from "@/components/election-plan/LegislativeIntelDrillDownPanel";
+import { ElectionPlanGopPrimaryElectionAnalysisPanel } from "@/components/election-plan/ElectionPlanGopPrimaryElectionAnalysisPanel";
 import { ElectionPlanPakkoOppositionPanel } from "@/components/election-plan/ElectionPlanPakkoOppositionPanel";
 import { loadOppositionResearchCandidateBrief } from "@/lib/election-plan/load-opposition-research-candidate-brief";
 import {
@@ -298,6 +299,9 @@ export function ElectionPlanOppositionResearchModulePanel({ module }: { module: 
         </div>
       );
     }
+
+    case "gop-primary-election-analysis":
+      return <ElectionPlanGopPrimaryElectionAnalysisPanel />;
 
     case "export-ready-lines": {
       const brief = loadOppositionResearchCandidateBrief();

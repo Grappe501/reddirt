@@ -50,12 +50,20 @@ export default async function ElectionPlanOppositionResearchModulePage({
             >
               ← Opposition research hub
             </Link>
-            <p className="mt-3 text-xs font-bold uppercase tracking-[0.24em] text-rose-800">Kim Hammer research</p>
+            <p className="mt-3 text-xs font-bold uppercase tracking-[0.24em] text-rose-800">
+              {moduleId === "gop-primary-election-analysis" ? "Republican primary election analysis" : "Kim Hammer research"}
+            </p>
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{mod.title}</h1>
             <p className="mt-3 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{mod.summary}</p>
           </header>
           {(moduleId === "integrity-foundation-2021" || moduleId === "direct-democracy") ? null : (
-            <KellyPageSummary summary={mod.summary} />
+            <KellyPageSummary
+              summary={
+                moduleId === "gop-primary-election-analysis"
+                  ? "Hammer won by 913 votes statewide — but Norris carried 38 counties. Kelly's path is geographic persuasion, not a GOP pile-on."
+                  : mod.summary
+              }
+            />
           )}
           <ElectionPlanOppositionResearchModulePanel module={mod} />
         </div>

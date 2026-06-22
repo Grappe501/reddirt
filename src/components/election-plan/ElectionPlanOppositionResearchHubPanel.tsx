@@ -3,6 +3,7 @@ import Link from "next/link";
 import { KimHammerModuleNavPanel } from "@/components/admin/intelligence/KimHammerModuleNavPanel";
 import { ElectionPlanPakkoOppositionPanel } from "@/components/election-plan/ElectionPlanPakkoOppositionPanel";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
+import { loadGopSos2026PrimaryElectionAnalysis } from "@/lib/election-plan/load-gop-sos-2026-primary-election-analysis";
 import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateIntelligenceV4";
 import { PETITION_2025_CLUSTER_DEPTH } from "@/lib/intelligence/v4/integrityPackageDepth";
 import { loadOppositionResearchCandidateBrief } from "@/lib/election-plan/load-opposition-research-candidate-brief";
@@ -23,10 +24,14 @@ import {
 export function ElectionPlanOppositionResearchHubPanel() {
   const v4 = loadDebateIntelligenceV4HubPacket();
   const brief = loadOppositionResearchCandidateBrief();
+  const gopAnalysis = loadGopSos2026PrimaryElectionAnalysis();
   const modules = listOppositionResearchModules(v4);
   const kellyPaths = brief.readingPaths.filter((p) => p.audience === "kelly");
   const hammerModules = modules.filter(
-    (m) => !["dossier-pakko", "pakko-quotes", "three-way-geometry", "debate-night"].includes(m.id),
+    (m) =>
+      !["dossier-pakko", "pakko-quotes", "three-way-geometry", "debate-night", "gop-primary-election-analysis"].includes(
+        m.id,
+      ),
   );
   const pakkoModules = modules.filter((m) =>
     ["dossier-pakko", "pakko-quotes", "three-way-geometry"].includes(m.id),
@@ -35,15 +40,28 @@ export function ElectionPlanOppositionResearchHubPanel() {
   return (
     <>
       <header className="mb-6">
-        <p className="text-xs font-bold uppercase tracking-[0.24em] text-rose-800">Opposition research · v2.0</p>
+        <p className="text-xs font-bold uppercase tracking-[0.24em] text-rose-800">Opposition research · v2.1</p>
         <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">Hammer, Pakko &amp; three-way prep</h1>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--ep-navy-muted)]">
-          Kelly starts at the debate night card. Staff drills into bills, claims, and dossiers — same intelligence, two
-          reading speeds.
+          Kelly starts at the debate night card or GOP primary analysis. Staff drills into bills, claims, and dossiers.
         </p>
       </header>
 
       <KellyPageSummary summary={brief.kellyOneLiner} label="Kelly · start here" />
+
+      <Link
+        href={epOppositionResearchModuleHref("gop-primary-election-analysis")}
+        className="ep-pathway-start mb-8 block no-underline"
+      >
+        <p className="ep-pathway-start-eyebrow text-orange-800">Republican primary election analysis · executive brief</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">GOP SOS primary vs runoff · geography</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          {gopAnalysis
+            ? `${gopAnalysis.statewide.norrisRunoffCounties}–${gopAnalysis.statewide.hammerRunoffCounties} county split · ${gopAnalysis.statewide.runoffMarginVotes.toLocaleString()}-vote margin · ${gopAnalysis.coalitionMath.highOpportunityCounties} high-opportunity counties`
+            : "County-level primary + runoff patterns for Kelly field and contrast messaging."}
+        </p>
+        <p className="mt-4 text-sm font-bold text-[var(--ep-navy)]">Open full analysis →</p>
+      </Link>
 
       <Link
         href={EP_OPPOSITION_DEBATE_NIGHT_HREF}
