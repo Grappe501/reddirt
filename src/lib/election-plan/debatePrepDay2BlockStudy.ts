@@ -33,7 +33,7 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         minutesLabel: "0–10 min",
         title: "Setup & worksheet",
         steps: [
-          "Open forum transcript lab — ACCA / Hammer panel recording (election-plan, no admin login).",
+          "Open film room below — five ACCA study clips with YouTube start times (election-plan, no admin login).",
           "Create a tell worksheet: three rows for Hammer, one row for Pakko.",
           "Columns: Tell · What I saw/heard · Kelly pivot phrase (one sentence each).",
           "Set a 90-minute timer — film block ends when timer ends, not when clips feel 'done.'",

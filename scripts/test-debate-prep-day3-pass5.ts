@@ -44,7 +44,7 @@ assert.ok(subnav.includes("Day 3"), "subnav should include Day 3");
 
 const v8 = fs.readFileSync(path.join(process.cwd(), "src/lib/election-plan/debate-prep-system-v8.ts"), "utf8");
 assert.ok(v8.includes("buildDebatePrepPathwayTonightFocus"), "v8 snapshot should use pathway tonight focus");
-assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v1.1.0");
+assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v2.0.0");
 assert.ok(DAY3_CONCEPT_ANCHORS["success-check-d3"]?.continueFromStepId === "b3-claims");
 
 console.log("test-debate-prep-day3-pass5: OK (hub focus, subnav, todayFocus, release version)");

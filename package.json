@@ -1,6 +1,6 @@
 {
   "name": "reddirt-site",
-  "version": "0.60.2",
+  "version": "0.61.0",
   "private": true,
   "scripts": {
     "dev": "node scripts/run-with-h-drive-env.cjs next dev",

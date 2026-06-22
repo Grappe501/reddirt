@@ -2,6 +2,12 @@ import { notFound } from "next/navigation";
 
 import { ElectionPlanBlockStudyPanel } from "@/components/election-plan/ElectionPlanBlockStudyPanel";
 import { ElectionPlanClaimsSuperiorityChecklist } from "@/components/election-plan/ElectionPlanClaimsSuperiorityChecklist";
+import {
+  ElectionPlanFundingResearchFramePanel,
+  ElectionPlanHammerEnrolledContrastPanel,
+} from "@/components/election-plan/ElectionPlanDay3BlockPanels";
+import { ElectionPlanDay3SuperiorityClipPanel } from "@/components/election-plan/ElectionPlanDay3SuperiorityClipPanel";
+import { ElectionPlanDay2FilmClipPanel } from "@/components/election-plan/ElectionPlanDay2FilmClipPanel";
 import { ElectionPlanFilmTellWorksheetPanel } from "@/components/election-plan/ElectionPlanFilmTellWorksheetPanel";
 import { ElectionPlanQualificationStackPanel } from "@/components/election-plan/ElectionPlanQualificationStackPanel";
 import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
@@ -71,8 +77,35 @@ export default async function ElectionPlanDayBlockPage({
       description={study?.overview ?? block.why}
       pageSummary={study?.professorLead ?? study?.overview}
     >
-      {dayId === DAY2_ID && blockId === "b2-film" ? <ElectionPlanFilmTellWorksheetPanel /> : null}
-      {dayId === DAY3_ID && blockId === "b3-manual" ? <ElectionPlanQualificationStackPanel /> : null}
+      {dayId === DAY2_ID && blockId === "b2-film" ? (
+        <>
+          <ElectionPlanDay2FilmClipPanel />
+          <div className="mt-6">
+            <ElectionPlanFilmTellWorksheetPanel />
+          </div>
+        </>
+      ) : null}
+      {dayId === DAY3_ID && blockId === "b3-manual" ? (
+        <>
+          <ElectionPlanDay3SuperiorityClipPanel variant="manual" />
+          <div className="mt-6">
+            <ElectionPlanQualificationStackPanel />
+          </div>
+        </>
+      ) : null}
+      {dayId === DAY3_ID && blockId === "b3-opposition" ? (
+        <div className="mb-6">
+          <ElectionPlanDay3SuperiorityClipPanel variant="opposition" />
+          <div className="mt-6">
+            <ElectionPlanHammerEnrolledContrastPanel />
+          </div>
+        </div>
+      ) : null}
+      {dayId === DAY3_ID && blockId === "b3-funding" ? (
+        <div className="mb-6">
+          <ElectionPlanFundingResearchFramePanel />
+        </div>
+      ) : null}
       {claimsSuperioritySummary ? (
         <ElectionPlanClaimsSuperiorityChecklist summary={claimsSuperioritySummary} />
       ) : null}

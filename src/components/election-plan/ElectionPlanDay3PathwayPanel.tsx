@@ -39,7 +39,7 @@ export function ElectionPlanDay3StartCard() {
       <p className="text-xs font-bold uppercase text-emerald-900">Day 3 · superiority map</p>
       <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">{plan.title}</h2>
       <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
-      <KellyPageSummary summary="Stack three qualifications until the list feels boring — organization history beats bill lists. Minimum tonight: manual + claims gate." />
+      <KellyPageSummary summary="Stack three qualifications until the list feels boring — Kelly + Hammer ACCA clips, notecard worksheet, claims gate. Minimum: manual + claims." />
       <div className="mt-4 flex flex-wrap gap-2">
         <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-900">
           Strength · {overlay.kellyStrengthToday}

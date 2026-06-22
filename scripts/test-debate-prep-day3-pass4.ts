@@ -55,7 +55,7 @@ const claimsPanelSrc = fs.readFileSync(claimsPanel, "utf8");
 assert.ok(!claimsPanelSrc.includes("claimText"), "checklist panel must not expose raw claim text");
 assert.ok(claimsPanelSrc.includes("epOppositionResearchModuleHref"), "checklist should link to claims ledger module");
 
-assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v1.1.0");
+assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v2.0.0");
 
 console.log(
   `test-debate-prep-day3-pass4: OK (${summary.superiorityCategories.length} claim categories · ${summary.ledgerTotals.totalClaims} ledger claims indexed)`,

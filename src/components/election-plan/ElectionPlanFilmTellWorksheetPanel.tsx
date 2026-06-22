@@ -2,8 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
-
 const STORAGE_KEY = "kelly-day2-film-tell-worksheet-v1";
 
 const HAMMER_TELLS = [
@@ -60,11 +58,12 @@ export function ElectionPlanFilmTellWorksheetPanel() {
     <section className="ep-card border-2 border-indigo-200 bg-indigo-50/20 p-5 text-sm">
       <p className="text-xs font-bold uppercase text-indigo-900">Film tells worksheet</p>
       <p className="mt-2 text-[var(--ep-navy-muted)]">
-        Watch the ACCA panel clip below on election-plan — no admin film-room login. Check each tell when you can name
-        it and speak one pivot line.
+        Check each tell when you can name it and speak one pivot line — after watching the ACCA study clips above.
       </p>
 
-      <AccaForumYoutubeEmbed compact />
+      <div className="mt-4 rounded-lg border border-indigo-200/80 bg-white/60 p-3 text-xs text-[var(--ep-navy-muted)]">
+        Clips are cut from the official ACCA recording — use pause at tells, not full-debate rewatch.
+      </div>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <div>

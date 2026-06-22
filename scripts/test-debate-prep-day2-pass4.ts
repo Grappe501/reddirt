@@ -60,13 +60,14 @@ const hammerExample = getDay2OpponentExampleStudy("ex2-hammer-rank");
 assert.ok(hammerExample?.claimsGate?.length, "ex2-hammer-rank should have claims gate for study panel");
 
 const root = path.join(process.cwd(), "src");
-const filmPanel = path.join(root, "components/election-plan/ElectionPlanFilmTellWorksheetPanel.tsx");
-assert.ok(fs.existsSync(filmPanel), "Film tell worksheet panel should exist");
+const filmPanel = path.join(root, "components/election-plan/ElectionPlanDay2FilmClipPanel.tsx");
+assert.ok(fs.existsSync(filmPanel), "Day 2 film clip panel should exist");
 
 const blockPage = fs.readFileSync(
   path.join(root, "app/election-plan/(portal)/debate-prep/days/[dayId]/blocks/[blockId]/page.tsx"),
   "utf8",
 );
+assert.ok(blockPage.includes("ElectionPlanDay2FilmClipPanel"), "block page should render Day 2 film clip panel");
 assert.ok(blockPage.includes("ElectionPlanFilmTellWorksheetPanel"), "block page should render film worksheet");
 assert.ok(blockPage.includes('blockId === "b2-film"'), "film worksheet gated to b2-film");
 

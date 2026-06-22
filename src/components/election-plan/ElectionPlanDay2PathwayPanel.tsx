@@ -37,7 +37,7 @@ export function ElectionPlanDay2StartCard() {
       <p className="text-xs font-bold uppercase text-indigo-900">Day 2 · read the table</p>
       <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">{plan.title}</h2>
       <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
-      <KellyPageSummary summary="Watch before you counter. Three Hammer tells tonight — trap lanes 1–2 until boring. Minimum: film worksheet + trap lane 1." />
+      <KellyPageSummary summary="Watch before you counter. Five ACCA study clips + tell worksheet — trap lanes 1–2 until boring. Minimum: film clips + trap lane 1." />
       <Link
         href={first.href}
         className="mt-4 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"

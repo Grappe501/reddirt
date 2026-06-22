@@ -63,9 +63,9 @@ export function ElectionPlanDebatePrepHubPanel() {
   }
 
   const hubSummary = focusDay3
-    ? "Day 3 tonight: stack three qualifications until the list feels boring — organization history beats bill lists. Manual + claims gate minimum; one pathway, tap Continue on each page."
+    ? "Day 3 tonight: superiority stack with ACCA Kelly/Hammer clips, notecard worksheet, and claims gate — or catch up Day 2 film clips first if you skipped the weekend."
     : focusDay2
-      ? "Day 2 tonight: watch before you counter. Three Hammer tells, trap lanes 1–2 until boring — one pathway, tap Continue on each page."
+      ? "Day 2 tonight: five ACCA study clips cut to Hammer/Pakko tells, then trap lanes 1–2 until boring — one pathway, tap Continue on each page."
       : "Day 1 tonight: body, breath, author-vs-administrator, then your 90-second opening. One pathway — tap Continue on each page. Film and trap lanes are Day 2.";
 
   return (
