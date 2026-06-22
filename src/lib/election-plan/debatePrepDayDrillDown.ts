@@ -560,12 +560,12 @@ const DAY2_CONCEPTS: DayConceptDrillDown[] = [
       },
     ],
     practiceSteps: [
-      "Watch one Hammer clip — write three physical tells before any rebuttal.",
-      "Watch one Pakko clip — one respect line only.",
+      "Read one Hammer forum brief — write three tells from pull quotes.",
+      "Read one Pakko brief — one respect line only.",
       "Practice moderator-centered eye line while opponents speak.",
     ],
     relatedLinks: [
-      { href: epDebatePrepDayBlockHref(DAY2_ID, "b2-film"), label: "Film room block" },
+      { href: epDebatePrepDayBlockHref(DAY2_ID, "b2-film"), label: "Forum tell briefs block" },
       { href: epDebatePrepDayMicroLessonHref(DAY2_ID, "d2-three-way"), label: "Three-way geometry micro-lesson" },
     ],
   },
@@ -577,21 +577,21 @@ const DAY2_CONCEPTS: DayConceptDrillDown[] = [
       {
         title: "Why observation comes before memorization",
         body:
-          "Adults learn opponent patterns faster by watching rhythm than by cramming bill lists. Hammer repeats authorship, ranking, mandate — predict the pivot point, not every word.",
+          "Adults learn opponent patterns faster by reading forum language than by cramming bill lists. Hammer repeats authorship, ranking, mandate — predict the pivot point, not every word.",
       },
       {
         title: "Minimum viable Day 2",
         body:
-          "Film worksheet + trap lane 1 pivot is a successful Day 2 if you are tired. Bios can roll to morning — do not cram under adrenaline.",
+          "Forum tell briefs + trap lane 1 pivot is a successful Day 2 if you are tired. Bios can roll to morning — do not cram under adrenaline.",
       },
     ],
     practiceSteps: [
-      "List three Hammer tells from film (voice, jaw, pivot phrases).",
+      "List three Hammer tells from transcript briefs (ranking, authorship, mandate).",
       "Name one Pakko tell without attacking third-candidate status.",
       "Stop when tells are boring — that is the goal.",
     ],
     relatedLinks: [
-      { href: epDebatePrepLaneHref("lane-d2-film-deep"), label: "Film room tell extraction lane" },
+      { href: epDebatePrepLaneHref("lane-d2-film-deep"), label: "Tell extraction lane" },
       { href: EP_FORUM_TRANSCRIPT_LAB_HREF, label: "Forum transcript lab" },
     ],
   },
@@ -806,7 +806,7 @@ function buildDay2Blocks(): DayBlockDrillDown[] {
     if (block.id === "b2-film") {
       relatedLinks.push(
         { href: EP_FORUM_TRANSCRIPT_LAB_HREF, label: "Forum lab · ACCA recording" },
-        { href: epDebatePrepLaneHref("lane-d2-film-deep"), label: "Film room tell extraction lane" },
+        { href: epDebatePrepLaneHref("lane-d2-film-deep"), label: "Tell extraction lane" },
         { href: epOpponentBioHref("kim-hammer"), label: "Hammer bio (after clips)" },
       );
     }
@@ -845,9 +845,9 @@ function buildDay2Blocks(): DayBlockDrillDown[] {
     const practiceSteps: string[] = [];
     if (block.id === "b2-film") {
       practiceSteps.push(
-        "Open forum lab — watch one Hammer segment from ACCA forum.",
-        "Pause at three tells — voice speed, ranking cite, jaw tension.",
-        "Watch one Pakko segment — note one respect line.",
+        "Open forum tell briefs — read one Hammer excerpt with pull quotes.",
+        "Mark three tells in text — ranking cite, authorship frame, mandate language.",
+        "Read one Pakko brief — note one respect line.",
         "Write tells on worksheet before any rebuttal practice.",
       );
     } else if (block.id === "b2-trap1") {
@@ -899,8 +899,8 @@ function buildDay2MicroLessons(): DayMicroLessonDrillDown[] {
     practiceSteps:
       lesson.id === "d2-watch-hammer"
         ? [
-            "Read watch list once.",
-            "Re-watch one clip — mark authorship, ranking, mandate tells.",
+            "Read tell list once.",
+            "Read one Hammer brief — mark authorship, ranking, mandate tells in pull quotes.",
             "Speak one pivot line per tell without notes.",
           ]
         : [
@@ -911,7 +911,7 @@ function buildDay2MicroLessons(): DayMicroLessonDrillDown[] {
     relatedLinks:
       lesson.id === "d2-watch-hammer"
         ? [
-            { href: epDebatePrepDayBlockHref(DAY2_ID, "b2-film"), label: "Film room block" },
+            { href: epDebatePrepDayBlockHref(DAY2_ID, "b2-film"), label: "Forum tell briefs block" },
             { href: epOpponentBioHref("kim-hammer"), label: "Hammer bio" },
           ]
         : [

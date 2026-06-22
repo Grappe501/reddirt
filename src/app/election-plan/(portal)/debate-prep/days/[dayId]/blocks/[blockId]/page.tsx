@@ -12,6 +12,7 @@ import { ElectionPlanFilmTellWorksheetPanel } from "@/components/election-plan/E
 import { ElectionPlanQualificationStackPanel } from "@/components/election-plan/ElectionPlanQualificationStackPanel";
 import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import { ElectionPlanDay4BlockEmbed } from "@/components/election-plan/ElectionPlanDay4ForumPanels";
+import { ElectionPlanDay5BlockEmbed } from "@/components/election-plan/ElectionPlanDay5Panels";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownSections,
@@ -22,12 +23,14 @@ import { getDay1BlockStudy } from "@/lib/election-plan/debatePrepDay1BlockStudy"
 import { getDay2BlockStudy } from "@/lib/election-plan/debatePrepDay2BlockStudy";
 import { getDay3BlockStudy } from "@/lib/election-plan/debatePrepDay3BlockStudy";
 import { getDay4BlockStudy } from "@/lib/election-plan/debatePrepDay4BlockStudy";
+import { getDay5BlockStudy } from "@/lib/election-plan/debatePrepDay5BlockStudy";
 import { staticParamsForDayBlocks } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
 import { getDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
 import { getDay4PathwayStep } from "@/lib/election-plan/day4-learning-pathway";
-import { getDayBlockDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay5PathwayStep } from "@/lib/election-plan/day5-learning-pathway";
+import { getDayBlockDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { buildElectionPlanClaimsSuperioritySummary } from "@/lib/election-plan/debate-prep-claims-superiority-summary";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
@@ -57,7 +60,9 @@ export default async function ElectionPlanDayBlockPage({
           ? getDay3BlockStudy(blockId)
           : dayId === DAY4_ID
             ? getDay4BlockStudy(blockId)
-            : undefined;
+            : dayId === DAY5_ID
+              ? getDay5BlockStudy(blockId)
+              : undefined;
   const title = study?.studyGuideTitle ?? block.title;
   const eyebrow = study ? `Step · ~${block.minutes} min` : `Study block · ~${block.minutes} min`;
   const pathwayStep =
@@ -69,9 +74,21 @@ export default async function ElectionPlanDayBlockPage({
           ? getDay3PathwayStep(blockId)
           : dayId === DAY4_ID
             ? getDay4PathwayStep(blockId)
-            : undefined;
+            : dayId === DAY5_ID
+              ? getDay5PathwayStep(blockId)
+              : undefined;
   const dayLabel =
-    dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : dayId === DAY3_ID ? "Day 3" : dayId === DAY4_ID ? "Day 4" : "Day";
+    dayId === DAY1_ID
+      ? "Day 1"
+      : dayId === DAY2_ID
+        ? "Day 2"
+        : dayId === DAY3_ID
+          ? "Day 3"
+          : dayId === DAY4_ID
+            ? "Day 4"
+            : dayId === DAY5_ID
+              ? "Day 5"
+              : "Day";
   const claimsSuperioritySummary =
     dayId === DAY3_ID && blockId === "b3-claims" ? buildElectionPlanClaimsSuperioritySummary() : null;
 
@@ -119,6 +136,8 @@ export default async function ElectionPlanDayBlockPage({
 
       {dayId === DAY4_ID ? <ElectionPlanDay4BlockEmbed blockId={blockId} /> : null}
 
+      {dayId === DAY5_ID ? <ElectionPlanDay5BlockEmbed blockId={blockId} /> : null}
+
       {study ? (
         <ElectionPlanBlockStudyPanel study={study} dayId={dayId} blockId={blockId} />
       ) : (
@@ -129,7 +148,11 @@ export default async function ElectionPlanDayBlockPage({
         </>
       )}
 
-      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID ? (
+      {dayId === DAY1_ID ||
+      dayId === DAY2_ID ||
+      dayId === DAY3_ID ||
+      dayId === DAY4_ID ||
+      dayId === DAY5_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={blockId} />
       ) : null}
     </ElectionPlanDrillDownShell>

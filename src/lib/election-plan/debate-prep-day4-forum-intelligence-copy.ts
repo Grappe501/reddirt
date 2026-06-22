@@ -3,7 +3,7 @@
  */
 
 export const DAY4_V3_KELLY_MINIMUM_SUMMARY =
-  "Minimum path (~125 min): forum lab ingest only — upload or paste transcript, run analysis, stop. SOS map and bios re-read roll to Monday if tired.";
+  "Minimum path (~125 min): forum lab read-only — skim transcript excerpts, run analysis, stop. SOS map and bios re-read roll to Monday if tired.";
 
 /** Shown on study guides, pathway, and Pass 4 notecard UI. */
 export const DAY4_FORUM_TRANSCRIPT_CLAIMS_GATE = [

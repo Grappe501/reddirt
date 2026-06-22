@@ -101,8 +101,8 @@ export const FORUM_ANALYSIS_CATEGORIES: ForumAnalysisCategory[] = [
   },
   {
     id: "watch-for-tells",
-    title: "Watch for tells",
-    description: "Physical and rhetorical tells from forum footage — Day 2 observational drills.",
+    title: "Tells to track",
+    description: "Rhetorical tells from forum transcript — Day 2 observational drills.",
     tone: "violet",
     lessonOrder: [
       "hammer-personal-anecdotes",

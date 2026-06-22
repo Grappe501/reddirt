@@ -1,8 +1,10 @@
 /**
- * ACCA 2026 SOS forum — Kelly study clips (YouTube start times).
- * Times estimated from transcript position vs ~7200s recording — refine with staff timecode verify.
+ * ACCA 2026 SOS forum — Kelly study briefs (transcript timestamps; no video required).
  */
 import { ACCA_2026_SOS_FORUM_EVENT } from "@/lib/election-plan/acca-forum-event";
+
+/** Estimated full recording length — used to slice transcript excerpts. */
+export const ACCA_FORUM_RECORDING_SECONDS = 7200;
 
 export type AccaForumClipOpponent = "Hammer" | "Pakko" | "Kelly" | "Moderator";
 
@@ -14,7 +16,12 @@ export type AccaForumStudyClip = {
   durationSeconds: number;
   /** Worksheet tell checkbox ids in ElectionPlanFilmTellWorksheetPanel */
   filmTellIds?: string[];
+  /** Pattern / rhetorical tells to track in the transcript excerpt */
+  tellsToTrack?: string;
+  /** @deprecated Use tellsToTrack — kept for migration */
   watchFor: string;
+  /** One-line narrative for Kelly — what this moment means */
+  narrativeLead?: string;
   kellyPivotHint: string;
   claimsNote?: string;
 };

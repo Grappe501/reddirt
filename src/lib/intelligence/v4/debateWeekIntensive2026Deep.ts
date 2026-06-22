@@ -113,7 +113,7 @@ export const DEBATE_WEEK_DEEP_OVERLAYS: Record<IntensiveDayId, DayDeepOverlay> =
     microLessons: [
       {
         id: "d2-watch-hammer",
-        title: "Hammer watch list (debate tells)",
+        title: "Hammer tell list (forum transcript)",
         readMinutes: 12,
         body:
           "Listen for: integrity ranking · act authorship · mandate language · 2020 framing. Each is a pivot point to clerks and implementation — not a fight about motives.",
@@ -177,10 +177,10 @@ export const DEBATE_WEEK_DEEP_OVERLAYS: Record<IntensiveDayId, DayDeepOverlay> =
         title: "Forum lab workflow",
         readMinutes: 5,
         body:
-          "Upload → transcript → Run analysis → Run deep analysis v2 → export capitalize moves to Day 5 drills. Staff verifies quotes in claims before stage.",
+          "Staff ingested ACCA forum transcript → Run analysis → Run deep analysis v2 → export capitalize moves to Day 5 drills. Kelly reads excerpts and pull quotes — staff verifies quotes in claims before stage.",
       },
     ],
-    forumIntelHook: "Upload forum video in transcript lab — deep analysis feeds Days 4–5 automatically.",
+    forumIntelHook: "Forum transcript and deep analysis are ready in the lab — Kelly reads excerpts and predicted lines for Days 4–5.",
   },
   "day-5-anticipate-and-capitalize": {
     dayId: "day-5-anticipate-and-capitalize",

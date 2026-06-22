@@ -2,7 +2,7 @@
 
 **Doc ID:** KELLY-DP-D5-5PASS  
 **Lane:** `RedDirt/` only  
-**Status:** Day 1–4 **production parity signed** · Day 5 **not started** (data exists in intensive week sources; no EP pathway spine yet)  
+**Status:** Day 1–4 **production parity signed** · Day 5 **production v1.0.0 signed** (Passes 1–5 complete)  
 **Created:** 2026-06-21  
 **Goal:** Bring **Day 5 · Anticipate & capitalize** to the same Kelly-facing experience as Days 1–4 — one linear pathway, phased block study, when-X-say-Y timed pairs UI, claims-gated capitalize sheet, trap lanes 3–6 sprint, SOS timed sprint, moot-court handoff, Day 6 teaser.
 
@@ -428,10 +428,10 @@ node scripts/run-with-h-drive-env.cjs npm run agents:test-debate-prep-block-phas
 |------|------|---------------|
 | Plan | 2026-06-21 | Doc created — Days 1–4 analyzed; Day 5 five-pass design |
 | 1 | 2026-06-21 | Pass 1 shipped — DAY5_ID, pathway, registry, drill-down routes, pathway stub |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| 2 | 2026-06-22 | Pass 2 shipped — block study guides (16 phases), ex5-pileon depth, claims gate copy |
+| 3 | 2026-06-21 | Pass 3 shipped — pathway panel, progress bar, Continue footers, day landing, subnav Day 5 tab |
+| 4 | 2026-06-21 | Pass 4 shipped — when-X-say-Y sheet, trap/SOS timers, moot handoff, pile-on panel, forum export |
+| 5 | 2026-06-21 | Pass 5 shipped — hub Day 5 on 2026-06-23, v1.0.0 release, parity test, APA statewide broadcast framing |
 
 ---
 

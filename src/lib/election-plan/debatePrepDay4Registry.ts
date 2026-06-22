@@ -47,7 +47,7 @@ export const DAY4_CONCEPTS: DayConceptDrillDown[] = [
       },
     ],
     practiceSteps: [
-      "Open forum transcript lab — upload or paste transcript.",
+      "Open forum transcript lab — read transcript excerpts and speaker profiles.",
       "Skim one Hammer repeat phrase — mark for predicted debate line.",
       "Note one Kelly line that landed in the forum recording.",
     ],
@@ -125,16 +125,16 @@ export const DAY4_CONCEPTS: DayConceptDrillDown[] = [
     id: "goal-for-kelly-d4",
     label: "Goal for Kelly",
     summary:
-      "Upload the three-candidate forum recording — transcribe, analyze, map predicted debate lines from real words.",
+      "Read the three-candidate forum transcript and analysis — map Hammer and Pakko's real language to predicted debate lines.",
     sections: [
       {
-        title: "Staff fallback",
+        title: "Staff already ingested",
         body:
-          "Staff can run upload if Kelly is exhausted — paste transcript fallback is OK. Kelly still reviews predicted lines list before Day 5 drills.",
+          "ACCA forum transcript is in the lab — Kelly reads excerpts and predicted lines. Staff runs analysis buttons if Kelly is exhausted.",
       },
     ],
     practiceSteps: [
-      "Confirm forum artifact exists (video upload or pasted transcript).",
+      "Confirm forum transcript artifact visible in lab.",
       "Run v1 + v2 analysis — staff assists if needed.",
       "Read success check aloud once.",
     ],
@@ -278,7 +278,7 @@ export function buildDay4Blocks(): DayBlockDrillDown[] {
     const practiceSteps: string[] = [];
     if (block.id === "b4-lab") {
       practiceSteps.push(
-        "Upload forum video OR paste transcript in election-plan forum lab.",
+        "Open forum transcript lab — read excerpts and pull quotes.",
         "Run v1 analysis — skim per-candidate themes.",
         "Run v2 deep analysis — copy five capitalize moves to notecard.",
         "Staff verifies quotes in claims before Kelly stages any line.",

@@ -58,16 +58,31 @@ import { DEBATE_PREP_DAY4_RELEASE_VERSION } from "../src/lib/election-plan/debat
 import { DAY4_BLOCK_STUDY, getDay4BlockStudy } from "../src/lib/election-plan/debatePrepDay4BlockStudy";
 import { getDay4OpponentExampleStudy } from "../src/lib/election-plan/debatePrepDay4OpponentExampleStudy";
 import {
+  DAY5_CONCEPT_ANCHORS,
+  DAY5_MICRO_LESSON_ANCHORS,
+} from "../src/lib/election-plan/day5-supplement-anchors";
+import {
+  buildDay5PathwaySteps,
+  DAY5_EVENING_REVIEW,
+  DAY5_MINIMUM_BLOCK_IDS,
+  isDay5PathwayStepOptional,
+} from "../src/lib/election-plan/day5-learning-pathway";
+import { DEBATE_PREP_DAY5_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day5-release";
+import { DAY5_HUB_TONIGHT_SUMMARY } from "../src/lib/election-plan/debate-prep-day5-anticipate-copy";
+import { DAY5_BLOCK_STUDY, getDay5BlockStudy } from "../src/lib/election-plan/debatePrepDay5BlockStudy";
+import { getDay5OpponentExampleStudy } from "../src/lib/election-plan/debatePrepDay5OpponentExampleStudy";
+import {
   DAY1_ID,
   DAY2_ID,
   DAY3_ID,
   DAY4_ID,
+  DAY5_ID,
   listDayBlocksDrillDown,
   listDayConcepts,
   listDayMicroLessonsDrillDown,
   listDayRehearsalScripts,
 } from "../src/lib/election-plan/debatePrepDayDrillDown";
-import { debatePrepHubPrimaryDayId } from "../src/lib/election-plan/debate-prep-hub-tonight";
+import { debatePrepHubPrimaryDayId, buildDebatePrepPathwayTonightFocus } from "../src/lib/election-plan/debate-prep-hub-tonight";
 
 function countByKind(steps: { kind: string }[]) {
   return steps.reduce(
@@ -175,7 +190,7 @@ for (const step of [...day1Steps, ...day2Steps]) {
 }
 
 assert.ok(DEBATE_PREP_DAY1_RELEASE_VERSION.includes("day-1"));
-assert.equal(DEBATE_PREP_DAY2_RELEASE_VERSION, "day-2-read-the-table-v3.0.0");
+assert.equal(DEBATE_PREP_DAY2_RELEASE_VERSION, "day-2-read-the-table-v3.1.0");
 assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v3.0.0");
 
 const root = path.join(process.cwd(), "src");
@@ -308,8 +323,68 @@ for (const step of day4Steps) {
 assert.equal(DEBATE_PREP_DAY4_RELEASE_VERSION, "day-4-forum-intelligence-v1.0.0");
 assert.equal(debatePrepHubPrimaryDayId("2026-06-22"), DAY4_ID);
 
-assert.ok(conceptPage.includes("ElectionPlanDay4SupplementFooter"));
+// --- Day 5 parity (vs Day 4 bar) ---
+const day5Steps = buildDay5PathwaySteps();
+const day5Kinds = countByKind(day5Steps);
+const day5Micro = listDayMicroLessonsDrillDown(DAY5_ID);
+
+assert.equal(listDayBlocksDrillDown(DAY5_ID).length, 4, "Day 5 has four intensive blocks");
+assert.equal(listDayConcepts(DAY5_ID).length, 6);
+assert.ok(Math.abs(day5Steps.length - day4Steps.length) <= 2, "Day 5 pathway steps within ±2 of Day 4");
+
+const day5Minutes = day5Steps.reduce((sum, s) => sum + s.minutes, 0);
+assert.ok(day5Minutes >= day4Minutes * 0.85, "Day 5 pathway minutes comparable to Day 4");
+
+assert.equal(DAY5_EVENING_REVIEW.length, DAY4_EVENING_REVIEW.length);
+assert.equal(DAY5_MINIMUM_BLOCK_IDS.length, 1);
+
+assert.equal(day5Kinds.block, 4);
+assert.equal(day5Kinds.rehearsal, 1);
+assert.equal(day5Kinds["micro-lesson"], 1);
+assert.equal(day5Kinds["command-drill"], 1);
+assert.equal(day5Kinds.close, 1);
+
+const d5Depth = studyDepthScore(Object.keys(DAY5_BLOCK_STUDY), getDay5BlockStudy);
+const day5DepthRatio = listDayBlocksDrillDown(DAY5_ID).length / listDayBlocksDrillDown(DAY4_ID).length;
+assert.ok(
+  d5Depth.phases >= d4Depth.phases * day5DepthRatio * 0.9,
+  "Day 5 block study phases should match Day 4 depth (4 blocks each)",
+);
+assert.ok(
+  d5Depth.deepSections >= d4Depth.deepSections * day5DepthRatio * 0.65,
+  "Day 5 deep sections should be substantive (retrieval-focused blocks)",
+);
+assert.equal(d5Depth.claimsGates, 4, "all four Day 5 blocks should have claims gates");
+
+for (const concept of listDayConcepts(DAY5_ID)) {
+  assert.ok(DAY5_CONCEPT_ANCHORS[concept.id], `Day 5 concept ${concept.id} needs supplement anchor`);
+}
+for (const lesson of day5Micro) {
+  assert.ok(DAY5_MICRO_LESSON_ANCHORS[lesson.id], `Day 5 micro-lesson ${lesson.id} needs anchor`);
+}
+
+const d5Example = getDay5OpponentExampleStudy("ex5-pileon");
+assert.ok(d5Example && d5Example.phases.length >= 4);
+assert.ok((d5Example.deepSections?.length ?? 0) >= 3);
+assert.ok(d5Example.claimsGate?.length);
+
+for (const step of day5Steps) {
+  assert.ok(!step.href.includes("/admin/"), `${step.id} must not link to admin on Day 5 pathway`);
+  if (step.kind === "example") {
+    assert.ok(isDay5PathwayStepOptional(step.id), `${step.id} example should be optional`);
+  }
+}
+
+assert.equal(DEBATE_PREP_DAY5_RELEASE_VERSION, "day-5-anticipate-and-capitalize-v1.0.0");
+assert.equal(debatePrepHubPrimaryDayId("2026-06-23"), DAY5_ID);
+assert.ok(DAY5_HUB_TONIGHT_SUMMARY.includes("APA"), "Day 5 hub summary names APA statewide broadcast");
+assert.ok(
+  buildDebatePrepPathwayTonightFocus("2026-06-23").includes("Day 5 pathway"),
+  "tonight focus on 2026-06-23 promotes Day 5",
+);
+
+assert.ok(conceptPage.includes("ElectionPlanDay5SupplementFooter"));
 
 console.log(
-  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · D4 ${day4Steps.length}/${day4Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases}/${d4Depth.phases})`,
+  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · D4 ${day4Steps.length}/${day4Minutes}m · D5 ${day5Steps.length}/${day5Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases}/${d4Depth.phases}/${d5Depth.phases})`,
 );

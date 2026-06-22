@@ -80,7 +80,7 @@ export const FORUM_ANALYSIS_LESSONS: ForumAnalysisLesson[] = [
         "Experience writing law is different from experience helping clerks implement it on time.",
       ],
       practiceSteps: [
-        "Watch Hammer opening (90 sec) — note three credibility phrases.",
+        "Read Hammer opening excerpt in forum lab — note three credibility phrases.",
         "Practice agree-add: honor service → administrator pivot → clerk funding.",
         "Open author vs administrator briefing — one paragraph aloud.",
       ],
@@ -988,7 +988,7 @@ export const FORUM_ANALYSIS_LESSONS: ForumAnalysisLesson[] = [
         "DMV analogy: clerks out of back seat, Hammer as driver.",
       ],
       practiceSteps: [
-        "Watch forum clip — timestamp three anecdotes.",
+        "Read forum transcript excerpt — mark three Hammer anecdotes in pull quotes.",
         "Practice pivot from story to policy in 15 seconds.",
       ],
       relatedLinks: [
@@ -1042,7 +1042,7 @@ export const FORUM_ANALYSIS_LESSONS: ForumAnalysisLesson[] = [
     ],
     {
       practiceSteps: [
-        "Review forum tone on video — note when to add firmness.",
+        "Review forum tone in transcript — note when to add firmness.",
         "Psychology manual · pressure calibration if wired.",
       ],
       relatedLinks: [
@@ -1054,7 +1054,7 @@ export const FORUM_ANALYSIS_LESSONS: ForumAnalysisLesson[] = [
     "body-language-confidence",
     "watch-for-tells",
     "Body language indicating confidence or defensiveness",
-    "Day 2 observational drill — map forum footage to debate-night scouting.",
+    "Day 2 observational drill — map forum transcript language to debate-night scouting.",
     [
       {
         heading: "Scout list",
@@ -1069,7 +1069,7 @@ export const FORUM_ANALYSIS_LESSONS: ForumAnalysisLesson[] = [
     ],
     {
       practiceSteps: [
-        "Silent re-watch 10 minutes — notebook only, no audio.",
+        "Read 10 minutes of forum transcript silently — notebook only.",
         "Share three tells with staff partner.",
       ],
       relatedLinks: [

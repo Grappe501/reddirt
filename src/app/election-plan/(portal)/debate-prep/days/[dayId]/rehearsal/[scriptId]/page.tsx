@@ -3,13 +3,14 @@ import { notFound } from "next/navigation";
 import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import { ElectionPlanForumPredictedLinePicker } from "@/components/election-plan/ElectionPlanForumPredictedLinePicker";
 import { ElectionPlanDay4PathwayReturnLink, ElectionPlanDay4HandoffBanner } from "@/components/election-plan/ElectionPlanDay4ForumPanels";
+import { ElectionPlanDay5RehearsalEmbed } from "@/components/election-plan/ElectionPlanDay5Panels";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownShell,
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { getDayRehearsalScript, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayRehearsalScript, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayRehearsals } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
@@ -33,7 +34,17 @@ export default async function ElectionPlanDayRehearsalPage({
   if (!script) notFound();
 
   const dayLabel =
-    dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : dayId === DAY3_ID ? "Day 3" : dayId === DAY4_ID ? "Day 4" : "Day";
+    dayId === DAY1_ID
+      ? "Day 1"
+      : dayId === DAY2_ID
+        ? "Day 2"
+        : dayId === DAY3_ID
+          ? "Day 3"
+          : dayId === DAY4_ID
+            ? "Day 4"
+            : dayId === DAY5_ID
+              ? "Day 5"
+              : "Day";
   const audienceHooks =
     dayId === DAY4_ID
       ? (["integrity", "county-champion", "author-vs-administrator"] as const)
@@ -59,6 +70,7 @@ export default async function ElectionPlanDayRehearsalPage({
           <ElectionPlanForumPredictedLinePicker lines={forumSurface!.verifiedHammerLines} scriptId={scriptId} />
         </>
       ) : null}
+      {dayId === DAY5_ID ? <ElectionPlanDay5RehearsalEmbed /> : null}
       <article className="ep-card border-2 border-emerald-300/50 bg-emerald-50/40 p-5 text-sm">
         <p className="text-xs font-bold uppercase text-emerald-900">Script</p>
         <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{script.script}</p>
@@ -81,7 +93,7 @@ export default async function ElectionPlanDayRehearsalPage({
       </article>
       <ElectionPlanDrillDownRelated links={script.relatedLinks} />
       {dayId === DAY4_ID ? <ElectionPlanDay4HandoffBanner /> : null}
-      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID ? (
+      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID || dayId === DAY5_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={scriptId} />
       ) : null}
     </ElectionPlanDrillDownShell>

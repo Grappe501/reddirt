@@ -1,7 +1,10 @@
 "use client";
 
-import { useCallback, useState } from "react";
 import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
+import {
+  DEBATE_PREP_TUTOR_PRESET_FORUM_HAMMER,
+} from "@/lib/election-plan/debate-prep-links";
 import type { DebatePrepTutorMode } from "@/lib/intelligence/v4/debatePrepTutorPackageClient";
 import type { TutorCritiqueResult, TutorSession } from "@/lib/intelligence/v4/debatePrepTutorOrchestrator";
 import type { DebatePrepProfessorMode } from "@/lib/intelligence/v4/debatePrepProfessorV5";
@@ -72,9 +75,11 @@ function ElementGuideCallout({ elementId }: { elementId: keyof typeof TUTOR_ELEM
 export function DebatePrepTutorClient({
   embedded,
   apiBase = "/api/admin/intelligence/debate-prep-tutor",
+  launchPreset,
 }: {
   embedded?: boolean;
   apiBase?: string;
+  launchPreset?: string;
 }) {
   const [mode, setMode] = useState<DebatePrepTutorMode | null>(null);
   const [session, setSession] = useState<TutorSession | ProfessorTutorSession | null>(null);
@@ -93,6 +98,12 @@ export function DebatePrepTutorClient({
   const [expandedMode, setExpandedMode] = useState<string | null>(null);
   const isExpanded = (id: string) => expandedMode === id;
   const toggleExpanded = (id: string) => setExpandedMode((prev) => (prev === id ? null : id));
+
+  useEffect(() => {
+    if (launchPreset === DEBATE_PREP_TUTOR_PRESET_FORUM_HAMMER) {
+      setExpandedMode("moot-court-45");
+    }
+  }, [launchPreset]);
 
   const startSession = useCallback(async (selected: DebatePrepTutorMode) => {
     setLoading(true);

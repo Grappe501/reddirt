@@ -3,7 +3,11 @@ import Link from "next/link";
 import { ForumTranscriptIntelHubPanel } from "@/components/election-plan/ForumTranscriptIntelHubPanel";
 import { DebatePrepTutorClient } from "@/components/admin/intelligence/DebatePrepTutorClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
-import { EP_DEBATE_PREP_REHEARSAL_HREF, EP_DEBATE_PREP_TUTOR_API } from "@/lib/election-plan/debate-prep-links";
+import {
+  DEBATE_PREP_TUTOR_PRESET_FORUM_HAMMER,
+  EP_DEBATE_PREP_REHEARSAL_HREF,
+  EP_DEBATE_PREP_TUTOR_API,
+} from "@/lib/election-plan/debate-prep-links";
 import { buildDebatePrepSystemV8Snapshot } from "@/lib/election-plan/debate-prep-system-v8";
 import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_PREP_TUTOR_V5_VERSION, TUTOR_HUB_WELCOME } from "@/lib/intelligence/v4/debatePrepTutorGuideV5";
@@ -15,8 +19,15 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function ElectionPlanDebatePrepTutorPage() {
+export default async function ElectionPlanDebatePrepTutorPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ preset?: string }>;
+}) {
   const snapshot = buildDebatePrepSystemV8Snapshot();
+  const { preset } = await searchParams;
+  const launchPreset =
+    preset === DEBATE_PREP_TUTOR_PRESET_FORUM_HAMMER ? DEBATE_PREP_TUTOR_PRESET_FORUM_HAMMER : undefined;
 
   return (
     <>
@@ -35,7 +46,17 @@ export default function ElectionPlanDebatePrepTutorPage() {
 
           <ForumTranscriptIntelHubPanel intel={snapshot.forumIntel} compact />
 
-          <DebatePrepTutorClient embedded apiBase={EP_DEBATE_PREP_TUTOR_API} />
+          {launchPreset === DEBATE_PREP_TUTOR_PRESET_FORUM_HAMMER ? (
+            <section className="ep-card mb-6 border-2 border-fuchsia-300/60 bg-fuchsia-50/40 p-5 text-sm">
+              <p className="text-xs font-bold uppercase text-fuchsia-900">Day 5 · forum Hammer moot court</p>
+              <p className="mt-2 text-[var(--ep-navy-muted)]">
+                Start <strong className="text-[var(--ep-navy)]">Moot court · 45 min</strong> below — use verified forum
+                Hammer lines and your when-X-say-Y sheet. No admin detour.
+              </p>
+            </section>
+          ) : null}
+
+          <DebatePrepTutorClient embedded apiBase={EP_DEBATE_PREP_TUTOR_API} launchPreset={launchPreset} />
 
           <section className="ep-card mt-8 p-5 text-sm">
             <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">How to talk with the tutor (v5)</h2>

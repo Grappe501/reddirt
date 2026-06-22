@@ -28,17 +28,17 @@ export const DAY2_CONCEPT_ANCHORS: Record<string, Day2SupplementAnchor> = {
   "scan-before-speak": {
     continueFromStepId: "b2-film",
     returnHref: epDebatePrepDayBlockHref(DAY2_ID, "b2-film"),
-    returnLabel: "Film room block",
+    returnLabel: "Forum tell briefs",
   },
   "observational-learning": {
     continueFromStepId: "b2-film",
     returnHref: epDebatePrepDayBlockHref(DAY2_ID, "b2-film"),
-    returnLabel: "Film room block",
+    returnLabel: "Forum tell briefs",
   },
   "goal-for-kelly-d2": {
     continueFromStepId: "b2-film",
     returnHref: epDebatePrepDayBlockHref(DAY2_ID, "b2-film"),
-    returnLabel: "Film room block",
+    returnLabel: "Forum tell briefs",
   },
   "success-check-d2": {
     continueFromStepId: "b2-trap1",

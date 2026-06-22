@@ -82,7 +82,7 @@ export const OPPONENT_BIO_HUB = {
       day: 2 as const,
       dayId: "day-2-read-the-table",
       label: "First read — end of Day 2",
-      body: "After film room and trap lanes: read full Hammer bio (30 min), then full Pakko bio (30 min). Goal is recognition — nothing on stage should surprise you.",
+      body: "After forum tell briefs and trap lanes: read full Hammer bio (30 min), then full Pakko bio (30 min). Goal is recognition — nothing on stage should surprise you.",
     },
     {
       day: 4 as const,
@@ -122,12 +122,12 @@ function hammerReadingPhases(): OpponentBioReadingPhase[] {
     {
       dayNumber: 2,
       dayId: "day-2-read-the-table",
-      title: "Day 2 — first read (after film room)",
+      title: "Day 2 — first read (after forum briefs)",
       minutesLabel: "30 min",
       focus: "Who Hammer is, what he wants, three tells — authorship, ranking, mandate.",
       steps: [
         "Read professor lead + biography — speak read-aloud debate line once.",
-        "Study priorities and psychology — name three physical tells from film room.",
+        "Study priorities and psychology — name three tells from forum transcript briefs.",
         "Skim all dossier sections — star ACCA panel tactics and 2021 six-bill deep.",
         "Memorize author vs administrator contrast — not motive attack.",
       ],

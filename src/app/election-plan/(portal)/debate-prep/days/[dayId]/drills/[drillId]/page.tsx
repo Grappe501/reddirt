@@ -88,7 +88,7 @@ export default async function ElectionPlanDayCommandDrillPage({
       )}
       <ElectionPlanDrillDownSteps title="Rehearsal loop" steps={drill.practiceSteps} />
       <ElectionPlanDrillDownRelated links={drill.relatedLinks} />
-      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID ? (
+      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID || dayId === DAY5_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={drillId} />
       ) : null}
     </ElectionPlanDrillDownShell>

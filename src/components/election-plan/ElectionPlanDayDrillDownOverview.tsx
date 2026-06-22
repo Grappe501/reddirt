@@ -14,13 +14,17 @@ import {
   ElectionPlanDay4PathwayPanel,
 } from "@/components/election-plan/ElectionPlanDay4PathwayPanel";
 import { ElectionPlanDay4ContinueButton } from "@/components/election-plan/ElectionPlanDay4ContinueButton";
-import { ElectionPlanDay5PathwayStub } from "@/components/election-plan/ElectionPlanDay5PathwayStub";
+import { ElectionPlanDay5ContinueButton } from "@/components/election-plan/ElectionPlanDay5ContinueButton";
+import {
+  ElectionPlanDay5PathwayPanel,
+} from "@/components/election-plan/ElectionPlanDay5PathwayPanel";
 import { ElectionPlanNorrisCoalitionDrillPanel } from "@/components/election-plan/ElectionPlanNorrisCoalitionDrillPanel";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { DAY4_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day4-forum-intelligence-copy";
-import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
+import { DAY5_APA_STATEWIDE_BROADCAST_FRAME, DAY5_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
+import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import type { IntensiveDayId, IntensiveDayPlan } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { dayHasDrillDownPages } from "@/lib/election-plan/debatePrepDayDrillDown";
@@ -42,6 +46,7 @@ export function ElectionPlanDayDrillDownOverview({
   const streamlinedDay2 = isKellyDay2StreamlinedPath() && dayId === DAY2_ID;
   const streamlinedDay3 = isKellyDay3StreamlinedPath() && dayId === DAY3_ID;
   const streamlinedDay4 = isKellyDay4StreamlinedPath() && dayId === DAY4_ID;
+  const streamlinedDay5 = isKellyDay5StreamlinedPath() && dayId === DAY5_ID;
   const day1Audiences = dayId === DAY1_ID ? resolveAudiencesForHooks(["lane-2", "county-champion", "author-vs-administrator"]) : [];
   const day2Audiences =
     dayId === DAY2_ID ? resolveAudiencesForHooks(["county-champion", "integrity", "three-way"]) : [];
@@ -69,7 +74,7 @@ export function ElectionPlanDayDrillDownOverview({
     return (
       <>
         <KellyPageSummary
-          summary={`Watch before you counter. ${dayPageSummary(plan)} Trap lanes 1–2 until boring — film worksheet + trap lane 1 minimum if tired.`}
+          summary={`Read forum tells before you counter. ${dayPageSummary(plan)} Trap lanes 1–2 until boring — tell worksheet + trap lane 1 minimum if tired.`}
         />
         <VoterAudienceSpeakToBanner profiles={day2Audiences} compact label="Who is watching your pivot" />
         <ElectionPlanDay2PathwayPanel showFullList showDay3Teaser />
@@ -103,13 +108,16 @@ export function ElectionPlanDayDrillDownOverview({
     );
   }
 
-  if (dayId === DAY4_ID) {
+  if (streamlinedDay5) {
     return (
       <>
         <KellyPageSummary
-          summary={`Listen like an analyst first — the forum transcript is your Rosetta stone. ${dayPageSummary(plan)} Minimum tonight: forum lab ingest if tired.`}
+          summary={`Pre-load when-X-say-Y pairs from Day 4 green lines — timed drills until muscle memory. ${dayPageSummary(plan)} ${DAY5_V3_KELLY_MINIMUM_SUMMARY}`}
         />
-        <ElectionPlanDay4PathwayPanel showFullList showDay5Teaser />
+        <p className="mb-4 rounded-lg border border-violet-300/60 bg-violet-50/40 px-3 py-2 text-xs text-violet-950">
+          {DAY5_APA_STATEWIDE_BROADCAST_FRAME}
+        </p>
+        <ElectionPlanDay5PathwayPanel showFullList showDay4Review showDay6Teaser />
       </>
     );
   }
@@ -120,7 +128,18 @@ export function ElectionPlanDayDrillDownOverview({
         <KellyPageSummary
           summary={`${plan.goalForKelly} Pre-load when-X-say-Y pairs from Day 4 green lines — timed drills until muscle memory.`}
         />
-        <ElectionPlanDay5PathwayStub showDay4Review showDay6Teaser />
+        <ElectionPlanDay5PathwayPanel showFullList showDay4Review showDay6Teaser />
+      </>
+    );
+  }
+
+  if (dayId === DAY4_ID) {
+    return (
+      <>
+        <KellyPageSummary
+          summary={`Listen like an analyst first — the forum transcript is your Rosetta stone. ${dayPageSummary(plan)} Minimum tonight: forum lab ingest if tired.`}
+        />
+        <ElectionPlanDay4PathwayPanel showFullList showDay5Teaser />
       </>
     );
   }
@@ -142,13 +161,15 @@ export function ElectionPlanDayStepFooter({
   currentStepId: string;
 }) {
   const hint =
-    dayId === DAY4_ID
-      ? "Forum lab only is enough for tonight — skip SOS and bios re-read if tired. Kelly's notecard gets claims-gated lines only."
-      : dayId === DAY3_ID
-        ? "Follow the steps in order — skip optional Hammer example if tired. Manual + claims gate is enough for tonight."
-        : dayId === DAY2_ID
-          ? "Follow the steps in order — skip optional examples if you are tired. Film + trap lane 1 is enough for tonight."
-          : "Follow the steps in order — skip optional sections if you are tired. Posture + author/administrator is enough for tonight.";
+    dayId === DAY5_ID
+      ? "Capitalize sheet only is enough for tonight — eight timed pairs from Day 4 green lines. Trap sprint and SOS timer roll to Tuesday AM if tired."
+      : dayId === DAY4_ID
+        ? "Forum lab only is enough for tonight — skip SOS and bios re-read if tired. Kelly's notecard gets claims-gated lines only."
+        : dayId === DAY3_ID
+          ? "Follow the steps in order — skip optional Hammer example if tired. Manual + claims gate is enough for tonight."
+          : dayId === DAY2_ID
+            ? "Follow the steps in order — skip optional examples if you are tired. Film + trap lane 1 is enough for tonight."
+            : "Follow the steps in order — skip optional sections if you are tired. Posture + author/administrator is enough for tonight.";
 
   return (
     <footer className="mt-10 space-y-4 border-t border-[var(--ep-border)] pt-8">
@@ -158,6 +179,8 @@ export function ElectionPlanDayStepFooter({
         <ElectionPlanDay2ContinueButton currentStepId={currentStepId} />
       ) : dayId === DAY4_ID ? (
         <ElectionPlanDay4ContinueButton currentStepId={currentStepId} />
+      ) : dayId === DAY5_ID ? (
+        <ElectionPlanDay5ContinueButton currentStepId={currentStepId} />
       ) : (
         <ElectionPlanDay3ContinueButton currentStepId={currentStepId} />
       )}

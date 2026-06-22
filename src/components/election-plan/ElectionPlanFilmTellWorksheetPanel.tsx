@@ -56,13 +56,13 @@ export function ElectionPlanFilmTellWorksheetPanel() {
 
   return (
     <section className="ep-card border-2 border-indigo-200 bg-indigo-50/20 p-5 text-sm">
-      <p className="text-xs font-bold uppercase text-indigo-900">Film tells worksheet</p>
+      <p className="text-xs font-bold uppercase text-indigo-900">Forum tells worksheet</p>
       <p className="mt-2 text-[var(--ep-navy-muted)]">
-        Check each tell when you can name it and speak one pivot line — after watching the ACCA study clips above.
+        Check each tell when you can name it from the transcript briefs above and speak one pivot line.
       </p>
 
       <div className="mt-4 rounded-lg border border-indigo-200/80 bg-white/60 p-3 text-xs text-[var(--ep-navy-muted)]">
-        Clips are cut from the official ACCA recording — use pause at tells, not full-debate rewatch.
+        Pull quotes and excerpts come from the official ACCA forum transcript — read the text, mark tells, move on.
       </div>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">

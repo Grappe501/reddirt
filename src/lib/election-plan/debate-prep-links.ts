@@ -141,3 +141,10 @@ export const EP_FORUM_LAB_PREDICTED_SCRIPT_HREF = `${EP_FORUM_TRANSCRIPT_LAB_HRE
 export function epForumLabPredictedScriptPhaseHref(phaseId: string): string {
   return `${EP_FORUM_LAB_PREDICTED_SCRIPT_HREF}/${phaseId}`;
 }
+
+/** Day 5 moot court — tutor preset query (Kelly-facing, no admin). */
+export const DEBATE_PREP_TUTOR_PRESET_FORUM_HAMMER = "forum-hammer-moot";
+
+export function epDebatePrepTutorPresetHref(preset: string): string {
+  return `${EP_DEBATE_PREP_TUTOR_HREF}?preset=${encodeURIComponent(preset)}`;
+}

@@ -11,7 +11,8 @@ import { getFirstDay4PathwayStep } from "@/lib/election-plan/day4-learning-pathw
 import { getFirstDay5PathwayStep } from "@/lib/election-plan/day5-learning-pathway";
 import { dayHasDrillDownPages, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { EP_DEBATE_PREP_HREF } from "@/lib/election-plan/debate-prep-links";
-import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
+import { DAY5_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
+import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import {
   DEBATE_WEEK_INTENSIVE_DAY_IDS,
   getDebateWeekIntensiveDay,
@@ -42,6 +43,7 @@ export default async function ElectionPlanDebatePrepDayPage({
   const streamlinedDay2 = isKellyDay2StreamlinedPath() && dayId === DAY2_ID;
   const streamlinedDay3 = isKellyDay3StreamlinedPath() && dayId === DAY3_ID;
   const streamlinedDay4 = isKellyDay4StreamlinedPath() && dayId === DAY4_ID;
+  const streamlinedDay5 = isKellyDay5StreamlinedPath() && dayId === DAY5_ID;
   const firstStep =
     dayId === DAY1_ID
       ? getFirstDay1PathwayStep()
@@ -85,7 +87,7 @@ export default async function ElectionPlanDebatePrepDayPage({
 
         {streamlinedDay2 && firstStep ? (
           <>
-            <KellyPageSummary summary={`${plan.goalForKelly} One pathway below — watch tells first, then trap lanes until boring.`} />
+            <KellyPageSummary summary={`${plan.goalForKelly} One pathway below — read forum tells first, then trap lanes until boring.`} />
             <Link
               href={firstStep.href}
               className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
@@ -123,7 +125,19 @@ export default async function ElectionPlanDebatePrepDayPage({
           </>
         ) : null}
 
-        {dayId === DAY5_ID && firstStep ? (
+        {streamlinedDay5 && firstStep ? (
+          <>
+            <KellyPageSummary summary={DAY5_HUB_TONIGHT_SUMMARY} />
+            <Link
+              href={firstStep.href}
+              className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
+            >
+              Start now · {firstStep.label} →
+            </Link>
+          </>
+        ) : null}
+
+        {!streamlinedDay5 && dayId === DAY5_ID && firstStep ? (
           <>
             <KellyPageSummary
               summary={`${plan.goalForKelly} Turn Day 4 forum intel into timed when-X-say-Y pairs — claims-green only.`}

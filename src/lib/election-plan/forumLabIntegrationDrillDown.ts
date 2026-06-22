@@ -84,7 +84,7 @@ const ENRICHMENT: Record<
       {
         title: "Forum → Day 2 bridge",
         body:
-          "Day 2 is observational — watch Hammer and Pakko tells from forum footage. Map forum speaker profiles to physical/vocal patterns you will see on debate night.",
+          "Day 2 is observational — read Hammer and Pakko tells from forum transcript briefs. Map forum speaker profiles to rhetorical patterns you will hear on debate night.",
       },
       {
         title: "Engagement vs observation",
@@ -93,7 +93,7 @@ const ENRICHMENT: Record<
       },
     ],
     practiceSteps: [
-      "Re-watch ACCA clip — list three Hammer tells from forum profiles.",
+      "Read Hammer forum brief — list three tells from pull quotes.",
       "Note one Pakko line worth respectful acknowledgment.",
       "Open trap lanes 1–2 on Day 2 course page.",
     ],
@@ -241,7 +241,7 @@ function buildForumIntegrationDay(entry: ForumDeepAnalysis["sevenDayIntegration"
 
 const FALLBACK_INTEGRATION: ForumDeepAnalysis["sevenDayIntegration"] = [
   { dayNumber: 1, dayTitle: "Command foundation + election law", useThisIntel: "Forum security talk → clerk implementation frame.", drillTonight: "Review current election laws." },
-  { dayNumber: 2, dayTitle: "Read the table", useThisIntel: "Extract opponent tells from forum footage.", drillTonight: "Film room tell list." },
+  { dayNumber: 2, dayTitle: "Read the table", useThisIntel: "Extract opponent tells from forum transcript.", drillTonight: "Forum tell brief list." },
   { dayNumber: 3, dayTitle: "Superiority map", useThisIntel: "Map forum tech themes to SOS duties.", drillTonight: "SOS speak-order skim." },
   { dayNumber: 4, dayTitle: "Forum intelligence", useThisIntel: "Capitalize moves + mock moderator.", drillTonight: "Forum-acca rehearsal queue." },
   { dayNumber: 5, dayTitle: "Anticipate & capitalize", useThisIntel: "Hammer themes from forum.", drillTonight: "Trap lane + forum queue." },

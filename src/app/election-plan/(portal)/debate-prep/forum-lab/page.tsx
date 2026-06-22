@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AccaForumLocalRecordingPanel } from "@/components/election-plan/AccaForumLocalRecordingPanel";
 import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
 import { ElectionPlanDay4PathwayReturnLink } from "@/components/election-plan/ElectionPlanDay4ForumPanels";
+import { ElectionPlanDay5ForumCapitalizeExport } from "@/components/election-plan/ElectionPlanDay5Panels";
 import { ForumTranscriptLabClient } from "@/components/admin/intelligence/ForumTranscriptLabClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
@@ -23,7 +24,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Forum Transcript Lab | Debate Prep | Election Plan",
-  description: "Upload the three-candidate ACCA forum, transcribe with AI, and build Kelly's capitalize playbook.",
+  description: "Read the three-candidate ACCA forum transcript, run AI analysis, and build Kelly's capitalize playbook.",
   robots: { index: false, follow: false },
 };
 
@@ -41,8 +42,8 @@ export default function ElectionPlanForumTranscriptLabPage() {
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-[var(--ep-gold)]">Day 4 · forum intelligence</p>
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">Forum transcript lab</h1>
             <p className="mt-3 max-w-3xl text-sm text-[var(--ep-navy-muted)]">
-              Upload the three-candidate forum video, transcribe with AI, and build Kelly&apos;s capitalize playbook for the
-              SOS debate.
+              The ACCA three-candidate forum transcript is at hand — read excerpts, pull quotes, and run AI analysis for
+              Kelly&apos;s capitalize playbook. Staff handles ingest; Kelly reads and extracts patterns.
             </p>
             <div className="mt-3">
               <ElectionPlanDay4PathwayReturnLink blockId="b4-lab" label="Return to Day 4 forum lab block" />
@@ -103,6 +104,8 @@ export default function ElectionPlanForumTranscriptLabPage() {
               After ingest, refresh this page — transcript and analysis appear here for staff and Executive Book crosswalk.
             </p>
           </section>
+
+          <ElectionPlanDay5ForumCapitalizeExport />
 
           <ForumTranscriptLabClient
             initialRecord={record}

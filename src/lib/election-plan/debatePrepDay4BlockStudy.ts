@@ -27,29 +27,29 @@ const claimsGateLines = [...DAY4_FORUM_TRANSCRIPT_CLAIMS_GATE];
 export const DAY4_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
   "b4-lab": {
     blockId: "b4-lab",
-    studyGuideTitle: "Forum transcript lab — upload, analyze, extract · 120-minute study",
+    studyGuideTitle: "Forum transcript lab — read, analyze, extract · 120-minute study",
     professorLead:
-      "Sunday you listen like an analyst — the forum transcript is your Rosetta stone. Extract Hammer and Pakko's real language; copy five capitalize moves to a notecard. Do not memorize the whole recording or stage anything that has not passed claims review.",
+      "Sunday you listen like an analyst — the forum transcript is your Rosetta stone. Extract Hammer and Pakko's real language; copy five capitalize moves to a notecard. Do not memorize the whole transcript or stage anything that has not passed claims review.",
     overview:
-      "Ingest the three-candidate forum: upload video or paste transcript, run v1 themes and v2 deep analysis, skim predicted lines. Staff may run upload if you are exhausted. Kelly's notecard gets claims-gated lines only — raw analysis stays richer behind the scenes until verified.",
+      "Staff already ingested the three-candidate ACCA forum transcript. Kelly reads excerpts and pull quotes, runs v1 themes and v2 deep analysis, skims predicted lines. Notecard gets claims-gated lines only — raw analysis stays richer behind the scenes until verified.",
     phases: [
       {
         minutesLabel: "0–20 min",
-        title: "Forum lab setup — artifact first",
+        title: "Forum lab setup — transcript at hand",
         steps: [
           "Open election-plan forum transcript lab — no admin login required.",
-          "Confirm forum video link or prepare pasted transcript fallback.",
+          "Confirm transcript artifact is visible — staff ingested ACCA forum already.",
           "Label notebook header: Internal tactical intelligence — not for external use until claims-cleared.",
           "Set 120-minute timer — block ends when timer ends.",
         ],
       },
       {
         minutesLabel: "20–45 min",
-        title: "Upload or paste transcript",
+        title: "Read transcript excerpts & pull quotes",
         steps: [
-          "Staff runs upload if Kelly is exhausted — paste transcript fallback is OK.",
-          "Confirm artifact saved: video upload OR pasted transcript visible in lab.",
-          "Skim transcript once — note one Hammer repeat phrase and one Kelly line that landed.",
+          "Skim forum transcript — use pull quotes and speaker profiles in the lab.",
+          "Note one Hammer repeat phrase and one Kelly line that landed.",
+          "Read opponent brief excerpts — patterns only, not every sentence.",
           "Do not copy verbatim opponent quotes to notecard yet — mark for claims review.",
         ],
       },

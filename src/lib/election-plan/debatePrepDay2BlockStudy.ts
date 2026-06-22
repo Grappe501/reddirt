@@ -23,39 +23,39 @@ import type { Day1BlockStudyDeep } from "@/lib/election-plan/debatePrepDay1Block
 export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
   "b2-film": {
     blockId: "b2-film",
-    studyGuideTitle: "Film room — opponent tells worksheet · 90-minute study",
+    studyGuideTitle: "Forum tell briefs — opponent patterns · 90-minute study",
     professorLead:
-      "Tonight you watch before you counter. Hammer's rhythm is predictable once you name three tells — voice speed, ranking cite, jaw tension. Pakko gets one respect line. Write tells first; rebuttal comes in trap lanes.",
+      "Tonight you read before you counter. Hammer's rhythm is predictable once you name three tells in the transcript — ranking cite, authorship frame, mandate language. Pakko gets one respect line. Write tells first; rebuttal comes in trap lanes.",
     overview:
-      "Observational learning beats memorizing every line. Watch one Hammer segment and one Pakko segment from the forum lab; pause at tells; complete the worksheet before any pivot practice. Three Hammer tells + one Pakko tell is enough for tonight.",
+      "Transcript-first learning beats rewatching footage. Read five ACCA forum briefs with pull quotes and excerpts; complete the tell worksheet before any pivot practice. Three Hammer tells + one Pakko tell is enough for tonight.",
     phases: [
       {
         minutesLabel: "0–10 min",
         title: "Setup & worksheet",
         steps: [
-          "Open film room below — five ACCA study clips with YouTube start times (election-plan, no admin login).",
+          "Open forum tell briefs below — five ACCA transcript excerpts with pull quotes (no video required).",
           "Create a tell worksheet: three rows for Hammer, one row for Pakko.",
-          "Columns: Tell · What I saw/heard · Kelly pivot phrase (one sentence each).",
-          "Set a 90-minute timer — film block ends when timer ends, not when clips feel 'done.'",
+          "Columns: Tell · What I read in the text · Kelly pivot phrase (one sentence each).",
+          "Set a 90-minute timer — block ends when timer ends, not when briefs feel 'done.'",
         ],
       },
       {
         minutesLabel: "10–40 min",
-        title: "Hammer clip — pause at three tells",
+        title: "Hammer briefs — mark three tells in text",
         steps: [
-          "Watch first 3–5 minutes without writing — notice pace, filler, pivot phrases.",
-          "Rewatch with pause: mark when voice speed increases (threatened → you slow down).",
+          "Read Hammer opening and ranking briefs — notice pace and pivot phrases in the pull quotes.",
+          "Mark first tell: voice/rhetoric acceleration when challenged (you slow down on stage).",
           "Mark second tell: Heritage / integrity ranking cite (abstract scorecard incoming).",
-          "Mark third tell: jaw tension or bill-number list acceleration.",
+          "Mark third tell: bill-number list or authorship = competence frame.",
           "Write one pivot line per tell — clerk phone, not ranking debate.",
-          "Optional: open film-deep lane for signal checklist.",
+          "Optional: open tell-extraction lane for signal checklist.",
         ],
       },
       {
         minutesLabel: "40–55 min",
-        title: "Pakko clip — one respect line",
+        title: "Pakko brief — one respect line",
         steps: [
-          "Watch one Pakko segment — note where he looks when Hammer speaks.",
+          "Read Pakko segment excerpt — note reform frame and outsider language.",
           "Write one respect line: acknowledge reform without ceding SOS administrator job.",
           "Do not script an attack on third-candidate status — contrast gate applies.",
           "Speak respect line once aloud — under 15 seconds.",
@@ -77,37 +77,37 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         title: "Worksheet lock & success gate",
         steps: [
           "Read worksheet aloud — three Hammer tells + one Pakko line without notes.",
-          "Journal: which tell made me want to react instead of respond?",
-          "Mark block complete when worksheet is filled and one ranking pivot is clean on video.",
+          "Journal: which tell in the text made me want to react instead of respond?",
+          "Mark block complete when worksheet is filled and one ranking pivot is spoken clean aloud.",
           "Do not start trap lane reps here — that is the next block.",
         ],
       },
     ],
     deepSections: [
       {
-        title: "Hammer watch list",
+        title: "Hammer tell list (transcript)",
         body:
-          "Listen for: integrity ranking · act authorship · mandate language · 2020 framing. Each is a pivot point to clerks and implementation — not a fight about motives.",
+          "Listen for in text: integrity ranking · act authorship · mandate language · 2020 framing. Each is a pivot point to clerks and implementation — not a fight about motives.",
       },
       {
-        title: "Voice & jaw signals",
+        title: "Rhetorical signals in writing",
         body:
-          "When Hammer accelerates, Kelly slows. Nonverbal tells precede verbal pivots. If you match his pace, viewers read anxiety. Still hands + slower voice = command contrast.",
+          "When Hammer's transcript shows acceleration or stacked bill numbers, Kelly slows on stage. Written tells precede verbal pivots — if you match his pace, viewers read anxiety. Still hands + slower voice = command contrast.",
       },
       {
         title: "Pakko geometry",
         body:
-          "When Pakko looks at Hammer during a pile-on, Kelly looks at the moderator. One bridge sentence to clerks — never fight two fronts in one answer.",
+          "Pakko's forum language often agrees on clerk burden before naming reform. Kelly steals that lane with one bridge sentence — never fight two fronts in one answer.",
       },
       {
-        title: "When to apply film tells",
+        title: "When to apply forum tells",
         body:
           "Use worksheet tells during trap lanes tonight and forum lab on Day 4 — not as a script of every Hammer line. Recognition triggers pivot phrases you already rehearsed in Day 1 philosophy and author blocks.",
       },
       {
         title: "Common mistakes",
         body:
-          "Rewatching clips without pausing. Debating Heritage rankings instead of clerk pivot. Skipping Pakko segment because Hammer is louder. Jumping to trap lanes before worksheet is filled.",
+          "Skimming pull quotes without writing tells. Debating Heritage rankings instead of clerk pivot. Skipping Pakko brief because Hammer is louder. Jumping to trap lanes before worksheet is filled.",
       },
     ],
     psychology: [
@@ -119,14 +119,14 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     ],
     opponentForecast: [
       {
-        title: "Hammer in clips",
+        title: "Hammer in transcript",
         body:
-          "Expect ranking cites, bill authorship, and 'secure elections' framing. He will sound confident — your job is recognition, not outrage.",
+          "Expect ranking cites, bill authorship, and 'secure elections' framing in pull quotes. He will sound confident on paper — your job is recognition, not outrage.",
       },
       {
-        title: "Pakko in clips",
+        title: "Pakko in transcript",
         body:
-          "Expect libertarian overreach / both-parties-failed themes. Steal reform lane by agreeing on clerk burden, then naming SOS service desk.",
+          "Expect libertarian overreach / both-parties-failed themes in excerpts. Steal reform lane by agreeing on clerk burden, then naming SOS service desk.",
       },
     ],
     sampleLines: [
@@ -140,7 +140,7 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
       },
     ],
     doNotSay: [
-      "Trying to counter every line in the clip",
+      "Trying to counter every line in the excerpt",
       "Heritage ranking debate without clerk pivot",
       "Attacking Pakko's party status",
       "Skipping the worksheet and jumping to rebuttal",
@@ -162,9 +162,9 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     ],
     relatedLinks: [
       { href: EP_FORUM_TRANSCRIPT_LAB_HREF, label: "Forum transcript lab" },
-      { href: epDebatePrepLaneHref("lane-d2-film-deep"), label: "Film tell extraction lane" },
-      { href: epDebatePrepDayMicroLessonHref(DAY2_ID, "d2-watch-hammer"), label: "Hammer watch list micro-lesson" },
-      { href: epOpponentBioHref("kim-hammer"), label: "Hammer bio (after clips)" },
+      { href: epDebatePrepLaneHref("lane-d2-film-deep"), label: "Tell extraction lane" },
+      { href: epDebatePrepDayMicroLessonHref(DAY2_ID, "d2-watch-hammer"), label: "Hammer tell list micro-lesson" },
+      { href: epOpponentBioHref("kim-hammer"), label: "Hammer bio (after briefs)" },
       { href: epDebatePrepDayBlockHref(DAY2_ID, "b2-trap1"), label: "Next block · trap lanes" },
     ],
   },
@@ -623,7 +623,7 @@ export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
       {
         title: "Day 2 reading cadence",
         body:
-          "First read after film room and trap lanes. Day 4 re-read after forum lab. Day 6 lock-in before simulation — memory lines only.",
+          "First read after forum tell briefs and trap lanes. Day 4 re-read after forum lab. Day 6 lock-in before simulation — memory lines only.",
       },
       {
         title: "Hammer bio reading protocol",

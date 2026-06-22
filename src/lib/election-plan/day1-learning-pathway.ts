@@ -121,6 +121,6 @@ export const DAY1_EVENING_REVIEW = [
 
 export const DAY1_DAY2_TEASER = {
   title: "Tomorrow · Day 2 — Read the table",
-  body: "You will watch Hammer and Pakko on film, learn their three tells each, and drill trap lanes 1–2. Tonight you earned the body to absorb that without panic.",
+  body: "You will read Hammer and Pakko forum briefs, learn their three tells each, and drill trap lanes 1–2. Tonight you earned the body to absorb that without panic.",
   href: epDebatePrepDayHref("day-2-read-the-table"),
 } as const;

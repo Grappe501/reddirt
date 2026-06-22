@@ -6,6 +6,7 @@ import {
   DEBATE_WEEK_INTENSIVE_DAYS,
   type IntensiveDayId,
 } from "@/lib/intelligence/v4/debateWeekIntensive2026";
+import { EP_FORUM_TRANSCRIPT_LAB_HREF } from "@/lib/election-plan/debate-prep-links";
 import { getDayDeepOverlay } from "@/lib/intelligence/v4/debateWeekIntensive2026Deep";
 import type { KellyDebateIntensiveProgress } from "@/lib/intelligence/v4/kellyDebateIntensiveProgress";
 
@@ -281,7 +282,7 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
         blockId: "b2-film",
         adultEducationWhy: "Observational learning lets Kelly anticipate rhythm before content — seasoned debaters win on timing.",
         whatSuccessLooksLike: "Three physical/vocal tells for Hammer and one pivot phrase for Pakko, spoken without notes.",
-        commonMistakes: ["Watching without writing tells", "Trying to counter every line in the clip", "Ignoring Pakko because Hammer is louder"],
+        commonMistakes: ["Reading without writing tells", "Trying to counter every line in the excerpt", "Ignoring Pakko because Hammer is louder"],
         stretchLaneId: "lane-d2-film-deep",
       },
       {
@@ -292,7 +293,7 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
           "Both full bios read; three Hammer priorities and one Pakko respect line spoken without notes.",
         commonMistakes: [
           "Skipping Pakko because Hammer is louder",
-          "Reading bios before film room — tells land better after clips",
+          "Reading bios before forum briefs — tells land better after transcript excerpts",
           "Memorizing attack lines instead of command pivots",
         ],
       },
@@ -302,8 +303,8 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
         id: "lane-d2-film-deep",
         dayId: "day-2-read-the-table",
         tier: "essential",
-        title: "Film room tell extraction",
-        subtitle: "What Hammer does with voice and jaw when challenged",
+        title: "Forum tell extraction",
+        subtitle: "What Hammer does in the ACCA transcript when challenged",
         minutes: 45,
         theory:
           "Nonverbal tells precede verbal pivots. If Kelly knows when Hammer will accelerate, she can slow down — contrast reads as command.",
@@ -314,11 +315,11 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
           { signal: "Pakko looks at Hammer", meaning: "Potential pile-on — bridge to clerks." },
         ],
         steps: [
-          "Watch one Hammer clip — pause at three tells.",
-          "Watch one Pakko clip — note one respect line.",
+          "Read one Hammer brief — mark three tells in pull quotes.",
+          "Read one Pakko brief — note one respect line.",
           "Rehearse 60s counter to ranking cite.",
         ],
-        href: "/admin/intelligence/film-room",
+        href: EP_FORUM_TRANSCRIPT_LAB_HREF,
         relatedBlockIds: ["b2-film"],
       },
       {
@@ -468,7 +469,7 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
         dayId: "day-4-forum-intelligence",
         tier: "essential",
         title: "Forum lab full pipeline",
-        subtitle: "Upload → Whisper → v1 → v2 → Day 5 feed",
+        subtitle: "Transcript → v1 → v2 → Day 5 feed",
         minutes: 90,
         theory: "Elaborative rehearsal — connecting forum lines to trap lanes cements retrieval for debate night.",
         whyKelly: "This is the highest-leverage intelligence in the race.",
@@ -477,12 +478,12 @@ const DAY_V3: Record<IntensiveDayId, DayV3Overlay> = {
           { signal: "claimsGate: needs_review", meaning: "Do not stage until staff clears." },
         ],
         steps: [
-          "Upload video or paste transcript.",
+          "Open forum transcript lab — confirm transcript artifact.",
           "Run v1 analysis.",
           "Run v2 deep analysis.",
           "Copy five capitalize moves to notecard.",
         ],
-        href: "/admin/intelligence/forum-transcript-lab",
+        href: EP_FORUM_TRANSCRIPT_LAB_HREF,
         relatedBlockIds: ["b4-lab"],
       },
       {

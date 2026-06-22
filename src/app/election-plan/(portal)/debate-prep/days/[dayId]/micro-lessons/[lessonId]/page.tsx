@@ -14,8 +14,11 @@ import { getDay1MicroLessonAnchor } from "@/lib/election-plan/day1-supplement-an
 import { getDay2MicroLessonAnchor } from "@/lib/election-plan/day2-supplement-anchors";
 import { getDay3MicroLessonAnchor } from "@/lib/election-plan/day3-supplement-anchors";
 import { ElectionPlanDay4SupplementFooter } from "@/components/election-plan/ElectionPlanDay4SupplementFooter";
+import { ElectionPlanDay5MicroLessonEmbed } from "@/components/election-plan/ElectionPlanDay5Panels";
+import { ElectionPlanDay5SupplementFooter } from "@/components/election-plan/ElectionPlanDay5SupplementFooter";
 import { getDay4MicroLessonAnchor } from "@/lib/election-plan/day4-supplement-anchors";
-import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, getDayMicroLessonDrillDown, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay5MicroLessonAnchor } from "@/lib/election-plan/day5-supplement-anchors";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, getDayMicroLessonDrillDown, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayMicroLessons } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
@@ -41,8 +44,19 @@ export default async function ElectionPlanDayMicroLessonPage({
   const day2Anchor = dayId === DAY2_ID ? getDay2MicroLessonAnchor(lessonId) : undefined;
   const day3Anchor = dayId === DAY3_ID ? getDay3MicroLessonAnchor(lessonId) : undefined;
   const day4Anchor = dayId === DAY4_ID ? getDay4MicroLessonAnchor(lessonId) : undefined;
+  const day5Anchor = dayId === DAY5_ID ? getDay5MicroLessonAnchor(lessonId) : undefined;
   const dayLabel =
-    dayId === DAY4_ID ? "Day 4" : dayId === DAY3_ID ? "Day 3" : dayId === DAY2_ID ? "Day 2" : dayId === DAY1_ID ? "Day 1" : "Day";
+    dayId === DAY5_ID
+      ? "Day 5"
+      : dayId === DAY4_ID
+        ? "Day 4"
+        : dayId === DAY3_ID
+          ? "Day 3"
+          : dayId === DAY2_ID
+            ? "Day 2"
+            : dayId === DAY1_ID
+              ? "Day 1"
+              : "Day";
 
   const audiences =
     dayId === DAY4_ID
@@ -68,14 +82,18 @@ export default async function ElectionPlanDayMicroLessonPage({
         <VoterAudienceSpeakToBanner profiles={audiences} compact label="Who this lesson is for" />
       ) : null}
 
+      {dayId === DAY5_ID && lessonId === "d5-capitalize" ? <ElectionPlanDay5MicroLessonEmbed /> : null}
+
       <article className="ep-card p-5 text-sm">
         <p className="whitespace-pre-wrap leading-relaxed text-[var(--ep-navy-muted)]">{lesson.body}</p>
       </article>
       <ElectionPlanDrillDownSteps title="Practice steps" steps={lesson.practiceSteps} />
       <ElectionPlanDrillDownRelated links={lesson.relatedLinks} />
-      {day4Anchor ? (
+      {day5Anchor ? (
+        <ElectionPlanDay5SupplementFooter anchor={day5Anchor} />
+      ) : day4Anchor ? (
         <ElectionPlanDay4SupplementFooter anchor={day4Anchor} />
-      ) : dayId === DAY4_ID ? (
+      ) : dayId === DAY4_ID || dayId === DAY5_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={lessonId} />
       ) : day1Anchor ? (
         <ElectionPlanDay1SupplementFooter anchor={day1Anchor} />

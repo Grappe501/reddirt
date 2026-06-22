@@ -71,7 +71,7 @@ export function ElectionPlanForumLabPipelineChecklist({
       id: "artifact",
       label: "Forum artifact",
       done: pipeline.artifactReady,
-      detail: pipeline.artifactReady ? pipeline.artifactLabel : "Upload video or paste transcript in forum lab",
+      detail: pipeline.artifactReady ? pipeline.artifactLabel : "Forum transcript ready in lab — open to read excerpts",
     },
     {
       id: "v1",

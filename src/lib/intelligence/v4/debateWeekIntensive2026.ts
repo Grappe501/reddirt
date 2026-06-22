@@ -4,7 +4,7 @@
  * SOS Debate · Annual Press Convention · Eureka Springs · 2026-06-26.
  */
 
-import { EP_OPPONENT_BIOS_HREF } from "@/lib/election-plan/debate-prep-links";
+import { EP_FORUM_TRANSCRIPT_LAB_HREF, EP_OPPONENT_BIOS_HREF } from "@/lib/election-plan/debate-prep-links";
 
 export const DEBATE_WEEK_INTENSIVE_HUB_HREF = "/admin/intelligence/debate-week-intensive";
 export const FORUM_TRANSCRIPT_LAB_HREF = "/admin/intelligence/forum-transcript-lab";
@@ -154,7 +154,7 @@ export const DEBATE_WEEK_INTENSIVE_DAYS: IntensiveDayPlan[] = [
     dayId: "day-2-read-the-table",
     calendarDate: "2026-06-20",
     weekdayLabel: "Friday · Day 2",
-    title: "Read the table — watch opponents",
+    title: "Read the table — opponent patterns",
     subtitle: "What seasoned politicians do · what to listen for",
     commandModeFocus: "Scan before speak: who is talking, who is baiting, who is splitting the room.",
     psychologyPrinciple: "Observational learning — study behavior before countering content.",
@@ -164,11 +164,12 @@ export const DEBATE_WEEK_INTENSIVE_DAYS: IntensiveDayPlan[] = [
     blocks: [
       {
         id: "b2-film",
-        title: "Film room — opponent clips & tells",
+        title: "Forum tell briefs — Hammer & Pakko transcript excerpts",
         minutes: 90,
-        href: "/admin/intelligence/film-room",
-        activity: "Watch one Hammer clip + one Pakko clip; list three physical tells each (pace, filler, pivot phrases).",
-        why: "You win by anticipating rhythm, not just policy.",
+        href: EP_FORUM_TRANSCRIPT_LAB_HREF,
+        activity:
+          "Read five ACCA forum transcript briefs: pull quotes, rhetorical tells in text, one Kelly pivot each — no video.",
+        why: "Pattern recognition from real words beats rewatching footage — Kelly already knows their faces.",
       },
       {
         id: "b2-trap1",
@@ -301,20 +302,20 @@ export const DEBATE_WEEK_INTENSIVE_DAYS: IntensiveDayPlan[] = [
     calendarDate: "2026-06-22",
     weekdayLabel: "Sunday · Day 4",
     title: "Forum intelligence lab",
-    subtitle: "Upload three-way forum video · transcript · AI breakdown",
+    subtitle: "Forum transcript · pull quotes · AI breakdown",
     commandModeFocus: "Listen like an analyst first — extract their scripts before writing yours.",
     psychologyPrinciple: "Concrete examples beat abstract fear — the forum transcript is your Rosetta stone.",
     goalForKelly:
-      "Upload (or paste) the three-candidate forum recording. Let the system transcribe and analyze what Hammer and Pakko actually said — then map predicted debate lines.",
+      "Read the three-candidate forum transcript and analysis — map Hammer and Pakko's real language to predicted debate lines.",
     hoursTarget: 4,
     blocks: [
       {
         id: "b4-lab",
-        title: "Forum transcript lab — upload & analyze",
+        title: "Forum transcript lab — read & analyze",
         minutes: 120,
         href: FORUM_TRANSCRIPT_LAB_HREF,
         activity:
-          "Upload forum video OR paste transcript. Run AI analysis: per-candidate themes, predicted debate questions, Kelly capitalize moves.",
+          "Read forum transcript excerpts and run AI analysis: per-candidate themes, predicted debate questions, Kelly capitalize moves.",
         why: "This is the highest-leverage intelligence for this race — real words, not guesswork.",
         aiEnabled: true,
       },

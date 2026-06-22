@@ -12,7 +12,7 @@ import {
 } from "../src/lib/election-plan/debate-prep-norris-coalition-drilldown";
 import { getGopSos2026CountyBySlug } from "../src/lib/election-plan/load-gop-sos-2026-results";
 
-assert.equal(DEBATE_PREP_DAY2_RELEASE_VERSION, "day-2-read-the-table-v3.0.0");
+assert.equal(DEBATE_PREP_DAY2_RELEASE_VERSION, "day-2-read-the-table-v3.1.0");
 
 const dataPath = path.join(process.cwd(), "data/election/2026-gop-sos-primary-runoff-by-county.normalized.json");
 assert.ok(fs.existsSync(dataPath), "2026 GOP SOS county data must be committed");
@@ -39,4 +39,4 @@ assert.ok(overview.includes("ElectionPlanNorrisCoalitionDrillPanel"));
 const cityPanel = fs.readFileSync(path.join(root, "components/election-plan/CityLocationBriefPanel.tsx"), "utf8");
 assert.ok(cityPanel.includes("LocationGopPrimaryRunoffPanel"));
 
-console.log(`test-debate-prep-day2-v3: OK (${links.length} Norris drill links · Day 2 v3.0.0)`);
+console.log(`test-debate-prep-day2-v3: OK (${links.length} Norris drill links · Day 2 v3.1.0)`);

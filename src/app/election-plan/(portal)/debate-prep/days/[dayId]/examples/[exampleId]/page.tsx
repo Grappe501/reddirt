@@ -12,12 +12,14 @@ import { getDay1OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay1O
 import { getDay2OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay2OpponentExampleStudy";
 import { getDay3OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay3OpponentExampleStudy";
 import { getDay4OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay4OpponentExampleStudy";
-import { getDayExampleDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay5OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay5OpponentExampleStudy";
+import { getDayExampleDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayExamples } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
 import { getDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
 import { getDay4PathwayStep } from "@/lib/election-plan/day4-learning-pathway";
+import { getDay5PathwayStep } from "@/lib/election-plan/day5-learning-pathway";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
@@ -46,10 +48,22 @@ export default async function ElectionPlanDayExamplePage({
           ? getDay3OpponentExampleStudy(exampleId)
           : dayId === DAY4_ID
             ? getDay4OpponentExampleStudy(exampleId)
-            : undefined;
+            : dayId === DAY5_ID
+              ? getDay5OpponentExampleStudy(exampleId)
+              : undefined;
 
   const dayLabel =
-    dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : dayId === DAY3_ID ? "Day 3" : dayId === DAY4_ID ? "Day 4" : "Day";
+    dayId === DAY1_ID
+      ? "Day 1"
+      : dayId === DAY2_ID
+        ? "Day 2"
+        : dayId === DAY3_ID
+          ? "Day 3"
+          : dayId === DAY4_ID
+            ? "Day 4"
+            : dayId === DAY5_ID
+              ? "Day 5"
+              : "Day";
   const pathwayStep =
     dayId === DAY1_ID
       ? getDay1PathwayStep(exampleId)
@@ -59,7 +73,9 @@ export default async function ElectionPlanDayExamplePage({
           ? getDay3PathwayStep(exampleId)
           : dayId === DAY4_ID
             ? getDay4PathwayStep(exampleId)
-            : undefined;
+            : dayId === DAY5_ID
+              ? getDay5PathwayStep(exampleId)
+              : undefined;
   const isOptional = pathwayStep?.kind === "example";
   const eyebrow = isOptional
     ? `${dayLabel} · Optional · opponent example`
@@ -107,7 +123,11 @@ export default async function ElectionPlanDayExamplePage({
           <ElectionPlanDrillDownRelated links={example.relatedLinks} />
         </>
       )}
-      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID ? (
+      {dayId === DAY1_ID ||
+      dayId === DAY2_ID ||
+      dayId === DAY3_ID ||
+      dayId === DAY4_ID ||
+      dayId === DAY5_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={exampleId} />
       ) : null}
     </ElectionPlanDrillDownShell>

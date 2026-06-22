@@ -1,5 +1,5 @@
 /**
- * Day 2 — single linear learning pathway for Kelly (watch → trap lanes → bios → rehearse → close).
+ * Day 2 — single linear learning pathway for Kelly (read briefs → trap lanes → bios → rehearse → close).
  */
 import {
   epDebatePrepDayBlockHref,
@@ -79,7 +79,7 @@ export function buildDay2PathwaySteps(): Day2PathwayStep[] {
       label: "Heritage ranking pivot (optional)",
       minutes: 15,
       href: epDebatePrepDayExampleHref(DAY2_ID, "ex2-hammer-rank"),
-      teaser: "Only if film room left you with energy.",
+      teaser: "Only if forum briefs left you with energy.",
     },
     {
       id: "ex2-pakko-split",

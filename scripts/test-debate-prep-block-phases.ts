@@ -3,12 +3,14 @@
  */
 import assert from "node:assert/strict";
 
-import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, listDayBlocksDrillDown } from "../src/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, listDayBlocksDrillDown } from "../src/lib/election-plan/debatePrepDayDrillDown";
 import { getDayBlockPhaseContext, listDayBlockPhaseParams } from "../src/lib/election-plan/debatePrepBlockPhase";
+import { getDay5BlockStudy, listDay5BlockStudyIds } from "../src/lib/election-plan/debatePrepDay5BlockStudy";
+import { getDay5OpponentExampleStudy } from "../src/lib/election-plan/debatePrepDay5OpponentExampleStudy";
 import { staticParamsForDayBlockPhases } from "../src/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayBlockPhaseHref } from "../src/lib/election-plan/debate-prep-links";
 
-for (const dayId of [DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID]) {
+for (const dayId of [DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID]) {
   for (const block of listDayBlocksDrillDown(dayId)) {
     const phases = listDayBlockPhaseParams(dayId, block.blockId);
     assert.ok(phases.length >= 3, `${block.blockId} should have >= 3 timed phases`);
@@ -24,5 +26,20 @@ for (const dayId of [DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID]) {
 
 const params = staticParamsForDayBlockPhases();
 assert.ok(params.length >= 30, `expected many phase static params, got ${params.length}`);
+
+for (const blockId of listDay5BlockStudyIds()) {
+  const study = getDay5BlockStudy(blockId);
+  assert.ok(study, `Day 5 block study missing: ${blockId}`);
+  assert.ok(study!.claimsGate!.length >= 4, `${blockId} claimsGate`);
+  assert.ok(study.phases.length >= 3, `${blockId} phases`);
+}
+
+const pileon = getDay5OpponentExampleStudy("ex5-pileon");
+assert.ok(pileon, "ex5-pileon study");
+assert.ok(pileon.phases.length >= 4, "ex5-pileon phases");
+assert.ok(pileon!.claimsGate!.length >= 4, "ex5-pileon claimsGate");
+
+const day5PhaseParams = params.filter((p) => p.dayId === DAY5_ID);
+assert.equal(day5PhaseParams.length, 16, "Day 5 should have 16 phased study routes");
 
 console.log(`test-debate-prep-block-phases: OK (${params.length} phase routes)`);

@@ -28,7 +28,7 @@ import type {
 export { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
 export type { DebatePrepTonightPackageV8, DebatePrepTonightStepV8 } from "@/lib/election-plan/debate-prep-system-v8-types";
 
-export const DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.5-day4-forum-intelligence-v1";
+export const DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.6-day5-anticipate-capitalize-v1";
 
 export type DebatePrepSystemV8Snapshot = Omit<
   DebatePrepSystemV7Snapshot,
@@ -132,7 +132,7 @@ export function buildDebatePrepSystemV8Snapshot(referenceDate?: string): DebateP
     version: DEBATE_PREP_SYSTEM_V8_VERSION,
     headline: "Debate Prep System v8 · world-class engine",
     intro:
-      "Every path to stage-ready — 8-dimension readiness radar, prep modes from panic-5 to full dress, pile-on simulations, quotable bank, scenario traps, psychology stack, and tracked tonight package. Built for Kelly's first statewide debate.",
+      "Every path to stage-ready — 8-dimension readiness radar, prep modes from panic-5 to full dress, pile-on simulations, quotable bank, scenario traps, psychology stack, and tracked tonight package. Built for Kelly's APA statewide broadcast — clerks in the lines, the whole state in the room.",
     packageLabel: DEBATE_PREP_PACKAGE_LABEL,
     readinessPct,
     readinessLabel:
