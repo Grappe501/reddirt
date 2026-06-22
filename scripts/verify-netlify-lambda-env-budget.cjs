@@ -55,8 +55,8 @@ const RUNTIME_ESSENTIAL = [
   "GOOGLE_CALENDAR_REDIRECT_URI",
   "ELEVENLABS_API_KEY",
   "ELEVENLABS_VOICE_ID",
-  "OPENAI_MODEL",
-  "OPENAI_EMBEDDING_MODEL",
+  "ADMIN_DIAGNOSTIC_TOKEN",
+];
 
 function isRuntimeNoiseKey(key) {
   const k = key.toLowerCase();
