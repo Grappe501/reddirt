@@ -1,0 +1,2744 @@
+{
+  "schemaVersion": "2026-gop-sos-v1",
+  "builtAt": "2026-06-22T02:32:48.494Z",
+  "sources": {
+    "primaryFile": "2026_Preferential_Primary.json",
+    "primaryContestId": "fea979cc-6800-498d-a424-a4d73ad3fc24",
+    "runoffApi": "https://enr-results-api.totalresults.com/Contest/GetContestResults",
+    "runoffElectionId": "b412bdef-f97a-45bc-b3ec-6761d28caf9e",
+    "runoffContestId": "1f5c45de-d1b5-4acb-a853-b72b5f695363",
+    "evidenceNote": "County vote totals from Arkansas SOS preferential primary JSON and Election Night Reporting API (March 2026 GOP SOS runoff). Messaging frames are campaign analysis — not opponent character claims."
+  },
+  "statewide": {
+    "primary": {
+      "totalVotes": 266439,
+      "norrisVotes": 91442,
+      "hammerVotes": 89445,
+      "harrisonVotes": 85552,
+      "norrisPct": 34.3,
+      "hammerPct": 33.6,
+      "harrisonPct": 32.1,
+      "norrisCountiesWon": 29,
+      "hammerCountiesWon": 21,
+      "harrisonCountiesWon": 25
+    },
+    "runoff": {
+      "totalVotes": 80977,
+      "norrisVotes": 40032,
+      "hammerVotes": 40945,
+      "norrisPct": 49.4,
+      "hammerPct": 50.6,
+      "marginVotes": 913,
+      "marginPct": 1.1,
+      "norrisCountiesWon": 38,
+      "hammerCountiesWon": 37
+    }
+  },
+  "counties": [
+    {
+      "county": "Arkansas",
+      "countySlug": "arkansas-county",
+      "fips": "05001",
+      "regionId": "southeast",
+      "primary": {
+        "totalVotes": 1329,
+        "norrisVotes": 362,
+        "hammerVotes": 575,
+        "harrisonVotes": 392,
+        "norrisPct": 27.2,
+        "hammerPct": 43.3,
+        "harrisonPct": 29.5,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 176,
+        "norrisVotes": 86,
+        "hammerVotes": 90,
+        "norrisPct": 48.9,
+        "hammerPct": 51.1,
+        "marginVotes": 4,
+        "marginPct": 2.3,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (51.1% · margin 2.3 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Ashley",
+      "countySlug": "ashley-county",
+      "fips": "05003",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 1218,
+        "norrisVotes": 531,
+        "hammerVotes": 338,
+        "harrisonVotes": 349,
+        "norrisPct": 43.6,
+        "hammerPct": 27.8,
+        "harrisonPct": 28.7,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 232,
+        "norrisVotes": 119,
+        "hammerVotes": 113,
+        "norrisPct": 51.3,
+        "hammerPct": 48.7,
+        "marginVotes": 6,
+        "marginPct": 2.6,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (51.3% · Hammer 48.7%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Baxter",
+      "countySlug": "baxter-county",
+      "fips": "05005",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 6632,
+        "norrisVotes": 2661,
+        "hammerVotes": 2435,
+        "harrisonVotes": 1536,
+        "norrisPct": 40.1,
+        "hammerPct": 36.7,
+        "harrisonPct": 23.2,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 5213,
+        "norrisVotes": 2627,
+        "hammerVotes": 2586,
+        "norrisPct": 50.4,
+        "hammerPct": 49.6,
+        "marginVotes": 41,
+        "marginPct": 0.8,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (50.4% · Hammer 49.6%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Benton",
+      "countySlug": "benton-county",
+      "fips": "05007",
+      "regionId": "northwest",
+      "primary": {
+        "totalVotes": 18840,
+        "norrisVotes": 6415,
+        "hammerVotes": 5806,
+        "harrisonVotes": 6619,
+        "norrisPct": 34,
+        "hammerPct": 30.8,
+        "harrisonPct": 35.1,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 3672,
+        "norrisVotes": 1795,
+        "hammerVotes": 1877,
+        "norrisPct": 48.9,
+        "hammerPct": 51.1,
+        "marginVotes": 82,
+        "marginPct": 2.2,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (51.1% · margin 2.2 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Boone",
+      "countySlug": "boone-county",
+      "fips": "05009",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 5285,
+        "norrisVotes": 1826,
+        "hammerVotes": 1720,
+        "harrisonVotes": 1739,
+        "norrisPct": 34.6,
+        "hammerPct": 32.5,
+        "harrisonPct": 32.9,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 3599,
+        "norrisVotes": 1845,
+        "hammerVotes": 1754,
+        "norrisPct": 51.3,
+        "hammerPct": 48.7,
+        "marginVotes": 91,
+        "marginPct": 2.5,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (51.3% · Hammer 48.7%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Bradley",
+      "countySlug": "bradley-county",
+      "fips": "05011",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 1073,
+        "norrisVotes": 281,
+        "hammerVotes": 460,
+        "harrisonVotes": 332,
+        "norrisPct": 26.2,
+        "hammerPct": 42.9,
+        "harrisonPct": 30.9,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 113,
+        "norrisVotes": 46,
+        "hammerVotes": 67,
+        "norrisPct": 40.7,
+        "hammerPct": 59.3,
+        "marginVotes": 21,
+        "marginPct": 18.6,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (59.3% · Norris 40.7%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Calhoun",
+      "countySlug": "calhoun-county",
+      "fips": "05013",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 845,
+        "norrisVotes": 199,
+        "hammerVotes": 232,
+        "harrisonVotes": 414,
+        "norrisPct": 23.6,
+        "hammerPct": 27.5,
+        "harrisonPct": 49,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 90,
+        "norrisVotes": 41,
+        "hammerVotes": 49,
+        "norrisPct": 45.6,
+        "hammerPct": 54.4,
+        "marginVotes": 8,
+        "marginPct": 8.9,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (54.4% · Norris 45.6%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Carroll",
+      "countySlug": "carroll-county",
+      "fips": "05015",
+      "regionId": "northwest",
+      "primary": {
+        "totalVotes": 3845,
+        "norrisVotes": 1312,
+        "hammerVotes": 911,
+        "harrisonVotes": 1622,
+        "norrisPct": 34.1,
+        "hammerPct": 23.7,
+        "harrisonPct": 42.2,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 1727,
+        "norrisVotes": 941,
+        "hammerVotes": 786,
+        "norrisPct": 54.5,
+        "hammerPct": 45.5,
+        "marginVotes": 155,
+        "marginPct": 9,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (54.5% · Hammer 45.5%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Chicot",
+      "countySlug": "chicot-county",
+      "fips": "05017",
+      "regionId": "southeast",
+      "primary": {
+        "totalVotes": 136,
+        "norrisVotes": 62,
+        "hammerVotes": 38,
+        "harrisonVotes": 36,
+        "norrisPct": 45.6,
+        "hammerPct": 27.9,
+        "harrisonPct": 26.5,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 48,
+        "norrisVotes": 28,
+        "hammerVotes": 20,
+        "norrisPct": 58.3,
+        "hammerPct": 41.7,
+        "marginVotes": 8,
+        "marginPct": 16.7,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (58.3% · Hammer 41.7%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Clark",
+      "countySlug": "clark-county",
+      "fips": "05019",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 1633,
+        "norrisVotes": 498,
+        "hammerVotes": 644,
+        "harrisonVotes": 491,
+        "norrisPct": 30.5,
+        "hammerPct": 39.4,
+        "harrisonPct": 30.1,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 339,
+        "norrisVotes": 136,
+        "hammerVotes": 203,
+        "norrisPct": 40.1,
+        "hammerPct": 59.9,
+        "marginVotes": 67,
+        "marginPct": 19.8,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (59.9% · Norris 40.1%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Clay",
+      "countySlug": "clay-county",
+      "fips": "05021",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 2337,
+        "norrisVotes": 818,
+        "hammerVotes": 874,
+        "harrisonVotes": 645,
+        "norrisPct": 35,
+        "hammerPct": 37.4,
+        "harrisonPct": 27.6,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 1317,
+        "norrisVotes": 662,
+        "hammerVotes": 655,
+        "norrisPct": 50.3,
+        "hammerPct": 49.7,
+        "marginVotes": 7,
+        "marginPct": 0.5,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (50.3% · Hammer 49.7%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Cleburne",
+      "countySlug": "cleburne-county",
+      "fips": "05023",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 3982,
+        "norrisVotes": 1445,
+        "hammerVotes": 1373,
+        "harrisonVotes": 1164,
+        "norrisPct": 36.3,
+        "hammerPct": 34.5,
+        "harrisonPct": 29.2,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 715,
+        "norrisVotes": 335,
+        "hammerVotes": 380,
+        "norrisPct": 46.9,
+        "hammerPct": 53.1,
+        "marginVotes": 45,
+        "marginPct": 6.3,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (53.1% · Norris 46.9%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Norris led the March primary here; Hammer flipped it in the runoff with establishment turnout — persuadable GOP base remains.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Cleveland",
+      "countySlug": "cleveland-county",
+      "fips": "05025",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 1703,
+        "norrisVotes": 567,
+        "hammerVotes": 740,
+        "harrisonVotes": 396,
+        "norrisPct": 33.3,
+        "hammerPct": 43.5,
+        "harrisonPct": 23.3,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 961,
+        "norrisVotes": 393,
+        "hammerVotes": 568,
+        "norrisPct": 40.9,
+        "hammerPct": 59.1,
+        "marginVotes": 175,
+        "marginPct": 18.2,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (59.1% · Norris 40.9%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Columbia",
+      "countySlug": "columbia-county",
+      "fips": "05027",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 1042,
+        "norrisVotes": 318,
+        "hammerVotes": 377,
+        "harrisonVotes": 347,
+        "norrisPct": 30.5,
+        "hammerPct": 36.2,
+        "harrisonPct": 33.3,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 195,
+        "norrisVotes": 89,
+        "hammerVotes": 106,
+        "norrisPct": 45.6,
+        "hammerPct": 54.4,
+        "marginVotes": 17,
+        "marginPct": 8.7,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (54.4% · Norris 45.6%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Conway",
+      "countySlug": "conway-county",
+      "fips": "05029",
+      "regionId": "central",
+      "primary": {
+        "totalVotes": 3076,
+        "norrisVotes": 1061,
+        "hammerVotes": 1127,
+        "harrisonVotes": 888,
+        "norrisPct": 34.5,
+        "hammerPct": 36.6,
+        "harrisonPct": 28.9,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 416,
+        "norrisVotes": 191,
+        "hammerVotes": 225,
+        "norrisPct": 45.9,
+        "hammerPct": 54.1,
+        "marginVotes": 34,
+        "marginPct": 8.2,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (54.1% · Norris 45.9%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Craighead",
+      "countySlug": "craighead-county",
+      "fips": "05031",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 6610,
+        "norrisVotes": 2550,
+        "hammerVotes": 2309,
+        "harrisonVotes": 1751,
+        "norrisPct": 38.6,
+        "hammerPct": 34.9,
+        "harrisonPct": 26.5,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 1068,
+        "norrisVotes": 575,
+        "hammerVotes": 493,
+        "norrisPct": 53.8,
+        "hammerPct": 46.2,
+        "marginVotes": 82,
+        "marginPct": 7.7,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (53.8% · Hammer 46.2%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Crawford",
+      "countySlug": "crawford-county",
+      "fips": "05033",
+      "regionId": "west_central",
+      "primary": {
+        "totalVotes": 5825,
+        "norrisVotes": 2446,
+        "hammerVotes": 1789,
+        "harrisonVotes": 1590,
+        "norrisPct": 42,
+        "hammerPct": 30.7,
+        "harrisonPct": 27.3,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 791,
+        "norrisVotes": 461,
+        "hammerVotes": 330,
+        "norrisPct": 58.3,
+        "hammerPct": 41.7,
+        "marginVotes": 131,
+        "marginPct": 16.6,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (58.3% · Hammer 41.7%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Crittenden",
+      "countySlug": "crittenden-county",
+      "fips": "05035",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 1024,
+        "norrisVotes": 455,
+        "hammerVotes": 316,
+        "harrisonVotes": 253,
+        "norrisPct": 44.4,
+        "hammerPct": 30.9,
+        "harrisonPct": 24.7,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 147,
+        "norrisVotes": 88,
+        "hammerVotes": 59,
+        "norrisPct": 59.9,
+        "hammerPct": 40.1,
+        "marginVotes": 29,
+        "marginPct": 19.7,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (59.9% · Hammer 40.1%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Cross",
+      "countySlug": "cross-county",
+      "fips": "05037",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 2256,
+        "norrisVotes": 515,
+        "hammerVotes": 1075,
+        "harrisonVotes": 666,
+        "norrisPct": 22.8,
+        "hammerPct": 47.7,
+        "harrisonPct": 29.5,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 231,
+        "norrisVotes": 114,
+        "hammerVotes": 117,
+        "norrisPct": 49.4,
+        "hammerPct": 50.6,
+        "marginVotes": 3,
+        "marginPct": 1.3,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (50.6% · margin 1.3 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Dallas",
+      "countySlug": "dallas-county",
+      "fips": "05039",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 998,
+        "norrisVotes": 268,
+        "hammerVotes": 266,
+        "harrisonVotes": 464,
+        "norrisPct": 26.9,
+        "hammerPct": 26.7,
+        "harrisonPct": 46.5,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 431,
+        "norrisVotes": 212,
+        "hammerVotes": 219,
+        "norrisPct": 49.2,
+        "hammerPct": 50.8,
+        "marginVotes": 7,
+        "marginPct": 1.6,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (50.8% · margin 1.6 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Desha",
+      "countySlug": "desha-county",
+      "fips": "05041",
+      "regionId": "southeast",
+      "primary": {
+        "totalVotes": 182,
+        "norrisVotes": 73,
+        "hammerVotes": 62,
+        "harrisonVotes": 47,
+        "norrisPct": 40.1,
+        "hammerPct": 34.1,
+        "harrisonPct": 25.8,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 15,
+        "norrisVotes": 11,
+        "hammerVotes": 4,
+        "norrisPct": 73.3,
+        "hammerPct": 26.7,
+        "marginVotes": 7,
+        "marginPct": 46.7,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (73.3% · Hammer 26.7%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Drew",
+      "countySlug": "drew-county",
+      "fips": "05043",
+      "regionId": "southeast",
+      "primary": {
+        "totalVotes": 1505,
+        "norrisVotes": 655,
+        "hammerVotes": 474,
+        "harrisonVotes": 376,
+        "norrisPct": 43.5,
+        "hammerPct": 31.5,
+        "harrisonPct": 25,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 195,
+        "norrisVotes": 106,
+        "hammerVotes": 89,
+        "norrisPct": 54.4,
+        "hammerPct": 45.6,
+        "marginVotes": 17,
+        "marginPct": 8.7,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (54.4% · Hammer 45.6%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Faulkner",
+      "countySlug": "faulkner-county",
+      "fips": "05045",
+      "regionId": "central",
+      "primary": {
+        "totalVotes": 8685,
+        "norrisVotes": 2850,
+        "hammerVotes": 4107,
+        "harrisonVotes": 1728,
+        "norrisPct": 32.8,
+        "hammerPct": 47.3,
+        "harrisonPct": 19.9,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 1981,
+        "norrisVotes": 1139,
+        "hammerVotes": 842,
+        "norrisPct": 57.5,
+        "hammerPct": 42.5,
+        "marginVotes": 297,
+        "marginPct": 15,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (57.5% · Hammer 42.5%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Franklin",
+      "countySlug": "franklin-county",
+      "fips": "05047",
+      "regionId": "west_central",
+      "primary": {
+        "totalVotes": 1911,
+        "norrisVotes": 818,
+        "hammerVotes": 539,
+        "harrisonVotes": 554,
+        "norrisPct": 42.8,
+        "hammerPct": 28.2,
+        "harrisonPct": 29,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 734,
+        "norrisVotes": 503,
+        "hammerVotes": 231,
+        "norrisPct": 68.5,
+        "hammerPct": 31.5,
+        "marginVotes": 272,
+        "marginPct": 37.1,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (68.5% · Hammer 31.5%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Fulton",
+      "countySlug": "fulton-county",
+      "fips": "05049",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 1954,
+        "norrisVotes": 557,
+        "hammerVotes": 755,
+        "harrisonVotes": 642,
+        "norrisPct": 28.5,
+        "hammerPct": 38.6,
+        "harrisonPct": 32.9,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 210,
+        "norrisVotes": 153,
+        "hammerVotes": 57,
+        "norrisPct": 72.9,
+        "hammerPct": 27.1,
+        "marginVotes": 96,
+        "marginPct": 45.7,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (72.9% · Hammer 27.1%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Garland",
+      "countySlug": "garland-county",
+      "fips": "05051",
+      "regionId": "west_central",
+      "primary": {
+        "totalVotes": 10294,
+        "norrisVotes": 3209,
+        "hammerVotes": 3106,
+        "harrisonVotes": 3979,
+        "norrisPct": 31.2,
+        "hammerPct": 30.2,
+        "harrisonPct": 38.7,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 1326,
+        "norrisVotes": 545,
+        "hammerVotes": 781,
+        "norrisPct": 41.1,
+        "hammerPct": 58.9,
+        "marginVotes": 236,
+        "marginPct": 17.8,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (58.9% · Norris 41.1%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Grant",
+      "countySlug": "grant-county",
+      "fips": "05053",
+      "regionId": "central",
+      "primary": {
+        "totalVotes": 5805,
+        "norrisVotes": 1310,
+        "hammerVotes": 3016,
+        "harrisonVotes": 1479,
+        "norrisPct": 22.6,
+        "hammerPct": 52,
+        "harrisonPct": 25.5,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 1415,
+        "norrisVotes": 533,
+        "hammerVotes": 882,
+        "norrisPct": 37.7,
+        "hammerPct": 62.3,
+        "marginVotes": 349,
+        "marginPct": 24.7,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (62.3% · Norris 37.7%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Greene",
+      "countySlug": "greene-county",
+      "fips": "05055",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 5448,
+        "norrisVotes": 2144,
+        "hammerVotes": 1868,
+        "harrisonVotes": 1436,
+        "norrisPct": 39.4,
+        "hammerPct": 34.3,
+        "harrisonPct": 26.4,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 728,
+        "norrisVotes": 485,
+        "hammerVotes": 243,
+        "norrisPct": 66.6,
+        "hammerPct": 33.4,
+        "marginVotes": 242,
+        "marginPct": 33.2,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (66.6% · Hammer 33.4%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Hempstead",
+      "countySlug": "hempstead-county",
+      "fips": "05057",
+      "regionId": "southwest",
+      "primary": {
+        "totalVotes": 2245,
+        "norrisVotes": 588,
+        "hammerVotes": 1012,
+        "harrisonVotes": 645,
+        "norrisPct": 26.2,
+        "hammerPct": 45.1,
+        "harrisonPct": 28.7,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 920,
+        "norrisVotes": 455,
+        "hammerVotes": 465,
+        "norrisPct": 49.5,
+        "hammerPct": 50.5,
+        "marginVotes": 10,
+        "marginPct": 1.1,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (50.5% · margin 1.1 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Hot Spring",
+      "countySlug": "hot-spring-county",
+      "fips": "05059",
+      "regionId": "west_central",
+      "primary": {
+        "totalVotes": 3904,
+        "norrisVotes": 992,
+        "hammerVotes": 1430,
+        "harrisonVotes": 1482,
+        "norrisPct": 25.4,
+        "hammerPct": 36.6,
+        "harrisonPct": 38,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 327,
+        "norrisVotes": 150,
+        "hammerVotes": 177,
+        "norrisPct": 45.9,
+        "hammerPct": 54.1,
+        "marginVotes": 27,
+        "marginPct": 8.3,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (54.1% · Norris 45.9%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Howard",
+      "countySlug": "howard-county",
+      "fips": "05061",
+      "regionId": "southwest",
+      "primary": {
+        "totalVotes": 1211,
+        "norrisVotes": 471,
+        "hammerVotes": 329,
+        "harrisonVotes": 411,
+        "norrisPct": 38.9,
+        "hammerPct": 27.2,
+        "harrisonPct": 33.9,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 146,
+        "norrisVotes": 74,
+        "hammerVotes": 72,
+        "norrisPct": 50.7,
+        "hammerPct": 49.3,
+        "marginVotes": 2,
+        "marginPct": 1.4,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (50.7% · Hammer 49.3%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Independence",
+      "countySlug": "independence-county",
+      "fips": "05063",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 4548,
+        "norrisVotes": 1592,
+        "hammerVotes": 1079,
+        "harrisonVotes": 1877,
+        "norrisPct": 35,
+        "hammerPct": 23.7,
+        "harrisonPct": 41.3,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 926,
+        "norrisVotes": 462,
+        "hammerVotes": 464,
+        "norrisPct": 49.9,
+        "hammerPct": 50.1,
+        "marginVotes": 2,
+        "marginPct": 0.2,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (50.1% · margin 0.2 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Izard",
+      "countySlug": "izard-county",
+      "fips": "05065",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 1799,
+        "norrisVotes": 730,
+        "hammerVotes": 683,
+        "harrisonVotes": 386,
+        "norrisPct": 40.6,
+        "hammerPct": 38,
+        "harrisonPct": 21.5,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 310,
+        "norrisVotes": 206,
+        "hammerVotes": 104,
+        "norrisPct": 66.5,
+        "hammerPct": 33.5,
+        "marginVotes": 102,
+        "marginPct": 32.9,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (66.5% · Hammer 33.5%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Jackson",
+      "countySlug": "jackson-county",
+      "fips": "05067",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 1940,
+        "norrisVotes": 965,
+        "hammerVotes": 424,
+        "harrisonVotes": 551,
+        "norrisPct": 49.7,
+        "hammerPct": 21.9,
+        "harrisonPct": 28.4,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 168,
+        "norrisVotes": 105,
+        "hammerVotes": 63,
+        "norrisPct": 62.5,
+        "hammerPct": 37.5,
+        "marginVotes": 42,
+        "marginPct": 25,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (62.5% · Hammer 37.5%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Jefferson",
+      "countySlug": "jefferson-county",
+      "fips": "05069",
+      "regionId": "southeast",
+      "primary": {
+        "totalVotes": 1615,
+        "norrisVotes": 692,
+        "hammerVotes": 510,
+        "harrisonVotes": 413,
+        "norrisPct": 42.8,
+        "hammerPct": 31.6,
+        "harrisonPct": 25.6,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 401,
+        "norrisVotes": 186,
+        "hammerVotes": 215,
+        "norrisPct": 46.4,
+        "hammerPct": 53.6,
+        "marginVotes": 29,
+        "marginPct": 7.2,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (53.6% · Norris 46.4%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Norris led the March primary here; Hammer flipped it in the runoff with establishment turnout — persuadable GOP base remains.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Johnson",
+      "countySlug": "johnson-county",
+      "fips": "05071",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 3100,
+        "norrisVotes": 1098,
+        "hammerVotes": 718,
+        "harrisonVotes": 1284,
+        "norrisPct": 35.4,
+        "hammerPct": 23.2,
+        "harrisonPct": 41.4,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 2525,
+        "norrisVotes": 1381,
+        "hammerVotes": 1144,
+        "norrisPct": 54.7,
+        "hammerPct": 45.3,
+        "marginVotes": 237,
+        "marginPct": 9.4,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (54.7% · Hammer 45.3%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Lafayette",
+      "countySlug": "lafayette-county",
+      "fips": "05073",
+      "regionId": "southwest",
+      "primary": {
+        "totalVotes": 686,
+        "norrisVotes": 233,
+        "hammerVotes": 222,
+        "harrisonVotes": 231,
+        "norrisPct": 34,
+        "hammerPct": 32.4,
+        "harrisonPct": 33.7,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 117,
+        "norrisVotes": 55,
+        "hammerVotes": 62,
+        "norrisPct": 47,
+        "hammerPct": 53,
+        "marginVotes": 7,
+        "marginPct": 6,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (53% · Norris 47%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Norris led the March primary here; Hammer flipped it in the runoff with establishment turnout — persuadable GOP base remains.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Lawrence",
+      "countySlug": "lawrence-county",
+      "fips": "05075",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 1952,
+        "norrisVotes": 591,
+        "hammerVotes": 466,
+        "harrisonVotes": 895,
+        "norrisPct": 30.3,
+        "hammerPct": 23.9,
+        "harrisonPct": 45.9,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 261,
+        "norrisVotes": 137,
+        "hammerVotes": 124,
+        "norrisPct": 52.5,
+        "hammerPct": 47.5,
+        "marginVotes": 13,
+        "marginPct": 5,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (52.5% · Hammer 47.5%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Lee",
+      "countySlug": "lee-county",
+      "fips": "05077",
+      "regionId": "southeast",
+      "primary": {
+        "totalVotes": 246,
+        "norrisVotes": 66,
+        "hammerVotes": 110,
+        "harrisonVotes": 70,
+        "norrisPct": 26.8,
+        "hammerPct": 44.7,
+        "harrisonPct": 28.5,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 22,
+        "norrisVotes": 15,
+        "hammerVotes": 7,
+        "norrisPct": 68.2,
+        "hammerPct": 31.8,
+        "marginVotes": 8,
+        "marginPct": 36.4,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (68.2% · Hammer 31.8%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Lincoln",
+      "countySlug": "lincoln-county",
+      "fips": "05079",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 1192,
+        "norrisVotes": 360,
+        "hammerVotes": 350,
+        "harrisonVotes": 482,
+        "norrisPct": 30.2,
+        "hammerPct": 29.4,
+        "harrisonPct": 40.4,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 763,
+        "norrisVotes": 347,
+        "hammerVotes": 416,
+        "norrisPct": 45.5,
+        "hammerPct": 54.5,
+        "marginVotes": 69,
+        "marginPct": 9,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (54.5% · Norris 45.5%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Little River",
+      "countySlug": "little-river-county",
+      "fips": "05081",
+      "regionId": "southwest",
+      "primary": {
+        "totalVotes": 2061,
+        "norrisVotes": 555,
+        "hammerVotes": 452,
+        "harrisonVotes": 1054,
+        "norrisPct": 26.9,
+        "hammerPct": 21.9,
+        "harrisonPct": 51.1,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 1246,
+        "norrisVotes": 621,
+        "hammerVotes": 625,
+        "norrisPct": 49.8,
+        "hammerPct": 50.2,
+        "marginVotes": 4,
+        "marginPct": 0.3,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (50.2% · margin 0.3 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Logan",
+      "countySlug": "logan-county",
+      "fips": "05083",
+      "regionId": "west_central",
+      "primary": {
+        "totalVotes": 3338,
+        "norrisVotes": 1167,
+        "hammerVotes": 890,
+        "harrisonVotes": 1281,
+        "norrisPct": 35,
+        "hammerPct": 26.7,
+        "harrisonPct": 38.4,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 1915,
+        "norrisVotes": 1045,
+        "hammerVotes": 870,
+        "norrisPct": 54.6,
+        "hammerPct": 45.4,
+        "marginVotes": 175,
+        "marginPct": 9.1,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (54.6% · Hammer 45.4%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Lonoke",
+      "countySlug": "lonoke-county",
+      "fips": "05085",
+      "regionId": "central",
+      "primary": {
+        "totalVotes": 9514,
+        "norrisVotes": 3997,
+        "hammerVotes": 2923,
+        "harrisonVotes": 2594,
+        "norrisPct": 42,
+        "hammerPct": 30.7,
+        "harrisonPct": 27.3,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 1248,
+        "norrisVotes": 855,
+        "hammerVotes": 393,
+        "norrisPct": 68.5,
+        "hammerPct": 31.5,
+        "marginVotes": 462,
+        "marginPct": 37,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (68.5% · Hammer 31.5%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Madison",
+      "countySlug": "madison-county",
+      "fips": "05087",
+      "regionId": "northwest",
+      "primary": {
+        "totalVotes": 3240,
+        "norrisVotes": 1266,
+        "hammerVotes": 724,
+        "harrisonVotes": 1250,
+        "norrisPct": 39.1,
+        "hammerPct": 22.3,
+        "harrisonPct": 38.6,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 2467,
+        "norrisVotes": 1370,
+        "hammerVotes": 1097,
+        "norrisPct": 55.5,
+        "hammerPct": 44.5,
+        "marginVotes": 273,
+        "marginPct": 11.1,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (55.5% · Hammer 44.5%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Marion",
+      "countySlug": "marion-county",
+      "fips": "05089",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 2531,
+        "norrisVotes": 857,
+        "hammerVotes": 681,
+        "harrisonVotes": 993,
+        "norrisPct": 33.9,
+        "hammerPct": 26.9,
+        "harrisonPct": 39.2,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 461,
+        "norrisVotes": 293,
+        "hammerVotes": 168,
+        "norrisPct": 63.6,
+        "hammerPct": 36.4,
+        "marginVotes": 125,
+        "marginPct": 27.1,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (63.6% · Hammer 36.4%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Miller",
+      "countySlug": "miller-county",
+      "fips": "05091",
+      "regionId": "southwest",
+      "primary": {
+        "totalVotes": 4518,
+        "norrisVotes": 815,
+        "hammerVotes": 1155,
+        "harrisonVotes": 2548,
+        "norrisPct": 18,
+        "hammerPct": 25.6,
+        "harrisonPct": 56.4,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 2317,
+        "norrisVotes": 958,
+        "hammerVotes": 1359,
+        "norrisPct": 41.3,
+        "hammerPct": 58.7,
+        "marginVotes": 401,
+        "marginPct": 17.3,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (58.7% · Norris 41.3%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Mississippi",
+      "countySlug": "mississippi-county",
+      "fips": "05093",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 1392,
+        "norrisVotes": 505,
+        "hammerVotes": 560,
+        "harrisonVotes": 327,
+        "norrisPct": 36.3,
+        "hammerPct": 40.2,
+        "harrisonPct": 23.5,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 203,
+        "norrisVotes": 98,
+        "hammerVotes": 105,
+        "norrisPct": 48.3,
+        "hammerPct": 51.7,
+        "marginVotes": 7,
+        "marginPct": 3.4,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (51.7% · Norris 48.3%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Monroe",
+      "countySlug": "monroe-county",
+      "fips": "05095",
+      "regionId": "southeast",
+      "primary": {
+        "totalVotes": 448,
+        "norrisVotes": 123,
+        "hammerVotes": 192,
+        "harrisonVotes": 133,
+        "norrisPct": 27.5,
+        "hammerPct": 42.9,
+        "harrisonPct": 29.7,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 72,
+        "norrisVotes": 40,
+        "hammerVotes": 32,
+        "norrisPct": 55.6,
+        "hammerPct": 44.4,
+        "marginVotes": 8,
+        "marginPct": 11.1,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (55.6% · Hammer 44.4%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Montgomery",
+      "countySlug": "montgomery-county",
+      "fips": "05097",
+      "regionId": "west_central",
+      "primary": {
+        "totalVotes": 1688,
+        "norrisVotes": 513,
+        "hammerVotes": 489,
+        "harrisonVotes": 686,
+        "norrisPct": 30.4,
+        "hammerPct": 29,
+        "harrisonPct": 40.6,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 173,
+        "norrisVotes": 108,
+        "hammerVotes": 65,
+        "norrisPct": 62.4,
+        "hammerPct": 37.6,
+        "marginVotes": 43,
+        "marginPct": 24.9,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (62.4% · Hammer 37.6%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Nevada",
+      "countySlug": "nevada-county",
+      "fips": "05099",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 656,
+        "norrisVotes": 259,
+        "hammerVotes": 207,
+        "harrisonVotes": 190,
+        "norrisPct": 39.5,
+        "hammerPct": 31.6,
+        "harrisonPct": 29,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 118,
+        "norrisVotes": 75,
+        "hammerVotes": 43,
+        "norrisPct": 63.6,
+        "hammerPct": 36.4,
+        "marginVotes": 32,
+        "marginPct": 27.1,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (63.6% · Hammer 36.4%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Newton",
+      "countySlug": "newton-county",
+      "fips": "05101",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 1462,
+        "norrisVotes": 545,
+        "hammerVotes": 330,
+        "harrisonVotes": 587,
+        "norrisPct": 37.3,
+        "hammerPct": 22.6,
+        "harrisonPct": 40.2,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 180,
+        "norrisVotes": 129,
+        "hammerVotes": 51,
+        "norrisPct": 71.7,
+        "hammerPct": 28.3,
+        "marginVotes": 78,
+        "marginPct": 43.3,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (71.7% · Hammer 28.3%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Ouachita",
+      "countySlug": "ouachita-county",
+      "fips": "05103",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 2185,
+        "norrisVotes": 742,
+        "hammerVotes": 633,
+        "harrisonVotes": 810,
+        "norrisPct": 34,
+        "hammerPct": 29,
+        "harrisonPct": 37.1,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 253,
+        "norrisVotes": 113,
+        "hammerVotes": 140,
+        "norrisPct": 44.7,
+        "hammerPct": 55.3,
+        "marginVotes": 27,
+        "marginPct": 10.7,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (55.3% · Norris 44.7%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Perry",
+      "countySlug": "perry-county",
+      "fips": "05105",
+      "regionId": "central",
+      "primary": {
+        "totalVotes": 1651,
+        "norrisVotes": 529,
+        "hammerVotes": 532,
+        "harrisonVotes": 590,
+        "norrisPct": 32,
+        "hammerPct": 32.2,
+        "harrisonPct": 35.7,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 350,
+        "norrisVotes": 154,
+        "hammerVotes": 196,
+        "norrisPct": 44,
+        "hammerPct": 56,
+        "marginVotes": 42,
+        "marginPct": 12,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (56% · Norris 44%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Phillips",
+      "countySlug": "phillips-county",
+      "fips": "05107",
+      "regionId": "southeast",
+      "primary": {
+        "totalVotes": 133,
+        "norrisVotes": 38,
+        "hammerVotes": 52,
+        "harrisonVotes": 43,
+        "norrisPct": 28.6,
+        "hammerPct": 39.1,
+        "harrisonPct": 32.3,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 23,
+        "norrisVotes": 15,
+        "hammerVotes": 8,
+        "norrisPct": 65.2,
+        "hammerPct": 34.8,
+        "marginVotes": 7,
+        "marginPct": 30.4,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (65.2% · Hammer 34.8%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Pike",
+      "countySlug": "pike-county",
+      "fips": "05109",
+      "regionId": "southwest",
+      "primary": {
+        "totalVotes": 1873,
+        "norrisVotes": 631,
+        "hammerVotes": 504,
+        "harrisonVotes": 738,
+        "norrisPct": 33.7,
+        "hammerPct": 26.9,
+        "harrisonPct": 39.4,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 211,
+        "norrisVotes": 105,
+        "hammerVotes": 106,
+        "norrisPct": 49.8,
+        "hammerPct": 50.2,
+        "marginVotes": 1,
+        "marginPct": 0.5,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (50.2% · margin 0.5 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Poinsett",
+      "countySlug": "poinsett-county",
+      "fips": "05111",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 1658,
+        "norrisVotes": 668,
+        "hammerVotes": 634,
+        "harrisonVotes": 356,
+        "norrisPct": 40.3,
+        "hammerPct": 38.2,
+        "harrisonPct": 21.5,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 258,
+        "norrisVotes": 147,
+        "hammerVotes": 111,
+        "norrisPct": 57,
+        "hammerPct": 43,
+        "marginVotes": 36,
+        "marginPct": 14,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (57% · Hammer 43%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Polk",
+      "countySlug": "polk-county",
+      "fips": "05113",
+      "regionId": "west_central",
+      "primary": {
+        "totalVotes": 2500,
+        "norrisVotes": 873,
+        "hammerVotes": 905,
+        "harrisonVotes": 722,
+        "norrisPct": 34.9,
+        "hammerPct": 36.2,
+        "harrisonPct": 28.9,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 445,
+        "norrisVotes": 248,
+        "hammerVotes": 197,
+        "norrisPct": 55.7,
+        "hammerPct": 44.3,
+        "marginVotes": 51,
+        "marginPct": 11.5,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (55.7% · Hammer 44.3%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Pope",
+      "countySlug": "pope-county",
+      "fips": "05115",
+      "regionId": "central",
+      "primary": {
+        "totalVotes": 6805,
+        "norrisVotes": 2482,
+        "hammerVotes": 2391,
+        "harrisonVotes": 1932,
+        "norrisPct": 36.5,
+        "hammerPct": 35.1,
+        "harrisonPct": 28.4,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 927,
+        "norrisVotes": 400,
+        "hammerVotes": 527,
+        "norrisPct": 43.1,
+        "hammerPct": 56.9,
+        "marginVotes": 127,
+        "marginPct": 13.7,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (56.9% · Norris 43.1%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Norris led the March primary here; Hammer flipped it in the runoff with establishment turnout — persuadable GOP base remains.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Prairie",
+      "countySlug": "prairie-county",
+      "fips": "05117",
+      "regionId": "central",
+      "primary": {
+        "totalVotes": 1506,
+        "norrisVotes": 476,
+        "hammerVotes": 560,
+        "harrisonVotes": 470,
+        "norrisPct": 31.6,
+        "hammerPct": 37.2,
+        "harrisonPct": 31.2,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 248,
+        "norrisVotes": 90,
+        "hammerVotes": 158,
+        "norrisPct": 36.3,
+        "hammerPct": 63.7,
+        "marginVotes": 68,
+        "marginPct": 27.4,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (63.7% · Norris 36.3%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Pulaski",
+      "countySlug": "pulaski-county",
+      "fips": "05119",
+      "regionId": "central",
+      "primary": {
+        "totalVotes": 17731,
+        "norrisVotes": 6724,
+        "hammerVotes": 6209,
+        "harrisonVotes": 4798,
+        "norrisPct": 37.9,
+        "hammerPct": 35,
+        "harrisonPct": 27.1,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 4607,
+        "norrisVotes": 2334,
+        "hammerVotes": 2273,
+        "norrisPct": 50.7,
+        "hammerPct": 49.3,
+        "marginVotes": 61,
+        "marginPct": 1.3,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (50.7% · Hammer 49.3%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Randolph",
+      "countySlug": "randolph-county",
+      "fips": "05121",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 2211,
+        "norrisVotes": 698,
+        "hammerVotes": 647,
+        "harrisonVotes": 866,
+        "norrisPct": 31.6,
+        "hammerPct": 29.3,
+        "harrisonPct": 39.2,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 329,
+        "norrisVotes": 168,
+        "hammerVotes": 161,
+        "norrisPct": 51.1,
+        "hammerPct": 48.9,
+        "marginVotes": 7,
+        "marginPct": 2.1,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (51.1% · Hammer 48.9%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "St. Francis",
+      "countySlug": "st-francis-county",
+      "fips": "05123",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 821,
+        "norrisVotes": 193,
+        "hammerVotes": 357,
+        "harrisonVotes": 271,
+        "norrisPct": 23.5,
+        "hammerPct": 43.5,
+        "harrisonPct": 33,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 101,
+        "norrisVotes": 40,
+        "hammerVotes": 61,
+        "norrisPct": 39.6,
+        "hammerPct": 60.4,
+        "marginVotes": 21,
+        "marginPct": 20.8,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (60.4% · Norris 39.6%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Saline",
+      "countySlug": "saline-county",
+      "fips": "05125",
+      "regionId": "central",
+      "primary": {
+        "totalVotes": 13601,
+        "norrisVotes": 3107,
+        "hammerVotes": 7696,
+        "harrisonVotes": 2798,
+        "norrisPct": 22.8,
+        "hammerPct": 56.6,
+        "harrisonPct": 20.6,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 6897,
+        "norrisVotes": 2423,
+        "hammerVotes": 4474,
+        "norrisPct": 35.1,
+        "hammerPct": 64.9,
+        "marginVotes": 2051,
+        "marginPct": 29.7,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (64.9% · Norris 35.1%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "watch",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Scott",
+      "countySlug": "scott-county",
+      "fips": "05127",
+      "regionId": "west_central",
+      "primary": {
+        "totalVotes": 1354,
+        "norrisVotes": 513,
+        "hammerVotes": 402,
+        "harrisonVotes": 439,
+        "norrisPct": 37.9,
+        "hammerPct": 29.7,
+        "harrisonPct": 32.4,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 723,
+        "norrisVotes": 355,
+        "hammerVotes": 368,
+        "norrisPct": 49.1,
+        "hammerPct": 50.9,
+        "marginVotes": 13,
+        "marginPct": 1.8,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (50.9% · margin 1.8 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Searcy",
+      "countySlug": "searcy-county",
+      "fips": "05129",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 1983,
+        "norrisVotes": 848,
+        "hammerVotes": 633,
+        "harrisonVotes": 502,
+        "norrisPct": 42.8,
+        "hammerPct": 31.9,
+        "harrisonPct": 25.3,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 1334,
+        "norrisVotes": 749,
+        "hammerVotes": 585,
+        "norrisPct": 56.1,
+        "hammerPct": 43.9,
+        "marginVotes": 164,
+        "marginPct": 12.3,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (56.1% · Hammer 43.9%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Sebastian",
+      "countySlug": "sebastian-county",
+      "fips": "05131",
+      "regionId": "west_central",
+      "primary": {
+        "totalVotes": 9955,
+        "norrisVotes": 4157,
+        "hammerVotes": 2772,
+        "harrisonVotes": 3026,
+        "norrisPct": 41.8,
+        "hammerPct": 27.8,
+        "harrisonPct": 30.4,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 1844,
+        "norrisVotes": 1073,
+        "hammerVotes": 771,
+        "norrisPct": 58.2,
+        "hammerPct": 41.8,
+        "marginVotes": 302,
+        "marginPct": 16.4,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (58.2% · Hammer 41.8%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Sevier",
+      "countySlug": "sevier-county",
+      "fips": "05133",
+      "regionId": "southwest",
+      "primary": {
+        "totalVotes": 2214,
+        "norrisVotes": 598,
+        "hammerVotes": 824,
+        "harrisonVotes": 792,
+        "norrisPct": 27,
+        "hammerPct": 37.2,
+        "harrisonPct": 35.8,
+        "winner": "hammer"
+      },
+      "runoff": {
+        "totalVotes": 132,
+        "norrisVotes": 64,
+        "hammerVotes": 68,
+        "norrisPct": 48.5,
+        "hammerPct": 51.5,
+        "marginVotes": 4,
+        "marginPct": 3,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (51.5% · margin 3 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": true,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Sharp",
+      "countySlug": "sharp-county",
+      "fips": "05135",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 2049,
+        "norrisVotes": 741,
+        "hammerVotes": 500,
+        "harrisonVotes": 808,
+        "norrisPct": 36.2,
+        "hammerPct": 24.4,
+        "harrisonPct": 39.4,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 421,
+        "norrisVotes": 248,
+        "hammerVotes": 173,
+        "norrisPct": 58.9,
+        "hammerPct": 41.1,
+        "marginVotes": 75,
+        "marginPct": 17.8,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (58.9% · Hammer 41.1%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Stone",
+      "countySlug": "stone-county",
+      "fips": "05137",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 2667,
+        "norrisVotes": 948,
+        "hammerVotes": 796,
+        "harrisonVotes": 923,
+        "norrisPct": 35.5,
+        "hammerPct": 29.8,
+        "harrisonPct": 34.6,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 1772,
+        "norrisVotes": 875,
+        "hammerVotes": 897,
+        "norrisPct": 49.4,
+        "hammerPct": 50.6,
+        "marginVotes": 22,
+        "marginPct": 1.2,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (50.6% · margin 1.2 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Union",
+      "countySlug": "union-county",
+      "fips": "05139",
+      "regionId": "south",
+      "primary": {
+        "totalVotes": 2642,
+        "norrisVotes": 790,
+        "hammerVotes": 751,
+        "harrisonVotes": 1101,
+        "norrisPct": 29.9,
+        "hammerPct": 28.4,
+        "harrisonPct": 41.7,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 292,
+        "norrisVotes": 134,
+        "hammerVotes": 158,
+        "norrisPct": 45.9,
+        "hammerPct": 54.1,
+        "marginVotes": 24,
+        "marginPct": 8.2,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (54.1% · Norris 45.9%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Van Buren",
+      "countySlug": "van-buren-county",
+      "fips": "05141",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 2752,
+        "norrisVotes": 833,
+        "hammerVotes": 779,
+        "harrisonVotes": 1140,
+        "norrisPct": 30.3,
+        "hammerPct": 28.3,
+        "harrisonPct": 41.4,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 2042,
+        "norrisVotes": 1018,
+        "hammerVotes": 1024,
+        "norrisPct": 49.9,
+        "hammerPct": 50.1,
+        "marginVotes": 6,
+        "marginPct": 0.3,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (50.1% · margin 0.3 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Washington",
+      "countySlug": "washington-county",
+      "fips": "05143",
+      "regionId": "northwest",
+      "primary": {
+        "totalVotes": 15618,
+        "norrisVotes": 4831,
+        "hammerVotes": 4256,
+        "harrisonVotes": 6531,
+        "norrisPct": 30.9,
+        "hammerPct": 27.3,
+        "harrisonPct": 41.8,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 6831,
+        "norrisVotes": 3165,
+        "hammerVotes": 3666,
+        "norrisPct": 46.3,
+        "hammerPct": 53.7,
+        "marginVotes": 501,
+        "marginPct": 7.3,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (53.7% · Norris 46.3%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer base county — lead with clerk-service and transparency; avoid attacking rural GOP voters.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "White",
+      "countySlug": "white-county",
+      "fips": "05145",
+      "regionId": "north_central",
+      "primary": {
+        "totalVotes": 8443,
+        "norrisVotes": 3730,
+        "hammerVotes": 2288,
+        "harrisonVotes": 2425,
+        "norrisPct": 44.2,
+        "hammerPct": 27.1,
+        "harrisonPct": 28.7,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 3788,
+        "norrisVotes": 1816,
+        "hammerVotes": 1972,
+        "norrisPct": 47.9,
+        "hammerPct": 52.1,
+        "marginVotes": 156,
+        "marginPct": 4.1,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer won the runoff (52.1% · Norris 47.9%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Norris led the March primary here; Hammer flipped it in the runoff with establishment turnout — persuadable GOP base remains.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    },
+    {
+      "county": "Woodruff",
+      "countySlug": "woodruff-county",
+      "fips": "05147",
+      "regionId": "northeast",
+      "primary": {
+        "totalVotes": 717,
+        "norrisVotes": 195,
+        "hammerVotes": 206,
+        "harrisonVotes": 316,
+        "norrisPct": 27.2,
+        "hammerPct": 28.7,
+        "harrisonPct": 44.1,
+        "winner": "harrison"
+      },
+      "runoff": {
+        "totalVotes": 106,
+        "norrisVotes": 55,
+        "hammerVotes": 51,
+        "norrisPct": 51.9,
+        "hammerPct": 48.1,
+        "marginVotes": 4,
+        "marginPct": 3.8,
+        "winner": "norris"
+      },
+      "analysis": {
+        "headline": "Norris carried the GOP runoff here (51.9% · Hammer 48.1%)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer lost the Republican runoff countywide — integrity-ranking rhetoric did not hold the coalition here.",
+        "opportunityTier": "high",
+        "norrisWonPrimary": false,
+        "norrisWonRunoff": true,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": false
+      }
+    },
+    {
+      "county": "Yell",
+      "countySlug": "yell-county",
+      "fips": "05149",
+      "regionId": "west_central",
+      "primary": {
+        "totalVotes": 2611,
+        "norrisVotes": 911,
+        "hammerVotes": 850,
+        "harrisonVotes": 850,
+        "norrisPct": 34.9,
+        "hammerPct": 32.6,
+        "harrisonPct": 32.6,
+        "winner": "norris"
+      },
+      "runoff": {
+        "totalVotes": 1672,
+        "norrisVotes": 819,
+        "hammerVotes": 853,
+        "norrisPct": 49,
+        "hammerPct": 51,
+        "marginVotes": 34,
+        "marginPct": 2,
+        "winner": "hammer"
+      },
+      "analysis": {
+        "headline": "Hammer barely held the runoff (51% · margin 2 pts)",
+        "coalitionFrame": "Norris voters split on establishment vs outsider — many align with Kelly on direct democracy and transparent SOS service, and push back on Hammer's paper-ballot mandates framed as voter suppression.",
+        "hammerWeakness": "Hammer's runoff margin is thin — paper-ballot / election-integrity framing did not produce a decisive win.",
+        "opportunityTier": "medium",
+        "norrisWonPrimary": true,
+        "norrisWonRunoff": false,
+        "hammerWonBoth": false,
+        "primaryToRunoffFlip": true
+      }
+    }
+  ],
+  "validation": {
+    "countyCount": 75,
+    "missingPrimaryCounties": [],
+    "missingRunoffCounties": []
+  }
+}

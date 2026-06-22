@@ -16,6 +16,7 @@ import {
   DEBATE_PREP_DAY2_RELEASE_LABEL,
   DEBATE_PREP_DAY2_RELEASE_VERSION,
 } from "@/lib/election-plan/debate-prep-day2-release";
+import { DAY2_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-norris-coalition-drilldown";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { getDebateWeekIntensiveDay } from "@/lib/intelligence/v4/debateWeekIntensive2026";
@@ -37,7 +38,7 @@ export function ElectionPlanDay2StartCard() {
       <p className="text-xs font-bold uppercase text-indigo-900">Day 2 · read the table</p>
       <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">{plan.title}</h2>
       <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
-      <KellyPageSummary summary="Watch before you counter. Five ACCA study clips + tell worksheet — trap lanes 1–2 until boring. Minimum: film clips + trap lane 1." />
+      <KellyPageSummary summary={DAY2_V3_KELLY_MINIMUM_SUMMARY} />
       <Link
         href={first.href}
         className="mt-4 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"

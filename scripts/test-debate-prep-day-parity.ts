@@ -160,8 +160,8 @@ for (const step of [...day1Steps, ...day2Steps]) {
 }
 
 assert.ok(DEBATE_PREP_DAY1_RELEASE_VERSION.includes("day-1"));
-assert.equal(DEBATE_PREP_DAY2_RELEASE_VERSION, "day-2-read-the-table-v2.0.0");
-assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v2.0.0");
+assert.equal(DEBATE_PREP_DAY2_RELEASE_VERSION, "day-2-read-the-table-v3.0.0");
+assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v3.0.0");
 
 const root = path.join(process.cwd(), "src");
 const conceptPage = fs.readFileSync(
@@ -230,7 +230,7 @@ for (const step of day3Steps) {
   }
 }
 
-assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v2.0.0");
+assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v3.0.0");
 
 const microLessonPage = fs.readFileSync(
   path.join(root, "app/election-plan/(portal)/debate-prep/days/[dayId]/micro-lessons/[lessonId]/page.tsx"),

@@ -1,6 +1,6 @@
 {
   "name": "reddirt-site",
-  "version": "0.61.0",
+  "version": "0.62.0",
   "private": true,
   "scripts": {
     "dev": "node scripts/run-with-h-drive-env.cjs next dev",
@@ -344,6 +344,7 @@
     "voter-file-location-rollups:build": "tsx scripts/build-voter-file-location-rollups.ts",
     "ingest:election-results": "tsx scripts/ingest-election-results-json.ts",
     "election:history:build": "tsx scripts/election-targets/build-election-history-from-sos-json.ts",
+    "election:gop-sos-2026:build": "tsx scripts/election-targets/build-2026-gop-sos-primary-runoff.ts",
     "election:targets:build": "npm run election:history:build && tsx scripts/election-targets/build-kelly-win-targets.ts",
     "strategic-plan:chapter-04:build": "npm run election:history:build && tsx scripts/strategic-plan/build-chapter-04-drop-off.ts",
     "strategic-plan:chapter-05:build": "tsx scripts/strategic-plan/build-chapter-05-registration.ts",

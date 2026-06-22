@@ -10,6 +10,8 @@ import { CountyWorkbenchV3IntelPanel } from "@/components/election-plan/CountyWo
 import { CountyWorkbenchV4OperationsPanel } from "@/components/election-plan/CountyWorkbenchV4OperationsPanel";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { CountyVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
+import { LocationGopPrimaryRunoffPanel } from "@/components/election-plan/LocationGopPrimaryRunoffPanel";
+import { getGopSos2026CountyBySlug } from "@/lib/election-plan/load-gop-sos-2026-results";
 import { CountyPartyIntelligencePanel } from "@/components/election-plan/CountyPartyIntelligencePanel";
 import { VoterFileCountyIntelSection } from "@/components/election-plan/VoterFileLocationIntelPanel";
 import { LocationAudienceStrip } from "@/components/election-plan/voter-audience/LocationAudienceStrip";
@@ -112,6 +114,7 @@ export function CountyPlaybookPanel({
   const immersionMission = filterImmersionMissionForDisplay(getImmersionMissionForCounty(county.slug), {
     surface: "county",
   });
+  const gopSos2026 = getGopSos2026CountyBySlug(county.slug);
 
   return (
     <section>
@@ -182,6 +185,8 @@ export function CountyPlaybookPanel({
             <div className="ep-stat-label">Lane 2 @ 50%</div>
           </div>
         </div>
+
+        {gopSos2026 ? <LocationGopPrimaryRunoffPanel view={gopSos2026} variant="hero" showDrillDown /> : null}
 
         <div className="mb-6 ep-stat-grid">
           <div className="ep-stat">

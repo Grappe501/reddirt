@@ -11,6 +11,7 @@ import {
   ElectionPlanDay3PathwayPanel,
 } from "@/components/election-plan/ElectionPlanDay3PathwayPanel";
 import { ElectionPlanDay3ContinueButton } from "@/components/election-plan/ElectionPlanDay3ContinueButton";
+import { ElectionPlanNorrisCoalitionDrillPanel } from "@/components/election-plan/ElectionPlanNorrisCoalitionDrillPanel";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
@@ -62,6 +63,7 @@ export function ElectionPlanDayDrillDownOverview({
         />
         <VoterAudienceSpeakToBanner profiles={day2Audiences} compact label="Who is watching your pivot" />
         <ElectionPlanDay2PathwayPanel showFullList showDay3Teaser />
+        <ElectionPlanNorrisCoalitionDrillPanel dayLabel="Day 2" accent="indigo" />
       </>
     );
   }
@@ -74,6 +76,7 @@ export function ElectionPlanDayDrillDownOverview({
         />
         <VoterAudienceSpeakToBanner profiles={day3Audiences} compact label="Who needs to hear three beats" />
         <ElectionPlanDay3PathwayPanel showFullList showDay4Teaser />
+        <ElectionPlanNorrisCoalitionDrillPanel dayLabel="Day 3" accent="emerald" />
       </>
     );
   }

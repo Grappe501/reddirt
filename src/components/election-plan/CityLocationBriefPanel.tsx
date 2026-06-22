@@ -7,6 +7,8 @@ import { CityStrategicPlanPanel } from "@/components/election-plan/CityStrategic
 import { VoterFileCityIntelSection } from "@/components/election-plan/VoterFileLocationIntelPanel";
 import { LocationFundraisingPanel } from "@/components/election-plan/LocationFundraisingPanel";
 import { CityVictoryTargetsPanel } from "@/components/election-plan/CountyVictoryTargetsPanel";
+import { LocationGopPrimaryRunoffPanel } from "@/components/election-plan/LocationGopPrimaryRunoffPanel";
+import { getGopSos2026ForCity } from "@/lib/election-plan/load-gop-sos-2026-results";
 import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { LocationCalendarBindingPanel } from "@/components/election-plan/LocationCalendarBindingPanel";
 import { CityNumericTargetsPanel } from "@/components/election-plan/CityNumericTargetsPanel";
@@ -107,6 +109,7 @@ export function CityLocationBriefPanel({
   );
   const cityElectionIntel = getCityElectionIntel(brief.slug);
   const cityAudience = getCityAudienceOverlay(brief.slug);
+  const gopSos2026 = getGopSos2026ForCity(brief.county, brief.slug, brief.name);
 
   return (
     <section>
@@ -133,6 +136,8 @@ export function CityLocationBriefPanel({
           </Link>
         </div>
       </div>
+
+      {gopSos2026 ? <LocationGopPrimaryRunoffPanel view={gopSos2026} variant="hero" /> : null}
 
       <nav className="mb-6 flex flex-wrap gap-2 text-xs">
         {cityIntelligence ? (
