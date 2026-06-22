@@ -1,6 +1,8 @@
 /**
  * Day 2/3 v3 — Norris coalition location intel drill-down links for Kelly's limited time.
  */
+import "server-only";
+
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 import {
   getGopSos2026StatewideSummary,

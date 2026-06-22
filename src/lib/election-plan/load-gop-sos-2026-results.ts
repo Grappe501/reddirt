@@ -1,5 +1,6 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
+import { readFileSync } from "fs";
+import path from "path";
+import "server-only";
 
 import { getRegistryCountyByFips, getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
 import type { GopSos2026LocationView, GopSos2026ResultsBundle } from "@/lib/election-plan/gop-sos-2026-results-types";

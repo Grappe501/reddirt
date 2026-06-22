@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 import {
@@ -7,7 +5,10 @@ import {
   getNorrisCoalitionStatewideOneLiner,
   NORRIS_KELLY_ALIGNMENT_FRAME,
 } from "@/lib/election-plan/debate-prep-norris-coalition-drilldown";
-import { formatGopPct } from "@/lib/election-plan/load-gop-sos-2026-results";
+
+function formatGopPct(n: number): string {
+  return `${n.toFixed(1)}%`;
+}
 
 type Props = {
   dayLabel: "Day 2" | "Day 3";
