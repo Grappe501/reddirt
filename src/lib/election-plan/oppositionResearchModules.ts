@@ -23,6 +23,41 @@ export type OppositionResearchModule = {
 
 export const OPPOSITION_RESEARCH_EXTRA_MODULES: OppositionResearchModule[] = [
   {
+    id: "debate-night",
+    title: "Debate night card",
+    summary: "Kelly's 5-minute pre-stage card — export-ready Hammer lines, top rebuttals, Pakko respect pivots.",
+    href: "/election-plan/opposition-research/debate-night",
+    epHref: "/election-plan/opposition-research/debate-night",
+  },
+  {
+    id: "dossier-pakko",
+    title: "Michael Pakko dossier",
+    summary: "Third-candidate dossier — economist/LP chair, reform themes, contrast gate, lead stories.",
+    href: "/admin/intelligence/opponents/dossiers/michael-packo",
+    epHref: epOppositionResearchModuleHref("dossier-pakko"),
+  },
+  {
+    id: "pakko-quotes",
+    title: "Pakko sourced quotes",
+    summary: "Verified quote ledger with Kelly response frames and do-not-misquote guardrails.",
+    href: "/admin/intelligence/opponents/michael-packo/quotes",
+    epHref: epOppositionResearchModuleHref("pakko-quotes"),
+  },
+  {
+    id: "three-way-geometry",
+    title: "Three-way debate geometry",
+    summary: "Hammer vs Pakko vs Kelly — respect rules, reform pivots, ACCA panel patterns.",
+    href: "/admin/intelligence/kelly-debate-coaching",
+    epHref: epOppositionResearchModuleHref("three-way-geometry"),
+  },
+  {
+    id: "export-ready-lines",
+    title: "Export-ready debate lines",
+    summary: "Tier-1 cited Hammer claims cleared for Kelly stage use — staff verified.",
+    href: "/admin/intelligence/kim-hammer/evidence-command",
+    epHref: epOppositionResearchModuleHref("export-ready-lines"),
+  },
+  {
     id: "claims-ledger",
     title: "Claims to verify",
     summary: "Claims ledger — supported, partial, and needs-research before broadcast.",

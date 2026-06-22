@@ -19,6 +19,8 @@ import { loadDebateIntelligenceV4HubPacket } from "@/lib/intelligence/v4/debateI
 import { getPrepSectionGuide } from "@/lib/intelligence/v4/debateOperatorNarratives";
 import { loadKimHammerKh2Workbench } from "@/lib/opposition/kimHammerKh2Workbench";
 import { LegislativeIntelDrillDownPanel } from "@/components/election-plan/LegislativeIntelDrillDownPanel";
+import { ElectionPlanPakkoOppositionPanel } from "@/components/election-plan/ElectionPlanPakkoOppositionPanel";
+import { loadOppositionResearchCandidateBrief } from "@/lib/election-plan/load-opposition-research-candidate-brief";
 import {
   getLegislativeIntel2021Page,
   getLegislativeIntel2025Page,
@@ -28,7 +30,7 @@ import {
   OPPONENT_DOSSIER_SECTIONS,
   type OpponentDossierDepthSection,
 } from "@/lib/intelligence/v4/opponentCandidateDossierDepth";
-import { loadKimHammerCandidateDossier } from "@/lib/intelligence/v4/loadOpponentCandidateDossier";
+import { loadKimHammerCandidateDossier, loadMichaelPackoCandidateDossier } from "@/lib/intelligence/v4/loadOpponentCandidateDossier";
 
 function DepthSections({ sections }: { sections: OpponentDossierDepthSection[] }) {
   return (
@@ -297,18 +299,58 @@ export function ElectionPlanOppositionResearchModulePanel({ module }: { module: 
       );
     }
 
-    case "dossier-pakko": {
-      const sections = OPPONENT_DOSSIER_SECTIONS.filter((s) => s.candidateId === "michael-packo").slice(0, 6);
+    case "export-ready-lines": {
+      const brief = loadOppositionResearchCandidateBrief();
+      return (
+        <div className="space-y-4">
+          <article className="ep-card border-emerald-200 bg-emerald-50/30 p-5 text-sm">
+            <p className="text-xs font-bold uppercase text-emerald-900">Export filter</p>
+            <p className="mt-2 text-[var(--ep-navy-muted)]">
+              Tier 1 · cited · low legal risk · approved for external debate use.
+            </p>
+          </article>
+          {brief.exportReadyLines.map((line) => (
+            <article key={line.id} className="ep-card p-5 text-sm">
+              <p className="text-xs font-bold uppercase text-[var(--ep-navy)]">{line.topic}</p>
+              <p className="mt-2 font-semibold text-[var(--ep-navy)]">{line.claim}</p>
+              <p className="mt-2 text-[var(--ep-navy-muted)]">
+                <span className="font-bold">Kelly use:</span> {line.kellyUse}
+              </p>
+            </article>
+          ))}
+        </div>
+      );
+    }
+
+    case "pakko-quotes":
+      return <ElectionPlanPakkoOppositionPanel variant="module" />;
+
+    case "three-way-geometry": {
+      const brief = loadOppositionResearchCandidateBrief();
       return (
         <div className="space-y-6">
-          <article className="ep-card p-5 text-sm">
-            <p className="text-[var(--ep-navy-muted)]">
-              Three-way geometry — respect line + contrast gate. Do not ask Packo to vote for Kelly on stage.
-            </p>
-            <Link href={epOppositionResearchModuleHref("debate-profile")} className="mt-3 inline-block text-xs font-bold underline">
-              Compare Hammer debate profile →
-            </Link>
+          <article className="ep-card border-violet-300 bg-violet-50/30 p-5 text-sm">
+            <p className="text-xs font-bold uppercase text-violet-900">Three-way geometry</p>
+            <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{brief.threeWayGeometry}</p>
           </article>
+          <ElectionPlanPakkoOppositionPanel variant="module" />
+          <Link href={epOppositionResearchModuleHref("debate-profile")} className="text-xs font-bold underline">
+            Hammer debate profile →
+          </Link>
+        </div>
+      );
+    }
+
+    case "dossier-pakko": {
+      const dossier = loadMichaelPackoCandidateDossier();
+      const sections = OPPONENT_DOSSIER_SECTIONS.filter((s) => s.candidateId === "michael-packo");
+      return (
+        <div className="space-y-6">
+          <article className="ep-card border-indigo-200 bg-indigo-50/40 p-5 text-sm">
+            <p className="text-xs font-bold uppercase text-indigo-900">Executive summary</p>
+            <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{dossier.executiveSummary}</p>
+          </article>
+          <ElectionPlanPakkoOppositionPanel variant="module" />
           <DepthSections sections={sections} />
         </div>
       );

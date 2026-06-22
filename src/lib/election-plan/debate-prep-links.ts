@@ -20,6 +20,7 @@ export const EP_DEBATE_QUESTIONS_HREF = "/election-plan/debate-prep/questions";
 export const EP_DEBATE_PREP_BRIEFINGS_HREF = "/election-plan/debate-prep/briefings";
 export const EP_DEBATE_PREP_PSYCHOLOGY_HREF = "/election-plan/debate-prep/psychology-manual";
 export const EP_OPPOSITION_RESEARCH_HREF = "/election-plan/opposition-research";
+export const EP_OPPOSITION_DEBATE_NIGHT_HREF = "/election-plan/opposition-research/debate-night";
 export const EP_EXECUTIVE_BOOK_HREF = "/election-plan/executive-book";
 
 export function epOppositionResearchModuleHref(moduleId: string): string {
