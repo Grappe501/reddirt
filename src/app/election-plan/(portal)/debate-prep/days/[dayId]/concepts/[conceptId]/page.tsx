@@ -15,10 +15,12 @@ import { getDay2ConceptAnchor } from "@/lib/election-plan/day2-supplement-anchor
 import { getDay3ConceptAnchor } from "@/lib/election-plan/day3-supplement-anchors";
 import { ElectionPlanDay4SupplementFooter } from "@/components/election-plan/ElectionPlanDay4SupplementFooter";
 import { ElectionPlanDay5SupplementFooter } from "@/components/election-plan/ElectionPlanDay5SupplementFooter";
+import { ElectionPlanDay6SupplementFooter } from "@/components/election-plan/ElectionPlanDay6SupplementFooter";
 import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import { getDay4ConceptAnchor } from "@/lib/election-plan/day4-supplement-anchors";
 import { getDay5ConceptAnchor } from "@/lib/election-plan/day5-supplement-anchors";
-import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, getDayConcept, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay6ConceptAnchor } from "@/lib/election-plan/day6-supplement-anchors";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, getDayConcept, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayConcepts } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
@@ -45,8 +47,11 @@ export default async function ElectionPlanDayConceptPage({
   const day3Anchor = dayId === DAY3_ID ? getDay3ConceptAnchor(conceptId) : undefined;
   const day4Anchor = dayId === DAY4_ID ? getDay4ConceptAnchor(conceptId) : undefined;
   const day5Anchor = dayId === DAY5_ID ? getDay5ConceptAnchor(conceptId) : undefined;
+  const day6Anchor = dayId === DAY6_ID ? getDay6ConceptAnchor(conceptId) : undefined;
   const dayLabel =
-    dayId === DAY5_ID
+    dayId === DAY6_ID
+      ? "Day 6"
+      : dayId === DAY5_ID
       ? "Day 5"
       : dayId === DAY4_ID
         ? "Day 4"
@@ -59,7 +64,9 @@ export default async function ElectionPlanDayConceptPage({
               : "Day";
 
   const audiences =
-    dayId === DAY5_ID
+    dayId === DAY6_ID
+      ? resolveAudiencesForHooks(["integrity", "county-champion", "author-vs-administrator"])
+      : dayId === DAY5_ID
       ? resolveAudiencesForHooks(["integrity", "county-champion", "author-vs-administrator"])
       : dayId === DAY4_ID
       ? resolveAudiencesForHooks(["integrity", "county-champion"])
@@ -88,11 +95,13 @@ export default async function ElectionPlanDayConceptPage({
       <ElectionPlanDrillDownSections sections={concept.sections} />
       <ElectionPlanDrillDownSteps title="Practice steps" steps={concept.practiceSteps} />
       <ElectionPlanDrillDownRelated links={concept.relatedLinks} />
-      {day5Anchor ? (
+      {day6Anchor ? (
+        <ElectionPlanDay6SupplementFooter anchor={day6Anchor} />
+      ) : day5Anchor ? (
         <ElectionPlanDay5SupplementFooter anchor={day5Anchor} />
       ) : day4Anchor ? (
         <ElectionPlanDay4SupplementFooter anchor={day4Anchor} />
-      ) : dayId === DAY4_ID || dayId === DAY5_ID ? (
+      ) : dayId === DAY4_ID || dayId === DAY5_ID || dayId === DAY6_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={conceptId} />
       ) : null}
       {day1Anchor ? <ElectionPlanDay1SupplementFooter anchor={day1Anchor} /> : null}

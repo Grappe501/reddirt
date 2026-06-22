@@ -15,6 +15,10 @@ import { DEBATE_PREP_DAY6_RELEASE_VERSION } from "../src/lib/election-plan/debat
 import { DAY6_PATHWAY_STORAGE_KEY } from "../src/lib/election-plan/day6-pathway-progress";
 import { isKellyDay6StreamlinedPath } from "../src/lib/election-plan/kelly-facing-ui";
 import {
+  getDay6ConceptAnchor,
+  getDay6MicroLessonAnchor,
+} from "../src/lib/election-plan/day6-supplement-anchors";
+import {
   DAY6_APA_SIM_FRAME,
   DAY6_DEBRIEF_PROMPTS,
   DAY6_SIM_TRAP_LANE_IDS,
@@ -58,7 +62,7 @@ assert.ok(getNextDay6PathwayStep(steps[0]!.id), "first step should have a next s
 assert.equal(DAY6_EVENING_REVIEW.length, 3);
 assert.ok(DAY6_DAY5_REVIEW.href.includes("day-5-anticipate-and-capitalize"));
 assert.ok(DAY6_DAY7_TEASER.href.includes("day-7-refine-and-steal-show"));
-assert.equal(DEBATE_PREP_DAY6_RELEASE_VERSION, "day-6-full-simulation-pass3");
+assert.equal(DEBATE_PREP_DAY6_RELEASE_VERSION, "day-6-full-simulation-pass4");
 assert.ok(isKellyDay6StreamlinedPath(), "Kelly Day 6 streamlined path enabled");
 assert.ok(DAY6_PATHWAY_STORAGE_KEY.includes("day6"));
 assert.ok(DAY6_APA_SIM_FRAME.includes("APA"));
@@ -97,6 +101,10 @@ assert.ok(commandDrill?.href.includes("d6-stuck-bridge"), "pathway includes stuc
 
 const rehearsal = steps.find((s) => s.kind === "rehearsal");
 assert.ok(rehearsal?.href.includes("rehearse-open-close-sim"), "pathway includes open-close rehearsal");
+
+assert.ok(getDay6MicroLessonAnchor("d6-stress")?.continueFromStepId === "d6-stress");
+assert.ok(getDay6ConceptAnchor("integrated-rehearsal-d6")?.returnHref.includes("b6-sim"));
+assert.ok(getDay6ConceptAnchor("success-check-d6")?.continueFromStepId === "evening-close");
 
 for (const step of steps) {
   assert.ok(step.href.startsWith("/election-plan/"), `${step.id} href must stay in election-plan portal`);

@@ -16,8 +16,10 @@ import { getDay3MicroLessonAnchor } from "@/lib/election-plan/day3-supplement-an
 import { ElectionPlanDay4SupplementFooter } from "@/components/election-plan/ElectionPlanDay4SupplementFooter";
 import { ElectionPlanDay5MicroLessonEmbed } from "@/components/election-plan/ElectionPlanDay5Panels";
 import { ElectionPlanDay5SupplementFooter } from "@/components/election-plan/ElectionPlanDay5SupplementFooter";
+import { ElectionPlanDay6SupplementFooter } from "@/components/election-plan/ElectionPlanDay6SupplementFooter";
 import { getDay4MicroLessonAnchor } from "@/lib/election-plan/day4-supplement-anchors";
 import { getDay5MicroLessonAnchor } from "@/lib/election-plan/day5-supplement-anchors";
+import { getDay6MicroLessonAnchor } from "@/lib/election-plan/day6-supplement-anchors";
 import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, getDayMicroLessonDrillDown, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayMicroLessons } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
@@ -45,6 +47,7 @@ export default async function ElectionPlanDayMicroLessonPage({
   const day3Anchor = dayId === DAY3_ID ? getDay3MicroLessonAnchor(lessonId) : undefined;
   const day4Anchor = dayId === DAY4_ID ? getDay4MicroLessonAnchor(lessonId) : undefined;
   const day5Anchor = dayId === DAY5_ID ? getDay5MicroLessonAnchor(lessonId) : undefined;
+  const day6Anchor = dayId === DAY6_ID ? getDay6MicroLessonAnchor(lessonId) : undefined;
   const dayLabel =
     dayId === DAY6_ID
       ? "Day 6"
@@ -61,7 +64,9 @@ export default async function ElectionPlanDayMicroLessonPage({
               : "Day";
 
   const audiences =
-    dayId === DAY4_ID
+    dayId === DAY6_ID
+      ? resolveAudiencesForHooks(["integrity", "county-champion", "author-vs-administrator"])
+      : dayId === DAY4_ID
       ? resolveAudiencesForHooks(["integrity", "county-champion"])
       : dayId === DAY3_ID
       ? resolveAudiencesForHooks(["county-champion", "author-vs-administrator"])
@@ -91,7 +96,9 @@ export default async function ElectionPlanDayMicroLessonPage({
       </article>
       <ElectionPlanDrillDownSteps title="Practice steps" steps={lesson.practiceSteps} />
       <ElectionPlanDrillDownRelated links={lesson.relatedLinks} />
-      {day5Anchor ? (
+      {day6Anchor ? (
+        <ElectionPlanDay6SupplementFooter anchor={day6Anchor} />
+      ) : day5Anchor ? (
         <ElectionPlanDay5SupplementFooter anchor={day5Anchor} />
       ) : day4Anchor ? (
         <ElectionPlanDay4SupplementFooter anchor={day4Anchor} />

@@ -19,6 +19,8 @@ import {
   DAY6_SIM_AUDIENCE_LABEL,
   DAY6_SIM_CLAIMS_GATE,
   DAY6_SIM_NO_NEW_MATERIAL_WATCHOUT,
+  DAY6_SIM_SEGMENT_COUNT,
+  DAY6_SIM_SEGMENT_OUTLINE,
   DAY6_V3_KELLY_MINIMUM_SUMMARY,
 } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
 import {
@@ -27,7 +29,6 @@ import {
 } from "@/lib/election-plan/debate-prep-day6-release";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DAY6_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
-import { buildDay6SimulationSurface } from "@/lib/election-plan/load-day6-simulation-surface";
 import { getDebateWeekIntensiveDay } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { getDayDeepOverlay } from "@/lib/intelligence/v4/debateWeekIntensive2026Deep";
 
@@ -43,7 +44,6 @@ export function ElectionPlanDay6StartCard() {
   const first = getFirstDay6PathwayStep();
   const plan = getDebateWeekIntensiveDay(DAY6_ID)!;
   const overlay = getDayDeepOverlay(DAY6_ID);
-  const sim = buildDay6SimulationSurface();
 
   return (
     <section className="ep-pathway-start mb-8">
@@ -65,7 +65,7 @@ export function ElectionPlanDay6StartCard() {
         Start bios lock-in · {first.minutes} min →
       </Link>
       <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
-        Minimum tonight: {DAY6_MINIMUM_BLOCK_IDS.join(", ")} — {sim.segments.length} timed sim segments with staff as
+        Minimum tonight: {DAY6_MINIMUM_BLOCK_IDS.join(", ")} — {DAY6_SIM_SEGMENT_COUNT} timed sim segments with staff as
         Hammer + Pakko.
       </p>
       <p className="mt-2 text-[10px] font-mono text-[var(--ep-navy-muted)]">
@@ -117,7 +117,6 @@ export function ElectionPlanDay6PathwayPanel({
   const steps = buildDay6PathwaySteps();
   const activeIdx = activeStepId ? steps.findIndex((s) => s.id === activeStepId) : -1;
   const overlay = getDayDeepOverlay(DAY6_ID);
-  const sim = buildDay6SimulationSurface();
 
   return (
     <section className="mb-8">
@@ -175,10 +174,10 @@ export function ElectionPlanDay6PathwayPanel({
       ) : null}
 
       <article className="ep-card mt-6 border-violet-200 bg-violet-50/30 p-5 text-sm">
-        <p className="text-xs font-bold uppercase text-violet-900">Sim script spine · {sim.segments.length} segments</p>
+        <p className="text-xs font-bold uppercase text-violet-900">Sim script spine · {DAY6_SIM_SEGMENT_COUNT} segments</p>
         <ol className="mt-3 list-inside list-decimal space-y-1 text-xs text-[var(--ep-navy-muted)]">
-          {sim.segments.map((seg) => (
-            <li key={seg.segmentIndex}>
+          {DAY6_SIM_SEGMENT_OUTLINE.map((seg, i) => (
+            <li key={`${seg.label}-${i}`}>
               {seg.label} · {seg.timedMinutes}m · {seg.staffRole}
             </li>
           ))}

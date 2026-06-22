@@ -5,6 +5,8 @@ import { buildDay5CapitalizeSurface } from "@/lib/election-plan/load-day5-capita
 import {
   DAY6_SIM_SOS_COUNT,
   DAY6_SIM_TRAP_LANE_IDS,
+  type Day6SimBookend,
+  type Day6SimSegment,
   type Day6SimTrapLaneId,
 } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
 import { DAY1_ID, DAY5_ID, DAY6_ID, getDayRehearsalScript } from "@/lib/election-plan/debatePrepDayDrillDown";
@@ -12,32 +14,7 @@ import { epDebatePrepDayRehearsalHref, epTrapLaneHref } from "@/lib/election-pla
 import { getDayDeepOverlay } from "@/lib/intelligence/v4/debateWeekIntensive2026Deep";
 import { getTrapLaneDrillDown } from "@/lib/intelligence/v4/trapLaneDrillDowns";
 
-export type Day6SimSegmentKind = "opening" | "trap" | "sos" | "closing" | "pile-on";
-
-export type Day6SimStaffRole = "moderator" | "hammer" | "pakko";
-
-export type Day6SimSegment = {
-  segmentIndex: number;
-  kind: Day6SimSegmentKind;
-  label: string;
-  timedMinutes: number;
-  staffRole: Day6SimStaffRole;
-  kellyObjective: string;
-  sourceDayId: string;
-  /** Optional drill-down href for Kelly pathway (election-plan only). */
-  href?: string;
-  /** Staff setup hint — paraphrase OK, Kelly lines claims-green only. */
-  staffSetupHint?: string;
-};
-
-export type Day6SimBookend = {
-  variant: "opening" | "closing";
-  durationSeconds: 90 | 60;
-  script: string;
-  sourceDayId: string;
-  sourceLabel: string;
-  rehearsalHref: string;
-};
+export type { Day6SimBookend, Day6SimSegment, Day6SimSegmentKind, Day6SimStaffRole } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
 
 export type Day6SimulationSurface = {
   dayId: typeof DAY6_ID;
