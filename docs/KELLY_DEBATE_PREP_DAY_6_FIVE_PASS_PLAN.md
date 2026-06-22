@@ -295,7 +295,7 @@ Add to `package.json`:
 |------|------|---------------|
 | Plan | 2026-06-22 | Doc created — Days 2–5 gap analysis; Day 6 opening/closing + sim runner spec |
 | 1 | 2026-06-22 | Pass 1 — pathway spine, registry, stub block study, day landing |
-| 2 | | |
+| 2 | 2026-06-22 | Pass 2 — full block study, simulation surface, sim copy |
 | 3 | | |
 | 4 | | |
 | 5 | | |

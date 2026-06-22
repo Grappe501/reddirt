@@ -1,5 +1,5 @@
 /**
- * Day 6 debate-prep Pass 1 — pathway spine, drill-down registry, route unlock.
+ * Day 6 debate-prep Pass 1–2 — pathway spine, block study, simulation surface.
  */
 import assert from "node:assert/strict";
 import {
@@ -12,6 +12,12 @@ import {
   getNextDay6PathwayStep,
 } from "../src/lib/election-plan/day6-learning-pathway";
 import { DEBATE_PREP_DAY6_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day6-release";
+import {
+  DAY6_APA_SIM_FRAME,
+  DAY6_DEBRIEF_PROMPTS,
+  DAY6_SIM_TRAP_LANE_IDS,
+} from "../src/lib/election-plan/debate-prep-day6-simulation-copy";
+import { buildDay6SimulationSurface } from "../src/lib/election-plan/load-day6-simulation-surface";
 import {
   DAY6_ID,
   listDayBlocksDrillDown,
@@ -50,12 +56,32 @@ assert.ok(getNextDay6PathwayStep(steps[0]!.id), "first step should have a next s
 assert.equal(DAY6_EVENING_REVIEW.length, 3);
 assert.ok(DAY6_DAY5_REVIEW.href.includes("day-5-anticipate-and-capitalize"));
 assert.ok(DAY6_DAY7_TEASER.href.includes("day-7-refine-and-steal-show"));
-assert.equal(DEBATE_PREP_DAY6_RELEASE_VERSION, "day-6-full-simulation-pass1");
+assert.equal(DEBATE_PREP_DAY6_RELEASE_VERSION, "day-6-full-simulation-pass2");
+assert.ok(DAY6_APA_SIM_FRAME.includes("APA"));
+assert.ok(DAY6_DEBRIEF_PROMPTS.length >= 5);
+
+const sim = buildDay6SimulationSurface();
+assert.ok(sim.segments.length >= 8, "sim surface has ≥8 segments");
+assert.ok(sim.segments.some((s) => s.kind === "opening"), "sim includes opening");
+assert.ok(sim.segments.some((s) => s.kind === "closing"), "sim includes closing");
+assert.equal(sim.trapLaneCount, DAY6_SIM_TRAP_LANE_IDS.length);
+assert.ok(sim.bookends.opening.durationSeconds === 90);
+assert.ok(sim.bookends.closing.durationSeconds === 60);
+assert.ok(sim.bookends.opening.script.length > 40);
+assert.ok(sim.bookends.closing.script.includes("clerks") || sim.bookends.closing.script.includes("Clerks"));
+
+for (const seg of sim.segments) {
+  if (seg.href) {
+    assert.ok(seg.href.startsWith("/election-plan/"), `${seg.label} href stays in EP`);
+    assert.ok(!seg.href.includes("/admin/"), `${seg.label} no admin href`);
+  }
+}
 
 for (const blockId of listDay6BlockStudyIds()) {
   const study = getDay6BlockStudy(blockId);
   assert.ok(study?.claimsGate?.length, `${blockId} claimsGate`);
-  assert.ok(study?.phases.length >= 3, `${blockId} stub phases`);
+  assert.ok(study?.phases.length >= 3, `${blockId} phases`);
+  assert.ok(study?.deepSections && study.deepSections.length >= 3, `${blockId} deepSections`);
   assert.equal(listDayBlockPhaseParams(DAY6_ID, blockId).length, study!.phases.length);
 }
 
@@ -91,5 +117,5 @@ const rehearsalParams = staticParamsForDayRehearsals().filter((p) => p.dayId ===
 assert.equal(rehearsalParams.length, 1);
 
 console.log(
-  `test-debate-prep-day6-pathway: OK (${steps.length} steps, ${blocks.length} blocks, ${conceptParams.length} concepts)`,
+  `test-debate-prep-day6-pathway: OK (${steps.length} steps, ${blocks.length} blocks, ${sim.segments.length} sim segments)`,
 );
