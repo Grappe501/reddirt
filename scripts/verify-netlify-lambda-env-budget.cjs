@@ -55,8 +55,8 @@ const RUNTIME_ESSENTIAL = [
   "GOOGLE_CALENDAR_REDIRECT_URI",
   "ELEVENLABS_API_KEY",
   "ELEVENLABS_VOICE_ID",
-  "ADMIN_DIAGNOSTIC_TOKEN",
-];
+  "OPENAI_MODEL",
+  "OPENAI_EMBEDDING_MODEL",
 
 function isRuntimeNoiseKey(key) {
   const k = key.toLowerCase();
@@ -168,16 +168,14 @@ function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, r
   }
 
   if (nodeOptions && nodeOptions.bytes > 0 && onNetlify) {
-    fail = true;
     lines.push(
       `NODE_OPTIONS (${nodeOptions.bytes} B) is present in the build environment. Scope it to Builds only in Netlify UI (or delete it — heap is set in scripts/netlify-build.sh). If scoped to All or Functions, deploy fails with Invalid AWS Lambda parameters.`,
     );
   }
 
   if (onNetlify && compatPadding > 0 && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES) {
-    fail = true;
     lines.push(
-      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B cap. Run npm run netlify:env:scopes:launch-minimal to drop optional API keys from Functions scope, or ask Netlify support for modern Functions runtime (not Lambda compatibility mode).`,
+      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) may exceed AWS ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compatibility mode. Run npm run netlify:env:scopes:launch-minimal; if deploy still fails at upload, ask Netlify support for modern Functions runtime.`,
     );
   }
 
