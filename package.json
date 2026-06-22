@@ -103,6 +103,7 @@
     "agents:test-debate-prep-day-parity": "tsx scripts/test-debate-prep-day-parity.ts",
     "agents:test-debate-prep-day4-pathway": "tsx scripts/test-debate-prep-day4-pathway.ts",
     "agents:test-debate-prep-day5-pathway": "tsx scripts/test-debate-prep-day5-pathway.ts",
+    "agents:test-debate-prep-day6-pathway": "tsx scripts/test-debate-prep-day6-pathway.ts",
     "agents:test-county-operating-center-page": "tsx scripts/test-county-operating-center-page.ts",
     "legislature:discover-videos": "tsx scripts/discover-legislative-videos-for-priority-bills.ts",
     "legislature:process-video-queue": "tsx scripts/process-legislative-video-queue.ts",

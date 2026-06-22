@@ -21,7 +21,8 @@ import {
 import { ElectionPlanNorrisCoalitionDrillPanel } from "@/components/election-plan/ElectionPlanNorrisCoalitionDrillPanel";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { buildDay6PathwaySteps, DAY6_DAY5_REVIEW, DAY6_DAY7_TEASER } from "@/lib/election-plan/day6-learning-pathway";
 import { DAY4_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day4-forum-intelligence-copy";
 import { DAY5_APA_STATEWIDE_BROADCAST_FRAME, DAY5_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
 import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
@@ -140,6 +141,46 @@ export function ElectionPlanDayDrillDownOverview({
           summary={`Listen like an analyst first — the forum transcript is your Rosetta stone. ${dayPageSummary(plan)} Minimum tonight: forum lab ingest if tired.`}
         />
         <ElectionPlanDay4PathwayPanel showFullList showDay5Teaser />
+      </>
+    );
+  }
+
+  if (dayId === DAY6_ID) {
+    const steps = buildDay6PathwaySteps();
+    return (
+      <>
+        <KellyPageSummary
+          summary={`${plan.goalForKelly} Fail in the room with staff — simulation integrates Days 2–5 under fatigue.`}
+        />
+        <section className="ep-card mb-6 p-5">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--ep-gold)]">Day 6 pathway · Pass 1</p>
+          <ol className="mt-4 space-y-3">
+            {steps.map((step, i) => (
+              <li key={step.id}>
+                <a href={step.href} className="group block rounded-lg border border-[var(--ep-border)] p-3 hover:border-[var(--ep-navy)]">
+                  <span className="text-xs font-bold text-[var(--ep-navy-muted)]">{i + 1}. {step.minutes} min</span>
+                  <p className="mt-1 font-bold text-[var(--ep-navy)] group-hover:underline">{step.label}</p>
+                  <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{step.teaser}</p>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+        <details className="ep-card mb-6 p-5">
+          <summary className="cursor-pointer font-bold text-[var(--ep-navy)]">{DAY6_DAY5_REVIEW.title}</summary>
+          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{DAY6_DAY5_REVIEW.body}</p>
+          <a href={DAY6_DAY5_REVIEW.href} className="mt-2 inline-block text-sm font-bold text-[var(--ep-navy)] hover:underline">
+            Review Day 5 →
+          </a>
+        </details>
+        <a
+          href={DAY6_DAY7_TEASER.href}
+          className="ep-card mb-6 block p-5 transition hover:border-[var(--ep-navy)]"
+        >
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--ep-gold)]">Preview</p>
+          <p className="mt-2 font-heading text-lg font-bold text-[var(--ep-navy)]">{DAY6_DAY7_TEASER.title}</p>
+          <p className="mt-2 text-[var(--ep-navy-muted)]">{DAY6_DAY7_TEASER.body}</p>
+        </a>
       </>
     );
   }
