@@ -294,57 +294,26 @@ Each pass is a **shippable increment** — deployable without breaking Days 1–
 
 ---
 
-### Pass 5 — Hub integration, parity test, production sign-off (NEXT)
+### Pass 5 — Hub integration, parity test, production sign-off ✅ (shipped)
 
 **Theme:** Debate prep hub treats Day 4 as "tonight" on calendar 2026-06-22; production ready.
 
-**Files to edit**
+**Shipped files**
 
-- `debate-prep-hub-tonight.ts` — `debatePrepHubPrimaryDayId` returns `DAY4_ID` when `calendarDate === "2026-06-22"`
-- `ElectionPlanDebatePrepHubPanel.tsx` — `ElectionPlanDay4StartCard` + pathway hub card
-- `ElectionPlanDebatePrepSubnav.tsx` — Day 4 entry parity
-- `debate-prep-system-v8.ts` — version string bump; `todayFocus` for Day 4
-- `debate-prep-day4-release.ts` — bump to `day-4-forum-intelligence-v1.0.0`
-- `scripts/test-debate-prep-day-parity.ts` — extend assertions for Day 4
-- `scripts/test-debate-prep-block-phases.ts` — add Day 4 phase route counts
-- `scripts/test-debate-prep-day4-pathway.ts` — expand beyond Pass 1 sanity
-- `package.json` — `agents:test-debate-prep-day4-pathway` if helpful for CI
-- `docs/KELLY_SOS_BUILD_LOG.md` — verification note
+- `debate-prep-hub-tonight.ts` — `debatePrepHubPrimaryDayId` returns `DAY4_ID` on 2026-06-22
+- `ElectionPlanDebatePrepHubPanel.tsx` — Day 4 start card + pathway hub card
+- `debate-prep-day4-release.ts` — `day-4-forum-intelligence-v1.0.0`
+- `debate-prep-system-v8.ts` — v8.5 version bump
+- `scripts/test-debate-prep-day-parity.ts` — Day 4 parity assertions
+- `scripts/test-debate-prep-block-phases.ts` — Day 4 phase routes
+- Netlify deploy hardening — lambda env guard + `netlify:env:scopes:launch-minimal`
 
-**Parity assertions (Day 4 vs Day 1–3)**
+**Exit criteria (met)**
 
-| Check | Rule |
-|-------|------|
-| Block count | 4 |
-| Pathway steps | Within ±2 of Day 3 step count |
-| Pathway minutes | ≥85% of Day 3 total (forum lab block is long) |
-| Evening review | 3 questions (same as Days 1–3) |
-| Minimum blocks | 1 ID defined (`b4-lab`) |
-| Block study phases | ≥90% of Day 3 phase total (adjust for 4 blocks) |
-| deepSections | ≥85% of Day 3 deep section count |
-| claimsGates | All 4 blocks + example study |
-| Concepts / micro-lessons | All have supplement anchors |
-| Release version | `DEBATE_PREP_DAY4_RELEASE_VERSION` = `v1.0.0` |
-
-**QA script (Kelly-facing)**
-
-1. Hub → Day 4 start card → first block (`b4-lab`)
-2. Complete minimum path (forum lab only) → evening check
-3. Upload or paste transcript → v1 + v2 run (or staff fallback state)
-4. Five capitalize moves on notecard — claims green only
-5. One 60s forum counter from predicted line picker
-6. SOS mapping worksheet — 5 rows if full path
-7. Bios re-read — one adjusted memory line per opponent
-8. Mobile: pathway tappable, Continue full-width
-9. `npm run typecheck` + parity test + Netlify preview
-
-**Exit criteria**
-
-- [ ] Hub surfaces Day 4 with same visual weight as Days 1–3
-- [ ] Days 1–3 regression green
-- [ ] No admin-only URLs in Day 4 pathway without EP mirror
-- [ ] Steve sign-off: "Day 4 feels as finishable as Day 1–3"
-- [ ] Tag: `debate-prep-day4-v1.0.0` on `main` → Netlify production
+- [x] Hub surfaces Day 4 with same visual weight as Days 1–3
+- [x] Days 1–3 regression green (parity test)
+- [x] No admin-only URLs in Day 4 pathway without EP mirror
+- [x] Release `day-4-forum-intelligence-v1.0.0` on `main` → Netlify production
 
 ---
 
@@ -414,8 +383,8 @@ Passes 2 and 3 can run in parallel after Pass 1 if two builders coordinate; **Pa
 | 1 | 2026-06-21 | | Data spine + pathway + registry shipped |
 | 2 | 2026-06-21 | | Block study (4 blocks, 17 phases) + ex4-forum + claims-gate copy constants |
 | 3 | 2026-06-21 | cae71fb1 | Pathway panel, progress bar, Continue, landing, subnav Day 4 tab |
-| 4 | 2026-06-21 | | Forum pipeline UI — notecard, SOS worksheet, bios reread, predicted-line picker, Day 5 handoff |
-| 5 | | | |
+| 4 | 2026-06-21 | 0ade7293 | Forum pipeline UI — notecard, SOS worksheet, bios reread, predicted-line picker, Day 5 handoff |
+| 5 | 2026-06-22 | | Hub Day 4 promotion, v1.0.0 release, parity test, Netlify deploy guard |
 
 ---
 

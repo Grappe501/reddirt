@@ -3,12 +3,12 @@
  */
 import assert from "node:assert/strict";
 
-import { DAY1_ID, DAY2_ID, DAY3_ID, listDayBlocksDrillDown } from "../src/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, listDayBlocksDrillDown } from "../src/lib/election-plan/debatePrepDayDrillDown";
 import { getDayBlockPhaseContext, listDayBlockPhaseParams } from "../src/lib/election-plan/debatePrepBlockPhase";
 import { staticParamsForDayBlockPhases } from "../src/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayBlockPhaseHref } from "../src/lib/election-plan/debate-prep-links";
 
-for (const dayId of [DAY1_ID, DAY2_ID, DAY3_ID]) {
+for (const dayId of [DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID]) {
   for (const block of listDayBlocksDrillDown(dayId)) {
     const phases = listDayBlockPhaseParams(dayId, block.blockId);
     assert.ok(phases.length >= 3, `${block.blockId} should have >= 3 timed phases`);

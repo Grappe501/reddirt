@@ -48,7 +48,7 @@ assert.equal(getFirstDay4PathwayStep().id, DAY4_MINIMUM_BLOCK_IDS[0]);
 assert.ok(getNextDay4PathwayStep(steps[0]!.id), "first step should have a next step");
 assert.equal(DAY4_EVENING_REVIEW.length, 3);
 assert.ok(DAY4_DAY5_TEASER.href.includes("day-5-anticipate-and-capitalize"));
-assert.ok(DEBATE_PREP_DAY4_RELEASE_VERSION.includes("pass4"));
+assert.equal(DEBATE_PREP_DAY4_RELEASE_VERSION, "day-4-forum-intelligence-v1.0.0");
 
 const optionalExample = steps.find((s) => s.kind === "example");
 assert.ok(optionalExample, "Day 4 should have optional example");

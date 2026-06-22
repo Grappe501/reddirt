@@ -45,14 +45,29 @@ import {
   isDay3PathwayStepOptional,
 } from "../src/lib/election-plan/day3-learning-pathway";
 import {
+  DAY4_CONCEPT_ANCHORS,
+  DAY4_MICRO_LESSON_ANCHORS,
+} from "../src/lib/election-plan/day4-supplement-anchors";
+import {
+  buildDay4PathwaySteps,
+  DAY4_EVENING_REVIEW,
+  DAY4_MINIMUM_BLOCK_IDS,
+  isDay4PathwayStepOptional,
+} from "../src/lib/election-plan/day4-learning-pathway";
+import { DEBATE_PREP_DAY4_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day4-release";
+import { DAY4_BLOCK_STUDY, getDay4BlockStudy } from "../src/lib/election-plan/debatePrepDay4BlockStudy";
+import { getDay4OpponentExampleStudy } from "../src/lib/election-plan/debatePrepDay4OpponentExampleStudy";
+import {
   DAY1_ID,
   DAY2_ID,
   DAY3_ID,
+  DAY4_ID,
   listDayBlocksDrillDown,
   listDayConcepts,
   listDayMicroLessonsDrillDown,
   listDayRehearsalScripts,
 } from "../src/lib/election-plan/debatePrepDayDrillDown";
+import { debatePrepHubPrimaryDayId } from "../src/lib/election-plan/debate-prep-hub-tonight";
 
 function countByKind(steps: { kind: string }[]) {
   return steps.reduce(
@@ -237,7 +252,64 @@ const microLessonPage = fs.readFileSync(
   "utf8",
 );
 assert.ok(microLessonPage.includes("ElectionPlanDay3SupplementFooter"));
+assert.ok(microLessonPage.includes("ElectionPlanDay4SupplementFooter"));
+
+// --- Day 4 parity (vs Day 3 bar) ---
+const day4Steps = buildDay4PathwaySteps();
+const day4Kinds = countByKind(day4Steps);
+const day4Micro = listDayMicroLessonsDrillDown(DAY4_ID);
+
+assert.equal(listDayBlocksDrillDown(DAY4_ID).length, 4, "Day 4 has four intensive blocks");
+assert.equal(listDayConcepts(DAY4_ID).length, 6);
+assert.ok(Math.abs(day4Steps.length - day3Steps.length) <= 2, "Day 4 pathway steps within ±2 of Day 3");
+
+const day4Minutes = day4Steps.reduce((sum, s) => sum + s.minutes, 0);
+assert.ok(day4Minutes >= day3Minutes * 0.85, "Day 4 pathway minutes comparable to Day 3 (forum lab block is long)");
+
+assert.equal(DAY4_EVENING_REVIEW.length, DAY3_EVENING_REVIEW.length);
+assert.equal(DAY4_MINIMUM_BLOCK_IDS.length, 1);
+
+assert.equal(day4Kinds.block, 4);
+assert.equal(day4Kinds.rehearsal, 1);
+assert.equal(day4Kinds["micro-lesson"], 1);
+assert.equal(day4Kinds.close, 1);
+
+const d4Depth = studyDepthScore(Object.keys(DAY4_BLOCK_STUDY), getDay4BlockStudy);
+const day4DepthRatio = listDayBlocksDrillDown(DAY4_ID).length / listDayBlocksDrillDown(DAY3_ID).length;
+assert.ok(
+  d4Depth.phases >= d3Depth.phases * day4DepthRatio * 0.9,
+  "Day 4 block study phases should match Day 3 depth (4 blocks each)",
+);
+assert.ok(
+  d4Depth.deepSections >= d3Depth.deepSections * day4DepthRatio * 0.85,
+  "Day 4 deep sections should match Day 3",
+);
+assert.equal(d4Depth.claimsGates, 4, "all four Day 4 blocks should have claims gates");
+
+for (const concept of listDayConcepts(DAY4_ID)) {
+  assert.ok(DAY4_CONCEPT_ANCHORS[concept.id], `Day 4 concept ${concept.id} needs supplement anchor`);
+}
+for (const lesson of day4Micro) {
+  assert.ok(DAY4_MICRO_LESSON_ANCHORS[lesson.id], `Day 4 micro-lesson ${lesson.id} needs anchor`);
+}
+
+const d4Example = getDay4OpponentExampleStudy("ex4-forum");
+assert.ok(d4Example && d4Example.phases.length >= 4);
+assert.ok((d4Example.deepSections?.length ?? 0) >= 3);
+assert.ok(d4Example.claimsGate?.length);
+
+for (const step of day4Steps) {
+  assert.ok(!step.href.includes("/admin/"), `${step.id} must not link to admin on Day 4 pathway`);
+  if (step.kind === "example") {
+    assert.ok(isDay4PathwayStepOptional(step.id), `${step.id} example should be optional`);
+  }
+}
+
+assert.equal(DEBATE_PREP_DAY4_RELEASE_VERSION, "day-4-forum-intelligence-v1.0.0");
+assert.equal(debatePrepHubPrimaryDayId("2026-06-22"), DAY4_ID);
+
+assert.ok(conceptPage.includes("ElectionPlanDay4SupplementFooter"));
 
 console.log(
-  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases})`,
+  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · D4 ${day4Steps.length}/${day4Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases}/${d4Depth.phases})`,
 );

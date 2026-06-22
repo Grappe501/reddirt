@@ -16,11 +16,13 @@ const path = require("node:path");
 const {
   isBuildOnlyKey,
   RUNTIME_ESSENTIAL,
+  RUNTIME_OPTIONAL_FOR_LAUNCH,
 } = require("./verify-netlify-lambda-env-budget.cjs");
 
 const API = "https://api.netlify.com/api/v1";
 const dryRun = process.argv.includes("--dry-run");
 const triggerDeploy = process.argv.includes("--deploy");
+const launchMinimal = process.argv.includes("--launch-minimal");
 
 function readJson(filePath) {
   try {
@@ -95,6 +97,7 @@ async function api(token, path, options = {}) {
 
 function desiredScopes(key) {
   if (isBuildOnlyKey(key)) return ["builds"];
+  if (launchMinimal && RUNTIME_OPTIONAL_FOR_LAUNCH.has(key)) return ["builds"];
   if (RUNTIME_ESSENTIAL.includes(key)) return ["builds", "functions"];
   // Unknown keys: keep builds + functions if used at build (e.g. DATABASE_URL already covered)
   return ["builds", "functions"];
@@ -148,8 +151,8 @@ async function main() {
       continue;
     }
 
-    // Only auto-narrow build-only keys; never strip functions from runtime essentials.
-    if (!isBuildOnlyKey(key)) {
+    // Auto-narrow build-only keys and (with --launch-minimal) optional runtime keys.
+    if (!isBuildOnlyKey(key) && !(launchMinimal && RUNTIME_OPTIONAL_FOR_LAUNCH.has(key))) {
       skipped += 1;
       continue;
     }

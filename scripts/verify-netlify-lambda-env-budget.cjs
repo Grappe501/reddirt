@@ -116,12 +116,38 @@ function printNetlifyEnvScopingChecklist(rows) {
   console.log("");
 }
 
-function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, rows, buildOnlyLeaked }) {
+/** Kelly SOS opposition launch — not required on every ___netlify-server-handler request. */
+const RUNTIME_OPTIONAL_FOR_LAUNCH = new Set([
+  "TWILIO_ACCOUNT_SID",
+  "TWILIO_AUTH_TOKEN",
+  "TWILIO_PHONE_NUMBER",
+  "SENDGRID_API_KEY",
+  "SENDGRID_FROM_EMAIL",
+  "GOOGLE_CALENDAR_CLIENT_ID",
+  "GOOGLE_CALENDAR_CLIENT_SECRET",
+  "GOOGLE_CALENDAR_REDIRECT_URI",
+  "ELEVENLABS_API_KEY",
+  "ELEVENLABS_VOICE_ID",
+  "ADMIN_DIAGNOSTIC_TOKEN",
+]);
+
+function isLambdaCompatMode() {
+  return Boolean(process.env.AWS_LAMBDA_JS_RUNTIME);
+}
+
+/** Netlify injects FEATURE_FLAGS at deploy on compat mode — often absent during onPostBuild. */
+function estimateCompatFeatureFlagsBytes(featureFlags) {
   const ffBytes = featureFlags?.bytes ?? 0;
+  if (ffBytes >= LAMBDA_ENV_LIMIT_BYTES) return ffBytes;
+  if (isLambdaCompatMode()) return ffBytes || FEATURE_FLAGS_TYPICAL_BYTES;
+  return 0;
+}
+
+function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, rows, buildOnlyLeaked }) {
   const worstCase = deployEstimate ?? total + (buildOnlyLeaked ?? 0);
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
-  const platformPadding = ffBytes >= LAMBDA_ENV_LIMIT_BYTES ? ffBytes : 0;
-  const lambdaDeployBytes = worstCase + platformPadding;
+  const compatPadding = onNetlify ? estimateCompatFeatureFlagsBytes(featureFlags) : 0;
+  const lambdaDeployBytes = worstCase + compatPadding;
   const nodeOptions = rows.find((r) => r.key === "NODE_OPTIONS");
 
   let fail = false;
@@ -131,19 +157,6 @@ function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, r
     fail = true;
     lines.push(
       `Estimated runtime Lambda env ${worstCase} B exceeds ${LAMBDA_ENV_LIMIT_BYTES} B (runtime ${total} B + ${buildOnlyLeaked ?? 0} B build-only leak risk). Scope build-only vars with npm run netlify:env:scopes or Netlify UI (docs/NETLIFY_FIRST_DEPLOY.md §6).`,
-    );
-  } else if (
-    onNetlify &&
-    platformPadding > 0 &&
-    lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES &&
-    worstCase < WARN_BYTES
-  ) {
-    lines.push(
-      `Note: Netlify compat mode may inject ~${platformPadding} B FEATURE_FLAGS on top of ${worstCase} B runtime — deploy usually still succeeds when runtime stays under ${LAMBDA_ENV_LIMIT_BYTES} B. If upload fails with Invalid AWS Lambda parameters, scope build-only vars and confirm modern Functions runtime with Netlify support.`,
-    );
-  } else if (onNetlify && platformPadding > 0 && worstCase >= WARN_BYTES) {
-    lines.push(
-      `Warning: runtime ${worstCase} B is near the cap; compat-mode FEATURE_FLAGS (~${platformPadding} B) may push deploy over ${LAMBDA_ENV_LIMIT_BYTES} B — scope build-only vars in Netlify UI.`,
     );
   }
 
@@ -155,25 +168,22 @@ function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, r
   }
 
   if (nodeOptions && nodeOptions.bytes > 0 && onNetlify) {
+    fail = true;
     lines.push(
       `NODE_OPTIONS (${nodeOptions.bytes} B) is present in the build environment. Scope it to Builds only in Netlify UI (or delete it — heap is set in scripts/netlify-build.sh). If scoped to All or Functions, deploy fails with Invalid AWS Lambda parameters.`,
     );
   }
 
-  if (
-    onNetlify &&
-    process.env.AWS_LAMBDA_JS_RUNTIME &&
-    lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES
-  ) {
+  if (onNetlify && compatPadding > 0 && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES) {
     fail = true;
     lines.push(
-      `Lambda compatibility mode (AWS_LAMBDA_JS_RUNTIME=${process.env.AWS_LAMBDA_JS_RUNTIME}) with deploy env est. ${lambdaDeployBytes} B exceeds ${LAMBDA_ENV_LIMIT_BYTES} B. Scope build-only vars (npm run netlify:env:scopes) or ask Netlify support to move ___netlify-server-handler to modern Functions runtime.`,
+      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B cap. Run npm run netlify:env:scopes:launch-minimal to drop optional API keys from Functions scope, or ask Netlify support for modern Functions runtime (not Lambda compatibility mode).`,
     );
   }
 
   if (!fail && onNetlify && worstCase >= WARN_BYTES) {
     lines.push(
-      `Warning: worst-case ${worstCase} B. If deploy fails at upload with Invalid AWS Lambda parameters, scope build-only vars (npm run netlify:env:scopes) and confirm modern Functions runtime with Netlify support.`,
+      `Warning: worst-case ${worstCase} B. If deploy fails at upload with Invalid AWS Lambda parameters, run npm run netlify:env:scopes:launch-minimal and confirm modern Functions runtime with Netlify support.`,
     );
   }
 
@@ -238,15 +248,40 @@ function main() {
   }
 }
 
+function envRowReachesFunctions(scopes) {
+  const s = scopes ?? [];
+  return s.some((scope) => scope === "functions" || scope === "all" || scope === "runtime");
+}
+
+function estimateNetlifyApiFunctionEnvBytes(envRows) {
+  let runtime = 0;
+  const rows = [];
+  for (const row of envRows) {
+    if (!envRowReachesFunctions(row.scopes) || isBuildOnlyKey(row.key)) continue;
+    const prod =
+      row.values?.find((v) => v.context === "production" || v.context === "all") ?? row.values?.[0];
+    const val = prod?.value ?? "";
+    const bytes = Buffer.byteLength(row.key, "utf8") + Buffer.byteLength(String(val), "utf8");
+    runtime += bytes;
+    rows.push({ key: row.key, bytes, optional: RUNTIME_OPTIONAL_FOR_LAUNCH.has(row.key) });
+  }
+  rows.sort((a, b) => b.bytes - a.bytes);
+  return { runtime, rows };
+}
+
 module.exports = {
   estimateLambdaEnvBytes,
+  estimateNetlifyApiFunctionEnvBytes,
   printNetlifyEnvScopingChecklist,
   getDeployRiskMessage,
   isBuildOnlyKey,
+  envRowReachesFunctions,
   LAMBDA_ENV_LIMIT_BYTES,
   BUILD_ONLY_EXACT,
   BUILD_ONLY_PREFIXES,
   RUNTIME_ESSENTIAL,
+  RUNTIME_OPTIONAL_FOR_LAUNCH,
+  FEATURE_FLAGS_TYPICAL_BYTES,
 };
 
 if (require.main === module) {

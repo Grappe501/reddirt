@@ -1,10 +1,11 @@
 /**
  * Which intensive day is "tonight" on the debate-prep hub (calendar-driven).
  */
-import { DAY1_ID, DAY2_ID, DAY3_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { getFirstDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getFirstDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
 import { getFirstDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
+import { getFirstDay4PathwayStep } from "@/lib/election-plan/day4-learning-pathway";
 import {
   DEBATE_WEEK_INTENSIVE_DAYS,
   type IntensiveDayId,
@@ -12,7 +13,11 @@ import {
 
 export const DEFAULT_DEBATE_WEEK_TODAY = "2026-06-19";
 
-export type DebatePrepHubPrimaryDayId = typeof DAY1_ID | typeof DAY2_ID | typeof DAY3_ID;
+export type DebatePrepHubPrimaryDayId =
+  | typeof DAY1_ID
+  | typeof DAY2_ID
+  | typeof DAY3_ID
+  | typeof DAY4_ID;
 
 export function resolveDebateWeekReferenceDate(referenceDate?: string): string {
   return referenceDate ?? process.env.DEBATE_WEEK_TODAY ?? DEFAULT_DEBATE_WEEK_TODAY;
@@ -30,6 +35,7 @@ export function isDebatePrepTonightDay(dayId: IntensiveDayId, referenceDate?: st
 
 export function debatePrepHubPrimaryDayId(referenceDate?: string): DebatePrepHubPrimaryDayId {
   const tonight = resolveDebatePrepTonightDayId(referenceDate);
+  if (tonight === DAY4_ID) return DAY4_ID;
   if (tonight === DAY3_ID) return DAY3_ID;
   if (tonight === DAY2_ID) return DAY2_ID;
   return DAY1_ID;
@@ -37,6 +43,9 @@ export function debatePrepHubPrimaryDayId(referenceDate?: string): DebatePrepHub
 
 export function buildDebatePrepPathwayTonightFocus(referenceDate?: string): string {
   const primaryDayId = debatePrepHubPrimaryDayId(referenceDate);
+  if (primaryDayId === DAY4_ID) {
+    return `Day 4 pathway — start ${getFirstDay4PathwayStep().label}. Forum lab ingest + claims-gated notecard minimum tonight.`;
+  }
   if (primaryDayId === DAY3_ID) {
     return `Day 3 pathway — start ${getFirstDay3PathwayStep().label}. Manual + claims gate minimum tonight.`;
   }

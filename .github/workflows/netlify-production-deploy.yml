@@ -75,6 +75,7 @@ jobs:
             exit 0
           fi
           node scripts/netlify-enforce-env-scopes.cjs
+          node scripts/netlify-enforce-env-scopes.cjs --launch-minimal
 
       - name: Trigger Netlify build hook (optional)
         env:
