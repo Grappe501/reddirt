@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { AccaForumLocalRecordingPanel } from "@/components/election-plan/AccaForumLocalRecordingPanel";
 import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
+import { ElectionPlanDay4PathwayReturnLink } from "@/components/election-plan/ElectionPlanDay4ForumPanels";
 import { ForumTranscriptLabClient } from "@/components/admin/intelligence/ForumTranscriptLabClient";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import { DEBATE_PREP_PACKAGE_LABEL } from "@/lib/election-plan/debate-prep-links";
@@ -43,6 +44,9 @@ export default function ElectionPlanForumTranscriptLabPage() {
               Upload the three-candidate forum video, transcribe with AI, and build Kelly&apos;s capitalize playbook for the
               SOS debate.
             </p>
+            <div className="mt-3">
+              <ElectionPlanDay4PathwayReturnLink blockId="b4-lab" label="Return to Day 4 forum lab block" />
+            </div>
             <div className="mt-4 flex flex-wrap gap-2 text-xs font-bold">
               <Link
                 href={EP_FORUM_LAB_INTEGRATION_HREF}

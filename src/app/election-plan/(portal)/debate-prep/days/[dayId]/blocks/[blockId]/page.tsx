@@ -11,6 +11,7 @@ import { ElectionPlanDay2FilmClipPanel } from "@/components/election-plan/Electi
 import { ElectionPlanFilmTellWorksheetPanel } from "@/components/election-plan/ElectionPlanFilmTellWorksheetPanel";
 import { ElectionPlanQualificationStackPanel } from "@/components/election-plan/ElectionPlanQualificationStackPanel";
 import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
+import { ElectionPlanDay4BlockEmbed } from "@/components/election-plan/ElectionPlanDay4ForumPanels";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownSections,
@@ -115,6 +116,8 @@ export default async function ElectionPlanDayBlockPage({
       {claimsSuperioritySummary ? (
         <ElectionPlanClaimsSuperiorityChecklist summary={claimsSuperioritySummary} />
       ) : null}
+
+      {dayId === DAY4_ID ? <ElectionPlanDay4BlockEmbed blockId={blockId} /> : null}
 
       {study ? (
         <ElectionPlanBlockStudyPanel study={study} dayId={dayId} blockId={blockId} />

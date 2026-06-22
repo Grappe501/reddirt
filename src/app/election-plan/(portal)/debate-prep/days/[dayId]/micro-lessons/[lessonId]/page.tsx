@@ -13,6 +13,8 @@ import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-aud
 import { getDay1MicroLessonAnchor } from "@/lib/election-plan/day1-supplement-anchors";
 import { getDay2MicroLessonAnchor } from "@/lib/election-plan/day2-supplement-anchors";
 import { getDay3MicroLessonAnchor } from "@/lib/election-plan/day3-supplement-anchors";
+import { ElectionPlanDay4SupplementFooter } from "@/components/election-plan/ElectionPlanDay4SupplementFooter";
+import { getDay4MicroLessonAnchor } from "@/lib/election-plan/day4-supplement-anchors";
 import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, getDayMicroLessonDrillDown, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayMicroLessons } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
@@ -38,6 +40,7 @@ export default async function ElectionPlanDayMicroLessonPage({
   const day1Anchor = dayId === DAY1_ID ? getDay1MicroLessonAnchor(lessonId) : undefined;
   const day2Anchor = dayId === DAY2_ID ? getDay2MicroLessonAnchor(lessonId) : undefined;
   const day3Anchor = dayId === DAY3_ID ? getDay3MicroLessonAnchor(lessonId) : undefined;
+  const day4Anchor = dayId === DAY4_ID ? getDay4MicroLessonAnchor(lessonId) : undefined;
   const dayLabel =
     dayId === DAY4_ID ? "Day 4" : dayId === DAY3_ID ? "Day 3" : dayId === DAY2_ID ? "Day 2" : dayId === DAY1_ID ? "Day 1" : "Day";
 
@@ -70,7 +73,9 @@ export default async function ElectionPlanDayMicroLessonPage({
       </article>
       <ElectionPlanDrillDownSteps title="Practice steps" steps={lesson.practiceSteps} />
       <ElectionPlanDrillDownRelated links={lesson.relatedLinks} />
-      {dayId === DAY4_ID ? (
+      {day4Anchor ? (
+        <ElectionPlanDay4SupplementFooter anchor={day4Anchor} />
+      ) : dayId === DAY4_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={lessonId} />
       ) : day1Anchor ? (
         <ElectionPlanDay1SupplementFooter anchor={day1Anchor} />

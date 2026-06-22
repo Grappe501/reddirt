@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
+import { ElectionPlanForumPredictedLinePicker } from "@/components/election-plan/ElectionPlanForumPredictedLinePicker";
+import { ElectionPlanDay4PathwayReturnLink, ElectionPlanDay4HandoffBanner } from "@/components/election-plan/ElectionPlanDay4ForumPanels";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownShell,
@@ -11,6 +13,7 @@ import { getDayRehearsalScript, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, type DrillDo
 import { staticParamsForDayRehearsals } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
+import { buildDay4ForumPipelineSurface } from "@/lib/election-plan/load-day4-forum-pipeline-surface";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export const dynamic = "force-dynamic";
@@ -40,6 +43,8 @@ export default async function ElectionPlanDayRehearsalPage({
         ? (["county-champion", "integrity", "three-way"] as const)
         : (["county-champion", "author-vs-administrator"] as const);
 
+  const forumSurface = dayId === DAY4_ID ? buildDay4ForumPipelineSurface() : null;
+
   return (
     <ElectionPlanDrillDownShell
       backHref={epDebatePrepDayHref(dayId)}
@@ -48,6 +53,12 @@ export default async function ElectionPlanDayRehearsalPage({
       title={script.label}
     >
       <VoterAudienceSpeakToBanner profiles={resolveAudiencesForHooks([...audienceHooks])} compact />
+      {dayId === DAY4_ID ? (
+        <>
+          <ElectionPlanDay4PathwayReturnLink />
+          <ElectionPlanForumPredictedLinePicker lines={forumSurface!.verifiedHammerLines} scriptId={scriptId} />
+        </>
+      ) : null}
       <article className="ep-card border-2 border-emerald-300/50 bg-emerald-50/40 p-5 text-sm">
         <p className="text-xs font-bold uppercase text-emerald-900">Script</p>
         <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{script.script}</p>
@@ -69,6 +80,7 @@ export default async function ElectionPlanDayRehearsalPage({
         </ul>
       </article>
       <ElectionPlanDrillDownRelated links={script.relatedLinks} />
+      {dayId === DAY4_ID ? <ElectionPlanDay4HandoffBanner /> : null}
       {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={scriptId} />
       ) : null}

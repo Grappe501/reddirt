@@ -13,6 +13,7 @@ import {
 } from "../src/lib/election-plan/day4-learning-pathway";
 import { DAY4_FORUM_TRANSCRIPT_CLAIMS_GATE } from "../src/lib/election-plan/debate-prep-day4-forum-intelligence-copy";
 import { DEBATE_PREP_DAY4_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day4-release";
+import { buildDay4ForumPipelineSurface } from "../src/lib/election-plan/load-day4-forum-pipeline-surface";
 import {
   DAY4_BLOCK_STUDY,
   getDay4BlockStudy,
@@ -47,7 +48,7 @@ assert.equal(getFirstDay4PathwayStep().id, DAY4_MINIMUM_BLOCK_IDS[0]);
 assert.ok(getNextDay4PathwayStep(steps[0]!.id), "first step should have a next step");
 assert.equal(DAY4_EVENING_REVIEW.length, 3);
 assert.ok(DAY4_DAY5_TEASER.href.includes("day-5-anticipate-and-capitalize"));
-assert.ok(DEBATE_PREP_DAY4_RELEASE_VERSION.includes("pass3"));
+assert.ok(DEBATE_PREP_DAY4_RELEASE_VERSION.includes("pass4"));
 
 const optionalExample = steps.find((s) => s.kind === "example");
 assert.ok(optionalExample, "Day 4 should have optional example");
@@ -87,6 +88,22 @@ assert.ok(exStudy!.claimsGate && exStudy!.claimsGate.length >= 4, "ex4-forum cla
 assert.ok(DAY4_FORUM_TRANSCRIPT_CLAIMS_GATE.length >= 4, "shared claims gate copy");
 assert.ok(Object.keys(DAY4_BLOCK_STUDY).length === 4);
 assert.ok(Object.keys(DAY4_OPPONENT_EXAMPLE_STUDY).length === 1);
+
+// Pass 4 — forum pipeline surface (claims-gated Kelly surface)
+const surface = buildDay4ForumPipelineSurface();
+assert.ok(surface.pipeline.artifactReady, "forum artifact should exist in dev data");
+assert.ok(surface.notecardLines.length >= 1, "notecard should have green capitalize lines when v1 ready");
+for (const line of surface.notecardLines) {
+  assert.equal(line.claimsStatus, "green");
+  assert.ok(line.timestamp.length > 0);
+  assert.ok(line.sourceLabel.length > 0);
+}
+for (const q of surface.verifiedHammerLines) {
+  assert.equal(q.claimsStatus, "verified");
+}
+assert.equal(surface.sosMappingRows.length, 5);
+assert.equal(surface.bioRows.length, 2);
+assert.ok(surface.internalIntelQuoteCount >= 0);
 
 console.log(
   `test-debate-prep-day4-pathway: OK (${steps.length} steps, ${blocks.length} blocks, ${phaseCounts.length} phases)`,

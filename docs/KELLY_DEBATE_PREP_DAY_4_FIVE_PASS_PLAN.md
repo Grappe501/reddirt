@@ -2,7 +2,7 @@
 
 **Doc ID:** KELLY-DP-D4-5PASS  
 **Lane:** `RedDirt/` only  
-**Status:** Day 1–3 **production parity signed** · Day 4 **Pass 1–3 shipped** (`day-4-forum-intelligence-v1.0.0-pass3`) · Pass 4 next (forum pipeline UI centerpiece)  
+**Status:** Day 1–3 **production parity signed** · Day 4 **Pass 1–4 shipped** (`day-4-forum-intelligence-v1.0.0-pass4`) · Pass 5 next (hub promotion + parity sign-off)  
 **Created:** 2026-06-21  
 **Goal:** Bring **Day 4 · Forum intelligence lab** to the same Kelly-facing experience as Days 1–3 — one linear pathway, phased block study, forum-lab pipeline UI, claims-gated quote handling, Continue footers, Day 5 teaser.
 
@@ -177,16 +177,13 @@ Forum intel feeds Day 5 (`day-5-anticipate-and-capitalize`): capitalize sheet ex
 | Landing stub | ~~inline list~~ → `ElectionPlanDay4PathwayPanel` (Pass 3) |
 | Day 3 → Day 4 teaser | `DAY3_DAY4_TEASER` in `day3-learning-pathway.ts` |
 
-### Missing vs Day 1–3 bar (Pass 4–5 remaining)
+### Missing vs Day 1–3 bar (Pass 5 remaining)
 
 | Gap | Impact |
 |-----|--------|
-| No `day4-supplement-anchors.ts` | Concepts lack supplement Continue back-links (micro-lessons use DayStepFooter) |
-| No Kelly-native forum pipeline checklist UI | Lab exists but block page doesn't gate workflow |
-| No capitalize notecard / SOS mapping worksheets | Success check is copy-only — **Pass 4 centerpiece** |
 | No parity test extension in `test-debate-prep-day-parity.ts` | Pass 5 |
 | `debatePrepHubPrimaryDayId` no Day 4 | Calendar 6/22 does not promote Day 4 — Pass 5 |
-| Bios re-read block has no forum-notes worksheet | Pass 4 embed panel |
+| Hub `ElectionPlanDay4StartCard` | Pass 5 hub promotion |
 
 ---
 
@@ -270,54 +267,34 @@ Each pass is a **shippable increment** — deployable without breaking Days 1–
 
 ---
 
-### Pass 4 — Forum pipeline UI & claims integration (NEXT — centerpiece)
+### Pass 4 — Forum pipeline UI & claims integration ✅ (shipped)
 
-**Theme:** Clean, mobile-friendly chain from forum artifact → five verified capitalize moves → Day 5 anticipated-line drills. Kelly notecard surfaces **claims-gated lines only**; raw forum analysis stays richer behind the scenes.
+**Theme:** Clean mobile chain: **forum artifact → reviewed evidence → green notecard line → rehearsal → Day 5 drill**.
 
-**Pass 3 already shipped:** Continue footers + Day 4 pathway hint on all child routes.
+**Shipped files**
 
-**Files to add (UI)**
+- `load-day4-forum-pipeline-surface.ts` — claims-gated Kelly surface builder
+- `ElectionPlanDay4ForumPanels.tsx` — pipeline checklist, block embed, Day 5 handoff
+- `ElectionPlanCapitalizeMovesNotecard.tsx` — five green lines, copy/print, no staff clutter
+- `ElectionPlanForumSosMappingWorksheet.tsx` — 5 card rows (mobile-first)
+- `ElectionPlanBiosForumRereadPanel.tsx` — forecast confirmed/changed/contradicted
+- `ElectionPlanForumPredictedLinePicker.tsx` — verified Hammer quotes only for rehearsal
+- `day4-supplement-anchors.ts` + `ElectionPlanDay4SupplementFooter.tsx`
+- Block/rehearsal/concept/micro-lesson/forum-lab wiring
 
-| Component | Purpose |
-|-----------|---------|
-| `ElectionPlanForumLabPipelineChecklist.tsx` | Read-only status: artifact exists · v1 done · v2 done · capitalize count (from `loadForumTranscriptLab`) |
-| `ElectionPlanCapitalizeMovesNotecard.tsx` | Five slots — title + one-line Kelly capitalize (local/print; no PII storage) |
-| `ElectionPlanForumSosMappingWorksheet.tsx` | 5 rows: forum topic · SOS bank question · Hammer repeat line |
-| `ElectionPlanBiosForumRereadPanel.tsx` | Hammer/Pakko checklist: forecast section · forum surprise · adjusted memory line |
-| `ElectionPlanForumPredictedLinePicker.tsx` | Pull predicted lines from lab (claims-gated list only) for rehearsal step |
+**Exit criteria (met)**
 
-**Files to edit**
-
-- `rehearsal/[scriptId]/page.tsx` — predicted line picker (claims-gated list only)
-- `micro-lessons/[lessonId]/page.tsx` — `d4-lab-workflow` supplement anchor (optional)
-- `concepts/[conceptId]/page.tsx` — Day 4 concepts + anchors
-- `blocks/b4-lab/page.tsx` — embed pipeline checklist + capitalize notecard (claims-gated only)
-- `blocks/b4-sos/page.tsx` — embed SOS mapping worksheet
-- `blocks/b4-rest/page.tsx` — recovery timer copy + link to one rehearsal only
-- `blocks/b4-opponent-bios-reread/page.tsx` — embed bios reread panel + opposition debate-night cross-link
-- `day4-supplement-anchors.ts` — micro-lesson + concept Continue targets
-- `debate-prep-route-map.ts` — verify SOS questions EP mirror slug
-
-**V3 lane integration**
-
-- Block study `relatedLinks` include lane hrefs: `lane-d4-lab-deep`, `lane-d4-sos-map`
-- Forum lab hub: prominent "Return to Day 4 block" link when opened from pathway
-
-**Opposition v2 cross-link (read-only)**
-
-- `blocks/b4-opponent-bios-reread` → `/election-plan/opposition-research/debate-night` for export-ready lines after forum ingest
-
-**Exit criteria**
-
-- [x] Continue button shows next step name + minutes (Pass 3)
-- [x] Optional example labeled Optional (Pass 3)
-- [ ] Pipeline checklist reflects lab state (or clear "staff run upload" empty state)
-- [ ] Zero unverified quotes in notecard UI — claims status visible per line
-- [ ] Forum lab pages reachable without admin login
+- [x] No quote in notecard/picker without source + timestamp + approved claims status
+- [x] Pipeline checklist shows artifact · v1 · v2 · verified capitalize count
+- [x] Kelly copies/prints five green lines without staff analysis clutter
+- [x] SOS worksheet: forum theme → SOS question → Hammer line → clerk sketch
+- [x] Bios panel: forecast vs forum verdict + verified lines
+- [x] Every surface returns to Day 4 pathway; Day 5 handoff on lab/bios/rehearsal
+- [x] Mobile-first card stacks — no dense tables, no admin detour
 
 ---
 
-### Pass 5 — Hub integration, parity test, production sign-off
+### Pass 5 — Hub integration, parity test, production sign-off (NEXT)
 
 **Theme:** Debate prep hub treats Day 4 as "tonight" on calendar 2026-06-22; production ready.
 
@@ -436,8 +413,8 @@ Passes 2 and 3 can run in parallel after Pass 1 if two builders coordinate; **Pa
 |------|------|--------|-------|
 | 1 | 2026-06-21 | | Data spine + pathway + registry shipped |
 | 2 | 2026-06-21 | | Block study (4 blocks, 17 phases) + ex4-forum + claims-gate copy constants |
-| 3 | 2026-06-21 | | Pathway panel, progress bar, Continue, landing, subnav Day 4 tab |
-| 4 | | | |
+| 3 | 2026-06-21 | cae71fb1 | Pathway panel, progress bar, Continue, landing, subnav Day 4 tab |
+| 4 | 2026-06-21 | | Forum pipeline UI — notecard, SOS worksheet, bios reread, predicted-line picker, Day 5 handoff |
 | 5 | | | |
 
 ---
