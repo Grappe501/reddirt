@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-
+import { EpButton } from "@/components/election-plan/ui/EpButton";
 import { notifyDay3PathwayProgressChanged } from "@/components/election-plan/ElectionPlanDay3PathwayProgressBar";
 import { buildDay3PathwaySteps } from "@/lib/election-plan/day3-learning-pathway";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
@@ -27,35 +26,25 @@ export function ElectionPlanDay3ContinueButton({
 
   if (!next) {
     return (
-      <div className={`space-y-3 ${className}`}>
-        <p className="text-xs text-[var(--ep-navy-muted)]">
-          Sign off this step, then return to the evening check on the Day 3 overview.
-        </p>
-        <Link
-          href={epDebatePrepDayHref(DAY3_ID)}
-          onClick={signOffAndNavigate}
-          className="inline-block rounded-full bg-emerald-800 px-6 py-3 text-sm font-bold text-white"
-        >
+      <div className={`ep-continue ${className}`}>
+        <p className="ep-continue-hint">Sign off this step, then return to the evening check on the Day 3 overview.</p>
+        <EpButton href={epDebatePrepDayHref(DAY3_ID)} variant="success" onClick={signOffAndNavigate} className="mt-3">
           Sign off &amp; finish Day 3 evening check →
-        </Link>
+        </EpButton>
       </div>
     );
   }
 
   return (
-    <div className={`space-y-3 border-t border-[var(--ep-border)] pt-6 ${className}`}>
-      <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Your sign-off</p>
-      <p className="text-sm text-[var(--ep-navy-muted)]">
-        Finished <strong className="text-[var(--ep-navy)]">{current?.label ?? "this step"}</strong>? Continue records
-        your completion and opens the next step.
+    <div className={`ep-continue ${className}`}>
+      <p className="ep-continue-label">Your sign-off</p>
+      <p className="ep-continue-hint">
+        Finished <strong>{current?.label ?? "this step"}</strong>? Continue records your completion and opens the next
+        step.
       </p>
-      <Link
-        href={next.href}
-        onClick={signOffAndNavigate}
-        className="inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"
-      >
+      <EpButton href={next.href} onClick={signOffAndNavigate} fullWidth className="ep-btn-block-sm-auto mt-3">
         Sign off &amp; continue · {next.label} ({next.minutes} min) →
-      </Link>
+      </EpButton>
     </div>
   );
 }

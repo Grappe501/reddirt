@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { PageBrief, PageBriefLink } from "@/lib/election-plan/load-page-briefs";
+import { EpInsightPanel } from "@/components/election-plan/ui/EpInsightPanel";
 
 type Props = {
   brief: PageBrief;
@@ -19,19 +20,17 @@ function BriefSection({ label, children }: { label: string; children: React.Reac
 export function PageBrief({ brief, compact = false }: Props) {
   if (compact) {
     return (
-      <div className="ep-card-glass border-l-4 border-[var(--ep-gold)] px-4 py-3 text-sm">
-        <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">What&apos;s on this page</p>
-        <p className="mt-1 text-[var(--ep-navy-muted)]">{brief.answers}</p>
-      </div>
+      <EpInsightPanel label="What's on this page" variant="compact">
+        <p className="text-[var(--ep-navy-muted)]">{brief.answers}</p>
+      </EpInsightPanel>
     );
   }
 
   return (
-    <aside className="ep-card mb-8 border-l-4 border-[var(--ep-gold)]" aria-label="Page summary">
-      <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--ep-gold)]">What&apos;s on this page</p>
+    <aside className="ep-insight mb-8" aria-label="Page summary">
+      <p className="ep-insight-label">What&apos;s on this page</p>
       <h2 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">{brief.title}</h2>
-
-      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+      <div className="ep-insight-body mt-4 grid gap-4 lg:grid-cols-2">
         <BriefSection label="This page answers">{brief.answers}</BriefSection>
         <BriefSection label="Best for">
           <ul className="list-inside list-disc space-y-0.5 text-[var(--ep-navy-muted)]">
@@ -47,7 +46,7 @@ export function PageBrief({ brief, compact = false }: Props) {
           <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Key metrics shown</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {brief.keyMetrics.map((m) => (
-              <span key={m} className="rounded-full bg-[var(--ep-cream)] px-3 py-1 text-xs font-semibold">
+              <span key={m} className="ep-link-chip">
                 {m}
               </span>
             ))}

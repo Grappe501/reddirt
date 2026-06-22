@@ -45,14 +45,14 @@ export function ElectionPlanBlockStudyPanel({
   return (
     <>
       {study.professorLead ? (
-        <article className="ep-card border-[var(--ep-gold)]/50 bg-[var(--ep-cream)]/60 p-5 text-sm">
-          <h2 className="text-xs font-bold uppercase text-[var(--ep-gold)]">{leadLabel}</h2>
+        <article className="ep-card ep-study-lead p-5 text-sm">
+          <h2 className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">{leadLabel}</h2>
           <p className="mt-3 text-base font-medium leading-relaxed text-[var(--ep-navy)]">{study.professorLead}</p>
         </article>
       ) : null}
 
-      <article className="ep-card mt-6 border-indigo-200 bg-indigo-50/30 p-5 text-sm">
-        <h2 className="text-xs font-bold uppercase text-indigo-900">Study overview</h2>
+      <article className="ep-card ep-study-overview mt-6 p-5 text-sm">
+        <h2 className="text-xs font-bold uppercase tracking-wide text-[var(--ep-blue)]">Study overview</h2>
         <p className="mt-3 leading-relaxed text-[var(--ep-navy-muted)]">{study.overview}</p>
       </article>
 
@@ -84,15 +84,11 @@ export function ElectionPlanBlockStudyPanel({
             </>
           );
           return href ? (
-            <Link
-              key={phase.title}
-              href={href}
-              className="ep-card block p-5 text-sm transition hover:border-[var(--ep-gold)] hover:shadow-sm"
-            >
-              {card}
+            <Link key={phase.title} href={href} className="ep-study-phase-link">
+              <div className="ep-study-phase">{card}</div>
             </Link>
           ) : (
-            <article key={phase.title} className="ep-card p-5 text-sm">
+            <article key={phase.title} className="ep-study-phase">
               {card}
             </article>
           );

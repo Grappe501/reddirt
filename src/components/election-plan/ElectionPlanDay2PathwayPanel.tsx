@@ -34,15 +34,12 @@ export function ElectionPlanDay2StartCard() {
   const plan = getDebateWeekIntensiveDay(DAY2_ID)!;
 
   return (
-    <section className="ep-card mb-8 border-2 border-indigo-300 bg-indigo-50/20 p-6">
-      <p className="text-xs font-bold uppercase text-indigo-900">Day 2 · read the table</p>
+    <section className="ep-pathway-start mb-8">
+      <p className="ep-pathway-start-eyebrow text-indigo-700">Day 2 · read the table</p>
       <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">{plan.title}</h2>
       <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
       <KellyPageSummary summary={DAY2_V3_KELLY_MINIMUM_SUMMARY} />
-      <Link
-        href={first.href}
-        className="mt-4 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"
-      >
+      <Link href={first.href} className="ep-btn ep-btn-primary ep-btn-block-sm-auto mt-5">
         Start block 1 · {first.minutes} min →
       </Link>
       <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">

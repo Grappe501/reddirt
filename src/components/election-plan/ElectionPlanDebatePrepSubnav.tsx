@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { EpSubnav } from "@/components/election-plan/ui/EpSubnav";
 import {
   EP_DEBATE_PREP_COMMAND_HREF,
   EP_DEBATE_PREP_HREF,
@@ -23,7 +23,7 @@ import { DAY1_ID, DAY2_ID, DAY3_ID } from "@/lib/election-plan/debatePrepDayDril
 import { showFullDebatePrepSubnav } from "@/lib/election-plan/kelly-facing-ui";
 
 const fullTabs = [
-  { href: EP_DEBATE_PREP_HREF, label: "Hub", exact: true },
+  { href: EP_DEBATE_PREP_HREF, label: "Hub", exact: true as const },
   { href: EP_DEBATE_PREP_WAR_ROOM_HREF, label: "War room" },
   { href: EP_DEBATE_QUESTIONS_HREF, label: "40 questions" },
   { href: EP_OPPONENT_BIOS_HREF, label: "Opponent bios" },
@@ -39,7 +39,7 @@ const fullTabs = [
 ] as const;
 
 const compactTabs = [
-  { href: EP_DEBATE_PREP_HREF, label: "Hub", exact: true },
+  { href: EP_DEBATE_PREP_HREF, label: "Hub", exact: true as const },
   { href: epDebatePrepDayHref(DAY1_ID), label: "Day 1" },
   { href: epDebatePrepDayHref(DAY2_ID), label: "Day 2" },
   { href: epDebatePrepDayHref(DAY3_ID), label: "Day 3" },
@@ -54,28 +54,5 @@ export function ElectionPlanDebatePrepSubnav({ compact = false }: { compact?: bo
   const useCompact = compact || !showFullDebatePrepSubnav();
   const tabs = useCompact ? compactTabs : fullTabs;
 
-  return (
-    <nav className="mb-8 flex flex-wrap gap-2 border-b border-[var(--ep-border)] pb-3" aria-label="Debate prep sections">
-      {tabs.map((tab) => {
-        const active =
-          "exact" in tab && tab.exact === true
-            ? path === tab.href
-            : path === tab.href || path.startsWith(`${tab.href}/`);
-        return (
-          <Link
-            key={tab.href}
-            href={tab.href}
-            className={`rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wide transition ${
-              active
-                ? "bg-[var(--ep-navy)] text-white"
-                : "border border-[var(--ep-border)] bg-white text-[var(--ep-navy-muted)] hover:border-[var(--ep-navy)] hover:text-[var(--ep-navy)]"
-            }`}
-            aria-current={active ? "page" : undefined}
-          >
-            {tab.label}
-          </Link>
-        );
-      })}
-    </nav>
-  );
+  return <EpSubnav tabs={tabs} activePath={path} ariaLabel="Debate prep sections" />;
 }

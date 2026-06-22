@@ -72,9 +72,10 @@ export function ElectionPlanDebatePrepHubPanel() {
     <>
       <ElectionPlanDebatePrepSubnav />
 
-      <header className="mb-6">
-        <h1 className="font-heading text-3xl font-bold text-[var(--ep-navy)]">Debate prep</h1>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--ep-navy-muted)]">{snapshot.intro}</p>
+      <header className="ep-page-header">
+        <p className="ep-page-eyebrow">Debate prep command course</p>
+        <h1 className="ep-page-title">Debate prep</h1>
+        <p className="ep-page-description">{snapshot.intro}</p>
       </header>
 
       <KellyPageSummary summary={hubSummary} />

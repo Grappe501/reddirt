@@ -36,23 +36,16 @@ export function ElectionPlanDay3StartCard() {
   const overlay = getDayDeepOverlay(DAY3_ID);
 
   return (
-    <section className="ep-card mb-8 border-2 border-emerald-300 bg-emerald-50/20 p-6">
-      <p className="text-xs font-bold uppercase text-emerald-900">Day 3 · superiority map</p>
+    <section className="ep-pathway-start mb-8">
+      <p className="ep-pathway-start-eyebrow text-[var(--ep-success)]">Day 3 · superiority map</p>
       <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">{plan.title}</h2>
       <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
       <KellyPageSummary summary={DAY3_V3_KELLY_MINIMUM_SUMMARY} />
       <div className="mt-4 flex flex-wrap gap-2">
-        <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-900">
-          Strength · {overlay.kellyStrengthToday}
-        </span>
-        <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900">
-          Watch out · {overlay.kellyWatchOut}
-        </span>
+        <span className="ep-pathway-chip ep-pathway-chip-strength">Strength · {overlay.kellyStrengthToday}</span>
+        <span className="ep-pathway-chip ep-pathway-chip-watch">Watch out · {overlay.kellyWatchOut}</span>
       </div>
-      <Link
-        href={first.href}
-        className="mt-4 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"
-      >
+      <Link href={first.href} className="ep-btn ep-btn-primary ep-btn-block-sm-auto mt-5">
         Start block 1 · {first.minutes} min →
       </Link>
       <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
@@ -137,8 +130,8 @@ export function ElectionPlanDay3PathwayPanel({
               <li key={step.id}>
                 <Link
                   href={step.href}
-                  className={`ep-card flex items-center justify-between gap-3 p-4 text-sm transition ${
-                    isActive ? "border-2 border-emerald-400" : isPast ? "opacity-70" : "hover:border-emerald-300/50"
+                  className={`ep-card ep-card-interactive flex items-center justify-between gap-3 p-4 text-sm ${
+                    isActive ? "ring-2 ring-[var(--ep-blue)] ring-offset-2" : isPast ? "opacity-70" : ""
                   }`}
                 >
                   <div className="min-w-0">

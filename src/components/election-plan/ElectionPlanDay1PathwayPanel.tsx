@@ -31,15 +31,12 @@ export function ElectionPlanDay1StartCard() {
   const plan = getDebateWeekIntensiveDay(DAY1_ID)!;
 
   return (
-    <section className="ep-card mb-8 border-2 border-[var(--ep-gold)] bg-[var(--ep-cream)]/50 p-6">
-      <p className="text-xs font-bold uppercase text-[var(--ep-gold)]">Day 1 · start here</p>
+    <section className="ep-pathway-start mb-8">
+      <p className="ep-pathway-start-eyebrow text-[var(--ep-gold)]">Day 1 · start here</p>
       <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">{plan.title}</h2>
       <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
       <KellyPageSummary summary="~4 hours if you do everything — or finish posture + author/administrator and stop. That is a successful Day 1." />
-      <Link
-        href={first.href}
-        className="mt-4 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"
-      >
+      <Link href={first.href} className="ep-btn ep-btn-primary ep-btn-block-sm-auto mt-5">
         Start block 1 · {first.minutes} min →
       </Link>
       <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">

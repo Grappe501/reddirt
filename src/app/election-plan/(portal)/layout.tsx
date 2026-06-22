@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Suspense } from "react";
+
 import { ElectionPlanLogoutButton } from "@/components/election-plan/ElectionPlanLogoutButton";
 import { ElectionPlanOperatorBar } from "@/components/election-plan/ElectionPlanOperatorBar";
 import { ElectionPlanPortalHeader } from "@/components/election-plan/ElectionPlanPortalHeader";
@@ -15,19 +16,21 @@ export default async function ElectionPlanPortalLayout({ children }: { children:
   await requireElectionPlanPage();
   const operator = await loadCurrentElectionPlanOperator();
   return (
-    <>
+    <div className="ep-portal-shell">
       <ElectionPlanPortalHeader />
-      <div className="mx-auto max-w-6xl px-4 pt-4 lg:px-6">
-        <ElectionPlanOperatorBar
-          currentInitials={operator?.initials ?? null}
-          currentDisplayName={operator?.displayName ?? null}
-        />
-        <Suspense fallback={null}>
-          <PageBriefFromPath />
-        </Suspense>
+      <div className="ep-portal-content">
+        <div className="pt-4">
+          <ElectionPlanOperatorBar
+            currentInitials={operator?.initials ?? null}
+            currentDisplayName={operator?.displayName ?? null}
+          />
+          <Suspense fallback={null}>
+            <PageBriefFromPath />
+          </Suspense>
+        </div>
       </div>
       {children}
       <ElectionPlanLogoutButton />
-    </>
+    </div>
   );
 }

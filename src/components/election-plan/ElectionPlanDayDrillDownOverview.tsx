@@ -89,20 +89,17 @@ export function ElectionPlanDayDrillDownOverview({
         <KellyPageSummary
           summary={`Listen like an analyst first — the forum transcript is your Rosetta stone. ${dayPageSummary(plan)} Minimum tonight: forum lab ingest if tired.`}
         />
-        <section className="ep-card mb-8 border-2 border-violet-300 bg-violet-50/20 p-6">
-          <p className="text-xs font-bold uppercase text-violet-900">Day 4 · forum intelligence lab</p>
+        <section className="ep-pathway-start mb-8">
+          <p className="ep-pathway-start-eyebrow text-violet-700">Day 4 · forum intelligence lab</p>
           <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">{plan.title}</h2>
           <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
-          <Link
-            href={first.href}
-            className="mt-4 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-[var(--ep-navy)]/90 sm:w-auto"
-          >
+          <Link href={first.href} className="ep-btn ep-btn-primary ep-btn-block-sm-auto mt-5">
             Start forum lab · {first.minutes} min →
           </Link>
-          <ol className="mt-6 space-y-2 text-sm">
+          <ol className="mt-6 divide-y divide-[var(--ep-border)] rounded-lg border border-[var(--ep-border)] bg-[var(--ep-cream)]/50">
             {steps.map((step) => (
-              <li key={step.id}>
-                <Link href={step.href} className="font-medium text-[var(--ep-navy)] underline-offset-2 hover:underline">
+              <li key={step.id} className="px-4 py-3 text-sm">
+                <Link href={step.href} className="font-semibold text-[var(--ep-navy)] hover:text-[var(--ep-blue)]">
                   {step.label}
                 </Link>
                 <span className="text-[var(--ep-navy-muted)]"> · {step.minutes} min</span>
