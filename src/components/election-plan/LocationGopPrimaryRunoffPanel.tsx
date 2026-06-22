@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
-import type { GopSos2026LocationView } from "@/lib/election-plan/gop-sos-2026-results-types";
-import { formatGopPct } from "@/lib/election-plan/load-gop-sos-2026-results";
+import type { GopSos2026LocationView, GopSos2026ResultsBundle } from "@/lib/election-plan/gop-sos-2026-results-types";
+import { formatGopPct } from "@/lib/election-plan/gop-sos-2026-results-types";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { cn } from "@/lib/utils";
 

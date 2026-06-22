@@ -1,6 +1,5 @@
 import { readFileSync } from "fs";
 import path from "path";
-import "server-only";
 
 import { getRegistryCountyByFips, getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
 import type { GopSos2026LocationView, GopSos2026ResultsBundle } from "@/lib/election-plan/gop-sos-2026-results-types";
@@ -60,8 +59,4 @@ export function getGopSos2026CountyByFips(fips: string): GopSos2026LocationView 
   const row = bundle.counties.find((c) => c.fips === fips);
   if (!row) return null;
   return { ...row, scope: "county", countySlug: reg?.slug ?? row.countySlug };
-}
-
-export function formatGopPct(n: number): string {
-  return `${n.toFixed(1)}%`;
 }

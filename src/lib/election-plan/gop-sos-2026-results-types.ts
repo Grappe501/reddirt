@@ -73,6 +73,10 @@ export type GopSos2026ResultsBundle = {
   };
 };
 
+export function formatGopPct(n: number): string {
+  return `${n.toFixed(1)}%`;
+}
+
 export type GopSos2026LocationView = GopSos2026CountyRow & {
   scope: "county" | "city";
   cityName?: string;

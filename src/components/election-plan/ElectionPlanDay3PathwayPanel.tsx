@@ -16,7 +16,7 @@ import {
   DEBATE_PREP_DAY3_RELEASE_LABEL,
   DEBATE_PREP_DAY3_RELEASE_VERSION,
 } from "@/lib/election-plan/debate-prep-day3-release";
-import { DAY3_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-norris-coalition-drilldown";
+import { DAY3_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-norris-coalition-copy";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DAY3_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { getDebateWeekIntensiveDay } from "@/lib/intelligence/v4/debateWeekIntensive2026";

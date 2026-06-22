@@ -3,8 +3,8 @@ import Link from "next/link";
 import {
   buildNorrisCoalitionDrillLinks,
   getNorrisCoalitionStatewideOneLiner,
-  NORRIS_KELLY_ALIGNMENT_FRAME,
 } from "@/lib/election-plan/debate-prep-norris-coalition-drilldown";
+import { NORRIS_KELLY_ALIGNMENT_FRAME } from "@/lib/election-plan/debate-prep-norris-coalition-copy";
 
 function formatGopPct(n: number): string {
   return `${n.toFixed(1)}%`;
