@@ -28,6 +28,11 @@ export function isKellyDay3StreamlinedPath(): boolean {
   return KELLY_FACING_ELECTION_PLAN;
 }
 
+/** Kelly Day 4 — forum intelligence lab linear pathway */
+export function isKellyDay4StreamlinedPath(): boolean {
+  return KELLY_FACING_ELECTION_PLAN;
+}
+
 export function kellyStudyLeadLabel(): string {
   return KELLY_FACING_ELECTION_PLAN ? "Start here" : "Professor lead";
 }

@@ -1,5 +1,5 @@
 /**
- * Day 4 debate-prep Pass 1 — pathway spine + drill-down registry sanity.
+ * Day 4 debate-prep Pass 2+3 — block study, claims gates, pathway UI sanity.
  */
 import assert from "node:assert/strict";
 import {
@@ -11,7 +11,18 @@ import {
   getNextDay4PathwayStep,
   isDay4PathwayStepOptional,
 } from "../src/lib/election-plan/day4-learning-pathway";
+import { DAY4_FORUM_TRANSCRIPT_CLAIMS_GATE } from "../src/lib/election-plan/debate-prep-day4-forum-intelligence-copy";
 import { DEBATE_PREP_DAY4_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day4-release";
+import {
+  DAY4_BLOCK_STUDY,
+  getDay4BlockStudy,
+  listDay4BlockStudyIds,
+} from "../src/lib/election-plan/debatePrepDay4BlockStudy";
+import {
+  DAY4_OPPONENT_EXAMPLE_STUDY,
+  getDay4OpponentExampleStudy,
+} from "../src/lib/election-plan/debatePrepDay4OpponentExampleStudy";
+import { listDayBlockPhaseParams } from "../src/lib/election-plan/debatePrepBlockPhase";
 import {
   DAY4_ID,
   listDayBlocksDrillDown,
@@ -36,7 +47,7 @@ assert.equal(getFirstDay4PathwayStep().id, DAY4_MINIMUM_BLOCK_IDS[0]);
 assert.ok(getNextDay4PathwayStep(steps[0]!.id), "first step should have a next step");
 assert.equal(DAY4_EVENING_REVIEW.length, 3);
 assert.ok(DAY4_DAY5_TEASER.href.includes("day-5-anticipate-and-capitalize"));
-assert.ok(DEBATE_PREP_DAY4_RELEASE_VERSION.includes("pass1"));
+assert.ok(DEBATE_PREP_DAY4_RELEASE_VERSION.includes("pass3"));
 
 const optionalExample = steps.find((s) => s.kind === "example");
 assert.ok(optionalExample, "Day 4 should have optional example");
@@ -49,4 +60,34 @@ for (const step of steps) {
   assert.ok(!step.href.includes("/admin/"), `${step.id} must not link to admin on pathway`);
 }
 
-console.log(`test-debate-prep-day4-pathway: OK (${steps.length} steps, ${blocks.length} blocks)`);
+// Pass 2 — block study depth
+const blockStudyIds = listDay4BlockStudyIds();
+assert.equal(blockStudyIds.length, 4, "four block study guides");
+for (const blockId of blockStudyIds) {
+  const study = getDay4BlockStudy(blockId);
+  assert.ok(study, `${blockId} study exists`);
+  assert.ok(study!.phases.length >= 3, `${blockId} has phased study`);
+  assert.ok(study!.deepSections.length >= 4, `${blockId} has deep sections`);
+  assert.ok(study!.claimsGate && study!.claimsGate.length >= 4, `${blockId} has claims gate lines`);
+  assert.ok(
+    study!.claimsGate!.some((line) => line.includes("internal tactical intelligence") || line.includes("claims-gated")),
+    `${blockId} encodes forum intel labeling`,
+  );
+}
+
+const phaseCounts = blockStudyIds.flatMap((blockId) => listDayBlockPhaseParams(DAY4_ID, blockId));
+assert.equal(phaseCounts.length, 17, "Day 4 phase routes: 6+4+3+4");
+
+// ex4-forum example study
+const exStudy = getDay4OpponentExampleStudy("ex4-forum");
+assert.ok(exStudy, "ex4-forum study exists");
+assert.ok(exStudy!.phases.length >= 4, "ex4-forum has 4+ phases");
+assert.ok(exStudy!.claimsGate && exStudy!.claimsGate.length >= 4, "ex4-forum claims gate");
+
+assert.ok(DAY4_FORUM_TRANSCRIPT_CLAIMS_GATE.length >= 4, "shared claims gate copy");
+assert.ok(Object.keys(DAY4_BLOCK_STUDY).length === 4);
+assert.ok(Object.keys(DAY4_OPPONENT_EXAMPLE_STUDY).length === 1);
+
+console.log(
+  `test-debate-prep-day4-pathway: OK (${steps.length} steps, ${blocks.length} blocks, ${phaseCounts.length} phases)`,
+);
