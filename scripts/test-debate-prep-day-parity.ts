@@ -229,7 +229,7 @@ for (const step of day3Steps) {
   }
 }
 
-assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v1.0.0");
+assert.equal(DEBATE_PREP_DAY3_RELEASE_VERSION, "day-3-superiority-map-v1.1.0");
 
 const microLessonPage = fs.readFileSync(
   path.join(root, "app/election-plan/(portal)/debate-prep/days/[dayId]/micro-lessons/[lessonId]/page.tsx"),

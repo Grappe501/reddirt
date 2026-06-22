@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 
 import { ElectionPlanBlockStudyPanel } from "@/components/election-plan/ElectionPlanBlockStudyPanel";
+import { ElectionPlanClaimsSuperiorityChecklist } from "@/components/election-plan/ElectionPlanClaimsSuperiorityChecklist";
 import { ElectionPlanFilmTellWorksheetPanel } from "@/components/election-plan/ElectionPlanFilmTellWorksheetPanel";
+import { ElectionPlanQualificationStackPanel } from "@/components/election-plan/ElectionPlanQualificationStackPanel";
 import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import {
   ElectionPlanDrillDownRelated,
@@ -17,6 +19,7 @@ import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
 import { getDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
 import { getDayBlockDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { buildElectionPlanClaimsSuperioritySummary } from "@/lib/election-plan/debate-prep-claims-superiority-summary";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
@@ -56,6 +59,8 @@ export default async function ElectionPlanDayBlockPage({
           : undefined;
   const dayLabel =
     dayId === DAY1_ID ? "Day 1" : dayId === DAY2_ID ? "Day 2" : dayId === DAY3_ID ? "Day 3" : "Day";
+  const claimsSuperioritySummary =
+    dayId === DAY3_ID && blockId === "b3-claims" ? buildElectionPlanClaimsSuperioritySummary() : null;
 
   return (
     <ElectionPlanDrillDownShell
@@ -67,6 +72,10 @@ export default async function ElectionPlanDayBlockPage({
       pageSummary={study?.professorLead ?? study?.overview}
     >
       {dayId === DAY2_ID && blockId === "b2-film" ? <ElectionPlanFilmTellWorksheetPanel /> : null}
+      {dayId === DAY3_ID && blockId === "b3-manual" ? <ElectionPlanQualificationStackPanel /> : null}
+      {claimsSuperioritySummary ? (
+        <ElectionPlanClaimsSuperiorityChecklist summary={claimsSuperioritySummary} />
+      ) : null}
 
       {study ? (
         <ElectionPlanBlockStudyPanel study={study} dayId={dayId} blockId={blockId} />
