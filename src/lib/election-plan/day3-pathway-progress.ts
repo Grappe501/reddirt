@@ -3,6 +3,7 @@
  */
 import { DAY3_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { DEBATE_PREP_DAY3_PATHWAY_STORAGE_VERSION } from "@/lib/election-plan/debate-prep-day3-release";
+import { notifyDebateCourseProgressChanged } from "@/lib/election-plan/debate-prep-course-progress-events";
 import { buildDay3PathwaySteps, DAY3_MINIMUM_BLOCK_IDS, isDay3PathwayStepOptional } from "@/lib/election-plan/day3-learning-pathway";
 
 const STORAGE_KEY = `kelly-day3-pathway-${DEBATE_PREP_DAY3_PATHWAY_STORAGE_VERSION}`;
@@ -47,7 +48,10 @@ function writeIds(ids: string[]): void {
 
 export function markDay3PathwayStepComplete(stepId: string): void {
   const ids = readIds();
-  if (!ids.includes(stepId)) writeIds([...ids, stepId]);
+  if (!ids.includes(stepId)) {
+    writeIds([...ids, stepId]);
+    notifyDebateCourseProgressChanged();
+  }
 }
 
 export function isDay3PathwayStepComplete(stepId: string): boolean {

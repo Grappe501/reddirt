@@ -1,6 +1,7 @@
 /**
  * Day 8 linear pathway — client-side completion (localStorage).
  */
+import { notifyDebateCourseProgressChanged } from "@/lib/election-plan/debate-prep-course-progress-events";
 import {
   buildDay8PathwaySteps,
   DAY8_MINIMUM_SECTION_IDS,
@@ -50,7 +51,10 @@ function writeIds(ids: string[]): void {
 
 export function markDay8PathwayStepComplete(stepId: string): void {
   const ids = readIds();
-  if (!ids.includes(stepId)) writeIds([...ids, stepId]);
+  if (!ids.includes(stepId)) {
+    writeIds([...ids, stepId]);
+    notifyDebateCourseProgressChanged();
+  }
 }
 
 export function isDay8PathwayStepComplete(stepId: string): boolean {

@@ -3,6 +3,7 @@
  */
 import { DAY4_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { DEBATE_PREP_DAY4_PATHWAY_STORAGE_VERSION } from "@/lib/election-plan/debate-prep-day4-release";
+import { notifyDebateCourseProgressChanged } from "@/lib/election-plan/debate-prep-course-progress-events";
 import {
   buildDay4PathwaySteps,
   DAY4_MINIMUM_BLOCK_IDS,
@@ -51,7 +52,10 @@ function writeIds(ids: string[]): void {
 
 export function markDay4PathwayStepComplete(stepId: string): void {
   const ids = readIds();
-  if (!ids.includes(stepId)) writeIds([...ids, stepId]);
+  if (!ids.includes(stepId)) {
+    writeIds([...ids, stepId]);
+    notifyDebateCourseProgressChanged();
+  }
 }
 
 export function isDay4PathwayStepComplete(stepId: string): boolean {

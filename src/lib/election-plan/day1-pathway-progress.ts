@@ -3,6 +3,8 @@
  * Kelly marks steps via Continue; progress is per-browser, no server file writes on Netlify.
  */
 import { buildDay1PathwaySteps, DAY1_MINIMUM_BLOCK_IDS, isDay1PathwayStepOptional } from "@/lib/election-plan/day1-learning-pathway";
+import { notifyDebateCourseProgressChanged } from "@/lib/election-plan/debate-prep-course-progress-events";
+
 import { DEBATE_PREP_DAY1_PATHWAY_STORAGE_VERSION } from "@/lib/election-plan/debate-prep-day1-release";
 
 const STORAGE_KEY = `kelly-day1-pathway-${DEBATE_PREP_DAY1_PATHWAY_STORAGE_VERSION}`;
@@ -47,7 +49,10 @@ function writeIds(ids: string[]): void {
 
 export function markDay1PathwayStepComplete(stepId: string): void {
   const ids = readIds();
-  if (!ids.includes(stepId)) writeIds([...ids, stepId]);
+  if (!ids.includes(stepId)) {
+    writeIds([...ids, stepId]);
+    notifyDebateCourseProgressChanged();
+  }
 }
 
 export function unmarkDay1PathwayStep(stepId: string): void {

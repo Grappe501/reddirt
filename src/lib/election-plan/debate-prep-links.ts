@@ -1,6 +1,8 @@
 /** Election Plan — debate prep & opposition routes (primary operator surface). */
 
 export const EP_DEBATE_PREP_HREF = "/election-plan/debate-prep";
+export const EP_DEBATE_PREP_ANATOMY_HREF = "/election-plan/debate-prep/anatomy";
+export const EP_DEBATE_PREP_RESPONSES_HREF = "/election-plan/debate-prep/responses";
 export const EP_DEBATE_PREP_COMMAND_HREF = "/election-plan/debate-prep/command";
 export const EP_DEBATE_PREP_TUTOR_HREF = "/election-plan/debate-prep/tutor";
 export const EP_DEBATE_PREP_REHEARSAL_HREF = "/election-plan/debate-prep/rehearsal";
@@ -50,7 +52,7 @@ export const EP_FORUM_TRANSCRIPT_LAB_API = "/api/election-plan/forum-transcript-
 export const EP_DEBATE_PREP_TUTOR_API = "/api/election-plan/debate-prep-tutor";
 export const EP_DEBATE_PREP_PROGRESS_API = "/api/election-plan/debate-week-intensive/progress";
 
-export const DEBATE_PREP_PACKAGE_LABEL = "Debate prep v8";
+export const DEBATE_PREP_PACKAGE_LABEL = "Debate Command Course v9";
 
 export function epTrapLaneHref(laneId: string): string {
   return `${EP_TRAP_LANES_HREF}/${laneId}`;
@@ -70,6 +72,10 @@ export function epDebatePrepBriefingHref(briefingId: string): string {
 
 export function epDebatePrepPsychologySectionHref(sectionId: string): string {
   return `${EP_DEBATE_PREP_PSYCHOLOGY_HREF}/${sectionId}`;
+}
+
+export function epDebatePrepExtendedResponseHref(responseId: string): string {
+  return `${EP_DEBATE_PREP_RESPONSES_HREF}/${responseId}`;
 }
 
 export function epDebatePrepDayHref(dayId: string): string {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import { AccaForumLocalRecordingPanel } from "@/components/election-plan/AccaForumLocalRecordingPanel";
 import { AccaForumYoutubeEmbed } from "@/components/election-plan/AccaForumYoutubeEmbed";
@@ -19,6 +20,8 @@ import {
 import { ACCA_2026_SOS_FORUM_DROP_REL, ACCA_2026_SOS_FORUM_EVENT } from "@/lib/intelligence/v4/forumVideoDropPath";
 import { loadForumTranscriptLab } from "@/lib/intelligence/v4/forumTranscriptLab";
 import { isOpenAIConfigured } from "@/lib/openai/client";
+import { EP_DEBATE_PREP_HREF } from "@/lib/election-plan/debate-prep-links";
+import { isForumLabPublicHidden } from "@/lib/election-plan/kelly-facing-ui";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +32,10 @@ export const metadata = {
 };
 
 export default function ElectionPlanForumTranscriptLabPage() {
+  if (isForumLabPublicHidden()) {
+    redirect(EP_DEBATE_PREP_HREF);
+  }
+
   const record = loadForumTranscriptLab();
 
   return (

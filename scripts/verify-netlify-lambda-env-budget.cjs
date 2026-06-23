@@ -143,11 +143,22 @@ function estimateCompatFeatureFlagsBytes(featureFlags) {
   return 0;
 }
 
-function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, rows, buildOnlyLeaked }) {
-  const worstCase = deployEstimate ?? total + (buildOnlyLeaked ?? 0);
+function estimateCompatDeployBytes({ total, deployEstimate, buildOnlyLeaked, featureFlags, apiRuntimeBytes }) {
+  const worstCase = apiRuntimeBytes ?? deployEstimate ?? total + (buildOnlyLeaked ?? 0);
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
   const compatPadding = onNetlify ? estimateCompatFeatureFlagsBytes(featureFlags) : 0;
-  const lambdaDeployBytes = worstCase + compatPadding;
+  return { worstCase, compatPadding, lambdaDeployBytes: worstCase + compatPadding };
+}
+
+function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, rows, buildOnlyLeaked, apiRuntimeBytes }) {
+  const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
+  const { worstCase, compatPadding, lambdaDeployBytes } = estimateCompatDeployBytes({
+    total,
+    deployEstimate,
+    buildOnlyLeaked,
+    featureFlags,
+    apiRuntimeBytes,
+  });
   const nodeOptions = rows.find((r) => r.key === "NODE_OPTIONS");
 
   let fail = false;
@@ -174,8 +185,16 @@ function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, r
   }
 
   if (onNetlify && compatPadding > 0 && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES) {
+    fail = true;
     lines.push(
-      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) may exceed AWS ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compatibility mode. Run npm run netlify:env:scopes:launch-minimal; if deploy still fails at upload, ask Netlify support for modern Functions runtime.`,
+      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compatibility mode. Unpin @netlify/plugin-nextjs in netlify.toml so Netlify uses modern OpenNext runtime, or ask Netlify support to migrate the site off compatibility mode.`,
+    );
+  }
+
+  if (onNetlify && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES && !fail) {
+    fail = true;
+    lines.push(
+      `Deploy env budget ${lambdaDeployBytes} B exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B. Run npm run netlify:env:scopes:launch-minimal and confirm modern Functions runtime.`,
     );
   }
 
@@ -270,6 +289,7 @@ function estimateNetlifyApiFunctionEnvBytes(envRows) {
 module.exports = {
   estimateLambdaEnvBytes,
   estimateNetlifyApiFunctionEnvBytes,
+  estimateCompatDeployBytes,
   printNetlifyEnvScopingChecklist,
   getDeployRiskMessage,
   isBuildOnlyKey,

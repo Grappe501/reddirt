@@ -45,10 +45,12 @@
   # Candidate iPad 11" — bottom nav, touch targets, copilot sheet (set false on staff-only builds)
   NEXT_PUBLIC_CANDIDATE_IPAD_MODE = "true"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# Next.js runtime: do NOT pin [[plugins]] @netlify/plugin-nextjs here — Netlify auto-applies
+# the latest OpenNext adapter (modern Functions runtime, no 4 KB Lambda env cap).
+# Pinning in netlify.toml opts out of automatic runtime updates and can leave the site on
+# Lambda compatibility mode where FEATURE_FLAGS (~9 KB) alone breaks ___netlify-server-handler deploy.
+# Custom plugins below still run after the auto-injected Next adapter (onPostBuild order).
 
-# After the Next plugin packages ___netlify-server-handler, strip .git / duplicates / static blobs.
 [[plugins]]
   package = "./netlify/plugins/prune-server-handler"
 

@@ -65,3 +65,13 @@ export function kellyStudyLeadLabel(): string {
 export function showOptionalDeepReference(): boolean {
   return !KELLY_FACING_ELECTION_PLAN;
 }
+
+/** Forum transcript lab + video ingest — staff only, not student course surface */
+export function isForumLabPublicHidden(): boolean {
+  return KELLY_FACING_ELECTION_PLAN;
+}
+
+/** v9 corporate course hub vs legacy operator hub */
+export function useDebateCourseHubV9(): boolean {
+  return KELLY_FACING_ELECTION_PLAN;
+}

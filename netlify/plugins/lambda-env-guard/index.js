@@ -71,11 +71,13 @@ exports.onPostBuild = async ({ utils }) => {
 
   let { total, totalRaw, buildOnlyLeaked, deployEstimate, rows } = estimateLambdaEnvBytes();
   const featureFlags = rows.find((r) => r.key === "FEATURE_FLAGS");
+  let apiRuntimeBytes = null;
 
   try {
     const apiRows = await fetchNetlifyFunctionEnvRows();
     if (apiRows) {
       const { runtime, rows: apiRuntimeRows } = estimateNetlifyApiFunctionEnvBytes(apiRows);
+      apiRuntimeBytes = runtime;
       if (runtime > total) {
         total = runtime;
         deployEstimate = runtime;
@@ -108,6 +110,7 @@ exports.onPostBuild = async ({ utils }) => {
     featureFlags,
     rows,
     buildOnlyLeaked,
+    apiRuntimeBytes,
   });
 
   utils.status.show({

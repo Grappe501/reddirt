@@ -123,9 +123,11 @@ After scoping: **Deploys → Clear cache and deploy site**.
 
 ### If scoping is correct and deploy still fails
 
-1. Open a Netlify support ticket: ask to confirm **modern Functions runtime** (not Lambda compatibility mode) for `___netlify-server-handler` — `FEATURE_FLAGS` alone exceeds 4 KB on compat mode.
-2. **Base directory** — repo root should be the RedDirt app; **Publish** = `.next` (empty override is fine).
-3. **Clear cache and deploy site**.
+1. **Unpin the Next adapter** — remove `[[plugins]] package = "@netlify/plugin-nextjs"` from `netlify.toml` (keep custom prune/env-guard plugins). Netlify auto-applies the latest OpenNext adapter with **modern Functions runtime** (no 4 KB env cap). Pinning opts out of runtime updates and can leave the site on Lambda compatibility mode where `FEATURE_FLAGS` (~9 KB) alone breaks deploy.
+2. Run `npm run netlify:env:audit` locally (after `npx netlify login`) to see function-scoped env bytes + compat risk.
+3. Open a Netlify support ticket if deploy still fails: ask to confirm **modern Functions runtime** (not Lambda compatibility mode) for `___netlify-server-handler`.
+4. **Base directory** — repo root should be the RedDirt app; **Publish** = `.next` (empty override is fine).
+5. **Clear cache and deploy site**.
 
 ## 7. After the site is up
 

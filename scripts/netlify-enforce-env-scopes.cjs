@@ -95,10 +95,14 @@ async function api(token, path, options = {}) {
   return body;
 }
 
+function isRuntimeEssentialRequired(key) {
+  return RUNTIME_ESSENTIAL.includes(key) && !RUNTIME_OPTIONAL_FOR_LAUNCH.has(key);
+}
+
 function desiredScopes(key) {
   if (isBuildOnlyKey(key)) return ["builds"];
   if (launchMinimal && RUNTIME_OPTIONAL_FOR_LAUNCH.has(key)) return ["builds"];
-  if (RUNTIME_ESSENTIAL.includes(key)) return ["builds", "functions"];
+  if (isRuntimeEssentialRequired(key)) return ["builds", "functions"];
   // Unknown keys: keep builds + functions if used at build (e.g. DATABASE_URL already covered)
   return ["builds", "functions"];
 }
@@ -146,18 +150,22 @@ async function main() {
       leaking += 1;
     }
 
+    const needsRuntimeWiden = isRuntimeEssentialRequired(key) && !reachesFunctions;
+    const needsNarrow =
+      (isBuildOnlyKey(key) && reachesFunctions) ||
+      (launchMinimal && RUNTIME_OPTIONAL_FOR_LAUNCH.has(key) && reachesFunctions);
+
+    if (!needsRuntimeWiden && !needsNarrow) {
+      skipped += 1;
+      continue;
+    }
+
     if (scopesEqual(current, target)) {
       skipped += 1;
       continue;
     }
 
-    // Auto-narrow build-only keys and (with --launch-minimal) optional runtime keys.
-    if (!isBuildOnlyKey(key) && !(launchMinimal && RUNTIME_OPTIONAL_FOR_LAUNCH.has(key))) {
-      skipped += 1;
-      continue;
-    }
-
-    console.log(`${dryRun ? "[dry-run] " : ""}${key}: ${current.join(",") || "(none)"} → ${target.join(",")}`);
+    console.log(`${dryRun ? "[dry-run] " : ""}${key}: ${current.join(",") || "(none)"} → ${target.join(",")}${needsRuntimeWiden ? " (runtime essential)" : ""}`);
 
     if (key === "NODE_OPTIONS" && !dryRun) {
       console.log("  (Remove NODE_OPTIONS from Netlify UI entirely if possible — scripts/netlify-build.sh sets heap during next build only.)");
@@ -178,7 +186,9 @@ async function main() {
   }
 
   console.log("");
-  console.log(`Done. ${updated} build-only var(s) ${dryRun ? "would be" : ""} scoped to Builds only; ${skipped} unchanged.`);
+  console.log(
+    `Done. ${updated} env var(s) ${dryRun ? "would be" : ""} re-scoped (${leaking} build-only leak(s) remaining); ${skipped} unchanged.`,
+  );
   if (leaking > 0 && updated === 0 && dryRun) {
     console.log(`${leaking} build-only var(s) still reach Functions — rerun without --dry-run to narrow scopes.`);
   }
