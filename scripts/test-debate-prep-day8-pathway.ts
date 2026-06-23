@@ -26,6 +26,10 @@ import {
   DAY8_SOS_DOMAIN_CARDS,
   DAY8_SOS_THREE_DOMAINS_FRAME,
 } from "../src/lib/election-plan/debate-prep-day8-sos-three-domains";
+import {
+  DAY8_SECTION_DEEP_STUDY_LINKS,
+  getDay8SectionDeepStudyLinks,
+} from "../src/lib/election-plan/debate-prep-day8-deep-study-links";
 import { buildDay8RunSegments } from "../src/lib/election-plan/debate-prep-day8-run-segments";
 import { buildDay8CrashCourseSurface } from "../src/lib/election-plan/load-day8-crash-course-surface";
 import { isKellyDay8CrashCoursePath, isKellyDay8StreamlinedPath } from "../src/lib/election-plan/kelly-facing-ui";
@@ -72,6 +76,16 @@ assert.ok(DAY8_SOS_THREE_DOMAINS_FRAME.includes("business services"));
 assert.ok(DAY8_SOS_THREE_DOMAINS_FRAME.includes("Days 1–7"));
 assert.ok(DAY8_AUDIBLE_CARD.includes("compressed seven-day"));
 assert.equal(DAY8_SEVEN_DAY_DEEP_LINKS.length, 7);
+assert.ok(getDay8SectionDeepStudyLinks("s8-middle-game").length >= 4);
+assert.ok(getDay8SectionDeepStudyLinks("s8-opening-workshop").some((l) => l.label.includes("Day 1")));
+for (const sectionId of DAY8_SECTION_IDS) {
+  assert.ok(
+    (DAY8_SECTION_DEEP_STUDY_LINKS[sectionId]?.length ?? 0) >= 1,
+    `${sectionId} has deep study links`,
+  );
+}
+const runWithDeepLabels = buildDay8RunSegments().filter((s) => s.deepStudyLabel);
+assert.ok(runWithDeepLabels.length >= 6, "run segments expose deep study labels");
 assert.ok(DAY8_ARKANSAS_PEOPLE_FRAME.includes("Capitol management"));
 assert.equal(DAY8_DOMAIN_COVERAGE_CHECK.length, 3);
 assert.equal(DAY8_EVENING_REVIEW.length, 3);

@@ -18,6 +18,9 @@ import {
   DAY8_SOS_DOMAIN_CARDS,
   DAY8_SOS_THREE_DOMAINS_FRAME,
 } from "@/lib/election-plan/debate-prep-day8-sos-three-domains";
+import {
+  getDay8SectionDeepStudyLinks,
+} from "@/lib/election-plan/debate-prep-day8-deep-study-links";
 import type {
   DayBlockDrillDown,
   DayCommandDrillDown,
@@ -376,20 +379,20 @@ export function buildDay8Blocks(): DayBlockDrillDown[] {
     }
 
     const relatedLinks: Array<{ href: string; label: string }> = [
-      { href: epDebatePrepDayConceptHref(DAY8, "sos-three-domains-d8"), label: "Three SOS domains" },
-      { href: epDebatePrepDayConceptHref(DAY8, "debate-anatomy-d8"), label: "Debate anatomy" },
+      ...getDay8SectionDeepStudyLinks(section.id),
+      { href: epDebatePrepDayConceptHref(DAY8, "sos-three-domains-d8"), label: "Three SOS domains concept" },
     ];
-    if (section.weekImports.includes("day-1")) {
-      relatedLinks.push({ href: epDebatePrepDayHref("day-1-command-foundation"), label: "Day 1 reference" });
+    if (section.id === "s8-middle-game") {
+      relatedLinks.push({ href: epDebatePrepDayConceptHref(DAY8, "middle-game-traps-d8"), label: "Middle game concept" });
     }
-    if (section.weekImports.includes("day-5")) {
-      relatedLinks.push({ href: epDebatePrepDayHref("day-5-anticipate-and-capitalize"), label: "Day 5 reference" });
+    if (section.id === "s8-opening-workshop") {
+      relatedLinks.push({ href: epDebatePrepDayConceptHref(DAY8, "opening-construction-d8"), label: "Opening construction" });
     }
-    if (section.weekImports.includes("day-6")) {
-      relatedLinks.push({ href: epDebatePrepDayBlockHref("day-6-full-simulation", "b6-sim"), label: "Day 6 sim" });
+    if (section.id === "s8-closing-workshop") {
+      relatedLinks.push({ href: epDebatePrepDayConceptHref(DAY8, "closing-construction-d8"), label: "Closing construction" });
     }
-    if (section.weekImports.includes("day-7")) {
-      relatedLinks.push({ href: epDebatePrepDayBlockHref("day-7-refine-and-steal-show", "b7-open-close"), label: "Day 7 bookends" });
+    if (section.id === "s8-lock-sheet") {
+      relatedLinks.push({ href: epDebatePrepDayConceptHref(DAY8, "success-check-d8"), label: "Success check" });
     }
 
     return {

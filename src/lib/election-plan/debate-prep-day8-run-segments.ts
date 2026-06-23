@@ -3,7 +3,7 @@
  */
 import { DAY8_SOS_DOMAIN_CARDS, type Day8SosDomainId } from "@/lib/election-plan/debate-prep-day8-sos-three-domains";
 import { DAY8_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
-import { epDebatePrepDayBlockHref, epTrapLaneHref } from "@/lib/election-plan/debate-prep-links";
+import { epDebatePrepDayBlockHref, epDebatePrepDayRehearsalHref } from "@/lib/election-plan/debate-prep-links";
 
 export type Day8RunSegmentKind =
   | "walk-on"
@@ -22,13 +22,24 @@ export type Day8RunSegment = {
   kellyObjective: string;
   sourceDayId: string;
   href?: string;
+  deepStudyLabel?: string;
   /** Set for SOS segments — must cover all three domains in run-through */
   sosDomainId?: Day8SosDomainId;
 };
 
 const TRAP_LANES = [
-  { laneId: "county-champion", sourceDayId: "day-2-read-the-table" },
-  { laneId: "integrity-without-participation", sourceDayId: "day-5-anticipate-and-capitalize" },
+  {
+    laneId: "county-champion",
+    sourceDayId: "day-2-read-the-table",
+    deepStudyHref: epDebatePrepDayBlockHref("day-2-read-the-table", "b2-trap1"),
+    deepStudyLabel: "Day 2 · trap lane 1 drills",
+  },
+  {
+    laneId: "integrity-without-participation",
+    sourceDayId: "day-5-anticipate-and-capitalize",
+    deepStudyHref: epDebatePrepDayBlockHref("day-5-anticipate-and-capitalize", "b5-lab-review"),
+    deepStudyLabel: "Day 5 · when-X-say-Y sheet",
+  },
 ] as const;
 
 export function buildDay8RunSegments(): Day8RunSegment[] {
@@ -41,7 +52,8 @@ export function buildDay8RunSegments(): Day8RunSegment[] {
       staffRole: "moderator",
       kellyObjective: "Feet planted — picture Marcia T. — no notes on walk.",
       sourceDayId: DAY8_ID,
-      href: epDebatePrepDayBlockHref(DAY8_ID, "s8-command"),
+      href: epDebatePrepDayBlockHref("day-1-command-foundation", "b1-posture"),
+      deepStudyLabel: "Day 1 · posture + breath",
     },
     {
       segmentIndex: 2,
@@ -51,7 +63,8 @@ export function buildDay8RunSegments(): Day8RunSegment[] {
       staffRole: "moderator",
       kellyObjective: "Administrator frame → elections + business services + Capitol management → Arkansas promise.",
       sourceDayId: "day-1-command-foundation",
-      href: epDebatePrepDayBlockHref(DAY8_ID, "s8-opening-workshop"),
+      href: epDebatePrepDayRehearsalHref("day-1-command-foundation", "rehearse-opening-90s"),
+      deepStudyLabel: "Day 1 · 90s opening rehearsal",
     },
   ];
 
@@ -64,7 +77,8 @@ export function buildDay8RunSegments(): Day8RunSegment[] {
       staffRole: "hammer",
       kellyObjective: "When-X-say-Y under 60s — claims-green only.",
       sourceDayId: trap.sourceDayId,
-      href: epTrapLaneHref(trap.laneId),
+      href: trap.deepStudyHref,
+      deepStudyLabel: trap.deepStudyLabel,
     });
   });
 
@@ -76,8 +90,9 @@ export function buildDay8RunSegments(): Day8RunSegment[] {
       timedMinutes: 2,
       staffRole: "moderator",
       kellyObjective: domain.answerSpine.slice(0, 200),
-      sourceDayId: DAY8_ID,
+      sourceDayId: domain.id === "elections" ? "day-4-forum-intelligence" : "day-3-superiority-map",
       href: domain.href,
+      deepStudyLabel: `Deep study · ${domain.weekImport}`,
       sosDomainId: domain.id,
     });
   });
@@ -91,7 +106,8 @@ export function buildDay8RunSegments(): Day8RunSegment[] {
       staffRole: "hammer",
       kellyObjective: "Bridge to service desk — rise to statewide tone — all three domains in one pivot if needed.",
       sourceDayId: "day-5-anticipate-and-capitalize",
-      href: epDebatePrepDayBlockHref(DAY8_ID, "s8-middle-game"),
+      href: epDebatePrepDayBlockHref("day-5-anticipate-and-capitalize", "b5-lab-review"),
+      deepStudyLabel: "Day 5 · pile-on capitalize sheet",
     },
     {
       segmentIndex: segments.length + 1,
@@ -101,7 +117,8 @@ export function buildDay8RunSegments(): Day8RunSegment[] {
       staffRole: "moderator",
       kellyObjective: "Peak-end — elections + business + Capitol in final invoke — hold silence 2s.",
       sourceDayId: "day-7-refine-and-steal-show",
-      href: epDebatePrepDayBlockHref(DAY8_ID, "s8-closing-workshop"),
+      href: epDebatePrepDayBlockHref("day-7-refine-and-steal-show", "b7-open-close"),
+      deepStudyLabel: "Day 7 · bookends polish",
     },
   );
 

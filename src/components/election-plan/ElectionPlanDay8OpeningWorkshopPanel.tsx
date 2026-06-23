@@ -84,7 +84,7 @@ export function ElectionPlanDay8OpeningWorkshopPanel({
               <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{beat.templateHint}</p>
               {beat.href ? (
                 <Link href={beat.href} className="mt-2 inline-block text-[10px] font-bold text-emerald-800 underline">
-                  Source →
+                  {beat.deepStudyLabel ?? "Deep study →"}
                 </Link>
               ) : null}
             </li>

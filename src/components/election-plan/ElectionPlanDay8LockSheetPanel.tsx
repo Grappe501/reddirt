@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 import { DAY8_DOMAIN_COVERAGE_CHECK } from "@/lib/election-plan/debate-prep-day8-crash-copy";
+import { DAY8_DOMAIN_DEEP_STUDY_LINKS } from "@/lib/election-plan/debate-prep-day8-deep-study-links";
 import type { Day8LockSheetDomainRow } from "@/lib/election-plan/load-day8-crash-course-surface";
 
 const STORAGE_KEY = "kelly-day8-lock-sheet-v1";
@@ -127,6 +129,17 @@ export function ElectionPlanDay8LockSheetPanel({ rows }: { rows: readonly Day8Lo
             return (
               <div key={row.domainId} className="rounded-lg border border-[var(--ep-border)] bg-white p-3">
                 <p className="text-[10px] font-bold uppercase text-amber-900">{row.domainLabel}</p>
+                <div className="mt-1 flex flex-wrap gap-1.5">
+                  {DAY8_DOMAIN_DEEP_STUDY_LINKS[row.domainId].map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-[10px] font-semibold text-amber-900 underline hover:text-amber-950"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
                 <textarea
                   value={saved?.lockedLine ?? row.lockedLine}
                   onChange={(e) => updateLine(row.domainId, e.target.value)}

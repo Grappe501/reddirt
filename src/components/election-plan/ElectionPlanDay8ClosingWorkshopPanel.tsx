@@ -63,7 +63,7 @@ export function ElectionPlanDay8ClosingWorkshopPanel({
               <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{beat.source}</p>
               {beat.href ? (
                 <Link href={beat.href} className="mt-2 inline-block text-[10px] font-bold text-emerald-800 underline">
-                  Source →
+                  {beat.source} →
                 </Link>
               ) : null}
             </li>

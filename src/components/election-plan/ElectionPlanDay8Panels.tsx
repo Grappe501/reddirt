@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ElectionPlanDay8BlockPathwayStrip } from "@/components/election-plan/ElectionPlanDay8BlockPathwayStrip";
+import { ElectionPlanDay8DeepStudyStrip } from "@/components/election-plan/ElectionPlanDay8DeepStudyStrip";
 import { ElectionPlanDay8ClosingWorkshopPanel } from "@/components/election-plan/ElectionPlanDay8ClosingWorkshopPanel";
 import { ElectionPlanDay8CrashRunPanel } from "@/components/election-plan/ElectionPlanDay8CrashRunPanel";
 import { ElectionPlanDay8LockSheetPanel } from "@/components/election-plan/ElectionPlanDay8LockSheetPanel";
@@ -10,7 +11,6 @@ import { ElectionPlanDay8PersonaWallPanel } from "@/components/election-plan/Ele
 import {
   DAY8_AUDIBLE_CARD,
   DAY8_CLAIMS_GATE,
-  DAY8_SEVEN_DAY_DEEP_LINKS,
   DAY8_SOS_THREE_DOMAINS_FRAME,
 } from "@/lib/election-plan/debate-prep-day8-crash-copy";
 import { epDebatePrepDayBlockHref, epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
@@ -41,21 +41,6 @@ function Day8OrientEmbed() {
       <p className="text-xs font-bold uppercase text-emerald-900">{DAY8_AUDIBLE_CARD}</p>
       <p className="text-xs text-emerald-950">{DAY8_SOS_THREE_DOMAINS_FRAME}</p>
       <p className="text-xs text-amber-950">{DAY8_CLAIMS_GATE[0]}</p>
-      <div className="pt-1">
-        <p className="text-xs font-bold text-emerald-900">Deep study — Days 1–7</p>
-        <ul className="mt-2 flex flex-wrap gap-2">
-          {DAY8_SEVEN_DAY_DEEP_LINKS.map((link) => (
-            <li key={link.dayId}>
-              <Link
-                href={link.href}
-                className="inline-block rounded border border-emerald-200 bg-white/70 px-2 py-0.5 text-xs font-semibold text-emerald-900 hover:bg-emerald-100"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 }
@@ -63,16 +48,33 @@ function Day8OrientEmbed() {
 function Day8CommandEmbed() {
   const surface = buildDay8CrashCourseSurface();
   return (
-    <div className="mb-6 rounded-lg border border-emerald-300/50 bg-emerald-50/40 p-4 text-sm">
-      <p className="text-xs font-bold uppercase text-emerald-900">Command mode · body before words</p>
-      <p className="mt-2 text-[var(--ep-navy-muted)]">
-        Breath + scan + listen face — then persona wall assigns who you picture for each SOS domain.
-      </p>
-      <ul className="mt-3 list-disc space-y-1 pl-5 text-xs text-[var(--ep-navy-muted)]">
-        {surface.claimsGateLines.map((line) => (
-          <li key={line.slice(0, 40)}>{line}</li>
-        ))}
-      </ul>
+    <div className="mb-6 space-y-4">
+      <div className="rounded-lg border border-emerald-300/50 bg-emerald-50/40 p-4 text-sm">
+        <p className="text-xs font-bold uppercase text-emerald-900">Command mode · body before words</p>
+        <p className="mt-2 text-[var(--ep-navy-muted)]">
+          Breath + scan + listen face — then persona wall assigns who you picture for each SOS domain.
+        </p>
+        <ul className="mt-3 list-disc space-y-1 pl-5 text-xs text-[var(--ep-navy-muted)]">
+          {surface.claimsGateLines.map((line) => (
+            <li key={line.slice(0, 40)}>{line}</li>
+          ))}
+        </ul>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Link
+            href={epDebatePrepDayBlockHref("day-1-command-foundation", "b1-posture")}
+            className="text-xs font-bold text-emerald-900 underline"
+          >
+            Day 1 · posture + breath →
+          </Link>
+          <Link
+            href={epDebatePrepDayBlockHref("day-1-command-foundation", "b1-psych")}
+            className="text-xs font-bold text-emerald-900 underline"
+          >
+            Day 1 · listen face →
+          </Link>
+        </div>
+      </div>
+      <ElectionPlanDay8DeepStudyStrip sectionId="s8-command" compact />
     </div>
   );
 }
@@ -84,6 +86,7 @@ export function ElectionPlanDay8BlockEmbed({ blockId }: { blockId: string }) {
   return (
     <>
       <ElectionPlanDay8BlockPathwayStrip sectionId={blockId} />
+      <ElectionPlanDay8DeepStudyStrip sectionId={blockId} />
 
       {blockId === "s8-orient" || blockId === "s8-pre-debate" ? <Day8OrientEmbed /> : null}
 

@@ -17,6 +17,7 @@ import { buildDay8RunSegments, type Day8RunSegment } from "@/lib/election-plan/d
 import { buildDay5CapitalizeSurface, type Day5WhenXSayYRow } from "@/lib/election-plan/load-day5-capitalize-surface";
 import { buildDay7PolishSurface, type Day7PolishBookend } from "@/lib/election-plan/load-day7-polish-surface";
 import { DAY8_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { epDebatePrepDayBlockHref } from "@/lib/election-plan/debate-prep-links";
 
 export type Day8OpeningBeat = {
   beat: number;
@@ -24,6 +25,7 @@ export type Day8OpeningBeat = {
   objective: string;
   templateHint: string;
   href?: string;
+  deepStudyLabel?: string;
 };
 
 export type Day8LockSheetDomainRow = {
@@ -63,6 +65,7 @@ function buildOpeningBeats(): Day8OpeningBeat[] {
       objective: DAY8_OPENING_BEATS[0]?.objective ?? "Administrator frame — no opponent names",
       templateHint: "SOS is operations for seventy-five counties — not a senator listing bill numbers.",
       href: DAY8_OPENING_BEATS[0]?.href,
+      deepStudyLabel: "Day 1 · 90s opening rehearsal",
     },
     ...DAY8_OPENING_DOMAIN_BEATS.map((domainBeat) => ({
       beat: domainBeat.beat,
@@ -70,13 +73,15 @@ function buildOpeningBeats(): Day8OpeningBeat[] {
       objective: domainBeat.objective,
       templateHint: domainBeat.templateLine,
       href: domainBeat.href,
+      deepStudyLabel: `Deep study · ${DAY8_SOS_DOMAIN_CARDS.find((d) => d.id === domainBeat.domainId)?.weekImport ?? domainBeat.domainLabel}`,
     })),
     {
       beat: 4,
       label: "Beat C · Arkansas promise",
       objective: DAY8_OPENING_BEATS[1]?.objective ?? "Picture primary persona — statewide tone",
       templateHint: "One sentence voters can repeat — clerk partnership inside, Arkansas people in front.",
-      href: DAY8_OPENING_BEATS[1]?.href,
+      href: epDebatePrepDayBlockHref("day-5-anticipate-and-capitalize", "b5-lab-review"),
+      deepStudyLabel: "Day 5 · voter translation drills",
     },
   ];
 }

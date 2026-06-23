@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { ElectionPlanDay8DeepStudyStrip } from "@/components/election-plan/ElectionPlanDay8DeepStudyStrip";
 import { ElectionPlanDay8PathwayProgressBar } from "@/components/election-plan/ElectionPlanDay8PathwayProgressBar";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import {
@@ -18,7 +19,6 @@ import {
   DAY8_ARKANSAS_PEOPLE_FRAME,
   DAY8_CLAIMS_GATE,
   DAY8_HUB_TONIGHT_SUMMARY,
-  DAY8_SEVEN_DAY_DEEP_LINKS,
   DAY8_V3_KELLY_MINIMUM_SUMMARY,
 } from "@/lib/election-plan/debate-prep-day8-crash-copy";
 import { DAY8_SOS_THREE_DOMAINS_FRAME } from "@/lib/election-plan/debate-prep-day8-sos-three-domains";
@@ -58,24 +58,7 @@ export function ElectionPlanDay8StartCard() {
       <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50/60 px-3 py-2 text-xs text-amber-950">
         {DAY8_CLAIMS_GATE[0]}
       </p>
-      <div className="mt-4 rounded-lg border border-[var(--ep-border)] bg-white/80 px-3 py-3">
-        <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Deep study — Days 1–7</p>
-        <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
-          This crash course compresses your week. Reopen any day for the full block before you continue.
-        </p>
-        <ul className="mt-2 flex flex-wrap gap-2">
-          {DAY8_SEVEN_DAY_DEEP_LINKS.map((link) => (
-            <li key={link.dayId}>
-              <Link
-                href={link.href}
-                className="inline-block rounded-md border border-emerald-200 bg-emerald-50/60 px-2 py-1 text-xs font-semibold text-emerald-900 hover:bg-emerald-100"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ElectionPlanDay8DeepStudyStrip sectionId="s8-orient" />
       <Link href={first.href} className="ep-btn ep-btn-primary ep-btn-block-sm-auto mt-5">
         Start crash course · {first.sectionLabel ?? "§0"} ({first.minutes} min) →
       </Link>

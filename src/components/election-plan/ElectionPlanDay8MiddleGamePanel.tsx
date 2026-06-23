@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 import { ElectionPlanPracticeCountdown } from "@/components/election-plan/ElectionPlanPracticeCountdown";
+import { DAY8_DOMAIN_DEEP_STUDY_LINKS } from "@/lib/election-plan/debate-prep-day8-deep-study-links";
 import type { Day8SosDomainCard } from "@/lib/election-plan/debate-prep-day8-sos-three-domains";
 import type { Day5WhenXSayYRow } from "@/lib/election-plan/load-day5-capitalize-surface";
-import { EP_TRAP_LANES_HREF } from "@/lib/election-plan/debate-prep-links";
+import { EP_TRAP_LANES_HREF, epDebatePrepDayBlockHref } from "@/lib/election-plan/debate-prep-links";
 
 const STORAGE_KEY = "kelly-day8-middle-game-v1";
 
@@ -128,6 +129,12 @@ export function ElectionPlanDay8MiddleGamePanel({
               ))}
             </ol>
           )}
+          <Link href={epDebatePrepDayBlockHref("day-5-anticipate-and-capitalize", "b5-lab-review")} className="mt-2 mr-3 inline-block text-xs font-bold text-indigo-900 underline">
+            Day 5 · when-X-say-Y sheet →
+          </Link>
+          <Link href={epDebatePrepDayBlockHref("day-2-read-the-table", "b2-trap1")} className="mt-2 inline-block text-xs font-bold text-indigo-900 underline">
+            Day 2 · trap drills →
+          </Link>
           <Link href={EP_TRAP_LANES_HREF} className="mt-4 inline-block text-xs font-bold text-indigo-900 underline">
             Trap lanes hub →
           </Link>
@@ -148,8 +155,19 @@ export function ElectionPlanDay8MiddleGamePanel({
             />
           </div>
           <Link href={activeDomain.href} className="mt-3 inline-block text-xs font-bold text-emerald-900 underline">
-            Week import · {activeDomain.weekImport} →
+            Deep study · {activeDomain.weekImport} →
           </Link>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {DAY8_DOMAIN_DEEP_STUDY_LINKS[activeDomain.id].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="inline-block rounded border border-emerald-200 bg-white px-2 py-0.5 text-[10px] font-semibold text-emerald-900 hover:bg-emerald-50"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </article>
       ) : null}
 

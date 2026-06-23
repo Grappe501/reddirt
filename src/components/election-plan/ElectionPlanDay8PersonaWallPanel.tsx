@@ -123,6 +123,12 @@ export function ElectionPlanDay8PersonaWallPanel({ domains }: { domains: readonl
               </div>
               <p className="mt-3 text-xs font-semibold text-[var(--ep-navy)]">Translation drill</p>
               <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{domain.answerSpine.slice(0, 120)}…</p>
+              <Link
+                href={domain.href}
+                className="mt-3 inline-block text-[10px] font-bold text-emerald-800 underline"
+              >
+                Deep study · {domain.weekImport} →
+              </Link>
             </article>
           );
         })}

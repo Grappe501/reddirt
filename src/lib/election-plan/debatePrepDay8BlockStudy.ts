@@ -20,9 +20,17 @@ import {
   DAY8_SOS_DOMAIN_CARDS,
   DAY8_SOS_THREE_DOMAINS_FRAME,
 } from "@/lib/election-plan/debate-prep-day8-sos-three-domains";
+import { getDay8SectionDeepStudyLinks } from "@/lib/election-plan/debate-prep-day8-deep-study-links";
 import { DAY8_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { buildDay8CrashCourseSurface } from "@/lib/election-plan/load-day8-crash-course-surface";
 import type { Day1BlockStudyDeep } from "@/lib/election-plan/debatePrepDay1BlockStudy";
+
+function sectionDeepLinks(
+  sectionId: string,
+  extra: Array<{ href: string; label: string }> = [],
+): Array<{ href: string; label: string }> {
+  return [...getDay8SectionDeepStudyLinks(sectionId), ...extra];
+}
 
 const claimsGateLines = [...DAY8_CLAIMS_GATE];
 const surface = () => buildDay8CrashCourseSurface();
@@ -78,11 +86,9 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
       "Complete phase steps in order.",
     ],
     claimsGate: claimsGateLines,
-    relatedLinks: [
-      ...DAY8_SEVEN_DAY_DEEP_LINKS.map((link) => ({ href: link.href, label: `${link.label} (deep study)` })),
+    relatedLinks: sectionDeepLinks("s8-orient", [
       { href: epDebatePrepDayConceptHref(DAY8_ID, "sos-three-domains-d8"), label: "Three SOS domains concept" },
-      { href: epDebatePrepDayHref(DAY8_ID), label: "Day 8 overview" },
-    ],
+    ]),
   },
   "s8-pre-debate": {
     blockId: "s8-pre-debate",
@@ -123,10 +129,7 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     keyTakeaways: ["Lock sheet lists all three domains.", "Three if-X-then-Y cards written."],
     practiceSteps: ["Preview lock sheet rows.", "Write three if-X-then-Y cards."],
     claimsGate: claimsGateLines,
-    relatedLinks: [
-      { href: epDebatePrepDayBlockHref(DAY8_ID, "s8-lock-sheet"), label: "Lock sheet section" },
-      { href: epDebatePrepDayBlockHref("day-7-refine-and-steal-show", "b7-claims-final"), label: "Day 7 claims final" },
-    ],
+    relatedLinks: sectionDeepLinks("s8-pre-debate"),
   },
   "s8-command": {
     blockId: "s8-command",
@@ -164,10 +167,9 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     keyTakeaways: ["Two breath cycles without notes.", "Scan names four points in order."],
     practiceSteps: ["Complete breath and scan drills.", "Log listen-face rep."],
     claimsGate: claimsGateLines,
-    relatedLinks: [
-      { href: epDebatePrepDayBlockHref("day-1-command-foundation", "b1-posture"), label: "Day 1 posture block" },
-      { href: epDebatePrepDayBlockHref(DAY8_ID, "s8-persona-wall"), label: "Persona wall next" },
-    ],
+    relatedLinks: sectionDeepLinks("s8-command", [
+      { href: epDebatePrepDayBlockHref(DAY8_ID, "s8-persona-wall"), label: "Next · persona wall" },
+    ]),
   },
   "s8-persona-wall": {
     blockId: "s8-persona-wall",
@@ -205,10 +207,9 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     keyTakeaways: ["Three domain translations spoken aloud.", "Primary persona set for opening."],
     practiceSteps: ["Map domains to personas.", "Three translation drills aloud."],
     claimsGate: claimsGateLines,
-    relatedLinks: [
+    relatedLinks: sectionDeepLinks("s8-persona-wall", [
       { href: epDebatePrepDayConceptHref(DAY8_ID, "sos-three-domains-d8"), label: "Three domains concept" },
-      { href: "/election-plan/debate-prep/voter-audiences", label: "Voter audiences hub" },
-    ],
+    ]),
   },
   "s8-opening-workshop": {
     blockId: "s8-opening-workshop",
@@ -261,10 +262,9 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     ],
     practiceSteps: ["Build four-beat notecard.", "Two timed 90s reps."],
     claimsGate: claimsGateLines,
-    relatedLinks: [
-      { href: epDebatePrepDayRehearsalHref("day-1-command-foundation", "rehearse-opening-90s"), label: "Day 1 opening" },
+    relatedLinks: sectionDeepLinks("s8-opening-workshop", [
       { href: epDebatePrepDayConceptHref(DAY8_ID, "opening-construction-d8"), label: "Opening construction" },
-    ],
+    ]),
   },
   "s8-middle-game": {
     blockId: "s8-middle-game",
@@ -314,10 +314,9 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     keyTakeaways: DAY8_DOMAIN_COVERAGE_CHECK.map((c) => c.replace("?", " — logged")),
     practiceSteps: ["Four trap pairs.", "Three domain SOS answers.", "Pile-on pivot."],
     claimsGate: claimsGateLines,
-    relatedLinks: [
-      { href: epDebatePrepDayBlockHref("day-5-anticipate-and-capitalize", "b5-lab-review"), label: "Day 5 capitalize" },
+    relatedLinks: sectionDeepLinks("s8-middle-game", [
       { href: epDebatePrepDayConceptHref(DAY8_ID, "middle-game-traps-d8"), label: "Middle game concept" },
-    ],
+    ]),
   },
   "s8-closing-workshop": {
     blockId: "s8-closing-workshop",
@@ -354,10 +353,9 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     keyTakeaways: ["Closing ends on service desk promise, not agree-only.", "Two timed reps logged."],
     practiceSteps: ["Build three closing beats.", "Two timed 60s reps."],
     claimsGate: claimsGateLines,
-    relatedLinks: [
-      { href: epDebatePrepDayBlockHref("day-7-refine-and-steal-show", "b7-open-close"), label: "Day 7 bookends" },
+    relatedLinks: sectionDeepLinks("s8-closing-workshop", [
       { href: epDebatePrepDayConceptHref(DAY8_ID, "closing-construction-d8"), label: "Closing construction" },
-    ],
+    ]),
   },
   "s8-run-through": {
     blockId: "s8-run-through",
@@ -388,10 +386,7 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     keyTakeaways: ["Full arc without stopping for research.", "Three-domain SOS coverage confirmed."],
     practiceSteps: ["Run full speak-aloud arc.", "Log one debrief fix."],
     claimsGate: claimsGateLines,
-    relatedLinks: [
-      { href: epDebatePrepDayRehearsalHref(DAY8_ID, "rehearse-crash-run-through"), label: "Run-through rehearsal script" },
-      { href: epDebatePrepDayBlockHref("day-6-full-simulation", "b6-sim"), label: "Day 6 full sim" },
-    ],
+    relatedLinks: sectionDeepLinks("s8-run-through"),
   },
   "s8-lock-sheet": {
     blockId: "s8-lock-sheet",
@@ -422,10 +417,9 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     keyTakeaways: ["Lock sheet exported.", "Three-domain coverage check answered yes."],
     practiceSteps: ["Export lock sheet.", "Confirm domain coverage checklist."],
     claimsGate: claimsGateLines,
-    relatedLinks: [
-      { href: epDebatePrepDayHref(DAY8_ID), label: "Course complete check" },
+    relatedLinks: sectionDeepLinks("s8-lock-sheet", [
       { href: epDebatePrepDayConceptHref(DAY8_ID, "success-check-d8"), label: "Success check" },
-    ],
+    ]),
   },
 };
 

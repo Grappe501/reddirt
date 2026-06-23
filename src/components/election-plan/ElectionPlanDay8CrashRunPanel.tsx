@@ -105,7 +105,7 @@ export function ElectionPlanDay8CrashRunPanel({ segments }: { segments: readonly
 
         {active.href ? (
           <Link href={active.href} className="mt-3 inline-block text-xs font-bold text-violet-900 underline">
-            Deep link →
+            {active.deepStudyLabel ?? "Deep study →"}
           </Link>
         ) : null}
 
@@ -136,6 +136,11 @@ export function ElectionPlanDay8CrashRunPanel({ segments }: { segments: readonly
               {done ? "✓ " : ""}
               {seg.segmentIndex}. {seg.label}
               {seg.sosDomainId ? ` · ${seg.sosDomainId}` : ""}
+              {seg.href ? (
+                <Link href={seg.href} className="ml-2 font-bold text-violet-900 underline">
+                  {seg.deepStudyLabel ?? "deep study"}
+                </Link>
+              ) : null}
             </li>
           );
         })}
