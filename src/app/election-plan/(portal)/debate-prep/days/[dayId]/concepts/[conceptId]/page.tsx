@@ -20,7 +20,7 @@ import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPl
 import { getDay4ConceptAnchor } from "@/lib/election-plan/day4-supplement-anchors";
 import { getDay5ConceptAnchor } from "@/lib/election-plan/day5-supplement-anchors";
 import { getDay6ConceptAnchor } from "@/lib/election-plan/day6-supplement-anchors";
-import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, getDayConcept, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, getDayConcept, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayConcepts } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
@@ -49,7 +49,9 @@ export default async function ElectionPlanDayConceptPage({
   const day5Anchor = dayId === DAY5_ID ? getDay5ConceptAnchor(conceptId) : undefined;
   const day6Anchor = dayId === DAY6_ID ? getDay6ConceptAnchor(conceptId) : undefined;
   const dayLabel =
-    dayId === DAY6_ID
+    dayId === DAY7_ID
+      ? "Day 7"
+      : dayId === DAY6_ID
       ? "Day 6"
       : dayId === DAY5_ID
       ? "Day 5"
@@ -64,7 +66,9 @@ export default async function ElectionPlanDayConceptPage({
               : "Day";
 
   const audiences =
-    dayId === DAY6_ID
+    dayId === DAY7_ID
+      ? resolveAudiencesForHooks(["integrity", "county-champion", "author-vs-administrator"])
+      : dayId === DAY6_ID
       ? resolveAudiencesForHooks(["integrity", "county-champion", "author-vs-administrator"])
       : dayId === DAY5_ID
       ? resolveAudiencesForHooks(["integrity", "county-champion", "author-vs-administrator"])
@@ -101,7 +105,7 @@ export default async function ElectionPlanDayConceptPage({
         <ElectionPlanDay5SupplementFooter anchor={day5Anchor} />
       ) : day4Anchor ? (
         <ElectionPlanDay4SupplementFooter anchor={day4Anchor} />
-      ) : dayId === DAY4_ID || dayId === DAY5_ID || dayId === DAY6_ID ? (
+      ) : dayId === DAY4_ID || dayId === DAY5_ID || dayId === DAY6_ID || dayId === DAY7_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={conceptId} />
       ) : null}
       {day1Anchor ? <ElectionPlanDay1SupplementFooter anchor={day1Anchor} /> : null}

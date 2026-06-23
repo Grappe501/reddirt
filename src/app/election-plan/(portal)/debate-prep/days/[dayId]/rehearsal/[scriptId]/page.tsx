@@ -11,7 +11,7 @@ import {
   ElectionPlanDrillDownSteps,
 } from "@/components/election-plan/ElectionPlanDrillDownShell";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { getDayRehearsalScript, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayRehearsalScript, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayRehearsals } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
@@ -47,6 +47,8 @@ export default async function ElectionPlanDayRehearsalPage({
               ? "Day 5"
               : dayId === DAY6_ID
                 ? "Day 6"
+              : dayId === DAY7_ID
+                ? "Day 7"
               : "Day";
   const audienceHooks =
     dayId === DAY4_ID
@@ -97,7 +99,7 @@ export default async function ElectionPlanDayRehearsalPage({
       </article>
       <ElectionPlanDrillDownRelated links={script.relatedLinks} />
       {dayId === DAY4_ID ? <ElectionPlanDay4HandoffBanner /> : null}
-      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID || dayId === DAY5_ID || dayId === DAY6_ID ? (
+      {dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID || dayId === DAY4_ID || dayId === DAY5_ID || dayId === DAY6_ID || dayId === DAY7_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={scriptId} />
       ) : null}
     </ElectionPlanDrillDownShell>

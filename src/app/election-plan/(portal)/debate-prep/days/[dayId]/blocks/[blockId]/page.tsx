@@ -26,14 +26,16 @@ import { getDay3BlockStudy } from "@/lib/election-plan/debatePrepDay3BlockStudy"
 import { getDay4BlockStudy } from "@/lib/election-plan/debatePrepDay4BlockStudy";
 import { getDay5BlockStudy } from "@/lib/election-plan/debatePrepDay5BlockStudy";
 import { getDay6BlockStudy } from "@/lib/election-plan/debatePrepDay6BlockStudy";
+import { getDay7BlockStudy } from "@/lib/election-plan/debatePrepDay7BlockStudy";
 import { staticParamsForDayBlocks } from "@/lib/election-plan/debatePrepDayStaticParams";
+import { getDay7PathwayStep } from "@/lib/election-plan/day7-learning-pathway";
 import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
 import { getDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathway";
 import { getDay4PathwayStep } from "@/lib/election-plan/day4-learning-pathway";
 import { getDay5PathwayStep } from "@/lib/election-plan/day5-learning-pathway";
 import { getDay6PathwayStep } from "@/lib/election-plan/day6-learning-pathway";
-import { getDayBlockDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayBlockDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { buildElectionPlanClaimsSuperioritySummary } from "@/lib/election-plan/debate-prep-claims-superiority-summary";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 import { DEBATE_WEEK_INTENSIVE_DAY_IDS, type IntensiveDayId } from "@/lib/intelligence/v4/debateWeekIntensive2026";
@@ -67,6 +69,8 @@ export default async function ElectionPlanDayBlockPage({
               ? getDay5BlockStudy(blockId)
               : dayId === DAY6_ID
                 ? getDay6BlockStudy(blockId)
+              : dayId === DAY7_ID
+                ? getDay7BlockStudy(blockId)
               : undefined;
   const title = study?.studyGuideTitle ?? block.title;
   const eyebrow = study ? `Step · ~${block.minutes} min` : `Study block · ~${block.minutes} min`;
@@ -83,6 +87,8 @@ export default async function ElectionPlanDayBlockPage({
               ? getDay5PathwayStep(blockId)
               : dayId === DAY6_ID
                 ? getDay6PathwayStep(blockId)
+              : dayId === DAY7_ID
+                ? getDay7PathwayStep(blockId)
               : undefined;
   const dayLabel =
     dayId === DAY1_ID
@@ -97,6 +103,8 @@ export default async function ElectionPlanDayBlockPage({
               ? "Day 5"
               : dayId === DAY6_ID
                 ? "Day 6"
+              : dayId === DAY7_ID
+                ? "Day 7"
               : "Day";
   const claimsSuperioritySummary =
     dayId === DAY3_ID && blockId === "b3-claims" ? buildElectionPlanClaimsSuperioritySummary() : null;
@@ -164,7 +172,8 @@ export default async function ElectionPlanDayBlockPage({
       dayId === DAY3_ID ||
       dayId === DAY4_ID ||
       dayId === DAY5_ID ||
-      dayId === DAY6_ID ? (
+      dayId === DAY6_ID ||
+      dayId === DAY7_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={blockId} />
       ) : null}
     </ElectionPlanDrillDownShell>

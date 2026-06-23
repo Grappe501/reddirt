@@ -1,6 +1,6 @@
 /**
  * Election Plan — per-day drill-down pages (concepts, blocks, examples, rehearsal, micro-lessons, drills).
- * Days 1–6 wired; other days return empty until expanded.
+ * Days 1–7 wired; other days return empty until expanded.
  */
 import {
   EP_DEBATE_PREP_BRIEFINGS_HREF,
@@ -47,6 +47,14 @@ import {
   DAY6_CONCEPTS,
   DAY6_REHEARSAL,
 } from "@/lib/election-plan/debatePrepDay6Registry";
+import {
+  buildDay7Blocks,
+  buildDay7Drills,
+  buildDay7Examples,
+  buildDay7MicroLessons,
+  DAY7_CONCEPTS,
+  DAY7_REHEARSAL,
+} from "@/lib/election-plan/debatePrepDay7Registry";
 import { getDay1BlockStudy } from "@/lib/election-plan/debatePrepDay1BlockStudy";
 import { getBlockTheoryExpansion } from "@/lib/intelligence/v4/debateWeekIntensive2026V3";
 import { getDayDeepOverlay } from "@/lib/intelligence/v4/debateWeekIntensive2026Deep";
@@ -61,6 +69,7 @@ export const DAY3_ID = "day-3-superiority-map" as const satisfies IntensiveDayId
 export const DAY4_ID = "day-4-forum-intelligence" as const satisfies IntensiveDayId;
 export const DAY5_ID = "day-5-anticipate-and-capitalize" as const satisfies IntensiveDayId;
 export const DAY6_ID = "day-6-full-simulation" as const satisfies IntensiveDayId;
+export const DAY7_ID = "day-7-refine-and-steal-show" as const satisfies IntensiveDayId;
 
 export type DrillDownDayId =
   | typeof DAY1_ID
@@ -68,7 +77,8 @@ export type DrillDownDayId =
   | typeof DAY3_ID
   | typeof DAY4_ID
   | typeof DAY5_ID
-  | typeof DAY6_ID;
+  | typeof DAY6_ID
+  | typeof DAY7_ID;
 
 const DRILL_DOWN_DAY_ID_SET = new Set<IntensiveDayId>([
   DAY1_ID,
@@ -77,6 +87,7 @@ const DRILL_DOWN_DAY_ID_SET = new Set<IntensiveDayId>([
   DAY4_ID,
   DAY5_ID,
   DAY6_ID,
+  DAY7_ID,
 ]);
 
 export type DrillDownLink = { href: string; label: string };
@@ -1317,6 +1328,7 @@ export function listDayExampleIds(dayId: IntensiveDayId): string[] {
   if (dayId === DAY4_ID) return buildDay4Examples().map((e) => e.id);
   if (dayId === DAY5_ID) return buildDay5Examples().map((e) => e.id);
   if (dayId === DAY6_ID) return [];
+  if (dayId === DAY7_ID) return buildDay7Examples().map((e) => e.id);
   return [];
 }
 
@@ -1327,6 +1339,7 @@ export function listDayConcepts(dayId: IntensiveDayId): DayConceptDrillDown[] {
   if (dayId === DAY4_ID) return DAY4_CONCEPTS;
   if (dayId === DAY5_ID) return DAY5_CONCEPTS;
   if (dayId === DAY6_ID) return DAY6_CONCEPTS;
+  if (dayId === DAY7_ID) return DAY7_CONCEPTS;
   return [];
 }
 
@@ -1341,6 +1354,7 @@ export function listDayBlocksDrillDown(dayId: IntensiveDayId): DayBlockDrillDown
   if (dayId === DAY4_ID) return buildDay4Blocks();
   if (dayId === DAY5_ID) return buildDay5Blocks();
   if (dayId === DAY6_ID) return buildDay6Blocks();
+  if (dayId === DAY7_ID) return buildDay7Blocks();
   return [];
 }
 
@@ -1355,6 +1369,7 @@ export function getDayExampleDrillDown(dayId: IntensiveDayId, exampleId: string)
   if (dayId === DAY4_ID) return buildDay4Examples().find((e) => e.id === exampleId);
   if (dayId === DAY5_ID) return buildDay5Examples().find((e) => e.id === exampleId);
   if (dayId === DAY6_ID) return undefined;
+  if (dayId === DAY7_ID) return buildDay7Examples().find((e) => e.id === exampleId);
   return undefined;
 }
 
@@ -1365,6 +1380,7 @@ export function listDayRehearsalScripts(dayId: IntensiveDayId): DayRehearsalDril
   if (dayId === DAY4_ID) return DAY4_REHEARSAL;
   if (dayId === DAY5_ID) return DAY5_REHEARSAL;
   if (dayId === DAY6_ID) return DAY6_REHEARSAL;
+  if (dayId === DAY7_ID) return DAY7_REHEARSAL;
   return [];
 }
 
@@ -1379,6 +1395,7 @@ export function listDayMicroLessonsDrillDown(dayId: IntensiveDayId): DayMicroLes
   if (dayId === DAY4_ID) return buildDay4MicroLessons();
   if (dayId === DAY5_ID) return buildDay5MicroLessons();
   if (dayId === DAY6_ID) return buildDay6MicroLessons();
+  if (dayId === DAY7_ID) return buildDay7MicroLessons();
   return [];
 }
 
@@ -1393,6 +1410,7 @@ export function listDayCommandDrillsDrillDown(dayId: IntensiveDayId): DayCommand
   if (dayId === DAY4_ID) return buildDay4Drills();
   if (dayId === DAY5_ID) return buildDay5Drills();
   if (dayId === DAY6_ID) return buildDay6Drills();
+  if (dayId === DAY7_ID) return buildDay7Drills();
   return [];
 }
 

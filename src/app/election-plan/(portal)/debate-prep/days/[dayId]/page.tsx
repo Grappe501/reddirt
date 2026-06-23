@@ -10,7 +10,9 @@ import { getFirstDay3PathwayStep } from "@/lib/election-plan/day3-learning-pathw
 import { getFirstDay4PathwayStep } from "@/lib/election-plan/day4-learning-pathway";
 import { getFirstDay5PathwayStep } from "@/lib/election-plan/day5-learning-pathway";
 import { getFirstDay6PathwayStep } from "@/lib/election-plan/day6-learning-pathway";
-import { dayHasDrillDownPages, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getFirstDay7PathwayStep } from "@/lib/election-plan/day7-learning-pathway";
+import { DAY7_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day7-polish-copy";
+import { dayHasDrillDownPages, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { EP_DEBATE_PREP_HREF } from "@/lib/election-plan/debate-prep-links";
 import { DAY5_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
 import { DAY6_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
@@ -60,6 +62,8 @@ export default async function ElectionPlanDebatePrepDayPage({
               ? getFirstDay5PathwayStep()
               : dayId === DAY6_ID
                 ? getFirstDay6PathwayStep()
+              : dayId === DAY7_ID
+                ? getFirstDay7PathwayStep()
               : null;
 
   return (
@@ -173,6 +177,18 @@ export default async function ElectionPlanDebatePrepDayPage({
             <KellyPageSummary
               summary={`${plan.goalForKelly} One pathway below — fail in the room with staff, not on the APA statewide broadcast.`}
             />
+            <Link
+              href={firstStep.href}
+              className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
+            >
+              Start now · {firstStep.label} →
+            </Link>
+          </>
+        ) : null}
+
+        {dayId === DAY7_ID && firstStep ? (
+          <>
+            <KellyPageSummary summary={DAY7_HUB_TONIGHT_SUMMARY} />
             <Link
               href={firstStep.href}
               className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"

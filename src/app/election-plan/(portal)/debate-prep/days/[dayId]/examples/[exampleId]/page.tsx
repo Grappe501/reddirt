@@ -13,7 +13,8 @@ import { getDay2OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay2O
 import { getDay3OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay3OpponentExampleStudy";
 import { getDay4OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay4OpponentExampleStudy";
 import { getDay5OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay5OpponentExampleStudy";
-import { getDayExampleDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDayExampleDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY7_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { getDay7PathwayStep } from "@/lib/election-plan/day7-learning-pathway";
 import { staticParamsForDayExamples } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { getDay1PathwayStep } from "@/lib/election-plan/day1-learning-pathway";
 import { getDay2PathwayStep } from "@/lib/election-plan/day2-learning-pathway";
@@ -63,6 +64,8 @@ export default async function ElectionPlanDayExamplePage({
             ? "Day 4"
             : dayId === DAY5_ID
               ? "Day 5"
+              : dayId === DAY7_ID
+                ? "Day 7"
               : "Day";
   const pathwayStep =
     dayId === DAY1_ID
@@ -75,6 +78,8 @@ export default async function ElectionPlanDayExamplePage({
             ? getDay4PathwayStep(exampleId)
             : dayId === DAY5_ID
               ? getDay5PathwayStep(exampleId)
+              : dayId === DAY7_ID
+                ? getDay7PathwayStep(exampleId)
               : undefined;
   const isOptional = pathwayStep?.kind === "example";
   const eyebrow = isOptional
@@ -127,7 +132,8 @@ export default async function ElectionPlanDayExamplePage({
       dayId === DAY2_ID ||
       dayId === DAY3_ID ||
       dayId === DAY4_ID ||
-      dayId === DAY5_ID ? (
+      dayId === DAY5_ID ||
+      dayId === DAY7_ID ? (
         <ElectionPlanDayStepFooter dayId={dayId as DrillDownDayId} currentStepId={exampleId} />
       ) : null}
     </ElectionPlanDrillDownShell>
