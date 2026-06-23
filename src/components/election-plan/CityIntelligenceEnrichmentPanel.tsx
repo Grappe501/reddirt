@@ -107,7 +107,7 @@ export function CityIntelligenceEnrichmentPanel({ profile, countySlug }: Props) 
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">#{profile.rank}</div>
-          <div className="ep-stat-label">Top 175 rank</div>
+          <div className="ep-stat-label">Top 250 rank</div>
         </div>
       </div>
 

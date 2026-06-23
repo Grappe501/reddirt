@@ -37,7 +37,7 @@ export function CommunityFundraisingGoalPanel({ allocation }: Props) {
             {formatVotes(allocation.voteGoal)}
           </div>
           <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
-            {allocation.voteSharePct.toFixed(2)}% of Top 175 vote pool
+            {allocation.voteSharePct.toFixed(2)}% of Top 250 vote pool
           </p>
         </div>
         <div>

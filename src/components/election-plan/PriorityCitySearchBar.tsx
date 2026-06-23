@@ -106,7 +106,7 @@ export function PriorityCitySearchBar({ cities }: Props) {
     <section className="ep-card mb-8 border-l-4 border-[var(--ep-gold)]">
       <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Jump to a city</h2>
       <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-        Type a town name to open its location brief. All 175 priority cities are here
+        Type a town name to open its location brief. All 250 priority cities are here
         {cities.some((c) => c.isBonusCity) ? " — plus bonus cushion towns" : ""}
         when we already have a profile.
       </p>
@@ -244,7 +244,7 @@ function CityProfileRequestPanel({
   return (
     <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
       <p className="text-sm font-semibold text-amber-950">
-        We don&apos;t have <strong>{cityName}</strong> in the Top 175 priority cities yet.
+        We don&apos;t have <strong>{cityName}</strong> in the Top 250 priority cities yet.
       </p>
       <p className="mt-2 text-sm leading-relaxed text-amber-950/90">
         Should we build a profile for this town under{" "}

@@ -9,7 +9,7 @@ import path from "node:path";
 
 import {
   ARKANSAS_COUNTY_POPULATION_2020,
-  ARKANSAS_TOP_175_CITIES,
+  ARKANSAS_TOP_250_CITIES,
   type ArkansasTop40City,
   type CityInfluenceTag,
 } from "./data/arkansas-top-40-cities";
@@ -77,7 +77,7 @@ function buildCityMarkdown(city: ArkansasTop40City, rank: number): string {
 > **Classification:** CONFIDENTIAL CAMPAIGN DOCUMENT
 > **Part:** III — The Arkansas Battlefield
 > **Chapter:** 7
-> **City rank (vote target):** #${rank} of 175
+> **City rank (vote target):** #${rank} of 250
 > **Top 10 strategic city:** ${city.isTop10 ? "Yes" : "No"}
 
 ---
@@ -175,7 +175,7 @@ ${city.influenceTags.map((t) => `1. **${INFLUENCE_LABELS[t]}** — deploy for co
 
 function main() {
   const scenario = loadWinTargets();
-  const citiesWithVotes = ARKANSAS_TOP_175_CITIES.map((city) => ({
+  const citiesWithVotes = ARKANSAS_TOP_250_CITIES.map((city) => ({
     city,
     ...computeCityElectoral(city),
   }));
@@ -202,7 +202,7 @@ function main() {
 
   const top10 = summaryRows.filter((r) => r.isTop10);
   const top10TargetSum = top10.reduce((s, r) => s + r.targetVotes, 0);
-  const top175TargetSum = summaryRows.reduce((s, r) => s + r.targetVotes, 0);
+  const top250TargetSum = summaryRows.reduce((s, r) => s + r.targetVotes, 0);
   const top40TargetSum = summaryRows.slice(0, 40).reduce((s, r) => s + r.targetVotes, 0);
 
   for (const row of citiesWithVotes) {
@@ -222,14 +222,16 @@ function main() {
     JSON.stringify(
       {
         generatedAt: new Date().toISOString(),
-        top175TargetVotes: top175TargetSum,
-        top175ShareOfStatewideWorkingTarget: top175TargetSum / scenario.statewide.workingTargetWithCushion,
-        top125TargetVotes: top175TargetSum,
-        top125ShareOfStatewideWorkingTarget: top175TargetSum / scenario.statewide.workingTargetWithCushion,
-        top100TargetVotes: top175TargetSum,
-        top100ShareOfStatewideWorkingTarget: top175TargetSum / scenario.statewide.workingTargetWithCushion,
-        top75TargetVotes: top175TargetSum,
-        top75ShareOfStatewideWorkingTarget: top175TargetSum / scenario.statewide.workingTargetWithCushion,
+        top250TargetVotes: top250TargetSum,
+        top250ShareOfStatewideWorkingTarget: top250TargetSum / scenario.statewide.workingTargetWithCushion,
+        top175TargetVotes: top250TargetSum,
+        top175ShareOfStatewideWorkingTarget: top250TargetSum / scenario.statewide.workingTargetWithCushion,
+        top125TargetVotes: top250TargetSum,
+        top125ShareOfStatewideWorkingTarget: top250TargetSum / scenario.statewide.workingTargetWithCushion,
+        top100TargetVotes: top250TargetSum,
+        top100ShareOfStatewideWorkingTarget: top250TargetSum / scenario.statewide.workingTargetWithCushion,
+        top75TargetVotes: top250TargetSum,
+        top75ShareOfStatewideWorkingTarget: top250TargetSum / scenario.statewide.workingTargetWithCushion,
         top40TargetVotes: top40TargetSum,
         top40ShareOfStatewideWorkingTarget: top40TargetSum / scenario.statewide.workingTargetWithCushion,
         top10TargetVotes: top10TargetSum,
@@ -244,7 +246,7 @@ function main() {
 
   // eslint-disable-next-line no-console
   console.log(
-    `Wrote ${ARKANSAS_TOP_175_CITIES.length} city profiles + 10 deep dives. Top 175 targets: ${top175TargetSum.toLocaleString()} | Top 40 (legacy slice): ${top40TargetSum.toLocaleString()} | Top 10: ${top10TargetSum.toLocaleString()}.`,
+    `Wrote ${ARKANSAS_TOP_250_CITIES.length} city profiles + 10 deep dives. Top 250 targets: ${top250TargetSum.toLocaleString()} | Top 40 (legacy slice): ${top40TargetSum.toLocaleString()} | Top 10: ${top10TargetSum.toLocaleString()}.`,
   );
 }
 

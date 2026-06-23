@@ -89,7 +89,7 @@ export type ElectionPlanCity = {
   influenceCategory: string;
   influenceTags: string[];
   isTop10: boolean;
-  /** Rank 41+ bonus workbench — KPIs isolated from Top 175 combined totals */
+  /** Rank 41+ bonus workbench — KPIs isolated from Top 250 combined totals */
   isBonusCity?: boolean;
   /** 2020 Census — present on snapshot rows when sourced */
   population2020?: number;
@@ -167,13 +167,15 @@ export type ElectionPlanWorkbenchSnapshot = {
   cities: ElectionPlanCity[];
   top10TargetVotes: number;
   top40TargetVotes: number;
-  /** Combined vote target — all 175 priority cities (excludes bonus workbenches). */
+  /** Combined vote target — all 250 priority cities (excludes bonus workbenches). */
+  top250TargetVotes: number;
+  /** @deprecated Alias for top250TargetVotes — retained for older snapshots. */
   top175TargetVotes: number;
-  /** @deprecated Alias for top175TargetVotes — retained for older snapshots. */
+  /** @deprecated Alias for top250TargetVotes — retained for older snapshots. */
   top125TargetVotes: number;
-  /** @deprecated Alias for top175TargetVotes — retained for older snapshots. */
+  /** @deprecated Alias for top250TargetVotes — retained for older snapshots. */
   top100TargetVotes: number;
-  /** @deprecated Alias for top175TargetVotes — retained for older snapshots. */
+  /** @deprecated Alias for top250TargetVotes — retained for older snapshots. */
   top75TargetVotes: number;
   campaignBrain: {
     flow: string;
