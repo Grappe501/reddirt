@@ -30,8 +30,8 @@ import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-wor
 import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-team";
 import type { LocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/types";
-import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
-import { countyPathToVictoryHref } from "@/lib/election-plan/path-to-victory-links";
+import { cityLocationBriefHref, countyPlaybookHref, electionPlanSlugForCountyName } from "@/lib/election-plan/location-links";
+import { cityPathToVictoryHref, countyPathToVictoryHref } from "@/lib/election-plan/county-playbook-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 import { getCountyPartyProfileBySlug } from "@/lib/election-plan/load-county-party-intelligence";
@@ -345,12 +345,37 @@ export function CountyPlaybookPanel({
                     {city.population2020 ? ` · pop. ${city.population2020.toLocaleString("en-US")}` : ""}
                   </p>
                 </div>
-                <Link
-                  href={`/election-plan/workbenches/${city.slug}`}
-                  className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]"
-                >
-                  Community workbench →
-                </Link>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Link
+                    href={cityLocationBriefHref(city.slug)}
+                    className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]"
+                  >
+                    Location brief →
+                  </Link>
+                  <Link
+                    href={cityPathToVictoryHref(city.slug)}
+                    className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]"
+                  >
+                    Path to victory →
+                  </Link>
+                  <Link
+                    href={`/election-plan/workbenches/${city.slug}`}
+                    className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]"
+                  >
+                    Community workbench →
+                  </Link>
+                  {gopSos2026 ? (
+                    <span
+                      className={cn(
+                        "rounded-full px-2 py-0.5 text-[10px] font-bold uppercase",
+                        gopSos2026.runoff.winner === "norris" ? "bg-orange-100 text-orange-900" : "bg-red-100 text-red-900",
+                      )}
+                      title="GOP runoff winner for this county — municipal splits require precinct export"
+                    >
+                      GOP runoff · {gopSos2026.runoff.winner === "norris" ? "Norris" : "Hammer"}
+                    </span>
+                  ) : null}
+                </div>
               </li>
             ))}
           </ul>

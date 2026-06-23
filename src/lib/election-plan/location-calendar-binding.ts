@@ -90,11 +90,13 @@ export function revisitBindingForCounty(
   countyName: string,
 ): RevisitBinding | null {
   const norm = normalizeCountyName(countyName).toLowerCase();
-  const row = data.calendarSettlement.tier1RevisitStatus.find(
+  const tier1 = data.calendarSettlement?.tier1RevisitStatus ?? [];
+  const row = tier1.find(
     (r) => r.county.toLowerCase() === norm,
   );
   if (!row) return null;
-  const inTier1Queue = data.coverageReality.tier1RevisitQueue.some(
+  const revisitQueue = data.coverageReality?.tier1RevisitQueue ?? [];
+  const inTier1Queue = revisitQueue.some(
     (q) => q.county.toLowerCase() === norm,
   );
   return {
@@ -116,9 +118,11 @@ export function eventApprovalsForLocation(
   opts: { cityName?: string; countyName: string; limit?: number },
 ): LocationEventApproval[] {
   const limit = opts.limit ?? 6;
+  const items = data.eventApprovals?.items ?? [];
   const matched: LocationEventApproval[] = [];
 
-  for (const item of data.eventApprovals.items) {
+  for (const item of items) {
+    if (!item?.decision) continue;
     const countyMatch = approvalCountyMatches(item.county, opts.countyName);
     const cityMatch = opts.cityName
       ? item.city?.trim().toLowerCase() === opts.cityName.trim().toLowerCase() ||
@@ -147,8 +151,9 @@ export function weekPlansForLocation(
   data: ElectionPlanWorkbenchSnapshot,
   cityName: string,
 ): LocationWeekPlanBinding[] {
-  const currentWeek = data.candidateDashboard.currentWeek;
-  return data.weekPlans
+  const currentWeek = data.candidateDashboard?.currentWeek ?? 1;
+  const weekPlans = data.weekPlans ?? [];
+  return weekPlans
     .filter((w) => w.cities.some((c) => c.toLowerCase() === cityName.toLowerCase()))
     .map((w) => ({
       weekNumber: w.weekNumber,
@@ -164,9 +169,15 @@ export function buildLocationCalendarBinding(
   data: ElectionPlanWorkbenchSnapshot,
   opts: { cityName: string; countyName: string; referenceDate: string },
 ): LocationCalendarBinding {
+  const entries = data.executiveCalendar?.entries ?? [];
+  const referenceDate = opts.referenceDate || data.executiveCalendar?.referenceDate || new Date().toISOString().slice(0, 10);
   const weekPlans = weekPlansForLocation(data, opts.cityName);
   return {
-    nextLockedVisit: nextLockedVisitForLocation(data.executiveCalendar.entries, opts),
+    nextLockedVisit: nextLockedVisitForLocation(entries, {
+      cityName: opts.cityName,
+      countyName: opts.countyName,
+      referenceDate,
+    }),
     revisit: revisitBindingForCounty(data, opts.countyName),
     eventApprovals: eventApprovalsForLocation(data, {
       cityName: opts.cityName,
@@ -183,15 +194,16 @@ export function buildCountyCalendarBinding(
 ): Omit<LocationCalendarBinding, "weekPlans" | "currentWeekPlan"> & {
   weekPlans: LocationWeekPlanBinding[];
 } {
-  const ref = data.executiveCalendar.referenceDate;
-  const countyEntries = calendarEntriesForCounty(data.executiveCalendar.entries, countyName).filter(
+  const ref = data.executiveCalendar?.referenceDate ?? new Date().toISOString().slice(0, 10);
+  const entries = data.executiveCalendar?.entries ?? [];
+  const countyEntries = calendarEntriesForCounty(entries, countyName).filter(
     (e) => e.startDate >= ref && (e.category === "locked" || e.category === "scheduled"),
   );
   const locked = sortCalendarEntries(countyEntries.filter((e) => e.category === "locked"));
   const nextLockedVisit = locked[0] ?? sortCalendarEntries(countyEntries)[0] ?? null;
 
-  const currentWeek = data.candidateDashboard.currentWeek;
-  const weekPlans = data.weekPlans
+  const currentWeek = data.candidateDashboard?.currentWeek ?? 1;
+  const weekPlans = (data.weekPlans ?? [])
     .filter((w) => w.counties?.some((c) => c.toLowerCase() === countyName.toLowerCase()))
     .map((w) => ({
       weekNumber: w.weekNumber,
@@ -215,7 +227,10 @@ export function computeBriefCompletionRollup(
   data: ElectionPlanWorkbenchSnapshot,
 ): BriefCompletionRollup {
   const briefs: CityLocationBrief[] = cities.map(buildCityLocationBrief);
-  const currentWeek = data.weekPlans.find((w) => w.weekNumber === data.candidateDashboard.currentWeek);
+  const currentWeekNumber = data.candidateDashboard?.currentWeek ?? 1;
+  const weekRange = data.candidateDashboard?.weekRange ?? "—";
+  const allWeekPlans = data.weekPlans ?? [];
+  const currentWeek = allWeekPlans.find((w) => w.weekNumber === currentWeekNumber);
   const currentWeekCityNames = new Set(currentWeek?.cities.map((c) => c.toLowerCase()) ?? []);
   const currentWeekBriefs = briefs.filter((b) => currentWeekCityNames.has(b.name.toLowerCase()));
   const readyStatuses = new Set(["draft", "review", "approved"]);
@@ -229,12 +244,13 @@ export function computeBriefCompletionRollup(
     numericLocked: briefs.filter((b) => b.numericTargets?.locked).length,
     currentWeekCityCount: currentWeekBriefs.length,
     currentWeekBriefsReady: currentWeekBriefs.filter((b) => readyStatuses.has(b.status)).length,
-    currentWeekRange: data.candidateDashboard.weekRange,
-    currentWeekNumber: data.candidateDashboard.currentWeek,
+    currentWeekRange: weekRange,
+    currentWeekNumber,
   };
 }
 
 export function currentWeekPlanCities(data: ElectionPlanWorkbenchSnapshot): string[] {
-  const week = data.weekPlans.find((w) => w.weekNumber === data.candidateDashboard.currentWeek);
+  const currentWeekNumber = data.candidateDashboard?.currentWeek ?? 1;
+  const week = (data.weekPlans ?? []).find((w) => w.weekNumber === currentWeekNumber);
   return week?.cities ?? [];
 }

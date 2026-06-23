@@ -13,7 +13,7 @@ import { CommunityWorkbenchOwnershipWarnings } from "@/components/election-plan/
 import { CommunityWorkbenchPilotSmokePanel } from "@/components/election-plan/CommunityWorkbenchPilotSmokePanel";
 import { CommunityWorkbenchDefectLogPanel } from "@/components/election-plan/CommunityWorkbenchDefectLogPanel";
 import { CommunityWorkbenchVoteCushionPanel } from "@/components/election-plan/CommunityWorkbenchVoteCushionPanel";
-import { countyPlaybookHref } from "@/lib/election-plan/location-links";
+import { cityLocationBriefHref, countyPlaybookHref } from "@/lib/election-plan/location-links";
 import { collectOwnershipWarnings } from "@/lib/election-plan/community-workbench/ownership-warnings";
 import type { CommunityPilotDefectRow } from "@/lib/election-plan/community-workbench/load-pilot-status";
 import type { PilotSmokePath } from "@/lib/election-plan/community-workbench/pilot-smoke-paths";
@@ -175,12 +175,20 @@ export function CommunityWorkbenchShell({
           ) : null}
           {workbench.countyName ? (
             <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
+              {workbench.kind === "city" ? (
+                <>
+                  <Link href={cityLocationBriefHref(workbench.slug)} className="underline">
+                    Location brief
+                  </Link>
+                  {" · "}
+                </>
+              ) : null}
               {workbench.countyName} County
               {workbench.countySlug ? (
                 <>
                   {" · "}
                   <Link href={countyPlaybookHref(workbench.countyName, workbench.countySlug)} className="underline">
-                    County intelligence
+                    County playbook
                   </Link>
                 </>
               ) : null}

@@ -2,6 +2,7 @@ import responsibilitySource from "../../../data/campaign-brain/ownership/campaig
 import countyOverridesSource from "../../../data/campaign-brain/ownership/county-leadership-overrides.source.json";
 import weeklyPacketSource from "../../../data/campaign-brain/ownership/weekly-leadership-packet.source.json";
 import arkansasCounties from "../../../data/calendar-command-center/arkansas-counties-75.json";
+import { electionPlanSlugForCountyName } from "@/lib/election-plan/location-links";
 import searcyTrustSource from "../../../data/campaign-brain/movement-infrastructure/searcy-county-trust-pilot.source.json";
 import directDemocracyLeadershipSource from "../../../data/campaign-brain/movement-infrastructure/direct-democracy-leadership.source.json";
 import po5CommandSource from "../../../data/campaign-brain/relational-organizing/power-of-5-command-center.source.json";
@@ -23,6 +24,7 @@ type CampaignInitiativeSource = Omit<CampaignInitiative, "unassigned">;
 
 export type CountyLeadershipRole = {
   county: string;
+  countySlug: string;
   chairIdentified: boolean;
   chairName?: string | null;
   volunteerCaptain: string | null;
@@ -133,6 +135,7 @@ export function getCountyLeadershipCoverage() {
 
     return {
       county,
+      countySlug: electionPlanSlugForCountyName(county),
       chairIdentified: roles.chairIdentified,
       chairName: o.chairName ?? null,
       volunteerCaptain: roles.volunteerCaptain,

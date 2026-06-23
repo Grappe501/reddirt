@@ -10,6 +10,7 @@ import {
 } from "@/lib/election-plan/location-links";
 import {
   countyDropOffHref,
+  countyPathToVictoryHref,
   countyRegistrationDashboardHref,
 } from "@/lib/election-plan/county-playbook-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
@@ -132,6 +133,13 @@ export function CountyStrategyGrid({ counties }: Props) {
                   Open county operating center →
                 </Link>
                 <div className="flex flex-wrap justify-center gap-2">
+                  <Link
+                    href={countyPathToVictoryHref(c.slug)}
+                    className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-900 hover:border-emerald-400"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Path to victory
+                  </Link>
                   <Link
                     href={countyDropOffHref(c.slug)}
                     className="rounded-full border border-rose-200 bg-rose-50 px-2 py-0.5 text-[10px] font-semibold text-rose-900 hover:border-rose-400"

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import type { ElectionPlanCity } from "@/lib/election-plan/types";
-import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
+import { cityLocationBriefHref, countyPlaybookHref, electionPlanSlugForCountyName } from "@/lib/election-plan/location-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { formatPercentIncrease, getCityVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";
 
@@ -39,7 +39,15 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
             </div>
             <div className="font-heading text-xl font-bold text-[var(--ep-navy)]">{city.name}</div>
             <div className="text-sm text-[var(--ep-navy-muted)]">
-              {city.county} County · {city.influenceCategory}
+              <Link
+                href={countyPlaybookHref(city.county, electionPlanSlugForCountyName(city.county))}
+                className="font-semibold text-[var(--ep-navy)] hover:text-[var(--ep-gold)]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {city.county} County playbook
+              </Link>
+              {" · "}
+              {city.influenceCategory}
             </div>
             <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[var(--ep-navy-muted)]">
               {city.strategicRole}

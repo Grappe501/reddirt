@@ -1,8 +1,20 @@
 import { countyIntelligenceHref } from "@/lib/election-plan/county-intelligence-nav";
+import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry";
+
+/** Election-plan county slug from display name (e.g. "St. Francis" → "st-francis"). */
+export function electionPlanSlugForCountyName(countyName: string): string {
+  const short = countyName.replace(/\s+County$/i, "").trim();
+  const reg = ARKANSAS_COUNTY_REGISTRY.find((c) => {
+    const displayShort = c.displayName.replace(/\s+County$/i, "").trim();
+    return displayShort.toLowerCase() === short.toLowerCase();
+  });
+  if (reg) return reg.slug.replace(/-county$/, "");
+  return short.toLowerCase().replace(/\./g, "").replace(/\s+/g, "-");
+}
 
 /** Primary in-system county intelligence route inside Election Plan. */
 export function countyPlaybookHref(_countyName: string, electionPlanSlug?: string): string {
-  const slug = electionPlanSlug ?? _countyName.toLowerCase().replace(/\s+/g, "-");
+  const slug = electionPlanSlug ?? electionPlanSlugForCountyName(_countyName);
   return countyIntelligenceHref(slug.replace(/-county$/, ""));
 }
 

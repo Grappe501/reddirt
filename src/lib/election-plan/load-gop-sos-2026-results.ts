@@ -4,9 +4,11 @@ import path from "path";
 import { getRegistryCountyByFips, getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
 import type { GopSos2026LocationView, GopSos2026ResultsBundle } from "@/lib/election-plan/gop-sos-2026-results-types";
 
-let cached: GopSos2026ResultsBundle | null = null;
+import bundledResults from "../../../data/election/2026-gop-sos-primary-runoff-by-county.normalized.json";
 
 const DATA_FILE = path.join(process.cwd(), "data/election/2026-gop-sos-primary-runoff-by-county.normalized.json");
+
+let cached: GopSos2026ResultsBundle | null = bundledResults as unknown as GopSos2026ResultsBundle;
 
 function loadBundle(): GopSos2026ResultsBundle | null {
   if (cached) return cached;
@@ -18,6 +20,21 @@ function loadBundle(): GopSos2026ResultsBundle | null {
   }
 }
 
+/** Election-plan county slugs omit `-county`; GOP JSON uses `pulaski-county` style. */
+export function normalizeGopCountySlug(slug: string): string {
+  return slug.trim().toLowerCase().replace(/-county$/, "");
+}
+
+function findCountyRow(bundle: GopSos2026ResultsBundle, countySlug: string, countyName?: string) {
+  const normalized = normalizeGopCountySlug(countySlug);
+  return (
+    bundle.counties.find((c) => normalizeGopCountySlug(c.countySlug) === normalized) ??
+    (countyName
+      ? bundle.counties.find((c) => c.county.toLowerCase() === countyName.toLowerCase())
+      : undefined)
+  );
+}
+
 export function getGopSos2026StatewideSummary(): GopSos2026ResultsBundle["statewide"] | null {
   return loadBundle()?.statewide ?? null;
 }
@@ -25,15 +42,19 @@ export function getGopSos2026StatewideSummary(): GopSos2026ResultsBundle["statew
 export function getGopSos2026CountyBySlug(countySlug: string): GopSos2026LocationView | null {
   const bundle = loadBundle();
   if (!bundle) return null;
-  const row = bundle.counties.find((c) => c.countySlug === countySlug);
+  const row = findCountyRow(bundle, countySlug);
   if (!row) return null;
   return { ...row, scope: "county" };
 }
 
-export function getGopSos2026ForCity(countyName: string, citySlug?: string, cityName?: string): GopSos2026LocationView | null {
+export function getGopSos2026ForCity(
+  countyName: string,
+  citySlug?: string,
+  cityName?: string,
+): GopSos2026LocationView | null {
   const bundle = loadBundle();
   if (!bundle) return null;
-  const slugGuess = countyName.toLowerCase().replace(/\s+/g, "-") + "-county";
+  const slugGuess = `${countyName.toLowerCase().replace(/\s+/g, "-")}-county`;
   const reg = getRegistryCountyBySlug(slugGuess);
   const row =
     bundle.counties.find((c) => c.county.toLowerCase() === countyName.toLowerCase()) ??
@@ -58,5 +79,5 @@ export function getGopSos2026CountyByFips(fips: string): GopSos2026LocationView 
   const reg = getRegistryCountyByFips(fips);
   const row = bundle.counties.find((c) => c.fips === fips);
   if (!row) return null;
-  return { ...row, scope: "county", countySlug: reg?.slug ?? row.countySlug };
+  return { ...row, scope: "county", countySlug: reg?.slug ?? normalizeGopCountySlug(row.countySlug) };
 }

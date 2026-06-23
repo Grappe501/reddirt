@@ -35,6 +35,10 @@ export function resolveCountyPlaybookMarkdownHref(href: string): string | null {
   if (ch4?.[1]) return countyDropOffHref(ch4[1]);
   const ch5 = normalized.match(/chapter-05-fifty-thousand-new-voter-plan\/counties\/([a-z0-9-]+)-county\.md/i);
   if (ch5?.[1]) return countyRegistrationDashboardHref(ch5[1]);
+  const cityCh7 = normalized.match(/chapter-07-top-40-city-strategy\/cities\/([a-z0-9-]+)\.md/i);
+  if (cityCh7?.[1]) return `/election-plan/cities/${cityCh7[1]}`;
+  const countyCh9 = normalized.match(/chapter-09-seventy-five-county-playbook\/counties\/([a-z0-9-]+)-county\.md/i);
+  if (countyCh9?.[1]) return `/election-plan/counties/${countyCh9[1].replace(/-county$/, "")}`;
   return null;
 }
 

@@ -5,8 +5,10 @@ import { CH4_READING_GUIDE, CH5_READING_GUIDE } from "@/lib/election-plan/county
 import {
   COUNTY_PLAYBOOK_EXECUTIVE_JUMP_LINKS,
   countyDropOffHref,
+  countyPathToVictoryHref,
   countyRegistrationDashboardHref,
-} from "@/lib/election-plan/load-county-electoral-math-markdown";
+} from "@/lib/election-plan/county-playbook-links";
+import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 
 type Props = {
   countySlug: string;
@@ -46,7 +48,7 @@ export function CountyElectoralMathDetailPanel({ countySlug, countyName, kind, m
   return (
     <section>
       <Link
-        href={`/election-plan/counties/${countySlug}`}
+        href={countyPlaybookHref(countyName, countySlug)}
         className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:text-[var(--ep-navy)]"
       >
         ← {countyName} County playbook
@@ -87,7 +89,7 @@ export function CountyElectoralMathDetailPanel({ countySlug, countyName, kind, m
         </ul>
         <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
           Return to the{" "}
-          <Link href={`/election-plan/counties/${countySlug}#field`} className="font-semibold underline">
+          <Link href={`${countyPlaybookHref(countyName, countySlug)}#field`} className="font-semibold underline">
             county field section
           </Link>{" "}
           to log Mobilize events and registration pace after reading.
@@ -120,6 +122,9 @@ export function CountyPlaybookExecutiveJumpPanel({ countySlug, countyName }: { c
           className="rounded-full border border-[var(--ep-border)] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--ep-navy)] hover:border-[var(--ep-gold)]"
         >
           Ch. 5 · Registration dashboard · {countyName}
+        </Link>
+        <Link href={countyPathToVictoryHref(countySlug)} className="rounded-full border border-[var(--ep-border)] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--ep-navy)] hover:border-[var(--ep-gold)]">
+          Path to Victory · {countyName}
         </Link>
         <Link href={COUNTY_PLAYBOOK_EXECUTIVE_JUMP_LINKS.pathToVictory} className="rounded-full border border-[var(--ep-border)] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--ep-navy)] hover:border-[var(--ep-gold)]">
           Executive Book · Path to Victory

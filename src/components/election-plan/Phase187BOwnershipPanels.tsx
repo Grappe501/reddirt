@@ -232,7 +232,7 @@ export function CountyLeadershipCoveragePanel() {
           {data.counties.map((c) => (
             <Link
               key={c.county}
-              href={countyPlaybookHref(c.county, c.county.toLowerCase())}
+              href={countyPlaybookHref(c.county, c.countySlug)}
               title={`${c.county}: ${c.rolesFilled}/${c.rolesTotal} roles · ${c.coveragePct}%`}
               className={`rounded px-1.5 py-0.5 text-[10px] font-semibold text-white ${coverageColor(c.coverageLevel)} hover:opacity-80`}
             >
@@ -266,7 +266,7 @@ export function CountyLeadershipCoveragePanel() {
             {data.counties.map((c) => (
               <tr key={c.county} className="border-b border-[var(--ep-border)] last:border-0">
                 <td className="py-2 pr-3">
-                  <Link href={countyPlaybookHref(c.county, c.county.toLowerCase())} className="font-medium hover:underline">
+                  <Link href={countyPlaybookHref(c.county, c.countySlug)} className="font-medium hover:underline">
                     {c.county}
                   </Link>
                 </td>

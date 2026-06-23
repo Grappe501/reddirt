@@ -20,7 +20,7 @@ import {
   fieldCalendarHref,
   fieldOperationalCalendarHref,
 } from "@/lib/election-plan/field-calendar-links";
-import { countyPlaybookHref } from "@/lib/election-plan/location-links";
+import { countyPlaybookHref, electionPlanSlugForCountyName } from "@/lib/election-plan/location-links";
 import { cn } from "@/lib/utils";
 
 type ForwardMotionStop = {
@@ -84,7 +84,7 @@ export function FieldEventWorksheetPanel({ entry, sourceOverrides, forwardMotion
 
   const operationalTasks = useMemo(() => buildOperationalTasks(entry, worksheet), [entry, worksheet]);
 
-  const countySlug = countySlugProp ?? entry.county.toLowerCase().replace(/\s+/g, "-");
+  const countySlug = countySlugProp ?? electionPlanSlugForCountyName(entry.county);
 
   return (
     <section>

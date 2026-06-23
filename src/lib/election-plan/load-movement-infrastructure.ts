@@ -1,3 +1,4 @@
+import { electionPlanSlugForCountyName } from "@/lib/election-plan/location-links";
 import campusSource from "../../../data/campaign-brain/movement-infrastructure/arkansas-campuses.source.json";
 import freshmanWeekSource from "../../../data/campaign-brain/movement-infrastructure/freshman-week-readiness.source.json";
 import trustSource from "../../../data/campaign-brain/movement-infrastructure/arkansas-trust-network.source.json";
@@ -24,6 +25,7 @@ export type ArkansasCampus = {
   type: "university" | "college" | "community_college" | "technical";
   city: string;
   county: string;
+  countySlug: string;
   enrollment: number;
   votingAgeEstimate: number;
   registrationGoal: number;
@@ -48,7 +50,7 @@ const DEFAULT_FRESHMAN_READINESS: FreshmanWeekReadiness = {
   kellyAppearanceStatus: "not_requested",
 };
 
-function mergeFreshmanReadiness(campus: Omit<ArkansasCampus, "freshmanWeekReadiness">): ArkansasCampus {
+function mergeFreshmanReadiness(campus: Omit<ArkansasCampus, "freshmanWeekReadiness" | "countySlug">): ArkansasCampus {
   const readinessMap = (freshmanWeekSource as { campuses: Record<string, FreshmanWeekReadiness> }).campuses;
   const readiness = readinessMap[campus.slug];
   const merged: FreshmanWeekReadiness = {
@@ -57,13 +59,12 @@ function mergeFreshmanReadiness(campus: Omit<ArkansasCampus, "freshmanWeekReadin
     captainAssigned: campus.campusCaptainStatus === "filled" || readiness?.captainAssigned === true,
     mobilizeEventCreated: campus.mobilizeEvents > 0 || readiness?.mobilizeEventCreated === true,
   };
-  return { ...campus, freshmanWeekReadiness: merged };
+  return { ...campus, countySlug: electionPlanSlugForCountyName(campus.county), freshmanWeekReadiness: merged };
 }
 
 export function getArkansasCampuses(): ArkansasCampus[] {
-  return (campusSource as { campuses: Omit<ArkansasCampus, "freshmanWeekReadiness">[] }).campuses.map(
-    mergeFreshmanReadiness,
-  );
+  type CampusSource = Omit<ArkansasCampus, "freshmanWeekReadiness" | "countySlug">;
+  return (campusSource as { campuses: CampusSource[] }).campuses.map(mergeFreshmanReadiness);
 }
 
 export function getCampusBySlug(slug: string): ArkansasCampus | undefined {

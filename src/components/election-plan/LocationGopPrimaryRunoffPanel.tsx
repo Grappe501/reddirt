@@ -48,6 +48,10 @@ export function LocationGopPrimaryRunoffPanel({ view, variant = "hero", showDril
     view.scope === "city" && view.cityName
       ? `${view.cityName} · ${view.county} County`
       : `${view.county} County`;
+  const countyLevelNote =
+    view.scope === "city"
+      ? "Vote totals below are county-wide — Arkansas SOS public export is FIPS-county only; municipal or precinct Norris/Hammer splits require a future precinct ingest."
+      : null;
 
   const statGrid = (
     <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -103,6 +107,9 @@ export function LocationGopPrimaryRunoffPanel({ view, variant = "hero", showDril
             2026 Republican SOS · primary + runoff
           </p>
           <h2 className="mt-1 font-heading text-xl font-bold text-[var(--ep-navy)]">{locationLabel}</h2>
+          {countyLevelNote ? (
+            <p className="mt-2 text-xs text-amber-900/80">{countyLevelNote}</p>
+          ) : null}
           <p className="mt-1 text-xs font-semibold text-[var(--ep-navy-muted)]">{tierLabel(analysis.opportunityTier)}</p>
         </div>
         <div className="flex flex-wrap gap-1">
@@ -146,6 +153,12 @@ export function LocationGopPrimaryRunoffPanel({ view, variant = "hero", showDril
               Full county playbook →
             </Link>
           ) : null}
+          <Link
+            href="/election-plan/opposition-research/gop-primary-election-analysis"
+            className="rounded-full border border-[var(--ep-border)] px-3 py-1 font-semibold text-[var(--ep-navy)] hover:bg-[var(--ep-cream)]"
+          >
+            All 75 counties · GOP analysis →
+          </Link>
           <Link
             href="/election-plan/debate-prep/days/day-2/blocks/b2-film"
             className="rounded-full border border-indigo-400 px-3 py-1 font-semibold text-indigo-900 hover:bg-indigo-50"

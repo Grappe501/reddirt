@@ -196,7 +196,7 @@ export function CampusDetailPanel({ campus }: { campus: ArkansasCampus }) {
         </ul>
       </div>
 
-      <Link href={countyPlaybookHref(campus.county, campus.county.toLowerCase())} className="ep-chapter-link text-sm">
+      <Link href={countyPlaybookHref(campus.county, campus.countySlug)} className="ep-chapter-link text-sm">
         {campus.county} County playbook →
       </Link>
     </section>

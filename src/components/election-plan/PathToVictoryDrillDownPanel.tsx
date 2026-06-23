@@ -444,7 +444,7 @@ export function PathToVictoryDrillDownPanel({ view, backHref, backLabel }: Props
   const title = isCounty ? `${view.county} County` : view.name;
   const defaultBack = isCounty
     ? countyPlaybookHref(view.county, view.slug)
-    : `/election-plan/cities/${view.slug}`;
+    : cityLocationBriefHref(view.slug);
   const defaultBackLabel = isCounty ? `${view.county} County playbook` : `${view.name} location brief`;
 
   return (
