@@ -93,7 +93,7 @@ function printManualSteps(siteName) {
   console.log(`Manual steps for ${siteName ?? "your site"} (required if API unpin fails):`);
   console.log("  1. Netlify UI → Site configuration → Build & deploy → Build plugins");
   console.log('  2. Find "@netlify/plugin-nextjs" → Disable');
-  console.log("  3. Also check Build settings → Runtime → Remove pinned Next.js runtime if shown");
+  console.log("  3. Also check **Build settings → Runtime** → **Remove** pinned Next.js runtime, save, re-select Next.js, save");
   console.log("  4. Ensure netlify.toml does NOT declare [[plugins]] @netlify/plugin-nextjs");
   console.log("  5. Deploys → Clear cache and deploy site");
   console.log("");
@@ -110,7 +110,30 @@ async function main() {
   }
   const site = siteRes.json;
   console.log(`Site: ${site.name} (${siteId})`);
-  console.log(`Framework: ${site.build_settings?.framework ?? site.framework ?? "(unknown)"}`);
+  const framework = site.build_settings?.framework ?? site.framework ?? "(unknown)";
+  console.log(`Framework: ${framework}`);
+
+  const pluginsRes = await api(token, "GET", `/sites/${siteId}/plugins`);
+  if (pluginsRes.ok && Array.isArray(pluginsRes.json)) {
+    const nextPlugins = pluginsRes.json.filter((p) =>
+      String(p.package ?? p.name ?? "").includes("plugin-nextjs"),
+    );
+    if (pluginsRes.json.length === 0) {
+      console.log("Installed plugins (API): none");
+    } else {
+      console.log("Installed plugins (API):");
+      for (const p of pluginsRes.json) {
+        console.log(`  - ${p.package ?? p.name ?? JSON.stringify(p)}`);
+      }
+    }
+    if (nextPlugins.length === 0) {
+      console.log(
+        "No @netlify/plugin-nextjs via plugins API — if deploy still hits Lambda compat env cap, reset Runtime in Netlify UI (Build settings → Runtime → Remove, save, re-select Next.js, save).",
+      );
+    }
+  } else if (!pluginsRes.ok) {
+    console.warn(`Could not list plugins: HTTP ${pluginsRes.status}`);
+  }
 
   const encoded = encodeURIComponent(PLUGIN_PACKAGE);
   if (dryRun) {
