@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { CountyPlaybookPanel } from "@/components/election-plan/CountyPlaybookPanel";
 import { buildCountyWorkbenchV4OperationalView } from "@/lib/election-plan/county-workbench/build-county-v4-operational";
-import { loadCountyWorkbenchV3 } from "@/lib/election-plan/county-workbench/load-county-workbench-v3";
+import { loadCountyWorkbenchV3, loadCountyWorkbenchV3SyncFallback } from "@/lib/election-plan/county-workbench/load-county-workbench-v3";
 import { getCitiesInCounty, getCountyBySlug } from "@/lib/election-plan/load-county";
 import { getCountyStrikeTeamBySlug } from "@/lib/election-plan/load-county-strike-team";
 import { buildCountyCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
@@ -84,7 +84,9 @@ export default async function ElectionPlanCountyPage({ params }: Props) {
       () => EMPTY_FIELD_SUMMARY,
     ),
     loadCurrentElectionPlanOperator().catch(() => null),
-    withAsyncTimeout(loadCountyWorkbenchV3(county), 12_000, "county intel v3").catch(() => null),
+    withAsyncTimeout(loadCountyWorkbenchV3(county), 12_000, "county intel v3").catch(
+      () => loadCountyWorkbenchV3SyncFallback(county),
+    ),
     loadCountyVaultPreview(county.slug),
   ]);
 
