@@ -1,7 +1,7 @@
 /**
  * Day 8 crash course — Kelly-facing copy constants (client-safe).
  */
-import { epDebatePrepDayBlockHref, epDebatePrepDayRehearsalHref } from "@/lib/election-plan/debate-prep-links";
+import { epDebatePrepDayBlockHref, epDebatePrepDayHref, epDebatePrepDayRehearsalHref } from "@/lib/election-plan/debate-prep-links";
 
 const DAY8 = "day-8-command-mode-debate" as const;
 import {
@@ -12,10 +12,20 @@ import {
 export { DAY8_SOS_THREE_DOMAINS_FRAME, DAY8_WEEK_BALANCE_CORRECTION };
 
 export const DAY8_ARKANSAS_PEOPLE_FRAME =
-  "The clerk forum was your job interview with the people who run elections. Today's debate is your job interview with Arkansas — elections, business services, and Capitol management. Clerks belong inside your answers; voters and press belong in front of your eyes when you speak.";
+  "Debate day widens the lens to all Arkansas voters — elections, business services, and Capitol management stay in every answer. Picture Robert K., Diane P., and Rev. James H. when you speak; your week of study is inside those lines, not thrown away.";
 
 export const DAY8_AUDIBLE_CARD =
-  "You are behind on the week — that is OK. This morning compacts Days 1–7 and fixes the clerk-heavy imbalance: hit all three SOS jobs before you leave. No new research. Green lines only.";
+  "This morning is the compressed seven-day course — same material, stage-ready order. Each section points back to the Day 1–7 blocks where you did the deep work. Short on time? Minimum path is enough. No new research today — green lines only.";
+
+export const DAY8_SEVEN_DAY_DEEP_LINKS = [
+  { dayId: "day-1-command-foundation", label: "Day 1 · command foundation", href: epDebatePrepDayHref("day-1-command-foundation") },
+  { dayId: "day-2-read-the-table", label: "Day 2 · read the table", href: epDebatePrepDayHref("day-2-read-the-table") },
+  { dayId: "day-3-superiority-map", label: "Day 3 · superiority map", href: epDebatePrepDayHref("day-3-superiority-map") },
+  { dayId: "day-4-forum-intelligence", label: "Day 4 · forum intelligence", href: epDebatePrepDayHref("day-4-forum-intelligence") },
+  { dayId: "day-5-anticipate-and-capitalize", label: "Day 5 · anticipate & capitalize", href: epDebatePrepDayHref("day-5-anticipate-and-capitalize") },
+  { dayId: "day-6-full-simulation", label: "Day 6 · full simulation", href: epDebatePrepDayHref("day-6-full-simulation") },
+  { dayId: "day-7-refine-and-steal-show", label: "Day 7 · refine & steal show", href: epDebatePrepDayHref("day-7-refine-and-steal-show") },
+] as const;
 
 export const DAY8_CRASH_COURSE_SUMMARY =
   "Day 8 today: three-hour crash course — nine sections, three SOS domains in opening and SOS drills, then PM travel → stage → debrief.";

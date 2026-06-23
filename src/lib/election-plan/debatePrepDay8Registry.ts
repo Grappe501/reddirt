@@ -54,8 +54,8 @@ export const DAY8_CRASH_SECTION_SPECS: readonly Day8CrashSectionSpec[] = [
     sectionLabel: "§0",
     title: "Start here — today's job",
     minutes: 10,
-    activity: "Read audible + three SOS domains frame (elections · business services · Capitol management); choose full or minimum path.",
-    why: "Week leaned clerk-heavy at ACCA — today balances all three SOS jobs for Arkansas voters.",
+    activity: "Read start card + three SOS domains frame (elections · business services · Capitol management); skim seven-day deep links; choose full or minimum path.",
+    why: "Debate day replays your week in one linear path — same study, stage-ready order, with links back to every Day 1–7 block.",
     weekImports: [],
   },
   {
@@ -315,16 +315,17 @@ export function buildDay8Blocks(): DayBlockDrillDown[] {
 
     if (section.id === "s8-orient") {
       sections.unshift({ title: "Three SOS domains", body: DAY8_SOS_THREE_DOMAINS_FRAME });
-      sections.unshift({ title: "Week balance", body: DAY8_WEEK_BALANCE_CORRECTION });
-      sections.unshift({ title: "Audible", body: DAY8_AUDIBLE_CARD });
+      sections.unshift({ title: "Seven-day compression", body: DAY8_WEEK_BALANCE_CORRECTION });
+      sections.unshift({ title: "Start here", body: DAY8_AUDIBLE_CARD });
       sections.unshift({ title: "Audience frame", body: DAY8_ARKANSAS_PEOPLE_FRAME });
     }
 
     const practiceSteps: string[] = [];
     if (section.id === "s8-orient") {
       practiceSteps.push(
-        "Read audible + three-domain frame aloud.",
+        "Read start card + three-domain frame aloud.",
         "Name elections, business services, Capitol management.",
+        "Open any Day 1–7 deep link if you want the full block before continuing.",
         "Choose full or minimum path.",
       );
     } else if (section.id === "s8-pre-debate") {

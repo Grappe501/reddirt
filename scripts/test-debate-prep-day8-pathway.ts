@@ -19,6 +19,7 @@ import {
   DAY8_ARKANSAS_PEOPLE_FRAME,
   DAY8_AUDIBLE_CARD,
   DAY8_DOMAIN_COVERAGE_CHECK,
+  DAY8_SEVEN_DAY_DEEP_LINKS,
 } from "../src/lib/election-plan/debate-prep-day8-crash-copy";
 import { DEBATE_PREP_DAY8_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day8-release";
 import {
@@ -68,6 +69,9 @@ assert.ok(isKellyDay8StreamlinedPath());
 assert.ok(isKellyDay8CrashCoursePath());
 assert.ok(DAY8_PATHWAY_STORAGE_KEY.includes("day8"));
 assert.ok(DAY8_SOS_THREE_DOMAINS_FRAME.includes("business services"));
+assert.ok(DAY8_SOS_THREE_DOMAINS_FRAME.includes("Days 1–7"));
+assert.ok(DAY8_AUDIBLE_CARD.includes("compressed seven-day"));
+assert.equal(DAY8_SEVEN_DAY_DEEP_LINKS.length, 7);
 assert.ok(DAY8_ARKANSAS_PEOPLE_FRAME.includes("Capitol management"));
 assert.equal(DAY8_DOMAIN_COVERAGE_CHECK.length, 3);
 assert.equal(DAY8_EVENING_REVIEW.length, 3);

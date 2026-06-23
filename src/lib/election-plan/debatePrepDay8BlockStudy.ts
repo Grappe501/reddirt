@@ -13,6 +13,7 @@ import {
   DAY8_CLAIMS_GATE,
   DAY8_DOMAIN_COVERAGE_CHECK,
   DAY8_PM_EXECUTION_NOTE,
+  DAY8_SEVEN_DAY_DEEP_LINKS,
   DAY8_WEEK_BALANCE_CORRECTION,
 } from "@/lib/election-plan/debate-prep-day8-crash-copy";
 import {
@@ -35,9 +36,9 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     phases: [
       {
         minutesLabel: "0–4 min",
-        title: "Audible + three-domain frame",
+        title: "Start card + three-domain frame",
         steps: [
-          "Read audible card aloud — you are behind; this course is the whole week.",
+          "Read start card aloud — compressed seven-day course, same material in debate order.",
           `Read three-domain frame: ${DAY8_SOS_DOMAIN_CARDS.map((d) => d.shortLabel).join(" · ")}.`,
           DAY8_WEEK_BALANCE_CORRECTION,
           "Choose full (~3h) or minimum (~90m) path.",
@@ -48,7 +49,7 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         title: "Domain coverage checklist",
         steps: [
           ...DAY8_DOMAIN_COVERAGE_CHECK.map((q) => `Evening check preview: ${q}`),
-          "Name three things you will NOT do today (new stats, opponent smears, clerk-only opening).",
+          "Name three things you will NOT do today (new stats, opponent smears, fresh research rabbit holes).",
         ],
       },
       {
@@ -61,8 +62,12 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
       },
     ],
     deepSections: [
-      { title: "Why three domains today", body: DAY8_WEEK_BALANCE_CORRECTION },
+      { title: "Seven-day compression map", body: DAY8_WEEK_BALANCE_CORRECTION },
       { title: "Audience", body: DAY8_ARKANSAS_PEOPLE_FRAME },
+      {
+        title: "Deep study — Days 1–7",
+        body: DAY8_SEVEN_DAY_DEEP_LINKS.map((link) => `${link.label} → ${link.href}`).join(" · "),
+      },
     ],
     keyTakeaways: [
       "Can name elections, business services, and Capitol management as the three SOS jobs.",
@@ -74,6 +79,7 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
     ],
     claimsGate: claimsGateLines,
     relatedLinks: [
+      ...DAY8_SEVEN_DAY_DEEP_LINKS.map((link) => ({ href: link.href, label: `${link.label} (deep study)` })),
       { href: epDebatePrepDayConceptHref(DAY8_ID, "sos-three-domains-d8"), label: "Three SOS domains concept" },
       { href: epDebatePrepDayHref(DAY8_ID), label: "Day 8 overview" },
     ],

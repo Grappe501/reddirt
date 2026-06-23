@@ -10,6 +10,7 @@ import { ElectionPlanDay8PersonaWallPanel } from "@/components/election-plan/Ele
 import {
   DAY8_AUDIBLE_CARD,
   DAY8_CLAIMS_GATE,
+  DAY8_SEVEN_DAY_DEEP_LINKS,
   DAY8_SOS_THREE_DOMAINS_FRAME,
 } from "@/lib/election-plan/debate-prep-day8-crash-copy";
 import { epDebatePrepDayBlockHref, epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
@@ -40,6 +41,21 @@ function Day8OrientEmbed() {
       <p className="text-xs font-bold uppercase text-emerald-900">{DAY8_AUDIBLE_CARD}</p>
       <p className="text-xs text-emerald-950">{DAY8_SOS_THREE_DOMAINS_FRAME}</p>
       <p className="text-xs text-amber-950">{DAY8_CLAIMS_GATE[0]}</p>
+      <div className="pt-1">
+        <p className="text-xs font-bold text-emerald-900">Deep study — Days 1–7</p>
+        <ul className="mt-2 flex flex-wrap gap-2">
+          {DAY8_SEVEN_DAY_DEEP_LINKS.map((link) => (
+            <li key={link.dayId}>
+              <Link
+                href={link.href}
+                className="inline-block rounded border border-emerald-200 bg-white/70 px-2 py-0.5 text-xs font-semibold text-emerald-900 hover:bg-emerald-100"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

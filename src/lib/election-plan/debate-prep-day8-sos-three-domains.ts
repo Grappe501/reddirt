@@ -1,5 +1,5 @@
 /**
- * Day 8 — three SOS job domains (balance correction after clerk-heavy week).
+ * Day 8 — three SOS job domains (compressed seven-day course spine).
  * Elections · Business services · Capitol management.
  */
 import { epDebatePrepDayBlockHref, epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
@@ -28,10 +28,11 @@ export type Day8SosDomainCard = {
 };
 
 export const DAY8_SOS_THREE_DOMAINS_FRAME =
-  "The Secretary of State runs three big jobs — elections, business services, and Capitol management. This week leaned clerk-room because the forum was ACCA. Today's debate is Arkansas people: hit all three domains so voters hear administrator competence, not one-note election talk.";
+  "The Secretary of State runs three big jobs — elections, business services, and Capitol management. You built each pillar across Days 1–7. Today lines them up in debate order so Arkansas hears the full administrator, not a single talking point.";
 
+/** Seven-day course compressed into Day 8 section order — links back to full blocks. */
 export const DAY8_WEEK_BALANCE_CORRECTION =
-  "Uneven week fix — you are qualified on all three. Opening beat B names elections, business services, and Capitol management in one breath each. Middle game requires one timed SOS answer per domain before you leave the course.";
+  "Compressed seven-day path — opening pulls Day 1 + Day 7 bookends; persona and traps pull Days 2, 4, and 5; SOS drills pull Day 3 manual + Day 5 sprint. Tap any section's deep links to reopen the full block before you continue.";
 
 export const DAY8_SOS_DOMAIN_CARDS: readonly Day8SosDomainCard[] = [
   {
