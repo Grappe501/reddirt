@@ -13,6 +13,7 @@ import { getDay2OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay2O
 import { getDay3OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay3OpponentExampleStudy";
 import { getDay4OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay4OpponentExampleStudy";
 import { getDay5OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay5OpponentExampleStudy";
+import { getDay7OpponentExampleStudy } from "@/lib/election-plan/debatePrepDay7OpponentExampleStudy";
 import { getDayExampleDrillDown, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY7_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { getDay7PathwayStep } from "@/lib/election-plan/day7-learning-pathway";
 import { staticParamsForDayExamples } from "@/lib/election-plan/debatePrepDayStaticParams";
@@ -51,6 +52,8 @@ export default async function ElectionPlanDayExamplePage({
             ? getDay4OpponentExampleStudy(exampleId)
             : dayId === DAY5_ID
               ? getDay5OpponentExampleStudy(exampleId)
+              : dayId === DAY7_ID
+                ? getDay7OpponentExampleStudy(exampleId)
               : undefined;
 
   const dayLabel =

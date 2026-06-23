@@ -1,5 +1,5 @@
 /**
- * Day 7 debate-prep Pass 1 — pathway spine, block study stubs, drill-down registry.
+ * Day 7 debate-prep Pass 1–2 — pathway spine, full block study, polish surface, example study.
  */
 import assert from "node:assert/strict";
 import {
@@ -12,7 +12,13 @@ import {
   getNextDay7PathwayStep,
 } from "../src/lib/election-plan/day7-learning-pathway";
 import { DEBATE_PREP_DAY7_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day7-release";
-import { DAY7_PEAK_END_FRAME } from "../src/lib/election-plan/debate-prep-day7-polish-copy";
+import {
+  DAY7_CLOSING_BEATS,
+  DAY7_DEBRIEF_IMPORT_LABEL,
+  DAY7_PEAK_END_FRAME,
+  DAY7_POLISH_CLAIMS_GATE,
+} from "../src/lib/election-plan/debate-prep-day7-polish-copy";
+import { buildDay7PolishSurface } from "../src/lib/election-plan/load-day7-polish-surface";
 import {
   DAY7_ID,
   listDayBlocksDrillDown,
@@ -23,7 +29,11 @@ import {
   listDayRehearsalScripts,
   dayHasDrillDownPages,
 } from "../src/lib/election-plan/debatePrepDayDrillDown";
-import { getDay7BlockStudy, listDay7BlockStudyIds } from "../src/lib/election-plan/debatePrepDay7BlockStudy";
+import { DAY7_BLOCK_STUDY, getDay7BlockStudy, listDay7BlockStudyIds } from "../src/lib/election-plan/debatePrepDay7BlockStudy";
+import {
+  getDay7OpponentExampleStudy,
+  listDay7OpponentExampleStudyIds,
+} from "../src/lib/election-plan/debatePrepDay7OpponentExampleStudy";
 import { listDayBlockPhaseParams } from "../src/lib/election-plan/debatePrepBlockPhase";
 import {
   staticParamsForDayBlocks,
@@ -53,15 +63,42 @@ assert.ok(getNextDay7PathwayStep(steps[0]!.id), "first step should have a next s
 assert.equal(DAY7_EVENING_REVIEW.length, 3);
 assert.ok(DAY7_DAY6_REVIEW.href.includes("day-6-full-simulation"));
 assert.ok(DAY7_DAY8_TEASER.href.includes("day-8-command-mode-debate"));
-assert.equal(DEBATE_PREP_DAY7_RELEASE_VERSION, "day-7-refine-and-steal-show-pass1");
+assert.equal(DEBATE_PREP_DAY7_RELEASE_VERSION, "day-7-refine-and-steal-show-pass2");
 assert.ok(DAY7_PEAK_END_FRAME.includes("Peak-end"));
+assert.ok(DAY7_POLISH_CLAIMS_GATE.length >= 4);
+assert.equal(DAY7_CLOSING_BEATS.length, 3);
+assert.ok(DAY7_DEBRIEF_IMPORT_LABEL.includes("Day 6"));
+
+const polish = buildDay7PolishSurface();
+assert.ok(polish.bookends.opening.durationSeconds === 90);
+assert.ok(polish.bookends.closing.durationSeconds === 60);
+assert.ok(polish.bookends.opening.script.length > 40);
+assert.ok(polish.bookends.closing.script.includes("clerks") || polish.bookends.closing.script.includes("Clerks"));
+assert.ok(polish.debriefPrompts.length >= 5);
+assert.ok(polish.quotableCandidates.length >= 2);
+assert.ok(polish.hasDay6BookendPullForward);
+assert.ok(polish.openingBeats.length === 3);
+assert.ok(polish.closingBeats.length === 3);
+assert.ok(polish.day6SimHref.includes("day-6-full-simulation"));
+assert.ok(polish.day6DebriefBlockHref.includes("b6-sim"));
+assert.ok(!polish.day6SimHref.includes("/admin/"));
 
 for (const blockId of listDay7BlockStudyIds()) {
   const study = getDay7BlockStudy(blockId);
-  assert.ok(study && study.phases.length >= 3, `${blockId} stub phases`);
+  assert.ok(study && study.phases.length >= 3, `${blockId} full study phases`);
   assert.ok(study.claimsGate?.length, `${blockId} claimsGate`);
+  assert.ok(study.deepSections && study.deepSections.length >= 3, `${blockId} deepSections`);
   assert.equal(listDayBlockPhaseParams(DAY7_ID, blockId).length, study.phases.length);
 }
+
+assert.equal(Object.keys(DAY7_BLOCK_STUDY).length, 4);
+
+const ex7 = getDay7OpponentExampleStudy("ex7-show-steal");
+assert.ok(ex7, "ex7-show-steal study");
+assert.ok(ex7!.phases.length >= 4, "ex7-show-steal has 4+ phases");
+assert.ok((ex7!.deepSections?.length ?? 0) >= 3);
+assert.ok(ex7!.claimsGate?.length);
+assert.equal(listDay7OpponentExampleStudyIds().length, 1);
 
 const microLesson = steps.find((s) => s.kind === "micro-lesson");
 assert.ok(microLesson?.href.includes("d7-steal"), "pathway includes steal micro-lesson");
@@ -103,5 +140,5 @@ assert.equal(exampleParams.length, 1);
 assert.equal(DAY7_MINIMUM_BLOCK_IDS[0], "b7-open-close");
 
 console.log(
-  `test-debate-prep-day7-pathway: OK (${steps.length} steps, ${blocks.length} blocks, pass1 stub study)`,
+  `test-debate-prep-day7-pathway: OK (${steps.length} steps, ${blocks.length} blocks, polish surface + ex7 study, pass2)`,
 );
