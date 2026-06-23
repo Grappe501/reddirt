@@ -76,6 +76,7 @@ jobs:
           fi
           node scripts/netlify-enforce-env-scopes.cjs
           node scripts/netlify-enforce-env-scopes.cjs --launch-minimal
+          node scripts/netlify-unpin-nextjs-runtime.cjs || true
 
       - name: Trigger Netlify build hook (optional)
         env:

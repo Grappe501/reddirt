@@ -327,6 +327,8 @@
     "netlify:env:scopes:launch-minimal:dry": "node scripts/netlify-enforce-env-scopes.cjs --launch-minimal --dry-run",
     "netlify:env:scopes:launch-minimal:deploy": "node scripts/netlify-enforce-env-scopes.cjs --launch-minimal --deploy",
     "netlify:env:audit": "node scripts/audit-netlify-function-env.cjs",
+    "netlify:unpin-nextjs-runtime": "node scripts/netlify-unpin-nextjs-runtime.cjs",
+    "netlify:unpin-nextjs-runtime:dry": "node scripts/netlify-unpin-nextjs-runtime.cjs --dry-run",
     "db:studio": "prisma studio",
     "test:db:prompt": "node scripts/prompt-and-test-db.mjs",
     "scrape:biography-sources": "tsx scripts/scrape-public-biography-sources.ts",
@@ -559,7 +561,6 @@
     "seed": "tsx prisma/seed.ts"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.15.11",
     "@types/leaflet": "^1.9.16",
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",

@@ -30,7 +30,7 @@ import type { ExecutiveCalendarEntry } from "@/lib/election-plan/field-event-wor
 import type { CountyStrikeTeam } from "@/lib/election-plan/load-county-strike-team";
 import type { LocationCalendarBinding } from "@/lib/election-plan/location-calendar-binding";
 import type { ElectionPlanCity, ElectionPlanCounty } from "@/lib/election-plan/types";
-import { cityLocationBriefHref, countyPlaybookHref, electionPlanSlugForCountyName } from "@/lib/election-plan/location-links";
+import { cityLocationBriefHref } from "@/lib/election-plan/location-links";
 import { cityPathToVictoryHref, countyPathToVictoryHref } from "@/lib/election-plan/county-playbook-links";
 import { formatVotes } from "@/lib/election-plan/electionPlanData";
 import { getCountyVictoryTarget } from "@/lib/election-plan/load-county-victory-targets";

@@ -123,7 +123,11 @@ After scoping: **Deploys → Clear cache and deploy site**.
 
 ### If scoping is correct and deploy still fails
 
-1. **Unpin the Next adapter** — remove `[[plugins]] package = "@netlify/plugin-nextjs"` from `netlify.toml` (keep custom prune/env-guard plugins). Netlify auto-applies the latest OpenNext adapter with **modern Functions runtime** (no 4 KB env cap). Pinning opts out of runtime updates and can leave the site on Lambda compatibility mode where `FEATURE_FLAGS` (~9 KB) alone breaks deploy.
+1. **Unpin the Next adapter (most common after env scoping is clean)** — build logs show `origin: ui` for `@netlify/plugin-nextjs` and lambda-env-guard fails with `FEATURE_FLAGS ~9 KB`:
+   - **Netlify UI:** Site configuration → Build & deploy → **Build plugins** → **Disable** `@netlify/plugin-nextjs`
+   - Also check **Build settings → Runtime** → **Remove** pinned Next.js runtime if shown
+   - **Do not** pin `[[plugins]] package = "@netlify/plugin-nextjs"` in `netlify.toml` or `package.json` — Netlify auto-applies OpenNext (modern Functions runtime, no 4 KB env cap)
+   - **Automate:** `NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime` then **Clear cache and deploy site**
 2. Run `npm run netlify:env:audit` locally (after `npx netlify login`) to see function-scoped env bytes + compat risk.
 3. Open a Netlify support ticket if deploy still fails: ask to confirm **modern Functions runtime** (not Lambda compatibility mode) for `___netlify-server-handler`.
 4. **Base directory** — repo root should be the RedDirt app; **Publish** = `.next` (empty override is fine).

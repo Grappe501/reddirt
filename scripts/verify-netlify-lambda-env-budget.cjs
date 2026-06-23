@@ -187,7 +187,7 @@ function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, r
   if (onNetlify && compatPadding > 0 && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES) {
     fail = true;
     lines.push(
-      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compatibility mode. Unpin @netlify/plugin-nextjs in netlify.toml so Netlify uses modern OpenNext runtime, or ask Netlify support to migrate the site off compatibility mode.`,
+      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compatibility mode. Runtime env is fine — the site is stuck on the legacy Next adapter. Fix: Netlify UI → Build & deploy → Build plugins → Disable "@netlify/plugin-nextjs" (often origin: ui in deploy logs). Do not pin the plugin in package.json or netlify.toml. Or run: NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime`,
     );
   }
 
