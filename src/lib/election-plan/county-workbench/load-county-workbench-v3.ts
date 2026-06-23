@@ -9,6 +9,11 @@ import { prisma } from "@/lib/db";
 import type { ElectionPlanCounty } from "@/lib/election-plan/types";
 
 import { loadCountyWikipediaReference } from "./load-county-wikipedia-reference";
+import {
+  bundledCountyElectionHistory,
+  bundledRegisteredVotersEstimate,
+  offlineEnrichmentWarnings,
+} from "./load-county-offline-enrichment";
 import type {
   CountyWorkbenchElectionRow,
   CountyWorkbenchFactRow,
@@ -94,6 +99,10 @@ function buildCountyIntelFallback(
       verificationStatus: f.verificationStatus,
     }));
 
+  const electionHistory = bundledCountyElectionHistory(county.county);
+  const registeredVotersEstimate = bundledRegisteredVotersEstimate(county.slug);
+  const offlineWarnings = offlineEnrichmentWarnings(county.county);
+
   return {
     registrySlug,
     electionPlanSlug: county.slug,
@@ -123,33 +132,109 @@ function buildCountyIntelFallback(
       bachelorsPct: null,
       ageBands: null,
       raceEthnicity: null,
-      source: null,
+      source: registeredVotersEstimate ? "SOS voter file rollup (active registration — not Census population)" : null,
       asOfYear: null,
-      missingWarnings: ["County profile engine unavailable — DB or ingest not reachable."],
+      missingWarnings: offlineWarnings,
     },
     blsEconomy: {
       unemploymentRate: null,
       industryMix: null,
-      laborNote: null,
-      missingWarnings: ["BLS block unavailable offline."],
+      laborNote: registeredVotersEstimate
+        ? `SOS active registration (voter file): ${registeredVotersEstimate.toLocaleString("en-US")} — BLS requires DB ingest.`
+        : null,
+      missingWarnings: ["BLS block requires CountyPublicDemographics in database."],
     },
-    electionHistory: [],
-    lastGeneralTurnoutPct: null,
-    registeredVotersEstimate: null,
+    electionHistory,
+    lastGeneralTurnoutPct: computeLastTurnout(electionHistory),
+    registeredVotersEstimate,
     electedOfficials: [],
     factoryFacts,
     factoryBrief,
     dataGaps: [
-      "County political profile could not load — election history and census require DB or ingest.",
+      "County political profile could not load — Census/BLS/elected officials require DB.",
+      ...(electionHistory.length > 0
+        ? ["Election history from bundled SOS JSON below."]
+        : ["No election history in bundled SOS JSON for this county."]),
       "Election plan snapshot metrics (VCI, tier, missions) still available above.",
       ...(factoryBrief?.whatWeDoNotKnow ?? []),
     ],
-    sources: [],
-    profileMissingWarnings: ["County profile engine offline"],
+    sources: electionHistory.length > 0 ? [{ id: "bundled-sos-json", label: "Arkansas SOS election JSON", type: "file", pathOrNote: "data/election/arkansas-county-election-history.normalized.json" }] : [],
+    profileMissingWarnings: offlineWarnings,
   };
 }
 
-export async function loadCountyWorkbenchV3(county: ElectionPlanCounty): Promise<CountyWorkbenchV3View> {
+function mergeDbCountyIntoIntel(
+  view: CountyWorkbenchV3View,
+  dbCounty: {
+    demographics: {
+      population: number | null;
+      votingAgePopulation: number | null;
+      medianHouseholdIncome: number | null;
+      povertyRatePercent: number | null;
+      bachelorsOrHigherPercent: number | null;
+      ageBandsJson: unknown;
+      raceEthnicityJson: unknown;
+      source: string | null;
+      sourceDetail: string | null;
+      asOfYear: number | null;
+      unemploymentRatePercent: number | null;
+      blsIndustryMixJson: unknown;
+      laborEmploymentNote: string | null;
+    } | null;
+    elected: Array<{
+      jurisdiction: string;
+      officeTitle: string;
+      name: string;
+      party: string | null;
+      termEnd: string | null;
+      sourceUrl: string | null;
+      reviewStatus: string;
+    }>;
+  } | null,
+): CountyWorkbenchV3View {
+  if (!dbCounty) return view;
+  const demo = dbCounty.demographics;
+  const electedOfficials = (dbCounty.elected ?? []).map((o) => ({
+    jurisdiction: o.jurisdiction,
+    officeTitle: o.officeTitle,
+    name: o.name,
+    party: o.party,
+    termEnd: o.termEnd,
+    sourceUrl: o.sourceUrl,
+    reviewStatus: o.reviewStatus,
+  }));
+  if (!demo && electedOfficials.length === 0) return view;
+  return {
+    ...view,
+    censusDemographics: demo
+      ? {
+          population: demo.population,
+          votingAgePopulation: demo.votingAgePopulation,
+          medianIncome: demo.medianHouseholdIncome,
+          povertyRate: demo.povertyRatePercent,
+          bachelorsPct: demo.bachelorsOrHigherPercent,
+          ageBands: demo.ageBandsJson,
+          raceEthnicity: demo.raceEthnicityJson,
+          source: demo.sourceDetail ?? demo.source ?? view.censusDemographics.source,
+          asOfYear: demo.asOfYear,
+          missingWarnings: view.censusDemographics.missingWarnings.filter(
+            (w) => !w.includes("Census ACS and BLS blocks require"),
+          ),
+        }
+      : view.censusDemographics,
+    blsEconomy: demo
+      ? {
+          unemploymentRate: demo.unemploymentRatePercent,
+          industryMix: demo.blsIndustryMixJson,
+          laborNote: demo.laborEmploymentNote,
+          missingWarnings: [],
+        }
+      : view.blsEconomy,
+    electedOfficials: electedOfficials.length > 0 ? electedOfficials : view.electedOfficials,
+  };
+}
+
+async function loadCountyWorkbenchV3Inner(county: ElectionPlanCounty): Promise<CountyWorkbenchV3View> {
   const registrySlug = toRegistrySlug(county.slug);
   const reg = getRegistryCountyBySlug(registrySlug);
   const fips = reg?.fips ?? "";
@@ -177,7 +262,8 @@ export async function loadCountyWorkbenchV3(county: ElectionPlanCounty): Promise
   ]);
 
   if (!profile) {
-    return buildCountyIntelFallback(county, registrySlug, reg, regionLabel, wiki, factoryBrief);
+    const fallback = buildCountyIntelFallback(county, registrySlug, reg, regionLabel, wiki, factoryBrief);
+    return mergeDbCountyIntoIntel(fallback, dbCounty);
   }
 
   const demo = dbCounty?.demographics;
@@ -205,7 +291,10 @@ export async function loadCountyWorkbenchV3(county: ElectionPlanCounty): Promise
     reviewStatus: o.reviewStatus,
   }));
 
-  const electionHistory = electionRowsFromProfile(profile.electionHistory);
+  const electionHistory =
+    electionRowsFromProfile(profile.electionHistory).length > 0
+      ? electionRowsFromProfile(profile.electionHistory)
+      : bundledCountyElectionHistory(county.county);
 
   const dataGaps = [
     ...new Set([
@@ -258,7 +347,8 @@ export async function loadCountyWorkbenchV3(county: ElectionPlanCounty): Promise
     },
     electionHistory,
     lastGeneralTurnoutPct: computeLastTurnout(electionHistory),
-    registeredVotersEstimate: profile.registrationProfile.lastKnownRegisteredFromResults,
+    registeredVotersEstimate:
+      profile.registrationProfile.lastKnownRegisteredFromResults ?? bundledRegisteredVotersEstimate(county.slug),
     electedOfficials,
     factoryFacts,
     factoryBrief,
@@ -266,4 +356,21 @@ export async function loadCountyWorkbenchV3(county: ElectionPlanCounty): Promise
     sources: profile.sources,
     profileMissingWarnings: profile.missingDataWarnings,
   };
+}
+
+export function loadCountyWorkbenchV3SyncFallback(county: ElectionPlanCounty): CountyWorkbenchV3View {
+  const registrySlug = toRegistrySlug(county.slug);
+  const reg = getRegistryCountyBySlug(registrySlug);
+  const regionLabel = reg ? (regionMetaForId(reg.regionId)?.label ?? reg.regionId) : "—";
+  const factoryBrief = loadFactoryBrief(registrySlug);
+  const wiki = loadCountyWikipediaReference(registrySlug);
+  return buildCountyIntelFallback(county, registrySlug, reg, regionLabel, wiki, factoryBrief);
+}
+
+export async function loadCountyWorkbenchV3(county: ElectionPlanCounty): Promise<CountyWorkbenchV3View> {
+  try {
+    return await loadCountyWorkbenchV3Inner(county);
+  } catch {
+    return loadCountyWorkbenchV3SyncFallback(county);
+  }
 }

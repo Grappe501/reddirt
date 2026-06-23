@@ -72,6 +72,9 @@ export function isForumLabPublicHidden(): boolean {
 }
 
 /** v9 corporate course hub vs legacy operator hub */
-export function useDebateCourseHubV9(): boolean {
+export function shouldShowDebateCourseHubV9(): boolean {
   return KELLY_FACING_ELECTION_PLAN;
 }
+
+/** @deprecated Use shouldShowDebateCourseHubV9 — not a React hook. */
+export const useDebateCourseHubV9 = shouldShowDebateCourseHubV9;

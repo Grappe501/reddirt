@@ -58,6 +58,33 @@ function moduleStatus(p: {
 }
 
 export function getDebateCourseProgress(): DebateCourseProgressSnapshot {
+  try {
+    return buildDebateCourseProgress();
+  } catch {
+    const modules = DEBATE_COURSE_MODULES.map((module) => ({
+      module,
+      requiredPct: 0,
+      requiredDone: 0,
+      requiredTotal: 0,
+      isMinimumComplete: false,
+      isFullyComplete: false,
+      status: "not_started" as const,
+    }));
+    const first = modules[0]!;
+    return {
+      modules,
+      modulesComplete: 0,
+      modulesStarted: 0,
+      coursePct: 0,
+      recommendedModuleNumber: first.module.moduleNumber,
+      recommendedModule: first.module,
+      totalRequiredSteps: 0,
+      totalRequiredDone: 0,
+    };
+  }
+}
+
+function buildDebateCourseProgress(): DebateCourseProgressSnapshot {
   const modules: DebateCourseModuleProgress[] = DEBATE_COURSE_MODULES.map((module, index) => {
     const snap = PROGRESS_GETTERS[index]!();
     const status = moduleStatus(snap);

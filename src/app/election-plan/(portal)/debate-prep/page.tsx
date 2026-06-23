@@ -1,6 +1,6 @@
 import { ElectionPlanDebateCourseHubPanel } from "@/components/election-plan/ElectionPlanDebateCourseHubPanel";
 import { ElectionPlanDebatePrepHubPanel } from "@/components/election-plan/ElectionPlanDebatePrepHubPanel";
-import { useDebateCourseHubV9 } from "@/lib/election-plan/kelly-facing-ui";
+import { shouldShowDebateCourseHubV9 } from "@/lib/election-plan/kelly-facing-ui";
 
 export const metadata = {
   title: "Debate Command Course | Election Plan",
@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 export default function ElectionPlanDebatePrepPage() {
-  const studentCourse = useDebateCourseHubV9();
+  const studentCourse = shouldShowDebateCourseHubV9();
 
   return (
     <>
