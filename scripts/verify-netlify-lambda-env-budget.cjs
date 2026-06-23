@@ -138,30 +138,67 @@ function isLambdaCompatMode() {
   return Boolean(process.env.AWS_LAMBDA_JS_RUNTIME);
 }
 
+const SERVER_HANDLER_DIRS = [
+  ".netlify/functions-internal/___netlify-server-handler",
+  ".netlify/functions/___netlify-server-handler",
+];
+
 /** OpenNext v5+ server handler markers (modern Functions runtime — no 4 KB env cap). */
 const OPENNEXT_HANDLER_MARKERS = [
   ".netlify/functions-internal/___netlify-server-handler/___netlify-server-handler.mjs",
   ".netlify/functions-internal/___netlify-server-handler/run-config.json",
   ".netlify/functions-internal/___netlify-server-handler/.netlify/dist/run/handlers/server.js",
+  ".netlify/functions/___netlify-server-handler/___netlify-server-handler.mjs",
 ];
 
+function readHandlerDirEntries(cwd = process.cwd()) {
+  for (const rel of SERVER_HANDLER_DIRS) {
+    const abs = path.join(cwd, rel);
+    try {
+      if (!fs.existsSync(abs) || !fs.statSync(abs).isDirectory()) continue;
+      return { abs, rel, entries: fs.readdirSync(abs) };
+    } catch {
+      /* skip unreadable handler dir */
+    }
+  }
+  return null;
+}
+
 function detectOpenNextModernHandler(cwd = process.cwd()) {
-  return OPENNEXT_HANDLER_MARKERS.some((rel) => fs.existsSync(path.join(cwd, rel)));
+  if (OPENNEXT_HANDLER_MARKERS.some((rel) => fs.existsSync(path.join(cwd, rel)))) {
+    return true;
+  }
+  const handler = readHandlerDirEntries(cwd);
+  if (!handler) return false;
+  return handler.entries.some(
+    (name) => name.endsWith(".mjs") || name === "run-config.json",
+  );
+}
+
+/** Legacy Lambda adapter — .js entry without OpenNext .mjs markers. */
+function detectLegacyLambdaHandler(cwd = process.cwd()) {
+  if (detectOpenNextModernHandler(cwd)) return false;
+  if (isLambdaCompatMode()) return true;
+  const handler = readHandlerDirEntries(cwd);
+  if (!handler) return false;
+  return handler.entries.some(
+    (name) =>
+      name === "___netlify-server-handler.js" ||
+      (name.endsWith(".js") && !name.endsWith(".mjs")),
+  );
 }
 
 /**
- * Netlify injects FEATURE_FLAGS in build env on compat and modern runtimes.
- * Only count toward the compat deploy budget when legacy Lambda mode is likely.
+ * Netlify injects FEATURE_FLAGS (~9 KB) in every build env — modern and legacy.
+ * Only count toward the compat deploy budget when legacy Lambda mode is confirmed.
  */
 function estimateCompatFeatureFlagsBytes(
   featureFlags,
-  { handlerPackaged = false, modernHandler = false } = {},
+  { modernHandler = false, legacyHandler = false } = {},
 ) {
-  if (modernHandler) return 0;
+  if (modernHandler || !legacyHandler) return 0;
   const ffBytes = featureFlags?.bytes ?? 0;
-  if (isLambdaCompatMode()) return ffBytes || FEATURE_FLAGS_TYPICAL_BYTES;
-  if (handlerPackaged && ffBytes >= LAMBDA_ENV_LIMIT_BYTES) return ffBytes;
-  return 0;
+  return ffBytes || FEATURE_FLAGS_TYPICAL_BYTES;
 }
 
 function estimateCompatDeployBytes({
@@ -172,13 +209,20 @@ function estimateCompatDeployBytes({
   apiRuntimeBytes,
   handlerPackaged = false,
   modernHandler = false,
+  legacyHandler = false,
 }) {
   const worstCase = apiRuntimeBytes ?? deployEstimate ?? total + (buildOnlyLeaked ?? 0);
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
   const compatPadding = onNetlify
-    ? estimateCompatFeatureFlagsBytes(featureFlags, { handlerPackaged, modernHandler })
+    ? estimateCompatFeatureFlagsBytes(featureFlags, { modernHandler, legacyHandler })
     : 0;
-  return { worstCase, compatPadding, lambdaDeployBytes: worstCase + compatPadding, modernHandler };
+  return {
+    worstCase,
+    compatPadding,
+    lambdaDeployBytes: worstCase + compatPadding,
+    modernHandler,
+    legacyHandler,
+  };
 }
 
 function getDeployRiskMessage({
@@ -191,6 +235,7 @@ function getDeployRiskMessage({
   apiRuntimeBytes,
   handlerPackaged = false,
   modernHandler = detectOpenNextModernHandler(),
+  legacyHandler = detectLegacyLambdaHandler(),
 }) {
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
   const { worstCase, compatPadding, lambdaDeployBytes } = estimateCompatDeployBytes({
@@ -201,6 +246,7 @@ function getDeployRiskMessage({
     apiRuntimeBytes,
     handlerPackaged,
     modernHandler,
+    legacyHandler,
   });
   const nodeOptions = rows.find((r) => r.key === "NODE_OPTIONS");
 
@@ -230,7 +276,7 @@ function getDeployRiskMessage({
   if (onNetlify && compatPadding > 0 && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES) {
     fail = true;
     lines.push(
-      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compatibility mode. Runtime env is fine — the site is stuck on the legacy Next adapter. Fix: Netlify UI → Build & deploy → Build plugins → Disable "@netlify/plugin-nextjs"; also Build settings → Runtime → Remove pinned Next.js runtime, save, re-select Next.js, save. Do not pin the plugin in package.json or netlify.toml. Or run: NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime`,
+      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compatibility mode. Runtime env is fine — the site is stuck on the legacy Next adapter. Fix: Netlify UI → Build & deploy → Build plugins → disable any UI-pinned old @netlify/plugin-nextjs; Build settings → Runtime → remove pinned Next.js runtime, save, re-select Next.js, save. Keep [[plugins]] package = "@netlify/plugin-nextjs" (unpinned) first in netlify.toml. Or run: NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime`,
     );
   }
 
@@ -343,6 +389,8 @@ module.exports = {
   estimateNetlifyApiFunctionEnvBytes,
   estimateCompatDeployBytes,
   detectOpenNextModernHandler,
+  detectLegacyLambdaHandler,
+  readHandlerDirEntries,
   printNetlifyEnvScopingChecklist,
   getDeployRiskMessage,
   isBuildOnlyKey,
