@@ -11,12 +11,14 @@ import { getFirstDay4PathwayStep } from "@/lib/election-plan/day4-learning-pathw
 import { getFirstDay5PathwayStep } from "@/lib/election-plan/day5-learning-pathway";
 import { getFirstDay6PathwayStep } from "@/lib/election-plan/day6-learning-pathway";
 import { getFirstDay7PathwayStep } from "@/lib/election-plan/day7-learning-pathway";
+import { getFirstDay8PathwayStep } from "@/lib/election-plan/day8-learning-pathway";
 import { DAY7_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day7-polish-copy";
-import { dayHasDrillDownPages, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY8_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day8-crash-copy";
+import { dayHasDrillDownPages, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, DAY8_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { EP_DEBATE_PREP_HREF } from "@/lib/election-plan/debate-prep-links";
 import { DAY5_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
 import { DAY6_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
-import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath, isKellyDay6StreamlinedPath, isKellyDay7StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
+import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath, isKellyDay6StreamlinedPath, isKellyDay7StreamlinedPath, isKellyDay8CrashCoursePath, isKellyDay8StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import {
   DEBATE_WEEK_INTENSIVE_DAY_IDS,
   getDebateWeekIntensiveDay,
@@ -50,6 +52,8 @@ export default async function ElectionPlanDebatePrepDayPage({
   const streamlinedDay5 = isKellyDay5StreamlinedPath() && dayId === DAY5_ID;
   const streamlinedDay6 = isKellyDay6StreamlinedPath() && dayId === DAY6_ID;
   const streamlinedDay7 = isKellyDay7StreamlinedPath() && dayId === DAY7_ID;
+  const streamlinedDay8 = isKellyDay8StreamlinedPath() && dayId === DAY8_ID;
+  const crashCourseDay8 = isKellyDay8CrashCoursePath() && dayId === DAY8_ID;
   const firstStep =
     dayId === DAY1_ID
       ? getFirstDay1PathwayStep()
@@ -65,6 +69,8 @@ export default async function ElectionPlanDebatePrepDayPage({
                 ? getFirstDay6PathwayStep()
               : dayId === DAY7_ID
                 ? getFirstDay7PathwayStep()
+              : dayId === DAY8_ID
+                ? getFirstDay8PathwayStep()
               : null;
 
   return (
@@ -207,6 +213,30 @@ export default async function ElectionPlanDebatePrepDayPage({
               className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
             >
               Start now · {firstStep.label} →
+            </Link>
+          </>
+        ) : null}
+
+        {(streamlinedDay8 || crashCourseDay8) && firstStep ? (
+          <>
+            <KellyPageSummary summary={DAY8_HUB_TONIGHT_SUMMARY} />
+            <Link
+              href={firstStep.href}
+              className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
+            >
+              Start crash course · {firstStep.label} →
+            </Link>
+          </>
+        ) : null}
+
+        {!streamlinedDay8 && !crashCourseDay8 && dayId === DAY8_ID && firstStep ? (
+          <>
+            <KellyPageSummary summary={DAY8_HUB_TONIGHT_SUMMARY} />
+            <Link
+              href={firstStep.href}
+              className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
+            >
+              Start crash course · {firstStep.label} →
             </Link>
           </>
         ) : null}

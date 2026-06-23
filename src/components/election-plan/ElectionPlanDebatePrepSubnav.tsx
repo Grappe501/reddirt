@@ -19,7 +19,7 @@ import {
   EP_DEBATE_TECHNIQUES_HREF,
   epDebatePrepDayHref,
 } from "@/lib/election-plan/debate-prep-links";
-import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, DAY8_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { showFullDebatePrepSubnav } from "@/lib/election-plan/kelly-facing-ui";
 
 const fullTabs = [
@@ -47,6 +47,7 @@ const compactTabs = [
   { href: epDebatePrepDayHref(DAY5_ID), label: "Day 5" },
   { href: epDebatePrepDayHref(DAY6_ID), label: "Day 6" },
   { href: epDebatePrepDayHref(DAY7_ID), label: "Day 7" },
+  { href: epDebatePrepDayHref(DAY8_ID), label: "Day 8" },
   { href: EP_VOTER_AUDIENCES_HREF, label: "Audiences" },
   { href: EP_LEGISLATIVE_INTEL_HREF, label: "Bills" },
   { href: EP_DEBATE_PREP_WAR_ROOM_HREF, label: "War room" },

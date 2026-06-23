@@ -1,5 +1,5 @@
 /**
- * Static params for Election Plan day drill-down routes (Days 1–7).
+ * Static params for Election Plan day drill-down routes (Days 1–8).
  */
 import {
   DAY1_ID,
@@ -9,6 +9,7 @@ import {
   DAY5_ID,
   DAY6_ID,
   DAY7_ID,
+  DAY8_ID,
   listDayBlocksDrillDown,
   listDayCommandDrillsDrillDown,
   listDayConcepts,
@@ -19,7 +20,7 @@ import {
 } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { listDayBlockPhaseParams } from "@/lib/election-plan/debatePrepBlockPhase";
 
-export const DRILL_DOWN_DAY_IDS: DrillDownDayId[] = [DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID];
+export const DRILL_DOWN_DAY_IDS: DrillDownDayId[] = [DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, DAY8_ID];
 
 export function staticParamsForDayBlocks() {
   return DRILL_DOWN_DAY_IDS.flatMap((dayId) =>

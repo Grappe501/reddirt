@@ -26,15 +26,22 @@ import { ElectionPlanDay7ContinueButton } from "@/components/election-plan/Elect
 import {
   ElectionPlanDay7PathwayPanel,
 } from "@/components/election-plan/ElectionPlanDay7PathwayPanel";
+import { ElectionPlanDay8ContinueButton } from "@/components/election-plan/ElectionPlanDay8ContinueButton";
+import { ElectionPlanDay8PathwayProgressBar } from "@/components/election-plan/ElectionPlanDay8PathwayProgressBar";
+import {
+  ElectionPlanDay8PathwayPanel,
+} from "@/components/election-plan/ElectionPlanDay8PathwayPanel";
 import { ElectionPlanNorrisCoalitionDrillPanel } from "@/components/election-plan/ElectionPlanNorrisCoalitionDrillPanel";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
-import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, DAY8_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { DAY7_HUB_TONIGHT_SUMMARY, DAY7_PEAK_END_FRAME, DAY7_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day7-polish-copy";
+import { DAY8_ARKANSAS_PEOPLE_FRAME, DAY8_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day8-crash-copy";
+import { DAY8_SOS_THREE_DOMAINS_FRAME } from "@/lib/election-plan/debate-prep-day8-sos-three-domains";
 import { DAY6_APA_SIM_FRAME, DAY6_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
 import { DAY4_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day4-forum-intelligence-copy";
 import { DAY5_APA_STATEWIDE_BROADCAST_FRAME, DAY5_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
-import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath, isKellyDay6StreamlinedPath, isKellyDay7StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
+import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath, isKellyDay6StreamlinedPath, isKellyDay7StreamlinedPath, isKellyDay8CrashCoursePath, isKellyDay8StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import type { IntensiveDayId, IntensiveDayPlan } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { dayHasDrillDownPages } from "@/lib/election-plan/debatePrepDayDrillDown";
@@ -59,6 +66,8 @@ export function ElectionPlanDayDrillDownOverview({
   const streamlinedDay5 = isKellyDay5StreamlinedPath() && dayId === DAY5_ID;
   const streamlinedDay6 = isKellyDay6StreamlinedPath() && dayId === DAY6_ID;
   const streamlinedDay7 = isKellyDay7StreamlinedPath() && dayId === DAY7_ID;
+  const streamlinedDay8 = isKellyDay8StreamlinedPath() && dayId === DAY8_ID;
+  const crashCourseDay8 = isKellyDay8CrashCoursePath() && dayId === DAY8_ID;
   const day1Audiences = dayId === DAY1_ID ? resolveAudiencesForHooks(["lane-2", "county-champion", "author-vs-administrator"]) : [];
   const day2Audiences =
     dayId === DAY2_ID ? resolveAudiencesForHooks(["county-champion", "integrity", "three-way"]) : [];
@@ -130,6 +139,32 @@ export function ElectionPlanDayDrillDownOverview({
           {DAY5_APA_STATEWIDE_BROADCAST_FRAME}
         </p>
         <ElectionPlanDay5PathwayPanel showFullList showDay4Review showDay6Teaser />
+      </>
+    );
+  }
+
+  if (streamlinedDay8 || crashCourseDay8) {
+    return (
+      <>
+        <KellyPageSummary
+          summary={`One morning, one path — compact the whole week into debate order. ${dayPageSummary(plan)} ${DAY8_V3_KELLY_MINIMUM_SUMMARY}`}
+        />
+        <p className="mb-4 rounded-lg border border-emerald-300/60 bg-emerald-50/40 px-3 py-2 text-xs text-emerald-950">
+          {DAY8_SOS_THREE_DOMAINS_FRAME}
+        </p>
+        <p className="mb-4 rounded-lg border border-emerald-300/60 bg-emerald-50/40 px-3 py-2 text-xs text-emerald-950">
+          {DAY8_ARKANSAS_PEOPLE_FRAME}
+        </p>
+        <ElectionPlanDay8PathwayPanel showFullList showDay7Review />
+      </>
+    );
+  }
+
+  if (dayId === DAY8_ID) {
+    return (
+      <>
+        <KellyPageSummary summary={`${plan.goalForKelly} ${DAY8_V3_KELLY_MINIMUM_SUMMARY}`} />
+        <ElectionPlanDay8PathwayPanel showFullList showDay7Review />
       </>
     );
   }
@@ -219,7 +254,9 @@ export function ElectionPlanDayStepFooter({
   currentStepId: string;
 }) {
   const hint =
-    dayId === DAY7_ID
+    dayId === DAY8_ID
+      ? "Minimum path is enough if tired — full run-through rolls to car rehearsal. No new research after lock sheet."
+      : dayId === DAY7_ID
       ? "Bookends polish block only is enough for tonight — claims scan and psych refresh roll to debate-eve AM if tired."
       : dayId === DAY6_ID
       ? "Full simulation block only is enough for tonight — bios lock-in and debrief roll to Wednesday AM if tired."
@@ -235,6 +272,9 @@ export function ElectionPlanDayStepFooter({
 
   return (
     <footer className="mt-10 space-y-4 border-t border-[var(--ep-border)] pt-8">
+      {dayId === DAY8_ID ? (
+        <ElectionPlanDay8PathwayProgressBar activeStepId={currentStepId} compact />
+      ) : null}
       {dayId === DAY1_ID ? (
         <ElectionPlanDay1ContinueButton currentStepId={currentStepId} />
       ) : dayId === DAY2_ID ? (
@@ -247,6 +287,8 @@ export function ElectionPlanDayStepFooter({
         <ElectionPlanDay6ContinueButton currentStepId={currentStepId} />
       ) : dayId === DAY7_ID ? (
         <ElectionPlanDay7ContinueButton currentStepId={currentStepId} />
+      ) : dayId === DAY8_ID ? (
+        <ElectionPlanDay8ContinueButton currentStepId={currentStepId} />
       ) : (
         <ElectionPlanDay3ContinueButton currentStepId={currentStepId} />
       )}

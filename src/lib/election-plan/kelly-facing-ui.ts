@@ -48,6 +48,16 @@ export function isKellyDay7StreamlinedPath(): boolean {
   return KELLY_FACING_ELECTION_PLAN;
 }
 
+/** Kelly Day 8 — crash course linear pathway */
+export function isKellyDay8StreamlinedPath(): boolean {
+  return KELLY_FACING_ELECTION_PLAN;
+}
+
+/** Kelly Day 8 — single-scroll course mode; hides non-essential drill-down on day landing */
+export function isKellyDay8CrashCoursePath(): boolean {
+  return KELLY_FACING_ELECTION_PLAN;
+}
+
 export function kellyStudyLeadLabel(): string {
   return KELLY_FACING_ELECTION_PLAN ? "Start here" : "Professor lead";
 }
