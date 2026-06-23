@@ -32,6 +32,7 @@ import {
   ElectionPlanDay8PathwayPanel,
 } from "@/components/election-plan/ElectionPlanDay8PathwayPanel";
 import { ElectionPlanNorrisCoalitionDrillPanel } from "@/components/election-plan/ElectionPlanNorrisCoalitionDrillPanel";
+import { ElectionPlanSosThreeDomainsWeekPanel } from "@/components/election-plan/ElectionPlanSosThreeDomainsWeekPanel";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, DAY8_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
@@ -42,6 +43,7 @@ import { DAY6_APA_SIM_FRAME, DAY6_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/electio
 import { DAY4_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day4-forum-intelligence-copy";
 import { DAY5_APA_STATEWIDE_BROADCAST_FRAME, DAY5_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
 import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath, isKellyDay6StreamlinedPath, isKellyDay7StreamlinedPath, isKellyDay8CrashCoursePath, isKellyDay8StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
+import { getSosWeekDayTrick } from "@/lib/election-plan/debate-prep-sos-three-domains-week";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import type { IntensiveDayId, IntensiveDayPlan } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { dayHasDrillDownPages } from "@/lib/election-plan/debatePrepDayDrillDown";
@@ -86,6 +88,7 @@ export function ElectionPlanDayDrillDownOverview({
       <>
         <KellyPageSummary summary={dayPageSummary(plan)} />
         <VoterAudienceSpeakToBanner profiles={day1Audiences} compact label="Picture in the room" />
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay1PathwayPanel showFullList showDay2Teaser />
       </>
     );
@@ -98,6 +101,7 @@ export function ElectionPlanDayDrillDownOverview({
           summary={`Read forum tells before you counter. ${dayPageSummary(plan)} Trap lanes 1–2 until boring — tell worksheet + trap lane 1 minimum if tired.`}
         />
         <VoterAudienceSpeakToBanner profiles={day2Audiences} compact label="Who is watching your pivot" />
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay2PathwayPanel showFullList showDay3Teaser />
         <ElectionPlanNorrisCoalitionDrillPanel dayLabel="Day 2" accent="indigo" />
       </>
@@ -111,6 +115,7 @@ export function ElectionPlanDayDrillDownOverview({
           summary={`Stack three qualifications until the list feels boring — organization history beats bill lists. ${dayPageSummary(plan)} Minimum tonight: manual + claims gate if tired.`}
         />
         <VoterAudienceSpeakToBanner profiles={day3Audiences} compact label="Who needs to hear three beats" />
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay3PathwayPanel showFullList showDay4Teaser />
         <ElectionPlanNorrisCoalitionDrillPanel dayLabel="Day 3" accent="emerald" />
       </>
@@ -124,6 +129,7 @@ export function ElectionPlanDayDrillDownOverview({
           summary={`Listen like an analyst first — the forum transcript is your Rosetta stone. ${dayPageSummary(plan)} ${DAY4_V3_KELLY_MINIMUM_SUMMARY}`}
         />
         <VoterAudienceSpeakToBanner profiles={day4Audiences} compact label="Who needs clerk-centered intel" />
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay4PathwayPanel showFullList showDay5Teaser />
       </>
     );
@@ -138,6 +144,7 @@ export function ElectionPlanDayDrillDownOverview({
         <p className="mb-4 rounded-lg border border-violet-300/60 bg-violet-50/40 px-3 py-2 text-xs text-violet-950">
           {DAY5_APA_STATEWIDE_BROADCAST_FRAME}
         </p>
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay5PathwayPanel showFullList showDay4Review showDay6Teaser />
       </>
     );
@@ -178,6 +185,7 @@ export function ElectionPlanDayDrillDownOverview({
         <p className="mb-4 rounded-lg border border-rose-300/60 bg-rose-50/40 px-3 py-2 text-xs text-rose-950">
           {DAY7_PEAK_END_FRAME}
         </p>
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay7PathwayPanel showFullList showDay6Review showDay8Teaser />
       </>
     );
@@ -187,6 +195,7 @@ export function ElectionPlanDayDrillDownOverview({
     return (
       <>
         <KellyPageSummary summary={`${plan.goalForKelly} ${DAY7_HUB_TONIGHT_SUMMARY}`} />
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay7PathwayPanel showFullList showDay6Review showDay8Teaser />
       </>
     );
@@ -201,6 +210,7 @@ export function ElectionPlanDayDrillDownOverview({
         <p className="mb-4 rounded-lg border border-violet-300/60 bg-violet-50/40 px-3 py-2 text-xs text-violet-950">
           {DAY6_APA_SIM_FRAME}
         </p>
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay6PathwayPanel showFullList showDay5Review showDay7Teaser />
       </>
     );
@@ -210,6 +220,7 @@ export function ElectionPlanDayDrillDownOverview({
     return (
       <>
         <KellyPageSummary summary={`${plan.goalForKelly} Fail in the room with staff — simulation integrates Days 2–5 under fatigue.`} />
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay6PathwayPanel showFullList showDay5Review showDay7Teaser />
       </>
     );
@@ -221,6 +232,7 @@ export function ElectionPlanDayDrillDownOverview({
         <KellyPageSummary
           summary={`${plan.goalForKelly} Pre-load when-X-say-Y pairs from Day 4 green lines — timed drills until muscle memory.`}
         />
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay5PathwayPanel showFullList showDay4Review showDay6Teaser />
       </>
     );
@@ -232,6 +244,7 @@ export function ElectionPlanDayDrillDownOverview({
         <KellyPageSummary
           summary={`Listen like an analyst first — the forum transcript is your Rosetta stone. ${dayPageSummary(plan)} Minimum tonight: forum lab ingest if tired.`}
         />
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} />
         <ElectionPlanDay4PathwayPanel showFullList showDay5Teaser />
       </>
     );
@@ -270,8 +283,11 @@ export function ElectionPlanDayStepFooter({
             ? "Follow the steps in order — skip optional examples if you are tired. Film + trap lane 1 is enough for tonight."
             : "Follow the steps in order — skip optional sections if you are tired. Posture + author/administrator is enough for tonight.";
 
+  const sosTrick = getSosWeekDayTrick(dayId);
+
   return (
     <footer className="mt-10 space-y-4 border-t border-[var(--ep-border)] pt-8">
+      {dayId !== DAY8_ID ? <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId} variant="chips" /> : null}
       {dayId === DAY8_ID ? (
         <ElectionPlanDay8PathwayProgressBar activeStepId={currentStepId} compact />
       ) : null}
@@ -293,6 +309,9 @@ export function ElectionPlanDayStepFooter({
         <ElectionPlanDay3ContinueButton currentStepId={currentStepId} />
       )}
       <p className="text-xs text-[var(--ep-navy-muted)]">{hint}</p>
+      {sosTrick ? (
+        <p className="rounded-md border border-teal-200/80 bg-teal-50/40 px-3 py-2 text-xs text-teal-950">{sosTrick}</p>
+      ) : null}
     </footer>
   );
 }

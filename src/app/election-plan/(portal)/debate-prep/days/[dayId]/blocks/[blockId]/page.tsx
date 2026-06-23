@@ -17,6 +17,7 @@ import { ElectionPlanDay6BlockEmbed } from "@/components/election-plan/ElectionP
 import { ElectionPlanDay7BlockEmbed } from "@/components/election-plan/ElectionPlanDay7Panels";
 import { ElectionPlanDay8SectionEmbed } from "@/components/election-plan/ElectionPlanDay8SectionEmbed";
 import { ElectionPlanDay8BlockPathwayStrip } from "@/components/election-plan/ElectionPlanDay8BlockPathwayStrip";
+import { ElectionPlanSosThreeDomainsWeekPanel } from "@/components/election-plan/ElectionPlanSosThreeDomainsWeekPanel";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownSections,
@@ -129,6 +130,10 @@ export default async function ElectionPlanDayBlockPage({
       description={study?.overview ?? block.why}
       pageSummary={study?.professorLead ?? study?.overview}
     >
+      {dayId !== DAY8_ID ? (
+        <ElectionPlanSosThreeDomainsWeekPanel dayId={dayId as IntensiveDayId} variant="compact" />
+      ) : null}
+
       {dayId === DAY2_ID && blockId === "b2-film" ? (
         <>
           <ElectionPlanDay2FilmClipPanel />
