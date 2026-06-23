@@ -1,23 +1,26 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
+import { handleElectionPlanAuth } from "@/lib/election-plan/auth/election-plan-middleware";
+
 /**
  * Edge-safe middleware — no intelligence/dashboard imports (they abort on Netlify edge).
  * Admin auth + launch redirects live in Node layouts, next.config redirects, and /admin/page.tsx.
+ *
+ * Supabase `auth.getUser()` was removed from the edge path: no App Router routes use
+ * `@/utils/supabase/*` (Prisma + cookie gates only), and the network call was timing out on Netlify edge.
  */
-export async function middleware(request: NextRequest) {
-  const { handleElectionPlanAuth } = await import("@/lib/election-plan/auth/election-plan-middleware");
-  const electionPlanResponse = handleElectionPlanAuth(request);
-  if (electionPlanResponse) return electionPlanResponse;
+export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
 
-  if (request.nextUrl.pathname.startsWith("/election-plan")) {
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set("x-pathname", request.nextUrl.pathname);
-    return NextResponse.next({ request: { headers: requestHeaders } });
+  if (pathname.startsWith("/election-plan")) {
+    const electionPlanResponse = handleElectionPlanAuth(request);
+    if (electionPlanResponse) return electionPlanResponse;
   }
 
-  const { updateSession } = await import("@/utils/supabase/middleware");
-  return updateSession(request);
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", pathname);
+  return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
 export const config = {

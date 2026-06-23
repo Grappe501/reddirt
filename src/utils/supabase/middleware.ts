@@ -2,8 +2,9 @@ import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 
 /**
- * Refreshes Auth cookies on each matched request (see root `src/middleware.ts`).
- * If Supabase public env is unset, forwards the request unchanged (Prisma-only deploys keep working).
+ * Refreshes Auth cookies on each matched request.
+ * Not wired in root `src/middleware.ts` — Kelly SOS uses Prisma + cookie gates only.
+ * Re-enable from middleware when App Router routes import `@/utils/supabase/server`.
  */
 export async function updateSession(request: NextRequest): Promise<NextResponse> {
   const requestHeaders = new Headers(request.headers);
