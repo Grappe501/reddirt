@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-23T05:28:42.954Z",
-  "entryCount": 1518,
+  "generatedAt": "2026-06-23T05:44:16.772Z",
+  "entryCount": 1618,
   "corpusNote": "Local-only index. Excludes admin, voter files, donor data, private contacts, opposition raw.",
   "entries": [
     {
@@ -124,7 +124,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/alexander.md",
       "title": "Alexander — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Alexander — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 60 of 125 Top…",
+      "excerpt": "Alexander — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 60 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/alexander.md",
       "keywords": [
@@ -151,7 +151,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/alma.md",
       "title": "Alma — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Alma — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 65 of 125 Top 10 s…",
+      "excerpt": "Alma — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 65 of 175 Top 10 s…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/alma.md",
       "keywords": [
@@ -419,7 +419,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/arkadelphia.md",
       "title": "Arkadelphia — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Arkadelphia — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 33 of 125 T…",
+      "excerpt": "Arkadelphia — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 33 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/arkadelphia.md",
       "keywords": [
@@ -1661,10 +1661,38 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/ash-flat.md",
+      "title": "Ash Flat — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Ash Flat — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 170 of 175 Top…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/ash-flat.md",
+      "keywords": [
+        "ash",
+        "flat",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:ash-flat",
+      "title": "Ash Flat · City Brief",
+      "href": "/election-plan/cities/ash-flat",
+      "excerpt": "Sharp County · 124 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "ash flat",
+        "sharp",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/ashdown.md",
       "title": "Ashdown — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Ashdown — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 76 of 125 Top 1…",
+      "excerpt": "Ashdown — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 76 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/ashdown.md",
       "keywords": [
@@ -1832,7 +1860,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/atkins.md",
       "title": "Atkins — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Atkins — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 111 of 125 Top 1…",
+      "excerpt": "Atkins — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 115 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/atkins.md",
       "keywords": [
@@ -1856,10 +1884,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/augusta.md",
+      "title": "Augusta — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Augusta — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 124 of 175 Top …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/augusta.md",
+      "keywords": [
+        "augusta",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:augusta",
+      "title": "Augusta · City Brief",
+      "href": "/election-plan/cities/augusta",
+      "excerpt": "Woodruff County · 279 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "augusta",
+        "woodruff",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/austin.md",
       "title": "Austin — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Austin — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 102 of 125 Top 1…",
+      "excerpt": "Austin — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 103 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/austin.md",
       "keywords": [
@@ -1886,7 +1941,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bald-knob.md",
       "title": "Bald Knob — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Bald Knob — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 123 of 125 To…",
+      "excerpt": "Bald Knob — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 137 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bald-knob.md",
       "keywords": [
@@ -1914,7 +1969,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/barling.md",
       "title": "Barling — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Barling — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 77 of 125 Top 1…",
+      "excerpt": "Barling — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 77 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/barling.md",
       "keywords": [
@@ -1941,7 +1996,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/batesville.md",
       "title": "Batesville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Batesville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 46 of 125 To…",
+      "excerpt": "Batesville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 46 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/batesville.md",
       "keywords": [
@@ -2090,10 +2145,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bay.md",
+      "title": "Bay — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Bay — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 147 of 175 Top 10 s…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bay.md",
+      "keywords": [
+        "bay",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:bay",
+      "title": "Bay · City Brief",
+      "href": "/election-plan/cities/bay",
+      "excerpt": "Craighead County · 188 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bay",
+        "craighead",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/beebe.md",
       "title": "Beebe — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Beebe — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 53 of 125 Top 10 …",
+      "excerpt": "Beebe — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 53 of 175 Top 10 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/beebe.md",
       "keywords": [
@@ -2120,7 +2202,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bella-vista.md",
       "title": "Bella Vista — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Bella Vista — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 15 of 125 T…",
+      "excerpt": "Bella Vista — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 15 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bella-vista.md",
       "keywords": [
@@ -2260,7 +2342,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/benton.md",
       "title": "Benton — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Benton — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 14 of 125 Top 10…",
+      "excerpt": "Benton — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 14 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/benton.md",
       "keywords": [
@@ -2428,7 +2510,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/bentonville.md",
       "title": "Bentonville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Bentonville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 10 of 125 T…",
+      "excerpt": "Bentonville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 10 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/bentonville.md",
       "keywords": [
@@ -2441,7 +2523,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bentonville.md",
       "title": "Bentonville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Bentonville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 10 of 125 T…",
+      "excerpt": "Bentonville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 10 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bentonville.md",
       "keywords": [
@@ -2468,7 +2550,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/berryville.md",
       "title": "Berryville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Berryville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 48 of 125 To…",
+      "excerpt": "Berryville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 48 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/berryville.md",
       "keywords": [
@@ -2495,7 +2577,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/blytheville.md",
       "title": "Blytheville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Blytheville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 27 of 125 T…",
+      "excerpt": "Blytheville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 27 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/blytheville.md",
       "keywords": [
@@ -2522,7 +2604,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bono.md",
       "title": "Bono — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Bono — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 110 of 125 Top 10 …",
+      "excerpt": "Bono — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 114 of 175 Top 10 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bono.md",
       "keywords": [
@@ -2674,7 +2756,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/booneville.md",
       "title": "Booneville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Booneville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 98 of 125 To…",
+      "excerpt": "Booneville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 99 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/booneville.md",
       "keywords": [
@@ -2839,7 +2921,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/brinkley.md",
       "title": "Brinkley — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Brinkley — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 87 of 125 Top …",
+      "excerpt": "Brinkley — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 87 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/brinkley.md",
       "keywords": [
@@ -2866,7 +2948,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/brookland.md",
       "title": "Brookland — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Brookland — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 89 of 125 Top…",
+      "excerpt": "Brookland — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 89 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/brookland.md",
       "keywords": [
@@ -2893,7 +2975,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bryant.md",
       "title": "Bryant — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Bryant — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 22 of 125 Top 10…",
+      "excerpt": "Bryant — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 22 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bryant.md",
       "keywords": [
@@ -2949,6 +3031,34 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bull-shoals.md",
+      "title": "Bull Shoals — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Bull Shoals — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 136 of 175 …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/bull-shoals.md",
+      "keywords": [
+        "bull",
+        "shoals",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:bull-shoals",
+      "title": "Bull Shoals · City Brief",
+      "href": "/election-plan/cities/bull-shoals",
+      "excerpt": "Marion County · 228 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "bull shoals",
+        "marion",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "route:/office/business",
       "title": "Business & Filings",
       "href": "/office/business",
@@ -2965,7 +3075,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/cabot.md",
       "title": "Cabot — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Cabot — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 21 of 125 Top 10 …",
+      "excerpt": "Cabot — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 21 of 175 Top 10 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/cabot.md",
       "keywords": [
@@ -3194,10 +3304,38 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/calico-rock.md",
+      "title": "Calico Rock — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Calico Rock — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 140 of 175 …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/calico-rock.md",
+      "keywords": [
+        "calico",
+        "rock",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:calico-rock",
+      "title": "Calico Rock · City Brief",
+      "href": "/election-plan/cities/calico-rock",
+      "excerpt": "Izard County · 209 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "calico rock",
+        "izard",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/camden.md",
       "title": "Camden — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Camden — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 40 of 125 Top 10…",
+      "excerpt": "Camden — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 40 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/camden.md",
       "keywords": [
@@ -3777,6 +3915,33 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/carlisle.md",
+      "title": "Carlisle — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Carlisle — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 141 of 175 Top…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/carlisle.md",
+      "keywords": [
+        "carlisle",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:carlisle",
+      "title": "Carlisle · City Brief",
+      "href": "/election-plan/cities/carlisle",
+      "excerpt": "Lonoke County · 203 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "carlisle",
+        "lonoke",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/carroll-county.md",
       "title": "Carroll County — Campaign Playbook",
       "href": "/election-plan",
@@ -3902,10 +4067,38 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/cave-city.md",
+      "title": "Cave City — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Cave City — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 146 of 175 To…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/cave-city.md",
+      "keywords": [
+        "cave",
+        "city",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:cave-city",
+      "title": "Cave City · City Brief",
+      "href": "/election-plan/cities/cave-city",
+      "excerpt": "Independence County · 192 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "cave city",
+        "independence",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/cave-springs.md",
       "title": "Cave Springs — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Cave Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 58 of 125 …",
+      "excerpt": "Cave Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 58 of 175 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/cave-springs.md",
       "keywords": [
@@ -3930,10 +4123,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/cedarville.md",
+      "title": "Cedarville — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Cedarville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 163 of 175 T…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/cedarville.md",
+      "keywords": [
+        "cedarville",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:cedarville",
+      "title": "Cedarville · City Brief",
+      "href": "/election-plan/cities/cedarville",
+      "excerpt": "Crawford County · 146 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "cedarville",
+        "crawford",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/centerton.md",
       "title": "Centerton — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Centerton — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 24 of 125 Top…",
+      "excerpt": "Centerton — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 24 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/centerton.md",
       "keywords": [
@@ -4801,7 +5021,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/charleston.md",
       "title": "Charleston — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Charleston — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 117 of 125 T…",
+      "excerpt": "Charleston — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 125 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/charleston.md",
       "keywords": [
@@ -5020,6 +5240,33 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/clarendon.md",
+      "title": "Clarendon — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Clarendon — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 131 of 175 To…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/clarendon.md",
+      "keywords": [
+        "clarendon",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:clarendon",
+      "title": "Clarendon · City Brief",
+      "href": "/election-plan/cities/clarendon",
+      "excerpt": "Monroe County · 257 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "clarendon",
+        "monroe",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/clark-county.md",
       "title": "Clark County — Campaign Playbook",
       "href": "/election-plan",
@@ -5148,7 +5395,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/clarksville.md",
       "title": "Clarksville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Clarksville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 44 of 125 T…",
+      "excerpt": "Clarksville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 44 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/clarksville.md",
       "keywords": [
@@ -5564,7 +5811,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/clinton.md",
       "title": "Clinton — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Clinton — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 106 of 125 Top …",
+      "excerpt": "Clinton — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 108 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/clinton.md",
       "keywords": [
@@ -5872,7 +6119,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/conway.md",
       "title": "Conway — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Conway — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 7 of 125 Top 10 …",
+      "excerpt": "Conway — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 7 of 175 Top 10 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/conway.md",
       "keywords": [
@@ -5885,7 +6132,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/conway.md",
       "title": "Conway — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Conway — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 7 of 125 Top 10 …",
+      "excerpt": "Conway — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 7 of 175 Top 10 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/conway.md",
       "keywords": [
@@ -6037,7 +6284,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/corning.md",
       "title": "Corning — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Corning — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 112 of 125 Top …",
+      "excerpt": "Corning — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 117 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/corning.md",
       "keywords": [
@@ -7070,7 +7317,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/crossett.md",
       "title": "Crossett — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Crossett — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 74 of 125 Top …",
+      "excerpt": "Crossett — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 74 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/crossett.md",
       "keywords": [
@@ -7233,10 +7480,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/danville.md",
+      "title": "Danville — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Danville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 159 of 175 Top…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/danville.md",
+      "keywords": [
+        "danville",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:danville",
+      "title": "Danville · City Brief",
+      "href": "/election-plan/cities/danville",
+      "excerpt": "Yell County · 162 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "danville",
+        "yell",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/dardanelle.md",
       "title": "Dardanelle — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Dardanelle — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 100 of 125 T…",
+      "excerpt": "Dardanelle — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 101 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/dardanelle.md",
       "keywords": [
@@ -7263,7 +7537,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/de-queen.md",
       "title": "De Queen — City Strategy",
       "href": "/election-plan",
-      "excerpt": "De Queen — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 84 of 125 Top …",
+      "excerpt": "De Queen — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 84 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/de-queen.md",
       "keywords": [
@@ -7377,6 +7651,33 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/decatur.md",
+      "title": "Decatur — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Decatur — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 133 of 175 Top …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/decatur.md",
+      "keywords": [
+        "decatur",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:decatur",
+      "title": "Decatur · City Brief",
+      "href": "/election-plan/cities/decatur",
+      "excerpt": "Benton County · 246 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "decatur",
+        "benton",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/calendar-settlement/DELTA-CORRIDOR-PLAN.md",
       "title": "Delta Corridor Plan",
       "href": "/election-plan",
@@ -7439,7 +7740,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/dermott.md",
       "title": "Dermott — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Dermott — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 73 of 125 Top 1…",
+      "excerpt": "Dermott — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 73 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/dermott.md",
       "keywords": [
@@ -7458,6 +7759,34 @@
       "keywords": [
         "dermott",
         "chicot",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/des-arc.md",
+      "title": "Des Arc — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Des Arc — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 150 of 175 Top …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/des-arc.md",
+      "keywords": [
+        "des",
+        "arc",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:des-arc",
+      "title": "Des Arc · City Brief",
+      "href": "/election-plan/cities/des-arc",
+      "excerpt": "Prairie County · 181 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "des arc",
+        "prairie",
         "city",
         "brief"
       ]
@@ -7591,7 +7920,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/dewitt.md",
       "title": "DeWitt — City Strategy",
       "href": "/election-plan",
-      "excerpt": "DeWitt — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 115 of 125 Top 1…",
+      "excerpt": "DeWitt — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 121 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/dewitt.md",
       "keywords": [
@@ -7610,6 +7939,33 @@
       "keywords": [
         "dewitt",
         "arkansas",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/diaz.md",
+      "title": "Diaz — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Diaz — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 171 of 175 Top 10 …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/diaz.md",
+      "keywords": [
+        "diaz",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:diaz",
+      "title": "Diaz · City Brief",
+      "href": "/election-plan/cities/diaz",
+      "excerpt": "Jackson County · 114 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "diaz",
+        "jackson",
         "city",
         "brief"
       ]
@@ -7682,6 +8038,33 @@
         "door",
         "hanger",
         "template",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/dover.md",
+      "title": "Dover — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Dover — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 165 of 175 Top 10…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/dover.md",
+      "keywords": [
+        "dover",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:dover",
+      "title": "Dover · City Brief",
+      "href": "/election-plan/cities/dover",
+      "excerpt": "Pope County · 143 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "dover",
+        "pope",
+        "city",
         "brief"
       ]
     },
@@ -8321,7 +8704,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/dumas.md",
       "title": "Dumas — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Dumas — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 62 of 125 Top 10 …",
+      "excerpt": "Dumas — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 62 of 175 Top 10 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/dumas.md",
       "keywords": [
@@ -8345,6 +8728,33 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/earle.md",
+      "title": "Earle — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Earle — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 129 of 175 Top 10…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/earle.md",
+      "keywords": [
+        "earle",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:earle",
+      "title": "Earle · City Brief",
+      "href": "/election-plan/cities/earle",
+      "excerpt": "Crittenden County · 264 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "earle",
+        "crittenden",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "route:/editorial",
       "title": "Editorial",
       "href": "/editorial",
@@ -8361,7 +8771,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/el-dorado.md",
       "title": "El Dorado — City Strategy",
       "href": "/election-plan",
-      "excerpt": "El Dorado — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 20 of 125 Top…",
+      "excerpt": "El Dorado — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 20 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/el-dorado.md",
       "keywords": [
@@ -8443,7 +8853,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/elkins.md",
       "title": "Elkins — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Elkins — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 68 of 125 Top 10…",
+      "excerpt": "Elkins — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 68 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/elkins.md",
       "keywords": [
@@ -8470,7 +8880,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/elm-springs.md",
       "title": "Elm Springs — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Elm Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 88 of 125 T…",
+      "excerpt": "Elm Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 88 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/elm-springs.md",
       "keywords": [
@@ -8603,7 +9013,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/england.md",
       "title": "England — City Strategy",
       "href": "/election-plan",
-      "excerpt": "England — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 122 of 125 Top …",
+      "excerpt": "England — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 132 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/england.md",
       "keywords": [
@@ -8627,10 +9037,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/eudora.md",
+      "title": "Eudora — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Eudora — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 106 of 175 Top 1…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/eudora.md",
+      "keywords": [
+        "eudora",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:eudora",
+      "title": "Eudora · City Brief",
+      "href": "/election-plan/cities/eudora",
+      "excerpt": "Chicot County · 340 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "eudora",
+        "chicot",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/eureka-springs.md",
       "title": "Eureka Springs — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Eureka Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 104 of 1…",
+      "excerpt": "Eureka Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 105 of 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/eureka-springs.md",
       "keywords": [
@@ -8925,7 +9362,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/fairfield-bay.md",
       "title": "Fairfield Bay — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Fairfield Bay — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 114 of 12…",
+      "excerpt": "Fairfield Bay — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 120 of 17…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/fairfield-bay.md",
       "keywords": [
@@ -9058,7 +9495,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/farmington.md",
       "title": "Farmington — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Farmington — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 37 of 125 To…",
+      "excerpt": "Farmington — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 37 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/farmington.md",
       "keywords": [
@@ -9210,7 +9647,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/fayetteville.md",
       "title": "Fayetteville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Fayetteville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 2 of 125 T…",
+      "excerpt": "Fayetteville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 2 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/fayetteville.md",
       "keywords": [
@@ -9223,7 +9660,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/fayetteville.md",
       "title": "Fayetteville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Fayetteville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 2 of 125 T…",
+      "excerpt": "Fayetteville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 2 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/fayetteville.md",
       "keywords": [
@@ -9384,6 +9821,33 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/flippin.md",
+      "title": "Flippin — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Flippin — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 161 of 175 Top …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/flippin.md",
+      "keywords": [
+        "flippin",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:flippin",
+      "title": "Flippin · City Brief",
+      "href": "/election-plan/cities/flippin",
+      "excerpt": "Marion County · 156 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "flippin",
+        "marion",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/forward-motion/phone-bank-invitations/follow-up-script.md",
       "title": "Follow Up Script",
       "href": "/election-plan",
@@ -9399,7 +9863,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/fordyce.md",
       "title": "Fordyce — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Fordyce — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 80 of 125 Top 1…",
+      "excerpt": "Fordyce — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 80 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/fordyce.md",
       "keywords": [
@@ -9426,7 +9890,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/forrest-city.md",
       "title": "Forrest City — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Forrest City — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 30 of 125 …",
+      "excerpt": "Forrest City — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 30 of 175 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/forrest-city.md",
       "keywords": [
@@ -9454,7 +9918,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/fort-smith.md",
       "title": "Fort Smith — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Fort Smith — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 5 of 125 Top…",
+      "excerpt": "Fort Smith — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 5 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/fort-smith.md",
       "keywords": [
@@ -9468,7 +9932,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/fort-smith.md",
       "title": "Fort Smith — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Fort Smith — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 5 of 125 Top…",
+      "excerpt": "Fort Smith — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 5 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/fort-smith.md",
       "keywords": [
@@ -10100,10 +10564,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/gassville.md",
+      "title": "Gassville — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Gassville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 116 of 175 To…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/gassville.md",
+      "keywords": [
+        "gassville",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:gassville",
+      "title": "Gassville · City Brief",
+      "href": "/election-plan/cities/gassville",
+      "excerpt": "Baxter County · 296 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "gassville",
+        "baxter",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/gentry.md",
       "title": "Gentry — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Gentry — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 78 of 125 Top 10…",
+      "excerpt": "Gentry — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 78 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/gentry.md",
       "keywords": [
@@ -10140,10 +10631,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/glenwood.md",
+      "title": "Glenwood — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Glenwood — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 145 of 175 Top…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/glenwood.md",
+      "keywords": [
+        "glenwood",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:glenwood",
+      "title": "Glenwood · City Brief",
+      "href": "/election-plan/cities/glenwood",
+      "excerpt": "Pike County · 195 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "glenwood",
+        "pike",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/goshen.md",
       "title": "Goshen — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Goshen — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 97 of 125 Top 10…",
+      "excerpt": "Goshen — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 98 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/goshen.md",
       "keywords": [
@@ -10170,7 +10688,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/gosnell.md",
       "title": "Gosnell — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Gosnell — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 116 of 125 Top …",
+      "excerpt": "Gosnell — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 123 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/gosnell.md",
       "keywords": [
@@ -10346,7 +10864,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/gravette.md",
       "title": "Gravette — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Gravette — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 86 of 125 Top …",
+      "excerpt": "Gravette — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 86 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/gravette.md",
       "keywords": [
@@ -10373,7 +10891,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/green-forest.md",
       "title": "Green Forest — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Green Forest — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 85 of 125 …",
+      "excerpt": "Green Forest — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 85 of 175 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/green-forest.md",
       "keywords": [
@@ -10401,7 +10919,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/greenbrier.md",
       "title": "Greenbrier — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Greenbrier — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 54 of 125 To…",
+      "excerpt": "Greenbrier — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 54 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/greenbrier.md",
       "keywords": [
@@ -10566,10 +11084,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/greenland.md",
+      "title": "Greenland — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Greenland — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 134 of 175 To…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/greenland.md",
+      "keywords": [
+        "greenland",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:greenland",
+      "title": "Greenland · City Brief",
+      "href": "/election-plan/cities/greenland",
+      "excerpt": "Washington County · 242 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "greenland",
+        "washington",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/greenwood.md",
       "title": "Greenwood — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Greenwood — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 45 of 125 Top…",
+      "excerpt": "Greenwood — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 45 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/greenwood.md",
       "keywords": [
@@ -10593,10 +11138,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/gurdon.md",
+      "title": "Gurdon — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Gurdon — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 122 of 175 Top 1…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/gurdon.md",
+      "keywords": [
+        "gurdon",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:gurdon",
+      "title": "Gurdon · City Brief",
+      "href": "/election-plan/cities/gurdon",
+      "excerpt": "Clark County · 285 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "gurdon",
+        "clark",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/hamburg.md",
       "title": "Hamburg — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Hamburg — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 120 of 125 Top …",
+      "excerpt": "Hamburg — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 128 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/hamburg.md",
       "keywords": [
@@ -10636,10 +11208,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/harrisburg.md",
+      "title": "Harrisburg — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Harrisburg — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 135 of 175 T…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/harrisburg.md",
+      "keywords": [
+        "harrisburg",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:harrisburg",
+      "title": "Harrisburg · City Brief",
+      "href": "/election-plan/cities/harrisburg",
+      "excerpt": "Craighead County · 231 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "harrisburg",
+        "craighead",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/harrison.md",
       "title": "Harrison — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Harrison — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 34 of 125 Top …",
+      "excerpt": "Harrison — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 34 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/harrison.md",
       "keywords": [
@@ -10666,7 +11265,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/haskell.md",
       "title": "Haskell — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Haskell — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 81 of 125 Top 1…",
+      "excerpt": "Haskell — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 81 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/haskell.md",
       "keywords": [
@@ -10690,10 +11289,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/hazen.md",
+      "title": "Hazen — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Hazen — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 167 of 175 Top 10…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/hazen.md",
+      "keywords": [
+        "hazen",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:hazen",
+      "title": "Hazen · City Brief",
+      "href": "/election-plan/cities/hazen",
+      "excerpt": "Prairie County · 135 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "hazen",
+        "prairie",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/heber-springs.md",
       "title": "Heber Springs — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Heber Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 52 of 125…",
+      "excerpt": "Heber Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 52 of 175…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/heber-springs.md",
       "keywords": [
@@ -10944,7 +11570,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/holiday-island.md",
       "title": "Holiday Island — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Holiday Island — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 96 of 12…",
+      "excerpt": "Holiday Island — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 97 of 17…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/holiday-island.md",
       "keywords": [
@@ -10972,7 +11598,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/hope.md",
       "title": "Hope — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Hope — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 51 of 125 Top 10 s…",
+      "excerpt": "Hope — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 51 of 175 Top 10 s…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/hope.md",
       "keywords": [
@@ -11015,7 +11641,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/horseshoe-bend.md",
       "title": "Horseshoe Bend — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Horseshoe Bend — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 118 of 1…",
+      "excerpt": "Horseshoe Bend — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 126 of 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/horseshoe-bend.md",
       "keywords": [
@@ -11174,7 +11800,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/hot-springs.md",
       "title": "Hot Springs — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Hot Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 13 of 125 T…",
+      "excerpt": "Hot Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 13 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/hot-springs.md",
       "keywords": [
@@ -11411,7 +12037,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/hoxie.md",
       "title": "Hoxie — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Hoxie — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 124 of 125 Top 10…",
+      "excerpt": "Hoxie — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 139 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/hoxie.md",
       "keywords": [
@@ -11843,7 +12469,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/jacksonville.md",
       "title": "Jacksonville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Jacksonville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 12 of 125 …",
+      "excerpt": "Jacksonville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 12 of 175 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/jacksonville.md",
       "keywords": [
@@ -12026,7 +12652,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/johnson.md",
       "title": "Johnson — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Johnson — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 70 of 125 Top 1…",
+      "excerpt": "Johnson — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 70 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/johnson.md",
       "keywords": [
@@ -12210,7 +12836,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/jonesboro.md",
       "title": "Jonesboro — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Jonesboro — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 9 of 125 Top …",
+      "excerpt": "Jonesboro — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 9 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/jonesboro.md",
       "keywords": [
@@ -12223,7 +12849,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/jonesboro.md",
       "title": "Jonesboro — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Jonesboro — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 9 of 125 Top …",
+      "excerpt": "Jonesboro — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 9 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/jonesboro.md",
       "keywords": [
@@ -12242,6 +12868,33 @@
       "keywords": [
         "jonesboro",
         "craighead",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/judsonia.md",
+      "title": "Judsonia — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Judsonia — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 155 of 175 Top…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/judsonia.md",
+      "keywords": [
+        "judsonia",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:judsonia",
+      "title": "Judsonia · City Brief",
+      "href": "/election-plan/cities/judsonia",
+      "excerpt": "White County · 170 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "judsonia",
+        "white",
         "city",
         "brief"
       ]
@@ -12376,6 +13029,33 @@
         "kelly's petition organizing",
         "direct democracy",
         "public"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/kensett.md",
+      "title": "Kensett — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Kensett — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 169 of 175 Top …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/kensett.md",
+      "keywords": [
+        "kensett",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:kensett",
+      "title": "Kensett · City Brief",
+      "href": "/election-plan/cities/kensett",
+      "excerpt": "White County · 127 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "kensett",
+        "white",
+        "city",
+        "brief"
       ]
     },
     {
@@ -12520,7 +13200,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lake-city.md",
       "title": "Lake City — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Lake City — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 113 of 125 To…",
+      "excerpt": "Lake City — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 118 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lake-city.md",
       "keywords": [
@@ -12540,6 +13220,61 @@
       "keywords": [
         "lake city",
         "craighead",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lake-village.md",
+      "title": "Lake Village — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Lake Village — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 91 of 175 …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lake-village.md",
+      "keywords": [
+        "lake",
+        "village",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:lake-village",
+      "title": "Lake Village · City Brief",
+      "href": "/election-plan/cities/lake-village",
+      "excerpt": "Chicot County · 413 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "lake village",
+        "chicot",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lamar.md",
+      "title": "Lamar — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Lamar — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 144 of 175 Top 10…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lamar.md",
+      "keywords": [
+        "lamar",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:lamar",
+      "title": "Lamar · City Brief",
+      "href": "/election-plan/cities/lamar",
+      "excerpt": "Johnson County · 196 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "lamar",
+        "johnson",
         "city",
         "brief"
       ]
@@ -12616,7 +13351,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lavaca.md",
       "title": "Lavaca — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Lavaca — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 119 of 125 Top 1…",
+      "excerpt": "Lavaca — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 127 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lavaca.md",
       "keywords": [
@@ -12778,6 +13513,33 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/leachville.md",
+      "title": "Leachville — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Leachville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 142 of 175 T…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/leachville.md",
+      "keywords": [
+        "leachville",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:leachville",
+      "title": "Leachville · City Brief",
+      "href": "/election-plan/cities/leachville",
+      "excerpt": "Mississippi County · 199 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "leachville",
+        "mississippi",
+        "city",
+        "brief"
       ]
     },
     {
@@ -13039,10 +13801,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lepanto.md",
+      "title": "Lepanto — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Lepanto — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 168 of 175 Top …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lepanto.md",
+      "keywords": [
+        "lepanto",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:lepanto",
+      "title": "Lepanto · City Brief",
+      "href": "/election-plan/cities/lepanto",
+      "excerpt": "Poinsett County · 129 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "lepanto",
+        "poinsett",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lincoln.md",
       "title": "Lincoln — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Lincoln — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 101 of 125 Top …",
+      "excerpt": "Lincoln — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 102 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lincoln.md",
       "keywords": [
@@ -13206,7 +13995,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/little-flock.md",
       "title": "Little Flock — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Little Flock — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 93 of 125 …",
+      "excerpt": "Little Flock — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 94 of 175 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/little-flock.md",
       "keywords": [
@@ -13365,7 +14154,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/little-rock.md",
       "title": "Little Rock — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Little Rock — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 1 of 125 To…",
+      "excerpt": "Little Rock — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 1 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/little-rock.md",
       "keywords": [
@@ -13379,7 +14168,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/little-rock.md",
       "title": "Little Rock — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Little Rock — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 1 of 125 To…",
+      "excerpt": "Little Rock — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 1 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/little-rock.md",
       "keywords": [
@@ -13735,7 +14524,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lonoke.md",
       "title": "Lonoke — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Lonoke — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 90 of 125 Top 10…",
+      "excerpt": "Lonoke — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 90 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lonoke.md",
       "keywords": [
@@ -13887,7 +14676,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lowell.md",
       "title": "Lowell — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Lowell — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 36 of 125 Top 10…",
+      "excerpt": "Lowell — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 36 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/lowell.md",
       "keywords": [
@@ -14039,7 +14828,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/magnolia.md",
       "title": "Magnolia — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Magnolia — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 35 of 125 Top …",
+      "excerpt": "Magnolia — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 35 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/magnolia.md",
       "keywords": [
@@ -14066,7 +14855,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/malvern.md",
       "title": "Malvern — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Malvern — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 39 of 125 Top 1…",
+      "excerpt": "Malvern — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 39 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/malvern.md",
       "keywords": [
@@ -14093,7 +14882,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/manila.md",
       "title": "Manila — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Manila — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 95 of 125 Top 10…",
+      "excerpt": "Manila — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 96 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/manila.md",
       "keywords": [
@@ -14120,7 +14909,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/marianna.md",
       "title": "Marianna — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Marianna — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 67 of 125 Top …",
+      "excerpt": "Marianna — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 67 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/marianna.md",
       "keywords": [
@@ -14147,7 +14936,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/marion.md",
       "title": "Marion — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Marion — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 29 of 125 Top 10…",
+      "excerpt": "Marion — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 29 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/marion.md",
       "keywords": [
@@ -14296,6 +15085,88 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/marked-tree.md",
+      "title": "Marked Tree — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Marked Tree — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 153 of 175 …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/marked-tree.md",
+      "keywords": [
+        "marked",
+        "tree",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:marked-tree",
+      "title": "Marked Tree · City Brief",
+      "href": "/election-plan/cities/marked-tree",
+      "excerpt": "Poinsett County · 174 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "marked tree",
+        "poinsett",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/marmaduke.md",
+      "title": "Marmaduke — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Marmaduke — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 173 of 175 To…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/marmaduke.md",
+      "keywords": [
+        "marmaduke",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:marmaduke",
+      "title": "Marmaduke · City Brief",
+      "href": "/election-plan/cities/marmaduke",
+      "excerpt": "Greene County · 107 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "marmaduke",
+        "greene",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/marshall.md",
+      "title": "Marshall — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Marshall — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 164 of 175 Top…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/marshall.md",
+      "keywords": [
+        "marshall",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:marshall",
+      "title": "Marshall · City Brief",
+      "href": "/election-plan/cities/marshall",
+      "excerpt": "Searcy County · 146 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "marshall",
+        "searcy",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/event-intelligence/README.md",
       "title": "Master Event Intelligence Layer",
       "href": "/election-plan",
@@ -14326,7 +15197,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/maumelle.md",
       "title": "Maumelle — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Maumelle — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 16 of 125 Top …",
+      "excerpt": "Maumelle — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 16 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/maumelle.md",
       "keywords": [
@@ -14353,7 +15224,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mayflower.md",
       "title": "Mayflower — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Mayflower — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 109 of 125 To…",
+      "excerpt": "Mayflower — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 112 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mayflower.md",
       "keywords": [
@@ -14377,10 +15248,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mccrory.md",
+      "title": "McCrory — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "McCrory — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 156 of 175 Top …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mccrory.md",
+      "keywords": [
+        "mccrory",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:mccrory",
+      "title": "McCrory · City Brief",
+      "href": "/election-plan/cities/mccrory",
+      "excerpt": "Cross County · 167 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "mccrory",
+        "cross",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mcgehee.md",
       "title": "McGehee — City Strategy",
       "href": "/election-plan",
-      "excerpt": "McGehee — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 64 of 125 Top 1…",
+      "excerpt": "McGehee — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 64 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mcgehee.md",
       "keywords": [
@@ -14459,10 +15357,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/melbourne.md",
+      "title": "Melbourne — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Melbourne — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 143 of 175 To…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/melbourne.md",
+      "keywords": [
+        "melbourne",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:melbourne",
+      "title": "Melbourne · City Brief",
+      "href": "/election-plan/cities/melbourne",
+      "excerpt": "Izard County · 197 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "melbourne",
+        "izard",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mena.md",
       "title": "Mena — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Mena — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 72 of 125 Top 10 s…",
+      "excerpt": "Mena — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 72 of 175 Top 10 s…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mena.md",
       "keywords": [
@@ -14869,6 +15794,33 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/monette.md",
+      "title": "Monette — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Monette — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 152 of 175 Top …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/monette.md",
+      "keywords": [
+        "monette",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:monette",
+      "title": "Monette · City Brief",
+      "href": "/election-plan/cities/monette",
+      "excerpt": "Craighead County · 175 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "monette",
+        "craighead",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-09-seventy-five-county-playbook/counties/monroe-county.md",
       "title": "Monroe County — Campaign Playbook",
       "href": "/election-plan",
@@ -15122,7 +16074,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/monticello.md",
       "title": "Monticello — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Monticello — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 38 of 125 To…",
+      "excerpt": "Monticello — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 38 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/monticello.md",
       "keywords": [
@@ -15149,7 +16101,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/morrilton.md",
       "title": "Morrilton — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Morrilton — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 43 of 125 Top…",
+      "excerpt": "Morrilton — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 43 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/morrilton.md",
       "keywords": [
@@ -15204,7 +16156,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mountain-home.md",
       "title": "Mountain Home — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Mountain Home — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 31 of 125…",
+      "excerpt": "Mountain Home — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 31 of 175…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mountain-home.md",
       "keywords": [
@@ -15232,7 +16184,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mountain-view.md",
       "title": "Mountain View — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Mountain View — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 94 of 125…",
+      "excerpt": "Mountain View — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 95 of 175…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mountain-view.md",
       "keywords": [
@@ -15270,6 +16222,60 @@
         "immersion mission",
         "campaign doctrine",
         "one mission"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mulberry.md",
+      "title": "Mulberry — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Mulberry — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 157 of 175 Top…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/mulberry.md",
+      "keywords": [
+        "mulberry",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:mulberry",
+      "title": "Mulberry · City Brief",
+      "href": "/election-plan/cities/mulberry",
+      "excerpt": "Franklin County · 164 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "mulberry",
+        "franklin",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/murfreesboro.md",
+      "title": "Murfreesboro — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Murfreesboro — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 166 of 175…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/murfreesboro.md",
+      "keywords": [
+        "murfreesboro",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:murfreesboro",
+      "title": "Murfreesboro · City Brief",
+      "href": "/election-plan/cities/murfreesboro",
+      "excerpt": "Pike County · 139 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "murfreesboro",
+        "pike",
+        "city",
+        "brief"
       ]
     },
     {
@@ -15373,7 +16379,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/nashville.md",
       "title": "Nashville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Nashville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 82 of 125 Top…",
+      "excerpt": "Nashville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 82 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/nashville.md",
       "keywords": [
@@ -15522,10 +16528,37 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/newark.md",
+      "title": "Newark — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Newark — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 172 of 175 Top 1…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/newark.md",
+      "keywords": [
+        "newark",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:newark",
+      "title": "Newark · City Brief",
+      "href": "/election-plan/cities/newark",
+      "excerpt": "Independence County · 114 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "newark",
+        "independence",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/newport.md",
       "title": "Newport — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Newport — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 55 of 125 Top 1…",
+      "excerpt": "Newport — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 55 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/newport.md",
       "keywords": [
@@ -15775,6 +16808,35 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/oak-grove-heights.md",
+      "title": "Oak Grove Heights — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Oak Grove Heights — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 174 o…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/oak-grove-heights.md",
+      "keywords": [
+        "oak",
+        "grove",
+        "heights",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:oak-grove-heights",
+      "title": "Oak Grove Heights · City Brief",
+      "href": "/election-plan/cities/oak-grove-heights",
+      "excerpt": "Lawrence County · 105 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "oak grove heights",
+        "lawrence",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/calendar-fill/oct-air-show-resolution.md",
       "title": "Oct 3–4 Air Show Conflict Resolution",
       "href": "/election-plan",
@@ -15893,7 +16955,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/osceola.md",
       "title": "Osceola — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Osceola — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 57 of 125 Top 1…",
+      "excerpt": "Osceola — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 57 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/osceola.md",
       "keywords": [
@@ -16073,7 +17135,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/ozark.md",
       "title": "Ozark — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Ozark — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 103 of 125 Top 10…",
+      "excerpt": "Ozark — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 104 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/ozark.md",
       "keywords": [
@@ -16116,7 +17178,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/paragould.md",
       "title": "Paragould — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Paragould — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 23 of 125 Top…",
+      "excerpt": "Paragould — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 23 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/paragould.md",
       "keywords": [
@@ -16143,7 +17205,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/paris.md",
       "title": "Paris — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Paris — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 108 of 125 Top 10…",
+      "excerpt": "Paris — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 111 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/paris.md",
       "keywords": [
@@ -16199,7 +17261,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/pea-ridge.md",
       "title": "Pea Ridge — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Pea Ridge — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 49 of 125 Top…",
+      "excerpt": "Pea Ridge — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 49 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/pea-ridge.md",
       "keywords": [
@@ -16346,6 +17408,33 @@
         "county",
         "strike",
         "team"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/perryville.md",
+      "title": "Perryville — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Perryville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 148 of 175 T…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/perryville.md",
+      "keywords": [
+        "perryville",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:perryville",
+      "title": "Perryville · City Brief",
+      "href": "/election-plan/cities/perryville",
+      "excerpt": "Perry County · 183 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "perryville",
+        "perry",
+        "city",
+        "brief"
       ]
     },
     {
@@ -16792,7 +17881,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/piggott.md",
       "title": "Piggott — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Piggott — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 105 of 125 Top …",
+      "excerpt": "Piggott — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 107 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/piggott.md",
       "keywords": [
@@ -16944,7 +18033,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/pine-bluff.md",
       "title": "Pine Bluff — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Pine Bluff — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 8 of 125 Top…",
+      "excerpt": "Pine Bluff — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 8 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/pine-bluff.md",
       "keywords": [
@@ -16958,7 +18047,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/pine-bluff.md",
       "title": "Pine Bluff — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Pine Bluff — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 8 of 125 Top…",
+      "excerpt": "Pine Bluff — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 8 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/pine-bluff.md",
       "keywords": [
@@ -16986,7 +18075,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/pocahontas.md",
       "title": "Pocahontas — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Pocahontas — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 59 of 125 To…",
+      "excerpt": "Pocahontas — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 59 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/pocahontas.md",
       "keywords": [
@@ -17519,7 +18608,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/pottsville.md",
       "title": "Pottsville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Pottsville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 107 of 125 T…",
+      "excerpt": "Pottsville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 109 of 175 T…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/pottsville.md",
       "keywords": [
@@ -17720,10 +18809,38 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/prairie-creek.md",
+      "title": "Prairie Creek — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Prairie Creek — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 119 of 17…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/prairie-creek.md",
+      "keywords": [
+        "prairie",
+        "creek",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:prairie-creek",
+      "title": "Prairie Creek · City Brief",
+      "href": "/election-plan/cities/prairie-creek",
+      "excerpt": "Benton County · 288 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "prairie creek",
+        "benton",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/prairie-grove.md",
       "title": "Prairie Grove — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Prairie Grove — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 41 of 125…",
+      "excerpt": "Prairie Grove — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 41 of 175…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/prairie-grove.md",
       "keywords": [
@@ -17751,7 +18868,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/prescott.md",
       "title": "Prescott — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Prescott — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 92 of 125 Top …",
+      "excerpt": "Prescott — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 93 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/prescott.md",
       "keywords": [
@@ -17929,7 +19046,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/quitman.md",
       "title": "Quitman — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Quitman — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 125 of 125 Top …",
+      "excerpt": "Quitman — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 175 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/quitman.md",
       "keywords": [
@@ -18094,6 +19211,60 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/rector.md",
+      "title": "Rector — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Rector — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 158 of 175 Top 1…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/rector.md",
+      "keywords": [
+        "rector",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:rector",
+      "title": "Rector · City Brief",
+      "href": "/election-plan/cities/rector",
+      "excerpt": "Clay County · 163 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "rector",
+        "clay",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/redfield.md",
+      "title": "Redfield — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Redfield — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 113 of 175 Top…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/redfield.md",
+      "keywords": [
+        "redfield",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:redfield",
+      "title": "Redfield · City Brief",
+      "href": "/election-plan/cities/redfield",
+      "excerpt": "Jefferson County · 301 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "redfield",
+        "jefferson",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/voter-contact/registration-dashboard.md",
       "title": "Registration Dashboard (Lane 3)",
       "href": "/election-plan",
@@ -18218,7 +19389,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/rogers.md",
       "title": "Rogers — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Rogers — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 6 of 125 Top 10 …",
+      "excerpt": "Rogers — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 6 of 175 Top 10 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/rogers.md",
       "keywords": [
@@ -18231,7 +19402,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/rogers.md",
       "title": "Rogers — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Rogers — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 6 of 125 Top 10 …",
+      "excerpt": "Rogers — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 6 of 175 Top 10 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/rogers.md",
       "keywords": [
@@ -18284,7 +19455,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/russellville.md",
       "title": "Russellville — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Russellville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 19 of 125 …",
+      "excerpt": "Russellville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 19 of 175 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/russellville.md",
       "keywords": [
@@ -18303,6 +19474,33 @@
       "keywords": [
         "russellville",
         "pope",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/salem.md",
+      "title": "Salem — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Salem — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 151 of 175 Top 10…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/salem.md",
+      "keywords": [
+        "salem",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:salem",
+      "title": "Salem · City Brief",
+      "href": "/election-plan/cities/salem",
+      "excerpt": "Fulton County · 176 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "salem",
+        "fulton",
         "city",
         "brief"
       ]
@@ -18589,7 +19787,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/searcy.md",
       "title": "Searcy — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Searcy — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 28 of 125 Top 10…",
+      "excerpt": "Searcy — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 28 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/searcy.md",
       "keywords": [
@@ -19138,7 +20336,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/shannon-hills.md",
       "title": "Shannon Hills — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Shannon Hills — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 71 of 125…",
+      "excerpt": "Shannon Hills — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 71 of 175…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/shannon-hills.md",
       "keywords": [
@@ -19291,7 +20489,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/sheridan.md",
       "title": "Sheridan — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Sheridan — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 79 of 125 Top …",
+      "excerpt": "Sheridan — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 79 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/sheridan.md",
       "keywords": [
@@ -19318,7 +20516,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/sherwood.md",
       "title": "Sherwood — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Sherwood — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 11 of 125 Top …",
+      "excerpt": "Sherwood — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 11 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/sherwood.md",
       "keywords": [
@@ -19441,7 +20639,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/siloam-springs.md",
       "title": "Siloam Springs — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Siloam Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 26 of 12…",
+      "excerpt": "Siloam Springs — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 26 of 17…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/siloam-springs.md",
       "keywords": [
@@ -19461,6 +20659,33 @@
       "keywords": [
         "siloam springs",
         "benton",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/smackover.md",
+      "title": "Smackover — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Smackover — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 138 of 175 To…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/smackover.md",
+      "keywords": [
+        "smackover",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:smackover",
+      "title": "Smackover · City Brief",
+      "href": "/election-plan/cities/smackover",
+      "excerpt": "Union County · 227 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "smackover",
+        "union",
         "city",
         "brief"
       ]
@@ -19586,7 +20811,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/southside.md",
       "title": "Southside — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Southside — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 91 of 125 Top…",
+      "excerpt": "Southside — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 92 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/southside.md",
       "keywords": [
@@ -19613,7 +20838,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/springdale.md",
       "title": "Springdale — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Springdale — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 3 of 125 Top…",
+      "excerpt": "Springdale — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 3 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-08-top-10-strategic-cities/springdale.md",
       "keywords": [
@@ -19626,7 +20851,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/springdale.md",
       "title": "Springdale — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Springdale — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 3 of 125 Top…",
+      "excerpt": "Springdale — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 3 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/springdale.md",
       "keywords": [
@@ -19781,6 +21006,33 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/stamps.md",
+      "title": "Stamps — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Stamps — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 154 of 175 Top 1…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/stamps.md",
+      "keywords": [
+        "stamps",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:stamps",
+      "title": "Stamps · City Brief",
+      "href": "/election-plan/cities/stamps",
+      "excerpt": "Lafayette County · 172 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "stamps",
+        "lafayette",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/campaign-brain/relationship-network/standard-ask-package.md",
       "title": "Standard Ask Package",
       "href": "/election-plan",
@@ -19805,6 +21057,34 @@
         "relationship",
         "ask",
         "package"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/star-city.md",
+      "title": "Star City — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Star City — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 149 of 175 To…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/star-city.md",
+      "keywords": [
+        "star",
+        "city",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:star-city",
+      "title": "Star City · City Brief",
+      "href": "/election-plan/cities/star-city",
+      "excerpt": "Lincoln County · 181 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "star city",
+        "lincoln",
+        "city",
+        "brief"
       ]
     },
     {
@@ -20017,7 +21297,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/stuttgart.md",
       "title": "Stuttgart — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Stuttgart — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 50 of 125 Top…",
+      "excerpt": "Stuttgart — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 50 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/stuttgart.md",
       "keywords": [
@@ -20174,7 +21454,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/texarkana.md",
       "title": "Texarkana — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Texarkana — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 18 of 125 Top…",
+      "excerpt": "Texarkana — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 18 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/texarkana.md",
       "keywords": [
@@ -20338,7 +21618,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/tontitown.md",
       "title": "Tontitown — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Tontitown — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 56 of 125 Top…",
+      "excerpt": "Tontitown — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 56 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/tontitown.md",
       "keywords": [
@@ -20466,7 +21746,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/trumann.md",
       "title": "Trumann — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Trumann — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 66 of 125 Top 1…",
+      "excerpt": "Trumann — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 66 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/trumann.md",
       "keywords": [
@@ -20485,6 +21765,33 @@
       "keywords": [
         "trumann",
         "poinsett",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/tuckerman.md",
+      "title": "Tuckerman — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Tuckerman — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 160 of 175 To…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/tuckerman.md",
+      "keywords": [
+        "tuckerman",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:tuckerman",
+      "title": "Tuckerman · City Brief",
+      "href": "/election-plan/cities/tuckerman",
+      "excerpt": "Jackson County · 157 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "tuckerman",
+        "jackson",
         "city",
         "brief"
       ]
@@ -20826,7 +22133,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/van-buren.md",
       "title": "Van Buren — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Van Buren — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 25 of 125 Top…",
+      "excerpt": "Van Buren — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 25 of 175 Top…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/van-buren.md",
       "keywords": [
@@ -20985,7 +22292,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/vilonia.md",
       "title": "Vilonia — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Vilonia — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 69 of 125 Top 1…",
+      "excerpt": "Vilonia — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 69 of 175 Top 1…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/vilonia.md",
       "keywords": [
@@ -21184,7 +22491,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/waldron.md",
       "title": "Waldron — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Waldron — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 121 of 125 Top …",
+      "excerpt": "Waldron — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 130 of 175 Top …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/waldron.md",
       "keywords": [
@@ -21211,7 +22518,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/walnut-ridge.md",
       "title": "Walnut Ridge — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Walnut Ridge — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 83 of 125 …",
+      "excerpt": "Walnut Ridge — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 83 of 175 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/walnut-ridge.md",
       "keywords": [
@@ -21239,7 +22546,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/ward.md",
       "title": "Ward — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Ward — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 61 of 125 Top 10 s…",
+      "excerpt": "Ward — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 61 of 175 Top 10 s…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/ward.md",
       "keywords": [
@@ -21266,7 +22573,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/warren.md",
       "title": "Warren — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Warren — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 63 of 125 Top 10…",
+      "excerpt": "Warren — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 63 of 175 Top 10…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/warren.md",
       "keywords": [
@@ -21789,7 +23096,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/west-fork.md",
       "title": "West Fork — City Strategy",
       "href": "/election-plan",
-      "excerpt": "West Fork — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 99 of 125 Top…",
+      "excerpt": "West Fork — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 100 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/west-fork.md",
       "keywords": [
@@ -21817,7 +23124,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/west-memphis.md",
       "title": "West Memphis — City Strategy",
       "href": "/election-plan",
-      "excerpt": "West Memphis — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 17 of 125 …",
+      "excerpt": "West Memphis — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 17 of 175 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/west-memphis.md",
       "keywords": [
@@ -22001,7 +23308,7 @@
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/white-hall.md",
       "title": "White Hall — City Strategy",
       "href": "/election-plan",
-      "excerpt": "White Hall — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 42 of 125 To…",
+      "excerpt": "White Hall — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 42 of 175 To…",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/white-hall.md",
       "keywords": [
@@ -22204,10 +23511,64 @@
       ]
     },
     {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/wooster.md",
+      "title": "Wooster — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Wooster — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 162 of 175 Top …",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/wooster.md",
+      "keywords": [
+        "wooster",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:wooster",
+      "title": "Wooster · City Brief",
+      "href": "/election-plan/cities/wooster",
+      "excerpt": "Faulkner County · 152 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "wooster",
+        "faulkner",
+        "city",
+        "brief"
+      ]
+    },
+    {
+      "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/wrightsville.md",
+      "title": "Wrightsville — City Strategy",
+      "href": "/election-plan",
+      "excerpt": "Wrightsville — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 110 of 175…",
+      "type": "Strategic Plan",
+      "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/wrightsville.md",
+      "keywords": [
+        "wrightsville",
+        "city",
+        "strategy"
+      ]
+    },
+    {
+      "id": "city:wrightsville",
+      "title": "Wrightsville · City Brief",
+      "href": "/election-plan/cities/wrightsville",
+      "excerpt": "Pulaski County · 324 vote target",
+      "type": "City",
+      "sourcePath": "data/election-plan/election-plan-workbench.snapshot.json",
+      "keywords": [
+        "wrightsville",
+        "pulaski",
+        "city",
+        "brief"
+      ]
+    },
+    {
       "id": "md:docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/wynne.md",
       "title": "Wynne — City Strategy",
       "href": "/election-plan",
-      "excerpt": "Wynne — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 47 of 125 Top 10 …",
+      "excerpt": "Wynne — City Strategy Status: Generated Document: Arkansas Plurality Victory Plan Classification: CONFIDENTIAL CAMPAIGN DOCUMENT Part: III — The Arkansas Battlefield Chapter: 7 City rank (vote target): 47 of 175 Top 10 …",
       "type": "Strategic Plan",
       "sourcePath": "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy/cities/wynne.md",
       "keywords": [

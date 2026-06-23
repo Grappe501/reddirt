@@ -5,7 +5,7 @@
 > **Classification:** CONFIDENTIAL CAMPAIGN DOCUMENT
 > **Part:** III — The Arkansas Battlefield
 > **Chapter:** 7
-> **City rank (vote target):** #123 of 125
+> **City rank (vote target):** #137 of 175
 > **Top 10 strategic city:** No
 
 ---

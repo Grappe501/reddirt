@@ -142,7 +142,7 @@ const BASE_CITATIONS: DataSourceCitation[] = [
     label: "Fundraising Operating System",
     file: "data/campaign-brain/fundraising-operating-system.source.json",
     field: "stateGoal, communityStretchMultipliers",
-    note: "Dollar goals proportional to city vote targets within Top 125.",
+    note: "Dollar goals proportional to city vote targets within Top 175.",
   },
   {
     id: "coalition-registry",

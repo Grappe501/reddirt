@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-06-23T05:27:50.110Z",
+  "generatedAt": "2026-06-23T05:43:19.714Z",
   "sourceNote": "Official Arkansas SOS election JSON — precinct rows aggregated to county. Presidential 2016/2020/2024, SOS 2018/2022, Treasurer 2022/2024.",
   "sourceFiles": {
     "general2016": "H:\\SOSWebsite\\campaign information for ingestion\\electionResults\\2016_General.json",

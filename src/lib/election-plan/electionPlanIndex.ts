@@ -63,12 +63,12 @@ export const ELECTION_PLAN_ARCHITECTURE: ElectionPlanArchitectureSection[] = [
   {
     id: "part-iii",
     title: "Part III — Arkansas Battlefield",
-    description: "Top 125 priority cities · Top 10 deep dives · 75 county playbooks",
+    description: "Top 175 priority cities · Top 10 deep dives · 75 county playbooks",
     path: "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield",
     children: [
       {
         id: "top-40",
-        title: "Top 125 City Strategy",
+        title: "Top 175 City Strategy",
         description: "207,507 vote target",
         path: "docs/strategic-plan/plurality-victory-plan/part-iii-arkansas-battlefield/chapter-07-top-40-city-strategy",
       },

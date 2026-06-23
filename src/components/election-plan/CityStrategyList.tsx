@@ -82,7 +82,7 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
         <div>
           <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">Priority cities</h1>
           <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-            {priorityCities.length} priority cities (Top 125) · ranked by vote target
+            {priorityCities.length} priority cities (Top 175) · ranked by vote target
             {bonus.length > 0 ? " · bonus cities listed separately" : ""}
           </p>
         </div>
@@ -99,11 +99,11 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
       <div className="mb-8 ep-stat-grid">
         <div className="ep-stat">
           <div className="ep-stat-value">{priorityCities.length}</div>
-          <div className="ep-stat-label">Priority cities (Top 125)</div>
+          <div className="ep-stat-label">Priority cities (Top 175)</div>
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{formatVotes(combinedTargetVotes)}</div>
-          <div className="ep-stat-label">Top 125 combined target</div>
+          <div className="ep-stat-label">Top 175 combined target</div>
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{priorityCities.filter((c) => c.isTop10).length}</div>
@@ -121,7 +121,7 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
         <div className="mt-10">
           <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Bonus cushion cities</h2>
           <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-            Isolated KPI plans — not included in Top 125 combined vote target
+            Isolated KPI plans — not included in Top 175 combined vote target
           </p>
           <div className="mt-4 space-y-3">
             {bonus.map((city) => (
