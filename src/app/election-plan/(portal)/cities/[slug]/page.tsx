@@ -11,15 +11,15 @@ import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-c
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
 import { loadLocationFundraisingForCity } from "@/lib/election-plan/load-location-fundraising";
 import { getCityIntelligenceProfile } from "@/lib/election-plan/load-city-intelligence-profile";
+import { electionPlanSlugForCountyName } from "@/lib/election-plan/location-links";
+import { withAsyncTimeout } from "@/lib/election-plan/with-async-timeout";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 26;
 
-export function generateStaticParams() {
-  const data = loadElectionPlanSnapshot();
-  return data.cities.map((c) => ({ slug: c.slug }));
-}
+const EMPTY_FIELD_SUMMARY = { entries: [], rollups: [], totalQuantity: 0 };
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
@@ -41,7 +41,7 @@ export default async function CityLocationBriefPage({ params }: Props) {
   if (!brief) notFound();
 
   const countyKpi = getCountyByName(data, brief.county);
-  const countySlug = countyKpi?.slug ?? brief.county.toLowerCase().replace(/\s+/g, "-").replace(/-county$/, "");
+  const countySlug = countyKpi?.slug ?? electionPlanSlugForCountyName(brief.county);
   const strikeTeam = getCountyStrikeTeamByName(brief.county);
   const siblingCities = getCitiesInCounty(data.cities, brief.county);
   const fieldEvents = fieldEventsForLocation(data.executiveCalendar.entries, {
@@ -56,9 +56,11 @@ export default async function CityLocationBriefPage({ params }: Props) {
     referenceDate: data.executiveCalendar.referenceDate,
   });
   const [fieldEntrySummary, operator, locationFundraising] = await Promise.all([
-    loadFieldEntriesForLocation({ countySlug, citySlug: brief.slug }),
-    loadCurrentElectionPlanOperator(),
-    loadLocationFundraisingForCity(brief.slug),
+    withAsyncTimeout(loadFieldEntriesForLocation({ countySlug, citySlug: brief.slug }), 8_000, "field entries").catch(
+      () => EMPTY_FIELD_SUMMARY,
+    ),
+    loadCurrentElectionPlanOperator().catch(() => null),
+    withAsyncTimeout(loadLocationFundraisingForCity(brief.slug), 8_000, "location fundraising").catch(() => null),
   ]);
 
   const cityIntelligence = getCityIntelligenceProfile(brief.slug);
