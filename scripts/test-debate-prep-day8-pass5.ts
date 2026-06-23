@@ -24,19 +24,19 @@ import { getDebateWeekIntensiveDay } from "../src/lib/intelligence/v4/debateWeek
 
 const DEBATE_DAY = "2026-06-26";
 
-assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-crash-course-v1.0.0");
+assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-command-course-v1.1.0");
 const v8Source = fs.readFileSync(
   path.join(process.cwd(), "src/lib/election-plan/debate-prep-system-v8.ts"),
   "utf8",
 );
 assert.ok(
-  v8Source.includes('DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.8-day8-crash-course-v1.0.0"'),
-  "v8 system version should match Day 8 v1.0.0 sign-off",
+  v8Source.includes('DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.8-day8-command-course-v1.1.0"'),
+  "v8 system version should match Day 8 v1.1.0 sign-off",
 );
 
 assert.equal(debatePrepHubPrimaryDayId(DEBATE_DAY), DAY8_ID);
-assert.ok(DAY8_HUB_TONIGHT_SUMMARY.includes("crash course"));
-assert.ok(buildDebatePrepPathwayTonightFocus(DEBATE_DAY).includes("Day 8 crash course"));
+assert.ok(DAY8_HUB_TONIGHT_SUMMARY.includes("Debate command course"));
+assert.ok(buildDebatePrepPathwayTonightFocus(DEBATE_DAY).includes("Module 8 command course"));
 
 const day8Plan = getDebateWeekIntensiveDay(DAY8_ID)!;
 assert.equal(day8Plan.hoursTarget, 3);
@@ -71,5 +71,5 @@ assert.ok(panelsFile.includes("ElectionPlanDay8LockSheetPanel"), "Day 8 panels i
 assert.ok(blockPage.includes("ElectionPlanDay8BlockEmbed"), "block page wires Day 8 product embed");
 
 console.log(
-  `test-debate-prep-day8-pass5: OK (${DAY8_SECTION_IDS.length} sections, ${sectionMinutes}m crash course, v1.0.0 sign-off)`,
+  `test-debate-prep-day8-pass5: OK (${DAY8_SECTION_IDS.length} sections, ${sectionMinutes}m command course, v1.1.0 sign-off)`,
 );

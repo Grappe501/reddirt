@@ -28,11 +28,11 @@ export type Day8SosDomainCard = {
 };
 
 export const DAY8_SOS_THREE_DOMAINS_FRAME =
-  "The Secretary of State runs three big jobs — elections, business services, and Capitol management. You built each pillar across Days 1–7. Today lines them up in debate order so Arkansas hears the full administrator, not a single talking point.";
+  "The Secretary of State runs three jobs — elections, business services, and Capitol management. Modules 1–7 built each pillar. This course lines them up for stage: administrator frame, one proof point per domain, Arkansas promise.";
 
-/** Seven-day course compressed into Day 8 section order — links back to full blocks. */
+/** Module map — compressed path with links back to full blocks. */
 export const DAY8_WEEK_BALANCE_CORRECTION =
-  "Compressed seven-day path — opening pulls Day 1 + Day 7 bookends; persona and traps pull Days 2, 4, and 5; SOS drills pull Day 3 manual + Day 5 sprint. Tap any section's deep links to reopen the full block before you continue.";
+  "Course map — opening: Modules 1 + 7 · persona and traps: Modules 2, 4, 5 · SOS drills: Module 3 manual + Module 5 sprint. Use deep-study links to reopen any full block.";
 
 export const DAY8_SOS_DOMAIN_CARDS: readonly Day8SosDomainCard[] = [
   {

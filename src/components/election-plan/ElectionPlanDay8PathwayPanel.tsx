@@ -16,7 +16,7 @@ import {
   type Day8PathwayStep,
 } from "@/lib/election-plan/day8-learning-pathway";
 import {
-  DAY8_ARKANSAS_PEOPLE_FRAME,
+  DAY8_COURSE_EYEBROW,
   DAY8_CLAIMS_GATE,
   DAY8_HUB_TONIGHT_SUMMARY,
   DAY8_V3_KELLY_MINIMUM_SUMMARY,
@@ -45,25 +45,22 @@ export function ElectionPlanDay8StartCard() {
 
   return (
     <section className="ep-pathway-start mb-8">
-      <p className="ep-pathway-start-eyebrow text-emerald-800">Day 8 · crash course · debate day AM</p>
+      <p className="ep-pathway-start-eyebrow text-emerald-800">{DAY8_COURSE_EYEBROW}</p>
       <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">{plan.title}</h2>
       <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">{plan.subtitle}</p>
       <KellyPageSummary summary={DAY8_V3_KELLY_MINIMUM_SUMMARY} />
       <p className="mt-3 rounded-lg border border-emerald-300/60 bg-emerald-50/40 px-3 py-2 text-xs text-emerald-950">
         {DAY8_SOS_THREE_DOMAINS_FRAME}
       </p>
-      <p className="mt-3 rounded-lg border border-emerald-300/60 bg-emerald-50/40 px-3 py-2 text-xs text-emerald-950">
-        {DAY8_ARKANSAS_PEOPLE_FRAME}
-      </p>
       <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50/60 px-3 py-2 text-xs text-amber-950">
         {DAY8_CLAIMS_GATE[0]}
       </p>
       <ElectionPlanDay8DeepStudyStrip sectionId="s8-orient" />
       <Link href={first.href} className="ep-btn ep-btn-primary ep-btn-block-sm-auto mt-5">
-        Start crash course · {first.sectionLabel ?? "§0"} ({first.minutes} min) →
+        Start course · {first.sectionLabel ?? "§0"} ({first.minutes} min) →
       </Link>
       <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
-        Minimum path: {DAY8_MINIMUM_SECTION_IDS.join(", ")} — toggle full course below if you have time for run-through.
+        Minimum path: {DAY8_MINIMUM_SECTION_IDS.join(", ")} — toggle full course below when you have time for run-through.
       </p>
       <p className="mt-2 text-[10px] font-mono text-[var(--ep-navy-muted)]">
         {DEBATE_PREP_DAY8_RELEASE_VERSION} · {DEBATE_PREP_DAY8_RELEASE_LABEL}

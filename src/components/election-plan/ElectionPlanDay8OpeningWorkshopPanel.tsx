@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 import { ElectionPlanPracticeCountdown } from "@/components/election-plan/ElectionPlanPracticeCountdown";
-import { DAY8_WEEK_BALANCE_CORRECTION } from "@/lib/election-plan/debate-prep-day8-sos-three-domains";
 import type { Day8OpeningBeat } from "@/lib/election-plan/load-day8-crash-course-surface";
 
 const STORAGE_KEY = "kelly-day8-opening-workshop-v1";
@@ -65,10 +64,6 @@ export function ElectionPlanDay8OpeningWorkshopPanel({
 
   return (
     <section className="mb-6 space-y-4">
-      <p className="rounded-lg border border-emerald-300/60 bg-emerald-50/40 px-3 py-2 text-xs text-emerald-950">
-        {DAY8_WEEK_BALANCE_CORRECTION}
-      </p>
-
       <article className="ep-card border-emerald-200 bg-emerald-50/30 p-5 text-sm">
         <p className="text-xs font-bold uppercase text-emerald-900">Opening workshop · 90s · beats A / B / C</p>
         <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
@@ -120,7 +115,7 @@ export function ElectionPlanDay8OpeningWorkshopPanel({
         </div>
 
         <Link href={rehearsalHref} className="mt-4 inline-block text-xs font-bold text-emerald-900 underline">
-          Day 1 opening rehearsal →
+          Module 1 · opening rehearsal →
         </Link>
       </article>
     </section>

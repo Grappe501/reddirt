@@ -60,7 +60,7 @@ export function debatePrepHubPrimaryDayId(referenceDate?: string): DebatePrepHub
 export function buildDebatePrepPathwayTonightFocus(referenceDate?: string): string {
   const primaryDayId = debatePrepHubPrimaryDayId(referenceDate);
   if (primaryDayId === DAY8_ID) {
-    return `Day 8 crash course — start ${getFirstDay8PathwayStep().label}. ${DAY8_HUB_TONIGHT_SUMMARY}`;
+    return `Module 8 command course — start ${getFirstDay8PathwayStep().label}. ${DAY8_HUB_TONIGHT_SUMMARY}`;
   }
   if (primaryDayId === DAY7_ID) {
     return `Day 7 pathway — start ${getFirstDay7PathwayStep().label}. ${DAY7_HUB_TONIGHT_SUMMARY}`;

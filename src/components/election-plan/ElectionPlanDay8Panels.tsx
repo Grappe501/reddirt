@@ -9,8 +9,8 @@ import { ElectionPlanDay8MiddleGamePanel } from "@/components/election-plan/Elec
 import { ElectionPlanDay8OpeningWorkshopPanel } from "@/components/election-plan/ElectionPlanDay8OpeningWorkshopPanel";
 import { ElectionPlanDay8PersonaWallPanel } from "@/components/election-plan/ElectionPlanDay8PersonaWallPanel";
 import {
-  DAY8_AUDIBLE_CARD,
   DAY8_CLAIMS_GATE,
+  DAY8_COURSE_INTRO,
   DAY8_SOS_THREE_DOMAINS_FRAME,
 } from "@/lib/election-plan/debate-prep-day8-crash-copy";
 import { epDebatePrepDayBlockHref, epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
@@ -19,7 +19,7 @@ import { buildDay8CrashCourseSurface } from "@/lib/election-plan/load-day8-crash
 
 export function ElectionPlanDay8PathwayReturnLink({
   blockId,
-  label = "Return to Day 8 crash course",
+  label = "Return to debate command course",
 }: {
   blockId?: string;
   label?: string;
@@ -38,7 +38,7 @@ export function ElectionPlanDay8PathwayReturnLink({
 function Day8OrientEmbed() {
   return (
     <div className="mb-6 space-y-3 rounded-lg border border-emerald-300/50 bg-emerald-50/40 p-4 text-sm">
-      <p className="text-xs font-bold uppercase text-emerald-900">{DAY8_AUDIBLE_CARD}</p>
+      <p className="text-xs font-bold uppercase text-emerald-900">{DAY8_COURSE_INTRO}</p>
       <p className="text-xs text-emerald-950">{DAY8_SOS_THREE_DOMAINS_FRAME}</p>
       <p className="text-xs text-amber-950">{DAY8_CLAIMS_GATE[0]}</p>
     </div>

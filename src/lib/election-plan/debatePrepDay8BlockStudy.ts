@@ -9,7 +9,7 @@ import {
 } from "@/lib/election-plan/debate-prep-links";
 import {
   DAY8_ARKANSAS_PEOPLE_FRAME,
-  DAY8_AUDIBLE_CARD,
+  DAY8_COURSE_INTRO,
   DAY8_CLAIMS_GATE,
   DAY8_DOMAIN_COVERAGE_CHECK,
   DAY8_PM_EXECUTION_NOTE,
@@ -38,48 +38,47 @@ const surface = () => buildDay8CrashCourseSurface();
 export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
   "s8-orient": {
     blockId: "s8-orient",
-    studyGuideTitle: "§0 · Start here · 10-minute orient",
-    professorLead: DAY8_AUDIBLE_CARD,
+    studyGuideTitle: "§0 · Orientation · 10 minutes",
+    professorLead: DAY8_COURSE_INTRO,
     overview: `${DAY8_ARKANSAS_PEOPLE_FRAME} ${DAY8_SOS_THREE_DOMAINS_FRAME}`,
     phases: [
       {
         minutesLabel: "0–4 min",
-        title: "Start card + three-domain frame",
+        title: "Course map + three domains",
         steps: [
-          "Read start card aloud — compressed seven-day course, same material in debate order.",
-          `Read three-domain frame: ${DAY8_SOS_DOMAIN_CARDS.map((d) => d.shortLabel).join(" · ")}.`,
+          DAY8_COURSE_INTRO,
+          `Three domains: ${DAY8_SOS_DOMAIN_CARDS.map((d) => d.shortLabel).join(" · ")}.`,
           DAY8_WEEK_BALANCE_CORRECTION,
-          "Choose full (~3h) or minimum (~90m) path.",
+          "Choose full (~3h) or essentials (~90m) path.",
         ],
       },
       {
         minutesLabel: "4–8 min",
         title: "Domain coverage checklist",
         steps: [
-          ...DAY8_DOMAIN_COVERAGE_CHECK.map((q) => `Evening check preview: ${q}`),
-          "Name three things you will NOT do today (new stats, opponent smears, fresh research rabbit holes).",
+          ...DAY8_DOMAIN_COVERAGE_CHECK.map((q) => q),
         ],
       },
       {
         minutesLabel: "8–10 min",
         title: "Sign-off → pre-debate prep",
         steps: [
-          "Staff confirms Day 7 lock sheet is loaded.",
-          "Tap Continue — next section is pre-debate prep.",
+          "Confirm lock sheet from Module 7 is loaded.",
+          "Continue to pre-stage prep.",
         ],
       },
     ],
     deepSections: [
-      { title: "Seven-day compression map", body: DAY8_WEEK_BALANCE_CORRECTION },
+      { title: "Course map", body: DAY8_WEEK_BALANCE_CORRECTION },
       { title: "Audience", body: DAY8_ARKANSAS_PEOPLE_FRAME },
       {
-        title: "Deep study — Days 1–7",
-        body: DAY8_SEVEN_DAY_DEEP_LINKS.map((link) => `${link.label} → ${link.href}`).join(" · "),
+        title: "Deep study · Modules 1–7",
+        body: DAY8_SEVEN_DAY_DEEP_LINKS.map((link) => link.label).join(" · "),
       },
     ],
     keyTakeaways: [
       "Can name elections, business services, and Capitol management as the three SOS jobs.",
-      "Committed to one line per domain before PM travel.",
+      "Committed to one line per domain before stage.",
     ],
     practiceSteps: [
       "Read three-domain frame aloud.",
@@ -92,8 +91,8 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
   },
   "s8-pre-debate": {
     blockId: "s8-pre-debate",
-    studyGuideTitle: "§1 · Pre-debate prep · 15-minute ritual",
-    professorLead: "Lock what exists — three if-X-then-Y cards and domain lock sheet preview.",
+    studyGuideTitle: "§1 · Pre-stage prep · 15 minutes",
+    professorLead: "Lock sheet preview and three if-X-then-Y cards.",
     overview:
       "Preview lock sheet with one line per SOS domain. Three implementation-intention cards. Hydrate — no new ingestion.",
     phases: [
@@ -121,7 +120,7 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         title: "Physical readiness",
         steps: [
           "Hydrate · voice check · no new content.",
-          "Staff handles logistics PM — Kelly saves voice for stage.",
+          "Staff handles venue logistics — preserve voice for stage.",
         ],
       },
     ],
@@ -134,7 +133,7 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
   "s8-command": {
     blockId: "s8-command",
     studyGuideTitle: "§2 · Command presence · 20-minute body protocol",
-    professorLead: "Body before words — Day 1 compressed. Calm reads as administrator for all three domains.",
+    professorLead: "Body before words — Module 1 command protocol.",
     overview: "4-4-6 breath ×3, scan protocol, listen face while staff reads Hammer bait.",
     phases: [
       {
@@ -390,7 +389,7 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
   },
   "s8-lock-sheet": {
     blockId: "s8-lock-sheet",
-    studyGuideTitle: "§8 · Lock sheet · 8-minute export + PM handoff",
+    studyGuideTitle: "§8 · Lock sheet · 8 minutes + stage handoff",
     professorLead: "Export green lines only — one row per domain plus bookends and top trap pairs.",
     overview: DAY8_PM_EXECUTION_NOTE,
     phases: [
@@ -405,7 +404,7 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
       },
       {
         minutesLabel: "4–8 min",
-        title: "PM protocol + course complete",
+        title: "Stage handoff",
         steps: [
           "Read PM handoff: travel → stage → debrief.",
           ...DAY8_DOMAIN_COVERAGE_CHECK.map((q) => `Confirm: ${q}`),
@@ -413,7 +412,7 @@ export const DAY8_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
         ],
       },
     ],
-    deepSections: [{ title: "PM execution", body: DAY8_PM_EXECUTION_NOTE }],
+    deepSections: [{ title: "Stage handoff", body: DAY8_PM_EXECUTION_NOTE }],
     keyTakeaways: ["Lock sheet exported.", "Three-domain coverage check answered yes."],
     practiceSteps: ["Export lock sheet.", "Confirm domain coverage checklist."],
     claimsGate: claimsGateLines,

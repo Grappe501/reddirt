@@ -534,7 +534,7 @@ const v8Source = fs.readFileSync(
   "utf8",
 );
 assert.ok(
-  v8Source.includes("day7-refine-and-steal-show-v1.0.0") || v8Source.includes("day8-crash-course-v1.0.0"),
+  v8Source.includes("day8-command-course-v1.1.0"),
   "v8 system version should reflect production sign-off",
 );
 
@@ -571,12 +571,12 @@ for (const step of day8Steps) {
   assert.ok(!step.href.includes("/admin/"), `${step.id} must not link to admin on Day 8 pathway`);
 }
 
-assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-crash-course-v1.0.0");
+assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-command-course-v1.1.0");
 assert.equal(debatePrepHubPrimaryDayId("2026-06-26"), DAY8_ID);
-assert.ok(DAY8_HUB_TONIGHT_SUMMARY.includes("crash course"), "Day 8 hub summary names crash course AM");
+assert.ok(DAY8_HUB_TONIGHT_SUMMARY.includes("Debate command course"), "Day 8 hub summary names command course");
 assert.ok(
-  buildDebatePrepPathwayTonightFocus("2026-06-26").includes("Day 8 crash course"),
-  "tonight focus on debate day promotes Day 8",
+  buildDebatePrepPathwayTonightFocus("2026-06-26").includes("Module 8 command course"),
+  "tonight focus on debate day promotes Module 8",
 );
 assert.ok(hubPanel.includes("ElectionPlanDay8StartCard"), "hub should promote Day 8 start card");
 assert.ok(hubPanel.includes("focusDay8"), "hub should branch on Day 8 primary");
@@ -588,9 +588,9 @@ assert.ok(
 );
 assert.ok(
   fs.readFileSync(path.join(__dirname, "../src/lib/election-plan/debate-prep-system-v8.ts"), "utf8").includes(
-    'DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.8-day8-crash-course-v1.0.0"',
+    'DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.8-day8-command-course-v1.1.0"',
   ),
-  "v8 system version should match Day 8 v1.0.0 sign-off",
+  "v8 system version should match Day 8 v1.1.0 sign-off",
 );
 
 console.log(

@@ -365,7 +365,7 @@ export function ElectionPlanDebatePrepHubPanel() {
             <p className="text-xs font-bold uppercase text-rose-900">Opponent bios</p>
             <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
               {focusDay8
-                ? "Lock sheet only — no new research on debate day AM"
+                ? "Lock sheet from command course — claims-green only before stage"
                 : focusDay7
                 ? "Bookends polish — no new stats on debate eve"
                 : focusDay6

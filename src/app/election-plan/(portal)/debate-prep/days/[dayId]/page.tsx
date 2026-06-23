@@ -13,7 +13,7 @@ import { getFirstDay6PathwayStep } from "@/lib/election-plan/day6-learning-pathw
 import { getFirstDay7PathwayStep } from "@/lib/election-plan/day7-learning-pathway";
 import { getFirstDay8PathwayStep } from "@/lib/election-plan/day8-learning-pathway";
 import { DAY7_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day7-polish-copy";
-import { DAY8_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day8-crash-copy";
+import { DAY8_COURSE_TITLE, DAY8_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day8-crash-copy";
 import { dayHasDrillDownPages, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, DAY8_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { EP_DEBATE_PREP_HREF } from "@/lib/election-plan/debate-prep-links";
 import { DAY5_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
@@ -224,7 +224,7 @@ export default async function ElectionPlanDebatePrepDayPage({
               href={firstStep.href}
               className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
             >
-              Start crash course · {firstStep.label} →
+              Start {DAY8_COURSE_TITLE.toLowerCase()} · {firstStep.label} →
             </Link>
           </>
         ) : null}
@@ -236,7 +236,7 @@ export default async function ElectionPlanDebatePrepDayPage({
               href={firstStep.href}
               className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
             >
-              Start crash course · {firstStep.label} →
+              Start {DAY8_COURSE_TITLE.toLowerCase()} · {firstStep.label} →
             </Link>
           </>
         ) : null}

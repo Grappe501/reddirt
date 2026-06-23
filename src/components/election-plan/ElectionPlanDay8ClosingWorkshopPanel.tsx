@@ -81,7 +81,7 @@ export function ElectionPlanDay8ClosingWorkshopPanel({
         </div>
 
         <Link href={rehearsalHref} className="mt-4 inline-block text-xs font-bold text-emerald-900 underline">
-          Closing clerk invoke drill →
+          Module 7 · closing rehearsal →
         </Link>
       </article>
     </section>

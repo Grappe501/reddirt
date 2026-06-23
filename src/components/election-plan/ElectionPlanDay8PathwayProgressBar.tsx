@@ -84,7 +84,7 @@ export function ElectionPlanDay8PathwayProgressBar({
     <section className="mb-6 rounded-xl border border-emerald-300/50 bg-emerald-50/30 p-4">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-emerald-900">Day 8 crash course</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-emerald-900">Debate command course</p>
           <p className="mt-1 font-heading text-2xl font-bold text-[var(--ep-navy)]">{progress.requiredPct}%</p>
           <p className="text-xs text-[var(--ep-navy-muted)]">
             {progress.requiredDone} of {progress.requiredTotal} sections signed off

@@ -17,7 +17,7 @@ import {
 import { DAY8_PATHWAY_STORAGE_KEY } from "../src/lib/election-plan/day8-pathway-progress";
 import {
   DAY8_ARKANSAS_PEOPLE_FRAME,
-  DAY8_AUDIBLE_CARD,
+  DAY8_COURSE_INTRO,
   DAY8_DOMAIN_COVERAGE_CHECK,
   DAY8_SEVEN_DAY_DEEP_LINKS,
 } from "../src/lib/election-plan/debate-prep-day8-crash-copy";
@@ -68,13 +68,13 @@ const steps = buildDay8PathwaySteps();
 assert.equal(steps.length, 10, "9 sections + course complete");
 assert.equal(getFirstDay8PathwayStep().id, "s8-orient");
 assert.ok(getNextDay8PathwayStep("s8-orient")?.id === "s8-pre-debate");
-assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-crash-course-v1.0.0");
+assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-command-course-v1.1.0");
 assert.ok(isKellyDay8StreamlinedPath());
 assert.ok(isKellyDay8CrashCoursePath());
 assert.ok(DAY8_PATHWAY_STORAGE_KEY.includes("day8"));
 assert.ok(DAY8_SOS_THREE_DOMAINS_FRAME.includes("business services"));
-assert.ok(DAY8_SOS_THREE_DOMAINS_FRAME.includes("Days 1–7"));
-assert.ok(DAY8_AUDIBLE_CARD.includes("compressed seven-day"));
+assert.ok(DAY8_COURSE_INTRO.includes("Modules 1–7"));
+assert.ok(DAY8_SOS_THREE_DOMAINS_FRAME.includes("Modules 1–7"));
 assert.equal(DAY8_SEVEN_DAY_DEEP_LINKS.length, 7);
 assert.ok(getDay8SectionDeepStudyLinks("s8-middle-game").length >= 4);
 assert.ok(getDay8SectionDeepStudyLinks("s8-opening-workshop").some((l) => l.label.includes("Day 1")));
@@ -138,5 +138,5 @@ for (const file of PASS4_PANELS) {
 }
 
 console.log(
-  `test-debate-prep-day8-pathway: OK (${steps.length} steps, ${blocks.length} sections, 3 SOS domains, v1.0.0)`,
+  `test-debate-prep-day8-pathway: OK (${steps.length} steps, ${blocks.length} sections, 3 SOS domains, v1.1.0)`,
 );

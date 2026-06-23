@@ -39,7 +39,7 @@ export function buildDay8PathwaySteps(): Day8PathwayStep[] {
     {
       id: "course-complete",
       kind: "close",
-      label: "Course complete · PM execution handoff",
+      label: "Course complete · stage handoff",
       minutes: 5,
       href: epDebatePrepDayHref(DAY8_ID),
       teaser: DAY8_PLAN().successCheck,
@@ -82,14 +82,14 @@ export const DAY8_EVENING_REVIEW = [
 ] as const;
 
 export const DAY8_DAY7_REVIEW = {
-  title: "Yesterday · Day 7 — Refine & steal the show",
-  body: "Bookends and quotable line feed today's workshops — cut weak material, do not add research.",
+  title: "Module 7 · Refine & steal the show",
+  body: "Bookends and quotable line feed opening and closing workshops — refine, do not expand research.",
   href: epDebatePrepDayHref("day-7-refine-and-steal-show"),
 } as const;
 
 export const DAY8_PM_HANDOFF = {
-  title: "This afternoon · Travel → stage → debrief",
-  body: "Morning crash course ends at lock sheet — PM is Command Mode execution only.",
+  title: "Stage handoff · Travel → stage → debrief",
+  body: "Course ends at lock sheet export — stage is Command Mode execution only.",
 } as const;
 
 export function totalDay8PathwayMinutes(): number {

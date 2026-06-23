@@ -240,7 +240,7 @@ const SOS_WEEK_DAY_CONTEXT: Record<SosWeekPrepDayId, Omit<SosWeekDayContext, "da
       "Trick · closing beat 1 names all three domains before quotable lock — picture Marcia T. for statewide APA tone.",
     spotlightDomainIds: ["elections", "business-services", "capitol-management"],
     day8PreviewHref: epDebatePrepDayHref(DAY8_ID),
-    day8PreviewLabel: "Tomorrow · Day 8 crash course",
+    day8PreviewLabel: "Module 8 · command course",
   },
 };
 

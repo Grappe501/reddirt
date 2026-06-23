@@ -34,11 +34,11 @@ export function ElectionPlanDay8DeepStudyStrip({
             : "text-xs font-bold uppercase text-emerald-900"
         }
       >
-        Deep study — reopen full blocks
+        Deep study · Modules 1–7
       </p>
       {!compact ? (
         <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
-          Hit a topic you want to review? Jump back to where you went deep this week.
+          Reopen any module for the full block before you continue.
         </p>
       ) : null}
       <ul className="mt-2 flex flex-wrap gap-2">

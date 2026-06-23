@@ -9,8 +9,8 @@ import {
 } from "@/lib/election-plan/debate-prep-links";
 import {
   DAY8_ARKANSAS_PEOPLE_FRAME,
-  DAY8_AUDIBLE_CARD,
   DAY8_CLAIMS_GATE,
+  DAY8_COURSE_INTRO,
   DAY8_PM_EXECUTION_NOTE,
   DAY8_WEEK_BALANCE_CORRECTION,
 } from "@/lib/election-plan/debate-prep-day8-crash-copy";
@@ -55,19 +55,19 @@ export const DAY8_CRASH_SECTION_SPECS: readonly Day8CrashSectionSpec[] = [
   {
     id: "s8-orient",
     sectionLabel: "§0",
-    title: "Start here — today's job",
+    title: "Orientation — course map",
     minutes: 10,
-    activity: "Read start card + three SOS domains frame (elections · business services · Capitol management); skim seven-day deep links; choose full or minimum path.",
-    why: "Debate day replays your week in one linear path — same study, stage-ready order, with links back to every Day 1–7 block.",
+    activity: "Course map, three SOS domains, deep-study links; choose full or essentials path.",
+    why: "Linear replay of Modules 1–7 in stage order — same foundation, export-ready script.",
     weekImports: [],
   },
   {
     id: "s8-pre-debate",
     sectionLabel: "§1",
-    title: "Pre-debate prep — before the mic",
+    title: "Pre-stage prep",
     minutes: 15,
-    activity: "Lock sheet preview (one line per domain), three if-X-then-Y cards, physical readiness.",
-    why: "Debate day is execution — morning course ends with what is locked, not what is discovered.",
+    activity: "Lock sheet preview, three if-X-then-Y cards, physical readiness.",
+    why: "Execution runs from what is locked — not what is discovered on the way to the venue.",
     weekImports: ["day-7"],
   },
   {
@@ -76,7 +76,7 @@ export const DAY8_CRASH_SECTION_SPECS: readonly Day8CrashSectionSpec[] = [
     title: "Command presence — body before words",
     minutes: 20,
     activity: "4-4-6 breath ×3, scan protocol, listen face while staff reads bait.",
-    why: "Day 1 compressed — seasoned politicians look calm because body is trained first.",
+    why: "Module 1 compressed — calm body reads as administrator across all three domains.",
     weekImports: ["day-1"],
   },
   {
@@ -84,8 +84,8 @@ export const DAY8_CRASH_SECTION_SPECS: readonly Day8CrashSectionSpec[] = [
     sectionLabel: "§3",
     title: "Persona wall — who is listening",
     minutes: 15,
-    activity: "Map each SOS domain to a persona; three voter-translation drills (not clerk-only).",
-    why: "Robert K. hears business services; Diane P. hears Capitol rules — not only Carol W.",
+    activity: "Map each SOS domain to a persona; three voter-translation drills.",
+    why: "Robert K. hears business services; Diane P. hears Capitol rules — statewide audience, not one room.",
     weekImports: ["day-5"],
   },
   {
@@ -94,7 +94,7 @@ export const DAY8_CRASH_SECTION_SPECS: readonly Day8CrashSectionSpec[] = [
     title: "Opening statement — construct & deliver",
     minutes: 30,
     activity: "Build 90s opening: administrator → elections + business services + Capitol (one breath each) → Arkansas promise; two reps.",
-    why: "Voters must hear qualification across the full SOS desk — not one-note election talk.",
+    why: "Qualification across the full SOS desk — elections, business, and Capitol in one opening.",
     weekImports: ["day-1", "day-3", "day-4"],
   },
   {
@@ -103,7 +103,7 @@ export const DAY8_CRASH_SECTION_SPECS: readonly Day8CrashSectionSpec[] = [
     title: "Middle game — listen, traps, moderator Q&A",
     minutes: 45,
     activity: "Four when-X-say-Y reps + three SOS answers (one per domain, 90s each) + pile-on cold.",
-    why: "Middle game is where clerk-only candidates lose general-election voters — hit all three domains under timer.",
+    why: "Middle game wins general-election voters — three domains under timer, claims-green only.",
     weekImports: ["day-2", "day-4", "day-5"],
   },
   {
@@ -112,7 +112,7 @@ export const DAY8_CRASH_SECTION_SPECS: readonly Day8CrashSectionSpec[] = [
     title: "Closing statement — construct & deliver",
     minutes: 25,
     activity: "60s closing: service desk invoke (all three domains) → sim fix → quotable; two reps.",
-    why: "Peak-end — closing must echo elections, business, and Capitol — not clerk-only agree lines.",
+    why: "Peak-end — closing echoes elections, business filings, and Capitol rules.",
     weekImports: ["day-6", "day-7"],
   },
   {
@@ -121,16 +121,16 @@ export const DAY8_CRASH_SECTION_SPECS: readonly Day8CrashSectionSpec[] = [
     title: "Abbreviated debate run-through",
     minutes: 22,
     activity: "Speak-aloud arc — opening with three domains, traps, three domain SOS, pile-on, closing.",
-    why: "Day 6 sim compressed — fail in the room with staff, not on the APA broadcast.",
+    why: "Module 6 compressed — rehearse the full arc before the broadcast.",
     weekImports: ["day-6"],
   },
   {
     id: "s8-lock-sheet",
     sectionLabel: "§8",
-    title: "Lock sheet & PM handoff",
+    title: "Lock sheet & stage handoff",
     minutes: 8,
-    activity: "Export three-domain lock sheet; PM travel → stage → debrief — no new content.",
-    why: "Light cognitive load PM — Command Mode execution only.",
+    activity: "Export three-domain lock sheet; travel → stage → debrief protocol.",
+    why: "Light cognitive load at the venue — Command Mode execution from the lock sheet.",
     weekImports: ["day-7"],
   },
 ] as const;
@@ -180,8 +180,8 @@ export const DAY8_CONCEPTS: DayConceptDrillDown[] = [
     summary: "Stage order: backstage → walk-on → opening → listen → traps → SOS → pile-on → closing → leave calm.",
     sections: [
       {
-        title: "Morning vs afternoon",
-        body: "AM crash course rehearses the arc. PM is travel, stage, and debrief — execution only.",
+        title: "Pre-stage vs stage",
+        body: "This course rehearses the arc. Stage is travel, broadcast, and debrief — execution from the lock sheet.",
       },
     ],
     practiceSteps: [
@@ -270,7 +270,7 @@ export const DAY8_CONCEPTS: DayConceptDrillDown[] = [
     summary: "Opening + closing delivered; all three SOS domains covered; lock sheet exported.",
     sections: [
       {
-        title: "PM execution",
+        title: "Stage handoff",
         body: DAY8_PM_EXECUTION_NOTE,
       },
     ],
@@ -318,18 +318,16 @@ export function buildDay8Blocks(): DayBlockDrillDown[] {
 
     if (section.id === "s8-orient") {
       sections.unshift({ title: "Three SOS domains", body: DAY8_SOS_THREE_DOMAINS_FRAME });
-      sections.unshift({ title: "Seven-day compression", body: DAY8_WEEK_BALANCE_CORRECTION });
-      sections.unshift({ title: "Start here", body: DAY8_AUDIBLE_CARD });
-      sections.unshift({ title: "Audience frame", body: DAY8_ARKANSAS_PEOPLE_FRAME });
+      sections.unshift({ title: "Course map", body: DAY8_WEEK_BALANCE_CORRECTION });
+      sections.unshift({ title: "Orientation", body: DAY8_COURSE_INTRO });
     }
 
     const practiceSteps: string[] = [];
     if (section.id === "s8-orient") {
       practiceSteps.push(
-        "Read start card + three-domain frame aloud.",
+        "Read course intro + three-domain frame.",
         "Name elections, business services, Capitol management.",
-        "Open any Day 1–7 deep link if you want the full block before continuing.",
-        "Choose full or minimum path.",
+        "Choose full or essentials path.",
       );
     } else if (section.id === "s8-pre-debate") {
       practiceSteps.push(
@@ -374,7 +372,7 @@ export function buildDay8Blocks(): DayBlockDrillDown[] {
     } else if (section.id === "s8-lock-sheet") {
       practiceSteps.push(
         "Export lock sheet.",
-        "Read PM travel → stage → debrief protocol.",
+        "Read stage handoff protocol.",
       );
     }
 
