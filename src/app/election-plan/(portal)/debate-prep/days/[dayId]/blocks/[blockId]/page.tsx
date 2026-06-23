@@ -15,8 +15,7 @@ import { ElectionPlanDay4BlockEmbed } from "@/components/election-plan/ElectionP
 import { ElectionPlanDay5BlockEmbed } from "@/components/election-plan/ElectionPlanDay5Panels";
 import { ElectionPlanDay6BlockEmbed } from "@/components/election-plan/ElectionPlanDay6Panels";
 import { ElectionPlanDay7BlockEmbed } from "@/components/election-plan/ElectionPlanDay7Panels";
-import { ElectionPlanDay8SectionEmbed } from "@/components/election-plan/ElectionPlanDay8SectionEmbed";
-import { ElectionPlanDay8BlockPathwayStrip } from "@/components/election-plan/ElectionPlanDay8BlockPathwayStrip";
+import { ElectionPlanDay8BlockEmbed } from "@/components/election-plan/ElectionPlanDay8Panels";
 import { ElectionPlanSosThreeDomainsWeekPanel } from "@/components/election-plan/ElectionPlanSosThreeDomainsWeekPanel";
 import {
   ElectionPlanDrillDownRelated,
@@ -175,9 +174,7 @@ export default async function ElectionPlanDayBlockPage({
 
       {dayId === DAY7_ID ? <ElectionPlanDay7BlockEmbed blockId={blockId} /> : null}
 
-      {dayId === DAY8_ID ? <ElectionPlanDay8BlockPathwayStrip sectionId={blockId} /> : null}
-
-      {dayId === DAY8_ID ? <ElectionPlanDay8SectionEmbed sectionId={blockId} /> : null}
+      {dayId === DAY8_ID ? <ElectionPlanDay8BlockEmbed blockId={blockId} /> : null}
 
       {study ? (
         <ElectionPlanBlockStudyPanel study={study} dayId={dayId} blockId={blockId} />

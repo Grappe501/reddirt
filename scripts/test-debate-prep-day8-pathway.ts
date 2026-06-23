@@ -1,7 +1,9 @@
 /**
- * Day 8 debate-prep Pass 1–3 — pathway spine, three SOS domains, course-mode UI.
+ * Day 8 debate-prep Pass 1–4 — pathway spine, three SOS domains, course-mode UI, interactive panels.
  */
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 import {
   buildDay8PathwaySteps,
   DAY8_DAY7_REVIEW,
@@ -61,7 +63,7 @@ const steps = buildDay8PathwaySteps();
 assert.equal(steps.length, 10, "9 sections + course complete");
 assert.equal(getFirstDay8PathwayStep().id, "s8-orient");
 assert.ok(getNextDay8PathwayStep("s8-orient")?.id === "s8-pre-debate");
-assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-crash-course-pass3");
+assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-crash-course-pass4");
 assert.ok(isKellyDay8StreamlinedPath());
 assert.ok(isKellyDay8CrashCoursePath());
 assert.ok(DAY8_PATHWAY_STORAGE_KEY.includes("day8"));
@@ -103,6 +105,20 @@ for (const block of blocks) {
 
 assert.equal(staticParamsForDayBlocks().filter((p) => p.dayId === DAY8_ID).length, 9);
 
+const PASS4_PANELS = [
+  "ElectionPlanDay8PersonaWallPanel.tsx",
+  "ElectionPlanDay8OpeningWorkshopPanel.tsx",
+  "ElectionPlanDay8MiddleGamePanel.tsx",
+  "ElectionPlanDay8ClosingWorkshopPanel.tsx",
+  "ElectionPlanDay8CrashRunPanel.tsx",
+  "ElectionPlanDay8LockSheetPanel.tsx",
+  "ElectionPlanDay8Panels.tsx",
+];
+const componentsDir = path.join(process.cwd(), "src/components/election-plan");
+for (const file of PASS4_PANELS) {
+  assert.ok(fs.existsSync(path.join(componentsDir, file)), `Pass 4 panel ${file} exists`);
+}
+
 console.log(
-  `test-debate-prep-day8-pathway: OK (${steps.length} steps, ${blocks.length} sections, 3 SOS domains, pass3)`,
+  `test-debate-prep-day8-pathway: OK (${steps.length} steps, ${blocks.length} sections, 3 SOS domains, pass4)`,
 );
