@@ -10,13 +10,11 @@ import {
   DEBATE_COMMAND_COURSE_TAGLINE,
   DEBATE_COMMAND_COURSE_TITLE,
   DEBATE_COURSE_MODULES,
+  DEBATE_COURSE_TOTAL_HOURS,
 } from "@/lib/election-plan/debate-prep-course-catalog-v9";
 import { DEBATE_PREP_CHECKLIST } from "@/lib/election-plan/debate-prep-debate-anatomy-v9";
-import { buildDebatePrepSystemV9Snapshot } from "@/lib/election-plan/debate-prep-system-v9";
 
 export function ElectionPlanDebateCourseHubPanel() {
-  const snapshot = buildDebatePrepSystemV9Snapshot();
-
   return (
     <>
       <ElectionPlanDebatePrepSubnav />
@@ -51,7 +49,7 @@ export function ElectionPlanDebateCourseHubPanel() {
           <p className="mt-2 font-heading text-lg font-bold text-slate-900">
             {DEBATE_COURSE_MODULES.length} modules
           </p>
-          <p className="mt-1 text-sm text-slate-600">{snapshot.courseHoursTarget} hours · Module 8 = 3-hour replay</p>
+          <p className="mt-1 text-sm text-slate-600">{DEBATE_COURSE_TOTAL_HOURS} hours · Module 8 = 3-hour replay</p>
         </div>
       </div>
 
