@@ -1,5 +1,5 @@
 /**
- * Build Top 100 city intelligence profiles — 10 enrichment dimensions per city.
+ * Build Top 125 city intelligence profiles — 10 enrichment dimensions per city.
  * Usage: npm run city-intelligence:build
  * Optional: GOOGLE_CIVIC_API_KEY in .env.local for live representative lookup at build time.
  */
@@ -9,7 +9,7 @@ import path from "node:path";
 
 import {
   ARKANSAS_COUNTY_POPULATION_2020,
-  ARKANSAS_TOP_100_CITIES,
+  ARKANSAS_TOP_125_CITIES,
   type ArkansasTop40City,
   type CityInfluenceTag,
 } from "./strategic-plan/data/arkansas-top-40-cities";
@@ -157,7 +157,7 @@ async function fetchGoogleCivic(cityName: string, apiKey: string): Promise<Civic
 }
 
 function buildGeographicNarrative(
-  city: (typeof ARKANSAS_TOP_100_CITIES)[number],
+  city: (typeof ARKANSAS_TOP_125_CITIES)[number],
   sharePct: number,
   cluster: { name: string; description: string } | null,
 ): string {
@@ -172,7 +172,7 @@ function buildGeographicNarrative(
 }
 
 function buildHistoricalCulturalNarrative(
-  city: (typeof ARKANSAS_TOP_100_CITIES)[number],
+  city: (typeof ARKANSAS_TOP_125_CITIES)[number],
   wikiExcerpt: string | null,
 ): string {
   const tags = city.influenceTags.map((t) => INFLUENCE_LABELS[t]).join(", ");
@@ -184,7 +184,7 @@ function buildHistoricalCulturalNarrative(
     wiki,
     city.isTop10
       ? "Top-10 strategic city — field presence here signals statewide seriousness."
-      : "Priority city in the Top 100 vote model — wins are built through repeat visits and local validators.",
+      : "Priority city in the Top 125 vote model — wins are built through repeat visits and local validators.",
   ].join(" ");
 }
 
@@ -222,7 +222,7 @@ function loadBonusCitiesForIntelBuild(): ArkansasTop40City[] {
       influenceCategory?: string;
     }>;
   };
-  const topSlugs = new Set(ARKANSAS_TOP_100_CITIES.map((c) => c.slug));
+  const topSlugs = new Set(ARKANSAS_TOP_125_CITIES.map((c) => c.slug));
   return file.cities
     .filter((c) => c.population2020 && !topSlugs.has(c.slug))
     .map((c) => ({
@@ -286,7 +286,7 @@ async function main() {
   const countyByName = new Map(snapshot?.counties.map((c) => [c.county, c]) ?? []);
   const citySnapshot = new Map(snapshot?.cities.map((c) => [c.slug, c]) ?? []);
   const bonusCitySnapshot = loadBonusCitySnapshotRows();
-  const citiesToBuild = [...ARKANSAS_TOP_100_CITIES, ...loadBonusCitiesForIntelBuild()];
+  const citiesToBuild = [...ARKANSAS_TOP_125_CITIES, ...loadBonusCitiesForIntelBuild()];
   const clusterByCounty = new Map<string, { id: string; name: string; description: string }>();
   for (const cl of snapshot?.execution.clusters ?? []) {
     for (const cn of cl.counties) {
@@ -470,7 +470,7 @@ async function main() {
     version: 1,
     generatedAt: new Date().toISOString(),
     modelNote:
-      "Ten enrichment dimensions per Top 100 priority city plus bonus immersion hubs. API rows cached at build time. Scaffold rows require field verification before public claims.",
+      "Ten enrichment dimensions per Top 125 priority city plus bonus immersion hubs. API rows cached at build time. Scaffold rows require field verification before public claims.",
     dimensionLabels: {
       stateHouse: "State House district & representative",
       stateSenate: "State Senate district & senator",

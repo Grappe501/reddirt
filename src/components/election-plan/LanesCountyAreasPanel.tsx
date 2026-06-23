@@ -55,7 +55,7 @@ export function LanesCountyAreasPanel({ cluster, county }: Props) {
 
       <h2 className="mb-2 font-heading text-lg font-bold">City, town & geographic areas</h2>
       <p className="mb-4 text-sm text-[var(--ep-navy-muted)]">
-        Priority cities carry Top 100 vote targets; outlying & rural areas cover the rest of the county by geography.
+        Priority cities carry Top 125 vote targets; outlying & rural areas cover the rest of the county by geography.
       </p>
 
       <div className="ep-card overflow-x-auto">

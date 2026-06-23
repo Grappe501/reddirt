@@ -1,26 +1,6 @@
 {
-  "version": 1,
-  "updatedAt": "2026-06-16",
-  "note": "Bonus city workbenches ranked after Top 100 priority list. KPIs are isolated — never roll into top100TargetVotes or statewide lane totals.",
-  "cities": [
-    {
-      "slug": "quitman",
-      "name": "Quitman",
-      "county": "Cleburne",
-      "population2020": 716,
-      "countyPopulation2020": 24711,
-      "estimatedRegisteredVoters": 716,
-      "registeredVotersNote": "City population (2020 Census) used as planning proxy for registered-voter scale in a town of ~716 — verify against county clerk / SOS file before public claims.",
-      "rank": 41,
-      "influenceTags": ["democratic_recovery", "persuasion", "turnout_growth"],
-      "strategicRole": "Cleburne County bonus cushion — relationship-first immersion that proves small towns can move statewide margins without touching Top 40 math.",
-      "visitFrequency": "campaign_sprint",
-      "isTop10": false,
-      "isBonusCity": true,
-      "targetVotes": 84,
-      "baselineVote": 46,
-      "voteGain": 38,
-      "influenceCategory": "Bonus immersion hub"
-    }
-  ]
+  "version": 2,
+  "updatedAt": "2026-06-23",
+  "note": "Bonus city workbenches ranked after Top 125 priority list. KPIs are isolated — never roll into top125TargetVotes or statewide lane totals. Quitman moved to main Top 125 registry.",
+  "cities": []
 }

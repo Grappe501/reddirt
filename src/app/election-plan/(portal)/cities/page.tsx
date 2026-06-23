@@ -7,7 +7,7 @@ import { loadElectionPlanSnapshot } from "@/lib/election-plan/electionPlanSnapsh
 
 export const metadata = {
   title: "Priority Cities | Kelly Grappe Victory Plan",
-  description: "100 ranked priority cities — each opens a location brief board with field narrative.",
+  description: "125 ranked priority cities — each opens a location brief board with field narrative.",
   robots: { index: false, follow: false },
 };
 

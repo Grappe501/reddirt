@@ -1,9 +1,11 @@
 {
-  "generatedAt": "2026-06-19T06:15:43.019Z",
-  "top100TargetVotes": 247118,
-  "top100ShareOfStatewideWorkingTarget": 0.4952631758266645,
-  "top75TargetVotes": 247118,
-  "top75ShareOfStatewideWorkingTarget": 0.4952631758266645,
+  "generatedAt": "2026-06-23T05:27:56.150Z",
+  "top125TargetVotes": 255057,
+  "top125ShareOfStatewideWorkingTarget": 0.5111741752394466,
+  "top100TargetVotes": 255057,
+  "top100ShareOfStatewideWorkingTarget": 0.5111741752394466,
+  "top75TargetVotes": 255057,
+  "top75ShareOfStatewideWorkingTarget": 0.5111741752394466,
   "top40TargetVotes": 210925,
   "top40ShareOfStatewideWorkingTarget": 0.42272673524890625,
   "top10TargetVotes": 131694,
@@ -1545,6 +1547,25 @@
     },
     {
       "rank": 73,
+      "slug": "dermott",
+      "name": "Dermott",
+      "county": "Chicot",
+      "population2020": 2412,
+      "targetVotes": 543,
+      "voteGain": 108,
+      "baselineVote": 434,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Chicot County hub — southeast Delta county-seat relationships and base mobilization.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "chambers",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 74,
       "slug": "crossett",
       "name": "Crossett",
       "county": "Ashley",
@@ -1563,7 +1584,7 @@
       ]
     },
     {
-      "rank": 74,
+      "rank": 75,
       "slug": "cherokee-village",
       "name": "Cherokee Village",
       "county": "Fulton",
@@ -1582,7 +1603,7 @@
       ]
     },
     {
-      "rank": 75,
+      "rank": 76,
       "slug": "ashdown",
       "name": "Ashdown",
       "county": "Little River",
@@ -1601,7 +1622,7 @@
       ]
     },
     {
-      "rank": 76,
+      "rank": 77,
       "slug": "barling",
       "name": "Barling",
       "county": "Sebastian",
@@ -1620,7 +1641,7 @@
       ]
     },
     {
-      "rank": 77,
+      "rank": 78,
       "slug": "gentry",
       "name": "Gentry",
       "county": "Benton",
@@ -1639,7 +1660,7 @@
       ]
     },
     {
-      "rank": 78,
+      "rank": 79,
       "slug": "sheridan",
       "name": "Sheridan",
       "county": "Grant",
@@ -1658,7 +1679,7 @@
       ]
     },
     {
-      "rank": 79,
+      "rank": 80,
       "slug": "fordyce",
       "name": "Fordyce",
       "county": "Dallas",
@@ -1677,7 +1698,7 @@
       ]
     },
     {
-      "rank": 80,
+      "rank": 81,
       "slug": "haskell",
       "name": "Haskell",
       "county": "Saline",
@@ -1696,7 +1717,7 @@
       ]
     },
     {
-      "rank": 81,
+      "rank": 82,
       "slug": "nashville",
       "name": "Nashville",
       "county": "Howard",
@@ -1715,7 +1736,7 @@
       ]
     },
     {
-      "rank": 82,
+      "rank": 83,
       "slug": "walnut-ridge",
       "name": "Walnut Ridge",
       "county": "Lawrence",
@@ -1734,7 +1755,7 @@
       ]
     },
     {
-      "rank": 83,
+      "rank": 84,
       "slug": "de-queen",
       "name": "De Queen",
       "county": "Sevier",
@@ -1753,7 +1774,7 @@
       ]
     },
     {
-      "rank": 84,
+      "rank": 85,
       "slug": "green-forest",
       "name": "Green Forest",
       "county": "Carroll",
@@ -1772,7 +1793,7 @@
       ]
     },
     {
-      "rank": 85,
+      "rank": 86,
       "slug": "gravette",
       "name": "Gravette",
       "county": "Benton",
@@ -1791,7 +1812,45 @@
       ]
     },
     {
-      "rank": 86,
+      "rank": 87,
+      "slug": "brinkley",
+      "name": "Brinkley",
+      "county": "Monroe",
+      "population2020": 2468,
+      "targetVotes": 455,
+      "voteGain": 101,
+      "baselineVote": 354,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Monroe County seat — Delta I-40 corridor county relationships and base turnout.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "chambers",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 88,
+      "slug": "elm-springs",
+      "name": "Elm Springs",
+      "county": "Washington",
+      "population2020": 2852,
+      "targetVotes": 448,
+      "voteGain": 34,
+      "baselineVote": 414,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Northwest Arkansas growth corridor — NWA commuter persuasion and registration.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "turnout_growth",
+        "volunteers",
+        "moderate_republicans"
+      ]
+    },
+    {
+      "rank": 89,
       "slug": "brookland",
       "name": "Brookland",
       "county": "Craighead",
@@ -1809,7 +1868,7 @@
       ]
     },
     {
-      "rank": 87,
+      "rank": 90,
       "slug": "lonoke",
       "name": "Lonoke",
       "county": "Lonoke",
@@ -1828,7 +1887,7 @@
       ]
     },
     {
-      "rank": 88,
+      "rank": 91,
       "slug": "southside",
       "name": "Southside",
       "county": "Independence",
@@ -1847,7 +1906,7 @@
       ]
     },
     {
-      "rank": 89,
+      "rank": 92,
       "slug": "prescott",
       "name": "Prescott",
       "county": "Nevada",
@@ -1866,7 +1925,7 @@
       ]
     },
     {
-      "rank": 90,
+      "rank": 93,
       "slug": "little-flock",
       "name": "Little Flock",
       "county": "Benton",
@@ -1885,7 +1944,26 @@
       ]
     },
     {
-      "rank": 91,
+      "rank": 94,
+      "slug": "mountain-view",
+      "name": "Mountain View",
+      "county": "Stone",
+      "population2020": 2940,
+      "targetVotes": 393,
+      "voteGain": 149,
+      "baselineVote": 243,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Stone County seat — Ozarks folk-culture tourism and county-seat relationships.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "persuasion",
+        "chambers",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 95,
       "slug": "manila",
       "name": "Manila",
       "county": "Mississippi",
@@ -1904,7 +1982,45 @@
       ]
     },
     {
-      "rank": 92,
+      "rank": 96,
+      "slug": "holiday-island",
+      "name": "Holiday Island",
+      "county": "Carroll",
+      "population2020": 2440,
+      "targetVotes": 381,
+      "voteGain": 101,
+      "baselineVote": 280,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Carroll County Beaver Lake — retiree persuasion and lake-community relationship building.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "persuasion",
+        "turnout_growth",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 97,
+      "slug": "goshen",
+      "name": "Goshen",
+      "county": "Washington",
+      "population2020": 2405,
+      "targetVotes": 378,
+      "voteGain": 29,
+      "baselineVote": 349,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Washington County west — Fayetteville metro fringe and NWA commuter organizing.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "moderate_republicans",
+        "volunteers",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 98,
       "slug": "booneville",
       "name": "Booneville",
       "county": "Logan",
@@ -1923,7 +2039,26 @@
       ]
     },
     {
-      "rank": 93,
+      "rank": 99,
+      "slug": "west-fork",
+      "name": "West Fork",
+      "county": "Washington",
+      "population2020": 2373,
+      "targetVotes": 373,
+      "voteGain": 28,
+      "baselineVote": 344,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "Fayetteville south adjacency — campus pipeline and Ozarks foothills registration.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "students",
+        "volunteers",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 100,
       "slug": "dardanelle",
       "name": "Dardanelle",
       "county": "Yell",
@@ -1942,7 +2077,26 @@
       ]
     },
     {
-      "rank": 94,
+      "rank": 101,
+      "slug": "lincoln",
+      "name": "Lincoln",
+      "county": "Washington",
+      "population2020": 2370,
+      "targetVotes": 372,
+      "voteGain": 28,
+      "baselineVote": 344,
+      "influenceCategory": "University / youth registration hub",
+      "strategicRole": "Washington County south — university pipeline adjacency and NWA growth organizing.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "volunteers",
+        "turnout_growth",
+        "students"
+      ]
+    },
+    {
+      "rank": 102,
       "slug": "austin",
       "name": "Austin",
       "county": "Lonoke",
@@ -1961,7 +2115,7 @@
       ]
     },
     {
-      "rank": 95,
+      "rank": 103,
       "slug": "ozark",
       "name": "Ozark",
       "county": "Franklin",
@@ -1980,7 +2134,26 @@
       ]
     },
     {
-      "rank": 96,
+      "rank": 104,
+      "slug": "eureka-springs",
+      "name": "Eureka Springs",
+      "county": "Carroll",
+      "population2020": 2258,
+      "targetVotes": 352,
+      "voteGain": 93,
+      "baselineVote": 259,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Carroll County tourism anchor — arts-community persuasion and festival circuit presence.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "persuasion",
+        "chambers",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 105,
       "slug": "piggott",
       "name": "Piggott",
       "county": "Clay",
@@ -1999,7 +2172,26 @@
       ]
     },
     {
-      "rank": 97,
+      "rank": 106,
+      "slug": "clinton",
+      "name": "Clinton",
+      "county": "Van Buren",
+      "population2020": 2511,
+      "targetVotes": 328,
+      "voteGain": 126,
+      "baselineVote": 203,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Van Buren County seat — Ozark foothills county-seat hub and Greers Ferry adjacency.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "chambers",
+        "persuasion",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 107,
       "slug": "pottsville",
       "name": "Pottsville",
       "county": "Pope",
@@ -2018,7 +2210,7 @@
       ]
     },
     {
-      "rank": 98,
+      "rank": 108,
       "slug": "paris",
       "name": "Paris",
       "county": "Logan",
@@ -2037,7 +2229,64 @@
       ]
     },
     {
-      "rank": 99,
+      "rank": 109,
+      "slug": "mayflower",
+      "name": "Mayflower",
+      "county": "Faulkner",
+      "population2020": 2372,
+      "targetVotes": 313,
+      "voteGain": 46,
+      "baselineVote": 267,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Faulkner County south — Conway metro commuter registration and volunteer production.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "turnout_growth",
+        "volunteers",
+        "persuasion"
+      ]
+    },
+    {
+      "rank": 110,
+      "slug": "bono",
+      "name": "Bono",
+      "county": "Craighead",
+      "population2020": 2858,
+      "targetVotes": 298,
+      "voteGain": 62,
+      "baselineVote": 236,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Jonesboro metro east — Crowley's Ridge commuter organizing and volunteer production.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "volunteers",
+        "turnout_growth",
+        "regional_media"
+      ]
+    },
+    {
+      "rank": 111,
+      "slug": "atkins",
+      "name": "Atkins",
+      "county": "Pope",
+      "population2020": 2868,
+      "targetVotes": 297,
+      "voteGain": 98,
+      "baselineVote": 198,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Pope County I-40 corridor — Russellville metro adjacency and commuter registration.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "volunteers",
+        "turnout_growth",
+        "persuasion"
+      ]
+    },
+    {
+      "rank": 112,
       "slug": "corning",
       "name": "Corning",
       "county": "Clay",
@@ -2056,7 +2305,159 @@
       ]
     },
     {
-      "rank": 100,
+      "rank": 113,
+      "slug": "lake-city",
+      "name": "Lake City",
+      "county": "Craighead",
+      "population2020": 2796,
+      "targetVotes": 292,
+      "voteGain": 61,
+      "baselineVote": 231,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Craighead County delta edge — northeast Arkansas turnout and recovery organizing.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "turnout_growth",
+        "volunteers",
+        "democratic_recovery"
+      ]
+    },
+    {
+      "rank": 114,
+      "slug": "fairfield-bay",
+      "name": "Fairfield Bay",
+      "county": "Van Buren",
+      "population2020": 2198,
+      "targetVotes": 287,
+      "voteGain": 110,
+      "baselineVote": 177,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Van Buren County Greers Ferry — retiree lake-community persuasion and event-driven visits.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "persuasion",
+        "turnout_growth",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 115,
+      "slug": "dewitt",
+      "name": "DeWitt",
+      "county": "Arkansas",
+      "population2020": 2791,
+      "targetVotes": 285,
+      "voteGain": 90,
+      "baselineVote": 195,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Arkansas County seat — Delta southeast county relationships and base turnout.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "chambers",
+        "turnout_growth"
+      ]
+    },
+    {
+      "rank": 116,
+      "slug": "gosnell",
+      "name": "Gosnell",
+      "county": "Mississippi",
+      "population2020": 2663,
+      "targetVotes": 281,
+      "voteGain": 72,
+      "baselineVote": 209,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Mississippi County west — Blytheville metro adjacency and Delta base mobilization.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "turnout_growth",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 117,
+      "slug": "charleston",
+      "name": "Charleston",
+      "county": "Franklin",
+      "population2020": 2760,
+      "targetVotes": 277,
+      "voteGain": 108,
+      "baselineVote": 169,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Franklin County south — River Valley county-seat and chamber network hub.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "chambers",
+        "persuasion",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 118,
+      "slug": "horseshoe-bend",
+      "name": "Horseshoe Bend",
+      "county": "Izard",
+      "population2020": 2623,
+      "targetVotes": 273,
+      "voteGain": 114,
+      "baselineVote": 159,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Izard County retiree community — lake-country persuasion and event-driven presence.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "persuasion",
+        "turnout_growth",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 119,
+      "slug": "lavaca",
+      "name": "Lavaca",
+      "county": "Sebastian",
+      "population2020": 2528,
+      "targetVotes": 265,
+      "voteGain": 48,
+      "baselineVote": 217,
+      "influenceCategory": "Persuasion / conversion hub",
+      "strategicRole": "Sebastian County east — Fort Smith metro spillover and River Valley persuasion.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "persuasion",
+        "volunteers",
+        "moderate_republicans"
+      ]
+    },
+    {
+      "rank": 120,
+      "slug": "hamburg",
+      "name": "Hamburg",
+      "county": "Ashley",
+      "population2020": 2364,
+      "targetVotes": 265,
+      "voteGain": 86,
+      "baselineVote": 179,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Ashley County seat — southeast Arkansas county-seat and timber-industry community ties.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "chambers",
+        "democratic_recovery",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 121,
       "slug": "waldron",
       "name": "Waldron",
       "county": "Scott",
@@ -2072,6 +2473,82 @@
         "chambers",
         "persuasion",
         "volunteers"
+      ]
+    },
+    {
+      "rank": 122,
+      "slug": "england",
+      "name": "England",
+      "county": "Lonoke",
+      "population2020": 2409,
+      "targetVotes": 247,
+      "voteGain": 72,
+      "baselineVote": 175,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Lonoke County south — central Arkansas Delta edge recovery and faith organizing.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "turnout_growth",
+        "volunteers"
+      ]
+    },
+    {
+      "rank": 123,
+      "slug": "bald-knob",
+      "name": "Bald Knob",
+      "county": "White",
+      "population2020": 2548,
+      "targetVotes": 227,
+      "voteGain": 67,
+      "baselineVote": 161,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "White County south — strawberry-festival county relationships and registration drives.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "turnout_growth",
+        "volunteers",
+        "chambers"
+      ]
+    },
+    {
+      "rank": 124,
+      "slug": "hoxie",
+      "name": "Hoxie",
+      "county": "Lawrence",
+      "population2020": 2568,
+      "targetVotes": 225,
+      "voteGain": 93,
+      "baselineVote": 132,
+      "influenceCategory": "Business / chamber hub",
+      "strategicRole": "Lawrence County seat — northeast Arkansas county-seat and school-community ties.",
+      "visitFrequency": "quarterly",
+      "isTop10": false,
+      "influenceTags": [
+        "chambers",
+        "volunteers",
+        "persuasion"
+      ]
+    },
+    {
+      "rank": 125,
+      "slug": "quitman",
+      "name": "Quitman",
+      "county": "Cleburne",
+      "population2020": 716,
+      "targetVotes": 84,
+      "voteGain": 38,
+      "baselineVote": 46,
+      "influenceCategory": "Democratic recovery hub",
+      "strategicRole": "Cleburne County immersion hub — relationship-first small-town organizing that proves statewide margins move through local validators.",
+      "visitFrequency": "campaign_sprint",
+      "isTop10": false,
+      "influenceTags": [
+        "democratic_recovery",
+        "persuasion",
+        "turnout_growth"
       ]
     }
   ]

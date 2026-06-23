@@ -36,9 +36,9 @@ export function formatPct(n: number): string {
   return `${Math.round(n * 1000) / 10}%`;
 }
 
-/** Combined vote target for priority cities (Top 100 registry, with legacy fallbacks). */
+/** Combined vote target for priority cities (Top 125 registry, with legacy fallbacks). */
 export function priorityCitiesCombinedTarget(
-  data: Pick<ElectionPlanWorkbenchSnapshot, "top100TargetVotes" | "top75TargetVotes" | "top40TargetVotes">,
+  data: Pick<ElectionPlanWorkbenchSnapshot, "top125TargetVotes" | "top100TargetVotes" | "top75TargetVotes" | "top40TargetVotes">,
 ): number {
-  return data.top100TargetVotes ?? data.top75TargetVotes ?? data.top40TargetVotes;
+  return data.top125TargetVotes ?? data.top100TargetVotes ?? data.top75TargetVotes ?? data.top40TargetVotes;
 }

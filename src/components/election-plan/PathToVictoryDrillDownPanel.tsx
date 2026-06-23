@@ -167,7 +167,7 @@ function CountyPathToVictoryContent({ view }: { view: PathToVictoryCountyView })
       {view.areaBreakdown.length > 0 ? (
         <Section title="Geographic lane allocation" eyebrow="City · town · rural">
           <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-            Priority cities carry Top 100 vote targets; outlying areas cover the rest of the county.
+            Priority cities carry Top 125 vote targets; outlying areas cover the rest of the county.
           </p>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full min-w-[40rem] text-sm">
@@ -311,7 +311,7 @@ function CountyPathToVictoryContent({ view }: { view: PathToVictoryCountyView })
             </div>
           </div>
           <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
-            Source: fundraising-operating-system.source.json — proportional to Top 100 city vote goals.
+            Source: fundraising-operating-system.source.json — proportional to Top 125 city vote goals.
           </p>
         </Section>
       ) : null}
