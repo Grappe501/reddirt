@@ -123,12 +123,12 @@ After scoping: **Deploys → Clear cache and deploy site**.
 
 ### If scoping is correct and deploy still fails
 
-1. **Unpin the Next adapter (most common after env scoping is clean)** — build logs show `origin: ui` for `@netlify/plugin-nextjs`, or lambda-env-guard fails with `FEATURE_FLAGS ~9 KB` on a **legacy** handler (no OpenNext `.mjs`):
-   - **Netlify UI:** Site configuration → Build & deploy → **Build plugins** → **Disable** `@netlify/plugin-nextjs`
-   - **Also:** Build settings → **Runtime** → **Remove** pinned Next.js runtime → Save → Edit again → re-select **Next.js** → Save (refreshes auto OpenNext)
-   - **Do not** pin `[[plugins]] package = "@netlify/plugin-nextjs"` in `netlify.toml` or `package.json` — Netlify auto-applies OpenNext (modern Functions runtime, no 4 KB env cap)
-   - **Automate:** `NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime` then **Clear cache and deploy site**
-   - **Note:** `FEATURE_FLAGS ~9 KB` in build logs is normal on modern OpenNext too — lambda-env-guard only fails on it when the packaged handler is legacy Lambda compat (no `___netlify-server-handler.mjs`).
+1. **Next adapter / OpenNext (env scoping clean but handler or compat issues)** — build logs show `origin: ui` for an **old** `@netlify/plugin-nextjs`, lambda-env-guard fails with legacy `FEATURE_FLAGS` compat cap, or prune fails with **handler not found**:
+   - **Netlify UI:** Site configuration → Build & deploy → **Build plugins** → **Disable** UI-pinned `@netlify/plugin-nextjs` (old pinned version only)
+   - **Keep** `[[plugins]] package = "@netlify/plugin-nextjs"` **first** in `netlify.toml` (unpinned — no version in `package.json`) so OpenNext still packages `___netlify-server-handler`
+   - **Also:** Build settings → **Runtime** → **Remove** pinned Next.js runtime → Save → re-select **Next.js** → Save
+   - **Automate unpin:** `NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime` then **Clear cache and deploy site**
+   - **Note:** `FEATURE_FLAGS ~9 KB` in build logs is normal on modern OpenNext — lambda-env-guard only counts it toward the compat cap for legacy handlers (no `___netlify-server-handler.mjs`).
 2. Run `npm run netlify:env:audit` locally (after `npx netlify login`) to see function-scoped env bytes + compat risk.
 3. Open a Netlify support ticket if deploy still fails: ask to confirm **modern Functions runtime** (not Lambda compatibility mode) for `___netlify-server-handler`.
 4. **Base directory** — repo root should be the RedDirt app; **Publish** = `.next` (empty override is fine).
