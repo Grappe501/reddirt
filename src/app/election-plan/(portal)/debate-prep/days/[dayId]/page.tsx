@@ -16,7 +16,7 @@ import { dayHasDrillDownPages, DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6
 import { EP_DEBATE_PREP_HREF } from "@/lib/election-plan/debate-prep-links";
 import { DAY5_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
 import { DAY6_HUB_TONIGHT_SUMMARY } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
-import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath, isKellyDay6StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
+import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath, isKellyDay6StreamlinedPath, isKellyDay7StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import {
   DEBATE_WEEK_INTENSIVE_DAY_IDS,
   getDebateWeekIntensiveDay,
@@ -49,6 +49,7 @@ export default async function ElectionPlanDebatePrepDayPage({
   const streamlinedDay4 = isKellyDay4StreamlinedPath() && dayId === DAY4_ID;
   const streamlinedDay5 = isKellyDay5StreamlinedPath() && dayId === DAY5_ID;
   const streamlinedDay6 = isKellyDay6StreamlinedPath() && dayId === DAY6_ID;
+  const streamlinedDay7 = isKellyDay7StreamlinedPath() && dayId === DAY7_ID;
   const firstStep =
     dayId === DAY1_ID
       ? getFirstDay1PathwayStep()
@@ -186,7 +187,19 @@ export default async function ElectionPlanDebatePrepDayPage({
           </>
         ) : null}
 
-        {dayId === DAY7_ID && firstStep ? (
+        {streamlinedDay7 && firstStep ? (
+          <>
+            <KellyPageSummary summary={DAY7_HUB_TONIGHT_SUMMARY} />
+            <Link
+              href={firstStep.href}
+              className="mb-8 inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
+            >
+              Start now · {firstStep.label} →
+            </Link>
+          </>
+        ) : null}
+
+        {!streamlinedDay7 && dayId === DAY7_ID && firstStep ? (
           <>
             <KellyPageSummary summary={DAY7_HUB_TONIGHT_SUMMARY} />
             <Link

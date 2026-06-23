@@ -5,6 +5,7 @@ import { ElectionPlanForumPredictedLinePicker } from "@/components/election-plan
 import { ElectionPlanDay4PathwayReturnLink, ElectionPlanDay4HandoffBanner } from "@/components/election-plan/ElectionPlanDay4ForumPanels";
 import { ElectionPlanDay5RehearsalEmbed } from "@/components/election-plan/ElectionPlanDay5Panels";
 import { ElectionPlanDay6RehearsalEmbed } from "@/components/election-plan/ElectionPlanDay6Panels";
+import { ElectionPlanDay7RehearsalEmbed } from "@/components/election-plan/ElectionPlanDay7Panels";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownShell,
@@ -77,6 +78,7 @@ export default async function ElectionPlanDayRehearsalPage({
       ) : null}
       {dayId === DAY5_ID ? <ElectionPlanDay5RehearsalEmbed /> : null}
       {dayId === DAY6_ID && scriptId === "rehearse-open-close-sim" ? <ElectionPlanDay6RehearsalEmbed /> : null}
+      {dayId === DAY7_ID ? <ElectionPlanDay7RehearsalEmbed scriptId={scriptId} /> : null}
       <article className="ep-card border-2 border-emerald-300/50 bg-emerald-50/40 p-5 text-sm">
         <p className="text-xs font-bold uppercase text-emerald-900">Script</p>
         <p className="mt-3 leading-relaxed text-[var(--ep-navy)]">{script.script}</p>

@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import {
   ElectionPlanDay1PathwayPanel,
 } from "@/components/election-plan/ElectionPlanDay1PathwayPanel";
@@ -24,36 +22,25 @@ import { ElectionPlanDay6ContinueButton } from "@/components/election-plan/Elect
 import {
   ElectionPlanDay6PathwayPanel,
 } from "@/components/election-plan/ElectionPlanDay6PathwayPanel";
+import { ElectionPlanDay7ContinueButton } from "@/components/election-plan/ElectionPlanDay7ContinueButton";
+import {
+  ElectionPlanDay7PathwayPanel,
+} from "@/components/election-plan/ElectionPlanDay7PathwayPanel";
 import { ElectionPlanNorrisCoalitionDrillPanel } from "@/components/election-plan/ElectionPlanNorrisCoalitionDrillPanel";
 import { KellyPageSummary } from "@/components/election-plan/KellyPageSummary";
 import { VoterAudienceSpeakToBanner } from "@/components/election-plan/voter-audience/VoterAudienceSpeakToBanner";
 import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
-import { buildDay7PathwaySteps, getNextDay7PathwayStep } from "@/lib/election-plan/day7-learning-pathway";
-import { DAY7_HUB_TONIGHT_SUMMARY, DAY7_PEAK_END_FRAME } from "@/lib/election-plan/debate-prep-day7-polish-copy";
-import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
+import { DAY7_HUB_TONIGHT_SUMMARY, DAY7_PEAK_END_FRAME, DAY7_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day7-polish-copy";
 import { DAY6_APA_SIM_FRAME, DAY6_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
 import { DAY4_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day4-forum-intelligence-copy";
 import { DAY5_APA_STATEWIDE_BROADCAST_FRAME, DAY5_V3_KELLY_MINIMUM_SUMMARY } from "@/lib/election-plan/debate-prep-day5-anticipate-copy";
-import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath, isKellyDay6StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
+import { isKellyDay1StreamlinedPath, isKellyDay2StreamlinedPath, isKellyDay3StreamlinedPath, isKellyDay4StreamlinedPath, isKellyDay5StreamlinedPath, isKellyDay6StreamlinedPath, isKellyDay7StreamlinedPath } from "@/lib/election-plan/kelly-facing-ui";
 import { resolveAudiencesForHooks } from "@/lib/election-plan/voter-audience-models/resolve-audiences";
 import type { IntensiveDayId, IntensiveDayPlan } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 import { dayHasDrillDownPages } from "@/lib/election-plan/debatePrepDayDrillDown";
 
 function dayPageSummary(plan: IntensiveDayPlan): string {
   return `${plan.goalForKelly} Success tonight: ${plan.successCheck}`;
-}
-
-function Day7PathwayContinueLink({ currentStepId }: { currentStepId: string }) {
-  const next = getNextDay7PathwayStep(currentStepId);
-  if (!next) return null;
-  return (
-    <Link
-      href={next.href}
-      className="inline-block w-full rounded-full bg-[var(--ep-navy)] px-6 py-3 text-center text-sm font-bold text-white sm:w-auto"
-    >
-      Continue · {next.label} →
-    </Link>
-  );
 }
 
 export function ElectionPlanDayDrillDownOverview({
@@ -71,6 +58,7 @@ export function ElectionPlanDayDrillDownOverview({
   const streamlinedDay4 = isKellyDay4StreamlinedPath() && dayId === DAY4_ID;
   const streamlinedDay5 = isKellyDay5StreamlinedPath() && dayId === DAY5_ID;
   const streamlinedDay6 = isKellyDay6StreamlinedPath() && dayId === DAY6_ID;
+  const streamlinedDay7 = isKellyDay7StreamlinedPath() && dayId === DAY7_ID;
   const day1Audiences = dayId === DAY1_ID ? resolveAudiencesForHooks(["lane-2", "county-champion", "author-vs-administrator"]) : [];
   const day2Audiences =
     dayId === DAY2_ID ? resolveAudiencesForHooks(["county-champion", "integrity", "three-way"]) : [];
@@ -146,6 +134,29 @@ export function ElectionPlanDayDrillDownOverview({
     );
   }
 
+  if (streamlinedDay7) {
+    return (
+      <>
+        <KellyPageSummary
+          summary={`Polish bookends and lock one quotable line — ${dayPageSummary(plan)} ${DAY7_V3_KELLY_MINIMUM_SUMMARY}`}
+        />
+        <p className="mb-4 rounded-lg border border-rose-300/60 bg-rose-50/40 px-3 py-2 text-xs text-rose-950">
+          {DAY7_PEAK_END_FRAME}
+        </p>
+        <ElectionPlanDay7PathwayPanel showFullList showDay6Review showDay8Teaser />
+      </>
+    );
+  }
+
+  if (dayId === DAY7_ID) {
+    return (
+      <>
+        <KellyPageSummary summary={`${plan.goalForKelly} ${DAY7_HUB_TONIGHT_SUMMARY}`} />
+        <ElectionPlanDay7PathwayPanel showFullList showDay6Review showDay8Teaser />
+      </>
+    );
+  }
+
   if (streamlinedDay6) {
     return (
       <>
@@ -156,37 +167,6 @@ export function ElectionPlanDayDrillDownOverview({
           {DAY6_APA_SIM_FRAME}
         </p>
         <ElectionPlanDay6PathwayPanel showFullList showDay5Review showDay7Teaser />
-      </>
-    );
-  }
-
-  if (dayId === DAY7_ID) {
-    const steps = buildDay7PathwaySteps();
-    return (
-      <>
-        <KellyPageSummary summary={`${plan.goalForKelly} ${DAY7_HUB_TONIGHT_SUMMARY}`} />
-        <p className="mb-4 rounded-lg border border-violet-300/60 bg-violet-50/40 px-3 py-2 text-xs text-violet-950">
-          {DAY7_PEAK_END_FRAME}
-        </p>
-        <section className="ep-card mb-8 p-5 text-sm">
-          <p className="text-xs font-bold uppercase text-violet-900">Day 7 pathway · Pass 1</p>
-          <ol className="mt-4 list-inside list-decimal space-y-2 text-[var(--ep-navy)]">
-            {steps.map((step) => (
-              <li key={step.id}>
-                <Link href={step.href} className="font-semibold underline">
-                  {step.label}
-                </Link>
-                <span className="text-[var(--ep-navy-muted)]"> · ~{step.minutes} min</span>
-              </li>
-            ))}
-          </ol>
-          <Link
-            href={steps[0]?.href ?? epDebatePrepDayHref(DAY7_ID)}
-            className="mt-5 inline-block rounded-full bg-[var(--ep-navy)] px-6 py-3 text-sm font-bold text-white"
-          >
-            Start bookends polish →
-          </Link>
-        </section>
       </>
     );
   }
@@ -266,7 +246,7 @@ export function ElectionPlanDayStepFooter({
       ) : dayId === DAY6_ID ? (
         <ElectionPlanDay6ContinueButton currentStepId={currentStepId} />
       ) : dayId === DAY7_ID ? (
-        <Day7PathwayContinueLink currentStepId={currentStepId} />
+        <ElectionPlanDay7ContinueButton currentStepId={currentStepId} />
       ) : (
         <ElectionPlanDay3ContinueButton currentStepId={currentStepId} />
       )}

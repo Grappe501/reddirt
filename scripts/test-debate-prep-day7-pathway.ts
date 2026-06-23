@@ -1,7 +1,9 @@
 /**
- * Day 7 debate-prep Pass 1–2 — pathway spine, full block study, polish surface, example study.
+ * Day 7 debate-prep Pass 1–4 — pathway, block study, polish surface, pathway UI, product panels.
  */
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 import {
   buildDay7PathwaySteps,
   DAY7_DAY6_REVIEW,
@@ -10,8 +12,16 @@ import {
   DAY7_MINIMUM_BLOCK_IDS,
   getFirstDay7PathwayStep,
   getNextDay7PathwayStep,
+  isDay7PathwayStepOptional,
 } from "../src/lib/election-plan/day7-learning-pathway";
 import { DEBATE_PREP_DAY7_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day7-release";
+import { DAY6_SIM_DEBRIEF_STORAGE_KEY } from "../src/lib/election-plan/debate-prep-day6-simulation-copy";
+import {
+  DAY7_CLAIMS_FINAL_STORAGE_KEY,
+  DAY7_QUOTABLE_LOCK_STORAGE_KEY,
+} from "../src/lib/election-plan/debate-prep-day7-polish-copy";
+import { DAY7_PATHWAY_STORAGE_KEY } from "../src/lib/election-plan/day7-pathway-progress";
+import { debatePrepHubPrimaryDayId } from "../src/lib/election-plan/debate-prep-hub-tonight";
 import {
   DAY7_CLOSING_BEATS,
   DAY7_DEBRIEF_IMPORT_LABEL,
@@ -19,6 +29,11 @@ import {
   DAY7_POLISH_CLAIMS_GATE,
 } from "../src/lib/election-plan/debate-prep-day7-polish-copy";
 import { buildDay7PolishSurface } from "../src/lib/election-plan/load-day7-polish-surface";
+import { isKellyDay7StreamlinedPath } from "../src/lib/election-plan/kelly-facing-ui";
+import {
+  DAY7_CONCEPT_ANCHORS,
+  DAY7_MICRO_LESSON_ANCHORS,
+} from "../src/lib/election-plan/day7-supplement-anchors";
 import {
   DAY7_ID,
   listDayBlocksDrillDown,
@@ -63,7 +78,9 @@ assert.ok(getNextDay7PathwayStep(steps[0]!.id), "first step should have a next s
 assert.equal(DAY7_EVENING_REVIEW.length, 3);
 assert.ok(DAY7_DAY6_REVIEW.href.includes("day-6-full-simulation"));
 assert.ok(DAY7_DAY8_TEASER.href.includes("day-8-command-mode-debate"));
-assert.equal(DEBATE_PREP_DAY7_RELEASE_VERSION, "day-7-refine-and-steal-show-pass2");
+assert.equal(DEBATE_PREP_DAY7_RELEASE_VERSION, "day-7-refine-and-steal-show-v1.0.0");
+assert.ok(isKellyDay7StreamlinedPath(), "Kelly Day 7 streamlined path enabled");
+assert.ok(DAY7_PATHWAY_STORAGE_KEY.includes("day7"));
 assert.ok(DAY7_PEAK_END_FRAME.includes("Peak-end"));
 assert.ok(DAY7_POLISH_CLAIMS_GATE.length >= 4);
 assert.equal(DAY7_CLOSING_BEATS.length, 3);
@@ -108,6 +125,7 @@ assert.ok(commandDrill?.href.includes("d7-close"), "pathway includes closing dri
 
 const example = steps.find((s) => s.kind === "example");
 assert.ok(example?.href.includes("ex7-show-steal"), "pathway includes show-steal example");
+assert.ok(isDay7PathwayStepOptional("ex7-show-steal"), "show-steal example is optional");
 
 const rehearsals = steps.filter((s) => s.kind === "rehearsal");
 assert.equal(rehearsals.length, 2);
@@ -139,6 +157,30 @@ assert.equal(exampleParams.length, 1);
 
 assert.equal(DAY7_MINIMUM_BLOCK_IDS[0], "b7-open-close");
 
+const root = path.join(process.cwd(), "src");
+const blockPage = fs.readFileSync(
+  path.join(root, "app/election-plan/(portal)/debate-prep/days/[dayId]/blocks/[blockId]/page.tsx"),
+  "utf8",
+);
+const panelsFile = fs.readFileSync(path.join(root, "components/election-plan/ElectionPlanDay7Panels.tsx"), "utf8");
+assert.ok(blockPage.includes("ElectionPlanDay7BlockEmbed"), "block page wires Day 7 product embed");
+assert.ok(panelsFile.includes("ElectionPlanDay7BookendsPolishPanel"), "Day 7 panels include bookends polish");
+assert.ok(panelsFile.includes("ElectionPlanDay7DebriefImportPanel"), "Day 7 panels include debrief import");
+assert.ok(panelsFile.includes("ElectionPlanQuotableLockInPanel"), "Day 7 panels include quotable lock-in");
+assert.ok(panelsFile.includes("ElectionPlanClaimsFinalCutPanel"), "Day 7 panels include claims final cut");
+assert.ok(DAY6_SIM_DEBRIEF_STORAGE_KEY.includes("day6"));
+assert.ok(DAY7_QUOTABLE_LOCK_STORAGE_KEY.includes("day7"));
+assert.ok(DAY7_CLAIMS_FINAL_STORAGE_KEY.includes("day7"));
+
+assert.equal(debatePrepHubPrimaryDayId("2026-06-25"), DAY7_ID);
+const v8Source = fs.readFileSync(path.join(root, "lib/election-plan/debate-prep-system-v8.ts"), "utf8");
+assert.ok(
+  v8Source.includes('DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.7-day7-refine-and-steal-show-v1.0.0"'),
+  "v8 system version should match Day 7 v1.0.0 sign-off",
+);
+assert.equal(Object.keys(DAY7_CONCEPT_ANCHORS).length, 6);
+assert.equal(Object.keys(DAY7_MICRO_LESSON_ANCHORS).length, 1);
+
 console.log(
-  `test-debate-prep-day7-pathway: OK (${steps.length} steps, ${blocks.length} blocks, polish surface + ex7 study, pass2)`,
+  `test-debate-prep-day7-pathway: OK (${steps.length} steps, ${blocks.length} blocks, v1.0.0 production sign-off)`,
 );

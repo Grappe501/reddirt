@@ -12,7 +12,7 @@ export const DAY7_QUOTABLE_RULE =
   "One quotable clerk-centered line — earned, verified, newspaper-friendly without gimmick.";
 
 export const DAY7_HUB_TONIGHT_SUMMARY =
-  "Day 7 tonight: polish opening + closing (3 reps each), final claims scan, lock one quotable line. Minimum: b7-open-close block only.";
+  "Day 7 tonight: polish opening + closing bookends (3 reps each), final claims scan, lock one quotable line. Minimum: b7-open-close block only.";
 
 export const DAY7_V3_KELLY_MINIMUM_SUMMARY =
   "Minimum path (~60 min): opening + closing polish block only — claims scan and psych refresh roll to debate-eve AM if tired.";
@@ -38,3 +38,16 @@ export const DAY7_CLOSING_BEATS = [
   { beat: 2, source: "Day 6 sim debrief fix #1", objective: "One sentence from top-3 fixes log" },
   { beat: 3, source: "Quotable line staff pick", objective: "One breath pause before last word — peak-end rule" },
 ] as const;
+
+/** Client-safe serializable bookend for Day 7 polish UI props. */
+export type Day7PolishBookendClient = {
+  variant: "opening" | "closing";
+  durationSeconds: 90 | 60;
+  script: string;
+  sourceLabel: string;
+  rehearsalHref: string;
+};
+
+export const DAY7_QUOTABLE_LOCK_STORAGE_KEY = "kelly-day7-quotable-lock-v1";
+
+export const DAY7_CLAIMS_FINAL_STORAGE_KEY = "kelly-day7-claims-final-v1";

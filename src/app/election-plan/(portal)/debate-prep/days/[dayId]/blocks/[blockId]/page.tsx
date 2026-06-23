@@ -14,6 +14,7 @@ import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPl
 import { ElectionPlanDay4BlockEmbed } from "@/components/election-plan/ElectionPlanDay4ForumPanels";
 import { ElectionPlanDay5BlockEmbed } from "@/components/election-plan/ElectionPlanDay5Panels";
 import { ElectionPlanDay6BlockEmbed } from "@/components/election-plan/ElectionPlanDay6Panels";
+import { ElectionPlanDay7BlockEmbed } from "@/components/election-plan/ElectionPlanDay7Panels";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownSections,
@@ -156,6 +157,8 @@ export default async function ElectionPlanDayBlockPage({
       {dayId === DAY5_ID ? <ElectionPlanDay5BlockEmbed blockId={blockId} /> : null}
 
       {dayId === DAY6_ID ? <ElectionPlanDay6BlockEmbed blockId={blockId} /> : null}
+
+      {dayId === DAY7_ID ? <ElectionPlanDay7BlockEmbed blockId={blockId} /> : null}
 
       {study ? (
         <ElectionPlanBlockStudyPanel study={study} dayId={dayId} blockId={blockId} />

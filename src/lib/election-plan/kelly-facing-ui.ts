@@ -43,6 +43,11 @@ export function isKellyDay6StreamlinedPath(): boolean {
   return KELLY_FACING_ELECTION_PLAN;
 }
 
+/** Kelly Day 7 — refine & steal the show linear pathway */
+export function isKellyDay7StreamlinedPath(): boolean {
+  return KELLY_FACING_ELECTION_PLAN;
+}
+
 export function kellyStudyLeadLabel(): string {
   return KELLY_FACING_ELECTION_PLAN ? "Start here" : "Professor lead";
 }

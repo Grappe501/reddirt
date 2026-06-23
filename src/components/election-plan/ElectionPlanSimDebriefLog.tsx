@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-import { DAY6_DEBRIEF_PROMPTS, DAY6_DEBRIEF_TOP_FIXES_LABEL } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
+import { DAY6_DEBRIEF_PROMPTS, DAY6_DEBRIEF_TOP_FIXES_LABEL, DAY6_SIM_DEBRIEF_STORAGE_KEY } from "@/lib/election-plan/debate-prep-day6-simulation-copy";
 
-const STORAGE_KEY = "kelly-day6-sim-debrief-v1";
+const STORAGE_KEY = DAY6_SIM_DEBRIEF_STORAGE_KEY;
 
 type DebriefState = {
   fixes: [string, string, string];

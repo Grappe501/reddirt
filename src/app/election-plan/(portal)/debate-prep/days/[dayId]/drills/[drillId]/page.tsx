@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
+import { ElectionPlanDay7DrillEmbed } from "@/components/election-plan/ElectionPlanDay7Panels";
 import {
   ElectionPlanDrillDownRelated,
   ElectionPlanDrillDownShell,
@@ -68,6 +69,8 @@ export default async function ElectionPlanDayCommandDrillPage({
         <p className="mt-2 font-semibold text-[var(--ep-navy)]">{drill.youSay}</p>
         {drill.claimsNote ? <p className="mt-4 text-xs font-bold text-amber-900">{drill.claimsNote}</p> : null}
       </article>
+
+      {dayId === DAY7_ID ? <ElectionPlanDay7DrillEmbed drillId={drillId} /> : null}
 
       {(dayId === DAY1_ID || dayId === DAY2_ID || dayId === DAY3_ID) && (
         <article

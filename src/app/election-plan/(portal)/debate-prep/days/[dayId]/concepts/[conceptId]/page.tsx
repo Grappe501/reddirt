@@ -16,10 +16,12 @@ import { getDay3ConceptAnchor } from "@/lib/election-plan/day3-supplement-anchor
 import { ElectionPlanDay4SupplementFooter } from "@/components/election-plan/ElectionPlanDay4SupplementFooter";
 import { ElectionPlanDay5SupplementFooter } from "@/components/election-plan/ElectionPlanDay5SupplementFooter";
 import { ElectionPlanDay6SupplementFooter } from "@/components/election-plan/ElectionPlanDay6SupplementFooter";
+import { ElectionPlanDay7SupplementFooter } from "@/components/election-plan/ElectionPlanDay7SupplementFooter";
 import { ElectionPlanDayStepFooter } from "@/components/election-plan/ElectionPlanDayDrillDownOverview";
 import { getDay4ConceptAnchor } from "@/lib/election-plan/day4-supplement-anchors";
 import { getDay5ConceptAnchor } from "@/lib/election-plan/day5-supplement-anchors";
 import { getDay6ConceptAnchor } from "@/lib/election-plan/day6-supplement-anchors";
+import { getDay7ConceptAnchor } from "@/lib/election-plan/day7-supplement-anchors";
 import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, getDayConcept, type DrillDownDayId } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { staticParamsForDayConcepts } from "@/lib/election-plan/debatePrepDayStaticParams";
 import { epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
@@ -48,6 +50,7 @@ export default async function ElectionPlanDayConceptPage({
   const day4Anchor = dayId === DAY4_ID ? getDay4ConceptAnchor(conceptId) : undefined;
   const day5Anchor = dayId === DAY5_ID ? getDay5ConceptAnchor(conceptId) : undefined;
   const day6Anchor = dayId === DAY6_ID ? getDay6ConceptAnchor(conceptId) : undefined;
+  const day7Anchor = dayId === DAY7_ID ? getDay7ConceptAnchor(conceptId) : undefined;
   const dayLabel =
     dayId === DAY7_ID
       ? "Day 7"
@@ -99,7 +102,9 @@ export default async function ElectionPlanDayConceptPage({
       <ElectionPlanDrillDownSections sections={concept.sections} />
       <ElectionPlanDrillDownSteps title="Practice steps" steps={concept.practiceSteps} />
       <ElectionPlanDrillDownRelated links={concept.relatedLinks} />
-      {day6Anchor ? (
+      {day7Anchor ? (
+        <ElectionPlanDay7SupplementFooter anchor={day7Anchor} />
+      ) : day6Anchor ? (
         <ElectionPlanDay6SupplementFooter anchor={day6Anchor} />
       ) : day5Anchor ? (
         <ElectionPlanDay5SupplementFooter anchor={day5Anchor} />

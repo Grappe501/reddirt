@@ -104,6 +104,10 @@ export function getFirstDay7PathwayStep(): Day7PathwayStep {
   return buildDay7PathwaySteps()[0]!;
 }
 
+export function isDay7PathwayStepOptional(stepId: string): boolean {
+  return buildDay7PathwaySteps().some((s) => s.id === stepId && s.kind === "example");
+}
+
 export const DAY7_MINIMUM_BLOCK_IDS = ["b7-open-close"] as const;
 
 export const DAY7_EVENING_REVIEW = [

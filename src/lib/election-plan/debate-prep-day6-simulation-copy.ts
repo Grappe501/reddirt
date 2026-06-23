@@ -59,6 +59,9 @@ export const DAY6_SIM_TOTAL_MINUTES = 60;
 
 export const DAY6_SIM_DEBRIEF_MINUTES = 30;
 
+/** Shared with Day 7 debrief import panel — do not rename casually. */
+export const DAY6_SIM_DEBRIEF_STORAGE_KEY = "kelly-day6-sim-debrief-v1";
+
 /** Client-safe segment outline (no server loaders). */
 export const DAY6_SIM_SEGMENT_OUTLINE: ReadonlyArray<{
   label: string;

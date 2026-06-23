@@ -84,18 +84,33 @@ import { DEBATE_PREP_DAY6_RELEASE_VERSION } from "../src/lib/election-plan/debat
 import { DAY6_HUB_TONIGHT_SUMMARY } from "../src/lib/election-plan/debate-prep-day6-simulation-copy";
 import { DAY6_BLOCK_STUDY, getDay6BlockStudy } from "../src/lib/election-plan/debatePrepDay6BlockStudy";
 import {
+  DAY7_CONCEPT_ANCHORS,
+  DAY7_MICRO_LESSON_ANCHORS,
+} from "../src/lib/election-plan/day7-supplement-anchors";
+import {
+  buildDay7PathwaySteps,
+  DAY7_EVENING_REVIEW,
+  DAY7_MINIMUM_BLOCK_IDS,
+  isDay7PathwayStepOptional,
+} from "../src/lib/election-plan/day7-learning-pathway";
+import { DEBATE_PREP_DAY7_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day7-release";
+import { DAY7_HUB_TONIGHT_SUMMARY } from "../src/lib/election-plan/debate-prep-day7-polish-copy";
+import { DAY7_BLOCK_STUDY, getDay7BlockStudy } from "../src/lib/election-plan/debatePrepDay7BlockStudy";
+import { getDay7OpponentExampleStudy } from "../src/lib/election-plan/debatePrepDay7OpponentExampleStudy";
+import { debatePrepHubPrimaryDayId, buildDebatePrepPathwayTonightFocus } from "../src/lib/election-plan/debate-prep-hub-tonight";
+import {
   DAY1_ID,
   DAY2_ID,
   DAY3_ID,
   DAY4_ID,
   DAY5_ID,
   DAY6_ID,
+  DAY7_ID,
   listDayBlocksDrillDown,
   listDayConcepts,
   listDayMicroLessonsDrillDown,
   listDayRehearsalScripts,
 } from "../src/lib/election-plan/debatePrepDayDrillDown";
-import { debatePrepHubPrimaryDayId, buildDebatePrepPathwayTonightFocus } from "../src/lib/election-plan/debate-prep-hub-tonight";
 
 function countByKind(steps: { kind: string }[]) {
   return steps.reduce(
@@ -451,6 +466,67 @@ assert.ok(
   "tonight focus on 2026-06-24 promotes Day 6",
 );
 
+// --- Day 7 parity (vs Day 6 bar) ---
+const day7Steps = buildDay7PathwaySteps();
+const day7Kinds = countByKind(day7Steps);
+const day7Micro = listDayMicroLessonsDrillDown(DAY7_ID);
+
+assert.equal(listDayBlocksDrillDown(DAY7_ID).length, 4, "Day 7 has four intensive blocks");
+assert.equal(listDayConcepts(DAY7_ID).length, 6);
+assert.ok(day7Steps.length >= 9, "Day 7 pathway should be at least as long as Day 6 tail");
+
+const day7Minutes = day7Steps.reduce((sum, s) => sum + s.minutes, 0);
+assert.ok(day7Minutes >= day6Minutes * 0.5, "Day 7 pathway minutes substantive on debate eve");
+
+assert.equal(DAY7_EVENING_REVIEW.length, DAY6_EVENING_REVIEW.length);
+assert.equal(DAY7_MINIMUM_BLOCK_IDS.length, 1);
+
+assert.equal(day7Kinds.block, 4);
+assert.equal(day7Kinds.rehearsal, 2);
+assert.equal(day7Kinds["micro-lesson"], 1);
+assert.equal(day7Kinds["command-drill"], 1);
+assert.equal(day7Kinds.example, 1);
+assert.equal(day7Kinds.close, 1);
+
+const d7Depth = studyDepthScore(Object.keys(DAY7_BLOCK_STUDY), getDay7BlockStudy);
+assert.equal(d7Depth.claimsGates, 4, "all four Day 7 blocks should have claims gates");
+assert.ok(d7Depth.phases >= 12, "Day 7 block study phases should be substantive");
+assert.ok(d7Depth.deepSections >= 12, "Day 7 deep sections should be substantive");
+
+for (const concept of listDayConcepts(DAY7_ID)) {
+  assert.ok(DAY7_CONCEPT_ANCHORS[concept.id], `Day 7 concept ${concept.id} needs supplement anchor`);
+}
+for (const lesson of day7Micro) {
+  assert.ok(DAY7_MICRO_LESSON_ANCHORS[lesson.id], `Day 7 micro-lesson ${lesson.id} needs anchor`);
+}
+
+const d7Example = getDay7OpponentExampleStudy("ex7-show-steal");
+assert.ok(d7Example && d7Example.phases.length >= 4);
+assert.ok(isDay7PathwayStepOptional("ex7-show-steal"));
+
+for (const step of day7Steps) {
+  assert.ok(!step.href.includes("/admin/"), `${step.id} must not link to admin on Day 7 pathway`);
+}
+
+assert.equal(DEBATE_PREP_DAY7_RELEASE_VERSION, "day-7-refine-and-steal-show-v1.0.0");
+assert.equal(debatePrepHubPrimaryDayId("2026-06-25"), DAY7_ID);
+assert.ok(DAY7_HUB_TONIGHT_SUMMARY.includes("bookends"), "Day 7 hub summary names bookends polish");
+assert.ok(
+  buildDebatePrepPathwayTonightFocus("2026-06-25").includes("Day 7 pathway"),
+  "tonight focus on 2026-06-25 promotes Day 7",
+);
+assert.ok(hubPanel.includes("ElectionPlanDay7StartCard"), "hub should promote Day 7 start card");
+assert.ok(hubPanel.includes("Day 6 complete? Review Day 6"), "Day 7 hub should collapse Day 6 review");
+assert.ok(conceptPage.includes("ElectionPlanDay7SupplementFooter"));
+const v8Source = fs.readFileSync(
+  path.join(__dirname, "../src/lib/election-plan/debate-prep-system-v8.ts"),
+  "utf8",
+);
+assert.ok(
+  v8Source.includes('DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.7-day7-refine-and-steal-show-v1.0.0"'),
+  "v8 system version should match Day 7 v1.0.0 sign-off",
+);
+
 console.log(
-  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · D4 ${day4Steps.length}/${day4Minutes}m · D5 ${day5Steps.length}/${day5Minutes}m · D6 ${day6Steps.length}/${day6Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases}/${d4Depth.phases}/${d5Depth.phases}/${d6Depth.phases})`,
+  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · D4 ${day4Steps.length}/${day4Minutes}m · D5 ${day5Steps.length}/${day5Minutes}m · D6 ${day6Steps.length}/${day6Minutes}m · D7 ${day7Steps.length}/${day7Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases}/${d4Depth.phases}/${d5Depth.phases}/${d6Depth.phases}/${d7Depth.phases})`,
 );
