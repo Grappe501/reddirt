@@ -4,6 +4,7 @@ const path = require("node:path");
 const {
   estimateLambdaEnvBytes,
   estimateNetlifyApiFunctionEnvBytes,
+  detectOpenNextModernHandler,
   printNetlifyEnvScopingChecklist,
   getDeployRiskMessage,
   LAMBDA_ENV_LIMIT_BYTES,
@@ -103,6 +104,8 @@ exports.onPostBuild = async ({ utils }) => {
     /* advisory only */
   }
 
+  const modernHandler = detectOpenNextModernHandler(process.cwd());
+
   const risk = getDeployRiskMessage({
     total,
     totalRaw,
@@ -111,6 +114,8 @@ exports.onPostBuild = async ({ utils }) => {
     rows,
     buildOnlyLeaked,
     apiRuntimeBytes,
+    handlerPackaged: true,
+    modernHandler,
   });
 
   utils.status.show({

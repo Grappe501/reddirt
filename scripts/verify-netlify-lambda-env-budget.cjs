@@ -3,6 +3,9 @@
  * AWS Lambda compatibility mode: 4096 byte cap on all env keys+values combined.
  * Modern Netlify Functions runtime (June 2026+): cap removed — see Netlify changelog.
  */
+const fs = require("node:fs");
+const path = require("node:path");
+
 const LAMBDA_ENV_LIMIT_BYTES = 4096;
 const WARN_BYTES = 3200;
 const FEATURE_FLAGS_TYPICAL_BYTES = 9055;
@@ -135,22 +138,60 @@ function isLambdaCompatMode() {
   return Boolean(process.env.AWS_LAMBDA_JS_RUNTIME);
 }
 
-/** Netlify injects FEATURE_FLAGS at deploy on compat mode — often absent during onPostBuild. */
-function estimateCompatFeatureFlagsBytes(featureFlags) {
+/** OpenNext v5+ server handler markers (modern Functions runtime — no 4 KB env cap). */
+const OPENNEXT_HANDLER_MARKERS = [
+  ".netlify/functions-internal/___netlify-server-handler/___netlify-server-handler.mjs",
+  ".netlify/functions-internal/___netlify-server-handler/run-config.json",
+  ".netlify/functions-internal/___netlify-server-handler/.netlify/dist/run/handlers/server.js",
+];
+
+function detectOpenNextModernHandler(cwd = process.cwd()) {
+  return OPENNEXT_HANDLER_MARKERS.some((rel) => fs.existsSync(path.join(cwd, rel)));
+}
+
+/**
+ * Netlify injects FEATURE_FLAGS in build env on compat and modern runtimes.
+ * Only count toward the compat deploy budget when legacy Lambda mode is likely.
+ */
+function estimateCompatFeatureFlagsBytes(
+  featureFlags,
+  { handlerPackaged = false, modernHandler = false } = {},
+) {
+  if (modernHandler) return 0;
   const ffBytes = featureFlags?.bytes ?? 0;
-  if (ffBytes >= LAMBDA_ENV_LIMIT_BYTES) return ffBytes;
   if (isLambdaCompatMode()) return ffBytes || FEATURE_FLAGS_TYPICAL_BYTES;
+  if (handlerPackaged && ffBytes >= LAMBDA_ENV_LIMIT_BYTES) return ffBytes;
   return 0;
 }
 
-function estimateCompatDeployBytes({ total, deployEstimate, buildOnlyLeaked, featureFlags, apiRuntimeBytes }) {
+function estimateCompatDeployBytes({
+  total,
+  deployEstimate,
+  buildOnlyLeaked,
+  featureFlags,
+  apiRuntimeBytes,
+  handlerPackaged = false,
+  modernHandler = false,
+}) {
   const worstCase = apiRuntimeBytes ?? deployEstimate ?? total + (buildOnlyLeaked ?? 0);
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
-  const compatPadding = onNetlify ? estimateCompatFeatureFlagsBytes(featureFlags) : 0;
-  return { worstCase, compatPadding, lambdaDeployBytes: worstCase + compatPadding };
+  const compatPadding = onNetlify
+    ? estimateCompatFeatureFlagsBytes(featureFlags, { handlerPackaged, modernHandler })
+    : 0;
+  return { worstCase, compatPadding, lambdaDeployBytes: worstCase + compatPadding, modernHandler };
 }
 
-function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, rows, buildOnlyLeaked, apiRuntimeBytes }) {
+function getDeployRiskMessage({
+  total,
+  totalRaw,
+  deployEstimate,
+  featureFlags,
+  rows,
+  buildOnlyLeaked,
+  apiRuntimeBytes,
+  handlerPackaged = false,
+  modernHandler = detectOpenNextModernHandler(),
+}) {
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
   const { worstCase, compatPadding, lambdaDeployBytes } = estimateCompatDeployBytes({
     total,
@@ -158,6 +199,8 @@ function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, r
     buildOnlyLeaked,
     featureFlags,
     apiRuntimeBytes,
+    handlerPackaged,
+    modernHandler,
   });
   const nodeOptions = rows.find((r) => r.key === "NODE_OPTIONS");
 
@@ -187,7 +230,13 @@ function getDeployRiskMessage({ total, totalRaw, deployEstimate, featureFlags, r
   if (onNetlify && compatPadding > 0 && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES) {
     fail = true;
     lines.push(
-      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compatibility mode. Runtime env is fine — the site is stuck on the legacy Next adapter. Fix: Netlify UI → Build & deploy → Build plugins → Disable "@netlify/plugin-nextjs" (often origin: ui in deploy logs). Do not pin the plugin in package.json or netlify.toml. Or run: NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime`,
+      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compatibility mode. Runtime env is fine — the site is stuck on the legacy Next adapter. Fix: Netlify UI → Build & deploy → Build plugins → Disable "@netlify/plugin-nextjs"; also Build settings → Runtime → Remove pinned Next.js runtime, save, re-select Next.js, save. Do not pin the plugin in package.json or netlify.toml. Or run: NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime`,
+    );
+  }
+
+  if (!fail && onNetlify && handlerPackaged && modernHandler) {
+    lines.push(
+      `OpenNext modern server handler detected — FEATURE_FLAGS (${featureFlags?.bytes ?? 0} B in build env) does not count toward the Lambda compat env cap.`,
     );
   }
 
@@ -224,7 +273,10 @@ function main() {
   );
 
   if (featureFlags) {
-    console.log(`>>> FEATURE_FLAGS ${featureFlags.bytes} B (Netlify-internal; compat mode only)`);
+    const modern = detectOpenNextModernHandler();
+    console.log(
+      `>>> FEATURE_FLAGS ${featureFlags.bytes} B (Netlify-internal${modern ? "; OpenNext handler — not compat cap" : "; compat risk only if legacy runtime"})`,
+    );
   }
 
   const runtimeRows = rows.filter((r) => !r.excluded).slice(0, 12);
@@ -290,9 +342,11 @@ module.exports = {
   estimateLambdaEnvBytes,
   estimateNetlifyApiFunctionEnvBytes,
   estimateCompatDeployBytes,
+  detectOpenNextModernHandler,
   printNetlifyEnvScopingChecklist,
   getDeployRiskMessage,
   isBuildOnlyKey,
+  isLambdaCompatMode,
   envRowReachesFunctions,
   LAMBDA_ENV_LIMIT_BYTES,
   BUILD_ONLY_EXACT,
