@@ -18,11 +18,13 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
 
   function CityRow({ city }: { city: ElectionPlanCity }) {
     return (
-      <Link
-        href={cityLocationBriefHref(city.slug)}
-        className="ep-card block transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]"
-      >
-        <div className="flex flex-wrap items-start justify-between gap-3">
+      <article className="ep-card relative block transition hover:ring-2 hover:ring-[var(--ep-gold-soft)]">
+        <Link
+          href={cityLocationBriefHref(city.slug)}
+          className="absolute inset-0 z-0 rounded-[inherit]"
+          aria-label={`Open ${city.name} location brief`}
+        />
+        <div className="relative z-10 flex flex-wrap items-start justify-between gap-3 pointer-events-none">
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-semibold text-[var(--ep-gold)]">#{city.rank}</span>
@@ -41,8 +43,7 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
             <div className="text-sm text-[var(--ep-navy-muted)]">
               <Link
                 href={countyPlaybookHref(city.county, electionPlanSlugForCountyName(city.county))}
-                className="font-semibold text-[var(--ep-navy)] hover:text-[var(--ep-gold)]"
-                onClick={(e) => e.stopPropagation()}
+                className="pointer-events-auto relative z-20 font-semibold text-[var(--ep-navy)] hover:text-[var(--ep-gold)]"
               >
                 {city.county} County playbook
               </Link>
@@ -80,7 +81,7 @@ export function CityStrategyList({ cities, combinedTargetVotes, standalone }: Pr
             </p>
           </div>
         </div>
-      </Link>
+      </article>
     );
   }
 
