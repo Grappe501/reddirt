@@ -106,6 +106,7 @@
     "agents:test-debate-prep-day6-pathway": "tsx scripts/test-debate-prep-day6-pathway.ts",
     "agents:test-debate-prep-day7-pathway": "tsx scripts/test-debate-prep-day7-pathway.ts",
     "agents:test-debate-prep-day8-pathway": "tsx scripts/test-debate-prep-day8-pathway.ts",
+    "agents:test-debate-prep-day8-pass5": "tsx scripts/test-debate-prep-day8-pass5.ts",
     "agents:test-sos-three-domains-week": "tsx scripts/test-sos-three-domains-week.ts",
     "agents:test-county-operating-center-page": "tsx scripts/test-county-operating-center-page.ts",
     "legislature:discover-videos": "tsx scripts/discover-legislative-videos-for-priority-bills.ts",

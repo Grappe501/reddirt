@@ -175,8 +175,8 @@ assert.ok(DAY7_CLAIMS_FINAL_STORAGE_KEY.includes("day7"));
 assert.equal(debatePrepHubPrimaryDayId("2026-06-25"), DAY7_ID);
 const v8Source = fs.readFileSync(path.join(root, "lib/election-plan/debate-prep-system-v8.ts"), "utf8");
 assert.ok(
-  v8Source.includes('DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.7-day7-refine-and-steal-show-v1.0.0"'),
-  "v8 system version should match Day 7 v1.0.0 sign-off",
+  v8Source.includes("day8-crash-course-v1.0.0"),
+  "v8 system version should match Day 8 v1.0.0 sign-off",
 );
 assert.equal(Object.keys(DAY7_CONCEPT_ANCHORS).length, 6);
 assert.equal(Object.keys(DAY7_MICRO_LESSON_ANCHORS).length, 1);

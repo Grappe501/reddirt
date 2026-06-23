@@ -63,7 +63,7 @@ const steps = buildDay8PathwaySteps();
 assert.equal(steps.length, 10, "9 sections + course complete");
 assert.equal(getFirstDay8PathwayStep().id, "s8-orient");
 assert.ok(getNextDay8PathwayStep("s8-orient")?.id === "s8-pre-debate");
-assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-crash-course-pass4");
+assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-crash-course-v1.0.0");
 assert.ok(isKellyDay8StreamlinedPath());
 assert.ok(isKellyDay8CrashCoursePath());
 assert.ok(DAY8_PATHWAY_STORAGE_KEY.includes("day8"));
@@ -120,5 +120,5 @@ for (const file of PASS4_PANELS) {
 }
 
 console.log(
-  `test-debate-prep-day8-pathway: OK (${steps.length} steps, ${blocks.length} sections, 3 SOS domains, pass4)`,
+  `test-debate-prep-day8-pathway: OK (${steps.length} steps, ${blocks.length} sections, 3 SOS domains, v1.0.0)`,
 );

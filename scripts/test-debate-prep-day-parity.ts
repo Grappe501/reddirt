@@ -94,6 +94,16 @@ import {
   isDay7PathwayStepOptional,
 } from "../src/lib/election-plan/day7-learning-pathway";
 import { DEBATE_PREP_DAY7_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day7-release";
+import { DEBATE_PREP_DAY8_RELEASE_VERSION } from "../src/lib/election-plan/debate-prep-day8-release";
+import { DAY8_HUB_TONIGHT_SUMMARY } from "../src/lib/election-plan/debate-prep-day8-crash-copy";
+import {
+  buildDay8PathwaySteps,
+  DAY8_EVENING_REVIEW,
+  DAY8_MINIMUM_SECTION_IDS,
+  totalDay8PathwayMinutes,
+} from "../src/lib/election-plan/day8-learning-pathway";
+import { DAY8_BLOCK_STUDY, getDay8BlockStudy } from "../src/lib/election-plan/debatePrepDay8BlockStudy";
+import { DAY8_CRASH_SECTION_SPECS } from "../src/lib/election-plan/debatePrepDay8Registry";
 import { DAY7_HUB_TONIGHT_SUMMARY } from "../src/lib/election-plan/debate-prep-day7-polish-copy";
 import { DAY7_BLOCK_STUDY, getDay7BlockStudy } from "../src/lib/election-plan/debatePrepDay7BlockStudy";
 import { getDay7OpponentExampleStudy } from "../src/lib/election-plan/debatePrepDay7OpponentExampleStudy";
@@ -106,6 +116,7 @@ import {
   DAY5_ID,
   DAY6_ID,
   DAY7_ID,
+  DAY8_ID,
   listDayBlocksDrillDown,
   listDayConcepts,
   listDayMicroLessonsDrillDown,
@@ -523,10 +534,65 @@ const v8Source = fs.readFileSync(
   "utf8",
 );
 assert.ok(
-  v8Source.includes('DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.7-day7-refine-and-steal-show-v1.0.0"'),
-  "v8 system version should match Day 7 v1.0.0 sign-off",
+  v8Source.includes("day7-refine-and-steal-show-v1.0.0") || v8Source.includes("day8-crash-course-v1.0.0"),
+  "v8 system version should reflect production sign-off",
+);
+
+// --- Day 8 crash course parity (v1.0.0 sign-off) ---
+const day8Steps = buildDay8PathwaySteps();
+const day8Blocks = listDayBlocksDrillDown(DAY8_ID);
+const day8Minutes = totalDay8PathwayMinutes();
+const day8SectionMinutes = DAY8_CRASH_SECTION_SPECS.reduce((sum, s) => sum + s.minutes, 0);
+
+assert.equal(day8Blocks.length, 9, "Day 8 should have 9 crash course sections");
+assert.equal(day8Steps.length, 10, "Day 8 pathway: 9 sections + course complete");
+assert.ok(day8SectionMinutes >= 180 && day8SectionMinutes <= 200, "Day 8 crash course ~3 hours");
+assert.ok(day8Minutes >= day8SectionMinutes);
+assert.equal(DAY8_MINIMUM_SECTION_IDS.length, 6);
+assert.equal(DAY8_EVENING_REVIEW.length, 3);
+
+const d8Depth = (() => {
+  let phases = 0;
+  let claimsGates = 0;
+  for (const id of Object.keys(DAY8_BLOCK_STUDY)) {
+    const study = getDay8BlockStudy(id);
+    assert.ok(study, `${id} block study missing`);
+    assert.ok(study!.phases.length >= 2, `${id} should have >= 2 phases`);
+    assert.ok(study!.keyTakeaways.length >= 1, `${id} key takeaways`);
+    phases += study!.phases.length;
+    if (study!.claimsGate?.length) claimsGates += 1;
+  }
+  return { phases, claimsGates, deepSections: 0 };
+})();
+assert.equal(d8Depth.claimsGates, 9, "all nine Day 8 sections should have claims gates");
+assert.ok(d8Depth.phases >= 18, "Day 8 block study phases should be substantive");
+
+for (const step of day8Steps) {
+  assert.ok(!step.href.includes("/admin/"), `${step.id} must not link to admin on Day 8 pathway`);
+}
+
+assert.equal(DEBATE_PREP_DAY8_RELEASE_VERSION, "day-8-crash-course-v1.0.0");
+assert.equal(debatePrepHubPrimaryDayId("2026-06-26"), DAY8_ID);
+assert.ok(DAY8_HUB_TONIGHT_SUMMARY.includes("crash course"), "Day 8 hub summary names crash course AM");
+assert.ok(
+  buildDebatePrepPathwayTonightFocus("2026-06-26").includes("Day 8 crash course"),
+  "tonight focus on debate day promotes Day 8",
+);
+assert.ok(hubPanel.includes("ElectionPlanDay8StartCard"), "hub should promote Day 8 start card");
+assert.ok(hubPanel.includes("focusDay8"), "hub should branch on Day 8 primary");
+assert.ok(
+  fs.readFileSync(path.join(__dirname, "../src/components/election-plan/ElectionPlanDay8Panels.tsx"), "utf8").includes(
+    "ElectionPlanDay8PersonaWallPanel",
+  ),
+  "Day 8 persona wall panel wired",
+);
+assert.ok(
+  fs.readFileSync(path.join(__dirname, "../src/lib/election-plan/debate-prep-system-v8.ts"), "utf8").includes(
+    'DEBATE_PREP_SYSTEM_V8_VERSION = "debate-prep-system-v8.8-day8-crash-course-v1.0.0"',
+  ),
+  "v8 system version should match Day 8 v1.0.0 sign-off",
 );
 
 console.log(
-  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · D4 ${day4Steps.length}/${day4Minutes}m · D5 ${day5Steps.length}/${day5Minutes}m · D6 ${day6Steps.length}/${day6Minutes}m · D7 ${day7Steps.length}/${day7Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases}/${d4Depth.phases}/${d5Depth.phases}/${d6Depth.phases}/${d7Depth.phases})`,
+  `test-debate-prep-day-parity: OK (D1 ${day1Steps.length}/${day1Minutes}m · D2 ${day2Steps.length}/${day2Minutes}m · D3 ${day3Steps.length}/${day3Minutes}m · D4 ${day4Steps.length}/${day4Minutes}m · D5 ${day5Steps.length}/${day5Minutes}m · D6 ${day6Steps.length}/${day6Minutes}m · D7 ${day7Steps.length}/${day7Minutes}m · D8 ${day8Steps.length}/${day8Minutes}m · phases ${d1Depth.phases}/${d2Depth.phases}/${d3Depth.phases}/${d4Depth.phases}/${d5Depth.phases}/${d6Depth.phases}/${d7Depth.phases}/${d8Depth.phases})`,
 );

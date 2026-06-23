@@ -4,7 +4,7 @@
  * SOS Debate · Annual Press Convention · Eureka Springs · 2026-06-26.
  */
 
-import { EP_FORUM_TRANSCRIPT_LAB_HREF, EP_OPPONENT_BIOS_HREF } from "@/lib/election-plan/debate-prep-links";
+import { EP_FORUM_TRANSCRIPT_LAB_HREF, EP_OPPONENT_BIOS_HREF, epDebatePrepDayHref } from "@/lib/election-plan/debate-prep-links";
 
 export const DEBATE_WEEK_INTENSIVE_HUB_HREF = "/admin/intelligence/debate-week-intensive";
 export const FORUM_TRANSCRIPT_LAB_HREF = "/admin/intelligence/forum-transcript-lab";
@@ -555,40 +555,39 @@ export const DEBATE_WEEK_INTENSIVE_DAYS: IntensiveDayPlan[] = [
     calendarDate: "2026-06-26",
     weekdayLabel: "Debate Day · Jun 26",
     title: "Command Mode — debate day",
-    subtitle: "Mindset · travel · stage · debrief",
-    commandModeFocus: "Execute protocol — you already did the work. Scan, breathe, respond.",
+    subtitle: "AM crash course (§0–§8) · PM travel · stage · debrief",
+    commandModeFocus: "AM: compact Days 1–7 into three SOS domains. PM: execute — scan, breathe, respond.",
     psychologyPrinciple: "Implementation intention — if X happens, I do Y (pre-decided, no panic decisions).",
     goalForKelly:
-      "Light cognitive load — physical readiness, safe lines only, steal the show with calm competence.",
-    hoursTarget: 2,
+      "Morning: three-hour crash course + lock sheet. Afternoon: physical readiness, safe lines only, calm competence on APA statewide broadcast.",
+    hoursTarget: 3,
     blocks: [
       {
-        id: "b8-morning",
-        title: "Morning Command Mode ritual",
-        minutes: 30,
-        activity: "Breath protocol + read three safe lines only. No new research.",
-        why: "Debate day is execution, not ingestion.",
+        id: "b8-crash-course-am",
+        title: "AM crash course · §0–§8",
+        minutes: 190,
+        href: epDebatePrepDayHref("day-8-command-mode-debate"),
+        activity: "Linear pathway — orient → command → persona wall → opening/closing workshops → middle game → run-through → lock sheet.",
+        why: "One morning compacts the week — elections + business services + Capitol management before PM stage.",
       },
       {
         id: "b8-travel",
         title: "Travel to Eureka Springs — mental rehearsal",
-        minutes: 60,
-        activity: "Silent run-through of opening in car; staff handles logistics.",
+        minutes: 45,
+        activity: "Silent run-through of opening in car; staff handles logistics. Lock sheet only — no new research.",
         why: "Transition time is rehearsal time.",
       },
       {
         id: "b8-stage",
         title: "Stage — Command Mode active",
         minutes: 120,
-        href: "/admin/intelligence/run-of-show",
-        activity: "Follow run of show; post-debrief in session debrief strip.",
-        why: "This sets the tone for the entire general election.",
+        activity: "Follow run of show; three-domain opening + SOS answers from lock sheet; post-debrief in session strip.",
+        why: "APA statewide broadcast — Arkansas people, not clerk-room only.",
       },
       {
         id: "b8-debrief",
         title: "Post-debate debrief + press",
         minutes: 45,
-        href: "/admin/intelligence/rehearsal-history",
         activity: "Capture what worked; APA LTE draft within 48h.",
         why: "Peak-end — how you leave the room matters for coverage.",
       },
