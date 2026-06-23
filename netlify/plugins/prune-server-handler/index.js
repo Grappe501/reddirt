@@ -14,7 +14,9 @@ exports.onPostBuild = async ({ utils }) => {
   const result = pruneNetlifyServerHandler(process.cwd());
   if (result.skipped) {
     await utils.build.failBuild(
-      "___netlify-server-handler not found after @netlify/plugin-nextjs onBuild — cannot prune for opposition launch.",
+      "___netlify-server-handler not found after build — @netlify/plugin-nextjs did not package the server handler. " +
+        "Ensure netlify.toml lists [[plugins]] package = \"@netlify/plugin-nextjs\" first (before prune-server-handler). " +
+        "Do not pin an old adapter in package.json; clear cache and redeploy.",
     );
     return;
   }

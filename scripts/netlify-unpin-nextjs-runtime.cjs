@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 /**
- * Remove UI-pinned @netlify/plugin-nextjs so Netlify auto-applies OpenNext (no 4 KB Lambda env cap).
+ * Remove UI-pinned @netlify/plugin-nextjs so Netlify uses unpinned OpenNext (no 4 KB Lambda env cap).
  *
  * Symptom: build fails at lambda-env-guard with FEATURE_FLAGS ~9 KB on Lambda compatibility mode.
+ *
+ * After unpinning in UI, keep [[plugins]] package = "@netlify/plugin-nextjs" first in netlify.toml
+ * (unversioned) — disabling UI-only without netlify.toml leaves no ___netlify-server-handler.
  *
  * Usage (from RedDirt/):
  *   NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... node scripts/netlify-unpin-nextjs-runtime.cjs

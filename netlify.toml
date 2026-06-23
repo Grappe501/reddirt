@@ -45,11 +45,14 @@
   # Candidate iPad 11" — bottom nav, touch targets, copilot sheet (set false on staff-only builds)
   NEXT_PUBLIC_CANDIDATE_IPAD_MODE = "true"
 
-# Next.js runtime: do NOT pin [[plugins]] @netlify/plugin-nextjs here — Netlify auto-applies
-# the latest OpenNext adapter (modern Functions runtime, no 4 KB Lambda env cap).
-# Pinning in netlify.toml opts out of automatic runtime updates and can leave the site on
-# Lambda compatibility mode where FEATURE_FLAGS (~9 KB) alone breaks ___netlify-server-handler deploy.
-# Custom plugins below still run after the auto-injected Next adapter (onPostBuild order).
+# Next.js OpenNext adapter — must run before custom onPostBuild plugins (handler packaging).
+# Do NOT pin a version in package.json; Netlify installs latest on each build.
+# Do NOT UI-pin an old @netlify/plugin-nextjs (Lambda compat / 4 KB env cap).
+# If UI plugin was disabled via netlify:unpin-nextjs-runtime, keep this entry — disabling
+# UI-only without netlify.toml leaves no ___netlify-server-handler (prune plugin fails).
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[plugins]]
   package = "./netlify/plugins/prune-server-handler"
