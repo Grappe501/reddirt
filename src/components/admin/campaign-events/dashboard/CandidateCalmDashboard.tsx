@@ -101,7 +101,7 @@ function HomeView({
         </section>
       ) : (
         <section className="rounded-2xl border border-emerald-200/60 bg-emerald-50/80 px-5 py-4">
-          <p className="font-heading text-lg font-bold text-emerald-950">You're clear for now</p>
+          <p className="font-heading text-lg font-bold text-emerald-950">You&apos;re clear for now</p>
           <p className="mt-1 text-sm text-emerald-900/90">
             No pending approvals in the queue. Open a layer below when you want schedule, travel, or field context.
           </p>
