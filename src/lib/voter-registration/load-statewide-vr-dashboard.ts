@@ -320,7 +320,11 @@ export async function loadStatewideVrDashboard(): Promise<StatewideVrDashboardPa
       .filter(isRegistrationIntakeCandidate)
       .map((row) => ({ ...row, registrationSignals: registrationIntakeSignals(row) }));
     const pendingRegIntake = registrationIntake.filter(
-      (r) => r.pipelineStage === "pending" || r.pipelineStage === "in_review",
+      (r) =>
+        r.pipelineStage === "PENDING" ||
+        r.pipelineStage === "IN_REVIEW" ||
+        r.pipelineStage === "PLACED" ||
+        r.pipelineStage === "ONBOARDING",
     ).length;
 
     return {
@@ -380,7 +384,11 @@ export async function loadStatewideVrDashboard(): Promise<StatewideVrDashboardPa
       }));
 
     const pendingRegIntake = registrationIntake.filter(
-      (r) => r.pipelineStage === "pending" || r.pipelineStage === "in_review",
+      (r) =>
+        r.pipelineStage === "PENDING" ||
+        r.pipelineStage === "IN_REVIEW" ||
+        r.pipelineStage === "PLACED" ||
+        r.pipelineStage === "ONBOARDING",
     ).length;
 
     const stats = {

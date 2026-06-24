@@ -11,6 +11,10 @@ const APP = path.join(ROOT, "src", "app");
 
 const SCAN_DIRS = [
   "src/lib/volunteers",
+  "src/lib/volunteers/ops-work-items",
+  "src/lib/volunteers/volunteer-lifecycle",
+  "src/app/admin/(board)/my-work",
+  "src/app/election-plan/(portal)/operators/my-work",
   "src/lib/coalition",
   "src/lib/events",
   "src/lib/voter-registration",

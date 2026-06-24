@@ -4,16 +4,23 @@ import { prisma } from "@/lib/db";
 import { isDatabaseConfigured } from "@/lib/env";
 import { getVolunteerLeaderRoster } from "@/lib/volunteers/leader-roster";
 import { readIntakePlacementMetadata } from "@/lib/volunteers/contact-spine/metadata";
+import {
+  LIFECYCLE_PIPELINE,
+  readVolunteerLifecycleStage,
+  type VolunteerLifecycleStage,
+} from "@/lib/volunteers/volunteer-lifecycle";
 
 /** Public form sources that feed the volunteer activation pipeline. */
 export const VOLUNTEER_INTAKE_SOURCES = ["volunteer", "join_movement", "local_team"] as const;
 
-export type VolunteerIntakePipelineStage = "pending" | "in_review" | "activated" | "closed";
+export type VolunteerIntakePipelineStage = VolunteerLifecycleStage;
 
 export type VolunteerIntakeQueueRow = {
   id: string;
   status: WorkflowIntakeStatus;
-  pipelineStage: VolunteerIntakePipelineStage;
+  lifecycleStage: VolunteerLifecycleStage;
+  /** @deprecated use lifecycleStage */
+  pipelineStage: VolunteerLifecycleStage;
   title: string | null;
   source: string | null;
   createdAt: string;
@@ -59,18 +66,15 @@ export type VolunteerIntakeDashboardPayload = {
     signupSheetPending: number;
     profilesTotal: number;
   };
-  pipeline: Array<{ stage: VolunteerIntakePipelineStage; label: string; count: number; description: string }>;
+  pipeline: Array<{ stage: VolunteerLifecycleStage; label: string; count: number; description: string }>;
   queue: VolunteerIntakeQueueRow[];
 };
 
 const isRecord = (v: unknown): v is Record<string, unknown> =>
   typeof v === "object" && v !== null && !Array.isArray(v);
 
-function pipelineStage(status: WorkflowIntakeStatus): VolunteerIntakePipelineStage {
-  if (status === "PENDING") return "pending";
-  if (status === "IN_REVIEW" || status === "AWAITING_INFO" || status === "READY_FOR_CALENDAR") return "in_review";
-  if (status === "CONVERTED") return "activated";
-  return "closed";
+function pipelineStage(metadata: unknown, status: WorkflowIntakeStatus): VolunteerLifecycleStage {
+  return readVolunteerLifecycleStage(metadata, status);
 }
 
 function metaString(meta: Record<string, unknown>, key: string): string | null {
@@ -106,12 +110,7 @@ const EMPTY: VolunteerIntakeDashboardPayload = {
     signupSheetPending: 0,
     profilesTotal: 0,
   },
-  pipeline: [
-    { stage: "pending", label: "Pending review", count: 0, description: "New public form submissions" },
-    { stage: "in_review", label: "In review", count: 0, description: "Operator assigned — placement in progress" },
-    { stage: "activated", label: "Activated", count: 0, description: "Converted — workbench unlocked or team provisioned" },
-    { stage: "closed", label: "Closed", count: 0, description: "Declined or archived" },
-  ],
+  pipeline: LIFECYCLE_PIPELINE.map((step) => ({ ...step, count: 0 })),
   queue: [],
 };
 
@@ -174,32 +173,20 @@ export async function loadVolunteerIntakeDashboard(): Promise<VolunteerIntakeDas
       profilesTotal,
     };
 
-    const pipeline = [
-      {
-        stage: "pending" as const,
-        label: "Pending review",
-        count: stats.pending,
-        description: "New website sign-ups awaiting first operator touch",
-      },
-      {
-        stage: "in_review" as const,
-        label: "In review",
-        count: stats.inReview + stats.awaitingInfo + (statusCount.get("READY_FOR_CALENDAR") ?? 0),
-        description: "Operator reviewing skills, geography, and placement options",
-      },
-      {
-        stage: "activated" as const,
-        label: "Activated",
-        count: stats.activated,
-        description: "Marked converted — volunteer profile and team path confirmed",
-      },
-      {
-        stage: "closed" as const,
-        label: "Closed",
-        count: stats.declined,
-        description: "Declined or archived — no further activation work",
-      },
-    ];
+    const lifecycleCounts = new Map<VolunteerLifecycleStage, number>(
+      LIFECYCLE_PIPELINE.map((s) => [s.stage, 0]),
+    );
+    for (const row of intakes) {
+      const stage = pipelineStage(row.metadata, row.status);
+      lifecycleCounts.set(stage, (lifecycleCounts.get(stage) ?? 0) + 1);
+    }
+
+    const pipeline = LIFECYCLE_PIPELINE.map((step) => ({
+      stage: step.stage,
+      label: step.label,
+      count: lifecycleCounts.get(step.stage) ?? 0,
+      description: step.description,
+    }));
 
     const queue: VolunteerIntakeQueueRow[] = intakes.map((row) => {
       const meta = isRecord(row.metadata) ? row.metadata : {};
@@ -213,7 +200,8 @@ export async function loadVolunteerIntakeDashboard(): Promise<VolunteerIntakeDas
       return {
         id: row.id,
         status: row.status,
-        pipelineStage: pipelineStage(row.status),
+        lifecycleStage: pipelineStage(row.metadata, row.status),
+        pipelineStage: pipelineStage(row.metadata, row.status),
         title: row.title,
         source: row.source,
         createdAt: row.createdAt.toISOString(),

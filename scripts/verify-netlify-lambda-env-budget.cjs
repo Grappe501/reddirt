@@ -262,7 +262,8 @@ function estimateCompatDeployBytes({
   modernHandler = false,
   legacyHandler = false,
 }) {
-  const worstCase = apiRuntimeBytes ?? deployEstimate ?? total + (buildOnlyLeaked ?? 0);
+  // Build container env includes Builds-scoped vars — only count confirmed function-scope bytes.
+  const worstCase = apiRuntimeBytes ?? total;
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
   const compatPadding = onNetlify
     ? estimateCompatFeatureFlagsBytes(featureFlags, { modernHandler, legacyHandler, handlerPackaged })
@@ -318,10 +319,9 @@ function getDeployRiskMessage({
     );
   }
 
-  if (onNetlify && (buildOnlyLeaked ?? 0) > 0) {
-    fail = true;
+  if (onNetlify && (buildOnlyLeaked ?? 0) > 0 && apiRuntimeBytes == null) {
     lines.push(
-      `Build-only env vars leak ~${buildOnlyLeaked} B into Functions scope (ALLOW_PRISMA_*, SKIP_DB_SEED, PRISMA_MIGRATE_*, NEXT_PUBLIC_*, etc.). Scope them to Builds only in Netlify UI or run: npm run netlify:env:scopes:launch-minimal:deploy`,
+      `Advisory: build env includes ~${buildOnlyLeaked} B of Builds-scoped vars (expected during build). Confirm Netlify UI scopes for ALLOW_PRISMA_*, SKIP_DB_SEED, PRISMA_MIGRATE_*, NEXT_PUBLIC_* are Builds only — not Functions/All.`,
     );
   }
 

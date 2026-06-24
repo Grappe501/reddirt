@@ -293,7 +293,11 @@ export async function loadCoalitionLaneDashboard(): Promise<CoalitionLaneDashboa
         detailHref: `/election-plan/operators/coalition-command?intake=${row.id}`,
       }));
     coalitionIntakePending = coalitionIntake.filter(
-      (r) => r.pipelineStage === "pending" || r.pipelineStage === "in_review",
+      (r) =>
+        r.pipelineStage === "PENDING" ||
+        r.pipelineStage === "IN_REVIEW" ||
+        r.pipelineStage === "PLACED" ||
+        r.pipelineStage === "ONBOARDING",
     ).length;
   } catch (e) {
     console.error("[loadCoalitionLaneDashboard] intake", e);

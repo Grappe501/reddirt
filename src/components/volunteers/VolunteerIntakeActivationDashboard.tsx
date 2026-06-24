@@ -1,12 +1,16 @@
 import Link from "next/link";
 
 import {
-  markVolunteerIntakeActivatedAction,
   markVolunteerIntakeAwaitingInfoAction,
   markVolunteerIntakeDeclinedAction,
   markVolunteerIntakeInReviewAction,
+  markVolunteerIntakeOnboardingAction,
+  markVolunteerIntakePlacedAction,
+  markVolunteerIntakeActivatedAction,
+  markVolunteerLeaderCandidateAction,
   placeAndActivateVolunteerIntakeAction,
 } from "@/app/election-plan/operators/volunteer-intake-actions";
+import { LIFECYCLE_STAGE_LABELS } from "@/lib/volunteers/volunteer-lifecycle";
 import type {
   VolunteerIntakeDashboardPayload,
   VolunteerIntakePlacementLeaderOption,
@@ -24,10 +28,21 @@ const STATUS_LABEL: Record<string, string> = {
 };
 
 function statusBadgeClass(status: string): string {
-  if (status === "PENDING") return "bg-amber-50 text-amber-950 ring-amber-200";
-  if (status === "IN_REVIEW" || status === "AWAITING_INFO") return "bg-sky-50 text-sky-950 ring-sky-200";
-  if (status === "CONVERTED") return "bg-emerald-50 text-emerald-950 ring-emerald-200";
+  if (status === "AWAITING_INFO") return "bg-sky-50/80 text-sky-900 ring-sky-200";
+  if (status === "READY_FOR_CALENDAR") return "bg-violet-50/80 text-violet-900 ring-violet-200";
+  if (status === "CONVERTED") return "bg-emerald-50/80 text-emerald-900 ring-emerald-200";
   if (status === "DECLINED" || status === "ARCHIVED") return "bg-[var(--ep-cream)] text-[var(--ep-navy-muted)] ring-[var(--ep-navy)]/10";
+  return "bg-white text-[var(--ep-navy-muted)] ring-[var(--ep-navy)]/10";
+}
+
+function lifecycleBadgeClass(stage: string): string {
+  if (stage === "PENDING") return "bg-amber-50 text-amber-950 ring-amber-200";
+  if (stage === "IN_REVIEW") return "bg-sky-50 text-sky-950 ring-sky-200";
+  if (stage === "PLACED") return "bg-violet-50 text-violet-950 ring-violet-200";
+  if (stage === "ONBOARDING") return "bg-indigo-50 text-indigo-950 ring-indigo-200";
+  if (stage === "ACTIVE") return "bg-emerald-50 text-emerald-950 ring-emerald-200";
+  if (stage === "LEADER_CANDIDATE") return "bg-teal-50 text-teal-950 ring-teal-200";
+  if (stage === "ARCHIVED") return "bg-[var(--ep-cream)] text-[var(--ep-navy-muted)] ring-[var(--ep-navy)]/10";
   return "bg-[var(--ep-cream)] text-[var(--ep-navy-muted)] ring-[var(--ep-navy)]/10";
 }
 
@@ -63,7 +78,10 @@ function DetailPanel({
             {sourceLabel(row.source)} · submitted {formatWhen(row.createdAt)}
           </p>
         </div>
-        <span className={`rounded-full px-3 py-1 text-xs font-bold uppercase ring-1 ${statusBadgeClass(row.status)}`}>
+        <span className={`rounded-full px-3 py-1 text-xs font-bold uppercase ring-1 ${lifecycleBadgeClass(row.lifecycleStage)}`}>
+          {LIFECYCLE_STAGE_LABELS[row.lifecycleStage] ?? row.lifecycleStage}
+        </span>
+        <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase ring-1 ${statusBadgeClass(row.status)}`}>
           {STATUS_LABEL[row.status] ?? row.status}
         </span>
       </div>
@@ -134,11 +152,11 @@ function DetailPanel({
         </div>
       </dl>
 
-      {row.status !== "CONVERTED" && row.status !== "DECLINED" && row.status !== "ARCHIVED" ? (
+      {row.lifecycleStage !== "ARCHIVED" && row.lifecycleStage !== "ONBOARDING" && row.lifecycleStage !== "ACTIVE" ? (
         <form action={placeAndActivateVolunteerIntakeAction} className="mt-6 rounded-xl border border-emerald-200/60 bg-emerald-50/40 p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-emerald-900">Phase 1 · Place & activate</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-emerald-900">Place & onboard</p>
           <p className="mt-1 text-sm text-emerald-950">
-            Creates a RelationalContact, adds to leader team roster, and marks intake activated.
+            Creates a RelationalContact, adds to leader team roster, and advances lifecycle to onboarding.
           </p>
           <input type="hidden" name="intakeId" value={row.id} />
           <label className="mt-3 block text-sm">
@@ -167,51 +185,61 @@ function DetailPanel({
             type="submit"
             className="mt-4 rounded-full bg-emerald-800 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white"
           >
-            Place & activate → CRM
+            Place & onboard → CRM
           </button>
         </form>
       ) : null}
 
       <div className="mt-6 flex flex-wrap gap-2">
+        <p className="w-full text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Lifecycle transitions</p>
         <form action={markVolunteerIntakeInReviewAction}>
           <input type="hidden" name="intakeId" value={row.id} />
-          <button
-            type="submit"
-            className="rounded-full bg-[var(--ep-navy)] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white"
-          >
+          <button type="submit" className="rounded-full bg-[var(--ep-navy)] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">
             In review
           </button>
         </form>
-        <form action={markVolunteerIntakeAwaitingInfoAction}>
+        <form action={markVolunteerIntakePlacedAction}>
           <input type="hidden" name="intakeId" value={row.id} />
-          <button
-            type="submit"
-            className="rounded-full border border-[var(--ep-navy)]/20 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)]"
-          >
-            Awaiting info
+          <button type="submit" className="rounded-full border border-violet-300 bg-violet-50 px-4 py-2 text-xs font-bold uppercase tracking-wide text-violet-950">
+            Placed
+          </button>
+        </form>
+        <form action={markVolunteerIntakeOnboardingAction}>
+          <input type="hidden" name="intakeId" value={row.id} />
+          <button type="submit" className="rounded-full border border-indigo-300 bg-indigo-50 px-4 py-2 text-xs font-bold uppercase tracking-wide text-indigo-950">
+            Onboarding
           </button>
         </form>
         <form action={markVolunteerIntakeActivatedAction}>
           <input type="hidden" name="intakeId" value={row.id} />
-          <button
-            type="submit"
-            className="rounded-full bg-emerald-700 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white"
-          >
-            Mark activated
+          <button type="submit" className="rounded-full bg-emerald-700 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white">
+            Active
+          </button>
+        </form>
+        <form action={markVolunteerLeaderCandidateAction}>
+          <input type="hidden" name="intakeId" value={row.id} />
+          <button type="submit" className="rounded-full border border-teal-300 bg-teal-50 px-4 py-2 text-xs font-bold uppercase tracking-wide text-teal-950">
+            Leader candidate
+          </button>
+        </form>
+        <form action={markVolunteerIntakeAwaitingInfoAction}>
+          <input type="hidden" name="intakeId" value={row.id} />
+          <button type="submit" className="rounded-full border border-[var(--ep-navy)]/20 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)]">
+            Awaiting info
           </button>
         </form>
         <form action={markVolunteerIntakeDeclinedAction}>
           <input type="hidden" name="intakeId" value={row.id} />
-          <button
-            type="submit"
-            className="rounded-full border border-red-200 bg-red-50 px-4 py-2 text-xs font-bold uppercase tracking-wide text-red-900"
-          >
-            Decline
+          <button type="submit" className="rounded-full border border-red-200 bg-red-50 px-4 py-2 text-xs font-bold uppercase tracking-wide text-red-900">
+            Archive / decline
           </button>
         </form>
       </div>
 
-      <div className="mt-6 flex flex-wrap gap-4 text-xs font-semibold">
+      <div className="mt-4 flex flex-wrap gap-4 text-xs font-semibold">
+        <Link href="/election-plan/operators/my-work" className="text-[var(--ep-blue)] hover:underline">
+          My Work — lifecycle tasks →
+        </Link>
         <Link href="/election-plan/operators/leaders/command" className="text-[var(--ep-blue)] hover:underline">
           Leader command — assign placement →
         </Link>
@@ -260,7 +288,11 @@ export function VolunteerIntakeActivationDashboard({
 
         {notice === "placed" ? (
           <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
-            Intake placed — RelationalContact and team roster updated.
+            Intake placed — RelationalContact created and lifecycle advanced to onboarding.
+          </div>
+        ) : notice === "lifecycle" ? (
+          <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
+            Lifecycle stage updated — check My Work for any new follow-up tasks.
           </div>
         ) : notice ? (
           <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
@@ -275,11 +307,13 @@ export function VolunteerIntakeActivationDashboard({
                 ? "Select a placement leader before activating."
                 : error === "spine"
                   ? "Could not create CRM contact — check database migration and try again."
-                  : "Could not complete that action — try again or use admin workbench."}
+                  : error === "transition"
+                ? "That lifecycle transition is not allowed from the current stage."
+                : "Could not complete that action — try again or use admin workbench."}
           </div>
         ) : null}
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
           {payload.pipeline.map((step) => (
             <div
               key={step.stage}
@@ -307,7 +341,7 @@ export function VolunteerIntakeActivationDashboard({
           <table className="min-w-full text-left text-sm">
             <thead className="border-b border-[var(--ep-navy)]/10 bg-[var(--ep-cream)]/60 text-xs uppercase tracking-wide text-[var(--ep-navy-muted)]">
               <tr>
-                <th className="px-4 py-3 font-semibold">Status</th>
+                <th className="px-4 py-3 font-semibold">Lifecycle</th>
                 <th className="px-4 py-3 font-semibold">Name</th>
                 <th className="px-4 py-3 font-semibold">Source</th>
                 <th className="px-4 py-3 font-semibold">County / city</th>
@@ -322,9 +356,9 @@ export function VolunteerIntakeActivationDashboard({
                 <tr key={row.id} className={selectedIntakeId === row.id ? "bg-[var(--ep-gold)]/10" : "hover:bg-[var(--ep-cream)]/30"}>
                   <td className="px-4 py-3">
                     <span
-                      className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ring-1 ${statusBadgeClass(row.status)}`}
+                      className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ring-1 ${lifecycleBadgeClass(row.lifecycleStage)}`}
                     >
-                      {STATUS_LABEL[row.status] ?? row.status}
+                      {LIFECYCLE_STAGE_LABELS[row.lifecycleStage] ?? row.lifecycleStage}
                     </span>
                   </td>
                   <td className="px-4 py-3 font-semibold text-[var(--ep-navy)]">{row.userName ?? row.title ?? "—"}</td>
@@ -363,9 +397,12 @@ export function VolunteerIntakeActivationDashboard({
           <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Activation playbook</h2>
           <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-[var(--ep-navy-muted)]">
             <li>Public form POST creates User, Submission, WorkflowIntake, and VolunteerProfile (volunteer form).</li>
-            <li>Review geography and preferred role — mark <strong>In review</strong> on first operator touch.</li>
-            <li>Place on a county or city workbench via Leader command; confirm solo team slug when provisioned.</li>
-            <li>Mark <strong>Activated</strong> when the volunteer can access their workbench path.</li>
+            <li>
+              Move through lifecycle: <strong>Pending → In review → Placed → Onboarding → Active</strong> (leader candidate when
+              flagged).
+            </li>
+            <li>Use <strong>Place & onboard</strong> to create CRM contact and team roster in one step.</li>
+            <li>Lifecycle transitions auto-create tasks in <Link href="/election-plan/operators/my-work" className="text-[var(--ep-blue)] underline">My Work</Link>.</li>
             <li>Paper signup sheets use the separate admin OCR path — link above when applicable.</li>
           </ol>
         </section>
