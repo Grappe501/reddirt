@@ -193,7 +193,7 @@ export async function loadCampaignProjectBoard(
 }
 
 async function uniqueSlug(base: string): Promise<string> {
-  let slug = base || "project";
+  const slug = base || "project";
   let n = 0;
   while (true) {
     const candidate = n === 0 ? slug : `${slug}-${n}`;
