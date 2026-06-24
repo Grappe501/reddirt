@@ -424,6 +424,7 @@
         { "label": "Fundraising operating system", "href": "/election-plan/executive-book/fundraising-operating-system", "description": "Statewide fundraising lanes and opportunity rollups" },
         { "label": "Fundraising opportunities", "href": "/election-plan/executive-book/fundraising-opportunities", "description": "House parties, sponsors, grassroots events, coalition fundraising" },
         { "label": "Budget dashboard", "href": "/election-plan/executive-book/budget/dashboard", "description": "Finance inner circle — campaign budget framework and targets" },
+        { "label": "Grassroots fundraising settlement", "href": "/election-plan/operators/grassroots-fundraising-settlement", "description": "Commission registry and GoodChange attribution — internal only" },
         { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Lane checklist, reports, and compliance tools" },
         { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
       ]
@@ -457,6 +458,7 @@
         { "label": "Freshman week readiness", "href": "/election-plan/campuses/freshman-week", "description": "Move-in and orientation activation windows" },
         { "label": "Students for Arkansas · Executive Book", "href": "/election-plan/executive-book/students-for-arkansas", "description": "Chapter 9 doctrine — co-chair responsibilities and milestones" },
         { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and recruiter tree" },
+        { "label": "Grassroots settlement (internal)", "href": "/election-plan/operators/grassroots-fundraising-settlement", "description": "Attribution keys and commission rollup — operator only" },
         { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Mobilize, run of show, and campus event command" },
         { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" }
       ]

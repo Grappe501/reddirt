@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "internalOnly": true,
+  "note": "Operator-only downline links and staging gifts — no donor PII. GoodChange CSV overrides staging when present.",
+  "legalBanner": "Internal attribution math only — treasurer and counsel must approve any commission or incentive payout before funds move.",
+  "downlineLinks": [],
+  "stagingGifts": []
+}

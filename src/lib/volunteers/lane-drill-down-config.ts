@@ -357,6 +357,14 @@ const BASE: Record<VolunteerTeamLaneId, Omit<LaneDrillDownPage, "laneId">> = {
           kind: "report",
           priority: "medium",
         },
+        {
+          id: "grassroots-settlement",
+          title: "Grassroots settlement (internal)",
+          href: "/election-plan/operators/grassroots-fundraising-settlement",
+          description: "Commission registry and GoodChange attribution — finance only.",
+          kind: "report",
+          priority: "low",
+        },
       ],
     },
     tools: {

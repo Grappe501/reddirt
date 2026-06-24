@@ -11,7 +11,7 @@ import {
   getVolunteerHubPassword,
   verifyVolunteerSessionToken,
 } from "@/lib/volunteers/auth/session";
-import { canAccessVolunteerIntakeOps, getVolunteerLeaderBySlug, canAccessCommsCommand, canAccessVoterRegistrationCommand, canAccessEventsCommand, canAccessCoalitionCommand, canAccessLaneCoverageCommand } from "@/lib/volunteers/leader-roster";
+import { canAccessVolunteerIntakeOps, getVolunteerLeaderBySlug, canAccessCommsCommand, canAccessVoterRegistrationCommand, canAccessEventsCommand, canAccessCoalitionCommand, canAccessLaneCoverageCommand, canAccessGrassrootsFundraisingSettlement } from "@/lib/volunteers/leader-roster";
 
 export type PortalAuthMode = "election-plan" | "volunteer-leader" | "dev-open";
 
@@ -55,6 +55,11 @@ export function isLaneCoverageOpsPath(pathname: string): boolean {
   return path === "/election-plan/operators/lane-coverage";
 }
 
+export function isGrassrootsFundraisingSettlementOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/grassroots-fundraising-settlement";
+}
+
 export function isLeaderWorkbenchSignInPath(pathname: string): boolean {
   const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
   return path === "/election-plan/operators/leaders/sign-in";
@@ -85,6 +90,7 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
   const coalitionCommandOps = isCoalitionCommandOpsPath(pathname);
   const leaderDashboardOps = isLeaderDashboardOpsPath(pathname);
   const laneCoverageOps = isLaneCoverageOpsPath(pathname);
+  const grassrootsSettlementOps = isGrassrootsFundraisingSettlementOpsPath(pathname);
   const operatorDashboard =
     volunteerIntakeOps ||
     commsCommandOps ||
@@ -92,7 +98,8 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
     eventsCommandOps ||
     coalitionCommandOps ||
     leaderDashboardOps ||
-    laneCoverageOps;
+    laneCoverageOps ||
+    grassrootsSettlementOps;
 
   if (epSecret) {
     const epToken = jar.get(ELECTION_PLAN_SESSION_COOKIE)?.value;
@@ -114,6 +121,7 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
       if (leader && coalitionCommandOps && canAccessCoalitionCommand(leader)) return "volunteer-leader";
       if (leader && leaderDashboardOps) return "volunteer-leader";
       if (leader && laneCoverageOps && canAccessLaneCoverageCommand(leader)) return "volunteer-leader";
+      if (leader && grassrootsSettlementOps && canAccessGrassrootsFundraisingSettlement(leader)) return "volunteer-leader";
     }
     redirect(`/election-plan/operators/leaders/sign-in?next=${encodeURIComponent(pathname)}`);
   }

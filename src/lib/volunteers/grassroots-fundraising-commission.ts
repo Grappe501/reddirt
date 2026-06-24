@@ -63,3 +63,66 @@ export function resolveGrassrootsFundraisingCommissionBySlug(
   if (!leader) return null;
   return resolveGrassrootsFundraisingCommission(leader);
 }
+
+export function getGrassrootsFundraisingCommissionConfig() {
+  return {
+    internalOnly: registry.internalOnly,
+    defaultFieldFundraiserDirectPercent: registry.defaultFieldFundraiserDirectPercent,
+    grassrootsFundraisingLeadDirectPercent: registry.grassrootsFundraisingLeadDirectPercent,
+    grassrootsFundraisingLeadDownlineOverridePercent: registry.grassrootsFundraisingLeadDownlineOverridePercent,
+    leadSlugs: registry.grassrootsFundraisingLeadSlugs,
+  };
+}
+
+function normalizeAttributionToken(raw: string): string {
+  return raw.trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+/** Match GoodChange fundraiser column or tracked-link ref to a roster leader. */
+export function matchGrassrootsFundraisingAttribution(
+  raw: string,
+  leaders: VolunteerLeader[],
+): { leader: VolunteerLeader; profile: GrassrootsFundraisingCommissionProfile } | null {
+  const token = normalizeAttributionToken(raw);
+  if (!token) return null;
+
+  for (const leader of leaders) {
+    const profile = resolveGrassrootsFundraisingCommission(leader);
+    const slugCompact = leader.slug.replace(/-/g, "");
+    const initials = leader.initials.trim().toLowerCase();
+    if (
+      profile.attributionKey === token ||
+      initials === token ||
+      slugCompact === token ||
+      leader.slug === token
+    ) {
+      return { leader, profile };
+    }
+  }
+
+  return null;
+}
+
+export function listGrassrootsFundraisingCommissionLeaders(
+  leaders: VolunteerLeader[],
+): Array<{ leader: VolunteerLeader; profile: GrassrootsFundraisingCommissionProfile; isOpenSlot: boolean }> {
+  return leaders
+    .filter((leader) => isGrassrootsFundraisingLead(leader) || registry.grassrootsFundraisingLeadSlugs.includes(leader.slug))
+    .map((leader) => ({
+      leader,
+      profile: resolveGrassrootsFundraisingCommission(leader),
+      isOpenSlot: Boolean(leader.leaderRosterSignInHidden || leader.displayName.startsWith("Open —")),
+    }))
+    .sort((a, b) => {
+      if (a.isOpenSlot !== b.isOpenSlot) return a.isOpenSlot ? 1 : -1;
+      return a.leader.displayName.localeCompare(b.leader.displayName);
+    });
+}
+
+export function computeDirectCommissionCents(netCents: number, directPercent: number): number {
+  return Math.round((netCents * directPercent) / 100);
+}
+
+export function computeOverrideCommissionCents(netCents: number, overridePercent: number): number {
+  return Math.round((netCents * overridePercent) / 100);
+}

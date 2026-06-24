@@ -92,6 +92,17 @@ export function ElectionPlanOperatorsHubPanel() {
       </Link>
 
       <Link
+        href="/election-plan/operators/grassroots-fundraising-settlement"
+        className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Finance · internal</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">Grassroots fundraising settlement</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Commission registry, QR attribution keys, and GoodChange gift matching — treasurer approval required.
+        </p>
+      </Link>
+
+      <Link
         href="/election-plan/operators/leaders"
         className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
       >
