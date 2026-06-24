@@ -191,8 +191,43 @@
       "slug": "lisa-holloway",
       "displayName": "Lisa Holloway",
       "initials": "LHO",
-      "teamLanes": ["county"],
-      "connections": [{ "kind": "county", "county": "Cleburne", "countySlug": "cleburne", "label": "Cleburne County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader", "fundraising_workbench"],
+      "teamLanes": ["county", "fundraising", "events"],
+      "connections": [
+        { "kind": "county", "county": "Cleburne", "countySlug": "cleburne", "label": "Cleburne County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/cleburne",
+          "label": "Cleburne County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "Cleburne County in the north_central Ozarks cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/cleburne",
+          "label": "Cleburne County fundraising lane",
+          "description": "County playbook — grassroots events and donor follow-up"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, and grassroots event doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Cleburne County workbenches"
+        }
+      ],
+      "notes": "Cleburne County lead · fundraising team."
     },
     {
       "slug": "lela-chism",
@@ -507,10 +542,45 @@
     },
     {
       "slug": "judy-harrison",
-      "displayName": "Judy Harrison",
+      "displayName": "Dr. Judy Harrison",
       "initials": "JHA",
-      "teamLanes": ["county"],
-      "connections": [{ "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader", "fundraising_workbench"],
+      "teamLanes": ["county", "fundraising", "events"],
+      "connections": [
+        { "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/clark",
+          "label": "Clark County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/southwest-arkansas",
+          "label": "Southwest Arkansas region",
+          "description": "Clark County — Hot Springs & Ouachita cluster geography"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/clark",
+          "label": "Clark County fundraising lane",
+          "description": "County playbook — grassroots events and donor follow-up"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, and grassroots event doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Clark County workbenches"
+        }
+      ],
+      "notes": "Clark County lead · fundraising team."
     },
     {
       "slug": "jay-powell",
@@ -629,8 +699,37 @@
       "slug": "carol-hutto",
       "displayName": "Carol Hutto",
       "initials": "CHU",
-      "teamLanes": ["county"],
-      "connections": [{ "kind": "county", "county": "Van Buren", "countySlug": "van-buren", "label": "Van Buren County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Van Buren", "countySlug": "van-buren", "label": "Van Buren County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/van-buren",
+          "label": "Van Buren County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "Van Buren County in the north_central Ozarks cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Van Buren County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Van Buren County workbenches"
+        }
+      ],
+      "notes": "Van Buren County lead."
     },
     {
       "slug": "brook-linson",
@@ -932,12 +1031,46 @@
       "slug": "terry-coleman",
       "displayName": "Terry Coleman",
       "initials": "TCO",
-      "teamLanes": ["county"],
+      "workbenchTier": "cluster",
+      "workbenchTemplates": ["cluster_leader"],
+      "teamLanes": ["county", "events", "operations"],
       "connections": [
         { "kind": "county", "county": "Conway", "countySlug": "conway", "label": "Conway County playbook" },
         { "kind": "county", "county": "Menifee", "countySlug": "menifee", "label": "Menifee County playbook" },
-        { "kind": "city", "citySlug": "conway", "label": "Conway city brief" }
-      ]
+        { "kind": "county", "county": "Perry", "countySlug": "perry", "label": "Perry County playbook" },
+        { "kind": "city", "citySlug": "morrilton", "label": "Morrilton community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/conway",
+          "label": "Conway County command",
+          "description": "Cluster anchor county — playbook drill-down and leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/river-valley",
+          "label": "River Valley region",
+          "description": "Conway County cluster — Morrilton anchor and adjacent counties"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/morrilton",
+          "label": "Morrilton city strategy",
+          "description": "Conway County seat — priority city brief"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots across the Conway cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across nested workbenches"
+        }
+      ],
+      "notes": "Conway County cluster leader — Conway, Menifee, and Perry counties."
     },
     {
       "slug": "dianne-vanessa",
@@ -1049,21 +1182,272 @@
       "initials": "ECH",
       "isCouple": true,
       "workbenchTier": "cluster",
-      "teamLanes": ["county", "coalition"],
+      "grassrootsFundraisingLead": true,
+      "workbenchTemplates": ["cluster_leader", "finance_inner_circle", "fundraising_field_leader", "fundraising_workbench"],
+      "teamLanes": ["county", "coalition", "fundraising", "events", "operations"],
       "connections": [
+        { "kind": "county", "county": "Nevada", "countySlug": "nevada", "label": "Nevada County playbook" },
+        { "kind": "county", "county": "Columbia", "countySlug": "columbia", "label": "Columbia County playbook" },
         { "kind": "county", "county": "Lafayette", "countySlug": "lafayette", "label": "Lafayette County playbook" },
-        { "kind": "program", "programSlug": "southern-arkansas", "label": "Southern Arkansas regional hub" }
-      ]
+        { "kind": "county", "county": "Ouachita", "countySlug": "ouachita", "label": "Ouachita County playbook" },
+        { "kind": "county", "county": "Union", "countySlug": "union", "label": "Union County playbook" },
+        { "kind": "county", "county": "Miller", "countySlug": "miller", "label": "Miller County playbook" },
+        { "kind": "county", "county": "Hempstead", "countySlug": "hempstead", "label": "Hempstead County playbook" },
+        { "kind": "program", "programSlug": "southern-arkansas", "label": "Southern Arkansas regional hub" },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/southwest-arkansas",
+          "label": "Southwest Arkansas region",
+          "description": "Southwest cluster — Nevada County anchor and surrounding counties"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/nevada",
+          "label": "Nevada County command",
+          "description": "Cluster anchor county playbook — Elaine Williams county lead nested below"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Fundraising leadership team — recruit county and city fundraisers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across the southwest cluster"
+        }
+      ],
+      "notes": "Southwest Arkansas cluster leaders (Nevada County anchor) · finance team · fundraising leadership team."
     },
     {
       "slug": "elaine-williams",
       "displayName": "Elaine Williams",
       "initials": "EWI",
-      "teamLanes": ["county", "coalition"],
+      "commandAccess": true,
+      "assistantCm": true,
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "coalition", "fundraising", "events", "operations"],
       "connections": [
         { "kind": "county", "county": "Nevada", "countySlug": "nevada", "label": "Nevada County playbook" },
-        { "kind": "program", "programSlug": "southern-arkansas", "label": "Southern Arkansas networking hub" }
-      ]
+        { "kind": "program", "programSlug": "southern-arkansas", "label": "Southern Arkansas networking hub" },
+        { "kind": "city", "citySlug": "prescott", "label": "Prescott community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/nevada",
+          "label": "Nevada County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/southwest-arkansas",
+          "label": "Southwest Arkansas region",
+          "description": "Nevada County — nested under Dunbar cluster leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Assistant CM flex — leaders, field operators, command until role is decided"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Nevada County workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/ethan-christie-dunbar",
+          "label": "Ethan & Christie Dunbar — cluster leaders",
+          "description": "Southwest cluster co-leads — Nevada County anchor geography"
+        }
+      ],
+      "notes": "Nevada County lead · assistant CM flex statewide until permanent role is decided."
+    },
+    {
+      "slug": "sandra-manning",
+      "displayName": "Sandra Manning",
+      "initials": "SMA",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Columbia", "countySlug": "columbia", "label": "Columbia County playbook" },
+        { "kind": "city", "citySlug": "magnolia", "label": "Magnolia community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/columbia",
+          "label": "Columbia County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/southwest-arkansas",
+          "label": "Southwest Arkansas region",
+          "description": "Columbia County in the southwest cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/magnolia",
+          "label": "Magnolia city strategy",
+          "description": "Columbia County seat — priority city brief"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Columbia County workbenches"
+        }
+      ],
+      "notes": "Columbia County lead."
+    },
+    {
+      "slug": "michael-w-myers",
+      "displayName": "Michael W. Myers",
+      "initials": "MWM",
+      "workbenchTier": "cluster",
+      "workbenchTemplates": ["cluster_leader"],
+      "teamLanes": ["county", "events", "fundraising", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Pike", "countySlug": "pike", "label": "Pike County playbook" },
+        { "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" },
+        { "kind": "county", "county": "Garland", "countySlug": "garland", "label": "Garland County playbook" },
+        { "kind": "county", "county": "Hot Spring", "countySlug": "hot-spring", "label": "Hot Spring County playbook" },
+        { "kind": "county", "county": "Montgomery", "countySlug": "montgomery", "label": "Montgomery County playbook" },
+        { "kind": "county", "county": "Nevada", "countySlug": "nevada", "label": "Nevada County playbook" },
+        { "kind": "county", "county": "Hempstead", "countySlug": "hempstead", "label": "Hempstead County playbook" },
+        { "kind": "county", "county": "Little River", "countySlug": "little-river", "label": "Little River County playbook" },
+        { "kind": "city", "citySlug": "murfreesboro", "label": "Murfreesboro community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pike",
+          "label": "Pike County command",
+          "description": "Cluster anchor county — playbook drill-down and leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/central-arkansas",
+          "label": "Central Arkansas region",
+          "description": "Hot Springs & Ouachita cluster — Pike County anchor"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/murfreesboro",
+          "label": "Murfreesboro city strategy",
+          "description": "Pike County seat — priority city brief"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots across the Pike cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across nested workbenches"
+        }
+      ],
+      "notes": "Hot Springs & Ouachita cluster leader — Pike County anchor."
+    },
+    {
+      "slug": "mark-london",
+      "displayName": "Mark London",
+      "initials": "MLO",
+      "commandAccess": true,
+      "assistantCm": true,
+      "workbenchTier": "assistant_campaign_manager",
+      "workbenchTemplates": ["fundraising_workbench"],
+      "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/election-plan",
+          "label": "Election Plan command",
+          "description": "Full campaign OS — counties, cities, workbenches, operators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Leader workbenches, field operators, command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "All program and city workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Fundraising team doctrine and opportunity ownership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, grassroots events, coalition fundraising"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Full roster heatmap and operator sync"
+        }
+      ],
+      "notes": "Fundraising team · full assistant CM flex statewide until permanent lane assignment."
+    },
+    {
+      "slug": "johnnie-roebuck",
+      "displayName": "Johnnie Roebuck",
+      "initials": "JRO",
+      "workbenchTemplates": ["finance_inner_circle"],
+      "teamLanes": ["fundraising", "operations"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Finance committee coordination and donor pipeline doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework and targets"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-operating-system",
+          "label": "Fundraising operating system",
+          "description": "Statewide fundraising lanes and opportunity rollups"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/fundraising",
+          "label": "Fundraising lane drill-down",
+          "description": "Lane checklist, compliance tools, and finance coordination"
+        }
+      ],
+      "notes": "Finance team — finance inner circle."
     }
   ]
 }
