@@ -4,7 +4,35 @@ import type { VolunteerLeader } from "@/lib/volunteers/types";
 export type LeaderWorkbenchTemplateId =
   | "youth_leadership"
   | "high_school_leadership"
-  | "hispanic_outreach_lead";
+  | "hispanic_outreach_lead"
+  | "volunteer_manager";
+
+export type LeaderTemplateToolLink = {
+  label: string;
+  href: string;
+  description: string;
+};
+
+export type LeaderWorkbenchTemplate = {
+  id: LeaderWorkbenchTemplateId;
+  label: string;
+  description: string;
+  coalitionSlug?: string;
+  locale?: string;
+  interimNotice?: string;
+  includes?: LeaderWorkbenchTemplateId[];
+  sections: LeaderTemplateSection[];
+  pathways: LeaderTemplatePathway[];
+  toolLinks?: LeaderTemplateToolLink[];
+};
+
+const registry = templatesFile as {
+  templates: Record<LeaderWorkbenchTemplateId, LeaderWorkbenchTemplate>;
+};
+
+export function getLeaderWorkbenchTemplate(id: LeaderWorkbenchTemplateId): LeaderWorkbenchTemplate {
+  return registry.templates[id];
+}
 
 export type LeaderTemplateSection = {
   id: string;
@@ -18,28 +46,19 @@ export type LeaderTemplatePathway = {
   labelEs?: string;
 };
 
-export type LeaderWorkbenchTemplate = {
-  id: LeaderWorkbenchTemplateId;
-  label: string;
-  description: string;
-  coalitionSlug?: string;
-  locale?: string;
-  includes?: LeaderWorkbenchTemplateId[];
-  sections: LeaderTemplateSection[];
-  pathways: LeaderTemplatePathway[];
-};
-
-const registry = templatesFile as {
-  templates: Record<LeaderWorkbenchTemplateId, LeaderWorkbenchTemplate>;
-};
-
-export function getLeaderWorkbenchTemplate(id: LeaderWorkbenchTemplateId): LeaderWorkbenchTemplate {
-  return registry.templates[id];
+export function hasVolunteerManagerRole(leader: VolunteerLeader): boolean {
+  return Boolean(
+    leader.volunteerManagerInterim || leader.workbenchTemplates?.includes("volunteer_manager"),
+  );
 }
 
 /** High school template includes all youth leadership sections. */
 export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): LeaderWorkbenchTemplate[] {
   const ids = new Set<LeaderWorkbenchTemplateId>();
+
+  if (leader.volunteerManagerInterim) {
+    ids.add("volunteer_manager");
+  }
 
   for (const id of leader.workbenchTemplates ?? []) {
     ids.add(id);
@@ -55,6 +74,7 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
   }
 
   const order: LeaderWorkbenchTemplateId[] = [
+    "volunteer_manager",
     "youth_leadership",
     "high_school_leadership",
     "hispanic_outreach_lead",

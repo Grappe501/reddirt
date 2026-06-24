@@ -23,7 +23,7 @@ export function getCommandAccessLeaders(): VolunteerLeader[] {
 
 /** Field roster table + sign-in list — excludes HQ-only command logins unless flex workbench. */
 export function countsInFieldLeaderRoster(leader: VolunteerLeader): boolean {
-  return !leader.commandAccess || Boolean(leader.assistantCm);
+  return !leader.commandAccess || Boolean(leader.assistantCm || leader.volunteerManagerInterim);
 }
 
 /** Full Operators shell: all lanes, command, field admin — role title not fixed in UI. */

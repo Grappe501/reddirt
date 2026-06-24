@@ -10,13 +10,32 @@ import {
 type Props = {
   templates: LeaderWorkbenchTemplate[];
   specialKpis: SpecialKpiGoal[];
+  interimVolunteerManager?: boolean;
+  leaderDisplayName?: string;
 };
 
-export function LeaderTemplatePanels({ templates, specialKpis }: Props) {
-  if (!templates.length && !specialKpis.length) return null;
+export function LeaderTemplatePanels({ templates, specialKpis, interimVolunteerManager, leaderDisplayName }: Props) {
+  if (!templates.length && !specialKpis.length && !interimVolunteerManager) return null;
 
   return (
     <div className="space-y-8">
+      {interimVolunteerManager ? (
+        <div
+          className="rounded-xl border-2 border-amber-400/80 bg-amber-50 p-5 shadow-sm"
+          role="status"
+          aria-live="polite"
+        >
+          <p className="text-xs font-bold uppercase tracking-wide text-amber-900">Interim Volunteer Manager</p>
+          <p className="mt-2 text-sm font-semibold text-amber-950">
+            {leaderDisplayName ?? "You"} are serving as <strong>interim Volunteer Manager</strong> — temporary until we
+            name a permanent replacement.
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-amber-900/90">
+            This workbench shows full volunteer-management functionality: field operators, leader command roster, open
+            leadership slots, and intake pipeline hooks for the transition period.
+          </p>
+        </div>
+      ) : null}
       {specialKpis.length ? (
         <div id="special-kpis">
           <h3 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Special KPIs</h3>
@@ -32,12 +51,24 @@ export function LeaderTemplatePanels({ templates, specialKpis }: Props) {
       ) : null}
 
       {templates.map((tpl) => (
-        <div key={tpl.id} className="rounded-xl border border-[var(--ep-navy)]/10 bg-white p-5 shadow-sm">
+        <div
+          key={tpl.id}
+          className={`rounded-xl border bg-white p-5 shadow-sm ${
+            tpl.id === "volunteer_manager"
+              ? "border-[var(--ep-gold)] ring-1 ring-[var(--ep-gold)]/30"
+              : "border-[var(--ep-navy)]/10"
+          }`}
+        >
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Lead template</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">
+                {tpl.id === "volunteer_manager" ? "Vol HQ template" : "Lead template"}
+              </p>
               <h3 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">{tpl.label}</h3>
               <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{tpl.description}</p>
+              {tpl.interimNotice && interimVolunteerManager ? (
+                <p className="mt-2 text-xs font-medium text-amber-900">{tpl.interimNotice}</p>
+              ) : null}
               {tpl.locale === "es-US" ? (
                 <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
                   Bilingual pathways — use natural Arkansas Spanish where you choose, not literal translation.
@@ -79,6 +110,25 @@ export function LeaderTemplatePanels({ templates, specialKpis }: Props) {
                     {path.labelEs ? (
                       <span className="ml-1 font-normal text-[var(--ep-navy-muted)]">/ {path.labelEs}</span>
                     ) : null}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          {tpl.toolLinks?.length ? (
+            <div className="mt-5">
+              <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Vol management tools</p>
+              <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+                {tpl.toolLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="block h-full rounded-lg border border-[var(--ep-navy)]/10 bg-[var(--ep-cream)]/40 p-3 transition hover:border-[var(--ep-gold)]"
+                    >
+                      <p className="text-sm font-semibold text-[var(--ep-navy)]">{link.label} →</p>
+                      <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{link.description}</p>
+                    </Link>
                   </li>
                 ))}
               </ul>

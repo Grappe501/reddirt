@@ -314,8 +314,19 @@
       "slug": "carol-eagan",
       "displayName": "Carol Eagan",
       "initials": "CEA",
-      "teamLanes": ["operations", "fundraising"],
-      "connections": [{ "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock — volunteer management" }]
+      "commandAccess": true,
+      "volunteerManagerInterim": true,
+      "workbenchTemplates": ["volunteer_manager"],
+      "teamLanes": ["operations", "fundraising", "county"],
+      "connections": [
+        { "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock — volunteer management" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "global", "href": "/election-plan/operators", "label": "Operators hub", "description": "Volunteer HQ — leaders, field operators, command" },
+        { "kind": "global", "href": "/election-plan/operators/leaders/command", "label": "Leader command roster", "description": "Field log heatmap and operator sync" },
+        { "kind": "global", "href": "/election-plan/operators/field", "label": "Field operators", "description": "3-letter whitelist and capabilities" },
+        { "kind": "global", "href": "/election-plan/operators/leaders", "label": "All leader workbenches", "description": "Statewide personal command surfaces" }
+      ],
+      "notes": "Interim Volunteer Manager — temporary until a permanent replacement is named."
     },
     {
       "slug": "ali-khan",

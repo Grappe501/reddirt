@@ -95,6 +95,11 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
         <div className="min-w-0 flex-1 space-y-10">
           <header>
             <div className="ep-classification">Leadership workbench v3.4 · lanes + Power of 5</div>
+            {leader.volunteerManagerInterim ? (
+              <p className="mt-2 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-950 ring-1 ring-amber-400/60">
+                Interim Volunteer Manager
+              </p>
+            ) : null}
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{leader.displayName}</h1>
             {leader.notes ? (
               <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{leader.notes}</p>
@@ -126,9 +131,14 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
             <LeaderHierarchyPanel hierarchy={hierarchy} leaderSlug={leader.slug} isSelf={isSelf} />
           </Section>
 
-          {leadTemplates.length || specialKpis.length ? (
+          {leadTemplates.length || specialKpis.length || leader.volunteerManagerInterim ? (
             <Section id="lead-templates" title="Lead templates & special KPIs">
-              <LeaderTemplatePanels templates={leadTemplates} specialKpis={specialKpis} />
+              <LeaderTemplatePanels
+                templates={leadTemplates}
+                specialKpis={specialKpis}
+                interimVolunteerManager={leader.volunteerManagerInterim}
+                leaderDisplayName={leader.displayName}
+              />
             </Section>
           ) : null}
 

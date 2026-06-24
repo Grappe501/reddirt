@@ -1,5 +1,6 @@
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 import { getEffectiveTeamLanes } from "@/lib/volunteers/leader-roster";
+import { hasVolunteerManagerRole } from "@/lib/volunteers/leader-workbench-templates";
 import { resolveLeaderGeographyScope } from "@/lib/volunteers/leader-scope";
 import { leaderWorkbenchHref } from "@/lib/volunteers/build-leader-workbench-v2";
 import type { VolunteerLeader } from "@/lib/volunteers/types";
@@ -156,7 +157,7 @@ export function resolveNestedWorkbenches(
     });
   }
 
-  if (currentOrder >= tierOrder("assistant_campaign_manager")) {
+  if (currentOrder >= tierOrder("assistant_campaign_manager") || hasVolunteerManagerRole(leader)) {
     add({
       tier: "assistant_campaign_manager",
       label: "Operators command",
@@ -197,7 +198,9 @@ export function buildLeaderHierarchyPayload(leader: VolunteerLeader): LeaderHier
   const currentTier = resolveLeaderWorkbenchTier(leader);
   const chainIds = tiersThrough(currentTier);
   const lanes = getEffectiveTeamLanes(leader);
-  const includeVolMgmt = Boolean(leader.commandAccess || leader.assistantCm || lanes.includes("operations"));
+  const includeVolMgmt = Boolean(
+    leader.commandAccess || leader.assistantCm || leader.volunteerManagerInterim || hasVolunteerManagerRole(leader) || lanes.includes("operations"),
+  );
 
   const tierChain = tiersThrough("campaign_manager").map((id) => ({
     id,

@@ -41,9 +41,14 @@ export type VolunteerLeader = {
   assistantCm?: boolean;
   /** Override inferred hierarchy tier (city / county / cluster / ACM / CM). */
   workbenchTier?: WorkbenchHierarchyTierId;
-  /** Coalition / youth / outreach workbench templates (stackable). */
+  /** Interim statewide Volunteer Manager — explicit on workbench until permanent replacement. */
+  volunteerManagerInterim?: boolean;
+  /** Coalition / youth / outreach / vol-manager workbench templates (stackable). */
   workbenchTemplates?: Array<
-    "youth_leadership" | "high_school_leadership" | "hispanic_outreach_lead"
+    | "youth_leadership"
+    | "high_school_leadership"
+    | "hispanic_outreach_lead"
+    | "volunteer_manager"
   >;
   /** High school senior — auto-includes youth + high school leadership templates. */
   highSchoolSenior?: boolean;

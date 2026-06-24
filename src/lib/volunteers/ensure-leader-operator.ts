@@ -14,7 +14,7 @@ export type LeaderOperatorRecord = {
 };
 
 function capabilitiesForLeader(leader: VolunteerLeader, countySlug: string | null): ElectionPlanOperatorCapability[] {
-  if (leader.commandAccess) {
+  if (leader.commandAccess || leader.volunteerManagerInterim) {
     return ["field_entry", "manage_operators"];
   }
   if (countySlug) {

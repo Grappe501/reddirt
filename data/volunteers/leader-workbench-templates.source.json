@@ -59,6 +59,33 @@
         { "key": "youth_ambassador", "label": "Youth Ambassador", "labelEs": "Embajador juvenil" },
         { "key": "election_info", "label": "Election Information Team", "labelEs": "Equipo de información electoral" }
       ]
+    },
+    "volunteer_manager": {
+      "id": "volunteer_manager",
+      "label": "Volunteer Manager",
+      "description": "Statewide volunteer HQ — operator roster, leader workbench access, intake pipeline, open leadership slots, and team health across the campaign.",
+      "interimNotice": "Serving as interim Volunteer Manager until a permanent replacement is named. This workbench demonstrates full vol-management functionality for the transition period.",
+      "sections": [
+        { "id": "operator_roster", "label": "Field operator roster", "description": "3-letter codes, capabilities, and field-entry whitelist — who can log results." },
+        { "id": "leader_roster", "label": "Leader workbench roster", "description": "Personal command surfaces, lane assignments, and login codes for every field leader." },
+        { "id": "command_heatmap", "label": "Command heatmap", "description": "Live field log quantities and leadership fills — green active, quiet needs first touch." },
+        { "id": "intake_activation", "label": "Intake & activation", "description": "Website form → review → placement → workbench unlock (CRM path)." },
+        { "id": "open_slots", "label": "Open leadership slots", "description": "Community workbench roles still needing a name — assign from leadership tables." },
+        { "id": "team_health", "label": "Team health rollups", "description": "My Five completeness, follow-up queues, and operator activity statewide." }
+      ],
+      "pathways": [
+        { "key": "volunteer_coordinator", "label": "Volunteer Coordinator" },
+        { "key": "operator_admin", "label": "Operator Admin" },
+        { "key": "leader_placement", "label": "Leader Placement" },
+        { "key": "intake_reviewer", "label": "Intake Reviewer" }
+      ],
+      "toolLinks": [
+        { "label": "Field operators", "href": "/election-plan/operators/field", "description": "Operator whitelist and capabilities" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Full roster heatmap and sync" },
+        { "label": "All leader workbenches", "href": "/election-plan/operators/leaders", "description": "Every personal command surface" },
+        { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer HQ entry point" },
+        { "label": "Volunteer intake (admin)", "href": "/admin/volunteers/intake", "description": "Activation queue — planned CRM merge" }
+      ]
     }
   }
 }
