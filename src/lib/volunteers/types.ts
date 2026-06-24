@@ -68,6 +68,7 @@ export type VolunteerLeader = {
     | "union_liaison"
     | "social_media_influencer"
     | "democratic_black_caucus_lead"
+    | "educators_coalition_lead"
   >;
   /** Students for Arkansas founding co-chair — campus chapter + statewide student movement. */
   campusTeamCoChair?: boolean;

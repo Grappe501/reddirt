@@ -1865,6 +1865,177 @@
         }
       ],
       "notes": "Camden city chair — Ouachita County, South Arkansas."
+    },
+    {
+      "slug": "david-mcavoy",
+      "displayName": "David McAvoy",
+      "initials": "DMA",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "Craighead", "countySlug": "craighead", "label": "Craighead County playbook" },
+        { "kind": "city", "citySlug": "jonesboro", "label": "Jonesboro community workbench" },
+        { "kind": "city", "citySlug": "paragould", "label": "Paragould community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/craighead",
+          "label": "Craighead County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/jonesboro",
+          "label": "Jonesboro city strategy",
+          "description": "Craighead County hub — priority city brief and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/northeast-arkansas",
+          "label": "Northeast Arkansas region",
+          "description": "Craighead County in the northeast cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/county-parties/craighead",
+          "label": "Craighead County Democratic Party",
+          "description": "County party coordination and local validators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Craighead County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Craighead County workbenches"
+        }
+      ],
+      "notes": "Craighead County chair — Jonesboro and Northeast Arkansas."
+    },
+    {
+      "slug": "teresa-huff",
+      "displayName": "Teresa Huff",
+      "initials": "THU",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" },
+        { "kind": "city", "citySlug": "conway", "label": "Conway community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/faulkner",
+          "label": "Faulkner County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/conway",
+          "label": "Conway city strategy",
+          "description": "Faulkner County seat — priority city brief and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/central-arkansas",
+          "label": "Central Arkansas region",
+          "description": "Faulkner County in the central metro cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/county-parties/faulkner",
+          "label": "Faulkner County Democratic Party",
+          "description": "County party coordination and local validators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Faulkner County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Faulkner County workbenches"
+        }
+      ],
+      "notes": "Faulkner County chair — Conway and Central Arkansas."
+    },
+    {
+      "slug": "april-reisma",
+      "displayName": "April Reisma",
+      "initials": "ARI",
+      "workbenchTier": "cluster",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": [
+        "educators_coalition_lead",
+        "volunteer_leadership_team",
+        "fundraising_workbench",
+        "finance_inner_circle"
+      ],
+      "teamLanes": ["coalition", "operations", "fundraising", "county", "events", "comms"],
+      "connections": [
+        { "kind": "program", "programSlug": "educators", "label": "Educators coalition workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/educators",
+          "label": "Educators coalition command",
+          "description": "AEA, teachers, school districts — statewide educator volunteer hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties",
+          "label": "County playbooks",
+          "description": "Recruit teacher volunteers onto every county workbench"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "Place educator volunteers on city and program workbenches statewide"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/search?q=aea+endorsement",
+          "label": "AEA endorsement strategy",
+          "description": "Campaign brain — teacher network activation and county contacts"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Fundraising doctrine and opportunity ownership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/operations",
+          "label": "Operations lane drill-down",
+          "description": "Volunteer management — onboarding, roster CRM, retention across counties"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Assign educator volunteers to county and city workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Volunteer management boards and leadership team hub"
+        }
+      ],
+      "notes": "Arkansas Education Association chair — Kelly endorsement · statewide educator volunteer recruitment, fundraising, and finance."
     }
   ]
 }

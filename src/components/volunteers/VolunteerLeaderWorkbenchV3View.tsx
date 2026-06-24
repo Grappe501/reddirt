@@ -140,6 +140,11 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Democratic Black Caucus
               </p>
             ) : null}
+            {leader.workbenchTemplates?.includes("educators_coalition_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-sky-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-sky-950 ring-1 ring-sky-500/45">
+                AEA · Educators coalition
+              </p>
+            ) : null}
             {leader.campusTeamCoChair ? (
               <p className="mt-2 inline-block rounded-full bg-violet-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-violet-950 ring-1 ring-violet-400/45">
                 Students for Arkansas co-chair

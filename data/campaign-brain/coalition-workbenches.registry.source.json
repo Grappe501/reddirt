@@ -220,8 +220,8 @@
     {
       "slug": "educators",
       "name": "Educators",
-      "tagline": "AEA, teachers, school districts, education allies",
-      "locale": "en",
+      "leadRole": "Educators coalition lead (AEA)",
+      "frameworkNote": "AEA-endorsed statewide teacher network — April Reisma coordinates county-by-county volunteer recruitment.",
       "intelSections": [
         { "key": "aea", "label": "AEA & Teacher Networks" },
         { "key": "districts", "label": "School Districts" },

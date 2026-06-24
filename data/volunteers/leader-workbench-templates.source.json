@@ -513,6 +513,38 @@
         { "label": "County playbooks", "href": "/election-plan/counties", "description": "Pulaski and Saline drill-downs — county tools without chair title" }
       ]
     },
+    "educators_coalition_lead": {
+      "id": "educators_coalition_lead",
+      "label": "Educators coalition lead",
+      "description": "Arkansas Education Association — statewide teacher network activation, volunteer recruitment across all counties, fundraising, and finance coordination for Kelly's endorsed AEA partnership.",
+      "coalitionSlug": "educators",
+      "includes": ["volunteer_leadership_team", "fundraising_workbench"],
+      "sections": [
+        { "id": "aea_leadership", "label": "AEA leadership", "description": "April Reisma pathway — teacher validators, district contacts, and endorsement activation." },
+        { "id": "county_teacher_recruitment", "label": "County-by-county recruitment", "description": "Identify teacher advocates in every county — place volunteers on county and city workbenches statewide." },
+        { "id": "volunteer_management", "label": "Volunteer management", "description": "Onboarding, activation, retention, and leadership pathways for educator volunteers across counties." },
+        { "id": "school_events", "label": "School & educator events", "description": "Kelly stops, educator meetings, and local visibility with AEA validators." },
+        { "id": "fundraising", "label": "Fundraising", "description": "Grassroots educator fundraising events and donor stewardship." },
+        { "id": "finance_coordination", "label": "Finance coordination", "description": "Finance inner circle — budget framework, compliance basics, and treasurer coordination." }
+      ],
+      "pathways": [
+        { "key": "aea_chair", "label": "AEA Chair" },
+        { "key": "teacher_connector", "label": "Teacher Connector" },
+        { "key": "aea_liaison", "label": "AEA Liaison" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "finance_committee", "label": "Finance Committee Member" }
+      ],
+      "toolLinks": [
+        { "label": "Educators coalition workbench", "href": "/election-plan/workbenches/educators", "description": "AEA, teachers, school districts, and education allies command surface" },
+        { "label": "County playbooks", "href": "/election-plan/counties", "description": "Place teacher volunteers on every county workbench" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches statewide" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" },
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and compliance" },
+        { "label": "Budget dashboard", "href": "/election-plan/executive-book/budget/dashboard", "description": "Finance inner circle — campaign budget framework" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign educator volunteers across counties" }
+      ]
+    },
     "special_outreach_lead": {
       "id": "special_outreach_lead",
       "label": "Special outreach program",

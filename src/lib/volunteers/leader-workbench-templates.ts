@@ -24,7 +24,8 @@ export type LeaderWorkbenchTemplateId =
   | "special_outreach_lead"
   | "union_liaison"
   | "social_media_influencer"
-  | "democratic_black_caucus_lead";
+  | "democratic_black_caucus_lead"
+  | "educators_coalition_lead";
 
 export type LeaderTemplateToolLink = {
   label: string;
@@ -126,6 +127,7 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     "union_liaison",
     "social_media_influencer",
     "democratic_black_caucus_lead",
+    "educators_coalition_lead",
     "events_lead",
     "event_planner",
     "finance_inner_circle",
