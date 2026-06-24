@@ -1,4 +1,5 @@
 import { buildVolunteerLeaderPowerOf5Context } from "@/lib/volunteers/build-leader-power-of-5";
+import { getEffectiveTeamLanes } from "@/lib/volunteers/leader-roster";
 import { LANE_RESPONSIBILITIES } from "@/lib/volunteers/leader-workbench-sections";
 import { primaryCountyLabel } from "@/lib/volunteers/resolve-leader-links";
 import { VOLUNTEER_TEAM_LANES } from "@/lib/volunteers/types";
@@ -22,9 +23,10 @@ export function buildLeaderWorkbenchV2Payload(leader: VolunteerLeader): LeaderWo
   const county = primaryCountyLabel(leader);
   const po5 = buildVolunteerLeaderPowerOf5Context(leader);
 
-  const responsibilities = leader.teamLanes.flatMap((lane) => LANE_RESPONSIBILITIES[lane] ?? []);
+  const lanes = getEffectiveTeamLanes(leader);
+  const responsibilities = lanes.flatMap((lane) => LANE_RESPONSIBILITIES[lane] ?? []);
 
-  const laneLabels = leader.teamLanes.map(laneLabel);
+  const laneLabels = lanes.map(laneLabel);
 
   const nextActions = [
     {

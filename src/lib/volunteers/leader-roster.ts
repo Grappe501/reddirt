@@ -1,5 +1,6 @@
 import rosterFile from "../../../data/volunteers/leader-roster.json";
-import type { LeaderRosterFile, VolunteerLeader } from "@/lib/volunteers/types";
+import type { LeaderRosterFile, VolunteerLeader, VolunteerTeamLaneId } from "@/lib/volunteers/types";
+import { VOLUNTEER_TEAM_LANES } from "@/lib/volunteers/types";
 
 const roster = rosterFile as LeaderRosterFile;
 
@@ -19,6 +20,26 @@ export function getVolunteerLeaderByInitials(initials: string): VolunteerLeader 
 export function getCommandAccessLeaders(): VolunteerLeader[] {
   return roster.leaders.filter((l) => l.commandAccess);
 }
+
+/** Field roster table + sign-in list — excludes HQ-only command logins unless flex workbench. */
+export function countsInFieldLeaderRoster(leader: VolunteerLeader): boolean {
+  return !leader.commandAccess || Boolean(leader.assistantCm);
+}
+
+/** Full Operators shell: all lanes, command, field admin — role title not fixed in UI. */
+export function hasFlexLeaderWorkbench(leader: VolunteerLeader): boolean {
+  return Boolean(leader.assistantCm);
+}
+
+/** Flex leaders get every lane drill-down — role title stays open in UI. */
+export function getEffectiveTeamLanes(leader: VolunteerLeader): VolunteerTeamLaneId[] {
+  if (hasFlexLeaderWorkbench(leader)) {
+    return VOLUNTEER_TEAM_LANES.map((l) => l.id);
+  }
+  return leader.teamLanes;
+}
+
+export const ALL_VOLUNTEER_TEAM_LANE_IDS = VOLUNTEER_TEAM_LANES.map((l) => l.id);
 
 /** Campaign-wide pins shown on every leader workbench. */
 export const CAMPAIGN_WORKBENCH_PINS = [

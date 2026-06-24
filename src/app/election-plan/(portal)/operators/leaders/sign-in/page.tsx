@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import { LeaderSignInInitialsPicker } from "@/components/volunteers/LeaderSignInInitialsPicker";
 import { EpButton } from "@/components/election-plan/ui/EpButton";
 import { volunteerHubLoginAction } from "@/lib/volunteers/auth/volunteer-auth-actions";
+import { getVolunteerLeaderRoster } from "@/lib/volunteers/leader-roster";
 import { getVolunteerHubPassword } from "@/lib/volunteers/auth/session";
 
 export const metadata: Metadata = {
@@ -18,6 +20,7 @@ type Props = { searchParams: Promise<{ error?: string; next?: string }> };
 export default async function LeaderWorkbenchSignInPage({ searchParams }: Props) {
   const sp = await searchParams;
   const configured = Boolean(getVolunteerHubPassword());
+  const roster = getVolunteerLeaderRoster();
   const nextPath = sp.next?.trim();
   const redirectTo =
     nextPath &&
@@ -57,10 +60,7 @@ export default async function LeaderWorkbenchSignInPage({ searchParams }: Props)
           {configured ? (
             <form action={volunteerHubLoginAction} className="mt-6 space-y-4">
               <input type="hidden" name="redirectTo" value={redirectTo} />
-              <label className="block">
-                <span className="ep-input-label">Leader code</span>
-                <input type="text" name="initials" required minLength={3} maxLength={3} className="ep-input uppercase" />
-              </label>
+              <LeaderSignInInitialsPicker leaders={roster} />
               <label className="block">
                 <span className="ep-input-label">Password</span>
                 <input type="password" name="password" required autoComplete="current-password" className="ep-input" />

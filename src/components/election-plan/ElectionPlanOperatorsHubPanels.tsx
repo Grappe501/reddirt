@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getVolunteerLeaderRoster } from "@/lib/volunteers/leader-roster";
+import { getVolunteerLeaderRoster, countsInFieldLeaderRoster, getEffectiveTeamLanes } from "@/lib/volunteers/leader-roster";
 import { leaderWorkbenchHref } from "@/lib/volunteers/build-leader-workbench-v2";
 import { VOLUNTEER_TEAM_LANES } from "@/lib/volunteers/types";
 
@@ -10,7 +10,7 @@ function laneLabel(id: string): string {
 
 export function ElectionPlanOperatorsHubPanel() {
   const roster = getVolunteerLeaderRoster();
-  const fieldCount = roster.filter((l) => !l.commandAccess || l.slug === "will-larue").length;
+  const fieldCount = roster.filter(countsInFieldLeaderRoster).length;
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -54,7 +54,7 @@ export function ElectionPlanOperatorsHubPanel() {
         <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Command</p>
         <h2 className="mt-2 font-heading text-lg font-bold text-[var(--ep-navy)]">Full roster table</h2>
         <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-          Kelly · Steve · Will — view all {fieldCount} field leaders, lanes, and login codes.
+          Command staff and {fieldCount} field leaders — full roster, lanes, and login codes.
         </p>
       </Link>
     </div>
@@ -77,7 +77,7 @@ export function ElectionPlanLeaderRosterGrid() {
               <span className="font-mono text-xs font-bold text-[var(--ep-blue)]">{leader.initials}</span>
             </div>
             <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
-              {leader.teamLanes.map(laneLabel).join(" · ")}
+              {getEffectiveTeamLanes(leader).map(laneLabel).join(" · ")}
             </p>
             {leader.notes ? (
               <p className="mt-2 line-clamp-2 text-[10px] leading-relaxed text-[var(--ep-navy-muted)]">{leader.notes}</p>

@@ -8,6 +8,7 @@ import {
   leaderLaneDrillDownHref,
   leaderLaneDrillDownMeHref,
 } from "@/lib/volunteers/lane-drill-down-config";
+import { getEffectiveTeamLanes } from "@/lib/volunteers/leader-roster";
 import type { VolunteerLeader, VolunteerTeamLaneId } from "@/lib/volunteers/types";
 import { VOLUNTEER_TEAM_LANES } from "@/lib/volunteers/types";
 
@@ -125,6 +126,7 @@ export function LeaderLaneDrillDownView({ leader, page, isSelf }: Props) {
   const workbenchHref = isSelf
     ? "/election-plan/operators/leaders/me"
     : `/election-plan/operators/leaders/${leader.slug}`;
+  const lanes = getEffectiveTeamLanes(leader);
 
   return (
     <div className="ep-chapter-body px-6 py-10 lg:px-10">
@@ -142,7 +144,7 @@ export function LeaderLaneDrillDownView({ leader, page, isSelf }: Props) {
         </p>
 
         <nav className="mt-6 flex flex-wrap gap-2" aria-label="Other lanes">
-          {leader.teamLanes.map((laneId) => {
+          {lanes.map((laneId) => {
             const label = VOLUNTEER_TEAM_LANES.find((l) => l.id === laneId)?.label ?? laneId;
             const href = isSelf ? leaderLaneDrillDownMeHref(laneId) : leaderLaneDrillDownHref(leader.slug, laneId);
             const active = laneId === page.laneId;
@@ -189,9 +191,10 @@ export function LeaderLaneNavStrip({
   isSelf?: boolean;
   activeLaneId?: VolunteerTeamLaneId;
 }) {
+  const lanes = getEffectiveTeamLanes(leader);
   return (
     <div className="mt-4 flex flex-wrap gap-2">
-      {leader.teamLanes.map((laneId) => {
+      {lanes.map((laneId) => {
         const label = VOLUNTEER_TEAM_LANES.find((l) => l.id === laneId)?.label ?? laneId;
         const href = isSelf ? leaderLaneDrillDownMeHref(laneId) : leaderLaneDrillDownHref(leader.slug, laneId);
         return (

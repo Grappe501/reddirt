@@ -15,6 +15,22 @@
       "notes": "Assistant campaign manager — flex statewide."
     },
     {
+      "slug": "kristal-kuykendal",
+      "displayName": "Kristal Kuykendal",
+      "initials": "KKU",
+      "commandAccess": true,
+      "assistantCm": true,
+      "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
+      "connections": [
+        { "kind": "global", "href": "/election-plan", "label": "Election Plan command", "description": "Full campaign OS — counties, cities, workbenches, operators" },
+        { "kind": "global", "href": "/election-plan/operators", "label": "Operators hub", "description": "Leader workbenches, field operators, command" },
+        { "kind": "global", "href": "/election-plan/workbenches", "label": "Community workbench hub", "description": "All program and city workbenches" },
+        { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" },
+        { "kind": "city", "citySlug": "conway", "label": "Conway city brief" }
+      ],
+      "notes": "Statewide flex — all lanes open while role is assigned."
+    },
+    {
       "slug": "kelly-grappe",
       "displayName": "Kelly Grappe",
       "initials": "KGR",
