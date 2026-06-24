@@ -187,6 +187,33 @@
         { "label": "Volunteer leadership launch", "href": "/election-plan/academy/june-28-launch", "description": "June 28 leadership team hub" },
         { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Vol HQ lane checklist and tools" }
       ]
+    },
+    "county_candidate_coordinator": {
+      "id": "county_candidate_coordinator",
+      "label": "County Candidate Coordinator",
+      "description": "County-level candidate operations — coordinate events, travel, and logistics while recruiting leadership across the county playbook.",
+      "sections": [
+        { "id": "county_events", "label": "County event coordination", "description": "Schedule and execute Kelly stops, forums, and local visibility across your county." },
+        { "id": "travel_logistics", "label": "Travel & logistics", "description": "Routing, lodging, materials, and day-of setup — get the candidate team in and out clean." },
+        { "id": "run_of_show", "label": "Run of show & day-of ops", "description": "Timeline, volunteer briefing, check-in, and escalation path for county stops." },
+        { "id": "county_leadership_recruitment", "label": "Recruit county leaders", "description": "Identify and place volunteer captains, city leads, and lane leaders on county and city workbenches." },
+        { "id": "open_leadership_slots", "label": "Open leadership slots", "description": "Track unfilled roles — nominate names to the leader command roster." },
+        { "id": "county_playbook", "label": "County playbook ownership", "description": "Weekly priorities from the 75-county playbook — registration, Po5, and turnout lanes." }
+      ],
+      "pathways": [
+        { "key": "county_coordinator", "label": "County Coordinator" },
+        { "key": "county_events_lead", "label": "County Events Lead" },
+        { "key": "logistics_lead", "label": "Logistics Lead" },
+        { "key": "leadership_recruiter", "label": "Leadership Recruiter" },
+        { "key": "day_of_captain", "label": "Day-of Captain" }
+      ],
+      "toolLinks": [
+        { "label": "County lane drill-down", "href": "/election-plan/operators/leaders/me/lane/county", "description": "County playbook, leadership slots, and weekly reporting" },
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Event coordination, Mobilize, and field calendar" },
+        { "label": "Field calendar", "href": "/election-plan?tab=fieldCalendar", "description": "Kelly stops and county events — travel planning" },
+        { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county and city leader roles to fill" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign county leaders from the roster" }
+      ]
     }
   }
 }

@@ -396,8 +396,57 @@
       "slug": "jean-reed",
       "displayName": "Jean Reed",
       "initials": "JRE",
-      "teamLanes": ["voter-registration", "county"],
-      "connections": [{ "kind": "county", "county": "Carroll", "countySlug": "carroll", "label": "Carroll County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_candidate_coordinator"],
+      "teamLanes": ["county", "events", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Carroll", "countySlug": "carroll", "label": "Carroll County playbook" },
+        { "kind": "city", "citySlug": "eureka-springs", "label": "Eureka Springs community workbench" },
+        { "kind": "city", "citySlug": "berryville", "label": "Berryville community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/carroll",
+          "label": "Carroll County command",
+          "description": "County playbook drill-down — events, targets, and leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/county-parties/carroll",
+          "label": "Carroll County Democratic Party",
+          "description": "County party coordination and local validators"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/northwest-arkansas",
+          "label": "Northwest Arkansas region",
+          "description": "NWA cluster — Benton, Washington, Carroll, Madison"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan?tab=fieldCalendar",
+          "label": "Field calendar",
+          "description": "Kelly stops and county events — travel and logistics planning"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots to fill in Carroll"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign county leaders from the roster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/forward-motion/county-party-carroll-2026-07-14",
+          "label": "Carroll County party meeting",
+          "description": "July 14 Forward Motion stop — Eureka Springs"
+        }
+      ],
+      "notes": "Carroll County Candidate Coordinator — events, travel, logistics, and recruiting county leaders."
     },
     {
       "slug": "carol-eagan",

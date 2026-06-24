@@ -70,7 +70,9 @@ export function LeaderTemplatePanels({
           className={`rounded-xl border bg-white p-5 shadow-sm ${
             tpl.id === "volunteer_manager"
               ? "border-[var(--ep-gold)] ring-1 ring-[var(--ep-gold)]/30"
-              : tpl.id === "fundraising_field_leader"
+              : tpl.id === "county_candidate_coordinator"
+                ? "border-[var(--ep-navy)]/25 ring-1 ring-[var(--ep-navy)]/15"
+                : tpl.id === "fundraising_field_leader"
                 ? "border-emerald-600/50 ring-1 ring-emerald-600/30"
                 : tpl.id === "volunteer_leadership_team"
                   ? "border-[var(--ep-gold)]/60 ring-1 ring-[var(--ep-gold)]/25"
@@ -86,7 +88,9 @@ export function LeaderTemplatePanels({
               <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">
                 {tpl.id === "volunteer_manager"
                   ? "Vol HQ template"
-                  : tpl.id === "fundraising_field_leader"
+                  : tpl.id === "county_candidate_coordinator"
+                    ? "County coordinator template"
+                    : tpl.id === "fundraising_field_leader"
                     ? "Fundraising field leader template"
                     : tpl.id === "volunteer_leadership_team"
                       ? "Volunteer leadership team"
