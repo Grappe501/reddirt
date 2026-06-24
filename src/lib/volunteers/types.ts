@@ -64,6 +64,8 @@ export type VolunteerLeader = {
     | "progressives_liaison"
     | "finance_inner_circle"
     | "campus_team_co_chair"
+    | "special_outreach_lead"
+    | "union_liaison"
   >;
   /** Students for Arkansas founding co-chair — campus chapter + statewide student movement. */
   campusTeamCoChair?: boolean;
@@ -83,6 +85,12 @@ export type VolunteerLeader = {
   nonprofitAdvisor?: boolean;
   /** High school senior — auto-includes youth + high school leadership templates. */
   highSchoolSenior?: boolean;
+  /** Volunteer county board — sees county and nested city workbenches without county chair title. */
+  countyBoardMember?: boolean;
+  /** Multi-county special outreach program (Ozark Forward, Just A Girl, etc.). */
+  specialOutreachProgramSlug?: "ozark-forward" | "just-a-girl";
+  /** Read-only cluster geography context — not a cluster manager role. */
+  clusterInsightSlug?: string;
   /** City slugs for leadership-tracked special KPIs (e.g. Jacksonville 25% SOS lift). */
   specialKpiCitySlugs?: string[];
   teamLanes: VolunteerTeamLaneId[];

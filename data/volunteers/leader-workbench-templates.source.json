@@ -456,6 +456,59 @@
         { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" }
       ]
     },
+    "special_outreach_lead": {
+      "id": "special_outreach_lead",
+      "label": "Special outreach program",
+      "description": "Multi-county outreach command — own fundraising goal, volunteer management, and coalition workbench. Volunteers may cross into county workbenches in your geography.",
+      "includes": ["fundraising_workbench", "volunteer_leadership_team"],
+      "sections": [
+        { "id": "program_command", "label": "Program command surface", "description": "Your dedicated coalition workbench — intel sections, pathways, and local assignments." },
+        { "id": "multi_county_geography", "label": "Multi-county geography", "description": "Track relationships across counties — some volunteers will also appear on county and city boards below you." },
+        { "id": "volunteer_management", "label": "Volunteer management", "description": "Onboarding, roster CRM, shift captains, and retention — county-scale ops on a program board." },
+        { "id": "fundraising_goal", "label": "Program fundraising goal", "description": "Set and track your program goal — blank until you fill it in; grassroots events and tracked links roll up here." },
+        { "id": "cross_county_placement", "label": "Cross-county placement", "description": "Place captains on county playbooks and city workbenches when their relationships span counties." },
+        { "id": "events_mobilize", "label": "Events & Mobilize", "description": "Program events, fair circuit stops, and community visibility across your counties." }
+      ],
+      "pathways": [
+        { "key": "program_lead", "label": "Program Lead" },
+        { "key": "outreach_captain", "label": "Outreach Captain" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "events_chair", "label": "Events Chair" }
+      ],
+      "toolLinks": [
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and program goal tracking" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" },
+        { "label": "Coalition lane drill-down", "href": "/election-plan/operators/leaders/me/lane/coalition", "description": "Coalition work branches and partner workbenches" },
+        { "label": "County playbooks", "href": "/election-plan/counties", "description": "Nested county drill-downs for cross-county volunteers" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches in your geography" }
+      ]
+    },
+    "union_liaison": {
+      "id": "union_liaison",
+      "label": "Union liaison",
+      "description": "Labor coalition liaison — union relationships, worksite captains, and cluster geography for your home county without cluster manager responsibilities.",
+      "coalitionSlug": "labor",
+      "sections": [
+        { "id": "union_relationships", "label": "Union relationships", "description": "Local unions, labor education partners, and validator introductions." },
+        { "id": "worksite_captains", "label": "Worksite captains", "description": "Identify shop stewards and member communicators for relational outreach." },
+        { "id": "cluster_context", "label": "Cluster geography context", "description": "Read-only cluster rollups for your region — data for your area without cluster manager duties." },
+        { "id": "worker_stories", "label": "Worker story corps", "description": "Member stories and listening sessions — relationship-first labor outreach." },
+        { "id": "labor_events", "label": "Labor events & visibility", "description": "Union hall meetings, labor education events, and coordinated visibility." }
+      ],
+      "pathways": [
+        { "key": "union_liaison", "label": "Union Liaison" },
+        { "key": "worksite_captain", "label": "Worksite Captain" },
+        { "key": "labor_education", "label": "Labor Education Team" },
+        { "key": "worker_story_corps", "label": "Worker Story Corps" }
+      ],
+      "toolLinks": [
+        { "label": "Labor coalition workbench", "href": "/election-plan/workbenches/labor", "description": "Union relationships, worksites, and worker story corps" },
+        { "label": "Coalition lane drill-down", "href": "/election-plan/operators/leaders/me/lane/coalition", "description": "Coalition work branches and labor partners" },
+        { "label": "Labor union strategy", "href": "/election-plan/search?q=labor+union+strategy", "description": "Campaign brain — labor listening brief and meeting prep" },
+        { "label": "County lane drill-down", "href": "/election-plan/operators/leaders/me/lane/county", "description": "Home county playbook and nested city workbenches" }
+      ]
+    },
     "progressives_liaison": {
       "id": "progressives_liaison",
       "label": "Progressives liaison",

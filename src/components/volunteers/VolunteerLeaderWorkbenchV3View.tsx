@@ -15,6 +15,10 @@ import {
   resolveLeaderCampaignPins,
   resolveLeaderPersonalLinks,
 } from "@/lib/volunteers/resolve-leader-links";
+import {
+  formatSpecialOutreachFundraisingGoal,
+  resolveSpecialOutreachProgramForLeader,
+} from "@/lib/volunteers/special-outreach-programs";
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
@@ -36,6 +40,7 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
     payload;
   const areaLinks = resolveLeaderPersonalLinks(leader);
   const campaignPins = resolveLeaderCampaignPins(leader);
+  const specialOutreach = resolveSpecialOutreachProgramForLeader(leader);
   const canLogField = Boolean(isSelf && fieldLog?.operatorReady);
 
   return (
@@ -105,6 +110,26 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Interim Volunteer Manager
               </p>
             ) : null}
+            {leader.countyBoardMember ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-gold)]/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-gold)]/45">
+                Volunteer board
+              </p>
+            ) : null}
+            {leader.specialOutreachProgramSlug === "ozark-forward" ? (
+              <p className="mt-2 inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-950 ring-1 ring-emerald-500/40">
+                Ozark Forward
+              </p>
+            ) : null}
+            {leader.specialOutreachProgramSlug === "just-a-girl" ? (
+              <p className="mt-2 inline-block rounded-full bg-pink-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-pink-950 ring-1 ring-pink-400/40">
+                Just A Girl
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("union_liaison") ? (
+              <p className="mt-2 inline-block rounded-full bg-orange-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-orange-950 ring-1 ring-orange-400/45">
+                Union liaison
+              </p>
+            ) : null}
             {leader.campusTeamCoChair ? (
               <p className="mt-2 inline-block rounded-full bg-violet-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-violet-950 ring-1 ring-violet-400/45">
                 Students for Arkansas co-chair
@@ -140,7 +165,7 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 County Candidate Coordinator
               </p>
             ) : null}
-            {leader.workbenchTemplates?.includes("county_leader") ? (
+            {leader.workbenchTemplates?.includes("county_leader") && !leader.countyBoardMember ? (
               <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-navy)]/30">
                 County leader
               </p>
@@ -178,6 +203,23 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{leader.displayName}</h1>
             {leader.notes ? (
               <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{leader.notes}</p>
+            ) : null}
+            {specialOutreach ? (
+              <div className="mt-4 max-w-xl rounded-lg border border-[var(--ep-gold)]/35 bg-[var(--ep-cream)]/80 px-4 py-3">
+                <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">
+                  {specialOutreach.name} · program fundraising goal
+                </p>
+                <p className="mt-1 font-heading text-2xl font-bold text-[var(--ep-navy)]">
+                  {formatSpecialOutreachFundraisingGoal(specialOutreach)}
+                </p>
+                <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{specialOutreach.fundraisingGoalNote}</p>
+                <Link
+                  href={`/election-plan/workbenches/${specialOutreach.coalitionSlug}`}
+                  className="mt-2 inline-block text-xs font-semibold text-[var(--ep-blue)] hover:underline"
+                >
+                  Open {specialOutreach.name} program board →
+                </Link>
+              </div>
             ) : null}
           </header>
 

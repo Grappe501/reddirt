@@ -20,7 +20,9 @@ export type LeaderWorkbenchTemplateId =
   | "interfaith_comms_liaison"
   | "progressives_liaison"
   | "finance_inner_circle"
-  | "campus_team_co_chair";
+  | "campus_team_co_chair"
+  | "special_outreach_lead"
+  | "union_liaison";
 
 export type LeaderTemplateToolLink = {
   label: string;
@@ -91,6 +93,10 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     ids.add("fundraising_field_leader");
   }
 
+  if (leader.specialOutreachProgramSlug) {
+    ids.add("special_outreach_lead");
+  }
+
   for (const id of leader.workbenchTemplates ?? []) {
     ids.add(id);
     const tpl = registry.templates[id];
@@ -114,6 +120,8 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     "interfaith_comms_liaison",
     "progressives_liaison",
     "campus_team_co_chair",
+    "special_outreach_lead",
+    "union_liaison",
     "events_lead",
     "event_planner",
     "finance_inner_circle",

@@ -732,6 +732,46 @@
       "notes": "Van Buren County lead."
     },
     {
+      "slug": "sandy-bondalier",
+      "displayName": "Sandy Bondalier",
+      "initials": "SBO",
+      "workbenchTier": "county",
+      "countyBoardMember": true,
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["volunteer_leadership_team"],
+      "teamLanes": ["county", "operations", "events"],
+      "connections": [
+        { "kind": "county", "county": "Van Buren", "countySlug": "van-buren", "label": "Van Buren County playbook" },
+        { "kind": "city", "citySlug": "clinton", "label": "Clinton community workbench" },
+        { "kind": "city", "citySlug": "fairfield-bay", "label": "Fairfield Bay community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/van-buren",
+          "label": "Van Buren County command",
+          "description": "County playbook and nested city workbenches — volunteer board access"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/carol-hutto",
+          "label": "Carol Hutto — county lead",
+          "description": "Van Buren County chair — Sandy supports the board without chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Volunteer board assignments across Van Buren County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Volunteer board and leadership team hub"
+        }
+      ],
+      "notes": "Van Buren County volunteer board — county and city workbench visibility without county chair title."
+    },
+    {
       "slug": "brook-linson",
       "displayName": "Brook Linson",
       "initials": "BLI",
@@ -1448,6 +1488,131 @@
         }
       ],
       "notes": "Finance team — finance inner circle."
+    },
+    {
+      "slug": "sandie-cloud",
+      "displayName": "Sandie Cloud",
+      "initials": "SCL",
+      "workbenchTier": "cluster",
+      "specialOutreachProgramSlug": "ozark-forward",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["special_outreach_lead", "fundraising_workbench", "volunteer_leadership_team"],
+      "teamLanes": ["county", "coalition", "fundraising", "operations", "events"],
+      "connections": [
+        { "kind": "program", "programSlug": "ozark-forward", "label": "Ozark Forward program board" },
+        { "kind": "county", "county": "Baxter", "countySlug": "baxter", "label": "Baxter County playbook" },
+        { "kind": "county", "county": "Marion", "countySlug": "marion", "label": "Marion County playbook" },
+        { "kind": "county", "county": "Stone", "countySlug": "stone", "label": "Stone County playbook" },
+        { "kind": "county", "county": "Newton", "countySlug": "newton", "label": "Newton County playbook" },
+        { "kind": "county", "county": "Izard", "countySlug": "izard", "label": "Izard County playbook" },
+        { "kind": "county", "county": "Fulton", "countySlug": "fulton", "label": "Fulton County playbook" },
+        { "kind": "county", "county": "Van Buren", "countySlug": "van-buren", "label": "Van Buren County playbook" },
+        { "kind": "county", "county": "Cleburne", "countySlug": "cleburne", "label": "Cleburne County playbook" },
+        { "kind": "county", "county": "Independence", "countySlug": "independence", "label": "Independence County playbook" },
+        { "kind": "county", "county": "White", "countySlug": "white", "label": "White County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/ozark-forward",
+          "label": "Ozark Forward command",
+          "description": "Multi-county program board — fundraising goal, volunteers, cross-county outreach"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "10-county Ozark Forward geography"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/fundraising",
+          "label": "Fundraising lane drill-down",
+          "description": "Set program fundraising goal and track grassroots revenue"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/operations",
+          "label": "Operations lane drill-down",
+          "description": "Volunteer management — onboarding, roster CRM, retention"
+        }
+      ],
+      "notes": "Ozark Forward — 10-county special outreach program. Fundraising goal blank until Sandie sets it."
+    },
+    {
+      "slug": "pam-rotter",
+      "displayName": "Pam Rotter",
+      "initials": "PRO",
+      "workbenchTier": "county",
+      "specialOutreachProgramSlug": "just-a-girl",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["special_outreach_lead", "fundraising_workbench", "volunteer_leadership_team"],
+      "teamLanes": ["county", "coalition", "fundraising", "operations", "events"],
+      "connections": [
+        { "kind": "program", "programSlug": "just-a-girl", "label": "Just A Girl program board" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/just-a-girl",
+          "label": "Just A Girl command",
+          "description": "Multi-county program board — fundraising goal and volunteer management"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties",
+          "label": "County playbooks",
+          "description": "Add county connections as your program geography is defined"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/fundraising",
+          "label": "Fundraising lane drill-down",
+          "description": "Set program fundraising goal and track grassroots revenue"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/operations",
+          "label": "Operations lane drill-down",
+          "description": "Volunteer management — onboarding, roster CRM, retention"
+        }
+      ],
+      "notes": "Just A Girl — special outreach program board. County list and fundraising goal blank until Pam fills them in."
+    },
+    {
+      "slug": "freddy-fouche",
+      "displayName": "Freddy Fouché",
+      "initials": "FFU",
+      "workbenchTier": "county",
+      "clusterInsightSlug": "central-metro",
+      "workbenchTemplates": ["union_liaison"],
+      "teamLanes": ["county", "coalition", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Saline", "countySlug": "saline", "label": "Saline County playbook" },
+        { "kind": "city", "citySlug": "benton", "label": "Benton community workbench" },
+        { "kind": "program", "programSlug": "labor", "label": "Labor coalition workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/labor",
+          "label": "Labor coalition command",
+          "description": "Union relationships, worksites, and worker story corps"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/saline",
+          "label": "Saline County command",
+          "description": "Home county playbook — union liaison anchor"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/central-arkansas",
+          "label": "Central Arkansas Metro cluster",
+          "description": "Read-only cluster context — Pulaski, Saline, Lonoke, Faulkner"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/search?q=labor+union+strategy",
+          "label": "Labor union strategy",
+          "description": "Campaign brain — labor listening brief and meeting prep"
+        }
+      ],
+      "notes": "Union liaison — Saline County home base with Central Arkansas Metro cluster read-only context."
     }
   ]
 }

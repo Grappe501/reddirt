@@ -1,6 +1,7 @@
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
 import { getEffectiveTeamLanes } from "@/lib/volunteers/leader-roster";
 import { hasVolunteerManagerRole } from "@/lib/volunteers/leader-workbench-templates";
+import { resolveClusterInsightLinks } from "@/lib/volunteers/cluster-insight";
 import { resolveLeaderGeographyScope } from "@/lib/volunteers/leader-scope";
 import { leaderWorkbenchHref } from "@/lib/volunteers/build-leader-workbench-v2";
 import type { VolunteerLeader } from "@/lib/volunteers/types";
@@ -53,7 +54,9 @@ export function resolveLeaderWorkbenchTier(leader: VolunteerLeader): WorkbenchHi
   if (leader.assistantCm) return "assistant_campaign_manager";
 
   const scope = resolveLeaderGeographyScope(leader);
-  if (scope.countySlugs.length > 1) return "cluster";
+  if (scope.countySlugs.length > 1 && !leader.countyBoardMember && !leader.clusterInsightSlug) {
+    return "cluster";
+  }
 
   if (scope.citySlugs.length > 0) {
     if (leader.notes?.toLowerCase().includes("city leader")) return "city";
@@ -147,7 +150,7 @@ export function resolveNestedWorkbenches(
     });
   }
 
-  if (currentOrder >= tierOrder("cluster") && scope.countySlugs.length > 1) {
+  if (currentOrder >= tierOrder("cluster") && scope.countySlugs.length > 1 && !leader.clusterInsightSlug) {
     add({
       tier: "cluster",
       label: `Cluster · ${scope.countySlugs.length} counties`,
@@ -155,6 +158,18 @@ export function resolveNestedWorkbenches(
       description: "Multi-county corridor rollup — county and city workbenches below.",
       accessible: true,
     });
+  }
+
+  if (leader.clusterInsightSlug) {
+    for (const insight of resolveClusterInsightLinks(leader.clusterInsightSlug)) {
+      add({
+        tier: "county",
+        label: insight.label,
+        href: insight.href,
+        description: insight.description,
+        accessible: currentOrder >= tierOrder("county"),
+      });
+    }
   }
 
   if (currentOrder >= tierOrder("assistant_campaign_manager") || hasVolunteerManagerRole(leader)) {

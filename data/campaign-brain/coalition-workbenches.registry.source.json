@@ -256,6 +256,52 @@
         { "key": "events_lead", "label": "Events Lead" },
         { "key": "volunteer_captain", "label": "Volunteer Captain" }
       ]
+    },
+    {
+      "slug": "ozark-forward",
+      "name": "Ozark Forward",
+      "tagline": "Sandie Cloud — multi-county Ozarks outreach across 10 counties",
+      "locale": "en",
+      "leadRole": "Ozark Forward program lead",
+      "frameworkNote": "Program board — volunteers may cross into county and city workbenches. Fundraising goal set by program lead.",
+      "intelSections": [
+        { "key": "county_relationships", "label": "County Relationships" },
+        { "key": "community_validators", "label": "Community Validators" },
+        { "key": "volunteer_pipeline", "label": "Volunteer Pipeline" },
+        { "key": "events_visibility", "label": "Events & Visibility" },
+        { "key": "fundraising", "label": "Fundraising & Grassroots Events" },
+        { "key": "cross_county", "label": "Cross-County Coordination" }
+      ],
+      "volunteerPathways": [
+        { "key": "program_lead", "label": "Program Lead" },
+        { "key": "outreach_captain", "label": "Outreach Captain" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "events_chair", "label": "Events Chair" }
+      ]
+    },
+    {
+      "slug": "just-a-girl",
+      "name": "Just A Girl",
+      "tagline": "Pam Rotter — multi-county outreach program board",
+      "locale": "en",
+      "leadRole": "Just A Girl program lead",
+      "frameworkNote": "Program board — county geography to be filled in by program lead. Fundraising goal blank until set.",
+      "intelSections": [
+        { "key": "county_relationships", "label": "County Relationships" },
+        { "key": "community_validators", "label": "Community Validators" },
+        { "key": "volunteer_pipeline", "label": "Volunteer Pipeline" },
+        { "key": "events_visibility", "label": "Events & Visibility" },
+        { "key": "fundraising", "label": "Fundraising & Grassroots Events" },
+        { "key": "cross_county", "label": "Cross-County Coordination" }
+      ],
+      "volunteerPathways": [
+        { "key": "program_lead", "label": "Program Lead" },
+        { "key": "outreach_captain", "label": "Outreach Captain" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "events_chair", "label": "Events Chair" }
+      ]
     }
   ]
 }
