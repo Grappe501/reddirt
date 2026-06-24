@@ -3,6 +3,7 @@
 export const LEADER_WORKBENCH_SECTIONS = [
   { id: "overview", label: "Overview" },
   { id: "hierarchy", label: "Hierarchy & branches" },
+  { id: "lead-templates", label: "Lead templates & KPIs" },
   { id: "role", label: "Role & responsibilities" },
   { id: "areas", label: "My areas" },
   { id: "kpi", label: "KPI dashboard" },

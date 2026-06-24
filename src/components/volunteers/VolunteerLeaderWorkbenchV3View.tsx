@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { LeaderTemplatePanels } from "@/components/volunteers/LeaderTemplatePanels";
 import { LeaderHierarchyPanel } from "@/components/volunteers/LeaderHierarchyPanel";
 import { LeaderOpenSlotsPanel, LeaderRecentActivityPanel } from "@/components/volunteers/LeaderActivityPanels";
 import { LeaderRosterWorkbenchPanels } from "@/components/volunteers/LeaderRosterWorkbenchPanels";
@@ -31,7 +32,7 @@ type Props = {
 };
 
 export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Props) {
-  const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live, roster, hierarchy } =
+  const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live, roster, hierarchy, leadTemplates, specialKpis } =
     payload;
   const areaLinks = resolveLeaderPersonalLinks(leader);
   const campaignPins = resolveLeaderCampaignPins(leader);
@@ -124,6 +125,12 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
           <Section id="hierarchy" title="Hierarchy & work branches">
             <LeaderHierarchyPanel hierarchy={hierarchy} leaderSlug={leader.slug} isSelf={isSelf} />
           </Section>
+
+          {leadTemplates.length || specialKpis.length ? (
+            <Section id="lead-templates" title="Lead templates & special KPIs">
+              <LeaderTemplatePanels templates={leadTemplates} specialKpis={specialKpis} />
+            </Section>
+          ) : null}
 
           <Section id="kpi" title="KPI dashboard (live)">
             <PowerOf5DashboardPanel

@@ -1,0 +1,76 @@
+import templatesFile from "../../../data/volunteers/leader-workbench-templates.source.json";
+import type { VolunteerLeader } from "@/lib/volunteers/types";
+
+export type LeaderWorkbenchTemplateId =
+  | "youth_leadership"
+  | "high_school_leadership"
+  | "hispanic_outreach_lead";
+
+export type LeaderTemplateSection = {
+  id: string;
+  label: string;
+  description: string;
+};
+
+export type LeaderTemplatePathway = {
+  key: string;
+  label: string;
+  labelEs?: string;
+};
+
+export type LeaderWorkbenchTemplate = {
+  id: LeaderWorkbenchTemplateId;
+  label: string;
+  description: string;
+  coalitionSlug?: string;
+  locale?: string;
+  includes?: LeaderWorkbenchTemplateId[];
+  sections: LeaderTemplateSection[];
+  pathways: LeaderTemplatePathway[];
+};
+
+const registry = templatesFile as {
+  templates: Record<LeaderWorkbenchTemplateId, LeaderWorkbenchTemplate>;
+};
+
+export function getLeaderWorkbenchTemplate(id: LeaderWorkbenchTemplateId): LeaderWorkbenchTemplate {
+  return registry.templates[id];
+}
+
+/** High school template includes all youth leadership sections. */
+export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): LeaderWorkbenchTemplate[] {
+  const ids = new Set<LeaderWorkbenchTemplateId>();
+
+  for (const id of leader.workbenchTemplates ?? []) {
+    ids.add(id);
+    const tpl = registry.templates[id];
+    for (const inc of tpl?.includes ?? []) {
+      ids.add(inc);
+    }
+  }
+
+  if (leader.highSchoolSenior) {
+    ids.add("high_school_leadership");
+    ids.add("youth_leadership");
+  }
+
+  const order: LeaderWorkbenchTemplateId[] = [
+    "youth_leadership",
+    "high_school_leadership",
+    "hispanic_outreach_lead",
+  ];
+
+  return order.filter((id) => ids.has(id)).map((id) => registry.templates[id]);
+}
+
+export function coalitionWorkbenchHref(slug: string): string {
+  return `/election-plan/workbenches/${slug}`;
+}
+
+export function resolveSpecialKpiCitySlugs(leader: VolunteerLeader): string[] {
+  const slugs = new Set(leader.specialKpiCitySlugs ?? []);
+  for (const conn of leader.connections) {
+    if (conn.kind === "city") slugs.add(conn.citySlug);
+  }
+  return [...slugs];
+}

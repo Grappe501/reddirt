@@ -30,6 +30,11 @@
     "county_field",
     "campus"
   ],
+  "leadTemplates": [
+    "youth_leadership",
+    "high_school_leadership",
+    "hispanic_outreach_lead"
+  ],
   "crmPath": [
     "my_five",
     "team_roster",

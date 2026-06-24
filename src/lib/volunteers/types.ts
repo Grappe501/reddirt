@@ -41,6 +41,14 @@ export type VolunteerLeader = {
   assistantCm?: boolean;
   /** Override inferred hierarchy tier (city / county / cluster / ACM / CM). */
   workbenchTier?: WorkbenchHierarchyTierId;
+  /** Coalition / youth / outreach workbench templates (stackable). */
+  workbenchTemplates?: Array<
+    "youth_leadership" | "high_school_leadership" | "hispanic_outreach_lead"
+  >;
+  /** High school senior — auto-includes youth + high school leadership templates. */
+  highSchoolSenior?: boolean;
+  /** City slugs for leadership-tracked special KPIs (e.g. Jacksonville 25% SOS lift). */
+  specialKpiCitySlugs?: string[];
   teamLanes: VolunteerTeamLaneId[];
   connections: LeaderConnection[];
   notes?: string;

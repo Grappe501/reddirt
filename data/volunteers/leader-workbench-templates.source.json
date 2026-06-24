@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-23",
+  "templates": {
+    "youth_leadership": {
+      "id": "youth_leadership",
+      "label": "Youth leadership",
+      "description": "Campus captains, peer recruiters, civic challenges, and content creation — younger-voice organizing.",
+      "coalitionSlug": "youth-engagement",
+      "sections": [
+        { "id": "campus_leaders", "label": "Campus & school leaders", "description": "Identify student org contacts and peer influencers in your network." },
+        { "id": "peer_recruitment", "label": "Peer recruitment", "description": "Recruit classmates through trusted conversations — not blast messaging." },
+        { "id": "civic_challenges", "label": "Civic challenges", "description": "Registration drives, Help 10 commitments, and civic participation milestones." },
+        { "id": "content_creation", "label": "Content creation", "description": "Short-form vertical video and authentic youth voice for local algorithms." },
+        { "id": "volunteer_hours", "label": "Volunteer hours", "description": "Track service hours and follow-up for college / scholarship portfolios." }
+      ],
+      "pathways": [
+        { "key": "campus_captain", "label": "Campus Captain" },
+        { "key": "peer_recruiter", "label": "Peer Recruiter" },
+        { "key": "content_creator", "label": "Content Creator" },
+        { "key": "civic_challenge_lead", "label": "Civic Challenge Lead" },
+        { "key": "volunteer_hours", "label": "Volunteer Hours Coordinator" }
+      ]
+    },
+    "high_school_leadership": {
+      "id": "high_school_leadership",
+      "label": "High school leadership",
+      "description": "High school senior track — school programs, registration tabling, and youth ambassador pathways (includes all youth leadership sections).",
+      "includes": ["youth_leadership"],
+      "sections": [
+        { "id": "hs_programs", "label": "High school programs", "description": "Student council, clubs, JROTC-adjacent civic groups, and class networks." },
+        { "id": "hs_registration", "label": "18-by-election tabling", "description": "Register eligible seniors and connect families to vote-plan conversations." },
+        { "id": "hs_mentor", "label": "Underclassmen pipeline", "description": "Recruit one underclassman ambassador per club or friend group." },
+        { "id": "hs_schedule", "label": "Senior schedule reality", "description": "Plan around school hours, sports, and graduation — short weekly commitments win." },
+        { "id": "hs_school_connections", "label": "School connections", "description": "Teacher allies, counselor introductions, and club sponsor relationships." }
+      ],
+      "pathways": [
+        { "key": "youth_ambassador", "label": "Youth Ambassador" },
+        { "key": "peer_recruiter", "label": "Peer Recruiter" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ]
+    },
+    "hispanic_outreach_lead": {
+      "id": "hispanic_outreach_lead",
+      "label": "Hispanic Outreach Lead",
+      "description": "Arkansas Hispanic communities — family networks, churches, schools, and festivals with natural Spanish where you choose.",
+      "coalitionSlug": "hispanic-outreach",
+      "locale": "es-US",
+      "sections": [
+        { "id": "community_leaders", "label": "Community leaders / Líderes comunitarios", "description": "Trusted local validators and introduction pathways." },
+        { "id": "church_relationships", "label": "Church relationships / Relaciones con iglesias", "description": "Faith community listening — civic engagement without partisan preaching." },
+        { "id": "family_networks", "label": "Family networks / Redes familiares", "description": "Multi-generational conversations and household registration." },
+        { "id": "schools", "label": "School connections / Conexiones escolares", "description": "High school and family school partnerships — overlaps youth templates." },
+        { "id": "festivals", "label": "Community festivals / Festivales comunitarios", "description": "Festiville and local cultural events — visibility with respect." }
+      ],
+      "pathways": [
+        { "key": "community_connector", "label": "Community Connector", "labelEs": "Conector comunitario" },
+        { "key": "family_outreach", "label": "Family Outreach Team", "labelEs": "Equipo de alcance familiar" },
+        { "key": "youth_ambassador", "label": "Youth Ambassador", "labelEs": "Embajador juvenil" },
+        { "key": "election_info", "label": "Election Information Team", "labelEs": "Equipo de información electoral" }
+      ]
+    }
+  }
+}

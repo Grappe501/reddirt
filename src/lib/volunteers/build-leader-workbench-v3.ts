@@ -1,6 +1,13 @@
+import type { SpecialKpiGoal } from "@/lib/election-plan/load-special-kpi-goals";
+import { getSpecialKpiGoalForCity } from "@/lib/election-plan/load-special-kpi-goals";
 import { buildLeaderWorkbenchV2Payload, type LeaderWorkbenchV2Payload } from "@/lib/volunteers/build-leader-workbench-v2";
 import type { LeaderRosterSnapshot } from "@/lib/volunteers/leader-roster-db";
 import { loadVolunteerLeaderRoster } from "@/lib/volunteers/leader-roster-db";
+import {
+  resolveLeaderWorkbenchTemplates,
+  resolveSpecialKpiCitySlugs,
+  type LeaderWorkbenchTemplate,
+} from "@/lib/volunteers/leader-workbench-templates";
 import type { LeaderWorkbenchLiveData } from "@/lib/volunteers/load-leader-workbench-live";
 import { loadLeaderWorkbenchLiveData } from "@/lib/volunteers/load-leader-workbench-live";
 import type { VolunteerLeader } from "@/lib/volunteers/types";
@@ -13,6 +20,8 @@ export type LeaderWorkbenchV3Payload = LeaderWorkbenchV2Payload & {
   live: LeaderWorkbenchLiveData;
   roster: LeaderRosterSnapshot;
   hierarchy: LeaderHierarchyPayload;
+  leadTemplates: LeaderWorkbenchTemplate[];
+  specialKpis: SpecialKpiGoal[];
 };
 
 export async function buildLeaderWorkbenchV3Payload(
@@ -92,6 +101,11 @@ export async function buildLeaderWorkbenchV3Payload(
 
   const nextActions = [...liveActions, ...base.nextActions].slice(0, 6);
 
+  const leadTemplates = resolveLeaderWorkbenchTemplates(leader);
+  const specialKpis = resolveSpecialKpiCitySlugs(leader)
+    .map((slug) => getSpecialKpiGoalForCity(slug))
+    .filter((g): g is SpecialKpiGoal => g != null);
+
   return {
     ...base,
     po5: { ...base.po5, intro: po5Intro, kpiItems: po5KpiItems },
@@ -100,5 +114,7 @@ export async function buildLeaderWorkbenchV3Payload(
     live,
     roster,
     hierarchy: buildLeaderHierarchyPayload(leader),
+    leadTemplates,
+    specialKpis,
   };
 }

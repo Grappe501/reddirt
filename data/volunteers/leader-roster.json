@@ -269,6 +269,41 @@
       "connections": [{ "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville — faith outreach" }]
     },
     {
+      "slug": "jasmine-serrano",
+      "displayName": "Jasmine Serrano",
+      "initials": "JSE",
+      "workbenchTier": "volunteer",
+      "highSchoolSenior": true,
+      "workbenchTemplates": ["youth_leadership", "high_school_leadership", "hispanic_outreach_lead"],
+      "specialKpiCitySlugs": ["jacksonville"],
+      "teamLanes": ["campus", "coalition", "comms", "voter-registration", "events"],
+      "connections": [
+        { "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "program", "programSlug": "hispanic-outreach", "label": "Hispanic Outreach coalition workbench" },
+        { "kind": "program", "programSlug": "youth-engagement", "label": "Youth Engagement coalition workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/jacksonville",
+          "label": "Jacksonville city strategy",
+          "description": "Priority city brief — 25% SOS lift special KPI (Festiville · Sept 20)"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/hispanic-outreach",
+          "label": "Hispanic Outreach command",
+          "description": "School connections, family networks, youth ambassador pathways"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/youth-engagement",
+          "label": "Youth Engagement command",
+          "description": "High school programs, peer recruitment, civic challenges"
+        }
+      ],
+      "notes": "Hispanic Outreach Lead · Jacksonville high school senior — youth + coalition templates."
+    },
+    {
       "slug": "jean-reed",
       "displayName": "Jean Reed",
       "initials": "JRE",
