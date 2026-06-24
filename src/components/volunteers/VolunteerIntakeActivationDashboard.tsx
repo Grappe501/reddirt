@@ -5,9 +5,11 @@ import {
   markVolunteerIntakeAwaitingInfoAction,
   markVolunteerIntakeDeclinedAction,
   markVolunteerIntakeInReviewAction,
+  placeAndActivateVolunteerIntakeAction,
 } from "@/app/election-plan/operators/volunteer-intake-actions";
 import type {
   VolunteerIntakeDashboardPayload,
+  VolunteerIntakePlacementLeaderOption,
   VolunteerIntakeQueueRow,
 } from "@/lib/volunteers/load-volunteer-intake-dashboard";
 
@@ -42,7 +44,13 @@ function sourceLabel(source: string | null): string {
   return source ?? "—";
 }
 
-function DetailPanel({ row }: { row: VolunteerIntakeQueueRow }) {
+function DetailPanel({
+  row,
+  placementLeaders,
+}: {
+  row: VolunteerIntakeQueueRow;
+  placementLeaders: VolunteerIntakePlacementLeaderOption[];
+}) {
   return (
     <section className="mt-8 rounded-xl border border-[var(--ep-gold)]/45 bg-white p-6 shadow-sm">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -103,10 +111,66 @@ function DetailPanel({ row }: { row: VolunteerIntakeQueueRow }) {
           ) : null}
         </div>
         <div>
-          <dt className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Interests</dt>
-          <dd className="mt-1 text-[var(--ep-navy-muted)]">{row.interests.length ? row.interests.join(", ") : "—"}</dd>
+          <dt className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Contact spine</dt>
+          <dd className="mt-1 text-[var(--ep-navy)]">
+            {row.placementLeaderName ? (
+              <>
+                Placed with {row.placementLeaderName}
+                {row.placementLeaderInitials ? (
+                  <span className="font-mono text-xs"> ({row.placementLeaderInitials})</span>
+                ) : null}
+              </>
+            ) : (
+              "Not placed yet"
+            )}
+          </dd>
+          {row.crmHref ? (
+            <dd className="mt-1">
+              <Link href={row.crmHref} className="text-xs font-semibold text-[var(--ep-blue)] hover:underline">
+                Relational CRM record →
+              </Link>
+            </dd>
+          ) : null}
         </div>
       </dl>
+
+      {row.status !== "CONVERTED" && row.status !== "DECLINED" && row.status !== "ARCHIVED" ? (
+        <form action={placeAndActivateVolunteerIntakeAction} className="mt-6 rounded-xl border border-emerald-200/60 bg-emerald-50/40 p-4">
+          <p className="text-xs font-bold uppercase tracking-wide text-emerald-900">Phase 1 · Place & activate</p>
+          <p className="mt-1 text-sm text-emerald-950">
+            Creates a RelationalContact, adds to leader team roster, and marks intake activated.
+          </p>
+          <input type="hidden" name="intakeId" value={row.id} />
+          <label className="mt-3 block text-sm">
+            <span className="text-xs font-semibold uppercase text-[var(--ep-navy-muted)]">Placement leader</span>
+            <select
+              name="placementLeaderSlug"
+              required
+              defaultValue={row.placementLeaderSlug ?? ""}
+              className="mt-1 w-full max-w-md rounded-md border border-[var(--ep-border)] bg-white px-3 py-2 text-sm"
+            >
+              <option value="" disabled>
+                Select leader…
+              </option>
+              {placementLeaders.map((l) => (
+                <option key={l.slug} value={l.slug}>
+                  {l.displayName} ({l.initials})
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="mt-3 flex items-center gap-2 text-sm text-[var(--ep-navy)]">
+            <input type="checkbox" name="addToTeamRoster" defaultChecked className="rounded" />
+            Add to leader team roster
+          </label>
+          <button
+            type="submit"
+            className="mt-4 rounded-full bg-emerald-800 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white"
+          >
+            Place & activate → CRM
+          </button>
+        </form>
+      ) : null}
 
       <div className="mt-6 flex flex-wrap gap-2">
         <form action={markVolunteerIntakeInReviewAction}>
@@ -169,12 +233,19 @@ function DetailPanel({ row }: { row: VolunteerIntakeQueueRow }) {
 
 type Props = {
   payload: VolunteerIntakeDashboardPayload;
+  placementLeaders: VolunteerIntakePlacementLeaderOption[];
   selectedIntakeId?: string;
   notice?: string;
   error?: string;
 };
 
-export function VolunteerIntakeActivationDashboard({ payload, selectedIntakeId, notice, error }: Props) {
+export function VolunteerIntakeActivationDashboard({
+  payload,
+  placementLeaders,
+  selectedIntakeId,
+  notice,
+  error,
+}: Props) {
   const selected = payload.queue.find((r) => r.id === selectedIntakeId);
 
   return (
@@ -187,7 +258,11 @@ export function VolunteerIntakeActivationDashboard({ payload, selectedIntakeId, 
           </div>
         ) : null}
 
-        {notice ? (
+        {notice === "placed" ? (
+          <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
+            Intake placed — RelationalContact and team roster updated.
+          </div>
+        ) : notice ? (
           <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-950">
             Intake updated.
           </div>
@@ -196,7 +271,11 @@ export function VolunteerIntakeActivationDashboard({ payload, selectedIntakeId, 
           <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900">
             {error === "auth"
               ? "You need Election Plan operator access or Volunteer Manager login to update intakes."
-              : "Could not complete that action — try again or use admin workbench."}
+              : error === "placement"
+                ? "Select a placement leader before activating."
+                : error === "spine"
+                  ? "Could not create CRM contact — check database migration and try again."
+                  : "Could not complete that action — try again or use admin workbench."}
           </div>
         ) : null}
 
@@ -278,7 +357,7 @@ export function VolunteerIntakeActivationDashboard({ payload, selectedIntakeId, 
           ) : null}
         </div>
 
-        {selected ? <DetailPanel row={selected} /> : null}
+        {selected ? <DetailPanel row={selected} placementLeaders={placementLeaders} /> : null}
 
         <section className="mt-10 rounded-xl border border-dashed border-[var(--ep-navy)]/20 bg-[var(--ep-cream)]/50 p-6">
           <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Activation playbook</h2>

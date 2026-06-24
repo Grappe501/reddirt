@@ -2,6 +2,8 @@ import { WorkflowIntakeStatus } from "@prisma/client";
 
 import { prisma } from "@/lib/db";
 import { isDatabaseConfigured } from "@/lib/env";
+import { getVolunteerLeaderRoster } from "@/lib/volunteers/leader-roster";
+import { readIntakePlacementMetadata } from "@/lib/volunteers/contact-spine/metadata";
 
 /** Public form sources that feed the volunteer activation pipeline. */
 export const VOLUNTEER_INTAKE_SOURCES = ["volunteer", "join_movement", "local_team"] as const;
@@ -33,6 +35,17 @@ export type VolunteerIntakeQueueRow = {
   volunteerTeamSlug: string | null;
   submissionId: string | null;
   detailHref: string;
+  relationalContactId: string | null;
+  crmHref: string | null;
+  placementLeaderSlug: string | null;
+  placementLeaderInitials: string | null;
+  placementLeaderName: string | null;
+};
+
+export type VolunteerIntakePlacementLeaderOption = {
+  slug: string;
+  displayName: string;
+  initials: string;
 };
 
 export type VolunteerIntakeDashboardPayload = {
@@ -101,6 +114,13 @@ const EMPTY: VolunteerIntakeDashboardPayload = {
   ],
   queue: [],
 };
+
+export function volunteerIntakePlacementLeaderOptions(): VolunteerIntakePlacementLeaderOption[] {
+  return getVolunteerLeaderRoster()
+    .filter((l) => l.initials?.length === 3)
+    .map((l) => ({ slug: l.slug, displayName: l.displayName, initials: l.initials }))
+    .sort((a, b) => a.displayName.localeCompare(b.displayName));
+}
 
 export async function loadVolunteerIntakeDashboard(): Promise<VolunteerIntakeDashboardPayload> {
   if (!isDatabaseConfigured()) return EMPTY;
@@ -185,6 +205,10 @@ export async function loadVolunteerIntakeDashboard(): Promise<VolunteerIntakeDas
       const meta = isRecord(row.metadata) ? row.metadata : {};
       const structured = row.submission?.structuredData;
       const user = row.submission?.user;
+      const placement = readIntakePlacementMetadata(row.metadata);
+      const placementLeader = placement.placementLeaderSlug
+        ? getVolunteerLeaderRoster().find((l) => l.slug === placement.placementLeaderSlug)
+        : undefined;
 
       return {
         id: row.id,
@@ -211,6 +235,15 @@ export async function loadVolunteerIntakeDashboard(): Promise<VolunteerIntakeDas
         volunteerTeamSlug: teamSlugFromSubmission(structured),
         submissionId: row.submission?.id ?? null,
         detailHref: `/election-plan/operators/volunteer-intake?intake=${row.id}`,
+        relationalContactId: row.relationalContactId ?? placement.relationalContactId ?? null,
+        crmHref: row.relationalContactId
+          ? `/admin/relational-contacts/${row.relationalContactId}`
+          : placement.relationalContactId
+            ? `/admin/relational-contacts/${placement.relationalContactId}`
+            : null,
+        placementLeaderSlug: placement.placementLeaderSlug ?? null,
+        placementLeaderInitials: placement.placementLeaderInitials ?? null,
+        placementLeaderName: placementLeader?.displayName ?? null,
       };
     });
 

@@ -6,6 +6,7 @@ import { WorkflowActionKind, WorkflowIntakeStatus } from "@prisma/client";
 
 import { requireElectionPlanApiSession } from "@/lib/election-plan/auth/require-election-plan-api";
 import { prisma } from "@/lib/db";
+import { promoteVolunteerIntakeContactSpine } from "@/lib/volunteers/contact-spine";
 import { canAccessVolunteerIntakeOps } from "@/lib/volunteers/leader-roster";
 import { isVolunteerIntakeSource } from "@/lib/volunteers/load-volunteer-intake-dashboard";
 import { tryLoadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
@@ -50,7 +51,7 @@ async function logIntakeAction(input: {
 async function loadVolunteerIntake(id: string) {
   return prisma.workflowIntake.findUnique({
     where: { id },
-    select: { id: true, status: true, source: true },
+    select: { id: true, status: true, source: true, relationalContactId: true },
   });
 }
 
@@ -98,4 +99,40 @@ export async function markVolunteerIntakeDeclinedAction(fd: FormData): Promise<v
   const id = trim(fd, "intakeId");
   if (!id) redirect(`${DASHBOARD_PATH}?error=id`);
   await transitionIntakeStatus(id, "DECLINED", "Declined from volunteer intake queue.");
+}
+
+/** Place with a leader, create RelationalContact + team roster row, mark activated. */
+export async function placeAndActivateVolunteerIntakeAction(fd: FormData): Promise<void> {
+  await requireVolunteerIntakeOpsAction();
+  const id = trim(fd, "intakeId");
+  const placementLeaderSlug = trim(fd, "placementLeaderSlug");
+  if (!id || !placementLeaderSlug) {
+    redirect(`${DASHBOARD_PATH}?intake=${id || ""}&error=placement`);
+  }
+
+  const row = await loadVolunteerIntake(id);
+  if (!row || !isVolunteerIntakeSource(row.source)) {
+    redirect(`${DASHBOARD_PATH}?error=not-found`);
+  }
+
+  try {
+    const result = await promoteVolunteerIntakeContactSpine({
+      intakeId: id,
+      placementLeaderSlug,
+      addToTeamRoster: fd.get("addToTeamRoster") !== "off",
+    });
+
+    await logIntakeAction({
+      workflowIntakeId: id,
+      kind: "STATUS_CHANGE",
+      fromStatus: row.status,
+      toStatus: "CONVERTED",
+      summary: `Placed with ${placementLeaderSlug} · CRM ${result.relationalContactId}`,
+    });
+  } catch {
+    redirect(`${DASHBOARD_PATH}?intake=${id}&error=spine`);
+  }
+
+  revalidatePath(DASHBOARD_PATH);
+  redirect(`${DASHBOARD_PATH}?intake=${id}&notice=placed`);
 }

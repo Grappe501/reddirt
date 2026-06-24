@@ -9,7 +9,9 @@ import { LeaderOperatorIdentityBar } from "@/components/volunteers/LeaderOperato
 import { PowerOf5DashboardPanel } from "@/components/power-of-5/PowerOf5DashboardPanel";
 import type { LeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-workbench-v3";
 import type { LeaderFieldLogContext } from "@/lib/volunteers/build-leader-field-log-context";
+import type { LeaderContactSpineSummary } from "@/lib/volunteers/contact-spine";
 import { LeaderLaneNavStrip } from "@/components/volunteers/LeaderLaneDrillDownView";
+import { LeaderContactSpinePanel } from "@/components/volunteers/LeaderContactSpinePanel";
 import { OperationsFeedbackStrip } from "@/components/volunteers/OperationsFeedbackStrip";
 import { LEADER_WORKBENCH_SECTIONS } from "@/lib/volunteers/leader-workbench-sections";
 import {
@@ -34,9 +36,10 @@ type Props = {
   payload: LeaderWorkbenchV3Payload;
   isSelf?: boolean;
   fieldLog?: LeaderFieldLogContext | null;
+  contactSpine?: LeaderContactSpineSummary | null;
 };
 
-export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Props) {
+export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog, contactSpine }: Props) {
   const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live, roster, hierarchy, leadTemplates, specialKpis } =
     payload;
   const areaLinks = resolveLeaderPersonalLinks(leader);
@@ -106,6 +109,9 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
               fieldEntryCount={myFieldEntryCount}
               className="mt-4"
             />
+          ) : null}
+          {isSelf && contactSpine ? (
+            <LeaderContactSpinePanel summary={contactSpine} className="mt-4" />
           ) : null}
         </aside>
 

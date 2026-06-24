@@ -3,7 +3,10 @@ import Link from "next/link";
 
 import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
 import { VolunteerIntakeActivationDashboard } from "@/components/volunteers/VolunteerIntakeActivationDashboard";
-import { loadVolunteerIntakeDashboard } from "@/lib/volunteers/load-volunteer-intake-dashboard";
+import {
+  loadVolunteerIntakeDashboard,
+  volunteerIntakePlacementLeaderOptions,
+} from "@/lib/volunteers/load-volunteer-intake-dashboard";
 
 export const metadata: Metadata = {
   title: "Volunteer intake & activation | Operators",
@@ -19,6 +22,7 @@ type Props = {
 export default async function VolunteerIntakeOpsPage({ searchParams }: Props) {
   const sp = await searchParams;
   const payload = await loadVolunteerIntakeDashboard();
+  const placementLeaders = volunteerIntakePlacementLeaderOptions();
 
   return (
     <>
@@ -40,6 +44,7 @@ export default async function VolunteerIntakeOpsPage({ searchParams }: Props) {
       </div>
       <VolunteerIntakeActivationDashboard
         payload={payload}
+        placementLeaders={placementLeaders}
         selectedIntakeId={sp.intake}
         notice={sp.notice}
         error={sp.error}

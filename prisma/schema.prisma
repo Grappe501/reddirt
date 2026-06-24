@@ -540,6 +540,9 @@ model WorkflowIntake {
   /// Origin hint: mirrors `Submission.type` or source system key.
   source         String?
   metadata       Json?                @default("{}")
+  /// Phase 1 contact spine — CRM record created on placement / promotion.
+  relationalContactId String?
+  relationalContact   RelationalContact? @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
   createdAt      DateTime             @default(now())
   updatedAt      DateTime             @updatedAt
 
@@ -558,10 +561,9 @@ model WorkflowIntake {
   @@index([status, createdAt])
   @@index([assignedUserId, status])
   @@index([countyId, status])
+  @@index([relationalContactId])
   @@schema("public")
 }
-
-/// Scheduling bridge: required parent `WorkflowIntake`, optional `CampaignEvent` once scheduled.
 model EventRequest {
   id String @id @default(cuid())
 
@@ -2909,6 +2911,9 @@ model RelationalContact {
   voterSignals         VoterSignal[]
   emailContactProfiles EmailContactProfile[]
   communicationIdentities CommunicationIdentity[]
+  workflowIntakes      WorkflowIntake[]
+  fieldEntries         ElectionPlanFieldEntry[]
+  rosterPersons        VolunteerLeaderRosterPerson[]
 
   @@index([ownerUserId])
   @@index([matchedVoterRecordId])
@@ -7215,12 +7220,15 @@ model ElectionPlanFieldEntry {
   quantity         Int                       @default(1)
   countySlug       String
   citySlug         String?
+  relationalContactId String?
+  relationalContact   RelationalContact? @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
   createdAt        DateTime                  @default(now())
 
   @@index([countySlug, citySlug])
   @@index([operatorInitials])
   @@index([category])
   @@index([createdAt])
+  @@index([relationalContactId])
   @@schema("public")
 }
 
@@ -7259,6 +7267,8 @@ model VolunteerLeaderRosterPerson {
   notes          String?
   lastTouchNote  String?
   sortOrder      Int                         @default(0)
+  relationalContactId String?
+  relationalContact   RelationalContact?     @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
   createdAt      DateTime                    @default(now())
   updatedAt      DateTime                    @updatedAt
 
@@ -7266,6 +7276,7 @@ model VolunteerLeaderRosterPerson {
   @@index([leaderSlug])
   @@index([parentId])
   @@index([leaderInitials, layer, slotIndex])
+  @@index([relationalContactId])
   @@schema("public")
 }
 
