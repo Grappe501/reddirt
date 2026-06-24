@@ -33,6 +33,7 @@
   "leadTemplates": [
     "volunteer_manager",
     "county_candidate_coordinator",
+    "cluster_leader",
     "fundraising_field_leader",
     "event_planner",
     "fundraising_workbench",

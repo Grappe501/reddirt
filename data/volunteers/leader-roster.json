@@ -262,14 +262,63 @@
     },
     {
       "slug": "huffines",
-      "displayName": "The Huffines",
+      "displayName": "Glenda & Donnie Huffine",
       "initials": "HHU",
       "isCouple": true,
-      "teamLanes": ["county"],
+      "workbenchTier": "cluster",
+      "workbenchTemplates": ["cluster_leader"],
+      "teamLanes": ["county", "operations", "events"],
       "connections": [
-        { "kind": "county", "county": "Baxter", "countySlug": "baxter", "label": "Baxter County playbook" }
+        { "kind": "county", "county": "Baxter", "countySlug": "baxter", "label": "Baxter County playbook" },
+        { "kind": "city", "citySlug": "mountain-home", "label": "Mountain Home community workbench" },
+        { "kind": "city", "citySlug": "harrison", "label": "Harrison community workbench" },
+        { "kind": "county", "county": "Marion", "countySlug": "marion", "label": "Marion County playbook" },
+        { "kind": "county", "county": "Fulton", "countySlug": "fulton", "label": "Fulton County playbook" },
+        { "kind": "county", "county": "Boone", "countySlug": "boone", "label": "Boone County playbook" },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "Campaign cluster — north_central registry bucket (Mountain Home anchor)"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/baxter",
+          "label": "Baxter County command",
+          "description": "Home county drill-down — events, targets, leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/mountain-home",
+          "label": "Mountain Home city strategy",
+          "description": "Priority city #31 — cluster anchor town"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties",
+          "label": "County playbooks",
+          "description": "Recruit county leaders across the north_central cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "Place city leads on workbenches in cluster counties"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots across the cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across nested workbenches"
+        }
       ],
-      "notes": "Baxter lead — supports surrounding counties."
+      "notes": "North Central / Ozarks cluster leaders — Mountain Home anchor, Baxter County and surrounding north_central counties."
     },
     {
       "slug": "browns",

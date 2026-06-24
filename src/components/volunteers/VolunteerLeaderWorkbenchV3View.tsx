@@ -110,6 +110,11 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Volunteer leadership team
               </p>
             ) : null}
+            {leader.workbenchTemplates?.includes("cluster_leader") ? (
+              <p className="mt-2 inline-block rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-indigo-950 ring-1 ring-indigo-400/50">
+                Cluster leader
+              </p>
+            ) : null}
             {leader.workbenchTemplates?.includes("county_candidate_coordinator") ? (
               <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-navy)]/25">
                 County Candidate Coordinator

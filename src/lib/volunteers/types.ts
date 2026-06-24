@@ -54,6 +54,7 @@ export type VolunteerLeader = {
     | "fundraising_field_leader"
     | "volunteer_leadership_team"
     | "county_candidate_coordinator"
+    | "cluster_leader"
   >;
   /** Member of the founding volunteer leadership team (June 28 launch network). */
   volunteerLeadershipTeam?: boolean;

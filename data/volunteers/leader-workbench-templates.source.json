@@ -214,6 +214,32 @@
         { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county and city leader roles to fill" },
         { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign county leaders from the roster" }
       ]
+    },
+    "cluster_leader": {
+      "id": "cluster_leader",
+      "label": "Cluster leader",
+      "description": "Multi-county cluster oversight — recruit county and city leaders, roll up field activity, and coordinate events across your regional corridor.",
+      "sections": [
+        { "id": "cluster_geography", "label": "Cluster geography & anchor cities", "description": "Know your anchor city and county playbooks — Mountain Home, Harrison, Batesville, and surrounding north_central counties." },
+        { "id": "county_leader_recruitment", "label": "Recruit county leaders", "description": "Place county candidate coordinators and lane leads on every county playbook in your cluster." },
+        { "id": "city_workbench_placement", "label": "City workbench placement", "description": "Assign city leads on community workbenches in priority towns across the cluster." },
+        { "id": "cross_county_events", "label": "Cross-county events", "description": "Coordinate Kelly stops, fairs, and visibility that span multiple counties in your strip." },
+        { "id": "cluster_rollup", "label": "Cluster KPI rollup", "description": "Aggregate Po5, registration, and field log activity from nested county and city workbenches." },
+        { "id": "open_cluster_slots", "label": "Open cluster leadership slots", "description": "Vacant county and city roles across the cluster — assign from leader command roster." }
+      ],
+      "pathways": [
+        { "key": "cluster_coordinator", "label": "Cluster Coordinator" },
+        { "key": "county_lead_recruiter", "label": "County Lead Recruiter" },
+        { "key": "regional_events_lead", "label": "Regional Events Lead" },
+        { "key": "cross_county_captain", "label": "Cross-County Captain" }
+      ],
+      "toolLinks": [
+        { "label": "North Central / Ozarks region", "href": "/organizing-intelligence/regions/north-central-ozarks", "description": "Campaign region dashboard — north_central registry bucket" },
+        { "label": "County playbooks", "href": "/election-plan/counties", "description": "75-county drill-down — Baxter, Marion, Fulton, Boone, and cluster counties" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches across your cluster" },
+        { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county and city leader roles in your cluster" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign leaders across nested workbenches" }
+      ]
     }
   }
 }
