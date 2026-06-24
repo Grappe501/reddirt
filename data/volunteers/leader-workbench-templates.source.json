@@ -422,6 +422,33 @@
         { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Lane checklist, reports, and compliance tools" },
         { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
       ]
+    },
+    "progressives_liaison": {
+      "id": "progressives_liaison",
+      "label": "Progressives liaison",
+      "description": "Arkansas progressives coalition liaison — connect volunteer networks, county organizers, and events with progressive partner organizations.",
+      "coalitionSlug": "progressives",
+      "sections": [
+        { "id": "partner_orgs", "label": "Progressive partner organizations", "description": "Trusted validators and introduction pathways across Arkansas progressive networks." },
+        { "id": "volunteer_bridge", "label": "Volunteer pipeline bridge", "description": "Website sign-up → activation → placement on county and city workbenches." },
+        { "id": "county_organizers", "label": "County organizer coordination", "description": "Connect progressive volunteers to county playbooks and community workbenches." },
+        { "id": "events_visibility", "label": "Events & visibility", "description": "Coordinate progressive partner presence at Kelly stops and community events." },
+        { "id": "messaging_alignment", "label": "Messaging alignment", "description": "Align coalition comms with campaign messaging — relationship-first, no transactional first contact." },
+        { "id": "volunteer_recruitment", "label": "Coalition volunteer recruitment", "description": "Recruit captains and shift leads from progressive partner networks." }
+      ],
+      "pathways": [
+        { "key": "coalition_liaison", "label": "Coalition Liaison" },
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "county_organizer", "label": "County Organizer" },
+        { "key": "events_lead", "label": "Events Lead" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" }
+      ],
+      "toolLinks": [
+        { "label": "Progressives workbench", "href": "/election-plan/workbenches/progressives", "description": "Coalition command surface — partner orgs and county organizers" },
+        { "label": "Coalition lane drill-down", "href": "/election-plan/operators/leaders/me/lane/coalition", "description": "Coalition work branches and partner workbenches" },
+        { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer management — leaders, field operators, command" },
+        { "label": "Volunteer leadership launch", "href": "/election-plan/academy/june-28-launch", "description": "Volunteer management boards and leadership team hub" }
+      ]
     }
   }
 }

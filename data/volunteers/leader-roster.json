@@ -195,6 +195,57 @@
       "connections": [{ "kind": "county", "county": "Cleburne", "countySlug": "cleburne", "label": "Cleburne County playbook" }]
     },
     {
+      "slug": "lela-chism",
+      "displayName": "Lela Chism",
+      "initials": "LCH",
+      "workbenchTier": "county",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["progressives_liaison", "events_lead"],
+      "teamLanes": ["coalition", "operations", "events", "county", "comms"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "program", "programSlug": "progressives", "label": "Progressives coalition workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/progressives",
+          "label": "Progressives workbench",
+          "description": "Coalition command — partner orgs, county organizers, volunteer networks"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County-tier volunteer boards — city workbenches nested below"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Volunteer management — leaders, field operators, intake"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Volunteer management boards and leadership team hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan?tab=fieldCalendar",
+          "label": "Field calendar",
+          "description": "Events coordination and campaign stops"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Assign volunteers and event leads across county workbenches"
+        }
+      ],
+      "notes": "Progressives liaison · volunteer management · county-tier boards · events coordination."
+    },
+    {
       "slug": "sarah-rampona",
       "displayName": "Sarah Rampona",
       "initials": "SRA",

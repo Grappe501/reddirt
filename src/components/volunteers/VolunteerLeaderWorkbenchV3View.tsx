@@ -110,6 +110,11 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Fundraising field leader
               </p>
             ) : null}
+            {leader.workbenchTemplates?.includes("progressives_liaison") ? (
+              <p className="mt-2 inline-block rounded-full bg-rose-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-rose-950 ring-1 ring-rose-400/40">
+                Progressives liaison
+              </p>
+            ) : null}
             {leader.volunteerLeadershipTeam ? (
               <p className="mt-2 inline-block rounded-full bg-[var(--ep-gold)]/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-gold)]/50">
                 Volunteer leadership team

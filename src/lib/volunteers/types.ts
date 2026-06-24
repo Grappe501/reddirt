@@ -61,6 +61,7 @@ export type VolunteerLeader = {
     | "events_lead"
     | "muslim_community_lead"
     | "interfaith_comms_liaison"
+    | "progressives_liaison"
     | "finance_inner_circle"
   >;
   /** Member of the founding volunteer leadership team (June 28 launch network). */

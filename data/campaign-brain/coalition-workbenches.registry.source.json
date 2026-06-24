@@ -234,6 +234,28 @@
         { "key": "school_event_lead", "label": "School Event Lead" },
         { "key": "education_story", "label": "Education Story Corps" }
       ]
+    },
+    {
+      "slug": "progressives",
+      "name": "Progressives",
+      "tagline": "Progressive partner orgs, county organizers, and volunteer networks — local leaders define structure",
+      "locale": "en",
+      "leadRole": "Progressives liaison (confirm with coalition lead)",
+      "frameworkNote": "Relationship-first bridge to Arkansas progressive organizations — volunteer and event coordination through county workbenches.",
+      "intelSections": [
+        { "key": "partner_orgs", "label": "Progressive Partner Organizations" },
+        { "key": "county_organizers", "label": "County Organizers" },
+        { "key": "volunteer_networks", "label": "Volunteer Networks" },
+        { "key": "events_visibility", "label": "Events & Visibility" },
+        { "key": "messaging_alignment", "label": "Messaging Alignment" }
+      ],
+      "volunteerPathways": [
+        { "key": "coalition_liaison", "label": "Coalition Liaison" },
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "county_organizer", "label": "County Organizer" },
+        { "key": "events_lead", "label": "Events Lead" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" }
+      ]
     }
   ]
 }

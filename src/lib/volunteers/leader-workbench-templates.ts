@@ -18,6 +18,7 @@ export type LeaderWorkbenchTemplateId =
   | "events_lead"
   | "muslim_community_lead"
   | "interfaith_comms_liaison"
+  | "progressives_liaison"
   | "finance_inner_circle";
 
 export type LeaderTemplateToolLink = {
@@ -102,6 +103,7 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     "county_leader",
     "muslim_community_lead",
     "interfaith_comms_liaison",
+    "progressives_liaison",
     "events_lead",
     "event_planner",
     "finance_inner_circle",
