@@ -418,6 +418,8 @@
     "election-plan:18.7i:rebuild": "npm run election-plan:county-parties:scrape && npm run election-plan:18.7h:rebuild",
     "election-plan:audit:routes": "tsx scripts/election-plan/audit-portal-routes.ts",
     "election-plan:audit:county-links": "tsx scripts/election-plan/audit-county-playbook-links.ts",
+    "kelly:ops:audit": "node scripts/audit-operator-links.mjs && node scripts/audit-operator-drilldowns.mjs && node scripts/audit-field-structure-links.mjs",
+    "kelly:ops:sandbox": "npm run kelly:ops:audit && npm run typecheck && npm run election-plan:audit:routes && npm run election-plan:audit:county-links && node scripts/verify-netlify-lambda-env-budget.cjs",
     "campaign-brain:relational:build": "tsx scripts/campaign-brain/build-relationship-capital-dashboard.ts",
     "campaign-brain:captured:build": "tsx scripts/campaign-brain/build-captured-opportunity-layer.ts",
     "campaign-brain:learning:build": "tsx scripts/campaign-brain/build-event-learning.ts",

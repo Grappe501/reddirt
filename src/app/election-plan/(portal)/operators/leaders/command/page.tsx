@@ -3,17 +3,29 @@ import Link from "next/link";
 
 import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
 import { VolunteerCommandView } from "@/components/volunteers/VolunteerCommandView";
+import { OperationsCommandLadderPanel } from "@/components/volunteers/OperationsCommandLadderPanel";
 import { syncAllVolunteerLeaderOperators } from "@/lib/volunteers/ensure-leader-operator";
 import { loadCommandCoverageHeatmap } from "@/lib/volunteers/load-command-coverage";
+import { loadOperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
+import { loadOpenLeaderTasksBySlug } from "@/lib/volunteers/ops-work-items";
 
 export const metadata: Metadata = {
   title: "Leader command v3.4 | Operators",
   robots: { index: false, follow: false },
 };
 
-export default async function LeaderWorkbenchCommandPage() {
+type PageProps = {
+  searchParams?: Promise<{ opsWork?: string }>;
+};
+
+export default async function LeaderWorkbenchCommandPage({ searchParams }: PageProps) {
   await syncAllVolunteerLeaderOperators().catch(() => 0);
-  const heatmap = await loadCommandCoverageHeatmap();
+  const params = (await searchParams) ?? {};
+  const [heatmap, operationsFeedbackRollup, openLeaderTasksBySlug] = await Promise.all([
+    loadCommandCoverageHeatmap(),
+    loadOperationsFeedbackRollup(),
+    loadOpenLeaderTasksBySlug(),
+  ]);
 
   return (
     <>
@@ -30,9 +42,20 @@ export default async function LeaderWorkbenchCommandPage() {
           <div className="mt-6">
             <ElectionPlanOperatorsSubnav />
           </div>
+          <div className="mt-6">
+            <OperationsCommandLadderPanel
+              rollup={operationsFeedbackRollup}
+              activeTierId="leader_command"
+              returnTo="/election-plan/operators/leaders/command"
+            />
+          </div>
         </div>
       </div>
-      <VolunteerCommandView rows={heatmap} />
+      <VolunteerCommandView
+        rows={heatmap}
+        openLeaderTasksBySlug={openLeaderTasksBySlug}
+        statusMessage={params.opsWork === "leader_task_created" ? "Leader coaching task created." : null}
+      />
     </>
   );
 }

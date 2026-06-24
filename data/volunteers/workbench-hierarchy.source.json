@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-23",
+  "pass": "WORKBENCH-HIERARCHY-v1",
+  "status": "foundation_shipped",
+  "doctrine": "Volunteer workbench nested under city under county under cluster under assistant campaign manager under campaign manager. Every upstream tier inherits all volunteer-template sections and can open every downstream workbench in scope.",
+  "tierOrder": [
+    "volunteer",
+    "city",
+    "county",
+    "cluster",
+    "assistant_campaign_manager",
+    "campaign_manager"
+  ],
+  "inheritanceRules": [
+    "Volunteer base sections (My Five, field log, people/follow-ups, training) appear on every upstream workbench",
+    "City tier adds community workbench, city leadership slots, local events",
+    "County tier adds county playbook and all city workbenches in county",
+    "Cluster tier adds multi-county rollups",
+    "ACM tier adds operators command, field operators, all work branches",
+    "CM tier adds full Campaign OS and statewide CRM rollups"
+  ],
+  "workBranches": [
+    "comms",
+    "fundraising",
+    "events",
+    "volunteer_management",
+    "coalition",
+    "voter_registration",
+    "county_field",
+    "campus"
+  ],
+  "leadTemplates": [
+    "volunteer_manager",
+    "county_candidate_coordinator",
+    "cluster_leader",
+    "city_leader",
+    "county_leader",
+    "events_lead",
+    "muslim_community_lead",
+    "interfaith_comms_liaison",
+    "progressives_liaison",
+    "finance_inner_circle",
+    "fundraising_lead",
+    "fundraising_field_leader",
+    "campus_team_co_chair",
+    "special_outreach_lead",
+    "union_liaison",
+    "social_media_influencer",
+    "democratic_black_caucus_lead",
+    "educators_coalition_lead",
+    "event_planner",
+    "fundraising_workbench",
+    "volunteer_leadership_team",
+    "youth_leadership",
+    "high_school_leadership",
+    "hispanic_outreach_lead"
+  ],
+  "crmPath": [
+    "my_five",
+    "team_roster",
+    "field_log",
+    "field_operators",
+    "relational_contact",
+    "volunteer_intake"
+  ],
+  "codeEntrypoints": [
+    "src/lib/volunteers/workbench-hierarchy/",
+    "src/components/volunteers/LeaderHierarchyPanel.tsx",
+    "src/components/volunteers/VolunteerLeaderWorkbenchV3View.tsx#hierarchy"
+  ],
+  "futureCrm": "PPEN participation layer merges field log, My Five, relational contacts, and intake queue into full CRM"
+}

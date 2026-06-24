@@ -6,6 +6,7 @@ import {
   resolveLeaderCampaignPins,
   resolveLeaderPersonalLinks,
 } from "@/lib/volunteers/resolve-leader-links";
+import { getEffectiveTeamLanes } from "@/lib/volunteers/leader-roster";
 import { VOLUNTEER_TEAM_LANES } from "@/lib/volunteers/types";
 import type { VolunteerLeader } from "@/lib/volunteers/types";
 
@@ -37,7 +38,7 @@ export function VolunteerLeaderDashboardView({ leader }: Props) {
           <h3 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Team lanes</h3>
           <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Pick up work in the lanes you own — more lanes unlock as we grow.</p>
           <ul className="mt-4 flex flex-wrap gap-2">
-            {leader.teamLanes.map((lane) => (
+            {getEffectiveTeamLanes(leader).map((lane) => (
               <li
                 key={lane}
                 className="rounded-full border border-[var(--ep-gold)]/40 bg-[var(--ep-cream)] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy)]"
@@ -105,11 +106,11 @@ export function VolunteerLeaderDashboardView({ leader }: Props) {
             <Link href="/onboarding/power-of-5" className="ep-btn ep-btn-primary ep-btn-sm">
               Power of 5 walkthrough
             </Link>
-            <Link href="/dashboard" className="ep-btn ep-btn-ghost ep-btn-sm">
-              Personal dashboard demo
+            <Link href="/election-plan/operators/leader-dashboard" className="ep-btn ep-btn-ghost ep-btn-sm">
+              Leader dashboard
             </Link>
-            <Link href="/dashboard/leader" className="ep-btn ep-btn-ghost ep-btn-sm">
-              Leader dashboard demo
+            <Link href="/election-plan/operators/leaders/me" className="ep-btn ep-btn-ghost ep-btn-sm">
+              My workbench
             </Link>
           </div>
         </section>

@@ -220,8 +220,8 @@
     {
       "slug": "educators",
       "name": "Educators",
-      "tagline": "AEA, teachers, school districts, education allies",
-      "locale": "en",
+      "leadRole": "Educators coalition lead (AEA)",
+      "frameworkNote": "AEA-endorsed statewide teacher network — April Reisma coordinates county-by-county volunteer recruitment.",
       "intelSections": [
         { "key": "aea", "label": "AEA & Teacher Networks" },
         { "key": "districts", "label": "School Districts" },
@@ -233,6 +233,97 @@
         { "key": "aea_liaison", "label": "AEA Liaison" },
         { "key": "school_event_lead", "label": "School Event Lead" },
         { "key": "education_story", "label": "Education Story Corps" }
+      ]
+    },
+    {
+      "slug": "progressives",
+      "name": "Progressives",
+      "tagline": "Progressive partner orgs, county organizers, and volunteer networks — local leaders define structure",
+      "locale": "en",
+      "leadRole": "Progressives liaison (confirm with coalition lead)",
+      "frameworkNote": "Relationship-first bridge to Arkansas progressive organizations — volunteer and event coordination through county workbenches.",
+      "intelSections": [
+        { "key": "partner_orgs", "label": "Progressive Partner Organizations" },
+        { "key": "county_organizers", "label": "County Organizers" },
+        { "key": "volunteer_networks", "label": "Volunteer Networks" },
+        { "key": "events_visibility", "label": "Events & Visibility" },
+        { "key": "messaging_alignment", "label": "Messaging Alignment" }
+      ],
+      "volunteerPathways": [
+        { "key": "coalition_liaison", "label": "Coalition Liaison" },
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "county_organizer", "label": "County Organizer" },
+        { "key": "events_lead", "label": "Events Lead" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" }
+      ]
+    },
+    {
+      "slug": "ozark-forward",
+      "name": "Ozark Forward",
+      "tagline": "Sandie Cloud — multi-county Ozarks outreach across 10 counties",
+      "locale": "en",
+      "leadRole": "Ozark Forward program lead",
+      "frameworkNote": "Program board — volunteers may cross into county and city workbenches. Fundraising goal set by program lead.",
+      "intelSections": [
+        { "key": "county_relationships", "label": "County Relationships" },
+        { "key": "community_validators", "label": "Community Validators" },
+        { "key": "volunteer_pipeline", "label": "Volunteer Pipeline" },
+        { "key": "events_visibility", "label": "Events & Visibility" },
+        { "key": "fundraising", "label": "Fundraising & Grassroots Events" },
+        { "key": "cross_county", "label": "Cross-County Coordination" }
+      ],
+      "volunteerPathways": [
+        { "key": "program_lead", "label": "Program Lead" },
+        { "key": "outreach_captain", "label": "Outreach Captain" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "events_chair", "label": "Events Chair" }
+      ]
+    },
+    {
+      "slug": "just-a-girl",
+      "name": "Just A Girl",
+      "tagline": "Pam Rotter — multi-county outreach program board",
+      "locale": "en",
+      "leadRole": "Just A Girl program lead",
+      "frameworkNote": "Program board — county geography to be filled in by program lead. Fundraising goal blank until set.",
+      "intelSections": [
+        { "key": "county_relationships", "label": "County Relationships" },
+        { "key": "community_validators", "label": "Community Validators" },
+        { "key": "volunteer_pipeline", "label": "Volunteer Pipeline" },
+        { "key": "events_visibility", "label": "Events & Visibility" },
+        { "key": "fundraising", "label": "Fundraising & Grassroots Events" },
+        { "key": "cross_county", "label": "Cross-County Coordination" }
+      ],
+      "volunteerPathways": [
+        { "key": "program_lead", "label": "Program Lead" },
+        { "key": "outreach_captain", "label": "Outreach Captain" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "events_chair", "label": "Events Chair" }
+      ]
+    },
+    {
+      "slug": "democratic-black-caucus",
+      "name": "Democratic Black Caucus",
+      "tagline": "Arkansas Democratic Black Caucus — statewide leadership and organizing",
+      "locale": "en",
+      "leadRole": "Democratic Black Caucus President",
+      "frameworkNote": "Caucus command surface — local chapter leaders define relationships and pace.",
+      "intelSections": [
+        { "key": "caucus_chapters", "label": "Caucus Chapters" },
+        { "key": "faith_communities", "label": "Faith Communities" },
+        { "key": "civic_organizations", "label": "Civic Organizations" },
+        { "key": "naacp", "label": "NAACP Relationships" },
+        { "key": "business_leaders", "label": "Business & Professional Networks" },
+        { "key": "youth_leadership", "label": "Youth Leadership" }
+      ],
+      "volunteerPathways": [
+        { "key": "caucus_president", "label": "Caucus President" },
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "chapter_chair", "label": "Chapter Chair" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" }
       ]
     }
   ]

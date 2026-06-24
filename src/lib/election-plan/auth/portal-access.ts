@@ -11,12 +11,53 @@ import {
   getVolunteerHubPassword,
   verifyVolunteerSessionToken,
 } from "@/lib/volunteers/auth/session";
+import { canAccessVolunteerIntakeOps, getVolunteerLeaderBySlug, canAccessCommsCommand, canAccessVoterRegistrationCommand, canAccessEventsCommand, canAccessCoalitionCommand, canAccessLaneCoverageCommand, canAccessGrassrootsFundraisingSettlement } from "@/lib/volunteers/leader-roster";
 
 export type PortalAuthMode = "election-plan" | "volunteer-leader" | "dev-open";
 
 export function isLeaderWorkbenchPath(pathname: string): boolean {
   const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
   return path.startsWith("/election-plan/operators/leaders");
+}
+
+export function isVolunteerIntakeOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/volunteer-intake";
+}
+
+export function isCommsCommandOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/comms-command";
+}
+
+export function isVoterRegistrationOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/voter-registration";
+}
+
+export function isEventsCommandOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/events-command";
+}
+
+export function isCoalitionCommandOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/coalition-command";
+}
+
+export function isLeaderDashboardOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/leader-dashboard";
+}
+
+export function isLaneCoverageOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/lane-coverage";
+}
+
+export function isGrassrootsFundraisingSettlementOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/grassroots-fundraising-settlement";
 }
 
 export function isLeaderWorkbenchSignInPath(pathname: string): boolean {
@@ -42,6 +83,23 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
   const jar = await cookies();
   const leaderZone = isLeaderWorkbenchPath(pathname);
   const leaderSignIn = isLeaderWorkbenchSignInPath(pathname);
+  const volunteerIntakeOps = isVolunteerIntakeOpsPath(pathname);
+  const commsCommandOps = isCommsCommandOpsPath(pathname);
+  const voterRegistrationOps = isVoterRegistrationOpsPath(pathname);
+  const eventsCommandOps = isEventsCommandOpsPath(pathname);
+  const coalitionCommandOps = isCoalitionCommandOpsPath(pathname);
+  const leaderDashboardOps = isLeaderDashboardOpsPath(pathname);
+  const laneCoverageOps = isLaneCoverageOpsPath(pathname);
+  const grassrootsSettlementOps = isGrassrootsFundraisingSettlementOpsPath(pathname);
+  const operatorDashboard =
+    volunteerIntakeOps ||
+    commsCommandOps ||
+    voterRegistrationOps ||
+    eventsCommandOps ||
+    coalitionCommandOps ||
+    leaderDashboardOps ||
+    laneCoverageOps ||
+    grassrootsSettlementOps;
 
   if (epSecret) {
     const epToken = jar.get(ELECTION_PLAN_SESSION_COOKIE)?.value;
@@ -50,13 +108,26 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
     }
   }
 
-  if (leaderZone && !leaderSignIn && volSecret) {
+  if ((leaderZone || operatorDashboard) && !leaderSignIn && volSecret) {
     const volToken = jar.get(VOLUNTEER_SESSION_COOKIE)?.value;
     const volPayload = verifyVolunteerSessionToken(volToken, volSecret);
     if (volPayload) {
-      return "volunteer-leader";
+      if (leaderZone) return "volunteer-leader";
+      const leader = getVolunteerLeaderBySlug(volPayload.leaderSlug);
+      if (leader && volunteerIntakeOps && canAccessVolunteerIntakeOps(leader)) return "volunteer-leader";
+      if (leader && commsCommandOps && canAccessCommsCommand(leader)) return "volunteer-leader";
+      if (leader && voterRegistrationOps && canAccessVoterRegistrationCommand(leader)) return "volunteer-leader";
+      if (leader && eventsCommandOps && canAccessEventsCommand(leader)) return "volunteer-leader";
+      if (leader && coalitionCommandOps && canAccessCoalitionCommand(leader)) return "volunteer-leader";
+      if (leader && leaderDashboardOps) return "volunteer-leader";
+      if (leader && laneCoverageOps && canAccessLaneCoverageCommand(leader)) return "volunteer-leader";
+      if (leader && grassrootsSettlementOps && canAccessGrassrootsFundraisingSettlement(leader)) return "volunteer-leader";
     }
     redirect(`/election-plan/operators/leaders/sign-in?next=${encodeURIComponent(pathname)}`);
+  }
+
+  if (operatorDashboard && process.env.NODE_ENV !== "production" && !volSecret && !epSecret) {
+    return "dev-open";
   }
 
   if (leaderSignIn) {

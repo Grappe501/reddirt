@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "internalOnly": true,
+  "pass": "GRASSROOTS-FUNDRAISING-COMMISSION-v1",
+  "note": "Operator-only attribution tiers for QR code and individual weblink tracked fundraising. Not published on public surfaces.",
+  "defaultFieldFundraiserDirectPercent": 10,
+  "grassrootsFundraisingLeadDirectPercent": 15,
+  "grassrootsFundraisingLeadDownlineOverridePercent": 3,
+  "grassrootsFundraisingLeadSlugs": [
+    "sarah-rampona",
+    "chance-bradford",
+    "xav-mclennon",
+    "campus-co-chair-ualr-open",
+    "campus-co-chair-ua-fayetteville-open",
+    "campus-co-chair-arkansas-state-open",
+    "ethan-christie-dunbar"
+  ]
+}

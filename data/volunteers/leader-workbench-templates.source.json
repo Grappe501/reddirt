@@ -1,0 +1,718 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-23",
+  "templates": {
+    "youth_leadership": {
+      "id": "youth_leadership",
+      "label": "Youth leadership",
+      "description": "Campus captains, peer recruiters, civic challenges, and content creation — younger-voice organizing.",
+      "coalitionSlug": "youth-engagement",
+      "sections": [
+        { "id": "campus_leaders", "label": "Campus & school leaders", "description": "Identify student org contacts and peer influencers in your network." },
+        { "id": "peer_recruitment", "label": "Peer recruitment", "description": "Recruit classmates through trusted conversations — not blast messaging." },
+        { "id": "civic_challenges", "label": "Civic challenges", "description": "Registration drives, Help 10 commitments, and civic participation milestones." },
+        { "id": "content_creation", "label": "Content creation", "description": "Short-form vertical video and authentic youth voice for local algorithms." },
+        { "id": "volunteer_hours", "label": "Volunteer hours", "description": "Track service hours and follow-up for college / scholarship portfolios." }
+      ],
+      "pathways": [
+        { "key": "campus_captain", "label": "Campus Captain" },
+        { "key": "peer_recruiter", "label": "Peer Recruiter" },
+        { "key": "content_creator", "label": "Content Creator" },
+        { "key": "civic_challenge_lead", "label": "Civic Challenge Lead" },
+        { "key": "volunteer_hours", "label": "Volunteer Hours Coordinator" }
+      ]
+    },
+    "high_school_leadership": {
+      "id": "high_school_leadership",
+      "label": "High school leadership",
+      "description": "High school senior track — school programs, registration tabling, and youth ambassador pathways (includes all youth leadership sections).",
+      "includes": ["youth_leadership"],
+      "sections": [
+        { "id": "hs_programs", "label": "High school programs", "description": "Student council, clubs, JROTC-adjacent civic groups, and class networks." },
+        { "id": "hs_registration", "label": "18-by-election tabling", "description": "Register eligible seniors and connect families to vote-plan conversations." },
+        { "id": "hs_mentor", "label": "Underclassmen pipeline", "description": "Recruit one underclassman ambassador per club or friend group." },
+        { "id": "hs_schedule", "label": "Senior schedule reality", "description": "Plan around school hours, sports, and graduation — short weekly commitments win." },
+        { "id": "hs_school_connections", "label": "School connections", "description": "Teacher allies, counselor introductions, and club sponsor relationships." }
+      ],
+      "pathways": [
+        { "key": "youth_ambassador", "label": "Youth Ambassador" },
+        { "key": "peer_recruiter", "label": "Peer Recruiter" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ]
+    },
+    "hispanic_outreach_lead": {
+      "id": "hispanic_outreach_lead",
+      "label": "Hispanic Outreach Lead",
+      "description": "Arkansas Hispanic communities — family networks, churches, schools, and festivals with natural Spanish where you choose.",
+      "coalitionSlug": "hispanic-outreach",
+      "locale": "es-US",
+      "sections": [
+        { "id": "community_leaders", "label": "Community leaders / Líderes comunitarios", "description": "Trusted local validators and introduction pathways." },
+        { "id": "church_relationships", "label": "Church relationships / Relaciones con iglesias", "description": "Faith community listening — civic engagement without partisan preaching." },
+        { "id": "family_networks", "label": "Family networks / Redes familiares", "description": "Multi-generational conversations and household registration." },
+        { "id": "schools", "label": "School connections / Conexiones escolares", "description": "High school and family school partnerships — overlaps youth templates." },
+        { "id": "festivals", "label": "Community festivals / Festivales comunitarios", "description": "Festiville and local cultural events — visibility with respect." }
+      ],
+      "pathways": [
+        { "key": "community_connector", "label": "Community Connector", "labelEs": "Conector comunitario" },
+        { "key": "family_outreach", "label": "Family Outreach Team", "labelEs": "Equipo de alcance familiar" },
+        { "key": "youth_ambassador", "label": "Youth Ambassador", "labelEs": "Embajador juvenil" },
+        { "key": "election_info", "label": "Election Information Team", "labelEs": "Equipo de información electoral" }
+      ]
+    },
+    "volunteer_manager": {
+      "id": "volunteer_manager",
+      "label": "Volunteer Manager",
+      "description": "Statewide volunteer HQ — operator roster, leader workbench access, intake pipeline, open leadership slots, and team health across the campaign.",
+      "interimNotice": "Serving as interim Volunteer Manager until a permanent replacement is named. This workbench demonstrates full vol-management functionality for the transition period.",
+      "sections": [
+        { "id": "operator_roster", "label": "Field operator roster", "description": "3-letter codes, capabilities, and field-entry whitelist — who can log results." },
+        { "id": "leader_roster", "label": "Leader workbench roster", "description": "Personal command surfaces, lane assignments, and login codes for every field leader." },
+        { "id": "command_heatmap", "label": "Command heatmap", "description": "Live field log quantities and leadership fills — green active, quiet needs first touch." },
+        { "id": "intake_activation", "label": "Intake & activation", "description": "Website form → review → placement → workbench unlock (CRM path)." },
+        { "id": "open_slots", "label": "Open leadership slots", "description": "Community workbench roles still needing a name — assign from leadership tables." },
+        { "id": "team_health", "label": "Team health rollups", "description": "My Five completeness, follow-up queues, and operator activity statewide." }
+      ],
+      "pathways": [
+        { "key": "volunteer_coordinator", "label": "Volunteer Coordinator" },
+        { "key": "operator_admin", "label": "Operator Admin" },
+        { "key": "leader_placement", "label": "Leader Placement" },
+        { "key": "intake_reviewer", "label": "Intake Reviewer" }
+      ],
+      "toolLinks": [
+        { "label": "Field operators", "href": "/election-plan/operators/field", "description": "Operator whitelist and capabilities" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Full roster heatmap and sync" },
+        { "label": "All leader workbenches", "href": "/election-plan/operators/leaders", "description": "Every personal command surface" },
+        { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer HQ entry point" },
+        { "label": "Lane coverage boards", "href": "/election-plan/operators/lane-coverage", "description": "Top-250 city chairs, coalition workbench owners, and SfA campus slots" },
+        { "label": "Leader dashboard", "href": "/election-plan/operators/leader-dashboard", "description": "Live My Five, follow-ups, and statewide team health rollup" },
+        { "label": "Volunteer intake & activation", "href": "/election-plan/operators/volunteer-intake", "description": "Public form → review → placement → workbench unlock" },
+        { "label": "Signup sheet intake (admin)", "href": "/admin/volunteers/intake", "description": "Paper signup OCR review and voter-file match" }
+      ]
+    },
+    "event_planner": {
+      "id": "event_planner",
+      "label": "Event Planner",
+      "description": "Plan, chair, and execute community events — roles, run of show, Mobilize, day-of ops, and post-event follow-up. Includes full fundraising workbench functions.",
+      "includes": ["fundraising_workbench"],
+      "sections": [
+        { "id": "event_scope", "label": "Event scope & purpose", "description": "Define why this stop matters — persuasion, registration, fundraising, or visibility." },
+        { "id": "run_of_show", "label": "Run of show", "description": "Timeline, roles, and day-of sequence — event leadership ≠ city leadership." },
+        { "id": "committee_roles", "label": "Committee & role assignments", "description": "Chair, logistics, invitations, program, photography, setup/teardown — assign on event workbench." },
+        { "id": "mobilize_shifts", "label": "Mobilize & volunteer shifts", "description": "Live Mobilize page, shift assignments, and 48-hour lead time on new events." },
+        { "id": "event_command", "label": "Event command workbench", "description": "Dedicated event record — leadership slots, assignments, and AAR separate from city board." },
+        { "id": "day_of_ops", "label": "Day-of operations", "description": "Check-in, volunteer briefing, field log capture, and escalation path to campaign ops." },
+        { "id": "post_event", "label": "Post-event closeout", "description": "Thank-yous, Po5 commitments, donor follow-up, and field log within 48 hours." }
+      ],
+      "pathways": [
+        { "key": "event_chair", "label": "Event Chair" },
+        { "key": "logistics_lead", "label": "Logistics Lead" },
+        { "key": "day_of_captain", "label": "Day-of Captain" },
+        { "key": "fundraising_committee", "label": "Fundraising Committee Member" }
+      ],
+      "toolLinks": [
+        { "label": "Events & Mobilize command", "href": "/election-plan/operators/events-command", "description": "Upcoming stops, Mobilize gaps, promotion queue, and post-event closeout" },
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Work completion, organizing, reporting, and tools" },
+        { "label": "Field calendar", "href": "/election-plan?tab=fieldCalendar", "description": "Campaign field calendar and stop command centers" },
+        { "label": "Mobilize rules", "href": "/election-plan/movement-infrastructure/mobilize-rules", "description": "When Mobilize is required for volunteer shifts" }
+      ]
+    },
+    "fundraising_workbench": {
+      "id": "fundraising_workbench",
+      "label": "Fundraising workbench",
+      "description": "Full fundraising lane — donor pipeline, ride-alongs, event revenue, house parties, committee asks, and compliance-aware stewardship.",
+      "sections": [
+        { "id": "donor_pipeline", "label": "Donor pipeline", "description": "Track asks, thank-yous, and 48-hour follow-up on every contact." },
+        { "id": "ride_alongs", "label": "Ride-alongs", "description": "Coordinate Kelly or surrogate donor conversations in your geography." },
+        { "id": "event_revenue", "label": "Event revenue", "description": "Fundraising events, host committees, VIP tables, and profit goals on event workbenches." },
+        { "id": "house_parties", "label": "House party hosts", "description": "Small-room gatherings — Po5 commitments and grassroots asks." },
+        { "id": "committee_fundraising", "label": "Fundraising committee", "description": "Plan and execute fundraising-oriented community events — invitations, program, day-of ask." },
+        { "id": "compliance_basics", "label": "Finance compliance basics", "description": "Arkansas campaign finance volunteer rules before solicitation at events." },
+        { "id": "stewardship", "label": "Donor stewardship", "description": "Thank-you doctrine closeout — no ask left without follow-up." }
+      ],
+      "pathways": [
+        { "key": "house_party_host", "label": "House Party Host" },
+        { "key": "fundraising_committee_member", "label": "Fundraising Committee Member" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "event_revenue_lead", "label": "Event Revenue Lead" }
+      ],
+      "toolLinks": [
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Lane checklist, reports, and Election Plan drill-downs" },
+        { "label": "Community workbench fundraising", "href": "/election-plan/workbenches/jacksonville#fundraising", "description": "City fundraising panel and opportunities" },
+        { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
+      ]
+    },
+    "fundraising_lead": {
+      "id": "fundraising_lead",
+      "label": "Fundraising Lead",
+      "description": "Fundraising lane lead — donor pipeline, house parties, ride-alongs, event revenue, and stewardship in your geography. Includes full fundraising workbench functions.",
+      "includes": ["fundraising_workbench"],
+      "sections": [
+        { "id": "donor_pipeline_lead", "label": "Donor pipeline leadership", "description": "Own asks, thank-yous, and 48-hour follow-up across your fundraising network." },
+        { "id": "house_party_hosts", "label": "House party host pipeline", "description": "Recruit and coach hosts — small rooms drive grassroots revenue." },
+        { "id": "ride_alongs", "label": "Ride-along coordination", "description": "Schedule Kelly and surrogate donor conversations in your geography." },
+        { "id": "event_revenue", "label": "Event revenue", "description": "Fundraising events, host committees, VIP tables, and profit goals on connected workbenches." },
+        { "id": "fundraising_slots", "label": "Open fundraising slots", "description": "Vacant fundraising roles on city and county workbenches — assign from leader command." },
+        { "id": "weekly_report", "label": "Weekly fundraising report", "description": "Roll up asks, thank-yous, and event revenue for your lane check-in." }
+      ],
+      "pathways": [
+        { "key": "fundraising_lead", "label": "Fundraising Lead" },
+        { "key": "house_party_host", "label": "House Party Host" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "event_revenue_lead", "label": "Event Revenue Lead" },
+        { "key": "major_donor_validator", "label": "Major Donor Validator" }
+      ],
+      "toolLinks": [
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Lane checklist, reports, and Election Plan drill-downs" },
+        { "label": "Fundraising leadership", "href": "/election-plan/executive-book/fundraising-leadership", "description": "Opportunity ownership and fundraising lead doctrine" },
+        { "label": "Fundraising opportunities", "href": "/election-plan/executive-book/fundraising-opportunities", "description": "House parties, sponsors, grassroots events, coalition fundraising" },
+        { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
+      ]
+    },
+    "fundraising_field_leader": {
+      "id": "fundraising_field_leader",
+      "label": "Fundraising field leader",
+      "description": "Statewide fundraising field lead — recruit and coach county and city fundraisers nested under your workbench. Includes full fundraising workbench functions.",
+      "includes": ["fundraising_workbench"],
+      "sections": [
+        { "id": "recruit_fundraisers", "label": "Recruit county & city fundraisers", "description": "Place fundraising leads on community workbenches and county playbooks in your network." },
+        { "id": "downstream_workbenches", "label": "Downstream workbench tree", "description": "County and city fundraisers work under your command surface — you see nested KPIs and open slots." },
+        { "id": "house_party_pipeline", "label": "House party host pipeline", "description": "Recruit hosts in priority cities — small rooms drive grassroots revenue." },
+        { "id": "ride_along_coordination", "label": "Ride-along coordination", "description": "Schedule Kelly and surrogate donor conversations across your recruiter network." },
+        { "id": "weekly_rollup", "label": "Weekly fundraising rollup", "description": "Aggregate asks, thank-yous, and event revenue from fundraisers in your tree." },
+        { "id": "open_fundraising_slots", "label": "Open fundraising slots", "description": "Vacant county or city fundraising roles — assign from leader command roster." }
+      ],
+      "pathways": [
+        { "key": "county_fundraising_lead", "label": "County Fundraising Lead" },
+        { "key": "city_fundraising_lead", "label": "City Fundraising Lead" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "house_party_host_recruiter", "label": "House Party Host Recruiter" }
+      ],
+      "toolLinks": [
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "Place fundraising recruits on city and program workbenches" },
+        { "label": "Priority cities", "href": "/election-plan/cities", "description": "Top 125 city strategy — geography for recruiter placement" },
+        { "label": "County playbooks", "href": "/election-plan/counties", "description": "County-level fundraising oversight and strike teams" },
+        { "label": "Leader command heatmap", "href": "/election-plan/operators/leaders/command", "description": "Activity and open slots across your recruiter network" }
+      ]
+    },
+    "volunteer_leadership_team": {
+      "id": "volunteer_leadership_team",
+      "label": "Volunteer leadership team",
+      "description": "Founding volunteer leadership network — onboarding, activation, retention, and leadership pathways alongside statewide field operations.",
+      "sections": [
+        { "id": "volunteer_onboarding", "label": "Volunteer onboarding", "description": "Website sign-up → activation → first workbench assignment." },
+        { "id": "leadership_nominations", "label": "Leadership pathway nominations", "description": "Identify volunteer captains ready for county or city lead slots." },
+        { "id": "team_roster_crm", "label": "Team roster CRM", "description": "My Five, branches, and operator field logs for leaders you recruit." },
+        { "id": "retention_reengagement", "label": "Retention & re-engagement", "description": "Follow up inactive volunteers and open leadership slots in connected workbenches." },
+        { "id": "launch_cadence", "label": "Leadership launch cadence", "description": "June 28 volunteer leadership launch and weekly ops rhythm." }
+      ],
+      "pathways": [
+        { "key": "volunteer_lead", "label": "Volunteer Lead" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "onboarding_manager", "label": "Onboarding Manager" },
+        { "key": "shift_captain", "label": "Shift Captain" }
+      ],
+      "toolLinks": [
+        { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer HQ — leaders, field operators, command" },
+        { "label": "All leader workbenches", "href": "/election-plan/operators/leaders", "description": "Personal command surfaces for every field leader" },
+        { "label": "Volunteer leadership launch", "href": "/election-plan/academy/june-28-launch", "description": "June 28 leadership team hub" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Vol HQ lane checklist and tools" }
+      ]
+    },
+    "county_candidate_coordinator": {
+      "id": "county_candidate_coordinator",
+      "label": "County Candidate Coordinator",
+      "description": "County-level candidate operations — coordinate events, travel, and logistics while recruiting leadership across the county playbook.",
+      "sections": [
+        { "id": "county_events", "label": "County event coordination", "description": "Schedule and execute Kelly stops, forums, and local visibility across your county." },
+        { "id": "travel_logistics", "label": "Travel & logistics", "description": "Routing, lodging, materials, and day-of setup — get the candidate team in and out clean." },
+        { "id": "run_of_show", "label": "Run of show & day-of ops", "description": "Timeline, volunteer briefing, check-in, and escalation path for county stops." },
+        { "id": "county_leadership_recruitment", "label": "Recruit county leaders", "description": "Identify and place volunteer captains, city leads, and lane leaders on county and city workbenches." },
+        { "id": "open_leadership_slots", "label": "Open leadership slots", "description": "Track unfilled roles — nominate names to the leader command roster." },
+        { "id": "county_playbook", "label": "County playbook ownership", "description": "Weekly priorities from the 75-county playbook — registration, Po5, and turnout lanes." }
+      ],
+      "pathways": [
+        { "key": "county_coordinator", "label": "County Coordinator" },
+        { "key": "county_events_lead", "label": "County Events Lead" },
+        { "key": "logistics_lead", "label": "Logistics Lead" },
+        { "key": "leadership_recruiter", "label": "Leadership Recruiter" },
+        { "key": "day_of_captain", "label": "Day-of Captain" }
+      ],
+      "toolLinks": [
+        { "label": "County lane drill-down", "href": "/election-plan/operators/leaders/me/lane/county", "description": "County playbook, leadership slots, and weekly reporting" },
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Event coordination, Mobilize, and field calendar" },
+        { "label": "Field calendar", "href": "/election-plan?tab=fieldCalendar", "description": "Kelly stops and county events — travel planning" },
+        { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county and city leader roles to fill" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign county leaders from the roster" }
+      ]
+    },
+    "cluster_leader": {
+      "id": "cluster_leader",
+      "label": "Cluster leader",
+      "description": "Multi-county cluster oversight — recruit county and city leaders, roll up field activity, and coordinate events across your regional corridor.",
+      "sections": [
+        { "id": "cluster_geography", "label": "Cluster geography & anchor cities", "description": "Know your anchor city and county playbooks — Mountain Home, Harrison, Batesville, and surrounding north_central counties." },
+        { "id": "county_leader_recruitment", "label": "Recruit county leaders", "description": "Place county candidate coordinators and lane leads on every county playbook in your cluster." },
+        { "id": "city_workbench_placement", "label": "City workbench placement", "description": "Assign city leads on community workbenches in priority towns across the cluster." },
+        { "id": "cross_county_events", "label": "Cross-county events", "description": "Coordinate Kelly stops, fairs, and visibility that span multiple counties in your strip." },
+        { "id": "cluster_rollup", "label": "Cluster KPI rollup", "description": "Aggregate Po5, registration, and field log activity from nested county and city workbenches." },
+        { "id": "open_cluster_slots", "label": "Open cluster leadership slots", "description": "Vacant county and city roles across the cluster — assign from leader command roster." }
+      ],
+      "pathways": [
+        { "key": "cluster_coordinator", "label": "Cluster Coordinator" },
+        { "key": "county_lead_recruiter", "label": "County Lead Recruiter" },
+        { "key": "regional_events_lead", "label": "Regional Events Lead" },
+        { "key": "cross_county_captain", "label": "Cross-County Captain" }
+      ],
+      "toolLinks": [
+        { "label": "North Central / Ozarks region", "href": "/organizing-intelligence/regions/north-central-ozarks", "description": "Campaign region dashboard — north_central registry bucket" },
+        { "label": "County playbooks", "href": "/election-plan/counties", "description": "75-county drill-down — Baxter, Marion, Fulton, Boone, and cluster counties" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches across your cluster" },
+        { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county and city leader roles in your cluster" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign leaders across nested workbenches" }
+      ]
+    },
+    "city_leader": {
+      "id": "city_leader",
+      "label": "City leader",
+      "description": "Community workbench owner — city leadership slots, volunteer pipeline, local events, and every nested volunteer workbench in your city.",
+      "sections": [
+        { "id": "community_workbench", "label": "Community workbench command", "description": "Own the city workbench — relationships, events, fundraising, registration, and field log for your city." },
+        { "id": "city_leadership_slots", "label": "City leadership slots", "description": "Fill open roles on the community workbench — events, comms, registration, and fundraising leads." },
+        { "id": "volunteer_pipeline", "label": "Volunteer pipeline", "description": "Website sign-up → activation → first assignment on your city workbench." },
+        { "id": "local_events", "label": "Local events calendar", "description": "City calendar, event command embeds, and post-event relational follow-up." },
+        { "id": "nested_volunteers", "label": "Nested volunteer workbenches", "description": "Volunteers under your city report through your command surface — upstream sees downstream KPIs." },
+        { "id": "county_rollup", "label": "County playbook link", "description": "Connect city progress to county playbook priorities and strike teams." }
+      ],
+      "pathways": [
+        { "key": "community_lead", "label": "Community Lead" },
+        { "key": "city_events_lead", "label": "City Events Lead" },
+        { "key": "events_lead", "label": "Events Lead" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "fundraising_lead", "label": "Fundraising Lead" }
+      ],
+      "toolLinks": [
+        { "label": "County lane drill-down", "href": "/election-plan/operators/leaders/me/lane/county", "description": "County playbook, leadership slots, and weekly reporting" },
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "City events, Mobilize, and field calendar" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches in your county" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Assign city leadership slots from the roster" }
+      ]
+    },
+    "county_leader": {
+      "id": "county_leader",
+      "label": "County leader",
+      "description": "County playbook owner — all city workbenches in your county, leadership slots, county KPI rollups, and volunteer pipeline.",
+      "sections": [
+        { "id": "county_playbook", "label": "County playbook ownership", "description": "Weekly priorities from the 75-county playbook — registration, Po5, turnout, and strike teams." },
+        { "id": "city_workbenches", "label": "City workbenches in county", "description": "Every community workbench nested under your county — upstream access to all city leads." },
+        { "id": "county_leadership_slots", "label": "County leadership slots", "description": "Fill open roles on the county playbook and connected city workbenches." },
+        { "id": "volunteer_pipeline", "label": "Volunteer pipeline", "description": "Website sign-up → activation → placement on a county or city workbench." },
+        { "id": "county_kpi", "label": "County KPI rollup", "description": "Record-backed leadership fills, field logs, and relationships across the county." },
+        { "id": "open_slots", "label": "Open leadership slots", "description": "Vacant county and city roles — nominate names to leader command roster." }
+      ],
+      "pathways": [
+        { "key": "county_chair", "label": "County Chair" },
+        { "key": "county_captain", "label": "County Captain" },
+        { "key": "city_lead_recruiter", "label": "City Lead Recruiter" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "events_lead", "label": "Events Lead" }
+      ],
+      "toolLinks": [
+        { "label": "County lane drill-down", "href": "/election-plan/operators/leaders/me/lane/county", "description": "County playbook, leadership slots, and weekly reporting" },
+        { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county and city leader roles to fill" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City workbenches in your county" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign leaders across nested workbenches" }
+      ]
+    },
+    "events_lead": {
+      "id": "events_lead",
+      "label": "Events Lead",
+      "description": "Events lane coordinator — Mobilize shifts, run of show, day-of ops, and event command workbench ownership across city and county workbenches.",
+      "sections": [
+        { "id": "event_coordination", "label": "Event coordination", "description": "Chair or coordinate community events — roles, timeline, and volunteer assignments." },
+        { "id": "mobilize_shifts", "label": "Mobilize & volunteer shifts", "description": "Live Mobilize page, shift assignments, and 48-hour lead time on new events." },
+        { "id": "run_of_show", "label": "Run of show", "description": "Day-of sequence, volunteer briefing, check-in, and escalation path." },
+        { "id": "event_command", "label": "Event command workbench", "description": "Dedicated event record — leadership slots and AAR separate from city board." },
+        { "id": "post_event", "label": "Post-event closeout", "description": "Thank-yous, Po5 commitments, and field log within 48 hours." },
+        { "id": "county_city_events", "label": "County & city event rollup", "description": "Coordinate events across connected city and county workbenches in your scope." }
+      ],
+      "pathways": [
+        { "key": "events_lead", "label": "Events Lead" },
+        { "key": "event_chair", "label": "Event Chair" },
+        { "key": "day_of_captain", "label": "Day-of Captain" },
+        { "key": "mobilize_coordinator", "label": "Mobilize Coordinator" },
+        { "key": "logistics_lead", "label": "Logistics Lead" }
+      ],
+      "toolLinks": [
+        { "label": "Events & Mobilize command", "href": "/election-plan/operators/events-command", "description": "Upcoming stops, Mobilize gaps, promotion queue, and post-event closeout" },
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Work completion, organizing, reporting, and tools" },
+        { "label": "Field calendar", "href": "/election-plan?tab=fieldCalendar", "description": "Campaign field calendar and stop command centers" },
+        { "label": "Mobilize rules", "href": "/election-plan/movement-infrastructure/mobilize-rules", "description": "When Mobilize is required for volunteer shifts" },
+        { "label": "Sherwood events panel", "href": "/election-plan/workbenches/sherwood#events", "description": "Grassroots & Guitar Strings and city event command" }
+      ]
+    },
+    "muslim_community_lead": {
+      "id": "muslim_community_lead",
+      "label": "Muslim Community Lead",
+      "description": "Arkansas Muslim communities — relationship-first outreach, mosque and community networks, women's and youth leadership. Local leaders shape content and pace.",
+      "coalitionSlug": "muslim-community",
+      "sections": [
+        { "id": "community_leadership", "label": "Community leadership", "description": "Trusted validators, introduction pathways, and culturally appropriate relationship building." },
+        { "id": "faith_leaders", "label": "Faith leader relationships", "description": "Imam and community leader listening — civic engagement without partisan preaching." },
+        { "id": "womens_leadership", "label": "Women's community leadership", "description": "Women's networks, service projects, and leadership pathways in Muslim communities." },
+        { "id": "youth_leadership", "label": "Youth leadership", "description": "Student orgs, family networks, and peer recruiters in Arkansas Muslim communities." },
+        { "id": "community_service", "label": "Community service projects", "description": "Service-first visibility — food drives, health fairs, and civic participation milestones." },
+        { "id": "election_info", "label": "Election information", "description": "Nonpartisan election information team — registration and vote-plan conversations." }
+      ],
+      "pathways": [
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "faith_connector", "label": "Faith Connector" },
+        { "key": "womens_outreach", "label": "Women's Outreach Team" },
+        { "key": "youth_ambassador", "label": "Youth Ambassador" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ],
+      "toolLinks": [
+        { "label": "Muslim Community workbench", "href": "/election-plan/workbenches/muslim-community", "description": "Coalition command surface — intel sections and volunteer pathways" },
+        { "label": "Muslim outreach framework", "href": "/election-plan/search?q=muslim+community+outreach", "description": "Campaign brain — relationship-first doctrine and meeting tracker" },
+        { "label": "Coalition lane drill-down", "href": "/election-plan/operators/leaders/me/lane/coalition", "description": "Coalition work branches, reports, and partner workbenches" }
+      ]
+    },
+    "interfaith_comms_liaison": {
+      "id": "interfaith_comms_liaison",
+      "label": "Interfaith communications liaison",
+      "description": "Bridge Christian and Muslim communities for campaign communications — trusted introductions, respectful messaging, and coordinated visibility.",
+      "coalitionSlug": "faith-communities",
+      "sections": [
+        { "id": "christian_muslim_bridge", "label": "Christian–Muslim bridge", "description": "Tom's liaison role — connect faith communities for respectful campaign communications." },
+        { "id": "comms_coordination", "label": "Communications coordination", "description": "Align messaging with comms lane — no outreach without community validator review." },
+        { "id": "faith_communities_workbench", "label": "Faith Communities workbench", "description": "Multi-faith relationship organizing — congregations, clergy, and faith-based orgs." },
+        { "id": "message_review", "label": "Message review cadence", "description": "Community leaders review copy before public-facing faith coalition content." },
+        { "id": "joint_visibility", "label": "Joint event visibility", "description": "Coordinated presence at interfaith and community service events." }
+      ],
+      "pathways": [
+        { "key": "interfaith_liaison", "label": "Interfaith Liaison" },
+        { "key": "faith_connector", "label": "Faith Connector" },
+        { "key": "comms_liaison", "label": "Communications Liaison" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ],
+      "toolLinks": [
+        { "label": "Faith Communities workbench", "href": "/election-plan/workbenches/faith-communities", "description": "Multi-faith coalition command surface" },
+        { "label": "Muslim Community workbench", "href": "/election-plan/workbenches/muslim-community", "description": "Muslim coalition hub — paired with Christian bridge outreach" },
+        { "label": "Comms lane drill-down", "href": "/election-plan/operators/leaders/me/lane/comms", "description": "Communications lane checklist and tools" }
+      ]
+    },
+    "finance_inner_circle": {
+      "id": "finance_inner_circle",
+      "label": "Finance inner circle",
+      "description": "Fundraiser hosts and finance committee inner circle — donor pipeline, compliance basics, major donor introductions, and treasurer coordination.",
+      "sections": [
+        { "id": "host_fundraiser", "label": "Host fundraiser planning", "description": "Ali Khan fundraiser — invitations, host committee, program, and revenue goal on event workbench." },
+        { "id": "donor_pipeline", "label": "Donor pipeline", "description": "Track asks, thank-yous, and 48-hour follow-up on every contact." },
+        { "id": "compliance_basics", "label": "Finance compliance basics", "description": "Arkansas campaign finance volunteer rules before solicitation at events." },
+        { "id": "major_donor_intros", "label": "Major donor introductions", "description": "Validator introductions — Kelly or closer handles the ask; you open the door." },
+        { "id": "treasurer_coordination", "label": "Treasurer coordination", "description": "Receipts, in-kind gifts, and finance committee review before public claims." },
+        { "id": "stewardship", "label": "Donor stewardship", "description": "Thank-you doctrine closeout — no ask left without follow-up." }
+      ],
+      "pathways": [
+        { "key": "finance_committee_member", "label": "Finance Committee Member" },
+        { "key": "host_committee_chair", "label": "Host Committee Chair" },
+        { "key": "major_donor_validator", "label": "Major Donor Validator" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" }
+      ],
+      "toolLinks": [
+        { "label": "Fundraising leadership", "href": "/election-plan/executive-book/fundraising-leadership", "description": "County, community, and event fundraising lead ownership" },
+        { "label": "Fundraising operating system", "href": "/election-plan/executive-book/fundraising-operating-system", "description": "Statewide fundraising lanes and opportunity rollups" },
+        { "label": "Fundraising opportunities", "href": "/election-plan/executive-book/fundraising-opportunities", "description": "House parties, sponsors, grassroots events, coalition fundraising" },
+        { "label": "Budget dashboard", "href": "/election-plan/executive-book/budget/dashboard", "description": "Finance inner circle — campaign budget framework and targets" },
+        { "label": "Grassroots fundraising settlement", "href": "/election-plan/operators/grassroots-fundraising-settlement", "description": "Commission registry and GoodChange attribution — internal only" },
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Lane checklist, reports, and compliance tools" },
+        { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
+      ]
+    },
+    "campus_team_co_chair": {
+      "id": "campus_team_co_chair",
+      "label": "Students for Arkansas co-chair",
+      "description": "Campus team co-chair — lead your anchor campus chapter, recruit campus leadership teams, coordinate events and volunteer management, and coach grassroots fundraisers on your campus workbench.",
+      "includes": ["fundraising_workbench", "volunteer_leadership_team"],
+      "sections": [
+        { "id": "campus_chapter", "label": "Campus chapter leadership", "description": "Campus chair, voter registration, events, volunteer, comms, and fundraising director roles on your campus workbench." },
+        { "id": "student_recruitment", "label": "Student volunteer recruitment", "description": "Power of 5 on campus — every student leader recruits five; internship tracks for field, digital, research, comms, and events." },
+        { "id": "campus_events", "label": "Campus events cadence", "description": "Monthly voter registration, volunteer recruitment, community service, and fundraising events — plus semester Kelly stops and GOTV." },
+        { "id": "volunteer_management", "label": "Volunteer management", "description": "Onboarding, shift captains, Mobilize events, and retention across your campus network and satellite schools." },
+        { "id": "grassroots_fundraising", "label": "Grassroots fundraising", "description": "Recruit campus fundraisers — tracked links and QR attribution roll up to your campus workbench (operator-only settlement)." },
+        { "id": "co_chair_coordination", "label": "Five co-chair coordination", "description": "Students for Arkansas statewide — Labor Day milestones, open co-chair slots, and cross-campus rollups." }
+      ],
+      "pathways": [
+        { "key": "campus_chair", "label": "Campus Chair" },
+        { "key": "voter_registration_director", "label": "Voter Registration Director" },
+        { "key": "events_director", "label": "Events Director" },
+        { "key": "volunteer_director", "label": "Volunteer Director" },
+        { "key": "communications_director", "label": "Communications Director" },
+        { "key": "fundraising_director", "label": "Fundraising Director" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" }
+      ],
+      "toolLinks": [
+        { "label": "Students for Arkansas program", "href": "/election-plan/workbenches/students-for-arkansas", "description": "Statewide student movement command — five co-chairs, Labor Day goals" },
+        { "label": "Campus network hub", "href": "/election-plan/campuses", "description": "Arkansas higher-ed network — registration, volunteers, fundraising goals" },
+        { "label": "Campus captains", "href": "/election-plan/campuses/captains", "description": "Campus captain roster and open slots across the state" },
+        { "label": "Freshman week readiness", "href": "/election-plan/campuses/freshman-week", "description": "Move-in and orientation activation windows" },
+        { "label": "Students for Arkansas · Executive Book", "href": "/election-plan/executive-book/students-for-arkansas", "description": "Chapter 9 doctrine — co-chair responsibilities and milestones" },
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and recruiter tree" },
+        { "label": "Grassroots settlement (internal)", "href": "/election-plan/operators/grassroots-fundraising-settlement", "description": "Attribution keys and commission rollup — operator only" },
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Mobilize, run of show, and campus event command" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" }
+      ]
+    },
+    "social_media_influencer": {
+      "id": "social_media_influencer",
+      "label": "Social media influencer",
+      "description": "Grassroots content creator and amplifier — volunteer page access, SMOS tools, and authentic local reach on your platforms.",
+      "sections": [
+        { "id": "content_creation", "label": "Content creation", "description": "Short-form video, reels, and authentic Arkansas voice — amplify Kelly stops and local stories." },
+        { "id": "influencer_reach", "label": "Influencer reach", "description": "Your audience is a relational asset — share campaign content with your own validator voice." },
+        { "id": "story_submissions", "label": "Story submissions", "description": "Feed Story Corps and the media library from field moments you capture." },
+        { "id": "volunteer_recruitment", "label": "Volunteer recruitment", "description": "Drive sign-ups to the volunteer page — convert followers into field volunteers." },
+        { "id": "publish_cadence", "label": "Publish cadence", "description": "Same-day stop content, weekly resume growth, and human approval before publish." }
+      ],
+      "pathways": [
+        { "key": "content_creator", "label": "Content Creator" },
+        { "key": "influencer", "label": "Social Media Influencer" },
+        { "key": "peer_recruiter", "label": "Peer Recruiter" },
+        { "key": "photographer", "label": "Photographer" },
+        { "key": "video_editor", "label": "Video Editor" }
+      ],
+      "toolLinks": [
+        { "label": "Volunteer sign-up page", "href": "/volunteers", "description": "Public volunteer page — share with your audience" },
+        { "label": "Content Studio", "href": "/election-plan/workbenches/content-studio", "description": "SMOS — ideas, drafts, and publish pipeline" },
+        { "label": "Story Corps", "href": "/election-plan/workbenches/story-corps", "description": "Submit stories, photos, and quotes from the field" },
+        { "label": "Social Media Operating System", "href": "/election-plan/executive-book/social-media-operating-system", "description": "Chapter 12 doctrine — content and narrative ops" },
+        { "label": "Comms lane drill-down", "href": "/election-plan/operators/leaders/me/lane/comms", "description": "Communications lane checklist and tools" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding and team roster" }
+      ]
+    },
+    "democratic_black_caucus_lead": {
+      "id": "democratic_black_caucus_lead",
+      "label": "Democratic Black Caucus",
+      "description": "Arkansas Democratic Black Caucus — statewide Black Democratic leadership, volunteer pipeline, fundraising, and county-scale organizing without county chair titles.",
+      "coalitionSlug": "democratic-black-caucus",
+      "includes": ["volunteer_leadership_team", "fundraising_workbench"],
+      "sections": [
+        { "id": "caucus_leadership", "label": "Caucus leadership", "description": "President and chapter validators — relationship-first outreach across Arkansas Black Democratic networks." },
+        { "id": "volunteer_management", "label": "Volunteer management", "description": "Onboarding, activation, retention, and leadership pathways — full vol-management stack on caucus geography." },
+        { "id": "county_organizing", "label": "County organizing access", "description": "Pulaski and Saline county playbook tools — leadership slots and KPIs without county chair title." },
+        { "id": "fundraising", "label": "Fundraising", "description": "Grassroots events, house parties, and donor stewardship across caucus networks." },
+        { "id": "finance_coordination", "label": "Finance coordination", "description": "Finance inner circle — budget framework, compliance basics, and treasurer coordination." },
+        { "id": "faith_civic", "label": "Faith & civic networks", "description": "Churches, NAACP, Greek life, HBCU, and business validators in caucus geography." }
+      ],
+      "pathways": [
+        { "key": "caucus_president", "label": "Caucus President" },
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "finance_committee", "label": "Finance Committee Member" }
+      ],
+      "toolLinks": [
+        { "label": "Democratic Black Caucus workbench", "href": "/election-plan/workbenches/democratic-black-caucus", "description": "Caucus command surface — intel sections and volunteer pathways" },
+        { "label": "African American Outreach workbench", "href": "/election-plan/workbenches/african-american-outreach", "description": "Coalition hub — faith, civic, NAACP, HBCU networks" },
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and compliance" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer management — onboarding, roster CRM, retention" },
+        { "label": "Budget dashboard", "href": "/election-plan/executive-book/budget/dashboard", "description": "Finance inner circle — campaign budget framework" },
+        { "label": "County playbooks", "href": "/election-plan/counties", "description": "Pulaski and Saline drill-downs — county tools without chair title" }
+      ]
+    },
+    "educators_coalition_lead": {
+      "id": "educators_coalition_lead",
+      "label": "Educators coalition lead",
+      "description": "Arkansas Education Association — statewide teacher network activation, volunteer recruitment across all counties, fundraising, and finance coordination for Kelly's endorsed AEA partnership.",
+      "coalitionSlug": "educators",
+      "includes": ["volunteer_leadership_team", "fundraising_workbench"],
+      "sections": [
+        { "id": "aea_leadership", "label": "AEA leadership", "description": "April Reisma pathway — teacher validators, district contacts, and endorsement activation." },
+        { "id": "county_teacher_recruitment", "label": "County-by-county recruitment", "description": "Identify teacher advocates in every county — place volunteers on county and city workbenches statewide." },
+        { "id": "volunteer_management", "label": "Volunteer management", "description": "Onboarding, activation, retention, and leadership pathways for educator volunteers across counties." },
+        { "id": "school_events", "label": "School & educator events", "description": "Kelly stops, educator meetings, and local visibility with AEA validators." },
+        { "id": "fundraising", "label": "Fundraising", "description": "Grassroots educator fundraising events and donor stewardship." },
+        { "id": "finance_coordination", "label": "Finance coordination", "description": "Finance inner circle — budget framework, compliance basics, and treasurer coordination." }
+      ],
+      "pathways": [
+        { "key": "aea_chair", "label": "AEA Chair" },
+        { "key": "teacher_connector", "label": "Teacher Connector" },
+        { "key": "aea_liaison", "label": "AEA Liaison" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "finance_committee", "label": "Finance Committee Member" }
+      ],
+      "toolLinks": [
+        { "label": "Educators coalition workbench", "href": "/election-plan/workbenches/educators", "description": "AEA, teachers, school districts, and education allies command surface" },
+        { "label": "County playbooks", "href": "/election-plan/counties", "description": "Place teacher volunteers on every county workbench" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches statewide" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" },
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and compliance" },
+        { "label": "Budget dashboard", "href": "/election-plan/executive-book/budget/dashboard", "description": "Finance inner circle — campaign budget framework" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign educator volunteers across counties" }
+      ]
+    },
+    "special_outreach_lead": {
+      "id": "special_outreach_lead",
+      "label": "Special outreach program",
+      "description": "Multi-county outreach command — own fundraising goal, volunteer management, and coalition workbench. Volunteers may cross into county workbenches in your geography.",
+      "includes": ["fundraising_workbench", "volunteer_leadership_team"],
+      "sections": [
+        { "id": "program_command", "label": "Program command surface", "description": "Your dedicated coalition workbench — intel sections, pathways, and local assignments." },
+        { "id": "multi_county_geography", "label": "Multi-county geography", "description": "Track relationships across counties — some volunteers will also appear on county and city boards below you." },
+        { "id": "volunteer_management", "label": "Volunteer management", "description": "Onboarding, roster CRM, shift captains, and retention — county-scale ops on a program board." },
+        { "id": "fundraising_goal", "label": "Program fundraising goal", "description": "Set and track your program goal — blank until you fill it in; grassroots events and tracked links roll up here." },
+        { "id": "cross_county_placement", "label": "Cross-county placement", "description": "Place captains on county playbooks and city workbenches when their relationships span counties." },
+        { "id": "events_mobilize", "label": "Events & Mobilize", "description": "Program events, fair circuit stops, and community visibility across your counties." }
+      ],
+      "pathways": [
+        { "key": "program_lead", "label": "Program Lead" },
+        { "key": "outreach_captain", "label": "Outreach Captain" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "events_chair", "label": "Events Chair" }
+      ],
+      "toolLinks": [
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and program goal tracking" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" },
+        { "label": "Coalition lane drill-down", "href": "/election-plan/operators/leaders/me/lane/coalition", "description": "Coalition work branches and partner workbenches" },
+        { "label": "County playbooks", "href": "/election-plan/counties", "description": "Nested county drill-downs for cross-county volunteers" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches in your geography" }
+      ]
+    },
+    "union_liaison": {
+      "id": "union_liaison",
+      "label": "Union liaison",
+      "description": "Labor coalition liaison — union relationships, worksite captains, and cluster geography for your home county without cluster manager responsibilities.",
+      "coalitionSlug": "labor",
+      "sections": [
+        { "id": "union_relationships", "label": "Union relationships", "description": "Local unions, labor education partners, and validator introductions." },
+        { "id": "worksite_captains", "label": "Worksite captains", "description": "Identify shop stewards and member communicators for relational outreach." },
+        { "id": "cluster_context", "label": "Cluster geography context", "description": "Read-only cluster rollups for your region — data for your area without cluster manager duties." },
+        { "id": "worker_stories", "label": "Worker story corps", "description": "Member stories and listening sessions — relationship-first labor outreach." },
+        { "id": "labor_events", "label": "Labor events & visibility", "description": "Union hall meetings, labor education events, and coordinated visibility." }
+      ],
+      "pathways": [
+        { "key": "union_liaison", "label": "Union Liaison" },
+        { "key": "worksite_captain", "label": "Worksite Captain" },
+        { "key": "labor_education", "label": "Labor Education Team" },
+        { "key": "worker_story_corps", "label": "Worker Story Corps" }
+      ],
+      "toolLinks": [
+        { "label": "Labor coalition workbench", "href": "/election-plan/workbenches/labor", "description": "Union relationships, worksites, and worker story corps" },
+        { "label": "Coalition lane drill-down", "href": "/election-plan/operators/leaders/me/lane/coalition", "description": "Coalition work branches and labor partners" },
+        { "label": "Labor union strategy", "href": "/election-plan/search?q=labor+union+strategy", "description": "Campaign brain — labor listening brief and meeting prep" },
+        { "label": "County lane drill-down", "href": "/election-plan/operators/leaders/me/lane/county", "description": "Home county playbook and nested city workbenches" }
+      ]
+    },
+    "progressives_liaison": {
+      "id": "progressives_liaison",
+      "label": "Progressives liaison",
+      "description": "Arkansas progressives coalition liaison — connect volunteer networks, county organizers, and events with progressive partner organizations.",
+      "coalitionSlug": "progressives",
+      "sections": [
+        { "id": "partner_orgs", "label": "Progressive partner organizations", "description": "Trusted validators and introduction pathways across Arkansas progressive networks." },
+        { "id": "volunteer_bridge", "label": "Volunteer pipeline bridge", "description": "Website sign-up → activation → placement on county and city workbenches." },
+        { "id": "county_organizers", "label": "County organizer coordination", "description": "Connect progressive volunteers to county playbooks and community workbenches." },
+        { "id": "events_visibility", "label": "Events & visibility", "description": "Coordinate progressive partner presence at Kelly stops and community events." },
+        { "id": "messaging_alignment", "label": "Messaging alignment", "description": "Align coalition comms with campaign messaging — relationship-first, no transactional first contact." },
+        { "id": "volunteer_recruitment", "label": "Coalition volunteer recruitment", "description": "Recruit captains and shift leads from progressive partner networks." }
+      ],
+      "pathways": [
+        { "key": "coalition_liaison", "label": "Coalition Liaison" },
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "county_organizer", "label": "County Organizer" },
+        { "key": "events_lead", "label": "Events Lead" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" }
+      ],
+      "toolLinks": [
+        { "label": "Coalition lane rollup", "href": "/election-plan/operators/coalition-command", "description": "Twelve workbenches — ownership, readiness, partner intake, and liaison roster" },
+        { "label": "Progressives workbench", "href": "/election-plan/workbenches/progressives", "description": "Coalition command surface — partner orgs and county organizers" },
+        { "label": "Coalition lane drill-down", "href": "/election-plan/operators/leaders/me/lane/coalition", "description": "Coalition work branches and partner workbenches" },
+        { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer management — leaders, field operators, command" },
+        { "label": "Volunteer leadership launch", "href": "/election-plan/academy/june-28-launch", "description": "Volunteer management boards and leadership team hub" }
+      ]
+    },
+    "comms_lead": {
+      "id": "comms_lead",
+      "label": "Comms lead",
+      "description": "Communications lane owner — county message packets, local validator stories, events alignment, and offline conversation logging.",
+      "sections": [
+        { "id": "message_packet", "label": "County message packet", "description": "Pull core line and shareable prompts from the statewide hub — align every post with campaign messaging." },
+        { "id": "local_validator", "label": "Local validator story", "description": "One neighbor, faith leader, or business story per week — sourced only, no unsourced claims." },
+        { "id": "events_alignment", "label": "Events lane alignment", "description": "Coordinate copy and photos with events lane — ready 72 hours before each stop." },
+        { "id": "messages_hub", "label": "Conversations & Stories hub", "description": "County narratives, shareable content, and field conversation prompts." },
+        { "id": "conversation_reach", "label": "Offline conversation reach", "description": "Log conversations sparked by posts — field log category for comms lane reporting." },
+        { "id": "debate_prep", "label": "Debate prep materials", "description": "Kelly pathway materials when assigned — debate prep workbench access." }
+      ],
+      "pathways": [
+        { "key": "comms_lead", "label": "Comms Lead" },
+        { "key": "content_coordinator", "label": "Content Coordinator" },
+        { "key": "local_storyteller", "label": "Local Storyteller" },
+        { "key": "social_media_captain", "label": "Social Media Captain" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ],
+      "toolLinks": [
+        { "label": "Statewide comms command", "href": "/election-plan/operators/comms-command", "description": "Editorial review, event alignment, email triage, and county comms coverage" },
+        { "label": "Comms lane drill-down", "href": "/election-plan/operators/leaders/me/lane/comms", "description": "Work completion, organizing, reporting, and tools" },
+        { "label": "Conversations & Stories", "href": "/messages", "description": "County narratives and shareable content hub" },
+        { "label": "Debate prep workbench", "href": "/election-plan/debate-prep", "description": "Kelly pathway materials when assigned" },
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Align event comms with field calendar" }
+      ]
+    },
+    "voter_registration_lead": {
+      "id": "voter_registration_lead",
+      "label": "Voter registration lead",
+      "description": "Statewide registration lane — 18-by-election tabling, Help 10, county registration goals, campus bridges, and clerk coordination.",
+      "sections": [
+        { "id": "registration_drives", "label": "Registration drive cadence", "description": "Confirm next drive on county and city workbench calendars — tabling, festivals, and campus stops." },
+        { "id": "help_ten", "label": "Help 10 participation", "description": "Ten conversations leading to registration checks — relational pipeline before blast messaging." },
+        { "id": "county_goals", "label": "County registration goals", "description": "75-county playbook registration targets — prioritize youth registration counties first." },
+        { "id": "campus_bridges", "label": "Campus registration bridges", "description": "Students for Arkansas chapters and high school 18-by-election tabling — coordinate with campus co-chairs." },
+        { "id": "clerk_coordination", "label": "Clerk & drop-off coordination", "description": "Verify county drop-off locations and deadlines — no unsourced procedural claims." },
+        { "id": "field_reporting", "label": "Registration field reporting", "description": "Log registrations and conversations in the field log — quantity rollups for county KPI." }
+      ],
+      "pathways": [
+        { "key": "voter_registration_lead", "label": "Voter Registration Lead" },
+        { "key": "registration_captain", "label": "Registration Captain" },
+        { "key": "campus_reg_director", "label": "Campus Registration Director" },
+        { "key": "help_ten_coordinator", "label": "Help 10 Coordinator" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ],
+      "toolLinks": [
+        { "label": "Voter registration command", "href": "/election-plan/operators/voter-registration", "description": "Registration intake, drive cadence, Help 10 reporting, and county goals" },
+        { "label": "Voter registration lane drill-down", "href": "/election-plan/operators/leaders/me/lane/voter-registration", "description": "Work completion, organizing, reporting, and tools" },
+        { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county roles and registration priority counties" },
+        { "label": "Students for Arkansas", "href": "/election-plan/workbenches/students-for-arkansas", "description": "Campus chapter registration coordination" },
+        { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational registration through My Five ladders" }
+      ]
+    },
+    "assistant_cm_workbench": {
+      "id": "assistant_cm_workbench",
+      "label": "Assistant campaign manager workbench",
+      "description": "Full assistant CM tool surface — Election Plan command, operators hub, leader command, and all lane drill-downs — while permanent lane assignment is still open.",
+      "sections": [
+        { "id": "election_plan", "label": "Election Plan command", "description": "Full campaign OS — counties, cities, workbenches, and operators statewide." },
+        { "id": "operators_hub", "label": "Operators hub", "description": "Leader workbenches, field operators, and command surfaces." },
+        { "id": "leader_command", "label": "Leader command", "description": "Roster heatmap, open leadership slots, and operator sync." },
+        { "id": "lane_drilldowns", "label": "All lane drill-downs", "description": "County, events, fundraising, comms, campus, coalition, registration, and operations lanes." },
+        { "id": "workbench_hub", "label": "Community workbench hub", "description": "Every program and city workbench — placement and oversight." },
+        { "id": "role_decision", "label": "Role decision checkpoint", "description": "Explore lanes and geography before committing to assistant CM title or a fixed county/city chair." }
+      ],
+      "pathways": [
+        { "key": "assistant_cm", "label": "Assistant Campaign Manager" },
+        { "key": "county_lead", "label": "County Lead" },
+        { "key": "city_lead", "label": "City Lead" },
+        { "key": "lane_lead", "label": "Lane Lead" },
+        { "key": "volunteer_coordinator", "label": "Volunteer Coordinator" }
+      ],
+      "toolLinks": [
+        { "label": "Election Plan command", "href": "/election-plan", "description": "Full campaign OS — counties, cities, workbenches, operators" },
+        { "label": "Operators hub", "href": "/election-plan/operators", "description": "Leader workbenches, field operators, command" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Full roster heatmap and operator sync" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "All program and city workbenches" },
+        { "label": "Field operators", "href": "/election-plan/operators/field", "description": "Operator whitelist and capabilities" }
+      ]
+    }
+  }
+}

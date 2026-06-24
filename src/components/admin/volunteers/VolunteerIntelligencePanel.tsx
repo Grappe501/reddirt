@@ -38,6 +38,18 @@ export function VolunteerIntelligencePanel({ bundle }: { bundle: VolunteerSystem
       <Link href="/admin/volunteers" className="mt-3 inline-block text-xs font-bold text-kelly-navy underline">
         Open volunteer command center →
       </Link>
+      <Link
+        href="/election-plan/operators"
+        className="mt-2 block text-xs font-bold text-kelly-navy underline"
+      >
+        Operators hub · statewide ladder →
+      </Link>
+      <Link
+        href="/admin/campaign-manager-dashboard"
+        className="mt-1 block text-[10px] font-semibold text-kelly-muted underline"
+      >
+        CM board · ops root ↑
+      </Link>
     </section>
   );
 }

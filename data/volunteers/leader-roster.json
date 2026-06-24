@@ -7,6 +7,7 @@
       "initials": "WLA",
       "commandAccess": true,
       "assistantCm": true,
+      "workbenchTier": "assistant_campaign_manager",
       "teamLanes": ["county", "operations"],
       "connections": [
         { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" },
@@ -15,10 +16,28 @@
       "notes": "Assistant campaign manager — flex statewide."
     },
     {
+      "slug": "kristal-kuykendal",
+      "displayName": "Kristal Kuykendal",
+      "initials": "KKU",
+      "commandAccess": true,
+      "assistantCm": true,
+      "workbenchTier": "assistant_campaign_manager",
+      "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
+      "connections": [
+        { "kind": "global", "href": "/election-plan", "label": "Election Plan command", "description": "Full campaign OS — counties, cities, workbenches, operators" },
+        { "kind": "global", "href": "/election-plan/operators", "label": "Operators hub", "description": "Leader workbenches, field operators, command" },
+        { "kind": "global", "href": "/election-plan/workbenches", "label": "Community workbench hub", "description": "All program and city workbenches" },
+        { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" },
+        { "kind": "city", "citySlug": "conway", "label": "Conway city brief" }
+      ],
+      "notes": "Statewide flex — all lanes open while role is assigned."
+    },
+    {
       "slug": "kelly-grappe",
       "displayName": "Kelly Grappe",
       "initials": "KGR",
       "commandAccess": true,
+      "workbenchTier": "campaign_manager",
       "teamLanes": ["operations"],
       "connections": [
         { "kind": "global", "href": "/election-plan", "label": "Election Plan command", "description": "Full campaign OS" }
@@ -29,6 +48,7 @@
       "displayName": "Steve (Campaign Manager)",
       "initials": "SCM",
       "commandAccess": true,
+      "workbenchTier": "campaign_manager",
       "teamLanes": ["operations"],
       "connections": [
         { "kind": "global", "href": "/election-plan", "label": "Election Plan command", "description": "Full campaign OS" }
@@ -59,25 +79,96 @@
       "slug": "john-duke",
       "displayName": "John Duke",
       "initials": "JDU",
-      "teamLanes": ["events"],
+      "workbenchTier": "county",
+      "workbenchTemplates": ["events_lead"],
+      "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
       "connections": [
+        { "kind": "city", "citySlug": "sherwood", "label": "Sherwood community workbench" },
         { "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
         {
           "kind": "event",
           "workbenchSlug": "sherwood",
           "eventSlug": "grassroots-and-guitar-strings",
-          "label": "Grassroots & Guitar Strings event"
+          "label": "Grassroots & Guitar Strings — events coordinator"
+        },
+        { "kind": "program", "programSlug": "grassroots-guitar-strings", "label": "G&G Strings program hub" },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/events-command",
+          "label": "Events & Mobilize command",
+          "description": "Upcoming stops, Mobilize gaps, and promotion readiness"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/sherwood#events",
+          "label": "Sherwood events panel",
+          "description": "City workbench events lane and G&G Strings command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan?tab=fieldCalendar",
+          "label": "Field calendar",
+          "description": "Campaign stops and event coordination"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook — county-tier volunteer boards"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/jay-powell",
+          "label": "Jay Powell — Sherwood city leader",
+          "description": "G&G Strings co-chair and city workbench owner"
         }
-      ]
+      ],
+      "notes": "Events coordinator · G&G Strings co-chair with Jay Powell · volunteer boards through county tier."
     },
     {
       "slug": "leann-solice",
       "displayName": "Leann Solice",
       "initials": "LSO",
-      "teamLanes": ["comms", "county"],
+      "workbenchTier": "county",
+      "countyBoardMember": true,
+      "workbenchTemplates": ["county_leader", "comms_lead"],
+      "teamLanes": ["comms", "county", "events"],
       "connections": [
-        { "kind": "county", "county": "Garland", "countySlug": "garland", "label": "Garland County playbook" }
-      ]
+        { "kind": "county", "county": "Garland", "countySlug": "garland", "label": "Garland County playbook" },
+        { "kind": "city", "citySlug": "hot-springs", "label": "Hot Springs community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/garland",
+          "label": "Garland County command",
+          "description": "County playbook tools — not county chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/messages",
+          "label": "Conversations & Stories hub",
+          "description": "County narratives and shareable content"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/comms-command",
+          "label": "Statewide comms command",
+          "description": "Editorial review, event alignment, and county comms coverage"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/comms",
+          "label": "Comms lane drill-down",
+          "description": "Message packets, validator stories, and offline conversation logging"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/judy-dare",
+          "label": "Judy Dare — Hot Springs",
+          "description": "Garland County field contact — coordinate comms with county team"
+        }
+      ],
+      "notes": "Garland County comms lead — full county playbook and comms lane tools without county chair title."
     },
     {
       "slug": "ben-hurst",
@@ -98,22 +189,202 @@
       "slug": "christy-low",
       "displayName": "Christy Low",
       "initials": "CLO",
-      "teamLanes": ["fundraising"],
-      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock workbench" }]
+      "workbenchTier": "city",
+      "workbenchTemplates": ["fundraising_lead"],
+      "teamLanes": ["fundraising", "events", "county"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/little-rock#fundraising",
+          "label": "Little Rock fundraising panel",
+          "description": "City workbench fundraising lane and opportunities"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Fundraising lead ownership and opportunity doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, grassroots events, coalition fundraising"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/power-of-5/command-center",
+          "label": "Power of 5 command",
+          "description": "Relational fundraising through small rooms"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Assign fundraising leads on connected workbenches"
+        }
+      ],
+      "notes": "Fundraising Lead — Little Rock / Pulaski County donor pipeline and house party hosts."
     },
     {
       "slug": "lisa-holloway",
       "displayName": "Lisa Holloway",
       "initials": "LHO",
-      "teamLanes": ["county"],
-      "connections": [{ "kind": "county", "county": "Cleburne", "countySlug": "cleburne", "label": "Cleburne County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader", "fundraising_workbench"],
+      "teamLanes": ["county", "fundraising", "events"],
+      "connections": [
+        { "kind": "county", "county": "Cleburne", "countySlug": "cleburne", "label": "Cleburne County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/cleburne",
+          "label": "Cleburne County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "Cleburne County in the north_central Ozarks cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/cleburne",
+          "label": "Cleburne County fundraising lane",
+          "description": "County playbook — grassroots events and donor follow-up"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, and grassroots event doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Cleburne County workbenches"
+        }
+      ],
+      "notes": "Cleburne County lead · fundraising team."
+    },
+    {
+      "slug": "lela-chism",
+      "displayName": "Lela Chism",
+      "initials": "LCH",
+      "workbenchTier": "county",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["progressives_liaison", "events_lead"],
+      "teamLanes": ["coalition", "operations", "events", "county", "comms"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "program", "programSlug": "progressives", "label": "Progressives coalition workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/coalition-command",
+          "label": "Coalition lane rollup",
+          "description": "Statewide coalition workbench readiness and partner intake"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/progressives",
+          "label": "Progressives workbench",
+          "description": "Coalition command — partner orgs, county organizers, volunteer networks"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County-tier volunteer boards — city workbenches nested below"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Volunteer management — leaders, field operators, intake"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Volunteer management boards and leadership team hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan?tab=fieldCalendar",
+          "label": "Field calendar",
+          "description": "Events coordination and campaign stops"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Assign volunteers and event leads across county workbenches"
+        }
+      ],
+      "notes": "Progressives liaison · volunteer management · county-tier boards · events coordination."
     },
     {
       "slug": "sarah-rampona",
       "displayName": "Sarah Rampona",
       "initials": "SRA",
-      "teamLanes": ["fundraising", "events"],
-      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock workbench" }]
+      "workbenchTier": "cluster",
+      "volunteerLeadershipTeam": true,
+      "grassrootsFundraisingLead": true,
+      "workbenchTemplates": ["fundraising_field_leader", "fundraising_workbench", "volunteer_leadership_team"],
+      "teamLanes": ["fundraising", "operations", "county"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock workbench" },
+        { "kind": "city", "citySlug": "sherwood", "label": "Sherwood community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/little-rock#fundraising",
+          "label": "Little Rock fundraising panel",
+          "description": "City workbench fundraising lane — template for nested city recruits"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "Recruit county and city fundraisers on every workbench under your tree"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities",
+          "label": "Priority cities",
+          "description": "Top 125 city strategy — place fundraising leads by geography"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook — nested county fundraisers report here"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders",
+          "label": "Leader roster",
+          "description": "Volunteer leadership team — assign fundraisers to workbenches below you"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Command heatmap",
+          "description": "Field activity and leadership fills across your recruiter network"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "June 28 volunteer leadership team hub"
+        }
+      ],
+      "notes": "Fundraising field leader · volunteer leadership team — recruits county and city fundraisers under this workbench."
     },
     {
       "slug": "kate-stebbins",
@@ -141,64 +412,420 @@
       "slug": "xav-mclennon",
       "displayName": "Xav McLennon",
       "initials": "XMC",
-      "teamLanes": ["campus", "coalition"],
+      "workbenchTier": "volunteer",
+      "campusTeamCoChair": true,
+      "grassrootsFundraisingLead": true,
+      "volunteerLeadershipTeam": true,
+      "studentsForArkansasCoChairId": "xav-mclennon",
+      "campusLeadCampusSlug": "university-of-central-arkansas",
+      "workbenchTemplates": ["campus_team_co_chair", "events_lead"],
+      "teamLanes": ["campus", "coalition", "fundraising", "events", "operations"],
       "connections": [
-        { "kind": "program", "programSlug": "uca-campus", "label": "UCA Campus program workbench" },
-        { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" }
-      ]
+        { "kind": "program", "programSlug": "uca-campus", "label": "UCA campus program workbench" },
+        { "kind": "program", "programSlug": "students-for-arkansas", "label": "Students for Arkansas statewide program" },
+        { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/campuses/university-of-central-arkansas",
+          "label": "UCA campus network page",
+          "description": "Registration, volunteer, and fundraising goals — Central Arkansas anchor"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/uca-campus#fundraising",
+          "label": "UCA campus fundraising panel",
+          "description": "Campus workbench fundraising lane — recruit tracked grassroots fundraisers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/students-for-arkansas",
+          "label": "Students for Arkansas · Executive Book",
+          "description": "Co-chair responsibilities, monthly cadence, Labor Day milestones"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command heatmap",
+          "description": "Recruit campus fundraisers and volunteer directors under your chapter"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "June 28 volunteer leadership team hub"
+        }
+      ],
+      "notes": "Students for Arkansas co-chair · UCA campus lead · grassroots fundraising field lead · events · volunteer management."
     },
     {
       "slug": "chance-bradford",
       "displayName": "Chance Bradford",
       "initials": "CBR",
-      "teamLanes": ["campus", "events"],
+      "workbenchTier": "volunteer",
+      "campusTeamCoChair": true,
+      "grassrootsFundraisingLead": true,
+      "volunteerLeadershipTeam": true,
+      "studentsForArkansasCoChairId": "chance-bradford",
+      "campusLeadCampusSlug": "philander-smith",
+      "workbenchTemplates": ["campus_team_co_chair", "events_lead"],
+      "teamLanes": ["campus", "events", "fundraising", "operations", "coalition"],
       "connections": [
         { "kind": "program", "programSlug": "philander-smith-campus", "label": "Philander Smith campus workbench" },
-        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock — ride-along hub" }
+        { "kind": "program", "programSlug": "students-for-arkansas", "label": "Students for Arkansas statewide program" },
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock — ride-along hub" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/campuses/philander-smith",
+          "label": "Philander Smith campus network page",
+          "description": "HBCU anchor — registration, volunteer, and fundraising goals"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/philander-smith-campus#fundraising",
+          "label": "Philander Smith fundraising panel",
+          "description": "Campus workbench fundraising lane — recruit tracked grassroots fundraisers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/students-for-arkansas",
+          "label": "Students for Arkansas · Executive Book",
+          "description": "Co-chair HBCU outreach — Philander Smith chapter plus statewide HBCU strategy"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command heatmap",
+          "description": "Recruit campus fundraisers and volunteer directors under your chapter"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "June 28 volunteer leadership team hub"
+        }
       ],
-      "notes": "Available through August 2026."
+      "notes": "Students for Arkansas co-chair · Philander Smith campus lead · HBCU outreach · grassroots fundraising field lead. Available through August 2026."
+    },
+    {
+      "slug": "campus-co-chair-ualr-open",
+      "displayName": "Open — UALR Campus Co-Chair",
+      "initials": "OUL",
+      "leaderRosterSignInHidden": true,
+      "campusTeamCoChair": true,
+      "grassrootsFundraisingLead": true,
+      "studentsForArkansasCoChairId": "open-metro",
+      "campusLeadCampusSlug": "ualr",
+      "workbenchTemplates": ["campus_team_co_chair", "events_lead"],
+      "teamLanes": ["campus", "fundraising", "events", "operations", "coalition"],
+      "connections": [
+        { "kind": "program", "programSlug": "ualr-campus", "label": "UALR campus program workbench" },
+        { "kind": "program", "programSlug": "students-for-arkansas", "label": "Students for Arkansas statewide program" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/campuses/ualr",
+          "label": "UALR campus network page",
+          "description": "Metro anchor — UALR and community college coordination"
+        }
+      ],
+      "notes": "Open Students for Arkansas co-chair slot — UALR / metro. Replace slug and initials when named."
+    },
+    {
+      "slug": "campus-co-chair-ua-fayetteville-open",
+      "displayName": "Open — UA Fayetteville Campus Co-Chair",
+      "initials": "OUF",
+      "leaderRosterSignInHidden": true,
+      "campusTeamCoChair": true,
+      "grassrootsFundraisingLead": true,
+      "studentsForArkansasCoChairId": "open-northwest",
+      "campusLeadCampusSlug": "university-of-arkansas",
+      "workbenchTemplates": ["campus_team_co_chair", "events_lead"],
+      "teamLanes": ["campus", "fundraising", "events", "operations", "coalition"],
+      "connections": [
+        { "kind": "program", "programSlug": "ua-fayetteville-campus", "label": "UA Fayetteville campus program workbench" },
+        { "kind": "program", "programSlug": "students-for-arkansas", "label": "Students for Arkansas statewide program" },
+        { "kind": "county", "county": "Washington", "countySlug": "washington", "label": "Washington County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/campuses/university-of-arkansas",
+          "label": "UA Fayetteville campus network page",
+          "description": "Northwest anchor — flagship SEC footprint"
+        }
+      ],
+      "notes": "Open Students for Arkansas co-chair slot — UA Fayetteville / northwest. Replace slug and initials when named."
+    },
+    {
+      "slug": "campus-co-chair-arkansas-state-open",
+      "displayName": "Open — Arkansas State Campus Co-Chair",
+      "initials": "OAS",
+      "leaderRosterSignInHidden": true,
+      "campusTeamCoChair": true,
+      "grassrootsFundraisingLead": true,
+      "studentsForArkansasCoChairId": "open-northeast",
+      "campusLeadCampusSlug": "arkansas-state-university",
+      "workbenchTemplates": ["campus_team_co_chair", "events_lead"],
+      "teamLanes": ["campus", "fundraising", "events", "operations", "coalition"],
+      "connections": [
+        { "kind": "program", "programSlug": "arkansas-state-campus", "label": "Arkansas State campus program workbench" },
+        { "kind": "program", "programSlug": "students-for-arkansas", "label": "Students for Arkansas statewide program" },
+        { "kind": "county", "county": "Craighead", "countySlug": "craighead", "label": "Craighead County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/campuses/arkansas-state-university",
+          "label": "Arkansas State campus network page",
+          "description": "Northeast anchor — Jonesboro region student recruitment"
+        }
+      ],
+      "notes": "Open Students for Arkansas co-chair slot — Arkansas State / northeast. Replace slug and initials when named."
     },
     {
       "slug": "zach-bledsoe",
       "displayName": "Zach Bledsoe",
       "initials": "ZBL",
-      "teamLanes": ["county"],
-      "connections": [{ "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" }],
-      "notes": "Available through August 2026."
+      "acmWorkbenchFlex": true,
+      "workbenchTier": "assistant_campaign_manager",
+      "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/election-plan",
+          "label": "Election Plan command",
+          "description": "Full campaign OS — counties, cities, workbenches, operators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Leader workbenches, field operators, command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "All program and city workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Full roster heatmap and operator sync"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/field",
+          "label": "Field operators",
+          "description": "Operator whitelist and capabilities"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders",
+          "label": "All leader workbenches",
+          "description": "Every personal command surface statewide"
+        }
+      ],
+      "notes": "Assistant CM workbench flex — explore all lanes statewide until permanent role is decided. Not assistant CM title yet."
     },
     {
       "slug": "judy-harrison",
-      "displayName": "Judy Harrison",
+      "displayName": "Dr. Judy Harrison",
       "initials": "JHA",
-      "teamLanes": ["county"],
-      "connections": [{ "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader", "fundraising_workbench"],
+      "teamLanes": ["county", "fundraising", "events"],
+      "connections": [
+        { "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/clark",
+          "label": "Clark County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/southwest-arkansas",
+          "label": "Southwest Arkansas region",
+          "description": "Clark County — Hot Springs & Ouachita cluster geography"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/clark",
+          "label": "Clark County fundraising lane",
+          "description": "County playbook — grassroots events and donor follow-up"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, and grassroots event doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Clark County workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/claudia-beach",
+          "label": "Dr. Claudia Beach — county co-chair",
+          "description": "Clark County co-chair — finance inner circle and volunteer board"
+        }
+      ],
+      "notes": "Clark County lead · fundraising team · co-chair with Dr. Claudia Beach."
+    },
+    {
+      "slug": "claudia-beach",
+      "displayName": "Dr. Claudia Beach",
+      "initials": "CBE",
+      "workbenchTier": "county",
+      "countyBoardMember": true,
+      "workbenchTemplates": ["county_leader", "finance_inner_circle"],
+      "teamLanes": ["county", "fundraising", "events", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/clark",
+          "label": "Clark County command",
+          "description": "County playbook tools — co-chair without sole county chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Finance committee coordination and donor pipeline doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework and targets"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, and grassroots event doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/judy-harrison",
+          "label": "Dr. Judy Harrison — county co-chair",
+          "description": "Clark County lead — co-chair partner"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Volunteer board and leadership assignments across Clark County"
+        }
+      ],
+      "notes": "Clark County co-chair with Dr. Judy Harrison · finance inner circle."
     },
     {
       "slug": "jay-powell",
       "displayName": "Jay Powell",
       "initials": "JPO",
-      "teamLanes": ["events", "fundraising", "county"],
+      "workbenchTier": "city",
+      "workbenchTemplates": ["city_leader"],
+      "teamLanes": ["county", "events", "fundraising", "operations", "voter-registration", "comms", "coalition"],
       "connections": [
         { "kind": "city", "citySlug": "sherwood", "label": "Sherwood community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
         {
           "kind": "event",
           "workbenchSlug": "sherwood",
           "eventSlug": "grassroots-and-guitar-strings",
-          "label": "Grassroots & Guitar Strings — co-lead"
+          "label": "Grassroots & Guitar Strings — co-chair"
         },
-        { "kind": "program", "programSlug": "grassroots-guitar-strings", "label": "G&G Strings program hub" }
-      ]
+        { "kind": "program", "programSlug": "grassroots-guitar-strings", "label": "G&G Strings program hub" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/sherwood",
+          "label": "Sherwood workbench command",
+          "description": "City leadership board — all lanes and nested volunteers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/sherwood",
+          "label": "Sherwood city strategy",
+          "description": "Priority city brief — vote target and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook rollup for Sherwood progress"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/john-duke",
+          "label": "John Duke — events coordinator",
+          "description": "G&G Strings co-chair and county-tier events lead"
+        }
+      ],
+      "notes": "Sherwood city leader · Grassroots & Guitar Strings co-chair with John Duke."
     },
     {
       "slug": "huffines",
-      "displayName": "The Huffines",
+      "displayName": "Glenda & Donnie Huffine",
       "initials": "HHU",
       "isCouple": true,
-      "teamLanes": ["county"],
+      "workbenchTier": "cluster",
+      "workbenchTemplates": ["cluster_leader"],
+      "teamLanes": ["county", "operations", "events"],
       "connections": [
-        { "kind": "county", "county": "Baxter", "countySlug": "baxter", "label": "Baxter County playbook" }
+        { "kind": "county", "county": "Baxter", "countySlug": "baxter", "label": "Baxter County playbook" },
+        { "kind": "city", "citySlug": "mountain-home", "label": "Mountain Home community workbench" },
+        { "kind": "city", "citySlug": "harrison", "label": "Harrison community workbench" },
+        { "kind": "county", "county": "Marion", "countySlug": "marion", "label": "Marion County playbook" },
+        { "kind": "county", "county": "Fulton", "countySlug": "fulton", "label": "Fulton County playbook" },
+        { "kind": "county", "county": "Boone", "countySlug": "boone", "label": "Boone County playbook" },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "Campaign cluster — north_central registry bucket (Mountain Home anchor)"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/baxter",
+          "label": "Baxter County command",
+          "description": "Home county drill-down — events, targets, leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/mountain-home",
+          "label": "Mountain Home city strategy",
+          "description": "Priority city #31 — cluster anchor town"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties",
+          "label": "County playbooks",
+          "description": "Recruit county leaders across the north_central cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "Place city leads on workbenches in cluster counties"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots across the cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across nested workbenches"
+        }
       ],
-      "notes": "Baxter lead — supports surrounding counties."
+      "notes": "North Central / Ozarks cluster leaders — Mountain Home anchor, Baxter County and surrounding north_central counties."
     },
     {
       "slug": "browns",
@@ -210,18 +837,199 @@
       "notes": "Union rep — Danny Brown initials (DBR)."
     },
     {
+      "slug": "teresa-dannaway",
+      "displayName": "Teresa Dannaway",
+      "initials": "TDA",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader", "fundraising_workbench"],
+      "teamLanes": ["county", "events", "fundraising", "operations", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "Saline", "countySlug": "saline", "label": "Saline County playbook" },
+        { "kind": "city", "citySlug": "benton", "label": "Benton community workbench" },
+        { "kind": "city", "citySlug": "bryant", "label": "Bryant community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/saline",
+          "label": "Saline County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/benton",
+          "label": "Benton workbench command",
+          "description": "Saline County seat — community workbench leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, and grassroots event doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Saline County workbenches"
+        }
+      ],
+      "notes": "Saline County chair — youth registration county priority."
+    },
+    {
       "slug": "carol-hutto",
       "displayName": "Carol Hutto",
       "initials": "CHU",
-      "teamLanes": ["county"],
-      "connections": [{ "kind": "county", "county": "Van Buren", "countySlug": "van-buren", "label": "Van Buren County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Van Buren", "countySlug": "van-buren", "label": "Van Buren County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/van-buren",
+          "label": "Van Buren County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "Van Buren County in the north_central Ozarks cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Van Buren County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Van Buren County workbenches"
+        }
+      ],
+      "notes": "Van Buren County lead."
+    },
+    {
+      "slug": "sandy-bondalier",
+      "displayName": "Sandy Bondalier",
+      "initials": "SBO",
+      "workbenchTier": "county",
+      "countyBoardMember": true,
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["volunteer_leadership_team"],
+      "teamLanes": ["county", "operations", "events"],
+      "connections": [
+        { "kind": "county", "county": "Van Buren", "countySlug": "van-buren", "label": "Van Buren County playbook" },
+        { "kind": "city", "citySlug": "clinton", "label": "Clinton community workbench" },
+        { "kind": "city", "citySlug": "fairfield-bay", "label": "Fairfield Bay community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/van-buren",
+          "label": "Van Buren County command",
+          "description": "County playbook and nested city workbenches — volunteer board access"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/carol-hutto",
+          "label": "Carol Hutto — county lead",
+          "description": "Van Buren County chair — Sandy supports the board without chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Volunteer board assignments across Van Buren County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Volunteer board and leadership team hub"
+        }
+      ],
+      "notes": "Van Buren County volunteer board — county and city workbench visibility without county chair title."
+    },
+    {
+      "slug": "savannah-baugher",
+      "displayName": "Savannah Baugher",
+      "initials": "SBA",
+      "volunteerBoardMember": true,
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["volunteer_leadership_team"],
+      "teamLanes": ["operations", "events", "county"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Volunteer HQ — leaders, field operators, command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Volunteer board assignments and open leadership slots"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Founding volunteer network and leadership team hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders",
+          "label": "All leader workbenches",
+          "description": "Statewide volunteer board visibility"
+        }
+      ],
+      "notes": "Statewide volunteer board — June 28 founding network."
     },
     {
       "slug": "brook-linson",
       "displayName": "Brook Linson",
       "initials": "BLI",
-      "teamLanes": ["county", "campus"],
-      "connections": [{ "kind": "county", "county": "White", "countySlug": "white", "label": "White County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "campus", "events", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "White", "countySlug": "white", "label": "White County playbook" },
+        { "kind": "city", "citySlug": "searcy", "label": "Searcy community workbench" },
+        { "kind": "city", "citySlug": "beebe", "label": "Beebe community workbench" },
+        { "kind": "city", "citySlug": "bald-knob", "label": "Bald Knob community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/white",
+          "label": "White County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/searcy",
+          "label": "Searcy city strategy",
+          "description": "County seat — priority city brief and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "White County in the north_central campaign cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in White County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across White County workbenches"
+        }
+      ],
+      "notes": "White County lead — county playbook and city workbenches in Searcy, Beebe, and Bald Knob."
     },
     {
       "slug": "dana-jeff",
@@ -249,25 +1057,264 @@
       "connections": [{ "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville — faith outreach" }]
     },
     {
+      "slug": "jasmine-serrano",
+      "displayName": "Jasmine Serrano",
+      "initials": "JSE",
+      "workbenchTier": "volunteer",
+      "highSchoolSenior": true,
+      "workbenchTemplates": ["youth_leadership", "high_school_leadership", "hispanic_outreach_lead"],
+      "specialKpiCitySlugs": ["jacksonville"],
+      "teamLanes": ["campus", "coalition", "comms", "voter-registration", "events"],
+      "connections": [
+        { "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "program", "programSlug": "hispanic-outreach", "label": "Hispanic Outreach coalition workbench" },
+        { "kind": "program", "programSlug": "youth-engagement", "label": "Youth Engagement coalition workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/jacksonville",
+          "label": "Jacksonville city strategy",
+          "description": "Priority city brief — 25% SOS lift special KPI (Festiville · Sept 20)"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/hispanic-outreach",
+          "label": "Hispanic Outreach command",
+          "description": "School connections, family networks, youth ambassador pathways"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/youth-engagement",
+          "label": "Youth Engagement command",
+          "description": "High school programs, peer recruitment, civic challenges"
+        }
+      ],
+      "notes": "Hispanic Outreach Lead · Jacksonville high school senior — youth + coalition templates."
+    },
+    {
+      "slug": "dana-nixon",
+      "displayName": "Dana Nixon",
+      "initials": "DNI",
+      "workbenchTemplates": ["event_planner", "fundraising_workbench"],
+      "specialKpiCitySlugs": ["jacksonville"],
+      "teamLanes": ["events", "fundraising"],
+      "connections": [
+        { "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "city", "citySlug": "england", "label": "England — Nixon Flower Farm host city" },
+        {
+          "kind": "event",
+          "workbenchSlug": "england",
+          "eventSlug": "nixon-flower-farm",
+          "label": "Nixon Flower Farm · event chair (Jul 14)"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/jacksonville",
+          "label": "Jacksonville city strategy",
+          "description": "Priority city brief — 25% SOS lift special KPI (Festiville · Sept 20)"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/jacksonville",
+          "label": "Jacksonville event & fundraising hub",
+          "description": "Community workbench — events, leadership, field log"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/jacksonville#events",
+          "label": "Jacksonville events board",
+          "description": "City calendar and event leadership slots"
+        }
+      ],
+      "notes": "Jacksonville · event planner — Nixon Flower Farm with full fundraising workbench."
+    },
+    {
       "slug": "jean-reed",
       "displayName": "Jean Reed",
       "initials": "JRE",
-      "teamLanes": ["voter-registration", "county"],
-      "connections": [{ "kind": "county", "county": "Carroll", "countySlug": "carroll", "label": "Carroll County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_candidate_coordinator"],
+      "teamLanes": ["county", "events", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Carroll", "countySlug": "carroll", "label": "Carroll County playbook" },
+        { "kind": "city", "citySlug": "eureka-springs", "label": "Eureka Springs community workbench" },
+        { "kind": "city", "citySlug": "berryville", "label": "Berryville community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/carroll",
+          "label": "Carroll County command",
+          "description": "County playbook drill-down — events, targets, and leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/county-parties/carroll",
+          "label": "Carroll County Democratic Party",
+          "description": "County party coordination and local validators"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/northwest-arkansas",
+          "label": "Northwest Arkansas region",
+          "description": "NWA cluster — Benton, Washington, Carroll, Madison"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan?tab=fieldCalendar",
+          "label": "Field calendar",
+          "description": "Kelly stops and county events — travel and logistics planning"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots to fill in Carroll"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign county leaders from the roster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/forward-motion/county-party-carroll-2026-07-14",
+          "label": "Carroll County party meeting",
+          "description": "July 14 Forward Motion stop — Eureka Springs"
+        }
+      ],
+      "notes": "Carroll County Candidate Coordinator — events, travel, logistics, and recruiting county leaders."
     },
     {
       "slug": "carol-eagan",
       "displayName": "Carol Eagan",
       "initials": "CEA",
-      "teamLanes": ["operations", "fundraising"],
-      "connections": [{ "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock — volunteer management" }]
+      "commandAccess": true,
+      "volunteerManagerInterim": true,
+      "workbenchTemplates": ["volunteer_manager"],
+      "teamLanes": ["operations", "fundraising", "county"],
+      "connections": [
+        { "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock — volunteer management" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "global", "href": "/election-plan/operators/volunteer-intake", "label": "Volunteer intake & activation", "description": "Website sign-up queue — review, placement, workbench unlock" },
+        { "kind": "global", "href": "/election-plan/operators", "label": "Operators hub", "description": "Volunteer HQ — leaders, field operators, command" },
+        { "kind": "global", "href": "/election-plan/operators/leaders/command", "label": "Leader command roster", "description": "Field log heatmap and operator sync" },
+        { "kind": "global", "href": "/election-plan/operators/field", "label": "Field operators", "description": "3-letter whitelist and capabilities" },
+        { "kind": "global", "href": "/election-plan/operators/leaders", "label": "All leader workbenches", "description": "Statewide personal command surfaces" }
+      ],
+      "notes": "Interim Volunteer Manager — temporary until a permanent replacement is named."
+    },
+    {
+      "slug": "shannie-jackson",
+      "displayName": "Shannie Jackson",
+      "initials": "SJA",
+      "workbenchTemplates": ["voter_registration_lead"],
+      "teamLanes": ["voter-registration", "county", "campus", "operations", "events"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/voter-registration",
+          "label": "Voter registration command",
+          "description": "Statewide registration intake, drives, Help 10, and county goals"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Registration priority counties and open leader slots"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/students-for-arkansas",
+          "label": "Students for Arkansas",
+          "description": "Campus registration bridges and co-chair coordination"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Placement on county and city workbenches after intake review"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/power-of-5/command-center",
+          "label": "Power of 5 command center",
+          "description": "Help 10 and relational registration ladders statewide"
+        }
+      ],
+      "notes": "Statewide voter registration lead — 18-by-election tabling, county goals, campus bridges."
     },
     {
       "slug": "ali-khan",
-      "displayName": "Dr. Ali Khan",
+      "displayName": "Dr. Ali Khan & Tom",
       "initials": "AKH",
-      "teamLanes": ["coalition", "fundraising"],
-      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock — Muslim community hub" }]
+      "isCouple": true,
+      "workbenchTier": "county",
+      "volunteerLeadershipTeam": true,
+      "interfaithCommsLiaison": true,
+      "workbenchTemplates": ["muslim_community_lead", "event_planner", "finance_inner_circle"],
+      "teamLanes": ["coalition", "fundraising", "events", "operations", "comms", "county"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock — Muslim community hub" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "program", "programSlug": "muslim-community", "label": "Muslim Community coalition workbench" },
+        { "kind": "program", "programSlug": "faith-communities", "label": "Faith Communities workbench — Tom interfaith liaison" },
+        {
+          "kind": "event",
+          "workbenchSlug": "muslim-community",
+          "eventSlug": "ali-khan-fundraiser-2026-08-10",
+          "label": "Ali Khan fundraiser — Aug 10"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/muslim-community",
+          "label": "Muslim Community workbench",
+          "description": "Coalition command — community leadership, faith, women's and youth pathways"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/muslim-community#fundraising",
+          "label": "Muslim Community fundraising panel",
+          "description": "Coalition fundraiser lane and host committee"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/faith-communities",
+          "label": "Faith Communities workbench",
+          "description": "Tom — Christian–Muslim communications bridge"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Finance inner circle — opportunity ownership and host committee doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Volunteer management — leaders, field operators, command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Volunteer management boards and leadership team hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan?tab=fieldCalendar",
+          "label": "Field calendar",
+          "description": "Ali Khan fundraiser Aug 10 — event coordination"
+        }
+      ],
+      "notes": "Muslim Community Lead · Tom — interfaith comms liaison (Christian–Muslim bridge) · hosting coalition fundraiser Aug 10."
     },
     {
       "slug": "kevin-heifner",
@@ -280,12 +1327,46 @@
       "slug": "terry-coleman",
       "displayName": "Terry Coleman",
       "initials": "TCO",
-      "teamLanes": ["county"],
+      "workbenchTier": "cluster",
+      "workbenchTemplates": ["cluster_leader"],
+      "teamLanes": ["county", "events", "operations"],
       "connections": [
         { "kind": "county", "county": "Conway", "countySlug": "conway", "label": "Conway County playbook" },
         { "kind": "county", "county": "Menifee", "countySlug": "menifee", "label": "Menifee County playbook" },
-        { "kind": "city", "citySlug": "conway", "label": "Conway city brief" }
-      ]
+        { "kind": "county", "county": "Perry", "countySlug": "perry", "label": "Perry County playbook" },
+        { "kind": "city", "citySlug": "morrilton", "label": "Morrilton community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/conway",
+          "label": "Conway County command",
+          "description": "Cluster anchor county — playbook drill-down and leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/river-valley",
+          "label": "River Valley region",
+          "description": "Conway County cluster — Morrilton anchor and adjacent counties"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/morrilton",
+          "label": "Morrilton city strategy",
+          "description": "Conway County seat — priority city brief"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots across the Conway cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across nested workbenches"
+        }
+      ],
+      "notes": "Conway County cluster leader — Conway, Menifee, and Perry counties."
     },
     {
       "slug": "dianne-vanessa",
@@ -299,8 +1380,27 @@
       "slug": "mary-ella-yamaguchi",
       "displayName": "Mary Ella Yamaguchi",
       "initials": "MYA",
+      "workbenchTier": "county",
       "teamLanes": ["county"],
       "connections": [{ "kind": "county", "county": "Pope", "countySlug": "pope", "label": "Pope County playbook" }]
+    },
+    {
+      "slug": "jan-shaper",
+      "displayName": "Jan Shaper",
+      "initials": "JSH",
+      "workbenchTier": "city",
+      "teamLanes": ["county", "events"],
+      "connections": [
+        { "kind": "city", "citySlug": "russellville", "label": "Russellville community workbench" },
+        { "kind": "county", "county": "Pope", "countySlug": "pope", "label": "Pope County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/russellville",
+          "label": "Russellville city strategy",
+          "description": "Priority city brief — vote target, geography, and local playbook"
+        }
+      ],
+      "notes": "Russellville city leader — Pope County River Valley."
     },
     {
       "slug": "marnie-dan",
@@ -319,39 +1419,922 @@
     },
     {
       "slug": "gail-choate",
-      "displayName": "Gail Choate",
+      "displayName": "Dr. Gail Choate",
       "initials": "GCH",
-      "teamLanes": ["coalition"],
+      "commandAccess": true,
+      "assistantCm": true,
+      "nonprofitAdvisor": true,
+      "workbenchTier": "assistant_campaign_manager",
+      "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
       "connections": [
         {
           "kind": "global",
           "href": "/onboarding/power-of-5",
           "label": "Grassroots philosophy — Power of 5 walkthrough",
-          "description": "Statewide mentor resource"
+          "description": "Statewide mentor resource — pinned on all dashboards"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan",
+          "label": "Election Plan command",
+          "description": "Full campaign OS — counties, cities, workbenches, operators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Leader workbenches, field operators, command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "All program and city workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Full roster heatmap and operator sync"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/field",
+          "label": "Field operators",
+          "description": "Operator whitelist and capabilities"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders",
+          "label": "All leader workbenches",
+          "description": "Every personal command surface statewide"
         }
       ],
-      "notes": "Statewide grassroots philosophy mentor — pinned on all dashboards."
+      "notes": "Nonprofit advisor — assistant CM flex access statewide. Grassroots philosophy mentor pinned on all dashboards."
     },
     {
       "slug": "ethan-christie-dunbar",
       "displayName": "Ethan & Christie Dunbar",
       "initials": "ECH",
       "isCouple": true,
-      "teamLanes": ["county", "coalition"],
+      "workbenchTier": "cluster",
+      "grassrootsFundraisingLead": true,
+      "workbenchTemplates": ["cluster_leader", "finance_inner_circle", "fundraising_field_leader", "fundraising_workbench"],
+      "teamLanes": ["county", "coalition", "fundraising", "events", "operations"],
       "connections": [
+        { "kind": "county", "county": "Nevada", "countySlug": "nevada", "label": "Nevada County playbook" },
+        { "kind": "county", "county": "Columbia", "countySlug": "columbia", "label": "Columbia County playbook" },
         { "kind": "county", "county": "Lafayette", "countySlug": "lafayette", "label": "Lafayette County playbook" },
-        { "kind": "program", "programSlug": "southern-arkansas", "label": "Southern Arkansas regional hub" }
-      ]
+        { "kind": "county", "county": "Ouachita", "countySlug": "ouachita", "label": "Ouachita County playbook" },
+        { "kind": "county", "county": "Union", "countySlug": "union", "label": "Union County playbook" },
+        { "kind": "county", "county": "Miller", "countySlug": "miller", "label": "Miller County playbook" },
+        { "kind": "county", "county": "Hempstead", "countySlug": "hempstead", "label": "Hempstead County playbook" },
+        { "kind": "program", "programSlug": "southern-arkansas", "label": "Southern Arkansas regional hub" },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/southwest-arkansas",
+          "label": "Southwest Arkansas region",
+          "description": "Southwest cluster — Nevada County anchor and surrounding counties"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/nevada",
+          "label": "Nevada County command",
+          "description": "Cluster anchor county playbook — Elaine Williams county lead nested below"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Fundraising leadership team — recruit county and city fundraisers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across the southwest cluster"
+        }
+      ],
+      "notes": "Southwest Arkansas cluster leaders (Nevada County anchor) · finance team · fundraising leadership team."
     },
     {
       "slug": "elaine-williams",
       "displayName": "Elaine Williams",
       "initials": "EWI",
-      "teamLanes": ["county", "coalition"],
+      "commandAccess": true,
+      "assistantCm": true,
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "coalition", "fundraising", "events", "operations"],
       "connections": [
         { "kind": "county", "county": "Nevada", "countySlug": "nevada", "label": "Nevada County playbook" },
-        { "kind": "program", "programSlug": "southern-arkansas", "label": "Southern Arkansas networking hub" }
-      ]
+        { "kind": "program", "programSlug": "southern-arkansas", "label": "Southern Arkansas networking hub" },
+        { "kind": "city", "citySlug": "prescott", "label": "Prescott community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/nevada",
+          "label": "Nevada County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/southwest-arkansas",
+          "label": "Southwest Arkansas region",
+          "description": "Nevada County — nested under Dunbar cluster leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Assistant CM flex — leaders, field operators, command until role is decided"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Nevada County workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/ethan-christie-dunbar",
+          "label": "Ethan & Christie Dunbar — cluster leaders",
+          "description": "Southwest cluster co-leads — Nevada County anchor geography"
+        }
+      ],
+      "notes": "Nevada County lead · assistant CM flex statewide until permanent role is decided."
+    },
+    {
+      "slug": "sandra-manning",
+      "displayName": "Sandra Manning",
+      "initials": "SMA",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Columbia", "countySlug": "columbia", "label": "Columbia County playbook" },
+        { "kind": "city", "citySlug": "magnolia", "label": "Magnolia community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/columbia",
+          "label": "Columbia County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/southwest-arkansas",
+          "label": "Southwest Arkansas region",
+          "description": "Columbia County in the southwest cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/magnolia",
+          "label": "Magnolia city strategy",
+          "description": "Columbia County seat — priority city brief"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Columbia County workbenches"
+        }
+      ],
+      "notes": "Columbia County lead."
+    },
+    {
+      "slug": "michael-w-myers",
+      "displayName": "Michael W. Myers",
+      "initials": "MWM",
+      "workbenchTier": "cluster",
+      "workbenchTemplates": ["cluster_leader"],
+      "teamLanes": ["county", "events", "fundraising", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Pike", "countySlug": "pike", "label": "Pike County playbook" },
+        { "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" },
+        { "kind": "county", "county": "Garland", "countySlug": "garland", "label": "Garland County playbook" },
+        { "kind": "county", "county": "Hot Spring", "countySlug": "hot-spring", "label": "Hot Spring County playbook" },
+        { "kind": "county", "county": "Montgomery", "countySlug": "montgomery", "label": "Montgomery County playbook" },
+        { "kind": "county", "county": "Nevada", "countySlug": "nevada", "label": "Nevada County playbook" },
+        { "kind": "county", "county": "Hempstead", "countySlug": "hempstead", "label": "Hempstead County playbook" },
+        { "kind": "county", "county": "Little River", "countySlug": "little-river", "label": "Little River County playbook" },
+        { "kind": "city", "citySlug": "murfreesboro", "label": "Murfreesboro community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pike",
+          "label": "Pike County command",
+          "description": "Cluster anchor county — playbook drill-down and leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/central-arkansas",
+          "label": "Central Arkansas region",
+          "description": "Hot Springs & Ouachita cluster — Pike County anchor"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/murfreesboro",
+          "label": "Murfreesboro city strategy",
+          "description": "Pike County seat — priority city brief"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots across the Pike cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across nested workbenches"
+        }
+      ],
+      "notes": "Hot Springs & Ouachita cluster leader — Pike County anchor."
+    },
+    {
+      "slug": "mark-london",
+      "displayName": "Mark London",
+      "initials": "MLO",
+      "commandAccess": true,
+      "assistantCm": true,
+      "workbenchTier": "assistant_campaign_manager",
+      "workbenchTemplates": ["fundraising_workbench"],
+      "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/election-plan",
+          "label": "Election Plan command",
+          "description": "Full campaign OS — counties, cities, workbenches, operators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Leader workbenches, field operators, command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "All program and city workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Fundraising team doctrine and opportunity ownership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, grassroots events, coalition fundraising"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Full roster heatmap and operator sync"
+        }
+      ],
+      "notes": "Fundraising team · full assistant CM flex statewide until permanent lane assignment."
+    },
+    {
+      "slug": "johnnie-roebuck",
+      "displayName": "Johnnie Roebuck",
+      "initials": "JRO",
+      "workbenchTemplates": ["finance_inner_circle"],
+      "teamLanes": ["fundraising", "operations"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Finance committee coordination and donor pipeline doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework and targets"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-operating-system",
+          "label": "Fundraising operating system",
+          "description": "Statewide fundraising lanes and opportunity rollups"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/fundraising",
+          "label": "Fundraising lane drill-down",
+          "description": "Lane checklist, compliance tools, and finance coordination"
+        }
+      ],
+      "notes": "Finance team — finance inner circle."
+    },
+    {
+      "slug": "sandie-cloud",
+      "displayName": "Sandie Cloud",
+      "initials": "SCL",
+      "workbenchTier": "cluster",
+      "specialOutreachProgramSlug": "ozark-forward",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["special_outreach_lead", "fundraising_workbench", "volunteer_leadership_team"],
+      "teamLanes": ["county", "coalition", "fundraising", "operations", "events"],
+      "connections": [
+        { "kind": "program", "programSlug": "ozark-forward", "label": "Ozark Forward program board" },
+        { "kind": "county", "county": "Baxter", "countySlug": "baxter", "label": "Baxter County playbook" },
+        { "kind": "county", "county": "Marion", "countySlug": "marion", "label": "Marion County playbook" },
+        { "kind": "county", "county": "Stone", "countySlug": "stone", "label": "Stone County playbook" },
+        { "kind": "county", "county": "Newton", "countySlug": "newton", "label": "Newton County playbook" },
+        { "kind": "county", "county": "Izard", "countySlug": "izard", "label": "Izard County playbook" },
+        { "kind": "county", "county": "Fulton", "countySlug": "fulton", "label": "Fulton County playbook" },
+        { "kind": "county", "county": "Van Buren", "countySlug": "van-buren", "label": "Van Buren County playbook" },
+        { "kind": "county", "county": "Cleburne", "countySlug": "cleburne", "label": "Cleburne County playbook" },
+        { "kind": "county", "county": "Independence", "countySlug": "independence", "label": "Independence County playbook" },
+        { "kind": "county", "county": "White", "countySlug": "white", "label": "White County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/ozark-forward",
+          "label": "Ozark Forward command",
+          "description": "Multi-county program board — fundraising goal, volunteers, cross-county outreach"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "10-county Ozark Forward geography"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/fundraising",
+          "label": "Fundraising lane drill-down",
+          "description": "Set program fundraising goal and track grassroots revenue"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/operations",
+          "label": "Operations lane drill-down",
+          "description": "Volunteer management — onboarding, roster CRM, retention"
+        }
+      ],
+      "notes": "Ozark Forward — 10-county special outreach program. Fundraising goal blank until Sandie sets it."
+    },
+    {
+      "slug": "pam-rotter",
+      "displayName": "Pam Rotter",
+      "initials": "PRO",
+      "workbenchTier": "county",
+      "specialOutreachProgramSlug": "just-a-girl",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["special_outreach_lead", "fundraising_workbench", "volunteer_leadership_team"],
+      "teamLanes": ["county", "coalition", "fundraising", "operations", "events"],
+      "connections": [
+        { "kind": "program", "programSlug": "just-a-girl", "label": "Just A Girl program board" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/just-a-girl",
+          "label": "Just A Girl command",
+          "description": "Multi-county program board — fundraising goal and volunteer management"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties",
+          "label": "County playbooks",
+          "description": "Add county connections as your program geography is defined"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/fundraising",
+          "label": "Fundraising lane drill-down",
+          "description": "Set program fundraising goal and track grassroots revenue"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/operations",
+          "label": "Operations lane drill-down",
+          "description": "Volunteer management — onboarding, roster CRM, retention"
+        }
+      ],
+      "notes": "Just A Girl — special outreach program board. County list and fundraising goal blank until Pam fills them in."
+    },
+    {
+      "slug": "freddy-fouche",
+      "displayName": "Freddy Fouché",
+      "initials": "FFU",
+      "workbenchTier": "county",
+      "clusterInsightSlug": "central-metro",
+      "workbenchTemplates": ["union_liaison"],
+      "teamLanes": ["county", "coalition", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Saline", "countySlug": "saline", "label": "Saline County playbook" },
+        { "kind": "city", "citySlug": "benton", "label": "Benton community workbench" },
+        { "kind": "program", "programSlug": "labor", "label": "Labor coalition workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/labor",
+          "label": "Labor coalition command",
+          "description": "Union relationships, worksites, and worker story corps"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/saline",
+          "label": "Saline County command",
+          "description": "Home county playbook — union liaison anchor"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/central-arkansas",
+          "label": "Central Arkansas Metro cluster",
+          "description": "Read-only cluster context — Pulaski, Saline, Lonoke, Faulkner"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/search?q=labor+union+strategy",
+          "label": "Labor union strategy",
+          "description": "Campaign brain — labor listening brief and meeting prep"
+        }
+      ],
+      "notes": "Union liaison — Saline County home base with Central Arkansas Metro cluster read-only context."
+    },
+    {
+      "slug": "grant-smith",
+      "displayName": "Grant Smith",
+      "initials": "GSM",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["social_media_influencer", "volunteer_leadership_team"],
+      "teamLanes": ["comms", "operations", "coalition"],
+      "connections": [
+        { "kind": "program", "programSlug": "content-studio", "label": "Content Studio — SMOS" },
+        { "kind": "program", "programSlug": "story-corps", "label": "Story Corps" },
+        {
+          "kind": "global",
+          "href": "/volunteers",
+          "label": "Volunteer sign-up page",
+          "description": "Public volunteer page — share with your audience to recruit"
+        },
+        {
+          "kind": "global",
+          "href": "/dashboard",
+          "label": "Volunteer dashboard",
+          "description": "Personal dashboard — My Five, follow-ups, and team view"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/content-studio",
+          "label": "Content Studio command",
+          "description": "SMOS — ideas, drafts, assignments, and publish pipeline"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/social-media-operating-system",
+          "label": "Social Media Operating System",
+          "description": "Executive Book Ch. 12 — content and narrative doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Volunteer HQ — leaders, field operators, command"
+        }
+      ],
+      "notes": "Social media influencer · volunteer page access and content amplification."
+    },
+    {
+      "slug": "chad-easley",
+      "displayName": "Chad Easley",
+      "initials": "CES",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "Pope", "countySlug": "pope", "label": "Pope County playbook" },
+        { "kind": "city", "citySlug": "russellville", "label": "Russellville community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pope",
+          "label": "Pope County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/russellville",
+          "label": "Russellville city strategy",
+          "description": "County seat — priority city brief and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/river-valley",
+          "label": "River Valley region",
+          "description": "Pope County in the River Valley cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Pope County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Pope County workbenches"
+        }
+      ],
+      "notes": "Pope County chair."
+    },
+    {
+      "slug": "david-ashley",
+      "displayName": "David Ashley",
+      "initials": "DAS",
+      "workbenchTier": "county",
+      "countyBoardMember": true,
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": [
+        "democratic_black_caucus_lead",
+        "county_leader",
+        "volunteer_leadership_team",
+        "fundraising_workbench",
+        "finance_inner_circle"
+      ],
+      "teamLanes": ["county", "coalition", "fundraising", "operations", "events", "comms"],
+      "connections": [
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "county", "county": "Saline", "countySlug": "saline", "label": "Saline County playbook" },
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "city", "citySlug": "benton", "label": "Benton community workbench" },
+        { "kind": "program", "programSlug": "democratic-black-caucus", "label": "Democratic Black Caucus workbench" },
+        { "kind": "program", "programSlug": "african-american-outreach", "label": "African American Outreach coalition" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/democratic-black-caucus",
+          "label": "Democratic Black Caucus command",
+          "description": "Caucus president command surface — statewide Black Democratic leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook tools — not county chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/saline",
+          "label": "Saline County command",
+          "description": "County playbook tools — not county chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Fundraising doctrine and opportunity ownership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/operations",
+          "label": "Operations lane drill-down",
+          "description": "Volunteer management — onboarding, roster CRM, retention"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Volunteer management boards and leadership team hub"
+        }
+      ],
+      "notes": "Arkansas Democratic Black Caucus President — volunteer management, fundraising, and finance across Pulaski and Saline without county chair title."
+    },
+    {
+      "slug": "anna-goode",
+      "displayName": "Anna Goode",
+      "initials": "AGO",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "coalition", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "Benton", "countySlug": "benton", "label": "Benton County playbook" },
+        { "kind": "city", "citySlug": "bentonville", "label": "Bentonville community workbench" },
+        { "kind": "city", "citySlug": "rogers", "label": "Rogers community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/benton",
+          "label": "Benton County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/bentonville",
+          "label": "Bentonville city strategy",
+          "description": "Benton County hub — priority city brief and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/rogers",
+          "label": "Rogers city strategy",
+          "description": "NWA business corridor — chamber and community workbench"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/northwest-arkansas",
+          "label": "Northwest Arkansas region",
+          "description": "Benton County in the NWA cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/county-parties/benton",
+          "label": "Benton County Democratic Party",
+          "description": "County party coordination and local validators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Benton County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Benton County workbenches"
+        }
+      ],
+      "notes": "Benton County chair — Northwest Arkansas."
+    },
+    {
+      "slug": "bishop-arnold",
+      "displayName": "Dr. Bishop Arnold",
+      "initials": "BAR",
+      "workbenchTier": "city",
+      "workbenchTemplates": ["city_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "city", "citySlug": "camden", "label": "Camden community workbench" },
+        { "kind": "county", "county": "Ouachita", "countySlug": "ouachita", "label": "Ouachita County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/camden",
+          "label": "Camden workbench command",
+          "description": "City leadership board — all lanes and nested volunteers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/camden",
+          "label": "Camden city strategy",
+          "description": "Ouachita County seat — Democratic recovery hub and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/ouachita",
+          "label": "Ouachita County command",
+          "description": "County playbook rollup for Camden progress"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/southwest-arkansas",
+          "label": "Southwest Arkansas region",
+          "description": "Camden in the southwest campaign cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders on the Camden workbench"
+        }
+      ],
+      "notes": "Camden city chair — Ouachita County, South Arkansas."
+    },
+    {
+      "slug": "wendy-peer",
+      "displayName": "Wendy Peer",
+      "initials": "WPE",
+      "workbenchTier": "city",
+      "workbenchTemplates": ["city_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "comms", "coalition"],
+      "connections": [
+        { "kind": "city", "citySlug": "fort-smith", "label": "Fort Smith community workbench" },
+        { "kind": "county", "county": "Sebastian", "countySlug": "sebastian", "label": "Sebastian County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/fort-smith",
+          "label": "Fort Smith workbench command",
+          "description": "City leadership board — all lanes and nested volunteers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/fort-smith",
+          "label": "Fort Smith city strategy",
+          "description": "Western Arkansas anchor — regional media and River Valley persuasion"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/sebastian",
+          "label": "Sebastian County command",
+          "description": "County playbook rollup for Fort Smith progress"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/river-valley",
+          "label": "River Valley region",
+          "description": "Fort Smith — western Arkansas regional media hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders on the Fort Smith workbench"
+        }
+      ],
+      "notes": "Fort Smith city chair — Sebastian County · western Arkansas anchor."
+    },
+    {
+      "slug": "david-mcavoy",
+      "displayName": "David McAvoy",
+      "initials": "DMA",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "Craighead", "countySlug": "craighead", "label": "Craighead County playbook" },
+        { "kind": "city", "citySlug": "jonesboro", "label": "Jonesboro community workbench" },
+        { "kind": "city", "citySlug": "paragould", "label": "Paragould community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/craighead",
+          "label": "Craighead County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/jonesboro",
+          "label": "Jonesboro city strategy",
+          "description": "Craighead County hub — priority city brief and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/northeast-arkansas",
+          "label": "Northeast Arkansas region",
+          "description": "Craighead County in the northeast cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/county-parties/craighead",
+          "label": "Craighead County Democratic Party",
+          "description": "County party coordination and local validators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Craighead County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Craighead County workbenches"
+        }
+      ],
+      "notes": "Craighead County chair — Jonesboro and Northeast Arkansas."
+    },
+    {
+      "slug": "teresa-huff",
+      "displayName": "Teresa Huff",
+      "initials": "THU",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" },
+        { "kind": "city", "citySlug": "conway", "label": "Conway community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/faulkner",
+          "label": "Faulkner County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/conway",
+          "label": "Conway city strategy",
+          "description": "Faulkner County seat — priority city brief and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/central-arkansas",
+          "label": "Central Arkansas region",
+          "description": "Faulkner County in the central metro cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/county-parties/faulkner",
+          "label": "Faulkner County Democratic Party",
+          "description": "County party coordination and local validators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Faulkner County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Faulkner County workbenches"
+        }
+      ],
+      "notes": "Faulkner County chair — Conway and Central Arkansas."
+    },
+    {
+      "slug": "april-reisma",
+      "displayName": "April Reisma",
+      "initials": "ARI",
+      "workbenchTier": "cluster",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": [
+        "educators_coalition_lead",
+        "volunteer_leadership_team",
+        "fundraising_workbench",
+        "finance_inner_circle"
+      ],
+      "teamLanes": ["coalition", "operations", "fundraising", "county", "events", "comms"],
+      "connections": [
+        { "kind": "program", "programSlug": "educators", "label": "Educators coalition workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/educators",
+          "label": "Educators coalition command",
+          "description": "AEA, teachers, school districts — statewide educator volunteer hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties",
+          "label": "County playbooks",
+          "description": "Recruit teacher volunteers onto every county workbench"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "Place educator volunteers on city and program workbenches statewide"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/search?q=aea+endorsement",
+          "label": "AEA endorsement strategy",
+          "description": "Campaign brain — teacher network activation and county contacts"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Fundraising doctrine and opportunity ownership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/operations",
+          "label": "Operations lane drill-down",
+          "description": "Volunteer management — onboarding, roster CRM, retention across counties"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Assign educator volunteers to county and city workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Volunteer management boards and leadership team hub"
+        }
+      ],
+      "notes": "Arkansas Education Association chair — Kelly endorsement · statewide educator volunteer recruitment, fundraising, and finance."
     }
   ]
 }

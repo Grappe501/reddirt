@@ -43,6 +43,7 @@ export function ElectionPlanFieldEntryPanel({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [linkToCrm, setLinkToCrm] = useState(true);
 
   const locationLabel = cityName ? `${cityName}, ${countyName} County` : `${countyName} County`;
 
@@ -81,9 +82,14 @@ export function ElectionPlanFieldEntryPanel({
             quantity,
             countySlug,
             citySlug: citySlug ?? null,
+            linkToCrm,
           }),
         });
-        const data = (await res.json()) as { error?: string; entry?: { operatorInitials: string; label: string } };
+        const data = (await res.json()) as {
+          error?: string;
+          entry?: { operatorInitials: string; label: string; relationalContactId?: string | null };
+          contactSpine?: { linked: boolean; created: boolean };
+        };
         if (!res.ok) {
           setError(data.error ?? "Save failed");
           return;
@@ -92,7 +98,12 @@ export function ElectionPlanFieldEntryPanel({
         setDescription("");
         setQuantity(1);
         setSuccess(
-          `[${data.entry?.operatorInitials ?? operatorInitials}] logged · ${data.entry?.label ?? label}`,
+          `[${data.entry?.operatorInitials ?? operatorInitials}] logged · ${data.entry?.label ?? label}` +
+            (data.contactSpine?.linked
+              ? data.contactSpine.created
+                ? " · CRM contact created"
+                : " · linked to CRM"
+              : ""),
         );
         await refresh();
         onLogged?.();
@@ -102,7 +113,7 @@ export function ElectionPlanFieldEntryPanel({
         setBusy(false);
       }
     },
-    [operatorInitials, category, label, description, quantity, countySlug, citySlug, refresh, onLogged],
+    [operatorInitials, category, label, description, quantity, countySlug, citySlug, refresh, onLogged, linkToCrm],
   );
 
   return (
@@ -181,6 +192,15 @@ export function ElectionPlanFieldEntryPanel({
             placeholder="Context — event, relationship, next step…"
             className="mt-1 w-full rounded-md border border-[var(--ep-border)] px-3 py-2"
           />
+        </label>
+        <label className="flex items-center gap-2 text-sm text-[var(--ep-navy)]">
+          <input
+            type="checkbox"
+            checked={linkToCrm}
+            onChange={(e) => setLinkToCrm(e.target.checked)}
+            className="rounded"
+          />
+          Also create / update Relational CRM contact (conversation & named entries)
         </label>
         <button
           type="submit"

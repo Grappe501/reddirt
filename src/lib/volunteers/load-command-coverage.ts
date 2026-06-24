@@ -1,4 +1,4 @@
-import { getVolunteerLeaderRoster } from "@/lib/volunteers/leader-roster";
+import { getVolunteerLeaderRoster, getEffectiveTeamLanes } from "@/lib/volunteers/leader-roster";
 import { loadFieldEntryCountsByInitials } from "@/lib/election-plan/field-entry/load-field-entries";
 import { loadCommunityWorkbench } from "@/lib/election-plan/community-workbench/load-workbench";
 import { resolveLeaderGeographyScope, workbenchSlugsFromScope } from "@/lib/volunteers/leader-scope";
@@ -71,7 +71,7 @@ export async function loadCommandCoverageHeatmap(): Promise<CommandHeatmapRow[]>
       slug: leader.slug,
       displayName: leader.displayName,
       initials: leader.initials,
-      lanes: leader.teamLanes.map(laneLabel),
+      lanes: getEffectiveTeamLanes(leader).map(laneLabel),
       fieldEntryQty,
       leadershipFilled,
       leadershipTotal,

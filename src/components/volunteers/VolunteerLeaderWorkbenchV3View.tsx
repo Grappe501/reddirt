@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { LeaderTemplatePanels } from "@/components/volunteers/LeaderTemplatePanels";
+import { LeaderHierarchyPanel } from "@/components/volunteers/LeaderHierarchyPanel";
 import { LeaderOpenSlotsPanel, LeaderRecentActivityPanel } from "@/components/volunteers/LeaderActivityPanels";
 import { LeaderRosterWorkbenchPanels } from "@/components/volunteers/LeaderRosterWorkbenchPanels";
 import { LeaderFieldLogPanel } from "@/components/volunteers/LeaderFieldLogPanel";
@@ -7,12 +9,21 @@ import { LeaderOperatorIdentityBar } from "@/components/volunteers/LeaderOperato
 import { PowerOf5DashboardPanel } from "@/components/power-of-5/PowerOf5DashboardPanel";
 import type { LeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-workbench-v3";
 import type { LeaderFieldLogContext } from "@/lib/volunteers/build-leader-field-log-context";
+import type { LeaderContactSpineSummary } from "@/lib/volunteers/contact-spine";
 import { LeaderLaneNavStrip } from "@/components/volunteers/LeaderLaneDrillDownView";
+import { LeaderContactSpinePanel } from "@/components/volunteers/LeaderContactSpinePanel";
+import { LeaderMyWorkPanel } from "@/components/volunteers/LeaderMyWorkPanel";
+import { OperationsFeedbackStrip } from "@/components/volunteers/OperationsFeedbackStrip";
 import { LEADER_WORKBENCH_SECTIONS } from "@/lib/volunteers/leader-workbench-sections";
+import type { RoleInboxPayload } from "@/lib/volunteers/ops-work-items";
 import {
   resolveLeaderCampaignPins,
   resolveLeaderPersonalLinks,
 } from "@/lib/volunteers/resolve-leader-links";
+import {
+  formatSpecialOutreachFundraisingGoal,
+  resolveSpecialOutreachProgramForLeader,
+} from "@/lib/volunteers/special-outreach-programs";
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
@@ -27,13 +38,29 @@ type Props = {
   payload: LeaderWorkbenchV3Payload;
   isSelf?: boolean;
   fieldLog?: LeaderFieldLogContext | null;
+  contactSpine?: LeaderContactSpineSummary | null;
+  myWork?: RoleInboxPayload | null;
+  myWorkStatus?: string | null;
 };
 
-export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Props) {
-  const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live, roster } = payload;
+export function VolunteerLeaderWorkbenchV3View({
+  payload,
+  isSelf,
+  fieldLog,
+  contactSpine,
+  myWork,
+  myWorkStatus,
+}: Props) {
+  const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live, roster, hierarchy, leadTemplates, specialKpis } =
+    payload;
   const areaLinks = resolveLeaderPersonalLinks(leader);
   const campaignPins = resolveLeaderCampaignPins(leader);
+  const specialOutreach = resolveSpecialOutreachProgramForLeader(leader);
   const canLogField = Boolean(isSelf && fieldLog?.operatorReady);
+  const myFieldEntryCount =
+    fieldLog?.summary.entries.filter(
+      (e) => e.operatorInitials.toUpperCase() === leader.initials.toUpperCase(),
+    ).length ?? 0;
 
   return (
     <div className="ep-chapter-body px-6 py-10 lg:px-10">
@@ -87,14 +114,172 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
               </a>
             ) : null}
           </nav>
+          {isSelf ? (
+            <OperationsFeedbackStrip
+              leaderInitials={leader.initials}
+              fieldEntryCount={myFieldEntryCount}
+              className="mt-4"
+            />
+          ) : null}
+          {isSelf && contactSpine ? (
+            <LeaderContactSpinePanel summary={contactSpine} className="mt-4" />
+          ) : null}
         </aside>
 
         <div className="min-w-0 flex-1 space-y-10">
           <header>
             <div className="ep-classification">Leadership workbench v3.4 · lanes + Power of 5</div>
+            {leader.nonprofitAdvisor ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-navy)]/25">
+                Nonprofit advisor · ACM access
+              </p>
+            ) : null}
+            {leader.acmWorkbenchFlex && !leader.assistantCm ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-navy)]/25">
+                ACM workbench · role open
+              </p>
+            ) : null}
+            {leader.volunteerManagerInterim ? (
+              <p className="mt-2 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-950 ring-1 ring-amber-400/60">
+                Interim Volunteer Manager
+              </p>
+            ) : null}
+            {(leader.countyBoardMember || leader.volunteerBoardMember) &&
+            !leader.workbenchTemplates?.includes("county_leader") ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-gold)]/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-gold)]/45">
+                Volunteer board
+              </p>
+            ) : null}
+            {leader.specialOutreachProgramSlug === "ozark-forward" ? (
+              <p className="mt-2 inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-950 ring-1 ring-emerald-500/40">
+                Ozark Forward
+              </p>
+            ) : null}
+            {leader.specialOutreachProgramSlug === "just-a-girl" ? (
+              <p className="mt-2 inline-block rounded-full bg-pink-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-pink-950 ring-1 ring-pink-400/40">
+                Just A Girl
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("union_liaison") ? (
+              <p className="mt-2 inline-block rounded-full bg-orange-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-orange-950 ring-1 ring-orange-400/45">
+                Union liaison
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("social_media_influencer") ? (
+              <p className="mt-2 inline-block rounded-full bg-fuchsia-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-fuchsia-950 ring-1 ring-fuchsia-400/45">
+                Social media influencer
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("democratic_black_caucus_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)] px-3 py-1 text-xs font-bold uppercase tracking-wide text-white ring-1 ring-[var(--ep-navy)]/40">
+                Democratic Black Caucus
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("educators_coalition_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-sky-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-sky-950 ring-1 ring-sky-500/45">
+                AEA · Educators coalition
+              </p>
+            ) : null}
+            {leader.campusTeamCoChair ? (
+              <p className="mt-2 inline-block rounded-full bg-violet-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-violet-950 ring-1 ring-violet-400/45">
+                Students for Arkansas co-chair
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("fundraising_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-950 ring-1 ring-emerald-500/40">
+                Fundraising Lead
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("fundraising_field_leader") ? (
+              <p className="mt-2 inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-950 ring-1 ring-emerald-500/40">
+                Fundraising field leader
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("progressives_liaison") ? (
+              <p className="mt-2 inline-block rounded-full bg-rose-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-rose-950 ring-1 ring-rose-400/40">
+                Progressives liaison
+              </p>
+            ) : null}
+            {leader.volunteerLeadershipTeam ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-gold)]/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-gold)]/50">
+                Volunteer leadership team
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("cluster_leader") ? (
+              <p className="mt-2 inline-block rounded-full bg-indigo-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-indigo-950 ring-1 ring-indigo-400/50">
+                Cluster leader
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("county_candidate_coordinator") ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-navy)]/25">
+                County Candidate Coordinator
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("county_leader") && !leader.countyBoardMember ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-navy)]/30">
+                County leader
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("city_leader") ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-gold)]/20 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-gold)]/45">
+                City leader
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("events_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-sky-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-sky-950 ring-1 ring-sky-400/40">
+                Events lead
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("muslim_community_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-teal-950 ring-1 ring-teal-500/40">
+                Muslim Community Lead
+              </p>
+            ) : null}
+            {leader.interfaithCommsLiaison ? (
+              <p className="mt-2 inline-block rounded-full bg-violet-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-violet-950 ring-1 ring-violet-400/40">
+                Interfaith comms liaison
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("comms_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-sky-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-sky-950 ring-1 ring-sky-500/45">
+                Comms lead
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("voter_registration_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-teal-950 ring-1 ring-teal-500/45">
+                Voter registration lead
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("finance_inner_circle") ? (
+              <p className="mt-2 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-950 ring-1 ring-amber-500/40">
+                Finance inner circle
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("event_planner") ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-blue)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-blue)] ring-1 ring-[var(--ep-blue)]/30">
+                Event planner
+              </p>
+            ) : null}
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{leader.displayName}</h1>
             {leader.notes ? (
               <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{leader.notes}</p>
+            ) : null}
+            {specialOutreach ? (
+              <div className="mt-4 max-w-xl rounded-lg border border-[var(--ep-gold)]/35 bg-[var(--ep-cream)]/80 px-4 py-3">
+                <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">
+                  {specialOutreach.name} · program fundraising goal
+                </p>
+                <p className="mt-1 font-heading text-2xl font-bold text-[var(--ep-navy)]">
+                  {formatSpecialOutreachFundraisingGoal(specialOutreach)}
+                </p>
+                <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">{specialOutreach.fundraisingGoalNote}</p>
+                <Link
+                  href={`/election-plan/workbenches/${specialOutreach.coalitionSlug}`}
+                  className="mt-2 inline-block text-xs font-semibold text-[var(--ep-blue)] hover:underline"
+                >
+                  Open {specialOutreach.name} program board →
+                </Link>
+              </div>
             ) : null}
           </header>
 
@@ -118,6 +303,23 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
             </ul>
             <LeaderLaneNavStrip leader={leader} isSelf={isSelf} />
           </Section>
+
+          <Section id="hierarchy" title="Hierarchy & work branches">
+            <LeaderHierarchyPanel hierarchy={hierarchy} leaderSlug={leader.slug} isSelf={isSelf} />
+          </Section>
+
+          {leadTemplates.length || specialKpis.length || leader.volunteerManagerInterim ? (
+            <Section id="lead-templates" title="Lead templates & special KPIs">
+              <LeaderTemplatePanels
+                templates={leadTemplates}
+                specialKpis={specialKpis}
+                interimVolunteerManager={leader.volunteerManagerInterim}
+                leaderDisplayName={leader.displayName}
+                leaderSlug={leader.slug}
+                isSelf={isSelf}
+              />
+            </Section>
+          ) : null}
 
           <Section id="kpi" title="KPI dashboard (live)">
             <PowerOf5DashboardPanel
@@ -309,6 +511,16 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
               ))}
             </ul>
           </Section>
+
+          {isSelf && myWork ? (
+            <Section id="my-work" title="My work">
+              <LeaderMyWorkPanel
+                payload={myWork}
+                leaderName={leader.displayName}
+                statusMessage={myWorkStatus}
+              />
+            </Section>
+          ) : null}
 
           <Section id="training" title="Training & tools">
             <ul className="grid gap-3 sm:grid-cols-2">

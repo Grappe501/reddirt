@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "pass": "SPECIAL-OUTREACH-PROGRAMS-v1",
+  "programs": {
+    "ozark-forward": {
+      "name": "Ozark Forward",
+      "coalitionSlug": "ozark-forward",
+      "fundraisingGoal": null,
+      "fundraisingGoalNote": "Set your program fundraising goal when ready — blank until Sandie fills it in.",
+      "countySlugs": [
+        "baxter",
+        "marion",
+        "stone",
+        "newton",
+        "izard",
+        "fulton",
+        "van-buren",
+        "cleburne",
+        "independence",
+        "white"
+      ]
+    },
+    "just-a-girl": {
+      "name": "Just A Girl",
+      "coalitionSlug": "just-a-girl",
+      "fundraisingGoal": null,
+      "fundraisingGoalNote": "Set your program fundraising goal when ready — blank until Pam fills it in.",
+      "countySlugs": []
+    }
+  }
+}

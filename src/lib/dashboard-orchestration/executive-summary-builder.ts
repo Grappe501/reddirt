@@ -50,28 +50,30 @@ export function buildExecutiveSummary(input: {
     if (s.pendingApprovals > 0) {
       blocked.push(`${s.pendingApprovals} pending approval(s)`);
       needsAction.push("Run month review decisions");
+    } else if (input.surface === "candidate_dashboard") {
+      ready.push("No pending approvals — you're clear");
     } else {
       ready.push("No pending approvals in snapshot");
     }
-    if (s.needsMileageReview) {
+    if (s.needsMileageReview && input.surface !== "candidate_dashboard") {
       blocked.push("Mileage review queue not clear");
       needsAction.push("Clear mileage on travel rows");
     }
-    if (s.calendarSync?.jsonStale) {
+    if (s.calendarSync?.jsonStale && input.surface !== "candidate_dashboard") {
       blocked.push("Calendar JSON stale");
       needsAction.push("Refresh calendar sync");
     }
-    if ((s.actionItems?.travelReview ?? 0) > 0) {
+    if ((s.actionItems?.travelReview ?? 0) > 0 && input.surface !== "candidate_dashboard") {
       needsAction.push(`${s.actionItems.travelReview} travel review row(s)`);
     }
-    if (s.promotionReadyTentative > 0) {
+    if (s.promotionReadyTentative > 0 && input.surface !== "candidate_dashboard") {
       ready.push(`${s.promotionReadyTentative} event(s) ready for promotion preview`);
     }
   }
 
   const whatMatters: string[] = [];
   if (input.surface === "reimbursement" || input.surface === "candidate_dashboard") {
-    whatMatters.push("Month reimbursement packet accuracy and print readiness");
+    whatMatters.push("Decisions and schedule first — detail on each layer when you choose");
   }
   if (input.surface === "command_center") {
     whatMatters.push("Cross-domain system health and supervised agent plans");
@@ -104,8 +106,10 @@ export function buildExecutiveSummary(input: {
     topNextMove: top ? { label: top.title, href: top.href, why: top.why } : null,
     aiExplanation,
     calmNote:
-      blocked.length >= 3
-        ? "High cognitive load — executive summary first; detail on demand."
-        : "Progressive disclosure: summary → guidance cards → full tables.",
+      input.surface === "candidate_dashboard"
+        ? "Calm home — tap a layer for reports. Steve runs full ops on the campaign manager board."
+        : blocked.length >= 3
+          ? "High cognitive load — executive summary first; detail on demand."
+          : "Progressive disclosure: summary → guidance cards → full tables.",
   };
 }

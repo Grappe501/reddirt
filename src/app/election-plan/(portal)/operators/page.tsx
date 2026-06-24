@@ -5,13 +5,17 @@ import {
   ElectionPlanOperatorsHubPanel,
 } from "@/components/election-plan/ElectionPlanOperatorsHubPanels";
 import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
+import { OperationsCommandLadderPanel } from "@/components/volunteers/OperationsCommandLadderPanel";
+import { loadOperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
 
 export const metadata = {
   title: "Operators | Election Plan",
   robots: { index: false, follow: false },
 };
 
-export default function ElectionPlanOperatorsPage() {
+export default async function ElectionPlanOperatorsPage() {
+  const operationsFeedbackRollup = await loadOperationsFeedbackRollup();
+
   return (
     <>
       <div className="ep-classification">Internal · Operators command</div>
@@ -28,7 +32,14 @@ export default function ElectionPlanOperatorsPage() {
           <div className="mt-6">
             <ElectionPlanOperatorsSubnav />
           </div>
-          <div className="mt-4">
+          <div className="mt-6">
+            <OperationsCommandLadderPanel
+              rollup={operationsFeedbackRollup}
+              activeTierId="operators_hub"
+              returnTo="/election-plan/operators/my-work"
+            />
+          </div>
+          <div className="mt-6">
             <ElectionPlanOperatorsHubPanel />
           </div>
           <div className="mt-12">

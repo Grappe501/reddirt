@@ -7,6 +7,7 @@ import {
   isValidLeaderLane,
   laneLabelForId,
 } from "@/lib/volunteers/lane-drill-down-config";
+import { getEffectiveTeamLanes } from "@/lib/volunteers/leader-roster";
 import { loadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
 import { resolveLeaderPersonalLinks } from "@/lib/volunteers/resolve-leader-links";
 
@@ -26,7 +27,7 @@ export default async function LeaderLaneDrillDownMePage({ params }: Props) {
   if (!isValidLeaderLane(laneId)) notFound();
 
   const leader = await loadCurrentVolunteerLeader();
-  if (!leader || !leader.teamLanes.includes(laneId)) notFound();
+  if (!leader || !getEffectiveTeamLanes(leader).includes(laneId)) notFound();
 
   const areaLinks = resolveLeaderPersonalLinks(leader);
   const page = buildLaneDrillDownPage(laneId, leader, areaLinks, { isSelf: true });

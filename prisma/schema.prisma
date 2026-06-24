@@ -540,6 +540,9 @@ model WorkflowIntake {
   /// Origin hint: mirrors `Submission.type` or source system key.
   source         String?
   metadata       Json?                @default("{}")
+  /// Phase 1 contact spine — CRM record created on placement / promotion.
+  relationalContactId String?
+  relationalContact   RelationalContact? @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
   createdAt      DateTime             @default(now())
   updatedAt      DateTime             @updatedAt
 
@@ -558,10 +561,9 @@ model WorkflowIntake {
   @@index([status, createdAt])
   @@index([assignedUserId, status])
   @@index([countyId, status])
+  @@index([relationalContactId])
   @@schema("public")
 }
-
-/// Scheduling bridge: required parent `WorkflowIntake`, optional `CampaignEvent` once scheduled.
 model EventRequest {
   id String @id @default(cuid())
 
@@ -2909,6 +2911,9 @@ model RelationalContact {
   voterSignals         VoterSignal[]
   emailContactProfiles EmailContactProfile[]
   communicationIdentities CommunicationIdentity[]
+  workflowIntakes      WorkflowIntake[]
+  fieldEntries         ElectionPlanFieldEntry[]
+  rosterPersons        VolunteerLeaderRosterPerson[]
 
   @@index([ownerUserId])
   @@index([matchedVoterRecordId])
@@ -3151,6 +3156,44 @@ enum CampaignTaskPriority {
   MEDIUM
   HIGH
   URGENT
+
+  @@schema("public")
+}
+
+enum CampaignTaskOpsSourceType {
+  field_signal
+  workflow_intake
+  leader_gap
+  lane_ops
+  event_template
+  manual
+
+  @@schema("public")
+}
+
+enum CampaignTaskOpsVisibility {
+  admin
+  operators
+  leader
+
+  @@schema("public")
+}
+
+enum CampaignProjectStatus {
+  PLANNING
+  ACTIVE
+  ON_HOLD
+  COMPLETED
+  ARCHIVED
+
+  @@schema("public")
+}
+
+enum CampaignProjectOwnerKind {
+  campaign_manager
+  lane_lead
+  county_chair
+  leader
 
   @@schema("public")
 }
@@ -3408,6 +3451,29 @@ model FestivalCoveragePlanSnapshot {
   @@schema("public")
 }
 
+model CampaignProject {
+  id            String                   @id @default(cuid())
+  slug          String                   @unique
+  title         String
+  description   String?                  @db.Text
+  status        CampaignProjectStatus    @default(PLANNING)
+  ownerKind     CampaignProjectOwnerKind @default(lane_lead)
+  ownerRole     String?
+  laneId        String?
+  countySlug    String?
+  leaderSlug    String?
+  targetStartAt DateTime?
+  targetEndAt   DateTime?
+  metadataJson  Json?
+  createdAt     DateTime                 @default(now())
+  updatedAt     DateTime                 @updatedAt
+  tasks         CampaignTask[]
+
+  @@index([status, targetEndAt])
+  @@index([laneId, status])
+  @@schema("public")
+}
+
 model CampaignTask {
   id                        String               @id @default(cuid())
   title                     String
@@ -3441,6 +3507,16 @@ model CampaignTask {
   completionNotes           String?              @db.Text
   completedAt               DateTime?
   timeMatrixQuadrant        TimeMatrixQuadrant?
+  /// Phase 2 ops work item — ladder signal → assignable task.
+  opsSourceType             CampaignTaskOpsSourceType?
+  opsSourceSignalId         String?
+  leaderSlug                String?
+  laneId                    String?
+  opsVisibility             CampaignTaskOpsVisibility?
+  opsMetadataJson           Json?
+  /// Phase 5 — optional project grouping for multi-lane coordinated pushes.
+  campaignProjectId         String?
+  campaignProject           CampaignProject?     @relation(fields: [campaignProjectId], references: [id], onDelete: SetNull)
   createdAt                 DateTime             @default(now())
   updatedAt                 DateTime             @updatedAt
   /// Comms Workbench plans that cite this task as their source.
@@ -3453,6 +3529,10 @@ model CampaignTask {
   @@index([eventId, sourceTemplateTaskKey])
   @@index([dueAt, status])
   @@index([socialContentItemId, status])
+  @@index([opsSourceSignalId, status])
+  @@index([leaderSlug, status])
+  @@index([opsVisibility, status])
+  @@index([campaignProjectId, status])
   @@schema("public")
 }
 
@@ -7215,12 +7295,15 @@ model ElectionPlanFieldEntry {
   quantity         Int                       @default(1)
   countySlug       String
   citySlug         String?
+  relationalContactId String?
+  relationalContact   RelationalContact? @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
   createdAt        DateTime                  @default(now())
 
   @@index([countySlug, citySlug])
   @@index([operatorInitials])
   @@index([category])
   @@index([createdAt])
+  @@index([relationalContactId])
   @@schema("public")
 }
 
@@ -7259,6 +7342,8 @@ model VolunteerLeaderRosterPerson {
   notes          String?
   lastTouchNote  String?
   sortOrder      Int                         @default(0)
+  relationalContactId String?
+  relationalContact   RelationalContact?     @relation(fields: [relationalContactId], references: [id], onDelete: SetNull)
   createdAt      DateTime                    @default(now())
   updatedAt      DateTime                    @updatedAt
 
@@ -7266,6 +7351,7 @@ model VolunteerLeaderRosterPerson {
   @@index([leaderSlug])
   @@index([parentId])
   @@index([leaderInitials, layer, slotIndex])
+  @@index([relationalContactId])
   @@schema("public")
 }
 

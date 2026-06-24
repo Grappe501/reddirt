@@ -5,6 +5,17 @@ import { usePathname } from "next/navigation";
 
 const OPERATORS_SUBNAV = [
   { href: "/election-plan/operators", label: "Hub", exact: true },
+  { href: "/election-plan/operators/my-work", label: "My work" },
+  { href: "/election-plan/operators/projects", label: "Projects" },
+  { href: "/election-plan/operators/volunteer-intake", label: "Volunteer intake" },
+  { href: "/election-plan/operators/comms-command", label: "Comms command" },
+  { href: "/election-plan/operators/voter-registration", label: "Voter registration" },
+  { href: "/election-plan/operators/events-command", label: "Events & Mobilize" },
+  { href: "/election-plan/operators/coalition-command", label: "Coalition" },
+  { href: "/election-plan/operators/leader-dashboard", label: "Leader dashboard" },
+  { href: "/election-plan/operators/leaders/command", label: "Leader command" },
+  { href: "/election-plan/operators/lane-coverage", label: "Lane coverage" },
+  { href: "/election-plan/operators/grassroots-fundraising-settlement", label: "Grassroots settlement" },
   { href: "/election-plan/operators/leaders", label: "Leader workbenches" },
   { href: "/election-plan/operators/leaders/me", label: "My workbench" },
   { href: "/election-plan/operators/field", label: "Field operators" },

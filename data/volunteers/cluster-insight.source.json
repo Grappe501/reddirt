@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "pass": "CLUSTER-INSIGHT-v1",
+  "note": "Read-only cluster geography for liaisons and board members — not cluster manager roles.",
+  "clusters": {
+    "central-metro": {
+      "name": "Central Arkansas Metro Cluster",
+      "regionHref": "/organizing-intelligence/regions/central-arkansas",
+      "countySlugs": ["pulaski", "saline", "lonoke", "faulkner"]
+    },
+    "north-central-ozarks": {
+      "name": "North Central Ozarks Cluster",
+      "regionHref": "/organizing-intelligence/regions/north-central-ozarks",
+      "countySlugs": ["baxter", "marion", "searcy", "stone", "newton", "izard", "fulton", "van-buren", "cleburne", "independence", "white"]
+    }
+  }
+}

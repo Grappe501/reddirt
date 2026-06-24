@@ -25,6 +25,10 @@ import { CountyIntelligencePanel } from "@/components/admin/county-intelligence/
 import type { StatewideCountyIntelligence } from "@/lib/agents/county-intelligence/county-kpi-types";
 import { VolunteerIntelligencePanel } from "@/components/admin/volunteers/VolunteerIntelligencePanel";
 import type { VolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
+import { OperationsCommandLadderPanel } from "@/components/volunteers/OperationsCommandLadderPanel";
+import { OperationsMyWorkPanel } from "@/components/volunteers/OperationsMyWorkPanel";
+import type { OperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
+import type { OpsMyWorkPayload } from "@/lib/volunteers/ops-work-items";
 
 const AUTOMATION_SCAFFOLDS = [
   { label: "Approval emails", status: "Scaffold — recipients configured", href: "/admin/campaign-events/ai-tools" },
@@ -46,9 +50,13 @@ export function CampaignManagerOpsDashboard({
   guidanceCards,
   adaptivePlan,
   volunteerBundle,
+  operationsFeedbackRollup,
+  opsMyWork,
 }: {
   countyStatewide?: StatewideCountyIntelligence;
   volunteerBundle?: VolunteerSystemBundle;
+  operationsFeedbackRollup?: OperationsFeedbackRollup;
+  opsMyWork?: OpsMyWorkPayload;
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
   financeSnapshot?: CampaignFinanceSnapshot;
@@ -71,6 +79,34 @@ export function CampaignManagerOpsDashboard({
       description="Event operations, travel ledger snapshot, approval queues, and calendar health for the March pilot period. Orchestration hub links — email send remains disabled."
     >
       <ApprovalRecipientsBanner compact />
+
+      {operationsFeedbackRollup ? (
+        <OperationsCommandLadderPanel
+          rollup={operationsFeedbackRollup}
+          activeTierId="campaign_manager"
+          surface="admin"
+          returnTo="/admin/campaign-manager-dashboard"
+        />
+      ) : null}
+
+      {opsMyWork ? (
+        <OperationsMyWorkPanel
+          payload={opsMyWork}
+          surface="admin"
+          compact
+          returnTo="/admin/campaign-manager-dashboard"
+          title="CM inbox preview"
+          subtitle=""
+          viewAllHref="/admin/my-work"
+        />
+      ) : null}
+
+      <p className="font-body text-sm text-kelly-muted">
+        <Link href="/admin/projects" className="font-semibold text-kelly-navy underline underline-offset-2 hover:text-kelly-slate">
+          Campaign projects
+        </Link>{" "}
+        — coordinated multi-lane pushes (VR, coalition, Labor Day) with kanban boards.
+      </p>
 
       {executiveSummary ? <ExecutiveSummaryStrip summary={executiveSummary} /> : null}
       {guidanceCards?.length ? <WorkflowGuidanceCards cards={guidanceCards} /> : null}

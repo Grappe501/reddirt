@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import type { ElectionPlanFieldCategory } from "@prisma/client";
 
 import { resolveFieldEntryOperator, requireFieldEntryOperator, requireFieldEntrySession } from "@/lib/volunteers/field-entry-access";
+import { syncFieldEntryContactSpine } from "@/lib/volunteers/contact-spine";
+import { onFieldLogSynced } from "@/lib/volunteers/ops-automation";
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
 import { FIELD_ENTRY_CATEGORIES, type FieldEntryCategory } from "@/lib/election-plan/field-entry/types";
 import { prisma } from "@/lib/db";
@@ -54,6 +56,7 @@ export async function POST(request: Request) {
     quantity?: number;
     countySlug?: string;
     citySlug?: string | null;
+    linkToCrm?: boolean;
   };
 
   const category = String(body.category ?? "").trim();
@@ -98,6 +101,27 @@ export async function POST(request: Request) {
       include: { operator: { select: { displayName: true } } },
     });
 
+    const spine = await syncFieldEntryContactSpine({
+      fieldEntryId: entry.id,
+      operatorInitials: op.initials,
+      category: category as ElectionPlanFieldCategory,
+      label,
+      description,
+      countySlug,
+      citySlug,
+      linkToCrm: body.linkToCrm !== false,
+    }).catch(() => ({ linked: false, relationalContactId: null, created: false }));
+
+    await onFieldLogSynced({
+      fieldEntryId: entry.id,
+      operatorInitials: op.initials,
+      category: category as ElectionPlanFieldCategory,
+      label,
+      description,
+      countySlug,
+      relationalContactId: spine.relationalContactId,
+    }).catch(() => undefined);
+
     return NextResponse.json({
       ok: true,
       entry: {
@@ -111,7 +135,9 @@ export async function POST(request: Request) {
         countySlug: entry.countySlug,
         citySlug: entry.citySlug,
         createdAt: entry.createdAt.toISOString(),
+        relationalContactId: spine.relationalContactId,
       },
+      contactSpine: spine,
     });
   } catch {
     return NextResponse.json({ error: "Could not save entry — is the database migration applied?" }, { status: 503 });

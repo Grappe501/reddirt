@@ -9,7 +9,7 @@ import {
   isValidLeaderLane,
   laneLabelForId,
 } from "@/lib/volunteers/lane-drill-down-config";
-import { getVolunteerLeaderBySlug } from "@/lib/volunteers/leader-roster";
+import { getVolunteerLeaderBySlug, getEffectiveTeamLanes } from "@/lib/volunteers/leader-roster";
 import { resolveLeaderPersonalLinks } from "@/lib/volunteers/resolve-leader-links";
 import { tryLoadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
 
@@ -30,7 +30,7 @@ export default async function LeaderLaneDrillDownSlugPage({ params }: Props) {
   if (!isValidLeaderLane(laneId)) notFound();
 
   const leader = getVolunteerLeaderBySlug(slug);
-  if (!leader || !leader.teamLanes.includes(laneId)) notFound();
+  if (!leader || !getEffectiveTeamLanes(leader).includes(laneId)) notFound();
 
   const current = await tryLoadCurrentVolunteerLeader();
   const isSelf = current?.slug === leader.slug;
