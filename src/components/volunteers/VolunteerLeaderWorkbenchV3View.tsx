@@ -100,6 +100,11 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Interim Volunteer Manager
               </p>
             ) : null}
+            {leader.workbenchTemplates?.includes("event_planner") ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-blue)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-blue)] ring-1 ring-[var(--ep-blue)]/30">
+                Event planner
+              </p>
+            ) : null}
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{leader.displayName}</h1>
             {leader.notes ? (
               <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{leader.notes}</p>
@@ -138,6 +143,8 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 specialKpis={specialKpis}
                 interimVolunteerManager={leader.volunteerManagerInterim}
                 leaderDisplayName={leader.displayName}
+                leaderSlug={leader.slug}
+                isSelf={isSelf}
               />
             </Section>
           ) : null}

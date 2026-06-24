@@ -86,6 +86,57 @@
         { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer HQ entry point" },
         { "label": "Volunteer intake (admin)", "href": "/admin/volunteers/intake", "description": "Activation queue — planned CRM merge" }
       ]
+    },
+    "event_planner": {
+      "id": "event_planner",
+      "label": "Event Planner",
+      "description": "Plan, chair, and execute community events — roles, run of show, Mobilize, day-of ops, and post-event follow-up. Includes full fundraising workbench functions.",
+      "includes": ["fundraising_workbench"],
+      "sections": [
+        { "id": "event_scope", "label": "Event scope & purpose", "description": "Define why this stop matters — persuasion, registration, fundraising, or visibility." },
+        { "id": "run_of_show", "label": "Run of show", "description": "Timeline, roles, and day-of sequence — event leadership ≠ city leadership." },
+        { "id": "committee_roles", "label": "Committee & role assignments", "description": "Chair, logistics, invitations, program, photography, setup/teardown — assign on event workbench." },
+        { "id": "mobilize_shifts", "label": "Mobilize & volunteer shifts", "description": "Live Mobilize page, shift assignments, and 48-hour lead time on new events." },
+        { "id": "event_command", "label": "Event command workbench", "description": "Dedicated event record — leadership slots, assignments, and AAR separate from city board." },
+        { "id": "day_of_ops", "label": "Day-of operations", "description": "Check-in, volunteer briefing, field log capture, and escalation path to campaign ops." },
+        { "id": "post_event", "label": "Post-event closeout", "description": "Thank-yous, Po5 commitments, donor follow-up, and field log within 48 hours." }
+      ],
+      "pathways": [
+        { "key": "event_chair", "label": "Event Chair" },
+        { "key": "logistics_lead", "label": "Logistics Lead" },
+        { "key": "day_of_captain", "label": "Day-of Captain" },
+        { "key": "fundraising_committee", "label": "Fundraising Committee Member" }
+      ],
+      "toolLinks": [
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Work completion, organizing, reporting, and tools" },
+        { "label": "Field calendar", "href": "/election-plan?tab=fieldCalendar", "description": "Campaign field calendar and stop command centers" },
+        { "label": "Mobilize rules", "href": "/election-plan/movement-infrastructure/mobilize-rules", "description": "When Mobilize is required for volunteer shifts" }
+      ]
+    },
+    "fundraising_workbench": {
+      "id": "fundraising_workbench",
+      "label": "Fundraising workbench",
+      "description": "Full fundraising lane — donor pipeline, ride-alongs, event revenue, house parties, committee asks, and compliance-aware stewardship.",
+      "sections": [
+        { "id": "donor_pipeline", "label": "Donor pipeline", "description": "Track asks, thank-yous, and 48-hour follow-up on every contact." },
+        { "id": "ride_alongs", "label": "Ride-alongs", "description": "Coordinate Kelly or surrogate donor conversations in your geography." },
+        { "id": "event_revenue", "label": "Event revenue", "description": "Fundraising events, host committees, VIP tables, and profit goals on event workbenches." },
+        { "id": "house_parties", "label": "House party hosts", "description": "Small-room gatherings — Po5 commitments and grassroots asks." },
+        { "id": "committee_fundraising", "label": "Fundraising committee", "description": "Plan and execute fundraising-oriented community events — invitations, program, day-of ask." },
+        { "id": "compliance_basics", "label": "Finance compliance basics", "description": "Arkansas campaign finance volunteer rules before solicitation at events." },
+        { "id": "stewardship", "label": "Donor stewardship", "description": "Thank-you doctrine closeout — no ask left without follow-up." }
+      ],
+      "pathways": [
+        { "key": "house_party_host", "label": "House Party Host" },
+        { "key": "fundraising_committee_member", "label": "Fundraising Committee Member" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "event_revenue_lead", "label": "Event Revenue Lead" }
+      ],
+      "toolLinks": [
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Lane checklist, reports, and Election Plan drill-downs" },
+        { "label": "Community workbench fundraising", "href": "/election-plan/workbenches/jacksonville#fundraising", "description": "City fundraising panel and opportunities" },
+        { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
+      ]
     }
   }
 }

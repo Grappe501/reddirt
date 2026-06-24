@@ -5,7 +5,9 @@ export type LeaderWorkbenchTemplateId =
   | "youth_leadership"
   | "high_school_leadership"
   | "hispanic_outreach_lead"
-  | "volunteer_manager";
+  | "volunteer_manager"
+  | "event_planner"
+  | "fundraising_workbench";
 
 export type LeaderTemplateToolLink = {
   label: string;
@@ -75,6 +77,8 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
 
   const order: LeaderWorkbenchTemplateId[] = [
     "volunteer_manager",
+    "event_planner",
+    "fundraising_workbench",
     "youth_leadership",
     "high_school_leadership",
     "hispanic_outreach_lead",

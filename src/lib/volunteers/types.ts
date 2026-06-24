@@ -43,12 +43,14 @@ export type VolunteerLeader = {
   workbenchTier?: WorkbenchHierarchyTierId;
   /** Interim statewide Volunteer Manager — explicit on workbench until permanent replacement. */
   volunteerManagerInterim?: boolean;
-  /** Coalition / youth / outreach / vol-manager workbench templates (stackable). */
+  /** Coalition / youth / outreach / vol-manager / event / fundraising workbench templates (stackable). */
   workbenchTemplates?: Array<
     | "youth_leadership"
     | "high_school_leadership"
     | "hispanic_outreach_lead"
     | "volunteer_manager"
+    | "event_planner"
+    | "fundraising_workbench"
   >;
   /** High school senior — auto-includes youth + high school leadership templates. */
   highSchoolSenior?: boolean;

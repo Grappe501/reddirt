@@ -304,6 +304,44 @@
       "notes": "Hispanic Outreach Lead · Jacksonville high school senior — youth + coalition templates."
     },
     {
+      "slug": "dana-nixon",
+      "displayName": "Dana Nixon",
+      "initials": "DNI",
+      "workbenchTemplates": ["event_planner", "fundraising_workbench"],
+      "specialKpiCitySlugs": ["jacksonville"],
+      "teamLanes": ["events", "fundraising"],
+      "connections": [
+        { "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "city", "citySlug": "england", "label": "England — Nixon Flower Farm host city" },
+        {
+          "kind": "event",
+          "workbenchSlug": "england",
+          "eventSlug": "nixon-flower-farm",
+          "label": "Nixon Flower Farm · event chair (Jul 14)"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/jacksonville",
+          "label": "Jacksonville city strategy",
+          "description": "Priority city brief — 25% SOS lift special KPI (Festiville · Sept 20)"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/jacksonville",
+          "label": "Jacksonville event & fundraising hub",
+          "description": "Community workbench — events, leadership, field log"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/jacksonville#events",
+          "label": "Jacksonville events board",
+          "description": "City calendar and event leadership slots"
+        }
+      ],
+      "notes": "Jacksonville · event planner — Nixon Flower Farm with full fundraising workbench."
+    },
+    {
       "slug": "jean-reed",
       "displayName": "Jean Reed",
       "initials": "JRE",
