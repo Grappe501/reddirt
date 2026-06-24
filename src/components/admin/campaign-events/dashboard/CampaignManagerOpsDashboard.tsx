@@ -26,7 +26,9 @@ import type { StatewideCountyIntelligence } from "@/lib/agents/county-intelligen
 import { VolunteerIntelligencePanel } from "@/components/admin/volunteers/VolunteerIntelligencePanel";
 import type { VolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
 import { OperationsCommandLadderPanel } from "@/components/volunteers/OperationsCommandLadderPanel";
+import { OperationsMyWorkPanel } from "@/components/volunteers/OperationsMyWorkPanel";
 import type { OperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
+import type { OpsMyWorkPayload } from "@/lib/volunteers/ops-work-items";
 
 const AUTOMATION_SCAFFOLDS = [
   { label: "Approval emails", status: "Scaffold — recipients configured", href: "/admin/campaign-events/ai-tools" },
@@ -49,10 +51,12 @@ export function CampaignManagerOpsDashboard({
   adaptivePlan,
   volunteerBundle,
   operationsFeedbackRollup,
+  opsMyWork,
 }: {
   countyStatewide?: StatewideCountyIntelligence;
   volunteerBundle?: VolunteerSystemBundle;
   operationsFeedbackRollup?: OperationsFeedbackRollup;
+  opsMyWork?: OpsMyWorkPayload;
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
   financeSnapshot?: CampaignFinanceSnapshot;
@@ -81,6 +85,16 @@ export function CampaignManagerOpsDashboard({
           rollup={operationsFeedbackRollup}
           activeTierId="campaign_manager"
           surface="admin"
+          returnTo="/admin/campaign-manager-dashboard"
+        />
+      ) : null}
+
+      {opsMyWork ? (
+        <OperationsMyWorkPanel
+          payload={opsMyWork}
+          surface="admin"
+          compact
+          returnTo="/admin/campaign-manager-dashboard"
         />
       ) : null}
 

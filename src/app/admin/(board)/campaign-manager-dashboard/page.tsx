@@ -13,6 +13,7 @@ import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/loa
 import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
 import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
 import { loadOperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
+import { loadOpsMyWork } from "@/lib/volunteers/ops-work-items";
 import { CampaignGuidanceStrip } from "@/components/admin/guidance/CampaignGuidanceStrip";
 
 export const dynamic = "force-dynamic";
@@ -22,7 +23,8 @@ type Props = { searchParams: Promise<{ month?: string }> };
 export default async function CampaignManagerDashboardPage({ searchParams }: Props) {
   const sp = await searchParams;
   const month = parseReviewMonth(sp.month);
-  const [{ snapshot }, reimbursementSummaries, financeSnapshot, navBundle, operationsFeedbackRollup] = await Promise.all([
+  const [{ snapshot }, reimbursementSummaries, financeSnapshot, navBundle, operationsFeedbackRollup, opsMyWork] =
+    await Promise.all([
     loadCampaignEventsDashboard(month),
     loadReimbursementMonthSummaries(),
     loadCampaignFinanceSnapshot(month),
@@ -32,6 +34,7 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
       surface: "campaign_manager_dashboard",
     }),
     loadOperationsFeedbackRollup(),
+    loadOpsMyWork({ visibility: ["admin"], limit: 8 }),
   ]);
   const nextActions = loadNextActionsForPage({
     role: "campaign_manager",
@@ -68,6 +71,7 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
         adaptivePlan={navBundle.adaptivePlan}
         volunteerBundle={volunteerBundle}
         operationsFeedbackRollup={operationsFeedbackRollup}
+        opsMyWork={opsMyWork}
       />
     </AgentObservationTracker>
   );

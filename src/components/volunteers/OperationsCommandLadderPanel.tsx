@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { createTaskFromSignalAction } from "@/app/election-plan/operators/ops-work-actions";
 import {
   OPERATIONS_COMMAND_STACK,
   type OperationsCommandTierId,
@@ -17,6 +18,7 @@ type Props = {
   activeTierId?: OperationsCommandTierId;
   showCandidateLink?: boolean;
   surface?: "election-plan" | "admin";
+  returnTo?: string;
 };
 
 function surfaceStyles(surface: "election-plan" | "admin") {
@@ -49,6 +51,7 @@ export function OperationsCommandLadderPanel({
   activeTierId,
   showCandidateLink = true,
   surface = "election-plan",
+  returnTo = "/election-plan/operators/my-work",
 }: Props) {
   const s = surfaceStyles(surface);
   const signalsByTier = new Map<string, typeof rollup.signals>();
@@ -135,17 +138,43 @@ export function OperationsCommandLadderPanel({
               </dl>
 
               {tierSignals.length ? (
-                <ul className="mt-3 flex flex-wrap gap-2">
+                <ul className="mt-3 flex flex-col gap-2">
                   {tierSignals.map((signal) => (
-                    <li key={signal.id}>
+                    <li
+                      key={signal.id}
+                      className="flex flex-wrap items-center gap-2 rounded-lg border border-[var(--ep-navy)]/8 bg-white px-3 py-2"
+                    >
                       <Link
                         href={signal.href}
-                        className="inline-flex items-center gap-2 rounded-full border border-[var(--ep-navy)]/10 bg-white px-3 py-1 text-xs font-semibold text-[var(--ep-navy)] hover:border-[var(--ep-gold)]"
+                        className="inline-flex min-w-0 flex-1 items-center gap-2 text-xs font-semibold text-[var(--ep-navy)] hover:underline"
                         title={signal.description}
                       >
-                        <span className={`inline-block h-2 w-2 rounded-full ${severityDot(signal.severity)}`} />
+                        <span className={`inline-block h-2 w-2 shrink-0 rounded-full ${severityDot(signal.severity)}`} />
                         {signal.label}: {signal.count}
                       </Link>
+                      {signal.openOpsTask ? (
+                        <Link
+                          href={returnTo}
+                          className="shrink-0 rounded-full border border-emerald-600/30 bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-900"
+                          title={signal.openOpsTask.title}
+                        >
+                          Task open
+                        </Link>
+                      ) : signal.taskAssignable ? (
+                        <form action={createTaskFromSignalAction} className="shrink-0">
+                          <input type="hidden" name="signalId" value={signal.id} />
+                          <input type="hidden" name="count" value={String(signal.count)} />
+                          <input type="hidden" name="tierId" value={signal.tierId} />
+                          <input type="hidden" name="severity" value={signal.severity} />
+                          <input type="hidden" name="returnTo" value={returnTo} />
+                          <button
+                            type="submit"
+                            className="rounded-full bg-[var(--ep-gold)] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[var(--ep-navy)] hover:opacity-90"
+                          >
+                            Assign task
+                          </button>
+                        </form>
+                      ) : null}
                     </li>
                   ))}
                 </ul>

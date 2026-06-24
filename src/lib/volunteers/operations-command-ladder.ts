@@ -109,6 +109,10 @@ export type OperationsFeedbackSignal = {
   severity: "ok" | "watch" | "action";
   tierId: OperationsCommandTierId;
   description: string;
+  /** Open ops work item spawned from this ladder signal, if any. */
+  openOpsTask?: { id: string; title: string; status: string } | null;
+  /** True when operators can create a CampaignTask from this signal. */
+  taskAssignable?: boolean;
 };
 
 export function tierById(id: OperationsCommandTierId): OperationsCommandTier | undefined {

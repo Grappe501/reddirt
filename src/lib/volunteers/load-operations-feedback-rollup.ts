@@ -5,6 +5,8 @@ import { loadCommandCoverageHeatmap } from "@/lib/volunteers/load-command-covera
 import { loadVolunteerIntakeDashboard } from "@/lib/volunteers/load-volunteer-intake-dashboard";
 import { loadRealLeaderCommandDashboard } from "@/lib/volunteers/load-real-leader-dashboard";
 import type { OperationsCommandTierId, OperationsFeedbackSignal } from "@/lib/volunteers/operations-command-ladder";
+import { loadOpenOpsTasksBySignalId } from "@/lib/volunteers/ops-work-items";
+import { opsSignalTaskDefinition } from "@/lib/volunteers/ops-work-items/signal-task-definitions";
 
 export type OperationsFeedbackRollup = {
   dbAvailable: boolean;
@@ -17,6 +19,7 @@ export type OperationsFeedbackRollup = {
   myFiveIncomplete: number;
   myFiveComplete: number;
   signals: OperationsFeedbackSignal[];
+  openOpsTasksBySignalId: Record<string, { id: string; title: string; status: string; signalId: string }>;
 };
 
 async function loadFieldLogTotals(): Promise<{ entryCount: number; totalQuantity: number }> {
@@ -42,11 +45,12 @@ export async function loadOperationsFeedbackRollup(): Promise<OperationsFeedback
   const dbAvailable = isDatabaseConfigured();
   const fieldLeaders = getVolunteerLeaderRoster().filter(countsInFieldLeaderRoster);
 
-  const [heatmap, intake, leaderCommand, fieldTotals] = await Promise.all([
+  const [heatmap, intake, leaderCommand, fieldTotals, openOpsTasksBySignalId] = await Promise.all([
     loadCommandCoverageHeatmap(),
     loadVolunteerIntakeDashboard(),
     loadRealLeaderCommandDashboard(),
     loadFieldLogTotals(),
+    loadOpenOpsTasksBySignalId(),
   ]);
 
   const activeLeaders = heatmap.filter((r) => r.activity === "active").length;
@@ -55,7 +59,17 @@ export async function loadOperationsFeedbackRollup(): Promise<OperationsFeedback
     leaderCommand.stats.myFivePartial + leaderCommand.stats.myFiveEmpty;
   const myFiveComplete = leaderCommand.stats.myFiveComplete;
 
-  const signals: OperationsFeedbackSignal[] = [
+  function enrichSignal(signal: Omit<OperationsFeedbackSignal, "openOpsTask" | "taskAssignable">): OperationsFeedbackSignal {
+    const def = opsSignalTaskDefinition(signal.id);
+    const openOpsTask = openOpsTasksBySignalId[signal.id] ?? null;
+    const taskAssignable =
+      Boolean(def) &&
+      !openOpsTask &&
+      (signal.severity !== "ok" || def?.creatableWhenOk === true);
+    return { ...signal, openOpsTask, taskAssignable };
+  }
+
+  const rawSignals: Omit<OperationsFeedbackSignal, "openOpsTask" | "taskAssignable">[] = [
     {
       id: "field-log",
       label: "Field log entries",
@@ -129,6 +143,7 @@ export async function loadOperationsFeedbackRollup(): Promise<OperationsFeedback
       description: `${fieldTotals.totalQuantity} total qty — relational base feeding every tier`,
     },
   ];
+  const signals = rawSignals.map(enrichSignal);
 
   return {
     dbAvailable,
@@ -141,5 +156,6 @@ export async function loadOperationsFeedbackRollup(): Promise<OperationsFeedback
     myFiveIncomplete,
     myFiveComplete,
     signals,
+    openOpsTasksBySignalId,
   };
 }

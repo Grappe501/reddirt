@@ -33,7 +33,11 @@ export default async function ElectionPlanOperatorsPage() {
             <ElectionPlanOperatorsSubnav />
           </div>
           <div className="mt-6">
-            <OperationsCommandLadderPanel rollup={operationsFeedbackRollup} activeTierId="operators_hub" />
+            <OperationsCommandLadderPanel
+              rollup={operationsFeedbackRollup}
+              activeTierId="operators_hub"
+              returnTo="/election-plan/operators/my-work"
+            />
           </div>
           <div className="mt-6">
             <ElectionPlanOperatorsHubPanel />

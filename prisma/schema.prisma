@@ -3160,6 +3160,25 @@ enum CampaignTaskPriority {
   @@schema("public")
 }
 
+enum CampaignTaskOpsSourceType {
+  field_signal
+  workflow_intake
+  leader_gap
+  lane_ops
+  event_template
+  manual
+
+  @@schema("public")
+}
+
+enum CampaignTaskOpsVisibility {
+  admin
+  operators
+  leader
+
+  @@schema("public")
+}
+
 enum WorkflowTemplateTrigger {
   EVENT_CREATED
   EVENT_SIGNUP_CREATED
@@ -3446,6 +3465,13 @@ model CampaignTask {
   completionNotes           String?              @db.Text
   completedAt               DateTime?
   timeMatrixQuadrant        TimeMatrixQuadrant?
+  /// Phase 2 ops work item — ladder signal → assignable task.
+  opsSourceType             CampaignTaskOpsSourceType?
+  opsSourceSignalId         String?
+  leaderSlug                String?
+  laneId                    String?
+  opsVisibility             CampaignTaskOpsVisibility?
+  opsMetadataJson           Json?
   createdAt                 DateTime             @default(now())
   updatedAt                 DateTime             @updatedAt
   /// Comms Workbench plans that cite this task as their source.
@@ -3458,6 +3484,9 @@ model CampaignTask {
   @@index([eventId, sourceTemplateTaskKey])
   @@index([dueAt, status])
   @@index([socialContentItemId, status])
+  @@index([opsSourceSignalId, status])
+  @@index([leaderSlug, status])
+  @@index([opsVisibility, status])
   @@schema("public")
 }
 
