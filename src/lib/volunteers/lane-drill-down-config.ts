@@ -404,6 +404,14 @@ const BASE: Record<VolunteerTeamLaneId, Omit<LaneDrillDownPage, "laneId">> = {
           kind: "link",
           priority: "high",
         },
+        {
+          id: "statewide-comms",
+          title: "Statewide comms command",
+          href: "/election-plan/operators/comms-command",
+          description: "Editorial queue, event alignment, and county comms coverage.",
+          kind: "link",
+          priority: "high",
+        },
       ],
     },
     reporting: {

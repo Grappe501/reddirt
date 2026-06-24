@@ -646,6 +646,7 @@
         { "key": "election_info", "label": "Election Information Team" }
       ],
       "toolLinks": [
+        { "label": "Statewide comms command", "href": "/election-plan/operators/comms-command", "description": "Editorial review, event alignment, email triage, and county comms coverage" },
         { "label": "Comms lane drill-down", "href": "/election-plan/operators/leaders/me/lane/comms", "description": "Work completion, organizing, reporting, and tools" },
         { "label": "Conversations & Stories", "href": "/messages", "description": "County narratives and shareable content hub" },
         { "label": "Debate prep workbench", "href": "/election-plan/debate-prep", "description": "Kelly pathway materials when assigned" },

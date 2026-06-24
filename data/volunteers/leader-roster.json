@@ -145,6 +145,12 @@
         },
         {
           "kind": "global",
+          "href": "/election-plan/operators/comms-command",
+          "label": "Statewide comms command",
+          "description": "Editorial review, event alignment, and county comms coverage"
+        },
+        {
+          "kind": "global",
           "href": "/election-plan/operators/leaders/me/lane/comms",
           "label": "Comms lane drill-down",
           "description": "Message packets, validator stories, and offline conversation logging"

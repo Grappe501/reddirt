@@ -46,6 +46,17 @@ export function canAccessVolunteerIntakeOps(leader: VolunteerLeader): boolean {
   );
 }
 
+/** Statewide comms command — comms lead template, interfaith liaison, or command access. */
+export function canAccessCommsCommand(leader: VolunteerLeader): boolean {
+  return Boolean(
+    leader.workbenchTemplates?.includes("comms_lead") ||
+      leader.interfaithCommsLiaison ||
+      leader.commandAccess ||
+      leader.assistantCm ||
+      leader.acmWorkbenchFlex,
+  );
+}
+
 /** Flex leaders get every lane drill-down — role title stays open in UI. */
 export function getEffectiveTeamLanes(leader: VolunteerLeader): VolunteerTeamLaneId[] {
   if (hasFlexLeaderWorkbench(leader)) {
