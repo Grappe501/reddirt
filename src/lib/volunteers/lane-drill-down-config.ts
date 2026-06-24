@@ -703,6 +703,14 @@ const BASE: Record<VolunteerTeamLaneId, Omit<LaneDrillDownPage, "laneId">> = {
           priority: "high",
         },
         {
+          id: "volunteer-intake",
+          title: "Volunteer intake & activation",
+          href: "/election-plan/operators/volunteer-intake",
+          description: "Website sign-up review → placement → workbench unlock.",
+          kind: "link",
+          priority: "high",
+        },
+        {
           id: "field-operators",
           title: "Field operators admin",
           href: "/election-plan/operators/field",

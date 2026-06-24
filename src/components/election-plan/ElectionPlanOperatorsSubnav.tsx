@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const OPERATORS_SUBNAV = [
   { href: "/election-plan/operators", label: "Hub", exact: true },
+  { href: "/election-plan/operators/volunteer-intake", label: "Volunteer intake" },
   { href: "/election-plan/operators/leaders", label: "Leader workbenches" },
   { href: "/election-plan/operators/leaders/me", label: "My workbench" },
   { href: "/election-plan/operators/field", label: "Field operators" },

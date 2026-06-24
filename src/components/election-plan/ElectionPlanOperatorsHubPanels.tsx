@@ -15,6 +15,17 @@ export function ElectionPlanOperatorsHubPanel() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <Link
+        href="/election-plan/operators/volunteer-intake"
+        className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Intake · activation</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">Volunteer intake queue</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Public form → review → placement → workbench unlock — shared with Volunteer Manager.
+        </p>
+      </Link>
+
+      <Link
         href="/election-plan/operators/leaders"
         className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
       >

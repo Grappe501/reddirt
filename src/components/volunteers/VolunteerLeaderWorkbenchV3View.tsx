@@ -216,6 +216,11 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Comms lead
               </p>
             ) : null}
+            {leader.workbenchTemplates?.includes("voter_registration_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-teal-950 ring-1 ring-teal-500/45">
+                Voter registration lead
+              </p>
+            ) : null}
             {leader.workbenchTemplates?.includes("finance_inner_circle") ? (
               <p className="mt-2 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-950 ring-1 ring-amber-500/40">
                 Finance inner circle

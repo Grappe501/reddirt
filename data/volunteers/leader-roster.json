@@ -1178,12 +1178,47 @@
       "connections": [
         { "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock — volunteer management" },
         { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "global", "href": "/election-plan/operators/volunteer-intake", "label": "Volunteer intake & activation", "description": "Website sign-up queue — review, placement, workbench unlock" },
         { "kind": "global", "href": "/election-plan/operators", "label": "Operators hub", "description": "Volunteer HQ — leaders, field operators, command" },
         { "kind": "global", "href": "/election-plan/operators/leaders/command", "label": "Leader command roster", "description": "Field log heatmap and operator sync" },
         { "kind": "global", "href": "/election-plan/operators/field", "label": "Field operators", "description": "3-letter whitelist and capabilities" },
         { "kind": "global", "href": "/election-plan/operators/leaders", "label": "All leader workbenches", "description": "Statewide personal command surfaces" }
       ],
       "notes": "Interim Volunteer Manager — temporary until a permanent replacement is named."
+    },
+    {
+      "slug": "shannie-jackson",
+      "displayName": "Shannie Jackson",
+      "initials": "SJA",
+      "workbenchTemplates": ["voter_registration_lead"],
+      "teamLanes": ["voter-registration", "county", "campus", "operations", "events"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Registration priority counties and open leader slots"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/students-for-arkansas",
+          "label": "Students for Arkansas",
+          "description": "Campus registration bridges and co-chair coordination"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Placement on county and city workbenches after intake review"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/power-of-5/command-center",
+          "label": "Power of 5 command center",
+          "description": "Help 10 and relational registration ladders statewide"
+        }
+      ],
+      "notes": "Statewide voter registration lead — 18-by-election tabling, county goals, campus bridges."
     },
     {
       "slug": "ali-khan",

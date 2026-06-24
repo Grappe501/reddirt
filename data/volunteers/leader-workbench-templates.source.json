@@ -84,7 +84,8 @@
         { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Full roster heatmap and sync" },
         { "label": "All leader workbenches", "href": "/election-plan/operators/leaders", "description": "Every personal command surface" },
         { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer HQ entry point" },
-        { "label": "Volunteer intake (admin)", "href": "/admin/volunteers/intake", "description": "Activation queue — planned CRM merge" }
+        { "label": "Volunteer intake & activation", "href": "/election-plan/operators/volunteer-intake", "description": "Public form → review → placement → workbench unlock" },
+        { "label": "Signup sheet intake (admin)", "href": "/admin/volunteers/intake", "description": "Paper signup OCR review and voter-file match" }
       ]
     },
     "event_planner": {
@@ -649,6 +650,32 @@
         { "label": "Conversations & Stories", "href": "/messages", "description": "County narratives and shareable content hub" },
         { "label": "Debate prep workbench", "href": "/election-plan/debate-prep", "description": "Kelly pathway materials when assigned" },
         { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Align event comms with field calendar" }
+      ]
+    },
+    "voter_registration_lead": {
+      "id": "voter_registration_lead",
+      "label": "Voter registration lead",
+      "description": "Statewide registration lane — 18-by-election tabling, Help 10, county registration goals, campus bridges, and clerk coordination.",
+      "sections": [
+        { "id": "registration_drives", "label": "Registration drive cadence", "description": "Confirm next drive on county and city workbench calendars — tabling, festivals, and campus stops." },
+        { "id": "help_ten", "label": "Help 10 participation", "description": "Ten conversations leading to registration checks — relational pipeline before blast messaging." },
+        { "id": "county_goals", "label": "County registration goals", "description": "75-county playbook registration targets — prioritize youth registration counties first." },
+        { "id": "campus_bridges", "label": "Campus registration bridges", "description": "Students for Arkansas chapters and high school 18-by-election tabling — coordinate with campus co-chairs." },
+        { "id": "clerk_coordination", "label": "Clerk & drop-off coordination", "description": "Verify county drop-off locations and deadlines — no unsourced procedural claims." },
+        { "id": "field_reporting", "label": "Registration field reporting", "description": "Log registrations and conversations in the field log — quantity rollups for county KPI." }
+      ],
+      "pathways": [
+        { "key": "voter_registration_lead", "label": "Voter Registration Lead" },
+        { "key": "registration_captain", "label": "Registration Captain" },
+        { "key": "campus_reg_director", "label": "Campus Registration Director" },
+        { "key": "help_ten_coordinator", "label": "Help 10 Coordinator" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ],
+      "toolLinks": [
+        { "label": "Voter registration lane drill-down", "href": "/election-plan/operators/leaders/me/lane/voter-registration", "description": "Work completion, organizing, reporting, and tools" },
+        { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county roles and registration priority counties" },
+        { "label": "Students for Arkansas", "href": "/election-plan/workbenches/students-for-arkansas", "description": "Campus chapter registration coordination" },
+        { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational registration through My Five ladders" }
       ]
     },
     "assistant_cm_workbench": {

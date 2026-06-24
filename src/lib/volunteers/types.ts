@@ -71,6 +71,7 @@ export type VolunteerLeader = {
     | "educators_coalition_lead"
     | "comms_lead"
     | "assistant_cm_workbench"
+    | "voter_registration_lead"
   >;
   /** Students for Arkansas founding co-chair — campus chapter + statewide student movement. */
   campusTeamCoChair?: boolean;

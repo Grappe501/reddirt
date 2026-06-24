@@ -11,12 +11,18 @@ import {
   getVolunteerHubPassword,
   verifyVolunteerSessionToken,
 } from "@/lib/volunteers/auth/session";
+import { canAccessVolunteerIntakeOps, getVolunteerLeaderBySlug } from "@/lib/volunteers/leader-roster";
 
 export type PortalAuthMode = "election-plan" | "volunteer-leader" | "dev-open";
 
 export function isLeaderWorkbenchPath(pathname: string): boolean {
   const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
   return path.startsWith("/election-plan/operators/leaders");
+}
+
+export function isVolunteerIntakeOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/volunteer-intake";
 }
 
 export function isLeaderWorkbenchSignInPath(pathname: string): boolean {
@@ -42,6 +48,7 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
   const jar = await cookies();
   const leaderZone = isLeaderWorkbenchPath(pathname);
   const leaderSignIn = isLeaderWorkbenchSignInPath(pathname);
+  const volunteerIntakeOps = isVolunteerIntakeOpsPath(pathname);
 
   if (epSecret) {
     const epToken = jar.get(ELECTION_PLAN_SESSION_COOKIE)?.value;
@@ -50,13 +57,19 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
     }
   }
 
-  if (leaderZone && !leaderSignIn && volSecret) {
+  if ((leaderZone || volunteerIntakeOps) && !leaderSignIn && volSecret) {
     const volToken = jar.get(VOLUNTEER_SESSION_COOKIE)?.value;
     const volPayload = verifyVolunteerSessionToken(volToken, volSecret);
     if (volPayload) {
-      return "volunteer-leader";
+      if (leaderZone) return "volunteer-leader";
+      const leader = getVolunteerLeaderBySlug(volPayload.leaderSlug);
+      if (leader && canAccessVolunteerIntakeOps(leader)) return "volunteer-leader";
     }
     redirect(`/election-plan/operators/leaders/sign-in?next=${encodeURIComponent(pathname)}`);
+  }
+
+  if (volunteerIntakeOps && process.env.NODE_ENV !== "production" && !volSecret && !epSecret) {
+    return "dev-open";
   }
 
   if (leaderSignIn) {

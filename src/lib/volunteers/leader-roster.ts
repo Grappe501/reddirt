@@ -36,6 +36,16 @@ export function hasFlexLeaderWorkbench(leader: VolunteerLeader): boolean {
   return Boolean(leader.assistantCm || leader.acmWorkbenchFlex);
 }
 
+/** Volunteer intake ops dashboard — interim vol manager, vol-manager template, or command access. */
+export function canAccessVolunteerIntakeOps(leader: VolunteerLeader): boolean {
+  return Boolean(
+    leader.volunteerManagerInterim ||
+      leader.workbenchTemplates?.includes("volunteer_manager") ||
+      leader.commandAccess ||
+      leader.assistantCm,
+  );
+}
+
 /** Flex leaders get every lane drill-down — role title stays open in UI. */
 export function getEffectiveTeamLanes(leader: VolunteerLeader): VolunteerTeamLaneId[] {
   if (hasFlexLeaderWorkbench(leader)) {
