@@ -63,7 +63,7 @@ jobs:
         run: npx prisma migrate deploy
 
       - name: Production build (netlify-build.sh parity)
-        run: npm run election-plan:build && NODE_ENV=production npx next build
+        run: bash scripts/netlify-build.sh
 
       - name: Enforce Netlify env scopes (when secrets set)
         env:
