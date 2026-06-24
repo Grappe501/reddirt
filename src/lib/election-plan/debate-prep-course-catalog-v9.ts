@@ -11,7 +11,7 @@ import {
   DAY6_ID,
   DAY7_ID,
   DAY8_ID,
-} from "@/lib/election-plan/debatePrepDayDrillDown";
+} from "@/lib/election-plan/debate-prep-day-ids";
 
 export const DEBATE_COMMAND_COURSE_TITLE = "Arkansas Secretary of State Debate Command Course";
 export const DEBATE_COMMAND_COURSE_TAGLINE =
