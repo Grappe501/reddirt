@@ -164,15 +164,58 @@ function readHandlerDirEntries(cwd = process.cwd()) {
   return null;
 }
 
-function detectOpenNextModernHandler(cwd = process.cwd()) {
-  if (OPENNEXT_HANDLER_MARKERS.some((rel) => fs.existsSync(path.join(cwd, rel)))) {
-    return true;
-  }
+/** Read packaged handler metadata after @netlify/plugin-nextjs onBuild (postBuild plugins). */
+function readPackagedHandlerRuntime(cwd = process.cwd()) {
   const handler = readHandlerDirEntries(cwd);
-  if (!handler) return false;
-  return handler.entries.some(
-    (name) => name.endsWith(".mjs") || name === "run-config.json",
-  );
+  if (handler) {
+    const hasModernEntry = handler.entries.some(
+      (name) => name === "___netlify-server-handler.mjs" || name.endsWith(".mjs"),
+    );
+    const hasRunConfig = handler.entries.includes("run-config.json");
+    const hasLegacyOnly =
+      handler.entries.includes("___netlify-server-handler.js") && !hasModernEntry;
+    if (hasLegacyOnly) {
+      return { modern: false, runtimeAPIVersion: null, invocationMode: null, source: "legacy-js-entry" };
+    }
+    if (hasModernEntry && hasRunConfig) {
+      return { modern: true, runtimeAPIVersion: 2, invocationMode: "stream", source: "handler-layout" };
+    }
+  }
+
+  const manifestPath = path.join(cwd, ".netlify/functions-internal/___netlify-server-handler.json");
+  if (fs.existsSync(manifestPath)) {
+    try {
+      const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+      const candidates = [
+        manifest,
+        manifest.config,
+        manifest.bootstrapData,
+        manifest.config?.bootstrapData,
+      ].filter(Boolean);
+      for (const node of candidates) {
+        const runtimeAPIVersion =
+          node.runtimeAPIVersion ?? node.bd?.runtimeAPIVersion ?? node.bootstrapData?.runtimeAPIVersion;
+        const invocationMode = node.invocationMode ?? node.im;
+        if (typeof runtimeAPIVersion === "number" && runtimeAPIVersion >= 2) {
+          return { modern: true, runtimeAPIVersion, invocationMode: invocationMode ?? null, source: "manifest" };
+        }
+        if (invocationMode === "stream") {
+          return { modern: true, runtimeAPIVersion: runtimeAPIVersion ?? null, invocationMode, source: "manifest" };
+        }
+      }
+    } catch {
+      /* skip malformed manifest */
+    }
+  }
+
+  return { modern: false, runtimeAPIVersion: null, invocationMode: null, source: null };
+}
+
+function detectOpenNextModernHandler(cwd = process.cwd()) {
+  const packaged = readPackagedHandlerRuntime(cwd);
+  if (packaged.modern) return true;
+  if (readHandlerDirEntries(cwd)) return false;
+  return OPENNEXT_HANDLER_MARKERS.some((rel) => fs.existsSync(path.join(cwd, rel)));
 }
 
 /** Legacy Lambda adapter — .js entry without OpenNext .mjs markers. */
@@ -190,14 +233,20 @@ function detectLegacyLambdaHandler(cwd = process.cwd()) {
 
 /**
  * Netlify injects FEATURE_FLAGS (~9 KB) in every build env — modern and legacy.
- * Only count toward the compat deploy budget when legacy Lambda mode is confirmed.
+ * Only count toward the compat deploy budget when legacy Lambda mode is confirmed
+ * or the packaged handler does not report runtimeAPIVersion >= 2.
  */
 function estimateCompatFeatureFlagsBytes(
   featureFlags,
-  { modernHandler = false, legacyHandler = false } = {},
+  { modernHandler = false, legacyHandler = false, handlerPackaged = false } = {},
 ) {
-  if (modernHandler || !legacyHandler) return 0;
+  if (modernHandler) return 0;
   const ffBytes = featureFlags?.bytes ?? 0;
+  const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
+  if (handlerPackaged && onNetlify && !modernHandler) {
+    return ffBytes || FEATURE_FLAGS_TYPICAL_BYTES;
+  }
+  if (!legacyHandler) return 0;
   return ffBytes || FEATURE_FLAGS_TYPICAL_BYTES;
 }
 
@@ -214,7 +263,7 @@ function estimateCompatDeployBytes({
   const worstCase = apiRuntimeBytes ?? deployEstimate ?? total + (buildOnlyLeaked ?? 0);
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
   const compatPadding = onNetlify
-    ? estimateCompatFeatureFlagsBytes(featureFlags, { modernHandler, legacyHandler })
+    ? estimateCompatFeatureFlagsBytes(featureFlags, { modernHandler, legacyHandler, handlerPackaged })
     : 0;
   return {
     worstCase,
@@ -276,7 +325,7 @@ function getDeployRiskMessage({
   if (onNetlify && compatPadding > 0 && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES) {
     fail = true;
     lines.push(
-      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B on Lambda compatibility mode. Runtime env is fine — the site is stuck on the legacy Next adapter. Fix: Netlify UI → Build & deploy → Build plugins → disable any UI-pinned old @netlify/plugin-nextjs; Build settings → Runtime → remove pinned Next.js runtime, save, re-select Next.js, save. Keep [[plugins]] package = "@netlify/plugin-nextjs" (unpinned) first in netlify.toml. Or run: NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime`,
+      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B. Packaged handler is not confirmed modern (runtimeAPIVersion >= 2 / stream mode). Fix: Netlify UI → Build & deploy → Build plugins → disable any UI-pinned old @netlify/plugin-nextjs; Build settings → Runtime → remove pinned Next.js runtime, save, re-select Next.js, save. Keep [[plugins]] package = "@netlify/plugin-nextjs" (unpinned) first in netlify.toml. Or run: NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime`,
     );
   }
 
@@ -391,6 +440,7 @@ module.exports = {
   detectOpenNextModernHandler,
   detectLegacyLambdaHandler,
   readHandlerDirEntries,
+  readPackagedHandlerRuntime,
   printNetlifyEnvScopingChecklist,
   getDeployRiskMessage,
   isBuildOnlyKey,
