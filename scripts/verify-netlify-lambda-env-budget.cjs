@@ -290,6 +290,20 @@ function getDeployRiskMessage({
   legacyHandler = detectLegacyLambdaHandler(),
 }) {
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
+
+  // Netlify env API (Functions scope only) is authoritative — build-container `process.env` is not.
+  if (onNetlify && apiRuntimeBytes != null && apiRuntimeBytes <= LAMBDA_ENV_LIMIT_BYTES) {
+    const summary = `Function-scoped env ${apiRuntimeBytes} B (${(apiRuntimeBytes / 1024).toFixed(1)} KB) within Lambda compat budget`;
+    return {
+      fail: false,
+      summary,
+      message:
+        handlerPackaged && modernHandler
+          ? `${summary} — OpenNext modern handler.`
+          : `${summary} — verified via Netlify env API (build-container estimate ${total} B is advisory).`,
+    };
+  }
+
   const { worstCase, compatPadding, lambdaDeployBytes } = estimateCompatDeployBytes({
     total,
     deployEstimate,
