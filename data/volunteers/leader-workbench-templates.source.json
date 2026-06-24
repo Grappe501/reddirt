@@ -267,6 +267,32 @@
         { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Assign city leadership slots from the roster" }
       ]
     },
+    "county_leader": {
+      "id": "county_leader",
+      "label": "County leader",
+      "description": "County playbook owner — all city workbenches in your county, leadership slots, county KPI rollups, and volunteer pipeline.",
+      "sections": [
+        { "id": "county_playbook", "label": "County playbook ownership", "description": "Weekly priorities from the 75-county playbook — registration, Po5, turnout, and strike teams." },
+        { "id": "city_workbenches", "label": "City workbenches in county", "description": "Every community workbench nested under your county — upstream access to all city leads." },
+        { "id": "county_leadership_slots", "label": "County leadership slots", "description": "Fill open roles on the county playbook and connected city workbenches." },
+        { "id": "volunteer_pipeline", "label": "Volunteer pipeline", "description": "Website sign-up → activation → placement on a county or city workbench." },
+        { "id": "county_kpi", "label": "County KPI rollup", "description": "Record-backed leadership fills, field logs, and relationships across the county." },
+        { "id": "open_slots", "label": "Open leadership slots", "description": "Vacant county and city roles — nominate names to leader command roster." }
+      ],
+      "pathways": [
+        { "key": "county_chair", "label": "County Chair" },
+        { "key": "county_captain", "label": "County Captain" },
+        { "key": "city_lead_recruiter", "label": "City Lead Recruiter" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "events_lead", "label": "Events Lead" }
+      ],
+      "toolLinks": [
+        { "label": "County lane drill-down", "href": "/election-plan/operators/leaders/me/lane/county", "description": "County playbook, leadership slots, and weekly reporting" },
+        { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county and city leader roles to fill" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City workbenches in your county" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign leaders across nested workbenches" }
+      ]
+    },
     "events_lead": {
       "id": "events_lead",
       "label": "Events Lead",

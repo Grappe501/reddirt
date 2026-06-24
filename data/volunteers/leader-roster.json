@@ -398,8 +398,46 @@
       "slug": "brook-linson",
       "displayName": "Brook Linson",
       "initials": "BLI",
-      "teamLanes": ["county", "campus"],
-      "connections": [{ "kind": "county", "county": "White", "countySlug": "white", "label": "White County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "campus", "events", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "White", "countySlug": "white", "label": "White County playbook" },
+        { "kind": "city", "citySlug": "searcy", "label": "Searcy community workbench" },
+        { "kind": "city", "citySlug": "beebe", "label": "Beebe community workbench" },
+        { "kind": "city", "citySlug": "bald-knob", "label": "Bald Knob community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/white",
+          "label": "White County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/searcy",
+          "label": "Searcy city strategy",
+          "description": "County seat — priority city brief and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "White County in the north_central campaign cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in White County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across White County workbenches"
+        }
+      ],
+      "notes": "White County lead — county playbook and city workbenches in Searcy, Beebe, and Bald Knob."
     },
     {
       "slug": "dana-jeff",

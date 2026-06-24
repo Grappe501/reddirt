@@ -13,6 +13,7 @@ export type LeaderWorkbenchTemplateId =
   | "county_candidate_coordinator"
   | "cluster_leader"
   | "city_leader"
+  | "county_leader"
   | "events_lead"
   | "muslim_community_lead"
   | "interfaith_comms_liaison"
@@ -97,6 +98,7 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     "county_candidate_coordinator",
     "cluster_leader",
     "city_leader",
+    "county_leader",
     "muslim_community_lead",
     "interfaith_comms_liaison",
     "events_lead",

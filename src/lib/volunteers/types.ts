@@ -56,6 +56,7 @@ export type VolunteerLeader = {
     | "county_candidate_coordinator"
     | "cluster_leader"
     | "city_leader"
+    | "county_leader"
     | "events_lead"
     | "muslim_community_lead"
     | "interfaith_comms_liaison"
