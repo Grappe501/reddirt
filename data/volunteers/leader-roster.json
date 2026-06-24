@@ -1766,6 +1766,62 @@
         }
       ],
       "notes": "Arkansas Democratic Black Caucus President — volunteer management, fundraising, and finance across Pulaski and Saline without county chair title."
+    },
+    {
+      "slug": "anna-goode",
+      "displayName": "Anna Goode",
+      "initials": "AGO",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "coalition", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "Benton", "countySlug": "benton", "label": "Benton County playbook" },
+        { "kind": "city", "citySlug": "bentonville", "label": "Bentonville community workbench" },
+        { "kind": "city", "citySlug": "rogers", "label": "Rogers community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/benton",
+          "label": "Benton County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/bentonville",
+          "label": "Bentonville city strategy",
+          "description": "Benton County hub — priority city brief and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/rogers",
+          "label": "Rogers city strategy",
+          "description": "NWA business corridor — chamber and community workbench"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/northwest-arkansas",
+          "label": "Northwest Arkansas region",
+          "description": "Benton County in the NWA cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/county-parties/benton",
+          "label": "Benton County Democratic Party",
+          "description": "County party coordination and local validators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Benton County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Benton County workbenches"
+        }
+      ],
+      "notes": "Benton County chair — Northwest Arkansas."
     }
   ]
 }
