@@ -12,7 +12,7 @@ import {
   EP_VOTER_AUDIENCES_HREF,
   epDebatePrepDayHref,
 } from "@/lib/election-plan/debate-prep-links";
-import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, DAY8_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY1_ID, DAY2_ID, DAY3_ID, DAY4_ID, DAY5_ID, DAY6_ID, DAY7_ID, DAY8_ID } from "@/lib/election-plan/debate-prep-day-ids";
 import { showFullDebatePrepSubnav } from "@/lib/election-plan/kelly-facing-ui";
 
 const studentCourseTabs = [

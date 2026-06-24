@@ -8,7 +8,7 @@ import {
   epDebatePrepDayHref,
   epDebatePrepDayRehearsalHref,
 } from "@/lib/election-plan/debate-prep-links";
-import { DAY3_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY3_ID } from "@/lib/election-plan/debate-prep-day-ids";
 import { getDebateWeekIntensiveDay } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export type Day3PathwayStepKind = "block" | "rehearsal" | "example" | "drill" | "close";

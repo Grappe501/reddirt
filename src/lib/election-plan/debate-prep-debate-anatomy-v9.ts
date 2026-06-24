@@ -2,7 +2,7 @@
  * Debate Command Course v9 — how a broadcast debate is structured (student-facing).
  */
 import { epDebatePrepDayBlockHref } from "@/lib/election-plan/debate-prep-links";
-import { DAY8_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY8_ID } from "@/lib/election-plan/debate-prep-day-ids";
 
 export type DebateAnatomySegment = {
   id: string;

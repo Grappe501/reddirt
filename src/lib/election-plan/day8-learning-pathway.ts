@@ -5,7 +5,7 @@ import {
   epDebatePrepDayBlockHref,
   epDebatePrepDayHref,
 } from "@/lib/election-plan/debate-prep-links";
-import { DAY8_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY8_ID } from "@/lib/election-plan/debate-prep-day-ids";
 import { DAY8_CRASH_SECTION_SPECS } from "@/lib/election-plan/debatePrepDay8Registry";
 import { getDebateWeekIntensiveDay } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 

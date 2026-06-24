@@ -1,7 +1,6 @@
 /**
  * Day 2 linear pathway — client-side completion (localStorage).
  */
-import { DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { DEBATE_PREP_DAY2_PATHWAY_STORAGE_VERSION } from "@/lib/election-plan/debate-prep-day2-release";
 import { notifyDebateCourseProgressChanged } from "@/lib/election-plan/debate-prep-course-progress-events";
 import { buildDay2PathwaySteps, DAY2_MINIMUM_BLOCK_IDS, isDay2PathwayStepOptional } from "@/lib/election-plan/day2-learning-pathway";

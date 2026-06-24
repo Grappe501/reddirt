@@ -1,7 +1,6 @@
 /**
  * Day 4 linear pathway — client-side completion (localStorage).
  */
-import { DAY4_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
 import { DEBATE_PREP_DAY4_PATHWAY_STORAGE_VERSION } from "@/lib/election-plan/debate-prep-day4-release";
 import { notifyDebateCourseProgressChanged } from "@/lib/election-plan/debate-prep-course-progress-events";
 import {

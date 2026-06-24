@@ -9,7 +9,7 @@ import {
   epDebatePrepDayMicroLessonHref,
   epDebatePrepDayRehearsalHref,
 } from "@/lib/election-plan/debate-prep-links";
-import { DAY7_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY7_ID } from "@/lib/election-plan/debate-prep-day-ids";
 import { getDebateWeekIntensiveDay } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export type Day7PathwayStepKind = "block" | "rehearsal" | "micro-lesson" | "command-drill" | "example" | "close";

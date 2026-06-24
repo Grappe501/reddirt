@@ -8,7 +8,7 @@ import {
   epDebatePrepDayHref,
   epDebatePrepDayRehearsalHref,
 } from "@/lib/election-plan/debate-prep-links";
-import { DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY2_ID } from "@/lib/election-plan/debate-prep-day-ids";
 import { getDay2BlockStudy } from "@/lib/election-plan/debatePrepDay2BlockStudy";
 import { getDebateWeekIntensiveDay } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 

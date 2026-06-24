@@ -17,7 +17,7 @@ import {
   epTrapLaneHref,
 } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepLaneHref } from "@/lib/election-plan/debate-prep-route-map";
-import { DAY2_ID } from "@/lib/election-plan/debatePrepDayDrillDown";
+import { DAY2_ID } from "@/lib/election-plan/debate-prep-day-ids";
 import type { Day1BlockStudyDeep } from "@/lib/election-plan/debatePrepDay1BlockStudy";
 
 export const DAY2_BLOCK_STUDY: Record<string, Day1BlockStudyDeep> = {
