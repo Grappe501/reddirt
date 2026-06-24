@@ -3179,6 +3179,25 @@ enum CampaignTaskOpsVisibility {
   @@schema("public")
 }
 
+enum CampaignProjectStatus {
+  PLANNING
+  ACTIVE
+  ON_HOLD
+  COMPLETED
+  ARCHIVED
+
+  @@schema("public")
+}
+
+enum CampaignProjectOwnerKind {
+  campaign_manager
+  lane_lead
+  county_chair
+  leader
+
+  @@schema("public")
+}
+
 enum WorkflowTemplateTrigger {
   EVENT_CREATED
   EVENT_SIGNUP_CREATED
@@ -3432,6 +3451,29 @@ model FestivalCoveragePlanSnapshot {
   @@schema("public")
 }
 
+model CampaignProject {
+  id            String                   @id @default(cuid())
+  slug          String                   @unique
+  title         String
+  description   String?                  @db.Text
+  status        CampaignProjectStatus    @default(PLANNING)
+  ownerKind     CampaignProjectOwnerKind @default(lane_lead)
+  ownerRole     String?
+  laneId        String?
+  countySlug    String?
+  leaderSlug    String?
+  targetStartAt DateTime?
+  targetEndAt   DateTime?
+  metadataJson  Json?
+  createdAt     DateTime                 @default(now())
+  updatedAt     DateTime                 @updatedAt
+  tasks         CampaignTask[]
+
+  @@index([status, targetEndAt])
+  @@index([laneId, status])
+  @@schema("public")
+}
+
 model CampaignTask {
   id                        String               @id @default(cuid())
   title                     String
@@ -3472,6 +3514,9 @@ model CampaignTask {
   laneId                    String?
   opsVisibility             CampaignTaskOpsVisibility?
   opsMetadataJson           Json?
+  /// Phase 5 — optional project grouping for multi-lane coordinated pushes.
+  campaignProjectId         String?
+  campaignProject           CampaignProject?     @relation(fields: [campaignProjectId], references: [id], onDelete: SetNull)
   createdAt                 DateTime             @default(now())
   updatedAt                 DateTime             @updatedAt
   /// Comms Workbench plans that cite this task as their source.
@@ -3487,6 +3532,7 @@ model CampaignTask {
   @@index([opsSourceSignalId, status])
   @@index([leaderSlug, status])
   @@index([opsVisibility, status])
+  @@index([campaignProjectId, status])
   @@schema("public")
 }
 

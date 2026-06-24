@@ -15,6 +15,28 @@ export function ElectionPlanOperatorsHubPanel() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <Link
+        href="/election-plan/operators/my-work"
+        className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Ops · my work</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">My work inbox</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Ladder signal tasks, intake escalations, and leader coaching items — one queue for operators.
+        </p>
+      </Link>
+
+      <Link
+        href="/election-plan/operators/projects"
+        className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Projects · pushes</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">Campaign projects</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          VR drives, coalition builds, Labor Day readiness — kanban + calendar for multi-lane coordinated work.
+        </p>
+      </Link>
+
+      <Link
         href="/election-plan/operators/volunteer-intake"
         className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
       >

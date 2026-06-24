@@ -101,6 +101,13 @@ export function CampaignManagerOpsDashboard({
         />
       ) : null}
 
+      <p className="font-body text-sm text-kelly-muted">
+        <Link href="/admin/projects" className="font-semibold text-kelly-navy underline underline-offset-2 hover:text-kelly-slate">
+          Campaign projects
+        </Link>{" "}
+        — coordinated multi-lane pushes (VR, coalition, Labor Day) with kanban boards.
+      </p>
+
       {executiveSummary ? <ExecutiveSummaryStrip summary={executiveSummary} /> : null}
       {guidanceCards?.length ? <WorkflowGuidanceCards cards={guidanceCards} /> : null}
       {countyStatewide ? <CountyIntelligencePanel statewide={countyStatewide} compact /> : null}

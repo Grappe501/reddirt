@@ -18,9 +18,11 @@ const OPS_WORK_PATHS = [
   "/election-plan/operators/leaders/command",
   "/election-plan/operators/leader-dashboard",
   "/election-plan/operators/my-work",
+  "/election-plan/operators/projects",
   "/election-plan/operators/leaders/me",
   "/admin/campaign-manager-dashboard",
   "/admin/my-work",
+  "/admin/projects",
 ] as const;
 
 function revalidateOpsWorkSurfaces() {
