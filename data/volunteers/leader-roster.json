@@ -2021,8 +2021,8 @@
       "notes": "Benton County chair — Northwest Arkansas."
     },
     {
-      "slug": "bishop-arnol",
-      "displayName": "Dr. Bishop Arnol",
+      "slug": "bishop-arnold",
+      "displayName": "Dr. Bishop Arnold",
       "initials": "BAR",
       "workbenchTier": "city",
       "workbenchTemplates": ["city_leader"],
