@@ -7,7 +7,7 @@ import { buildLeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-wor
 import { loadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
 
 export const metadata: Metadata = {
-  title: "My workbench v3.2 | Operators",
+  title: "My workbench v3.4 | Operators",
   robots: { index: false, follow: false },
 };
 

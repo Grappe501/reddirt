@@ -7224,6 +7224,51 @@ model ElectionPlanFieldEntry {
   @@schema("public")
 }
 
+// --- Volunteer leader roster (Operators workbench v3.3) — My Five, branches, team ---
+
+enum VolunteerLeaderRosterLayer {
+  my_five
+  branch
+  team
+
+  @@schema("public")
+}
+
+enum VolunteerLeaderRosterStatus {
+  open
+  mapped
+  contacted
+  invited
+  committed
+
+  @@schema("public")
+}
+
+model VolunteerLeaderRosterPerson {
+  id             String                      @id @default(cuid())
+  leaderInitials String                      @db.VarChar(3)
+  leaderSlug     String
+  layer          VolunteerLeaderRosterLayer
+  parentId       String?
+  parent         VolunteerLeaderRosterPerson?  @relation("VolunteerLeaderPo5Branch", fields: [parentId], references: [id], onDelete: Cascade)
+  branches       VolunteerLeaderRosterPerson[] @relation("VolunteerLeaderPo5Branch")
+  slotIndex      Int?
+  displayName    String
+  category       String?
+  status         VolunteerLeaderRosterStatus @default(mapped)
+  notes          String?
+  lastTouchNote  String?
+  sortOrder      Int                         @default(0)
+  createdAt      DateTime                    @default(now())
+  updatedAt      DateTime                    @updatedAt
+
+  @@index([leaderInitials, layer])
+  @@index([leaderSlug])
+  @@index([parentId])
+  @@index([leaderInitials, layer, slotIndex])
+  @@schema("public")
+}
+
 // --- Community Workbench Framework v1 (Election Plan operational layer) ---
 
 enum CommunityWorkbenchKind {

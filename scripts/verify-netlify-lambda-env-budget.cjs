@@ -14,8 +14,9 @@ const FEATURE_FLAGS_TYPICAL_BYTES = 9055;
 const BUILD_ONLY_EXACT = new Set([
   "SKIP_DB_SEED",
   "NPM_CONFIG_PRODUCTION",
-  "NODE_OPTIONS",
   "NODE_VERSION",
+  "PRISMA_MIGRATE_RETRIES",
+  "PRISMA_MIGRATE_RETRY_DELAY_SECONDS",
   "NETLIFY_DATABASE_URL",
 ]);
 
@@ -45,6 +46,7 @@ const RUNTIME_ESSENTIAL = [
   "DIRECT_URL",
   "ADMIN_SECRET",
   "ELECTION_PLAN_PASSWORD",
+  "VOLUNTEER_HUB_PASSWORD",
   "OPENAI_API_KEY",
   "OPENAI_MODEL",
   "OPENAI_EMBEDDING_MODEL",
@@ -316,9 +318,17 @@ function getDeployRiskMessage({
     );
   }
 
-  if (nodeOptions && nodeOptions.bytes > 0 && onNetlify) {
+  if (onNetlify && (buildOnlyLeaked ?? 0) > 0) {
+    fail = true;
     lines.push(
-      `NODE_OPTIONS (${nodeOptions.bytes} B) is present in the build environment. Scope it to Builds only in Netlify UI (or delete it — heap is set in scripts/netlify-build.sh). If scoped to All or Functions, deploy fails with Invalid AWS Lambda parameters.`,
+      `Build-only env vars leak ~${buildOnlyLeaked} B into Functions scope (ALLOW_PRISMA_*, SKIP_DB_SEED, PRISMA_MIGRATE_*, NEXT_PUBLIC_*, etc.). Scope them to Builds only in Netlify UI or run: npm run netlify:env:scopes:launch-minimal:deploy`,
+    );
+  }
+
+  if (nodeOptions && nodeOptions.bytes > 0 && onNetlify) {
+    fail = true;
+    lines.push(
+      `NODE_OPTIONS (${nodeOptions.bytes} B) must not reach Functions — remove from Netlify UI entirely (heap is set in scripts/netlify-build.sh only). Scoped to All/Functions this causes Invalid AWS Lambda parameters at deploy upload.`,
     );
   }
 
