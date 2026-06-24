@@ -5,8 +5,10 @@ import { useSyncExternalStore } from "react";
 
 import { DEBATE_COURSE_PROGRESS_EVENT } from "@/lib/election-plan/debate-prep-course-progress-events";
 import {
+  DEBATE_COURSE_PROGRESS_SERVER_SNAPSHOT,
   getDebateCourseProgress,
   type DebateCourseModuleProgress,
+  type DebateCourseProgressSnapshot,
 } from "@/lib/election-plan/debate-prep-course-progress";
 
 function subscribe(onStoreChange: () => void): () => void {
@@ -19,8 +21,36 @@ function subscribe(onStoreChange: () => void): () => void {
   };
 }
 
-function getSnapshot() {
-  return getDebateCourseProgress();
+/** useSyncExternalStore requires referential stability when data is unchanged. */
+let cachedProgress: DebateCourseProgressSnapshot = DEBATE_COURSE_PROGRESS_SERVER_SNAPSHOT;
+let cachedProgressKey = "";
+
+function progressSnapshotKey(snapshot: DebateCourseProgressSnapshot): string {
+  return [
+    snapshot.coursePct,
+    snapshot.modulesComplete,
+    snapshot.modulesStarted,
+    snapshot.totalRequiredDone,
+    snapshot.totalRequiredSteps,
+    snapshot.recommendedModuleNumber,
+    ...snapshot.modules.map(
+      (m) =>
+        `${m.module.dayId}:${m.requiredPct}:${m.requiredDone}:${m.requiredTotal}:${m.status}:${m.isMinimumComplete}:${m.isFullyComplete}`,
+    ),
+  ].join("\u0000");
+}
+
+function getSnapshot(): DebateCourseProgressSnapshot {
+  const next = getDebateCourseProgress();
+  const key = progressSnapshotKey(next);
+  if (key === cachedProgressKey) return cachedProgress;
+  cachedProgressKey = key;
+  cachedProgress = next;
+  return next;
+}
+
+function getServerSnapshot(): DebateCourseProgressSnapshot {
+  return DEBATE_COURSE_PROGRESS_SERVER_SNAPSHOT;
 }
 
 function statusLabel(status: DebateCourseModuleProgress["status"]): string {
@@ -76,7 +106,7 @@ function ModuleRow({ row }: { row: DebateCourseModuleProgress }) {
 }
 
 export function ElectionPlanCourseProgressDashboard() {
-  const progress = useSyncExternalStore(subscribe, getSnapshot, getSnapshot);
+  const progress = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   return (
     <section className="space-y-6">
