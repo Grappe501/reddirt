@@ -7,7 +7,7 @@ import { syncAllVolunteerLeaderOperators } from "@/lib/volunteers/ensure-leader-
 import { loadCommandCoverageHeatmap } from "@/lib/volunteers/load-command-coverage";
 
 export const metadata: Metadata = {
-  title: "Leader command v3.2 | Operators",
+  title: "Leader command v3.4 | Operators",
   robots: { index: false, follow: false },
 };
 
@@ -17,7 +17,7 @@ export default async function LeaderWorkbenchCommandPage() {
 
   return (
     <>
-      <div className="ep-classification">Command · coverage v3.2</div>
+      <div className="ep-classification">Command · coverage v3.4</div>
       <div className="px-6 pt-6 lg:px-10">
         <div className="mx-auto max-w-6xl">
           <Link href="/election-plan/operators" className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:underline">

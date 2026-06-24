@@ -1,11 +1,13 @@
 import Link from "next/link";
 
 import { LeaderOpenSlotsPanel, LeaderRecentActivityPanel } from "@/components/volunteers/LeaderActivityPanels";
+import { LeaderRosterWorkbenchPanels } from "@/components/volunteers/LeaderRosterWorkbenchPanels";
 import { LeaderFieldLogPanel } from "@/components/volunteers/LeaderFieldLogPanel";
 import { LeaderOperatorIdentityBar } from "@/components/volunteers/LeaderOperatorIdentityBar";
 import { PowerOf5DashboardPanel } from "@/components/power-of-5/PowerOf5DashboardPanel";
 import type { LeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-workbench-v3";
 import type { LeaderFieldLogContext } from "@/lib/volunteers/build-leader-field-log-context";
+import { LeaderLaneNavStrip } from "@/components/volunteers/LeaderLaneDrillDownView";
 import { LEADER_WORKBENCH_SECTIONS } from "@/lib/volunteers/leader-workbench-sections";
 import {
   resolveLeaderCampaignPins,
@@ -28,7 +30,7 @@ type Props = {
 };
 
 export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Props) {
-  const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live } = payload;
+  const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live, roster } = payload;
   const areaLinks = resolveLeaderPersonalLinks(leader);
   const campaignPins = resolveLeaderCampaignPins(leader);
   const canLogField = Boolean(isSelf && fieldLog?.operatorReady);
@@ -37,7 +39,7 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
     <div className="ep-chapter-body px-6 py-10 lg:px-10">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-start">
         <aside className="lg:sticky lg:top-24 lg:w-52 lg:shrink-0">
-          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Workbench v3.2</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Workbench v3.4</p>
           <p className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">{leader.displayName}</p>
           <p className="font-mono text-sm font-bold text-[var(--ep-blue)]">{leader.initials}</p>
           <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
@@ -89,7 +91,7 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
 
         <div className="min-w-0 flex-1 space-y-10">
           <header>
-            <div className="ep-classification">Leadership workbench v3.2 · activity + field log</div>
+            <div className="ep-classification">Leadership workbench v3.4 · lanes + Power of 5</div>
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{leader.displayName}</h1>
             {leader.notes ? (
               <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{leader.notes}</p>
@@ -114,6 +116,7 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 </li>
               ))}
             </ul>
+            <LeaderLaneNavStrip leader={leader} isSelf={isSelf} />
           </Section>
 
           <Section id="kpi" title="KPI dashboard (live)">
@@ -285,23 +288,13 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
               items={po5.kpiItems}
               pipelineVariant="full"
             />
-          </Section>
-
-          <Section id="my-five" title="My Five (starter)">
-            <p className="text-sm text-[var(--ep-navy-muted)]">Demo roster until PPEN connects — synthetic names only.</p>
-            <ul className="mt-4 divide-y divide-[var(--ep-navy)]/10 rounded-xl border border-[var(--ep-navy)]/10 bg-white">
-              {po5.personalDemo.myFive.map((member) => (
-                <li key={member.id} className="flex flex-wrap items-start justify-between gap-2 px-4 py-3">
-                  <div>
-                    <p className="font-semibold text-[var(--ep-navy)]">{member.displayName}</p>
-                    <p className="text-xs text-[var(--ep-navy-muted)]">{member.category}</p>
-                  </div>
-                  <span className="rounded-full bg-[var(--ep-cream)] px-2 py-0.5 text-xs font-semibold uppercase text-[var(--ep-navy)]">
-                    {member.status}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-8">
+              <LeaderRosterWorkbenchPanels
+                leaderInitials={leader.initials}
+                roster={roster}
+                editable={Boolean(isSelf)}
+              />
+            </div>
           </Section>
 
           <Section id="next-actions" title="Next actions">

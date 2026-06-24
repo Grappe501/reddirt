@@ -332,5 +332,6 @@ fi
 
 if [ -f "scripts/verify-netlify-lambda-env-budget.cjs" ]; then
   echo ">>> Lambda env budget check (AWS 4 KB cap for function environment)"
-  node scripts/verify-netlify-lambda-env-budget.cjs
+  node scripts/verify-netlify-lambda-env-budget.cjs || exit 1
+  echo ">>> If deploy fails with Invalid AWS Lambda parameters, run: npm run netlify:env:scopes:launch-minimal:deploy"
 fi
