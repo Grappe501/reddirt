@@ -319,6 +319,23 @@
       "connections": [{ "kind": "county", "county": "Pope", "countySlug": "pope", "label": "Pope County playbook" }]
     },
     {
+      "slug": "jan-shaper",
+      "displayName": "Jan Shaper",
+      "initials": "JSH",
+      "teamLanes": ["county", "events"],
+      "connections": [
+        { "kind": "city", "citySlug": "russellville", "label": "Russellville community workbench" },
+        { "kind": "county", "county": "Pope", "countySlug": "pope", "label": "Pope County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/russellville",
+          "label": "Russellville city strategy",
+          "description": "Priority city brief — vote target, geography, and local playbook"
+        }
+      ],
+      "notes": "Russellville city leader — Pope County River Valley."
+    },
+    {
       "slug": "marnie-dan",
       "displayName": "Marnie & Dan",
       "initials": "MDA",
