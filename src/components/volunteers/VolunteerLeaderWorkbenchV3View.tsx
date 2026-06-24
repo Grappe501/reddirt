@@ -105,6 +105,11 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Interim Volunteer Manager
               </p>
             ) : null}
+            {leader.campusTeamCoChair ? (
+              <p className="mt-2 inline-block rounded-full bg-violet-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-violet-950 ring-1 ring-violet-400/45">
+                Students for Arkansas co-chair
+              </p>
+            ) : null}
             {leader.workbenchTemplates?.includes("fundraising_lead") ? (
               <p className="mt-2 inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-950 ring-1 ring-emerald-500/40">
                 Fundraising Lead

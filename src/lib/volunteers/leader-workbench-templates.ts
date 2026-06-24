@@ -19,7 +19,8 @@ export type LeaderWorkbenchTemplateId =
   | "muslim_community_lead"
   | "interfaith_comms_liaison"
   | "progressives_liaison"
-  | "finance_inner_circle";
+  | "finance_inner_circle"
+  | "campus_team_co_chair";
 
 export type LeaderTemplateToolLink = {
   label: string;
@@ -82,6 +83,14 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     ids.add("interfaith_comms_liaison");
   }
 
+  if (leader.campusTeamCoChair) {
+    ids.add("campus_team_co_chair");
+  }
+
+  if (leader.grassrootsFundraisingLead) {
+    ids.add("fundraising_field_leader");
+  }
+
   for (const id of leader.workbenchTemplates ?? []) {
     ids.add(id);
     const tpl = registry.templates[id];
@@ -104,6 +113,7 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     "muslim_community_lead",
     "interfaith_comms_liaison",
     "progressives_liaison",
+    "campus_team_co_chair",
     "events_lead",
     "event_planner",
     "finance_inner_circle",

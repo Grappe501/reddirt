@@ -63,7 +63,18 @@ export type VolunteerLeader = {
     | "interfaith_comms_liaison"
     | "progressives_liaison"
     | "finance_inner_circle"
+    | "campus_team_co_chair"
   >;
+  /** Students for Arkansas founding co-chair — campus chapter + statewide student movement. */
+  campusTeamCoChair?: boolean;
+  /** Grassroots fundraising field lead — same tier as Sarah Rampona (campus co-chairs included). */
+  grassrootsFundraisingLead?: boolean;
+  /** Arkansas campus network slug — links co-chair to /election-plan/campuses/[slug]. */
+  campusLeadCampusSlug?: string;
+  /** students-for-arkansas.json foundingCoChairs id (confirmed or open-* slot). */
+  studentsForArkansasCoChairId?: string;
+  /** Open co-chair placeholder — hidden from leader sign-in until a person is named. */
+  leaderRosterSignInHidden?: boolean;
   /** Member of the founding volunteer leadership team (June 28 launch network). */
   volunteerLeadershipTeam?: boolean;
   /** Interfaith communications liaison — Christian–Muslim bridge for campaign comms (Tom's role). */

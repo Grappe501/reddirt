@@ -251,6 +251,7 @@
       "initials": "SRA",
       "workbenchTier": "cluster",
       "volunteerLeadershipTeam": true,
+      "grassrootsFundraisingLead": true,
       "workbenchTemplates": ["fundraising_field_leader", "fundraising_workbench", "volunteer_leadership_team"],
       "teamLanes": ["fundraising", "operations", "county"],
       "connections": [
@@ -329,22 +330,172 @@
       "slug": "xav-mclennon",
       "displayName": "Xav McLennon",
       "initials": "XMC",
-      "teamLanes": ["campus", "coalition"],
+      "workbenchTier": "volunteer",
+      "campusTeamCoChair": true,
+      "grassrootsFundraisingLead": true,
+      "volunteerLeadershipTeam": true,
+      "studentsForArkansasCoChairId": "xav-mclennon",
+      "campusLeadCampusSlug": "university-of-central-arkansas",
+      "workbenchTemplates": ["campus_team_co_chair", "events_lead"],
+      "teamLanes": ["campus", "coalition", "fundraising", "events", "operations"],
       "connections": [
-        { "kind": "program", "programSlug": "uca-campus", "label": "UCA Campus program workbench" },
-        { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" }
-      ]
+        { "kind": "program", "programSlug": "uca-campus", "label": "UCA campus program workbench" },
+        { "kind": "program", "programSlug": "students-for-arkansas", "label": "Students for Arkansas statewide program" },
+        { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/campuses/university-of-central-arkansas",
+          "label": "UCA campus network page",
+          "description": "Registration, volunteer, and fundraising goals — Central Arkansas anchor"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/uca-campus#fundraising",
+          "label": "UCA campus fundraising panel",
+          "description": "Campus workbench fundraising lane — recruit tracked grassroots fundraisers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/students-for-arkansas",
+          "label": "Students for Arkansas · Executive Book",
+          "description": "Co-chair responsibilities, monthly cadence, Labor Day milestones"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command heatmap",
+          "description": "Recruit campus fundraisers and volunteer directors under your chapter"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "June 28 volunteer leadership team hub"
+        }
+      ],
+      "notes": "Students for Arkansas co-chair · UCA campus lead · grassroots fundraising field lead · events · volunteer management."
     },
     {
       "slug": "chance-bradford",
       "displayName": "Chance Bradford",
       "initials": "CBR",
-      "teamLanes": ["campus", "events"],
+      "workbenchTier": "volunteer",
+      "campusTeamCoChair": true,
+      "grassrootsFundraisingLead": true,
+      "volunteerLeadershipTeam": true,
+      "studentsForArkansasCoChairId": "chance-bradford",
+      "campusLeadCampusSlug": "philander-smith",
+      "workbenchTemplates": ["campus_team_co_chair", "events_lead"],
+      "teamLanes": ["campus", "events", "fundraising", "operations", "coalition"],
       "connections": [
         { "kind": "program", "programSlug": "philander-smith-campus", "label": "Philander Smith campus workbench" },
-        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock — ride-along hub" }
+        { "kind": "program", "programSlug": "students-for-arkansas", "label": "Students for Arkansas statewide program" },
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock — ride-along hub" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/campuses/philander-smith",
+          "label": "Philander Smith campus network page",
+          "description": "HBCU anchor — registration, volunteer, and fundraising goals"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/philander-smith-campus#fundraising",
+          "label": "Philander Smith fundraising panel",
+          "description": "Campus workbench fundraising lane — recruit tracked grassroots fundraisers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/students-for-arkansas",
+          "label": "Students for Arkansas · Executive Book",
+          "description": "Co-chair HBCU outreach — Philander Smith chapter plus statewide HBCU strategy"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command heatmap",
+          "description": "Recruit campus fundraisers and volunteer directors under your chapter"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "June 28 volunteer leadership team hub"
+        }
       ],
-      "notes": "Available through August 2026."
+      "notes": "Students for Arkansas co-chair · Philander Smith campus lead · HBCU outreach · grassroots fundraising field lead. Available through August 2026."
+    },
+    {
+      "slug": "campus-co-chair-ualr-open",
+      "displayName": "Open — UALR Campus Co-Chair",
+      "initials": "OUL",
+      "leaderRosterSignInHidden": true,
+      "campusTeamCoChair": true,
+      "grassrootsFundraisingLead": true,
+      "studentsForArkansasCoChairId": "open-metro",
+      "campusLeadCampusSlug": "ualr",
+      "workbenchTemplates": ["campus_team_co_chair", "events_lead"],
+      "teamLanes": ["campus", "fundraising", "events", "operations", "coalition"],
+      "connections": [
+        { "kind": "program", "programSlug": "ualr-campus", "label": "UALR campus program workbench" },
+        { "kind": "program", "programSlug": "students-for-arkansas", "label": "Students for Arkansas statewide program" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/campuses/ualr",
+          "label": "UALR campus network page",
+          "description": "Metro anchor — UALR and community college coordination"
+        }
+      ],
+      "notes": "Open Students for Arkansas co-chair slot — UALR / metro. Replace slug and initials when named."
+    },
+    {
+      "slug": "campus-co-chair-ua-fayetteville-open",
+      "displayName": "Open — UA Fayetteville Campus Co-Chair",
+      "initials": "OUF",
+      "leaderRosterSignInHidden": true,
+      "campusTeamCoChair": true,
+      "grassrootsFundraisingLead": true,
+      "studentsForArkansasCoChairId": "open-northwest",
+      "campusLeadCampusSlug": "university-of-arkansas",
+      "workbenchTemplates": ["campus_team_co_chair", "events_lead"],
+      "teamLanes": ["campus", "fundraising", "events", "operations", "coalition"],
+      "connections": [
+        { "kind": "program", "programSlug": "ua-fayetteville-campus", "label": "UA Fayetteville campus program workbench" },
+        { "kind": "program", "programSlug": "students-for-arkansas", "label": "Students for Arkansas statewide program" },
+        { "kind": "county", "county": "Washington", "countySlug": "washington", "label": "Washington County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/campuses/university-of-arkansas",
+          "label": "UA Fayetteville campus network page",
+          "description": "Northwest anchor — flagship SEC footprint"
+        }
+      ],
+      "notes": "Open Students for Arkansas co-chair slot — UA Fayetteville / northwest. Replace slug and initials when named."
+    },
+    {
+      "slug": "campus-co-chair-arkansas-state-open",
+      "displayName": "Open — Arkansas State Campus Co-Chair",
+      "initials": "OAS",
+      "leaderRosterSignInHidden": true,
+      "campusTeamCoChair": true,
+      "grassrootsFundraisingLead": true,
+      "studentsForArkansasCoChairId": "open-northeast",
+      "campusLeadCampusSlug": "arkansas-state-university",
+      "workbenchTemplates": ["campus_team_co_chair", "events_lead"],
+      "teamLanes": ["campus", "fundraising", "events", "operations", "coalition"],
+      "connections": [
+        { "kind": "program", "programSlug": "arkansas-state-campus", "label": "Arkansas State campus program workbench" },
+        { "kind": "program", "programSlug": "students-for-arkansas", "label": "Students for Arkansas statewide program" },
+        { "kind": "county", "county": "Craighead", "countySlug": "craighead", "label": "Craighead County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/campuses/arkansas-state-university",
+          "label": "Arkansas State campus network page",
+          "description": "Northeast anchor — Jonesboro region student recruitment"
+        }
+      ],
+      "notes": "Open Students for Arkansas co-chair slot — Arkansas State / northeast. Replace slug and initials when named."
     },
     {
       "slug": "zach-bledsoe",

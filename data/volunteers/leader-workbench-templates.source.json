@@ -423,6 +423,39 @@
         { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
       ]
     },
+    "campus_team_co_chair": {
+      "id": "campus_team_co_chair",
+      "label": "Students for Arkansas co-chair",
+      "description": "Campus team co-chair — lead your anchor campus chapter, recruit campus leadership teams, coordinate events and volunteer management, and coach grassroots fundraisers on your campus workbench.",
+      "includes": ["fundraising_workbench", "volunteer_leadership_team"],
+      "sections": [
+        { "id": "campus_chapter", "label": "Campus chapter leadership", "description": "Campus chair, voter registration, events, volunteer, comms, and fundraising director roles on your campus workbench." },
+        { "id": "student_recruitment", "label": "Student volunteer recruitment", "description": "Power of 5 on campus — every student leader recruits five; internship tracks for field, digital, research, comms, and events." },
+        { "id": "campus_events", "label": "Campus events cadence", "description": "Monthly voter registration, volunteer recruitment, community service, and fundraising events — plus semester Kelly stops and GOTV." },
+        { "id": "volunteer_management", "label": "Volunteer management", "description": "Onboarding, shift captains, Mobilize events, and retention across your campus network and satellite schools." },
+        { "id": "grassroots_fundraising", "label": "Grassroots fundraising", "description": "Recruit campus fundraisers — tracked links and QR attribution roll up to your campus workbench (operator-only settlement)." },
+        { "id": "co_chair_coordination", "label": "Five co-chair coordination", "description": "Students for Arkansas statewide — Labor Day milestones, open co-chair slots, and cross-campus rollups." }
+      ],
+      "pathways": [
+        { "key": "campus_chair", "label": "Campus Chair" },
+        { "key": "voter_registration_director", "label": "Voter Registration Director" },
+        { "key": "events_director", "label": "Events Director" },
+        { "key": "volunteer_director", "label": "Volunteer Director" },
+        { "key": "communications_director", "label": "Communications Director" },
+        { "key": "fundraising_director", "label": "Fundraising Director" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" }
+      ],
+      "toolLinks": [
+        { "label": "Students for Arkansas program", "href": "/election-plan/workbenches/students-for-arkansas", "description": "Statewide student movement command — five co-chairs, Labor Day goals" },
+        { "label": "Campus network hub", "href": "/election-plan/campuses", "description": "Arkansas higher-ed network — registration, volunteers, fundraising goals" },
+        { "label": "Campus captains", "href": "/election-plan/campuses/captains", "description": "Campus captain roster and open slots across the state" },
+        { "label": "Freshman week readiness", "href": "/election-plan/campuses/freshman-week", "description": "Move-in and orientation activation windows" },
+        { "label": "Students for Arkansas · Executive Book", "href": "/election-plan/executive-book/students-for-arkansas", "description": "Chapter 9 doctrine — co-chair responsibilities and milestones" },
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and recruiter tree" },
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Mobilize, run of show, and campus event command" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" }
+      ]
+    },
     "progressives_liaison": {
       "id": "progressives_liaison",
       "label": "Progressives liaison",

@@ -8,6 +8,11 @@ export function getVolunteerLeaderRoster(): VolunteerLeader[] {
   return roster.leaders;
 }
 
+/** Leader sign-in picker — excludes open co-chair placeholders until a person is named. */
+export function getVolunteerLeadersForSignIn(): VolunteerLeader[] {
+  return roster.leaders.filter((l) => !l.leaderRosterSignInHidden);
+}
+
 export function getVolunteerLeaderBySlug(slug: string): VolunteerLeader | undefined {
   return roster.leaders.find((l) => l.slug === slug);
 }

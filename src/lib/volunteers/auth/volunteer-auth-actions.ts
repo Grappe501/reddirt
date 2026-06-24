@@ -32,7 +32,7 @@ export async function volunteerHubLoginAction(formData: FormData) {
   if (!hashEqual(password, secret)) redirect("/election-plan/operators/leaders/sign-in?error=auth");
 
   const leader = getVolunteerLeaderByInitials(initials);
-  if (!leader) redirect("/election-plan/operators/leaders/sign-in?error=unknown");
+  if (!leader || leader.leaderRosterSignInHidden) redirect("/election-plan/operators/leaders/sign-in?error=unknown");
 
   await ensureVolunteerLeaderOperator(leader);
   await setOperatorCookieForLeader(leader.initials);
