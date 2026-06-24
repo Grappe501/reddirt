@@ -284,6 +284,12 @@
         { "kind": "program", "programSlug": "progressives", "label": "Progressives coalition workbench" },
         {
           "kind": "global",
+          "href": "/election-plan/operators/coalition-command",
+          "label": "Coalition lane rollup",
+          "description": "Statewide coalition workbench readiness and partner intake"
+        },
+        {
+          "kind": "global",
           "href": "/election-plan/workbenches/progressives",
           "label": "Progressives workbench",
           "description": "Coalition command — partner orgs, county organizers, volunteer networks"

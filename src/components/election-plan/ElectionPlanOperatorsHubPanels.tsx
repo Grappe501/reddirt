@@ -59,6 +59,17 @@ export function ElectionPlanOperatorsHubPanel() {
       </Link>
 
       <Link
+        href="/election-plan/operators/coalition-command"
+        className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Coalition · partners</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">Coalition lane rollup</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Twelve workbenches — ownership, readiness, partner intake, and liaison roster — Lela + coalition leads.
+        </p>
+      </Link>
+
+      <Link
         href="/election-plan/operators/leaders"
         className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
       >

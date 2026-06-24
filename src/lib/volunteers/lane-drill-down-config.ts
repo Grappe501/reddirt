@@ -568,8 +568,16 @@ const BASE: Record<VolunteerTeamLaneId, Omit<LaneDrillDownPage, "laneId">> = {
         {
           id: "coalition-cmd",
           title: "Coalition command",
-          href: "/election-plan/coalition",
-          description: "Record-backed coalition map.",
+          href: "/election-plan/operators/coalition-command",
+          description: "Statewide coalition workbench rollup and partner intake.",
+          kind: "link",
+          priority: "high",
+        },
+        {
+          id: "coalition-hub",
+          title: "Coalition workbench hub",
+          href: "/election-plan/workbenches?kind=coalition",
+          description: "All twelve coalition community workbenches.",
           kind: "link",
           priority: "high",
         },

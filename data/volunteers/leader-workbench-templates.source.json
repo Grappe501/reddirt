@@ -622,6 +622,7 @@
         { "key": "volunteer_captain", "label": "Volunteer Captain" }
       ],
       "toolLinks": [
+        { "label": "Coalition lane rollup", "href": "/election-plan/operators/coalition-command", "description": "Twelve workbenches — ownership, readiness, partner intake, and liaison roster" },
         { "label": "Progressives workbench", "href": "/election-plan/workbenches/progressives", "description": "Coalition command surface — partner orgs and county organizers" },
         { "label": "Coalition lane drill-down", "href": "/election-plan/operators/leaders/me/lane/coalition", "description": "Coalition work branches and partner workbenches" },
         { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer management — leaders, field operators, command" },

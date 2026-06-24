@@ -79,6 +79,27 @@ export function canAccessEventsCommand(leader: VolunteerLeader): boolean {
   );
 }
 
+const COALITION_COMMAND_TEMPLATES = [
+  "progressives_liaison",
+  "muslim_community_lead",
+  "educators_coalition_lead",
+  "union_liaison",
+  "democratic_black_caucus_lead",
+  "hispanic_outreach_lead",
+  "special_outreach_lead",
+] as const;
+
+/** Coalition lane rollup — coalition liaisons and command access. */
+export function canAccessCoalitionCommand(leader: VolunteerLeader): boolean {
+  return Boolean(
+    COALITION_COMMAND_TEMPLATES.some((id) => leader.workbenchTemplates?.includes(id)) ||
+      leader.interfaithCommsLiaison ||
+      leader.commandAccess ||
+      leader.assistantCm ||
+      leader.acmWorkbenchFlex,
+  );
+}
+
 /** Flex leaders get every lane drill-down — role title stays open in UI. */
 export function getEffectiveTeamLanes(leader: VolunteerLeader): VolunteerTeamLaneId[] {
   if (hasFlexLeaderWorkbench(leader)) {
