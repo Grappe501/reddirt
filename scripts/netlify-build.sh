@@ -38,8 +38,9 @@ if [ -n "${DATABASE_URL:-}" ]; then
 fi
 
 # Block accidental local Docker URLs — Netlify cannot reach your laptop.
-case "${DATABASE_URL:-}" in
-  *"127.0.0.1"*|*"localhost"*|*"::1"*)
+if [ -n "${NETLIFY:-}" ] || [ -n "${NETLIFY_BUILD_BASE:-}" ]; then
+  case "${DATABASE_URL:-}" in
+    *"127.0.0.1"*|*"localhost"*|*"::1"*)
     echo ""
     echo "========================================================================"
     echo "  Build failed: DATABASE_URL points to this machine (localhost)."
@@ -52,7 +53,8 @@ case "${DATABASE_URL:-}" in
     echo ""
     exit 1
     ;;
-esac
+  esac
+fi
 
 if [ -z "${DATABASE_URL:-}" ]; then
   echo ""
