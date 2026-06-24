@@ -45,6 +45,11 @@ export function isCoalitionCommandOpsPath(pathname: string): boolean {
   return path === "/election-plan/operators/coalition-command";
 }
 
+export function isLeaderDashboardOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/leader-dashboard";
+}
+
 export function isLeaderWorkbenchSignInPath(pathname: string): boolean {
   const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
   return path === "/election-plan/operators/leaders/sign-in";
@@ -73,8 +78,14 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
   const voterRegistrationOps = isVoterRegistrationOpsPath(pathname);
   const eventsCommandOps = isEventsCommandOpsPath(pathname);
   const coalitionCommandOps = isCoalitionCommandOpsPath(pathname);
+  const leaderDashboardOps = isLeaderDashboardOpsPath(pathname);
   const operatorDashboard =
-    volunteerIntakeOps || commsCommandOps || voterRegistrationOps || eventsCommandOps || coalitionCommandOps;
+    volunteerIntakeOps ||
+    commsCommandOps ||
+    voterRegistrationOps ||
+    eventsCommandOps ||
+    coalitionCommandOps ||
+    leaderDashboardOps;
 
   if (epSecret) {
     const epToken = jar.get(ELECTION_PLAN_SESSION_COOKIE)?.value;
@@ -94,6 +105,7 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
       if (leader && voterRegistrationOps && canAccessVoterRegistrationCommand(leader)) return "volunteer-leader";
       if (leader && eventsCommandOps && canAccessEventsCommand(leader)) return "volunteer-leader";
       if (leader && coalitionCommandOps && canAccessCoalitionCommand(leader)) return "volunteer-leader";
+      if (leader && leaderDashboardOps) return "volunteer-leader";
     }
     redirect(`/election-plan/operators/leaders/sign-in?next=${encodeURIComponent(pathname)}`);
   }

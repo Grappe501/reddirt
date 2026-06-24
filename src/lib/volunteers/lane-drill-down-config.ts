@@ -147,6 +147,14 @@ const BASE: Record<VolunteerTeamLaneId, Omit<LaneDrillDownPage, "laneId">> = {
       intro: "Training and campaign-wide resources.",
       items: [
         {
+          id: "leader-dashboard",
+          title: "Leader dashboard",
+          description: "Live My Five, follow-ups, and team health — production view tied to your slug.",
+          href: "/election-plan/operators/leader-dashboard",
+          kind: "link",
+          priority: "high",
+        },
+        {
           id: "po5-walkthrough",
           title: "Power of 5 walkthrough",
           description: "Relational organizing structure.",
@@ -765,6 +773,14 @@ const BASE: Record<VolunteerTeamLaneId, Omit<LaneDrillDownPage, "laneId">> = {
       title: "Reporting",
       intro: "",
       items: [
+        {
+          id: "leader-dashboard",
+          title: "Leader dashboard",
+          href: "/election-plan/operators/leader-dashboard",
+          description: "Statewide My Five gaps and per-leader team health rollup.",
+          kind: "report",
+          priority: "high",
+        },
         {
           id: "heatmap",
           title: "Command heatmap review",

@@ -100,6 +100,16 @@ export function canAccessCoalitionCommand(leader: VolunteerLeader): boolean {
   );
 }
 
+/** Statewide leader health rollup on leader dashboard — HQ, vol manager, command access. */
+export function canAccessLeaderDashboardCommand(leader: VolunteerLeader): boolean {
+  return Boolean(
+    leader.commandAccess ||
+      leader.assistantCm ||
+      leader.volunteerManagerInterim ||
+      leader.acmWorkbenchFlex,
+  );
+}
+
 /** Flex leaders get every lane drill-down — role title stays open in UI. */
 export function getEffectiveTeamLanes(leader: VolunteerLeader): VolunteerTeamLaneId[] {
   if (hasFlexLeaderWorkbench(leader)) {
@@ -118,14 +128,14 @@ export const CAMPAIGN_WORKBENCH_PINS = [
     description: "Relational organizing structure — start here for My Five and team ladders.",
   },
   {
-    href: "/dashboard/leader",
-    label: "Leader dashboard (demo)",
-    description: "Team health, incomplete teams, and follow-up queues — training view.",
+    href: "/election-plan/operators/leader-dashboard",
+    label: "Leader dashboard",
+    description: "Live My Five, team health, follow-ups, and next actions — tied to your slug.",
   },
   {
-    href: "/dashboard",
-    label: "Personal dashboard (demo)",
-    description: "My Five slots, conversations, and follow-ups — participant view.",
+    href: "/election-plan/operators/leaders/me",
+    label: "My workbench",
+    description: "Full v3.4 workbench — lanes, field log, templates, and Power of 5 roster editing.",
   },
   {
     href: "/election-plan/power-of-5/command-center",

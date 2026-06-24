@@ -127,8 +127,8 @@ export function VolunteerLeaderWorkbenchV2View({ payload, isSelf }: Props) {
               <Link href="/onboarding/power-of-5" className="ep-btn ep-btn-primary ep-btn-sm">
                 Walkthrough
               </Link>
-              <Link href="/dashboard/leader" className="ep-btn ep-btn-ghost ep-btn-sm">
-                Leader dashboard demo
+              <Link href="/election-plan/operators/leader-dashboard" className="ep-btn ep-btn-ghost ep-btn-sm">
+                Leader dashboard
               </Link>
               <Link href="/election-plan/power-of-5/command-center" className="ep-btn ep-btn-ghost ep-btn-sm">
                 Command center

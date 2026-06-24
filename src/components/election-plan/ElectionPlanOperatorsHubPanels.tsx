@@ -70,6 +70,17 @@ export function ElectionPlanOperatorsHubPanel() {
       </Link>
 
       <Link
+        href="/election-plan/operators/leader-dashboard"
+        className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Po5 · team health</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">Leader dashboard</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Live My Five, follow-ups, and team health per leader — statewide Po5 gaps for command access.
+        </p>
+      </Link>
+
+      <Link
         href="/election-plan/operators/leaders"
         className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
       >

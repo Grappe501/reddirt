@@ -106,11 +106,11 @@ export function VolunteerLeaderDashboardView({ leader }: Props) {
             <Link href="/onboarding/power-of-5" className="ep-btn ep-btn-primary ep-btn-sm">
               Power of 5 walkthrough
             </Link>
-            <Link href="/dashboard" className="ep-btn ep-btn-ghost ep-btn-sm">
-              Personal dashboard demo
+            <Link href="/election-plan/operators/leader-dashboard" className="ep-btn ep-btn-ghost ep-btn-sm">
+              Leader dashboard
             </Link>
-            <Link href="/dashboard/leader" className="ep-btn ep-btn-ghost ep-btn-sm">
-              Leader dashboard demo
+            <Link href="/election-plan/operators/leaders/me" className="ep-btn ep-btn-ghost ep-btn-sm">
+              My workbench
             </Link>
           </div>
         </section>

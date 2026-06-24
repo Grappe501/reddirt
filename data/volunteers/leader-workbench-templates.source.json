@@ -84,6 +84,7 @@
         { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Full roster heatmap and sync" },
         { "label": "All leader workbenches", "href": "/election-plan/operators/leaders", "description": "Every personal command surface" },
         { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer HQ entry point" },
+        { "label": "Leader dashboard", "href": "/election-plan/operators/leader-dashboard", "description": "Live My Five, follow-ups, and statewide team health rollup" },
         { "label": "Volunteer intake & activation", "href": "/election-plan/operators/volunteer-intake", "description": "Public form → review → placement → workbench unlock" },
         { "label": "Signup sheet intake (admin)", "href": "/admin/volunteers/intake", "description": "Paper signup OCR review and voter-file match" }
       ]
