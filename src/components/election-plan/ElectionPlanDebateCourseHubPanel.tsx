@@ -1,6 +1,6 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
-import { ElectionPlanCourseProgressDashboard } from "@/components/election-plan/ElectionPlanCourseProgressDashboard";
 import { ElectionPlanDebatePrepSubnav } from "@/components/election-plan/ElectionPlanDebatePrepSubnav";
 import {
   EP_DEBATE_PREP_ANATOMY_HREF,
@@ -13,6 +13,19 @@ import {
   DEBATE_COURSE_TOTAL_HOURS,
 } from "@/lib/election-plan/debate-prep-course-catalog-v9";
 import { DEBATE_PREP_CHECKLIST } from "@/lib/election-plan/debate-prep-debate-anatomy-v9";
+
+const ElectionPlanCourseProgressDashboard = dynamic(
+  () =>
+    import("@/components/election-plan/ElectionPlanCourseProgressDashboard").then((mod) => ({
+      default: mod.ElectionPlanCourseProgressDashboard,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-32 animate-pulse rounded-xl border border-slate-200 bg-slate-50" aria-hidden />
+    ),
+  },
+);
 
 export function ElectionPlanDebateCourseHubPanel() {
   return (

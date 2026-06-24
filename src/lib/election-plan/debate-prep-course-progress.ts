@@ -121,4 +121,3 @@ function buildDebateCourseProgress(): DebateCourseProgressSnapshot {
   };
 }
 
-import { DEBATE_COURSE_PROGRESS_EVENT } from "@/lib/election-plan/debate-prep-course-progress-events";

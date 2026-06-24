@@ -19,7 +19,7 @@ import {
   epTrapLaneHref,
 } from "@/lib/election-plan/debate-prep-links";
 import { epDebatePrepLaneHref } from "@/lib/election-plan/debate-prep-route-map";
-import type { DrillDownLink } from "@/lib/election-plan/debatePrepDayDrillDown";
+import type { DrillDownLink } from "@/lib/election-plan/debate-prep-drill-down-types";
 
 const DAY1 = "day-1-command-foundation" as const;
 

@@ -6,7 +6,7 @@ import {
   epDebatePrepDayHref,
 } from "@/lib/election-plan/debate-prep-links";
 import { DAY8_ID } from "@/lib/election-plan/debate-prep-day-ids";
-import { DAY8_CRASH_SECTION_SPECS } from "@/lib/election-plan/debatePrepDay8Registry";
+import { DAY8_CRASH_SECTION_SPECS } from "@/lib/election-plan/debate-prep-day8-crash-sections";
 import { getDebateWeekIntensiveDay } from "@/lib/intelligence/v4/debateWeekIntensive2026";
 
 export type Day8PathwayStepKind = "section" | "close";
