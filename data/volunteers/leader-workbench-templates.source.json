@@ -456,6 +456,63 @@
         { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" }
       ]
     },
+    "social_media_influencer": {
+      "id": "social_media_influencer",
+      "label": "Social media influencer",
+      "description": "Grassroots content creator and amplifier — volunteer page access, SMOS tools, and authentic local reach on your platforms.",
+      "sections": [
+        { "id": "content_creation", "label": "Content creation", "description": "Short-form video, reels, and authentic Arkansas voice — amplify Kelly stops and local stories." },
+        { "id": "influencer_reach", "label": "Influencer reach", "description": "Your audience is a relational asset — share campaign content with your own validator voice." },
+        { "id": "story_submissions", "label": "Story submissions", "description": "Feed Story Corps and the media library from field moments you capture." },
+        { "id": "volunteer_recruitment", "label": "Volunteer recruitment", "description": "Drive sign-ups to the volunteer page — convert followers into field volunteers." },
+        { "id": "publish_cadence", "label": "Publish cadence", "description": "Same-day stop content, weekly resume growth, and human approval before publish." }
+      ],
+      "pathways": [
+        { "key": "content_creator", "label": "Content Creator" },
+        { "key": "influencer", "label": "Social Media Influencer" },
+        { "key": "peer_recruiter", "label": "Peer Recruiter" },
+        { "key": "photographer", "label": "Photographer" },
+        { "key": "video_editor", "label": "Video Editor" }
+      ],
+      "toolLinks": [
+        { "label": "Volunteer sign-up page", "href": "/volunteers", "description": "Public volunteer page — share with your audience" },
+        { "label": "Content Studio", "href": "/election-plan/workbenches/content-studio", "description": "SMOS — ideas, drafts, and publish pipeline" },
+        { "label": "Story Corps", "href": "/election-plan/workbenches/story-corps", "description": "Submit stories, photos, and quotes from the field" },
+        { "label": "Social Media Operating System", "href": "/election-plan/executive-book/social-media-operating-system", "description": "Chapter 12 doctrine — content and narrative ops" },
+        { "label": "Comms lane drill-down", "href": "/election-plan/operators/leaders/me/lane/comms", "description": "Communications lane checklist and tools" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding and team roster" }
+      ]
+    },
+    "democratic_black_caucus_lead": {
+      "id": "democratic_black_caucus_lead",
+      "label": "Democratic Black Caucus",
+      "description": "Arkansas Democratic Black Caucus — statewide Black Democratic leadership, volunteer pipeline, fundraising, and county-scale organizing without county chair titles.",
+      "coalitionSlug": "democratic-black-caucus",
+      "includes": ["volunteer_leadership_team", "fundraising_workbench"],
+      "sections": [
+        { "id": "caucus_leadership", "label": "Caucus leadership", "description": "President and chapter validators — relationship-first outreach across Arkansas Black Democratic networks." },
+        { "id": "volunteer_management", "label": "Volunteer management", "description": "Onboarding, activation, retention, and leadership pathways — full vol-management stack on caucus geography." },
+        { "id": "county_organizing", "label": "County organizing access", "description": "Pulaski and Saline county playbook tools — leadership slots and KPIs without county chair title." },
+        { "id": "fundraising", "label": "Fundraising", "description": "Grassroots events, house parties, and donor stewardship across caucus networks." },
+        { "id": "finance_coordination", "label": "Finance coordination", "description": "Finance inner circle — budget framework, compliance basics, and treasurer coordination." },
+        { "id": "faith_civic", "label": "Faith & civic networks", "description": "Churches, NAACP, Greek life, HBCU, and business validators in caucus geography." }
+      ],
+      "pathways": [
+        { "key": "caucus_president", "label": "Caucus President" },
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "finance_committee", "label": "Finance Committee Member" }
+      ],
+      "toolLinks": [
+        { "label": "Democratic Black Caucus workbench", "href": "/election-plan/workbenches/democratic-black-caucus", "description": "Caucus command surface — intel sections and volunteer pathways" },
+        { "label": "African American Outreach workbench", "href": "/election-plan/workbenches/african-american-outreach", "description": "Coalition hub — faith, civic, NAACP, HBCU networks" },
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and compliance" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer management — onboarding, roster CRM, retention" },
+        { "label": "Budget dashboard", "href": "/election-plan/executive-book/budget/dashboard", "description": "Finance inner circle — campaign budget framework" },
+        { "label": "County playbooks", "href": "/election-plan/counties", "description": "Pulaski and Saline drill-downs — county tools without chair title" }
+      ]
+    },
     "special_outreach_lead": {
       "id": "special_outreach_lead",
       "label": "Special outreach program",

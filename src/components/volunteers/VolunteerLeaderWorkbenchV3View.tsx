@@ -110,7 +110,7 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Interim Volunteer Manager
               </p>
             ) : null}
-            {leader.countyBoardMember ? (
+            {leader.countyBoardMember && !leader.workbenchTemplates?.includes("county_leader") ? (
               <p className="mt-2 inline-block rounded-full bg-[var(--ep-gold)]/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-gold)]/45">
                 Volunteer board
               </p>
@@ -128,6 +128,16 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
             {leader.workbenchTemplates?.includes("union_liaison") ? (
               <p className="mt-2 inline-block rounded-full bg-orange-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-orange-950 ring-1 ring-orange-400/45">
                 Union liaison
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("social_media_influencer") ? (
+              <p className="mt-2 inline-block rounded-full bg-fuchsia-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-fuchsia-950 ring-1 ring-fuchsia-400/45">
+                Social media influencer
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("democratic_black_caucus_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)] px-3 py-1 text-xs font-bold uppercase tracking-wide text-white ring-1 ring-[var(--ep-navy)]/40">
+                Democratic Black Caucus
               </p>
             ) : null}
             {leader.campusTeamCoChair ? (

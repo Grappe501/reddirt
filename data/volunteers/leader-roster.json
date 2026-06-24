@@ -1613,6 +1613,159 @@
         }
       ],
       "notes": "Union liaison — Saline County home base with Central Arkansas Metro cluster read-only context."
+    },
+    {
+      "slug": "grant-smith",
+      "displayName": "Grant Smith",
+      "initials": "GSM",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["social_media_influencer", "volunteer_leadership_team"],
+      "teamLanes": ["comms", "operations", "coalition"],
+      "connections": [
+        { "kind": "program", "programSlug": "content-studio", "label": "Content Studio — SMOS" },
+        { "kind": "program", "programSlug": "story-corps", "label": "Story Corps" },
+        {
+          "kind": "global",
+          "href": "/volunteers",
+          "label": "Volunteer sign-up page",
+          "description": "Public volunteer page — share with your audience to recruit"
+        },
+        {
+          "kind": "global",
+          "href": "/dashboard",
+          "label": "Volunteer dashboard",
+          "description": "Personal dashboard — My Five, follow-ups, and team view"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/content-studio",
+          "label": "Content Studio command",
+          "description": "SMOS — ideas, drafts, assignments, and publish pipeline"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/social-media-operating-system",
+          "label": "Social Media Operating System",
+          "description": "Executive Book Ch. 12 — content and narrative doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Volunteer HQ — leaders, field operators, command"
+        }
+      ],
+      "notes": "Social media influencer · volunteer page access and content amplification."
+    },
+    {
+      "slug": "chad-easley",
+      "displayName": "Chad Easley",
+      "initials": "CES",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "Pope", "countySlug": "pope", "label": "Pope County playbook" },
+        { "kind": "city", "citySlug": "russellville", "label": "Russellville community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pope",
+          "label": "Pope County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/russellville",
+          "label": "Russellville city strategy",
+          "description": "County seat — priority city brief and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/river-valley",
+          "label": "River Valley region",
+          "description": "Pope County in the River Valley cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Pope County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Pope County workbenches"
+        }
+      ],
+      "notes": "Pope County chair."
+    },
+    {
+      "slug": "david-ashley",
+      "displayName": "David Ashley",
+      "initials": "DAS",
+      "workbenchTier": "county",
+      "countyBoardMember": true,
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": [
+        "democratic_black_caucus_lead",
+        "county_leader",
+        "volunteer_leadership_team",
+        "fundraising_workbench",
+        "finance_inner_circle"
+      ],
+      "teamLanes": ["county", "coalition", "fundraising", "operations", "events", "comms"],
+      "connections": [
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "county", "county": "Saline", "countySlug": "saline", "label": "Saline County playbook" },
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "city", "citySlug": "benton", "label": "Benton community workbench" },
+        { "kind": "program", "programSlug": "democratic-black-caucus", "label": "Democratic Black Caucus workbench" },
+        { "kind": "program", "programSlug": "african-american-outreach", "label": "African American Outreach coalition" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/democratic-black-caucus",
+          "label": "Democratic Black Caucus command",
+          "description": "Caucus president command surface — statewide Black Democratic leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook tools — not county chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/saline",
+          "label": "Saline County command",
+          "description": "County playbook tools — not county chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Fundraising doctrine and opportunity ownership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/operations",
+          "label": "Operations lane drill-down",
+          "description": "Volunteer management — onboarding, roster CRM, retention"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Volunteer management boards and leadership team hub"
+        }
+      ],
+      "notes": "Arkansas Democratic Black Caucus President — volunteer management, fundraising, and finance across Pulaski and Saline without county chair title."
     }
   ]
 }

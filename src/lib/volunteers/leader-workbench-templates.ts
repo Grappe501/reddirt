@@ -22,7 +22,9 @@ export type LeaderWorkbenchTemplateId =
   | "finance_inner_circle"
   | "campus_team_co_chair"
   | "special_outreach_lead"
-  | "union_liaison";
+  | "union_liaison"
+  | "social_media_influencer"
+  | "democratic_black_caucus_lead";
 
 export type LeaderTemplateToolLink = {
   label: string;
@@ -122,6 +124,8 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     "campus_team_co_chair",
     "special_outreach_lead",
     "union_liaison",
+    "social_media_influencer",
+    "democratic_black_caucus_lead",
     "events_lead",
     "event_planner",
     "finance_inner_circle",

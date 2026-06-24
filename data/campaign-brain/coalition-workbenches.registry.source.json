@@ -302,6 +302,29 @@
         { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
         { "key": "events_chair", "label": "Events Chair" }
       ]
+    },
+    {
+      "slug": "democratic-black-caucus",
+      "name": "Democratic Black Caucus",
+      "tagline": "Arkansas Democratic Black Caucus — statewide leadership and organizing",
+      "locale": "en",
+      "leadRole": "Democratic Black Caucus President",
+      "frameworkNote": "Caucus command surface — local chapter leaders define relationships and pace.",
+      "intelSections": [
+        { "key": "caucus_chapters", "label": "Caucus Chapters" },
+        { "key": "faith_communities", "label": "Faith Communities" },
+        { "key": "civic_organizations", "label": "Civic Organizations" },
+        { "key": "naacp", "label": "NAACP Relationships" },
+        { "key": "business_leaders", "label": "Business & Professional Networks" },
+        { "key": "youth_leadership", "label": "Youth Leadership" }
+      ],
+      "volunteerPathways": [
+        { "key": "caucus_president", "label": "Caucus President" },
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "chapter_chair", "label": "Chapter Chair" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" }
+      ]
     }
   ]
 }
