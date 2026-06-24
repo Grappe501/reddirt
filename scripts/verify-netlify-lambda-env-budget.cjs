@@ -411,10 +411,12 @@ function main() {
       console.warn(">>> (Local machine — not failing; this gate runs on Netlify builds only.)");
       return;
     }
-    console.error("");
-    console.error(`>>> FAIL: ${risk.message}`);
-    console.error(">>> Netlify UI → Environment variables → edit → Scopes (see docs/NETLIFY_FIRST_DEPLOY.md §6)");
-    process.exit(1);
+    // During `build.command`, Netlify injects the full build-container env — not function scope.
+    // lambda-env-guard (onPostBuild) re-checks with Netlify API + packaged handler metadata.
+    console.warn("");
+    console.warn(`>>> ADVISORY (build.command): ${risk.message}`);
+    console.warn(">>> Post-build lambda-env-guard plugin is authoritative for deploy blocking.");
+    return;
   }
 
   if (total >= WARN_BYTES) {

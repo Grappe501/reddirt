@@ -331,7 +331,6 @@ if [ -f "scripts/analyze-next-trace-union.mjs" ]; then
 fi
 
 if [ -f "scripts/verify-netlify-lambda-env-budget.cjs" ]; then
-  echo ">>> Lambda env budget check (AWS 4 KB cap for function environment)"
-  node scripts/verify-netlify-lambda-env-budget.cjs || exit 1
-  echo ">>> If deploy fails with Invalid AWS Lambda parameters, run: npm run netlify:env:scopes:launch-minimal:deploy"
+  echo ">>> Lambda env budget check (advisory during build; lambda-env-guard enforces after handler packaging)"
+  node scripts/verify-netlify-lambda-env-budget.cjs || echo ">>> WARNING: build-container env estimate high — post-build plugin re-checks function-scoped vars via Netlify API"
 fi
