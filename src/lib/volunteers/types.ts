@@ -57,9 +57,14 @@ export type VolunteerLeader = {
     | "cluster_leader"
     | "city_leader"
     | "events_lead"
+    | "muslim_community_lead"
+    | "interfaith_comms_liaison"
+    | "finance_inner_circle"
   >;
   /** Member of the founding volunteer leadership team (June 28 launch network). */
   volunteerLeadershipTeam?: boolean;
+  /** Interfaith communications liaison — Christian–Muslim bridge for campaign comms (Tom's role). */
+  interfaithCommsLiaison?: boolean;
   /** High school senior — auto-includes youth + high school leadership templates. */
   highSchoolSenior?: boolean;
   /** City slugs for leadership-tracked special KPIs (e.g. Jacksonville 25% SOS lift). */

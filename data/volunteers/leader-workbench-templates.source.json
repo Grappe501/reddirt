@@ -292,6 +292,83 @@
         { "label": "Mobilize rules", "href": "/election-plan/movement-infrastructure/mobilize-rules", "description": "When Mobilize is required for volunteer shifts" },
         { "label": "Sherwood events panel", "href": "/election-plan/workbenches/sherwood#events", "description": "Grassroots & Guitar Strings and city event command" }
       ]
+    },
+    "muslim_community_lead": {
+      "id": "muslim_community_lead",
+      "label": "Muslim Community Lead",
+      "description": "Arkansas Muslim communities — relationship-first outreach, mosque and community networks, women's and youth leadership. Local leaders shape content and pace.",
+      "coalitionSlug": "muslim-community",
+      "sections": [
+        { "id": "community_leadership", "label": "Community leadership", "description": "Trusted validators, introduction pathways, and culturally appropriate relationship building." },
+        { "id": "faith_leaders", "label": "Faith leader relationships", "description": "Imam and community leader listening — civic engagement without partisan preaching." },
+        { "id": "womens_leadership", "label": "Women's community leadership", "description": "Women's networks, service projects, and leadership pathways in Muslim communities." },
+        { "id": "youth_leadership", "label": "Youth leadership", "description": "Student orgs, family networks, and peer recruiters in Arkansas Muslim communities." },
+        { "id": "community_service", "label": "Community service projects", "description": "Service-first visibility — food drives, health fairs, and civic participation milestones." },
+        { "id": "election_info", "label": "Election information", "description": "Nonpartisan election information team — registration and vote-plan conversations." }
+      ],
+      "pathways": [
+        { "key": "community_connector", "label": "Community Connector" },
+        { "key": "faith_connector", "label": "Faith Connector" },
+        { "key": "womens_outreach", "label": "Women's Outreach Team" },
+        { "key": "youth_ambassador", "label": "Youth Ambassador" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ],
+      "toolLinks": [
+        { "label": "Muslim Community workbench", "href": "/election-plan/workbenches/muslim-community", "description": "Coalition command surface — intel sections and volunteer pathways" },
+        { "label": "Muslim outreach framework", "href": "/election-plan/search?q=muslim+community+outreach", "description": "Campaign brain — relationship-first doctrine and meeting tracker" },
+        { "label": "Coalition lane drill-down", "href": "/election-plan/operators/leaders/me/lane/coalition", "description": "Coalition work branches, reports, and partner workbenches" }
+      ]
+    },
+    "interfaith_comms_liaison": {
+      "id": "interfaith_comms_liaison",
+      "label": "Interfaith communications liaison",
+      "description": "Bridge Christian and Muslim communities for campaign communications — trusted introductions, respectful messaging, and coordinated visibility.",
+      "coalitionSlug": "faith-communities",
+      "sections": [
+        { "id": "christian_muslim_bridge", "label": "Christian–Muslim bridge", "description": "Tom's liaison role — connect faith communities for respectful campaign communications." },
+        { "id": "comms_coordination", "label": "Communications coordination", "description": "Align messaging with comms lane — no outreach without community validator review." },
+        { "id": "faith_communities_workbench", "label": "Faith Communities workbench", "description": "Multi-faith relationship organizing — congregations, clergy, and faith-based orgs." },
+        { "id": "message_review", "label": "Message review cadence", "description": "Community leaders review copy before public-facing faith coalition content." },
+        { "id": "joint_visibility", "label": "Joint event visibility", "description": "Coordinated presence at interfaith and community service events." }
+      ],
+      "pathways": [
+        { "key": "interfaith_liaison", "label": "Interfaith Liaison" },
+        { "key": "faith_connector", "label": "Faith Connector" },
+        { "key": "comms_liaison", "label": "Communications Liaison" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ],
+      "toolLinks": [
+        { "label": "Faith Communities workbench", "href": "/election-plan/workbenches/faith-communities", "description": "Multi-faith coalition command surface" },
+        { "label": "Muslim Community workbench", "href": "/election-plan/workbenches/muslim-community", "description": "Muslim coalition hub — paired with Christian bridge outreach" },
+        { "label": "Comms lane drill-down", "href": "/election-plan/operators/leaders/me/lane/comms", "description": "Communications lane checklist and tools" }
+      ]
+    },
+    "finance_inner_circle": {
+      "id": "finance_inner_circle",
+      "label": "Finance inner circle",
+      "description": "Fundraiser hosts and finance committee inner circle — donor pipeline, compliance basics, major donor introductions, and treasurer coordination.",
+      "sections": [
+        { "id": "host_fundraiser", "label": "Host fundraiser planning", "description": "Ali Khan fundraiser — invitations, host committee, program, and revenue goal on event workbench." },
+        { "id": "donor_pipeline", "label": "Donor pipeline", "description": "Track asks, thank-yous, and 48-hour follow-up on every contact." },
+        { "id": "compliance_basics", "label": "Finance compliance basics", "description": "Arkansas campaign finance volunteer rules before solicitation at events." },
+        { "id": "major_donor_intros", "label": "Major donor introductions", "description": "Validator introductions — Kelly or closer handles the ask; you open the door." },
+        { "id": "treasurer_coordination", "label": "Treasurer coordination", "description": "Receipts, in-kind gifts, and finance committee review before public claims." },
+        { "id": "stewardship", "label": "Donor stewardship", "description": "Thank-you doctrine closeout — no ask left without follow-up." }
+      ],
+      "pathways": [
+        { "key": "finance_committee_member", "label": "Finance Committee Member" },
+        { "key": "host_committee_chair", "label": "Host Committee Chair" },
+        { "key": "major_donor_validator", "label": "Major Donor Validator" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" }
+      ],
+      "toolLinks": [
+        { "label": "Fundraising leadership", "href": "/election-plan/executive-book/fundraising-leadership", "description": "County, community, and event fundraising lead ownership" },
+        { "label": "Fundraising operating system", "href": "/election-plan/executive-book/fundraising-operating-system", "description": "Statewide fundraising lanes and opportunity rollups" },
+        { "label": "Fundraising opportunities", "href": "/election-plan/executive-book/fundraising-opportunities", "description": "House parties, sponsors, grassroots events, coalition fundraising" },
+        { "label": "Budget dashboard", "href": "/election-plan/executive-book/budget/dashboard", "description": "Finance inner circle — campaign budget framework and targets" },
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Lane checklist, reports, and compliance tools" },
+        { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
+      ]
     }
   }
 }

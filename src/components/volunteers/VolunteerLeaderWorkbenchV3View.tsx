@@ -130,6 +130,21 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Events lead
               </p>
             ) : null}
+            {leader.workbenchTemplates?.includes("muslim_community_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-teal-950 ring-1 ring-teal-500/40">
+                Muslim Community Lead
+              </p>
+            ) : null}
+            {leader.interfaithCommsLiaison ? (
+              <p className="mt-2 inline-block rounded-full bg-violet-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-violet-950 ring-1 ring-violet-400/40">
+                Interfaith comms liaison
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("finance_inner_circle") ? (
+              <p className="mt-2 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-950 ring-1 ring-amber-500/40">
+                Finance inner circle
+              </p>
+            ) : null}
             {leader.workbenchTemplates?.includes("event_planner") ? (
               <p className="mt-2 inline-block rounded-full bg-[var(--ep-blue)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-blue)] ring-1 ring-[var(--ep-blue)]/30">
                 Event planner

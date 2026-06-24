@@ -575,10 +575,75 @@
     },
     {
       "slug": "ali-khan",
-      "displayName": "Dr. Ali Khan",
+      "displayName": "Dr. Ali Khan & Tom",
       "initials": "AKH",
-      "teamLanes": ["coalition", "fundraising"],
-      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock — Muslim community hub" }]
+      "isCouple": true,
+      "workbenchTier": "county",
+      "volunteerLeadershipTeam": true,
+      "interfaithCommsLiaison": true,
+      "workbenchTemplates": ["muslim_community_lead", "event_planner", "finance_inner_circle"],
+      "teamLanes": ["coalition", "fundraising", "events", "operations", "comms", "county"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock — Muslim community hub" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "program", "programSlug": "muslim-community", "label": "Muslim Community coalition workbench" },
+        { "kind": "program", "programSlug": "faith-communities", "label": "Faith Communities workbench — Tom interfaith liaison" },
+        {
+          "kind": "event",
+          "workbenchSlug": "muslim-community",
+          "eventSlug": "ali-khan-fundraiser-2026-08-10",
+          "label": "Ali Khan fundraiser — Aug 10"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/muslim-community",
+          "label": "Muslim Community workbench",
+          "description": "Coalition command — community leadership, faith, women's and youth pathways"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/muslim-community#fundraising",
+          "label": "Muslim Community fundraising panel",
+          "description": "Coalition fundraiser lane and host committee"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/faith-communities",
+          "label": "Faith Communities workbench",
+          "description": "Tom — Christian–Muslim communications bridge"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Finance inner circle — opportunity ownership and host committee doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Volunteer management — leaders, field operators, command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Volunteer management boards and leadership team hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan?tab=fieldCalendar",
+          "label": "Field calendar",
+          "description": "Ali Khan fundraiser Aug 10 — event coordination"
+        }
+      ],
+      "notes": "Muslim Community Lead · Tom — interfaith comms liaison (Christian–Muslim bridge) · hosting coalition fundraiser Aug 10."
     },
     {
       "slug": "kevin-heifner",

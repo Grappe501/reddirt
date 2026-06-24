@@ -13,7 +13,10 @@ export type LeaderWorkbenchTemplateId =
   | "county_candidate_coordinator"
   | "cluster_leader"
   | "city_leader"
-  | "events_lead";
+  | "events_lead"
+  | "muslim_community_lead"
+  | "interfaith_comms_liaison"
+  | "finance_inner_circle";
 
 export type LeaderTemplateToolLink = {
   label: string;
@@ -72,6 +75,10 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     ids.add("volunteer_leadership_team");
   }
 
+  if (leader.interfaithCommsLiaison) {
+    ids.add("interfaith_comms_liaison");
+  }
+
   for (const id of leader.workbenchTemplates ?? []) {
     ids.add(id);
     const tpl = registry.templates[id];
@@ -90,9 +97,12 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     "county_candidate_coordinator",
     "cluster_leader",
     "city_leader",
+    "muslim_community_lead",
+    "interfaith_comms_liaison",
     "events_lead",
-    "fundraising_field_leader",
     "event_planner",
+    "finance_inner_circle",
+    "fundraising_field_leader",
     "fundraising_workbench",
     "volunteer_leadership_team",
     "youth_leadership",
