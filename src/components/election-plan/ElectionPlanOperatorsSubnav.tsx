@@ -11,6 +11,7 @@ const OPERATORS_SUBNAV = [
   { href: "/election-plan/operators/events-command", label: "Events & Mobilize" },
   { href: "/election-plan/operators/coalition-command", label: "Coalition" },
   { href: "/election-plan/operators/leader-dashboard", label: "Leader dashboard" },
+  { href: "/election-plan/operators/leaders/command", label: "Leader command" },
   { href: "/election-plan/operators/lane-coverage", label: "Lane coverage" },
   { href: "/election-plan/operators/grassroots-fundraising-settlement", label: "Grassroots settlement" },
   { href: "/election-plan/operators/leaders", label: "Leader workbenches" },

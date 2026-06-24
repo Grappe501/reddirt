@@ -196,7 +196,7 @@ const WEEKLY_RHYTHM: CoalitionLaneDashboardPayload["weeklyRhythm"] = [
     id: "immersion",
     label: "Immersion missions",
     description: "Listening and relationship missions when assigned.",
-    href: "/election-plan/immersion",
+    href: "/election-plan/immersion-missions",
   },
   {
     id: "escalation",

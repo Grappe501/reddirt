@@ -621,7 +621,7 @@ const BASE: Record<VolunteerTeamLaneId, Omit<LaneDrillDownPage, "laneId">> = {
         {
           id: "immersion",
           title: "Immersion missions hub",
-          href: "/election-plan/immersion",
+          href: "/election-plan/immersion-missions",
           description: "Listening and relationship missions.",
           kind: "link",
           priority: "medium",
