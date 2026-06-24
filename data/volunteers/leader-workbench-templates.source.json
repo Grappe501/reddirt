@@ -137,6 +137,56 @@
         { "label": "Community workbench fundraising", "href": "/election-plan/workbenches/jacksonville#fundraising", "description": "City fundraising panel and opportunities" },
         { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
       ]
+    },
+    "fundraising_field_leader": {
+      "id": "fundraising_field_leader",
+      "label": "Fundraising field leader",
+      "description": "Statewide fundraising field lead — recruit and coach county and city fundraisers nested under your workbench. Includes full fundraising workbench functions.",
+      "includes": ["fundraising_workbench"],
+      "sections": [
+        { "id": "recruit_fundraisers", "label": "Recruit county & city fundraisers", "description": "Place fundraising leads on community workbenches and county playbooks in your network." },
+        { "id": "downstream_workbenches", "label": "Downstream workbench tree", "description": "County and city fundraisers work under your command surface — you see nested KPIs and open slots." },
+        { "id": "house_party_pipeline", "label": "House party host pipeline", "description": "Recruit hosts in priority cities — small rooms drive grassroots revenue." },
+        { "id": "ride_along_coordination", "label": "Ride-along coordination", "description": "Schedule Kelly and surrogate donor conversations across your recruiter network." },
+        { "id": "weekly_rollup", "label": "Weekly fundraising rollup", "description": "Aggregate asks, thank-yous, and event revenue from fundraisers in your tree." },
+        { "id": "open_fundraising_slots", "label": "Open fundraising slots", "description": "Vacant county or city fundraising roles — assign from leader command roster." }
+      ],
+      "pathways": [
+        { "key": "county_fundraising_lead", "label": "County Fundraising Lead" },
+        { "key": "city_fundraising_lead", "label": "City Fundraising Lead" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "house_party_host_recruiter", "label": "House Party Host Recruiter" }
+      ],
+      "toolLinks": [
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "Place fundraising recruits on city and program workbenches" },
+        { "label": "Priority cities", "href": "/election-plan/cities", "description": "Top 125 city strategy — geography for recruiter placement" },
+        { "label": "County playbooks", "href": "/election-plan/counties", "description": "County-level fundraising oversight and strike teams" },
+        { "label": "Leader command heatmap", "href": "/election-plan/operators/leaders/command", "description": "Activity and open slots across your recruiter network" }
+      ]
+    },
+    "volunteer_leadership_team": {
+      "id": "volunteer_leadership_team",
+      "label": "Volunteer leadership team",
+      "description": "Founding volunteer leadership network — onboarding, activation, retention, and leadership pathways alongside statewide field operations.",
+      "sections": [
+        { "id": "volunteer_onboarding", "label": "Volunteer onboarding", "description": "Website sign-up → activation → first workbench assignment." },
+        { "id": "leadership_nominations", "label": "Leadership pathway nominations", "description": "Identify volunteer captains ready for county or city lead slots." },
+        { "id": "team_roster_crm", "label": "Team roster CRM", "description": "My Five, branches, and operator field logs for leaders you recruit." },
+        { "id": "retention_reengagement", "label": "Retention & re-engagement", "description": "Follow up inactive volunteers and open leadership slots in connected workbenches." },
+        { "id": "launch_cadence", "label": "Leadership launch cadence", "description": "June 28 volunteer leadership launch and weekly ops rhythm." }
+      ],
+      "pathways": [
+        { "key": "volunteer_lead", "label": "Volunteer Lead" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "onboarding_manager", "label": "Onboarding Manager" },
+        { "key": "shift_captain", "label": "Shift Captain" }
+      ],
+      "toolLinks": [
+        { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer HQ — leaders, field operators, command" },
+        { "label": "All leader workbenches", "href": "/election-plan/operators/leaders", "description": "Personal command surfaces for every field leader" },
+        { "label": "Volunteer leadership launch", "href": "/election-plan/academy/june-28-launch", "description": "June 28 leadership team hub" },
+        { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Vol HQ lane checklist and tools" }
+      ]
     }
   }
 }

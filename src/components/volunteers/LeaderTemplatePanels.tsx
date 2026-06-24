@@ -70,11 +70,15 @@ export function LeaderTemplatePanels({
           className={`rounded-xl border bg-white p-5 shadow-sm ${
             tpl.id === "volunteer_manager"
               ? "border-[var(--ep-gold)] ring-1 ring-[var(--ep-gold)]/30"
-              : tpl.id === "event_planner"
-                ? "border-[var(--ep-blue)] ring-1 ring-[var(--ep-blue)]/30"
-                : tpl.id === "fundraising_workbench"
-                  ? "border-emerald-600/40 ring-1 ring-emerald-600/20"
-                  : "border-[var(--ep-navy)]/10"
+              : tpl.id === "fundraising_field_leader"
+                ? "border-emerald-600/50 ring-1 ring-emerald-600/30"
+                : tpl.id === "volunteer_leadership_team"
+                  ? "border-[var(--ep-gold)]/60 ring-1 ring-[var(--ep-gold)]/25"
+                  : tpl.id === "event_planner"
+                    ? "border-[var(--ep-blue)] ring-1 ring-[var(--ep-blue)]/30"
+                    : tpl.id === "fundraising_workbench"
+                      ? "border-emerald-600/40 ring-1 ring-emerald-600/20"
+                      : "border-[var(--ep-navy)]/10"
           }`}
         >
           <div className="flex flex-wrap items-start justify-between gap-3">
@@ -82,11 +86,15 @@ export function LeaderTemplatePanels({
               <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">
                 {tpl.id === "volunteer_manager"
                   ? "Vol HQ template"
-                  : tpl.id === "event_planner"
-                    ? "Event planner template"
-                    : tpl.id === "fundraising_workbench"
-                      ? "Fundraising template"
-                      : "Lead template"}
+                  : tpl.id === "fundraising_field_leader"
+                    ? "Fundraising field leader template"
+                    : tpl.id === "volunteer_leadership_team"
+                      ? "Volunteer leadership team"
+                      : tpl.id === "event_planner"
+                        ? "Event planner template"
+                        : tpl.id === "fundraising_workbench"
+                          ? "Fundraising template"
+                          : "Lead template"}
               </p>
               <h3 className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">{tpl.label}</h3>
               <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{tpl.description}</p>

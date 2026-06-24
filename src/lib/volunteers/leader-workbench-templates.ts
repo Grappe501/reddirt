@@ -7,7 +7,9 @@ export type LeaderWorkbenchTemplateId =
   | "hispanic_outreach_lead"
   | "volunteer_manager"
   | "event_planner"
-  | "fundraising_workbench";
+  | "fundraising_workbench"
+  | "fundraising_field_leader"
+  | "volunteer_leadership_team";
 
 export type LeaderTemplateToolLink = {
   label: string;
@@ -62,6 +64,10 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     ids.add("volunteer_manager");
   }
 
+  if (leader.volunteerLeadershipTeam) {
+    ids.add("volunteer_leadership_team");
+  }
+
   for (const id of leader.workbenchTemplates ?? []) {
     ids.add(id);
     const tpl = registry.templates[id];
@@ -77,8 +83,10 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
 
   const order: LeaderWorkbenchTemplateId[] = [
     "volunteer_manager",
+    "fundraising_field_leader",
     "event_planner",
     "fundraising_workbench",
+    "volunteer_leadership_team",
     "youth_leadership",
     "high_school_leadership",
     "hispanic_outreach_lead",

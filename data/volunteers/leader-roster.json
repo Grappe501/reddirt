@@ -132,8 +132,59 @@
       "slug": "sarah-rampona",
       "displayName": "Sarah Rampona",
       "initials": "SRA",
-      "teamLanes": ["fundraising", "events"],
-      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock workbench" }]
+      "workbenchTier": "cluster",
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["fundraising_field_leader", "fundraising_workbench", "volunteer_leadership_team"],
+      "teamLanes": ["fundraising", "operations", "county"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock workbench" },
+        { "kind": "city", "citySlug": "sherwood", "label": "Sherwood community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/little-rock#fundraising",
+          "label": "Little Rock fundraising panel",
+          "description": "City workbench fundraising lane — template for nested city recruits"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "Recruit county and city fundraisers on every workbench under your tree"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities",
+          "label": "Priority cities",
+          "description": "Top 125 city strategy — place fundraising leads by geography"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook — nested county fundraisers report here"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders",
+          "label": "Leader roster",
+          "description": "Volunteer leadership team — assign fundraisers to workbenches below you"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Command heatmap",
+          "description": "Field activity and leadership fills across your recruiter network"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "June 28 volunteer leadership team hub"
+        }
+      ],
+      "notes": "Fundraising field leader · volunteer leadership team — recruits county and city fundraisers under this workbench."
     },
     {
       "slug": "kate-stebbins",

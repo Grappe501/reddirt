@@ -32,8 +32,10 @@
   ],
   "leadTemplates": [
     "volunteer_manager",
+    "fundraising_field_leader",
     "event_planner",
     "fundraising_workbench",
+    "volunteer_leadership_team",
     "youth_leadership",
     "high_school_leadership",
     "hispanic_outreach_lead"

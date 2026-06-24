@@ -100,6 +100,16 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Interim Volunteer Manager
               </p>
             ) : null}
+            {leader.workbenchTemplates?.includes("fundraising_field_leader") ? (
+              <p className="mt-2 inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-950 ring-1 ring-emerald-500/40">
+                Fundraising field leader
+              </p>
+            ) : null}
+            {leader.volunteerLeadershipTeam ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-gold)]/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-gold)]/50">
+                Volunteer leadership team
+              </p>
+            ) : null}
             {leader.workbenchTemplates?.includes("event_planner") ? (
               <p className="mt-2 inline-block rounded-full bg-[var(--ep-blue)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-blue)] ring-1 ring-[var(--ep-blue)]/30">
                 Event planner
