@@ -5,6 +5,7 @@ import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/Election
 import { OperatorCommandHeatmap } from "@/components/volunteers/OperatorCommandHeatmap";
 import { VolunteerCommandView } from "@/components/volunteers/VolunteerCommandView";
 import { loadCommandCoverageHeatmap } from "@/lib/volunteers/load-command-coverage";
+import { syncAllVolunteerLeaderOperators } from "@/lib/volunteers/ensure-leader-operator";
 
 export const metadata: Metadata = {
   title: "Leader command | Operators",
@@ -12,11 +13,12 @@ export const metadata: Metadata = {
 };
 
 export default async function LeaderWorkbenchCommandPage() {
+  await syncAllVolunteerLeaderOperators().catch(() => 0);
   const heatmap = await loadCommandCoverageHeatmap();
 
   return (
     <>
-      <div className="ep-classification">Command · coverage heatmap v3</div>
+      <div className="ep-classification">Command · coverage heatmap v3.1</div>
       <div className="px-6 pt-6 lg:px-10">
         <div className="mx-auto max-w-6xl">
           <Link href="/election-plan/operators" className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:underline">

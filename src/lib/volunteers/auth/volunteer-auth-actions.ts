@@ -4,6 +4,8 @@ import { createHash, timingSafeEqual } from "crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
+import { ensureVolunteerLeaderOperator } from "@/lib/volunteers/ensure-leader-operator";
+import { setOperatorCookieForLeader } from "@/lib/volunteers/field-entry-access";
 import { getVolunteerLeaderByInitials } from "@/lib/volunteers/leader-roster";
 import {
   VOLUNTEER_SESSION_COOKIE,
@@ -31,6 +33,9 @@ export async function volunteerHubLoginAction(formData: FormData) {
 
   const leader = getVolunteerLeaderByInitials(initials);
   if (!leader) redirect("/election-plan/operators/leaders/sign-in?error=unknown");
+
+  await ensureVolunteerLeaderOperator(leader);
+  await setOperatorCookieForLeader(leader.initials);
 
   const token = createVolunteerSessionToken(secret, leader.slug, leader.initials);
   (await cookies()).set(VOLUNTEER_SESSION_COOKIE, token, {
