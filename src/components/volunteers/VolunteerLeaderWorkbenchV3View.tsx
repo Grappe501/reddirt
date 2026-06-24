@@ -1,0 +1,291 @@
+import Link from "next/link";
+
+import { PowerOf5DashboardPanel } from "@/components/power-of-5/PowerOf5DashboardPanel";
+import type { LeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-workbench-v3";
+import { LEADER_WORKBENCH_SECTIONS } from "@/lib/volunteers/leader-workbench-sections";
+import {
+  resolveLeaderCampaignPins,
+  resolveLeaderPersonalLinks,
+} from "@/lib/volunteers/resolve-leader-links";
+
+function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+  return (
+    <section id={id} className="scroll-mt-32 border-b border-[var(--ep-navy)]/10 pb-10 last:border-0">
+      <h2 className="font-heading text-xl font-bold text-[var(--ep-navy)]">{title}</h2>
+      <div className="mt-4">{children}</div>
+    </section>
+  );
+}
+
+type Props = {
+  payload: LeaderWorkbenchV3Payload;
+  isSelf?: boolean;
+  epOperatorInitials?: string | null;
+};
+
+export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, epOperatorInitials }: Props) {
+  const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live } = payload;
+  const areaLinks = resolveLeaderPersonalLinks(leader);
+  const campaignPins = resolveLeaderCampaignPins(leader);
+  const canLogField =
+    Boolean(epOperatorInitials) && epOperatorInitials?.toUpperCase() === leader.initials.toUpperCase();
+
+  return (
+    <div className="ep-chapter-body px-6 py-10 lg:px-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-start">
+        <aside className="lg:sticky lg:top-24 lg:w-52 lg:shrink-0">
+          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Workbench v3</p>
+          <p className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">{leader.displayName}</p>
+          <p className="font-mono text-sm font-bold text-[var(--ep-blue)]">{leader.initials}</p>
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
+            {live.recordSource === "live" ? "Live records connected" : "Records empty — zeros are honest"}
+          </p>
+          {isSelf ? (
+            <p className="mt-1 text-xs font-semibold text-[var(--ep-navy-muted)]">Your signed-in workbench</p>
+          ) : null}
+          <nav className="mt-4 space-y-1 text-sm" aria-label="Workbench sections">
+            {LEADER_WORKBENCH_SECTIONS.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="block rounded-md px-2 py-1.5 text-[var(--ep-navy-muted)] hover:bg-[var(--ep-cream)] hover:text-[var(--ep-navy)]"
+              >
+                {s.label}
+              </a>
+            ))}
+            <a
+              href="#calendar"
+              className="block rounded-md px-2 py-1.5 text-[var(--ep-navy-muted)] hover:bg-[var(--ep-cream)] hover:text-[var(--ep-navy)]"
+            >
+              Calendar
+            </a>
+            {live.eventEmbeds.length ? (
+              <a
+                href="#events-embed"
+                className="block rounded-md px-2 py-1.5 text-[var(--ep-navy-muted)] hover:bg-[var(--ep-cream)] hover:text-[var(--ep-navy)]"
+              >
+                Event command
+              </a>
+            ) : null}
+          </nav>
+        </aside>
+
+        <div className="min-w-0 flex-1 space-y-10">
+          <header>
+            <div className="ep-classification">Leadership workbench v3 · live KPIs</div>
+            <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{leader.displayName}</h1>
+            {leader.notes ? (
+              <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{leader.notes}</p>
+            ) : null}
+          </header>
+
+          <Section id="overview" title="Overview">
+            <p className="max-w-3xl text-sm leading-relaxed text-[var(--ep-navy)]">{overviewSummary}</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {laneLabels.map((lane) => (
+                <li
+                  key={lane}
+                  className="rounded-full border border-[var(--ep-gold)]/40 bg-[var(--ep-cream)] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[var(--ep-navy)]"
+                >
+                  {lane}
+                </li>
+              ))}
+            </ul>
+          </Section>
+
+          <Section id="kpi" title="KPI dashboard (live)">
+            <PowerOf5DashboardPanel
+              overline="Record-backed"
+              title="Your geography at a glance"
+              intro="Counts from workbench records and field logs — not planning JSON. Zero means no records yet."
+              items={live.liveKpis}
+              showOrganizingPipelines={false}
+              pipelineVariant="compact"
+            />
+            {live.primaryCountySlug && areaLinks[0] ? (
+              <p className="mt-3 text-xs text-[var(--ep-navy-muted)]">
+                <Link href={areaLinks[0].href} className="font-semibold text-[var(--ep-blue)] hover:underline">
+                  Open full area drill-down →
+                </Link>
+              </p>
+            ) : null}
+          </Section>
+
+          {live.messageSlice ? (
+            <Section id="message-hub" title="Message hub">
+              <div className="rounded-xl border border-[var(--ep-gold)]/40 bg-[var(--ep-cream)]/60 p-4">
+                <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">
+                  {live.messageSlice.displayName}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--ep-navy)]">{live.messageSlice.coreLine}</p>
+                <Link href={live.messageSlice.messagesHref} className="mt-3 inline-block text-sm font-semibold text-[var(--ep-blue)] hover:underline">
+                  Conversations & Stories hub →
+                </Link>
+              </div>
+            </Section>
+          ) : null}
+
+          <section id="calendar" className="scroll-mt-32 border-b border-[var(--ep-navy)]/10 pb-10">
+            <h2 className="font-heading text-xl font-bold text-[var(--ep-navy)]">Calendar</h2>
+            <div className="mt-4">
+              {live.calendar.length ? (
+                <ul className="divide-y divide-[var(--ep-navy)]/10 rounded-xl border border-[var(--ep-navy)]/10 bg-white">
+                  {live.calendar.map((item) => (
+                    <li key={item.id} className="flex flex-wrap items-center justify-between gap-2 px-4 py-3 text-sm">
+                      <div>
+                        <p className="font-semibold text-[var(--ep-navy)]">{item.title}</p>
+                        <p className="text-xs text-[var(--ep-navy-muted)]">
+                          {item.workbenchName} · {item.dateLabel} · {item.status}
+                        </p>
+                      </div>
+                      <Link href={item.href} className="text-xs font-semibold text-[var(--ep-blue)] hover:underline">
+                        Open →
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-sm text-[var(--ep-navy-muted)]">No upcoming events on workbench records yet.</p>
+              )}
+            </div>
+          </section>
+
+          {live.eventEmbeds.length ? (
+            <section id="events-embed" className="scroll-mt-32 border-b border-[var(--ep-navy)]/10 pb-10">
+              <h2 className="font-heading text-xl font-bold text-[var(--ep-navy)]">Event command</h2>
+              <div className="mt-4 space-y-4">
+                {live.eventEmbeds.map((ev) => (
+                  <div key={ev.href} className="rounded-xl border border-[var(--ep-navy)]/10 bg-white p-4 shadow-sm">
+                    <div className="flex flex-wrap items-start justify-between gap-2">
+                      <div>
+                        <p className="font-semibold text-[var(--ep-navy)]">{ev.title}</p>
+                        <p className="text-xs text-[var(--ep-navy-muted)]">
+                          {ev.status} · {ev.assignmentFilled}/{ev.assignmentTotal} roles filled
+                          {ev.leadName ? ` · Lead: ${ev.leadName}` : ""}
+                        </p>
+                      </div>
+                      <Link href={ev.href} className="ep-btn ep-btn-primary ep-btn-sm">
+                        Event workbench
+                      </Link>
+                    </div>
+                    {ev.roles.length ? (
+                      <ul className="mt-3 grid gap-1 text-xs text-[var(--ep-navy-muted)] sm:grid-cols-2">
+                        {ev.roles.map((r) => (
+                          <li key={`${r.role}-${r.assignee}`}>
+                            <span className="font-semibold text-[var(--ep-navy)]">{r.role}:</span>{" "}
+                            {r.assignee?.trim() || "Open"}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          <Section id="role" title="Role & responsibilities">
+            <ul className="mt-1 list-disc space-y-2 pl-5 text-sm text-[var(--ep-navy)]">
+              {responsibilities.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          </Section>
+
+          <Section id="areas" title="My areas">
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+              {areaLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="block rounded-xl border border-[var(--ep-navy)]/10 bg-white p-4 shadow-sm transition hover:border-[var(--ep-gold)]"
+                  >
+                    <p className="font-semibold text-[var(--ep-navy)]">{link.label}</p>
+                    <p className="mt-1 text-xs text-[var(--ep-blue)]">Open in Election Plan →</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
+          {isSelf && live.primaryCountySlug ? (
+            <Section id="field-log" title="Field log">
+              {canLogField ? (
+                <p className="text-sm text-[var(--ep-navy-muted)]">
+                  You are signed in as operator <strong>{epOperatorInitials}</strong>. Log results from your county or
+                  city workbench field log section.
+                </p>
+              ) : (
+                <p className="text-sm text-[var(--ep-navy-muted)]">
+                  Sign in with operator initials <strong>{leader.initials}</strong> in the Election Plan operator bar to
+                  log field results. Your tagged entries:{" "}
+                  <strong>{live.operatorEntries.totalQuantity}</strong> ({live.operatorEntries.entryCount} logs).
+                </p>
+              )}
+              {areaLinks[0] ? (
+                <Link href={`${areaLinks[0].href}#field-log`} className="mt-3 inline-block ep-btn ep-btn-ghost ep-btn-sm">
+                  Open field log →
+                </Link>
+              ) : null}
+            </Section>
+          ) : null}
+
+          <Section id="power-of-5" title="Power of 5">
+            <PowerOf5DashboardPanel
+              overline="Participant engine"
+              title="Power of 5 structure"
+              intro={po5.intro}
+              items={po5.kpiItems}
+              pipelineVariant="full"
+            />
+          </Section>
+
+          <Section id="my-five" title="My Five (starter)">
+            <p className="text-sm text-[var(--ep-navy-muted)]">Demo roster until PPEN connects — synthetic names only.</p>
+            <ul className="mt-4 divide-y divide-[var(--ep-navy)]/10 rounded-xl border border-[var(--ep-navy)]/10 bg-white">
+              {po5.personalDemo.myFive.map((member) => (
+                <li key={member.id} className="flex flex-wrap items-start justify-between gap-2 px-4 py-3">
+                  <div>
+                    <p className="font-semibold text-[var(--ep-navy)]">{member.displayName}</p>
+                    <p className="text-xs text-[var(--ep-navy-muted)]">{member.category}</p>
+                  </div>
+                  <span className="rounded-full bg-[var(--ep-cream)] px-2 py-0.5 text-xs font-semibold uppercase text-[var(--ep-navy)]">
+                    {member.status}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
+          <Section id="next-actions" title="Next actions">
+            <ul className="space-y-3">
+              {nextActions.map((action) => (
+                <li key={action.id} className="rounded-lg border border-[var(--ep-navy)]/10 bg-white px-4 py-3 text-sm">
+                  <p className="font-semibold text-[var(--ep-navy)]">{action.title}</p>
+                  <p className="mt-1 text-xs text-[var(--ep-navy-muted)]">
+                    {action.lane} · {action.dueLabel}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </Section>
+
+          <Section id="training" title="Training & tools">
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {campaignPins.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="block rounded-lg border border-dashed border-[var(--ep-navy)]/20 bg-[var(--ep-cream)]/50 p-3 text-sm"
+                  >
+                    <span className="font-semibold text-[var(--ep-navy)]">{link.label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Section>
+        </div>
+      </div>
+    </div>
+  );
+}

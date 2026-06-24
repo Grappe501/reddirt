@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
+import { OperatorCommandHeatmap } from "@/components/volunteers/OperatorCommandHeatmap";
 import { VolunteerCommandView } from "@/components/volunteers/VolunteerCommandView";
-import { tryLoadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
+import { loadCommandCoverageHeatmap } from "@/lib/volunteers/load-command-coverage";
 
 export const metadata: Metadata = {
   title: "Leader command | Operators",
@@ -12,22 +12,25 @@ export const metadata: Metadata = {
 };
 
 export default async function LeaderWorkbenchCommandPage() {
-  const leader = await tryLoadCurrentVolunteerLeader();
-  if (leader && !leader.commandAccess) {
-    notFound();
-  }
+  const heatmap = await loadCommandCoverageHeatmap();
 
   return (
     <>
-      <div className="ep-classification">Command roster</div>
+      <div className="ep-classification">Command · coverage heatmap v3</div>
       <div className="px-6 pt-6 lg:px-10">
         <div className="mx-auto max-w-6xl">
           <Link href="/election-plan/operators" className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:underline">
             ← Operators hub
           </Link>
-          <div className="mt-4">
+          <h1 className="mt-2 font-heading text-2xl font-bold text-[var(--ep-navy)]">Leader command</h1>
+          <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">
+            Live activity from field logs and workbench leadership fills — green means records exist, quiet means first
+            touch still needed.
+          </p>
+          <div className="mt-6">
             <ElectionPlanOperatorsSubnav />
           </div>
+          <OperatorCommandHeatmap rows={heatmap} />
         </div>
       </div>
       <VolunteerCommandView />

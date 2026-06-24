@@ -3,10 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
-import { VolunteerLeaderWorkbenchV2View } from "@/components/volunteers/VolunteerLeaderWorkbenchV2View";
-import { buildLeaderWorkbenchV2Payload } from "@/lib/volunteers/build-leader-workbench-v2";
+import { VolunteerLeaderWorkbenchV3View } from "@/components/volunteers/VolunteerLeaderWorkbenchV3View";
+import { buildLeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-workbench-v3";
 import { getVolunteerLeaderBySlug } from "@/lib/volunteers/leader-roster";
-import { loadCurrentVolunteerLeader, tryLoadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
+import { tryLoadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
+import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const leader = getVolunteerLeaderBySlug(slug);
   return {
-    title: leader ? `${leader.displayName} · Leader workbench` : "Leader workbench",
+    title: leader ? `${leader.displayName} · Leader workbench v3` : "Leader workbench",
     robots: { index: false, follow: false },
   };
 }
@@ -24,7 +25,11 @@ export default async function LeaderWorkbenchSlugPage({ params }: Props) {
   const leader = getVolunteerLeaderBySlug(slug);
   if (!leader) notFound();
 
-  const current = await tryLoadCurrentVolunteerLeader();
+  const [payload, current, operator] = await Promise.all([
+    buildLeaderWorkbenchV3Payload(leader),
+    tryLoadCurrentVolunteerLeader(),
+    loadCurrentElectionPlanOperator().catch(() => null),
+  ]);
   const isSelf = current?.slug === leader.slug;
 
   return (
@@ -42,7 +47,11 @@ export default async function LeaderWorkbenchSlugPage({ params }: Props) {
           </div>
         </div>
       </div>
-      <VolunteerLeaderWorkbenchV2View payload={buildLeaderWorkbenchV2Payload(leader)} isSelf={isSelf} />
+      <VolunteerLeaderWorkbenchV3View
+        payload={payload}
+        isSelf={isSelf}
+        epOperatorInitials={operator?.initials ?? null}
+      />
     </>
   );
 }
