@@ -69,6 +69,8 @@ export type VolunteerLeader = {
     | "social_media_influencer"
     | "democratic_black_caucus_lead"
     | "educators_coalition_lead"
+    | "comms_lead"
+    | "assistant_cm_workbench"
   >;
   /** Students for Arkansas founding co-chair — campus chapter + statewide student movement. */
   campusTeamCoChair?: boolean;
@@ -86,6 +88,10 @@ export type VolunteerLeader = {
   interfaithCommsLiaison?: boolean;
   /** Nonprofit advisor — ACM-flex workbench access without assistant CM title in UI. */
   nonprofitAdvisor?: boolean;
+  /** Full assistant CM workbench tier and lanes — no assistant CM title or command access until role is decided. */
+  acmWorkbenchFlex?: boolean;
+  /** Statewide volunteer board — Volunteer board badge without a county chair assignment. */
+  volunteerBoardMember?: boolean;
   /** High school senior — auto-includes youth + high school leadership templates. */
   highSchoolSenior?: boolean;
   /** Volunteer county board — sees county and nested city workbenches without county chair title. */

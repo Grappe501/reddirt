@@ -124,10 +124,39 @@
       "slug": "leann-solice",
       "displayName": "Leann Solice",
       "initials": "LSO",
-      "teamLanes": ["comms", "county"],
+      "workbenchTier": "county",
+      "countyBoardMember": true,
+      "workbenchTemplates": ["county_leader", "comms_lead"],
+      "teamLanes": ["comms", "county", "events"],
       "connections": [
-        { "kind": "county", "county": "Garland", "countySlug": "garland", "label": "Garland County playbook" }
-      ]
+        { "kind": "county", "county": "Garland", "countySlug": "garland", "label": "Garland County playbook" },
+        { "kind": "city", "citySlug": "hot-springs", "label": "Hot Springs community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/garland",
+          "label": "Garland County command",
+          "description": "County playbook tools — not county chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/messages",
+          "label": "Conversations & Stories hub",
+          "description": "County narratives and shareable content"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/comms",
+          "label": "Comms lane drill-down",
+          "description": "Message packets, validator stories, and offline conversation logging"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/judy-dare",
+          "label": "Judy Dare — Hot Springs",
+          "description": "Garland County field contact — coordinate comms with county team"
+        }
+      ],
+      "notes": "Garland County comms lead — full county playbook and comms lane tools without county chair title."
     },
     {
       "slug": "ben-hurst",
@@ -536,9 +565,48 @@
       "slug": "zach-bledsoe",
       "displayName": "Zach Bledsoe",
       "initials": "ZBL",
-      "teamLanes": ["county"],
-      "connections": [{ "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" }],
-      "notes": "Available through August 2026."
+      "acmWorkbenchFlex": true,
+      "workbenchTier": "assistant_campaign_manager",
+      "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/election-plan",
+          "label": "Election Plan command",
+          "description": "Full campaign OS — counties, cities, workbenches, operators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Leader workbenches, field operators, command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "All program and city workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Full roster heatmap and operator sync"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/field",
+          "label": "Field operators",
+          "description": "Operator whitelist and capabilities"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders",
+          "label": "All leader workbenches",
+          "description": "Every personal command surface statewide"
+        }
+      ],
+      "notes": "Assistant CM workbench flex — explore all lanes statewide until permanent role is decided. Not assistant CM title yet."
     },
     {
       "slug": "judy-harrison",
@@ -578,9 +646,64 @@
           "href": "/election-plan/operators/leaders/command",
           "label": "Leader command",
           "description": "Recruit and assign leaders across Clark County workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/claudia-beach",
+          "label": "Dr. Claudia Beach — county co-chair",
+          "description": "Clark County co-chair — finance inner circle and volunteer board"
         }
       ],
-      "notes": "Clark County lead · fundraising team."
+      "notes": "Clark County lead · fundraising team · co-chair with Dr. Claudia Beach."
+    },
+    {
+      "slug": "claudia-beach",
+      "displayName": "Dr. Claudia Beach",
+      "initials": "CBE",
+      "workbenchTier": "county",
+      "countyBoardMember": true,
+      "workbenchTemplates": ["county_leader", "finance_inner_circle"],
+      "teamLanes": ["county", "fundraising", "events", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/clark",
+          "label": "Clark County command",
+          "description": "County playbook tools — co-chair without sole county chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Finance committee coordination and donor pipeline doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework and targets"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, and grassroots event doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/judy-harrison",
+          "label": "Dr. Judy Harrison — county co-chair",
+          "description": "Clark County lead — co-chair partner"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Volunteer board and leadership assignments across Clark County"
+        }
+      ],
+      "notes": "Clark County co-chair with Dr. Judy Harrison · finance inner circle."
     },
     {
       "slug": "jay-powell",
@@ -696,6 +819,44 @@
       "notes": "Union rep — Danny Brown initials (DBR)."
     },
     {
+      "slug": "teresa-dannaway",
+      "displayName": "Teresa Dannaway",
+      "initials": "TDA",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader", "fundraising_workbench"],
+      "teamLanes": ["county", "events", "fundraising", "operations", "voter-registration"],
+      "connections": [
+        { "kind": "county", "county": "Saline", "countySlug": "saline", "label": "Saline County playbook" },
+        { "kind": "city", "citySlug": "benton", "label": "Benton community workbench" },
+        { "kind": "city", "citySlug": "bryant", "label": "Bryant community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/saline",
+          "label": "Saline County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/benton",
+          "label": "Benton workbench command",
+          "description": "Saline County seat — community workbench leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, and grassroots event doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Saline County workbenches"
+        }
+      ],
+      "notes": "Saline County chair — youth registration county priority."
+    },
+    {
       "slug": "carol-hutto",
       "displayName": "Carol Hutto",
       "initials": "CHU",
@@ -770,6 +931,42 @@
         }
       ],
       "notes": "Van Buren County volunteer board — county and city workbench visibility without county chair title."
+    },
+    {
+      "slug": "savannah-baugher",
+      "displayName": "Savannah Baugher",
+      "initials": "SBA",
+      "volunteerBoardMember": true,
+      "volunteerLeadershipTeam": true,
+      "workbenchTemplates": ["volunteer_leadership_team"],
+      "teamLanes": ["operations", "events", "county"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Volunteer HQ — leaders, field operators, command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Volunteer board assignments and open leadership slots"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/june-28-launch",
+          "label": "Volunteer leadership launch",
+          "description": "Founding volunteer network and leadership team hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders",
+          "label": "All leader workbenches",
+          "description": "Statewide volunteer board visibility"
+        }
+      ],
+      "notes": "Statewide volunteer board — June 28 founding network."
     },
     {
       "slug": "brook-linson",
@@ -1865,6 +2062,49 @@
         }
       ],
       "notes": "Camden city chair — Ouachita County, South Arkansas."
+    },
+    {
+      "slug": "wendy-peer",
+      "displayName": "Wendy Peer",
+      "initials": "WPE",
+      "workbenchTier": "city",
+      "workbenchTemplates": ["city_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "comms", "coalition"],
+      "connections": [
+        { "kind": "city", "citySlug": "fort-smith", "label": "Fort Smith community workbench" },
+        { "kind": "county", "county": "Sebastian", "countySlug": "sebastian", "label": "Sebastian County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/fort-smith",
+          "label": "Fort Smith workbench command",
+          "description": "City leadership board — all lanes and nested volunteers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/fort-smith",
+          "label": "Fort Smith city strategy",
+          "description": "Western Arkansas anchor — regional media and River Valley persuasion"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/sebastian",
+          "label": "Sebastian County command",
+          "description": "County playbook rollup for Fort Smith progress"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/river-valley",
+          "label": "River Valley region",
+          "description": "Fort Smith — western Arkansas regional media hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders on the Fort Smith workbench"
+        }
+      ],
+      "notes": "Fort Smith city chair — Sebastian County · western Arkansas anchor."
     },
     {
       "slug": "david-mcavoy",

@@ -105,12 +105,18 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Nonprofit advisor · ACM access
               </p>
             ) : null}
+            {leader.acmWorkbenchFlex && !leader.assistantCm ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-navy)]/25">
+                ACM workbench · role open
+              </p>
+            ) : null}
             {leader.volunteerManagerInterim ? (
               <p className="mt-2 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-950 ring-1 ring-amber-400/60">
                 Interim Volunteer Manager
               </p>
             ) : null}
-            {leader.countyBoardMember && !leader.workbenchTemplates?.includes("county_leader") ? (
+            {(leader.countyBoardMember || leader.volunteerBoardMember) &&
+            !leader.workbenchTemplates?.includes("county_leader") ? (
               <p className="mt-2 inline-block rounded-full bg-[var(--ep-gold)]/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-gold)]/45">
                 Volunteer board
               </p>
@@ -203,6 +209,11 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
             {leader.interfaithCommsLiaison ? (
               <p className="mt-2 inline-block rounded-full bg-violet-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-violet-950 ring-1 ring-violet-400/40">
                 Interfaith comms liaison
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("comms_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-sky-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-sky-950 ring-1 ring-sky-500/45">
+                Comms lead
               </p>
             ) : null}
             {leader.workbenchTemplates?.includes("finance_inner_circle") ? (

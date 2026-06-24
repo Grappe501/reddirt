@@ -25,7 +25,9 @@ export type LeaderWorkbenchTemplateId =
   | "union_liaison"
   | "social_media_influencer"
   | "democratic_black_caucus_lead"
-  | "educators_coalition_lead";
+  | "educators_coalition_lead"
+  | "comms_lead"
+  | "assistant_cm_workbench";
 
 export type LeaderTemplateToolLink = {
   label: string;
@@ -100,6 +102,10 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     ids.add("special_outreach_lead");
   }
 
+  if (leader.acmWorkbenchFlex) {
+    ids.add("assistant_cm_workbench");
+  }
+
   for (const id of leader.workbenchTemplates ?? []) {
     ids.add(id);
     const tpl = registry.templates[id];
@@ -128,6 +134,8 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     "social_media_influencer",
     "democratic_black_caucus_lead",
     "educators_coalition_lead",
+    "assistant_cm_workbench",
+    "comms_lead",
     "events_lead",
     "event_planner",
     "finance_inner_circle",

@@ -624,6 +624,59 @@
         { "label": "Operators hub", "href": "/election-plan/operators", "description": "Volunteer management — leaders, field operators, command" },
         { "label": "Volunteer leadership launch", "href": "/election-plan/academy/june-28-launch", "description": "Volunteer management boards and leadership team hub" }
       ]
+    },
+    "comms_lead": {
+      "id": "comms_lead",
+      "label": "Comms lead",
+      "description": "Communications lane owner — county message packets, local validator stories, events alignment, and offline conversation logging.",
+      "sections": [
+        { "id": "message_packet", "label": "County message packet", "description": "Pull core line and shareable prompts from the statewide hub — align every post with campaign messaging." },
+        { "id": "local_validator", "label": "Local validator story", "description": "One neighbor, faith leader, or business story per week — sourced only, no unsourced claims." },
+        { "id": "events_alignment", "label": "Events lane alignment", "description": "Coordinate copy and photos with events lane — ready 72 hours before each stop." },
+        { "id": "messages_hub", "label": "Conversations & Stories hub", "description": "County narratives, shareable content, and field conversation prompts." },
+        { "id": "conversation_reach", "label": "Offline conversation reach", "description": "Log conversations sparked by posts — field log category for comms lane reporting." },
+        { "id": "debate_prep", "label": "Debate prep materials", "description": "Kelly pathway materials when assigned — debate prep workbench access." }
+      ],
+      "pathways": [
+        { "key": "comms_lead", "label": "Comms Lead" },
+        { "key": "content_coordinator", "label": "Content Coordinator" },
+        { "key": "local_storyteller", "label": "Local Storyteller" },
+        { "key": "social_media_captain", "label": "Social Media Captain" },
+        { "key": "election_info", "label": "Election Information Team" }
+      ],
+      "toolLinks": [
+        { "label": "Comms lane drill-down", "href": "/election-plan/operators/leaders/me/lane/comms", "description": "Work completion, organizing, reporting, and tools" },
+        { "label": "Conversations & Stories", "href": "/messages", "description": "County narratives and shareable content hub" },
+        { "label": "Debate prep workbench", "href": "/election-plan/debate-prep", "description": "Kelly pathway materials when assigned" },
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Align event comms with field calendar" }
+      ]
+    },
+    "assistant_cm_workbench": {
+      "id": "assistant_cm_workbench",
+      "label": "Assistant campaign manager workbench",
+      "description": "Full assistant CM tool surface — Election Plan command, operators hub, leader command, and all lane drill-downs — while permanent lane assignment is still open.",
+      "sections": [
+        { "id": "election_plan", "label": "Election Plan command", "description": "Full campaign OS — counties, cities, workbenches, and operators statewide." },
+        { "id": "operators_hub", "label": "Operators hub", "description": "Leader workbenches, field operators, and command surfaces." },
+        { "id": "leader_command", "label": "Leader command", "description": "Roster heatmap, open leadership slots, and operator sync." },
+        { "id": "lane_drilldowns", "label": "All lane drill-downs", "description": "County, events, fundraising, comms, campus, coalition, registration, and operations lanes." },
+        { "id": "workbench_hub", "label": "Community workbench hub", "description": "Every program and city workbench — placement and oversight." },
+        { "id": "role_decision", "label": "Role decision checkpoint", "description": "Explore lanes and geography before committing to assistant CM title or a fixed county/city chair." }
+      ],
+      "pathways": [
+        { "key": "assistant_cm", "label": "Assistant Campaign Manager" },
+        { "key": "county_lead", "label": "County Lead" },
+        { "key": "city_lead", "label": "City Lead" },
+        { "key": "lane_lead", "label": "Lane Lead" },
+        { "key": "volunteer_coordinator", "label": "Volunteer Coordinator" }
+      ],
+      "toolLinks": [
+        { "label": "Election Plan command", "href": "/election-plan", "description": "Full campaign OS — counties, cities, workbenches, operators" },
+        { "label": "Operators hub", "href": "/election-plan/operators", "description": "Leader workbenches, field operators, command" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Full roster heatmap and operator sync" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "All program and city workbenches" },
+        { "label": "Field operators", "href": "/election-plan/operators/field", "description": "Operator whitelist and capabilities" }
+      ]
     }
   }
 }

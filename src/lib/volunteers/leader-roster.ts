@@ -33,7 +33,7 @@ export function countsInFieldLeaderRoster(leader: VolunteerLeader): boolean {
 
 /** Full Operators shell: all lanes, command, field admin — role title not fixed in UI. */
 export function hasFlexLeaderWorkbench(leader: VolunteerLeader): boolean {
-  return Boolean(leader.assistantCm);
+  return Boolean(leader.assistantCm || leader.acmWorkbenchFlex);
 }
 
 /** Flex leaders get every lane drill-down — role title stays open in UI. */
