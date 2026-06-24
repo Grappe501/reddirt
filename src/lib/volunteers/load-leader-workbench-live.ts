@@ -1,3 +1,4 @@
+import type { FieldEntryRow } from "@/lib/election-plan/field-entry/types";
 import type { CountyDashboardKpiItem } from "@/lib/campaign-engine/county-dashboards/types";
 import { loadCommunityWorkbenchEvent } from "@/lib/election-plan/community-workbench/load-workbench-event";
 import { loadCommunityWorkbench } from "@/lib/election-plan/community-workbench/load-workbench";
@@ -36,12 +37,24 @@ export type LeaderMessageSlice = {
   messagesHref: string;
 };
 
+export type LeaderOpenLeadershipSlot = {
+  roleLabel: string;
+  workbenchName: string;
+  href: string;
+};
+
 export type LeaderWorkbenchLiveData = {
   liveKpis: CountyDashboardKpiItem[];
   calendar: LeaderCalendarItem[];
   eventEmbeds: LeaderEventEmbed[];
   messageSlice: LeaderMessageSlice | null;
-  operatorEntries: { totalQuantity: number; entryCount: number };
+  operatorEntries: {
+    totalQuantity: number;
+    entryCount: number;
+    recent: FieldEntryRow[];
+    lastLoggedAt: string | null;
+  };
+  openLeadershipSlots: LeaderOpenLeadershipSlot[];
   recordSource: "live" | "empty";
   primaryCountySlug: string | null;
   primaryCitySlug: string | null;
@@ -120,6 +133,7 @@ export async function loadLeaderWorkbenchLiveData(leader: VolunteerLeader): Prom
   }
 
   const calendar: LeaderCalendarItem[] = [];
+  const openLeadershipSlots: LeaderOpenLeadershipSlot[] = [];
 
   for (const wb of validWorkbenches) {
     leadershipFilled += wb.leadership.filter((l) => l.personName?.trim()).length;
@@ -127,6 +141,15 @@ export async function loadLeaderWorkbenchLiveData(leader: VolunteerLeader): Prom
     relationships += wb.relationships.length;
     eventsScheduled += wb.events.filter((e) => ["planned", "confirmed", "executed"].includes(e.status)).length;
     calendar.push(...upcomingEventsFromRows(wb.events, wb.slug, wb.name));
+    for (const slot of wb.leadership) {
+      if (!slot.personName?.trim()) {
+        openLeadershipSlots.push({
+          roleLabel: slot.roleLabel,
+          workbenchName: wb.name,
+          href: `/election-plan/workbenches/${wb.slug}#leadership`,
+        });
+      }
+    }
   }
 
   calendar.sort((a, b) => a.dateLabel.localeCompare(b.dateLabel));
@@ -211,7 +234,10 @@ export async function loadLeaderWorkbenchLiveData(leader: VolunteerLeader): Prom
     operatorEntries: {
       totalQuantity: operatorEntries.totalQuantity,
       entryCount: operatorEntries.entryCount,
+      recent: operatorEntries.recent,
+      lastLoggedAt: operatorEntries.recent[0]?.createdAt ?? null,
     },
+    openLeadershipSlots: openLeadershipSlots.slice(0, 8),
     recordSource: hasLive ? "live" : "empty",
     primaryCountySlug: scope.primaryCountySlug,
     primaryCitySlug: scope.primaryCitySlug,

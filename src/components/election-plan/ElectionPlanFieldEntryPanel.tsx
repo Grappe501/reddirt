@@ -15,6 +15,7 @@ type Props = {
   cityName?: string | null;
   initial: FieldEntryLocationSummary;
   operatorInitials: string | null;
+  onLogged?: () => void;
 };
 
 function formatWhen(iso: string) {
@@ -32,6 +33,7 @@ export function ElectionPlanFieldEntryPanel({
   cityName,
   initial,
   operatorInitials,
+  onLogged,
 }: Props) {
   const [summary, setSummary] = useState(initial);
   const [category, setCategory] = useState<FieldEntryCategory>("volunteer");
@@ -93,13 +95,14 @@ export function ElectionPlanFieldEntryPanel({
           `[${data.entry?.operatorInitials ?? operatorInitials}] logged · ${data.entry?.label ?? label}`,
         );
         await refresh();
+        onLogged?.();
       } catch {
         setError("Network error");
       } finally {
         setBusy(false);
       }
     },
-    [operatorInitials, category, label, description, quantity, countySlug, citySlug, refresh],
+    [operatorInitials, category, label, description, quantity, countySlug, citySlug, refresh, onLogged],
   );
 
   return (

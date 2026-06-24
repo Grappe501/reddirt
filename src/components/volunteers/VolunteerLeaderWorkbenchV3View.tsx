@@ -1,6 +1,8 @@
 import Link from "next/link";
 
-import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
+import { LeaderOpenSlotsPanel, LeaderRecentActivityPanel } from "@/components/volunteers/LeaderActivityPanels";
+import { LeaderFieldLogPanel } from "@/components/volunteers/LeaderFieldLogPanel";
+import { LeaderOperatorIdentityBar } from "@/components/volunteers/LeaderOperatorIdentityBar";
 import { PowerOf5DashboardPanel } from "@/components/power-of-5/PowerOf5DashboardPanel";
 import type { LeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-workbench-v3";
 import type { LeaderFieldLogContext } from "@/lib/volunteers/build-leader-field-log-context";
@@ -35,7 +37,7 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
     <div className="ep-chapter-body px-6 py-10 lg:px-10">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-start">
         <aside className="lg:sticky lg:top-24 lg:w-52 lg:shrink-0">
-          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Workbench v3.1</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Workbench v3.2</p>
           <p className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">{leader.displayName}</p>
           <p className="font-mono text-sm font-bold text-[var(--ep-blue)]">{leader.initials}</p>
           <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
@@ -55,6 +57,20 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
               </a>
             ))}
             <a
+              href="#activity"
+              className="block rounded-md px-2 py-1.5 text-[var(--ep-navy-muted)] hover:bg-[var(--ep-cream)] hover:text-[var(--ep-navy)]"
+            >
+              Activity
+            </a>
+            {live.openLeadershipSlots.length ? (
+              <a
+                href="#leadership-gaps"
+                className="block rounded-md px-2 py-1.5 text-[var(--ep-navy-muted)] hover:bg-[var(--ep-cream)] hover:text-[var(--ep-navy)]"
+              >
+                Open slots
+              </a>
+            ) : null}
+            <a
               href="#calendar"
               className="block rounded-md px-2 py-1.5 text-[var(--ep-navy-muted)] hover:bg-[var(--ep-cream)] hover:text-[var(--ep-navy)]"
             >
@@ -73,12 +89,18 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
 
         <div className="min-w-0 flex-1 space-y-10">
           <header>
-            <div className="ep-classification">Leadership workbench v3.1 · live KPIs + field log</div>
+            <div className="ep-classification">Leadership workbench v3.2 · activity + field log</div>
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{leader.displayName}</h1>
             {leader.notes ? (
               <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{leader.notes}</p>
             ) : null}
           </header>
+
+          {isSelf && fieldLog?.operatorReady ? (
+            <div className="mb-6">
+              <LeaderOperatorIdentityBar fieldLog={fieldLog} lastLoggedAt={live.operatorEntries.lastLoggedAt} />
+            </div>
+          ) : null}
 
           <Section id="overview" title="Overview">
             <p className="max-w-3xl text-sm leading-relaxed text-[var(--ep-navy)]">{overviewSummary}</p>
@@ -123,6 +145,19 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                   Conversations & Stories hub →
                 </Link>
               </div>
+            </Section>
+          ) : null}
+
+          <Section id="activity" title="Recent activity">
+            <LeaderRecentActivityPanel entries={live.operatorEntries.recent} />
+          </Section>
+
+          {live.openLeadershipSlots.length ? (
+            <Section id="leadership-gaps" title="Open leadership slots">
+              <p className="mb-3 text-sm text-[var(--ep-navy-muted)]">
+                These roles in your connected workbenches still need a name — assign from the workbench leadership table.
+              </p>
+              <LeaderOpenSlotsPanel slots={live.openLeadershipSlots} />
             </Section>
           ) : null}
 
@@ -218,7 +253,7 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                     <strong>{fieldLog.operatorInitials}</strong>. Your entries:{" "}
                     <strong>{live.operatorEntries.totalQuantity}</strong> ({live.operatorEntries.entryCount} logs).
                   </p>
-                  <ElectionPlanFieldEntryPanel
+                  <LeaderFieldLogPanel
                     countySlug={fieldLog.countySlug}
                     countyName={fieldLog.countyName}
                     citySlug={fieldLog.citySlug}
