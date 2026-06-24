@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 import { handleElectionPlanAuth } from "@/lib/election-plan/auth/election-plan-middleware";
+import { handleVolunteerHubAuth } from "@/lib/volunteers/auth/volunteer-middleware";
 
 /**
  * Edge-safe middleware — no intelligence/dashboard imports (they abort on Netlify edge).
@@ -16,6 +17,11 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith("/election-plan")) {
     const electionPlanResponse = handleElectionPlanAuth(request);
     if (electionPlanResponse) return electionPlanResponse;
+  }
+
+  if (pathname.startsWith("/volunteers")) {
+    const volunteerResponse = handleVolunteerHubAuth(request);
+    if (volunteerResponse) return volunteerResponse;
   }
 
   const requestHeaders = new Headers(request.headers);

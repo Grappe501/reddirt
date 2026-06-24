@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-import { ElectionPlanOperatorsAdmin } from "@/components/election-plan/ElectionPlanOperatorsAdmin";
+import {
+  ElectionPlanLeaderRosterGrid,
+  ElectionPlanOperatorsHubPanel,
+} from "@/components/election-plan/ElectionPlanOperatorsHubPanels";
+import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
 
 export const metadata = {
   title: "Operators | Election Plan",
@@ -10,18 +14,29 @@ export const metadata = {
 export default function ElectionPlanOperatorsPage() {
   return (
     <>
-      <div className="ep-classification">Internal · Operator whitelist</div>
+      <div className="ep-classification">Internal · Operators command</div>
       <div className="ep-chapter-body px-6 py-10 lg:px-10">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-6xl">
           <Link href="/election-plan" className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:underline">
             ← Election Plan
           </Link>
-          <h1 className="mt-2 font-heading text-2xl font-bold text-[var(--ep-navy)]">Field operators</h1>
-          <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-            3-letter initials whitelist — required before any county or city can log live field results.
+          <h1 className="mt-2 font-heading text-2xl font-bold text-[var(--ep-navy)]">Operators</h1>
+          <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">
+            Field operator initials, volunteer leader workbenches v2, and command roster — one tab for everyone who runs
+            the ground game.
           </p>
-          <div className="mt-8">
-            <ElectionPlanOperatorsAdmin />
+          <div className="mt-6">
+            <ElectionPlanOperatorsSubnav />
+          </div>
+          <div className="mt-4">
+            <ElectionPlanOperatorsHubPanel />
+          </div>
+          <div className="mt-12">
+            <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">All leader workbenches</h2>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Click any leader to open their v2 workbench.</p>
+            <div className="mt-4">
+              <ElectionPlanLeaderRosterGrid />
+            </div>
           </div>
         </div>
       </div>

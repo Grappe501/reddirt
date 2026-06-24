@@ -64,8 +64,8 @@ export function ElectionPlanOperatorBar({ currentInitials, currentDisplayName }:
           </span>
         </p>
         <div className="flex flex-wrap gap-3">
-          <Link href="/election-plan/operators" className="text-xs font-semibold text-[var(--ep-blue)] hover:underline">
-            Operators
+          <Link href="/election-plan/operators/leaders" className="text-xs font-semibold text-[var(--ep-blue)] hover:underline">
+            Leader workbenches
           </Link>
           <button
             type="button"

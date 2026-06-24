@@ -101,3 +101,53 @@ export async function loadStatewideFieldEntryRollups(): Promise<FieldEntryLocati
     return [];
   }
 }
+
+export async function loadFieldEntriesForOperator(initials: string, limit = 20): Promise<{
+  totalQuantity: number;
+  entryCount: number;
+  recent: FieldEntryRow[];
+}> {
+  const code = initials.trim().toUpperCase();
+  if (!code) return { totalQuantity: 0, entryCount: 0, recent: [] };
+
+  try {
+    const entries = await prisma.electionPlanFieldEntry.findMany({
+      where: { operatorInitials: code },
+      orderBy: { createdAt: "desc" },
+      take: limit,
+      include: { operator: { select: { displayName: true } } },
+    });
+
+    const agg = await prisma.electionPlanFieldEntry.aggregate({
+      where: { operatorInitials: code },
+      _sum: { quantity: true },
+      _count: { id: true },
+    });
+
+    return {
+      totalQuantity: agg._sum.quantity ?? 0,
+      entryCount: agg._count.id,
+      recent: entries.map(toRow),
+    };
+  } catch {
+    return { totalQuantity: 0, entryCount: 0, recent: [] };
+  }
+}
+
+export async function loadFieldEntryCountsByInitials(
+  initialsList: string[],
+): Promise<Record<string, number>> {
+  const codes = [...new Set(initialsList.map((i) => i.trim().toUpperCase()).filter(Boolean))];
+  if (codes.length === 0) return {};
+
+  try {
+    const rows = await prisma.electionPlanFieldEntry.groupBy({
+      by: ["operatorInitials"],
+      where: { operatorInitials: { in: codes } },
+      _sum: { quantity: true },
+    });
+    return Object.fromEntries(rows.map((r) => [r.operatorInitials, r._sum.quantity ?? 0]));
+  } catch {
+    return {};
+  }
+}
