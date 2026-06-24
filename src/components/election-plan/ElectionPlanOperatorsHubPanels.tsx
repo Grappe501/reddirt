@@ -1,0 +1,90 @@
+import Link from "next/link";
+
+import { getVolunteerLeaderRoster } from "@/lib/volunteers/leader-roster";
+import { leaderWorkbenchHref } from "@/lib/volunteers/build-leader-workbench-v2";
+import { VOLUNTEER_TEAM_LANES } from "@/lib/volunteers/types";
+
+function laneLabel(id: string): string {
+  return VOLUNTEER_TEAM_LANES.find((l) => l.id === id)?.label ?? id;
+}
+
+export function ElectionPlanOperatorsHubPanel() {
+  const roster = getVolunteerLeaderRoster();
+  const fieldCount = roster.filter((l) => !l.commandAccess || l.slug === "will-larue").length;
+
+  return (
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <Link
+        href="/election-plan/operators/leaders"
+        className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">v2 · Leader workbenches</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">Volunteer leaders</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          {roster.length} personal command surfaces — Power of 5, geography links, KPI dashboard, and next actions.
+        </p>
+      </Link>
+
+      <Link
+        href="/election-plan/operators/leaders/me"
+        className="rounded-xl border border-[var(--ep-navy)]/10 bg-white p-6 shadow-sm transition hover:border-[var(--ep-navy)]/30 hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-blue)]">Quick entry</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">My workbench</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Sign in with your 3-letter code + shared password to land on your personal v2 workbench.
+        </p>
+      </Link>
+
+      <Link
+        href="/election-plan/operators/field"
+        className="rounded-xl border border-[var(--ep-navy)]/10 bg-white p-6 shadow-sm transition hover:border-[var(--ep-navy)]/30 hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Field logging</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">Field operators</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          3-letter initials whitelist — required before county or city field results can be logged.
+        </p>
+      </Link>
+
+      <Link
+        href="/election-plan/operators/leaders/command"
+        className="rounded-xl border border-dashed border-[var(--ep-navy)]/20 bg-[var(--ep-cream)]/60 p-6 sm:col-span-2 lg:col-span-3"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-navy-muted)]">Command</p>
+        <h2 className="mt-2 font-heading text-lg font-bold text-[var(--ep-navy)]">Full roster table</h2>
+        <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
+          Kelly · Steve · Will — view all {fieldCount} field leaders, lanes, and login codes.
+        </p>
+      </Link>
+    </div>
+  );
+}
+
+export function ElectionPlanLeaderRosterGrid() {
+  const roster = getVolunteerLeaderRoster();
+
+  return (
+    <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {roster.map((leader) => (
+        <li key={leader.slug}>
+          <Link
+            href={leaderWorkbenchHref(leader.slug)}
+            className="block h-full rounded-xl border border-[var(--ep-navy)]/10 bg-white p-4 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
+          >
+            <div className="flex items-start justify-between gap-2">
+              <p className="font-semibold text-[var(--ep-navy)]">{leader.displayName}</p>
+              <span className="font-mono text-xs font-bold text-[var(--ep-blue)]">{leader.initials}</span>
+            </div>
+            <p className="mt-2 text-xs text-[var(--ep-navy-muted)]">
+              {leader.teamLanes.map(laneLabel).join(" · ")}
+            </p>
+            {leader.notes ? (
+              <p className="mt-2 line-clamp-2 text-[10px] leading-relaxed text-[var(--ep-navy-muted)]">{leader.notes}</p>
+            ) : null}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}

@@ -5,32 +5,50 @@ import { ElectionPlanLogoutButton } from "@/components/election-plan/ElectionPla
 import { ElectionPlanOperatorBar } from "@/components/election-plan/ElectionPlanOperatorBar";
 import { ElectionPlanPortalHeader } from "@/components/election-plan/ElectionPlanPortalHeader";
 import { PageBriefFromPath } from "@/components/election-plan/PageBriefFromPath";
+import { VolunteerHubLogoutButton } from "@/components/volunteers/VolunteerHubShell";
 import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
-import { requireElectionPlanPage } from "@/lib/election-plan/auth/require-election-plan";
+import { requireElectionPlanPortalAccess } from "@/lib/election-plan/auth/portal-access";
+import { tryLoadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 export const maxDuration = 26;
 
 export default async function ElectionPlanPortalLayout({ children }: { children: ReactNode }) {
-  await requireElectionPlanPage();
-  const operator = await loadCurrentElectionPlanOperator();
+  const authMode = await requireElectionPlanPortalAccess();
+  const operator = authMode === "election-plan" ? await loadCurrentElectionPlanOperator() : null;
+  const volunteerLeader =
+    authMode === "volunteer-leader" || authMode === "dev-open" ? await tryLoadCurrentVolunteerLeader() : null;
+
   return (
     <div className="ep-portal-shell">
-      <ElectionPlanPortalHeader />
+      <ElectionPlanPortalHeader authMode={authMode} volunteerLeader={volunteerLeader} />
       <div className="ep-portal-content">
         <div className="pt-4">
-          <ElectionPlanOperatorBar
-            currentInitials={operator?.initials ?? null}
-            currentDisplayName={operator?.displayName ?? null}
-          />
-          <Suspense fallback={null}>
-            <PageBriefFromPath />
-          </Suspense>
+          {authMode === "election-plan" ? (
+            <ElectionPlanOperatorBar
+              currentInitials={operator?.initials ?? null}
+              currentDisplayName={operator?.displayName ?? null}
+            />
+          ) : volunteerLeader ? (
+            <div className="ep-operator-bar ep-operator-bar-signed-in">
+              <p className="text-sm text-[var(--ep-navy)]">
+                <span className="ep-operator-initials">{volunteerLeader.initials}</span>{" "}
+                <strong>{volunteerLeader.displayName}</strong>
+                <span className="text-[var(--ep-navy-muted)]"> · Leader workbench</span>
+              </p>
+              <VolunteerHubLogoutButton />
+            </div>
+          ) : null}
+          {authMode === "election-plan" ? (
+            <Suspense fallback={null}>
+              <PageBriefFromPath />
+            </Suspense>
+          ) : null}
         </div>
       </div>
       {children}
-      <ElectionPlanLogoutButton />
+      {authMode === "election-plan" ? <ElectionPlanLogoutButton /> : null}
     </div>
   );
 }

@@ -27,5 +27,8 @@ export function isElectionPlanPortalNavActive(pathname: string, item: ElectionPl
   if (base === "/election-plan/opposition-research") {
     return path === base || path.startsWith(`${base}/`);
   }
+  if (base === "/election-plan/operators") {
+    return path === base || path.startsWith(`${base}/`);
+  }
   return path === base || path.startsWith(`${base}/`);
 }

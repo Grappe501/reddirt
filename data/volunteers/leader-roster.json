@@ -1,0 +1,357 @@
+{
+  "version": 1,
+  "leaders": [
+    {
+      "slug": "will-larue",
+      "displayName": "Will Larue",
+      "initials": "WLA",
+      "commandAccess": true,
+      "assistantCm": true,
+      "teamLanes": ["county", "operations"],
+      "connections": [
+        { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" },
+        { "kind": "city", "citySlug": "conway", "label": "Conway city brief" }
+      ],
+      "notes": "Assistant campaign manager — flex statewide."
+    },
+    {
+      "slug": "kelly-grappe",
+      "displayName": "Kelly Grappe",
+      "initials": "KGR",
+      "commandAccess": true,
+      "teamLanes": ["operations"],
+      "connections": [
+        { "kind": "global", "href": "/election-plan", "label": "Election Plan command", "description": "Full campaign OS" }
+      ]
+    },
+    {
+      "slug": "steve-cm",
+      "displayName": "Steve (Campaign Manager)",
+      "initials": "SCM",
+      "commandAccess": true,
+      "teamLanes": ["operations"],
+      "connections": [
+        { "kind": "global", "href": "/election-plan", "label": "Election Plan command", "description": "Full campaign OS" }
+      ]
+    },
+    {
+      "slug": "john-judy-gibson",
+      "displayName": "John & Judy Gibson",
+      "initials": "JJU",
+      "isCouple": true,
+      "teamLanes": ["county"],
+      "connections": [
+        { "kind": "county", "county": "Greene", "countySlug": "greene", "label": "Greene County playbook" },
+        { "kind": "city", "citySlug": "paragould", "label": "Paragould community workbench" }
+      ]
+    },
+    {
+      "slug": "judy-dare",
+      "displayName": "Judy Dare",
+      "initials": "JDA",
+      "teamLanes": ["county", "events"],
+      "connections": [
+        { "kind": "county", "county": "Garland", "countySlug": "garland", "label": "Garland County playbook" },
+        { "kind": "city", "citySlug": "hot-springs", "label": "Hot Springs city brief" }
+      ]
+    },
+    {
+      "slug": "john-duke",
+      "displayName": "John Duke",
+      "initials": "JDU",
+      "teamLanes": ["events"],
+      "connections": [
+        { "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock workbench" },
+        {
+          "kind": "event",
+          "workbenchSlug": "sherwood",
+          "eventSlug": "grassroots-and-guitar-strings",
+          "label": "Grassroots & Guitar Strings event"
+        }
+      ]
+    },
+    {
+      "slug": "leann-solice",
+      "displayName": "Leann Solice",
+      "initials": "LSO",
+      "teamLanes": ["comms", "county"],
+      "connections": [
+        { "kind": "county", "county": "Garland", "countySlug": "garland", "label": "Garland County playbook" }
+      ]
+    },
+    {
+      "slug": "ben-hurst",
+      "displayName": "Ben Hurst",
+      "initials": "BHU",
+      "teamLanes": ["events", "county"],
+      "connections": [
+        { "kind": "city", "citySlug": "sherwood", "label": "Sherwood community workbench" },
+        {
+          "kind": "event",
+          "workbenchSlug": "sherwood",
+          "eventSlug": "grassroots-and-guitar-strings",
+          "label": "Grassroots & Guitar Strings — BBQ lead"
+        }
+      ]
+    },
+    {
+      "slug": "christy-low",
+      "displayName": "Christy Low",
+      "initials": "CLO",
+      "teamLanes": ["fundraising"],
+      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock workbench" }]
+    },
+    {
+      "slug": "lisa-holloway",
+      "displayName": "Lisa Holloway",
+      "initials": "LHO",
+      "teamLanes": ["county"],
+      "connections": [{ "kind": "county", "county": "Cleburne", "countySlug": "cleburne", "label": "Cleburne County playbook" }]
+    },
+    {
+      "slug": "sarah-rampona",
+      "displayName": "Sarah Rampona",
+      "initials": "SRA",
+      "teamLanes": ["fundraising", "events"],
+      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock workbench" }]
+    },
+    {
+      "slug": "kate-stebbins",
+      "displayName": "Kate Stebbins",
+      "initials": "KST",
+      "teamLanes": ["events"],
+      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock events lane" }]
+    },
+    {
+      "slug": "nicole-luke",
+      "displayName": "Nicole & Luke",
+      "initials": "NLU",
+      "isCouple": true,
+      "teamLanes": ["events", "comms"],
+      "connections": [
+        {
+          "kind": "event",
+          "workbenchSlug": "sherwood",
+          "eventSlug": "grassroots-and-guitar-strings",
+          "label": "Grassroots & Guitar Strings — photography"
+        }
+      ]
+    },
+    {
+      "slug": "xav-mclennon",
+      "displayName": "Xav McLennon",
+      "initials": "XMC",
+      "teamLanes": ["campus", "coalition"],
+      "connections": [
+        { "kind": "program", "programSlug": "uca-campus", "label": "UCA Campus program workbench" },
+        { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" }
+      ]
+    },
+    {
+      "slug": "chance-bradford",
+      "displayName": "Chance Bradford",
+      "initials": "CBR",
+      "teamLanes": ["campus", "events"],
+      "connections": [
+        { "kind": "program", "programSlug": "philander-smith-campus", "label": "Philander Smith campus workbench" },
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock — ride-along hub" }
+      ],
+      "notes": "Available through August 2026."
+    },
+    {
+      "slug": "zach-bledsoe",
+      "displayName": "Zach Bledsoe",
+      "initials": "ZBL",
+      "teamLanes": ["county"],
+      "connections": [{ "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" }],
+      "notes": "Available through August 2026."
+    },
+    {
+      "slug": "judy-harrison",
+      "displayName": "Judy Harrison",
+      "initials": "JHA",
+      "teamLanes": ["county"],
+      "connections": [{ "kind": "county", "county": "Clark", "countySlug": "clark", "label": "Clark County playbook" }]
+    },
+    {
+      "slug": "jay-powell",
+      "displayName": "Jay Powell",
+      "initials": "JPO",
+      "teamLanes": ["events", "fundraising", "county"],
+      "connections": [
+        { "kind": "city", "citySlug": "sherwood", "label": "Sherwood community workbench" },
+        {
+          "kind": "event",
+          "workbenchSlug": "sherwood",
+          "eventSlug": "grassroots-and-guitar-strings",
+          "label": "Grassroots & Guitar Strings — co-lead"
+        },
+        { "kind": "program", "programSlug": "grassroots-guitar-strings", "label": "G&G Strings program hub" }
+      ]
+    },
+    {
+      "slug": "huffines",
+      "displayName": "The Huffines",
+      "initials": "HHU",
+      "isCouple": true,
+      "teamLanes": ["county"],
+      "connections": [
+        { "kind": "county", "county": "Baxter", "countySlug": "baxter", "label": "Baxter County playbook" }
+      ],
+      "notes": "Baxter lead — supports surrounding counties."
+    },
+    {
+      "slug": "browns",
+      "displayName": "Danny & Brown Family",
+      "initials": "DBR",
+      "isCouple": true,
+      "teamLanes": ["county", "coalition"],
+      "connections": [{ "kind": "county", "county": "Saline", "countySlug": "saline", "label": "Saline County playbook" }],
+      "notes": "Union rep — Danny Brown initials (DBR)."
+    },
+    {
+      "slug": "carol-hutto",
+      "displayName": "Carol Hutto",
+      "initials": "CHU",
+      "teamLanes": ["county"],
+      "connections": [{ "kind": "county", "county": "Van Buren", "countySlug": "van-buren", "label": "Van Buren County playbook" }]
+    },
+    {
+      "slug": "brook-linson",
+      "displayName": "Brook Linson",
+      "initials": "BLI",
+      "teamLanes": ["county", "campus"],
+      "connections": [{ "kind": "county", "county": "White", "countySlug": "white", "label": "White County playbook" }]
+    },
+    {
+      "slug": "dana-jeff",
+      "displayName": "Dana & Jeff",
+      "initials": "DJE",
+      "isCouple": true,
+      "teamLanes": ["county"],
+      "connections": [{ "kind": "county", "county": "White", "countySlug": "white", "label": "White County playbook" }]
+    },
+    {
+      "slug": "rolanda",
+      "displayName": "Rolanda",
+      "initials": "ROL",
+      "teamLanes": ["coalition"],
+      "connections": [
+        { "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville community workbench" }
+      ],
+      "notes": "Jacksonville NAACP outreach."
+    },
+    {
+      "slug": "trenika-mccoy",
+      "displayName": "Dr. Trenika McCoy",
+      "initials": "TMC",
+      "teamLanes": ["coalition", "events"],
+      "connections": [{ "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville — faith outreach" }]
+    },
+    {
+      "slug": "jean-reed",
+      "displayName": "Jean Reed",
+      "initials": "JRE",
+      "teamLanes": ["voter-registration", "county"],
+      "connections": [{ "kind": "county", "county": "Carroll", "countySlug": "carroll", "label": "Carroll County playbook" }]
+    },
+    {
+      "slug": "carol-eagan",
+      "displayName": "Carol Eagan",
+      "initials": "CEA",
+      "teamLanes": ["operations", "fundraising"],
+      "connections": [{ "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock — volunteer management" }]
+    },
+    {
+      "slug": "ali-khan",
+      "displayName": "Dr. Ali Khan",
+      "initials": "AKH",
+      "teamLanes": ["coalition", "fundraising"],
+      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock — Muslim community hub" }]
+    },
+    {
+      "slug": "kevin-heifner",
+      "displayName": "Kevin Heifner",
+      "initials": "KHE",
+      "teamLanes": ["county", "operations"],
+      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock lead workbench" }]
+    },
+    {
+      "slug": "terry-coleman",
+      "displayName": "Terry Coleman",
+      "initials": "TCO",
+      "teamLanes": ["county"],
+      "connections": [
+        { "kind": "county", "county": "Conway", "countySlug": "conway", "label": "Conway County playbook" },
+        { "kind": "county", "county": "Menifee", "countySlug": "menifee", "label": "Menifee County playbook" },
+        { "kind": "city", "citySlug": "conway", "label": "Conway city brief" }
+      ]
+    },
+    {
+      "slug": "dianne-vanessa",
+      "displayName": "Dianne & Vanessa",
+      "initials": "DVA",
+      "isCouple": true,
+      "teamLanes": ["events", "fundraising"],
+      "connections": [{ "kind": "city", "citySlug": "morrilton", "label": "Morrilton city workbench" }]
+    },
+    {
+      "slug": "mary-ella-yamaguchi",
+      "displayName": "Mary Ella Yamaguchi",
+      "initials": "MYA",
+      "teamLanes": ["county"],
+      "connections": [{ "kind": "county", "county": "Pope", "countySlug": "pope", "label": "Pope County playbook" }]
+    },
+    {
+      "slug": "marnie-dan",
+      "displayName": "Marnie & Dan",
+      "initials": "MDA",
+      "isCouple": true,
+      "teamLanes": ["county"],
+      "connections": [{ "kind": "county", "county": "Independence", "countySlug": "independence", "label": "Independence County playbook" }]
+    },
+    {
+      "slug": "roosevelt-williams",
+      "displayName": "Roosevelt Williams III",
+      "initials": "RWI",
+      "teamLanes": ["county"],
+      "connections": [{ "kind": "county", "county": "Jefferson", "countySlug": "jefferson", "label": "Jefferson County playbook" }]
+    },
+    {
+      "slug": "gail-choate",
+      "displayName": "Gail Choate",
+      "initials": "GCH",
+      "teamLanes": ["coalition"],
+      "connections": [
+        {
+          "kind": "global",
+          "href": "/onboarding/power-of-5",
+          "label": "Grassroots philosophy — Power of 5 walkthrough",
+          "description": "Statewide mentor resource"
+        }
+      ],
+      "notes": "Statewide grassroots philosophy mentor — pinned on all dashboards."
+    },
+    {
+      "slug": "ethan-christie-dunbar",
+      "displayName": "Ethan & Christie Dunbar",
+      "initials": "ECH",
+      "isCouple": true,
+      "teamLanes": ["county", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Lafayette", "countySlug": "lafayette", "label": "Lafayette County playbook" },
+        { "kind": "program", "programSlug": "southern-arkansas", "label": "Southern Arkansas regional hub" }
+      ]
+    },
+    {
+      "slug": "elaine-williams",
+      "displayName": "Elaine Williams",
+      "initials": "EWI",
+      "teamLanes": ["county", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Nevada", "countySlug": "nevada", "label": "Nevada County playbook" },
+        { "kind": "program", "programSlug": "southern-arkansas", "label": "Southern Arkansas networking hub" }
+      ]
+    }
+  ]
+}
