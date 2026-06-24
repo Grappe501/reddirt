@@ -774,6 +774,14 @@ const BASE: Record<VolunteerTeamLaneId, Omit<LaneDrillDownPage, "laneId">> = {
       intro: "",
       items: [
         {
+          id: "lane-coverage",
+          title: "Lane coverage boards",
+          href: "/election-plan/operators/lane-coverage",
+          description: "Top-250 city chairs, coalition leads, and campus chapter gaps.",
+          kind: "report",
+          priority: "high",
+        },
+        {
           id: "leader-dashboard",
           title: "Leader dashboard",
           href: "/election-plan/operators/leader-dashboard",

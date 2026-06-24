@@ -11,7 +11,7 @@ import {
   getVolunteerHubPassword,
   verifyVolunteerSessionToken,
 } from "@/lib/volunteers/auth/session";
-import { canAccessVolunteerIntakeOps, getVolunteerLeaderBySlug, canAccessCommsCommand, canAccessVoterRegistrationCommand, canAccessEventsCommand, canAccessCoalitionCommand } from "@/lib/volunteers/leader-roster";
+import { canAccessVolunteerIntakeOps, getVolunteerLeaderBySlug, canAccessCommsCommand, canAccessVoterRegistrationCommand, canAccessEventsCommand, canAccessCoalitionCommand, canAccessLaneCoverageCommand } from "@/lib/volunteers/leader-roster";
 
 export type PortalAuthMode = "election-plan" | "volunteer-leader" | "dev-open";
 
@@ -50,6 +50,11 @@ export function isLeaderDashboardOpsPath(pathname: string): boolean {
   return path === "/election-plan/operators/leader-dashboard";
 }
 
+export function isLaneCoverageOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/lane-coverage";
+}
+
 export function isLeaderWorkbenchSignInPath(pathname: string): boolean {
   const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
   return path === "/election-plan/operators/leaders/sign-in";
@@ -79,13 +84,15 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
   const eventsCommandOps = isEventsCommandOpsPath(pathname);
   const coalitionCommandOps = isCoalitionCommandOpsPath(pathname);
   const leaderDashboardOps = isLeaderDashboardOpsPath(pathname);
+  const laneCoverageOps = isLaneCoverageOpsPath(pathname);
   const operatorDashboard =
     volunteerIntakeOps ||
     commsCommandOps ||
     voterRegistrationOps ||
     eventsCommandOps ||
     coalitionCommandOps ||
-    leaderDashboardOps;
+    leaderDashboardOps ||
+    laneCoverageOps;
 
   if (epSecret) {
     const epToken = jar.get(ELECTION_PLAN_SESSION_COOKIE)?.value;
@@ -106,6 +113,7 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
       if (leader && eventsCommandOps && canAccessEventsCommand(leader)) return "volunteer-leader";
       if (leader && coalitionCommandOps && canAccessCoalitionCommand(leader)) return "volunteer-leader";
       if (leader && leaderDashboardOps) return "volunteer-leader";
+      if (leader && laneCoverageOps && canAccessLaneCoverageCommand(leader)) return "volunteer-leader";
     }
     redirect(`/election-plan/operators/leaders/sign-in?next=${encodeURIComponent(pathname)}`);
   }

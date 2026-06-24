@@ -110,6 +110,19 @@ export function canAccessLeaderDashboardCommand(leader: VolunteerLeader): boolea
   );
 }
 
+/** Lane coverage boards — city, coalition, campus gap views for HQ and field ops. */
+export function canAccessLaneCoverageCommand(leader: VolunteerLeader): boolean {
+  return Boolean(
+    leader.commandAccess ||
+      leader.assistantCm ||
+      leader.volunteerManagerInterim ||
+      leader.acmWorkbenchFlex ||
+      leader.workbenchTemplates?.includes("county_leader") ||
+      leader.workbenchTemplates?.includes("cluster_leader") ||
+      leader.workbenchTemplates?.includes("volunteer_manager"),
+  );
+}
+
 /** Flex leaders get every lane drill-down — role title stays open in UI. */
 export function getEffectiveTeamLanes(leader: VolunteerLeader): VolunteerTeamLaneId[] {
   if (hasFlexLeaderWorkbench(leader)) {
