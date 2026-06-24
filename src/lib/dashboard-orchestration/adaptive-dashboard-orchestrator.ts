@@ -98,7 +98,7 @@ export function buildAdaptiveDashboardPlan(input: {
   if (input.role === "candidate") {
     for (const c of cardPriorities) {
       if (c.id === "approvals" || c.id === "reimbursement") c.emphasis = "primary";
-      if (c.id === "automation_scaffolds") c.emphasis = "collapsed";
+      if (c.id === "automation_scaffolds" || c.id === "calendar_health") c.emphasis = "collapsed";
     }
   }
 
@@ -107,9 +107,9 @@ export function buildAdaptiveDashboardPlan(input: {
     period: input.period,
     topActions,
     cardPriorities,
-    collapseLowPriority,
-    focusMode: Boolean(input.focusMode),
-    calmLayout: load.calmModeRecommended,
+    collapseLowPriority: collapseLowPriority || input.role === "candidate",
+    focusMode: Boolean(input.focusMode) || input.role === "candidate",
+    calmLayout: load.calmModeRecommended || input.role === "candidate",
   };
 }
 

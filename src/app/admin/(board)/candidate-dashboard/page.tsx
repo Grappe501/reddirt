@@ -8,17 +8,17 @@ import { loadNextActionsForPage } from "@/lib/agents/user-intelligence/load-next
 import { AgentObservationTracker } from "@/components/agents/AgentObservationTracker";
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
-import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
-import { VolunteerIntelligencePanel } from "@/components/admin/volunteers/VolunteerIntelligencePanel";
+import { parseCandidateDashboardLayer } from "@/lib/dashboard-orchestration/candidate-dashboard-layers";
 import { CampaignGuidanceStrip } from "@/components/admin/guidance/CampaignGuidanceStrip";
 
 export const dynamic = "force-dynamic";
 
-type Props = { searchParams: Promise<{ month?: string }> };
+type Props = { searchParams: Promise<{ month?: string; layer?: string }> };
 
 export default async function CandidateDashboardPage({ searchParams }: Props) {
   const sp = await searchParams;
   const month = parseReviewMonth(sp.month);
+  const layer = parseCandidateDashboardLayer(sp.layer);
   const [{ snapshot }, reimbursementSummaries, financeSnapshot, navBundle] = await Promise.all([
     loadCampaignEventsDashboard(month),
     loadReimbursementMonthSummaries(),
@@ -36,7 +36,6 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
     snapshot,
   });
   const countyStatewide = composeCountyDashboardContext();
-  const volunteerBundle = loadVolunteerSystemBundle();
   return (
     <AgentObservationTracker
       role="candidate"
@@ -49,9 +48,6 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
       <div className="mx-auto max-w-[1200px] px-4 pb-2">
         <CampaignGuidanceStrip role="candidate" pathname="/admin/candidate-dashboard" pageLabel="Candidate dashboard" compact />
       </div>
-      <div className="mx-auto max-w-[1200px] px-4 pb-4">
-        <VolunteerIntelligencePanel bundle={volunteerBundle} />
-      </div>
       <CandidateCampaignDashboard
         countyStatewide={countyStatewide}
         snapshot={snapshot}
@@ -59,7 +55,7 @@ export default async function CandidateDashboardPage({ searchParams }: Props) {
         financeSnapshot={JSON.parse(JSON.stringify(financeSnapshot))}
         nextActions={nextActions}
         executiveSummary={navBundle.executiveSummary}
-        guidanceCards={navBundle.guidanceCards}
+        layer={layer}
       />
     </AgentObservationTracker>
   );
