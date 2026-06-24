@@ -7,6 +7,7 @@
       "initials": "WLA",
       "commandAccess": true,
       "assistantCm": true,
+      "workbenchTier": "assistant_campaign_manager",
       "teamLanes": ["county", "operations"],
       "connections": [
         { "kind": "county", "county": "Faulkner", "countySlug": "faulkner", "label": "Faulkner County playbook" },
@@ -20,6 +21,7 @@
       "initials": "KKU",
       "commandAccess": true,
       "assistantCm": true,
+      "workbenchTier": "assistant_campaign_manager",
       "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
       "connections": [
         { "kind": "global", "href": "/election-plan", "label": "Election Plan command", "description": "Full campaign OS — counties, cities, workbenches, operators" },
@@ -35,6 +37,7 @@
       "displayName": "Kelly Grappe",
       "initials": "KGR",
       "commandAccess": true,
+      "workbenchTier": "campaign_manager",
       "teamLanes": ["operations"],
       "connections": [
         { "kind": "global", "href": "/election-plan", "label": "Election Plan command", "description": "Full campaign OS" }
@@ -45,6 +48,7 @@
       "displayName": "Steve (Campaign Manager)",
       "initials": "SCM",
       "commandAccess": true,
+      "workbenchTier": "campaign_manager",
       "teamLanes": ["operations"],
       "connections": [
         { "kind": "global", "href": "/election-plan", "label": "Election Plan command", "description": "Full campaign OS" }
@@ -315,6 +319,7 @@
       "slug": "mary-ella-yamaguchi",
       "displayName": "Mary Ella Yamaguchi",
       "initials": "MYA",
+      "workbenchTier": "county",
       "teamLanes": ["county"],
       "connections": [{ "kind": "county", "county": "Pope", "countySlug": "pope", "label": "Pope County playbook" }]
     },
@@ -322,6 +327,7 @@
       "slug": "jan-shaper",
       "displayName": "Jan Shaper",
       "initials": "JSH",
+      "workbenchTier": "city",
       "teamLanes": ["county", "events"],
       "connections": [
         { "kind": "city", "citySlug": "russellville", "label": "Russellville community workbench" },
@@ -370,6 +376,7 @@
       "displayName": "Ethan & Christie Dunbar",
       "initials": "ECH",
       "isCouple": true,
+      "workbenchTier": "cluster",
       "teamLanes": ["county", "coalition"],
       "connections": [
         { "kind": "county", "county": "Lafayette", "countySlug": "lafayette", "label": "Lafayette County playbook" },

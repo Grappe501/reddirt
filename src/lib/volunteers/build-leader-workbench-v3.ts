@@ -4,10 +4,15 @@ import { loadVolunteerLeaderRoster } from "@/lib/volunteers/leader-roster-db";
 import type { LeaderWorkbenchLiveData } from "@/lib/volunteers/load-leader-workbench-live";
 import { loadLeaderWorkbenchLiveData } from "@/lib/volunteers/load-leader-workbench-live";
 import type { VolunteerLeader } from "@/lib/volunteers/types";
+import {
+  buildLeaderHierarchyPayload,
+  type LeaderHierarchyPayload,
+} from "@/lib/volunteers/workbench-hierarchy";
 
 export type LeaderWorkbenchV3Payload = LeaderWorkbenchV2Payload & {
   live: LeaderWorkbenchLiveData;
   roster: LeaderRosterSnapshot;
+  hierarchy: LeaderHierarchyPayload;
 };
 
 export async function buildLeaderWorkbenchV3Payload(
@@ -94,5 +99,6 @@ export async function buildLeaderWorkbenchV3Payload(
     nextActions,
     live,
     roster,
+    hierarchy: buildLeaderHierarchyPayload(leader),
   };
 }

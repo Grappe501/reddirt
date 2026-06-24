@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { LeaderHierarchyPanel } from "@/components/volunteers/LeaderHierarchyPanel";
 import { LeaderOpenSlotsPanel, LeaderRecentActivityPanel } from "@/components/volunteers/LeaderActivityPanels";
 import { LeaderRosterWorkbenchPanels } from "@/components/volunteers/LeaderRosterWorkbenchPanels";
 import { LeaderFieldLogPanel } from "@/components/volunteers/LeaderFieldLogPanel";
@@ -30,7 +31,8 @@ type Props = {
 };
 
 export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Props) {
-  const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live, roster } = payload;
+  const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live, roster, hierarchy } =
+    payload;
   const areaLinks = resolveLeaderPersonalLinks(leader);
   const campaignPins = resolveLeaderCampaignPins(leader);
   const canLogField = Boolean(isSelf && fieldLog?.operatorReady);
@@ -117,6 +119,10 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
               ))}
             </ul>
             <LeaderLaneNavStrip leader={leader} isSelf={isSelf} />
+          </Section>
+
+          <Section id="hierarchy" title="Hierarchy & work branches">
+            <LeaderHierarchyPanel hierarchy={hierarchy} leaderSlug={leader.slug} isSelf={isSelf} />
           </Section>
 
           <Section id="kpi" title="KPI dashboard (live)">

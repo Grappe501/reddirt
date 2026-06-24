@@ -11,6 +11,15 @@ export const VOLUNTEER_TEAM_LANES = [
 
 export type VolunteerTeamLaneId = (typeof VOLUNTEER_TEAM_LANES)[number]["id"];
 
+/** Leadership hierarchy tier — volunteer nested under city under county under cluster under ACM under CM. */
+export type WorkbenchHierarchyTierId =
+  | "volunteer"
+  | "city"
+  | "county"
+  | "cluster"
+  | "assistant_campaign_manager"
+  | "campaign_manager";
+
 export type LeaderConnection =
   | { kind: "county"; county: string; countySlug?: string; label?: string }
   | { kind: "city"; citySlug: string; label: string }
@@ -30,6 +39,8 @@ export type VolunteerLeader = {
   isCouple?: boolean;
   commandAccess?: boolean;
   assistantCm?: boolean;
+  /** Override inferred hierarchy tier (city / county / cluster / ACM / CM). */
+  workbenchTier?: WorkbenchHierarchyTierId;
   teamLanes: VolunteerTeamLaneId[];
   connections: LeaderConnection[];
   notes?: string;
