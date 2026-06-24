@@ -8,9 +8,8 @@ import {
   epDebatePrepDayHref,
   epDebatePrepDayRehearsalHref,
 } from "@/lib/election-plan/debate-prep-links";
-import { getDay1BlockStudy } from "@/lib/election-plan/debatePrepDay1BlockStudy";
-import { DAY1_ID } from "@/lib/election-plan/debate-prep-day-ids";
 import { getDebateWeekIntensiveDay } from "@/lib/intelligence/v4/debateWeekIntensive2026";
+import { DAY1_ID } from "@/lib/election-plan/debate-prep-day-ids";
 
 export type Day1PathwayStepKind = "block" | "rehearsal" | "example" | "drill" | "close";
 
@@ -27,17 +26,14 @@ const DAY1_PLAN = () => getDebateWeekIntensiveDay(DAY1_ID)!;
 
 export function buildDay1PathwaySteps(): Day1PathwayStep[] {
   const plan = DAY1_PLAN();
-  const blocks: Day1PathwayStep[] = plan.blocks.map((block) => {
-    const study = getDay1BlockStudy(block.id);
-    return {
-      id: block.id,
-      kind: "block" as const,
-      label: study?.studyGuideTitle ?? block.title,
-      minutes: block.minutes,
-      href: epDebatePrepDayBlockHref(DAY1_ID, block.id),
-      teaser: block.activity,
-    };
-  });
+  const blocks: Day1PathwayStep[] = plan.blocks.map((block) => ({
+    id: block.id,
+    kind: "block" as const,
+    label: block.title,
+    minutes: block.minutes,
+    href: epDebatePrepDayBlockHref(DAY1_ID, block.id),
+    teaser: block.activity,
+  }));
 
   return [
     ...blocks,
