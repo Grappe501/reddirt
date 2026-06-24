@@ -9,6 +9,8 @@ import { recordPromotionObservation } from "./record-promotion-observation";
 import { assertOfficialCalendarSafetyBlocker } from "./sprint5-tool-helpers";
 import { buildGooglePayloadPreview, previewToGoogleEventBody } from "./build-google-payload";
 import { getCalendarPromotionConfig } from "./promotion-config";
+import { onEventOfficialPromoted } from "@/lib/volunteers/ops-automation";
+
 import { appendPromotionAudit, persistPromotionFailure, persistPromotionSuccess } from "./promotion-audit";
 import { assessPromotionReadiness } from "./promotion-readiness";
 import { parsePromotionMeta } from "./promotion-meta";
@@ -186,6 +188,13 @@ export async function promoteLedgerEventToGoogle(input: {
       event: "promotion_succeeded",
       actor: input.actor,
     });
+
+    if (input.targetLane === "official") {
+      await onEventOfficialPromoted({
+        recordId: record.id,
+        calendarSourceId: record.calendarSourceId,
+      }).catch(() => undefined);
+    }
 
     return {
       ok: true,

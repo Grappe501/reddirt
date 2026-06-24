@@ -3,6 +3,7 @@ import type { ElectionPlanFieldCategory } from "@prisma/client";
 
 import { resolveFieldEntryOperator, requireFieldEntryOperator, requireFieldEntrySession } from "@/lib/volunteers/field-entry-access";
 import { syncFieldEntryContactSpine } from "@/lib/volunteers/contact-spine";
+import { onFieldLogSynced } from "@/lib/volunteers/ops-automation";
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
 import { FIELD_ENTRY_CATEGORIES, type FieldEntryCategory } from "@/lib/election-plan/field-entry/types";
 import { prisma } from "@/lib/db";
@@ -110,6 +111,16 @@ export async function POST(request: Request) {
       citySlug,
       linkToCrm: body.linkToCrm !== false,
     }).catch(() => ({ linked: false, relationalContactId: null, created: false }));
+
+    await onFieldLogSynced({
+      fieldEntryId: entry.id,
+      operatorInitials: op.initials,
+      category: category as ElectionPlanFieldCategory,
+      label,
+      description,
+      countySlug,
+      relationalContactId: spine.relationalContactId,
+    }).catch(() => undefined);
 
     return NextResponse.json({
       ok: true,

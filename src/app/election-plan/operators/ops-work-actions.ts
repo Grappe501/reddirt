@@ -10,6 +10,7 @@ import {
   createLeaderGapTask,
   createOpsTaskFromSignal,
 } from "@/lib/volunteers/ops-work-items";
+import { runOpsFeedbackLoops } from "@/lib/volunteers/ops-automation";
 import { tryLoadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
 import type { LeaderGapTaskType } from "@/lib/volunteers/ops-work-items/leader-task-definitions";
 
@@ -112,4 +113,25 @@ export async function completeOpsTaskAction(formData: FormData) {
   const ok = await completeOpsWorkItem(taskId);
   revalidateOpsWorkSurfaces();
   redirect(`${returnTo}?opsWork=${ok ? "completed" : "complete_failed"}`);
+}
+
+export async function runFeedbackLoopsAction(formData: FormData) {
+  await requireOpsWorkAction();
+
+  const returnTo = String(formData.get("returnTo") ?? "/election-plan/operators").trim();
+  const result = await runOpsFeedbackLoops();
+
+  revalidateOpsWorkSurfaces();
+
+  const total =
+    result.signalTasksCreated +
+    result.quietLeaderTasks +
+    result.overdueEscalations +
+    result.staleIntakeTasks;
+
+  if (result.errors.length) {
+    redirect(`${returnTo}?opsAutomation=partial&created=${total}&errors=${result.errors.length}`);
+  }
+
+  redirect(`${returnTo}?opsAutomation=${total > 0 ? "ran" : "noop"}&created=${total}`);
 }

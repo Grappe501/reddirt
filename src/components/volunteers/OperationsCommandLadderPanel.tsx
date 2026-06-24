@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { createTaskFromSignalAction } from "@/app/election-plan/operators/ops-work-actions";
+import { createTaskFromSignalAction, runFeedbackLoopsAction } from "@/app/election-plan/operators/ops-work-actions";
 import {
   OPERATIONS_COMMAND_STACK,
   type OperationsCommandTierId,
@@ -76,7 +76,20 @@ export function OperationsCommandLadderPanel({
           <p className="mt-2 text-xs text-amber-800">
             Database not configured — live feedback counts need <code className="text-[10px]">DATABASE_URL</code>.
           </p>
-        ) : null}
+        ) : (
+          <form action={runFeedbackLoopsAction} className="mt-3">
+            <input type="hidden" name="returnTo" value={returnTo} />
+            <button
+              type="submit"
+              className={`rounded-lg px-3 py-1.5 text-xs font-bold uppercase tracking-wide ${surface === "admin" ? "bg-kelly-navy text-white hover:opacity-90" : "bg-[var(--ep-gold)] text-[var(--ep-navy)] hover:opacity-90"}`}
+            >
+              Run feedback loops
+            </button>
+            <span className={`ml-2 text-xs ${s.muted}`}>
+              Auto-escalate overdue tasks, 14-day quiet leaders, stale intake, and action-tier signals.
+            </span>
+          </form>
+        )}
         {showCandidateLink ? (
           <p className={`mt-2 text-xs ${s.muted}`}>
             Kelly&apos;s calm home:{" "}

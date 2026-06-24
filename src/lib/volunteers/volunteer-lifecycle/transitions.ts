@@ -4,6 +4,8 @@ import { prisma } from "@/lib/db";
 import { isVolunteerIntakeSource } from "@/lib/volunteers/load-volunteer-intake-dashboard";
 import { readIntakePlacementMetadata } from "@/lib/volunteers/contact-spine/metadata";
 
+import { onIntakeLifecycleStage } from "@/lib/volunteers/ops-automation";
+
 import { createVolunteerLifecycleTask } from "./create-lifecycle-tasks";
 import {
   canTransitionLifecycle,
@@ -82,6 +84,13 @@ export async function applyVolunteerLifecycleTransition(
     volunteerName,
     placementLeaderSlug: placement.placementLeaderSlug ?? null,
   });
+
+  await onIntakeLifecycleStage({
+    intakeId: row.id,
+    toStage: input.toStage,
+    volunteerName,
+    metadata,
+  }).catch(() => undefined);
 
   return { ok: true, fromStage, toStage: input.toStage };
 }
