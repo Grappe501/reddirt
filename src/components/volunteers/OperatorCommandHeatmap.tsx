@@ -67,7 +67,7 @@ export function OperatorCommandHeatmap({ rows }: Props) {
                 <td className="px-4 py-3 text-xs text-[var(--ep-navy-muted)]">{row.lanes.join(" · ")}</td>
                 <td className="px-4 py-3">
                   <Link href={row.workbenchHref} className="text-xs font-semibold text-[var(--ep-blue)] hover:underline">
-                    v3 →
+                    v3.2 →
                   </Link>
                 </td>
               </tr>

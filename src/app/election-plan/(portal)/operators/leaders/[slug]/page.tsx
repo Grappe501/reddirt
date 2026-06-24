@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const leader = getVolunteerLeaderBySlug(slug);
   return {
-    title: leader ? `${leader.displayName} · Leader workbench v3.1` : "Leader workbench",
+    title: leader ? `${leader.displayName} · Leader workbench v3.2` : "Leader workbench",
     robots: { index: false, follow: false },
   };
 }
@@ -25,12 +25,12 @@ export default async function LeaderWorkbenchSlugPage({ params }: Props) {
   const leader = getVolunteerLeaderBySlug(slug);
   if (!leader) notFound();
 
-  const [payload, current] = await Promise.all([
-    buildLeaderWorkbenchV3Payload(leader),
-    tryLoadCurrentVolunteerLeader(),
-  ]);
+  const current = await tryLoadCurrentVolunteerLeader();
   const isSelf = current?.slug === leader.slug;
-  const fieldLog = isSelf ? await buildLeaderFieldLogContext(leader, { isSelf: true }) : null;
+  const [payload, fieldLog] = await Promise.all([
+    buildLeaderWorkbenchV3Payload(leader, { isSelf }),
+    isSelf ? buildLeaderFieldLogContext(leader, { isSelf: true }) : Promise.resolve(null),
+  ]);
 
   return (
     <>

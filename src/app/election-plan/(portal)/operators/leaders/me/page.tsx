@@ -7,7 +7,7 @@ import { buildLeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-wor
 import { loadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
 
 export const metadata: Metadata = {
-  title: "My workbench v3.1 | Operators",
+  title: "My workbench v3.2 | Operators",
   robots: { index: false, follow: false },
 };
 
@@ -16,7 +16,7 @@ export default async function LeaderWorkbenchMePage() {
   if (!leader) notFound();
 
   const [payload, fieldLog] = await Promise.all([
-    buildLeaderWorkbenchV3Payload(leader),
+    buildLeaderWorkbenchV3Payload(leader, { isSelf: true }),
     buildLeaderFieldLogContext(leader, { isSelf: true }),
   ]);
 
