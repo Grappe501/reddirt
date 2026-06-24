@@ -8,6 +8,7 @@ export type LeaderWorkbenchTemplateId =
   | "volunteer_manager"
   | "event_planner"
   | "fundraising_workbench"
+  | "fundraising_lead"
   | "fundraising_field_leader"
   | "volunteer_leadership_team"
   | "county_candidate_coordinator"
@@ -104,6 +105,7 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     "events_lead",
     "event_planner",
     "finance_inner_circle",
+    "fundraising_lead",
     "fundraising_field_leader",
     "fundraising_workbench",
     "volunteer_leadership_team",

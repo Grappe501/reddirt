@@ -100,6 +100,11 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 Interim Volunteer Manager
               </p>
             ) : null}
+            {leader.workbenchTemplates?.includes("fundraising_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-950 ring-1 ring-emerald-500/40">
+                Fundraising Lead
+              </p>
+            ) : null}
             {leader.workbenchTemplates?.includes("fundraising_field_leader") ? (
               <p className="mt-2 inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-950 ring-1 ring-emerald-500/40">
                 Fundraising field leader

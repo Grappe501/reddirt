@@ -138,6 +138,33 @@
         { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
       ]
     },
+    "fundraising_lead": {
+      "id": "fundraising_lead",
+      "label": "Fundraising Lead",
+      "description": "Fundraising lane lead — donor pipeline, house parties, ride-alongs, event revenue, and stewardship in your geography. Includes full fundraising workbench functions.",
+      "includes": ["fundraising_workbench"],
+      "sections": [
+        { "id": "donor_pipeline_lead", "label": "Donor pipeline leadership", "description": "Own asks, thank-yous, and 48-hour follow-up across your fundraising network." },
+        { "id": "house_party_hosts", "label": "House party host pipeline", "description": "Recruit and coach hosts — small rooms drive grassroots revenue." },
+        { "id": "ride_alongs", "label": "Ride-along coordination", "description": "Schedule Kelly and surrogate donor conversations in your geography." },
+        { "id": "event_revenue", "label": "Event revenue", "description": "Fundraising events, host committees, VIP tables, and profit goals on connected workbenches." },
+        { "id": "fundraising_slots", "label": "Open fundraising slots", "description": "Vacant fundraising roles on city and county workbenches — assign from leader command." },
+        { "id": "weekly_report", "label": "Weekly fundraising report", "description": "Roll up asks, thank-yous, and event revenue for your lane check-in." }
+      ],
+      "pathways": [
+        { "key": "fundraising_lead", "label": "Fundraising Lead" },
+        { "key": "house_party_host", "label": "House Party Host" },
+        { "key": "grassroots_fundraiser", "label": "Grassroots Fundraiser" },
+        { "key": "event_revenue_lead", "label": "Event Revenue Lead" },
+        { "key": "major_donor_validator", "label": "Major Donor Validator" }
+      ],
+      "toolLinks": [
+        { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Lane checklist, reports, and Election Plan drill-downs" },
+        { "label": "Fundraising leadership", "href": "/election-plan/executive-book/fundraising-leadership", "description": "Opportunity ownership and fundraising lead doctrine" },
+        { "label": "Fundraising opportunities", "href": "/election-plan/executive-book/fundraising-opportunities", "description": "House parties, sponsors, grassroots events, coalition fundraising" },
+        { "label": "Power of 5 command", "href": "/election-plan/power-of-5/command-center", "description": "Relational fundraising through small rooms" }
+      ]
+    },
     "fundraising_field_leader": {
       "id": "fundraising_field_leader",
       "label": "Fundraising field leader",

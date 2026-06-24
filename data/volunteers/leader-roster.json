@@ -148,8 +148,44 @@
       "slug": "christy-low",
       "displayName": "Christy Low",
       "initials": "CLO",
-      "teamLanes": ["fundraising"],
-      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock workbench" }]
+      "workbenchTier": "city",
+      "workbenchTemplates": ["fundraising_lead"],
+      "teamLanes": ["fundraising", "events", "county"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/little-rock#fundraising",
+          "label": "Little Rock fundraising panel",
+          "description": "City workbench fundraising lane and opportunities"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Fundraising lead ownership and opportunity doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-opportunities",
+          "label": "Fundraising opportunities",
+          "description": "House parties, sponsors, grassroots events, coalition fundraising"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/power-of-5/command-center",
+          "label": "Power of 5 command",
+          "description": "Relational fundraising through small rooms"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Assign fundraising leads on connected workbenches"
+        }
+      ],
+      "notes": "Fundraising Lead — Little Rock / Pulaski County donor pipeline and house party hosts."
     },
     {
       "slug": "lisa-holloway",
