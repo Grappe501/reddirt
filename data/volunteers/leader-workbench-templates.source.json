@@ -673,6 +673,7 @@
         { "key": "election_info", "label": "Election Information Team" }
       ],
       "toolLinks": [
+        { "label": "Voter registration command", "href": "/election-plan/operators/voter-registration", "description": "Registration intake, drive cadence, Help 10 reporting, and county goals" },
         { "label": "Voter registration lane drill-down", "href": "/election-plan/operators/leaders/me/lane/voter-registration", "description": "Work completion, organizing, reporting, and tools" },
         { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county roles and registration priority counties" },
         { "label": "Students for Arkansas", "href": "/election-plan/workbenches/students-for-arkansas", "description": "Campus chapter registration coordination" },

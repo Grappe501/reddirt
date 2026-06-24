@@ -37,6 +37,17 @@ export function ElectionPlanOperatorsHubPanel() {
       </Link>
 
       <Link
+        href="/election-plan/operators/voter-registration"
+        className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">VR · registration</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">Voter registration command</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Registration intake, drive cadence, Help 10 reporting, and county goals — Shannie + VR lane leads.
+        </p>
+      </Link>
+
+      <Link
         href="/election-plan/operators/leaders"
         className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
       >

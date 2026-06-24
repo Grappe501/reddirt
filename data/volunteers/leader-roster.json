@@ -1201,6 +1201,12 @@
       "connections": [
         {
           "kind": "global",
+          "href": "/election-plan/operators/voter-registration",
+          "label": "Voter registration command",
+          "description": "Statewide registration intake, drives, Help 10, and county goals"
+        },
+        {
+          "kind": "global",
           "href": "/election-plan/leadership/county-coverage",
           "label": "County leadership coverage",
           "description": "Registration priority counties and open leader slots"

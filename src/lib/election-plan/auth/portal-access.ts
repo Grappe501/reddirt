@@ -11,7 +11,7 @@ import {
   getVolunteerHubPassword,
   verifyVolunteerSessionToken,
 } from "@/lib/volunteers/auth/session";
-import { canAccessVolunteerIntakeOps, getVolunteerLeaderBySlug, canAccessCommsCommand } from "@/lib/volunteers/leader-roster";
+import { canAccessVolunteerIntakeOps, getVolunteerLeaderBySlug, canAccessCommsCommand, canAccessVoterRegistrationCommand } from "@/lib/volunteers/leader-roster";
 
 export type PortalAuthMode = "election-plan" | "volunteer-leader" | "dev-open";
 
@@ -28,6 +28,11 @@ export function isVolunteerIntakeOpsPath(pathname: string): boolean {
 export function isCommsCommandOpsPath(pathname: string): boolean {
   const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
   return path === "/election-plan/operators/comms-command";
+}
+
+export function isVoterRegistrationOpsPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
+  return path === "/election-plan/operators/voter-registration";
 }
 
 export function isLeaderWorkbenchSignInPath(pathname: string): boolean {
@@ -55,7 +60,8 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
   const leaderSignIn = isLeaderWorkbenchSignInPath(pathname);
   const volunteerIntakeOps = isVolunteerIntakeOpsPath(pathname);
   const commsCommandOps = isCommsCommandOpsPath(pathname);
-  const operatorDashboard = volunteerIntakeOps || commsCommandOps;
+  const voterRegistrationOps = isVoterRegistrationOpsPath(pathname);
+  const operatorDashboard = volunteerIntakeOps || commsCommandOps || voterRegistrationOps;
 
   if (epSecret) {
     const epToken = jar.get(ELECTION_PLAN_SESSION_COOKIE)?.value;
@@ -72,6 +78,7 @@ export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode>
       const leader = getVolunteerLeaderBySlug(volPayload.leaderSlug);
       if (leader && volunteerIntakeOps && canAccessVolunteerIntakeOps(leader)) return "volunteer-leader";
       if (leader && commsCommandOps && canAccessCommsCommand(leader)) return "volunteer-leader";
+      if (leader && voterRegistrationOps && canAccessVoterRegistrationCommand(leader)) return "volunteer-leader";
     }
     redirect(`/election-plan/operators/leaders/sign-in?next=${encodeURIComponent(pathname)}`);
   }
