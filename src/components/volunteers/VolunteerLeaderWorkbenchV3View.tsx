@@ -120,6 +120,16 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
                 County Candidate Coordinator
               </p>
             ) : null}
+            {leader.workbenchTemplates?.includes("city_leader") ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-gold)]/20 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-gold)]/45">
+                City leader
+              </p>
+            ) : null}
+            {leader.workbenchTemplates?.includes("events_lead") ? (
+              <p className="mt-2 inline-block rounded-full bg-sky-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-sky-950 ring-1 ring-sky-400/40">
+                Events lead
+              </p>
+            ) : null}
             {leader.workbenchTemplates?.includes("event_planner") ? (
               <p className="mt-2 inline-block rounded-full bg-[var(--ep-blue)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-blue)] ring-1 ring-[var(--ep-blue)]/30">
                 Event planner

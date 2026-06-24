@@ -11,7 +11,9 @@ export type LeaderWorkbenchTemplateId =
   | "fundraising_field_leader"
   | "volunteer_leadership_team"
   | "county_candidate_coordinator"
-  | "cluster_leader";
+  | "cluster_leader"
+  | "city_leader"
+  | "events_lead";
 
 export type LeaderTemplateToolLink = {
   label: string;
@@ -87,6 +89,8 @@ export function resolveLeaderWorkbenchTemplates(leader: VolunteerLeader): Leader
     "volunteer_manager",
     "county_candidate_coordinator",
     "cluster_leader",
+    "city_leader",
+    "events_lead",
     "fundraising_field_leader",
     "event_planner",
     "fundraising_workbench",

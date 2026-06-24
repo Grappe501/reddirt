@@ -79,16 +79,46 @@
       "slug": "john-duke",
       "displayName": "John Duke",
       "initials": "JDU",
-      "teamLanes": ["events"],
+      "workbenchTier": "county",
+      "workbenchTemplates": ["events_lead"],
+      "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
       "connections": [
+        { "kind": "city", "citySlug": "sherwood", "label": "Sherwood community workbench" },
         { "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
         {
           "kind": "event",
           "workbenchSlug": "sherwood",
           "eventSlug": "grassroots-and-guitar-strings",
-          "label": "Grassroots & Guitar Strings event"
+          "label": "Grassroots & Guitar Strings — events coordinator"
+        },
+        { "kind": "program", "programSlug": "grassroots-guitar-strings", "label": "G&G Strings program hub" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/sherwood#events",
+          "label": "Sherwood events panel",
+          "description": "City workbench events lane and G&G Strings command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan?tab=fieldCalendar",
+          "label": "Field calendar",
+          "description": "Campaign stops and event coordination"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook — county-tier volunteer boards"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/jay-powell",
+          "label": "Jay Powell — Sherwood city leader",
+          "description": "G&G Strings co-chair and city workbench owner"
         }
-      ]
+      ],
+      "notes": "Events coordinator · G&G Strings co-chair with Jay Powell · volunteer boards through county tier."
     },
     {
       "slug": "leann-solice",
@@ -248,17 +278,45 @@
       "slug": "jay-powell",
       "displayName": "Jay Powell",
       "initials": "JPO",
-      "teamLanes": ["events", "fundraising", "county"],
+      "workbenchTier": "city",
+      "workbenchTemplates": ["city_leader"],
+      "teamLanes": ["county", "events", "fundraising", "operations", "voter-registration", "comms", "coalition"],
       "connections": [
         { "kind": "city", "citySlug": "sherwood", "label": "Sherwood community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
         {
           "kind": "event",
           "workbenchSlug": "sherwood",
           "eventSlug": "grassroots-and-guitar-strings",
-          "label": "Grassroots & Guitar Strings — co-lead"
+          "label": "Grassroots & Guitar Strings — co-chair"
         },
-        { "kind": "program", "programSlug": "grassroots-guitar-strings", "label": "G&G Strings program hub" }
-      ]
+        { "kind": "program", "programSlug": "grassroots-guitar-strings", "label": "G&G Strings program hub" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/sherwood",
+          "label": "Sherwood workbench command",
+          "description": "City leadership board — all lanes and nested volunteers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/sherwood",
+          "label": "Sherwood city strategy",
+          "description": "Priority city brief — vote target and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook rollup for Sherwood progress"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/john-duke",
+          "label": "John Duke — events coordinator",
+          "description": "G&G Strings co-chair and county-tier events lead"
+        }
+      ],
+      "notes": "Sherwood city leader · Grassroots & Guitar Strings co-chair with John Duke."
     },
     {
       "slug": "huffines",

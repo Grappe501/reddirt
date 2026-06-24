@@ -240,6 +240,58 @@
         { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county and city leader roles in your cluster" },
         { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign leaders across nested workbenches" }
       ]
+    },
+    "city_leader": {
+      "id": "city_leader",
+      "label": "City leader",
+      "description": "Community workbench owner — city leadership slots, volunteer pipeline, local events, and every nested volunteer workbench in your city.",
+      "sections": [
+        { "id": "community_workbench", "label": "Community workbench command", "description": "Own the city workbench — relationships, events, fundraising, registration, and field log for your city." },
+        { "id": "city_leadership_slots", "label": "City leadership slots", "description": "Fill open roles on the community workbench — events, comms, registration, and fundraising leads." },
+        { "id": "volunteer_pipeline", "label": "Volunteer pipeline", "description": "Website sign-up → activation → first assignment on your city workbench." },
+        { "id": "local_events", "label": "Local events calendar", "description": "City calendar, event command embeds, and post-event relational follow-up." },
+        { "id": "nested_volunteers", "label": "Nested volunteer workbenches", "description": "Volunteers under your city report through your command surface — upstream sees downstream KPIs." },
+        { "id": "county_rollup", "label": "County playbook link", "description": "Connect city progress to county playbook priorities and strike teams." }
+      ],
+      "pathways": [
+        { "key": "community_lead", "label": "Community Lead" },
+        { "key": "city_events_lead", "label": "City Events Lead" },
+        { "key": "events_lead", "label": "Events Lead" },
+        { "key": "volunteer_captain", "label": "Volunteer Captain" },
+        { "key": "fundraising_lead", "label": "Fundraising Lead" }
+      ],
+      "toolLinks": [
+        { "label": "County lane drill-down", "href": "/election-plan/operators/leaders/me/lane/county", "description": "County playbook, leadership slots, and weekly reporting" },
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "City events, Mobilize, and field calendar" },
+        { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches in your county" },
+        { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Assign city leadership slots from the roster" }
+      ]
+    },
+    "events_lead": {
+      "id": "events_lead",
+      "label": "Events Lead",
+      "description": "Events lane coordinator — Mobilize shifts, run of show, day-of ops, and event command workbench ownership across city and county workbenches.",
+      "sections": [
+        { "id": "event_coordination", "label": "Event coordination", "description": "Chair or coordinate community events — roles, timeline, and volunteer assignments." },
+        { "id": "mobilize_shifts", "label": "Mobilize & volunteer shifts", "description": "Live Mobilize page, shift assignments, and 48-hour lead time on new events." },
+        { "id": "run_of_show", "label": "Run of show", "description": "Day-of sequence, volunteer briefing, check-in, and escalation path." },
+        { "id": "event_command", "label": "Event command workbench", "description": "Dedicated event record — leadership slots and AAR separate from city board." },
+        { "id": "post_event", "label": "Post-event closeout", "description": "Thank-yous, Po5 commitments, and field log within 48 hours." },
+        { "id": "county_city_events", "label": "County & city event rollup", "description": "Coordinate events across connected city and county workbenches in your scope." }
+      ],
+      "pathways": [
+        { "key": "events_lead", "label": "Events Lead" },
+        { "key": "event_chair", "label": "Event Chair" },
+        { "key": "day_of_captain", "label": "Day-of Captain" },
+        { "key": "mobilize_coordinator", "label": "Mobilize Coordinator" },
+        { "key": "logistics_lead", "label": "Logistics Lead" }
+      ],
+      "toolLinks": [
+        { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Work completion, organizing, reporting, and tools" },
+        { "label": "Field calendar", "href": "/election-plan?tab=fieldCalendar", "description": "Campaign field calendar and stop command centers" },
+        { "label": "Mobilize rules", "href": "/election-plan/movement-infrastructure/mobilize-rules", "description": "When Mobilize is required for volunteer shifts" },
+        { "label": "Sherwood events panel", "href": "/election-plan/workbenches/sherwood#events", "description": "Grassroots & Guitar Strings and city event command" }
+      ]
     }
   }
 }
