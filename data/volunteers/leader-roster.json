@@ -95,6 +95,12 @@
         { "kind": "program", "programSlug": "grassroots-guitar-strings", "label": "G&G Strings program hub" },
         {
           "kind": "global",
+          "href": "/election-plan/operators/events-command",
+          "label": "Events & Mobilize command",
+          "description": "Upcoming stops, Mobilize gaps, and promotion readiness"
+        },
+        {
+          "kind": "global",
           "href": "/election-plan/workbenches/sherwood#events",
           "label": "Sherwood events panel",
           "description": "City workbench events lane and G&G Strings command"

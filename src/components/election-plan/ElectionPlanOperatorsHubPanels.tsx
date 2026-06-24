@@ -48,6 +48,17 @@ export function ElectionPlanOperatorsHubPanel() {
       </Link>
 
       <Link
+        href="/election-plan/operators/events-command"
+        className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
+      >
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Events · Mobilize</p>
+        <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">Events & Mobilize command</h2>
+        <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
+          Upcoming stops, Mobilize gaps, promotion readiness, and post-event closeout — John + events lane leads.
+        </p>
+      </Link>
+
+      <Link
         href="/election-plan/operators/leaders"
         className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
       >

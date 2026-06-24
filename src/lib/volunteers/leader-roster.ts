@@ -68,6 +68,17 @@ export function canAccessVoterRegistrationCommand(leader: VolunteerLeader): bool
   );
 }
 
+/** Events & Mobilize command — events lead, event planner, or command access. */
+export function canAccessEventsCommand(leader: VolunteerLeader): boolean {
+  return Boolean(
+    leader.workbenchTemplates?.includes("events_lead") ||
+      leader.workbenchTemplates?.includes("event_planner") ||
+      leader.commandAccess ||
+      leader.assistantCm ||
+      leader.acmWorkbenchFlex,
+  );
+}
+
 /** Flex leaders get every lane drill-down — role title stays open in UI. */
 export function getEffectiveTeamLanes(leader: VolunteerLeader): VolunteerTeamLaneId[] {
   if (hasFlexLeaderWorkbench(leader)) {

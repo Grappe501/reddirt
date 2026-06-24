@@ -8,6 +8,7 @@ const OPERATORS_SUBNAV = [
   { href: "/election-plan/operators/volunteer-intake", label: "Volunteer intake" },
   { href: "/election-plan/operators/comms-command", label: "Comms command" },
   { href: "/election-plan/operators/voter-registration", label: "Voter registration" },
+  { href: "/election-plan/operators/events-command", label: "Events & Mobilize" },
   { href: "/election-plan/operators/leaders", label: "Leader workbenches" },
   { href: "/election-plan/operators/leaders/me", label: "My workbench" },
   { href: "/election-plan/operators/field", label: "Field operators" },

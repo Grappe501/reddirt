@@ -109,6 +109,7 @@
         { "key": "fundraising_committee", "label": "Fundraising Committee Member" }
       ],
       "toolLinks": [
+        { "label": "Events & Mobilize command", "href": "/election-plan/operators/events-command", "description": "Upcoming stops, Mobilize gaps, promotion queue, and post-event closeout" },
         { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Work completion, organizing, reporting, and tools" },
         { "label": "Field calendar", "href": "/election-plan?tab=fieldCalendar", "description": "Campaign field calendar and stop command centers" },
         { "label": "Mobilize rules", "href": "/election-plan/movement-infrastructure/mobilize-rules", "description": "When Mobilize is required for volunteer shifts" }
@@ -341,6 +342,7 @@
         { "key": "logistics_lead", "label": "Logistics Lead" }
       ],
       "toolLinks": [
+        { "label": "Events & Mobilize command", "href": "/election-plan/operators/events-command", "description": "Upcoming stops, Mobilize gaps, promotion queue, and post-event closeout" },
         { "label": "Events lane drill-down", "href": "/election-plan/operators/leaders/me/lane/events", "description": "Work completion, organizing, reporting, and tools" },
         { "label": "Field calendar", "href": "/election-plan?tab=fieldCalendar", "description": "Campaign field calendar and stop command centers" },
         { "label": "Mobilize rules", "href": "/election-plan/movement-infrastructure/mobilize-rules", "description": "When Mobilize is required for volunteer shifts" },
