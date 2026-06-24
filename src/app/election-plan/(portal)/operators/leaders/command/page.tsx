@@ -3,8 +3,10 @@ import Link from "next/link";
 
 import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
 import { VolunteerCommandView } from "@/components/volunteers/VolunteerCommandView";
+import { OperationsCommandLadderPanel } from "@/components/volunteers/OperationsCommandLadderPanel";
 import { syncAllVolunteerLeaderOperators } from "@/lib/volunteers/ensure-leader-operator";
 import { loadCommandCoverageHeatmap } from "@/lib/volunteers/load-command-coverage";
+import { loadOperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
 
 export const metadata: Metadata = {
   title: "Leader command v3.4 | Operators",
@@ -13,7 +15,10 @@ export const metadata: Metadata = {
 
 export default async function LeaderWorkbenchCommandPage() {
   await syncAllVolunteerLeaderOperators().catch(() => 0);
-  const heatmap = await loadCommandCoverageHeatmap();
+  const [heatmap, operationsFeedbackRollup] = await Promise.all([
+    loadCommandCoverageHeatmap(),
+    loadOperationsFeedbackRollup(),
+  ]);
 
   return (
     <>
@@ -29,6 +34,9 @@ export default async function LeaderWorkbenchCommandPage() {
           </p>
           <div className="mt-6">
             <ElectionPlanOperatorsSubnav />
+          </div>
+          <div className="mt-6">
+            <OperationsCommandLadderPanel rollup={operationsFeedbackRollup} activeTierId="leader_command" />
           </div>
         </div>
       </div>

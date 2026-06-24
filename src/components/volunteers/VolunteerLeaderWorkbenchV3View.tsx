@@ -10,6 +10,7 @@ import { PowerOf5DashboardPanel } from "@/components/power-of-5/PowerOf5Dashboar
 import type { LeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-workbench-v3";
 import type { LeaderFieldLogContext } from "@/lib/volunteers/build-leader-field-log-context";
 import { LeaderLaneNavStrip } from "@/components/volunteers/LeaderLaneDrillDownView";
+import { OperationsFeedbackStrip } from "@/components/volunteers/OperationsFeedbackStrip";
 import { LEADER_WORKBENCH_SECTIONS } from "@/lib/volunteers/leader-workbench-sections";
 import {
   resolveLeaderCampaignPins,
@@ -42,6 +43,10 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
   const campaignPins = resolveLeaderCampaignPins(leader);
   const specialOutreach = resolveSpecialOutreachProgramForLeader(leader);
   const canLogField = Boolean(isSelf && fieldLog?.operatorReady);
+  const myFieldEntryCount =
+    fieldLog?.summary.entries.filter(
+      (e) => e.operatorInitials.toUpperCase() === leader.initials.toUpperCase(),
+    ).length ?? 0;
 
   return (
     <div className="ep-chapter-body px-6 py-10 lg:px-10">
@@ -95,6 +100,13 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
               </a>
             ) : null}
           </nav>
+          {isSelf ? (
+            <OperationsFeedbackStrip
+              leaderInitials={leader.initials}
+              fieldEntryCount={myFieldEntryCount}
+              className="mt-4"
+            />
+          ) : null}
         </aside>
 
         <div className="min-w-0 flex-1 space-y-10">

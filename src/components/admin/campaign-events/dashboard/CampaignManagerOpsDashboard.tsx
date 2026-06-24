@@ -25,6 +25,8 @@ import { CountyIntelligencePanel } from "@/components/admin/county-intelligence/
 import type { StatewideCountyIntelligence } from "@/lib/agents/county-intelligence/county-kpi-types";
 import { VolunteerIntelligencePanel } from "@/components/admin/volunteers/VolunteerIntelligencePanel";
 import type { VolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
+import { OperationsCommandLadderPanel } from "@/components/volunteers/OperationsCommandLadderPanel";
+import type { OperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
 
 const AUTOMATION_SCAFFOLDS = [
   { label: "Approval emails", status: "Scaffold — recipients configured", href: "/admin/campaign-events/ai-tools" },
@@ -46,9 +48,11 @@ export function CampaignManagerOpsDashboard({
   guidanceCards,
   adaptivePlan,
   volunteerBundle,
+  operationsFeedbackRollup,
 }: {
   countyStatewide?: StatewideCountyIntelligence;
   volunteerBundle?: VolunteerSystemBundle;
+  operationsFeedbackRollup?: OperationsFeedbackRollup;
   snapshot: CampaignEventsDashboardSnapshot;
   reimbursementSummaries?: ReimbursementMonthSummary[];
   financeSnapshot?: CampaignFinanceSnapshot;
@@ -71,6 +75,14 @@ export function CampaignManagerOpsDashboard({
       description="Event operations, travel ledger snapshot, approval queues, and calendar health for the March pilot period. Orchestration hub links — email send remains disabled."
     >
       <ApprovalRecipientsBanner compact />
+
+      {operationsFeedbackRollup ? (
+        <OperationsCommandLadderPanel
+          rollup={operationsFeedbackRollup}
+          activeTierId="campaign_manager"
+          surface="admin"
+        />
+      ) : null}
 
       {executiveSummary ? <ExecutiveSummaryStrip summary={executiveSummary} /> : null}
       {guidanceCards?.length ? <WorkflowGuidanceCards cards={guidanceCards} /> : null}

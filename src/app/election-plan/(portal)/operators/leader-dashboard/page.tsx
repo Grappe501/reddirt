@@ -3,10 +3,12 @@ import Link from "next/link";
 
 import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
 import { RealLeaderDashboard } from "@/components/volunteers/RealLeaderDashboard";
+import { OperationsCommandLadderPanel } from "@/components/volunteers/OperationsCommandLadderPanel";
 import {
   canAccessLeaderDashboardCommand,
 } from "@/lib/volunteers/leader-roster";
 import { loadRealLeaderDashboard } from "@/lib/volunteers/load-real-leader-dashboard";
+import { loadOperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
 import { tryLoadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
 import { requireElectionPlanPortalAccess } from "@/lib/election-plan/auth/portal-access";
 
@@ -27,6 +29,7 @@ export default async function LeaderDashboardOpsPage() {
     leader,
     includeCommandRollup,
   });
+  const operationsFeedbackRollup = await loadOperationsFeedbackRollup();
 
   return (
     <>
@@ -43,6 +46,9 @@ export default async function LeaderDashboardOpsPage() {
           </p>
           <div className="mt-6">
             <ElectionPlanOperatorsSubnav />
+          </div>
+          <div className="mt-6">
+            <OperationsCommandLadderPanel rollup={operationsFeedbackRollup} activeTierId="leader_workbench" />
           </div>
         </div>
       </div>

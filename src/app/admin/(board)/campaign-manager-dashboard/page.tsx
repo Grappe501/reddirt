@@ -12,6 +12,7 @@ import { detectWorkflowFriction } from "@/lib/agents/user-intelligence/workflow-
 import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/load-dashboard-navigation-bundle";
 import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
 import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
+import { loadOperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
 import { CampaignGuidanceStrip } from "@/components/admin/guidance/CampaignGuidanceStrip";
 
 export const dynamic = "force-dynamic";
@@ -21,7 +22,7 @@ type Props = { searchParams: Promise<{ month?: string }> };
 export default async function CampaignManagerDashboardPage({ searchParams }: Props) {
   const sp = await searchParams;
   const month = parseReviewMonth(sp.month);
-  const [{ snapshot }, reimbursementSummaries, financeSnapshot, navBundle] = await Promise.all([
+  const [{ snapshot }, reimbursementSummaries, financeSnapshot, navBundle, operationsFeedbackRollup] = await Promise.all([
     loadCampaignEventsDashboard(month),
     loadReimbursementMonthSummaries(),
     loadCampaignFinanceSnapshot(month),
@@ -30,6 +31,7 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
       pathname: "/admin/campaign-manager-dashboard",
       surface: "campaign_manager_dashboard",
     }),
+    loadOperationsFeedbackRollup(),
   ]);
   const nextActions = loadNextActionsForPage({
     role: "campaign_manager",
@@ -65,6 +67,7 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
         guidanceCards={navBundle.guidanceCards}
         adaptivePlan={navBundle.adaptivePlan}
         volunteerBundle={volunteerBundle}
+        operationsFeedbackRollup={operationsFeedbackRollup}
       />
     </AgentObservationTracker>
   );
