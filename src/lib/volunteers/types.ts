@@ -68,6 +68,8 @@ export type VolunteerLeader = {
   volunteerLeadershipTeam?: boolean;
   /** Interfaith communications liaison — Christian–Muslim bridge for campaign comms (Tom's role). */
   interfaithCommsLiaison?: boolean;
+  /** Nonprofit advisor — ACM-flex workbench access without assistant CM title in UI. */
+  nonprofitAdvisor?: boolean;
   /** High school senior — auto-includes youth + high school leadership templates. */
   highSchoolSenior?: boolean;
   /** City slugs for leadership-tracked special KPIs (e.g. Jacksonville 25% SOS lift). */

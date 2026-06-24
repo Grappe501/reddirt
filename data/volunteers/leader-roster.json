@@ -839,18 +839,58 @@
     },
     {
       "slug": "gail-choate",
-      "displayName": "Gail Choate",
+      "displayName": "Dr. Gail Choate",
       "initials": "GCH",
-      "teamLanes": ["coalition"],
+      "commandAccess": true,
+      "assistantCm": true,
+      "nonprofitAdvisor": true,
+      "workbenchTier": "assistant_campaign_manager",
+      "teamLanes": ["county", "events", "fundraising", "comms", "campus", "coalition", "voter-registration", "operations"],
       "connections": [
         {
           "kind": "global",
           "href": "/onboarding/power-of-5",
           "label": "Grassroots philosophy — Power of 5 walkthrough",
-          "description": "Statewide mentor resource"
+          "description": "Statewide mentor resource — pinned on all dashboards"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan",
+          "label": "Election Plan command",
+          "description": "Full campaign OS — counties, cities, workbenches, operators"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators",
+          "label": "Operators hub",
+          "description": "Leader workbenches, field operators, command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "All program and city workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Full roster heatmap and operator sync"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/field",
+          "label": "Field operators",
+          "description": "Operator whitelist and capabilities"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders",
+          "label": "All leader workbenches",
+          "description": "Every personal command surface statewide"
         }
       ],
-      "notes": "Statewide grassroots philosophy mentor — pinned on all dashboards."
+      "notes": "Nonprofit advisor — assistant CM flex access statewide. Grassroots philosophy mentor pinned on all dashboards."
     },
     {
       "slug": "ethan-christie-dunbar",

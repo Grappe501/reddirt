@@ -95,6 +95,11 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Pr
         <div className="min-w-0 flex-1 space-y-10">
           <header>
             <div className="ep-classification">Leadership workbench v3.4 · lanes + Power of 5</div>
+            {leader.nonprofitAdvisor ? (
+              <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-navy)]/25">
+                Nonprofit advisor · ACM access
+              </p>
+            ) : null}
             {leader.volunteerManagerInterim ? (
               <p className="mt-2 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-950 ring-1 ring-amber-400/60">
                 Interim Volunteer Manager
