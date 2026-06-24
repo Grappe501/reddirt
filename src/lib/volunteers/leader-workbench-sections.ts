@@ -10,6 +10,7 @@ export const LEADER_WORKBENCH_SECTIONS = [
   { id: "power-of-5", label: "Power of 5" },
   { id: "my-five", label: "My Five" },
   { id: "next-actions", label: "Next actions" },
+  { id: "my-work", label: "My work" },
   { id: "training", label: "Training & tools" },
 ] as const;
 

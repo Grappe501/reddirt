@@ -13,7 +13,7 @@ import { loadDashboardNavigationBundle } from "@/lib/dashboard-orchestration/loa
 import { composeCountyDashboardContext } from "@/lib/agents/county-intelligence/county-intelligence-engine";
 import { loadVolunteerSystemBundle } from "@/lib/campaign-events/volunteers/load-volunteer-bundle";
 import { loadOperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
-import { loadOpsMyWork } from "@/lib/volunteers/ops-work-items";
+import { loadCmRoleInbox } from "@/lib/volunteers/ops-work-items";
 import { CampaignGuidanceStrip } from "@/components/admin/guidance/CampaignGuidanceStrip";
 
 export const dynamic = "force-dynamic";
@@ -34,7 +34,7 @@ export default async function CampaignManagerDashboardPage({ searchParams }: Pro
       surface: "campaign_manager_dashboard",
     }),
     loadOperationsFeedbackRollup(),
-    loadOpsMyWork({ visibility: ["admin"], limit: 8 }),
+    loadCmRoleInbox(8),
   ]);
   const nextActions = loadNextActionsForPage({
     role: "campaign_manager",

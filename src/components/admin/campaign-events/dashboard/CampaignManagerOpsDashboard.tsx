@@ -95,6 +95,9 @@ export function CampaignManagerOpsDashboard({
           surface="admin"
           compact
           returnTo="/admin/campaign-manager-dashboard"
+          title="CM inbox preview"
+          subtitle=""
+          viewAllHref="/admin/my-work"
         />
       ) : null}
 

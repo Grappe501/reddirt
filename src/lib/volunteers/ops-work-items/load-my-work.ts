@@ -5,6 +5,14 @@ import { isDatabaseConfigured } from "@/lib/env";
 
 import { OPEN_OPS_TASK_STATUSES } from "./signal-task-definitions";
 
+export type OpsWorkItemKind =
+  | "task"
+  | "intake_escalation"
+  | "follow_up"
+  | "po5_gap"
+  | "blocked_task"
+  | "overdue_task";
+
 export type OpsWorkItemRow = {
   id: string;
   title: string;
@@ -17,6 +25,8 @@ export type OpsWorkItemRow = {
   opsVisibility: CampaignTaskOpsVisibility | null;
   signalId: string | null;
   href: string;
+  itemKind: OpsWorkItemKind;
+  completable: boolean;
 };
 
 export type OpsMyWorkPayload = {
@@ -41,14 +51,18 @@ export async function loadOpsMyWork(input: {
   const visibilities = input.visibility ?? ["operators", "admin", "leader"];
 
   try {
-    const where = {
-      status: { in: [...OPEN_OPS_TASK_STATUSES] },
-      opsSourceSignalId: { not: null },
-      OR: [
-        { opsVisibility: { in: visibilities } },
-        ...(input.leaderSlug ? [{ leaderSlug: input.leaderSlug }] : []),
-      ],
-    };
+    const where = input.leaderSlug
+      ? {
+          status: { in: [...OPEN_OPS_TASK_STATUSES] },
+          leaderSlug: input.leaderSlug,
+        }
+      : {
+          status: { in: [...OPEN_OPS_TASK_STATUSES] },
+          OR: [
+            { opsSourceSignalId: { not: null } },
+            { opsVisibility: { in: visibilities } },
+          ],
+        };
 
     const rows = await prisma.campaignTask.findMany({
       where,
@@ -81,6 +95,8 @@ export async function loadOpsMyWork(input: {
         opsVisibility: r.opsVisibility,
         signalId: r.opsSourceSignalId,
         href: "",
+        itemKind: "task",
+        completable: true,
       };
       row.href = taskHref(row);
       return row;

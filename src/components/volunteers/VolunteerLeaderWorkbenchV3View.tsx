@@ -12,8 +12,10 @@ import type { LeaderFieldLogContext } from "@/lib/volunteers/build-leader-field-
 import type { LeaderContactSpineSummary } from "@/lib/volunteers/contact-spine";
 import { LeaderLaneNavStrip } from "@/components/volunteers/LeaderLaneDrillDownView";
 import { LeaderContactSpinePanel } from "@/components/volunteers/LeaderContactSpinePanel";
+import { LeaderMyWorkPanel } from "@/components/volunteers/LeaderMyWorkPanel";
 import { OperationsFeedbackStrip } from "@/components/volunteers/OperationsFeedbackStrip";
 import { LEADER_WORKBENCH_SECTIONS } from "@/lib/volunteers/leader-workbench-sections";
+import type { RoleInboxPayload } from "@/lib/volunteers/ops-work-items";
 import {
   resolveLeaderCampaignPins,
   resolveLeaderPersonalLinks,
@@ -37,9 +39,18 @@ type Props = {
   isSelf?: boolean;
   fieldLog?: LeaderFieldLogContext | null;
   contactSpine?: LeaderContactSpineSummary | null;
+  myWork?: RoleInboxPayload | null;
+  myWorkStatus?: string | null;
 };
 
-export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog, contactSpine }: Props) {
+export function VolunteerLeaderWorkbenchV3View({
+  payload,
+  isSelf,
+  fieldLog,
+  contactSpine,
+  myWork,
+  myWorkStatus,
+}: Props) {
   const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live, roster, hierarchy, leadTemplates, specialKpis } =
     payload;
   const areaLinks = resolveLeaderPersonalLinks(leader);
@@ -500,6 +511,16 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog, cont
               ))}
             </ul>
           </Section>
+
+          {isSelf && myWork ? (
+            <Section id="my-work" title="My work">
+              <LeaderMyWorkPanel
+                payload={myWork}
+                leaderName={leader.displayName}
+                statusMessage={myWorkStatus}
+              />
+            </Section>
+          ) : null}
 
           <Section id="training" title="Training & tools">
             <ul className="grid gap-3 sm:grid-cols-2">
