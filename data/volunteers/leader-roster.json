@@ -1822,6 +1822,49 @@
         }
       ],
       "notes": "Benton County chair — Northwest Arkansas."
+    },
+    {
+      "slug": "bishop-arnol",
+      "displayName": "Dr. Bishop Arnol",
+      "initials": "BAR",
+      "workbenchTier": "city",
+      "workbenchTemplates": ["city_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "city", "citySlug": "camden", "label": "Camden community workbench" },
+        { "kind": "county", "county": "Ouachita", "countySlug": "ouachita", "label": "Ouachita County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/camden",
+          "label": "Camden workbench command",
+          "description": "City leadership board — all lanes and nested volunteers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/camden",
+          "label": "Camden city strategy",
+          "description": "Ouachita County seat — Democratic recovery hub and local playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/ouachita",
+          "label": "Ouachita County command",
+          "description": "County playbook rollup for Camden progress"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/southwest-arkansas",
+          "label": "Southwest Arkansas region",
+          "description": "Camden in the southwest campaign cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders on the Camden workbench"
+        }
+      ],
+      "notes": "Camden city chair — Ouachita County, South Arkansas."
     }
   ]
 }
