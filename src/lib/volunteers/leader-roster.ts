@@ -13,6 +13,11 @@ export function getVolunteerLeadersForSignIn(): VolunteerLeader[] {
   return roster.leaders.filter((l) => !l.leaderRosterSignInHidden);
 }
 
+/** Sign-in + operators dropdown — everyone with a built workbench (excludes open slots). */
+export function getVolunteerLeadersForDashboardPicker(): VolunteerLeader[] {
+  return roster.leaders.filter((l) => leaderHasOperatorDashboard(l) && !l.leaderRosterSignInHidden);
+}
+
 export function getVolunteerLeaderBySlug(slug: string): VolunteerLeader | undefined {
   return roster.leaders.find((l) => l.slug === slug);
 }
@@ -24,6 +29,50 @@ export function getVolunteerLeaderByInitials(initials: string): VolunteerLeader 
 
 export function getCommandAccessLeaders(): VolunteerLeader[] {
   return roster.leaders.filter((l) => l.commandAccess);
+}
+
+/** Roster entry with sign-in + personal operator workbench (excludes open placeholder slots). */
+export function leaderHasOperatorDashboard(leader: VolunteerLeader): boolean {
+  if (leader.leaderRosterSignInHidden) return false;
+  return Boolean(
+    leader.workbenchTier ||
+      (leader.workbenchTemplates?.length ?? 0) > 0 ||
+      leader.commandAccess ||
+      leader.countyBoardMember ||
+      leader.volunteerBoardMember ||
+      leader.campusTeamCoChair ||
+      leader.grassrootsFundraisingLead ||
+      leader.volunteerLeadershipTeam ||
+      leader.volunteerManagerInterim ||
+      leader.interfaithCommsLiaison ||
+      leader.acmWorkbenchFlex ||
+      leader.nonprofitAdvisor ||
+      leader.specialOutreachProgramSlug ||
+      leader.specialKpiCitySlugs?.length ||
+      (leader.teamLanes.length > 0 && leader.connections.length > 0),
+  );
+}
+
+export type OperatorsDashboardLeader = {
+  slug: string;
+  displayName: string;
+  initials: string;
+  workbenchTier?: VolunteerLeader["workbenchTier"];
+  href: string;
+};
+
+/** Sorted leader shortcuts for Operators nav — everyone with a built workbench surface. */
+export function getOperatorsDashboardLeaders(): OperatorsDashboardLeader[] {
+  return roster.leaders
+    .filter(leaderHasOperatorDashboard)
+    .map((leader) => ({
+      slug: leader.slug,
+      displayName: leader.displayName,
+      initials: leader.initials,
+      workbenchTier: leader.workbenchTier,
+      href: `/election-plan/operators/leaders/${leader.slug}`,
+    }))
+    .sort((a, b) => a.displayName.localeCompare(b.displayName, "en", { sensitivity: "base" }));
 }
 
 /** Field roster table + sign-in list — excludes HQ-only command logins unless flex workbench. */
@@ -161,7 +210,7 @@ export const CAMPAIGN_WORKBENCH_PINS = [
   {
     href: "/election-plan/operators/leaders/me",
     label: "My workbench",
-    description: "Full v3.4 workbench — lanes, field log, templates, and Power of 5 roster editing.",
+    description: "Full v4.0 workbench — work pages, lanes, field log, templates, and Power of 5 roster editing.",
   },
   {
     href: "/election-plan/power-of-5/command-center",

@@ -1,5 +1,9 @@
 import { redirect } from "next/navigation";
 
-export default function VolunteersLegacyRootPage() {
-  redirect("/election-plan/operators/leaders/me");
+import { tryLoadVolunteerBoardSession } from "@/lib/volunteers/board/load-volunteer-board";
+
+export default async function VolunteersLegacyRootPage() {
+  const session = await tryLoadVolunteerBoardSession();
+  if (session) redirect("/volunteers/me");
+  redirect("/volunteers/sign-in");
 }

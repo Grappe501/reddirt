@@ -38,7 +38,7 @@ export function VolunteerCommandView({ rows, openLeaderTasksBySlug = {}, statusM
   return (
     <div className="ep-chapter-body px-6 py-10 lg:px-10">
       <div className="mx-auto max-w-6xl">
-        <div className="ep-classification">Command roster v3.4 · live coverage</div>
+        <div className="ep-classification">Command roster v4.0 · live coverage</div>
         <h2 className="mt-3 font-heading text-3xl font-bold text-[var(--ep-navy)]">Volunteer leader roster</h2>
         <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">
           Field log quantities and leadership fills from live records — assign coaching tasks to quiet leaders from
@@ -124,7 +124,7 @@ export function VolunteerCommandView({ rows, openLeaderTasksBySlug = {}, statusM
                     </td>
                     <td className="px-4 py-3">
                       <Link href={row.workbenchHref} className="text-xs font-semibold text-[var(--ep-blue)] hover:underline">
-                        v3.4 →
+                        v4.0 →
                       </Link>
                     </td>
                   </tr>

@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { VolunteerBoardProvisionPanel } from "@/components/volunteers/VolunteerBoardProvisionPanel";
+
 import {
   markVolunteerIntakeAwaitingInfoAction,
   markVolunteerIntakeDeclinedAction,
@@ -393,6 +395,8 @@ export function VolunteerIntakeActivationDashboard({
 
         {selected ? <DetailPanel row={selected} placementLeaders={placementLeaders} /> : null}
 
+        <VolunteerBoardProvisionPanel />
+
         <section className="mt-10 rounded-xl border border-dashed border-[var(--ep-navy)]/20 bg-[var(--ep-cream)]/50 p-6">
           <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">Activation playbook</h2>
           <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-[var(--ep-navy-muted)]">
@@ -402,6 +406,10 @@ export function VolunteerIntakeActivationDashboard({
               flagged).
             </li>
             <li>Use <strong>Place & onboard</strong> to create CRM contact and team roster in one step.</li>
+            <li>
+              Roster volunteers get a personal board at <strong>/volunteers/sign-in</strong> — onboarding captures
+              interests, location, email, and text preferences.
+            </li>
             <li>Lifecycle transitions auto-create tasks in <Link href="/election-plan/operators/my-work" className="text-[var(--ep-blue)] underline">My Work</Link>.</li>
             <li>Paper signup sheets use the separate admin OCR path — link above when applicable.</li>
           </ol>

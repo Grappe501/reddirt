@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { LeaderSignInInitialsPicker } from "@/components/volunteers/LeaderSignInInitialsPicker";
 import { EpButton } from "@/components/election-plan/ui/EpButton";
 import { volunteerHubLoginAction } from "@/lib/volunteers/auth/volunteer-auth-actions";
-import { getVolunteerLeadersForSignIn } from "@/lib/volunteers/leader-roster";
+import { getVolunteerLeadersForDashboardPicker } from "@/lib/volunteers/leader-roster";
 import { getVolunteerHubPassword } from "@/lib/volunteers/auth/session";
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ type Props = { searchParams: Promise<{ error?: string; next?: string }> };
 export default async function LeaderWorkbenchSignInPage({ searchParams }: Props) {
   const sp = await searchParams;
   const configured = Boolean(getVolunteerHubPassword());
-  const roster = getVolunteerLeadersForSignIn();
+  const roster = getVolunteerLeadersForDashboardPicker();
   const nextPath = sp.next?.trim();
   const redirectTo =
     nextPath &&

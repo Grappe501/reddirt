@@ -135,7 +135,7 @@ export function LeaderLaneDrillDownView({ leader, page, isSelf }: Props) {
           ← Back to workbench
         </Link>
 
-        <div className="ep-classification mt-4">Lane drill-down v3.4 · {page.label}</div>
+        <div className="ep-classification mt-4">Lane drill-down v4.0 · {page.label}</div>
         <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{page.label} lane</h1>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--ep-navy)]">{page.tagline}</p>
         <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">

@@ -97,7 +97,7 @@ function printManualSteps(siteName) {
   console.log("  1. Netlify UI → Site configuration → Build & deploy → Build plugins");
   console.log('  2. Find "@netlify/plugin-nextjs" → Disable');
   console.log("  3. Also check **Build settings → Runtime** → **Remove** pinned Next.js runtime, save, re-select Next.js, save");
-  console.log("  4. Ensure netlify.toml does NOT declare [[plugins]] @netlify/plugin-nextjs");
+  console.log('  4. Keep [[plugins]] package = "@netlify/plugin-nextjs" (unpinned) first in netlify.toml — do NOT UI-pin an old version');
   console.log("  5. Deploys → Clear cache and deploy site");
   console.log("");
 }

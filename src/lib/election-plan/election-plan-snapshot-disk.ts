@@ -3,6 +3,7 @@ import path from "node:path";
 
 import { mergeBonusCitiesIntoSnapshot } from "./load-bonus-city-workbenches";
 import { buildWarRoomFundraisingFromTracker } from "./load-fundraising-tracker";
+import { mergeWarRoomVolunteerLeaders } from "./merge-war-room-volunteer-leaders";
 import type { ElectionPlanWorkbenchSnapshot } from "./types";
 
 /** Script-safe snapshot path (no `server-only` — usable from tsx/CLI). */
@@ -22,12 +23,17 @@ export function loadElectionPlanSnapshotFromDisk(): ElectionPlanWorkbenchSnapsho
   }
   const raw = readFileSync(ELECTION_PLAN_SNAPSHOT_PATH, "utf8");
   const parsed = JSON.parse(raw) as ElectionPlanWorkbenchSnapshot;
+  const volunteerMerge = mergeWarRoomVolunteerLeaders(parsed.warRoom.volunteerLeaders ?? []);
   cached = {
     ...parsed,
     cities: mergeBonusCitiesIntoSnapshot(parsed.cities ?? []),
     warRoom: {
       ...parsed.warRoom,
       ...buildWarRoomFundraisingFromTracker(),
+      volunteerLeaders: volunteerMerge.leaders,
+      volunteerLeadersCurrent: volunteerMerge.totalCount,
+      volunteerLeadersInviteCount: volunteerMerge.inviteListCount,
+      volunteerLeadersWorkbenchCount: volunteerMerge.operatorWorkbenchCount,
     },
   };
   return cached;

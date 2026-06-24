@@ -103,6 +103,18 @@ export type VolunteerLeader = {
   clusterInsightSlug?: string;
   /** City slugs for leadership-tracked special KPIs (e.g. Jacksonville 25% SOS lift). */
   specialKpiCitySlugs?: string[];
+  /**
+   * Where this leader lives / organizes from — used for city + county playbook drill-downs.
+   * When omitted, inferred from first city/county connection until Steve confirms.
+   */
+  residence?: {
+    citySlug?: string;
+    cityLabel?: string;
+    countyName: string;
+    countySlug?: string;
+    /** True once HQ confirms residence (not inferred from role connections). */
+    confirmed?: boolean;
+  };
   teamLanes: VolunteerTeamLaneId[];
   connections: LeaderConnection[];
   notes?: string;

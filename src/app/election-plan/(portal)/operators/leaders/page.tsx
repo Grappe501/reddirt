@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ElectionPlanLeaderRosterGrid } from "@/components/election-plan/ElectionPlanOperatorsHubPanels";
+import { ElectionPlanOperatorsLeaderDirectory } from "@/components/election-plan/ElectionPlanOperatorsLeaderDirectory";
 import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
 
 export const metadata = {
@@ -25,8 +25,8 @@ export default function ElectionPlanLeaderWorkbenchesIndexPage() {
           <div className="mt-6">
             <ElectionPlanOperatorsSubnav />
           </div>
-          <div className="mt-8">
-            <ElectionPlanLeaderRosterGrid />
+          <div className="mt-6">
+            <ElectionPlanOperatorsLeaderDirectory />
           </div>
         </div>
       </div>

@@ -3,6 +3,8 @@
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
 
+import { warRoomVolunteerLeaderSubtitle } from "@/lib/election-plan/merge-war-room-volunteer-leaders";
+
 import { WarRoomFundraisingHeaderStat } from "@/components/election-plan/CampaignFundraisingProgressCard";
 import { JacksonvilleFestivilleGoalsCard } from "@/components/election-plan/JacksonvilleFestivilleGoalsCard";
 import { SpecialKpiGoalsStrip } from "@/components/election-plan/SpecialKpiGoalsStrip";
@@ -81,6 +83,8 @@ function VolunteerLeaderRoster({
     locationHint: string | null;
     inviteStatus: string;
     confirmedFoundingTeam: boolean;
+    workbenchHref?: string;
+    initials?: string;
   }>;
   subtitle?: string;
 }) {
@@ -90,20 +94,36 @@ function VolunteerLeaderRoster({
   return (
     <div>
       {subtitle ? <p className="mb-3 text-xs text-[var(--ep-navy-muted)]">{subtitle}</p> : null}
-      <ul className="max-h-80 space-y-2 overflow-y-auto text-sm">
+      <ul className="max-h-96 space-y-2 overflow-y-auto text-sm">
         {leaders.map((v) => (
           <li
             key={v.id}
             className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5 border-b border-[var(--ep-border)] pb-2 last:border-0"
           >
-            <span className="font-medium text-[var(--ep-navy)]">{v.name}</span>
+            <span className="inline-flex flex-wrap items-center gap-2">
+              {v.workbenchHref ? (
+                <Link href={v.workbenchHref} className="font-medium text-[var(--ep-blue)] hover:underline">
+                  {v.name}
+                </Link>
+              ) : (
+                <span className="font-medium text-[var(--ep-navy)]">{v.name}</span>
+              )}
+              {v.initials ? (
+                <span className="rounded bg-[var(--ep-cream)] px-1.5 py-0.5 font-mono text-[10px] font-bold tracking-wide text-[var(--ep-blue)]">
+                  {v.initials}
+                </span>
+              ) : null}
+            </span>
             {v.locationHint ? (
               <span className="text-xs text-[var(--ep-navy-muted)]">
                 {v.locationHint}
                 {v.confirmedFoundingTeam ? " · founding team" : ""}
+                {v.inviteStatus === "workbench" ? " · workbench" : ""}
               </span>
             ) : v.confirmedFoundingTeam ? (
               <span className="text-xs text-[var(--ep-navy-muted)]">founding team</span>
+            ) : v.inviteStatus === "workbench" ? (
+              <span className="text-xs text-[var(--ep-navy-muted)]">operator workbench</span>
             ) : null}
           </li>
         ))}
@@ -240,7 +260,16 @@ export function WarRoomPanel({ data }: Props) {
         >
           <VolunteerLeaderRoster
             leaders={w.volunteerLeaders}
-            subtitle={`${w.volunteerLeaders.length} on June 28 invite list · ${w.volunteerLeadersCurrent} total campaign signups`}
+            subtitle={warRoomVolunteerLeaderSubtitle({
+              leaders: w.volunteerLeaders,
+              inviteListCount:
+                w.volunteerLeadersInviteCount ??
+                w.volunteerLeaders.filter((l) => l.inviteStatus !== "workbench").length,
+              operatorWorkbenchCount:
+                w.volunteerLeadersWorkbenchCount ??
+                w.volunteerLeaders.filter((l) => l.workbenchHref).length,
+              totalCount: w.volunteerLeadersCurrent,
+            })}
           />
         </ProgressStat>
         <Link

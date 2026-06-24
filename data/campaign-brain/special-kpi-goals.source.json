@@ -52,6 +52,22 @@
       "planningTurnoutBasis": "2022 midterm SOS total (3,093 ballots)",
       "baselineSource": "Arkansas Secretary of State · Searcy County · 2022 Secretary of State race (454 D · 2,639 R · 3,093 total).",
       "href": "/election-plan/counties/searcy"
+    },
+    {
+      "id": "england-democrats-sos-lift-20",
+      "scope": "city",
+      "locationSlug": "england",
+      "locationName": "England",
+      "eventLabel": "England County Democrats · Lonoke County",
+      "label": "20% SOS lift vs 2022 — England Democrats board",
+      "goalType": "sos_lift_pct",
+      "description": "England County Democrats turnout and volunteer KPI — increase Secretary of State votes in England by 20% over 2022 midterm performance.",
+      "baseline2022SosVotes": 312,
+      "targetIncreasePct": 20,
+      "targetSosVotes": 374,
+      "currentSosVotes": 0,
+      "baselineSource": "Estimated from Lonoke County 2022 SOS Democratic votes × England population share. Bob Edwards — England County Democrats chair.",
+      "href": "/election-plan/cities/england"
     }
   ]
 }

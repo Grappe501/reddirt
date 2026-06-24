@@ -38,8 +38,8 @@
   NPM_CONFIG_PRODUCTION = "false"
   # NODE_OPTIONS heap is set only in scripts/netlify-build.sh during `next build` —
   # do NOT declare here; Netlify UI vars scoped to All/Functions break Lambda deploy.
-  # Emergency internal launch — opposition + debate prep workbench only (banner + skip county rollups)
-  NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE = "opposition_debate"
+  # Kelly SOS full ops — admin + election-plan + volunteer boards (not opposition-only strip)
+  NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE = "kelly_sos_ops"
   # County clerks tour — clerk-first nav + hub copy (see debateAudienceMode.ts)
   NEXT_PUBLIC_DEBATE_PRIMARY_AUDIENCE = "county_clerks"
   # Candidate iPad 11" — bottom nav, touch targets, copilot sheet (set false on staff-only builds)
@@ -86,6 +86,14 @@
     "!data/simulations/**",
     "!data/intelligence/briefs/**",
     "!data/intelligence/backups/**",
+    "!data/campaign-brain/city-intelligence-profiles.json",
+    "!data/campaign-brain/kelly-voter-audience-models.json",
+    "!data/campaign-brain/media-outreach/**",
+    "!data/campaign-brain/fairs-festivals/**",
+    "!data/campaign-brain/calendar-settlement/**",
+    "!data/campaign-brain/county-coverage/**",
+    "!data/campaign-brain/executive-book/**",
+    "!data/campaign-brain/operations-lock/**",
     "!data/owned-campaign-media/**",
     "!public/**",
     "!.tmp-heic-preview/**",

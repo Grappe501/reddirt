@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { laneId } = await params;
   const laneLabel = isValidLeaderLane(laneId) ? laneLabelForId(laneId) : "Lane";
   return {
-    title: `My ${laneLabel} lane · v3.4`,
+    title: `My ${laneLabel} lane · v4.0`,
     robots: { index: false, follow: false },
   };
 }

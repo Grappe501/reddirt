@@ -80,7 +80,7 @@ export const OPERATIONS_COMMAND_STACK: OperationsCommandTier[] = [
     hierarchyTier: "city",
     label: "Leader workbench",
     roleLabel: "City · personal command",
-    description: "v3.4 workbench — My Five, team roster, field log, lane drill-downs, templates.",
+    description: "v4.0 workbench — My Five, team roster, field log, lane drill-downs, work pages, templates.",
     dashboardHref: "/election-plan/operators/leaders/me",
     feedbackReceives: "My Five mapping, follow-up debt, open leadership slots, live KPIs",
     commandsDown: "Personal next actions, lane checklists, geographic workbench edits",

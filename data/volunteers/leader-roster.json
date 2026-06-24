@@ -390,23 +390,63 @@
       "slug": "kate-stebbins",
       "displayName": "Kate Stebbins",
       "initials": "KST",
-      "teamLanes": ["events"],
-      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock events lane" }]
+      "workbenchTemplates": ["events_lead"],
+      "teamLanes": ["events", "operations"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock events lane" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/little-rock#events",
+          "label": "Little Rock events board",
+          "description": "City calendar and event leadership — supports city lead"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/stephen-person",
+          "label": "Stephen Person — city lead",
+          "description": "Little Rock city lead — coordinate events lane"
+        }
+      ],
+      "notes": "Little Rock events lane lead — supports Stephen Person and Kevin Heifner city command."
     },
     {
-      "slug": "nicole-luke",
-      "displayName": "Nicole & Luke",
+      "slug": "nicole-disiderio-luke",
+      "displayName": "Nicole Disiderio & Luke",
       "initials": "NLU",
       "isCouple": true,
-      "teamLanes": ["events", "comms"],
+      "workbenchTier": "volunteer",
+      "workbenchTemplates": ["social_media_influencer"],
+      "teamLanes": ["comms", "events"],
       "connections": [
+        { "kind": "program", "programSlug": "content-studio", "label": "Content Studio — photography & video" },
+        { "kind": "program", "programSlug": "story-corps", "label": "Story Corps" },
         {
           "kind": "event",
           "workbenchSlug": "sherwood",
           "eventSlug": "grassroots-and-guitar-strings",
           "label": "Grassroots & Guitar Strings — photography"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/content-studio",
+          "label": "Content Studio command",
+          "description": "Photography, video, and influencer content pipeline"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/social-media-operating-system",
+          "label": "Social Media Operating System",
+          "description": "Content doctrine — SMOS and narrative amplification"
+        },
+        {
+          "kind": "global",
+          "href": "/volunteers/sign-in",
+          "label": "Volunteer personal board",
+          "description": "Personal volunteer dashboard and onboarding"
         }
-      ]
+      ],
+      "notes": "Volunteers · photographer / video / influencer workbench — content studio and event coverage."
     },
     {
       "slug": "xav-mclennon",
@@ -802,7 +842,7 @@
         },
         {
           "kind": "global",
-          "href": "/election-plan/counties",
+          "href": "/election-plan/leadership/county-coverage",
           "label": "County playbooks",
           "description": "Recruit county leaders across the north_central cluster"
         },
@@ -1053,8 +1093,33 @@
       "slug": "trenika-mccoy",
       "displayName": "Dr. Trenika McCoy",
       "initials": "TMC",
-      "teamLanes": ["coalition", "events"],
-      "connections": [{ "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville — faith outreach" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["special_outreach_lead"],
+      "teamLanes": ["coalition", "events", "comms"],
+      "connections": [
+        { "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "program", "programSlug": "faith-communities", "label": "Faith Communities workbench — chair" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/faith-communities",
+          "label": "Faith Communities workbench",
+          "description": "Faith outreach & Prayer Team command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/faith-outreach-lead",
+          "label": "Faith outreach lead academy",
+          "description": "Big Table doctrine, listening sessions, coalition tracker"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Placement and faith-community volunteer coordination"
+        }
+      ],
+      "notes": "Faith outreach & Prayer Team chair — statewide faith community listening, validator pathways, and prayer team coordination."
     },
     {
       "slug": "jasmine-serrano",
@@ -1320,8 +1385,50 @@
       "slug": "kevin-heifner",
       "displayName": "Kevin Heifner",
       "initials": "KHE",
-      "teamLanes": ["county", "operations"],
-      "connections": [{ "kind": "city", "citySlug": "little-rock", "label": "Little Rock lead workbench" }]
+      "workbenchTier": "city",
+      "workbenchTemplates": ["city_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/little-rock",
+          "label": "Little Rock workbench command",
+          "description": "City leadership board — all lanes and nested volunteers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/little-rock",
+          "label": "Little Rock city strategy",
+          "description": "State capital — Pulaski County hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook rollup for Little Rock progress"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/central-metro",
+          "label": "Central Metro region",
+          "description": "Little Rock — Central Arkansas metro cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/stephen-person",
+          "label": "Stephen Person — city lead partner",
+          "description": "Co-lead on Little Rock city command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders on the Little Rock workbench"
+        }
+      ],
+      "notes": "Little Rock city lead — co-lead with Stephen Person on Pulaski capital workbench."
     },
     {
       "slug": "terry-coleman",
@@ -1414,8 +1521,38 @@
       "slug": "roosevelt-williams",
       "displayName": "Roosevelt Williams III",
       "initials": "RWI",
-      "teamLanes": ["county"],
-      "connections": [{ "kind": "county", "county": "Jefferson", "countySlug": "jefferson", "label": "Jefferson County playbook" }]
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Jefferson", "countySlug": "jefferson", "label": "Jefferson County playbook" },
+        { "kind": "city", "citySlug": "pine-bluff", "label": "Pine Bluff community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/jefferson",
+          "label": "Jefferson County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/pine-bluff",
+          "label": "Pine Bluff workbench command",
+          "description": "Jefferson County seat — community workbench leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Jefferson County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Jefferson County workbenches"
+        }
+      ],
+      "notes": "Jefferson County chair — Pine Bluff metro, Delta base turnout, and county volunteer board."
     },
     {
       "slug": "gail-choate",
@@ -1812,7 +1949,7 @@
         },
         {
           "kind": "global",
-          "href": "/election-plan/counties",
+          "href": "/election-plan/leadership/county-coverage",
           "label": "County playbooks",
           "description": "Add county connections as your program geography is defined"
         },
@@ -2287,7 +2424,7 @@
         },
         {
           "kind": "global",
-          "href": "/election-plan/counties",
+          "href": "/election-plan/leadership/county-coverage",
           "label": "County playbooks",
           "description": "Recruit teacher volunteers onto every county workbench"
         },
@@ -2335,6 +2472,666 @@
         }
       ],
       "notes": "Arkansas Education Association chair — Kelly endorsement · statewide educator volunteer recruitment, fundraising, and finance."
+    },
+    {
+      "slug": "linda-johnson",
+      "displayName": "Linda Johnson",
+      "initials": "LJO",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Polk", "countySlug": "polk", "label": "Polk County playbook" },
+        { "kind": "city", "citySlug": "mena", "label": "Mena community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/polk",
+          "label": "Polk County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/mena",
+          "label": "Mena workbench command",
+          "description": "Polk County seat — community workbench leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Polk County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Polk County workbenches"
+        }
+      ],
+      "notes": "Polk County chair — Mena anchor, Ouachita National Forest region."
+    },
+    {
+      "slug": "ryan-carter",
+      "displayName": "Ryan Carter",
+      "initials": "RCA",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Clay", "countySlug": "clay", "label": "Clay County playbook" },
+        { "kind": "city", "citySlug": "piggott", "label": "Piggott community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/clay",
+          "label": "Clay County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/piggott",
+          "label": "Piggott workbench command",
+          "description": "Clay County seat — community workbench leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Clay County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Clay County workbenches"
+        }
+      ],
+      "notes": "Clay County chair — Northeast Arkansas, Piggott anchor."
+    },
+    {
+      "slug": "sandy-meier",
+      "displayName": "Sandy Meier",
+      "initials": "SME",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Izard", "countySlug": "izard", "label": "Izard County playbook" },
+        { "kind": "city", "citySlug": "melbourne", "label": "Melbourne community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/izard",
+          "label": "Izard County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/melbourne",
+          "label": "Melbourne workbench command",
+          "description": "Izard County seat — community workbench leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "Izard County in the Ozarks cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Izard County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Izard County workbenches"
+        }
+      ],
+      "notes": "Izard County chair — Melbourne anchor, North Central Ozarks."
+    },
+    {
+      "slug": "cindy-young",
+      "displayName": "Cindy Young",
+      "initials": "CYO",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Marion", "countySlug": "marion", "label": "Marion County playbook" },
+        { "kind": "city", "citySlug": "yellville", "label": "Yellville community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/marion",
+          "label": "Marion County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/yellville",
+          "label": "Yellville workbench command",
+          "description": "Marion County seat — community workbench leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "Marion County in the Ozarks cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Marion County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Marion County workbenches"
+        }
+      ],
+      "notes": "Marion County chair — Yellville anchor, Ozark lakes region."
+    },
+    {
+      "slug": "tim-chamberlain",
+      "displayName": "Tim Chamberlain",
+      "initials": "TCH",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Hot Spring", "countySlug": "hot-spring", "label": "Hot Spring County playbook" },
+        { "kind": "city", "citySlug": "malvern", "label": "Malvern community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/hot-spring",
+          "label": "Hot Spring County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/malvern",
+          "label": "Malvern workbench command",
+          "description": "Hot Spring County seat — community workbench leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/hot-springs-ouachita",
+          "label": "Hot Springs & Ouachita region",
+          "description": "Hot Spring County in the southwest cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Hot Spring County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Hot Spring County workbenches"
+        }
+      ],
+      "notes": "Hot Spring County chair — Malvern anchor (distinct from Garland / Hot Springs city)."
+    },
+    {
+      "slug": "jan-misenheimer",
+      "displayName": "Jan Misenheimer",
+      "initials": "JMI",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Stone", "countySlug": "stone", "label": "Stone County playbook" },
+        { "kind": "city", "citySlug": "mountain-view", "label": "Mountain View community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/stone",
+          "label": "Stone County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/mountain-view",
+          "label": "Mountain View workbench command",
+          "description": "Stone County seat — community workbench leadership"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/north-central-ozarks",
+          "label": "North Central / Ozarks region",
+          "description": "Stone County in the Ozarks cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Stone County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Stone County workbenches"
+        }
+      ],
+      "notes": "Stone County chair — Mountain View anchor, Ozark Folk Center region."
+    },
+    {
+      "slug": "margy-thompson",
+      "displayName": "Margy Thompson",
+      "initials": "MTH",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition", "fundraising"],
+      "connections": [
+        { "kind": "county", "county": "Carroll", "countySlug": "carroll", "label": "Carroll County playbook" },
+        { "kind": "city", "citySlug": "eureka-springs", "label": "Eureka Springs community workbench" },
+        { "kind": "city", "citySlug": "berryville", "label": "Berryville community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/carroll",
+          "label": "Carroll County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/county-parties/carroll",
+          "label": "Carroll County Democratic Party",
+          "description": "County party coordination and local validators"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/northwest-arkansas",
+          "label": "Northwest Arkansas region",
+          "description": "Carroll County in the NWA cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Carroll County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Carroll County workbenches"
+        }
+      ],
+      "notes": "Carroll County chair — Eureka Springs and Berryville, Northwest Arkansas."
+    },
+    {
+      "slug": "courtney-king",
+      "displayName": "Courtney King",
+      "initials": "CKI",
+      "workbenchTier": "county",
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition", "comms", "campus"],
+      "connections": [
+        { "kind": "county", "county": "Washington", "countySlug": "washington", "label": "Washington County playbook" },
+        { "kind": "city", "citySlug": "fayetteville", "label": "Fayetteville community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/washington",
+          "label": "Washington County command",
+          "description": "County playbook drill-down — targets, leadership, and field activity"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/fayetteville",
+          "label": "Fayetteville workbench command",
+          "description": "Washington County hub — UA and NWA anchor"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/fayetteville",
+          "label": "Fayetteville city strategy",
+          "description": "Northwest Arkansas anchor — campus and regional media"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/northwest-arkansas",
+          "label": "Northwest Arkansas region",
+          "description": "Washington County in the NWA cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Washington County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign city leads across Washington County workbenches"
+        }
+      ],
+      "notes": "Washington County chair — Fayetteville and Northwest Arkansas."
+    },
+    {
+      "slug": "eduardo-guzman",
+      "displayName": "Eduardo Guzman",
+      "initials": "EGU",
+      "workbenchTier": "cluster",
+      "workbenchTemplates": ["cluster_leader", "county_candidate_coordinator"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition", "fundraising", "comms"],
+      "connections": [
+        { "kind": "county", "county": "Sebastian", "countySlug": "sebastian", "label": "Sebastian County playbook" },
+        { "kind": "county", "county": "Franklin", "countySlug": "franklin", "label": "Franklin County playbook" },
+        { "kind": "city", "citySlug": "fort-smith", "label": "Fort Smith community workbench" },
+        { "kind": "city", "citySlug": "ozark", "label": "Ozark community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/sebastian",
+          "label": "Sebastian County command",
+          "description": "Western Arkansas anchor — Fort Smith metro"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/franklin",
+          "label": "Franklin County command",
+          "description": "River Valley / Ozarks border county playbook"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/fort-smith",
+          "label": "Fort Smith workbench command",
+          "description": "Cluster anchor city — volunteer and field board"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/fort-smith",
+          "label": "Fort Smith city strategy",
+          "description": "Regional media and River Valley persuasion hub"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/river-valley",
+          "label": "River Valley region",
+          "description": "Sebastian + Franklin cluster — western Arkansas"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots across the cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Sebastian and Franklin workbenches"
+        },
+        {
+          "kind": "global",
+          "href": "/volunteers/sign-in",
+          "label": "Volunteer personal board",
+          "description": "Personal volunteer dashboard and onboarding"
+        }
+      ],
+      "notes": "Volunteer · State Senate candidate — Sebastian + Franklin cluster lead (volunteer through cluster tier)."
+    },
+    {
+      "slug": "bob-edwards",
+      "displayName": "Bob Edwards",
+      "initials": "BED",
+      "workbenchTier": "city",
+      "workbenchTemplates": ["city_leader", "special_outreach_lead"],
+      "specialKpiCitySlugs": ["england"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "city", "citySlug": "england", "label": "England community workbench" },
+        { "kind": "county", "county": "Lonoke", "countySlug": "lonoke", "label": "Lonoke County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/england",
+          "label": "England Democrats KPI board",
+          "description": "England County Democrats — turnout, volunteers, and local validator pathways"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/england",
+          "label": "England city strategy",
+          "description": "Lonoke County — Democratic recovery and turnout growth"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/lonoke",
+          "label": "Lonoke County command",
+          "description": "County playbook rollup for England Democrats progress"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/central-metro",
+          "label": "Central Metro region",
+          "description": "England in Central Arkansas — Lonoke County"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit England-area volunteers onto the KPI board"
+        }
+      ],
+      "notes": "Head of England County Democrats — special KPI board for England (Lonoke County) turnout and volunteer production."
+    },
+    {
+      "slug": "willie-cynthia-torrence",
+      "displayName": "Willie & Cynthia Torrence",
+      "initials": "WCT",
+      "isCouple": true,
+      "workbenchTier": "county",
+      "countyBoardMember": true,
+      "workbenchTemplates": ["county_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock workbench" },
+        { "kind": "city", "citySlug": "sherwood", "label": "Sherwood community workbench" },
+        { "kind": "city", "citySlug": "jacksonville", "label": "Jacksonville community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook and nested city workbenches — chair-level access without county chair title"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches",
+          "label": "Community workbench hub",
+          "description": "All Pulaski city workbenches — volunteer board visibility"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/central-metro",
+          "label": "Central Metro region",
+          "description": "Pulaski County — Central Arkansas metro cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots across Pulaski"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Volunteer board assignments across Pulaski County"
+        }
+      ],
+      "notes": "Pulaski County volunteer board — chair-level county and city workbench access without county chair title."
+    },
+    {
+      "slug": "stephen-person",
+      "displayName": "Stephen Person",
+      "initials": "SPE",
+      "workbenchTier": "city",
+      "workbenchTemplates": ["city_leader"],
+      "teamLanes": ["county", "events", "operations", "voter-registration", "coalition", "comms"],
+      "connections": [
+        { "kind": "city", "citySlug": "little-rock", "label": "Little Rock community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/little-rock",
+          "label": "Little Rock workbench command",
+          "description": "City leadership board — all lanes and nested volunteers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/little-rock",
+          "label": "Little Rock city strategy",
+          "description": "State capital — statewide anchor and Pulaski County hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook rollup for Little Rock progress"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/central-metro",
+          "label": "Central Metro region",
+          "description": "Little Rock — Central Arkansas metro cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/kevin-heifner",
+          "label": "Kevin Heifner — city co-lead",
+          "description": "Co-lead on Little Rock city command"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders on the Little Rock workbench"
+        }
+      ],
+      "notes": "Little Rock city lead — Pulaski County capital, field, and volunteer board."
+    },
+    {
+      "slug": "davis-hendrix",
+      "displayName": "Davis Hendrix",
+      "initials": "DHE",
+      "workbenchTier": "city",
+      "workbenchTemplates": ["city_leader", "special_outreach_lead"],
+      "teamLanes": ["county", "events", "operations", "coalition", "comms"],
+      "connections": [
+        { "kind": "city", "citySlug": "north-little-rock", "label": "North Little Rock community workbench" },
+        { "kind": "county", "county": "Pulaski", "countySlug": "pulaski", "label": "Pulaski County playbook" },
+        { "kind": "program", "programSlug": "faith-communities", "label": "Faith Communities workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/north-little-rock",
+          "label": "North Little Rock workbench command",
+          "description": "City leadership board — all lanes and nested volunteers"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/north-little-rock",
+          "label": "North Little Rock city strategy",
+          "description": "Pulaski County — faith and community organizing hub"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/faith-communities",
+          "label": "Faith Communities workbench",
+          "description": "Faith outreach listening sessions and coalition tracker"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/academy/faith-outreach-lead",
+          "label": "Faith outreach lead academy",
+          "description": "Big Table doctrine and faith community framing"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/pulaski",
+          "label": "Pulaski County command",
+          "description": "County playbook rollup for North Little Rock progress"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders on the NLR workbench"
+        }
+      ],
+      "notes": "North Little Rock city lead — faith outreach workbench and Pulaski County coordination."
+    },
+    {
+      "slug": "monica-mccomber",
+      "displayName": "Monica McComber",
+      "initials": "MMC",
+      "workbenchTier": "cluster",
+      "workbenchTemplates": ["cluster_leader", "finance_inner_circle", "fundraising_workbench"],
+      "teamLanes": ["county", "fundraising", "operations", "events", "coalition"],
+      "connections": [
+        { "kind": "county", "county": "Sebastian", "countySlug": "sebastian", "label": "Sebastian County playbook" },
+        { "kind": "city", "citySlug": "fort-smith", "label": "Fort Smith community workbench" },
+        {
+          "kind": "global",
+          "href": "/election-plan/counties/sebastian",
+          "label": "Sebastian County command",
+          "description": "Western Arkansas anchor — cluster drill-down"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/workbenches/fort-smith",
+          "label": "Fort Smith workbench command",
+          "description": "Cluster anchor city — volunteer and field board"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/cities/fort-smith",
+          "label": "Fort Smith city strategy",
+          "description": "Regional media and River Valley persuasion hub"
+        },
+        {
+          "kind": "global",
+          "href": "/organizing-intelligence/regions/river-valley",
+          "label": "River Valley region",
+          "description": "Sebastian County cluster — western Arkansas"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/fundraising-leadership",
+          "label": "Fundraising leadership",
+          "description": "Finance inner circle — opportunity ownership and host committee doctrine"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/executive-book/budget/dashboard",
+          "label": "Budget dashboard",
+          "description": "Finance inner circle — campaign budget framework"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/me/lane/fundraising",
+          "label": "Fundraising lane drill-down",
+          "description": "Grassroots revenue and finance coordination"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/leadership/county-coverage",
+          "label": "County leadership coverage",
+          "description": "Open county and city leader slots in Sebastian cluster"
+        },
+        {
+          "kind": "global",
+          "href": "/election-plan/operators/leaders/command",
+          "label": "Leader command",
+          "description": "Recruit and assign leaders across Sebastian County workbenches"
+        }
+      ],
+      "notes": "Sebastian County cluster lead — finance inner circle and fundraising workbench."
     }
   ]
 }

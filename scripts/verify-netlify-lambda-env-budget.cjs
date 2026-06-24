@@ -291,19 +291,6 @@ function getDeployRiskMessage({
 }) {
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
 
-  // Netlify env API (Functions scope only) is authoritative — build-container `process.env` is not.
-  if (onNetlify && apiRuntimeBytes != null && apiRuntimeBytes <= LAMBDA_ENV_LIMIT_BYTES) {
-    const summary = `Function-scoped env ${apiRuntimeBytes} B (${(apiRuntimeBytes / 1024).toFixed(1)} KB) within Lambda compat budget`;
-    return {
-      fail: false,
-      summary,
-      message:
-        handlerPackaged && modernHandler
-          ? `${summary} — OpenNext modern handler.`
-          : `${summary} — verified via Netlify env API (build-container estimate ${total} B is advisory).`,
-    };
-  }
-
   const { worstCase, compatPadding, lambdaDeployBytes } = estimateCompatDeployBytes({
     total,
     deployEstimate,
@@ -314,6 +301,34 @@ function getDeployRiskMessage({
     modernHandler,
     legacyHandler,
   });
+
+  // OpenNext modern handler (runtimeAPIVersion >= 2) — no Lambda compat env cap; FEATURE_FLAGS ignored.
+  if (onNetlify && handlerPackaged && modernHandler) {
+    const runtimeBytes = apiRuntimeBytes ?? total;
+    const summary = `OpenNext modern handler — function env ${runtimeBytes} B; no Lambda compat env cap`;
+    return {
+      fail: false,
+      summary,
+      message: `${summary}. Deploy upload should not fail on env size alone.`,
+    };
+  }
+
+  // Netlify env API (Functions scope only) is authoritative for runtime bytes — but compat mode
+  // still injects FEATURE_FLAGS (~9 KB) unless the packaged handler is modern OpenNext.
+  if (
+    onNetlify &&
+    apiRuntimeBytes != null &&
+    apiRuntimeBytes <= LAMBDA_ENV_LIMIT_BYTES &&
+    compatPadding === 0 &&
+    lambdaDeployBytes <= LAMBDA_ENV_LIMIT_BYTES
+  ) {
+    const summary = `Function-scoped env ${apiRuntimeBytes} B (${(apiRuntimeBytes / 1024).toFixed(1)} KB) within Lambda compat budget`;
+    return {
+      fail: false,
+      summary,
+      message: `${summary} — verified via Netlify env API (build-container estimate ${total} B is advisory).`,
+    };
+  }
   const nodeOptions = rows.find((r) => r.key === "NODE_OPTIONS");
 
   let fail = false;

@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const leader = getVolunteerLeaderBySlug(slug);
   return {
-    title: leader ? `${leader.displayName} · Leader workbench v3.4` : "Leader workbench",
+    title: leader ? `${leader.displayName} · Leader workbench v4.0` : "Leader workbench",
     robots: { index: false, follow: false },
   };
 }

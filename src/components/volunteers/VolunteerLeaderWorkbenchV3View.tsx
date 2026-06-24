@@ -10,6 +10,9 @@ import { PowerOf5DashboardPanel } from "@/components/power-of-5/PowerOf5Dashboar
 import type { LeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-workbench-v3";
 import type { LeaderFieldLogContext } from "@/lib/volunteers/build-leader-field-log-context";
 import type { LeaderContactSpineSummary } from "@/lib/volunteers/contact-spine";
+import { LeaderCommandFlowPanel } from "@/components/volunteers/LeaderCommandFlowPanel";
+import { LeaderGeographyDrillDownPanel } from "@/components/volunteers/LeaderGeographyDrillDownPanel";
+import { LeaderWorkPagesPanel } from "@/components/volunteers/LeaderWorkPagesPanel";
 import { LeaderLaneNavStrip } from "@/components/volunteers/LeaderLaneDrillDownView";
 import { LeaderContactSpinePanel } from "@/components/volunteers/LeaderContactSpinePanel";
 import { LeaderMyWorkPanel } from "@/components/volunteers/LeaderMyWorkPanel";
@@ -20,6 +23,8 @@ import {
   resolveLeaderCampaignPins,
   resolveLeaderPersonalLinks,
 } from "@/lib/volunteers/resolve-leader-links";
+import { resolveLeaderResidence } from "@/lib/volunteers/resolve-leader-residence";
+import { resolveLeaderWorkPages } from "@/lib/volunteers/resolve-leader-work-pages";
 import {
   formatSpecialOutreachFundraisingGoal,
   resolveSpecialOutreachProgramForLeader,
@@ -54,6 +59,8 @@ export function VolunteerLeaderWorkbenchV3View({
   const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live, roster, hierarchy, leadTemplates, specialKpis } =
     payload;
   const areaLinks = resolveLeaderPersonalLinks(leader);
+  const residence = resolveLeaderResidence(leader);
+  const workPages = resolveLeaderWorkPages(leader, { isSelf });
   const campaignPins = resolveLeaderCampaignPins(leader);
   const specialOutreach = resolveSpecialOutreachProgramForLeader(leader);
   const canLogField = Boolean(isSelf && fieldLog?.operatorReady);
@@ -66,7 +73,7 @@ export function VolunteerLeaderWorkbenchV3View({
     <div className="ep-chapter-body px-6 py-10 lg:px-10">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-start">
         <aside className="lg:sticky lg:top-24 lg:w-52 lg:shrink-0">
-          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Workbench v3.4</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Workbench v4.0</p>
           <p className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">{leader.displayName}</p>
           <p className="font-mono text-sm font-bold text-[var(--ep-blue)]">{leader.initials}</p>
           <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
@@ -121,6 +128,13 @@ export function VolunteerLeaderWorkbenchV3View({
               className="mt-4"
             />
           ) : null}
+          <div className="mt-4">
+            <LeaderGeographyDrillDownPanel
+              residence={residence}
+              leaderDisplayName={leader.displayName}
+              compact
+            />
+          </div>
           {isSelf && contactSpine ? (
             <LeaderContactSpinePanel summary={contactSpine} className="mt-4" />
           ) : null}
@@ -128,7 +142,7 @@ export function VolunteerLeaderWorkbenchV3View({
 
         <div className="min-w-0 flex-1 space-y-10">
           <header>
-            <div className="ep-classification">Leadership workbench v3.4 · lanes + Power of 5</div>
+            <div className="ep-classification">Leadership workbench v4.0 · work pages + Power of 5</div>
             {leader.nonprofitAdvisor ? (
               <p className="mt-2 inline-block rounded-full bg-[var(--ep-navy)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[var(--ep-navy)] ring-1 ring-[var(--ep-navy)]/25">
                 Nonprofit advisor · ACM access
@@ -302,6 +316,22 @@ export function VolunteerLeaderWorkbenchV3View({
               ))}
             </ul>
             <LeaderLaneNavStrip leader={leader} isSelf={isSelf} />
+          </Section>
+
+          <Section id="command-flow" title="Command flow">
+            <LeaderCommandFlowPanel
+              workPages={workPages}
+              leaderInitials={leader.initials}
+              fieldEntryCount={myFieldEntryCount}
+            />
+          </Section>
+
+          <Section id="geography" title="City & county playbooks">
+            <LeaderGeographyDrillDownPanel residence={residence} leaderDisplayName={leader.displayName} />
+          </Section>
+
+          <Section id="work-pages" title="Work pages">
+            <LeaderWorkPagesPanel payload={workPages} leaderDisplayName={leader.displayName} />
           </Section>
 
           <Section id="hierarchy" title="Hierarchy & work branches">

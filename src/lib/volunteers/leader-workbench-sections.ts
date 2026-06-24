@@ -2,6 +2,9 @@
 
 export const LEADER_WORKBENCH_SECTIONS = [
   { id: "overview", label: "Overview" },
+  { id: "command-flow", label: "Command flow" },
+  { id: "geography", label: "City & county" },
+  { id: "work-pages", label: "Work pages" },
   { id: "hierarchy", label: "Hierarchy & branches" },
   { id: "lead-templates", label: "Lead templates & KPIs" },
   { id: "role", label: "Role & responsibilities" },

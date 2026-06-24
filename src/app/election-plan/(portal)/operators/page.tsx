@@ -1,9 +1,7 @@
 import Link from "next/link";
 
-import {
-  ElectionPlanLeaderRosterGrid,
-  ElectionPlanOperatorsHubPanel,
-} from "@/components/election-plan/ElectionPlanOperatorsHubPanels";
+import { ElectionPlanOperatorsHubPanel } from "@/components/election-plan/ElectionPlanOperatorsHubPanels";
+import { ElectionPlanOperatorsLeaderDirectory } from "@/components/election-plan/ElectionPlanOperatorsLeaderDirectory";
 import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
 import { OperationsCommandLadderPanel } from "@/components/volunteers/OperationsCommandLadderPanel";
 import { loadOperationsFeedbackRollup } from "@/lib/volunteers/load-operations-feedback-rollup";
@@ -12,6 +10,8 @@ export const metadata = {
   title: "Operators | Election Plan",
   robots: { index: false, follow: false },
 };
+
+export const dynamic = "force-dynamic";
 
 export default async function ElectionPlanOperatorsPage() {
   const operationsFeedbackRollup = await loadOperationsFeedbackRollup();
@@ -33,6 +33,9 @@ export default async function ElectionPlanOperatorsPage() {
             <ElectionPlanOperatorsSubnav />
           </div>
           <div className="mt-6">
+            <ElectionPlanOperatorsLeaderDirectory />
+          </div>
+          <div className="mt-6">
             <OperationsCommandLadderPanel
               rollup={operationsFeedbackRollup}
               activeTierId="operators_hub"
@@ -41,13 +44,6 @@ export default async function ElectionPlanOperatorsPage() {
           </div>
           <div className="mt-6">
             <ElectionPlanOperatorsHubPanel />
-          </div>
-          <div className="mt-12">
-            <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">All leader workbenches</h2>
-            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">Click any leader to open their v2 workbench.</p>
-            <div className="mt-4">
-              <ElectionPlanLeaderRosterGrid />
-            </div>
           </div>
         </div>
       </div>
