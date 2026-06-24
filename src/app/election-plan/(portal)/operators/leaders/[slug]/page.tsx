@@ -4,10 +4,10 @@ import { notFound } from "next/navigation";
 
 import { ElectionPlanOperatorsSubnav } from "@/components/election-plan/ElectionPlanOperatorsSubnav";
 import { VolunteerLeaderWorkbenchV3View } from "@/components/volunteers/VolunteerLeaderWorkbenchV3View";
+import { buildLeaderFieldLogContext } from "@/lib/volunteers/build-leader-field-log-context";
 import { buildLeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-workbench-v3";
 import { getVolunteerLeaderBySlug } from "@/lib/volunteers/leader-roster";
 import { tryLoadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader";
-import { loadCurrentElectionPlanOperator } from "@/lib/election-plan/auth/load-current-operator";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const leader = getVolunteerLeaderBySlug(slug);
   return {
-    title: leader ? `${leader.displayName} · Leader workbench v3` : "Leader workbench",
+    title: leader ? `${leader.displayName} · Leader workbench v3.1` : "Leader workbench",
     robots: { index: false, follow: false },
   };
 }
@@ -25,12 +25,12 @@ export default async function LeaderWorkbenchSlugPage({ params }: Props) {
   const leader = getVolunteerLeaderBySlug(slug);
   if (!leader) notFound();
 
-  const [payload, current, operator] = await Promise.all([
+  const [payload, current] = await Promise.all([
     buildLeaderWorkbenchV3Payload(leader),
     tryLoadCurrentVolunteerLeader(),
-    loadCurrentElectionPlanOperator().catch(() => null),
   ]);
   const isSelf = current?.slug === leader.slug;
+  const fieldLog = isSelf ? await buildLeaderFieldLogContext(leader, { isSelf: true }) : null;
 
   return (
     <>
@@ -47,11 +47,7 @@ export default async function LeaderWorkbenchSlugPage({ params }: Props) {
           </div>
         </div>
       </div>
-      <VolunteerLeaderWorkbenchV3View
-        payload={payload}
-        isSelf={isSelf}
-        epOperatorInitials={operator?.initials ?? null}
-      />
+      <VolunteerLeaderWorkbenchV3View payload={payload} isSelf={isSelf} fieldLog={fieldLog} />
     </>
   );
 }

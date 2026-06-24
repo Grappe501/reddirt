@@ -1,7 +1,9 @@
 import Link from "next/link";
 
+import { ElectionPlanFieldEntryPanel } from "@/components/election-plan/ElectionPlanFieldEntryPanel";
 import { PowerOf5DashboardPanel } from "@/components/power-of-5/PowerOf5DashboardPanel";
 import type { LeaderWorkbenchV3Payload } from "@/lib/volunteers/build-leader-workbench-v3";
+import type { LeaderFieldLogContext } from "@/lib/volunteers/build-leader-field-log-context";
 import { LEADER_WORKBENCH_SECTIONS } from "@/lib/volunteers/leader-workbench-sections";
 import {
   resolveLeaderCampaignPins,
@@ -20,21 +22,20 @@ function Section({ id, title, children }: { id: string; title: string; children:
 type Props = {
   payload: LeaderWorkbenchV3Payload;
   isSelf?: boolean;
-  epOperatorInitials?: string | null;
+  fieldLog?: LeaderFieldLogContext | null;
 };
 
-export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, epOperatorInitials }: Props) {
+export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, fieldLog }: Props) {
   const { leader, po5, responsibilities, nextActions, overviewSummary, laneLabels, live } = payload;
   const areaLinks = resolveLeaderPersonalLinks(leader);
   const campaignPins = resolveLeaderCampaignPins(leader);
-  const canLogField =
-    Boolean(epOperatorInitials) && epOperatorInitials?.toUpperCase() === leader.initials.toUpperCase();
+  const canLogField = Boolean(isSelf && fieldLog?.operatorReady);
 
   return (
     <div className="ep-chapter-body px-6 py-10 lg:px-10">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-start">
         <aside className="lg:sticky lg:top-24 lg:w-52 lg:shrink-0">
-          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Workbench v3</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">Workbench v3.1</p>
           <p className="mt-1 font-heading text-lg font-bold text-[var(--ep-navy)]">{leader.displayName}</p>
           <p className="font-mono text-sm font-bold text-[var(--ep-blue)]">{leader.initials}</p>
           <p className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--ep-navy-muted)]">
@@ -72,7 +73,7 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, epOperatorInit
 
         <div className="min-w-0 flex-1 space-y-10">
           <header>
-            <div className="ep-classification">Leadership workbench v3 · live KPIs</div>
+            <div className="ep-classification">Leadership workbench v3.1 · live KPIs + field log</div>
             <h1 className="mt-2 font-heading text-3xl font-bold text-[var(--ep-navy)]">{leader.displayName}</h1>
             {leader.notes ? (
               <p className="mt-2 max-w-3xl text-sm text-[var(--ep-navy-muted)]">{leader.notes}</p>
@@ -208,25 +209,36 @@ export function VolunteerLeaderWorkbenchV3View({ payload, isSelf, epOperatorInit
             </ul>
           </Section>
 
-          {isSelf && live.primaryCountySlug ? (
+          {isSelf && fieldLog ? (
             <Section id="field-log" title="Field log">
               {canLogField ? (
-                <p className="text-sm text-[var(--ep-navy-muted)]">
-                  You are signed in as operator <strong>{epOperatorInitials}</strong>. Log results from your county or
-                  city workbench field log section.
-                </p>
+                <>
+                  <p className="mb-4 text-sm text-[var(--ep-navy-muted)]">
+                    Log conversations, volunteers, and leaders for your county — tagged as operator{" "}
+                    <strong>{fieldLog.operatorInitials}</strong>. Your entries:{" "}
+                    <strong>{live.operatorEntries.totalQuantity}</strong> ({live.operatorEntries.entryCount} logs).
+                  </p>
+                  <ElectionPlanFieldEntryPanel
+                    countySlug={fieldLog.countySlug}
+                    countyName={fieldLog.countyName}
+                    citySlug={fieldLog.citySlug}
+                    initial={fieldLog.summary}
+                    operatorInitials={fieldLog.operatorInitials}
+                  />
+                </>
               ) : (
-                <p className="text-sm text-[var(--ep-navy-muted)]">
-                  Sign in with operator initials <strong>{leader.initials}</strong> in the Election Plan operator bar to
-                  log field results. Your tagged entries:{" "}
-                  <strong>{live.operatorEntries.totalQuantity}</strong> ({live.operatorEntries.entryCount} logs).
-                </p>
+                <>
+                  <p className="text-sm text-[var(--ep-navy-muted)]">
+                    Operator identity is syncing — refresh in a moment or sign in again. Your tagged entries:{" "}
+                    <strong>{live.operatorEntries.totalQuantity}</strong> ({live.operatorEntries.entryCount} logs).
+                  </p>
+                  {areaLinks[0] ? (
+                    <Link href={`${areaLinks[0].href}#field-log`} className="mt-3 inline-block ep-btn ep-btn-ghost ep-btn-sm">
+                      Open county field log →
+                    </Link>
+                  ) : null}
+                </>
               )}
-              {areaLinks[0] ? (
-                <Link href={`${areaLinks[0].href}#field-log`} className="mt-3 inline-block ep-btn ep-btn-ghost ep-btn-sm">
-                  Open field log →
-                </Link>
-              ) : null}
             </Section>
           ) : null}
 

@@ -1,11 +1,7 @@
 import { NextResponse } from "next/server";
 import type { ElectionPlanFieldCategory } from "@prisma/client";
 
-import {
-  getElectionPlanOperatorFromRequest,
-  requireElectionPlanApiSession,
-  requireElectionPlanOperator,
-} from "@/lib/election-plan/auth/require-election-plan-api";
+import { resolveFieldEntryOperator, requireFieldEntryOperator, requireFieldEntrySession } from "@/lib/volunteers/field-entry-access";
 import { loadFieldEntriesForLocation } from "@/lib/election-plan/field-entry/load-field-entries";
 import { FIELD_ENTRY_CATEGORIES, type FieldEntryCategory } from "@/lib/election-plan/field-entry/types";
 import { prisma } from "@/lib/db";
@@ -15,8 +11,8 @@ export const runtime = "nodejs";
 const VALID_CATEGORIES = new Set<string>(FIELD_ENTRY_CATEGORIES.map((c) => c.value));
 
 export async function GET(request: Request) {
-  if (!(await requireElectionPlanApiSession())) {
-    return NextResponse.json({ error: "Election Plan authentication required" }, { status: 401 });
+  if (!(await requireFieldEntrySession())) {
+    return NextResponse.json({ error: "Sign in to view field entries" }, { status: 401 });
   }
 
   const { searchParams } = new URL(request.url);
@@ -26,13 +22,18 @@ export async function GET(request: Request) {
   }
   const citySlug = searchParams.get("citySlug")?.trim() || null;
   const summary = await loadFieldEntriesForLocation({ countySlug, citySlug });
-  const operator = await getElectionPlanOperatorFromRequest();
+  const operator = await resolveFieldEntryOperator();
 
-  return NextResponse.json({ ...summary, operator });
+  return NextResponse.json({
+    ...summary,
+    operator: operator
+      ? { initials: operator.initials, displayName: operator.displayName, source: operator.source }
+      : null,
+  });
 }
 
 export async function POST(request: Request) {
-  const auth = await requireElectionPlanOperator();
+  const auth = await requireFieldEntryOperator();
   if (auth.error === "session") {
     return NextResponse.json({ error: "Election Plan authentication required" }, { status: 401 });
   }

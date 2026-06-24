@@ -18,10 +18,11 @@ export function ElectionPlanOperatorsHubPanel() {
         href="/election-plan/operators/leaders"
         className="rounded-xl border border-[var(--ep-gold)]/50 bg-white p-6 shadow-sm transition hover:border-[var(--ep-gold)] hover:shadow-md"
       >
-        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">v3 · Leader workbenches</p>
+        <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-gold)]">v3.1 · Leader workbenches</p>
         <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">Volunteer leaders</h2>
         <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-          {roster.length} personal command surfaces — live KPIs, calendar, event embeds, message hub, Power of 5.
+          {roster.length} personal command surfaces — live KPIs, inline field log, calendar, event embeds, message hub,
+          Power of 5.
         </p>
       </Link>
 
@@ -32,7 +33,7 @@ export function ElectionPlanOperatorsHubPanel() {
         <p className="text-xs font-bold uppercase tracking-wide text-[var(--ep-blue)]">Quick entry</p>
         <h2 className="mt-2 font-heading text-xl font-bold text-[var(--ep-navy)]">My workbench</h2>
         <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">
-          Sign in with your 3-letter code + shared password to land on your personal v2 workbench.
+          Sign in with your 3-letter code + shared password to land on your personal v3.1 workbench with inline field log.
         </p>
       </Link>
 
