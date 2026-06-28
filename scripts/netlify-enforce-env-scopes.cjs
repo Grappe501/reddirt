@@ -115,6 +115,30 @@ function scopesEqual(a, b) {
 }
 
 async function triggerClearCacheDeploy(token, siteId) {
+  const recent = await api(token, `/sites/${siteId}/deploys?per_page=3`);
+  if (Array.isArray(recent)) {
+    const inFlight = recent.find(
+      (d) =>
+        d.state === "building" ||
+        d.state === "uploading" ||
+        d.state === "processing" ||
+        d.state === "preparing",
+    );
+    const published = recent.find((d) => d.state === "ready" && d.published_at);
+    if (inFlight) {
+      console.log(
+        `Skip clear-cache trigger — deploy already in progress: ${inFlight.id} (${inFlight.state})`,
+      );
+      return inFlight;
+    }
+    if (published && Date.now() - Date.parse(published.published_at) < 15 * 60 * 1000) {
+      console.log(
+        `Skip clear-cache trigger — production already published recently: ${published.id} at ${published.published_at}`,
+      );
+      return published;
+    }
+  }
+
   const build = await api(token, `/sites/${siteId}/builds?clear_cache=true`, {
     method: "POST",
     body: JSON.stringify({}),
