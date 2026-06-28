@@ -119,7 +119,8 @@ export const meetingManifestSchema = z.object({
       openingVideo: z
         .object({
           id: z.string(),
-          src: z.string(),
+          src: z.string().optional(),
+          youtubeVideoId: z.string().optional(),
           placeholder: z.boolean().optional(),
           durationMinutes: z.number().optional(),
         })

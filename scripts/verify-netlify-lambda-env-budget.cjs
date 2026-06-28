@@ -123,6 +123,9 @@ function printNetlifyEnvScopingChecklist(rows) {
 
 /** Kelly SOS opposition launch — not required on every ___netlify-server-handler request. */
 const RUNTIME_OPTIONAL_FOR_LAUNCH = new Set([
+  "OPENAI_API_KEY",
+  "OPENAI_MODEL",
+  "OPENAI_EMBEDDING_MODEL",
   "TWILIO_ACCOUNT_SID",
   "TWILIO_AUTH_TOKEN",
   "TWILIO_PHONE_NUMBER",

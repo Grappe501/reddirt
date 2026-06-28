@@ -6,6 +6,7 @@ const {
   estimateNetlifyApiFunctionEnvBytes,
   detectOpenNextModernHandler,
   detectLegacyLambdaHandler,
+  readHandlerDirEntries,
   printNetlifyEnvScopingChecklist,
   getDeployRiskMessage,
   LAMBDA_ENV_LIMIT_BYTES,
@@ -108,6 +109,8 @@ exports.onPostBuild = async ({ utils }) => {
   const cwd = process.cwd();
   const modernHandler = detectOpenNextModernHandler(cwd);
   const legacyHandler = detectLegacyLambdaHandler(cwd);
+  const handlerDir = readHandlerDirEntries(cwd);
+  const handlerPackaged = Boolean(handlerDir);
 
   const risk = getDeployRiskMessage({
     total,
@@ -117,7 +120,7 @@ exports.onPostBuild = async ({ utils }) => {
     rows,
     buildOnlyLeaked,
     apiRuntimeBytes,
-    handlerPackaged: Boolean(modernHandler || legacyHandler),
+    handlerPackaged,
     modernHandler,
     legacyHandler,
   });

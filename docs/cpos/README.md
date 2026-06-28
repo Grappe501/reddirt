@@ -2,7 +2,7 @@
 
 **Lane:** `H:\SOSWebsite\RedDirt` only.  
 **Packet:** **CPOS-FOUNDATION-1** (Phase 1 — no implementation assumptions).  
-**Status:** **Pass 02 IA complete** — kickoff **2026-06-28 tonight**. Implementation slices **CPOS-1+** ready to start. **No meeting UI shipped yet.**
+**Status:** Kickoff slice **shipped** for **2026-06-28** (`kickoff-2026` manifest, audience + presenter + session API). Post-kickoff roadmap: [`040-ZOOM-TRANSPORT-AND-FUTURE-PHASE-ROADMAP.md`](./040-ZOOM-TRANSPORT-AND-FUTURE-PHASE-ROADMAP.md).
 
 CPOS is a **major Campaign OS division**: manifest-driven live presentations that sync presenter and audience, embed Campaign OS demos, wire volunteer journeys, and accumulate institutional meeting memory.
 
@@ -16,7 +16,8 @@ CPOS is a **major Campaign OS division**: manifest-driven live presentations tha
 2. [`CPOS_DESIGN_PASS_02_INFORMATION_ARCHITECTURE.md`](./CPOS_DESIGN_PASS_02_INFORMATION_ARCHITECTURE.md) — **routes, files, components, schemas, tonight slice**.
 3. [`021-MEETING-MANIFEST-SPEC.md`](./021-MEETING-MANIFEST-SPEC.md) + [`data/cpos/manifests/kickoff-2026.yaml`](../../data/cpos/manifests/kickoff-2026.yaml).
 4. [`030-MASTER-TRACEABILITY-MATRIX.md`](./030-MASTER-TRACEABILITY-MATRIX.md).
-5. [`CPOS_DESIGN_PASS_01_ERNIE_CONVERSATION.md`](./CPOS_DESIGN_PASS_01_ERNIE_CONVERSATION.md) — differentiators + decisions (locked in Pass 02).
+5. [`040-ZOOM-TRANSPORT-AND-FUTURE-PHASE-ROADMAP.md`](./040-ZOOM-TRANSPORT-AND-FUTURE-PHASE-ROADMAP.md) — **post-kickoff** Zoom-as-transport, phases 2–10, CPOS-11 broadcast layer (**not tonight**).
+6. [`CPOS_DESIGN_PASS_01_ERNIE_CONVERSATION.md`](./CPOS_DESIGN_PASS_01_ERNIE_CONVERSATION.md) — differentiators + decisions (locked in Pass 02).
 
 **Cross-ref:** [`../unified-campaign-engine-foundation.md`](../unified-campaign-engine-foundation.md) · [`../MESSAGE_CONTENT_ENGINE_SYSTEM_PLAN.md`](../MESSAGE_CONTENT_ENGINE_SYSTEM_PLAN.md) · [`../POWER_OF_5_RELATIONAL_ORGANIZING_SYSTEM_PLAN.md`](../POWER_OF_5_RELATIONAL_ORGANIZING_SYSTEM_PLAN.md) · [`../campaign-events/ORCHESTRATION_BUILD_ROADMAP.md`](../campaign-events/ORCHESTRATION_BUILD_ROADMAP.md) (Phase 8 presentation polish) · Election Plan routes under `src/app/election-plan/`.
 
@@ -73,6 +74,7 @@ Status: **Planned** until Phase 2/3 authors fill them. Do not implement from stu
 | 028 | Election Plan Integration | 2 | Planned |
 | 029 | Future ACU Integration | 4 | Planned |
 | 030 | Master Traceability Matrix | 2 | Planned |
+| 040 | Zoom Transport & Future Phase Roadmap | 1/4 | **Notes** (post-kickoff) |
 
 **Future code homes (Phase 2 — not created yet):**
 
