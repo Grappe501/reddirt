@@ -148,13 +148,22 @@ const SERVER_HANDLER_DIRS = [
   ".netlify/functions/___netlify-server-handler",
 ];
 
-/** OpenNext v5+ server handler markers (modern Functions runtime — no 4 KB env cap). */
-const OPENNEXT_HANDLER_MARKERS = [
+/** OpenNext v5+ .mjs entry — sufficient for modern Functions runtime (no 4 KB env cap). */
+const OPENNEXT_MJS_HANDLER_MARKERS = [
   ".netlify/functions-internal/___netlify-server-handler/___netlify-server-handler.mjs",
-  ".netlify/functions-internal/___netlify-server-handler/run-config.json",
-  ".netlify/functions-internal/___netlify-server-handler/.netlify/dist/run/handlers/server.js",
   ".netlify/functions/___netlify-server-handler/___netlify-server-handler.mjs",
 ];
+
+/** Secondary layout hints (run-config alone is not enough — see readPackagedHandlerRuntime). */
+const OPENNEXT_HANDLER_MARKERS = [
+  ...OPENNEXT_MJS_HANDLER_MARKERS,
+  ".netlify/functions-internal/___netlify-server-handler/run-config.json",
+  ".netlify/functions-internal/___netlify-server-handler/.netlify/dist/run/handlers/server.js",
+];
+
+function hasOpenNextMjsHandler(cwd = process.cwd()) {
+  return OPENNEXT_MJS_HANDLER_MARKERS.some((rel) => fs.existsSync(path.join(cwd, rel)));
+}
 
 function readHandlerDirEntries(cwd = process.cwd()) {
   for (const rel of SERVER_HANDLER_DIRS) {
@@ -224,6 +233,7 @@ function readPackagedHandlerRuntime(cwd = process.cwd()) {
 }
 
 function detectOpenNextModernHandler(cwd = process.cwd()) {
+  if (hasOpenNextMjsHandler(cwd)) return true;
   const packaged = readPackagedHandlerRuntime(cwd);
   if (packaged.modern) return true;
   const handler = readHandlerDirEntries(cwd);
@@ -232,9 +242,9 @@ function detectOpenNextModernHandler(cwd = process.cwd()) {
       (name) => name === "___netlify-server-handler.mjs" || name.endsWith(".mjs"),
     );
     if (hasMjs) return true;
-    return false;
+    // Handler dir may exist before .mjs is listed (empty/staging) — fall through to existsSync markers.
   }
-  return OPENNEXT_HANDLER_MARKERS.some((rel) => fs.existsSync(path.join(cwd, rel)));
+  return hasOpenNextMjsHandler(cwd);
 }
 
 /** Legacy Lambda adapter — .js entry without OpenNext .mjs markers. */
@@ -257,12 +267,14 @@ function detectLegacyLambdaHandler(cwd = process.cwd()) {
  */
 function estimateCompatFeatureFlagsBytes(
   featureFlags,
-  { modernHandler = false, legacyHandler = false, handlerPackaged = false } = {},
+  { modernHandler = false, legacyHandler = false, handlerPackaged = false, worstCase = 0 } = {},
 ) {
   if (modernHandler) return 0;
+  // Function-scoped runtime env under the cap — deploy won't fail on env size (OpenNext or small legacy).
+  if (worstCase <= LAMBDA_ENV_LIMIT_BYTES) return 0;
   const ffBytes = featureFlags?.bytes ?? 0;
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
-  if (handlerPackaged && onNetlify && !modernHandler) {
+  if (handlerPackaged && onNetlify && !modernHandler && legacyHandler) {
     return ffBytes || FEATURE_FLAGS_TYPICAL_BYTES;
   }
   if (!legacyHandler) return 0;
@@ -283,7 +295,12 @@ function estimateCompatDeployBytes({
   const worstCase = apiRuntimeBytes ?? total;
   const onNetlify = Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
   const compatPadding = onNetlify
-    ? estimateCompatFeatureFlagsBytes(featureFlags, { modernHandler, legacyHandler, handlerPackaged })
+    ? estimateCompatFeatureFlagsBytes(featureFlags, {
+        modernHandler,
+        legacyHandler,
+        handlerPackaged,
+        worstCase,
+      })
     : 0;
   return {
     worstCase,
@@ -330,16 +347,15 @@ function getDeployRiskMessage({
     };
   }
 
-  // Netlify env API (Functions scope only) is authoritative for runtime bytes — but compat mode
-  // still injects FEATURE_FLAGS (~9 KB) unless the packaged handler is modern OpenNext.
+  // Netlify env API (Functions scope only) is authoritative — when function env is under cap,
+  // deploy will not fail on env size (FEATURE_FLAGS compat padding is advisory only).
   if (
     onNetlify &&
     apiRuntimeBytes != null &&
     apiRuntimeBytes <= LAMBDA_ENV_LIMIT_BYTES &&
-    compatPadding === 0 &&
-    lambdaDeployBytes <= LAMBDA_ENV_LIMIT_BYTES
+    !legacyHandler
   ) {
-    const summary = `Function-scoped env ${apiRuntimeBytes} B (${(apiRuntimeBytes / 1024).toFixed(1)} KB) within Lambda compat budget`;
+    const summary = `Function-scoped env ${apiRuntimeBytes} B (${(apiRuntimeBytes / 1024).toFixed(1)} KB) within Lambda budget`;
     return {
       fail: false,
       summary,
@@ -378,10 +394,15 @@ function getDeployRiskMessage({
     );
   }
 
-  if (onNetlify && compatPadding > 0 && lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES) {
+  if (
+    onNetlify &&
+    compatPadding > 0 &&
+    worstCase > LAMBDA_ENV_LIMIT_BYTES &&
+    lambdaDeployBytes > LAMBDA_ENV_LIMIT_BYTES
+  ) {
     fail = true;
     lines.push(
-      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B. Packaged handler is not confirmed modern (runtimeAPIVersion >= 2 / stream mode). Fix: Netlify UI → Build & deploy → Build plugins → disable any UI-pinned old @netlify/plugin-nextjs; Build settings → Runtime → remove pinned Next.js runtime, save, re-select Next.js, save. Keep [[plugins]] package = "@netlify/plugin-nextjs" (unpinned) first in netlify.toml. Or run: NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime`,
+      `Deploy env budget ${lambdaDeployBytes} B (runtime ${worstCase} B + compat FEATURE_FLAGS ~${compatPadding} B) exceeds AWS ${LAMBDA_ENV_LIMIT_BYTES} B. Legacy Lambda handler suspected. Fix: Netlify UI → Build & deploy → Build plugins → disable any UI-pinned old @netlify/plugin-nextjs; Build settings → Runtime → remove pinned Next.js runtime, save, re-select Next.js, save. Keep [[plugins]] package = "@netlify/plugin-nextjs" (unpinned) first in netlify.toml. Or run: NETLIFY_AUTH_TOKEN=... NETLIFY_SITE_ID=... npm run netlify:unpin-nextjs-runtime`,
     );
   }
 
@@ -497,6 +518,7 @@ module.exports = {
   estimateCompatDeployBytes,
   detectOpenNextModernHandler,
   detectLegacyLambdaHandler,
+  hasOpenNextMjsHandler,
   readHandlerDirEntries,
   readPackagedHandlerRuntime,
   printNetlifyEnvScopingChecklist,
