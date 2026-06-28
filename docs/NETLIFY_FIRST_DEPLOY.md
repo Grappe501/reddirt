@@ -19,6 +19,8 @@ Use this when the site has never successfully built on Netlify or the database i
 |---------|--------|
 | `DATABASE_URL` | **Hosted** Postgres only (e.g. Neon). Must **not** be `127.0.0.1` or `localhost` — that is your **local Docker** URL from `.env.example`; Netlify cannot reach your computer. Copy the connection string from the Neon project (or use Netlify’s Neon integration so `NETLIFY_DATABASE_URL` is set; the build script maps it when `DATABASE_URL` is unset). |
 | `ADMIN_SECRET` | Non-empty string; **required** for `/admin` (middleware blocks misconfiguration). |
+| `ELECTION_PLAN_PASSWORD` | Election Plan portal gate (`/election-plan/login`). |
+| `VOLUNTEER_HUB_PASSWORD` | Leader workbench sign-in (3-letter code + password) and volunteer personal board (`/volunteers/sign-in`). Use the same rollout value as the other dashboard passwords until per-user auth ships. |
 
 **Strongly recommended**
 
@@ -38,7 +40,7 @@ Use this when the site has never successfully built on Netlify or the database i
 | Scope in Netlify UI | Variables |
 |---------------------|-----------|
 | **Builds only** | `PRISMA_*`, `ALLOW_*`, `SKIP_DB_SEED`, `NODE_OPTIONS`, `NODE_VERSION`, **all `NEXT_PUBLIC_*`** (inlined at build time) |
-| **Functions** (runtime) | `DATABASE_URL`, `DIRECT_URL`, `ADMIN_SECRET`, `ELECTION_PLAN_PASSWORD`, API keys your routes actually read at runtime |
+| **Functions** (runtime) | `DATABASE_URL`, `DIRECT_URL`, `ADMIN_SECRET`, `ELECTION_PLAN_PASSWORD`, `VOLUNTEER_HUB_PASSWORD`, API keys your routes actually read at runtime |
 
 Also check **Team settings → Environment variables** for shared vars scoped to **All** or **Functions**.
 
