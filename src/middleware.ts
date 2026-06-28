@@ -31,10 +31,8 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Skip /admin entirely — ADMIN_SECRET gating is Node-only; edge middleware was aborting (AbortError).
-     * Kim-hammer + launch-mode admin redirects are in next.config.ts redirects().
-     */
-    "/((?!api|_next/static|_next/image|_next/webpack-hmr|favicon.ico|admin).*)",
+    /** Only election-plan + legacy volunteers — skip public site to avoid edge timeouts. */
+    "/election-plan/:path*",
+    "/volunteers/:path*",
   ],
 };

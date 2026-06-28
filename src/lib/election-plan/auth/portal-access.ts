@@ -3,6 +3,18 @@ import { redirect } from "next/navigation";
 
 import { ELECTION_PLAN_SESSION_COOKIE } from "@/lib/election-plan/auth/constants";
 import {
+  isCoalitionCommandOpsPath,
+  isCommsCommandOpsPath,
+  isEventsCommandOpsPath,
+  isGrassrootsFundraisingSettlementOpsPath,
+  isLaneCoverageOpsPath,
+  isLeaderDashboardOpsPath,
+  isLeaderWorkbenchPath,
+  isLeaderWorkbenchSignInPath,
+  isVolunteerIntakeOpsPath,
+  isVoterRegistrationOpsPath,
+} from "@/lib/election-plan/auth/portal-paths";
+import {
   getElectionPlanPassword,
   verifyElectionPlanSessionToken,
 } from "@/lib/election-plan/auth/session";
@@ -15,55 +27,18 @@ import { canAccessVolunteerIntakeOps, getVolunteerLeaderBySlug, canAccessCommsCo
 
 export type PortalAuthMode = "election-plan" | "volunteer-leader" | "dev-open";
 
-export function isLeaderWorkbenchPath(pathname: string): boolean {
-  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
-  return path.startsWith("/election-plan/operators/leaders");
-}
-
-export function isVolunteerIntakeOpsPath(pathname: string): boolean {
-  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
-  return path === "/election-plan/operators/volunteer-intake";
-}
-
-export function isCommsCommandOpsPath(pathname: string): boolean {
-  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
-  return path === "/election-plan/operators/comms-command";
-}
-
-export function isVoterRegistrationOpsPath(pathname: string): boolean {
-  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
-  return path === "/election-plan/operators/voter-registration";
-}
-
-export function isEventsCommandOpsPath(pathname: string): boolean {
-  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
-  return path === "/election-plan/operators/events-command";
-}
-
-export function isCoalitionCommandOpsPath(pathname: string): boolean {
-  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
-  return path === "/election-plan/operators/coalition-command";
-}
-
-export function isLeaderDashboardOpsPath(pathname: string): boolean {
-  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
-  return path === "/election-plan/operators/leader-dashboard";
-}
-
-export function isLaneCoverageOpsPath(pathname: string): boolean {
-  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
-  return path === "/election-plan/operators/lane-coverage";
-}
-
-export function isGrassrootsFundraisingSettlementOpsPath(pathname: string): boolean {
-  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
-  return path === "/election-plan/operators/grassroots-fundraising-settlement";
-}
-
-export function isLeaderWorkbenchSignInPath(pathname: string): boolean {
-  const path = pathname.split("?")[0]?.replace(/\/$/, "") ?? "";
-  return path === "/election-plan/operators/leaders/sign-in";
-}
+export {
+  isCoalitionCommandOpsPath,
+  isCommsCommandOpsPath,
+  isEventsCommandOpsPath,
+  isGrassrootsFundraisingSettlementOpsPath,
+  isLaneCoverageOpsPath,
+  isLeaderDashboardOpsPath,
+  isLeaderWorkbenchPath,
+  isLeaderWorkbenchSignInPath,
+  isVolunteerIntakeOpsPath,
+  isVoterRegistrationOpsPath,
+} from "@/lib/election-plan/auth/portal-paths";
 
 async function currentPathname(): Promise<string> {
   const h = await headers();

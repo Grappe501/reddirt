@@ -1,9 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-import {
-  isLeaderWorkbenchPath,
-  isLeaderWorkbenchSignInPath,
-} from "@/lib/election-plan/auth/portal-access";
 import { VOLUNTEER_SESSION_COOKIE } from "@/lib/volunteers/auth/constants";
 
 /** Legacy /volunteers paths → Election Plan Operators leader hub. */
