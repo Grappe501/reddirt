@@ -1,3 +1,5 @@
+import "server-only";
+
 import type { MeetingManifest } from "./schemas/meeting-manifest";
 import type { MeetingSession, SessionAdvancePayload } from "./session-types";
 import { readMeetingSession, writeMeetingSession } from "./session-store";
