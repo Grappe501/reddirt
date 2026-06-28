@@ -182,8 +182,15 @@ function readPackagedHandlerRuntime(cwd = process.cwd()) {
     if (hasLegacyOnly) {
       return { modern: false, runtimeAPIVersion: null, invocationMode: null, source: "legacy-js-entry" };
     }
-    if (hasModernEntry && hasRunConfig) {
-      return { modern: true, runtimeAPIVersion: 2, invocationMode: "stream", source: "handler-layout" };
+    // @netlify/plugin-nextjs v5+ packages OpenNext as ___netlify-server-handler.mjs — run-config.json
+    // may be absent on Netlify's layout; .mjs alone is sufficient for modern Functions runtime.
+    if (hasModernEntry) {
+      return {
+        modern: true,
+        runtimeAPIVersion: 2,
+        invocationMode: hasRunConfig ? "stream" : null,
+        source: hasRunConfig ? "handler-layout" : "handler-mjs",
+      };
     }
   }
 
@@ -219,7 +226,14 @@ function readPackagedHandlerRuntime(cwd = process.cwd()) {
 function detectOpenNextModernHandler(cwd = process.cwd()) {
   const packaged = readPackagedHandlerRuntime(cwd);
   if (packaged.modern) return true;
-  if (readHandlerDirEntries(cwd)) return false;
+  const handler = readHandlerDirEntries(cwd);
+  if (handler) {
+    const hasMjs = handler.entries.some(
+      (name) => name === "___netlify-server-handler.mjs" || name.endsWith(".mjs"),
+    );
+    if (hasMjs) return true;
+    return false;
+  }
   return OPENNEXT_HANDLER_MARKERS.some((rel) => fs.existsSync(path.join(cwd, rel)));
 }
 
