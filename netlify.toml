@@ -45,11 +45,13 @@
   # Candidate iPad 11" — bottom nav, touch targets, copilot sheet (set false on staff-only builds)
   NEXT_PUBLIC_CANDIDATE_IPAD_MODE = "true"
 
-# Next.js OpenNext adapter — Netlify applies @netlify/plugin-nextjs automatically for Next.js sites.
-# Do NOT add [[plugins]] package = "@netlify/plugin-nextjs" here — Netlify docs: pinning via netlify.toml
-# can stick the site on legacy Lambda compat (4 KB env cap + FEATURE_FLAGS deploy failures).
-# Do NOT pin in package.json either. Custom onPostBuild plugins below run after the auto adapter.
-# If deploy fails with "handler not found", Netlify UI → Build settings → Runtime → re-select Next.js.
+# Next.js OpenNext — REQUIRED first plugin (packages ___netlify-server-handler).
+# Unpinned only (not in package.json). Do NOT also UI-pin an old @netlify/plugin-nextjs in Netlify
+# Build plugins (duplicate/old pin → legacy Lambda compat → deploy 400).
+# Lambda env cap fix: npm run netlify:env:scopes:launch-minimal — not removing this entry.
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[plugins]]
   package = "./netlify/plugins/prune-server-handler"
