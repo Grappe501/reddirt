@@ -14,9 +14,9 @@ exports.onPostBuild = async ({ utils }) => {
   const result = pruneNetlifyServerHandler(process.cwd());
   if (result.skipped) {
     await utils.build.failBuild(
-      "___netlify-server-handler not found after build — OpenNext did not package the server handler. " +
-        "Netlify UI → Site configuration → Build & deploy → Build settings → Runtime → select Next.js, save. " +
-        "Do not UI-pin an old @netlify/plugin-nextjs. Clear cache and redeploy.",
+      "___netlify-server-handler not found after build — @netlify/plugin-nextjs must run first in netlify.toml. " +
+        "Ensure [[plugins]] package = \"@netlify/plugin-nextjs\" is the first plugin entry (unpinned, not in package.json). " +
+        "Disable any UI-pinned old @netlify/plugin-nextjs in Netlify Build plugins. Clear cache and redeploy.",
     );
     return;
   }
