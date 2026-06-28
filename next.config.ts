@@ -220,6 +220,7 @@ const nextConfig: NextConfig = {
           "./data/campaign-brain/county-party-intelligence/**",
           "./data/campaign-brain/relational-organizing/power-of-5-command-center.source.json",
           "./docs/strategic-plan/plurality-victory-plan/**",
+          "./data/cpos/**",
         ],
         "/api/election-plan/**": [
           "./data/election-plan/election-plan-search-index.json",
@@ -253,6 +254,8 @@ const nextConfig: NextConfig = {
         "/admin/campaign-calendar/**": [
           "./data/calendar-command-center/event-volunteer-reminders.staged.json",
         ],
+        "/election-plan/team-kickoff/**": ["./data/cpos/**"],
+        "/api/cpos/**": ["./data/cpos/**"],
       },
   /**
    * Netlify `___netlify-server-handler` must stay under AWS Lambda’s 250 MB (unzipped) cap.

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-07T06:02:33.579Z",
+  "generatedAt": "2026-06-20T07:33:30.809Z",
   "purpose": "Campaign intelligence claim ledger — INTERNAL ONLY",
   "entries": [
     {
@@ -2442,8 +2442,8 @@
           "notes": "Seeded from campaign-philosophy-graph.json node philosophy-civic-trust"
         }
       ],
-      "createdAt": "2026-06-07T06:02:33.569Z",
-      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdAt": "2026-06-20T07:33:30.800Z",
+      "updatedAt": "2026-06-20T07:33:30.800Z",
       "createdBy": "phase-11-p4-philosophy-graph-seed",
       "lastReviewedAt": null
     },
@@ -2497,8 +2497,8 @@
           "notes": "Seeded from campaign-philosophy-graph.json node philosophy-transparency"
         }
       ],
-      "createdAt": "2026-06-07T06:02:33.569Z",
-      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdAt": "2026-06-20T07:33:30.800Z",
+      "updatedAt": "2026-06-20T07:33:30.800Z",
       "createdBy": "phase-11-p4-philosophy-graph-seed",
       "lastReviewedAt": null
     },
@@ -2552,8 +2552,8 @@
           "notes": "Seeded from campaign-philosophy-graph.json node philosophy-participation"
         }
       ],
-      "createdAt": "2026-06-07T06:02:33.569Z",
-      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdAt": "2026-06-20T07:33:30.800Z",
+      "updatedAt": "2026-06-20T07:33:30.800Z",
       "createdBy": "phase-11-p4-philosophy-graph-seed",
       "lastReviewedAt": null
     },
@@ -2607,8 +2607,8 @@
           "notes": "Seeded from campaign-philosophy-graph.json node philosophy-county-partnership"
         }
       ],
-      "createdAt": "2026-06-07T06:02:33.569Z",
-      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdAt": "2026-06-20T07:33:30.800Z",
+      "updatedAt": "2026-06-20T07:33:30.800Z",
       "createdBy": "phase-11-p4-philosophy-graph-seed",
       "lastReviewedAt": null
     },
@@ -2662,8 +2662,8 @@
           "notes": "Seeded from campaign-philosophy-graph.json node philosophy-modernization"
         }
       ],
-      "createdAt": "2026-06-07T06:02:33.569Z",
-      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdAt": "2026-06-20T07:33:30.800Z",
+      "updatedAt": "2026-06-20T07:33:30.800Z",
       "createdBy": "phase-11-p4-philosophy-graph-seed",
       "lastReviewedAt": null
     },
@@ -2717,8 +2717,8 @@
           "notes": "Seeded from campaign-philosophy-graph.json node philosophy-citizen-empowerment"
         }
       ],
-      "createdAt": "2026-06-07T06:02:33.569Z",
-      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdAt": "2026-06-20T07:33:30.800Z",
+      "updatedAt": "2026-06-20T07:33:30.800Z",
       "createdBy": "phase-11-p4-philosophy-graph-seed",
       "lastReviewedAt": null
     },
@@ -2772,8 +2772,8 @@
           "notes": "Seeded from campaign-philosophy-graph.json node philosophy-anti-centralization"
         }
       ],
-      "createdAt": "2026-06-07T06:02:33.569Z",
-      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdAt": "2026-06-20T07:33:30.800Z",
+      "updatedAt": "2026-06-20T07:33:30.800Z",
       "createdBy": "phase-11-p4-philosophy-graph-seed",
       "lastReviewedAt": null
     },
@@ -2827,8 +2827,8 @@
           "notes": "Seeded from campaign-philosophy-graph.json node philosophy-direct-democracy"
         }
       ],
-      "createdAt": "2026-06-07T06:02:33.569Z",
-      "updatedAt": "2026-06-07T06:02:33.569Z",
+      "createdAt": "2026-06-20T07:33:30.800Z",
+      "updatedAt": "2026-06-20T07:33:30.800Z",
       "createdBy": "phase-11-p4-philosophy-graph-seed",
       "lastReviewedAt": null
     }

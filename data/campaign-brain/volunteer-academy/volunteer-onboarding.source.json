@@ -252,7 +252,7 @@
     { "id": "slot-story-corps", "roleSlug": "story-corps-lead", "label": "Story Corps Lead (statewide)", "county": null, "region": "Statewide", "volunteerName": null, "status": "open", "onboardingComplete": false },
     { "id": "slot-po5-regional-1", "roleSlug": "power-of-5-leader", "label": "Power of 5 Leader · Region 1", "county": null, "region": "Central", "volunteerName": null, "status": "open", "onboardingComplete": false },
     { "id": "slot-po5-regional-2", "roleSlug": "power-of-5-leader", "label": "Power of 5 Leader · Region 2", "county": null, "region": "Northwest", "volunteerName": null, "status": "open", "onboardingComplete": false },
-    { "id": "slot-faith-central", "roleSlug": "faith-outreach-lead", "label": "Faith Outreach · Central", "county": null, "region": "Central", "volunteerName": null, "status": "open", "onboardingComplete": false },
+    { "id": "slot-faith-central", "roleSlug": "faith-outreach-lead", "label": "Faith Outreach · Prayer Team", "county": null, "region": "Statewide", "volunteerName": "Dr. Trenika McCoy", "status": "filled", "onboardingComplete": false },
     { "id": "slot-union-statewide", "roleSlug": "union-outreach-lead", "label": "Union Outreach Lead", "county": null, "region": "Statewide", "volunteerName": null, "status": "open", "onboardingComplete": false },
     { "id": "slot-mobilize", "roleSlug": "mobilize-lead", "label": "Mobilize Lead", "county": null, "region": "Statewide", "volunteerName": null, "status": "open", "onboardingComplete": false },
     { "id": "slot-house-party-open", "roleSlug": "house-party-host", "label": "House Party Host (open county)", "county": null, "region": "Any", "volunteerName": null, "status": "open", "onboardingComplete": false }

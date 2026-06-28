@@ -10,7 +10,7 @@ import { loadOperationsFeedbackRollup } from "@/lib/volunteers/load-operations-f
 import { loadOpenLeaderTasksBySlug } from "@/lib/volunteers/ops-work-items";
 
 export const metadata: Metadata = {
-  title: "Leader command v3.4 | Operators",
+  title: "Leader command v4.0 | Operators",
   robots: { index: false, follow: false },
 };
 
@@ -29,7 +29,7 @@ export default async function LeaderWorkbenchCommandPage({ searchParams }: PageP
 
   return (
     <>
-      <div className="ep-classification">Command · coverage v3.4</div>
+      <div className="ep-classification">Command · coverage v4.0</div>
       <div className="px-6 pt-6 lg:px-10">
         <div className="mx-auto max-w-6xl">
           <Link href="/election-plan/operators" className="text-xs font-semibold text-[var(--ep-navy-muted)] hover:underline">

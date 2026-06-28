@@ -67,6 +67,14 @@ async function main() {
   console.log(`+ FEATURE_FLAGS (compat mode): ~${FEATURE_FLAGS_TYPICAL_BYTES} B → ${withFlags} B`);
   console.log(`Lambda compat limit: ${LAMBDA_ENV_LIMIT_BYTES} B`);
   console.log(`Over compat cap: ${withFlags > LAMBDA_ENV_LIMIT_BYTES ? "YES — deploy will fail on compat mode" : "no (runtime alone)"}`);
+  if (runtime <= LAMBDA_ENV_LIMIT_BYTES && withFlags > LAMBDA_ENV_LIMIT_BYTES) {
+    console.log("");
+    console.log("Diagnosis: function-scoped env is fine; Lambda compatibility mode adds ~9 KB FEATURE_FLAGS.");
+    console.log("Fix: Netlify UI → Build settings → Runtime → Remove pinned Next.js runtime, save, re-select Next.js, save.");
+    console.log("     Also disable any UI-pinned @netlify/plugin-nextjs (keep unpinned entry in netlify.toml).");
+    console.log("     Then: Deploys → Clear cache and deploy site.");
+    console.log("     Or: npm run netlify:unpin-nextjs-runtime");
+  }
   console.log("");
   console.log("Function-scoped vars:");
   for (const r of runtimeRows) {

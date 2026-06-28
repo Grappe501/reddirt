@@ -685,12 +685,17 @@ export type ElectionPlanWorkbenchSnapshot = {
     fundraisingRaisedNote?: string;
     volunteerLeadersGoal: number;
     volunteerLeadersCurrent: number;
+    /** June 28 invite rows before roster merge (optional — set at load time). */
+    volunteerLeadersInviteCount?: number;
+    /** Leader-roster entries with operator workbenches (optional — set at load time). */
+    volunteerLeadersWorkbenchCount?: number;
     volunteerLeaders: Array<{
       id: string;
       name: string;
       locationHint: string | null;
       inviteStatus: string;
       confirmedFoundingTeam: boolean;
+      workbenchHref?: string;
     }>;
     upcomingEvents: number;
     countiesCovered: number;

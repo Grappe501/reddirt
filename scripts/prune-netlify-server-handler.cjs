@@ -11,6 +11,7 @@ const HANDLER_DIRS = [
 ];
 
 const OPPOSITION_DEBATE_LAUNCH = "opposition_debate";
+const KELLY_SOS_LAUNCH = "kelly_sos";
 
 const TOP_LEVEL_DIR_PRUNE = [
   ".git",
@@ -32,13 +33,28 @@ const LAUNCH_DATA_DIR_PRUNE = [
   "data/simulations",
   "data/intelligence/briefs",
   "data/intelligence/backups",
+  "data/campaign-brain/city-intelligence-profiles.json",
+  "data/campaign-brain/kelly-voter-audience-models.json",
+  "data/campaign-brain/media-outreach",
+  "data/campaign-brain/fairs-festivals",
+  "data/campaign-brain/calendar-settlement",
+  "data/campaign-brain/county-coverage",
+  "data/campaign-brain/executive-book",
+  "data/campaign-brain/operations-lock",
 ];
 
 const LAUNCH_ADMIN_TOP_KEEP = new Set(["login", "(board)", "opposition"]);
 const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence", "opposition"]);
 /** Kelly SOS production — keep public site + election-plan portal (force-dynamic). */
-const LAUNCH_APP_TOP_KEEP = new Set(["admin", "election-plan", "(site)"]);
+const LAUNCH_APP_TOP_KEEP = new Set([
+  "admin",
+  "election-plan",
+  "(site)",
+  "volunteers",
+  "onboarding",
+  "dashboard",
+]);
 const LAUNCH_API_TOP_KEEP = new Set(["admin", "election-plan", "forms", "search"]);
 
 /** Standalone copy lands the whole repo in the handler — keep only these top-level names. */
@@ -76,6 +92,14 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!data/simulations/**",
   "!data/intelligence/briefs/**",
   "!data/intelligence/backups/**",
+  "!data/campaign-brain/city-intelligence-profiles.json",
+  "!data/campaign-brain/kelly-voter-audience-models.json",
+  "!data/campaign-brain/media-outreach/**",
+  "!data/campaign-brain/fairs-festivals/**",
+  "!data/campaign-brain/calendar-settlement/**",
+  "!data/campaign-brain/county-coverage/**",
+  "!data/campaign-brain/executive-book/**",
+  "!data/campaign-brain/operations-lock/**",
   "!data/owned-campaign-media/**",
   "!public/**",
   "!docs/kelly-grappe-sos-strategic-plan-manual/**",
@@ -141,10 +165,24 @@ const DIR_PRUNE_AFTER_MATERIALIZE = [
 
 const MAX_MB = 250;
 /** Fail the build before Netlify upload if deploy-size estimate exceeds this (symlink drift margin). */
-const DEPLOY_FAIL_MB = 245;
+const DEPLOY_FAIL_MB = 220;
+
+function isNetlifyBuild() {
+  return Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
+}
 
 function isOppositionDebateLaunch() {
   return process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === OPPOSITION_DEBATE_LAUNCH;
+}
+
+function isKellySosLaunch() {
+  const mode = process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE;
+  return !mode || mode === KELLY_SOS_LAUNCH || mode === "kelly_sos_ops";
+}
+
+/** Aggressive handler shrink on every Netlify deploy (250 MB unzipped upload cap). */
+function shouldRunAggressiveLaunchPrune() {
+  return isNetlifyBuild() || isOppositionDebateLaunch();
 }
 
 function exists(target) {
@@ -371,7 +409,7 @@ function pruneLaunchHandlerRoot(handlerRoot) {
   return removed;
 }
 
-function pruneLaunchAppAndApi(handlerRoot) {
+function pruneLaunchAppAndApi(handlerRoot, opts = { stripAdminBoards: true }) {
   const removed = [];
   const appRoot = path.join(handlerRoot, ".next/server/app");
   if (!exists(appRoot)) return removed;
@@ -379,7 +417,9 @@ function pruneLaunchAppAndApi(handlerRoot) {
   for (const ent of fs.readdirSync(appRoot, { withFileTypes: true })) {
     if (!ent.isDirectory()) continue;
     if (LAUNCH_APP_TOP_KEEP.has(ent.name)) {
-      if (ent.name === "admin") removed.push(...pruneLaunchAdminServer(handlerRoot));
+      if (ent.name === "admin" && opts.stripAdminBoards) {
+        removed.push(...pruneLaunchAdminServer(handlerRoot));
+      }
       continue;
     }
     const rel = path.join(".next/server/app", ent.name);
@@ -560,10 +600,14 @@ function pruneHandler(handlerRoot, repoRoot) {
     if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
   }
 
-  if (isOppositionDebateLaunch()) {
+  if (shouldRunAggressiveLaunchPrune()) {
     removed.push(...deleteAllSymlinks(handlerRoot));
     removed.push(...pruneLaunchHandlerRoot(handlerRoot));
-    removed.push(...pruneLaunchAppAndApi(handlerRoot));
+    removed.push(
+      ...pruneLaunchAppAndApi(handlerRoot, {
+        stripAdminBoards: isOppositionDebateLaunch(),
+      }),
+    );
     for (const rel of LAUNCH_PUBLIC_SERVER_DIRS) {
       if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
     }
@@ -699,7 +743,7 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
     deployMb += dirSizeBytesFollowSymlinks(handler) / (1024 * 1024);
   }
 
-  const manifestPatched = isOppositionDebateLaunch() ? patchServerHandlerManifest(cwd) : false;
+  const manifestPatched = isNetlifyBuild() ? patchServerHandlerManifest(cwd) : false;
 
   return {
     skipped: false,
@@ -719,7 +763,8 @@ function formatOversizeMessage(result) {
   const top = largestFiles(result.handler)
     .map((row) => `  ${(row.size / (1024 * 1024)).toFixed(2)} MB  ${row.rel}`)
     .join("\n");
-  const launchNote = isOppositionDebateLaunch() ? "\nLaunch mode: opposition_debate." : "";
+  const mode = process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE ?? "default";
+  const launchNote = `\nLaunch mode: ${mode}.`;
   return (
     `___netlify-server-handler deploy size is ${result.deployMb.toFixed(1)} MB (Netlify unzipped limit ${MAX_MB} MB).` +
     ` Staging tree: ${result.afterMb.toFixed(1)} MB.${launchNote}\nLargest files:\n${top}`
@@ -728,7 +773,7 @@ function formatOversizeMessage(result) {
 
 function shouldFailDeploy(result) {
   if (result.skipped) {
-    return isOppositionDebateLaunch();
+    return isNetlifyBuild();
   }
   const measuredMb = Math.max(result.afterMb, result.deployMb);
   return measuredMb > DEPLOY_FAIL_MB;
@@ -753,6 +798,9 @@ module.exports = {
   pruneNetlifyServerHandler,
   formatOversizeMessage,
   shouldFailDeploy,
+  isNetlifyBuild,
+  isKellySosLaunch,
+  isOppositionDebateLaunch,
   MAX_MB,
   DEPLOY_FAIL_MB,
 };

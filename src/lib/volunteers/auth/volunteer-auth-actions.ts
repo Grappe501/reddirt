@@ -49,14 +49,13 @@ export async function volunteerHubLoginAction(formData: FormData) {
   const redirectTo = String(formData.get("redirectTo") ?? "").trim();
   const safe =
     (redirectTo.startsWith("/election-plan/operators/leaders") ||
-      redirectTo.startsWith("/volunteers")) &&
+      redirectTo.startsWith("/volunteers/me") ||
+      redirectTo.startsWith("/volunteers/sign-in")) &&
     !redirectTo.startsWith("//") &&
     !redirectTo.includes("\n") &&
     !redirectTo.includes("/sign-in") &&
     !redirectTo.startsWith("/volunteers/login")
-      ? redirectTo.startsWith("/volunteers")
-        ? redirectTo.replace(/^\/volunteers(\/me)?\/?$/, "/election-plan/operators/leaders/me")
-        : redirectTo
+      ? redirectTo
       : "/election-plan/operators/leaders/me";
   redirect(safe);
 }

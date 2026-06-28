@@ -9,7 +9,7 @@ import { loadCurrentVolunteerLeader } from "@/lib/volunteers/load-current-leader
 import { loadLeaderRoleInbox } from "@/lib/volunteers/ops-work-items";
 
 export const metadata: Metadata = {
-  title: "My workbench v3.4 | Operators",
+  title: "My workbench v4.0 | Operators",
   robots: { index: false, follow: false },
 };
 

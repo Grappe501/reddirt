@@ -437,6 +437,8 @@ model VolunteerProfile {
   availability                    String?
   skills                          String?
   leadershipInterest              Boolean                          @default(false)
+  /// First visit to personal volunteer board completed (interests, contact, location).
+  boardOnboardedAt                DateTime?
   eventSignups                    EventSignup[]
   communicationThreads            CommunicationThread[]
   contactPreference               ContactPreference?

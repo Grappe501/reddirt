@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-06-07T06:03:10.499Z",
+  "generatedAt": "2026-06-20T07:35:35.271Z",
   "stackCompletionPct": 100,
   "passesAtBar": 9,
   "passTotal": 9,
   "staffCoachStaffOnly": true,
   "ipadDrillPlayerWired": true,
   "drillQueueStageSafe": true,
-  "candidateNavLinkCount": 23,
+  "candidateNavLinkCount": 27,
   "checkpoints": [
     {
       "checkpointId": "p0-session-launcher",

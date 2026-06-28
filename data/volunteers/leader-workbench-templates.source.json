@@ -191,7 +191,7 @@
       "toolLinks": [
         { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "Place fundraising recruits on city and program workbenches" },
         { "label": "Priority cities", "href": "/election-plan/cities", "description": "Top 125 city strategy — geography for recruiter placement" },
-        { "label": "County playbooks", "href": "/election-plan/counties", "description": "County-level fundraising oversight and strike teams" },
+        { "label": "County playbooks", "href": "/election-plan/leadership/county-coverage", "description": "County-level fundraising oversight and strike teams" },
         { "label": "Leader command heatmap", "href": "/election-plan/operators/leaders/command", "description": "Activity and open slots across your recruiter network" }
       ]
     },
@@ -266,7 +266,7 @@
       ],
       "toolLinks": [
         { "label": "North Central / Ozarks region", "href": "/organizing-intelligence/regions/north-central-ozarks", "description": "Campaign region dashboard — north_central registry bucket" },
-        { "label": "County playbooks", "href": "/election-plan/counties", "description": "75-county drill-down — Baxter, Marion, Fulton, Boone, and cluster counties" },
+        { "label": "County playbooks", "href": "/election-plan/leadership/county-coverage", "description": "75-county drill-down — Baxter, Marion, Fulton, Boone, and cluster counties" },
         { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches across your cluster" },
         { "label": "County leadership coverage", "href": "/election-plan/leadership/county-coverage", "description": "Open county and city leader roles in your cluster" },
         { "label": "Leader command", "href": "/election-plan/operators/leaders/command", "description": "Recruit and assign leaders across nested workbenches" }
@@ -517,7 +517,7 @@
         { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and compliance" },
         { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer management — onboarding, roster CRM, retention" },
         { "label": "Budget dashboard", "href": "/election-plan/executive-book/budget/dashboard", "description": "Finance inner circle — campaign budget framework" },
-        { "label": "County playbooks", "href": "/election-plan/counties", "description": "Pulaski and Saline drill-downs — county tools without chair title" }
+        { "label": "County playbooks", "href": "/election-plan/leadership/county-coverage", "description": "Pulaski and Saline drill-downs — county tools without chair title" }
       ]
     },
     "educators_coalition_lead": {
@@ -544,7 +544,7 @@
       ],
       "toolLinks": [
         { "label": "Educators coalition workbench", "href": "/election-plan/workbenches/educators", "description": "AEA, teachers, school districts, and education allies command surface" },
-        { "label": "County playbooks", "href": "/election-plan/counties", "description": "Place teacher volunteers on every county workbench" },
+        { "label": "County playbooks", "href": "/election-plan/leadership/county-coverage", "description": "Place teacher volunteers on every county workbench" },
         { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches statewide" },
         { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" },
         { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and compliance" },
@@ -576,7 +576,7 @@
         { "label": "Fundraising lane drill-down", "href": "/election-plan/operators/leaders/me/lane/fundraising", "description": "Grassroots fundraising tools and program goal tracking" },
         { "label": "Operations lane drill-down", "href": "/election-plan/operators/leaders/me/lane/operations", "description": "Volunteer HQ — onboarding, roster CRM, retention" },
         { "label": "Coalition lane drill-down", "href": "/election-plan/operators/leaders/me/lane/coalition", "description": "Coalition work branches and partner workbenches" },
-        { "label": "County playbooks", "href": "/election-plan/counties", "description": "Nested county drill-downs for cross-county volunteers" },
+        { "label": "County playbooks", "href": "/election-plan/leadership/county-coverage", "description": "Nested county drill-downs for cross-county volunteers" },
         { "label": "Community workbench hub", "href": "/election-plan/workbenches", "description": "City and program workbenches in your geography" }
       ]
     },
