@@ -26,6 +26,7 @@
     "email:contact-import:gate": "prisma migrate deploy && node scripts/email-command-center-preflight.mjs && npm run check",
     "email:no-send-scan": "node scripts/email-command-center-no-send-scan.mjs",
     "strategy-manual:verify": "tsx scripts/verify-strategy-manual.ts",
+    "cpos:validate-manifest": "tsx scripts/validate-cpos-manifest.ts",
     "voter-modeling:probe": "tsx scripts/probe-voter-modeling-chunks.ts",
     "communication-ingest:guardrails": "tsx scripts/verify-communication-ingest-guardrails.ts",
     "communication-ingest:normalize-check": "tsx scripts/verify-communication-normalize.ts",
@@ -557,6 +558,7 @@
     "tailwind-merge": "^2.6.0",
     "twilio": "^6.0.0",
     "xlsx": "^0.18.5",
+    "yaml": "^2.9.0",
     "zod": "^3.24.1"
   },
   "prisma": {

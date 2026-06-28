@@ -1,0 +1,407 @@
+# CPOS Meeting Manifest — Kelly Grappe Campaign Team Kickoff
+# Compiled by: npm run cpos:validate-manifest (CPOS-1 slice)
+# Doc: docs/cpos/021-MEETING-MANIFEST-SPEC.md
+
+id: kickoff-2026
+slug: team-kickoff
+version: 2
+meetingType: team_kickoff
+
+title: Kelly Grappe Campaign Team Kickoff
+subtitle: Building the campaign. Building the infrastructure. Building the future.
+
+schedule:
+  timezone: America/Chicago
+  meetingStart: "2026-06-28T17:59:00"
+  meetingEnd: "2026-06-28T18:59:00"
+  programStart: "2026-06-28T18:13:00"
+
+join:
+  audiencePath: /election-plan/team-kickoff
+  presenterPath: /election-plan/team-kickoff/presenter
+  bannerCopy: >-
+    Follow along on your phone, tablet, or computer at
+    /election-plan/team-kickoff — same screen as Zoom or at home.
+  authPolicy: election_plan_login
+  postMeetingPasscode: true
+
+promise: >-
+  This is not a normal campaign meeting. This is the first rollout of a
+  statewide organizing system.
+
+openingDisclaimer: >-
+  This dashboard is a guided tour. Most Election Plan links are active. A few
+  pages are still being refined. Please stay with the meeting flow tonight.
+  After the meeting, you are welcome to explore.
+
+coreNumbers:
+  - key: road_days_per_week
+    label: Days on the road
+    value: "5+"
+    unit: days per week
+  - key: campaign_stop_counties
+    label: Official campaign-stop counties
+    value: "47"
+  - key: cities
+    label: Cities
+    value: "76"
+  - key: campaign_stops
+    label: Campaign stops
+    value: "220"
+  - key: miles
+    label: Miles traveled
+    value: "20,000+"
+  - key: conversations
+    label: Face-to-face conversations (estimated)
+    value: "15,000"
+  - key: social_views
+    label: Organic social views so far
+    value: Thousands
+  - key: registration_goal
+    label: Voter registration goal
+    value: "50,000"
+
+media:
+  openingVideo:
+    id: opening_reel
+    src: /media/cpos/kickoff/opening-reel.mp4
+    placeholder: true
+    durationMinutes: 12
+
+chapters:
+  - id: ch00_opening_video
+    index: 0
+    title: Opening Video
+    scheduleStart: "2026-06-28T17:59:00"
+    scheduleEnd: "2026-06-28T18:11:00"
+    storyBeat: arrival
+    audienceMode: full_screen_video
+    presenterAction: none
+    segments:
+      - type: video
+        mediaRef: opening_reel
+
+  - id: ch01_welcome
+    index: 1
+    title: Welcome / Ground Rules
+    scheduleStart: "2026-06-28T18:11:00"
+    scheduleEnd: "2026-06-28T18:13:00"
+    storyBeat: settle
+    segments:
+      - type: narrative
+        body: >-
+          Settle in. This is guided mode — follow the meeting on your device or
+          the screen. Please stay with the flow tonight; explore freely after we
+          close.
+      - type: login_reminder
+      - type: countdown
+        label: Program starts at 6:13 PM Central sharp
+
+  - id: ch02_why
+    index: 2
+    title: Why We Are Here
+    scheduleStart: "2026-06-28T18:13:00"
+    scheduleEnd: "2026-06-28T18:18:00"
+    storyBeat: purpose
+    segments:
+      - type: narrative
+        body: >-
+          We are not just building a Kelly campaign. We are building Arkansas
+          grassroots infrastructure.
+
+  - id: ch03_road_since_november
+    index: 3
+    title: The Road Since November
+    scheduleStart: "2026-06-28T18:18:00"
+    scheduleEnd: "2026-06-28T18:23:00"
+    storyBeat: credibility
+    segments:
+      - type: metric_animation
+        metrics:
+          - campaign_stop_counties
+          - cities
+          - campaign_stops
+          - miles
+          - conversations
+      - type: narrative
+        body: >-
+          The trust pass: if someone gets eyeball to eyeball with Kelly and
+          speaks directly with her, that becomes transferable trust.
+    cues:
+      - cue_trust_moves_person
+      - cue_not_social_media_alone
+
+  - id: ch04_golden_circle
+    index: 4
+    title: Golden Circle
+    scheduleStart: "2026-06-28T18:23:00"
+    scheduleEnd: "2026-06-28T18:28:00"
+    storyBeat: framework
+    segments:
+      - type: golden_circle
+        why: Trust, community, infrastructure.
+        how: Relationships, Power of 5, immersion, training, dashboards, coordination.
+        what: >-
+          Canvassing, phones, house parties, events, social media, voter
+          registration, candidate support.
+
+  - id: ch05_bigger_than_one
+    index: 5
+    title: Bigger Than One Campaign
+    scheduleStart: "2026-06-28T18:28:00"
+    scheduleEnd: "2026-06-28T18:34:00"
+    storyBeat: coalition
+    segments:
+      - type: narrative
+        body: >-
+          Partner with every state and local campaign possible — state House,
+          state Senate, school board, city council, mayor, county judge, JP,
+          county offices, and community races. Bring their campaigns into our
+          system so we coordinate canvasses, phone banks, meetings, town halls,
+          house parties, trips, calendars, and volunteer networks.
+    cues:
+      - cue_bigger_table
+      - cue_every_campaign_stronger
+
+  - id: ch06_immersion_house_party
+    index: 6
+    title: Immersion + House Party Plan
+    scheduleStart: "2026-06-28T18:34:00"
+    scheduleEnd: "2026-06-28T18:40:00"
+    storyBeat: immersion
+    segments:
+      - type: narrative
+        body: >-
+          We do not parachute into communities. We return. We build trust. We
+          host house parties. We grow local teams. We help communities organize
+          themselves.
+
+  - id: ch07_power_of_5
+    index: 7
+    title: Power of 5
+    scheduleStart: "2026-06-28T18:40:00"
+    scheduleEnd: "2026-06-28T18:45:00"
+    storyBeat: relational
+    segments:
+      - type: narrative
+        body: >-
+          Every person becomes a team leader. Each person starts with five
+          people. Each five can become five more. Small trusted networks
+          compound.
+    cues:
+      - cue_co_leads_sustainable
+      - cue_few_hours_matters
+
+  - id: ch08_voter_registration
+    index: 8
+    title: Voter Registration Goal
+    scheduleStart: "2026-06-28T18:45:00"
+    scheduleEnd: "2026-06-28T18:49:00"
+    storyBeat: registration
+    segments:
+      - type: metric_strip
+        metrics: [registration_goal]
+      - type: narrative
+        body: >-
+          Statewide goal 50,000 registrations. Every county, city, and campus
+          should eventually have its own goal and progress tracker.
+
+  - id: ch09_social_media
+    index: 9
+    title: Social Media Push
+    scheduleStart: "2026-06-28T18:49:00"
+    scheduleEnd: "2026-06-28T18:53:00"
+    storyBeat: comms
+    segments:
+      - type: narrative
+        body: >-
+          Thank Leann for dedicated organic social media work. Platforms:
+          Facebook, TikTok, YouTube, Instagram. Like, comment, share daily when
+          possible. Create original posts. Tag the campaign. Use selfie videos.
+          Post 15-second clips when you see campaign shirts or events.
+      - type: hashtag
+        tag: "#VoteGrappeSOS26"
+      - type: narrative
+        body: >-
+          People trust people they know more than campaign pages. Kelly leads on
+          civil engagement — reach red feeds without feeding ugliness.
+    cues:
+      - cue_devalue_national
+      - cue_do_not_attack_trump
+
+  - id: ch10_dashboard_tour
+    index: 10
+    title: Dashboard Tour
+    scheduleStart: "2026-06-28T18:53:00"
+    scheduleEnd: "2026-06-28T18:57:00"
+    storyBeat: demo
+    primaryDemo: county_playbook_hub
+    secondaryDemoCards:
+      - admin_election_plan
+      - immersion_missions
+      - calendar_events
+      - power_of_5_placeholder
+      - comms_social_placeholder
+    segments:
+      - type: demo_launcher
+        demoRef: county_playbook_hub
+      - type: demo_cards
+        softMode: true
+
+  - id: ch11_choose_lane
+    index: 11
+    title: Choose Your Lane
+    scheduleStart: "2026-06-28T18:57:00"
+    scheduleEnd: "2026-06-28T18:59:00"
+    storyBeat: commitment
+    closingLine: The campaign is temporary. The network is permanent.
+    interactions:
+      - poll_where_help
+      - poll_lane_natural
+      - poll_power_of_5
+    segments:
+      - type: interaction_stack
+      - type: closing_line
+
+demos:
+  county_playbook_hub:
+    id: county_playbook_hub
+    label: County Playbooks
+    path: /election-plan/counties
+    presentationQuery:
+      presentation: "true"
+      cpos: "1"
+    polishLevel: v1_primary
+  admin_election_plan:
+    id: admin_election_plan
+    label: Election Plan Command
+    path: /admin/election-plan
+    presentationQuery:
+      presentation: "true"
+      cpos: "1"
+    polishLevel: card_only
+  immersion_missions:
+    id: immersion_missions
+    label: Immersion Missions
+    path: /election-plan/battlefield
+    presentationQuery:
+      presentation: "true"
+      cpos: "1"
+    polishLevel: card_only
+  calendar_events:
+    id: calendar_events
+    label: Campaign Calendar
+    path: /election-plan/operators/events-command
+    presentationQuery:
+      presentation: "true"
+      cpos: "1"
+    polishLevel: card_only
+  power_of_5_placeholder:
+    id: power_of_5_placeholder
+    label: Power of 5 / Training
+    path: /relational
+    presentationQuery:
+      presentation: "true"
+      cpos: "1"
+    polishLevel: placeholder
+  comms_social_placeholder:
+    id: comms_social_placeholder
+    label: Communications / Social
+    path: /election-plan/operators/comms-command
+    presentationQuery:
+      presentation: "true"
+      cpos: "1"
+    polishLevel: placeholder
+
+interactions:
+  poll_where_help:
+    id: poll_where_help
+    type: poll
+    prompt: Where do you want to help?
+    options:
+      - { id: my_city, label: My city }
+      - { id: my_county, label: My county }
+      - { id: regional_cluster, label: A regional cluster }
+      - { id: statewide, label: Statewide support }
+      - { id: campus_youth, label: Campus / youth }
+      - { id: not_sure, label: Not sure yet }
+  poll_lane_natural:
+    id: poll_lane_natural
+    type: poll
+    prompt: What lane feels natural?
+    options:
+      - { id: events, label: Events }
+      - { id: house_parties, label: House parties }
+      - { id: volunteer_mgmt, label: Volunteer management }
+      - { id: social_media, label: Social media }
+      - { id: graphics_video, label: Graphics / video }
+      - { id: youth_campus, label: Youth / campus }
+      - { id: canvassing_phones, label: Canvassing / phones }
+      - { id: voter_registration, label: Voter registration }
+      - { id: candidate_coord, label: Candidate coordination }
+      - { id: fundraising, label: Fundraising }
+      - { id: data_admin, label: Data / admin }
+      - { id: training, label: Training }
+      - { id: not_sure, label: Not sure yet }
+  poll_power_of_5:
+    id: poll_power_of_5
+    type: poll
+    prompt: Power of 5 — where are you tonight?
+    options:
+      - { id: five_tonight, label: I can name my first five tonight }
+      - { id: two_or_three, label: I can start with two or three }
+      - { id: need_help_list, label: I need help thinking through my list }
+      - { id: co_lead, label: I want to co-lead with someone }
+
+cues:
+  cue_battle_won_before:
+    text: "Every battle is won before it is fought."
+    chapters: [ch02_why]
+  cue_trust_moves_person:
+    text: Trust moves person to person.
+    chapters: [ch03_road_since_november]
+  cue_not_social_media_alone:
+    text: This will not be won by social media alone.
+    chapters: [ch03_road_since_november, ch09_social_media]
+  cue_bigger_table:
+    text: We are building a bigger table.
+    chapters: [ch05_bigger_than_one]
+  cue_do_not_attack_trump:
+    text: Do not attack Trump or nationalize the conversation.
+    chapters: [ch09_social_media]
+  cue_devalue_national:
+    text: Devalue national politics. Revalue local trust.
+    chapters: [ch09_social_media]
+  cue_labor_day_visible:
+    text: Labor Day is when the system becomes visible.
+    chapters: [ch05_bigger_than_one]
+  cue_every_campaign_stronger:
+    text: Every campaign should be stronger because this exists.
+    chapters: [ch05_bigger_than_one]
+  cue_few_hours_matters:
+    text: A few hours a week matters.
+    chapters: [ch07_power_of_5]
+  cue_co_leads_sustainable:
+    text: Co-leads make this sustainable.
+    chapters: [ch07_power_of_5, ch11_choose_lane]
+
+timing:
+  useWallClock: true
+  chapterWarningsMinutesBeforeEnd: 1
+  globalHardStopMinutes: 90
+
+completion:
+  analyticsOnly: true
+  replayVideo: false
+  formRouting:
+    provider: api_forms
+    path: /api/forms
+    formKey: volunteer_kickoff_lane_selection
+    workflowIntakeType: volunteer_kickoff
+
+integrations:
+  zoom: alongside
+  electionPlan: true
+  workflowIntake: true
+  powerOf5: true
+  realtimeV1: polling
