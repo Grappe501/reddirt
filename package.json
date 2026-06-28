@@ -330,6 +330,7 @@
     "netlify:env:audit": "node scripts/audit-netlify-function-env.cjs",
     "netlify:unpin-nextjs-runtime": "node scripts/netlify-unpin-nextjs-runtime.cjs",
     "netlify:unpin-nextjs-runtime:dry": "node scripts/netlify-unpin-nextjs-runtime.cjs --dry-run",
+    "netlify:deploy:clear-cache": "node scripts/netlify-enforce-env-scopes.cjs --deploy-only",
     "db:studio": "prisma studio",
     "test:db:prompt": "node scripts/prompt-and-test-db.mjs",
     "scrape:biography-sources": "tsx scripts/scrape-public-biography-sources.ts",
