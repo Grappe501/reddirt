@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import type { MetricBeat, MeetingChapter, MeetingManifest, MeetingSegment } from "@/lib/cpos/schemas/meeting-manifest";
-import { buildDemoUrl } from "@/lib/cpos/meeting-engine";
+import { buildDemoUrl } from "@/lib/cpos/demo-url";
 
 type Props = {
   chapter: MeetingChapter;

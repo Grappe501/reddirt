@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-import { buildDemoUrl } from "@/lib/cpos/meeting-engine";
+import { buildDemoUrl } from "@/lib/cpos/demo-url";
 import type { MeetingManifest } from "@/lib/cpos/schemas/meeting-manifest";
 import { postSessionAdvance, useCposSessionPoll } from "@/components/cpos/useCposSessionPoll";
 
