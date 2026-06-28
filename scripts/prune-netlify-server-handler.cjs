@@ -64,10 +64,6 @@ const LAUNCH_HANDLER_ROOT_KEEP = new Set([
   "data",
   "docs",
   "package.json",
-  ".env",
-  ".env.production",
-  ".env.local",
-  ".env.production.local",
 ]);
 
 /** @netlify/plugin-nextjs writes includedFiles: ["**"] — reinforce exclusions after prune. */
@@ -101,6 +97,10 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!data/campaign-brain/executive-book/**",
   "!data/campaign-brain/operations-lock/**",
   "!data/owned-campaign-media/**",
+  "!.env",
+  "!.env.*",
+  "!**/.env",
+  "!**/.env.*",
   "!public/**",
   "!docs/kelly-grappe-sos-strategic-plan-manual/**",
   "!campaign-system-manual/**",

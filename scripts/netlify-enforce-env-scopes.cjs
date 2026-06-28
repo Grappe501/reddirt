@@ -22,6 +22,7 @@ const {
 const API = "https://api.netlify.com/api/v1";
 const dryRun = process.argv.includes("--dry-run");
 const triggerDeploy = process.argv.includes("--deploy");
+const deployOnly = process.argv.includes("--deploy-only");
 const launchMinimal = process.argv.includes("--launch-minimal");
 
 function readJson(filePath) {
@@ -125,6 +126,12 @@ async function triggerClearCacheDeploy(token, siteId) {
 async function main() {
   const token = resolveAuthToken();
   const siteId = resolveSiteId();
+
+  if (deployOnly) {
+    console.log(`Site: ${siteId} — clear-cache production deploy`);
+    await triggerClearCacheDeploy(token, siteId);
+    return;
+  }
 
   const site = await api(token, `/sites/${siteId}`);
   const accountId = site.account_id;

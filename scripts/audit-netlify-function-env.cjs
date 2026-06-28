@@ -74,6 +74,11 @@ async function main() {
     console.log("     Also disable any UI-pinned @netlify/plugin-nextjs (keep unpinned entry in netlify.toml).");
     console.log("     Then: Deploys → Clear cache and deploy site.");
     console.log("     Or: npm run netlify:unpin-nextjs-runtime");
+    console.log("");
+    console.log("If env is already minimal (<500 B) and deploy still fails at upload:");
+    console.log("  Open Netlify support ticket — site kgrappe (e952be4a-3291-492c-9ba2-f31fd23cdede)");
+    console.log("  Ask to exclude from AWS_LAMBDA_JS_RUNTIME compat rollout or confirm modern Functions runtime.");
+    console.log("  Error: Invalid AWS Lambda parameters on ___netlify-server-handler upload (runtimeAPIVersion 2).");
   }
   console.log("");
   console.log("Function-scoped vars:");
