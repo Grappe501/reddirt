@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import type { MetricBeat, MeetingChapter, MeetingManifest, MeetingSegment } from "@/lib/cpos/schemas/meeting-manifest";
+import { CposRollCallCompanion } from "@/components/cpos/CposRollCallCompanion";
 import { buildDemoUrl } from "@/lib/cpos/demo-url";
 
 type Props = {
@@ -26,6 +27,41 @@ function SegmentBlock({
   meetingId: string;
 }) {
   const type = segment.type as string;
+
+  if (type === "roll_call_companion") {
+    const headline = typeof segment.headline === "string" ? segment.headline : "Roll call";
+    const subhead = typeof segment.subhead === "string" ? segment.subhead : undefined;
+    const bullets = Array.isArray(segment.bullets) ? (segment.bullets as string[]) : [];
+    const zoomTips = Array.isArray(segment.zoomTips) ? (segment.zoomTips as string[]) : [];
+    const chatTemplate = typeof segment.chatTemplate === "string" ? segment.chatTemplate : "";
+    const youtubeVideoId =
+      typeof segment.youtubeVideoId === "string"
+        ? segment.youtubeVideoId
+        : manifest.media?.openingVideo?.youtubeVideoId;
+    const videoStartAt =
+      typeof segment.videoStartAt === "string"
+        ? segment.videoStartAt
+        : chapter.scheduleStart;
+    const timezone = manifest.schedule?.timezone ?? "America/Chicago";
+    const videoTitle =
+      typeof segment.videoTitle === "string" ? segment.videoTitle : manifest.title;
+
+    return (
+      <div className="cpos-segment">
+        <CposRollCallCompanion
+          headline={headline}
+          subhead={subhead}
+          bullets={bullets}
+          zoomTips={zoomTips}
+          chatTemplate={chatTemplate}
+          youtubeVideoId={youtubeVideoId}
+          videoStartAt={videoStartAt}
+          timezone={timezone}
+          videoTitle={videoTitle}
+        />
+      </div>
+    );
+  }
 
   if (type === "video") {
     const src = manifest.media?.openingVideo?.src;

@@ -30,7 +30,9 @@ export function CposAudienceApp({ manifest, meetingId, joinUrlDisplay }: Props) 
         )}
       </header>
 
-      <main className="cpos-main">
+      <main
+        className={`cpos-main${chapter.audienceMode === "companion_youtube" ? " cpos-main-companion" : ""}`}
+      >
         {loading && !session && <div className="cpos-loading">Connecting to meeting…</div>}
         {error && <div className="cpos-stay-flow">Sync issue: {error} — content below may lag; refresh if needed.</div>}
 

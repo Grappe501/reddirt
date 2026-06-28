@@ -1347,3 +1347,102 @@
   .ep-shell { grid-template-columns: 1fr; }
   .ep-hero { break-after: avoid; }
 }
+
+/* Persistent Election Day 2026 countdown — upper right on all Election Plan surfaces */
+.ep-election-countdown-pip {
+  position: fixed;
+  z-index: 55;
+  top: 0.45rem;
+  right: 0.45rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.05rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: var(--ep-radius);
+  pointer-events: none;
+  line-height: 1.1;
+  box-shadow: var(--ep-shadow-md);
+}
+
+@media (min-width: 640px) {
+  .ep-election-countdown-pip {
+    top: 0.6rem;
+    right: 0.65rem;
+    padding: 0.45rem 0.65rem;
+  }
+}
+
+.ep-election-countdown-pip--light {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--ep-border-strong);
+  backdrop-filter: blur(8px);
+}
+
+.ep-election-countdown-pip--dark {
+  background: rgba(10, 22, 40, 0.92);
+  border: 1px solid rgba(184, 134, 46, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.ep-election-countdown-pip__label {
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ep-election-countdown-pip--light .ep-election-countdown-pip__label {
+  color: var(--ep-navy-muted);
+}
+
+.ep-election-countdown-pip--dark .ep-election-countdown-pip__label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.ep-election-countdown-pip__days {
+  font-family: var(--font-heading, system-ui);
+  font-size: 1.125rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+.ep-election-countdown-pip--light .ep-election-countdown-pip__days {
+  color: var(--ep-navy);
+}
+
+.ep-election-countdown-pip--dark .ep-election-countdown-pip__days {
+  color: var(--ep-gold);
+}
+
+.ep-election-countdown-pip__unit {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: -0.1rem;
+}
+
+.ep-election-countdown-pip--light .ep-election-countdown-pip__unit {
+  color: var(--ep-navy-muted);
+}
+
+.ep-election-countdown-pip--dark .ep-election-countdown-pip__unit {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ep-election-countdown-pip__clock {
+  font-size: 0.625rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.15rem;
+}
+
+.ep-election-countdown-pip--light .ep-election-countdown-pip__clock {
+  color: var(--ep-blue);
+}
+
+.ep-election-countdown-pip--dark .ep-election-countdown-pip__clock {
+  color: rgba(255, 255, 255, 0.72);
+}

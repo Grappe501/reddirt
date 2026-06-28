@@ -64,27 +64,55 @@ coreNumbers:
 media:
   openingVideo:
     id: opening_reel
-    src: /media/cpos/kickoff/opening-reel.mp4
+    # Public kickoff reel (~10 min) — https://www.youtube.com/watch?v=tCwIruQ7OKg
+    youtubeVideoId: tCwIruQ7OKg
     placeholder: true
-    durationMinutes: 12
+    durationMinutes: 10
 
 chapters:
   - id: ch00_opening_video
     index: 0
-    title: Opening Video
+    title: Roll Call Roulette
     scheduleStart: "2026-06-28T17:59:00"
-    scheduleEnd: "2026-06-28T18:11:00"
+    scheduleEnd: "2026-06-28T18:10:00"
     storyBeat: arrival
-    audienceMode: full_screen_video
-    presenterAction: none
+    audienceMode: companion_youtube
+    presenterAction: roll_call_host
     segments:
-      - type: video
-        mediaRef: opening_reel
+      - type: roll_call_companion
+        videoStartAt: "2026-06-28T18:00:00"
+        headline: "Roll Call Roulette — meet the team before we start the show"
+        subhead: >-
+          Zoom is our audio room. This screen is your guide. At 6:00 PM the opening
+          reel plays in the corner — shrink Zoom video tiles so CPOS stays center stage.
+        bullets:
+          - "Drop ONE roll-call message in Zoom chat (see script below)."
+          - "Name · city/county you live in · email & phone if comfortable."
+          - "Not comfortable sharing publicly? Private message the host so we have correct contact info."
+          - "Share social handles — Facebook, Instagram, YouTube, TikTok — so we can connect as real people, not just volunteers."
+          - "This is a networking moment. Introduce yourself like you would at a county fair — fun, human, Arkansas."
+        zoomTips:
+          - "Shrink your self-view (and extra tiles) to a tiny corner — about 1/16 of your screen — or hide self-view."
+          - "Keep speaker view or Kelly pinned where you need it for audio."
+          - "Make this CPOS page your main screen; Zoom rides along."
+          - "Use the volume slider on the small video when Kelly speaks live."
+        chatTemplate: |
+          🎤 ROLL CALL — let's actually meet each other!
+
+          One message in Zoom chat, please:
+          • Name
+          • City / County where you live
+          • Email & phone (if you're comfortable)
+            → Prefer private? DM the host so we have your correct contact info
+          • Social handles: Facebook, Instagram, YouTube, TikTok
+            → Let's be network friends AND campaign connections
+
+          This is a networking moment. Be real. Be fun. 🌾
 
   - id: ch01_welcome
     index: 1
     title: Welcome / Ground Rules
-    scheduleStart: "2026-06-28T18:11:00"
+    scheduleStart: "2026-06-28T18:10:00"
     scheduleEnd: "2026-06-28T18:13:00"
     storyBeat: settle
     segments:
@@ -354,6 +382,11 @@ interactions:
       - { id: co_lead, label: I want to co-lead with someone }
 
 cues:
+  cue_roll_call_zoom:
+    text: >-
+      Roll call live — remind chat to shrink Zoom self-view to a tiny corner; CPOS
+      volume slider lowers the reel while you speak.
+    chapters: [ch00_opening_video]
   cue_battle_won_before:
     text: "Every battle is won before it is fought."
     chapters: [ch02_why]
