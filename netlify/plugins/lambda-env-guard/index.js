@@ -7,6 +7,8 @@ const {
   detectOpenNextModernHandler,
   detectLegacyLambdaHandler,
   readHandlerDirEntries,
+  readPackagedHandlerRuntime,
+  hasOpenNextMjsHandler,
   printNetlifyEnvScopingChecklist,
   getDeployRiskMessage,
   LAMBDA_ENV_LIMIT_BYTES,
@@ -107,10 +109,22 @@ exports.onPostBuild = async ({ utils }) => {
   }
 
   const cwd = process.cwd();
+  const mjsOnDisk = hasOpenNextMjsHandler(cwd);
+  const packagedRuntime = readPackagedHandlerRuntime(cwd);
   const modernHandler = detectOpenNextModernHandler(cwd);
   const legacyHandler = detectLegacyLambdaHandler(cwd);
   const handlerDir = readHandlerDirEntries(cwd);
-  const handlerPackaged = Boolean(handlerDir);
+  const handlerPackaged = Boolean(handlerDir) || mjsOnDisk;
+
+  const handlerSource = mjsOnDisk
+    ? "handler-mjs-on-disk"
+    : packagedRuntime.modern
+      ? packagedRuntime.source ?? "packaged-runtime"
+      : modernHandler
+        ? "detected"
+        : handlerDir
+          ? `dir:${handlerDir.entries.join(",") || "empty"}`
+          : "none";
 
   const risk = getDeployRiskMessage({
     total,
@@ -127,7 +141,7 @@ exports.onPostBuild = async ({ utils }) => {
 
   utils.status.show({
     title: "Lambda deploy env check",
-    summary: risk.summary,
+    summary: `${risk.summary} · handler:${handlerSource}${legacyHandler ? " legacy" : ""}`,
   });
 
   printNetlifyEnvScopingChecklist(rows);
