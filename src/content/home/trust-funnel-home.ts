@@ -6,22 +6,100 @@
 export const trustFunnelHomeCopy = {
   hero: {
     eyebrow: "Kelly Grappe · Secretary of State",
-    headline: "A Secretary of State for Everyone",
-    subhead:
-      "Fair elections · Direct democracy & ballot access · Accessible government · Transparent records · All 75 counties",
+    headline: "Government That Works for Every Arkansan",
+    philosophy: "People Over Politics",
     body:
-      "Kelly Grappe is running to administer the Secretary of State’s office the way it should work: clear rules, reliable processes, and service that answers to every county—faithful to the law, not party pressure.",
-    closing: {
-      accent: "People over Politics",
-      rest: "—competent administration you can count on.",
-    },
-    ctas: {
-      meetKelly: "Meet Kelly",
-      directDemocracy: "Direct democracy",
-      learnOffice: "What the office does",
-      inviteKelly: "Invite Kelly",
-      getInvolved: "Get involved",
-    },
+      "The Arkansas Secretary of State's office should serve every community, every business, every nonprofit, every county, and every voter. Kelly Grappe is committed to modernizing state services, supporting all 75 county clerks, strengthening election administration, improving business services, increasing government transparency, investing in people and technology, and making Arkansas government easier to access for everyone.",
+    ctas: [
+      { label: "Meet Kelly", href: "/about", variant: "primary" },
+      { label: "Our Plan", href: "/priorities", variant: "secondary" },
+      { label: "What the Office Does", href: "/understand", variant: "secondary" },
+      { label: "Business Services", href: "/office/business", variant: "secondary" },
+      { label: "Secure Elections", href: "/office/elections", variant: "secondary" },
+      { label: "Get Involved", href: "/get-involved", variant: "secondary" },
+    ] as const,
+  },
+
+  fourPillars: {
+    title: "The Office Serves Arkansas in Four Ways",
+    intro:
+      "The Secretary of State is much more than elections. These four pillars show how the office touches daily life across Arkansas.",
+    pillars: [
+      {
+        id: "elections",
+        title: "Secure Elections",
+        href: "/office/elections",
+        bullets: [
+          "Secure, accurate elections",
+          "Strong support for all 75 county clerks",
+          "Faster reporting",
+          "Voter registration",
+          "Civic participation",
+        ],
+      },
+      {
+        id: "business",
+        title: "Strong Business Services",
+        href: "/office/business",
+        bullets: [
+          "Easier online filing",
+          "Better customer service",
+          "Small business success",
+          "Nonprofit support",
+          "Modern digital systems",
+        ],
+      },
+      {
+        id: "government",
+        title: "Transparent Government",
+        href: "/office/records",
+        bullets: [
+          "Open public records",
+          "Modern technology",
+          "Better online access",
+          "Efficient operations",
+          "Accountability",
+        ],
+      },
+      {
+        id: "capitol",
+        title: "Capitol Leadership",
+        href: "/office/capitol",
+        bullets: [
+          "Capitol Complex stewardship",
+          "Capitol Police support",
+          "Leadership development",
+          "Civic education",
+          "Professional public service",
+        ],
+      },
+    ] as const,
+  },
+
+  officeServes: {
+    title: "The Secretary of State Serves Arkansas Every Day",
+    intro:
+      "From elections to the Capitol Complex, the office touches Arkansans in many ways. Explore each responsibility.",
+    cards: [
+      { id: "elections", label: "Elections", href: "/office/elections", icon: "vote" },
+      {
+        id: "business",
+        label: "Businesses & Commercial Services",
+        href: "/office/business",
+        icon: "building",
+      },
+      { id: "records", label: "Public Records", href: "/office/records", icon: "file" },
+      { id: "capitol", label: "Capitol Complex", href: "/office/capitol", icon: "landmark" },
+      { id: "police", label: "Capitol Police", href: "/office/capitol", icon: "shield" },
+      {
+        id: "clerks",
+        label: "County Clerk Support",
+        href: "/office/elections",
+        icon: "handshake",
+      },
+      { id: "digital", label: "Digital Government", href: "/understand", icon: "monitor" },
+      { id: "civic", label: "Civic Education", href: "/understand", icon: "book" },
+    ] as const,
   },
 
   meetKelly: {
@@ -35,6 +113,7 @@ export const trustFunnelHomeCopy = {
     pendingNote: "Some long-form biography chapters remain draft — not public-ready.",
   },
 
+  /** Kept for reference / possible reuse; not rendered on the trust-funnel homepage. */
   officeExplainer: {
     title: "What the Secretary of State Does",
     intro:
@@ -119,12 +198,15 @@ export const trustFunnelHomeCopy = {
     },
   },
 
-  /** Former “competence” band — now points to Meet Kelly without unsourced résumé bullets on homepage. */
-  meetKellyBand: {
-    title: "Experience in public service and operations",
-    intro:
-      "Kelly’s career spans large-scale operations, small-business work, and grassroots civic organizing in Arkansas. Specific résumé claims and timeline detail live on Meet Kelly—not repeated here until campaign-approved.",
-    cta: "Meet Kelly — full story",
+  /** Soft differentiator — no employer names or headcounts on the homepage. */
+  executiveLeadership: {
+    title: "Proven Executive Leadership",
+    lead: "Government doesn't improve because of campaign slogans.",
+    body:
+      "It improves because leaders know how to build strong teams, modernize operations, solve complex problems, and serve the public with professionalism.",
+    closer:
+      "Kelly brings decades of executive leadership, organizational development, technology modernization, and large-team management experience to the Secretary of State's office—focused on building a culture of service that puts Arkansas first.",
+    cta: "Learn more about Kelly's experience →",
     ctaHref: "/about",
   },
 
@@ -189,7 +271,7 @@ export const trustFunnelHomeCopy = {
     "Transparent systems",
     "Accessible government",
     "Administration faithful to the law",
-    "People over Politics",
+    "People Over Politics",
   ] as const,
 
   motion: {

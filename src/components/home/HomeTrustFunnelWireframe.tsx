@@ -5,11 +5,13 @@ import { siteConfig } from "@/config/site";
 import type { RoadPostCard } from "@/lib/content/content-hub-queries";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 import { TrustFunnelDirectDemocracySection } from "@/components/home/trust-funnel/TrustFunnelDirectDemocracySection";
+import { TrustFunnelExecutiveLeadershipSection } from "@/components/home/trust-funnel/TrustFunnelExecutiveLeadershipSection";
+import { TrustFunnelFourPillarsSection } from "@/components/home/trust-funnel/TrustFunnelFourPillarsSection";
+import { TrustFunnelOfficeServesStrip } from "@/components/home/trust-funnel/TrustFunnelOfficeServesStrip";
 import { directDemocracyHubHref } from "@/config/direct-democracy-links";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { TrustFunnelHero } from "@/components/home/trust-funnel/TrustFunnelHero";
 import { TrustFunnelMeetKellySection } from "@/components/home/trust-funnel/TrustFunnelMeetKellySection";
-import { TrustFunnelOfficeExplainerSection } from "@/components/home/trust-funnel/TrustFunnelOfficeExplainerSection";
 import { TrustFunnelInviteKellySection } from "@/components/home/trust-funnel/TrustFunnelInviteKellySection";
 import { TrustFunnelListeningSection } from "@/components/home/trust-funnel/TrustFunnelListeningSection";
 import { TrustFunnelRolesSection } from "@/components/home/trust-funnel/TrustFunnelRolesSection";
@@ -21,7 +23,6 @@ export type HomeTrustFunnelWireframeProps = {
   upcomingPublicEvents: PublicCampaignEvent[];
 };
 
-const meetBand = trustFunnelHomeCopy.meetKellyBand;
 const final = trustFunnelHomeCopy.finalCta;
 
 export function HomeTrustFunnelWireframe({ roadPreviewPosts, upcomingPublicEvents }: HomeTrustFunnelWireframeProps) {
@@ -31,31 +32,15 @@ export function HomeTrustFunnelWireframe({ roadPreviewPosts, upcomingPublicEvent
     <div className="bg-white">
       <TrustFunnelHero />
 
-      <TrustFunnelOfficeExplainerSection />
+      <TrustFunnelFourPillarsSection />
+
+      <TrustFunnelOfficeServesStrip />
+
+      <TrustFunnelExecutiveLeadershipSection />
 
       <TrustFunnelDirectDemocracySection />
 
       <TrustFunnelMeetKellySection />
-
-      {/* Experience band — links to Meet Kelly; no unsourced résumé bullets on homepage */}
-      <section className="border-t border-kelly-ink/10 bg-kelly-wash/60 py-section-y lg:py-section-y-lg" aria-labelledby="experience-heading">
-        <ContentContainer>
-          <ScrollReveal className="mx-auto max-w-3xl text-center">
-            <h2 id="experience-heading" className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">
-              {meetBand.title}
-            </h2>
-            <p className="mt-4 font-body text-lg text-kelly-slate">{meetBand.intro}</p>
-          </ScrollReveal>
-          <ScrollReveal delay={60} className="mt-8 flex justify-center">
-            <Link
-              href={meetBand.ctaHref}
-              className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-navy/20 bg-white px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:border-kelly-gold/50"
-            >
-              {meetBand.cta}
-            </Link>
-          </ScrollReveal>
-        </ContentContainer>
-      </section>
 
       <TrustFunnelInviteKellySection />
 

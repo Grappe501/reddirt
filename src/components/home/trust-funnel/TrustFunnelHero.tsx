@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ContentImage } from "@/components/media/ContentImage";
 import { media } from "@/content/media/registry";
-import { directDemocracyHubHref } from "@/config/direct-democracy-links";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -19,7 +18,7 @@ const ctaClass = cn(
   "active:scale-[1.01]",
 );
 
-/** Homepage trust-funnel hero: service-forward framing, no primary donate CTA. */
+/** Homepage trust-funnel hero: full-office framing, service-first CTAs. */
 export function TrustFunnelHero() {
   const heroVideo = siteConfig.heroVideoSrc;
   const reduceMotion = useReducedMotion();
@@ -80,12 +79,12 @@ export function TrustFunnelHero() {
             {copy.headline}
           </motion.h1>
           <motion.p
-            className="mt-5 max-w-xl font-body text-sm font-medium leading-relaxed text-kelly-gold/95 md:text-base"
+            className="mt-4 font-heading text-lg font-semibold tracking-wide text-kelly-gold md:text-xl"
             initial={reduceMotion ? false : { opacity: 0, y }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: dur, delay: reduceMotion ? 0 : 0.16, ease }}
           >
-            {copy.subhead}
+            {copy.philosophy}
           </motion.p>
           <motion.p
             className="mt-4 max-w-xl font-body text-base leading-relaxed text-white/92 md:text-lg"
@@ -96,101 +95,36 @@ export function TrustFunnelHero() {
             {copy.body}
           </motion.p>
           <div className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
-            <motion.div
-              className="sm:inline-flex"
-              initial={reduceMotion ? false : { opacity: 0, y }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.3, ease }}
-            >
-              <Link
-                href="/about"
-                className={cn(
-                  ctaClass,
-                  "w-full sm:w-auto",
-                  "bg-kelly-gold text-kelly-navy shadow-md hover:bg-kelly-gold-soft focus-visible:outline-kelly-gold",
-                )}
-              >
-                {copy.ctas.meetKelly}
-              </Link>
-            </motion.div>
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.36, ease }}
-              className="sm:inline-flex"
-            >
-              <Link
-                href={directDemocracyHubHref}
-                className={cn(
-                  ctaClass,
-                  "w-full sm:w-auto",
-                  "border-2 border-kelly-gold/70 bg-kelly-gold/15 text-kelly-gold hover:bg-kelly-gold/25 focus-visible:outline-kelly-gold",
-                )}
-              >
-                {copy.ctas.directDemocracy}
-              </Link>
-            </motion.div>
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.42, ease }}
-              className="sm:inline-flex"
-            >
-              <Link
-                href="/understand"
-                className={cn(
-                  ctaClass,
-                  "w-full sm:w-auto",
-                  "border-2 border-white/50 bg-kelly-navy/30 text-white backdrop-blur-sm hover:border-kelly-gold/65 hover:bg-kelly-navy/45 focus-visible:outline-white",
-                )}
-              >
-                {copy.ctas.learnOffice}
-              </Link>
-            </motion.div>
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.48, ease }}
-              className="sm:inline-flex"
-            >
-              <Link
-                href="/events/request"
-                className={cn(
-                  ctaClass,
-                  "w-full sm:w-auto",
-                  "border-2 border-kelly-gold/50 bg-transparent text-kelly-gold hover:bg-kelly-gold/12 focus-visible:outline-kelly-gold",
-                )}
-              >
-                {copy.ctas.inviteKelly}
-              </Link>
-            </motion.div>
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: dur, delay: reduceMotion ? 0 : 0.54, ease }}
-              className="sm:inline-flex"
-            >
-              <Link
-                href="/get-involved"
-                className={cn(
-                  ctaClass,
-                  "w-full sm:w-auto",
-                  "border-2 border-white/35 bg-white/10 text-white backdrop-blur-sm hover:bg-white/15 focus-visible:outline-white",
-                )}
-              >
-                {copy.ctas.getInvolved}
-              </Link>
-            </motion.div>
+            {copy.ctas.map((cta, i) => {
+              const isPrimary = cta.variant === "primary";
+              return (
+                <motion.div
+                  key={cta.href + cta.label}
+                  className="sm:inline-flex"
+                  initial={reduceMotion ? false : { opacity: 0, y }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: dur,
+                    delay: reduceMotion ? 0 : 0.28 + i * 0.05,
+                    ease,
+                  }}
+                >
+                  <Link
+                    href={cta.href}
+                    className={cn(
+                      ctaClass,
+                      "w-full sm:w-auto",
+                      isPrimary
+                        ? "bg-kelly-gold text-kelly-navy shadow-md hover:bg-kelly-gold-soft focus-visible:outline-kelly-gold"
+                        : "border-2 border-white/45 bg-kelly-navy/30 text-white backdrop-blur-sm hover:border-kelly-gold/65 hover:bg-kelly-navy/45 focus-visible:outline-white",
+                    )}
+                  >
+                    {cta.label}
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
-          <motion.p
-            className="mt-8 text-sm font-medium text-white/80"
-            initial={reduceMotion ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : 0.48 }}
-          >
-            <span className="font-heading text-kelly-gold">{copy.closing.accent}</span>
-            <span className="text-white/85"> {copy.closing.rest}</span>
-          </motion.p>
         </div>
       </ContentContainer>
     </section>
