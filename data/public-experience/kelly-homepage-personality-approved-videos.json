@@ -761,6 +761,62 @@
         "publicationStatus",
         "reviewStatus"
       ]
+    },
+    {
+      "id": "campaign-short-52egsv4wwgc",
+      "provider": "YouTube",
+      "videoId": "52egsV4WWgc",
+      "watchUrl": "https://youtu.be/52egsV4WWgc",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/52egsV4WWgc",
+      "title": "Pending full title metadata",
+      "displayTitle": "Campaign Short (Imported)",
+      "assetType": "campaign_short",
+      "mediaType": "Campaign Short",
+      "category": "Campaign Short",
+      "format": "vertical_9_16",
+      "aspectRatio": "9:16",
+      "durationClass": "short-form",
+      "status": "imported",
+      "reviewStatus": "Imported",
+      "displayStyle": "CampaignShortCard",
+      "displayComponent": "CampaignShortCard",
+      "autoplay": false,
+      "captions": "enabled_when_available",
+      "transcriptStatus": "pending",
+      "posterPreference": "custom_poster",
+      "shortsCollections": ["60-seconds-with-kelly"],
+      "placementCandidates": [
+        "Homepage — 60 Seconds with Kelly (after Track C + Homepage Eligible)",
+        "Meet Kelly",
+        "FAQ",
+        "Volunteer",
+        "County pages",
+        "Campaign Journey"
+      ],
+      "homepageEligible": false,
+      "homepageEligibility": "Review Required",
+      "homepageNote": "Shorts must not replace locked landscape canon eKVz5pFJxtk / aO712RsR0pQ",
+      "featured": false,
+      "primarySlot": null,
+      "storyEngineLinks": {
+        "transcript": null,
+        "summary": null,
+        "topics": [],
+        "relatedPages": [],
+        "relatedPhotos": []
+      },
+      "publicApproval": "operator_controlled",
+      "metadataSupported": [
+        "videoId",
+        "title",
+        "summary",
+        "transcript",
+        "customPoster",
+        "topics",
+        "shortsCollection",
+        "aspectRatio",
+        "reviewStatus"
+      ]
     }
   ],
   "storyRoles": [
@@ -820,8 +876,41 @@
     "c2v1uZNUMf4",
     "m7Mlk_bUbq4",
     "72oKVAwfzZw",
-    "3iWSa5Gwmdc"
+    "3iWSa5Gwmdc",
+    "52egsV4WWgc"
   ],
+  "mediaTaxonomy": [
+    { "type": "Campaign Speech", "purpose": "Full speeches and major addresses", "displayComponent": "CampaignVideoCard" },
+    { "type": "Candidate Forum", "purpose": "Long-form Q&A and policy discussions", "displayComponent": "CampaignVideoCard" },
+    { "type": "Interview", "purpose": "Media appearances and conversations", "displayComponent": "CampaignVideoCard" },
+    { "type": "Campaign Story", "purpose": "Community visits and milestone events", "displayComponent": "CampaignVideoCard" },
+    { "type": "Campaign Short", "purpose": "Vertical, quick-hit videos (9:16)", "displayComponent": "CampaignShortCard" },
+    { "type": "Testimonial", "purpose": "Supporters and volunteers", "displayComponent": "CampaignShortCard", "status": "future" },
+    { "type": "Issue Explainer", "purpose": "Short videos focused on a single topic", "displayComponent": "CampaignShortCard", "status": "future" }
+  ],
+  "shortsCollections": [
+    {
+      "id": "60-seconds-with-kelly",
+      "title": "60 Seconds with Kelly",
+      "purpose": "Short focused clips answering common questions",
+      "provisionalVideoIds": ["52egsV4WWgc"]
+    },
+    {
+      "id": "on-the-campaign-trail",
+      "title": "On the Campaign Trail",
+      "purpose": "County visits, community events, volunteers, BTS, rally highlights",
+      "provisionalVideoIds": []
+    },
+    {
+      "id": "quick-answers",
+      "title": "Quick Answers",
+      "purpose": "Concise FAQ responses (election security, filings, notaries, civic education, counties)",
+      "provisionalVideoIds": []
+    }
+  ],
+  "requiredDisplayComponents": ["CampaignVideoCard", "CampaignShortCard"],
+  "noRawIframes": true,
+  "requiredDisplayComponent": "CampaignVideoCard",
   "mediaCenterBrowseModes": ["topic", "format", "location", "date"],
   "phase1cStatus": "COMPLETE",
   "trackCStatus": "CLOSED",
@@ -842,19 +931,14 @@
     "Homepage Eligible",
     "Featured"
   ],
-  "campaignMediaRegistryDoc": "docs/CAMPAIGN_MEDIA_REGISTRY.md",
-  "netlifyDeployNote": "docs/NETLIFY_LAMBDA_DEPLOY_400.md",
   "firstHomepagePersonalitySliceWhenTrackCOpens": [
     "LOCKED: place This Office Belongs to the People! (eKVz5pFJxtk) at home.message.primary after Four Pillars / Leadership",
     "LOCKED: place Creating the Ripples in Hot Springs Village (aO712RsR0pQ) at home.personality.primary",
-    "Curate a small photo set around those videos only",
-    "County Clerk Forum: homepage excerpt card only; full speech on Secure Elections / County Partnerships",
-    "Video 4 leadership: optional Hear Directly From Kelly supporting placement — do not displace locked canon",
-    "Video 5–6, 8–10: place only after tagging / story role / Placement Approved",
-    "Video 7 Primary Election Night: Meet Kelly / campaign journey; homepage supporting only"
+    "Optional later: 60 Seconds with Kelly Shorts carousel — CampaignShortCard only; never replaces locked landscape canon",
+    "Curate a small photo set around locked videos only"
   ],
-  "noRawIframes": true,
-  "requiredDisplayComponent": "CampaignVideoCard",
+  "campaignMediaRegistryDoc": "docs/CAMPAIGN_MEDIA_REGISTRY.md",
+  "netlifyDeployNote": "docs/NETLIFY_LAMBDA_DEPLOY_400.md",
   "sourceDoc": "docs/KELLY_PUBLIC_EXPERIENCE_PHASE_1C_DATABASE_PARITY.md#15-approved-track-c-video-inputs-preserved-for-homepage-personality",
   "architectureDoc": "docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md"
 }

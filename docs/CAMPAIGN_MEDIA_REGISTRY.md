@@ -14,7 +14,7 @@ One curated, searchable library powers the whole site so pages draw from the sam
 
 ### Asset classes (target)
 
-- Videos (speeches, forums, election-night moments, ads, testimonials, event recordings)  
+- Videos — speeches, forums, interviews, campaign stories, **Campaign Shorts (9:16)**, ads, testimonials, event recordings  
 - Photos  
 - Press coverage  
 - Podcasts  
@@ -52,7 +52,9 @@ Ingest dozens of assets quickly; refine placement over time without losing track
 ## 3. Display rule (videos)
 
 - No raw `<iframe>` scatter  
-- Reusable **`CampaignVideoCard`** backed by registry records  
+- Landscape / long-form → reusable **`CampaignVideoCard`**  
+- Vertical Shorts (9:16) → reusable **`CampaignShortCard`**  
+- Both backed by registry records  
 - `youtube-nocookie` · click-to-play · no autoplay · custom poster preferred  
 
 ---
@@ -118,7 +120,50 @@ Visitor path example: watch election-admin speech → policy → event photos �
 
 ---
 
-## 10. Campaign Story Map (visitor journey)
+## 11. Campaign Shorts (vertical short-form)
+
+Treat **Shorts** as a distinct asset type from full speeches. Purpose: mobile-first, quick, digestible clips — not immersive long-form.
+
+### Shorts collections
+
+| Collection | Purpose | Example prompts |
+|------------|---------|-----------------|
+| **60 Seconds with Kelly** | Focused answers to common questions | Why running? · What does SOS do? · Why should young people vote? · Transparency · Small business |
+| **On the Campaign Trail** | County visits, events, volunteers, BTS, rally highlights | Community / trail moments |
+| **Quick Answers** | Concise FAQ responses | Election security · Business filings · Notaries · Civic education · County partnerships |
+
+### Placement fits
+
+Homepage (“60 Seconds with Kelly”) · Meet Kelly · FAQ · Volunteer · County pages · Campaign Journey — only after **Placement Approved** / homepage rules.
+
+### Component
+
+```text
+<CampaignShortCard />
+
+• Vertical 9:16 aspect ratio
+• Custom poster · play control · title
+• 1–2 sentence summary · topic tags · related page links
+• Desktop: horizontal carousel of Shorts
+• Mobile: swipe-friendly vertical experience
+• Embed host: youtube-nocookie · click-to-play · no autoplay
+```
+
+Do **not** force Shorts into landscape `CampaignVideoCard` framing.
+
+### Updated media taxonomy
+
+| Type | Purpose |
+|------|---------|
+| **Campaign Speech** | Full speeches and major addresses |
+| **Candidate Forum** | Long-form Q&A and policy discussions |
+| **Interview** | Media appearances and conversations |
+| **Campaign Story** | Community visits and milestone events |
+| **Campaign Short** | Vertical, quick-hit videos |
+| **Testimonial** *(future)* | Supporters and volunteers |
+| **Issue Explainer** *(future)* | Short videos focused on a single topic |
+
+Presentation adapts to type: immersive for speeches/forums; fast intro for Shorts.
 
 With ten+ videos identified, each record should capture **where it fits in the visitor journey**, not only library metadata.
 

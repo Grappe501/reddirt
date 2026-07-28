@@ -314,6 +314,7 @@ No homepage personality implementation authorized.
 | **Video 8 (`m7Mlk_bUbq4`)** | Campaign speech (provisional) | Review status: Imported → placement after transcript/tagging; homepage Review Required |
 | **Video 9 (`72oKVAwfzZw`)** | Campaign video (Imported) | Collections pending; Campaign Media Center browse by topic/format/location/date |
 | **Video 10 (`3iWSa5Gwmdc`)** | Campaign video (Imported) | Story role pending; Campaign Story Map journey placement TBD |
+| **Video 11 (`52egsV4WWgc`)** | **Campaign Short** (9:16) | Imported · `CampaignShortCard` · Shorts collections pending tagging |
 
 **Classification doctrine (every speech):** **message · audience · emotional function · page · exact slot** — no random placements. Also capture Story Engine links: photos · events · counties · issues · blogs · news · actions.
 
@@ -345,6 +346,7 @@ https://www.youtube-nocookie.com/embed/amiTVLt85AM
 https://www.youtube-nocookie.com/embed/m7Mlk_bUbq4
 https://www.youtube-nocookie.com/embed/72oKVAwfzZw
 https://www.youtube-nocookie.com/embed/3iWSa5Gwmdc
+https://www.youtube-nocookie.com/embed/52egsV4WWgc
 ```
 
 Watch URLs (source of truth for IDs):
@@ -359,6 +361,7 @@ Watch URLs (source of truth for IDs):
 - Campaign speech provisional (Video 8): https://youtu.be/m7Mlk_bUbq4
 - Campaign video Imported (Video 9): https://youtu.be/72oKVAwfzZw
 - Campaign video Imported (Video 10): https://youtu.be/3iWSa5Gwmdc
+- Campaign Short (Video 11): https://youtu.be/52egsV4WWgc
 
 #### Record A — message / office vision
 
@@ -702,4 +705,27 @@ Content Tags: Pending review
 Placement: Pending classification
 Story Role: Pending (see Campaign Story Map)
 Approval: Public approved after review
+```
+
+### 15.14 Record K — Campaign Short (Video 11)
+
+**Asset type:** Campaign Short (YouTube Short / vertical 9:16)  
+**Display:** `CampaignShortCard` — **not** forced into landscape `CampaignVideoCard` chrome  
+**Embed:** Standard `youtube-nocookie.com/embed/{id}` still works; component detects vertical aspect and renders appropriately  
+**Review status:** **Imported**  
+**Do not** displace locked homepage message/momentum principals; Shorts may later support a homepage “60 Seconds with Kelly” band only after Homepage Eligible + Track C open
+
+```text
+Asset Type: Campaign Short
+Provider: YouTube
+Format: Vertical (9:16)
+Video ID: 52egsV4WWgc
+Privacy embed: https://www.youtube-nocookie.com/embed/52egsV4WWgc
+Status: Imported
+Display Component: CampaignShortCard
+Transcript: Pending
+Thumbnail: Custom poster preferred
+Duration: Short-form
+Shorts collections (candidates until tagged):
+  60 Seconds with Kelly · On the Campaign Trail · Quick Answers
 ```
