@@ -7,12 +7,60 @@
  */
 
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
+import { UNKNOWN } from "@/content/media/campaign-photo-types";
 
 /**
  * Structured photo assets ready for county pages / Journey / Meet Kelly.
- * Empty until Steve uploads and we register each image.
  */
-export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [];
+export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
+  {
+    id: "afl-cio-pre-event-networking-20260629",
+    src: "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260629_103631.png",
+      width: 1536,
+      height: 2048,
+      orientation: "PORTRAIT",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "AFL-CIO Meeting",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: UNKNOWN,
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: ["Arkansas AFL-CIO"],
+      campaignTheme: "Coalition Building",
+      relatedIssue: "Labor",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about", "/about/journey", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe talks with attendees before addressing an Arkansas AFL-CIO gathering, standing in conversation inside the event venue.",
+      caption:
+        "Kelly Grappe speaks with attendees before addressing the Arkansas AFL-CIO meeting, where she later earned the organization's endorsement for Secretary of State.",
+      extendedDescription:
+        "Kelly Grappe visits with attendees before speaking at an Arkansas AFL-CIO event. Rather than preparing in isolation, she is pictured engaging directly with participants in conversation shortly before delivering remarks that resulted in the organization's endorsement of her campaign for Secretary of State.",
+      seoDescription:
+        "Kelly Grappe meets with attendees before an Arkansas AFL-CIO meeting that later endorsed her for Secretary of State.",
+    },
+    notes:
+      "Candid pre-event networking; Feature photo (not homepage hero). Location/county/city pending confirmation. Story tags: Leadership, Listening, Coalition Building, Campaign Trail, Labor, Endorsements, Community Engagement. Suggested placement: Endorsements, Campaign Journey, Meet Kelly; secondary Labor/Workforce, News, Photo Gallery, Kelly Across Arkansas.",
+    createdAt: "2026-07-28T05:33:00.000Z",
+    updatedAt: "2026-07-28T05:33:00.000Z",
+  },
+];
 
 export function listCampaignPhotos(): CampaignPhotoRecord[] {
   return CAMPAIGN_PHOTO_REGISTRY;
@@ -33,6 +81,17 @@ export function listCampaignPhotosByCounty(county: string): CampaignPhotoRecord[
     if (p.campaign.county === "Unknown") return false;
     return p.campaign.county.toLowerCase() === c || p.campaign.county.toLowerCase().includes(c);
   });
+}
+
+export function listFeatureCandidates(): CampaignPhotoRecord[] {
+  return CAMPAIGN_PHOTO_REGISTRY.filter(
+    (p) =>
+      p.heroLevel === "FEATURE" &&
+      (p.publicationStatus === "DRAFT" ||
+        p.publicationStatus === "IN_REVIEW" ||
+        p.publicationStatus === "APPROVED" ||
+        p.publicationStatus === "PUBLISHED"),
+  );
 }
 
 export function listHeroCandidates(): CampaignPhotoRecord[] {
