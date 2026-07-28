@@ -113,20 +113,16 @@
 - Accessibility: focus rings, reduced-motion hero still, Meet Kelly concise without draft badge
 - Proof: `npm run agents:test-homepage-polish-slice1`
 
-### Slice 2 — Campaign photography — **AUTHORIZED** (`KELLY-HOMEPAGE-PHOTOS-SLICE-2.0`)
+### Slice 2 — Campaign photography — **DONE** (`KELLY-HOMEPAGE-PHOTOS-SLICE-2.0`)
 
-**Ernie brief:** [`HOMEPAGE_PHOTOS_SLICE_2_ERNIE_BRIEF.md`](./HOMEPAGE_PHOTOS_SLICE_2_ERNIE_BRIEF.md)
+**Ernie brief:** [`HOMEPAGE_PHOTOS_SLICE_2_ERNIE_BRIEF.md`](./HOMEPAGE_PHOTOS_SLICE_2_ERNIE_BRIEF.md)  
+**Report:** [`HOMEPAGE_PHOTOS_SLICE_2_REPORT.md`](./HOMEPAGE_PHOTOS_SLICE_2_REPORT.md)
 
-Integrate curated campaign-photo registry stills into:
-
-- Hero support (only if HERO-quality; else keep current hero + photo band)
-- Meet Kelly
-- Latest Campaign Photos band (Decision 6)
-- On the Road empty-state support (optional)
-
-No Track C video. Prefer FEATURE assets; Unknown geography stays Unknown.  
-Endorsements stay Slice 3; News stays Slice 4.  
-Build on feature branch while Netlify Lambda 400 waits on human Support.
+- 8 curated FEATURE stills · `homepageCandidate: true`
+- File-backed selector `homepage-campaign-photos.ts`
+- Latest Campaign Photos band + Meet Kelly still (Mena/Polk)
+- Hero unchanged (no HERO-quality still)
+- Proof: `npm run agents:test-homepage-photos-slice2`
 
 ### Slice 3 — Endorsement integration
 

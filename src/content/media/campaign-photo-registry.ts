@@ -42,7 +42,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       relatedBlogPaths: [],
       relatedEventIds: [],
       relatedPagePaths: ["/about", "/about/journey", "/get-involved"],
-      homepageCandidate: false,
+      homepageCandidate: true,
       featuredPhoto: true,
     },
     accessibility: {
@@ -56,9 +56,9 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
         "Kelly Grappe meets with attendees before an Arkansas AFL-CIO meeting that later endorsed her for Secretary of State.",
     },
     notes:
-      "Candid pre-event networking; Feature photo (not homepage hero). Location/county/city pending confirmation. Story tags: Leadership, Listening, Coalition Building, Campaign Trail, Labor, Endorsements, Community Engagement. Suggested placement: Endorsements, Campaign Journey, Meet Kelly; secondary Labor/Workforce, News, Photo Gallery, Kelly Across Arkansas.",
+      "Candid pre-event networking; Feature photo. County/city Unknown — do not attach to county workbench. Homepage candidate (Latest Campaign Photos / future endorsement story). Story tags: Leadership, Listening, Coalition Building, Labor, Endorsements.",
     createdAt: "2026-07-28T05:33:00.000Z",
-    updatedAt: "2026-07-28T05:33:00.000Z",
+    updatedAt: "2026-07-28T14:30:00.000Z",
   },
   {
     id: "mena-polk-meet-greet-20260411",
@@ -89,7 +89,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       relatedBlogPaths: [],
       relatedEventIds: [],
       relatedPagePaths: ["/about/journey", "/about", "/counties/polk", "/volunteer", "/get-involved"],
-      homepageCandidate: false,
+      homepageCandidate: true,
       featuredPhoto: true,
     },
     accessibility: {
@@ -103,9 +103,9 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
         "Kelly Grappe meets voters at a candidate meet-and-greet in Mena, Polk County, Arkansas.",
     },
     notes:
-      "Feature photo (4.5/5) — retail politics / candid conversation. Tags: Community Engagement, Listening, Campaign Trail, Retail Politics, Meet & Greet, Polk County, Mena, Voter Outreach. Primary: Kelly Across Arkansas, Campaign Journey, Meet Kelly. Secondary: Polk County page, Volunteer, Events, Photo Gallery. Related org host pending if civic group confirmed.",
+      "Feature photo — retail politics in Mena / Polk (confirmed). Homepage candidate: Latest Campaign Photos + Meet Kelly still. County attachment YES → /counties/polk.",
     createdAt: "2026-07-28T05:35:00.000Z",
-    updatedAt: "2026-07-28T05:35:00.000Z",
+    updatedAt: "2026-07-28T14:30:00.000Z",
   },
   {
     id: "people-over-politics-supporter-selfie-20260725",
@@ -465,7 +465,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       relatedBlogPaths: [],
       relatedEventIds: [],
       relatedPagePaths: ["/about/journey", "/about", "/counties/sharp", "/volunteer"],
-      homepageCandidate: false,
+      homepageCandidate: true,
       featuredPhoto: true,
     },
     accessibility: {
@@ -559,7 +559,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       relatedBlogPaths: [],
       relatedEventIds: [],
       relatedPagePaths: ["/about/journey", "/about", "/counties/johnson", "/get-involved"],
-      homepageCandidate: false,
+      homepageCandidate: true,
       featuredPhoto: true,
     },
     accessibility: {
@@ -2251,7 +2251,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       relatedBlogPaths: [],
       relatedEventIds: [],
       relatedPagePaths: ["/about/journey", "/about", "/counties/faulkner", "/get-involved"],
-      homepageCandidate: false,
+      homepageCandidate: true,
       featuredPhoto: true,
     },
     accessibility: {
@@ -3003,7 +3003,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       relatedBlogPaths: [],
       relatedEventIds: [],
       relatedPagePaths: ["/about/journey", "/about", "/counties/pulaski", "/get-involved"],
-      homepageCandidate: false,
+      homepageCandidate: true,
       featuredPhoto: true,
     },
     accessibility: {
@@ -3144,7 +3144,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       relatedBlogPaths: [],
       relatedEventIds: [],
       relatedPagePaths: ["/about/journey", "/volunteer", "/get-involved"],
-      homepageCandidate: false,
+      homepageCandidate: true,
       featuredPhoto: true,
     },
     accessibility: {
@@ -3191,7 +3191,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       relatedBlogPaths: [],
       relatedEventIds: [],
       relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
-      homepageCandidate: false,
+      homepageCandidate: true,
       featuredPhoto: true,
     },
     accessibility: {

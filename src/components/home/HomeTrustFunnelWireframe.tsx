@@ -22,7 +22,9 @@ import { TrustFunnelInviteKellySection } from "@/components/home/trust-funnel/Tr
 import { TrustFunnelListeningSection } from "@/components/home/trust-funnel/TrustFunnelListeningSection";
 import { TrustFunnelRolesSection } from "@/components/home/trust-funnel/TrustFunnelRolesSection";
 import { TrustFunnelOnTheRoad } from "@/components/home/trust-funnel/TrustFunnelOnTheRoad";
+import { TrustFunnelCampaignPhotosSection } from "@/components/home/trust-funnel/TrustFunnelCampaignPhotosSection";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { getHomepageMeetKellyPhoto } from "@/content/media/homepage-campaign-photos";
 
 export type HomeTrustFunnelWireframeProps = {
   roadPreviewPosts: RoadPostCard[];
@@ -33,6 +35,7 @@ const final = trustFunnelHomeCopy.finalCta;
 
 export function HomeTrustFunnelWireframe({ roadPreviewPosts, upcomingPublicEvents }: HomeTrustFunnelWireframeProps) {
   const volunteerHref = getVolunteerSignupHref();
+  const meetKellyPhoto = getHomepageMeetKellyPhoto();
 
   return (
     <div className="bg-white">
@@ -46,7 +49,9 @@ export function HomeTrustFunnelWireframe({ roadPreviewPosts, upcomingPublicEvent
 
       <TrustFunnelDirectDemocracySection />
 
-      <TrustFunnelMeetKellySection />
+      <TrustFunnelMeetKellySection photo={meetKellyPhoto} />
+
+      <TrustFunnelCampaignPhotosSection />
 
       <TrustFunnelInviteKellySection />
 
