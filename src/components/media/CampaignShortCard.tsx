@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { CampaignMediaRecord } from "@/content/media/campaign-media-types";
 import { CampaignTranscriptDisclosure } from "@/components/media/CampaignTranscriptDisclosure";
+import { CampaignTranscriptTools } from "@/components/media/CampaignTranscriptTools";
 import { LazyShortYouTubeEmbed } from "@/components/media/LazyShortYouTubeEmbed";
 import { isPublicTranscript, youtubePosterUrl } from "@/lib/media/campaign-transcript";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,13 @@ export type CampaignShortCardProps = {
 /** Vertical 9:16 Campaign Short — click-to-play, capped width on desktop. */
 export function CampaignShortCard({ media, showTranscript = true, className }: CampaignShortCardProps) {
   const poster = media.thumbnailUrl ?? youtubePosterUrl(media.youtubeVideoId);
+  const tools = isPublicTranscript(media) ? (
+    <CampaignTranscriptTools
+      youtubeVideoId={media.youtubeVideoId}
+      plainText={media.transcript.plainText}
+      segments={media.transcript.segments}
+    />
+  ) : null;
 
   return (
     <article className={cn("mx-auto w-full max-w-[320px]", className)}>
@@ -49,7 +57,7 @@ export function CampaignShortCard({ media, showTranscript = true, className }: C
             ))}
           </ul>
         ) : null}
-        {showTranscript ? <CampaignTranscriptDisclosure media={media} /> : null}
+        {showTranscript ? <CampaignTranscriptDisclosure media={media} tools={tools} /> : null}
         {!showTranscript && isPublicTranscript(media) ? (
           <p className="mt-3 font-body text-sm font-semibold text-kelly-navy">Transcript available</p>
         ) : null}

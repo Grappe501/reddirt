@@ -10,17 +10,26 @@ import {
 export type CampaignTranscriptDisclosureProps = {
   media: CampaignMediaRecord;
   className?: string;
+  /** Optional progressive-enhancement slot (search/download) rendered above transcript body. */
+  tools?: React.ReactNode;
 };
 
 /**
  * Accessible transcript disclosure. Transcript text is server-rendered inside `<details>`
  * so crawlers and users without JS still receive the content.
  */
-export function CampaignTranscriptDisclosure({ media, className }: CampaignTranscriptDisclosureProps) {
+export function CampaignTranscriptDisclosure({ media, className, tools }: CampaignTranscriptDisclosureProps) {
   if (!isPublicTranscript(media)) return null;
 
   const { transcript } = media;
   const hasSegments = transcript.segments.length > 0;
+  const chapters = Array.from(
+    new Map(
+      transcript.segments
+        .filter((s) => s.chapter)
+        .map((s) => [s.chapter!, s.startSeconds] as const),
+    ).entries(),
+  );
 
   return (
     <details
@@ -53,10 +62,42 @@ export function CampaignTranscriptDisclosure({ media, className }: CampaignTrans
                     ? "YouTube captions (reviewed)"
                     : transcript.source === "AI_GENERATED"
                       ? "AI-assisted (reviewed)"
-                      : "Campaign editorial"}
+                      : transcript.source === "MIXED"
+                        ? "Mixed sources (reviewed)"
+                        : "Campaign editorial"}
             </span>
           ) : null}
         </p>
+
+        {tools}
+
+        {chapters.length ? (
+          <nav aria-label="Jump to a section" className="mt-2 mb-4">
+            <p className="font-body text-sm font-semibold text-kelly-navy">Jump to a section</p>
+            <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-2 font-body text-sm">
+              {chapters.map(([title, start]) => (
+                <li key={title}>
+                  {start != null ? (
+                    <a
+                      href={youtubeWatchUrl(media.youtubeVideoId, start)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline-offset-2 hover:underline"
+                    >
+                      {title}
+                      <span className="sr-only">
+                        {" "}
+                        — jump to {formatTranscriptTimestamp(start)} on YouTube
+                      </span>
+                    </a>
+                  ) : (
+                    <span>{title}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
 
         {hasSegments ? (
           <div className="mt-5 space-y-5">

@@ -5,6 +5,11 @@
 
 import type { CampaignMediaRecord } from "@/content/media/campaign-media-types";
 import { emptyTranscript, isPublicMedia, isPublicTranscript, youtubePosterUrl } from "@/lib/media/campaign-transcript";
+import { mergeMediaWithPublishedOverlay } from "@/lib/media/youtube-transcripts/publish-overlay";
+
+function withOverlay(media: CampaignMediaRecord): CampaignMediaRecord {
+  return mergeMediaWithPublishedOverlay(media);
+}
 
 function record(
   partial: Omit<CampaignMediaRecord, "provider" | "transcript" | "thumbnailUrl"> & {
@@ -196,15 +201,16 @@ export const CAMPAIGN_MEDIA_REGISTRY: CampaignMediaRecord[] = [
 ];
 
 export function listCampaignMedia(): CampaignMediaRecord[] {
-  return CAMPAIGN_MEDIA_REGISTRY;
+  return CAMPAIGN_MEDIA_REGISTRY.map(withOverlay);
 }
 
 export function listPublishedCampaignMedia(): CampaignMediaRecord[] {
-  return CAMPAIGN_MEDIA_REGISTRY.filter(isPublicMedia);
+  return listCampaignMedia().filter(isPublicMedia);
 }
 
 export function getCampaignMediaBySlug(slug: string): CampaignMediaRecord | null {
-  return CAMPAIGN_MEDIA_REGISTRY.find((m) => m.slug === slug) ?? null;
+  const m = CAMPAIGN_MEDIA_REGISTRY.find((x) => x.slug === slug);
+  return m ? withOverlay(m) : null;
 }
 
 export function getPublishedCampaignMediaBySlug(slug: string): CampaignMediaRecord | null {
@@ -213,7 +219,8 @@ export function getPublishedCampaignMediaBySlug(slug: string): CampaignMediaReco
 }
 
 export function getCampaignMediaByYoutubeId(youtubeVideoId: string): CampaignMediaRecord | null {
-  return CAMPAIGN_MEDIA_REGISTRY.find((m) => m.youtubeVideoId === youtubeVideoId) ?? null;
+  const m = CAMPAIGN_MEDIA_REGISTRY.find((x) => x.youtubeVideoId === youtubeVideoId);
+  return m ? withOverlay(m) : null;
 }
 
 export function listPublishedWithTranscript(): CampaignMediaRecord[] {

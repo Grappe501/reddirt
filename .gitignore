@@ -147,6 +147,11 @@ campaign-media/phone-import/
 # Legislative video processing artifacts (local cache — do not commit raw media)
 data/legislature/audio/
 data/legislature/audio/**
+
+# Campaign YouTube transcript pipeline (OAuth tokens + workspace drafts)
+data/integrations/youtube-oauth.sealed.json
+data/campaign-media/transcript-pipeline/**
+!data/campaign-media/transcript-pipeline/.gitkeep
 *.mp3
 !public/**/*.mp3
 

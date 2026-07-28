@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { CampaignMediaRecord } from "@/content/media/campaign-media-types";
 import { CampaignTranscriptDisclosure } from "@/components/media/CampaignTranscriptDisclosure";
+import { CampaignTranscriptTools } from "@/components/media/CampaignTranscriptTools";
 import { LazyYouTubeEmbed } from "@/components/media/LazyYouTubeEmbed";
 import { isPublicTranscript, youtubePosterUrl } from "@/lib/media/campaign-transcript";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,13 @@ export type CampaignVideoCardProps = {
 /** Landscape / long-form campaign video card — privacy-enhanced, click-to-play. */
 export function CampaignVideoCard({ media, showTranscript = true, className }: CampaignVideoCardProps) {
   const poster = media.thumbnailUrl ?? youtubePosterUrl(media.youtubeVideoId);
+  const tools = isPublicTranscript(media) ? (
+    <CampaignTranscriptTools
+      youtubeVideoId={media.youtubeVideoId}
+      plainText={media.transcript.plainText}
+      segments={media.transcript.segments}
+    />
+  ) : null;
   return (
     <article className={cn("overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm", className)}>
       <LazyYouTubeEmbed videoId={media.youtubeVideoId} title={media.title} posterUrl={poster} />
@@ -47,7 +55,7 @@ export function CampaignVideoCard({ media, showTranscript = true, className }: C
             ))}
           </ul>
         ) : null}
-        {showTranscript ? <CampaignTranscriptDisclosure media={media} /> : null}
+        {showTranscript ? <CampaignTranscriptDisclosure media={media} tools={tools} /> : null}
         {!showTranscript && isPublicTranscript(media) ? (
           <p className="mt-4 font-body text-sm font-semibold text-kelly-navy">Transcript available</p>
         ) : null}

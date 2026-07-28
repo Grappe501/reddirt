@@ -32,6 +32,11 @@ export default function KellySpeaksIndexPage() {
             Speeches, forums, and campaign stories. Open any video for the full experience — published transcripts appear
             beneath the player when ready.
           </p>
+          <p className="mt-3">
+            <Link href="/kelly-speaks/search" className="font-body text-sm font-semibold text-kelly-navy underline">
+              Search published transcripts
+            </Link>
+          </p>
         </header>
 
         <ul className="mx-auto mt-12 grid max-w-5xl gap-8 sm:grid-cols-2">

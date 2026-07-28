@@ -1,5 +1,5 @@
 /**
- * Canonical campaign video + transcript contracts (Pass 1 — file-backed).
+ * Canonical campaign video + transcript contracts (Pass 1 + Pass 2 ingestion).
  */
 
 export type CampaignMediaFormat =
@@ -12,12 +12,20 @@ export type CampaignMediaFormat =
   | "TOWN_HALL"
   | "LEADERSHIP_ADDRESS";
 
+/** Pass 2 extends Pass 1 statuses. Public rendering still requires PUBLISHED only. */
 export type TranscriptStatus =
   | "NOT_REQUESTED"
+  | "DISCOVERED"
+  | "DOWNLOADING"
+  | "DOWNLOADED"
+  | "NORMALIZED"
+  | "AI_GENERATED"
   | "DRAFT"
   | "REVIEW_REQUIRED"
   | "APPROVED"
   | "PUBLISHED"
+  | "ARCHIVED"
+  | "FAILED"
   | "UNAVAILABLE";
 
 export type TranscriptSource =
@@ -26,7 +34,11 @@ export type TranscriptSource =
   | "YOUTUBE_AUTOMATIC_CAPTIONS"
   | "AI_GENERATED"
   | "MANUAL"
+  | "MIXED"
   | "UNKNOWN";
+
+/** Compact source labels used in pipeline metadata (maps onto TranscriptSource). */
+export type TranscriptPipelineSourceKind = "CREATOR" | "YOUTUBE_AUTO" | "AI" | "MANUAL" | "MIXED";
 
 export type CampaignMediaPublicationStatus =
   | "DRAFT"
@@ -89,3 +101,20 @@ export const EMPTY_TRANSCRIPT: CampaignTranscript = {
   plainText: "",
   segments: [],
 };
+
+export function mapPipelineSourceKind(kind: TranscriptPipelineSourceKind): TranscriptSource {
+  switch (kind) {
+    case "CREATOR":
+      return "YOUTUBE_CREATOR_CAPTIONS";
+    case "YOUTUBE_AUTO":
+      return "YOUTUBE_AUTOMATIC_CAPTIONS";
+    case "AI":
+      return "AI_GENERATED";
+    case "MANUAL":
+      return "MANUAL";
+    case "MIXED":
+      return "MIXED";
+    default:
+      return "UNKNOWN";
+  }
+}
