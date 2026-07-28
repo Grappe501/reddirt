@@ -60,4 +60,16 @@ assert.equal(laws!.campaign.peopleVisible.length, 0);
 assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 12);
 assert.ok(listFeatureCandidates().length >= 8);
 
+const family = getCampaignPhotoById("personal-family-moment-20260707");
+assert.ok(family);
+assert.equal(family!.heroLevel, "SUPPORTING");
+assert.equal(family!.campaign.featuredPhoto, false);
+
+const bates = getCampaignPhotoById("bates-event-conversation-20260626");
+assert.ok(bates);
+assert.equal(bates!.campaign.county, UNKNOWN);
+
+assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 21);
+assert.ok(getCampaignPhotoById("community-meeting-group-portrait-20260716"));
+
 console.log("Campaign photo registry checks passed.");
