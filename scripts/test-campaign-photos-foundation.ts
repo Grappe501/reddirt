@@ -41,4 +41,23 @@ assert.ok(listFeatureCandidates().some((p) => p.id === afl!.id));
 assert.ok(listFeatureCandidates().some((p) => p.id === mena!.id));
 assert.equal(listHeroCandidates().length, 0);
 
+const cave = getCampaignPhotoById("cave-city-watermelon-festival-parade-20260725");
+assert.ok(cave);
+assert.equal(cave!.campaign.county, "Sharp");
+assert.equal(cave!.campaign.city, "Cave City");
+assert.ok(listCampaignPhotosByCounty("Sharp").some((p) => p.id === cave!.id));
+
+const peach = getCampaignPhotoById("johnson-county-peach-festival-parade-20260718");
+assert.ok(peach);
+assert.equal(peach!.campaign.county, "Johnson");
+assert.ok(listCampaignPhotosByCounty("Johnson").some((p) => p.id === peach!.id));
+
+const laws = getCampaignPhotoById("election-laws-arkansas-2025-edition-20260723");
+assert.ok(laws);
+assert.equal(laws!.heroLevel, "SUPPORTING");
+assert.equal(laws!.campaign.peopleVisible.length, 0);
+
+assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 12);
+assert.ok(listFeatureCandidates().length >= 8);
+
 console.log("Campaign photo registry checks passed.");
