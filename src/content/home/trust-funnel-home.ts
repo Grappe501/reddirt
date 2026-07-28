@@ -12,7 +12,7 @@ export const trustFunnelHomeCopy = {
     headline: "Government That Works for Every Arkansan",
     philosophy: "People Over Politics",
     body:
-      "The Arkansas Secretary of State's office should serve every community, every business, every nonprofit, every county, and every voter. Kelly Grappe is committed to modernizing state services, supporting all 75 county clerks, strengthening election administration, improving business services, increasing government transparency, investing in people and technology, and making Arkansas government easier to access for everyone.",
+      "The Secretary of State's office should serve every community, business, nonprofit, county, and voter. Kelly Grappe is committed to modernizing state services, supporting all 75 county clerks, strengthening election administration, improving business filings, and making Arkansas government easier to access.",
     ctas: [
       { label: "Meet Kelly", href: "/about", variant: "primary" },
       { label: "Our Plan", href: "/priorities", variant: "secondary" },
@@ -108,12 +108,11 @@ export const trustFunnelHomeCopy = {
   meetKelly: {
     title: "Meet Kelly",
     intro:
-      "Before systems and statutes, you deserve to know who is asking for your trust. Meet Kelly covers her background, civic work, and why she entered this race.",
+      "Kelly Grappe is running for Arkansas Secretary of State to put people over politics—listening across all 75 counties and preparing to serve with professionalism.",
     body:
-      "Detailed biography and résumé claims are published on Meet Kelly only after campaign review. This homepage stays focused on the office and how you can participate.",
+      "She brings executive leadership and a record of community organizing around fair elections and ballot access. The full story—background, civic work, and why she entered this race—lives on Meet Kelly.",
     cta: "Read Meet Kelly",
     ctaHref: "/about",
-    pendingNote: "Some long-form biography chapters remain draft — not public-ready.",
   },
 
   /** Kept for reference / possible reuse; not rendered on the trust-funnel homepage. */

@@ -32,7 +32,7 @@ export function TrustFunnelHero() {
       aria-labelledby="trust-funnel-hero-heading"
     >
       <div className="absolute inset-0" aria-hidden>
-        {heroVideo ? (
+        {heroVideo && !reduceMotion ? (
           <video
             className="h-full w-full object-cover object-[44%_28%] sm:object-[48%_center] lg:object-[52%_center]"
             autoPlay
@@ -71,7 +71,7 @@ export function TrustFunnelHero() {
           </motion.p>
           <motion.h1
             id="trust-funnel-hero-heading"
-            className="mt-4 font-heading text-[clamp(2.1rem,6.5vw,3.35rem)] font-bold leading-[1.05] tracking-tight text-white md:text-[clamp(2.35rem,5.5vw,3.6rem)]"
+            className="mt-3 font-heading text-[clamp(2rem,6.2vw,3.25rem)] font-bold leading-[1.08] tracking-tight text-white sm:mt-4 md:text-[clamp(2.25rem,5.2vw,3.5rem)]"
             initial={reduceMotion ? false : { opacity: 0, y }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: dur, delay: reduceMotion ? 0 : 0.1, ease }}
@@ -79,7 +79,7 @@ export function TrustFunnelHero() {
             {copy.headline}
           </motion.h1>
           <motion.p
-            className="mt-4 font-heading text-lg font-semibold tracking-wide text-kelly-gold md:text-xl"
+            className="mt-3 font-heading text-lg font-semibold tracking-wide text-kelly-gold md:mt-4 md:text-xl"
             initial={reduceMotion ? false : { opacity: 0, y }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: dur, delay: reduceMotion ? 0 : 0.16, ease }}
@@ -87,14 +87,14 @@ export function TrustFunnelHero() {
             {copy.philosophy}
           </motion.p>
           <motion.p
-            className="mt-4 max-w-xl font-body text-base leading-relaxed text-white/92 md:text-lg"
+            className="mt-3 max-w-xl font-body text-base leading-relaxed text-white/92 md:mt-4 md:text-lg md:leading-relaxed"
             initial={reduceMotion ? false : { opacity: 0, y }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: dur, delay: reduceMotion ? 0 : 0.22, ease }}
           >
             {copy.body}
           </motion.p>
-          <div className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3" role="group" aria-label="Primary actions">
             {copy.ctas.map((cta, i) => {
               const isPrimary = cta.variant === "primary";
               return (

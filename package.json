@@ -224,6 +224,7 @@
     "agents:test-campaign-video-transcripts": "tsx scripts/test-campaign-video-transcripts-pass1.ts",
     "agents:test-campaign-video-transcripts-pass2": "tsx scripts/test-campaign-video-transcripts-pass2.ts",
     "agents:test-campaign-photos": "tsx scripts/test-campaign-photos-foundation.ts",
+    "agents:test-homepage-polish-slice1": "tsx scripts/test-homepage-polish-slice1.ts",
     "media:youtube-transcript-sync": "node scripts/run-with-h-drive-env.cjs tsx scripts/youtube-transcript-sync.ts",
     "agents:test-arkansas-media-source-discovery": "tsx scripts/test-arkansas-media-source-discovery.ts",
     "agents:test-border-media-market-intelligence": "tsx scripts/test-border-media-market-intelligence.ts",

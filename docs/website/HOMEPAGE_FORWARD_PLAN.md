@@ -105,12 +105,13 @@
 
 ## Launch implementation order
 
-### Slice 1 — Homepage polish
+### Slice 1 — Homepage polish — **DONE** (`KELLY-HOMEPAGE-POLISH-SLICE-1.0`)
 
-- CTA consistency (Volunteer header = in-page signup path)
-- Delay/remove `HomeDonateFloatingGate`
-- Section spacing, typography, responsive refinements
-- Accessibility review
+- CTA consistency (Volunteer header = `getVolunteerSignupHref`)
+- Delay `HomeDonateFloatingGate` (off unless `NEXT_PUBLIC_HOME_DONATE_FLOATING_GATE=true`)
+- Section spacing / typography / responsive refinements
+- Accessibility: focus rings, reduced-motion hero still, Meet Kelly concise without draft badge
+- Proof: `npm run agents:test-homepage-polish-slice1`
 
 ### Slice 2 — Campaign photography
 

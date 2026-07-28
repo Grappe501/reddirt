@@ -21,6 +21,11 @@ export const metadata: Metadata = pageMeta({
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
 
+/** Slice 1: donate gate delayed for launch — opt-in only via env. */
+function isHomeDonateFloatingGateEnabled(): boolean {
+  return process.env.NEXT_PUBLIC_HOME_DONATE_FLOATING_GATE === "true";
+}
+
 export default async function HomePage() {
   const [roadPreviewPosts, upcomingPublicEvents] = await Promise.all([
     listRoadPreviewPosts(6),
@@ -29,7 +34,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <HomeDonateFloatingGate />
+      {isHomeDonateFloatingGateEnabled() ? <HomeDonateFloatingGate /> : null}
       <HomeTrustFunnelWireframe roadPreviewPosts={roadPreviewPosts} upcomingPublicEvents={upcomingPublicEvents} />
     </>
   );

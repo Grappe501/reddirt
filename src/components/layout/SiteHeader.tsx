@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
-import { getJoinCampaignHref } from "@/config/external-campaign";
+import { getVolunteerSignupHref } from "@/config/external-campaign";
 import { primaryNavGroups, primaryNavMobileDrawerGroupOrder, voterRegistrationHref } from "@/config/navigation";
 import type { NavGroup } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
@@ -30,8 +30,9 @@ export function SiteHeader() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [compactHeader, setCompactHeader] = useState(false);
   const panelId = useId();
-  const joinCampaignHref = getJoinCampaignHref();
-  const joinExternal = isExternalHref(joinCampaignHref);
+  /** Slice 1: same destination as homepage Get Involved Volunteer card. */
+  const volunteerHref = getVolunteerSignupHref();
+  const volunteerExternal = isExternalHref(volunteerHref);
   const headerRootRef = useRef<HTMLElement | null>(null);
 
   /** Sets `--site-header-h` (px) so `globals.css` can compute `--site-header-shim` for the layout shim. */
@@ -163,7 +164,9 @@ export function SiteHeader() {
             <span className="hidden xl:inline">Vote / Register</span>
           </Button>
           <Button
-            href={joinCampaignHref}
+            href={volunteerHref}
+            target={volunteerExternal ? "_blank" : undefined}
+            rel={volunteerExternal ? "noopener noreferrer" : undefined}
             variant="outlineOnDark"
             className="ml-0.5 hidden min-h-11 flex-shrink-0 border-2 border-kelly-gold/55 bg-kelly-navy/45 px-3 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-sm ring-1 ring-kelly-gold/20 hover:border-kelly-gold/75 hover:bg-kelly-blue/35 lg:inline-flex lg:px-3.5 lg:text-sm"
             aria-label="Volunteer — sign up to help the campaign"
@@ -191,9 +194,9 @@ export function SiteHeader() {
             Vote
           </Button>
           <Button
-            href={joinCampaignHref}
-            target={joinExternal ? "_blank" : undefined}
-            rel={joinExternal ? "noopener noreferrer" : undefined}
+            href={volunteerHref}
+            target={volunteerExternal ? "_blank" : undefined}
+            rel={volunteerExternal ? "noopener noreferrer" : undefined}
             variant="outlineOnDark"
             className="min-h-11 border border-kelly-gold/45 bg-kelly-navy/40 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
             aria-label="Volunteer — sign up"
@@ -299,9 +302,9 @@ export function SiteHeader() {
 
             <div className="border-t border-kelly-gold/20 pt-4 space-y-2">
               <Link
-                href={joinCampaignHref}
-                target={joinExternal ? "_blank" : undefined}
-                rel={joinExternal ? "noopener noreferrer" : undefined}
+                href={volunteerHref}
+                target={volunteerExternal ? "_blank" : undefined}
+                rel={volunteerExternal ? "noopener noreferrer" : undefined}
                 className="block min-h-[48px] rounded-btn border-2 border-kelly-gold/55 bg-kelly-navy/40 px-3 py-3 text-center font-body text-base font-bold text-white focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45"
                 onClick={() => setOpen(false)}
               >

@@ -13,7 +13,8 @@ const OPEN_DELAY_MS = 1600;
 
 /**
  * Homepage-only full-viewport donate prompt: softened backdrop, delayed entry, session dismissal.
- * Donate stays primary; secondary control is explicit low-shame exit (copy Steve-approved).
+ * Slice 1 (KELLY-HOMEPAGE-POLISH-SLICE-1.0): off by default on `/`.
+ * Re-enable with NEXT_PUBLIC_HOME_DONATE_FLOATING_GATE=true after launch if analytics support it.
  */
 export function HomeDonateFloatingGate() {
   const titleId = useId();
