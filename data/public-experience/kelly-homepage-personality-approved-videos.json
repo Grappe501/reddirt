@@ -1,8 +1,11 @@
 {
   "slice": "KELLY-PUBLIC-EXPERIENCE-FOUNDATION-1.0",
   "phase": "1C",
-  "purpose": "Approved external campaign video inputs (homepage personality + qualification/forum assets) — documentation only; not public-enabled by this file",
+  "purpose": "Approved external campaign video inputs (locked homepage canon + Kelly Speaks library assets) — documentation only; not public-enabled by this file",
   "trackCStatus": "CLOSED",
+  "trackCReason": "Database parity / production intake gate remains unresolved for Track C entry. No homepage personality implementation authorized.",
+  "homepageVideoCanonLocked": true,
+  "architectureDoc": "docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md",
   "implementationStatus": "documented_inputs_only",
   "classificationDoctrine": [
     "message",
@@ -10,6 +13,16 @@
     "emotionalFunction",
     "page",
     "exactSlot"
+  ],
+  "lockedPresentationRules": [
+    "youtube-nocookie embeds",
+    "click-to-play",
+    "reusable campaign media assets",
+    "contextual placement",
+    "transcript-ready",
+    "searchable metadata",
+    "reusable throughout the website",
+    "no homepage implementation until Track C opens"
   ],
   "presentationRules": {
     "embedHost": "https://www.youtube-nocookie.com/embed/{videoId}",
@@ -20,6 +33,36 @@
     "bareIframeDiscouraged": true,
     "requireCampaignVideoChrome": true
   },
+  "kellySpeaksSections": [
+    "Vision",
+    "Elections",
+    "Direct Democracy",
+    "Small Business",
+    "Transparency",
+    "Leadership",
+    "Civic Education",
+    "Campaign Trail",
+    "Interviews",
+    "Town Halls"
+  ],
+  "contentModuleFields": [
+    "title",
+    "youtubeId",
+    "transcript",
+    "summary",
+    "pullQuote",
+    "topics",
+    "countiesMentioned",
+    "officeResponsibilitiesCovered",
+    "audience",
+    "relatedPages",
+    "suggestedPlacements",
+    "thumbnail",
+    "chapterMarkers",
+    "relatedPhotos",
+    "postViewCta"
+  ],
+  "futureComponent": "CampaignVideoCard",
   "videos": [
     {
       "id": "office-belongs-to-the-people",
@@ -206,13 +249,76 @@
         "accessibilityDescription",
         "featuredStatus"
       ]
+    },
+    {
+      "id": "leadership-speech-kz33isxz0zq",
+      "provider": "YouTube",
+      "videoId": "KZ33iSxZ0ZQ",
+      "watchUrl": "https://youtu.be/KZ33iSxZ0ZQ",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/KZ33iSxZ0ZQ",
+      "title": "Pending full title metadata",
+      "displayTitle": "Hear Directly From Kelly — Leadership",
+      "assetType": "external_video_leadership_speech",
+      "mediaType": "Leadership Speech",
+      "category": "Campaign Speech",
+      "primaryTheme": "Leadership",
+      "secondaryThemes": [
+        "Government",
+        "Transparency",
+        "Public Service",
+        "Elections",
+        "Business",
+        "Community"
+      ],
+      "pageRole": "leadership_speech",
+      "emotionalFunction": "inspirational",
+      "audience": ["General Public"],
+      "length": null,
+      "placementPriority": "high",
+      "homepageEligible": true,
+      "homepagePriority": null,
+      "homepageNote": "Homepage-eligible as supporting Hear Directly From Kelly — must not replace locked message (eKVz5pFJxtk) or momentum (aO712RsR0pQ) canon",
+      "transcriptStatus": "pending",
+      "featured": true,
+      "kellySpeaksSection": "Leadership",
+      "reusableBand": "Hear Directly From Kelly",
+      "primarySlot": "kelly-speaks.leadership.featured-video",
+      "secondarySlots": [
+        "meet-kelly.leadership.supporting-video",
+        "home.hear-kelly.supporting-video"
+      ],
+      "slotRegistryNote": "Proposed slots — register with Kelly Speaks page; not in Phase 1 home slot registry",
+      "publicApproval": "operator_controlled",
+      "laterPagePlacements": [
+        "Kelly Speaks",
+        "Meet Kelly",
+        "Hear Directly From Kelly band",
+        "Volunteer (if motivational cut)",
+        "Issue pages matched by topics"
+      ],
+      "metadataSupported": [
+        "customPoster",
+        "transcript",
+        "chapterMarkers",
+        "shortSummary",
+        "pullQuote",
+        "topics",
+        "pagePlacements",
+        "displayTitle",
+        "accessibilityDescription",
+        "featuredStatus",
+        "relatedPhotos",
+        "postViewCta"
+      ]
     }
   ],
   "firstHomepagePersonalitySliceWhenTrackCOpens": [
-    "Register and place This Office Belongs to the People! as central message video",
-    "Register and place Creating the Ripples in Hot Springs Village as first campaign-in-motion story",
+    "LOCKED: place This Office Belongs to the People! (eKVz5pFJxtk) at home.message.primary after Four Pillars / Leadership",
+    "LOCKED: place Creating the Ripples in Hot Springs Village (aO712RsR0pQ) at home.personality.primary",
     "Curate a small photo set around those videos only",
-    "County Clerk Forum: homepage excerpt card only; full speech on Secure Elections / County Partnerships"
+    "County Clerk Forum: homepage excerpt card only; full speech on Secure Elections / County Partnerships",
+    "Video 4 leadership: optional Hear Directly From Kelly supporting placement — do not displace locked canon"
   ],
-  "sourceDoc": "docs/KELLY_PUBLIC_EXPERIENCE_PHASE_1C_DATABASE_PARITY.md#15-approved-track-c-video-inputs-preserved-for-homepage-personality"
+  "sourceDoc": "docs/KELLY_PUBLIC_EXPERIENCE_PHASE_1C_DATABASE_PARITY.md#15-approved-track-c-video-inputs-preserved-for-homepage-personality",
+  "architectureDoc": "docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md"
 }

@@ -246,19 +246,44 @@ Database ownership and schema parity for Submission/User are reconciled on the l
 
 ## 15. Approved Track C video inputs (preserved for homepage personality)
 
-**Status:** Documented approved inputs only — **not** implemented on the public homepage in Phase 1C.  
-**Track C:** Remains **CLOSED** until the Netlify / production intake gate in §12 clears.  
-**Machine-readable companion:** `data/public-experience/kelly-homepage-personality-approved-videos.json` (approved external video registry; includes homepage + qualification/forum assets)
+```text
+Track C: CLOSED
+Reason: Database parity / production intake gate remains unresolved for Track C entry.
+No homepage personality implementation authorized.
+```
 
-These YouTube assets have distinct website roles. Do not treat them as interchangeable.
+**Homepage video canon is LOCKED.** Do not reopen homepage video decisions unless Steve explicitly changes direction.  
+**Architecture doctrine:** `docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md` (Kelly Speaks · content modules · page borrowing).  
+**Machine-readable registry:** `data/public-experience/kelly-homepage-personality-approved-videos.json`
+
+### Approved homepage video canon (locked)
+
+| Role | YouTube ID | Title | Homepage slot | Placement / purpose |
+|------|------------|-------|---------------|---------------------|
+| **Primary campaign message** | `eKVz5pFJxtk` | This Office Belongs to the People! | `home.message.primary` | Immediately after Four Pillars / Leadership band |
+| **Personality / momentum** | `aO712RsR0pQ` | Creating the Ripples in Hot Springs Village | `home.personality.primary` | Kelly Across Arkansas · personality · community · momentum |
+
+### Broader library roles (not homepage principals)
 
 | Asset | Role | Emotional / page function |
 |-------|------|---------------------------|
-| **This Office Belongs to the People!** | Core **message** video | Philosophy; homepage framing — *People Over Politics* |
-| **Creating the Ripples in Hot Springs Village** | **Personality / momentum** video | Community energy; Kelly Across Arkansas prototype |
-| **County Clerk Convention Candidate Forum 2026** | **Qualification / election-administration** speech | Proof of readiness with clerks; Secure Elections / county partnerships |
+| **County Clerk Convention Candidate Forum 2026** | Qualification / election administration | Secure Elections · county partnerships; homepage **excerpt only** |
+| **Video 4 (`KZ33iSxZ0ZQ`)** | Leadership speech | Kelly Speaks · Leadership · Hear Directly From Kelly; homepage-eligible pending Track C |
 
-**Classification doctrine (every speech):** classify by **message**, **audience**, **emotional function**, **page**, and **exact slot** before embedding — no random placements.
+**Classification doctrine (every speech):** **message · audience · emotional function · page · exact slot** — no random placements.
+
+### Locked presentation rules
+
+```text
+✓ youtube-nocookie embeds
+✓ click-to-play
+✓ reusable campaign media assets
+✓ contextual placement
+✓ transcript-ready
+✓ searchable metadata
+✓ reusable throughout the website
+✓ no homepage implementation until Track C opens
+```
 
 ### 15.1 Canonical external video records
 
@@ -268,6 +293,7 @@ Privacy-enhanced embed hosts (preferred):
 https://www.youtube-nocookie.com/embed/eKVz5pFJxtk
 https://www.youtube-nocookie.com/embed/aO712RsR0pQ
 https://www.youtube-nocookie.com/embed/Hl_n-A9aL1s
+https://www.youtube-nocookie.com/embed/KZ33iSxZ0ZQ
 ```
 
 Watch URLs (source of truth for IDs):
@@ -275,6 +301,7 @@ Watch URLs (source of truth for IDs):
 - Message: https://youtu.be/eKVz5pFJxtk
 - Ripples: https://youtu.be/aO712RsR0pQ
 - County Clerk Forum: https://youtu.be/Hl_n-A9aL1s
+- Leadership (Video 4): https://youtu.be/KZ33iSxZ0ZQ
 
 #### Record A — message / office vision
 
@@ -428,3 +455,34 @@ Then place a large polished **speech card** (same campaign video chrome as §15.
 #### Homepage rule
 
 On the homepage, use only a **short visual reference or excerpt card**, **not** the full forum as the principal personality video. Homepage leads with emotionally direct speeches (Records A/B); this longer forum is strongest when a visitor is evaluating knowledge and qualifications.
+
+### 15.7 Record D — leadership speech (Video 4)
+
+**Asset type:** External video / leadership speech  
+**Status:** Classified into Kelly Speaks library; full title/length/chapters **pending** richer metadata as available  
+**Do not** displace locked homepage message (`eKVz5pFJxtk`) or momentum (`aO712RsR0pQ`) principals
+
+```text
+Provider: YouTube
+Video ID: KZ33iSxZ0ZQ
+Privacy embed: https://www.youtube-nocookie.com/embed/KZ33iSxZ0ZQ
+Media Type: Leadership Speech
+Category: Campaign Speech
+Primary Theme: Leadership
+Secondary Themes: Government · Transparency · Public Service · Elections · Business · Community
+Audience: General Public
+Length: (pending)
+Suggested Emotion: Inspirational
+Placement Priority: High
+Homepage Eligible: Yes (supporting / Hear Directly From Kelly — not a replacement for locked message/momentum canon)
+Transcript: Pending
+Featured: Yes
+Suggested Kelly Speaks section: Leadership
+Reusable band: Hear Directly From Kelly
+Suggested future slots (proposed):
+  kelly-speaks.leadership.featured-video
+  meet-kelly.leadership.supporting-video
+  home.hear-kelly.supporting-video
+```
+
+**Content-module posture:** Treat as a campaign knowledge module (title, ID, transcript, summary, pull quote, topics, related pages, CTA) — not a bare iframe. See `docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md`.
