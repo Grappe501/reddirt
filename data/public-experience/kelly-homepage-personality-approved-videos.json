@@ -972,6 +972,97 @@
         "suggestedCtas",
         "reviewStatus"
       ]
+    },
+    {
+      "id": "campaign-short-1bofm9ao8bu",
+      "provider": "YouTube",
+      "videoId": "1BOFM9ao8bU",
+      "watchUrl": "https://youtu.be/1BOFM9ao8bU",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/1BOFM9ao8bU",
+      "title": "Pending full title metadata",
+      "displayTitle": "Campaign Short (Imported)",
+      "assetType": "campaign_short",
+      "mediaType": "Campaign Short",
+      "category": "Campaign Short",
+      "format": "vertical_9_16",
+      "aspectRatio": "9:16",
+      "durationClass": "short-form",
+      "status": "imported",
+      "reviewStatus": "Imported",
+      "displayStyle": "CampaignShortCard",
+      "displayComponent": "CampaignShortCard",
+      "autoplay": false,
+      "captions": "enabled_when_available",
+      "transcriptStatus": "pending",
+      "transcriptStatusCode": "NOT_REQUESTED",
+      "posterPreference": "campaign_custom_poster",
+      "publication": "draft_awaiting_editorial_review",
+      "publicationStatus": "DRAFT",
+      "featured": false,
+      "homepageEligible": false,
+      "homepageEligibility": "Review Required",
+      "homepageNote": "Shorts must not replace locked landscape canon eKVz5pFJxtk / aO712RsR0pQ. Track C CLOSED.",
+      "primarySlot": null,
+      "relatedPages": "pending_review",
+      "topics": "pending_review",
+      "counties": "pending_review",
+      "shortsCollections": ["60-seconds-with-kelly"],
+      "placementCandidates": [
+        "Homepage — 60 Seconds with Kelly carousel",
+        "Meet Kelly",
+        "Get Involved",
+        "Issues (if policy-specific)",
+        "Kelly Speaks — Shorts section",
+        "Campaign Journey",
+        "County pages (if county visit)",
+        "Volunteer"
+      ],
+      "storyEngineLinks": {
+        "transcript": null,
+        "summary": null,
+        "pullQuote": null,
+        "topics": [],
+        "counties": [],
+        "event": null,
+        "relatedPhotos": [],
+        "relatedBlogPosts": [],
+        "relatedPolicyPages": [],
+        "relatedEvents": [],
+        "relatedMedia": [],
+        "callsToAction": ["Learn More"]
+      },
+      "publicApproval": "operator_controlled",
+      "editorialWorkflow": [
+        "Imported",
+        "Metadata Review",
+        "Transcript Retrieved",
+        "AI Summary Generated",
+        "Editorial Review",
+        "Topic & County Tagging",
+        "Page Placement Approval",
+        "Published"
+      ],
+      "metadataSupported": [
+        "displayTitle",
+        "youtubeId",
+        "transcript",
+        "summary",
+        "pullQuote",
+        "topicTags",
+        "counties",
+        "event",
+        "audience",
+        "storyRole",
+        "homepageEligibility",
+        "featuredStatus",
+        "relatedPhotos",
+        "relatedBlogPosts",
+        "relatedPolicyPages",
+        "relatedEvents",
+        "relatedMedia",
+        "suggestedCtas",
+        "reviewStatus"
+      ]
     }
   ],
   "storyRoles": [
@@ -1034,7 +1125,8 @@
     "3iWSa5Gwmdc",
     "52egsV4WWgc",
     "X6M_SMmbYQ4",
-    "scytoSXSO3A"
+    "scytoSXSO3A",
+    "1BOFM9ao8bU"
   ],
   "mediaTaxonomy": [
     { "type": "Campaign Speech", "purpose": "Full speeches and major addresses", "displayComponent": "CampaignVideoCard" },
@@ -1074,7 +1166,7 @@
           "Civic Education"
         ]
       },
-      "provisionalVideoIds": ["52egsV4WWgc", "X6M_SMmbYQ4", "scytoSXSO3A"]
+      "provisionalVideoIds": ["52egsV4WWgc", "X6M_SMmbYQ4", "scytoSXSO3A", "1BOFM9ao8bU"]
     },
     {
       "id": "on-the-campaign-trail",
@@ -1102,7 +1194,7 @@
     ],
     "workbenchRoadmap": {
       "status": "recommended_next",
-      "note": "With 13+ videos, prefer Campaign Media Workbench over page-by-page embeds",
+      "note": "With 14+ videos, prefer Campaign Media Workbench over page-by-page embeds",
       "modules": [
         "Media Inbox",
         "Transcript Queue",
@@ -1111,6 +1203,23 @@
         "AI Assistance (editor-gated)",
         "Performance Dashboard"
       ],
+      "aiMediaIntelligenceDrafts": {
+        "status": "recommended_next",
+        "requiresHumanApproval": true,
+        "draftAssets": [
+          "Transcript",
+          "Executive Summary",
+          "Key Quotes",
+          "Issue Tags",
+          "County Mentions",
+          "People & Organizations",
+          "FAQ Suggestions",
+          "Related Website Pages",
+          "Social Clip Suggestions",
+          "Newsletter Excerpts",
+          "Speech Analytics"
+        ]
+      },
       "partiallyShipped": [
         "/admin/media/youtube (Pass 2 OAuth + transcript pipeline)",
         "src/content/media/campaign-media-registry.ts"
@@ -1143,7 +1252,7 @@
   "firstHomepagePersonalitySliceWhenTrackCOpens": [
     "LOCKED: place This Office Belongs to the People! (eKVz5pFJxtk) at home.message.primary after Four Pillars / Leadership",
     "LOCKED: place Creating the Ripples in Hot Springs Village (aO712RsR0pQ) at home.personality.primary",
-    "Optional later: 60 Seconds with Kelly Shorts carousel (52egsV4WWgc, X6M_SMmbYQ4, scytoSXSO3A provisional) — CampaignShortCard only; never replaces locked landscape canon",
+    "Optional later: 60 Seconds with Kelly Shorts carousel (52egsV4WWgc, X6M_SMmbYQ4, scytoSXSO3A, 1BOFM9ao8bU provisional) — CampaignShortCard only; never replaces locked landscape canon",
     "Curate a small photo set around locked videos only"
   ],
   "campaignMediaRegistryDoc": "docs/CAMPAIGN_MEDIA_REGISTRY.md",
