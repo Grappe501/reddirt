@@ -1,9 +1,16 @@
 {
   "slice": "KELLY-PUBLIC-EXPERIENCE-FOUNDATION-1.0",
   "phase": "1C",
-  "purpose": "Approved external video inputs for KELLY-HOMEPAGE-PERSONALITY-1.0 — documentation only; not public-enabled by this file",
+  "purpose": "Approved external campaign video inputs (homepage personality + qualification/forum assets) — documentation only; not public-enabled by this file",
   "trackCStatus": "CLOSED",
   "implementationStatus": "documented_inputs_only",
+  "classificationDoctrine": [
+    "message",
+    "audience",
+    "emotionalFunction",
+    "page",
+    "exactSlot"
+  ],
   "presentationRules": {
     "embedHost": "https://www.youtube-nocookie.com/embed/{videoId}",
     "clickToPlay": true,
@@ -22,7 +29,9 @@
       "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/eKVz5pFJxtk",
       "title": "This Office Belongs to the People!",
       "displayTitle": "This Office Belongs to the People",
+      "assetType": "external_video_message",
       "pageRole": "campaign_philosophy_office_vision",
+      "emotionalFunction": "message_philosophy",
       "homepagePriority": 1,
       "suggestedHomepageSlot": "home.message.primary",
       "slotRegistryNote": "Proposed for Track C — not present in Phase 1 PUBLIC_MEDIA_HOME_SLOTS",
@@ -72,7 +81,9 @@
       "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/aO712RsR0pQ",
       "title": "Creating the Ripples in Hot Springs Village",
       "displayTitle": "Creating Ripples Across Arkansas",
+      "assetType": "external_video_personality_momentum",
       "pageRole": "campaign_momentum_community_story",
+      "emotionalFunction": "personality_momentum",
       "homepagePriority": 2,
       "suggestedHomepageSlot": "home.personality.primary",
       "slotRegistryNote": "Existing Phase 1 slot key; Track C should allow VIDEO + poster for this band",
@@ -113,12 +124,95 @@
         "accessibilityDescription",
         "featuredStatus"
       ]
+    },
+    {
+      "id": "county-clerk-convention-forum-2026",
+      "provider": "YouTube",
+      "videoId": "Hl_n-A9aL1s",
+      "watchUrl": "https://youtu.be/Hl_n-A9aL1s",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/Hl_n-A9aL1s",
+      "title": "Arkansas County Clerk Convention Secretary of State Candidate Forum 2026",
+      "displayTitle": "Kelly Grappe at the Arkansas County Clerk Convention",
+      "displaySublabel": "Secretary of State Candidate Forum · 2026",
+      "assetType": "external_video_full_speech_or_forum",
+      "pageRole": "qualification_election_administration",
+      "emotionalFunction": "qualification_election_administration_credibility",
+      "homepagePriority": null,
+      "homepageUse": "short_visual_reference_or_excerpt_card_only",
+      "homepageNote": "Do not use the full forum as the principal homepage personality video; homepage leads with emotionally direct speeches",
+      "primaryTopic": "Election administration",
+      "supportingTopics": [
+        "County clerk partnerships",
+        "Election security",
+        "Voting systems",
+        "County resources",
+        "Accurate vote counting",
+        "Government leadership"
+      ],
+      "primarySlot": "secure-elections.county-partnerships.featured-video",
+      "secondarySlots": [
+        "office.elections.featured-video",
+        "plan.election-administration.supporting-video",
+        "meet-kelly.executive-readiness.supporting-video",
+        "video-library.forums"
+      ],
+      "slotRegistryNote": "All slots proposed — register when Secure Elections / speech library work opens; not in Phase 1 home slot registry",
+      "audience": [
+        "County clerks",
+        "Election officials",
+        "Voters concerned about election security",
+        "Local government leaders",
+        "Civic organizations"
+      ],
+      "publicApproval": "operator_controlled",
+      "featured": true,
+      "publicationPosture": {
+        "operatorApproved": true,
+        "clickToPlay": true,
+        "autoplay": false,
+        "transcriptRecommended": true,
+        "chapterMarkersRecommended": true
+      },
+      "primaryPageSection": {
+        "page": "Secure Elections / County Partnerships",
+        "heading": "Working With Every County",
+        "supportingCopy": "Secure elections depend on strong cooperation between the Secretary of State’s office and the county clerks who administer elections in their communities. Kelly will listen to local officials, help counties obtain the resources they need, improve statewide processes, and work across voting systems to support results that are timely, secure, accurate, and transparent.",
+        "ui": [
+          "large polished speech card",
+          "display title and forum sublabel",
+          "campaign video chrome",
+          "click-to-play"
+        ]
+      },
+      "laterPagePlacements": [
+        "What the Office Does",
+        "Our Plan",
+        "Meet Kelly",
+        "Election Security",
+        "County pages",
+        "Kelly Speaks / speech library"
+      ],
+      "metadataSupported": [
+        "customPoster",
+        "transcript",
+        "chapterMarkers",
+        "shortSummary",
+        "location",
+        "eventDate",
+        "county",
+        "topics",
+        "pagePlacements",
+        "displayTitle",
+        "accessibilityDescription",
+        "featuredStatus"
+      ]
     }
   ],
   "firstHomepagePersonalitySliceWhenTrackCOpens": [
     "Register and place This Office Belongs to the People! as central message video",
     "Register and place Creating the Ripples in Hot Springs Village as first campaign-in-motion story",
-    "Curate a small photo set around those videos only"
+    "Curate a small photo set around those videos only",
+    "County Clerk Forum: homepage excerpt card only; full speech on Secure Elections / County Partnerships"
   ],
   "sourceDoc": "docs/KELLY_PUBLIC_EXPERIENCE_PHASE_1C_DATABASE_PARITY.md#15-approved-track-c-video-inputs-preserved-for-homepage-personality"
 }

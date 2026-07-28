@@ -248,14 +248,17 @@ Database ownership and schema parity for Submission/User are reconciled on the l
 
 **Status:** Documented approved inputs only — **not** implemented on the public homepage in Phase 1C.  
 **Track C:** Remains **CLOSED** until the Netlify / production intake gate in §12 clears.  
-**Machine-readable companion:** `data/public-experience/kelly-homepage-personality-approved-videos.json`
+**Machine-readable companion:** `data/public-experience/kelly-homepage-personality-approved-videos.json` (approved external video registry; includes homepage + qualification/forum assets)
 
-These two YouTube assets are distinct website roles. Do not treat them as interchangeable.
+These YouTube assets have distinct website roles. Do not treat them as interchangeable.
 
-| Asset | Role | Why it exists |
-|-------|------|----------------|
-| **This Office Belongs to the People!** | Core **message** video | Reinforces governing philosophy and homepage framing: *Government That Works for Every Arkansan — People Over Politics.* |
-| **Creating the Ripples in Hot Springs Village** | **Personality / momentum** video | Shows Kelly in community, campaign energy, and geographic presence across Arkansas. |
+| Asset | Role | Emotional / page function |
+|-------|------|---------------------------|
+| **This Office Belongs to the People!** | Core **message** video | Philosophy; homepage framing — *People Over Politics* |
+| **Creating the Ripples in Hot Springs Village** | **Personality / momentum** video | Community energy; Kelly Across Arkansas prototype |
+| **County Clerk Convention Candidate Forum 2026** | **Qualification / election-administration** speech | Proof of readiness with clerks; Secure Elections / county partnerships |
+
+**Classification doctrine (every speech):** classify by **message**, **audience**, **emotional function**, **page**, and **exact slot** before embedding — no random placements.
 
 ### 15.1 Canonical external video records
 
@@ -264,12 +267,14 @@ Privacy-enhanced embed hosts (preferred):
 ```text
 https://www.youtube-nocookie.com/embed/eKVz5pFJxtk
 https://www.youtube-nocookie.com/embed/aO712RsR0pQ
+https://www.youtube-nocookie.com/embed/Hl_n-A9aL1s
 ```
 
 Watch URLs (source of truth for IDs):
 
 - Message: https://youtu.be/eKVz5pFJxtk
 - Ripples: https://youtu.be/aO712RsR0pQ
+- County Clerk Forum: https://youtu.be/Hl_n-A9aL1s
 
 #### Record A — message / office vision
 
@@ -366,3 +371,60 @@ Phase 1 still-image slots remain; Track C must:
 3. Small curated photo collection around those videos only.
 
 **Do not open Track C solely because these inputs are documented.** Database/Netlify gates in §12 still apply.
+
+### 15.6 Record C — qualification / election administration (major asset)
+
+**Asset type:** External video / full speech or forum  
+**Emotional function:** Qualification and election-administration credibility (not primary homepage personality)
+
+```text
+Provider: YouTube
+Video ID: Hl_n-A9aL1s
+Title: Arkansas County Clerk Convention Secretary of State Candidate Forum 2026
+Display card label: Kelly Grappe at the Arkansas County Clerk Convention
+Card sublabel: Secretary of State Candidate Forum · 2026
+Primary topic: Election administration
+Supporting topics: County clerk partnerships · Election security · Voting systems ·
+  County resources · Accurate vote counting · Government leadership
+Primary slot: secure-elections.county-partnerships.featured-video  (proposed)
+Secondary slots:
+  office.elections.featured-video
+  plan.election-administration.supporting-video
+  meet-kelly.executive-readiness.supporting-video
+  video-library.forums
+Audience: County clerks · Election officials · Voters concerned about election security ·
+  Local government leaders · Civic organizations
+Publication posture: Operator approved · Click-to-play · No autoplay ·
+  Transcript and chapter markers recommended
+```
+
+#### Best primary placement — Secure Elections / County Partnerships
+
+County clerks administer elections locally; Kelly speaking in that setting shows she understands the SOS ↔ 75-county working relationship.
+
+Suggested section:
+
+```text
+## Working With Every County
+
+Secure elections depend on strong cooperation between the Secretary of State’s
+office and the county clerks who administer elections in their communities.
+Kelly will listen to local officials, help counties obtain the resources they
+need, improve statewide processes, and work across voting systems to support
+results that are timely, secure, accurate, and transparent.
+```
+
+Then place a large polished **speech card** (same campaign video chrome as §15.3) with the display card label / sublabel above.
+
+#### Secondary placements
+
+- **What the Office Does** — election administration and county support  
+- **Our Plan** — county-clerk resources and secure-election infrastructure  
+- **Meet Kelly** — proof she is prepared to lead the office  
+- **Election Security** — full position in her own words  
+- **County pages** — common statewide election-administration video  
+- **Kelly Speaks** / future speech library — full forum and major addresses  
+
+#### Homepage rule
+
+On the homepage, use only a **short visual reference or excerpt card**, **not** the full forum as the principal personality video. Homepage leads with emotionally direct speeches (Records A/B); this longer forum is strongest when a visitor is evaluating knowledge and qualifications.

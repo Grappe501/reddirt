@@ -169,7 +169,7 @@ See git commit for authoritative list. Core additions:
 
 **Track C:** Remains **CLOSED** until Netlify production redeploy + public form smoke against PascalCase `"Submission"` (see Phase 1B/1C reports). Local Submission/User parity was reconciled in Phase 1C.
 
-**Approved Track C video inputs (documented only):** see Phase 1C §15 and `data/public-experience/kelly-homepage-personality-approved-videos.json` — message video `eKVz5pFJxtk` (`home.message.primary` proposed) and ripples video `aO712RsR0pQ` (`home.personality.primary`). Do not implement homepage personality until Track C opens.
+**Approved Track C video inputs (documented only):** see Phase 1C §15 and `data/public-experience/kelly-homepage-personality-approved-videos.json` — message `eKVz5pFJxtk`, ripples `aO712RsR0pQ`, and County Clerk Forum qualification asset `Hl_n-A9aL1s` (primary: Secure Elections / county partnerships; homepage excerpt only). Do not implement homepage personality until Track C opens.
 
 ### Track C entry gates (partial)
 
