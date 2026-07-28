@@ -143,6 +143,45 @@ export default async function GetInvolvedPage({
         </Button>
       </PageHero>
 
+      <FullBleedSection variant="subtle" className="!py-8" aria-labelledby="participation-clarity-heading">
+        <ContentContainer className="max-w-3xl">
+          <h2 id="participation-clarity-heading" className="font-heading text-xl font-bold text-kelly-ink">
+            What you are signing up for
+          </h2>
+          <ul className="mt-4 space-y-3 font-body text-sm leading-relaxed text-kelly-slate">
+            <li>
+              <strong className="text-kelly-navy">Stay connected</strong> ({` `}
+              <a href="#join" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
+                #join
+              </a>
+              ) — campaign updates and ways to help. This is a mailing-list style connection, not an automatic volunteer
+              shift assignment.
+            </li>
+            <li>
+              <strong className="text-kelly-navy">Volunteer</strong> ({` `}
+              <a href="#volunteer" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
+                #volunteer
+              </a>
+              ) — tell us how you can help (events, calls, doors, hosting, logistics, and more). Remote help is welcome
+              when the lane fits. Staff review submissions; nothing auto-publishes you into outreach lists beyond what
+              you choose here.
+            </li>
+            <li>
+              <strong className="text-kelly-navy">After you submit</strong> — your form creates a campaign intake record
+              for follow-up. You should see a clear success message on this page. We do not invent automatic text/email
+              blasts from this pass.
+            </li>
+            <li>
+              <strong className="text-kelly-navy">Privacy</strong> — see how we handle information in our{" "}
+              <Link href="/privacy" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
+                Privacy
+              </Link>{" "}
+              policy. Do not mix volunteer consent with unrelated story or donation consent on the same checkbox.
+            </li>
+          </ul>
+        </ContentContainer>
+      </FullBleedSection>
+
       {left && right ? (
         <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">
           <ContentContainer wide className="py-10 md:py-14">

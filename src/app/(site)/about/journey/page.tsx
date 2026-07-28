@@ -1,83 +1,142 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
-import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
-import { meetKellyJourneyCopy } from "@/content/about/meet-kelly-pages";
+import { CampaignVideoFeature } from "@/components/media/CampaignVideoFeature";
+import { acrossArkansasJourneyCopy } from "@/content/about/across-arkansas-journey";
+import {
+  homepagePhotoCountyHref,
+  listHomepageAcrossArkansasPhotos,
+  listHomepageCampaignPhotos,
+} from "@/content/media/homepage-campaign-photos";
+import { getHomepageAcrossArkansasVideo } from "@/content/media/homepage-campaign-videos";
 import { pageMeta } from "@/lib/seo/metadata";
 
 export const dynamic = "force-dynamic";
 
-const c = meetKellyJourneyCopy;
+const c = acrossArkansasJourneyCopy;
 
 export const metadata: Metadata = pageMeta({
-  title: "Kelly's journey",
+  title: "Kelly Across Arkansas",
   description:
-    "Kelly Grappe's life story—Arkansas roots, career, family, and the lessons that shape her run for Secretary of State.",
+    "Campaign trail evidence for Kelly Grappe — featured video, confirmed photography, and invitations to meet or invite Kelly. No invented county coverage.",
   path: "/about/journey",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-function statusBadge(status: (typeof c.arcs)[number]["status"]) {
-  switch (status) {
-    case "NEEDS SOURCE":
-      return <ContentPendingBadge variant="source" />;
-    default:
-      return <ContentPendingBadge variant="pending" />;
-  }
-}
-
 export default function AboutJourneyPage() {
+  const video = getHomepageAcrossArkansasVideo();
+  const stills = listHomepageAcrossArkansasPhotos();
+  const morePhotos = listHomepageCampaignPhotos().filter((p) => !stills.some((s) => s.id === p.id)).slice(0, 3);
+
   return (
     <>
       <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
         <Button href="/about" variant="outline">
-          Meet Kelly overview
+          Read Kelly’s Story
         </Button>
-        <Button href="/about/community" variant="outline">
-          Community work
+        <Button href="/events/request" variant="primary">
+          Invite Kelly
         </Button>
       </PageHero>
 
-      <FullBleedSection variant="subtle" padY>
+      <FullBleedSection variant="subtle" className="!py-6">
         <ContentContainer className="max-w-3xl">
           <MeetKellySubnav current="/about/journey" />
-          <div className="mt-10 space-y-8">
-            {c.arcs.map((arc) => (
-              <article
-                key={arc.title}
-                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
-              >
-                <div className="flex flex-wrap items-center gap-3">
-                  <h2 className="font-heading text-xl font-bold text-kelly-text">{arc.title}</h2>
-                  {statusBadge(arc.status)}
-                </div>
-                <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/85">{arc.body}</p>
-              </article>
+          <p className="mt-8 font-body text-lg leading-relaxed text-kelly-slate">{c.intro}</p>
+        </ContentContainer>
+      </FullBleedSection>
+
+      {video ? (
+        <FullBleedSection padY>
+          <ContentContainer>
+            <CampaignVideoFeature
+              media={video}
+              eyebrow="Featured trail story"
+              introduction={c.videoIntroduction}
+              headingId="journey-video-heading"
+              preferShortTitle
+            />
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
+
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer>
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">Confirmed trail photography</h2>
+          <p className="mt-3 max-w-3xl font-body text-kelly-slate">
+            Selected FEATURE stills. City and county appear only when confirmed in the campaign photo registry.
+          </p>
+          <ul className="mt-10 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[...stills, ...morePhotos].map((photo) => {
+              const href = homepagePhotoCountyHref(photo);
+              const placeBits = [
+                photo.campaign.city !== "Unknown" ? photo.campaign.city : null,
+                photo.campaign.county !== "Unknown" ? `${photo.campaign.county} County` : null,
+              ].filter(Boolean);
+              return (
+                <li key={photo.id} className="flex flex-col overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
+                  <div className="relative aspect-[4/5] bg-kelly-fog">
+                    <Image
+                      src={photo.src}
+                      alt={photo.accessibility.altText}
+                      width={photo.basic.width ?? 768}
+                      height={photo.basic.height ?? 1024}
+                      className="h-full w-full object-cover"
+                      sizes="(max-width: 640px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-4">
+                    <p className="font-body text-[11px] font-bold uppercase tracking-wide text-kelly-gold">
+                      {placeBits.length > 0 ? placeBits.join(" · ") : "Location pending confirmation"}
+                    </p>
+                    <p className="mt-2 font-body text-sm text-kelly-slate">{photo.accessibility.caption}</p>
+                    {href ? (
+                      <Link
+                        href={href}
+                        className="mt-auto pt-3 text-sm font-bold text-kelly-blue underline decoration-kelly-blue/25 underline-offset-4 hover:decoration-kelly-blue"
+                      >
+                        {photo.campaign.county} County →
+                      </Link>
+                    ) : null}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY>
+        <ContentContainer className="max-w-3xl text-center">
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.invite.title}</h2>
+          <p className="mt-4 font-body text-lg text-kelly-slate">{c.invite.body}</p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button href={c.invite.primary.href} variant="primary">
+              {c.invite.primary.label}
+            </Button>
+            <Button href={c.invite.secondary.href} variant="outline">
+              {c.invite.secondary.label}
+            </Button>
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer className="max-w-3xl text-center">
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink">{c.closing.title}</h2>
+          <p className="mt-4 font-body text-kelly-slate">{c.closing.body}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {c.closing.ctas.map((cta) => (
+              <Button key={cta.href} href={cta.href} variant="outline">
+                {cta.label}
+              </Button>
             ))}
           </div>
-
-          <section className="mt-14" aria-labelledby="journey-learnings">
-            <h2 id="journey-learnings" className="font-heading text-2xl font-bold text-kelly-text">
-              What she learned along the way
-            </h2>
-            <ul className="mt-6 list-disc space-y-3 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
-              {c.learnings.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-          </section>
-
-          <p className="mt-12 font-body text-base leading-relaxed text-kelly-text/85">
-            For the full essays on each arc—not these summaries—open the{" "}
-            <Link href="/about/story" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-              campaign chapters
-            </Link>{" "}
-            from the Meet Kelly overview.
-          </p>
         </ContentContainer>
       </FullBleedSection>
     </>

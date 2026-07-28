@@ -81,10 +81,10 @@ export function TrustFunnelCampaignPhotosSection() {
 
         <ScrollReveal delay={80} className="mt-10 flex justify-center">
           <Link
-            href="/about/journey"
+            href="/campaign-photos"
             className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-navy/20 bg-white px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:border-kelly-gold hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
           >
-            Kelly Across Arkansas
+            View Campaign Photos
           </Link>
         </ScrollReveal>
       </ContentContainer>

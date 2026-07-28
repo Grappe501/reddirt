@@ -55,10 +55,14 @@ export const primaryNavGroups: NavGroup[] = [
     groupLandingHref: "/about",
     items: [
       { label: "Meet Kelly", href: "/about" },
-      { label: "Her Journey", href: "/about/journey" },
+      { label: "Kelly Across Arkansas", href: "/about/journey" },
       { label: "Community & Civic Work", href: "/about/community" },
       { label: "Why I'm Running", href: "/about/why-im-running" },
       { label: "Initiatives & petitions", href: kellyInitiativesChapterHref },
+      { label: "Campaign Videos", href: "/kelly-speaks" },
+      { label: "Campaign Photos", href: "/campaign-photos" },
+      { label: "Endorsements", href: "/endorsements" },
+      { label: "Priorities", href: "/priorities" },
     ],
   },
   {
@@ -92,6 +96,7 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "From the Road", href: "/from-the-road" },
       { label: "Press Coverage", href: "/press-coverage" },
       { label: "Campaign Updates", href: "/updates" },
+      { label: "Campaign Videos", href: "/kelly-speaks" },
       { label: "Editorial", href: "/editorial" },
       { label: "Explainers", href: "/explainers" },
     ],
@@ -165,6 +170,7 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
     title: "Legal",
     items: [
       { label: "Privacy", href: "/privacy" },
+      { label: "Accessibility", href: "/accessibility" },
       { label: "Terms of use", href: "/terms" },
       { label: "Disclaimer", href: "/disclaimer" },
     ],
