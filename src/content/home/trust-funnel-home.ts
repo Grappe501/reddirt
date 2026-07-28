@@ -1,5 +1,7 @@
 /**
- * Trust-funnel homepage copy — real content or clearly marked pending only.
+ * Trust-funnel homepage copy — LIVE CANON for `/` until HOMEPAGE_FORWARD_PLAN.md replaces it.
+ * Real content or clearly marked pending only. Do not invent quotes, counties, or résumé claims.
+ * @see docs/website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md
  * @see docs/website/WEBSITE_CONTENT_INTEGRITY_AUDIT.md
  */
 

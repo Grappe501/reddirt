@@ -5,6 +5,8 @@
 **Scope:** Public-facing site overhaul — real content or clearly marked pending only  
 **Out of scope (unchanged):** Victory OS doctrine, `victory-map-v1.json`, Decision Engine, Mission Generator, calendar logic, campaign scoring, admin Path to Victory button
 
+**Homepage as-built (2026-07-28):** [`HOMEPAGE_CURRENT_STATE_ASSESSMENT.md`](./HOMEPAGE_CURRENT_STATE_ASSESSMENT.md) — trust-funnel is live canon; Ernie forward plan in [`HOMEPAGE_FORWARD_PLAN.md`](./HOMEPAGE_FORWARD_PLAN.md).
+
 ---
 
 ## Summary

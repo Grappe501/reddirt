@@ -1,3 +1,8 @@
+/**
+ * Homepage section orchestrator — LIVE CANON for `/`.
+ * Section order and copy live here + trust-funnel-home.ts.
+ * @see docs/website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md
+ */
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { getCampaignBlogUrl, getVolunteerSignupHref } from "@/config/external-campaign";

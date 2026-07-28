@@ -1,3 +1,9 @@
+/**
+ * Public homepage `/` — LIVE CANON: trust-funnel wireframe.
+ * Do not remount HomeExperience, Track C personality, or getMergedHomepageConfig here
+ * until docs/website/HOMEPAGE_FORWARD_PLAN.md is locked by Ernie/Steve.
+ * @see docs/website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md
+ */
 import type { Metadata } from "next";
 import { HomeDonateFloatingGate } from "@/components/home/HomeDonateFloatingGate";
 import { HomeTrustFunnelWireframe } from "@/components/home/HomeTrustFunnelWireframe";
