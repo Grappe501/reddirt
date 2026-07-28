@@ -1,5 +1,5 @@
 /**
- * Kelly Across Arkansas — journey page copy (launch pass).
+ * Kelly Across Arkansas — journey page copy (message-psychology pass).
  * Geography claims stay conservative; unknown stays unknown.
  */
 
@@ -8,12 +8,13 @@ export const acrossArkansasJourneyCopy = {
     eyebrow: "Kelly Across Arkansas",
     title: "Kelly Across Arkansas",
     subtitle:
-      "Traveling, listening, and showing up—selected trail stories, confirmed photography, and a clear invitation to meet or invite Kelly. Not an empty county grid.",
+      "Confirmed trail evidence: travel, listening, and invitations to meet—not an empty county grid.",
   },
+  /** Target: 75–130 words */
   intro:
-    "This page gathers campaign-trail evidence that already exists in the public record: a featured momentum video, curated stills with confirmed places where known, and real ways to invite Kelly to your community. We do not invent county coverage to fill the map.",
+    "This page shows how Kelly works on the trail: she travels to confirmed stops, listens, asks questions, and learns what is working and what is not. Featured video and curated stills are evidence of that method — not claims of coverage everywhere. We do not invent county coverage to fill a map. Invite Kelly through staff review; nothing is confirmed until the campaign says so. For qualifications and governing commitments, use Meet Kelly and Priorities rather than expecting a full biography on this page.",
   videoIntroduction:
-    "From Hot Springs Village outward, this story captures campaign momentum—neighbors gathering, conversations starting, and the work of showing up again and again.",
+    "A trail story from Hot Springs Village: neighbors gathering, conversations starting, and the work of showing up.",
   invite: {
     title: "Invite Kelly",
     body: "Invite Kelly to your county, club, church, chamber, fair, or community gathering. Every request goes through staff review before anything is confirmed.",
@@ -22,11 +23,11 @@ export const acrossArkansasJourneyCopy = {
   },
   closing: {
     title: "Keep following the trail",
-    body: "Verified field posts and published events appear as the campaign releases them—nothing fabricated to look busy.",
+    body: "Verified field posts and published events appear as the campaign releases them.",
     ctas: [
       { href: "/from-the-road", label: "From the Road" },
       { href: "/campaign-photos", label: "View Campaign Photos" },
-      { href: "/about", label: "Read Kelly’s Story" },
+      { href: "/about", label: "Read About Kelly’s Experience" },
     ],
   },
 } as const;

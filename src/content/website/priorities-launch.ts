@@ -9,10 +9,10 @@ export const prioritiesLaunchCopy = {
     eyebrow: "Priorities",
     title: "What this office should deliver for Arkansas",
     subtitle:
-      "The Secretary of State administers elections support, business filings, public records, and Capitol stewardship—not the whole of state government. Below is what Kelly intends to improve inside that authority.",
+      "Elections support, business filings, public records, and Capitol stewardship—what Kelly intends to improve inside that authority, and what the office cannot do alone.",
   },
   authorityNote:
-    "Campaign goals describe how Kelly would lead within the office’s legal duties. They do not claim powers the Secretary of State does not have—such as writing tax law, running every county election board unilaterally, or replacing the legislature.",
+    "Goals describe leadership within legal duties. They do not claim powers the Secretary of State does not have—writing tax law, running every county election board unilaterally, or replacing the legislature.",
   pillars: [
     {
       id: "elections",
@@ -109,11 +109,10 @@ export const prioritiesLaunchCopy = {
   ],
   closing: {
     title: "See the office in practice",
-    body: "For neutral explainers of what the office already does today, open the office guides. For Kelly’s story and trail, return to Meet Kelly.",
+    body: "For neutral explainers of what the office does today, open the office guides. For qualifications and trail evidence, return to Meet Kelly.",
     ctas: [
       { href: "/understand", label: "Understand the office" },
-      { href: "/about", label: "Read Kelly’s Story" },
-      { href: "/#primary-message", label: "Watch Kelly’s Message" },
+      { href: "/about", label: "Read About Kelly’s Experience" },
       { href: "/get-involved", label: "Join the Campaign" },
     ],
   },

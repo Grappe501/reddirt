@@ -20,7 +20,7 @@ const c = aboutLaunchCopy;
 export const metadata: Metadata = pageMeta({
   title: "Meet Kelly Grappe",
   description:
-    "Kelly Grappe for Arkansas Secretary of State — who she is, why she is running, leadership in practice, and how to continue the story.",
+    "Kelly Grappe for Arkansas Secretary of State — relevant experience, leadership in practice, and why she seeks this office.",
   path: "/about",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
@@ -34,8 +34,8 @@ export default function AboutPage() {
   return (
     <>
       <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
-        <Button href="/about/why-im-running" variant="primary">
-          Why I’m running
+        <Button href="/priorities" variant="primary">
+          Explore Kelly’s Priorities
         </Button>
         <Button href="/about/journey" variant="outline">
           See Kelly Across Arkansas
@@ -93,9 +93,10 @@ export default function AboutPage() {
             ) : null}
 
             <div>
-              <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.herStory.title}</h2>
+              <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.experience.title}</h2>
+              <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate">{c.experience.intro}</p>
               <div className="mt-8 space-y-8">
-                {c.herStory.sections.map((section) => (
+                {c.experience.items.map((section) => (
                   <article key={section.title}>
                     <h3 className="font-heading text-xl font-bold text-kelly-navy">{section.title}</h3>
                     <p className="mt-3 font-body text-base leading-relaxed text-kelly-slate">{section.body}</p>
@@ -143,7 +144,7 @@ export default function AboutPage() {
           <h2 className="mx-auto max-w-3xl text-center font-heading text-2xl font-bold text-kelly-ink md:text-3xl">
             {c.leadership.title}
           </h2>
-          <ul className="mx-auto mt-10 grid max-w-5xl list-none gap-5 md:grid-cols-3">
+          <ul className="mx-auto mt-10 grid max-w-5xl list-none gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {c.leadership.items.map((item) => (
               <li key={item.title} className="rounded-card border border-kelly-ink/10 bg-white p-6 shadow-sm">
                 <h3 className="font-heading text-lg font-bold text-kelly-navy">{item.title}</h3>
@@ -209,9 +210,9 @@ export default function AboutPage() {
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-3xl">
-          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.values.title}</h2>
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.bringToOffice.title}</h2>
           <ul className="mt-8 space-y-6">
-            {c.values.items.map((item) => (
+            {c.bringToOffice.items.map((item) => (
               <li key={item.title}>
                 <h3 className="font-heading text-xl font-bold text-kelly-navy">{item.title}</h3>
                 <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{item.body}</p>
@@ -238,9 +239,9 @@ export default function AboutPage() {
               <Button
                 key={cta.href}
                 href={cta.href === "/get-involved" ? joinHref : cta.href}
-                variant={cta.href.includes("primary-message") || cta.href === "/get-involved" ? "primary" : "outline"}
+                variant={cta.href === "/get-involved" || cta.href === "/priorities" ? "primary" : "outline"}
                 className={
-                  cta.href.includes("primary-message") || cta.href === "/get-involved"
+                  cta.href === "/get-involved" || cta.href === "/priorities"
                     ? "bg-kelly-gold text-kelly-navy hover:bg-kelly-gold-soft"
                     : "border-white/40 text-white hover:bg-white/10"
                 }

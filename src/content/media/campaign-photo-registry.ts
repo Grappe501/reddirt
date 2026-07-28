@@ -49,14 +49,14 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       altText:
         "Kelly Grappe talks with attendees before addressing an Arkansas AFL-CIO gathering, standing in conversation inside the event venue.",
       caption:
-        "Kelly Grappe speaks with attendees before addressing the Arkansas AFL-CIO meeting, where she later earned the organization's endorsement for Secretary of State.",
+        "Kelly Grappe speaks with attendees before addressing an Arkansas AFL-CIO gathering.",
       extendedDescription:
-        "Kelly Grappe visits with attendees before speaking at an Arkansas AFL-CIO event. Rather than preparing in isolation, she is pictured engaging directly with participants in conversation shortly before delivering remarks that resulted in the organization's endorsement of her campaign for Secretary of State.",
+        "Kelly Grappe visits with attendees before speaking at an Arkansas AFL-CIO event, engaging participants in conversation inside the venue.",
       seoDescription:
-        "Kelly Grappe meets with attendees before an Arkansas AFL-CIO meeting that later endorsed her for Secretary of State.",
+        "Kelly Grappe meets with attendees before an Arkansas AFL-CIO meeting.",
     },
     notes:
-      "Candid pre-event networking; Feature photo. County/city Unknown — do not attach to county workbench. Homepage candidate (Latest Campaign Photos / future endorsement story). Story tags: Leadership, Listening, Coalition Building, Labor, Endorsements.",
+      "Candid pre-event networking; Feature photo. County/city Unknown — do not attach to county workbench. Homepage candidate (Latest Campaign Photos). Do not claim endorsement on public surfaces until listed on /endorsements with confirmed source. Story tags: Leadership, Listening, Coalition Building, Labor.",
     createdAt: "2026-07-28T05:33:00.000Z",
     updatedAt: "2026-07-28T14:30:00.000Z",
   },
@@ -96,7 +96,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       altText:
         "Kelly Grappe speaks with a voter at a campaign information table during a community meet-and-greet in Mena, Arkansas.",
       caption:
-        "Kelly Grappe visits with voters during a community candidate meet-and-greet in Mena, Arkansas, answering questions and discussing her vision for the Secretary of State's office.",
+        "Kelly Grappe visits with voters at a candidate meet-and-greet in Mena, Arkansas.",
       extendedDescription:
         "Kelly Grappe talks with a community member beside her campaign table at a candidate meet-and-greet in Mena, Arkansas. Campaign literature, yard signs, and volunteer materials are displayed as residents gather in the park to meet candidates and discuss issues affecting their community.",
       seoDescription:

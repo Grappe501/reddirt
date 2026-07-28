@@ -43,13 +43,13 @@ export function listPublicMediaCollections(): PublicMediaCollection[] {
     {
       id: "featured-messages",
       title: "Featured Messages",
-      intro: "Core campaign statements — start here to hear Kelly’s governing message.",
+      intro: "Core statements — hear Kelly’s governing message in her own words.",
       items: featured,
     },
     {
       id: "across-arkansas",
       title: "Kelly Across Arkansas",
-      intro: "Trail and community momentum stories.",
+      intro: "Confirmed trail and community stories — evidence of listening and travel.",
       items: across,
     },
     {
@@ -61,7 +61,7 @@ export function listPublicMediaCollections(): PublicMediaCollection[] {
     {
       id: "short-moments",
       title: "Short Campaign Moments",
-      intro: "Short-form clips. They support the story — they do not dominate it.",
+      intro: "Short clips that support the record — they do not dominate it.",
       items: shorts,
     },
   ];

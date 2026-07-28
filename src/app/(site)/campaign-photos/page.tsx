@@ -27,13 +27,13 @@ export default function CampaignPhotosPage() {
       <PageHero
         eyebrow="Campaign moments"
         title="Campaign Photos"
-        subtitle="A curated set of trail stills — listening, canvassing, and community stops. This is not an unfiltered archive dump."
+        subtitle="Curated trail stills—listening, speaking, working, and community stops. Not an unfiltered archive."
       >
         <Button href="/about/journey" variant="primary">
           See Kelly Across Arkansas
         </Button>
         <Button href="/about" variant="outline">
-          Read Kelly’s Story
+          Read About Kelly’s Experience
         </Button>
       </PageHero>
 

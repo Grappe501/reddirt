@@ -1,23 +1,20 @@
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
-import { getCampaignBlogUrl, getVolunteerSignupHref } from "@/config/external-campaign";
+import { getVolunteerSignupHref } from "@/config/external-campaign";
 import { siteConfig } from "@/config/site";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const copy = trustFunnelHomeCopy.finalAction;
 
-/** Natural closing ask — no floating donate interruption. */
+/** Closing ask after trust journey — Join → Volunteer → Priorities; donate available, not interruptive. */
 export function TrustFunnelFinalActionSection() {
   const volunteerHref = getVolunteerSignupHref();
-  const blogUrl = getCampaignBlogUrl();
 
   const actions = [
     { label: copy.ctas.join, href: volunteerHref, variant: "primary" as const },
     { label: copy.ctas.volunteer, href: "/get-involved#volunteer", variant: "secondary" as const },
-    { label: copy.ctas.about, href: "/about", variant: "secondary" as const },
-    { label: copy.ctas.updates, href: "/get-involved#join", variant: "secondary" as const },
-    { label: copy.ctas.blog, href: blogUrl, variant: "secondary" as const, external: true },
+    { label: copy.ctas.priorities, href: "/priorities", variant: "secondary" as const },
     { label: copy.ctas.donate, href: siteConfig.donateHref, variant: "secondary" as const, external: true },
   ];
 

@@ -10,8 +10,9 @@ export const trustFunnelHomeCopy = {
     brand: "Kelly Grappe",
     office: "For Arkansas Secretary of State",
     promise: "This office belongs to the people.",
+    /** Target: 25–45 words */
     body:
-      "Modern elections support for every county, clearer business filings, open records, and a Capitol that serves Arkansans—not political theater.",
+      "Elections people can trust, clearer business filings, open public records, and a Capitol that serves Arkansans — government that stays accessible, transparent, secure, and responsive.",
     ctas: [
       { label: "Meet Kelly", href: "/about", variant: "primary" },
       { label: "Join the Campaign", href: "__volunteer__", variant: "secondary" },
@@ -20,8 +21,9 @@ export const trustFunnelHomeCopy = {
 
   governmentThatWorks: {
     title: "Government That Works",
+    /** Target: 35–75 words */
     intro:
-      "The Secretary of State’s office touches how Arkansans vote, file a business, find public records, and walk into their Capitol. Here is what Kelly intends to improve—and why it matters to ordinary voters.",
+      "The Secretary of State’s office touches how Arkansans vote, file a business, find public records, and enter their Capitol. Each pillar below states the duty, why it matters, what Kelly believes, what she will improve, and what the office cannot do alone.",
     pillars: [
       {
         id: "elections",
@@ -137,29 +139,32 @@ export const trustFunnelHomeCopy = {
 
   primaryMessage: {
     eyebrow: "Watch Kelly’s Message",
+    /** Target: 25–60 words — frame, do not explain the video away */
     introduction:
-      "Hear Kelly in her own words on why the Secretary of State’s office belongs to the people of Arkansas—and what “People Over Politics” means in practice for elections, filings, and everyday service.",
+      "Kelly explains why she believes the Secretary of State’s office must remain accountable to the people it serves — clear, direct, and in her own words.",
   },
 
   meetKelly: {
     title: "Meet Kelly",
+    /** Three focused paragraphs; total target 150–220 words */
     intro:
-      "Kelly Grappe is a community organizer and executive leader running for Arkansas Secretary of State because the office should serve every county, business, and voter—not a political club.",
+      "Kelly Grappe is a community organizer and operations leader running for Arkansas Secretary of State. She lives and works in Arkansas community life—organizing neighbors, building volunteer capacity, and treating public process as something ordinary people should be able to understand and use.",
     body:
-      "She has spent years organizing neighbors around fair elections and ballot access, including grassroots petition work after LEARNS. That experience—listening across Arkansas, teaching the official process, and building volunteer capacity—shapes how she would run the office: professionally, transparently, and with equal respect for all 75 counties.",
+      "She spent nearly 25 years in telecom operations leadership—training teams and protecting customer-impacting work when systems could not fail—and years organizing around fair elections and ballot access, including grassroots petition work after LEARNS. She also knows the filer’s side of the counter through small-market and farm operations. That mix of administration and listening shapes how she would run the office: professionally, transparently, and with equal respect for all 75 counties.",
     values:
-      "Her north star is simple: people over politics. Modernize what is broken, defend lawful ballot access, and make state services easier for ordinary Arkansans to use.",
-    cta: "Read Kelly’s Story",
+      "Those experiences led her to seek this office: modernize what is broken inside its legal duties, defend lawful ballot access, and make state services easier for ordinary Arkansans to use. People over politics means competence, accessibility, and accountable public service—not personality worship.",
+    cta: "Read About Kelly’s Experience",
     ctaHref: "/about",
   },
 
   acrossArkansas: {
     eyebrow: "On the trail",
     title: "Kelly Across Arkansas",
+    /** Target: 35–75 words — method, not romance */
     intro:
-      "Kelly is traveling, listening, and showing up—meeting voters, building relationships, and returning to communities across the state. Movement and geography are evidence, not decoration.",
+      "Kelly travels to confirmed stops, listens, asks questions, and learns what is working and what is not. Photography and video here are evidence of that method—not claims of coverage everywhere.",
     videoIntroduction:
-      "From Hot Springs Village outward, this story captures campaign momentum: neighbors gathering, conversations starting, and the work of showing up again and again.",
+      "A trail story from Hot Springs Village: neighbors gathering, conversations starting, and the work of showing up.",
     cta: "See Kelly Across Arkansas",
     ctaHref: "/about/journey",
   },
@@ -167,14 +172,14 @@ export const trustFunnelHomeCopy = {
   campaignPhotos: {
     title: "Latest Campaign Photos",
     intro:
-      "Editorially curated trail stills—listening, canvassing, and community stops. Geography appears only when confirmed.",
+      "Curated trail stills—listening, speaking, working, and community stops. Geography appears only when confirmed.",
   },
 
   endorsements: {
     eyebrow: "Trust",
     title: "Endorsements",
     intro:
-      "Endorsements matter when they reflect real relationships and shared values—not logo wallpaper. Confirmed support will appear here with the exact organization name and source on record.",
+      "Confirmed support will appear with the organization name and source on record. One credible endorsement with context beats a row of unexplained logos.",
     emptyState:
       "No endorsements are listed yet. As organizations confirm support in the campaign record, their statements will be published here with verified wording.",
   },
@@ -183,7 +188,7 @@ export const trustFunnelHomeCopy = {
     eyebrow: "Updates",
     title: "Campaign news & updates",
     intro:
-      "Announcements, trail notes, and published events—only what the campaign has actually released. Nothing invented to fill the page.",
+      "What the campaign has actually released: announcements, trail notes, and published events—not a filler feed.",
     emptyState:
       "No public updates are queued right now. Follow From the Road and the events calendar as verified posts and stops are published.",
     fromTheRoadCta: "From the Road",
@@ -192,14 +197,13 @@ export const trustFunnelHomeCopy = {
 
   finalAction: {
     title: "The next step is yours",
+    /** Target: 15–40 words */
     body:
-      "You have met Kelly’s purpose, heard her message, and seen the trail. Join the work, stay connected, or dig into her story—then help neighbors do the same.",
+      "You know who Kelly is, why the office matters, and how she works. Join the campaign, volunteer, or explore her priorities.",
     ctas: {
       join: "Join the Campaign",
       volunteer: "Volunteer with Kelly",
-      about: "Learn more about Kelly",
-      updates: "Follow campaign updates",
-      blog: "Read the Campaign Update",
+      priorities: "Explore Kelly’s Priorities",
       donate: "Donate",
     },
   },

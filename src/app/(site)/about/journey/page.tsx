@@ -37,7 +37,7 @@ export default function AboutJourneyPage() {
     <>
       <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
         <Button href="/about" variant="outline">
-          Read Kelly’s Story
+          Read About Kelly’s Experience
         </Button>
         <Button href="/events/request" variant="primary">
           Invite Kelly

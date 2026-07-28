@@ -130,7 +130,7 @@ export default async function GetInvolvedPage({
       <PageHero
         eyebrow="Join in"
         title="Get Involved"
-        subtitle="Volunteering should feel doable—pick a lane that fits your week. This campaign grows through people who bring people."
+        subtitle="Pick a lane that fits your week. This page converts trust into concrete participation—not pressure."
       >
         <Button href="#volunteer-ways" variant="primary">
           Volunteer

@@ -30,8 +30,8 @@ export default function KellySpeaksIndexPage() {
             Campaign videos
           </h1>
           <p className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">
-            Organized by purpose — not an undifferentiated wall. Click to play on each detail page. Embeds use
-            privacy-enhanced YouTube. Shorts stay secondary.
+            Hear Kelly directly—featured messages, trail stories, and short moments, organized by purpose.
+            Click to play; embeds use privacy-enhanced YouTube.
           </p>
           <p className="mt-3 font-body text-sm text-kelly-muted">
             Public inventory: {inventory.longForm} long-form · {inventory.shorts} Shorts · {inventory.publishedTotal}{" "}
