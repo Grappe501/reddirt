@@ -696,7 +696,82 @@
         "transcript",
         "customPoster"
       ]
+    },
+    {
+      "id": "campaign-video-imported-3iwsa5gwmdc",
+      "provider": "YouTube",
+      "videoId": "3iWSa5Gwmdc",
+      "watchUrl": "https://youtu.be/3iWSa5Gwmdc",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/3iWSa5Gwmdc",
+      "title": "Pending full title metadata",
+      "displayTitle": "Campaign Video (Imported — pending classification)",
+      "assetType": "campaign_video",
+      "mediaType": "Campaign Video",
+      "category": "Campaign Video",
+      "status": "imported",
+      "reviewStatus": "Imported",
+      "displayStyle": "CampaignVideoCard",
+      "autoplay": false,
+      "captions": "enabled_when_available",
+      "transcriptStatus": "pending",
+      "contentTags": [],
+      "contentTagsNote": "Pending review",
+      "placement": "Pending classification",
+      "storyRole": null,
+      "storyRoleNote": "Assign from Campaign Story Map after review",
+      "approval": "public_approved_after_review",
+      "homepageEligible": false,
+      "homepageEligibility": "Review Required",
+      "homepageNote": "Must never replace locked canon eKVz5pFJxtk / aO712RsR0pQ",
+      "featured": false,
+      "primarySlot": null,
+      "collections": [],
+      "storyEngineLinks": {
+        "transcript": null,
+        "summary": null,
+        "keyQuotes": [],
+        "topics": [],
+        "officeResponsibilities": [],
+        "countiesMentioned": [],
+        "relatedPhotos": [],
+        "relatedBlogPosts": [],
+        "relatedPressCoverage": [],
+        "relatedEvents": [],
+        "relatedSpeeches": [],
+        "relatedPolicyPages": [],
+        "callsToAction": []
+      },
+      "publicApproval": "operator_controlled",
+      "metadataSupported": [
+        "videoId",
+        "displayTitle",
+        "summary",
+        "transcript",
+        "thumbnail",
+        "featuredQuote",
+        "topics",
+        "audience",
+        "storyRole",
+        "counties",
+        "relatedIssues",
+        "relatedPages",
+        "relatedPhotos",
+        "featuredHomepageEligibility",
+        "displayPriority",
+        "publicationStatus",
+        "reviewStatus"
+      ]
     }
+  ],
+  "storyRoles": [
+    "Introduction",
+    "Vision",
+    "Qualification",
+    "Community",
+    "Leadership",
+    "Issue Deep Dive",
+    "Inspiration",
+    "Milestone"
   ],
   "collections": [
     {
@@ -704,44 +779,61 @@
       "title": "Vision for Arkansas",
       "purpose": "Overarching philosophy, leadership vision, and campaign message",
       "potentialLocations": ["Homepage", "Our Plan", "Meet Kelly"],
-      "provisionalVideoIds": ["eKVz5pFJxtk"]
+      "provisionalVideoIds": ["eKVz5pFJxtk"],
+      "provisionalStoryRoles": ["Vision", "Introduction"]
     },
     {
       "id": "elections-and-democracy",
       "title": "Elections & Democracy",
       "purpose": "Elections, election administration, county partnerships, transparency, voter confidence",
       "potentialLocations": ["Secure Elections", "What the Office Does", "County Partnerships"],
-      "provisionalVideoIds": ["Hl_n-A9aL1s"]
+      "provisionalVideoIds": ["Hl_n-A9aL1s"],
+      "provisionalStoryRoles": ["Qualification", "Issue Deep Dive"]
     },
     {
       "id": "campaign-across-arkansas",
       "title": "Campaign Across Arkansas",
       "purpose": "Community visits, campaign stops, election night, volunteer events, trail stories",
       "potentialLocations": ["Campaign Journey", "Kelly Across Arkansas", "Get Involved"],
-      "provisionalVideoIds": ["aO712RsR0pQ", "amiTVLt85AM"]
+      "provisionalVideoIds": ["aO712RsR0pQ", "amiTVLt85AM"],
+      "provisionalStoryRoles": ["Community", "Milestone", "Inspiration"]
     },
     {
       "id": "candidate-forums-and-interviews",
       "title": "Candidate Forums & Interviews",
       "purpose": "Long-form appearances for evaluating answers in context",
       "potentialLocations": ["Kelly Speaks", "Campaign Media Center", "Learn More"],
-      "provisionalVideoIds": ["Hl_n-A9aL1s"]
+      "provisionalVideoIds": ["Hl_n-A9aL1s"],
+      "provisionalStoryRoles": ["Qualification", "Issue Deep Dive"]
     },
     {
       "id": "leadership-moments",
       "title": "Leadership Moments",
       "purpose": "Key speeches on values, leadership style, and vision",
       "potentialLocations": ["Meet Kelly", "Executive Leadership", "Homepage supporting content"],
-      "provisionalVideoIds": ["KZ33iSxZ0ZQ"]
+      "provisionalVideoIds": ["KZ33iSxZ0ZQ"],
+      "provisionalStoryRoles": ["Leadership"]
     }
   ],
   "unassignedPendingTaggingVideoIds": [
     "SrzDUJBvFrs",
     "c2v1uZNUMf4",
     "m7Mlk_bUbq4",
-    "72oKVAwfzZw"
+    "72oKVAwfzZw",
+    "3iWSa5Gwmdc"
   ],
   "mediaCenterBrowseModes": ["topic", "format", "location", "date"],
+  "phase1cStatus": "COMPLETE",
+  "trackCStatus": "CLOSED",
+  "trackCOpenRequires": [
+    "Netlify deploy commit >= 6344d902",
+    "Migration clean",
+    "Homepage smoke",
+    "Join writes PascalCase Submission",
+    "Volunteer writes PascalCase Submission",
+    "Proof cleanup"
+  ],
+  "schemaParityCommit": "6344d902",
   "reviewStatusPipeline": [
     "Imported",
     "Transcript Complete",
@@ -758,11 +850,8 @@
     "Curate a small photo set around those videos only",
     "County Clerk Forum: homepage excerpt card only; full speech on Secure Elections / County Partnerships",
     "Video 4 leadership: optional Hear Directly From Kelly supporting placement — do not displace locked canon",
-    "Video 5: place only after theme review; Story Engine links required for policy closers",
-    "Video 6: CampaignVideoCard only; assign visitor question and related pages before page surfaces",
-    "Video 7 Primary Election Night: Meet Kelly / campaign journey; homepage supporting only",
-    "Video 8: Imported only — no page lock until Tagged + Placement Approved; homepage Review Required",
-    "Video 9: Imported — assign collection after classification; Media Center browse by topic/format/location/date"
+    "Video 5–6, 8–10: place only after tagging / story role / Placement Approved",
+    "Video 7 Primary Election Night: Meet Kelly / campaign journey; homepage supporting only"
   ],
   "noRawIframes": true,
   "requiredDisplayComponent": "CampaignVideoCard",

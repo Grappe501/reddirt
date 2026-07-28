@@ -236,11 +236,50 @@ node scripts/run-with-h-drive-env.cjs node scripts/phase1c-operator-proof.cjs
 
 ---
 
-## 14. Final recommendation
+## 14. Final recommendation — Phase 1C COMPLETE / Track C CLOSED
 
-**KEEP TRACK C CLOSED**
+```text
+Phase 1C: COMPLETE
+Track C:  CLOSED
+Reason:   Awaiting production deployment validation and live smoke tests.
+No homepage personality implementation authorized.
+```
 
-Database ownership and schema parity for Submission/User are reconciled on the linked shared Supabase database. Open `KELLY-HOMEPAGE-PERSONALITY-1.0` only after Netlify production redeploy confirms migrate status clean and public join/volunteer write against PascalCase `"Submission"`.
+**Pause further implementation** on personality/UI until the production sequence below passes. High-risk local DB work is done; remaining work is **operational validation**.
+
+### Canonical baselines
+
+| Item | Value |
+|------|--------|
+| Branch | `feature/kelly-schedule-settlement-dashboard` |
+| Schema-parity commit (DB) | `6344d902` — Submission/User migration + local proofs |
+| Docs/registry HEAD | Advances with video/Story Map packets; always **includes** `6344d902` |
+| Identity | **B** — Shared multi-application database |
+| Submission strategy | **B** — legacy `submissions` untouched; RedDirt `"Submission"` |
+| User | `linkedVoterRecordId` nullable additive; FK deferred (`VoterRecord` absent) |
+| Local proofs | **16/16** |
+
+### Operator sequence before Track C may open
+
+1. **Netlify rebuild** — deploy commit **≥ `6344d902`** (prefer current branch HEAD). Resolve Lambda 400 first if still failing (`docs/NETLIFY_LAMBDA_DEPLOY_400.md`).  
+2. **Migration logs** — migrate completed; no P3009/drift; `"Submission"` present; `User.linkedVoterRecordId` applied.  
+3. **Homepage smoke** — loads, CSS, images, nav, hydration.  
+4. **Join form** — `phase1c-production-proof@example.invalid` → writes PascalCase `"Submission"` (**not** legacy `submissions`).  
+5. **Volunteer form** — same verification.  
+6. **DB confirm** — join + volunteer + WorkflowIntake (+ consent/actions as designed).  
+7. **Cleanup** — delete proof records.
+
+### Only then
+
+```text
+Track C: OPEN
+Authorized build: KELLY-HOMEPAGE-PERSONALITY-1.0
+```
+
+Using locked homepage canon only:
+
+- `eKVz5pFJxtk` — *This Office Belongs to the People!* → `home.message.primary`  
+- `aO712RsR0pQ` — *Creating the Ripples in Hot Springs Village* → `home.personality.primary`
 
 ---
 
@@ -274,6 +313,7 @@ No homepage personality implementation authorized.
 | **Video 7 (`amiTVLt85AM`)** | Campaign moment / election night | Primary Election Night — campaign journey · Meet Kelly; homepage supporting only |
 | **Video 8 (`m7Mlk_bUbq4`)** | Campaign speech (provisional) | Review status: Imported → placement after transcript/tagging; homepage Review Required |
 | **Video 9 (`72oKVAwfzZw`)** | Campaign video (Imported) | Collections pending; Campaign Media Center browse by topic/format/location/date |
+| **Video 10 (`3iWSa5Gwmdc`)** | Campaign video (Imported) | Story role pending; Campaign Story Map journey placement TBD |
 
 **Classification doctrine (every speech):** **message · audience · emotional function · page · exact slot** — no random placements. Also capture Story Engine links: photos · events · counties · issues · blogs · news · actions.
 
@@ -304,6 +344,7 @@ https://www.youtube-nocookie.com/embed/c2v1uZNUMf4
 https://www.youtube-nocookie.com/embed/amiTVLt85AM
 https://www.youtube-nocookie.com/embed/m7Mlk_bUbq4
 https://www.youtube-nocookie.com/embed/72oKVAwfzZw
+https://www.youtube-nocookie.com/embed/3iWSa5Gwmdc
 ```
 
 Watch URLs (source of truth for IDs):
@@ -317,6 +358,7 @@ Watch URLs (source of truth for IDs):
 - Primary Election Night (Video 7): https://youtu.be/amiTVLt85AM
 - Campaign speech provisional (Video 8): https://youtu.be/m7Mlk_bUbq4
 - Campaign video Imported (Video 9): https://youtu.be/72oKVAwfzZw
+- Campaign video Imported (Video 10): https://youtu.be/3iWSa5Gwmdc
 
 #### Record A — message / office vision
 
@@ -639,4 +681,25 @@ Transcript: Pending
 Topics: Pending review
 Placement: Pending classification
 Homepage Eligible: Review Required
+```
+
+### 15.13 Record J — campaign video Imported (Video 10)
+
+**Asset type:** Campaign Video  
+**Review status:** **Imported** — content tags, story role, and placement pending  
+**Approval:** Public approved after review (operator gate)  
+**Do not** displace locked homepage message (`eKVz5pFJxtk`) or momentum (`aO712RsR0pQ`) principals
+
+```text
+Asset Type: Campaign Video
+Provider: YouTube
+Video ID: 3iWSa5Gwmdc
+Privacy embed: https://www.youtube-nocookie.com/embed/3iWSa5Gwmdc
+Status: Imported
+Display Component: CampaignVideoCard
+Transcript: Pending
+Content Tags: Pending review
+Placement: Pending classification
+Story Role: Pending (see Campaign Story Map)
+Approval: Public approved after review
 ```

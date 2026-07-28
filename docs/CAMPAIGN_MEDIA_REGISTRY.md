@@ -118,6 +118,41 @@ Visitor path example: watch election-admin speech → policy → event photos �
 
 ---
 
+## 10. Campaign Story Map (visitor journey)
+
+With ten+ videos identified, each record should capture **where it fits in the visitor journey**, not only library metadata.
+
+| Story role | Example use |
+|------------|-------------|
+| **Introduction** | Homepage, Meet Kelly |
+| **Vision** | Our Plan |
+| **Qualification** | What the Office Does |
+| **Community** | Kelly Across Arkansas |
+| **Leadership** | Executive Leadership |
+| **Issue Deep Dive** | Elections, Business, Transparency |
+| **Inspiration** | Volunteer, Get Involved |
+| **Milestone** | Campaign Journey |
+
+Pages answer visitor questions with **policy + storytelling + Kelly’s own voice**. Prefer ending major pages with **Hear Kelly Explain It** (intro · CampaignVideoCard · topic tags · related links), e.g.:
+
+- Secure Elections → forums / election-admin speeches  
+- Business Services → small business / nonprofit speeches  
+- Meet Kelly → leadership, biography, campaign journey  
+- Get Involved → community events, milestones, volunteer stories  
+
+Provisional Story Map assignments (locked homepage principals only):
+
+| Video ID | Story role (provisional) |
+|----------|--------------------------|
+| `eKVz5pFJxtk` | Vision / Introduction (homepage message) |
+| `aO712RsR0pQ` | Community (homepage personality) |
+| `Hl_n-A9aL1s` | Qualification / Issue Deep Dive (elections) |
+| `KZ33iSxZ0ZQ` | Leadership |
+| `amiTVLt85AM` | Milestone / Inspiration |
+| Others Imported | Assign after tagging |
+
+---
+
 ## 9. Campaign Media Center (browse architecture)
 
 Prefer a **Campaign Media Center** over a flat video gallery. Four browse modes that scale without redesign:
