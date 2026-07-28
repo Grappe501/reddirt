@@ -139,10 +139,10 @@ PARTIAL
     - Full public route / broken-link crawl
 
 28. Git commit
-    (recorded at end of pass)
+    1cc6f602
 
 29. Push status
-    (recorded at end of pass)
+    pushed to origin/feature/kelly-schedule-settlement-dashboard
 
 30. Recommendation
     READY FOR CONNECTED-PAGE PASS
