@@ -36,3 +36,17 @@ See chat BUILD RETURN for the numbered fields. This file is the durable record.
 ### UI
 
 `TrustFunnelCampaignPhotosSection` after Meet Kelly in `HomeTrustFunnelWireframe`.
+
+### QA
+
+- `agents:test-homepage-photos-slice2` PASS
+- `agents:test-homepage-polish-slice1` PASS
+- `agents:test-campaign-photos` PASS
+- `typecheck` PASS
+- Local `next build` — **not completed** on this agent host (compile hung / heap pressure after ~25+ min). Slice 1 previously built green on the same branch family; re-run build on a clearer machine before production claim.
+
+### Git
+
+- Commit: `c4d6e3a4`
+- Pushed to `feature/kelly-schedule-settlement-dashboard`
+- Production redeploy: not attempted (Netlify Lambda 400 + slice rule)
