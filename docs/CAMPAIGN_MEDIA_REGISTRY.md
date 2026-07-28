@@ -63,7 +63,7 @@ Supported inputs include `youtu.be`, `watch?v=`, `embed`, `shorts`, `youtube-noc
 
 Code: `src/lib/media/youtube-id.ts`, `src/lib/media/campaign-media-import.ts`, Admin → Media → YouTube → Import / duplicate check.
 
-**Example:** `72oKVAwfzZw` is already registered as a DRAFT long-form `CampaignVideoCard` — duplicate pastes must **UPDATE EXISTING RECORD**, never create a second asset. Unique inventory is **19** after Video 20 (`Mihybn8zPR0`); Video 19 ID was not supplied in-lane (gap).
+**Example:** `72oKVAwfzZw` is already registered as a DRAFT long-form `CampaignVideoCard` — duplicate pastes must **UPDATE EXISTING RECORD**, never create a second asset. Unique inventory is **20** after Video 21 (`GXSQ4XroGyk`); Video 19 ID still not supplied (gap).
 
 ---
 
@@ -160,7 +160,7 @@ Modern, mobile-first horizontal scroll of vertical cards. Each Short shows:
 
 Provisional Short members (Imported — tag before shipping): `52egsV4WWgc`, `X6M_SMmbYQ4`, `scytoSXSO3A`, `1BOFM9ao8bU`, `b_tGYhWuXqI`, `Scpu5qASiTQ`, `KSCpwLsGT0o`, `dRVbQ75FcmA`
 
-**Inventory (typed registry):** 11 long-form / non-Short · 8 Shorts · **19 total** (code: `src/content/media/campaign-media-registry.ts`). Sequence label “Video 20” = `Mihybn8zPR0`; Video 19 pending if an ID arrives.
+**Inventory (typed registry):** 12 long-form / non-Short · 8 Shorts · **20 total** (code: `src/content/media/campaign-media-registry.ts`). Sequence labels Video 20 = `Mihybn8zPR0`, Video 21 = `GXSQ4XroGyk`; Video 19 pending if an ID arrives.
 
 ### 60 Seconds with Kelly (homepage — Track C gated)
 
@@ -231,9 +231,9 @@ Display title · YouTube ID · transcript · summary · pull quote · topic tags
 | **Leadership & Vision** | Philosophy, priorities, long-form interviews |
 | **Media & Press** | Interviews, debates, forums, news |
 
-At **19** unique assets (operator Video 20 milestone), treat the registry as a reusable messaging archive—not only a gallery (**create once, reuse everywhere**: homepage, issue/county pages, events, volunteer, newsletters, press, social, search, archives). Each video is the center of a **content graph** (transcript · summary · quotes · chapters · topics · counties · orgs · related policies/blogs/photos/events/speeches · FAQs · social clips · newsletter · CTAs). Pass 1/2 transcript pipelines feed this library; public placement still requires editorial approval.
+At **20** unique assets, treat the registry as a reusable messaging archive—not only a gallery (**create once, reuse everywhere**). Pass 1/2 transcript pipelines feed this library; public placement still requires editorial approval.
 
-**Next build focus:** Campaign Media Workbench (import/sync · duplicate detection · transcript retrieve/edit · tagging · placement · preview · analytics) rather than hard-coding more page embeds.
+**Build order:** public launch first · workbench/AI tooling after go-live (no redesign required).
 
 ### Asset lifecycle (health)
 
@@ -266,11 +266,13 @@ Operator flow:
 
 Public pages then assemble dynamically from the curated registry — keeping the site fresh as speeches, interviews, and Shorts arrive during the campaign.
 
-**Partial ship:** Pass 2 YouTube transcript admin (`/admin/media/youtube`) covers connect/sync/transcript review + duplicate check. Remaining Workbench modules (Media Inbox, Transcript Queue, Metadata Center, Featured Collections, Search & AI, Analytics, Campaign Timeline, Playlists) stay **recommended next** now that inventory is **19** unique assets (operator “Video 20” milestone).
+**Launch priority (current):** Finish the public website · get Kelly’s message online · keep the simple typed registry + cards + Kelly Speaks · place the right videos on the right pages · **launch**. Full Media Workbench / AI enrichment layers **after** public launch — architecture already supports that without a redesign.
+
+**Partial ship:** Pass 1/2 already provide typed `campaign-media-registry.ts`, `CampaignVideoCard` / `CampaignShortCard`, transcript fields, duplicate detection, youtube-nocookie embeds, responsive layouts, `/kelly-speaks`. Workbench modules stay **post-launch**. Unique assets: **20** (Video 19 gap remains).
 
 **Not a full Workbench build in this pass.** Track C remains CLOSED pending production smoke (and Netlify Lambda 400 unblock — see `docs/NETLIFY_LAMBDA_DEPLOY_400.md`).
 
-With ~20 labeled imports / **19** unique registered IDs, each record should capture **where it fits in the visitor journey**, not only library metadata.
+With **20** unique registered IDs (operator Video 21), each record should capture **where it fits in the visitor journey**, not only library metadata.
 
 | Story role | Example use |
 |------------|-------------|

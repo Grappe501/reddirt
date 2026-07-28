@@ -47,9 +47,10 @@ assert.ok(ids.includes("Scpu5qASiTQ"));
 assert.ok(ids.includes("KSCpwLsGT0o"));
 assert.ok(ids.includes("dRVbQ75FcmA"));
 assert.ok(ids.includes("Mihybn8zPR0"));
+assert.ok(ids.includes("GXSQ4XroGyk"));
 assert.ok(ids.includes("72oKVAwfzZw"));
 assert.equal(ids.filter((id) => id === "72oKVAwfzZw").length, 1);
-assert.equal(CAMPAIGN_MEDIA_REGISTRY.length, 19);
+assert.equal(CAMPAIGN_MEDIA_REGISTRY.length, 20);
 
 section("duplicate youtube import protection");
 const sampleUrls = [

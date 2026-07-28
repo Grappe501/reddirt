@@ -1515,6 +1515,85 @@
         "suggestedCtas",
         "reviewStatus"
       ]
+    },
+    {
+      "id": "campaign-video-gxsq4xrogyk",
+      "provider": "YouTube",
+      "videoId": "GXSQ4XroGyk",
+      "watchUrl": "https://youtu.be/GXSQ4XroGyk",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/GXSQ4XroGyk",
+      "title": "Pending full title metadata",
+      "displayTitle": "Campaign Video (Imported)",
+      "assetType": "campaign_video",
+      "mediaType": "Campaign Video",
+      "category": "Campaign Video",
+      "format": "landscape_16_9",
+      "aspectRatio": "16:9",
+      "durationClass": "pending_metadata_sync",
+      "status": "imported",
+      "reviewStatus": "Imported",
+      "displayStyle": "CampaignVideoCard",
+      "displayComponent": "CampaignVideoCard",
+      "autoplay": false,
+      "captions": "enabled_when_available",
+      "transcriptStatus": "pending",
+      "transcriptStatusCode": "NOT_REQUESTED",
+      "posterPreference": "youtube_thumbnail_replace_with_campaign_artwork_if_available",
+      "publication": "draft_awaiting_editorial_review",
+      "publicationStatus": "DRAFT",
+      "seoEligible": "after_transcript_approval",
+      "featured": false,
+      "homepageEligible": false,
+      "homepageEligibility": "Review Required",
+      "homepageNote": "Track C CLOSED — no homepage placement until authorized.",
+      "primarySlot": null,
+      "relatedPages": "pending_review",
+      "topics": "pending_review",
+      "counties": "pending_review",
+      "operatorSequenceLabel": "Video 21",
+      "placementCandidates": [
+        "Kelly Speaks",
+        "Meet Kelly",
+        "Campaign Journey",
+        "Issue pages (after tagging)",
+        "County pages (after tagging)"
+      ],
+      "storyEngineLinks": {
+        "transcript": null,
+        "summary": null,
+        "pullQuote": null,
+        "topics": [],
+        "counties": [],
+        "event": null,
+        "relatedPhotos": [],
+        "relatedBlogPosts": [],
+        "relatedPolicyPages": [],
+        "relatedEvents": [],
+        "relatedMedia": [],
+        "callsToAction": ["Learn More"]
+      },
+      "publicApproval": "operator_controlled",
+      "metadataSupported": [
+        "displayTitle",
+        "youtubeId",
+        "transcript",
+        "summary",
+        "pullQuote",
+        "topicTags",
+        "counties",
+        "event",
+        "audience",
+        "storyRole",
+        "homepageEligibility",
+        "featuredStatus",
+        "relatedPhotos",
+        "relatedBlogPosts",
+        "relatedPolicyPages",
+        "relatedEvents",
+        "relatedMedia",
+        "suggestedCtas",
+        "reviewStatus"
+      ]
     }
   ],
   "storyRoles": [
@@ -1591,9 +1670,35 @@
     "Scpu5qASiTQ",
     "KSCpwLsGT0o",
     "dRVbQ75FcmA",
-    "Mihybn8zPR0"
+    "Mihybn8zPR0",
+    "GXSQ4XroGyk"
   ],
-  "sequenceGapNote": "Operator labeled Mihybn8zPR0 as Video 20; Video 19 YouTube ID was not provided in-lane — unique registry count is 19 until Video 19 arrives.",
+  "sequenceGapNote": "Operator Video 20=Mihybn8zPR0, Video 21=GXSQ4XroGyk; Video 19 YouTube ID not provided — unique registry count is 20 until Video 19 arrives.",
+  "launchPriority": {
+    "order": [
+      "Finish public website",
+      "Get Kelly campaign message online",
+      "Import media into typed registry",
+      "Place right videos on right pages",
+      "Launch",
+      "Then build editorial and AI tooling"
+    ],
+    "deferPostLaunch": [
+      "Full Media Workbench",
+      "Transcript automation expansion",
+      "AI enrichment",
+      "Analytics dashboards"
+    ],
+    "launchStackAlreadyShipped": [
+      "campaign-media-registry.ts",
+      "CampaignVideoCard",
+      "CampaignShortCard",
+      "transcript fields",
+      "duplicate detection",
+      "youtube-nocookie embeds",
+      "/kelly-speaks"
+    ]
+  },
   "mediaTaxonomy": [
     { "type": "Campaign Speech", "purpose": "Full speeches and major addresses", "displayComponent": "CampaignVideoCard" },
     { "type": "Candidate Forum", "purpose": "Long-form Q&A and policy discussions", "displayComponent": "CampaignVideoCard" },
@@ -1681,34 +1786,8 @@
     ],
     "workbenchRoadmap": {
       "status": "recommended_next",
-      "note": "With ~20 operator-labeled imports / 19 unique IDs, build Campaign Media Workbench — create once, reuse everywhere",
-      "modules": [
-        "Media Inbox",
-        "Transcript Queue",
-        "Metadata Center",
-        "Featured Collections",
-        "Search & AI",
-        "Analytics",
-        "Campaign Timeline",
-        "Campaign Playlists"
-      ],
-      "workbenchSections": {
-        "mediaInbox": "Newly imported YouTube videos",
-        "transcriptQueue": ["Awaiting transcript", "Awaiting review", "Ready to publish"],
-        "metadataCenter": ["Topics", "Counties", "Organizations", "Events", "Related pages"],
-        "featuredCollections": ["Kelly Speaks", "60 Seconds with Kelly", "Campaign Across Arkansas", "Secure Elections", "Campaign Journey"],
-        "searchAndAi": ["Full-text transcript search", "Quote library", "Topic search", "County search", "Speech summaries"],
-        "analytics": ["Views", "Transcript opens", "Time watched", "Popular topics"]
-      },
-      "campaignPlaylists": [
-        { "id": "meet-kelly", "title": "Meet Kelly", "focus": ["introduction", "why-running", "leadership-philosophy"] },
-        { "id": "secure-elections", "title": "Secure Elections", "focus": ["county-clerks", "election-admin", "voter-confidence"] },
-        { "id": "business-nonprofits", "title": "Business & Nonprofits", "focus": ["filings", "economic-development", "sos-business-services"] },
-        { "id": "campaign-across-arkansas", "title": "Campaign Across Arkansas", "focus": ["community-visits", "local-events", "county-highlights"] },
-        { "id": "60-seconds-with-kelly", "title": "60 Seconds with Kelly", "focus": ["approved-shorts", "quick-answers", "mobile-first"] },
-        { "id": "campaign-journey", "title": "Campaign Journey", "focus": ["milestones", "primary", "major-speeches", "endorsements", "conventions"] }
-      ],
-      "nextBuildFocus": "Campaign Media Workbench (not more hard-coded page embeds)",
+      "note": "Launch first — workbench/AI after go-live. Unique registry: 20 (Video 19 gap).",
+      "nextBuildFocus": "Public site finish + contextual video placement; defer full Workbench until after launch",
       "assetLifecycle": [
         "Imported",
         "Metadata Complete",
