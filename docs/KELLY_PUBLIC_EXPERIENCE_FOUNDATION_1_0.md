@@ -165,7 +165,9 @@ See git commit for authoritative list. Core additions:
 
 ### Migration status
 
-`npm run stack:migrate` **blocked** on linked Supabase by pre-existing failed migration `20260719160000_google_oauth_and_routes` (P3009). Phase 1 migration SQL is present and ready; apply after that failure is resolved (`prisma migrate resolve` / DBA). Resolver and diagnostics **fail closed** to static ContentImage when `PublicMediaPlacement` is unavailable.
+**Phase 1B (2026-07-28):** Failed `20260719160000_google_oauth_and_routes` reconciled via **Path B** (`migrate resolve --rolled-back`; `applied_steps_count=0`). `npm run stack:migrate` applied `20260727200000_public_experience_foundation_phase1`. See [`KELLY_PUBLIC_EXPERIENCE_PHASE_1B_MIGRATION_REMEDIATION.md`](./KELLY_PUBLIC_EXPERIENCE_PHASE_1B_MIGRATION_REMEDIATION.md).
+
+**Track C:** Remains **CLOSED** until Prisma `Submission`/`User` parity on the linked DB is reconciled (legacy `submissions` collision).
 
 ### Track C entry gates (partial)
 
