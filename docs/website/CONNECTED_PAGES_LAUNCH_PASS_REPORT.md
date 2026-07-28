@@ -137,13 +137,13 @@ PARTIAL
     Kelly approval for any deeper biography claims beyond verified chapters
 
 37. Git commit
-    (this pass)
+    8567e41b
 
 38. Push status
-    (this pass)
+    pushed · origin/feature/kelly-schedule-settlement-dashboard
 
 39. Recommendation
     CONNECTED-PAGE REMEDIATION REQUIRED
-    (for screenshots, production build, voter-registration stability, fuller crawl)
+    (for screenshots, production build, fuller crawl)
     — core connected pages are substantially improved and reviewable locally
 ```
