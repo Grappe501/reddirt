@@ -3068,6 +3068,194 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
     createdAt: "2026-07-28T06:10:00.000Z",
     updatedAt: "2026-07-28T06:10:00.000Z",
   },
+  {
+    id: "porch-door-knock-approach-20260301",
+    src: "/media/campaign-photos/porch-door-knock-approach-20260301.png",
+    heroLevel: "SUPPORTING",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260301_115551.png",
+      width: 1024,
+      height: 768,
+      orientation: "LANDSCAPE",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Door-to-door canvassing",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Residential porch",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/volunteer", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: false,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe stands on a residential porch reaching toward the front door during door-to-door canvassing.",
+      caption:
+        "Door by door — Kelly Grappe reaches a front porch during retail canvassing.",
+      extendedDescription:
+        "Seen from behind on a raised concrete porch of a beige metal-roof home, Kelly Grappe in a black blazer and jeans reaches toward the storm door. A cast-iron bench and porch decorations frame an everyday door-knock moment on the trail.",
+      seoDescription:
+        "Kelly Grappe approaches a front door during campaign canvassing.",
+    },
+    notes:
+      "SUPPORTING — face not visible; strong process/canvass documentation. Same-day set with stone-porch-door-conversation. City/county Unknown. Placement: Journey gallery, Volunteer story.",
+    createdAt: "2026-07-28T06:15:00.000Z",
+    updatedAt: "2026-07-28T06:15:00.000Z",
+  },
+  {
+    id: "stone-porch-door-conversation-20260301",
+    src: "/media/campaign-photos/stone-porch-door-conversation-20260301.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260301_124500.png",
+      width: 768,
+      height: 1024,
+      orientation: "PORTRAIT",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Door-to-door canvassing",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Residential stone porch",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/volunteer", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe talks with a resident at a stone-house doorway while holding campaign literature.",
+      caption:
+        "Kelly Grappe meets a voter at the door — literature in hand, conversation underway.",
+      extendedDescription:
+        "On a fieldstone porch, Kelly Grappe in a black blazer holds a stack of dark campaign pamphlets while speaking with a grey-haired resident in the doorway. A Ten Commandments tablet sits on the ledge beside them during this daytime canvass stop.",
+      seoDescription:
+        "Kelly Grappe talks with a resident during door-to-door campaign canvassing.",
+    },
+    notes:
+      "Feature — strongest door-knock still (literature + conversation). Religious porch decor visible — use respectfully; do not invent faith/politics claims. Same-day set with porch-door-knock-approach. City/county Unknown.",
+    createdAt: "2026-07-28T06:15:00.000Z",
+    updatedAt: "2026-07-28T06:15:00.000Z",
+  },
+  {
+    id: "elks-lodge-breakfast-table-20260228",
+    src: "/media/campaign-photos/elks-lodge-breakfast-table-20260228.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260228_104908.png",
+      width: 768,
+      height: 1024,
+      orientation: "PORTRAIT",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Lodge breakfast meet-and-greet",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Elks Lodge hall",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: ["Benevolent and Protective Order of Elks"],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe speaks with seniors seated around a breakfast table in an Elks Lodge hall.",
+      caption:
+        "Kelly Grappe visits with seniors over breakfast in an Elks Lodge hall.",
+      extendedDescription:
+        "Standing at a round breakfast table with blue campaign cards and juice glasses, Kelly Grappe — in a black jacket with gold braid trim and a blue campaign button — leans in to speak with seated seniors. An Our Absent Brothers memorial plaque with an elk emblem and a Conference Room door mark the lodge setting.",
+      seoDescription:
+        "Kelly Grappe speaks with seniors at an Elks Lodge breakfast table.",
+    },
+    notes:
+      "Feature — venue locked as Elks Lodge from Our Absent Brothers / elk emblem plaque; city/county still Unknown. Strong small-town civic engagement still. Placement: Journey, Meet Kelly.",
+    createdAt: "2026-07-28T06:15:00.000Z",
+    updatedAt: "2026-07-28T06:15:00.000Z",
+  },
+  {
+    id: "hallway-tracksuit-conversation-20260301",
+    src: "/media/campaign-photos/hallway-tracksuit-conversation-20260301.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260301_162832.png",
+      width: 768,
+      height: 1024,
+      orientation: "PORTRAIT",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Public building community event",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Public building lobby / hallway",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe talks with a woman holding a drink carrier in a bright public-building hallway.",
+      caption:
+        "Kelly Grappe connects with a community member in a busy public hallway.",
+      extendedDescription:
+        "In a terrazzo hallway near an EXIT sign and first-aid marker, Kelly Grappe in a cream whip-stitched sweater gestures while speaking with a woman in a green tracksuit holding a cardboard drink carrier. Other attendees with campaign-style buttons gather toward a bright entrance beyond.",
+      seoDescription:
+        "Kelly Grappe talks with a community member in a public building hallway.",
+    },
+    notes:
+      "Feature — candid hallway retail politics; face clear. City/county Unknown. Placement: Journey, Meet Kelly.",
+    createdAt: "2026-07-28T06:15:00.000Z",
+    updatedAt: "2026-07-28T06:15:00.000Z",
+  },
 ];
 
 export function listCampaignPhotos(): CampaignPhotoRecord[] {

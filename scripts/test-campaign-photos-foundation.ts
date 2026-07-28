@@ -113,4 +113,14 @@ assert.ok(getCampaignPhotoById("war-memorial-stadium-community-laugh-20260320"))
 assert.ok(getCampaignPhotoById("i-voted-supporter-photo-20260303"));
 assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 65);
 
+const door = getCampaignPhotoById("stone-porch-door-conversation-20260301");
+assert.ok(door);
+assert.equal(door!.heroLevel, "FEATURE");
+assert.ok(getCampaignPhotoById("porch-door-knock-approach-20260301"));
+const elks = getCampaignPhotoById("elks-lodge-breakfast-table-20260228");
+assert.ok(elks);
+assert.ok(elks!.campaign.organizations.some((o) => o.includes("Elks")));
+assert.ok(getCampaignPhotoById("hallway-tracksuit-conversation-20260301"));
+assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 69);
+
 console.log("Campaign photo registry checks passed.");
