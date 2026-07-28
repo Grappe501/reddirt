@@ -1,7 +1,8 @@
 /**
- * Trust-funnel homepage copy — LIVE CANON for `/` until HOMEPAGE_FORWARD_PLAN.md replaces it.
+ * Trust-funnel homepage copy — LIVE CANON shell for `/` (HYBRID upgrades via forward-plan slices).
  * Real content or clearly marked pending only. Do not invent quotes, counties, or résumé claims.
  * @see docs/website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md
+ * @see docs/website/HOMEPAGE_FORWARD_PLAN.md
  * @see docs/website/WEBSITE_CONTENT_INTEGRITY_AUDIT.md
  */
 

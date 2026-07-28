@@ -1,7 +1,8 @@
 /**
- * Homepage section orchestrator — LIVE CANON for `/`.
- * Section order and copy live here + trust-funnel-home.ts.
+ * Homepage section orchestrator — LIVE CANON shell for `/` (HYBRID per HOMEPAGE_FORWARD_PLAN).
+ * Section order and copy live here + trust-funnel-home.ts; stills/news bands land in forward-plan slices.
  * @see docs/website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md
+ * @see docs/website/HOMEPAGE_FORWARD_PLAN.md
  */
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";

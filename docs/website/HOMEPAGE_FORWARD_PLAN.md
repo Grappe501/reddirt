@@ -1,88 +1,156 @@
 # Homepage forward plan (Ernie)
 
-**Status:** AWAITING ERNIE — decisions only; no build authorized until this doc is filled and Steve/Ernie lock it.  
-**Baseline (locked):** [`HOMEPAGE_CURRENT_STATE_ASSESSMENT.md`](./HOMEPAGE_CURRENT_STATE_ASSESSMENT.md)  
-**Live canon until this plan replaces it:** trust-funnel wireframe + `src/content/home/trust-funnel-home.ts`
+**Status:** DECISIONS LOCKED — 2026-07-28  
+**Baseline:** [`HOMEPAGE_CURRENT_STATE_ASSESSMENT.md`](./HOMEPAGE_CURRENT_STATE_ASSESSMENT.md)  
+**Shell canon:** Keep trust-funnel architecture; upgrade section content in slices below.  
+**Build auth:** Slices 1–4 may proceed in order after Steve confirms. Slice 5 (Track C video) stays blocked until Track C gate opens.
+
+**Launch message (everything on `/` must reinforce):**
+
+> Kelly Grappe is a trusted, accessible leader who is traveling Arkansas, listening to people, and prepared to serve as Secretary of State.
 
 ---
 
-## How to use
+## Locked decisions
 
-1. Read the current-state assessment end-to-end.
-2. Resolve every decision below with an explicit choice (no “maybe”).
-3. Only then authorize an implementation pass against this file.
+### 1. Stack destiny — HYBRID
+
+- [ ] Keep trust-funnel as public canon (polish / resequence only)
+- [ ] Replace trust-funnel with a new homepage architecture
+- [x] **Hybrid** (keep funnel shell; swap named sections)
+
+**Decision:** HYBRID  
+
+**Reasoning:** The trust-funnel already answers who Kelly is, why she is running, trust, stance, and next action. Keep the architecture for launch. Change content inside bands as assets mature (photos, endorsements, news) without a homepage rewrite.
 
 ---
 
-## Decisions (fill in)
+### 2. Track C / video / photo trail on `/` — STILLS ONLY
 
-### 1. Stack destiny
+- [ ] Stay OFF until Track C gate opens (no stills either)
+- [x] **Allow stills only** from campaign-photo registry (no personality video)
+- [ ] Open Track C homepage personality / Shorts / approved embeds
 
-- [ ] **Keep** trust-funnel as public canon (polish / resequence only)
-- [ ] **Replace** trust-funnel with a new homepage architecture
-- [ ] **Hybrid** (keep funnel shell; swap named sections)
+**Decision:** STILLS ONLY  
 
-**Decision:** _pending_  
-**Notes:**
+**Do not implement while Track C is CLOSED:**
 
-### 2. Track C / video / photo trail on `/`
+- Homepage personality video
+- Shorts carousel
+- Autoplay
+- Embedded media strip
 
-- [ ] Stay **OFF** until Track C gate opens (current doctrine)
-- [ ] Allow **stills only** from campaign-photo registry (no personality video)
-- [ ] Open Track C homepage personality / Shorts / approved embeds (requires gate + integrity)
+**Approved still categories (when curated):** endorsement, campaign trail, listening, community interaction photos from the campaign-photo registry. No embedded personality media until Track C officially opens.
 
-**Decision:** _pending_  
-**Notes:**
+---
 
-### 3. Admin homepage merge (`getMergedHomepageConfig`)
+### 3. Admin homepage merge — KEEP UNUSED ON `/`
 
-- [ ] **Reattach** to `/` so `/admin/homepage` drives public home
-- [ ] Keep **unused** on `/` (admin board for other hubs only)
+- [ ] Reattach to `/` so `/admin/homepage` drives public home
+- [x] **Keep unused** on `/` (admin board for other hubs / future only)
 - [ ] Retire / document as legacy
 
-**Decision:** _pending_  
-**Notes:**
+**Decision:** KEEP UNUSED ON `/`  
 
-### 4. CTA / first-impression fixes
+**Reasoning:** Launch homepage stays code-controlled. Dynamic homepage editing is unnecessary deploy risk. Admin homepage config may serve other surfaces; revisit CMS-driven home after launch.
 
-- [ ] Align header Volunteer with in-page `getVolunteerSignupHref`
-- [ ] Change / remove / delay `HomeDonateFloatingGate`
+---
+
+### 4. CTA / first impression — ALIGN VOLUNTEER + DELAY DONATE GATE
+
+- [x] Align header Volunteer with in-page `getVolunteerSignupHref`
+- [x] Delay / remove `HomeDonateFloatingGate` for launch
 - [ ] Leave as-is for launch
 
-**Decision:** _pending_  
-**Notes:**
+**Decision:** Align Volunteer destinations; remove or delay floating donation gate.  
 
-### 5. Pending biography / priorities on home
-
-- [ ] Keep Meet Kelly **draft badge**; depth only on `/about`
-- [ ] Promote approved Meet Kelly copy onto home
-- [ ] Other: _
-
-**Decision:** _pending_  
-**Notes:**
-
-### 6. Dynamic bands beyond On the Road
-
-- [ ] Keep On the Road as **sole** live band
-- [ ] Expand: news / trail photos / Shorts / other _
-
-**Decision:** _pending_  
-**Notes:**
+**Reasoning:** Home should build trust, credibility, and relationship before asking for money. Volunteer is lower-friction and fits grassroots messaging. Floating donate can return later if analytics support it.
 
 ---
 
-## Implementation slice order (Ernie fills after decisions)
+### 5. Biography — HOME PREVIEW / ABOUT FULL
 
-_Empty until decisions above are locked._
+- [x] Keep Meet Kelly **preview** on home (short bio, trust indicators, leadership summary)
+- [x] Full biography depth on `/about` (story, timeline, family, campaign history, accomplishments)
+- [ ] Dump full bio onto home
 
-1. _
-2. _
-3. _
+**Decision:** Homepage entices; `/about` carries the complete story.  
+
+**Note:** Replace the “draft manuscript” badge with an approved short preview when copy is ready — do not overwhelm home with full biography.
 
 ---
 
-## Explicit non-goals until locked
+### 6. Dynamic bands — EXPAND CAREFULLY
 
-- No Track C personality UI on `/` without gate open.
-- No inventing counties, quotes, résumé claims, or opponent contrast on home.
-- No treating Pass 02 / narrative wireframe docs as current render.
+- [ ] Keep On the Road as sole live band
+- [x] **Expand carefully** for launch
+
+**Decision:** For launch, allow:
+
+| Band | Status |
+|------|--------|
+| On the Road | Keep / improve |
+| Latest Campaign Photos | Add (registry stills; curated) |
+| Latest News / Campaign Updates | Add (lightweight; no full CMS) |
+
+**Keep disabled until after launch / Track C:**
+
+- Shorts
+- Personality video
+- AI-generated content
+- Social feeds
+- Live feeds
+
+---
+
+## Launch implementation order
+
+### Slice 1 — Homepage polish
+
+- CTA consistency (Volunteer header = in-page signup path)
+- Delay/remove `HomeDonateFloatingGate`
+- Section spacing, typography, responsive refinements
+- Accessibility review
+
+### Slice 2 — Campaign photography
+
+Integrate approved campaign-photo registry stills into:
+
+- Hero support
+- Meet Kelly
+- On the Road / photo band
+- Endorsements (when ready)
+- Community engagement
+
+No Track C video. Prefer FEATURE/PUBLISHED-ready assets; Unknown geography stays labeled Unknown.
+
+### Slice 3 — Endorsement integration
+
+Trust-building endorsement band with links to supporting content where appropriate. No unsourced claims.
+
+### Slice 4 — News integration
+
+Lightweight “Latest Campaign Updates” section maintainable without making `getMergedHomepageConfig` drive `/`.
+
+### Slice 5 — Track C (future; blocked)
+
+Only after Netlify production smoke, database validation, and Track C gate open. Then implement approved homepage videos:
+
+- `eKVz5pFJxtk` — This Office Belongs to the People!
+- `aO712RsR0pQ` — Creating the Ripples in Hot Springs Village
+
+---
+
+## Explicit non-goals (until Slice 5 / post-launch)
+
+- No Track C personality UI, Shorts, or autoplay on `/`
+- No `getMergedHomepageConfig` on the launch-critical `/` path
+- No inventing counties, quotes, résumé claims, or opponent contrast on home
+- No treating Pass 02 / narrative wireframe docs as current render
+- No full CMS homepage editing for launch
+
+---
+
+## Philosophy
+
+Features that do not reinforce the launch message (homepage CMS, embedded Shorts, advanced editorial tooling) wait until after launch. That ships a polished, trustworthy public site sooner and preserves a clean path for later enhancements.

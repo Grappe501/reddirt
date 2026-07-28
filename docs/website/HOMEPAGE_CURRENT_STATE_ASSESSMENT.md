@@ -7,9 +7,9 @@
 **Live stack:** Trust-funnel wireframe (not the older journey `HomeExperience`)
 
 Use this as the locked “what’s on the page now” packet before any forward plan.  
-**Forward plan handoff:** [`HOMEPAGE_FORWARD_PLAN.md`](./HOMEPAGE_FORWARD_PLAN.md) (Ernie fills decisions).
+**Forward plan (decisions LOCKED 2026-07-28):** [`HOMEPAGE_FORWARD_PLAN.md`](./HOMEPAGE_FORWARD_PLAN.md) — hybrid shell; stills only; admin merge unused on `/`; Slice 1+ build when Steve authorizes.
 
-**Canon lock:** Until Ernie’s forward plan explicitly replaces it, treat these as authoritative for `/`:
+**Canon lock:** Trust-funnel shell remains authoritative for `/` until a locked forward-plan slice lands code changes. Authoritative sources:
 
 - [`src/app/(site)/page.tsx`](../../src/app/(site)/page.tsx)
 - [`src/components/home/HomeTrustFunnelWireframe.tsx`](../../src/components/home/HomeTrustFunnelWireframe.tsx)

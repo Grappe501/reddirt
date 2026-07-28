@@ -1,8 +1,9 @@
 /**
- * Public homepage `/` — LIVE CANON: trust-funnel wireframe.
- * Do not remount HomeExperience, Track C personality, or getMergedHomepageConfig here
- * until docs/website/HOMEPAGE_FORWARD_PLAN.md is locked by Ernie/Steve.
+ * Public homepage `/` — LIVE CANON: trust-funnel shell (HYBRID per HOMEPAGE_FORWARD_PLAN).
+ * Do not remount HomeExperience, Track C personality, or getMergedHomepageConfig here.
+ * Stills-only photo upgrades and CTA polish follow locked slices in the forward plan.
  * @see docs/website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md
+ * @see docs/website/HOMEPAGE_FORWARD_PLAN.md
  */
 import type { Metadata } from "next";
 import { HomeDonateFloatingGate } from "@/components/home/HomeDonateFloatingGate";
