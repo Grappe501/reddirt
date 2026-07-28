@@ -60,6 +60,53 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
     createdAt: "2026-07-28T05:33:00.000Z",
     updatedAt: "2026-07-28T05:33:00.000Z",
   },
+  {
+    id: "mena-polk-meet-greet-20260411",
+    src: "/media/campaign-photos/mena-polk-meet-greet-20260411.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260411_112755.png",
+      width: 1536,
+      height: 2048,
+      orientation: "PORTRAIT",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Candidate Meet & Greet in the Park",
+      county: "Polk",
+      city: "Mena",
+      venue: "Park (Mena)",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/counties/polk", "/volunteer", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe speaks with a voter at a campaign information table during a community meet-and-greet in Mena, Arkansas.",
+      caption:
+        "Kelly Grappe visits with voters during a community candidate meet-and-greet in Mena, Arkansas, answering questions and discussing her vision for the Secretary of State's office.",
+      extendedDescription:
+        "Kelly Grappe talks with a community member beside her campaign table at a candidate meet-and-greet in Mena, Arkansas. Campaign literature, yard signs, and volunteer materials are displayed as residents gather in the park to meet candidates and discuss issues affecting their community.",
+      seoDescription:
+        "Kelly Grappe meets voters at a candidate meet-and-greet in Mena, Polk County, Arkansas.",
+    },
+    notes:
+      "Feature photo (4.5/5) — retail politics / candid conversation. Tags: Community Engagement, Listening, Campaign Trail, Retail Politics, Meet & Greet, Polk County, Mena, Voter Outreach. Primary: Kelly Across Arkansas, Campaign Journey, Meet Kelly. Secondary: Polk County page, Volunteer, Events, Photo Gallery. Related org host pending if civic group confirmed.",
+    createdAt: "2026-07-28T05:35:00.000Z",
+    updatedAt: "2026-07-28T05:35:00.000Z",
+  },
 ];
 
 export function listCampaignPhotos(): CampaignPhotoRecord[] {
