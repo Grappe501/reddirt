@@ -77,5 +77,56 @@ Assign pages/slots only after tagging — provisional imports stay in the regist
 
 1. Append each new YouTube ID to the video JSON + Phase 1C §15.  
 2. Set `reviewStatus` (default **Imported**).  
-3. Advance status as transcript, tags, and placements land.  
-4. Expand registry formats for photos/press/docs in a later slice — do not block video ingest waiting for the full multi-type product.
+3. Assign a **collection** when known (or leave unassigned until Tagged).  
+4. Advance status as transcript, tags, and placements land.  
+5. Expand registry formats for photos/press/docs in a later slice — do not block video ingest waiting for the full multi-type product.
+
+---
+
+## 7. Collections (organize the library — not one-off embeds)
+
+With nine+ videos identified, stop treating them as isolated embeds. Group into **collections** that map to pages and Media Center browse facets.
+
+| Collection | Purpose | Potential locations | Provisional members (IDs) |
+|------------|---------|---------------------|---------------------------|
+| **Vision for Arkansas** | Philosophy, leadership vision, campaign message | Homepage · Our Plan · Meet Kelly | `eKVz5pFJxtk` (locked homepage message) |
+| **Elections & Democracy** | Elections, administration, county partnerships, transparency, voter confidence | Secure Elections · What the Office Does · County Partnerships | `Hl_n-A9aL1s` |
+| **Campaign Across Arkansas** | Community visits, stops, election night, volunteers, trail | Campaign Journey · Kelly Across Arkansas · Get Involved | `aO712RsR0pQ` (locked momentum) · `amiTVLt85AM` |
+| **Candidate Forums & Interviews** | Long-form evaluation in context | Kelly Speaks · Media Center · Learn More | `Hl_n-A9aL1s` (also Elections) |
+| **Leadership Moments** | Values, leadership style, vision speeches | Meet Kelly · Executive Leadership · Homepage supporting | `KZ33iSxZ0ZQ` |
+
+**Unassigned / Imported pending tagging:** `SrzDUJBvFrs`, `c2v1uZNUMf4`, `m7Mlk_bUbq4`, `72oKVAwfzZw` — keep in registry; assign collection after review.
+
+A video may belong to **more than one** collection when themes overlap (e.g. County Clerk forum → Elections + Forums).
+
+---
+
+## 8. Story Engine edges (richer model)
+
+Every video record should eventually support:
+
+```text
+Video
+├── Transcript · Summary · Pull Quote
+├── Related Photos · Blog Posts · Press Releases
+├── Related Issues · Counties · Events · People
+├── Call to Action
+└── Suggested Page Placements
+```
+
+Visitor path example: watch election-admin speech → policy → event photos → related speeches → volunteer / invite Kelly.
+
+---
+
+## 9. Campaign Media Center (browse architecture)
+
+Prefer a **Campaign Media Center** over a flat video gallery. Four browse modes that scale without redesign:
+
+| Browse by | Examples |
+|-----------|----------|
+| **Topic** | Elections · Business · Transparency · Leadership · Community |
+| **Format** | Speech · Interview · Forum · Town Hall · Campaign Event |
+| **Location** | County or city where recorded |
+| **Date** | Campaign timeline |
+
+Pages pull featured modules from the same registry; the Media Center is the searchable index, not a second source of truth.

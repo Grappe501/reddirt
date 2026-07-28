@@ -273,6 +273,7 @@ No homepage personality implementation authorized.
 | **Video 6 (`c2v1uZNUMf4`)** | Campaign video module | Approved for public site (registry); CampaignVideoCard; themes/visitor-question pending review |
 | **Video 7 (`amiTVLt85AM`)** | Campaign moment / election night | Primary Election Night — campaign journey · Meet Kelly; homepage supporting only |
 | **Video 8 (`m7Mlk_bUbq4`)** | Campaign speech (provisional) | Review status: Imported → placement after transcript/tagging; homepage Review Required |
+| **Video 9 (`72oKVAwfzZw`)** | Campaign video (Imported) | Collections pending; Campaign Media Center browse by topic/format/location/date |
 
 **Classification doctrine (every speech):** **message · audience · emotional function · page · exact slot** — no random placements. Also capture Story Engine links: photos · events · counties · issues · blogs · news · actions.
 
@@ -302,6 +303,7 @@ https://www.youtube-nocookie.com/embed/SrzDUJBvFrs
 https://www.youtube-nocookie.com/embed/c2v1uZNUMf4
 https://www.youtube-nocookie.com/embed/amiTVLt85AM
 https://www.youtube-nocookie.com/embed/m7Mlk_bUbq4
+https://www.youtube-nocookie.com/embed/72oKVAwfzZw
 ```
 
 Watch URLs (source of truth for IDs):
@@ -314,6 +316,7 @@ Watch URLs (source of truth for IDs):
 - Campaign video (Video 6): https://youtu.be/c2v1uZNUMf4
 - Primary Election Night (Video 7): https://youtu.be/amiTVLt85AM
 - Campaign speech provisional (Video 8): https://youtu.be/m7Mlk_bUbq4
+- Campaign video Imported (Video 9): https://youtu.be/72oKVAwfzZw
 
 #### Record A — message / office vision
 
@@ -616,4 +619,24 @@ Supporting homes (candidates until tagged):
   Kelly Speaks (speech library)
   Campaign Journey (if milestone)
 Related Assets (Story Engine): Transcript · event photos · campaign blog · related speeches
+```
+
+### 15.12 Record I — campaign video Imported (Video 9)
+
+**Asset type:** Campaign Video  
+**Review status:** **Imported** — topics and placement pending classification  
+**Collection:** Unassigned until tagged (see Collections doctrine in `docs/CAMPAIGN_MEDIA_REGISTRY.md`)  
+**Do not** displace locked homepage message (`eKVz5pFJxtk`) or momentum (`aO712RsR0pQ`) principals
+
+```text
+Asset Type: Campaign Video
+Provider: YouTube
+Video ID: 72oKVAwfzZw
+Privacy embed: https://www.youtube-nocookie.com/embed/72oKVAwfzZw
+Display Component: CampaignVideoCard
+Status: Imported
+Transcript: Pending
+Topics: Pending review
+Placement: Pending classification
+Homepage Eligible: Review Required
 ```

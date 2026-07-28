@@ -641,8 +641,107 @@
         "customPoster",
         "reviewStatus"
       ]
+    },
+    {
+      "id": "campaign-video-imported-72okvawfzzw",
+      "provider": "YouTube",
+      "videoId": "72oKVAwfzZw",
+      "watchUrl": "https://youtu.be/72oKVAwfzZw",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/72oKVAwfzZw",
+      "title": "Pending full title metadata",
+      "displayTitle": "Campaign Video (Imported — pending classification)",
+      "assetType": "campaign_video",
+      "mediaType": "Campaign Video",
+      "category": "Campaign Video",
+      "status": "imported",
+      "reviewStatus": "Imported",
+      "displayStyle": "CampaignVideoCard",
+      "autoplay": false,
+      "captions": "enabled_when_available",
+      "transcriptStatus": "pending",
+      "topics": [],
+      "topicsNote": "Pending review",
+      "collections": [],
+      "placement": "Pending classification",
+      "homepageEligible": false,
+      "homepageEligibility": "Review Required",
+      "homepageNote": "Must never replace locked canon eKVz5pFJxtk / aO712RsR0pQ",
+      "featured": false,
+      "primarySlot": null,
+      "storyEngineLinks": {
+        "transcript": null,
+        "summary": null,
+        "pullQuote": null,
+        "relatedPhotos": [],
+        "relatedBlogPosts": [],
+        "relatedPressReleases": [],
+        "relatedIssues": [],
+        "relatedCounties": [],
+        "relatedEvents": [],
+        "relatedPeople": [],
+        "callToAction": null,
+        "suggestedPagePlacements": []
+      },
+      "publicApproval": "operator_controlled",
+      "metadataSupported": [
+        "videoId",
+        "title",
+        "summary",
+        "featuredQuote",
+        "topics",
+        "collections",
+        "reviewStatus",
+        "relatedPhotos",
+        "relatedEvents",
+        "transcript",
+        "customPoster"
+      ]
     }
   ],
+  "collections": [
+    {
+      "id": "vision-for-arkansas",
+      "title": "Vision for Arkansas",
+      "purpose": "Overarching philosophy, leadership vision, and campaign message",
+      "potentialLocations": ["Homepage", "Our Plan", "Meet Kelly"],
+      "provisionalVideoIds": ["eKVz5pFJxtk"]
+    },
+    {
+      "id": "elections-and-democracy",
+      "title": "Elections & Democracy",
+      "purpose": "Elections, election administration, county partnerships, transparency, voter confidence",
+      "potentialLocations": ["Secure Elections", "What the Office Does", "County Partnerships"],
+      "provisionalVideoIds": ["Hl_n-A9aL1s"]
+    },
+    {
+      "id": "campaign-across-arkansas",
+      "title": "Campaign Across Arkansas",
+      "purpose": "Community visits, campaign stops, election night, volunteer events, trail stories",
+      "potentialLocations": ["Campaign Journey", "Kelly Across Arkansas", "Get Involved"],
+      "provisionalVideoIds": ["aO712RsR0pQ", "amiTVLt85AM"]
+    },
+    {
+      "id": "candidate-forums-and-interviews",
+      "title": "Candidate Forums & Interviews",
+      "purpose": "Long-form appearances for evaluating answers in context",
+      "potentialLocations": ["Kelly Speaks", "Campaign Media Center", "Learn More"],
+      "provisionalVideoIds": ["Hl_n-A9aL1s"]
+    },
+    {
+      "id": "leadership-moments",
+      "title": "Leadership Moments",
+      "purpose": "Key speeches on values, leadership style, and vision",
+      "potentialLocations": ["Meet Kelly", "Executive Leadership", "Homepage supporting content"],
+      "provisionalVideoIds": ["KZ33iSxZ0ZQ"]
+    }
+  ],
+  "unassignedPendingTaggingVideoIds": [
+    "SrzDUJBvFrs",
+    "c2v1uZNUMf4",
+    "m7Mlk_bUbq4",
+    "72oKVAwfzZw"
+  ],
+  "mediaCenterBrowseModes": ["topic", "format", "location", "date"],
   "reviewStatusPipeline": [
     "Imported",
     "Transcript Complete",
@@ -652,6 +751,7 @@
     "Featured"
   ],
   "campaignMediaRegistryDoc": "docs/CAMPAIGN_MEDIA_REGISTRY.md",
+  "netlifyDeployNote": "docs/NETLIFY_LAMBDA_DEPLOY_400.md",
   "firstHomepagePersonalitySliceWhenTrackCOpens": [
     "LOCKED: place This Office Belongs to the People! (eKVz5pFJxtk) at home.message.primary after Four Pillars / Leadership",
     "LOCKED: place Creating the Ripples in Hot Springs Village (aO712RsR0pQ) at home.personality.primary",
@@ -661,7 +761,8 @@
     "Video 5: place only after theme review; Story Engine links required for policy closers",
     "Video 6: CampaignVideoCard only; assign visitor question and related pages before page surfaces",
     "Video 7 Primary Election Night: Meet Kelly / campaign journey; homepage supporting only",
-    "Video 8: Imported only — no page lock until Tagged + Placement Approved; homepage Review Required"
+    "Video 8: Imported only — no page lock until Tagged + Placement Approved; homepage Review Required",
+    "Video 9: Imported — assign collection after classification; Media Center browse by topic/format/location/date"
   ],
   "noRawIframes": true,
   "requiredDisplayComponent": "CampaignVideoCard",
