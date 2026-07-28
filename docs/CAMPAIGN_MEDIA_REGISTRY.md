@@ -63,7 +63,7 @@ Supported inputs include `youtu.be`, `watch?v=`, `embed`, `shorts`, `youtube-noc
 
 Code: `src/lib/media/youtube-id.ts`, `src/lib/media/campaign-media-import.ts`, Admin → Media → YouTube → Import / duplicate check.
 
-**Example:** `72oKVAwfzZw` is already registered as a DRAFT long-form `CampaignVideoCard` — duplicate pastes must **UPDATE EXISTING RECORD**, never create a second asset. Unique inventory remains **14**.
+**Example:** `72oKVAwfzZw` is already registered as a DRAFT long-form `CampaignVideoCard` — duplicate pastes must **UPDATE EXISTING RECORD**, never create a second asset. Unique inventory is **15** after Video 15 (`b_tGYhWuXqI`).
 
 ---
 
@@ -158,9 +158,9 @@ Modern, mobile-first horizontal scroll of vertical cards. Each Short shows:
 - Related page links · transcript · **Learn More**  
 - Example titles: Why I'm Running · Government That Works for Every Arkansan · Secure Elections · Helping Small Businesses · Transparency · County Partnerships · Civic Education  
 
-Provisional Short members (Imported — tag before shipping): `52egsV4WWgc`, `X6M_SMmbYQ4`, `scytoSXSO3A`, `1BOFM9ao8bU`
+Provisional Short members (Imported — tag before shipping): `52egsV4WWgc`, `X6M_SMmbYQ4`, `scytoSXSO3A`, `1BOFM9ao8bU`, `b_tGYhWuXqI`
 
-**Inventory (typed registry):** 10 long-form / non-Short · 4 Shorts · **14 total** (code: `src/content/media/campaign-media-registry.ts`).
+**Inventory (typed registry):** 10 long-form / non-Short · 5 Shorts · **15 total** (code: `src/content/media/campaign-media-registry.ts`).
 
 ### Placement fits
 
@@ -201,7 +201,20 @@ Presentation adapts to type: immersive for speeches/forums; fast intro for Short
 
 ### Registry fields (every asset)
 
-Display title · YouTube ID · transcript · summary · pull quote · topic tags · counties · event · audience · story role · homepage eligibility · featured status · related photos · related blog posts · related policy pages · related events · related media · suggested CTAs · review/publication status.
+Display title · YouTube ID · transcript · summary · pull quote · topic tags · counties · people · organizations · related issues · event · audience · story role · homepage eligibility · featured status / collection · related photos · related blog posts · related policy pages · related events · related media · suggested CTAs · review/publication status.
+
+### Primary library collections (knowledge base)
+
+| Collection | Purpose |
+|------------|---------|
+| **Kelly Speaks** | Major speeches and addresses |
+| **60 Seconds with Kelly** | Shorts and quick explainers |
+| **Campaign Across Arkansas** | Visits, events, milestones |
+| **Election Education** | SOS role, elections, voter info |
+| **Leadership & Vision** | Philosophy, priorities, long-form interviews |
+| **Media & Press** | Interviews, debates, forums, news |
+
+At **15** unique assets, treat the registry as a reusable messaging archive—not only a gallery. Pass 1/2 transcript pipelines feed this library; public placement still requires editorial approval.
 
 ---
 
@@ -221,11 +234,11 @@ Operator flow:
 
 Public pages then assemble dynamically from the curated registry — keeping the site fresh as speeches, interviews, and Shorts arrive during the campaign.
 
-**Partial ship:** Pass 2 YouTube transcript admin (`/admin/media/youtube`) covers connect/sync/transcript review. Remaining Workbench modules (Media Inbox, Tagging Workspace, Publishing Controls, Performance Dashboard) stay **recommended next** now that inventory is **14** assets.
+**Partial ship:** Pass 2 YouTube transcript admin (`/admin/media/youtube`) covers connect/sync/transcript review. Remaining Workbench modules (Media Inbox, Tagging Workspace, Publishing Controls, Performance Dashboard) stay **recommended next** now that inventory is **15** assets.
 
 **Not a full Workbench build in this pass.** Track C remains CLOSED pending production smoke (and Netlify Lambda 400 unblock — see `docs/NETLIFY_LAMBDA_DEPLOY_400.md`).
 
-With fourteen+ videos identified, each record should capture **where it fits in the visitor journey**, not only library metadata.
+With fifteen+ videos identified, each record should capture **where it fits in the visitor journey**, not only library metadata.
 
 | Story role | Example use |
 |------------|-------------|

@@ -42,9 +42,10 @@ assert.ok(ids.includes("52egsV4WWgc"));
 assert.ok(ids.includes("X6M_SMmbYQ4"));
 assert.ok(ids.includes("scytoSXSO3A"));
 assert.ok(ids.includes("1BOFM9ao8bU"));
+assert.ok(ids.includes("b_tGYhWuXqI"));
 assert.ok(ids.includes("72oKVAwfzZw"));
 assert.equal(ids.filter((id) => id === "72oKVAwfzZw").length, 1);
-assert.equal(CAMPAIGN_MEDIA_REGISTRY.length, 14);
+assert.equal(CAMPAIGN_MEDIA_REGISTRY.length, 15);
 
 section("duplicate youtube import protection");
 const sampleUrls = [
@@ -78,7 +79,7 @@ assert.ok(getPublishedCampaignMediaBySlug("this-office-belongs-to-the-people"));
 
 section("shorts format");
 const shorts = CAMPAIGN_MEDIA_REGISTRY.filter((m) => m.format === "SHORT");
-assert.equal(shorts.length, 4);
+assert.equal(shorts.length, 5);
 assert.ok(shorts.every((m) => m.youtubeVideoId.length >= 6));
 
 section("timestamps");
