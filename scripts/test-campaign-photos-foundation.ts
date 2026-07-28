@@ -72,4 +72,14 @@ assert.equal(bates!.campaign.county, UNKNOWN);
 assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 21);
 assert.ok(getCampaignPhotoById("community-meeting-group-portrait-20260716"));
 
+const buttigieg = getCampaignPhotoById("regnat-populus-buttigieg-group-20260626");
+assert.ok(buttigieg);
+assert.ok(buttigieg!.campaign.peopleVisible.includes("Pete Buttigieg"));
+assert.ok(buttigieg!.campaign.peopleVisible.includes("Kelly Grappe"));
+assert.equal(buttigieg!.heroLevel, "FEATURE");
+
+assert.ok(getCampaignPhotoById("good-things-grow-tomato-table-20260613"));
+assert.ok(getCampaignPhotoById("stone-building-handshake-steps-20260620"));
+assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 31);
+
 console.log("Campaign photo registry checks passed.");
