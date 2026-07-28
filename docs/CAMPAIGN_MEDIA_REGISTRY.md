@@ -140,7 +140,9 @@ Modern, mobile-first horizontal scroll of vertical cards. Each Short shows:
 - Related page links · transcript · **Learn More**  
 - Example titles: Why I'm Running · Government That Works for Every Arkansan · Secure Elections · Helping Small Businesses · Transparency · County Partnerships · Civic Education  
 
-Provisional Short members (Imported — tag before shipping): `52egsV4WWgc`, `X6M_SMmbYQ4`
+Provisional Short members (Imported — tag before shipping): `52egsV4WWgc`, `X6M_SMmbYQ4`, `scytoSXSO3A`
+
+**Inventory (typed registry):** 10 long-form / non-Short · 3 Shorts · **13 total** (code: `src/content/media/campaign-media-registry.ts`).
 
 ### Placement fits
 
@@ -201,9 +203,11 @@ Operator flow:
 
 Public pages then assemble dynamically from the curated registry — keeping the site fresh as speeches, interviews, and Shorts arrive during the campaign.
 
-**Not built in this pass.** Doctrine only until Track C / a dedicated Content Hub slice opens. Track C remains CLOSED pending production smoke.
+**Partial ship:** Pass 2 YouTube transcript admin (`/admin/media/youtube`) covers connect/sync/transcript review. Remaining Workbench modules (Media Inbox, Tagging Workspace, Publishing Controls, Performance Dashboard) stay **recommended next** now that inventory is **13** assets.
 
-With ten+ videos identified, each record should capture **where it fits in the visitor journey**, not only library metadata.
+**Not a full Workbench build in this pass.** Track C remains CLOSED pending production smoke (and Netlify Lambda 400 unblock — see `docs/NETLIFY_LAMBDA_DEPLOY_400.md`).
+
+With thirteen+ videos identified, each record should capture **where it fits in the visitor journey**, not only library metadata.
 
 | Story role | Example use |
 |------------|-------------|

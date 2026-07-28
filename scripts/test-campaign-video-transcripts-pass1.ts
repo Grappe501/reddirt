@@ -37,7 +37,8 @@ assert.ok(ids.includes("eKVz5pFJxtk"));
 assert.ok(ids.includes("aO712RsR0pQ"));
 assert.ok(ids.includes("52egsV4WWgc"));
 assert.ok(ids.includes("X6M_SMmbYQ4"));
-assert.equal(CAMPAIGN_MEDIA_REGISTRY.length, 12);
+assert.ok(ids.includes("scytoSXSO3A"));
+assert.equal(CAMPAIGN_MEDIA_REGISTRY.length, 13);
 
 section("public selectors hide drafts");
 for (const m of listPublishedCampaignMedia()) {
@@ -49,7 +50,7 @@ assert.ok(getPublishedCampaignMediaBySlug("this-office-belongs-to-the-people"));
 
 section("shorts format");
 const shorts = CAMPAIGN_MEDIA_REGISTRY.filter((m) => m.format === "SHORT");
-assert.equal(shorts.length, 2);
+assert.equal(shorts.length, 3);
 assert.ok(shorts.every((m) => m.youtubeVideoId.length >= 6));
 
 section("timestamps");

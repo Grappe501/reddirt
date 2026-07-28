@@ -94,6 +94,8 @@
     "!data/campaign-brain/executive-book/**",
     "!data/campaign-brain/operations-lock/**",
     "!data/owned-campaign-media/**",
+    "!data/campaign-media/**",
+    "!data/integrations/**",
     "!.env",
     "!.env.*",
     "!**/.env",
