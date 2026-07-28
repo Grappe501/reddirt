@@ -266,9 +266,11 @@ Operator flow:
 
 Public pages then assemble dynamically from the curated registry — keeping the site fresh as speeches, interviews, and Shorts arrive during the campaign.
 
-**Launch priority (current):** Finish the public website · get Kelly’s message online · keep the simple typed registry + cards + Kelly Speaks · place the right videos on the right pages · **launch**. Full Media Workbench / AI enrichment layers **after** public launch — architecture already supports that without a redesign.
+**Launch priority (current):** Finish the public website · get Kelly’s message online · keep the simple typed registry + cards + Kelly Speaks · place the right videos **and photos** on the right pages · **launch**. Full Media Workbench / AI enrichment layers **after** public launch — architecture already supports that without a redesign.
 
-**Partial ship:** Pass 1/2 already provide typed `campaign-media-registry.ts`, `CampaignVideoCard` / `CampaignShortCard`, transcript fields, duplicate detection, youtube-nocookie embeds, responsive layouts, `/kelly-speaks`. Workbench modules stay **post-launch**. Unique assets: **20** (Video 19 gap remains).
+Photos are launch-critical for authenticity. Structured photo contract: `src/content/media/campaign-photo-types.ts` + empty `campaign-photo-registry.ts`. Workflow: `develop_notes/CAMPAIGN_PHOTO_INGEST_WORKFLOW.md`. Existing trail stills stay in `campaign-trail-photos.ts` until promoted with real captions/county metadata.
+
+**Partial ship:** Pass 1/2 already provide typed `campaign-media-registry.ts`, `CampaignVideoCard` / `CampaignShortCard`, transcript fields, duplicate detection, youtube-nocookie embeds, responsive layouts, `/kelly-speaks`. Workbench modules stay **post-launch**. Unique video assets: **20** (Video 19 gap remains).
 
 **Not a full Workbench build in this pass.** Track C remains CLOSED pending production smoke (and Netlify Lambda 400 unblock — see `docs/NETLIFY_LAMBDA_DEPLOY_400.md`).
 
