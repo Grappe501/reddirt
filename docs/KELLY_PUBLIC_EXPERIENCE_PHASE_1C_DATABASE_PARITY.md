@@ -272,6 +272,7 @@ No homepage personality implementation authorized.
 | **Video 5 (`SrzDUJBvFrs`)** | Campaign speech module | Themes pending transcript review; Story Engine links TBD; homepage-eligible if selected |
 | **Video 6 (`c2v1uZNUMf4`)** | Campaign video module | Approved for public site (registry); CampaignVideoCard; themes/visitor-question pending review |
 | **Video 7 (`amiTVLt85AM`)** | Campaign moment / election night | Primary Election Night — campaign journey · Meet Kelly; homepage supporting only |
+| **Video 8 (`m7Mlk_bUbq4`)** | Campaign speech (provisional) | Review status: Imported → placement after transcript/tagging; homepage Review Required |
 
 **Classification doctrine (every speech):** **message · audience · emotional function · page · exact slot** — no random placements. Also capture Story Engine links: photos · events · counties · issues · blogs · news · actions.
 
@@ -300,6 +301,7 @@ https://www.youtube-nocookie.com/embed/KZ33iSxZ0ZQ
 https://www.youtube-nocookie.com/embed/SrzDUJBvFrs
 https://www.youtube-nocookie.com/embed/c2v1uZNUMf4
 https://www.youtube-nocookie.com/embed/amiTVLt85AM
+https://www.youtube-nocookie.com/embed/m7Mlk_bUbq4
 ```
 
 Watch URLs (source of truth for IDs):
@@ -311,6 +313,7 @@ Watch URLs (source of truth for IDs):
 - Campaign speech (Video 5): https://youtu.be/SrzDUJBvFrs
 - Campaign video (Video 6): https://youtu.be/c2v1uZNUMf4
 - Primary Election Night (Video 7): https://youtu.be/amiTVLt85AM
+- Campaign speech provisional (Video 8): https://youtu.be/m7Mlk_bUbq4
 
 #### Record A — message / office vision
 
@@ -581,4 +584,36 @@ Secondary slots:
 Homepage role: Supporting only — not the main homepage message video
 Publication: Click-to-play · No autoplay · Transcript recommended · Custom campaign thumbnail preferred
 Display: CampaignVideoCard only
+```
+
+### 15.11 Record H — campaign speech provisional (Video 8)
+
+**Asset type:** Campaign Video / Campaign Speech  
+**Review status:** **Imported** (provisional — do not lock to a single page until Tagged + Placement Approved)  
+**Homepage:** **Review Required** — not authorized for homepage until Homepage Eligible is set  
+**Do not** displace locked homepage message (`eKVz5pFJxtk`) or momentum (`aO712RsR0pQ`) principals
+
+```text
+Asset Type: Campaign Video / Campaign Speech
+Provider: YouTube
+Video ID: m7Mlk_bUbq4
+Privacy embed: https://www.youtube-nocookie.com/embed/m7Mlk_bUbq4
+Status: Approved for Public Site (registry ingest) — placement pending review
+Display Component: CampaignVideoCard
+Autoplay: Disabled
+Captions: Enabled (when available)
+Transcript: Attach when available
+Thumbnail: Campaign-selected custom poster preferred
+Primary Theme: Pending transcript review
+Secondary Themes: Pending transcript review
+Audience: General Public
+Homepage Eligible: Review Required
+Primary Slot: To be assigned after content tagging
+Supporting homes (candidates until tagged):
+  Meet Kelly (if biographical / leadership)
+  Our Plan (if priorities)
+  Get Involved (if CTA)
+  Kelly Speaks (speech library)
+  Campaign Journey (if milestone)
+Related Assets (Story Engine): Transcript · event photos · campaign blog · related speeches
 ```

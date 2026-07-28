@@ -558,8 +558,100 @@
         "relatedEvents",
         "customPoster"
       ]
+    },
+    {
+      "id": "campaign-speech-provisional-m7mlk-bubq4",
+      "provider": "YouTube",
+      "videoId": "m7Mlk_bUbq4",
+      "watchUrl": "https://youtu.be/m7Mlk_bUbq4",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/m7Mlk_bUbq4",
+      "title": "Pending full title metadata",
+      "displayTitle": "Campaign Speech (provisional — pending review)",
+      "assetType": "campaign_video",
+      "mediaType": "Campaign Speech",
+      "category": "Campaign Speech",
+      "status": "approved_for_public_site_ingest",
+      "reviewStatus": "Imported",
+      "reviewPipeline": [
+        "Imported",
+        "Transcript Complete",
+        "Tagged",
+        "Placement Approved",
+        "Homepage Eligible",
+        "Featured"
+      ],
+      "displayStyle": "CampaignVideoCard",
+      "autoplay": false,
+      "captions": "enabled_when_available",
+      "transcriptStatus": "pending",
+      "posterPreference": "campaign_selected_custom_poster",
+      "primaryTheme": null,
+      "secondaryThemes": [],
+      "themesNote": "Pending transcript review — do not lock primary page until Tagged",
+      "audience": ["General Public"],
+      "homepageEligible": false,
+      "homepageEligibility": "Review Required",
+      "homepagePriority": null,
+      "homepageNote": "Not homepage-authorized until Homepage Eligible; must never replace locked canon eKVz5pFJxtk / aO712RsR0pQ",
+      "featured": false,
+      "primarySlot": null,
+      "primarySlotNote": "Assign after content tagging",
+      "candidateHomes": [
+        "Meet Kelly (if biographical or leadership)",
+        "Our Plan (if campaign priorities)",
+        "Get Involved (if call to action)",
+        "Kelly Speaks (speech library)",
+        "Campaign Journey (if milestone)"
+      ],
+      "secondarySlots": [
+        "kelly-speaks.library",
+        "campaign-journey.pending",
+        "issue-pages.topic-matched"
+      ],
+      "storyEngineLinks": {
+        "relatedPhotos": [],
+        "relatedSpeeches": [],
+        "relatedBlogs": [],
+        "relatedPlans": [],
+        "relatedNews": [],
+        "relatedEvents": [],
+        "relatedVolunteerOpportunities": [],
+        "relatedActions": [],
+        "relatedAssetsPending": [
+          "transcript",
+          "photos from the event",
+          "campaign blog post if available",
+          "related speeches"
+        ]
+      },
+      "publicApproval": "operator_controlled",
+      "metadataSupported": [
+        "videoId",
+        "title",
+        "summary",
+        "featuredQuote",
+        "topics",
+        "officeResponsibilities",
+        "countiesMentioned",
+        "audience",
+        "relatedPages",
+        "transcript",
+        "relatedPhotos",
+        "relatedEvents",
+        "customPoster",
+        "reviewStatus"
+      ]
     }
   ],
+  "reviewStatusPipeline": [
+    "Imported",
+    "Transcript Complete",
+    "Tagged",
+    "Placement Approved",
+    "Homepage Eligible",
+    "Featured"
+  ],
+  "campaignMediaRegistryDoc": "docs/CAMPAIGN_MEDIA_REGISTRY.md",
   "firstHomepagePersonalitySliceWhenTrackCOpens": [
     "LOCKED: place This Office Belongs to the People! (eKVz5pFJxtk) at home.message.primary after Four Pillars / Leadership",
     "LOCKED: place Creating the Ripples in Hot Springs Village (aO712RsR0pQ) at home.personality.primary",
@@ -568,7 +660,8 @@
     "Video 4 leadership: optional Hear Directly From Kelly supporting placement — do not displace locked canon",
     "Video 5: place only after theme review; Story Engine links required for policy closers",
     "Video 6: CampaignVideoCard only; assign visitor question and related pages before page surfaces",
-    "Video 7 Primary Election Night: Meet Kelly / campaign journey; homepage supporting only"
+    "Video 7 Primary Election Night: Meet Kelly / campaign journey; homepage supporting only",
+    "Video 8: Imported only — no page lock until Tagged + Placement Approved; homepage Review Required"
   ],
   "noRawIframes": true,
   "requiredDisplayComponent": "CampaignVideoCard",

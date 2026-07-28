@@ -304,16 +304,38 @@ Cross-page bands: **Hear Directly From Kelly** · **Hear Kelly Explain It**. Top
 
 ## 7. Registered assets in this packet (source of truth for IDs)
 
-Machine-readable registry: `data/public-experience/kelly-homepage-personality-approved-videos.json`  
-Phase 1C narrative: `docs/KELLY_PUBLIC_EXPERIENCE_PHASE_1C_DATABASE_PARITY.md` §15
+Machine-readable video registry (current slice): `data/public-experience/kelly-homepage-personality-approved-videos.json`  
+Phase 1C narrative: `docs/KELLY_PUBLIC_EXPERIENCE_PHASE_1C_DATABASE_PARITY.md` §15  
+Broader registry doctrine: `docs/CAMPAIGN_MEDIA_REGISTRY.md`
 
-Additional speeches should be **appended** to that registry with full classification — do not hardcode one-off embeds.
+Additional speeches should be **appended** to the registry with review status — do not hardcode one-off embeds. Placement can wait until Tagged + Placement Approved.
+
+---
+
+## 7A. Review status pipeline (required as the library grows)
+
+Ingest fast; place carefully. Every video (and later every public asset) carries a **review status** so placement is not forced at import time:
+
+| Status | Meaning |
+|--------|---------|
+| **Imported** | Added to the registry |
+| **Transcript Complete** | Transcript attached |
+| **Tagged** | Topics, counties, and audiences identified |
+| **Placement Approved** | Assigned to one or more website locations / slots |
+| **Homepage Eligible** | Approved for homepage use (still subject to locked homepage canon) |
+| **Featured** | Highlighted as a primary campaign asset |
+
+Rules:
+
+- **Imported** alone is enough to preserve the asset; it is **not** enough to ship on a page.
+- Homepage locked canon (`eKVz5pFJxtk`, `aO712RsR0pQ`) is already Placement Approved + Homepage Eligible — do not reopen casually.
+- Provisional imports (e.g. Video 8) stay at Imported / Review Required until tagging completes.
 
 ---
 
 ## 8. Launch content focus (while Track C stays closed)
 
-Prioritize collecting and organizing into the **canonical media registry** (not one-off embed decisions):
+Prioritize collecting and organizing into the **Campaign Media Registry** (not one-off embed decisions):
 
 For each new video capture:
 
@@ -322,6 +344,7 @@ For each new video capture:
 - **Which pages should surface it?**
 - **Which campaign themes does it reinforce?**
 - **Which photos, blog posts, and plans should appear alongside it?**
+- **What is its review status?**
 
 Also continue: campaign photos + captions · endorsements · press · biography · issue pages · county content · downloadables · volunteer / donation pages.
 

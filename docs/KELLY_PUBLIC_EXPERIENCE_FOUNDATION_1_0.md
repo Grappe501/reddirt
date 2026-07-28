@@ -169,7 +169,7 @@ See git commit for authoritative list. Core additions:
 
 **Track C:** Remains **CLOSED** until Netlify production redeploy + public form smoke against PascalCase `"Submission"` (see Phase 1B/1C reports). Local Submission/User parity was reconciled in Phase 1C.
 
-**Approved Track C video inputs (documented only; homepage canon LOCKED):** see Phase 1C §15, `docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md`, and `data/public-experience/kelly-homepage-personality-approved-videos.json`. Locked homepage: `eKVz5pFJxtk`, `aO712RsR0pQ`. Also: `Hl_n-A9aL1s`, `KZ33iSxZ0ZQ`, `SrzDUJBvFrs`, `c2v1uZNUMf4`, `amiTVLt85AM` (Primary Election Night — campaign journey). `CampaignVideoCard` only. Track C CLOSED.
+**Approved Track C video inputs (documented only; homepage canon LOCKED):** see Phase 1C §15, `docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md`, `docs/CAMPAIGN_MEDIA_REGISTRY.md` (review pipeline + all-asset registry), and `data/public-experience/kelly-homepage-personality-approved-videos.json`. Locked homepage: `eKVz5pFJxtk`, `aO712RsR0pQ`. Videos through `m7Mlk_bUbq4` (Video 8 — Imported / placement pending). Track C CLOSED.
 
 ### Track C entry gates (partial)
 
