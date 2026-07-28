@@ -1,0 +1,124 @@
+{
+  "slice": "KELLY-PUBLIC-EXPERIENCE-FOUNDATION-1.0",
+  "phase": "1C",
+  "purpose": "Approved external video inputs for KELLY-HOMEPAGE-PERSONALITY-1.0 — documentation only; not public-enabled by this file",
+  "trackCStatus": "CLOSED",
+  "implementationStatus": "documented_inputs_only",
+  "presentationRules": {
+    "embedHost": "https://www.youtube-nocookie.com/embed/{videoId}",
+    "clickToPlay": true,
+    "autoplayWithSound": false,
+    "lazyLoad": true,
+    "aspectRatio": "16:9",
+    "bareIframeDiscouraged": true,
+    "requireCampaignVideoChrome": true
+  },
+  "videos": [
+    {
+      "id": "office-belongs-to-the-people",
+      "provider": "YouTube",
+      "videoId": "eKVz5pFJxtk",
+      "watchUrl": "https://youtu.be/eKVz5pFJxtk",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/eKVz5pFJxtk",
+      "title": "This Office Belongs to the People!",
+      "displayTitle": "This Office Belongs to the People",
+      "pageRole": "campaign_philosophy_office_vision",
+      "homepagePriority": 1,
+      "suggestedHomepageSlot": "home.message.primary",
+      "slotRegistryNote": "Proposed for Track C — not present in Phase 1 PUBLIC_MEDIA_HOME_SLOTS",
+      "publicApproval": "operator_controlled",
+      "featured": true,
+      "homepageSection": {
+        "heading": "This Office Belongs to the People",
+        "supportingCopy": "The Secretary of State’s office should not belong to political insiders, corporations, or one part of Arkansas. It should serve every voter, every county, every small business, every nonprofit, and every community.",
+        "placement": "After the four pillars; before or within Proven Executive Leadership",
+        "ctaLinks": ["Our Plan"],
+        "ui": [
+          "cinematic video card",
+          "poster thumbnail",
+          "Kelly name and location/context",
+          "play button",
+          "runtime label",
+          "caption",
+          "optional transcript link"
+        ]
+      },
+      "laterPagePlacements": [
+        "Our Plan",
+        "What the Office Does",
+        "People Over Politics",
+        "Direct Democracy",
+        "Meet Kelly"
+      ],
+      "metadataSupported": [
+        "customPoster",
+        "transcript",
+        "shortSummary",
+        "location",
+        "eventDate",
+        "county",
+        "topics",
+        "pagePlacements",
+        "displayTitle",
+        "accessibilityDescription",
+        "featuredStatus"
+      ]
+    },
+    {
+      "id": "ripples-hot-springs-village",
+      "provider": "YouTube",
+      "videoId": "aO712RsR0pQ",
+      "watchUrl": "https://youtu.be/aO712RsR0pQ",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/aO712RsR0pQ",
+      "title": "Creating the Ripples in Hot Springs Village",
+      "displayTitle": "Creating Ripples Across Arkansas",
+      "pageRole": "campaign_momentum_community_story",
+      "homepagePriority": 2,
+      "suggestedHomepageSlot": "home.personality.primary",
+      "slotRegistryNote": "Existing Phase 1 slot key; Track C should allow VIDEO + poster for this band",
+      "publicApproval": "operator_controlled",
+      "featured": true,
+      "location": "Hot Springs Village, Arkansas",
+      "homepageSection": {
+        "heading": "Creating Ripples Across Arkansas",
+        "supportingCopy": "Real change begins when people gather, listen to one another, and decide their community deserves better.",
+        "placement": "Kelly Across Arkansas / Campaign Trail personality band",
+        "companions": [
+          "2-3 Hot Springs Village campaign photographs",
+          "county or community name",
+          "short field note",
+          "link to more campaign trail stories",
+          "invite or host Kelly CTA"
+        ],
+        "prototypeNote": "First prototype for future Kelly Across Arkansas video and photo system — not full archive ingest"
+      },
+      "laterPagePlacements": [
+        "Campaign Trail",
+        "Events",
+        "Invite Kelly",
+        "Get Involved",
+        "County pages",
+        "Meet Kelly"
+      ],
+      "metadataSupported": [
+        "customPoster",
+        "transcript",
+        "shortSummary",
+        "location",
+        "eventDate",
+        "county",
+        "topics",
+        "pagePlacements",
+        "displayTitle",
+        "accessibilityDescription",
+        "featuredStatus"
+      ]
+    }
+  ],
+  "firstHomepagePersonalitySliceWhenTrackCOpens": [
+    "Register and place This Office Belongs to the People! as central message video",
+    "Register and place Creating the Ripples in Hot Springs Village as first campaign-in-motion story",
+    "Curate a small photo set around those videos only"
+  ],
+  "sourceDoc": "docs/KELLY_PUBLIC_EXPERIENCE_PHASE_1C_DATABASE_PARITY.md#15-approved-track-c-video-inputs-preserved-for-homepage-personality"
+}

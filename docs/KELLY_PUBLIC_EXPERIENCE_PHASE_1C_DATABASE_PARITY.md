@@ -241,3 +241,128 @@ node scripts/run-with-h-drive-env.cjs node scripts/phase1c-operator-proof.cjs
 **KEEP TRACK C CLOSED**
 
 Database ownership and schema parity for Submission/User are reconciled on the linked shared Supabase database. Open `KELLY-HOMEPAGE-PERSONALITY-1.0` only after Netlify production redeploy confirms migrate status clean and public join/volunteer write against PascalCase `"Submission"`.
+
+---
+
+## 15. Approved Track C video inputs (preserved for homepage personality)
+
+**Status:** Documented approved inputs only — **not** implemented on the public homepage in Phase 1C.  
+**Track C:** Remains **CLOSED** until the Netlify / production intake gate in §12 clears.  
+**Machine-readable companion:** `data/public-experience/kelly-homepage-personality-approved-videos.json`
+
+These two YouTube assets are distinct website roles. Do not treat them as interchangeable.
+
+| Asset | Role | Why it exists |
+|-------|------|----------------|
+| **This Office Belongs to the People!** | Core **message** video | Reinforces governing philosophy and homepage framing: *Government That Works for Every Arkansan — People Over Politics.* |
+| **Creating the Ripples in Hot Springs Village** | **Personality / momentum** video | Shows Kelly in community, campaign energy, and geographic presence across Arkansas. |
+
+### 15.1 Canonical external video records
+
+Privacy-enhanced embed hosts (preferred):
+
+```text
+https://www.youtube-nocookie.com/embed/eKVz5pFJxtk
+https://www.youtube-nocookie.com/embed/aO712RsR0pQ
+```
+
+Watch URLs (source of truth for IDs):
+
+- Message: https://youtu.be/eKVz5pFJxtk
+- Ripples: https://youtu.be/aO712RsR0pQ
+
+#### Record A — message / office vision
+
+```text
+Provider: YouTube
+Video ID: eKVz5pFJxtk
+Title: This Office Belongs to the People!
+Display title: This Office Belongs to the People
+Suggested page role: campaign philosophy / office vision
+Suggested homepage slot: home.message.primary  (proposed — register in Track C; not in Phase 1 slot registry yet)
+Public approval: operator controlled
+Featured: yes (homepage message band)
+```
+
+**Required metadata fields when registered in media architecture:** custom poster, transcript or summary, short summary, location (optional), event date (optional), county (optional), topics, page placements, display title, accessibility description, featured status.
+
+**Later reusable placements (same canonical record, multiple approved slots):** Our Plan · What the Office Does · People Over Politics · Direct Democracy · Meet Kelly.
+
+#### Record B — campaign momentum / community story
+
+```text
+Provider: YouTube
+Video ID: aO712RsR0pQ
+Title: Creating the Ripples in Hot Springs Village
+Display title: Creating Ripples Across Arkansas (section may retitle; asset title stays canonical)
+Suggested page role: campaign momentum / community story
+Suggested homepage slot: home.personality.primary  (existing registry key; Track C should extend for VIDEO + poster)
+Public approval: operator controlled
+Featured: yes (homepage personality / trail prototype)
+Location context: Hot Springs Village, Arkansas
+```
+
+**Later reusable placements:** Campaign Trail · Events · Invite Kelly · Get Involved · County pages · Meet Kelly.
+
+### 15.2 Homepage placement doctrine (Track C first pass)
+
+#### Message video — use first
+
+Place **This Office Belongs to the People!** after the four pillars and before or within **Proven Executive Leadership**.
+
+Suggested section:
+
+```text
+## This Office Belongs to the People
+
+The Secretary of State’s office should not belong to political insiders,
+corporations, or one part of Arkansas. It should serve every voter, every
+county, every small business, every nonprofit, and every community.
+```
+
+UI treatment: large cinematic video card — thumbnail/poster, Kelly name + location/context, play control, short runtime label, caption beneath, optional transcript link, text link to **Our Plan**. **Click-to-play only** (no autoplay with sound).
+
+#### Personality / trail video — campaign-in-motion band
+
+Place **Creating the Ripples in Hot Springs Village** in a **Kelly Across Arkansas / Campaign Trail** personality band.
+
+Suggested section:
+
+```text
+## Creating Ripples Across Arkansas
+
+Real change begins when people gather, listen to one another, and decide
+their community deserves better.
+```
+
+Suggested companions: 2–3 Hot Springs Village campaign photos · county/community name · short field note · link to more trail stories · invite/host Kelly CTA. This is the **first prototype** for a future Kelly Across Arkansas video + photo system — not a bulk archive ingest.
+
+### 15.3 Presentation and embed rules (locked for Track C)
+
+Avoid a bare YouTube iframe as the primary chrome. Use a purpose-built campaign video component with:
+
+- Rounded cinematic frame · 16:9 responsive ratio · campaign-branded poster  
+- Title + context · location/date when available · accessible caption  
+- Transcript or summary · privacy-enhanced YouTube (`youtube-nocookie.com`)  
+- Lazy load · **click-to-load** embed · mobile-safe sizing · graceful fallback link  
+- Suppress unrelated recommended-video clutter where YouTube params allow  
+- No autoplay with sound on homepage
+
+### 15.4 Media architecture registration (Track C / follow-on)
+
+Register as **external video assets** (canonical one record per Video ID), placeable in multiple approved slots — not hardcoded into a single component.
+
+Phase 1 still-image slots remain; Track C must:
+
+1. Add or extend slots for message video (`home.message.primary` proposed).  
+2. Allow VIDEO + poster on the personality band slot used for Ripples.  
+3. Keep `approvedForPublicSite` / operator enablement fail-closed (placement ≠ approval).  
+4. Curate a **small** photo set around these two videos — do not ingest the full campaign archive in the first personality slice.
+
+### 15.5 First homepage personality slice order (when Track C opens)
+
+1. **This Office Belongs to the People!** as the central message video.  
+2. **Creating the Ripples in Hot Springs Village** as the first campaign-in-motion story.  
+3. Small curated photo collection around those videos only.
+
+**Do not open Track C solely because these inputs are documented.** Database/Netlify gates in §12 still apply.

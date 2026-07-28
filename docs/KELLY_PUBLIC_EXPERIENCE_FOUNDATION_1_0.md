@@ -167,7 +167,9 @@ See git commit for authoritative list. Core additions:
 
 **Phase 1B (2026-07-28):** Failed `20260719160000_google_oauth_and_routes` reconciled via **Path B** (`migrate resolve --rolled-back`; `applied_steps_count=0`). `npm run stack:migrate` applied `20260727200000_public_experience_foundation_phase1`. See [`KELLY_PUBLIC_EXPERIENCE_PHASE_1B_MIGRATION_REMEDIATION.md`](./KELLY_PUBLIC_EXPERIENCE_PHASE_1B_MIGRATION_REMEDIATION.md).
 
-**Track C:** Remains **CLOSED** until Prisma `Submission`/`User` parity on the linked DB is reconciled (legacy `submissions` collision).
+**Track C:** Remains **CLOSED** until Netlify production redeploy + public form smoke against PascalCase `"Submission"` (see Phase 1B/1C reports). Local Submission/User parity was reconciled in Phase 1C.
+
+**Approved Track C video inputs (documented only):** see Phase 1C §15 and `data/public-experience/kelly-homepage-personality-approved-videos.json` — message video `eKVz5pFJxtk` (`home.message.primary` proposed) and ripples video `aO712RsR0pQ` (`home.personality.primary`). Do not implement homepage personality until Track C opens.
 
 ### Track C entry gates (partial)
 
@@ -184,12 +186,12 @@ See git commit for authoritative list. Core additions:
 | 13 | No competing systems | Pass |
 | 14 | Typecheck | Pass |
 | 15 | Focused tests | Pass |
-| 16 | Build / migrate | Migrate blocked by unrelated P3009 |
-| 17 | Operator docs | This packet |
-| 18 | Next slice | `KELLY-HOMEPAGE-PERSONALITY-1.0` after migrate apply |
+| 16 | Build / migrate | See Phase 1B + 1C (local migrate applied; Netlify redeploy pending) |
+| 17 | Operator docs | This packet + Phase 1B/1C |
+| 18 | Next slice | `KELLY-HOMEPAGE-PERSONALITY-1.0` after Netlify gate + approved video inputs in 1C §15 |
 
 ### Recommended next slice
 
-1. Resolve failed `20260719160000_google_oauth_and_routes` on the target DB, then `npm run stack:migrate`.  
-2. Operator smoke: approve asset → run derivative worker → assign `home.personality.primary`.  
-3. Only then open **KELLY-HOMEPAGE-PERSONALITY-1.0**.
+1. Netlify production redeploy on Phase 1C commit; smoke public join/volunteer → `"Submission"`.  
+2. Operator smoke: approve asset → run derivative worker → assign slots (still fail-closed).  
+3. Only then open **KELLY-HOMEPAGE-PERSONALITY-1.0** using the approved videos in Phase 1C §15.
