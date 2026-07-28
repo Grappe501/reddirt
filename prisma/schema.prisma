@@ -476,7 +476,9 @@ model Submission {
   /// At most one workflow intake per submission (queue entry for CampaignOS Phase 1).
   workflowIntake WorkflowIntake?
 
-  @@map("submissions")
+  /// Physical table is PascalCase `"Submission"` (init migration intent).
+  /// Do **not** @@map to lowercase `submissions` — that name is occupied by a legacy
+  /// non-RedDirt table (`module_id` / `raw_data`) on the shared Supabase database.
   @@schema("public")
 }
 

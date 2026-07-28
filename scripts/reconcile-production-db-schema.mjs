@@ -45,7 +45,8 @@ const LEGACY_ALIASES = {
   VoterRecord: ["voter_records", "voters", "voter_registry", "ar02_voters", "voter_profiles"],
   RelationalContact: ["relational_contacts", "contacts"],
   CampaignEvent: ["campaign_events", "events"],
-  Submission: ["submissions"],
+  // Phase 1C: RedDirt owns PascalCase "Submission"; legacy lowercase submissions is a different app.
+  Submission: ["Submission"],
   VolunteerProfile: ["volunteer_profiles", "volunteers"],
   CommunicationThread: ["communication_threads"],
   CommunicationMessage: ["communication_messages"],

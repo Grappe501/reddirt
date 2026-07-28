@@ -220,6 +220,7 @@
     "agents:test-public-media-intake": "tsx scripts/test-public-media-intake.ts",
     "agents:test-public-experience-foundation": "tsx scripts/test-public-experience-foundation-phase1.ts",
     "agents:test-public-experience-phase1b-proof": "tsx scripts/phase1b-operator-proof.cjs",
+    "agents:test-public-experience-phase1c-proof": "node scripts/run-with-h-drive-env.cjs node scripts/phase1c-operator-proof.cjs",
     "agents:test-arkansas-media-source-discovery": "tsx scripts/test-arkansas-media-source-discovery.ts",
     "agents:test-border-media-market-intelligence": "tsx scripts/test-border-media-market-intelligence.ts",
     "agents:test-scheduled-media-intake": "tsx scripts/test-scheduled-media-intake.ts",

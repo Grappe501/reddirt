@@ -4,6 +4,8 @@
  */
 
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 import {
   clampFocalOrThrow,
   DEFAULT_FOCAL_X,
@@ -94,6 +96,20 @@ section("join/volunteer schemas");
     // no phone → SMS consent must be handled downstream as skipped_no_phone
   });
   assert.equal(vol.success, true, vol.success ? "" : JSON.stringify(vol.error.flatten()));
+}
+
+section("Submission physical map (Phase 1C)");
+{
+  const schemaPath = path.join(process.cwd(), "prisma", "schema.prisma");
+  const schema = fs.readFileSync(schemaPath, "utf8");
+  const submissionBlock = schema.match(/model Submission \{[\s\S]*?\n\}/);
+  assert.ok(submissionBlock, "Submission model present");
+  assert.equal(
+    /@@map\("submissions"\)/.test(submissionBlock[0]),
+    false,
+    "Submission must not @@map to legacy lowercase submissions",
+  );
+  assert.ok(/@@schema\("public"\)/.test(submissionBlock[0]));
 }
 
 section("resolver unknown slot");
