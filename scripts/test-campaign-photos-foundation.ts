@@ -82,4 +82,11 @@ assert.ok(getCampaignPhotoById("good-things-grow-tomato-table-20260613"));
 assert.ok(getCampaignPhotoById("stone-building-handshake-steps-20260620"));
 assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 31);
 
+const childTomato = getCampaignPhotoById("county-clerk-tomato-with-child-20260613");
+assert.ok(childTomato);
+assert.equal(childTomato!.heroLevel, "SUPPORTING");
+assert.ok(getCampaignPhotoById("county-clerk-eating-tomato-20260613"));
+assert.ok(getCampaignPhotoById("democrats-meeting-listening-20260612"));
+assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 41);
+
 console.log("Campaign photo registry checks passed.");
