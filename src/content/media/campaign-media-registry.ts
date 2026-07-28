@@ -6,6 +6,7 @@
 import type { CampaignMediaRecord } from "@/content/media/campaign-media-types";
 import { emptyTranscript, isPublicMedia, isPublicTranscript, youtubePosterUrl } from "@/lib/media/campaign-transcript";
 import { mergeMediaWithPublishedOverlay } from "@/lib/media/youtube-transcripts/publish-overlay";
+import { extractCanonicalYoutubeVideoId } from "@/lib/media/youtube-id";
 
 function withOverlay(media: CampaignMediaRecord): CampaignMediaRecord {
   return mergeMediaWithPublishedOverlay(media);
@@ -245,7 +246,8 @@ export function getPublishedCampaignMediaBySlug(slug: string): CampaignMediaReco
 }
 
 export function getCampaignMediaByYoutubeId(youtubeVideoId: string): CampaignMediaRecord | null {
-  const m = CAMPAIGN_MEDIA_REGISTRY.find((x) => x.youtubeVideoId === youtubeVideoId);
+  const canonical = extractCanonicalYoutubeVideoId(youtubeVideoId) ?? youtubeVideoId.trim();
+  const m = CAMPAIGN_MEDIA_REGISTRY.find((x) => x.youtubeVideoId === canonical);
   return m ? withOverlay(m) : null;
 }
 

@@ -49,6 +49,24 @@ Ingest dozens of assets quickly; refine placement over time without losing track
 
 ---
 
+## 2a. Duplicate protection (mandatory)
+
+One authoritative record per YouTube video. Import must:
+
+1. Paste URL or id  
+2. Extract canonical video id (all URL shapes)  
+3. Search typed registry (`resolveCampaignMediaImport`)  
+4. **Exists** → open / update existing  
+5. **Not found** → create **one** new record  
+
+Supported inputs include `youtu.be`, `watch?v=`, `embed`, `shorts`, `youtube-nocookie`, and bare 11-character ids (including `?si=` share params).
+
+Code: `src/lib/media/youtube-id.ts`, `src/lib/media/campaign-media-import.ts`, Admin → Media → YouTube → Import / duplicate check.
+
+**Example:** `72oKVAwfzZw` is already registered as a DRAFT long-form `CampaignVideoCard` — duplicate pastes must **UPDATE EXISTING RECORD**, never create a second asset. Unique inventory remains **14**.
+
+---
+
 ## 3. Display rule (videos)
 
 - No raw `<iframe>` scatter  

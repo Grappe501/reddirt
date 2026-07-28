@@ -9,6 +9,7 @@ import React from "react";
 import {
   assertCampaignMediaRegistryInvariants,
   CAMPAIGN_MEDIA_REGISTRY,
+  getCampaignMediaByYoutubeId,
   getPublishedCampaignMediaBySlug,
   listPublishedCampaignMedia,
 } from "../src/content/media/campaign-media-registry";
@@ -24,6 +25,8 @@ import {
   youtubeNocookieEmbedUrl,
 } from "../src/lib/media/campaign-transcript";
 import { emptyTranscript } from "../src/lib/media/campaign-transcript";
+import { extractCanonicalYoutubeVideoId } from "../src/lib/media/youtube-id";
+import { resolveCampaignMediaImport } from "../src/lib/media/campaign-media-import";
 
 function section(name: string) {
   console.log(`\n== ${name} ==`);
@@ -39,7 +42,31 @@ assert.ok(ids.includes("52egsV4WWgc"));
 assert.ok(ids.includes("X6M_SMmbYQ4"));
 assert.ok(ids.includes("scytoSXSO3A"));
 assert.ok(ids.includes("1BOFM9ao8bU"));
+assert.ok(ids.includes("72oKVAwfzZw"));
+assert.equal(ids.filter((id) => id === "72oKVAwfzZw").length, 1);
 assert.equal(CAMPAIGN_MEDIA_REGISTRY.length, 14);
+
+section("duplicate youtube import protection");
+const sampleUrls = [
+  "72oKVAwfzZw",
+  "https://youtu.be/72oKVAwfzZw",
+  "https://youtu.be/72oKVAwfzZw?si=abc",
+  "https://www.youtube.com/watch?v=72oKVAwfzZw",
+  "https://youtube.com/watch?v=72oKVAwfzZw",
+  "https://www.youtube.com/embed/72oKVAwfzZw",
+  "https://www.youtube-nocookie.com/embed/72oKVAwfzZw",
+];
+for (const u of sampleUrls) {
+  assert.equal(extractCanonicalYoutubeVideoId(u), "72oKVAwfzZw");
+  const r = resolveCampaignMediaImport(u);
+  assert.equal(r.action, "OPEN_EXISTING");
+  assert.equal(r.youtubeVideoId, "72oKVAwfzZw");
+  assert.ok(r.media);
+}
+assert.ok(getCampaignMediaByYoutubeId("https://youtu.be/72oKVAwfzZw?si=x"));
+assert.equal(resolveCampaignMediaImport("not-a-real-id").action, "INVALID_INPUT");
+assert.equal(resolveCampaignMediaImport("").action, "INVALID_INPUT");
+assert.equal(resolveCampaignMediaImport("dQw4w9WgXcQ").action, "CREATE_NEW_CANDIDATE");
 
 section("public selectors hide drafts");
 for (const m of listPublishedCampaignMedia()) {

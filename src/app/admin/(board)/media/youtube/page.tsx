@@ -6,6 +6,8 @@ import { loadDiscoveredVideos, listWorkspaceRecords } from "@/lib/media/youtube-
 import { loadNotifications } from "@/lib/media/youtube-transcripts/notifications";
 import { YouTubeSyncButton } from "@/components/admin/media/YouTubeSyncButton";
 import { YouTubeDisconnectButton } from "@/components/admin/media/YouTubeDisconnectButton";
+import { CampaignMediaImportLookup } from "@/components/admin/media/CampaignMediaImportLookup";
+import { getCampaignMediaByYoutubeId } from "@/content/media/campaign-media-registry";
 
 type Props = { searchParams: Promise<{ yt?: string; yt_error?: string; missing?: string }> };
 
@@ -98,10 +100,20 @@ export default async function AdminYouTubeMediaPage({ searchParams }: Props) {
         </div>
       </section>
 
+      <CampaignMediaImportLookup />
+
       <section className="mt-8 grid gap-4 md:grid-cols-3">
         <StatCard label="Videos discovered" value={String(discovered.videos.length)} />
         <StatCard label="Missing transcripts / captions" value={String(missingTranscripts.length)} />
         <StatCard label="Needing review" value={String(needingReview.length)} />
+      </section>
+
+      <section className="mt-4 rounded-card border border-kelly-text/10 bg-white px-4 py-3 font-body text-sm text-kelly-text/80">
+        <strong>Registry uniqueness:</strong>{" "}
+        {getCampaignMediaByYoutubeId("72oKVAwfzZw")
+          ? "Canonical example 72oKVAwfzZw is registered once (CampaignVideoCard · DRAFT). Duplicate URL pastes open that record."
+          : "Typed campaign media registry loaded."}{" "}
+        Unique registered assets remain authoritative — do not create a second row for the same YouTube id.
       </section>
 
       <section className="mt-8">
