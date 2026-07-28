@@ -115,6 +115,29 @@ Inputs:
   suggestedReading · relatedPhotos · relatedEvents · relatedIssues · relatedPages
 ```
 
+**Rule:** Do **not** scatter raw `<iframe>` embeds across the codebase. One reusable `CampaignVideoCard` backed by the media registry owns styling, accessibility, captions, transcripts, related links, analytics, and future enhancements. The same approved video ID can appear on many pages without duplicating configuration.
+
+### CampaignVideoCard chrome (locked pattern)
+
+```text
+-------------------------------------------------------
+[ Large Video Thumbnail / custom poster preferred ]
+
+Video Title
+Brief introduction explaining why this video matters.
+
+▶ Watch   (click-to-play · youtube-nocookie · no autoplay)
+
+Topics
+• Elections · Transparency · Small Business · County Government …
+
+Related
+Read the Plan → · Meet Kelly → · Related Photos → · Transcript →
+-------------------------------------------------------
+```
+
+Default card behavior: **Approved for Public Site** only when operator-gated · captions enabled when available · custom campaign poster preferred over generic YouTube thumb.
+
 ---
 
 ## 4A. Campaign Story Engine
@@ -175,6 +198,42 @@ Prefer showing Kelly talking over another block of campaign copy. Reusable band 
 
 ---
 
+## 4E. Placement question (site-wide strategy)
+
+Instead of asking “Where do we embed this video?”, ask:
+
+> **What visitor question does this video answer?**
+
+| Visitor question | Typical placement |
+|------------------|-------------------|
+| Who is Kelly? | Meet Kelly |
+| What does the Secretary of State do? | What the Office Does |
+| How will she work with counties? | County Partnerships / Secure Elections |
+| Why is transparency important? | Transparency page |
+| What is her vision? | Homepage (locked canon) and Our Plan |
+| Why volunteer? | Get Involved |
+
+Every video stays tied to a **purpose**, not a random slot.
+
+### Canonical metadata fields (catalog each speech)
+
+| Field | Purpose |
+|-------|---------|
+| Video ID | YouTube reference |
+| Title | Public display title |
+| Summary | Short description / why it matters |
+| Featured Quote | Highlight for the page |
+| Topics | Search and filtering |
+| Office Responsibilities | SOS duties covered |
+| Counties Mentioned | Geographic tagging |
+| Audience | Voters, businesses, county officials, nonprofits, etc. |
+| Related Pages | Where it should appear |
+| Transcript | Accessibility and search |
+| Related Photos | Gallery integration |
+| Related Events | Campaign context |
+
+---
+
 ## 4D. Kelly In Her Own Words (hub page)
 
 Prefer this title over generic “Media.” Organize like a documentary index:
@@ -201,26 +260,30 @@ Each section contains: featured video · transcript · key quotes · related iss
 
 ---
 
-## 5. Kelly Speaks page structure (target IA)
+## 5. Kelly Speaks / Kelly In Her Own Words library categories
 
-Organize by **theme**, not by upload date:
+Organize by **theme**, not by upload date. Searchable library; other pages pull featured modules from the **same registry**:
 
-| Section | Example content |
-|---------|-----------------|
-| Vision | Government That Works for Every Arkansan |
-| Elections | County Clerk Convention forum |
-| Direct Democracy | Ballot / initiative speeches |
-| Small Business | Business-services speeches |
-| Transparency | Accountability speeches |
-| Leadership | Leadership speeches (e.g. Video 4) |
-| Civic Education | Teaching / explainers |
-| Campaign Trail | Momentum / community stories |
-| Interviews | Press / long-form |
-| Town Halls | Community forums |
+| Section / category |
+|--------------------|
+| Vision for Arkansas |
+| Elections & Election Administration |
+| Business & Nonprofits |
+| Transparency & Government Accountability |
+| County Partnerships |
+| Community Visits |
+| Town Halls |
+| Interviews |
+| Candidate Forums |
+| Campaign Trail |
+| Major Speeches |
+| Leadership |
+| Direct Democracy |
+| Civic Education |
+| Public Service |
+| Capitol |
 
-Cross-page band (reusable): **Hear Directly From Kelly** — visitors hear Kelly rather than only reading about her.
-
-Topic chips under a featured speech can **navigate deeper into the site** (video as navigation), e.g. Small Business · Election Security · County Clerks · Transparency · Capitol · Civic Education.
+Cross-page bands: **Hear Directly From Kelly** · **Hear Kelly Explain It**. Topic chips under a featured speech can navigate deeper into the site (video as navigation).
 
 ---
 

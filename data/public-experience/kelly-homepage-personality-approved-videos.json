@@ -409,6 +409,62 @@
         "relatedNews",
         "postViewCta"
       ]
+    },
+    {
+      "id": "campaign-video-c2v1uznumf4",
+      "provider": "YouTube",
+      "videoId": "c2v1uZNUMf4",
+      "watchUrl": "https://youtu.be/c2v1uZNUMf4",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/c2v1uZNUMf4",
+      "title": "Pending full title metadata",
+      "displayTitle": "Campaign Video (pending visitor-question assignment)",
+      "assetType": "campaign_video",
+      "mediaType": "Campaign Video",
+      "category": "Campaign Video",
+      "status": "approved_for_public_site",
+      "displayStyle": "CampaignVideoCard",
+      "autoplay": false,
+      "captions": "enabled_when_available",
+      "transcriptStatus": "pending",
+      "posterPreference": "custom_campaign_image",
+      "primaryTheme": null,
+      "secondaryThemes": [],
+      "visitorQuestion": null,
+      "visitorQuestionNote": "Assign after review using visitor-question → page map in architecture doc",
+      "audience": [],
+      "homepageEligible": true,
+      "homepagePriority": null,
+      "homepageNote": "Must not replace locked message (eKVz5pFJxtk) or momentum (aO712RsR0pQ) canon",
+      "featured": false,
+      "primarySlot": null,
+      "secondarySlots": [],
+      "relatedPages": [],
+      "storyEngineLinks": {
+        "relatedPhotos": [],
+        "relatedSpeeches": [],
+        "relatedBlogs": [],
+        "relatedPlans": [],
+        "relatedNews": [],
+        "relatedEvents": [],
+        "relatedVolunteerOpportunities": [],
+        "relatedActions": []
+      },
+      "publicApproval": "operator_controlled",
+      "metadataSupported": [
+        "videoId",
+        "title",
+        "summary",
+        "featuredQuote",
+        "topics",
+        "officeResponsibilities",
+        "countiesMentioned",
+        "audience",
+        "relatedPages",
+        "transcript",
+        "relatedPhotos",
+        "relatedEvents",
+        "customPoster"
+      ]
     }
   ],
   "firstHomepagePersonalitySliceWhenTrackCOpens": [
@@ -417,8 +473,11 @@
     "Curate a small photo set around those videos only",
     "County Clerk Forum: homepage excerpt card only; full speech on Secure Elections / County Partnerships",
     "Video 4 leadership: optional Hear Directly From Kelly supporting placement — do not displace locked canon",
-    "Video 5: place only after theme review; Story Engine links required for policy closers"
+    "Video 5: place only after theme review; Story Engine links required for policy closers",
+    "Video 6: CampaignVideoCard only; assign visitor question and related pages before page surfaces"
   ],
+  "noRawIframes": true,
+  "requiredDisplayComponent": "CampaignVideoCard",
   "sourceDoc": "docs/KELLY_PUBLIC_EXPERIENCE_PHASE_1C_DATABASE_PARITY.md#15-approved-track-c-video-inputs-preserved-for-homepage-personality",
   "architectureDoc": "docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md"
 }

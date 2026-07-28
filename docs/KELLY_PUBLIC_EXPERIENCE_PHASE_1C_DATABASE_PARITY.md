@@ -270,6 +270,7 @@ No homepage personality implementation authorized.
 | **County Clerk Convention Candidate Forum 2026** | Qualification / election administration | Secure Elections · county partnerships; homepage **excerpt only** |
 | **Video 4 (`KZ33iSxZ0ZQ`)** | Leadership speech | Kelly Speaks · Leadership · Hear Directly From Kelly; homepage-eligible pending Track C |
 | **Video 5 (`SrzDUJBvFrs`)** | Campaign speech module | Themes pending transcript review; Story Engine links TBD; homepage-eligible if selected |
+| **Video 6 (`c2v1uZNUMf4`)** | Campaign video module | Approved for public site (registry); CampaignVideoCard; themes/visitor-question pending review |
 
 **Classification doctrine (every speech):** **message · audience · emotional function · page · exact slot** — no random placements. Also capture Story Engine links: photos · events · counties · issues · blogs · news · actions.
 
@@ -296,6 +297,7 @@ https://www.youtube-nocookie.com/embed/aO712RsR0pQ
 https://www.youtube-nocookie.com/embed/Hl_n-A9aL1s
 https://www.youtube-nocookie.com/embed/KZ33iSxZ0ZQ
 https://www.youtube-nocookie.com/embed/SrzDUJBvFrs
+https://www.youtube-nocookie.com/embed/c2v1uZNUMf4
 ```
 
 Watch URLs (source of truth for IDs):
@@ -305,6 +307,7 @@ Watch URLs (source of truth for IDs):
 - County Clerk Forum: https://youtu.be/Hl_n-A9aL1s
 - Leadership (Video 4): https://youtu.be/KZ33iSxZ0ZQ
 - Campaign speech (Video 5): https://youtu.be/SrzDUJBvFrs
+- Campaign video (Video 6): https://youtu.be/c2v1uZNUMf4
 
 #### Record A — message / office vision
 
@@ -517,4 +520,26 @@ Suggested future slots (proposed):
   kelly-speaks.campaign-speech.SrzDUJBvFrs
   kelly-in-her-own-words.pending-theme.featured-video
   policy.hear-kelly-explain-it.supporting-video
+```
+
+### 15.9 Record F — campaign video module (Video 6)
+
+**Asset type:** Campaign video (reusable content asset)  
+**Display:** `CampaignVideoCard` only — no raw iframe  
+**Status:** Approved for Public Site (registry; operator enablement still required at publish)  
+**Do not** displace locked homepage message (`eKVz5pFJxtk`) or momentum (`aO712RsR0pQ`) principals
+
+```text
+Asset Type: Campaign Video
+Provider: YouTube
+Video ID: c2v1uZNUMf4
+Privacy embed: https://www.youtube-nocookie.com/embed/c2v1uZNUMf4
+Status: Approved for Public Site
+Display Style: CampaignVideoCard
+Autoplay: No
+Captions: Enabled (when available)
+Transcript: Attach when available
+Poster: Custom campaign image preferred
+Primary Theme / visitor question: (pending review)
+Related Pages: (assign via visitor-question map after review)
 ```
