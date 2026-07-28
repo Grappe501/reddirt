@@ -89,4 +89,12 @@ assert.ok(getCampaignPhotoById("county-clerk-eating-tomato-20260613"));
 assert.ok(getCampaignPhotoById("democrats-meeting-listening-20260612"));
 assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 41);
 
+const toad = getCampaignPhotoById("toad-suck-daze-toad-race-20260501");
+assert.ok(toad);
+assert.equal(toad!.campaign.county, "Faulkner");
+assert.equal(toad!.campaign.city, "Conway");
+assert.ok(listCampaignPhotosByCounty("Faulkner").some((p) => p.id === toad!.id));
+assert.ok(getCampaignPhotoById("church-sanctuary-conversation-20260511"));
+assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 51);
+
 console.log("Campaign photo registry checks passed.");
