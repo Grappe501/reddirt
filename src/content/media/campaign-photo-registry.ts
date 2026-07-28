@@ -122,11 +122,12 @@ export function getCampaignPhotoById(id: string): CampaignPhotoRecord | null {
 }
 
 export function listCampaignPhotosByCounty(county: string): CampaignPhotoRecord[] {
-  const c = county.trim().toLowerCase();
+  const c = county.trim().toLowerCase().replace(/\s+county$/, "");
   if (!c) return [];
   return CAMPAIGN_PHOTO_REGISTRY.filter((p) => {
     if (p.campaign.county === "Unknown") return false;
-    return p.campaign.county.toLowerCase() === c || p.campaign.county.toLowerCase().includes(c);
+    const stored = p.campaign.county.toLowerCase().replace(/\s+county$/, "");
+    return stored === c || stored.includes(c) || c.includes(stored);
   });
 }
 
