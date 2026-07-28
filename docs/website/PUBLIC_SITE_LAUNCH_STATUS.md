@@ -86,6 +86,19 @@ This early failure is a **different** class from `kgrappe`’s long-build → La
 
 ---
 
+## Remaining launch effort (locked)
+
+Editorial doctrine: [`PUBLIC_SITE_EDITORIAL_DOCTRINE.md`](./PUBLIC_SITE_EDITORIAL_DOCTRINE.md)
+
+Priority order — **no major new sections / no large copy rewrites** unless a factual issue is found:
+
+1. Visual polish (spacing, crops, CTA consistency, typography, mobile)
+2. Technical QA (production build, a11y, crawl, forms)
+3. Media quality (captions, alt, selection, video presentation)
+4. Content accuracy (endorsements, transcripts, office claims)
+
+---
+
 ## Do not
 
 - Clear-cache redeploy `kgrappe` expecting a different result

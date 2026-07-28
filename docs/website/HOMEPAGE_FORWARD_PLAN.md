@@ -7,7 +7,9 @@
 
 **Launch message (everything on `/` must reinforce):**
 
-> Kelly Grappe is a trusted, accessible leader who is traveling Arkansas, listening to people, and prepared to serve as Secretary of State.
+> Kelly Grappe is prepared to serve as Arkansas Secretary of State — competent, accessible, and accountable to the people.
+
+**Editorial doctrine (locked):** [`PUBLIC_SITE_EDITORIAL_DOCTRINE.md`](./PUBLIC_SITE_EDITORIAL_DOCTRINE.md) — decision-focused; Kelly is the guide, not the product; one job per page; media as proof; calm homepage. Remaining launch effort = visual polish + technical QA, not more copy.
 
 ---
 
