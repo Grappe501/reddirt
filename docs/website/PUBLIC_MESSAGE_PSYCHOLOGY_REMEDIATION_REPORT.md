@@ -140,9 +140,12 @@ Unchanged: production `kgrappe` Lambda deploy blocked; separate from this copy p
 
 ## 32–33. Git
 
-Filled at commit time.
+- Branch: `feature/kelly-schedule-settlement-dashboard`
+- Commit: `ae8be345`
+- Push: pushed to `origin/feature/kelly-schedule-settlement-dashboard`
 
 ## 34. Recommendation
 
-**MESSAGE REMEDIATION REQUIRED** is cleared for copy/psychology.  
-**READY FOR FINAL LAUNCH QA** for remaining technical gates (screenshots, build, crawl, Netlify).
+**READY FOR FINAL LAUNCH QA**
+
+Message psychology remediation is complete for launch copy. Remaining work is technical QA gates (screenshots, production build, crawl, forms/a11y re-check, Netlify), not further biography expansion.
