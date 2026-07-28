@@ -269,8 +269,9 @@ No homepage personality implementation authorized.
 |-------|------|---------------------------|
 | **County Clerk Convention Candidate Forum 2026** | Qualification / election administration | Secure Elections · county partnerships; homepage **excerpt only** |
 | **Video 4 (`KZ33iSxZ0ZQ`)** | Leadership speech | Kelly Speaks · Leadership · Hear Directly From Kelly; homepage-eligible pending Track C |
+| **Video 5 (`SrzDUJBvFrs`)** | Campaign speech module | Themes pending transcript review; Story Engine links TBD; homepage-eligible if selected |
 
-**Classification doctrine (every speech):** **message · audience · emotional function · page · exact slot** — no random placements.
+**Classification doctrine (every speech):** **message · audience · emotional function · page · exact slot** — no random placements. Also capture Story Engine links: photos · events · counties · issues · blogs · news · actions.
 
 ### Locked presentation rules
 
@@ -294,6 +295,7 @@ https://www.youtube-nocookie.com/embed/eKVz5pFJxtk
 https://www.youtube-nocookie.com/embed/aO712RsR0pQ
 https://www.youtube-nocookie.com/embed/Hl_n-A9aL1s
 https://www.youtube-nocookie.com/embed/KZ33iSxZ0ZQ
+https://www.youtube-nocookie.com/embed/SrzDUJBvFrs
 ```
 
 Watch URLs (source of truth for IDs):
@@ -302,6 +304,7 @@ Watch URLs (source of truth for IDs):
 - Ripples: https://youtu.be/aO712RsR0pQ
 - County Clerk Forum: https://youtu.be/Hl_n-A9aL1s
 - Leadership (Video 4): https://youtu.be/KZ33iSxZ0ZQ
+- Campaign speech (Video 5): https://youtu.be/SrzDUJBvFrs
 
 #### Record A — message / office vision
 
@@ -486,3 +489,32 @@ Suggested future slots (proposed):
 ```
 
 **Content-module posture:** Treat as a campaign knowledge module (title, ID, transcript, summary, pull quote, topics, related pages, CTA) — not a bare iframe. See `docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md`.
+
+### 15.8 Record E — campaign speech module (Video 5)
+
+**Asset type:** External video / campaign speech module  
+**Status:** Registered in canonical media registry; **primary/secondary themes pending transcript review**  
+**Story Engine:** Related photos, blogs, plans, news, and actions to be linked after theme finalization  
+**Do not** displace locked homepage message (`eKVz5pFJxtk`) or momentum (`aO712RsR0pQ`) principals
+
+```text
+Provider: YouTube
+Video ID: SrzDUJBvFrs
+Privacy embed: https://www.youtube-nocookie.com/embed/SrzDUJBvFrs
+Media Type: Speech
+Category: Campaign Speech
+Status: Approved (registry) — themes pending review
+Homepage Eligible: Yes (if selected; supporting only vs locked canon)
+Transcript: Attach when available
+Primary Theme: (to be finalized after transcript review)
+Secondary Themes: (to be tagged after review)
+Counties Mentioned: (pending)
+Office Responsibilities: (pending)
+Audience: General Public
+Related Pages / Photos / Blogs: (pending Story Engine links)
+Suggested bands: Hear Kelly Explain It · Hear Directly From Kelly · Kelly In Her Own Words
+Suggested future slots (proposed):
+  kelly-speaks.campaign-speech.SrzDUJBvFrs
+  kelly-in-her-own-words.pending-theme.featured-video
+  policy.hear-kelly-explain-it.supporting-video
+```

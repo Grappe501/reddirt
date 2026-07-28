@@ -169,7 +169,7 @@ See git commit for authoritative list. Core additions:
 
 **Track C:** Remains **CLOSED** until Netlify production redeploy + public form smoke against PascalCase `"Submission"` (see Phase 1B/1C reports). Local Submission/User parity was reconciled in Phase 1C.
 
-**Approved Track C video inputs (documented only; homepage canon LOCKED):** see Phase 1C §15, `docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md`, and `data/public-experience/kelly-homepage-personality-approved-videos.json`. Locked homepage principals: message `eKVz5pFJxtk`, ripples `aO712RsR0pQ`. Also registered: County Clerk Forum `Hl_n-A9aL1s`, leadership Video 4 `KZ33iSxZ0ZQ`. Track C remains CLOSED — no homepage personality implementation.
+**Approved Track C video inputs (documented only; homepage canon LOCKED):** see Phase 1C §15, `docs/KELLY_SPEAKS_MEDIA_LIBRARY_ARCHITECTURE.md` (living documentary · Story Engine · Kelly In Her Own Words), and `data/public-experience/kelly-homepage-personality-approved-videos.json`. Locked homepage: `eKVz5pFJxtk`, `aO712RsR0pQ`. Also registered: `Hl_n-A9aL1s`, `KZ33iSxZ0ZQ`, `SrzDUJBvFrs`. Track C remains CLOSED.
 
 ### Track C entry gates (partial)
 

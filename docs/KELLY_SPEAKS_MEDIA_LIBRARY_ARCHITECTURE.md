@@ -7,13 +7,29 @@
 
 ---
 
-## 1. Intent
+## 1. Intent — living documentary
 
-Visitors must not experience a pile of random YouTube embeds. They should feel they are walking through **Kelly’s story, leadership, and vision**.
+This is bigger than a campaign brochure site. RedDirt should feel like a **living documentary** of Kelly’s campaign.
 
-Every speech is a **content module** in a structured **Kelly Media Library**, surfaced on pages where it reinforces the topic — not a generic “Videos” dump.
+Every major page should answer two questions:
 
-**Page name (locked preference):** **Kelly Speaks** — not “Videos,” not “Media.”
+1. **What does Kelly believe?**
+2. **Can I see her saying or doing it?**
+
+That pairing (belief + evidence in her own voice or actions) is more persuasive than pages of text alone.
+
+Visitors must not experience a pile of random YouTube embeds. They should feel Kelly is **walking alongside** them: policy → photo → speech → volunteer story → county visit → another issue.
+
+Every speech is a **content module** in a structured **Kelly Media Library**, connected through a **Campaign Story Engine** / **Campaign Content Graph** — not a generic “Videos” dump.
+
+**Library page names (locked preferences):**
+
+| Prefer | Avoid |
+|--------|--------|
+| **Kelly Speaks** | “Videos” |
+| **Kelly In Her Own Words** | Generic “Media” |
+
+These may be one hub with two entry titles, or sibling pages that share the same registry — do not invent a third competing video dump.
 
 ---
 
@@ -101,6 +117,90 @@ Inputs:
 
 ---
 
+## 4A. Campaign Story Engine
+
+Videos are not isolated. Each speech module should connect to related campaign reality:
+
+```text
+Speech
+  → Related campaign photos
+  → Related speeches (e.g. County Clerk forum)
+  → Blog / article
+  → Election / issue plan
+  → Volunteer opportunity
+  → Related news
+  → Donate / action
+```
+
+Everything reinforces everything else. The engine’s job is to make those links explicit in metadata so pages can compose them without hardcoding one-off embeds.
+
+---
+
+## 4B. Campaign Content Graph (target)
+
+Longer-term RedDirt capability: a **Campaign Content Graph** where assets are first-class nodes:
+
+```text
+Speech → Issue → County → Photos → Event → Blog → Volunteer story
+  → Press release → Podcast → Social post → Fundraising → Action
+```
+
+Then major pages become richer automatically by walking approved edges — still operator-gated for public publication.
+
+---
+
+## 4C. Policy-page closer — “Hear Kelly Explain It”
+
+Every major policy page should end the same way (continuity across the site):
+
+```text
+---------------------------------
+Hear Kelly Explain It
+
+[ Video — click-to-play campaign chrome ]
+
+"Pull quote from Kelly."
+
+Topics Covered
+✔ Transparency · Elections · Business · County Clerks · Civic Education …
+
+Read the full plan →
+---------------------------------
+```
+
+Prefer showing Kelly talking over another block of campaign copy. Reusable band names:
+
+- **Hear Directly From Kelly** (general / Meet Kelly)
+- **Hear Kelly Explain It** (policy / issue closers)
+
+---
+
+## 4D. Kelly In Her Own Words (hub page)
+
+Prefer this title over generic “Media.” Organize like a documentary index:
+
+| Section |
+|---------|
+| Vision for Arkansas |
+| Elections |
+| Small Business |
+| Transparency |
+| County Clerks |
+| Capitol |
+| Civic Education |
+| Public Service |
+| Community |
+| Interviews |
+| Town Halls |
+| Campaign Trail |
+| Major Speeches |
+
+Each section contains: featured video · transcript · key quotes · related issues · related plans · related photos · related blogs · related events.
+
+**Kelly Speaks** and **Kelly In Her Own Words** share the same canonical registry; IA may present one or both entry points without duplicating asset records.
+
+---
+
 ## 5. Kelly Speaks page structure (target IA)
 
 Organize by **theme**, not by upload date:
@@ -150,11 +250,16 @@ Additional speeches should be **appended** to that registry with full classifica
 
 ## 8. Launch content focus (while Track C stays closed)
 
-Prioritize collecting and organizing:
+Prioritize collecting and organizing into the **canonical media registry** (not one-off embed decisions):
 
-- Videos (classified into this library as Steve sends them)  
-- Campaign photos with captions and metadata  
-- Endorsements · Press · Biography · Issue pages  
-- County-specific content · Downloadables · Volunteer / donation pages  
+For each new video capture:
 
-When production DB / Track C gates clear, implement the **already-approved** homepage personality experience without reopening design debates.
+- **What is it about?**
+- **Who is it for?**
+- **Which pages should surface it?**
+- **Which campaign themes does it reinforce?**
+- **Which photos, blog posts, and plans should appear alongside it?**
+
+Also continue: campaign photos + captions · endorsements · press · biography · issue pages · county content · downloadables · volunteer / donation pages.
+
+When production DB / Track C gates clear, implement the **already-approved** homepage personality experience without reopening design debates. By launch, visitors should experience interconnected stories — not isolated videos.
