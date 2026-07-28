@@ -277,6 +277,19 @@ export const CAMPAIGN_MEDIA_REGISTRY: CampaignMediaRecord[] = [
     homepageEligible: false,
     publicationStatus: "DRAFT",
   }),
+  record({
+    id: "campaign-video-mihybn8zpr0",
+    slug: "campaign-video-editorial-review-pending-mihy",
+    youtubeVideoId: "Mihybn8zPR0",
+    format: "FULL_VIDEO",
+    title: "Campaign Video — Editorial Review Pending",
+    description: "Campaign video pending editorial title and transcript review.",
+    topics: [],
+    relatedPagePaths: ["/kelly-speaks"],
+    featured: false,
+    homepageEligible: false,
+    publicationStatus: "DRAFT",
+  }),
 ];
 
 export function listCampaignMedia(): CampaignMediaRecord[] {
