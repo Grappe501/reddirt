@@ -238,6 +238,19 @@ export const CAMPAIGN_MEDIA_REGISTRY: CampaignMediaRecord[] = [
     homepageEligible: false,
     publicationStatus: "DRAFT",
   }),
+  record({
+    id: "campaign-short-scpu5qasitq",
+    slug: "campaign-short-editorial-review-pending-scpu",
+    youtubeVideoId: "Scpu5qASiTQ",
+    format: "SHORT",
+    title: "Campaign Video — Editorial Review Pending",
+    description: "Campaign Short (9:16) pending editorial title and transcript review.",
+    topics: [],
+    relatedPagePaths: ["/kelly-speaks"],
+    featured: false,
+    homepageEligible: false,
+    publicationStatus: "DRAFT",
+  }),
 ];
 
 export function listCampaignMedia(): CampaignMediaRecord[] {
