@@ -7,6 +7,9 @@ import { isDatabaseConfigured } from "@/lib/env";
 import { provisionVolunteerOpsSoloTeam } from "@/lib/volunteer-ops/provision-solo-team";
 import { ASK_KELLY_CATEGORY_LABELS } from "@/content/ask-kelly-beta-public-copy";
 import { sendVolunteerSignupOpsNotification } from "@/lib/campaign-ops/ops-notifications";
+import { applyPublicFormConsent } from "@/lib/forms/public-form-consent";
+import { recordPublicFormWorkflowAction } from "@/lib/forms/public-form-audit";
+import { normalizeVolunteerInterests } from "@/lib/forms/volunteer-interest-taxonomy";
 import type { AskKellyBetaFeedbackInput, FormSubmissionInput } from "./schemas";
 
 function buildSummary(data: FormSubmissionInput): string {
@@ -16,7 +19,7 @@ function buildSummary(data: FormSubmissionInput): string {
         `Name: ${data.name}`,
         `Email: ${data.email}`,
         data.phone ? `Phone: ${data.phone}` : "",
-        `ZIP: ${data.zip}`,
+        data.zip ? `ZIP: ${data.zip}` : "",
         data.county ? `County: ${data.county}` : "",
         data.interests?.length ? `Interests: ${data.interests.join(", ")}` : "",
         data.message ? `Message: ${data.message}` : "",
@@ -27,8 +30,8 @@ function buildSummary(data: FormSubmissionInput): string {
       return [
         `Name: ${data.firstName} ${data.lastName}`,
         `Email: ${data.email}`,
-        `Phone: ${data.phone}`,
-        `ZIP: ${data.zip}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        data.zip ? `ZIP: ${data.zip}` : "",
         data.county ? `County: ${data.county}` : "",
         data.city ? `City: ${data.city}` : "",
         `Preferred role: ${data.preferredRole}`,
@@ -174,11 +177,15 @@ function publicFormIntakeMetadata(
     source: "public_form",
     formType: data.formType,
     county: "county" in data && data.county ? sanitizePlainText(data.county, 80) : null,
-    zip: "zip" in data ? sanitizePlainText(data.zip, 12) : null,
+    zip: "zip" in data && data.zip ? sanitizePlainText(data.zip, 12) : null,
     interests:
       (data.formType === "join_movement" || data.formType === "volunteer") && data.interests?.length
         ? data.interests.map((interest) => sanitizePlainText(interest, 80)).slice(0, 20)
         : [],
+    sourcePage: "sourcePage" in data && data.sourcePage ? sanitizePlainText(data.sourcePage, 500) : null,
+    sourceComponent: "sourceComponent" in data && data.sourceComponent ? sanitizePlainText(data.sourceComponent, 120) : null,
+    sourceCampaign: "sourceCampaign" in data && data.sourceCampaign ? sanitizePlainText(data.sourceCampaign, 120) : null,
+    referrerCode: "referrerCode" in data && data.referrerCode ? sanitizePlainText(data.referrerCode, 120) : null,
     leadershipInterest: data.formType === "volunteer" ? data.leadershipInterest : null,
     hostGatheringType: data.formType === "host_gathering" ? data.gatheringType : null,
     listeningSessionHostInterest: data.formType === "host_gathering" ? data.gatheringType === "listening_session" : null,
@@ -339,12 +346,20 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
 
   const volunteerInterestTokens =
     data.formType === "volunteer"
-      ? Array.from(new Set([...(data.interests ?? []), `pref_role:${data.preferredRole}`]))
+      ? Array.from(
+          new Set([
+            ...normalizeVolunteerInterests([...(data.interests ?? []), data.preferredRole]).keys,
+            `pref_role:${data.preferredRole}`,
+          ]),
+        )
       : [];
+
+  const joinInterestTokens =
+    data.formType === "join_movement" ? normalizeVolunteerInterests(data.interests).keys : [];
 
   const interests =
     data.formType === "join_movement"
-      ? (data.interests ?? [])
+      ? joinInterestTokens
       : data.formType === "volunteer"
         ? volunteerInterestTokens
         : [];
@@ -360,7 +375,7 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
       email,
       name: displayName,
       phone: data.phone?.trim() || null,
-      zip: "zip" in data ? sanitizePlainText(data.zip, 12) : null,
+      zip: "zip" in data && data.zip ? sanitizePlainText(data.zip, 12) : null,
       county:
         "county" in data && data.county
           ? sanitizePlainText(data.county, 80)
@@ -372,7 +387,7 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
     update: {
       name: displayName,
       phone: data.phone?.trim() || undefined,
-      zip: "zip" in data ? sanitizePlainText(data.zip, 12) : undefined,
+      zip: "zip" in data && data.zip ? sanitizePlainText(data.zip, 12) : undefined,
       county:
         "county" in data && data.county
           ? sanitizePlainText(data.county, 80)
@@ -503,13 +518,52 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
 
   const intake = await createWorkflowIntakeForSubmission({ submissionId: sub.id, data, classification });
 
+  if (data.formType === "join_movement" || data.formType === "volunteer") {
+    const interestKeys =
+      data.formType === "volunteer"
+        ? normalizeVolunteerInterests([...(data.interests ?? []), data.preferredRole]).keys
+        : normalizeVolunteerInterests(data.interests).keys;
+
+    let consentSummary = null as Awaited<ReturnType<typeof applyPublicFormConsent>> | null;
+    try {
+      consentSummary = await applyPublicFormConsent({
+        userId: user.id,
+        consent: {
+          formType: data.formType,
+          consentEmail: data.consentEmail,
+          consentSms: data.consentSms,
+          consentPhone: data.consentPhone,
+          phone: data.phone,
+          sourcePage: data.sourcePage,
+        },
+      });
+    } catch (e) {
+      console.error("[handlers] public form consent write failed", e);
+    }
+
+    try {
+      await recordPublicFormWorkflowAction({
+        workflowIntakeId: intake.id,
+        formType: data.formType,
+        sourcePage: data.sourcePage,
+        sourceComponent: data.sourceComponent,
+        sourceCampaign: data.sourceCampaign,
+        interestKeys,
+        consentSummary,
+        result: "created",
+      });
+    } catch (e) {
+      console.error("[handlers] public form workflow action failed", e);
+    }
+  }
+
   if (data.formType === "volunteer") {
     void sendVolunteerSignupOpsNotification({
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
-      phone: data.phone,
-      zip: data.zip,
+      phone: data.phone ?? "",
+      zip: data.zip ?? "",
       county: data.county,
       city: data.city,
       preferredRole: data.preferredRole,

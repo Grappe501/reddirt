@@ -71,6 +71,7 @@ model User {
   conversationOpportunitiesCreated    ConversationOpportunity[]           @relation("OpportunityCreator")
   ownedMediaReviewLogs                OwnedMediaReviewLog[]
   ownedMediaAssetsReviewed            OwnedMediaAsset[]                   @relation("OwnedMediaReviewedBy")
+  publicMediaPlacementsCreated        PublicMediaPlacement[]              @relation("PublicMediaPlacementCreatedBy")
   socialContentDraftsCreated          SocialContentDraft[]                @relation("SocialContentDraftAuthor")
   /// Comms Workbench (ops layer)
   commsPlansOwned                     CommunicationPlan[]                 @relation("CommsPlanOwner")
@@ -1957,6 +1958,9 @@ model OwnedMediaAsset {
   rootAsset               OwnedMediaAsset?         @relation("OwnedMediaRoot", fields: [rootAssetId], references: [id], onDelete: SetNull)
   sameRootAssets          OwnedMediaAsset[]        @relation("OwnedMediaRoot")
   derivativeType          OwnedMediaDerivativeType @default(ORIGINAL)
+  /// Normalized focal point for responsive crop (0.0–1.0). Null = treat as center (0.5).
+  focalX                  Float?
+  focalY                  Float?
   /// Governance: in addition to `approvedForSocial` (workbench) — press kit / website use.
   approvedForPress        Boolean                  @default(false)
   approvedForPublicSite   Boolean                  @default(false)
@@ -1988,6 +1992,7 @@ model OwnedMediaAsset {
   collectionItems       OwnedMediaCollectionItem[]
   reviewLogs            OwnedMediaReviewLog[]
   derivativeJobsPlanned OwnedMediaDerivativeJob[]  @relation("DerivativeSourceJobs")
+  publicPlacements      PublicMediaPlacement[]
 
   @@index([countyId, capturedAt])
   @@index([approvedForSocial, kind])
@@ -3866,6 +3871,48 @@ model OwnedMediaDerivativeJob {
 
   @@index([sourceAssetId, status])
   @@index([status, priority])
+  @@schema("public")
+}
+
+/// How a public-site placement intends to present an owned asset.
+enum PublicMediaPlacementKind {
+  IMAGE
+  VIDEO
+  GALLERY
+  BACKGROUND
+  PORTRAIT
+  POSTER
+
+  @@schema("public")
+}
+
+/// Typed public page slot → OwnedMediaAsset. Placement is not approval.
+model PublicMediaPlacement {
+  id                String                   @id @default(cuid())
+  pageKey           String
+  slotKey           String
+  ownedMediaAssetId String
+  ownedMediaAsset   OwnedMediaAsset          @relation(fields: [ownedMediaAssetId], references: [id], onDelete: Cascade)
+  placementKind     PublicMediaPlacementKind @default(IMAGE)
+  enabled           Boolean                  @default(true)
+  sortOrder         Int                      @default(0)
+  /// Optional crop override for this slot only (0.0–1.0).
+  focalXOverride    Float?
+  focalYOverride    Float?
+  headlineOverride  String?
+  captionOverride   String?                  @db.Text
+  altTextOverride   String?
+  startAt           DateTime?
+  endAt             DateTime?
+  createdByUserId   String?
+  createdByUser     User?                    @relation("PublicMediaPlacementCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt         DateTime                 @default(now())
+  updatedAt         DateTime                 @updatedAt
+
+  @@unique([pageKey, slotKey])
+  @@index([ownedMediaAssetId])
+  @@index([enabled, pageKey])
+  @@index([createdByUserId])
   @@schema("public")
 }
 

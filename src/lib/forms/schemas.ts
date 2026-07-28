@@ -16,16 +16,33 @@ const honeypot = z
   .optional()
   .refine((v) => !v || v.length === 0, "Spam detected.");
 
+const optionalZip = z
+  .string()
+  .max(12)
+  .optional()
+  .transform((v) => (v?.trim() ? v.trim() : undefined));
+
+const attributionFields = {
+  sourcePage: z.string().max(500).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  sourceComponent: z.string().max(120).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  sourceCampaign: z.string().max(120).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  referrerCode: z.string().max(120).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  consentEmail: z.boolean().optional(),
+  consentSms: z.boolean().optional(),
+  consentPhone: z.boolean().optional(),
+};
+
 export const joinMovementSchema = z.object({
   formType: z.literal("join_movement"),
   name,
   email,
   phone: phone,
-  zip,
+  zip: optionalZip,
   county,
   interests: z.array(z.string()).max(20).default([]),
   message: z.string().max(2000).optional(),
   website: honeypot,
+  ...attributionFields,
 });
 
 export const volunteerPreferredRoleValues = [
@@ -45,12 +62,17 @@ export const volunteerSchema = z.object({
   firstName: z.string().min(1, "First name is required.").max(80),
   lastName: z.string().min(1, "Last name is required.").max(80),
   email,
-  phone: z.string().min(7, "Phone is required.").max(40),
-  zip,
+  /** Email satisfies contact-method requirement; phone remains preferred when present. */
+  phone: z
+    .string()
+    .max(40)
+    .optional()
+    .transform((v) => (v?.trim() ? v.trim() : undefined)),
+  zip: optionalZip,
   county,
   city: z.string().max(120).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
-  preferredRole: z.enum(volunteerPreferredRoleValues),
-  preferredLanguage: z.enum(volunteerPreferredLanguageValues),
+  preferredRole: z.enum(volunteerPreferredRoleValues).default("not_sure"),
+  preferredLanguage: z.enum(volunteerPreferredLanguageValues).default("english"),
   student: z.boolean().default(false),
   schoolCampus: z.string().max(200).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
   discordInterest: z.boolean().default(false),
@@ -62,6 +84,7 @@ export const volunteerSchema = z.object({
   availability: z.string().max(500).optional(),
   skills: z.string().max(2000).optional(),
   website: honeypot,
+  ...attributionFields,
 });
 
 export const localTeamSchema = z.object({

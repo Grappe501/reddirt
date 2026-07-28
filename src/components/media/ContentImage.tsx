@@ -11,6 +11,8 @@ type ContentImageProps = {
   priority?: boolean;
   sizes?: string;
   warmOverlay?: boolean;
+  /** CSS object-position (e.g. from public media focal resolver). */
+  objectPosition?: string;
 };
 
 export function ContentImage({
@@ -20,9 +22,12 @@ export function ContentImage({
   priority,
   sizes = "(max-width: 768px) 100vw, 1200px",
   warmOverlay,
+  /** Optional CSS object-position from public media resolver focal points. */
+  objectPosition,
 }: ContentImageProps) {
   const isSvg = m.src.endsWith(".svg");
   const imgClass = cn("h-full w-full object-cover", mediaClassName);
+  const style = objectPosition ? { objectPosition } : undefined;
 
   const inner = isSvg ? (
     // SVG placeholders in /public — next/image SVG optimization not enabled; explicit dimensions prevent CLS.
@@ -33,6 +38,7 @@ export function ContentImage({
       width={m.width}
       height={m.height}
       className={imgClass}
+      style={style}
       loading={priority ? "eager" : "lazy"}
       decoding="async"
       fetchPriority={priority ? "high" : undefined}
@@ -44,6 +50,7 @@ export function ContentImage({
       width={m.width}
       height={m.height}
       className={imgClass}
+      style={style}
       sizes={sizes}
       priority={priority}
     />

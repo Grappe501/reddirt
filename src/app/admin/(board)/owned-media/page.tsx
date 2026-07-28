@@ -66,8 +66,12 @@ export default async function AdminOwnedMediaPage({ searchParams }: Props) {
       </div>
       <p className="mt-3 max-w-2xl font-body text-sm text-kelly-text/75">
         Uploads are stored on disk (see <code className="rounded bg-kelly-text/5 px-1">data/owned-campaign-media</code> by
-        default) with metadata in Postgres. This is the memory layer for photos, A/V, speeches, and transcripts — not
-        the URL-first <Link href="/admin/media">media register</Link>.{" "}
+        default) or Supabase when configured, with metadata in Postgres. This is the memory layer for photos, A/V,
+        speeches, and transcripts — not the URL-first <Link href="/admin/media">media register</Link>.{" "}
+        <Link href="/admin/owned-media/public-placements" className="font-semibold text-kelly-blue underline">
+          Public site placements
+        </Link>{" "}
+        assigns approved assets to typed homepage slots.{" "}
         <Link href="/admin/owned-media/batches" className="text-kelly-slate underline">
           Ingest batch history
         </Link>{" "}
