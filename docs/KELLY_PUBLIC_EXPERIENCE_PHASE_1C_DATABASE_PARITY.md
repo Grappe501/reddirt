@@ -271,6 +271,7 @@ No homepage personality implementation authorized.
 | **Video 4 (`KZ33iSxZ0ZQ`)** | Leadership speech | Kelly Speaks · Leadership · Hear Directly From Kelly; homepage-eligible pending Track C |
 | **Video 5 (`SrzDUJBvFrs`)** | Campaign speech module | Themes pending transcript review; Story Engine links TBD; homepage-eligible if selected |
 | **Video 6 (`c2v1uZNUMf4`)** | Campaign video module | Approved for public site (registry); CampaignVideoCard; themes/visitor-question pending review |
+| **Video 7 (`amiTVLt85AM`)** | Campaign moment / election night | Primary Election Night — campaign journey · Meet Kelly; homepage supporting only |
 
 **Classification doctrine (every speech):** **message · audience · emotional function · page · exact slot** — no random placements. Also capture Story Engine links: photos · events · counties · issues · blogs · news · actions.
 
@@ -298,6 +299,7 @@ https://www.youtube-nocookie.com/embed/Hl_n-A9aL1s
 https://www.youtube-nocookie.com/embed/KZ33iSxZ0ZQ
 https://www.youtube-nocookie.com/embed/SrzDUJBvFrs
 https://www.youtube-nocookie.com/embed/c2v1uZNUMf4
+https://www.youtube-nocookie.com/embed/amiTVLt85AM
 ```
 
 Watch URLs (source of truth for IDs):
@@ -308,6 +310,7 @@ Watch URLs (source of truth for IDs):
 - Leadership (Video 4): https://youtu.be/KZ33iSxZ0ZQ
 - Campaign speech (Video 5): https://youtu.be/SrzDUJBvFrs
 - Campaign video (Video 6): https://youtu.be/c2v1uZNUMf4
+- Primary Election Night (Video 7): https://youtu.be/amiTVLt85AM
 
 #### Record A — message / office vision
 
@@ -542,4 +545,40 @@ Transcript: Attach when available
 Poster: Custom campaign image preferred
 Primary Theme / visitor question: (pending review)
 Related Pages: (assign via visitor-question map after review)
+```
+
+### 15.10 Record G — Primary Election Night (Video 7)
+
+**Asset type:** Campaign moment / election-night speech  
+**Public title:** Primary Election Night  
+**Placement family:** Campaign story (not office-policy pages)  
+**Do not** displace locked homepage message (`eKVz5pFJxtk`) or momentum (`aO712RsR0pQ`) principals
+
+**Best fit pages:** Meet Kelly · Campaign Journey · Kelly Across Arkansas · Kelly In Her Own Words · future election-night / campaign-milestones timeline  
+
+Suggested section:
+
+```text
+## A Campaign Built With the People
+```
+
+Shows the human side of the campaign (volunteers, supporters, family, work, community) — evidence of a growing Arkansas movement, not only a candidate biography.
+
+```text
+Asset type: Campaign moment / election-night speech
+Provider: YouTube
+Video ID: amiTVLt85AM
+Privacy embed: https://www.youtube-nocookie.com/embed/amiTVLt85AM
+Public title: Primary Election Night
+Primary theme: Campaign journey
+Supporting themes: Gratitude · Community · Volunteers · Momentum · Public service · People-powered campaign
+Primary slot: meet-kelly.campaign-journey.featured-video
+Secondary slots:
+  campaign-trail.milestones
+  kelly-speaks.campaign-moments
+  get-involved.community-proof
+  homepage.personality.supporting-video
+Homepage role: Supporting only — not the main homepage message video
+Publication: Click-to-play · No autoplay · Transcript recommended · Custom campaign thumbnail preferred
+Display: CampaignVideoCard only
 ```

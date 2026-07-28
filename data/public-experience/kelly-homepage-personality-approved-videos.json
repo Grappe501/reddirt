@@ -465,6 +465,99 @@
         "relatedEvents",
         "customPoster"
       ]
+    },
+    {
+      "id": "primary-election-night-amitvlt85am",
+      "provider": "YouTube",
+      "videoId": "amiTVLt85AM",
+      "watchUrl": "https://youtu.be/amiTVLt85AM",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/amiTVLt85AM",
+      "title": "Primary Election Night",
+      "displayTitle": "Primary Election Night",
+      "assetType": "campaign_moment_election_night_speech",
+      "mediaType": "Campaign moment / election-night speech",
+      "category": "Campaign Journey",
+      "status": "approved_registry",
+      "displayStyle": "CampaignVideoCard",
+      "autoplay": false,
+      "captions": "enabled_when_available",
+      "transcriptStatus": "recommended",
+      "posterPreference": "custom_campaign_thumbnail",
+      "primaryTheme": "Campaign journey",
+      "secondaryThemes": [
+        "Gratitude",
+        "Community",
+        "Volunteers",
+        "Momentum",
+        "Public service",
+        "People-powered campaign"
+      ],
+      "pageRole": "campaign_story_human_side",
+      "emotionalFunction": "community_momentum_gratitude",
+      "visitorQuestion": "Is this a real movement of Arkansans, or only a candidate biography?",
+      "audience": [
+        "General Public",
+        "Volunteers",
+        "Supporters"
+      ],
+      "homepageEligible": true,
+      "homepagePriority": null,
+      "homepageRole": "supporting_only",
+      "homepageNote": "Supporting personality only — must not replace locked message (eKVz5pFJxtk) or primary momentum (aO712RsR0pQ)",
+      "featured": true,
+      "kellySpeaksSection": "Campaign Trail",
+      "kellyInHerOwnWordsSection": "Campaign Trail",
+      "primaryPageSection": {
+        "heading": "A Campaign Built With the People",
+        "placementFamily": "campaign_story_not_office_policy",
+        "bestFitPages": [
+          "Meet Kelly",
+          "Campaign Journey",
+          "Kelly Across Arkansas",
+          "Kelly In Her Own Words",
+          "Election-night / campaign-milestones timeline"
+        ]
+      },
+      "primarySlot": "meet-kelly.campaign-journey.featured-video",
+      "secondarySlots": [
+        "campaign-trail.milestones",
+        "kelly-speaks.campaign-moments",
+        "get-involved.community-proof",
+        "homepage.personality.supporting-video"
+      ],
+      "slotRegistryNote": "Proposed slots — campaign-story surfaces; not office-policy pages",
+      "storyEngineLinks": {
+        "relatedPhotos": [],
+        "relatedSpeeches": [],
+        "relatedBlogs": [],
+        "relatedPlans": [],
+        "relatedNews": [],
+        "relatedEvents": [],
+        "relatedVolunteerOpportunities": ["get-involved"],
+        "relatedActions": []
+      },
+      "publicApproval": "operator_controlled",
+      "laterPagePlacements": [
+        "Meet Kelly",
+        "Campaign Journey",
+        "Kelly Across Arkansas",
+        "Kelly In Her Own Words",
+        "Get Involved (community proof)",
+        "Campaign milestones timeline"
+      ],
+      "metadataSupported": [
+        "videoId",
+        "title",
+        "summary",
+        "featuredQuote",
+        "topics",
+        "audience",
+        "relatedPages",
+        "transcript",
+        "relatedPhotos",
+        "relatedEvents",
+        "customPoster"
+      ]
     }
   ],
   "firstHomepagePersonalitySliceWhenTrackCOpens": [
@@ -474,7 +567,8 @@
     "County Clerk Forum: homepage excerpt card only; full speech on Secure Elections / County Partnerships",
     "Video 4 leadership: optional Hear Directly From Kelly supporting placement — do not displace locked canon",
     "Video 5: place only after theme review; Story Engine links required for policy closers",
-    "Video 6: CampaignVideoCard only; assign visitor question and related pages before page surfaces"
+    "Video 6: CampaignVideoCard only; assign visitor question and related pages before page surfaces",
+    "Video 7 Primary Election Night: Meet Kelly / campaign journey; homepage supporting only"
   ],
   "noRawIframes": true,
   "requiredDisplayComponent": "CampaignVideoCard",
