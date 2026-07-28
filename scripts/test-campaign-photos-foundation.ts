@@ -97,4 +97,11 @@ assert.ok(listCampaignPhotosByCounty("Faulkner").some((p) => p.id === toad!.id))
 assert.ok(getCampaignPhotoById("church-sanctuary-conversation-20260511"));
 assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 51);
 
+const usw = getCampaignPhotoById("brewery-usw-handshake-20260426");
+assert.ok(usw);
+assert.ok(usw!.campaign.organizations.some((o) => o.includes("USW") || o.includes("Steelworkers")));
+assert.ok(getCampaignPhotoById("hall-apron-listening-20260429"));
+assert.ok(getCampaignPhotoById("outdoor-rally-handshake-regnat-20260328"));
+assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 61);
+
 console.log("Campaign photo registry checks passed.");
