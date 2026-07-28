@@ -104,4 +104,13 @@ assert.ok(getCampaignPhotoById("hall-apron-listening-20260429"));
 assert.ok(getCampaignPhotoById("outdoor-rally-handshake-regnat-20260328"));
 assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 61);
 
+const wms = getCampaignPhotoById("war-memorial-stadium-concourse-20260320");
+assert.ok(wms);
+assert.equal(wms!.campaign.county, "Pulaski");
+assert.equal(wms!.campaign.city, "Little Rock");
+assert.ok(listCampaignPhotosByCounty("Pulaski").some((p) => p.id === wms!.id));
+assert.ok(getCampaignPhotoById("war-memorial-stadium-community-laugh-20260320"));
+assert.ok(getCampaignPhotoById("i-voted-supporter-photo-20260303"));
+assert.ok(CAMPAIGN_PHOTO_REGISTRY.length >= 65);
+
 console.log("Campaign photo registry checks passed.");

@@ -2880,6 +2880,194 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
     createdAt: "2026-07-28T06:05:00.000Z",
     updatedAt: "2026-07-28T06:05:00.000Z",
   },
+  {
+    id: "war-memorial-stadium-community-laugh-20260320",
+    src: "/media/campaign-photos/war-memorial-stadium-community-laugh-20260320.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260320_100928.png",
+      width: 1024,
+      height: 768,
+      orientation: "LANDSCAPE",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "War Memorial Stadium community celebration",
+      county: "Pulaski",
+      city: "Little Rock",
+      venue: "War Memorial Stadium",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/counties/pulaski", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe laughs with a community member in traditional attire at War Memorial Stadium during a large field celebration.",
+      caption:
+        "Kelly Grappe shares a joyful conversation at War Memorial Stadium in Little Rock during a community celebration on the field.",
+      extendedDescription:
+        "On a stadium walkway above a crowded field, Kelly Grappe — wearing a People Over Politics button and Secretary of State name tag — laughs with a woman in embroidered traditional attire. Bleachers and a diverse celebration crowd fill the background of this Little Rock stop.",
+      seoDescription:
+        "Kelly Grappe laughs with a community member at War Memorial Stadium in Little Rock.",
+    },
+    notes:
+      "Feature — same-day pair with war-memorial-stadium-concourse (scoreboard locks Little Rock / Pulaski). Child with balloon partially visible — fine in festival context. Placement: Pulaski county, Journey, diversity/outreach.",
+    createdAt: "2026-07-28T06:10:00.000Z",
+    updatedAt: "2026-07-28T06:10:00.000Z",
+  },
+  {
+    id: "supporter-group-selfie-20260315",
+    src: "/media/campaign-photos/supporter-group-selfie-20260315.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260315_190507.png",
+      width: 1024,
+      height: 473,
+      orientation: "LANDSCAPE",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Indoor supporter meetup",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Indoor community space",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/volunteer", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe smiles in a group selfie with supporters, wearing a Secretary of State sticker and Kelly Across Arkansas button.",
+      caption:
+        "Kelly Grappe joins supporters for a group selfie — Kelly Across Arkansas energy up close.",
+      extendedDescription:
+        "In a casual indoor selfie, Kelly Grappe stands at right in a red top and dark blazer with a Secretary of State name sticker and Kelly Across Arkansas button, smiling with four supporters near a staircase and holiday tree.",
+      seoDescription:
+        "Kelly Grappe poses for a group selfie with campaign supporters.",
+    },
+    notes:
+      "Feature — Kelly Across Arkansas button visible. Composition is companion-taken selfie; Kelly clearly branded. City/county Unknown. Placement: Journey, Volunteer.",
+    createdAt: "2026-07-28T06:10:00.000Z",
+    updatedAt: "2026-07-28T06:10:00.000Z",
+  },
+  {
+    id: "war-memorial-stadium-concourse-20260320",
+    src: "/media/campaign-photos/war-memorial-stadium-concourse-20260320.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260320_100940.png",
+      width: 768,
+      height: 1024,
+      orientation: "PORTRAIT",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "War Memorial Stadium community celebration",
+      county: "Pulaski",
+      city: "Little Rock",
+      venue: "War Memorial Stadium concourse",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/counties/pulaski", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe speaks on the War Memorial Stadium concourse overlooking a crowded field celebration in Little Rock.",
+      caption:
+        "Kelly Grappe engages on the concourse at War Memorial Stadium in Little Rock during a large community celebration.",
+      extendedDescription:
+        "From an elevated concourse, Kelly Grappe gestures mid-conversation while a War Memorial Stadium scoreboard and Simmons Bank branding confirm the Little Rock venue. A diverse crowd fills the field below during a daytime community celebration.",
+      seoDescription:
+        "Kelly Grappe at War Memorial Stadium in Little Rock during a community celebration.",
+    },
+    notes:
+      "Feature — geography confirmed by War Memorial Stadium scoreboard (Little Rock / Pulaski). Strong statewide/capital-city story. Placement: Pulaski county, Journey, Across Arkansas.",
+    createdAt: "2026-07-28T06:10:00.000Z",
+    updatedAt: "2026-07-28T06:10:00.000Z",
+  },
+  {
+    id: "i-voted-supporter-photo-20260303",
+    src: "/media/campaign-photos/i-voted-supporter-photo-20260303.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260303_214343.png",
+      width: 768,
+      height: 1024,
+      orientation: "PORTRAIT",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Election night / voting celebration",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Indoor event space",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Voter Participation",
+      relatedIssue: "Voting",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe smiles beside a supporter, wearing an I Voted sticker on her blazer at an indoor event.",
+      caption:
+        "Kelly Grappe celebrates civic participation with an I Voted sticker beside a supporter.",
+      extendedDescription:
+        "At an indoor evening event, Kelly Grappe in a navy blazer and jeans smiles next to a supporter wearing Democratic and coalition buttons. An I Voted sticker on Kelly's lapel anchors a voter-participation story moment.",
+      seoDescription:
+        "Kelly Grappe wears an I Voted sticker while posing with a supporter.",
+    },
+    notes:
+      "Feature — I Voted civic participation still. Other-candidate buttons on supporter — crop/context carefully. City/county Unknown. Placement: Journey, Get Involved, voting stories.",
+    createdAt: "2026-07-28T06:10:00.000Z",
+    updatedAt: "2026-07-28T06:10:00.000Z",
+  },
 ];
 
 export function listCampaignPhotos(): CampaignPhotoRecord[] {
