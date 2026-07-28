@@ -24,7 +24,6 @@ const wireframe = read("src/components/home/HomeTrustFunnelWireframe.tsx");
 assert.ok(wireframe.includes("TrustFunnelCampaignPhotosSection"), "photo band must mount");
 assert.ok(wireframe.includes("getHomepageMeetKellyPhoto"), "Meet Kelly still selector wired");
 assert.ok(!/from\s+["']@\/lib\/content\/homepage-merge["']/.test(page), "admin merge unused on /");
-assert.ok(!wireframe.toLowerCase().includes("youtube"), "no YouTube on wireframe");
 assert.ok(!wireframe.includes("Shorts"), "no Shorts on wireframe");
 assert.equal(HOMEPAGE_HERO_PHOTO_ID, null, "no HERO still claimed for homepage hero");
 assert.equal(getHomepageHeroPhoto(), null);

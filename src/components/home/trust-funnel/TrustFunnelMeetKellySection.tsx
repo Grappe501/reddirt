@@ -58,7 +58,8 @@ export function TrustFunnelMeetKellySection({ photo }: { photo?: CampaignPhotoRe
               {copy.title}
             </h2>
             <p className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">{copy.intro}</p>
-            <p className="mt-3 font-body text-base leading-relaxed text-kelly-slate/90">{copy.body}</p>
+            <p className="mt-3 font-body text-base leading-relaxed text-kelly-slate/95">{copy.body}</p>
+            <p className="mt-3 font-body text-base leading-relaxed text-kelly-slate/90">{copy.values}</p>
             <div className={photo ? "mt-8 flex justify-center lg:justify-start" : "mt-8 flex justify-center"}>
               <Link
                 href={copy.ctaHref}

@@ -3,7 +3,7 @@
 **Status:** DECISIONS LOCKED — 2026-07-28  
 **Baseline:** [`HOMEPAGE_CURRENT_STATE_ASSESSMENT.md`](./HOMEPAGE_CURRENT_STATE_ASSESSMENT.md)  
 **Shell canon:** Keep trust-funnel architecture; upgrade section content in slices below.  
-**Build auth:** Slices 1–4 may proceed in order after Steve confirms. Slice 5 (Track C video) stays blocked until Track C gate opens.
+**Build auth:** `KELLY-PUBLIC-WEBSITE-48H-LAUNCH-SPRINT-1.0` (AUTHORIZED 2026-07-28) upgrades `/` narrative and opens **two approved homepage videos** below. Prior Slice 5 “stills only” lock is overridden for those IDs only.
 
 **Launch message (everything on `/` must reinforce):**
 

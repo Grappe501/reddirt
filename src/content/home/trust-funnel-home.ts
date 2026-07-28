@@ -1,32 +1,88 @@
 /**
- * Trust-funnel homepage copy — LIVE CANON shell for `/` (HYBRID upgrades via forward-plan slices).
+ * Trust-funnel homepage copy — LIVE CANON for `/` (48h launch sprint narrative).
  * Real content or clearly marked pending only. Do not invent quotes, counties, or résumé claims.
- * @see docs/website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md
- * @see docs/website/HOMEPAGE_FORWARD_PLAN.md
+ * @see docs/website/HOMEPAGE_48H_LAUNCH_SPRINT_MAP.md
  * @see docs/website/WEBSITE_CONTENT_INTEGRITY_AUDIT.md
  */
 
 export const trustFunnelHomeCopy = {
   hero: {
-    eyebrow: "Kelly Grappe · Secretary of State",
-    headline: "Government That Works for Every Arkansan",
-    philosophy: "People Over Politics",
+    brand: "Kelly Grappe",
+    office: "For Arkansas Secretary of State",
+    promise: "This office belongs to the people.",
     body:
-      "The Secretary of State's office should serve every community, business, nonprofit, county, and voter. Kelly Grappe is committed to modernizing state services, supporting all 75 county clerks, strengthening election administration, improving business filings, and making Arkansas government easier to access.",
+      "Modern elections support for every county, clearer business filings, open records, and a Capitol that serves Arkansans—not political theater.",
     ctas: [
       { label: "Meet Kelly", href: "/about", variant: "primary" },
-      { label: "Our Plan", href: "/priorities", variant: "secondary" },
-      { label: "What the Office Does", href: "/understand", variant: "secondary" },
-      { label: "Business Services", href: "/office/business", variant: "secondary" },
-      { label: "Secure Elections", href: "/office/elections", variant: "secondary" },
-      { label: "Get Involved", href: "/get-involved", variant: "secondary" },
+      { label: "Join the Campaign", href: "__volunteer__", variant: "secondary" },
     ] as const,
   },
 
-  fourPillars: {
-    title: "The Office Serves Arkansas in Four Ways",
+  governmentThatWorks: {
+    title: "Government That Works",
     intro:
-      "The Secretary of State is much more than elections. These four pillars show how the office touches daily life across Arkansas.",
+      "The Secretary of State’s office touches how Arkansans vote, file a business, find public records, and walk into their Capitol. Here is what Kelly intends to improve—and why it matters to ordinary voters.",
+    pillars: [
+      {
+        id: "elections",
+        title: "Secure, accessible elections",
+        href: "/office/elections",
+        body:
+          "Voters deserve confidence that rules are clear, applied evenly, and explained in plain language. County clerks—who run Election Day in all 75 counties—need a partner in Little Rock, not another layer of confusion.",
+        commitments: [
+          "Consistent guidance and training support for all 75 county clerks",
+          "Faster, clearer election reporting the public can follow",
+          "Voter registration and participation tools that reduce friction",
+          "Administration faithful to Arkansas law—not partisan favoritism",
+        ],
+      },
+      {
+        id: "business",
+        title: "Business and nonprofit filings that work",
+        href: "/office/business",
+        body:
+          "Owners, treasurers, and volunteer boards should not fight the filing system to stay legal. Predictable online services and real help when something breaks keep Main Street working.",
+        commitments: [
+          "Easier online filing with fewer dead ends",
+          "Customer service that answers when filings stall",
+          "Systems that support small businesses and nonprofits alike",
+          "Modern digital tools instead of paper-era bottlenecks",
+        ],
+      },
+      {
+        id: "records",
+        title: "Transparent records and digital access",
+        href: "/office/records",
+        body:
+          "Public information should be findable without a specialist. When people understand how to get records and track filings, accountability stops being a slogan.",
+        commitments: [
+          "Clearer paths to open public records",
+          "Better online access to what the office already holds",
+          "Efficient operations that respect taxpayers’ time",
+          "Accountability within the duties this office actually controls",
+        ],
+      },
+      {
+        id: "capitol",
+        title: "Capitol stewardship and public service",
+        href: "/office/capitol",
+        body:
+          "The people’s house should feel professionally managed—safe, respectful, and focused on service. Civic education and steady operations belong in the same office that keeps the lights on.",
+        commitments: [
+          "Professional stewardship of the Capitol Complex",
+          "Support for Capitol Police and operational standards",
+          "Civic education that helps Arkansans understand their government",
+          "A culture of service that puts Arkansas first",
+        ],
+      },
+    ] as const,
+  },
+
+  /** @deprecated Prefer governmentThatWorks — kept for orphan explainer reference */
+  fourPillars: {
+    title: "Government That Works",
+    intro:
+      "The Secretary of State’s office touches how Arkansans vote, file a business, find public records, and walk into their Capitol.",
     pillars: [
       {
         id: "elections",
@@ -79,6 +135,75 @@ export const trustFunnelHomeCopy = {
     ] as const,
   },
 
+  primaryMessage: {
+    eyebrow: "Watch Kelly’s Message",
+    introduction:
+      "Hear Kelly in her own words on why the Secretary of State’s office belongs to the people of Arkansas—and what “People Over Politics” means in practice for elections, filings, and everyday service.",
+  },
+
+  meetKelly: {
+    title: "Meet Kelly",
+    intro:
+      "Kelly Grappe is a community organizer and executive leader running for Arkansas Secretary of State because the office should serve every county, business, and voter—not a political club.",
+    body:
+      "She has spent years organizing neighbors around fair elections and ballot access, including grassroots petition work after LEARNS. That experience—listening across Arkansas, teaching the official process, and building volunteer capacity—shapes how she would run the office: professionally, transparently, and with equal respect for all 75 counties.",
+    values:
+      "Her north star is simple: people over politics. Modernize what is broken, defend lawful ballot access, and make state services easier for ordinary Arkansans to use.",
+    cta: "Read Kelly’s Story",
+    ctaHref: "/about",
+  },
+
+  acrossArkansas: {
+    eyebrow: "On the trail",
+    title: "Kelly Across Arkansas",
+    intro:
+      "Kelly is traveling, listening, and showing up—meeting voters, building relationships, and returning to communities across the state. Movement and geography are evidence, not decoration.",
+    videoIntroduction:
+      "From Hot Springs Village outward, this story captures campaign momentum: neighbors gathering, conversations starting, and the work of showing up again and again.",
+    cta: "See Kelly Across Arkansas",
+    ctaHref: "/about/journey",
+  },
+
+  campaignPhotos: {
+    title: "Latest Campaign Photos",
+    intro:
+      "Editorially curated trail stills—listening, canvassing, and community stops. Geography appears only when confirmed.",
+  },
+
+  endorsements: {
+    eyebrow: "Trust",
+    title: "Endorsements",
+    intro:
+      "Endorsements matter when they reflect real relationships and shared values—not logo wallpaper. Confirmed support will appear here with the exact organization name and source on record.",
+    emptyState:
+      "No endorsements are listed yet. As organizations confirm support in the campaign record, their statements will be published here with verified wording.",
+  },
+
+  newsUpdates: {
+    eyebrow: "Updates",
+    title: "Campaign news & updates",
+    intro:
+      "Announcements, trail notes, and published events—only what the campaign has actually released. Nothing invented to fill the page.",
+    emptyState:
+      "No public updates are queued right now. Follow From the Road and the events calendar as verified posts and stops are published.",
+    fromTheRoadCta: "From the Road",
+    eventsCta: "Events calendar",
+  },
+
+  finalAction: {
+    title: "The next step is yours",
+    body:
+      "You have met Kelly’s purpose, heard her message, and seen the trail. Join the work, stay connected, or dig into her story—then help neighbors do the same.",
+    ctas: {
+      join: "Join the Campaign",
+      volunteer: "Volunteer with Kelly",
+      about: "Learn more about Kelly",
+      updates: "Follow campaign updates",
+      blog: "Read the Campaign Update",
+      donate: "Donate",
+    },
+  },
+
   officeServes: {
     title: "The Secretary of State Serves Arkansas Every Day",
     intro:
@@ -103,16 +228,6 @@ export const trustFunnelHomeCopy = {
       { id: "digital", label: "Digital Government", href: "/understand", icon: "monitor" },
       { id: "civic", label: "Civic Education", href: "/understand", icon: "book" },
     ] as const,
-  },
-
-  meetKelly: {
-    title: "Meet Kelly",
-    intro:
-      "Kelly Grappe is running for Arkansas Secretary of State to put people over politics—listening across all 75 counties and preparing to serve with professionalism.",
-    body:
-      "She brings executive leadership and a record of community organizing around fair elections and ballot access. The full story—background, civic work, and why she entered this race—lives on Meet Kelly.",
-    cta: "Read Meet Kelly",
-    ctaHref: "/about",
   },
 
   /** Kept for reference / possible reuse; not rendered on the trust-funnel homepage. */
@@ -200,7 +315,6 @@ export const trustFunnelHomeCopy = {
     },
   },
 
-  /** Soft differentiator — no employer names or headcounts on the homepage. */
   executiveLeadership: {
     title: "Proven Executive Leadership",
     lead: "Government doesn't improve because of campaign slogans.",
@@ -293,9 +407,9 @@ export const trustFunnelHomeCopy = {
   },
 
   finalCta: {
-    title: "Learn the story. Defend ballot access. Join the work.",
+    title: "The next step is yours",
     body:
-      "Read Meet Kelly, walk through the ballot initiative process, and lend a hand—circulating, hosting, or staying connected on your timeline.",
+      "You have met Kelly’s purpose, heard her message, and seen the trail. Join the work, stay connected, or dig into her story.",
     ctas: {
       meetKelly: "Meet Kelly",
       directDemocracy: "Direct democracy",

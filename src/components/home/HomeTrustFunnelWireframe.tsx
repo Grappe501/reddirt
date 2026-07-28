@@ -1,29 +1,19 @@
 /**
- * Homepage section orchestrator — LIVE CANON shell for `/` (HYBRID per HOMEPAGE_FORWARD_PLAN).
- * Section order and copy live here + trust-funnel-home.ts; stills/news bands land in forward-plan slices.
- * @see docs/website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md
- * @see docs/website/HOMEPAGE_FORWARD_PLAN.md
+ * Homepage section orchestrator — LIVE CANON shell for `/`
+ * (KELLY-PUBLIC-WEBSITE-48H-LAUNCH-SPRINT-1.0 narrative order).
+ * @see docs/website/HOMEPAGE_48H_LAUNCH_SPRINT_MAP.md
  */
-import Link from "next/link";
-import { ContentContainer } from "@/components/layout/ContentContainer";
-import { getCampaignBlogUrl, getVolunteerSignupHref } from "@/config/external-campaign";
-import { siteConfig } from "@/config/site";
 import type { RoadPostCard } from "@/lib/content/content-hub-queries";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
-import { TrustFunnelDirectDemocracySection } from "@/components/home/trust-funnel/TrustFunnelDirectDemocracySection";
-import { TrustFunnelExecutiveLeadershipSection } from "@/components/home/trust-funnel/TrustFunnelExecutiveLeadershipSection";
 import { TrustFunnelFourPillarsSection } from "@/components/home/trust-funnel/TrustFunnelFourPillarsSection";
-import { TrustFunnelOfficeServesStrip } from "@/components/home/trust-funnel/TrustFunnelOfficeServesStrip";
-import { directDemocracyHubHref } from "@/config/direct-democracy-links";
-import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { TrustFunnelHero } from "@/components/home/trust-funnel/TrustFunnelHero";
 import { TrustFunnelMeetKellySection } from "@/components/home/trust-funnel/TrustFunnelMeetKellySection";
-import { TrustFunnelInviteKellySection } from "@/components/home/trust-funnel/TrustFunnelInviteKellySection";
-import { TrustFunnelListeningSection } from "@/components/home/trust-funnel/TrustFunnelListeningSection";
-import { TrustFunnelRolesSection } from "@/components/home/trust-funnel/TrustFunnelRolesSection";
-import { TrustFunnelOnTheRoad } from "@/components/home/trust-funnel/TrustFunnelOnTheRoad";
 import { TrustFunnelCampaignPhotosSection } from "@/components/home/trust-funnel/TrustFunnelCampaignPhotosSection";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TrustFunnelPrimaryMessageSection } from "@/components/home/trust-funnel/TrustFunnelPrimaryMessageSection";
+import { TrustFunnelKellyAcrossArkansasSection } from "@/components/home/trust-funnel/TrustFunnelKellyAcrossArkansasSection";
+import { TrustFunnelEndorsementsSection } from "@/components/home/trust-funnel/TrustFunnelEndorsementsSection";
+import { TrustFunnelNewsUpdatesSection } from "@/components/home/trust-funnel/TrustFunnelNewsUpdatesSection";
+import { TrustFunnelFinalActionSection } from "@/components/home/trust-funnel/TrustFunnelFinalActionSection";
 import { getHomepageMeetKellyPhoto } from "@/content/media/homepage-campaign-photos";
 
 export type HomeTrustFunnelWireframeProps = {
@@ -31,10 +21,7 @@ export type HomeTrustFunnelWireframeProps = {
   upcomingPublicEvents: PublicCampaignEvent[];
 };
 
-const final = trustFunnelHomeCopy.finalCta;
-
 export function HomeTrustFunnelWireframe({ roadPreviewPosts, upcomingPublicEvents }: HomeTrustFunnelWireframeProps) {
-  const volunteerHref = getVolunteerSignupHref();
   const meetKellyPhoto = getHomepageMeetKellyPhoto();
 
   return (
@@ -43,81 +30,22 @@ export function HomeTrustFunnelWireframe({ roadPreviewPosts, upcomingPublicEvent
 
       <TrustFunnelFourPillarsSection />
 
-      <TrustFunnelOfficeServesStrip />
-
-      <TrustFunnelExecutiveLeadershipSection />
-
-      <TrustFunnelDirectDemocracySection />
+      <TrustFunnelPrimaryMessageSection />
 
       <TrustFunnelMeetKellySection photo={meetKellyPhoto} />
 
+      <TrustFunnelKellyAcrossArkansasSection />
+
       <TrustFunnelCampaignPhotosSection />
 
-      <TrustFunnelInviteKellySection />
+      <TrustFunnelEndorsementsSection />
 
-      <section id="get-involved">
-        <TrustFunnelRolesSection
-          volunteerHref={volunteerHref}
-          donateHref={siteConfig.donateHref}
-          stayHref="/get-involved#join"
-          blogUrl={getCampaignBlogUrl()}
-        />
-      </section>
+      <TrustFunnelNewsUpdatesSection
+        roadPreviewPosts={roadPreviewPosts}
+        upcomingPublicEvents={upcomingPublicEvents}
+      />
 
-      <TrustFunnelListeningSection />
-
-      {/* Trust band */}
-      <section className="border-t border-kelly-gold/25 bg-kelly-navy py-10 text-white" aria-label="Campaign trust principles">
-        <ContentContainer>
-          <ScrollReveal yOffset={6}>
-            <ul className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-center font-body text-sm font-semibold text-white/95">
-              {trustFunnelHomeCopy.trustBand.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-          </ScrollReveal>
-        </ContentContainer>
-      </section>
-
-      <TrustFunnelOnTheRoad roadPreviewPosts={roadPreviewPosts} upcomingPublicEvents={upcomingPublicEvents} />
-
-      {/* Final CTA */}
-      <section className="border-t border-kelly-ink/10 bg-kelly-wash/80 py-section-y lg:py-section-y-lg" aria-labelledby="final-cta-heading">
-        <ContentContainer>
-          <ScrollReveal className="mx-auto max-w-2xl text-center">
-            <h2 id="final-cta-heading" className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">
-              {final.title}
-            </h2>
-            <p className="mt-4 font-body text-lg text-kelly-slate">{final.body}</p>
-            <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
-              <Link
-                href="/about"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-navy/20 bg-white px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:border-kelly-gold hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
-              >
-                {final.ctas.meetKelly}
-              </Link>
-              <Link
-                href={directDemocracyHubHref}
-                className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-gold/50 bg-kelly-gold/15 px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:bg-kelly-gold/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
-              >
-                {final.ctas.directDemocracy}
-              </Link>
-              <Link
-                href="/events/request"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-navy px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition hover:bg-kelly-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
-              >
-                {final.ctas.inviteKelly}
-              </Link>
-              <Link
-                href="/get-involved"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-gold px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:bg-kelly-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
-              >
-                {final.ctas.volunteer}
-              </Link>
-            </div>
-          </ScrollReveal>
-        </ContentContainer>
-      </section>
+      <TrustFunnelFinalActionSection />
     </div>
   );
 }

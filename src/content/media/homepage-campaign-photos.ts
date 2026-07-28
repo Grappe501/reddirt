@@ -19,6 +19,18 @@ export const HOMEPAGE_CAMPAIGN_PHOTO_IDS = [
   "elks-lodge-breakfast-table-20260228",
 ] as const;
 
+/**
+ * Stills paired with the Kelly Across Arkansas momentum video.
+ * Prefer confirmed geography; include labor trail still with Unknown geo only when labeled honestly.
+ */
+export const HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS = [
+  "mena-polk-meet-greet-20260411",
+  "war-memorial-stadium-concourse-20260320",
+  "toad-suck-daze-toad-race-20260501",
+  "johnson-county-peach-festival-parade-20260718",
+  "watermelon-festival-booth-service-20260725",
+] as const;
+
 export type HomepageCampaignPhotoId = (typeof HOMEPAGE_CAMPAIGN_PHOTO_IDS)[number];
 
 /** Meet Kelly preview still — Mena/Polk meet-and-greet improves the concise bio band. */
@@ -27,10 +39,10 @@ export const HOMEPAGE_MEET_KELLY_PHOTO_ID: HomepageCampaignPhotoId = "mena-polk-
 /** No curated still meets HERO quality for replacing the trust-funnel hero media. */
 export const HOMEPAGE_HERO_PHOTO_ID: HomepageCampaignPhotoId | null = null;
 
-export function listHomepageCampaignPhotos(): CampaignPhotoRecord[] {
+function selectHomepagePhotos(ids: readonly string[]): CampaignPhotoRecord[] {
   const byId = new Map(listCampaignPhotos().map((p) => [p.id, p]));
   const out: CampaignPhotoRecord[] = [];
-  for (const id of HOMEPAGE_CAMPAIGN_PHOTO_IDS) {
+  for (const id of ids) {
     const photo = byId.get(id);
     if (!photo) continue;
     if (photo.heroLevel !== "FEATURE" && photo.heroLevel !== "HERO") continue;
@@ -38,6 +50,14 @@ export function listHomepageCampaignPhotos(): CampaignPhotoRecord[] {
     out.push(photo);
   }
   return out;
+}
+
+export function listHomepageCampaignPhotos(): CampaignPhotoRecord[] {
+  return selectHomepagePhotos(HOMEPAGE_CAMPAIGN_PHOTO_IDS);
+}
+
+export function listHomepageAcrossArkansasPhotos(): CampaignPhotoRecord[] {
+  return selectHomepagePhotos(HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS);
 }
 
 export function getHomepageMeetKellyPhoto(): CampaignPhotoRecord | null {

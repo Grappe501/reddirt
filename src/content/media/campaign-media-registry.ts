@@ -313,6 +313,11 @@ export function listPublishedCampaignMedia(): CampaignMediaRecord[] {
   return listCampaignMedia().filter(isPublicMedia);
 }
 
+export function getCampaignMediaById(id: string): CampaignMediaRecord | null {
+  const m = CAMPAIGN_MEDIA_REGISTRY.find((x) => x.id === id);
+  return m ? withOverlay(m) : null;
+}
+
 export function getCampaignMediaBySlug(slug: string): CampaignMediaRecord | null {
   const m = CAMPAIGN_MEDIA_REGISTRY.find((x) => x.slug === slug);
   return m ? withOverlay(m) : null;

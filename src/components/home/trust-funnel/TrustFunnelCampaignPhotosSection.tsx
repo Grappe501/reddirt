@@ -22,14 +22,12 @@ export function TrustFunnelCampaignPhotosSection() {
     >
       <ContentContainer>
         <ScrollReveal className="mx-auto max-w-3xl text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-gold">
-            Kelly Across Arkansas
-          </p>
-          <h2 id="campaign-photos-heading" className="mt-3 font-heading text-2xl font-bold tracking-tight text-kelly-ink md:text-3xl">
+          <h2 id="campaign-photos-heading" className="font-heading text-2xl font-bold tracking-tight text-kelly-ink md:text-3xl">
             Latest Campaign Photos
           </h2>
           <p className="mt-4 font-body text-kelly-slate">
-            Real trail moments — listening, canvassing, and community stops across Arkansas. Geography is shown only when confirmed.
+            Editorially curated trail stills — listening, canvassing, and community stops. Geography is shown only when
+            confirmed.
           </p>
         </ScrollReveal>
 

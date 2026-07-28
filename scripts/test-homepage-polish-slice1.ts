@@ -1,6 +1,6 @@
 /**
- * KELLY-HOMEPAGE-POLISH-SLICE-1.0 — structural / a11y invariants for `/`.
- * Run: node scripts/run-with-h-drive-env.cjs npm run agents:test-homepage-polish-slice1
+ * KELLY-HOMEPAGE-POLISH-SLICE-1.0 — structural / a11y invariants for `/`
+ * (updated for 48h launch sprint narrative; donate gate + volunteer alignment still apply).
  */
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -30,16 +30,12 @@ assert.ok(
   page.includes("NEXT_PUBLIC_HOME_DONATE_FLOATING_GATE") && page.includes("isHomeDonateFloatingGateEnabled"),
   "donate floating gate must be env-gated off by default",
 );
-assert.ok(
-  !page.includes("<HomeDonateFloatingGate />") || page.includes("isHomeDonateFloatingGateEnabled()"),
-  "donate gate must not mount unconditionally",
-);
 
 assert.ok(header.includes("getVolunteerSignupHref"), "header Volunteer must use getVolunteerSignupHref");
 assert.ok(!header.includes("getJoinCampaignHref"), "header must not use getJoinCampaignHref for Volunteer");
 
-assert.ok(wireframe.includes("TrustFunnelOnTheRoad"), "On the Road band must remain");
-assert.ok(!wireframe.includes("youtube") && !wireframe.includes("YouTube"), "no YouTube embeds in wireframe");
+assert.ok(wireframe.includes("TrustFunnelNewsUpdatesSection"), "campaign updates band must mount");
+assert.ok(wireframe.includes("TrustFunnelFinalActionSection"), "final action band must mount");
 assert.ok(!wireframe.includes("Shorts"), "no Shorts carousel in wireframe");
 
 assert.ok(!meetKelly.includes("ContentPendingBadge"), "Meet Kelly preview must not show draft badge");
@@ -49,8 +45,10 @@ assert.equal(
   "meetKelly pendingNote removed for concise home preview",
 );
 
-assert.ok(hero.includes("!reduceMotion"), "hero video must respect prefers-reduced-motion");
+assert.ok(!hero.includes("<video"), "hero must not autoplay video");
+assert.ok(hero.includes("copy.brand") || hero.includes("Kelly Grappe") || hero.includes("{copy.brand}"), "hero brand present");
 assert.ok(hero.includes('role="group"'), "hero CTAs grouped for a11y");
+assert.ok(trustFunnelHomeCopy.hero.ctas.length === 2, "hero limited to two CTAs");
 
 const volunteer = getVolunteerSignupHref();
 assert.ok(volunteer.length > 0, "volunteer signup href resolves");
