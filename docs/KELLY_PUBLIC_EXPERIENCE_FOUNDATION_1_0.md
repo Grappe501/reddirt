@@ -169,7 +169,7 @@ See git commit for authoritative list. Core additions:
 
 **Track C:** Remains **CLOSED** until Netlify production redeploy + public form smoke against PascalCase `"Submission"` (see Phase 1B/1C reports). Local Submission/User parity was reconciled in Phase 1C.
 
-**Phase 1C: COMPLETE** · **Track C: CLOSED** (awaiting production deploy + live smoke). Schema parity `6344d902`. Eleven registry assets through Short `52egsV4WWgc` (`CampaignShortCard` · 9:16). Taxonomy + Shorts collections in `docs/CAMPAIGN_MEDIA_REGISTRY.md`. Homepage canon locked: `eKVz5pFJxtk`, `aO712RsR0pQ`.
+**Phase 1C: COMPLETE** · **Track C: CLOSED**. Schema parity `6344d902`. Twelve registry assets through Short `X6M_SMmbYQ4`. Shorts: `52egsV4WWgc`, `X6M_SMmbYQ4` → provisional 60 Seconds with Kelly. Admin Content Hub doctrine in `docs/CAMPAIGN_MEDIA_REGISTRY.md` §12. Homepage canon locked: `eKVz5pFJxtk`, `aO712RsR0pQ`.
 
 ### Track C entry gates (partial)
 

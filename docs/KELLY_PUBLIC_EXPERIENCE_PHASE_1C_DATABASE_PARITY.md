@@ -315,6 +315,7 @@ No homepage personality implementation authorized.
 | **Video 9 (`72oKVAwfzZw`)** | Campaign video (Imported) | Collections pending; Campaign Media Center browse by topic/format/location/date |
 | **Video 10 (`3iWSa5Gwmdc`)** | Campaign video (Imported) | Story role pending; Campaign Story Map journey placement TBD |
 | **Video 11 (`52egsV4WWgc`)** | **Campaign Short** (9:16) | Imported · `CampaignShortCard` · Shorts collections pending tagging |
+| **Video 12 (`X6M_SMmbYQ4`)** | **Campaign Short** (9:16) | Imported · `CampaignShortCard` · 60 Seconds with Kelly carousel candidate |
 
 **Classification doctrine (every speech):** **message · audience · emotional function · page · exact slot** — no random placements. Also capture Story Engine links: photos · events · counties · issues · blogs · news · actions.
 
@@ -347,6 +348,7 @@ https://www.youtube-nocookie.com/embed/m7Mlk_bUbq4
 https://www.youtube-nocookie.com/embed/72oKVAwfzZw
 https://www.youtube-nocookie.com/embed/3iWSa5Gwmdc
 https://www.youtube-nocookie.com/embed/52egsV4WWgc
+https://www.youtube-nocookie.com/embed/X6M_SMmbYQ4
 ```
 
 Watch URLs (source of truth for IDs):
@@ -362,6 +364,7 @@ Watch URLs (source of truth for IDs):
 - Campaign video Imported (Video 9): https://youtu.be/72oKVAwfzZw
 - Campaign video Imported (Video 10): https://youtu.be/3iWSa5Gwmdc
 - Campaign Short (Video 11): https://youtu.be/52egsV4WWgc
+- Campaign Short (Video 12): https://youtu.be/X6M_SMmbYQ4
 
 #### Record A — message / office vision
 
@@ -728,4 +731,29 @@ Thumbnail: Custom poster preferred
 Duration: Short-form
 Shorts collections (candidates until tagged):
   60 Seconds with Kelly · On the Campaign Trail · Quick Answers
+```
+
+### 15.15 Record L — Campaign Short (Video 12)
+
+**Asset type:** Campaign Short (YouTube Short / vertical 9:16)  
+**Display:** `CampaignShortCard`  
+**Review status:** **Imported** · publication approved after content review  
+**Collection:** Campaign Shorts / provisional **60 Seconds with Kelly** carousel member (finalize after tagging)  
+**Do not** displace locked homepage landscape canon
+
+```text
+Asset Type: Campaign Short
+Provider: YouTube
+Format: Vertical (9:16)
+Video ID: X6M_SMmbYQ4
+Privacy embed: https://www.youtube-nocookie.com/embed/X6M_SMmbYQ4
+Status: Imported
+Display Component: CampaignShortCard
+Transcript: Pending
+Thumbnail: Campaign custom poster preferred
+Duration: Short-form
+Publication: Approved after content review
+Candidate placements after tagging:
+  Homepage — 60 Seconds with Kelly carousel
+  Meet Kelly · Get Involved · Issues · Kelly Speaks Shorts · Campaign Journey
 ```

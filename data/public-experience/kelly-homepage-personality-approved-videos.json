@@ -817,6 +817,80 @@
         "aspectRatio",
         "reviewStatus"
       ]
+    },
+    {
+      "id": "campaign-short-x6m-smmbyq4",
+      "provider": "YouTube",
+      "videoId": "X6M_SMmbYQ4",
+      "watchUrl": "https://youtu.be/X6M_SMmbYQ4",
+      "privacyEmbedUrl": "https://www.youtube-nocookie.com/embed/X6M_SMmbYQ4",
+      "title": "Pending full title metadata",
+      "displayTitle": "Campaign Short (Imported)",
+      "assetType": "campaign_short",
+      "mediaType": "Campaign Short",
+      "category": "Campaign Short",
+      "format": "vertical_9_16",
+      "aspectRatio": "9:16",
+      "durationClass": "short-form",
+      "status": "imported",
+      "reviewStatus": "Imported",
+      "displayStyle": "CampaignShortCard",
+      "displayComponent": "CampaignShortCard",
+      "autoplay": false,
+      "captions": "enabled_when_available",
+      "transcriptStatus": "pending",
+      "posterPreference": "campaign_custom_poster",
+      "publication": "approved_after_content_review",
+      "shortsCollections": ["60-seconds-with-kelly"],
+      "placementCandidates": [
+        "Homepage — 60 Seconds with Kelly carousel",
+        "Meet Kelly",
+        "Get Involved",
+        "Issues (if policy-specific)",
+        "Kelly Speaks — Shorts section",
+        "Campaign Journey"
+      ],
+      "homepageEligible": false,
+      "homepageEligibility": "Review Required",
+      "homepageNote": "Shorts must not replace locked landscape canon eKVz5pFJxtk / aO712RsR0pQ",
+      "featured": false,
+      "primarySlot": null,
+      "storyEngineLinks": {
+        "transcript": null,
+        "summary": null,
+        "pullQuote": null,
+        "topics": [],
+        "counties": [],
+        "event": null,
+        "relatedPhotos": [],
+        "relatedBlogPosts": [],
+        "relatedPolicyPages": [],
+        "relatedEvents": [],
+        "relatedMedia": [],
+        "callsToAction": ["Learn More"]
+      },
+      "publicApproval": "operator_controlled",
+      "metadataSupported": [
+        "displayTitle",
+        "youtubeId",
+        "transcript",
+        "summary",
+        "pullQuote",
+        "topicTags",
+        "counties",
+        "event",
+        "audience",
+        "storyRole",
+        "homepageEligibility",
+        "featuredStatus",
+        "relatedPhotos",
+        "relatedBlogPosts",
+        "relatedPolicyPages",
+        "relatedEvents",
+        "relatedMedia",
+        "suggestedCtas",
+        "reviewStatus"
+      ]
     }
   ],
   "storyRoles": [
@@ -877,7 +951,8 @@
     "m7Mlk_bUbq4",
     "72oKVAwfzZw",
     "3iWSa5Gwmdc",
-    "52egsV4WWgc"
+    "52egsV4WWgc",
+    "X6M_SMmbYQ4"
   ],
   "mediaTaxonomy": [
     { "type": "Campaign Speech", "purpose": "Full speeches and major addresses", "displayComponent": "CampaignVideoCard" },
@@ -885,15 +960,39 @@
     { "type": "Interview", "purpose": "Media appearances and conversations", "displayComponent": "CampaignVideoCard" },
     { "type": "Campaign Story", "purpose": "Community visits and milestone events", "displayComponent": "CampaignVideoCard" },
     { "type": "Campaign Short", "purpose": "Vertical, quick-hit videos (9:16)", "displayComponent": "CampaignShortCard" },
-    { "type": "Testimonial", "purpose": "Supporters and volunteers", "displayComponent": "CampaignShortCard", "status": "future" },
-    { "type": "Issue Explainer", "purpose": "Short videos focused on a single topic", "displayComponent": "CampaignShortCard", "status": "future" }
+    { "type": "Town Hall", "purpose": "Community forums", "displayComponent": "CampaignVideoCard" },
+    { "type": "Community Event", "purpose": "Event recordings / highlights", "displayComponent": "CampaignVideoCard" },
+    { "type": "Leadership Address", "purpose": "Values / leadership style speeches", "displayComponent": "CampaignVideoCard" },
+    { "type": "Issue Explainer", "purpose": "Short videos focused on a single topic", "displayComponent": "CampaignShortCard", "status": "future" },
+    { "type": "Volunteer Testimonial", "purpose": "Supporters and volunteers", "displayComponent": "CampaignShortCard", "status": "future" },
+    { "type": "Press Appearance", "purpose": "Press / media hits", "displayComponent": "CampaignVideoCard", "status": "future" }
   ],
   "shortsCollections": [
     {
       "id": "60-seconds-with-kelly",
       "title": "60 Seconds with Kelly",
-      "purpose": "Short focused clips answering common questions",
-      "provisionalVideoIds": ["52egsV4WWgc"]
+      "purpose": "Short focused clips answering common questions; horizontal carousel of vertical cards",
+      "experience": {
+        "layout": "horizontal_scroll_vertical_cards",
+        "perCard": [
+          "customThumbnail",
+          "oneToTwoSentenceDescription",
+          "topicTags",
+          "relatedPageLinks",
+          "transcript",
+          "learnMore"
+        ],
+        "exampleTitles": [
+          "Why I'm Running",
+          "Government That Works for Every Arkansan",
+          "Secure Elections",
+          "Helping Small Businesses",
+          "Transparency",
+          "County Partnerships",
+          "Civic Education"
+        ]
+      },
+      "provisionalVideoIds": ["52egsV4WWgc", "X6M_SMmbYQ4"]
     },
     {
       "id": "on-the-campaign-trail",
@@ -908,6 +1007,18 @@
       "provisionalVideoIds": []
     }
   ],
+  "campaignContentHub": {
+    "status": "doctrine_only_pre_launch",
+    "adminCapabilities": [
+      "Import YouTube URL or ID",
+      "Auto-detect full video vs Short",
+      "Attach transcripts and summaries",
+      "Tag topics, counties, related issues",
+      "Mark approved page placements",
+      "Select featured videos for homepage or issue pages",
+      "Associate photos, events, blogs, and related speeches"
+    ]
+  },
   "requiredDisplayComponents": ["CampaignVideoCard", "CampaignShortCard"],
   "noRawIframes": true,
   "requiredDisplayComponent": "CampaignVideoCard",
@@ -934,7 +1045,7 @@
   "firstHomepagePersonalitySliceWhenTrackCOpens": [
     "LOCKED: place This Office Belongs to the People! (eKVz5pFJxtk) at home.message.primary after Four Pillars / Leadership",
     "LOCKED: place Creating the Ripples in Hot Springs Village (aO712RsR0pQ) at home.personality.primary",
-    "Optional later: 60 Seconds with Kelly Shorts carousel — CampaignShortCard only; never replaces locked landscape canon",
+    "Optional later: 60 Seconds with Kelly Shorts carousel (52egsV4WWgc, X6M_SMmbYQ4 provisional) — CampaignShortCard only; never replaces locked landscape canon",
     "Curate a small photo set around locked videos only"
   ],
   "campaignMediaRegistryDoc": "docs/CAMPAIGN_MEDIA_REGISTRY.md",

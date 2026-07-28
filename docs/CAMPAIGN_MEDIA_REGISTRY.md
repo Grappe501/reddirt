@@ -132,9 +132,19 @@ Treat **Shorts** as a distinct asset type from full speeches. Purpose: mobile-fi
 | **On the Campaign Trail** | County visits, events, volunteers, BTS, rally highlights | Community / trail moments |
 | **Quick Answers** | Concise FAQ responses | Election security · Business filings · Notaries · Civic education · County partnerships |
 
+### 60 Seconds with Kelly experience (target UI)
+
+Modern, mobile-first horizontal scroll of vertical cards. Each Short shows:
+
+- Custom thumbnail · 1–2 sentence description · topic tags  
+- Related page links · transcript · **Learn More**  
+- Example titles: Why I'm Running · Government That Works for Every Arkansan · Secure Elections · Helping Small Businesses · Transparency · County Partnerships · Civic Education  
+
+Provisional Short members (Imported — tag before shipping): `52egsV4WWgc`, `X6M_SMmbYQ4`
+
 ### Placement fits
 
-Homepage (“60 Seconds with Kelly”) · Meet Kelly · FAQ · Volunteer · County pages · Campaign Journey — only after **Placement Approved** / homepage rules.
+Homepage (“60 Seconds with Kelly”) · Meet Kelly · FAQ · Volunteer / Get Involved · County pages · Campaign Journey · Kelly Speaks Shorts section — only after **Placement Approved** / homepage rules.
 
 ### Component
 
@@ -160,10 +170,38 @@ Do **not** force Shorts into landscape `CampaignVideoCard` framing.
 | **Interview** | Media appearances and conversations |
 | **Campaign Story** | Community visits and milestone events |
 | **Campaign Short** | Vertical, quick-hit videos |
-| **Testimonial** *(future)* | Supporters and volunteers |
+| **Town Hall** | Community forums |
+| **Community Event** | Event recordings / highlights |
+| **Leadership Address** | Values / leadership style speeches |
 | **Issue Explainer** *(future)* | Short videos focused on a single topic |
+| **Volunteer Testimonial** *(future)* | Supporters and volunteers |
+| **Press Appearance** *(future)* | Press / media hits |
 
 Presentation adapts to type: immersive for speeches/forums; fast intro for Shorts.
+
+### Registry fields (every asset)
+
+Display title · YouTube ID · transcript · summary · pull quote · topic tags · counties · event · audience · story role · homepage eligibility · featured status · related photos · related blog posts · related policy pages · related events · related media · suggested CTAs · review/publication status.
+
+---
+
+## 12. Campaign Content Hub (admin — pre-launch recommendation)
+
+Before / as launch media volume grows, build a dedicated **Campaign Content Hub** in RedDirt admin so editors do not hand-embed URLs page-by-page.
+
+Operator flow:
+
+1. Import YouTube URL or ID  
+2. Auto-detect full video vs Short (aspect / Shorts signal)  
+3. Attach transcript + summary  
+4. Tag topics, counties, related issues  
+5. Mark approved page placements  
+6. Select featured for homepage or issue pages  
+7. Associate photos, events, blogs, related speeches  
+
+Public pages then assemble dynamically from the curated registry — keeping the site fresh as speeches, interviews, and Shorts arrive during the campaign.
+
+**Not built in this pass.** Doctrine only until Track C / a dedicated Content Hub slice opens. Track C remains CLOSED pending production smoke.
 
 With ten+ videos identified, each record should capture **where it fits in the visitor journey**, not only library metadata.
 
