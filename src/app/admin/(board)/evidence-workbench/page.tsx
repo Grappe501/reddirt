@@ -76,7 +76,12 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         <code className="rounded bg-kelly-text/5 px-1">http://127.0.0.1</code> (writes blocked on remote hosts).
         Unknown stays Unknown. Photos/Speeches: <strong>Suggest with AI</strong> (uses{" "}
         <code className="rounded bg-kelly-text/5 px-1">OPENAI_API_KEY</code>), then Save, then{" "}
-        <strong>Build outgoing metadata packet</strong> for intelligence reuse.
+        <strong>Build outgoing metadata packet</strong> for intelligence reuse. Saving photos rebuilds{" "}
+        <Link href="/campaign-photos" className="font-semibold text-kelly-blue underline">
+          county albums
+        </Link>{" "}
+        (county → event folders under <code className="rounded bg-kelly-text/5 px-1">public/media/county-albums/</code>
+        ).
       </p>
 
       <nav className="mt-6 flex flex-wrap gap-2" aria-label="Evidence workbench tabs">

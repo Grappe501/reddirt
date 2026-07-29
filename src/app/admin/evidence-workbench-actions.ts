@@ -110,6 +110,13 @@ export async function savePhotoEvidenceAction(
   store.photos[photoId] = overlay;
   savePhotoEvidenceStore(store);
 
+  try {
+    const { refreshCountyAlbumIndex } = await import("@/lib/campaign-media/refresh-county-albums");
+    refreshCountyAlbumIndex({ materializeFolders: true });
+  } catch {
+    // Album index is best-effort; do not fail the save.
+  }
+
   if (overlay.county !== "Unknown" && overlay.city !== "Unknown") {
     const { rememberConfirmedEvidenceExample } = await import("@/lib/campaign-media/evidence-ai-memory");
     const { CAMPAIGN_PHOTO_REGISTRY } = await import("@/content/media/campaign-photo-registry");
@@ -352,6 +359,26 @@ export async function buildSpeechMetadataPacketAction(
     message: `Wrote intelligence packet ${result.packet.packetId} → ${result.relativePath}`,
     relativePath: result.relativePath,
   };
+}
+
+export async function refreshCountyAlbumsAction(
+  materializeFolders = true,
+): Promise<{ ok: boolean; message: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  try {
+    const { refreshCountyAlbumIndex } = await import("@/lib/campaign-media/refresh-county-albums");
+    const result = refreshCountyAlbumIndex({ materializeFolders });
+    revalidatePath("/campaign-photos");
+    revalidatePath("/admin/evidence-workbench");
+    return {
+      ok: true,
+      message: `County albums refreshed: ${result.countyCount} counties, ${result.photoCount} photos` +
+        (materializeFolders ? `, ${result.foldersWritten} files copied into public/media/county-albums/` : ""),
+    };
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : "Album refresh failed." };
+  }
 }
 
 export type { CalendarPresenceStatus };

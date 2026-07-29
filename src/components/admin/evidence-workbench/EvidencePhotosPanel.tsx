@@ -329,6 +329,20 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
           >
             Build outgoing metadata packet
           </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={() => {
+              start(async () => {
+                const { refreshCountyAlbumsAction } = await import("@/app/admin/evidence-workbench-actions");
+                const res = await refreshCountyAlbumsAction(true);
+                setMessage(res.message);
+              });
+            }}
+            className="rounded-md border border-kelly-text/20 px-4 py-2 font-body text-sm font-semibold disabled:opacity-50"
+          >
+            Rebuild county folders
+          </button>
         </div>
         {message ? <p className="font-body text-sm text-kelly-slate whitespace-pre-wrap">{message}</p> : null}
       </div>

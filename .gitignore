@@ -152,6 +152,10 @@ data/legislature/audio/**
 data/integrations/youtube-oauth.sealed.json
 data/campaign-media/transcript-pipeline/**
 !data/campaign-media/transcript-pipeline/.gitkeep
+
+# Materialized county album file copies (rebuild via Evidence Workbench / scripts/refresh-county-albums.ts)
+public/media/county-albums/**
+!public/media/county-albums/.gitkeep
 *.mp3
 !public/**/*.mp3
 

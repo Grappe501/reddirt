@@ -85,6 +85,12 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 2. **Save** — stores overlay + feeds confirmed geography into `evidence-ai-memory.json` for future suggestions  
 3. **Build outgoing metadata packet** — extensive JSON under `data/campaign-media/intelligence-packets/` (press/social/journey captions, entities, do-not-claim). Best-effort attach to `OwnedMediaAsset.enrichmentMetadata` when a filename match exists.
 
+**County albums (public delivery):**
+
+- Confirmed county photos group into **county → event** albums on `/campaign-photos` and `/campaign-photos/{county-slug}`  
+- Saving photo evidence refreshes `data/campaign-media/county-album-index.json` and copies stills into `public/media/county-albums/{county}/{event}/`  
+- Public CTAs use album URLs — not `/counties/...` command pages  
+
 ---
 
 ## Measure evidence density (not page count)

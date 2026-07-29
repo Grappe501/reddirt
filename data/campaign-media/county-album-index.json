@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-29T18:36:06.462Z",
+  "purpose": "County → event photo albums from confirmed Evidence Workbench / registry geography. Unknown counties omitted.",
+  "counties": [
+    {
+      "countySlug": "faulkner-county",
+      "countyDisplayName": "Faulkner County",
+      "photoCount": 3,
+      "eventCount": 1,
+      "coverPhotoId": "regnat-populus-tent-conversation-20260501",
+      "events": [
+        {
+          "eventSlug": "toad-suck-daze",
+          "eventName": "Toad Suck Daze",
+          "city": "Conway",
+          "photoIds": [
+            "regnat-populus-tent-conversation-20260501",
+            "toad-suck-daze-toad-race-20260501",
+            "toad-suck-daze-pafford-ems-20260501"
+          ],
+          "folderRel": "public/media/county-albums/faulkner-county/toad-suck-daze"
+        }
+      ]
+    },
+    {
+      "countySlug": "pulaski-county",
+      "countyDisplayName": "Pulaski County",
+      "photoCount": 2,
+      "eventCount": 1,
+      "coverPhotoId": "war-memorial-stadium-community-laugh-20260320",
+      "events": [
+        {
+          "eventSlug": "war-memorial-stadium-community-celebration",
+          "eventName": "War Memorial Stadium community celebration",
+          "city": "Little Rock",
+          "photoIds": [
+            "war-memorial-stadium-community-laugh-20260320",
+            "war-memorial-stadium-concourse-20260320"
+          ],
+          "folderRel": "public/media/county-albums/pulaski-county/war-memorial-stadium-community-celebration"
+        }
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyDisplayName": "Sharp County",
+      "photoCount": 2,
+      "eventCount": 2,
+      "coverPhotoId": "watermelon-festival-booth-service-20260725",
+      "events": [
+        {
+          "eventSlug": "cave-city-watermelon-festival-booth",
+          "eventName": "Cave City Watermelon Festival (booth)",
+          "city": "Cave City",
+          "photoIds": [
+            "watermelon-festival-booth-service-20260725"
+          ],
+          "folderRel": "public/media/county-albums/sharp-county/cave-city-watermelon-festival-booth"
+        },
+        {
+          "eventSlug": "cave-city-watermelon-festival-parade",
+          "eventName": "Cave City Watermelon Festival parade",
+          "city": "Cave City",
+          "photoIds": [
+            "cave-city-watermelon-festival-parade-20260725"
+          ],
+          "folderRel": "public/media/county-albums/sharp-county/cave-city-watermelon-festival-parade"
+        }
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyDisplayName": "Johnson County",
+      "photoCount": 1,
+      "eventCount": 1,
+      "coverPhotoId": "johnson-county-peach-festival-parade-20260718",
+      "events": [
+        {
+          "eventSlug": "85th-annual-johnson-county-peach-festival",
+          "eventName": "85th Annual Johnson County Peach Festival",
+          "city": "Clarksville",
+          "photoIds": [
+            "johnson-county-peach-festival-parade-20260718"
+          ],
+          "folderRel": "public/media/county-albums/johnson-county/85th-annual-johnson-county-peach-festival"
+        }
+      ]
+    },
+    {
+      "countySlug": "polk-county",
+      "countyDisplayName": "Polk County",
+      "photoCount": 1,
+      "eventCount": 1,
+      "coverPhotoId": "mena-polk-meet-greet-20260411",
+      "events": [
+        {
+          "eventSlug": "candidate-meet-greet-in-the-park",
+          "eventName": "Candidate Meet & Greet in the Park",
+          "city": "Mena",
+          "photoIds": [
+            "mena-polk-meet-greet-20260411"
+          ],
+          "folderRel": "public/media/county-albums/polk-county/candidate-meet-greet-in-the-park"
+        }
+      ]
+    }
+  ]
+}

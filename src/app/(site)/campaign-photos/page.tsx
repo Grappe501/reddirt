@@ -5,87 +5,87 @@ import { PageHero } from "@/components/blocks/PageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
-import {
-  homepagePhotoCountyHref,
-  homepagePhotoObjectPositionClass,
-  listHomepageCampaignPhotos,
-} from "@/content/media/homepage-campaign-photos";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { homepagePhotoObjectPositionClass } from "@/content/media/homepage-campaign-photo-display";
+import { buildCountyAlbums } from "@/lib/campaign-media/county-albums";
 import { pageMeta } from "@/lib/seo/metadata";
-import { trustFunnelCardClass } from "@/components/home/trust-funnel/trustFunnelChrome";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMeta({
-  title: "Campaign Photos",
+  title: "Campaign Photos — County Albums",
   description:
-    "Editorially curated campaign trail photographs for Kelly Grappe — confirmed locations only when known.",
+    "County-by-county campaign trail albums for Kelly Grappe — confirmed places only, grouped by stop.",
   path: "/campaign-photos",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
 export default function CampaignPhotosPage() {
-  const photos = listHomepageCampaignPhotos();
+  const albums = buildCountyAlbums();
 
   return (
     <>
       <PageHero
-        eyebrow="Campaign moments"
-        title="Campaign Photos"
-        subtitle="Curated trail stills—listening, speaking, working, and community stops. Not an unfiltered archive."
+        eyebrow="Across Arkansas"
+        title="County albums"
+        subtitle="Open a county. Step through the stops. Every still is confirmed geography — not a dump of every file."
       >
         <Button href="/about/journey" variant="primary">
-          See Kelly Across Arkansas
+          See the journey
         </Button>
-        <Button href="/about" variant="outline">
-          Read About Kelly’s Experience
+        <Button href="/from-the-road" variant="outline">
+          From the road
         </Button>
       </PageHero>
 
-      <FullBleedSection padY>
+      <FullBleedSection padY className="bg-gradient-to-b from-white via-kelly-fog/50 to-kelly-wash/30">
         <ContentContainer>
-          {photos.length === 0 ? (
+          {albums.length === 0 ? (
             <p className="mx-auto max-w-xl text-center font-body text-kelly-slate">
-              Approved campaign photographs will appear here as they are curated.
+              County albums appear here as photos are confirmed with real counties in the Evidence Workbench.
             </p>
           ) : (
-            <ul className="grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {photos.map((photo) => {
-                const href = homepagePhotoCountyHref(photo);
-                const placeBits = [
-                  photo.campaign.city !== "Unknown" ? photo.campaign.city : null,
-                  photo.campaign.county !== "Unknown" ? `${photo.campaign.county} County` : null,
-                ].filter(Boolean);
-                return (
-                  <li key={photo.id} className={cn(trustFunnelCardClass, "flex flex-col")}>
-                    <div className="relative aspect-[4/5] bg-kelly-fog">
-                      <Image
-                        src={photo.src}
-                        alt={photo.accessibility.altText}
-                        width={photo.basic.width ?? 768}
-                        height={photo.basic.height ?? 1024}
-                        className={cn("h-full w-full object-cover", homepagePhotoObjectPositionClass(photo))}
-                        sizes="(max-width: 640px) 100vw, 33vw"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col gap-2 p-4 md:p-5">
-                      <p className="font-body text-[11px] font-bold uppercase tracking-wide text-kelly-gold">
-                        {placeBits.length > 0 ? placeBits.join(" · ") : "Location pending confirmation"}
-                      </p>
-                      <p className="font-body text-sm leading-relaxed text-kelly-slate">
-                        {photo.accessibility.caption}
-                      </p>
-                      {href ? (
-                        <Link
-                          href={href}
-                          className="mt-auto pt-3 text-sm font-bold text-kelly-blue underline decoration-kelly-blue/25 underline-offset-4 hover:decoration-kelly-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
-                        >
-                          {photo.campaign.county} County →
-                        </Link>
-                      ) : null}
-                    </div>
+            <>
+              <p className="mx-auto mb-10 max-w-2xl text-center font-body text-sm text-kelly-slate md:text-base">
+                {albums.length} {albums.length === 1 ? "county" : "counties"} with trail evidence · click any cover to
+                walk the stops inside.
+              </p>
+              <ul className="grid list-none gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {albums.map((album, i) => (
+                  <li key={album.countySlug}>
+                    <ScrollReveal delay={i * 40} yOffset={8}>
+                      <Link
+                        href={`/campaign-photos/${album.countySlug}`}
+                        className="group block overflow-hidden rounded-lg border border-kelly-ink/10 bg-white shadow-sm transition hover:border-kelly-navy/30 hover:shadow-md focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
+                      >
+                        <div className="relative aspect-[5/4] overflow-hidden bg-kelly-fog">
+                          <Image
+                            src={album.cover.src}
+                            alt={album.cover.accessibility.altText}
+                            width={album.cover.basic.width ?? 960}
+                            height={album.cover.basic.height ?? 768}
+                            className={cn(
+                              "h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]",
+                              homepagePhotoObjectPositionClass(album.cover),
+                            )}
+                            sizes="(max-width: 640px) 100vw, 33vw"
+                          />
+                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-kelly-ink/70 via-kelly-ink/10 to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-4 text-white md:p-5">
+                            <p className="font-heading text-xl font-bold tracking-tight md:text-2xl">
+                              {album.shortName}
+                            </p>
+                            <p className="mt-1 font-body text-sm text-white/85">
+                              {album.photoCount} {album.photoCount === 1 ? "photo" : "photos"} · {album.eventCount}{" "}
+                              {album.eventCount === 1 ? "stop" : "stops"}
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+                    </ScrollReveal>
                   </li>
-                );
-              })}
-            </ul>
+                ))}
+              </ul>
+            </>
           )}
         </ContentContainer>
       </FullBleedSection>
