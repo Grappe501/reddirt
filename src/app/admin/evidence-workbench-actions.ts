@@ -463,7 +463,7 @@ export async function listPhotoIngestCandidatesAction(): Promise<{
   const fresh = candidates.filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts);
   return {
     ok: true,
-    message: `${fresh.length} new file(s) ready to promote (${candidates.length} total in folder).`,
+    message: `${fresh.length} new file(s) ready to promote (${candidates.length} total scanned, recursive).`,
     candidates,
   };
 }
@@ -480,6 +480,25 @@ export async function promotePhotoIngestAction(
     ok: true,
     message: `Promoted ${filename} → draft ${result.photo.id}. Open Photos tab to label.`,
     photoId: result.photo.id,
+  };
+}
+
+export async function promoteAllPhotoIngestAction(): Promise<{
+  ok: boolean;
+  message: string;
+  ids?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { promoteAllNewDiskPhotosToDrafts } = await import("@/lib/campaign-media/photo-ingest");
+  const result = promoteAllNewDiskPhotosToDrafts();
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: `Promoted ${result.promoted} new still(s) to drafts` +
+      (result.skipped ? ` (${result.skipped} skipped)` : "") +
+      ". Open Photos tab — filter All / Unknown county.",
+    ids: result.ids,
   };
 }
 
