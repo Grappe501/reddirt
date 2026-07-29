@@ -126,5 +126,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | 5 | `2268ffe3` | Focus-point crops + cropAdvice → derivative |
 | 6 | `71c9c0a7` | ffmpeg .local detect + poster + clip probe |
 | 7 | `e5939337` | Encode timed excerpts from plans into campaign-derivatives |
-| 8 | *(pending commit)* | Transcript chapters/quotes/claims + do-not-claim |
+| 8 | `c580c5e8` | Transcript chapters/quotes/claims + do-not-claim |
 | 9–10 | — | — |
