@@ -52,7 +52,7 @@ function field(overlay: PhotoEvidenceOverlay | null, base: string, key: keyof Ph
 }
 
 function effectiveCounty(item: PhotoWorkbenchItem): string {
-  return (item.overlay?.county ?? item.base.county || "Unknown").trim() || "Unknown";
+  return ((item.overlay?.county ?? item.base.county) || "Unknown").trim() || "Unknown";
 }
 
 function effectiveApproved(item: PhotoWorkbenchItem): boolean {
@@ -234,12 +234,14 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
   }
 
   function buildPacket() {
+    if (!form || !photo) return;
     const photoId = photo.id;
+    const snapshot = form;
     const confirmed = Boolean(
-      form.county?.trim() &&
-        form.county !== "Unknown" &&
-        form.city?.trim() &&
-        form.city !== "Unknown",
+      snapshot.county?.trim() &&
+        snapshot.county !== "Unknown" &&
+        snapshot.city?.trim() &&
+        snapshot.city !== "Unknown",
     );
     start(async () => {
       const res = await buildPhotoMetadataPacketAction(photoId, confirmed);
