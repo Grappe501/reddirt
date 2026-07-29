@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
