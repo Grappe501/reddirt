@@ -264,6 +264,41 @@ export async function executeEvidenceAiTool(
         return { ok: true, result: { photoId, derivatives: listPhotoDerivatives(photoId) } };
       }
 
+      case "batch_apply_photo_evidence": {
+        const photoIds = Array.isArray(args.photoIds)
+          ? args.photoIds.map((id) => String(id).trim()).filter(Boolean)
+          : [];
+        const applyFields = Array.isArray(args.applyFields)
+          ? args.applyFields.map((f) => String(f).trim()).filter(Boolean)
+          : [];
+        const patchRaw =
+          args.patch && typeof args.patch === "object" && !Array.isArray(args.patch)
+            ? (args.patch as Record<string, unknown>)
+            : {};
+        const { applyPhotoEvidenceBatch, buildBatchPatchFromLoose } = await import(
+          "@/lib/campaign-media/batch-photo-evidence"
+        );
+        const result = applyPhotoEvidenceBatch({
+          photoIds,
+          applyFields,
+          patch: buildBatchPatchFromLoose(patchRaw),
+          consentConfirmed: Boolean(args.consentConfirmed),
+          refreshAlbums: true,
+          rememberMemory: true,
+        });
+        if (!result.ok) return { ok: false, error: result.message };
+        return {
+          ok: true,
+          result: {
+            applied: result.applied,
+            skipped: result.skipped,
+            appliedIds: result.appliedIds,
+            errors: result.errors.slice(0, 12),
+            message: result.message,
+          },
+        };
+      }
+
       case "get_county_album_summary": {
         const county = asString(args.county);
         const reg = resolveRegistryCountyFromLabel(county);

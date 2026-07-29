@@ -56,6 +56,11 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "List existing local derivatives for a photo id.",
   },
   {
+    name: "batch_apply_photo_evidence",
+    audience: "photo",
+    summary: "Apply selected evidence fields to many photo ids at once (local write).",
+  },
+  {
     name: "get_county_album_summary",
     audience: "photo",
     summary: "Summarize existing county → event album chapters for a confirmed county.",
@@ -246,6 +251,35 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             photoId: { type: "string" },
           },
           required: ["photoId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "batch_apply_photo_evidence",
+        description:
+          "Apply selected evidence fields to multiple photo ids in one local write. Only write fields listed in applyFields. Prefer Unknown over inventing geography. Max 80 ids.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoIds: { type: "array", items: { type: "string" } },
+            applyFields: {
+              type: "array",
+              items: { type: "string" },
+              description:
+                "county, city, venue, eventDate, eventName, photographer, peopleVisible, whatThisProves, approvedForPublic, homepageCandidate, featuredPhoto, heroLevel, tierIntent, publicationStatus",
+            },
+            patch: {
+              type: "object",
+              description: "Field values to apply (only keys in applyFields are written).",
+            },
+            consentConfirmed: {
+              type: "boolean",
+              description: "Required when batching public flags onto consent-hold stills.",
+            },
+          },
+          required: ["photoIds", "applyFields", "patch"],
         },
       },
     },

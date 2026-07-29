@@ -90,6 +90,8 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 - Photo derivatives via `sharp` → `public/media/campaign-derivatives/{photoId}/` (web / thumb / hero 16:9 / portrait 4:5 / square / auto-orient)  
 - Ledger: `data/campaign-media/media-derivatives.json`  
 - Workbench Photos tab: Inspect, Crop plan, and one-click derivative buttons  
+- **Batch metadata:** multi-select filmstrip + field-level “Apply to N selected” (max 80)  
+- 10-pass upgrade map: [`EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md`](./EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md)  
 - Video: `plan_video_excerpt` builds timed clip candidates from local transcript workspace; encode/poster needs local `ffmpeg` (optional)  
 - Originals under `public/media/campaign-photos/` are never overwritten
 

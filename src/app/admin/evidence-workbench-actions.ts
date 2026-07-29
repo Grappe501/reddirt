@@ -198,6 +198,43 @@ export async function savePhotoEvidenceAction(
   return { ok: true, message: `Saved photo evidence for ${photoId}.${albumNote}` };
 }
 
+export async function batchSavePhotoEvidenceAction(input: {
+  photoIds: string[];
+  applyFields: string[];
+  patch: Record<string, unknown>;
+  consentConfirmed?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  applied?: number;
+  skipped?: number;
+  errors?: Array<{ photoId: string; error: string }>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+
+  const { applyPhotoEvidenceBatch, buildBatchPatchFromLoose } = await import(
+    "@/lib/campaign-media/batch-photo-evidence"
+  );
+  const result = applyPhotoEvidenceBatch({
+    photoIds: input.photoIds,
+    applyFields: input.applyFields,
+    patch: buildBatchPatchFromLoose(input.patch),
+    consentConfirmed: Boolean(input.consentConfirmed),
+    refreshAlbums: true,
+    rememberMemory: true,
+  });
+
+  if (result.applied > 0) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    applied: result.applied,
+    skipped: result.skipped,
+    errors: result.errors.slice(0, 12),
+  };
+}
+
 export async function saveSpeechEvidenceAction(
   _prev: { ok: boolean; message: string } | null,
   formData: FormData,

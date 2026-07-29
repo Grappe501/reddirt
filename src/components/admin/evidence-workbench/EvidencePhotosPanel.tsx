@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState, useTransition } from "react";
 import {
+  batchSavePhotoEvidenceAction,
   buildPhotoMetadataPacketAction,
   createPhotoDerivativeAction,
   inspectPhotoPixelsAction,
@@ -14,6 +15,32 @@ import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 import type { PhotoDerivativeRecord } from "@/lib/campaign-media/media-derivatives-types";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
+
+const BATCH_FIELD_OPTIONS: Array<{ key: string; label: string }> = [
+  { key: "county", label: "County" },
+  { key: "city", label: "City" },
+  { key: "venue", label: "Venue" },
+  { key: "eventDate", label: "Event date" },
+  { key: "eventName", label: "Event name" },
+  { key: "photographer", label: "Photographer" },
+  { key: "peopleVisible", label: "People" },
+  { key: "whatThisProves", label: "What this proves" },
+  { key: "approvedForPublic", label: "Approved for public" },
+  { key: "homepageCandidate", label: "Homepage candidate" },
+  { key: "featuredPhoto", label: "Featured" },
+  { key: "heroLevel", label: "Hero level" },
+  { key: "tierIntent", label: "Tier" },
+  { key: "publicationStatus", label: "Publication" },
+];
+
+const DEFAULT_BATCH_FIELDS = new Set([
+  "county",
+  "city",
+  "venue",
+  "eventDate",
+  "eventName",
+  "photographer",
+]);
 
 export type PhotoWorkbenchItem = {
   id: string;
@@ -118,6 +145,8 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
   const [pending, start] = useTransition();
   const [dirty, setDirty] = useState(false);
   const [derivatives, setDerivatives] = useState<PhotoDerivativeRecord[]>([]);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [batchFields, setBatchFields] = useState<Set<string>>(() => new Set(DEFAULT_BATCH_FIELDS));
   const [form, setForm] = useState<PhotoFormState | null>(() => {
     const first = photos.find((p) => p.id === (initialPhotoId || photos[0]?.id));
     return first ? buildForm(first) : null;
@@ -353,6 +382,79 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     });
   }
 
+  function toggleSelected(id: string) {
+    setSelectedIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+  }
+
+  function selectAllFiltered() {
+    setSelectedIds(filteredIds.slice(0, 80));
+  }
+
+  function clearSelection() {
+    setSelectedIds([]);
+  }
+
+  function toggleBatchField(key: string) {
+    setBatchFields((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  }
+
+  function applyBatch() {
+    if (!form || selectedIds.length === 0) return;
+    const applyFields = [...batchFields];
+    if (!applyFields.length) {
+      setMessage("Pick at least one field to batch-apply.");
+      return;
+    }
+    const snapshot = form;
+    const ids = [...selectedIds];
+    if (
+      !window.confirm(
+        `Apply ${applyFields.length} field(s) to ${ids.length} selected photo(s)?\n\nFields: ${applyFields.join(", ")}`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await batchSavePhotoEvidenceAction({
+        photoIds: ids,
+        applyFields,
+        consentConfirmed: snapshot.consentConfirmed,
+        patch: {
+          county: snapshot.county || "Unknown",
+          city: snapshot.city || "Unknown",
+          venue: snapshot.venue || "Unknown",
+          eventDate: snapshot.eventDate || "Unknown",
+          eventName: snapshot.eventName || "Unknown",
+          photographer: snapshot.photographer || "Unknown",
+          peopleVisible: snapshot.peopleVisible,
+          whatThisProves: snapshot.whatThisProves,
+          approvedForPublic: snapshot.approvedForPublic,
+          homepageCandidate: snapshot.homepageCandidate,
+          featuredPhoto: snapshot.featuredPhoto,
+          heroLevel: snapshot.heroLevel,
+          tierIntent: snapshot.tierIntent,
+          publicationStatus: snapshot.publicationStatus,
+        },
+      });
+      let msg = res.message;
+      if (res.errors?.length) {
+        msg +=
+          "\n" +
+          res.errors
+            .slice(0, 6)
+            .map((e) => `• ${e.photoId}: ${e.error}`)
+            .join("\n");
+      }
+      setMessage(msg);
+      if (res.ok) setDirty(false);
+    });
+  }
+
   const FILTERS: { id: Filter; label: string }[] = [
     { id: "all", label: "All" },
     { id: "unknown", label: "Unknown county" },
@@ -384,6 +486,88 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
             {f.label}
           </button>
         ))}
+      </div>
+
+      <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+            Batch select · {selectedIds.length} selected
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              className="rounded border border-[#8eb6dc] bg-[#f4f7fc] px-2 py-1 font-body text-[11px] font-semibold text-[#12124a]"
+              onClick={selectAllFiltered}
+            >
+              Select filtered (max 80)
+            </button>
+            <button
+              type="button"
+              className="rounded border border-[#8eb6dc] bg-white px-2 py-1 font-body text-[11px] font-semibold text-[#12124a]"
+              onClick={() => {
+                if (photo && !selectedIds.includes(photo.id)) {
+                  setSelectedIds((prev) => [...prev, photo.id]);
+                }
+              }}
+            >
+              Add current
+            </button>
+            <button
+              type="button"
+              className="rounded border border-[#8eb6dc] bg-white px-2 py-1 font-body text-[11px] font-semibold text-[#12124a]"
+              onClick={clearSelection}
+            >
+              Clear
+            </button>
+          </div>
+        </div>
+        <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
+          {filtered.slice(0, 80).map((p) => {
+            const checked = selectedIds.includes(p.id);
+            const active = p.id === photo.id;
+            return (
+              <button
+                key={p.id}
+                type="button"
+                title={p.id}
+                onClick={() => selectPhoto(p.id)}
+                className={`relative h-16 w-16 shrink-0 overflow-hidden rounded border-2 ${
+                  active ? "border-[#000066]" : "border-[#8eb6dc]/50"
+                } ${checked ? "ring-2 ring-[#ca913d]" : ""}`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={p.src} alt="" className="h-full w-full object-cover" />
+                <span
+                  className="absolute left-0.5 top-0.5"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleSelected(p.id);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleSelected(p.id);
+                    }
+                  }}
+                  role="checkbox"
+                  aria-checked={checked}
+                  tabIndex={0}
+                >
+                  <span
+                    className={`flex h-4 w-4 items-center justify-center rounded border text-[10px] font-bold ${
+                      checked
+                        ? "border-[#ca913d] bg-[#ca913d] text-white"
+                        : "border-white bg-black/40 text-white"
+                    }`}
+                  >
+                    {checked ? "✓" : ""}
+                  </span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -491,7 +675,39 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
           <p className="font-body text-xs text-[#364272]">
             Editing <span className="font-mono font-semibold">{photo.id}</span>
             {dirty ? " · unsaved" : ""}
+            {selectedIds.length > 1 ? ` · batch template for ${selectedIds.length}` : ""}
           </p>
+
+          {selectedIds.length > 0 ? (
+            <div className="rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-3">
+              <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+                Batch apply fields
+              </p>
+              <p className="mt-1 font-body text-[11px] text-[#364272]">
+                Checked fields from this form write onto all selected stills. Unchecked fields are left alone.
+              </p>
+              <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                {BATCH_FIELD_OPTIONS.map((f) => (
+                  <label key={f.key} className="inline-flex items-center gap-1.5 font-body text-[11px] text-[#12124a]">
+                    <input
+                      type="checkbox"
+                      checked={batchFields.has(f.key)}
+                      onChange={() => toggleBatchField(f.key)}
+                    />
+                    {f.label}
+                  </label>
+                ))}
+              </div>
+              <button
+                type="button"
+                disabled={pending || selectedIds.length === 0 || batchFields.size === 0}
+                onClick={applyBatch}
+                className="mt-3 rounded-md bg-[#ca913d] px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+              >
+                Apply to {selectedIds.length} selected
+              </button>
+            </div>
+          ) : null}
 
           <label className="block font-body text-xs font-semibold text-[#12124a]">
             County
