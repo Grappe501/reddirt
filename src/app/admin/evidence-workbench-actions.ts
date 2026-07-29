@@ -405,6 +405,76 @@ export async function suggestPhotoEvidenceAiAction(
   };
 }
 
+export async function clusterPhotoSelectionAction(photoIds: string[]): Promise<{
+  ok: boolean;
+  message: string;
+  result?: import("@/lib/campaign-media/cluster-photo-selection").PhotoSelectionClusterResult;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const ids = [...new Set(photoIds.map((id) => String(id).trim()).filter(Boolean))].slice(0, 80);
+  if (ids.length < 1) return { ok: false, message: "No photo ids." };
+
+  const live = listCampaignPhotosLive();
+  const store = loadPhotoEvidenceStore();
+  const { clusterPhotoSelection } = await import("@/lib/campaign-media/cluster-photo-selection");
+  const inputs = ids.map((id) => {
+    const photo = live.find((p) => p.id === id);
+    const overlay = store.photos[id] ?? null;
+    return {
+      id,
+      src: photo?.src,
+      caption: photo?.accessibility.caption,
+      county: overlay?.county ?? photo?.campaign.county,
+      city: overlay?.city ?? photo?.campaign.city,
+      venue: overlay?.venue ?? photo?.campaign.venue,
+      eventDate: overlay?.eventDate ?? photo?.campaign.eventDate,
+      eventName: overlay?.eventName ?? photo?.campaign.eventName,
+      filename: photo?.basic.originalFilename,
+    };
+  });
+  const result = clusterPhotoSelection(inputs);
+  return { ok: true, message: result.summary, result };
+}
+
+export async function suggestBatchPhotoEvidenceAiAction(photoIds: string[]): Promise<{
+  ok: boolean;
+  message: string;
+  proposal?: import("@/lib/campaign-media/evidence-ai-types").BatchPhotoAiProposal;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const ids = [...new Set(photoIds.map((id) => String(id).trim()).filter(Boolean))].slice(0, 24);
+  if (ids.length < 2) return { ok: false, message: "Select at least 2 photos for batch AI suggest." };
+
+  const live = listCampaignPhotosLive();
+  const store = loadPhotoEvidenceStore();
+  const photos = ids.map((id) => {
+    const photo = live.find((p) => p.id === id);
+    if (!photo) return null;
+    return { photo, overlay: store.photos[id] ?? null };
+  });
+  const missing = photos.map((p, i) => (p ? null : ids[i])).filter(Boolean);
+  if (missing.length) {
+    return { ok: false, message: `Unknown photo id(s): ${missing.slice(0, 5).join(", ")}` };
+  }
+
+  const { suggestBatchPhotoEvidenceWithAi } = await import("@/lib/campaign-media/evidence-ai-suggest");
+  const result = await suggestBatchPhotoEvidenceWithAi({
+    photos: photos as Array<{
+      photo: (typeof live)[number];
+      overlay: (typeof store.photos)[string] | null;
+    }>,
+  });
+  if (!result.ok) return { ok: false, message: result.error };
+  const p = result.proposal;
+  return {
+    ok: true,
+    message: `Batch proposal (${p.shared.confidence}) for ${p.photoIds.length} stills — review before apply. ${p.clusterSummary}`,
+    proposal: p,
+  };
+}
+
 export async function suggestSpeechEvidenceAiAction(
   speechId: string,
 ): Promise<{ ok: boolean; message: string; suggestion?: import("@/lib/campaign-media/evidence-ai-types").EvidenceAiSuggestion }> {

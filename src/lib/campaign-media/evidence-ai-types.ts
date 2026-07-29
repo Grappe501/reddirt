@@ -28,6 +28,24 @@ export type EvidenceAiSuggestion = {
   toolsUsed?: string[];
 };
 
+/** Pass 2 — batch AI proposal (never auto-writes; operator must review). */
+export type BatchPhotoAiProposal = {
+  photoIds: string[];
+  clusterSummary: string;
+  clusters: Array<{
+    id: string;
+    label: string;
+    reason: string;
+    photoIds: string[];
+  }>;
+  mixedGeography: boolean;
+  shared: EvidenceAiSuggestion;
+  /** Fields the model thinks are safe to batch-apply (operator can edit). */
+  recommendedApplyFields: string[];
+  perPhotoNotes: Array<{ photoId: string; note: string }>;
+  model?: string;
+};
+
 export type EvidenceAiMemoryExample = {
   assetKind: "photo" | "speech";
   assetId: string;

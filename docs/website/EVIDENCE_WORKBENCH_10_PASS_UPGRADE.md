@@ -25,8 +25,8 @@
 
 | Pass | Theme | Ships |
 | --- | --- | --- |
-| **1** | **Batch metadata** *(this pass)* | Multi-select photos · field-level apply · shared event fields · one album refresh · AI tool `batch_apply_photo_evidence` |
-| **2** | Batch AI assist | “Suggest for selection” · shared-event clustering · apply-proposal review before write |
+| **1** | **Batch metadata** | Multi-select photos · field-level apply · shared event fields · one album refresh · AI tool `batch_apply_photo_evidence` |
+| **2** | **Batch AI assist** *(this pass)* | “Suggest for selection” · shared-event clustering · apply-proposal review before write |
 | **3** | Batch derivatives | Apply web/thumb/hero/square to N selected · progress + ledger |
 | **4** | Derivative → placement | Promote a derivative as public `src` override or homepage/hero candidate with preview |
 | **5** | Attention / face-aware crops | Manual focus point + attention crop kinds · AI cropAdvice → derivative |
@@ -47,6 +47,15 @@
 - [x] County albums refresh once after batch
 - [x] AI catalog includes batch apply tool (gated writes)
 
+## Pass 2 acceptance
+
+- [x] Cluster selection by shared event/date/county cues (local)
+- [x] Suggest for selection (AI) proposes shared fields — no auto-write
+- [x] Proposal review card with warnings / recommended fields
+- [x] Operator explicitly applies proposal or dismisses
+- [x] Mixed-geography selections withhold county/city from default apply list
+- [x] AI tool `cluster_photo_selection` (read-only)
+
 ---
 
 ## Tracking
@@ -56,4 +65,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | Pass | Commit | Note |
 | --- | ---: | --- |
 | 1 | `2098c843` | Batch metadata: multi-select + field-level apply + AI tool |
-| 2–10 | — | — |
+| 2 | shipped | Batch AI assist: cluster + suggest-for-selection + proposal review |
+| 3–10 | — | — |

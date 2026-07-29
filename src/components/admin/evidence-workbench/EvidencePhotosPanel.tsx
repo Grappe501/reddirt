@@ -4,13 +4,16 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import {
   batchSavePhotoEvidenceAction,
   buildPhotoMetadataPacketAction,
+  clusterPhotoSelectionAction,
   createPhotoDerivativeAction,
   inspectPhotoPixelsAction,
   listPhotoDerivativesAction,
   savePhotoEvidenceAction,
+  suggestBatchPhotoEvidenceAiAction,
   suggestCropPlanAction,
   suggestPhotoEvidenceAiAction,
 } from "@/app/admin/evidence-workbench-actions";
+import type { BatchPhotoAiProposal } from "@/lib/campaign-media/evidence-ai-types";
 import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 import type { PhotoDerivativeRecord } from "@/lib/campaign-media/media-derivatives-types";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
@@ -147,6 +150,8 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
   const [derivatives, setDerivatives] = useState<PhotoDerivativeRecord[]>([]);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [batchFields, setBatchFields] = useState<Set<string>>(() => new Set(DEFAULT_BATCH_FIELDS));
+  const [proposal, setProposal] = useState<BatchPhotoAiProposal | null>(null);
+  const [clusterNote, setClusterNote] = useState("");
   const [form, setForm] = useState<PhotoFormState | null>(() => {
     const first = photos.find((p) => p.id === (initialPhotoId || photos[0]?.id));
     return first ? buildForm(first) : null;
@@ -451,7 +456,125 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
             .join("\n");
       }
       setMessage(msg);
-      if (res.ok) setDirty(false);
+      if (res.ok) {
+        setDirty(false);
+        setProposal(null);
+      }
+    });
+  }
+
+  function runClusterSelection() {
+    if (selectedIds.length < 1) {
+      setMessage("Select photos to cluster.");
+      return;
+    }
+    const ids = [...selectedIds];
+    start(async () => {
+      const res = await clusterPhotoSelectionAction(ids);
+      setMessage(res.message);
+      if (!res.ok || !res.result) return;
+      const lines = res.result.clusters.map(
+        (c) => `• ${c.label} (${c.photoIds.length}): ${c.reason}`,
+      );
+      setClusterNote(`${res.result.summary}\n${lines.join("\n")}`);
+    });
+  }
+
+  function suggestForSelection() {
+    if (selectedIds.length < 2) {
+      setMessage("Select at least 2 photos for batch AI suggest.");
+      return;
+    }
+    const ids = selectedIds.slice(0, 24);
+    start(async () => {
+      const res = await suggestBatchPhotoEvidenceAiAction(ids);
+      setMessage(res.message);
+      if (!res.ok || !res.proposal) return;
+      setProposal(res.proposal);
+      setClusterNote(
+        `${res.proposal.clusterSummary}\n` +
+          res.proposal.clusters.map((c) => `• ${c.label} (${c.photoIds.length})`).join("\n"),
+      );
+      setBatchFields(new Set(res.proposal.recommendedApplyFields));
+      const s = res.proposal.shared;
+      setForm((prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          county: s.county === "Unknown" ? prev.county : s.county,
+          city: s.city === "Unknown" ? prev.city : s.city,
+          venue: s.venue === "Unknown" ? prev.venue : s.venue,
+          eventDate: s.eventDate === "Unknown" ? prev.eventDate : s.eventDate,
+          eventName: s.eventName === "Unknown" ? prev.eventName : s.eventName,
+          photographer: s.photographer === "Unknown" ? prev.photographer : s.photographer,
+          peopleVisible: s.peopleVisible.length ? s.peopleVisible.join(", ") : prev.peopleVisible,
+          whatThisProves: s.whatThisProves || prev.whatThisProves,
+        };
+      });
+      setDirty(true);
+    });
+  }
+
+  function loadProposalIntoForm() {
+    if (!proposal) return;
+    const s = proposal.shared;
+    setForm((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        county: s.county === "Unknown" ? "" : s.county,
+        city: s.city === "Unknown" ? "" : s.city,
+        venue: s.venue === "Unknown" ? "" : s.venue,
+        eventDate: s.eventDate === "Unknown" ? "" : s.eventDate,
+        eventName: s.eventName === "Unknown" ? "" : s.eventName,
+        photographer: s.photographer === "Unknown" ? "" : s.photographer,
+        peopleVisible: s.peopleVisible.join(", "),
+        whatThisProves: s.whatThisProves,
+      };
+    });
+    setBatchFields(new Set(proposal.recommendedApplyFields));
+    setDirty(true);
+    setMessage("Loaded proposal into form — review fields, then Apply to selected.");
+  }
+
+  function applyProposalToSelection() {
+    if (!proposal || !form) return;
+    const applyFields = [...batchFields];
+    if (!applyFields.length) {
+      setMessage("Pick at least one field from the proposal to apply.");
+      return;
+    }
+    const ids = proposal.photoIds.filter((id) => selectedIds.includes(id));
+    const targetIds = ids.length ? ids : proposal.photoIds;
+    const s = proposal.shared;
+    if (
+      !window.confirm(
+        `Apply AI proposal fields (${applyFields.join(", ")}) to ${targetIds.length} photo(s)?\n\nConfidence: ${s.confidence}\nThis writes local overlays after your review.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await batchSavePhotoEvidenceAction({
+        photoIds: targetIds,
+        applyFields,
+        consentConfirmed: form.consentConfirmed,
+        patch: {
+          county: s.county || "Unknown",
+          city: s.city || "Unknown",
+          venue: s.venue || "Unknown",
+          eventDate: s.eventDate || "Unknown",
+          eventName: s.eventName || "Unknown",
+          photographer: s.photographer || "Unknown",
+          peopleVisible: s.peopleVisible,
+          whatThisProves: s.whatThisProves,
+        },
+      });
+      setMessage(res.message);
+      if (res.ok) {
+        setDirty(false);
+        setProposal(null);
+      }
     });
   }
 
@@ -519,8 +642,27 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
             >
               Clear
             </button>
+            <button
+              type="button"
+              disabled={pending || selectedIds.length < 1}
+              className="rounded border border-[#8eb6dc] bg-white px-2 py-1 font-body text-[11px] font-semibold text-[#12124a] disabled:opacity-50"
+              onClick={runClusterSelection}
+            >
+              Cluster selection
+            </button>
+            <button
+              type="button"
+              disabled={pending || selectedIds.length < 2}
+              className="rounded border-2 border-[#000066] bg-white px-2 py-1 font-body text-[11px] font-bold text-[#000066] disabled:opacity-50"
+              onClick={suggestForSelection}
+            >
+              Suggest for selection (AI)
+            </button>
           </div>
         </div>
+        {clusterNote ? (
+          <p className="mt-2 whitespace-pre-wrap font-body text-[11px] text-[#364272]">{clusterNote}</p>
+        ) : null}
         <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
           {filtered.slice(0, 80).map((p) => {
             const checked = selectedIds.includes(p.id);
@@ -706,6 +848,71 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
               >
                 Apply to {selectedIds.length} selected
               </button>
+            </div>
+          ) : null}
+
+          {proposal ? (
+            <div className="rounded-lg border-2 border-[#000066]/25 bg-[#f4f7fc] p-3">
+              <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+                AI batch proposal · review before write
+              </p>
+              <p className="mt-1 font-body text-xs text-[#364272]">
+                {proposal.photoIds.length} stills · confidence{" "}
+                <span className="font-semibold text-[#12124a]">{proposal.shared.confidence}</span>
+                {proposal.mixedGeography ? " · mixed geography caution" : ""}
+                {proposal.model ? ` · ${proposal.model}` : ""}
+              </p>
+              <p className="mt-2 font-body text-sm text-[#12124a]">{proposal.shared.rationale || "Review shared fields."}</p>
+              <ul className="mt-2 space-y-0.5 font-mono text-[11px] text-[#364272]">
+                <li>county: {proposal.shared.county}</li>
+                <li>city: {proposal.shared.city}</li>
+                <li>venue: {proposal.shared.venue}</li>
+                <li>eventDate: {proposal.shared.eventDate}</li>
+                <li>eventName: {proposal.shared.eventName}</li>
+                <li>photographer: {proposal.shared.photographer}</li>
+                <li>people: {proposal.shared.peopleVisible.join(", ") || "—"}</li>
+                <li>proves: {proposal.shared.whatThisProves || "—"}</li>
+              </ul>
+              {proposal.shared.warnings.length ? (
+                <p className="mt-2 font-body text-[11px] text-[#8a4b00]">
+                  Warnings: {proposal.shared.warnings.join("; ")}
+                </p>
+              ) : null}
+              {proposal.perPhotoNotes.length ? (
+                <ul className="mt-2 list-disc pl-4 font-body text-[11px] text-[#364272]">
+                  {proposal.perPhotoNotes.map((n) => (
+                    <li key={n.photoId}>
+                      <span className="font-mono">{n.photoId}</span>: {n.note}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+              <div className="mt-3 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={loadProposalIntoForm}
+                  className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+                >
+                  Reload into form
+                </button>
+                <button
+                  type="button"
+                  disabled={pending || batchFields.size === 0}
+                  onClick={applyProposalToSelection}
+                  className="rounded-md bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white disabled:opacity-50"
+                >
+                  Apply proposal to selection
+                </button>
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={() => setProposal(null)}
+                  className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#364272] disabled:opacity-50"
+                >
+                  Dismiss proposal
+                </button>
+              </div>
             </div>
           ) : null}
 

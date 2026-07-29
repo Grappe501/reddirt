@@ -61,6 +61,11 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Apply selected evidence fields to many photo ids at once (local write).",
   },
   {
+    name: "cluster_photo_selection",
+    audience: "photo",
+    summary: "Cluster selected photo ids by shared event/date/county cues (read-only).",
+  },
+  {
     name: "get_county_album_summary",
     audience: "photo",
     summary: "Summarize existing county → event album chapters for a confirmed county.",
@@ -280,6 +285,21 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             },
           },
           required: ["photoIds", "applyFields", "patch"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "cluster_photo_selection",
+        description:
+          "Cluster photo ids by shared event name, date cues, and county. Read-only — use before proposing batch fields.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoIds: { type: "array", items: { type: "string" } },
+          },
+          required: ["photoIds"],
         },
       },
     },

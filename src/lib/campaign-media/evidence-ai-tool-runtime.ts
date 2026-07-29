@@ -299,6 +299,31 @@ export async function executeEvidenceAiTool(
         };
       }
 
+      case "cluster_photo_selection": {
+        const photoIds = Array.isArray(args.photoIds)
+          ? args.photoIds.map((id) => String(id).trim()).filter(Boolean)
+          : [];
+        if (!photoIds.length) return { ok: false, error: "photoIds required." };
+        const { clusterPhotoSelection } = await import("@/lib/campaign-media/cluster-photo-selection");
+        const store = loadPhotoEvidenceStore();
+        const inputs = photoIds.slice(0, 80).map((id) => {
+          const photo = livePhotos().find((p) => p.id === id);
+          const overlay = store.photos[id] ?? null;
+          return {
+            id,
+            src: photo?.src,
+            caption: photo?.accessibility.caption,
+            county: overlay?.county ?? photo?.campaign.county,
+            city: overlay?.city ?? photo?.campaign.city,
+            venue: overlay?.venue ?? photo?.campaign.venue,
+            eventDate: overlay?.eventDate ?? photo?.campaign.eventDate,
+            eventName: overlay?.eventName ?? photo?.campaign.eventName,
+            filename: photo?.basic.originalFilename,
+          };
+        });
+        return { ok: true, result: clusterPhotoSelection(inputs) };
+      }
+
       case "get_county_album_summary": {
         const county = asString(args.county);
         const reg = resolveRegistryCountyFromLabel(county);

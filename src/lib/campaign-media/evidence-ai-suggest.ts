@@ -6,7 +6,7 @@ import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 import type { CampaignMediaRecord } from "@/content/media/campaign-media-types";
 import { runEvidenceAiBrain } from "@/lib/campaign-media/evidence-ai-brain";
 import { formatMemoryForPrompt } from "@/lib/campaign-media/evidence-ai-memory";
-import type { EvidenceAiSuggestion } from "@/lib/campaign-media/evidence-ai-types";
+import type { EvidenceAiSuggestion, BatchPhotoAiProposal } from "@/lib/campaign-media/evidence-ai-types";
 import type { PhotoEvidenceOverlay, SpeechEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 
 function readPublicImageAsDataUrl(src: string): string | null {
@@ -122,4 +122,185 @@ ${memory}`;
     ];
   }
   return { ok: true, suggestion };
+}
+
+const BATCH_SHARED_FIELDS = [
+  "county",
+  "city",
+  "venue",
+  "eventDate",
+  "eventName",
+  "photographer",
+  "peopleVisible",
+  "whatThisProves",
+] as const;
+
+function recommendedFieldsFromSuggestion(s: EvidenceAiSuggestion, mixedGeography: boolean): string[] {
+  const out: string[] = [];
+  for (const key of BATCH_SHARED_FIELDS) {
+    if (key === "peopleVisible") {
+      if (s.peopleVisible.length) out.push(key);
+      continue;
+    }
+    if (key === "whatThisProves") {
+      if (s.whatThisProves.trim()) out.push(key);
+      continue;
+    }
+    const v = String(s[key] ?? "").trim();
+    if (!v || v === "Unknown") continue;
+    if (mixedGeography && (key === "county" || key === "city" || key === "venue")) continue;
+    out.push(key);
+  }
+  return out;
+}
+
+function parseBatchExtras(raw: string | undefined): {
+  recommendedApplyFields: string[];
+  perPhotoNotes: Array<{ photoId: string; note: string }>;
+} {
+  if (!raw) return { recommendedApplyFields: [], perPhotoNotes: [] };
+  try {
+    const cleaned = raw.replace(/^```json\s*/i, "").replace(/^```\s*/i, "").replace(/```$/i, "").trim();
+    const parsed = JSON.parse(cleaned) as {
+      recommendedApplyFields?: unknown;
+      perPhotoNotes?: unknown;
+    };
+    const recommendedApplyFields = Array.isArray(parsed.recommendedApplyFields)
+      ? parsed.recommendedApplyFields.map((f) => String(f).trim()).filter(Boolean)
+      : [];
+    const perPhotoNotes = Array.isArray(parsed.perPhotoNotes)
+      ? parsed.perPhotoNotes
+          .map((row) => {
+            if (!row || typeof row !== "object") return null;
+            const r = row as { photoId?: unknown; note?: unknown };
+            const photoId = String(r.photoId ?? "").trim();
+            const note = String(r.note ?? "").trim();
+            if (!photoId || !note) return null;
+            return { photoId, note };
+          })
+          .filter((x): x is { photoId: string; note: string } => Boolean(x))
+          .slice(0, 24)
+      : [];
+    return { recommendedApplyFields, perPhotoNotes };
+  } catch {
+    return { recommendedApplyFields: [], perPhotoNotes: [] };
+  }
+}
+
+export async function suggestBatchPhotoEvidenceWithAi(input: {
+  photos: Array<{
+    photo: CampaignPhotoRecord;
+    overlay: PhotoEvidenceOverlay | null;
+  }>;
+}): Promise<{ ok: true; proposal: BatchPhotoAiProposal } | { ok: false; error: string }> {
+  const { clusterPhotoSelection } = await import("@/lib/campaign-media/cluster-photo-selection");
+  const capped = input.photos.slice(0, 24);
+  if (capped.length < 2) {
+    return { ok: false, error: "Select at least 2 photos for batch AI suggest." };
+  }
+
+  const clusterInputs = capped.map(({ photo, overlay }) => ({
+    id: photo.id,
+    src: photo.src,
+    caption: photo.accessibility.caption,
+    county: overlay?.county ?? photo.campaign.county,
+    city: overlay?.city ?? photo.campaign.city,
+    venue: overlay?.venue ?? photo.campaign.venue,
+    eventDate: overlay?.eventDate ?? photo.campaign.eventDate,
+    eventName: overlay?.eventName ?? photo.campaign.eventName,
+    filename: photo.basic.originalFilename,
+  }));
+  const clusters = clusterPhotoSelection(clusterInputs, { maxPhotos: 24 });
+
+  const memory = formatMemoryForPrompt(12);
+  const imageUrls: string[] = [];
+  for (const row of capped.slice(0, 2)) {
+    const url = readPublicImageAsDataUrl(row.photo.src);
+    if (url) imageUrls.push(url);
+  }
+
+  const roster = capped
+    .map(({ photo, overlay }, i) => {
+      const c = overlay?.county ?? photo.campaign.county;
+      const city = overlay?.city ?? photo.campaign.city;
+      const eventName = overlay?.eventName ?? photo.campaign.eventName;
+      const eventDate = overlay?.eventDate ?? photo.campaign.eventDate;
+      return `${i + 1}. id=${photo.id} file=${photo.basic.originalFilename} county=${c} city=${city} event=${eventName} date=${eventDate} caption=${photo.accessibility.caption.slice(0, 120)}`;
+    })
+    .join("\n");
+
+  const userText = `BATCH PHOTO EVIDENCE PROPOSAL (review-only — do NOT call batch_apply_photo_evidence).
+Propose SHARED fields that could apply to this selection after operator review.
+Local cluster summary: ${clusters.summary}
+mixedGeography=${clusters.mixedGeography}
+clusters=${JSON.stringify(clusters.clusters)}
+
+Photo roster:
+${roster}
+
+Rules:
+- Prefer Unknown over inventing geography.
+- If mixedGeography is true, keep county/city/venue Unknown unless tools prove one shared place.
+- Call lookup_arkansas_county / search_calendar_presence / search_confirmed_memory / find_similar_campaign_photos when helpful.
+- Do not write files or create derivatives in this pass.
+- Return JSON with normal evidence fields PLUS:
+  recommendedApplyFields: string[] (subset safe to batch),
+  perPhotoNotes: [{ photoId, note }] for outliers only.
+
+Confirmed past examples (soft priors only):
+${memory}`;
+
+  const result = await runEvidenceAiBrain({
+    kind: "photo",
+    userText,
+    imageDataUrl: imageUrls[0] ?? null,
+    extraImageDataUrls: imageUrls.slice(1),
+    systemExtra:
+      "BATCH MODE: Propose shared fields only. Never call batch_apply_photo_evidence. Include recommendedApplyFields and optional perPhotoNotes in the final JSON.",
+    maxToolRounds: 5,
+  });
+  if (!result.ok) return result;
+
+  const suggestion = result.suggestion;
+  if (result.toolsUsed.length) {
+    suggestion.warnings = [
+      ...suggestion.warnings,
+      `Tools used: ${result.toolsUsed.join(", ")}`,
+    ];
+  }
+  if (clusters.mixedGeography) {
+    suggestion.warnings = [
+      ...suggestion.warnings,
+      "Selection has mixed county cues — geography fields may be withheld from recommended apply list.",
+    ];
+  }
+  if (!imageUrls.length) {
+    suggestion.warnings = [
+      ...suggestion.warnings,
+      "No local image bytes attached — geography should stay Unknown unless tools already confirm it.",
+    ];
+    if (suggestion.confidence === "high") suggestion.confidence = "medium";
+  }
+
+  const extras = parseBatchExtras(result.rawContent);
+  const fallbackFields = recommendedFieldsFromSuggestion(suggestion, clusters.mixedGeography);
+  const recommendedApplyFields =
+    extras.recommendedApplyFields.length > 0
+      ? extras.recommendedApplyFields.filter((f) =>
+          (BATCH_SHARED_FIELDS as readonly string[]).includes(f),
+        )
+      : fallbackFields;
+
+  const proposal: BatchPhotoAiProposal = {
+    photoIds: capped.map((p) => p.photo.id),
+    clusterSummary: clusters.summary,
+    clusters: clusters.clusters,
+    mixedGeography: clusters.mixedGeography,
+    shared: suggestion,
+    recommendedApplyFields,
+    perPhotoNotes: extras.perPhotoNotes,
+    model: result.model,
+  };
+
+  return { ok: true, proposal };
 }

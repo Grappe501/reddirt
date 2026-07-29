@@ -68,9 +68,13 @@ export async function runEvidenceAiBrain(input: {
   kind: "photo" | "video";
   userText: string;
   imageDataUrl?: string | null;
+  /** Additional stills for batch context (kept small). */
+  extraImageDataUrls?: string[];
+  /** Appended to the system prompt for specialized modes (e.g. batch propose). */
+  systemExtra?: string;
   maxToolRounds?: number;
 }): Promise<
-  | { ok: true; suggestion: EvidenceAiSuggestion; toolsUsed: string[]; model: string }
+  | { ok: true; suggestion: EvidenceAiSuggestion; toolsUsed: string[]; model: string; rawContent?: string }
   | { ok: false; error: string }
 > {
   if (!isOpenAIConfigured()) {
@@ -87,9 +91,12 @@ export async function runEvidenceAiBrain(input: {
   if (input.imageDataUrl) {
     userContent.push({ type: "image_url", image_url: { url: input.imageDataUrl } });
   }
+  for (const url of input.extraImageDataUrls ?? []) {
+    if (url) userContent.push({ type: "image_url", image_url: { url } });
+  }
 
   const messages: ChatCompletionMessageParam[] = [
-    { role: "system", content: SYSTEM },
+    { role: "system", content: input.systemExtra ? `${SYSTEM}\n${input.systemExtra}` : SYSTEM },
     { role: "user", content: userContent },
   ];
 
@@ -143,14 +150,14 @@ export async function runEvidenceAiBrain(input: {
         if (!raw) return { ok: false, error: "OpenAI returned empty suggestion." };
         const suggestion = parseSuggestion(raw);
         suggestion.toolsUsed = [...new Set(toolsUsed)];
-        return { ok: true, suggestion, toolsUsed: suggestion.toolsUsed, model };
+        return { ok: true, suggestion, toolsUsed: suggestion.toolsUsed, model, rawContent: raw };
       }
 
       // Try parse direct JSON; otherwise ask for JSON-only follow-up once.
       try {
         const suggestion = parseSuggestion(content);
         suggestion.toolsUsed = [...new Set(toolsUsed)];
-        return { ok: true, suggestion, toolsUsed: suggestion.toolsUsed, model };
+        return { ok: true, suggestion, toolsUsed: suggestion.toolsUsed, model, rawContent: content };
       } catch {
         messages.push({ role: "assistant", content });
         messages.push({
@@ -167,7 +174,7 @@ export async function runEvidenceAiBrain(input: {
         if (!raw) return { ok: false, error: "OpenAI returned empty suggestion." };
         const suggestion = parseSuggestion(raw);
         suggestion.toolsUsed = [...new Set(toolsUsed)];
-        return { ok: true, suggestion, toolsUsed: suggestion.toolsUsed, model };
+        return { ok: true, suggestion, toolsUsed: suggestion.toolsUsed, model, rawContent: raw };
       }
     }
 
