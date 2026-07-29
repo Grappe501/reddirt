@@ -137,5 +137,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | 6 | `71c9c0a7` | ffmpeg .local detect + poster + clip probe |
 | 7 | `e5939337` | Encode timed excerpts from plans into campaign-derivatives |
 | 8 | `c580c5e8` | Transcript chapters/quotes/claims + do-not-claim |
-| 9 | *(pending commit)* | Batch approve/hold/homepage/featured + album refresh |
+| 9 | `b4b000fe` | Batch approve/hold/homepage/featured + album refresh |
 | 10 | — | — |
