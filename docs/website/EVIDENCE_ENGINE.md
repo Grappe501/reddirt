@@ -70,6 +70,15 @@ Every public asset needs a purpose beyond aesthetics. Prefer Journey verbs: **li
 
 Confirmation worksheet: [`COUNTY_CONFIRMATION_TEMPLATE.md`](./COUNTY_CONFIRMATION_TEMPLATE.md)
 
+### Local Evidence Workbench
+
+Operator UI (localhost): **`/admin/evidence-workbench`**
+
+- Calendar presence, photo geography, and speech counties  
+- Writes JSON under `data/campaign-media/` on the H: machine  
+- Photo/speech overlays merge into public registry reads  
+- Remote/Netlify hosts cannot write (local Host gate)
+
 ---
 
 ## Measure evidence density (not page count)

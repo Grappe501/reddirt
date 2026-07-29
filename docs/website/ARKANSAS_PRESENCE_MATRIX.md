@@ -72,18 +72,18 @@ Full None list (alphabetical): Arkansas, Ashley, Baxter, Benton, Boone, Bradley,
 
 ## Calendar inventory (pending Steve confirmation)
 
-Source worksheet: [`CALENDAR_PRESENCE_CONFIRMATION.md`](./CALENDAR_PRESENCE_CONFIRMATION.md) (from `basic.ics` export).
+Source worksheet: local **Evidence Workbench** → `/admin/evidence-workbench?tab=calendar` → [`data/campaign-media/calendar-presence.json`](../../data/campaign-media/calendar-presence.json).
 
 | Field | Value |
 | --- | --- |
-| Calendar events parsed | 352 |
-| Physical LOCATION rows | 14 (priority confirm) |
-| Geography-facing Needs confirm | ~196 |
-| Pre-tagged Exclude | ~47 |
+| Calendar events in store | 240 |
+| Physical LOCATION rows | filter in workbench |
+| Geography-facing Needs confirm | see workbench counts |
+| Pre-tagged Exclude | see workbench counts |
 | **Calendar rows marked Confirmed** | **0** |
 | Public county/city totals on `/from-the-road` | Held — placeholder cards removed until Confirmed exists |
 
-**Do not** fill Event column or public counts from titles alone. When Steve marks rows **Confirmed** with City/County, update this matrix Event column and restore verified totals on From the Road.
+**Do not** fill Event column or public counts from titles alone. Mark rows **Confirmed** in the workbench with City/County, then use **Export confirmed → Presence Matrix**.
 
 ---
 

@@ -1,8 +1,10 @@
 # Calendar Presence Confirmation
 
+**Edit here:** local **Evidence Workbench** → [`/admin/evidence-workbench?tab=calendar`](/admin/evidence-workbench?tab=calendar) (saves `data/campaign-media/calendar-presence.json`). This markdown is a pointer / archive snapshot — do not treat it as the live operator loop.
+
 **Purpose:** Steve-confirmable inventory of geography-facing events from Kelly's public Google Calendar export — for Presence Matrix and From the Road metrics.
 **Source:** `basic.ics` export (`kelly@kellygrappe.com`, America/Chicago) · parsed 2026-07-29
-**Hard rules:** Unknown stays Unknown. Do not invent city/county from titles. Virtual/Zoom never counts as a visit. Do not commit raw ICS or Meet/Zoom secrets.
+**Hard rules:** Unknown stays Unknown. Do not invent city/county from titles. Virtual/Zoom never counts as a visit. Do not commit raw ICS or Zoom/Meet secrets.
 **Related:** [`ARKANSAS_PRESENCE_MATRIX.md`](./ARKANSAS_PRESENCE_MATRIX.md) · [`EVIDENCE_ENGINE.md`](./EVIDENCE_ENGINE.md)
 
 ---

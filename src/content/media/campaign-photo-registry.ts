@@ -8,6 +8,7 @@
 
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 import { UNKNOWN } from "@/content/media/campaign-photo-types";
+import { mergeCampaignPhotoWithEvidence, mergeCampaignPhotosWithEvidence } from "@/lib/campaign-media/merge-photo-evidence";
 
 /**
  * Structured photo assets ready for county pages / Journey / Meet Kelly.
@@ -3259,21 +3260,22 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
 ];
 
 export function listCampaignPhotos(): CampaignPhotoRecord[] {
-  return CAMPAIGN_PHOTO_REGISTRY;
+  return mergeCampaignPhotosWithEvidence(CAMPAIGN_PHOTO_REGISTRY);
 }
 
 export function listPublishedCampaignPhotos(): CampaignPhotoRecord[] {
-  return CAMPAIGN_PHOTO_REGISTRY.filter((p) => p.publicationStatus === "PUBLISHED");
+  return listCampaignPhotos().filter((p) => p.publicationStatus === "PUBLISHED");
 }
 
 export function getCampaignPhotoById(id: string): CampaignPhotoRecord | null {
-  return CAMPAIGN_PHOTO_REGISTRY.find((p) => p.id === id) ?? null;
+  const base = CAMPAIGN_PHOTO_REGISTRY.find((p) => p.id === id) ?? null;
+  return base ? mergeCampaignPhotoWithEvidence(base) : null;
 }
 
 export function listCampaignPhotosByCounty(county: string): CampaignPhotoRecord[] {
   const c = county.trim().toLowerCase().replace(/\s+county$/, "");
   if (!c) return [];
-  return CAMPAIGN_PHOTO_REGISTRY.filter((p) => {
+  return listCampaignPhotos().filter((p) => {
     if (p.campaign.county === "Unknown") return false;
     const stored = p.campaign.county.toLowerCase().replace(/\s+county$/, "");
     return stored === c || stored.includes(c) || c.includes(stored);

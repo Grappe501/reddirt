@@ -4,12 +4,13 @@
  */
 
 import type { CampaignMediaRecord } from "@/content/media/campaign-media-types";
+import { mergeCampaignMediaWithSpeechEvidence } from "@/lib/campaign-media/merge-speech-evidence";
 import { emptyTranscript, isPublicMedia, isPublicTranscript, youtubePosterUrl } from "@/lib/media/campaign-transcript";
 import { mergeMediaWithPublishedOverlay } from "@/lib/media/youtube-transcripts/publish-overlay";
 import { extractCanonicalYoutubeVideoId } from "@/lib/media/youtube-id";
 
 function withOverlay(media: CampaignMediaRecord): CampaignMediaRecord {
-  return mergeMediaWithPublishedOverlay(media);
+  return mergeCampaignMediaWithSpeechEvidence(mergeMediaWithPublishedOverlay(media));
 }
 
 function record(

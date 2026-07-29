@@ -1,0 +1,2407 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-29T17:57:51.474Z",
+  "sourceNote": "Seeded from H:/SOSWebsite/.local/temp/kelly-calendar-extract.csv",
+  "rows": [
+    {
+      "id": "cal_lgngdd_60",
+      "date": "2025-11-18 17:00 (local)",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_k6mzle_35",
+      "date": "2025-12-07 19:15 CT",
+      "summary": "Campaign Huddle",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_hdd80p_43",
+      "date": "2025-12-07 19:15 CT",
+      "summary": "Kelly's Campaign Huddle",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_8ihuaf_33",
+      "date": "2025-12-13 (all-day)",
+      "summary": "Russellville",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_k5gt4t_37",
+      "date": "2025-12-13 14:00 CT",
+      "summary": "Koffee with Kelly",
+      "location": "Dog Ear Books, 312 W 2nd St, Russellville, AR 72801, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_dqspur_71",
+      "date": "2025-12-14 15:00 CT",
+      "summary": "NAACP Jacksonville Branch Christmas Party & Meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_mx1aei_30",
+      "date": "2025-12-15 (all-day)",
+      "summary": "Jonesboro",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_flye2t_38",
+      "date": "2025-12-15 11:00 CT",
+      "summary": "Lunch in Jonesboro",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_z3xz9x_55",
+      "date": "2025-12-16 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_lp4ubp_51",
+      "date": "2025-12-16 17:00 CT",
+      "summary": "The Hub Call with DPA (Virtual)",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_q8tuzx_66",
+      "date": "2025-12-18 17:00 CT",
+      "summary": "Jacksonville Boys & Girls Club Christmas Event",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_3glveb_45",
+      "date": "2025-12-18 18:00 CT",
+      "summary": "Cross County Dems Meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_f4qbh_24",
+      "date": "2025-12-19 17:30 CT",
+      "summary": "Busy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_16b5dw_33",
+      "date": "2025-12-20 (all-day)",
+      "summary": "Jacksonville",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_hcg8gw_79",
+      "date": "2025-12-20 13:00 CT",
+      "summary": "Jacksonville Pastor's Chili Cook Off with Dr. Trenika McCoy",
+      "location": "Jacksonville Community Worship Center, 424 Church St, Jacksonville, AR 72076, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_deotsy_57",
+      "date": "2025-12-21 (all-day)",
+      "summary": "Family Christmas - Kelly Unavailable",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_x14x7e_29",
+      "date": "2025-12-30 17:00 CT",
+      "summary": "Call Judy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_hlgzc8_53",
+      "date": "2026-01-01 13:00 CT",
+      "summary": "Voter registration meeting eureka",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_vcqgbm_51",
+      "date": "2026-01-06 08:00 CT",
+      "summary": "Steve Unavailable - PawPaw Duty",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_l68rux_46",
+      "date": "2026-01-07 17:00 CT",
+      "summary": "Hot Springs Event Planning",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_70j28w_52",
+      "date": "2026-01-08 13:00 CT",
+      "summary": "Dusty appt - Kelly not available",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_qjxoov_37",
+      "date": "2026-01-08 18:00 CT",
+      "summary": "White county Dems",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_wbv7mj_34",
+      "date": "2026-01-10 10:00 CT",
+      "summary": "AEA Conference",
+      "location": "Little Rock, AR, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_6e73fn_38",
+      "date": "2026-01-10 15:30 CT",
+      "summary": "Gilett Coon Supper",
+      "location": "Gillett, AR, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_ewu5xg_40",
+      "date": "2026-01-10 15:30 CT",
+      "summary": "Gillette Coon Supper",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_vv6g38_71",
+      "date": "2026-01-12 08:00 CT",
+      "summary": "Kelly to work from Mena/Steve to meet with contacts",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_rd3t0b_39",
+      "date": "2026-01-12 16:00 CT",
+      "summary": "Polk County Meeting",
+      "location": "Mena, AR 71953, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_3rp86k_37",
+      "date": "2026-01-13 12:00 CT",
+      "summary": "Heber girls lunch",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_k6kfq7_24",
+      "date": "2026-01-14 12:00 CT",
+      "summary": "Busy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_94j4tn_67",
+      "date": "2026-01-14 18:00 CT",
+      "summary": "DPA Candidate Training: Fundraising and Finance",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_82yt0h_32",
+      "date": "2026-01-15 19:30 CT",
+      "summary": "Party huddle",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_wmegdr_43",
+      "date": "2026-01-16 18:30 CT",
+      "summary": "Fish Fry in St. Joe, AR",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_cr9dso_61",
+      "date": "2026-01-17 09:30 CT",
+      "summary": "Fulton County - Workshop and County Visit",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_fdqrs4_40",
+      "date": "2026-01-17 17:30 CT",
+      "summary": "Stone County Meet Up",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_lma1g7_41",
+      "date": "2026-01-17 21:00 CT",
+      "summary": "Stay in Mountain View",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_hvj03x_44",
+      "date": "2026-01-18 14:00 CT",
+      "summary": "Saline County fundraiser",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_j5okcb_58",
+      "date": "2026-01-19 10:00 CT",
+      "summary": "Jacksonville NAACP MLK Day Celebration",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_r5v9qr_50",
+      "date": "2026-01-19 18:00 CT",
+      "summary": "Meet the candidates Lee county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_b4yrtx_55",
+      "date": "2026-01-20 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_hm12r0_74",
+      "date": "2026-01-22 16:00 CT",
+      "summary": "Camden candidate meeting at 6 contacted Reese Broadnax",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_ned92_51",
+      "date": "2026-01-24 12:00 CT",
+      "summary": "Voice of Hind Rajab Little Rock",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_h4mz4g_48",
+      "date": "2026-01-27 18:30 CT",
+      "summary": "Finalize Sherwood Homecoming",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_gx63sd_52",
+      "date": "2026-01-28 18:30 CT",
+      "summary": "Candidate kick off Beverly Keown",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_58uogt_46",
+      "date": "2026-01-29 18:00 CT",
+      "summary": "Jacksonville chamber event",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_j6pk1o_55",
+      "date": "2026-01-31 06:30 CT",
+      "summary": "Spend the Day in Fulton County Area",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_f9prk5_59",
+      "date": "2026-01-31 16:00 CT",
+      "summary": "Fulton County Candidate Forum and Visit",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_cpmggm_35",
+      "date": "2026-02-02 17:30 CT",
+      "summary": "Faulkner county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_j64gjr_62",
+      "date": "2026-02-03 18:00 CT",
+      "summary": "Harding young Dems Holland Waller room 208",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_pg8td5_31",
+      "date": "2026-02-04 18:00 CT",
+      "summary": "CDSR searcy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_q85f38_55",
+      "date": "2026-02-04 20:00 CT",
+      "summary": "Muslim organizing meeting - argenta",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_63h7ou_50",
+      "date": "2026-02-05 15:00 CT",
+      "summary": "Cross county farm bureau event",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_vw94l3_84",
+      "date": "2026-02-07 (all-day)",
+      "summary": "Van Buren County Candidate Forum and County Visit (Pie Auction)",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_hy3jfs_59",
+      "date": "2026-02-07 17:00 CT",
+      "summary": "Van Buren County Pie Auction in allread",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_d6yo3h_44",
+      "date": "2026-02-08 14:00 CT",
+      "summary": "Heber Springs Fundraiser",
+      "location": "209 E Main St, Heber Springs, AR 72543, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_kzck8b_47",
+      "date": "2026-02-08 16:00 CT",
+      "summary": "Spend the night in ft smith",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_q2qm1n_46",
+      "date": "2026-02-08 19:00 CT",
+      "summary": "Ft. Smith candidate huddle",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_y2uu4s_49",
+      "date": "2026-02-09 17:00 CT",
+      "summary": "Sebastian County Dems Meeting",
+      "location": "Fort Smith, AR, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_idsqns_46",
+      "date": "2026-02-10 17:00 CT",
+      "summary": "Saline County Dems Meeting",
+      "location": "Benton, AR, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_jk1vrp_64",
+      "date": "2026-02-11 18:00 CT",
+      "summary": "DPA Candidate Training: Field and Organizing",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_wjgjac_39",
+      "date": "2026-02-12 08:00 CT",
+      "summary": "Work from Jonesboro",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_bxb3py_44",
+      "date": "2026-02-12 15:00 CT",
+      "summary": "DASS + Kelly Grappe (AR)",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_kufuiz_53",
+      "date": "2026-02-14 09:30 CT",
+      "summary": "Saline county library civic event",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_7rb26x_48",
+      "date": "2026-02-14 14:00 CT",
+      "summary": "Canvassing for Alex Holladay",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_dd5tqp_33",
+      "date": "2026-02-15 15:00 CT",
+      "summary": "NAACP meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_uccjl_50",
+      "date": "2026-02-16 (all-day)",
+      "summary": "Early Voting Begins - Primary",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_ohxb8a_45",
+      "date": "2026-02-16 15:00 CT",
+      "summary": "Hot springs village forum",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_w8kbzo_55",
+      "date": "2026-02-17 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_3fohlg_44",
+      "date": "2026-02-19 12:00 CT",
+      "summary": "DASS + Kelly Grappe (AR)",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_n9jvir_63",
+      "date": "2026-02-19 16:00 CT",
+      "summary": "Berryville Chamber Meet the Candidate Event",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_yr7zl6_78",
+      "date": "2026-02-21 (all-day)",
+      "summary": "Jacksonville NAACP Ivory Tillman Youth Speech Competition",
+      "location": "Jacksonville, AR, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_wxwxkg_47",
+      "date": "2026-02-23 18:00 CT",
+      "summary": "Pulaski county Dems meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_apdkmp_58",
+      "date": "2026-02-24 16:00 CT",
+      "summary": "Virginia Clinton Kelly candidate forum",
+      "location": "Hot Springs, AR, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_t4xtug_39",
+      "date": "2026-02-26 07:00 CT",
+      "summary": "Work from Jonesboro",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_86szew_54",
+      "date": "2026-02-28 08:00 CT",
+      "summary": "Placeholder hot springs fundraiser",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_h3k1f0_41",
+      "date": "2026-03-03 (all-day)",
+      "summary": "Primary Election Day",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_q3ndjk_44",
+      "date": "2026-03-05 12:00 CT",
+      "summary": "DASS + Kelly Grappe (AR)",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_y4sl6o_47",
+      "date": "2026-03-05 12:00 CT",
+      "summary": "Jeannie gray sherwood event",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_gjflkv_58",
+      "date": "2026-03-05 19:00 CT",
+      "summary": "Drive to Fayetteville and spend night.",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_xk4otj_41",
+      "date": "2026-03-10 18:00 CT",
+      "summary": "Saline county meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_tq5q5b_81",
+      "date": "2026-03-11 18:00 CT",
+      "summary": "DPA Candidate Training: Messaging, Communications, and Policy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_wiivmf_43",
+      "date": "2026-03-11 18:00 CT",
+      "summary": "Sherwood event check in",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_9u8098_50",
+      "date": "2026-03-13 17:00 CT",
+      "summary": "Drop supplies off at Morrilton",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_kroqzt_36",
+      "date": "2026-03-14 07:00 CT",
+      "summary": "Fayetteville DPA",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_8k5gqb_59",
+      "date": "2026-03-14 14:00 CT",
+      "summary": "DPA State Committee Meeting, March 2026",
+      "location": "The Jones Center, 922 E Emma Ave, Springdale, AR, 72764",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_w3y0tx_55",
+      "date": "2026-03-17 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_5e90md_58",
+      "date": "2026-03-19 17:00 CT",
+      "summary": "Cindy nations campaign kick off Conway",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_s32d4d_45",
+      "date": "2026-03-21 (all-day)",
+      "summary": "Camden immersion weekend",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_yfs95b_47",
+      "date": "2026-03-21 09:30 CT",
+      "summary": "Jonquil festival Washington",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_dar6of_55",
+      "date": "2026-03-22 11:00 CT",
+      "summary": "Church in Camden with bishop Arnold",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_e1a3yy_42",
+      "date": "2026-03-24 17:00 CT",
+      "summary": "Jacksonville town hall",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_svlupy_46",
+      "date": "2026-03-26 (all-day)",
+      "summary": "Stay at Cedar Falls Motel",
+      "location": "Cedar Falls Motel, Morrilton",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_wbbmle_32",
+      "date": "2026-03-26 18:30 CT",
+      "summary": "Morrilton C5",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_3wos92_51",
+      "date": "2026-03-31 17:00 CT",
+      "summary": "Jones fundraiser at stacy sells",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_4q056_42",
+      "date": "2026-04-02 17:00 CT",
+      "summary": "Christy Low fundraiser",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_nj8mi4_55",
+      "date": "2026-04-04 10:00 CT",
+      "summary": "Stone county Dems - Jan Misenheimer",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_y9a6an_36",
+      "date": "2026-04-06 17:00 CT",
+      "summary": "Call jg phillips",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_9lfs8c_92",
+      "date": "2026-04-06 17:30 CT",
+      "summary": "Cross county Dems power of 5. Meeting at 6. We need to be there by 6:30.",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_6p148i_61",
+      "date": "2026-04-07 18:30 CT",
+      "summary": "April 2026 Arkansas Block Captain Meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_sw6ful_40",
+      "date": "2026-04-08 08:00 CT",
+      "summary": "County clerk meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_qec3mx_45",
+      "date": "2026-04-08 17:30 CT",
+      "summary": "Travel to Crawford county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_gn0m55_24",
+      "date": "2026-04-10 17:00 CT",
+      "summary": "Mena",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_5v6c5q_31",
+      "date": "2026-04-11 10:30 CT",
+      "summary": "Mena picnic",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_ionzt0_44",
+      "date": "2026-04-12 08:00 CT",
+      "summary": "Presbyterian church Mena",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_fky84c_36",
+      "date": "2026-04-14 17:00 CT",
+      "summary": "Trios fundraiser",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_hbrcec_34",
+      "date": "2026-04-18 (all-day)",
+      "summary": "Mountain home",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_gmys5h_36",
+      "date": "2026-04-20 07:00 CT",
+      "summary": "WF mountain Home",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_mbi968_38",
+      "date": "2026-04-20 17:00 CT",
+      "summary": "Yellville  meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_v3cxxf_55",
+      "date": "2026-04-21 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_4of0gd_42",
+      "date": "2026-04-23 17:00 CT",
+      "summary": "Travel to Russellville",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_czul7g_44",
+      "date": "2026-04-24 18:00 CT",
+      "summary": "Russellville pope county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_nbu8oa_41",
+      "date": "2026-04-25 09:00 CT",
+      "summary": "Jacksonville clean up",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_avl6ym_46",
+      "date": "2026-04-25 14:00 CT",
+      "summary": "Argenta to see Brooks band",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_xd25e6_42",
+      "date": "2026-04-30 18:00 CT",
+      "summary": "Jacksonville win event",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_o679zb_55",
+      "date": "2026-05-03 10:30 CT",
+      "summary": "Church with lisa Holloway and lunch",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_mi5fos_65",
+      "date": "2026-05-03 13:00 CT",
+      "summary": "Edensong in Heber with carol Hutto. Show at 2",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_rsea4c_40",
+      "date": "2026-05-09 11:00 CT",
+      "summary": "501 fest Little Rock",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_i2za7j_52",
+      "date": "2026-05-09 11:00 CT",
+      "summary": "PAWPAC saline Brunch with Teresa",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_uv88gb_36",
+      "date": "2026-05-09 17:00 CT",
+      "summary": "Pike county Dems",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_59l7ag_38",
+      "date": "2026-05-10 09:00 CT",
+      "summary": "Church at Lakewood",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_j1u4cd_50",
+      "date": "2026-05-14 (all-day)",
+      "summary": "Work from hospital with Steve",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_qhgl5s_56",
+      "date": "2026-05-16 (all-day)",
+      "summary": "Magnolia fest and immersion weekend",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_5eacjc_42",
+      "date": "2026-05-17 14:00 CT",
+      "summary": "Bishop Arnold magnolia",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_m2ufke_46",
+      "date": "2026-05-18 (all-day)",
+      "summary": "Stay at Coulter Farmstead",
+      "location": "1010 Conway Street, Washington, AR 71862, USA",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_wvikky_39",
+      "date": "2026-05-18 18:00 CT",
+      "summary": "Pulaski county Dems",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_7ad2q3_55",
+      "date": "2026-05-19 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_facfk7_41",
+      "date": "2026-05-21 16:00 CT",
+      "summary": "Third Thursday Benton",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_umeneq_45",
+      "date": "2026-05-23 08:00 CT",
+      "summary": "Desha county Memorial Day",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_kodzul_53",
+      "date": "2026-05-26 17:00 CT",
+      "summary": "Hot Springs Election Conversation",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_i9q5km_46",
+      "date": "2026-05-28 17:30 CT",
+      "summary": "Jones fundraiser at Dana’s",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_s0foox_34",
+      "date": "2026-05-29 06:00 CT",
+      "summary": "Wf Little Rock",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_fpdwt8_51",
+      "date": "2026-06-03 (all-day)",
+      "summary": "Ext homemakers club convention",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_z0k4u7_37",
+      "date": "2026-06-04 17:30 CT",
+      "summary": "Fish fry Faulkner",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_px1kfp_41",
+      "date": "2026-06-05 17:00 CT",
+      "summary": "Travel to Arkadelphia",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_zclvfy_33",
+      "date": "2026-06-06 (all-day)",
+      "summary": "Clark county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_eexjfy_52",
+      "date": "2026-06-08 17:30 CT",
+      "summary": "Greene county democratic meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_prgwzi_43",
+      "date": "2026-06-10 17:00 CT",
+      "summary": "Leave for Mountain View",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_hlkd8a_58",
+      "date": "2026-06-11 (all-day)",
+      "summary": "Pink tomato festival & South AR visit",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_vpinaj_65",
+      "date": "2026-06-11 09:00 CT",
+      "summary": "County Clerk Candidate Q & A in Mountain View",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_7key4e_67",
+      "date": "2026-06-14 (all-day)",
+      "summary": "Monticello Juneteenth festival - Clarissa pace",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_jqhq07_55",
+      "date": "2026-06-16 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_gzgqc8_41",
+      "date": "2026-06-16 17:30 CT",
+      "summary": "Fundraiser in Quitman",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_vb7mil_24",
+      "date": "2026-06-17 11:30 CT",
+      "summary": "Busy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_il5r05_45",
+      "date": "2026-06-17 17:00 CT",
+      "summary": "Montgomery county meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_pfobtq_24",
+      "date": "2026-06-18 11:45 CT",
+      "summary": "Busy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_viebfq_42",
+      "date": "2026-06-19 (all-day)",
+      "summary": "Juneteenth in da rock",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_a5ly4b_38",
+      "date": "2026-06-20 12:00 CT",
+      "summary": "Menifee Juneteenth",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_xjwvwq_33",
+      "date": "2026-06-22 11:30 CT",
+      "summary": "Chamber lunch",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_leqd87_73",
+      "date": "2026-06-26 11:00 CT",
+      "summary": "SOS debate - Annual Press Convention - Eureka Springs",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_p3n9dm_56",
+      "date": "2026-06-27 10:00 CT",
+      "summary": "Pioneer heritage day - searcy county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_v8wkbd_24",
+      "date": "2026-06-29 08:00 CT",
+      "summary": "Busy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_puk639_39",
+      "date": "2026-06-29 17:30 CT",
+      "summary": "Pulaski county Dems",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_41002b_47",
+      "date": "2026-06-30 (all-day)",
+      "summary": "Liberty Day at the Capitol",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_s0tjlz_49",
+      "date": "2026-06-30 15:00 CT",
+      "summary": "Working session for campaigns",
+      "location": "Creekmore Rose Room",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": true
+    },
+    {
+      "id": "cal_kzqy11_59",
+      "date": "2026-07-03 07:30 CT",
+      "summary": "Dewitt. Arkansas county 250 celebration",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_zgghzf_32",
+      "date": "2026-07-03 16:00 CT",
+      "summary": "Sherwood 4th",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_18wqce_55",
+      "date": "2026-07-07 18:00 CT",
+      "summary": "Hot spring county meeting. Malvern.",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_5i0oia_65",
+      "date": "2026-07-09 17:00 CT",
+      "summary": "Fundraiser at Nixons Flower Farm Jacksonville",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_o3xiac_56",
+      "date": "2026-07-11 10:00 CT",
+      "summary": "10am Benton county volunteer meet up",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_hyp8ku_51",
+      "date": "2026-07-11 16:00 CT",
+      "summary": "4pm-6 Benton county HQ opening.",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_3dqs28_53",
+      "date": "2026-07-12 (all-day)",
+      "summary": "1130-130 Bella vista women lunch",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_nmnty3_55",
+      "date": "2026-07-12 11:00 CT",
+      "summary": "Sunday lunch 2 Cora cir Bella vista",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_648pet_51",
+      "date": "2026-07-13 07:00 CT",
+      "summary": "Work from Benton County Library",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_ecj3g4_61",
+      "date": "2026-07-13 17:00 CT",
+      "summary": "Benton County HBD America voter reg event",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_4myy6n_36",
+      "date": "2026-07-14 (all-day)",
+      "summary": "Pick up Karrabi",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_idifmp_47",
+      "date": "2026-07-16 18:00 CT",
+      "summary": "Johnson county Dems meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_nhazjt_45",
+      "date": "2026-07-17 18:00 CT",
+      "summary": "Franklin County event 6pm",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_z1qdhx_50",
+      "date": "2026-07-18 (all-day)",
+      "summary": "Johnson county peach festival",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_n8h4ye_52",
+      "date": "2026-07-20 (all-day)",
+      "summary": "Don Henry arrive Monday morning",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_vh7veo_55",
+      "date": "2026-07-21 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_wwvjoz_36",
+      "date": "2026-07-23 16:00 CT",
+      "summary": "HSV dems meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_kld484_50",
+      "date": "2026-07-24 (all-day)",
+      "summary": "Cave City Watermelon Festival",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_wnzn34_45",
+      "date": "2026-07-24 21:30 CT",
+      "summary": "Spend night in Batesville",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_m12t6k_49",
+      "date": "2026-07-26 (all-day)",
+      "summary": "Mississippi county immersion",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_rf340m_71",
+      "date": "2026-07-29 16:00 CT",
+      "summary": "4pm Hot spring dems event tentative late in the day",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_qwvaax_24",
+      "date": "2026-07-30 10:00 CT",
+      "summary": "Busy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_9j81x0_46",
+      "date": "2026-08-01 (all-day)",
+      "summary": "St. Joseph bizarre Conway",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_df245c_52",
+      "date": "2026-08-02 16:00 CT",
+      "summary": "Fundraiser at Jim Bob Bramlett’s",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_oxlso7_41",
+      "date": "2026-08-02 17:00 CT",
+      "summary": "Faulkner county event",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_81vhaz_39",
+      "date": "2026-08-04 17:30 CT",
+      "summary": "Travel to El Dorado",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_m48296_32",
+      "date": "2026-08-05 07:00 CT",
+      "summary": "WF El Dorado",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_u6x8tf_56",
+      "date": "2026-08-05 10:30 CT",
+      "summary": "Retired ministers luncheon El Dorado",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_ltrf0u_47",
+      "date": "2026-08-06 (all-day)",
+      "summary": "400 Pope county HQ opening",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_j2gufl_50",
+      "date": "2026-08-06 (all-day)",
+      "summary": "Russellville speaking at good",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_fhwq04_43",
+      "date": "2026-08-06 17:30 CT",
+      "summary": "Fundraiser with Sarah R",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_nz2qt2_48",
+      "date": "2026-08-07 (all-day)",
+      "summary": "830am Ms Magazine interview",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_kk29ed_52",
+      "date": "2026-08-08 (all-day)",
+      "summary": "Hempstead county - clerk invite",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_7a4kxz_41",
+      "date": "2026-08-08 (all-day)",
+      "summary": "Hope watermelon fest",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_h8ban0_63",
+      "date": "2026-08-09 (all-day)",
+      "summary": "Canvass Benton with Josh Irby after church",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_l3z8j0_52",
+      "date": "2026-08-10 12:00 CT",
+      "summary": "Rowdy women 12pm lunch in Searcy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_ry0taq_43",
+      "date": "2026-08-11 (all-day)",
+      "summary": "Jefferson co immersion",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_azgylv_43",
+      "date": "2026-08-12 (all-day)",
+      "summary": "Jefferson co immersion",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_oio6r8_57",
+      "date": "2026-08-13 (all-day)",
+      "summary": "Come home from Jefferson county late",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_735prj_45",
+      "date": "2026-08-14 (all-day)",
+      "summary": "Leave for horseshoe bend",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_5gyhrs_60",
+      "date": "2026-08-15 (all-day)",
+      "summary": "Horseshoe bend event with Sandy at 2:00",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_gfhrm6_64",
+      "date": "2026-08-15 16:00 CT",
+      "summary": "Back to school bash with Shemal in Jonesboro",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_bwrj1g_51",
+      "date": "2026-08-16 16:00 CT",
+      "summary": "4pm benton event with Josh irby",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_o02bav_64",
+      "date": "2026-08-17 18:30 CT",
+      "summary": "Washington County dem kelly is speaking 6 PM",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_xp4hq9_33",
+      "date": "2026-08-18 05:00 CT",
+      "summary": "Benton county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_o0mzww_73",
+      "date": "2026-08-18 11:00 CT",
+      "summary": "Meet with Senior Dems in NWAR (Debby Winters contact)",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_bwb8ex_55",
+      "date": "2026-08-18 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_wl8azk_33",
+      "date": "2026-08-19 05:00 CT",
+      "summary": "Benton county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_87k6oa_33",
+      "date": "2026-08-20 05:00 CT",
+      "summary": "Benton county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_d1z9aj_40",
+      "date": "2026-08-22 (all-day)",
+      "summary": "Texarkana Immersion",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_eqb094_32",
+      "date": "2026-08-27 (all-day)",
+      "summary": "Arkadelphia",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_8y9puu_48",
+      "date": "2026-08-27 17:00 CT",
+      "summary": "Bryant Summer nights  Teresa",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_vi84xq_58",
+      "date": "2026-08-29 (all-day)",
+      "summary": "Marion county visit dem party meeting",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_2jj9io_35",
+      "date": "2026-09-03 (all-day)",
+      "summary": "Madison county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_jq3sdm_70",
+      "date": "2026-09-03 18:00 CT",
+      "summary": "Conway county fair opening night. Spend the night.",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_1ae60j_72",
+      "date": "2026-09-04 09:30 CT",
+      "summary": "Morrilton. Go to fair at lunch. Fundraiser at night?",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_w9k8p_44",
+      "date": "2026-09-05 (all-day)",
+      "summary": "Festiville Jacksonville",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_wuhuq9_37",
+      "date": "2026-09-06 (all-day)",
+      "summary": "Rector Labor Day",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_8u2779_56",
+      "date": "2026-09-10 18:00 CT",
+      "summary": "Johnson County Roosevelt Dinner  6pm",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_3a8pn5_60",
+      "date": "2026-09-12 (all-day)",
+      "summary": "Cleveland county forum - Jametta Harper",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_8h38fj_54",
+      "date": "2026-09-12 (all-day)",
+      "summary": "Harrison Hot Air Balloon Festival",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_85j13c_46",
+      "date": "2026-09-13 14:00 CT",
+      "summary": "Fort Smith Candidate rally",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_81rzod_44",
+      "date": "2026-09-14 (all-day)",
+      "summary": "Mt home candidate forum",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_bep9bd_73",
+      "date": "2026-09-15 (all-day)",
+      "summary": "Russellville Mary Ella voter reg 3-5 Steve 5-7 Kelly",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_jtev7_55",
+      "date": "2026-09-15 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_fj5snj_39",
+      "date": "2026-09-16 14:00 CT",
+      "summary": "HSV candidate forum",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_kwywz2_42",
+      "date": "2026-09-19 (all-day)",
+      "summary": "Little Rock comic con",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_bc2jv9_56",
+      "date": "2026-09-19 16:00 CT",
+      "summary": "4pm hot spring dems picnic tentative",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_g9be7k_32",
+      "date": "2026-09-20 (all-day)",
+      "summary": "Arkadelphia",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_xr7mo5_55",
+      "date": "2026-09-26 14:00 CT",
+      "summary": "Paragould candidate forum 2pm til 5",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_6nwiwx_53",
+      "date": "2026-09-27 08:00 CT",
+      "summary": "Little flock - embed in Benton co",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_gmodfg_35",
+      "date": "2026-10-01 (all-day)",
+      "summary": "Personal block",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_g47ie5_35",
+      "date": "2026-10-02 (all-day)",
+      "summary": "Personal block",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_1llfpw_51",
+      "date": "2026-10-03 (all-day)",
+      "summary": "Goat fest - patty brazil chair",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_snxu70_69",
+      "date": "2026-10-03 (all-day)",
+      "summary": "Moonshine and music festival at fairgrounds vbco",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_g3krtn_46",
+      "date": "2026-10-03 16:00 CT",
+      "summary": "North Little Rock Air Show",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_5t5lku_34",
+      "date": "2026-10-04 (all-day)",
+      "summary": "Mountain Home",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_sjk7ep_34",
+      "date": "2026-10-05 (all-day)",
+      "summary": "Mountain Home",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_hkmxpc_24",
+      "date": "2026-10-06 18:00 CT",
+      "summary": "Busy",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_q58v9e_38",
+      "date": "2026-10-10 (all-day)",
+      "summary": "Montgomery county",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_nurxe6_42",
+      "date": "2026-10-10 (all-day)",
+      "summary": "Turkey drop Yellville",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_73mpun_29",
+      "date": "2026-10-17 10:00 CT",
+      "summary": "Stuttgart",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_1e1mnq_40",
+      "date": "2026-10-19 (all-day)",
+      "summary": "Early Voting Begins",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_ezk2mf_55",
+      "date": "2026-10-20 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_fqzfen_83",
+      "date": "2026-11-01 06:30 CT",
+      "summary": "Central arkansas veterans car show and parade north Little Rock",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Needs confirm",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_qon9mz_33",
+      "date": "2026-11-03 (all-day)",
+      "summary": "Election Day",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    },
+    {
+      "id": "cal_sdz176_55",
+      "date": "2026-11-17 17:00 CT",
+      "summary": "Arkansas Democrats Present: The Hub",
+      "location": "",
+      "city": "",
+      "county": "",
+      "status": "Exclude",
+      "hasPhysicalLocation": false
+    }
+  ]
+}
