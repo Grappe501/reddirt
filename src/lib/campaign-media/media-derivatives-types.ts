@@ -92,7 +92,11 @@ export type VideoClipRecord = {
   height?: number | null;
   createdAt: string;
   note?: string;
+  /** Video Prep — source or vertical_9x16 social reframe. */
+  aspect?: "source" | "vertical_9x16";
 };
+
+export type VideoEncodeAspect = "source" | "vertical_9x16";
 
 export type LocalVideoProbeResult = {
   ok: boolean;

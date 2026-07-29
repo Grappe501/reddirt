@@ -165,6 +165,21 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     audience: "video",
     summary: "Build timed clip candidates from the local transcript workspace (no encode yet).",
   },
+  {
+    name: "prep_video_package",
+    audience: "video",
+    summary: "One-shot video prep: tooling + master + plan + transcript intel (encode/poster only with confirm flags).",
+  },
+  {
+    name: "list_video_derivatives",
+    audience: "video",
+    summary: "List encoded clips and posters for a speech/outId.",
+  },
+  {
+    name: "apply_transcript_intelligence",
+    audience: "video",
+    summary: "Apply a stored transcript-intel proposal to speech overlay fields (confirm required).",
+  },
 ];
 
 export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[] {
@@ -663,7 +678,7 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
       function: {
         name: "encode_video_excerpt",
         description:
-          "Encode a timed MP4 excerpt from a local master into campaign-derivatives. Prefer planId+clipIndex from plan_video_excerpt, or pass startSeconds/endSeconds. Max 120s per clip.",
+          "Encode a timed MP4 excerpt from a local master into campaign-derivatives. Prefer planId+clipIndex from plan_video_excerpt, or pass startSeconds/endSeconds. Max 120s per clip. Requires confirmEncode:true when called from the AI brain.",
         parameters: {
           type: "object",
           properties: {
@@ -675,8 +690,13 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             startSeconds: { type: "number" },
             endSeconds: { type: "number" },
             localPublicSrc: { type: "string" },
+            aspect: { type: "string", enum: ["source", "vertical_9x16"] },
+            confirmEncode: {
+              type: "boolean",
+              description: "Must be true — operator explicitly asked to encode.",
+            },
           },
-          required: ["outId"],
+          required: ["outId", "confirmEncode"],
         },
       },
     },
@@ -710,6 +730,72 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             maxClips: { type: "number" },
           },
           required: ["youtubeVideoId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "prep_video_package",
+        description:
+          "One-shot Evidence Video Prep: probe tooling, find master, plan excerpts, analyze transcript intel. Set confirmEncode/confirmPoster true only when the operator explicitly asks to write clips/posters.",
+        parameters: {
+          type: "object",
+          properties: {
+            speechId: { type: "string" },
+            youtubeVideoId: { type: "string" },
+            query: { type: "string" },
+            maxClips: { type: "number" },
+            confirmEncode: { type: "boolean" },
+            confirmPoster: { type: "boolean" },
+            aspect: { type: "string", enum: ["source", "vertical_9x16"] },
+          },
+          required: ["speechId", "youtubeVideoId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "list_video_derivatives",
+        description: "List encoded clips and poster stills for a speech/outId from the derivatives ledger.",
+        parameters: {
+          type: "object",
+          properties: {
+            outId: { type: "string", description: "Usually speechId" },
+          },
+          required: ["outId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "apply_transcript_intelligence",
+        description:
+          "Apply a stored transcript-intel proposal to the speech overlay. Requires confirm:true and applyFields. Does not invent lines.",
+        parameters: {
+          type: "object",
+          properties: {
+            speechId: { type: "string" },
+            proposalId: { type: "string" },
+            applyFields: {
+              type: "array",
+              items: {
+                type: "string",
+                enum: [
+                  "whatThisProves",
+                  "speakerNotes",
+                  "keyQuotes",
+                  "doNotClaim",
+                  "transcriptChapters",
+                ],
+              },
+            },
+            claimIndex: { type: "number" },
+            confirm: { type: "boolean" },
+          },
+          required: ["speechId", "proposalId", "applyFields", "confirm"],
         },
       },
     },

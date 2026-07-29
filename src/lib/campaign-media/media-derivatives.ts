@@ -1043,6 +1043,8 @@ export function encodeVideoExcerptClip(input: {
   youtubeVideoId?: string;
   localPublicSrc?: string;
   absPath?: string;
+  /** Video Prep — optional 9:16 social reframe (scale+crop). */
+  aspect?: import("@/lib/campaign-media/media-derivatives-types").VideoEncodeAspect;
 }):
   | { ok: true; publicSrc: string; relativePath: string; record: VideoClipRecord }
   | { ok: false; error: string } {
@@ -1082,22 +1084,24 @@ export function encodeVideoExcerptClip(input: {
     };
   }
 
+  const aspect = input.aspect === "vertical_9x16" ? "vertical_9x16" : "source";
   const stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
   const clipIndex = Number.isFinite(input.clipIndex) ? Math.max(0, Number(input.clipIndex)) : 0;
   const outDirRel = path.join(MEDIA_DERIVATIVES_PUBLIC_REL, "_video", outId);
   const outDirAbs = abs(outDirRel);
   mkdirSync(outDirAbs, { recursive: true });
-  const filename = `clip-${clipIndex}-${Math.round(start)}s-${Math.round(end)}s-${stamp}.mp4`;
+  const aspectTag = aspect === "vertical_9x16" ? "v916" : "src";
+  const filename = `clip-${clipIndex}-${Math.round(start)}s-${Math.round(end)}s-${aspectTag}-${stamp}.mp4`;
   const outAbs = path.join(outDirAbs, filename);
 
-  const run = runFfmpeg([
+  const ffmpegArgs = [
     "-y",
-    "-i",
-    master.absPath,
     "-ss",
     String(start),
-    "-to",
-    String(end),
+    "-i",
+    master.absPath,
+    "-t",
+    String(Math.max(0.4, end - start)),
     "-c:v",
     "libx264",
     "-preset",
@@ -1110,8 +1114,16 @@ export function encodeVideoExcerptClip(input: {
     "128k",
     "-movflags",
     "+faststart",
-    outAbs,
-  ]);
+  ];
+  if (aspect === "vertical_9x16") {
+    ffmpegArgs.push(
+      "-vf",
+      "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1",
+    );
+  }
+  ffmpegArgs.push(outAbs);
+
+  const run = runFfmpeg(ffmpegArgs);
   if (!run.ok) return { ok: false, error: run.error };
   if (!existsSync(outAbs)) return { ok: false, error: "ffmpeg did not write clip." };
 
@@ -1128,7 +1140,7 @@ export function encodeVideoExcerptClip(input: {
   const outMeta = outProbe.ok ? parseFfprobe(outProbe.data) : null;
 
   const record: VideoClipRecord = {
-    id: `${outId}--clip-${clipIndex}--${stamp}`,
+    id: `${outId}--clip-${clipIndex}--${aspectTag}--${stamp}`,
     outId,
     planId: input.planId,
     clipIndex,
@@ -1147,6 +1159,8 @@ export function encodeVideoExcerptClip(input: {
     width: frame.width ?? outMeta?.width,
     height: frame.height ?? outMeta?.height,
     createdAt: new Date().toISOString(),
+    aspect,
+    note: aspect === "vertical_9x16" ? "9:16 social reframe (non-destructive)." : undefined,
   };
   const ledger = loadMediaDerivativesLedger();
   ledger.videoClips = [record, ...(ledger.videoClips ?? [])].slice(0, 200);
@@ -1166,6 +1180,7 @@ export function encodeVideoExcerptPlan(input: {
   localPublicSrc?: string;
   absPath?: string;
   clipIndexes?: number[];
+  aspect?: import("@/lib/campaign-media/media-derivatives-types").VideoEncodeAspect;
 }): {
   ok: boolean;
   created: VideoClipRecord[];
@@ -1224,6 +1239,7 @@ export function encodeVideoExcerptPlan(input: {
       youtubeVideoId,
       localPublicSrc: input.localPublicSrc,
       absPath: input.absPath,
+      aspect: input.aspect,
     });
     if (result.ok) created.push(result.record);
     else errors.push({ clipIndex, error: result.error });

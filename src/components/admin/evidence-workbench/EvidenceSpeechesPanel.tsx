@@ -11,6 +11,7 @@ import {
   listLocalVideoMastersAction,
   listVideoClipsAction,
   planVideoExcerptAction,
+  prepSpeechVideoPackageAction,
   probeLocalVideoAction,
   probeVideoToolingAction,
   saveSpeechEvidenceAction,
@@ -26,6 +27,15 @@ import { mergeAiCountyIntoList } from "@/lib/campaign-media/evidence-validation"
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
 
+type PrepPacketView = {
+  message: string;
+  master: { found: boolean; note: string };
+  planError?: string;
+  intelError?: string;
+  nextActions: string[];
+  planClips?: number;
+  intelQuotes?: number;
+};
 const INTEL_FIELD_OPTIONS: Array<{ key: string; label: string }> = [
   { key: "whatThisProves", label: "What this proves" },
   { key: "speakerNotes", label: "Speaker notes" },
@@ -66,6 +76,13 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
   const [excerptPlan, setExcerptPlan] = useState<VideoExcerptPlan | null>(null);
   const [encodedClips, setEncodedClips] = useState<VideoClipRecord[]>([]);
   const [encodeProgress, setEncodeProgress] = useState("");
+  const [planQuery, setPlanQuery] = useState("");
+  const [manualStart, setManualStart] = useState("0");
+  const [manualEnd, setManualEnd] = useState("8");
+  const [vertical916, setVertical916] = useState(false);
+  const [prepAlsoEncode, setPrepAlsoEncode] = useState(false);
+  const [prepAlsoPoster, setPrepAlsoPoster] = useState(false);
+  const [prepPacket, setPrepPacket] = useState<PrepPacketView | null>(null);
   const [intelProposal, setIntelProposal] = useState<TranscriptIntelProposal | null>(null);
   const [intelFields, setIntelFields] = useState<Set<string>>(
     () => new Set(["whatThisProves", "keyQuotes", "doNotClaim", "transcriptChapters"]),
@@ -116,6 +133,8 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
     setEncodedClips([]);
     setEncodeProgress("");
     setIntelProposal(null);
+    setPrepPacket(null);
+    setPlanQuery("");
     void probeVideoToolingAction().then((res) => {
       setFfmpegNote(res.message);
     });
@@ -214,10 +233,99 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
 
   function planExcerpt() {
     const youtubeVideoId = speech.youtubeVideoId;
+    const q = planQuery.trim();
     start(async () => {
-      const res = await planVideoExcerptAction(youtubeVideoId);
+      const res = await planVideoExcerptAction(youtubeVideoId, q || undefined);
       setMessage(res.message);
       if (res.ok && res.plan) setExcerptPlan(res.plan);
+    });
+  }
+
+  function runVideoPrep() {
+    const speechId = speech.id;
+    const youtubeVideoId = speech.youtubeVideoId;
+    start(async () => {
+      const res = await prepSpeechVideoPackageAction({
+        speechId,
+        youtubeVideoId,
+        query: planQuery.trim() || undefined,
+        maxClips: 3,
+        confirmEncode: prepAlsoEncode,
+        confirmPoster: prepAlsoPoster,
+        aspect: vertical916 ? "vertical_9x16" : "source",
+      });
+      setMessage(res.message);
+      if (!res.packet) return;
+      const p = res.packet;
+      setPrepPacket({
+        message: p.message,
+        master: p.master,
+        planError: p.planError,
+        intelError: p.intelError,
+        nextActions: p.nextActions,
+        planClips: p.plan?.clips.length,
+        intelQuotes: p.intel?.quotes.length,
+      });
+      if (p.plan) setExcerptPlan(p.plan);
+      if (p.intel) setIntelProposal(p.intel);
+      if (p.encodedThisRun.length || p.existingClips.length) {
+        setEncodedClips(
+          p.encodedThisRun.length
+            ? [
+                ...p.encodedThisRun,
+                ...p.existingClips.filter((c) => !p.encodedThisRun.some((e) => e.id === c.id)),
+              ]
+            : p.existingClips,
+        );
+      }
+      if (p.postersThisRun[0]) setPosterSrc(p.postersThisRun[0].publicSrc);
+    });
+  }
+
+  function encodeManualWindow() {
+    const startSec = Number(manualStart);
+    const endSec = Number(manualEnd);
+    if (!Number.isFinite(startSec) || !Number.isFinite(endSec) || endSec <= startSec) {
+      setMessage("Manual window needs end > start.");
+      return;
+    }
+    const speechId = speech.id;
+    const youtubeVideoId = speech.youtubeVideoId;
+    setEncodeProgress(`Encoding ${startSec}s–${endSec}s…`);
+    start(async () => {
+      const res = await encodeVideoExcerptAction({
+        speechId,
+        youtubeVideoId,
+        startSeconds: startSec,
+        endSeconds: endSec,
+        title: "Manual window",
+        aspect: vertical916 ? "vertical_9x16" : "source",
+      });
+      setMessage(res.message);
+      setEncodeProgress("");
+      const listed = await listVideoClipsAction(speechId);
+      setEncodedClips(listed.clips ?? []);
+    });
+  }
+
+  function encodeQuoteWindow(startSeconds: number, endSeconds: number, quote: string) {
+    const speechId = speech.id;
+    const youtubeVideoId = speech.youtubeVideoId;
+    setEncodeProgress(`Encoding quote ${startSeconds}s–${endSeconds}s…`);
+    start(async () => {
+      const res = await encodeVideoExcerptAction({
+        speechId,
+        youtubeVideoId,
+        startSeconds,
+        endSeconds,
+        title: quote.slice(0, 72),
+        quote,
+        aspect: vertical916 ? "vertical_9x16" : "source",
+      });
+      setMessage(res.message);
+      setEncodeProgress("");
+      const listed = await listVideoClipsAction(speechId);
+      setEncodedClips(listed.clips ?? []);
     });
   }
 
@@ -239,6 +347,8 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
         startSeconds: clip?.startSeconds,
         endSeconds: clip?.endSeconds,
         title: clip?.title,
+        quote: clip?.quote,
+        aspect: vertical916 ? "vertical_9x16" : "source",
       });
       setEncodeProgress("");
       setMessage(res.message);
@@ -263,6 +373,7 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
         speechId,
         youtubeVideoId,
         planId,
+        aspect: vertical916 ? "vertical_9x16" : "source",
       });
       setEncodeProgress("");
       setMessage(res.message);
@@ -429,13 +540,67 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
           </div>
           <div className="mt-4 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
             <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
-              ffmpeg / local masters + encode (Pass 6–7)
+              Video Prep (AI package)
             </p>
             <p className="mt-1 whitespace-pre-wrap font-body text-[11px] text-[#364272]">
               {ffmpegNote || "Checking ffmpeg…"}
             </p>
             <p className="mt-1 font-body text-[11px] text-[#364272]">{masterNote}</p>
+
+            <label className="mt-2 block font-body text-[11px] font-semibold text-[#12124a]">
+              Plan query (optional)
+              <input
+                className={`${EVIDENCE_FIELD_CLASS} mt-0.5`}
+                value={planQuery}
+                onChange={(e) => setPlanQuery(e.target.value)}
+                placeholder="e.g. ballot access, county clerks"
+              />
+            </label>
+
+            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-body text-[11px] text-[#12124a]">
+              <label className="inline-flex items-center gap-1.5">
+                <input
+                  type="checkbox"
+                  checked={vertical916}
+                  onChange={(e) => setVertical916(e.target.checked)}
+                />
+                Encode as 9:16 social
+              </label>
+              <label className="inline-flex items-center gap-1.5">
+                <input
+                  type="checkbox"
+                  checked={prepAlsoEncode}
+                  onChange={(e) => setPrepAlsoEncode(e.target.checked)}
+                />
+                Prep also encodes top 3
+              </label>
+              <label className="inline-flex items-center gap-1.5">
+                <input
+                  type="checkbox"
+                  checked={prepAlsoPoster}
+                  onChange={(e) => setPrepAlsoPoster(e.target.checked)}
+                />
+                Prep also extracts poster
+              </label>
+            </div>
+
             <div className="mt-2 flex flex-wrap items-end gap-2">
+              <button
+                type="button"
+                disabled={pending}
+                onClick={runVideoPrep}
+                className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+              >
+                Prep package
+              </button>
+              <button
+                type="button"
+                disabled={pending}
+                onClick={planExcerpt}
+                className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Plan excerpts
+              </button>
               <button
                 type="button"
                 disabled={pending}
@@ -469,6 +634,62 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
                 Extract poster
               </button>
             </div>
+
+            <div className="mt-2 flex flex-wrap items-end gap-2">
+              <label className="font-body text-[11px] text-[#12124a]">
+                Manual start
+                <input
+                  className={`${EVIDENCE_FIELD_CLASS} ml-1 w-16`}
+                  value={manualStart}
+                  onChange={(e) => setManualStart(e.target.value)}
+                />
+              </label>
+              <label className="font-body text-[11px] text-[#12124a]">
+                end
+                <input
+                  className={`${EVIDENCE_FIELD_CLASS} ml-1 w-16`}
+                  value={manualEnd}
+                  onChange={(e) => setManualEnd(e.target.value)}
+                />
+              </label>
+              <button
+                type="button"
+                disabled={pending}
+                onClick={encodeManualWindow}
+                className="rounded border-2 border-[#ca913d] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Encode window
+              </button>
+            </div>
+
+            {prepPacket ? (
+              <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2">
+                <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                  Prep review
+                </p>
+                <p className="mt-1 font-body text-[11px] text-[#12124a]">{prepPacket.message}</p>
+                <p className="font-body text-[11px] text-[#364272]">{prepPacket.master.note}</p>
+                {prepPacket.planError ? (
+                  <p className="font-body text-[11px] text-[#ca913d]">Plan: {prepPacket.planError}</p>
+                ) : null}
+                {prepPacket.intelError ? (
+                  <p className="font-body text-[11px] text-[#ca913d]">Intel: {prepPacket.intelError}</p>
+                ) : null}
+                <p className="mt-1 font-body text-[11px] text-[#364272]">
+                  {prepPacket.planClips != null ? `${prepPacket.planClips} planned · ` : ""}
+                  {prepPacket.intelQuotes != null ? `${prepPacket.intelQuotes} quotes · ` : ""}
+                  Next: {prepPacket.nextActions[0] ?? "—"}
+                </p>
+                {prepPacket.nextActions.length > 1 ? (
+                  <ul className="mt-1 list-disc pl-4 font-body text-[10px] text-[#364272]">
+                    {prepPacket.nextActions.slice(1, 5).map((a) => (
+                      <li key={a}>{a}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ) : null}
+
             {posterSrc ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -483,6 +704,7 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
                     Excerpt plan · {excerptPlan.clips.length} clips
+                    {excerptPlan.query ? ` · “${excerptPlan.query}”` : ""}
                   </p>
                   <button
                     type="button"
@@ -520,6 +742,31 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
               </div>
             ) : null}
 
+            {intelProposal?.quotes?.length ? (
+              <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-white p-2">
+                <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                  Quote → encode
+                </p>
+                <ul className="mt-1 space-y-1.5">
+                  {intelProposal.quotes.slice(0, 4).map((q, i) => (
+                    <li key={`q-${i}`} className="flex flex-wrap items-start justify-between gap-2">
+                      <p className="min-w-0 flex-1 font-body text-[10px] text-[#364272]">
+                        {q.startSeconds}s–{q.endSeconds}s · {q.text.slice(0, 120)}
+                      </p>
+                      <button
+                        type="button"
+                        disabled={pending}
+                        onClick={() => encodeQuoteWindow(q.startSeconds, q.endSeconds, q.text)}
+                        className="shrink-0 rounded border border-[#ca913d] bg-white px-2 py-0.5 font-body text-[10px] font-semibold text-[#12124a] disabled:opacity-50"
+                      >
+                        Encode quote
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
             {encodedClips.length ? (
               <div className="mt-3 space-y-2">
                 <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
@@ -530,6 +777,7 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
                     <p className="font-body text-[11px] text-[#12124a]">
                       {c.startSeconds}s–{c.endSeconds}s
                       {c.title ? ` · ${c.title}` : ""}
+                      {c.aspect === "vertical_9x16" ? " · 9:16" : ""}
                     </p>
                     <p className="break-all font-mono text-[10px] text-[#364272]">{c.publicSrc}</p>
                     <video
@@ -545,7 +793,8 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
 
             <p className="mt-2 font-body text-[10px] text-[#364272]">
               Drop masters in public/media/campaign-video-masters/ or H:/SOSWebsite/.local/video-masters/
-              (name includes speech id or YouTube id). Use Plan video excerpts → Encode.
+              (name includes speech id or YouTube id). Prep package = plan + intel review; encode only when you
+              check the boxes or click Encode.
             </p>
           </div>
         </div>

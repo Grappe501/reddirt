@@ -1138,7 +1138,9 @@ export async function encodeVideoExcerptAction(input: {
   startSeconds?: number;
   endSeconds?: number;
   title?: string;
+  quote?: string;
   localPublicSrc?: string;
+  aspect?: "source" | "vertical_9x16";
 }): Promise<{
   ok: boolean;
   message: string;
@@ -1148,6 +1150,7 @@ export async function encodeVideoExcerptAction(input: {
   if (!g.ok) return { ok: false, message: g.error };
   const speechId = String(input.speechId ?? "").trim();
   if (!speechId) return { ok: false, message: "speechId required." };
+  const aspect = input.aspect === "vertical_9x16" ? "vertical_9x16" : "source";
 
   const {
     encodeVideoExcerptClip,
@@ -1164,7 +1167,9 @@ export async function encodeVideoExcerptAction(input: {
       planId: input.planId,
       clipIndex: input.clipIndex ?? 0,
       title: input.title,
+      quote: input.quote,
       localPublicSrc: input.localPublicSrc,
+      aspect,
     });
     if (!result.ok) return { ok: false, message: result.error };
     revalidatePath("/admin/evidence-workbench");
@@ -1182,6 +1187,7 @@ export async function encodeVideoExcerptAction(input: {
     planId: input.planId,
     clipIndexes: typeof input.clipIndex === "number" ? [input.clipIndex] : undefined,
     localPublicSrc: input.localPublicSrc,
+    aspect,
   });
   revalidatePath("/admin/evidence-workbench");
   return {
@@ -1189,6 +1195,40 @@ export async function encodeVideoExcerptAction(input: {
     message: batch.message + (batch.errors[0] ? `\n${batch.errors[0].error}` : ""),
     clips: batch.created,
   };
+}
+
+export async function prepSpeechVideoPackageAction(input: {
+  speechId: string;
+  youtubeVideoId: string;
+  query?: string;
+  maxClips?: number;
+  confirmEncode?: boolean;
+  confirmPoster?: boolean;
+  aspect?: "source" | "vertical_9x16";
+}): Promise<{
+  ok: boolean;
+  message: string;
+  packet?: import("@/lib/campaign-media/video-prep-package").VideoPrepPacket;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const speechId = String(input.speechId ?? "").trim();
+  const youtubeVideoId = String(input.youtubeVideoId ?? "").trim();
+  if (!speechId || !youtubeVideoId) {
+    return { ok: false, message: "speechId and youtubeVideoId required." };
+  }
+  const { prepSpeechVideoPackage } = await import("@/lib/campaign-media/video-prep-package");
+  const packet = prepSpeechVideoPackage({
+    speechId,
+    youtubeVideoId,
+    query: input.query?.trim() || undefined,
+    maxClips: input.maxClips,
+    confirmEncode: Boolean(input.confirmEncode),
+    confirmPoster: Boolean(input.confirmPoster),
+    aspect: input.aspect === "vertical_9x16" ? "vertical_9x16" : "source",
+  });
+  revalidatePath("/admin/evidence-workbench");
+  return { ok: packet.ok, message: packet.message, packet };
 }
 
 export async function analyzeTranscriptIntelAction(input: {

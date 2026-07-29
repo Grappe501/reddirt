@@ -688,8 +688,16 @@ export async function executeEvidenceAiTool(
       }
 
       case "encode_video_excerpt": {
+        if (args.confirmEncode !== true) {
+          return {
+            ok: false,
+            error: "confirmEncode:true required — operator must explicitly ask to encode.",
+          };
+        }
         const outId = asString(args.outId);
         if (!outId) return { ok: false, error: "outId required." };
+        const aspect =
+          args.aspect === "vertical_9x16" ? ("vertical_9x16" as const) : ("source" as const);
         const startSeconds = typeof args.startSeconds === "number" ? args.startSeconds : undefined;
         const endSeconds = typeof args.endSeconds === "number" ? args.endSeconds : undefined;
         if (typeof startSeconds === "number" && typeof endSeconds === "number") {
@@ -702,6 +710,7 @@ export async function executeEvidenceAiTool(
             startSeconds,
             endSeconds,
             localPublicSrc: asString(args.localPublicSrc) || undefined,
+            aspect,
           });
           if (!result.ok) return { ok: false, error: result.error };
           return { ok: true, result: result.record };
@@ -713,6 +722,7 @@ export async function executeEvidenceAiTool(
           planId: asString(args.planId) || undefined,
           clipIndexes: typeof args.clipIndex === "number" ? [args.clipIndex] : undefined,
           localPublicSrc: asString(args.localPublicSrc) || undefined,
+          aspect,
         });
         if (!batch.ok) return { ok: false, error: batch.message };
         return { ok: true, result: batch };
@@ -744,6 +754,70 @@ export async function executeEvidenceAiTool(
         });
         if (!result.ok) return { ok: false, error: result.error };
         return { ok: true, result: result.plan };
+      }
+
+      case "prep_video_package": {
+        const speechId = asString(args.speechId);
+        const youtubeVideoId = asString(args.youtubeVideoId);
+        if (!speechId || !youtubeVideoId) {
+          return { ok: false, error: "speechId and youtubeVideoId required." };
+        }
+        const { prepSpeechVideoPackage } = await import("@/lib/campaign-media/video-prep-package");
+        const packet = prepSpeechVideoPackage({
+          speechId,
+          youtubeVideoId,
+          query: asString(args.query) || undefined,
+          maxClips: typeof args.maxClips === "number" ? args.maxClips : undefined,
+          confirmEncode: args.confirmEncode === true,
+          confirmPoster: args.confirmPoster === true,
+          aspect: args.aspect === "vertical_9x16" ? "vertical_9x16" : "source",
+        });
+        return { ok: packet.ok, result: packet };
+      }
+
+      case "list_video_derivatives": {
+        const outId = asString(args.outId);
+        if (!outId) return { ok: false, error: "outId required." };
+        const { listVideoDerivativesForSpeech } = await import(
+          "@/lib/campaign-media/video-prep-package"
+        );
+        return { ok: true, result: listVideoDerivativesForSpeech(outId) };
+      }
+
+      case "apply_transcript_intelligence": {
+        if (args.confirm !== true) {
+          return { ok: false, error: "confirm:true required — operator must explicitly ask to apply." };
+        }
+        const speechId = asString(args.speechId);
+        const proposalId = asString(args.proposalId);
+        if (!speechId || !proposalId) {
+          return { ok: false, error: "speechId and proposalId required." };
+        }
+        const applyFields = Array.isArray(args.applyFields)
+          ? args.applyFields.map((f) => String(f).trim()).filter(Boolean)
+          : [];
+        if (!applyFields.length) return { ok: false, error: "applyFields required." };
+        const {
+          loadTranscriptIntelStore,
+          applyTranscriptIntelToOverlay,
+        } = await import("@/lib/campaign-media/transcript-intelligence");
+        const proposal =
+          loadTranscriptIntelStore().proposals.find((p) => p.id === proposalId) ?? null;
+        if (!proposal) return { ok: false, error: "Proposal not found — analyze transcript first." };
+        const store = loadSpeechEvidenceStore();
+        const prev = store.speeches[speechId] ?? {};
+        store.speeches[speechId] = applyTranscriptIntelToOverlay({
+          overlay: prev,
+          proposal,
+          applyFields: applyFields as import("@/lib/campaign-media/transcript-intelligence").TranscriptIntelApplyFields[],
+          claimIndex: typeof args.claimIndex === "number" ? args.claimIndex : undefined,
+        });
+        const { saveSpeechEvidenceStore } = await import("@/lib/campaign-media/evidence-store");
+        saveSpeechEvidenceStore(store);
+        return {
+          ok: true,
+          result: { speechId, applied: applyFields, proposalId },
+        };
       }
 
       default:
