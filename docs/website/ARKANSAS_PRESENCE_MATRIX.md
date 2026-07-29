@@ -5,7 +5,7 @@
 **Pass origin:** Steve + forensic follow-on (2026-07-29)  
 **Living doc:** Update when Steve confirms metadata or new media ships.
 
-**Related:** [`COUNTY_MEDIA_COVERAGE_LEDGER.md`](./COUNTY_MEDIA_COVERAGE_LEDGER.md) · [`EVIDENCE_DENSITY.md`](./EVIDENCE_DENSITY.md) · [`EVIDENCE_ENGINE.md`](./EVIDENCE_ENGINE.md)
+**Related:** [`COUNTY_MEDIA_COVERAGE_LEDGER.md`](./COUNTY_MEDIA_COVERAGE_LEDGER.md) · [`EVIDENCE_DENSITY.md`](./EVIDENCE_DENSITY.md) · [`EVIDENCE_ENGINE.md`](./EVIDENCE_ENGINE.md) · [`CALENDAR_PRESENCE_CONFIRMATION.md`](./CALENDAR_PRESENCE_CONFIRMATION.md)
 
 ---
 
@@ -67,6 +67,23 @@ Full None list (alphabetical): Arkansas, Ashley, Baxter, Benton, Boone, Bradley,
 3. **Close Garland gap** — one confirmed Hot Springs Village / Garland still beside the existing video.  
 4. **Do not** equalize all 75 before launch. Goal: visitor leaves thinking “she’s been all over Arkansas” from honest evidence, not a filled scoreboard.  
 5. **Event column** — fill only from published public events; calendar OS will improve this post-launch.
+
+---
+
+## Calendar inventory (pending Steve confirmation)
+
+Source worksheet: [`CALENDAR_PRESENCE_CONFIRMATION.md`](./CALENDAR_PRESENCE_CONFIRMATION.md) (from `basic.ics` export).
+
+| Field | Value |
+| --- | --- |
+| Calendar events parsed | 352 |
+| Physical LOCATION rows | 14 (priority confirm) |
+| Geography-facing Needs confirm | ~196 |
+| Pre-tagged Exclude | ~47 |
+| **Calendar rows marked Confirmed** | **0** |
+| Public county/city totals on `/from-the-road` | Held — placeholder cards removed until Confirmed exists |
+
+**Do not** fill Event column or public counts from titles alone. When Steve marks rows **Confirmed** with City/County, update this matrix Event column and restore verified totals on From the Road.
 
 ---
 

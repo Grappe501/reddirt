@@ -55,9 +55,10 @@ export const onTheRoadProofCopy = {
       { label: "Engagements (February)", value: "27", note: "Campaign log — February" },
       { label: "Pace since then", value: "Month after month", note: "Similar energy has continued — see field posts and calendar below." },
     ] as const,
-    /** Display only — TODO: replace when Steve supplies verified totals. */
-    countyPlaceholderLabel: "Counties reached (verified total pending)",
-    cityPlaceholderLabel: "Cities visited (verified total pending)",
+    /**
+     * County/city totals stay off the public page until Steve marks rows Confirmed in
+     * docs/website/CALENDAR_PRESENCE_CONFIRMATION.md (Unknown stays Unknown).
+     */
   },
 
   community: {

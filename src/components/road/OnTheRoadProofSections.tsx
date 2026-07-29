@@ -100,18 +100,6 @@ export function OnTheRoadProofSections({
             <ProofMetricCard key={m.label} label={m.label} value={m.value} note={m.note} />
           ))}
         </div>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <ProofMetricCard
-            label={c.metrics.countyPlaceholderLabel}
-            value="—"
-            note="TODO: verified count from campaign records (do not invent)."
-          />
-          <ProofMetricCard
-            label={c.metrics.cityPlaceholderLabel}
-            value="—"
-            note="TODO: verified count from campaign records (do not invent)."
-          />
-        </div>
       </section>
 
       <section className="mt-16 scroll-mt-24 md:mt-20" aria-labelledby="on-road-community-heading">
