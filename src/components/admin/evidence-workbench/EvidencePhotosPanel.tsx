@@ -11,6 +11,7 @@ import {
   createDerivativeFromCropAdviceAction,
   createPhotoDerivativeAction,
   inspectPhotoPixelsAction,
+  listEvidenceBatchOpsAction,
   listPhotoDerivativesAction,
   previewPromotePlacementAction,
   promotePhotoDerivativeAction,
@@ -19,8 +20,10 @@ import {
   suggestBatchPhotoEvidenceAiAction,
   suggestCropPlanAction,
   suggestPhotoEvidenceAiAction,
+  undoBatchPublishAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { BatchPhotoAiProposal } from "@/lib/campaign-media/evidence-ai-types";
+import type { EvidenceBatchOperation } from "@/lib/campaign-media/evidence-batch-ops";
 import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 import { clickToFocusPoint, type FocusPoint } from "@/lib/campaign-media/focus-crop";
 import type { PhotoDerivativeRecord } from "@/lib/campaign-media/media-derivatives-types";
@@ -187,6 +190,8 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
   const [dirty, setDirty] = useState(false);
   const [derivatives, setDerivatives] = useState<PhotoDerivativeRecord[]>([]);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [selectionAnchorId, setSelectionAnchorId] = useState<string | null>(null);
+  const [batchOps, setBatchOps] = useState<EvidenceBatchOperation[]>([]);
   const [batchFields, setBatchFields] = useState<Set<string>>(() => new Set(DEFAULT_BATCH_FIELDS));
   const [proposal, setProposal] = useState<BatchPhotoAiProposal | null>(null);
   const [clusterNote, setClusterNote] = useState("");
@@ -264,6 +269,12 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     // eslint-disable-next-line react-hooks/exhaustive-deps -- navigate-only reload; photos refresh handled below
   }, [activeId]);
 
+  useEffect(() => {
+    void listEvidenceBatchOpsAction().then((res) => {
+      setBatchOps(res.operations ?? []);
+    });
+  }, []);
+
   // Soft-refresh form from server props when overlays update and the operator is not mid-edit.
   useEffect(() => {
     if (dirty) return;
@@ -318,11 +329,23 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
         e.preventDefault();
         save();
       }
+      if (e.key === "x" || e.key === "X") {
+        e.preventDefault();
+        if (photo) toggleSelected(photo.id);
+      }
+      if (e.key === "a" || e.key === "A") {
+        if (e.metaKey || e.ctrlKey) return;
+        e.preventDefault();
+        selectAllFiltered();
+      }
+      if (e.key === "Escape") {
+        clearSelection();
+      }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filteredIds, activeId, dirty, form, photo]);
+  }, [filteredIds, activeId, dirty, form, photo, selectedIds]);
 
   useEffect(() => {
     const img = previewImgRef.current;
@@ -595,14 +618,59 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
 
   function toggleSelected(id: string) {
     setSelectedIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+    setSelectionAnchorId(id);
   }
 
   function selectAllFiltered() {
     setSelectedIds(filteredIds.slice(0, 80));
+    setSelectionAnchorId(filteredIds[0] ?? null);
   }
 
   function clearSelection() {
     setSelectedIds([]);
+    setSelectionAnchorId(null);
+  }
+
+  function selectFilmstripPhoto(id: string, e: MouseEvent) {
+    if (e.shiftKey && selectionAnchorId) {
+      const a = filteredIds.indexOf(selectionAnchorId);
+      const b = filteredIds.indexOf(id);
+      if (a >= 0 && b >= 0) {
+        const [lo, hi] = a < b ? [a, b] : [b, a];
+        setSelectedIds(filteredIds.slice(lo, hi + 1).slice(0, 80));
+        selectPhoto(id);
+        return;
+      }
+    }
+    if (e.metaKey || e.ctrlKey) {
+      toggleSelected(id);
+      selectPhoto(id);
+      return;
+    }
+    setSelectionAnchorId(id);
+    selectPhoto(id);
+  }
+
+  function refreshBatchOps() {
+    void listEvidenceBatchOpsAction().then((res) => {
+      setBatchOps(res.operations ?? []);
+    });
+  }
+
+  function undoLastPublish() {
+    start(async () => {
+      const res = await undoBatchPublishAction();
+      setMessage(res.message);
+      refreshBatchOps();
+    });
+  }
+
+  function undoPublishRun(runId: string) {
+    start(async () => {
+      const res = await undoBatchPublishAction({ runId });
+      setMessage(res.message);
+      refreshBatchOps();
+    });
   }
 
   function toggleBatchField(key: string) {
@@ -899,6 +967,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
           .join("\n")}`;
       }
       setMessage(msg);
+      refreshBatchOps();
     });
   }
 
@@ -937,10 +1006,10 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
 
       <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
-            Batch select · {selectedIds.length} selected
-          </p>
-          <div className="flex flex-wrap gap-2">
+            <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+              Batch select · {selectedIds.length} selected
+            </p>
+            <div className="flex flex-wrap gap-2">
             <button
               type="button"
               className="rounded border border-[#8eb6dc] bg-[#f4f7fc] px-2 py-1 font-body text-[11px] font-semibold text-[#12124a]"
@@ -954,6 +1023,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
               onClick={() => {
                 if (photo && !selectedIds.includes(photo.id)) {
                   setSelectedIds((prev) => [...prev, photo.id]);
+                  setSelectionAnchorId(photo.id);
                 }
               }}
             >
@@ -965,6 +1035,15 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
               onClick={clearSelection}
             >
               Clear
+            </button>
+            <button
+              type="button"
+              disabled={pending || !batchOps.some((o) => o.undoable)}
+              className="rounded border-2 border-[#ca913d] bg-white px-2 py-1 font-body text-[11px] font-bold text-[#12124a] disabled:opacity-50"
+              onClick={undoLastPublish}
+              title="Undo latest batch publish run"
+            >
+              Undo last publish
             </button>
             <button
               type="button"
@@ -1056,6 +1135,41 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
             </div>
           </div>
         ) : null}
+        {batchOps.length ? (
+          <div className="mt-3 rounded border border-[#8eb6dc]/50 bg-white p-2.5">
+            <p className="font-heading text-[11px] font-bold uppercase tracking-wide text-[#000066]">
+              Batch operation history (Pass 10)
+            </p>
+            <ul className="mt-2 max-h-40 space-y-1.5 overflow-y-auto">
+              {batchOps.slice(0, 12).map((op) => (
+                <li
+                  key={`${op.kind}-${op.id}`}
+                  className="flex flex-wrap items-start justify-between gap-2 rounded border border-[#8eb6dc]/30 bg-[#f4f7fc] px-2 py-1.5"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="font-body text-[11px] font-semibold text-[#12124a]">{op.label}</p>
+                    <p className="font-mono text-[10px] text-[#364272]">
+                      {op.createdAt.slice(0, 19).replace("T", " ")} · {op.detail}
+                    </p>
+                  </div>
+                  {op.undoable ? (
+                    <button
+                      type="button"
+                      disabled={pending}
+                      onClick={() => undoPublishRun(op.id)}
+                      className="shrink-0 rounded border border-[#ca913d] bg-white px-2 py-0.5 font-body text-[10px] font-semibold text-[#12124a] disabled:opacity-50"
+                    >
+                      Undo
+                    </button>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+        <p className="mt-2 font-body text-[10px] text-[#364272]">
+          Multi-select: checkbox · Ctrl/Cmd+click · Shift+click range · x toggle current · a select filtered · Esc clear
+        </p>
         <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
           {filtered.slice(0, 80).map((p) => {
             const checked = selectedIds.includes(p.id);
@@ -1065,7 +1179,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
                 key={p.id}
                 type="button"
                 title={p.id}
-                onClick={() => selectPhoto(p.id)}
+                onClick={(e) => selectFilmstripPhoto(p.id, e)}
                 className={`relative h-16 w-16 shrink-0 overflow-hidden rounded border-2 ${
                   active ? "border-[#000066]" : "border-[#8eb6dc]/50"
                 } ${checked ? "ring-2 ring-[#ca913d]" : ""}`}
@@ -1117,7 +1231,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
               ← Prev
             </button>
             <p className="font-body text-xs text-[#364272]">
-              {index + 1} / {filtered.length} · ← → or j/k · Ctrl+S save
+              {index + 1} / {filtered.length} · ← → or j/k · Ctrl+S save · x select · a all
             </p>
             <button
               type="button"

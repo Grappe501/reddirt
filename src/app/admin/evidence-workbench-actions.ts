@@ -304,6 +304,43 @@ export async function previewBatchPublishPhotosAction(input: {
   };
 }
 
+export async function listEvidenceBatchOpsAction(): Promise<{
+  ok: boolean;
+  message: string;
+  operations?: import("@/lib/campaign-media/evidence-batch-ops").EvidenceBatchOperation[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { listEvidenceBatchOperations } = await import("@/lib/campaign-media/evidence-batch-ops");
+  const operations = listEvidenceBatchOperations(20);
+  return {
+    ok: true,
+    message: operations.length ? `${operations.length} recent batch op(s)` : "No batch operations yet.",
+    operations,
+  };
+}
+
+export async function undoBatchPublishAction(input?: {
+  runId?: string;
+}): Promise<{ ok: boolean; message: string; restored?: number; runId?: string | null }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { undoBatchPublishRun, undoLastBatchPublish } = await import(
+    "@/lib/campaign-media/batch-photo-publish"
+  );
+  const runId = String(input?.runId ?? "").trim();
+  const result = runId
+    ? undoBatchPublishRun(runId, { refreshAlbums: true })
+    : undoLastBatchPublish({ refreshAlbums: true });
+  if (result.ok && (result.restored ?? 0) > 0) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    restored: result.restored,
+    runId: result.runId,
+  };
+}
+
 export async function saveSpeechEvidenceAction(
   _prev: { ok: boolean; message: string } | null,
   formData: FormData,

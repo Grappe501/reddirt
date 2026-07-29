@@ -66,6 +66,16 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Batch approve/hold/homepage/featured flags (consent-aware; refreshes albums once).",
   },
   {
+    name: "undo_batch_publish",
+    audience: "photo",
+    summary: "Undo the latest (or named) batch publish run using before-snapshots.",
+  },
+  {
+    name: "list_evidence_batch_ops",
+    audience: "photo",
+    summary: "List recent batch publish + derivative operations (history).",
+  },
+  {
     name: "cluster_photo_selection",
     audience: "photo",
     summary: "Cluster selected photo ids by shared event/date/county cues (read-only).",
@@ -354,6 +364,33 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             allowUnknownCounty: { type: "boolean" },
           },
           required: ["photoIds", "action"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "undo_batch_publish",
+        description:
+          "Undo a batch publish run by restoring before-snapshots. Omit runId to undo the latest undoable run.",
+        parameters: {
+          type: "object",
+          properties: {
+            runId: { type: "string" },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "list_evidence_batch_ops",
+        description: "List recent Evidence Workbench batch publish and derivative operations.",
+        parameters: {
+          type: "object",
+          properties: {
+            limit: { type: "number" },
+          },
         },
       },
     },

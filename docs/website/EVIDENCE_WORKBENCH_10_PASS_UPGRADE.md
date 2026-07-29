@@ -1,6 +1,6 @@
 # Evidence Workbench — 10-pass capability upgrade
 
-**Status:** Active  
+**Status:** Complete (Passes 1–10 locked)  
 **Lane:** `RedDirt/` only  
 **Goal:** Make the Evidence Workbench + AI tooling the campaign’s most powerful local media confirmation / prep console — without inventing geography or overwriting originals.
 
@@ -33,8 +33,8 @@
 | **6** | **ffmpeg foundation** | Install/detect local ffmpeg under `.local` · poster frames · clip probe |
 | **7** | **Video clip encode** | Export timed excerpts from plans · store under campaign-derivatives |
 | **8** | **Transcript intelligence** | Chapter/quote tools · claim extraction tied to evidence fields · do-not-claim |
-| **9** | **Batch publish controls** *(this pass)* | Multi approve / hold / homepage flags · consent-aware · county album bulk refresh |
-| **10** | Ops polish | Batch undo · operation history UI · keyboard multi-select · smoke pack · docs lock |
+| **9** | **Batch publish controls** | Multi approve / hold / homepage flags · consent-aware · county album bulk refresh |
+| **10** | **Ops polish** *(this pass — final)* | Batch undo · operation history UI · keyboard multi-select · smoke pack · docs lock |
 
 ---
 
@@ -121,6 +121,15 @@
 - [x] AI tool `batch_publish_photo_flags`
 - [x] Smoke: `scripts/smoke-batch-photo-publish.ts`
 
+## Pass 10 acceptance
+
+- [x] Batch publish runs store before-snapshots for undo
+- [x] Undo last / undo named publish run (+ album refresh)
+- [x] Operation history UI (publish + derivatives)
+- [x] Keyboard multi-select: Ctrl/Cmd+click, Shift+click range, `x`, `a`, Esc
+- [x] Smoke pack: `scripts/smoke-evidence-workbench-pack.cjs`
+- [x] Docs locked — Status Complete on this board
+
 ---
 
 ## Tracking
@@ -138,4 +147,8 @@ Update this table when each pass lands (commit hash + one-line note).
 | 7 | `e5939337` | Encode timed excerpts from plans into campaign-derivatives |
 | 8 | `c580c5e8` | Transcript chapters/quotes/claims + do-not-claim |
 | 9 | `b4b000fe` | Batch approve/hold/homepage/featured + album refresh |
-| 10 | — | — |
+| 10 | *(pending commit)* | Undo + history UI + keyboard multi-select + smoke pack |
+
+## Docs lock
+
+This 10-pass board is **complete**. Further Evidence Workbench work should open a new pass board rather than rewriting acceptance above.

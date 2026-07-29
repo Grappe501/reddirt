@@ -43,6 +43,9 @@ export type BatchPublishRun = {
   skippedUnknownCounty: number;
   errorCount: number;
   albumNote?: string;
+  /** Pass 10 — prior overlays for applied ids (null = no overlay existed). */
+  beforeById?: Record<string, PhotoEvidenceOverlay | null>;
+  undoneAt?: string;
 };
 
 export type BatchPublishRunsStore = {
@@ -256,6 +259,7 @@ export function applyPhotoPublishBatch(input: {
   const store = loadPhotoEvidenceStore();
   const errors: Array<{ photoId: string; error: string }> = [];
   const appliedIds: string[] = [];
+  const beforeById: Record<string, PhotoEvidenceOverlay | null> = {};
   let skipped = 0;
   let skippedConsent = 0;
   let skippedUnknownCounty = 0;
@@ -299,6 +303,7 @@ export function applyPhotoPublishBatch(input: {
       continue;
     }
 
+    beforeById[photoId] = existing ? { ...existing } : null;
     store.photos[photoId] = next;
     appliedIds.push(photoId);
   }
@@ -341,6 +346,7 @@ export function applyPhotoPublishBatch(input: {
         skippedUnknownCounty,
         errorCount: errors.length,
         albumNote: albumNote.trim() || undefined,
+        beforeById,
       },
       ...runs.runs,
     ].slice(0, 50);
@@ -374,4 +380,96 @@ export function applyPhotoPublishBatch(input: {
         albumNote
       : `Batch ${action} failed — ${errors[0]?.error ?? "nothing applied."}`,
   };
+}
+
+export function getUndoableBatchPublishRuns(): BatchPublishRun[] {
+  return loadBatchPublishRuns()
+    .runs.filter((r) => !r.undoneAt && r.beforeById && Object.keys(r.beforeById).length > 0)
+    .sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+}
+
+/**
+ * Restore overlays from a publish run snapshot. Refreshes albums once.
+ */
+export function undoBatchPublishRun(
+  runId: string,
+  opts?: { refreshAlbums?: boolean },
+): {
+  ok: boolean;
+  message: string;
+  restored: number;
+  runId: string | null;
+} {
+  const id = String(runId ?? "").trim();
+  if (!id) return { ok: false, message: "runId required.", restored: 0, runId: null };
+  const runsStore = loadBatchPublishRuns();
+  const run = runsStore.runs.find((r) => r.id === id);
+  if (!run) return { ok: false, message: `Run not found: ${id}`, restored: 0, runId: null };
+  if (run.undoneAt) {
+    return { ok: false, message: `Run already undone at ${run.undoneAt}.`, restored: 0, runId: id };
+  }
+  if (!run.beforeById || !Object.keys(run.beforeById).length) {
+    return {
+      ok: false,
+      message: "This run has no before-snapshot (pre–Pass 10) — cannot undo safely.",
+      restored: 0,
+      runId: id,
+    };
+  }
+
+  const store = loadPhotoEvidenceStore();
+  let restored = 0;
+  for (const photoId of run.appliedIds) {
+    if (!(photoId in run.beforeById)) continue;
+    const prev = run.beforeById[photoId];
+    if (prev == null) {
+      delete store.photos[photoId];
+    } else {
+      store.photos[photoId] = { ...prev, updatedAt: new Date().toISOString() };
+    }
+    restored += 1;
+  }
+  if (restored) savePhotoEvidenceStore(store);
+
+  let albumNote = "";
+  if (restored && opts?.refreshAlbums !== false) {
+    try {
+      const livePhotos = listCampaignPhotosLive(store);
+      const result = refreshCountyAlbumIndex({
+        materializeFolders: true,
+        photos: livePhotos,
+        photoStore: store,
+      });
+      albumNote = ` Albums refreshed once: ${result.countyCount} counties / ${result.photoCount} photos.`;
+    } catch (err) {
+      albumNote = ` Album refresh failed: ${err instanceof Error ? err.message : "unknown"}`;
+    }
+  }
+
+  run.undoneAt = new Date().toISOString();
+  saveRuns(runsStore);
+
+  return {
+    ok: restored > 0,
+    restored,
+    runId: id,
+    message:
+      restored > 0
+        ? `Undid ${run.action} for ${restored} photo(s) (${id}).${albumNote}`
+        : `Nothing restored for ${id}.`,
+  };
+}
+
+export function undoLastBatchPublish(opts?: { refreshAlbums?: boolean }) {
+  const undoable = getUndoableBatchPublishRuns();
+  const latest = undoable[0];
+  if (!latest) {
+    return {
+      ok: false,
+      message: "No undoable publish run (need a Pass 10+ run with before-snapshot).",
+      restored: 0,
+      runId: null as string | null,
+    };
+  }
+  return undoBatchPublishRun(latest.id, opts);
 }

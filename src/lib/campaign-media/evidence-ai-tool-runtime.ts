@@ -341,6 +341,24 @@ export async function executeEvidenceAiTool(
         };
       }
 
+      case "undo_batch_publish": {
+        const runId = asString(args.runId) || undefined;
+        const { undoBatchPublishRun, undoLastBatchPublish } = await import(
+          "@/lib/campaign-media/batch-photo-publish"
+        );
+        const result = runId
+          ? undoBatchPublishRun(runId, { refreshAlbums: true })
+          : undoLastBatchPublish({ refreshAlbums: true });
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
+      case "list_evidence_batch_ops": {
+        const { listEvidenceBatchOperations } = await import("@/lib/campaign-media/evidence-batch-ops");
+        const limit = asLimit(args.limit, 20, 40);
+        return { ok: true, result: { operations: listEvidenceBatchOperations(limit) } };
+      }
+
       case "cluster_photo_selection": {
         const photoIds = Array.isArray(args.photoIds)
           ? args.photoIds.map((id) => String(id).trim()).filter(Boolean)
