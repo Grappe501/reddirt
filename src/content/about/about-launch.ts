@@ -16,7 +16,7 @@ export const aboutLaunchCopy = {
     /** Target: 100–140 words */
     body: [
       "Kelly Grappe is running for Arkansas Secretary of State. She is a community organizer and operations leader who has spent years helping neighbors understand elections and ballot access—including grassroots petition work after the LEARNS Act—and nearly twenty-five years leading teams in telecom operations where training, process, and customer impact could not fail.",
-      "She and her husband Steve built a life around Rose Bud and Forevermost Farms, including small-market and farm work where permits and paperwork are daily reality. She is asking voters to judge her by visible service, clear limits on what this office can do, and a record of showing up—not by a full life history.",
+      "She and her husband Steve built a life around Rose Bud and Forevermost Farms, including small-market and farm work where permits and paperwork are daily reality. That is the standard she brings to this race: competence at the counter, equal service for all 75 counties, and a Secretary of State’s office that works for Arkansas—clear, accountable, and faithful to the law.",
     ],
   },
   experience: {
