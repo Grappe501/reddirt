@@ -11,6 +11,7 @@ import {
   trustFunnelCtaOutlineOnDark,
   trustFunnelCtaPrimary,
 } from "../src/components/home/trust-funnel/trustFunnelChrome";
+import { trustFunnelHomeCopy } from "../src/content/home/trust-funnel-home";
 
 const root = path.join(__dirname, "..");
 const read = (rel: string) => fs.readFileSync(path.join(root, rel), "utf8");
@@ -27,6 +28,12 @@ assert.ok(finalAction.includes("trustFunnelCtaOutline"));
 const meet = read("src/components/home/trust-funnel/TrustFunnelMeetKellySection.tsx");
 assert.ok(meet.includes("homepagePhotoObjectPositionClass"));
 assert.ok(meet.includes("trustFunnelCtaNavy"));
+assert.ok(meet.includes("copy.beats") || meet.includes("beats.map"), "Meet Kelly uses conversation beats");
+assert.ok(meet.includes("principle") || meet.includes("copy.principle"), "Meet Kelly principle line");
+
+const endorsements = read("src/components/home/trust-funnel/TrustFunnelEndorsementsSection.tsx");
+assert.ok(endorsements.includes("Earned through listening"), "endorsements empty state intentional framing");
+assert.ok(!/No endorsements are listed yet/i.test(trustFunnelHomeCopy.endorsements.emptyState));
 
 const hero = read("src/components/home/trust-funnel/TrustFunnelHero.tsx");
 assert.ok(hero.includes("trustFunnelCtaPrimary"), "hero uses shared primary CTA");

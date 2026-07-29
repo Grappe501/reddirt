@@ -15,7 +15,10 @@ import { cn } from "@/lib/utils";
 
 const copy = trustFunnelHomeCopy.meetKelly;
 
-/** Concise Meet Kelly preview — optional trail still from Slice 2 curation. */
+/**
+ * Meet Kelly — conversation rhythm (beats + principle), not a continuous document wall.
+ * Word content stays within launch targets; layout carries the polish.
+ */
 export function TrustFunnelMeetKellySection({ photo }: { photo?: CampaignPhotoRecord | null }) {
   const countyHref = photo ? homepagePhotoCountyHref(photo) : null;
 
@@ -26,18 +29,19 @@ export function TrustFunnelMeetKellySection({ photo }: { photo?: CampaignPhotoRe
       aria-labelledby="meet-kelly-heading"
     >
       <ContentContainer>
-        <div className={photo ? "grid items-center gap-10 lg:grid-cols-2 lg:gap-12" : undefined}>
+        <div className={photo ? "grid items-start gap-12 lg:grid-cols-12 lg:gap-14" : undefined}>
           {photo ? (
-            <ScrollReveal className="order-2 lg:order-1" yOffset={6}>
+            <ScrollReveal className="order-2 lg:order-1 lg:col-span-5 lg:sticky lg:top-28" yOffset={6}>
               <figure className={cn(trustFunnelCardClass, "bg-kelly-fog")}>
-                <div className="relative aspect-[4/5] w-full sm:aspect-[5/6]">
+                <div className="relative aspect-[4/5] w-full">
                   <Image
                     src={photo.src}
                     alt={photo.accessibility.altText}
                     width={photo.basic.width ?? 768}
                     height={photo.basic.height ?? 1024}
                     className={cn("h-full w-full object-cover", homepagePhotoObjectPositionClass(photo))}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    priority={false}
                   />
                 </div>
                 <figcaption className="border-t border-kelly-ink/10 px-4 py-3.5 font-body text-sm leading-relaxed text-kelly-slate">
@@ -60,19 +64,44 @@ export function TrustFunnelMeetKellySection({ photo }: { photo?: CampaignPhotoRe
 
           <ScrollReveal
             yOffset={6}
-            className={
-              photo
-                ? "order-1 mx-auto max-w-xl text-center lg:order-2 lg:mx-0 lg:text-left"
-                : "mx-auto max-w-2xl text-center"
-            }
+            className={photo ? "order-1 mx-auto max-w-xl lg:order-2 lg:col-span-7 lg:mx-0 lg:max-w-none" : "mx-auto max-w-2xl"}
           >
-            <h2 id="meet-kelly-heading" className="font-heading text-2xl font-bold tracking-tight text-kelly-ink md:text-3xl">
+            <h2
+              id="meet-kelly-heading"
+              className={cn(
+                "font-heading text-2xl font-bold tracking-tight text-kelly-ink md:text-3xl",
+                photo ? "text-center lg:text-left" : "text-center",
+              )}
+            >
               {copy.title}
             </h2>
-            <p className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">{copy.intro}</p>
-            <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate/95">{copy.body}</p>
-            <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate/90">{copy.values}</p>
-            <div className={photo ? "mt-8 flex justify-center lg:justify-start" : "mt-8 flex justify-center"}>
+
+            <blockquote
+              className={cn(
+                "mt-6 border-l-4 border-kelly-gold pl-4 font-heading text-lg font-semibold leading-snug tracking-tight text-kelly-navy md:text-xl",
+                photo ? "text-left" : "mx-auto max-w-xl text-left",
+              )}
+            >
+              {copy.principle}
+            </blockquote>
+
+            <ul className="mt-8 space-y-5" role="list">
+              {copy.beats.map((beat) => (
+                <li
+                  key={beat.label}
+                  className="rounded-card border border-kelly-ink/10 bg-kelly-fog/35 px-5 py-5 shadow-[var(--shadow-soft)] md:px-6 md:py-6"
+                >
+                  <p className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-kelly-gold">
+                    {beat.label}
+                  </p>
+                  <p className="mt-2.5 font-body text-base leading-relaxed text-kelly-slate md:text-[1.05rem]">
+                    {beat.body}
+                  </p>
+                </li>
+              ))}
+            </ul>
+
+            <div className={cn("mt-9 flex", photo ? "justify-center lg:justify-start" : "justify-center")}>
               <Link href={copy.ctaHref} className={trustFunnelCtaNavy}>
                 {copy.cta}
               </Link>

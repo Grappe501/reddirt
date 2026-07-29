@@ -146,7 +146,23 @@ export const trustFunnelHomeCopy = {
 
   meetKelly: {
     title: "Meet Kelly",
-    /** Three focused paragraphs; total target 150–220 words */
+    /** Three focused beats; total target 150–220 words — rhythm via layout, not more biography */
+    beats: [
+      {
+        label: "Who she is",
+        body: "Kelly Grappe is a community organizer and operations leader running for Arkansas Secretary of State. She lives and works in Arkansas community life—organizing neighbors, building volunteer capacity, and treating public process as something ordinary people should be able to understand and use.",
+      },
+      {
+        label: "What prepared her",
+        body: "She spent nearly 25 years in telecom operations leadership—training teams and protecting customer-impacting work when systems could not fail—and years organizing around fair elections and ballot access, including grassroots petition work after LEARNS. She also knows the filer’s side of the counter through small-market and farm operations. That mix of administration and listening shapes how she would run the office: professionally, transparently, and with equal respect for all 75 counties.",
+      },
+      {
+        label: "Why this office",
+        body: "Those experiences led her to seek this office: modernize what is broken inside its legal duties, defend lawful ballot access, and make state services easier for ordinary Arkansans to use.",
+      },
+    ] as const,
+    principle: "People over politics — competence, accessibility, and accountable public service.",
+    /** @deprecated Prefer beats — kept for message-psychology word-count invariants */
     intro:
       "Kelly Grappe is a community organizer and operations leader running for Arkansas Secretary of State. She lives and works in Arkansas community life—organizing neighbors, building volunteer capacity, and treating public process as something ordinary people should be able to understand and use.",
     body:
@@ -179,9 +195,9 @@ export const trustFunnelHomeCopy = {
     eyebrow: "Trust",
     title: "Endorsements",
     intro:
-      "Confirmed support will appear with the organization name and source on record. One credible endorsement with context beats a row of unexplained logos.",
+      "Kelly believes endorsements should be earned through listening, service, and trust—not assumed from a meeting or a photograph.",
     emptyState:
-      "No endorsements are listed yet. As organizations confirm support in the campaign record, their statements will be published here with verified wording.",
+      "As organizations and community leaders formally announce their support, you will find them here—with the organization name and source on record. Until then, this space stays empty on purpose.",
   },
 
   newsUpdates: {

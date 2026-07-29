@@ -28,10 +28,10 @@ export default function EndorsementsPage() {
       <PageHero
         eyebrow="Trust"
         title="Endorsements"
-        subtitle="Endorsements matter when they reflect real relationships and shared values—not logo wallpaper. Attendance, a friendly photograph, or a meeting is not an endorsement."
+        subtitle="Kelly believes endorsements should be earned through listening, service, and trust. Attendance, a friendly photograph, or a meeting is not an endorsement."
       >
         <Button href="/about" variant="outline">
-          Read Kelly’s Story
+          Read About Kelly’s Experience
         </Button>
         <Button href="/get-involved" variant="primary">
           Join the Campaign
@@ -41,20 +41,26 @@ export default function EndorsementsPage() {
       <FullBleedSection padY>
         <ContentContainer className="max-w-3xl">
           {CONFIRMED_ENDORSEMENTS.length === 0 ? (
-            <div className="rounded-card border border-dashed border-kelly-ink/20 bg-kelly-fog/50 px-6 py-10 text-center">
-              <p className="font-body text-base leading-relaxed text-kelly-slate">
-                No endorsements are listed yet. As organizations confirm support in the campaign record—with the exact
-                organization name, endorsement status, and approved wording—their statements will be published here with
-                sources.
+            <div className="rounded-card border border-kelly-ink/15 bg-kelly-fog/40 px-6 py-10 text-center md:px-10">
+              <h2 className="font-heading text-2xl font-bold tracking-tight text-kelly-ink">
+                Earned support, published when confirmed
+              </h2>
+              <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate">
+                As organizations and community leaders formally announce their support, you will find them here—with the
+                exact organization name, approved wording, and source on record.
               </p>
-              <p className="mt-4 font-body text-sm text-kelly-muted">
+              <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate">
+                Until then, this page stays empty on purpose. We will not invent logos or imply endorsements that are not
+                yet confirmed.
+              </p>
+              <p className="mt-6 font-body text-sm text-kelly-muted">
                 Labor, civic, and community organizations are not named as endorsers until that confirmation exists.
               </p>
             </div>
           ) : (
             <ul className="space-y-5">
               {CONFIRMED_ENDORSEMENTS.map((item) => (
-                <li key={item.id} className="rounded-card border border-kelly-ink/10 bg-white p-6 shadow-sm">
+                <li key={item.id} className="rounded-card border border-kelly-ink/10 bg-white p-6 shadow-[var(--shadow-soft)]">
                   <h2 className="font-heading text-xl font-bold text-kelly-navy">{item.organization}</h2>
                   {item.dateLabel ? (
                     <p className="mt-1 font-body text-xs font-semibold uppercase tracking-wide text-kelly-gold">
@@ -65,7 +71,7 @@ export default function EndorsementsPage() {
                   {item.sourceHref && item.sourceLabel ? (
                     <a
                       href={item.sourceHref}
-                      className="mt-4 inline-flex text-sm font-semibold text-kelly-blue underline-offset-4 hover:underline"
+                      className="mt-4 inline-flex text-sm font-semibold text-kelly-blue underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
                       rel="noopener noreferrer"
                       target="_blank"
                     >
