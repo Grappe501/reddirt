@@ -94,5 +94,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | 2 | `5de3a7fe` | Batch AI assist: cluster + suggest-for-selection + proposal review |
 | 3 | `efe09c10` | Batch derivatives: kinds × selection + progress + ledger runs |
 | 4 | `9099b7fd` | Derivative → placement: publicSrcOverride + homepage/hero promote |
-| 5 | *(pending commit)* | Focus-point crops + cropAdvice → derivative |
+| 5 | `2268ffe3` | Focus-point crops + cropAdvice → derivative |
 | 6–10 | — | — |
