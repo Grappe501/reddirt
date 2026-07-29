@@ -34,7 +34,7 @@ export const MEET_KELLY_TRUST_INDICATORS: readonly TrustIndicator[] = [
     kind: "organization",
     label: "Forevermost Farms",
     detail: "Family farm and market operations in Rose Bud, Arkansas.",
-    href: "https://forevermostfarms.com/",
+    href: "https://www.facebook.com/forevermostfarms",
     verification: "VERIFIED",
   },
   {
