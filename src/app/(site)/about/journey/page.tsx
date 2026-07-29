@@ -48,6 +48,9 @@ export default function AboutJourneyPage() {
         <ContentContainer className="max-w-3xl">
           <MeetKellySubnav current="/about/journey" />
           <p className="mt-8 font-body text-lg leading-relaxed text-kelly-slate">{c.intro}</p>
+          <p className="mt-6 font-body text-[11px] font-bold uppercase tracking-[0.18em] text-kelly-gold">
+            {c.evidenceVerbs.join(" · ")}
+          </p>
         </ContentContainer>
       </FullBleedSection>
 
@@ -67,10 +70,8 @@ export default function AboutJourneyPage() {
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer>
-          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">Confirmed trail photography</h2>
-          <p className="mt-3 max-w-3xl font-body text-kelly-slate">
-            Selected FEATURE stills. City and county appear only when confirmed in the campaign photo registry.
-          </p>
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.photographyHeading}</h2>
+          <p className="mt-3 max-w-3xl font-body text-kelly-slate">{c.photographyIntro}</p>
           <ul className="mt-10 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[...stills, ...morePhotos].map((photo) => {
               const href = homepagePhotoCountyHref(photo);

@@ -14,11 +14,18 @@
 
 ---
 
-## Final 36 hours
+## Final 36 hours — OPERATION ARKANSAS
 
-See [`FINAL_36_HOUR_LAUNCH_TRACKS.md`](./FINAL_36_HOUR_LAUNCH_TRACKS.md) and [`ARKANSAS_PRESENCE_MATRIX.md`](./ARKANSAS_PRESENCE_MATRIX.md).
+**Doctrine:** [`OPERATION_ARKANSAS.md`](./OPERATION_ARKANSAS.md)  
+**Tracks:** [`FINAL_36_HOUR_LAUNCH_TRACKS.md`](./FINAL_36_HOUR_LAUNCH_TRACKS.md)  
+**Presence:** [`ARKANSAS_PRESENCE_MATRIX.md`](./ARKANSAS_PRESENCE_MATRIX.md)
 
-**Limiter:** campaign evidence, not engineering risk. Track A = blockers (publish, calendar done, reporter dates). Track B = confirmed counties, captions, Regnat (done), emotional polish.
+**Daily question:** What evidence can we publish today that didn't exist yesterday?
+
+**Limiter:** campaign evidence, not engineering risk.  
+**Campaign:** county/media confirmation sprint.  
+**Burt:** presentation, tiers, rotation, Journey rhythm.  
+**Sacred:** Regnat Populus — Final Action only.
 
 ---
 
