@@ -35,6 +35,10 @@ Until all are “yes” (or Netlify platform gap is explicitly separated), launc
 
 Suggested pass name when authorized: `KELLY-PUBLIC-PRODUCTION-CONFIDENCE-1.0`
 
+### Parallel track (not ahead of #1 without authorization)
+
+**Campaign Operating Calendar** — promote calendar into RedDirt OS (one event, many outputs; Public / Internal / Kelly-only). Doctrine: [`../calendar/CAMPAIGN_OPERATING_CALENDAR_ARCHITECTURE.md`](../calendar/CAMPAIGN_OPERATING_CALENDAR_ARCHITECTURE.md). Do **not** embed Kelly-calendar as a separate app in the marketing site.
+
 ### 2. Media audit
 
 Keep-or-remove force for every homepage / feature image and video. Produce a media ledger. Nothing stays only because it exists.
