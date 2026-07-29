@@ -147,7 +147,7 @@ Update this table when each pass lands (commit hash + one-line note).
 | 7 | `e5939337` | Encode timed excerpts from plans into campaign-derivatives |
 | 8 | `c580c5e8` | Transcript chapters/quotes/claims + do-not-claim |
 | 9 | `b4b000fe` | Batch approve/hold/homepage/featured + album refresh |
-| 10 | *(pending commit)* | Undo + history UI + keyboard multi-select + smoke pack |
+| 10 | `0f28d4e6` | Undo + history UI + keyboard multi-select + smoke pack |
 
 ## Docs lock
 
