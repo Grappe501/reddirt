@@ -115,5 +115,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | 4 | `9099b7fd` | Derivative → placement: publicSrcOverride + homepage/hero promote |
 | 5 | `2268ffe3` | Focus-point crops + cropAdvice → derivative |
 | 6 | `71c9c0a7` | ffmpeg .local detect + poster + clip probe |
-| 7 | *(pending commit)* | Encode timed excerpts from plans into campaign-derivatives |
+| 7 | `e5939337` | Encode timed excerpts from plans into campaign-derivatives |
 | 8–10 | — | — |
