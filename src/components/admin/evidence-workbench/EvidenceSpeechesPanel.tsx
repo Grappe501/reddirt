@@ -7,6 +7,7 @@ import {
   suggestSpeechEvidenceAiAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { SpeechEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
+import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 
 export type SpeechWorkbenchItem = {
   id: string;
@@ -153,7 +154,7 @@ export function EvidenceSpeechesPanel({ speeches }: Props) {
         <label className="block font-body text-xs font-semibold">
           Counties (comma-separated short names, e.g. Polk, Garland)
           <input
-            className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
+            className={EVIDENCE_FIELD_CLASS}
             value={form.counties}
             onChange={(e) => setForm({ ...form, counties: e.target.value })}
           />
@@ -161,7 +162,7 @@ export function EvidenceSpeechesPanel({ speeches }: Props) {
         <label className="block font-body text-xs font-semibold">
           City
           <input
-            className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
+            className={EVIDENCE_FIELD_CLASS}
             value={form.city}
             onChange={(e) => setForm({ ...form, city: e.target.value })}
           />
@@ -169,7 +170,7 @@ export function EvidenceSpeechesPanel({ speeches }: Props) {
         <label className="block font-body text-xs font-semibold">
           What this proves
           <textarea
-            className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
+            className={EVIDENCE_FIELD_CLASS}
             rows={3}
             value={form.whatThisProves}
             onChange={(e) => setForm({ ...form, whatThisProves: e.target.value })}

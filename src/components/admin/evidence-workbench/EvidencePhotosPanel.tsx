@@ -7,6 +7,7 @@ import {
   suggestPhotoEvidenceAiAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
+import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 
 export type PhotoWorkbenchItem = {
   id: string;
@@ -193,7 +194,7 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
         <label className="block font-body text-xs font-semibold">
           County
           <select
-            className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
+            className={EVIDENCE_FIELD_CLASS}
             value={form.county}
             onChange={(e) => setForm({ ...form, county: e.target.value })}
           >
@@ -219,7 +220,7 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
           <label key={key} className="block font-body text-xs font-semibold">
             {label}
             <input
-              className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
+              className={EVIDENCE_FIELD_CLASS}
               value={form[key]}
               onChange={(e) => setForm({ ...form, [key]: e.target.value })}
             />
@@ -229,7 +230,7 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
         <label className="block font-body text-xs font-semibold">
           What this proves
           <textarea
-            className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
+            className={EVIDENCE_FIELD_CLASS}
             rows={3}
             value={form.whatThisProves}
             onChange={(e) => setForm({ ...form, whatThisProves: e.target.value })}
@@ -259,7 +260,7 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
           <label className="block font-body text-xs font-semibold">
             Hero level
             <select
-              className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
+              className={EVIDENCE_FIELD_CLASS}
               value={form.heroLevel}
               onChange={(e) => setForm({ ...form, heroLevel: e.target.value })}
             >
@@ -273,7 +274,7 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
           <label className="block font-body text-xs font-semibold">
             Tier intent
             <select
-              className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
+              className={EVIDENCE_FIELD_CLASS}
               value={form.tierIntent}
               onChange={(e) =>
                 setForm({
@@ -291,7 +292,7 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
           <label className="block font-body text-xs font-semibold">
             Publication
             <select
-              className="mt-1 w-full rounded border border-kelly-text/15 px-2 py-1.5 text-sm"
+              className={EVIDENCE_FIELD_CLASS}
               value={form.publicationStatus}
               onChange={(e) => setForm({ ...form, publicationStatus: e.target.value })}
             >

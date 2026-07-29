@@ -8,6 +8,7 @@ import {
 } from "@/app/admin/evidence-workbench-actions";
 import type { CalendarPresenceRow, CalendarPresenceStatus } from "@/lib/campaign-media/evidence-types";
 import { CALENDAR_STATUSES } from "@/lib/campaign-media/evidence-types";
+import { EVIDENCE_FIELD_COMPACT_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 
 type CountyOpt = { slug: string; displayName: string; shortName: string };
 
@@ -188,14 +189,14 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote }: Pro
                 <td className="px-2 py-2 max-w-[12rem] text-xs text-kelly-slate">{r.location || "—"}</td>
                 <td className="px-2 py-2">
                   <input
-                    className="w-28 rounded border border-kelly-text/15 px-1.5 py-1 text-xs"
+                    className={`${EVIDENCE_FIELD_COMPACT_CLASS} w-28`}
                     value={r.city}
                     onChange={(e) => patch(r.id, { city: e.target.value })}
                   />
                 </td>
                 <td className="px-2 py-2">
                   <select
-                    className="max-w-[10rem] rounded border border-kelly-text/15 px-1.5 py-1 text-xs"
+                    className={`${EVIDENCE_FIELD_COMPACT_CLASS} max-w-[10rem]`}
                     value={r.county}
                     onChange={(e) => patch(r.id, { county: e.target.value })}
                   >
@@ -209,7 +210,7 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote }: Pro
                 </td>
                 <td className="px-2 py-2">
                   <select
-                    className="rounded border border-kelly-text/15 px-1.5 py-1 text-xs"
+                    className={EVIDENCE_FIELD_COMPACT_CLASS}
                     value={r.status}
                     onChange={(e) =>
                       patch(r.id, { status: e.target.value as CalendarPresenceStatus })

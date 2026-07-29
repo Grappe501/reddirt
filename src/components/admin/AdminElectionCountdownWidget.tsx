@@ -106,12 +106,14 @@ export function AdminElectionCountdownWidget() {
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
     >
-      <div className="rounded-2xl border border-kelly-navy/25 bg-kelly-page/95 backdrop-blur-sm">
-        <div className="flex items-center gap-1 border-b border-kelly-text/10 px-2 py-1">
-          <span className="flex-1 text-[9px] font-bold uppercase tracking-wider text-kelly-slate">Election countdown</span>
+      <div className="rounded-2xl border-2 border-[#000066] bg-white text-[#12124a] shadow-xl">
+        <div className="flex items-center gap-1 border-b border-[#000066]/15 bg-[#f4f7fc] px-2 py-1">
+          <span className="flex-1 text-[9px] font-bold uppercase tracking-wider text-[#364272]">
+            Election countdown
+          </span>
           <button
             type="button"
-            className="rounded px-1.5 text-[10px] font-bold text-kelly-muted hover:bg-kelly-wash"
+            className="rounded px-1.5 text-[10px] font-bold text-[#000066] hover:bg-[#dce8f5]"
             onClick={() => persist({ ...pos, minimized: !minimized })}
             aria-label={minimized ? "Expand countdown" : "Minimize countdown"}
           >
@@ -120,11 +122,11 @@ export function AdminElectionCountdownWidget() {
         </div>
         {!minimized ? (
           <div className="px-3 py-2">
-            <p className="font-heading text-lg font-bold text-kelly-navy">{daysLabel}</p>
-            <p className="text-[10px] text-kelly-muted">Nov. 3, 2026 · drag to move</p>
+            <p className="font-heading text-lg font-bold text-[#000066]">{daysLabel}</p>
+            <p className="text-[10px] font-medium text-[#364272]">Nov. 3, 2026 · drag to move</p>
           </div>
         ) : (
-          <p className="px-2 py-1.5 font-heading text-sm font-bold text-kelly-navy">{daysLabel}</p>
+          <p className="px-2 py-1.5 font-heading text-sm font-bold text-[#000066]">{daysLabel}</p>
         )}
       </div>
     </div>

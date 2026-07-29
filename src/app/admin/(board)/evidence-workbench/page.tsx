@@ -10,6 +10,7 @@ import {
   loadSpeechEvidenceStore,
 } from "@/lib/campaign-media/evidence-store";
 import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry";
+import { strategicPlacementNotes } from "@/content/media/strategic-photo-placements";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -83,6 +84,17 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         (county → event folders under <code className="rounded bg-kelly-text/5 px-1">public/media/county-albums/</code>
         ).
       </p>
+
+      <div className="mt-4 rounded-lg border-2 border-[#000066]/20 bg-white p-4 text-[#12124a]">
+        <p className="font-heading text-sm font-bold text-[#000066]">Where photos go on the site</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5 font-body text-xs text-[#364272]">
+          {strategicPlacementNotes().map((n) => (
+            <li key={n.surface}>
+              <span className="font-semibold text-[#12124a]">{n.surface}:</span> {n.how}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <nav className="mt-6 flex flex-wrap gap-2" aria-label="Evidence workbench tabs">
         {TABS.map((t) => (

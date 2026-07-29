@@ -1,8 +1,12 @@
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { isLocalAdminHost } from "@/lib/admin/local-admin-host";
 import { ADMIN_SESSION_COOKIE, getAdminSecret, verifyAdminSessionToken } from "./session";
 
 export async function requireAdminPage(): Promise<void> {
+  if (await isLocalAdminHost()) {
+    return;
+  }
   const secret = getAdminSecret();
   if (!secret) {
     redirect("/admin/login?error=config");
@@ -23,6 +27,9 @@ export async function requireAdminPage(): Promise<void> {
 }
 
 export async function assertAdminApi(): Promise<Response | null> {
+  if (await isLocalAdminHost()) {
+    return null;
+  }
   const secret = getAdminSecret();
   if (!secret) {
     return Response.json({ error: "Admin is not configured (ADMIN_SECRET)." }, { status: 503 });

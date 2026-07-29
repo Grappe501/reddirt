@@ -22,7 +22,9 @@ import { listUpcomingPublicCampaignEventsForHomepage } from "@/lib/calendar/publ
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
+import { StrategicCountyPhotoStrip } from "@/components/from-the-road/StrategicCountyPhotoStrip";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
+import { listCountyAlbumCoverPhotos } from "@/content/media/strategic-photo-placements";
 import { onTheRoadPageMeta } from "@/content/road/on-the-road";
 import { cn } from "@/lib/utils";
 
@@ -42,11 +44,13 @@ export default async function FromTheRoadPage() {
     listUpcomingPublicCampaignEventsForHomepage(4),
   ]);
   const trailGallery = trailPhotosForSlot("fromTheRoad", { fromTheRoadMax: 96 });
+  const countyAlbumCovers = listCountyAlbumCoverPhotos(12);
   const hasEmbeds = fromTheRoadHasLiveEmbeds(embedsConfig);
   const hasFieldSocial = social.length > 0;
   const hasNotebook = posts.length > 0;
   const hasYoutube = youtube.length > 0;
   const hasTrailPhotos = trailGallery.length > 0;
+  const hasCountyAlbums = countyAlbumCovers.length > 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-kelly-fog/90 via-white to-kelly-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
@@ -61,6 +65,14 @@ export default async function FromTheRoadPage() {
         <div className="mt-10 md:mt-14" aria-hidden />
 
         <FromTheRoadSocialHub />
+
+        {hasCountyAlbums ? (
+          <StrategicCountyPhotoStrip
+            photos={countyAlbumCovers}
+            title="Confirmed counties — photo albums"
+            intro="Evidence-confirmed stills placed by county as you label them in the workbench. Open an album for event chapters."
+          />
+        ) : null}
 
         {hasTrailPhotos ? (
           <TrailPhotosShowcase

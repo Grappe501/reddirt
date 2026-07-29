@@ -1,11 +1,16 @@
 /**
  * File-backed homepage campaign photo curation (Slice 2).
- * Only IDs listed here may surface on `/` as homepage candidates.
+ * Curated IDs stay first; Evidence Workbench homepage candidates append after Save.
  * @see docs/website/HOMEPAGE_PHOTOS_SLICE_2_ERNIE_BRIEF.md
+ * @see content/media/strategic-photo-placements.ts
  */
 
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 import { getCampaignPhotoById, listCampaignPhotos } from "@/content/media/campaign-photo-registry";
+import {
+  listEvidenceAcrossArkansasPhotos,
+  listEvidenceHomepageCandidates,
+} from "@/content/media/strategic-photo-placements";
 
 /** Ordered curated set for Latest Campaign Photos (6–10 FEATURE stills). */
 export const HOMEPAGE_CAMPAIGN_PHOTO_IDS = [
@@ -39,6 +44,9 @@ export const HOMEPAGE_MEET_KELLY_PHOTO_ID: HomepageCampaignPhotoId = "mena-polk-
 /** No curated still meets HERO quality for replacing the trust-funnel hero media. */
 export const HOMEPAGE_HERO_PHOTO_ID: HomepageCampaignPhotoId | null = null;
 
+const HOMEPAGE_GALLERY_MAX = 12;
+const ACROSS_ARKANSAS_MAX = 8;
+
 function selectHomepagePhotos(ids: readonly string[]): CampaignPhotoRecord[] {
   const byId = new Map(listCampaignPhotos().map((p) => [p.id, p]));
   const out: CampaignPhotoRecord[] = [];
@@ -52,12 +60,36 @@ function selectHomepagePhotos(ids: readonly string[]): CampaignPhotoRecord[] {
   return out;
 }
 
+function mergeUnique(
+  primary: CampaignPhotoRecord[],
+  extras: CampaignPhotoRecord[],
+  max: number,
+): CampaignPhotoRecord[] {
+  const seen = new Set(primary.map((p) => p.id));
+  const out = [...primary];
+  for (const photo of extras) {
+    if (seen.has(photo.id)) continue;
+    seen.add(photo.id);
+    out.push(photo);
+    if (out.length >= max) break;
+  }
+  return out.slice(0, max);
+}
+
 export function listHomepageCampaignPhotos(): CampaignPhotoRecord[] {
-  return selectHomepagePhotos(HOMEPAGE_CAMPAIGN_PHOTO_IDS);
+  return mergeUnique(
+    selectHomepagePhotos(HOMEPAGE_CAMPAIGN_PHOTO_IDS),
+    listEvidenceHomepageCandidates(HOMEPAGE_GALLERY_MAX),
+    HOMEPAGE_GALLERY_MAX,
+  );
 }
 
 export function listHomepageAcrossArkansasPhotos(): CampaignPhotoRecord[] {
-  return selectHomepagePhotos(HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS);
+  return mergeUnique(
+    selectHomepagePhotos(HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS),
+    listEvidenceAcrossArkansasPhotos(ACROSS_ARKANSAS_MAX),
+    ACROSS_ARKANSAS_MAX,
+  );
 }
 
 export type AcrossArkansasPresencePlace = {
