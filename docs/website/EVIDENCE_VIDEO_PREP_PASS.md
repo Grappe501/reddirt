@@ -55,4 +55,4 @@ Drop master → Videos tab → Prep package
 
 | Pass | Commit | Note |
 | --- | ---: | --- |
-| Video Prep | *(pending)* | Prep package + 9:16 + gated AI tools |
+| Video Prep | `a76745ab` | Prep package + 9:16 + gated AI tools |
