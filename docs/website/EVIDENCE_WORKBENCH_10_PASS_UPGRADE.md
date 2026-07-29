@@ -55,5 +55,5 @@ Update this table when each pass lands (commit hash + one-line note).
 
 | Pass | Commit | Note |
 | --- | ---: | --- |
-| 1 | shipped | Batch metadata: multi-select + field-level apply + AI tool |
+| 1 | `2098c843` | Batch metadata: multi-select + field-level apply + AI tool |
 | 2–10 | — | — |
