@@ -74,5 +74,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | --- | ---: | --- |
 | 1 | `2098c843` | Batch metadata: multi-select + field-level apply + AI tool |
 | 2 | `5de3a7fe` | Batch AI assist: cluster + suggest-for-selection + proposal review |
-| 3 | shipped | Batch derivatives: kinds × selection + progress + ledger runs |
+| 3 | `efe09c10` | Batch derivatives: kinds × selection + progress + ledger runs |
 | 4–10 | — | — |
