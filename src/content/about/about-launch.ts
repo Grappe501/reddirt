@@ -42,7 +42,6 @@ export const aboutLaunchCopy = {
         body: "Running small-market and farm operations at Forevermost Farms taught the filer’s side of the counter: permits, cash flow, and paperwork friction that costs Main Street time. That ground truth shapes how she talks about business filings, nonprofit compliance, and equal service for rural counties—not as abstract policy, but as desks people actually stand at.",
         links: [
           { href: "/about/forevermost", label: "Stewardship & Forevermost" },
-          { href: "/about/story", label: "Optional story chapter" },
         ],
       },
     ],
